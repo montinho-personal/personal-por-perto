@@ -1,0 +1,35 @@
+---
+import type { FAQ } from '../lib/types';
+export interface Props {
+  faqs: FAQ[];
+  titulo?: string;
+  id?: string;
+}
+const { faqs, titulo = 'Perguntas frequentes', id = 'perguntas-frequentes' } = Astro.props;
+---
+
+<section class="faq-section" id={id} aria-labelledby={`${id}-h`}>
+  <h2 id={`${id}-h`}>{titulo}</h2>
+  <div class="faq-list">
+    {
+      faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary>{f.pergunta}</summary>
+          <div class="faq-body">
+            <p set:html={f.resposta} />
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    margin-top: var(--sp-7);
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .faq-list {
+    margin-top: var(--sp-5);
+  }
+</style>

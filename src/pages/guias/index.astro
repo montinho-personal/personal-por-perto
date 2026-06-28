@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+
+const path = '/guias';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: path },
+];
+
+const guias = [
+  {
+    url: '/guias/como-escolher-personal-trainer',
+    titulo: 'Como escolher um personal trainer',
+    desc: 'O passo a passo completo: registro no CREF, especialização, avaliação inicial, método e sinais de alerta.',
+    tag: 'Guia essencial',
+  },
+  {
+    url: '/guias/quanto-custa-personal-trainer',
+    titulo: 'Quanto custa um personal trainer',
+    desc: 'Faixas de preço por formato (avulsa, mensal e online), o que influencia o valor e como economizar sem perder qualidade.',
+    tag: 'Preços',
+  },
+];
+
+const title = 'Guias sobre personal trainer — como escolher, preços e treino';
+const description =
+  'Guias completos e independentes sobre personal trainer: como escolher, quanto custa, tipos de treino e como avaliar um profissional.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema('Guias do portal', guias.map((g) => g.titulo), new URL(path, site.dominio).href),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <header class="section-sm tint">
+    <div class="container">
+      <p class="eyebrow">Conteúdo editorial</p>
+      <h1>Guias sobre personal trainer</h1>
+      <p class="lead" style="max-width: 60ch">
+        Conteúdos aprofundados para você decidir com segurança — independentemente da
+        cidade onde treina.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {
+          guias.map((g) => (
+            <a class="card card-hover guide" href={g.url}>
+              <span class="pill">{g.tag}</span>
+              <h2>{g.titulo}</h2>
+              <p>{g.desc}</p>
+              <span class="guide-link">Ler guia →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .guide:hover {
+    text-decoration: none;
+  }
+  .guide h2 {
+    font-size: var(--step-2);
+  }
+  .guide p {
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .guide-link {
+    font-weight: 700;
+    color: var(--brand-600);
+  }
+</style>

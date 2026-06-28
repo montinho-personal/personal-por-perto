@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema, faqSchema } from '../lib/schema';
+import { site } from '../data/site';
+
+const path = '/como-avaliamos';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Como avaliamos', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O Personal por Perto cobra para recomendar profissionais?',
+    resposta:
+      'As recomendações editoriais seguem critérios próprios de qualidade e adequação ao público. Eventuais parcerias comerciais são sinalizadas, e nunca substituem os critérios de avaliação — a utilidade para o leitor vem primeiro.',
+  },
+  {
+    pergunta: 'Como vocês definem as faixas de preço?',
+    resposta:
+      'As faixas são estimativas de mercado reunidas a partir de valores praticados e pesquisas públicas, organizadas por formato (avulsa, mensal e online) e por cidade. São referências, não tabelas oficiais, e podem variar.',
+  },
+];
+
+const title = 'Como avaliamos — metodologia e transparência | Personal por Perto';
+const description =
+  'A metodologia do Personal por Perto: os critérios usados para avaliar personal trainers, como reunimos dados locais e como funcionam as recomendações editoriais.';
+
+const schema = [breadcrumbSchema(crumbs), faqSchema(faqs)];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-narrow article-page">
+    <p class="eyebrow">Transparência</p>
+    <h1>Como avaliamos</h1>
+    <p class="lead">
+      Confiança se constrói com transparência. Esta página explica os critérios que o
+      Personal por Perto usa para avaliar profissionais, reunir dados locais e fazer
+      recomendações editoriais.
+    </p>
+
+    <div class="prose">
+      <h2>Critérios de avaliação de um profissional</h2>
+      <p>Quando analisamos ou destacamos um personal trainer, olhamos para:</p>
+      <ol>
+        <li><strong>Habilitação:</strong> registro ativo no CREF e formação em Educação Física.</li>
+        <li><strong>Especialização:</strong> experiência comprovada no objetivo que aquele público busca.</li>
+        <li><strong>Método:</strong> avaliação inicial, prescrição individualizada e reavaliações periódicas.</li>
+        <li><strong>Acompanhamento:</strong> suporte real ao aluno e clareza na comunicação.</li>
+        <li><strong>Prova de resultado:</strong> histórico, depoimentos e casos consistentes.</li>
+        <li><strong>Transparência:</strong> honestidade sobre prazos, expectativas e limites.</li>
+      </ol>
+
+      <h2>Como reunimos os dados das cidades</h2>
+      <p>
+        Os panoramas locais usam fontes públicas e oficiais — como o IBGE, prefeituras e
+        secretarias — para informações de população, IDH, parques, mobilidade e cultura
+        esportiva. Cada guia lista as fontes consultadas. As faixas de preço são
+        estimativas de mercado, sempre sinalizadas como referência.
+      </p>
+
+      <h2>Como funcionam as recomendações</h2>
+      <p>
+        O portal pode destacar um profissional quando ele atende bem aos critérios acima
+        para um público específico. Toda recomendação é <strong>justificada</strong>: você
+        sempre vê o porquê. Recomendação editorial não é propaganda — é uma opinião
+        fundamentada, que não dispensa a sua própria avaliação.
+      </p>
+      <div class="callout">
+        <strong>Independência:</strong> não publicamos listas pagas disfarçadas de
+        ranking. Quando houver qualquer relação comercial, ela será sinalizada de forma
+        clara.
+      </div>
+
+      <h2>Atualização e correções</h2>
+      <p>
+        O conteúdo é revisado e datado periodicamente. Encontrou uma informação
+        desatualizada ou incorreta? Escreva para{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a> que avaliamos e corrigimos.
+      </p>
+    </div>
+
+    <section class="faq-section">
+      <h2>Perguntas frequentes</h2>
+      <div style="margin-top: var(--sp-5)">
+        {
+          faqs.map((f, i) => (
+            <details class="faq-item" open={i === 0}>
+              <summary>{f.pergunta}</summary>
+              <div class="faq-body"><p>{f.resposta}</p></div>
+            </details>
+          ))
+        }
+      </div>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .article-page {
+    padding-block: var(--sp-7);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

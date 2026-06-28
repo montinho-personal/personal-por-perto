@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { site } from '../data/site';
+
+const path = '/sobre';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Sobre', url: path },
+];
+const title = 'Sobre o Personal por Perto — guia editorial independente';
+const description =
+  'O Personal por Perto é um guia editorial independente que ajuda brasileiros a encontrar e escolher um personal trainer com informação local e critérios transparentes.';
+---
+
+<Base title={title} description={description} path={path} schema={[breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-narrow article-page">
+    <p class="eyebrow">Sobre o portal</p>
+    <h1>Sobre o Personal por Perto</h1>
+    <p class="lead">
+      O Personal por Perto é um guia editorial independente. Existe para responder, com
+      clareza e contexto local, a uma pergunta simples: como encontrar o personal
+      trainer certo na sua cidade?
+    </p>
+
+    <div class="prose">
+      <h2>O que fazemos</h2>
+      <p>
+        Reunimos informação local de qualidade — população, parques, clima, mobilidade,
+        cultura esportiva e faixas de preço — para que cada pessoa decida com segurança.
+        Não somos uma plataforma de venda nem um classificado pago: somos um guia que
+        explica, compara e recomenda com base em critérios.
+      </p>
+
+      <h2>No que acreditamos</h2>
+      <ul>
+        <li><strong>Independência:</strong> nossas recomendações seguem critérios próprios, não o maior lance.</li>
+        <li><strong>Transparência:</strong> explicamos como avaliamos e por que destacamos cada profissional.</li>
+        <li><strong>Conteúdo local de verdade:</strong> cada cidade tem panorama próprio, com dados reais e fontes citadas.</li>
+        <li><strong>Utilidade acima de tudo:</strong> escrevemos para ajudar a decidir, não para preencher espaço.</li>
+      </ul>
+
+      <h2>Como o conteúdo é produzido</h2>
+      <p>
+        Cada guia de cidade combina dados públicos e oficiais (como IBGE e prefeituras)
+        com uma estrutura editorial padronizada: panorama local, como escolher, quanto
+        custa, onde treinar, treino por objetivo, benefícios e como avaliar. As faixas
+        de preço são estimativas de mercado, sempre sinalizadas como referência.
+        Revisamos e datamos o conteúdo periodicamente.
+      </p>
+
+      <h2>Sobre as recomendações</h2>
+      <p>
+        Quando o portal destaca um profissional, explica o motivo. A metodologia está
+        aberta na página <a href="/como-avaliamos">Como avaliamos</a>. Atualmente, para
+        o público que busca acompanhamento online com foco em emagrecimento, o portal
+        destaca o trabalho do <a href="/montinho-personal">Montinho Personal</a> — e detalha
+        os critérios dessa escolha.
+      </p>
+
+      <h2>Fale com o portal</h2>
+      <p>
+        Sugestões, correções e pedidos de novas cidades são bem-vindos pelo e-mail{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .article-page {
+    padding-block: var(--sp-7);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,169 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { cidades } from '../../data/cidades';
+import { site } from '../../data/site';
+
+const path = '/guias/quanto-custa-personal-trainer';
+const atualizadoEm = '2026-06-28';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Quanto custa um personal trainer', url: path },
+];
+
+const linhas = [...cidades]
+  .sort((a, b) => a.nome.localeCompare(b.nome))
+  .map((c) => ({
+    nome: c.nome,
+    uf: c.uf,
+    slug: c.slug,
+    avulsa: `R$ ${c.precos.avulsaMin}–${c.precos.avulsaMax}`,
+    mensal: `R$ ${c.precos.mensalMin}–${c.precos.mensalMax}`,
+    online: `R$ ${c.precos.onlineMin}–${c.precos.onlineMax}`,
+  }));
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer por mês?',
+    resposta:
+      'Um pacote mensal presencial com 2 a 3 sessões por semana costuma variar de R$ 300 a R$ 1.300, dependendo da cidade, do bairro e da experiência do profissional. O acompanhamento online mensal é mais acessível, geralmente entre R$ 150 e R$ 500.',
+  },
+  {
+    pergunta: 'Por que o preço do personal varia tanto?',
+    resposta:
+      'O valor depende da experiência e especialização do profissional, da cidade e do bairro, do formato (presencial ou online), da frequência semanal e de a sessão ser individual ou em dupla. Locais de maior renda e maior custo de vida tendem a praticar preços mais altos.',
+  },
+  {
+    pergunta: 'Personal trainer online é mais barato?',
+    resposta:
+      'Em geral, sim. Como não há deslocamento e o profissional consegue atender mais alunos com método estruturado, o acompanhamento online costuma custar menos que o presencial, mantendo a personalização do treino.',
+  },
+  {
+    pergunta: 'Vale a pena pagar mais por um personal experiente?',
+    resposta:
+      'Costuma valer, especialmente para objetivos específicos como emagrecimento, reabilitação ou performance. Experiência se traduz em melhor avaliação, progressão mais segura e menos tentativa e erro — o que acelera resultados e reduz risco de lesão.',
+  },
+];
+
+const title = 'Quanto custa um personal trainer em 2026? Preços por formato e cidade';
+const description =
+  'Quanto custa um personal trainer no Brasil: faixas por aula avulsa, pacote mensal e acompanhamento online, o que influencia o preço e uma tabela comparativa por cidade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm: '2024-09-01', atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-narrow article-page">
+    <p class="eyebrow">Preços</p>
+    <h1>Quanto custa um personal trainer?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      No Brasil, uma aula avulsa de personal trainer costuma custar de
+      <strong>R$ 60 a R$ 200</strong>, pacotes mensais variam de
+      <strong>R$ 300 a R$ 1.300</strong> e o acompanhamento online fica, em média,
+      entre <strong>R$ 150 e R$ 500</strong> por mês. O valor exato depende da cidade,
+      do formato e da experiência do profissional.
+    </p>
+
+    <div class="prose">
+      <h2>Preço por formato</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Formato</th><th>Faixa típica</th><th>Quando faz sentido</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Aula avulsa (presencial)</td><td>R$ 60 – R$ 200</td><td>Experimentar ou treinos pontuais</td></tr>
+            <tr><td>Pacote mensal (2–3x/semana)</td><td>R$ 300 – R$ 1.300</td><td>Constância e presença física</td></tr>
+            <tr><td>Acompanhamento online</td><td>R$ 150 – R$ 500/mês</td><td>Flexibilidade e melhor custo-benefício</td></tr>
+            <tr><td>Sessão em dupla/grupo</td><td>Rateio por aluno</td><td>Dividir custo com amigos ou cônjuge</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>O que influencia o preço</h2>
+      <ul>
+        <li><strong>Experiência e especialização</strong> do profissional.</li>
+        <li><strong>Cidade e bairro</strong> — custo de vida e perfil de renda local.</li>
+        <li><strong>Formato</strong> — presencial em domicílio costuma ser o mais caro; online, o mais acessível.</li>
+        <li><strong>Frequência semanal</strong> e duração do contrato.</li>
+        <li><strong>Estrutura</strong> — academia própria, condomínio, parque ou estúdio.</li>
+      </ul>
+
+      <h2>Comparativo de preços por cidade</h2>
+      <p>
+        As faixas abaixo são estimativas de mercado reunidas pelo portal para as
+        cidades já publicadas. Clique para ver o guia completo de cada uma.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Cidade</th><th>Avulsa</th><th>Mensal</th><th>Online</th></tr>
+          </thead>
+          <tbody>
+            {
+              linhas.map((l) => (
+                <tr>
+                  <td><a href={`/personal-trainer/${l.slug}`}>{l.nome} ({l.uf})</a></td>
+                  <td>{l.avulsa}</td>
+                  <td>{l.mensal}</td>
+                  <td>{l.online}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small">
+        Valores médios de mercado, apenas para referência, sujeitos a variação.
+      </p>
+
+      <h2>Como economizar sem perder qualidade</h2>
+      <ul>
+        <li>Considere o <strong>online</strong> se a sua dificuldade é tempo e deslocamento.</li>
+        <li>Treine <strong>em dupla</strong> para ratear o valor da sessão.</li>
+        <li>Feche <strong>pacotes</strong> em vez de aulas avulsas, que saem mais caras por sessão.</li>
+        <li>Priorize <strong>adesão</strong>: o treino mais caro é o que você não faz.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} />
+  </article>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .article-page {
+    padding-block: var(--sp-7);
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

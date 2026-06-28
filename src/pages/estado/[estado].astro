@@ -1,0 +1,132 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CityCard from '../../components/CityCard.astro';
+import { estados } from '../../data/estados';
+import { cidadesPorEstado } from '../../data/cidades';
+import { formatNumber, formatDateLong } from '../../lib/slug';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return estados.map((estado) => ({
+    params: { estado: estado.slug },
+    props: { estado },
+  }));
+}
+
+const { estado } = Astro.props;
+const lista = cidadesPorEstado(estado.slug);
+const path = `/estado/${estado.slug}`;
+const popTotal = lista.reduce((s, c) => s + c.populacao, 0);
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Cidades', url: '/personal-trainer' },
+  { nome: estado.nome, url: path },
+];
+
+const title = `Personal Trainer no ${estado.nome} (${estado.uf}) — guia por cidade`;
+const description = `Guia de personal trainer no ${estado.nome}: cidades cobertas, como escolher, quanto custa e onde treinar. Dados locais reais e recomendações editoriais.`;
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema(
+    `Cidades do ${estado.nome} com guia de personal trainer`,
+    lista.map((c) => `Personal Trainer em ${c.nome}`),
+    new URL(path, site.dominio).href,
+  ),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Hub estadual · Região {estado.regiao}</p>
+      <h1>Personal Trainer no {estado.nome} ({estado.uf})</h1>
+      <p class="hero-intro">{estado.descricao}</p>
+      <div class="trust-strip">
+        <span>✔ {lista.length} cidade(s) publicada(s)</span>
+        <span>✔ {formatNumber(popTotal)} habitantes cobertos</span>
+        <span>✔ Capital: {estado.capital}</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <h2>Cidades do {estado.nome}</h2>
+      <p class="lead" style="max-width: 60ch">
+        Escolha a sua cidade para ver o guia completo — com panorama local, faixas de
+        preço e onde treinar.
+      </p>
+      <div class="grid grid-3" style="margin-top: var(--sp-5)">
+        {lista.map((c) => (<CityCard cidade={c} />))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <div class="grid grid-2">
+        <div>
+          <h2>Como usar este hub</h2>
+          <p class="prose">
+            Este é o ponto de partida para encontrar um personal trainer no {estado.nome}.
+            Cada cidade tem uma página própria com dados reais — população, parques,
+            clima, mobilidade e cultura esportiva — porque a melhor escolha depende do
+            contexto local. Use também os guias gerais para decidir com mais segurança.
+          </p>
+          <ul class="check-list" style="margin-top: var(--sp-4)">
+            <li><a href="/guias/como-escolher-personal-trainer">Como escolher um personal trainer</a></li>
+            <li><a href="/guias/quanto-custa-personal-trainer">Quanto custa um personal trainer</a></li>
+            <li><a href="/como-avaliamos">Como o portal avalia e recomenda</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="eyebrow">Atende todo o Brasil</p>
+          <h2 style="font-size: var(--step-1)">Acompanhamento online</h2>
+          <p class="prose">
+            Mora em uma cidade ainda não publicada ou prefere treinar com flexibilidade?
+            O portal destaca o trabalho online do <strong>Montinho Personal</strong>,
+            especialista em emagrecimento, disponível para todo o país.
+          </p>
+          <a class="btn btn-primary" href="/montinho-personal" style="margin-top: var(--sp-4)">
+            Conhecer a recomendação
+          </a>
+        </div>
+      </div>
+      <p class="muted small" style="margin-top: var(--sp-6)">
+        Hub atualizado em {formatDateLong(estado.atualizadoEm)}.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--sp-7) 0 var(--sp-6);
+    background: linear-gradient(180deg, var(--brand-50), #fff);
+  }
+  .hero-intro {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 64ch;
+  }
+  .trust-strip {
+    margin-top: var(--sp-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--brand-700);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

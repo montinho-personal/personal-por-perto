@@ -1,0 +1,499 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Toc from '../../components/Toc.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import CityCard from '../../components/CityCard.astro';
+import { cidades, relacionadas } from '../../data/cidades';
+import { cityFaqs } from '../../lib/cityFaqs';
+import { formatNumber, faixaBRL, formatDateLong, formatBRL } from '../../lib/slug';
+import {
+  breadcrumbSchema,
+  faqSchema,
+  articleSchema,
+  itemListSchema,
+  servicoCidadeSchema,
+} from '../../lib/schema';
+import { site } from '../../data/site';
+
+export function getStaticPaths() {
+  return cidades.map((cidade) => ({
+    params: { cidade: cidade.slug },
+    props: { cidade },
+  }));
+}
+
+const { cidade } = Astro.props;
+const n = cidade.nome;
+const path = `/personal-trainer/${cidade.slug}`;
+const url = new URL(path, site.dominio).href;
+
+const faqs = cityFaqs(cidade);
+const relac = relacionadas(cidade, 4);
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Cidades', url: '/personal-trainer' },
+  { nome: cidade.estado, url: `/estado/${cidade.estadoSlug}` },
+  { nome: n, url: path },
+];
+
+const toc = [
+  { id: 'panorama', label: `Panorama de ${n}` },
+  { id: 'como-escolher', label: 'Como escolher' },
+  { id: 'precos', label: 'Quanto custa' },
+  { id: 'onde-treinar', label: 'Onde treinar' },
+  { id: 'objetivos', label: 'Treino por objetivo' },
+  { id: 'beneficios', label: 'Benefícios' },
+  { id: 'avaliar', label: 'Como avaliar' },
+  { id: 'perguntas-frequentes', label: 'Perguntas frequentes' },
+];
+
+const tiposTreino = [
+  'Treino para emagrecimento',
+  'Treino para hipertrofia',
+  'Treino para iniciantes',
+  'Treino feminino',
+  'Treino para idosos',
+  'Treino ao ar livre',
+];
+
+const title = `Personal Trainer em ${n} (${cidade.uf}): guia completo e quanto custa`;
+const description = `Como escolher um personal trainer em ${n}, quanto custa (${faixaBRL(
+  cidade.precos.avulsaMin,
+  cidade.precos.avulsaMax,
+)} a aula), onde treinar e dicas por objetivo. Guia editorial independente, atualizado.`;
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({
+    titulo: title,
+    descricao: description,
+    url,
+    publicadoEm: '2024-09-01',
+    atualizadoEm: cidade.atualizadoEm,
+  }),
+  servicoCidadeSchema(cidade),
+  itemListSchema(`Tipos de treino com personal trainer em ${n}`, tiposTreino, url),
+  faqSchema(faqs),
+];
+
+const objetivoDesc: Record<string, string> = {
+  'Treino para emagrecimento':
+    'Combina exercícios de força e condicionamento com gasto calórico controlado e progressão gradual. É a especialidade do acompanhamento online mais procurado por quem precisa de constância.',
+  'Treino para hipertrofia':
+    'Foca em ganho de massa muscular com periodização de cargas, volume adequado e técnica correta para evoluir sem lesões.',
+  'Treino para iniciantes':
+    'Começa pela adaptação do corpo, aprendizado dos movimentos e construção de hábito, com cargas leves e muita atenção à execução.',
+  'Treino feminino':
+    'Respeita objetivos e fases específicas, do fortalecimento de glúteos e core ao condicionamento geral, sem mitos sobre "ficar masculinizada".',
+  'Treino para idosos':
+    'Prioriza força funcional, equilíbrio e prevenção de quedas, com avaliação cuidadosa e respeito às condições de saúde.',
+  'Treino ao ar livre':
+    `Aproveita os espaços públicos de ${n} para treino funcional, corrida e mobilidade, uma alternativa econômica e prazerosa ao ambiente fechado.`,
+};
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Guia da cidade · {cidade.estado}</p>
+      <h1>Personal Trainer em {n} <span>({cidade.uf})</span></h1>
+      <p class="hero-intro">
+        Contratar um personal trainer em {n} significa ter um treino desenhado para
+        o seu objetivo, com acompanhamento de quem entende o ritmo da cidade — das
+        academias e condomínios aos parques ao ar livre. Os valores variam de
+        <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong> por
+        aula avulsa, e o formato online costuma ser a opção mais acessível e flexível.
+      </p>
+
+      <div class="trust-strip">
+        <span>✔ Guia editorial independente</span>
+        <span>✔ Dados locais reais (IBGE e fontes oficiais)</span>
+        <span>✔ Atualizado em {formatDateLong(cidade.atualizadoEm)}</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats-band">
+    <div class="container stats-grid">
+      <div class="stat">
+        <div class="stat-num">{formatNumber(cidade.populacao)}</div>
+        <div class="stat-label">habitantes (Censo {cidade.populacaoAno})</div>
+      </div>
+      {
+        cidade.idhm && (
+          <div class="stat">
+            <div class="stat-num">{cidade.idhm.toLocaleString('pt-BR')}</div>
+            <div class="stat-label">IDHM ({cidade.idhmClasse})</div>
+          </div>
+        )
+      }
+      <div class="stat">
+        <div class="stat-num">{cidade.parques.length}+</div>
+        <div class="stat-label">parques para treino citados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">{formatBRL(cidade.precos.onlineMin)}</div>
+        <div class="stat-label">a partir de / mês (online)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORPO -->
+  <div class="container layout">
+    <article class="prose article">
+      <section id="panorama">
+        <h2>Panorama de {n} para quem treina</h2>
+        <p>{cidade.resumoEconomico}</p>
+        <p>
+          Para quem leva o treino a sério, vale entender o contexto local. {cidade.culturaEsportiva}
+        </p>
+        <div class="callout">
+          <strong>Clima e treino:</strong>
+          {cidade.clima} {cidade.climaTreino}
+        </div>
+        <p>
+          A mobilidade também pesa na decisão. {cidade.mobilidade} Na prática, isso
+          influencia a escolha entre treinar perto de casa, do trabalho ou contar com
+          um personal que vá até você.
+        </p>
+        {
+          cidade.bairrosNobres.length > 0 && (
+            <p>
+              A demanda por personal trainer se concentra em bairros como{' '}
+              <strong>{cidade.bairrosNobres.slice(0, 4).join(', ')}</strong>, mas a oferta
+              cresce em toda a cidade, incluindo regiões como {cidade.bairrosPopulares.slice(0, 3).join(', ')}.
+            </p>
+          )
+        }
+      </section>
+
+      <section id="como-escolher">
+        <h2>Como escolher um personal trainer em {n}</h2>
+        <p>
+          Escolher um bom profissional é menos sobre preço e mais sobre adequação ao
+          seu objetivo. Antes de fechar, considere estes pontos:
+        </p>
+        <ul class="check-list">
+          <li><strong>Registro no CREF ativo:</strong> é o que garante que o profissional pode prescrever treino legalmente.</li>
+          <li><strong>Experiência com o seu objetivo:</strong> emagrecimento, hipertrofia, reabilitação e performance pedem abordagens diferentes.</li>
+          <li><strong>Avaliação inicial:</strong> um bom personal avalia antes de prescrever — não entrega treino genérico.</li>
+          <li><strong>Logística:</strong> em {n}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
+          <li><strong>Método e acompanhamento:</strong> como ele mede evolução, reavalia e ajusta o plano ao longo do tempo.</li>
+        </ul>
+        <p>
+          A seção <a href="#avaliar">Como avaliar um profissional</a> traz um passo a passo
+          mais detalhado. E, se a sua prioridade é constância sem depender de deslocamento,
+          o <a href="#objetivos">treino online</a> merece atenção.
+        </p>
+      </section>
+
+      <section id="precos">
+        <h2>Quanto custa um personal trainer em {n}?</h2>
+        <p>
+          Em {n}, uma aula avulsa presencial costuma custar entre
+          <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong>.
+          Pacotes mensais saem mais em conta por sessão, e o acompanhamento online é,
+          em geral, a opção mais econômica. Veja as faixas médias de mercado:
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Formato</th>
+                <th>Faixa de preço</th>
+                <th>Melhor para</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Aula avulsa (presencial)</td>
+                <td>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</td>
+                <td>Experimentar ou treinos pontuais</td>
+              </tr>
+              <tr>
+                <td>Pacote mensal (2–3x/semana)</td>
+                <td>{faixaBRL(cidade.precos.mensalMin, cidade.precos.mensalMax)}</td>
+                <td>Quem quer presença e constância</td>
+              </tr>
+              <tr>
+                <td>Acompanhamento online (mês)</td>
+                <td>{faixaBRL(cidade.precos.onlineMin, cidade.precos.onlineMax)}</td>
+                <td>Rotina apertada e melhor custo-benefício</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted small">
+          Valores médios de mercado, apenas para referência. Podem variar conforme a
+          experiência do profissional, o bairro, a estrutura usada e a frequência.
+        </p>
+      </section>
+
+      <section id="onde-treinar">
+        <h2>Onde treinar em {n}: academia, condomínio e ar livre</h2>
+        <p>
+          A cidade oferece diferentes cenários de treino, e o personal certo sabe
+          aproveitar cada um deles.
+        </p>
+        <h3>Treino em academia</h3>
+        <p>{cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`}</p>
+        <h3>Treino em condomínio</h3>
+        <p>
+          Muitos prédios em {n} já contam com espaço fitness próprio. O personal que
+          atende em condomínio elimina o deslocamento e adapta o treino à estrutura
+          disponível — uma solução prática para quem tem agenda cheia.
+        </p>
+        <h3>Treino ao ar livre</h3>
+        <p>Entre os espaços públicos mais usados para atividade física em {n} estão:</p>
+        <ul>
+          {cidade.parques.map((p) => (<li><strong>{p.nome}:</strong> {p.descricao}</li>))}
+        </ul>
+        {cidade.ciclovias && <p>{cidade.ciclovias}</p>}
+      </section>
+
+      <CtaMontinho cidade={n} variante="inline" />
+
+      <section id="objetivos">
+        <h2>Treino por objetivo em {n}</h2>
+        <p>
+          Não existe treino único: o melhor programa é o que conversa com a sua meta,
+          o seu nível e a sua rotina. Veja as abordagens mais procuradas.
+        </p>
+        <div class="obj-grid">
+          {
+            tiposTreino.map((t) => (
+              <div class="obj-card" id={t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+                <h3>{t.replace('Treino ', '').replace('para ', '')}</h3>
+                <p>{objetivoDesc[t]}</p>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="beneficios">
+        <h2>Benefícios de contratar um personal trainer</h2>
+        <p>
+          Um personal trainer não é luxo: é o que separa o "treino que rende" do
+          "treino que machuca ou estagna". Os principais ganhos são:
+        </p>
+        <ul class="check-list">
+          <li><strong>Segurança na execução:</strong> técnica correta reduz o risco de lesão.</li>
+          <li><strong>Constância:</strong> ter horário marcado e acompanhamento aumenta a adesão.</li>
+          <li><strong>Personalização real:</strong> o treino respeita o seu corpo, histórico e objetivo.</li>
+          <li><strong>Progressão inteligente:</strong> cargas e volume evoluem na hora certa.</li>
+          <li><strong>Resultados mais rápidos:</strong> menos tentativa e erro, mais método.</li>
+        </ul>
+      </section>
+
+      <section id="avaliar">
+        <h2>Como avaliar um profissional</h2>
+        <p>
+          Na hora de decidir, um checklist rápido ajuda a separar quem é qualificado
+          de quem só promete:
+        </p>
+        <ol>
+          <li>Confirme o <strong>registro no CREF</strong> (pode ser consultado online).</li>
+          <li>Pergunte sobre <strong>formação e especializações</strong> ligadas ao seu objetivo.</li>
+          <li>Veja se há <strong>avaliação física e anamnese</strong> antes do primeiro treino.</li>
+          <li>Entenda como funciona o <strong>acompanhamento</strong> (frequência, reavaliações, suporte).</li>
+          <li>Busque <strong>provas sociais</strong>: depoimentos, antes e depois reais, indicações.</li>
+          <li>Avalie a <strong>comunicação</strong>: clareza e empatia contam muito na adesão.</li>
+        </ol>
+        <p>
+          Esse é também o método que o portal usa em suas recomendações — explicado
+          em detalhe na página <a href="/como-avaliamos">Como avaliamos</a>.
+        </p>
+      </section>
+
+      <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer em ${n}`} />
+
+      <!-- Fontes / EEAT -->
+      <section class="sources" aria-labelledby="fontes-h">
+        <h2 id="fontes-h">Fontes e transparência</h2>
+        <p class="muted">
+          Os dados locais desta página foram reunidos a partir de fontes públicas e
+          oficiais. As faixas de preço são estimativas de mercado, apenas para referência.
+        </p>
+        <ul class="sources-list">
+          {cidade.fontes.map((f) => (<li><a href={f.url} target="_blank" rel="noopener nofollow">{f.nome}</a></li>))}
+        </ul>
+        <p class="muted small">Última revisão editorial: {formatDateLong(cidade.atualizadoEm)}.</p>
+      </section>
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <Toc items={toc} />
+
+      <div class="card side-cta">
+        <p class="eyebrow">Acompanhamento online</p>
+        <h2>Treina por conta e quer resultado?</h2>
+        <p>
+          Para quem está em {n} e prefere flexibilidade, o portal destaca o trabalho
+          online do <strong>Montinho Personal</strong>, especialista em emagrecimento.
+        </p>
+        <a class="btn btn-primary" href="/montinho-personal">Entenda a recomendação</a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- RECOMENDAÇÃO PRINCIPAL -->
+  <section class="section">
+    <div class="container">
+      <CtaMontinho cidade={n} variante="destaque" />
+    </div>
+  </section>
+
+  <!-- RELACIONADAS -->
+  {
+    relac.length > 0 && (
+      <section class="section-sm tint">
+        <div class="container">
+          <h2>Personal trainer em cidades próximas</h2>
+          <p class="lead">Explore o guia de outras cidades da região e compare.</p>
+          <div class="grid grid-4" style="margin-top: var(--sp-5)">
+            {relac.map((c) => (<CityCard cidade={c} />))}
+          </div>
+          <p style="margin-top: var(--sp-5)">
+            <a class="btn btn-ghost" href={`/estado/${cidade.estadoSlug}`}>
+              Ver todas as cidades de {cidade.estado} →
+            </a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+</Base>
+
+<style>
+  .hero {
+    padding: var(--sp-7) 0 var(--sp-6);
+    background: linear-gradient(180deg, var(--brand-50), #fff);
+  }
+  .hero h1 span {
+    color: var(--brand);
+    font-weight: 700;
+  }
+  .hero-intro {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .trust-strip {
+    margin-top: var(--sp-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--brand-700);
+  }
+
+  .stats-band {
+    border-block: 1px solid var(--line);
+    background: #fff;
+    padding-block: var(--sp-5);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+  }
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-5);
+    }
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article {
+    min-width: 0;
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+
+  .obj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--sp-4);
+    margin-top: var(--sp-4);
+  }
+  .obj-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--sp-4);
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+  .obj-card h3 {
+    font-size: var(--step-0);
+    color: var(--brand-700);
+    margin-bottom: 0.35rem;
+    text-transform: capitalize;
+  }
+  .obj-card p {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .sources {
+    margin-top: var(--sp-7);
+    border-top: 1px solid var(--line);
+    padding-top: var(--sp-5);
+  }
+  .sources h2 {
+    font-size: var(--step-1);
+  }
+  .sources-list {
+    margin-top: var(--sp-3);
+    font-size: var(--step--1);
+  }
+
+  .sidebar {
+    display: grid;
+    gap: var(--sp-5);
+    align-content: start;
+  }
+  .side-cta h2 {
+    font-size: var(--step-1);
+    margin: 0.5rem 0;
+  }
+  .side-cta p {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-4);
+  }
+  .side-cta .btn {
+    width: 100%;
+  }
+  @media (max-width: 979px) {
+    .sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

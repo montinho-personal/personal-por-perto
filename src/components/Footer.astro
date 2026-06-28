@@ -1,0 +1,134 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+import { estados } from '../data/estados';
+import { cidades } from '../data/cidades';
+import { formatMonthYear } from '../lib/slug';
+
+const anoAtual = 2026;
+const principais = cidades.slice(0, 7);
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo light={true} />
+      <p>{site.descricao}</p>
+      <p class="footer-note">
+        Guia editorial independente. As recomendações são baseadas em critérios
+        próprios e descritos em <a href="/como-avaliamos">Como avaliamos</a>.
+      </p>
+    </div>
+
+    <nav class="footer-col" aria-label="Cidades">
+      <h2>Cidades</h2>
+      <ul>
+        {
+          principais.map((c) => (
+            <li>
+              <a href={`/personal-trainer/${c.slug}`}>Personal Trainer em {c.nome}</a>
+            </li>
+          ))
+        }
+        <li><a href="/personal-trainer"><strong>Ver todas as cidades →</strong></a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Estados e guias">
+      <h2>Estados</h2>
+      <ul>
+        {
+          estados.map((e) => (
+            <li>
+              <a href={`/estado/${e.slug}`}>Personal Trainer no {e.nome}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <h2 class="mt">Guias</h2>
+      <ul>
+        <li><a href="/guias/como-escolher-personal-trainer">Como escolher</a></li>
+        <li><a href="/guias/quanto-custa-personal-trainer">Quanto custa</a></li>
+        <li><a href="/guias">Todos os guias</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Portal">
+      <h2>O portal</h2>
+      <ul>
+        <li><a href="/sobre">Sobre o Personal por Perto</a></li>
+        <li><a href="/como-avaliamos">Como avaliamos</a></li>
+        <li><a href="/montinho-personal">Montinho Personal</a></li>
+        <li><a href={`mailto:${site.email}`}>Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {anoAtual} {site.nome}. Conteúdo informativo e editorial.</p>
+    <p>Atualizado em {formatMonthYear('2026-06-28')}.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--brand-800);
+    color: #d9e8e3;
+    padding-top: var(--sp-8);
+    margin-top: var(--sp-9);
+    font-size: var(--step--1);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: var(--sp-6);
+  }
+  @media (max-width: 820px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .footer-brand p {
+    margin-top: var(--sp-3);
+    line-height: 1.6;
+    max-width: 38ch;
+  }
+  .footer-note {
+    color: #a9c6bd;
+  }
+  .footer-col h2 {
+    font-size: var(--step-0);
+    color: #fff;
+    margin-bottom: var(--sp-3);
+  }
+  .footer-col h2.mt {
+    margin-top: var(--sp-5);
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .site-footer a {
+    color: #cfe4dd;
+  }
+  .site-footer a:hover {
+    color: #fff;
+  }
+  .footer-bottom {
+    margin-top: var(--sp-7);
+    padding-block: var(--sp-4);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: #9fbfb6;
+  }
+</style>

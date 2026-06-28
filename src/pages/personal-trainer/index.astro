@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CityCard from '../../components/CityCard.astro';
+import { cidades } from '../../data/cidades';
+import { estados } from '../../data/estados';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+
+const path = '/personal-trainer';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Cidades', url: path },
+];
+
+// Agrupa por estado
+const porEstado = estados.map((e) => ({
+  estado: e,
+  lista: cidades
+    .filter((c) => c.estadoSlug === e.slug)
+    .sort((a, b) => b.populacao - a.populacao),
+}));
+
+const title = 'Personal Trainer por cidade no Brasil — guias locais';
+const description =
+  'Encontre guias de personal trainer por cidade: quanto custa, como escolher, onde treinar e dicas locais. Cobertura crescente das principais cidades brasileiras.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema(
+    'Cidades com guia de personal trainer',
+    cidades.map((c) => `Personal Trainer em ${c.nome}`),
+    new URL(path, site.dominio).href,
+  ),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="section-sm tint">
+    <div class="container">
+      <p class="eyebrow">Diretório de cidades</p>
+      <h1>Personal Trainer por cidade</h1>
+      <p class="lead" style="max-width: 62ch">
+        Cada cidade tem seu próprio guia, com dados locais reais, faixas de preço,
+        onde treinar e como escolher o profissional certo. O portal cresce
+        continuamente — abaixo estão as cidades já publicadas.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      {
+        porEstado.map(({ estado, lista }) => (
+          <div class="estado-bloco">
+            <div class="estado-head">
+              <h2>
+                <a href={`/estado/${estado.slug}`}>{estado.nome}</a>
+                <span class="pill pill-neutral">{estado.uf}</span>
+              </h2>
+              <a class="estado-link" href={`/estado/${estado.slug}`}>
+                Ver hub do estado →
+              </a>
+            </div>
+            <div class="grid grid-3">
+              {lista.map((c) => (<CityCard cidade={c} />))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-sm tint">
+    <div class="container text-center">
+      <h2>Não encontrou a sua cidade?</h2>
+      <p class="lead">
+        O portal adiciona novas cidades constantemente. Enquanto isso, o
+        acompanhamento online atende todo o Brasil.
+      </p>
+      <a class="btn btn-primary btn-lg" href="/montinho-personal" style="margin-top: var(--sp-4)">
+        Ver acompanhamento online
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .estado-bloco + .estado-bloco {
+    margin-top: var(--sp-8);
+  }
+  .estado-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--sp-5);
+    padding-bottom: var(--sp-3);
+    border-bottom: 2px solid var(--brand-50);
+  }
+  .estado-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--step-2);
+  }
+  .estado-link {
+    font-weight: 700;
+    font-size: var(--step--1);
+  }
+</style>

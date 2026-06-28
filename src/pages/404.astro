@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { cidades } from '../data/cidades';
+const destaque = cidades.slice(0, 5);
+---
+
+<Base
+  title="Página não encontrada (404) | Personal por Perto"
+  description="A página que você procura não foi encontrada. Explore os guias de personal trainer por cidade."
+  path="/404"
+  noindex={true}
+>
+  <section class="section text-center">
+    <div class="container-narrow">
+      <p class="eyebrow">Erro 404</p>
+      <h1>Esta página saiu para treinar</h1>
+      <p class="lead">
+        Não encontramos o que você procurava. Que tal começar por um destes caminhos?
+      </p>
+      <div class="actions">
+        <a class="btn btn-brand" href="/">Ir para a página inicial</a>
+        <a class="btn btn-ghost" href="/personal-trainer">Ver todas as cidades</a>
+      </div>
+      <div class="quick">
+        <p class="muted">Cidades populares:</p>
+        <ul>
+          {destaque.map((c) => (<li><a href={`/personal-trainer/${c.slug}`}>{c.nome}</a></li>))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .actions {
+    margin-top: var(--sp-5);
+    display: flex;
+    gap: var(--sp-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .quick {
+    margin-top: var(--sp-6);
+  }
+  .quick ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: var(--sp-2);
+  }
+  .quick a {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    background: var(--brand-50);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: var(--step--1);
+  }
+</style>

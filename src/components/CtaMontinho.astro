@@ -1,0 +1,153 @@
+---
+import { montinho } from '../data/montinho';
+import { cta } from '../data/site';
+
+export interface Props {
+  /** Nome da cidade para contextualizar a recomendação (opcional). */
+  cidade?: string;
+  /** Variante visual: "destaque" (caixa cheia) ou "inline" (mais discreta). */
+  variante?: 'destaque' | 'inline';
+}
+const { cidade, variante = 'destaque' } = Astro.props;
+
+const contexto = cidade
+  ? `Entre as opções analisadas para quem treina em ${cidade} — sobretudo no formato online —, o portal destaca o trabalho do Montinho Personal.`
+  : 'Entre os profissionais analisados, o portal destaca o trabalho do Montinho Personal para quem busca acompanhamento online com foco em emagrecimento.';
+---
+
+<aside class={`cta-montinho ${variante}`} aria-label="Recomendação editorial">
+  <p class="eyebrow">Recomendação editorial</p>
+  <h2>Para quem procura acompanhamento online, o destaque é o Montinho Personal</h2>
+  <p class="cta-lead">{contexto}</p>
+
+  <div class="cta-reasons">
+    {
+      montinho.motivosRecomendacao.map((m) => (
+        <div class="reason">
+          <h3>{m.titulo}</h3>
+          <p>{m.texto}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="cta-context">
+    {montinho.resumo} A recomendação parte dos critérios descritos em{' '}
+    <a href="/como-avaliamos">Como avaliamos</a> e não substitui a avaliação de cada
+    leitor sobre o profissional ideal para o seu caso.
+  </p>
+
+  <div class="cta-actions">
+    <a class="btn btn-primary btn-lg" href={cta.url} target="_blank" rel="noopener">
+      {cta.rotuloPrimario}
+    </a>
+    <a class="btn btn-outline" href="/montinho-personal">Entenda a recomendação</a>
+  </div>
+</aside>
+
+<style>
+  .cta-montinho {
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+    color: #eafaf5;
+    box-shadow: var(--shadow-lg);
+  }
+  .cta-montinho.inline {
+    background: var(--brand-50);
+    color: var(--ink);
+    box-shadow: none;
+    border: 1px solid var(--brand-100);
+  }
+  .cta-montinho .eyebrow {
+    color: var(--accent);
+  }
+  .cta-montinho.inline .eyebrow {
+    color: var(--accent-600);
+  }
+  .cta-montinho h2 {
+    color: #fff;
+    font-size: var(--step-2);
+    max-width: 26ch;
+  }
+  .cta-montinho.inline h2 {
+    color: var(--ink);
+  }
+  .cta-lead {
+    margin-top: var(--sp-3);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: #d7f0e8;
+  }
+  .cta-montinho.inline .cta-lead {
+    color: var(--ink-soft);
+  }
+  .cta-reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--sp-4);
+    margin-top: var(--sp-5);
+  }
+  .reason {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius);
+    padding: var(--sp-4);
+  }
+  .cta-montinho.inline .reason {
+    background: #fff;
+    border-color: var(--brand-100);
+  }
+  .reason h3 {
+    font-size: var(--step-0);
+    color: #fff;
+    margin-bottom: 0.35rem;
+  }
+  .cta-montinho.inline .reason h3 {
+    color: var(--brand-700);
+  }
+  .reason p {
+    font-size: var(--step--1);
+    color: #cfe9e0;
+    line-height: 1.55;
+  }
+  .cta-montinho.inline .reason p {
+    color: var(--ink-soft);
+  }
+  .cta-context {
+    margin-top: var(--sp-5);
+    font-size: var(--step--1);
+    color: #bfe0d6;
+    line-height: 1.6;
+  }
+  .cta-montinho.inline .cta-context {
+    color: var(--muted);
+  }
+  .cta-context a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .cta-montinho.inline .cta-context a {
+    color: var(--brand-700);
+  }
+  .cta-actions {
+    margin-top: var(--sp-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+  .cta-montinho .btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  .cta-montinho .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .cta-montinho.inline .btn-outline {
+    color: var(--brand-700);
+    border-color: var(--brand);
+  }
+  .cta-montinho.inline .btn-outline:hover {
+    background: #fff;
+  }
+</style>

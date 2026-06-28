@@ -1,0 +1,158 @@
+---
+import Logo from './Logo.astro';
+import { navPrincipal, cta } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (url: string) =>
+  url === '/' ? path === '/' : path.startsWith(url);
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="Personal por Perto — página inicial">
+      <Logo />
+    </a>
+
+    <details class="nav">
+      <summary class="nav-toggle" aria-label="Abrir menu">
+        <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="nav-toggle-label">Menu</span>
+      </summary>
+      <nav class="nav-menu" aria-label="Navegação principal">
+        <ul>
+          {
+            navPrincipal.map((item) => (
+              <li>
+                <a href={item.url} aria-current={isActive(item.url) ? 'page' : undefined}>
+                  {item.rotulo}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="btn btn-primary nav-cta" href={cta.url} target="_blank" rel="noopener">
+          Acompanhamento online
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-h);
+    gap: 1rem;
+  }
+  .brand {
+    text-decoration: none;
+    flex: 0 0 auto;
+  }
+  .brand:hover {
+    text-decoration: none;
+  }
+
+  /* details como container do menu */
+  .nav {
+    position: relative;
+  }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    list-style: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 650;
+    color: var(--ink);
+    user-select: none;
+  }
+  .nav-toggle::-webkit-details-marker {
+    display: none;
+  }
+  .bars {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 22px;
+  }
+  .bars span {
+    height: 2.5px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: var(--sp-4);
+    width: min(86vw, 280px);
+    display: grid;
+    gap: var(--sp-3);
+  }
+  .nav-menu ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.15rem;
+  }
+  .nav-menu a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .nav-menu a:hover,
+  .nav-menu a[aria-current='page'] {
+    background: var(--brand-50);
+    color: var(--brand-700);
+    text-decoration: none;
+  }
+  .nav-cta {
+    width: 100%;
+  }
+
+  /* Desktop: menu sempre visível, sem toggle */
+  @media (min-width: 880px) {
+    .nav-toggle {
+      display: none;
+    }
+    .nav-menu {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      box-shadow: none;
+      border: 0;
+      padding: 0;
+      width: auto;
+    }
+    .nav-menu ul {
+      display: flex;
+      align-items: center;
+      gap: 0.1rem;
+    }
+    .nav-cta {
+      width: auto;
+      margin-left: 0.5rem;
+      padding: 0.6rem 1.1rem;
+    }
+  }
+</style>

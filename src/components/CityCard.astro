@@ -1,0 +1,58 @@
+---
+import type { Cidade } from '../lib/types';
+import { formatNumber } from '../lib/slug';
+export interface Props {
+  cidade: Cidade;
+}
+const { cidade } = Astro.props;
+---
+
+<a class="city-card card card-hover" href={`/personal-trainer/${cidade.slug}`}>
+  <div class="city-card-top">
+    <span class="pill pill-neutral">{cidade.uf}</span>
+    <span class="city-pop">{formatNumber(cidade.populacao)} hab.</span>
+  </div>
+  <h3>Personal Trainer em {cidade.nome}</h3>
+  <p class="city-card-desc">
+    {cidade.destaquesFitness[0]}
+  </p>
+  <span class="city-card-link">Ver guia da cidade →</span>
+</a>
+
+<style>
+  .city-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+    height: 100%;
+  }
+  .city-card:hover {
+    text-decoration: none;
+  }
+  .city-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .city-pop {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .city-card h3 {
+    font-size: var(--step-1);
+    color: var(--ink);
+  }
+  .city-card-desc {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+    flex: 1;
+  }
+  .city-card-link {
+    font-weight: 700;
+    color: var(--brand-600);
+    font-size: var(--step--1);
+  }
+</style>

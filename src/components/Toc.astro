@@ -1,0 +1,57 @@
+---
+export interface TocItem {
+  id: string;
+  label: string;
+}
+export interface Props {
+  items: TocItem[];
+}
+const { items } = Astro.props;
+---
+
+<nav class="toc card" aria-labelledby="toc-title">
+  <p class="toc-title" id="toc-title">Neste guia</p>
+  <ol>
+    {
+      items.map((item) => (
+        <li>
+          <a href={`#${item.id}`}>{item.label}</a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style>
+  .toc {
+    padding: var(--sp-4) var(--sp-5);
+  }
+  .toc-title {
+    font-weight: 750;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--brand);
+    margin-bottom: var(--sp-3);
+  }
+  .toc ol {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: var(--step--1);
+  }
+  .toc a {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .toc a:hover {
+    color: var(--brand-700);
+  }
+  @media (min-width: 980px) {
+    .toc {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
+  }
+</style>

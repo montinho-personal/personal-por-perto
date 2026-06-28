@@ -1,0 +1,373 @@
+---
+import Base from '../layouts/Base.astro';
+import CityCard from '../components/CityCard.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Faq from '../components/Faq.astro';
+import { cidades } from '../data/cidades';
+import { estados } from '../data/estados';
+import { site } from '../data/site';
+import { formatNumber } from '../lib/slug';
+import { faqSchema, itemListSchema } from '../lib/schema';
+
+const destaque = cidades.slice(0, 6);
+const popCoberta = cidades.reduce((s, c) => s + c.populacao, 0);
+
+const faqs = [
+  {
+    pergunta: 'O que é o Personal por Perto?',
+    resposta:
+      'O Personal por Perto é um guia editorial independente que ajuda você a encontrar e escolher um personal trainer na sua cidade. Reúne dados locais reais, faixas de preço, onde treinar e critérios de avaliação — sem ser uma plataforma de venda.',
+  },
+  {
+    pergunta: 'Como o portal escolhe os profissionais que recomenda?',
+    resposta:
+      'As recomendações seguem critérios próprios e transparentes — formação, experiência com o objetivo do aluno, método de acompanhamento e provas de resultado — descritos na página Como avaliamos. Quando há um destaque editorial, o portal explica o porquê.',
+  },
+  {
+    pergunta: 'O conteúdo serve para quem treina online?',
+    resposta:
+      'Sim. Além dos guias por cidade, o portal cobre o formato online, que atende todo o Brasil e costuma ser mais flexível e acessível — ideal para quem tem rotina apertada ou mora em cidades ainda não publicadas.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer no Brasil?',
+    resposta:
+      'Depende da cidade e do formato. A aula avulsa presencial costuma variar de R$ 60 a R$ 200, pacotes mensais de R$ 300 a R$ 1.300 e o acompanhamento online de R$ 150 a R$ 500 por mês. Cada guia de cidade traz as faixas locais detalhadas.',
+  },
+];
+
+const schema = [
+  itemListSchema(
+    'Cidades com guia de personal trainer',
+    cidades.map((c) => `Personal Trainer em ${c.nome}`),
+    site.dominio,
+  ),
+  faqSchema(faqs),
+];
+---
+
+<Base
+  title="Personal por Perto — o guia de Personal Trainers por cidade no Brasil"
+  description={site.descricao}
+  path="/"
+  schema={schema}
+>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Guia editorial independente</p>
+        <h1>Encontre o personal trainer certo na sua cidade</h1>
+        <p class="hero-lead">
+          Dados locais reais, faixas de preço transparentes e critérios claros para
+          você escolher com segurança — do treino na academia ao acompanhamento
+          online para todo o Brasil.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-brand btn-lg" href="/personal-trainer">Ver cidades</a>
+          <a class="btn btn-ghost btn-lg" href="/guias/como-escolher-personal-trainer">
+            Como escolher
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>{cidades.length}</strong> cidades</div>
+          <div><strong>{estados.length}</strong> estados</div>
+          <div><strong>{formatNumber(popCoberta)}</strong> habitantes cobertos</div>
+        </div>
+      </div>
+      <div class="hero-panel" aria-hidden="false">
+        <p class="panel-title">Cidades em destaque</p>
+        <ul class="panel-list">
+          {
+            destaque.slice(0, 5).map((c) => (
+              <li>
+                <a href={`/personal-trainer/${c.slug}`}>
+                  <span>Personal Trainer em {c.nome}</span>
+                  <span class="panel-uf">{c.uf}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a class="panel-all" href="/personal-trainer">Ver todas →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALOR -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center" style="max-width: 64ch; margin-inline: auto;">
+        <p class="eyebrow">Por que usar o portal</p>
+        <h2>Um guia, não um classificado</h2>
+        <p class="lead">
+          Em vez de listas pagas, o Personal por Perto entrega contexto: o que
+          considerar, quanto pagar e como treinar melhor em cada cidade.
+        </p>
+      </div>
+      <div class="grid grid-3" style="margin-top: var(--sp-6)">
+        <div class="card feature">
+          <div class="feat-ico">📍</div>
+          <h3>Conteúdo local de verdade</h3>
+          <p>Cada cidade tem panorama próprio — parques, clima, mobilidade e cultura esportiva — porque a melhor escolha depende do contexto.</p>
+        </div>
+        <div class="card feature">
+          <div class="feat-ico">💸</div>
+          <h3>Preços transparentes</h3>
+          <p>Faixas de preço por formato (avulsa, mensal e online) para você negociar e decidir sem surpresas.</p>
+        </div>
+        <div class="card feature">
+          <div class="feat-ico">✅</div>
+          <h3>Critérios claros</h3>
+          <p>Mostramos como avaliar formação, método e resultados — e explicamos toda recomendação editorial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section-sm tint">
+    <div class="container">
+      <h2 class="text-center">Como encontrar o seu personal em 3 passos</h2>
+      <div class="grid grid-3" style="margin-top: var(--sp-6)">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Escolha a sua cidade</h3>
+          <p>Abra o guia local e veja preços, onde treinar e o panorama da cidade.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Compare formatos</h3>
+          <p>Academia, condomínio, ar livre ou online — entenda o que combina com a sua rotina.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Avalie com critério</h3>
+          <p>Use o nosso checklist para escolher um profissional qualificado com segurança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIDADES -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Diretório</p>
+          <h2>Guias por cidade</h2>
+        </div>
+        <a class="btn btn-ghost" href="/personal-trainer">Ver todas as cidades →</a>
+      </div>
+      <div class="grid grid-3" style="margin-top: var(--sp-5)">
+        {destaque.map((c) => (<CityCard cidade={c} />))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOMENDAÇÃO -->
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <!-- EEAT -->
+  <section class="section-sm tint">
+    <div class="container eeat">
+      <div>
+        <p class="eyebrow">Em quem você pode confiar</p>
+        <h2>Por que o Personal por Perto é confiável</h2>
+        <p class="prose">
+          Somos um guia editorial independente. Não vendemos pacotes de treino e não
+          publicamos listas pagas disfarçadas de recomendação. Nosso trabalho é reunir
+          informação local de qualidade e critérios honestos de avaliação.
+        </p>
+        <ul class="check-list" style="margin-top: var(--sp-4)">
+          <li>Dados locais reais, com fontes públicas e oficiais citadas em cada cidade.</li>
+          <li>Metodologia de avaliação aberta na página <a href="/como-avaliamos">Como avaliamos</a>.</li>
+          <li>Recomendações sempre justificadas — você entende o porquê.</li>
+          <li>Conteúdo revisado e datado, atualizado periodicamente.</li>
+        </ul>
+      </div>
+      <div class="card guides-card">
+        <h3>Guias essenciais</h3>
+        <ul class="guides-list">
+          <li><a href="/guias/como-escolher-personal-trainer">Como escolher um personal trainer</a></li>
+          <li><a href="/guias/quanto-custa-personal-trainer">Quanto custa um personal trainer</a></li>
+          <li><a href="/sobre">Sobre o portal</a></li>
+          <li><a href="/como-avaliamos">Como avaliamos</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container-narrow">
+      <Faq faqs={faqs} titulo="Perguntas frequentes" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    background: radial-gradient(120% 120% at 100% 0%, var(--brand-50), #fff 60%);
+    padding: var(--sp-8) 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.85fr;
+    gap: var(--sp-7);
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+  }
+  .hero-copy h1 {
+    margin-top: var(--sp-1);
+    max-width: 16ch;
+  }
+  .hero-lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .hero-actions {
+    margin-top: var(--sp-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+  .hero-stats {
+    margin-top: var(--sp-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-5);
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .hero-stats strong {
+    display: block;
+    font-size: var(--step-2);
+    color: var(--brand-700);
+    line-height: 1;
+  }
+  .hero-panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--sp-5);
+  }
+  .panel-title {
+    font-weight: 750;
+    color: var(--brand-700);
+    margin-bottom: var(--sp-3);
+  }
+  .panel-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.25rem;
+  }
+  .panel-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .panel-list a:hover {
+    background: var(--brand-50);
+    color: var(--brand-700);
+    text-decoration: none;
+  }
+  .panel-uf {
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .panel-all {
+    display: inline-block;
+    margin-top: var(--sp-3);
+    font-weight: 700;
+  }
+
+  .feature .feat-ico {
+    font-size: 1.8rem;
+    margin-bottom: var(--sp-2);
+  }
+  .feature h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.4rem;
+  }
+  .feature p {
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+    line-height: 1.6;
+  }
+
+  .step {
+    text-align: left;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 800;
+    font-size: var(--step-1);
+    margin-bottom: var(--sp-3);
+  }
+  .step h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.35rem;
+  }
+  .step p {
+    color: var(--ink-soft);
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .eeat {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .eeat {
+      grid-template-columns: 1fr;
+    }
+  }
+  .guides-card h3 {
+    font-size: var(--step-1);
+    margin-bottom: var(--sp-3);
+  }
+  .guides-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .guides-list a {
+    font-weight: 600;
+  }
+</style>
