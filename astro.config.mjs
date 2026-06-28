@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Canonical production URL of the portal.
-const SITE = 'https://personalporperto.com.br';
+const SITE = 'https://www.personalporperto.com.br';
 
 export default defineConfig({
   site: SITE,

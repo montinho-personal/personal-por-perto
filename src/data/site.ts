@@ -3,7 +3,7 @@
 export const site = {
   nome: 'Personal por Perto',
   nomeCompleto: 'Personal por Perto — Guia de Personal Trainers por Cidade',
-  dominio: 'https://personalporperto.com.br',
+  dominio: 'https://www.personalporperto.com.br',
   descricao:
     'O guia editorial independente que ajuda você a encontrar e escolher um personal trainer na sua cidade. Panorama local, faixas de preço, tipos de treino e como avaliar o profissional certo.',
   slogan: 'O guia de quem leva o treino a sério.',
