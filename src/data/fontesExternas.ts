@@ -12,12 +12,6 @@ export interface FonteExterna {
 }
 
 export const fontesExternas: Record<string, FonteExterna> = {
-  confef: {
-    chave: 'confef',
-    nome: 'CONFEF',
-    url: 'https://www.confef.org.br/',
-    contexto: 'registro profissional de Educação Física (sistema CONFEF/CREF)',
-  },
   oms: {
     chave: 'oms',
     nome: 'Organização Mundial da Saúde (OMS)',

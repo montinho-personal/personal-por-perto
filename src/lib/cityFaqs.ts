@@ -28,7 +28,7 @@ export function cityFaqs(cidade: Cidade): FAQ[] {
     {
       pergunta: `Como encontrar um bom personal trainer em ${n}?`,
       resposta:
-        `Para encontrar um bom personal trainer em ${n}, comece verificando o registro ativo no CREF, peça para conhecer a formação e a experiência com o seu objetivo e avalie se o profissional faz uma avaliação inicial antes de prescrever o treino. Vale considerar a localização — perto de casa, do trabalho ou de parques como o ${primeiroParque?.nome ?? 'parque mais próximo'} — e, se a rotina for apertada, o formato online.`,
+        `Para encontrar um bom personal trainer em ${n}, comece verificando se o profissional tem registro profissional ativo, peça para conhecer a formação e a experiência com o seu objetivo e avalie se ele faz uma avaliação inicial antes de prescrever o treino. Vale considerar a localização — perto de casa, do trabalho ou de parques como o ${primeiroParque?.nome ?? 'parque mais próximo'} — e, se a rotina for apertada, o formato online.`,
     },
     {
       pergunta: `Vale a pena ter personal trainer em ${n}?`,

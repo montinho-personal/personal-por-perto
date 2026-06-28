@@ -12,7 +12,6 @@ Linkagem **contextual** (dentro do texto, distribuída — nunca só no fim), co
 | Cada página de cidade (×7) | ~10 no corpo do artigo: pilar "como escolher" (×2 âncoras diferentes), pilar "quanto custa", recomendação online (Montinho), cidade vizinha 1, cidade vizinha 2, "como avaliamos", âncoras internas (#avaliar, #objetivos) |
 | Guia "Como escolher" | quanto custa, Montinho, cidades, guias locais |
 | Guia "Quanto custa" | como escolher (×2), Montinho, cidades, + tabela com 7 cidades |
-| Como avaliamos | reforço de CONFEF |
 
 Somando aos elementos estruturais já existentes (breadcrumbs, cards de cidades
 vizinhas, sidebar, rodapé, related), cada página de cidade passou a ter **dezenas de
@@ -33,7 +32,6 @@ Contagem no site gerado:
 
 | Fonte | Ocorrências | Contexto |
 |---|---|---|
-| **CONFEF** (confef.org.br) | 17 | "registro no CREF" — em cada cidade, guias e metodologia |
 | **ACSM** | 8 | avaliação inicial / diretrizes de prescrição |
 | **NSCA** | 7 | hipertrofia / treino de força |
 | **OMS** (diretrizes de atividade física) | 7 | benefícios para a saúde |

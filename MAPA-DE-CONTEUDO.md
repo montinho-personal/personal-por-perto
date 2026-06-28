@@ -68,7 +68,6 @@ Apenas fontes oficiais e reconhecidas, inseridas onde aumentam credibilidade:
 
 | Contexto | Fonte externa |
 |---|---|
-| Registro profissional ("CREF") | **CONFEF** — confef.org.br |
 | Benefícios de atividade física | **OMS** (diretrizes) + **Ministério da Saúde** |
 | Prescrição/diretrizes de exercício | **ACSM** (American College of Sports Medicine) |
 | Treinamento de força / hipertrofia | **NSCA** |
