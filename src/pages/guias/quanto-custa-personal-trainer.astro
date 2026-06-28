@@ -3,10 +3,37 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
 import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
 import { cidades } from '../../data/cidades';
 import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const confef = fontesExternas.confef;
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Saber o preço é metade do caminho; aqui estão os critérios para escolher bem.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'O formato online costuma ser o de melhor custo-benefício — veja a recomendação.',
+    tipo: 'Recomendação',
+  },
+  {
+    url: rotas.cidades,
+    titulo: 'Preços na sua cidade',
+    descricao: 'Cada guia local traz as faixas de preço praticadas naquela cidade.',
+    tipo: 'Cidades',
+  },
+];
 
 const path = '/guias/quanto-custa-personal-trainer';
 const atualizadoEm = '2026-06-28';
@@ -63,7 +90,8 @@ const schema = [
 
 <Base title={title} description={description} path={path} ogType="article" schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
-  <article class="container-narrow article-page">
+  <div class="container guide-layout">
+    <article class="article-page">
     <p class="eyebrow">Preços</p>
     <h1>Quanto custa um personal trainer?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
@@ -100,6 +128,13 @@ const schema = [
         <li><strong>Frequência semanal</strong> e duração do contrato.</li>
         <li><strong>Estrutura</strong> — academia própria, condomínio, parque ou estúdio.</li>
       </ul>
+      <p>
+        Antes de comparar preços, vale garantir que o profissional é qualificado: o
+        registro no CREF pode ser conferido no
+        <a href={confef.url} target="_blank" rel="noopener">CONFEF</a>. Os demais
+        critérios estão no guia <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a> — preço sem qualidade costuma sair caro.
+      </p>
 
       <h2>Comparativo de preços por cidade</h2>
       <p>
@@ -131,7 +166,11 @@ const schema = [
 
       <h2>Como economizar sem perder qualidade</h2>
       <ul>
-        <li>Considere o <strong>online</strong> se a sua dificuldade é tempo e deslocamento.</li>
+        <li>
+          Considere o <strong>online</strong> se a sua dificuldade é tempo e
+          deslocamento — é o foco da
+          <a href={rotas.montinho}>consultoria recomendada pelo portal</a>.
+        </li>
         <li>Treine <strong>em dupla</strong> para ratear o valor da sessão.</li>
         <li>Feche <strong>pacotes</strong> em vez de aulas avulsas, que saem mais caras por sessão.</li>
         <li>Priorize <strong>adesão</strong>: o treino mais caro é o que você não faz.</li>
@@ -139,7 +178,12 @@ const schema = [
     </div>
 
     <Faq faqs={faqs} />
-  </article>
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
 
   <section class="section-sm">
     <div class="container">
@@ -149,8 +193,21 @@ const schema = [
 </Base>
 
 <style>
-  .article-page {
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
     padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
   }
   .updated {
     color: var(--muted);
@@ -159,6 +216,9 @@ const schema = [
   }
   .lead {
     margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
   }
   .article-page .prose {
     margin-top: var(--sp-5);

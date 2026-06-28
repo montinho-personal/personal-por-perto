@@ -5,8 +5,11 @@ import Toc from '../../components/Toc.astro';
 import Faq from '../../components/Faq.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import CityCard from '../../components/CityCard.astro';
-import { cidades, relacionadas } from '../../data/cidades';
+import Sidebar from '../../components/Sidebar.astro';
+import { cidades, relacionadas, vizinhasDe } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
+import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
 import { formatNumber, faixaBRL, formatDateLong, formatBRL } from '../../lib/slug';
 import {
   breadcrumbSchema,
@@ -31,6 +34,15 @@ const url = new URL(path, site.dominio).href;
 
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
+// Vizinhas reais (geográficas) para linkagem contextual na prosa.
+const vizinhas = vizinhasDe(cidade);
+const viz1 = vizinhas[0];
+const viz2 = vizinhas[1];
+const confef = fontesExternas.confef;
+const oms = fontesExternas.oms;
+const ms = fontesExternas.ministerioSaude;
+const nsca = fontesExternas.nsca;
+const acsm = fontesExternas.acsm;
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -172,6 +184,21 @@ const objetivoDesc: Record<string, string> = {
             </p>
           )
         }
+        {
+          viz1 && (
+            <p>
+              {n} também está perto de outras cidades com boa estrutura para treino:
+              quem mora na divisa costuma considerar um{' '}
+              <a href={`/personal-trainer/${viz1.slug}`}>{anchorCidade(viz1, 0)}</a>
+              {viz2 && (
+                <>
+                  {' '}ou mesmo o{' '}
+                  <a href={`/personal-trainer/${viz2.slug}`}>{anchorCidade(viz2, 2)}</a>
+                </>
+              )}, dependendo de onde fica a academia ou o trabalho.
+            </p>
+          )
+        }
       </section>
 
       <section id="como-escolher">
@@ -181,16 +208,23 @@ const objetivoDesc: Record<string, string> = {
           seu objetivo. Antes de fechar, considere estes pontos:
         </p>
         <ul class="check-list">
-          <li><strong>Registro no CREF ativo:</strong> é o que garante que o profissional pode prescrever treino legalmente.</li>
+          <li>
+            <strong>Registro no CREF ativo:</strong> é o que garante que o profissional
+            pode prescrever treino legalmente. Dá para conferir o registro no
+            <a href={confef.url} target="_blank" rel="noopener">site do CONFEF</a>.
+          </li>
           <li><strong>Experiência com o seu objetivo:</strong> emagrecimento, hipertrofia, reabilitação e performance pedem abordagens diferentes.</li>
           <li><strong>Avaliação inicial:</strong> um bom personal avalia antes de prescrever — não entrega treino genérico.</li>
           <li><strong>Logística:</strong> em {n}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
           <li><strong>Método e acompanhamento:</strong> como ele mede evolução, reavalia e ajusta o plano ao longo do tempo.</li>
         </ul>
         <p>
-          A seção <a href="#avaliar">Como avaliar um profissional</a> traz um passo a passo
-          mais detalhado. E, se a sua prioridade é constância sem depender de deslocamento,
-          o <a href="#objetivos">treino online</a> merece atenção.
+          Esses critérios valem para qualquer cidade — o guia
+          <a href={rotas.comoEscolher}>{anchorComoEscolher(0)}</a> detalha cada um deles
+          com exemplos e sinais de alerta. A seção <a href="#avaliar">Como avaliar um
+          profissional</a> logo abaixo traz o passo a passo prático. E, se a sua
+          prioridade é constância sem depender de deslocamento, vale olhar o
+          <a href="#objetivos">treino por objetivo</a> e o formato online.
         </p>
       </section>
 
@@ -234,6 +268,11 @@ const objetivoDesc: Record<string, string> = {
           Valores médios de mercado, apenas para referência. Podem variar conforme a
           experiência do profissional, o bairro, a estrutura usada e a frequência.
         </p>
+        <p>
+          Para comparar os formatos com calma e entender o que faz o preço subir ou
+          cair, veja o guia <a href={rotas.quantoCusta}>{anchorQuantoCusta(1)}</a>, com
+          tabela por cidade e dicas de como economizar sem perder qualidade.
+        </p>
       </section>
 
       <section id="onde-treinar">
@@ -276,6 +315,16 @@ const objetivoDesc: Record<string, string> = {
             ))
           }
         </div>
+        <p>
+          Quem busca <strong>emagrecimento</strong> costuma se beneficiar de
+          acompanhamento próximo e constante — é o foco da
+          <a href={rotas.montinho}>consultoria online recomendada pelo portal</a>. Já
+          para <strong>hipertrofia</strong>, a progressão de cargas segue princípios
+          consolidados de entidades como a
+          <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>. Em qualquer
+          objetivo, vale revisar <a href={rotas.comoEscolher}>{anchorComoEscolher(2)}</a>
+          antes de decidir.
+        </p>
       </section>
 
       <section id="beneficios">
@@ -291,6 +340,13 @@ const objetivoDesc: Record<string, string> = {
           <li><strong>Progressão inteligente:</strong> cargas e volume evoluem na hora certa.</li>
           <li><strong>Resultados mais rápidos:</strong> menos tentativa e erro, mais método.</li>
         </ul>
+        <p>
+          Os benefícios da atividade física para a saúde são bem documentados: tanto a
+          <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a> quanto o
+          <a href={ms.url} target="_blank" rel="noopener">{ms.nome}</a> recomendam a
+          prática regular de exercícios. Um personal ajuda você a transformar essa
+          recomendação em um plano realista e seguro.
+        </p>
       </section>
 
       <section id="avaliar">
@@ -300,16 +356,25 @@ const objetivoDesc: Record<string, string> = {
           de quem só promete:
         </p>
         <ol>
-          <li>Confirme o <strong>registro no CREF</strong> (pode ser consultado online).</li>
+          <li>
+            Confirme o <strong>registro no CREF</strong> — a consulta é gratuita no
+            <a href={confef.url} target="_blank" rel="noopener">CONFEF</a>.
+          </li>
           <li>Pergunte sobre <strong>formação e especializações</strong> ligadas ao seu objetivo.</li>
-          <li>Veja se há <strong>avaliação física e anamnese</strong> antes do primeiro treino.</li>
+          <li>
+            Veja se há <strong>avaliação física e anamnese</strong> antes do primeiro
+            treino — boa prática alinhada às diretrizes do
+            <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.
+          </li>
           <li>Entenda como funciona o <strong>acompanhamento</strong> (frequência, reavaliações, suporte).</li>
           <li>Busque <strong>provas sociais</strong>: depoimentos, antes e depois reais, indicações.</li>
           <li>Avalie a <strong>comunicação</strong>: clareza e empatia contam muito na adesão.</li>
         </ol>
         <p>
           Esse é também o método que o portal usa em suas recomendações — explicado
-          em detalhe na página <a href="/como-avaliamos">Como avaliamos</a>.
+          em detalhe na página <a href={rotas.comoAvaliamos}>Como avaliamos</a>. Se
+          preferir o aprofundamento completo, o guia
+          <a href={rotas.comoEscolher}>{anchorComoEscolher(3)}</a> reúne tudo em um só lugar.
         </p>
       </section>
 
@@ -330,7 +395,7 @@ const objetivoDesc: Record<string, string> = {
     </article>
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <Sidebar atual={cidade.slug}>
       <Toc items={toc} />
 
       <div class="card side-cta">
@@ -342,7 +407,7 @@ const objetivoDesc: Record<string, string> = {
         </p>
         <a class="btn btn-primary" href="/montinho-personal">Entenda a recomendação</a>
       </div>
-    </aside>
+    </Sidebar>
   </div>
 
   <!-- RECOMENDAÇÃO PRINCIPAL -->

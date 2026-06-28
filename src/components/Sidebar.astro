@@ -1,0 +1,111 @@
+---
+/**
+ * Sidebar com widgets úteis (sem exagero): guias importantes, cidades populares,
+ * categorias. Aceita slot para conteúdo extra no topo (ex.: TOC ou CTA).
+ */
+import { cidades } from '../data/cidades';
+import { rotas } from '../lib/links';
+
+export interface Props {
+  /** Slug da cidade/página atual, para não se autolinkar. */
+  atual?: string;
+  /** Mostrar widget de cidades populares. */
+  cidadesPopulares?: boolean;
+}
+const { atual, cidadesPopulares = true } = Astro.props;
+
+const populares = cidades
+  .filter((c) => c.slug !== atual)
+  .sort((a, b) => b.populacao - a.populacao)
+  .slice(0, 5);
+
+const guias = [
+  { url: rotas.comoEscolher, rotulo: 'Como escolher um personal trainer' },
+  { url: rotas.quantoCusta, rotulo: 'Quanto custa um personal trainer' },
+  { url: rotas.montinho, rotulo: 'Acompanhamento online (recomendação)' },
+];
+
+const categorias = [
+  { url: rotas.cidades, rotulo: 'Cidades' },
+  { url: rotas.guias, rotulo: 'Guias' },
+  { url: rotas.comoAvaliamos, rotulo: 'Como avaliamos' },
+  { url: rotas.sobre, rotulo: 'Sobre o portal' },
+];
+---
+
+<aside class="sidebar">
+  <slot />
+
+  <nav class="widget card" aria-labelledby="w-guias">
+    <p class="widget-title" id="w-guias">Guias importantes</p>
+    <ul>
+      {guias.map((g) => (<li><a href={g.url}>{g.rotulo}</a></li>))}
+    </ul>
+  </nav>
+
+  {
+    cidadesPopulares && (
+      <nav class="widget card" aria-labelledby="w-cidades">
+        <p class="widget-title" id="w-cidades">Cidades populares</p>
+        <ul>
+          {populares.map((c) => (
+            <li>
+              <a href={`/personal-trainer/${c.slug}`}>Personal trainer em {c.nome}</a>
+            </li>
+          ))}
+          <li><a href={rotas.cidades} class="widget-all">Ver todas as cidades →</a></li>
+        </ul>
+      </nav>
+    )
+  }
+
+  <nav class="widget card" aria-labelledby="w-cat">
+    <p class="widget-title" id="w-cat">Categorias</p>
+    <ul>
+      {categorias.map((c) => (<li><a href={c.url}>{c.rotulo}</a></li>))}
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    display: grid;
+    gap: var(--sp-5);
+    align-content: start;
+  }
+  .widget {
+    padding: var(--sp-4) var(--sp-5);
+  }
+  .widget-title {
+    font-weight: 750;
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-600);
+    margin-bottom: var(--sp-3);
+  }
+  .widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.55rem;
+    font-size: var(--step--1);
+  }
+  .widget a {
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .widget a:hover {
+    color: var(--accent-600);
+  }
+  .widget-all {
+    color: var(--brand-700) !important;
+  }
+  @media (min-width: 980px) {
+    .sidebar {
+      position: sticky;
+      top: calc(var(--header-h) + 1rem);
+    }
+  }
+</style>
