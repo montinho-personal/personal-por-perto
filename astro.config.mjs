@@ -6,10 +6,12 @@ const SITE = 'https://personalporperto.com.br';
 
 export default defineConfig({
   site: SITE,
-  trailingSlash: 'never',
+  trailingSlash: 'ignore',
   build: {
     inlineStylesheets: 'auto',
-    format: 'file',
+    // 'directory' gera /pagina/index.html — URLs limpas em qualquer host
+    // estático (Vercel, Netlify, Cloudflare Pages).
+    format: 'directory',
   },
   prefetch: {
     prefetchAll: true,
