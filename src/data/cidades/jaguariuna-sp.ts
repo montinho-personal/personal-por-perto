@@ -2,7 +2,7 @@ import type { Cidade } from '../../lib/types';
 
 export const cidade: Cidade = {
   slug: 'jaguariuna-sp', nome: 'Jaguariúna', uf: 'SP', estado: 'São Paulo', estadoSlug: 'sao-paulo', regiao: 'Sudeste', gentilico: 'jaguariunense', tipo: 'cidade',
-  populacao: 59347, populacaoAno: 2022, idhm: 0.784, idhmClasse: 'Alto', altitudeM: 584,
+  populacao: 59347, populacaoAno: 2022, idhm: 0.784, idhmClasse: 'alto', altitudeM: 584,
   resumoEconomico: 'Integrante da Região Metropolitana de Campinas, Jaguariúna é um dos municípios de maior PIB per capita do estado de São Paulo e do país, sustentado por um robusto parque industrial e tecnológico instalado ao longo da Rodovia Dom Pedro I (SP-065) e da SP-340. A cidade abriga unidades de grandes empresas e a Embrapa Meio Ambiente, centro de pesquisa agropecuária de referência nacional. Entre 2010 e 2022 a população cresceu de 44.311 para 59.347 habitantes, um dos maiores avanços relativos da região metropolitana, refletindo a forte atração de investimentos e de mão de obra qualificada.',
   mercado: 'A combinação de renda elevada, expansão de condomínios fechados e crescimento populacional acelerado cria um ambiente favorável ao trabalho do personal trainer em Jaguariúna. O público local valoriza acompanhamento individualizado e atendimento domiciliar ou em condomínio, e a presença de profissionais qualificados acompanha o perfil econômico da cidade. A oferta é boa e os valores praticados situam-se na faixa alta do interior paulista, em linha com municípios vizinhos da RM Campinas.',
   bairrosNobres: ['Parque Florianópolis', 'Vila Roseira', 'Roseira de Cima', 'João Aldo Nassif'],

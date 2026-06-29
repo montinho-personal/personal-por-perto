@@ -229,8 +229,29 @@ import { cidade as carapicuiba } from './carapicuiba-sp';
 import { cidade as jandira } from './jandira-sp';
 import { cidade as itapevi } from './itapevi-sp';
 import { cidade as aldeiaDaSerra } from './aldeia-da-serra-sp';
+// Bloco 12 (alta procura — alto padrão/fitness e grandes metrôs)
+import { cidade as ilhabela } from './ilhabela-sp';
+import { cidade as bertioga } from './bertioga-sp';
+import { cidade as ubatuba } from './ubatuba-sp';
+import { cidade as louveira } from './louveira-sp';
+import { cidade as itatiba } from './itatiba-sp';
+import { cidade as jaguariuna } from './jaguariuna-sp';
+import { cidade as vargemGrandePaulista } from './vargem-grande-paulista-sp';
+import { cidade as santaBarbaraDOeste } from './santa-barbara-doeste-sp';
+import { cidade as mogiGuacu } from './mogi-guacu-sp';
+import { cidade as suzano } from './suzano-sp';
+import { cidade as eusebio } from './eusebio-ce';
+import { cidade as lagoaSanta } from './lagoa-santa-mg';
+import { cidade as xangriLa } from './xangri-la-rs';
+import { cidade as capaoDaCanoa } from './capao-da-canoa-rs';
+import { cidade as pinhais } from './pinhais-pr';
+import { cidade as aguasClaras } from './aguas-claras-df';
 
 export const cidades: Cidade[] = [
+  // Bloco 12 (alta procura — alto padrão/fitness e grandes metrôs)
+  ilhabela, bertioga, ubatuba, louveira, itatiba, jaguariuna, vargemGrandePaulista,
+  santaBarbaraDOeste, mogiGuacu, suzano, eusebio, lagoaSanta, xangriLa, capaoDaCanoa,
+  pinhais, aguasClaras,
   // Bloco 11 (Grande SP oeste — eixo Castello Branco / Linha 8-Diamante)
   carapicuiba, jandira, itapevi, aldeiaDaSerra,
   // Bloco 10 (expansão — alta renda/metrópole, agro, turismo e polos regionais)
