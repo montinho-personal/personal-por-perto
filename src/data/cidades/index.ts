@@ -224,8 +224,15 @@ import { cidade as teixeiraDeFreitas } from './teixeira-de-freitas-ba';
 import { cidade as gravata } from './gravata-pe';
 import { cidade as crato } from './crato-ce';
 import { cidade as guarapari } from './guarapari-es';
+// Bloco 11 (Grande SP oeste — eixo Castello Branco / Linha 8-Diamante)
+import { cidade as carapicuiba } from './carapicuiba-sp';
+import { cidade as jandira } from './jandira-sp';
+import { cidade as itapevi } from './itapevi-sp';
+import { cidade as aldeiaDaSerra } from './aldeia-da-serra-sp';
 
 export const cidades: Cidade[] = [
+  // Bloco 11 (Grande SP oeste — eixo Castello Branco / Linha 8-Diamante)
+  carapicuiba, jandira, itapevi, aldeiaDaSerra,
   // Bloco 10 (expansão — alta renda/metrópole, agro, turismo e polos regionais)
   valinhos, hortolandia, taboaoDaSerra, catanduva, saoSebastiao, saoJoaoDeMeriti,
   itaborai, coronelFabriciano, patosDeMinas, itajuba, patoBranco, apucarana,
