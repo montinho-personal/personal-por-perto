@@ -1,0 +1,100 @@
+import type { Cidade } from '../../lib/types';
+
+export const cidade: Cidade = {
+  slug: 'franca-sp',
+  nome: 'Franca',
+  uf: 'SP',
+  estado: 'São Paulo',
+  estadoSlug: 'sao-paulo',
+  regiao: 'Sudeste',
+  gentilico: 'francano',
+  tipo: 'cidade',
+
+  populacao: 352536,
+  populacaoAno: 2022,
+  idhm: 0.780,
+  idhmClasse: 'alto',
+  altitudeM: 1040,
+
+  resumoEconomico:
+    'Capital nacional do calçado masculino, Franca produz dezenas de milhões de pares por ano — cerca de um a cada três sapatos masculinos do Brasil. Tem forte tradição também no café e, no nordeste paulista, é referência industrial e em qualidade de vida do interior, em uma das maiores altitudes do estado.',
+
+  mercado:
+    'O mercado fitness regional é de porte médio-grande, ancorado na forte cultura esportiva da cidade (potência do basquete) e em um calendário de corridas, com academias, estúdios e personal trainers atendendo o nordeste paulista.',
+
+  bairrosNobres: ['City Petrópolis', 'Centro', 'Jardim Noêmia', 'Jardim França'],
+  bairrosPopulares: ['Jardim Aeroporto', 'Parque dos Pinhais', 'Parque dos Trabalhadores', 'Vila Aparecida'],
+
+  parques: [
+    {
+      nome: 'Parque de Exposições Fernando Costa',
+      descricao:
+        'Conta com duas academias ao ar livre, aberto em dias úteis para caminhada e treino.',
+    },
+    {
+      nome: 'Jardim Zoobotânico',
+      descricao:
+        'No City Petrópolis, tem pista de caminhada pavimentada de cerca de 1,3 km em meio à vegetação nativa.',
+    },
+    {
+      nome: 'Parque dos Trabalhadores',
+      descricao:
+        'No Parque dos Pinhais, tem trilhas sobre mata nativa com mais de 6 km de extensão e reservatório.',
+    },
+  ],
+  ciclovias:
+    'A extensão da malha cicloviária urbana ainda não é divulgada em fonte oficial.',
+
+  clima:
+    'O clima é tropical de altitude, com verões chuvosos e invernos secos e amenos, média anual em torno de 21 °C.',
+  climaTreino:
+    'O inverno seco é ótimo para o treino e a caminhada ao ar livre; a altitude (cerca de 1.040 m) eleva a demanda cardiorrespiratória, útil para o condicionamento.',
+
+  mobilidade:
+    'O acesso principal é pela Rodovia Cândido Portinari (SP-334), que liga a Ribeirão Preto e aos polos industriais paulistas; a capital fica a cerca de 400 km.',
+
+  corridas: [
+    {
+      nome: 'SESI Franca Basquete Night Run',
+      descricao:
+        'Corrida noturna com provas de 4 km e 8 km e caminhada de 4 km, encerrada com show.',
+    },
+    {
+      nome: 'Corridas do SESI Franca',
+      descricao:
+        'Calendário esportivo recorrente da unidade local, parte da cena de corrida da cidade.',
+    },
+  ],
+  culturaEsportiva:
+    'Franca é potência nacional do basquete — sede do Sesi Franca Basquete, um dos maiores clubes do país e disputante do NBB —, e o esporte é um elemento identitário que movimenta a cultura local.',
+  academias:
+    'A oferta reúne academias, estúdios e personal trainers, complementada por parques com academia ao ar livre e trilhas longas como a do Parque dos Trabalhadores.',
+
+  destaquesFitness: [
+    'Capital do basquete brasileiro (Sesi Franca) — cultura esportiva forte.',
+    'Altitude de cerca de 1.040 m, atrativa para treino de resistência.',
+    'Parques com academia ao ar livre e trilhas longas (mais de 6 km).',
+    'Inverno seco e ameno, ideal para corrida e treino outdoor.',
+  ],
+
+  precos: {
+    avulsaMin: 65,
+    avulsaMax: 160,
+    mensalMin: 350,
+    mensalMax: 940,
+    onlineMin: 170,
+    onlineMax: 430,
+  },
+
+  conclusao:
+    'Capital do calçado e potência do basquete, Franca tem altitude favorável e forte cultura esportiva. Um personal trainer ajuda a aproveitar o Jardim Zoobotânico e o Parque dos Trabalhadores com método, tirando partido do clima seco de altitude.',
+
+  vizinhas: ['ribeirao-preto-sp', 'sao-paulo-sp'],
+
+  fontes: [
+    { nome: 'IBGE Cidades — Franca', url: 'https://cidades.ibge.gov.br/brasil/sp/franca/panorama' },
+    { nome: 'Prefeitura de Franca', url: 'https://www.franca.sp.gov.br/' },
+    { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
+  ],
+  atualizadoEm: '2026-06-29',
+};

@@ -119,8 +119,34 @@ import { cidade as parnaiba } from './parnaiba-pi';
 import { cidade as petrolina } from './petrolina-pe';
 import { cidade as juazeiroDoNorte } from './juazeiro-do-norte-ce';
 import { cidade as novoHamburgo } from './novo-hamburgo-rs';
+// Bloco 6
+import { cidade as marica } from './marica-rj';
+import { cidade as rioDasOstras } from './rio-das-ostras-rj';
+import { cidade as novaFriburgo } from './nova-friburgo-rj';
+import { cidade as mogiDasCruzes } from './mogi-das-cruzes-sp';
+import { cidade as franca } from './franca-sp';
+import { cidade as jacarei } from './jacarei-sp';
+import { cidade as americana } from './americana-sp';
+import { cidade as rioClaro } from './rio-claro-sp';
+import { cidade as indaiatuba } from './indaiatuba-sp';
+import { cidade as seteLagoas } from './sete-lagoas-mg';
+import { cidade as pocosDeCaldas } from './pocos-de-caldas-mg';
+import { cidade as varginha } from './varginha-mg';
+import { cidade as saoJoseDosPinhais } from './sao-jose-dos-pinhais-pr';
+import { cidade as saoJoseSC } from './sao-jose-sc';
+import { cidade as parnamirim } from './parnamirim-rn';
+import { cidade as lauroDeFreitas } from './lauro-de-freitas-ba';
+import { cidade as sobral } from './sobral-ce';
+import { cidade as parauapebas } from './parauapebas-pa';
+import { cidade as rioVerde } from './rio-verde-go';
+import { cidade as sinop } from './sinop-mt';
 
 export const cidades: Cidade[] = [
+  // Bloco 6 (expansão — alta renda, agro e polos regionais)
+  marica, rioDasOstras, novaFriburgo, mogiDasCruzes, franca, jacarei,
+  americana, rioClaro, indaiatuba, seteLagoas, pocosDeCaldas, varginha,
+  saoJoseDosPinhais, saoJoseSC, parnamirim, lauroDeFreitas, sobral,
+  parauapebas, rioVerde, sinop,
   // Bloco 5 (expansão — polos regionais e litoral)
   caboFrio, macae, camposDosGoytacazes, angraDosReis,
   limeira, taubate, marilia, presidentePrudente, saoCarlos, araraquara,
