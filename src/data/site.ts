@@ -19,7 +19,7 @@ export const site = {
    * Deixe vazio para não carregar analytics. Por conformidade com a LGPD,
    * o GA4 só é ativado depois que o visitante aceita os cookies no aviso.
    */
-  analyticsId: 'G-4TP79R32VL',
+  analyticsId: 'G-FJNT72KRYY',
   /**
    * Perfis oficiais em redes sociais. Alimentam o `sameAs` do schema
    * Organization (sinal de credibilidade para IAs/GEO) e os links do rodapé.
