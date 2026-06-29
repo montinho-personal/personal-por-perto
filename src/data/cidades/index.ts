@@ -35,6 +35,27 @@ import { cidade as joaoPessoa } from './joao-pessoa-pb';
 import { cidade as natal } from './natal-rn';
 import { cidade as manaus } from './manaus-am';
 import { cidade as palmas } from './palmas-to';
+// Bloco 2
+import { cidade as saoJoseDosCampos } from './sao-jose-dos-campos-sp';
+import { cidade as jundiai } from './jundiai-sp';
+import { cidade as saoBernardoDoCampo } from './sao-bernardo-do-campo-sp';
+import { cidade as santos } from './santos-sp';
+import { cidade as saoJoseDoRioPreto } from './sao-jose-do-rio-preto-sp';
+import { cidade as vilaVelha } from './vila-velha-es';
+import { cidade as serra } from './serra-es';
+import { cidade as contagem } from './contagem-mg';
+import { cidade as juizDeFora } from './juiz-de-fora-mg';
+import { cidade as londrina } from './londrina-pr';
+import { cidade as maringa } from './maringa-pr';
+import { cidade as joinville } from './joinville-sc';
+import { cidade as blumenau } from './blumenau-sc';
+import { cidade as caxiasDoSul } from './caxias-do-sul-rs';
+import { cidade as campoGrande } from './campo-grande-ms';
+import { cidade as cuiaba } from './cuiaba-mt';
+import { cidade as belem } from './belem-pa';
+import { cidade as teresina } from './teresina-pi';
+import { cidade as saoLuis } from './sao-luis-ma';
+import { cidade as feiraDeSantana } from './feira-de-santana-ba';
 
 export const cidades: Cidade[] = [
   // Sudeste — SP
@@ -49,29 +70,49 @@ export const cidades: Cidade[] = [
   tambore,
   ribeiraoPreto,
   sorocaba,
+  saoJoseDosCampos,
+  jundiai,
+  saoBernardoDoCampo,
+  santos,
+  saoJoseDoRioPreto,
   // Sudeste — RJ / MG / ES
   rioDeJaneiro,
   niteroi,
   beloHorizonte,
   uberlandia,
+  contagem,
+  juizDeFora,
   vitoria,
+  vilaVelha,
+  serra,
   // Sul
   curitiba,
+  londrina,
+  maringa,
   portoAlegre,
+  caxiasDoSul,
   florianopolis,
   balnearioCamboriu,
+  joinville,
+  blumenau,
   // Centro-Oeste
   brasilia,
   goiania,
+  campoGrande,
+  cuiaba,
   // Nordeste
   fortaleza,
   salvador,
+  feiraDeSantana,
   recife,
   aracaju,
   joaoPessoa,
   natal,
+  teresina,
+  saoLuis,
   // Norte
   manaus,
+  belem,
   palmas,
 ];
 

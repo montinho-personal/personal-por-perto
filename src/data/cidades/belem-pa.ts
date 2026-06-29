@@ -1,0 +1,100 @@
+import type { Cidade } from '../../lib/types';
+
+export const cidade: Cidade = {
+  slug: 'belem-pa',
+  nome: 'Belém',
+  uf: 'PA',
+  estado: 'Pará',
+  estadoSlug: 'para',
+  regiao: 'Norte',
+  gentilico: 'belenense',
+  tipo: 'cidade',
+
+  populacao: 1303403,
+  populacaoAno: 2022,
+  idhm: 0.746,
+  idhmClasse: 'alto',
+  altitudeM: 10,
+
+  resumoEconomico:
+    'Capital do Pará e principal porta de entrada da Amazônia, Belém tem forte vocação portuária e comercial (açaí, castanha, pescado e cacau) e é o polo de serviços e logística do Norte. Sediou a COP30 em 2025, o que impulsionou obras de infraestrutura e mobilidade — e colocou a cidade em evidência mundial.',
+
+  mercado:
+    'O mercado fitness é consolidado, com grandes redes (Smart Fit em vários shoppings e a Bodytech em Nazaré) e academias locais. A cultura de treino ao ar livre é forte nas orlas e parques, ainda que condicionada ao calor e à umidade equatoriais.',
+
+  bairrosNobres: ['Nazaré', 'Batista Campos', 'Umarizal', 'Reduto'],
+  bairrosPopulares: ['Guamá', 'Terra Firme', 'Jurunas', 'Sacramenta'],
+
+  parques: [
+    {
+      nome: 'Parque Estadual do Utinga "Camillo Vianna"',
+      descricao:
+        'O parque mais visitado do Norte, com pista pavimentada de cerca de 4 km (ida), faixas separadas para pedestres e ciclistas e pontos de hidratação — o principal hub de corrida e ciclismo da cidade.',
+    },
+    {
+      nome: 'Mangal das Garças',
+      descricao:
+        'Parque zoobotânico com trilhas e caminhada e vista da orla, de entrada gratuita — uma opção arborizada para treino leve.',
+    },
+    {
+      nome: 'Portal da Amazônia e Estação das Docas',
+      descricao:
+        'Orlas urbanas revitalizadas à beira-rio, usadas para caminhada e corrida com vista para a Baía do Guajará.',
+    },
+  ],
+  ciclovias:
+    'Belém tem uma malha de cerca de 163 km de ciclovias, entre as dez maiores do país, ampliada no contexto das obras recentes da cidade.',
+
+  clima:
+    'O clima é equatorial úmido, quente o ano todo (máximas de 31 °C a 33 °C, umidade perto de 84% e chuvas abundantes — cerca de 3.000 mm por ano).',
+  climaTreino:
+    'O calor e a umidade pedem cautela: o treino ao ar livre rende mais no início da manhã ou no fim da tarde, com hidratação reforçada. As chuvas frequentes tornam útil um plano B em ambiente fechado.',
+
+  mobilidade:
+    'A cidade conta com um sistema BRT (Icoaraci–São Brás, com canaleta exclusiva na Avenida Almirante Barroso) e acesso rodoviário pela BR-316 e pela BR-010 (Belém–Brasília). O transporte é complementado por ônibus.',
+
+  corridas: [
+    {
+      nome: 'Corrida do Círio',
+      descricao:
+        'A maior corrida de rua da Amazônia, com provas de 5 km e 10 km e mais de 9 mil atletas, integrada ao Círio de Nazaré, em outubro.',
+    },
+    {
+      nome: 'Meia Maratona da Amazônia',
+      descricao:
+        'Prova de 21 km com foco em sustentabilidade, criada no contexto da agenda ambiental da cidade.',
+    },
+  ],
+  culturaEsportiva:
+    'Belém tem forte tradição de corrida de rua, muito ligada ao Círio de Nazaré, além do futebol regional (a rivalidade Remo x Paysandu) e de um público crescente de corrida e ciclismo nas orlas. A vida ativa acontece, sobretudo, nos horários mais frescos do dia.',
+  academias:
+    'A oferta reúne grandes redes (Smart Fit, Bodytech) nos bairros nobres e academias locais, complementadas pela estrutura ao ar livre do Parque do Utinga e das orlas.',
+
+  destaquesFitness: [
+    'Parque do Utinga como principal hub de corrida e ciclismo (pista de cerca de 4 km).',
+    'Redes consagradas (Smart Fit, Bodytech) nos bairros nobres.',
+    'Malha cicloviária ampla (cerca de 163 km), entre as maiores do Brasil.',
+    'Treino ao ar livre o ano todo, condicionado ao calor e à umidade equatoriais.',
+  ],
+
+  precos: {
+    avulsaMin: 70,
+    avulsaMax: 160,
+    mensalMin: 350,
+    mensalMax: 950,
+    onlineMin: 170,
+    onlineMax: 430,
+  },
+
+  conclusao:
+    'Porta de entrada da Amazônia e cidade em plena transformação, Belém oferece do Parque do Utinga às orlas revitalizadas. Um personal trainer ajuda a montar uma rotina que respeite o calor equatorial e potencialize seus resultados — da corrida ao ar livre à musculação climatizada nos dias mais abafados.',
+
+  vizinhas: ['sao-luis-ma', 'manaus-am'],
+
+  fontes: [
+    { nome: 'IBGE Cidades — Belém', url: 'https://cidades.ibge.gov.br/brasil/pa/belem/panorama' },
+    { nome: 'Prefeitura de Belém', url: 'https://www.belem.pa.gov.br/' },
+    { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
+  ],
+  atualizadoEm: '2026-06-29',
+};
