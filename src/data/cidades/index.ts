@@ -169,6 +169,7 @@ import { cidade as cotia } from './cotia-sp';
 import { cidade as caraguatatuba } from './caraguatatuba-sp';
 import { cidade as saquarema } from './saquarema-rj';
 import { cidade as barraMansa } from './barra-mansa-rj';
+import { cidade as barraDoPirai } from './barra-do-pirai-rj';
 import { cidade as toledo } from './toledo-pr';
 import { cidade as passoFundo } from './passo-fundo-rs';
 import { cidade as palhoca } from './palhoca-sc';
@@ -338,7 +339,7 @@ export const cidades: Cidade[] = [
   saoJoaoDelRei, lavras, paranagua, guarapuava, rioGrande, gramado, lages,
   juazeiroBA, portoSeguro, garanhuns, jatai, primaveraDoLeste,
   // Bloco 8 (expansão — alta renda, agro, turismo e 2as cidades)
-  novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa,
+  novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa, barraDoPirai,
   toledo, passoFundo, palhoca, ilheus, barreiras, paulistaPE, maracanau,
   linhares, catalao, arapiraca, araguaina, jiParana, castanhal,
   // Bloco 7 (expansão — alta renda, agro e polos regionais)
