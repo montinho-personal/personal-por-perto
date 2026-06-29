@@ -351,8 +351,33 @@ import { cidade as iguatu } from './iguatu-ce';
 import { cidade as formosa } from './formosa-go';
 import { cidade as saoMateus } from './sao-mateus-es';
 import { cidade as tucurui } from './tucurui-pa';
+// Bloco 18 (polos regionais, RMs e interior — SP/MG/RJ/PR/SC/RS/BA/PE/CE/GO/MT/MA)
+import { cidade as mairipora } from './mairipora-sp';
+import { cidade as ourinhos } from './ourinhos-sp';
+import { cidade as leme } from './leme-sp';
+import { cidade as cubatao } from './cubatao-sp';
+import { cidade as alfenas } from './alfenas-mg';
+import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
+import { cidade as uba } from './uba-mg';
+import { cidade as tresCoracoes } from './tres-coracoes-mg';
+import { cidade as valenca } from './valenca-rj';
+import { cidade as cianorte } from './cianorte-pr';
+import { cidade as telemacoBorba } from './telemaco-borba-pr';
+import { cidade as ararangua } from './ararangua-sc';
+import { cidade as gaspar } from './gaspar-sc';
+import { cidade as santoAngelo } from './santo-angelo-rs';
+import { cidade as santoAntonioDeJesus } from './santo-antonio-de-jesus-ba';
+import { cidade as beloJardim } from './belo-jardim-pe';
+import { cidade as quixada } from './quixada-ce';
+import { cidade as itumbiara } from './itumbiara-go';
+import { cidade as tangaraDaSerra } from './tangara-da-serra-mt';
+import { cidade as acailandia } from './acailandia-ma';
 
 export const cidades: Cidade[] = [
+  // Bloco 18 (polos regionais, RMs e interior)
+  mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
+  valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,
+  beloJardim, quixada, itumbiara, tangaraDaSerra, acailandia,
   // Bloco 17 (polos regionais, litoral e interior)
   avare, itanhaem, jaboticabal, votuporanga, itauna, barbacena, muriae, teofiloOtoni,
   tresRios, paranavai, franciscoBeltrao, saoBentoDoSul, ijui, sapucaiaDoSul, eunapolis,
