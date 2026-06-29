@@ -414,8 +414,33 @@ import { cidade as picos } from './picos-pi';
 import { cidade as gurupi } from './gurupi-to';
 import { cidade as palmeiraDosIndios } from './palmeira-dos-indios-al';
 import { cidade as itacoatiara } from './itacoatiara-am';
+// Bloco 21 (polos regionais e interior — espalhamento nacional)
+import { cidade as pirassununga } from './pirassununga-sp';
+import { cidade as registro } from './registro-sp';
+import { cidade as peruibe } from './peruibe-sp';
+import { cidade as formiga } from './formiga-mg';
+import { cidade as mariana } from './mariana-mg';
+import { cidade as caratinga } from './caratinga-mg';
+import { cidade as japeri } from './japeri-rj';
+import { cidade as cornelioProcopio } from './cornelio-procopio-pr';
+import { cidade as uniaoDaVitoria } from './uniao-da-vitoria-pr';
+import { cidade as laguna } from './laguna-sc';
+import { cidade as vacaria } from './vacaria-rs';
+import { cidade as cachoeiraDoSul } from './cachoeira-do-sul-rs';
+import { cidade as senhorDoBonfim } from './senhor-do-bonfim-ba';
+import { cidade as salgueiro } from './salgueiro-pe';
+import { cidade as crateus } from './crateus-ce';
+import { cidade as cajazeiras } from './cajazeiras-pb';
+import { cidade as saoGoncaloDoAmaranteRN } from './sao-goncalo-do-amarante-rn';
+import { cidade as itabaiana } from './itabaiana-se';
+import { cidade as itaituba } from './itaituba-pa';
+import { cidade as vilhena } from './vilhena-ro';
 
 export const cidades: Cidade[] = [
+  // Bloco 21 (polos regionais e interior — espalhamento nacional)
+  pirassununga, registro, peruibe, formiga, mariana, caratinga, japeri, cornelioProcopio,
+  uniaoDaVitoria, laguna, vacaria, cachoeiraDoSul, senhorDoBonfim, salgueiro, crateus,
+  cajazeiras, saoGoncaloDoAmaranteRN, itabaiana, itaituba, vilhena,
   // Bloco 20 (polos regionais e interior — espalhamento nacional)
   francoDaRocha, lins, novaSerrana, curvelo, seropedica, rolandia, cacador, carazinho,
   jacobina, goiana, itapipoca, goianesia, barraDoGarcas, navirai, bacabal, braganca,
