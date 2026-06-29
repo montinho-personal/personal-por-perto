@@ -372,8 +372,33 @@ import { cidade as quixada } from './quixada-ce';
 import { cidade as itumbiara } from './itumbiara-go';
 import { cidade as tangaraDaSerra } from './tangara-da-serra-mt';
 import { cidade as acailandia } from './acailandia-ma';
+// Bloco 19 (polos regionais e novos estados — SP/MG/RJ/PR/SC/RS/BA/PE/CE/GO/MT/MS/MA/PA/PB/RN/SE/RO)
+import { cidade as caieiras } from './caieiras-sp';
+import { cidade as bebedouro } from './bebedouro-sp';
+import { cidade as araguari } from './araguari-mg';
+import { cidade as joaoMonlevade } from './joao-monlevade-mg';
+import { cidade as rioBonito } from './rio-bonito-rj';
+import { cidade as sarandi } from './sarandi-pr';
+import { cidade as indaial } from './indaial-sc';
+import { cidade as farroupilha } from './farroupilha-rs';
+import { cidade as guanambi } from './guanambi-ba';
+import { cidade as arcoverde } from './arcoverde-pe';
+import { cidade as aquiraz } from './aquiraz-ce';
+import { cidade as mineiros } from './mineiros-go';
+import { cidade as caceres } from './caceres-mt';
+import { cidade as pontaPora } from './ponta-pora-ms';
+import { cidade as codo } from './codo-ma';
+import { cidade as altamira } from './altamira-pa';
+import { cidade as patos } from './patos-pb';
+import { cidade as caico } from './caico-rn';
+import { cidade as lagarto } from './lagarto-se';
+import { cidade as ariquemes } from './ariquemes-ro';
 
 export const cidades: Cidade[] = [
+  // Bloco 19 (polos regionais e novos estados PB/RN/SE/RO)
+  caieiras, bebedouro, araguari, joaoMonlevade, rioBonito, sarandi, indaial, farroupilha,
+  guanambi, arcoverde, aquiraz, mineiros, caceres, pontaPora, codo, altamira, patos,
+  caico, lagarto, ariquemes,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,
