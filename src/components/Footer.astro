@@ -3,11 +3,17 @@ import Logo from './Logo.astro';
 import { site } from '../data/site';
 import { montinho } from '../data/montinho';
 import { estados } from '../data/estados';
-import { cidades } from '../data/cidades';
 import { formatMonthYear } from '../lib/slug';
 
 const anoAtual = 2026;
-const principais = cidades.slice(0, 7);
+// Cidades fixadas no rodapé (foco regional do portal) — não rotacionam.
+const principais = [
+  { slug: 'alphaville-sp', nome: 'Alphaville', prep: 'em' },
+  { slug: 'barueri-sp', nome: 'Barueri', prep: 'em' },
+  { slug: 'santana-de-parnaiba-sp', nome: 'Santana de Parnaíba', prep: 'em' },
+  { slug: 'tambore-sp', nome: 'Tamboré', prep: 'em' },
+  { slug: 'aldeia-da-serra-sp', nome: 'Aldeia da Serra', prep: 'na' },
+];
 ---
 
 <footer class="site-footer">
@@ -27,11 +33,10 @@ const principais = cidades.slice(0, 7);
         {
           principais.map((c) => (
             <li>
-              <a href={`/personal-trainer/${c.slug}`}>Personal Trainer em {c.nome}</a>
+              <a href={`/personal-trainer/${c.slug}`}>Personal Trainer {c.prep} {c.nome}</a>
             </li>
           ))
         }
-        <li><a href="/personal-trainer/aldeia-da-serra-sp">Personal Trainer na Aldeia da Serra</a></li>
         <li><a href="/personal-trainer"><strong>Ver todas as cidades →</strong></a></li>
       </ul>
     </nav>
