@@ -330,8 +330,33 @@ import { cidade as maranguape } from './maranguape-ce';
 import { cidade as senadorCanedo } from './senador-canedo-go';
 import { cidade as abaetetuba } from './abaetetuba-pa';
 import { cidade as corumba } from './corumba-ms';
+// Bloco 17 (polos regionais, litoral e interior — SP/MG/RJ/PR/SC/RS/BA/PE/CE/GO/ES/PA)
+import { cidade as avare } from './avare-sp';
+import { cidade as itanhaem } from './itanhaem-sp';
+import { cidade as jaboticabal } from './jaboticabal-sp';
+import { cidade as votuporanga } from './votuporanga-sp';
+import { cidade as itauna } from './itauna-mg';
+import { cidade as barbacena } from './barbacena-mg';
+import { cidade as muriae } from './muriae-mg';
+import { cidade as teofiloOtoni } from './teofilo-otoni-mg';
+import { cidade as tresRios } from './tres-rios-rj';
+import { cidade as paranavai } from './paranavai-pr';
+import { cidade as franciscoBeltrao } from './francisco-beltrao-pr';
+import { cidade as saoBentoDoSul } from './sao-bento-do-sul-sc';
+import { cidade as ijui } from './ijui-rs';
+import { cidade as sapucaiaDoSul } from './sapucaia-do-sul-rs';
+import { cidade as eunapolis } from './eunapolis-ba';
+import { cidade as serraTalhada } from './serra-talhada-pe';
+import { cidade as iguatu } from './iguatu-ce';
+import { cidade as formosa } from './formosa-go';
+import { cidade as saoMateus } from './sao-mateus-es';
+import { cidade as tucurui } from './tucurui-pa';
 
 export const cidades: Cidade[] = [
+  // Bloco 17 (polos regionais, litoral e interior)
+  avare, itanhaem, jaboticabal, votuporanga, itauna, barbacena, muriae, teofiloOtoni,
+  tresRios, paranavai, franciscoBeltrao, saoBentoDoSul, ijui, sapucaiaDoSul, eunapolis,
+  serraTalhada, iguatu, formosa, saoMateus, tucurui,
   // Bloco 16 (polos regionais e regiões metropolitanas)
   embuDasArtes, ferrazDeVasconcelos, itapecericaDaSerra, mogiMirim, saoJoaoDaBoaVista,
   paraDeMinas, passos, araxa, saoPedroDaAldeia, barraDoPirai, umuarama, campoMourao,
