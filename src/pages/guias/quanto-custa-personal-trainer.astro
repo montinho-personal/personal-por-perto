@@ -5,7 +5,9 @@ import Faq from '../../components/Faq.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
-import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
 import { cidades } from '../../data/cidades';
 import { site } from '../../data/site';
@@ -81,6 +83,7 @@ const schema = [
   breadcrumbSchema(crumbs),
   articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm: '2024-09-01', atualizadoEm }),
   faqSchema(faqs),
+  personMontinhoSchema(),
 ];
 ---
 
@@ -173,6 +176,9 @@ const schema = [
     </div>
 
     <Faq faqs={faqs} />
+
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
 
     <RelatedArticles itens={relacionados} />
     </article>

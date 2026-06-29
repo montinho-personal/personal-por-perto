@@ -1,0 +1,235 @@
+---
+/**
+ * CTA de conversão para o Instagram do Montinho Personal (@montinho_personal).
+ * Leve (zero JS, sem embed oficial — que pesaria no Core Web Vitals).
+ * Copy personalizada por tema do artigo para maximizar CTR (CRO).
+ */
+import { montinho } from '../data/montinho';
+
+export interface Props {
+  tema?: 'cidade' | 'emagrecimento' | 'hipertrofia' | 'alimentacao' | 'geral';
+  variante?: 'card' | 'compacto';
+  /** Contexto opcional (ex.: nome da cidade) para personalizar o título. */
+  contexto?: string;
+}
+const { tema = 'geral', variante = 'card', contexto } = Astro.props;
+const ig = montinho.instagram;
+
+const TEMAS = {
+  cidade: {
+    titulo: contexto
+      ? `Treina em ${contexto}? Treine junto com o Montinho no Instagram`
+      : 'Treino de verdade, todo dia, no seu feed',
+    bullets: [
+      'Treinos e exercícios práticos para casa, academia e ar livre',
+      'Dicas diretas de emagrecimento e ganho de massa',
+      'Bastidores, antes e depois reais e respostas às suas dúvidas',
+    ],
+  },
+  emagrecimento: {
+    titulo: 'Quer emagrecer com método? O melhor conteúdo é diário',
+    bullets: [
+      'Dicas práticas de perda de gordura que funcionam na vida real',
+      'Treinos para acelerar resultados sem passar fome',
+      'Antes e depois reais de quem treina com acompanhamento',
+    ],
+  },
+  hipertrofia: {
+    titulo: 'Ganho de massa de verdade começa nos detalhes',
+    bullets: [
+      'Treinos e técnica de execução para hipertrofia',
+      'Estratégias de progressão de carga e periodização',
+      'Os erros que travam o seu ganho de músculo',
+    ],
+  },
+  alimentacao: {
+    titulo: 'Comer bem para treinar bem — sem dieta maluca',
+    bullets: [
+      'Receitas práticas e ideias de refeição para o dia a dia',
+      'Dicas de nutrição para emagrecer e ganhar massa',
+      'Como montar o prato do jeito certo',
+    ],
+  },
+  geral: {
+    titulo: 'Conteúdo diário para você treinar melhor',
+    bullets: [
+      'Treinos, exercícios e dicas de execução',
+      'Emagrecimento, hipertrofia e nutrição na prática',
+      'Bastidores, antes e depois reais e lives',
+    ],
+  },
+};
+const t = TEMAS[tema] ?? TEMAS.geral;
+const aria = `Seguir ${ig.handle} no Instagram`;
+---
+
+{
+  variante === 'compacto' ? (
+    <aside class="ig-compacto" aria-label="Instagram do Montinho Personal">
+      <div class="ig-compacto-top">
+        <span class="ig-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.62c-3.15 0-3.5.01-4.74.07-.99.05-1.53.21-1.89.35-.47.18-.81.4-1.17.76-.36.36-.58.7-.76 1.17-.14.36-.3.9-.35 1.89-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05.99.21 1.53.35 1.89.18.47.4.81.76 1.17.36.36.7.58 1.17.76.36.14.9.3 1.89.35 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.99-.05 1.53-.21 1.89-.35.47-.18.81-.4 1.17-.76.36-.36.58-.7.76-1.17.14-.36.3-.9.35-1.89.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-.99-.21-1.53-.35-1.89a3.15 3.15 0 0 0-.76-1.17 3.15 3.15 0 0 0-1.17-.76c-.36-.14-.9-.3-1.89-.35-1.24-.06-1.59-.07-4.74-.07Zm0 2.76a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Zm0 1.62a3.68 3.68 0 1 0 0 7.36 3.68 3.68 0 0 0 0-7.36Zm5.5-2.9a1.24 1.24 0 1 1 0 2.48 1.24 1.24 0 0 1 0-2.48Z" /></svg>
+        </span>
+        <div>
+          <p class="ig-compacto-tit">Siga {ig.handle}</p>
+          <p class="ig-compacto-sub">Conteúdo diário de treino e emagrecimento.</p>
+        </div>
+      </div>
+      <a class="ig-btn" href={ig.url} target="_blank" rel="noopener" aria-label={aria} data-ig>
+        Seguir no Instagram
+      </a>
+    </aside>
+  ) : (
+    <aside class="ig-card" aria-label="Instagram do Montinho Personal">
+      <div class="ig-head">
+        <span class="ig-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.62c-3.15 0-3.5.01-4.74.07-.99.05-1.53.21-1.89.35-.47.18-.81.4-1.17.76-.36.36-.58.7-.76 1.17-.14.36-.3.9-.35 1.89-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05.99.21 1.53.35 1.89.18.47.4.81.76 1.17.36.36.7.58 1.17.76.36.14.9.3 1.89.35 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.99-.05 1.53-.21 1.89-.35.47-.18.81-.4 1.17-.76.36-.36.58-.7.76-1.17.14-.36.3-.9.35-1.89.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-.99-.21-1.53-.35-1.89a3.15 3.15 0 0 0-.76-1.17 3.15 3.15 0 0 0-1.17-.76c-.36-.14-.9-.3-1.89-.35-1.24-.06-1.59-.07-4.74-.07Zm0 2.76a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Zm0 1.62a3.68 3.68 0 1 0 0 7.36 3.68 3.68 0 0 0 0-7.36Zm5.5-2.9a1.24 1.24 0 1 1 0 2.48 1.24 1.24 0 0 1 0-2.48Z" /></svg>
+        </span>
+        <div>
+          <p class="ig-eyebrow">Instagram · {ig.handle}</p>
+          <h2 class="ig-titulo">{t.titulo}</h2>
+        </div>
+      </div>
+      <ul class="ig-bullets">
+        {t.bullets.map((b) => (<li>{b}</li>))}
+      </ul>
+      <a class="ig-btn ig-btn-lg" href={ig.url} target="_blank" rel="noopener" aria-label={aria} data-ig>
+        Seguir {ig.handle}
+      </a>
+    </aside>
+  )
+}
+
+<style>
+  /* Gradiente oficial do Instagram (reconhecível = maior CTR). */
+  .ig-card {
+    --ig-grad: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    margin: var(--sp-6) 0;
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    background: linear-gradient(155deg, #1b1e24, #14161b);
+    color: #f4f5f7;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .ig-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--ig-grad);
+  }
+  .ig-head {
+    display: flex;
+    gap: var(--sp-4);
+    align-items: center;
+  }
+  .ig-ico {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  }
+  .ig-eyebrow {
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #d8a7c6;
+    margin: 0;
+  }
+  .ig-titulo {
+    color: #fff;
+    font-size: var(--step-1);
+    line-height: 1.25;
+    margin: 0.15rem 0 0;
+    max-width: 32ch;
+  }
+  .ig-bullets {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-4) 0 var(--sp-5);
+    display: grid;
+    gap: 0.6rem;
+  }
+  .ig-bullets li {
+    position: relative;
+    padding-left: 1.7rem;
+    font-size: var(--step-0);
+    line-height: 1.5;
+    color: #d4d8df;
+  }
+  .ig-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: var(--ig-grad);
+  }
+  .ig-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf);
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    text-decoration: none;
+    line-height: 1;
+    transition: filter 0.15s ease, transform 0.15s ease;
+  }
+  .ig-btn:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+  .ig-btn-lg {
+    width: 100%;
+    padding-block: 0.95rem;
+    font-size: var(--step-0);
+  }
+
+  /* Variante compacta (sidebar) */
+  .ig-compacto {
+    --ig-grad: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    border-radius: var(--radius);
+    padding: var(--sp-4);
+    background: linear-gradient(155deg, #1b1e24, #14161b);
+    color: #eceef2;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ig-compacto-top {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: var(--sp-3);
+  }
+  .ig-compacto-top .ig-ico {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+  .ig-compacto-tit {
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+  }
+  .ig-compacto-sub {
+    margin: 0.1rem 0 0;
+    font-size: var(--step--1);
+    color: #b9bfc9;
+    line-height: 1.4;
+  }
+  .ig-compacto .ig-btn {
+    width: 100%;
+  }
+</style>

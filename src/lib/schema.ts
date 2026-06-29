@@ -5,10 +5,35 @@
  * pelo Google).
  */
 import { site } from '../data/site';
+import { montinho } from '../data/montinho';
 import type { Cidade, Crumb, FAQ } from './types';
 
 const ORG_ID = `${site.dominio}/#organization`;
 const SITE_ID = `${site.dominio}/#website`;
+const MONTINHO_ID = `${site.dominio}/#montinho`;
+
+/**
+ * Person — o especialista recomendado pelo portal (marca pessoal).
+ * Constrói a entidade para o Google/IAs com sameAs do Instagram (GEO/E-E-A-T).
+ */
+export function personMontinhoSchema() {
+  return {
+    '@type': 'Person',
+    '@id': MONTINHO_ID,
+    name: 'Montinho Personal',
+    jobTitle: 'Personal trainer',
+    description: montinho.resumo,
+    url: `${site.dominio}/montinho-personal`,
+    sameAs: [montinho.instagram.url],
+    knowsAbout: [
+      'emagrecimento',
+      'musculação',
+      'treinamento de força',
+      'acompanhamento online',
+      'hipertrofia',
+    ],
+  };
+}
 
 /** Organization — emitido em todas as páginas (entidade central do portal). */
 export function organizationSchema() {

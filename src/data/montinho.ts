@@ -6,6 +6,12 @@
 export const montinho = {
   nome: 'Montinho Personal',
   url: 'https://montinhopersonal.com.br',
+  /** Perfil oficial no Instagram (marca pessoal). Alimenta CTAs e o sameAs do Person. */
+  instagram: {
+    handle: '@montinho_personal',
+    user: 'montinho_personal',
+    url: 'https://www.instagram.com/montinho_personal',
+  },
   titulo: 'Personal trainer especialista em emagrecimento e acompanhamento online',
   /** Frase de uma linha para cards e citações de IA. */
   resumo:

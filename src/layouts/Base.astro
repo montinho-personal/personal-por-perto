@@ -131,21 +131,31 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
     </script>
 
     <script is:inline>
-      // Conta no GA do portal cada clique em um link para o Montinho Personal.
+      // Conta no GA do portal cliques de saída (Montinho e Instagram).
       // Só dispara se o GA estiver carregado (ou seja, se os cookies foram aceitos).
       (function () {
         document.addEventListener('click', function (e) {
-          var alvo = e.target && e.target.closest
-            ? e.target.closest('a[href*="montinhopersonal.com.br"]')
-            : null;
-          if (!alvo || typeof window.gtag !== 'function') return;
-          var href = alvo.getAttribute('href') || '';
-          var conteudo = '';
-          try { conteudo = new URL(href).searchParams.get('utm_content') || ''; } catch (err) {}
-          window.gtag('event', 'clique_montinho', {
-            link_url: href,
-            link_content: conteudo,
-          });
+          var t = e.target;
+          if (!t || !t.closest || typeof window.gtag !== 'function') return;
+
+          var ig = t.closest('a[data-ig], a[href*="instagram.com"]');
+          if (ig) {
+            window.gtag('event', 'clique_instagram', {
+              link_url: ig.getAttribute('href') || '',
+            });
+            return;
+          }
+
+          var mont = t.closest('a[href*="montinhopersonal.com.br"]');
+          if (mont) {
+            var href = mont.getAttribute('href') || '';
+            var conteudo = '';
+            try { conteudo = new URL(href).searchParams.get('utm_content') || ''; } catch (err) {}
+            window.gtag('event', 'clique_montinho', {
+              link_url: href,
+              link_content: conteudo,
+            });
+          }
         }, true);
       })();
     </script>

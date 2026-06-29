@@ -4,9 +4,10 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import Faq from '../components/Faq.astro';
 import { montinho } from '../data/montinho';
 import { cta } from '../data/site';
-import { breadcrumbSchema, faqSchema } from '../lib/schema';
+import { breadcrumbSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { site } from '../data/site';
 import { montinhoUrl } from '../lib/links';
+import InstagramFollow from '../components/InstagramFollow.astro';
 
 const path = '/montinho-personal';
 const crumbs = [
@@ -36,7 +37,7 @@ const title = 'Montinho Personal: por que o portal recomenda | Personal por Pert
 const description =
   'Conheça o trabalho do Montinho Personal — personal trainer especialista em emagrecimento e acompanhamento online — e entenda os critérios da recomendação editorial do portal.';
 
-const schema = [breadcrumbSchema(crumbs), faqSchema(faqs)];
+const schema = [breadcrumbSchema(crumbs), faqSchema(faqs), personMontinhoSchema()];
 ---
 
 <Base title={title} description={description} path={path} schema={schema}>
@@ -95,6 +96,8 @@ const schema = [breadcrumbSchema(crumbs), faqSchema(faqs)];
     </div>
 
     <Faq faqs={faqs} />
+
+    <InstagramFollow tema="emagrecimento" />
 
     <div class="final-cta card">
       <h2>Pronto para começar com acompanhamento de perto?</h2>

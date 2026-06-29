@@ -6,6 +6,8 @@ import Faq from '../../components/Faq.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import CityCard from '../../components/CityCard.astro';
 import Sidebar from '../../components/Sidebar.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
@@ -17,6 +19,7 @@ import {
   articleSchema,
   itemListSchema,
   servicoCidadeSchema,
+  personMontinhoSchema,
 } from '../../lib/schema';
 import { site } from '../../data/site';
 
@@ -113,6 +116,7 @@ const schema = [
   servicoCidadeSchema(cidade),
   itemListSchema(`Tipos de treino com personal trainer em ${n}`, tiposTreino, url),
   faqSchema(faqs),
+  personMontinhoSchema(),
 ];
 
 const objetivoDesc: Record<string, string> = {
@@ -421,6 +425,8 @@ const objetivoDesc: Record<string, string> = {
         </p>
       </section>
 
+      <InstagramFollow tema="cidade" contexto={n} />
+
       <section id="avaliar">
         <h2>Como avaliar um profissional</h2>
         <p>
@@ -457,6 +463,8 @@ const objetivoDesc: Record<string, string> = {
         <p>{conclusaoTexto}</p>
       </section>
 
+      <AutorMontinho />
+
       <!-- Fontes / EEAT -->
       <section class="sources" aria-labelledby="fontes-h">
         <h2 id="fontes-h">Fontes e transparência</h2>
@@ -484,6 +492,8 @@ const objetivoDesc: Record<string, string> = {
         </p>
         <a class="btn btn-primary" href="/montinho-personal">Entenda a recomendação</a>
       </div>
+
+      <InstagramFollow variante="compacto" />
     </Sidebar>
   </div>
 

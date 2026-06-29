@@ -1,0 +1,169 @@
+---
+/**
+ * Bloco "Sobre o especialista" — E-E-A-T (pessoa real por trás do conteúdo),
+ * branding e conversão (seguir no Instagram + conhecer o acompanhamento).
+ * Sem foto real: usa monograma; aceita `foto` quando houver uma imagem oficial.
+ */
+import { montinho } from '../data/montinho';
+
+export interface Props {
+  /** URL de foto oficial (opcional). Sem ela, usa monograma. */
+  foto?: string;
+}
+const { foto } = Astro.props;
+const ig = montinho.instagram;
+const chips = ['+20 anos de experiência', 'Ex-obeso: −40 kg', 'Acompanhamento online no Brasil todo'];
+---
+
+<aside class="autor" aria-label="Sobre o especialista">
+  <div class="autor-topo">
+    {
+      foto ? (
+        <img class="autor-foto" src={foto} alt="Montinho Personal" width="96" height="96" loading="lazy" decoding="async" />
+      ) : (
+        <span class="autor-monograma" aria-hidden="true">MP</span>
+      )
+    }
+    <div class="autor-id">
+      <p class="autor-eyebrow">Quem recomenda</p>
+      <h2 class="autor-nome">Montinho Personal</h2>
+      <p class="autor-cargo">Personal trainer · especialista em emagrecimento e acompanhamento online</p>
+    </div>
+  </div>
+
+  <p class="autor-bio">
+    {montinho.resumo} Quem perdeu mais de 40 kg na própria pele entende, na prática, as
+    barreiras de quem quer emagrecer — e transforma isso em método.
+  </p>
+
+  <ul class="autor-chips">
+    {chips.map((c) => (<li>{c}</li>))}
+  </ul>
+
+  <div class="autor-acoes">
+    <a class="autor-btn autor-btn-ig" href={ig.url} target="_blank" rel="noopener" data-ig
+      aria-label={`Seguir ${ig.handle} no Instagram`}>
+      Seguir {ig.handle}
+    </a>
+    <a class="autor-btn autor-btn-ghost" href="/montinho-personal">
+      Conhecer o acompanhamento
+    </a>
+  </div>
+  <p class="autor-nota">
+    Dicas diárias de treino, emagrecimento e nutrição — e os bastidores de quem vive isso —
+    estão no Instagram {ig.handle}.
+  </p>
+</aside>
+
+<style>
+  .autor {
+    margin: var(--sp-6) 0;
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+    color: #eceef2;
+    box-shadow: var(--shadow-lg);
+  }
+  .autor-topo {
+    display: flex;
+    gap: var(--sp-4);
+    align-items: center;
+  }
+  .autor-foto,
+  .autor-monograma {
+    flex-shrink: 0;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+  }
+  .autor-monograma {
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 1.9rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), #b8431a);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+  }
+  .autor-foto {
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+  }
+  .autor-eyebrow {
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+  }
+  .autor-nome {
+    margin: 0.1rem 0 0;
+    color: #fff;
+    font-size: var(--step-1);
+  }
+  .autor-cargo {
+    margin: 0.15rem 0 0;
+    font-size: var(--step--1);
+    color: #c7ccd4;
+    line-height: 1.4;
+  }
+  .autor-bio {
+    margin: var(--sp-4) 0 0;
+    line-height: 1.6;
+    color: #d4d8df;
+  }
+  .autor-chips {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-4) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .autor-chips li {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+  }
+  .autor-acoes {
+    margin-top: var(--sp-5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+  .autor-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.8rem 1.4rem;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .autor-btn-ig {
+    color: #fff;
+    background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf);
+  }
+  .autor-btn-ig:hover {
+    filter: brightness(1.08);
+  }
+  .autor-btn-ghost {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .autor-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+  .autor-nota {
+    margin: var(--sp-4) 0 0;
+    font-size: var(--step--1);
+    color: #aab0ba;
+    line-height: 1.55;
+  }
+</style>
