@@ -140,8 +140,34 @@ import { cidade as sobral } from './sobral-ce';
 import { cidade as parauapebas } from './parauapebas-pa';
 import { cidade as rioVerde } from './rio-verde-go';
 import { cidade as sinop } from './sinop-mt';
+// Bloco 7
+import { cidade as saoCaetanoDoSul } from './sao-caetano-do-sul-sp';
+import { cidade as paulinia } from './paulinia-sp';
+import { cidade as atibaia } from './atibaia-sp';
+import { cidade as bragancaPaulista } from './braganca-paulista-sp';
+import { cidade as aracatuba } from './aracatuba-sp';
+import { cidade as resende } from './resende-rj';
+import { cidade as teresopolis } from './teresopolis-rj';
+import { cidade as jaraguaDoSul } from './jaragua-do-sul-sc';
+import { cidade as bentoGoncalves } from './bento-goncalves-rs';
+import { cidade as araucaria } from './araucaria-pr';
+import { cidade as caboDeSantoAgostinho } from './cabo-de-santo-agostinho-pe';
+import { cidade as caucaia } from './caucaia-ce';
+import { cidade as itabuna } from './itabuna-ba';
+import { cidade as pousoAlegre } from './pouso-alegre-mg';
+import { cidade as cachoeiroDeItapemirim } from './cachoeiro-de-itapemirim-es';
+import { cidade as caldasNovas } from './caldas-novas-go';
+import { cidade as maraba } from './maraba-pa';
+import { cidade as lucasDoRioVerde } from './lucas-do-rio-verde-mt';
+import { cidade as varzeaGrande } from './varzea-grande-mt';
+import { cidade as tresLagoas } from './tres-lagoas-ms';
 
 export const cidades: Cidade[] = [
+  // Bloco 7 (expansão — alta renda, agro e polos regionais)
+  saoCaetanoDoSul, paulinia, atibaia, bragancaPaulista, aracatuba,
+  resende, teresopolis, jaraguaDoSul, bentoGoncalves, araucaria,
+  caboDeSantoAgostinho, caucaia, itabuna, pousoAlegre, cachoeiroDeItapemirim,
+  caldasNovas, maraba, lucasDoRioVerde, varzeaGrande, tresLagoas,
   // Bloco 6 (expansão — alta renda, agro e polos regionais)
   marica, rioDasOstras, novaFriburgo, mogiDasCruzes, franca, jacarei,
   americana, rioClaro, indaiatuba, seteLagoas, pocosDeCaldas, varginha,
