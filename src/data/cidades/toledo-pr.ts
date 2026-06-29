@@ -1,0 +1,100 @@
+import type { Cidade } from '../../lib/types';
+
+export const cidade: Cidade = {
+  slug: 'toledo-pr',
+  nome: 'Toledo',
+  uf: 'PR',
+  estado: 'Paraná',
+  estadoSlug: 'parana',
+  regiao: 'Sul',
+  gentilico: 'toledano',
+  tipo: 'cidade',
+
+  populacao: 150470,
+  populacaoAno: 2022,
+  idhm: 0.768,
+  idhmClasse: 'alto',
+  altitudeM: 560,
+
+  resumoEconomico:
+    'Maior cidade do oeste paranaense e principal polo do agronegócio do estado, Toledo é líder nacional em suinocultura e tem um dos maiores valores de produção agropecuária do Paraná, com gigantes como a BRF e a cooperativa Coopavel. Boa parte dos empregos está ligada a essa cadeia, sustentando alta renda.',
+
+  mercado:
+    'O mercado consumidor é robusto, com forte presença de redes e academias locais e oferta diversificada (musculação, crossfit, funcional e personal), sustentada pela renda do agronegócio.',
+
+  bairrosNobres: ['Jardim Porto Alegre', 'Jardim Gisela', 'Vila Industrial', 'Jardim La Salle'],
+  bairrosPopulares: ['Jardim Coopagro', 'Vila Pioneiro', 'Jardim Europa', 'Jardim Santa Maria'],
+
+  parques: [
+    {
+      nome: 'Parque Ecológico Diva Paim Barth (Lago Municipal)',
+      descricao:
+        'Cartão-postal da cidade, com pista de caminhada e corrida emborrachada, ciclovia, academia ao ar livre e quadra poliesportiva.',
+    },
+    {
+      nome: 'Praças com academia ao ar livre',
+      descricao:
+        'Bosques e praças da rede municipal com equipamentos de ginástica.',
+    },
+    {
+      nome: 'Vias de mobilidade (Av. Maripá)',
+      descricao:
+        'Eixos com ciclovia, usados para pedal e corrida na malha urbana.',
+    },
+  ],
+  ciclovias:
+    'Há ciclovias em projetos de mobilidade, como na Av. Maripá; a extensão total da malha ainda não é divulgada em fonte oficial.',
+
+  clima:
+    'O clima é subtropical úmido, com verões quentes e úmidos e invernos curtos e amenos, média em torno de 19 °C.',
+  climaTreino:
+    'Os invernos são menos rigorosos que no resto do Sul, mas o verão quente e úmido pede hidratação e treino nas primeiras horas do dia.',
+
+  mobilidade:
+    'Toledo é cortada pela BR-467 (ligação com Cascavel) e pela BR-163, eixos do oeste paranaense.',
+
+  corridas: [
+    {
+      nome: 'Meia Maratona de Toledo',
+      descricao:
+        'Tradicional prova com 21 km, rústica de 6 km, revezamento e caminhada, com largada no Lago Municipal.',
+    },
+    {
+      nome: 'Provas da Associação Correr Toledo',
+      descricao:
+        'Corridas de rua locais com largada no Lago Diva Paim Barth.',
+    },
+  ],
+  culturaEsportiva:
+    'Cidade ativa, com o Lago Municipal como hub de corrida e caminhada e boa qualidade de vida que estimula a prática esportiva.',
+  academias:
+    'A oferta reúne grandes redes e academias locais, com renda alta do agronegócio, complementada pelo Lago Municipal e pelas praças com academia ao ar livre.',
+
+  destaquesFitness: [
+    'Lago Municipal como ponto central de treino ao ar livre (pista emborrachada e academia ao ar livre).',
+    'Renda alta do agronegócio — público disposto a investir em personal e academias premium.',
+    'Presença de grandes redes ao lado de academias locais.',
+    'Clima mais ameno que o Sul profundo, favorável ao treino outdoor o ano todo.',
+  ],
+
+  precos: {
+    avulsaMin: 70,
+    avulsaMax: 165,
+    mensalMin: 360,
+    mensalMax: 960,
+    onlineMin: 170,
+    onlineMax: 440,
+  },
+
+  conclusao:
+    'Capital do agronegócio do Paraná, Toledo une alta renda e o Lago Municipal como centro de treino. Um personal trainer encontra aqui um público com poder de investir, ideal para treino presencial e online, num clima favorável ao outdoor.',
+
+  vizinhas: ['cascavel-pr', 'foz-do-iguacu-pr'],
+
+  fontes: [
+    { nome: 'IBGE Cidades — Toledo', url: 'https://cidades.ibge.gov.br/brasil/pr/toledo/panorama' },
+    { nome: 'Prefeitura de Toledo', url: 'https://www.toledo.pr.gov.br/' },
+    { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
+  ],
+  atualizadoEm: '2026-06-29',
+};

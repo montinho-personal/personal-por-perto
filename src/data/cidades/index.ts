@@ -161,8 +161,33 @@ import { cidade as maraba } from './maraba-pa';
 import { cidade as lucasDoRioVerde } from './lucas-do-rio-verde-mt';
 import { cidade as varzeaGrande } from './varzea-grande-mt';
 import { cidade as tresLagoas } from './tres-lagoas-ms';
+// Bloco 8
+import { cidade as novaLima } from './nova-lima-mg';
+import { cidade as sorriso } from './sorriso-mt';
+import { cidade as sumare } from './sumare-sp';
+import { cidade as cotia } from './cotia-sp';
+import { cidade as caraguatatuba } from './caraguatatuba-sp';
+import { cidade as saquarema } from './saquarema-rj';
+import { cidade as barraMansa } from './barra-mansa-rj';
+import { cidade as toledo } from './toledo-pr';
+import { cidade as passoFundo } from './passo-fundo-rs';
+import { cidade as palhoca } from './palhoca-sc';
+import { cidade as ilheus } from './ilheus-ba';
+import { cidade as barreiras } from './barreiras-ba';
+import { cidade as paulistaPE } from './paulista-pe';
+import { cidade as maracanau } from './maracanau-ce';
+import { cidade as linhares } from './linhares-es';
+import { cidade as catalao } from './catalao-go';
+import { cidade as arapiraca } from './arapiraca-al';
+import { cidade as araguaina } from './araguaina-to';
+import { cidade as jiParana } from './ji-parana-ro';
+import { cidade as castanhal } from './castanhal-pa';
 
 export const cidades: Cidade[] = [
+  // Bloco 8 (expansão — alta renda, agro, turismo e 2as cidades)
+  novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa,
+  toledo, passoFundo, palhoca, ilheus, barreiras, paulistaPE, maracanau,
+  linhares, catalao, arapiraca, araguaina, jiParana, castanhal,
   // Bloco 7 (expansão — alta renda, agro e polos regionais)
   saoCaetanoDoSul, paulinia, atibaia, bragancaPaulista, aracatuba,
   resende, teresopolis, jaraguaDoSul, bentoGoncalves, araucaria,
