@@ -56,8 +56,34 @@ import { cidade as belem } from './belem-pa';
 import { cidade as teresina } from './teresina-pi';
 import { cidade as saoLuis } from './sao-luis-ma';
 import { cidade as feiraDeSantana } from './feira-de-santana-ba';
+// Bloco 3
+import { cidade as piracicaba } from './piracicaba-sp';
+import { cidade as bauru } from './bauru-sp';
+import { cidade as guaruja } from './guaruja-sp';
+import { cidade as praiaGrande } from './praia-grande-sp';
+import { cidade as maua } from './maua-sp';
+import { cidade as diadema } from './diadema-sp';
+import { cidade as novaIguacu } from './nova-iguacu-rj';
+import { cidade as duqueDeCaxias } from './duque-de-caxias-rj';
+import { cidade as saoGoncalo } from './sao-goncalo-rj';
+import { cidade as betim } from './betim-mg';
+import { cidade as pontaGrossa } from './ponta-grossa-pr';
+import { cidade as pelotas } from './pelotas-rs';
+import { cidade as aparecidaDeGoiania } from './aparecida-de-goiania-go';
+import { cidade as jaboatao } from './jaboatao-dos-guararapes-pe';
+import { cidade as maceio } from './maceio-al';
+import { cidade as camacari } from './camacari-ba';
+import { cidade as portoVelho } from './porto-velho-ro';
+import { cidade as rioBranco } from './rio-branco-ac';
+import { cidade as boaVista } from './boa-vista-rr';
+import { cidade as macapa } from './macapa-ap';
 
 export const cidades: Cidade[] = [
+  // Bloco 3 (expansão — capitais finais + metrópoles)
+  piracicaba, bauru, guaruja, praiaGrande, maua, diadema,
+  novaIguacu, duqueDeCaxias, saoGoncalo, betim, pontaGrossa, pelotas,
+  aparecidaDeGoiania, jaboatao, maceio, camacari,
+  portoVelho, rioBranco, boaVista, macapa,
   // Sudeste — SP
   saoPaulo,
   campinas,

@@ -225,4 +225,54 @@ export const estados: Estado[] = [
       'Capital histórica e litorânea, São Luís combina patrimônio cultural, orla e lagoas urbanas com um mercado fitness crescente, em um dos cenários mais singulares do Nordeste.',
     atualizadoEm: '2026-06-29',
   },
+  {
+    slug: 'alagoas',
+    nome: 'Alagoas',
+    uf: 'AL',
+    regiao: 'Nordeste',
+    capital: 'Maceió',
+    descricao:
+      'Com uma das orlas mais bonitas do Brasil, Alagoas tem em Maceió uma capital onde a praia é o palco natural do treino — caminhada, corrida e esportes de areia movimentam os calçadões o ano inteiro.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'rondonia',
+    nome: 'Rondônia',
+    uf: 'RO',
+    regiao: 'Norte',
+    capital: 'Porto Velho',
+    descricao:
+      'Porta de entrada da Amazônia Ocidental, Rondônia tem em Porto Velho uma capital às margens do Rio Madeira, com economia ligada à energia e ao agronegócio e um mercado fitness em expansão.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'roraima',
+    nome: 'Roraima',
+    uf: 'RR',
+    regiao: 'Norte',
+    capital: 'Boa Vista',
+    descricao:
+      'Boa Vista, a capital mais ao norte do país, é planejada em formato radial, com parques e orlas que favorecem a atividade física apesar do calor equatorial.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'acre',
+    nome: 'Acre',
+    uf: 'AC',
+    regiao: 'Norte',
+    capital: 'Rio Branco',
+    descricao:
+      'No extremo oeste da Amazônia, o Acre tem em Rio Branco uma capital de clima quente e úmido, com parques urbanos e uma cena fitness que cresce a cada ano.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'amapa',
+    nome: 'Amapá',
+    uf: 'AP',
+    regiao: 'Norte',
+    capital: 'Macapá',
+    descricao:
+      'Cortada pela Linha do Equador e às margens do Rio Amazonas, Macapá dá ao Amapá uma orla e um Marco Zero que viraram cenário de caminhada, corrida e vida ativa sob o sol equatorial.',
+    atualizadoEm: '2026-06-29',
+  },
 ];

@@ -13,13 +13,18 @@ const crumbs = [
   { nome: 'Cidades', url: path },
 ];
 
-// Agrupa por estado
-const porEstado = estados.map((e) => ({
-  estado: e,
-  lista: cidades
-    .filter((c) => c.estadoSlug === e.slug)
-    .sort((a, b) => b.populacao - a.populacao),
-}));
+const norm = (s: string) =>
+  s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+// Agrupa por estado (apenas estados com cidades publicadas)
+const porEstado = estados
+  .map((e) => ({
+    estado: e,
+    lista: cidades
+      .filter((c) => c.estadoSlug === e.slug)
+      .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0)),
+  }))
+  .filter((g) => g.lista.length > 0);
 
 const title = 'Personal Trainer por cidade no Brasil — guias locais';
 const description =
@@ -44,17 +49,34 @@ const schema = [
       <h1>Personal Trainer por cidade</h1>
       <p class="lead" style="max-width: 62ch">
         Cada cidade tem seu próprio guia, com dados locais reais, faixas de preço,
-        onde treinar e como escolher o profissional certo. O portal cresce
-        continuamente — abaixo estão as cidades já publicadas.
+        onde treinar e como escolher o profissional certo. Já são
+        <strong>{cidades.length} cidades</strong> em {porEstado.length} estados.
       </p>
+
+      <div class="busca-wrap">
+        <label for="busca-cidade" class="sr-only">Buscar cidade</label>
+        <span class="busca-ico" aria-hidden="true">🔎</span>
+        <input
+          type="search"
+          id="busca-cidade"
+          class="busca-input"
+          placeholder="Buscar sua cidade ou estado (ex.: Goiânia, SP, Bahia)…"
+          autocomplete="off"
+        />
+      </div>
     </div>
   </header>
 
   <section class="section">
     <div class="container">
+      <p class="busca-vazio" id="busca-vazio" hidden>
+        Nenhuma cidade encontrada com esse nome. O portal cresce sempre — enquanto
+        isso, o <a href="/montinho-personal">acompanhamento online</a> atende todo o Brasil.
+      </p>
+
       {
         porEstado.map(({ estado, lista }) => (
-          <div class="estado-bloco">
+          <div class="estado-bloco" data-uf={estado.uf}>
             <div class="estado-head">
               <h2>
                 <a href={`/estado/${estado.slug}`}>{estado.nome}</a>
@@ -65,7 +87,11 @@ const schema = [
               </a>
             </div>
             <div class="grid grid-3">
-              {lista.map((c) => (<CityCard cidade={c} />))}
+              {lista.map((c) => (
+                <div class="busca-item" data-busca={norm(`${c.nome} ${c.uf} ${estado.nome}`)}>
+                  <CityCard cidade={c} />
+                </div>
+              ))}
             </div>
           </div>
         ))
@@ -87,7 +113,73 @@ const schema = [
   </section>
 </Base>
 
+<script>
+  const input = document.getElementById('busca-cidade') as HTMLInputElement | null;
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.busca-item'));
+  const blocos = Array.from(document.querySelectorAll<HTMLElement>('.estado-bloco'));
+  const vazio = document.getElementById('busca-vazio');
+  const norm = (s: string) =>
+    s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+  function filtrar() {
+    if (!input) return;
+    const q = norm(input.value);
+    let total = 0;
+    for (const el of items) {
+      const match = !q || (el.dataset.busca || '').includes(q);
+      el.hidden = !match;
+      if (match) total++;
+    }
+    for (const b of blocos) {
+      b.hidden = !b.querySelector('.busca-item:not([hidden])');
+    }
+    if (vazio) vazio.hidden = total !== 0;
+  }
+
+  input?.addEventListener('input', filtrar);
+</script>
+
 <style>
+  .busca-wrap {
+    position: relative;
+    margin-top: var(--sp-5);
+    max-width: 540px;
+  }
+  .busca-ico {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.05rem;
+    opacity: 0.7;
+  }
+  .busca-input {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 2.8rem;
+    font-size: var(--step-0);
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+  .busca-input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-100);
+  }
+  .busca-vazio {
+    background: var(--bg-tint);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--sp-5);
+    text-align: center;
+    color: var(--ink-soft);
+  }
+  .busca-item {
+    min-width: 0;
+    display: flex;
+  }
   .estado-bloco + .estado-bloco {
     margin-top: var(--sp-8);
   }
