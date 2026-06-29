@@ -77,8 +77,33 @@ import { cidade as portoVelho } from './porto-velho-ro';
 import { cidade as rioBranco } from './rio-branco-ac';
 import { cidade as boaVista } from './boa-vista-rr';
 import { cidade as macapa } from './macapa-ap';
+// Bloco 4
+import { cidade as olinda } from './olinda-pe';
+import { cidade as caruaru } from './caruaru-pe';
+import { cidade as vitoriaDaConquista } from './vitoria-da-conquista-ba';
+import { cidade as anapolis } from './anapolis-go';
+import { cidade as campinaGrande } from './campina-grande-pb';
+import { cidade as mossoro } from './mossoro-rn';
+import { cidade as ananindeua } from './ananindeua-pa';
+import { cidade as santarem } from './santarem-pa';
+import { cidade as cariacica } from './cariacica-es';
+import { cidade as voltaRedonda } from './volta-redonda-rj';
+import { cidade as petropolis } from './petropolis-rj';
+import { cidade as canoas } from './canoas-rs';
+import { cidade as santaMaria } from './santa-maria-rs';
+import { cidade as chapeco } from './chapeco-sc';
+import { cidade as criciuma } from './criciuma-sc';
+import { cidade as itajai } from './itajai-sc';
+import { cidade as cascavel } from './cascavel-pr';
+import { cidade as fozDoIguacu } from './foz-do-iguacu-pr';
+import { cidade as uberaba } from './uberaba-mg';
+import { cidade as montesClaros } from './montes-claros-mg';
 
 export const cidades: Cidade[] = [
+  // Bloco 4 (expansão — metrópoles e polos regionais)
+  olinda, caruaru, vitoriaDaConquista, anapolis, campinaGrande, mossoro,
+  ananindeua, santarem, cariacica, voltaRedonda, petropolis, canoas,
+  santaMaria, chapeco, criciuma, itajai, cascavel, fozDoIguacu, uberaba, montesClaros,
   // Bloco 3 (expansão — capitais finais + metrópoles)
   piracicaba, bauru, guaruja, praiaGrande, maua, diadema,
   novaIguacu, duqueDeCaxias, saoGoncalo, betim, pontaGrossa, pelotas,
