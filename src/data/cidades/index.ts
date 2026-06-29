@@ -229,6 +229,27 @@ import { cidade as carapicuiba } from './carapicuiba-sp';
 import { cidade as jandira } from './jandira-sp';
 import { cidade as itapevi } from './itapevi-sp';
 import { cidade as aldeiaDaSerra } from './aldeia-da-serra-sp';
+// Bloco 14 (polos regionais e metrôs — SP/RJ/PR/SC/RS/DF/GO/PE/SE/MA)
+import { cidade as birigui } from './birigui-sp';
+import { cidade as jau } from './jau-sp';
+import { cidade as lorena } from './lorena-sp';
+import { cidade as votorantim } from './votorantim-sp';
+import { cidade as mage } from './mage-rj';
+import { cidade as mesquita } from './mesquita-rj';
+import { cidade as nilopolis } from './nilopolis-rj';
+import { cidade as fazendaRioGrande } from './fazenda-rio-grande-pr';
+import { cidade as almiranteTamandare } from './almirante-tamandare-pr';
+import { cidade as arapongas } from './arapongas-pr';
+import { cidade as navegantes } from './navegantes-sc';
+import { cidade as concordia } from './concordia-sc';
+import { cidade as alvorada } from './alvorada-rs';
+import { cidade as cachoeirinha } from './cachoeirinha-rs';
+import { cidade as lajeado } from './lajeado-rs';
+import { cidade as taguatinga } from './taguatinga-df';
+import { cidade as luziania } from './luziania-go';
+import { cidade as vitoriaDeSantoAntao } from './vitoria-de-santo-antao-pe';
+import { cidade as nossaSenhoraDoSocorro } from './nossa-senhora-do-socorro-se';
+import { cidade as caxiasMa } from './caxias-ma';
 // Bloco 13 (polos regionais e grandes metrôs)
 import { cidade as itaquaquecetuba } from './itaquaquecetuba-sp';
 import { cidade as guaratingueta } from './guaratingueta-sp';
@@ -269,6 +290,10 @@ import { cidade as pinhais } from './pinhais-pr';
 import { cidade as aguasClaras } from './aguas-claras-df';
 
 export const cidades: Cidade[] = [
+  // Bloco 14 (polos regionais e metrôs)
+  birigui, jau, lorena, votorantim, mage, mesquita, nilopolis, fazendaRioGrande,
+  almiranteTamandare, arapongas, navegantes, concordia, alvorada, cachoeirinha, lajeado,
+  taguatinga, luziania, vitoriaDeSantoAntao, nossaSenhoraDoSocorro, caxiasMa,
   // Bloco 13 (polos regionais e grandes metrôs)
   itaquaquecetuba, guaratingueta, pindamonhangaba, itapetininga, assis, salto,
   belfordRoxo, itaguai, itaperuna, ribeiraoDasNeves, santaLuzia, colombo, campoLargo,

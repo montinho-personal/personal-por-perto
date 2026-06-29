@@ -22,7 +22,7 @@ export const cidade: Cidade = {
   mercado:
     'Cidade grande do Entorno do DF e de perfil popular, Luziânia tem mercado fitness apoiado em academias de bairro espalhadas pelo centro e pelo Jardim Ingá, com forte espaço para o personal domiciliar e o atendimento em condomínios. A proximidade de Brasília influencia preços e referências de treino, mas o poder de compra médio-popular mantém os valores acessíveis.',
 
-  bairrosNobres: ['Setor Central', 'Jardim Ingá', 'Mingone', 'Setor Sul'],
+  bairrosNobres: ['Setor Central', 'Mingone', 'Setor Sul'],
   bairrosPopulares: ['Jardim Ingá', 'Parque JK', 'Vila Esperança', 'Setor Leste'],
 
   parques: [
