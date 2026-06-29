@@ -203,8 +203,33 @@ import { cidade as portoSeguro } from './porto-seguro-ba';
 import { cidade as garanhuns } from './garanhuns-pe';
 import { cidade as jatai } from './jatai-go';
 import { cidade as primaveraDoLeste } from './primavera-do-leste-mt';
+// Bloco 10
+import { cidade as valinhos } from './valinhos-sp';
+import { cidade as hortolandia } from './hortolandia-sp';
+import { cidade as taboaoDaSerra } from './taboao-da-serra-sp';
+import { cidade as catanduva } from './catanduva-sp';
+import { cidade as saoSebastiao } from './sao-sebastiao-sp';
+import { cidade as saoJoaoDeMeriti } from './sao-joao-de-meriti-rj';
+import { cidade as itaborai } from './itaborai-rj';
+import { cidade as coronelFabriciano } from './coronel-fabriciano-mg';
+import { cidade as patosDeMinas } from './patos-de-minas-mg';
+import { cidade as itajuba } from './itajuba-mg';
+import { cidade as patoBranco } from './pato-branco-pr';
+import { cidade as apucarana } from './apucarana-pr';
+import { cidade as gravatai } from './gravatai-rs';
+import { cidade as saoLeopoldo } from './sao-leopoldo-rs';
+import { cidade as brusque } from './brusque-sc';
+import { cidade as itapema } from './itapema-sc';
+import { cidade as teixeiraDeFreitas } from './teixeira-de-freitas-ba';
+import { cidade as gravata } from './gravata-pe';
+import { cidade as crato } from './crato-ce';
+import { cidade as guarapari } from './guarapari-es';
 
 export const cidades: Cidade[] = [
+  // Bloco 10 (expansão — alta renda/metrópole, agro, turismo e polos regionais)
+  valinhos, hortolandia, taboaoDaSerra, catanduva, saoSebastiao, saoJoaoDeMeriti,
+  itaborai, coronelFabriciano, patosDeMinas, itajuba, patoBranco, apucarana,
+  gravatai, saoLeopoldo, brusque, itapema, teixeiraDeFreitas, gravata, crato, guarapari,
   // Bloco 9 (expansão — premium, turismo, agro e polos regionais)
   vinhedo, itu, botucatu, saoVicente, barretos, buzios, araruama, itabira,
   saoJoaoDelRei, lavras, paranagua, guarapuava, rioGrande, gramado, lages,
