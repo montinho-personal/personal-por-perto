@@ -393,17 +393,33 @@ import { cidade as patos } from './patos-pb';
 import { cidade as caico } from './caico-rn';
 import { cidade as lagarto } from './lagarto-se';
 import { cidade as ariquemes } from './ariquemes-ro';
-// Bloco 20 (polos regionais e interior — SP/MG/RJ/PR; parcial)
+// Bloco 20 (polos regionais e interior — espalhamento nacional)
 import { cidade as francoDaRocha } from './franco-da-rocha-sp';
 import { cidade as lins } from './lins-sp';
 import { cidade as novaSerrana } from './nova-serrana-mg';
 import { cidade as curvelo } from './curvelo-mg';
 import { cidade as seropedica } from './seropedica-rj';
 import { cidade as rolandia } from './rolandia-pr';
+import { cidade as cacador } from './cacador-sc';
+import { cidade as carazinho } from './carazinho-rs';
+import { cidade as jacobina } from './jacobina-ba';
+import { cidade as goiana } from './goiana-pe';
+import { cidade as itapipoca } from './itapipoca-ce';
+import { cidade as goianesia } from './goianesia-go';
+import { cidade as barraDoGarcas } from './barra-do-garcas-mt';
+import { cidade as navirai } from './navirai-ms';
+import { cidade as bacabal } from './bacabal-ma';
+import { cidade as braganca } from './braganca-pa';
+import { cidade as picos } from './picos-pi';
+import { cidade as gurupi } from './gurupi-to';
+import { cidade as palmeiraDosIndios } from './palmeira-dos-indios-al';
+import { cidade as itacoatiara } from './itacoatiara-am';
 
 export const cidades: Cidade[] = [
-  // Bloco 20 (polos regionais e interior — parcial)
-  francoDaRocha, lins, novaSerrana, curvelo, seropedica, rolandia,
+  // Bloco 20 (polos regionais e interior — espalhamento nacional)
+  francoDaRocha, lins, novaSerrana, curvelo, seropedica, rolandia, cacador, carazinho,
+  jacobina, goiana, itapipoca, goianesia, barraDoGarcas, navirai, bacabal, braganca,
+  picos, gurupi, palmeiraDosIndios, itacoatiara,
   // Bloco 19 (polos regionais e novos estados PB/RN/SE/RO)
   caieiras, bebedouro, araguari, joaoMonlevade, rioBonito, sarandi, indaial, farroupilha,
   guanambi, arcoverde, aquiraz, mineiros, caceres, pontaPora, codo, altamira, patos,
