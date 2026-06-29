@@ -13,7 +13,7 @@ export const cidade: Cidade = {
   populacao: 224116,
   populacaoAno: 2022,
   idhm: 0.717,
-  idhmClasse: 'médio',
+  idhmClasse: 'alto',
   altitudeM: 111,
 
   resumoEconomico:

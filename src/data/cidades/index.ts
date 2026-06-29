@@ -229,6 +229,27 @@ import { cidade as carapicuiba } from './carapicuiba-sp';
 import { cidade as jandira } from './jandira-sp';
 import { cidade as itapevi } from './itapevi-sp';
 import { cidade as aldeiaDaSerra } from './aldeia-da-serra-sp';
+// Bloco 13 (polos regionais e grandes metrôs)
+import { cidade as itaquaquecetuba } from './itaquaquecetuba-sp';
+import { cidade as guaratingueta } from './guaratingueta-sp';
+import { cidade as pindamonhangaba } from './pindamonhangaba-sp';
+import { cidade as itapetininga } from './itapetininga-sp';
+import { cidade as assis } from './assis-sp';
+import { cidade as salto } from './salto-sp';
+import { cidade as belfordRoxo } from './belford-roxo-rj';
+import { cidade as itaguai } from './itaguai-rj';
+import { cidade as itaperuna } from './itaperuna-rj';
+import { cidade as ribeiraoDasNeves } from './ribeirao-das-neves-mg';
+import { cidade as santaLuzia } from './santa-luzia-mg';
+import { cidade as colombo } from './colombo-pr';
+import { cidade as campoLargo } from './campo-largo-pr';
+import { cidade as tubarao } from './tubarao-sc';
+import { cidade as camboriu } from './camboriu-sc';
+import { cidade as viamao } from './viamao-rs';
+import { cidade as santaCruzDoSul } from './santa-cruz-do-sul-rs';
+import { cidade as ceilandia } from './ceilandia-df';
+import { cidade as valparaisoDeGoias } from './valparaiso-de-goias-go';
+import { cidade as timon } from './timon-ma';
 // Bloco 12 (alta procura — alto padrão/fitness e grandes metrôs)
 import { cidade as ilhabela } from './ilhabela-sp';
 import { cidade as bertioga } from './bertioga-sp';
@@ -248,6 +269,10 @@ import { cidade as pinhais } from './pinhais-pr';
 import { cidade as aguasClaras } from './aguas-claras-df';
 
 export const cidades: Cidade[] = [
+  // Bloco 13 (polos regionais e grandes metrôs)
+  itaquaquecetuba, guaratingueta, pindamonhangaba, itapetininga, assis, salto,
+  belfordRoxo, itaguai, itaperuna, ribeiraoDasNeves, santaLuzia, colombo, campoLargo,
+  tubarao, camboriu, viamao, santaCruzDoSul, ceilandia, valparaisoDeGoias, timon,
   // Bloco 12 (alta procura — alto padrão/fitness e grandes metrôs)
   ilhabela, bertioga, ubatuba, louveira, itatiba, jaguariuna, vargemGrandePaulista,
   santaBarbaraDOeste, mogiGuacu, suzano, eusebio, lagoaSanta, xangriLa, capaoDaCanoa,
