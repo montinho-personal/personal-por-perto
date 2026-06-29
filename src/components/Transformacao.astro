@@ -1,0 +1,104 @@
+---
+/**
+ * Bloco de prova social: a transformação real do Montinho (antes/depois).
+ * Maior ativo de conversão para o público de emagrecimento — "ele estava
+ * como eu e chegou lá". Imagem otimizada (WebP) com width/height (zero CLS).
+ */
+import { montinho } from '../data/montinho';
+const ig = montinho.instagram;
+---
+
+<aside class="transf" aria-label="Transformação do Montinho Personal">
+  <div class="transf-txt">
+    <p class="transf-eyebrow">Transformação real</p>
+    <h2 class="transf-tit">De ex-obeso a especialista: mais de 40 kg de diferença</h2>
+    <p class="transf-sub">
+      A história do <strong>Montinho Personal</strong> não é teoria. Ele perdeu mais de
+      40 kg, mudou os próprios hábitos e transformou a jornada em método — o mesmo que
+      hoje guia alunos de todo o Brasil no acompanhamento online.
+    </p>
+    <a class="transf-cta" href={ig.url} target="_blank" rel="noopener" data-ig
+      aria-label={`Seguir ${ig.handle} no Instagram`}>
+      Ver a jornada no Instagram {ig.handle}
+    </a>
+  </div>
+  <figure class="transf-fig">
+    <img
+      src="/montinho/antes-depois-montinho-personal-trainer.webp"
+      alt="Antes e depois do Montinho Personal: transformação de ex-obeso para personal trainer, mais de 40 kg de diferença"
+      width="1200"
+      height="1200"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>Antes e depois reais do Montinho Personal.</figcaption>
+  </figure>
+</aside>
+
+<style>
+  .transf {
+    margin: var(--sp-6) 0;
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+    color: #eceef2;
+    box-shadow: var(--shadow-lg);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+  @media (max-width: 720px) {
+    .transf {
+      grid-template-columns: 1fr;
+    }
+  }
+  .transf-eyebrow {
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+  }
+  .transf-tit {
+    margin: 0.2rem 0 0;
+    color: #fff;
+    font-size: var(--step-2);
+    line-height: 1.2;
+  }
+  .transf-sub {
+    margin: var(--sp-4) 0 0;
+    line-height: 1.6;
+    color: #d4d8df;
+  }
+  .transf-cta {
+    display: inline-flex;
+    margin-top: var(--sp-5);
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(45deg, #fa7e1e, #d62976, #962fbf);
+    border-radius: 999px;
+    padding: 0.8rem 1.4rem;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .transf-cta:hover {
+    filter: brightness(1.08);
+  }
+  .transf-fig {
+    margin: 0;
+  }
+  .transf-fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .transf-fig figcaption {
+    margin-top: var(--sp-2);
+    font-size: var(--step--1);
+    color: #aab0ba;
+    text-align: center;
+  }
+</style>

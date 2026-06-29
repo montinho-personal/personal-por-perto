@@ -7,10 +7,10 @@
 import { montinho } from '../data/montinho';
 
 export interface Props {
-  /** URL de foto oficial (opcional). Sem ela, usa monograma. */
+  /** URL de foto oficial. Use foto="" para forçar o monograma. */
   foto?: string;
 }
-const { foto } = Astro.props;
+const { foto = '/montinho/avatar-montinho-personal.webp' } = Astro.props;
 const ig = montinho.instagram;
 const chips = ['+20 anos de experiência', 'Ex-obeso: −40 kg', 'Acompanhamento online no Brasil todo'];
 ---
