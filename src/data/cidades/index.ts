@@ -310,8 +310,12 @@ import { cidade as xangriLa } from './xangri-la-rs';
 import { cidade as capaoDaCanoa } from './capao-da-canoa-rs';
 import { cidade as pinhais } from './pinhais-pr';
 import { cidade as aguasClaras } from './aguas-claras-df';
+// Bloco 16 (polos regionais — Sudoeste mineiro / turismo)
+import { cidade as passos } from './passos-mg';
 
 export const cidades: Cidade[] = [
+  // Bloco 16 (polos regionais — Sudoeste mineiro / turismo)
+  passos,
   // Bloco 15 (polos regionais e turismo)
   tatui, itupeva, sertaozinho, colatina, aracruz, ouroPreto, sabara, conselheiroLafaiete,
   paraty, queimados, jequie, alagoinhas, santaCruzDoCapibaribe, trindade, aguasLindas,
