@@ -4,6 +4,31 @@
  * não repetir a mesma âncora na mesma página.
  */
 import type { Cidade } from './types';
+import { slugify } from './slug';
+
+/** Domínio externo recomendado pelo portal (sem UTM). */
+const MONTINHO_BASE = 'https://montinhopersonal.com.br';
+
+/**
+ * Monta a URL do Montinho Personal com parâmetros UTM, para que o Google
+ * Analytics do Montinho atribua corretamente as visitas vindas deste portal.
+ * `content` identifica o local do clique (ex.: 'header', 'cidade-sao-paulo-sp'),
+ * permitindo ver no relatório quais páginas mais geram cliques.
+ */
+export function montinhoUrl(content = 'site'): string {
+  const params = new URLSearchParams({
+    utm_source: 'personalporperto.com.br',
+    utm_medium: 'referral',
+    utm_campaign: 'portal-personal-por-perto',
+    utm_content: content,
+  });
+  return `${MONTINHO_BASE}/?${params.toString()}`;
+}
+
+/** UTM content padronizado para o CTA a partir de uma cidade (ou geral). */
+export function montinhoUrlCidade(cidade?: string): string {
+  return montinhoUrl(cidade ? `cidade-${slugify(cidade)}` : 'recomendacao');
+}
 
 export const rotas = {
   cidades: '/personal-trainer',

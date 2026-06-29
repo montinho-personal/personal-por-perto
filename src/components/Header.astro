@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { navPrincipal, cta } from '../data/site';
+import { navPrincipal } from '../data/site';
+import { montinhoUrl } from '../lib/links';
 const path = Astro.url.pathname;
 const isActive = (url: string) =>
   url === '/' ? path === '/' : path.startsWith(url);
@@ -29,7 +30,7 @@ const isActive = (url: string) =>
             ))
           }
         </ul>
-        <a class="btn btn-primary nav-cta" href={cta.url} target="_blank" rel="noopener nofollow">
+        <a class="btn btn-primary nav-cta" href={montinhoUrl('header')} target="_blank" rel="noopener nofollow">
           Acompanhamento online
         </a>
       </nav>

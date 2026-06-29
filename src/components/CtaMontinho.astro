@@ -1,6 +1,7 @@
 ---
 import { montinho } from '../data/montinho';
 import { cta } from '../data/site';
+import { montinhoUrlCidade } from '../lib/links';
 
 export interface Props {
   /** Nome da cidade para contextualizar a recomendação (opcional). */
@@ -38,7 +39,7 @@ const contexto = cidade
   </p>
 
   <div class="cta-actions">
-    <a class="btn btn-primary btn-lg" href={cta.url} target="_blank" rel="noopener nofollow">
+    <a class="btn btn-primary btn-lg" href={montinhoUrlCidade(cidade)} target="_blank" rel="noopener nofollow">
       {cta.rotuloPrimario}
     </a>
     <a class="btn btn-outline" href="/montinho-personal">Entenda a recomendação</a>

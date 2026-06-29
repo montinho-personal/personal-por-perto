@@ -6,6 +6,7 @@ import { montinho } from '../data/montinho';
 import { cta } from '../data/site';
 import { breadcrumbSchema, faqSchema } from '../lib/schema';
 import { site } from '../data/site';
+import { montinhoUrl } from '../lib/links';
 
 const path = '/montinho-personal';
 const crumbs = [
@@ -47,7 +48,7 @@ const schema = [breadcrumbSchema(crumbs), faqSchema(faqs)];
       <h1>Montinho Personal</h1>
       <p class="hero-sub">{montinho.titulo}</p>
       <p class="hero-lead">{montinho.resumo}</p>
-      <a class="btn btn-primary btn-lg" href={cta.url} target="_blank" rel="noopener nofollow">
+      <a class="btn btn-primary btn-lg" href={montinhoUrl('pagina-montinho-topo')} target="_blank" rel="noopener nofollow">
         {cta.rotuloPrimario}
       </a>
     </div>
@@ -101,7 +102,7 @@ const schema = [breadcrumbSchema(crumbs), faqSchema(faqs)];
         Para quem busca emagrecimento com método e flexibilidade, vale conhecer o
         trabalho online do Montinho Personal.
       </p>
-      <a class="btn btn-primary btn-lg" href={cta.url} target="_blank" rel="noopener nofollow">
+      <a class="btn btn-primary btn-lg" href={montinhoUrl('pagina-montinho-final')} target="_blank" rel="noopener nofollow">
         {cta.rotuloPrimario}
       </a>
     </div>
