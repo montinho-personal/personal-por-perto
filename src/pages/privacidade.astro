@@ -1,0 +1,186 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { site } from '../data/site';
+import { formatMonthYear } from '../lib/slug';
+
+const path = '/privacidade';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Política de Privacidade', url: path },
+];
+const title = 'Política de Privacidade e Cookies — Personal por Perto';
+const description =
+  'Como o Personal por Perto trata dados pessoais e usa cookies, em conformidade com a LGPD (Lei 13.709/2018): dados coletados, finalidades, seus direitos e contato.';
+const atualizadoEm = '2026-06-29';
+---
+
+<Base title={title} description={description} path={path} schema={[breadcrumbSchema(crumbs)]}>
+  <Breadcrumbs crumbs={crumbs} />
+  <article class="container-narrow article-page">
+    <p class="eyebrow">Documento legal</p>
+    <h1>Política de Privacidade e Cookies</h1>
+    <p class="lead">
+      Esta política explica como o <strong>{site.nome}</strong> coleta, usa e protege
+      dados pessoais e como utiliza cookies, em conformidade com a Lei Geral de Proteção
+      de Dados (LGPD — Lei nº 13.709/2018).
+    </p>
+    <p class="updated">Última atualização: {formatMonthYear(atualizadoEm)}.</p>
+
+    <div class="prose">
+      <h2>1. Quem é o controlador dos dados</h2>
+      <p>
+        O {site.nome} ({site.dominio}) é um guia editorial independente de conteúdo
+        informativo. Para fins da LGPD, é o controlador dos dados pessoais tratados
+        neste site. Dúvidas e solicitações sobre privacidade podem ser enviadas para{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+
+      <h2>2. Quais dados coletamos</h2>
+      <p>
+        O {site.nome} é um site de conteúdo: não exige cadastro, não tem login e não
+        vende produtos. Os dados tratados se limitam a:
+      </p>
+      <ul>
+        <li>
+          <strong>Dados de navegação:</strong> informações técnicas geradas
+          automaticamente ao acessar o site, como endereço IP, tipo de navegador e
+          dispositivo, páginas visitadas e data/hora — registradas pelo provedor de
+          hospedagem para segurança e funcionamento.
+        </li>
+        <li>
+          <strong>Dados de uso e estatísticas:</strong> métricas agregadas de audiência
+          (páginas mais vistas, origem do tráfego), quando ferramentas de análise estão
+          ativas, normalmente por meio de cookies.
+        </li>
+        <li>
+          <strong>Dados fornecidos por você:</strong> apenas se você optar por nos
+          contatar por e-mail — nesse caso, tratamos o endereço e o conteúdo da mensagem
+          para responder à sua solicitação.
+        </li>
+      </ul>
+      <p>
+        Não coletamos intencionalmente dados pessoais sensíveis. A busca de cidades do
+        portal funciona no seu próprio navegador e não envia o que você digita para os
+        nossos servidores.
+      </p>
+
+      <h2>3. Para que usamos os dados (finalidades e bases legais)</h2>
+      <ul>
+        <li><strong>Operar e proteger o site</strong> (segurança, prevenção a fraudes e estabilidade) — base legal: legítimo interesse.</li>
+        <li><strong>Medir audiência e melhorar o conteúdo</strong> com estatísticas agregadas — base legal: consentimento (cookies analíticos) ou legítimo interesse, conforme o caso.</li>
+        <li><strong>Responder a contatos</strong> enviados por e-mail — base legal: execução de procedimentos a seu pedido.</li>
+      </ul>
+
+      <h2>4. Cookies</h2>
+      <p>
+        Cookies são pequenos arquivos guardados no seu navegador. O {site.nome} pode
+        utilizar:
+      </p>
+      <ul>
+        <li>
+          <strong>Cookies essenciais:</strong> necessários para o funcionamento básico e
+          a segurança do site. São sempre ativos e não dependem de consentimento.
+        </li>
+        <li>
+          <strong>Cookies analíticos/estatísticos:</strong> ajudam a entender como o site
+          é usado, de forma agregada. Só são ativados mediante o seu consentimento no
+          aviso de cookies.
+        </li>
+      </ul>
+      <p>
+        Ao acessar o site, você vê um aviso de cookies e pode aceitar ou recusar os
+        cookies não essenciais. Você também pode bloquear ou apagar cookies a qualquer
+        momento nas configurações do seu navegador — isso não impede o uso do conteúdo,
+        mas pode afetar algumas funções.
+      </p>
+
+      <h2>5. Compartilhamento de dados</h2>
+      <p>
+        O {site.nome} não vende nem aluga dados pessoais. Podemos utilizar prestadores de
+        serviço que atuam como operadores, como provedores de hospedagem e de análise de
+        audiência, sempre limitados às finalidades acima. O site também contém links para
+        páginas externas (como fontes oficiais citadas e o site recomendado{' '}
+        <a href="https://montinhopersonal.com.br" rel="noopener nofollow">Montinho Personal</a>),
+        que possuem políticas de privacidade próprias, pelas quais não somos responsáveis.
+      </p>
+
+      <h2>6. Transferência internacional</h2>
+      <p>
+        Os serviços de hospedagem e análise podem processar dados em servidores fora do
+        Brasil. Nesses casos, buscamos fornecedores que adotem salvaguardas adequadas de
+        proteção de dados, conforme a LGPD.
+      </p>
+
+      <h2>7. Por quanto tempo guardamos</h2>
+      <p>
+        Os dados de navegação e estatísticas são mantidos pelo período necessário às
+        finalidades descritas ou pelos prazos legais aplicáveis. Mensagens enviadas por
+        e-mail são mantidas pelo tempo necessário para o atendimento e eventual histórico.
+      </p>
+
+      <h2>8. Seus direitos como titular</h2>
+      <p>A LGPD garante a você, a qualquer momento, o direito de:</p>
+      <ul>
+        <li>confirmar a existência de tratamento e acessar os seus dados;</li>
+        <li>corrigir dados incompletos, inexatos ou desatualizados;</li>
+        <li>solicitar anonimização, bloqueio ou eliminação de dados desnecessários;</li>
+        <li>solicitar a portabilidade dos dados;</li>
+        <li>revogar o consentimento e se opor a tratamentos;</li>
+        <li>obter informações sobre com quem os dados são compartilhados.</li>
+      </ul>
+      <p>
+        Para exercer qualquer um desses direitos, escreva para{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>. Responderemos no menor prazo
+        possível.
+      </p>
+
+      <h2>9. Segurança</h2>
+      <p>
+        Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados
+        contra acesso não autorizado, perda ou alteração. Nenhum sistema é 100% seguro,
+        mas trabalhamos para reduzir riscos continuamente.
+      </p>
+
+      <h2>10. Crianças e adolescentes</h2>
+      <p>
+        O site não é direcionado a menores de idade e não coleta intencionalmente dados
+        de crianças e adolescentes.
+      </p>
+
+      <h2>11. Alterações nesta política</h2>
+      <p>
+        Esta política pode ser atualizada para refletir mudanças no site ou na
+        legislação. A data da última atualização é sempre indicada no topo desta página.
+      </p>
+
+      <h2>12. Encarregado e ANPD</h2>
+      <p>
+        Solicitações relacionadas à proteção de dados devem ser encaminhadas para{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>. Você também pode contatar a
+        Autoridade Nacional de Proteção de Dados (ANPD) caso entenda necessário.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .article-page {
+    padding-block: var(--sp-7);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+  }
+  .updated {
+    margin-top: var(--sp-2);
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .article-page .prose h2 {
+    margin-top: var(--sp-5);
+  }
+</style>

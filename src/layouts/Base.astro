@@ -78,5 +78,111 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
       <slot />
     </main>
     <Footer />
+
+    <div id="cookie-aviso" class="cookie-aviso" hidden role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+      <p class="cookie-texto">
+        Usamos cookies essenciais para o funcionamento do site e, com a sua
+        autorização, cookies analíticos para entender como o conteúdo é usado.
+        Saiba mais na <a href="/privacidade">Política de Privacidade e Cookies</a>.
+      </p>
+      <div class="cookie-acoes">
+        <button type="button" id="cookie-recusar" class="cookie-btn cookie-btn--ghost">Recusar</button>
+        <button type="button" id="cookie-aceitar" class="cookie-btn">Aceitar</button>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var CHAVE = 'ppp-consentimento-cookies';
+        try {
+          if (localStorage.getItem(CHAVE)) return;
+        } catch (e) {
+          return;
+        }
+        var aviso = document.getElementById('cookie-aviso');
+        if (!aviso) return;
+        aviso.hidden = false;
+        function decidir(valor) {
+          try {
+            localStorage.setItem(CHAVE, valor);
+          } catch (e) {}
+          aviso.hidden = true;
+        }
+        var aceitar = document.getElementById('cookie-aceitar');
+        var recusar = document.getElementById('cookie-recusar');
+        if (aceitar) aceitar.addEventListener('click', function () { decidir('aceito'); });
+        if (recusar) recusar.addEventListener('click', function () { decidir('recusado'); });
+      })();
+    </script>
   </body>
 </html>
+
+<style is:global>
+  .cookie-aviso {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-3, 0.75rem) var(--sp-5, 1.5rem);
+    padding: var(--sp-4, 1rem) var(--sp-5, 1.5rem);
+    background: #16181d;
+    color: #d8dce3;
+    border-top: 2px solid var(--accent, #f0641e);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+    font-size: var(--step--1, 0.9rem);
+  }
+  .cookie-aviso[hidden] {
+    display: none;
+  }
+  .cookie-texto {
+    margin: 0;
+    max-width: 60ch;
+    line-height: 1.55;
+  }
+  .cookie-aviso a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .cookie-acoes {
+    display: flex;
+    gap: var(--sp-3, 0.75rem);
+    flex-shrink: 0;
+  }
+  .cookie-btn {
+    cursor: pointer;
+    border: 1px solid var(--accent, #f0641e);
+    background: var(--accent, #f0641e);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-size: inherit;
+    line-height: 1;
+  }
+  .cookie-btn:hover {
+    filter: brightness(1.08);
+  }
+  .cookie-btn--ghost {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #d8dce3;
+  }
+  .cookie-btn--ghost:hover {
+    border-color: #fff;
+    color: #fff;
+    filter: none;
+  }
+  @media (max-width: 520px) {
+    .cookie-aviso {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cookie-acoes {
+      justify-content: flex-end;
+    }
+  }
+</style>
