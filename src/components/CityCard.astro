@@ -10,7 +10,9 @@ const { cidade } = Astro.props;
 <a class="city-card card card-hover" href={`/personal-trainer/${cidade.slug}`}>
   <div class="city-card-top">
     <span class="pill pill-neutral">{cidade.uf}</span>
-    <span class="city-pop">{formatNumber(cidade.populacao)} hab.</span>
+    <span class="city-pop">
+      {cidade.populacao ? `${formatNumber(cidade.populacao)} hab.` : cidade.tipo === 'regiao' ? 'Região' : ''}
+    </span>
   </div>
   <h3>Personal Trainer em {cidade.nome}</h3>
   <p class="city-card-desc">

@@ -47,9 +47,19 @@ export interface Cidade {
   regiao: string;
   gentilico?: string;
 
-  /** Dados demográficos e socioeconômicos reais (IBGE/Atlas Brasil). */
-  populacao: number;
-  populacaoAno: number;
+  /**
+   * Tipo da localidade: município ("cidade") ou bairro/região planejada
+   * ("regiao", ex.: Alphaville, Tamboré). Default tratado como "cidade".
+   */
+  tipo?: 'cidade' | 'regiao';
+  /** Para regiões: slug do(s) município(s) a que pertence (para breadcrumb/links). */
+  cidadeMae?: string;
+  /** Rótulo curto do contexto (ex.: "Região de Barueri e Santana de Parnaíba"). */
+  contexto?: string;
+
+  /** Dados demográficos e socioeconômicos reais (IBGE/Atlas Brasil). Opcionais para regiões. */
+  populacao?: number;
+  populacaoAno?: number;
   idhm?: number;
   idhmClasse?: string;
   pibPerCapita?: number;
@@ -58,6 +68,10 @@ export interface Cidade {
 
   /** Conteúdo editorial específico da cidade. */
   resumoEconomico: string;
+  /** Parágrafo da seção "Mercado de Personal Trainers" (opcional; há fallback). */
+  mercado?: string;
+  /** Parágrafo de conclusão (opcional; há fallback). */
+  conclusao?: string;
   bairrosNobres: string[];
   bairrosPopulares: string[];
   parques: Parque[];

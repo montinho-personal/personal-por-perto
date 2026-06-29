@@ -16,7 +16,7 @@ const { atual, cidadesPopulares = true } = Astro.props;
 
 const populares = cidades
   .filter((c) => c.slug !== atual)
-  .sort((a, b) => b.populacao - a.populacao)
+  .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0))
   .slice(0, 5);
 
 const guias = [

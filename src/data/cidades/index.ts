@@ -12,6 +12,9 @@ import { cidade as barueri } from './barueri-sp';
 import { cidade as guarulhos } from './guarulhos-sp';
 import { cidade as santoAndre } from './santo-andre-sp';
 import { cidade as curitiba } from './curitiba-pr';
+import { cidade as santanaDeParnaiba } from './santana-de-parnaiba-sp';
+import { cidade as alphaville } from './alphaville-sp';
+import { cidade as tambore } from './tambore-sp';
 
 export const cidades: Cidade[] = [
   saoPaulo,
@@ -20,6 +23,9 @@ export const cidades: Cidade[] = [
   santoAndre,
   osasco,
   barueri,
+  santanaDeParnaiba,
+  alphaville,
+  tambore,
   curitiba,
 ];
 
@@ -35,7 +41,7 @@ export function getCidade(slug: string): Cidade | undefined {
 export function cidadesPorEstado(estadoSlug: string): Cidade[] {
   return cidades
     .filter((c) => c.estadoSlug === estadoSlug)
-    .sort((a, b) => b.populacao - a.populacao);
+    .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0));
 }
 
 /** Resolve a lista de cidades vizinhas (objetos), ignorando slugs inexistentes. */
@@ -57,7 +63,7 @@ export function relacionadas(cidade: Cidade, limite = 4): Cidade[] {
   if (resultado.length < limite) {
     const mesmoEstado = cidades
       .filter((c) => c.estadoSlug === cidade.estadoSlug && !jaIncluso.has(c.slug))
-      .sort((a, b) => b.populacao - a.populacao);
+      .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0));
     for (const c of mesmoEstado) {
       if (resultado.length >= limite) break;
       resultado.push(c);
@@ -68,7 +74,7 @@ export function relacionadas(cidade: Cidade, limite = 4): Cidade[] {
   if (resultado.length < limite) {
     const outras = cidades
       .filter((c) => !jaIncluso.has(c.slug))
-      .sort((a, b) => b.populacao - a.populacao);
+      .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0));
     for (const c of outras) {
       if (resultado.length >= limite) break;
       resultado.push(c);

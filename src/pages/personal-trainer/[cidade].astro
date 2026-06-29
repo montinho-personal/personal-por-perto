@@ -6,7 +6,7 @@ import Faq from '../../components/Faq.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import CityCard from '../../components/CityCard.astro';
 import Sidebar from '../../components/Sidebar.astro';
-import { cidades, relacionadas, vizinhasDe } from '../../data/cidades';
+import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
 import { fontesExternas } from '../../data/fontesExternas';
@@ -43,15 +43,32 @@ const ms = fontesExternas.ministerioSaude;
 const nsca = fontesExternas.nsca;
 const acsm = fontesExternas.acsm;
 
+const isRegiao = cidade.tipo === 'regiao';
+const cidadeMae = cidade.cidadeMae ? getCidade(cidade.cidadeMae) : undefined;
+
+// Breadcrumb: regiões ganham o município "mãe" no caminho.
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Cidades', url: '/personal-trainer' },
   { nome: cidade.estado, url: `/estado/${cidade.estadoSlug}` },
+  ...(cidadeMae
+    ? [{ nome: cidadeMae.nome, url: `/personal-trainer/${cidadeMae.slug}` }]
+    : []),
   { nome: n, url: path },
 ];
 
+// Texto da seção "Mercado de Personal Trainers" (usa dado próprio ou fallback).
+const mercadoTexto =
+  cidade.mercado ??
+  `O mercado de personal trainers em ${n} acompanha a oferta de academias, estúdios e espaços ao ar livre da região. ${cidade.academias ?? ''} A procura tende a crescer entre quem busca constância, orientação segura e um treino desenhado para o próprio objetivo.`;
+
+const conclusaoTexto =
+  cidade.conclusao ??
+  `Contratar um personal trainer em ${n} é investir em segurança, método e constância. Com a estrutura local certa e um profissional alinhado ao seu objetivo, fica muito mais fácil treinar bem e manter o resultado ao longo do tempo.`;
+
 const toc = [
   { id: 'panorama', label: `Panorama de ${n}` },
+  { id: 'mercado', label: 'Mercado de personais' },
   { id: 'como-escolher', label: 'Como escolher' },
   { id: 'precos', label: 'Quanto custa' },
   { id: 'onde-treinar', label: 'Onde treinar' },
@@ -59,6 +76,7 @@ const toc = [
   { id: 'beneficios', label: 'Benefícios' },
   { id: 'avaliar', label: 'Como avaliar' },
   { id: 'perguntas-frequentes', label: 'Perguntas frequentes' },
+  { id: 'conclusao', label: 'Conclusão' },
 ];
 
 const tiposTreino = [
@@ -112,11 +130,13 @@ const objetivoDesc: Record<string, string> = {
   <!-- HERO -->
   <header class="hero">
     <div class="container">
-      <p class="eyebrow">Guia da cidade · {cidade.estado}</p>
+      <p class="eyebrow">
+        {isRegiao ? 'Guia da região' : 'Guia da cidade'} · {cidade.contexto ?? cidade.estado}
+      </p>
       <h1>Personal Trainer em {n} <span>({cidade.uf})</span></h1>
       <p class="hero-intro">
         Contratar um personal trainer em {n} significa ter um treino desenhado para
-        o seu objetivo, com acompanhamento de quem entende o ritmo da cidade — das
+        o seu objetivo, com acompanhamento de quem entende o ritmo {isRegiao ? 'da região' : 'da cidade'} — das
         academias e condomínios aos parques ao ar livre. Os valores variam de
         <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong> por
         aula avulsa, e o formato online costuma ser a opção mais acessível e flexível.
@@ -124,7 +144,7 @@ const objetivoDesc: Record<string, string> = {
 
       <div class="trust-strip">
         <span>✔ Guia editorial independente</span>
-        <span>✔ Dados locais reais (IBGE e fontes oficiais)</span>
+        <span>✔ Dados locais reais e fontes oficiais</span>
         <span>✔ Atualizado em {formatDateLong(cidade.atualizadoEm)}</span>
       </div>
     </div>
@@ -133,10 +153,14 @@ const objetivoDesc: Record<string, string> = {
   <!-- STATS -->
   <section class="stats-band">
     <div class="container stats-grid">
-      <div class="stat">
-        <div class="stat-num">{formatNumber(cidade.populacao)}</div>
-        <div class="stat-label">habitantes (Censo {cidade.populacaoAno})</div>
-      </div>
+      {
+        cidade.populacao && (
+          <div class="stat">
+            <div class="stat-num">{formatNumber(cidade.populacao)}</div>
+            <div class="stat-label">habitantes (Censo {cidade.populacaoAno})</div>
+          </div>
+        )
+      }
       {
         cidade.idhm && (
           <div class="stat">
@@ -145,9 +169,17 @@ const objetivoDesc: Record<string, string> = {
           </div>
         )
       }
+      {
+        isRegiao && cidadeMae && (
+          <div class="stat">
+            <div class="stat-num">{cidadeMae.uf}</div>
+            <div class="stat-label">{cidade.contexto ?? `Região de ${cidadeMae.nome}`}</div>
+          </div>
+        )
+      }
       <div class="stat">
         <div class="stat-num">{cidade.parques.length}+</div>
-        <div class="stat-label">parques para treino citados</div>
+        <div class="stat-label">espaços para treino citados</div>
       </div>
       <div class="stat">
         <div class="stat-num">{formatBRL(cidade.precos.onlineMin)}</div>
@@ -186,7 +218,7 @@ const objetivoDesc: Record<string, string> = {
         {
           viz1 && (
             <p>
-              {n} também está perto de outras cidades com boa estrutura para treino:
+              {n} também está perto de outras localidades com boa estrutura para treino:
               quem mora na divisa costuma considerar um{' '}
               <a href={`/personal-trainer/${viz1.slug}`}>{anchorCidade(viz1, 0)}</a>
               {viz2 && (
@@ -196,6 +228,21 @@ const objetivoDesc: Record<string, string> = {
                 </>
               )}, dependendo de onde fica a academia ou o trabalho.
             </p>
+          )
+        }
+      </section>
+
+      <section id="mercado">
+        <h2>O mercado de personal trainers em {n}</h2>
+        <p>{mercadoTexto}</p>
+        {
+          cidade.destaquesFitness.length > 0 && (
+            <>
+              <p>Em resumo, o que define o cenário de treino em {n}:</p>
+              <ul class="check-list">
+                {cidade.destaquesFitness.map((d) => (<li>{d}</li>))}
+              </ul>
+            </>
           )
         }
       </section>
@@ -378,6 +425,11 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer em ${n}`} />
+
+      <section id="conclusao">
+        <h2>Conclusão</h2>
+        <p>{conclusaoTexto}</p>
+      </section>
 
       <!-- Fontes / EEAT -->
       <section class="sources" aria-labelledby="fontes-h">

@@ -82,7 +82,7 @@ export const cidade: Cidade = {
     onlineMax: 500,
   },
 
-  vizinhas: ['osasco-sp', 'sao-paulo-sp'],
+  vizinhas: ['alphaville-sp', 'tambore-sp', 'santana-de-parnaiba-sp', 'osasco-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Barueri', url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama' },
