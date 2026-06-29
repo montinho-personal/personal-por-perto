@@ -5,6 +5,8 @@ import CtaMontinho from '../components/CtaMontinho.astro';
 import Faq from '../components/Faq.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import Transformacao from '../components/Transformacao.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { whatsappUrl } from '../lib/links';
 import { cidades, getCidade } from '../data/cidades';
 import { estados } from '../data/estados';
 import { site } from '../data/site';
@@ -94,10 +96,16 @@ const schema = [
           online para todo o Brasil.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-brand btn-lg" href="/personal-trainer">Ver cidades</a>
-          <a class="btn btn-ghost btn-lg" href="/guias/como-escolher-personal-trainer">
-            Como escolher
+          <a
+            class="btn btn-brand btn-lg"
+            href={whatsappUrl('Oi, Montinho! Vim pelo Personal por Perto e quero saber como funciona a sua consultoria.')}
+            target="_blank"
+            rel="noopener"
+            data-wpp
+          >
+            Falar no WhatsApp
           </a>
+          <a class="btn btn-ghost btn-lg" href="/personal-trainer">Ver cidades</a>
         </div>
         <div class="hero-stats">
           <div><strong>{cidades.length}</strong> cidades</div>
@@ -236,6 +244,13 @@ const schema = [
           <li><a href="/como-avaliamos">Como avaliamos</a></li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <!-- CONTATO / WHATSAPP -->
+  <section class="section-sm">
+    <div class="container-narrow">
+      <WhatsAppCta tema="geral" />
     </div>
   </section>
 

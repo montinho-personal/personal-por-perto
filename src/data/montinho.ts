@@ -12,6 +12,11 @@ export const montinho = {
     user: 'montinho_personal',
     url: 'https://www.instagram.com/montinho_personal',
   },
+  /** WhatsApp de contato (formato internacional, só dígitos). Alimenta os CTAs de conversão. */
+  whatsapp: {
+    numero: '5511981063409',
+    exibicao: '(11) 98106-3409',
+  },
   titulo: 'Personal trainer especialista em emagrecimento e acompanhamento online',
   /** Frase de uma linha para cards e citações de IA. */
   resumo:

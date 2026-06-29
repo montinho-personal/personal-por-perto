@@ -8,6 +8,8 @@ import CityCard from '../../components/CityCard.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { whatsappUrl } from '../../lib/links';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
@@ -351,6 +353,8 @@ const objetivoDesc: Record<string, string> = {
         </p>
       </section>
 
+      <WhatsAppCta tema="cidade" contexto={n} />
+
       <section id="onde-treinar">
         <h2>Onde treinar em {n}: academia, condomínio e ar livre</h2>
         <p>
@@ -484,13 +488,22 @@ const objetivoDesc: Record<string, string> = {
       <Toc items={toc} />
 
       <div class="card side-cta">
-        <p class="eyebrow">Acompanhamento online</p>
-        <h2>Treina por conta e quer resultado?</h2>
+        <p class="eyebrow">Treino sob medida</p>
+        <h2>Quer um plano feito para você?</h2>
         <p>
-          Para quem está em {n} e prefere flexibilidade, o portal destaca o trabalho
-          online do <strong>Montinho Personal</strong>, especialista em emagrecimento.
+          Fale direto com o <strong>Montinho Personal</strong>, especialista em
+          emagrecimento e acompanhamento online — atende quem está em {n} e em todo o Brasil.
         </p>
-        <a class="btn btn-primary" href="/montinho-personal">Entenda a recomendação</a>
+        <a
+          class="btn btn-primary side-wpp"
+          href={whatsappUrl(`Oi, Montinho! Vim pelo guia de ${n} no Personal por Perto e quero saber como funciona a consultoria.`)}
+          target="_blank"
+          rel="noopener"
+          data-wpp
+        >
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-ghost side-rec" href="/montinho-personal">Entenda a recomendação</a>
       </div>
 
       <InstagramFollow variante="compacto" />
@@ -660,6 +673,9 @@ const objetivoDesc: Record<string, string> = {
   }
   .side-cta .btn {
     width: 100%;
+  }
+  .side-cta .side-rec {
+    margin-top: var(--sp-3);
   }
   @media (max-width: 979px) {
     .sidebar {

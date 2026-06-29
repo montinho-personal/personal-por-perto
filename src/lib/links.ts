@@ -5,6 +5,16 @@
  */
 import type { Cidade } from './types';
 import { slugify } from './slug';
+import { montinho } from '../data/montinho';
+
+/**
+ * Monta o link do WhatsApp do Montinho com mensagem pré-preenchida (opcional).
+ * Abre direto a conversa; a mensagem contextualiza o lead (de onde veio/objetivo).
+ */
+export function whatsappUrl(mensagem?: string): string {
+  const base = `https://wa.me/${montinho.whatsapp.numero}`;
+  return mensagem ? `${base}?text=${encodeURIComponent(mensagem)}` : base;
+}
 
 /** Domínio externo recomendado pelo portal (sem UTM). */
 const MONTINHO_BASE = 'https://montinhopersonal.com.br';

@@ -1,0 +1,224 @@
+---
+/**
+ * Caixa de conversão para WhatsApp — copy persuasiva que muda por tema do artigo.
+ * Gatilhos: autoridade, personalização, facilidade, proximidade, ação imediata.
+ * Leve (zero JS), responsiva, com foto do especialista e mensagem pré-preenchida.
+ */
+import { montinho } from '../data/montinho';
+import { whatsappUrl } from '../lib/links';
+
+export interface Props {
+  tema?: 'cidade' | 'emagrecimento' | 'hipertrofia' | 'iniciantes' | 'dores' | 'alimentacao' | 'geral';
+  contexto?: string; // ex.: nome da cidade
+  foto?: string;
+}
+const { tema = 'geral', contexto, foto = '/montinho/avatar-montinho-personal.webp' } = Astro.props;
+
+const TEMAS = {
+  cidade: {
+    titulo: contexto
+      ? `Quer um treino feito para você em ${contexto} (ou online)?`
+      : 'Quer um treino feito de verdade para o seu objetivo?',
+    texto:
+      'Você acabou de ver o panorama de treino da cidade. Se quiser um plano sob medida para o seu objetivo, fala comigo no WhatsApp — atendo online para todo o Brasil, com a proximidade de quem treina do seu lado.',
+    bullets: [
+      'Consultoria online flexível, para qualquer cidade',
+      'Plano individual para o seu objetivo e a sua rotina',
+      'Acompanhamento direto comigo, sem robô',
+    ],
+    msg: contexto
+      ? `Oi, Montinho! Vim pelo guia de ${contexto} no Personal por Perto e quero saber como funciona a consultoria.`
+      : 'Oi, Montinho! Vim pelo Personal por Perto e quero saber como funciona a consultoria.',
+  },
+  emagrecimento: {
+    titulo: 'Quer emagrecer com método — e manter o resultado?',
+    texto:
+      'Emagrecer não é passar fome nem treinar no escuro. Me chama no WhatsApp e eu te mostro, sem compromisso, como seria um acompanhamento pensado para a sua perda de gordura.',
+    bullets: [
+      'Estratégia de perda de gordura sem dieta maluca',
+      'Treino que cabe na sua rotina',
+      'Acompanhamento de quem emagreceu mais de 40 kg',
+    ],
+    msg: 'Oi, Montinho! Quero emagrecer com acompanhamento. Como funciona a consultoria?',
+  },
+  hipertrofia: {
+    titulo: 'Quer ganhar massa com um treino realmente seu?',
+    texto:
+      'Ganho de músculo mora no detalhe: carga, técnica e constância. Fala comigo no WhatsApp e a gente monta um treino individual para o seu objetivo.',
+    bullets: [
+      'Periodização e progressão de carga sob medida',
+      'Correção de execução para render mais e evitar lesão',
+      'Ajustes ao longo do caminho',
+    ],
+    msg: 'Oi, Montinho! Quero montar um treino para ganhar massa. Como funciona a consultoria?',
+  },
+  iniciantes: {
+    titulo: 'Quer começar do jeito certo, sem se machucar?',
+    texto:
+      'Começar bem acompanhado faz toda a diferença. Me chama no WhatsApp e eu te ajudo a dar os primeiros passos com segurança e sem complicação.',
+    bullets: [
+      'Treino simples e seguro para começar',
+      'Sem vergonha: todo mundo começou um dia',
+      'Acompanhamento próximo, do primeiro treino ao hábito',
+    ],
+    msg: 'Oi, Montinho! Sou iniciante e quero começar a treinar com orientação. Como funciona?',
+  },
+  dores: {
+    titulo: 'Treinar com dor ou medo de se machucar? Vamos resolver isso',
+    texto:
+      'Desconforto e insegurança travam qualquer evolução. Me chama no WhatsApp para tirar dúvidas sobre exercícios seguros para o seu caso.',
+    bullets: [
+      'Treino adaptado às suas limitações',
+      'Foco em execução segura e progressão gradual',
+      'Orientação de quem leva a sua saúde a sério',
+    ],
+    msg: 'Oi, Montinho! Tenho algumas limitações/dores e quero treinar com segurança. Pode me ajudar?',
+  },
+  alimentacao: {
+    titulo: 'Quer alinhar treino e alimentação de uma vez?',
+    texto:
+      'Treino e dieta andam juntos. Fala comigo no WhatsApp e eu te explico como o acompanhamento ajuda a encaixar os dois na sua rotina, sem radicalismo.',
+    bullets: [
+      'Orientação prática para o dia a dia',
+      'Treino e hábitos alimentares na mesma direção',
+      'Metas realistas e sustentáveis',
+    ],
+    msg: 'Oi, Montinho! Quero alinhar treino e alimentação. Como funciona a consultoria?',
+  },
+  geral: {
+    titulo: 'Quer um treino realmente feito para o seu objetivo?',
+    texto:
+      'Se você chegou até aqui, é porque leva o treino a sério. Fala comigo no WhatsApp e a gente conversa, sem compromisso, sobre a melhor estratégia para o seu caso.',
+    bullets: [
+      'Plano individual, do seu jeito e da sua rotina',
+      'Acompanhamento de quem viveu a própria transformação',
+      'Resposta direta comigo, não com atendente automático',
+    ],
+    msg: 'Oi, Montinho! Vim pelo Personal por Perto e quero saber como funciona a consultoria.',
+  },
+};
+const t = TEMAS[tema] ?? TEMAS.geral;
+const href = whatsappUrl(t.msg);
+---
+
+<aside class="wcta" aria-label="Fale com o Montinho Personal no WhatsApp">
+  <div class="wcta-top">
+    <img class="wcta-foto" src={foto} alt="Montinho Personal" width="64" height="64" loading="lazy" decoding="async" />
+    <div>
+      <p class="wcta-nome">Montinho Personal</p>
+      <p class="wcta-cargo">Personal Trainer · especialista em emagrecimento</p>
+    </div>
+  </div>
+
+  <h2 class="wcta-tit">{t.titulo}</h2>
+  <p class="wcta-texto">{t.texto}</p>
+  <ul class="wcta-bullets">
+    {t.bullets.map((b) => (<li>{b}</li>))}
+  </ul>
+
+  <a class="wcta-btn" href={href} target="_blank" rel="noopener" data-wpp
+    aria-label="Falar no WhatsApp com o Montinho Personal">
+    <span class="wcta-btn-ico" aria-hidden="true">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor"><path d="M16.04 4C9.4 4 4 9.4 4 16.04c0 2.12.55 4.18 1.6 6L4 28l6.13-1.6a12 12 0 0 0 5.9 1.5h.01C22.68 27.9 28 22.5 28 15.86 28 9.4 22.68 4 16.04 4Zm0 21.8h-.01a9.7 9.7 0 0 1-4.95-1.36l-.35-.21-3.64.95.97-3.55-.23-.36a9.74 9.74 0 0 1-1.49-5.18c0-5.37 4.37-9.74 9.75-9.74 2.6 0 5.05 1.02 6.89 2.86a9.68 9.68 0 0 1 2.85 6.89c0 5.37-4.37 9.74-9.74 9.74Zm5.34-7.29c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.15-.17.2-.34.22-.63.07-.29-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5l-.56-.01c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43 0 1.43 1.04 2.81 1.19 3.01.15.2 2.05 3.13 4.97 4.39.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.73-.71 1.97-1.39.24-.68.24-1.27.17-1.39-.07-.12-.27-.2-.56-.34Z" /></svg>
+    </span>
+    Falar no WhatsApp
+  </a>
+  <p class="wcta-nota">Atendimento direto com o Montinho · resposta no seu tempo, sem compromisso.</p>
+</aside>
+
+<style>
+  .wcta {
+    margin: var(--sp-6) 0;
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+    color: #eceef2;
+    box-shadow: var(--shadow-lg);
+    border-top: 4px solid var(--accent);
+  }
+  .wcta-top {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+  .wcta-foto {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    flex-shrink: 0;
+  }
+  .wcta-nome {
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+  }
+  .wcta-cargo {
+    margin: 0.1rem 0 0;
+    font-size: var(--step--1);
+    color: #c7ccd4;
+  }
+  .wcta-tit {
+    margin: var(--sp-4) 0 0;
+    color: #fff;
+    font-size: var(--step-1);
+    line-height: 1.25;
+    max-width: 34ch;
+  }
+  .wcta-texto {
+    margin: var(--sp-3) 0 0;
+    line-height: 1.6;
+    color: #d4d8df;
+  }
+  .wcta-bullets {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-4) 0 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .wcta-bullets li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: var(--step-0);
+    color: #d4d8df;
+    line-height: 1.5;
+  }
+  .wcta-bullets li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 800;
+  }
+  .wcta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: var(--sp-5);
+    padding: 0.95rem 1.4rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--step-0);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .wcta-btn:hover {
+    filter: brightness(1.07);
+  }
+  .wcta-btn-ico {
+    display: grid;
+    place-items: center;
+  }
+  .wcta-nota {
+    margin: var(--sp-3) 0 0;
+    font-size: var(--step--1);
+    color: #aab0ba;
+    text-align: center;
+  }
+</style>
