@@ -32,6 +32,12 @@ const n = cidade.nome;
 const path = `/personal-trainer/${cidade.slug}`;
 const url = new URL(path, site.dominio).href;
 
+// Capa única da cidade (gerada por scripts/gen-capas.ts): WebP na página,
+// PNG para Open Graph e dados estruturados.
+const capaWebp = `/capas/personal-trainer-${cidade.slug}.webp`;
+const capaPng = `/capas/personal-trainer-${cidade.slug}.png`;
+const capaAlt = `Personal trainer em ${n} (${cidade.uf}) — guia do Personal por Perto`;
+
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
 // Vizinhas reais (geográficas) para linkagem contextual na prosa.
@@ -100,6 +106,7 @@ const schema = [
     titulo: title,
     descricao: description,
     url,
+    imagem: new URL(capaPng, site.dominio).href,
     publicadoEm: '2024-09-01',
     atualizadoEm: cidade.atualizadoEm,
   }),
@@ -124,7 +131,7 @@ const objetivoDesc: Record<string, string> = {
 };
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capaPng} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
   <!-- HERO -->
@@ -147,6 +154,25 @@ const objetivoDesc: Record<string, string> = {
         <span>✔ Dados locais reais e fontes oficiais</span>
         <span>✔ Atualizado em {formatDateLong(cidade.atualizadoEm)}</span>
       </div>
+
+      <figure class="capa">
+        <picture>
+          <source srcset={capaWebp} type="image/webp" />
+          <img
+            src={capaPng}
+            alt={capaAlt}
+            width="1200"
+            height="630"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        <figcaption>
+          Guia de personal trainer em {n} ({cidade.uf}) — panorama local, faixas de
+          preço e onde treinar. Personal por Perto.
+        </figcaption>
+      </figure>
     </div>
   </header>
 
@@ -513,6 +539,24 @@ const objetivoDesc: Record<string, string> = {
     font-size: var(--step--1);
     font-weight: 600;
     color: var(--brand-700);
+  }
+
+  .capa {
+    margin: var(--sp-6) 0 0;
+    max-width: 720px;
+  }
+  .capa img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .capa figcaption {
+    margin-top: var(--sp-3);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   .stats-band {
