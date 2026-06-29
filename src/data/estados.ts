@@ -175,4 +175,54 @@ export const estados: Estado[] = [
       'Capital planejada e jovem, Palmas surpreende pela altíssima adesão à atividade física — é destaque nacional na prática entre mulheres — e por uma malha generosa de espaços públicos para treino.',
     atualizadoEm: '2026-06-29',
   },
+  {
+    slug: 'mato-grosso-do-sul',
+    nome: 'Mato Grosso do Sul',
+    uf: 'MS',
+    regiao: 'Centro-Oeste',
+    capital: 'Campo Grande',
+    descricao:
+      'Com Campo Grande à frente, Mato Grosso do Sul une força do agronegócio, boa renda e uma capital arborizada e planejada, com parques e ciclovias que favorecem o treino ao ar livre.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'mato-grosso',
+    nome: 'Mato Grosso',
+    uf: 'MT',
+    regiao: 'Centro-Oeste',
+    capital: 'Cuiabá',
+    descricao:
+      'Coração do agronegócio brasileiro, Mato Grosso tem em Cuiabá uma capital de economia pujante e calor intenso, onde o treino ao ar livre se concentra nos horários mais frescos e a estrutura de academias cresce a cada ano.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'para',
+    nome: 'Pará',
+    uf: 'PA',
+    regiao: 'Norte',
+    capital: 'Belém',
+    descricao:
+      'Maior centro urbano da Amazônia Oriental, o Pará tem em Belém uma capital histórica e portuária, com parques, orla e uma cena fitness em expansão sob o clima equatorial.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'piaui',
+    nome: 'Piauí',
+    uf: 'PI',
+    regiao: 'Nordeste',
+    capital: 'Teresina',
+    descricao:
+      'Teresina, polo de saúde do Meio-Norte, tem forte cultura de corrida de rua e atividade física, com parques e orlas fluviais que sustentam a vida ativa apesar do calor.',
+    atualizadoEm: '2026-06-29',
+  },
+  {
+    slug: 'maranhao',
+    nome: 'Maranhão',
+    uf: 'MA',
+    regiao: 'Nordeste',
+    capital: 'São Luís',
+    descricao:
+      'Capital histórica e litorânea, São Luís combina patrimônio cultural, orla e lagoas urbanas com um mercado fitness crescente, em um dos cenários mais singulares do Nordeste.',
+    atualizadoEm: '2026-06-29',
+  },
 ];
