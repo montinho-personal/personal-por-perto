@@ -229,6 +229,27 @@ import { cidade as carapicuiba } from './carapicuiba-sp';
 import { cidade as jandira } from './jandira-sp';
 import { cidade as itapevi } from './itapevi-sp';
 import { cidade as aldeiaDaSerra } from './aldeia-da-serra-sp';
+// Bloco 15 (polos regionais e turismo — SP/ES/MG/RJ/BA/PE/GO/SC/RS/PA/AM)
+import { cidade as tatui } from './tatui-sp';
+import { cidade as itupeva } from './itupeva-sp';
+import { cidade as sertaozinho } from './sertaozinho-sp';
+import { cidade as colatina } from './colatina-es';
+import { cidade as aracruz } from './aracruz-es';
+import { cidade as ouroPreto } from './ouro-preto-mg';
+import { cidade as sabara } from './sabara-mg';
+import { cidade as conselheiroLafaiete } from './conselheiro-lafaiete-mg';
+import { cidade as paraty } from './paraty-rj';
+import { cidade as queimados } from './queimados-rj';
+import { cidade as jequie } from './jequie-ba';
+import { cidade as alagoinhas } from './alagoinhas-ba';
+import { cidade as santaCruzDoCapibaribe } from './santa-cruz-do-capibaribe-pe';
+import { cidade as trindade } from './trindade-go';
+import { cidade as aguasLindas } from './aguas-lindas-de-goias-go';
+import { cidade as garopaba } from './garopaba-sc';
+import { cidade as uruguaiana } from './uruguaiana-rs';
+import { cidade as erechim } from './erechim-rs';
+import { cidade as paragominas } from './paragominas-pa';
+import { cidade as parintins } from './parintins-am';
 // Bloco 14 (polos regionais e metrôs — SP/RJ/PR/SC/RS/DF/GO/PE/SE/MA)
 import { cidade as birigui } from './birigui-sp';
 import { cidade as jau } from './jau-sp';
@@ -290,6 +311,10 @@ import { cidade as pinhais } from './pinhais-pr';
 import { cidade as aguasClaras } from './aguas-claras-df';
 
 export const cidades: Cidade[] = [
+  // Bloco 15 (polos regionais e turismo)
+  tatui, itupeva, sertaozinho, colatina, aracruz, ouroPreto, sabara, conselheiroLafaiete,
+  paraty, queimados, jequie, alagoinhas, santaCruzDoCapibaribe, trindade, aguasLindas,
+  garopaba, uruguaiana, erechim, paragominas, parintins,
   // Bloco 14 (polos regionais e metrôs)
   birigui, jau, lorena, votorantim, mage, mesquita, nilopolis, fazendaRioGrande,
   almiranteTamandare, arapongas, navegantes, concordia, alvorada, cachoeirinha, lajeado,
