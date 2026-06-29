@@ -182,8 +182,33 @@ import { cidade as arapiraca } from './arapiraca-al';
 import { cidade as araguaina } from './araguaina-to';
 import { cidade as jiParana } from './ji-parana-ro';
 import { cidade as castanhal } from './castanhal-pa';
+// Bloco 9
+import { cidade as vinhedo } from './vinhedo-sp';
+import { cidade as itu } from './itu-sp';
+import { cidade as botucatu } from './botucatu-sp';
+import { cidade as saoVicente } from './sao-vicente-sp';
+import { cidade as barretos } from './barretos-sp';
+import { cidade as buzios } from './buzios-rj';
+import { cidade as araruama } from './araruama-rj';
+import { cidade as itabira } from './itabira-mg';
+import { cidade as saoJoaoDelRei } from './sao-joao-del-rei-mg';
+import { cidade as lavras } from './lavras-mg';
+import { cidade as paranagua } from './paranagua-pr';
+import { cidade as guarapuava } from './guarapuava-pr';
+import { cidade as rioGrande } from './rio-grande-rs';
+import { cidade as gramado } from './gramado-rs';
+import { cidade as lages } from './lages-sc';
+import { cidade as juazeiroBA } from './juazeiro-ba';
+import { cidade as portoSeguro } from './porto-seguro-ba';
+import { cidade as garanhuns } from './garanhuns-pe';
+import { cidade as jatai } from './jatai-go';
+import { cidade as primaveraDoLeste } from './primavera-do-leste-mt';
 
 export const cidades: Cidade[] = [
+  // Bloco 9 (expansão — premium, turismo, agro e polos regionais)
+  vinhedo, itu, botucatu, saoVicente, barretos, buzios, araruama, itabira,
+  saoJoaoDelRei, lavras, paranagua, guarapuava, rioGrande, gramado, lages,
+  juazeiroBA, portoSeguro, garanhuns, jatai, primaveraDoLeste,
   // Bloco 8 (expansão — alta renda, agro, turismo e 2as cidades)
   novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa,
   toledo, passoFundo, palhoca, ilheus, barreiras, paulistaPE, maracanau,
