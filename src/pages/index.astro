@@ -3,14 +3,23 @@ import Base from '../layouts/Base.astro';
 import CityCard from '../components/CityCard.astro';
 import CtaMontinho from '../components/CtaMontinho.astro';
 import Faq from '../components/Faq.astro';
-import { cidades } from '../data/cidades';
+import { cidades, getCidade } from '../data/cidades';
 import { estados } from '../data/estados';
 import { site } from '../data/site';
 import { formatNumber } from '../lib/slug';
 import { faqSchema, itemListSchema } from '../lib/schema';
 
-const destaque = cidades.slice(0, 6);
-const popCoberta = cidades.reduce((s, c) => s + c.populacao, 0);
+// Destaque diverso (grandes cidades de várias regiões), com fallback.
+const slugsDestaque = [
+  'sao-paulo-sp', 'rio-de-janeiro-rj', 'belo-horizonte-mg', 'brasilia-df',
+  'curitiba-pr', 'goiania-go', 'porto-alegre-rs', 'salvador-ba', 'florianopolis-sc',
+];
+const destaque = slugsDestaque
+  .map((s) => getCidade(s))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+const destaqueFinal = destaque.length >= 6 ? destaque : cidades.slice(0, 9);
+
+const popCoberta = cidades.reduce((s, c) => s + (c.populacao ?? 0), 0);
 
 const faqs = [
   {
@@ -78,7 +87,7 @@ const schema = [
         <p class="panel-title">Cidades em destaque</p>
         <ul class="panel-list">
           {
-            destaque.slice(0, 5).map((c) => (
+            destaqueFinal.slice(0, 5).map((c) => (
               <li>
                 <a href={`/personal-trainer/${c.slug}`}>
                   <span>Personal Trainer em {c.nome}</span>
@@ -159,7 +168,7 @@ const schema = [
         <a class="btn btn-ghost" href="/personal-trainer">Ver todas as cidades →</a>
       </div>
       <div class="grid grid-3" style="margin-top: var(--sp-5)">
-        {destaque.map((c) => (<CityCard cidade={c} />))}
+        {destaqueFinal.map((c) => (<CityCard cidade={c} />))}
       </div>
     </div>
   </section>
