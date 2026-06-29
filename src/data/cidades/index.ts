@@ -98,8 +98,34 @@ import { cidade as cascavel } from './cascavel-pr';
 import { cidade as fozDoIguacu } from './foz-do-iguacu-pr';
 import { cidade as uberaba } from './uberaba-mg';
 import { cidade as montesClaros } from './montes-claros-mg';
+// Bloco 5
+import { cidade as caboFrio } from './cabo-frio-rj';
+import { cidade as macae } from './macae-rj';
+import { cidade as camposDosGoytacazes } from './campos-dos-goytacazes-rj';
+import { cidade as angraDosReis } from './angra-dos-reis-rj';
+import { cidade as limeira } from './limeira-sp';
+import { cidade as taubate } from './taubate-sp';
+import { cidade as marilia } from './marilia-sp';
+import { cidade as presidentePrudente } from './presidente-prudente-sp';
+import { cidade as saoCarlos } from './sao-carlos-sp';
+import { cidade as araraquara } from './araraquara-sp';
+import { cidade as ipatinga } from './ipatinga-mg';
+import { cidade as governadorValadares } from './governador-valadares-mg';
+import { cidade as divinopolis } from './divinopolis-mg';
+import { cidade as dourados } from './dourados-ms';
+import { cidade as rondonopolis } from './rondonopolis-mt';
+import { cidade as imperatriz } from './imperatriz-ma';
+import { cidade as parnaiba } from './parnaiba-pi';
+import { cidade as petrolina } from './petrolina-pe';
+import { cidade as juazeiroDoNorte } from './juazeiro-do-norte-ce';
+import { cidade as novoHamburgo } from './novo-hamburgo-rs';
 
 export const cidades: Cidade[] = [
+  // Bloco 5 (expansão — polos regionais e litoral)
+  caboFrio, macae, camposDosGoytacazes, angraDosReis,
+  limeira, taubate, marilia, presidentePrudente, saoCarlos, araraquara,
+  ipatinga, governadorValadares, divinopolis, dourados, rondonopolis,
+  imperatriz, parnaiba, petrolina, juazeiroDoNorte, novoHamburgo,
   // Bloco 4 (expansão — metrópoles e polos regionais)
   olinda, caruaru, vitoriaDaConquista, anapolis, campinaGrande, mossoro,
   ananindeua, santarem, cariacica, voltaRedonda, petropolis, canoas,
