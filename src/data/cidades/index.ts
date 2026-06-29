@@ -15,8 +15,29 @@ import { cidade as curitiba } from './curitiba-pr';
 import { cidade as santanaDeParnaiba } from './santana-de-parnaiba-sp';
 import { cidade as alphaville } from './alphaville-sp';
 import { cidade as tambore } from './tambore-sp';
+import { cidade as ribeiraoPreto } from './ribeirao-preto-sp';
+import { cidade as sorocaba } from './sorocaba-sp';
+import { cidade as rioDeJaneiro } from './rio-de-janeiro-rj';
+import { cidade as niteroi } from './niteroi-rj';
+import { cidade as beloHorizonte } from './belo-horizonte-mg';
+import { cidade as uberlandia } from './uberlandia-mg';
+import { cidade as vitoria } from './vitoria-es';
+import { cidade as brasilia } from './brasilia-df';
+import { cidade as goiania } from './goiania-go';
+import { cidade as portoAlegre } from './porto-alegre-rs';
+import { cidade as florianopolis } from './florianopolis-sc';
+import { cidade as balnearioCamboriu } from './balneario-camboriu-sc';
+import { cidade as fortaleza } from './fortaleza-ce';
+import { cidade as salvador } from './salvador-ba';
+import { cidade as recife } from './recife-pe';
+import { cidade as aracaju } from './aracaju-se';
+import { cidade as joaoPessoa } from './joao-pessoa-pb';
+import { cidade as natal } from './natal-rn';
+import { cidade as manaus } from './manaus-am';
+import { cidade as palmas } from './palmas-to';
 
 export const cidades: Cidade[] = [
+  // Sudeste — SP
   saoPaulo,
   campinas,
   guarulhos,
@@ -26,7 +47,32 @@ export const cidades: Cidade[] = [
   santanaDeParnaiba,
   alphaville,
   tambore,
+  ribeiraoPreto,
+  sorocaba,
+  // Sudeste — RJ / MG / ES
+  rioDeJaneiro,
+  niteroi,
+  beloHorizonte,
+  uberlandia,
+  vitoria,
+  // Sul
   curitiba,
+  portoAlegre,
+  florianopolis,
+  balnearioCamboriu,
+  // Centro-Oeste
+  brasilia,
+  goiania,
+  // Nordeste
+  fortaleza,
+  salvador,
+  recife,
+  aracaju,
+  joaoPessoa,
+  natal,
+  // Norte
+  manaus,
+  palmas,
 ];
 
 /** Mapa slug -> cidade para lookups O(1). */
