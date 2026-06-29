@@ -169,7 +169,6 @@ import { cidade as cotia } from './cotia-sp';
 import { cidade as caraguatatuba } from './caraguatatuba-sp';
 import { cidade as saquarema } from './saquarema-rj';
 import { cidade as barraMansa } from './barra-mansa-rj';
-import { cidade as barraDoPirai } from './barra-do-pirai-rj';
 import { cidade as toledo } from './toledo-pr';
 import { cidade as passoFundo } from './passo-fundo-rs';
 import { cidade as palhoca } from './palhoca-sc';
@@ -310,12 +309,33 @@ import { cidade as xangriLa } from './xangri-la-rs';
 import { cidade as capaoDaCanoa } from './capao-da-canoa-rs';
 import { cidade as pinhais } from './pinhais-pr';
 import { cidade as aguasClaras } from './aguas-claras-df';
-// Bloco 16 (polos regionais — Sudoeste mineiro / turismo)
+// Bloco 16 (polos regionais e regiões metropolitanas — SP/MG/RJ/PR/RS/SC/BA/PE/CE/GO/PA/MS)
+import { cidade as embuDasArtes } from './embu-das-artes-sp';
+import { cidade as ferrazDeVasconcelos } from './ferraz-de-vasconcelos-sp';
+import { cidade as itapecericaDaSerra } from './itapecerica-da-serra-sp';
+import { cidade as mogiMirim } from './mogi-mirim-sp';
+import { cidade as saoJoaoDaBoaVista } from './sao-joao-da-boa-vista-sp';
+import { cidade as paraDeMinas } from './para-de-minas-mg';
 import { cidade as passos } from './passos-mg';
+import { cidade as araxa } from './araxa-mg';
+import { cidade as saoPedroDaAldeia } from './sao-pedro-da-aldeia-rj';
+import { cidade as barraDoPirai } from './barra-do-pirai-rj';
+import { cidade as umuarama } from './umuarama-pr';
+import { cidade as campoMourao } from './campo-mourao-pr';
+import { cidade as bage } from './bage-rs';
+import { cidade as rioDoSul } from './rio-do-sul-sc';
+import { cidade as pauloAfonso } from './paulo-afonso-ba';
+import { cidade as camaragibe } from './camaragibe-pe';
+import { cidade as maranguape } from './maranguape-ce';
+import { cidade as senadorCanedo } from './senador-canedo-go';
+import { cidade as abaetetuba } from './abaetetuba-pa';
+import { cidade as corumba } from './corumba-ms';
 
 export const cidades: Cidade[] = [
-  // Bloco 16 (polos regionais — Sudoeste mineiro / turismo)
-  passos,
+  // Bloco 16 (polos regionais e regiões metropolitanas)
+  embuDasArtes, ferrazDeVasconcelos, itapecericaDaSerra, mogiMirim, saoJoaoDaBoaVista,
+  paraDeMinas, passos, araxa, saoPedroDaAldeia, barraDoPirai, umuarama, campoMourao,
+  bage, rioDoSul, pauloAfonso, camaragibe, maranguape, senadorCanedo, abaetetuba, corumba,
   // Bloco 15 (polos regionais e turismo)
   tatui, itupeva, sertaozinho, colatina, aracruz, ouroPreto, sabara, conselheiroLafaiete,
   paraty, queimados, jequie, alagoinhas, santaCruzDoCapibaribe, trindade, aguasLindas,
@@ -343,7 +363,7 @@ export const cidades: Cidade[] = [
   saoJoaoDelRei, lavras, paranagua, guarapuava, rioGrande, gramado, lages,
   juazeiroBA, portoSeguro, garanhuns, jatai, primaveraDoLeste,
   // Bloco 8 (expansão — alta renda, agro, turismo e 2as cidades)
-  novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa, barraDoPirai,
+  novaLima, sorriso, sumare, cotia, caraguatatuba, saquarema, barraMansa,
   toledo, passoFundo, palhoca, ilheus, barreiras, paulistaPE, maracanau,
   linhares, catalao, arapiraca, araguaina, jiParana, castanhal,
   // Bloco 7 (expansão — alta renda, agro e polos regionais)
