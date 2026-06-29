@@ -12,6 +12,7 @@ const SITE_ID = `${site.dominio}/#website`;
 
 /** Organization — emitido em todas as páginas (entidade central do portal). */
 export function organizationSchema() {
+  const sameAs = site.redes.map((r) => r.url);
   return {
     '@type': 'Organization',
     '@id': ORG_ID,
@@ -27,6 +28,8 @@ export function organizationSchema() {
     foundingDate: String(site.fundadoEm),
     email: site.email,
     knowsLanguage: 'pt-BR',
+    // Só emite sameAs quando há perfis reais cadastrados em site.redes.
+    ...(sameAs.length ? { sameAs } : {}),
   };
 }
 

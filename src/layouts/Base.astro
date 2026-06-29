@@ -91,22 +91,37 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
       </div>
     </div>
 
-    <script is:inline>
+    <script is:inline define:vars={{ gaId: site.analyticsId }}>
       (function () {
         var CHAVE = 'ppp-consentimento-cookies';
-        try {
-          if (localStorage.getItem(CHAVE)) return;
-        } catch (e) {
-          return;
+
+        // Carrega o Google Analytics 4 apenas após consentimento (LGPD).
+        function carregarAnalytics() {
+          if (!gaId || window.__pppGAOn) return;
+          window.__pppGAOn = true;
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, { anonymize_ip: true });
         }
+
+        var consentido = null;
+        try { consentido = localStorage.getItem(CHAVE); } catch (e) {}
+
+        if (consentido === 'aceito') carregarAnalytics();
+
         var aviso = document.getElementById('cookie-aviso');
-        if (!aviso) return;
+        if (consentido || !aviso) return; // já decidiu antes, ou sem banner
         aviso.hidden = false;
+
         function decidir(valor) {
-          try {
-            localStorage.setItem(CHAVE, valor);
-          } catch (e) {}
+          try { localStorage.setItem(CHAVE, valor); } catch (e) {}
           aviso.hidden = true;
+          if (valor === 'aceito') carregarAnalytics();
         }
         var aceitar = document.getElementById('cookie-aceitar');
         var recusar = document.getElementById('cookie-recusar');

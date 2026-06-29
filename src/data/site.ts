@@ -14,6 +14,20 @@ export const site = {
   twitter: '@personalporperto',
   /** Ano de fundação editorial do portal. */
   fundadoEm: 2024,
+  /**
+   * ID de medição do Google Analytics 4 (formato "G-XXXXXXXXXX").
+   * Deixe vazio para não carregar analytics. Por conformidade com a LGPD,
+   * o GA4 só é ativado depois que o visitante aceita os cookies no aviso.
+   */
+  analyticsId: '',
+  /**
+   * Perfis oficiais em redes sociais. Alimentam o `sameAs` do schema
+   * Organization (sinal de credibilidade para IAs/GEO) e os links do rodapé.
+   * Cole aqui apenas URLs reais e verificáveis — quando o array estiver vazio,
+   * o `sameAs` simplesmente não é emitido. Ex.:
+   *   { rede: 'Instagram', url: 'https://www.instagram.com/personalporperto' },
+   */
+  redes: [] as { rede: string; url: string }[],
 } as const;
 
 /** CTA principal do portal: levar visitas qualificadas ao Montinho Personal. */
