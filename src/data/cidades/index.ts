@@ -604,8 +604,33 @@ import { cidade as saoMiguelDosCampos } from './sao-miguel-dos-campos-al';
 import { cidade as tobiasBarreto } from './tobias-barreto-se';
 import { cidade as campoMaior } from './campo-maior-pi';
 import { cidade as bomJesusDaLapa } from './bom-jesus-da-lapa-ba';
+import { cidade as pederneiras } from './pederneiras-sp';
+import { cidade as santaCruzDoRioPardo } from './santa-cruz-do-rio-pardo-sp';
+import { cidade as saoJoseDoRioPardo } from './sao-jose-do-rio-pardo-sp';
+import { cidade as bomDespacho } from './bom-despacho-mg';
+import { cidade as januaria } from './januaria-mg';
+import { cidade as ponteNova } from './ponte-nova-mg';
+import { cidade as saoLourencoMG } from './sao-lourenco-mg';
+import { cidade as paracambi } from './paracambi-rj';
+import { cidade as cordeiro } from './cordeiro-rj';
+import { cidade as palmeira } from './palmeira-pr';
+import { cidade as rioNegro } from './rio-negro-pr';
+import { cidade as santoAntonioDaPatrulha } from './santo-antonio-da-patrulha-rs';
+import { cidade as taquara } from './taquara-rs';
+import { cidade as saoGabriel } from './sao-gabriel-rs';
+import { cidade as fraiburgo } from './fraiburgo-sc';
+import { cidade as sombrio } from './sombrio-sc';
+import { cidade as oeiras } from './oeiras-pi';
+import { cidade as santanaDoIpanema } from './santana-do-ipanema-al';
+import { cidade as ceres } from './ceres-go';
+import { cidade as ico } from './ico-ce';
 
 export const cidades: Cidade[] = [
+  // Bloco 30 (alcance nacional)
+  pederneiras, santaCruzDoRioPardo, saoJoseDoRioPardo, bomDespacho, januaria,
+  ponteNova, saoLourencoMG, paracambi, cordeiro, palmeira, rioNegro,
+  santoAntonioDaPatrulha, taquara, saoGabriel, fraiburgo, sombrio, oeiras,
+  santanaDoIpanema, ceres, ico,
   // Bloco 29 (alcance nacional)
   adamantina, cacapava, iturama, pirapora, campoBelo, irati, prudentopolis,
   osorio, santaRosa, garibaldi, bracoDoNorte, camposNovos, barbalha, cascavelCE,
