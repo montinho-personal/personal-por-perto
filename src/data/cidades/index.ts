@@ -456,8 +456,34 @@ import { cidade as cabedelo } from './cabedelo-pb';
 import { cidade as macaiba } from './macaiba-rn';
 import { cidade as floriano } from './floriano-pi';
 import { cidade as cruzeiroDoSul } from './cruzeiro-do-sul-ac';
+// Bloco 23 (interior e alcance nacional — inclui 2a cidade do AP)
+import { cidade as olimpia } from './olimpia-sp';
+import { cidade as tupa } from './tupa-sp';
+import { cidade as frutal } from './frutal-mg';
+import { cidade as vicosa } from './vicosa-mg';
+import { cidade as santoAntonioDePadua } from './santo-antonio-de-padua-rj';
+import { cidade as ibipora } from './ibipora-pr';
+import { cidade as xanxere } from './xanxere-sc';
+import { cidade as montenegro } from './montenegro-rs';
+import { cidade as valencaBA } from './valenca-ba';
+import { cidade as carpina } from './carpina-pe';
+import { cidade as tiangua } from './tiangua-ce';
+import { cidade as morrinhos } from './morrinhos-go';
+import { cidade as marataizes } from './marataizes-es';
+import { cidade as balsas } from './balsas-ma';
+import { cidade as cameta } from './cameta-pa';
+import { cidade as sidrolandia } from './sidrolandia-ms';
+import { cidade as curraisNovos } from './currais-novos-rn';
+import { cidade as paraisoDoTocantins } from './paraiso-do-tocantins-to';
+import { cidade as santana } from './santana-ap';
+import { cidade as cacoal } from './cacoal-ro';
+import { cidade as cachoeirasDeMacacu } from './cachoeiras-de-macacu-rj';
 
 export const cidades: Cidade[] = [
+  // Bloco 23 (interior e alcance nacional)
+  olimpia, tupa, frutal, vicosa, santoAntonioDePadua, ibipora, xanxere, montenegro,
+  valencaBA, carpina, tiangua, morrinhos, marataizes, balsas, cameta, sidrolandia,
+  curraisNovos, paraisoDoTocantins, santana, cacoal, cachoeirasDeMacacu,
   // Bloco 22 (uma cidade por estado — alcance nacional)
   mococa, paracatu, casimiroDeAbreu, marechalCandidoRondon, imbituba, torres, brumado,
   igarassu, aracati, planaltinaGO, viana, saoJoseDeRibamar, barcarena, altaFloresta,
