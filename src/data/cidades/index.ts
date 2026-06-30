@@ -521,7 +521,7 @@ import { cidade as acu } from './acu-rn';
 import { cidade as portoNacional } from './porto-nacional-to';
 import { cidade as rorainopolis } from './rorainopolis-rr';
 import { cidade as icara } from './icara-sc';
-// Bloco 26 (alcance nacional; parcial — 9 cidades restantes pós-reset)
+// Bloco 26 (alcance nacional)
 import { cidade as itapeva } from './itapeva-sp';
 import { cidade as janauba } from './janauba-mg';
 import { cidade as vassouras } from './vassouras-rj';
@@ -534,11 +534,21 @@ import { cidade as cristalina } from './cristalina-go';
 import { cidade as domingosMartins } from './domingos-martins-es';
 import { cidade as chapadinha } from './chapadinha-ma';
 import { cidade as tailandia } from './tailandia-pa';
+import { cidade as palmares } from './palmares-pe';
+import { cidade as pontesELacerda } from './pontes-e-lacerda-mt';
+import { cidade as paranaiba } from './paranaiba-ms';
+import { cidade as marechalDeodoro } from './marechal-deodoro-al';
+import { cidade as guarabira } from './guarabira-pb';
+import { cidade as pauDosFerros } from './pau-dos-ferros-rn';
+import { cidade as tefe } from './tefe-am';
+import { cidade as colinasDoTocantins } from './colinas-do-tocantins-to';
+import { cidade as quixeramobim } from './quixeramobim-ce';
 
 export const cidades: Cidade[] = [
-  // Bloco 26 (alcance nacional — parcial)
+  // Bloco 26 (alcance nacional)
   itapeva, janauba, vassouras, castro, pomerode, camaqua, cruzDasAlmas, horizonte,
-  cristalina, domingosMartins, chapadinha, tailandia,
+  cristalina, domingosMartins, chapadinha, tailandia, palmares, pontesELacerda, paranaiba,
+  marechalDeodoro, guarabira, pauDosFerros, tefe, colinasDoTocantins, quixeramobim,
   // Bloco 25 (alcance nacional)
   lencoisPaulista, congonhas, mangaratiba, cambe, tijucas, esteio, simoesFilho, abreuELima,
   pacatuba, cidadeOcidental, santaMariaDeJetiba, pacoDoLumiar, salinopolis, novaMutum,
