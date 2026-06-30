@@ -584,8 +584,32 @@ import { cidade as estancia } from './estancia-se';
 import { cidade as coruripe } from './coruripe-al';
 import { cidade as esperanca } from './esperanca-pb';
 import { cidade as apodi } from './apodi-rn';
+import { cidade as adamantina } from './adamantina-sp';
+import { cidade as cacapava } from './cacapava-sp';
+import { cidade as iturama } from './iturama-mg';
+import { cidade as pirapora } from './pirapora-mg';
+import { cidade as campoBelo } from './campo-belo-mg';
+import { cidade as irati } from './irati-pr';
+import { cidade as prudentopolis } from './prudentopolis-pr';
+import { cidade as osorio } from './osorio-rs';
+import { cidade as santaRosa } from './santa-rosa-rs';
+import { cidade as garibaldi } from './garibaldi-rs';
+import { cidade as bracoDoNorte } from './braco-do-norte-sc';
+import { cidade as camposNovos } from './campos-novos-sc';
+import { cidade as barbalha } from './barbalha-ce';
+import { cidade as cascavelCE } from './cascavel-ce';
+import { cidade as escada } from './escada-pe';
+import { cidade as bezerros } from './bezerros-pe';
+import { cidade as saoMiguelDosCampos } from './sao-miguel-dos-campos-al';
+import { cidade as tobiasBarreto } from './tobias-barreto-se';
+import { cidade as campoMaior } from './campo-maior-pi';
+import { cidade as bomJesusDaLapa } from './bom-jesus-da-lapa-ba';
 
 export const cidades: Cidade[] = [
+  // Bloco 29 (alcance nacional)
+  adamantina, cacapava, iturama, pirapora, campoBelo, irati, prudentopolis,
+  osorio, santaRosa, garibaldi, bracoDoNorte, camposNovos, barbalha, cascavelCE,
+  escada, bezerros, saoMiguelDosCampos, tobiasBarreto, campoMaior, bomJesusDaLapa,
   // Bloco 28 (alcance nacional)
   penapolis, matao, capivari, ituiutaba, manhuacu, santaCruzRN, quirinopolis,
   colider, guaratuba, cruzAlta, saoBorja, curitibanos, maravilha, acarau,
