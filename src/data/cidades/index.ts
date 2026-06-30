@@ -435,8 +435,33 @@ import { cidade as saoGoncaloDoAmaranteRN } from './sao-goncalo-do-amarante-rn';
 import { cidade as itabaiana } from './itabaiana-se';
 import { cidade as itaituba } from './itaituba-pa';
 import { cidade as vilhena } from './vilhena-ro';
+// Bloco 22 (uma cidade por estado — alcance nacional, inclui 2ª cidade do AC)
+import { cidade as mococa } from './mococa-sp';
+import { cidade as paracatu } from './paracatu-mg';
+import { cidade as casimiroDeAbreu } from './casimiro-de-abreu-rj';
+import { cidade as marechalCandidoRondon } from './marechal-candido-rondon-pr';
+import { cidade as imbituba } from './imbituba-sc';
+import { cidade as torres } from './torres-rs';
+import { cidade as brumado } from './brumado-ba';
+import { cidade as igarassu } from './igarassu-pe';
+import { cidade as aracati } from './aracati-ce';
+import { cidade as planaltinaGO } from './planaltina-go';
+import { cidade as viana } from './viana-es';
+import { cidade as saoJoseDeRibamar } from './sao-jose-de-ribamar-ma';
+import { cidade as barcarena } from './barcarena-pa';
+import { cidade as altaFloresta } from './alta-floresta-mt';
+import { cidade as aquidauana } from './aquidauana-ms';
+import { cidade as penedo } from './penedo-al';
+import { cidade as cabedelo } from './cabedelo-pb';
+import { cidade as macaiba } from './macaiba-rn';
+import { cidade as floriano } from './floriano-pi';
+import { cidade as cruzeiroDoSul } from './cruzeiro-do-sul-ac';
 
 export const cidades: Cidade[] = [
+  // Bloco 22 (uma cidade por estado — alcance nacional)
+  mococa, paracatu, casimiroDeAbreu, marechalCandidoRondon, imbituba, torres, brumado,
+  igarassu, aracati, planaltinaGO, viana, saoJoseDeRibamar, barcarena, altaFloresta,
+  aquidauana, penedo, cabedelo, macaiba, floriano, cruzeiroDoSul,
   // Bloco 21 (polos regionais e interior — espalhamento nacional)
   pirassununga, registro, peruibe, formiga, mariana, caratinga, japeri, cornelioProcopio,
   uniaoDaVitoria, laguna, vacaria, cachoeiraDoSul, senhorDoBonfim, salgueiro, crateus,
