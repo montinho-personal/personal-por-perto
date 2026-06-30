@@ -644,8 +644,33 @@ import { cidade as miracemaDoTocantins } from './miracema-do-tocantins-to';
 import { cidade as niquelandia } from './niquelandia-go';
 import { cidade as diamantino } from './diamantino-mt';
 import { cidade as coxim } from './coxim-ms';
+import { cidade as senaMadureira } from './sena-madureira-ac';
+import { cidade as brasileia } from './brasileia-ac';
+import { cidade as laranjalDoJari } from './laranjal-do-jari-ap';
+import { cidade as oiapoque } from './oiapoque-ap';
+import { cidade as caracarai } from './caracarai-rr';
+import { cidade as jaru } from './jaru-ro';
+import { cidade as rolimDeMoura } from './rolim-de-moura-ro';
+import { cidade as piripiri } from './piripiri-pi';
+import { cidade as saoRaimundoNonato } from './sao-raimundo-nonato-pi';
+import { cidade as propria } from './propria-se';
+import { cidade as capela } from './capela-se';
+import { cidade as maues } from './maues-am';
+import { cidade as tabatinga } from './tabatinga-am';
+import { cidade as tocantinopolis } from './tocantinopolis-to';
+import { cidade as dianopolis } from './dianopolis-to';
+import { cidade as pinheiro } from './pinheiro-ma';
+import { cidade as pedreiras } from './pedreiras-ma';
+import { cidade as monteiro } from './monteiro-pb';
+import { cidade as pombal } from './pombal-pb';
+import { cidade as girauDoPonciano } from './girau-do-ponciano-al';
 
 export const cidades: Cidade[] = [
+  // Bloco 32 (foco Norte/Nordeste)
+  senaMadureira, brasileia, laranjalDoJari, oiapoque, caracarai, jaru,
+  rolimDeMoura, piripiri, saoRaimundoNonato, propria, capela, maues, tabatinga,
+  tocantinopolis, dianopolis, pinheiro, pedreiras, monteiro, pombal,
+  girauDoPonciano,
   // Bloco 31 (alcance nacional)
   brotas, taquaritinga, guaxupe, diamantina, caxambu, piraquara, ivaipora,
   saoJoaquim, veranopolis, moradaNova, brejoSanto, timbauba, saoBentoDoUna,
