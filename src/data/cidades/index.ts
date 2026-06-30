@@ -564,8 +564,32 @@ import { cidade as bayeux } from './bayeux-pb';
 import { cidade as macau } from './macau-rn';
 import { cidade as coari } from './coari-am';
 import { cidade as guarai } from './guarai-to';
+import { cidade as penapolis } from './penapolis-sp';
+import { cidade as matao } from './matao-sp';
+import { cidade as capivari } from './capivari-sp';
+import { cidade as ituiutaba } from './ituiutaba-mg';
+import { cidade as manhuacu } from './manhuacu-mg';
+import { cidade as santaCruzRN } from './santa-cruz-rn';
+import { cidade as quirinopolis } from './quirinopolis-go';
+import { cidade as colider } from './colider-mt';
+import { cidade as guaratuba } from './guaratuba-pr';
+import { cidade as cruzAlta } from './cruz-alta-rs';
+import { cidade as saoBorja } from './sao-borja-rs';
+import { cidade as curitibanos } from './curitibanos-sc';
+import { cidade as maravilha } from './maravilha-sc';
+import { cidade as acarau } from './acarau-ce';
+import { cidade as limoeiroDoNorte } from './limoeiro-do-norte-ce';
+import { cidade as surubim } from './surubim-pe';
+import { cidade as estancia } from './estancia-se';
+import { cidade as coruripe } from './coruripe-al';
+import { cidade as esperanca } from './esperanca-pb';
+import { cidade as apodi } from './apodi-rn';
 
 export const cidades: Cidade[] = [
+  // Bloco 28 (alcance nacional)
+  penapolis, matao, capivari, ituiutaba, manhuacu, santaCruzRN, quirinopolis,
+  colider, guaratuba, cruzAlta, saoBorja, curitibanos, maravilha, acarau,
+  limoeiroDoNorte, surubim, estancia, coruripe, esperanca, apodi,
   // Bloco 27 (alcance nacional)
   fernandopolis, patrocinio, paraibaDoSul, lapa, videira, tramandai, serrinha,
   saoLourencoDaMata, caninde, camocim, inhumas, castelo, barraDoCorda, capanema,
