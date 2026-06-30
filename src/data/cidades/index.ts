@@ -499,8 +499,34 @@ import { cidade as rioLargo } from './rio-largo-al';
 import { cidade as santaRitaPB } from './santa-rita-pb';
 import { cidade as cearaMirim } from './ceara-mirim-rn';
 import { cidade as manacapuru } from './manacapuru-am';
+// Bloco 25 (alcance nacional — inclui 2a cidade de RR)
+import { cidade as lencoisPaulista } from './lencois-paulista-sp';
+import { cidade as congonhas } from './congonhas-mg';
+import { cidade as mangaratiba } from './mangaratiba-rj';
+import { cidade as cambe } from './cambe-pr';
+import { cidade as tijucas } from './tijucas-sc';
+import { cidade as esteio } from './esteio-rs';
+import { cidade as simoesFilho } from './simoes-filho-ba';
+import { cidade as abreuELima } from './abreu-e-lima-pe';
+import { cidade as pacatuba } from './pacatuba-ce';
+import { cidade as cidadeOcidental } from './cidade-ocidental-go';
+import { cidade as santaMariaDeJetiba } from './santa-maria-de-jetiba-es';
+import { cidade as pacoDoLumiar } from './paco-do-lumiar-ma';
+import { cidade as salinopolis } from './salinopolis-pa';
+import { cidade as novaMutum } from './nova-mutum-mt';
+import { cidade as maracaju } from './maracaju-ms';
+import { cidade as uniaoDosPalmares } from './uniao-dos-palmares-al';
+import { cidade as sousa } from './sousa-pb';
+import { cidade as acu } from './acu-rn';
+import { cidade as portoNacional } from './porto-nacional-to';
+import { cidade as rorainopolis } from './rorainopolis-rr';
+import { cidade as icara } from './icara-sc';
 
 export const cidades: Cidade[] = [
+  // Bloco 25 (alcance nacional)
+  lencoisPaulista, congonhas, mangaratiba, cambe, tijucas, esteio, simoesFilho, abreuELima,
+  pacatuba, cidadeOcidental, santaMariaDeJetiba, pacoDoLumiar, salinopolis, novaMutum,
+  maracaju, uniaoDosPalmares, sousa, acu, portoNacional, rorainopolis, icara,
   // Bloco 24 (interior e alcance nacional)
   mongagua, ibiuna, santaRitaDoSapucai, itatiaia, jacarezinho, mafra, guaiba, itapetinga,
   pesqueira, russas, pirenopolis, novaVenecia, santaInes, marituba, campoVerde,
