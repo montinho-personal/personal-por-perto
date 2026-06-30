@@ -478,8 +478,33 @@ import { cidade as paraisoDoTocantins } from './paraiso-do-tocantins-to';
 import { cidade as santana } from './santana-ap';
 import { cidade as cacoal } from './cacoal-ro';
 import { cidade as cachoeirasDeMacacu } from './cachoeiras-de-macacu-rj';
+// Bloco 24 (interior e alcance nacional)
+import { cidade as mongagua } from './mongagua-sp';
+import { cidade as ibiuna } from './ibiuna-sp';
+import { cidade as santaRitaDoSapucai } from './santa-rita-do-sapucai-mg';
+import { cidade as itatiaia } from './itatiaia-rj';
+import { cidade as jacarezinho } from './jacarezinho-pr';
+import { cidade as mafra } from './mafra-sc';
+import { cidade as guaiba } from './guaiba-rs';
+import { cidade as itapetinga } from './itapetinga-ba';
+import { cidade as pesqueira } from './pesqueira-pe';
+import { cidade as russas } from './russas-ce';
+import { cidade as pirenopolis } from './pirenopolis-go';
+import { cidade as novaVenecia } from './nova-venecia-es';
+import { cidade as santaInes } from './santa-ines-ma';
+import { cidade as marituba } from './marituba-pa';
+import { cidade as campoVerde } from './campo-verde-mt';
+import { cidade as novaAndradina } from './nova-andradina-ms';
+import { cidade as rioLargo } from './rio-largo-al';
+import { cidade as santaRitaPB } from './santa-rita-pb';
+import { cidade as cearaMirim } from './ceara-mirim-rn';
+import { cidade as manacapuru } from './manacapuru-am';
 
 export const cidades: Cidade[] = [
+  // Bloco 24 (interior e alcance nacional)
+  mongagua, ibiuna, santaRitaDoSapucai, itatiaia, jacarezinho, mafra, guaiba, itapetinga,
+  pesqueira, russas, pirenopolis, novaVenecia, santaInes, marituba, campoVerde,
+  novaAndradina, rioLargo, santaRitaPB, cearaMirim, manacapuru,
   // Bloco 23 (interior e alcance nacional)
   olimpia, tupa, frutal, vicosa, santoAntonioDePadua, ibipora, xanxere, montenegro,
   valencaBA, carpina, tiangua, morrinhos, marataizes, balsas, cameta, sidrolandia,

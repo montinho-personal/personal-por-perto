@@ -2,7 +2,7 @@ import type { Cidade } from '../../lib/types';
 
 export const cidade: Cidade = {
   slug: 'nova-venecia-es', nome: 'Nova Venécia', uf: 'ES', estado: 'Espírito Santo', estadoSlug: 'espirito-santo', regiao: 'Sudeste', gentilico: 'veneciano', tipo: 'cidade',
-  populacao: 49065, populacaoAno: 2022, idhm: 0.712, idhmClasse: 'médio', altitudeM: 65,
+  populacao: 49065, populacaoAno: 2022, idhm: 0.712, idhmClasse: 'alto', altitudeM: 65,
 
   resumoEconomico:
     'Nova Venécia é um dos principais municípios do noroeste capixaba e é conhecida como a "capital do granito", apoiada na extração e no beneficiamento de rochas ornamentais que movimentam a economia local e abastecem o mercado nacional. A cidade nasceu da colonização italiana, com famílias vindas do Vêneto a partir do fim do século XIX, e mantém forte vocação agropecuária, com destaque para a produção de café e de leite. A combinação entre o polo de granito, o agronegócio e o comércio que atende a região faz dela uma referência de serviços no entorno.',
