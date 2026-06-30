@@ -543,8 +543,33 @@ import { cidade as pauDosFerros } from './pau-dos-ferros-rn';
 import { cidade as tefe } from './tefe-am';
 import { cidade as colinasDoTocantins } from './colinas-do-tocantins-to';
 import { cidade as quixeramobim } from './quixeramobim-ce';
+import { cidade as fernandopolis } from './fernandopolis-sp';
+import { cidade as patrocinio } from './patrocinio-mg';
+import { cidade as paraibaDoSul } from './paraiba-do-sul-rj';
+import { cidade as lapa } from './lapa-pr';
+import { cidade as videira } from './videira-sc';
+import { cidade as tramandai } from './tramandai-rs';
+import { cidade as serrinha } from './serrinha-ba';
+import { cidade as saoLourencoDaMata } from './sao-lourenco-da-mata-pe';
+import { cidade as caninde } from './caninde-ce';
+import { cidade as camocim } from './camocim-ce';
+import { cidade as inhumas } from './inhumas-go';
+import { cidade as castelo } from './castelo-es';
+import { cidade as barraDoCorda } from './barra-do-corda-ma';
+import { cidade as capanema } from './capanema-pa';
+import { cidade as juina } from './juina-mt';
+import { cidade as bonito } from './bonito-ms';
+import { cidade as delmiroGouveia } from './delmiro-gouveia-al';
+import { cidade as bayeux } from './bayeux-pb';
+import { cidade as macau } from './macau-rn';
+import { cidade as coari } from './coari-am';
+import { cidade as guarai } from './guarai-to';
 
 export const cidades: Cidade[] = [
+  // Bloco 27 (alcance nacional)
+  fernandopolis, patrocinio, paraibaDoSul, lapa, videira, tramandai, serrinha,
+  saoLourencoDaMata, caninde, camocim, inhumas, castelo, barraDoCorda, capanema,
+  juina, bonito, delmiroGouveia, bayeux, macau, coari, guarai,
   // Bloco 26 (alcance nacional)
   itapeva, janauba, vassouras, castro, pomerode, camaqua, cruzDasAlmas, horizonte,
   cristalina, domingosMartins, chapadinha, tailandia, palmares, pontesELacerda, paranaiba,
