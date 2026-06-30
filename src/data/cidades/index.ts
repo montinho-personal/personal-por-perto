@@ -521,8 +521,24 @@ import { cidade as acu } from './acu-rn';
 import { cidade as portoNacional } from './porto-nacional-to';
 import { cidade as rorainopolis } from './rorainopolis-rr';
 import { cidade as icara } from './icara-sc';
+// Bloco 26 (alcance nacional; parcial — 9 cidades restantes pós-reset)
+import { cidade as itapeva } from './itapeva-sp';
+import { cidade as janauba } from './janauba-mg';
+import { cidade as vassouras } from './vassouras-rj';
+import { cidade as castro } from './castro-pr';
+import { cidade as pomerode } from './pomerode-sc';
+import { cidade as camaqua } from './camaqua-rs';
+import { cidade as cruzDasAlmas } from './cruz-das-almas-ba';
+import { cidade as horizonte } from './horizonte-ce';
+import { cidade as cristalina } from './cristalina-go';
+import { cidade as domingosMartins } from './domingos-martins-es';
+import { cidade as chapadinha } from './chapadinha-ma';
+import { cidade as tailandia } from './tailandia-pa';
 
 export const cidades: Cidade[] = [
+  // Bloco 26 (alcance nacional — parcial)
+  itapeva, janauba, vassouras, castro, pomerode, camaqua, cruzDasAlmas, horizonte,
+  cristalina, domingosMartins, chapadinha, tailandia,
   // Bloco 25 (alcance nacional)
   lencoisPaulista, congonhas, mangaratiba, cambe, tijucas, esteio, simoesFilho, abreuELima,
   pacatuba, cidadeOcidental, santaMariaDeJetiba, pacoDoLumiar, salinopolis, novaMutum,
