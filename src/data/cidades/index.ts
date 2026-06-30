@@ -624,8 +624,33 @@ import { cidade as oeiras } from './oeiras-pi';
 import { cidade as santanaDoIpanema } from './santana-do-ipanema-al';
 import { cidade as ceres } from './ceres-go';
 import { cidade as ico } from './ico-ce';
+import { cidade as brotas } from './brotas-sp';
+import { cidade as taquaritinga } from './taquaritinga-sp';
+import { cidade as guaxupe } from './guaxupe-mg';
+import { cidade as diamantina } from './diamantina-mg';
+import { cidade as caxambu } from './caxambu-mg';
+import { cidade as piraquara } from './piraquara-pr';
+import { cidade as ivaipora } from './ivaipora-pr';
+import { cidade as saoJoaquim } from './sao-joaquim-sc';
+import { cidade as veranopolis } from './veranopolis-rs';
+import { cidade as moradaNova } from './morada-nova-ce';
+import { cidade as brejoSanto } from './brejo-santo-ce';
+import { cidade as timbauba } from './timbauba-pe';
+import { cidade as saoBentoDoUna } from './sao-bento-do-una-pe';
+import { cidade as joaoCamara } from './joao-camara-rn';
+import { cidade as catoleDoRocha } from './catole-do-rocha-pb';
+import { cidade as tomeAcu } from './tome-acu-pa';
+import { cidade as miracemaDoTocantins } from './miracema-do-tocantins-to';
+import { cidade as niquelandia } from './niquelandia-go';
+import { cidade as diamantino } from './diamantino-mt';
+import { cidade as coxim } from './coxim-ms';
 
 export const cidades: Cidade[] = [
+  // Bloco 31 (alcance nacional)
+  brotas, taquaritinga, guaxupe, diamantina, caxambu, piraquara, ivaipora,
+  saoJoaquim, veranopolis, moradaNova, brejoSanto, timbauba, saoBentoDoUna,
+  joaoCamara, catoleDoRocha, tomeAcu, miracemaDoTocantins, niquelandia,
+  diamantino, coxim,
   // Bloco 30 (alcance nacional)
   pederneiras, santaCruzDoRioPardo, saoJoseDoRioPardo, bomDespacho, januaria,
   ponteNova, saoLourencoMG, paracambi, cordeiro, palmeira, rioNegro,
