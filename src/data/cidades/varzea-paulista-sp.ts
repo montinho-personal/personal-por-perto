@@ -34,7 +34,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Chico Mendes',
       descricao:
-        'Área verde no Jardim Paulista usada para caminhada e lazer, um dos locais de prática de atividade física recomendados no município.',
+        'Espaço arborizado no Jardim Paulista usado para caminhada e lazer, um dos locais de prática de atividade física recomendados no município.',
     },
     {
       nome: 'Complexo Esportivo Kim Nozaki',
