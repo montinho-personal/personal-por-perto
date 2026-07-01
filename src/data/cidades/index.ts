@@ -724,8 +724,33 @@ import { cidade as nisiaFloresta } from './nisia-floresta-rn';
 import { cidade as benevides } from './benevides-pa';
 import { cidade as santaIzabelDoPara } from './santa-izabel-do-para-pa';
 import { cidade as guaiuba } from './guaiuba-ce';
+import { cidade as itapira } from './itapira-sp';
+import { cidade as amparo } from './amparo-sp';
+import { cidade as serraNegra } from './serra-negra-sp';
+import { cidade as socorro } from './socorro-sp';
+import { cidade as pedreira } from './pedreira-sp';
+import { cidade as vargemGrandeDoSul } from './vargem-grande-do-sul-sp';
+import { cidade as piedade } from './piedade-sp';
+import { cidade as cerquilho } from './cerquilho-sp';
+import { cidade as saltoDePirapora } from './salto-de-pirapora-sp';
+import { cidade as timbo } from './timbo-sc';
+import { cidade as guabiruba } from './guabiruba-sc';
+import { cidade as novaPetropolis } from './nova-petropolis-rs';
+import { cidade as canela } from './canela-rs';
+import { cidade as santosDumont } from './santos-dumont-mg';
+import { cidade as alemParaiba } from './alem-paraiba-mg';
+import { cidade as arcos } from './arcos-mg';
+import { cidade as lagoaDaPrata } from './lagoa-da-prata-mg';
+import { cidade as pitangui } from './pitangui-mg';
+import { cidade as joaoPinheiro } from './joao-pinheiro-mg';
+import { cidade as tresMarias } from './tres-marias-mg';
 
 export const cidades: Cidade[] = [
+  // Bloco 36 (alta demanda — Circuito das Águas, Serra Gaúcha, interior MG)
+  itapira, amparo, serraNegra, socorro, pedreira, vargemGrandeDoSul, piedade,
+  cerquilho, saltoDePirapora, timbo, guabiruba, novaPetropolis, canela,
+  santosDumont, alemParaiba, arcos, lagoaDaPrata, pitangui, joaoPinheiro,
+  tresMarias,
   // Bloco 35 (alta demanda — RMs)
   novaOdessa, cosmopolis, arturNogueira, holambra, monteMor, araras, boituva,
   tiete, rioGrandeDaSerra, estanciaVelha, ivoti, parobe, igrejinha, charqueadas,
