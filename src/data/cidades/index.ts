@@ -704,8 +704,32 @@ import { cidade as barraVelha } from './barra-velha-sc';
 import { cidade as diasDavila } from './dias-davila-ba';
 import { cidade as itaitinga } from './itaitinga-ce';
 import { cidade as pacajus } from './pacajus-ce';
+import { cidade as novaOdessa } from './nova-odessa-sp';
+import { cidade as cosmopolis } from './cosmopolis-sp';
+import { cidade as arturNogueira } from './artur-nogueira-sp';
+import { cidade as holambra } from './holambra-sp';
+import { cidade as monteMor } from './monte-mor-sp';
+import { cidade as araras } from './araras-sp';
+import { cidade as boituva } from './boituva-sp';
+import { cidade as tiete } from './tiete-sp';
+import { cidade as rioGrandeDaSerra } from './rio-grande-da-serra-sp';
+import { cidade as estanciaVelha } from './estancia-velha-rs';
+import { cidade as ivoti } from './ivoti-rs';
+import { cidade as parobe } from './parobe-rs';
+import { cidade as igrejinha } from './igrejinha-rs';
+import { cidade as charqueadas } from './charqueadas-rs';
+import { cidade as rioBrancoDoSul } from './rio-branco-do-sul-pr';
+import { cidade as candeias } from './candeias-ba';
+import { cidade as nisiaFloresta } from './nisia-floresta-rn';
+import { cidade as benevides } from './benevides-pa';
+import { cidade as santaIzabelDoPara } from './santa-izabel-do-para-pa';
+import { cidade as guaiuba } from './guaiuba-ce';
 
 export const cidades: Cidade[] = [
+  // Bloco 35 (alta demanda — RMs)
+  novaOdessa, cosmopolis, arturNogueira, holambra, monteMor, araras, boituva,
+  tiete, rioGrandeDaSerra, estanciaVelha, ivoti, parobe, igrejinha, charqueadas,
+  rioBrancoDoSul, candeias, nisiaFloresta, benevides, santaIzabelDoPara, guaiuba,
   // Bloco 34 (alta demanda — RMs e litoral)
   ribeiraoPires, varzeaPaulista, santaIsabel, campoLimpoPaulista, caete, sarzedo,
   saoJoaquimDeBicas, ouroBranco, mateusLeme, rioAcima, quatroBarras,
