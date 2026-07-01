@@ -664,8 +664,32 @@ import { cidade as pedreiras } from './pedreiras-ma';
 import { cidade as monteiro } from './monteiro-pb';
 import { cidade as pombal } from './pombal-pb';
 import { cidade as girauDoPonciano } from './girau-do-ponciano-al';
+import { cidade as poa } from './poa-sp';
+import { cidade as aruja } from './aruja-sp';
+import { cidade as franciscoMorato } from './francisco-morato-sp';
+import { cidade as cajamar } from './cajamar-sp';
+import { cidade as guararema } from './guararema-sp';
+import { cidade as embuGuacu } from './embu-guacu-sp';
+import { cidade as ibirite } from './ibirite-mg';
+import { cidade as vespasiano } from './vespasiano-mg';
+import { cidade as pedroLeopoldo } from './pedro-leopoldo-mg';
+import { cidade as esmeraldas } from './esmeraldas-mg';
+import { cidade as timoteo } from './timoteo-mg';
+import { cidade as brumadinho } from './brumadinho-mg';
+import { cidade as matozinhos } from './matozinhos-mg';
+import { cidade as igarape } from './igarape-mg';
+import { cidade as unai } from './unai-mg';
+import { cidade as cataguases } from './cataguases-mg';
+import { cidade as penha } from './penha-sc';
+import { cidade as extremoz } from './extremoz-rn';
+import { cidade as breves } from './breves-pa';
+import { cidade as santaLuziaMA } from './santa-luzia-ma';
 
 export const cidades: Cidade[] = [
+  // Bloco 33 (alta demanda — RM SP e RM BH)
+  poa, aruja, franciscoMorato, cajamar, guararema, embuGuacu, ibirite,
+  vespasiano, pedroLeopoldo, esmeraldas, timoteo, brumadinho, matozinhos,
+  igarape, unai, cataguases, penha, extremoz, breves, santaLuziaMA,
   // Bloco 32 (foco Norte/Nordeste)
   senaMadureira, brasileia, laranjalDoJari, oiapoque, caracarai, jaru,
   rolimDeMoura, piripiri, saoRaimundoNonato, propria, capela, maues, tabatinga,
