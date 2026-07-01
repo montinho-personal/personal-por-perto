@@ -684,8 +684,33 @@ import { cidade as penha } from './penha-sc';
 import { cidade as extremoz } from './extremoz-rn';
 import { cidade as breves } from './breves-pa';
 import { cidade as santaLuziaMA } from './santa-luzia-ma';
+import { cidade as ribeiraoPires } from './ribeirao-pires-sp';
+import { cidade as varzeaPaulista } from './varzea-paulista-sp';
+import { cidade as santaIsabel } from './santa-isabel-sp';
+import { cidade as campoLimpoPaulista } from './campo-limpo-paulista-sp';
+import { cidade as caete } from './caete-mg';
+import { cidade as sarzedo } from './sarzedo-mg';
+import { cidade as saoJoaquimDeBicas } from './sao-joaquim-de-bicas-mg';
+import { cidade as ouroBranco } from './ouro-branco-mg';
+import { cidade as mateusLeme } from './mateus-leme-mg';
+import { cidade as rioAcima } from './rio-acima-mg';
+import { cidade as quatroBarras } from './quatro-barras-pr';
+import { cidade as campinaGrandeDoSul } from './campina-grande-do-sul-pr';
+import { cidade as eldoradoDoSul } from './eldorado-do-sul-rs';
+import { cidade as novaSantaRita } from './nova-santa-rita-rs';
+import { cidade as portoBelo } from './porto-belo-sc';
+import { cidade as bombinhas } from './bombinhas-sc';
+import { cidade as barraVelha } from './barra-velha-sc';
+import { cidade as diasDavila } from './dias-davila-ba';
+import { cidade as itaitinga } from './itaitinga-ce';
+import { cidade as pacajus } from './pacajus-ce';
 
 export const cidades: Cidade[] = [
+  // Bloco 34 (alta demanda — RMs e litoral)
+  ribeiraoPires, varzeaPaulista, santaIsabel, campoLimpoPaulista, caete, sarzedo,
+  saoJoaquimDeBicas, ouroBranco, mateusLeme, rioAcima, quatroBarras,
+  campinaGrandeDoSul, eldoradoDoSul, novaSantaRita, portoBelo, bombinhas,
+  barraVelha, diasDavila, itaitinga, pacajus,
   // Bloco 33 (alta demanda — RM SP e RM BH)
   poa, aruja, franciscoMorato, cajamar, guararema, embuGuacu, ibirite,
   vespasiano, pedroLeopoldo, esmeraldas, timoteo, brumadinho, matozinhos,
