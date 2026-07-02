@@ -744,8 +744,33 @@ import { cidade as lagoaDaPrata } from './lagoa-da-prata-mg';
 import { cidade as pitangui } from './pitangui-mg';
 import { cidade as joaoPinheiro } from './joao-pinheiro-mg';
 import { cidade as tresMarias } from './tres-marias-mg';
+import { cidade as itabirito } from './itabirito-mg';
+import { cidade as tresPontas } from './tres-pontas-mg';
+import { cidade as boaEsperanca } from './boa-esperanca-mg';
+import { cidade as eloiMendes } from './eloi-mendes-mg';
+import { cidade as cambui } from './cambui-mg';
+import { cidade as garca } from './garca-sp';
+import { cidade as mirassol } from './mirassol-sp';
+import { cidade as monteAlto } from './monte-alto-sp';
+import { cidade as santaAdelia } from './santa-adelia-sp';
+import { cidade as santaFeDoSul } from './santa-fe-do-sul-sp';
+import { cidade as andradina } from './andradina-sp';
+import { cidade as estrela } from './estrela-rs';
+import { cidade as teutonia } from './teutonia-rs';
+import { cidade as venancioAires } from './venancio-aires-rs';
+import { cidade as candelaria } from './candelaria-rs';
+import { cidade as floresDaCunha } from './flores-da-cunha-rs';
+import { cidade as confins } from './confins-mg';
+import { cidade as carmoDoCajuru } from './carmo-do-cajuru-mg';
+import { cidade as itapecericaMG } from './itapecerica-mg';
+import { cidade as valeReal } from './vale-real-rs';
 
 export const cidades: Cidade[] = [
+  // Bloco 37 (interior de Minas, interior paulista, Vale do Taquari/Caí)
+  itabirito, tresPontas, boaEsperanca, eloiMendes, cambui, garca, mirassol,
+  monteAlto, santaAdelia, santaFeDoSul, andradina, estrela, teutonia,
+  venancioAires, candelaria, floresDaCunha, confins, carmoDoCajuru,
+  itapecericaMG, valeReal,
   // Bloco 36 (alta demanda — Circuito das Águas, Serra Gaúcha, interior MG)
   itapira, amparo, serraNegra, socorro, pedreira, vargemGrandeDoSul, piedade,
   cerquilho, saltoDePirapora, timbo, guabiruba, novaPetropolis, canela,
