@@ -804,8 +804,33 @@ import { cidade as tiradentes } from './tiradentes-mg';
 import { cidade as saoThomeDasLetras } from './sao-thome-das-letras-mg';
 import { cidade as mateiros } from './mateiros-to';
 import { cidade as santaTeresa } from './santa-teresa-es';
+import { cidade as itamaraca } from './itamaraca-pe';
+import { cidade as beberibe } from './beberibe-ce';
+import { cidade as amontada } from './amontada-ce';
+import { cidade as icapui } from './icapui-ce';
+import { cidade as trairi } from './trairi-ce';
+import { cidade as conde } from './conde-pb';
+import { cidade as areia } from './areia-pb';
+import { cidade as saoMiguelDosMilagres } from './sao-miguel-dos-milagres-al';
+import { cidade as barraDeSaoMiguel } from './barra-de-sao-miguel-al';
+import { cidade as portoDePedras } from './porto-de-pedras-al';
+import { cidade as saoMiguelDoGostoso } from './sao-miguel-do-gostoso-rn';
+import { cidade as touros } from './touros-rn';
+import { cidade as galinhos } from './galinhos-rn';
+import { cidade as saoFranciscoDoSul } from './sao-francisco-do-sul-sc';
+import { cidade as governadorCelsoRamos } from './governador-celso-ramos-sc';
+import { cidade as matinhos } from './matinhos-pr';
+import { cidade as pontalDoParana } from './pontal-do-parana-pr';
+import { cidade as presidenteFigueiredo } from './presidente-figueiredo-am';
+import { cidade as nobres } from './nobres-mt';
+import { cidade as pocone } from './pocone-mt';
 
 export const cidades: Cidade[] = [
+  // Bloco 40 (litoral NE, Pantanal/Amazônia e litoral Sul)
+  itamaraca, beberibe, amontada, icapui, trairi, conde, areia,
+  saoMiguelDosMilagres, barraDeSaoMiguel, portoDePedras, saoMiguelDoGostoso,
+  touros, galinhos, saoFranciscoDoSul, governadorCelsoRamos, matinhos,
+  pontalDoParana, presidenteFigueiredo, nobres, pocone,
   // Bloco 39 (destinos turísticos de alta demanda nacional)
   arraialDoCabo, maragogi, jijocaDeJericoacoara, tibauDoSul, cairu, lencois,
   mataDeSaoJoao, itacare, ipojuca, altoParaisoDeGoias, barreirinhas,
