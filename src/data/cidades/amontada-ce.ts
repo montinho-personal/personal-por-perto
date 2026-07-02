@@ -89,7 +89,7 @@ export const cidade: Cidade = {
   conclusao:
     'Entre dunas, vento constante e a fama internacional de Icaraí de Amontada como point de kitesurf e windsurf, Amontada oferece um cenário raro para treinar ao ar livre. Um personal trainer ajuda a organizar a rotina com segurança diante do calor e do vento litorâneo, seja para moradores da sede e dos distritos ou para quem passa uma temporada na orla.',
 
-  vizinhas: ['itapipoca-ce', 'acarau-ce', 'sobral-ce'],
+  vizinhas: ['itapipoca-ce', 'acarau-ce', 'trairi-ce'],
 
   fontes: [
     { nome: 'IBGE Cidades — Amontada', url: 'https://cidades.ibge.gov.br/brasil/ce/amontada/panorama' },
