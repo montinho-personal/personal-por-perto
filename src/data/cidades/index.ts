@@ -764,8 +764,34 @@ import { cidade as confins } from './confins-mg';
 import { cidade as carmoDoCajuru } from './carmo-do-cajuru-mg';
 import { cidade as itapecericaMG } from './itapecerica-mg';
 import { cidade as valeReal } from './vale-real-rs';
+import { cidade as itanhandu } from './itanhandu-mg';
+import { cidade as passaQuatro } from './passa-quatro-mg';
+import { cidade as cristina } from './cristina-mg';
+import { cidade as carmoDeMinas } from './carmo-de-minas-mg';
+import { cidade as baependi } from './baependi-mg';
+import { cidade as delfimMoreira } from './delfim-moreira-mg';
+import { cidade as saoGoncaloDoSapucai } from './sao-goncalo-do-sapucai-mg';
+import { cidade as wenceslauBraz } from './wenceslau-braz-mg';
+import { cidade as congonhal } from './congonhal-mg';
+import { cidade as bordaDaMata } from './borda-da-mata-mg';
+import { cidade as santanaDoLivramento } from './santana-do-livramento-rs';
+import { cidade as domPedrito } from './dom-pedrito-rs';
+import { cidade as jaguarao } from './jaguarao-rs';
+import { cidade as cacapavaDoSul } from './cacapava-do-sul-rs';
+import { cidade as cangucu } from './cangucu-rs';
+import { cidade as arroioGrande } from './arroio-grande-rs';
+import { cidade as saoFranciscoDePaula } from './sao-francisco-de-paula-rs';
+import { cidade as cambaraDoSul } from './cambara-do-sul-rs';
+import { cidade as morroRedondo } from './morro-redondo-rs';
+import { cidade as pinheiroMachado } from './pinheiro-machado-rs';
 
 export const cidades: Cidade[] = [
+  // Bloco 38 (Serra da Mantiqueira sul de Minas, Campanha e Campos de Cima da Serra — RS)
+  itanhandu, passaQuatro, cristina, carmoDeMinas, baependi, delfimMoreira,
+  saoGoncaloDoSapucai, wenceslauBraz, congonhal, bordaDaMata,
+  santanaDoLivramento, domPedrito, jaguarao, cacapavaDoSul, cangucu,
+  arroioGrande, saoFranciscoDePaula, cambaraDoSul, morroRedondo,
+  pinheiroMachado,
   // Bloco 37 (interior de Minas, interior paulista, Vale do Taquari/Caí)
   itabirito, tresPontas, boaEsperanca, eloiMendes, cambui, garca, mirassol,
   monteAlto, santaAdelia, santaFeDoSul, andradina, estrela, teutonia,
