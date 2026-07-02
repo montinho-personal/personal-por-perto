@@ -824,8 +824,33 @@ import { cidade as pontalDoParana } from './pontal-do-parana-pr';
 import { cidade as presidenteFigueiredo } from './presidente-figueiredo-am';
 import { cidade as nobres } from './nobres-mt';
 import { cidade as pocone } from './pocone-mt';
+import { cidade as balnearioPicarras } from './balneario-picarras-sc';
+import { cidade as balnearioRincao } from './balneario-rincao-sc';
+import { cidade as cidreira } from './cidreira-rs';
+import { cidade as imbe } from './imbe-rs';
+import { cidade as quissama } from './quissama-rj';
+import { cidade as saoJoaoDaBarra } from './sao-joao-da-barra-rj';
+import { cidade as anchieta } from './anchieta-es';
+import { cidade as piuma } from './piuma-es';
+import { cidade as itapemirim } from './itapemirim-es';
+import { cidade as conceicaoDaBarra } from './conceicao-da-barra-es';
+import { cidade as cachoeira } from './cachoeira-ba';
+import { cidade as santoAmaro } from './santo-amaro-ba';
+import { cidade as prado } from './prado-ba';
+import { cidade as cunha } from './cunha-sp';
+import { cidade as saoJoseDoBarreiro } from './sao-jose-do-barreiro-sp';
+import { cidade as corumbaDeGoias } from './corumba-de-goias-go';
+import { cidade as carrancas } from './carrancas-mg';
+import { cidade as delfinopolis } from './delfinopolis-mg';
+import { cidade as santanaDoRiacho } from './santana-do-riacho-mg';
+import { cidade as baiaFormosa } from './baia-formosa-rn';
 
 export const cidades: Cidade[] = [
+  // Bloco 41 (litoral SC/RS/RJ/ES, Recôncavo Baiano e serras MG/GO)
+  balnearioPicarras, balnearioRincao, cidreira, imbe, quissama,
+  saoJoaoDaBarra, anchieta, piuma, itapemirim, conceicaoDaBarra, cachoeira,
+  santoAmaro, prado, cunha, saoJoseDoBarreiro, corumbaDeGoias, carrancas,
+  delfinopolis, santanaDoRiacho, baiaFormosa,
   // Bloco 40 (litoral NE, Pantanal/Amazônia e litoral Sul)
   itamaraca, beberibe, amontada, icapui, trairi, conde, areia,
   saoMiguelDosMilagres, barraDeSaoMiguel, portoDePedras, saoMiguelDoGostoso,
