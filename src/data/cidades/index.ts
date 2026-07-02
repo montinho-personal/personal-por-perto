@@ -784,8 +784,33 @@ import { cidade as saoFranciscoDePaula } from './sao-francisco-de-paula-rs';
 import { cidade as cambaraDoSul } from './cambara-do-sul-rs';
 import { cidade as morroRedondo } from './morro-redondo-rs';
 import { cidade as pinheiroMachado } from './pinheiro-machado-rs';
+import { cidade as arraialDoCabo } from './arraial-do-cabo-rj';
+import { cidade as maragogi } from './maragogi-al';
+import { cidade as jijocaDeJericoacoara } from './jijoca-de-jericoacoara-ce';
+import { cidade as tibauDoSul } from './tibau-do-sul-rn';
+import { cidade as cairu } from './cairu-ba';
+import { cidade as lencois } from './lencois-ba';
+import { cidade as mataDeSaoJoao } from './mata-de-sao-joao-ba';
+import { cidade as itacare } from './itacare-ba';
+import { cidade as ipojuca } from './ipojuca-pe';
+import { cidade as altoParaisoDeGoias } from './alto-paraiso-de-goias-go';
+import { cidade as barreirinhas } from './barreirinhas-ma';
+import { cidade as camposDoJordao } from './campos-do-jordao-sp';
+import { cidade as aguasDeLindoia } from './aguas-de-lindoia-sp';
+import { cidade as camanducaia } from './camanducaia-mg';
+import { cidade as extrema } from './extrema-mg';
+import { cidade as capitolio } from './capitolio-mg';
+import { cidade as tiradentes } from './tiradentes-mg';
+import { cidade as saoThomeDasLetras } from './sao-thome-das-letras-mg';
+import { cidade as mateiros } from './mateiros-to';
+import { cidade as santaTeresa } from './santa-teresa-es';
 
 export const cidades: Cidade[] = [
+  // Bloco 39 (destinos turísticos de alta demanda nacional)
+  arraialDoCabo, maragogi, jijocaDeJericoacoara, tibauDoSul, cairu, lencois,
+  mataDeSaoJoao, itacare, ipojuca, altoParaisoDeGoias, barreirinhas,
+  camposDoJordao, aguasDeLindoia, camanducaia, extrema, capitolio, tiradentes,
+  saoThomeDasLetras, mateiros, santaTeresa,
   // Bloco 38 (Serra da Mantiqueira sul de Minas, Campanha e Campos de Cima da Serra — RS)
   itanhandu, passaQuatro, cristina, carmoDeMinas, baependi, delfimMoreira,
   saoGoncaloDoSapucai, wenceslauBraz, congonhal, bordaDaMata,
