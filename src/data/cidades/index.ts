@@ -844,8 +844,33 @@ import { cidade as carrancas } from './carrancas-mg';
 import { cidade as delfinopolis } from './delfinopolis-mg';
 import { cidade as santanaDoRiacho } from './santana-do-riacho-mg';
 import { cidade as baiaFormosa } from './baia-formosa-rn';
+import { cidade as guaraquecaba } from './guaraquecaba-pr';
+import { cidade as urubici } from './urubici-sc';
+import { cidade as bomJardimDaSerra } from './bom-jardim-da-serra-sc';
+import { cidade as trezeTilias } from './treze-tilias-sc';
+import { cidade as urussanga } from './urussanga-sc';
+import { cidade as serro } from './serro-mg';
+import { cidade as conceicaoDoMatoDentro } from './conceicao-do-mato-dentro-mg';
+import { cidade as limaDuarte } from './lima-duarte-mg';
+import { cidade as mucuge } from './mucuge-ba';
+import { cidade as ibicoara } from './ibicoara-ba';
+import { cidade as rioDeContas } from './rio-de-contas-ba';
+import { cidade as guaramiranga } from './guaramiranga-ce';
+import { cidade as novoAirao } from './novo-airao-am';
+import { cidade as soure } from './soure-pa';
+import { cidade as guajaraMirim } from './guajara-mirim-ro';
+import { cidade as xapuri } from './xapuri-ac';
+import { cidade as saoBentoDoSapucai } from './sao-bento-do-sapucai-sp';
+import { cidade as bananal } from './bananal-sp';
+import { cidade as silveiras } from './silveiras-sp';
+import { cidade as areias } from './areias-sp';
 
 export const cidades: Cidade[] = [
+  // Bloco 42 (Chapada Diamantina, serras SC/MG, litoral PR/PA, Amazônia/Acre/Rondônia, vale histórico SP)
+  guaraquecaba, urubici, bomJardimDaSerra, trezeTilias, urussanga, serro,
+  conceicaoDoMatoDentro, limaDuarte, mucuge, ibicoara, rioDeContas,
+  guaramiranga, novoAirao, soure, guajaraMirim, xapuri, saoBentoDoSapucai,
+  bananal, silveiras, areias,
   // Bloco 41 (litoral SC/RS/RJ/ES, Recôncavo Baiano e serras MG/GO)
   balnearioPicarras, balnearioRincao, cidreira, imbe, quissama,
   saoJoaoDaBarra, anchieta, piuma, itapemirim, conceicaoDaBarra, cachoeira,
