@@ -864,8 +864,33 @@ import { cidade as saoBentoDoSapucai } from './sao-bento-do-sapucai-sp';
 import { cidade as bananal } from './bananal-sp';
 import { cidade as silveiras } from './silveiras-sp';
 import { cidade as areias } from './areias-sp';
+import { cidade as luisEduardoMagalhaes } from './luis-eduardo-magalhaes-ba';
+import { cidade as saoDesiderio } from './sao-desiderio-ba';
+import { cidade as correntina } from './correntina-ba';
+import { cidade as formosaDoRioPreto } from './formosa-do-rio-preto-ba';
+import { cidade as urucui } from './urucui-pi';
+import { cidade as bomJesus } from './bom-jesus-pi';
+import { cidade as toritama } from './toritama-pe';
+import { cidade as saoCaitano } from './sao-caitano-pe';
+import { cidade as triunfo } from './triunfo-pe';
+import { cidade as chapadaoDoSul } from './chapadao-do-sul-ms';
+import { cidade as costaRica } from './costa-rica-ms';
+import { cidade as saoGabrielDoOeste } from './sao-gabriel-do-oeste-ms';
+import { cidade as jardim } from './jardim-ms';
+import { cidade as miranda } from './miranda-ms';
+import { cidade as saoPedro } from './sao-pedro-sp';
+import { cidade as ilhaSolteira } from './ilha-solteira-sp';
+import { cidade as querencia } from './querencia-mt';
+import { cidade as sapezal } from './sapezal-mt';
+import { cidade as aguaBoa } from './agua-boa-mt';
+import { cidade as canarana } from './canarana-mt';
 
 export const cidades: Cidade[] = [
+  // Bloco 43 (agronegócio Oeste da Bahia/Piauí/MT/MS, Pantanal/Bonito, Agreste PE)
+  luisEduardoMagalhaes, saoDesiderio, correntina, formosaDoRioPreto, urucui,
+  bomJesus, toritama, saoCaitano, triunfo, chapadaoDoSul, costaRica,
+  saoGabrielDoOeste, jardim, miranda, saoPedro, ilhaSolteira, querencia,
+  sapezal, aguaBoa, canarana,
   // Bloco 42 (Chapada Diamantina, serras SC/MG, litoral PR/PA, Amazônia/Acre/Rondônia, vale histórico SP)
   guaraquecaba, urubici, bomJardimDaSerra, trezeTilias, urussanga, serro,
   conceicaoDoMatoDentro, limaDuarte, mucuge, ibicoara, rioDeContas,
