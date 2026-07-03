@@ -23,7 +23,7 @@ export const cidade: Cidade = {
     'Como polo regional de serviços, São Miguel do Oeste tem um mercado fitness mais estruturado do que o de cidades vizinhas de menor porte, com academias de bairro, redes de musculação e profissionais de personal trainer atendendo tanto moradores locais quanto pessoas que se deslocam de municípios menores em busca de estrutura melhor. A presença da Unoesc e do público universitário também contribui para a demanda por atividade física orientada.',
 
   bairrosNobres: ['Centro', 'Agostini', 'São Luiz'],
-  bairrosPopulares: ['Estrela', 'São Jorge', 'Jardim Itália'],
+  bairrosPopulares: ['Estrela', 'São Jorge', 'Salete', 'Progresso'],
 
   parques: [
     {
