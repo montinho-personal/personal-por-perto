@@ -884,8 +884,33 @@ import { cidade as querencia } from './querencia-mt';
 import { cidade as sapezal } from './sapezal-mt';
 import { cidade as aguaBoa } from './agua-boa-mt';
 import { cidade as canarana } from './canarana-mt';
+import { cidade as lagoaGrande } from './lagoa-grande-pe';
+import { cidade as santaMariaDaBoaVista } from './santa-maria-da-boa-vista-pe';
+import { cidade as cabrobo } from './cabrobo-pe';
+import { cidade as petrolandia } from './petrolandia-pe';
+import { cidade as novaPrata } from './nova-prata-rs';
+import { cidade as saoMarcos } from './sao-marcos-rs';
+import { cidade as monteBeloDoSul } from './monte-belo-do-sul-rs';
+import { cidade as jales } from './jales-sp';
+import { cidade as palotina } from './palotina-pr';
+import { cidade as assisChateaubriand } from './assis-chateaubriand-pr';
+import { cidade as ubirata } from './ubirata-pr';
+import { cidade as vendaNovaDoImigrante } from './venda-nova-do-imigrante-es';
+import { cidade as saoMiguelDoOeste } from './sao-miguel-do-oeste-sc';
+import { cidade as naoMeToque } from './nao-me-toque-rs';
+import { cidade as marau } from './marau-rs';
+import { cidade as getulioVargas } from './getulio-vargas-rs';
+import { cidade as guapore } from './guapore-rs';
+import { cidade as veraCruz } from './vera-cruz-rs';
+import { cidade as arroioDoMeio } from './arroio-do-meio-rs';
+import { cidade as horizontina } from './horizontina-rs';
 
 export const cidades: Cidade[] = [
+  // Bloco 44 (Vale do São Francisco PE, Vale dos Vinhedos/agronegócio RS, agronegócio PR/SC, Venda Nova do Imigrante ES)
+  lagoaGrande, santaMariaDaBoaVista, cabrobo, petrolandia, novaPrata,
+  saoMarcos, monteBeloDoSul, jales, palotina, assisChateaubriand, ubirata,
+  vendaNovaDoImigrante, saoMiguelDoOeste, naoMeToque, marau, getulioVargas,
+  guapore, veraCruz, arroioDoMeio, horizontina,
   // Bloco 43 (agronegócio Oeste da Bahia/Piauí/MT/MS, Pantanal/Bonito, Agreste PE)
   luisEduardoMagalhaes, saoDesiderio, correntina, formosaDoRioPreto, urucui,
   bomJesus, toritama, saoCaitano, triunfo, chapadaoDoSul, costaRica,
