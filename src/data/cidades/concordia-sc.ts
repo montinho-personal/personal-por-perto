@@ -13,11 +13,11 @@ export const cidade: Cidade = {
   populacao: 81646,
   populacaoAno: 2022,
   idhm: 0.8,
-  idhmClasse: 'alto',
+  idhmClasse: 'muito alto',
   altitudeM: 569,
 
   resumoEconomico:
-    'Polo agroindustrial do oeste catarinense, Concórdia é berço da Sadia, fundada por Attílio Fontana em 1944 e hoje parte da BRF, que mantém forte operação no município. A cidade abriga a Embrapa Suínos e Aves, referência nacional em pesquisa de proteína animal, às margens da BR-153. Colonizada por descendentes de italianos e alemães vindos do Rio Grande do Sul, tem economia baseada na cadeia de aves e suínos e IDHM alto.',
+    'Polo agroindustrial do oeste catarinense, Concórdia é berço da Sadia, fundada por Attílio Fontana em 1944 e hoje parte da BRF, que mantém forte operação no município. A cidade abriga a Embrapa Suínos e Aves, referência nacional em pesquisa de proteína animal, às margens da BR-153. Colonizada por descendentes de italianos e alemães vindos do Rio Grande do Sul, tem economia baseada na cadeia de aves e suínos e IDHM muito alto.',
 
   mercado:
     'O mercado fitness acompanha o perfil de polo agroindustrial e centro regional de serviços do oeste: academias de bairro e estúdios no centro, além de demanda crescente por personal training presencial e atendimento domiciliar. O inverno frio reforça a procura por treino indoor.',
@@ -66,7 +66,7 @@ export const cidade: Cidade = {
     'A oferta combina academias de bairro e estúdios no centro, complementada por espaços públicos como o Parque de Exposições e as margens do Rio do Peixe para treino ao ar livre.',
 
   destaquesFitness: [
-    'Cerca de 82 mil habitantes e IDHM alto — base sólida para serviços de bem-estar.',
+    'Cerca de 82 mil habitantes e IDHM muito alto — base sólida para serviços de bem-estar.',
     'Polo agroindustrial (berço da Sadia/BRF) e sede da Embrapa Suínos e Aves, com público qualificado.',
     'Parque de Exposições e orla do Rio do Peixe para caminhada, corrida e trail.',
     'Inverno frio do oeste catarinense aumenta a procura por academias indoor e atendimento domiciliar.',
@@ -82,14 +82,14 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Polo agroindustrial do oeste catarinense, com IDHM alto e identidade ligada à Sadia e à Embrapa Suínos e Aves, Concórdia reúne público qualificado e boa estrutura para treinar o ano todo. Um personal trainer ajuda a periodizar o treino conforme as estações — do verão quente ao inverno frio — e a aproveitar espaços como o Parque de Exposições e a orla do Rio do Peixe.',
+    'Polo agroindustrial do oeste catarinense, com IDHM muito alto e identidade ligada à Sadia e à Embrapa Suínos e Aves, Concórdia reúne público qualificado e boa estrutura para treinar o ano todo. Um personal trainer ajuda a periodizar o treino conforme as estações — do verão quente ao inverno frio — e a aproveitar espaços como o Parque de Exposições e a orla do Rio do Peixe.',
 
-  vizinhas: ['chapeco-sc', 'lages-sc', 'joinville-sc'],
+  vizinhas: ['chapeco-sc', 'xanxere-sc', 'videira-sc'],
 
   fontes: [
     { nome: 'IBGE Cidades — Concórdia', url: 'https://cidades.ibge.gov.br/brasil/sc/concordia/panorama' },
     { nome: 'Atlas Brasil — Concórdia', url: 'https://www.atlasbrasil.org.br/perfil/municipio/420430' },
     { nome: 'Embrapa Suínos e Aves', url: 'https://www.embrapa.br/suinos-e-aves' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-03',
 };

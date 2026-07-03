@@ -38,18 +38,18 @@ export const cidade: Cidade = {
 
   corridas: [
     {
-      nome: 'Circuito Regional de Corridas de Rua',
+      nome: 'Corrida Paúl da Rosa Mello',
       descricao:
-        'A cidade e a região do Noroeste gaúcho mantêm um circuito regional de corridas de rua com etapas ao longo do ano, reunindo corredores de Ijuí e dos municípios vizinhos.',
+        'Prova mais tradicional do calendário de Ijuí, encerra o ano de corridas na cidade com percurso de 13,2 km entre a Fonte da Ilha e a Praça da República; disputada em formato individual e em revezamento, é organizada pela Prefeitura, pela SMCET e pelo Clube de Corredores de Ijuí, já com mais de vinte edições.',
     },
     {
-      nome: 'Fenadi — Festa Nacional das Culturas Diversificadas',
+      nome: 'Corrida/Circuito das Estações',
       descricao:
-        'Maior celebração da diversidade étnica de Ijuí, realizada junto à Expo-Ijuí, a Fenadi reúne gastronomia, danças e tradições das várias culturas que formaram a cidade, movimentando a vida urbana e agregando atividades recreativas ao seu entorno.',
+        'Circuito de corridas de rua com etapas ao longo do ano, com largada no Parque da Pedreira e percurso de 5 km, reunindo corredores locais em cada mudança de estação.',
     },
   ],
   culturaEsportiva:
-    'A cultura esportiva ijuiense se apoia em uma agenda regional de corridas de rua e em uma tradição de eventos ao ar livre, reforçada pelo perfil universitário da cidade em torno da Unijuí e pelo grande público que circula nos parques e nas festas da comunidade.',
+    'A cultura esportiva ijuiense se apoia em um calendário de corridas de rua consolidado, com destaque para a tradicional Corrida Paúl da Rosa Mello e o Circuito das Estações, além de uma tradição de eventos ao ar livre reforçada pelo perfil universitário da cidade em torno da Unijuí.',
   academias:
     'A oferta reúne academias e estúdios no Centro e nos bairros mais estruturados, além de profissionais que atendem em domicílio. O Parque da Fonte e o Parque da Pedreira funcionam como espaços públicos para treino ao ar livre.',
 
@@ -72,12 +72,12 @@ export const cidade: Cidade = {
   conclusao:
     'Conhecida como a Terra das Culturas Diversificadas, Ijuí une a herança de seus muitos povos imigrantes a uma economia forte no agronegócio e na agroindústria, com a Cotrijuí e a Unijuí como referências regionais. Com o Parque da Fonte e o Parque da Pedreira como cenários ao ar livre, um personal trainer ajuda a manter a constância o ano todo, ajustando o treino ao frio rigoroso do inverno gaúcho.',
 
-  vizinhas: ['santa-maria-rs', 'passo-fundo-rs', 'santa-cruz-do-sul-rs'],
+  vizinhas: ['santo-angelo-rs', 'cruz-alta-rs', 'santa-rosa-rs'],
 
   fontes: [
     { nome: 'IBGE Cidades — Ijuí', url: 'https://cidades.ibge.gov.br/brasil/rs/ijui/panorama' },
     { nome: 'Prefeitura de Ijuí', url: 'https://www.ijui.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-03',
 };
