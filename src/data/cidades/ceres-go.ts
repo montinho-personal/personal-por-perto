@@ -14,7 +14,7 @@ export const cidade: Cidade = {
   populacaoAno: 2022,
   idhm: 0.775,
   idhmClasse: 'alto',
-  altitudeM: 564,
+  altitudeM: 571,
 
   resumoEconomico:
     'No coração do Vale do São Patrício, no centro-norte goiano, Ceres nasceu da Colônia Agrícola Nacional de Goiás e se firmou como cidade planejada às margens do rio das Almas. Apesar do porte pequeno, exerce forte polarização regional: é um reconhecido polo médico e de saúde, com hospitais, clínicas e serviços que atendem dezenas de municípios da região, e também um polo educacional, com instituições de ensino superior na área de saúde. A economia combina esse setor de serviços com o comércio, a agropecuária (milho, soja, arroz, abacaxi, banana e pecuária de corte) e a cadeia sucroalcooleira que se expandiu pela microrregião.',
@@ -22,8 +22,8 @@ export const cidade: Cidade = {
   mercado:
     'O mercado fitness de Ceres acompanha o perfil de cidade média de serviços do interior goiano, com academias de musculação e treino funcional concentradas nos setores centrais e residenciais. A presença de profissionais e estudantes da área de saúde e o fluxo regional puxam a procura por treino orientado, e o personal trainer encontra espaço entre quem busca acompanhamento individual e quem quer aproveitar a orla do rio das Almas e as praças esportivas para treinar ao ar livre.',
 
-  bairrosNobres: ['Centro', 'Setor Sul', 'Vila Aparecida', 'Jardim Vale do Sol'],
-  bairrosPopulares: ['Setor Norte', 'Bandeirante', 'Vila Esperança', 'Setor Industrial'],
+  bairrosNobres: ['Centro', 'Setor Central', 'Jardim Suíço', 'Jardim Petrópolis'],
+  bairrosPopulares: ['Vila Nova Esperança', 'Setor Curumim', 'Conjunto Bernardo Sayão', 'Jardim Tropical'],
 
   parques: [
     {
@@ -51,7 +51,7 @@ export const cidade: Cidade = {
     'O calor do meio do dia e a baixa umidade no período seco pedem treino no início da manhã ou no fim da tarde, com hidratação reforçada; na estação seca, a atenção à umidade do ar é importante, enquanto o verão chuvoso favorece os horários mais frescos para atividades ao ar livre.',
 
   mobilidade:
-    'Ceres é cortada pela BR-153 (rodovia Belém-Brasília), eixo que historicamente impulsionou a cidade e sustenta seu papel de polo médico e de serviços para o Vale do São Patrício. O rio das Almas separa Ceres de Rialma, ligada por ponte, formando uma conurbação. O deslocamento interno é curto, favorecido pelo traçado planejado e pelas avenidas largas.',
+    'Ceres é cortada pela BR-153 (rodovia Belém-Brasília), eixo que historicamente impulsionou a cidade e sustenta seu papel de polo médico e de serviços para o Vale do São Patrício. A GO-154 liga Ceres à zona rural, ao aeroporto local e a municípios vizinhos como Carmo do Rio Verde. O rio das Almas separa Ceres de Rialma, ligada por duas pontes, formando na prática um único núcleo urbano entre as duas cidades. O deslocamento interno é curto, favorecido pelo traçado planejado e pelas avenidas largas.',
 
   corridas: [
     {
@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ceres', url: 'https://ceres.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-03',
 };
