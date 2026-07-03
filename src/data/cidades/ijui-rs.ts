@@ -34,7 +34,7 @@ export const cidade: Cidade = {
     'O frio intenso do inverno favorece o treino indoor, enquanto primavera e outono oferecem ótimas condições ao ar livre no Parque da Fonte e no Parque da Pedreira. Um personal trainer ajuda a manter a constância nas estações de temperatura mais extrema.',
 
   mobilidade:
-    'Ijuí situa-se no Noroeste do Rio Grande do Sul, a cerca de 390 km de Porto Alegre, com acesso por rodovias estaduais que ligam a cidade aos demais municípios da região das Missões. O deslocamento urbano é feito por ônibus municipais e veículos próprios; não há sistema de trens urbanos.',
+    'Ijuí situa-se no Noroeste do Rio Grande do Sul, a cerca de 390 a 410 km de Porto Alegre, cortada pela BR-285, que funciona como principal eixo rodoviário da cidade e ponto de apoio de serviços para quem viaja pela região. O deslocamento urbano é feito por ônibus municipais e veículos próprios; não há sistema de trens urbanos.',
 
   corridas: [
     {
