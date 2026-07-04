@@ -99,7 +99,7 @@ interface ArticleInput {
   descricao: string;
   url: string;
   imagem?: string;
-  publicadoEm: string;
+  publicadoEm?: string;
   atualizadoEm: string;
 }
 
@@ -111,7 +111,7 @@ export function articleSchema(a: ArticleInput) {
     inLanguage: 'pt-BR',
     mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
     image: a.imagem ? [a.imagem] : [`${site.dominio}/og-default.png`],
-    datePublished: a.publicadoEm,
+    ...(a.publicadoEm ? { datePublished: a.publicadoEm } : {}),
     dateModified: a.atualizadoEm,
     author: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
@@ -119,7 +119,7 @@ export function articleSchema(a: ArticleInput) {
 }
 
 /** ItemList dos tipos de treino/seções — reforça estrutura para IA. */
-export function itemListSchema(nome: string, itens: string[], baseUrl: string) {
+export function itemListSchema(nome: string, itens: string[], baseUrl: string, urls?: string[]) {
   return {
     '@type': 'ItemList',
     name: nome,
@@ -129,7 +129,7 @@ export function itemListSchema(nome: string, itens: string[], baseUrl: string) {
       '@type': 'ListItem',
       position: i + 1,
       name: item,
-      url: `${baseUrl}#${slugForAnchor(item)}`,
+      url: urls?.[i] ?? `${baseUrl}#${slugForAnchor(item)}`,
     })),
   };
 }

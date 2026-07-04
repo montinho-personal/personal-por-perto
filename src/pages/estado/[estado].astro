@@ -18,7 +18,10 @@ export function getStaticPaths() {
 const { estado } = Astro.props;
 const lista = cidadesPorEstado(estado.slug);
 const path = `/estado/${estado.slug}`;
-const popTotal = lista.reduce((s, c) => s + c.populacao, 0);
+const popTotal = lista.reduce(
+  (s, c) => (Number.isFinite(c.populacao) ? s + (c.populacao as number) : s),
+  0,
+);
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -35,6 +38,7 @@ const schema = [
     `Cidades do ${estado.nome} com guia de personal trainer`,
     lista.map((c) => `Personal Trainer em ${c.nome}`),
     new URL(path, site.dominio).href,
+    lista.map((c) => new URL(`/personal-trainer/${c.slug}`, site.dominio).href),
   ),
 ];
 ---

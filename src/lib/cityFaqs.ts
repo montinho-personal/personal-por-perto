@@ -33,11 +33,7 @@ export function cityFaqs(cidade: Cidade): FAQ[] {
     {
       pergunta: `Vale a pena ter personal trainer em ${n}?`,
       resposta:
-        `Vale a pena para quem busca constância, segurança na execução e um treino ajustado ao próprio objetivo. Em ${n}, com ${cidade.climaTreino
-          .charAt(0)
-          .toLowerCase()}${cidade.climaTreino.slice(
-          1,
-        )} — o acompanhamento profissional ajuda a manter a regularidade mesmo quando o ambiente muda.`,
+        `Vale a pena para quem busca constância, segurança na execução e um treino ajustado ao próprio objetivo. Em ${n}, o clima também entra na equação: ${cidade.climaTreino} O acompanhamento profissional ajuda a manter a regularidade mesmo quando o ambiente muda.`,
     },
     {
       pergunta: `É possível treinar ao ar livre em ${n}?`,
