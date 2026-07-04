@@ -904,8 +904,34 @@ import { cidade as guapore } from './guapore-rs';
 import { cidade as veraCruz } from './vera-cruz-rs';
 import { cidade as arroioDoMeio } from './arroio-do-meio-rs';
 import { cidade as horizontina } from './horizontina-rs';
+import { cidade as cerroLargo } from './cerro-largo-rs';
+import { cidade as cravinhos } from './cravinhos-sp';
+import { cidade as irece } from './irece-ba';
+import { cidade as palmeiraDasMissoes } from './palmeira-das-missoes-rs';
+import { cidade as piresDoRio } from './pires-do-rio-go';
+import { cidade as saoLuizGonzaga } from './sao-luiz-gonzaga-rs';
+import { cidade as sarandiRs } from './sarandi-rs';
+import { cidade as batatais } from './batatais-sp';
+import { cidade as fredericoWestphalen } from './frederico-westphalen-rs';
+import { cidade as santoAntonioDasMissoes } from './santo-antonio-das-missoes-rs';
+import { cidade as saoMiguelDasMissoes } from './sao-miguel-das-missoes-rs';
+import { cidade as saoSimao } from './sao-simao-go';
+import { cidade as carmoDoParanaiba } from './carmo-do-paranaiba-mg';
+import { cidade as monteCarmelo } from './monte-carmelo-mg';
+import { cidade as coromandel } from './coromandel-mg';
+import { cidade as saoGotardo } from './sao-gotardo-mg';
+import { cidade as santaHelenaDeGoias } from './santa-helena-de-goias-go';
+import { cidade as serraDoSalitre } from './serra-do-salitre-mg';
+import { cidade as guairaSp } from './guaira-sp';
+import { cidade as ibia } from './ibia-mg';
 
 export const cidades: Cidade[] = [
+  // Bloco 45 (Missões RS, Cerrado Mineiro café, agronegócio GO/SP/BA)
+  cerroLargo, cravinhos, irece, palmeiraDasMissoes, piresDoRio,
+  saoLuizGonzaga, sarandiRs, batatais, fredericoWestphalen,
+  santoAntonioDasMissoes, saoMiguelDasMissoes, saoSimao, carmoDoParanaiba,
+  monteCarmelo, coromandel, saoGotardo, santaHelenaDeGoias, serraDoSalitre,
+  guairaSp, ibia,
   // Bloco 44 (Vale do São Francisco PE, Vale dos Vinhedos/agronegócio RS, agronegócio PR/SC, Venda Nova do Imigrante ES)
   lagoaGrande, santaMariaDaBoaVista, cabrobo, petrolandia, novaPrata,
   saoMarcos, monteBeloDoSul, jales, palotina, assisChateaubriand, ubirata,
