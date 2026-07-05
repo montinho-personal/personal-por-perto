@@ -924,8 +924,33 @@ import { cidade as santaHelenaDeGoias } from './santa-helena-de-goias-go';
 import { cidade as serraDoSalitre } from './serra-do-salitre-mg';
 import { cidade as guairaSp } from './guaira-sp';
 import { cidade as ibia } from './ibia-mg';
+import { cidade as santiago } from './santiago-rs';
+import { cidade as novoGama } from './novo-gama-go';
+import { cidade as itapaci } from './itapaci-go';
+import { cidade as porangatu } from './porangatu-go';
+import { cidade as guarantaDoNorte } from './guaranta-do-norte-mt';
+import { cidade as confresa } from './confresa-mt';
+import { cidade as valeDeSaoDomingos } from './vale-de-sao-domingos-mt';
+import { cidade as euclidesDaCunha } from './euclides-da-cunha-ba';
+import { cidade as uruacu } from './uruacu-go';
+import { cidade as silvania } from './silvania-go';
+import { cidade as anicuns } from './anicuns-go';
+import { cidade as formosoDoAraguaia } from './formoso-do-araguaia-to';
+import { cidade as afonsoClaudio } from './afonso-claudio-es';
+import { cidade as alegre } from './alegre-es';
+import { cidade as camacan } from './camacan-ba';
+import { cidade as itamaraju } from './itamaraju-ba';
+import { cidade as caravelas } from './caravelas-ba';
+import { cidade as barrasPi } from './barras-pi';
+import { cidade as correntePi } from './corrente-pi';
+import { cidade as iguape } from './iguape-sp';
 
 export const cidades: Cidade[] = [
+  // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
+  santiago, novoGama, itapaci, porangatu, guarantaDoNorte, confresa,
+  valeDeSaoDomingos, euclidesDaCunha, uruacu, silvania, anicuns,
+  formosoDoAraguaia, afonsoClaudio, alegre, camacan, itamaraju, caravelas,
+  barrasPi, correntePi, iguape,
   // Bloco 45 (Missões RS, Cerrado Mineiro café, agronegócio GO/SP/BA)
   cerroLargo, cravinhos, irece, palmeiraDasMissoes, piresDoRio,
   saoLuizGonzaga, sarandiRs, batatais, fredericoWestphalen,
