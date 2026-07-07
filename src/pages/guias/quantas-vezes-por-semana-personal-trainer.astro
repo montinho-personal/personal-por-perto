@@ -1,0 +1,283 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Critérios gerais para contratar bem, independente da frequência escolhida.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-online-funciona',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'Um modelo híbrido ou totalmente online pode caber melhor no seu orçamento.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'Veja como a frequência semanal impacta o valor do pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Uma opção para quem quer constância sem depender de sessões presenciais toda semana.',
+    tipo: 'Recomendação',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento',
+    titulo: 'Personal trainer para emagrecimento',
+    descricao: 'Veja a frequência que costuma fazer sentido quando o objetivo é emagrecer.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/quantas-vezes-por-semana-personal-trainer';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Quantas vezes por semana treinar com personal trainer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Preciso treinar com personal trainer todos os dias?',
+    resposta:
+      'Não. Diretrizes de referência, como as da Organização Mundial da Saúde e do American College of Sports Medicine, apontam que adultos costumam se beneficiar de treino de força com os principais grupos musculares em pelo menos 2 dias não consecutivos por semana. Isso não significa que o personal precise estar presente em todas as sessões — muita gente treina mais dias por conta própria e tem o personal em parte delas.',
+  },
+  {
+    pergunta: '2 vezes por semana é suficiente para ver resultado?',
+    resposta:
+      'Para manutenção da saúde geral e ganhos iniciais de força, pode ser um bom ponto de partida, especialmente para quem está começando ou tem pouco tempo disponível. Para hipertrofia e performance mais avançada, a literatura sugere que frequências maiores costumam trazer benefício adicional, mas isso varia de pessoa para pessoa e depende de outros fatores como intensidade e recuperação.',
+  },
+  {
+    pergunta: 'Posso treinar sozinho e ter o personal só uma vez por semana?',
+    resposta:
+      'Sim, esse é o modelo híbrido: o personal acompanha uma ou duas sessões por semana para corrigir execução e ajustar o plano, e você segue o restante dos treinos de forma autônoma ou com apoio online. Costuma ser uma boa forma de equilibrar orçamento e supervisão profissional.',
+  },
+  {
+    pergunta: 'Treinar com personal todo dia é exagero?',
+    resposta:
+      'Depende do objetivo, do nível de experiência e da capacidade de recuperação de cada pessoa. Para a maioria dos objetivos comuns, não é necessário treinar todos os dias com personal para ter resultado — o mais importante costuma ser a constância dentro de uma frequência sustentável, não a quantidade máxima de sessões supervisionadas.',
+  },
+  {
+    pergunta: 'Como decidir a frequência ideal considerando o orçamento?',
+    resposta:
+      'Comece pela frequência que você consegue sustentar financeiramente e na rotina por vários meses seguidos — constância vale mais que frequência alta e curta. Se o orçamento for limitado, um modelo híbrido ou o acompanhamento online costuma permitir mais sessões de treino pelo mesmo valor do que o presencial individual.',
+  },
+];
+
+const title = 'Quantas vezes por semana treinar com personal trainer';
+const description =
+  'Quantas vezes por semana treinar com personal trainer: os fatores que definem a frequência ideal, faixas comuns por objetivo, o modelo híbrido e como decidir considerando o orçamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Frequência de treino</p>
+    <h1>Quantas vezes por semana treinar com personal trainer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Não existe um número mágico válido para todo mundo. Como referência
+      geral, diretrizes de saúde como as da{' '}
+      <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a> e do{' '}
+      <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>{' '}
+      indicam que adultos costumam se beneficiar de treino de força
+      trabalhando os principais grupos musculares em <strong>pelo menos 2 dias
+      não consecutivos por semana</strong>. A partir daí, a frequência ideal
+      com um personal trainer depende do seu objetivo, nível de experiência,
+      tempo disponível, capacidade de recuperação e orçamento.
+    </p>
+
+    <div class="prose">
+      <h2>Fatores que definem a frequência ideal</h2>
+      <ul>
+        <li>
+          <strong>Objetivo</strong> — manter a saúde geral costuma exigir menos
+          frequência do que buscar hipertrofia ou performance específica.
+        </li>
+        <li>
+          <strong>Nível de experiência</strong> — iniciantes tendem a responder
+          bem a frequências menores no começo, enquanto praticantes mais
+          avançados costumam precisar de mais estímulo para continuar
+          evoluindo.
+        </li>
+        <li>
+          <strong>Tempo disponível</strong> — a frequência sustentável na sua
+          rotina real importa mais do que a frequência "ideal" no papel.
+        </li>
+        <li>
+          <strong>Capacidade de recuperação</strong> — sono, estresse,
+          alimentação e histórico de lesões influenciam quantas sessões o
+          corpo absorve bem por semana.
+        </li>
+        <li>
+          <strong>Orçamento</strong> — nem todo mundo precisa (ou consegue)
+          pagar por sessões supervisionadas todos os dias.
+        </li>
+      </ul>
+
+      <h2>O que dizem as diretrizes de saúde</h2>
+      <p>
+        Como ponto de partida seguro, a recomendação de referência é treinar
+        os principais grupos musculares em pelo menos 2 dias não consecutivos
+        por semana — o suficiente para observar benefícios de saúde e ganhos
+        iniciais de força na maioria dos adultos saudáveis. Frequências
+        maiores, de 3 a 5 dias, costumam se associar a mais benefício para
+        quem busca hipertrofia ou performance mais avançada, mas o efeito
+        adicional varia conforme intensidade, volume e capacidade de
+        recuperação de cada pessoa — não é uma garantia proporcional de
+        resultado.
+      </p>
+
+      <h2>Faixas comuns por objetivo</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Objetivo</th><th>Frequência comum</th><th>Observação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Saúde geral / iniciante</td><td>2x por semana</td><td>Ponto de partida seguro para criar o hábito</td></tr>
+            <tr><td>Emagrecimento com constância</td><td>2 a 4x por semana</td><td>Frequência combinada com atividade extra no dia a dia</td></tr>
+            <tr><td>Hipertrofia / performance</td><td>3 a 5x por semana</td><td>Tende a se beneficiar de mais frequência, se a recuperação acompanhar</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted small">
+        Faixas de referência geral, não uma prescrição individual — a
+        frequência e a intensidade certas para o seu caso devem ser definidas
+        junto com o profissional que avaliar você.
+      </p>
+
+      <h2>Personal em toda sessão x modelo híbrido</h2>
+      <p>
+        Ter o personal presente em <strong>todas as sessões</strong> tende a
+        garantir mais supervisão direta, correção constante de execução e
+        cobrança de constância — mas custa mais e exige compatibilidade total
+        de agenda.
+      </p>
+      <p>
+        No <strong>modelo híbrido</strong>, o profissional acompanha
+        presencialmente ou por chamada apenas parte das sessões (por exemplo,
+        1 a 2 vezes por semana) para corrigir execução, avaliar evolução e
+        ajustar o plano, enquanto você treina os demais dias com mais
+        autonomia. Esse formato tende a caber melhor no orçamento sem abrir
+        mão de supervisão profissional — e se conecta diretamente com a
+        decisão entre <a href="/guias/personal-online-funciona">presencial e
+        online</a>.
+      </p>
+      <div class="callout">
+        <strong>Dica:</strong> se o seu limite é orçamento, não é frequência
+        alta, considere reduzir o número de sessões supervisionadas e manter
+        os demais treinos por conta própria com um plano bem orientado — em
+        vez de abandonar o acompanhamento profissional por completo.
+      </div>
+
+      <h2>Como decidir considerando o orçamento</h2>
+      <ul>
+        <li>
+          Nem todo mundo precisa de personal trainer todos os dias — a
+          constância dentro de uma frequência sustentável costuma valer mais
+          que a quantidade máxima de sessões supervisionadas.
+        </li>
+        <li>
+          Defina primeiro a frequência que você consegue manter por vários
+          meses seguidos, tanto financeiramente quanto na rotina.
+        </li>
+        <li>
+          Compare formatos: o <a href={rotas.quantoCusta}>presencial, o modelo
+          híbrido e o acompanhamento online</a> têm faixas de preço bem
+          diferentes para uma frequência parecida.
+        </li>
+        <li>
+          Se o orçamento for o principal limite, vale considerar
+          <a href={rotas.montinho}> um acompanhamento online</a>, que costuma
+          permitir mais frequência de orientação pelo mesmo valor do que o
+          presencial individual.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

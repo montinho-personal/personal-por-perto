@@ -1,0 +1,252 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios gerais que valem para qualquer objetivo: registro profissional, avaliação inicial e sinais de alerta.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'A ciência por trás: por que o treino de força ajuda no emagrecimento além do gasto calórico da sessão.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'Por que perder peso sem perder músculo depende do tipo de treino prescrito — e o que um bom profissional ajusta nisso.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer',
+    titulo: 'Quantas vezes por semana treinar com personal trainer',
+    descricao: 'Depois de escolher o profissional certo, entenda qual frequência semanal costuma sustentar o emagrecimento.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Consultoria com foco em emagrecimento, com a recomendação editorial do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-emagrecimento';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Personal trainer para emagrecimento: como escolher', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Personal trainer pode prescrever dieta para emagrecimento?',
+    resposta:
+      'Não. Prescrever dieta, cardápio ou plano alimentar individualizado é atividade privativa de nutricionista. Um personal trainer pode orientar hábitos gerais e reforçar a importância da alimentação para o resultado, mas o ajuste fino de calorias e macronutrientes deve vir de um profissional de nutrição — e um personal sério é o primeiro a reconhecer esse limite.',
+  },
+  {
+    pergunta: 'Quanto tempo leva para ver resultado de emagrecimento com personal trainer?',
+    resposta:
+      'Não há prazo garantido — depende de fatores individuais como ponto de partida, consistência no treino, contexto alimentar e rotina de sono e recuperação. Um profissional sério explica isso com clareza em vez de prometer prazos fechados. Desconfie de quem garante uma quantidade específica de peso perdido em um tempo determinado.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem quer emagrecer?',
+    resposta:
+      'Para muita gente, sim, especialmente quando a maior dificuldade é constância e não deslocamento até a academia. O que importa não é o formato em si, mas se o profissional avalia o seu caso, individualiza o treino e acompanha a evolução de perto — isso pode acontecer tanto presencial quanto online.',
+  },
+  {
+    pergunta: 'Que perguntas fazer a um personal trainer focado em emagrecimento antes de contratar?',
+    resposta:
+      'Pergunte sobre a experiência real dele com esse objetivo, como o treino combina força e outros estímulos, como ele acompanha progresso além do peso na balança, e se ele trabalha em conjunto com nutricionistas ou apenas orienta hábitos gerais dentro do próprio escopo de atuação.',
+  },
+  {
+    pergunta: 'É normal o personal trainer indicar um nutricionista?',
+    resposta:
+      'Sim, e é um bom sinal. Como emagrecimento depende tanto de treino quanto de alimentação, profissionais sérios costumam recomendar acompanhamento nutricional em paralelo, ou já ter uma rede de parceria com nutricionistas, em vez de tentar cobrir sozinhos uma área que não é da sua formação.',
+  },
+];
+
+const title = 'Personal trainer para emagrecimento: como escolher (2026)';
+const description =
+  'O que procurar num personal trainer com foco em emagrecimento: experiência real com o objetivo, integração entre treino de força e progresso além da balança, e os sinais de alerta do nicho.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Personal trainer para emagrecimento: como escolher</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Emagrecimento é um objetivo específico, e nem todo personal trainer
+      qualificado tem experiência real com ele. Em resumo: procure alguém
+      com histórico comprovado nesse objetivo, que combine treino de força
+      com outros estímulos (não só cardio), que reconheça os limites da
+      própria formação e direcione o lado alimentar a um nutricionista, e
+      que avalie progresso além do número na balança. Abaixo, os critérios
+      específicos e os sinais de alerta desse nicho.
+    </p>
+
+    <div class="prose">
+      <h2>O que procurar num profissional com foco em emagrecimento</h2>
+      <p>
+        Além dos critérios gerais de qualquer contratação — registro
+        profissional ativo e avaliação inicial séria, explicados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> —
+        vale olhar para pontos específicos de quem vai te acompanhar num
+        processo de emagrecimento:
+      </p>
+      <ul>
+        <li>
+          <strong>Experiência real com esse objetivo.</strong> Pergunte
+          diretamente há quanto tempo ele trabalha com emagrecimento e peça
+          para descrever casos parecidos com o seu — ponto de partida, o que
+          mudou na abordagem ao longo do acompanhamento, como a evolução foi
+          medida. Respostas vagas ou genéricas são um sinal de pouca
+          experiência prática com o tema.
+        </li>
+        <li>
+          <strong>Treino que integra força, e não só cardio.</strong> Um
+          profissional atualizado sabe que o treino de força tem papel
+          relevante no emagrecimento, além do cardio tradicional — a ciência
+          por trás disso está detalhada em
+          <a href="/emagrecimento/como-emagrecer-fazendo-musculacao">como emagrecer fazendo musculação</a>.
+          Se o plano proposto for só esteira e bicicleta, sem nenhum
+          trabalho de força, vale questionar o porquê.
+        </li>
+        <li>
+          <strong>Reconhece os limites da própria formação e direciona o
+          lado alimentar.</strong> Emagrecimento depende de treino e de
+          alimentação. Um personal trainer não é nutricionista e não deve
+          prescrever dieta — o que um bom profissional faz é reforçar
+          hábitos gerais dentro do seu escopo de atuação e recomendar (ou já
+          ter parceria com) um nutricionista para o ajuste individualizado.
+          Desconfie de quem promete resolver os dois lados sozinho.
+        </li>
+        <li>
+          <strong>Avalia progresso além da balança.</strong> Peso corporal
+          isolado conta uma história incompleta — medidas, percentual de
+          gordura, fotos de acompanhamento ou até como a roupa está
+          vestindo costumam refletir melhor a evolução real, principalmente
+          quando há ganho de massa magra em paralelo à perda de gordura.
+          Esse processo de recomposição corporal está explicado em
+          <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo">como preservar massa muscular durante o emagrecimento</a>.
+        </li>
+      </ul>
+
+      <h2>Sinais de alerta específicos deste nicho</h2>
+      <p>
+        Emagrecimento atrai promessas exageradas com mais frequência do que
+        outros objetivos. Fique atento a estes sinais:
+      </p>
+      <ul>
+        <li>
+          <strong>Promessas de emagrecimento rápido ou garantido.</strong>
+          Ninguém consegue garantir quanto peso você vai perder nem em
+          quanto tempo — isso depende de fatores individuais que nenhum
+          profissional controla sozinho. Prazos e números fechados prometidos
+          de antemão são sinal de marketing, não de avaliação séria.
+        </li>
+        <li>
+          <strong>Treinos genéricos "queima calorias" sem individualização.</strong>
+          Um plano igual para todo mundo, sem considerar seu nível,
+          histórico e limitações, tende a ser menos eficaz e mais arriscado
+          do que um treino pensado para o seu caso.
+        </li>
+        <li>
+          <strong>Incentivo a dietas extremas.</strong> Sugestões de cortes
+          calóricos agressivos, jejuns prolongados sem orientação ou
+          eliminação de grupos alimentares inteiros — vindas de quem não é
+          nutricionista — são um sinal de alerta importante. Esse tipo de
+          orientação foge do escopo de um personal trainer e pode trazer
+          risco à saúde.
+        </li>
+      </ul>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o profissional certo para emagrecimento
+        combina experiência comprovada com o objetivo, treino individualizado
+        que inclui força, honestidade sobre os limites da própria formação e
+        acompanhamento de progresso que vai além da balança. Quem prefere
+        flexibilidade de horário encontra esse perfil na
+        <a href={rotas.montinho}>consultoria online recomendada pelo portal</a>,
+        com foco justamente em emagrecimento.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

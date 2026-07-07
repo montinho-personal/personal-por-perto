@@ -1,0 +1,305 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios gerais para contratar bem, presencial ou online.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer',
+    titulo: 'Quantas vezes por semana treinar com personal',
+    descricao: 'Depois de decidir o formato, entenda como definir a frequência ideal.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'Veja as faixas de preço do acompanhamento online e do presencial.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Um exemplo prático de como funciona um acompanhamento online individual.',
+    tipo: 'Recomendação',
+  },
+  {
+    url: '/guias/personal-trainer-para-iniciantes',
+    titulo: 'Personal trainer para iniciantes',
+    descricao: 'Está começando agora? Veja se o online é indicado para o seu caso.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-online-funciona';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Personal trainer online funciona?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Personal trainer online funciona mesmo?',
+    resposta:
+      'Pode funcionar bem, principalmente para quem tem alguma autonomia, disciplina para seguir o plano sem alguém do lado e uma rotina que dificulta horário fixo presencial. Estudos que compararam formatos de treino remoto e presencial mostram que o acompanhamento supervisionado (ao vivo ou com contato próximo) tende a levar vantagem sobre treino totalmente autônomo, mas que a adesão de longo prazo pode ser parecida entre online bem estruturado e presencial, especialmente em quem já está disposto a mudar de hábito.',
+  },
+  {
+    pergunta: 'Personal online é tão bom quanto presencial para quem está começando?',
+    resposta:
+      'Depende do nível de insegurança motora. Quem tem muito medo de errar a execução ou nunca treinou geralmente se beneficia da correção em tempo real do presencial, ao menos no início. Já quem já tem alguma noção de treino costuma se adaptar bem ao online.',
+  },
+  {
+    pergunta: 'Como saber se o personal online é qualificado?',
+    resposta:
+      'Confirme o registro profissional ativo em Educação Física, pergunte sobre a experiência com o seu objetivo e exija uma avaliação inicial antes de receber qualquer treino. Os mesmos critérios do presencial valem para o online — o formato muda, a exigência técnica não.',
+  },
+  {
+    pergunta: 'Dá para tirar dúvida de execução no treino online?',
+    resposta:
+      'Em um acompanhamento online sério, sim: o profissional costuma enviar vídeos de execução, orientações por escrito e mantém um canal aberto para dúvidas entre os treinos, além de ajustar o plano com base no seu retorno.',
+  },
+  {
+    pergunta: 'Personal online costuma ser mais barato que presencial?',
+    resposta:
+      'Em geral, sim, porque não há custo de deslocamento e o profissional consegue atender com um método mais estruturado. As faixas de preço por formato estão no guia de quanto custa um personal trainer.',
+  },
+];
+
+const title = 'Personal trainer online funciona? O que considerar antes de contratar';
+const description =
+  'Personal trainer online funciona para quem? Veja para que perfis o online é indicado, quando o presencial ainda leva vantagem, como reconhecer um serviço sério e o que perguntar antes de contratar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Formato de treino</p>
+    <h1>Personal trainer online funciona? O que considerar antes de contratar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Em resumo: o personal trainer online costuma funcionar bem para quem tem
+      alguma autonomia, disciplina para treinar sem companhia e uma rotina que
+      dificulta horário fixo presencial. Já quem precisa de correção de execução
+      em tempo real, é iniciante com muita insegurança motora ou está em processo
+      de reabilitação tende a se beneficiar mais da supervisão próxima do
+      presencial — pelo menos numa fase inicial. Não existe resposta única; existe
+      a melhor opção para o seu perfil e o seu momento.
+    </p>
+
+    <div class="prose">
+      <h2>Para quem o online costuma funcionar bem</h2>
+      <ul>
+        <li>
+          <strong>Quem tem autonomia e disciplina</strong> para seguir um plano
+          sem alguém supervisionando cada repetição.
+        </li>
+        <li>
+          <strong>Rotina apertada ou viagens frequentes</strong>, quando um
+          horário fixo em um mesmo endereço é difícil de manter.
+        </li>
+        <li>
+          <strong>Quem já tem alguma bagagem de treino</strong> e sabe executar
+          exercícios básicos com segurança, mesmo que precise de ajustes finos.
+        </li>
+        <li>
+          <strong>Quem prioriza custo-benefício</strong> sem abrir mão de um
+          plano individual — o online costuma custar menos que o presencial
+          mantendo a personalização.
+        </li>
+      </ul>
+
+      <h2>Para quem o presencial pode ser melhor</h2>
+      <ul>
+        <li>
+          <strong>Iniciantes com muita insegurança motora</strong> ou medo de se
+          machucar, que se beneficiam de ter alguém ao lado ajustando a postura
+          na hora.
+        </li>
+        <li>
+          <strong>Quem precisa de correção de execução em tempo real</strong>,
+          especialmente em movimentos mais técnicos, onde um pequeno erro de
+          postura pode se repetir sem que a pessoa perceba.
+        </li>
+        <li>
+          <strong>Casos de reabilitação ou limitações de saúde</strong> que
+          exigem supervisão próxima e ajuste imediato de carga — aqui, o
+          acompanhamento presencial (idealmente em conjunto com orientação
+          médica) tende a ser mais seguro.
+        </li>
+        <li>
+          <strong>Quem depende da presença física de outra pessoa</strong> como
+          fator de constância — para algumas pessoas, o compromisso marcado
+          presencialmente é o que garante que o treino aconteça.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>Na prática:</strong> muita gente começa presencial para aprender
+        a executar com segurança e migra para o online depois de ganhar
+        autonomia — ou faz um modelo híbrido, com parte das sessões
+        presenciais e parte online.
+      </div>
+
+      <h2>Como funciona um bom acompanhamento online na prática</h2>
+      <p>Um serviço online bem estruturado geralmente segue esta lógica:</p>
+      <ul>
+        <li>
+          <strong>Avaliação inicial</strong> — anamnese, histórico de saúde,
+          objetivo, rotina e experiência prévia com treino, antes de qualquer
+          plano ser entregue.
+        </li>
+        <li>
+          <strong>Plano de treino individual</strong> — montado para o seu
+          objetivo e o seu nível, não uma planilha padrão replicada para todo
+          mundo.
+        </li>
+        <li>
+          <strong>Vídeos e orientação de execução</strong> — cada exercício vem
+          acompanhado de referência visual e explicação de como executar com
+          segurança.
+        </li>
+        <li>
+          <strong>Ajustes periódicos</strong> — o treino evolui com base no seu
+          retorno, desempenho e eventuais dificuldades, não fica estático por
+          meses.
+        </li>
+        <li>
+          <strong>Canal de dúvidas</strong> — um espaço para tirar dúvidas entre
+          as sessões, seja por mensagem ou chamada, sem depender de esperar o
+          próximo ciclo de avaliação.
+        </li>
+      </ul>
+
+      <h2>Sinais de que o serviço online é sério — e não genérico</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Sinal</th><th>Serviço sério</th><th>Serviço genérico</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Avaliação inicial</td><td>Anamnese completa antes do treino</td><td>Envia treino padrão sem perguntar quase nada</td></tr>
+            <tr><td>Personalização</td><td>Plano ajustado ao objetivo e ao nível</td><td>Mesma planilha para todos os alunos</td></tr>
+            <tr><td>Execução</td><td>Vídeo ou orientação clara por exercício</td><td>Apenas nomes de exercícios, sem explicação</td></tr>
+            <tr><td>Acompanhamento</td><td>Ajustes periódicos e canal de dúvidas</td><td>Sem contato após a venda do plano</td></tr>
+            <tr><td>Comunicação</td><td>Explica método, prazos realistas</td><td>Promete resultado rápido e garantido</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>O que perguntar antes de contratar online</h2>
+      <ul>
+        <li>Como é feita a avaliação inicial e o que ela considera?</li>
+        <li>O treino é individual ou um modelo padrão adaptado?</li>
+        <li>Como recebo orientação de execução — vídeo, chamada, texto?</li>
+        <li>Com que frequência o plano é revisado e ajustado?</li>
+        <li>Existe canal para tirar dúvidas entre as sessões? Em quanto tempo costuma responder?</li>
+        <li>Qual a experiência do profissional com o meu objetivo específico?</li>
+      </ul>
+
+      <h2>O que diz a pesquisa</h2>
+      <p>
+        A comparação entre treino remoto e presencial ainda é um campo de
+        pesquisa em construção, mas alguns achados ajudam a calibrar
+        expectativas — com a devida cautela, já que os estudos costumam ter
+        amostras pequenas e populações específicas. Um ensaio clínico
+        randomizado comparando supervisão presencial, coaching online e treino
+        autoguiado encontrou{' '}
+        <a
+          href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12529976/"
+          target="_blank"
+          rel="noopener"
+        >melhoras superiores em força, composição corporal e bem-estar no grupo
+          com supervisão presencial</a
+        >, o que reforça a importância de um acompanhamento próximo — seja
+        presencial, seja online com contato ativo e ajustes reais. Por outro
+        lado, uma pesquisa sobre exercício supervisionado a distância durante a
+        pandemia sugere que{' '}
+        <a
+          href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8619241/"
+          target="_blank"
+          rel="noopener"
+        >o acompanhamento remoto pode ser adequado para manter adesão a um
+          estilo de vida saudável a longo prazo</a
+        >, de forma parecida ao presencial, pelo menos em quem já está disposto
+        a mudar de hábito. Em outras palavras: o formato online tende a
+        funcionar quando existe supervisão de verdade — não quando se resume a
+        um PDF entregue uma única vez.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

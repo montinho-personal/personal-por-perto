@@ -1,0 +1,295 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Decidiu contratar? Veja os critérios completos: registro, especialização, avaliação inicial e sinais de alerta.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    descricao: 'O conteúdo técnico: por onde partir, frequência recomendada e erros comuns de quem começa sozinho.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer',
+    titulo: 'Quantas vezes por semana treinar com personal trainer',
+    descricao: 'Depois de decidir contratar, entenda qual frequência semanal costuma fazer mais sentido no início.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-online-funciona',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'Para quem tem insegurança de horário ou deslocamento, veja se o formato online é uma alternativa viável.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Quem busca começar com segurança e flexibilidade de horário encontra aqui a recomendação do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-iniciantes';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Personal trainer para iniciantes: vale a pena contratar?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Preciso contratar um personal trainer para começar a treinar?',
+    resposta:
+      'Não é obrigatório — é possível começar sozinho seguindo um treino básico e bem estruturado. Mas para quem nunca treinou, ter alguém corrigindo a execução e ajustando a carga nas primeiras semanas costuma reduzir o risco de lesão e acelerar o aprendizado. A decisão depende do seu orçamento, do seu nível de insegurança na academia e de quanto tempo você tem para se dedicar a aprender sozinho.',
+  },
+  {
+    pergunta: 'Por quanto tempo vale a pena manter o acompanhamento no início?',
+    resposta:
+      'Não existe um prazo fixo. Algumas pessoas contratam só algumas sessões para aprender a técnica dos exercícios principais e depois seguem sozinhas; outras preferem manter o acompanhamento por mais tempo para sustentar a constância. O importante é que a decisão de continuar ou não seja sua, não uma pressão do profissional.',
+  },
+  {
+    pergunta: 'É melhor começar sozinho e contratar um personal depois?',
+    resposta:
+      'As duas ordens funcionam. Começar com acompanhamento tende a evitar que vícios de movimento se instalem desde o início. Começar sozinho e contratar depois também é válido, especialmente se você já tem alguma familiaridade com treino — nesse caso, o personal entra mais para refinar técnica e organizar a progressão do que para ensinar do zero.',
+  },
+  {
+    pergunta: 'Personal trainer para iniciante custa mais caro que para quem já treina?',
+    resposta:
+      'Não necessariamente. O preço costuma variar mais por cidade, formato (presencial ou online) e experiência do profissional do que pelo nível do aluno. As faixas de preço praticadas no mercado estão detalhadas no guia sobre quanto custa um personal trainer.',
+  },
+  {
+    pergunta: 'Consigo trocar para treinar sozinho depois de um tempo com personal?',
+    resposta:
+      'Sim, e é um caminho comum. Muita gente contrata acompanhamento justamente para aprender o básico com segurança — postura, execução, como montar uma progressão — e depois de alguns meses passa a treinar de forma mais independente, com check-ins pontuais quando necessário.',
+  },
+];
+
+const title = 'Personal trainer para iniciantes: vale a pena contratar? (2026)';
+const description =
+  'Entenda por que quem está começando a treinar se beneficia especialmente de acompanhamento profissional, o que esperar de um personal para iniciantes, prós e contras de treinar sozinho e como decidir.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Personal trainer para iniciantes: vale a pena contratar?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem nunca treinou costuma se beneficiar mais de acompanhamento do que
+      quem já tem alguma experiência — não porque treinar sozinho seja
+      impossível, mas porque os primeiros meses são justamente a fase em que
+      mais gente desiste. Em resumo: contratar um personal no início ajuda a
+      aprender a técnica correta antes de criar vícios de movimento, reduz a
+      insegurança de "não saber o que fazer" na academia e apoia a
+      constância enquanto o hábito ainda não está formado. Se vale a pena
+      para você depende de orçamento, nível de insegurança e tempo
+      disponível — veja abaixo como pesar cada fator.
+    </p>
+
+    <div class="prose">
+      <h2>Por que iniciantes se beneficiam especialmente de acompanhamento</h2>
+      <p>
+        Treinar sozinho é possível em qualquer fase, mas o começo tem
+        particularidades que fazem o acompanhamento render mais:
+      </p>
+      <ul>
+        <li>
+          <strong>Aprender a técnica correta desde o início evita vícios de
+          movimento.</strong> Corrigir um padrão de execução errado depois
+          de meses de repetição é mais difícil do que aprender certo desde a
+          primeira semana — e padrões ruins tendem a sobrecarregar
+          articulações e aumentar o risco de lesão ao longo do tempo.
+        </li>
+        <li>
+          <strong>Reduz a insegurança de "não saber o que fazer" na
+          academia.</strong> Essa insegurança é uma das principais barreiras
+          para quem está começando — não saber qual aparelho usar, quantas
+          séries fazer ou se está executando certo é desconfortável o
+          suficiente para afastar muita gente antes mesmo de criar o hábito.
+        </li>
+        <li>
+          <strong>Ajuda a criar hábito e constância nos primeiros meses.</strong>
+          Pesquisas sobre adesão a exercício mostram que a maior parte da
+          desistência acontece justamente nos primeiros meses de treino — é
+          a fase mais crítica. Ter alguém cobrando presença, ajustando o
+          treino quando algo não está funcionando e comemorando pequenos
+          avanços costuma pesar bastante para atravessar esse período.
+        </li>
+      </ul>
+
+      <h2>O que esperar de um personal trainer para quem nunca treinou</h2>
+      <p>
+        Um bom profissional trabalhando com iniciante não entrega um treino
+        "padrão de academia" — ele adapta o ritmo à sua realidade. Isso
+        costuma incluir:
+      </p>
+      <ul>
+        <li>Uma avaliação inicial que considera seu histórico de saúde, rotina e nível de condicionamento.</li>
+        <li>Explicações didáticas sobre por que cada exercício está no treino, não só "como fazer".</li>
+        <li>Progressão gradual de carga e complexidade, sem pressa de "acelerar" resultados.</li>
+        <li>Paciência com o tempo de adaptação — dúvidas repetidas e execução ainda insegura nas primeiras semanas são esperadas, não motivo de cobrança.</li>
+      </ul>
+      <p>
+        O conteúdo técnico de como estruturar esse início — divisão de
+        treino, frequência semanal, o que esperar da evolução de força nos
+        primeiros meses — está no guia
+        <a href="/musculacao/treino-para-iniciantes">treino de musculação para iniciantes: como começar</a>.
+        Este artigo aqui foca em outra pergunta: vale a pena contratar
+        alguém para te acompanhar nesse processo, ou faz mais sentido
+        começar por conta própria?
+      </p>
+
+      <h2>Prós e contras de começar sozinho vs. com acompanhamento</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th>Treinar sozinho</th><th>Com acompanhamento</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Custo</strong></td>
+              <td>Menor investimento inicial</td>
+              <td>Custo adicional, mensal ou por pacote</td>
+            </tr>
+            <tr>
+              <td><strong>Curva de aprendizado</strong></td>
+              <td>Mais lenta, por tentativa e erro</td>
+              <td>Mais rápida, com correção em tempo real</td>
+            </tr>
+            <tr>
+              <td><strong>Risco de erro de execução</strong></td>
+              <td>Maior, sem alguém para corrigir</td>
+              <td>Menor, com supervisão da técnica</td>
+            </tr>
+            <tr>
+              <td><strong>Constância nos primeiros meses</strong></td>
+              <td>Depende só da sua própria disciplina</td>
+              <td>Apoiada por cobrança e ajustes externos</td>
+            </tr>
+            <tr>
+              <td><strong>Flexibilidade de horário</strong></td>
+              <td>Total, sem depender de agenda de terceiros</td>
+              <td>Depende do formato (presencial tem menos flexibilidade que online)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Nenhuma das duas opções é "certa" de forma universal — cada uma pesa
+        diferente dependendo do seu contexto, o que nos leva ao próximo
+        ponto.
+      </p>
+
+      <h2>Como decidir</h2>
+      <p>Três perguntas ajudam a colocar a decisão no papel:</p>
+      <ul>
+        <li>
+          <strong>Orçamento:</strong> o investimento em acompanhamento cabe
+          na sua rotina financeira sem virar motivo de estresse? Se o
+          orçamento for justo, vale considerar contratar só algumas sessões
+          iniciais para aprender o básico, e depois seguir sozinho.
+        </li>
+        <li>
+          <strong>Nível de insegurança:</strong> a ideia de entrar numa
+          academia sem saber o que fazer te afasta de ir? Se a insegurança é
+          o que está te impedindo de começar, o acompanhamento tende a
+          resolver justamente essa barreira.
+        </li>
+        <li>
+          <strong>Disponibilidade de tempo:</strong> você tem tempo e
+          disposição para pesquisar, estudar execução de exercícios e testar
+          por conta própria? Sem isso, aprender sozinho tende a ser mais
+          lento e com mais tentativa e erro.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>Dica:</strong> se a sua maior barreira é insegurança ou falta
+        de tempo para pesquisar sozinho, mas o presencial não cabe na rotina,
+        o formato online remove a barreira de deslocamento e horário fixo —
+        é o foco da
+        <a href={rotas.montinho}>consultoria online recomendada pelo portal</a>.
+        Antes de contratar qualquer profissional, vale confirmar os
+        critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
