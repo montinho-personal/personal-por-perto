@@ -1,0 +1,287 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/quantas-series-e-repeticoes',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'Depois de escolher a divisão, entenda como dosar volume e repetições dentro dela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Como funciona a hipertrofia muscular',
+    descricao: 'Entenda o processo por trás do ganho de massa muscular antes de montar sua divisão de treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Um profissional qualificado ajusta a divisão de treino ao seu objetivo, rotina e nível.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/abc-ou-full-body';
+const atualizadoEm = '2026-07-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'ABC ou Full Body: qual a melhor divisão de treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Treino ABC é melhor que treino full body?',
+    resposta:
+      'Nenhum dos dois é "melhor" de forma absoluta. Estudos que equalizam o volume semanal de séries mostram ganhos de força e hipertrofia semelhantes entre divisões e full body. A diferença prática está em como cada formato se encaixa na sua rotina, no seu nível de experiência e na sua frequência de treino disponível.',
+  },
+  {
+    pergunta: 'Full body serve para quem já treina há anos?',
+    resposta:
+      'Pode servir, mas costuma ficar mais difícil encaixar volume suficiente para grupos musculares específicos em cada sessão à medida que a pessoa avança. Por isso divisões (ABC, ABCD) costumam ganhar espaço com o avanço do treino, já que permitem mais exercícios e séries por grupo muscular em cada sessão.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana devo treinar cada grupo muscular?',
+    resposta:
+      'A literatura sobre frequência de treino costuma indicar que treinar cada grupo muscular pelo menos duas vezes por semana tende a ser tão eficaz quanto ou mais eficaz do que treiná-lo apenas uma vez, principalmente quando o volume total semanal é equivalente. Isso vale tanto para full body (frequência alta por natureza) quanto para uma divisão ABC bem planejada, que revisita cada grupo mais de uma vez na semana.',
+  },
+  {
+    pergunta: 'Posso fazer full body treinando só 2 ou 3 dias por semana?',
+    resposta:
+      'Sim, e essa costuma ser justamente a situação em que o full body se destaca: com poucos dias disponíveis, treinar o corpo inteiro em cada sessão ajuda a somar volume semanal suficiente para cada grupo muscular, algo que uma divisão ABCD dificilmente conseguiria com a mesma frequência.',
+  },
+  {
+    pergunta: 'Um personal trainer decide isso por mim?',
+    resposta:
+      'O ideal é que sim. Um profissional avalia sua rotina, seu nível, seus horários disponíveis e seu objetivo antes de escolher (ou combinar) formatos. A divisão de treino é meio, não fim — o que importa é se ela é sustentável para você ao longo do tempo.',
+  },
+];
+
+const title = 'ABC ou Full Body: qual a melhor divisão de treino';
+const description =
+  'Entenda as diferenças reais entre treino ABC e full body: frequência por grupo muscular, prós e contras de cada divisão e para quem cada formato costuma fazer mais sentido.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>ABC ou Full Body: qual a melhor divisão de treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Essa é uma das dúvidas mais comuns de quem está montando (ou remontando) o treino.
+      Em resumo: nem ABC nem full body é "melhor" de forma absoluta — pesquisas que
+      equalizam o volume semanal de séries mostram resultados parecidos entre os dois
+      formatos. O que muda de verdade é qual deles se encaixa melhor na sua rotina, no
+      seu nível de experiência e na sua capacidade de recuperação. Abaixo, o que cada um
+      é e como decidir.
+    </p>
+
+    <div class="prose">
+      <h2>O que é treino ABC (divisão por grupo muscular)</h2>
+      <p>
+        No treino ABC, cada sessão foca em um conjunto de grupos musculares diferentes.
+        Um exemplo comum de <strong>ABC</strong>: A (peito, tríceps), B (costas, bíceps),
+        C (pernas, ombro). Também existem variações mais fracionadas, como
+        <strong>ABCD</strong> ou até <strong>ABCDE</strong>, que dividem o corpo em mais
+        blocos. A ideia central é concentrar mais exercícios e séries em poucos grupos
+        musculares por sessão, geralmente repetindo o ciclo ao longo da semana.
+      </p>
+
+      <h2>O que é treino full body</h2>
+      <p>
+        No <strong>full body</strong>, o corpo inteiro (ou a maior parte dele) é
+        trabalhado em cada sessão, com um número menor de exercícios por grupo muscular
+        por treino. A pessoa costuma treinar 2 a 4 vezes por semana, revisitando os
+        mesmos grupos musculares em cada sessão, em vez de concentrar o volume em um
+        único dia por semana.
+      </p>
+
+      <h2>O que a pesquisa diz sobre frequência de treino</h2>
+      <p>
+        Um ponto que costuma pesar na comparação entre os dois formatos é a
+        <strong>frequência</strong> com que cada grupo muscular é estimulado ao longo da
+        semana. Revisões e meta-análises sobre o tema costumam apontar que treinar um
+        mesmo grupo muscular pelo menos duas vezes por semana tende a produzir resultados
+        de hipertrofia iguais ou superiores a treiná-lo apenas uma vez, principalmente
+        quando o volume total de séries na semana é parecido entre os grupos comparados.
+        Em outras palavras: frequência sozinha não é o fator decisivo — o que parece
+        importar mais é conseguir acumular volume semanal suficiente, e frequências mais
+        altas costumam facilitar isso.
+      </p>
+      <p>
+        Já estudos que comparam diretamente full body e divisões (incluindo revisões
+        publicadas em periódicos científicos) costumam encontrar ganhos de força e de
+        hipertrofia semelhantes entre os dois formatos quando o volume semanal total é
+        equivalente. Ou seja: o "segredo" não está em qual divisão você escolhe, e sim em
+        conseguir treinar cada grupo muscular com volume e frequência adequados ao longo
+        da semana — algo que tanto um ABC bem planejado quanto um full body bem planejado
+        conseguem entregar.
+      </p>
+      <div class="callout">
+        <strong>Na prática:</strong> um full body feito 3x por semana já treina cada
+        grupo muscular três vezes na semana. Um ABC clássico, feito também 3x por semana,
+        treina cada grupo apenas uma vez — a menos que o ciclo seja repetido (por exemplo,
+        ABCABC em vez de ABC uma única vez por semana).
+      </div>
+
+      <h2>Prós e contras do treino ABC</h2>
+      <ul>
+        <li>
+          <strong>A favor:</strong> permite mais exercícios e séries por grupo muscular
+          em cada sessão, o que facilita trabalhar múltiplos ângulos e priorizar pontos
+          fracos específicos.
+        </li>
+        <li>
+          <strong>A favor:</strong> sessões costumam ser mais longas, mas focadas — bom
+          para quem gosta de treinar poucos grupos por vez com mais volume.
+        </li>
+        <li>
+          <strong>Contra:</strong> se o ciclo não se repete na semana, cada grupo
+          muscular acaba sendo treinado só uma vez — frequência baixa, que a literatura
+          tende a considerar menos eficiente que frequências mais altas.
+        </li>
+        <li>
+          <strong>Contra:</strong> perder um treino da semana (viagem, imprevisto) deixa
+          um grupo muscular inteiro sem estímulo até o ciclo seguinte.
+        </li>
+      </ul>
+
+      <h2>Prós e contras do treino full body</h2>
+      <ul>
+        <li>
+          <strong>A favor:</strong> cada grupo muscular é estimulado com mais frequência
+          na semana, o que tende a favorecer a distribuição do volume e a técnica (menos
+          fadiga acumulada por exercício).
+        </li>
+        <li>
+          <strong>A favor:</strong> mais flexível para rotinas com poucos dias
+          disponíveis — treinar 2 ou 3x por semana já garante bom estímulo para o corpo
+          todo.
+        </li>
+        <li>
+          <strong>A favor:</strong> perder um treino no meio da semana pesa menos, porque
+          nenhum grupo muscular fica dependente de um único dia.
+        </li>
+        <li>
+          <strong>Contra:</strong> cada sessão tende a ter menos exercícios por grupo
+          muscular, o que pode limitar a variedade de estímulos para quem já treina há
+          muito tempo e busca detalhes específicos.
+        </li>
+        <li>
+          <strong>Contra:</strong> sessões que tentam cobrir o corpo inteiro com muito
+          volume podem ficar longas ou cansativas.
+        </li>
+      </ul>
+
+      <h2>Para quem cada formato costuma fazer mais sentido</h2>
+      <p>
+        Para <strong>iniciantes</strong>, o full body costuma ser um bom ponto de
+        partida: menos exercícios para aprender de uma vez, frequência alta (boa para
+        consolidar técnica) e menos sessões perdidas por falta de tempo. Para quem tem
+        <strong>rotina apertada</strong> e só consegue treinar 2 ou 3 dias por semana, o
+        full body também tende a aproveitar melhor cada sessão disponível.
+      </p>
+      <p>
+        Já para quem já treina há mais tempo, tem mais <strong>disponibilidade
+        semanal</strong> (4 a 6 dias) e busca focar em pontos fracos específicos, uma
+        divisão ABC ou ABCD bem planejada — que revisite cada grupo muscular mais de uma
+        vez por semana — costuma permitir mais volume e variedade por grupo muscular sem
+        sessões excessivamente longas.
+      </p>
+
+      <h2>Não existe "melhor absoluto"</h2>
+      <p>
+        A decisão entre ABC e full body depende do seu contexto: quantos dias você tem
+        disponíveis, seu nível de experiência, sua capacidade de recuperação e até sua
+        preferência pessoal (adesão importa tanto quanto qualquer variável fisiológica).
+        É exatamente esse tipo de ajuste que um <strong>personal trainer</strong> faz na
+        prática — não existe uma divisão universalmente superior, existe a divisão que
+        entrega volume e frequência adequados dentro da rotina real de cada pessoa,
+        seguindo princípios reconhecidos por entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>.
+      </p>
+      <div class="callout">
+        <strong>Dica:</strong> se você não sabe qual formato escolher, comece pelo que é
+        mais sustentável para a sua rotina agora — e ajuste depois. Um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a> avalia isso junto
+        com você e adapta a divisão conforme você evolui.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

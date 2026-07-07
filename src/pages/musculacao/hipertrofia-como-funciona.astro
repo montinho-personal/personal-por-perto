@@ -1,0 +1,283 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    descricao: 'Antes de otimizar hipertrofia, entenda por onde começar e o que esperar nos primeiros meses.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'Depois de entender os princípios da hipertrofia, veja como organizá-los em uma divisão de treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Ajustar volume, técnica e progressão de carga ao seu caso é trabalho de um profissional qualificado.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/hipertrofia-como-funciona';
+const atualizadoEm = '2026-07-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Hipertrofia: como funciona o crescimento muscular', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas séries por semana são necessárias para ganhar massa muscular?',
+    resposta:
+      'Não existe um número mágico, mas revisões sistemáticas sobre volume de treino (como a meta-análise de Schoenfeld, Ogborn e Krieger) costumam indicar que menos de 5 séries semanais por grupo muscular tende a ser um estímulo baixo, entre 5 e 9 séries já produz ganhos relevantes para boa parte das pessoas, e a partir de 10 séries semanais por grupo muscular os resultados tendem a ser ainda melhores, principalmente para quem já treina há mais tempo. O ponto ideal varia de pessoa para pessoa e costuma ser ajustado na prática por um profissional.',
+  },
+  {
+    pergunta: 'Qual a melhor faixa de repetições para hipertrofia?',
+    resposta:
+      'Por muito tempo a faixa de 8 a 12 repetições foi tratada como "a" faixa de hipertrofia, mas estudos mais recentes mostram que faixas bem mais amplas — de cerca de 6 a 30 repetições — podem produzir ganhos de massa muscular semelhantes, desde que as séries sejam levadas para perto da falha. Ou seja: a proximidade do esforço parece pesar mais do que o número exato de repetições.',
+  },
+  {
+    pergunta: 'Preciso treinar até a falha para ganhar massa muscular?',
+    resposta:
+      'Não necessariamente. A literatura atual costuma indicar que treinar deixando de 0 a 3 repetições "na reserva" (perto da falha, mas nem sempre até ela) produz resultados de hipertrofia semelhantes aos de treinar sempre até a falha completa — com a vantagem de gerar menos fadiga acumulada e facilitar a recuperação entre sessões.',
+  },
+  {
+    pergunta: 'Quanto tempo leva para ver resultados de hipertrofia?',
+    resposta:
+      'As primeiras semanas de treino costumam trazer ganhos de força visíveis, mas eles vêm principalmente de adaptação neuromuscular (o sistema nervoso fica mais eficiente em recrutar o músculo), não de aumento real de tamanho. O crescimento muscular perceptível costuma levar mais tempo — geralmente alguns meses de treino consistente, com volume, frequência e recuperação adequados.',
+  },
+  {
+    pergunta: 'Só treino já garante hipertrofia, ou a alimentação importa?',
+    resposta:
+      'Treino é o estímulo, mas sem energia e proteína suficientes o corpo tem menos material para reconstruir o músculo. A orientação nutricional específica (quantidade de proteína, calorias, distribuição de refeições) depende do seu caso e deve ser ajustada com acompanhamento profissional — não existe fórmula genérica que sirva para todo mundo.',
+  },
+];
+
+const title = 'Hipertrofia: como funciona o crescimento muscular';
+const description =
+  'Entenda os princípios estabelecidos da hipertrofia muscular: tensão mecânica, estresse metabólico, volume de treino, faixa de repetições, proximidade da falha e recuperação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Hipertrofia: como funciona o crescimento muscular</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Hipertrofia é o aumento do tamanho das fibras musculares em resposta ao
+      treino de força. Em resumo: o músculo cresce quando é exposto a um
+      estímulo suficiente (tensão mecânica, com apoio de estresse metabólico e
+      dano muscular), recebe volume e frequência adequados ao longo da semana,
+      e tem tempo e nutrientes para se recuperar. Nenhum desses fatores sozinho
+      "garante" resultado — eles trabalham juntos. Abaixo, como cada um funciona.
+    </p>
+
+    <div class="prose">
+      <h2>Os três mecanismos por trás da hipertrofia</h2>
+      <p>
+        A ciência do exercício costuma descrever três mecanismos que, juntos,
+        estimulam o crescimento muscular:
+      </p>
+      <ul>
+        <li>
+          <strong>Tensão mecânica:</strong> a força aplicada sobre o músculo
+          durante o exercício, principalmente sob carga e em amplitude de
+          movimento completa. É considerado o principal motor da hipertrofia.
+        </li>
+        <li>
+          <strong>Estresse metabólico:</strong> o acúmulo de metabólitos
+          durante a série (aquela "queimação" característica de treinos com
+          mais repetições) também contribui para o estímulo de crescimento.
+        </li>
+        <li>
+          <strong>Dano muscular:</strong> microlesões nas fibras causadas pelo
+          treino, especialmente na fase excêntrica do movimento, disparam parte
+          do processo de reconstrução e adaptação — mas dano muscular em
+          excesso atrapalha mais do que ajuda, porque atrasa a recuperação.
+        </li>
+      </ul>
+      <p>
+        Nenhum dos três precisa ser maximizado isoladamente. Um treino de
+        musculação bem estruturado, com sobrecarga progressiva, já gera os três
+        em proporções razoáveis.
+      </p>
+
+      <h2>Sobrecarga progressiva: o princípio central</h2>
+      <p>
+        Se o corpo sempre recebe o mesmo estímulo, ele para de se adaptar. A
+        <strong>sobrecarga progressiva</strong> é o princípio de aumentar,
+        pouco a pouco e ao longo do tempo, a exigência do treino — seja pelo
+        peso levantado, pelo número de repetições ou séries, pela redução do
+        descanso ou pela melhora da execução. É esse acúmulo gradual, e não um
+        único treino "puxado", que sustenta o crescimento muscular no longo
+        prazo.
+      </p>
+
+      <h2>Volume de treino: quantas séries por semana</h2>
+      <p>
+        Volume — o número de séries efetivas realizadas por grupo muscular ao
+        longo da semana — é uma das variáveis mais estudadas em hipertrofia.
+        Revisões sistemáticas que comparam diferentes volumes semanais
+        costumam apontar um padrão: treinos com menos de 5 séries semanais por
+        grupo muscular tendem a gerar um estímulo mais baixo; a faixa de 5 a 9
+        séries semanais já costuma produzir ganhos relevantes para boa parte
+        das pessoas; e a partir de aproximadamente 10 séries semanais por
+        grupo muscular os resultados tendem a ser ainda melhores, sobretudo
+        para quem já treina há mais tempo. Acima disso, o retorno por série
+        adicional tende a diminuir, e volume excessivo sem recuperação
+        suficiente pode até atrapalhar.
+      </p>
+      <p>
+        Frequência também entra nessa conta: revisões sobre o tema costumam
+        indicar que treinar cada grupo muscular pelo menos duas vezes por
+        semana tende a produzir resultados iguais ou superiores a treiná-lo
+        uma única vez, principalmente quando o volume semanal total é
+        parecido. Na prática, isso favorece dividir o volume semanal em mais
+        de uma sessão por grupo muscular, em vez de concentrar tudo em um
+        único treino — como discutimos no guia sobre
+        <a href="/musculacao/abc-ou-full-body">ABC ou Full Body</a>.
+      </p>
+
+      <h2>Faixa de repetições eficaz</h2>
+      <p>
+        A ideia de que hipertrofia só acontece entre 8 e 12 repetições é uma
+        simplificação antiga. Estudos mais recentes mostram que faixas bem
+        mais amplas — algo entre 6 e 30 repetições por série — podem gerar
+        ganhos de massa muscular semelhantes, desde que as séries sejam
+        levadas para perto do esforço máximo. Diretrizes de prescrição de
+        exercício, como as publicadas pela
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>,
+        reconhecem essa flexibilidade: o que parece importar mais não é o
+        número exato de repetições, e sim a proximidade da falha muscular.
+      </p>
+
+      <h2>Proximidade da falha: por que o esforço importa</h2>
+      <p>
+        "Falha muscular" é o ponto em que você não consegue mais completar uma
+        repetição com boa técnica. Treinar sempre até a falha não é
+        obrigatório: a literatura costuma indicar que treinar deixando de 0 a
+        3 repetições "na reserva" (perto da falha, mas nem sempre até ela)
+        produz ganhos de hipertrofia parecidos com os de treinar até a falha
+        completa em todas as séries — com a vantagem de acumular menos fadiga
+        e facilitar a recuperação para o próximo treino.
+      </p>
+
+      <h2>Descanso e recuperação</h2>
+      <p>
+        O músculo não cresce durante o treino — cresce no período de
+        recuperação entre as sessões. Isso envolve descanso entre séries
+        (geralmente alguns minutos, mais para exercícios com cargas altas),
+        intervalo mínimo entre treinar o mesmo grupo muscular novamente (por
+        isso a lógica de dividir o volume ao longo da semana) e sono de
+        qualidade, que tem papel direto na recuperação muscular e hormonal.
+        Treinar todos os dias sem pausa, ou dormir mal de forma recorrente,
+        tende a limitar o ganho de massa muscular mesmo com um treino bem
+        planejado.
+      </p>
+
+      <h2>O papel da alimentação e da proteína</h2>
+      <p>
+        Treino é o estímulo, mas o corpo precisa de matéria-prima para
+        reconstruir o tecido muscular. A literatura de nutrição esportiva
+        geralmente cita uma faixa de ingestão de proteína — algo entre 1,4 e
+        2,0 gramas por quilo de peso corporal por dia, segundo posicionamentos
+        como o da International Society of Sports Nutrition — como suficiente
+        para a maioria das pessoas treinando com foco em hipertrofia. Essa
+        faixa é uma referência geral, não uma prescrição individual: a
+        quantidade ideal para o seu caso depende de fatores como composição
+        corporal, objetivo e rotina, e o ajuste fino é trabalho de um
+        nutricionista ou profissional habilitado.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> hipertrofia é resultado de estímulo
+        (tensão mecânica + volume + frequência adequados, com esforço
+        suficiente) somado a recuperação (descanso, sono e alimentação). Ajustar
+        essas variáveis ao seu nível e à sua rotina é exatamente o trabalho de
+        um <a href={rotas.comoEscolher}>personal trainer qualificado</a>, seguindo
+        princípios reconhecidos por entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

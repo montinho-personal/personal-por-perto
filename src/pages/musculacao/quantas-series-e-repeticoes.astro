@@ -1,0 +1,264 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/abc-ou-full-body',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'Antes de dosar séries e repetições, defina como o volume da semana vai ser distribuído entre os treinos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga',
+    titulo: 'O que é progressão de carga e por que ela importa',
+    descricao: 'Séries e repetições certas só funcionam se a carga evoluir ao longo do tempo. Entenda como.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Quem quer volume, intensidade e progressão ajustados de forma individual encontra aqui a recomendação do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/musculacao/quantas-series-e-repeticoes';
+const atualizadoEm = '2026-07-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Quantas séries e repetições fazer por grupo muscular', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas séries por semana são ideais para cada grupo muscular?',
+    resposta:
+      'Estudos e revisões sobre volume de treino costumam indicar uma faixa de cerca de 10 a 20 séries efetivas por grupo muscular por semana para maximizar hipertrofia em praticantes já adaptados, com ganhos relevantes já a partir de faixas menores (por volta de 5 a 9 séries) para quem está começando. Esses números são referências da literatura, não regras fixas — a resposta individual varia bastante.',
+  },
+  {
+    pergunta: 'Qual a diferença de repetições para força e para hipertrofia?',
+    resposta:
+      'Faixas mais baixas de repetição (por volta de 1 a 6, com cargas mais altas) tendem a favorecer ganhos de força máxima, enquanto faixas moderadas (por volta de 6 a 12) são tradicionalmente associadas à hipertrofia. Pesquisas mais recentes mostram que o crescimento muscular pode ocorrer numa faixa mais ampla de repetições, desde que o esforço perto da falha seja semelhante.',
+  },
+  {
+    pergunta: 'O que é uma "série efetiva"?',
+    resposta:
+      'É uma série realizada com esforço suficiente para gerar estímulo de crescimento — geralmente entendida como próxima da falha muscular (poucas repetições de reserva), e não simplesmente qualquer série feita com pouca intensidade. Contar apenas séries "de verdade" (efetivas) costuma ser mais útil do que contar séries totais.',
+  },
+  {
+    pergunta: 'Fazer mais séries sempre traz mais resultado?',
+    resposta:
+      'Não. A relação entre volume e crescimento muscular tende a ser positiva até certo ponto, mas depois passa a ter retornos decrescentes: cada série extra soma cada vez menos, e volume excessivo sem recuperação adequada pode prejudicar o desempenho e aumentar o risco de lesão. Mais não é automaticamente melhor.',
+  },
+  {
+    pergunta: 'Como saber a quantidade certa de séries para o meu caso?',
+    resposta:
+      'Isso depende de fatores individuais como nível de treino, capacidade de recuperação, sono, alimentação e rotina de vida — por isso a prescrição de volume costuma ser feita (e ajustada ao longo do tempo) por um personal trainer ou profissional de Educação Física, e não copiada de forma genérica.',
+  },
+];
+
+const title = 'Quantas séries e repetições fazer por grupo muscular';
+const description =
+  'Entenda volume de treino, séries efetivas e faixas de repetição para força, hipertrofia e resistência muscular, com base na literatura científica sobre treinamento de força.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Quantas séries e repetições fazer por grupo muscular</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Quantas séries eu preciso fazer?" é uma das perguntas mais comuns de quem treina.
+      Em resumo: o que mais importa não é o número absoluto de séries, e sim o
+      <strong>volume de séries efetivas</strong> (perto da falha) acumulado por grupo
+      muscular ao longo da semana — e esse volume tem uma faixa de retorno positivo, mas
+      também um ponto de retornos decrescentes. Abaixo, o que a literatura sobre
+      treinamento de força costuma indicar.
+    </p>
+
+    <div class="prose">
+      <h2>O que é volume de treino</h2>
+      <p>
+        Volume é, de forma simples, a quantidade total de trabalho feito para um grupo
+        muscular — na prática, o número de séries realizadas por semana para aquele
+        grupo, somando todos os exercícios que o trabalham (diretamente ou como
+        auxiliar). É uma das variáveis mais estudadas na ciência do treinamento de
+        força, ao lado de intensidade (carga) e frequência.
+      </p>
+
+      <h2>Quantas séries por semana, segundo a literatura</h2>
+      <p>
+        Revisões e meta-análises sobre dose-resposta de volume e hipertrofia costumam
+        apontar um padrão parecido: volumes baixos (poucas séries semanais por grupo
+        muscular) já produzem algum ganho de massa muscular, mas a resposta tende a
+        crescer conforme o volume semanal aumenta, até certo ponto. Faixas citadas com
+        frequência na literatura giram em torno de <strong>5 a 9 séries semanais</strong>
+        como um volume mínimo eficaz razoável, e algo como <strong>10 séries ou mais por
+        grupo muscular por semana</strong> como referência para quem busca maximizar
+        hipertrofia — sempre com a ressalva de que a resposta individual varia bastante e
+        que praticantes mais avançados costumam tolerar e precisar de mais volume que
+        iniciantes.
+      </p>
+      <p>
+        Importante: esses números não são um teto rígido nem uma meta obrigatória. São
+        faixas de referência observadas em estudos, geralmente conduzidos em populações e
+        condições específicas — não uma prescrição pronta para qualquer pessoa.
+      </p>
+
+      <h2>Faixas de repetição por objetivo</h2>
+      <p>
+        A ideia tradicional do "continuum de repetições" associa faixas diferentes a
+        objetivos diferentes:
+      </p>
+      <ul>
+        <li>
+          <strong>Força máxima:</strong> repetições baixas (aproximadamente 1 a 6 por
+          série), com cargas mais próximas do máximo que a pessoa consegue levantar.
+        </li>
+        <li>
+          <strong>Hipertrofia (ganho de massa):</strong> repetições moderadas
+          (aproximadamente 6 a 12 por série) são a faixa tradicionalmente mais associada
+          ao crescimento muscular.
+        </li>
+        <li>
+          <strong>Resistência muscular:</strong> repetições altas (12 em diante), com
+          cargas mais leves.
+        </li>
+      </ul>
+      <p>
+        Pesquisas mais recentes, no entanto, mostram que essas fronteiras são menos
+        rígidas do que se pensava: ganhos de hipertrofia semelhantes já foram observados
+        em faixas bem diferentes de repetição, desde que as séries sejam levadas para
+        perto da falha muscular. Ou seja, a faixa de repetição importa, mas o esforço
+        dentro da série importa tanto ou mais.
+      </p>
+
+      <h2>O que é uma "série efetiva"</h2>
+      <p>
+        Nem toda série conta igual. Uma série feita muito longe da falha muscular (com
+        muitas repetições "sobrando" no tanque) tende a gerar bem menos estímulo de
+        crescimento do que uma série levada perto da falha. Por isso o conceito de
+        <strong>série efetiva</strong> ganhou espaço na literatura: em vez de contar
+        qualquer série como volume, conta-se apenas as séries feitas com esforço
+        relevante — geralmente entendidas como as últimas séries de um exercício,
+        próximas da falha, ou séries isoladas feitas com poucas repetições de reserva.
+      </p>
+      <div class="callout">
+        <strong>Na prática:</strong> 4 séries de aquecimento leves não substituem 4
+        séries efetivas perto da falha. Contar volume sem considerar a proximidade da
+        falha pode dar uma falsa sensação de que o treino tem "volume suficiente" quando,
+        na prática, o estímulo real foi bem menor.
+      </div>
+
+      <h2>Como volume, intensidade e frequência se relacionam</h2>
+      <p>
+        As três variáveis não funcionam isoladas. Um volume alto de séries com pouca
+        intensidade (longe da falha) tende a gerar menos estímulo do que um volume mais
+        moderado feito com esforço adequado. E o volume semanal total pode ser
+        distribuído em mais ou menos sessões (frequência) — como discutido no artigo
+        sobre <a href="/musculacao/abc-ou-full-body">ABC ou full body</a>, treinar um
+        grupo muscular mais de uma vez por semana costuma facilitar acumular volume
+        suficiente sem sessões excessivamente longas ou desgastantes.
+      </p>
+
+      <h2>Por que "quanto mais série, melhor" não é verdade</h2>
+      <p>
+        A relação entre volume e crescimento muscular não é uma linha reta sem fim. Depois
+        de certo ponto, cada série adicional tende a somar cada vez menos resultado — são
+        os chamados <strong>retornos decrescentes</strong>. Além disso, volume excessivo
+        sem recuperação, sono e alimentação adequados pode prejudicar a qualidade da
+        execução, aumentar o risco de lesão e, em casos extremos, levar a quadros de
+        overtraining. Mais série não é sinônimo de treino melhor — é sinônimo de treino
+        melhor apenas até onde o corpo consegue recuperar daquele volume.
+      </p>
+
+      <h2>Isso é um ponto de partida, não uma prescrição</h2>
+      <p>
+        Os números citados aqui refletem tendências observadas na literatura científica
+        sobre treinamento de força, alinhadas a diretrizes de entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>, e servem como
+        ponto de referência — não como prescrição individual. A quantidade certa de
+        séries e a faixa de repetição ideal para você dependem do seu nível de treino,
+        da sua recuperação e do seu objetivo. Esse ajuste fino é justamente o papel de um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a>, que acompanha sua
+        evolução e adapta o volume ao longo do tempo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

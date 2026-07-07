@@ -1,0 +1,260 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'Depois de dar os primeiros passos, entenda os princípios que sustentam o ganho de massa muscular.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'Quando a técnica já estiver mais firme, veja como organizar o treino em uma divisão adequada ao seu nível.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Quem está começando ganha tempo e segurança tendo alguém qualificado para corrigir a execução desde o início.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/treino-para-iniciantes';
+const atualizadoEm = '2026-07-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Treino de musculação para iniciantes: como começar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas vezes por semana um iniciante deve treinar?',
+    resposta:
+      'Duas a três sessões semanais de corpo inteiro (full body) costumam ser um bom ponto de partida para quem está começando: frequência suficiente para consolidar técnica e ganhar consistência, sem sobrecarregar quem ainda está se adaptando ao treino.',
+  },
+  {
+    pergunta: 'Por que fico mais forte nas primeiras semanas sem o músculo parecer maior?',
+    resposta:
+      'Porque os primeiros ganhos de força vêm principalmente de adaptação neuromuscular — o sistema nervoso fica mais eficiente em recrutar as fibras musculares que você já tem. O aumento visível de tamanho (hipertrofia) costuma aparecer depois, com treino consistente ao longo de mais tempo.',
+  },
+  {
+    pergunta: 'Posso montar meu próprio treino de musculação sozinho?',
+    resposta:
+      'É possível seguir um treino genérico e evoluir, mas o risco de errar a técnica, escolher exercícios inadequados para o seu corpo ou progredir de forma desorganizada é maior sem orientação. Para quem nunca treinou, ter alguém qualificado revisando a execução nas primeiras semanas costuma acelerar o processo e reduzir o risco de lesão.',
+  },
+  {
+    pergunta: 'Quando devo aumentar a carga nos exercícios?',
+    resposta:
+      'Só depois de dominar a técnica do movimento com uma carga confortável. Aumentar peso antes de controlar a execução é um dos erros mais comuns entre iniciantes, e costuma comprometer tanto a segurança quanto a qualidade do estímulo muscular.',
+  },
+  {
+    pergunta: 'Em quanto tempo aparecem resultados visíveis para quem está começando?',
+    resposta:
+      'Varia de pessoa para pessoa, mas de forma geral: força perceptível nas primeiras semanas, mudanças mais visíveis de composição corporal costumam levar alguns meses de treino consistente, aliado a alimentação adequada e recuperação (sono, descanso entre sessões).',
+  },
+];
+
+const title = 'Treino de musculação para iniciantes: como começar';
+const description =
+  'Guia para quem está começando na musculação: por onde partir, adaptação nas primeiras semanas, frequência recomendada, erros comuns e quando vale ter acompanhamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de musculação para iniciantes: como começar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Começar a treinar musculação costuma gerar mais dúvida do que deveria.
+      Em resumo: comece com um treino simples de corpo inteiro, priorize
+      aprender a técnica antes de aumentar carga, treine com uma frequência
+      que caiba na sua rotina (2 a 3 vezes por semana já funciona bem) e dê
+      tempo para o corpo se adaptar. Abaixo, o passo a passo e os erros mais
+      comuns de quem começa sozinho.
+    </p>
+
+    <div class="prose">
+      <h2>Por onde começar</h2>
+      <p>
+        Para quem nunca treinou, o mais eficiente costuma ser um treino de
+        <strong>corpo inteiro (full body)</strong>, com exercícios básicos que
+        trabalham os principais grupos musculares em cada sessão — agachamento,
+        supino ou flexão, remada, desenvolvimento de ombro, exercícios de
+        core, entre outros. Essa abordagem expõe você a um volume de
+        movimentos variado, ajuda a identificar limitações e cria uma base de
+        técnica antes de qualquer divisão mais específica, como discutimos no
+        guia <a href="/musculacao/abc-ou-full-body">ABC ou Full Body</a>.
+      </p>
+
+      <h2>Adaptação neural: por que a força vem antes do "shape"</h2>
+      <p>
+        Nas primeiras semanas de treino, os ganhos de força não vêm
+        principalmente do aumento do músculo em si, mas de
+        <strong>adaptação neuromuscular</strong>: o sistema nervoso aprende a
+        recrutar mais fibras musculares e a coordenar melhor o movimento. É
+        por isso que é comum um iniciante conseguir levantar mais peso semana
+        a semana logo no início, sem uma mudança visível de tamanho muscular
+        ainda. O crescimento muscular perceptível (hipertrofia) tende a
+        aparecer mais adiante, à medida que o treino se torna consistente ao
+        longo dos meses — veja como esse processo funciona em
+        <a href="/musculacao/hipertrofia-como-funciona">hipertrofia: como funciona o crescimento muscular</a>.
+      </p>
+
+      <h2>Aprenda a técnica antes de aumentar a carga</h2>
+      <p>
+        Um dos erros mais comuns é aumentar o peso antes de dominar a
+        execução do movimento. Técnica ruim reduz o estímulo no músculo-alvo,
+        sobrecarrega articulações e aumenta o risco de lesão — o oposto do que
+        se busca no início. A prioridade nas primeiras semanas deve ser
+        controlar bem o movimento em toda a amplitude, com uma carga
+        confortável, e só depois progredir.
+      </p>
+
+      <h2>Frequência recomendada para quem está começando</h2>
+      <p>
+        Para iniciantes, <strong>2 a 3 sessões semanais de corpo inteiro</strong>
+        costumam ser suficientes para gerar bons resultados, dar tempo de
+        recuperação entre os treinos e ainda caber na rotina de quem está
+        criando o hábito. Diretrizes de prescrição de exercício, como as da
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>,
+        reforçam a importância de treinar cada grupo muscular em dias não
+        consecutivos, dando espaço para a recuperação entre as sessões.
+      </p>
+
+      <h2>Erros comuns de quem começa sozinho</h2>
+      <ul>
+        <li>
+          <strong>Copiar treinos prontos da internet</strong> sem considerar
+          nível, objetivo ou limitações individuais.
+        </li>
+        <li>
+          <strong>Aumentar carga rápido demais</strong>, antes de firmar a
+          técnica, só para "acompanhar" outras pessoas na academia.
+        </li>
+        <li>
+          <strong>Treinar o mesmo grupo muscular todos os dias</strong>, sem
+          dar tempo de recuperação entre as sessões.
+        </li>
+        <li>
+          <strong>Focar só nos grupos "visíveis"</strong> (peito, braço) e
+          negligenciar pernas, costas e core, gerando desequilíbrios.
+        </li>
+        <li>
+          <strong>Parar cedo demais</strong> por esperar resultados rápidos —
+          mudanças visíveis de composição corporal levam tempo, mesmo com
+          treino bem feito.
+        </li>
+      </ul>
+
+      <h2>Quando faz sentido ter acompanhamento de um personal trainer</h2>
+      <p>
+        Treinar sozinho é possível, mas ter um profissional acompanhando as
+        primeiras semanas costuma acelerar o aprendizado da técnica, reduzir o
+        risco de lesão e evitar que erros básicos se tornem hábito. Isso vale
+        principalmente para quem tem alguma limitação física, histórico de
+        dor ou lesão, ou simplesmente não se sente seguro para montar e
+        ajustar o próprio treino. O guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        explica o que avaliar antes de contratar.
+      </p>
+      <div class="callout">
+        <strong>Dica:</strong> mesmo quem prefere treinar por conta própria
+        depois pode se beneficiar de algumas sessões iniciais com um
+        profissional só para aprender a execução correta dos exercícios
+        principais — o investimento costuma se pagar em segurança e
+        consistência.
+      </div>
+
+      <h2>O que esperar nos primeiros meses</h2>
+      <p>
+        Nas primeiras semanas, espere ganhos de força relativamente rápidos
+        (adaptação neural) e um período de adaptação — dor muscular tardia
+        (aquela sensação de "dolorido" no dia seguinte) é comum no início e
+        tende a diminuir com a consistência. Mudanças mais visíveis de
+        composição corporal costumam aparecer depois de alguns meses de
+        treino regular, volume adequado e alimentação alinhada ao objetivo —
+        não há atalho nem prazo garantido, mas consistência é o fator que mais
+        pesa no resultado final.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

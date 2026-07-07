@@ -40,7 +40,7 @@ export const cta = {
 /** Navegação principal. */
 export const navPrincipal = [
   { rotulo: 'Encontrar Personal', url: '/personal-trainer' },
+  { rotulo: 'Musculação', url: '/musculacao' },
   { rotulo: 'Guias', url: '/guias' },
-  { rotulo: 'Como avaliamos', url: '/como-avaliamos' },
   { rotulo: 'Sobre', url: '/sobre' },
 ] as const;

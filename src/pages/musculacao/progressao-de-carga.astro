@@ -1,0 +1,287 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'Entenda a base fisiológica por trás do ganho de massa muscular e por que a progressão de carga é o principal motor desse processo.',
+    tipo: 'Hipertrofia',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'Volume de treino, faixas de repetição por objetivo e o conceito de séries efetivas — a outra metade da equação da progressão.',
+    tipo: 'Volume de treino',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Calibrar a progressão de carga com segurança é mais fácil com alguém acompanhando cada treino e ajustando a carga na hora certa.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/musculacao/progressao-de-carga';
+const atualizadoEm = '2026-07-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Como progredir de carga na musculação', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A cada quanto tempo devo aumentar a carga na musculação?',
+    resposta:
+      'Não existe um prazo fixo em semanas — o sinal para progredir é o desempenho, não o calendário. Quando você completa todas as séries e repetições planejadas com boa técnica e ainda sobra folga nas últimas repetições em duas sessões seguidas, é hora de progredir. Para alguns exercícios isso acontece em poucas semanas; para outros, leva mais tempo.',
+  },
+  {
+    pergunta: 'Qual a diferença entre progressão de carga e sobrecarga progressiva?',
+    resposta:
+      'Sobrecarga progressiva é o princípio: aumentar gradualmente a exigência sobre o músculo ao longo do tempo para continuar gerando adaptação. Progressão de carga (aumentar o peso) é apenas uma das formas de aplicar esse princípio — outras incluem mais repetições, mais séries, menos descanso e melhor execução.',
+  },
+  {
+    pergunta: 'É sempre necessário aumentar o peso para continuar evoluindo?',
+    resposta:
+      'Não. Quando aumentar o peso não é possível ou seguro no momento, dá para progredir de outras formas: adicionando repetições dentro da técnica, incluindo mais uma série, reduzindo o tempo de descanso entre séries, aumentando a amplitude de movimento ou treinando aquele grupo muscular com mais frequência na semana.',
+  },
+  {
+    pergunta: 'O que fazer quando o progresso trava (platô)?',
+    resposta:
+      'Platô é normal e faz parte do processo — o corpo se adapta e para de responder ao mesmo estímulo. Vale reavaliar variáveis como volume total, técnica de execução, recuperação (sono, alimentação, estresse) e variação de exercícios antes de simplesmente forçar mais peso. Um profissional ajuda a identificar qual variável está limitando o avanço.',
+  },
+  {
+    pergunta: 'Progredir de carga muito rápido pode causar lesão?',
+    resposta:
+      'Sim. Aumentar peso antes de dominar a técnica no peso atual costuma comprometer a execução — o corpo compensa com outros músculos ou articulações para completar o movimento, o que eleva o risco de lesão. O aumento deve vir depois que a técnica está consistente, não no lugar dela.',
+  },
+];
+
+const title = 'Como progredir de carga na musculação: guia da sobrecarga progressiva';
+const description =
+  'Entenda o princípio da sobrecarga progressiva, as formas de progredir além do peso, os sinais de que é hora de avançar e como evitar platôs e lesões.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Como progredir de carga na musculação</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Sem progressão, o treino para de gerar resultado — o corpo se adapta ao estímulo
+      e para de responder a ele. Em resumo: a sobrecarga progressiva é o princípio que
+      sustenta o ganho de força e massa muscular, e aumentar o peso é só uma das formas
+      de aplicá-la. Abaixo, como progredir com segurança, sinais de que é hora de avançar
+      e o que fazer quando o progresso trava.
+    </p>
+
+    <div class="prose">
+      <h2>O que é sobrecarga progressiva</h2>
+      <p>
+        A <strong>sobrecarga progressiva</strong> (progressive overload) é o princípio
+        segundo o qual o músculo só continua se adaptando — ficando mais forte e maior —
+        se for exposto a uma exigência cada vez maior do que aquela a que já está
+        acostumado. É por isso que o mesmo treino, com a mesma carga, repetido
+        indefinidamente, deixa de produzir ganhos depois de um tempo: o corpo já deu
+        conta de se adaptar àquele estímulo específico.
+      </p>
+      <p>
+        É esse princípio — mais do que qualquer exercício específico — que funciona como
+        motor central do ganho de força e hipertrofia. Diretrizes de referência em
+        prescrição de exercício, como as da
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a> e da
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>, tratam a
+        progressão gradual de carga como elemento central de qualquer programa de
+        treinamento de força bem estruturado.
+      </p>
+
+      <h2>Progredir vai além de "aumentar o peso"</h2>
+      <p>
+        Aumentar a carga na barra é a forma mais óbvia de progressão, mas não é a única
+        — e nem sempre é a mais adequada em um dado momento. Outras formas de aplicar
+        sobrecarga progressiva:
+      </p>
+      <ul>
+        <li>
+          <strong>Mais repetições</strong> — completar uma ou duas repetições a mais do
+          que na sessão anterior, mantendo a técnica.
+        </li>
+        <li>
+          <strong>Mais séries</strong> — adicionar uma série ao exercício, aumentando o
+          volume total de trabalho para aquele grupo muscular.
+        </li>
+        <li>
+          <strong>Menos tempo de descanso</strong> — reduzir o intervalo entre séries
+          aumenta a densidade do treino (mesmo trabalho em menos tempo).
+        </li>
+        <li>
+          <strong>Melhor execução e amplitude</strong> — ganhar controle e amplitude de
+          movimento completa é, por si só, um aumento de exigência sobre o músculo,
+          mesmo sem mexer no peso.
+        </li>
+        <li>
+          <strong>Mais frequência</strong> — treinar o mesmo grupo muscular uma vez a
+          mais por semana, distribuindo o volume em mais sessões.
+        </li>
+      </ul>
+      <p>
+        Combinar essas variáveis costuma funcionar melhor do que depender só do peso na
+        barra — principalmente para quem já não é mais iniciante e sente que o peso não
+        sobe toda semana como no começo.
+      </p>
+
+      <h2>Sinais de que é hora de progredir</h2>
+      <p>
+        O calendário não é o melhor guia para saber quando aumentar a carga — o
+        desempenho é. Alguns sinais práticos de que o estímulo atual já não é
+        suficientemente desafiador:
+      </p>
+      <ul>
+        <li>
+          Você completa todas as séries e repetições planejadas com boa técnica, sem
+          precisar compensar o movimento.
+        </li>
+        <li>
+          Sobra folga nas últimas repetições — a série deixou de ser difícil no final.
+        </li>
+        <li>
+          Isso se repete em duas sessões seguidas com o mesmo exercício, e não foi só um
+          dia bom.
+        </li>
+      </ul>
+      <p>
+        Uma referência amplamente usada em prescrição de exercício é aumentar a carga em
+        algo entre <strong>2% e 10%</strong> quando esses sinais aparecem — faixa menor
+        para exercícios de grupos musculares pequenos, faixa maior para exercícios de
+        grandes grupos musculares, como agachamento e levantamento terra. O objetivo é
+        um degrau pequeno o bastante para preservar a técnica, mas suficiente para
+        representar um novo desafio.
+      </p>
+
+      <h2>O risco de progredir rápido demais</h2>
+      <p>
+        A pressa em subir o peso é um dos erros mais comuns na musculação. Quando a carga
+        aumenta antes de a técnica estar consistente no peso atual, o corpo tende a
+        compensar o movimento usando outras articulações ou músculos para completar a
+        repetição — o que compromete a execução e eleva o risco de lesão. Progredir
+        rápido demais também prejudica a recuperação: mais carga exige mais tempo e
+        qualidade de descanso entre as sessões daquele grupo muscular.
+      </p>
+      <div class="callout">
+        <strong>Dica:</strong> se a técnica começa a "quebrar" — perder amplitude, usar
+        impulso, tirar postura — é sinal de que o aumento foi grande demais para o
+        momento. Melhor recuar um passo e consolidar a execução antes de tentar de novo.
+      </div>
+
+      <h2>Platô: quando o progresso estaciona</h2>
+      <p>
+        Platôs fazem parte do processo — nenhuma progressão é linear indefinidamente. Ao
+        notar que o desempenho parou de evoluir por várias semanas, vale reavaliar
+        algumas variáveis antes de simplesmente insistir em mais peso:
+      </p>
+      <ul>
+        <li>O volume total de treino está adequado para o objetivo, nem baixo nem excessivo?</li>
+        <li>A técnica de execução se mantém consistente, ou já degradou com o tempo?</li>
+        <li>Sono, alimentação e níveis de estresse estão permitindo recuperação suficiente?</li>
+        <li>Faz sentido variar o exercício, o ângulo ou a divisão de treino para gerar um novo estímulo?</li>
+      </ul>
+      <p>
+        Muitas vezes o platô não é falta de esforço, mas uma variável fora do treino em
+        si — recuperação insuficiente é uma das causas mais comuns.
+      </p>
+
+      <h2>Por que ter acompanhamento profissional ajuda</h2>
+      <p>
+        Calibrar a progressão de carga é um equilíbrio fino: progredir devagar demais
+        deixa resultado na mesa; progredir rápido demais compromete técnica e aumenta o
+        risco de lesão. Um profissional de Educação Física acompanha a execução de perto,
+        identifica o momento certo de avançar em cada exercício e ajusta o plano quando
+        o progresso estaciona — o que é difícil de enxergar sozinho, principalmente para
+        quem está treinando sem muita experiência.
+      </p>
+      <p>
+        Se você já entende os princípios mas quer alguém ajustando a carga e o volume
+        junto com você a cada treino, veja como funciona o
+        <a href={rotas.comoEscolher}>processo de escolher um personal trainer</a> ou
+        conheça o <a href={rotas.montinho}>acompanhamento online recomendado pelo portal</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

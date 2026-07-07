@@ -1,0 +1,119 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const path = '/musculacao';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: path },
+];
+
+const artigos = [
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    desc: 'Por onde começar, adaptação nas primeiras semanas, erros comuns de quem treina sozinho e quando faz sentido ter acompanhamento.',
+    tag: 'Para começar',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    desc: 'Tensão mecânica, estresse metabólico, volume de treino e sobrecarga progressiva explicados de forma acessível.',
+    tag: 'Hipertrofia',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    desc: 'Prós e contras de cada divisão, frequência de estímulo por grupo muscular e para quem cada formato costuma fazer mais sentido.',
+    tag: 'Divisão de treino',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    desc: 'Volume de treino, faixas de repetição por objetivo e o conceito de séries efetivas.',
+    tag: 'Volume de treino',
+  },
+  {
+    url: '/musculacao/progressao-de-carga',
+    titulo: 'Como progredir de carga na musculação',
+    desc: 'O princípio da sobrecarga progressiva, formas de progredir além do peso e como evitar platôs e lesões.',
+    tag: 'Progressão',
+  },
+];
+
+const title = 'Musculação: guias sobre treino, hipertrofia e progressão de carga';
+const description =
+  'Conteúdos sobre musculação com base na ciência do exercício: como começar, hipertrofia, divisão de treino, volume de séries e progressão de carga.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema('Artigos sobre musculação', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <header class="section-sm tint">
+    <div class="container">
+      <p class="eyebrow">Conteúdo editorial</p>
+      <h1>Musculação</h1>
+      <p class="lead" style="max-width: 60ch">
+        Conteúdos práticos sobre treino de musculação, com base em princípios
+        estabelecidos da ciência do exercício — para treinar melhor, sozinho ou
+        com acompanhamento profissional.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {
+          artigos.map((a) => (
+            <a class="card card-hover guide" href={a.url}>
+              <span class="pill">{a.tag}</span>
+              <h2>{a.titulo}</h2>
+              <p>{a.desc}</p>
+              <span class="guide-link">Ler artigo →</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="muted small" style="margin-top: var(--sp-6)">
+        Quer decidir se vale a pena contratar acompanhamento? Veja os guias
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> e
+        <a href={rotas.quantoCusta}>quanto custa um personal trainer</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .guide:hover {
+    text-decoration: none;
+  }
+  .guide h2 {
+    font-size: var(--step-2);
+  }
+  .guide p {
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .guide-link {
+    font-weight: 700;
+    color: var(--brand-600);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

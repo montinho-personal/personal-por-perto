@@ -48,6 +48,7 @@ export const rotas = {
   montinho: '/montinho-personal',
   comoAvaliamos: '/como-avaliamos',
   sobre: '/sobre',
+  musculacao: '/musculacao',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */
