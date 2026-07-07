@@ -1,19 +1,18 @@
 ---
+/**
+ * Rodapé global. Estrutura em blocos semânticos (Encontrar Personal,
+ * Localidades populares, Conteúdos, Institucional), cada um em <details>
+ * nativo: colapsável no mobile (sem JS), sempre expandido no desktop via
+ * CSS, e com os links sempre presentes no DOM independentemente do estado
+ * visual — nada é ocultado do crawler.
+ */
 import Logo from './Logo.astro';
 import { site } from '../data/site';
 import { montinho } from '../data/montinho';
-import { estados } from '../data/estados';
+import { cidadesPopularesFooter } from '../data/destaques';
 import { formatMonthYear } from '../lib/slug';
 
 const anoAtual = 2026;
-// Amostra nacional fixa no rodapé (uma cidade por região) — não rotaciona.
-const principais = [
-  { slug: 'sao-paulo-sp', nome: 'São Paulo', prep: 'em' },
-  { slug: 'recife-pe', nome: 'Recife', prep: 'em' },
-  { slug: 'manaus-am', nome: 'Manaus', prep: 'em' },
-  { slug: 'porto-alegre-rs', nome: 'Porto Alegre', prep: 'em' },
-  { slug: 'belem-pa', nome: 'Belém', prep: 'em' },
-];
 ---
 
 <footer class="site-footer">
@@ -31,11 +30,19 @@ const principais = [
       </p>
     </div>
 
-    <nav class="footer-col" aria-label="Encontrar personal">
-      <h2>Encontrar Personal</h2>
+    <details class="footer-acc" open>
+      <summary>Encontrar Personal</summary>
+      <ul>
+        <li><a href="/personal-trainer">Ver todas as cidades</a></li>
+        <li><a href="/montinho-personal">Acompanhamento online (todo o Brasil)</a></li>
+      </ul>
+    </details>
+
+    <details class="footer-acc" open>
+      <summary>Localidades populares</summary>
       <ul>
         {
-          principais.map((c) => (
+          cidadesPopularesFooter.map((c) => (
             <li>
               <a href={`/personal-trainer/${c.slug}`}>Personal Trainer {c.prep} {c.nome}</a>
             </li>
@@ -43,20 +50,10 @@ const principais = [
         }
         <li><a href="/personal-trainer"><strong>Ver todas as cidades →</strong></a></li>
       </ul>
-    </nav>
+    </details>
 
-    <nav class="footer-col" aria-label="Estados e guias">
-      <h2>Estados</h2>
-      <ul>
-        {
-          estados.map((e) => (
-            <li>
-              <a href={`/estado/${e.slug}`}>Personal Trainer no {e.nome}</a>
-            </li>
-          ))
-        }
-      </ul>
-      <h2 class="mt">Conteúdos</h2>
+    <details class="footer-acc" open>
+      <summary>Conteúdos</summary>
       <ul>
         <li><a href="/guias/como-escolher-personal-trainer">Como escolher um personal</a></li>
         <li><a href="/guias/quanto-custa-personal-trainer">Quanto custa um personal</a></li>
@@ -68,10 +65,10 @@ const principais = [
         <li><a href="/emagrecimento">Todos os conteúdos de emagrecimento</a></li>
         <li><a href="/guias">Todos os guias</a></li>
       </ul>
-    </nav>
+    </details>
 
-    <nav class="footer-col" aria-label="Institucional">
-      <h2>Institucional</h2>
+    <details class="footer-acc" open>
+      <summary>Institucional</summary>
       <ul>
         <li><a href="/sobre">Sobre o Personal por Perto</a></li>
         <li><a href="/como-avaliamos">Como avaliamos</a></li>
@@ -80,7 +77,7 @@ const principais = [
         <li><a href="/privacidade">Política de Privacidade</a></li>
         <li><a href={`mailto:${site.email}`}>Contato</a></li>
       </ul>
-    </nav>
+    </details>
   </div>
 
   <div class="container footer-bottom">
@@ -99,10 +96,10 @@ const principais = [
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
     gap: var(--sp-6);
   }
-  @media (max-width: 820px) {
+  @media (max-width: 980px) {
     .footer-grid {
       grid-template-columns: 1fr 1fr;
     }
@@ -120,17 +117,44 @@ const principais = [
   .footer-note {
     color: #9aa1ab;
   }
-  .footer-col h2 {
+
+  /* Acordeão dos blocos de navegação — <details> nativo: sem JS, sem
+     dependências, links sempre no DOM. Aberto por padrão (zero CLS) em
+     qualquer viewport; no desktop, o toggle é desabilitado via CSS para
+     manter a aparência de colunas fixas. */
+  .footer-acc {
+    border: 0;
+  }
+  .footer-acc summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    cursor: pointer;
+    list-style: none;
     font-size: var(--step-0);
+    font-weight: 700;
     color: #fff;
     margin-bottom: var(--sp-3);
+    padding-block: 0.25rem;
   }
-  .footer-col h2.mt {
-    margin-top: var(--sp-5);
+  .footer-acc summary::-webkit-details-marker {
+    display: none;
   }
-  .footer-col ul {
+  .footer-acc summary::after {
+    content: '+';
+    font-weight: 400;
+    font-size: var(--step-1);
+    color: #9aa1ab;
+    flex-shrink: 0;
+  }
+  .footer-acc[open] summary::after {
+    content: '–';
+  }
+  .footer-acc ul {
     list-style: none;
     padding: 0;
+    margin: 0;
     display: grid;
     gap: 0.55rem;
   }
@@ -140,6 +164,29 @@ const principais = [
   .site-footer a:hover {
     color: #fff;
   }
+  @media (min-width: 981px) {
+    .footer-acc summary {
+      cursor: default;
+      pointer-events: none;
+      margin-bottom: var(--sp-3);
+    }
+    .footer-acc summary::after {
+      display: none;
+    }
+  }
+  @media (max-width: 980px) {
+    .footer-acc {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-block: var(--sp-4);
+    }
+    .footer-acc summary {
+      margin-bottom: 0;
+    }
+    .footer-acc[open] summary {
+      margin-bottom: var(--sp-3);
+    }
+  }
+
   .footer-bottom {
     margin-top: var(--sp-7);
     padding-block: var(--sp-4);

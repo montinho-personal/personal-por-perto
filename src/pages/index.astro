@@ -12,13 +12,10 @@ import { estados } from '../data/estados';
 import { site } from '../data/site';
 import { formatNumber } from '../lib/slug';
 import { faqSchema, itemListSchema } from '../lib/schema';
+import { cidadesDestaqueHome } from '../data/destaques';
 
 // Destaque diverso (grandes cidades de várias regiões), com fallback.
-const slugsDestaque = [
-  'sao-paulo-sp', 'rio-de-janeiro-rj', 'belo-horizonte-mg', 'brasilia-df',
-  'curitiba-pr', 'goiania-go', 'porto-alegre-rs', 'salvador-ba', 'florianopolis-sc',
-];
-const destaque = slugsDestaque
+const destaque = cidadesDestaqueHome
   .map((s) => getCidade(s))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
 const destaqueFinal = destaque.length >= 6 ? destaque : cidades.slice(0, 9);
