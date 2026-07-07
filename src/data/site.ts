@@ -5,7 +5,7 @@ export const site = {
   nomeCompleto: 'Personal por Perto — Guia de Personal Trainers por Cidade',
   dominio: 'https://www.personalporperto.com.br',
   descricao:
-    'O guia editorial independente que ajuda você a encontrar e escolher um personal trainer na sua cidade. Panorama local, faixas de preço, tipos de treino e como avaliar o profissional certo.',
+    'Portal editorial independente sobre personal trainer no Brasil: ajuda você a encontrar profissionais por cidade e a escolher com segurança, com panorama local, faixas de preço e guias práticos de avaliação.',
   slogan: 'O guia de quem leva o treino a sério.',
   idioma: 'pt-BR',
   locale: 'pt_BR',
@@ -39,9 +39,8 @@ export const cta = {
 
 /** Navegação principal. */
 export const navPrincipal = [
-  { rotulo: 'Cidades', url: '/personal-trainer' },
+  { rotulo: 'Encontrar Personal', url: '/personal-trainer' },
   { rotulo: 'Guias', url: '/guias' },
-  { rotulo: 'Como escolher', url: '/guias/como-escolher-personal-trainer' },
-  { rotulo: 'Quanto custa', url: '/guias/quanto-custa-personal-trainer' },
+  { rotulo: 'Como avaliamos', url: '/como-avaliamos' },
   { rotulo: 'Sobre', url: '/sobre' },
 ] as const;

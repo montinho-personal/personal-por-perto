@@ -79,8 +79,8 @@ const schema = [
 ---
 
 <Base
-  title="Personal por Perto — guia de Personal Trainers por cidade"
-  description="Guia independente para encontrar e escolher um personal trainer na sua cidade: panorama local, faixas de preço e como avaliar o profissional certo."
+  title="Personal por Perto — Encontre um Personal Trainer e Escolha com Segurança"
+  description="Portal editorial independente sobre personal trainer no Brasil: encontre profissionais por cidade, compare preços e use guias práticos para decidir com segurança."
   path="/"
   schema={schema}
 >
@@ -88,12 +88,13 @@ const schema = [
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Guia editorial independente</p>
-        <h1>Encontre o personal trainer certo na sua cidade</h1>
+        <p class="eyebrow">Portal editorial independente</p>
+        <h1>Encontre um personal trainer. Escolha com segurança.</h1>
         <p class="hero-lead">
-          Dados locais reais, faixas de preço transparentes e critérios claros para
-          você escolher com segurança — do treino na academia ao acompanhamento
-          online para todo o Brasil.
+          O Personal por Perto reúne busca local de profissionais em centenas de
+          cidades brasileiras e guias práticos — preços, critérios de avaliação e
+          como decidir — para você escolher com informação real, do treino
+          presencial ao acompanhamento online.
         </p>
         <div class="hero-actions">
           <a
@@ -192,13 +193,38 @@ const schema = [
     <div class="container">
       <div class="sec-head">
         <div>
-          <p class="eyebrow">Diretório</p>
-          <h2>Guias por cidade</h2>
+          <p class="eyebrow">Cobertura nacional</p>
+          <h2>Encontre um personal trainer na sua cidade</h2>
         </div>
         <a class="btn btn-ghost" href="/personal-trainer">Ver todas as cidades →</a>
       </div>
       <div class="grid grid-3" style="margin-top: var(--sp-5)">
         {destaqueFinal.map((c) => (<CityCard cidade={c} />))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIAS -->
+  <section class="section-sm tint">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Guias práticos</p>
+          <h2>Aprenda a decidir com segurança</h2>
+        </div>
+        <a class="btn btn-ghost" href="/guias">Ver todos os guias →</a>
+      </div>
+      <div class="grid grid-2" style="margin-top: var(--sp-5)">
+        <a class="card feature guide-card" href="/guias/como-escolher-personal-trainer">
+          <div class="feat-ico">✅</div>
+          <h3>Como escolher um personal trainer</h3>
+          <p>Registro profissional, especialização, avaliação inicial, método e sinais de alerta — o passo a passo completo.</p>
+        </a>
+        <a class="card feature guide-card" href="/guias/quanto-custa-personal-trainer">
+          <div class="feat-ico">💸</div>
+          <h3>Quanto custa um personal trainer</h3>
+          <p>Faixas de preço por formato (avulsa, mensal e online) e o que influencia o valor em cada cidade.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -236,12 +262,11 @@ const schema = [
         </ul>
       </div>
       <div class="card guides-card">
-        <h3>Guias essenciais</h3>
+        <h3>Saiba mais</h3>
         <ul class="guides-list">
-          <li><a href="/guias/como-escolher-personal-trainer">Como escolher um personal trainer</a></li>
-          <li><a href="/guias/quanto-custa-personal-trainer">Quanto custa um personal trainer</a></li>
           <li><a href="/sobre">Sobre o portal</a></li>
           <li><a href="/como-avaliamos">Como avaliamos</a></li>
+          <li><a href="/guias">Todos os guias</a></li>
         </ul>
       </div>
     </div>
@@ -372,6 +397,19 @@ const schema = [
     color: var(--ink-soft);
     font-size: var(--step-0);
     line-height: 1.6;
+  }
+  .guide-card {
+    display: block;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .guide-card:hover {
+    border-color: var(--brand-700);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+  }
+  .guide-card h3 {
+    color: var(--ink);
   }
 
   .step {
