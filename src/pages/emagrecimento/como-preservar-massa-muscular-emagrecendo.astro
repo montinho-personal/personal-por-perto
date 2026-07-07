@@ -1,0 +1,274 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'Entenda o conceito por trás do emagrecimento e por que um déficit agressivo demais tende a custar massa muscular.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer',
+    titulo: 'Musculação ou cardio para emagrecer: o que priorizar',
+    descricao: 'Veja por que o treino de força tem papel específico na preservação de massa magra durante a perda de peso.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'Um guia prático de como estruturar o treino de força com foco em emagrecimento sem abrir mão do músculo.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: rotas.musculacao,
+    titulo: 'Musculação: guias completos',
+    descricao: 'Princípios de treino de força que também sustentam a preservação muscular durante o emagrecimento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Ajustar treino e déficit calórico ao seu caso, sem perder músculo pelo caminho, é trabalho de um profissional qualificado.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/como-preservar-massa-muscular-emagrecendo';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento' },
+  { nome: 'Como preservar massa muscular durante o emagrecimento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Emagrecer sempre significa perder um pouco de massa muscular também?',
+    resposta:
+      'Existe uma tendência natural de perder alguma massa magra junto com a gordura durante um déficit calórico, porque o corpo não "escolhe" queimar só gordura. Mas essa perda não é fixa nem inevitável em grande proporção: pesquisas mostram que, com treino de força e proteína adequada, é possível emagrecer preservando a maior parte da massa muscular, e em alguns casos até ganhar um pouco de músculo mesmo em déficit.',
+  },
+  {
+    pergunta: 'Só fazer cardio é suficiente para não perder músculo emagrecendo?',
+    resposta:
+      'Não costuma ser. Cardio ajuda a aumentar o gasto calórico, mas é o treino de força que sinaliza ao corpo que a massa muscular precisa ser mantida. Revisões sobre o tema apontam que combinar treino de força com déficit calórico preserva ou até aumenta a massa magra, enquanto déficits sem treino de força tendem a mostrar queda de massa magra junto com a perda de peso.',
+  },
+  {
+    pergunta: 'Quanto de proteína preciso comer para não perder massa muscular emagrecendo?',
+    resposta:
+      'A literatura de nutrição esportiva costuma indicar que, durante um déficit calórico, uma ingestão de proteína mais alta do que a usada fora de dieta tende a ajudar a preservar massa magra, especialmente em quem treina força. O número exato varia com peso, composição corporal, nível de treino e outros fatores — por isso não existe uma quantidade fechada que sirva para todo mundo, e o ideal é ajustar isso com um nutricionista.',
+  },
+  {
+    pergunta: 'Como sei se estou perdendo massa magra e não só gordura?',
+    resposta:
+      'Sinais de alerta incluem perda de força nos treinos (cargas que antes eram fáceis ficando difíceis), sensação constante de fraqueza ou fadiga, perda de peso muito rápida (bem acima do que costuma ser considerado sustentável) e, quando há acesso a métodos de avaliação corporal, queda desproporcional de massa magra em relação à gordura. Na dúvida, vale reavaliar o déficit e a ingestão de proteína com acompanhamento profissional.',
+  },
+  {
+    pergunta: 'Emagrecer rápido é sempre ruim para a massa muscular?',
+    resposta:
+      'Não é uma regra absoluta, mas déficits muito agressivos aumentam o risco de perda de massa magra, porque o corpo tende a "economizar" energia de formas que incluem reduzir tecido muscular. Um ritmo de emagrecimento mais moderado, combinado com treino de força e proteína adequada, tende a preservar melhor o músculo — o ritmo ideal para cada pessoa depende de avaliação individual.',
+  },
+];
+
+const title = 'Como preservar massa muscular durante o emagrecimento';
+const description =
+  'Entenda por que o emagrecimento pode levar junto massa muscular, o papel do treino de força e da proteína para evitar isso, e os sinais de que a perda de massa magra está acontecendo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Como preservar massa muscular durante o emagrecimento</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Emagrecer sem cuidado pode levar embora não só gordura, mas também
+      massa muscular — e isso muda o resultado final: o peso desce na
+      balança, mas o corpo fica mais "flácido" e o metabolismo tende a
+      desacelerar. A boa notícia é que essa perda de massa magra não é
+      inevitável em grande proporção. Ela depende principalmente de três
+      fatores que estão sob seu controle, com orientação adequada: manter o
+      treino de força, cuidar da ingestão de proteína e não exagerar na
+      intensidade do déficit calórico.
+    </p>
+
+    <div class="prose">
+      <h2>Por que emagrecer pode custar massa muscular, e não só gordura</h2>
+      <p>
+        Quando o corpo recebe menos energia do que gasta, ele precisa buscar
+        essa diferença em algum lugar — e a fonte não é só o tecido adiposo.
+        Sem os estímulos certos, uma parte relevante do peso perdido pode vir
+        de massa magra (músculo, glicogênio muscular e água associada a ele).
+        Estudos sobre composição corporal durante a perda de peso mostram que
+        essa proporção varia bastante conforme o contexto, mas que déficits
+        mal conduzidos — sem treino de força e sem proteína suficiente —
+        tendem a aumentar a fatia de massa magra na perda total de peso.
+        Preservar músculo durante o emagrecimento não é só uma questão
+        estética: massa muscular sustenta o metabolismo, a força funcional e
+        a qualidade do resultado a longo prazo.
+      </p>
+
+      <h2>O papel do treino de força (não só cardio)</h2>
+      <p>
+        Um erro comum é achar que emagrecimento pede só exercício aeróbico.
+        Cardio contribui para o gasto calórico, mas é o treino de força que
+        dá ao corpo um motivo para manter a massa muscular mesmo com menos
+        energia disponível — é o estímulo de tensão mecânica que "avisa" o
+        organismo que aquele tecido continua sendo necessário. Revisões
+        sistemáticas comparando diferentes estratégias de exercício durante
+        déficit calórico costumam apontar que a combinação de treino de força
+        com déficit calórico preserva, e em alguns casos até aumenta, a massa
+        magra — enquanto déficits sem treino de força tendem a mostrar perda
+        de massa magra proporcionalmente maior. Isso reforça por que, mesmo
+        com o objetivo de emagrecer, manter (ou começar) um treino de
+        musculação estruturado tende a fazer diferença no resultado final,
+        como discutimos também no guia sobre
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer">musculação ou cardio para emagrecer</a>.
+      </p>
+
+      <h2>Proteína: por que a quantidade costuma importar mais em déficit</h2>
+      <p>
+        Durante um déficit calórico, o corpo tem menos energia disponível de
+        forma geral, o que torna o "material de construção" muscular ainda
+        mais relevante. A literatura de nutrição esportiva — incluindo
+        posicionamentos como o da International Society of Sports Nutrition —
+        costuma indicar que, em déficit calórico, uma faixa de ingestão de
+        proteína mais alta do que a recomendada fora de dieta tende a ajudar
+        a preservar massa magra, principalmente em quem treina força
+        regularmente. Não existe, porém, um número fechado que sirva para
+        todo mundo: a quantidade ideal depende do seu peso, composição
+        corporal, nível de treino e outros fatores individuais, e ajustar
+        isso é trabalho de um nutricionista.
+      </p>
+
+      <h2>Por que um déficit calórico agressivo demais tende a sair caro</h2>
+      <p>
+        Cortar calorias de forma muito agressiva costuma parecer um atalho
+        para resultados mais rápidos, mas tende a jogar contra a preservação
+        muscular. Com pouquíssima energia disponível, o corpo tem menos
+        margem para manter tecido metabolicamente "caro" como o músculo, e a
+        tendência é que uma fatia maior do peso perdido venha de massa magra.
+        Déficits muito agressivos também costumam ser mais difíceis de
+        sustentar por tempo suficiente, o que favorece o efeito sanfona. Um
+        ritmo mais moderado de perda de peso, combinado com treino de força e
+        proteína adequada, tende a ser mais sustentável e a preservar melhor
+        o músculo — falamos mais sobre esse equilíbrio no guia sobre
+        <a href="/emagrecimento/deficit-calorico-como-funciona">déficit calórico: como funciona para emagrecer</a>.
+      </p>
+
+      <h2>Sinais de que a perda de massa magra pode estar acontecendo</h2>
+      <p>
+        Alguns sinais valem atenção durante o processo de emagrecimento:
+      </p>
+      <ul>
+        <li>
+          <strong>Perda de força nos treinos:</strong> cargas que antes eram
+          tranquilas passam a ficar difíceis, sem relação com um dia ruim
+          isolado.
+        </li>
+        <li>
+          <strong>Fadiga constante:</strong> cansaço persistente, mesmo fora
+          do treino, pode indicar déficit calórico severo demais.
+        </li>
+        <li>
+          <strong>Perda de peso muito rápida:</strong> quedas acentuadas na
+          balança em pouco tempo tendem a vir acompanhadas de mais perda de
+          massa magra proporcional.
+        </li>
+        <li>
+          <strong>Mudança na composição corporal sem o resultado esperado:</strong>
+          quando há acesso a métodos de avaliação de composição corporal, uma
+          queda desproporcional de massa magra em relação à gordura é sinal
+          de que algo no processo precisa de ajuste.
+        </li>
+      </ul>
+      <div class="callout">
+        <strong>Resumindo:</strong> preservar massa muscular durante o
+        emagrecimento depende de manter o treino de força, cuidar da
+        ingestão de proteína e evitar déficits calóricos agressivos demais.
+        Ajustar essas três variáveis ao seu caso — treino com um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a> e
+        alimentação com um nutricionista — é o que torna o processo
+        sustentável, seguindo princípios reconhecidos por entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        e a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

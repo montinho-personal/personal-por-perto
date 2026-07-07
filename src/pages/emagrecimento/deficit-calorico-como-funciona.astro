@@ -1,0 +1,263 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'Depois de entender o déficit calórico, veja como evitar que ele leve embora massa muscular junto com a gordura.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento',
+    titulo: 'Platô de emagrecimento: por que acontece e o que fazer',
+    descricao: 'Entenda por que o resultado do déficit calórico costuma estagnar com o tempo e como lidar com isso.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'Veja como o treino de força se encaixa na equação do déficit calórico, além do gasto de calorias.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: rotas.musculacao,
+    titulo: 'Musculação: guias completos',
+    descricao: 'O exercício estruturado é uma das variáveis do gasto calórico total — entenda os princípios de treino de força.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Montinho Personal',
+    descricao: 'Ajustar treino e déficit calórico à sua rotina, sem exageros, é trabalho de acompanhamento profissional.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/deficit-calorico-como-funciona';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento' },
+  { nome: 'Déficit calórico: como funciona para emagrecer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é déficit calórico, na prática?',
+    resposta:
+      'É a situação em que o corpo gasta mais energia (calorias) do que recebe pela alimentação em um período de tempo. Para cobrir essa diferença, o organismo passa a usar reservas de energia armazenadas, principalmente gordura corporal — e é esse mecanismo que sustenta a perda de peso.',
+  },
+  {
+    pergunta: 'Qual o número certo de calorias para o meu déficit?',
+    resposta:
+      'Não existe um número universal. O gasto calórico total depende de fatores individuais como peso, altura, idade, sexo, composição corporal, nível de atividade e até genética, e a forma correta de estimar isso — e de definir quanto reduzir com segurança — é através de avaliação nutricional individual, não de fórmulas genéricas de internet.',
+  },
+  {
+    pergunta: 'Déficit calórico agressivo emagrece mais rápido, então é melhor?',
+    resposta:
+      'Nem sempre. Déficits muito agressivos tendem a ser mais difíceis de sustentar por tempo suficiente e aumentam o risco de perda de massa muscular junto com a gordura. Um déficit mais moderado, mantido de forma consistente, costuma trazer resultados mais sólidos e sustentáveis do que um corte drástico e de curta duração.',
+  },
+  {
+    pergunta: 'O que é NEAT e por que ele importa para o déficit calórico?',
+    resposta:
+      'NEAT (Non-Exercise Activity Thermogenesis) é o gasto calórico de tudo o que você faz no dia a dia fora do treino estruturado — caminhar, subir escada, ficar em pé, tarefas domésticas, até se mexer mais ou menos sem perceber. Pesquisas mostram que o NEAT pode representar uma fatia considerável do gasto calórico total e variar bastante entre pessoas de peso parecido, o que o torna uma peça relevante (e muitas vezes esquecida) da equação do déficit.',
+  },
+  {
+    pergunta: 'Só treinar, sem ajustar a alimentação, é suficiente para gerar déficit calórico?',
+    resposta:
+      'Raramente. O exercício aumenta o gasto calórico, mas costuma ser mais fácil consumir de volta em alimentação a energia gasta em um treino do que muita gente imagina. Para a maioria das pessoas, o déficit calórico sustentável depende de ajustar também o lado da ingestão alimentar — o que reforça a importância de olhar para dieta e treino juntos, com orientação profissional.',
+  },
+];
+
+const title = 'Déficit calórico: como funciona para emagrecer';
+const description =
+  'Entenda o conceito de balanço energético por trás do emagrecimento, por que o déficit calórico é a base fisiológica da perda de peso, e o papel do NEAT e do exercício estruturado nessa equação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Déficit calórico: como funciona para emagrecer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Déficit calórico é o princípio fisiológico por trás de todo processo de
+      emagrecimento: gastar mais energia do que se consome, para que o corpo
+      busque a diferença em suas reservas. É um conceito simples de entender,
+      mas que costuma ser mal aplicado — seja por tentar acertar um número
+      "mágico" sem avaliação individual, seja por cortar calorias de forma
+      agressiva demais. Abaixo, como o balanço energético funciona e o que
+      realmente entra nessa conta.
+    </p>
+
+    <div class="prose">
+      <h2>O que é balanço energético</h2>
+      <p>
+        O corpo funciona, de forma simplificada, como uma equação de energia:
+        de um lado entram as calorias consumidas pela alimentação; do outro
+        saem as calorias gastas para manter funções básicas (respirar, fazer
+        o coração bater, digerir), se mover ao longo do dia e praticar
+        exercício. Quando a energia que entra é menor do que a que sai, o
+        corpo está em déficit calórico e tende a usar reservas armazenadas —
+        principalmente gordura corporal — para cobrir essa diferença. Quando
+        entra mais do que sai, o corpo tende a armazenar o excedente. Esse
+        equilíbrio (ou desequilíbrio) entre entrada e saída de energia é a
+        base fisiológica de por que alguém emagrece, mantém o peso ou ganha
+        peso ao longo do tempo.
+      </p>
+
+      <h2>Por que "definir o número certo" não é tão simples</h2>
+      <p>
+        É tentador procurar uma fórmula pronta que diga exatamente quantas
+        calorias comer por dia. O problema é que o gasto calórico total de
+        cada pessoa depende de uma combinação de fatores individuais — peso,
+        altura, idade, sexo, composição corporal, nível de atividade,
+        histórico de dietas, entre outros — que fórmulas genéricas não
+        capturam com precisão. Por isso, definir o tamanho do déficit e como
+        distribuí-lo na alimentação é trabalho de avaliação nutricional
+        individual, não algo que se resolve com uma conta padrão. Diretrizes
+        de organizações como a
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        reforçam que estratégias de controle de peso funcionam melhor quando
+        combinam orientação alimentar individualizada com atividade física
+        regular, e não um número de calorias isolado.
+      </p>
+
+      <h2>Déficit moderado x déficit agressivo</h2>
+      <p>
+        Nem todo déficit calórico é igual. Um déficit moderado — mais
+        conservador em relação ao gasto total — tende a ser mais fácil de
+        sustentar por semanas ou meses, o que na prática costuma pesar mais
+        no resultado final do que a velocidade de perda de peso em uma
+        semana isolada. Já um déficit muito agressivo, além de ser mais
+        difícil de manter por tempo suficiente (o que favorece o efeito
+        sanfona), tende a aumentar o risco de o corpo "buscar" energia
+        também em massa muscular, e não só em gordura — um tema que
+        detalhamos no guia sobre
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo">como preservar massa muscular durante o emagrecimento</a>.
+        Isso não significa que déficits maiores sejam sempre errados em
+        qualquer contexto, mas sim que o tamanho ideal do déficit é uma
+        decisão que deve ser calibrada com acompanhamento profissional, e não
+        escolhida pelo maior corte possível.
+      </p>
+
+      <h2>O papel do NEAT (gasto de atividades do dia a dia)</h2>
+      <p>
+        Uma parte do lado "gasto" da equação que costuma passar despercebida
+        é o NEAT — sigla para Non-Exercise Activity Thermogenesis, ou seja, o
+        gasto calórico de tudo que não é treino estruturado nem funções
+        básicas do corpo: caminhar, subir escada, ficar em pé em vez de
+        sentado, fazer tarefas domésticas, se mexer mais ao longo do dia.
+        Pesquisas sobre o tema mostram que o NEAT pode representar uma fatia
+        considerável do gasto calórico total e variar bastante entre pessoas
+        de peso e rotina parecidos — o que ajuda a explicar por que duas
+        pessoas com hábitos de treino semelhantes podem ter resultados
+        diferentes no déficit calórico. Aumentar a movimentação natural do
+        dia a dia é, para muita gente, uma alavanca tão relevante quanto o
+        treino estruturado.
+      </p>
+
+      <h2>Exercício estruturado: uma peça da equação, não a equação inteira</h2>
+      <p>
+        O treino — seja musculação, cardio ou uma combinação dos dois —
+        contribui para o lado do gasto calórico e traz benefícios que vão
+        além do déficit em si, como preservar massa muscular e melhorar
+        condicionamento. Mas, isoladamente, o exercício raramente é
+        suficiente para gerar um déficit calórico consistente: é comum
+        subestimar quanto se gasta em um treino e, sem perceber, compensar
+        essa energia na alimentação. Por isso "só treinar", sem olhar também
+        para o lado da ingestão alimentar, tende a não ser suficiente para a
+        maioria das pessoas que busca emagrecer — o exercício funciona melhor
+        como parte de uma estratégia que inclui ajuste alimentar, não como
+        substituto dele.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> déficit calórico é o princípio de gastar
+        mais energia do que se consome, mas o tamanho ideal desse déficit,
+        como distribuí-lo na alimentação e como equilibrar NEAT, exercício
+        estruturado e ingestão alimentar depende de fatores individuais.
+        Ajustar essas variáveis ao seu caso — treino com um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a> e
+        alimentação com um nutricionista — segue princípios reconhecidos por
+        entidades como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,119 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const path = '/emagrecimento';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: path },
+];
+
+const artigos = [
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    desc: 'Por que treino de força ajuda no emagrecimento além de "queimar calorias" — gasto pós-treino, massa magra e metabolismo.',
+    tag: 'Musculação e emagrecimento',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer',
+    titulo: 'Musculação ou cardio: o que emagrece mais?',
+    desc: 'Uma comparação honesta entre os dois formatos, e por que combiná-los costuma funcionar melhor do que escolher só um.',
+    tag: 'Comparativo',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    desc: 'O conceito de balanço energético explicado de forma didática, sem prescrever números — a base fisiológica do emagrecimento.',
+    tag: 'Fundamentos',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    desc: 'Por que perder peso sem cuidado pode custar massa magra, e o papel do treino de força e da proteína nesse equilíbrio.',
+    tag: 'Recomposição corporal',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento',
+    titulo: 'Platô de emagrecimento: por que acontece e o que fazer',
+    desc: 'Adaptação metabólica, sinais de que o platô é real e como ajustar a estratégia sem cortes drásticos.',
+    tag: 'Platô',
+  },
+];
+
+const title = 'Emagrecimento: musculação, cardio e déficit calórico explicados';
+const description =
+  'Conteúdos sobre emagrecimento com base na ciência do exercício: musculação e cardio, déficit calórico, preservação de massa muscular e platôs.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema('Artigos sobre emagrecimento', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <header class="section-sm tint">
+    <div class="container">
+      <p class="eyebrow">Conteúdo editorial</p>
+      <h1>Emagrecimento</h1>
+      <p class="lead" style="max-width: 60ch">
+        Conteúdos práticos sobre emagrecimento com treino — sem promessas
+        milagrosas nem prescrição de dieta. Para orientação nutricional
+        individual, procure um nutricionista.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+        {
+          artigos.map((a) => (
+            <a class="card card-hover guide" href={a.url}>
+              <span class="pill">{a.tag}</span>
+              <h2>{a.titulo}</h2>
+              <p>{a.desc}</p>
+              <span class="guide-link">Ler artigo →</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="muted small" style="margin-top: var(--sp-6)">
+        Quer treinar com foco em hipertrofia? Veja os conteúdos de
+        <a href={rotas.musculacao}>musculação</a>. Para decidir sobre
+        acompanhamento profissional, veja <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .guide:hover {
+    text-decoration: none;
+  }
+  .guide h2 {
+    font-size: var(--step-2);
+  }
+  .guide p {
+    color: var(--ink-soft);
+    flex: 1;
+  }
+  .guide-link {
+    font-weight: 700;
+    color: var(--brand-600);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

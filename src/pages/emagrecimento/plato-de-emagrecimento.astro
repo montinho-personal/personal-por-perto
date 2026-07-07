@@ -1,0 +1,265 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'Entenda o conceito de balanço energético por trás do platô — a base para saber o que de fato pode ter mudado.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'Um déficit mal ajustado ao longo do tempo também pode custar massa magra — veja como equilibrar treino e alimentação.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Ajustar treino e rotina diante de um platô é mais seguro com acompanhamento profissional qualificado.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/plato-de-emagrecimento';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento' },
+  { nome: 'Platô de emagrecimento: por que acontece e o que fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é exatamente um platô de emagrecimento?',
+    resposta:
+      'É o período em que o peso para de cair mesmo com a rotina de treino e alimentação mantida praticamente igual à que vinha funcionando. É um fenômeno comum ao longo de um processo de emagrecimento, não uma falha pessoal — envolve respostas do corpo ao próprio processo de perder peso, e costuma exigir ajustes pontuais em vez de mudanças drásticas.',
+  },
+  {
+    pergunta: 'Por quanto tempo o peso pode ficar parado antes de eu me preocupar?',
+    resposta:
+      'Oscilações de alguns dias a poucas semanas são esperadas, principalmente por causa de retenção de líquidos e variações naturais de peso. Não existe um prazo único válido para todo mundo, mas um platô que persiste por várias semanas seguidas, sem sinal de resposta aos ajustes razoáveis feitos na rotina, é um bom momento para conversar com um nutricionista ou médico e revisar o caso com mais profundidade.',
+  },
+  {
+    pergunta: 'Cortar ainda mais calorias resolve o platô?',
+    resposta:
+      'Cortes drásticos costumam trazer mais problemas do que soluções: tendem a aumentar a fome, dificultar a adesão à rotina no médio prazo e, segundo a literatura sobre adaptação metabólica, podem intensificar ainda mais a redução do gasto energético do corpo. Ajustes graduais e sustentáveis, feitos com orientação profissional, tendem a ser mais eficazes do que reduções bruscas.',
+  },
+  {
+    pergunta: 'O que é um "diet break" e ele ajuda no platô?',
+    resposta:
+      'É um período planejado em que a pessoa pausa o déficit calórico por alguns dias ou semanas, retornando a um nível de ingestão próximo da manutenção, antes de voltar ao processo de emagrecimento. Estudos sobre restrição calórica intermitente sugerem que essas pausas podem ajudar na adesão e, em alguns casos, atenuar parte da adaptação metabólica — mas os resultados na literatura ainda são mistos, e a estratégia deve ser planejada com um profissional, não feita por conta própria de forma aleatória.',
+  },
+  {
+    pergunta: 'Quando devo procurar um profissional por causa de um platô?',
+    resposta:
+      'Vale buscar avaliação de um nutricionista ou médico quando o platô se prolonga por bastante tempo apesar de ajustes razoáveis na rotina, quando vêm acompanhados de sintomas como cansaço fora do comum, alterações de sono ou de humor, ou quando você simplesmente não consegue identificar sozinho o que mudou na sua alimentação e atividade. Um profissional consegue investigar causas que vão além do dia a dia do treino e da dieta.',
+  },
+];
+
+const title = 'Platô de emagrecimento: por que acontece e o que fazer';
+const description =
+  'Entenda por que o emagrecimento estaciona mesmo mantendo a rotina — adaptação metabólica, subestimação calórica e queda do NEAT — e o que fazer diante de um platô sem recorrer a cortes drásticos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Platô de emagrecimento: por que acontece e o que fazer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Platô é a fase em que o peso para de cair mesmo com treino e alimentação
+      mantidos praticamente iguais aos que vinham funcionando até ali. Não é
+      sinal de que algo deu "errado" — é uma resposta esperada do corpo ao
+      próprio processo de perder peso. Entender por que isso acontece ajuda a
+      reagir com ajustes razoáveis, em vez de desistir ou cortar tudo de uma
+      vez.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o emagrecimento estaciona mesmo com a rotina mantida</h2>
+      <p>
+        Quando o peso para de cair apesar de nada ter mudado "no papel", em
+        geral existe uma combinação de fatores — biológicos e de rotina —
+        atuando ao mesmo tempo:
+      </p>
+      <ul>
+        <li>
+          <strong>Adaptação metabólica:</strong> à medida que o corpo perde
+          peso, ele tende a gastar menos energia para realizar as mesmas
+          tarefas — um corpo menor, em média, precisa de menos calorias para
+          se manter. Além disso, a literatura sobre o tema descreve um efeito
+          de adaptação que vai além do esperado apenas pela redução de peso,
+          conhecido como termogênese adaptativa: o gasto energético total cai
+          mais do que a perda de massa corporal, isoladamente, explicaria.
+          Esse é um dos motivos pelos quais um déficit que funcionava bem no
+          início tende a perder força com o tempo.
+        </li>
+        <li>
+          <strong>Subestimação da ingestão calórica ao longo do tempo:</strong>
+          é comum que porções, temperos, molhos, bebidas e pequenos beliscos
+          voltem a crescer aos poucos, sem que a pessoa perceba — especialmente
+          depois de meses seguindo a mesma rotina, quando a atenção ao registro
+          da alimentação tende a relaxar.
+        </li>
+        <li>
+          <strong>Redução do NEAT sem perceber:</strong> NEAT é o gasto
+          energético de atividades do dia a dia fora do treino estruturado —
+          caminhar, ficar em pé, se mexer no trabalho. Conforme o cansaço se
+          acumula ao longo de um período de déficit, é comum reduzir esse tipo
+          de movimento de forma inconsciente, o que diminui o gasto total
+          mesmo que o treino continue igual.
+        </li>
+        <li>
+          <strong>Retenção de líquidos mascarando o progresso real:</strong>
+          o peso na balança reflete água, alimento no trato digestivo e outros
+          fatores além de gordura corporal. Estresse, sono ruim, ciclo
+          hormonal, ingestão de sódio e até o próprio treino podem causar
+          retenção temporária que esconde uma perda de gordura que, na
+          prática, ainda está acontecendo.
+        </li>
+      </ul>
+
+      <h2>O que fazer diante de um platô</h2>
+      <p>
+        Antes de mudar tudo, vale seguir uma sequência de passos mais
+        cautelosa:
+      </p>
+      <ul>
+        <li>
+          <strong>Reavalie a aderência com honestidade:</strong> olhar para
+          trás e checar, sem julgamento, se a rotina de alimentação e treino
+          realmente se manteve igual à que gerava resultado — é o ponto de
+          partida mais simples e, muitas vezes, mais revelador.
+        </li>
+        <li>
+          <strong>Ajuste o déficit de forma gradual, não drástica:</strong>
+          pequenos ajustes gradativos tendem a ser mais sustentáveis e mais
+          fáceis de manter do que cortes abruptos, que costumam aumentar a
+          fome e a dificuldade de adesão no médio prazo.
+        </li>
+        <li>
+          <strong>Aumente a atividade não estruturada:</strong> mexer-se mais
+          ao longo do dia (caminhar, subir escadas, reduzir tempo sentado) é,
+          para muita gente, um ajuste mais sustentável do que simplesmente
+          adicionar mais treino estruturado.
+        </li>
+        <li>
+          <strong>Dê tempo antes de mudar tudo de uma vez:</strong>
+          oscilações de peso de alguns dias a poucas semanas fazem parte do
+          processo. Reagir a cada estagnação com uma mudança radical dificulta
+          entender o que realmente funciona.
+        </li>
+        <li>
+          <strong>Considere uma pausa estratégica do déficit ("diet break"):</strong>
+          a literatura sobre restrição calórica intermitente descreve
+          períodos planejados em que a pessoa retorna temporariamente a um
+          nível de ingestão próximo da manutenção antes de seguir com o
+          emagrecimento. Estudos sugerem que essa pausa pode ajudar na adesão
+          e, possivelmente, atenuar parte da adaptação metabólica — embora os
+          resultados entre pesquisas ainda sejam mistos. É uma estratégia que
+          faz mais sentido quando planejada com acompanhamento profissional,
+          não decidida de forma aleatória.
+        </li>
+      </ul>
+
+      <h2>Por que desistir ou cortar drasticamente costuma piorar o quadro</h2>
+      <p>
+        Diante de um platô, a reação mais comum é reduzir ainda mais as
+        calorias ou aumentar bruscamente o volume de treino. No curto prazo
+        isso pode até destravar o peso na balança, mas no longo prazo tende a
+        sair caro: aumenta a fome e a fadiga, dificulta manter a rotina, e —
+        segundo a literatura sobre adaptação metabólica — pode intensificar
+        ainda mais a redução do gasto energético do corpo, tornando o próximo
+        ajuste ainda mais difícil. Desistir por completo também não resolve:
+        sem nenhum ajuste, o platô tende a se manter, e a frustração de
+        "parar tudo" costuma dificultar retomar depois. O caminho mais
+        sustentável, na maioria dos casos, é o ajuste gradual e a paciência
+        com o processo — não os extremos.
+      </p>
+
+      <div class="callout">
+        <strong>Quando procurar avaliação profissional:</strong> platôs
+        prolongados que não respondem a ajustes razoáveis na rotina merecem
+        avaliação de um nutricionista ou médico, que pode investigar outras
+        causas possíveis para a estagnação. Este conteúdo é educativo e não
+        substitui avaliação individual — para orientação sobre calorias,
+        macronutrientes ou dieta específica, procure um
+        <a href={rotas.montinho}>profissional qualificado</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

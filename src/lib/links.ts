@@ -49,6 +49,7 @@ export const rotas = {
   comoAvaliamos: '/como-avaliamos',
   sobre: '/sobre',
   musculacao: '/musculacao',
+  emagrecimento: '/emagrecimento',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

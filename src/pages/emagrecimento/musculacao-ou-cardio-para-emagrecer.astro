@@ -1,0 +1,277 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const sbme = fontesExternas.sbme;
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'Entenda o papel específico da musculação no emagrecimento: EPOC, massa magra e por que ela sozinha não basta.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Estratégias de treino para não perder músculo junto com a gordura durante o emagrecimento.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'O conceito por trás do emagrecimento — comum a qualquer combinação de treino escolhida.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'Os princípios que explicam por que a musculação preserva e constrói massa magra a longo prazo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Montinho Personal',
+    descricao: 'Conheça a recomendação editorial do portal para acompanhamento de treino online.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/emagrecimento/musculacao-ou-cardio-para-emagrecer';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento' },
+  { nome: 'Musculação ou cardio: o que emagrece mais?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Cardio emagrece mais rápido que musculação?',
+    resposta:
+      'Em termos de calorias gastas numa única sessão, o cardio costuma levar vantagem — é um exercício contínuo, geralmente com gasto energético mais alto por minuto. Mas "emagrecer mais rápido" numa sessão isolada não é o mesmo que ter o melhor resultado no longo prazo: revisões que comparam os dois ao longo de vários meses costumam mostrar diferenças bem menores entre eles quando o objetivo é redução de percentual de gordura, especialmente quando a alimentação está ajustada.',
+  },
+  {
+    pergunta: 'Fazer só musculação, sem cardio nenhum, funciona para emagrecer?',
+    resposta:
+      'Pode funcionar, mas tende a ser menos eficiente em termos de gasto calórico total por sessão do que incluir algum cardio. O ponto central continua sendo o déficit calórico ao longo do tempo: se a musculação sozinha, combinada com a alimentação, já sustenta esse déficit, ela é suficiente. Se não, adicionar cardio (ou ajustar a alimentação) tende a ajudar.',
+  },
+  {
+    pergunta: 'Fazer só cardio, sem musculação nenhuma, é uma boa estratégia?',
+    resposta:
+      'Cardio isolado tende a gerar perda de peso, mas com um risco maior de perder massa magra junto com a gordura, principalmente em déficits calóricos mais agressivos ou prolongados. Isso pode reduzir o metabolismo basal e dificultar a manutenção do resultado. Por isso a maior parte das diretrizes de atividade física recomenda combinar os dois tipos de treino, e não escolher apenas um.',
+  },
+  {
+    pergunta: 'Qual a combinação ideal entre musculação e cardio para emagrecer?',
+    resposta:
+      'Não existe uma proporção universal — a combinação ideal depende de tempo disponível, nível de condicionamento, preferência pessoal e histórico de saúde. O que a literatura costuma reforçar é o princípio geral: incluir os dois tipos de estímulo tende a produzir um resultado mais completo do que treinar apenas um. A distribuição específica entre eles é uma decisão que um profissional de educação física ajusta ao seu caso.',
+  },
+  {
+    pergunta: 'Se eu tenho pouco tempo disponível, devo priorizar cardio ou musculação?',
+    resposta:
+      'Depende do objetivo. Se a prioridade é gasto calórico imediato dentro de uma janela curta, cardio (principalmente em formato intervalado) tende a ser mais eficiente por minuto. Se a prioridade é preservar massa magra e sustentar o metabolismo no longo prazo — inclusive durante um período de restrição alimentar — a musculação tende a valer mais a pena mesmo em pouco tempo. Vale conversar com um profissional para montar um plano curto e realista para a sua rotina.',
+  },
+];
+
+const title = 'Musculação ou cardio: o que emagrece mais?';
+const description =
+  'Uma comparação honesta entre musculação e cardio para emagrecimento: gasto calórico por sessão, preservação de massa magra, o que dizem as meta-análises e quando cada um faz mais sentido.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Musculação ou cardio: o que emagrece mais?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Essa é uma das perguntas mais frequentes sobre emagrecimento, e a
+      resposta honesta é "depende do que você está medindo e em que prazo".
+      Cardio costuma gastar mais calorias numa sessão curta; musculação
+      preserva e constrói massa magra, com efeito mais duradouro sobre o
+      metabolismo. Isoladamente, nenhum dos dois "emagrece" sem um contexto
+      alimentar adequado. Veja o que a pesquisa mostra sobre cada cenário.
+    </p>
+
+    <div class="prose">
+      <h2>Cardio: gasto calórico mais alto por sessão</h2>
+      <p>
+        Em uma única sessão, o exercício aeróbico (caminhada rápida,
+        corrida, bike, natação) costuma gerar um gasto calórico mais alto do
+        que uma sessão de musculação de duração parecida, principalmente
+        quando feito em intensidade moderada a alta por um período contínuo.
+        É por isso que, historicamente, o cardio ganhou fama de ser "o"
+        exercício para emagrecer: o resultado imediato, em calorias
+        gastas na hora, tende a ser maior.
+      </p>
+
+      <h2>Musculação: menos gasto na hora, mais sustentação no longo prazo</h2>
+      <p>
+        A musculação, por outro lado, contribui de um jeito menos visível na
+        hora, mas relevante ao longo do tempo: ajuda a preservar (ou
+        aumentar) a massa magra durante um processo de emagrecimento. Isso
+        importa porque massa magra é um dos fatores que sustentam o
+        metabolismo basal — e perder músculo junto com a gordura, algo comum
+        em dietas muito restritivas sem treino de força, tende a dificultar
+        a manutenção do peso perdido depois. Detalhamos esse mecanismo no
+        artigo sobre
+        <a href="/emagrecimento/como-emagrecer-fazendo-musculacao">como emagrecer fazendo musculação</a>.
+      </p>
+
+      <h2>O que dizem as meta-análises que comparam os dois</h2>
+      <p>
+        Revisões sistemáticas mais recentes, que reúnem dezenas de estudos
+        comparando treino aeróbico, treino de força e a combinação dos dois,
+        costumam apontar um padrão parecido: em programas de pelo menos
+        algumas semanas de duração, o treino aeróbico tende a produzir
+        redução um pouco maior de peso corporal e de massa gorda em termos
+        absolutos, enquanto o treino de força tende a reter mais massa
+        magra. Quando o desfecho analisado é o percentual de gordura
+        corporal (e não o peso absoluto perdido), a diferença entre treino
+        aeróbico, treino de força e treino combinado costuma ser pequena ou
+        não significativa. Um estudo isolado, mais antigo, chegou a sugerir
+        vantagem clara do cardio sobre a musculação para perda de peso —
+        mas revisões mais recentes e mais abrangentes relativizam essa
+        conclusão, mostrando um quadro mais equilibrado entre as
+        modalidades.
+      </p>
+
+      <h2>Treino combinado costuma ser a aposta mais consistente</h2>
+      <p>
+        Quando os estudos comparam treino combinado (cardio + musculação na
+        mesma rotina semanal) contra qualquer um dos dois isolado, o
+        combinado tende a igualar ou superar os resultados de composição
+        corporal, sem prejudicar a retenção de massa magra proporcionada
+        pela musculação. Na prática, isso sustenta a recomendação mais
+        comum entre profissionais de educação física e entidades de
+        medicina do esporte, como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>:
+        incluir os dois tipos de estímulo ao longo da semana, em vez de
+        escolher só um.
+      </p>
+
+      <h2>Não existe exercício que emagrece sozinho, sem controle alimentar</h2>
+      <p>
+        Esse ponto vale para qualquer um dos dois: nem cardio nem
+        musculação "emagrecem" de forma isolada se o padrão alimentar
+        mantém a pessoa em superávit calórico constante. O que sustenta o
+        emagrecimento, com qualquer combinação de treino, é o déficit
+        calórico ao longo do tempo — e a forma certa de construir esse
+        déficit (quais alimentos, em que quantidade) depende de avaliação
+        nutricional individual. Nenhum volume de treino compensa, de forma
+        sistemática, uma alimentação em desequilíbrio constante com o
+        gasto energético.
+      </p>
+
+      <h2>Quando priorizar cada um, na prática</h2>
+      <ul>
+        <li>
+          <strong>Pouco tempo disponível e prioridade em gasto calórico
+          imediato:</strong> cardio, principalmente em formato intervalado,
+          tende a ser mais eficiente por minuto de treino.
+        </li>
+        <li>
+          <strong>Prioridade em preservar músculo durante restrição
+          alimentar, ou em melhorar a composição corporal no longo
+          prazo:</strong> musculação tende a valer mais a pena, mesmo com
+          menos calorias gastas por sessão.
+        </li>
+        <li>
+          <strong>Sem restrição de tempo e busca pelo melhor resultado
+          geral:</strong> a combinação dos dois, distribuída ao longo da
+          semana, é o que a maior parte da evidência disponível costuma
+          apoiar.
+        </li>
+      </ul>
+      <p>
+        Diretrizes de atividade física para a saúde, como as da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>,
+        já recomendam combinar atividade aeróbica com exercícios de
+        fortalecimento muscular ao longo da semana — não apenas para
+        emagrecimento, mas para saúde de forma geral.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> cardio tende a gastar mais calorias por
+        sessão; musculação tende a preservar massa magra e sustentar o
+        metabolismo no longo prazo. A combinação dos dois costuma superar
+        qualquer um isolado, e nenhum dos dois substitui um contexto
+        alimentar adequado. Montar essa combinação de forma segura e
+        ajustada à sua rotina é trabalho de um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a>, com
+        apoio de um nutricionista para a parte alimentar.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
