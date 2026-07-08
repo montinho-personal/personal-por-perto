@@ -1,0 +1,277 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/fraqueza-para-treinar',
+    titulo: 'Mounjaro dá fraqueza para treinar? O que fazer',
+    descricao: 'Por que a disposição pode cair em algumas fases, como manejar o treino nos dias ruins e quando procurar o médico.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força e da proteína.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/mounjaro-e-musculacao',
+    titulo: 'Quem usa Mounjaro pode fazer musculação?',
+    descricao: 'Por que o treino de força é especialmente relevante durante o uso do medicamento, e o que conversar com o médico antes.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento',
+    titulo: 'Personal trainer para emagrecimento',
+    descricao: 'Como um profissional de educação física ajusta o treino ao seu momento — inclusive durante um tratamento acompanhado pelo médico.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/mounjaro-e-treino/treino-para-quem-usa-mounjaro';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Treino para quem usa Mounjaro: como adaptar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quem usa Mounjaro precisa treinar diferente de quem não usa?',
+    resposta:
+      'Os princípios do treino são os mesmos, mas o contexto muda: com o apetite reduzido pelo tratamento, a ingestão calórica tende a cair bastante, e isso costuma pedir mais atenção à preservação de massa muscular e uma progressão mais conservadora. Na prática, a adaptação costuma ser de dose de treino (volume, intensidade, progressão), não de método. O desenho exato deve considerar seu histórico, sua rotina e as orientações do médico que acompanha o tratamento.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana devo fazer musculação usando Mounjaro?',
+    resposta:
+      'Não existe número único que sirva para todo mundo. Diretrizes gerais de atividade física, como as da Organização Mundial da Saúde, costumam citar atividades de fortalecimento muscular em pelo menos 2 dias por semana como piso para adultos, e revisões sobre exercício durante tratamentos com medicamentos da mesma classe frequentemente mencionam frequências na faixa de 2 a 3 sessões semanais de treino de força. O ideal é definir a frequência com um profissional de educação física, considerando sua disposição em cada fase.',
+  },
+  {
+    pergunta: 'Devo parar de treinar nos períodos em que sinto enjoo ou mal-estar?',
+    resposta:
+      'Depende da intensidade dos sintomas — e essa avaliação não é do personal, é sua e do seu médico. Em dias de desconforto leve, muita gente consegue manter uma sessão mais curta e leve; em dias de sintomas mais fortes, descansar costuma ser a escolha sensata. Sintomas gastrointestinais persistentes ou intensos são assunto para o médico prescritor, e sintomas agudos importantes pedem atendimento. Nunca ajuste o tratamento por conta própria para "conseguir treinar".',
+  },
+  {
+    pergunta: 'Posso treinar em jejum usando Mounjaro?',
+    resposta:
+      'Essa é uma decisão que envolve variáveis clínicas e nutricionais que fogem do escopo do treino, então a resposta responsável é: alinhe com seu médico e, se tiver, com seu nutricionista. Com o apetite reduzido, algumas pessoas chegam ao treino tendo comido muito pouco no dia, o que pode afetar a disposição — por isso o tema alimentação pré-treino merece uma conversa com quem cuida da sua alimentação, e não uma regra tirada da internet.',
+  },
+  {
+    pergunta: 'Cardio ou musculação: o que priorizar durante o uso de Mounjaro?',
+    resposta:
+      'Em uma fase de perda de peso com ingestão calórica reduzida, o treino de força costuma ser tratado como prioridade pela literatura, porque é o principal estímulo para o corpo preservar massa muscular. O cardio entra como complemento — bom para condicionamento e saúde cardiovascular — e não como substituto da musculação. A proporção ideal entre os dois depende do seu caso e pode ser ajustada com um profissional de educação física.',
+  },
+];
+
+const title = 'Treino para quem usa Mounjaro: como adaptar';
+const description =
+  'Como adaptar o treino durante o uso de Mounjaro (tirzepatida) sob prescrição médica: prioridade ao treino de força, cardio complementar, progressão conservadora e constância. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Treino para quem usa Mounjaro: como adaptar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem usa Mounjaro (tirzepatida) sob prescrição médica costuma passar por
+      uma fase de ingestão calórica bem menor do que a habitual — e treinar
+      nesse contexto pede ajustes. Não é preciso reinventar o treino: os
+      princípios são os mesmos de qualquer emagrecimento bem conduzido, mas a
+      ordem de prioridades fica ainda mais clara — treino de força em primeiro
+      lugar, cardio como complemento, progressão conservadora e constância
+      acima de intensidade. Este guia mostra como pensar cada um desses pontos,
+      sempre dentro do escopo do exercício físico.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Por que o treino merece adaptação durante o tratamento</h2>
+      <p>
+        O ponto central não é o medicamento em si, e sim o cenário que ele
+        tende a criar: menos fome, menos comida, e muitas vezes uma perda de
+        peso mais rápida do que a pessoa conseguiria só com dieta. Estudos com
+        tirzepatida, como o ensaio SURMOUNT-1 publicado no
+        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">New England Journal of Medicine</a>,
+        registraram perdas de peso expressivas ao longo do acompanhamento — e
+        análises de composição corporal desse mesmo estudo sugerem que uma
+        parte do peso perdido tende a vir de massa magra, não só de gordura.
+        Para o treino, a leitura prática é simples: com menos energia
+        disponível, o corpo precisa de bons motivos para manter músculo, e o
+        principal motivo que o exercício pode oferecer é o estímulo do treino
+        de força. Nada disso é promessa de resultado — é o racional que a
+        literatura costuma apontar.
+      </p>
+
+      <h2>Treino de força como prioridade (2 a 3 sessões como referência de piso)</h2>
+      <p>
+        Em fase de ingestão calórica reduzida, a musculação deixa de ser
+        "opcional" e passa a ser o centro do programa. Diretrizes gerais de
+        atividade física, como as da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>,
+        citam atividades de fortalecimento muscular em pelo menos 2 dias por
+        semana para adultos — um piso geral de saúde, não uma prescrição
+        individual. Revisões recentes sobre exercício durante tratamentos com
+        agonistas de GLP-1 e similares, como uma publicada em periódico da
+        Frontiers (disponível no
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12683586/" target="_blank" rel="noopener">PubMed Central</a>),
+        costumam sugerir treino de força na faixa de 2 a 3 sessões semanais
+        como parte da rotina. Para quem está começando ou tem poucos dias
+        disponíveis, divisões simples tendem a funcionar melhor do que
+        programas mirabolantes — comparamos as opções mais comuns no guia
+        <a href="/musculacao/abc-ou-full-body">treino ABC ou full body</a>.
+      </p>
+
+      <h2>Cardio em dose moderada: complemento, não substituto</h2>
+      <p>
+        O exercício aeróbico continua valioso — para condicionamento, saúde
+        cardiovascular e gasto calórico adicional. O erro comum é invertê-lo
+        com a musculação: em um contexto em que o déficit calórico já tende a
+        ser grande por causa da menor ingestão, empilhar muito cardio costuma
+        agregar pouco e pode competir com a recuperação do treino de força.
+        Uma dose moderada, distribuída na semana e ajustada à disposição de
+        cada fase, tende a ser suficiente para a maioria das pessoas. Se ficou
+        na dúvida sobre a hierarquia entre os dois, o raciocínio completo está
+        em <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer">musculação ou cardio para emagrecer</a>.
+      </p>
+
+      <h2>Progressão conservadora, principalmente nas fases de adaptação</h2>
+      <p>
+        Estudos clínicos com tirzepatida relatam que efeitos adversos
+        gastrointestinais — como náusea, diarreia e vômito — estão entre os
+        mais comuns, e que eles tendem a se concentrar nos períodos de
+        adaptação ao tratamento, sendo na maioria dos casos descritos como
+        leves a moderados. Isso é um dado factual dos estudos, não uma
+        previsão sobre o seu caso — e qualquer sintoma é assunto para o seu
+        médico, nunca para o treino "resolver". Para o planejamento do
+        exercício, a consequência é prática: nessas fases, vale progredir com
+        mais calma. Manter cargas confortáveis, evitar grandes saltos de
+        volume e aceitar sessões mais curtas em dias piores costuma preservar
+        a rotina sem transformar o treino em mais um fator de estresse.
+      </p>
+
+      <h2>Hidratação e alimentação pré-treino: alinhe com quem cuida disso</h2>
+      <p>
+        Com o apetite reduzido, é comum chegar ao treino tendo comido e bebido
+        menos do que de costume — e isso pode afetar a disposição na sessão.
+        Esses dois pontos, porém, são território de nutricionista e do médico
+        que acompanha o tratamento: quanto comer antes de treinar, o que
+        priorizar e como se hidratar ao longo do dia são decisões que
+        envolvem o quadro clínico completo. O papel do conteúdo de treino
+        aqui é só um: sinalizar que vale levar essas perguntas para a
+        consulta, em vez de improvisar. Se notar tontura ou mal-estar
+        durante o exercício, interrompa a sessão e, se o sintoma for
+        importante ou repetido, procure atendimento.
+      </p>
+
+      <h2>Constância acima de intensidade</h2>
+      <p>
+        Em fases de menos energia, a métrica que mais importa não é a carga do
+        dia, e sim quantas semanas seguidas você conseguiu treinar. Uma sessão
+        mediana feita costuma valer mais do que uma sessão perfeita adiada.
+        Treinos mais curtos, com os exercícios essenciais, mantêm o estímulo
+        de força e a rotina viva — e a rotina é o que sustenta o resultado
+        quando o corpo está passando por muitas mudanças ao mesmo tempo.
+      </p>
+
+      <h2>O papel do personal: ajustar sessão a sessão</h2>
+      <p>
+        Talvez em nenhum outro contexto o ajuste fino faça tanta diferença:
+        a disposição pode variar bastante de semana para semana, e um
+        profissional de educação física consegue calibrar volume, intensidade
+        e seleção de exercícios a cada sessão, em vez de seguir uma planilha
+        rígida. Um bom profissional também sabe onde termina o escopo dele —
+        treino — e encaminha para o médico ou nutricionista o que for
+        clínico. Explicamos o que procurar nesse perfil no guia sobre
+        <a href="/guias/personal-trainer-para-emagrecimento">personal trainer para emagrecimento</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> durante o uso de Mounjaro sob prescrição,
+        o treino não muda de natureza — muda de calibragem. Treino de força
+        como prioridade, cardio moderado como complemento, progressão
+        conservadora nas fases de adaptação, alimentação e hidratação
+        alinhadas com nutricionista e médico, e constância acima de
+        intensidade. Tudo que for sintoma ou decisão sobre o medicamento é
+        conversa com o médico prescritor.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

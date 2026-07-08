@@ -1,0 +1,266 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força e da proteína.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro',
+    titulo: 'Treino para quem usa Mounjaro: como adaptar',
+    descricao: 'Como ajustar intensidade, volume e cardio a uma fase de menor ingestão calórica — sem promessas nem radicalismo.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/mounjaro-e-musculacao',
+    titulo: 'Quem usa Mounjaro pode fazer musculação?',
+    descricao: 'Por que o treino de força é especialmente relevante durante o uso do medicamento, e o que conversar com o médico antes.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/progressao-de-carga',
+    titulo: 'Progressão de carga: como evoluir no treino',
+    descricao: 'Princípios para ajustar a progressão — inclusive quando a fase pede segurar o ritmo em vez de acelerar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/fraqueza-para-treinar';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Mounjaro dá fraqueza para treinar? O que fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'É normal sentir menos energia para treinar usando Mounjaro?',
+    resposta:
+      'Algumas pessoas relatam menos disposição em certas fases do tratamento, o que faz sentido fisiológico: com o apetite reduzido, a ingestão calórica total cai, e menos energia disponível pode se refletir no treino. Estudos clínicos com tirzepatida também relatam efeitos gastrointestinais, como náusea, entre os efeitos adversos mais comuns, o que pode atrapalhar a disposição em alguns períodos. Mas "algumas pessoas relatam" não é diagnóstico do seu caso: se a fadiga for persistente ou intensa, quem deve avaliar é o médico prescritor.',
+  },
+  {
+    pergunta: 'Devo parar de treinar nos dias em que me sinto fraco?',
+    resposta:
+      'Nem sempre — e nem sempre insistir é a resposta certa. Em dias de energia baixa mas sem sintomas importantes, reduzir volume e intensidade mantendo a frequência costuma funcionar bem: uma sessão curta, com poucos exercícios básicos e cargas confortáveis, preserva a rotina. Já em dias de sintomas mais fortes (náusea intensa, tontura, mal-estar), descansar é a escolha sensata, e sintomas importantes ou repetidos pedem contato com o médico. A decisão sobre sintomas nunca é do treino.',
+  },
+  {
+    pergunta: 'Sentir fraqueza significa que estou perdendo massa muscular?',
+    resposta:
+      'Não necessariamente. Disposição baixa em um dia isolado costuma refletir sono, alimentação, estresse ou uma fase de adaptação — não perda de músculo. O sinal que merece mais atenção é outro: queda de força consistente e desproporcional ao longo de semanas (cargas que eram fáceis ficando difíceis, sem melhora), que pode sugerir perda de massa magra e vale conversa com o profissional que acompanha seu treino e, se persistir, com o médico.',
+  },
+  {
+    pergunta: 'Posso compensar os treinos perdidos treinando dobrado depois?',
+    resposta:
+      'Não é uma boa ideia. Sessões punitivas depois de dias ruins tendem a aumentar a fadiga acumulada justamente em um período em que o corpo já lida com menos energia, e não recuperam o estímulo perdido de forma proporcional. A lógica que costuma funcionar melhor é a da constância: retomar o plano normal na sessão seguinte, como se o dia perdido não existisse, e deixar a progressão se reconstruir aos poucos.',
+  },
+  {
+    pergunta: 'Quando a falta de energia para treinar deixa de ser normal?',
+    resposta:
+      'Não existe uma linha exata — e é justamente por isso que a avaliação é médica, não do personal. Como regra de bom senso: cansaço que acompanha um dia corrido ou uma fase de adaptação e melhora com ajuste de rotina tende a ser esperado; fadiga persistente que não melhora, fraqueza incomum, tontura, desmaio ou qualquer sintoma que preocupe merece contato com o médico prescritor — e sintomas agudos importantes pedem atendimento imediato.',
+  },
+];
+
+const title = 'Mounjaro dá fraqueza para treinar? O que fazer';
+const description =
+  'Por que a disposição para treinar pode cair em algumas fases do uso de Mounjaro (tirzepatida), estratégias legítimas de treino para dias de menos energia e sinais de que é hora de falar com o médico. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Mounjaro dá fraqueza para treinar? O que fazer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Uma queixa comum de quem usa Mounjaro (tirzepatida) sob prescrição
+      médica é a sensação de menos energia para treinar em algumas fases.
+      Isso tem explicações plausíveis do ponto de vista do exercício — comer
+      bem menos costuma significar menos combustível disponível — mas também
+      tem um limite claro: fadiga persistente ou intensa não é problema de
+      treino, é assunto para o médico. Este guia mostra o que pode estar por
+      trás da disposição baixa, o que dá para ajustar no treino nos dias
+      ruins e quais sinais indicam que é hora de procurar quem prescreveu o
+      medicamento.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Por que a disposição pode cair em algumas fases</h2>
+      <p>
+        Três fatores costumam se somar. O primeiro é o mais simples: com o
+        apetite reduzido, a ingestão calórica total cai — e um corpo que
+        recebe menos energia tende a ter menos energia sobrando para o
+        treino. O segundo vem dos próprios estudos do medicamento: ensaios
+        clínicos com tirzepatida, como o SURMOUNT-1 publicado no
+        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">New England Journal of Medicine</a>,
+        relatam efeitos adversos gastrointestinais — náusea, diarreia,
+        vômito — entre os mais comuns, na maioria dos casos descritos como
+        leves a moderados e mais frequentes nos períodos de adaptação ao
+        tratamento. Quem está enjoado naturalmente treina pior. O terceiro é
+        prático: quem come pouco ao longo do dia pode chegar ao treino com
+        pouca energia disponível naquela janela específica. Nada disso é
+        diagnóstico do seu caso — são padrões relatados na literatura que
+        ajudam a entender o cenário.
+      </p>
+      <p>
+        O limite deste conteúdo também precisa ficar explícito: se a fadiga
+        é persistente, intensa ou veio acompanhada de outros sintomas, a
+        conversa certa é com o médico prescritor, que enxerga o quadro
+        completo — exames, histórico, tratamento. Nenhum ajuste de treino
+        substitui essa avaliação.
+      </p>
+
+      <h2>Estratégias de treino legítimas para dias de menos energia</h2>
+      <p>
+        Para os dias em que a energia está baixa mas não há sintoma
+        importante, existe um repertório de ajustes que preserva a rotina
+        sem forçar o corpo:
+      </p>
+      <ul>
+        <li>
+          <strong>Reduzir volume e intensidade, mantendo a frequência:</strong>
+          menos séries e cargas mais confortáveis, mas comparecer ao treino.
+          A constância costuma importar mais do que o tamanho da sessão.
+        </li>
+        <li>
+          <strong>Sessões mais curtas:</strong> um treino de 25 a 35 minutos
+          bem aproveitado tende a ser suficiente para manter o estímulo em
+          fases difíceis.
+        </li>
+        <li>
+          <strong>Priorizar exercícios básicos:</strong> poucos movimentos
+          que trabalham muita musculatura de uma vez rendem mais quando o
+          tempo e a energia são curtos.
+        </li>
+        <li>
+          <strong>Não "compensar" com sessões punitivas:</strong> dobrar o
+          treino depois de dias ruins só empilha fadiga em um período em que
+          o corpo já opera com menos energia. Retome o plano normal e siga.
+        </li>
+      </ul>
+      <p>
+        Nessas fases, também faz sentido segurar a evolução de cargas em vez
+        de perseguir recordes — os princípios para acelerar e desacelerar
+        estão no guia de
+        <a href="/musculacao/progressao-de-carga">progressão de carga</a>.
+      </p>
+
+      <h2>Desconforto normal de treino ou sintoma que merece avaliação?</h2>
+      <p>
+        Quem treina conhece um certo desconforto esperado: cansaço ao fim da
+        sessão, dor muscular tardia nos dias seguintes, uma semana mais
+        arrastada após aumentar o treino. Esse tipo de sensação costuma ser
+        localizado, proporcional ao esforço e melhorar com descanso. O que
+        foge desse padrão merece outro olhar: tontura, fraqueza incomum ou
+        desproporcional ao esforço, mal-estar que aparece mesmo sem treinar,
+        sintomas que persistem por dias ou pioram. A regra de bom senso é
+        simples — desconforto de treino melhora com recuperação; sintoma que
+        não melhora, ou que assusta, é caso de procurar o médico prescritor.
+        E diante de algo agudo e importante, procure atendimento, não o
+        treino da semana.
+      </p>
+
+      <h2>Quando a queda de força é o sinal a observar</h2>
+      <p>
+        Um detalhe que vale atenção específica: disposição baixa em dias
+        isolados é uma coisa; queda de força consistente ao longo de semanas
+        é outra. Cargas que eram tranquilas ficando difíceis, sem relação com
+        um dia ruim, podem sugerir que a perda de peso está levando junto
+        mais massa magra do que deveria — um padrão que estudos de composição
+        corporal em emagrecimentos rápidos descrevem e que tem estratégias de
+        prevenção bem estabelecidas no exercício. Explicamos esse tema em
+        detalhe em
+        <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular">como evitar perda de massa muscular usando Mounjaro</a>.
+        Se a queda de força vier acompanhada de fadiga persistente, some os
+        dois sinais e leve ao médico.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> menos energia em algumas fases tem
+        explicações plausíveis — menor ingestão calórica e efeitos
+        gastrointestinais relatados como comuns nos estudos — e ajustes de
+        treino legítimos: sessões mais curtas, básicas e menos intensas,
+        mantendo a frequência. Mas fadiga persistente, fraqueza incomum,
+        tontura ou qualquer sintoma que preocupe não se resolve na planilha:
+        é conversa com o médico prescritor, e sintoma agudo importante pede
+        atendimento.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

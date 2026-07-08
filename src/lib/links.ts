@@ -50,6 +50,7 @@ export const rotas = {
   sobre: '/sobre',
   musculacao: '/musculacao',
   emagrecimento: '/emagrecimento',
+  mounjaro: '/mounjaro-e-treino',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

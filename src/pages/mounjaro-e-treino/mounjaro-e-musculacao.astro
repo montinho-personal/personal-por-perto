@@ -1,0 +1,276 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre a perda de massa magra em emagrecimentos rápidos, e as duas alavancas com melhor suporte na literatura.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro',
+    titulo: 'Treino para quem usa Mounjaro: como adaptar',
+    descricao: 'Como ajustar intensidade, volume e cardio a uma fase de menor ingestão calórica, sem promessas nem radicalismo.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/fraqueza-para-treinar',
+    titulo: 'Mounjaro dá fraqueza para treinar? O que fazer',
+    descricao: 'Por que a disposição pode cair em algumas fases e como manejar o treino nos dias de menos energia.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento',
+    titulo: 'Personal trainer para emagrecimento: como escolher',
+    descricao: 'Ajustar o treino de força ao seu momento, com segurança e progressão, é trabalho de um profissional de educação física qualificado.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/mounjaro-e-treino/mounjaro-e-musculacao';
+const atualizadoEm = '2026-07-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: '/mounjaro-e-treino' },
+  { nome: 'Quem usa Mounjaro pode fazer musculação?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quem usa Mounjaro pode fazer musculação?',
+    resposta:
+      'Para a maioria das pessoas, o exercício físico é justamente uma parte recomendada do processo de perda de peso, e o treino de força tem papel específico na preservação de massa magra. Mas a liberação para treinar é individual e cabe ao médico que acompanha o seu caso: condições associadas — como diabetes tipo 2, questões cardiovasculares ou outras — podem pedir avaliação antes de começar. A regra é simples: converse com o seu médico prescritor antes de iniciar ou intensificar um programa de treino.',
+  },
+  {
+    pergunta: 'Por que o treino de força é tão importante durante o uso do medicamento?',
+    resposta:
+      'Porque emagrecimentos rápidos, farmacológicos ou não, tendem a levar junto uma parte de massa magra. Análises de composição corporal com tirzepatida e outros agonistas de GLP-1/GIP sugerem que uma fração relevante do peso perdido pode vir de massa magra quando não há treino de força e proteína adequados. O treino de força é o estímulo que "avisa" o corpo que aquele músculo precisa ser mantido. Ele não substitui nada do tratamento — é um complemento educativo à conduta definida pelo seu médico.',
+  },
+  {
+    pergunta: 'Preciso de liberação médica mesmo se já treinava antes?',
+    resposta:
+      'Vale conversar com o médico de qualquer forma, porque o contexto mudou: durante o uso do medicamento a ingestão calórica costuma cair bastante e a resposta do corpo ao treino pode ser diferente. Quem já treinava tende a ter um caminho mais tranquilo, mas quem está começando do zero, tem alguma condição de saúde ou sente sintomas deve alinhar isso com quem prescreveu o tratamento antes de progredir cargas.',
+  },
+  {
+    pergunta: 'Musculação vai atrapalhar o efeito do Mounjaro?',
+    resposta:
+      'Não é assim que a literatura descreve a relação. Diretrizes e revisões sobre exercício durante o tratamento de obesidade costumam apontar o treino de força como aliado, por ajudar a preservar massa magra e a qualidade do resultado. O que define seguir, ajustar ou pausar o treino em cada fase é a orientação médica combinada com o acompanhamento de um profissional de educação física — nunca uma decisão sobre o medicamento tomada por conta própria.',
+  },
+  {
+    pergunta: 'Posso começar pesado para acelerar os resultados?',
+    resposta:
+      'Não é o caminho recomendado. Começar com intensidade progressiva e priorizar a técnica antes da carga reduz o risco de lesão e torna o processo sustentável, ainda mais numa fase de menor ingestão calórica. Este conteúdo não promete um número na balança nem um resultado garantido: o ritmo adequado para você depende da avaliação do médico e do acompanhamento de um profissional de educação física.',
+  },
+];
+
+const title = 'Quem usa Mounjaro pode fazer musculação?';
+const description =
+  'Para a maioria das pessoas o exercício é parte recomendada do tratamento de perda de peso, mas a liberação é do médico. Entenda por que o treino de força importa durante o uso de Mounjaro (tirzepatida) e como começar com segurança.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Quem usa Mounjaro pode fazer musculação?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta honesta é: para a maioria das pessoas, sim — e mais do que
+      "poder", o exercício físico costuma ser uma parte recomendada do
+      processo de perda de peso. Só que a liberação para treinar é individual
+      e pertence ao médico que acompanha o seu tratamento. O que este
+      conteúdo faz é explicar, do ponto de vista de quem trabalha com
+      exercício, por que o treino de força é especialmente relevante durante
+      um emagrecimento como o que acontece com Mounjaro (tirzepatida) e como
+      começar com segurança.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Exercício costuma fazer parte do tratamento — mas a liberação é do médico</h2>
+      <p>
+        Diretrizes e revisões sobre o manejo da obesidade costumam tratar a
+        atividade física, e o treino de força em particular, como um
+        componente do processo, não como um extra opcional. Isso porque o
+        exercício ajuda a preservar massa magra, a manter a saúde metabólica e
+        a sustentar a função e a independência ao longo do tempo. Mesmo assim,
+        a decisão de quando e como começar é individual: pessoas com condições
+        associadas — como diabetes tipo 2, questões cardiovasculares ou
+        articulares — podem precisar de uma avaliação específica antes de
+        iniciar ou intensificar os treinos. Por isso a orientação, aqui, é
+        sempre a mesma: converse com o seu médico prescritor antes de começar.
+      </p>
+
+      <h2>Por que o treino de força é especialmente relevante nesta fase</h2>
+      <p>
+        Emagrecimentos rápidos, sejam farmacológicos ou não, tendem a levar
+        junto uma parte de massa magra — e não só gordura. No subestudo de
+        composição corporal do ensaio SURMOUNT-1, com tirzepatida, cerca de
+        75% do peso perdido veio de massa gorda e aproximadamente 25% de massa
+        magra ao longo do estudo (uma proporção que, nesse grupo, foi
+        semelhante à observada no grupo placebo). Análises mais amplas sobre
+        agonistas de GLP-1 e GLP-1/GIP sugerem que essa fatia de massa magra
+        pode variar bastante entre pessoas e contextos — parte da literatura
+        aponta faixas que chegam a algo em torno de um quarto a dois quintos
+        do peso perdido em alguns ensaios, sobretudo na fase inicial de perda
+        mais acelerada. São dados de estudos, com variação individual grande;
+        o ponto prático é que o treino de força é o estímulo com melhor
+        suporte para ajudar a puxar essa balança na direção certa.
+      </p>
+      <p>
+        O treino de força funciona como um sinal: a tensão mecânica repetida
+        "avisa" o corpo de que aquele tecido muscular continua sendo
+        necessário, mesmo com menos energia disponível. É por isso que, dentro
+        de um emagrecimento, manter (ou começar) a musculação tende a fazer
+        diferença na qualidade do resultado — assunto que aprofundamos no guia
+        sobre
+        <a href={rotas.emagrecimento + '/como-preservar-massa-muscular-emagrecendo'}>como preservar massa muscular emagrecendo</a>
+        e, com foco em Mounjaro, em
+        <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular">como evitar perda de massa muscular usando o medicamento</a>.
+      </p>
+
+      <h2>O que conversar com o médico antes de começar</h2>
+      <p>
+        Antes de iniciar um programa de treino, vale levar algumas perguntas ao
+        seu médico prescritor:
+      </p>
+      <ul>
+        <li>
+          <strong>Há alguma restrição para o meu caso?</strong> Condições
+          associadas ao tratamento podem pedir cuidado com determinados tipos
+          de esforço.
+        </li>
+        <li>
+          <strong>Posso começar já ou é melhor esperar alguma fase?</strong> A
+          resposta do corpo pode variar conforme o momento do tratamento.
+        </li>
+        <li>
+          <strong>Há sinais aos quais eu deva ficar atento?</strong> Quem
+          define conduta clínica diante de qualquer sintoma é sempre o médico —
+          este conteúdo não substitui essa orientação.
+        </li>
+      </ul>
+      <p>
+        Questões de alimentação e de ingestão de proteína, muito relevantes
+        nesta fase, também são tema de médico e de nutricionista — não de
+        personal trainer.
+      </p>
+
+      <h2>Como começar com segurança</h2>
+      <p>
+        Liberado o treino, dois princípios reduzem risco e tornam o processo
+        sustentável: <strong>intensidade progressiva</strong> e
+        <strong>técnica antes de carga</strong>. Numa fase de menor ingestão
+        calórica, faz ainda mais sentido subir a exigência aos poucos, dando
+        tempo para o corpo se adaptar, em vez de buscar cargas altas logo de
+        início. Aprender bem o movimento antes de adicionar peso protege
+        articulações e coluna e melhora o estímulo no músculo certo. Se você
+        está começando do zero, o guia de
+        <a href="/musculacao/treino-para-iniciantes">treino para iniciantes</a>
+        mostra como estruturar essa fase inicial com calma. Este conteúdo não
+        promete resultado nem número na balança — o ritmo adequado para você
+        depende da sua avaliação individual.
+      </p>
+
+      <h2>O papel do profissional de educação física</h2>
+      <p>
+        O personal trainer não trata do medicamento nem opina sobre dose,
+        alimentação clínica ou sintomas — isso é do médico e do nutricionista.
+        O que cabe a um profissional de educação física é montar e progredir o
+        treino de força com técnica e segurança, ajustar volume e intensidade
+        ao seu momento e à sua disposição, e ajudar a manter a constância que
+        preserva massa magra ao longo do processo.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> para a maioria das pessoas, treinar durante
+        o uso de Mounjaro não só é possível como costuma ser recomendado — mas
+        a liberação individual é do médico prescritor. O treino de força tem
+        papel específico na preservação de massa magra, e começar com
+        progressão e boa técnica, com acompanhamento de um
+        <a href="/guias/personal-trainer-para-emagrecimento">personal trainer com experiência em emagrecimento</a>,
+        segue princípios reconhecidos por entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        e a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>.
+        Decisões sobre o medicamento são sempre do seu médico.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
