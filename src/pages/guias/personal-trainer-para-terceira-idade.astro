@@ -1,0 +1,372 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios gerais que valem para qualquer público: registro, avaliação inicial, sinais de alerta e como comparar profissionais.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-iniciantes',
+    titulo: 'Personal trainer para iniciantes: vale a pena contratar?',
+    descricao: 'Nunca treinou? Veja por que quem está começando se beneficia especialmente de acompanhamento — em qualquer idade.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Para quem já tem alguma autonomia e busca flexibilidade de horário, esta é a recomendação do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-terceira-idade';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Personal trainer para terceira idade: como escolher', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Existe idade máxima para começar a treinar com personal trainer?',
+    resposta:
+      'Não. Estudos com pessoas idosas — incluindo participantes acima dos 80 anos — sugerem que o treino de força bem orientado continua gerando ganhos de força e função em idades avançadas. O que muda com a idade não é a possibilidade de treinar, e sim a necessidade de adaptação: progressão mais gradual, atenção a limitações articulares e, em geral, uma conversa prévia com o médico antes de começar.',
+  },
+  {
+    pergunta: 'Musculação é segura para quem tem osteoporose?',
+    resposta:
+      'Em termos gerais, o treino de força costuma fazer parte das recomendações para saúde óssea, desde que adaptado ao quadro de cada pessoa. Mas osteoporose é uma condição médica, e o que é seguro varia de caso para caso — quem tem o diagnóstico deve conversar com o médico que acompanha o quadro antes de iniciar, e o personal deve trabalhar respeitando as orientações desse profissional de saúde.',
+  },
+  {
+    pergunta: 'Preciso de liberação médica para contratar um personal depois dos 60?',
+    resposta:
+      'Não é uma exigência legal universal, mas é a recomendação padrão para esse público — especialmente para quem tem condições em acompanhamento, como hipertensão, diabetes ou problemas articulares, ou está sedentário há muito tempo. Uma avaliação médica prévia ajuda o personal a montar um treino adequado e é sinal de bom profissional pedir esse cuidado, não de burocracia.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana um idoso deve treinar com personal?',
+    resposta:
+      'Como referência geral, diretrizes como as da OMS sugerem fortalecimento muscular em 2 ou mais dias da semana para pessoas 65+, além de atividades que trabalhem equilíbrio. Na prática, 2 a 3 sessões semanais é um ponto de partida comum, ajustado à recuperação, à rotina e ao orçamento de cada pessoa. A decisão de frequência está detalhada no guia sobre quantas vezes por semana treinar com personal.',
+  },
+  {
+    pergunta: 'Personal trainer para terceira idade custa mais caro?',
+    resposta:
+      'Não necessariamente. O preço costuma variar mais por cidade, formato (presencial ou online) e experiência do profissional do que pela idade do aluno. Alguns profissionais com atuação consolidada junto ao público idoso cobram mais pela experiência específica, mas isso não é regra. As faixas praticadas no mercado estão no guia sobre quanto custa um personal trainer.',
+  },
+];
+
+const title = 'Personal trainer para terceira idade: como escolher (2026)';
+const description =
+  'Como escolher um personal trainer para quem tem 60+ anos: por que o acompanhamento individualizado vale especialmente nessa fase, o que procurar no profissional, perguntas para fazer antes de contratar e sinais de alerta.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Personal trainer para terceira idade: como escolher</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Se há um público para quem o acompanhamento individualizado tende a
+      valer o investimento, é quem passou dos 60. Não por fragilidade — muita
+      gente nessa faixa treina pesado e bem —, mas porque nessa fase os
+      detalhes pesam mais: execução segura, progressão no ritmo certo,
+      adaptação a articulações que já têm história e, para quem nunca
+      treinou, a confiança de começar com alguém ao lado. Este guia foca na
+      decisão de contratar: o que procurar no profissional, o que perguntar
+      antes de fechar e quais sinais indicam que aquele personal não é a
+      escolha certa para você ou para a pessoa da sua família.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o acompanhamento individualizado vale especialmente após os 60</h2>
+      <p>
+        Treinar por conta própria é possível em qualquer idade, mas alguns
+        fatores fazem o acompanhamento render mais para quem está na terceira
+        idade:
+      </p>
+      <ul>
+        <li>
+          <strong>Segurança na execução.</strong> Um erro de técnica que um
+          corpo de 25 anos "absorve" sem consequência pode custar caro em
+          articulações com décadas de uso. Ter alguém corrigindo postura e
+          carga em tempo real reduz a margem para esse tipo de erro.
+        </li>
+        <li>
+          <strong>Trabalho de força e equilíbrio associado a menor risco de
+          quedas.</strong> Quedas são uma das principais preocupações de
+          saúde nessa faixa etária, e revisões de estudos que embasaram as
+          diretrizes internacionais indicam que programas de exercício
+          combinando equilíbrio e fortalecimento estão associados a redução
+          na taxa de quedas em pessoas 65+. Não é garantia individual — mas é
+          um dos argumentos mais sólidos a favor do treino orientado nessa
+          fase.
+        </li>
+        <li>
+          <strong>Adaptação a limitações e condições comuns da idade.</strong>
+          Artrose, hipertensão controlada, prótese de joelho ou quadril,
+          osteopenia: nada disso costuma impedir o treino, mas tudo isso
+          exige adaptar exercícios, amplitudes e progressão — exatamente o
+          tipo de ajuste fino que um treino genérico não faz.
+        </li>
+        <li>
+          <strong>Confiança para começar (ou recomeçar).</strong> Muita gente
+          60+ nunca pisou numa academia e sente que "esse ambiente não é para
+          mim". Um profissional paciente, que explica sem pressa e sem
+          tratar o aluno como incapaz, costuma ser o que transforma a
+          intenção em hábito.
+        </li>
+      </ul>
+
+      <h2>O que dizem as diretrizes sobre treino de força na terceira idade</h2>
+      <p>
+        A recomendação de treinar força depois dos 60 não é modismo — é
+        consenso entre as principais referências de saúde. As diretrizes da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        recomendam que pessoas com 65 anos ou mais façam atividades de
+        fortalecimento muscular em 2 ou mais dias da semana e incluam, pelo
+        menos 3 vezes por semana, atividades multicomponentes que trabalhem
+        equilíbrio e força — justamente pela relação com capacidade funcional
+        e prevenção de quedas. Na mesma direção, o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        trata o treino resistido como seguro e recomendado para adultos
+        saudáveis de todas as idades, com prescrição adaptada — em geral 2 a
+        3 sessões semanais para adultos mais velhos, com progressão gradual
+        de carga.
+      </p>
+      <p>
+        Há ainda a questão da <strong>sarcopenia</strong> — a perda gradual
+        de massa e força muscular que tende a se acelerar com o
+        envelhecimento. Revisões e meta-análises recentes sugerem que o
+        treino de força é a intervenção com melhor evidência para atenuar e,
+        em parte, reverter essa perda, com ganhos relevantes de força e
+        função mesmo em quem começa tarde. Em resumo: a literatura não diz
+        que idoso "pode" treinar força — diz que, salvo contraindicação
+        médica, provavelmente deveria. A questão deste guia é outra: com quem.
+      </p>
+
+      <h2>O que procurar no profissional</h2>
+      <p>
+        Os critérios gerais — registro no CREF, avaliação inicial, postura
+        profissional — estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> e
+        valem integralmente aqui. Para o público 60+, some a eles quatro
+        filtros específicos:
+      </p>
+      <ul>
+        <li>
+          <strong>Experiência real com esse público.</strong> Não existe uma
+          credencial obrigatória para atender idosos, então o que diferencia
+          é a prática: pergunte há quanto tempo o profissional atende alunos
+          nessa faixa etária, quantos atende hoje e peça exemplos concretos
+          de como adaptou treinos a limitações comuns.
+        </li>
+        <li>
+          <strong>Paciência didática.</strong> O bom profissional explica o
+          porquê de cada exercício, repete a orientação quantas vezes for
+          preciso e ajusta o ritmo da sessão sem transmitir pressa nem
+          tratar o aluno com condescendência.
+        </li>
+        <li>
+          <strong>Avaliação inicial cuidadosa.</strong> Antes do primeiro
+          treino, espere perguntas detalhadas sobre histórico de saúde,
+          medicamentos em uso, cirurgias, quedas anteriores, dores e nível
+          atual de atividade. Um personal que quer "começar logo" sem esse
+          levantamento é um mau sinal em qualquer idade — nessa faixa, é
+          desqualificante.
+        </li>
+        <li>
+          <strong>Disposição para dialogar com o médico.</strong> Quando há
+          condições em acompanhamento (cardiopatia, osteoporose, diabetes),
+          o profissional deve se mostrar aberto a seguir orientações do
+          médico responsável e, se necessário, trocar informações com ele —
+          em vez de tratar o treino como território isolado.
+        </li>
+      </ul>
+
+      <h2>Perguntas para fazer antes de contratar</h2>
+      <p>
+        Numa primeira conversa ou aula experimental, estas perguntas revelam
+        muito sobre o profissional:
+      </p>
+      <ul>
+        <li>"Você atende (ou já atendeu) alunos da minha idade? Pode me contar como foi?"</li>
+        <li>"Como você adapta o treino para quem tem [artrose / prótese / pressão alta / a sua condição]?"</li>
+        <li>"Como funciona a sua avaliação inicial? O que você quer saber sobre a minha saúde antes de começar?"</li>
+        <li>"Você costuma pedir liberação médica? Se o meu médico fizer recomendações, você as incorpora ao treino?"</li>
+        <li>"O que acontece se eu sentir dor ou desconforto durante um exercício?"</li>
+        <li>"Em quanto tempo você espera ver evolução — e o que você considera evolução para alguém como eu?"</li>
+      </ul>
+      <p>
+        Não há resposta "certa" única, mas o padrão importa: respostas que
+        demonstram escuta, individualização e ausência de promessas
+        mirabolantes são bons sinais. Respostas genéricas ou apressadas, não.
+      </p>
+
+      <div class="callout">
+        <strong>Liberação médica: recomendação padrão nesse público.</strong>
+        Antes de iniciar um programa de treino após os 60 — em especial para
+        quem está sedentário há tempos ou tem condições de saúde em
+        acompanhamento —, a recomendação geral é passar por uma avaliação
+        médica. Isso não substitui nenhuma conduta individual: quem define o
+        que você pode ou não fazer, em termos clínicos, é o seu médico. Um
+        bom personal recebe essa liberação como aliada, não como obstáculo.
+      </div>
+
+      <h2>Presencial ou online?</h2>
+      <p>
+        Para a maior parte das pessoas na terceira idade,
+        <strong>o formato presencial costuma ser preferível</strong>,
+        especialmente no início: a supervisão próxima permite corrigir
+        execução na hora, oferecer apoio físico em exercícios de equilíbrio
+        e reagir de imediato a qualquer desconforto. Para quem está
+        começando do zero ou tem limitações relevantes, essa presença faz
+        diferença real.
+      </p>
+      <p>
+        Isso não descarta o online por completo. Idosos ativos, que já
+        treinam com autonomia e têm familiaridade com tecnologia, podem se
+        adaptar bem ao formato a distância — com a vantagem do custo menor e
+        da flexibilidade de horário. As condições em que o modelo funciona
+        (e em que não funciona) estão detalhadas no guia
+        <a href="/guias/personal-online-funciona">personal trainer online funciona?</a>.
+      </p>
+
+      <h2>Custo e frequência</h2>
+      <p>
+        O valor da sessão para o público 60+ segue as mesmas faixas do
+        mercado geral — as referências por cidade e formato estão no guia
+        <a href={rotas.quantoCusta}>quanto custa um personal trainer</a>.
+        Sobre frequência, 2 a 3 sessões semanais é um ponto de partida
+        comum, alinhado ao que as diretrizes sugerem para fortalecimento
+        muscular nessa faixa etária; quem quiser aprofundar a decisão
+        encontra o raciocínio completo no guia sobre
+        <a href="/guias/quantas-vezes-por-semana-personal-trainer">quantas vezes por semana treinar com personal trainer</a>.
+        Se o orçamento for limitado, uma frequência menor com o profissional,
+        complementada por caminhadas e exercícios orientados nos demais
+        dias, costuma ser melhor do que não contratar.
+      </p>
+      <p>
+        E se a dúvida for anterior — "será que preciso mesmo de alguém ou
+        consigo começar sozinho?" —, os fundamentos de um primeiro treino
+        estão no guia de
+        <a href="/musculacao/treino-para-iniciantes">treino de musculação para iniciantes</a>.
+        A diferença é que, para o público 60+, a balança pende mais
+        claramente para o acompanhamento, pelas razões de segurança já
+        discutidas.
+      </p>
+
+      <h2>Sinais de alerta</h2>
+      <p>Desconfie — e considere procurar outro profissional — se notar:</p>
+      <ul>
+        <li>
+          <strong>Ignorar limitações relatadas.</strong> Você menciona dor no
+          joelho ou orientação médica e o profissional segue o plano como se
+          nada tivesse sido dito.
+        </li>
+        <li>
+          <strong>Treino genérico de jovem aplicado a idoso.</strong> A mesma
+          planilha usada com alunos de 25 anos, sem adaptação de exercícios,
+          volume ou progressão — individualização é justamente o que se está
+          pagando.
+        </li>
+        <li>
+          <strong>Promessas de rejuvenescimento ou resultado garantido.</strong>
+          "Vou te deixar com corpo de 40" ou "garanto que você nunca mais vai
+          cair" não são compromissos que um profissional sério pode assumir.
+          Treino bem feito melhora força, função e confiança — sem prazo
+          mágico nem garantia individual.
+        </li>
+        <li>
+          <strong>Pular a avaliação inicial ou dispensar a conversa com o
+          médico.</strong> Pressa em fechar contrato e desinteresse pelo seu
+          histórico de saúde indicam que o cuidado que esse público exige
+          não virá depois.
+        </li>
+        <li>
+          <strong>Tom infantilizador.</strong> Tratar o aluno como frágil ou
+          incapaz por padrão é o outro extremo do descuido — respeito inclui
+          desafiar na medida certa.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

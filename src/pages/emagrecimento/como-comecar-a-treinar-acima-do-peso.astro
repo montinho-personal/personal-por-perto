@@ -1,0 +1,295 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: rotas.musculacao + '/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    descricao: 'A base geral de quem está começando na musculação: o que treinar, o que esperar e como progredir nos primeiros meses.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'Por que o treino de força é uma ferramenta de emagrecimento — e por que ele vai muito além de "queimar calorias" na sessão.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'O que fazer para perder gordura sem perder músculo — um cuidado que começa desde os primeiros treinos.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento',
+    titulo: 'Personal trainer para emagrecimento: como escolher',
+    descricao: 'Como identificar um profissional com experiência real em emagrecimento — e que acolha quem está começando acima do peso.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/como-comecar-a-treinar-acima-do-peso';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento' },
+  { nome: 'Como começar a treinar acima do peso', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Tenho vergonha de treinar na frente dos outros. Preciso de academia para começar?',
+    resposta:
+      'Não. Caminhada no bairro ou no parque, exercícios com o peso do corpo em casa e acompanhamento online são formas legítimas de começar — e muita gente constrói o hábito assim antes de pisar numa academia, se é que vai querer pisar. Se a academia fizer parte do plano, horários mais vazios, unidades menores ou treinar com um profissional ao lado costumam reduzir bastante o desconforto inicial. O importante é que o ambiente trabalhe a seu favor, não contra.',
+  },
+  {
+    pergunta: 'Estou muito acima do peso. É perigoso começar a treinar?',
+    resposta:
+      'Para a maioria das pessoas, começar com atividades leves e progressão gradual é seguro — e os riscos de permanecer sedentário costumam ser maiores do que os de se movimentar com bom senso. A recomendação padrão é: quem está há muito tempo sem treinar ou tem condições de saúde associadas (pressão alta, diabetes, dores articulares importantes) deve passar por uma avaliação médica antes de começar. Não é burocracia nem alarme; é o ponto de partida que permite treinar com tranquilidade.',
+  },
+  {
+    pergunta: 'Devo primeiro emagrecer caminhando e só depois fazer musculação?',
+    resposta:
+      'Não precisa esperar. Treino de força adaptado pode (e costuma valer a pena) entrar desde o início, junto com a caminhada: ele ajuda a preservar massa muscular durante a perda de peso, fortalece a musculatura que protege as articulações e melhora a capacidade para as tarefas do dia a dia. "Adaptado" é a palavra-chave — exercícios escolhidos para o seu corpo de hoje, com cargas e amplitudes confortáveis, progredindo aos poucos.',
+  },
+  {
+    pergunta: 'Sinto desconforto nos joelhos quando caminho. O que fazer?',
+    resposta:
+      'Primeiro, não interprete isso como um sinal de que exercício "não é para você". Opções de baixo impacto — bicicleta ergométrica, exercícios na água, caminhada em terreno plano com calçado adequado e sessões mais curtas — costumam ser bem mais confortáveis para as articulações, e o fortalecimento muscular tende a melhorar o quadro com o tempo. Se a dor for persistente ou limitante, o caminho certo é uma avaliação médica; a partir daí, um profissional de educação física monta o treino respeitando essa realidade.',
+  },
+  {
+    pergunta: 'Em quanto tempo vou ver resultado na balança?',
+    resposta:
+      'Não dá para prometer prazo — e desconfie de quem promete. O que dá para dizer é que os primeiros resultados geralmente não aparecem na balança: mais disposição, sono melhor, menos falta de ar em escadas, roupas vestindo diferente e cargas subindo no treino costumam vir antes de mudanças grandes no peso. Como o treino de força pode aumentar massa muscular enquanto a gordura cai, o número da balança pode se mover devagar mesmo com o corpo mudando. Vale acompanhar várias métricas, não uma só.',
+  },
+];
+
+const title = 'Como começar a treinar estando acima do peso';
+const description =
+  'Guia empático e prático para começar a treinar acima do peso: como lidar com a vergonha da academia, exercícios de baixo impacto, caminhada, treino de força adaptado e progressão gradual.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Como começar a treinar estando acima do peso</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Começar a treinar acima do peso envolve barreiras que quase nunca
+      aparecem nos guias genéricos de treino: a vergonha de entrar na
+      academia, o medo de não aguentar, a lembrança de experiências ruins, o
+      desconforto nas articulações. Nada disso é frescura — e nada disso
+      precisa impedir o começo. Este guia trata essas barreiras de frente e
+      mostra um caminho prático e gradual, sem promessas milagrosas e sem
+      exigir que você "vire outra pessoa" antes do primeiro treino.
+    </p>
+
+    <div class="prose">
+      <h2>As barreiras são reais — e têm contorno</h2>
+      <p>
+        Se você já adiou o começo por vergonha do ambiente da academia, por
+        medo de passar mal no primeiro treino ou porque uma experiência
+        anterior foi humilhante (um profissional que não soube acolher, um
+        treino que ignorou seus limites), saiba que isso é extremamente
+        comum — e que o problema estava no ambiente e na abordagem, não em
+        você. Algumas formas práticas de contornar:
+      </p>
+      <ul>
+        <li>
+          <strong>Vergonha do ambiente:</strong> academia não é pré-requisito.
+          Caminhada na rua ou no parque, treino em casa com o peso do corpo e
+          acompanhamento online são pontos de partida legítimos. Se quiser a
+          academia, horários mais vazios e unidades menores ajudam muito no
+          início.
+        </li>
+        <li>
+          <strong>Medo de não aguentar:</strong> o treino certo para começar é
+          aquele que termina com a sensação de "eu conseguiria mais um pouco".
+          Começar bem abaixo do limite não é perder tempo — é construir a base
+          que permite progredir sem sustos.
+        </li>
+        <li>
+          <strong>Experiências ruins anteriores:</strong> procure um
+          profissional que pergunte sobre seu histórico e seus receios antes
+          de falar de treino. Quem começa acima do peso precisa de adaptação e
+          respeito ao ritmo, não de "sem dor, sem ganho".
+        </li>
+        <li>
+          <strong>Desconforto articular:</strong> existe um repertório inteiro
+          de exercícios de baixo impacto (bicicleta, água, máquinas, apoios)
+          que tira a sobrecarga dos joelhos e do quadril enquanto o
+          condicionamento e a força melhoram.
+        </li>
+      </ul>
+
+      <h2>Antes de começar: a avaliação médica como ponto de partida</h2>
+      <p>
+        Uma recomendação padrão — não um alarme: quem está sedentário há
+        muito tempo, ou convive com condições de saúde associadas (pressão
+        alta, diabetes, dores articulares importantes, entre outras), deve
+        passar por uma <strong>avaliação médica antes de iniciar um programa de
+        exercícios</strong>. Não se trata de pedir "autorização para viver",
+        e sim de mapear o ponto de partida para treinar com tranquilidade.
+        Entidades como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>
+        reforçam a importância dessa avaliação prévia. Este artigo não
+        substitui esse passo — nenhum conteúdo de internet substitui.
+      </p>
+
+      <h2>Por onde começar, na prática</h2>
+      <p>
+        Um começo que costuma funcionar bem combina duas frentes simples:
+        <strong>caminhada</strong> (ou outro aeróbico de baixo impacto, como
+        bicicleta ergométrica ou exercícios na água) e <strong>treino de força
+        adaptado</strong>, duas a três vezes por semana. Adaptado significa:
+        exercícios escolhidos para o seu corpo de hoje — sentar e levantar de
+        uma cadeira, remadas e empurrões em máquinas ou elásticos, apoios de
+        parede — com cargas, amplitudes e volumes confortáveis. A regra de
+        ouro é a <strong>progressão gradual</strong>: aumentar um pouco de cada
+        vez (minutos de caminhada, repetições, carga), semana a semana, em vez
+        de tentar compensar anos de sedentarismo em um mês. As diretrizes de
+        atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        apontam na mesma direção: qualquer quantidade de movimento é melhor
+        que nenhuma, e o aumento deve ser progressivo. A base geral do treino
+        de força para quem nunca treinou está no nosso guia de
+        <a href={rotas.musculacao + '/treino-para-iniciantes'}>musculação para
+        iniciantes</a>.
+      </p>
+
+      <h2>Por que treino de força importa desde o início</h2>
+      <p>
+        É comum ouvir que "primeiro emagrece, depois faz musculação". A
+        lógica atual é o contrário: o treino de força vale a pena
+        <strong>desde o começo</strong>. Ele fortalece a musculatura que
+        estabiliza joelhos, quadril e coluna — o que tende a reduzir o
+        desconforto nas próprias atividades do dia a dia —, melhora a
+        capacidade funcional e, principalmente, ajuda a
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo">preservar
+        massa muscular durante o emagrecimento</a>, em vez de perder músculo
+        junto com a gordura. Explicamos o papel completo da musculação nesse
+        processo no artigo sobre
+        <a href="/emagrecimento/como-emagrecer-fazendo-musculacao">como emagrecer
+        fazendo musculação</a>. Força não é a etapa "avançada" do plano; é
+        parte da fundação.
+      </p>
+
+      <h2>A balança não é a única métrica — principalmente no começo</h2>
+      <p>
+        Nos primeiros meses, os sinais mais confiáveis de progresso
+        raramente estão na balança: subir escada sem perder o fôlego, dormir
+        melhor, ter mais disposição, ver a roupa vestindo diferente,
+        aumentar a carga ou as repetições no treino. Como o treino de força
+        pode aumentar a massa muscular enquanto a gordura diminui, o peso
+        pode se mover devagar mesmo com o corpo mudando visivelmente. Medir o
+        progresso só pela balança, nessa fase, é uma receita para desanimar
+        exatamente quando as coisas estão funcionando. Circunferências, fotos
+        de acompanhamento, desempenho no treino e disposição no dia a dia
+        contam uma história mais completa.
+      </p>
+
+      <h2>O papel de um profissional que acolhe esse perfil</h2>
+      <p>
+        Nenhuma parte deste guia exige um personal trainer — mas um bom
+        profissional encurta muito o caminho, principalmente para quem carrega
+        receio e experiências ruins. O que procurar: alguém que faça uma
+        avaliação inicial de verdade, adapte exercícios sem constrangimento,
+        respeite o seu ritmo de progressão e trate o emagrecimento como
+        processo, não como punição. Montamos um guia específico sobre
+        <a href="/guias/personal-trainer-para-emagrecimento">como escolher um
+        personal trainer para emagrecimento</a>, com os critérios que
+        importam nessa escolha. E, para quem está em tratamento médico para
+        obesidade e quer entender como o treino se encaixa nesse contexto,
+        temos uma seção dedicada sobre
+        <a href={rotas.mounjaro}>Mounjaro e treino</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> comece pequeno e comece agora — caminhada
+        mais treino de força adaptado, com progressão gradual e, como
+        recomendação padrão, uma avaliação médica antes se você está há muito
+        tempo parado ou tem condições de saúde associadas. Meça o progresso
+        por várias métricas, não só pela balança, e procure ambientes e
+        profissionais que acolham o seu ponto de partida. O corpo que você
+        tem hoje é o corpo com que se começa — e ele é suficiente para o
+        primeiro treino.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,276 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/musculacao/descanso-entre-series',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'Séries perto da falha geram mais fadiga — e o intervalo entre séries precisa acompanhar. Veja o que a literatura indica.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'Falha e RIR só fazem sentido dentro de um volume bem planejado. Entenda séries efetivas e faixas de repetição.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Dosar esforço, volume e recuperação de forma individual é trabalho de acompanhamento — esta é a recomendação do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/musculacao/treinar-ate-a-falha';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Treinar até a falha funciona?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é treinar até a falha muscular?',
+    resposta:
+      'É levar a série até o ponto em que não é possível completar mais uma repetição com técnica adequada, mesmo tentando — a chamada falha concêntrica. Não é o mesmo que "sentir queimar" ou achar difícil: é a incapacidade real de concluir a próxima repetição.',
+  },
+  {
+    pergunta: 'O que significa RIR (repetições em reserva)?',
+    resposta:
+      'RIR é a estimativa de quantas repetições ainda caberiam na série antes da falha. Uma série com 2 RIR, por exemplo, é interrompida quando ainda daria para fazer cerca de duas repetições. É uma forma prática de dosar esforço: 0 RIR é a falha; 1 a 3 RIR é treinar próximo da falha; 5 ou mais RIR costuma indicar uma série longe de gerar estímulo relevante.',
+  },
+  {
+    pergunta: 'Preciso falhar em toda série para ganhar músculo?',
+    resposta:
+      'A evidência disponível sugere que não. Meta-análises que compararam treinar até a falha com parar perto dela (em geral 1 a 3 repetições em reserva) não encontraram diferença significativa de hipertrofia ou força entre as condições, desde que o esforço seja alto. Treinar próximo da falha tende a entregar resultado comparável com menos fadiga acumulada.',
+  },
+  {
+    pergunta: 'Quando faz sentido usar a falha no treino?',
+    resposta:
+      'Contextos comuns na prática: exercícios isoladores e em máquinas (onde a falha é mais segura), últimas séries de um exercício e praticantes avançados que precisam calibrar a própria percepção de esforço. Em compostos pesados com barra livre, a falha aumenta o risco técnico e o custo de recuperação, e costuma ser evitada.',
+  },
+  {
+    pergunta: 'Treinar até a falha é perigoso para iniciantes?',
+    resposta:
+      'O maior problema para iniciantes não é perigo em si, mas o momento: nas primeiras fases, a prioridade é aprender a técnica, e a falha degrada a execução justamente quando o padrão de movimento ainda está sendo construído. Além disso, iniciantes progridem bem treinando com folga da falha. Se houver qualquer condição de saúde ou dor durante o treino, o caminho é avaliação com um profissional, não insistir no esforço máximo.',
+  },
+];
+
+const title = 'Treinar até a falha funciona?';
+const description =
+  'Falha muscular, repetições em reserva (RIR) e séries efetivas: o que meta-análises indicam sobre treinar até a falha vs. parar perto dela, e quando cada abordagem faz sentido.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treinar até a falha funciona?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Se não falhou, não treinou" é uma das frases mais repetidas da academia — e uma
+      das mais imprecisas. Em resumo: o que a pesquisa costuma indicar é que
+      <strong>treinar perto da falha</strong> (com poucas repetições em reserva) produz
+      ganhos comparáveis a treinar até a falha completa, com menos fadiga e menor custo
+      de recuperação. Abaixo, o que é falha de verdade, o que é RIR e quando cada
+      abordagem tem lugar.
+    </p>
+
+    <div class="prose">
+      <h2>O que é falha muscular (de verdade)</h2>
+      <p>
+        Falha muscular — mais precisamente, <strong>falha concêntrica</strong> — é o
+        ponto em que você tenta a próxima repetição e não consegue completá-la com
+        técnica adequada. Não é "começou a arder", nem "ficou pesado": é a incapacidade
+        real de concluir o movimento na fase de subida (concêntrica), mesmo com esforço
+        máximo. Essa distinção importa porque muita gente acredita que treina até a falha
+        quando, na prática, para várias repetições antes — e muita gente persegue a falha
+        achando que qualquer coisa aquém dela "não conta".
+      </p>
+
+      <h2>RIR: repetições em reserva</h2>
+      <p>
+        <strong>RIR (repetitions in reserve, ou repetições em reserva)</strong> é a forma
+        mais usada hoje para descrever o quão perto da falha uma série chegou: é a
+        estimativa de quantas repetições ainda caberiam antes de falhar. Uma série com
+        2 RIR foi interrompida quando ainda daria para fazer cerca de duas repetições;
+        0 RIR é a falha. A escala foi formalizada na literatura a partir de uma adaptação
+        da escala de percepção de esforço proposta por Zourdos e colegas
+        (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4961270/" target="_blank" rel="noopener">artigo disponível no PMC</a>),
+        e virou ferramenta padrão de prescrição: em vez de mandar "3 séries de 10",
+        prescreve-se "3 séries de 8 a 10 com 1 a 2 RIR".
+      </p>
+      <p>
+        É desse conceito que vem a ideia de <strong>série efetiva</strong>: uma série
+        feita com esforço suficiente para gerar estímulo relevante — em geral entendida
+        como uma série levada para perto da falha, com poucas repetições de reserva. Uma
+        série interrompida com 6 ou 8 repetições sobrando tende a gerar bem menos
+        estímulo, e por isso não conta igual no
+        <a href="/musculacao/quantas-series-e-repeticoes">volume semanal de séries</a>.
+        A ressalva honesta: estimar RIR é uma habilidade — iniciantes costumam
+        subestimar quantas repetições ainda conseguiriam fazer, e a precisão melhora com
+        experiência e com séries ocasionais levadas até a falha para calibrar.
+      </p>
+
+      <h2>O que as meta-análises indicam</h2>
+      <p>
+        A comparação direta já foi feita muitas vezes. Uma revisão sistemática com
+        meta-análise de Grgic, Schoenfeld e colegas
+        (<a href="https://www.sciencedirect.com/science/article/pii/S2095254621000077" target="_blank" rel="noopener">publicada no Journal of Sport and Health Science</a>)
+        não encontrou diferença significativa entre treinar até a falha e não treinar até
+        a falha, nem para força nem para hipertrofia — com uma nuance: em subanálises com
+        praticantes treinados, houve sinal de algum benefício da falha para hipertrofia.
+      </p>
+      <p>
+        Trabalhos mais recentes refinaram a pergunta. Uma série de meta-regressões sobre
+        a relação dose-resposta entre proximidade da falha e ganhos
+        (<a href="https://link.springer.com/article/10.1007/s40279-024-02069-2" target="_blank" rel="noopener">Robinson et al., 2024, Sports Medicine</a>)
+        sugere que, para <strong>hipertrofia</strong>, treinar mais perto da falha tende
+        a gerar mais crescimento — quanto menor o RIR, maior o estímulo —, enquanto para
+        <strong>força</strong> a proximidade da falha parece importar pouco. A leitura
+        prática que a literatura costuma apoiar: séries na faixa de
+        <strong>0 a 3 RIR</strong> entregam a maior parte do estímulo de hipertrofia, e a
+        falha completa em toda série não parece necessária — ela adiciona pouco estímulo
+        extra e muita fadiga.
+      </p>
+      <div class="callout">
+        <strong>O ponto central:</strong> esforço alto é inegociável; falha completa, não.
+        A diferença de estímulo entre parar a 1-2 repetições da falha e falhar de verdade
+        tende a ser pequena — mas a diferença de fadiga, dor muscular e custo de
+        recuperação é grande. Quem falha em tudo, o treino inteiro, paga caro nas séries
+        e sessões seguintes.
+      </div>
+
+      <h2>Por que a falha custa caro</h2>
+      <p>
+        Séries até a falha geram mais fadiga neuromuscular e mais dano muscular do que
+        séries equivalentes interrompidas um pouco antes. Isso significa recuperação mais
+        lenta entre sessões e queda de desempenho nas séries seguintes do mesmo treino —
+        o que pode reduzir o volume total de qualidade da semana. Há ainda o
+        <strong>risco técnico</strong>: perto da falha, a execução degrada, e em
+        exercícios compostos com carga alta (agachamento, terra, supino livre) é
+        justamente a técnica que protege as articulações. Os mecanismos pelos quais a
+        tensão mecânica estimula o crescimento — detalhados no artigo sobre
+        <a href="/musculacao/hipertrofia-como-funciona">como funciona a hipertrofia</a> —
+        não exigem que a última repetição seja impossível; exigem que as repetições
+        finais sejam feitas com esforço alto e boa execução.
+      </p>
+
+      <h2>Quando a falha pode ter lugar</h2>
+      <ul>
+        <li>
+          <strong>Isoladores e máquinas:</strong> rosca, elevação lateral, cadeira
+          extensora — exercícios em que falhar é seguro e o custo sistêmico é baixo.
+        </li>
+        <li>
+          <strong>Últimas séries de um exercício:</strong> falhar na série final não
+          compromete as séries seguintes, porque elas não existem.
+        </li>
+        <li>
+          <strong>Praticantes avançados:</strong> quem já domina a técnica pode usar a
+          falha de forma pontual, inclusive para calibrar a própria estimativa de RIR.
+        </li>
+      </ul>
+      <h2>Quando evitar</h2>
+      <ul>
+        <li>
+          <strong>Compostos pesados com barra livre:</strong> o risco técnico e o custo
+          de recuperação superam o eventual estímulo extra.
+        </li>
+        <li>
+          <strong>Iniciantes aprendendo técnica:</strong> a prioridade é construir o
+          padrão de movimento — e a falha degrada exatamente isso. Iniciantes progridem
+          bem com folga da falha.
+        </li>
+        <li>
+          <strong>Fases de acúmulo de volume:</strong> quando o plano pede muitas séries
+          na semana, falhar em tudo torna o volume insustentável.
+        </li>
+      </ul>
+
+      <h2>Esforço é individual — e é aí que entra o acompanhamento</h2>
+      <p>
+        Saber dosar RIR, decidir onde a falha cabe e ajustar isso conforme a fase do
+        treino e a sua recuperação é exatamente o tipo de decisão que não dá para copiar
+        de um plano genérico. Um <a href={rotas.comoEscolher}>personal trainer
+        qualificado</a> observa sua execução, calibra sua percepção de esforço e ajusta a
+        intensidade ao longo das semanas. E se houver dor, lesão ou qualquer condição de
+        saúde envolvida, a avaliação com um profissional de saúde vem antes de qualquer
+        estratégia de intensidade.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
