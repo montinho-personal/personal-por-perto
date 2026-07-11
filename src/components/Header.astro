@@ -13,12 +13,44 @@ const isActive = (url: string) =>
       <Logo />
     </a>
 
+    <!-- Busca e CTA visíveis só no desktop (no mobile ficam dentro do menu) -->
+    <form class="nav-busca so-desktop" action="/personal-trainer/" method="get" role="search">
+      <label class="sr-only" for="busca-header">Buscar cidade</label>
+      <input
+        id="busca-header"
+        type="search"
+        name="q"
+        placeholder="Buscar sua cidade…"
+        autocomplete="off"
+      />
+      <button type="submit" aria-label="Buscar">🔎</button>
+    </form>
+    <a
+      class="btn btn-primary nav-cta so-desktop"
+      href={montinhoUrl('header')}
+      target="_blank"
+      rel="noopener nofollow"
+    >
+      Acompanhamento online
+    </a>
+
     <details class="nav">
       <summary class="nav-toggle" aria-label="Abrir menu">
         <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
         <span class="nav-toggle-label">Menu</span>
       </summary>
       <nav class="nav-menu" aria-label="Navegação principal">
+        <form class="nav-busca so-mobile" action="/personal-trainer/" method="get" role="search">
+          <label class="sr-only" for="busca-menu">Buscar cidade</label>
+          <input
+            id="busca-menu"
+            type="search"
+            name="q"
+            placeholder="Buscar sua cidade…"
+            autocomplete="off"
+          />
+          <button type="submit" aria-label="Buscar">🔎</button>
+        </form>
         <ul>
           {
             navPrincipal.map((item) => (
@@ -30,13 +62,43 @@ const isActive = (url: string) =>
             ))
           }
         </ul>
-        <a class="btn btn-primary nav-cta" href={montinhoUrl('header')} target="_blank" rel="noopener nofollow">
+        <a
+          class="btn btn-primary nav-cta so-mobile"
+          href={montinhoUrl('header')}
+          target="_blank"
+          rel="noopener nofollow"
+        >
           Acompanhamento online
         </a>
       </nav>
     </details>
   </div>
 </header>
+
+<script>
+  const nav = document.querySelector<HTMLDetailsElement>('.site-header .nav');
+  const desktop = window.matchMedia('(min-width: 880px)');
+  if (nav) {
+    // Desktop: menu de links sempre aberto (reforço em JS para navegadores
+    // sem suporte a ::details-content). Mobile: volta a fechado.
+    const sync = () => {
+      nav.open = desktop.matches;
+    };
+    sync();
+    desktop.addEventListener('change', sync);
+
+    // Mobile: fecha ao clicar/tocar fora do menu ou ao pressionar Esc.
+    document.addEventListener('click', (e) => {
+      if (desktop.matches) return;
+      if (nav.open && e.target instanceof Node && !nav.contains(e.target)) {
+        nav.open = false;
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!desktop.matches && e.key === 'Escape' && nav.open) nav.open = false;
+    });
+  }
+</script>
 
 <style>
   .site-header {
@@ -60,6 +122,51 @@ const isActive = (url: string) =>
   }
   .brand:hover {
     text-decoration: none;
+  }
+
+  /* Busca de cidades (menu mobile e barra desktop) */
+  .nav-busca {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 0.15rem 0.15rem 0.15rem 0.65rem;
+    background: #fff;
+  }
+  .nav-busca:focus-within {
+    border-color: var(--brand-700);
+  }
+  .nav-busca input {
+    border: 0;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--ink);
+    width: 100%;
+    min-width: 0;
+    padding: 0.35rem 0;
+  }
+  .nav-busca input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .nav-busca button {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.35rem 0.5rem;
+    border-radius: var(--radius-sm);
+    line-height: 1;
+  }
+  .nav-busca button:hover {
+    background: var(--brand-50);
+  }
+
+  /* Mobile: busca e CTA do desktop ficam ocultos */
+  .so-desktop {
+    display: none;
   }
 
   /* details como container do menu */
@@ -130,16 +237,49 @@ const isActive = (url: string) =>
     width: 100%;
   }
 
-  /* Desktop: menu sempre visível, sem toggle */
+  /* Desktop: header em duas linhas — marca + busca + CTA em cima,
+     links de navegação embaixo. Sem toggle. */
   @media (min-width: 880px) {
+    .header-inner {
+      flex-wrap: wrap;
+      row-gap: 0;
+      padding-top: 0.6rem;
+    }
+    .so-desktop {
+      display: flex;
+    }
+    .nav-cta.so-desktop {
+      display: inline-flex;
+      width: auto;
+      white-space: nowrap;
+    }
+    .nav-busca.so-desktop {
+      flex: 0 1 clamp(180px, 24vw, 340px);
+      min-width: 180px;
+      margin-left: auto;
+    }
+    .so-mobile {
+      display: none !important;
+    }
+
     .nav-toggle {
       display: none;
+    }
+    /* O conteúdo de um <details> fechado fica oculto pelo navegador
+       (content-visibility: hidden); no desktop forçamos a exibição. */
+    .nav::details-content {
+      content-visibility: visible;
+      display: contents;
+    }
+    /* A linha de links ocupa a largura toda, abaixo da marca/busca/CTA */
+    .nav {
+      flex: 1 0 100%;
     }
     .nav-menu {
       position: static;
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.15rem;
       box-shadow: none;
       border: 0;
       padding: 0;
@@ -149,11 +289,12 @@ const isActive = (url: string) =>
       display: flex;
       align-items: center;
       gap: 0.1rem;
+      margin-left: -0.55rem;
     }
-    .nav-cta {
-      width: auto;
-      margin-left: 0.5rem;
-      padding: 0.6rem 1.1rem;
+    .nav-menu ul a {
+      white-space: nowrap;
+      font-size: 0.95rem;
+      padding: 0.45rem 0.55rem;
     }
   }
 </style>

@@ -234,6 +234,14 @@ const schema = [
   }
 
   input?.addEventListener('input', filtrar);
+
+  // Termo vindo da busca do menu (ex.: /personal-trainer/?q=osasco)
+  const q0 = new URLSearchParams(location.search).get('q');
+  if (input && q0) {
+    input.value = q0;
+    filtrar();
+    input.focus();
+  }
 </script>
 
 <style>
