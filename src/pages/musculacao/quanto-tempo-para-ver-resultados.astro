@@ -1,0 +1,265 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    descricao: 'Onde tudo começa: por onde partir, frequência recomendada e por que a força sobe antes do músculo aparecer.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona',
+    titulo: 'Como funciona a hipertrofia muscular',
+    descricao: 'O mecanismo por trás dos resultados: tensão mecânica, estímulo e recuperação — por que o crescimento leva tempo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Ajustar volume, progressão e recuperação para o seu ritmo de evolução é trabalho de acompanhamento — esta é a recomendação do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/musculacao/quanto-tempo-para-ver-resultados';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Quanto tempo para ver resultados na musculação?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Em quanto tempo começo a ver resultados na musculação?',
+    resposta:
+      'As faixas típicas na literatura: nas primeiras semanas você tende a ganhar força (por adaptação neural, antes de o músculo crescer); mudanças de composição corporal mensuráveis em iniciantes consistentes costumam aparecer por volta de 6 a 12 semanas; e mudanças visíveis a olho, para você e para os outros, geralmente demoram mais alguns meses. São referências médias, não promessas — a variação individual é grande.',
+  },
+  {
+    pergunta: 'Por que fico mais forte antes de ficar mais musculoso?',
+    resposta:
+      'Nas primeiras semanas, o principal ganho vem de adaptações neurais: o sistema nervoso aprende a recrutar mais fibras e a coordenar melhor o movimento. Estudos costumam localizar o crescimento muscular relevante depois desse período inicial. Por isso a carga sobe rápido no começo sem que o espelho mude na mesma velocidade — é esperado, não frustração.',
+  },
+  {
+    pergunta: 'Por que não vejo diferença no espelho mesmo treinando?',
+    resposta:
+      'A percepção visual costuma ser a métrica mais lenta e menos confiável no início. Você se vê todo dia, o que mascara mudanças graduais, e a iluminação e o humor influenciam bastante. Medidas de fita, fotos padronizadas e a carga que você levanta captam progresso antes de o espelho "convencer". Se as medidas e a carga evoluem, há resultado acontecendo mesmo que o reflexo ainda não mostre.',
+  },
+  {
+    pergunta: 'O que acelera e o que atrasa os resultados?',
+    resposta:
+      'Aceleram: constância ao longo dos meses, volume de treino adequado, progressão de carga bem conduzida e sono/recuperação suficientes. Atrasam: treinar sempre com a mesma carga sem progredir, trocar de programa toda semana sem dar tempo de ele funcionar, e expectativa de transformação em 30 dias, que leva ao abandono antes de a fase de resultados chegar.',
+  },
+  {
+    pergunta: 'É possível ter grandes resultados em 30 dias?',
+    resposta:
+      'Promessas de transformação em 30 dias são, na melhor das hipóteses, exageros. É possível sentir melhora de disposição e algum ganho inicial de força cedo, mas mudança expressiva de composição corporal é um processo de meses de trabalho consistente. Desconfie de qualquer método que garanta resultado rápido e garantido — a fisiologia não funciona em prazos de campanha de marketing.',
+  },
+];
+
+const title = 'Quanto tempo demora para ver resultados na musculação?';
+const description =
+  'Linha do tempo realista e sem promessas: força por adaptação neural nas primeiras semanas, primeiras mudanças de composição em 6 a 12 semanas, por que o espelho demora mais e o que acelera ou atrasa a evolução.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Quanto tempo demora para ver resultados na musculação?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta honesta começa por um aviso: as faixas de tempo aqui são
+      <strong>típicas, não promessas</strong> — a variação individual é grande e
+      ninguém consegue cravar uma data para o seu resultado. Dito isso, a
+      literatura desenha uma linha do tempo razoável: nas primeiras semanas você
+      tende a ganhar <strong>força</strong> antes de qualquer mudança visível; as
+      primeiras alterações mensuráveis de composição em iniciantes consistentes
+      costumam aparecer por volta de <strong>6 a 12 semanas</strong>; e o espelho
+      demora mais que as medidas. Abaixo, cada fase e o que acelera ou atrasa o
+      processo.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiras semanas: força antes de músculo</h2>
+      <p>
+        No começo, a carga sobe rápido — e isso não é (ainda) crescimento
+        muscular. Os ganhos das primeiras semanas vêm principalmente de
+        <strong>adaptações neurais</strong>: o sistema nervoso aprende a recrutar
+        mais fibras, a coordenar melhor a musculatura e a reduzir a co-ativação
+        dos antagonistas. É o mesmo mecanismo explicado no guia
+        <a href="/musculacao/treino-para-iniciantes">treino de musculação para iniciantes</a>:
+        por isso o iniciante evolui de carga semana a semana sem que o corpo pareça
+        diferente. Esse descompasso é esperado — força e tamanho não caminham no
+        mesmo ritmo no início.
+      </p>
+
+      <h2>6 a 12 semanas: as primeiras mudanças mensuráveis</h2>
+      <p>
+        É por volta desse período que as primeiras alterações de composição
+        corporal começam a aparecer de forma mensurável em iniciantes
+        consistentes. Um estudo clássico sobre o curso temporal da hipertrofia
+        induzida por treino
+        (<a href="https://pubmed.ncbi.nlm.nih.gov/21409401/" target="_blank" rel="noopener">disponível no PubMed</a>)
+        aponta que boa parte dos ganhos de força inicial se explica por fatores
+        neurais, com o acúmulo de proteína muscular se tornando mais evidente
+        depois das primeiras semanas. Um trabalho que acompanhou a espessura
+        muscular de braço e peito ao longo de um programa de supino
+        (<a href="https://pubmed.ncbi.nlm.nih.gov/24265879/" target="_blank" rel="noopener">também no PubMed</a>)
+        mostra que o momento em que cada músculo passa a crescer de forma
+        detectável varia — algumas regiões respondem antes, outras depois.
+      </p>
+      <p>
+        Uma ressalva honesta que a própria literatura faz: mudanças medidas muito
+        cedo podem refletir em parte inchaço e retenção de líquido do treino
+        novo, e não só crescimento real. Por isso vale enxergar essas faixas como
+        referências médias, com margem para mais ou para menos conforme idade,
+        genética, alimentação e histórico de treino.
+      </p>
+
+      <h2>Por que o espelho demora mais que as medidas</h2>
+      <p>
+        Mesmo com resultado acontecendo, a percepção visual é a métrica mais lenta
+        — e a menos confiável no início. Você se vê todos os dias, o que mascara
+        mudanças graduais; iluminação, hidratação e até o humor influenciam como o
+        reflexo parece. Enquanto isso, a fita métrica, fotos padronizadas e a carga
+        que você levanta captam a evolução bem antes de o espelho "convencer". Se
+        as medidas e a carga sobem, há progresso real em curso, ainda que o reflexo
+        pareça o mesmo.
+      </p>
+
+      <h2>O que acelera</h2>
+      <ul>
+        <li>
+          <strong>Constância ao longo dos meses.</strong> É o fator mais decisivo —
+          nenhum detalhe de treino compensa faltas frequentes.
+        </li>
+        <li>
+          <strong>Volume adequado.</strong> Séries efetivas suficientes por grupo
+          muscular na semana, nem de menos nem além do que você recupera — o tema do
+          guia <a href="/musculacao/quantas-series-e-repeticoes">quantas séries e repetições fazer</a>.
+        </li>
+        <li>
+          <strong>Progressão de carga.</strong> Aumentar o estímulo com o tempo é o
+          que mantém a evolução; como fazer isso está em
+          <a href="/musculacao/progressao-de-carga">progressão de carga</a>.
+        </li>
+        <li>
+          <strong>Sono e recuperação.</strong> O crescimento acontece na
+          recuperação, não durante o treino. Dormir mal costuma travar o progresso
+          mesmo com treino bem feito.
+        </li>
+      </ul>
+
+      <h2>O que atrasa</h2>
+      <ul>
+        <li>
+          <strong>Treinar sem progressão.</strong> Repetir sempre a mesma carga e
+          as mesmas repetições faz o corpo se acomodar e a evolução estagnar.
+        </li>
+        <li>
+          <strong>Trocar de programa toda semana.</strong> Um treino precisa de
+          tempo para mostrar resultado; mudar constantemente impede qualquer
+          progressão de acontecer.
+        </li>
+        <li>
+          <strong>Expectativa de transformação em 30 dias.</strong> É o atalho mais
+          rápido para a frustração e o abandono — justamente antes de a fase de
+          resultados chegar.
+        </li>
+      </ul>
+
+      <h2>Por que a balança é a pior métrica isolada</h2>
+      <p>
+        Acompanhar só o peso engana: é possível ganhar músculo e perder gordura ao
+        mesmo tempo e a balança quase não se mexer. Fotos padronizadas, medidas de
+        fita e a carga que você levanta contam uma história mais fiel do que está
+        acontecendo com o corpo. Se o seu objetivo envolve emagrecimento, essa
+        lógica é ainda mais importante — o assunto é aprofundado em
+        <a href="/emagrecimento/como-emagrecer-fazendo-musculacao">como emagrecer fazendo musculação</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Um alerta honesto:</strong> desconfie de qualquer método que
+        prometa "resultados rápidos e garantidos" ou transformação em poucas
+        semanas. Ganho de força inicial e mais disposição chegam cedo, sim — mas
+        mudança expressiva de composição corporal é um processo de meses de trabalho
+        consistente. As faixas deste texto são o que se costuma observar, não uma
+        garantia para o seu caso. E se houver qualquer condição de saúde envolvida,
+        a avaliação com um profissional vem antes de qualquer meta.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

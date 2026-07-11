@@ -1,0 +1,280 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Se a resposta foi sim, veja os critérios completos: registro, especialização, avaliação inicial e sinais de alerta.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'A conta que pesa na decisão: faixas de preço por formato, presencial e online, e o que muda o valor.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.montinho,
+    titulo: 'Acompanhamento online com o Montinho',
+    descricao: 'Para quem quer o acompanhamento sem o custo do presencial, esta é a recomendação de formato do portal.',
+    tipo: 'Recomendação',
+  },
+];
+
+const path = '/guias/vale-a-pena-contratar-personal-trainer';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias' },
+  { nome: 'Vale a pena contratar um personal trainer?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Vale a pena contratar personal trainer sendo iniciante?',
+    resposta:
+      'Para quem nunca treinou, costuma ser onde o acompanhamento mais rende: os primeiros meses são a fase em que mais gente desiste, e ter alguém corrigindo a execução e ajustando a carga tende a reduzir insegurança e risco de lesão. Não é obrigatório — dá para começar sozinho com um treino bem estruturado —, mas o custo-benefício no início adianta bastante a curva de aprendizado.',
+  },
+  {
+    pergunta: 'Não vale a pena contratar personal se eu já treino há anos?',
+    resposta:
+      'Depende do momento. Quem já treina com constância, técnica sólida e progresso não precisa de acompanhamento contínuo para se manter. Ainda assim, muita gente nessa situação contrata algumas sessões pontuais para destravar uma estagnação, revisar a técnica de um exercício específico ou reorganizar o programa — um uso mais cirúrgico do que o acompanhamento mensal.',
+  },
+  {
+    pergunta: 'Existe alternativa mais barata do que personal presencial?',
+    resposta:
+      'Sim, e são caminhos honestos. Contratar poucas sessões avulsas só para aprender a técnica dos exercícios principais, optar por acompanhamento online (que costuma custar menos que o presencial) ou usar um modelo híbrido — algumas avaliações presenciais e o resto a distância — são formas de ter parte do benefício sem o custo cheio do acompanhamento presencial contínuo.',
+  },
+  {
+    pergunta: 'O personal trainer garante resultado mais rápido?',
+    resposta:
+      'Ninguém garante resultado — desconfie de quem promete. O que a evidência sugere é que treino supervisionado tende a favorecer adesão, esforço e execução, o que em média se traduz em melhores adaptações. Isso é uma tendência de grupo, não uma promessa individual: o resultado ainda depende de constância, sono, alimentação e do seu ponto de partida.',
+  },
+  {
+    pergunta: 'Como saber se vale a pena para o meu caso?',
+    resposta:
+      'Ajuda responder quatro perguntas: você sabe montar e progredir um treino sozinho com segurança? Sua constância se sustenta sem alguém cobrando? O investimento cabe no orçamento sem virar estresse? E você tem um objetivo específico ou condição que peça adaptação? Quanto mais "não" e quanto mais específico o objetivo, mais o acompanhamento tende a valer.',
+  },
+];
+
+const title = 'Vale a pena contratar um personal trainer? (2026)';
+const description =
+  'Resposta honesta e sem venda: para quem contratar um personal costuma valer muito, para quem talvez não seja necessário agora, alternativas intermediárias mais acessíveis e como decidir em 4 perguntas práticas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Vale a pena contratar um personal trainer?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta honesta é: <strong>depende do seu momento</strong> — vale mais
+      para uns perfis do que para outros. Não é um item obrigatório para treinar,
+      e treinar sozinho com constância também funciona. Mas há situações em que o
+      acompanhamento tende a fazer bastante diferença (quem está começando, quem
+      já tentou sozinho e desistiu, quem tem um objetivo específico) e outras em
+      que talvez não seja necessário agora. Abaixo, sem discurso de venda, para
+      quem costuma valer, para quem não, as alternativas intermediárias e como
+      decidir em quatro perguntas.
+    </p>
+
+    <div class="prose">
+      <h2>O que a evidência sugere sobre treino supervisionado</h2>
+      <p>
+        A comparação entre treinar com supervisão e treinar por conta própria já
+        foi estudada. Uma revisão sistemática com meta-análise sobre exercício
+        supervisionado versus não supervisionado em adultos mais velhos
+        (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11258164/" target="_blank" rel="noopener">disponível no PMC</a>)
+        encontrou vantagem, em geral moderada, do treino supervisionado para força
+        e função física. Um ensaio randomizado mais recente que comparou supervisão
+        presencial, treino guiado por aplicativo e treino autoguiado
+        (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12529976/" target="_blank" rel="noopener">também no PMC</a>)
+        observou melhores resultados de força e composição corporal no grupo com
+        acompanhamento presencial.
+      </p>
+      <p>
+        A leitura honesta desses dados exige cuidado: são médias de grupos, não
+        promessas individuais, e boa parte do benefício parece vir de fatores
+        indiretos — mais adesão, mais esforço aplicado e melhor execução — e não de
+        alguma mágica do acompanhamento em si. Ou seja: a supervisão tende a ajudar
+        justamente quem, sozinho, faltaria treino, pegaria carga de menos ou
+        executaria mal. Quem já faz tudo isso bem por conta própria colhe menos
+        vantagem adicional.
+      </p>
+
+      <h2>Para quem costuma valer muito</h2>
+      <ul>
+        <li>
+          <strong>Iniciantes sem técnica.</strong> Aprender a execução correta
+          antes de criar vícios de movimento é onde o acompanhamento mais adianta.
+          Esse recorte tem guia próprio:
+          <a href="/guias/personal-trainer-para-iniciantes">personal trainer para iniciantes</a>.
+        </li>
+        <li>
+          <strong>Quem já tentou sozinho e desistiu.</strong> Se o histórico é
+          começar e parar, a barreira raramente é falta de informação — é
+          constância. Ter alguém cobrando presença e ajustando o treino costuma
+          pesar mais do que mais um vídeo de exercício.
+        </li>
+        <li>
+          <strong>Objetivos específicos.</strong> Metas como emagrecimento com
+          preservação de massa pedem uma estratégia que vai além de "malhar" —
+          é o tema do guia
+          <a href="/guias/personal-trainer-para-emagrecimento">personal trainer para emagrecimento</a>.
+        </li>
+        <li>
+          <strong>Populações que precisam de adaptação.</strong> Pessoas 60+,
+          por exemplo, se beneficiam de progressão cuidadosa e atenção a
+          limitações — abordado no guia
+          <a href="/guias/personal-trainer-para-terceira-idade">personal trainer para a terceira idade</a>.
+        </li>
+        <li>
+          <strong>Quem estagnou.</strong> Treina há tempo, mas parou de evoluir:
+          um olhar de fora costuma identificar rápido o que travou — volume,
+          progressão ou execução.
+        </li>
+      </ul>
+
+      <h2>Para quem talvez não precise agora</h2>
+      <ul>
+        <li>
+          <strong>Quem já treina bem sozinho.</strong> Se você tem constância,
+          técnica sólida e progresso mensurável, o acompanhamento contínuo tende a
+          agregar pouco. Manter o que já funciona não exige contratar ninguém.
+        </li>
+        <li>
+          <strong>Quem só precisa de um programa pontual.</strong> Às vezes a
+          demanda não é acompanhamento mensal, e sim organizar um treino para uma
+          fase específica. Isso pode ser resolvido de forma pontual, sem contrato
+          longo.
+        </li>
+      </ul>
+
+      <h2>Alternativas intermediárias honestas</h2>
+      <p>
+        A decisão não é "personal presencial contínuo" ou "nada". Há caminhos no
+        meio que entregam parte do benefício com custo menor:
+      </p>
+      <ul>
+        <li>
+          <strong>Algumas sessões avulsas para aprender a técnica.</strong>
+          Contratar poucas sessões só para dominar a execução dos exercícios
+          principais e depois seguir sozinho é um uso eficiente do investimento.
+        </li>
+        <li>
+          <strong>Acompanhamento online.</strong> Costuma custar menos que o
+          presencial e remove deslocamento e horário fixo. Se funciona para o seu
+          caso é o tema do guia
+          <a href="/guias/personal-online-funciona">personal trainer online funciona?</a>.
+        </li>
+        <li>
+          <strong>Modelo híbrido.</strong> Algumas avaliações presenciais para
+          checar execução e postura, com o restante do acompanhamento a distância —
+          um meio-termo entre custo e proximidade.
+        </li>
+      </ul>
+
+      <h2>Custo-benefício real</h2>
+      <p>
+        Nenhuma decisão de "vale a pena" ignora o preço. O acompanhamento é um
+        custo recorrente, e o valor certo é aquele que cabe na sua rotina
+        financeira sem virar motivo de estresse. As faixas praticadas no mercado —
+        por formato, cidade e experiência do profissional — estão detalhadas no
+        guia <a href={rotas.quantoCusta}>quanto custa um personal trainer</a>. Vale
+        cruzar esse custo com o quanto cada alternativa acima resolve a sua barreira
+        real: pagar por supervisão contínua faz mais sentido para quem falharia na
+        constância do que para quem só precisa aprender a técnica uma vez.
+      </p>
+
+      <h2>Como decidir em 4 perguntas</h2>
+      <div class="callout">
+        <p>Responda com honestidade — quanto mais "não", mais o acompanhamento tende a valer:</p>
+        <ul>
+          <li><strong>1.</strong> Você sabe montar e progredir um treino sozinho com segurança?</li>
+          <li><strong>2.</strong> Sua constância se sustenta sem alguém cobrando?</li>
+          <li><strong>3.</strong> O investimento cabe no orçamento sem virar estresse?</li>
+          <li><strong>4.</strong> Você tem um objetivo específico ou uma condição que peça adaptação?</li>
+        </ul>
+        <p>
+          Se decidir seguir em frente, o próximo passo é escolher bem: os critérios
+          estão no guia <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+          E se houver qualquer condição de saúde envolvida, a avaliação com um
+          profissional de saúde vem antes de qualquer plano de treino.
+        </p>
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

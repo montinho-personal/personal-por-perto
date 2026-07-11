@@ -1,0 +1,261 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força e da proteína.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro',
+    titulo: 'Treino para quem usa Mounjaro: como adaptar',
+    descricao: 'A visão geral do treino durante o tratamento: prioridade ao treino de força, cardio complementar, progressão conservadora e constância.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento',
+    titulo: 'Personal trainer para emagrecimento',
+    descricao: 'Como um profissional de educação física ajusta o treino ao seu momento — inclusive durante um tratamento acompanhado pelo médico.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto cardio por semana é recomendado para quem usa Mounjaro?',
+    resposta:
+      'Não existe um número específico para quem usa o medicamento. Como referência geral de saúde — não como prescrição individual —, as diretrizes da Organização Mundial da Saúde citam algo em torno de 150 a 300 minutos semanais de atividade aeróbica moderada para adultos, e esse piso vale para a população em geral. Durante o tratamento, faz sentido chegar a esse volume de forma gradual, respeitando a disposição de cada fase, e definir a dose com um profissional de educação física, com o tratamento acompanhado pelo médico.',
+  },
+  {
+    pergunta: 'Fazer muito cardio pode aumentar a perda de músculo durante o tratamento?',
+    resposta:
+      'É uma preocupação razoável nesse contexto. A literatura sobre emagrecimento costuma apontar o treino de força — e não o aeróbico — como o principal estímulo para preservar massa magra quando a ingestão calórica está baixa, e volumes muito altos de cardio podem competir com a recuperação da musculação e ampliar ainda mais o déficit de energia. Isso não significa que cardio "queima músculo" por si só; significa que, nesse cenário, ele funciona melhor como complemento moderado, não como protagonista. O equilíbrio ideal é individual e vale ser calibrado com um profissional.',
+  },
+  {
+    pergunta: 'Qual é o melhor tipo de cardio para quem usa Mounjaro?',
+    resposta:
+      'Não há um tipo "certo" — o melhor cardio tende a ser o que você consegue sustentar com regularidade. A caminhada costuma ser uma porta de entrada sensata: intensidade controlável, baixo impacto e fácil de encaixar na rotina. Bicicleta, elíptico e natação são alternativas comuns para quem prefere menos impacto. O que importa mais do que a modalidade é a dose: moderada, progressiva e ajustada à sua disposição em cada fase do tratamento.',
+  },
+  {
+    pergunta: 'Posso fazer HIIT ou cardio intenso usando Mounjaro?',
+    resposta:
+      'Essa resposta passa primeiro pelo seu médico, que conhece seu quadro clínico e pode avaliar se há alguma restrição ao exercício vigoroso no seu caso. Do ponto de vista do treino, sessões muito intensas costumam ser pouco vantajosas nas fases de adaptação ou de pouca energia — elas cobram uma recuperação que o corpo pode não estar conseguindo pagar com a ingestão calórica reduzida. Muita gente prefere consolidar uma base de cardio moderado e treino de força antes de considerar trabalhos intensos, e mesmo então de forma pontual e progressiva.',
+  },
+  {
+    pergunta: 'Devo fazer cardio em jejum durante o tratamento?',
+    resposta:
+      'Essa é uma decisão que envolve variáveis clínicas e nutricionais fora do escopo do treino — ainda mais em um contexto em que o apetite já está reduzido e algumas pessoas chegam ao exercício tendo comido muito pouco. A resposta responsável é alinhar com o médico que acompanha o tratamento e, se tiver, com o nutricionista, em vez de seguir uma regra genérica da internet. Se optar por treinar em algum horário e se sentir mal — tontura, fraqueza incomum, mal-estar —, interrompa a sessão e leve o episódio para a consulta.',
+  },
+];
+
+const title = 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo';
+const description =
+  'O papel do exercício aeróbico durante o uso de Mounjaro (tirzepatida) sob prescrição médica: por que o cardio complementa — e não substitui — o treino de força, dose moderada e progressiva, e como combinar os dois na semana. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Cardio para quem usa Mounjaro: como encaixar sem perder músculo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O exercício aeróbico tem um papel legítimo para quem usa Mounjaro
+      (tirzepatida) sob prescrição médica: saúde cardiovascular, condicionamento
+      e um gasto energético complementar. O problema não é o cardio — é o lugar
+      que ele ocupa. Em uma fase de ingestão calórica bem reduzida, colocá-lo no
+      centro do programa, no lugar do treino de força, tende a ser um erro de
+      hierarquia. Este guia mostra o que o cardio agrega nesse contexto, em que
+      dose ele costuma fazer sentido e como combiná-lo com a musculação na
+      semana — sempre dentro do escopo do exercício físico.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>O que o cardio agrega durante o tratamento</h2>
+      <p>
+        O exercício aeróbico continua valendo pelo que sempre valeu:
+        condicionamento cardiorrespiratório, saúde cardiovascular e um gasto
+        calórico adicional que complementa o processo. Como referência geral —
+        e não como prescrição individual —, as diretrizes de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        citam para adultos algo em torno de 150 a 300 minutos semanais de
+        atividade aeróbica de intensidade moderada (ou uma faixa menor de
+        atividade vigorosa, ou combinações equivalentes), além de atividades de
+        fortalecimento muscular em pelo menos 2 dias por semana. Repare que a
+        própria diretriz já traz as duas peças, aeróbico e força — nenhuma
+        substitui a outra. Para quem está em tratamento, esses números
+        funcionam como um horizonte de saúde geral a alcançar com calma, não
+        como meta imediata; a liberação e eventuais restrições ao exercício são
+        conversa com o seu médico.
+      </p>
+
+      <h2>Por que o cardio não deve substituir a musculação nesse contexto</h2>
+      <p>
+        O ponto crítico do emagrecimento rápido é a composição do peso perdido.
+        Análises do ensaio SURMOUNT-1, publicado no
+        <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038" target="_blank" rel="noopener">New England Journal of Medicine</a>,
+        sugerem que uma parcela relevante do peso perdido com tirzepatida tende
+        a vir de massa magra, não só de gordura. E revisões sobre exercício
+        durante tratamentos com agonistas de GLP-1 e similares, como uma
+        publicada em periódico da Frontiers (disponível no
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12683586/" target="_blank" rel="noopener">PubMed Central</a>),
+        costumam apontar que é o treino de força — mais do que o aeróbico — o
+        estímulo com melhor suporte para atenuar essa perda de massa magra.
+        Ou seja: o cardio soma, mas não faz o trabalho da musculação. Trocar
+        as sessões de força por mais esteira, nesse cenário, tende a ampliar o
+        déficit de energia sem oferecer ao corpo o principal motivo para manter
+        músculo. Se esse tema é a sua preocupação central, o aprofundamento
+        está em
+        <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular">como evitar perda de massa muscular usando Mounjaro</a>.
+      </p>
+
+      <h2>Dose sensata: moderado, progressivo, caminhada como porta de entrada</h2>
+      <p>
+        Para a maioria das pessoas nesse contexto, o cardio que funciona é o
+        menos glamouroso: intensidade moderada, volume que cresce aos poucos e
+        modalidades fáceis de sustentar. A caminhada costuma ser a porta de
+        entrada mais sensata — intensidade controlável, baixo impacto, zero
+        barreira de equipamento — e pode evoluir para caminhadas mais longas ou
+        rápidas, bicicleta ou outra modalidade de preferência. O que vale
+        evitar, especialmente nas fases de adaptação ao tratamento ou nos
+        períodos de pouca energia, são volumes altos de cardio intenso: eles
+        cobram uma recuperação que o corpo, comendo pouco, pode não conseguir
+        pagar — e ainda competem com a qualidade das sessões de força. Se a sua
+        disposição anda baixa e até o treino leve parece custoso, o assunto tem
+        guia próprio em
+        <a href="/mounjaro-e-treino/fraqueza-para-treinar">Mounjaro dá fraqueza para treinar?</a>.
+      </p>
+
+      <h2>Como combinar força e cardio na semana</h2>
+      <p>
+        Na prática, a montagem costuma partir da musculação como âncora — as
+        sessões de força entram primeiro no calendário — e o cardio preenche os
+        espaços: em dias separados, quando a agenda permite, ou na mesma sessão,
+        de preferência depois dos pesos, quando não permite. Caminhadas leves
+        têm a vantagem de quase não interferir na recuperação, o que dá
+        liberdade para distribuí-las em vários dias. A mecânica geral dessa
+        combinação — ordem, interferência, quando separar — está detalhada em
+        <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia">cardio e musculação no mesmo dia</a>;
+        e a visão completa de como o conjunto do treino se adapta durante o
+        tratamento, incluindo progressão e constância, está em
+        <a href="/mounjaro-e-treino/treino-para-quem-usa-mounjaro">treino para quem usa Mounjaro</a>.
+        Um profissional de educação física ajuda a calibrar essa proporção ao
+        seu caso — e um bom profissional encaminha ao médico ou nutricionista
+        tudo o que for clínico.
+      </p>
+
+      <h2>Hidratação e sinais de que o corpo não está acompanhando</h2>
+      <p>
+        Com o apetite reduzido, é comum comer e beber menos ao longo do dia sem
+        perceber — e chegar ao cardio menos hidratado do que de costume. Quanto
+        e como se hidratar, porém, é território do nutricionista e do médico
+        que acompanha o tratamento, porque envolve o quadro clínico completo; o
+        papel do conteúdo de treino é só sinalizar que a pergunta merece ir
+        para a consulta. No exercício em si, vale tratar alguns sinais como
+        ponto de parada, não de insistência: tontura, fraqueza incomum,
+        palpitações, mal-estar que não passa com a redução do ritmo. Diante de
+        qualquer um deles, interrompa a sessão; se o sintoma for importante ou
+        se repetir, procure o médico prescritor — e, em sintomas agudos
+        intensos, atendimento imediato. Nenhuma meta de cardio justifica
+        "empurrar" um corpo que está dando sinais de que não está acompanhando.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> durante o uso de Mounjaro sob prescrição, o
+        cardio é complemento valioso — saúde cardiovascular, condicionamento e
+        gasto adicional —, mas não substitui o treino de força, que é o
+        principal estímulo para preservar massa muscular em um emagrecimento
+        rápido. Dose moderada e progressiva, caminhada como porta de entrada,
+        pouco cardio intenso nas fases de menos energia, e a musculação como
+        âncora da semana. Hidratação, sintomas e qualquer decisão sobre o
+        medicamento são conversa com o médico e o nutricionista.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

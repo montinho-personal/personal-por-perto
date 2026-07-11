@@ -1,0 +1,323 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/musculacao/descanso-entre-series',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'Recuperação não é só o descanso entre treinos: o intervalo entre séries também protege o desempenho e a qualidade do estímulo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino para iniciantes: por onde começar',
+    descricao: 'A dor da primeira semana costuma assustar quem está começando. Veja como dar os primeiros passos com progressão e segurança.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Distinguir dor normal de treino de um sinal de alerta é papel de um profissional que acompanha sua execução. Veja como escolher.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/dor-muscular-pos-treino';
+const atualizadoEm = '2026-07-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao' },
+  { nome: 'Dor muscular pós-treino: posso treinar mesmo assim?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A dor muscular depois do treino é causada por ácido lático?',
+    resposta:
+      'Não é o que a pesquisa indica. O ácido lático (na verdade, lactato) é removido do músculo em cerca de uma hora após o esforço, enquanto a dor tardia costuma aparecer no dia seguinte e durar dias. Estudos clássicos mostram que exercícios que elevam muito o lactato podem não gerar dor, enquanto exercícios com forte componente excêntrico geram dor mesmo com pouco lactato. A explicação mais aceita hoje envolve microlesões e inflamação no tecido submetido a um esforço não habituado, não acúmulo de ácido lático.',
+  },
+  {
+    pergunta: 'Sentir dor no dia seguinte é sinal de que o treino foi bom?',
+    resposta:
+      'Não necessariamente. A dor muscular tardia (DOMS) reflete principalmente o quanto aquele estímulo era novo ou incomum para o músculo — não o quanto ele vai crescer. Revisões sobre o tema apontam que a dor não é um indicador confiável de hipertrofia: dá para crescer sem sentir dor e sentir muita dor sem estímulo relevante. Com o tempo, o mesmo treino passa a doer menos (o "efeito da repetição"), e isso é adaptação, não perda de eficácia.',
+  },
+  {
+    pergunta: 'Posso treinar com dor muscular?',
+    resposta:
+      'Em geral, uma dor leve e difusa não impede treinar — inclusive é comum continuar a rotina normalmente. A regra prática mais sensata é dar tempo ao grupo muscular que está mais dolorido: se as pernas estão doloridas, treinar outro grupo naquele dia é uma forma de seguir treinando sem prejudicar a recuperação. O que pede cautela é dor forte a ponto de comprometer a execução, ou dor aguda e localizada, que é um sinal diferente da dor muscular tardia.',
+  },
+  {
+    pergunta: 'O que ajuda de verdade a passar a dor muscular?',
+    resposta:
+      'O que mais funciona é tempo e movimento leve. Sono adequado, hidratação, alimentação equilibrada e atividade leve (como uma caminhada) tendem a ajudar na sensação de recuperação. Muitas "soluções milagrosas" têm efeito modesto ou apenas temporário sobre a dor. Como a DOMS costuma se resolver sozinha em alguns dias, o melhor "tratamento" costuma ser não exagerar na dose de novidade e deixar o corpo se adaptar.',
+  },
+  {
+    pergunta: 'Quando a dor deixa de ser normal e vira um sinal de alerta?',
+    resposta:
+      'A dor muscular tardia é difusa, simétrica ao esforço feito e melhora com o passar dos dias. Já dor aguda e pontual durante o exercício, dor em articulações, inchaço importante, ou uma dor que piora em vez de melhorar ao longo dos dias não têm o padrão de DOMS e merecem atenção. Nesses casos, o mais prudente é interromper e procurar avaliação de um profissional de educação física ou médico. Este texto é informativo e não substitui avaliação individual.',
+  },
+];
+
+const title = 'Dor muscular pós-treino: posso treinar mesmo assim?';
+const description =
+  'O que é a dor muscular tardia (DOMS), por que não é "ácido lático", se dor significa bom treino, quando dá para treinar mesmo dolorido e quando a dor é um sinal de alerta para procurar avaliação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Dor muscular pós-treino: posso treinar mesmo assim?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Acordar dolorido dois dias depois de um treino pesado é uma das
+      experiências mais comuns de quem treina — e uma das mais cercadas de
+      mitos. A dor significa que o treino "pegou"? É sinal de que o músculo vai
+      crescer? Dá para treinar assim mesmo? Este artigo explica o que a
+      literatura entende por <strong>dor muscular tardia (DOMS)</strong>, desfaz
+      o velho mito do "ácido lático" e ajuda você a separar a dor normal de um
+      sinal que merece atenção.
+    </p>
+
+    <div class="prose">
+      <h2>O que é a dor muscular tardia (DOMS)</h2>
+      <p>
+        DOMS é a sigla em inglês para <em>delayed onset muscle soreness</em> —
+        dor muscular de início tardio. É aquela dor que não aparece na hora do
+        treino, mas horas depois, e que costuma atingir o pico entre
+        <strong>24 e 72 horas</strong> após o esforço, indo embora aos poucos
+        nos dias seguintes. Ela vem acompanhada de rigidez, sensibilidade ao
+        toque e, às vezes, uma queda temporária de força no grupo muscular
+        afetado. É diferente da dor aguda que se sente <em>durante</em> um
+        movimento — essa, como veremos, pede outra leitura.
+      </p>
+
+      <h2>A causa: esforço não habituado, não "ácido lático"</h2>
+      <p>
+        O mito mais persistente sobre a dor pós-treino é o do "ácido lático
+        acumulado". Ele não se sustenta. O lactato produzido durante o esforço
+        é removido do músculo em cerca de uma hora — muito antes de a dor
+        tardia aparecer. Estudos clássicos ilustram bem isso: correr em
+        subida (que eleva bastante o lactato) pode não gerar dor tardia, e
+        correr em descida (rico em contrações excêntricas, com pouco lactato)
+        gera dor significativa. A revisão desse tema — por exemplo, o trabalho
+        <a href="https://pubmed.ncbi.nlm.nih.gov/27409551/" target="_blank" rel="noopener">"Is Lactic Acid Related to Delayed-Onset Muscle Soreness?"</a>
+        — aponta que o lactato não explica a DOMS.
+      </p>
+      <p>
+        A explicação mais aceita hoje é outra: a DOMS vem do <strong>estresse
+        mecânico e das microlesões</strong> em um músculo submetido a um esforço
+        <em>não habituado</em> — especialmente movimentos com forte componente
+        <strong>excêntrico</strong> (a fase em que o músculo trabalha alongando,
+        como descer o peso em uma rosca ou a descida do agachamento). Esse dano
+        microscópico dispara uma resposta inflamatória e uma sensibilização das
+        terminações nervosas da região, e é isso que percebemos como dor nos
+        dias seguintes. A palavra-chave é <em>não habituado</em>: é a novidade
+        ou o aumento de carga/volume que provoca a dor, mais do que o esforço
+        em si.
+      </p>
+
+      <h2>Dor é sinal de bom treino? Nem sempre</h2>
+      <p>
+        Aqui mora um dos equívocos mais comuns: tratar a dor como termômetro do
+        resultado. A DOMS reflete principalmente o quanto aquele estímulo era
+        <em>novo</em> para o músculo — não o quanto ele vai crescer. Revisões
+        sobre o tema indicam que a dor não é um indicador confiável de
+        hipertrofia: é perfeitamente possível ganhar músculo sem sentir dor, e
+        sentir muita dor após um treino que oferece pouco estímulo de
+        crescimento.
+      </p>
+      <p>
+        Há um fenômeno que deixa isso ainda mais claro: o <strong>efeito da
+        repetição</strong> (<em>repeated bout effect</em>). Depois que o corpo
+        se adapta a um exercício, o mesmo treino passa a doer cada vez menos —
+        e isso acontece <em>sem</em> que o treino perca eficácia. Ou seja: parar
+        de sentir dor não significa que você deixou de progredir. Se a dor
+        medisse resultado, ninguém evoluiria depois das primeiras semanas. Os
+        indicadores realmente úteis de progresso são a evolução da carga e do
+        desempenho ao longo do tempo — o que os
+        <a href="/musculacao/hipertrofia-como-funciona">princípios da hipertrofia</a>
+        explicam em detalhe.
+      </p>
+
+      <h2>Posso treinar com dor? A regra prática</h2>
+      <p>
+        Na maioria das vezes, sim — com bom senso. Uma dor <strong>leve e
+        difusa</strong>, sem comprometer a execução dos movimentos, geralmente
+        não impede treinar. O cuidado principal é com o <em>mesmo grupo
+        muscular</em>: se as pernas estão doloridas de um treino pesado, forçar
+        exatamente esse grupo de novo antes de recuperar tende a atrapalhar a
+        recuperação sem ganho claro. A solução prática costuma ser
+        <strong>alternar grupos musculares</strong>: treinar membros superiores
+        enquanto as pernas se recuperam, por exemplo, seguindo em frente sem
+        prejudicar nada.
+      </p>
+      <p>
+        A recuperação de que estamos falando aqui é um tema por si só. O
+        descanso entre sessões — e mesmo o
+        <a href="/musculacao/descanso-entre-series">intervalo entre séries dentro do treino</a>
+        — faz parte de dar ao músculo tempo para se refazer. E o quanto você se
+        esforça em cada série pesa nessa conta: séries levadas muito perto do
+        limite geram mais fadiga e mais necessidade de recuperação, como
+        discutido no artigo sobre
+        <a href="/musculacao/treinar-ate-a-falha">treinar até a falha</a>. Treinar
+        sempre no talo tende a cobrar um preço de recuperação que pode não valer
+        a pena.
+      </p>
+      <p>
+        O sinal de "pare" é diferente: se a dor é forte a ponto de mudar a sua
+        técnica, se você não consegue executar com segurança, ou se surge uma
+        dor aguda e localizada, aí não é hora de insistir.
+      </p>
+
+      <h2>O que ajuda de verdade — e o que é mito</h2>
+      <p>
+        A resposta honesta é que <strong>tempo</strong> é o que mais resolve a
+        DOMS: ela se resolve sozinha em alguns dias. O que costuma ajudar na
+        sensação de recuperação são coisas simples: sono adequado, hidratação,
+        alimentação equilibrada e movimento leve (uma caminhada, mobilidade
+        suave). Muitas "soluções milagrosas" prometidas por aí têm, na melhor
+        das hipóteses, efeito modesto ou apenas temporário sobre a dor. Nada
+        substitui o básico: não exagerar na dose de novidade e deixar o corpo se
+        adaptar de forma progressiva, o que naturalmente reduz a dor ao longo
+        das semanas.
+      </p>
+
+      <h2>Quando não é DOMS: sinais que pedem avaliação</h2>
+      <p>
+        A dor muscular tardia tem um padrão reconhecível: é difusa, aparece
+        horas depois do esforço, é proporcional ao que foi feito e
+        <em>melhora</em> com o passar dos dias. Alguns sinais fogem desse padrão
+        e merecem atenção:
+      </p>
+      <ul>
+        <li>
+          <strong>Dor aguda ou pontual durante o exercício:</strong> uma
+          "fisgada" ou dor localizada no momento do movimento não é DOMS e não
+          deve ser ignorada.
+        </li>
+        <li>
+          <strong>Dor em articulações:</strong> dor em joelho, ombro, cotovelo
+          ou coluna é diferente de dor muscular e costuma indicar outra coisa.
+        </li>
+        <li>
+          <strong>Inchaço importante:</strong> um edema que chama atenção, além
+          da sensibilidade normal, foge do quadro esperado.
+        </li>
+        <li>
+          <strong>Dor que piora em vez de melhorar:</strong> a DOMS regride com
+          o tempo; uma dor que aumenta ao longo dos dias é um sinal para
+          investigar.
+        </li>
+      </ul>
+      <p>
+        Nesses casos, o mais prudente é interromper e procurar avaliação de um
+        <strong>profissional de educação física ou médico</strong>. Este texto é
+        informativo e não faz diagnóstico nem substitui uma avaliação
+        individual.
+      </p>
+
+      <h2>Iniciantes e a temida primeira semana</h2>
+      <p>
+        Se você está começando, saiba que a dor dos primeiros treinos costuma
+        ser a mais intensa que você vai sentir — justamente porque tudo é
+        "esforço não habituado" para o seu corpo. É desconfortável, mas tende a
+        diminuir bastante já nas semanas seguintes, à medida que os músculos se
+        adaptam (o tal efeito da repetição). O erro comum é interpretar essa dor
+        inicial como sinal de que "está fazendo certo" e exagerar na dose. O
+        caminho mais seguro é começar com carga e volume moderados e progredir
+        aos poucos — exatamente a lógica do guia sobre
+        <a href="/musculacao/treino-para-iniciantes">treino para iniciantes</a>.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> a dor muscular tardia vem de esforço não
+        habituado (não de "ácido lático"), atinge o pico entre 24 e 72 horas e
+        não é um termômetro confiável de resultado. Dor leve e difusa geralmente
+        permite treinar — de preferência alternando grupos musculares —,
+        enquanto dor aguda, articular, com inchaço ou que piora pede avaliação
+        de um profissional. Ajustar carga, volume e recuperação ao seu caso é
+        trabalho de um
+        <a href={rotas.comoEscolher}>personal trainer qualificado</a>, seguindo
+        princípios reconhecidos por entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        e a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
