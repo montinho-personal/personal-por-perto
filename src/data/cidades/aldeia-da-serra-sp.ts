@@ -64,6 +64,12 @@ export const cidade: Cidade = {
     'A Aldeia da Serra tem uma cultura de bem-estar sustentada por alto poder aquisitivo, contato constante com a natureza e condomínios com academia e quadras. Caminhar e correr nas ruas arborizadas, pedalar e treinar com acompanhamento profissional fazem parte da rotina de boa parte dos moradores, que somam ainda a oferta esportiva e os clubes da vizinha Alphaville.',
   academias:
     'A região conta com academias e estúdios em seus centros comerciais e nos próprios condomínios, e tem na proximidade com Alphaville e Tamboré acesso a redes maiores, estúdios boutique e clubes. Ainda assim, grande parte da demanda é atendida dentro dos condomínios, por personais que treinam o aluno em casa ou na academia do residencial.',
+  academiasProximas: [
+    { nome: 'Scelta Academia', detalhe: 'na Av. dos Pássaros, uma das mais completas da Aldeia' },
+    { nome: 'The One Aldeia da Serra', detalhe: 'na Av. da Barra, no trecho parnaibano da região' },
+    { nome: 'Area Fitness', detalhe: 'academia local na Av. dos Patos' },
+    { nome: 'Studio Fight Aldeia', detalhe: 'artes marciais para crianças e adultos' },
+  ],
 
   destaquesFitness: [
     'Demanda de alto padrão por personal em condomínio e atendimento domiciliar.',

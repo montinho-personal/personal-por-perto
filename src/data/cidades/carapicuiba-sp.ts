@@ -63,6 +63,13 @@ export const cidade: Cidade = {
     'Carapicuíba tem forte tradição de esporte comunitário, com campos de várzea, quadras de bairro e arenas como a da Cidade Ariston movimentando o futebol amador. A cidade também guarda a Aldeia de Carapicuíba, sítio histórico jesuítico tombado em 1941, cujo entorno e o Parque da Aldeia servem de cenário para caminhadas, corridas e eventos esportivos populares.',
   academias:
     'A oferta combina academias de bairro e redes de baixo custo, como a Smart Fit, com as academias ao ar livre gratuitas dos parques municipais. Esse mix atende tanto quem prefere o treino indoor quanto quem busca alternativas de custo zero ao ar livre, reforçando a vocação popular da cidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro (Av. Governador Mário Covas), na Vila Dirce e no Parque Santa Teresa' },
+    {
+      nome: 'Academias ao ar livre municipais',
+      detalhe: 'gratuitas, nos parques dos Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto',
+    },
+  ],
   destaquesFitness: [
     'Cidade muito populosa e compacta (~34 km²) — base ampla de clientes e deslocamentos curtos para atendimento em domicílio.',
     'Parques com academia ao ar livre gratuita: Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto.',

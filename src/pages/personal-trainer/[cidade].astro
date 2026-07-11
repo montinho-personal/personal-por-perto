@@ -363,6 +363,25 @@ const objetivoDesc: Record<string, string> = {
         </p>
         <h3>Treino em academia</h3>
         <p>{cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`}</p>
+        {
+          cidade.academiasProximas && cidade.academiasProximas.length > 0 && (
+            <>
+              <p>Alguns espaços de treino conhecidos na cidade e na região:</p>
+              <ul>
+                {cidade.academiasProximas.map((a) => (
+                  <li>
+                    <strong>{a.nome}</strong>
+                    {a.detalhe ? <> — {a.detalhe}</> : null}
+                  </li>
+                ))}
+              </ul>
+              <p class="muted small">
+                Lista editorial e não exaustiva, baseada em informações públicas. O portal
+                não tem vínculo comercial com os espaços citados.
+              </p>
+            </>
+          )
+        }
         <h3>Treino em condomínio</h3>
         <p>
           Muitos prédios em {n} já contam com espaço fitness próprio. O personal que

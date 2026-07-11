@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A cultura esportiva de Tamboré gira em torno dos condomínios — muitos com academia, piscina e quadras — e da estrutura ao ar livre do Parque Ecológico. Com o polo empresarial ao lado, cresce também a busca por bem-estar corporativo, do treino na hora do almoço às parcerias de academia para funcionários.',
   academias:
     'Além das academias dos próprios condomínios, a região conta com unidades como a Academia Tamboré e estúdios e centros de treino no Centro Empresarial Tamboré. A maior parte da demanda, porém, é atendida por personais que treinam o aluno dentro do condomínio.',
+  academiasProximas: [
+    { nome: 'Academia Tamboré', detalhe: 'referência da própria região' },
+    { nome: 'Bluefit Tamboré', detalhe: 'unidade da rede na Av. Tucunaré' },
+    { nome: 'Estúdios do Centro Empresarial Tamboré', detalhe: 'opções de treino junto ao polo corporativo' },
+    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium no shopping vizinho, a poucos minutos' },
+  ],
 
   destaquesFitness: [
     'Endereços de altíssimo padrão com forte procura por personal em condomínio.',

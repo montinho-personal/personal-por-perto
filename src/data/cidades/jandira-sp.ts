@@ -63,6 +63,17 @@ export const cidade: Cidade = {
     'A cultura esportiva de Jandira é comunitária e ancorada no programa público da Secretaria de Esportes, que mantém modalidades como futsal, futebol, ginástica artística, judô, vôlei, natação, hidroginástica, pilates, capoeira, xadrez, atletismo e condicionamento físico. O calendário de grandes eventos da cidade é puxado pela tradicional Festa do Peão de Jandira, realizada na Praça de Eventos, que mobiliza público e comércio local.',
   academias:
     'A oferta de treino em Jandira é dominada por academias de bairro e estúdios menores, distribuídos pelo Centro e pelas zonas residenciais. Esse perfil, somado à academia ao ar livre da Praça do Figueirão e às atividades públicas, abre espaço para o personal trainer que combina acompanhamento individual com treino em casa, na academia do cliente ou nas praças.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro e no Jardim Ouro Verde' },
+    {
+      nome: 'Academia ao ar livre da Praça do Figueirão',
+      detalhe: 'gratuita, com dez estações de equipamentos — duas adaptadas para cadeirantes',
+    },
+    {
+      nome: 'Área de Lazer do Trabalhador',
+      detalhe: 'polo esportivo público, com inscrições para as modalidades da Secretaria de Esportes',
+    },
+  ],
 
   destaquesFitness: [
     'Cidade compacta e densa: cerca de 118 mil habitantes em apenas 17,5 km², o que aproxima cliente e profissional.',

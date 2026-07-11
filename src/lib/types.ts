@@ -14,6 +14,12 @@ export interface Corrida {
   descricao: string;
 }
 
+/** Academia ou espaço de treino citado nominalmente na página da cidade. */
+export interface AcademiaProxima {
+  nome: string;
+  detalhe?: string;
+}
+
 export interface Fonte {
   nome: string;
   url: string;
@@ -83,6 +89,12 @@ export interface Cidade {
   corridas: Corrida[];
   culturaEsportiva: string;
   academias?: string;
+  /**
+   * Academias e espaços de treino com nome verificado publicamente (opcional).
+   * Lista editorial exibida na seção "Onde treinar" — preencher apenas com
+   * nomes reais confirmados, nunca inventados.
+   */
+  academiasProximas?: AcademiaProxima[];
   destaquesFitness: string[];
 
   precos: Precos;

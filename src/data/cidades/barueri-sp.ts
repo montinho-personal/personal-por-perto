@@ -68,6 +68,12 @@ export const cidade: Cidade = {
     'Barueri tem infraestrutura esportiva de grande porte — a Arena Barueri (mais de 31 mil lugares) e o Ginásio Poliesportivo José Corrêa, que já sediou Mundiais de basquete e handebol feminino e eventos do UFC. No dia a dia, a cultura de corrida e wellness é forte, puxada pelo público de alta renda de Alphaville e Tamboré.',
   academias:
     'A demanda por personal training e wellness corporativo é alta, dada a renda e o perfil executivo de Alphaville e Tamboré. Condomínios de alto padrão frequentemente contam com estrutura própria de treino, o que valoriza o atendimento individual e personalizado.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro, na Av. Zélia e no Parque Shopping Barueri' },
+    { nome: 'Bluefit', detalhe: 'unidades em Bethaville e no Tamboré' },
+    { nome: 'Academias de condomínio', detalhe: 'estrutura própria nos residenciais de Alphaville, Tamboré e Aldeia da Serra' },
+    { nome: 'Praças de ginástica do Parque Linear', detalhe: 'gratuitas e abertas 24 horas, às margens do Tietê' },
+  ],
 
   destaquesFitness: [
     'Um dos maiores PIBs per capita do estado e público executivo de alta renda.',

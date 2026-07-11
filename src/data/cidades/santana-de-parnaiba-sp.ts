@@ -71,6 +71,13 @@ export const cidade: Cidade = {
     'Com IDHM muito alto (0,814) e uma rede de cerca de dez parques municipais, Santana de Parnaíba tem uma cultura esportiva acessível e em crescimento. As corridas de rua gratuitas atraem público de toda a região, e o Centro Histórico vira cenário para caminhadas e turismo ativo nos fins de semana.',
   academias:
     'A oferta de academias é robusta, concentrada principalmente na região de Alphaville: Bodytech no Iguatemi Alphaville, Smart Fit, Allp Fit e unidades de CrossFit, além de muitos estúdios integrados a plataformas como o Wellhub. Nos bairros residenciais, predominam academias de bairro com bom custo-benefício.',
+  academiasProximas: [
+    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium no shopping da região' },
+    { nome: 'Smart Fit', detalhe: 'rede de baixo custo com unidades na região de Alphaville' },
+    { nome: 'Allp Fit', detalhe: 'rede em expansão com presença na cidade' },
+    { nome: 'The One Aldeia da Serra', detalhe: 'academia na parte parnaibana da Aldeia da Serra' },
+    { nome: 'Boxes de CrossFit e estúdios', detalhe: 'muitos integrados a plataformas como o Wellhub' },
+  ],
 
   destaquesFitness: [
     'IDHM muito alto (0,814) e uma das maiores rendas médias da Grande São Paulo.',

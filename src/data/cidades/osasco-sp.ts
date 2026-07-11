@@ -68,6 +68,14 @@ export const cidade: Cidade = {
     'Osasco é referência nacional no vôlei feminino: o clube da cidade, com sede no Ginásio José Liberatti, soma Superligas, títulos sul-americanos e o Mundial de Clubes de 2012. Essa cultura esportiva forte se estende ao dia a dia, com parques movimentados e ciclofaixa de lazer consolidada.',
   academias:
     'A cidade combina academias de shopping e de bairro — com forte presença de redes como a Smart Fit, em várias unidades — às academias ao ar livre municipais e às aulas gratuitas nos parques, o que favorece tanto o treino indoor quanto o outdoor.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'várias unidades, como a do KM 18 (Vila Yara) e a da Av. Getúlio Vargas' },
+    { nome: 'Bluefit', detalhe: 'unidades no Centro, no KM 18 e no Novo Osasco' },
+    {
+      nome: 'Academias ao ar livre municipais',
+      detalhe: 'gratuitas, nos parques Chico Mendes e Dionísio Álvarez Mateos, com aulas públicas da SEREL',
+    },
+  ],
 
   destaquesFitness: [
     'Cidade compacta (~65 km²) com deslocamentos curtos — ótimo para atendimento em domicílio e condomínios.',

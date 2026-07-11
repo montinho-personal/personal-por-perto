@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A Granja Viana tem cultura ativa de corrida de rua e bem-estar (feiras, caminhadas e eventos), e o público de alto padrão valoriza wellness e treino ao ar livre.',
   academias:
     'A oferta combina um nicho premium na Granja Viana (estúdios e condomínios de alto padrão) com academias de bairro no restante da cidade, e parques como o Teresa Maia para o outdoor.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Granja Viana (km 21 e km 25 da Raposo) e na Vila Monte Serrat' },
+    { nome: 'Bluefit Granja Viana', detalhe: 'duas unidades no bairro, na Av. São Camilo e na Estrada da Aldeia' },
+    { nome: 'Estúdios boutique da Granja Viana', detalhe: 'treino personalizado e pequenos grupos no polo premium' },
+    { nome: 'Academia ao ar livre do Parque Teresa Maia', detalhe: 'gratuita, na Granja Viana' },
+  ],
 
   destaquesFitness: [
     'Granja Viana como nicho premium para personal trainers (estúdios e condomínios de alto padrão).',

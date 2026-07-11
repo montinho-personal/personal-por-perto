@@ -61,6 +61,14 @@ export const cidade: Cidade = {
     'Itapevi tem forte tradição de esporte comunitário, com campos de várzea, quadras de bairro e ginásios públicos movimentando o futebol amador e modalidades coletivas. A corrida de rua ganhou espaço com a prova oficial anual da cidade, e as academias ao ar livre espalhadas pelos bairros consolidaram o hábito de treino gratuito entre os moradores.',
   academias:
     'A oferta combina academias de bairro e redes de baixo custo, como a Smart Fit, com as academias ao ar livre gratuitas dos parques e dos bairros, como no Jardim Dona Elvira, na Cidade da Saúde e no Parque da Cidade. Esse mix atende tanto quem prefere o treino indoor quanto quem busca alternativas de custo zero, reforçando a vocação popular do município.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro e no Ita Shopping Vila Nova' },
+    {
+      nome: 'Academias ao ar livre',
+      detalhe: 'gratuitas no Parque da Cidade (com espaço de crossfit), no Parque da Cohab e em bairros como Jardim Dona Elvira e Cidade da Saúde',
+    },
+    { nome: 'Ginásio de Esportes João Salvarani', detalhe: 'equipamento público com aulas e modalidades de quadra' },
+  ],
   destaquesFitness: [
     'Cidade muito populosa e densa (~82 km², 232 mil habitantes) — base ampla de clientes e deslocamentos curtos para atendimento em domicílio.',
     'Parques com academia ao ar livre gratuita: Parque da Cidade (~110 mil m²) e Parque da Cohab.',

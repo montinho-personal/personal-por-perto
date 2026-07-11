@@ -69,6 +69,14 @@ export const cidade: Cidade = {
     'Alphaville tem uma cultura forte de esporte e bem-estar, sustentada por alto poder aquisitivo, clubes com estrutura de tênis e golfe, condomínios com academia e quadras, e uma comunidade ativa de corrida e ciclismo. Treinar com acompanhamento profissional faz parte da rotina de boa parte dos moradores.',
   academias:
     'A oferta inclui academias como a 24 Horas Premium e a Gaviões, a Bodytech no Iguatemi Alphaville, unidades de Smart Fit e CrossFit, além de muitos estúdios boutique e do Alphaville Tênis Clube. Ainda assim, grande parte da demanda é atendida dentro dos próprios condomínios, por personais que treinam o aluno em casa.',
+  academiasProximas: [
+    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium dentro do shopping Iguatemi' },
+    { nome: '24 Horas Premium', detalhe: 'academia com acesso 24 horas na região' },
+    { nome: 'Gaviões', detalhe: 'rede paulista com estrutura ampla de musculação e aulas' },
+    { nome: 'Smart Fit', detalhe: 'rede de baixo custo com unidades em Alphaville e no entorno' },
+    { nome: 'Alphaville Tênis Clube', detalhe: 'clube tradicional com estrutura esportiva completa' },
+    { nome: 'Estúdios boutique e boxes de CrossFit', detalhe: 'espalhados pelo centro comercial e arredores' },
+  ],
 
   destaquesFitness: [
     'Demanda de alto padrão por personal em condomínio e atendimento domiciliar.',
