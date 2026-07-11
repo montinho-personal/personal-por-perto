@@ -77,11 +77,28 @@ export const cidade: Cidade = {
   },
   conclusao:
     'Itapevi é uma cidade densa, popular e bem conectada por trem ao coração econômico da Grande SP, o que cria demanda constante por treino flexível e de bom custo-benefício. Para o personal trainer, a combinação de parques públicos equipados, bairros adensados e clientes que treinam cedo ou no fim do dia abre espaço para atendimento em domicílio, grupos ao ar livre e acompanhamento online.',
+  faqsExtra: [
+    {
+      pergunta: 'Onde dá para treinar com personal em Itapevi sem pagar academia?',
+      resposta:
+        'Os dois principais cenários gratuitos são o Parque da Cidade, com cerca de 110 mil m², pista de caminhada e ciclismo, academia ao ar livre e até espaço de crossfit, e o Parque da Cohab, inaugurado em 2024 com quadras, pista e academia ao ar livre. Um personal com material portátil monta ali treinos funcionais completos — formato que, em dupla ou pequeno grupo, também barateia a sessão.',
+    },
+    {
+      pergunta: 'Quais objetivos são mais comuns entre quem contrata personal em Itapevi?',
+      resposta:
+        'Como grande parte dos moradores faz o movimento pendular diário de trem para Osasco e São Paulo, os pedidos mais frequentes são emagrecimento, condicionamento para aguentar a rotina e treinos curtos que caibam antes ou depois do expediente. Também é comum quem está começando do zero e quer orientação para não se machucar — perfil que costuma partir das academias ao ar livre dos bairros para o acompanhamento individual.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Itapevi para quem tem dores ou limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de quem já treinou com desconforto. Com base na região de Alphaville, o atendimento presencial em Itapevi pode ser combinado conforme agenda e local, e o acompanhamento online cobre qualquer rotina. O treino é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
   vizinhas: ['jandira-sp', 'barueri-sp', 'cotia-sp', 'santana-de-parnaiba-sp'],
   fontes: [
     { nome: 'IBGE Cidades — Itapevi', url: 'https://cidades.ibge.gov.br/brasil/sp/itapevi/panorama' },
     { nome: 'Prefeitura de Itapevi', url: 'https://itapevi.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/352250' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-11',
 };

@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Integrante da Região Metropolitana de São Paulo, na zona oeste, Cotia tem economia industrial e logística robusta — foi eleita uma das melhores cidades para fazer negócios na indústria. A região da Granja Viana concentra boa parte da indústria e multinacionais, convivendo com um polo de alto padrão de varejo de luxo, shoppings e condomínios fechados.',
 
   mercado:
-    'A Granja Viana puxa um mercado premium (estúdios boutique, personal trainer e condomínios com academia), enquanto o restante de Cotia tem academias de bairro de público mais amplo.',
+    'O mercado de personal trainer em Cotia tem duas velocidades. A Granja Viana puxa o segmento premium: condomínios fechados com academia própria, estúdios boutique e um público que valoriza atendimento exclusivo em casa ou no residencial, com forte cultura de corrida e bem-estar. No restante da cidade — do Centro a Caucaia do Alto —, predominam academias de bairro e um público mais amplo, que busca custo-benefício e proximidade. Para o profissional, isso significa dois posicionamentos possíveis na mesma cidade; para o cliente, significa que há oferta em praticamente todas as faixas de preço, do treino no condomínio ao acompanhamento online.',
 
   bairrosNobres: ['Granja Viana', 'Jardim da Glória', 'Parque Bahia', 'San Diego'],
   bairrosPopulares: ['Caucaia do Alto', 'Jardim Japão', 'Atalaia', 'Jardim Nomura'],
@@ -89,6 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial e de alto padrão na Grande SP, Cotia tem na Granja Viana um mercado premium e o Parque Teresa Maia. Um personal trainer encontra aqui forte demanda por treino personalizado e wellness, num clima ameno de planalto.',
 
+  faqsExtra: [
+    {
+      pergunta: 'O personal atende dentro dos condomínios da Granja Viana?',
+      resposta:
+        'Sim — na Granja Viana, o formato mais procurado é justamente o atendimento no condomínio: na academia do residencial, na área de lazer ou dentro de casa, com a privacidade e a flexibilidade de agenda que o público do bairro espera. Ruas arborizadas e espaços como o Parque Teresa Maia também permitem levar parte do treino para fora, quando o clima ajuda.',
+    },
+    {
+      pergunta: 'O que muda entre treinar com personal na Granja Viana e no restante de Cotia?',
+      resposta:
+        'Muda o cenário e a faixa de preço, não a qualidade possível do trabalho. Na Granja Viana, predominam atendimento em condomínio, estúdios boutique e valores mais altos; no Centro e em bairros como Caucaia do Alto, o treino acontece mais em academias de bairro, com preços acessíveis. Os objetivos também variam: emagrecimento e wellness aparecem forte no público premium, enquanto saúde geral e ganho de força dominam nos bairros.',
+    },
+    {
+      pergunta: 'Quem tem dores ou limitações consegue treinar com acompanhamento em Cotia?',
+      resposta:
+        'Consegue. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treino de pessoas com dores e limitações musculoesqueléticas e a experiência de quem já enfrentou dores comuns da musculação. Com base na região de Alphaville, o atendimento presencial em Cotia — em especial na Granja Viana, pelo eixo Castello Branco/Raposo — pode ser combinado conforme agenda e local, além do online. O trabalho é gradual e seguro, sem promessa de cura, e não substitui médico ou fisioterapeuta em quadros clínicos.',
+    },
+  ],
+
   vizinhas: ['sao-paulo-sp', 'osasco-sp'],
 
   fontes: [
@@ -96,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cotia', url: 'https://www.cotia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-11',
 };

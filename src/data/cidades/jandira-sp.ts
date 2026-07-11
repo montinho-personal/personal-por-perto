@@ -83,6 +83,24 @@ export const cidade: Cidade = {
   conclusao:
     'Jandira é um mercado de personal trainer popular e de proximidade: território pequeno, população grande e forte vocação de bairro. Quem trabalha bem o atendimento próximo ao cliente — em casa, em academias de bairro ou na academia ao ar livre da Praça do Figueirão — e aproveita a integração da Linha 8-Diamante para circular pela região oeste encontra demanda constante e pouca distância entre um atendimento e outro.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Como costuma funcionar o atendimento de personal em Jandira?',
+      resposta:
+        'Pela escala da cidade — 118 mil habitantes em 17,5 km² —, o formato dominante é o atendimento de proximidade: o personal vai até a casa do cliente, treina com ele na academia de bairro ou monta sessões funcionais na Praça do Figueirão, que tem academia ao ar livre com dez estações (duas adaptadas para cadeirantes). Os deslocamentos internos são curtos, o que ajuda a encaixar horários mesmo em rotinas apertadas.',
+    },
+    {
+      pergunta: 'Treinar com personal em Jandira cabe no bolso?',
+      resposta:
+        'Jandira tem uma das faixas de preço mais acessíveis da região oeste: aulas avulsas costumam ficar entre R$ 60 e R$ 120, e pacotes mensais diluem esse valor. Treinar em dupla ou em pequeno grupo na praça reduz ainda mais o custo por pessoa, e o acompanhamento online é a alternativa mais econômica para quem já treina sozinho e precisa principalmente de planilha e ajustes.',
+    },
+    {
+      pergunta: 'Quem sente dores ou tem limitações encontra acompanhamento em Jandira?',
+      resposta:
+        'Encontra. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas e já conviveu com dores comuns da musculação na própria trajetória. Com base na região de Alphaville, a poucos quilômetros pela Castello Branco, o atendimento presencial em Jandira pode ser combinado conforme agenda e local, além do online. Treino adaptado não substitui tratamento: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['itapevi-sp', 'barueri-sp', 'carapicuiba-sp', 'osasco-sp'],
 
   fontes: [
@@ -90,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jandira', url: 'https://www.jandira.sp.gov.br/' },
     { nome: 'Atlas Brasil — Jandira (SP)', url: 'http://www.atlasbrasil.org.br/perfil/municipio/3525003' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-11',
 };

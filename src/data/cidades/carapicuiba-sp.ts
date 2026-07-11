@@ -79,11 +79,29 @@ export const cidade: Cidade = {
   },
   conclusao:
     'Carapicuíba é uma cidade densa, popular e bem conectada por trem ao coração econômico da Grande SP, o que cria uma demanda constante por treino flexível e de bom custo-benefício. Para o personal trainer, a combinação de parques públicos equipados, bairros adensados e clientes que treinam cedo ou no fim do dia abre espaço para atendimento em domicílio, grupos ao ar livre e acompanhamento online.',
+  faqsExtra: [
+    {
+      pergunta: 'Dá para treinar com personal nos parques de Carapicuíba?',
+      resposta:
+        'Dá, e é um dos formatos que melhor combinam com a cidade: o Parque dos Paturis, o Gabriel Chucre (Parque da Lagoa) e o Planalto têm pista, equipamentos de ginástica e espaço para treino funcional com material portátil. Para quem quer reduzir custo, treinar em dupla ou em pequeno grupo no parque é uma alternativa comum ao atendimento individual em casa.',
+    },
+    {
+      pergunta: 'Qual o melhor horário de treino para quem trabalha fora de Carapicuíba?',
+      resposta:
+        'A maioria treina cedo, antes de pegar a Linha 8-Diamante rumo a Osasco, Barueri ou São Paulo, ou no fim do dia na volta. O personal ajusta a sessão a essas janelas — treinos de 45 a 60 minutos, com plano B em casa para os dias em que a rotina aperta. O acompanhamento online também funciona bem para quem tem horário imprevisível.',
+    },
+    {
+      pergunta: 'Existe acompanhamento para quem sente dores ou tem limitações?',
+      resposta:
+        'Sim. O Montinho Personal, destacado pelo portal, tem formação complementar no treino de pessoas com dores e limitações musculoesqueléticas — e a vivência de quem já treinou com desconforto. Com base na região de Alphaville, vizinha de Carapicuíba, o atendimento presencial pode ser combinado conforme agenda e local, além do online. Treino adaptado não substitui tratamento: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['osasco-sp', 'barueri-sp', 'jandira-sp', 'cotia-sp'],
   fontes: [
     { nome: 'IBGE Cidades — Carapicuíba', url: 'https://cidades.ibge.gov.br/brasil/sp/carapicuiba/panorama' },
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3510609' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-11',
 };
