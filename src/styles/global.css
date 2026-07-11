@@ -313,6 +313,9 @@ p {
   padding: var(--sp-4) var(--sp-5);
   margin-block: var(--sp-5);
 }
+.callout > * + * {
+  margin-top: var(--sp-3);
+}
 .callout-accent {
   border-left-color: var(--accent);
   background: var(--accent-50);
@@ -414,6 +417,11 @@ tbody tr:last-child td {
 .prose > * + * {
   margin-top: var(--sp-4);
 }
+/* O conteúdo pode estar aninhado em <section> dentro do .prose (páginas de
+   cidade e artigos por seção); o espaçamento vale também nesse nível. */
+.prose section > * + * {
+  margin-top: var(--sp-4);
+}
 .prose h2 {
   margin-top: var(--sp-7);
   scroll-margin-top: calc(var(--header-h) + 1rem);
@@ -508,6 +516,15 @@ tbody tr:last-child td {
   font-size: var(--step-1);
   color: var(--ink-soft);
   line-height: 1.55;
+}
+/* Parágrafo de abertura logo após um título nunca fica colado nele */
+h1 + .lead,
+h2 + .lead,
+h3 + .lead,
+h1 + p.prose,
+h2 + p.prose,
+h3 + p.prose {
+  margin-top: var(--sp-3);
 }
 .muted {
   color: var(--muted);
