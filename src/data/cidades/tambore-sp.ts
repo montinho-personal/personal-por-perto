@@ -87,7 +87,25 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Em Tamboré, o personal trainer ideal é aquele que se encaixa na rotina de quem mora em condomínio de alto padrão ou trabalha no polo empresarial: atendimento exclusivo, agenda flexível e foco em resultado. Com a estrutura dos próprios condomínios e o Parque Ecológico ao lado, treinar com método e acompanhamento é mais uma questão de decisão do que de oportunidade.',
+    'Em Tamboré, o personal trainer ideal é aquele que se encaixa na rotina de quem mora em condomínio de alto padrão ou trabalha no polo empresarial: atendimento exclusivo, agenda flexível e foco em resultado. Com a estrutura dos próprios condomínios e o Parque Ecológico ao lado, treinar com método e acompanhamento é mais uma questão de decisão do que de oportunidade. A região está dentro da área de atendimento presencial do Montinho Personal, o profissional destacado pelo portal, com base na vizinha Alphaville.',
+
+  faqsExtra: [
+    {
+      pergunta: 'O atendimento de personal em Tamboré acontece dentro dos residenciais?',
+      resposta:
+        'Sim — nos residenciais Tamboré numerados, no Resort Tamboré, no Burle Marx e no Gênesis, o formato mais procurado é o personal que atende na academia do condomínio, na área de lazer ou dentro de casa. Como Tamboré fica colado em Alphaville, o deslocamento do profissional entre os dois núcleos leva poucos minutos, o que facilita encaixar horários antes ou depois do expediente.',
+    },
+    {
+      pergunta: 'Quais objetivos são mais comuns entre quem contrata personal em Tamboré?',
+      resposta:
+        'O perfil executivo e familiar da região concentra a procura em emagrecimento, recomposição corporal, condicionamento físico para rotinas de trabalho intensas e correção de dores e postura de quem passa o dia sentado. Programas de bem-estar corporativo, ligados ao polo empresarial, também movimentam a demanda por treino orientado.',
+    },
+    {
+      pergunta: 'Dá para treinar com personal em Tamboré tendo dor nas costas ou no joelho?',
+      resposta:
+        'Dá — desde que o treino seja adaptado e progressivo. O Montinho Personal, destacado pelo portal na região, tem formação complementar voltada ao treino de pessoas com dores e limitações musculoesqueléticas e conhece essas barreiras também pela própria vivência na musculação. O acompanhamento prioriza execução segura e evolução gradual, sem promessa de cura: quadros clínicos pedem também avaliação de médico ou fisioterapeuta.',
+    },
+  ],
 
   vizinhas: ['alphaville-sp', 'santana-de-parnaiba-sp', 'barueri-sp', 'osasco-sp'],
 
@@ -96,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Barueri', url: 'https://www.barueri.sp.gov.br/' },
     { nome: 'IBGE Cidades — Santana de Parnaíba', url: 'https://cidades.ibge.gov.br/brasil/sp/santana-de-parnaiba/panorama' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-11',
 };

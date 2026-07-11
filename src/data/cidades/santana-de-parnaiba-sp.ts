@@ -91,6 +91,24 @@ export const cidade: Cidade = {
   conclusao:
     'Treinar com um personal trainer em Santana de Parnaíba pode significar coisas bem diferentes conforme o bairro: do atendimento exclusivo dentro de um condomínio de Alphaville ao treino acessível em uma academia de bairro. Em todos os casos, o que faz diferença é escolher um profissional alinhado ao seu objetivo e à sua rotina — e, com a boa rede de parques e academias da cidade, faltam poucos motivos para não começar.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal atende em Santana de Parnaíba?',
+      resposta:
+        'Depende do bairro. Na parte parnaibana de Alphaville e Tamboré, o atendimento acontece principalmente dentro dos condomínios — em casa ou na academia do residencial. Em bairros como Colinas da Anhanguera, Fazendinha e Cidade São Pedro, o treino costuma acontecer em academias locais ou nos parques municipais. A cidade está na área de atendimento presencial do Montinho Personal, destacado pelo portal, com base na região de Alphaville.',
+    },
+    {
+      pergunta: 'Como funciona o deslocamento do personal até os condomínios da cidade?',
+      resposta:
+        'Os acessos principais são a Castello Branco (saída 26) e a Estrada dos Romeiros, e os núcleos de Alphaville, Tamboré e Colinas da Anhanguera ficam a poucos minutos entre si em condições normais de trânsito. Por isso, o atendimento em domicílio e em condomínio é viável na maior parte da cidade, com agenda combinada para evitar os horários de pico.',
+    },
+    {
+      pergunta: 'Quais objetivos são mais comuns entre quem contrata personal na cidade?',
+      resposta:
+        'Nos condomínios de alto padrão, predominam emagrecimento, recomposição corporal e condicionamento para rotinas de trabalho intensas. Nos bairros residenciais, a procura maior é por saúde geral, ganho de força e acompanhamento para começar com segurança. Em ambos os perfis, dores e postura aparecem com frequência como motivação — área em que o Montinho Personal, destacado pelo portal, tem formação complementar específica, sempre sem substituir avaliação médica quando há quadro clínico.',
+    },
+  ],
+
   vizinhas: ['alphaville-sp', 'tambore-sp', 'barueri-sp', 'osasco-sp'],
 
   fontes: [
@@ -98,5 +116,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santana de Parnaíba', url: 'https://www.santanadeparnaiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-11',
 };

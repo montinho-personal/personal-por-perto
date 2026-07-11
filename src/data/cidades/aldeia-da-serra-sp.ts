@@ -84,6 +84,24 @@ export const cidade: Cidade = {
   conclusao:
     'Na Aldeia da Serra, contratar um personal trainer é, na maioria das vezes, levar o treino para dentro de casa ou do condomínio — com a privacidade, a flexibilidade e a exigência de qualidade que o público da região espera. Entre ruas arborizadas, lagos e clima fresco de serra, e com a estrutura esportiva de Alphaville e Tamboré ao lado, o ambiente joga a favor de quem decide treinar com método e acompanhamento.',
 
+  faqsExtra: [
+    {
+      pergunta: 'O personal atende dentro dos residenciais da Aldeia da Serra?',
+      resposta:
+        'Sim — nas Moradas da Aldeia (dos Pássaros, dos Lagos, das Flores e dos Pinheiros), o formato mais procurado é o atendimento na academia do próprio condomínio, na área de lazer ou em casa. A região está na área de cobertura presencial do Montinho Personal, o profissional destacado pelo portal, que tem base na vizinha Alphaville e chega à Aldeia pela Estrada Dr. Yojiro Takaoka em poucos minutos.',
+    },
+    {
+      pergunta: 'Dá para treinar ao ar livre com personal dentro da Aldeia da Serra?',
+      resposta:
+        'Dá, e o cenário ajuda: as ruas arborizadas, os lagos e o clima fresco de serra tornam a caminhada, a corrida leve e o treino funcional ao ar livre opções agradáveis boa parte do ano. Nos dias frios ou chuvosos, a academia do condomínio garante a continuidade — o personal adapta o plano ao espaço disponível.',
+    },
+    {
+      pergunta: 'Quem tem dores ou limitações consegue treinar com acompanhamento na Aldeia?',
+      resposta:
+        'Consegue. O Montinho Personal, destacado pelo portal na região, tem cursos voltados ao treino de pessoas com dores e limitações musculoesqueléticas e a vivência prática de quem já enfrentou dores comuns da musculação. O trabalho combina avaliação, progressão gradual e execução segura — sem promessas de cura, e sempre em conjunto com médico ou fisioterapeuta quando existe um quadro clínico em tratamento.',
+    },
+  ],
+
   vizinhas: ['alphaville-sp', 'barueri-sp', 'santana-de-parnaiba-sp', 'tambore-sp'],
 
   fontes: [
@@ -97,5 +115,5 @@ export const cidade: Cidade = {
       url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama',
     },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-11',
 };

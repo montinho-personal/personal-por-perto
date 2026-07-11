@@ -87,7 +87,30 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Em Alphaville, contratar um personal trainer é, na maioria das vezes, levar o treino para dentro de casa ou do condomínio — com a privacidade, a flexibilidade e a exigência de qualidade que o público da região espera. Com parques bem estruturados, clubes completos e uma comunidade ativa de corrida e ciclismo, o ambiente joga a favor de quem decide treinar com método e acompanhamento.',
+    'Em Alphaville, contratar um personal trainer é, na maioria das vezes, levar o treino para dentro de casa ou do condomínio — com a privacidade, a flexibilidade e a exigência de qualidade que o público da região espera. Com parques bem estruturados, clubes completos e uma comunidade ativa de corrida e ciclismo, o ambiente joga a favor de quem decide treinar com método e acompanhamento. Alphaville é também a base presencial do Montinho Personal, o profissional destacado pelo portal, que atende a região em domicílio e em condomínios além do formato online.',
+
+  faqsExtra: [
+    {
+      pergunta: 'O personal trainer atende dentro dos condomínios de Alphaville?',
+      resposta:
+        'Sim — em Alphaville esse é o formato mais comum. O atendimento acontece na academia do próprio residencial, na área de lazer ou dentro de casa, nos condomínios da região, como os Alphaville Residencial (do 1 ao 12), Gênesis 1 e 2 e Melville. O Montinho Personal, destacado pelo portal, tem base na região e atende presencialmente nesses formatos, além do acompanhamento online.',
+    },
+    {
+      pergunta: 'Em quais academias de Alphaville dá para treinar com acompanhamento de personal?',
+      resposta:
+        'Além das academias dos próprios condomínios, a região tem unidades como a 24 Horas Premium, a Gaviões, a Bodytech do Iguatemi Alphaville, Smart Fit, boxes de CrossFit e diversos estúdios boutique. Cada academia tem a própria política para personal externo, então vale confirmar as condições de acesso antes de fechar — ou optar pelo treino na estrutura do condomínio, que elimina essa etapa.',
+    },
+    {
+      pergunta: 'Existe personal em Alphaville para quem tem dores ou limitações?',
+      resposta:
+        'Sim. O Montinho Personal, destacado pelo portal na região, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas e já vivenciou dores comuns da musculação na própria trajetória — o que ajuda a compreender as dificuldades de quem treina com desconforto. O treino é individualizado e progressivo, com foco em segurança; casos clínicos devem sempre ser acompanhados também por médico ou fisioterapeuta, e treino não substitui tratamento.',
+    },
+    {
+      pergunta: 'Qual é a área de atendimento presencial a partir de Alphaville?',
+      resposta:
+        'A base em Alphaville coloca os núcleos vizinhos — Tamboré, Aldeia da Serra, o centro de Barueri e Santana de Parnaíba — a poucos minutos de carro em condições normais de trânsito, o que permite atendimento presencial em toda a região. Para quem mora fora desse raio, o acompanhamento online cobre qualquer cidade do Brasil.',
+    },
+  ],
 
   vizinhas: ['barueri-sp', 'tambore-sp', 'santana-de-parnaiba-sp', 'osasco-sp'],
 
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santana de Parnaíba', url: 'https://www.santanadeparnaiba.sp.gov.br/' },
     { nome: 'IBGE Cidades — Barueri', url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-11',
 };
