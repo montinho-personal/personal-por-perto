@@ -15,15 +15,22 @@ const isActive = (url: string) =>
 
     <!-- Busca e CTA visíveis só no desktop (no mobile ficam dentro do menu) -->
     <form class="nav-busca so-desktop" action="/personal-trainer/" method="get" role="search">
-      <label class="sr-only" for="busca-header">Buscar cidade</label>
+      <label class="sr-only" for="busca-header">Buscar no portal</label>
       <input
         id="busca-header"
         type="search"
         name="q"
-        placeholder="Buscar sua cidade…"
+        placeholder="Buscar cidade ou assunto…"
         autocomplete="off"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="busca-header-sug"
+        aria-autocomplete="list"
       />
       <button type="submit" aria-label="Buscar">🔎</button>
+      <div class="busca-sug" hidden>
+        <ul id="busca-header-sug" role="listbox" aria-label="Sugestões de busca"></ul>
+      </div>
     </form>
     <a
       class="btn btn-primary nav-cta so-desktop"
@@ -41,15 +48,22 @@ const isActive = (url: string) =>
       </summary>
       <nav class="nav-menu" aria-label="Navegação principal">
         <form class="nav-busca so-mobile" action="/personal-trainer/" method="get" role="search">
-          <label class="sr-only" for="busca-menu">Buscar cidade</label>
+          <label class="sr-only" for="busca-menu">Buscar no portal</label>
           <input
             id="busca-menu"
             type="search"
             name="q"
-            placeholder="Buscar sua cidade…"
+            placeholder="Buscar cidade ou assunto…"
             autocomplete="off"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="busca-menu-sug"
+            aria-autocomplete="list"
           />
           <button type="submit" aria-label="Buscar">🔎</button>
+          <div class="busca-sug" hidden>
+            <ul id="busca-menu-sug" role="listbox" aria-label="Sugestões de busca"></ul>
+          </div>
         </form>
         <ul>
           {
@@ -98,6 +112,230 @@ const isActive = (url: string) =>
       if (!desktop.matches && e.key === 'Escape' && nav.open) nav.open = false;
     });
   }
+
+  // ---- Sugestões da busca (autocomplete) ----
+  interface ItemBusca {
+    t: string; // título exibido
+    s: string; // subtítulo (categoria / UF)
+    u: string; // URL
+    k: string; // texto de casamento
+    kn?: string; // k normalizado (preenchido no carregamento)
+  }
+
+  let indice: ItemBusca[] | null = null;
+  let carregando: Promise<void> | null = null;
+
+  const norm = (s: string) =>
+    s
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+  function carregarIndice(): Promise<void> {
+    if (!carregando) {
+      carregando = fetch('/busca-index.json')
+        .then((r) => r.json())
+        .then((data: ItemBusca[]) => {
+          for (const i of data) i.kn = norm(i.k);
+          indice = data;
+        })
+        .catch(() => {
+          carregando = null; // permite nova tentativa
+        });
+    }
+    return carregando;
+  }
+
+  // Distância de edição do termo como subtrecho do texto (Sellers) —
+  // mesma tolerância a erros de digitação da página /personal-trainer/.
+  function fuzzy(text: string, pat: string): number {
+    const n = text.length;
+    const m = pat.length;
+    if (m === 0) return 0;
+    let prev = new Array(m + 1);
+    for (let i = 0; i <= m; i++) prev[i] = i;
+    let best = m;
+    for (let j = 1; j <= n; j++) {
+      const cur = new Array(m + 1);
+      cur[0] = 0;
+      for (let i = 1; i <= m; i++) {
+        const cost = text[j - 1] === pat[i - 1] ? 0 : 1;
+        cur[i] = Math.min(prev[i - 1] + cost, prev[i] + 1, cur[i - 1] + 1);
+      }
+      if (cur[m] < best) best = cur[m];
+      prev = cur;
+    }
+    return best;
+  }
+
+  const maxErros = (len: number) => (len <= 3 ? 0 : len <= 5 ? 1 : len <= 8 ? 2 : 3);
+
+  function pontuar(kn: string, q: string): number {
+    if (kn.startsWith(q)) return 0;
+    if (kn.includes(' ' + q)) return 1;
+    if (kn.includes(q)) return 2;
+    const erros = maxErros(q.length);
+    if (erros > 0) {
+      const d = fuzzy(kn, q);
+      if (d <= erros) return 4 + d;
+    }
+    return -1;
+  }
+
+  // Destaca o trecho digitado no título, ignorando acentos.
+  function destacar(titulo: string, q: string): DocumentFragment {
+    const frag = document.createDocumentFragment();
+    const classe = (ch: string) => {
+      const grupos: Record<string, string> = {
+        a: 'aáàâãä', e: 'eéèêë', i: 'iíìîï', o: 'oóòôõö', u: 'uúùûü', c: 'cç', n: 'nñ',
+      };
+      if (grupos[ch]) return `[${grupos[ch]}]`;
+      return /[a-z0-9]/.test(ch) ? ch : `\\${ch}`;
+    };
+    try {
+      const padrao = norm(q).split('').map(classe).join('');
+      const re = new RegExp(padrao, 'i');
+      const m = titulo.normalize('NFC').match(re);
+      if (m && m.index !== undefined) {
+        frag.append(titulo.slice(0, m.index));
+        const b = document.createElement('strong');
+        b.textContent = m[0];
+        frag.append(b, titulo.slice(m.index + m[0].length));
+        return frag;
+      }
+    } catch {
+      /* regex inválida — segue sem destaque */
+    }
+    frag.append(titulo);
+    return frag;
+  }
+
+  document.querySelectorAll<HTMLFormElement>('.site-header .nav-busca').forEach((form) => {
+    const input = form.querySelector<HTMLInputElement>('input[type="search"]');
+    const wrap = form.querySelector<HTMLElement>('.busca-sug');
+    const lista = form.querySelector<HTMLUListElement>('.busca-sug ul');
+    if (!input || !wrap || !lista) return;
+
+    let ativo = -1;
+    let urls: string[] = [];
+    let timer = 0;
+
+    const fechar = () => {
+      wrap.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      input.removeAttribute('aria-activedescendant');
+      ativo = -1;
+    };
+
+    const marcarAtivo = (i: number) => {
+      const opcoes = lista.querySelectorAll('li');
+      opcoes.forEach((li, j) => li.classList.toggle('ativo', j === i));
+      ativo = i;
+      if (i >= 0 && opcoes[i]) {
+        input.setAttribute('aria-activedescendant', opcoes[i].id);
+        opcoes[i].scrollIntoView({ block: 'nearest' });
+      } else {
+        input.removeAttribute('aria-activedescendant');
+      }
+    };
+
+    const renderizar = () => {
+      const q = norm(input.value);
+      if (!q || !indice) {
+        fechar();
+        return;
+      }
+      const achados: { item: ItemBusca; score: number }[] = [];
+      for (const item of indice) {
+        const score = pontuar(item.kn || '', q);
+        if (score >= 0) achados.push({ item, score });
+      }
+      // O casamento aproximado (score >= 4) só entra quando não há
+      // resultado exato — evita sugestões ruidosas.
+      const temExato = achados.some((a) => a.score <= 2);
+      const filtrados = temExato ? achados.filter((a) => a.score <= 2) : achados;
+      filtrados.sort((a, b) => a.score - b.score || a.item.t.localeCompare(b.item.t));
+      const top = filtrados.slice(0, 8);
+      if (top.length === 0) {
+        fechar();
+        return;
+      }
+
+      urls = top.map(({ item }) => item.u);
+      lista.replaceChildren(
+        ...top.map(({ item }, i) => {
+          const li = document.createElement('li');
+          li.id = `${input.id}-opt-${i}`;
+          li.setAttribute('role', 'option');
+          const a = document.createElement('a');
+          a.href = item.u;
+          const t = document.createElement('span');
+          t.className = 'sug-t';
+          t.append(destacar(item.t, input.value));
+          const s = document.createElement('span');
+          s.className = 'sug-s';
+          s.textContent = item.s;
+          a.append(t, s);
+          li.append(a);
+          return li;
+        }),
+      );
+
+      // Última opção: busca completa na página de cidades
+      const li = document.createElement('li');
+      li.id = `${input.id}-opt-${top.length}`;
+      li.setAttribute('role', 'option');
+      li.className = 'sug-todos';
+      const a = document.createElement('a');
+      a.href = `/personal-trainer/?q=${encodeURIComponent(input.value.trim())}`;
+      a.textContent = `Ver todos os resultados para “${input.value.trim()}” →`;
+      li.append(a);
+      lista.append(li);
+      urls.push(a.href);
+
+      wrap.hidden = false;
+      input.setAttribute('aria-expanded', 'true');
+      marcarAtivo(-1);
+    };
+
+    input.addEventListener('focus', () => {
+      carregarIndice();
+    });
+
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(async () => {
+        await carregarIndice();
+        renderizar();
+      }, 120);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (wrap.hidden) return;
+      const total = lista.children.length;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        marcarAtivo((ativo + 1) % total);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        marcarAtivo((ativo - 1 + total) % total);
+      } else if (e.key === 'Enter' && ativo >= 0) {
+        e.preventDefault();
+        window.location.assign(urls[ativo]);
+      } else if (e.key === 'Escape') {
+        e.stopPropagation(); // não fecha o menu mobile junto
+        fechar();
+      }
+    });
+
+    // Fecha as sugestões ao clicar fora do formulário
+    document.addEventListener('click', (e) => {
+      if (!wrap.hidden && e.target instanceof Node && !form.contains(e.target)) fechar();
+    });
+  });
 </script>
 
 <style>
@@ -126,6 +364,7 @@ const isActive = (url: string) =>
 
   /* Busca de cidades (menu mobile e barra desktop) */
   .nav-busca {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 0.35rem;
@@ -162,6 +401,60 @@ const isActive = (url: string) =>
   }
   .nav-busca button:hover {
     background: var(--brand-50);
+  }
+
+  /* Dropdown de sugestões da busca */
+  .busca-sug {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: -1px;
+    right: -1px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
+    z-index: 120;
+    overflow: hidden;
+  }
+  .busca-sug ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.3rem;
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+  }
+  /* Itens do dropdown são criados via JS (sem atributo de escopo do
+     Astro), por isso os seletores internos usam :global(). */
+  .busca-sug :global(li a) {
+    display: block;
+    padding: 0.5rem 0.65rem;
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .busca-sug :global(li a:hover),
+  .busca-sug :global(li.ativo a) {
+    background: var(--brand-50);
+  }
+  .busca-sug :global(.sug-t) {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+  .busca-sug :global(.sug-t strong) {
+    color: var(--brand-700);
+  }
+  .busca-sug :global(.sug-s) {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .busca-sug :global(.sug-todos a) {
+    color: var(--brand-700);
+    font-weight: 650;
+    font-size: 0.9rem;
   }
 
   /* Mobile: busca e CTA do desktop ficam ocultos */
