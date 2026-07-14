@@ -64,6 +64,14 @@ export const cidade: Cidade = {
     'Há um calendário ativo de corridas de rua promovidas pela prefeitura e por equipes locais (provas de aniversário, Embu Folia e provas de fim de ano), além do uso intenso do Parque Francisco Rizzo para caminhada e atividade ao ar livre.',
   academias:
     'A oferta é predominantemente de academias de bairro e estúdios de menor porte voltados aos moradores, complementada pelo Parque Francisco Rizzo como principal espaço de treino outdoor da cidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Rotary e na Av. João Paulo II' },
+    { nome: 'Skyfit', detalhe: 'unidade da rede de baixo custo na cidade' },
+    {
+      nome: 'Academia ao ar livre do Parque Francisco Rizzo',
+      detalhe: 'gratuita, junto à pista de caminhada e corrida do principal parque da cidade',
+    },
+  ],
 
   destaquesFitness: [
     'Parque do Lago Francisco Rizzo com pista de corrida, academia ao ar livre e eventos esportivos — principal polo de treino outdoor.',
@@ -84,6 +92,24 @@ export const cidade: Cidade = {
   conclusao:
     'Estância turística conhecida pela arte e pelo artesanato, Embu das Artes combina um centro histórico caminhável com o Parque Francisco Rizzo e um calendário ativo de corridas de rua. Para um personal trainer, a cidade oferece um mercado de bairro estável, demanda por treino ao ar livre e espaço para o atendimento personalizado em bairros residenciais tranquilos, a poucos minutos da capital.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde costuma acontecer o treino com personal em Embu das Artes?',
+      resposta:
+        'Os três cenários mais comuns são o Parque do Lago Francisco Rizzo — com pista e academia ao ar livre gratuita, ideal para treino funcional com material portátil —, as academias de bairro e o atendimento em casa, forte nos bairros residenciais mais tranquilos, como Jardim Santa Emília e Jardim Vista Alegre. Aos fins de semana, quando o centro histórico lota com a feira, os moradores tendem a concentrar o treino nas manhãs ou nos bairros fora do circuito turístico.',
+    },
+    {
+      pergunta: 'Qual perfil de treino é mais procurado na cidade?',
+      resposta:
+        'Predomina o público morador, com objetivos de saúde geral, emagrecimento e condicionamento — muitos aproveitando o calendário local de corridas de 5 km (aniversário da cidade, Embu Folia) como meta. O relevo de planalto e o clima ameno favorecem caminhada e corrida quase o ano todo, e o personal costuma usar o Parque Francisco Rizzo como base de treino ao ar livre.',
+    },
+    {
+      pergunta: 'Quem tem dores ou limitações encontra acompanhamento em Embu das Artes?',
+      resposta:
+        'Encontra. O Montinho Personal, destacado pelo portal, tem formação complementar no treino de pessoas com dores e limitações musculoesqueléticas — e já conviveu com dores comuns da musculação na própria trajetória. A partir da base na região de Alphaville, na Grande São Paulo, o atendimento presencial em Embu das Artes pode ser combinado conforme agenda e local, e o acompanhamento online atende qualquer rotina. Treino adaptado não substitui tratamento: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['taboao-da-serra-sp', 'cotia-sp', 'sao-paulo-sp'],
 
   fontes: [
@@ -91,5 +117,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Embu das Artes', url: 'https://cidadeembudasartes.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-14',
 };

@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva local mistura provas de rua tradicionais, como a Corrida de São Sebastião, ações de corrida ligadas a datas de conscientização e competições municipais que incluem atletismo, refletindo uma cidade em crescimento que aos poucos amplia suas opções de esporte e lazer.',
   academias:
     'A oferta é formada principalmente por academias de musculação e treino funcional distribuídas pela sede e pelos distritos de Polvilho e Jordanésia, com estúdios menores atendendo os bairros residenciais e condomínios da cidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidade na Av. Tenente Marques, no bairro dos Ipês (Polvilho)' },
+    { nome: 'Skyfit', detalhe: 'unidade da rede de baixo custo em Polvilho' },
+    { nome: 'Power Live Academia', detalhe: 'na Av. Jordano Mendes, em Jordanésia' },
+  ],
 
   destaquesFitness: [
     'Cidade da Região Metropolitana de São Paulo, a cerca de 30 km da capital.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade em crescimento acelerado na Região Metropolitana de São Paulo, marcada pela logística e pela rotina de deslocamento, Cajamar pede um treino que caiba na agenda de quem divide o dia entre trabalho e trânsito. Um personal trainer ajuda a organizar horários, aproveitar o clima ameno do planalto e manter a constância, seja na academia, em casa ou nos espaços ao ar livre dos bairros.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde costuma acontecer o treino com personal em Cajamar?',
+      resposta:
+        'A cidade se divide em três núcleos — a sede, Polvilho e Jordanésia — e cada um tem suas academias de musculação e treino funcional, incluindo unidades de rede em Polvilho. O atendimento em casa e em condomínio funciona bem dentro de cada núcleo, já que os deslocamentos entre eles enfrentam o tráfego pesado dos eixos logísticos. Para o treino ao ar livre, a Rota Turística e a zona rural de Ponunduva rendem caminhadas e trilhas com relevo de verdade.',
+    },
+    {
+      pergunta: 'Existe treino para quem trabalha em turnos nos centros de distribuição?',
+      resposta:
+        'Esse é justamente um dos perfis mais comuns da cidade. Quem trabalha em escala nos galpões de Jordanésia e Polvilho costuma precisar de horários fora do padrão — meio da manhã, início da tarde ou noite — e de um plano que se ajuste à troca de turnos. O personal monta sessões objetivas nesses horários alternativos, e o acompanhamento online com treino planilhado é um bom complemento para as semanas de escala mais pesada.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Cajamar para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas — tema frequente em quem faz trabalho físico na logística — e a vivência de quem já treinou com desconforto. Com base na região de Alphaville, o atendimento presencial em Cajamar, pelo eixo Anhanguera/Rodoanel, pode ser combinado conforme agenda e local, além do online. Treino adaptado não substitui tratamento: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['caieiras-sp', 'franco-da-rocha-sp', 'osasco-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cajamar', url: 'https://cajamar.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-14',
 };

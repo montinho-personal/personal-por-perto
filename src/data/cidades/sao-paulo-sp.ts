@@ -18,6 +18,9 @@ export const cidade: Cidade = {
   resumoEconomico:
     'Principal centro financeiro da América Latina e sede da B3, a maior bolsa de valores das Américas, São Paulo tem a economia mais diversificada do país. Os eixos da Avenida Paulista, da Faria Lima e do Itaim Bibi concentram bancos, gestoras e seguradoras — um público corporativo com rotina intensa que movimenta boa parte da demanda por treino antes e depois do expediente.',
 
+  mercado:
+    'São Paulo é o mercado de personal trainer mais competitivo do país — e também o mais segmentado. No eixo corporativo (Paulista, Faria Lima, Itaim Bibi), predominam treinos encaixados antes ou depois do expediente e na hora do almoço, muitas vezes em academias perto do escritório. Em bairros residenciais de renda alta, como Moema, Jardins e Morumbi, pesam o atendimento em condomínio e em casa, com estúdios boutique completando a oferta. Nos bairros de classe média e na periferia, o treino acontece nas academias de bairro e nos parques, com o custo-benefício na frente. Essa variedade permite encontrar de tudo — do estúdio premium ao acompanhamento online, formato em que o portal destaca o Montinho Personal, com base na região de Alphaville, na Grande São Paulo, e atendimento presencial combinável conforme agenda e local.',
+
   bairrosNobres: [
     'Jardins',
     'Itaim Bibi',
@@ -74,6 +77,13 @@ export const cidade: Cidade = {
     'São Paulo tem a cultura de corrida de rua mais forte do Brasil e um público fitness exigente. A combinação de grandes parques, ampla malha cicloviária e calendário esportivo lotado cria um ambiente em que treinar faz parte da identidade da cidade.',
   academias:
     'É o mercado fitness mais maduro do país: berço da Smart Fit (fundada na capital em 2001, hoje a maior rede da América Latina), com forte presença em bairros, shoppings e estações de metrô. No segmento boutique, a Bodytech é referência, e a oferta de CrossFit e treino funcional é vasta.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'fundada na capital em 2001, hoje a maior rede da América Latina, presente em praticamente todos os bairros' },
+    { nome: 'Bio Ritmo', detalhe: 'marca premium do grupo Smart Fit, com unidades em bairros como Itaim Bibi, Campo Belo e Morumbi' },
+    { nome: 'Bodytech', detalhe: 'referência no segmento boutique, com superunidades que somam piscina e lutas' },
+    { nome: 'Companhia Athletica', detalhe: 'rede de alto padrão, com unidades como Morumbi, Itaim e Anália Franco' },
+    { nome: 'Estúdios boutique e boxes de CrossFit', detalhe: 'oferta vasta, espalhada por todas as regiões da cidade' },
+  ],
 
   destaquesFitness: [
     'Maior malha cicloviária do Brasil (731 km).',
@@ -91,6 +101,32 @@ export const cidade: Cidade = {
     onlineMax: 500,
   },
 
+  conclusao:
+    'São Paulo reúne a maior oferta de personal trainers, academias e espaços de treino do Brasil — o desafio não é encontrar, é escolher bem. Vale definir objetivo, orçamento e logística (perto de casa, do trabalho ou no condomínio) antes de fechar, e usar os guias do portal para comparar formatos. Com parques de referência, a maior malha cicloviária do país e um calendário esportivo que não para, a cidade joga a favor de quem decide treinar com constância.',
+
+  faqsExtra: [
+    {
+      pergunta: 'Em quais regiões de São Paulo o personal costuma atender?',
+      resposta:
+        'Em todas — o que muda é o formato. No eixo corporativo (Paulista, Faria Lima, Itaim Bibi), o comum é treinar em academia perto do escritório, antes ou depois do expediente. Em bairros como Moema, Jardins, Morumbi e Vila Mariana, cresce o atendimento em casa e na academia do condomínio. Perto do Ibirapuera e do Villa-Lobos, o treino ao ar livre com material portátil é forte. Como a cidade é enorme, a regra prática é buscar um profissional que atenda no seu bairro ou no trajeto casa-trabalho.',
+    },
+    {
+      pergunta: 'Treinar perto de casa ou perto do trabalho: o que funciona melhor em São Paulo?',
+      resposta:
+        'Depende do seu horário mais protegido. Quem treina cedo tende a manter melhor a rotina perto de casa; quem prefere a hora do almoço ou o pós-expediente costuma se dar melhor perto do trabalho — a rede metroferroviária de mais de 180 estações ajuda a encaixar academia no trajeto. O personal experiente monta o plano em torno dessa logística, e o acompanhamento online resolve as semanas em que o trânsito ou a agenda desmontam o plano A.',
+    },
+    {
+      pergunta: 'Quais objetivos são mais comuns entre quem contrata personal em São Paulo?',
+      resposta:
+        'No público de escritório, lideram emagrecimento, condicionamento e o alívio de dores e postura da rotina sentada — muitas vezes com metas de prova de rua no meio do caminho, dada a cultura de corrida da cidade. Nos bairros residenciais, aparecem força, saúde geral e o acompanhamento para começar do zero com segurança. Em todos os perfis, a constância é o divisor: é nela que o acompanhamento próximo faz mais diferença.',
+    },
+    {
+      pergunta: 'Existe personal em São Paulo para quem sente dores ou tem limitações?',
+      resposta:
+        'Existe — e é uma das buscas que mais crescem. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas e a vivência de quem já treinou com desconforto. Com base na região de Alphaville, na Grande São Paulo, o atendimento presencial na capital pode ser combinado conforme agenda e local, e o acompanhamento online cobre toda a cidade. O treino é adaptado e progressivo, sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['guarulhos-sp', 'osasco-sp', 'santo-andre-sp', 'barueri-sp'],
 
   fontes: [
@@ -98,5 +134,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Paulo — Ciclovias', url: 'https://www.prefeitura.sp.gov.br/' },
     { nome: 'Corrida Internacional de São Silvestre', url: 'https://www.saosilvestre.com.br/' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-14',
 };
