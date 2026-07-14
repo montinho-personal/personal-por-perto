@@ -18,6 +18,9 @@ export const cidade: Cidade = {
   resumoEconomico:
     'Coração do Grande ABC, Santo André teve o maior crescimento populacional absoluto da região entre 2010 e 2022. Sua economia é dominada por serviços (cerca de dois terços do PIB municipal) e por uma indústria de transformação tradicional — abriga o Polo Petroquímico de Capuava, o primeiro do Brasil. Berço da indústria automobilística nacional, a cidade reúne público de classe média consolidada e bairros de IDH muito alto.',
 
+  mercado:
+    'O mercado de personal trainer em Santo André é um dos mais equilibrados do Grande ABC: renda de classe média consolidada, IDH muito alto e uma rede de 11 parques públicos que funciona como extensão natural do treino. Nos bairros de maior renda — Jardim, Vila Assunção e Campestre —, o atendimento em condomínio e em estúdio divide espaço com as academias de rede; nos demais, o treino de bairro domina. Os parques abertos até as 22h dão ao personal uma vantagem rara na região: montar sessões ao ar livre também à noite, no horário em que boa parte dos andreenses consegue treinar.',
+
   bairrosNobres: ['Jardim', 'Vila Assunção', 'Campestre'],
   bairrosPopulares: ['Centro', 'Vila Pires', 'Utinga', 'Parque das Nações', 'Jardim Santo André'],
 
@@ -65,6 +68,11 @@ export const cidade: Cidade = {
     'Com IDH muito alto (0,815) e uma rede de 11 parques públicos com infraestrutura esportiva gratuita, Santo André tem uma cultura de atividade física acessível e bem distribuída pela cidade. A proximidade da Vila de Paranapiacaba e da Serra do Mar ainda abre espaço para trilhas e atividades outdoor.',
   academias:
     'A oferta de academias e estúdios é robusta para o porte da cidade, concentrada principalmente nos bairros de maior renda (Jardim, Vila Assunção e Centro), e bem complementada pelas academias ao ar livre dos parques municipais.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'várias unidades — Grand Plaza, Lar ABC Shopping, Campestre, Príncipe de Gales, Parque das Nações e Pirelli' },
+    { nome: 'BodyMind', detalhe: 'academia tradicional da cidade, com uma das maiores piscinas do estado' },
+    { nome: 'Academias ao ar livre municipais', detalhe: 'gratuitas, nos parques Central, Celso Daniel e Regional da Criança' },
+  ],
 
   destaquesFitness: [
     'IDH muito alto (0,815) e a melhor rede de parques públicos do Grande ABC.',
@@ -82,11 +90,29 @@ export const cidade: Cidade = {
     onlineMax: 420,
   },
 
+  faqsExtra: [
+    {
+      pergunta: 'Dá para treinar com personal à noite em Santo André?',
+      resposta:
+        'Dá — e a cidade é uma das melhores do ABC para isso. Os 11 parques municipais em geral ficam abertos até as 22h, com entrada gratuita e pistas iluminadas, e a própria Prefeitura promove a Night SA, corrida noturna de 5 km no Paço. Para quem só consegue treinar depois do expediente, o personal monta a sessão no Parque Central ou no Celso Daniel, ou em academia, sem depender do horário comercial.',
+    },
+    {
+      pergunta: 'Onde o personal costuma atender em Santo André?',
+      resposta:
+        'Nos bairros de maior renda — Jardim, Vila Assunção e Campestre —, o atendimento em casa e na academia do condomínio é comum, com estúdios completando a oferta. No Centro e nos bairros residenciais, o treino acontece mais em academias de rede e nos parques. Como a cidade é bem servida de áreas públicas com equipamentos, o treino funcional ao ar livre com material portátil é uma alternativa econômica presente em praticamente todos os bairros.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Santo André para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas — e conhece essas barreiras pela própria vivência na musculação. Para o ABC, o formato mais prático é o acompanhamento online, com treino adaptado e ajustes contínuos; o atendimento presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-paulo-sp', 'guarulhos-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Santo André', url: 'https://cidades.ibge.gov.br/brasil/sp/santo-andre/panorama' },
     { nome: 'Prefeitura de Santo André', url: 'https://www.santoandre.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-14',
 };

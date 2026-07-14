@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Diadema tem tradição esportiva comunitária forte, com parques públicos ativos — aulas gratuitas no Parque do Paço — e equipes representativas municipais. O esporte de bairro é parte importante da vida da cidade.',
   academias:
     'A oferta é dominada por academias de bairro que atendem a população densa e trabalhadora, complementadas pela boa malha de parques (Paço, Takebe e Ecológico do Eldorado) com áreas de treino.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Serraria (Av. Afonso Monteiro da Cruz) e no Shopping Diadema' },
+    { nome: 'Bluefit', detalhe: 'unidade no Centro, na Av. Sete de Setembro' },
+    { nome: 'Parque do Paço', detalhe: 'aulas públicas gratuitas (zumba, capoeira, tai chi) e pista de caminhada' },
+    { nome: 'Academia ao ar livre do Parque Takebe', detalhe: 'gratuita, polo de treino de bairro' },
+  ],
 
   destaquesFitness: [
     'Parque do Paço com aulas gratuitas (zumba, capoeira, tai chi) e pista de caminhada.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade densa e industrial do ABC, Diadema tem boa rede de parques públicos e forte cultura de esporte comunitário. Um personal trainer ajuda a aproveitar o Parque do Paço e as academias de bairro com método — perto de casa, do trabalho ou no formato online.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Como treinar com personal em Diadema gastando pouco?',
+      resposta:
+        'A cidade ajuda: o Parque do Paço tem aulas públicas gratuitas e pista de caminhada, o Parque Takebe tem academia ao ar livre, e as redes de baixo custo cobrem o Centro e a Serraria. Com o personal, dá para baratear dividindo a sessão em dupla ou pequeno grupo no parque, fechando pacote mensal em vez de aula avulsa, ou combinando o acompanhamento online com sessões presenciais mais espaçadas.',
+    },
+    {
+      pergunta: 'Onde o treino com personal costuma acontecer em Diadema?',
+      resposta:
+        'Perto de casa — essa é a marca da cidade. Com a segunda maior densidade demográfica do país, os deslocamentos internos são curtos e o personal consegue atender em domicílio, na academia de bairro do próprio cliente ou nos parques (Paço, Takebe e Ecológico do Eldorado). Para quem trabalha na indústria local ou faz o pendular para a capital, os horários da manhã cedo e do fim do dia concentram a procura.',
+    },
+    {
+      pergunta: 'Quem tem dores ou limitações encontra acompanhamento em Diadema?',
+      resposta:
+        'Encontra. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas — comuns em quem faz trabalho físico e repetitivo na indústria — e já conviveu com dores da musculação na própria trajetória. Para Diadema, o formato mais prático é o acompanhamento online, com treino adaptado e ajustes contínuos; o presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. Treino não substitui tratamento: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-bernardo-do-campo-sp', 'santo-andre-sp', 'sao-paulo-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Diadema', url: 'https://www.diadema.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-14',
 };

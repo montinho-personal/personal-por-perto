@@ -18,6 +18,9 @@ export const cidade: Cidade = {
   resumoEconomico:
     'Segunda cidade mais populosa do estado de São Paulo, Guarulhos é um grande polo logístico e de distribuição, lar do Aeroporto Internacional de São Paulo/Guarulhos (GRU) — o maior da América Latina e o maior terminal de cargas do Brasil. Localizada no entroncamento de rodovias que ligam São Paulo ao Rio de Janeiro e a Minas, tem parque industrial diversificado e forte contraste social entre regiões como o Distrito Maia e bairros como Pimentas e Cumbica.',
 
+  mercado:
+    'O mercado de personal trainer em Guarulhos acompanha a segunda maior população do estado — e o seu contraste. Nas regiões de maior renda, como o Distrito Maia e a Vila Galvão, crescem estúdios de treino funcional e o atendimento em condomínio; nos bairros populosos, como Pimentas e Bonsucesso, o treino acontece nas academias de rede e de bairro, com o custo-benefício em primeiro plano. O trânsito das rodovias que cortam a cidade pesa na logística: treinar perto de casa, em domicílio ou no Bosque Maia costuma render mais do que atravessar a cidade. O público ligado ao aeroporto e à logística, com escalas e turnos, também abre espaço para horários fora do padrão e para o acompanhamento online.',
+
   bairrosNobres: ['Jardim Maia', 'Cidade Maia', 'Parque Renato Maia', 'Vila Galvão'],
   bairrosPopulares: ['Pimentas', 'Bonsucesso', 'Cumbica', 'Cecap', 'Taboão'],
 
@@ -60,6 +63,11 @@ export const cidade: Cidade = {
     'Cidade grande e de perfil predominantemente residencial, Guarulhos concentra boa parte da prática esportiva pública no Bosque Maia, que funciona como o grande ponto de encontro de quem treina ao ar livre. A demanda por personal trainers cresce junto com a população e a busca por qualidade de vida.',
   academias:
     'A oferta de academias acompanha o tamanho da cidade, com redes populares espalhadas pelos bairros e estúdios de treino funcional surgindo nas regiões de maior renda, como o Distrito Maia.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades como a da Av. Guarulhos (Ponte Grande) e a da Av. Paulo Faccini, em frente ao Bosque Maia' },
+    { nome: 'Bluefit', detalhe: 'várias unidades — Centro, Gopouva, Vila Galvão, Jardim Cocaia e Pimentas' },
+    { nome: 'Academia ao ar livre do Bosque Maia', detalhe: 'gratuita, junto à pista de 3 km do maior parque da cidade' },
+  ],
 
   destaquesFitness: [
     'Bosque Maia: pista plana de 3 km, academia ao ar livre e ciclofaixa de lazer aos domingos.',
@@ -77,11 +85,29 @@ export const cidade: Cidade = {
     onlineMax: 400,
   },
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde costuma acontecer o treino com personal em Guarulhos?',
+      resposta:
+        'O Bosque Maia é o grande ponto de encontro: pista plana de 3 km, academia ao ar livre e ciclofaixa aos domingos — ideal para treino funcional e corrida orientada. Fora dele, o treino se divide entre as academias de rede espalhadas pelos bairros e o atendimento em casa ou no condomínio, forte na região do Distrito Maia e da Vila Galvão. Como o trânsito das rodovias pesa, a regra prática é escolher um formato que não dependa de atravessar a cidade.',
+    },
+    {
+      pergunta: 'Existe treino para quem trabalha em turnos no aeroporto e na logística?',
+      resposta:
+        'Sim — é um perfil comum na cidade. Quem trabalha em escala no aeroporto, nos terminais de carga e nos centros de distribuição costuma precisar de horários variáveis: meio da manhã, início da tarde ou noite. O personal monta sessões objetivas nesses horários e ajusta o plano a cada troca de escala, e o acompanhamento online com treino planilhado segura a rotina nas semanas mais imprevisíveis.',
+    },
+    {
+      pergunta: 'Quem sente dores ou tem limitações encontra acompanhamento em Guarulhos?',
+      resposta:
+        'Encontra. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas e a vivência de quem já treinou com desconforto. Para Guarulhos, o formato mais prático é o acompanhamento online — treino adaptado, progressivo e com ajustes contínuos —, e o atendimento presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. Sem promessa de cura: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-paulo-sp', 'osasco-sp', 'santo-andre-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Guarulhos', url: 'https://cidades.ibge.gov.br/brasil/sp/guarulhos/panorama' },
     { nome: 'Prefeitura de Guarulhos', url: 'https://www.guarulhos.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-14',
 };

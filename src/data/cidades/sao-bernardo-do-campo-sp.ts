@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A tradição esportiva de São Bernardo está ligada à indústria e ao operariado, com forte adesão à corrida de rua e uso intenso dos parques municipais para caminhada e treino. A Meia Maratona é o grande evento que engaja a comunidade fitness.',
   academias:
     'A oferta de academias é ampla e bem distribuída pelos bairros, complementada pelas 12 pistas públicas e pelas academias ao ar livre dos parques, atendendo desde o público operário até os bairros de maior renda.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'várias unidades — Plaza Shopping, Shopping Metrópole, Rua João Pessoa, Vianas e Av. Taboão' },
+    { nome: 'Bluefit', detalhe: 'unidades no Centro (Rua Marechal Deodoro) e no Demarchi' },
+    { nome: 'Academia ao ar livre do Parque Chácara Silvestre', detalhe: 'gratuita, com pista de caminhada e trilha de ~900 m' },
+  ],
 
   destaquesFitness: [
     'Maior polo automotivo da América Latina, com grande público corporativo e operário.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'No coração do ABC, São Bernardo une tradição operária e boa estrutura esportiva. Um personal trainer ajuda a encaixar o treino na rotina industrial e a aproveitar as pistas e parques da cidade com método — da musculação à preparação para a Meia Maratona.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Como o personal encaixa o treino na rotina industrial de São Bernardo?',
+      resposta:
+        'A cidade vive de turnos — montadoras, autopeças e logística —, e o treino precisa acompanhar. É comum montar sessões no contraturno: manhã para quem entra à tarde, fim de tarde para quem sai cedo, e ajustes a cada virada de escala. Sessões objetivas de 45 a 60 minutos, perto de casa ou nos parques, funcionam melhor do que qualquer plano que dependa de atravessar a Anchieta no horário de pico.',
+    },
+    {
+      pergunta: 'Dá para treinar para a Meia Maratona de São Bernardo com personal?',
+      resposta:
+        'Dá — e é uma das metas mais comuns da cidade. As 12 pistas públicas oficiais de corrida e caminhada permitem treinos de rodagem e intervalados sem custo, e o personal entra na periodização: distribuir volume, ritmo e força ao longo das semanas para chegar inteiro aos 21 km (ou começar pelos 5 km e 10 km da mesma prova). O trabalho de força em academia é o complemento que mais previne lesão em corredor iniciante.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São Bernardo para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas — queixa comum em quem faz trabalho físico na indústria — e a vivência de quem já treinou com desconforto. Para o ABC, o formato mais prático é o acompanhamento online, com treino adaptado e progressivo; o presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. Sem promessa de cura: quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['santo-andre-sp', 'sao-paulo-sp', 'santos-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Bernardo do Campo', url: 'https://www.saobernardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-14',
 };
