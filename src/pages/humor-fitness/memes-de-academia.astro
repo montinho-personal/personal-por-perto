@@ -1,0 +1,216 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/humor-fitness/perfis-de-memes-fitness',
+    titulo: 'Perfis de memes fitness para seguir no Instagram',
+    descricao: 'A curadoria completa dos perfis que produzem os memes citados neste guia — cada um com a sua persona.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'A versão séria do meme da escada: o que é a DOMS, por que não é ácido lático e quando a dor merece atenção.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'O conceito que os memes de dieta tentam driblar todo fim de semana, explicado sem mistério.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/humor-fitness/memes-de-academia';
+const atualizadoEm = '2026-07-14';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Memes de academia: os melhores para mandar no grupo de treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quais são os memes de academia mais clássicos?',
+    resposta:
+      'Os eternos: o leg day e a dificuldade de descer escadas no dia seguinte; a "segunda-feira internacional do peito" com todos os supinos ocupados; o frango com batata-doce como prato-símbolo da dieta; o projeto verão que começa em novembro; e a rivalidade cômica entre cardio e musculação. São situações tão universais que qualquer pessoa que já pisou numa academia se reconhece.',
+  },
+  {
+    pergunta: 'Onde encontrar memes de academia para mandar no grupo?',
+    resposta:
+      'O Instagram concentra os melhores perfis do gênero no Brasil. Vale seguir perfis dedicados ao humor fitness — como Rindo do Shape, Memes Fitness 99 e a família Marombeira (Cansada, Iludida e Sincera) —, que publicam diariamente e cobrem do leg day à dieta quebrada no domingo. Nossa curadoria completa está no guia de perfis de memes fitness.',
+  },
+  {
+    pergunta: 'Por que a dor do dia seguinte rende tanto meme?',
+    resposta:
+      'Porque é a experiência mais democrática da academia: do iniciante ao veterano, todo mundo já acordou dolorido depois de um treino de perna e encarou uma escada como inimiga. Essa dor tem nome — dor muscular tardia, ou DOMS — e explicação científica que não envolve "ácido lático". O meme ri do sintoma; o nosso artigo sobre dor pós-treino explica a causa.',
+  },
+  {
+    pergunta: 'Rir da academia não desmotiva o treino?',
+    resposta:
+      'Pelo contrário. O humor funciona como válvula de escape para as frustrações normais do processo — resultado que demora, dieta que aperta, rotina que cansa — e cria senso de pertencimento a uma comunidade que passa pelas mesmas coisas. Quem ri do processo tende a ter expectativas mais realistas, e expectativa realista é um dos maiores preditores de constância no treino.',
+  },
+];
+
+const title = 'Memes de academia: os melhores para mandar no grupo de treino';
+const description =
+  'O guia dos memes de academia: leg day, dor do dia seguinte, segunda-feira internacional do peito, frango com batata-doce e projeto verão — e onde encontrar os melhores.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Memes de academia: os melhores para mandar no grupo de treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Toda academia do Brasil tem dois grupos de WhatsApp: o oficial, com os
+      avisos, e o de verdade — onde circulam os memes. O humor virou dialeto
+      da comunidade fitness, e alguns temas são tão universais que atravessam
+      gerações de marombeiros. Este é o guia dos clássicos: por que cada meme
+      funciona, quem se identifica e onde encontrar os melhores do gênero.
+    </p>
+
+    <div class="prose">
+      <h2>O leg day e a escada do dia seguinte</h2>
+      <p>
+        O rei absoluto do gênero. Não existe meme de academia mais replicado do
+        que o da pessoa descendo a escada de lado, agarrada ao corrimão, dois
+        dias depois do treino de perna. Funciona porque é fisiologicamente
+        verdadeiro: o treino de membros inferiores envolve grandes grupos
+        musculares e muita contração excêntrica — receita exata da famosa dor
+        tardia. A versão científica dessa piada, com o que fazer quando ela
+        bate, está no nosso artigo sobre
+        <a href="/musculacao/dor-muscular-pos-treino">dor muscular pós-treino</a>.
+        A versão cômica rende post diário no
+        <a href="https://www.instagram.com/rindodoshape/" target="_blank" rel="noopener">@rindodoshape</a>.
+      </p>
+
+      <h2>Segunda-feira: dia internacional do peito</h2>
+      <p>
+        Chegue a qualquer academia numa segunda às 18h e conte os supinos
+        livres: zero. A "segunda-feira internacional do peito" é o fenômeno em
+        que metade da academia decide, em sincronia nacional, que a semana
+        começa pelo supino. O meme ri da previsibilidade — e quem sofre com
+        equipamento ocupado encontra consolo (e deboche) no
+        <a href="https://www.instagram.com/memesfitness_99/" target="_blank" rel="noopener">@memesfitness_99</a>.
+        Dica séria escondida na piada: treinar em horários ou divisões
+        alternativas resolve — o guia de
+        <a href="/musculacao/abc-ou-full-body">divisão de treino</a> mostra como.
+      </p>
+
+      <h2>Frango com batata-doce: o prato que virou personalidade</h2>
+      <p>
+        Nenhum alimento carrega tanta identidade marombeira quanto a dupla
+        frango e batata-doce. O meme existe porque a caricatura tem fundo real:
+        dieta de quem treina já foi sinônimo de marmita bege e sem sal. A
+        piada envelheceu bem justamente porque a nutrição evoluiu — hoje se
+        sabe que aderência importa mais do que sofrimento, como explica o nosso
+        artigo sobre <a href="/emagrecimento/deficit-calorico-como-funciona">déficit calórico</a>.
+        Mas o frango segue rendendo: a
+        <a href="https://www.instagram.com/marombeirasincera_/" target="_blank" rel="noopener">@marombeirasincera_</a>
+        não perdoa.
+      </p>
+
+      <h2>O projeto verão que começa em novembro</h2>
+      <p>
+        Todo ano é a mesma coisa: o Brasil inteiro descobre em novembro que o
+        verão está chegando. O meme do "projeto verão" ri da matemática
+        impossível — querer em seis semanas o resultado que pede meses de
+        constância. É o território do
+        <a href="https://www.instagram.com/shapeprometido/" target="_blank" rel="noopener">@shapeprometido</a>
+        e da
+        <a href="https://www.instagram.com/marombeirailudida/" target="_blank" rel="noopener">@marombeirailudida</a>.
+        A régua realista, sem ilusão, está no artigo sobre
+        <a href="/musculacao/quanto-tempo-para-ver-resultados">quanto tempo demora para ver resultados</a>.
+      </p>
+
+      <h2>Cardio vs. musculação: a rivalidade cômica</h2>
+      <p>
+        De um lado, quem acha que esteira é castigo; do outro, quem jura que
+        musculação é só para "ficar grande". A rivalidade rende memes porque os
+        estereótipos são reconhecíveis na hora — a pessoa que "vai fazer só 10
+        minutinhos de esteira" e a que pula o aquecimento para não perder o
+        horário do supino. Spoiler da versão séria: os dois convivem bem, como
+        mostra o guia sobre
+        <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia">cardio e musculação no mesmo dia</a>.
+      </p>
+
+      <h2>A dieta que quebra no fim de semana</h2>
+      <p>
+        Segunda a sexta: disciplina de atleta olímpico. Sábado: "um pedacinho
+        não vai fazer diferença". Domingo: recomeço marcado para amanhã. O ciclo
+        é tão universal que sustenta perfis inteiros — a
+        <a href="https://www.instagram.com/iludidapeloshape/" target="_blank" rel="noopener">@iludidapeloshape</a>
+        fez dele uma linha editorial. E para os dias de cansaço acumulado em que
+        até o pré-treino desiste, a
+        <a href="https://www.instagram.com/marombeiracansada/" target="_blank" rel="noopener">@marombeiracansada</a>
+        representa.
+      </p>
+
+      <h2>Onde encontrar os melhores memes de academia</h2>
+      <p>
+        O Instagram é o habitat natural do gênero no Brasil. Montamos uma
+        curadoria completa com os
+        <a href="/humor-fitness/perfis-de-memes-fitness">perfis de memes fitness que valem o follow</a>
+        — cada um com a sua persona, do deboche raiz ao humor da rotina
+        feminina na maromba. Salve o guia, siga os que combinam com o seu tipo
+        de humor e abasteça o grupo do treino.
+      </p>
+
+      <div class="callout">
+        <strong>Entre uma risada e outra:</strong> meme é entretenimento, não
+        orientação. Quando o assunto é montar treino, dieta ou lidar com dor,
+        os <a href={rotas.guias}>guias sérios do portal</a> — e um bom
+        profissional — continuam sendo o caminho.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -5,7 +5,7 @@
  */
 export interface Artigo {
   titulo: string;
-  categoria: 'Guias' | 'Musculação' | 'Emagrecimento' | 'Mounjaro e Treino';
+  categoria: 'Guias' | 'Musculação' | 'Emagrecimento' | 'Mounjaro e Treino' | 'Humor fitness';
   url: string;
 }
 
@@ -47,4 +47,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro', titulo: 'Treino para quem usa Mounjaro: como adaptar' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/fraqueza-para-treinar', titulo: 'Mounjaro dá fraqueza para treinar? O que fazer' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro', titulo: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo' },
+
+  // Humor fitness
+  { categoria: 'Humor fitness', url: '/humor-fitness/perfis-de-memes-fitness', titulo: 'Perfis de memes fitness para seguir no Instagram' },
+  { categoria: 'Humor fitness', url: '/humor-fitness/memes-de-academia', titulo: 'Memes de academia: os melhores para mandar no grupo de treino' },
 ];

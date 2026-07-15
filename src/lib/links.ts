@@ -51,6 +51,7 @@ export const rotas = {
   musculacao: '/musculacao',
   emagrecimento: '/emagrecimento',
   mounjaro: '/mounjaro-e-treino',
+  humor: '/humor-fitness',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

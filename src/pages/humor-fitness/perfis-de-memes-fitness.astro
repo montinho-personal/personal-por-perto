@@ -1,0 +1,251 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, itemListSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const perfis = [
+  {
+    handle: 'rindodoshape',
+    nome: 'Rindo do Shape',
+    desc: 'O carro-chefe da rede, com mais de 400 mil seguidores. Vive da distância entre a expectativa e a realidade do shape: o projeto verão que começa em novembro, o espelho da academia que entrega um resultado e a foto de celular que entrega outro. Humor universal — todo mundo que já treinou se reconhece.',
+    melhorPara: 'quem quer rir do próprio progresso (ou da falta dele) sem drama',
+  },
+  {
+    handle: 'shapeprometido',
+    nome: 'Shape Prometido',
+    desc: 'O perfil do eterno "semana que vem eu começo". Piadas sobre metas adiadas, dieta que estreia toda segunda-feira e o shape que está sempre prometido para o próximo evento — casamento, praia, verão, réveillon.',
+    melhorPara: 'quem coleciona recomeços de segunda-feira',
+  },
+  {
+    handle: 'memesfitness_99',
+    nome: 'Memes Fitness 99',
+    desc: 'O clássico raiz do gênero, com o lema "no pain, no gain, right?" estampado no avatar. Memes diretos sobre treino, dor do dia seguinte e as pequenas tragédias diárias de quem leva a maromba a sério — ou quase.',
+    melhorPara: 'quem gosta do meme de academia tradicional, sem firula',
+  },
+  {
+    handle: 'iludidapeloshape',
+    nome: 'Iludida Pelo Shape',
+    desc: 'A batalha eterna entre o shape dos sonhos e os prazeres da vida real — o happy hour, a pizza de domingo, o brunch. Humor feminino sobre querer os dois mundos ao mesmo tempo e negociar com a própria consciência.',
+    melhorPara: 'quem já falou "amanhã eu compenso" com um copo na mão',
+  },
+  {
+    handle: 'marombeiracansada',
+    nome: 'Marombeira Cansada',
+    desc: 'O retrato de quem equilibra treino, trabalho, casa e vida social — e chega ao leg day no talo. Piadas sobre o cansaço crônico de quem não abre mão do treino, mas também não finge que é fácil.',
+    melhorPara: 'quem treina mesmo exausta e merece uma medalha por isso',
+  },
+  {
+    handle: 'marombeirailudida',
+    nome: 'Marombeira Iludida',
+    desc: 'A prima otimista da rede: acredita que dessa vez o cutting vai até o fim, que o bumbum cresce até dezembro e que o pré-treino resolve qualquer noite mal dormida. A ilusão como estilo de vida — e como piada.',
+    melhorPara: 'quem já montou meta de shape no Canva',
+  },
+  {
+    handle: 'marombeirasincera_',
+    nome: 'Marombeira Sincera',
+    desc: 'Zero filtro: o que toda mulher que treina pensa mas nem sempre fala. Sinceridade ácida sobre academia lotada, equipamento ocupado, achismo alheio e a pressão estética que ronda o treino feminino.',
+    melhorPara: 'quem prefere a verdade — de preferência com deboche',
+  },
+  {
+    handle: 'surtadinhaonline',
+    nome: 'Surtadinha',
+    desc: 'O perfil mais caótico da lista: humor de cotidiano com pitadas fitness, para os dias em que o treino é só mais um item na lista de surtos. Quando a vida aperta, o meme responde.',
+    melhorPara: 'quem ri para não surtar — dentro e fora da academia',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/humor-fitness/memes-de-academia',
+    titulo: 'Memes de academia: os melhores para mandar no grupo de treino',
+    descricao: 'Leg day, DOMS e a segunda-feira internacional do peito: o guia dos memes clássicos da academia.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'Depois de rir, o primeiro passo de verdade: como começar a treinar com progressão e segurança.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados',
+    titulo: 'Quanto tempo demora para ver resultados na musculação?',
+    descricao: 'A linha do tempo realista por trás de toda a ilusão que os memes retratam.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/humor-fitness/perfis-de-memes-fitness';
+const atualizadoEm = '2026-07-14';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Perfis de memes fitness para seguir no Instagram', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quais são os melhores perfis de memes fitness no Instagram?',
+    resposta:
+      'Depende do seu tipo de humor. Para o meme clássico de academia, Rindo do Shape e Memes Fitness 99 são os mais diretos. Para o humor da rotina feminina na maromba, a família "marombeira" — Cansada, Iludida e Sincera — cobre do cansaço ao deboche. Shape Prometido é o retrato de quem vive adiando o projeto, e Iludida Pelo Shape captura a negociação eterna entre dieta e vida social.',
+  },
+  {
+    pergunta: 'Por que memes de academia fazem tanto sucesso?',
+    resposta:
+      'Porque a rotina de treino é cheia de experiências universais: a dor do dia seguinte, o leg day, a dieta que quebra no fim de semana, o progresso que demora mais do que o esperado. O meme transforma essas pequenas frustrações compartilhadas em piada — e rir do processo ajuda a sustentar a constância, que é o que realmente traz resultado.',
+  },
+  {
+    pergunta: 'Seguir perfis de memes atrapalha ou ajuda quem treina?',
+    resposta:
+      'Ajuda mais do que parece. O humor cria senso de comunidade e alivia a pressão estética que costuma rondar a academia — rir da "ilusão do shape em 30 dias" é também uma forma de manter expectativas realistas. O cuidado é só não confundir piada com orientação: meme é entretenimento; treino e dieta bem feitos continuam pedindo informação séria e, se possível, acompanhamento profissional.',
+  },
+];
+
+const title = 'Perfis de memes fitness para seguir no Instagram';
+const description =
+  'Curadoria dos perfis de memes fitness no Instagram: Rindo do Shape, Shape Prometido, as Marombeiras e mais — o humor que todo mundo que treina reconhece.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  itemListSchema(
+    'Perfis de memes fitness no Instagram',
+    perfis.map((p) => p.nome),
+    new URL(path, site.dominio).href,
+    perfis.map((p) => `https://www.instagram.com/${p.handle}/`),
+  ),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Perfis de memes fitness para seguir no Instagram</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Entre uma série e outra, todo mundo que treina já mandou um meme no grupo
+      da academia. O humor virou parte da cultura fitness brasileira — e alguns
+      perfis transformaram as dores (literais) e as ilusões da vida marombeira
+      em linha editorial. Esta é a curadoria dos perfis de memes fitness que
+      valem o follow, cada um com a sua persona.
+    </p>
+
+    <div class="prose">
+      <div class="callout">
+        <strong>Transparência:</strong> os perfis desta lista fazem parte da
+        rede de humor do Personal por Perto. A curadoria é da casa — e o
+        objetivo é simples: rir junto de quem treina.
+      </div>
+
+      <h2 id="rindo-do-shape">@rindodoshape — Rindo do Shape</h2>
+      <p>{perfis[0].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[0].melhorPara}.
+        <a href="https://www.instagram.com/rindodoshape/" target="_blank" rel="noopener">Seguir @rindodoshape →</a>
+      </p>
+
+      <h2 id="shape-prometido">@shapeprometido — Shape Prometido</h2>
+      <p>{perfis[1].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[1].melhorPara}.
+        <a href="https://www.instagram.com/shapeprometido/" target="_blank" rel="noopener">Seguir @shapeprometido →</a>
+      </p>
+
+      <h2 id="memes-fitness-99">@memesfitness_99 — Memes Fitness 99</h2>
+      <p>{perfis[2].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[2].melhorPara}.
+        <a href="https://www.instagram.com/memesfitness_99/" target="_blank" rel="noopener">Seguir @memesfitness_99 →</a>
+      </p>
+
+      <h2 id="iludida-pelo-shape">@iludidapeloshape — Iludida Pelo Shape</h2>
+      <p>{perfis[3].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[3].melhorPara}.
+        <a href="https://www.instagram.com/iludidapeloshape/" target="_blank" rel="noopener">Seguir @iludidapeloshape →</a>
+      </p>
+
+      <h2 id="marombeira-cansada">@marombeiracansada — Marombeira Cansada</h2>
+      <p>{perfis[4].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[4].melhorPara}.
+        <a href="https://www.instagram.com/marombeiracansada/" target="_blank" rel="noopener">Seguir @marombeiracansada →</a>
+      </p>
+
+      <h2 id="marombeira-iludida">@marombeirailudida — Marombeira Iludida</h2>
+      <p>{perfis[5].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[5].melhorPara}.
+        <a href="https://www.instagram.com/marombeirailudida/" target="_blank" rel="noopener">Seguir @marombeirailudida →</a>
+      </p>
+
+      <h2 id="marombeira-sincera">@marombeirasincera_ — Marombeira Sincera</h2>
+      <p>{perfis[6].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[6].melhorPara}.
+        <a href="https://www.instagram.com/marombeirasincera_/" target="_blank" rel="noopener">Seguir @marombeirasincera_ →</a>
+      </p>
+
+      <h2 id="surtadinha">@surtadinhaonline — Surtadinha</h2>
+      <p>{perfis[7].desc}</p>
+      <p>
+        <strong>Melhor para:</strong> {perfis[7].melhorPara}.
+        <a href="https://www.instagram.com/surtadinhaonline/" target="_blank" rel="noopener">Seguir @surtadinhaonline →</a>
+      </p>
+
+      <h2>Rir do shape ajuda a mantê-lo</h2>
+      <p>
+        Pode parecer contraditório, mas o humor cumpre um papel sério na rotina
+        de quem treina: alivia a pressão estética, cria comunidade e lembra que
+        todo mundo — inclusive quem posta o antes-e-depois perfeito — já passou
+        pelo leg day arrependido e pela dieta que quebrou no domingo. A ciência
+        do progresso continua valendo (e está nos nossos guias sobre
+        <a href="/musculacao/quanto-tempo-para-ver-resultados">quanto tempo os resultados demoram</a>
+        e <a href="/musculacao/treino-para-iniciantes">como começar a treinar</a>);
+        o meme entra como o combustível emocional para não desistir no caminho.
+        E se quiser os clássicos do gênero reunidos e explicados, veja o nosso
+        guia de <a href="/humor-fitness/memes-de-academia">memes de academia</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
