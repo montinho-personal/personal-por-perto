@@ -1,0 +1,207 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/plato-de-emagrecimento',
+    titulo: 'Platô de emagrecimento: por que acontece e o que fazer',
+    descricao: 'A versão séria do meme da balança travada: por que o peso para de cair e como destravar.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'Para o cutting deixar de ser meme e virar resultado: o que proteger enquanto o peso desce.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/humor-fitness/perfis-de-memes-fitness',
+    titulo: 'Perfis de memes fitness para seguir no Instagram',
+    descricao: 'A curadoria completa dos perfis que transformam a dieta quebrada em linha editorial.',
+    tipo: 'Humor',
+  },
+];
+
+const path = '/humor-fitness/memes-de-dieta';
+const atualizadoEm = '2026-07-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Memes de dieta: rindo para não chorar no cutting', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que memes de dieta fazem tanto sucesso?',
+    resposta:
+      'Porque a dieta é o território onde a distância entre intenção e comportamento é mais engraçada — e mais universal. Quase todo mundo já prometeu começar na segunda, já negociou "só um pedacinho" consigo mesmo e já viu o cheat meal virar cheat weekend. O meme transforma essa culpa compartilhada em riso, o que alivia a pressão e cria identificação imediata.',
+  },
+  {
+    pergunta: 'Quais são os memes de dieta mais clássicos?',
+    resposta:
+      'O "começo segunda-feira" (a dieta eternamente agendada), o "só um pedacinho" que termina no bolo inteiro, o cheat meal que se estende pelo fim de semana, a balança que "está quebrada" quando o número não agrada, a marmita bege de frango com batata-doce e o cutting que dura mais que relacionamento. Cada um ri de uma etapa diferente do mesmo ciclo.',
+  },
+  {
+    pergunta: 'Rir da dieta ajuda ou atrapalha o emagrecimento?',
+    resposta:
+      'Ajuda mais do que a culpa. A pesquisa em comportamento alimentar sugere que rigidez extrema e culpa após "quebrar" a dieta estão ligadas a mais episódios de compulsão — o famoso "já estraguei tudo, então vou até o fim". O humor faz o movimento oposto: normaliza o deslize como parte do processo e reduz o dramatismo, o que facilita simplesmente voltar ao plano na refeição seguinte, sem punição.',
+  },
+];
+
+const title = 'Memes de dieta: rindo para não chorar no cutting';
+const description =
+  'Os memes de dieta que todo mundo vive: o começo eterno na segunda-feira, o "só um pedacinho", o cheat meal sem fim e a balança mentirosa — e o que eles dizem de verdade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Memes de dieta: rindo para não chorar no cutting</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum tema da vida fitness rende tanto meme quanto a dieta — porque
+      nenhum outro expõe tão bem a diferença entre o que a gente planeja no
+      domingo à noite e o que a gente faz na quarta à tarde. Este é o guia dos
+      memes de dieta: os clássicos, por que doem de tão verdadeiros e o que
+      cada um revela sobre como o emagrecimento funciona de verdade.
+    </p>
+
+    <div class="prose">
+      <h2>"Começo segunda-feira": a dieta eternamente agendada</h2>
+      <p>
+        O meme fundador do gênero. A segunda-feira é a data mágica em que a
+        vida nova começa — e por isso mesmo nunca chega: sempre há uma pizza de
+        domingo para "aproveitar antes". A piada esconde uma verdade de
+        comportamento: quem espera as condições perfeitas para começar não
+        começa. O
+        <a href="https://www.instagram.com/shapeprometido/" target="_blank" rel="noopener">@shapeprometido</a>
+        construiu uma identidade inteira sobre esse adiamento — e a
+        <a href="https://www.instagram.com/marombeirailudida/" target="_blank" rel="noopener">@marombeirailudida</a>
+        mostra o que acontece quando a segunda finalmente chega: a meta virou
+        planilha, a planilha virou story, e o story virou lembrança.
+      </p>
+
+      <h2>"Só um pedacinho": a negociação que sempre perde</h2>
+      <p>
+        Todo mundo conhece o roteiro: começa com "só um pedacinho", passa por
+        "já que comi um, mais um não muda nada" e termina com o prato vazio e a
+        consciência pesada. O meme é engraçado porque retrata o pensamento
+        <em>tudo ou nada</em> — o mesmo que, na vida real, mais atrapalha
+        dietas. Um deslize não anula a semana; quem trata a exceção como
+        catástrofe tende a transformá-la em recaída completa. A
+        <a href="https://www.instagram.com/iludidapeloshape/" target="_blank" rel="noopener">@iludidapeloshape</a>
+        é o retrato oficial dessa negociação — com um copo na mão.
+      </p>
+
+      <h2>O cheat meal que virou cheat weekend</h2>
+      <p>
+        A refeição livre é uma estratégia legítima; o meme nasce quando ela
+        engole o sábado, avança pelo domingo e cria o "fim de semana livre".
+        A conta séria por trás da piada: o déficit construído em cinco dias
+        cabe confortavelmente dentro de dois dias de exagero — e é por isso que
+        tanta gente "faz tudo certo" e não sai do lugar. O mecanismo completo
+        está no guia sobre
+        <a href="/emagrecimento/deficit-calorico-como-funciona">como funciona o déficit calórico</a>.
+      </p>
+
+      <h2>A balança mentirosa (e o platô)</h2>
+      <p>
+        "Essa balança está quebrada" é o meme de quem subiu nela depois de uma
+        semana impecável e viu o mesmo número — ou um maior. A frustração é
+        real, mas a explicação costuma ser menos dramática: retenção de
+        líquido, variação diária normal e, às vezes, o famigerado platô. Antes
+        de brigar com o eletrodoméstico, vale ler por que
+        <a href="/emagrecimento/plato-de-emagrecimento">o emagrecimento trava</a>
+        — e rir da própria revolta com a
+        <a href="https://www.instagram.com/marombeirasincera_/" target="_blank" rel="noopener">@marombeirasincera_</a>,
+        que não perdoa nem a balança.
+      </p>
+
+      <h2>O cutting eterno</h2>
+      <p>
+        Tem gente que está "em cutting" desde 2022 — o meme do corte que não
+        acaba nunca. Na vida real, o cutting sem fim costuma indicar meta
+        vaga, déficit inconsistente ou a perda de massa magra pelo caminho, que
+        deixa o resultado visual sempre aquém do esperado. A parte técnica de
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo">preservar músculo enquanto o peso desce</a>
+        é o que separa o cutting de resultado do cutting de meme.
+      </p>
+
+      <h2>A marmita bege e o Tupperware de frango</h2>
+      <p>
+        A estética da marmita fitness — frango grelhado, batata-doce, brócolis
+        opcional — virou símbolo visual do gênero. O meme ri da monotonia, e a
+        nutrição moderna concorda: dieta que só funciona sendo insuportável
+        tem prazo de validade curto. Aderência vence sofrimento. O
+        <a href="https://www.instagram.com/memesfitness_99/" target="_blank" rel="noopener">@memesfitness_99</a>
+        mantém o memorial da marmita bege em dia.
+      </p>
+
+      <h2>Rir e emagrecer não são inimigos</h2>
+      <p>
+        O padrão que atravessa todos esses memes é o mesmo: rigidez demais,
+        culpa demais, drama demais. O humor faz o serviço oposto — normaliza o
+        deslize, desarma a culpa e lembra que ninguém emagrece na base da
+        perfeição, e sim da média das semanas. Para abastecer o feed com esse
+        lembrete diário, a curadoria completa está nos
+        <a href="/humor-fitness/perfis-de-memes-fitness">perfis de memes fitness</a>;
+        para transformar a média das semanas a seu favor, os guias de
+        <a href={rotas.emagrecimento}>emagrecimento</a> fazem a parte séria.
+      </p>
+
+      <div class="callout">
+        <strong>Entre uma risada e outra:</strong> meme é entretenimento.
+        Emagrecimento envolve saúde — e casos com condições clínicas, uso de
+        medicação ou histórico de transtorno alimentar pedem acompanhamento
+        médico e nutricional de verdade.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

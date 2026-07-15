@@ -1,0 +1,217 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/humor-fitness/memes-de-academia',
+    titulo: 'Memes de academia: os melhores para mandar no grupo de treino',
+    descricao: 'Os clássicos do gênero explicados: leg day, DOMS, segunda do peito e o projeto verão que nunca começa.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/humor-fitness/perfis-de-memes-fitness',
+    titulo: 'Perfis de memes fitness para seguir no Instagram',
+    descricao: 'A curadoria dos perfis que abastecem legendas, status e o grupo do treino todos os dias.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'Quando a legenda engraçada virar vontade de verdade: como começar a treinar com segurança.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/humor-fitness/frases-de-academia-engracadas';
+const atualizadoEm = '2026-07-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Frases de academia engraçadas para legenda e status', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quais são as melhores frases engraçadas para legenda de treino?',
+    resposta:
+      'As que riem de uma verdade que todo mundo reconhece. Alguns exemplos: "Vim, vi e sobrevivi ao leg day", "Meu shape está em modo avião: não decola", "Treino pesado, marmita bege, coração leve" e "A academia me chama... mas o sofá grita". A regra de ouro da boa legenda é ser curta, sincera e um pouco autodepreciativa — humor de superioridade não engaja, humor de identificação sim.',
+  },
+  {
+    pergunta: 'O que postar no status depois do treino?',
+    resposta:
+      'O clássico é o contraste entre esforço e resultado: "1 treino feito, 0 mudanças visíveis, 100% de direito de reclamar", "Hoje o pré-treino fui eu mesmo e a raiva do boleto" ou "Subi a escada depois do leg day. Reze por mim". Frases de status funcionam melhor quando parecem um desabafo espontâneo, não uma frase ensaiada.',
+  },
+  {
+    pergunta: 'Frase de academia engraçada combina com quem treina sério?',
+    resposta:
+      'Combina — e talvez seja quem mais tem repertório. Rir do processo não diminui o compromisso com ele: os perfis de humor fitness mais seguidos do Brasil são feitos por e para gente que treina de verdade. A piada funciona justamente porque a dor do leg day, o platô e a marmita de frango são vividos, não inventados.',
+  },
+];
+
+const title = 'Frases de academia engraçadas para legenda e status';
+const description =
+  'Mais de 40 frases de academia engraçadas para legenda de foto, status e o grupo do treino: leg day, dieta, motivação irônica e o shape que não decola.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Frases de academia engraçadas para legenda e status</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A foto do treino já está tirada — falta a legenda. Se a ideia é fugir do
+      "foco, força e fé" e arrancar uma risada de quem entende a luta, este
+      guia reúne frases de academia engraçadas para cada situação: o leg day, a
+      dieta por um fio, a motivação irônica e o shape que insiste em não
+      decolar. Use, adapte e mande no grupo.
+    </p>
+
+    <div class="prose">
+      <h2>Frases para legenda de foto na academia</h2>
+      <ul>
+        <li>"Vim, vi e sobrevivi ao leg day."</li>
+        <li>"Meu shape está em modo avião: não decola."</li>
+        <li>"Suando igual mentira de político em ano de eleição."</li>
+        <li>"O espelho da academia me ama. O da minha casa me humilha."</li>
+        <li>"Treino pesado, marmita bege, coração leve."</li>
+        <li>"Não é suor, é o meu corpo chorando."</li>
+        <li>"Vim treinar de raiva mesmo. Funciona igual pré-treino."</li>
+        <li>"Dizem que músculo tem memória. O meu tem amnésia."</li>
+        <li>"Foco no shape. O resto o boleto resolve."</li>
+        <li>"Cheguei na academia. Já é mais do que ontem."</li>
+      </ul>
+
+      <h2>Frases de leg day (as mais sofridas)</h2>
+      <ul>
+        <li>"Hoje é leg day. Amanhã sou outra pessoa — uma que não desce escadas."</li>
+        <li>"Subi a escada depois do treino de perna. Reze por mim."</li>
+        <li>"Agachamento: porque sentar e levantar do vaso precisava ficar mais difícil."</li>
+        <li>"Minhas pernas pediram arrego no aquecimento."</li>
+        <li>"Leg day: o único dia em que o elevador vira necessidade médica."</li>
+        <li>"Andando igual pinguim com cãibra desde o treino de ontem."</li>
+        <li>"Cadeira extensora? Cadeira elétrica com estofado."</li>
+      </ul>
+      <p>
+        Se a dor do dia seguinte for o seu caso agora, saiba que ela tem nome,
+        explicação e prazo de validade — está tudo no artigo sobre
+        <a href="/musculacao/dor-muscular-pos-treino">dor muscular pós-treino</a>.
+        E o acervo definitivo do sofrimento de perna está no
+        <a href="https://www.instagram.com/rindodoshape/" target="_blank" rel="noopener">@rindodoshape</a>.
+      </p>
+
+      <h2>Frases de dieta e marmita</h2>
+      <ul>
+        <li>"Minha dieta começa segunda. Toda segunda. Desde 2019."</li>
+        <li>"Como frango com batata-doce de segunda a sexta. No sábado, viro outra pessoa."</li>
+        <li>"'Só um pedacinho' — eu, antes de comer o bolo inteiro."</li>
+        <li>"Balança: o único lugar onde eu queria dar menos e dou mais."</li>
+        <li>"Fiz 6 refeições hoje. 4 eram café."</li>
+        <li>"Meu déficit calórico tem déficit de compromisso."</li>
+        <li>"Whey, aveia e lágrimas: a receita da minha panqueca."</li>
+        <li>"Cheat meal que se estende até domingo é intercâmbio, não refeição."</li>
+      </ul>
+      <p>
+        A matemática séria por trás dessas piadas — por que a dieta "quebra" e
+        o que realmente faz diferença — está explicada no guia de
+        <a href="/emagrecimento/deficit-calorico-como-funciona">déficit calórico</a>.
+        Para o lado cômico da negociação com a própria consciência, a
+        <a href="https://www.instagram.com/iludidapeloshape/" target="_blank" rel="noopener">@iludidapeloshape</a>
+        é especialista.
+      </p>
+
+      <h2>Motivação irônica (para quem odeia frase motivacional)</h2>
+      <ul>
+        <li>"Acredite no seu potencial. Ele está aí, dormindo, igual você às 5h."</li>
+        <li>"Não desista! Desistir dá trabalho: tem que cancelar o plano da academia."</li>
+        <li>"Seja a sua melhor versão. Ou pelo menos a versão que foi treinar hoje."</li>
+        <li>"O impossível é só questão de opinião. A minha opinião é que 4h30 de agachamento é impossível."</li>
+        <li>"Um passo de cada vez. Principalmente depois do leg day."</li>
+        <li>"A dor é temporária. O print do shape é para sempre."</li>
+        <li>"Hoje eu venci: o treino era às 19h e eu fui às 19h40."</li>
+      </ul>
+
+      <h2>Frases para o grupo do treino</h2>
+      <ul>
+        <li>"Quem vai hoje? Pergunto para me sentir acompanhado na desistência."</li>
+        <li>"Bora treinar? Responder 'bora' não conta como aquecimento."</li>
+        <li>"Faltei ontem por motivos de: cama."</li>
+        <li>"O personal disse que hoje é 'treino leve'. Já estou com medo."</li>
+        <li>"Alguém aí já viu resultado? Pergunto para um amigo."</li>
+        <li>"Treino em dupla: um faz a série, o outro segura o choro."</li>
+      </ul>
+      <p>
+        E quando a sinceridade falar mais alto que a piada, a
+        <a href="https://www.instagram.com/marombeirasincera_/" target="_blank" rel="noopener">@marombeirasincera_</a>
+        e a
+        <a href="https://www.instagram.com/marombeiracansada/" target="_blank" rel="noopener">@marombeiracansada</a>
+        já disseram tudo o que você pensou e não postou.
+      </p>
+
+      <h2>Como criar a sua própria frase</h2>
+      <p>
+        As melhores frases de academia seguem uma fórmula simples: uma
+        <strong>verdade universal do treino</strong> + um <strong>contraste
+        inesperado</strong>. "Treino pesado" é verdade; "marmita bege" é o
+        contraste que humaniza. Evite piada que diminui os outros — o humor
+        fitness que engaja é o da autodepreciação leve, aquele em que o leitor
+        pensa "sou eu". Se quiser um estoque diário de referência, os
+        <a href="/humor-fitness/perfis-de-memes-fitness">perfis de memes fitness da nossa curadoria</a>
+        publicam exatamente nesse tom.
+      </p>
+
+      <div class="callout">
+        <strong>Da legenda para o treino:</strong> se por trás da piada existe
+        uma vontade real de começar, o caminho sério está nos guias de
+        <a href="/musculacao/treino-para-iniciantes">treino para iniciantes</a>
+        e <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

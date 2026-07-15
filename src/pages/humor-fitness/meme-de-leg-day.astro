@@ -1,0 +1,187 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/musculacao/dor-muscular-pos-treino',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'A ciência por trás do meme: o que é a DOMS, por que perna dói tanto e quando a dor merece atenção.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/humor-fitness/frases-de-academia-engracadas',
+    titulo: 'Frases de academia engraçadas para legenda e status',
+    descricao: 'O estoque de legendas para o dia seguinte ao leg day — quando descer a escada já é treino.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/humor-fitness/memes-de-academia',
+    titulo: 'Memes de academia: os melhores para mandar no grupo de treino',
+    descricao: 'O guia completo dos clássicos: do leg day à segunda-feira internacional do peito.',
+    tipo: 'Humor',
+  },
+];
+
+const path = '/humor-fitness/meme-de-leg-day';
+const atualizadoEm = '2026-07-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Meme de leg day: por que o treino de perna rende tanta piada', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que significa "leg day"?',
+    resposta:
+      '"Leg day" é o dia do treino de pernas na divisão semanal da musculação — agachamento, leg press, cadeira extensora, stiff e afins. O termo em inglês pegou no Brasil pelo peso cultural que esse treino carrega: é considerado o mais pesado e o mais temido da semana, o que o transformou em protagonista de memes.',
+  },
+  {
+    pergunta: 'Por que o treino de perna dói mais que os outros?',
+    resposta:
+      'Por três motivos que se somam: as pernas concentram os maiores grupos musculares do corpo, os exercícios envolvem grandes amplitudes com forte fase excêntrica (a descida do agachamento, por exemplo), e esses músculos são usados o dia inteiro — andar, sentar, subir escada. A dor tardia (DOMS) aparece justamente nos movimentos do cotidiano, o que torna o desconforto impossível de ignorar e fácil de virar piada.',
+  },
+  {
+    pergunta: 'Pular o leg day faz mal de verdade?',
+    resposta:
+      'O meme do "never skip leg day" tem fundo real: treinar só a parte superior cria desequilíbrio estético e funcional — pernas e glúteos são a base de força do corpo, importantes para postura, desempenho e saúde articular. Mas o tom de "crime imperdoável" é exagero de internet: o que importa é o equilíbrio ao longo das semanas, não a punição por um dia pulado.',
+  },
+];
+
+const title = 'Meme de leg day: por que o treino de perna rende tanta piada';
+const description =
+  'De onde vem o meme de leg day: a escada do dia seguinte, o "never skip leg day" e a ciência que explica por que o treino de perna é o mais temido — e o mais zoado.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Meme de leg day: por que o treino de perna rende tanta piada</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum treino tem a biografia do leg day: temido na véspera, sofrido na
+      hora e lembrado por dias — a cada escada, a cada cadeira, a cada espirro.
+      Não à toa, é o assunto número um do humor fitness mundial. Este artigo
+      explica o fenômeno: de onde vem o meme, por que a perna dói tanto e o
+      que o "never skip leg day" tem de verdade.
+    </p>
+
+    <div class="prose">
+      <h2>A anatomia da piada</h2>
+      <p>
+        O meme de leg day funciona por um motivo simples: a consequência é
+        <strong>pública e involuntária</strong>. Quem treina peito dolorido
+        sofre em silêncio; quem treina perna anda diferente, desce escada de
+        lado e faz careta ao sentar — a plateia vê. O humor nasce dessa
+        comédia física involuntária, e o repertório é infinito: o corrimão
+        como melhor amigo, o vaso sanitário como aparelho de agachamento, o
+        elevador como decisão estratégica.
+      </p>
+
+      <h2>A ciência por trás: por que perna dói tanto</h2>
+      <p>
+        A dor que abastece o meme tem nome: <strong>dor muscular tardia
+        (DOMS)</strong>, aquela que atinge o pico um ou dois dias depois do
+        treino. As pernas são o cenário perfeito para ela: concentram os
+        maiores músculos do corpo, os exercícios têm forte componente
+        excêntrico (a descida controlada do agachamento é exatamente o tipo de
+        contração que mais gera microlesões) e — o detalhe cruel — são músculos
+        que você usa o dia inteiro. Não dá para "poupar" a perna como se poupa
+        um bíceps. A explicação completa, incluindo quando a dor deixa de ser
+        normal, está no artigo sobre
+        <a href="/musculacao/dor-muscular-pos-treino">dor muscular pós-treino</a>.
+      </p>
+
+      <h2>"Never skip leg day": o meme que virou lei</h2>
+      <p>
+        O bordão nasceu das fotos de físicos com tronco enorme sobre pernas
+        finas — o "corpo de leão com perna de garça" — e virou a lei não
+        escrita das academias. O fundo é verdadeiro: pernas e glúteos são a
+        base de força do corpo, e negligenciá-los cobra em postura, desempenho
+        e estética. Mas o tom de tribunal é exagero de internet; equilíbrio se
+        constrói ao longo das semanas, como mostra o guia de
+        <a href="/musculacao/abc-ou-full-body">divisão de treino</a>.
+        Enquanto isso, o flagrante de quem pulou o leg day segue sendo
+        patrimônio do
+        <a href="https://www.instagram.com/rindodoshape/" target="_blank" rel="noopener">@rindodoshape</a>.
+      </p>
+
+      <h2>O leg day feminino: outro campeonato</h2>
+      <p>
+        No treino feminino, o leg day costuma ser o dia <em>principal</em> — o
+        que muda o meme de lugar: a piada não é pular perna, é a perna ser a
+        única coisa que importa ("hoje é dia de perna" repetido quatro vezes
+        por semana). O cansaço de encarar agachamento depois de um dia inteiro
+        de trabalho é a especialidade da
+        <a href="https://www.instagram.com/marombeiracansada/" target="_blank" rel="noopener">@marombeiracansada</a>,
+        e a fé inabalável no "glúteo até dezembro" é o território da
+        <a href="https://www.instagram.com/marombeirailudida/" target="_blank" rel="noopener">@marombeirailudida</a>.
+      </p>
+
+      <h2>Sobreviver ao leg day (a parte útil)</h2>
+      <p>
+        Três verdades práticas escondidas no meme: a dor forte dos primeiros
+        treinos de perna diminui muito com a constância (o corpo se adapta ao
+        estímulo); progressão gradual dói menos e rende mais do que o treino
+        heroico ocasional; e dor leve não impede treinar outros grupos nos dias
+        seguintes. Quem está começando encontra o passo a passo no guia de
+        <a href="/musculacao/treino-para-iniciantes">treino para iniciantes</a>
+        — e as legendas para o dia seguinte estão nas nossas
+        <a href="/humor-fitness/frases-de-academia-engracadas">frases de academia engraçadas</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumo da piada:</strong> o leg day domina o humor fitness
+        porque une o treino mais pesado, a dor mais duradoura e a consequência
+        mais visível. Ria, mande no grupo — e não pule a perna.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -51,4 +51,7 @@ export const artigos: Artigo[] = [
   // Humor fitness
   { categoria: 'Humor fitness', url: '/humor-fitness/perfis-de-memes-fitness', titulo: 'Perfis de memes fitness para seguir no Instagram' },
   { categoria: 'Humor fitness', url: '/humor-fitness/memes-de-academia', titulo: 'Memes de academia: os melhores para mandar no grupo de treino' },
+  { categoria: 'Humor fitness', url: '/humor-fitness/frases-de-academia-engracadas', titulo: 'Frases de academia engraçadas para legenda e status' },
+  { categoria: 'Humor fitness', url: '/humor-fitness/memes-de-dieta', titulo: 'Memes de dieta: rindo para não chorar no cutting' },
+  { categoria: 'Humor fitness', url: '/humor-fitness/meme-de-leg-day', titulo: 'Meme de leg day: por que o treino de perna rende tanta piada' },
 ];
