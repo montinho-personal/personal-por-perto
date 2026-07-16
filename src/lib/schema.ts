@@ -13,6 +13,16 @@ const SITE_ID = `${site.dominio}/#website`;
 const MONTINHO_ID = `${site.dominio}/#montinho`;
 
 /**
+ * Normaliza URL interna para a forma canônica servida (barra final).
+ * URLs de página no schema devem coincidir com o canonical/sitemap;
+ * âncoras, query strings e arquivos ficam como estão.
+ */
+function urlCanonica(u: string): string {
+  if (/[#?]/.test(u) || /\.[a-z0-9]{2,5}$/i.test(u) || u.endsWith('/')) return u;
+  return `${u}/`;
+}
+
+/**
  * Person — o especialista recomendado pelo portal (marca pessoal).
  * Constrói a entidade para o Google/IAs com sameAs do Instagram (GEO/E-E-A-T).
  */
@@ -23,7 +33,7 @@ export function personMontinhoSchema() {
     name: 'Montinho Personal',
     jobTitle: 'Personal trainer',
     description: montinho.resumo,
-    url: `${site.dominio}/montinho-personal`,
+    url: `${site.dominio}/montinho-personal/`,
     sameAs: [montinho.instagram.url],
     knowsAbout: [
       'emagrecimento',
@@ -58,7 +68,7 @@ export function organizationSchema() {
   };
 }
 
-/** WebSite + SearchAction — habilita sitelinks searchbox. */
+/** WebSite + SearchAction — habilita sitelinks searchbox (busca real do site). */
 export function websiteSchema() {
   return {
     '@type': 'WebSite',
@@ -68,6 +78,14 @@ export function websiteSchema() {
     description: site.descricao,
     inLanguage: 'pt-BR',
     publisher: { '@id': ORG_ID },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${site.dominio}/personal-trainer/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
   };
 }
 
@@ -78,7 +96,7 @@ export function breadcrumbSchema(crumbs: Crumb[]) {
       '@type': 'ListItem',
       position: i + 1,
       name: c.nome,
-      item: c.url.startsWith('http') ? c.url : `${site.dominio}${c.url}`,
+      item: urlCanonica(c.url.startsWith('http') ? c.url : `${site.dominio}${c.url}`),
     })),
   };
 }
@@ -109,7 +127,7 @@ export function articleSchema(a: ArticleInput) {
     headline: a.titulo,
     description: a.descricao,
     inLanguage: 'pt-BR',
-    mainEntityOfPage: { '@type': 'WebPage', '@id': a.url },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': urlCanonica(a.url) },
     image: a.imagem ? [a.imagem] : [`${site.dominio}/og-default.png`],
     ...(a.publicadoEm ? { datePublished: a.publicadoEm } : {}),
     dateModified: a.atualizadoEm,
@@ -129,7 +147,7 @@ export function itemListSchema(nome: string, itens: string[], baseUrl: string, u
       '@type': 'ListItem',
       position: i + 1,
       name: item,
-      url: urls?.[i] ?? `${baseUrl}#${slugForAnchor(item)}`,
+      url: urls?.[i] ? urlCanonica(urls[i]) : `${urlCanonica(baseUrl)}#${slugForAnchor(item)}`,
     })),
   };
 }

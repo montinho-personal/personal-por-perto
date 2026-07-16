@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Santa Maria de Jetibá', url: 'https://cidades.ibge.gov.br/brasil/es/santa-maria-de-jetiba/panorama' },
-    { nome: 'Prefeitura de Santa Maria de Jetibá', url: 'http://www.pmsmj.es.gov.br/' },
+    { nome: 'Prefeitura de Santa Maria de Jetibá', url: 'https://www.pmsmj.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-06-29',

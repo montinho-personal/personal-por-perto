@@ -90,7 +90,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Bom Jesus', url: 'https://cidades.ibge.gov.br/brasil/pi/bom-jesus/panorama' },
-    { nome: 'Atlas Brasil — IDHM (Bom Jesus)', url: 'http://www.atlasbrasil.org.br/perfil/municipio/220190' },
+    { nome: 'Atlas Brasil — IDHM (Bom Jesus)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/220190' },
     { nome: 'Prefeitura de Bom Jesus', url: 'https://www.bomjesus.pi.gov.br/' },
   ],
   atualizadoEm: '2026-07-03',

@@ -88,7 +88,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Escada', url: 'https://cidades.ibge.gov.br/brasil/pe/escada/panorama' },
-    { nome: 'Prefeitura Municipal da Escada', url: 'http://escada.pe.gov.br/' },
+    { nome: 'Prefeitura Municipal da Escada', url: 'https://escada.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-06-29',

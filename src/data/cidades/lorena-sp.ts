@@ -88,7 +88,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Lorena', url: 'https://cidades.ibge.gov.br/brasil/sp/lorena/panorama' },
-    { nome: 'Prefeitura de Lorena', url: 'http://www.lorena.sp.gov.br/' },
+    { nome: 'Prefeitura de Lorena', url: 'https://www.lorena.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/352720' },
   ],
   atualizadoEm: '2026-06-29',

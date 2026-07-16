@@ -94,7 +94,7 @@ export const cidade: Cidade = {
   fontes: [
     { nome: 'IBGE Cidades — Mucugê', url: 'https://cidades.ibge.gov.br/brasil/ba/mucuge/panorama' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-    { nome: 'IPHAN — Conjunto Arquitetônico e Paisagístico de Mucugê', url: 'http://portal.iphan.gov.br/pagina/detalhes/480' },
+    { nome: 'IPHAN — Conjunto Arquitetônico e Paisagístico de Mucugê', url: 'https://portal.iphan.gov.br/pagina/detalhes/480' },
   ],
   atualizadoEm: '2026-07-02',
 };

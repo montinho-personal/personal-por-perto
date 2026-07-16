@@ -83,7 +83,7 @@ export const cidade: Cidade = {
   fontes: [
     { nome: 'IBGE Cidades — Cairu', url: 'https://cidades.ibge.gov.br/brasil/ba/cairu/panorama' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-    { nome: 'INEMA — APA das Ilhas de Tinharé e Boipeba', url: 'http://www.inema.ba.gov.br/gestao-2/unidades-de-conservacao/apa/apa-ilhas-do-tinhare-e-boipeba/' },
+    { nome: 'INEMA — APA das Ilhas de Tinharé e Boipeba', url: 'https://www.inema.ba.gov.br/gestao-2/unidades-de-conservacao/apa/apa-ilhas-do-tinhare-e-boipeba/' },
   ],
   atualizadoEm: '2026-07-02',
 };

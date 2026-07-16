@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Arraial do Cabo', url: 'https://cidades.ibge.gov.br/brasil/rj/arraial-do-cabo/panorama' },
-    { nome: 'Atlas Brasil — IDHM', url: 'http://www.atlasbrasil.org.br/perfil/municipio/3300258' },
+    { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300258' },
     { nome: 'Prefeitura de Arraial do Cabo', url: 'https://www.arraial.rj.gov.br/' },
   ],
   atualizadoEm: '2026-07-02',

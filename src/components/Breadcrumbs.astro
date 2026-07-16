@@ -4,6 +4,9 @@ export interface Props {
   crumbs: Crumb[];
 }
 const { crumbs } = Astro.props;
+
+// Links sempre na forma servida (barra final) — evita 301 interno.
+const comBarra = (u: string) => (u.endsWith('/') || /[#?]/.test(u) ? u : `${u}/`);
 ---
 
 <nav class="breadcrumbs" aria-label="Você está em">
@@ -13,7 +16,7 @@ const { crumbs } = Astro.props;
         crumbs.map((c, i) => (
           <li>
             {i < crumbs.length - 1 ? (
-              <a href={c.url}>{c.nome}</a>
+              <a href={comBarra(c.url)}>{c.nome}</a>
             ) : (
               <span aria-current="page">{c.nome}</span>
             )}

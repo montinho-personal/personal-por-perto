@@ -60,10 +60,10 @@ const cidadeMae = cidade.cidadeMae ? getCidade(cidade.cidadeMae) : undefined;
 // Breadcrumb: regiões ganham o município "mãe" no caminho.
 const crumbs = [
   { nome: 'Início', url: '/' },
-  { nome: 'Cidades', url: '/personal-trainer' },
-  { nome: cidade.estado, url: `/estado/${cidade.estadoSlug}` },
+  { nome: 'Cidades', url: '/personal-trainer/' },
+  { nome: cidade.estado, url: `/estado/${cidade.estadoSlug}/` },
   ...(cidadeMae
-    ? [{ nome: cidadeMae.nome, url: `/personal-trainer/${cidadeMae.slug}` }]
+    ? [{ nome: cidadeMae.nome, url: `/personal-trainer/${cidadeMae.slug}/` }]
     : []),
   { nome: n, url: path },
 ];
@@ -100,7 +100,7 @@ const tiposTreino = [
 ];
 
 const title = `Personal Trainer em ${n} (${cidade.uf}): guia completo e quanto custa`;
-const description = `Como escolher um personal trainer em ${n}, quanto custa (${faixaBRL(
+const description = `Como escolher um personal trainer em ${n} (${cidade.uf}), quanto custa (${faixaBRL(
   cidade.precos.avulsaMin,
   cidade.precos.avulsaMax,
 )} a aula), onde treinar e dicas por objetivo. Guia editorial independente, atualizado.`;
@@ -251,11 +251,11 @@ const objetivoDesc: Record<string, string> = {
             <p>
               {n} também está perto de outras localidades com boa estrutura para treino:
               quem mora na divisa costuma considerar um{' '}
-              <a href={`/personal-trainer/${viz1.slug}`}>{anchorCidade(viz1, 0)}</a>
+              <a href={`/personal-trainer/${viz1.slug}/`}>{anchorCidade(viz1, 0)}</a>
               {viz2 && (
                 <>
                   {' '}ou mesmo o{' '}
-                  <a href={`/personal-trainer/${viz2.slug}`}>{anchorCidade(viz2, 2)}</a>
+                  <a href={`/personal-trainer/${viz2.slug}/`}>{anchorCidade(viz2, 2)}</a>
                 </>
               )}, dependendo de onde fica a academia ou o trabalho.
             </p>
@@ -311,7 +311,7 @@ const objetivoDesc: Record<string, string> = {
           Em {n}, uma aula avulsa presencial costuma custar entre
           <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong>.
           Pacotes mensais saem mais em conta por sessão, e o
-          <a href="/guias/personal-online-funciona">acompanhamento online</a> é,
+          <a href="/guias/personal-online-funciona/">acompanhamento online</a> é,
           em geral, a opção mais econômica. Veja as faixas médias de mercado:
         </p>
         <div class="table-wrap">
@@ -522,7 +522,7 @@ const objetivoDesc: Record<string, string> = {
         >
           Falar no WhatsApp
         </a>
-        <a class="btn btn-ghost side-rec" href="/montinho-personal">Entenda a recomendação</a>
+        <a class="btn btn-ghost side-rec" href="/montinho-personal/">Entenda a recomendação</a>
       </div>
 
       <InstagramFollow variante="compacto" />
@@ -547,7 +547,7 @@ const objetivoDesc: Record<string, string> = {
             {relac.map((c) => (<CityCard cidade={c} />))}
           </div>
           <p style="margin-top: var(--sp-5)">
-            <a class="btn btn-ghost" href={`/estado/${cidade.estadoSlug}`}>
+            <a class="btn btn-ghost" href={`/estado/${cidade.estadoSlug}/`}>
               Ver todas as cidades de {cidade.estado} →
             </a>
           </p>

@@ -81,7 +81,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — São Miguel do Gostoso', url: 'https://cidades.ibge.gov.br/brasil/rn/sao-miguel-do-gostoso/panorama' },
-    { nome: 'Atlas do Desenvolvimento Humano no Brasil — São Miguel do Gostoso', url: 'http://atlasbrasil.org.br/2013/pt/perfil_m/sao-miguel-do-gostoso_rn' },
+    { nome: 'Atlas do Desenvolvimento Humano no Brasil — São Miguel do Gostoso', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/sao-miguel-do-gostoso_rn' },
     { nome: 'Prefeitura Municipal de São Miguel do Gostoso — Histórico', url: 'https://site.saomigueldogostoso.rn.gov.br/pages/historico' },
   ],
   atualizadoEm: '2026-07-02',

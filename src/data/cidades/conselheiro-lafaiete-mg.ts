@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Conselheiro Lafaiete', url: 'https://cidades.ibge.gov.br/brasil/mg/conselheiro-lafaiete/panorama' },
-    { nome: 'Atlas Brasil — IDHM Conselheiro Lafaiete', url: 'http://www.atlasbrasil.org.br/perfil/municipio/311830' },
+    { nome: 'Atlas Brasil — IDHM Conselheiro Lafaiete', url: 'https://www.atlasbrasil.org.br/perfil/municipio/311830' },
     { nome: 'Prefeitura de Conselheiro Lafaiete', url: 'https://conselheirolafaiete.mg.gov.br/' },
   ],
   atualizadoEm: '2026-06-29',

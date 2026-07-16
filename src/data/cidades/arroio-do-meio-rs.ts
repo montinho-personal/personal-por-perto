@@ -92,7 +92,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Arroio do Meio', url: 'https://cidades.ibge.gov.br/brasil/rs/arroio-do-meio/panorama' },
-    { nome: 'Atlas Brasil — IDHM Arroio do Meio', url: 'http://www.atlasbrasil.org.br/perfil/municipio/430100' },
+    { nome: 'Atlas Brasil — IDHM Arroio do Meio', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430100' },
     { nome: 'Prefeitura de Arroio do Meio', url: 'https://arroiodomeio.rs.gov.br/' },
   ],
   atualizadoEm: '2026-07-03',

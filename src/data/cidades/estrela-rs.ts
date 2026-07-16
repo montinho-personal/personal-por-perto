@@ -92,7 +92,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Estrela', url: 'https://cidades.ibge.gov.br/brasil/rs/estrela/panorama' },
-    { nome: 'Atlas Brasil — IDHM Estrela', url: 'http://www.atlasbrasil.org.br/perfil/municipio/430780' },
+    { nome: 'Atlas Brasil — IDHM Estrela', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430780' },
     { nome: 'Prefeitura de Estrela', url: 'https://estrela.rs.gov.br/' },
   ],
   atualizadoEm: '2026-06-29',

@@ -88,7 +88,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Horizontina', url: 'https://cidades.ibge.gov.br/brasil/rs/horizontina/panorama' },
-    { nome: 'Prefeitura de Horizontina', url: 'http://www.horizontina.rs.gov.br/' },
+    { nome: 'Prefeitura de Horizontina', url: 'https://www.horizontina.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-07-03',

@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — São Francisco de Paula', url: 'https://cidades.ibge.gov.br/brasil/rs/sao-francisco-de-paula/panorama' },
-    { nome: 'Atlas Brasil — IDHM São Francisco de Paula', url: 'http://www.atlasbrasil.org.br/perfil/municipio/431820' },
+    { nome: 'Atlas Brasil — IDHM São Francisco de Paula', url: 'https://www.atlasbrasil.org.br/perfil/municipio/431820' },
     { nome: 'Prefeitura de São Francisco de Paula', url: 'https://www.saofranciscodepaula.rs.gov.br/' },
   ],
   atualizadoEm: '2026-06-29',

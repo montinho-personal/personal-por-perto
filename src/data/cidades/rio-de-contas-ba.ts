@@ -82,7 +82,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Rio de Contas', url: 'https://cidades.ibge.gov.br/brasil/ba/rio-de-contas/panorama' },
-    { nome: 'IPHAN — Rio de Contas (BA)', url: 'http://portal.iphan.gov.br/pagina/detalhes/118' },
+    { nome: 'IPHAN — Rio de Contas (BA)', url: 'https://portal.iphan.gov.br/pagina/detalhes/118' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-07-02',

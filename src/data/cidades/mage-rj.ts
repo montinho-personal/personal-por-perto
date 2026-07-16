@@ -94,7 +94,7 @@ export const cidade: Cidade = {
   fontes: [
     { nome: 'IBGE Cidades — Magé', url: 'https://cidades.ibge.gov.br/brasil/rj/mage/panorama' },
     { nome: 'Prefeitura Municipal de Magé', url: 'https://mage.rj.gov.br/' },
-    { nome: 'Atlas Brasil — IDHM Magé', url: 'http://www.atlasbrasil.org.br/perfil/municipio/330250' },
+    { nome: 'Atlas Brasil — IDHM Magé', url: 'https://www.atlasbrasil.org.br/perfil/municipio/330250' },
   ],
   atualizadoEm: '2026-06-29',
 };

@@ -94,7 +94,7 @@ export const cidade: Cidade = {
   fontes: [
     { nome: 'IBGE Cidades — Lençóis', url: 'https://cidades.ibge.gov.br/brasil/ba/lencois/panorama' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-    { nome: 'IPHAN — Lençóis (BA)', url: 'http://portal.iphan.gov.br/pagina/detalhes/115/' },
+    { nome: 'IPHAN — Lençóis (BA)', url: 'https://portal.iphan.gov.br/pagina/detalhes/115/' },
   ],
   atualizadoEm: '2026-07-02',
 };

@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Birigui', url: 'https://cidades.ibge.gov.br/brasil/sp/birigui/panorama' },
-    { nome: 'Prefeitura de Birigui', url: 'http://www.birigui.sp.gov.br/' },
+    { nome: 'Prefeitura de Birigui', url: 'https://www.birigui.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-06-29',

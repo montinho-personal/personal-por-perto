@@ -29,7 +29,10 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonical = new URL(path, site.dominio).href.replace(/\/$/, '') || site.dominio;
+// Canonical espelha exatamente a URL servida/sitemap: formato 'directory'
+// serve /caminho/ (com barra). Canonical sem barra apontaria para um 301.
+const pathCanonico = path.endsWith('/') ? path : `${path}/`;
+const canonical = new URL(pathCanonico, site.dominio).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, site.dominio).href;
 
 // Toda página carrega Organization + WebSite e mescla os nós específicos.
@@ -87,7 +90,7 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
       <p class="cookie-texto">
         Usamos cookies essenciais para o funcionamento do site e, com a sua
         autorização, cookies analíticos para entender como o conteúdo é usado.
-        Saiba mais na <a href="/privacidade">Política de Privacidade e Cookies</a>.
+        Saiba mais na <a href="/privacidade/">Política de Privacidade e Cookies</a>.
       </p>
       <div class="cookie-acoes">
         <button type="button" id="cookie-recusar" class="cookie-btn cookie-btn--ghost">Recusar</button>

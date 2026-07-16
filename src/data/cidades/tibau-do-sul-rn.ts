@@ -92,7 +92,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Tibau do Sul', url: 'https://cidades.ibge.gov.br/brasil/rn/tibau-do-sul/panorama' },
-    { nome: 'Atlas do Desenvolvimento Humano no Brasil — Tibau do Sul', url: 'http://atlasbrasil.org.br/2013/pt/perfil_m/tibau-do-sul_rn' },
+    { nome: 'Atlas do Desenvolvimento Humano no Brasil — Tibau do Sul', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/tibau-do-sul_rn' },
     { nome: 'Prefeitura Municipal de Tibau do Sul — Turismo e Lazer', url: 'https://tibaudosul.rn.gov.br/o-municipio/turismo-e-lazer/' },
   ],
   atualizadoEm: '2026-07-02',

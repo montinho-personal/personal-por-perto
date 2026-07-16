@@ -2,9 +2,13 @@
 import Logo from './Logo.astro';
 import { navPrincipal } from '../data/site';
 import { montinhoUrl } from '../lib/links';
-const path = Astro.url.pathname;
-const isActive = (url: string) =>
-  url === '/' ? path === '/' : path.startsWith(url);
+// Normaliza os dois lados com barra final para o aria-current funcionar
+// independentemente de como o caminho chega (com ou sem barra).
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const isActive = (url: string) => {
+  const alvo = url.endsWith('/') ? url : `${url}/`;
+  return alvo === '/' ? path === '/' : path.startsWith(alvo);
+};
 ---
 
 <header class="site-header">

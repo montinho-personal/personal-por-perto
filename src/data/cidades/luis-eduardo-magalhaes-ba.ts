@@ -90,7 +90,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Luís Eduardo Magalhães', url: 'https://cidades.ibge.gov.br/brasil/ba/luis-eduardo-magalhaes/panorama' },
-    { nome: 'Atlas Brasil — IDHM', url: 'http://www.atlasbrasil.org.br/perfil/municipio/2919553' },
+    { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2919553' },
     { nome: 'Prefeitura de Luís Eduardo Magalhães', url: 'https://www.luiseduardomagalhaes.ba.gov.br/' },
   ],
   atualizadoEm: '2026-07-03',

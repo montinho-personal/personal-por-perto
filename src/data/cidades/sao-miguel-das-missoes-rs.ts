@@ -82,7 +82,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — São Miguel das Missões', url: 'https://cidades.ibge.gov.br/brasil/rs/sao-miguel-das-missoes/panorama' },
-    { nome: 'IPHAN — Parque Histórico Nacional das Missões', url: 'http://portal.iphan.gov.br/pagina/detalhes/766/' },
+    { nome: 'IPHAN — Parque Histórico Nacional das Missões', url: 'https://portal.iphan.gov.br/pagina/detalhes/766/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-07-03',

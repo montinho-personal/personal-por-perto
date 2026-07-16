@@ -82,7 +82,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Serro', url: 'https://cidades.ibge.gov.br/brasil/mg/serro/panorama' },
-    { nome: 'IPHAN — Serro (MG)', url: 'http://portal.iphan.gov.br/pagina/detalhes/376/' },
+    { nome: 'IPHAN — Serro (MG)', url: 'https://portal.iphan.gov.br/pagina/detalhes/376/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-07-02',

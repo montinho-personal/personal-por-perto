@@ -14,7 +14,7 @@ export const GET: APIRoute = () => {
     ...cidades.map((c) => ({
       t: `Personal trainer em ${c.nome}`,
       s: `${c.tipo === 'regiao' ? 'Região' : 'Cidade'} · ${c.uf}`,
-      u: `/personal-trainer/${c.slug}`,
+      u: `/personal-trainer/${c.slug}/`,
       k: `${c.nome} ${c.uf} ${c.estado}`,
     })),
     ...artigos.map((a) => ({

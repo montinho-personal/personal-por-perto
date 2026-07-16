@@ -87,7 +87,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Baía Formosa', url: 'https://cidades.ibge.gov.br/brasil/rn/baia-formosa/panorama' },
-    { nome: 'Atlas do Desenvolvimento Humano no Brasil — Baía Formosa', url: 'http://atlasbrasil.org.br/2013/pt/perfil_m/baia-formosa_rn' },
+    { nome: 'Atlas do Desenvolvimento Humano no Brasil — Baía Formosa', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/baia-formosa_rn' },
     { nome: 'Prefeitura Municipal de Baía Formosa — Turismo', url: 'https://baiaformosa.rn.gov.br/turismo/fazer' },
   ],
   atualizadoEm: '2026-07-02',

@@ -117,7 +117,7 @@ export const cidade: Cidade = {
   fontes: [
     { nome: 'IBGE Cidades — Jandira', url: 'https://cidades.ibge.gov.br/brasil/sp/jandira/panorama' },
     { nome: 'Prefeitura de Jandira', url: 'https://www.jandira.sp.gov.br/' },
-    { nome: 'Atlas Brasil — Jandira (SP)', url: 'http://www.atlasbrasil.org.br/perfil/municipio/3525003' },
+    { nome: 'Atlas Brasil — Jandira (SP)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3525003' },
   ],
   atualizadoEm: '2026-07-11',
 };

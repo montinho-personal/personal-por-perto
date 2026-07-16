@@ -40,18 +40,20 @@ export function montinhoUrlCidade(cidade?: string): string {
   return montinhoUrl(cidade ? `cidade-${slugify(cidade)}` : 'recomendacao');
 }
 
+// URLs sempre com barra final: é a forma servida pelo build 'directory'
+// (sem barra o host responde 301, desperdiçando crawl budget).
 export const rotas = {
-  cidades: '/personal-trainer',
-  guias: '/guias',
-  comoEscolher: '/guias/como-escolher-personal-trainer',
-  quantoCusta: '/guias/quanto-custa-personal-trainer',
-  montinho: '/montinho-personal',
-  comoAvaliamos: '/como-avaliamos',
-  sobre: '/sobre',
-  musculacao: '/musculacao',
-  emagrecimento: '/emagrecimento',
-  mounjaro: '/mounjaro-e-treino',
-  humor: '/humor-fitness',
+  cidades: '/personal-trainer/',
+  guias: '/guias/',
+  comoEscolher: '/guias/como-escolher-personal-trainer/',
+  quantoCusta: '/guias/quanto-custa-personal-trainer/',
+  montinho: '/montinho-personal/',
+  comoAvaliamos: '/como-avaliamos/',
+  sobre: '/sobre/',
+  musculacao: '/musculacao/',
+  emagrecimento: '/emagrecimento/',
+  mounjaro: '/mounjaro-e-treino/',
+  humor: '/humor-fitness/',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

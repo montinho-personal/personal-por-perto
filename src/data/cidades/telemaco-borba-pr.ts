@@ -93,7 +93,7 @@ export const cidade: Cidade = {
 
   fontes: [
     { nome: 'IBGE Cidades — Telêmaco Borba', url: 'https://cidades.ibge.gov.br/brasil/pr/telemaco-borba/panorama' },
-    { nome: 'Prefeitura de Telêmaco Borba', url: 'http://www.telemacoborba.pr.gov.br/' },
+    { nome: 'Prefeitura de Telêmaco Borba', url: 'https://www.telemacoborba.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4127106' },
   ],
   atualizadoEm: '2026-06-29',
