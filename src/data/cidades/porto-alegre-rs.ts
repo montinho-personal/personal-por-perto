@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Porto Alegre é apaixonada por futebol (o Grenal entre Grêmio e Internacional move a cidade) e tem forte cultura de corrida de rua e vida ativa na orla e nos parques. A Maratona Internacional, a mais antiga do país, simboliza essa tradição.',
   academias:
     'A oferta reúne grandes redes de musculação, boxes de CrossFit e treinamento funcional e estúdios de alto padrão, bem distribuídos pelos bairros nobres e centrais.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'unidade premium no Iguatemi Porto Alegre' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro e em vários bairros da cidade' },
+    { nome: 'Moinhos Fitness', detalhe: 'maior rede local da região metropolitana, com várias unidades' },
+    { nome: 'Academias ao ar livre dos parques', detalhe: 'gratuitas, na Redenção e no Marinha do Brasil' },
+  ],
 
   destaquesFitness: [
     'Orla do Guaíba revitalizada: pistas planas e seguras à beira-rio.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Porto Alegre une uma orla revitalizada, parques tradicionais e uma comunidade de corrida histórica. Com um personal trainer, você aproveita melhor essa estrutura — e ganha a constância necessária para treinar bem inclusive nos meses mais frios, quando muita gente desiste.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Porto Alegre?',
+      resposta:
+        'O mapa é claro: a orla do Guaíba e a Redenção para treinos ao ar livre — as pistas revitalizadas da Orla Moacyr Scliar viraram o principal palco fitness da cidade —, as academias e estúdios do eixo Moinhos de Vento–Petrópolis–Bela Vista, e o atendimento em casa e em condomínio, comum nos bairros de maior renda. O Parque Marinha do Brasil soma quadras e equipamentos gratuitos para sessões funcionais.',
+    },
+    {
+      pergunta: 'Como não parar de treinar no inverno de Porto Alegre?',
+      resposta:
+        'O inverno gaúcho — frio, vento minuano e chuva — é o grande filtro da constância na capital: quem depende de motivação para na primeira semana de junho. O antídoto é estrutura: migrar as sessões para academia ou estúdio nos meses frios, aproveitar as janelas de sol nos dias amenos e tratar o treino como compromisso de agenda, não de clima. Com acompanhamento, o plano muda de cenário sem mudar de ritmo — e setembro chega sem recomeço do zero.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Porto Alegre para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Porto Alegre, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['florianopolis-sc', 'balneario-camboriu-sc'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Porto Alegre', url: 'https://prefeitura.poa.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

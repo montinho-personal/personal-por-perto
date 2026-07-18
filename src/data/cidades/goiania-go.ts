@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Goiânia tem uma identidade fitness e de "cultura do corpo" das mais fortes do Brasil, com a musculação e o fisiculturismo como marca nacional, somados a uma cena crescente de corrida de rua e à tradição em motovelocidade. A ampla rede de parques sustenta o treino ao ar livre o ano todo.',
   academias:
     'Além das grandes redes (Smart Fit, Blue Fit, Bodytech no Marista), a cidade tem muitos estúdios de alto padrão e academias voltadas a fisiculturismo e alto rendimento, especialmente no Setor Bueno e no Setor Marista.',
+  academiasProximas: [
+    { nome: 'Smart Fit e Bluefit', detalhe: 'várias unidades pela cidade, algumas com funcionamento 24h' },
+    { nome: 'Bodytech', detalhe: 'unidade premium no Setor Marista' },
+    { nome: 'Academias de fisiculturismo e alto rendimento', detalhe: 'tradição goianiense, no Bueno e no Marista' },
+    { nome: 'Estações de ginástica dos parques', detalhe: 'gratuitas, no Vaca Brava e no Flamboyant' },
+  ],
 
   destaquesFitness: [
     'Polo nacional de fisiculturismo, com federação forte e campeonatos de nível internacional.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Em uma cidade que respira musculação como Goiânia, ter um personal trainer é a forma de transformar essa cultura forte em resultado consistente e seguro. Da preparação para um palco de fisiculturismo ao simples objetivo de viver com mais saúde, o acompanhamento profissional faz a diferença — e a cidade oferece estrutura de sobra para isso.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Preciso querer competir para treinar com personal em Goiânia?',
+      resposta:
+        'Não — e esse é um mal-entendido comum na capital do fisiculturismo. A cultura forte de musculação de Goiânia beneficia justamente quem não compete: as academias são completas, o nível técnico dos profissionais é alto e treinar sério é normal, não exceção. O personal traduz esse ambiente para o seu objetivo — emagrecer, ganhar massa, corrigir postura — sem exigir rotina de atleta. Quem quer palco também encontra preparadores especializados; quem quer saúde aproveita a mesma estrutura.',
+    },
+    {
+      pergunta: 'Onde o personal costuma atender em Goiânia?',
+      resposta:
+        'O eixo Setor Bueno–Marista–Jardim Goiás concentra academias de rede (algumas 24h), estúdios de alto padrão e as academias "raiz" de musculação. Ao ar livre, o Vaca Brava e o Flamboyant têm pista de cooper e estação de ginástica gratuitas e são points consolidados de treino funcional. O atendimento em casa e em condomínio cresce nos edifícios do Jardim Goiás e do Setor Oeste — e o horário 24h de algumas redes resolve a agenda de quem trabalha em turnos.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Goiânia para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Goiânia, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['brasilia-df', 'uberlandia-mg', 'belo-horizonte-mg'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Goiânia', url: 'https://www.goiania.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

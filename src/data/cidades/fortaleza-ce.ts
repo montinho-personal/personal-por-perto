@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A cultura de praia é o coração do esporte em Fortaleza: corrida na orla, beach tennis, futevôlei e vôlei de praia convivem com uma forte valorização da musculação e da estética. Sol o ano todo torna o treino ao ar livre parte natural da rotina.',
   academias:
     'A oferta vai das redes nacionais bem instaladas em shoppings (Smart Fit, Bodytech) a inúmeros estúdios e academias de bairro, com forte presença de treino funcional e esportes de areia.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'no Iguatemi Bosque, com cerca de 2.000 m² e quadra de beach tennis' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Praia de Iracema, no North Shopping e em vários bairros' },
+    { nome: 'Estúdios de funcional', detalhe: 'concentrados no Meireles e na Aldeota' },
+    { nome: 'Academia ao ar livre da Beira-Mar', detalhe: 'gratuita, no calçadão da orla' },
+  ],
 
   destaquesFitness: [
     'Avenida Beira-Mar requalificada: o "ginásio a céu aberto" da cidade.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com orla estruturada, sol o ano inteiro e uma cultura de praia que valoriza o corpo, Fortaleza é um ótimo lugar para treinar. Um personal trainer ajuda a aproveitar a Beira-Mar e as academias da cidade com método e segurança, respeitando o calor e o seu objetivo.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Fortaleza?',
+      resposta:
+        'Os cenários principais são: a Avenida Beira-Mar — o "ginásio a céu aberto" da cidade, com calçadão, academia pública e quadras de areia —, as academias de rede e estúdios do eixo Meireles–Aldeota, e o atendimento em casa ou na academia do condomínio, comum nos prédios da orla e do Mucuripe. O Parque do Cocó completa as opções para quem prefere correr e treinar em meio ao verde, longe do sol direto.',
+    },
+    {
+      pergunta: 'Qual o melhor horário para treinar em Fortaleza?',
+      resposta:
+        'Com quase 2.700 horas de sol por ano, o relógio manda: ao ar livre, o padrão fortalezense é treinar entre 5h e 7h da manhã — quando a Beira-Mar mais movimenta — ou depois das 16h30, aproveitando a brisa marítima. No meio do dia, a conta fecha com academia climatizada. O personal monta a semana misturando os dois mundos e reforça hidratação e proteção solar como parte do próprio treino.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Fortaleza para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Fortaleza, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['natal-rn', 'joao-pessoa-pb', 'recife-pe'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Fortaleza', url: 'https://www.fortaleza.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

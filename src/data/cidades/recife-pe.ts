@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Recife une tradição de futebol e cultura local (do frevo ao Recife Antigo) a uma cena de corrida de rua consolidada, com a Corrida das Pontes como símbolo, e a uma forte cultura de orla em Boa Viagem.',
   academias:
     'A oferta reúne redes como Smart Fit e Bodytech, bem instaladas em shoppings e bairros nobres, além de estúdios de funcional e crossfit que atendem o público de Boa Viagem, Casa Forte e do entorno do Porto Digital.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'no Shopping Recife, em Boa Viagem' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Torre, no Shopping Recife e em outros bairros' },
+    { nome: 'Estúdios de funcional e crossfit', detalhe: 'concentrados em Boa Viagem e Casa Forte' },
+    { nome: 'Estrutura pública do Parque da Jaqueira', detalhe: 'pista e ciclovia gratuitas e arborizadas' },
+  ],
 
   destaquesFitness: [
     'Orla de Boa Viagem (cerca de 7 km): o principal corredor de treino da cidade.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Da orla de Boa Viagem aos parques arborizados, Recife oferece bons cenários para treinar mesmo com o calor. Um personal trainer ajuda a montar uma rotina que respeite o clima e o seu objetivo — seja na corrida à beira-mar, seja na musculação com ar-condicionado nos dias mais abafados.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender no Recife?',
+      resposta:
+        'Os polos são: a orla de Boa Viagem, com seus 7 km de calçadão e a ciclovia, para treinos de corrida e funcional; as academias e estúdios de Boa Viagem, Casa Forte e Espinheiro; o atendimento em casa e em condomínio, forte nos prédios da orla; e um nicho crescente de treino corporativo ligado ao Porto Digital, com sessões antes ou depois do expediente. O Parque da Jaqueira é a alternativa arborizada para fugir do sol forte.',
+    },
+    {
+      pergunta: 'Como manter o treino na estação chuvosa do Recife?',
+      resposta:
+        'De abril a julho, as chuvas do inverno pernambucano derrubam qualquer plano que dependa só da orla. A solução é ter a semana montada em dois cenários desde o início: sessões ao ar livre nas janelas de tempo firme e treino em academia ou em casa nos dias de chuva — mesmo estímulo, local diferente. Quem treina com personal não decide na hora; o plano B já existe, e a constância atravessa o inverno sem buraco.',
+    },
+    {
+      pergunta: 'Há acompanhamento no Recife para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para o Recife, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['joao-pessoa-pb', 'natal-rn', 'salvador-ba'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura do Recife', url: 'https://www2.recife.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

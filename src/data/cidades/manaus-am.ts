@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Manaus tem forte tradição em corrida de rua, com calendário ativo e várias assessorias esportivas. A orla do Rio Negro e a Ponta Negra são os principais pontos de encontro de quem treina ao ar livre, sempre respeitando o clima equatorial.',
   academias:
     'A boa presença da Smart Fit e de academias locais dá cobertura à cidade, com a orla e os parques funcionando como extensões ao ar livre — especialmente nos horários mais frescos do dia.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'mais de dez unidades — Amazonas Shopping, Cidade Nova, Ponta Negra e Flores' },
+    { nome: 'Academias locais de bairro', detalhe: 'ampla cobertura nos bairros residenciais' },
+    { nome: 'Academia ao ar livre do Parque Rio Negro', detalhe: 'gratuita, na orla, com vista para o rio' },
+    { nome: 'Estrutura do Ponte dos Bilhares', detalhe: 'pista de 1,42 km, academias ao ar livre e quadras' },
+  ],
 
   destaquesFitness: [
     'Orla e Ponta Negra como hub de corrida, caminhada e eventos, com vista para o Rio Negro.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Na maior cidade da Amazônia, treinar bem é, antes de tudo, saber lidar com o calor e a umidade — e é aí que um personal trainer faz diferença, ajustando horários, intensidade e hidratação. Com a orla do Rio Negro e boas academias, Manaus oferece estrutura para quem quer evoluir com método.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Manaus?',
+      resposta:
+        'Os pontos fortes são: a orla do Rio Negro — o Parque Rio Negro e a Ponta Negra concentram corrida, caminhada e treino funcional com a melhor vista da cidade —, as academias de rede e de bairro (a Smart Fit tem mais de dez unidades), e o atendimento em casa ou no condomínio, comum em Adrianópolis, na Ponta Negra e no Parque Dez. O Ponte dos Bilhares e o Passeio do Mindú somam estrutura gratuita nos bairros centrais.',
+    },
+    {
+      pergunta: 'Como treinar no calor equatorial de Manaus?',
+      resposta:
+        'Em uma cidade onde a sensação térmica raramente dá trégua, o horário é a principal variável do treino: ao ar livre, o padrão manauara é o amanhecer (antes das 7h) ou depois do pôr do sol, quando a orla enche. No restante do dia, academia climatizada. As chuvas frequentes pedem um plano B permanente em ambiente fechado, e a hidratação é parte do treino — começa antes e continua depois da sessão. O personal ajusta intensidade e volume aos dias mais abafados.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Manaus para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Manaus, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['palmas-to', 'brasilia-df'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Manaus', url: 'https://www.manaus.am.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };
