@@ -121,5 +121,5 @@ export const cidade: Cidade = {
       url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama',
     },
   ],
-  atualizadoEm: '2026-07-11',
+  atualizadoEm: '2026-07-18',
 };
