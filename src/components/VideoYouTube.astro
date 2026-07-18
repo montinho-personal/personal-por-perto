@@ -1,0 +1,49 @@
+---
+/**
+ * Vídeo do YouTube (16:9) incorporado com privacidade (youtube-nocookie) e
+ * lazy loading — usado nos artigos para enriquecer o tema com vídeos de
+ * canais de referência. Para Shorts (9:16), usar o padrão .video-short das
+ * páginas de cidade.
+ */
+interface Props {
+  /** ID do vídeo no YouTube (parte após watch?v=). */
+  id: string;
+  /** Título acessível do iframe. */
+  titulo: string;
+  /** Legenda opcional exibida sob o vídeo (crédito/contexto editorial). */
+  legenda?: string;
+}
+const { id, titulo, legenda } = Astro.props;
+---
+
+<figure class="video-embed">
+  <iframe
+    src={`https://www.youtube-nocookie.com/embed/${id}`}
+    title={titulo}
+    width="720"
+    height="405"
+    loading="lazy"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  />
+  {legenda && <figcaption>{legenda}</figcaption>}
+</figure>
+
+<style>
+  .video-embed {
+    margin: var(--sp-5) 0 0;
+  }
+  .video-embed iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md, 0 8px 24px rgba(0, 0, 0, 0.12));
+  }
+  .video-embed figcaption {
+    margin-top: var(--sp-2);
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+</style>
