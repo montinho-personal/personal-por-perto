@@ -48,6 +48,7 @@ const capaAlt = `Personal trainer em ${n} (${cidade.uf}) — guia do Personal po
 // Parnaíba (parte do complexo) também recebe fotos reais no corpo.
 const ehAlphaville = cidade.slug === 'alphaville-sp';
 const ehSantana = cidade.slug === 'santana-de-parnaiba-sp';
+const ehBarueri = cidade.slug === 'barueri-sp';
 const fotoTransformacao = '/montinho/personal-trainer-alphaville.webp';
 const altTransformacao =
   'Antes e depois do Montinho Personal, personal trainer em Alphaville: da adolescência com sobrepeso ao físico definido após mais de 20 anos de musculação';
@@ -381,6 +382,65 @@ const objetivoDesc: Record<string, string> = {
           tabela por cidade e dicas de como economizar sem perder qualidade.
         </p>
       </section>
+
+      {
+        ehBarueri && (
+          <section id="conheca-o-personal">
+            <h2>Conheça o personal que atende Barueri</h2>
+            <p>
+              O <strong>Montinho Personal</strong>, destacado pelo portal, tem base
+              em Alphaville — distrito do próprio município — e atende de Barueri
+              aos condomínios da região. A jornada é a credencial: mais de 40 kg
+              eliminados e mais de 20 anos de musculação:
+            </p>
+            <div class="fotos-grid">
+              <figure class="foto-personal">
+                <img
+                  src="/montinho/personal-trainer-barueri.webp"
+                  alt="Antes e depois do Montinho Personal: transformação de mais de 40 kg — personal trainer que atende Barueri, Alphaville e região"
+                  width="1200"
+                  height="1200"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  Antes e depois reais: a transformação que virou método nos
+                  atendimentos em Barueri.
+                </figcaption>
+              </figure>
+              <figure class="foto-personal">
+                <img
+                  src="/montinho/treinador-em-barueri.webp"
+                  alt="Montinho Personal de costas em pose de duplo bíceps ao ar livre — treinador que atende Barueri e a região oeste da Grande São Paulo"
+                  width="900"
+                  height="1600"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  Treino ao ar livre também faz parte do método — como nos parques
+                  públicos de Barueri.
+                </figcaption>
+              </figure>
+            </div>
+            <figure class="video-short">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/yndKE1GrnUQ"
+                title="Vídeo do Montinho Personal, personal trainer com base em Alphaville, Barueri"
+                width="340"
+                height="604"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+              <figcaption>
+                No vídeo: o Montinho Personal, profissional destacado pelo portal em
+                Barueri e região.
+              </figcaption>
+            </figure>
+          </section>
+        )
+      }
 
       {
         ehSantana && (
