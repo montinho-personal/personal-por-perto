@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Município do ABC paulista, na Região Metropolitana de São Paulo, São Caetano do Sul tem o maior IDHM e a maior renda per capita do Brasil. A economia é forte em serviços, comércio e indústria (tradição metalúrgica e automotiva), hoje com perfil corporativo crescente, em uma das maiores densidades demográficas do país.',
 
   mercado:
-    'O público de alta renda e densamente urbano sustenta forte demanda por academias de alto padrão, estúdios boutique e personal trainers — um perfil premium concentrado em poucos quilômetros quadrados, com espaço para atendimento a domicílio e em condomínio.',
+    'São Caetano do Sul concentra o mercado de personal trainer mais qualificado do ABC: maior IDHM e renda per capita do Brasil, população densamente urbana e verticalizada, e um perfil premium comprimido em pouco mais de 15 km². Isso se traduz em demanda forte por atendimento a domicílio e em academias de condomínio nos bairros Cerâmica, Santa Paula e Barcelona, por estúdios boutique e por acompanhamento de longo prazo — o público local valoriza continuidade e resultado mais do que preço. A infraestrutura pública joga a favor: o Espaço Verde Chico Mendes tem pista de cooper coberta, raridade que permite sessão ao ar livre mesmo com chuva. Para o personal, a densidade significa deslocamentos mínimos entre alunos; para o aluno, significa achar academia, estúdio ou parque a poucos minutos de casa em qualquer ponto da cidade.',
 
   bairrosNobres: ['Cerâmica', 'Santa Paula', 'Barcelona', 'Centro'],
   bairrosPopulares: ['Fundação', 'Boa Vista', 'Mauá', 'Prosperidade'],
@@ -68,7 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cidade tem tradição esportiva forte (referência no basquete e no futsal do ABC) e calendário consolidado de corridas de rua, com alta adesão à atividade física pela renda e pela infraestrutura.',
   academias:
-    'A oferta é premium — academias de alto padrão e estúdios boutique —, complementada por parques com pistas de cooper cobertas que permitem treinar em qualquer clima.',
+    'A oferta é premium — academias de alto padrão e estúdios boutique —, complementada por unidades de rede bem distribuídas e por parques com pistas de cooper cobertas que permitem treinar em qualquer clima.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades Santa Paula, Fundação e Assaí SCS (Av. Goiás)' },
+    { nome: 'Bluefit São Caetano', detalhe: 'na Rua Alegre, bairro Barcelona' },
+    { nome: 'Skyfit', detalhe: 'unidade no Centro, na Av. Conde Francisco Matarazzo' },
+    { nome: 'Pistas cobertas do Espaço Verde Chico Mendes', detalhe: 'cooper gratuito mesmo em dia de chuva' },
+  ],
 
   destaquesFitness: [
     'Maior IDHM e renda per capita do Brasil — público premium para personal.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Maior IDHM do Brasil e coração do ABC, São Caetano do Sul tem público premium e ótima infraestrutura esportiva. Um personal trainer ajuda a aproveitar o Espaço Verde Chico Mendes e o Bosque do Povo com método, com forte espaço para atendimento personalizado e online.',
 
+  faqsExtra: [
+    {
+      pergunta: 'O personal atende em casa e em condomínio em São Caetano do Sul?',
+      resposta:
+        'Sim — e a cidade é uma das mais práticas do país para esse formato. Como São Caetano é compacta e verticalizada, o deslocamento do profissional entre alunos leva minutos, o que barateia e viabiliza o atendimento a domicílio e nas academias de condomínio, muito procurado nos bairros Cerâmica, Santa Paula e Barcelona. Para quem prefere sair de casa, estúdios boutique e academias de rede ficam a curta distância em qualquer ponto da cidade.',
+    },
+    {
+      pergunta: 'Dá para manter o treino em dia de chuva em São Caetano?',
+      resposta:
+        'Dá, e essa é uma vantagem rara da cidade: o Espaço Verde Chico Mendes tem pista de cooper coberta, o que permite sessão de corrida, caminhada ou treino funcional mesmo com chuva — sem custo. Somando as academias bem distribuídas e a facilidade do atendimento em casa, praticamente não existe cenário climático que justifique pausar a rotina: o personal apenas troca o local da sessão e mantém o plano.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São Caetano do Sul para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas — e conhece essas barreiras pela própria vivência de mais de 20 anos de musculação. Para o ABC, o formato mais prático é o acompanhamento online, com treino adaptado e ajustes contínuos; o atendimento presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['santo-andre-sp', 'sao-paulo-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Caetano do Sul', url: 'https://www.saocaetanodosul.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

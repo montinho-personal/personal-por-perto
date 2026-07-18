@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Cidade industrial do ABC paulista, Mauá foi historicamente a "Capital da Porcelana" e hoje sedia o Polo Petroquímico de Capuava e a Refinaria de Capuava (RECAP), com forte presença de óleo e gás, petroquímica e metalmecânica. O perfil operário e a localização entre a capital e o Porto de Santos moldam o dia a dia da cidade e de seu público.',
 
   mercado:
-    'O mercado fitness é voltado às academias de bairro que atendem a população trabalhadora, com uma rede municipal de esportes ampla. A demanda por musculação e treino funcional acessível é forte, e o personal que se adapta aos turnos de trabalho tem espaço garantido.',
+    'O mercado de personal trainer em Mauá é moldado pela rotina industrial: com o Polo Petroquímico de Capuava e a RECAP operando em turnos, boa parte dos potenciais alunos precisa treinar em horários fora do padrão — cedo da manhã, no meio da tarde ou à noite. A oferta acompanha o perfil popular da cidade: academias de rede de baixo custo no Centro e nas avenidas principais, academias de bairro consolidadas em regiões como Jardim Zaíra e Vila Bocaina, e uma rede municipal ampla (CMECs, ginásios e campos) que serve de base gratuita para treino funcional. O personal que domina a lógica dos turnos e monta agenda flexível — presencial em academia, em casa ou nos espaços públicos — encontra uma demanda constante e fiel, com o acompanhamento online completando a semana de quem alterna escalas.',
 
   bairrosNobres: ['Vila Bocaina', 'Vila Noêmia', 'Jardim Zaíra', 'Centro'],
   bairrosPopulares: ['Jardim Sônia Maria', 'Jardim Guapituba', 'Vila Assis Brasil', 'Zaíra'],
@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Mauá tem cultura esportiva comunitária forte, ligada ao futebol de várzea, aos campos distritais e a uma ampla rede pública de equipamentos (CMECs, ginásios e estádio), que democratiza o acesso à atividade física.',
   academias:
-    'A oferta é dominada por academias de bairro que atendem a população metalúrgica e trabalhadora, complementadas pela rede municipal de esportes e pelos espaços públicos de treino.',
+    'A oferta é dominada por academias de bairro que atendem a população metalúrgica e trabalhadora, complementadas por unidades de rede de baixo custo, pela rede municipal de esportes e pelos espaços públicos de treino.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro (Av. Gov. Mário Covas Jr.) e na Av. Barão de Mauá' },
+    { nome: 'Do Is Fit', detalhe: 'rede local com unidade no Jardim Zaíra' },
+    { nome: 'CMECs e academias ao ar livre municipais', detalhe: 'gratuitos, distribuídos pelos bairros' },
+  ],
 
   destaquesFitness: [
     'Rede municipal robusta de esportes (CMECs, ginásios e estádio).',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade industrial do ABC, Mauá tem uma demanda muito ligada à rotina de trabalho e uma forte rede pública de esporte. Um personal trainer ajuda a encaixar o treino no dia a dia — aproveitando os equipamentos municipais, as academias de bairro ou o formato online.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Quem trabalha em turnos na indústria consegue manter treino com personal em Mauá?',
+      resposta:
+        'Consegue — e esse é justamente o público que mais se beneficia do acompanhamento individual na cidade. Quem alterna escalas no Polo de Capuava ou na RECAP raramente se adapta ao horário fixo de aulas coletivas; com o personal, a sessão muda de horário junto com o turno, e o plano prevê versões curtas para as semanas mais pesadas. Nas trocas de escala, o treino do dia pode virar uma sessão em casa ou nos equipamentos públicos, sem quebrar a sequência.',
+    },
+    {
+      pergunta: 'Onde o personal costuma atender em Mauá?',
+      resposta:
+        'Os pontos mais comuns são as academias — de unidades de rede no Centro e na Av. Barão de Mauá a academias de bairro em regiões como Jardim Zaíra —, o atendimento em casa e os espaços públicos: os CMECs e as áreas de lazer dos bairros permitem treino funcional gratuito com material portátil. O relevo acidentado da cidade ainda rende treinos de subida para quem corre, aproveitando as próprias ladeiras do bairro.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Mauá para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem formação complementar no treinamento de pessoas com dores e limitações musculoesqueléticas — e conhece essas barreiras pela própria vivência na musculação. Para o ABC, o formato mais prático é o acompanhamento online, com treino adaptado à estrutura disponível e ajustes contínuos; o atendimento presencial pode ser avaliado conforme agenda e local, a partir da base na região de Alphaville. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['santo-andre-sp', 'sao-bernardo-do-campo-sp', 'sao-paulo-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mauá', url: 'https://www.maua.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };
