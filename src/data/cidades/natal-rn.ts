@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Natal tem forte cultura de corrida de rua e de esportes de praia — futebol de areia, beach tennis, surfe e vôlei. O clima ensolarado e as orlas favorecem o treino ao ar livre praticamente o ano inteiro.',
   academias:
     'A ampla presença da Smart Fit, somada a dezenas de academias de bairro e estúdios de funcional, dá boa cobertura à cidade, com a Via Costeira e Ponta Negra como extensões naturais ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades em Lagoa Nova, Cidade Satélite, Alecrim, Esperança e Partage Norte' },
+    { nome: 'Academias de bairro e estúdios de funcional', detalhe: 'dezenas de opções por toda a cidade' },
+    { nome: 'Academia ao ar livre de Ponta Negra', detalhe: 'gratuita, no calçadão da orla' },
+  ],
 
   destaquesFitness: [
     'Ponta Negra e Via Costeira: espaços públicos premium para corrida e treino funcional.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com sol quase o ano inteiro, orlas estruturadas e a Via Costeira para os treinos mais longos, Natal é um convite à vida ativa. Um personal trainer ajuda a montar uma rotina que respeite o calor e potencialize seus resultados — da corrida em Ponta Negra à musculação nas redes da cidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Natal?',
+      resposta:
+        'Os cenários fortes são: o calçadão de Ponta Negra, ponto de encontro de corredores no fim da tarde; a Via Costeira, com seus 10 km à beira-mar para treinos longos; as academias — a Smart Fit cobre bem a cidade — e o atendimento em casa ou no condomínio, comum no Tirol, em Petrópolis e em Capim Macio. O Parque das Dunas completa com trilhas na Mata Atlântica para quem gosta de treinar na natureza.',
+    },
+    {
+      pergunta: 'Correr na areia e treinar nas dunas funciona de verdade?',
+      resposta:
+        'Funciona — e Natal tem o melhor "laboratório" do país para isso. A areia fofa exige mais dos músculos estabilizadores e eleva o gasto energético; a areia dura da beira d\'água é um meio-termo excelente para intervalados; e as subidas de duna são um treino de potência natural. O cuidado é dosar: o impacto e a instabilidade pedem progressão gradual e tênis adequado (ou pés descalços em doses pequenas). O personal alterna areia, calçadão e academia para somar os estímulos sem sobrecarregar.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Natal para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Natal, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['joao-pessoa-pb', 'fortaleza-ce', 'recife-pe'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Natal', url: 'https://natal.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

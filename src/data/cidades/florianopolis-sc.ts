@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'O surf faz parte da identidade de Florianópolis, com a Joaquina como palco histórico de campeonatos, e a corrida de rua é fortíssima, da Volta à Ilha à Maratona de Floripa. Some-se a musculação de alto rendimento (Ironberg) e tem-se uma das culturas fitness mais completas do país.',
   academias:
     'Além do Ironberg Floripa, referência nacional, a cidade tem unidades de Smart Fit e diversos estúdios e clubes premium, com forte oferta de funcional e treino voltado a surfistas e corredores.',
+  academiasProximas: [
+    { nome: 'Ironberg Floripa', detalhe: 'no Itacorubi, referência nacional em musculação' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro, no Estreito e em outros pontos da Ilha' },
+    { nome: 'Estúdios e clubes premium', detalhe: 'em Jurerê Internacional e na Lagoa da Conceição' },
+    { nome: 'Academias ao ar livre da Beira-Mar Norte', detalhe: 'gratuitas, ao longo do calçadão' },
+  ],
 
   destaquesFitness: [
     'Maior IDHM entre as capitais do Brasil (0,847), com altíssima qualidade de vida.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Em Florianópolis, treinar é quase uma extensão do estilo de vida: praia, corrida, surf e musculação de alto nível convivem na mesma cidade. Um personal trainer ajuda a organizar tudo isso em torno do seu objetivo, aproveitando a Beira-Mar, a Lagoa e a forte cena fitness da capital.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Florianópolis?',
+      resposta:
+        'A geografia da Ilha define o mapa: a Beira-Mar Norte e a Lagoa da Conceição para treinos ao ar livre, as academias — do Ironberg no Itacorubi às redes e estúdios do Centro — e o atendimento em casa ou no condomínio, muito comum em Jurerê Internacional e nos residenciais do Norte da Ilha. Como o trânsito de verão trava a cidade, a regra local é treinar perto de onde se mora — ou garantir o acompanhamento online nos meses de alta temporada.',
+    },
+    {
+      pergunta: 'O personal ajuda a melhorar o desempenho no surf?',
+      resposta:
+        'Ajuda — e em Floripa esse é um dos pedidos mais comuns. O surf exige potência de remada (costas e ombros), estabilidade de tronco, mobilidade de quadril e fôlego para as séries; tudo isso se constrói fora da água, com treino de força e condicionamento específicos. O personal monta o programa em ciclos, respeitando as janelas de ondulação, para que o corpo esteja pronto quando a Joaquina ou a Mole estiverem funcionando — e não destruído pelo treino do dia anterior.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Florianópolis para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Florianópolis, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou praia), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['balneario-camboriu-sc', 'porto-alegre-rs', 'curitiba-pr'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Florianópolis', url: 'https://www.pmf.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

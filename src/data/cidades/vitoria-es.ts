@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Vitória tem uma vocação rara para o esporte ao ar livre, sustentada pelo clima, pelo relevo plano do litoral e por políticas públicas pioneiras (SOE e Academias Populares gratuitas). Corrida, caminhada, ciclismo e esportes de areia fazem parte da rotina — não à toa é a capital mais ativa do país.',
   academias:
     'A oferta combina redes como a Smart Fit (Praia do Canto, Reta da Penha, Jardim Camburi) e boxes de CrossFit nos bairros nobres com a rede pública de Academias Populares e os módulos do SOE na orla — acesso ao treino para todos os perfis.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Praia do Canto, na Reta da Penha e em Jardim Camburi' },
+    { nome: 'Boxes de CrossFit e estúdios', detalhe: 'concentrados na Praia do Canto e em Jardim da Penha' },
+    { nome: 'Módulos do SOE', detalhe: 'orientação gratuita de educação física na orla e nas praças' },
+    { nome: 'Academias Populares', detalhe: 'rede pública gratuita espalhada pelos bairros' },
+  ],
 
   destaquesFitness: [
     'A capital nº 1 do Brasil em prática de atividade física (Vigitel: 53,3%).',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Em uma cidade que já é a mais ativa do Brasil, treinar com um personal trainer é potencializar uma cultura que já existe. Da orla de Camburi aos módulos gratuitos do SOE, Vitória oferece estrutura de sobra — e o acompanhamento profissional garante método, segurança e evolução constante.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Se o SOE é gratuito, ainda vale contratar um personal em Vitória?',
+      resposta:
+        'São serviços complementares, não concorrentes. O SOE — orgulho de Vitória e inspiração do programa nacional Academia da Saúde — oferece orientação de qualidade em grupo, ótima para sair do sedentarismo. O personal entra quando o objetivo pede individualização: um plano progressivo desenhado para você, correção fina de execução, periodização para um objetivo específico (hipertrofia, prova de corrida, recomposição) e cobrança de constância. Muita gente usa os dois: o módulo do SOE na semana e as sessões individuais para evoluir.',
+    },
+    {
+      pergunta: 'Onde o personal costuma atender em Vitória?',
+      resposta:
+        'Na capital mais ativa do país, os points são: a orla de Camburi e a Curva da Jurema para corrida e funcional à beira-mar, as academias e boxes da Praia do Canto e de Jardim da Penha, o Parque Pedra da Cebola — aberto das 5h às 22h — e o atendimento em casa e em condomínio nos bairros nobres. O relevo plano da orla e o clima com pouca chuva tornam o treino ao ar livre viável praticamente o ano todo.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Vitória para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Vitória, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['rio-de-janeiro-rj', 'belo-horizonte-mg', 'niteroi-rj'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vitória', url: 'https://www.vitoria.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };
