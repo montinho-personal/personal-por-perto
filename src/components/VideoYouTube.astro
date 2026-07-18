@@ -12,16 +12,18 @@ interface Props {
   titulo: string;
   /** Legenda opcional exibida sob o vídeo (crédito/contexto editorial). */
   legenda?: string;
+  /** true para Shorts (proporção 9:16, largura reduzida). */
+  short?: boolean;
 }
-const { id, titulo, legenda } = Astro.props;
+const { id, titulo, legenda, short = false } = Astro.props;
 ---
 
-<figure class="video-embed">
+<figure class={`video-embed${short ? ' video-embed-short' : ''}`}>
   <iframe
     src={`https://www.youtube-nocookie.com/embed/${id}`}
     title={titulo}
-    width="720"
-    height="405"
+    width={short ? 340 : 720}
+    height={short ? 604 : 405}
     loading="lazy"
     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
@@ -45,5 +47,9 @@ const { id, titulo, legenda } = Astro.props;
     margin-top: var(--sp-2);
     color: var(--muted);
     font-size: var(--step--1);
+  }
+  .video-embed-short iframe {
+    width: min(100%, 340px);
+    aspect-ratio: 9 / 16;
   }
 </style>
