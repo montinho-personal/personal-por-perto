@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Poucas cidades têm uma cultura de corpo e ar livre tão forte quanto o Rio: corrida na orla e no Aterro, futevôlei e beach tennis na areia, ciclismo e natação. Sede dos Jogos Olímpicos de 2016, a cidade respira esporte — o que sustenta uma enorme procura por acompanhamento profissional.',
   academias:
     'A oferta vai das academias premium da Zona Sul (Bodytech, Bio Ritmo) às unidades de Smart Fit espalhadas por toda a cidade, além de estúdios de treino funcional, crossfit e os tradicionais points de areia para esportes de praia.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'rede premium com várias unidades em Copacabana, Ipanema, Leblon e Barra da Tijuca' },
+    { nome: 'Bio Ritmo', detalhe: 'rede premium do grupo Smart Fit, em expansão na Zona Sul' },
+    { nome: 'Smart Fit', detalhe: 'dezenas de unidades em todas as zonas da cidade' },
+    { nome: 'Academias ao ar livre da orla', detalhe: 'gratuitas, ao longo de Copacabana, Ipanema e Leblon' },
+  ],
 
   destaquesFitness: [
     'Aterro do Flamengo e orlas com pista fechada para carros aos domingos.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'No Rio de Janeiro, treinar com um personal trainer é unir método à cidade que mais convida a se exercitar ao ar livre. Da orla ao Aterro, da musculação na Zona Sul ao acompanhamento online, a escolha certa é a que cabe na sua rotina e no seu objetivo — e opções, aqui, não faltam.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender no Rio de Janeiro?',
+      resposta:
+        'O Rio tem três territórios claros: as academias — da Bodytech e Bio Ritmo na Zona Sul às Smart Fit espalhadas pela cidade —, os espaços ao ar livre consagrados (orla, Aterro do Flamengo, Lagoa Rodrigo de Freitas) e o atendimento em casa ou na academia do condomínio, formato dominante na Barra da Tijuca e no Recreio. Como as distâncias são grandes e o trânsito pesa, a regra prática é escolher um personal que atenda perto de casa ou do trabalho — ou fechar acompanhamento online.',
+    },
+    {
+      pergunta: 'Os esportes de areia substituem a musculação no Rio?',
+      resposta:
+        'Complementam, mas não substituem. Futevôlei, beach tennis e vôlei de praia são excelentes para condicionamento, agilidade e constância — é treino que não parece treino. O que eles não entregam é a sobrecarga progressiva que constrói massa muscular e protege articulações, especialmente a partir dos 30 anos. A combinação que mais funciona na prática carioca é duas a três sessões de força por semana com o personal, mantendo a areia como cardio e lazer nos outros dias.',
+    },
+    {
+      pergunta: 'Há acompanhamento no Rio de Janeiro para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência de quem já treinou com desconforto em mais de 20 anos de musculação. Para o Rio, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['niteroi-rj', 'vitoria-es', 'belo-horizonte-mg', 'sao-paulo-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Maratona do Rio', url: 'https://www.maratonadorio.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

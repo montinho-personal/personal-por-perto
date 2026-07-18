@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Brasília tem uma cultura forte de corrida de rua e ciclismo, impulsionada pelos grandes parques, pelos eixos fechados aos domingos e pelo clima seco. O público de alta renda sustenta uma ampla rede de assessorias esportivas e personal trainers, do iniciante ao corredor avançado.',
   academias:
     'A oferta é completa: grandes redes (Smart Fit, Bodytech, Bio Ritmo) e estúdios boutique de alto custo concentrados no Plano Piloto, no Lago Sul e em Águas Claras, com forte presença também de crossfit, funcional e pilates.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'cinco unidades — Asa Sul, Asa Norte, Sudoeste, Lago Sul (Setor de Clubes) e Lago Norte' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Plano Piloto e nas principais regiões administrativas' },
+    { nome: 'Estúdios boutique', detalhe: 'concentrados no Plano Piloto, no Lago Sul e em Águas Claras' },
+    { nome: 'Circuitos do Parque da Cidade', detalhe: 'gratuitos, com percursos medidos de 4, 6 e 10 km' },
+  ],
 
   destaquesFitness: [
     'Parque da Cidade: o maior parque urbano da América do Sul, com circuitos medidos.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Brasília reúne tudo o que um bom treino pede: clima favorável, parques de sobra e um público que leva a saúde a sério. Com um personal trainer alinhado ao seu objetivo, fica fácil aproveitar a infraestrutura da capital — do Parque da Cidade ao Eixão de domingo — e manter a constância ao longo do ano.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Brasília?',
+      resposta:
+        'A lógica é por região: no Plano Piloto, academias das entrequadras e estúdios boutique; no Lago Sul e no Lago Norte, atendimento em casa — o formato dominante entre quem tem espaço e piscina —; em Águas Claras, academias de rede e condomínios verticais; e, transversal a tudo, o Parque da Cidade, com circuitos medidos de 4, 6 e 10 km. Como as distâncias entre regiões administrativas são grandes, a regra brasiliense é fechar com um personal da sua região ou treinar online.',
+    },
+    {
+      pergunta: 'Como treinar na época da seca em Brasília?',
+      resposta:
+        'De maio a setembro, a umidade em Brasília despenca — e o treino precisa se adaptar. As sessões ao ar livre rendem mais no início da manhã, quando a umidade ainda está aceitável; a hidratação deve começar antes do treino, não durante; e em dias de umidade muito baixa vale trocar o treino externo por academia climatizada. O personal ajusta intensidade e horário conforme a época, mantendo a evolução sem judiar das vias respiratórias.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Brasília para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Brasília, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['goiania-go', 'palmas-to', 'belo-horizonte-mg'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Agência Brasília', url: 'https://www.agenciabrasilia.df.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

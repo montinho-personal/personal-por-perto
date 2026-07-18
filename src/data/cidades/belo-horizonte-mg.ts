@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'BH é uma cidade futebolística por excelência (a rivalidade Atlético-MG x Cruzeiro move multidões, no Mineirão e na Arena MRV) e tem uma cultura de corrida de rua das mais fortes do país, simbolizada pela Volta da Pampulha. Treinar faz parte do estilo de vida do belo-horizontino.',
   academias:
     'A alta densidade de unidades da Smart Fit e a presença da Bodytech no segmento premium garantem oferta para todos os perfis, complementadas por boxes de CrossFit e estúdios de funcional, yoga e pilates espalhados pela cidade.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'unidades premium na Savassi, no Belvedere e no Ponteio' },
+    { nome: 'Smart Fit', detalhe: 'dezenas de unidades — Savassi (R. Fernandes Tourinho), Centro, Gutierrez e shoppings' },
+    { nome: 'Cia Athletica', detalhe: 'unidade no Belvedere, com atendimento a toda a família' },
+    { nome: 'Academia ao ar livre do Parque Municipal', detalhe: 'gratuita, no coração do Centro' },
+  ],
 
   destaquesFitness: [
     'Lagoa da Pampulha: 18 km contínuos para corrida e ciclismo, o hub a céu aberto da cidade.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Belo Horizonte combina clima ameno, uma das melhores estruturas de corrida do país e um mercado fitness completo. Com um personal trainer, fica mais fácil aproveitar a Pampulha, as academias da Savassi e os parques da cidade com método e segurança — e manter o ritmo o ano inteiro.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Belo Horizonte?',
+      resposta:
+        'Os polos são claros: as academias da região Centro-Sul — Savassi, Lourdes e Funcionários concentram do baixo custo ao premium —, o Belvedere, onde o atendimento em casa e na academia do prédio é comum, e a Pampulha, que funciona como um clube a céu aberto para treinos de corrida e funcional. Nos bairros residenciais, o personal que atende em domicílio resolve a rotina de quem não quer atravessar a cidade no trânsito dos horários de pico.',
+    },
+    {
+      pergunta: 'Qual a melhor época do ano para evoluir no treino em BH?',
+      resposta:
+        'O inverno seco, de junho a setembro, é a janela de ouro: temperaturas amenas, quase nenhuma chuva e condições perfeitas para somar treino ao ar livre na Pampulha ou nos parques à musculação. Mas o pulo do gato é o contrário do que a maioria faz — quem começa no inverno chega ao verão com base construída, em vez de correr atrás do resultado em dezembro. No verão chuvoso, o plano migra mais para a academia e mantém o ritmo.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Belo Horizonte para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação — incluindo os desconfortos que quase todo praticante enfrenta. Para BH, o formato é o acompanhamento online: treino adaptado à estrutura disponível, vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['uberlandia-mg', 'rio-de-janeiro-rj', 'vitoria-es', 'brasilia-df'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belo Horizonte', url: 'https://prefeitura.pbh.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-18',
 };

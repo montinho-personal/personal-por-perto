@@ -20,6 +20,9 @@ export const cidade: Cidade = {
   resumoEconomico:
     'Capital do Paraná e maior cidade do Sul do Brasil, Curitiba tem economia diversificada, com forte setor de serviços, polo industrial (a Cidade Industrial de Curitiba abriga montadoras como Volvo, Renault/Nissan e Audi) e setores de tecnologia e finanças. É uma cidade de alto IDH (0,823) e referência mundial em planejamento urbano — características que se traduzem em um público atento à qualidade de vida e à prática regular de exercícios.',
 
+  mercado:
+    'O mercado de personal trainer de Curitiba é um dos mais maduros do Sul: alto IDH, renda elevada nos eixos Batel–Água Verde–Ecoville e uma população que já incorporou os parques à rotina de treino. As redes cobrem todos os perfis — Smart Fit em dezenas de unidades, Bodytech no segmento premium do Batel — e a cidade tem densidade incomum de estúdios de personal e treino funcional, formato que o curitibano abraçou. O diferencial local é o clima: o frio de junho a agosto derruba a frequência de quem treina sozinho, e é exatamente aí que o acompanhamento profissional se paga, mantendo constância com aquecimento ajustado, treino indoor nos dias de geada e as pistas do Barigui no restante do ano.',
+
   bairrosNobres: ['Batel', 'Água Verde', 'Bigorrilho', 'Cabral', 'Ecoville', 'Champagnat'],
   bairrosPopulares: ['Cajuru', 'Boqueirão', 'Portão', 'Santa Felicidade', 'Sítio Cercado'],
 
@@ -67,6 +70,12 @@ export const cidade: Cidade = {
     'Curitiba tem uma cultura forte de uso dos parques para cooper e ciclismo, sustentada por alto IDH e muita área verde. A combinação de parques amplos, mais de 200 km de ciclovias e um calendário de corridas movimentado faz da capital um ambiente em que treinar ao ar livre é parte natural do estilo de vida — desde que se respeite o frio.',
   academias:
     'A capital tem um mercado de academias e estúdios bem desenvolvido, com forte presença nos bairros de maior renda como Batel, Água Verde e Ecoville, e oferta crescente de treino funcional e estúdios de personal.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Batel (Av. Silva Jardim), Água Verde, Champagnat e Shopping Curitiba' },
+    { nome: 'Bodytech', detalhe: 'unidade premium no Shopping Crystal, no Batel' },
+    { nome: 'Estúdios de personal e funcional', detalhe: 'alta densidade no eixo Batel–Água Verde–Ecoville' },
+    { nome: 'Equipamentos do Parque Barigui', detalhe: 'gratuitos, junto às pistas de corrida e caminhada' },
+  ],
 
   destaquesFitness: [
     'Parque Barigui: pista de corrida plana de 5,4 km, a principal da cidade.',
@@ -84,6 +93,27 @@ export const cidade: Cidade = {
     onlineMax: 450,
   },
 
+  conclusao:
+    'Curitiba reúne parques com pistas excelentes, mais de 200 km de ciclovias e um mercado fitness completo do Batel ao Barigui. O desafio real é o frio — e é justamente nele que um personal trainer faz diferença, ajustando aquecimento, vestuário e plano indoor para manter a constância o ano inteiro, sem depender da motivação do dia.',
+
+  faqsExtra: [
+    {
+      pergunta: 'Como treinar no frio de Curitiba sem perder constância?',
+      resposta:
+        'O frio curitibano derruba mais rotinas de treino do que a falta de tempo — e a resposta é estrutura, não força de vontade. Na prática: aquecimento mais longo e progressivo (o corpo demora mais para entrar em temperatura), vestuário em camadas para o treino ao ar livre e um plano B indoor já combinado para os dias de geada. Quem treina com personal atravessa junho a agosto sem interromper, porque o plano se adapta ao termômetro em vez de esperar o "dia bom".',
+    },
+    {
+      pergunta: 'Onde o personal costuma atender em Curitiba?',
+      resposta:
+        'Os pontos fortes são as academias do eixo Batel–Água Verde–Ecoville — do baixo custo ao premium —, os estúdios de personal, formato muito difundido na cidade, o atendimento em casa e nos condomínios do Ecoville e do Champagnat, e os parques: o Barigui, com pistas planas de 5,4 km e 3,3 km, é o preferido para sessões de corrida e funcional. A Rede Integrada de Transporte facilita chegar aos treinos pelos eixos estruturais.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Curitiba para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Curitiba, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, estúdio, condomínio ou casa), vídeos de execução e ajustes contínuos — útil inclusive para manter o ritmo no inverno. O trabalho é progressivo e sem promessa de cura; quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: [],
 
   fontes: [
@@ -91,5 +121,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Curitiba', url: 'https://www.curitiba.pr.gov.br/' },
     { nome: 'Viaje Paraná', url: 'https://www.viajeparana.com/' },
   ],
-  atualizadoEm: '2026-06-28',
+  atualizadoEm: '2026-07-18',
 };
