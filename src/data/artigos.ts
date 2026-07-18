@@ -35,6 +35,10 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-em-casa-para-iniciantes/', titulo: 'Treino em casa para iniciantes: como começar sem equipamentos' },
   { categoria: 'Musculação', url: '/musculacao/treinar-com-dor-no-joelho/', titulo: 'Dor no joelho: dá para treinar? O que ajustar na musculação' },
   { categoria: 'Musculação', url: '/musculacao/treinar-com-dor-lombar/', titulo: 'Dor lombar e musculação: como treinar com segurança' },
+  { categoria: 'Musculação', url: '/musculacao/treinar-com-dor-no-ombro/', titulo: 'Dor no ombro: dá para treinar? O que ajustar na musculação' },
+  { categoria: 'Musculação', url: '/musculacao/creatina-o-que-e-como-tomar/', titulo: 'Creatina: o que é, para que serve e como tomar' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-depois-dos-40/', titulo: 'Musculação depois dos 40: o que muda e como treinar' },
+  { categoria: 'Musculação', url: '/musculacao/quanto-tempo-de-treino-por-dia/', titulo: 'Quanto tempo de treino por dia é suficiente?' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

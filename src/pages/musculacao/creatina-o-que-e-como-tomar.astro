@@ -1,0 +1,257 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'A creatina ajuda, mas quem constrói músculo é o treino: entenda os mecanismos por trás do crescimento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O efeito prático da creatina aparece aqui: mais repetições e mais carga ao longo das semanas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo demora para ver resultados na musculação?',
+    descricao: 'Suplemento nenhum muda a linha do tempo fundamental — veja o que esperar de cada fase.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/creatina-o-que-e-como-tomar';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Creatina: o que é, para que serve e como tomar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto de creatina tomar por dia?',
+    resposta:
+      'O protocolo mais usado na literatura é simples: 3 a 5 g por dia, todos os dias, com ou sem treino no dia. A "fase de saturação" (cerca de 20 g/dia por 5 a 7 dias) apenas acelera o enchimento dos estoques em alguns dias — o resultado final após 3 a 4 semanas é o mesmo tomando só os 3 a 5 g diários. Pessoas com mais massa muscular podem ficar na ponta de cima da faixa. Doses individuais, especialmente para quem tem qualquer condição de saúde, devem ser alinhadas com médico ou nutricionista.',
+  },
+  {
+    pergunta: 'Creatina faz mal para os rins?',
+    resposta:
+      'Em pessoas saudáveis, a pesquisa acumulada em décadas de estudos não mostra dano renal nas doses usuais (3 a 5 g/dia) — a creatina é o suplemento mais estudado do esporte. O que ela faz é elevar a creatinina no exame de sangue, um marcador que os médicos usam para estimar a função renal; por isso é importante avisar o médico de que você suplementa antes de interpretar exames. Quem tem doença renal ou qualquer condição em acompanhamento deve conversar com o médico antes de usar — regra que vale para qualquer suplemento.',
+  },
+  {
+    pergunta: 'Creatina engorda ou retém líquido?',
+    resposta:
+      'A creatina puxa água para dentro da célula muscular — retenção intracelular, que deixa o músculo mais cheio, e não o inchaço subcutâneo que as pessoas temem. O ganho de peso típico nas primeiras semanas (0,5 a 1,5 kg) é água intramuscular e, mais adiante, músculo — não gordura. Creatina não tem calorias relevantes e não engorda; quem controla o peso na balança só precisa saber que esse primeiro salto é esperado e benigno.',
+  },
+  {
+    pergunta: 'Qual creatina comprar: monoidratada ou as versões "avançadas"?',
+    resposta:
+      'Monoidratada, sem sofrimento. É a forma usada na esmagadora maioria dos estudos que comprovaram os efeitos, e nenhuma versão alternativa (alcalina, HCL, micronizada com aditivos) demonstrou superioridade que justifique o preço maior. Critérios que valem mais que o marketing: pureza atestada (selos de análise), marca idônea e preço por grama. Micronizada é apenas moída mais fina — dissolve melhor, mesmo efeito.',
+  },
+  {
+    pergunta: 'Preciso tomar creatina para ter resultado na musculação?',
+    resposta:
+      'Não. A creatina é um otimizador com efeito real, porém modesto: melhora o desempenho em esforços curtos e intensos, o que ao longo dos meses se traduz em mais volume de treino e um ganho extra de massa. Mas ela não substitui o que realmente constrói resultado — treino progressivo, proteína suficiente, sono e constância. Se o básico não está de pé, a creatina otimiza nada. Se está, ela é provavelmente o suplemento com melhor custo-benefício que existe.',
+  },
+];
+
+const title = 'Creatina: o que é, para que serve e como tomar';
+const description =
+  'Guia direto sobre creatina: o que a ciência comprova, dose diária (3 a 5 g), saturação, mitos sobre rins e retenção, qual comprar (monoidratada) e o que esperar de resultado no treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Creatina: o que é, para que serve e como tomar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum suplemento é tão pesquisado — e tão cercado de mito — quanto a
+      creatina. Ela virou febre nas academias brasileiras, e com razão: é o
+      raro caso em que o marketing e a ciência apontam para o mesmo lado.
+      Este guia responde o essencial sem enrolação: <strong>o que a creatina
+      faz de verdade, quanto tomar, quando, qual comprar</strong> e o que é
+      mito — dos rins à "retenção". <em>Conteúdo informativo; doses e casos
+      individuais devem ser alinhados com médico ou nutricionista.</em>
+    </p>
+
+    <div class="prose">
+      <h2>O que é a creatina e o que ela faz</h2>
+      <p>
+        A creatina é um composto que o próprio corpo produz e que também vem
+        da alimentação (carnes e peixes). Nos músculos, ela abastece o sistema
+        de energia mais imediato que temos — a via da fosfocreatina —, usado
+        em esforços <strong>curtos e intensos</strong>: uma série pesada, um
+        tiro de corrida, um salto. Suplementar eleva os estoques musculares em
+        cerca de 20% a 40%, o que na prática significa
+        <strong>uma ou duas repetições a mais</strong> nas séries pesadas e
+        recuperação um pouco melhor entre elas.
+      </p>
+      <p>
+        Parece pouco? Ao longo de meses, essas repetições extras viram mais
+        volume de treino — e volume é um dos motores da
+        <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia</a>. É por
+        isso que as revisões da literatura, incluindo posicionamentos de
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>,
+        tratam a creatina como o suplemento de desempenho com evidência mais
+        consistente que existe — efeito real, ainda que modesto: tipicamente
+        um ganho extra de cerca de 1 kg de massa magra ao longo de semanas de
+        treino, comparado a treinar sem ela.
+      </p>
+
+      <h2>Como tomar: a resposta curta</h2>
+      <ul>
+        <li><strong>Dose:</strong> 3 a 5 g por dia, todos os dias — inclusive nos dias sem treino.</li>
+        <li><strong>Horário:</strong> tanto faz. O efeito vem da saturação dos estoques ao longo de semanas, não do momento da ingestão. Tome no horário que você não esquece.</li>
+        <li><strong>Saturação (opcional):</strong> 20 g/dia divididas em 4 doses por 5 a 7 dias enchem os estoques mais rápido; sem saturação, os mesmos níveis chegam em 3 a 4 semanas. O destino é o mesmo.</li>
+        <li><strong>Com o quê:</strong> água, suco, shake — indiferente. Tomar junto de uma refeição pode ajudar levemente na absorção.</li>
+        <li><strong>Pausas ("ciclos"):</strong> desnecessárias. Não há evidência de que o corpo "desliga" a produção própria de forma problemática nas doses usuais.</li>
+      </ul>
+
+      <h2>Qual comprar (e em que não gastar dinheiro)</h2>
+      <p>
+        <strong>Creatina monoidratada.</strong> Ponto. É a forma testada na
+        esmagadora maioria dos estudos, a mais barata e a que nenhuma versão
+        "premium" superou em testes bem conduzidos. As variações do mercado —
+        alcalina, HCL, blends com nomes futuristas — cobram mais caro por
+        promessas que a literatura não confirmou. O que vale conferir é
+        <strong>pureza e idoneidade da marca</strong>: selos de análise
+        laboratorial e reputação pesam mais que qualquer sufixo no rótulo.
+        Micronizada é só uma moagem mais fina — dissolve melhor, efeito igual.
+      </p>
+
+      <h2>Os dois mitos que não morrem</h2>
+      <p>
+        <strong>"Creatina detona os rins."</strong> Em pessoas saudáveis, nas
+        doses usuais, décadas de estudos não mostraram dano renal. A confusão
+        tem origem técnica: a creatina eleva a <em>creatinina</em>, exatamente
+        o marcador que os exames usam para estimar a função dos rins — o
+        número sobe sem que a função piore. Por isso, avise seu médico que
+        você suplementa antes de interpretar exames. E a ressalva séria: quem
+        tem doença renal ou qualquer condição em acompanhamento decide
+        <strong>com o médico</strong>, não com o balconista da loja.
+      </p>
+      <p>
+        <strong>"Creatina incha e engorda."</strong> A água que a creatina
+        puxa vai para <em>dentro</em> da célula muscular — músculo mais cheio,
+        não gordura nem inchaço sob a pele. O salto de 0,5 a 1,5 kg na balança
+        nas primeiras semanas é água intramuscular e é esperado. Creatina não
+        tem calorias relevantes; engordar continua sendo assunto de
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">balanço calórico</a>.
+      </p>
+
+      <h2>Para quem a creatina faz mais diferença</h2>
+      <ul>
+        <li><strong>Quem treina força com constância:</strong> o público clássico — mais repetições, mais volume, mais resultado acumulado.</li>
+        <li><strong>Vegetarianos e veganos:</strong> partem de estoques menores (a dieta não traz creatina) e tendem a responder mais.</li>
+        <li><strong>Pessoas 40+ e idosos:</strong> combinada ao treino de força, a creatina é estudada como aliada contra a perda de massa muscular da idade — tema do artigo sobre <a href="/musculacao/musculacao-depois-dos-40/">musculação depois dos 40</a>.</li>
+        <li><strong>Quem responde pouco:</strong> existe — cerca de 20% a 30% das pessoas têm estoques naturalmente altos e sentem menos diferença. Não é defeito seu nem do pote.</li>
+      </ul>
+      <p>
+        Vale repetir o fundamento, com o aval de entidades como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>:
+        suplemento otimiza, não substitui. Sem treino progressivo, proteína
+        adequada e sono, a creatina não tem o que otimizar. Com o básico de
+        pé, ela é o melhor custo-benefício do mercado — e quem organiza esse
+        básico é um bom plano de treino, com ou sem
+        <a href={rotas.comoEscolher}>acompanhamento profissional</a>.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> 3 a 5 g de creatina monoidratada por dia,
+        todo dia, no horário que você não esquece — saturação e ciclos são
+        opcionais e desnecessários. Não danifica rins de pessoas saudáveis
+        (mas altera o exame de creatinina — avise seu médico), não engorda, e
+        entrega um ganho real, porém modesto, de desempenho e massa ao longo
+        dos meses. Compre a monoidratada mais idônea e barata, ignore os
+        sufixos caros e lembre: quem constrói o resultado é o treino.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="40K0FILJ-aQ"
+      titulo="Leandro Twin: tudo sobre creatina"
+      legenda="No vídeo: Leandro Twin cobre as principais dúvidas sobre creatina."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

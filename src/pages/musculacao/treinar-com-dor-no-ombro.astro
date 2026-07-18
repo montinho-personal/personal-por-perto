@@ -1,0 +1,287 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const sbme = fontesExternas.sbme;
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Dor no joelho: dá para treinar? O que ajustar',
+    descricao: 'A mesma lógica de dose, ajuste e sinais de alerta aplicada ao joelho.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Dor lombar e musculação: como treinar com segurança',
+    descricao: 'Por que movimento supera repouso na dor lombar comum e o que ajustar no treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'Saltos abruptos de carga estão entre as causas mais comuns de ombro irritado. Veja como progredir direito.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treinar-com-dor-no-ombro';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Dor no ombro: dá para treinar? O que ajustar na musculação', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Sinto dor no ombro no supino e no desenvolvimento. Preciso abandonar esses exercícios?',
+    resposta:
+      'Na maioria dos quadros comuns, não — o caminho é ajustar antes de abolir. Mudanças que costumam aliviar: reduzir a amplitude para o arco sem dor (supino com pegada mais fechada ou parcial), trocar a barra por halteres (que deixam o ombro escolher o trajeto), inclinar o banco, usar pegada neutra e afastar temporariamente as variações que mais irritam. Com a melhora, os exercícios voltam gradualmente. Dor que persiste por semanas, que acorda você à noite ou que veio de trauma pede avaliação médica antes de insistir.',
+  },
+  {
+    pergunta: 'Por que o ombro dói tanto em quem faz musculação?',
+    resposta:
+      'O ombro é a articulação mais móvel do corpo — e paga por essa mobilidade com menos estabilidade. Em quem treina, as dores mais comuns vêm de sobrecarga dos tendões do manguito rotador por progressão rápida demais, excesso de volume de empurrar em relação a puxar, técnica que transfere estresse para estruturas sensíveis e recuperação insuficiente. É um problema de dose e equilíbrio na grande maioria das vezes — não uma sentença de lesão estrutural.',
+  },
+  {
+    pergunta: 'O que é o manguito rotador e por que todo mundo fala dele?',
+    resposta:
+      'É o grupo de quatro músculos profundos que estabiliza a cabeça do úmero na articulação — uma espécie de "sistema de direção" do ombro. Quando ele é fraco em relação aos músculos grandes (peitoral, deltoide, dorsal), a mecânica do ombro se degrada sob carga e os tendões sofrem. Por isso os programas de ombro saudável incluem trabalho direto de rotação externa e estabilidade escapular com cargas leves — um investimento pequeno que protege os levantamentos principais.',
+  },
+  {
+    pergunta: 'Quais sinais no ombro pedem médico em vez de ajuste de treino?',
+    resposta:
+      'Procure avaliação médica antes de continuar treinando se houver: dor que começou com trauma (queda, pancada, movimento brusco); perda súbita de força para elevar o braço; dor noturna constante, principalmente ao deitar sobre o ombro; estalos acompanhados de dor ou sensação de "falseio" articular; formigamento ou dormência descendo pelo braço; ou dor que persiste por mais de algumas semanas apesar da redução de carga. Nesses casos, diagnóstico primeiro, treino adaptado depois.',
+  },
+  {
+    pergunta: 'O personal trainer trata dor no ombro?',
+    resposta:
+      'Não — diagnóstico e tratamento pertencem a médico e fisioterapeuta. O papel do personal é complementar: equilibrar o programa (proporção entre empurrar e puxar), selecionar variações que o ombro tolera, dosar a progressão, incluir o trabalho de manguito e estabilidade escapular e observar a resposta sessão a sessão. Essa divisão de papéis, sem promessa de cura, é o formato que o portal recomenda — e a que mais protege quem treina.',
+  },
+];
+
+const title = 'Dor no ombro: dá para treinar? O que ajustar na musculação';
+const description =
+  'Dor no ombro raramente significa parar de treinar: veja os ajustes práticos (amplitude, variações, equilíbrio entre empurrar e puxar), o papel do manguito rotador e os sinais que pedem avaliação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Dor no ombro: dá para treinar? O que ajustar na musculação</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Depois da lombar e do joelho, o ombro fecha o pódio das dores de quem
+      treina — e é a que mais assusta, porque atrapalha do supino ao sono. A
+      boa notícia é a mesma das outras duas:
+      <strong>na maioria dos quadros comuns, a resposta é ajustar a dose e
+      fortalecer, não parar</strong>. Este artigo mostra o que ajustar na
+      prática, o papel do manguito rotador e os sinais que mudam a conversa
+      de treino para consultório. <em>Conteúdo informativo — não substitui
+      avaliação médica ou de fisioterapia.</em>
+    </p>
+
+    <div class="prose">
+      <h2>Por que o ombro reclama: mobilidade cobra estabilidade</h2>
+      <p>
+        O ombro é a articulação mais móvel do corpo humano — nenhuma outra
+        alcança tantas direções. O preço dessa mobilidade é depender de
+        músculos estabilizadores, com o <strong>manguito rotador</strong> à
+        frente, para manter a mecânica saudável sob carga. Quando o volume de
+        supino e desenvolvimento cresce mais rápido que a capacidade desses
+        estabilizadores — o cenário clássico de quem ama treino de peito e
+        esquece o resto —, os tendões acumulam sobrecarga e a dor aparece.
+      </p>
+      <p>
+        Entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        e a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>
+        apontam o fortalecimento progressivo e o equilíbrio muscular como base
+        da prevenção — o mesmo princípio que rege a volta ao treino depois de
+        um episódio de dor.
+      </p>
+
+      <h2>Os desequilíbrios que mais geram dor</h2>
+      <ul>
+        <li>
+          <strong>Muito empurrar, pouco puxar:</strong> a proporção saudável
+          entre exercícios de puxar (remadas, puxadas) e de empurrar (supinos,
+          desenvolvimentos) deve ficar em pelo menos 1 para 1 — muita gente
+          treina 3 para 1 no sentido errado.
+        </li>
+        <li>
+          <strong>Manguito esquecido:</strong> rotações externas e trabalho
+          escapular com carga leve raramente entram no treino de quem só olha
+          para os músculos do espelho.
+        </li>
+        <li>
+          <strong>Progressão abrupta:</strong> saltos de carga no supino são o
+          gatilho mais comum de ombro irritado — a
+          <a href="/musculacao/progressao-de-carga/">progressão bem dosada</a>
+          existe justamente para evitar isso.
+        </li>
+        <li>
+          <strong>Técnica sob fadiga:</strong> as últimas repetições com
+          escápulas soltas e cotovelos abertos são onde o estresse migra dos
+          músculos para os tendões.
+        </li>
+      </ul>
+
+      <h2>O que ajustar quando o ombro dói (sem abolir movimentos)</h2>
+      <p>
+        Para dores leves ligadas ao excesso de treino — a régua prática dos
+        programas supervisionados aceita dor até 3 em 10 que não piora depois
+        da sessão —, a escada de ajustes é parecida com a do
+        <a href="/musculacao/treinar-com-dor-no-joelho/">joelho</a> e a da
+        <a href="/musculacao/treinar-com-dor-lombar/">lombar</a>:
+      </p>
+      <ul>
+        <li>
+          <strong>Amplitude:</strong> trabalhe no arco sem dor — supino
+          parcial, desenvolvimento até a altura da cabeça — e devolva amplitude
+          conforme a tolerância melhora.
+        </li>
+        <li>
+          <strong>Variação:</strong> halteres no lugar da barra (o ombro
+          escolhe o trajeto), pegada neutra, banco levemente inclinado,
+          crucifixo no cabo em vez de halter.
+        </li>
+        <li>
+          <strong>Carga e volume:</strong> reduzir 20% a 40% por algumas
+          semanas mantendo a frequência preserva o estímulo sem alimentar a
+          irritação.
+        </li>
+        <li>
+          <strong>Reforço do que estabiliza:</strong> rotação externa com
+          elástico, face pull e trabalho escapular entram como "seguro" do
+          ombro — cargas leves, execução limpa, constância.
+        </li>
+        <li>
+          <strong>Reequilíbrio:</strong> enquanto o ombro acalma, o volume de
+          puxar (remadas com pegada neutra costumam ser bem toleradas) segue
+          normal — parar tudo é o erro clássico.
+        </li>
+      </ul>
+
+      <h2>Sinais de alerta: quando é médico, não treino</h2>
+      <ul>
+        <li>Dor que começou com <strong>trauma</strong> — queda, pancada, movimento brusco.</li>
+        <li><strong>Perda súbita de força</strong> para elevar o braço.</li>
+        <li><strong>Dor noturna</strong> constante, especialmente ao deitar sobre o ombro.</li>
+        <li>Estalos <strong>com dor</strong> ou sensação de instabilidade ("sai do lugar").</li>
+        <li><strong>Formigamento ou dormência</strong> descendo pelo braço.</li>
+        <li>Dor que <strong>não melhora</strong> após semanas de ajuste de treino.</li>
+      </ul>
+      <p>
+        Nesses cenários, a ordem é diagnóstico médico, reabilitação com
+        fisioterapeuta quando indicada, e só então o retorno progressivo ao
+        treino — idealmente com os profissionais alinhados.
+      </p>
+
+      <h2>A volta: reconstruindo o ombro que aguenta carga</h2>
+      <p>
+        Passada a fase sensível, a reconstrução segue o caminho inverso da
+        lesão: primeiro a base (manguito, escápulas, amplitude sem dor),
+        depois o volume, por último a intensidade. Quem respeita essa ordem
+        costuma voltar ao supino de antes — muitos, com um ombro mais
+        equilibrado do que nunca, porque finalmente treinam o que sempre
+        ignoraram. O acompanhamento individual encurta esse caminho: o guia
+        sobre <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        mostra o que procurar em um profissional habituado a alunos com dores
+        e limitações.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> dor no ombro em quem treina é, na maioria
+        das vezes, um problema de dose e desequilíbrio — muito empurrar, pouco
+        puxar, manguito esquecido e progressão apressada. Ajuste amplitude,
+        variações e carga em vez de parar; iguale o volume de puxar ao de
+        empurrar; adote o trabalho de manguito como seguro permanente; e leve
+        os sinais de alerta (trauma, perda de força, dor noturna) ao médico
+        antes de qualquer plano. Ombro forte é ombro equilibrado — sem
+        promessa de cura, com método.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="CEI_jdo6e3U"
+      titulo="Leandro Twin: treino de ombro completo"
+      legenda="No vídeo: Leandro Twin monta um treino de ombro completo — útil para conhecer as variações citadas no artigo."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

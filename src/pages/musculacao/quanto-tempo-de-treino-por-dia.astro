@@ -1,0 +1,283 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/descanso-entre-series/',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'O que realmente estica a duração do treino — e por que cortar o descanso não é a solução.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'A variável que define a duração da sessão: o volume certo para o seu nível.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer/',
+    titulo: 'Quantas vezes por semana treinar com personal',
+    descricao: 'Duração e frequência andam juntas: veja como montar a semana que cabe na sua rotina.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/quanto-tempo-de-treino-por-dia';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Quanto tempo de treino por dia é suficiente?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Treino de 30 minutos dá resultado?',
+    resposta:
+      'Dá — e é mais respaldado do que parece. Trinta minutos bem usados (pouco celular, exercícios compostos, descansos controlados) acomodam de 8 a 12 séries de trabalho, volume suficiente para progredir, especialmente para iniciantes e intermediários. Formatos como full body de 30 a 40 minutos, 3 vezes por semana, sustentam ganhos reais por anos. O que não funciona é a versão de 30 minutos com 15 de aquecimento social: duração curta exige densidade.',
+  },
+  {
+    pergunta: 'Treinar mais de 1 hora atrapalha ou "cataboliza"?',
+    resposta:
+      'O mito do cortisol que "come músculo" depois de 60 minutos não tem respaldo — sessões mais longas não destroem resultado nenhum por si só. O que acontece de verdade: o rendimento por minuto cai conforme a fadiga acumula, e sessões muito longas costumam indicar excesso de exercícios acessórios ou descansos infinitos, não mais estímulo útil. Se você tem tempo e gosta de treinar 90 minutos, não há problema; se não tem, saiba que quase todo o resultado cabe em bem menos.',
+  },
+  {
+    pergunta: 'Qual a duração ideal de treino para hipertrofia?',
+    resposta:
+      'A pergunta certa é sobre volume (séries de qualidade por grupo muscular por semana), não sobre relógio. Na prática, quem faz 10 a 20 séries semanais por grupo, com esforço próximo do limite e descansos de 1 a 2 minutos, tipicamente aterrissa em sessões de 45 a 75 minutos, 3 a 5 vezes por semana. Mas a mesma matemática pode ser comprimida (menos exercícios, técnicas de densidade) ou esticada — o músculo conta séries efetivas, não minutos.',
+  },
+  {
+    pergunta: 'Só tenho 20 minutos por dia. Vale a pena treinar mesmo assim?',
+    resposta:
+      'Vale muito. Vinte minutos diários somam mais de 2 horas semanais de treino — acima do mínimo de fortalecimento recomendado pelas diretrizes internacionais de saúde. Com estrutura inteligente (um padrão de movimento por dia, séries levadas perto do limite, descansos curtos), 20 minutos constroem força e músculo de verdade. O erro seria não treinar esperando o dia em que sobrará 1 hora — constância curta vence perfeição inexistente.',
+  },
+  {
+    pergunta: 'Por que meus treinos demoram 2 horas e os resultados não aparecem?',
+    resposta:
+      'Provavelmente porque duração virou substituto de intensidade. Os ladrões clássicos de tempo: celular entre séries (transforma 90 segundos de descanso em 5 minutos), excesso de exercícios acessórios redundantes, conversa e falta de plano definido antes de entrar. Duas horas com esforço diluído rendem menos que 50 minutos com séries de verdade. A auditoria é simples: conte suas séries efetivas — as levadas a 2-3 repetições do limite. Se em 2 horas você fez 12, o problema não é tempo.',
+  },
+];
+
+const title = 'Quanto tempo de treino por dia é suficiente?';
+const description =
+  'Treino de 30 minutos funciona? Mais de 1 hora cataboliza? O que define a duração ideal da sessão de musculação é o volume de séries efetivas — veja as faixas práticas por objetivo e rotina.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Quanto tempo de treino por dia é suficiente?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Entre o mito do "menos de 1 hora não adianta" e o medo do "mais de 1
+      hora cataboliza", a resposta real é libertadora:
+      <strong>o músculo não conta minutos — conta séries de qualidade</strong>.
+      Este artigo mostra o que define a duração certa da sessão, as faixas
+      práticas por objetivo e rotina, e como identificar (e cortar) os
+      ladrões de tempo que esticam o treino sem adicionar resultado.
+    </p>
+
+    <div class="prose">
+      <h2>A régua certa: volume e esforço, não relógio</h2>
+      <p>
+        Duas pessoas treinam 60 minutos. Uma faz 16 séries levadas perto do
+        limite, com descansos controlados; a outra faz 10 séries mornas
+        diluídas em conversa e celular. Mesma duração, estímulos
+        completamente diferentes. A ciência do treino — organizada em
+        recomendações de entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        — descreve a dose eficaz em <strong>séries por grupo muscular por
+        semana</strong> (tipicamente 10 a 20 para hipertrofia, menos para
+        manutenção), com esforço próximo do limite. O relógio é só a
+        consequência de como você distribui essa dose.
+      </p>
+      <p>
+        Os componentes que somam a duração real de uma sessão: aquecimento
+        (5-10 min), séries de trabalho (30-40 segundos cada), descansos (o
+        maior consumidor — veja o artigo sobre
+        <a href="/musculacao/descanso-entre-series/">descanso entre séries</a>)
+        e transições entre exercícios. É nesses dois últimos que os treinos
+        incham.
+      </p>
+
+      <h2>As faixas práticas, por rotina</h2>
+      <ul>
+        <li>
+          <strong>20-30 minutos/dia:</strong> o mínimo viável — e viável de
+          verdade. Full body condensado ou um padrão de movimento por dia,
+          8-12 séries densas, descansos de 60-90 segundos. Para iniciantes,
+          sustenta progresso por muito tempo; para avançados, mantém.
+        </li>
+        <li>
+          <strong>45-60 minutos:</strong> o ponto doce da maioria. Cabem
+          aquecimento decente, 14-20 séries com descansos adequados e a
+          sessão termina antes de a qualidade cair. É a faixa típica de quem
+          treina 3-5 vezes por semana com objetivo de hipertrofia.
+        </li>
+        <li>
+          <strong>75-90+ minutos:</strong> território de avançados com volume
+          alto, treinos de força com descansos longos (3-5 min entre séries
+          pesadas) ou simplesmente de quem gosta de estar ali. Legítimo — mas
+          opcional. Acima disso, o rendimento por minuto despenca.
+        </li>
+      </ul>
+      <p>
+        Note o que as faixas têm em comum: todas funcionam. A escolha é sobre
+        a sua agenda e o seu
+        <a href="/musculacao/quantas-series-e-repeticoes/">volume-alvo semanal</a>
+        — não sobre um número mágico.
+      </p>
+
+      <h2>Os dois mitos do relógio</h2>
+      <p>
+        <strong>"Menos de 1 hora não adianta."</strong> As diretrizes da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        pedem fortalecimento muscular 2+ vezes por semana — sem duração
+        mínima por sessão. Estudos com treinos curtos e densos mostram
+        ganhos comparáveis aos de sessões longas quando o volume semanal se
+        equipara. Meia hora séria constrói músculo.
+      </p>
+      <p>
+        <strong>"Mais de 1 hora cataboliza."</strong> A história do cortisol
+        que devora músculo aos 61 minutos é folclore de vestiário. Sessões
+        longas não destroem resultado; apenas rendem cada vez menos por
+        minuto conforme a fadiga acumula. O limite prático é de qualidade,
+        não hormonal: quando as séries param de ter esforço real, o treino
+        já acabou — o que resta é convivência.
+      </p>
+
+      <h2>Auditoria dos ladrões de tempo</h2>
+      <ul>
+        <li>
+          <strong>Celular entre séries:</strong> o maior de todos — transforma
+          90 segundos de descanso em 4-5 minutos, e uma sessão de 50 minutos
+          em 100.
+        </li>
+        <li>
+          <strong>Acessórios redundantes:</strong> quatro variações de rosca
+          no mesmo dia não é volume, é repetição do mesmo estímulo com custo
+          de tempo.
+        </li>
+        <li>
+          <strong>Falta de plano:</strong> decidir o próximo exercício
+          vagando pela academia custa minutos por transição.
+        </li>
+        <li>
+          <strong>Espera de equipamento:</strong> ter substituições prontas
+          (halteres no lugar da máquina ocupada) mantém a densidade.
+        </li>
+      </ul>
+      <p>
+        O teste honesto de uma sessão: <strong>conte as séries efetivas</strong>
+        — as levadas a 2-3 repetições do limite, como explica o artigo sobre
+        <a href="/musculacao/treinar-ate-a-falha/">treinar até a falha</a>. Se
+        um treino de 2 horas entrega 12, o problema nunca foi falta de tempo.
+      </p>
+
+      <h2>Montando a sessão que cabe na sua vida</h2>
+      <p>
+        A ordem de decisão saudável: primeiro quantos dias por semana são
+        realistas, depois o volume semanal para o seu nível, e só então a
+        duração — que sai dessa conta, em vez de comandá-la. É exatamente o
+        tipo de engenharia de rotina que um bom profissional faz em minutos:
+        o guia sobre
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        mostra o que procurar, e o
+        <a href="/guias/personal-online-funciona/">acompanhamento online</a>
+        serve bem a quem precisa espremer o máximo de sessões curtas.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> não existe duração mágica — existe volume
+        e esforço. 20-30 minutos densos já constroem resultado; 45-60 minutos
+        são o ponto doce da maioria; sessões longas são legítimas, mas
+        opcionais, e o "catabolismo depois de 1 hora" é mito. Conte séries
+        efetivas em vez de minutos, corte os ladrões de tempo (celular à
+        frente) e escolha a duração que a sua rotina sustenta toda semana —
+        porque constância curta vence heroísmo esporádico, sempre.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="CYzf-mPS6_Q"
+      titulo="Quanto tempo deve durar o treino? Com Leandro Twin e Diogo Círico"
+      legenda="No vídeo: Leandro Twin e Diogo Círico conversam sobre a duração ideal do treino."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
