@@ -1,0 +1,303 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'A versão academia deste guia: como dar os primeiros passos na musculação com progressão e segurança.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que faz qualquer treino funcionar — em casa ou na academia — explicado em detalhe.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'Como o acompanhamento a distância corrige execução, ajusta o plano e dá constância a quem treina em casa.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/treino-em-casa-para-iniciantes';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino em casa para iniciantes: como começar sem equipamentos', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Dá para ganhar massa muscular treinando em casa sem equipamentos?',
+    resposta:
+      'Dá, principalmente para iniciantes. O músculo cresce em resposta a tensão e esforço próximos do limite — e nas primeiras fases de treino, agachamentos, flexões, afundos e suas variações geram esse estímulo com folga. O desafio aparece com a evolução: quando 20 repetições ficam fáceis, é preciso dificultar o exercício (variações unilaterais, pausas, cadência lenta) ou adicionar resistência externa. Elásticos e um par de halteres ajustáveis resolvem essa transição por muito tempo.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar em casa?',
+    resposta:
+      'Para iniciantes, 2 a 3 sessões semanais de corpo inteiro são o ponto ideal: estímulo suficiente para evoluir e recuperação de sobra entre as sessões. Menos que isso o progresso fica lento; mais que isso, no início, aumenta o cansaço sem acelerar o resultado. Sessões de 30 a 45 minutos bem aproveitadas bastam — constância vence duração.',
+  },
+  {
+    pergunta: 'Que equipamentos valem a pena comprar primeiro?',
+    resposta:
+      'Se for investir aos poucos, a ordem de melhor retorno costuma ser: 1) um kit de elásticos de resistência (barato, versátil e ocupa zero espaço); 2) halteres ajustáveis, que substituem um rack inteiro; 3) um colchonete firme. Com esses três itens dá para treinar corpo inteiro com progressão por anos. Barra de porta para barra fixa e kettlebell são os complementos seguintes. Evite gastar com aparelhos grandes antes de ter constância — o equipamento não treina por você.',
+  },
+  {
+    pergunta: 'Como saber se estou fazendo os exercícios certos, sem ninguém corrigindo?',
+    resposta:
+      'Esse é o maior risco real do treino em casa: repetir um padrão ruim de movimento semana após semana. Três estratégias ajudam: gravar-se de lado e de frente e comparar com boas referências; começar com versões mais fáceis do movimento e só progredir quando a execução estiver limpa; e considerar acompanhamento online, em que um profissional analisa seus vídeos e corrige a técnica a distância. Dor articular durante o exercício é sinal de parar e revisar — e, se persistir, de procurar avaliação médica ou de fisioterapeuta.',
+  },
+  {
+    pergunta: 'Treino em casa emagrece?',
+    resposta:
+      'Emagrece nas mesmas condições de qualquer treino: quando existe déficit calórico. O treino de força em casa preserva e constrói músculo enquanto você perde gordura — o que protege o metabolismo e melhora o resultado estético —, e pode ser combinado com caminhadas, corrida ou pular corda como componente cardio. A alimentação segue sendo o principal motor do emagrecimento; o treino é o que garante que o peso perdido venha de gordura, não de músculo.',
+  },
+];
+
+const title = 'Treino em casa para iniciantes: como começar sem equipamentos';
+const description =
+  'Guia completo de treino em casa para quem está começando: exercícios com o peso do corpo, estrutura de semana, progressão sem equipamentos, erros comuns e quando investir em material.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino em casa para iniciantes: como começar sem equipamentos</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Você não precisa de academia para começar a treinar — precisa de um plano.
+      Com o peso do corpo, um espaço de dois metros quadrados e 30 a 45 minutos,
+      dá para construir força, músculo e condicionamento reais. Este guia mostra
+      <strong>como montar seu treino em casa do zero</strong>: os exercícios que
+      formam a base, como organizar a semana, como progredir sem pesos e os
+      erros que fazem a maioria desistir no primeiro mês.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o treino em casa funciona (quando é bem feito)</h2>
+      <p>
+        O músculo não sabe onde você está — ele responde a <strong>tensão e
+        esforço</strong>. Se uma série de agachamentos leva suas pernas para
+        perto do limite, o estímulo de adaptação acontece, seja na sala de
+        casa, seja na academia. Para iniciantes, isso é uma ótima notícia: nos
+        primeiros meses, o corpo responde a quase qualquer estímulo bem
+        organizado, e exercícios com o peso corporal têm dificuldade de sobra.
+        As diretrizes da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        recomendam fortalecimento muscular ao menos 2 vezes por semana — e não
+        exigem nenhum equipamento para isso.
+      </p>
+      <p>
+        O que separa quem evolui de quem fica no mesmo lugar não é o
+        equipamento: é a <strong>progressão</strong>. Treino em casa que repete
+        as mesmas 3 séries de 15 para sempre vira manutenção — o mesmo
+        princípio de <a href="/musculacao/progressao-de-carga/">sobrecarga progressiva</a>
+        que rege a academia precisa reger sua sala.
+      </p>
+
+      <h2>Os 6 movimentos que formam a base</h2>
+      <p>
+        Esqueça listas com 40 exercícios. Um bom treino em casa se constrói
+        sobre seis padrões de movimento — cada um com versões mais fáceis e
+        mais difíceis, o que é justamente o mecanismo de progressão:
+      </p>
+      <ul>
+        <li>
+          <strong>Agachar</strong> — agachamento livre → agachamento com pausa
+          → agachamento búlgaro → pistol assistido.
+        </li>
+        <li>
+          <strong>Empurrar</strong> — flexão na parede → flexão com joelhos →
+          flexão completa → flexão com pés elevados.
+        </li>
+        <li>
+          <strong>Puxar</strong> — remada com elástico ou toalha na porta →
+          remada invertida embaixo da mesa → barra fixa (se houver barra).
+        </li>
+        <li>
+          <strong>Dobradiça de quadril</strong> — elevação pélvica → elevação
+          unilateral → stiff com elástico ou halteres.
+        </li>
+        <li>
+          <strong>Afundo</strong> — afundo estático → passada → afundo com
+          elevação de joelho.
+        </li>
+        <li>
+          <strong>Core</strong> — prancha → prancha lateral → dead bug →
+          variações com alcance.
+        </li>
+      </ul>
+
+      <h2>Como montar a semana: o plano de partida</h2>
+      <p>
+        Para começar, <strong>3 sessões de corpo inteiro por semana</strong>,
+        em dias alternados (por exemplo, segunda, quarta e sexta). Cada sessão:
+      </p>
+      <ul>
+        <li><strong>Aquecimento (5 min):</strong> polichinelos leves, mobilidade de quadril e ombros.</li>
+        <li><strong>Bloco principal (25–35 min):</strong> um exercício de cada padrão — agachar, empurrar, puxar, dobradiça, afundo e core — em 3 séries de 8 a 15 repetições, descansando 60 a 90 segundos entre séries.</li>
+        <li><strong>Finalização opcional (5–10 min):</strong> caminhada, corda ou alongamento leve.</li>
+      </ul>
+      <p>
+        A regra de esforço: termine cada série sentindo que conseguiria fazer
+        <strong>2 ou 3 repetições a mais</strong>, e não no limite absoluto.
+        Iniciante que treina no talo todo dia colhe dor e desistência — como
+        explica o artigo sobre <a href="/musculacao/treinar-ate-a-falha/">treinar até a falha</a>,
+        o limite é uma ferramenta, não um estilo de vida.
+      </p>
+
+      <h2>Como progredir sem adicionar peso</h2>
+      <p>
+        Sem anilhas para adicionar, a progressão vem de outras alavancas — e
+        elas são muitas:
+      </p>
+      <ul>
+        <li><strong>Mais repetições:</strong> quando fizer 15 confortáveis, busque 18, 20.</li>
+        <li><strong>Versão mais difícil:</strong> subir na escada de variações de cada padrão.</li>
+        <li><strong>Cadência lenta:</strong> descer em 3 segundos multiplica a dificuldade sem mudar o exercício.</li>
+        <li><strong>Pausas:</strong> 2 segundos parado no ponto mais difícil do movimento.</li>
+        <li><strong>Menos descanso:</strong> encurtar o intervalo aumenta a densidade do treino.</li>
+        <li><strong>Unilateral:</strong> fazer com uma perna ou um braço praticamente dobra a carga relativa.</li>
+      </ul>
+      <p>
+        Quando essas alavancas começarem a se esgotar — tipicamente após alguns
+        meses —, um kit de elásticos e halteres ajustáveis renova o potencial
+        de progressão por anos. É o momento em que o investimento em material
+        passa a render de verdade.
+      </p>
+
+      <h2>Os erros que derrubam iniciantes em casa</h2>
+      <ul>
+        <li>
+          <strong>Treinar "quando der":</strong> sem horário fixo, o treino
+          perde para qualquer imprevisto. Marque dia e hora como compromisso.
+        </li>
+        <li>
+          <strong>Seguir um vídeo diferente por dia:</strong> variedade
+          aleatória impede progressão. Repita o mesmo plano por 4 a 6 semanas,
+          evoluindo as variáveis.
+        </li>
+        <li>
+          <strong>Ignorar a técnica:</strong> sem espelho de academia nem
+          professor por perto, o erro de execução se cristaliza. Grave-se
+          fazendo os exercícios — a câmera do celular é seu melhor fiscal.
+        </li>
+        <li>
+          <strong>Só treinar o que gosta:</strong> flexão todo dia e nenhuma
+          remada é receita de desequilíbrio. Os seis padrões existem para se
+          equilibrarem.
+        </li>
+        <li>
+          <strong>Esperar resultado em duas semanas:</strong> as primeiras
+          mudanças visíveis levam de 8 a 12 semanas, como mostra o artigo
+          sobre <a href="/musculacao/quanto-tempo-para-ver-resultados/">quanto tempo demora para ver resultados</a>.
+        </li>
+      </ul>
+
+      <h2>Quando faz sentido ter acompanhamento</h2>
+      <p>
+        O treino em casa tem um ponto cego estrutural: ninguém está olhando sua
+        execução nem cobrando sua presença. É exatamente isso que o
+        <a href="/guias/personal-online-funciona/">acompanhamento online</a>
+        resolve — o profissional monta o plano para o seu espaço e material,
+        analisa vídeos da sua execução, ajusta a dificuldade toda semana e
+        acompanha sua constância. Organizações como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        apontam a supervisão profissional como um dos fatores que mais aumentam
+        adesão e segurança no treino — e no formato online ela cabe em
+        praticamente qualquer orçamento. Quem prefere o profissional
+        presencialmente pode considerar o
+        <a href="/guias/personal-trainer-a-domicilio/">personal a domicílio</a>.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> treino em casa funciona quando tem plano:
+        6 padrões de movimento, 3 sessões semanais de corpo inteiro, esforço
+        que para a 2–3 repetições do limite e progressão deliberada — por
+        repetições, variações, cadência e pausas antes de qualquer
+        equipamento. Grave sua execução, repita o plano por semanas em vez de
+        trocar todo dia, e considere acompanhamento online para corrigir o que
+        você não consegue ver sozinho.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

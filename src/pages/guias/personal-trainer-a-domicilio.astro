@@ -1,0 +1,287 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'Valores médios por sessão e por mês, o que faz o preço subir ou cair e como o atendimento em casa entra nessa conta.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios que valem para qualquer formato — presencial em academia, a domicílio ou online.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/treino-em-casa-para-iniciantes/',
+    titulo: 'Treino em casa para iniciantes',
+    descricao: 'O que dá para fazer em casa sem equipamentos, como progredir e quando faz sentido investir em material.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/personal-trainer-a-domicilio';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer a domicílio: como funciona e quanto custa', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O personal trainer leva os equipamentos para o atendimento em casa?',
+    resposta:
+      'Na maioria dos casos, sim. O kit clássico do atendimento domiciliar cabe no porta-malas: halteres ajustáveis ou anilhas, elásticos de resistência, kettlebell, colchonete, step e acessórios como caneleiras. Com esse material e o peso do corpo, dá para montar treinos completos de força para a maioria dos objetivos. Se você tem espaço e pretende manter a rotina em casa no longo prazo, o personal também pode orientar quais equipamentos vale a pena comprar — em geral, começando por halteres ajustáveis e elásticos, que entregam o maior retorno por real investido.',
+  },
+  {
+    pergunta: 'Preciso de muito espaço em casa para treinar com personal?',
+    resposta:
+      'Não. Um espaço de cerca de 2 × 2 metros — o suficiente para abrir os braços e deitar um colchonete — já permite um treino de corpo inteiro bem estruturado. Sala, varanda, quintal, garagem e até o salão de festas ou a academia do condomínio funcionam. O que o personal faz é adaptar a seleção de exercícios ao espaço e ao material disponíveis, mantendo o princípio que importa: progressão de esforço ao longo das semanas.',
+  },
+  {
+    pergunta: 'Personal a domicílio é mais caro que na academia?',
+    resposta:
+      'Costuma ter um acréscimo, sim, porque o profissional dedica tempo de deslocamento exclusivo a você e leva o material. A diferença típica fica entre 10% e 30% sobre o valor da sessão em academia, variando com a distância e a cidade. Por outro lado, a conta total pode se equilibrar: você economiza a mensalidade da academia, o próprio deslocamento e o tempo — que para muita gente é o fator decisivo. Pacotes mensais com duas a três sessões semanais costumam ter valor por sessão menor que a aula avulsa.',
+  },
+  {
+    pergunta: 'Treinar em casa com personal dá resultado de verdade?',
+    resposta:
+      'Dá — desde que exista o que sustenta qualquer resultado: esforço progressivo, constância e um plano coerente. O corpo não sabe se o estímulo veio de uma máquina de academia ou de um halter na sala; ele responde à tensão e ao esforço. Para hipertrofia avançada, com cargas muito altas, a academia oferece mais recursos; para saúde, emagrecimento, condicionamento e ganho de massa em nível iniciante e intermediário, o treino domiciliar bem conduzido entrega resultado comparável. O maior ganho do formato costuma ser a adesão: sem deslocamento, é muito mais difícil faltar.',
+  },
+  {
+    pergunta: 'Como funciona a primeira sessão de personal em casa?',
+    resposta:
+      'A primeira visita costuma ser uma avaliação: conversa sobre histórico de saúde e objetivos, medidas, testes simples de mobilidade e força e reconhecimento do espaço e do material disponíveis. A partir disso o profissional monta o plano e define a logística — dias, horários, o que ele leva e o que fica com você. Se houver qualquer condição de saúde em acompanhamento, é importante informar nessa conversa; em alguns casos, o personal vai pedir liberação médica antes de iniciar, o que é sinal de seriedade, não de burocracia.',
+  },
+];
+
+const title = 'Personal trainer a domicílio: como funciona, quanto custa e para quem vale';
+const description =
+  'Como funciona o atendimento de personal trainer em casa e no condomínio: o que o profissional leva, espaço necessário, diferença de preço, resultados possíveis e como escolher bem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal trainer a domicílio: como funciona, quanto custa e para quem vale</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O atendimento em casa é o segmento que mais cresce no personal training
+      brasileiro — e não é difícil entender por quê: zero deslocamento, zero
+      fila no equipamento, privacidade total e um treino que acontece no seu
+      território, no seu horário. Este guia explica <strong>como funciona o
+      personal a domicílio</strong> na prática: o que o profissional leva, o
+      espaço que você precisa ter, quanto custa a mais, que resultados esperar
+      e como escolher bem.
+    </p>
+
+    <div class="prose">
+      <h2>Como funciona o atendimento em casa</h2>
+      <p>
+        O formato é simples: em vez de você ir até a academia, o profissional
+        vai até você — em casa, no quintal, na varanda ou na academia e na área
+        de lazer do condomínio, formato dominante em regiões de condomínios
+        fechados. A sessão típica dura de <strong>50 a 60 minutos</strong> e
+        segue a mesma lógica de qualquer treino sério: aquecimento, bloco
+        principal de força, e finalização com cardio, mobilidade ou abdômen,
+        conforme o objetivo.
+      </p>
+      <p>
+        A diferença está na logística. O personal leva o material — halteres
+        ajustáveis, elásticos, kettlebell, colchonete, caneleiras — e monta uma
+        "academia portátil" no seu espaço. Com o tempo, muitos alunos investem
+        em alguns equipamentos próprios, o que amplia as possibilidades do
+        treino, mas isso não é pré-requisito: o peso do corpo somado a
+        acessórios simples sustenta treinos desafiadores por muito tempo.
+      </p>
+
+      <h2>Para quem o formato faz mais sentido</h2>
+      <ul>
+        <li>
+          <strong>Quem não tem tempo:</strong> eliminar o deslocamento até a
+          academia devolve de 30 minutos a 1 hora por sessão — a diferença
+          entre treinar 3 vezes por semana e não treinar nenhuma.
+        </li>
+        <li>
+          <strong>Quem não se sente à vontade em academia:</strong> para
+          iniciantes, pessoas acima do peso ou quem simplesmente detesta o
+          ambiente, treinar em casa remove a barreira emocional de vez.
+        </li>
+        <li>
+          <strong>Moradores de condomínio com estrutura:</strong> a academia do
+          prédio, subutilizada pela maioria, vira uma academia particular com
+          hora marcada.
+        </li>
+        <li>
+          <strong>Pais e mães de crianças pequenas:</strong> o treino acontece
+          sem precisar de logística de babá — muitas sessões acontecem com os
+          filhos por perto.
+        </li>
+        <li>
+          <strong>Idosos e pessoas com mobilidade reduzida:</strong> o
+          profissional adapta tudo ao ambiente real da pessoa, o que tem valor
+          direto para autonomia e prevenção de quedas.
+        </li>
+      </ul>
+
+      <h2>Quanto custa o personal a domicílio</h2>
+      <p>
+        O atendimento em casa costuma custar <strong>de 10% a 30% a mais</strong>
+        que a mesma sessão em academia, porque o profissional dedica tempo de
+        deslocamento e material exclusivos a você. Em números práticos: se a
+        sessão avulsa em academia custa R$ 80 a R$ 150 em uma cidade média, o
+        domicílio fica tipicamente entre R$ 100 e R$ 200 — e em regiões de alto
+        padrão, como condomínios da Grande São Paulo, os pacotes mensais vão de
+        R$ 500 a R$ 1.500 dependendo da frequência semanal.
+      </p>
+      <p>
+        Na hora de comparar, olhe a conta inteira: quem treina em casa não paga
+        mensalidade de academia nem gasta tempo e combustível no trajeto. Para
+        uma análise completa de valores por formato e cidade, veja o guia
+        <a href={rotas.quantoCusta}>quanto custa um personal trainer</a>.
+      </p>
+
+      <h2>Treino em casa dá resultado?</h2>
+      <p>
+        A pergunta certa não é "onde", e sim "como". O músculo responde a
+        <strong>tensão e esforço progressivo</strong> — princípios que
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        colocam no centro de qualquer prescrição —, e isso se constrói em casa
+        com halteres, elásticos, peso corporal e boa progressão de exercícios.
+        Para saúde, emagrecimento, condicionamento e hipertrofia em nível
+        iniciante e intermediário, o treino domiciliar bem conduzido entrega
+        resultado comparável ao da academia.
+      </p>
+      <p>
+        O formato tem um trunfo escondido: <strong>adesão</strong>. A maioria
+        das pessoas não falha por treino ruim, falha por faltar. Quando o
+        treino bate à sua porta em horário marcado, as desculpas clássicas —
+        trânsito, chuva, preguiça de sair — simplesmente desaparecem. No longo
+        prazo, constância mediana vence perfeição esporádica com folga.
+      </p>
+
+      <h2>O que observar ao contratar</h2>
+      <p>
+        Os critérios de um bom profissional valem para qualquer formato — o
+        guia <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        detalha todos —, mas o domicílio adiciona três pontos específicos:
+      </p>
+      <ul>
+        <li>
+          <strong>Avaliação inicial séria:</strong> o profissional deve começar
+          com anamnese, testes básicos e reconhecimento do seu espaço — quem
+          chega aplicando "treino pronto" no primeiro dia é sinal amarelo.
+        </li>
+        <li>
+          <strong>Material e plano de progressão:</strong> pergunte o que ele
+          leva e como pretende aumentar o desafio ao longo dos meses. Treino em
+          casa que não progride vira alongamento caro.
+        </li>
+        <li>
+          <strong>Política de agenda:</strong> deslocamento exclusivo significa
+          que faltas pesam mais. Combine antecipadamente regras de remarcação
+          para os imprevistos dos dois lados.
+        </li>
+      </ul>
+
+      <h2>Domicílio, academia ou online: como decidir</h2>
+      <p>
+        Os três formatos resolvem problemas diferentes. A academia oferece o
+        máximo de equipamento; o domicílio, o máximo de conveniência e
+        privacidade; e o <a href="/guias/personal-online-funciona/">acompanhamento online</a>
+        oferece o melhor custo-benefício para quem já tem alguma autonomia,
+        com o profissional prescrevendo, corrigindo por vídeo e ajustando o
+        plano a distância. Na prática, muita gente combina: sessões presenciais
+        para aprender e corrigir, e semanas online para manter o ritmo com
+        investimento menor.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> o personal a domicílio transforma sua casa
+        ou condomínio em academia particular, custa tipicamente de 10% a 30% a
+        mais por sessão, precisa de pouco espaço e entrega resultado real
+        quando há progressão e constância. É o formato ideal para quem tem
+        pouco tempo, não gosta de academia ou mora em condomínio com estrutura
+        — e combina bem com o acompanhamento online nas semanas mais corridas.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

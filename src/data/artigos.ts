@@ -19,6 +19,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
 
   // Musculação
   { categoria: 'Musculação', url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino de musculação para iniciantes: como começar' },
@@ -31,6 +32,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/', titulo: 'Cardio e musculação no mesmo dia: como combinar' },
   { categoria: 'Musculação', url: '/musculacao/quanto-tempo-para-ver-resultados/', titulo: 'Quanto tempo demora para ver resultados na musculação?' },
   { categoria: 'Musculação', url: '/musculacao/dor-muscular-pos-treino/', titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?' },
+  { categoria: 'Musculação', url: '/musculacao/treino-em-casa-para-iniciantes/', titulo: 'Treino em casa para iniciantes: como começar sem equipamentos' },
+  { categoria: 'Musculação', url: '/musculacao/treinar-com-dor-no-joelho/', titulo: 'Dor no joelho: dá para treinar? O que ajustar na musculação' },
+  { categoria: 'Musculação', url: '/musculacao/treinar-com-dor-lombar/', titulo: 'Dor lombar e musculação: como treinar com segurança' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

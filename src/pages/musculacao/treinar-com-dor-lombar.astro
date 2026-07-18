@@ -1,0 +1,291 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Dor no joelho: dá para treinar? O que ajustar',
+    descricao: 'O mesmo raciocínio de dose, ajuste e sinais de alerta aplicado à articulação mais temida de quem treina perna.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'Nem toda dor é igual: aprenda a diferenciar a dor muscular normal de sinais que merecem outra leitura.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para terceira idade',
+    descricao: 'A dor lombar é ainda mais comum com a idade — veja como o acompanhamento se adapta a essa fase.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/treinar-com-dor-lombar';
+const atualizadoEm = '2026-07-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Dor lombar e musculação: como treinar com segurança', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quem tem dor lombar deve evitar musculação?',
+    resposta:
+      'Em geral, é o contrário: para a dor lombar comum (inespecífica), o exercício — incluindo treino de força bem dosado — está entre as condutas mais recomendadas pelas diretrizes atuais, enquanto o repouso prolongado perdeu espaço há décadas. Músculos de tronco, quadril e pernas mais fortes dão suporte à coluna no dia a dia. A ressalva importante: dor com sinais de alerta (irradiação forte para a perna com formigamento ou perda de força, trauma, febre, perda de peso inexplicada) pede avaliação médica antes de qualquer treino.',
+  },
+  {
+    pergunta: 'Terra e agachamento são proibidos para quem tem dor lombar?',
+    resposta:
+      'Não existem exercícios universalmente proibidos — existe dose e momento. Em fases sensíveis, versões com menor braço de alavanca (levantamento terra romeno com halteres, terra com trap bar, agachamento goblet) e amplitudes parciais costumam ser bem toleradas. Com a melhora, muitos praticantes voltam aos levantamentos completos gradualmente e treinam pesado sem dor. O que costuma dar errado é o salto abrupto de carga e a técnica ruim repetida — não o exercício em si. A progressão deve ser individual e, em quadros persistentes, orientada em conjunto com fisioterapeuta.',
+  },
+  {
+    pergunta: 'Fortalecer o "core" resolve dor lombar?',
+    resposta:
+      'Ajuda, mas a história é mais completa que a moda dos exercícios de abdômen. A evidência mostra que vários tipos de exercício ajudam na dor lombar comum — fortalecimento geral, treino de core, caminhada, pilates —, sem que um seja claramente superior para todos. O que parece importar mais é treinar de forma regular, progressiva e sem medo do movimento. Um core forte contribui, mas glúteos, pernas e costas fortes, somados à confiança de se mover, contribuem tanto quanto.',
+  },
+  {
+    pergunta: 'Sinto dor lombar depois de treinar. O que pode estar acontecendo?',
+    resposta:
+      'As causas mais comuns em quem treina são: progressão rápida demais de carga ou volume, técnica que transfere trabalho para a lombar (por exemplo, arredondar demais a coluna sob carga alta ou compensar com o tronco em exercícios de perna), volume excessivo de exercícios que carregam a lombar no mesmo dia e recuperação insuficiente. Um período de ajuste — reduzir carga, revisar técnica, redistribuir exercícios na semana — costuma resolver. Se a dor persistir por semanas, piorar ou irradiar para a perna, procure avaliação médica ou de fisioterapia.',
+  },
+  {
+    pergunta: 'Qual profissional procurar: médico, fisioterapeuta ou personal?',
+    resposta:
+      'Depende do momento. Dor aguda com sinais de alerta ou dor que persiste semanas: médico primeiro. Dor em tratamento ou recorrente: fisioterapeuta conduz a reabilitação. Dor leve ligada a excesso de treino, ou fase pós-reabilitação: o personal adapta o treino, fortalece progressivamente e devolve a rotina — idealmente conversando com os demais profissionais. Os papéis se complementam: nenhum bom personal promete tratar coluna, e nenhum bom tratamento termina sem devolver a pessoa ao movimento.',
+  },
+];
+
+const title = 'Dor lombar e musculação: como treinar com segurança';
+const description =
+  'A dor lombar comum melhora com movimento, não com repouso: veja como ajustar o treino de musculação (exercícios, carga, técnica), os sinais que pedem médico e como montar a volta ao treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Dor lombar e musculação: como treinar com segurança</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A dor lombar é a queixa musculoesquelética mais comum do mundo — e uma
+      das mais cercadas de medo. O instinto de quem sente é parar de treinar e
+      "proteger a coluna"; a ciência foi para o lado oposto:
+      <strong>para a dor lombar comum, movimento é conduta, repouso prolongado
+      é exceção</strong>. Este artigo explica como a musculação entra nessa
+      história, o que ajustar quando a lombar reclama e quais sinais mudam a
+      conversa de treino para consultório. <em>Conteúdo informativo — não
+      substitui avaliação médica ou de fisioterapia.</em>
+    </p>
+
+    <div class="prose">
+      <h2>O que a ciência mudou sobre dor lombar</h2>
+      <p>
+        Por muito tempo, dor nas costas foi tratada com cama e afastamento de
+        qualquer esforço. As diretrizes modernas — refletidas em recomendações
+        de entidades como a
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        e a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>
+        — apontam na direção contrária para a chamada <strong>dor lombar
+        inespecífica</strong> (a imensa maioria dos casos, sem doença
+        estrutural identificável): manter-se ativo, fortalecer e voltar às
+        atividades gradualmente supera o repouso em praticamente todos os
+        desfechos.
+      </p>
+      <p>
+        Outro achado importante: <strong>nenhum tipo de exercício se provou
+        universalmente superior</strong>. Fortalecimento geral, core, pilates,
+        caminhada — todos ajudam quando aplicados com regularidade e
+        progressão. Isso liberta o treino da busca pelo "exercício mágico
+        para lombar" e o devolve ao que funciona: um programa completo, dosado
+        e consistente.
+      </p>
+
+      <h2>Por que a musculação ajuda a lombar</h2>
+      <ul>
+        <li>
+          <strong>Suporte:</strong> glúteos, posteriores, abdômen e eretores
+          fortes dividem o trabalho que, enfraquecidos, sobra para as
+          estruturas passivas da coluna.
+        </li>
+        <li>
+          <strong>Capacidade:</strong> uma lombar treinada tolera mais — a
+          mala do mercado, a mudança de móvel e o fim de semana de obra deixam
+          de ser eventos de risco.
+        </li>
+        <li>
+          <strong>Confiança:</strong> o medo do movimento (cinesiofobia) é um
+          dos maiores perpetuadores da dor crônica. Treinar com progressão
+          bem-sucedida reconstrói a confiança de que a coluna aguenta — e isso
+          tem efeito direto na dor.
+        </li>
+      </ul>
+
+      <h2>Como ajustar o treino quando a lombar reclama</h2>
+      <p>
+        Na dor leve ligada a excesso de treino — sem sinais de alerta —, o
+        princípio é o mesmo do artigo sobre
+        <a href="/musculacao/treinar-com-dor-no-joelho/">dor no joelho</a>:
+        ajustar a dose, não abolir o movimento.
+      </p>
+      <ul>
+        <li>
+          <strong>Reduza o braço de alavanca:</strong> versões como terra
+          romeno com halteres, terra com trap bar e agachamento goblet mantêm
+          o padrão com menos torque sobre a lombar.
+        </li>
+        <li>
+          <strong>Controle a amplitude:</strong> trabalhe no arco sem dor e
+          devolva amplitude conforme a tolerância melhora.
+        </li>
+        <li>
+          <strong>Redistribua a semana:</strong> evite empilhar terra,
+          agachamento pesado e remada curvada no mesmo dia — a lombar
+          trabalha em todos e a fadiga dela é cumulativa.
+        </li>
+        <li>
+          <strong>Revise a técnica sob carga:</strong> os problemas clássicos
+          são arredondar a coluna sob cargas altas e compensar com o tronco o
+          que perna e quadril deveriam fazer. Vídeo da execução revela em
+          segundos o que anos de treino escondem.
+        </li>
+        <li>
+          <strong>Some exercícios de suporte:</strong> pranchas e variações,
+          bird dog, elevação pélvica e caminhada regular compõem a base que
+          sustenta os levantamentos maiores.
+        </li>
+      </ul>
+      <p>
+        Regra prática usada em programas supervisionados: dor leve (até 3 em
+        10) que não piora nas 24 horas seguintes costuma ser compatível com
+        seguir treinando ajustado; dor acima disso, ou que piora depois, pede
+        redução adicional — e persistindo, avaliação profissional.
+      </p>
+
+      <h2>Sinais de alerta: quando procurar médico antes de treinar</h2>
+      <ul>
+        <li>Dor que <strong>irradia para a perna</strong> com formigamento, dormência ou perda de força.</li>
+        <li>Dor após <strong>trauma</strong> (queda, acidente).</li>
+        <li>Dor acompanhada de <strong>febre</strong>, perda de peso inexplicada ou piora noturna constante.</li>
+        <li>Alterações de <strong>controle de bexiga ou intestino</strong> — emergência médica.</li>
+        <li>Dor que <strong>persiste por mais de algumas semanas</strong> apesar dos ajustes.</li>
+      </ul>
+      <p>
+        Nesses casos, a ordem é inegociável: avaliação médica primeiro,
+        reabilitação com fisioterapeuta se indicada, e retorno ao treino
+        adaptado depois — com os profissionais alinhados entre si.
+      </p>
+
+      <h2>A volta ao treino: gradual e sem heroísmo</h2>
+      <p>
+        Passada a fase sensível, o erro clássico é voltar exatamente de onde
+        parou. A lombar destreinada precisa reconquistar carga como qualquer
+        músculo: começando com 50% a 60% do que se fazia antes, priorizando
+        técnica limpa e subindo a carga semana a semana conforme a resposta —
+        a mesma lógica da
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>
+        aplicada com margem extra de segurança. Em poucos ciclos, a maioria
+        volta ao nível anterior; muitos, mais fortes do que antes da dor.
+      </p>
+
+      <h2>O papel de cada profissional</h2>
+      <p>
+        <strong>Médico</strong> diagnostica e descarta causas sérias;
+        <strong>fisioterapeuta</strong> conduz a reabilitação;
+        <strong>personal trainer</strong> adapta o treino, fortalece
+        progressivamente e mantém a constância — sem prometer cura, porque
+        treino não é tratamento. O guia sobre
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        ajuda a identificar profissionais que respeitam essa divisão e têm
+        experiência com alunos que treinam com dores e limitações.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> para a dor lombar comum, movimento é o
+        caminho e a musculação bem dosada é aliada: fortalece o suporte da
+        coluna, aumenta a tolerância do dia a dia e desfaz o medo do
+        movimento. Ajuste alavancas, amplitude e distribuição da semana em vez
+        de abolir exercícios; respeite a regra da dor leve que não piora; e
+        leve os sinais de alerta ao médico antes de qualquer plano. Coluna
+        forte se constrói treinando — com dose certa e sem promessa de cura.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
