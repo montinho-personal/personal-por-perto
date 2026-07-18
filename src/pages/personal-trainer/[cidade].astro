@@ -44,11 +44,13 @@ const capaPng = `/capas/personal-trainer-${cidade.slug}.png`;
 const capaAlt = `Personal trainer em ${n} (${cidade.uf}) — guia do Personal por Perto`;
 
 // Alphaville é a base presencial do profissional destacado: a página usa
-// foto real de transformação no lugar da capa padrão + vídeo do personal.
+// fotos reais no lugar da capa padrão + vídeo do personal. Santana de
+// Parnaíba (parte do complexo) também recebe fotos reais no corpo.
 const ehAlphaville = cidade.slug === 'alphaville-sp';
-const fotoTransformacao = '/montinho/antes-depois-montinho-personal-trainer.webp';
+const ehSantana = cidade.slug === 'santana-de-parnaiba-sp';
+const fotoTransformacao = '/montinho/personal-trainer-alphaville.webp';
 const altTransformacao =
-  'Antes e depois do Montinho Personal: da adolescência com sobrepeso ao físico definido — personal trainer que atende Alphaville e região';
+  'Antes e depois do Montinho Personal, personal trainer em Alphaville: da adolescência com sobrepeso ao físico definido após mais de 20 anos de musculação';
 
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
@@ -381,16 +383,74 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       {
+        ehSantana && (
+          <section id="conheca-o-personal">
+            <h2>Conheça o personal que atende Santana de Parnaíba</h2>
+            <p>
+              O <strong>Montinho Personal</strong>, destacado pelo portal, tem base
+              na região de Alphaville — parte dela dentro do próprio município — e
+              atende em domicílio e em condomínios. São mais de 20 anos de
+              musculação e uma jornada própria de mais de 40 kg eliminados:
+            </p>
+            <div class="fotos-grid">
+              <figure class="foto-personal">
+                <img
+                  src="/montinho/personal-trainer-santana-de-parnaiba-alphaville.webp"
+                  alt="Montinho Personal no elevador do condomínio a caminho de um atendimento — personal trainer em domicílio na região de Santana de Parnaíba e Alphaville"
+                  width="900"
+                  height="1599"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  A caminho do atendimento: o treino em domicílio e em condomínio é o
+                  formato mais procurado na região.
+                </figcaption>
+              </figure>
+              <figure class="foto-personal">
+                <img
+                  src="/montinho/personal-trainer-santana-de-parnaiba.webp"
+                  alt="Montinho Personal em academia após o treino — personal trainer com mais de 20 anos de musculação atendendo Santana de Parnaíba e região"
+                  width="900"
+                  height="1599"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  Mais de 20 anos de treino: a vivência que orienta os alunos de
+                  Santana de Parnaíba e região.
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+        )
+      }
+
+      {
         ehAlphaville && (
           <section id="conheca-o-personal">
             <h2>Conheça o personal destacado em Alphaville</h2>
             <p>
               Antes de chamar no WhatsApp, vale ver quem é o profissional que o
-              portal destaca na região. O vídeo abaixo é do próprio
-              <strong> Montinho Personal</strong> — que tem base em Alphaville,
-              perdeu mais de 40 kg na própria jornada e soma mais de 20 anos de
-              musculação:
+              portal destaca na região. O
+              <strong> Montinho Personal</strong> tem base em Alphaville, perdeu
+              mais de 40 kg na própria jornada e soma mais de 20 anos de
+              musculação — resultado que se vê no físico e no método:
             </p>
+            <figure class="foto-personal">
+              <img
+                src="/montinho/personal-trainer-condominios-alphaville-sp.webp"
+                alt="Montinho Personal de costas em pose de duplo bíceps, mostrando a definição de costas e ombros — personal trainer que atende os condomínios de Alphaville"
+                width="900"
+                height="1949"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                Mais de 20 anos de musculação: o físico que sustenta o método aplicado
+                nos atendimentos em Alphaville.
+              </figcaption>
+            </figure>
             <figure class="video-short">
               <iframe
                 src="https://www.youtube-nocookie.com/embed/MrfzaQWFqPs"
@@ -656,6 +716,36 @@ const objetivoDesc: Record<string, string> = {
     font-size: var(--step--1);
     color: var(--muted);
     line-height: 1.5;
+  }
+
+  /* Fotos reais do personal (Alphaville / Santana de Parnaíba) */
+  .fotos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--sp-5);
+    margin-top: var(--sp-5);
+  }
+  .foto-personal {
+    margin: var(--sp-5) 0 0;
+    max-width: 420px;
+  }
+  .fotos-grid .foto-personal {
+    margin: 0;
+    max-width: none;
+  }
+  .foto-personal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .foto-personal figcaption {
+    margin-top: var(--sp-3);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 45ch;
   }
 
   /* Short vertical incorporado (página de Alphaville) */

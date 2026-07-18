@@ -45,7 +45,7 @@ export default defineConfig({
           item.img = [
             {
               url: imgAlphaville
-                ? `${SITE}/montinho/antes-depois-montinho-personal-trainer.webp`
+                ? `${SITE}/montinho/personal-trainer-alphaville.webp`
                 : `${SITE}/capas/personal-trainer-${slug}.png`,
               title: imgAlphaville
                 ? 'Antes e depois do Montinho Personal — personal trainer em Alphaville'
