@@ -40,10 +40,16 @@ export default defineConfig({
         const mc = item.url.match(/\/personal-trainer\/([^/]+)\/?$/);
         const slug = mc && mc[1];
         if (slug && nomePorSlug[slug]) {
+          // Alphaville usa a foto real de transformação no lugar da capa padrão.
+          const imgAlphaville = slug === 'alphaville-sp';
           item.img = [
             {
-              url: `${SITE}/capas/personal-trainer-${slug}.png`,
-              title: `Personal Trainer em ${nomePorSlug[slug]}`,
+              url: imgAlphaville
+                ? `${SITE}/montinho/antes-depois-montinho-personal-trainer.webp`
+                : `${SITE}/capas/personal-trainer-${slug}.png`,
+              title: imgAlphaville
+                ? 'Antes e depois do Montinho Personal — personal trainer em Alphaville'
+                : `Personal Trainer em ${nomePorSlug[slug]}`,
               caption: `Guia de personal trainer em ${nomePorSlug[slug]} — Personal por Perto.`,
             },
           ];

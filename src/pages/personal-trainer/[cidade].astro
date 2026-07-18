@@ -43,6 +43,13 @@ const capaWebp = `/capas/personal-trainer-${cidade.slug}.webp`;
 const capaPng = `/capas/personal-trainer-${cidade.slug}.png`;
 const capaAlt = `Personal trainer em ${n} (${cidade.uf}) — guia do Personal por Perto`;
 
+// Alphaville é a base presencial do profissional destacado: a página usa
+// foto real de transformação no lugar da capa padrão + vídeo do personal.
+const ehAlphaville = cidade.slug === 'alphaville-sp';
+const fotoTransformacao = '/montinho/antes-depois-montinho-personal-trainer.webp';
+const altTransformacao =
+  'Antes e depois do Montinho Personal: da adolescência com sobrepeso ao físico definido — personal trainer que atende Alphaville e região';
+
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
 // Vizinhas reais (geográficas) para linkagem contextual na prosa.
@@ -136,7 +143,7 @@ const objetivoDesc: Record<string, string> = {
 };
 ---
 
-<Base title={title} description={description} path={path} ogType="article" image={capaPng} schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={ehAlphaville ? fotoTransformacao : capaPng} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
   <!-- HERO -->
@@ -160,24 +167,44 @@ const objetivoDesc: Record<string, string> = {
         <span>✔ Atualizado em {formatDateLong(cidade.atualizadoEm)}</span>
       </div>
 
-      <figure class="capa">
-        <picture>
-          <source srcset={capaWebp} type="image/webp" />
-          <img
-            src={capaPng}
-            alt={capaAlt}
-            width="1200"
-            height="630"
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
-        <figcaption>
-          Guia de personal trainer em {n} ({cidade.uf}) — panorama local, faixas de
-          preço e onde treinar. Personal por Perto.
-        </figcaption>
-      </figure>
+      {
+        ehAlphaville ? (
+          <figure class="capa">
+            <img
+              src={fotoTransformacao}
+              alt={altTransformacao}
+              width="1200"
+              height="1200"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>
+              Transformação real do Montinho Personal — mais de 40 kg eliminados e a
+              vivência que hoje orienta alunos em Alphaville e região.
+            </figcaption>
+          </figure>
+        ) : (
+          <figure class="capa">
+            <picture>
+              <source srcset={capaWebp} type="image/webp" />
+              <img
+                src={capaPng}
+                alt={capaAlt}
+                width="1200"
+                height="630"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+            <figcaption>
+              Guia de personal trainer em {n} ({cidade.uf}) — panorama local, faixas de
+              preço e onde treinar. Personal por Perto.
+            </figcaption>
+          </figure>
+        )
+      }
     </div>
   </header>
 
@@ -352,6 +379,36 @@ const objetivoDesc: Record<string, string> = {
           tabela por cidade e dicas de como economizar sem perder qualidade.
         </p>
       </section>
+
+      {
+        ehAlphaville && (
+          <section id="conheca-o-personal">
+            <h2>Conheça o personal destacado em Alphaville</h2>
+            <p>
+              Antes de chamar no WhatsApp, vale ver quem é o profissional que o
+              portal destaca na região. O vídeo abaixo é do próprio
+              <strong> Montinho Personal</strong> — que tem base em Alphaville,
+              perdeu mais de 40 kg na própria jornada e soma mais de 20 anos de
+              musculação:
+            </p>
+            <figure class="video-short">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/MrfzaQWFqPs"
+                title="Vídeo do Montinho Personal, personal trainer com base em Alphaville"
+                width="340"
+                height="604"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+              <figcaption>
+                No vídeo: o Montinho Personal, profissional destacado pelo portal em
+                Alphaville e região.
+              </figcaption>
+            </figure>
+          </section>
+        )
+      }
 
       <WhatsAppCta tema="cidade" contexto={n} />
 
@@ -599,6 +656,27 @@ const objetivoDesc: Record<string, string> = {
     font-size: var(--step--1);
     color: var(--muted);
     line-height: 1.5;
+  }
+
+  /* Short vertical incorporado (página de Alphaville) */
+  .video-short {
+    margin: var(--sp-5) 0 0;
+  }
+  .video-short iframe {
+    display: block;
+    width: min(100%, 340px);
+    aspect-ratio: 9 / 16;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  .video-short figcaption {
+    margin-top: var(--sp-3);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 45ch;
   }
 
   .stats-band {
