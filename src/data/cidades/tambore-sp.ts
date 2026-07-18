@@ -120,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Barueri', url: 'https://www.barueri.sp.gov.br/' },
     { nome: 'IBGE Cidades — Santana de Parnaíba', url: 'https://cidades.ibge.gov.br/brasil/sp/santana-de-parnaiba/panorama' },
   ],
-  atualizadoEm: '2026-07-11',
+  atualizadoEm: '2026-07-18',
 };
