@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Campo Grande tem cultura ativa de corrida e ciclismo, favorecida pelas ciclovias e pelos grandes parques, e uma cena de musculação e treino funcional em alta, puxada por um público jovem e universitário.',
   academias:
     'A oferta reúne redes nacionais (Smart Fit, Allp Fit), a chegada de marcas premium como a Ironberg e academias locais consolidadas, com boa cobertura de plataformas de benefícios.',
+  academiasProximas: [
+    { nome: 'Ironberg', detalhe: 'centro de treinamento premium da marca na cidade' },
+    { nome: 'Smart Fit e Allp Fit', detalhe: 'redes nacionais com várias unidades' },
+    { nome: 'Academias locais consolidadas', detalhe: 'boa cobertura nos bairros e via plataformas de benefícios' },
+    { nome: 'Equipamentos dos parques', detalhe: 'gratuitos, no Parque das Nações Indígenas e no Sóter' },
+  ],
 
   destaquesFitness: [
     'Rede premium de musculação (Ironberg) escolheu a cidade pela demanda crescente.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade jovem, arborizada e com cultura de musculação em ascensão, Campo Grande oferece boa estrutura para quem quer treinar — dos parques às academias premium. Um personal trainer ajuda a aproveitar tudo isso com método, respeitando o calor e a baixa umidade do inverno.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Campo Grande?',
+      resposta:
+        'A cidade dá três frentes fortes: os grandes parques — o das Nações Indígenas, um dos maiores parques urbanos do país, e o Sóter, com pista de cooper e quadras —, as academias, do custo-benefício das redes ao treino premium do centro de treinamento da Ironberg, e o atendimento em casa nos bairros arborizados como Cidade Jardim e Carandá Bosque. Os cerca de 90 km de ciclovias ainda sustentam treinos de bike orientados pela Afonso Pena.',
+    },
+    {
+      pergunta: 'Como treinar na seca do inverno de Campo Grande?',
+      resposta:
+        'De maio a setembro, a umidade na Cidade Morena despenca — e o ajuste é parecido com o de Brasília: sessões ao ar livre no início da manhã, quando o ar ainda está mais úmido, hidratação começando antes do treino e academia climatizada nos dias em que a umidade cai a níveis críticos. A vantagem local é a arborização: os parques e o Horto Florestal seguram um microclima mais ameno que as avenidas abertas. O personal alterna os cenários conforme o dia.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Campo Grande para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Campo Grande, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['cuiaba-mt', 'goiania-go', 'brasilia-df'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campo Grande', url: 'https://www.campogrande.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

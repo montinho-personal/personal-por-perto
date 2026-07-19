@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'São Luís tem forte tradição de corrida de rua e de treino na orla, com um calendário ativo (Sesc, circuitos nacionais). O futebol e os esportes de praia também são marcantes, e a Lagoa da Jansen é o coração esportivo da cidade.',
   academias:
     'A oferta reúne redes (Smart Fit, Bodytech) e academias locais fortes, além de uma cena de crossfit e funcional em crescimento, com a orla e a Lagoa da Jansen como grandes extensões ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Calhau, na Cohama, no Renascença e no Turu' },
+    { nome: 'Bodytech', detalhe: 'no Shopping da Ilha' },
+    { nome: 'Boxes de crossfit e academias locais', detalhe: 'cena forte no Renascença e no Calhau' },
+    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, na Lagoa da Jansen e no Parque do Bom Menino' },
+  ],
 
   destaquesFitness: [
     'Lagoa da Jansen como hub de treino ao ar livre, com ciclovia de cerca de 4 km.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Entre o patrimônio histórico e uma orla feita para correr, São Luís oferece bons cenários para treinar — da Lagoa da Jansen à Litorânea. Um personal trainer ajuda a montar uma rotina que respeite o calor e a umidade e a aproveitar ao máximo a estrutura da capital maranhense.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em São Luís?',
+      resposta:
+        'O coração é o eixo Lagoa da Jansen–Avenida Litorânea: a lagoa concentra o treino funcional e a corrida no anel de cerca de 4 km, e a Litorânea oferece 6 km planos à beira-mar. Nas academias, a oferta vai da Bodytech do Shopping da Ilha às Smart Fit do Calhau, Cohama, Renascença e Turu, com boxes de crossfit completando a cena. O atendimento em casa e em condomínio é comum no Renascença, no Calhau e na Ponta d\'Areia.',
+    },
+    {
+      pergunta: 'Treinar à noite funciona em São Luís?',
+      resposta:
+        'Funciona — e é quase uma tradição local. Com o calor e a umidade altos durante o dia, a orla e a Lagoa da Jansen enchem depois das 17h30, e até a principal meia maratona da capital é noturna, com largada no Calhau. Para quem trabalha em horário comercial, o personal monta a semana com sessões noturnas ao ar livre e treinos de força em academia climatizada, aproveitando a janela em que a cidade inteira decide se mover.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São Luís para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para São Luís, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['teresina-pi', 'belem-pa', 'fortaleza-ce'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Luís', url: 'https://www.saoluis.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

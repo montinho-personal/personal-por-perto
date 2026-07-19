@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Belém tem forte tradição de corrida de rua, muito ligada ao Círio de Nazaré, além do futebol regional (a rivalidade Remo x Paysandu) e de um público crescente de corrida e ciclismo nas orlas. A vida ativa acontece, sobretudo, nos horários mais frescos do dia.',
   academias:
     'A oferta reúne grandes redes (Smart Fit, Bodytech) nos bairros nobres e academias locais, complementadas pela estrutura ao ar livre do Parque do Utinga e das orlas.',
+  academiasProximas: [
+    { nome: 'Bodytech', detalhe: 'unidade premium em Nazaré' },
+    { nome: 'Smart Fit', detalhe: 'unidades em shoppings e bairros da cidade' },
+    { nome: 'Academias locais', detalhe: 'boa cobertura no Umarizal, em Batista Campos e no Reduto' },
+    { nome: 'Estrutura do Parque do Utinga', detalhe: 'pista de cerca de 4 km, gratuita, para corrida e bike' },
+  ],
 
   destaquesFitness: [
     'Parque do Utinga como principal hub de corrida e ciclismo (pista de cerca de 4 km).',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Porta de entrada da Amazônia e cidade em plena transformação, Belém oferece do Parque do Utinga às orlas revitalizadas. Um personal trainer ajuda a montar uma rotina que respeite o calor equatorial e potencialize seus resultados — da corrida ao ar livre à musculação climatizada nos dias mais abafados.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Belém?',
+      resposta:
+        'Os polos são claros: o Parque do Utinga — com pista de cerca de 4 km e faixas separadas para corrida e bike —, as orlas revitalizadas (Portal da Amazônia, Estação das Docas), as academias dos bairros nobres (Bodytech em Nazaré, Smart Fit e academias locais no Umarizal e em Batista Campos) e o atendimento em casa e em condomínio, comum nos edifícios do Umarizal e do Reduto. A malha cicloviária de cerca de 163 km ainda abre espaço para treinos de bike orientados.',
+    },
+    {
+      pergunta: 'Como manter a rotina de treino com a chuva diária de Belém?',
+      resposta:
+        'Em uma cidade onde a chuva da tarde é quase compromisso de agenda, o treino se organiza em volta dela: sessões ao ar livre de manhã cedo — antes do calor e da água —, plano B permanente em academia climatizada e flexibilidade para inverter o treino do dia quando o céu decide primeiro. Quem treina com acompanhamento não perde sessão por chuva: muda o local e mantém o estímulo, porque o plano já nasce com as duas versões.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Belém para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Belém, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-luis-ma', 'manaus-am'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belém', url: 'https://www.belem.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

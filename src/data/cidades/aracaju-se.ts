@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Aracaju tem forte cultura de corrida de rua e de atividades ao ar livre na orla. O clima e a estética de praia sustentam a prática de caminhada, ciclismo, calistenia e treino funcional ao longo de todo o ano.',
   academias:
     'Além das unidades da Smart Fit espalhadas pela cidade, há academias de bairro e estúdios de funcional, com a orla funcionando como uma grande extensão ao ar livre dessas estruturas.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades nos Jardins, em Siqueira Campos, em Santa Maria e no Shopping Praia Sul' },
+    { nome: 'Estúdios de funcional e academias de bairro', detalhe: 'concentrados nos Jardins e na 13 de Julho' },
+    { nome: 'Academias ao ar livre da Orla de Atalaia', detalhe: 'gratuitas e abertas 24 horas' },
+  ],
 
   destaquesFitness: [
     'Cerca de 6 km de orla com academias ao ar livre e equipamentos gratuitos, abertos 24h.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais bem estruturadas do Nordeste e custo de vida acessível, Aracaju é uma cidade convidativa para treinar ao ar livre. Um personal trainer ajuda a transformar a orla de Atalaia e as ciclovias em um plano de treino consistente, ajustado ao clima quente e ao seu objetivo.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Aracaju?',
+      resposta:
+        'A orla comanda: os 6 km de Atalaia — com academias ao ar livre, quadras e calçadão abertos 24 horas — e o trecho novo da Aruana concentram corrida, calistenia e funcional; o calçadão da 13 de Julho, à beira do rio, é o preferido para caminhada. Nas academias, a Smart Fit cobre bem a cidade, e os estúdios se concentram nos Jardins. O atendimento em casa e em condomínio é forte nos Jardins, na 13 de Julho e na Atalaia.',
+    },
+    {
+      pergunta: 'A orla 24 horas muda a rotina de treino em Aracaju?',
+      resposta:
+        'Muda — é uma das poucas capitais onde o horário do treino ao ar livre é escolha sua, não do sol. Com a estrutura da Atalaia aberta e iluminada a noite toda, quem trabalha em turnos, chega tarde ou prefere treinar às 5h encontra o mesmo calçadão e os mesmos equipamentos gratuitos. Na prática, o personal usa essa flexibilidade para encaixar sessões nos horários mais frescos e distribuir a semana sem depender de vaga em academia lotada no pico.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Aracaju para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Aracaju, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['salvador-ba', 'recife-pe'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aracaju', url: 'https://www.aracaju.se.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

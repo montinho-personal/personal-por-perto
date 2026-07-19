@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Mesmo com o calor extremo, Cuiabá tem uma cultura de corrida forte, com provas tradicionais de grande porte. Programas públicos gratuitos incentivam a atividade física matinal nos parques, ampliando o acesso ao treino.',
   academias:
     'A oferta de academias acompanha o porte da capital, com redes e nomes locais, complementada pelas aulas gratuitas do programa "Movimente-se" em parques e na universidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades em Goiabeiras, no Jardim das Américas, no CPA e na Av. Rubens de Mendonça' },
+    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na capital' },
+    { nome: 'Programa Movimente-se', detalhe: 'aulas públicas gratuitas em parques e na UFMT' },
+    { nome: 'Academias ao ar livre do Mãe Bonifácia', detalhe: 'cinco postos gratuitos em meio às trilhas' },
+  ],
 
   destaquesFitness: [
     'Parque Mãe Bonifácia: hub de corrida com mais de 5 km de trilhas e academia ao ar livre.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Em uma das cidades mais quentes do país, treinar bem é, antes de tudo, saber lidar com o calor — e é aí que um personal trainer faz diferença, ajustando horários, intensidade e hidratação. Com parques como o Mãe Bonifácia e uma forte cultura de corrida, Cuiabá tem estrutura para quem quer evoluir com segurança.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Cuiabá?',
+      resposta:
+        'O Parque Mãe Bonifácia é o coração: mais de 5 km de trilhas arborizadas, cinco postos de academia ao ar livre e o circuito preferido dos corredores da capital. Completam o mapa o Parque das Águas, as academias de rede (Smart Fit em quatro pontos, Selfit) e locais, e o atendimento em casa e em condomínio, forte em Goiabeiras, no Jardim das Américas e no Santa Marta — os bairros onde o calor torna o deslocamento a menos algo valioso.',
+    },
+    {
+      pergunta: 'Em uma das cidades mais quentes do Brasil, quando treinar em Cuiabá?',
+      resposta:
+        'Nas bordas do dia — e a cidade inteira já entendeu isso. A janela da manhã vai das 6h às 8h (a mesma faixa dos programas públicos gratuitos), e a da noite abre depois das 18h30, quando parques e avenidas enchem de corredores. No miolo do dia, o treino é indoor, sem negociação. A hidratação em Cuiabá não é dica, é parte do treino: começa antes, continua durante e segue depois. O personal monta a semana inteira em volta dessas janelas térmicas.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Cuiabá para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Cuiabá, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['campo-grande-ms', 'goiania-go', 'brasilia-df'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cuiabá', url: 'https://www.cuiaba.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

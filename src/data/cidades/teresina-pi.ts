@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Teresina tem um calendário ativo de corridas de rua e uso intenso dos parques e orlas para caminhada, corrida e ciclismo. A "Cidade Verde" estimula a atividade ao ar livre, mesmo diante do calor característico.',
   academias:
     'A oferta reúne redes nacionais (Smart Fit, Selfit) e academias locais, complementadas pela estrutura dos parques Potycabana e da Cidadania — e impulsionada pelo grande ecossistema de saúde da cidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'várias unidades pela cidade' },
+    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na capital' },
+    { nome: 'Academias locais', detalhe: 'boa cobertura no Jóquei, em Fátima e no Centro' },
+    { nome: 'Estrutura dos parques', detalhe: 'gratuita, no Potycabana e no Parque da Cidadania' },
+  ],
 
   destaquesFitness: [
     'Polo de saúde do Meio-Norte, que favorece o nicho de personal e reabilitação.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo de saúde e "Cidade Verde", Teresina tem boa estrutura de parques e academias para quem quer treinar — desde que se respeite o calor. Um personal trainer ajuda a montar uma rotina segura, com horários e hidratação ajustados, e a aproveitar ao máximo o Potycabana e os demais espaços da cidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Teresina?',
+      resposta:
+        'Os pontos fortes são o Parque Potycabana — o complexo esportivo às margens do Poti, com pistas, quadras e academia ao ar livre —, o Parque da Cidadania na Frei Serafim, as academias de rede e locais do Jóquei e de Fátima e o atendimento em casa, valorizado nos meses mais quentes. Um diferencial da cidade: como maior polo de saúde do Meio-Norte, Teresina tem um ecossistema médico que facilita o trabalho conjunto entre personal, médico e fisioterapeuta.',
+    },
+    {
+      pergunta: 'Como treinar no calor de Teresina, uma das capitais mais quentes do país?',
+      resposta:
+        'Com estratégia de deserto: as janelas reais de treino ao ar livre são das 5h30 às 7h30 e depois das 17h30 — fora delas, academia climatizada sem culpa. A hidratação começa antes da sessão e continua depois; nos meses do "B-R-O bró" (setembro a dezembro, os mais quentes), vale reduzir a intensidade dos treinos externos e transferir o esforço pesado para ambiente fechado. O personal ajusta o plano ao termômetro — constância em Teresina é questão de logística térmica.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Teresina para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Teresina, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-luis-ma', 'fortaleza-ce'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teresina', url: 'https://www.teresina.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };
