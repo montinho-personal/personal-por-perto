@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Caxias do Sul tem forte tradição em corrida de rua, com clube de corredores ativo, e em musculação. O Juventude, no futebol, é um símbolo esportivo da cidade, e a comunidade de corrida cresce a cada ano.',
   academias:
     'A oferta reúne redes nacionais (Smart Fit) e estúdios locais, com a musculação ganhando ainda mais força no inverno, quando o treino indoor é a opção mais confortável.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na cidade' },
+    { nome: 'Estúdios e academias locais', detalhe: 'boa oferta no São Pelegrino, na Exposição e no Centro' },
+    { nome: 'Academia ao ar livre dos Macaquinhos', detalhe: 'gratuita, com equipamentos adaptados para PcD' },
+  ],
 
   destaquesFitness: [
     'Parque dos Macaquinhos: melhor espaço público para corrida, com pista marcada e academia ao ar livre gratuita.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Maior cidade do interior gaúcho e polo industrial da serra, Caxias do Sul combina cultura de musculação e uma cena de corrida em ascensão. Um personal trainer ajuda a manter a constância o ano todo — alternando o treino ao ar livre com a academia nos dias de frio rigoroso.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Caxias do Sul?',
+      resposta:
+        'O Parque Getúlio Vargas — os Macaquinhos — é o coração público: central, seguro, com pista de distâncias marcadas e academia ao ar livre que inclui equipamentos adaptados. O Cinquentenário complementa com circuito pavimentado. Nas academias, a Smart Fit e os estúdios locais cobrem do São Pelegrino ao Centro, e o atendimento em casa é valorizado nos meses frios, quando sair para treinar às 6h da manhã em plena geada é pedir demais de qualquer motivação.',
+    },
+    {
+      pergunta: 'Como manter o treino no inverno de geadas da Serra Gaúcha?',
+      resposta:
+        'Com o plano invertido: na serra, o inverno é a estação de construir força indoor — musculação como base da semana — e as janelas de sol do meio-dia viram o horário nobre do treino externo, não a manhã congelante. Quem insiste em correr cedo precisa de aquecimento estendido e atenção ao piso com geada, que escorrega. De setembro a maio, o clima de serra vira aliado e o volume migra para os Macaquinhos. O personal calibra esse revezamento — e é ele que impede o clássico "parei em junho, recomecei em outubro".',
+    },
+    {
+      pergunta: 'Há acompanhamento em Caxias do Sul para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Caxias do Sul, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['porto-alegre-rs', 'florianopolis-sc'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caxias do Sul', url: 'https://www.caxias.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Londrina tem tradição forte em corrida de rua, com um calendário oficial repleto de provas pedestres e ciclísticas ao longo do ano, e em ciclismo de estrada. O Lago Igapó é o epicentro do treino ao ar livre da cidade.',
   academias:
     'A oferta reúne a Smart Fit e academias locais bem avaliadas, além de estúdios de crossfit e treino funcional, com forte cobertura de plataformas de benefícios e um público universitário numeroso.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades em pontos centrais da cidade' },
+    { nome: 'Academias locais bem avaliadas', detalhe: 'forte oferta na Gleba Palhano e no Centro' },
+    { nome: 'Boxes de crossfit e estúdios de funcional', detalhe: 'cena aquecida pelo público universitário' },
+    { nome: 'Academia ao ar livre do Lago Igapó', detalhe: 'gratuita, revitalizada, no cartão-postal da cidade' },
+  ],
 
   destaquesFitness: [
     'Lago Igapó como "ginásio a céu aberto" para caminhada, corrida e academia ao ar livre.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade jovem, arborizada e apaixonada por corrida, Londrina tem no Lago Igapó o seu coração esportivo. Um personal trainer ajuda a transformar essa estrutura — dos lagos às academias — em um plano de treino consistente, ajustado ao seu objetivo e à sua rotina.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Londrina?',
+      resposta:
+        'O Lago Igapó é o "ginásio a céu aberto" da cidade — pista de caminhada, academia ao ar livre e a volta de cerca de 6 km no Igapó 1 —, com a Gleba Palhano, colada ao lago, concentrando os prédios onde o atendimento em condomínio mais cresce. O Zerão soma a pista oval de 1.050 m e o Parque Arthur Thomas, as trilhas na mata. Nas academias, a Smart Fit e as locais bem avaliadas cobrem a cidade, com boxes de crossfit aquecidos pelo público universitário.',
+    },
+    {
+      pergunta: 'Como usar o Zerão e o Igapó para evoluir na corrida em Londrina?',
+      resposta:
+        'Londrina tem uma dupla rara: uma pista oval de distância exata (os 1.050 m do Zerão) e um circuito longo e contínuo (a volta de ~6 km do Igapó). Na prática do treino, o Zerão serve para os trabalhos de ritmo e tiros — onde controlar pace e distância importa —, e o Igapó, para os rodagens e longões com paisagem. Quem se prepara para a Maratona ou a Meia Internacional de Londrina consegue montar a semana completa sem sair dos dois — e o personal alterna os cenários conforme a fase da preparação.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Londrina para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Londrina, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou lago), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['maringa-pr', 'curitiba-pr', 'sorocaba-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Londrina', url: 'https://www.londrina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Niterói é uma das cidades mais ciclísticas do Brasil, com recordes de uso de ciclovia e bike sharing, e tem forte cultura praiana — surf e esportes de mar na Região Oceânica, caminhada e corrida nas orlas e parques. O alto IDHM se traduz em boa infraestrutura para quem quer treinar.',
   academias:
     'A oferta reúne redes como Smart Fit e Best Fitness e academias locais concentradas em Icaraí e na Região Oceânica, além de estúdios de treino funcional e crossfit que atendem o público de alta renda da cidade.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades em Icaraí (Trade Center) e em outros bairros' },
+    { nome: 'Best Fitness e academias locais', detalhe: 'boa oferta em Icaraí e na Região Oceânica' },
+    { nome: 'Estúdios de funcional e crossfit', detalhe: 'atendem o público de alta renda da cidade' },
+    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Horto do Fonseca e nas orlas' },
+  ],
 
   destaquesFitness: [
     'Maior IDHM do estado do Rio (0,837), com infraestrutura de parques e academias.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com altíssima qualidade de vida, orlas estruturadas e uma cultura de bike e praia que poucos lugares têm, Niterói é um ambiente convidativo para treinar. Um personal trainer ajuda a transformar essa estrutura toda em resultado — seja na musculação, na corrida ou nos esportes de mar.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Niterói?',
+      resposta:
+        'Icaraí concentra as academias e estúdios — com o Campo de São Bento como point de treinos leves —, o Caminho Niemeyer serve de circuito de corrida com vista para a Baía, e a Região Oceânica soma a faixa exclusiva de corrida de Itacoatiara e a cultura de esportes de mar. O atendimento em casa e em condomínio é forte em Icaraí, em Camboinhas e no Charitas. Com a ciclovia mais movimentada do Brasil e o NitBike gratuito, a bike também entra como treino e deslocamento.',
+    },
+    {
+      pergunta: 'Moro em Niterói e trabalho no Rio: onde encaixo o treino?',
+      resposta:
+        'A regra dos pendulares da ponte e das barcas é ancorar o treino do lado de casa: sessão cedo em Icaraí ou na Região Oceânica antes da travessia, ou no fim do dia na volta — nunca depender de janelas no meio do expediente carioca. Sessões de 45 a 60 minutos perto de casa, duas a três vezes na semana, com um plano B domiciliar para os dias em que a travessia atrasa, mantêm a constância. O acompanhamento online completa as semanas mais imprevisíveis.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Niterói para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Niterói, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['rio-de-janeiro-rj', 'vitoria-es', 'belo-horizonte-mg'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Niterói', url: 'https://www.niteroi.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

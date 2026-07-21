@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Uberlândia tem forte tradição de corrida de rua e ciclismo, com comunidades ativas como a "Pedala Uberlândia", e um público fitness aquecido pela universidade. O Parque do Sabiá é o epicentro do treino ao ar livre na cidade.',
   academias:
     'A oferta vai das grandes redes (Smart Fit, Selfit) às muitas academias de bairro e estúdios de funcional e personal, atendendo desde o estudante até o público premium da zona sul.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro e na Av. Rondon Pacheco' },
+    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na cidade' },
+    { nome: 'Academias de bairro e estúdios', detalhe: 'centenas de opções, do estudante ao público premium da zona sul' },
+    { nome: 'Academias ao ar livre do Parque do Sabiá', detalhe: 'cerca de 11 estações gratuitas, uma delas acessível' },
+  ],
 
   destaquesFitness: [
     'Pista de 5,1 km do Parque do Sabiá: o melhor ativo gratuito para corrida e assessorias.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com o Parque do Sabiá como cartão de visitas e um mercado fitness aquecido pela universidade, Uberlândia é um ótimo lugar para treinar com orientação. Um personal trainer ajuda a aproveitar essa estrutura — da pista de 5 km às academias de bairro — com método, segurança e constância.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Uberlândia?',
+      resposta:
+        'O Parque do Sabiá é o epicentro: pista asfaltada de 5,1 km, trilhas de terra e cerca de 11 academias ao ar livre fazem dele o melhor ativo gratuito de treino do Triângulo Mineiro. Nas academias, Smart Fit e Selfit cobrem o dia a dia, e os estúdios premium atendem a zona sul (Morada da Colina, Jardim Karaíba). O atendimento em casa e em condomínio cresce nos bairros de alto padrão, e a Gávea e o Parque Linear do Uberabinha completam as opções públicas.',
+    },
+    {
+      pergunta: 'Dá para treinar bem em Uberlândia com orçamento de estudante?',
+      resposta:
+        'Dá — e a cidade universitária é generosa nisso. A combinação clássica do estudante da UFU: musculação em rede de baixo custo (as mensalidades da cidade estão entre as mais acessíveis do Sudeste) somada à estrutura gratuita do Sabiá para corrida e funcional. Para quem quer orientação sem o custo do presencial contínuo, o acompanhamento online entrega o plano, a correção por vídeo e a cobrança de constância por uma fração do preço — e uma sessão presencial ocasional ajusta a técnica.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Uberlândia para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Uberlândia, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['belo-horizonte-mg', 'goiania-go', 'ribeirao-preto-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Uberlândia', url: 'https://www.uberlandia.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

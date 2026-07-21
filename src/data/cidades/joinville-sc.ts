@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Joinville é uma cidade ativa, com tradição em ciclismo urbano e um calendário consistente de corridas. É também a "capital da dança", sede do maior festival de dança do mundo — uma cultura corporal que se estende ao cuidado com o físico.',
   academias:
     'A oferta reúne forte presença de redes nacionais (Smart Fit, Bluefit, Pratique) e academias locais, complementadas pela estrutura gratuita dos parques e praças.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades em vários bairros da cidade' },
+    { nome: 'Bluefit e Pratique', detalhe: 'redes de baixo custo com presença consolidada' },
+    { nome: 'Academias locais', detalhe: 'forte oferta no América, nos Atiradores e no Saguaçu' },
+    { nome: 'Estrutura pública', detalhe: 'gratuita, no Morro da Boa Vista, na Expoville e nas praças' },
+  ],
 
   destaquesFitness: [
     'Maior rede cicloviária por habitante do Brasil — ótima para bike e corrida.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Maior economia de SC e "Cidade das Bicicletas", Joinville é feita para quem gosta de se movimentar. Um personal trainer ajuda a transformar a enorme malha cicloviária, os parques e as academias da cidade em um plano de treino consistente, do iniciante ao avançado.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Joinville?',
+      resposta:
+        'O Parque Morro da Boa Vista (pista, academia ao ar livre e trilhas com mirante) e o complexo da Expoville são os principais palcos públicos, e as praças com equipamentos gratuitos espalham o treino pelos bairros. Nas academias, Smart Fit, Bluefit e Pratique cobrem a cidade, com academias locais fortes no América e nos Atiradores. O atendimento em casa é comum nos bairros de maior renda — e o relevo plano torna qualquer deslocamento rápido.',
+    },
+    {
+      pergunta: 'Pedalar para o trabalho em Joinville conta como treino?',
+      resposta:
+        'Conta como base de condicionamento — e na "Cidade das Bicicletas", onde cerca de 12% dos deslocamentos diários já são de bike, isso é ouro. O pedal pendular constrói capacidade aeróbica e gasto calórico consistente, mas não substitui o treino de força: a combinação ideal é manter o deslocamento ativo como cardio "gratuito" da semana e somar 2 a 3 sessões de musculação para massa muscular, postura e proteção articular. O personal monta o plano contando essas pedaladas — em vez de ignorá-las.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Joinville para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Joinville, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['blumenau-sc', 'florianopolis-sc', 'curitiba-pr'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Joinville', url: 'https://www.joinville.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };
