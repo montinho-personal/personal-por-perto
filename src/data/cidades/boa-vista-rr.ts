@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Boa Vista tem forte adesão à corrida de rua e ao ciclismo, favorecido pela maior malha de ciclovias do Norte. Programas públicos gratuitos em praças ampliam a base de praticantes e tornam o exercício acessível.',
   academias:
     'A oferta reúne a Smart Fit e centros de treino locais, academias de bairro e o programa público "Academia Aberta", cobrindo musculação e treino funcional em diferentes perfis.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'no Roraima Garden Shopping' },
+    { nome: 'Centros de treino locais e academias de bairro', detalhe: 'musculação e funcional em vários perfis' },
+    { nome: 'Programa Academia Aberta', detalhe: 'aulas públicas gratuitas em praças da cidade' },
+    { nome: 'Estrutura do Parque Anauá', detalhe: 'pistas e quadras gratuitas, das 6h30 às 22h' },
+  ],
 
   destaquesFitness: [
     'Maior rede de ciclovias do Norte — cidade amigável ao deslocamento ativo.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Capital planejada e amigável à bike, Boa Vista oferece do Parque Anauá à orla do Rio Branco um ambiente bom para treinar. Um personal trainer ajuda a aproveitar essa estrutura com método, ajustando horários e intensidade ao calor equatorial.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Boa Vista?',
+      resposta:
+        'O Parque Anauá — aberto das 6h30 às 22h, com pistas, lago e quadras — e a Orla Taumanan, às margens do Rio Branco, são os grandes palcos do treino ao ar livre. Nas academias, a Smart Fit do Roraima Garden e os centros de treino locais cobrem musculação e funcional, e o atendimento em casa é comum no Caçari, no Paraviana e na Mecejana. O traçado radial e a maior malha de ciclovias do Norte facilitam chegar a qualquer cenário.',
+    },
+    {
+      pergunta: 'Se o Academia Aberta é gratuito, quando faz sentido contratar personal em Boa Vista?',
+      resposta:
+        'Os dois se complementam. O programa da prefeitura é uma excelente porta de entrada — aulas coletivas gratuitas de ginástica e alongamento nas praças, ótimas para sair do sedentarismo. O personal entra quando o objetivo pede individualização: plano progressivo desenhado para você, correção de execução, periodização para emagrecimento ou hipertrofia e constância cobrada semana a semana. Muita gente combina: a aula coletiva como atividade extra e as sessões individuais como motor do resultado.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Boa Vista para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Boa Vista, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['manaus-am', 'macapa-ap'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Boa Vista', url: 'https://www.boavista.rr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

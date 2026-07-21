@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Palmas "respira" esporte e lazer, com espaços públicos sempre movimentados. O grande diferencial é o pioneirismo nacional em atividade física entre mulheres, confirmado pelo Vigitel, sustentado pela orla do Lago, pelos parques, pelas academias ao ar livre e pelas ciclovias.',
   academias:
     'A oferta de academias acompanha o crescimento da cidade, mas o grande trunfo de Palmas é a estrutura pública ao ar livre — parques com pistas de até 5 km e academias gratuitas à beira do lago, que ampliam muito o acesso ao treino.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro e na Av. Teotônio Segurado Sul' },
+    { nome: 'Academias e estúdios locais', detalhe: 'oferta crescente nas quadras do Plano Diretor' },
+    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Parque Cesamar e nas praias do Lago' },
+  ],
 
   destaquesFitness: [
     'Capital nº 1 do Brasil em mulheres fisicamente ativas (Vigitel: cerca de 49,6%).',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Planejada para a qualidade de vida e líder nacional em mulheres ativas, Palmas é a prova de que estrutura e cultura caminham juntas. Um personal trainer ajuda a aproveitar o Lago, o Parque Cesamar e as ciclovias com um plano sob medida — e a treinar com segurança mesmo no forte calor da capital.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Palmas?',
+      resposta:
+        'O Parque Cesamar, com pista de cerca de 5 km, e a orla do Lago — da Praia da Graciosa às Arnos — são os palcos naturais do treino ao ar livre, com academias públicas gratuitas espalhadas. Nas academias, a Smart Fit cobre o Centro e a Teotônio Segurado, e estúdios locais crescem nas quadras do Plano Diretor. O atendimento em casa também é comum: a cidade plana e de traçado em grade torna o deslocamento do profissional rápido entre as quadras.',
+    },
+    {
+      pergunta: 'Por que Palmas é a capital nº 1 do Brasil em mulheres ativas?',
+      resposta:
+        'A combinação é rara: uma cidade planejada com espaços públicos seguros e bem cuidados (Cesamar, orla, ciclovias em expansão), cultura de treino coletivo ao ar livre e uma população jovem. O resultado aparece no Vigitel do Ministério da Saúde: cerca de 49,6% das mulheres fisicamente ativas no tempo livre — 1º lugar nacional — e a menor obesidade feminina entre as capitais. Para quem quer começar, isso significa ambiente favorável e companhia garantida em qualquer horário de menor calor.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Palmas para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Palmas, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['brasilia-df', 'goiania-go', 'manaus-am'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palmas', url: 'https://www.palmas.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

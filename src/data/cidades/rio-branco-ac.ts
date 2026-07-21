@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'As corridas de rua estão em forte ascensão em Rio Branco, descritas como fenômeno popular e inclusivo, e o ciclismo urbano é fortemente incentivado pela rede de ciclovias. O Parque do Tucumã é o principal espaço de treino coletivo.',
   academias:
     'A oferta reúne academias de bairro e redes nos shoppings, complementadas pela forte infraestrutura ao ar livre — ciclovias, Parque do Tucumã e Horto Florestal.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'com unidade na cidade (Village)' },
+    { nome: 'Academias de bairro e redes nos shoppings', detalhe: 'boa cobertura no Bosque e no Centro' },
+    { nome: 'Estrutura pública', detalhe: 'gratuita, no Parque do Tucumã e no Horto Florestal' },
+  ],
 
   destaquesFitness: [
     'Uma das maiores malhas cicloviárias per capita do Brasil (cerca de 178 km).',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Capital amazônica com forte cultura de bike e corrida, Rio Branco oferece dos parques às ciclovias um ambiente convidativo para a vida ativa. Um personal trainer ajuda a aproveitar essa estrutura com método e a treinar com segurança no clima quente e úmido do Acre.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Rio Branco?',
+      resposta:
+        'O Parque do Tucumã é o centro de treino coletivo da capital — ciclovia, calçadas, quadras e trilhas em 3,6 km de extensão —, com o Horto Florestal como alternativa arborizada e o Calçadão da Gameleira para caminhadas no centro histórico. Nas academias, a oferta reúne a Smart Fit e academias de bairro, e o atendimento em casa é comum no Bosque e no Jardim Europa. A rede de ciclovias ainda abre espaço para treinos de bike orientados pela Via Verde.',
+    },
+    {
+      pergunta: 'Dá para usar a bicicleta como treino de verdade em Rio Branco?',
+      resposta:
+        'Dá — e em poucas capitais isso é tão viável. Rio Branco tem cerca de 178 km de malha cicloviária e é apontada como a capital que mais investe por habitante em infraestrutura para bikes, com o eixo da Via Verde como espinha dorsal. Na prática, o pedal vira o cardio da semana: sessões de 40 a 60 minutos nos horários frescos, combinadas à musculação para força e proteção articular. O personal monta essa combinação conforme o objetivo — emagrecimento, condicionamento ou performance.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Rio Branco para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Rio Branco, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['porto-velho-ro', 'manaus-am'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Branco', url: 'https://www.riobranco.ac.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };
