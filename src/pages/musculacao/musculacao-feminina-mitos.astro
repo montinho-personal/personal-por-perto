@@ -1,0 +1,273 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O grupo muscular mais buscado do treino feminino, sem os desafios de 30 dias.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'Os mecanismos são os mesmos para todo mundo — entenda o que faz o músculo crescer.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/musculacao-depois-dos-40/',
+    titulo: 'Musculação depois dos 40: o que muda e como treinar',
+    descricao: 'Para as mulheres, o treino de força depois dos 40 é ainda mais decisivo — ossos agradecem.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/musculacao-feminina-mitos';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Musculação feminina: 7 mitos que ainda atrapalham', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Musculação deixa a mulher "grande" e masculinizada?',
+    resposta:
+      'Não — este é o mito mais persistente e o mais distante da fisiologia. A hipertrofia depende fortemente de testosterona, e mulheres produzem uma fração pequena dos níveis masculinos. O que o treino de força constrói na prática é um corpo mais firme, denso e definido — o "tônus" que a maioria busca é exatamente músculo. Os físicos extremamente musculosos que alimentam esse medo são resultado de anos de treino altamente especializado e, com frequência, de recursos hormonais — não acontecem por acidente com 3 treinos por semana.',
+  },
+  {
+    pergunta: 'Mulher deve treinar diferente de homem?',
+    resposta:
+      'Os princípios são idênticos — progressão de carga, volume adequado, esforço real —, porque músculo não tem gênero. O que muda são as ênfases de objetivo (muitas mulheres priorizam inferiores, o que é legítimo) e algumas particularidades fisiológicas: em média, mulheres se recuperam bem entre séries e toleram volumes de treino altos, e podem ajustar o treino ao ciclo menstrual se os sintomas pesarem. O erro é o "treino feminino" de carguinha rosa eterna: subestimar mulher em treino é desperdiçar o potencial dela.',
+  },
+  {
+    pergunta: 'Treinar pesado é perigoso para mulheres?',
+    resposta:
+      'O contrário: treinar leve demais é que cobra caro no longo prazo. Mulheres perdem massa óssea aceleradamente após a menopausa, e o treino de força com cargas desafiadoras é dos estímulos mais eficazes para construir e preservar osso — além de músculo, força e independência. "Pesado" aqui significa desafiador para o SEU nível, com técnica limpa e progressão gradual: é assim que o corpo fica mais resistente a lesões, não mais frágil.',
+  },
+  {
+    pergunta: 'Musculação emagrece ou preciso focar no cardio?',
+    resposta:
+      'A dupla funciona melhor junta, mas a musculação é a peça que as mulheres foram ensinadas a pular — e é justamente a que preserva e constrói músculo enquanto a gordura cai, garantindo que a balança desça do jeito certo. Mais massa muscular também eleva o gasto energético de repouso. O cardio soma gasto calórico e saúde cardiovascular. A resposta prática: força 2 a 4 vezes por semana como base, cardio como complemento — e o déficit calórico como motor do emagrecimento.',
+  },
+  {
+    pergunta: 'Posso treinar menstruada ou devo pular os dias do ciclo?',
+    resposta:
+      'Pode treinar — e muitas mulheres relatam até alívio de sintomas com o exercício. A evidência atual não mostra necessidade de parar; mostra bom senso: nos dias de sintomas fortes, reduzir intensidade ou trocar o estímulo é ajuste legítimo, e o plano pode acompanhar as fases do ciclo se isso fizer sentido para você. Dor menstrual incapacitante ou sangramento muito intenso fogem do normal e merecem avaliação ginecológica — treino não substitui médico.',
+  },
+];
+
+const title = 'Musculação feminina: 7 mitos que ainda atrapalham (e a verdade)';
+const description =
+  'Vai ficar grande? Tem que treinar diferente? Pesado é perigoso? Os 7 mitos que ainda afastam mulheres da musculação, desmontados com fisiologia — e o que realmente muda no treino feminino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Musculação feminina: 7 mitos que ainda atrapalham (e a verdade)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      As mulheres já são maioria em muitas academias brasileiras — e mesmo
+      assim seguem cercadas de conselhos que os homens nunca recebem: "cuidado
+      para não ficar grande", "faz só cardio", "mulher treina leve". Este
+      artigo desmonta os <strong>7 mitos mais persistentes da musculação
+      feminina</strong> com fisiologia básica — e mostra o que de fato merece
+      atenção no treino das mulheres.
+    </p>
+
+    <div class="prose">
+      <h2>Mito 1: "Vou ficar grande e masculinizada"</h2>
+      <p>
+        O medo número um é o mais fácil de aposentar: hipertrofia em larga
+        escala depende de testosterona, e a produção feminina é uma fração
+        pequena da masculina. Com treino sério, o que a mulher constrói é o
+        corpo firme e definido que a maioria procura — porque
+        <strong>"tônus" é literalmente músculo</strong> com menos gordura por
+        cima. Físicos extremamente musculosos são projetos de anos,
+        especializados e frequentemente farmacológicos; ninguém acorda
+        "grande demais" por acidente. O mecanismo completo está no artigo
+        sobre <a href="/musculacao/hipertrofia-como-funciona/">como funciona a hipertrofia</a>.
+      </p>
+
+      <h2>Mito 2: "Mulher tem que treinar diferente"</h2>
+      <p>
+        Músculo não tem gênero: os princípios — progressão, volume, esforço —
+        são os mesmos para todo mundo. O que existe de legítimo são ênfases
+        de objetivo (priorizar inferiores e
+        <a href="/musculacao/treino-de-gluteos/">glúteos</a>, por exemplo) e
+        nuances fisiológicas reais: em média, mulheres se recuperam mais
+        rápido entre séries e toleram bem volumes altos. O que não existe é
+        justificativa para o "treino feminino" de caneleira eterna — treino
+        subdosado entrega resultado subdosado, para qualquer pessoa.
+      </p>
+
+      <h2>Mito 3: "Treinar pesado é perigoso"</h2>
+      <p>
+        A fisiologia diz o oposto, e com urgência: mulheres perdem massa
+        óssea aceleradamente após a menopausa, e o
+        <strong>treino de força com carga desafiadora é um dos melhores
+        estímulos conhecidos para os ossos</strong> — posição refletida nas
+        diretrizes da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        e de entidades como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
+        Cada ano de treino de força é depósito na poupança óssea que será
+        sacada décadas depois. "Pesado" significa desafiador para o seu
+        nível, com técnica limpa — e isso torna o corpo mais resistente, não
+        mais frágil.
+      </p>
+
+      <h2>Mito 4: "Para emagrecer, o negócio é cardio"</h2>
+      <p>
+        O cardio ajuda no gasto calórico, mas a musculação é o que decide a
+        <em>qualidade</em> do emagrecimento: preserva e constrói músculo
+        enquanto a gordura cai — o famoso "tonificar" é isso. A receita
+        prática: força como base da semana, cardio como complemento, déficit
+        calórico como motor, como detalham os artigos sobre
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação ou cardio</a>
+        e <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">preservação de massa magra</a>.
+      </p>
+
+      <h2>Mito 5: "Não pode treinar menstruada"</h2>
+      <p>
+        Pode — e para muitas mulheres o treino alivia sintomas. A conduta
+        moderna é de ajuste, não de pausa: nos dias piores, reduzir
+        intensidade ou trocar o estímulo; nos demais, seguir normalmente. Se
+        houver interesse, o plano pode acompanhar as fases do ciclo. O sinal
+        de alerta fica para dores incapacitantes ou fluxo muito intenso —
+        isso é assunto para ginecologista, não para o treino resolver.
+      </p>
+
+      <h2>Mito 6: "Abdominal infinito seca a barriga"</h2>
+      <p>
+        Gordura localizada não queima com exercício localizado — em nenhum
+        corpo. Abdominais fortalecem o abdômen (ótimo); quem revela o abdômen
+        é o <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit calórico</a>
+        sustentado. As centenas de repetições diárias que prometem "secar"
+        são o equivalente abdominal do desafio de 30 dias de glúteo:
+        movimento sem resultado proporcional.
+      </p>
+
+      <h2>Mito 7: "Academia de musculação não é lugar de mulher"</h2>
+      <p>
+        Esse mito não é fisiológico — é cultural, e está morrendo na prática:
+        as mulheres já dividem por igual (ou dominam) o salão de musculação
+        das academias brasileiras. Para quem ainda sente o desconforto de
+        começar, as saídas práticas existem: horários mais vazios, estúdios
+        menores, treino em casa bem estruturado (o
+        <a href="/musculacao/treino-em-casa-para-iniciantes/">guia de treino em casa</a>
+        resolve o início) e o acompanhamento individual, que elimina a
+        sensação de "não saber o que fazer" — a maior barreira real de
+        entrada.
+      </p>
+
+      <h2>O que muda de verdade no treino feminino</h2>
+      <ul>
+        <li><strong>Objetivos e ênfases:</strong> o plano respeita o que você quer construir — sem imposição de modelo.</li>
+        <li><strong>Fases hormonais:</strong> ciclo, gestação (com liberação e acompanhamento obstétrico), pós-parto e menopausa pedem ajustes específicos — e são exatamente onde a orientação profissional mais vale.</li>
+        <li><strong>Prioridade óssea:</strong> quanto mais cedo a força entra na rotina, maior a reserva óssea e muscular para as décadas seguintes — o artigo sobre <a href="/musculacao/musculacao-depois-dos-40/">musculação depois dos 40</a> aprofunda essa conta.</li>
+      </ul>
+      <p>
+        Para escolher um profissional que trate o treino feminino com a
+        seriedade que ele merece — sem carguinha rosa nem promessas de
+        atalho —, o guia sobre
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        lista as perguntas certas.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> mulher não "fica grande" por acidente,
+        não precisa de treino diferente, e treinar pesado — no seu nível,
+        com técnica — é proteção, não risco: músculo e osso agradecem por
+        décadas. Cardio complementa, não substitui; menstruação pede ajuste,
+        não pausa; e barriga se revela na cozinha, não no abdominal
+        infinito. O treino é o mesmo; o que muda é a coragem de finalmente
+        fazê-lo direito.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="FIiOd412sRs"
+      titulo="Leandro Twin: hipertrofia feminina — o que é possível conseguir natural?"
+      legenda="No vídeo: Leandro Twin explica o que a hipertrofia feminina natural realmente entrega."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

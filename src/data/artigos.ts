@@ -39,6 +39,10 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/creatina-o-que-e-como-tomar/', titulo: 'Creatina: o que é, para que serve e como tomar' },
   { categoria: 'Musculação', url: '/musculacao/musculacao-depois-dos-40/', titulo: 'Musculação depois dos 40: o que muda e como treinar' },
   { categoria: 'Musculação', url: '/musculacao/quanto-tempo-de-treino-por-dia/', titulo: 'Quanto tempo de treino por dia é suficiente?' },
+  { categoria: 'Musculação', url: '/musculacao/whey-protein-o-que-e-como-tomar/', titulo: 'Whey protein: o que é, para que serve e como tomar' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-gluteos/', titulo: 'Treino de glúteos: o que funciona de verdade (e o que é mito)' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-feminina-mitos/', titulo: 'Musculação feminina: 7 mitos que ainda atrapalham (e a verdade)' },
+  { categoria: 'Musculação', url: '/musculacao/alongamento-antes-do-treino/', titulo: 'Alongamento antes do treino: ajuda ou atrapalha?' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

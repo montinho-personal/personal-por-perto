@@ -1,0 +1,277 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'Alongar não previne a dor tardia — entenda o que ela é e o que realmente ajuda.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'O aquecimento certo faz parte dos primeiros passos — veja como estruturar o treino do zero.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-de-treino-por-dia/',
+    titulo: 'Quanto tempo de treino por dia é suficiente?',
+    descricao: 'Aquecimento conta no relógio: veja como montar sessões eficientes de 30 a 60 minutos.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/alongamento-antes-do-treino';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Alongamento antes do treino: ajuda ou atrapalha?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Alongar antes do treino atrapalha mesmo a força?',
+    resposta:
+      'O alongamento estático prolongado (segurar posições por 45-60+ segundos) imediatamente antes de esforços de força e potência pode reduzir temporariamente o desempenho — esse efeito aparece de forma consistente na literatura. Mas o contexto importa: alongamentos breves (menos de 30 segundos por posição) têm efeito pequeno ou nulo, e o impacto some se o alongamento for seguido de um bom aquecimento específico. A recomendação prática moderna: antes do treino, prefira aquecimento dinâmico; deixe o alongamento estático longo para depois do treino ou para sessões separadas.',
+  },
+  {
+    pergunta: 'O que fazer antes do treino no lugar do alongamento?',
+    resposta:
+      'Aquecimento em duas camadas: 1) geral — 3 a 5 minutos elevando a temperatura (caminhada rápida, bike leve, polichinelos); 2) específico — movimentos dinâmicos que ensaiam o treino do dia (agachamentos com o peso do corpo, rotações de ombro e quadril, avanços) e séries de aproximação com cargas leves subindo até a carga de trabalho. Esse protocolo prepara articulações, sistema nervoso e técnica — exatamente o que o alongamento estático não faz.',
+  },
+  {
+    pergunta: 'Alongamento previne lesão?',
+    resposta:
+      'A crença é antiga, mas as revisões da literatura não encontraram efeito relevante do alongamento pré-treino na prevenção de lesões em geral. O que se associa a menos lesões é outra lista: aquecimento adequado, progressão de carga sensata, técnica limpa, força equilibrada e sono. Alongar não é inútil — melhora amplitude e é agradável —, só não é o amuleto protetor que pintaram. Vale lembrar que dor persistente não se resolve alongando: quadros assim pedem avaliação de médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Então alongamento não serve para nada?',
+    resposta:
+      'Serve — no lugar certo. O alongamento é a ferramenta para ganhar amplitude de movimento: quem não consegue agachar fundo, tem ombros encurtados ou quer manter flexibilidade com a idade se beneficia de sessões regulares de alongamento (ou de treinar exercícios de força em amplitude completa, que também melhora flexibilidade). Depois do treino ou em horários separados, 2 a 3 vezes por semana, é o encaixe ideal. O que muda é só o momento: longe da hora de gerar força.',
+  },
+  {
+    pergunta: 'Quanto tempo de aquecimento é suficiente antes da musculação?',
+    resposta:
+      'Para a maioria, 5 a 10 minutos resolvem: uma elevação geral de temperatura curta e as séries de aproximação do primeiro exercício de cada grupo muscular. Quem treina cedo de manhã, em dias frios, ou tem articulações "resmungonas" (especialmente 40+) se beneficia de esticar isso um pouco. O sinal de aquecimento bem feito é simples: a primeira série pesada não parece um susto. Aquecimento de 30 minutos, por outro lado, é treino roubado — o objetivo é preparar, não cansar.',
+  },
+];
+
+const title = 'Alongamento antes do treino: ajuda ou atrapalha?';
+const description =
+  'O que a ciência diz sobre alongar antes da musculação: quando o alongamento estático atrapalha, o que fazer no lugar (aquecimento dinâmico), se previne lesão e o momento certo de alongar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Alongamento antes do treino: ajuda ou atrapalha?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo mundo aprendeu na escola: antes do exercício, alongar. A ciência
+      do treino passou as últimas duas décadas revisando essa lição — e o
+      veredito surpreende quem parou no tempo:
+      <strong>alongamento estático longo antes da força pode atrapalhar, e o
+      que previne problema é aquecimento, não alongamento</strong>. Este
+      artigo organiza o que ficou de pé: o que fazer antes do treino, o que
+      deixar para depois e o papel real da flexibilidade.
+    </p>
+
+    <div class="prose">
+      <h2>O que a ciência revisou (e por quê)</h2>
+      <p>
+        A tradição de alongar antes de treinar nasceu da intuição de que
+        músculo "esticado" trabalha melhor e se machuca menos. Quando a
+        pesquisa testou, encontrou outra coisa: o
+        <strong>alongamento estático prolongado</strong> — segurar posições
+        por 45 a 60+ segundos — imediatamente antes de esforços de força e
+        potência reduz temporariamente a capacidade de gerar força, um
+        fenômeno replicado em dezenas de estudos. O efeito é transitório e
+        modesto, mas real — e vai contra exatamente o que se busca ao entrar
+        na academia.
+      </p>
+      <p>
+        Já a versão curta (posições de até 30 segundos) tem impacto pequeno
+        ou nulo — e o prejuízo praticamente desaparece quando o alongamento é
+        seguido de aquecimento específico. Por isso a recomendação prática de
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        e a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        convergiu: antes do treino, <strong>aquecimento dinâmico</strong>;
+        alongamento estático longo, em outro momento.
+      </p>
+
+      <h2>O que fazer antes do treino: o protocolo de 2 camadas</h2>
+      <ul>
+        <li>
+          <strong>Camada 1 — aquecimento geral (3 a 5 min):</strong> elevar a
+          temperatura corporal com caminhada rápida, bike leve ou
+          polichinelos. Suor leve é o sinal de missão cumprida.
+        </li>
+        <li>
+          <strong>Camada 2 — aquecimento específico:</strong> ensaiar os
+          movimentos do dia de forma dinâmica — agachamentos com o peso do
+          corpo, rotações de quadril e ombro, avanços — e, no primeiro
+          exercício de cada grupo, <strong>séries de aproximação</strong>:
+          cargas leves subindo em degraus até a carga de trabalho.
+        </li>
+      </ul>
+      <p>
+        Esse protocolo faz o que o alongamento estático não faz: lubrifica as
+        articulações, acorda o sistema nervoso, ensaia a técnica e prepara o
+        corpo para gerar força. Em 5 a 10 minutos está pronto — e cabe até
+        nas <a href="/musculacao/quanto-tempo-de-treino-por-dia/">sessões curtas de 30 minutos</a>.
+      </p>
+
+      <h2>"Mas alongar não previne lesão?"</h2>
+      <p>
+        As revisões da literatura dizem que não — pelo menos não o
+        alongamento pré-treino que a tradição prescreveu. O que se associa
+        consistentemente a menos lesões é menos poético:
+        <strong>aquecimento bem feito, progressão de carga sensata, técnica
+        limpa e recuperação</strong> — os mesmos temas dos artigos sobre
+        <a href="/musculacao/progressao-de-carga/">progressão</a> e
+        <a href="/musculacao/dor-muscular-pos-treino/">dor pós-treino</a>. O
+        alongamento também não previne a dor tardia do dia seguinte, outro
+        papel que a tradição lhe atribuiu sem consultar os dados.
+      </p>
+
+      <h2>O lugar de honra do alongamento (porque ele tem um)</h2>
+      <p>
+        Nada disso aposenta o alongamento — apenas o realoca. Ele é a
+        ferramenta certa para <strong>amplitude de movimento</strong>: quem
+        não agacha fundo por rigidez de tornozelo e quadril, tem peitoral e
+        ombros encurtados de mesa de trabalho, ou quer preservar
+        flexibilidade com a idade, colhe muito de sessões regulares — depois
+        do treino ou em horários separados, 2 a 3 vezes por semana. E há um
+        aliado subestimado: <strong>treinar força em amplitude completa</strong>
+        também melhora a flexibilidade, com bônus de construir músculo no
+        caminho.
+      </p>
+
+      <h2>Como fica na prática, por perfil</h2>
+      <ul>
+        <li>
+          <strong>Musculação:</strong> aquecimento de 2 camadas; alongamento
+          estático longo só depois do treino, se quiser.
+        </li>
+        <li>
+          <strong>Corrida:</strong> começar devagar já é aquecimento;
+          educativos e mobilidade dinâmica somam. Alongamento estático fica
+          para depois.
+        </li>
+        <li>
+          <strong>Quem treina cedo ou no frio:</strong> estique a camada 1 —
+          o corpo frio pede mais entrada, como sabem os leitores de
+          <a href="/musculacao/musculacao-depois-dos-40/">40+</a>.
+        </li>
+        <li>
+          <strong>Quem ama alongar antes:</strong> mantenha curto (até 30
+          segundos por posição) e siga com aquecimento específico — assim o
+          ritual continua sem custo de desempenho.
+        </li>
+      </ul>
+      <p>
+        Ajustar aquecimento, mobilidade e treino ao seu corpo — encurtado,
+        apressado ou 40+ — é trabalho de quem monta o plano olhando para
+        você: o guia sobre
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        mostra o que exigir de um bom profissional.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> antes do treino, aquecimento dinâmico em
+        2 camadas (geral + específico com séries de aproximação) — não
+        alongamento estático longo, que pode reduzir força na hora e não
+        previne lesão. O alongamento continua valioso para amplitude e
+        flexibilidade, no momento certo: depois do treino ou em sessões
+        próprias. A lição da escola não estava errada sobre alongar — só
+        sobre o horário.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="7Z0SjeAoZhE"
+      titulo="Leandro Twin: alongamento para treinos de hipertrofia"
+      legenda="No vídeo: Leandro Twin explica como o alongamento se encaixa no treino de hipertrofia."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

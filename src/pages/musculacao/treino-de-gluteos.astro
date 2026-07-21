@@ -1,0 +1,286 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'O volume certo para glúteos segue as mesmas regras de qualquer músculo — veja as faixas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/musculacao-feminina-mitos/',
+    titulo: 'Musculação feminina: mitos que ainda atrapalham',
+    descricao: 'O treino de glúteos vive cercado dos mesmos mitos — este artigo desmonta os principais.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Dor lombar e musculação: como treinar com segurança',
+    descricao: 'Glúteos fortes são parte do suporte da coluna — e treiná-los bem protege a lombar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-gluteos';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de glúteos: o que funciona de verdade', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quais são os melhores exercícios para glúteos?',
+    resposta:
+      'A base comprovada tem três famílias: 1) empurrar o quadril — elevação pélvica e hip thrust, os que mais isolam e carregam o glúteo; 2) agachar e afundar — agachamento, búlgaro e passada, que constroem glúteo junto com pernas; 3) dobradiça de quadril — terra romeno e stiff, que pegam glúteos e posteriores. Um bom treino combina as três famílias ao longo da semana, com progressão de carga. Exercícios "de revista" com caneleira têm papel acessório — podem entrar no fim, não no lugar dos principais.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar glúteos?',
+    resposta:
+      'Duas a três sessões semanais que envolvam glúteos funcionam melhor que uma sessão única "matadora". O volume total recomendado segue a regra geral de grupos musculares: cerca de 10 a 20 séries semanais bem executadas, somando os exercícios diretos (hip thrust, elevação pélvica) e os compostos (agachamentos, terras). Mais que isso raramente acelera resultado — recuperação também constrói músculo.',
+  },
+  {
+    pergunta: 'Em quanto tempo o glúteo cresce de verdade?',
+    resposta:
+      'Com treino progressivo, proteína adequada e constância, as primeiras mudanças perceptíveis costumam aparecer entre 8 e 12 semanas, com evolução visível de verdade na casa dos 6 meses a 1 ano. Glúteos são músculos grandes e respondem bem a treino — mas não existem atalhos de 30 dias, e desafios milagrosos de agachamento diário produzem mais frustração que resultado. Quem progride carga ao longo dos meses colhe; quem repete o mesmo estímulo, mantém.',
+  },
+  {
+    pergunta: 'Sinto o quadríceps ou a lombar no lugar do glúteo. O que estou errando?',
+    resposta:
+      'É a queixa mais comum do treino de glúteos e quase sempre é técnica: amplitude e posição transferem o trabalho para vizinhos mais espertos. Correções típicas: no hip thrust, queixo levemente recolhido, costelas fechadas e finalizar o movimento com o quadril (sem hiperestender a lombar); no agachamento, distribuir o apoio no pé inteiro e controlar a descida; nas dobradiças, empurrar o quadril para trás em vez de dobrar a coluna. Gravar a execução ou ter correção profissional resolve em poucas sessões o que meses de tentativa não resolvem.',
+  },
+  {
+    pergunta: 'Homem também deveria treinar glúteos?',
+    resposta:
+      'Deveria — e não por estética apenas. O glúteo máximo é o músculo mais forte do corpo e o motor da extensão de quadril: correr, saltar, levantar peso do chão e subir escada dependem dele. Glúteos fortes também dividem o trabalho que, quando eles falham, sobra para a lombar e para os joelhos. Homens que ignoram o treino direto de glúteos deixam desempenho e proteção articular na mesa — os melhores levantadores do mundo não ignoram.',
+  },
+];
+
+const title = 'Treino de glúteos: o que funciona de verdade (e o que é mito)';
+const description =
+  'Os exercícios que realmente constroem glúteos (hip thrust, agachamentos, dobradiças), frequência e volume ideais, prazos realistas, correções para "não sentir o glúteo" e por que homens também devem treinar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de glúteos: o que funciona de verdade (e o que é mito)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum grupo muscular acumula tanto conteúdo raso quanto os glúteos —
+      desafios de 30 dias, caneleiras milagrosas e circuitos infinitos de
+      exercícios que mal saem do lugar. A ciência do treino é menos
+      fotogênica e muito mais eficaz: <strong>glúteo cresce como qualquer
+      músculo — com tensão pesada, progressão e recuperação</strong>. Este
+      guia organiza o que funciona: os exercícios certos, a frequência, os
+      prazos honestos e as correções para quem "não sente o glúteo".
+    </p>
+
+    <div class="prose">
+      <h2>Como o glúteo cresce (a parte que os desafios ignoram)</h2>
+      <p>
+        O glúteo máximo é o músculo mais forte do corpo humano — e é
+        justamente por isso que os estímulos leves dos "desafios" não o
+        impressionam. Ele responde ao mesmo princípio de qualquer músculo,
+        descrito nas diretrizes de treinamento de força de entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>:
+        <strong>tensão mecânica alta e progressiva</strong>, com séries
+        levadas para perto do esforço real. Trinta agachamentos livres por
+        dia viram cardio de perna em uma semana; um hip thrust que sobe de
+        carga mês a mês vira glúteo.
+      </p>
+
+      <h2>As três famílias de exercícios que formam a base</h2>
+      <ul>
+        <li>
+          <strong>Empurrar o quadril (ponte):</strong> elevação pélvica e
+          <em>hip thrust</em> — os exercícios com maior ativação direta do
+          glúteo e os mais fáceis de carregar pesado com segurança. São o
+          coração do treino.
+        </li>
+        <li>
+          <strong>Agachar e afundar:</strong> agachamento livre ou goblet,
+          búlgaro e passada — constroem glúteos junto com quadríceps,
+          especialmente nas amplitudes mais profundas que o seu corpo
+          tolerar bem.
+        </li>
+        <li>
+          <strong>Dobradiça de quadril:</strong> terra romeno e stiff —
+          carregam glúteos e posteriores de coxa no alongamento, o estímulo
+          que os outros dois não cobrem por completo.
+        </li>
+      </ul>
+      <p>
+        Abdução com caneleira, coice no cabo e elásticos têm lugar — como
+        <em>acessórios</em> de final de treino ou aquecimento de ativação.
+        O erro clássico é montar o treino inteiro com eles e estranhar a
+        falta de resultado.
+      </p>
+
+      <h2>A semana que funciona: frequência e volume</h2>
+      <p>
+        A receita com melhor suporte: <strong>2 a 3 sessões semanais</strong>
+        envolvendo glúteos, somando <strong>10 a 20 séries de qualidade</strong>
+        na semana — as mesmas faixas do artigo sobre
+        <a href="/musculacao/quantas-series-e-repeticoes/">séries e repetições</a>.
+        Um arranjo clássico: dia A com hip thrust pesado + agachamento; dia B
+        com terra romeno + búlgaro + acessórios. Cada sessão termina com a
+        sensação de trabalho feito — não com a necessidade de rastejar para
+        casa, que só atrasa a próxima.
+      </p>
+      <p>
+        E a regra que ninguém posta: <strong>progressão</strong>. Anote as
+        cargas e busque superá-las gradualmente, como detalha o artigo sobre
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+        Glúteo de anos se constrói com planilha, não com frase motivacional.
+      </p>
+
+      <h2>"Não sinto o glúteo": o guia de correção</h2>
+      <p>
+        A queixa mais comum tem quase sempre a mesma origem: técnica que
+        deixa quadríceps e lombar roubarem a cena. O checklist:
+      </p>
+      <ul>
+        <li>
+          <strong>No hip thrust:</strong> queixo recolhido, costelas
+          "fechadas", subir até a extensão completa do quadril — e parar lá,
+          sem arquear a lombar para "subir mais".
+        </li>
+        <li>
+          <strong>No agachamento:</strong> apoio no pé inteiro, descida
+          controlada, profundidade confortável — glúteo trabalha mais nos
+          ângulos profundos, não na pressa.
+        </li>
+        <li>
+          <strong>Nas dobradiças:</strong> o movimento é o quadril indo para
+          trás, não a coluna dobrando para a frente. Se a lombar cansa mais
+          que o posterior, a dobradiça virou reverência.
+        </li>
+        <li>
+          <strong>Ativação (quando ajuda):</strong> 1 a 2 séries leves de
+          ponte ou abdução antes do treino podem melhorar a "conexão" — mas
+          são aquecimento, não o treino.
+        </li>
+      </ul>
+      <p>
+        Se mesmo assim a lombar reclama, vale conferir o artigo sobre
+        <a href="/musculacao/treinar-com-dor-lombar/">dor lombar e musculação</a>
+        — glúteos fortes, aliás, são parte da proteção da coluna.
+      </p>
+
+      <h2>Prazos honestos (e o fim dos desafios de 30 dias)</h2>
+      <p>
+        Com treino sério, as primeiras mudanças chegam em
+        <a href="/musculacao/quanto-tempo-para-ver-resultados/">8 a 12 semanas</a>;
+        a transformação que as pessoas notam de fora é história de 6 a 12
+        meses. Desafio de 30 dias muda foto de progresso por iluminação. O
+        que muda glúteo é o ciclo repetido de estímulo pesado, comida
+        suficiente e sono — temporada após temporada.
+      </p>
+
+      <h2>Nota para os homens que pularam este artigo</h2>
+      <p>
+        O glúteo é o motor da extensão de quadril — correr, saltar, levantar
+        do chão. Homens que treinam glúteos diretamente levantam mais peso no
+        terra e no agachamento e distribuem melhor as cargas que, sem
+        glúteos, sobram para lombar e joelhos. Não é treino "de mulher"; é
+        treino de quem entende alavancas. Para montar essa estrutura com
+        técnica certa desde o início, o
+        <a href={rotas.comoEscolher}>acompanhamento profissional</a> encurta
+        meses de tentativa e erro.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> glúteos crescem com as três famílias —
+        empurrar o quadril (hip thrust), agachar/afundar e dobradiça — em 2 a
+        3 sessões e 10 a 20 séries semanais, com carga progredindo mês a mês.
+        Caneleiras e elásticos são acessórios, não o prato principal; "não
+        sentir o glúteo" é quase sempre técnica corrigível; e o prazo honesto
+        se mede em meses de constância — não em desafios de 30 dias.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="PTUiMcnu8as"
+      titulo="Leandro Twin: treino de glúteos completo"
+      legenda="No vídeo: Leandro Twin monta um treino completo de glúteos — inclusive para fazer em casa."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
