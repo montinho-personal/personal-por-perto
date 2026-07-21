@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'São José dos Campos tem forte adesão a atividades ao ar livre nos parques e um calendário municipal de corrida muito ativo. Premiada por qualidade de vida e sustentabilidade urbana, a cidade incentiva a vida ativa como parte do seu projeto.',
   academias:
     'A oferta reúne várias unidades de redes nacionais (Smart Fit) e estúdios de funcional e crossfit, com boa cobertura de plataformas de benefícios, atendendo o público qualificado dos bairros de alta renda.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Jardim Satélite, no Aquarius e no Center Vale' },
+    { nome: 'Estúdios de funcional e crossfit', detalhe: 'concentrados no Aquarius e no Jardim Esplanada' },
+    { nome: 'Estrutura dos parques', detalhe: 'gratuita, no Parque da Cidade, no Santos Dumont e no Vicentina Aranha' },
+  ],
 
   destaquesFitness: [
     'Múltiplas unidades de redes nacionais e ampla cobertura de planos corporativos.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade de alta renda, planejada e premiada por qualidade de vida, São José dos Campos tem estrutura de sobra para quem quer treinar — dos parques ao calendário de corridas. Um personal trainer ajuda a aproveitar tudo isso com método e a manter a constância ao longo do ano.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em São José dos Campos?',
+      resposta:
+        'Os parques dão o tom: o Parque da Cidade (1 milhão de m² planos), o Santos Dumont na Vila Adyana e o Vicentina Aranha cobrem o treino ao ar livre. Nas academias, a Smart Fit atende do Satélite ao Aquarius, com estúdios de funcional nos bairros de alta renda. O atendimento em casa e em condomínio é forte no Aquarius e no Urbanova — e os cerca de 300 km de rede cicloviária, uma das maiores do interior, sustentam treinos de bike orientados.',
+    },
+    {
+      pergunta: 'Como usar o calendário de corridas de São José como meta de treino?',
+      resposta:
+        'Poucas cidades do país oferecem tantas linhas de chegada: são mais de vinte provas municipais por ano, de 3 km à maratona. Na prática do treino, isso vira periodização de graça: o personal escolhe com o aluno duas ou três provas-alvo no ano e organiza os ciclos de treino para chegar bem em cada uma — prova curta como teste, meia maratona como objetivo. Para iniciantes, os 5 km do circuito joseense são a porta de entrada perfeita: perto de casa, baratos e com clima de festa.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São José dos Campos para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para São José dos Campos, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-paulo-sp', 'guarulhos-sp', 'campinas-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Campos', url: 'https://www.sjc.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

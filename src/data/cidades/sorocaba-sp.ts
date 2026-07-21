@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Sorocaba tem forte tradição esportiva e é uma das cidades mais ciclísticas do Brasil. Corrida de rua e ciclismo são muito populares, sustentados pela ampla malha de ciclovias e pela rede de parques, com um calendário recorrente de provas.',
   academias:
     'A presença da Smart Fit em vários bairros, somada a academias locais e estúdios de funcional, dá boa cobertura à cidade, que tem nos parques uma extensão natural para o treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Campolim, na Av. Ipanema, no Jardim Vergueiro e em shoppings' },
+    { nome: 'Academias locais e estúdios de funcional', detalhe: 'boa cobertura pelos bairros' },
+    { nome: 'Estrutura dos parques', detalhe: 'gratuita — Campolim, Parque das Águas (24h) e ETA-Éden' },
+  ],
 
   destaquesFitness: [
     'Uma das maiores redes de ciclovias do Brasil (cerca de 128 km) e bike sharing público.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade-parque e referência em mobilidade ativa, Sorocaba é feita para quem gosta de se movimentar. Um personal trainer ajuda a transformar as ciclovias e os parques da cidade em um plano de treino consistente — da corrida no Parque das Águas à musculação com método.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Sorocaba?',
+      resposta:
+        'A cidade-parque oferece um circuito completo: o Parque Campolim, com três pistas de distâncias diferentes (1,5 km, 1,9 km e 2,6 km), o Parque das Águas — aberto 24 horas, palco das corridas da cidade — e o ETA-Éden, arborizado. Nas academias, a Smart Fit cobre do Campolim ao Vergueiro, e o atendimento em casa é comum no Campolim e no Jardim Europa. Os cerca de 128 km de ciclovias separadas do trânsito ainda fazem da bike uma opção real de treino.',
+    },
+    {
+      pergunta: 'O que o Parque das Águas aberto 24 horas muda na rotina de treino?',
+      resposta:
+        'Muda o principal obstáculo de quem trabalha em turnos na indústria sorocabana: o horário. Com o parque aberto e iluminado a qualquer hora, quem sai da fábrica às 22h ou entra às 6h consegue manter treino ao ar livre constante — algo raro no interior. O personal aproveita essa flexibilidade para montar agendas fora do padrão comercial, e as três pistas do Campolim complementam com opções de distância para os treinos diurnos de corrida e caminhada.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Sorocaba para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Sorocaba, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['campinas-sp', 'sao-paulo-sp', 'ribeirao-preto-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sorocaba', url: 'https://www.sorocaba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

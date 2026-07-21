@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Ribeirão Preto tem tradição no futebol (com o Botafogo-SP e a Arena Eurobike) e é uma cidade muito ativa em corrida de rua, ciclismo e treino em parques. O calor faz parte do desafio — e do charme — de treinar na região.',
   academias:
     'A presença de redes como Smart Fit e Bluefit garante boa cobertura, complementada por estúdios de funcional e personal voltados ao público de alto poder aquisitivo da Zona Sul.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Subsetor Sul, na Ribeirânia e nos shoppings' },
+    { nome: 'Bluefit', detalhe: 'unidades no Jardim Califórnia e no Santa Cruz' },
+    { nome: 'Estúdios premium da Zona Sul', detalhe: 'funcional e personal para o público de alto padrão' },
+    { nome: 'Academias ao ar livre dos parques', detalhe: 'gratuitas, no Maurílio Biagi e no Curupira' },
+  ],
 
   destaquesFitness: [
     'Público de alto poder aquisitivo na Zona Sul — nicho premium para personal e assessorias.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do agronegócio e polo de saúde, Ribeirão Preto tem um público que valoriza qualidade — e isso se reflete na busca por bons profissionais. Um personal trainer ajuda a aproveitar os parques e as academias da cidade com um plano que respeite o calor característico e acelere seus resultados.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Ribeirão Preto?',
+      resposta:
+        'A Zona Sul concentra o mercado premium — estúdios, atendimento em casa e em condomínio no Jardim Botânico, na Vila do Golf e no Bosque das Juritis —, enquanto Smart Fit e Bluefit cobrem a cidade com musculação acessível. Ao ar livre, o Parque Maurílio Biagi (com ciclovia e academia pública) e o Curupira são os points consolidados. O padrão local: treino indoor no verão escaldante e parques nas manhãs do resto do ano.',
+    },
+    {
+      pergunta: 'Ser um polo de saúde muda algo para quem treina em Ribeirão Preto?',
+      resposta:
+        'Muda, e a favor: com a Faculdade de Medicina da USP, o HC e dezenas de hospitais, Ribeirão tem uma densidade rara de médicos do esporte, fisioterapeutas e nutricionistas — o que facilita montar o time completo em volta do treino. Para quem tem alguma condição de saúde ou histórico de lesão, isso significa liberação médica e acompanhamento integrado a poucos quilômetros de casa, com o personal trabalhando alinhado aos demais profissionais. É o cenário ideal para treinar forte com segurança.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Ribeirão Preto para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Ribeirão Preto, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio ou casa), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['campinas-sp', 'sorocaba-sp', 'sao-paulo-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ribeirão Preto', url: 'https://www.ribeiraopreto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

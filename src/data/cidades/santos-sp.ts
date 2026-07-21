@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Santos tem uma cultura de praia muito forte — corrida, ciclismo e esportes de areia e aquáticos acontecem o tempo todo na orla — e tradição no futebol, com o Santos FC. A vida ativa é parte da identidade santista.',
   academias:
     'A oferta de academias é grande nos bairros da orla (Gonzaga, Boqueirão, Embaré, Ponta da Praia), e os Jardins da Orla funcionam como uma enorme extensão ao ar livre dessas estruturas.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Ana Costa (Gonzaga) e no Embaré' },
+    { nome: 'Academias e estúdios da orla', detalhe: 'forte oferta no Gonzaga, no Boqueirão e na Ponta da Praia' },
+    { nome: 'Academias ao ar livre da praia', detalhe: 'gratuitas, ao longo dos 7 km do calçadão' },
+  ],
 
   destaquesFitness: [
     'Orla de cerca de 7 km como academia a céu aberto.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais icônicas do Brasil e clima de praia o ano todo, Santos é feita para quem gosta de treinar ao ar livre. Um personal trainer ajuda a transformar os 7 km da orla e as academias da cidade em um plano consistente, ajustado ao seu objetivo.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Santos?',
+      resposta:
+        'A orla comanda: os cerca de 7 km de calçadão — com os famosos jardins, ciclovia, quadras e academias ao ar livre — são a pista de treino de toda a cidade. Nas academias, a faixa Gonzaga–Boqueirão–Ponta da Praia concentra a oferta, com a Smart Fit na Ana Costa e no Embaré. O atendimento em casa e em condomínio é comum nos prédios de frente para o mar, e a cidade plana torna qualquer deslocamento rápido — a pé ou de bike.',
+    },
+    {
+      pergunta: 'Como transformar os 7 km da orla de Santos em plano de treino?',
+      resposta:
+        'A orla santista é um raro caso de estrutura completa e contínua: dá para medir treinos de corrida com precisão (cada quadra de praia é referência), usar as academias ao ar livre como estações de força no meio do percurso e a ciclovia para o cardio de baixo impacto. Um formato clássico do personal na orla: aquecimento no calçadão, bloco de força nos equipamentos ou na areia, e intervalados entre canais. A cidade plana e a brisa do mar tornam o volume semanal mais fácil de sustentar que em quase qualquer cidade do interior.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Santos para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Santos, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sao-paulo-sp', 'sao-bernardo-do-campo-sp', 'santo-andre-sp'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santos', url: 'https://www.santos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };
