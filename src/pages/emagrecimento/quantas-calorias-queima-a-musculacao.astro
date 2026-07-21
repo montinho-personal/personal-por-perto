@@ -1,0 +1,268 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio: o que emagrece mais?',
+    descricao: 'A comparação completa entre os dois — e por que a resposta certa é a combinação.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'As calorias do treino só fazem sentido dentro do balanço do dia — entenda a conta inteira.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'O verdadeiro prêmio calórico da musculação é o músculo que ela constrói — veja como.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/emagrecimento/quantas-calorias-queima-a-musculacao';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Quantas calorias a musculação queima?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias queima 1 hora de musculação?',
+    resposta:
+      'As estimativas da literatura ficam tipicamente entre 200 e 400 kcal por hora, variando com peso corporal, intensidade, densidade do treino (quanto descanso entre séries) e quanto músculo trabalha em cada exercício — treinos com agachamento e terra gastam mais que sessões de rosca e panturrilha. Relógios e apps costumam superestimar bastante o número. É menos que uma hora de corrida, mas essa comparação sozinha engana: o valor da musculação para o emagrecimento está no que ela constrói, não só no que ela gasta na sessão.',
+  },
+  {
+    pergunta: 'O que é o efeito EPOC ("afterburn")? Ele é significativo?',
+    resposta:
+      'EPOC é o consumo extra de oxigênio pós-exercício: depois de um treino intenso, o corpo segue gastando um pouco mais de energia por horas para se recuperar. É real, cresce com a intensidade — treinos de força pesados e intervalados geram mais — mas é modesto: as estimativas ficam na casa de 6% a 15% do gasto da própria sessão, algumas dezenas de calorias na prática. O "metabolismo turbinado por 48 horas" do marketing é exagero de um fenômeno verdadeiro, porém pequeno.',
+  },
+  {
+    pergunta: 'Músculo em repouso queima muitas calorias?',
+    resposta:
+      'Cada quilo de músculo consome cerca de 10 a 13 kcal por dia em repouso — mais que gordura (cerca de 4,5 kcal), mas longe dos "50 a 100 kcal por quilo" do folclore fitness. O ganho real vem do conjunto: alguns quilos de músculo somam dezenas de calorias diárias de gasto extra permanente, o corpo fica mais capaz de treinar pesado (gastando mais em cada sessão) e a rotina inteira fica mais ativa. É juro composto metabólico — pequeno no dia, decisivo no ano.',
+  },
+  {
+    pergunta: 'Devo comer as calorias que o treino queimou de volta?',
+    resposta:
+      'Se o objetivo é emagrecer, não — essa é uma das armadilhas mais comuns. Primeiro porque os números de apps e relógios superestimam o gasto; segundo porque "compensar" o treino com comida extra anula o déficit que faz a gordura cair. O caminho mais confiável: definir a alimentação pelo déficit calórico planejado, tratar o gasto do treino como bônus (não como crédito para gastar) e acompanhar o resultado real na balança e nas medidas ao longo das semanas, ajustando com calma.',
+  },
+  {
+    pergunta: 'Para gastar mais calorias, é melhor fazer musculação em circuito?',
+    resposta:
+      'Circuitos e descansos curtos aumentam o gasto da sessão, mas cobram um preço: com menos recuperação entre séries, a carga e a qualidade do estímulo de força caem — e com elas o principal benefício da musculação. Para a maioria, funciona melhor separar papéis: treinar força com descansos adequados para construir e preservar músculo, e somar cardio (caminhada, corrida, bike) para ampliar o gasto calórico. Quem tem pouco tempo pode usar técnicas de densidade pontualmente, sem transformar todo treino em circuito.',
+  },
+];
+
+const title = 'Quantas calorias a musculação queima? A conta honesta';
+const description =
+  'Quanto se gasta numa sessão de musculação (200-400 kcal/h), o tamanho real do efeito EPOC, quanto o músculo queima em repouso e por que o valor do treino de força vai muito além da sessão.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Quantas calorias a musculação queima? A conta honesta</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Pergunte ao relógio e ele dirá 600 kcal; pergunte ao marketing e ele
+      prometerá "metabolismo acelerado por 48 horas". A resposta honesta é
+      menos glamourosa e mais útil: <strong>a sessão de musculação queima
+      menos do que dizem — e vale mais do que parece</strong>. Este artigo
+      faz a conta completa: o gasto da sessão, o tamanho real do
+      "afterburn", quanto o músculo queima em repouso e onde a musculação
+      realmente ganha o jogo do emagrecimento.
+    </p>
+
+    <div class="prose">
+      <h2>O gasto da sessão: 200 a 400 kcal por hora</h2>
+      <p>
+        As estimativas da literatura para treino de força recreacional ficam
+        tipicamente entre <strong>200 e 400 kcal por hora</strong> — a faixa
+        varia com o peso corporal (corpos maiores gastam mais), a densidade
+        da sessão (treino com pouco descanso gasta mais que treino social) e
+        os exercícios escolhidos: agachamentos, terras e remadas movem muito
+        músculo; roscas e elevações, pouco. Em compêndios de gasto
+        energético usados por entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>, a
+        musculação vigorosa equivale a cerca de 6 METs — na mesma vizinhança
+        de uma caminhada muito acelerada.
+      </p>
+      <p>
+        E os relógios e apps? Superestimam com frequência, às vezes por
+        margens grandes — o gasto de força é justamente o que os algoritmos
+        de frequência cardíaca pior estimam, porque o coração acelera por
+        esforço neural e pressão, não só por consumo de oxigênio. Trate o
+        número do pulso como curiosidade, não como crédito calórico.
+      </p>
+
+      <h2>EPOC: o "afterburn" no tamanho certo</h2>
+      <p>
+        O consumo extra de oxigênio pós-exercício (EPOC) existe: depois de
+        uma sessão intensa, o corpo gasta energia adicional por horas para
+        repor estoques, reparar tecido e voltar ao equilíbrio. Treinos
+        pesados de força e intervalados são os que mais o provocam. O
+        problema é a escala do folclore: as medições apontam algo como
+        <strong>6% a 15% do gasto da sessão</strong> — de um treino de 300
+        kcal, umas 20 a 45 kcal extras. Real, bem-vindo, e incapaz de
+        compensar um pão de queijo. O emagrecimento continua sendo decidido
+        pelo <a href="/emagrecimento/deficit-calorico-como-funciona/">balanço calórico do dia</a>.
+      </p>
+
+      <h2>O músculo em repouso: o mito dos 100 kcal por quilo</h2>
+      <p>
+        "Cada quilo de músculo queima 100 calorias por dia" é uma das lendas
+        mais repetidas das academias. O número medido é mais modesto:
+        <strong>cerca de 10 a 13 kcal por quilo por dia</strong> — contra
+        ~4,5 kcal do quilo de gordura. Ganhar 3 kg de músculo soma umas 30 a
+        40 kcal diárias de gasto permanente.
+      </p>
+      <p>
+        Parece pouco? É aqui que a conta muda de natureza: essas calorias
+        são <em>permanentes e compostas</em>. Trinta e cinco calorias por
+        dia são ~13 mil por ano — mais de um quilo e meio de gordura de
+        margem anual, sem esforço adicional. Some o efeito indireto: mais
+        músculo permite treinos mais pesados (que gastam mais), melhora a
+        disposição geral e sustenta o metabolismo que dietas agressivas
+        derrubam. É o juro composto do
+        <a href="/musculacao/hipertrofia-como-funciona/">investimento em massa muscular</a>.
+      </p>
+
+      <h2>Onde a musculação ganha o jogo do emagrecimento</h2>
+      <p>
+        Se a régua fosse só "calorias por sessão", a corrida venceria — como
+        mostra o comparativo
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação ou cardio</a>.
+        Mas o emagrecimento que importa é o que <em>preserva músculo
+        enquanto perde gordura</em> — e nisso a musculação é insubstituível:
+        ela é o sinal que diz ao corpo em déficit "o músculo fica, queime o
+        resto". Quem emagrece só de dieta e cardio perde massa magra junto,
+        derruba o gasto de repouso e aterrissa no corpo "menor, porém
+        igual"; quem emagrece treinando força troca de composição corporal —
+        o objetivo real por trás do número da balança, como explica o artigo
+        sobre <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">preservação de massa magra</a>.
+      </p>
+
+      <h2>A estratégia prática: papéis separados</h2>
+      <ul>
+        <li>
+          <strong>Musculação (2 a 4x/semana):</strong> construir e preservar
+          músculo, com descansos adequados e progressão — sem transformar
+          tudo em circuito para "suar mais".
+        </li>
+        <li>
+          <strong>Cardio e passos diários:</strong> ampliar o gasto — a
+          caminhada diária costuma mover mais calorias semanais que o
+          próprio treino, pela constância.
+        </li>
+        <li>
+          <strong>Déficit calórico na alimentação:</strong> o motor do
+          processo. Treino não compensa dieta — e comer de volta as
+          "calorias do treino" que o relógio inventou é o jeito clássico de
+          estagnar.
+        </li>
+      </ul>
+      <p>
+        Montar essa engrenagem — treino, movimento e alimentação apontando
+        para o mesmo lado — é exatamente o trabalho de um bom
+        <a href={rotas.comoEscolher}>acompanhamento profissional</a>, com o
+        nutricionista cuidando do prato.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> uma sessão de musculação queima 200 a
+        400 kcal (menos do que o relógio diz), o EPOC adiciona uns 6% a 15%
+        e o músculo em repouso gasta 10 a 13 kcal/kg/dia — nada disso é
+        espetacular isoladamente. O valor real está no conjunto: a
+        musculação é o que garante que o peso perdido seja gordura, mantém o
+        metabolismo de pé e compõe ganhos permanentes ano após ano. Queime
+        calorias com o cardio e o dia ativo; construa o corpo com a força.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="i_T4rnpsEPI"
+      titulo="Leandro Twin: qual o mínimo de cardio que devo fazer por semana?"
+      legenda="No vídeo: Leandro Twin fala sobre a dose mínima de cardio semanal — o complemento da conta calórica."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

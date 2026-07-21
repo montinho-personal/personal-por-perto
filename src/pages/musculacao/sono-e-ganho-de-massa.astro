@@ -1,0 +1,272 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const sbme = fontesExternas.sbme;
+
+const relacionados = [
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'Recuperação é onde o músculo cresce — e o sono é a peça central dela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'O estímulo acontece no treino; a construção, na recuperação. Entenda o ciclo completo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo demora para ver resultados?',
+    descricao: 'Dormir mal é um dos fatores que mais atrasam a linha do tempo dos resultados.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/sono-e-ganho-de-massa';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Sono e ganho de massa muscular: o treino invisível', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas horas de sono preciso para ganhar massa muscular?',
+    resposta:
+      'A faixa associada a melhor recuperação, desempenho e composição corporal na literatura é de 7 a 9 horas por noite para adultos — atletas em treinamento pesado tendem a se beneficiar da parte alta da faixa. Abaixo de 6 horas de forma crônica, os marcadores andam na direção errada: pior síntese proteica, mais fome, menos força no treino. A consistência importa tanto quanto o total: dormir e acordar em horários regulares melhora a qualidade do mesmo número de horas.',
+  },
+  {
+    pergunta: 'Dormir pouco atrapalha mesmo o ganho de músculo?',
+    resposta:
+      'Atrapalha por várias frentes ao mesmo tempo: a privação de sono reduz a síntese proteica muscular e os hormônios do ambiente anabólico (como o GH, liberado principalmente no sono profundo), aumenta cortisol, derruba o desempenho no treino do dia seguinte (menos carga = menos estímulo) e bagunça o apetite. Estudos de restrição de sono em dieta mostram um dado impressionante: dormindo pouco, uma fração muito maior do peso perdido vem de massa magra em vez de gordura. Sono ruim crônico é freio de mão puxado.',
+  },
+  {
+    pergunta: 'Treinar à noite atrapalha o sono?',
+    resposta:
+      'Para a maioria, não — a pesquisa atual indica que exercício noturno não prejudica o sono, desde que exista uma janela de 1 a 2 horas entre o fim do treino intenso e a cama para o corpo desacelerar. Se você treina tarde e sente dificuldade de dormir, os ajustes práticos: encerrar com volta à calma, reduzir cafeína de pré-treino a partir do meio da tarde (a meia-vida é longa) e manter o ritual pós-treino calmo, com luzes mais baixas. Entre treinar à noite e não treinar, treinar vence sempre.',
+  },
+  {
+    pergunta: 'Cochilo durante o dia compensa noite mal dormida?',
+    resposta:
+      'Compensa parcialmente — e é ferramenta legítima. Cochilos de 20 a 30 minutos melhoram alerta e desempenho sem a inércia de sono dos cochilos longos; em dias de sono noturno ruim, um cochilo antes do treino pode salvar a qualidade da sessão. O que o cochilo não faz é substituir cronicamente a noite completa: as fases profundas e o ciclo hormonal do sono noturno não se replicam em pedaços diurnos. Use como reforço, não como fundação.',
+  },
+  {
+    pergunta: 'O que fazer para dormir melhor sem remédio?',
+    resposta:
+      'O básico da higiene do sono resolve a maioria dos casos: horários regulares (inclusive fim de semana), quarto escuro e fresco, tela e luz forte diminuindo na última hora, cafeína cortada 6 a 8 horas antes de deitar, álcool com moderação (ele derruba a qualidade do sono mesmo "apagando" rápido) e exposição à luz do dia pela manhã. O próprio treino regular é dos melhores indutores de sono que existem. Insônia persistente apesar disso merece avaliação médica — distúrbios de sono são tratáveis e não são frescura.',
+  },
+];
+
+const title = 'Sono e ganho de massa muscular: o treino invisível';
+const description =
+  'Por que o sono é onde o músculo cresce de verdade: o que a privação faz com síntese proteica, hormônios e força, quantas horas dormir (7-9), treino noturno, cochilos e higiene do sono.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Sono e ganho de massa muscular: o treino invisível</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo mundo conta séries, pesa frango e fotografa o shaker — e quase
+      ninguém trata as 7 horas de cama com a mesma seriedade. A fisiologia é
+      direta: <strong>o treino dá o estímulo; o músculo é construído
+      dormindo</strong>. Este artigo mostra o que o sono faz pelo seu ganho
+      de massa, o estrago silencioso de dormir pouco e o protocolo prático
+      para transformar a noite no seu melhor suplemento — gratuito.
+    </p>
+
+    <div class="prose">
+      <h2>O que acontece com o músculo enquanto você dorme</h2>
+      <p>
+        O ciclo da hipertrofia tem dois tempos: o treino cria o dano e o
+        sinal; a recuperação reconstrói por cima — e o sono é o horário
+        nobre dessa obra. Durante o sono profundo, o corpo libera o grosso
+        do <strong>hormônio do crescimento (GH)</strong> do dia, a síntese
+        proteica trabalha sem concorrência e o sistema nervoso — que
+        comanda a força — se restaura. É o elo final do processo descrito em
+        <a href="/musculacao/hipertrofia-como-funciona/">como funciona a hipertrofia</a>:
+        sem essa janela, o estímulo do treino fica como pedido sem entrega.
+      </p>
+
+      <h2>O estrago de dormir pouco (medido, não suposto)</h2>
+      <ul>
+        <li>
+          <strong>Menos construção:</strong> a privação de sono reduz a
+          síntese proteica muscular e inclina o ambiente hormonal para o
+          catabólico (mais cortisol, menos testosterona e GH).
+        </li>
+        <li>
+          <strong>Menos estímulo:</strong> com sono ruim, a força e a
+          disposição do treino seguinte caem — menos carga levantada é
+          menos motivo para o músculo crescer. O ciclo se alimenta.
+        </li>
+        <li>
+          <strong>Mais fome, piores escolhas:</strong> a restrição de sono
+          desregula grelina e leptina — fome sobe, saciedade desce, e o
+          alvo são justamente os ultraprocessados.
+        </li>
+        <li>
+          <strong>O dado mais impressionante:</strong> em estudos de dieta
+          com sono encurtado, a proporção do peso perdido vinda de
+          <em>massa magra</em> disparou em comparação aos mesmos
+          participantes dormindo bem. Dormir mal em cutting é doar músculo.
+        </li>
+      </ul>
+      <p>
+        Entidades de medicina do esporte — como a
+        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a> —
+        tratam o sono como pilar de recuperação e desempenho pelo conjunto
+        dessas frentes, não por uma só.
+      </p>
+
+      <h2>A dose: 7 a 9 horas, com regularidade</h2>
+      <p>
+        A faixa para adultos é de <strong>7 a 9 horas por noite</strong>,
+        com quem treina pesado se beneficiando da parte alta. Dois detalhes
+        que valem mais que suplemento: <strong>regularidade</strong> (dormir
+        e acordar nos mesmos horários melhora a qualidade das mesmas horas)
+        e <strong>honestidade na conta</strong> — hora na cama com celular
+        não é hora de sono. Quem dorme 6 horas "porque funciona" costuma
+        descobrir, ao dormir 8 por algumas semanas, o quanto estava
+        funcionando no modo econômico.
+      </p>
+
+      <h2>Treino noturno, cafeína e cochilos: as dúvidas práticas</h2>
+      <p>
+        <strong>Treinar à noite pode:</strong> a evidência atual absolve o
+        exercício noturno, desde que haja 1 a 2 horas de desaceleração antes
+        da cama. O sabotador real costuma ser o <strong>pré-treino
+        cafeinado das 19h</strong> — a cafeína tem meia-vida de ~5 horas;
+        metade dela ainda circula à meia-noite. Quem treina tarde faz melhor
+        com pré-treino sem estimulante ou café só até o meio da tarde.
+      </p>
+      <p>
+        <strong>Cochilos funcionam</strong> como reforço: 20 a 30 minutos
+        antes do treino resgatam alerta e desempenho em dia de noite ruim.
+        Não substituem a noite — as fases profundas não se replicam em
+        parcelas — mas são ferramenta legítima de quem tem rotina dura.
+      </p>
+
+      <h2>O protocolo de higiene do sono (versão de quem treina)</h2>
+      <ul>
+        <li><strong>Horários fixos</strong> de dormir e acordar — inclusive no fim de semana (o "jet lag social" de segunda é real).</li>
+        <li><strong>Quarto escuro, silencioso e fresco</strong> — temperatura alta é inimiga do sono profundo.</li>
+        <li><strong>Última hora em modo noite:</strong> luzes baixas, telas de molho ou com filtro — luz forte atrasa a melatonina.</li>
+        <li><strong>Cafeína até 6-8 horas antes</strong> da cama; álcool com parcimônia (apaga rápido, dorme mal).</li>
+        <li><strong>Luz do dia pela manhã</strong> — ancora o relógio biológico e melhora a noite seguinte.</li>
+        <li><strong>Treine regularmente:</strong> o exercício é dos melhores indutores de sono conhecidos — o ciclo vira aliado.</li>
+      </ul>
+      <p>
+        E o limite honesto: insônia persistente, ronco forte com pausas ou
+        sonolência diurna intensa não são "falta de disciplina" — são
+        quadros médicos tratáveis, e a porta certa é o médico do sono.
+      </p>
+
+      <h2>Sono como variável de treino</h2>
+      <p>
+        Um plano sério trata o sono como trata carga e volume: variável a
+        acompanhar e ajustar. Semana de sono ruim pede treino ajustado
+        (menos volume, mesma técnica); fase de sono ótimo aguenta puxar
+        progressão — e é papel do
+        <a href={rotas.comoEscolher}>acompanhamento profissional</a> fazer
+        essa leitura em vez de cobrar performance de quem dormiu 5 horas. Os
+        <a href="/musculacao/quanto-tempo-para-ver-resultados/">prazos de resultado</a>
+        que o artigo da casa promete assumem a fundação de pé: estímulo,
+        comida e cama.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> o músculo cresce no intervalo entre
+        treinos, e o sono é o coração desse intervalo — 7 a 9 horas
+        regulares sustentam hormônios, síntese proteica e a força do
+        próximo treino. Dormir pouco reduz construção, aumenta fome e faz o
+        peso perdido vir de músculo. Treinar à noite pode (sem cafeína
+        tardia), cochilo é reforço válido, e a higiene do sono é o
+        suplemento gratuito com maior efeito que você ainda não usa direito.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="SIVqUu6k5SI"
+      titulo="Paulo Muzy: a influência do sono na hipertrofia"
+      legenda="No vídeo: Paulo Muzy explica como o sono influencia a hipertrofia."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

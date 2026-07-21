@@ -1,0 +1,283 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'A comparação entre as duas filosofias — este artigo mostra o ABC por dentro, aquele decide entre eles.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'O volume que preenche cada letra do ABC — as faixas por nível e objetivo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'A divisão organiza a semana; a progressão gera o resultado. Veja como evoluir dentro do ABC.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-abc-como-montar';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino ABC: como montar o seu (com exemplo completo)', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é o treino ABC?',
+    resposta:
+      'É a divisão que separa o corpo em três treinos: classicamente A de peito/ombro/tríceps (empurrar), B de costas/bíceps (puxar) e C de pernas completas. Cada letra é uma sessão; a sequência se repete ao longo da semana (ABC + descanso, ou ABCABC para quem treina 6 dias). É a divisão mais popular do Brasil por equilibrar organização simples, volume concentrado por sessão e flexibilidade de agenda.',
+  },
+  {
+    pergunta: 'Treino ABC 3 vezes por semana funciona?',
+    resposta:
+      'Funciona, com uma ressalva importante: treinando ABC 3x/semana, cada grupo muscular é estimulado apenas uma vez a cada 7 dias — frequência que a literatura aponta como abaixo do ideal para maximizar hipertrofia. Para 3 dias semanais, o full body costuma render mais (cada músculo trabalha 3x). O ABC brilha de verdade para quem treina 5 a 6 dias, rodando ABCAB ou ABCABC e estimulando cada grupo cerca de 2x por semana. A regra prática: escolha a divisão pela sua frequência real, não pela moda.',
+  },
+  {
+    pergunta: 'Qual a diferença entre ABC e ABCDE?',
+    resposta:
+      'O ABCDE espalha o corpo em cinco sessões (ex.: peito / costas / ombros / braços / pernas), com muito volume por músculo em cada dia, mas frequência de estímulo de apenas 1x por semana por grupo. O ABC concentra em três sessões e permite frequência 2x quando rodado 5-6 dias. Para a maioria dos praticantes naturais, frequência 2x por grupo tende a render mais que o "bro split" de 1x — o ABCDE faz mais sentido para avançados com volumes altíssimos por sessão ou por preferência pessoal consolidada.',
+  },
+  {
+    pergunta: 'Posso trocar exercícios do ABC pelos que tenho na minha academia?',
+    resposta:
+      'Pode e deve — o que define o treino são os padrões de movimento, não os aparelhos específicos. Supino com barra, com halteres ou máquina cumprem o mesmo papel de "empurrar horizontal"; puxada, barra fixa e remada cobrem o "puxar"; agachamento, leg press e búlgaro cobrem o "agachar". Mantenha a estrutura (padrões, séries, esforço, progressão) e adapte as ferramentas ao que existe — inclusive em casa, como mostra o guia de treino em casa.',
+  },
+  {
+    pergunta: 'Em quanto tempo devo trocar meu treino ABC?',
+    resposta:
+      'Não pela regra folclórica dos 30 dias — o corpo não "decora" treino; ele se adapta a cargas que param de progredir. Um bom ABC dura de 8 a 16 semanas com os mesmos exercícios, desde que as cargas e repetições continuem subindo. Vale trocar quando a progressão trava por semanas apesar de sono e comida em dia, quando algum exercício gera incômodo articular ou quando a motivação pede variedade. Troca inteligente muda pouco de cada vez — o esqueleto de padrões permanece.',
+  },
+];
+
+const title = 'Treino ABC: como montar o seu (com exemplo completo)';
+const description =
+  'O que é a divisão ABC, para quem ela funciona melhor (5-6 dias/semana), um exemplo completo de treino A, B e C, como adaptar exercícios e quando trocar o programa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino ABC: como montar o seu (com exemplo completo)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O ABC é a divisão de treino mais usada do Brasil — e uma das mais mal
+      usadas. Bem montado, organiza a semana com simplicidade e entrega
+      estímulo de sobra; copiado da ficha do amigo, vira coleção de
+      exercícios sem lógica. Este guia mostra <strong>como o ABC funciona,
+      para quem ele rende mais, um exemplo completo das três sessões</strong>
+      e as regras para adaptar e evoluir o programa.
+    </p>
+
+    <div class="prose">
+      <h2>A lógica do ABC (e a conta de frequência que ninguém faz)</h2>
+      <p>
+        O ABC divide o corpo em três sessões — no arranjo clássico:
+        <strong>A</strong> empurrar (peito, ombros, tríceps),
+        <strong>B</strong> puxar (costas, bíceps) e <strong>C</strong>
+        pernas. A graça está na conta de frequência: como são só três
+        letras, quem treina 5 ou 6 dias roda a sequência quase duas vezes
+        por semana — e <strong>frequência ~2x por grupo muscular</strong> é
+        o que as revisões da literatura (e diretrizes de entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>)
+        associam aos melhores resultados de hipertrofia para a maioria.
+      </p>
+      <p>
+        A mesma conta expõe o erro mais comum: rodar ABC treinando só 3
+        dias, deixando cada músculo com um estímulo semanal. Para 3 dias, o
+        full body costuma vencer — a comparação completa está em
+        <a href="/musculacao/abc-ou-full-body/">ABC ou Full Body</a>. Regra
+        de bolso: <strong>3 dias → full body; 4 dias → ABAB/upper-lower;
+        5-6 dias → ABC</strong>.
+      </p>
+
+      <h2>O exemplo completo: A, B e C</h2>
+      <p>
+        Estrutura para nível iniciante-intermediário, com 6 exercícios por
+        sessão, 3 séries de trabalho cada (8 a 12 repetições, terminando a
+        2-3 do limite), descansos de 60 a 120 segundos:
+      </p>
+      <p><strong>Treino A — Empurrar (peito, ombros, tríceps):</strong></p>
+      <ul>
+        <li>Supino reto (barra, halteres ou máquina)</li>
+        <li>Supino inclinado com halteres</li>
+        <li>Desenvolvimento de ombros sentado</li>
+        <li>Elevação lateral</li>
+        <li>Crucifixo (halteres ou cabo)</li>
+        <li>Tríceps na polia + tríceps francês</li>
+      </ul>
+      <p><strong>Treino B — Puxar (costas, bíceps):</strong></p>
+      <ul>
+        <li>Puxada na frente (ou barra fixa)</li>
+        <li>Remada curvada ou na máquina</li>
+        <li>Remada unilateral com halter (serrote)</li>
+        <li>Face pull (saúde de ombros)</li>
+        <li>Rosca direta + rosca martelo</li>
+        <li>Encolhimento para trapézio (opcional)</li>
+      </ul>
+      <p><strong>Treino C — Pernas completas:</strong></p>
+      <ul>
+        <li>Agachamento (livre, goblet ou hack)</li>
+        <li>Leg press</li>
+        <li>Terra romeno (posteriores e glúteos)</li>
+        <li>Elevação pélvica ou hip thrust</li>
+        <li>Cadeira extensora + mesa flexora</li>
+        <li>Panturrilha em pé</li>
+      </ul>
+      <p>
+        Abdômen encaixa 2 a 3 vezes por semana no fim de qualquer letra. O
+        volume total segue as faixas do artigo sobre
+        <a href="/musculacao/quantas-series-e-repeticoes/">séries e repetições</a>
+        — e cada exercício pode ser trocado por outro do mesmo padrão
+        conforme a estrutura disponível.
+      </p>
+
+      <h2>Como rodar a semana</h2>
+      <ul>
+        <li><strong>6 dias:</strong> ABC-ABC + domingo livre — frequência 2x completa.</li>
+        <li><strong>5 dias:</strong> ABCAB numa semana, CABCA na seguinte — a sequência simplesmente continua de onde parou.</li>
+        <li><strong>4 dias:</strong> ABCA, BCAB... funciona, mas avalie o upper-lower.</li>
+        <li><strong>3 dias:</strong> repense — full body provavelmente rende mais.</li>
+      </ul>
+      <p>
+        Dica de ordem: se pernas são sua prioridade, não deixe o C sempre
+        para a sexta-feira exausta — gire a sequência para que cada letra
+        visite os seus melhores dias.
+      </p>
+
+      <h2>As regras que fazem o ABC funcionar (em qualquer versão)</h2>
+      <ul>
+        <li>
+          <strong>Progressão registrada:</strong> anote cargas e repetições
+          e busque superá-las — o motor descrito em
+          <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+          Sem isso, qualquer divisão vira manutenção.
+        </li>
+        <li>
+          <strong>Esforço real:</strong> séries terminando a 2-3 repetições
+          do limite. Doze repetições confortáveis não são estímulo.
+        </li>
+        <li>
+          <strong>Compostos primeiro:</strong> a energia nobre do início da
+          sessão vai para supino, remada e agachamento — isoladores fecham.
+        </li>
+        <li>
+          <strong>Estabilidade de 8 a 16 semanas:</strong> troque o programa
+          quando a progressão travar de verdade, não a cada 30 dias por
+          superstição.
+        </li>
+      </ul>
+
+      <h2>Ficha copiada vs. programa montado para você</h2>
+      <p>
+        O ABC genérico deste artigo é um ponto de partida honesto — mas ele
+        não sabe se o seu ombro reclama no desenvolvimento, se a sua lombar
+        prefere o terra romeno ao stiff, ou que a sua agenda real são 4 dias
+        alternados. Ajustar exercícios, volume e rotação ao seu corpo e à
+        sua semana é o trabalho que separa ficha de programa — e é
+        exatamente o que um bom
+        <a href={rotas.comoEscolher}>personal trainer</a> (presencial ou
+        online) entrega nas primeiras semanas de acompanhamento.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> o ABC divide o corpo em empurrar, puxar
+        e pernas, e rende o máximo para quem treina 5-6 dias (frequência ~2x
+        por grupo). Use o exemplo das três sessões como esqueleto, troque
+        exercícios dentro dos mesmos padrões conforme sua estrutura, rode a
+        sequência sem pular pernas, e lembre que a divisão só organiza — o
+        resultado vem do esforço real e da progressão registrada, semana
+        após semana.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="5EXPweYs03k"
+      titulo="Leandro Twin: a melhor divisão de treino de musculação"
+      legenda="No vídeo: Leandro Twin compara as divisões de treino e onde o ABC se encaixa."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

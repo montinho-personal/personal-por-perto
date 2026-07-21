@@ -1,0 +1,252 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'A alternativa aos ciclos para iniciantes e quem volta de pausa — quando ela funciona de verdade.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'O manual do cutting bem feito: perder gordura segurando cada grama de músculo.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo demora para ver resultados na musculação?',
+    descricao: 'Ciclos de bulking e cutting vivem de expectativas realistas — veja a linha do tempo honesta.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/bulking-e-cutting';
+const atualizadoEm = '2026-07-19';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Bulking e cutting: o que são e como fazer sem errar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é bulking e cutting?',
+    resposta:
+      'São as duas fases da estratégia clássica de ciclos: no bulking, você come acima do gasto (superávit calórico) para maximizar o ganho de músculo, aceitando algum ganho de gordura; no cutting, come abaixo do gasto (déficit) para revelar o músculo construído, minimizando a perda de massa magra. A lógica existe porque construir músculo e perder gordura pedem ambientes calóricos opostos — os ciclos alternam entre eles em blocos de meses.',
+  },
+  {
+    pergunta: 'Preciso fazer bulking e cutting para evoluir?',
+    resposta:
+      'Não necessariamente. Iniciantes, pessoas retornando de pausa e quem tem gordura sobrando conseguem recomposição corporal (ganhar músculo e perder gordura simultaneamente) comendo próximo da manutenção com proteína alta e treino progressivo. Os ciclos fazem mais sentido para intermediários e avançados magros, cujo progresso estagnou na manutenção. E há o caminho do meio, cada vez mais recomendado: superávits pequenos ("lean bulking") e déficits moderados, sem os extremos das eras "sujas".',
+  },
+  {
+    pergunta: 'Quanto devo comer a mais no bulking (e a menos no cutting)?',
+    resposta:
+      'As faixas com melhor suporte: bulking com superávit de cerca de 200 a 500 kcal/dia, mirando ganho de 0,25% a 0,5% do peso corporal por semana (mais que isso vira gordura em quem não é iniciante); cutting com déficit de cerca de 300 a 500 kcal/dia, perdendo 0,5% a 1% do peso por semana. Em ambos, proteína alta (1,6 a 2,2 g/kg) e treino de força pesado são inegociáveis. Números individuais são trabalho para nutricionista — estas são as referências da literatura.',
+  },
+  {
+    pergunta: 'Quanto tempo dura cada fase?',
+    resposta:
+      'Blocos curtos frustram: o bulking precisa de tempo para construir (12 a 24 semanas é uma faixa comum), e o cutting dura o necessário para chegar ao percentual de gordura desejado sem pressa (8 a 16 semanas, tipicamente). Sinais de que é hora de trocar: no bulking, quando o ganho de gordura começa a incomodar ou passa do planejado; no cutting, quando o objetivo visual foi atingido ou quando fome, sono e desempenho degradam demais — aí vale período de manutenção antes do próximo ciclo.',
+  },
+  {
+    pergunta: 'O que é "bulking sujo" e por que caiu em desuso?',
+    resposta:
+      'É a versão antiga do superávit: comer tudo em quantidade máxima, "porque massa vem com massa". A prática envelheceu mal porque o músculo tem teto de velocidade de construção — todo excedente além desse teto vira gordura, que depois exige um cutting mais longo e arriscado para a massa magra, sem falar nos marcadores de saúde. O consenso atual é o superávit controlado: ganha-se praticamente o mesmo músculo com fração da gordura. No bulking, mais não é mais — mais é só mais gordura.',
+  },
+];
+
+const title = 'Bulking e cutting: o que são, como fazer e quem realmente precisa';
+const description =
+  'As fases de ganho e definição explicadas sem extremismo: superávits e déficits certos, duração de cada fase, o fim do bulking sujo e quando a recomposição corporal substitui os ciclos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Bulking e cutting: o que são, como fazer e quem realmente precisa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Bulking e cutting são o vocabulário mais famoso do fisiculturismo — e
+      um dos mais mal traduzidos para a vida real. Entre o "bulking sujo" de
+      pizza ilimitada e cuttings desesperados de 800 kcal, a versão que
+      funciona é mais moderada e mais eficiente:
+      <strong>fases planejadas, com números controlados — e só para quem
+      realmente precisa delas</strong>. Este guia explica as duas fases, as
+      faixas certas, a duração e a alternativa que muitos deveriam usar
+      antes. <em>Números individuais de dieta são trabalho para
+      nutricionista.</em>
+    </p>
+
+    <div class="prose">
+      <h2>Por que os ciclos existem</h2>
+      <p>
+        Construir músculo pede energia sobrando; perder gordura pede energia
+        faltando. São ambientes opostos — e a estratégia de ciclos resolve o
+        conflito alternando entre eles em blocos: uma temporada de
+        <strong>bulking</strong> (superávit, foco em construir) seguida de
+        uma de <strong>cutting</strong> (déficit, foco em revelar),
+        repetidas ao longo dos anos. É assim que fisiculturistas e
+        praticantes avançados somam massa que a manutenção eterna não
+        entrega.
+      </p>
+      <p>
+        O detalhe que o marketing esquece: o músculo tem <em>teto de
+        velocidade</em>. Depois da fase iniciante, o corpo constrói algumas
+        centenas de gramas de músculo por mês, no máximo — nenhum superávit
+        gigante muda isso. Todo excedente acima do teto vira gordura. Essa
+        única frase aposenta o bulking sujo.
+      </p>
+
+      <h2>Bulking bem feito: o superávit controlado</h2>
+      <ul>
+        <li><strong>Superávit:</strong> cerca de 200 a 500 kcal acima da manutenção.</li>
+        <li><strong>Meta na balança:</strong> +0,25% a 0,5% do peso corporal por semana (um pouco mais para iniciantes).</li>
+        <li><strong>Proteína:</strong> 1,6 a 2,2 g/kg/dia — as mesmas faixas refletidas em posicionamentos do <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.</li>
+        <li><strong>Treino:</strong> força pesada e progressiva — o superávit sem estímulo é só engorda organizada. A <a href="/musculacao/progressao-de-carga/">progressão de carga</a> é o termômetro da fase: bulking bom é aquele em que os pesos sobem.</li>
+        <li><strong>Duração:</strong> 12 a 24 semanas, ou até o ganho de gordura passar do combinado.</li>
+      </ul>
+
+      <h2>Cutting bem feito: definir sem derreter músculo</h2>
+      <ul>
+        <li><strong>Déficit:</strong> cerca de 300 a 500 kcal — perdendo 0,5% a 1% do peso por semana. Mais agressivo que isso, a conta vem em massa magra.</li>
+        <li><strong>Proteína ainda mais importante:</strong> topo da faixa (até ~2,2 g/kg) para proteger o músculo no déficit.</li>
+        <li><strong>Treino continua pesado:</strong> reduzir volume um pouco é aceitável; virar "treino leve de definição" é o erro clássico — carga alta é o sinal que segura o músculo, como detalha o guia de <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">preservação de massa magra</a>.</li>
+        <li><strong>Duração:</strong> 8 a 16 semanas típicas; cuttings interminaveis degradam sono, humor e treino — melhor pausar na manutenção e retomar.</li>
+      </ul>
+
+      <h2>Quem precisa dos ciclos — e quem não</h2>
+      <p>
+        A pergunta que deveria vir antes de "bulking ou cutting?" é
+        <strong>"eu já esgotei a recomposição?"</strong>. Iniciantes, quem
+        volta de pausa longa e quem carrega gordura de sobra conseguem
+        <a href="/emagrecimento/recomposicao-corporal/">ganhar músculo e perder gordura ao mesmo tempo</a>
+        comendo perto da manutenção com proteína alta e treino sério — sem a
+        montanha-russa. Os ciclos são a ferramenta de quem já é magro e
+        treinado, cujo progresso na manutenção secou.
+      </p>
+      <p>
+        E a ordem de partida, para quem vai ciclar: começa pelo cutting quem
+        está com percentual de gordura alto (definir primeiro deixa o
+        próximo bulking mais eficiente e mais saudável); começa pelo bulking
+        quem já está magro. Na dúvida entre os dois, um período de
+        manutenção com treino progressivo raramente é errado.
+      </p>
+
+      <h2>Os erros que estragam os ciclos</h2>
+      <ul>
+        <li><strong>Bulking sujo:</strong> excedente gigante = mesma construção muscular, muito mais gordura para pagar depois.</li>
+        <li><strong>Cutting apressado:</strong> déficits agressivos derretem o músculo que o bulking construiu — o ciclo vira elástico de sanfona.</li>
+        <li><strong>Pular a manutenção:</strong> transições diretas e eternas entre fases cansam corpo e cabeça; semanas de manutenção entre ciclos consolidam o ganho.</li>
+        <li><strong>Ciclar sem medir:</strong> sem acompanhar peso semanal, medidas e cargas, as fases viram achismo. O que não se mede, não se ajusta.</li>
+        <li><strong>Copiar prazos de atleta:</strong> quem compete tem palco marcado; quem treina para a vida pode (e deve) usar fases mais longas e moderadas.</li>
+      </ul>
+
+      <h2>A régua de expectativa</h2>
+      <p>
+        Um ano bem executado de ciclos para um praticante intermediário
+        natural: alguns quilos de músculo real e um percentual de gordura
+        visivelmente menor — transformação genuína, distante dos "10 kg de
+        massa em 3 meses" das promessas. A linha do tempo honesta está no
+        artigo sobre
+        <a href="/musculacao/quanto-tempo-para-ver-resultados/">quanto tempo demora para ver resultados</a>.
+        Planejar fases, ajustar números e segurar a ansiedade nas transições
+        é onde o <a href={rotas.comoEscolher}>acompanhamento profissional</a>
+        — treino de um lado, nutricionista do outro — paga o investimento.
+      </p>
+      <div class="callout">
+        <strong>Resumindo:</strong> bulking é superávit controlado (200-500
+        kcal, +0,25-0,5%/semana) para construir; cutting é déficit moderado
+        (300-500 kcal, -0,5-1%/semana) para revelar — ambos com proteína
+        alta e treino pesado. Iniciantes e quem tem gordura sobrando devem
+        tentar recomposição antes de ciclar; o bulking sujo está aposentado
+        pela fisiologia; e manutenções entre fases não são pausa — são parte
+        do método.
+      </div>
+    </div>
+
+    <VideoYouTube
+      id="RscqfGEckKs"
+      titulo="Leandro Twin: bulking ou cutting — qual devo fazer?"
+      legenda="No vídeo: Leandro Twin ajuda a decidir por qual fase começar."
+    />
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

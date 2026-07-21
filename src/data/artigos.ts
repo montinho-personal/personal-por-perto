@@ -43,6 +43,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-de-gluteos/', titulo: 'Treino de glúteos: o que funciona de verdade (e o que é mito)' },
   { categoria: 'Musculação', url: '/musculacao/musculacao-feminina-mitos/', titulo: 'Musculação feminina: 7 mitos que ainda atrapalham (e a verdade)' },
   { categoria: 'Musculação', url: '/musculacao/alongamento-antes-do-treino/', titulo: 'Alongamento antes do treino: ajuda ou atrapalha?' },
+  { categoria: 'Musculação', url: '/musculacao/treino-abc-como-montar/', titulo: 'Treino ABC: como montar o seu (com exemplo completo)' },
+  { categoria: 'Musculação', url: '/musculacao/bulking-e-cutting/', titulo: 'Bulking e cutting: o que são, como fazer e quem realmente precisa' },
+  { categoria: 'Musculação', url: '/musculacao/sono-e-ganho-de-massa/', titulo: 'Sono e ganho de massa muscular: o treino invisível' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -52,6 +55,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-comecar-a-treinar-acima-do-peso/', titulo: 'Como começar a treinar estando acima do peso' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/recomposicao-corporal/', titulo: 'Recomposição corporal: perder gordura e ganhar músculo ao mesmo tempo' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/quantas-calorias-queima-a-musculacao/', titulo: 'Quantas calorias a musculação queima? A conta honesta' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },
