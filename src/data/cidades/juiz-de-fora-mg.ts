@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Juiz de Fora tem forte tradição em corrida de rua, com o Parque Halfeld e a Avenida Rio Branco como cenários icônicos de largadas, e é uma cidade universitária com grande público jovem e ativo via UFJF.',
   academias:
     'A oferta reúne várias unidades da Smart Fit e academias locais bem distribuídas pelos bairros, com cultura consolidada de musculação e bom espaço para treino ao ar livre na Mata do Krambeck e no campus.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades nas avenidas Rio Branco e Independência e em bairros' },
+    { nome: 'Academias locais', detalhe: 'bem distribuídas, com cultura consolidada de musculação' },
+    { nome: 'Espaços da UFJF e Mata do Krambeck', detalhe: 'campus e trilhas abertos ao treino ao ar livre' },
+  ],
 
   destaquesFitness: [
     'Várias unidades da Smart Fit e redes locais bem distribuídas.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com clima de altitude agradável, forte cena de corrida e um grande público universitário, Juiz de Fora é uma cidade convidativa para treinar. Um personal trainer ajuda a aproveitar o Parque Halfeld, a Mata do Krambeck e as academias locais com método e constância.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Juiz de Fora?',
+      resposta:
+        'O eixo da Avenida Rio Branco com o Parque Halfeld é o coração — ali largam as corridas da cidade e se concentram as unidades da Smart Fit e academias locais. O campus da UFJF funciona como pista informal de corrida e bike dos moradores, e a Mata do Krambeck oferece trilhas em plena Mata Atlântica urbana. O atendimento em casa é comum no Alto dos Passos, no Granbery e no Bom Pastor, bairros de rua íngreme onde a subida já é parte do aquecimento.',
+    },
+    {
+      pergunta: 'A altitude de 1.100 m de Juiz de Fora interfere no treino?',
+      resposta:
+        'Interfere a favor. A cerca de 1.100 m, o efeito fisiológico da altitude é discreto (adaptações relevantes aparecem bem mais alto), mas o efeito climático é enorme: temperaturas amenas o ano quase todo, noites frescas e um ar de montanha que torna correr em JF muito mais confortável que no calor do Rio, a 180 km dali. O único ajuste real é o inverno seco e frio das manhãs — aquecimento mais longo e, para quem prefere, treino no meio do dia. De resto, é clima de cidade feita para treinar fora.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Juiz de Fora para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Juiz de Fora, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['belo-horizonte-mg', 'contagem-mg', 'rio-de-janeiro-rj'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juiz de Fora', url: 'https://www.pjf.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

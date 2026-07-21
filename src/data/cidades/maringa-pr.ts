@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Maringá tem forte cultura de ciclismo urbano (uso de bike bem acima da média nacional) e uma cena de corrida de rua em ascensão, com a entrada no circuito nacional de maratonas. Os parques arborizados ajudam a fazer da atividade física um hábito.',
   academias:
     'A oferta reúne dezenas de academias de musculação, estúdios de crossfit e funcional e nomes locais conhecidos, além de redes nacionais, atendendo um público jovem e exigente.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Tuiuti, no Novo Centro e no Angeloni' },
+    { nome: 'Academias e estúdios locais', detalhe: 'dezenas de opções de musculação, crossfit e funcional' },
+    { nome: 'Academia ao ar livre do Parque do Ingá', detalhe: 'gratuita, junto à pista de 3 km' },
+  ],
 
   destaquesFitness: [
     'Pista de cerca de 3 km no Parque do Ingá, com academia ao ar livre — referência outdoor.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Planejada, arborizada e com alta qualidade de vida, Maringá é um ambiente convidativo para treinar — do Parque do Ingá às ciclovias que cortam a cidade. Um personal trainer ajuda a aproveitar essa estrutura com método e a manter a constância, seja na musculação, seja na preparação para as corridas.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Maringá?',
+      resposta:
+        'O Parque do Ingá — com pista de cerca de 3 km e academia ao ar livre — é o circuito consagrado, e as praças arborizadas espalham o treino pelos bairros. Nas academias, a Smart Fit cobre a Av. Tuiuti e o Novo Centro, e a cena local de crossfit e funcional é das mais densas do interior do Sul. O atendimento em casa e em condomínio é comum nas Zonas 02 e 05 e no Jardim Aclimação — e as avenidas largas da cidade planejada tornam qualquer deslocamento rápido.',
+    },
+    {
+      pergunta: 'Por que Maringá é uma das cidades mais fáceis do Brasil para manter constância no treino?',
+      resposta:
+        'Porque as barreiras clássicas quase não existem: a arborização famosa da cidade suaviza o calor e dá sombra aos percursos, o clima permite treino externo o ano inteiro, o Parque do Ingá e as ciclovias (cerca de 45 km, com uso de bike no dobro da média nacional) colocam estrutura gratuita a minutos de qualquer bairro, e a cidade planejada elimina o trânsito como desculpa. Quando o ambiente joga a favor, o que falta costuma ser só o plano — e é aí que o acompanhamento entra.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Maringá para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Maringá, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['londrina-pr', 'curitiba-pr'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maringá', url: 'https://www.maringa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

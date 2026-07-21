@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Feira de Santana tem forte tradição no futebol (com o Estádio Joia da Princesa) e uma cena ativa de corrida de rua e ciclismo, com uso intenso dos parques e das academias ao ar livre — um polo esportivo para o interior baiano.',
   academias:
     'A oferta de academias e estúdios é ampla para o porte da cidade e atende também a região, concentrada nos bairros de classe média, e bem complementada pelas academias da saúde gratuitas dos parques.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no SIM, na Mangabeira e na Cidade Nova' },
+    { nome: 'Academias e estúdios de bairro', detalhe: 'concentrados em Santa Mônica, na Kalilândia e no Centro' },
+    { nome: 'Academias da saúde dos parques', detalhe: 'gratuitas, no Parque da Lagoa e no Anel de Lagoas' },
+  ],
 
   destaquesFitness: [
     'Polo regional com ampla oferta de academias e estúdios para o interior da Bahia.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Maior entroncamento do Nordeste e polo regional de serviços, Feira de Santana tem boa estrutura pública e privada para treinar — dos parques com academia da saúde às redes de academia. Um personal trainer ajuda a aproveitar tudo isso com método, respeitando o clima quente e o seu objetivo.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Feira de Santana?',
+      resposta:
+        'O Parque da Lagoa — com pista de cooper, ciclovia, academia da saúde gratuita e vigilância da Guarda Municipal — é o espaço público mais completo, com o Anel de Lagoas somando 2,3 km de pista e o tradicional Parque da Cidade. Nas academias, a Smart Fit cobre o SIM, a Mangabeira e a Cidade Nova, e os estúdios se concentram em Santa Mônica e na Kalilândia. O atendimento em casa cresce nos condomínios do SIM e do Santa Mônica.',
+    },
+    {
+      pergunta: 'Moro em cidade vizinha a Feira de Santana — vale treinar lá?',
+      resposta:
+        'É o movimento natural da região: como maior polo do interior baiano, Feira concentra academias, estúdios e profissionais que atendem quem vem de cidades como São Gonçalo, Conceição da Feira e Santo Estêvão — muita gente resolve trabalho, estudo e treino na mesma ida. Para quem não quer depender do deslocamento, o caminho inverso também funciona: acompanhamento online com o plano adaptado à estrutura disponível na sua cidade, e a ida a Feira reservada ao que só o polo oferece.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Feira de Santana para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Feira de Santana, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['salvador-ba', 'aracaju-se'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Feira de Santana', url: 'https://www.feiradesantana.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };

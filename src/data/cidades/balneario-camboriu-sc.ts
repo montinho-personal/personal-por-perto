@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Poucas cidades brasileiras têm uma cultura fitness e de estética tão intensa quanto Balneário Camboriú — é referência nacional em musculação e culto ao corpo. A orla concentra grande circulação de praticantes de corrida, ciclismo, beach tennis e vôlei de praia o ano todo.',
   academias:
     'A oferta de academias premium está acima da média nacional, com nomes como a Wave (Barra Sul), academias voltadas ao fisiculturismo e estúdios de alto padrão, atendendo um público disposto a investir em personal training e estética.',
+  academiasProximas: [
+    { nome: 'Wave', detalhe: 'no Barra Sul, uma das maiores academias do Sul do país' },
+    { nome: 'Academias premium e de fisiculturismo', detalhe: 'densidade acima da média nacional' },
+    { nome: 'Estúdios de alto padrão', detalhe: 'personal, funcional e estética pelos bairros centrais' },
+    { nome: 'Academias públicas da orla', detalhe: 'gratuitas, no parque linear da Praia Central' },
+  ],
 
   destaquesFitness: [
     'Concentração de academias premium acima da média nacional (incluindo uma das maiores do Sul).',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Em Balneário Camboriú, a busca por estética e performance é parte da cultura local — e um personal trainer especializado é peça-chave para alcançar resultados com segurança. Da musculação premium ao treino na orla reurbanizada, a cidade oferece um dos melhores ambientes do país para quem leva o corpo a sério.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Balneário Camboriú?',
+      resposta:
+        'A cidade vertical treina em três andares: nas academias premium — da Wave, no Barra Sul, aos estúdios de alto padrão —, nas academias dos próprios prédios, já que os arranha-céus novos nascem com estrutura completa (o que torna o atendimento em condomínio fortíssimo), e na orla reurbanizada da Praia Central, um parque linear de 6 km com pista de corrida e academias públicas. A Interpraias completa como rota cênica de corrida e bike.',
+    },
+    {
+      pergunta: 'Treinar na "capital da estética" intimida quem está começando?',
+      resposta:
+        'É uma preocupação comum — e a realidade é mais amigável do que o Instagram sugere. A densidade de academias de BC significa também variedade: há salas premium com público avançado, mas também redes, estúdios reservados, a academia do próprio prédio e a orla democrática. Para quem está começando e não quer plateia, o personal resolve exatamente isso: treino no condomínio ou em estúdio fechado, progressão no seu ritmo e a segurança de não depender da comparação com ninguém. O nível alto da cidade vira inspiração, não régua.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Balneário Camboriú para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Balneário Camboriú, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['florianopolis-sc', 'curitiba-pr', 'porto-alegre-rs'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Balneário Camboriú', url: 'https://www.bc.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-19',
 };
