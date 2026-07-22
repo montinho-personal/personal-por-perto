@@ -55,6 +55,11 @@ const fotoTransformacao = '/montinho/personal-trainer-alphaville.webp';
 const altTransformacao =
   'Antes e depois do Montinho Personal, personal trainer em Alphaville: da adolescência com sobrepeso ao físico definido após mais de 20 anos de musculação';
 
+// Arte de capa personalizada (cartão-postal local): quando presente,
+// substitui a capa gerada no hero, no Open Graph e no sitemap de imagens.
+const capaArte = cidade.capaArte;
+const imagemOg = capaArte ? capaArte.src : ehAlphaville ? fotoTransformacao : capaPng;
+
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
 // Vizinhas reais (geográficas) para linkagem contextual na prosa.
@@ -148,7 +153,7 @@ const objetivoDesc: Record<string, string> = {
 };
 ---
 
-<Base title={title} description={description} path={path} ogType="article" image={ehAlphaville ? fotoTransformacao : capaPng} schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={imagemOg} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
   <!-- HERO -->
@@ -173,7 +178,20 @@ const objetivoDesc: Record<string, string> = {
       </div>
 
       {
-        ehAlphaville ? (
+        capaArte ? (
+          <figure class="capa">
+            <img
+              src={capaArte.src}
+              alt={capaArte.alt}
+              width="1200"
+              height="800"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption>{capaArte.legenda}</figcaption>
+          </figure>
+        ) : ehAlphaville ? (
           <figure class="capa">
             <img
               src={fotoTransformacao}

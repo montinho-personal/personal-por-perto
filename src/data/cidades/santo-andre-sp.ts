@@ -114,5 +114,12 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Santo André', url: 'https://cidades.ibge.gov.br/brasil/sp/santo-andre/panorama' },
     { nome: 'Prefeitura de Santo André', url: 'https://www.santoandre.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  capaArte: {
+    src: '/capas-cidade/santo-andre-sp.webp',
+    alt:
+      'Personal trainer em Santo André (SP) acompanhando aluna em treino de força ao ar livre, com o skyline do ABC paulista ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Santo André: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional no ABC.',
+  },
+  atualizadoEm: '2026-07-22',
 };

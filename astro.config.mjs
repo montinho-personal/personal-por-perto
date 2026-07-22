@@ -8,6 +8,11 @@ const SITE = 'https://www.personalporperto.com.br';
 
 // Mapa slug -> nome, para anexar a capa de cada cidade ao sitemap de imagens.
 const nomePorSlug = Object.fromEntries(cidades.map((c) => [c.slug, c.nome]));
+// Mapa slug -> arte de capa personalizada (quando existir), usada no sitemap
+// de imagens no lugar da capa gerada padrão.
+const capaArtePorSlug = Object.fromEntries(
+  cidades.filter((c) => c.capaArte).map((c) => [c.slug, c.capaArte]),
+);
 // Mapas slug -> data real de revisão, para um lastmod confiável por página
 // (Google ignora lastmod quando ele muda em tudo a cada deploy).
 const lastmodCidade = Object.fromEntries(cidades.map((c) => [c.slug, c.atualizadoEm]));
@@ -42,15 +47,22 @@ export default defineConfig({
         if (slug && nomePorSlug[slug]) {
           // Alphaville usa a foto real de transformação no lugar da capa padrão.
           const imgAlphaville = slug === 'alphaville-sp';
+          const arte = capaArtePorSlug[slug];
           item.img = [
             {
-              url: imgAlphaville
-                ? `${SITE}/montinho/personal-trainer-alphaville.webp`
-                : `${SITE}/capas/personal-trainer-${slug}.png`,
-              title: imgAlphaville
-                ? 'Antes e depois do Montinho Personal — personal trainer em Alphaville'
-                : `Personal Trainer em ${nomePorSlug[slug]}`,
-              caption: `Guia de personal trainer em ${nomePorSlug[slug]} — Personal por Perto.`,
+              url: arte
+                ? `${SITE}${arte.src}`
+                : imgAlphaville
+                  ? `${SITE}/montinho/personal-trainer-alphaville.webp`
+                  : `${SITE}/capas/personal-trainer-${slug}.png`,
+              title: arte
+                ? `Personal Trainer em ${nomePorSlug[slug]}`
+                : imgAlphaville
+                  ? 'Antes e depois do Montinho Personal — personal trainer em Alphaville'
+                  : `Personal Trainer em ${nomePorSlug[slug]}`,
+              caption: arte
+                ? arte.alt
+                : `Guia de personal trainer em ${nomePorSlug[slug]} — Personal por Perto.`,
             },
           ];
           if (lastmodCidade[slug]) item.lastmod = dataRevisao(lastmodCidade[slug]);

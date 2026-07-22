@@ -118,5 +118,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Osasco', url: 'https://www.osasco.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-11',
+  capaArte: {
+    src: '/capas-cidade/osasco-sp.webp',
+    alt:
+      'Personal trainer em Osasco (SP) acompanhando aluna em agachamento ao ar livre, com o skyline de arranha-céus da cidade à beira-rio ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Osasco: um plano sob medida para o seu objetivo, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };

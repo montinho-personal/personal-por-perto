@@ -108,6 +108,20 @@ export interface Cidade {
 
   /** FAQs específicas opcionais; complementam as FAQs padrão. */
   faqsExtra?: FAQ[];
+
+  /**
+   * Arte de capa personalizada. Quando presente, substitui a capa gerada
+   * padrão no hero, na imagem Open Graph e no sitemap de imagens. Usada em
+   * cidades priorizadas que receberam criativo próprio com cartão-postal local.
+   */
+  capaArte?: {
+    /** Caminho do WebP (a partir de /public). */
+    src: string;
+    /** ALT descritivo e otimizado para SEO. */
+    alt: string;
+    /** Legenda editorial exibida sob a imagem. */
+    legenda: string;
+  };
 }
 
 export interface Estado {

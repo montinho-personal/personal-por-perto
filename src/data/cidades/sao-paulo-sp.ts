@@ -134,5 +134,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Paulo — Ciclovias', url: 'https://www.prefeitura.sp.gov.br/' },
     { nome: 'Corrida Internacional de São Silvestre', url: 'https://www.saosilvestre.com.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  capaArte: {
+    src: '/capas-cidade/sao-paulo-sp.webp',
+    alt:
+      'Personal trainer em São Paulo (SP) orientando aluna em treino de força ao ar livre, com a Ponte Estaiada Octávio Frias de Oliveira e os arranha-céus da capital paulista ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em São Paulo: acompanhamento profissional perto de você, em toda a capital e regiões.',
+  },
+  atualizadoEm: '2026-07-22',
 };

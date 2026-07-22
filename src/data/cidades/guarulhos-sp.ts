@@ -109,5 +109,12 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Guarulhos', url: 'https://cidades.ibge.gov.br/brasil/sp/guarulhos/panorama' },
     { nome: 'Prefeitura de Guarulhos', url: 'https://www.guarulhos.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  capaArte: {
+    src: '/capas-cidade/guarulhos-sp.webp',
+    alt:
+      'Personal trainer em Guarulhos (SP) orientando aluna em treino ao ar livre, com o Aeroporto Internacional de Guarulhos e um avião pousando ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Guarulhos: mais saúde, energia e qualidade de vida, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };
