@@ -113,5 +113,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campinas', url: 'https://www.campinas.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/campinas-sp.webp',
+    alt:
+      'Personal trainer em Campinas (SP) orientando aluna em agachamento ao ar livre, à beira de um lago de parque urbano com o skyline de arranha-céus da cidade ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Campinas: acompanhamento profissional perto de você, na cidade e na região metropolitana.',
+  },
+  atualizadoEm: '2026-07-22',
 };

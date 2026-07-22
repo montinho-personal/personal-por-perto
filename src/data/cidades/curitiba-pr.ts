@@ -121,5 +121,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Curitiba', url: 'https://www.curitiba.pr.gov.br/' },
     { nome: 'Viaje Paraná', url: 'https://www.viajeparana.com/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/curitiba-pr.webp',
+    alt:
+      'Personal trainer em Curitiba (PR) acompanhando aluna em treino de força ao ar livre, com a estufa e os jardins do Jardim Botânico de Curitiba ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Curitiba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };
