@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Florianópolis', url: 'https://www.pmf.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/florianopolis-sc.webp',
+    alt:
+      'Personal trainer em Florianópolis (SC) orientando aluna em treino de força ao ar livre, com a Ponte Hercílio Luz iluminada ao pôr do sol ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Florianópolis: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };

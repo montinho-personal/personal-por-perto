@@ -119,5 +119,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aracaju', url: 'https://www.aracaju.se.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/aracaju-se.webp',
+    alt:
+      'Personal trainer em Aracaju (SE) orientando aluna em treino de força ao ar livre, com a orla marítima da capital sergipana, seus coqueiros e o mar ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Aracaju: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };
