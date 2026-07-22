@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de João Pessoa', url: 'https://www.joaopessoa.pb.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/joao-pessoa-pb.webp',
+    alt:
+      'Personal trainer em João Pessoa (PB) acompanhando aluna em treino de força ao ar livre na orla ao pôr do sol, com um farol à beira-mar e coqueiros ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em João Pessoa: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-22',
 };
