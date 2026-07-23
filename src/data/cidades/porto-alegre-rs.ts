@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Porto Alegre', url: 'https://prefeitura.poa.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/porto-alegre-rs.webp',
+    alt:
+      'Personal trainer em Porto Alegre (RS) em arte que une treino de força e a Orla do Guaíba ao pôr do sol, um dos principais cartões-postais da capital gaúcha, ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Porto Alegre: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-23',
 };
