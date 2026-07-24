@@ -121,6 +121,11 @@ export interface Cidade {
     alt: string;
     /** Legenda editorial exibida sob a imagem. */
     legenda: string;
+    /**
+     * Arte em formato retrato (pôster 2:3) em vez do padrão paisagem (3:2).
+     * Ajusta width/height do hero e limita a largura para não dominar a página.
+     */
+    vertical?: boolean;
   };
 }
 

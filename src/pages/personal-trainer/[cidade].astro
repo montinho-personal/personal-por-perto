@@ -59,6 +59,9 @@ const altTransformacao =
 // substitui a capa gerada no hero, no Open Graph e no sitemap de imagens.
 const capaArte = cidade.capaArte;
 const imagemOg = capaArte ? capaArte.src : ehAlphaville ? fotoTransformacao : capaPng;
+// Dimensões reais do criativo: paisagem 3:2 (padrão) ou retrato 2:3 (pôster).
+const capaW = capaArte?.vertical ? 1000 : 1200;
+const capaH = capaArte?.vertical ? 1500 : 800;
 
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);
@@ -179,12 +182,12 @@ const objetivoDesc: Record<string, string> = {
 
       {
         capaArte ? (
-          <figure class="capa">
+          <figure class={capaArte.vertical ? 'capa capa-vertical' : 'capa'}>
             <img
               src={capaArte.src}
               alt={capaArte.alt}
-              width="1200"
-              height="800"
+              width={capaW}
+              height={capaH}
               loading="eager"
               fetchpriority="high"
               decoding="async"
@@ -917,6 +920,10 @@ const objetivoDesc: Record<string, string> = {
   .capa {
     margin: var(--sp-6) 0 0;
     max-width: 720px;
+  }
+  /* Arte retrato (pôster 2:3): largura menor para não esticar a página. */
+  .capa-vertical {
+    max-width: 440px;
   }
   .capa img {
     display: block;
