@@ -10,14 +10,16 @@ import { whatsappUrl } from '../lib/links';
 export interface Props {
   tema?: 'cidade' | 'emagrecimento' | 'hipertrofia' | 'iniciantes' | 'dores' | 'alimentacao' | 'geral';
   contexto?: string; // ex.: nome da cidade
+  /** Locução locativa já flexionada ("no Rio de Janeiro"); cai em "em {contexto}". */
+  localidade?: string;
   foto?: string;
 }
-const { tema = 'geral', contexto, foto = '/montinho/avatar-montinho-personal.webp' } = Astro.props;
+const { tema = 'geral', contexto, localidade, foto = '/montinho/avatar-montinho-personal.webp' } = Astro.props;
 
 const TEMAS = {
   cidade: {
     titulo: contexto
-      ? `Quer um treino feito para você em ${contexto} (ou online)?`
+      ? `Quer um treino feito para você ${localidade ?? `em ${contexto}`} (ou online)?`
       : 'Quer um treino feito de verdade para o seu objetivo?',
     texto:
       'Você acabou de ver o panorama de treino da cidade. Se quiser um plano sob medida para o seu objetivo, fala comigo no WhatsApp — atendo online para todo o Brasil, com a proximidade de quem treina do seu lado.',

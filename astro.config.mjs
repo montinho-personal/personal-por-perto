@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { cidades } from './src/data/cidades';
 import { estados } from './src/data/estados';
+import { emCidade } from './src/lib/gramatica';
 
 // Canonical production URL of the portal.
 const SITE = 'https://www.personalporperto.com.br';
@@ -48,6 +49,8 @@ export default defineConfig({
           // Alphaville usa a foto real de transformação no lugar da capa padrão.
           const imgAlphaville = slug === 'alphaville-sp';
           const arte = capaArtePorSlug[slug];
+          // Regência correta: "em São Paulo" vs "no Rio de Janeiro".
+          const emNome = emCidade({ slug, nome: nomePorSlug[slug] });
           item.img = [
             {
               url: arte
@@ -56,13 +59,13 @@ export default defineConfig({
                   ? `${SITE}/montinho/personal-trainer-alphaville.webp`
                   : `${SITE}/capas/personal-trainer-${slug}.png`,
               title: arte
-                ? `Personal Trainer em ${nomePorSlug[slug]}`
+                ? `Personal Trainer ${emNome}`
                 : imgAlphaville
                   ? 'Antes e depois do Montinho Personal — personal trainer em Alphaville'
-                  : `Personal Trainer em ${nomePorSlug[slug]}`,
+                  : `Personal Trainer ${emNome}`,
               caption: arte
                 ? arte.alt
-                : `Guia de personal trainer em ${nomePorSlug[slug]} — Personal por Perto.`,
+                : `Guia de personal trainer ${emNome} — Personal por Perto.`,
             },
           ];
           if (lastmodCidade[slug]) item.lastmod = dataRevisao(lastmodCidade[slug]);

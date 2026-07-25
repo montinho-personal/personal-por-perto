@@ -12,6 +12,7 @@ import WhatsAppCta from '../../components/WhatsAppCta.astro';
 import { whatsappUrl } from '../../lib/links';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
+import { emCidade, deCidade } from '../../lib/gramatica';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
 import { fontesExternas } from '../../data/fontesExternas';
 import { formatNumber, faixaBRL, formatDateLong, formatBRL } from '../../lib/slug';
@@ -34,6 +35,9 @@ export function getStaticPaths() {
 
 const { cidade } = Astro.props;
 const n = cidade.nome;
+// Regência correta do topônimo: "em São Paulo" vs "no Rio de Janeiro".
+const emN = emCidade(cidade); // "em São Paulo" | "no Rio de Janeiro"
+const deN = deCidade(cidade); // "de São Paulo" | "do Rio de Janeiro"
 const path = `/personal-trainer/${cidade.slug}`;
 const url = new URL(path, site.dominio).href;
 
@@ -41,7 +45,7 @@ const url = new URL(path, site.dominio).href;
 // PNG para Open Graph e dados estruturados.
 const capaWebp = `/capas/personal-trainer-${cidade.slug}.webp`;
 const capaPng = `/capas/personal-trainer-${cidade.slug}.png`;
-const capaAlt = `Personal trainer em ${n} (${cidade.uf}) — guia do Personal por Perto`;
+const capaAlt = `Personal trainer ${emN} (${cidade.uf}) — guia do Personal por Perto`;
 
 // Alphaville é a base presencial do profissional destacado: a página usa
 // fotos reais no lugar da capa padrão + vídeo do personal. Santana de
@@ -91,14 +95,14 @@ const crumbs = [
 // Texto da seção "Mercado de Personal Trainers" (usa dado próprio ou fallback).
 const mercadoTexto =
   cidade.mercado ??
-  `O mercado de personal trainers em ${n} acompanha a oferta de academias, estúdios e espaços ao ar livre da região. ${cidade.academias ?? ''} A procura tende a crescer entre quem busca constância, orientação segura e um treino desenhado para o próprio objetivo.`;
+  `O mercado de personal trainers ${emN} acompanha a oferta de academias, estúdios e espaços ao ar livre da região. ${cidade.academias ?? ''} A procura tende a crescer entre quem busca constância, orientação segura e um treino desenhado para o próprio objetivo.`;
 
 const conclusaoTexto =
   cidade.conclusao ??
-  `Contratar um personal trainer em ${n} é investir em segurança, método e constância. Com a estrutura local certa e um profissional alinhado ao seu objetivo, fica muito mais fácil treinar bem e manter o resultado ao longo do tempo.`;
+  `Contratar um personal trainer ${emN} é investir em segurança, método e constância. Com a estrutura local certa e um profissional alinhado ao seu objetivo, fica muito mais fácil treinar bem e manter o resultado ao longo do tempo.`;
 
 const toc = [
-  { id: 'panorama', label: `Panorama de ${n}` },
+  { id: 'panorama', label: `Panorama ${deN}` },
   { id: 'mercado', label: 'Mercado de personais' },
   { id: 'como-escolher', label: 'Como escolher' },
   { id: 'precos', label: 'Quanto custa' },
@@ -119,8 +123,8 @@ const tiposTreino = [
   'Treino ao ar livre',
 ];
 
-const title = `Personal Trainer em ${n} (${cidade.uf}): guia completo e quanto custa`;
-const description = `Como escolher um personal trainer em ${n} (${cidade.uf}), quanto custa (${faixaBRL(
+const title = `Personal Trainer ${emN} (${cidade.uf}): guia completo e quanto custa`;
+const description = `Como escolher um personal trainer ${emN} (${cidade.uf}), quanto custa (${faixaBRL(
   cidade.precos.avulsaMin,
   cidade.precos.avulsaMax,
 )} a aula), onde treinar e dicas por objetivo. Guia editorial independente, atualizado.`;
@@ -135,7 +139,7 @@ const schema = [
     atualizadoEm: cidade.atualizadoEm,
   }),
   servicoCidadeSchema(cidade),
-  itemListSchema(`Tipos de treino com personal trainer em ${n}`, tiposTreino, url),
+  itemListSchema(`Tipos de treino com personal trainer ${emN}`, tiposTreino, url),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
@@ -152,7 +156,7 @@ const objetivoDesc: Record<string, string> = {
   'Treino para idosos':
     'Prioriza força funcional, equilíbrio e prevenção de quedas, com avaliação cuidadosa e respeito às condições de saúde.',
   'Treino ao ar livre':
-    `Aproveita os espaços públicos de ${n} para treino funcional, corrida e mobilidade, uma alternativa econômica e prazerosa ao ambiente fechado.`,
+    `Aproveita os espaços públicos ${deN} para treino funcional, corrida e mobilidade, uma alternativa econômica e prazerosa ao ambiente fechado.`,
 };
 ---
 
@@ -165,9 +169,9 @@ const objetivoDesc: Record<string, string> = {
       <p class="eyebrow">
         {isRegiao ? 'Guia da região' : 'Guia da cidade'} · {cidade.contexto ?? cidade.estado}
       </p>
-      <h1>Personal Trainer em {n} <span>({cidade.uf})</span></h1>
+      <h1>Personal Trainer {emN} <span>({cidade.uf})</span></h1>
       <p class="hero-intro">
-        Contratar um personal trainer em {n} significa ter um treino desenhado para
+        Contratar um personal trainer {emN} significa ter um treino desenhado para
         o seu objetivo, com acompanhamento de quem entende o ritmo {isRegiao ? 'da região' : 'da cidade'} — das
         academias e condomínios aos parques ao ar livre. Os valores variam de
         <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong> por
@@ -225,7 +229,7 @@ const objetivoDesc: Record<string, string> = {
               />
             </picture>
             <figcaption>
-              Guia de personal trainer em {n} ({cidade.uf}) — panorama local, faixas de
+              Guia de personal trainer {emN} ({cidade.uf}) — panorama local, faixas de
               preço e onde treinar. Personal por Perto.
             </figcaption>
           </figure>
@@ -276,7 +280,7 @@ const objetivoDesc: Record<string, string> = {
   <div class="container layout">
     <article class="prose article">
       <section id="panorama">
-        <h2>Panorama de {n} para quem treina</h2>
+        <h2>Panorama {deN} para quem treina</h2>
         <p>{cidade.resumoEconomico}</p>
         <p>
           Para quem leva o treino a sério, vale entender o contexto local. {cidade.culturaEsportiva}
@@ -317,12 +321,12 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       <section id="mercado">
-        <h2>O mercado de personal trainers em {n}</h2>
+        <h2>O mercado de personal trainers {emN}</h2>
         <p>{mercadoTexto}</p>
         {
           cidade.destaquesFitness.length > 0 && (
             <>
-              <p>Em resumo, o que define o cenário de treino em {n}:</p>
+              <p>Em resumo, o que define o cenário de treino {emN}:</p>
               <ul class="check-list">
                 {cidade.destaquesFitness.map((d) => (<li>{d}</li>))}
               </ul>
@@ -332,7 +336,7 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       <section id="como-escolher">
-        <h2>Como escolher um personal trainer em {n}</h2>
+        <h2>Como escolher um personal trainer {emN}</h2>
         <p>
           Escolher um bom profissional é menos sobre preço e mais sobre adequação ao
           seu objetivo. Antes de fechar, considere estes pontos:
@@ -345,7 +349,7 @@ const objetivoDesc: Record<string, string> = {
           </li>
           <li><strong>Experiência com o seu objetivo:</strong> emagrecimento, hipertrofia, reabilitação e performance pedem abordagens diferentes.</li>
           <li><strong>Avaliação inicial:</strong> um bom personal avalia antes de prescrever — não entrega treino genérico.</li>
-          <li><strong>Logística:</strong> em {n}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
+          <li><strong>Logística:</strong> {emN}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
           <li><strong>Método e acompanhamento:</strong> como ele mede evolução, reavalia e ajusta o plano ao longo do tempo.</li>
         </ul>
         <p>
@@ -359,7 +363,7 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       <section id="precos">
-        <h2>Quanto custa um personal trainer em {n}?</h2>
+        <h2>Quanto custa um personal trainer {emN}?</h2>
         <p>
           Em {n}, uma aula avulsa presencial costuma custar entre
           <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong>.
@@ -687,10 +691,10 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
-      <WhatsAppCta tema="cidade" contexto={n} />
+      <WhatsAppCta tema="cidade" contexto={n} localidade={emN} />
 
       <section id="onde-treinar">
-        <h2>Onde treinar em {n}: academia, condomínio e ar livre</h2>
+        <h2>Onde treinar {emN}: academia, condomínio e ar livre</h2>
         <p>
           A cidade oferece diferentes cenários de treino, e o personal certo sabe
           aproveitar cada um deles.
@@ -718,22 +722,22 @@ const objetivoDesc: Record<string, string> = {
         }
         <h3>Treino em condomínio</h3>
         <p>
-          Muitos prédios em {n} já contam com espaço fitness próprio. O personal que
+          Muitos prédios {emN} já contam com espaço fitness próprio. O personal que
           atende em condomínio elimina o deslocamento e adapta o treino à estrutura
           disponível — uma solução prática para quem tem agenda cheia.
         </p>
         <h3>Treino ao ar livre</h3>
-        <p>Entre os espaços públicos mais usados para atividade física em {n} estão:</p>
+        <p>Entre os espaços públicos mais usados para atividade física {emN} estão:</p>
         <ul>
           {cidade.parques.map((p) => (<li><strong>{p.nome}:</strong> {p.descricao}</li>))}
         </ul>
         {cidade.ciclovias && <p>{cidade.ciclovias}</p>}
       </section>
 
-      <CtaMontinho cidade={n} variante="inline" />
+      <CtaMontinho cidade={n} localidade={emN} variante="inline" />
 
       <section id="objetivos">
-        <h2>Treino por objetivo em {n}</h2>
+        <h2>Treino por objetivo {emN}</h2>
         <p>
           Não existe treino único: o melhor programa é o que conversa com a sua meta,
           o seu nível e a sua rotina. Veja as abordagens mais procuradas.
@@ -782,7 +786,7 @@ const objetivoDesc: Record<string, string> = {
         </p>
       </section>
 
-      <InstagramFollow tema="cidade" contexto={n} />
+      <InstagramFollow tema="cidade" contexto={n} localidade={emN} />
 
       <section id="avaliar">
         <h2>Como avaliar um profissional</h2>
@@ -813,7 +817,7 @@ const objetivoDesc: Record<string, string> = {
         </p>
       </section>
 
-      <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer em ${n}`} />
+      <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer ${emN}`} />
 
       <section id="conclusao">
         <h2>Conclusão</h2>
@@ -845,11 +849,11 @@ const objetivoDesc: Record<string, string> = {
         <h2>Quer um plano feito para você?</h2>
         <p>
           Fale direto com o <strong>Montinho Personal</strong>, especialista em
-          emagrecimento e acompanhamento online — atende quem está em {n} e em todo o Brasil.
+          emagrecimento e acompanhamento online — atende quem está {emN} e em todo o Brasil.
         </p>
         <a
           class="btn btn-primary side-wpp"
-          href={whatsappUrl(`Oi, Montinho! Vim pelo guia de ${n} no Personal por Perto e quero saber como funciona a consultoria.`)}
+          href={whatsappUrl(`Oi, Montinho! Vim pelo guia ${deN} no Personal por Perto e quero saber como funciona a consultoria.`)}
           target="_blank"
           rel="noopener"
           data-wpp
@@ -866,7 +870,7 @@ const objetivoDesc: Record<string, string> = {
   <!-- RECOMENDAÇÃO PRINCIPAL -->
   <section class="section">
     <div class="container">
-      <CtaMontinho cidade={n} variante="destaque" />
+      <CtaMontinho cidade={n} localidade={emN} variante="destaque" />
     </div>
   </section>
 

@@ -6,13 +6,15 @@ import { montinhoUrlCidade } from '../lib/links';
 export interface Props {
   /** Nome da cidade para contextualizar a recomendação (opcional). */
   cidade?: string;
+  /** Locução locativa já flexionada ("no Rio de Janeiro"); cai em "em {cidade}". */
+  localidade?: string;
   /** Variante visual: "destaque" (caixa cheia) ou "inline" (mais discreta). */
   variante?: 'destaque' | 'inline';
 }
-const { cidade, variante = 'destaque' } = Astro.props;
+const { cidade, localidade, variante = 'destaque' } = Astro.props;
 
 const contexto = cidade
-  ? `Entre as opções analisadas para quem treina em ${cidade} — sobretudo no formato online —, o portal destaca o trabalho do Montinho Personal.`
+  ? `Entre as opções analisadas para quem treina ${localidade ?? `em ${cidade}`} — sobretudo no formato online —, o portal destaca o trabalho do Montinho Personal.`
   : 'Entre os profissionais analisados, o portal destaca o trabalho do Montinho Personal para quem busca acompanhamento online com foco em emagrecimento.';
 ---
 

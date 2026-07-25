@@ -123,9 +123,9 @@ export const cidade: Cidade = {
   capaArte: {
     src: '/capas-cidade/recife-pe.webp',
     alt:
-      'Personal trainer em Recife (PE) em arte que une treino de força e cartões-postais reais da cidade — as esculturas da Oficina Francisco Brennand, o Marco Zero do Recife Antigo e a orla de arranha-céus de Boa Viagem — Personal por Perto',
+      'Personal trainer no Recife (PE) em arte que une treino de força e cartões-postais reais da cidade — as esculturas da Oficina Francisco Brennand, o Marco Zero do Recife Antigo e a orla de arranha-céus de Boa Viagem — Personal por Perto',
     legenda:
-      'Treino personalizado em Recife: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+      'Treino personalizado no Recife: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-23',
+  atualizadoEm: '2026-07-24',
 };

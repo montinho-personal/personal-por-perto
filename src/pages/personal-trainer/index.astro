@@ -5,6 +5,7 @@ import CityCard from '../../components/CityCard.astro';
 import { cidades } from '../../data/cidades';
 import { estados } from '../../data/estados';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { emCidade } from '../../lib/gramatica';
 import { site } from '../../data/site';
 
 const path = '/personal-trainer';
@@ -34,7 +35,7 @@ const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema(
     'Cidades com guia de personal trainer',
-    cidades.map((c) => `Personal Trainer em ${c.nome}`),
+    cidades.map((c) => `Personal Trainer ${emCidade(c)}`),
     new URL(path, site.dominio).href,
   ),
 ];

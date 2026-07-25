@@ -8,11 +8,12 @@
 import type { APIRoute } from 'astro';
 import { cidades } from '../data/cidades';
 import { artigos } from '../data/artigos';
+import { emCidade } from '../lib/gramatica';
 
 export const GET: APIRoute = () => {
   const itens = [
     ...cidades.map((c) => ({
-      t: `Personal trainer em ${c.nome}`,
+      t: `Personal trainer ${emCidade(c)}`,
       s: `${c.tipo === 'regiao' ? 'Região' : 'Cidade'} · ${c.uf}`,
       u: `/personal-trainer/${c.slug}/`,
       k: `${c.nome} ${c.uf} ${c.estado}`,

@@ -12,6 +12,7 @@ import { estados } from '../data/estados';
 import { site } from '../data/site';
 import { formatNumber } from '../lib/slug';
 import { faqSchema, itemListSchema } from '../lib/schema';
+import { emCidade } from '../lib/gramatica';
 import { cidadesDestaqueHome } from '../data/destaques';
 
 // Destaque diverso (grandes cidades de várias regiões), com fallback.
@@ -68,7 +69,7 @@ const faqs = [
 const schema = [
   itemListSchema(
     'Cidades com guia de personal trainer',
-    cidades.map((c) => `Personal Trainer em ${c.nome}`),
+    cidades.map((c) => `Personal Trainer ${emCidade(c)}`),
     site.dominio,
   ),
   faqSchema(faqs),
@@ -118,7 +119,7 @@ const schema = [
             destaqueFinal.slice(0, 5).map((c) => (
               <li>
                 <a href={`/personal-trainer/${c.slug}/`}>
-                  <span>Personal Trainer em {c.nome}</span>
+                  <span>Personal Trainer {emCidade(c)}</span>
                   <span class="panel-uf">{c.uf}</span>
                 </a>
               </li>

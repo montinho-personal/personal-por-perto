@@ -6,6 +6,7 @@
 import type { Cidade } from './types';
 import { slugify } from './slug';
 import { montinho } from '../data/montinho';
+import { emCidade } from './gramatica';
 
 /**
  * Monta o link do WhatsApp do Montinho com mensagem pré-preenchida (opcional).
@@ -57,13 +58,14 @@ export const rotas = {
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */
-export function anchorCidade(cidade: Pick<Cidade, 'nome'>, i = 0): string {
+export function anchorCidade(cidade: Pick<Cidade, 'nome' | 'slug'>, i = 0): string {
+  const em = emCidade(cidade);
   const v = [
-    `personal trainer em ${cidade.nome}`,
-    `treinador particular em ${cidade.nome}`,
-    `profissional de educação física em ${cidade.nome}`,
-    `acompanhamento de treino em ${cidade.nome}`,
-    `treino personalizado em ${cidade.nome}`,
+    `personal trainer ${em}`,
+    `treinador particular ${em}`,
+    `profissional de educação física ${em}`,
+    `acompanhamento de treino ${em}`,
+    `treino personalizado ${em}`,
   ];
   return v[i % v.length];
 }

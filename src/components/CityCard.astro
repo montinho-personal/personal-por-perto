@@ -1,6 +1,7 @@
 ---
 import type { Cidade } from '../lib/types';
 import { formatNumber } from '../lib/slug';
+import { emCidade } from '../lib/gramatica';
 export interface Props {
   cidade: Cidade;
 }
@@ -14,7 +15,7 @@ const { cidade } = Astro.props;
       {cidade.populacao ? `${formatNumber(cidade.populacao)} hab.` : cidade.tipo === 'regiao' ? 'Região' : ''}
     </span>
   </div>
-  <h3>Personal Trainer em {cidade.nome}</h3>
+  <h3>Personal Trainer {emCidade(cidade)}</h3>
   <p class="city-card-desc">
     {cidade.destaquesFitness[0]}
   </p>

@@ -11,14 +11,16 @@ export interface Props {
   variante?: 'card' | 'compacto';
   /** Contexto opcional (ex.: nome da cidade) para personalizar o título. */
   contexto?: string;
+  /** Locução locativa já flexionada ("no Rio de Janeiro"); cai em "em {contexto}". */
+  localidade?: string;
 }
-const { tema = 'geral', variante = 'card', contexto } = Astro.props;
+const { tema = 'geral', variante = 'card', contexto, localidade } = Astro.props;
 const ig = montinho.instagram;
 
 const TEMAS = {
   cidade: {
     titulo: contexto
-      ? `Treina em ${contexto}? Treine junto com o Montinho no Instagram`
+      ? `Treina ${localidade ?? `em ${contexto}`}? Treine junto com o Montinho no Instagram`
       : 'Treino de verdade, todo dia, no seu feed',
     bullets: [
       'Treinos e exercícios práticos para casa, academia e ar livre',

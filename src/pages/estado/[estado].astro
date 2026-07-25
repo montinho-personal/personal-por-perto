@@ -6,6 +6,7 @@ import { estados } from '../../data/estados';
 import { cidadesPorEstado } from '../../data/cidades';
 import { formatNumber, formatDateLong } from '../../lib/slug';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { emCidade } from '../../lib/gramatica';
 import { site } from '../../data/site';
 
 export function getStaticPaths() {
@@ -36,7 +37,7 @@ const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema(
     `Cidades do ${estado.nome} com guia de personal trainer`,
-    lista.map((c) => `Personal Trainer em ${c.nome}`),
+    lista.map((c) => `Personal Trainer ${emCidade(c)}`),
     new URL(path, site.dominio).href,
     lista.map((c) => new URL(`/personal-trainer/${c.slug}`, site.dominio).href),
   ),

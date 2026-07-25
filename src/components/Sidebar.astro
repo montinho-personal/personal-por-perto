@@ -5,6 +5,7 @@
  */
 import { cidades } from '../data/cidades';
 import { rotas } from '../lib/links';
+import { emCidade } from '../lib/gramatica';
 
 export interface Props {
   /** Slug da cidade/página atual, para não se autolinkar. */
@@ -53,7 +54,7 @@ const categorias = [
         <ul>
           {populares.map((c) => (
             <li>
-              <a href={`/personal-trainer/${c.slug}/`}>Personal trainer em {c.nome}</a>
+              <a href={`/personal-trainer/${c.slug}/`}>Personal trainer {emCidade(c)}</a>
             </li>
           ))}
           <li><a href={rotas.cidades} class="widget-all">Ver todas as cidades →</a></li>

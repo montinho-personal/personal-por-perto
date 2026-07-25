@@ -11,6 +11,7 @@ import { site } from '../data/site';
 import { montinho } from '../data/montinho';
 import { cidadesPopularesFooter } from '../data/destaques';
 import { formatMonthYear } from '../lib/slug';
+import { emCidade } from '../lib/gramatica';
 
 const anoAtual = 2026;
 ---
@@ -44,7 +45,7 @@ const anoAtual = 2026;
         {
           cidadesPopularesFooter.map((c) => (
             <li>
-              <a href={`/personal-trainer/${c.slug}/`}>Personal Trainer {c.prep} {c.nome}</a>
+              <a href={`/personal-trainer/${c.slug}/`}>Personal Trainer {emCidade(c)}</a>
             </li>
           ))
         }

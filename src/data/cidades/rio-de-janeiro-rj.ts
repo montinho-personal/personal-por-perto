@@ -120,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Maratona do Rio', url: 'https://www.maratonadorio.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-07-24',
 };

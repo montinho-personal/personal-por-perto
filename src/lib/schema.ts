@@ -7,6 +7,7 @@
 import { site } from '../data/site';
 import { montinho } from '../data/montinho';
 import type { Cidade, Crumb, FAQ } from './types';
+import { emCidade } from './gramatica';
 
 const ORG_ID = `${site.dominio}/#organization`;
 const SITE_ID = `${site.dominio}/#website`;
@@ -170,8 +171,8 @@ export function servicoCidadeSchema(cidade: Cidade) {
   return {
     '@type': 'Service',
     serviceType: 'Personal Trainer',
-    name: `Personal Trainer em ${cidade.nome}`,
-    description: `Acompanhamento de treino com personal trainer em ${cidade.nome}, ${cidade.uf} — presencial em academias, condomínios e parques, ou online.`,
+    name: `Personal Trainer ${emCidade(cidade)}`,
+    description: `Acompanhamento de treino com personal trainer ${emCidade(cidade)}, ${cidade.uf} — presencial em academias, condomínios e parques, ou online.`,
     areaServed: {
       '@type': 'City',
       name: cidade.nome,
