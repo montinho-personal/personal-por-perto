@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belém', url: 'https://www.belem.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/belem-pa.webp',
+    alt:
+      'Personal trainer em Belém (PA) em arte que une treino de força e cartões-postais reais da cidade — a Estação das Docas, o Ver-o-Peso e o Mangal das Garças ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Belém: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-25',
 };

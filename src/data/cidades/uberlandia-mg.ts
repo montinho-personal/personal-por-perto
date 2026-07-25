@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Uberlândia', url: 'https://www.uberlandia.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/uberlandia-mg.webp',
+    alt:
+      'Personal trainer em Uberlândia (MG) em arte que une treino de força e cartões-postais reais da cidade — o Parque do Sabiá e a Praça Tubal Vilela ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Uberlândia: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-25',
 };
