@@ -123,5 +123,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santana de Parnaíba', url: 'https://www.santanadeparnaiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/santana-de-parnaiba-sp.webp',
+    alt:
+      'Montinho Personal, personal trainer em Santana de Parnaíba (SP), de braços cruzados com a entrada do complexo Alphaville e a região arborizada ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Santana de Parnaíba com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
+  },
+  atualizadoEm: '2026-07-27',
 };

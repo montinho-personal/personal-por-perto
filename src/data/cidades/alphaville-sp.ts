@@ -127,5 +127,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santana de Parnaíba', url: 'https://www.santanadeparnaiba.sp.gov.br/' },
     { nome: 'IBGE Cidades — Barueri', url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/alphaville-sp.webp',
+    alt:
+      'Montinho Personal, personal trainer com base em Alphaville (SP), de braços cruzados com os edifícios corporativos da região ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Alphaville com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
+  },
+  atualizadoEm: '2026-07-27',
 };

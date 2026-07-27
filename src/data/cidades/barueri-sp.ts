@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Barueri', url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama' },
     { nome: 'Prefeitura de Barueri', url: 'https://www.barueri.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/barueri-sp.webp',
+    alt:
+      'Montinho Personal, personal trainer em Barueri (SP), de braços cruzados com o skyline corporativo da região ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
+  },
+  atualizadoEm: '2026-07-27',
 };

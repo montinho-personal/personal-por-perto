@@ -121,5 +121,12 @@ export const cidade: Cidade = {
       url: 'https://cidades.ibge.gov.br/brasil/sp/barueri/panorama',
     },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/aldeia-da-serra-sp.webp',
+    alt:
+      'Montinho Personal, personal trainer, de braços cruzados em Aldeia da Serra (SP), com os condomínios arborizados e as colinas da região ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
+  },
+  atualizadoEm: '2026-07-27',
 };

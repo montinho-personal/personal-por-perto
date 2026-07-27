@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campo Grande', url: 'https://www.campogrande.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/campo-grande-ms.webp',
+    alt:
+      'Personal trainer em Campo Grande (MS) em arte que une treino de força e cartões-postais reais da cidade — o Parque das Nações Indígenas e o Lago do Amor ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Campo Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-27',
 };

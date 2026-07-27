@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Barueri', url: 'https://www.barueri.sp.gov.br/' },
     { nome: 'IBGE Cidades — Santana de Parnaíba', url: 'https://cidades.ibge.gov.br/brasil/sp/santana-de-parnaiba/panorama' },
   ],
-  atualizadoEm: '2026-07-18',
+  capaArte: {
+    src: '/capas-cidade/tambore-sp.webp',
+    alt:
+      'Montinho Personal, personal trainer, de braços cruzados no Tamboré (SP), com os edifícios e as áreas verdes da região ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado no Tamboré com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
+  },
+  atualizadoEm: '2026-07-27',
 };

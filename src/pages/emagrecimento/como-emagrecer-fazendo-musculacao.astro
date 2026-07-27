@@ -52,7 +52,10 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/como-emagrecer-fazendo-musculacao';
-const atualizadoEm = '2026-07-18';
+const atualizadoEm = '2026-07-27';
+const capa = '/capas-conteudo/como-emagrecer-fazendo-musculacao.webp';
+const capaAlt =
+  'Mulher em treino de força com halteres na academia e gráfico de progresso, ilustrando o guia de como emagrecer fazendo musculação — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -93,19 +96,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Como emagrecer fazendo musculação</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Musculação não é "só" um treino de força — ela também é uma ferramenta

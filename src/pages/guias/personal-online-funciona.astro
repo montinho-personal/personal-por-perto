@@ -48,7 +48,10 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-online-funciona';
-const atualizadoEm = '2026-07-18';
+const atualizadoEm = '2026-07-27';
+const capa = '/capas-conteudo/personal-online-funciona.webp';
+const capaAlt =
+  'Mulher treinando em casa com halter durante uma videochamada com o personal trainer no tablet, ilustrando o guia sobre personal trainer online — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -89,19 +92,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Formato de treino</p>
     <h1>Personal trainer online funciona? O que considerar antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Em resumo: o personal trainer online costuma funcionar bem para quem tem
