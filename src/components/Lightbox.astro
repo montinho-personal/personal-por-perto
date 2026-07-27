@@ -1,0 +1,124 @@
+---
+/**
+ * Lightbox global (zero dependências, JS puro).
+ * Ao clicar em uma foto de conteúdo (capa da cidade/artigo ou foto do
+ * personal), a imagem abre ampliada em um overlay, com botão de fechar,
+ * fecho por clique fora, tecla Esc e zoom por toque/clique na imagem.
+ * Alvos: .capa img, .article-page figure img, .foto-personal img.
+ */
+---
+
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+  <button type="button" class="lightbox-fechar" aria-label="Fechar imagem">&times;</button>
+  <img class="lightbox-img" src="" alt="" />
+</div>
+
+<style is:global>
+  /* Imagens ampliáveis: dica visual de que dá para clicar. */
+  .capa img,
+  .article-page figure img,
+  .foto-personal img {
+    cursor: zoom-in;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.75rem, 3vw, 2.5rem);
+    background: rgba(8, 9, 12, 0.92);
+    backdrop-filter: blur(2px);
+  }
+  .lightbox.aberto {
+    display: flex;
+  }
+  .lightbox-img {
+    max-width: 96vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    cursor: zoom-in;
+    transition: transform 0.15s ease;
+    transform-origin: center center;
+    touch-action: pan-x pan-y;
+  }
+  .lightbox-img.zoom {
+    cursor: zoom-out;
+    max-width: none;
+    max-height: none;
+  }
+  .lightbox-fechar {
+    position: fixed;
+    top: clamp(0.5rem, 2vw, 1.1rem);
+    right: clamp(0.6rem, 2vw, 1.25rem);
+    width: 2.6rem;
+    height: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .lightbox-fechar:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    if (!lb) return;
+    var img = lb.querySelector('.lightbox-img');
+    var btn = lb.querySelector('.lightbox-fechar');
+    var SEL = '.capa img, .article-page figure img, .foto-personal img';
+
+    function abrir(src, alt) {
+      img.classList.remove('zoom');
+      img.src = src;
+      img.alt = alt || '';
+      lb.hidden = false;
+      // força reflow para a transição de display funcionar
+      void lb.offsetWidth;
+      lb.classList.add('aberto');
+      document.body.style.overflow = 'hidden';
+    }
+    function fechar() {
+      lb.classList.remove('aberto');
+      lb.hidden = true;
+      img.src = '';
+      img.classList.remove('zoom');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('click', function (e) {
+      var alvo = e.target.closest && e.target.closest(SEL);
+      if (alvo && alvo.getAttribute('src')) {
+        e.preventDefault();
+        abrir(alvo.currentSrc || alvo.src, alvo.alt);
+        return;
+      }
+      if (e.target === btn) { fechar(); return; }
+      if (e.target === img) {
+        // alterna zoom (tamanho real) dentro do lightbox
+        img.classList.toggle('zoom');
+        return;
+      }
+      if (e.target === lb) { fechar(); }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lb.classList.contains('aberto')) fechar();
+    });
+  })();
+</script>
