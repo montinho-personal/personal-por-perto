@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caxias do Sul', url: 'https://www.caxias.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  capaArte: {
+    src: '/capas-cidade/caxias-do-sul-rs.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Caxias do Sul (RS) em arte que une treino de força e cartões-postais reais da cidade — o Monumento Nacional ao Imigrante e a Catedral de Santa Teresa ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Caxias do Sul: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-27',
 };
