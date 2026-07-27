@@ -121,6 +121,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/aracaju-se.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Aracaju (SE) orientando aluna em treino de força ao ar livre, com a orla marítima da capital sergipana, seus coqueiros e o mar ao fundo — Personal por Perto',
     legenda:

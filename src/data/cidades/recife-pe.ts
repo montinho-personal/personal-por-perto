@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/recife-pe.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer no Recife (PE) em arte que une treino de força e cartões-postais reais da cidade — as esculturas da Oficina Francisco Brennand, o Marco Zero do Recife Antigo e a orla de arranha-céus de Boa Viagem — Personal por Perto',
     legenda:

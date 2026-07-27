@@ -123,6 +123,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/curitiba-pr.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Curitiba (PR) acompanhando aluna em treino de força ao ar livre, com a estufa e os jardins do Jardim Botânico de Curitiba ao fundo — Personal por Perto',
     legenda:

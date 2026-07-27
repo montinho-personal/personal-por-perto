@@ -125,6 +125,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/santana-de-parnaiba-sp.webp',
+    w: 1200,
+    h: 900,
     alt:
       'Montinho Personal, personal trainer em Santana de Parnaíba (SP), de braços cruzados com a entrada do complexo Alphaville e a região arborizada ao fundo — Personal por Perto',
     legenda:

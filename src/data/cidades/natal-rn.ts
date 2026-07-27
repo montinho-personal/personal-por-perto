@@ -121,6 +121,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/natal-rn.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Natal (RN) em arte que une treino de força e cartões-postais reais da cidade — o Morro do Careca na Praia de Ponta Negra e o Forte dos Reis Magos à beira-mar — Personal por Perto',
     legenda:

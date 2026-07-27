@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/fortaleza-ce.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Fortaleza (CE) acompanhando aluna em treino de força ao ar livre na orla da Beira-Mar ao pôr do sol, com os arranha-céus à beira-mar ao fundo — Personal por Perto',
     legenda:

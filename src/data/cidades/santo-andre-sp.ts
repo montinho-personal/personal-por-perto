@@ -116,6 +116,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/santo-andre-sp.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Santo André (SP) acompanhando aluna em treino de força ao ar livre, com o skyline do ABC paulista ao fundo — Personal por Perto',
     legenda:

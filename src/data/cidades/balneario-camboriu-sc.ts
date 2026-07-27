@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/balneario-camboriu-sc.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Balneário Camboriú (SC) acompanhando aluna em treino de força ao ar livre, com a Praia Central e os arranha-céus à beira-mar ao fundo — Personal por Perto',
     legenda:

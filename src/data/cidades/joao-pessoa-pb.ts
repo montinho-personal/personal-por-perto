@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/joao-pessoa-pb.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em João Pessoa (PB) acompanhando aluna em treino de força ao ar livre na orla ao pôr do sol, com um farol à beira-mar e coqueiros ao fundo — Personal por Perto',
     legenda:

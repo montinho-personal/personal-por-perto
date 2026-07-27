@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/uberlandia-mg.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Uberlândia (MG) em arte que une treino de força e cartões-postais reais da cidade — o Parque do Sabiá e a Praça Tubal Vilela ao fundo — Personal por Perto',
     legenda:

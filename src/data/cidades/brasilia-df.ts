@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/brasilia-df.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Brasília (DF) acompanhando aluna em treino de força ao ar livre, com o Congresso Nacional e o Eixo Monumental ao fundo — Personal por Perto',
     legenda:

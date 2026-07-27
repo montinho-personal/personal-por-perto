@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/porto-alegre-rs.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Porto Alegre (RS) em arte que une treino de força e a Orla do Guaíba ao pôr do sol, um dos principais cartões-postais da capital gaúcha, ao fundo — Personal por Perto',
     legenda:

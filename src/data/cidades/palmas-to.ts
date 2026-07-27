@@ -121,6 +121,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/palmas-to.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Palmas (TO) em arte que une treino de força e a Praça dos Girassóis, um dos principais cartões-postais da capital tocantinense, ao fundo — Personal por Perto',
     legenda:

@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/florianopolis-sc.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Florianópolis (SC) orientando aluna em treino de força ao ar livre, com a Ponte Hercílio Luz iluminada ao pôr do sol ao fundo — Personal por Perto',
     legenda:

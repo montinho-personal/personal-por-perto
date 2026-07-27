@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/tambore-sp.webp',
+    w: 1200,
+    h: 686,
     alt:
       'Montinho Personal, personal trainer, de braços cruzados no Tamboré (SP), com os edifícios e as áreas verdes da região ao fundo — Personal por Perto',
     legenda:

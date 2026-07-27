@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/campo-grande-ms.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Campo Grande (MS) em arte que une treino de força e cartões-postais reais da cidade — o Parque das Nações Indígenas e o Lago do Amor ao fundo — Personal por Perto',
     legenda:

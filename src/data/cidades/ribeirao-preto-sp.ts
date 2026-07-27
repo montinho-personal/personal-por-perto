@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/ribeirao-preto-sp.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Ribeirão Preto (SP) em arte que une treino de força e o Parque Curupira, um dos cartões-postais da cidade, com seu lago e área verde ao fundo — Personal por Perto',
     legenda:

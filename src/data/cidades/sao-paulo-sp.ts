@@ -136,6 +136,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/sao-paulo-sp.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em São Paulo (SP) orientando aluna em treino de força ao ar livre, com a Ponte Estaiada Octávio Frias de Oliveira e os arranha-céus da capital paulista ao fundo — Personal por Perto',
     legenda:

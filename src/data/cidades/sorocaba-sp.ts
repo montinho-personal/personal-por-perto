@@ -121,6 +121,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/sorocaba-sp.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Sorocaba (SP) em arte que une treino de força e a cidade ao fundo, com um parque arborizado à beira de um lago — Personal por Perto',
     legenda:

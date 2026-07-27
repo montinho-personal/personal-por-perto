@@ -115,6 +115,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/campinas-sp.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Campinas (SP) orientando aluna em agachamento ao ar livre, à beira de um lago de parque urbano com o skyline de arranha-céus da cidade ao fundo — Personal por Perto',
     legenda:

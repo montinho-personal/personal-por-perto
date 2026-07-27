@@ -64,8 +64,8 @@ const altTransformacao =
 const capaArte = cidade.capaArte;
 const imagemOg = capaArte ? capaArte.src : ehAlphaville ? fotoTransformacao : capaPng;
 // Dimensões reais do criativo: paisagem 3:2 (padrão) ou retrato 2:3 (pôster).
-const capaW = capaArte?.vertical ? 1000 : 1200;
-const capaH = capaArte?.vertical ? 1500 : 800;
+const capaW = capaArte?.w ?? (capaArte?.vertical ? 1000 : 1200);
+const capaH = capaArte?.h ?? (capaArte?.vertical ? 1500 : 800);
 
 const faqs = cityFaqs(cidade);
 const relac = relacionadas(cidade, 4);

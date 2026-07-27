@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/manaus-am.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Manaus (AM) com o Teatro Amazonas e o Rio Negro ao fundo, em arte que une treino de força e os cartões-postais da capital amazonense — Personal por Perto',
     legenda:

@@ -120,6 +120,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/osasco-sp.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Osasco (SP) acompanhando aluna em agachamento ao ar livre, com o skyline de arranha-céus da cidade à beira-rio ao fundo — Personal por Perto',
     legenda:

@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/goiania-go.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Goiânia (GO) orientando aluna em treino de força ao ar livre, com o Monumento às Três Raças e os arranha-céus da capital goiana ao fundo — Personal por Perto',
     legenda:

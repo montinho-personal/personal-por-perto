@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/niteroi-rj.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Niterói (RJ) em arte que une treino de força e cartões-postais reais da cidade — o Museu de Arte Contemporânea (MAC) de Niterói e a orla da Baía de Guanabara ao fundo — Personal por Perto',
     legenda:

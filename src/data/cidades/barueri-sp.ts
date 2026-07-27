@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/barueri-sp.webp',
+    w: 1200,
+    h: 900,
     alt:
       'Montinho Personal, personal trainer em Barueri (SP), de braços cruzados com o skyline corporativo da região ao fundo — Personal por Perto',
     legenda:

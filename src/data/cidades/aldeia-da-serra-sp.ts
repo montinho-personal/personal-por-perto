@@ -123,6 +123,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/aldeia-da-serra-sp.webp',
+    w: 1200,
+    h: 900,
     alt:
       'Montinho Personal, personal trainer, de braços cruzados em Aldeia da Serra (SP), com os condomínios arborizados e as colinas da região ao fundo — Personal por Perto',
     legenda:

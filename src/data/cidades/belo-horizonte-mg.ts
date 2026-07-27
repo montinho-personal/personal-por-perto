@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/belo-horizonte-mg.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Belo Horizonte (MG) orientando aluna em treino de força ao ar livre, com a Igreja de São Francisco de Assis (Igrejinha da Pampulha) e a Lagoa da Pampulha ao fundo — Personal por Perto',
     legenda:

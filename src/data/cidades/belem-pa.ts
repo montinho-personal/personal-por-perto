@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/belem-pa.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer em Belém (PA) em arte que une treino de força e cartões-postais reais da cidade — a Estação das Docas, o Ver-o-Peso e o Mangal das Garças ao fundo — Personal por Perto',
     legenda:

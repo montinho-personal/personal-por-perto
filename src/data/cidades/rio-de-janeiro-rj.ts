@@ -122,6 +122,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/rio-de-janeiro-rj.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Personal trainer no Rio de Janeiro (RJ) em arte que une treino de força e cartões-postais reais da cidade — o Cristo Redentor, o Pão de Açúcar, os Arcos da Lapa e o calçadão de Copacabana ao fundo — Personal por Perto',
     legenda:

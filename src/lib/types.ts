@@ -126,6 +126,12 @@ export interface Cidade {
      * Ajusta width/height do hero e limita a largura para não dominar a página.
      */
     vertical?: boolean;
+    /**
+     * Dimensões reais do WebP (px). Quando presentes, o hero usa a proporção
+     * exata da arte — banner exibido inteiro, sem corte e sem layout shift.
+     */
+    w?: number;
+    h?: number;
   };
 }
 

@@ -111,6 +111,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/guarulhos-sp.webp',
+    w: 1200,
+    h: 800,
     alt:
       'Personal trainer em Guarulhos (SP) orientando aluna em treino ao ar livre, com o Aeroporto Internacional de Guarulhos e um avião pousando ao fundo — Personal por Perto',
     legenda:

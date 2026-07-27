@@ -129,6 +129,8 @@ export const cidade: Cidade = {
   ],
   capaArte: {
     src: '/capas-cidade/alphaville-sp.webp',
+    w: 1200,
+    h: 675,
     alt:
       'Montinho Personal, personal trainer com base em Alphaville (SP), de braços cruzados com os edifícios corporativos da região ao fundo — Personal por Perto',
     legenda:
