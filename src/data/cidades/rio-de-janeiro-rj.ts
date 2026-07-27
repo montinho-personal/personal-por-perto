@@ -120,5 +120,12 @@ export const cidade: Cidade = {
     { nome: 'Maratona do Rio', url: 'https://www.maratonadorio.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-24',
+  capaArte: {
+    src: '/capas-cidade/rio-de-janeiro-rj.webp',
+    alt:
+      'Personal trainer no Rio de Janeiro (RJ) em arte que une treino de força e cartões-postais reais da cidade — o Cristo Redentor, o Pão de Açúcar, os Arcos da Lapa e o calçadão de Copacabana ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado no Rio de Janeiro: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
+  atualizadoEm: '2026-07-27',
 };
