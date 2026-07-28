@@ -946,6 +946,11 @@ import { cidade as correntePi } from './corrente-pi';
 import { cidade as iguape } from './iguape-sp';
 import { cidade as alegrete } from './alegrete-rs';
 import { cidade as sapiranga } from './sapiranga-rs';
+import { cidade as saoRoque } from './sao-roque-sp';
+import { cidade as casaNova } from './casa-nova-ba';
+import { cidade as campoBom } from './campo-bom-rs';
+import { cidade as grajauMa } from './grajau-ma';
+import { cidade as ouricuri } from './ouricuri-pe';
 
 export const cidades: Cidade[] = [
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
@@ -1201,6 +1206,11 @@ export const cidades: Cidade[] = [
   palmas,
   alegrete,
   sapiranga,
+  saoRoque,
+  casaNova,
+  campoBom,
+  grajauMa,
+  ouricuri,
 ];
 
 /** Mapa slug -> cidade para lookups O(1). */
