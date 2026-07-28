@@ -951,6 +951,11 @@ import { cidade as casaNova } from './casa-nova-ba';
 import { cidade as campoBom } from './campo-bom-rs';
 import { cidade as grajauMa } from './grajau-ma';
 import { cidade as ouricuri } from './ouricuri-pe';
+import { cidade as portoFerreira } from './porto-ferreira-sp';
+import { cidade as jaraguaGo } from './jaragua-go';
+import { cidade as presidenteDutra } from './presidente-dutra-ma';
+import { cidade as saoLourencoDoSul } from './sao-lourenco-do-sul-rs';
+import { cidade as altosPi } from './altos-pi';
 
 export const cidades: Cidade[] = [
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
@@ -1211,6 +1216,11 @@ export const cidades: Cidade[] = [
   campoBom,
   grajauMa,
   ouricuri,
+  portoFerreira,
+  jaraguaGo,
+  presidenteDutra,
+  saoLourencoDoSul,
+  altosPi,
 ];
 
 /** Mapa slug -> cidade para lookups O(1). */
