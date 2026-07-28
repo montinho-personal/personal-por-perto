@@ -65,6 +65,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, estúdios de treinamento funcional e musculação, complementados por praças e centros esportivos públicos com atividades gratuitas.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro e bairros' },
+    { nome: 'Orla do Rio Paraíba do Sul', detalhe: 'percurso plano tradicional de caminhada e corrida' },
+    { nome: 'Centros esportivos de bairro', detalhe: 'estrutura pública para treino orientado' },
+  ],
+
   destaquesFitness: [
     'Polo universitário do Vale (EEL-USP e FATEA) que movimenta corrida e treino ao ar livre.',
     'Orla do Rio Paraíba do Sul como espaço para caminhada e corrida leve.',
@@ -84,6 +90,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade média universitária do Vale do Paraíba, Lorena alia a presença da EEL-USP e da FATEA, a orla do Rio Paraíba do Sul e a proximidade de Aparecida a um mercado fitness de academias e atendimento domiciliar. Um personal trainer ajuda a estruturar o treino, seja em casa, em academia ou ao ar livre, respeitando o clima de altitude do Vale.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Lorena?',
+      resposta:
+        'A orla do Rio Paraíba do Sul é o percurso clássico — plano, contínuo e agradável para corrida e caminhada —, complementada pelas academias do Centro, pelos centros esportivos de bairro e pelo atendimento em casa. A Volta USP de Lorena, tradicional prova universitária, mantém a cena de corrida viva e dá alvo ao calendário de quem treina orientado no Vale do Paraíba.',
+    },
+    {
+      pergunta: 'Dá para treinar corrida com personal em Lorena?',
+      resposta:
+        'Dá — e com vantagem geográfica: a orla do Paraíba oferece rodagem plana para base aeróbica, e a posição de Lorena no Vale permite incluir subidas de verdade nos treinos mais fortes, rumo à Serra da Mantiqueira. A Volta USP é a porta de entrada clássica; dali muitos avançam para provas maiores do Vale. A preparação combina corrida na orla, força em academia e progressão de volume calibrada — o papel do personal é exatamente segurar o ritmo dessa evolução.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Lorena para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Lorena, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou a orla do Paraíba), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['guaratingueta-sp', 'pindamonhangaba-sp', 'taubate-sp'],
 
   fontes: [
@@ -91,5 +115,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Lorena', url: 'https://www.lorena.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/352720' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

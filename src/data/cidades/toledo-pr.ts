@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne grandes redes e academias locais, com renda alta do agronegócio, complementada pelo Lago Municipal e pelas praças com academia ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Bluefit', detalhe: 'unidade em Toledo' },
+    { nome: 'AquaFit', detalhe: 'rede local com três unidades, incluindo natação e hidroginástica' },
+    { nome: 'Estrutura do Lago Municipal', detalhe: 'pista do Parque Diva Paim Barth, gratuita' },
+  ],
+
   destaquesFitness: [
     'Lago Municipal como ponto central de treino ao ar livre (pista emborrachada e academia ao ar livre).',
     'Renda alta do agronegócio — público disposto a investir em personal e academias premium.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do agronegócio do Paraná, Toledo une alta renda e o Lago Municipal como centro de treino. Um personal trainer encontra aqui um público com poder de investir, ideal para treino presencial e online, num clima favorável ao outdoor.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Toledo?',
+      resposta:
+        'O Lago Municipal — Parque Ecológico Diva Paim Barth — é o coração do treino ao ar livre, com pista movimentada de manhã e no fim de tarde. Completam o mapa as academias (Bluefit, as três unidades da rede local AquaFit e as consolidadas de bairro), as praças com academia ao ar livre e o atendimento em casa. A Meia Maratona de Toledo dá o alvo do calendário para quem corre orientado.',
+    },
+    {
+      pergunta: 'Dá para se preparar para a Meia Maratona de Toledo com personal?',
+      resposta:
+        'Dá — e o Lago Municipal é a base natural da preparação: percurso plano e seguro para rodagens e intervalados, com a Avenida Maripá completando os treinos mais longos. A planilha típica leva 12 a 16 semanas, com fortalecimento em academia duas vezes por semana. O clima do oeste paranaense colabora quase o ano todo; no verão quente e úmido, os longos migram para o amanhecer. O personal monta a progressão e segura a ansiedade de aumentar volume rápido demais.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Toledo para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Toledo, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou o Lago Municipal), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['cascavel-pr', 'foz-do-iguacu-pr'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Toledo', url: 'https://www.toledo.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

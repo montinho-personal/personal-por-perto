@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada principalmente por academias locais de musculação e treino funcional, concentradas no Centro e nos bairros residenciais, com porte compatível com uma cidade média que atende toda a microrregião.',
 
+  academiasProximas: [
+    { nome: 'Calçadões e praças do Centro', detalhe: 'estrutura pública usada para caminhada e treino funcional' },
+    { nome: 'Academias locais', detalhe: 'musculação com bom custo-benefício no Centro' },
+  ],
+
   destaquesFitness: [
     'Referência nacional em energia eólica, com dezenas de parques e centenas de aerogeradores no município.',
     'Serra do Torreão, formação rochosa que é o principal atrativo natural para trilhas e caminhadas.',
@@ -84,6 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cercada por parques eólicos e marcada pelo calor do semiárido, João Câmara pede um treino adaptado ao clima e que aproveite as praças, as estradas ventiladas e a paisagem da Serra do Torreão. Um personal trainer ajuda a organizar a rotina respeitando os horários mais frescos, reforçando a hidratação e mantendo a constância ao longo do ano.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em João Câmara?',
+      resposta:
+        'O treino orientado acontece nas academias de musculação do Centro, nas praças e calçadões — que concentram caminhada e funcional no fim de tarde — e em casa, formato que cresce pela praticidade. Para quem gosta de subida, a Serra do Torreão é o cenário local para treinos de resistência com orientação, aproveitando o desnível natural do Mato Grande.',
+    },
+    {
+      pergunta: 'Como o clima do semiárido afeta o treino em João Câmara?',
+      resposta:
+        'O vento constante que move os parques eólicos da região ajuda na sensação térmica, mas o sol do semiárido segue forte: as janelas boas são o amanhecer e o fim de tarde, com hidratação reforçada o dia inteiro. No meio do dia, musculação em ambiente coberto. O personal monta a semana em torno dessas janelas — treino de rua cedo, força à noite — para manter a rotina o ano todo sem depender do clima.',
+    },
+    {
+      pergunta: 'Há acompanhamento em João Câmara para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para João Câmara, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou os calçadões do Centro), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['ceara-mirim-rn', 'macau-rn'],
 
   fontes: [
@@ -91,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de João Câmara', url: 'https://www.joaocamara.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

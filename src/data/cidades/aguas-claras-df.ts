@@ -56,6 +56,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é densa para o tamanho da região: redes e estúdios boutique concentrados na Avenida das Araucárias e nas quadras centrais, somados às academias internas dos condomínios verticais, que ampliam o espaço de atuação do personal trainer.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'seis unidades espalhadas pelo bairro, das Pitangueiras às Castanheiras' },
+    { nome: 'Estúdios e boxes verticais', detalhe: 'funcional, cross e pilates na densidade dos eixos comerciais' },
+    { nome: 'Parque Ecológico de Águas Claras', detalhe: 'pista de corrida e estrutura pública gratuita' },
+  ],
+
   destaquesFitness: [
     'Bairro vertical e adensado: muitos prédios com academia própria, ideal para atendimento no condomínio.',
     'Parque Ecológico de Águas Claras: lago, pista de caminhada e circuito de cerca de 6,5 km para treino gratuito.',
@@ -76,6 +82,24 @@ export const cidade: Cidade = {
   conclusao:
     'Águas Claras combina densidade de moradores, alto poder aquisitivo e infraestrutura de sobra para treinar: academias no próprio prédio, o Parque Ecológico a poucos minutos e metrô para encurtar distâncias. Com um personal trainer alinhado ao seu objetivo, fica fácil manter a constância — seja na academia do condomínio, em casa ou no parque — mesmo no auge da seca do cerrado.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Águas Claras?',
+      resposta:
+        'O bairro mais vertical do DF tem treino em três camadas: o Parque Ecológico — pulmão local com pista de corrida —, a densidade rara de academias (só de Smart Fit são seis unidades, mais estúdios e boxes nos eixos comerciais) e as academias dos próprios condomínios, onde o personal atende sem o aluno sair do prédio: o formato que mais cresce entre executivos e famílias do bairro.',
+    },
+    {
+      pergunta: 'Como treinar na seca de Águas Claras?',
+      resposta:
+        'De junho a setembro a umidade do DF despenca, e o treino precisa se adaptar: sessões ao ar livre no Parque Ecológico rendem mais no início da manhã, quando o ar ainda segura alguma umidade; hidratação vira protagonista o dia todo; e nos picos da seca a academia climatizada assume o plano principal. A vantagem de Águas Claras é justamente a oferta indoor — com seis Smart Fit e dezenas de estúdios, o plano B fica a uma quadra de casa.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Águas Claras para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Águas Claras, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia do condomínio, estúdio, casa ou o parque), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['brasilia-df'],
 
   fontes: [
@@ -92,5 +116,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/',
     },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

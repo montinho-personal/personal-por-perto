@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias nos bairros centrais e da orla, com as praias do Itararé e do Gonzaguinha funcionando como academia a céu aberto.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Presidente Wilson (Itararé) e na Rua Frei Gaspar' },
+    { nome: 'Academias de bairro', detalhe: 'boa cobertura no Centro e na área continental' },
+    { nome: 'Estrutura pública das orlas', detalhe: 'calçadões do Itararé e do Gonzaguinha, gratuitos' },
+  ],
+
   destaquesFitness: [
     'Orla extensa e contínua, ideal para corrida e treino funcional na areia.',
     'Ciclovia da orla integrando Itararé e Gonzaguinha.',
@@ -88,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Berço do Brasil e cidade litorânea da Baixada Santista, São Vicente tem orla extensa e cena de esportes de mar ativa. Um personal trainer ajuda a aproveitar as praias do Itararé e do Gonzaguinha com método, ajustando horários e hidratação ao clima úmido.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em São Vicente?',
+      resposta:
+        'A orla comanda: os calçadões do Itararé e do Gonzaguinha concentram corrida, funcional e treino na areia, com o pôr do sol mais famoso da Baixada como cenário. Completam o mapa as academias — Smart Fit no Itararé e na Frei Gaspar, além das de bairro —, o Parque Ecológico Voturuá para treinos em meio ao verde e o atendimento em casa e em condomínio na Ilha Porchat e no Centro.',
+    },
+    {
+      pergunta: 'Dá para treinar na praia com personal em São Vicente?',
+      resposta:
+        'Dá — é a especialidade local. O formato combina funcional na areia com material portátil, corrida no calçadão e subidas na região da Ilha Porchat para variar intensidade. A São Vicente Night Run mantém a cena de corrida ativa, e muitos alunos preparam provas treinando na orla. A umidade alta pede horários inteligentes: início da manhã e fim de tarde rendem mais que o meio do dia, especialmente no verão.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São Vicente para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para São Vicente, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['santos-sp', 'praia-grande-sp', 'guaruja-sp'],
 
   fontes: [
@@ -95,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Vicente', url: 'https://www.saovicente.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

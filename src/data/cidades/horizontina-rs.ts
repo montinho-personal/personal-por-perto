@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional concentradas no Centro, com opções também em bairros como Eldorado, além de profissionais autônomos de personal trainer — em escala compatível com um município industrial de porte médio.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro' },
+    { nome: 'Estrutura do Parque Logemann e praças', detalhe: 'espaços públicos para caminhada e treino ao ar livre' },
+  ],
+
   destaquesFitness: [
     'Berço da colheitadeira automotriz nacional: sede histórica da SLC e hoje polo industrial da John Deere, o que molda a rotina de trabalho e de treino da cidade.',
     'Parque Natural Municipal Logemann, maior remanescente de mata urbana do município, com trilhas em meio à Mata Atlântica.',
@@ -84,6 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade industrial de porte médio no Noroeste gaúcho, Horizontina combina a rotina de trabalho ligada às fábricas de máquinas agrícolas com um mercado fitness enxuto, mas ativo, apoiado no Centro, no Parque Natural Municipal Logemann e nas provas de corrida de rua sediadas na cidade. Um personal trainer ajuda a organizar o treino considerando os turnos da indústria e a rotina universitária da Fahor, respeitando os invernos frios e mantendo a constância ao longo do ano.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Horizontina?',
+      resposta:
+        'Nas academias de musculação do Centro, no Parque Natural Municipal Logemann e na Praça 25 de Julho — pontos tradicionais de caminhada —, no entorno do Rio Buricá e em casa, formato prático numa cidade de distâncias curtas. O perfil industrial local, com turnos bem definidos, faz o personal trabalhar bastante com horários de início de manhã e pós-expediente.',
+    },
+    {
+      pergunta: 'Como manter o treino no inverno de Horizontina?',
+      resposta:
+        'O inverno do noroeste gaúcho traz geada e manhãs perto de zero: aquecimento mais longo, roupa em camadas e atenção ao piso escorregadio nas primeiras horas. A estratégia que funciona é inverter a lógica do verão — treino ao ar livre no meio da tarde, quando a temperatura sobe, e musculação indoor nas manhãs frias. Com um plano B combinado, junho a agosto passam sem interromper a rotina; a constância é justamente o que diferencia quem treina orientado.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Horizontina para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Horizontina, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou os parques da cidade), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['santa-rosa-rs', 'ijui-rs', 'santo-angelo-rs'],
 
   fontes: [
@@ -91,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Horizontina', url: 'https://www.horizontina.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-07-28',
 };

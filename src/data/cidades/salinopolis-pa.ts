@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se concentra no Centro e no entorno da orla do Maçarico, complementada por treino ao ar livre nas praias do Atalaia, Farol Velho e Maçarico e nos calçadões da beira-mar.',
 
+  academiasProximas: [
+    { nome: 'Estrutura pública da Orla do Maçarico', detalhe: 'calçadão usado para caminhada, corrida e funcional' },
+    { nome: 'Academias locais', detalhe: 'musculação no Centro, reforçadas na alta temporada' },
+  ],
+
   destaquesFitness: [
     'Praia do Atalaia, com areia firme na maré baixa, para corrida e treino funcional.',
     'Orla do Maçarico como principal calçadão urbano de caminhada à beira-mar.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Principal balneário do Pará, Salinópolis oferece quilômetros de praia de mar aberto como cenário natural para treinar, do Atalaia ao Maçarico. Um personal trainer ajuda a montar uma rotina que respeite o calor equatorial e a sazonalidade do veraneio, aproveitando a areia firme e a brisa do mar com segurança e regularidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Salinópolis?',
+      resposta:
+        'O treino acontece nas praias — o Atalaia, imenso na maré baixa, é uma pista natural de areia firme para corrida e funcional — no calçadão da Orla do Maçarico, nas academias do Centro e em casa ou nas casas de veraneio, formato que dispara no verão. O personal local costuma ter agenda dupla: moradores o ano todo e veranistas em julho e nas férias.',
+    },
+    {
+      pergunta: 'Dá para manter o treino nas férias em Salinópolis?',
+      resposta:
+        'Dá — e é o pedido clássico do veranista paraense: não perder o ritmo em julho. O formato que funciona é o treino funcional na praia do Atalaia de manhã cedo, antes do movimento, combinando areia, corrida leve e exercícios com o peso do corpo. Quem já tem acompanhamento online só adapta a planilha para a estrutura da praia. O calor úmido do litoral paraense pede hidratação reforçada e horários espertos: amanhecer e fim de tarde.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Salinópolis para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Salinópolis, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa de veraneio ou a praia), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['castanhal-pa', 'braganca-pa', 'belem-pa'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salinópolis', url: 'https://salinopolis.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

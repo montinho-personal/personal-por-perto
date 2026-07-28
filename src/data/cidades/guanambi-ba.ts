@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o crescimento da classe média, o público universitário e a economia ligada a comércio, saúde e energia eólica.',
 
+  academiasProximas: [
+    { nome: 'Equipamentos do Parque da Cidade', detalhe: 'academia ao ar livre gratuita, junto à pista de caminhada' },
+    { nome: 'Academias de bairro do Centro', detalhe: 'musculação e funcional com bom custo-benefício' },
+    { nome: 'Estrutura do Estádio Municipal', detalhe: 'pista usada para corrida e treinos orientados' },
+  ],
+
   destaquesFitness: [
     'Polo regional de saúde e serviços do sudoeste baiano.',
     'Economia aquecida pela expansão da energia eólica.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do sudoeste baiano com economia diversificada e clima semiárido quente, Guanambi pede um treino bem planejado para aproveitar os horários mais frescos do dia. Um personal trainer ajuda a montar uma rotina segura e eficiente, ajustada ao calor e ao ritmo de quem vive na cidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Guanambi?',
+      resposta:
+        'Os pontos fortes são o Parque da Cidade — com pista de caminhada e academia ao ar livre gratuita —, as academias de musculação do Centro, o entorno do Estádio Municipal para treinos de corrida e o atendimento em casa, formato que cresce entre quem prefere privacidade. Como as distâncias são curtas, o deslocamento entre bairros não costuma pesar na agenda.',
+    },
+    {
+      pergunta: 'Como treinar no calor do sertão de Guanambi?',
+      resposta:
+        'A regra local é aproveitar as janelas de temperatura: início da manhã, antes do sol forte, e fim de tarde, quando o ar seco do sertão baiano começa a ceder. Hidratação começa antes do treino — no semiárido a perda de líquido engana —, e nos meses mais quentes a musculação em ambiente coberto vira o plano principal, com o treino ao ar livre concentrado no amanhecer. Um personal ajusta o horário e a intensidade ao termômetro, sem quebrar a constância.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Guanambi para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Guanambi, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou o Parque da Cidade), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['vitoria-da-conquista-ba', 'barreiras-ba'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Guanambi', url: 'https://www.guanambi.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

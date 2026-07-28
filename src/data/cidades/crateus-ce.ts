@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se concentra no Centro e nos bairros mais estruturados, atendendo estudantes, servidores e profissionais do comércio e da saúde, e é complementada pelas avenidas da cidade e pelos açudes Realejo e Carnaubal como espaços de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro' },
+    { nome: 'Açudes Realejo e Carnaubal', detalhe: 'percursos tradicionais de caminhada e corrida' },
+  ],
+
   destaquesFitness: [
     'Reserva Natural Serra das Almas como cenário de trilhas e contato com a Caatinga preservada.',
     'Açudes Realejo e Carnaubal como pontos de caminhada e treino ao ar livre.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do Sertão dos Inhamuns, Crateús reúne comércio, universidades e uma natureza de Caatinga marcante para quem quer treinar — desde que se respeite o calor do semiárido. Um personal trainer ajuda a montar uma rotina segura, ajustando horários e hidratação e aproveitando as avenidas, os açudes e as trilhas da região.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Crateús?',
+      resposta:
+        'Nas academias do Centro, nos percursos dos açudes Realejo e Carnaubal — os pontos tradicionais de caminhada e corrida — e em casa. Para quem busca algo além, a Serra das Almas, reserva natural na divisa com o Piauí, é destino de trilhas e caminhadas em meio à caatinga preservada, boa opção de treino de resistência nos meses menos quentes.',
+    },
+    {
+      pergunta: 'Como o calor do sertão dos Inhamuns afeta o treino em Crateús?',
+      resposta:
+        'Crateús soma calor forte com ar seco boa parte do ano: o treino ao ar livre rende no amanhecer e no fim de tarde, com hidratação começando antes da sessão e roupas leves. No meio do dia, musculação em ambiente coberto é o caminho seguro. O personal local trabalha em torno dessas janelas e ajusta a intensidade nos picos de seca — constância no sertão é questão de estratégia, não de força de vontade.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Crateús para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Crateús, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou os açudes), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['sobral-ce', 'fortaleza-ce'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Crateús', url: 'https://www.crateus.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

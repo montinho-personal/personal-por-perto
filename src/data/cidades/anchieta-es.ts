@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é modesta e concentrada no Centro, com estúdios e espaços de musculação, treino funcional e modalidades como zumba e pilates atendendo a demanda local.',
 
+  academiasProximas: [
+    { nome: 'Estrutura pública das orlas', detalhe: 'calçadões de Iriri, Ubu e Castelhanos para treino ao ar livre' },
+    { nome: 'Academias locais', detalhe: 'musculação no Centro e em Iriri' },
+  ],
+
   destaquesFitness: [
     'Berço do turismo religioso do padre José de Anchieta, com o Santuário Nacional e seu museu.',
     'Praias como Iriri, Castelhanos, Ubu e Parati, com pontos de surf em Praia do Além e Santa Helena.',
@@ -84,6 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade histórica e litorânea, Anchieta combina o legado jesuíta de seu fundador com vilas de praia como Iriri, Castelhanos e Ubu, além da presença industrial da Samarco. Um personal trainer ajuda a estruturar o treino considerando o calor constante, aproveitando as orlas das praias como espaço de atividade ao ar livre e mantendo a constância nos meses de maior movimento turístico.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Anchieta?',
+      resposta:
+        'Nas praias — Castelhanos para funcional na areia, Iriri e Ubu para corrida na orla —, nas academias do Centro e de Iriri e em casa, com forte procura nas casas de veraneio durante o verão. A cidade compacta facilita a logística do personal, que costuma alternar entre a orla de manhã e a academia no fim do dia.',
+    },
+    {
+      pergunta: 'O verão muda a rotina de treino em Anchieta?',
+      resposta:
+        'Muda — para melhor e para mais cedo. Na alta temporada, o calor e o movimento das praias empurram o treino para o início da manhã, quando Castelhanos e Iriri estão vazias e a temperatura coopera. Veranistas aproveitam para trocar a academia pelo funcional na areia sem perder o ritmo, e o Desafio de Corrida da GCMA mantém a cena local ativa. Hidratação reforçada e protetor solar são parte do treino no litoral capixaba.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Anchieta para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Anchieta, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa de veraneio ou a praia), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['guarapari-es', 'marataizes-es', 'vila-velha-es'],
 
   fontes: [
@@ -91,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Anchieta', url: 'https://www.anchieta.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-07-28',
 };

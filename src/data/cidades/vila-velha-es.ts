@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é ampla nos bairros litorâneos, complementada pelas academias ao ar livre dos calçadões da Praia da Costa e de Itaparica.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Praia da Costa (duas), no Centro e em Itapuã' },
+    { nome: 'Estúdios e boxes da orla', detalhe: 'funcional e cross entre Praia da Costa e Itaparica' },
+    { nome: 'Estrutura pública da orla', detalhe: 'calçadão contínuo de Praia da Costa a Itaparica, gratuito' },
+  ],
+
   destaquesFitness: [
     'Orla da Praia da Costa com academias ao ar livre e ciclovia de cerca de 5 km.',
     'Calçadões iluminados que permitem treino noturno.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais agradáveis do Sudeste e forte cultura de praia, Vila Velha é feita para quem gosta de treinar ao ar livre. Um personal trainer ajuda a transformar a Praia da Costa e os calçadões em um plano consistente — da musculação à preparação para as corridas tradicionais da cidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Vila Velha?',
+      resposta:
+        'O corredor da orla concentra quase tudo: o calçadão da Praia da Costa a Itaparica para corrida e funcional, as Smart Fit da Praia da Costa, Centro e Itapuã, os estúdios do eixo beira-mar e o atendimento em condomínio nos prédios da orla — o formato que mais cresce. O Morro do Moreno é o extra local: subida clássica para treino de resistência com vista para a Terceira Ponte e o Convento da Penha.',
+    },
+    {
+      pergunta: 'Dá para treinar para as Dez Milhas Garoto com personal em Vila Velha?',
+      resposta:
+        'Dá — a prova é o grande alvo do corredor capixaba e a cidade é o cenário ideal de preparação: rodagens no calçadão plano da orla, intervalados na areia dura da maré baixa e força no morro do Moreno para quem quer subir de nível. A planilha típica leva 10 a 14 semanas, com musculação duas vezes por semana para blindar joelhos e quadril. O personal ajusta o plano à prova e à rotina — e o clima capixaba deixa treinar o ano quase todo.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Vila Velha para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Vila Velha, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['vitoria-es', 'serra-es'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vila Velha', url: 'https://www.vilavelha.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

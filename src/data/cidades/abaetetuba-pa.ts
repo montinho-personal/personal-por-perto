@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se concentra no Centro e nos bairros mais estruturados, complementada por academias ao ar livre em praças e pela orla como grande espaço gratuito de treino.',
 
+  academiasProximas: [
+    { nome: 'Academias ao ar livre das praças', detalhe: 'estrutura pública gratuita espalhada pela cidade' },
+    { nome: 'Academias locais', detalhe: 'musculação no Centro e bairros' },
+    { nome: 'Orla do Maratauíra', detalhe: 'calçadão ribeirinho para caminhada e corrida' },
+  ],
+
   destaquesFitness: [
     'Orla do rio Maratauíra como principal espaço de caminhada e treino ao ar livre.',
     'Academias ao ar livre em praças do Centro e dos bairros.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade do miriti e das ilhas, Abaetetuba combina a vida ribeirinha à beira do Maratauíra com uma rotina urbana em expansão. Um personal trainer ajuda a montar um treino que respeite o calor equatorial e aproveite a orla e as praças, com segurança e constância.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Abaetetuba?',
+      resposta:
+        'A orla do rio Maratauíra é o cartão-postal do treino ao ar livre — caminhada e corrida com o movimento dos barcos ao fundo —, complementada pelas academias ao ar livre das praças, pelas academias de musculação do Centro e pelo atendimento em casa. O amanhecer é o horário nobre: o calor amazônico da tarde empurra o treino outdoor para as pontas do dia.',
+    },
+    {
+      pergunta: 'Como o clima amazônico muda o treino em Abaetetuba?',
+      resposta:
+        'Calor e umidade altos o ano todo significam gasto extra só para o corpo se resfriar: intensidade progressiva, hidratação começando antes do treino e sessões ao ar livre no amanhecer ou após o pôr do sol. No inverno amazônico, das chuvas diárias, o plano B em academia coberta deixa a rotina imune ao tempo. O personal local monta a semana em torno disso — e quem treina orientado atravessa o ano sem os buracos de rotina que o clima costuma abrir.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Abaetetuba para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Abaetetuba, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou a orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['belem-pa', 'ananindeua-pa', 'castanhal-pa'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Abaetetuba', url: 'https://abaetetuba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

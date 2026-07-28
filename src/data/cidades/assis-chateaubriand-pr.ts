@@ -60,6 +60,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação, funcional e ginástica, concentradas no Centro e em bairros como Jardim América, em porte compatível com uma cidade média do interior paranaense.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro' },
+    { nome: 'Parque São Francisco (Horto)', detalhe: 'área verde tradicional para caminhada e corrida' },
+    { nome: 'Praças com academia ao ar livre', detalhe: 'estrutura pública gratuita nos bairros' },
+  ],
+
   destaquesFitness: [
     'Parque São Francisco (Horto Municipal): pista de caminhada e corrida, academia da terceira idade e espaço natural de acesso gratuito.',
     'Economia do agronegócio pujante — 2º maior produtor de frango e de milho de segunda safra do Paraná — sustenta renda e demanda por treino personalizado.',
@@ -79,6 +85,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade média do agronegócio no oeste do Paraná, Assis Chateaubriand tem no Parque São Francisco seu principal espaço de treino ao ar livre e na renda gerada pelas cadeias de grãos, frango e leite um público disposto a investir em acompanhamento individualizado. Um personal trainer ajuda a aproveitar o parque e as praças da cidade, organizando o treino em torno do clima subtropical úmido e das rotinas do interior.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Assis Chateaubriand?',
+      resposta:
+        'No Parque São Francisco — o Horto Municipal, área verde tradicional da cidade —, nas praças com academia ao ar livre, nas academias de musculação do Centro e em casa. A Corrida Rústica Noturna Morada Amiga é a marca registrada do calendário local: correr à noite, fugindo do calor do oeste paranaense, virou tradição que movimenta a cena de treino da cidade.',
+    },
+    {
+      pergunta: 'Por que o treino noturno funciona bem em Assis Chateaubriand?',
+      resposta:
+        'Porque o verão do oeste do Paraná é quente e úmido — e a cidade abraçou a solução: treinar à noite, quando a temperatura cede. A Corrida Rústica Noturna é o símbolo disso, e muitos grupos de corrida e alunos de personal seguem o mesmo horário no dia a dia. A alternativa é o amanhecer, igualmente fresco. No inverno ameno da região, as janelas se abrem e o treino ao ar livre rende em qualquer horário.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Assis Chateaubriand para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Assis Chateaubriand, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou o Horto), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['toledo-pr', 'cascavel-pr', 'marechal-candido-rondon-pr'],
 
   fontes: [
@@ -86,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Assis Chateaubriand', url: 'https://www.assischateaubriand.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-07-28',
 };

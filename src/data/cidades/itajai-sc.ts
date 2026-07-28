@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é ampla, com redes nacionais, estúdios e boxes de crossfit, com um polo premium na Praia Brava, complementada pela orla do Saco da Fazenda e pela rede cicloviária.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidade no Centro, na Travessa Edmundo Heusi' },
+    { nome: 'Academias e estúdios da Praia Brava e Fazenda', detalhe: 'musculação, cross e funcional no eixo mais valorizado' },
+    { nome: 'Estrutura pública da Beira-Rio', detalhe: 'academia ao ar livre e quadra no Saco da Fazenda' },
+  ],
+
   destaquesFitness: [
     'Orla Beira-Rio / Saco da Fazenda: corredor natural para corrida, caminhada e funcional.',
     'Cerca de 107 km de ciclovias em expansão.',
@@ -88,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Maior economia de SC e cidade portuária litorânea, Itajaí une orla, ciclovias e forte cultura esportiva. Um personal trainer ajuda a transformar o Saco da Fazenda e a Praia Brava em um plano consistente, do treino funcional à preparação para a Meia Maratona.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Itajaí?',
+      resposta:
+        'O eixo Beira-Rio–Saco da Fazenda é o point do treino ao ar livre, com academia pública e quadra junto à orla. Completam o mapa a Smart Fit do Centro e os estúdios da Praia Brava e da Fazenda — onde se concentram cross e funcional —, o novo Parque Ecológico e Náutico junto à marina e o atendimento em casa e em condomínio, forte na Praia Brava. A Meia Maratona de Itajaí é o alvo clássico de quem treina corrida orientada.',
+    },
+    {
+      pergunta: 'Dá para se preparar para a Meia Maratona de Itajaí com personal?',
+      resposta:
+        'Dá — e a cidade ajuda: a Beira-Rio oferece percurso plano e contínuo para rodagens, o clima ameno favorece treino o ano todo e o calendário catarinense tem provas menores para testar o ritmo antes dos 21 km. A preparação típica leva 12 a 16 semanas, com fortalecimento em academia duas vezes por semana — é o que segura joelho e quadril quando o volume de corrida sobe. O personal monta a planilha e ajusta conforme a resposta do corpo.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Itajaí para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Itajaí, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou a Beira-Rio), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['balneario-camboriu-sc', 'florianopolis-sc', 'joinville-sc'],
 
   fontes: [
@@ -95,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itajaí', url: 'https://www.itajai.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

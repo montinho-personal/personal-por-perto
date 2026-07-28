@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de estrutura para treino é pequena, formada por academias locais de musculação e funcional na sede do município, compatível com o porte de uma cidade média do interior do Agreste.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação no Centro' },
+    { nome: 'Percursos do agreste', detalhe: 'estradas e ladeiras da serra para corrida e caminhada' },
+  ],
+
   destaquesFitness: [
     'Integrante do Polo de Confecções do Agreste Pernambucano, com o novo Portal das Feiras 232 reforçando a vocação têxtil da cidade.',
     'RPPN Pedra do Cachorro, afloramento rochoso de 475 m que é o principal destino de trekking e esporte de aventura da região.',
@@ -84,6 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade pequena do Agreste Central pernambucano, São Caitano combina rotina ligada ao polo de confecções com um cenário natural de destaque na Pedra do Cachorro. Um personal trainer ajuda a encaixar o treino na rotina de quem trabalha com moda e comércio, aproveitando os horários mais amenos do clima semiárido e as opções de caminhada e trilha da região.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em São Caitano?',
+      resposta:
+        'Nas academias do Centro, nas ruas e ladeiras do centro histórico — que rendem treino de subida de graça — e em casa. A Corrida São Caetano é a referência do calendário local, e a RPPN Pedra do Cachorro, com suas trilhas e paredões, atrai quem combina treino com natureza no agreste. A altitude moderada suaviza o calor pernambucano e alonga as janelas de treino ao ar livre.',
+    },
+    {
+      pergunta: 'O clima do agreste ajuda a treinar em São Caitano?',
+      resposta:
+        'Ajuda — é um dos segredos da região: a altitude ameniza o calor do interior pernambucano, e as manhãs e noites são mais frescas que no sertão. Ainda assim, o sol do meio do dia pede respeito: treino ao ar livre nas pontas do dia e hidratação constante. Para quem prepara a Corrida São Caetano ou provas da região, as ladeiras locais são a academia natural de força de pernas — com o personal dosando o volume para o joelho agradecer.',
+    },
+    {
+      pergunta: 'Há acompanhamento em São Caitano para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para São Caitano, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou as ladeiras do centro), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['caruaru-pe', 'belo-jardim-pe', 'santa-cruz-do-capibaribe-pe'],
 
   fontes: [
@@ -91,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de São Caetano', url: 'https://saocaetano.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-07-28',
 };

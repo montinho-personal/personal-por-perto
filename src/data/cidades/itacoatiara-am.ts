@@ -63,6 +63,11 @@ export const cidade: Cidade = {
   academias:
     'A cobertura é dada por academias locais de bairro e por estúdios menores, complementados por personal trainers que atendem em casa e em condomínios. A orla, as praias e os espaços públicos funcionam como extensão ao ar livre nos horários mais frescos.',
 
+  academiasProximas: [
+    { nome: 'Estrutura pública da Orla', detalhe: 'espaço de caminhada e treino com vista para o Amazonas' },
+    { nome: 'Academias locais', detalhe: 'musculação no Centro e bairros próximos' },
+  ],
+
   destaquesFitness: [
     'Orla do Rio Amazonas como principal ponto de caminhada e corrida leve, ao amanhecer e ao entardecer.',
     'Praias fluviais como a Ponta das Pedras e balneários na AM-010, que ampliam as opções ao ar livre no verão amazônico.',
@@ -82,6 +87,24 @@ export const cidade: Cidade = {
   conclusao:
     'Terceira maior cidade do Amazonas e polo do Médio Amazonas, Itacoatiara combina vida ribeirinha, clima equatorial e um calendário esportivo crescente. Treinar bem por aqui é saber ajustar horários, intensidade e hidratação ao calor — e é aí que um personal trainer faz diferença. Com a orla do Amazonas, praias fluviais, academias de bairro e o acompanhamento online, a cidade oferece caminhos para quem quer evoluir com método mesmo longe dos grandes centros.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Itacoatiara?',
+      resposta:
+        'A Orla de Itacoatiara é o coração do treino ao ar livre — caminhada, corrida e funcional com o Amazonas ao lado, principalmente no amanhecer e no fim de tarde. As academias de musculação do Centro atendem quem prefere estrutura coberta (essencial no calor da tarde), e o atendimento em casa cresce pela praticidade. Nos fins de semana, a Ponta das Pedras e o Balneário do Jordão viram extensão do treino.',
+    },
+    {
+      pergunta: 'Como treinar no calor amazônico de Itacoatiara?',
+      resposta:
+        'Umidade alta e calor o ano inteiro mudam a lógica do treino: as sessões ao ar livre funcionam no amanhecer ou depois do pôr do sol, a hidratação começa horas antes, e a intensidade sobe devagar — o corpo gasta mais para se resfriar na Amazônia. No meio do dia, musculação em ambiente coberto é o caminho. Um personal calibra volume e horário à estação: no inverno amazônico, das chuvas, o plano B indoor já fica combinado.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Itacoatiara para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Itacoatiara, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou a orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['manaus-am', 'parintins-am'],
 
   fontes: [
@@ -89,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itacoatiara', url: 'https://itacoatiara.am.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

@@ -69,6 +69,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é pequena e concentrada em Pipa, com estúdios e espaços de musculação, funcional e modalidades como yoga e pilates voltados tanto a moradores quanto a turistas que buscam manter a rotina de treino durante a estada.',
 
+  academiasProximas: [
+    { nome: 'Estúdios e espaços de treino de Pipa', detalhe: 'funcional e treino ao ar livre voltados a moradores e turistas' },
+    { nome: 'Trilhas e praias como estrutura natural', detalhe: 'falésias, Madeiro e Lagoa de Guaraíras para treino outdoor' },
+  ],
+
   destaquesFitness: [
     'Trilhas sobre as falésias de Pipa, como a que liga Cacimbinhas à Praia do Madeiro, usadas para caminhada e treino ao ar livre.',
     'Baía dos Golfinhos e mar aquecido o ano todo, propícios a surf, bodyboard e natação.',
@@ -88,6 +93,24 @@ export const cidade: Cidade = {
   conclusao:
     'Marcada pelo turismo da Praia de Pipa, pelas falésias e pela Baía dos Golfinhos, Tibau do Sul favorece um treino que aproveite trilhas, praia e água como parte da rotina. Um personal trainer ajuda a adaptar os treinos ao calor constante, aos horários de quem trabalha com turismo e à sazonalidade de visitantes que passam temporadas na cidade.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Tibau do Sul e Pipa?',
+      resposta:
+        'O cenário é a academia: funcional na areia do Madeiro e de Cacimbinhas, corrida na trilha das falésias, remo e SUP na Lagoa de Guaraíras e treinos em pousadas e casas — formato comum entre moradores, expatriados e turistas de temporada. Os estúdios de Pipa completam a estrutura para quem quer força com equipamento. A vibe outdoor da vila faz do treino ao ar livre a regra, não a exceção.',
+    },
+    {
+      pergunta: 'Consigo manter o treino morando por temporada em Pipa?',
+      resposta:
+        'Consegue — Pipa tem uma comunidade grande de nômades e moradores por temporada, e o acompanhamento online se encaixa perfeitamente nesse estilo de vida: a planilha se adapta à estrutura da semana (estúdio, funcional na praia, trilha das falésias) e segue com você quando a temporada termina. O sol forte pede treino no início da manhã ou no fim de tarde — que em Pipa coincide com o pôr do sol no Madeiro, o que ninguém reclama.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Tibau do Sul para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Tibau do Sul, o formato é o acompanhamento online: treino adaptado à estrutura disponível (estúdio, pousada, casa ou praia), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['nisia-floresta-rn', 'natal-rn', 'parnamirim-rn'],
 
   fontes: [
@@ -95,5 +118,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas do Desenvolvimento Humano no Brasil — Tibau do Sul', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/tibau-do-sul_rn' },
     { nome: 'Prefeitura Municipal de Tibau do Sul — Turismo e Lazer', url: 'https://tibaudosul.rn.gov.br/o-municipio/turismo-e-lazer/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-07-28',
 };

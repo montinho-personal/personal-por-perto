@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes nacionais, boxes de crossfit e estúdios, com cobertura de planos corporativos, complementada por três parques municipais bem equipados.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Campinas e na Av. Comendador Agostinho Prada' },
+    { nome: 'Skyfit', detalhe: 'unidade junto ao Covabra' },
+    { nome: 'Equipamentos do Parque Cidade de Limeira', detalhe: 'estrutura pública gratuita para treino ao ar livre' },
+  ],
+
   destaquesFitness: [
     'Três parques municipais bem equipados (pista + academia ao ar livre), de acesso gratuito.',
     'Mercado de academias maduro, com redes nacionais e boxes de crossfit.',
@@ -89,6 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo citrícola e da joia folheada, Limeira tem ótima rede de parques e mercado fitness maduro. Um personal trainer ajuda a aproveitar o Parque Cidade e o Limeirão com método, ajustando os horários ao calor do verão paulista.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Limeira?',
+      resposta:
+        'Limeira dá três frentes: os parques — Cidade de Limeira, Limeirão e o Ecológico do Jardim do Lago, todos com espaço para corrida e funcional —, as academias de rede como Smart Fit e Skyfit além das consolidadas de bairro, e o atendimento em casa e em condomínio. O calendário de corrida, puxado pela Meia Maratona da Inclusão, sustenta uma cena ativa de treinos orientados de rua.',
+    },
+    {
+      pergunta: 'Dá para treinar para a Meia Maratona da Inclusão com personal em Limeira?',
+      resposta:
+        'Dá — e é um dos pedidos mais comuns da cidade. A preparação típica usa o Parque Cidade de Limeira e o Limeirão para os treinos intervalados e rodagens curtas, com planilha progressiva de 8 a 16 semanas conforme a distância-alvo. O personal entra para ajustar volume, fortalecer em academia nos dias alternados e evitar o erro clássico de aumentar quilometragem rápido demais, que termina em canelite ou joelho inflamado.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Limeira para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Limeira, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou parques), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['campinas-sp', 'piracicaba-sp'],
 
   fontes: [
@@ -96,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Limeira', url: 'https://www.limeira.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };

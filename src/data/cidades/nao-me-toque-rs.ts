@@ -61,6 +61,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de estruturas de treino é modesta e concentrada em academias de bairro e estúdios de musculação, compatível com o porte de um município pequeno do interior gaúcho, complementada pelo trabalho de personal trainers que atendem em domicílio, ao ar livre e em espaços parceiros.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro' },
+    { nome: 'Praças e avenidas centrais', detalhe: 'percursos tradicionais de caminhada' },
+  ],
+
   destaquesFitness: [
     'Sede mundial da Stara, fabricante de máquinas agrícolas de grande porte exportadas a mais de 35 países.',
     'Palco da Expodireto Cotrijal, uma das maiores feiras de agronegócio a céu aberto da América Latina.',
@@ -80,6 +85,24 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade pequena com peso econômico grande, Não-Me-Toque combina a indústria da Stara e o agronegócio da Expodireto Cotrijal com invernos frios típicos do Planalto Médio gaúcho. Um personal trainer ajuda a manter a rotina de treino constante, aproveitando as praças e avenidas do centro nos dias bons e adaptando o treino aos meses de frio e geada.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Não-Me-Toque?',
+      resposta:
+        'Nas academias do Centro, nas praças e avenidas centrais — onde a caminhada é tradição de fim de tarde — e em casa, formato prático numa cidade em que tudo fica perto. O perfil do agronegócio molda a agenda: na safra e na Expodireto, os horários apertam e o treino curto e bem planejado, de 45 a 60 minutos, vale mais que a sessão longa que nunca acontece.',
+    },
+    {
+      pergunta: 'Como manter o treino na rotina do agro em Não-Me-Toque?',
+      resposta:
+        'Com planejamento por fases: fora da safra, a rotina permite treinos mais longos e progressão de carga; no plantio, na colheita e na semana da Expodireto, o plano muda para sessões curtas e eficientes, mantendo o mínimo que preserva o condicionamento. O inverno gaúcho entra na conta — manhãs de geada pedem aquecimento longo ou treino indoor. É exatamente o tipo de ajuste fino que o acompanhamento profissional resolve e a planilha genérica não.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Não-Me-Toque para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Não-Me-Toque, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou as praças centrais), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['carazinho-rs', 'passo-fundo-rs', 'cruz-alta-rs'],
 
   fontes: [
@@ -87,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Não-Me-Toque', url: 'https://naometoque.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-07-28',
 };

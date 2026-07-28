@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se concentra no centro e nos bairros de maior renda, atendendo ao comércio regional e ao público universitário, e é complementada pelos espaços ao ar livre dos monólitos, do Açude do Cedro e da Serra do Estevão.',
 
+  academiasProximas: [
+    { nome: 'Academias locais', detalhe: 'musculação e funcional no Centro' },
+    { nome: 'Açude do Cedro e entorno', detalhe: 'cenário clássico para corrida e caminhada aos pés dos monólitos' },
+  ],
+
   destaquesFitness: [
     'Polo nordestino de escalada e trekking nos monólitos, com mais de 200 vias.',
     'Açude do Cedro como rota de caminhada e ciclismo de lazer.',
@@ -89,6 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do Sertão Central e capital cearense dos monólitos, Quixadá une turismo de aventura, vida universitária e o calor do semiárido. Um personal trainer ajuda a montar uma rotina segura e adaptada ao clima, aproveitando os espaços ao ar livre da cidade — dos monólitos ao Açude do Cedro — em horários adequados.',
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde o personal costuma atender em Quixadá?',
+      resposta:
+        'Nas academias do Centro, no entorno do Açude do Cedro — o percurso mais bonito da cidade, aos pés dos monólitos — e em casa. Quixadá tem ainda um diferencial raro: o trail running e as travessias nos monólitos, que atraem quem busca treino de resistência com orientação em um dos cenários mais únicos do Ceará, coroado pela Pedra da Galinha Choca.',
+    },
+    {
+      pergunta: 'Dá para treinar trail e travessias nos monólitos de Quixadá?',
+      resposta:
+        'Dá — e com estrutura de preparação de verdade: o sertão de monólitos oferece subidas técnicas, trilhas de pedra e provas locais de travessia que pedem condicionamento específico. A preparação combina corrida em terreno variado no entorno dos açudes, fortalecimento de pernas e core em academia e progressão cuidadosa de volume. O calor do sertão central impõe a regra local: longos no amanhecer, sempre com bastante água, e intensidade alta só nas horas frescas.',
+    },
+    {
+      pergunta: 'Há acompanhamento em Quixadá para quem sente dores ou tem limitações?',
+      resposta:
+        'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Quixadá, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, casa ou o entorno dos açudes), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
+    },
+  ],
+
   vizinhas: ['fortaleza-ce', 'maracanau-ce', 'iguatu-ce'],
 
   fontes: [
@@ -96,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Quixadá', url: 'https://www.quixada.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-28',
 };
