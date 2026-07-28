@@ -1,0 +1,244 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'O estímulo que constrói músculo é o mesmo — na máquina ou no peso livre.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes: como começar',
+    descricao: 'Onde máquinas e pesos livres entram na jornada de quem está começando.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'A regra que importa mais que o equipamento: ficar mais forte com o tempo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/maquina-ou-peso-livre';
+const atualizadoEm = '2026-07-28';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Máquina ou peso livre?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Máquina constrói menos músculo que peso livre?',
+    resposta:
+      'Não. Quando volume, esforço e progressão são equivalentes, os estudos que comparam treinos baseados em máquinas e em pesos livres encontram hipertrofia semelhante. O músculo responde à tensão e ao esforço progressivo — ele não sabe se a resistência vem de uma barra ou de um cabo. A escolha muda a experiência do treino (estabilidade, curva de aprendizado, conforto articular), não a capacidade de crescer.',
+  },
+  {
+    pergunta: 'Iniciante deve começar por máquinas?',
+    resposta:
+      'É um caminho excelente, mas não obrigatório. As máquinas guiam o movimento, reduzem a demanda de equilíbrio e permitem treinar com segurança desde o primeiro dia — ideal para construir base e confiança. Ao mesmo tempo, aprender cedo padrões básicos com peso livre (agachar, empurrar, puxar) com cargas leves e boa orientação acelera a evolução. O ideal costuma ser a mistura: máquinas para volume seguro, pesos livres para aprender os padrões.',
+  },
+  {
+    pergunta: 'Peso livre é perigoso?',
+    resposta:
+      'Não quando a técnica e a progressão são respeitadas — as taxas de lesão na musculação são baixas comparadas à maioria dos esportes. O risco aparece com carga acima da técnica, pressa e ego. Exercícios livres bem ensinados, começando leves e evoluindo aos poucos, são seguros para a grande maioria das pessoas, incluindo iniciantes e pessoas mais velhas. Orientação profissional no começo encurta esse caminho com segurança.',
+  },
+  {
+    pergunta: 'Quais as vantagens reais de cada um?',
+    resposta:
+      'Máquinas: estabilidade (isolam melhor o músculo-alvo), curva de aprendizado rápida, segurança para treinar perto da falha sem auxílio e opções que pesos livres não replicam bem, como cadeira extensora e puxadas. Pesos livres: trabalham equilíbrio e músculos estabilizadores, ensinam padrões de movimento úteis fora da academia, permitem progressão fina de carga e exigem menos fila de equipamento. Programas completos usam os dois pelas forças de cada um.',
+  },
+  {
+    pergunta: 'Treinar só com halteres em casa funciona?',
+    resposta:
+      'Funciona — halteres ajustáveis, elásticos e o peso do corpo cobrem os padrões fundamentais e sustentam anos de progresso, especialmente com boa progressão de esforço. O que muda em relação à academia é a conveniência de cargas altas para pernas e costas, onde máquinas e barras facilitam. Para quem treina em casa, um bom programa compensa isso com variações unilaterais, tempo sob tensão e séries mais próximas da falha.',
+  },
+];
+
+const title = 'Máquina ou peso livre: qual é melhor para ganhar músculo?';
+const description =
+  'Estudos mostram hipertrofia igual quando esforço e volume se equivalem: máquina não é inferior, peso livre não é obrigatório. Veja as vantagens reais de cada um e como combiná-los no seu treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Máquina ou peso livre: qual é melhor?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      É um dos debates mais antigos da academia: o pessoal da barra olhando
+      torto para as máquinas, o pessoal das máquinas achando o agachamento
+      livre um risco desnecessário. A ciência encerrou boa parte da briga:
+      <strong>com esforço e volume equivalentes, máquina e peso livre
+      constroem músculo na mesma medida</strong>. A escolha certa depende do
+      seu objetivo, experiência e conforto — e o melhor treino quase sempre
+      usa os dois.
+    </p>
+
+    <div class="prose">
+      <h2>O que a pesquisa mostra</h2>
+      <p>
+        Estudos que dividiram praticantes entre programas baseados em
+        máquinas e em pesos livres — com o mesmo número de séries e esforço
+        comparável — mediram ao final ganhos de massa muscular
+        <strong>semelhantes</strong> nos dois grupos. A força cresce mais no
+        padrão treinado (quem agacha livre fica melhor no agachamento livre;
+        quem treina no hack, no hack), mas o músculo em si não distingue a
+        origem da tensão. O princípio que manda continua sendo o mesmo da
+        <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia</a>:
+        tensão mecânica, esforço próximo da falha e
+        <a href="/musculacao/progressao-de-carga/">progressão ao longo do tempo</a>.
+      </p>
+
+      <h2>O que as máquinas fazem melhor</h2>
+      <ul>
+        <li>
+          <strong>Estabilidade:</strong> o trajeto guiado elimina a demanda
+          de equilíbrio e concentra o esforço no músculo-alvo — ótimo para
+          isolar e para treinar perto da falha com segurança.
+        </li>
+        <li>
+          <strong>Curva de aprendizado:</strong> em uma sessão dá para
+          executar bem; iniciantes conseguem treinar com intensidade desde a
+          primeira semana.
+        </li>
+        <li>
+          <strong>Conforto articular:</strong> trajetórias ajustáveis
+          permitem contornar desconfortos e limitações — recurso valioso em
+          fases de dor ou readaptação.
+        </li>
+        <li>
+          <strong>Exercícios sem bom equivalente livre:</strong> cadeira
+          extensora, mesa flexora, puxadas e cruzamentos em cabo.
+        </li>
+      </ul>
+
+      <h2>O que os pesos livres fazem melhor</h2>
+      <ul>
+        <li>
+          <strong>Estabilizadores e coordenação:</strong> barra e halteres
+          obrigam o corpo a controlar o trajeto, treinando equilíbrio e
+          músculos auxiliares junto.
+        </li>
+        <li>
+          <strong>Padrões que servem para a vida:</strong> agachar, levantar
+          do chão, empurrar e carregar — força com transferência direta para
+          o dia a dia, algo que entidades como a
+          <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+          destacam em seus posicionamentos.
+        </li>
+        <li>
+          <strong>Versatilidade e progressão fina:</strong> um par de
+          halteres vira dezenas de exercícios, e a carga sobe em passos
+          pequenos.
+        </li>
+        <li>
+          <strong>Autonomia:</strong> quem domina os padrões livres treina
+          em qualquer academia — ou em casa.
+        </li>
+      </ul>
+
+      <h2>Como combinar na prática</h2>
+      <p>
+        A pergunta certa não é "qual é melhor", e sim "qual faz o quê no meu
+        programa". Uma estrutura comum e eficiente: padrões compostos com
+        peso livre no início da sessão (agachamento, supino, remada,
+        levantamento terra ou variações), quando a energia está alta, e
+        máquinas e cabos na sequência para acumular volume com segurança —
+        extensora, flexora, puxadas, elevações. Iniciantes podem inverter a
+        proporção e migrar aos poucos; quem treina em
+        <a href="/musculacao/treino-em-casa-para-iniciantes/">casa</a>
+        adapta com halteres e elásticos. O desenho fino disso — para o seu
+        nível, estrutura e articulações — é trabalho de um bom
+        <a href={rotas.comoEscolher}>personal trainer</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> máquina e peso livre constroem o mesmo
+        músculo quando o esforço se equivale. Máquinas brilham em
+        estabilidade, aprendizado rápido e volume seguro; pesos livres, em
+        coordenação, transferência para a vida real e versatilidade. O
+        treino inteligente não escolhe um lado da academia — usa a academia
+        inteira a favor do objetivo.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

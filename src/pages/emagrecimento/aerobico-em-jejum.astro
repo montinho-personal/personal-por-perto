@@ -1,0 +1,240 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'O que decide o emagrecimento é o balanço do dia — em jejum ou alimentado.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio: o que emagrece mais?',
+    descricao: 'Onde o cardio entra na estratégia — e por que a combinação vence.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    titulo: 'Quantas calorias a musculação queima? A conta honesta',
+    descricao: 'A matemática real do gasto calórico, sem os exageros do marketing.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/aerobico-em-jejum';
+const atualizadoEm = '2026-07-28';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Aeróbico em jejum funciona?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Aeróbico em jejum emagrece mais rápido?',
+    resposta:
+      'Não. Durante a sessão em jejum o corpo realmente usa proporcionalmente mais gordura como combustível, mas o organismo compensa ao longo do dia — e, quando as calorias e o treino são iguais, os estudos que comparam grupos em jejum e alimentados encontram a mesma perda de gordura ao final de semanas. O que decide o emagrecimento é o déficit calórico acumulado, não o horário ou o estado alimentar do cardio.',
+  },
+  {
+    pergunta: 'Fazer aeróbico em jejum queima músculo?',
+    resposta:
+      'Para caminhada e cardio leve a moderado de até uns 45-60 minutos, a perda muscular não é uma preocupação real para quem treina força e come proteína suficiente no restante do dia. O risco aumenta em sessões longas e intensas em jejum, especialmente durante dietas agressivas. Quem faz musculação regularmente e mantém a proteína em dia preserva a massa magra — em jejum ou não.',
+  },
+  {
+    pergunta: 'Posso treinar pesado em jejum?',
+    resposta:
+      'Treinos intensos — intervalados, corrida forte, musculação pesada — tendem a render menos em jejum: menos energia disponível, menos repetições, ritmo mais baixo. Se o desempenho cai, o gasto da sessão e o estímulo também caem, o que joga contra o objetivo. Para sessões exigentes, comer algo leve antes costuma melhorar o rendimento; o jejum combina melhor com cardio leve a moderado.',
+  },
+  {
+    pergunta: 'Quem não deve fazer aeróbico em jejum?',
+    resposta:
+      'Quem sente tontura, fraqueza, enjoo ou mal-estar treinando de estômago vazio; pessoas com diabetes ou alterações de glicemia (risco de hipoglicemia — converse com o médico antes); gestantes; e quem está começando agora e ainda está construindo o hábito. Nesses casos, um lanche leve antes do treino resolve — o resultado final não muda, e a segurança e a constância agradecem.',
+  },
+  {
+    pergunta: 'Então o aeróbico em jejum é inútil?',
+    resposta:
+      'Não — ele só não é mágico. Para muita gente, treinar cedo, antes do café, é a forma mais prática de garantir o treino no dia: menos logística, agenda livre, hábito consolidado. Se você se sente bem assim, é uma escolha excelente de rotina. O ponto é escolher pelo encaixe na sua vida, não pela promessa de queimar mais gordura — porque essa promessa a ciência não sustenta.',
+  },
+];
+
+const title = 'Aeróbico em jejum funciona para emagrecer? O que diz a ciência';
+const description =
+  'Treinar em jejum queima mais gordura na sessão, mas não emagrece mais no fim do mês: estudos mostram perda igual quando as calorias são as mesmas. Veja quando faz sentido, os riscos e para quem não é indicado.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Aeróbico em jejum funciona para emagrecer?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O aeróbico em jejum — o famoso AEJ — é um dos rituais mais defendidos
+      das academias: acordar, tomar água e sair para caminhar de estômago
+      vazio "para queimar gordura direto". A resposta honesta da ciência:
+      <strong>em jejum você queima mais gordura durante a sessão, mas não
+      emagrece mais ao final do mês</strong>. Este artigo explica a
+      diferença entre essas duas coisas, quando o AEJ vale a pena e quem
+      deve evitá-lo.
+    </p>
+
+    <div class="prose">
+      <h2>O que acontece no corpo durante o cardio em jejum</h2>
+      <p>
+        Depois de horas sem comer, a insulina está baixa e os estoques de
+        glicogênio do fígado, reduzidos. Nesse estado, o corpo de fato
+        recorre proporcionalmente mais à gordura como combustível durante um
+        exercício leve ou moderado — esse dado é real e se repete nos
+        estudos. É daí que nasce a fama do AEJ.
+      </p>
+      <p>
+        O problema é o que acontece nas outras 23 horas: o organismo
+        compensa. Quem usa mais gordura na sessão tende a usar
+        proporcionalmente mais carboidrato no restante do dia, e vice-versa.
+        O corpo faz contabilidade de 24 horas, não de 40 minutos.
+      </p>
+
+      <h2>O que os estudos comparando jejum × alimentado mostram</h2>
+      <p>
+        Quando pesquisadores dividem pessoas em dois grupos — mesmo treino,
+        mesmas calorias, um treinando em jejum e outro alimentado — e medem
+        a composição corporal semanas depois, o resultado se repete:
+        <strong>a perda de gordura é a mesma</strong>. O que manda é o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit calórico</a>
+        acumulado na semana, não o estado alimentar na hora do cardio. Não
+        existe atalho metabólico escondido no estômago vazio — como também
+        não existe nas cintas, géis e chás que prometem o mesmo milagre.
+      </p>
+
+      <h2>Quando o aeróbico em jejum vale a pena</h2>
+      <ul>
+        <li>
+          <strong>Praticidade de rotina:</strong> treinar cedo, antes do
+          café, é para muita gente o único horário garantido do dia — e
+          treino feito vale mais que treino perfeito.
+        </li>
+        <li>
+          <strong>Conforto digestivo:</strong> há quem se sinta pesado
+          treinando após comer. Se o corpo rende melhor vazio em
+          intensidades leves, sem problema algum.
+        </li>
+        <li>
+          <strong>Preferência consolidada:</strong> se o AEJ é o ritual que
+          mantém sua constância, ele está funcionando — só que pela adesão,
+          não pela bioquímica.
+        </li>
+      </ul>
+
+      <h2>Quando evitar (ou adaptar)</h2>
+      <p>
+        Sessões <strong>intensas</strong> — intervalados, corrida forte,
+        musculação pesada — rendem menos em jejum, e desempenho menor
+        significa menos gasto e menos estímulo. Sinais como tontura,
+        fraqueza e enjoo indicam que um lanche leve antes resolve melhor.
+        Pessoas com diabetes ou alterações de glicemia devem conversar com o
+        médico antes de adotar qualquer treino em jejum, pelo risco de
+        hipoglicemia. Entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        reforçam: a melhor estratégia de exercício é a que você consegue
+        sustentar com segurança e regularidade.
+      </p>
+
+      <h2>Como encaixar o AEJ numa estratégia que funciona</h2>
+      <p>
+        O papel do cardio — em jejum ou não — é somar gasto calórico e saúde
+        cardiovascular a uma base que sustenta o emagrecimento de verdade:
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação para preservar massa magra</a>,
+        alimentação em déficit moderado e sono decente. Se o AEJ entra nessa
+        engrenagem como o seu horário de cardio preferido, excelente. Se
+        entra como promessa de atalho, vira frustração em algumas semanas.
+        Ajustar essas peças à sua rotina é o trabalho de um bom
+        <a href={rotas.comoEscolher}>acompanhamento profissional</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o aeróbico em jejum queima mais gordura
+        <em>durante a sessão</em>, mas o corpo compensa no resto do dia — e
+        os estudos mostram a mesma perda de gordura quando as calorias são
+        iguais. Faça em jejum se for prático e confortável para você; coma
+        antes se o treino for intenso ou se sentir mal-estar. O emagrecimento
+        continua sendo decidido pelo balanço da semana, não pelo horário do
+        café da manhã.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

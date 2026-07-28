@@ -46,6 +46,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-abc-como-montar/', titulo: 'Treino ABC: como montar o seu (com exemplo completo)' },
   { categoria: 'Musculação', url: '/musculacao/bulking-e-cutting/', titulo: 'Bulking e cutting: o que são, como fazer e quem realmente precisa' },
   { categoria: 'Musculação', url: '/musculacao/sono-e-ganho-de-massa/', titulo: 'Sono e ganho de massa muscular: o treino invisível' },
+  { categoria: 'Musculação', url: '/musculacao/maquina-ou-peso-livre/', titulo: 'Máquina ou peso livre: qual é melhor para ganhar músculo?' },
+  { categoria: 'Musculação', url: '/musculacao/destreino/', titulo: 'Destreino: quanto tempo parado você perde músculo?' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -56,6 +58,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-comecar-a-treinar-acima-do-peso/', titulo: 'Como começar a treinar estando acima do peso' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/recomposicao-corporal/', titulo: 'Recomposição corporal: perder gordura e ganhar músculo ao mesmo tempo' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quantas-calorias-queima-a-musculacao/', titulo: 'Quantas calorias a musculação queima? A conta honesta' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/aerobico-em-jejum/', titulo: 'Aeróbico em jejum funciona para emagrecer?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/como-perder-barriga/', titulo: 'Como perder barriga: a verdade sobre a gordura localizada' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

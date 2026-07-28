@@ -944,6 +944,8 @@ import { cidade as caravelas } from './caravelas-ba';
 import { cidade as barrasPi } from './barras-pi';
 import { cidade as correntePi } from './corrente-pi';
 import { cidade as iguape } from './iguape-sp';
+import { cidade as alegrete } from './alegrete-rs';
+import { cidade as sapiranga } from './sapiranga-rs';
 
 export const cidades: Cidade[] = [
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
@@ -1197,6 +1199,8 @@ export const cidades: Cidade[] = [
   manaus,
   belem,
   palmas,
+  alegrete,
+  sapiranga,
 ];
 
 /** Mapa slug -> cidade para lookups O(1). */

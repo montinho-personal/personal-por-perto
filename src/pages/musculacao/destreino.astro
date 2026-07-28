@@ -1,0 +1,245 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo demora para ver resultados na musculação?',
+    descricao: 'A via de mão dupla: quanto demora para ganhar — e para perder.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa muscular: o treino invisível',
+    descricao: 'Recuperar bem é parte do jogo — pausar de vez é outra história.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: posso treinar mesmo assim?',
+    descricao: 'A volta depois da pausa costuma vir com dor — saiba lidar com ela.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/destreino';
+const atualizadoEm = '2026-07-28';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Destreino: quanto tempo parado perde músculo?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantos dias sem treinar começo a perder músculo?',
+    resposta:
+      'Mais do que você teme: em praticantes de musculação, a perda mensurável de massa muscular costuma aparecer a partir de 3 a 4 semanas completamente parado. Antes disso, o que diminui é o estoque de glicogênio e água dentro do músculo — o braço murcha no espelho, mas a fibra segue lá. Uma ou duas semanas de pausa (viagem, gripe, correria) não destroem nada; algumas pesquisas até mostram retorno com força igual após pausas curtas.',
+  },
+  {
+    pergunta: 'E a força, some rápido?',
+    resposta:
+      'A força resiste ainda mais que o tamanho: cai pouco nas primeiras 3 a 4 semanas de pausa, em parte porque o componente neural (coordenação, recrutamento) é duradouro. Quem volta depois de um mês parado costuma se surpreender com quanto manteve. O condicionamento aeróbico é o que cai mais rápido — o fôlego sente a pausa antes dos músculos.',
+  },
+  {
+    pergunta: 'O que é a memória muscular? Ela existe mesmo?',
+    resposta:
+      'Existe e tem base fisiológica. Quando o músculo cresce, as fibras ganham núcleos adicionais (mionúcleos) — e as evidências indicam que eles persistem por muito tempo mesmo com atrofia. Somado ao aprendizado motor que não se perde, o resultado prático: recuperar músculo perdido é muito mais rápido do que ganhá-lo pela primeira vez. Quem já foi forte tem o caminho de volta encurtado.',
+  },
+  {
+    pergunta: 'Qual o mínimo de treino para não perder o que ganhei?',
+    resposta:
+      'Surpreendentemente pouco: estudos de manutenção mostram que 1 sessão semanal bem-feita, mantendo a intensidade (cargas próximas das habituais, esforço real), preserva massa e força por semanas — o volume pode cair bastante desde que a intensidade fique. Em fases de correria, férias ou provas do trabalho, reduzir para um treino de corpo inteiro por semana é infinitamente melhor que parar de vez.',
+  },
+  {
+    pergunta: 'Como devo voltar depois de semanas ou meses parado?',
+    resposta:
+      'Resista à tentação de retomar a planilha de onde parou. A regra prática: volte com cerca de metade do volume (menos séries) e cargas reduzidas, progredindo ao longo de 2 a 4 semanas conforme a resposta do corpo — a dor muscular das primeiras sessões será desproporcional, e tendões e articulações readaptam mais devagar que a motivação. Depois de pausas longas ou por problema de saúde, vale liberar com o médico antes. A memória muscular cuida do resto.',
+  },
+];
+
+const title = 'Destreino: quanto tempo parado você realmente perde músculo?';
+const description =
+  'Ficar 1-2 semanas sem treinar não destrói músculo: a perda real começa após 3-4 semanas, a força resiste mais e a memória muscular acelera a volta. Veja o mínimo para manter e como retomar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Destreino: quanto tempo parado você perde músculo?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Uma semana de viagem e o pânico bate: "vou perder tudo". Respira.
+      <strong>A perda real de músculo começa bem depois do que o espelho
+      sugere — tipicamente após 3 a 4 semanas completamente parado</strong> —
+      e o caminho de volta é mais curto do que foi a ida, graças à memória
+      muscular. Este artigo coloca números honestos no medo mais comum da
+      musculação: o destreino.
+    </p>
+
+    <div class="prose">
+      <h2>Semana 1 e 2: o músculo "murcha", mas não some</h2>
+      <p>
+        Nos primeiros dias de pausa, o que diminui é o conteúdo do músculo,
+        não a estrutura: os estoques de glicogênio caem e levam água junto —
+        e como cada grama de glicogênio segura cerca de 3 g de água, o
+        volume visual despenca rápido. É o famoso "murchei", que engana o
+        espelho e alimenta o desespero. A fibra muscular continua lá; na
+        volta aos treinos, esse volume retorna em poucos dias, antes de
+        qualquer ganho novo.
+      </p>
+
+      <h2>Semana 3 e 4 em diante: começa o destreino de verdade</h2>
+      <p>
+        A atrofia mensurável em quem treina força aparece, na média dos
+        estudos, a partir da terceira ou quarta semana de pausa total — e
+        mesmo então, gradualmente. A força resiste ainda mais: o componente
+        neural (coordenação, recrutamento, técnica) é duradouro, e não é
+        raro voltar após um mês levantando quase as mesmas cargas. O que
+        decai mais rápido é o condicionamento aeróbico: o fôlego sente a
+        pausa em 2 a 3 semanas, bem antes dos músculos. Pessoas mais velhas
+        tendem a perder mais rápido e recuperar mais devagar — mais um
+        motivo para a
+        <a href="/musculacao/musculacao-depois-dos-40/">musculação depois dos 40</a>
+        priorizar a constância.
+      </p>
+
+      <h2>Memória muscular: por que a volta é mais rápida</h2>
+      <p>
+        Quando o músculo cresce, as fibras incorporam núcleos novos — os
+        mionúcleos — e as evidências indicam que eles permanecem por longos
+        períodos mesmo quando a fibra atrofia. Esse "hardware" extra, somado
+        ao aprendizado motor que não se perde, explica o fenômeno que todo
+        veterano conhece: recuperar músculo é muito mais rápido que
+        construí-lo da primeira vez. Meses de ganhos perdidos podem voltar
+        em semanas. Quem já foi forte nunca recomeça do zero.
+      </p>
+
+      <h2>O seguro barato: a dose mínima de manutenção</h2>
+      <p>
+        A descoberta mais útil da pesquisa de destreino: <strong>manter
+        custa pouco</strong>. Uma sessão semanal de corpo inteiro,
+        conservando a intensidade (cargas e esforço reais), preserva massa e
+        força por semanas — o volume pode cair drasticamente desde que o
+        estímulo continue chegando. Diretrizes de atividade física, como as
+        do <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>,
+        apontam na mesma direção: alguma força na semana muda o jogo
+        comparado a nenhuma. Em época de caos — provas, mudança, filho
+        recém-nascido —, negocie com a agenda um treino por semana, não
+        zero.
+      </p>
+
+      <h2>Como voltar depois da pausa</h2>
+      <ul>
+        <li>
+          <strong>Pausa de até 2 semanas:</strong> volte na planilha normal,
+          talvez com uma sessão mais leve de "reentrada". Perda real: quase
+          nenhuma.
+        </li>
+        <li>
+          <strong>3 a 8 semanas parado:</strong> retome com metade do volume
+          e cargas reduzidas (60-80% das habituais), subindo ao longo de 2 a
+          4 semanas. A <a href="/musculacao/dor-muscular-pos-treino/">dor pós-treino</a>
+          das primeiras sessões será desproporcional — é esperado.
+        </li>
+        <li>
+          <strong>Meses parado ou pausa por saúde:</strong> reconstrua a
+          base com calma e, se a pausa foi por lesão ou doença, volte com
+          liberação médica. Tendões e articulações readaptam mais devagar
+          que a empolgação.
+        </li>
+      </ul>
+      <p>
+        O erro clássico da volta é o ego: retomar a carga de onde parou e
+        pagar com uma semana de dor — ou uma lesão. Um
+        <a href={rotas.comoEscolher}>personal trainer</a> transforma a volta
+        em rampa, não em paredão, dosando a progressão para a memória
+        muscular trabalhar a seu favor.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> 1-2 semanas parado não custam músculo —
+        só glicogênio e água que voltam rápido. A perda real começa após 3-4
+        semanas, a força resiste mais que o tamanho, e a memória muscular
+        encurta a reconstrução. Para atravessar fases corridas, 1 treino
+        intenso por semana segura seus ganhos. E na volta: metade do volume,
+        cargas menores e 2 a 4 semanas de rampa.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

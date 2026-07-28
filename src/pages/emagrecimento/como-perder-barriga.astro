@@ -1,0 +1,253 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A gordura da barriga obedece à mesma regra de todas: balanço energético.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao/',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'O treino de força é peça-chave para secar preservando o que importa.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento: por que acontece e o que fazer',
+    descricao: 'A barriga costuma ser a última a ceder — e o platô testa a paciência de todo mundo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/como-perder-barriga';
+const atualizadoEm = '2026-07-28';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Como perder barriga', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Fazer abdominal todo dia queima a gordura da barriga?',
+    resposta:
+      'Não. O abdominal fortalece o músculo que fica embaixo da gordura, mas não queima a camada que o cobre — a chamada "queima localizada" foi testada em estudos e não se confirmou: quem exercita uma região não perde mais gordura nela do que no resto do corpo. A gordura sai do corpo inteiro, no ritmo e na ordem que a genética define. O abdominal tem valor para força de tronco e postura; para a barriga aparecer, o caminho é o déficit calórico.',
+  },
+  {
+    pergunta: 'Por que a barriga é a última parte a secar?',
+    resposta:
+      'Porque a ordem de retirada da gordura é definida pela genética e por receptores diferentes em cada região — e no abdômen (nos homens) e no quadril (em muitas mulheres) ficam os estoques mais "teimosos". O corpo puxa primeiro das áreas de mobilização mais fácil, e a barriga costuma entrar no fim da fila. A boa notícia: ela cede, desde que o processo continue. É paciência e constância, não um treino secreto.',
+  },
+  {
+    pergunta: 'Barriga estufada é sempre gordura?',
+    resposta:
+      'Não — e a diferença muda o tratamento. O inchaço (distensão abdominal) varia ao longo do dia, aparece após refeições e pode ligar a intolerâncias, intestino e retenção; a gordura é constante e se acumula devagar. Se a sua barriga amanhece menor e cresce ao longo do dia, há provavelmente um componente de inchaço — vale conversar com médico ou nutricionista para investigar. Se ela é estável, o caminho é o emagrecimento clássico.',
+  },
+  {
+    pergunta: 'Cinta, gel térmico ou chá seca barriga funcionam?',
+    resposta:
+      'Não como prometem. Cintas comprimem (e o efeito visual acaba quando saem), géis esquentam a pele sem tocar na gordura, e chás no máximo tiram água por efeito diurético — que volta. Nenhum produto externo queima gordura localizada, porque a gordura não sai pela pele: ela é mobilizada pela corrente sanguínea quando o corpo está em déficit de energia. Desconfie de qualquer promessa de secar barriga sem mudar treino e alimentação.',
+  },
+  {
+    pergunta: 'Quanto tempo leva para perder a barriga?',
+    resposta:
+      'Depende do ponto de partida e do tamanho do déficit, mas a régua realista é a do emagrecimento saudável: algo como 0,5% a 1% do peso corporal por semana. A gordura abdominal visceral — a mais ligada a riscos de saúde — costuma responder cedo ao exercício e à dieta, o que é ótima notícia para a saúde; a camada subcutânea que esconde a definição demora mais. Meses de constância, não semanas de milagre. Quem promete "barriga chapada em 15 dias" está vendendo alguma coisa.',
+  },
+];
+
+const title = 'Como perder barriga: a verdade sobre a gordura localizada';
+const description =
+  'Abdominais não queimam a gordura da barriga: a queima localizada é mito. Veja o que funciona de verdade — déficit calórico, musculação, cardio e paciência — e a diferença entre barriga de gordura e de inchaço.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Como perder barriga: a verdade sobre a gordura localizada</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Como perder barriga" é provavelmente a pergunta mais feita da
+      história das academias — e também a mais explorada por promessas
+      vazias. A resposta honesta começa desfazendo o mito central:
+      <strong>não existe queima de gordura localizada</strong>. Nem mil
+      abdominais por dia, nem cinta, nem gel. Este artigo explica por que, o
+      que realmente funciona e como saber se a sua barriga é de gordura ou
+      de inchaço.
+    </p>
+
+    <div class="prose">
+      <h2>Por que abdominal não queima a gordura da barriga</h2>
+      <p>
+        O músculo que você exercita não usa como combustível a gordura que
+        está em cima dele — a energia vem da corrente sanguínea, mobilizada
+        de estoques do corpo inteiro. Estudos que puseram grupos para
+        treinar intensamente uma única região mediram depois a gordura
+        local: ela não caiu mais ali do que no resto do corpo. O abdominal
+        fortalece o abdômen (importante para postura, força e estabilidade),
+        mas quem revela esse músculo é o <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit calórico</a>,
+        não a repetição.
+      </p>
+
+      <h2>As duas barrigas: gordura e inchaço</h2>
+      <p>
+        Antes de atacar o problema, vale identificá-lo. A barriga de
+        <strong>gordura</strong> é estável — não muda muito da manhã para a
+        noite — e cede devagar, com semanas de processo. A barriga de
+        <strong>inchaço</strong> (distensão abdominal) flutua no mesmo dia:
+        amanhece menor, cresce após refeições, e costuma se relacionar a
+        intolerâncias, ritmo intestinal e retenção. É comum ter as duas ao
+        mesmo tempo. O inchaço merece conversa com médico ou nutricionista
+        para investigar causas; a gordura, o plano abaixo. O blog do
+        Montinho tem um artigo dedicado a essa diferença:
+        <a href="https://montinhopersonal.com.br/blog/barriga-inchada-ou-gordura" target="_blank" rel="noopener">barriga inchada ou gordura, como diferenciar</a>.
+      </p>
+
+      <h2>A gordura da barriga em duas camadas</h2>
+      <p>
+        A gordura abdominal se divide em <strong>subcutânea</strong> (a
+        camada sob a pele, que esconde a definição) e <strong>visceral</strong>
+        (a que envolve os órgãos). A visceral é a que mais importa para a
+        saúde — está associada a risco cardiovascular e metabólico, como
+        alerta a <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a> —
+        e, felizmente, é a que responde mais cedo a exercício e dieta. A
+        subcutânea é mais lenta e sai por último. Traduzindo: os benefícios
+        de saúde chegam semanas antes do espelho mostrar.
+      </p>
+
+      <h2>O que funciona de verdade</h2>
+      <ul>
+        <li>
+          <strong>Déficit calórico moderado:</strong> o único mecanismo que
+          reduz gordura — da barriga inclusive. Sem ele, nada acontece.
+        </li>
+        <li>
+          <strong>Musculação 2 a 4x por semana:</strong> preserva e constrói
+          músculo enquanto a gordura cai, para o resultado ser um corpo
+          firme, não apenas menor — o mecanismo completo está em
+          <a href="/emagrecimento/como-emagrecer-fazendo-musculacao/">como emagrecer fazendo musculação</a>.
+        </li>
+        <li>
+          <strong>Cardio e passos diários:</strong> ampliam o gasto e têm
+          efeito direto na gordura visceral.
+        </li>
+        <li>
+          <strong>Sono e manejo de estresse:</strong> dormir mal e viver
+          estressado atrapalham apetite, escolhas alimentares e hormônios —
+          sabotagem silenciosa de qualquer plano.
+        </li>
+        <li>
+          <strong>Paciência estratégica:</strong> a barriga costuma ser a
+          última região a ceder. O <a href="/emagrecimento/plato-de-emagrecimento/">platô</a>
+          no meio do caminho é normal e contornável.
+        </li>
+      </ul>
+
+      <h2>O que não funciona (e insiste em ser vendido)</h2>
+      <p>
+        Cinta modeladora (comprime, não queima), gel térmico (esquenta a
+        pele, não a gordura), chá seca-barriga (diurético — tira água, que
+        volta), "treino localizado para o abdômen inferior" (mesma
+        fisiologia, mesmo mito) e qualquer plano que prometa barriga chapada
+        em duas semanas. Se algum desses funcionasse de verdade, a fila do
+        milagre já teria acabado com o problema.
+      </p>
+
+      <h2>Por onde começar</h2>
+      <p>
+        Um plano realista: musculação estruturada, meta diária de passos,
+        déficit calórico moderado com orientação de nutricionista, e medir o
+        progresso por fita métrica e fotos mensais — a cintura conta uma
+        história que a balança esconde. Se quiser esse processo desenhado
+        para a sua rotina e o seu ponto de partida, é exatamente o papel de
+        um <a href={rotas.comoEscolher}>personal trainer</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> não existe queima localizada — abdominal
+        fortalece, não seca. A barriga cede com déficit calórico, musculação
+        para preservar massa magra, cardio, sono e tempo; a gordura visceral
+        (a perigosa) responde primeiro, a subcutânea por último. E se a
+        barriga muda de tamanho ao longo do dia, investigue inchaço com
+        médico ou nutricionista antes de culpar só a gordura.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
