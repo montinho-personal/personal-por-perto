@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona',
+    descricao: 'O formato preferido das casas dos Jardins, explicado em detalhe.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-jardins';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer nos Jardins', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer nos Jardins?',
+    resposta:
+      'A referência de São Paulo é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. Nos Jardins, região com o metro quadrado entre os mais altos do país, os valores ficam no topo dessas faixas — em especial no atendimento em casas e mansões do Jardim América e do Jardim Europa.',
+  },
+  {
+    pergunta: 'Qual formato de treino funciona melhor nos Jardins?',
+    resposta:
+      'Depende do seu endereço: nas casas do Jardim América e do Jardim Europa, o personal a domicílio é o formato natural; nos prédios do Jardim Paulista, a academia do condomínio; e para quem quer sair de casa sem ir longe, os studios boutique das transversais da Oscar Freire e o Parque Trianon completam o circuito.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre nos Jardins?',
+    resposta:
+      'O Parque Trianon, na avenida Paulista, é o refúgio verde mais próximo; aos domingos, a própria Paulista fecha para carros e vira pista de caminhada, corrida e bike; e as ruas arborizadas e planas do Jardim América favorecem treinos de corrida leve com personal.',
+  },
+  {
+    pergunta: 'Prédios antigos dos Jardins têm academia?',
+    resposta:
+      'Muitos não têm — boa parte dos edifícios das décadas de 1960 e 1970 do Jardim Paulista nasceu sem espaço fitness. Nesses casos, o personal a domicílio com equipamento portátil resolve; já lançamentos como o Allard Oscar Freire incluem academia, piscinas e spa na própria torre.',
+  },
+  {
+    pergunta: 'Personal trainer atende executivos perto da Paulista?',
+    resposta:
+      'Sim — é um público típico da região. Sessões de 45 a 60 minutos no início da manhã ou no fim do dia, em studio ou na academia do prédio, encaixam o treino na agenda de quem trabalha no eixo Paulista–Faria Lima.',
+  },
+];
+
+const title = 'Personal Trainer nos Jardins (SP): qual formato escolher';
+const description =
+  'Personal trainer nos Jardins: compare treino a domicílio, academia do condomínio, studio e parque — com preços e os endereços do bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Treino a domicílio, condomínio, studio ou parque: o que funciona nos Jardins</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos lugares do Brasil oferecem tantos jeitos diferentes de treinar com
+      um <strong>personal trainer nos Jardins</strong> — e é justamente por isso
+      que tanta gente escolhe errado. A região que reúne Jardim América, Jardim
+      Europa, Jardim Paulista e Jardim Paulistano tem casas-jardim tombadas e
+      torres novíssimas, ruas planas e arborizadas e a avenida Paulista na
+      borda. Cada endereço pede um formato de treino diferente. Este
+      comparativo coloca os quatro lado a lado para você decidir com critério.
+    </p>
+
+    <div class="prose">
+      <h2>Antes do comparativo: os dois Jardins</h2>
+      <p>
+        A escolha do formato começa pelo desenho urbano. O Jardim América —
+        primeiro bairro-jardim da capital, traçado nos anos 1910 — e o Jardim
+        Europa são horizontais: casas e mansões em ruas curvas e arborizadas,
+        no padrão mais valorizado de São Paulo. Já o Jardim Paulista é
+        vertical, com edifícios das décadas de 1960 e 1970 convivendo com
+        lançamentos de altíssimo padrão, como o Daslu Residences, torre de 21
+        andares na rua Chabad, o PJM 923, retrofit assinado por Isay Weinfeld
+        na rua Padre João Manuel, e o Allard Oscar Freire, projeto de Arthur
+        Casas com 33 andares na esquina da Oscar Freire com a Consolação. Casa
+        e prédio pedem estratégias de treino diferentes — e é aí que entra o
+        comparativo.
+      </p>
+
+      <h2>Formato 1 — Personal a domicílio: o rei do Jardim América e do Jardim Europa</h2>
+      <p>
+        Nas ruas de casas, o treino em casa é o formato natural: o personal
+        chega com elásticos, halteres ajustáveis e banco, monta a sessão na
+        sala, no quintal ou na área da piscina, e vai embora sem que você tenha
+        gastado um minuto de deslocamento. Funciona especialmente bem para
+        famílias (sessões em sequência para marido, esposa e filhos), para
+        moradores 60+ e para quem valoriza privacidade absoluta — um traço
+        forte do público dessas quadras. O custo é o mais alto dos quatro
+        formatos, e o guia de
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> detalha como funciona na prática.
+      </p>
+
+      <h2>Formato 2 — Academia do condomínio: a aposta dos lançamentos do Jardim Paulista</h2>
+      <p>
+        Nos prédios novos, a estrutura veio para ficar: o Allard Oscar Freire,
+        por exemplo, reserva um andar inteiro de lazer com academia, piscinas e
+        spa. Nesses endereços, o personal transforma a estrutura em resultado
+        com avaliação física e progressão planejada. O ponto de atenção está
+        nos edifícios das décadas de 1960 e 1970, charmosos e valorizados, mas
+        que muitas vezes não têm espaço fitness — nesses casos, o formato 1
+        (domicílio) ou o formato 3 (studio) resolvem melhor.
+      </p>
+
+      <h2>Formato 3 — Studio: a discrição das transversais da Oscar Freire</h2>
+      <p>
+        Os Jardins concentram studios boutique de treino personalizado nas
+        transversais da rua Oscar Freire e nas alamedas do quadrilátero —
+        espaços de atendimento individual ou em dupla, com hora marcada e zero
+        exposição. É o formato preferido de quem não quer treinar em academia
+        cheia nem transformar a casa em academia: equipamento completo,
+        climatização e a possibilidade de dividir a sessão com um amigo ou
+        cônjuge para reduzir o custo por pessoa.
+      </p>
+
+      <h2>Formato 4 — Parque e rua: Trianon, Paulista de domingo e as ruas-jardim</h2>
+      <p>
+        O verde oficial da região é o Parque Trianon, na avenida Paulista —
+        pequeno, mas perfeito para mobilidade, escadas e treinos funcionais
+        leves em meio à mata. Aos domingos, a Paulista fechada para carros
+        vira a pista mais democrática da cidade para corrida e bike. E as ruas
+        planas e sombreadas do Jardim América são um circuito natural de
+        corrida leve — muitos personal trainers montam sessões que saem da
+        porta de casa do aluno e voltam, sem carro em momento algum. É o
+        formato de menor custo estrutural e o melhor complemento aeróbico aos
+        outros três.
+      </p>
+
+      <h2>O comparativo em uma tabela</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Formato</th><th>Para quem</th><th>Custo relativo</th><th>Limite</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Domicílio</td><td>Casas do Jd. América/Europa, famílias, 60+</td><td>Mais alto</td><td>Equipamento portátil</td></tr>
+            <tr><td>Condomínio</td><td>Prédios novos do Jd. Paulista</td><td>Médio-alto</td><td>Estrutura varia por prédio</td></tr>
+            <tr><td>Studio</td><td>Quem quer privacidade fora de casa</td><td>Médio</td><td>Agenda do studio</td></tr>
+            <tr><td>Parque/rua</td><td>Aeróbico e funcional, todos os perfis</td><td>Menor</td><td>Clima e força limitada</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Quanto custa personal trainer nos Jardins</h2>
+      <p>
+        A referência da cidade, disponível no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200
+        pelo pacote mensal. Nos Jardins, os valores acompanham o padrão do
+        endereço — atendimento em casa no Jardim Europa fica no topo da faixa
+        (e além), enquanto sessões em studio ou no condomínio ficam no meio.
+        Combinar formatos na mesma semana (força no studio, corrida na rua) é
+        uma prática comum e eficiente no bairro.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        Escolha o formato pela sua logística real, não pela idealizada: o
+        melhor treino é o que acontece toda semana. Depois, filtre o
+        profissional pelos critérios de sempre — avaliação física inicial,
+        periodização explicável, experiência com o seu objetivo, honestidade
+        sobre prazos — detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        E lembre: dores e limitações passam primeiro por médico ou
+        fisioterapeuta; o personal ajusta o treino a partir dessa orientação.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer nos Jardins" />
+
+    <WhatsAppCta tema="geral" localidade="nos Jardins" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

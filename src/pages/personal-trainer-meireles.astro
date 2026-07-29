@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/fortaleza-ce/',
+    titulo: 'Personal trainer em Fortaleza',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'A dose certa de treino de força para cada objetivo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-meireles';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Fortaleza', url: '/personal-trainer/fortaleza-ce/' },
+  { nome: 'Personal Trainer no Meireles', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Meireles?',
+    resposta:
+      'Em Fortaleza, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Meireles e na Aldeota — o eixo mais valorizado da capital —, os valores ficam no topo dessas faixas, principalmente no atendimento em domicílio e nos horários de 5h às 7h da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Meireles?',
+    resposta:
+      'No calçadão da avenida Beira Mar, com percurso tradicional de 3 km entre o Mucuripe e o Aterro da Praia de Iracema (e possibilidade de esticar mais 2 km), e nas academias ao ar livre instaladas ao longo da orla — além da areia da praia para treinos funcionais.',
+  },
+  {
+    pergunta: 'Que horas treinar na Beira Mar para fugir do calor?',
+    resposta:
+      'O calçadão enche a partir das 5h da manhã justamente por isso: em Fortaleza, treina-se cedo o ano inteiro. O fim de tarde, depois das 16h30, é a segunda janela. Bons profissionais do bairro montam a agenda em torno dessas duas janelas de temperatura.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios da Beira Mar?',
+    resposta:
+      'Sim — os edifícios de alto padrão da orla têm academias cada vez mais completas, e o atendimento no condomínio é um dos formatos mais comuns do bairro, especialmente entre famílias e moradores 60+.',
+  },
+  {
+    pergunta: 'Qual a diferença entre treinar no Meireles e na Aldeota?',
+    resposta:
+      'O Meireles tem a orla e concentra o treino ao ar livre; a Aldeota, logo atrás, é mais corporativa e verticalizada, com academias e studios. Muitos moradores combinam: corrida na Beira Mar e força na academia ou no prédio — e a maioria dos profissionais atende nos dois bairros.',
+  },
+];
+
+const title = 'Personal Trainer no Meireles (Fortaleza): guia por perfil';
+const description =
+  'Personal trainer no Meireles e na Aldeota: o guia para cada perfil — executivo, família da Beira Mar, 60+ e corredor — com preços de Fortaleza.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Fortaleza</p>
+    <h1>Personal trainer no Meireles: o guia certo para cada perfil da Beira Mar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Às 5h da manhã, o calçadão da Beira Mar já está em movimento — em
+      Fortaleza, treinar cedo não é disciplina de atleta, é cultura de bairro.
+      Quem procura um <strong>personal trainer no Meireles</strong> entra num
+      mercado moldado por esse relógio próprio: sol forte que empurra o treino
+      para as pontas do dia, uma orla de 3 km que funciona como academia a céu
+      aberto e prédios de alto padrão com estrutura própria. Este guia separa
+      as recomendações por perfil de morador — encontre o seu.
+    </p>
+
+    <div class="prose">
+      <h2>O território: Meireles, Aldeota e o relógio do calor</h2>
+      <p>
+        O Meireles é a orla nobre de Fortaleza: a avenida Beira Mar e suas
+        torres — de clássicos como o Iracema Praia Park a lançamentos de
+        altíssimo padrão como a Mansão Seara, projeto de Arthur Casas com
+        academia e spa no rooftop, e o Mar del Prado, de apartamentos com 4
+        suítes — concentram o metro quadrado mais valorizado do Ceará. Logo
+        atrás, a Aldeota é o lado corporativo e verticalizado, com
+        empreendimentos como o Landscape e o Icon. O que une os dois bairros é
+        o relógio: com o sol forte quase o ano todo, o treino acontece de 5h
+        às 7h30 ou depois das 16h30 — e toda a rotina abaixo respeita essas
+        janelas.
+      </p>
+
+      <h2>Perfil 1 — O executivo da Aldeota</h2>
+      <p>
+        Agenda cheia, reuniões desde cedo e a tentação de "deixar para
+        depois". Para esse perfil, a sessão das 6h com personal na academia do
+        prédio — ou num studio entre a Aldeota e o Meireles — é a única que
+        sobrevive à semana. O profissional certo aqui trabalha com sessões de
+        45 a 60 minutos, eficiência máxima e plano B para semanas de viagem
+        (ficha remota ou acompanhamento online, de R$ 170 a R$ 430 mensais na
+        referência de Fortaleza).
+      </p>
+
+      <h2>Perfil 2 — A família dos prédios da Beira Mar</h2>
+      <p>
+        Nos edifícios da orla, o treino é programa doméstico: casal dividindo
+        a sessão na academia do condomínio, filhos adolescentes iniciando
+        musculação com supervisão, e a caminhada de fim de tarde no calçadão
+        como complemento. O formato em dupla reduz o custo por pessoa e
+        aumenta a adesão — desde que o personal individualize carga e volume
+        para cada um, como manda a boa prática de
+        <a href="/musculacao/quantas-series-e-repeticoes/">séries e
+        repetições</a> ajustadas por objetivo.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ da orla</h2>
+      <p>
+        A caminhada matinal na Beira Mar já faz parte da vida de milhares de
+        aposentados do Meireles — o que falta, em geral, é o treino de força
+        que preserva músculo, osso e independência. O arranjo ideal combina o
+        hábito que já existe (caminhada no calçadão, com seus pontos de água
+        de coco a cada quadra) com duas sessões semanais de força no
+        condomínio ou em casa, orientadas por profissional experiente com esse
+        público. Dores e limitações passam primeiro por médico ou
+        fisioterapeuta — e o personal ajusta o plano a partir daí.
+      </p>
+
+      <h2>Perfil 4 — O corredor da Beira Mar</h2>
+      <p>
+        O percurso Mucuripe–Aterro da Praia de Iracema, com seus 3 km
+        tradicionais (e a extensão de mais 2 km pela Praia de Iracema), é a
+        pista de corrida mais movimentada do Ceará, com provas de rua o ano
+        inteiro. Para quem quer sair do "correr por correr" e buscar tempo ou
+        distância, o personal especializado em corrida monta periodização,
+        usa as academias ao ar livre da orla para o trabalho de força
+        complementar e transforma a areia em recurso de potência. O bairro
+        também é base natural de treinos funcionais em grupo pequeno ao
+        amanhecer.
+      </p>
+
+      <h2>Quanto custa personal trainer no Meireles</h2>
+      <p>
+        A referência de Fortaleza, publicada no guia de
+        <a href="/personal-trainer/fortaleza-ce/">personal trainer em
+        Fortaleza</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. No eixo
+        Meireles–Aldeota, os valores ficam no topo das faixas — os horários
+        das 5h às 7h são os mais disputados da cidade, e o atendimento em
+        domicílio nos prédios da Beira Mar é o serviço de maior valor.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os critérios universais valem todos: avaliação física na primeira
+        semana, periodização que o profissional saiba explicar, experiência
+        real com o seu objetivo e honestidade sobre prazos — o passo a passo
+        está no guia <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>. No Meireles, acrescente o filtro do relógio local:
+        profissional bom de verdade no bairro tem agenda estruturada nas duas
+        janelas de temperatura e sabe treinar alguém às 5h30 com a mesma
+        qualidade das 17h.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Meireles" />
+
+    <WhatsAppCta tema="geral" localidade="no Meireles" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

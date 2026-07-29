@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'Como organizar a semana de treino — na academia, na areia ou na Lagoa.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-ipanema';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer em Ipanema', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Ipanema?',
+    resposta:
+      'A referência do Rio é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. Em Ipanema, com metro quadrado médio na casa dos R$ 36 mil, os profissionais mais experientes trabalham no topo dessas faixas, principalmente a domicílio nos horários da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre com personal em Ipanema?',
+    resposta:
+      'Nos clássicos do bairro: a orla (que soma 4 km contando o Leblon), a areia da praia, a pedra do Arpoador para treinos com escadas e subidas, e a Lagoa Rodrigo de Freitas, com pista de 7,5 km e marcação a cada 100 metros — ideal para treinos de corrida estruturados.',
+  },
+  {
+    pergunta: 'Personal trainer atende nos prédios da Vieira Souto?',
+    resposta:
+      'Sim. Nos edifícios da orla, incluindo os de mais alto padrão, o atendimento acontece na academia do condomínio ou no próprio apartamento — formato preferido de quem valoriza privacidade. Cada prédio tem suas regras de acesso de prestadores.',
+  },
+  {
+    pergunta: 'Qual academia usar com personal em Ipanema?',
+    resposta:
+      'A Bodytech tem duas unidades no bairro — na rua Barão da Torre e junto à Praça Nossa Senhora da Paz — e muitos personal trainers atendem nessas estruturas, além de studios privativos nas transversais da Visconde de Pirajá.',
+  },
+  {
+    pergunta: 'Dá para montar treino de força só na praia em Ipanema?',
+    resposta:
+      'Para condicionamento geral, sim; para hipertrofia consistente, a areia e o peso do corpo têm limite. O arranjo mais comum no bairro combina força na academia ou no condomínio com treinos aeróbicos e funcionais na orla e na Lagoa.',
+  },
+];
+
+const title = 'Personal Trainer em Ipanema (RJ): guia completo do bairro';
+const description =
+  'Personal trainer em Ipanema: preços, treino na orla, na Lagoa e nos prédios da Vieira Souto, e como escolher o profissional certo no bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer em Ipanema: treino de alto nível entre a orla e a Lagoa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O prédio mais caro do Rio de Janeiro fica na avenida Vieira Souto — o Cap
+      Ferrat, com 16 apartamentos de um por andar e metro quadrado na casa dos
+      R$ 100 mil. É nesse cenário que trabalha o
+      <strong>personal trainer em Ipanema</strong>: um bairro com metro
+      quadrado médio de R$ 36 mil, moradores exigentes e uma geografia de
+      treino privilegiada, da areia do posto 9 à pista de 7,5 km da Lagoa
+      Rodrigo de Freitas. Este guia cobre o essencial para contratar bem no
+      bairro: contexto, preços, lugares e critérios.
+    </p>
+
+    <div class="prose">
+      <h2>Ipanema em modo treino: como o bairro se organiza</h2>
+      <p>
+        Ipanema é compacta e densa: a vida corre entre a orla da Vieira Souto,
+        o comércio da rua Visconde de Pirajá e as quadras residenciais em
+        volta da Praça Nossa Senhora da Paz e da rua Garcia d'Ávila. Nos
+        limites, dois vizinhos que fazem parte da rotina de treino — o
+        Arpoador, na divisa com Copacabana, e o Jardim de Alah, na fronteira
+        com o Leblon —, além da Lagoa logo atrás do bairro. Os edifícios da
+        orla, como o próprio Cap Ferrat e vizinhos históricos como o
+        condomínio Juscelino Kubitschek, de 1962, o Atlântico Sul e o
+        Itacurussá, concentram apartamentos de 600 m² e moradores que, em boa
+        parte, treinam sem sair do prédio.
+      </p>
+
+      <h2>Quanto custa personal trainer em Ipanema</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no Rio
+        de Janeiro</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Em Ipanema, o
+        mercado trabalha no topo: o bairro concentra profissionais veteranos
+        da Zona Sul, muito procurados nos horários de 6h às 8h, e o
+        atendimento a domicílio nos prédios da orla é o formato de maior
+        valor. Quem quer reduzir o custo por pessoa treina em dupla — prática
+        comum entre casais do bairro — ou combina presencial com
+        acompanhamento online (R$ 200 a R$ 500 mensais) nas semanas de viagem.
+      </p>
+
+      <h2>Onde treinar com personal em Ipanema</h2>
+
+      <h3>Orla e areia: o clássico</h3>
+      <p>
+        O calçadão de Ipanema emenda com o do Leblon num percurso de 4 km à
+        beira-mar, plano e com visual que não cansa. Na areia, treinos
+        funcionais aproveitam a instabilidade para trabalhar força, equilíbrio
+        e potência. O trecho do posto 9 concentra o movimento; quem prefere
+        treinar em paz madruga ou desloca a sessão para o início da manhã.
+      </p>
+
+      <h3>Arpoador: escadas, pedra e nascer do sol</h3>
+      <p>
+        Na ponta leste do bairro, a pedra do Arpoador e seu entorno oferecem
+        escadas, rampas e platôs que viram estações de treino intervalado —
+        com o mar de fundo. É o cenário favorito dos personal trainers do
+        bairro para sessões de condicionamento ao amanhecer.
+      </p>
+
+      <h3>Lagoa Rodrigo de Freitas: o treino estruturado</h3>
+      <p>
+        Para corrida com método, a pista da Lagoa é imbatível: 7,5 km por
+        volta, marcação a cada 100 metros e visual do Cristo e do Morro Dois
+        Irmãos. Personal trainers de corrida usam a marcação para treinos
+        precisos de ritmo — e a volta completa como teste de evolução.
+      </p>
+
+      <h3>Academias e condomínios</h3>
+      <p>
+        A Bodytech mantém duas unidades no bairro — rua Barão da Torre e Praça
+        Nossa Senhora da Paz —, e studios privativos se espalham pelas
+        transversais da Visconde de Pirajá. Nos prédios da orla e das quadras
+        internas, a academia do condomínio recebe o personal para o trabalho
+        de força que sustenta todo o resto. Sobre como organizar a semana
+        entre força e aeróbico, o guia
+        <a href="/musculacao/abc-ou-full-body/">ABC ou Full Body</a> explica as
+        divisões de treino mais usadas.
+      </p>
+
+      <h2>Como escolher um personal em Ipanema</h2>
+      <p>
+        O filtro é o mesmo dos bairros mais concorridos do país: avaliação
+        física logo no início, periodização que o profissional explique com
+        clareza, experiência real com o seu objetivo e honestidade sobre
+        prazos — nada de resultado garantido. O passo a passo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Em Ipanema, some o critério local: o bom profissional do bairro domina
+        os cenários (areia, pedra, Lagoa, prédio) e monta a semana usando
+        todos eles a favor do seu objetivo — e não apenas o que é mais
+        conveniente para ele. Dores e limitações, como sempre, passam primeiro
+        por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Ipanema" />
+
+    <WhatsAppCta tema="geral" localidade="em Ipanema" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

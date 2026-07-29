@@ -1,0 +1,235 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/florianopolis-sc/',
+    titulo: 'Personal trainer em Florianópolis',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'O objetivo mais pedido aos personal trainers de Jurerê — explicado.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-jurere-internacional';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Florianópolis', url: '/personal-trainer/florianopolis-sc/' },
+  { nome: 'Personal Trainer em Jurerê Internacional', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Jurerê Internacional?',
+    resposta:
+      'Em Florianópolis, a aula avulsa varia de R$ 90 a R$ 210 e o pacote mensal de R$ 450 a R$ 1.250. Em Jurerê Internacional, bairro de mansões e alto padrão, os valores ficam no topo dessas faixas — e no verão, com a chegada dos veranistas, a agenda dos profissionais locais é a primeira a lotar.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Jurerê Internacional?',
+    resposta:
+      'No Passeio dos Namorados, o calçadão da orla ideal para corrida e caminhada; na areia da praia, de mar calmo; nas academias ao ar livre das áreas verdes do bairro; e nas ciclovias planejadas das avenidas, como a dos Búzios e a dos Dourados.',
+  },
+  {
+    pergunta: 'Personal atende dentro das casas e condomínios de Jurerê?',
+    resposta:
+      'Sim — nas mansões e residências do bairro, o treino em casa é o formato dominante: o personal monta a estrutura na área da piscina, no jardim ou na academia particular que muitas casas já têm.',
+  },
+  {
+    pergunta: 'Dá para manter o treino em Jurerê fora do verão?',
+    resposta:
+      'Sim, e o inverno é a melhor estação para isso: o bairro fica tranquilo, o calçadão e a praia esvaziam e os profissionais locais têm agenda mais flexível. Moradores fixos costumam fechar pacotes anuais justamente para aproveitar a regularidade da baixa temporada.',
+  },
+  {
+    pergunta: 'Personal em Jurerê prepara para provas como o Ironman?',
+    resposta:
+      'O bairro recebe provas de triatlo e corrida — incluindo etapas do Ironman —, e há profissionais especializados em preparação para provas atuando na região. Para esse objetivo, procure quem tenha experiência comprovada em periodização de endurance.',
+  },
+];
+
+const title = 'Personal Trainer em Jurerê Internacional: guia do bairro';
+const description =
+  'Personal trainer em Jurerê Internacional: a rotina de treino do bairro, verão e inverno — orla, mansões, beach clubs — com preços e como escolher.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Florianópolis</p>
+    <h1>A rotina de treino em Jurerê Internacional: um bairro, duas estações</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existem dois Jurerês — e quem contrata um
+      <strong>personal trainer em Jurerê Internacional</strong> aprende isso na
+      primeira temporada. No verão, o bairro planejado pela Habitasul nos anos
+      1980, inspirado em Saint-Tropez e Cannes, multiplica de população:
+      veranistas, beach clubs como o P12 a todo vapor e treino disputando
+      espaço com a alta temporada. No inverno, vira uma vila à beira-mar
+      silenciosa, onde o calçadão é dos moradores e dos seus treinos. A rotina
+      de quem leva o corpo a sério por lá é desenhada em torno dessas duas
+      estações.
+    </p>
+
+    <div class="prose">
+      <h2>O cenário: mansões, avenidas com nome de mar e orla plana</h2>
+      <p>
+        Jurerê Internacional é horizontal e planejado: mansões e residências de
+        arquitetura contemporânea nas avenidas dos Búzios, dos Dourados, das
+        Lagostas e dos Salmões, ruas internas tranquilas como a das Taínhas e a
+        dos Botos, ciclovias desenhadas desde a prancheta e uma orla de mar
+        calmo emoldurada pelo Passeio dos Namorados — o calçadão que
+        acompanha a praia e funciona como a pista de corrida oficial do
+        bairro. Muitas casas têm academia própria, piscina e área externa
+        generosa: a estrutura de treino, aqui, costuma estar dentro de casa.
+      </p>
+
+      <h2>Dezembro a março: treinar cedo, treinar em casa</h2>
+      <p>
+        No verão, a rotina dos moradores muda de horário. Às 7h, o Passeio dos
+        Namorados ainda é treinável; às 10h, o bairro pertence aos turistas, e
+        o entorno do Jurerê Open Shopping e do hotel Il Campanario vira
+        passarela. Por isso, quem treina com personal na alta temporada
+        antecipa: corrida ou funcional na orla ao amanhecer, força na academia
+        de casa no fim da tarde. É também a época em que a agenda dos
+        profissionais locais lota — moradores fixos garantem seus horários
+        antes de novembro, como quem reserva mesa para a temporada.
+      </p>
+
+      <h2>Abril a novembro: a temporada dos moradores</h2>
+      <p>
+        No inverno, Jurerê devolve o bairro a quem vive nele — e é quando o
+        treino rende de verdade. O calçadão vazio permite treinos de corrida
+        estruturados sem slalom entre pedestres; a areia firme da maré baixa
+        vira pista de funcional; as academias ao ar livre das áreas verdes
+        ficam livres; e o personal consegue montar uma rotina regular, sem os
+        malabarismos de horário do verão. Não por acaso, o bairro atrai provas
+        de triatlo e corrida — incluindo etapas do Ironman, com atletas
+        treinando pelas avenidas e pela praia nas semanas que antecedem a
+        prova. Para o morador comum, essa cultura esportiva significa
+        profissionais acostumados a treinar gente séria.
+      </p>
+
+      <h2>O treino dentro das mansões</h2>
+      <p>
+        A cena mais típica do bairro não acontece na rua: acontece na área da
+        piscina. Nas casas de Jurerê, o personal a domicílio é o formato
+        dominante — muitas residências têm academia particular, e as que não
+        têm oferecem espaço de sobra para estrutura portátil. O objetivo mais
+        pedido, segundo os profissionais que atendem na região, combina
+        estética e saúde: perder gordura preservando (ou ganhando) músculo —
+        a <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a> que sustenta o estilo de vida praiano o ano inteiro. Nas
+        famílias, é comum a sessão em sequência: marido, esposa e, nas férias,
+        os filhos adolescentes.
+      </p>
+
+      <h2>Quanto custa personal trainer em Jurerê Internacional</h2>
+      <p>
+        A referência de Florianópolis, publicada no guia de
+        <a href="/personal-trainer/florianopolis-sc/">personal trainer em
+        Florianópolis</a>, vai de R$ 90 a R$ 210 pela aula avulsa e de R$ 450
+        a R$ 1.250 pelo pacote mensal — as faixas mais altas do Sul do país.
+        Em Jurerê, o atendimento a domicílio nas mansões fica no topo, e o
+        verão adiciona um fator de escassez: menos horários, mais procura.
+        Moradores fixos conseguem melhores condições fechando pacotes anuais
+        na baixa temporada; veranistas costumam contratar pacotes mensais de
+        janeiro com antecedência.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Além dos critérios universais — avaliação física inicial,
+        periodização clara, experiência com o seu objetivo, sem promessa de
+        resultado — detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>,
+        Jurerê pede dois filtros próprios: disponibilidade real na estação em
+        que você mais precisa (verão lota) e experiência com treino em casa,
+        já que a maior parte das sessões do bairro acontece dentro das
+        residências. E vale a regra de sempre: dores e limitações passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Jurerê Internacional" />
+
+    <WhatsAppCta tema="geral" localidade="em Jurerê Internacional" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

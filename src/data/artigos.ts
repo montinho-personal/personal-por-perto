@@ -16,6 +16,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-moema/', titulo: 'Personal trainer em Moema (São Paulo)' },
   { categoria: 'Bairros', url: '/personal-trainer-barra-da-tijuca/', titulo: 'Personal trainer na Barra da Tijuca (Rio de Janeiro)' },
   { categoria: 'Bairros', url: '/personal-trainer-batel/', titulo: 'Personal trainer no Batel (Curitiba)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardins/', titulo: 'Personal trainer nos Jardins (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-ipanema/', titulo: 'Personal trainer em Ipanema (Rio de Janeiro)' },
+  { categoria: 'Bairros', url: '/personal-trainer-savassi/', titulo: 'Personal trainer na Savassi (Belo Horizonte)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jurere-internacional/', titulo: 'Personal trainer em Jurerê Internacional (Florianópolis)' },
+  { categoria: 'Bairros', url: '/personal-trainer-meireles/', titulo: 'Personal trainer no Meireles (Fortaleza)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
