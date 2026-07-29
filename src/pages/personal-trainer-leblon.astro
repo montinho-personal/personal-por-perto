@@ -1,0 +1,238 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio: o que emagrece mais?',
+    descricao: 'A dupla que sustenta qualquer rotina de treino na orla ou na academia.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-leblon';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer no Leblon', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Leblon?',
+    resposta:
+      'No Rio de Janeiro, a aula avulsa varia de R$ 80 a R$ 200 e o pacote mensal de R$ 400 a R$ 1.200. No Leblon, bairro de metro quadrado mais caro do Brasil, os valores concentram-se no topo dessas faixas — e o atendimento a domicílio em horário de pico costuma superá-las.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre com personal no Leblon?',
+    resposta:
+      'No calçadão da orla (que vira área de lazer aos domingos), na areia da praia para treinos funcionais e no Parque Natural Municipal Penhasco Dois Irmãos, no Alto Leblon, que tem escadarias e subidas fortes para treinos intensos.',
+  },
+  {
+    pergunta: 'Personal trainer atende em prédio no Leblon?',
+    resposta:
+      'Sim. Muitos prédios do bairro têm academia própria, e o atendimento na infraestrutura do condomínio ou no próprio apartamento é comum, principalmente entre moradores 60+ e profissionais com agenda cheia.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal na praia do Leblon o ano todo?',
+    resposta:
+      'Na prática, sim — o inverno carioca é ameno. Bons profissionais ajustam horário (manhã cedo no verão para fugir do calor) e têm plano alternativo para dias de chuva, como a academia do prédio ou um studio parceiro.',
+  },
+  {
+    pergunta: 'Qual a diferença de treinar no Leblon e em Ipanema?',
+    resposta:
+      'Os bairros são vizinhos, separados pelo Jardim de Alah, e muitos profissionais atendem nos dois. A diferença prática é logística: quem mora no Alto Leblon aproveita melhor o Penhasco Dois Irmãos; quem está perto da divisa costuma usar a orla contínua dos dois bairros.',
+  },
+];
+
+const title = 'Personal Trainer no Leblon (RJ): preços e onde treinar';
+const description =
+  'Personal trainer no Leblon: quanto custa, onde treinar — orla, Penhasco Dois Irmãos, academia do prédio — e como escolher o profissional certo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer no Leblon: as respostas que você procuraria antes de contratar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Faz sentido pagar <strong>personal trainer no Leblon</strong> quando o
+      bairro inteiro parece uma academia a céu aberto? A pergunta é legítima:
+      entre o calçadão da orla, a areia da praia e as escadarias do Penhasco
+      Dois Irmãos, o morador do bairro com o metro quadrado mais caro do Brasil
+      tem estrutura gratuita de sobra. A resposta curta é que estrutura nunca
+      foi o problema — constância, técnica e progressão é que são. Este artigo
+      responde, uma a uma, as dúvidas de quem pensa em contratar um personal no
+      bairro.
+    </p>
+
+    <div class="prose">
+      <h2>Quanto custa um personal trainer no Leblon?</h2>
+      <p>
+        A referência do Rio de Janeiro, levantada pelo Personal por Perto, é de
+        R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote
+        mensal com 2 a 3 sessões semanais — as faixas completas estão no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no Rio
+        de Janeiro</a>. No Leblon, os valores gravitam para o teto: o bairro
+        lidera o ranking nacional do metro quadrado (média acima de R$ 23 mil,
+        chegando a mais de R$ 70 mil na avenida Delfim Moreira, segundo índices
+        imobiliários), e o custo dos serviços acompanha. Profissionais com
+        agenda consolidada na Zona Sul e especialização — emagrecimento,
+        corrida, treino 60+ — cobram acima da média da cidade, principalmente
+        nos horários de 6h às 8h.
+      </p>
+
+      <h2>Onde as pessoas treinam com personal no Leblon?</h2>
+      <p>
+        Em quatro cenários, basicamente. O primeiro é a <strong>orla</strong>: o
+        calçadão entre o Jardim de Alah e o Mirante do Leblon é pista de
+        corrida, caminhada e treino funcional o ano inteiro — e aos domingos a
+        via fica fechada para carros, virando a maior área de lazer do bairro. O
+        segundo é a <strong>areia</strong>, onde treinos funcionais e circuitos
+        aproveitam a instabilidade do solo para trabalhar força e equilíbrio. O
+        terceiro é a <strong>academia do prédio</strong>, cada vez mais completa
+        nos edifícios do bairro. E o quarto é o
+        <strong>Parque Natural Municipal Penhasco Dois Irmãos</strong>, no Alto
+        Leblon, com acesso pela rua Aperana: escadarias, subidas íngremes e
+        mirantes para a Lagoa e o Corcovado — terreno perfeito para treinos
+        intensos de perna e condicionamento.
+      </p>
+
+      <h2>Treinar na praia com personal funciona ou é só cenário bonito?</h2>
+      <p>
+        Funciona, desde que haja método. A areia fofa aumenta o esforço em
+        exercícios de deslocamento e reduz impacto em saltos; o calçadão plano
+        favorece corrida progressiva; a escadaria do Penhasco entrega trabalho
+        cardiovascular que pouca esteira reproduz. O papel do personal é
+        transformar esse terreno em periodização: alternar superfícies conforme
+        o objetivo, controlar volume e intensidade e progredir carga com o peso
+        do corpo, elásticos e implementos portáteis. Sem isso, o treino na praia
+        tende a virar sempre o mesmo circuito — agradável, mas estagnado.
+      </p>
+
+      <h2>E quem prefere treinar em academia?</h2>
+      <p>
+        O Leblon tem rede densa. A Bodytech mantém unidades na avenida Ataulfo
+        de Paiva, no Shopping Leblon e na rua General Urquiza; a Smart Fit
+        atende na avenida Bartolomeu Mitre; e studios tradicionais do bairro,
+        como a Proforma, trabalham com atendimento mais próximo e turmas
+        pequenas. Muitos personal trainers da Zona Sul atendem dentro dessas
+        estruturas ou em studios privativos nas transversais da Ataulfo — e o
+        formato em dupla, dividindo o valor da sessão, é comum entre casais do
+        bairro.
+      </p>
+
+      <h2>Personal a domicílio faz sentido no Leblon?</h2>
+      <p>
+        Para dois perfis, muito. O primeiro são os moradores mais velhos —
+        o Leblon tem parcela significativa de moradores de longa data — que
+        ganham segurança e regularidade treinando em casa ou na academia do
+        condomínio, com trabalho de força e equilíbrio. O segundo são os
+        profissionais liberais e executivos que espremem o treino entre
+        compromissos: o personal que sobe até o apartamento às 6h30 elimina a
+        única desculpa que sobrava. Importante: dores e limitações devem passar
+        primeiro por médico ou fisioterapeuta — personal sério trabalha em
+        conjunto com a equipe de saúde, não no lugar dela.
+      </p>
+
+      <h2>Como escolher entre tantos profissionais na Zona Sul?</h2>
+      <p>
+        Com filtro objetivo. Peça avaliação física na primeira semana, pergunte
+        como o profissional periodiza e mede evolução, verifique experiência
+        real com o seu objetivo — hipertrofia, emagrecimento,
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">combinação
+        de musculação e cardio</a> — e desconfie de promessas de resultado com
+        prazo. O passo a passo completo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        No Leblon, vale um critério extra: dê preferência a quem conhece o
+        território — quem treina aluno no bairro há anos sabe, por exemplo, que
+        horário a orla lota e quando o Penhasco abre.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Leblon" />
+
+    <WhatsAppCta tema="geral" localidade="no Leblon" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

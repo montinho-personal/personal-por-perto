@@ -5,11 +5,18 @@
  */
 export interface Artigo {
   titulo: string;
-  categoria: 'Guias' | 'Musculação' | 'Emagrecimento' | 'Mounjaro e Treino' | 'Humor fitness';
+  categoria: 'Guias' | 'Musculação' | 'Emagrecimento' | 'Mounjaro e Treino' | 'Humor fitness' | 'Bairros';
   url: string;
 }
 
 export const artigos: Artigo[] = [
+  // Bairros de alta renda
+  { categoria: 'Bairros', url: '/personal-trainer-itaim-bibi/', titulo: 'Personal trainer no Itaim Bibi (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-leblon/', titulo: 'Personal trainer no Leblon (Rio de Janeiro)' },
+  { categoria: 'Bairros', url: '/personal-trainer-moema/', titulo: 'Personal trainer em Moema (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-barra-da-tijuca/', titulo: 'Personal trainer na Barra da Tijuca (Rio de Janeiro)' },
+  { categoria: 'Bairros', url: '/personal-trainer-batel/', titulo: 'Personal trainer no Batel (Curitiba)' },
+
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
   { categoria: 'Guias', url: '/guias/quanto-custa-personal-trainer/', titulo: 'Quanto custa um personal trainer' },

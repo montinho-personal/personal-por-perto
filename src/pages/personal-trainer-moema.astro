@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'Por onde começar quando a rotina de treino ainda não existe.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-moema';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer em Moema', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Moema?',
+    resposta:
+      'Em São Paulo, a aula avulsa varia de R$ 80 a R$ 200 e o pacote mensal de R$ 400 a R$ 1.200. Em Moema, bairro de renda alta com grande procura, os valores costumam ficar na metade superior dessas faixas, principalmente nos horários da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar com personal ao ar livre em Moema?',
+    resposta:
+      'O Parque Ibirapuera é o principal ponto: Volta do Lago (cerca de 3 km, asfalto), Pista de Cooper (1,2 km, terra batida) e Volta da Grade (aproximadamente 6 km) atendem de caminhada a treino de corrida estruturado. Nas praças do bairro também são comuns treinos funcionais acompanhados.',
+  },
+  {
+    pergunta: 'Qual a diferença entre treinar em Moema Pássaros e Moema Índios?',
+    resposta:
+      'É mais logística que técnica. O lado Pássaros, entre as avenidas Santo Amaro e Ibirapuera, é mais residencial e tranquilo para treinos em casa e no condomínio; o lado Índios concentra mais comércio, studios e academias. O Ibirapuera atende bem os dois lados.',
+  },
+  {
+    pergunta: 'Personal trainer atende em condomínio em Moema?',
+    resposta:
+      'Sim, é um formato comum no bairro — muitos prédios têm academia própria, e o personal leva avaliação física, método e progressão até lá. Para quem não tem estrutura no prédio, o treino a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'O Ibirapuera lota em qual horário?',
+    resposta:
+      'O pico da manhã fica entre 7h e 8h, principalmente na Volta do Lago. Quem treina com personal costuma ajustar para começar mais cedo ou usar percursos alternativos, como a Volta da Grade, nos horários cheios.',
+  },
+];
+
+const title = 'Personal Trainer em Moema: rotina, preços e onde treinar';
+const description =
+  'Personal trainer em Moema: como é a rotina de treino no bairro — Ibirapuera, academias da avenida, treino no prédio — com preços e dicas de escolha.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Como é a rotina de treino de quem mora em Moema — e onde o personal entra nela</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      São 6h40 de uma terça-feira e a rua Canários ainda está silenciosa quando
+      a moradora do sétimo andar desce para encontrar o
+      <strong>personal trainer em Moema</strong> que a espera na portaria. Dez
+      minutos de caminhada e os dois cruzam o portão do Ibirapuera para o
+      aquecimento na Pista de Cooper. Essa cena, com variações, se repete todos
+      os dias no bairro: Moema é um dos poucos lugares de São Paulo onde a
+      rotina de treino de alto nível cabe inteira num raio de 15 minutos a pé.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro que acorda treinando</h2>
+      <p>
+        Moema tem duas metades com personalidades distintas — e quem treina no
+        bairro sente isso na prática. O lado <strong>Pássaros</strong>, entre a
+        avenida Santo Amaro e a avenida Ibirapuera, de ruas como Canários,
+        Gaivota e Pavão, é o Moema residencial: prédios com academia própria,
+        praças arborizadas, silêncio às 6h da manhã. O lado
+        <strong>Índios</strong>, das ruas Nhambiquaras e Jurupis até a divisa
+        com a Vila Nova Conceição, concentra o comércio, os studios e o
+        movimento. Entre os dois, a avenida Ibirapuera funciona como espinha
+        dorsal — com metrô, academias e o caminho natural até o parque.
+      </p>
+      <p>
+        O perfil de quem mora ali ajuda a explicar a densidade de personal
+        trainers por quarteirão: executivos, médicos, advogados e empresários,
+        com renda bem acima da média da cidade e metro quadrado na casa dos
+        R$ 12 mil. Gente com dinheiro para investir em saúde e, quase sempre,
+        sem tempo para desperdiçar em treino que não funciona.
+      </p>
+
+      <h2>6h50, portão do Ibirapuera</h2>
+      <p>
+        O Parque Ibirapuera é o grande equipamento esportivo de Moema — cerca de
+        20 mil pessoas passam por ele todos os dias. Quem treina com personal
+        aprende rápido a geografia dos percursos: a <strong>Volta do
+        Lago</strong>, de aproximadamente 3 km em asfalto plano, é a queridinha
+        (e lota entre 7h e 8h); a <strong>Pista de Cooper</strong>, de 1,2 km em
+        terra batida, poupa as articulações nos dias de treino leve; a
+        <strong>Volta da Grade</strong>, com cerca de 6 km pelo perímetro,
+        atende os treinos longos; e nos dias de chuva a marquise vira pista
+        coberta improvisada. Um bom profissional monta a semana alternando esses
+        cenários — intervalado na terça, força na quinta, longão no sábado —
+        em vez de repetir sempre a mesma volta.
+      </p>
+
+      <h2>12h30, intervalo do almoço</h2>
+      <p>
+        A segunda janela de treino do bairro acontece no meio do dia, e aí a
+        cena muda do parque para as academias. A Smart Fit da avenida Ibirapuera
+        e a Bio Ritmo instalada mais adiante na mesma avenida — além da unidade
+        do Shopping Ibirapuera — recebem muitos alunos acompanhados de personal,
+        que usam a estrutura completa de musculação para o trabalho de força que
+        o parque não entrega. Para quem está começando, aliás, essa combinação
+        guiada evita o erro clássico do iniciante: o guia de
+        <a href="/musculacao/treino-para-iniciantes/">treino de musculação para
+        iniciantes</a> explica por que método importa mais que empolgação.
+      </p>
+
+      <h2>19h30, academia do prédio</h2>
+      <p>
+        A terceira janela é a do fim do dia — e em Moema ela acontece cada vez
+        mais dentro do próprio condomínio. Os lançamentos recentes do bairro
+        incluem academias bem montadas, e o personal que atende no prédio
+        resolve a equação de quem sai tarde do trabalho: sem deslocamento, o
+        treino de 50 minutos cabe entre a chegada em casa e o jantar. Nos
+        prédios sem estrutura, o atendimento a domicílio com elásticos,
+        halteres e step portátil cobre bem objetivos de condicionamento,
+        emagrecimento e força para o dia a dia — e é o formato preferido dos
+        moradores mais velhos do bairro, que valorizam treinar sem sair de
+        casa. Vale a regra de sempre: dores e limitações passam primeiro por
+        médico ou fisioterapeuta, e o personal trabalha em conjunto com eles.
+      </p>
+
+      <h2>Quanto custa esse estilo de vida</h2>
+      <p>
+        A referência de São Paulo, levantada pelo Personal por Perto, é de
+        R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote
+        mensal — os detalhes estão no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>. Em Moema, a procura alta e o perfil de renda empurram os
+        valores para a metade superior das faixas, com os horários entre 6h e
+        8h — os das cenas deste artigo — sendo os mais disputados e, muitas
+        vezes, os mais caros. Treinar em dupla com um vizinho ou cônjuge é a
+        forma mais comum de reduzir o custo por pessoa sem abrir mão do
+        acompanhamento.
+      </p>
+
+      <h2>O que separa um bom personal em Moema</h2>
+      <p>
+        Além dos critérios que valem em qualquer lugar — avaliação física
+        inicial, periodização clara, experiência com o seu objetivo, todos
+        detalhados no guia <a href={rotas.comoEscolher}>como escolher um
+        personal trainer</a> —, em Moema vale observar se o profissional domina
+        o território: se sabe montar treino que aproveita o Ibirapuera sem
+        depender dele, se conhece a estrutura das academias da avenida e se tem
+        agenda compatível com as três janelas do bairro. O personal que só
+        improvisa não sobrevive muito tempo num bairro com alunos tão bem
+        informados.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Moema" />
+
+    <WhatsAppCta tema="geral" localidade="em Moema" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

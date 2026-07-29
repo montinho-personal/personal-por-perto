@@ -1,0 +1,300 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios que separam um bom profissional de um cartão de visitas bonito.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'A base técnica por trás de um treino de força bem periodizado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-itaim-bibi';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer no Itaim Bibi', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Itaim Bibi?',
+    resposta:
+      'A referência da cidade de São Paulo é de R$ 80 a R$ 200 por aula avulsa e de R$ 400 a R$ 1.200 no pacote mensal. No Itaim Bibi, os valores tendem ao topo dessas faixas, e atendimento a domicílio em horário de pico pode superá-las.',
+  },
+  {
+    pergunta: 'Personal trainer atende na academia do condomínio no Itaim?',
+    resposta:
+      'Sim — é um dos formatos mais comuns do bairro. Prédios como Heritage, Casa Brasileira e Fasano Residencial têm academias completas, e o personal leva avaliação, método e progressão até a estrutura que o morador já possui.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre com personal no Itaim Bibi?',
+    resposta:
+      'O principal ponto é o Parque do Povo, com pista de corrida de piso especial e ciclovia de 1,6 km. A ciclovia da Faria Lima e as praças do bairro completam as opções para treino funcional e corrida acompanhada.',
+  },
+  {
+    pergunta: 'Vale a pena treinar em dupla com personal no Itaim?',
+    resposta:
+      'Para muita gente, sim. O formato divide o custo da sessão entre duas pessoas — comum entre casais e colegas da Faria Lima — mantendo treino individualizado. Funciona melhor quando os dois têm objetivos e nível parecidos.',
+  },
+  {
+    pergunta: 'Personal no Itaim Bibi atende antes das 7h da manhã?',
+    resposta:
+      'É o horário mais procurado do bairro, justamente pela rotina dos executivos. Muitos profissionais começam a atender às 6h — mas esses horários são os primeiros a lotar, então quem precisa deles deve garantir a vaga com antecedência.',
+  },
+];
+
+const title = 'Personal Trainer no Itaim Bibi: guia completo do bairro';
+const description =
+  'Como contratar personal trainer no Itaim Bibi: preços, treino em condomínio, no Parque do Povo e a domicílio — e como escolher bem o profissional.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer no Itaim Bibi: como treinar bem no bairro mais valorizado de São Paulo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Contratar um <strong>personal trainer no Itaim Bibi</strong> é resolver uma
+      equação que todo morador do bairro conhece: agenda apertada, deslocamento
+      caro em tempo e uma oferta enorme — e desigual — de profissionais. O Itaim
+      figura no topo do ranking FipeZAP de metro quadrado mais caro do Brasil, e
+      o padrão de vida local se reflete também no jeito de treinar: academia
+      dentro do prédio, studios boutique, treino de corrida no Parque do Povo
+      antes do expediente. Este guia mostra onde treinar com personal no bairro,
+      quanto custa e como separar um bom profissional de um cartão de visitas
+      bonito.
+    </p>
+
+    <div class="prose">
+      <h2>O Itaim e o treino em modo executivo</h2>
+      <p>
+        O Itaim Bibi é um bairro vertical e de rotina intensa. Espremido entre a
+        avenida Brigadeiro Faria Lima, a avenida Juscelino Kubitschek e a
+        fronteira com a Vila Olímpia e a Vila Nova Conceição, ele concentra o
+        centro financeiro do país — e uma população de executivos, sócios de
+        fundos e profissionais liberais que medem o dia em blocos de 30 minutos.
+      </p>
+      <p>
+        Isso muda a lógica do treino. Aqui, o personal que dá certo é o que se
+        encaixa na agenda do aluno, e não o contrário: sessão às 6h30 antes da
+        primeira call, no horário de almoço perto da Joaquim Floriano, ou às 21h
+        na academia do próprio prédio. Quem mora nas quadras entre a rua Pedroso
+        Alvarenga e a rua João Cachoeira resolve quase tudo a pé — inclusive o
+        treino.
+      </p>
+      <p>
+        Outro traço do bairro: como a maioria absoluta mora em apartamento, a
+        estrutura de treino raramente é a sala de casa. Ela é a academia do
+        condomínio, o studio na vizinhança ou o parque. O personal certo para o
+        Itaim é o que transita bem entre esses três cenários.
+      </p>
+
+      <h2>Onde treinar com personal no Itaim Bibi</h2>
+
+      <h3>Parque do Povo: o quintal esportivo do bairro</h3>
+      <p>
+        O Parque do Povo Mário Pimenta Camargo, aberto em 2008 junto à marginal
+        Pinheiros, tem 133 mil m², pista de corrida e caminhada com piso que
+        reduz o impacto nas articulações, ciclovia de 1,6 km e quadras
+        poliesportivas. De manhã cedo e no fim da tarde, é o ponto de encontro
+        de quem treina ao ar livre no Itaim — de corredores amadores a grupos de
+        treino funcional acompanhados por personal.
+      </p>
+      <p>
+        Para quem mora na região da rua Tabapuã ou desce da Faria Lima, o parque
+        fica a poucos minutos a pé, o que permite montar uma rotina híbrida
+        eficiente: força na academia do prédio dois dias por semana, treino de
+        corrida ou circuito no parque em outros dois. A ciclovia da Faria Lima
+        completa o circuito de quem prefere pedalar.
+      </p>
+
+      <h3>Academia do condomínio: o formato que mais cresce</h3>
+      <p>
+        No Itaim de hoje, dificilmente um lançamento de alto padrão chega ao
+        mercado sem academia de nível comercial — o comprador local já conta com
+        ela no pacote. Empreendimentos como o Heritage, da Cyrela com assinatura
+        Pininfarina na rua Leopoldo Couto de Magalhães, o Casa Brasileira,
+        entregue em 2020, o Fasano Residencial, na rua Pedroso Alvarenga, e o
+        clássico Lindenberg da rua Tabapuã oferecem estrutura que muita academia
+        de rua invejaria.
+      </p>
+      <p>
+        O gargalo dessas academias nunca é o equipamento — é a orientação. É
+        exatamente aí que entra o personal presencial: ele leva o método, a
+        avaliação física e a periodização até uma estrutura que você já paga no
+        condomínio. Para o morador, é o formato de melhor custo-tempo do bairro:
+        zero deslocamento, horário flexível e treino desenhado para o
+        equipamento disponível.
+      </p>
+
+      <h3>Academias e studios: da megaestrutura ao atendimento boutique</h3>
+      <p>
+        Quem prefere treinar fora de casa tem no Itaim uma das maiores
+        densidades de academias por quarteirão da cidade. A Bodytech do
+        Continental Square Faria Lima ocupa 5.800 m² em dois pisos; a Bio Ritmo
+        da rua Joaquim Floriano é referência antiga dos moradores; e studios
+        menores — de pilates, corrida e treino personalizado, como o Prime Run
+        junto ao Parque do Povo — atendem quem busca acompanhamento mais
+        próximo.
+      </p>
+      <p>
+        Muitos personal trainers do bairro atendem dentro dessas estruturas ou
+        em studios privativos, no formato de sessão individual ou em dupla.
+        Treinar em dupla, aliás, é comum entre casais e colegas de trabalho da
+        região: divide o valor da sessão sem diluir a atenção do profissional.
+      </p>
+
+      <h3>A domicílio e ao ar livre: liberdade total de agenda</h3>
+      <p>
+        Para quem mora nas ruas mais residenciais — Bandeira Paulista, João
+        Cachoeira e arredores —, o treino a domicílio com equipamento portátil
+        segue firme, principalmente entre quem trabalha em home office e entre
+        alunos 60+, que valorizam a comodidade. E o próprio desenho do bairro
+        favorece sessões ao ar livre: praças arborizadas, o Parque do Povo e as
+        ciclovias formam um circuito real de treino urbano.
+      </p>
+
+      <h2>Quanto custa personal trainer no Itaim Bibi</h2>
+      <p>
+        Em São Paulo, a aula avulsa de personal costuma variar de R$ 80 a
+        R$ 200 e os pacotes mensais com 2 a 3 sessões semanais, de R$ 400 a
+        R$ 1.200 — faixas levantadas pelo Personal por Perto para a cidade, no
+        guia de <a href="/personal-trainer/sao-paulo-sp/">personal trainer em
+        São Paulo</a>. No Itaim Bibi, o padrão fica no teto dessas faixas, e
+        profissionais muito experientes ou especializados ultrapassam esses
+        valores, sobretudo no atendimento a domicílio em horário nobre (início
+        da manhã e fim do dia).
+      </p>
+      <p>
+        Três fatores pesam no preço dentro do bairro: o horário (os slots de 6h
+        às 8h são os mais disputados), o formato (domicílio custa mais que
+        atendimento em studio) e a especialização do profissional —
+        emagrecimento com acompanhamento de rotina,
+        <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia</a>, treino
+        para executivos com viagens frequentes ou retomada de treino após os 60.
+        O acompanhamento online, entre R$ 200 e R$ 500 mensais, funciona como
+        alternativa ou complemento nas semanas de viagem.
+      </p>
+
+      <h2>Como escolher bem no bairro com mais oferta do país</h2>
+      <p>
+        Oferta abundante não significa escolha fácil — significa filtro mais
+        importante. Antes de fechar pacote com qualquer profissional no Itaim,
+        vale checar quatro pontos:
+      </p>
+      <ol>
+        <li>
+          <strong>Avaliação física de verdade na primeira semana.</strong> Sem
+          avaliação, não há treino personalizado; há ficha genérica.
+        </li>
+        <li>
+          <strong>Método e progressão.</strong> Pergunte como o profissional
+          periodiza o treino e como mede evolução. Resposta vaga aqui costuma
+          prever treino improvisado depois.
+        </li>
+        <li>
+          <strong>Experiência com o seu objetivo e a sua realidade.</strong>
+          Treinar um executivo que viaja toda semana exige plano B estruturado,
+          não improviso.
+        </li>
+        <li>
+          <strong>Dores e limitações vão para o profissional de saúde
+          primeiro.</strong> Personal sério trabalha em conjunto com médico ou
+          fisioterapeuta quando existe queixa — e não promete resolver dor com
+          treino.
+        </li>
+      </ol>
+      <p>
+        O passo a passo completo desses critérios está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Itaim Bibi" />
+
+    <WhatsAppCta tema="geral" localidade="no Itaim Bibi" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

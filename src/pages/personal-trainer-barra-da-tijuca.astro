@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular durante o emagrecimento',
+    descricao: 'A base técnica do treino para quem está em processo de perda de peso.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-barra-da-tijuca';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer na Barra da Tijuca', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Barra da Tijuca?',
+    resposta:
+      'A referência do Rio de Janeiro é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. Na Barra, o atendimento dentro de condomínio costuma ficar no meio e no topo dessas faixas; o deslocamento do profissional pelo bairro (que é extenso) pode pesar no valor.',
+  },
+  {
+    pergunta: 'Personal trainer atende dentro dos condomínios da Barra?',
+    resposta:
+      'Sim — é o formato dominante do bairro. Condomínios como Península, Le Parc e Santa Mônica Jardins têm academias e áreas de lazer completas, e o personal atende na própria estrutura, mediante as regras de acesso de cada condomínio.',
+  },
+  {
+    pergunta: 'Onde correr com personal na Barra da Tijuca?',
+    resposta:
+      'Na orla da avenida Lúcio Costa, com calçadão e ciclovia à beira-mar, e no Bosque da Barra, que tem perímetro de quase 3 km em piso de terra, ideal para poupar as articulações em treinos de corrida e caminhada.',
+  },
+  {
+    pergunta: 'Existe personal para quem usa canetas emagrecedoras na Barra?',
+    resposta:
+      'Sim. Com a popularização dos medicamentos GLP-1, cresceu no bairro a procura por treino de força focado em preservar massa muscular durante a perda de peso — sempre em conjunto com o médico que prescreveu o tratamento.',
+  },
+  {
+    pergunta: 'Treino em dupla ou família funciona nos condomínios da Barra?',
+    resposta:
+      'Funciona muito bem — casais e pais com filhos adolescentes costumam dividir a sessão na academia do condomínio, o que reduz o custo por pessoa e aproveita a mesma estrutura. O requisito é que o profissional individualize a carga para cada um.',
+  },
+];
+
+const title = 'Personal Trainer na Barra da Tijuca: guia por perfil';
+const description =
+  'Personal trainer na Barra da Tijuca para cada perfil: executivo, família em condomínio, 60+ e quem usa GLP-1. Preços, condomínios e onde treinar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer na Barra da Tijuca: o guia certo para o seu perfil de morador</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Com mais de 400 mil moradores no Censo 2022, a Barra da Tijuca tem
+      população de capital — e isso muda tudo na hora de contratar um
+      <strong>personal trainer na Barra da Tijuca</strong>. Enquanto na Zona Sul
+      o treino acontece na orla e na academia da esquina, aqui a vida é
+      horizontal: condomínios-clube com estrutura própria, distâncias que pedem
+      carro e perfis de morador muito diferentes entre si. Por isso este guia
+      não é genérico — ele é dividido por perfil. Encontre o seu abaixo.
+    </p>
+
+    <div class="prose">
+      <h2>Antes de tudo: como a geografia da Barra define o treino</h2>
+      <p>
+        O bairro se organiza em três eixos — a avenida das Américas, a avenida
+        Ayrton Senna e a orla da avenida Lúcio Costa — e a maior parte da vida
+        acontece dentro dos condomínios: Península, Le Parc, Mandala, Santa
+        Mônica Jardins, Malibu, Quintas do Rio, Riserva Uno. Muitos deles têm
+        academia, piscina, quadras e pista interna, o que faz do atendimento
+        <em>in loco</em> o formato natural do personal no bairro. Fora dos
+        muros, a orla oferece calçadão e ciclovia à beira-mar, o Bosque da Barra
+        soma 50 hectares com perímetro de quase 3 km em terra batida, e redes
+        como a Bodytech mantêm meia dúzia de unidades na região, ao lado de
+        estruturas grandes como o Rio Sport Center.
+      </p>
+
+      <h2>Perfil 1 — O executivo que atravessa a Barra todo dia</h2>
+      <p>
+        Quem sai cedo pela Américas ou pela Linha Amarela e volta à noite tem um
+        inimigo claro: o deslocamento. Para esse perfil, a recomendação é
+        eliminar qualquer trajeto extra — personal na academia do próprio
+        condomínio, às 6h ou depois das 20h, com plano B estruturado para
+        semanas de viagem (treino remoto ou ficha para academia de hotel). Na
+        contratação, priorize profissionais que atendam no seu condomínio ou
+        num raio curto: na Barra, "perto" de verdade vale dinheiro e adesão.
+      </p>
+
+      <h2>Perfil 2 — A família do condomínio-clube</h2>
+      <p>
+        Nos condomínios de perfil familiar, o treino vira programa da casa:
+        casal dividindo sessão na academia interna, adolescente iniciando
+        musculação com supervisão, avós fazendo trabalho de força duas vezes por
+        semana. O formato em dupla ou pequeno grupo familiar reduz o custo por
+        pessoa e aproveita a mesma estrutura — desde que o personal
+        individualize carga e progressão para cada um, o que é inegociável.
+        Aqui também entra o detalhe prático que só quem atende na Barra
+        conhece: cada condomínio tem suas regras de acesso de prestadores, e o
+        profissional experiente já chega com essa burocracia resolvida.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ que quer autonomia</h2>
+      <p>
+        A Barra concentra aposentados de alto patrimônio que trocaram escadas e
+        calçadas ruins por condomínios planos e seguros. Para esse perfil, o
+        treino de força é a intervenção mais valiosa que existe — massa
+        muscular, equilíbrio e densidade óssea sustentam a autonomia — e o
+        personal em casa ou na academia do condomínio é o formato ideal.
+        Duas ressalvas de responsabilidade: dores e limitações passam primeiro
+        por médico ou fisioterapeuta, e a progressão deve ser conservadora no
+        início. O Bosque da Barra, com piso de terra e ambiente arborizado, é
+        excelente para as sessões de caminhada e mobilidade desse público.
+      </p>
+
+      <h2>Perfil 4 — Quem está emagrecendo com medicação GLP-1</h2>
+      <p>
+        É o perfil que mais cresceu no bairro nos últimos anos. Medicamentos
+        como tirzepatida e semaglutida derrubam o peso na balança, mas parte da
+        perda pode vir de massa muscular — e é exatamente isso que o treino de
+        força bem periodizado evita. O personal certo para esse momento trabalha
+        alinhado ao médico que prescreveu o tratamento, prioriza exercícios
+        multiarticulares com progressão de carga e monitora composição corporal,
+        não só o ponteiro da balança. O guia sobre
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">como
+        preservar massa muscular durante o emagrecimento</a> detalha a lógica
+        desse trabalho.
+      </p>
+
+      <h2>Quanto custa personal trainer na Barra da Tijuca</h2>
+      <p>
+        A referência da cidade, levantada pelo Personal por Perto no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no Rio
+        de Janeiro</a>, é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Na Barra, o
+        valor é puxado por dois fatores próprios do bairro: o deslocamento do
+        profissional (as distâncias internas são grandes) e o atendimento
+        dentro de condomínio, que tende a custar mais que a sessão em academia
+        aberta. O acompanhamento online, de R$ 200 a R$ 500 mensais, é o
+        complemento comum para semanas de viagem.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os fundamentos não mudam: avaliação física na primeira semana, método
+        de progressão claro, experiência comprovada com o seu objetivo e
+        comunicação honesta — sem promessa de resultado com prazo. O passo a
+        passo completo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>. Na
+        Barra, acrescente o filtro logístico: profissional que já atende no seu
+        condomínio ou região economiza o seu tempo e o dele — e agenda que
+        sobrevive ao trânsito da Américas é agenda que dura.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Barra da Tijuca" />
+
+    <WhatsAppCta tema="geral" localidade="na Barra da Tijuca" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

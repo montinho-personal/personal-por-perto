@@ -1,0 +1,242 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/curitiba-pr/',
+    titulo: 'Personal trainer em Curitiba',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que separa treino que evolui de treino que só cansa.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-batel';
+const atualizadoEm = '2026-07-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Curitiba', url: '/personal-trainer/curitiba-pr/' },
+  { nome: 'Personal Trainer no Batel', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Batel?',
+    resposta:
+      'Em Curitiba, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Batel, bairro com o metro quadrado mais caro da cidade, os valores concentram-se no topo dessas faixas, principalmente em atendimento a domicílio e horários de pico.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre com personal no Batel?',
+    resposta:
+      'A Praça do Japão é o ponto clássico do bairro para treinos funcionais e corrida leve. Para volumes maiores, a ciclovia da avenida Sete de Setembro leva ao Parque Barigui em cerca de 5 km — um trajeto de ida e volta de 10 km muito usado por corredores do bairro.',
+  },
+  {
+    pergunta: 'O frio de Curitiba atrapalha o treino ao ar livre no Batel?',
+    resposta:
+      'Atrapalha menos do que parece: com aquecimento adequado e roupa certa, treina-se ao ar livre o ano todo. Ainda assim, bons profissionais do bairro mantêm alternativa coberta — academia do prédio ou studio — para os dias de chuva e geada.',
+  },
+  {
+    pergunta: 'Personal atende em apartamento no Batel?',
+    resposta:
+      'Sim. Os edifícios de alto padrão do bairro costumam ter academia própria, e o atendimento no condomínio ou dentro do apartamento, com equipamento portátil, é um dos formatos mais procurados por executivos e moradores 60+.',
+  },
+  {
+    pergunta: 'O que são Batel Soho e Petit Batel?',
+    resposta:
+      'São microrregiões do bairro: o Batel Soho concentra compras, gastronomia e lazer nos arredores da Praça da Espanha, e o Petit Batel é um polo menor de cafés, restaurantes e galerias. Ambos reúnem studios de treino personalizado em raio curto de caminhada.',
+  },
+];
+
+const title = 'Personal Trainer no Batel: onde treinar no bairro';
+const description =
+  'Os melhores lugares para treinar com personal trainer no Batel, em Curitiba: Praça do Japão, rota até o Barigui, academias e condomínios — com preços.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Curitiba</p>
+    <h1>Os melhores lugares para treinar com personal trainer no Batel</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O metro quadrado mais caro de Curitiba — R$ 13,5 mil, segundo o FipeZAP —
+      fica num bairro onde quase tudo se resolve a pé, inclusive o treino. Quem
+      procura <strong>personal trainer no Batel</strong> tem à disposição um
+      cardápio raro para um bairro central: praça histórica, ciclovia que leva
+      ao maior parque da cidade, academias premium com vista e edifícios com
+      estrutura própria. Esta lista comentada percorre, um a um, os lugares
+      onde os moradores do bairro realmente treinam — e o que cada um entrega.
+    </p>
+
+    <div class="prose">
+      <h2>1. Praça do Japão: o cartão-postal que vira academia</h2>
+      <p>
+        Com seus cerejeiras e espelhos d'água, a Praça do Japão é o ponto de
+        treino ao ar livre mais tradicional do Batel. Funciona bem para
+        circuitos funcionais, mobilidade e corrida leve — e a localização, na
+        borda do Batel Soho, permite emendar o treino com o café da manhã nas
+        redondezas da Praça da Espanha. Para treinos de força pesados ela não
+        substitui a academia, mas como base de treino funcional matinal com
+        personal, é difícil achar cenário melhor no centro expandido de
+        Curitiba.
+      </p>
+
+      <h2>2. A rota Sete de Setembro → Parque Barigui: o longão do bairro</h2>
+      <p>
+        O segredo dos corredores do Batel é a ciclovia da avenida Sete de
+        Setembro: saindo do bairro, são cerca de 5 km até o Parque Barigui —
+        ida e volta, um treino de 10 km quase todo protegido do trânsito.
+        Chegando lá, a pista que contorna o lago soma em torno de 6 km planos.
+        Personal trainers especializados em corrida usam essa rota como
+        estrutura de periodização: rodagem leve na semana, intervalado na pista
+        do parque, longão no fim de semana. Para quem prefere pedalar, o mesmo
+        caminho serve de treino de ciclismo urbano.
+      </p>
+
+      <h2>3. Academias e studios premium: treino indoor com endereço nobre</h2>
+      <p>
+        O Batel e as bordas com o Bigorrilho e as Mercês concentram opções
+        indoor de alto padrão — da WePlay Batel, com vista para a Praça do
+        Japão, a studios de treino personalizado espalhados pelo Batel Soho e
+        pelo Petit Batel, além de estruturas de escalada e treino como a Via
+        AltaMontanha a poucos minutos do bairro. Muitos personal trainers
+        atendem dentro dessas casas em horário marcado, e o formato studio —
+        sessão individual, equipamento na mão, zero fila — combina com o perfil
+        do bairro, que paga por conveniência e privacidade.
+      </p>
+
+      <h2>4. A academia do prédio: o formato que mais economiza tempo</h2>
+      <p>
+        Os edifícios de alto padrão do quadrilátero entre a avenida do Batel e
+        a Sete de Setembro seguem a regra dos bairros nobres: academia própria
+        cada vez mais completa. O personal que atende no condomínio transforma
+        essa estrutura em resultado — avaliação física, plano periodizado,
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>
+        controlada — sem que o morador precise enfrentar o frio da manhã
+        curitibana para treinar. Para executivos com agenda cheia e para os
+        moradores mais velhos das famílias tradicionais do bairro, é o formato
+        de maior adesão no longo prazo.
+      </p>
+
+      <h2>5. Em casa: o personal a domicílio nos casarões e apartamentos</h2>
+      <p>
+        Nem todo endereço do Batel é vertical — o bairro guarda casarões e
+        residências amplas de famílias que estão ali há gerações. Nesses casos,
+        o personal a domicílio monta a estrutura: elásticos, halteres
+        ajustáveis, banco dobrável. É também a escolha natural de quem
+        trabalha em home office no bairro e quer o treino encaixado entre
+        reuniões. A ressalva de sempre vale dobrado para quem está voltando a
+        treinar depois de anos: dores e limitações passam primeiro por médico
+        ou fisioterapeuta, e o personal ajusta o plano a partir daí.
+      </p>
+
+      <h2>Quanto custa personal trainer no Batel</h2>
+      <p>
+        A referência de Curitiba, levantada pelo Personal por Perto no guia de
+        <a href="/personal-trainer/curitiba-pr/">personal trainer em
+        Curitiba</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. No Batel, os
+        valores tendem ao topo das faixas — o bairro concentra os profissionais
+        mais experientes da cidade e a maior disposição a pagar por
+        atendimento em domicílio e horários concorridos. O acompanhamento
+        online (R$ 180 a R$ 450 mensais) segue como alternativa econômica ou
+        complemento de viagem.
+      </p>
+
+      <h2>Como escolher entre os personal trainers do bairro</h2>
+      <p>
+        A lista de lugares só rende com o profissional certo. Filtre por quatro
+        critérios: avaliação física logo no início, método de periodização que
+        o profissional saiba explicar em linguagem simples, experiência real
+        com o seu objetivo e postura honesta — sem promessa de resultado
+        garantido. O detalhamento está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>. No
+        Batel, um diferencial prático: dê pontos para quem conhece a geografia
+        do treino local — a rota do Barigui, os horários da Praça do Japão, as
+        regras dos condomínios do quadrilátero.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Batel" />
+
+    <WhatsAppCta tema="geral" localidade="no Batel" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
