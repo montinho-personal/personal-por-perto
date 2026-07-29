@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teresina', url: 'https://www.teresina.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/teresina-pi.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Teresina (PI) em arte que une treino em dupla na academia e o cartão-postal real da capital — a Ponte Estaiada João Isidoro França sobre o rio, com os prédios da cidade ao redor — Personal por Perto',
+    legenda:
+      'Treino personalizado em Teresina: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maringá', url: 'https://www.maringa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/maringa-pr.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Maringá (PR) em arte que une treino em dupla e o cartão-postal real da cidade — a Catedral de Maringá, com sua icônica torre em forma de cone, entre os prédios do centro — Personal por Perto',
+    legenda:
+      'Treino personalizado em Maringá: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

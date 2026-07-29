@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vila Velha', url: 'https://www.vilavelha.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/vila-velha-es.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Vila Velha (ES) em arte que une treino de força e cartões-postais reais da cidade — o Convento da Penha no alto do morro, a Terceira Ponte e a orla de prédios com coqueiros — Personal por Perto',
+    legenda:
+      'Treino personalizado em Vila Velha: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

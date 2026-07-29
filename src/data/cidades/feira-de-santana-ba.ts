@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Feira de Santana', url: 'https://www.feiradesantana.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/feira-de-santana-ba.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Feira de Santana (BA) em arte que une treino em dupla e referências reais da cidade — a catedral de torres gêmeas em meio às palmeiras e os prédios e vias do centro — Personal por Perto',
+    legenda:
+      'Treino personalizado em Feira de Santana: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
