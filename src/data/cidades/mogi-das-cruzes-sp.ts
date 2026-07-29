@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mogi das Cruzes', url: 'https://www.mogidascruzes.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/mogi-das-cruzes-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Mogi das Cruzes (SP) em arte com referências reais da cidade — o trem da CPTM, as torres de igreja do centro histórico e a serra ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Mogi das Cruzes: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

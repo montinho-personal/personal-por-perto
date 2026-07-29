@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Gonçalo', url: 'https://www.saogoncalo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/sao-goncalo-rj.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em São Gonçalo (RJ) em arte que une treino de força e a paisagem da cidade — a colina com igreja no alto junto à orla da baía, o casario e a ponte ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em São Gonçalo: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

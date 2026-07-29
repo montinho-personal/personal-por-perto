@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Duque de Caxias', url: 'https://duquedecaxias.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/duque-de-caxias-rj.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Duque de Caxias (RJ) em arte com referências reais da cidade — a placa da Baixada Fluminense, o trem de subúrbio e o skyline caxiense — Personal por Perto',
+    legenda:
+      'Treino personalizado em Duque de Caxias: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

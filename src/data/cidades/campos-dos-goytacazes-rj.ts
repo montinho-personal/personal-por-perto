@@ -95,5 +95,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campos', url: 'https://www.campos.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/campos-dos-goytacazes-rj.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Campos dos Goytacazes (RJ) em arte que une treino de força e cartões-postais da cidade — a igreja histórica com torre do relógio e a ponte estaiada sobre o rio Paraíba do Sul — Personal por Perto',
+    legenda:
+      'Treino personalizado em Campos dos Goytacazes: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

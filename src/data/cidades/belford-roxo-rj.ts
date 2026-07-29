@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belford Roxo', url: 'https://prefeituradebelfordroxo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM (Belford Roxo)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300456' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/belford-roxo-rj.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Belford Roxo (RJ) em arte com referências da cidade — a placa rodoviária da Baixada Fluminense e o casario belforroxense ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Belford Roxo: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

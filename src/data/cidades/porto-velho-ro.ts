@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Porto Velho', url: 'https://www.portovelho.ro.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/porto-velho-ro.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Porto Velho (RO) em arte que une treino de força e cartões-postais da capital — o rio Madeira com embarcações, a ponte estaiada e a placa "Coração da Amazônia" — Personal por Perto',
+    legenda:
+      'Treino personalizado em Porto Velho: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

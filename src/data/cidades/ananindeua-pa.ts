@@ -95,5 +95,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ananindeua', url: 'https://www.ananindeua.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/ananindeua-pa.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Ananindeua (PA) em arte com referências da cidade — a placa "Orgulho de ser daqui", o viaduto movimentado da BR-316 e as palmeiras paraenses — Personal por Perto',
+    legenda:
+      'Treino personalizado em Ananindeua: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

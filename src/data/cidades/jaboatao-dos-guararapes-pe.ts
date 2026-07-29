@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jaboatão dos Guararapes', url: 'https://www.jaboatao.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/jaboatao-dos-guararapes-pe.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Jaboatão dos Guararapes (PE) em arte que une treino de força e a orla real do município — a praia com coqueiros e a curva de prédios à beira-mar — Personal por Perto',
+    legenda:
+      'Treino personalizado em Jaboatão dos Guararapes: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
