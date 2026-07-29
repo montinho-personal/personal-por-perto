@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Campos', url: 'https://www.sjc.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/sao-jose-dos-campos-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em São José dos Campos (SP) em arte que une treino de força e cartões-postais reais da cidade — o Arco da Inovação, o centro de eventos de arquitetura branca curva e a serra da Mantiqueira ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em São José dos Campos: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

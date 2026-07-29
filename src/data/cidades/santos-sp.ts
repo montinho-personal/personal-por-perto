@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santos', url: 'https://www.santos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/santos-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Santos (SP) em arte que une treino de força e um cartão-postal real da cidade — a curva da orla com os jardins da praia, os canais e o porto ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Santos: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

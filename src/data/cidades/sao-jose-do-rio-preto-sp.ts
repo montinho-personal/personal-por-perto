@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Preto', url: 'https://www.riopreto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/sao-jose-do-rio-preto-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em São José do Rio Preto (SP) em arte que une treino de força e um cartão-postal real da cidade — a represa municipal com sua área verde e o skyline de prédios refletido na água — Personal por Perto',
+    legenda:
+      'Treino personalizado em São José do Rio Preto: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

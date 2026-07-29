@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Contagem', url: 'https://portal.contagem.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/contagem-mg.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Contagem (MG) em arte que une treino de força e a paisagem real da cidade — vista aérea com as vias expressas, o casario e o horizonte de prédios da Grande BH ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Contagem: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

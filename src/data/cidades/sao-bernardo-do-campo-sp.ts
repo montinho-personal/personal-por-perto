@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Bernardo do Campo', url: 'https://www.saobernardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/sao-bernardo-do-campo-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em São Bernardo do Campo (SP) em arte que une treino de força e a paisagem urbana real do ABC — vias expressas movimentadas, ponte estaiada e o horizonte de prédios da região — Personal por Perto',
+    legenda:
+      'Treino personalizado em São Bernardo do Campo: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

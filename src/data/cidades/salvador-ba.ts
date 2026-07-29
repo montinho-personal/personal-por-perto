@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salvador', url: 'https://www.salvador.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/salvador-ba.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Salvador (BA) em arte que une treino de força e cartões-postais reais da capital baiana — o Farol da Barra, o Elevador Lacerda, o casario histórico e a Baía de Todos-os-Santos com seus barcos — Personal por Perto',
+    legenda:
+      'Treino personalizado em Salvador: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

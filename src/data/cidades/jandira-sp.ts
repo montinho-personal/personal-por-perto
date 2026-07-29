@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jandira', url: 'https://www.jandira.sp.gov.br/' },
     { nome: 'Atlas Brasil — Jandira (SP)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3525003' },
   ],
-  atualizadoEm: '2026-07-11',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/jandira-sp.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Jandira (SP) em arte que une treino de força e a vista aérea real da cidade — os bairros residenciais entre as áreas verdes e o letreiro de entrada de Jandira — Personal por Perto',
+    legenda:
+      'Treino personalizado em Jandira: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

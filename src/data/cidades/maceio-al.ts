@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maceió', url: 'https://www.maceio.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-07-29',
+  capaArte: {
+    src: '/capas-cidade/maceio-al.webp',
+    w: 1200,
+    h: 675,
+    alt:
+      'Personal trainer em Maceió (AL) em arte que une treino de força e a orla real da cidade — a praia de Ponta Verde com seus coqueiros, o mar esverdeado com veleiros e a curva de prédios da orla — Personal por Perto',
+    legenda:
+      'Treino personalizado em Maceió: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
