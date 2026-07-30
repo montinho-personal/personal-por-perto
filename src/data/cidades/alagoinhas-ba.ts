@@ -79,5 +79,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alagoinhas', url: 'https://www.alagoinhas.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/alagoinhas-ba.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Alagoinhas (BA) em arte que une treino em dupla e a catedral amarela da cidade entre as palmeiras do interior baiano — Personal por Perto',
+    legenda:
+      'Treino personalizado em Alagoinhas: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

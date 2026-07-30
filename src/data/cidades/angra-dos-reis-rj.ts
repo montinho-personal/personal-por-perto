@@ -95,5 +95,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Angra dos Reis', url: 'https://portal.angra.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/angra-dos-reis-rj.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Angra dos Reis (RJ) em arte que une treino em dupla e o mar verde da baía da Ilha Grande, com barcos e morros ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Angra dos Reis: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

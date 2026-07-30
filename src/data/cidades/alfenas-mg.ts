@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alfenas', url: 'https://www.alfenas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/alfenas-mg.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Alfenas (MG) em arte de treino funcional com a torre da igreja matriz e o portal de entrada da cidade do sul de Minas — Personal por Perto',
+    legenda:
+      'Treino personalizado em Alfenas: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

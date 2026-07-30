@@ -95,5 +95,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Apucarana', url: 'https://www.apucarana.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/apucarana-pr.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Apucarana (PR) em arte que une treino funcional e a silhueta da Catedral Nossa Senhora de Lourdes, marco triangular da cidade — Personal por Perto',
+    legenda:
+      'Treino personalizado em Apucarana: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

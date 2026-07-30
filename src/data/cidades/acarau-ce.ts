@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Acaraú', url: 'https://www.acarau.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/acarau-ce.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Acaraú (CE) em arte que une treino em dupla no calçadão da beira-rio e o casario com a igreja da cidade no litoral cearense — Personal por Perto',
+    legenda:
+      'Treino personalizado em Acaraú: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

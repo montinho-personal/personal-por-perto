@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Avaré', url: 'https://www.avare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3504503' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/avare-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Avaré (SP) em arte de treino de força com halteres, no clima urbano da Estância Turística paulista — Personal por Perto',
+    legenda:
+      'Treino personalizado em Avaré: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

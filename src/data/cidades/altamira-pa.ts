@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Altamira', url: 'https://altamira.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/altamira-pa.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Altamira (PA) em arte que une treino em dupla à beira do rio Xingu, com a ponte e as embarcações da orla altamirense — Personal por Perto',
+    legenda:
+      'Treino personalizado em Altamira: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

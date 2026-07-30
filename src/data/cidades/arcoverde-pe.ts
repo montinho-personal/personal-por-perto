@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Arcoverde', url: 'https://www.arcoverde.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/arcoverde-pe.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Arcoverde (PE) em arte de treino de força com a igreja histórica do sertão pernambucano ao fundo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Arcoverde: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
