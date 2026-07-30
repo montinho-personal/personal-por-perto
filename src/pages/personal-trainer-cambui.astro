@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/campinas-sp/',
+    titulo: 'Personal trainer em Campinas',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/bulking-e-cutting/',
+    titulo: 'Bulking e cutting: o que são e quem precisa',
+    descricao: 'As fases do treino de composição corporal, explicadas sem mito.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-cambui';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Campinas', url: '/personal-trainer/campinas-sp/' },
+  { nome: 'Personal Trainer no Cambuí', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Cambuí?',
+    resposta:
+      'Em Campinas, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 360 a R$ 950. No Cambuí — o bairro mais valorizado da cidade —, os valores ficam no topo dessas faixas, principalmente no atendimento dentro dos condomínios da avenida Brasil e arredores.',
+  },
+  {
+    pergunta: 'Qual formato de treino funciona melhor no Cambuí?',
+    resposta:
+      'Depende do seu prédio: as torres novas, como as do eixo da avenida Brasil, têm academias completas que favorecem o treino no condomínio; nos edifícios mais antigos, o personal a domicílio ou o studio resolvem; e a Lagoa do Taquaral, a minutos do bairro, cobre o treino ao ar livre.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre perto do Cambuí?',
+    resposta:
+      'O clássico é a Lagoa do Taquaral (Parque Portugal), a poucos minutos do bairro, com pista de corrida consolidada como o principal ponto de treino de Campinas. Dentro do Cambuí, as ruas arborizadas e as praças recebem corrida leve e treinos funcionais acompanhados.',
+  },
+  {
+    pergunta: 'Os prédios novos do Cambuí têm academia?',
+    resposta:
+      'Sim — a nova geração de torres de alto padrão do bairro, de empreendimentos como o One Tower, o EPIC e o The Mark, inclui academia e áreas de bem-estar de série, e o condomínio-clube Life Time leva o conceito ainda mais longe.',
+  },
+  {
+    pergunta: 'Personal em Campinas atende em dupla no Cambuí?',
+    resposta:
+      'Sim, é prática comum — casais e colegas dividem a sessão na academia do condomínio ou no studio, reduzindo o custo por pessoa. O requisito é que o profissional individualize carga e progressão para cada aluno.',
+  },
+];
+
+const title = 'Personal Trainer no Cambuí (Campinas): qual formato';
+const description =
+  'Personal trainer no Cambuí: compare treino no condomínio, a domicílio, em studio e na Lagoa do Taquaral — com preços de Campinas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Campinas</p>
+    <h1>Personal trainer no Cambuí: condomínio, domicílio, studio ou Taquaral?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Cambuí vive uma troca de guarda imobiliária: o bairro que consolidou o
+      alto padrão de Campinas em prédios clássicos agora assiste à chegada de
+      torres como o EPIC, de 32 andares e apenas 54 unidades, e o The Mark, da
+      Plaenge — todas com academia de série. Para quem busca um
+      <strong>personal trainer no Cambuí</strong>, isso transformou a decisão
+      de treino num comparativo de quatro formatos. Este guia coloca todos
+      lado a lado, com a lógica de quem conhece o bairro.
+    </p>
+
+    <div class="prose">
+      <h2>O cenário: a avenida Brasil e as duas gerações de prédios</h2>
+      <p>
+        A verticalização nobre do Cambuí corre pelo eixo da avenida Brasil e
+        arredores, onde convivem duas safras: os edifícios tradicionais que
+        fizeram a fama do bairro — como o histórico São Marcos — e a nova
+        geração de torres de luxo, do One Tower, entre os mais altos de
+        Campinas, ao Casa Cambuí, de dois apartamentos por andar, passando
+        pelo condomínio-clube Life Time e pelo Wide, da Gafisa. A geração do
+        seu prédio define o seu formato ideal de treino — e é isso que o
+        comparativo abaixo resolve.
+      </p>
+
+      <h2>Formato 1 — A academia do condomínio novo</h2>
+      <p>
+        Nas torres recentes, a estrutura já veio pronta: academia, piscina e
+        áreas de bem-estar. O personal transforma o espaço em resultado com
+        avaliação física, plano periodizado e progressão — e o morador
+        elimina o deslocamento, o maior inimigo da constância. É o formato de
+        melhor custo-tempo para quem mora na safra nova do bairro, de
+        executivos a famílias com adolescentes iniciando musculação.
+      </p>
+
+      <h2>Formato 2 — A domicílio nos clássicos</h2>
+      <p>
+        Os prédios tradicionais do Cambuí raramente têm espaço fitness — e é
+        neles que o personal a domicílio domina, com equipamento portátil
+        montado na sala ou na varanda ampla. Formato preferido dos moradores
+        de longa data e do público 60+, com a ressalva de sempre: dores e
+        limitações passam primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Formato 3 — Studios: a densidade que joga a favor</h2>
+      <p>
+        Poucos bairros do interior paulista concentram tantos studios de
+        treino personalizado por quarteirão: o Cambuí é o polo gastronômico e
+        de serviços de Campinas, e a rede de studios acompanha. Sessão
+        individual com hora marcada, equipamento completo e privacidade — o
+        meio-termo ideal para quem não tem estrutura no prédio nem quer
+        transformar a sala de casa em academia.
+      </p>
+
+      <h2>Formato 4 — Lagoa do Taquaral: o aeróbico oficial de Campinas</h2>
+      <p>
+        A minutos do bairro, o Parque Portugal — a Lagoa do Taquaral — é o
+        ponto de corrida mais tradicional da cidade, e funciona como o
+        complemento aeróbico natural do treino de força feito no Cambuí:
+        rodagem leve na semana, longão no fim de semana, circuitos funcionais
+        na grama. Muitos personal trainers montam semanas híbridas usando os
+        dois cenários — força no bairro, corrida na lagoa.
+      </p>
+
+      <h2>Quanto custa personal trainer no Cambuí</h2>
+      <p>
+        A referência de Campinas, publicada no guia de
+        <a href="/personal-trainer/campinas-sp/">personal trainer em
+        Campinas</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 360 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. No Cambuí, o
+        mercado trabalha no topo das faixas — o bairro concentra o público
+        mais disposto a pagar por método e conveniência na cidade. Objetivos
+        de composição corporal, como as fases de
+        <a href="/musculacao/bulking-e-cutting/">bulking e cutting</a>, são
+        especialidade comum entre os profissionais da região, muito procurados
+        pelo público jovem-adulto do bairro.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        Escolha o formato pela logística real da sua semana; escolha o
+        profissional pelos critérios técnicos — avaliação física inicial,
+        periodização explicável, experiência com o seu objetivo, sem promessa
+        de resultado — detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        No Cambuí, um teste local: pergunte se o profissional conhece a
+        academia do seu prédio. Quem já atende no eixo da avenida Brasil
+        provavelmente conhece — e chega com o treino desenhado para o
+        equipamento que existe lá.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Cambuí" />
+
+    <WhatsAppCta tema="geral" localidade="no Cambuí" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

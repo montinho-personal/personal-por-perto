@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para terceira idade',
+    descricao: 'O formato mais procurado num dos bairros com mais idosos do país.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-copacabana';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer em Copacabana', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Copacabana?',
+    resposta:
+      'A referência do Rio é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. Em Copacabana, a faixa é ampla: o bairro mistura endereços de altíssimo padrão na avenida Atlântica com quadras internas mais acessíveis, e o preço acompanha o endereço e o horário.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Copacabana?',
+    resposta:
+      'No calçadão de pedras portuguesas da avenida Atlântica — 4 km de ponta a ponta —, na areia da praia, na orla fechada para carros aos domingos e no entorno do Forte de Copacabana, no posto 6, ponto clássico de caminhada e corrida leve.',
+  },
+  {
+    pergunta: 'Personal trainer atende idosos em Copacabana?',
+    resposta:
+      'É a maior especialidade do bairro — Copacabana tem uma das populações mais longevas do país, e o treino de força para massa muscular, equilíbrio e autonomia, em casa ou na academia do prédio, é o serviço mais procurado. Dores e limitações passam primeiro por médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Os prédios da avenida Atlântica têm academia?',
+    resposta:
+      'Os clássicos, em geral, não — ícones como o Chopin, dos anos 1950, nasceram antes da era do espaço fitness, e neles o personal atende dentro do apartamento. Prédios reformados e lançamentos das quadras internas já incluem academia própria.',
+  },
+  {
+    pergunta: 'Dá para treinar na praia de Copacabana o ano todo?',
+    resposta:
+      'Sim — o calçadão e a areia funcionam em qualquer estação, com o verão pedindo horários de manhã cedo ou fim de tarde. Aos domingos, com a pista junto à praia fechada para carros, a orla vira a maior área de treino ao ar livre da cidade.',
+  },
+];
+
+const title = 'Personal Trainer em Copacabana: guia completo do bairro';
+const description =
+  'Personal trainer em Copacabana: preços, treino no calçadão, na areia e nos prédios da Atlântica — e como escolher bem no bairro mais icônico do Rio.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer em Copacabana: como treinar bem no bairro mais famoso do Brasil</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum calçadão do mundo é mais reconhecível que as ondas de pedra
+      portuguesa da avenida Atlântica — e poucos lugares do Brasil treinam
+      tanto quanto eles. Quem procura um
+      <strong>personal trainer em Copacabana</strong> entra num bairro de
+      contrastes: prédios históricos sem academia e lançamentos completos,
+      moradores de 25 e de 85 anos dividindo o mesmo calçadão, altíssimo
+      padrão na orla e quadras internas de perfil variado. Este guia organiza
+      esse território para você contratar bem.
+    </p>
+
+    <div class="prose">
+      <h2>Copacabana em modo treino: o território</h2>
+      <p>
+        A geografia é simples e generosa: 4 km de orla entre o Leme e o
+        posto 6, onde o Forte de Copacabana fecha a praia; o calçadão como
+        pista contínua; a areia como academia de força natural; e, atrás da
+        avenida Atlântica, um dos bairros mais densos do país. Na orla, os
+        endereços históricos — caso do Chopin, o complexo dos anos 1950
+        vizinho ao Copacabana Palace que virou sinônimo de morar bem no Rio —
+        concentram apartamentos amplos e moradores que treinam em casa, já
+        que a maioria dos clássicos nasceu sem espaço fitness. Nas quadras
+        internas, prédios reformados e academias de rua completam a
+        estrutura.
+      </p>
+
+      <h2>Quanto custa personal trainer em Copacabana</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no
+        Rio de Janeiro</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de
+        R$ 400 a R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Em
+        Copacabana, a amplitude é real: atendimento a domicílio nos
+        apartamentos da Atlântica fica no topo, enquanto sessões em dupla no
+        calçadão e treinos em academias das quadras internas cabem em
+        orçamentos menores. O bairro é, também, um dos melhores do país para
+        achar profissional com agenda flexível — a densidade de personal
+        trainers acompanha a densidade de tudo o mais.
+      </p>
+
+      <h2>Onde treinar com personal em Copacabana</h2>
+
+      <h3>O calçadão: a pista de 4 km</h3>
+      <p>
+        Do Leme ao posto 6, o calçadão absorve caminhada, corrida e circuitos
+        nas estações espalhadas pela orla. De manhã cedo, é dos moradores;
+        aos domingos, com a pista junto à praia fechada para carros, vira a
+        maior área de lazer ativo da cidade — o melhor horário da semana para
+        sessões acompanhadas em ritmo de treino, não de slalom.
+      </p>
+
+      <h3>A areia e o entorno do Forte</h3>
+      <p>
+        A faixa de areia mais larga da Zona Sul comporta funcional, potência
+        e os esportes de praia que são cultura local — do futevôlei ao beach
+        tennis. No posto 6, o entorno do Forte de Copacabana oferece o trecho
+        mais tranquilo da orla para caminhada estruturada e treinos leves,
+        com a Pedra do Arpoador fechando o horizonte.
+      </p>
+
+      <h3>Dentro dos prédios: o formato da Atlântica</h3>
+      <p>
+        Nos clássicos da orla, o personal sobe com o equipamento: elásticos,
+        halteres ajustáveis, banco dobrável. Nos apartamentos de 200, 300 m²
+        do Chopin e vizinhos, espaço não falta — e a privacidade é o motivo
+        pelo qual esse público raramente troca a sala de casa pela academia.
+        Nos prédios com estrutura própria e nos studios das quadras internas,
+        o formato híbrido completa a semana.
+      </p>
+
+      <h3>O treino 60+: a especialidade do bairro</h3>
+      <p>
+        Copacabana tem uma das populações mais longevas do Brasil, e isso
+        moldou o mercado local: os profissionais mais respeitados do bairro
+        são especialistas em treino de força para a terceira idade — massa
+        muscular, equilíbrio, densidade óssea, autonomia. O guia de
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal
+        trainer para terceira idade</a> explica o que exigir; a regra do
+        portal vale dobrado aqui: dores e limitações passam primeiro por
+        médico ou fisioterapeuta.
+      </p>
+
+      <h2>Como escolher um personal em Copacabana</h2>
+      <p>
+        Os critérios técnicos — avaliação física na primeira semana,
+        periodização clara, experiência com o seu perfil, honestidade sobre
+        prazos — estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Em Copacabana, o filtro extra é de especialidade: o bairro tem
+        profissionais excelentes para públicos muito diferentes, do
+        aposentado de 80 anos ao corredor de 30. Contrate quem comprovadamente
+        treina gente como você — e, se o seu horário é o amanhecer no
+        calçadão, garanta a vaga cedo: é o horário mais disputado do bairro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Copacabana" />
+
+    <WhatsAppCta tema="geral" localidade="em Copacabana" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

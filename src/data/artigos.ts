@@ -26,6 +26,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-caminho-das-arvores/', titulo: 'Personal trainer no Caminho das Árvores (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-moinhos-de-vento/', titulo: 'Personal trainer no Moinhos de Vento (Porto Alegre)' },
   { categoria: 'Bairros', url: '/personal-trainer-ponta-verde/', titulo: 'Personal trainer na Ponta Verde (Maceió)' },
+  { categoria: 'Bairros', url: '/personal-trainer-higienopolis/', titulo: 'Personal trainer em Higienópolis (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-boa-viagem/', titulo: 'Personal trainer em Boa Viagem (Recife)' },
+  { categoria: 'Bairros', url: '/personal-trainer-cambui/', titulo: 'Personal trainer no Cambuí (Campinas)' },
+  { categoria: 'Bairros', url: '/personal-trainer-copacabana/', titulo: 'Personal trainer em Copacabana (Rio de Janeiro)' },
+  { categoria: 'Bairros', url: '/personal-trainer-adrianopolis/', titulo: 'Personal trainer em Adrianópolis (Manaus)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

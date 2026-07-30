@@ -1,0 +1,226 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/manaus-am/',
+    titulo: 'Personal trainer em Manaus',
+    descricao: 'O guia completo da capital amazonense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A base de qualquer objetivo de emagrecimento — em qualquer clima.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-adrianopolis';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Manaus', url: '/personal-trainer/manaus-am/' },
+  { nome: 'Personal Trainer em Adrianópolis', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Adrianópolis?',
+    resposta:
+      'Em Manaus, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Em Adrianópolis — o bairro mais nobre da capital —, os valores ficam no topo dessas faixas, sobretudo no atendimento dentro dos condomínios de alto padrão.',
+  },
+  {
+    pergunta: 'Onde treinar em Adrianópolis com o calor de Manaus?',
+    resposta:
+      'A rotina do bairro é majoritariamente indoor e climatizada: academias dos condomínios, studios e academias da região do Manauara Shopping. Ao ar livre, as janelas são o início da manhã e o fim de tarde, nas ruas largas e arborizadas do bairro.',
+  },
+  {
+    pergunta: 'Os prédios de Adrianópolis têm academia?',
+    resposta:
+      'Os de alto padrão, sim — das torres pioneiras da região aos lançamentos recentes, como os residenciais de luxo do bairro, a academia própria virou item de série, e o personal que atende no condomínio é o formato dominante.',
+  },
+  {
+    pergunta: 'Personal atende a domicílio em Adrianópolis?',
+    resposta:
+      'Sim — nos apartamentos amplos e nas casas do bairro, o treino dentro de casa com equipamento portátil é comum, principalmente entre moradores 60+ e famílias. Dores e limitações passam primeiro por médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'E a Ponta Negra, entra na rotina de quem mora em Adrianópolis?',
+    resposta:
+      'Entra como programa de fim de tarde e fim de semana: a orla da Ponta Negra é o grande espaço público de treino de Manaus, e muitos moradores de Adrianópolis combinam força no condomínio durante a semana com caminhada e corrida na orla aos sábados.',
+  },
+];
+
+const title = 'Personal Trainer em Adrianópolis (Manaus): guia do bairro';
+const description =
+  'Personal trainer em Adrianópolis: respostas diretas — preços de Manaus, treino climatizado nos condomínios, domicílio e a orla da Ponta Negra.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Manaus</p>
+    <h1>Personal trainer em Adrianópolis: o que perguntar antes de contratar no bairro mais nobre de Manaus</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Como se treina numa cidade onde a sensação térmica passa dos 35 graus
+      na maior parte do ano? Essa é a primeira pergunta de quem procura um
+      <strong>personal trainer em Adrianópolis</strong> — e a resposta molda
+      todo o mercado do bairro mais nobre de Manaus: o treino local é
+      majoritariamente climatizado, dentro dos condomínios de alto padrão e
+      dos studios, com o ar livre reservado às janelas certas do dia. Este
+      artigo responde às perguntas que os moradores realmente fazem.
+    </p>
+
+    <div class="prose">
+      <h2>Por que Adrianópolis virou o endereço do treino de alto padrão?</h2>
+      <p>
+        O bairro que já foi área rural é hoje o metro quadrado mais
+        valorizado da capital: ruas largas e arborizadas, o Manauara Shopping
+        na avenida Mário Ypiranga como centro de gravidade e uma verticalização
+        de luxo que começou com pioneiros como o Solar Maria de Nazareth e o
+        Portal da Vila e chegou aos lançamentos atuais — do Soberane
+        Residence ao La Maison e ao Neo Vila Adrianópolis, além de
+        condomínios como o Príncipe de Gales. Essas torres trouxeram o que
+        define o treino do bairro: academias próprias, climatizadas, a um
+        elevador de casa.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência de Manaus, publicada no guia de
+        <a href="/personal-trainer/manaus-am/">personal trainer em
+        Manaus</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. Em
+        Adrianópolis, o mercado opera no topo: o público de maior renda da
+        capital concentra-se ali, e o atendimento dentro do condomínio — o
+        formato rei do bairro — é também o mais valorizado. O acompanhamento
+        online (R$ 170 a R$ 430 mensais) completa semanas de viagem.
+      </p>
+
+      <h2>Onde o treino acontece, na prática?</h2>
+      <p>
+        Em três cenários. Primeiro, a <strong>academia do condomínio</strong>:
+        nas torres de alto padrão, é o formato dominante — estrutura completa,
+        ar-condicionado e zero deslocamento. Segundo, os <strong>studios e
+        academias</strong> da região do Manauara, para quem busca equipamento
+        específico ou prefere separar casa e treino. Terceiro, o
+        <strong>domicílio</strong>: nos apartamentos amplos e casas do bairro,
+        o personal monta a estrutura portátil — o formato preferido dos
+        moradores 60+ e de quem valoriza privacidade total.
+      </p>
+
+      <h2>Dá para treinar ao ar livre em Manaus?</h2>
+      <p>
+        Dá — nas janelas certas. O início da manhã, antes das 7h30, e o fim
+        de tarde permitem corrida leve e caminhada nas ruas arborizadas do
+        bairro; e a orla da Ponta Negra, o grande espaço público de treino da
+        cidade, entra na rotina como programa de fim de semana. O personal
+        experiente de Manaus constrói a semana com essa lógica invertida em
+        relação ao Sul do país: o indoor é a regra, o ar livre é o evento.
+      </p>
+
+      <h2>Emagrecimento no calor: mito ou vantagem?</h2>
+      <p>
+        Nenhum dos dois — suar mais não significa emagrecer mais. O que
+        decide o resultado é o mesmo em qualquer clima: balanço energético
+        sustentado por treino de força e rotina, como explica o guia de
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>. O papel do personal em Adrianópolis é montar esse
+        sistema dentro da realidade amazônica — hidratação levada a sério,
+        intensidade ajustada ao clima e treino climatizado nos horários
+        críticos.
+      </p>
+
+      <h2>Como escolher um personal em Adrianópolis?</h2>
+      <p>
+        Com os critérios técnicos de sempre — avaliação física na primeira
+        semana, periodização explicada com clareza, experiência com o seu
+        objetivo, sem promessa de milagre —, detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        E com um filtro local: pergunte em quais condomínios do bairro o
+        profissional já atende. Quem circula pelas torres de Adrianópolis
+        conhece as regras de acesso, as academias internas e a logística que
+        faz a rotina funcionar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer em Adrianópolis" />
+
+    <WhatsAppCta tema="geral" localidade="em Adrianópolis" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

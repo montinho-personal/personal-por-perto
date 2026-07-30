@@ -1,0 +1,231 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/recife-pe/',
+    titulo: 'Personal trainer no Recife',
+    descricao: 'O guia completo da capital pernambucana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio: o que emagrece mais?',
+    descricao: 'A dupla que sustenta a rotina entre a orla e a academia do prédio.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-boa-viagem';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Recife', url: '/personal-trainer/recife-pe/' },
+  { nome: 'Personal Trainer em Boa Viagem', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Boa Viagem?',
+    resposta:
+      'No Recife, a aula avulsa varia de R$ 70 a R$ 170 e o pacote mensal de R$ 360 a R$ 980. Em Boa Viagem, o bairro-cartão-postal da capital, os valores ficam no topo dessas faixas, principalmente no atendimento dentro dos condomínios da orla e nos horários de 5h às 7h30.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Boa Viagem?',
+    resposta:
+      'No calçadão da avenida Boa Viagem, com ciclovia e quiosques de apoio; no Parque Dona Lindu, projetado por Oscar Niemeyer, com pista de cooper e quadras; e na areia da praia, para treinos funcionais nas primeiras horas do dia.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios da orla de Boa Viagem?',
+    resposta:
+      'Sim — a fileira de torres da avenida Boa Viagem tem academias de condomínio cada vez mais completas, e o atendimento no prédio é o formato preferido de famílias e de quem foge do calor do meio do dia.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar na orla do Recife?',
+    resposta:
+      'As duas janelas de temperatura: do amanhecer até por volta das 8h e depois das 16h30. O calçadão enche cedo — treinar às 5h30 é hábito consolidado no bairro — e o personal experiente monta a agenda em torno dessas janelas.',
+  },
+  {
+    pergunta: 'O Parque Dona Lindu serve para treino sério?',
+    resposta:
+      'Sim — a pista de cooper, os espaços de ginástica e as quadras do parque de Niemeyer sustentam treinos estruturados de corrida e circuitos funcionais, com a vantagem de ficar de frente para o mar e a poucos passos dos prédios da orla sul.',
+  },
+];
+
+const title = 'Personal Trainer em Boa Viagem (Recife): onde treinar';
+const description =
+  'Os melhores lugares para treinar com personal trainer em Boa Viagem: calçadão, Parque Dona Lindu, condomínios da orla — com preços do Recife.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Recife</p>
+    <h1>Personal trainer em Boa Viagem: os cinco lugares onde o bairro realmente treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A fileira de torres à beira-mar mais famosa do Nordeste esconde uma
+      rotina que o turista não vê: às 5h30, antes do sol assumir o turno, o
+      calçadão da avenida Boa Viagem já pertence a quem treina. Para quem
+      procura um <strong>personal trainer em Boa Viagem</strong>, o bairro
+      oferece um circuito completo — orla, parque assinado por Niemeyer,
+      condomínios com estrutura própria — desde que se respeite o relógio do
+      calor recifense. Esta lista comentada percorre os cinco cenários do
+      treino local.
+    </p>
+
+    <div class="prose">
+      <h2>1. O calçadão da avenida Boa Viagem</h2>
+      <p>
+        São quilômetros de calçadão plano com ciclovia ao lado e quiosques
+        que funcionam como pontos de hidratação — a pista de corrida oficial
+        do Recife. Os personal trainers do bairro concentram ali as sessões
+        de corrida e caminhada estruturada nas duas janelas de temperatura:
+        amanhecer e fim de tarde. No meio do caminho, a Pracinha de Boa
+        Viagem marca o ponto de encontro clássico dos grupos de treino.
+      </p>
+
+      <h2>2. Parque Dona Lindu: Niemeyer a serviço do treino</h2>
+      <p>
+        Na ponta sul da orla, o parque projetado por Oscar Niemeyer reúne
+        pista de cooper, quadras poliesportivas e espaços de ginástica de
+        frente para o mar. É o cenário preferido dos profissionais do bairro
+        para circuitos funcionais e treinos intervalados — estrutura pública
+        de qualidade rara, a passos dos prédios mais valorizados da avenida.
+      </p>
+
+      <h2>3. A areia — na hora certa</h2>
+      <p>
+        A praia de Boa Viagem entra no treino como recurso de força e
+        potência: funcional na areia fofa, corrida curta na faixa firme da
+        maré baixa, circuitos com peso do corpo ao amanhecer. O personal
+        local sabe transformar a instabilidade da areia em estímulo — e sabe
+        também que o horário certo é cedo, antes do sol e do movimento.
+      </p>
+
+      <h2>4. As academias dos condomínios da orla</h2>
+      <p>
+        Das torres clássicas — caso do histórico Acaiaca, um dos marcos da
+        avenida — aos lançamentos de alto padrão, os condomínios de Boa
+        Viagem investiram pesado em academia própria. É onde acontece o
+        treino de força das famílias do bairro, com o personal levando
+        avaliação física, método e progressão até a estrutura climatizada do
+        prédio — a resposta definitiva ao meio-dia recifense. Para quem tem
+        emagrecimento como meta, a combinação força no condomínio + aeróbico
+        na orla segue a lógica do guia
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação
+        ou cardio</a>: os dois, cada um no seu papel.
+      </p>
+
+      <h2>5. Em casa e nos studios do miolo do bairro</h2>
+      <p>
+        Atrás da orla, o miolo de Boa Viagem reúne studios de treino
+        personalizado e apartamentos amplos onde o atendimento a domicílio
+        resolve a rotina de moradores 60+ e executivos com agenda cheia. Vale
+        a regra editorial de sempre: dores e limitações passam primeiro por
+        médico ou fisioterapeuta, e o personal ajusta o plano a partir daí.
+      </p>
+
+      <h2>Quanto custa personal trainer em Boa Viagem</h2>
+      <p>
+        A referência do Recife, publicada no guia de
+        <a href="/personal-trainer/recife-pe/">personal trainer no
+        Recife</a>, é de R$ 70 a R$ 170 pela aula avulsa e de R$ 360 a
+        R$ 980 pelo pacote mensal com 2 a 3 sessões semanais. Em Boa Viagem,
+        os valores gravitam para o topo: o bairro concentra o público de
+        maior renda da capital, e as vagas das primeiras horas da manhã são
+        as mais disputadas. O acompanhamento online (R$ 180 a R$ 450
+        mensais) cobre semanas de viagem.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Filtre pelos critérios técnicos — avaliação física inicial,
+        periodização explicada com clareza, experiência com o seu objetivo,
+        sem promessa de milagre — detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Em Boa Viagem, acrescente o teste do relógio: pergunte ao candidato
+        como ele monta a semana entre as duas janelas de temperatura. Quem
+        responde com um plano concreto — orla cedo, condomínio no meio do
+        dia, parque no fim da tarde — conhece o bairro de verdade.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Boa Viagem" />
+
+    <WhatsAppCta tema="geral" localidade="em Boa Viagem" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
