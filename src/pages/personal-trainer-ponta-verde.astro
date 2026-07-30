@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/maceio-al/',
+    titulo: 'Personal trainer em Maceió',
+    descricao: 'O guia completo da capital alagoana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    titulo: 'Quantas calorias a musculação queima?',
+    descricao: 'A conta honesta por trás do treino de força — na praia ou na academia.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-ponta-verde';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Maceió', url: '/personal-trainer/maceio-al/' },
+  { nome: 'Personal Trainer na Ponta Verde', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Ponta Verde?',
+    resposta:
+      'Em Maceió, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. Na Ponta Verde — a orla mais valorizada da capital, onde o m² de luxo passa de R$ 35 mil nos trechos nobres —, os valores ficam no topo dessas faixas, sobretudo a domicílio e nas primeiras horas da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Ponta Verde?',
+    resposta:
+      'No calçadão plano que emenda Pajuçara, Ponta Verde e Jatiúca — o point dos corredores da cidade —, na Faixa Verde da avenida Sílvio Carlos Viana, na ciclovia da orla e na areia da praia de mar calmo. Aos domingos, parte da orla fecha para carros e vira área de lazer.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios da orla de Ponta Verde?',
+    resposta:
+      'Sim — os edifícios de alto padrão da beira-mar, como os residenciais de plantas amplas da orla, têm academias cada vez mais completas, e o atendimento no condomínio é o formato preferido de famílias e moradores 60+.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar na orla de Maceió?',
+    resposta:
+      'As duas janelas de temperatura: do amanhecer até por volta das 8h e depois das 16h30. No meio do dia, o sol forte empurra o treino para espaços climatizados — academia do prédio, studio ou academias do bairro.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal na praia de Ponta Verde?',
+    resposta:
+      'Sim — o mar calmo e a faixa de areia favorecem treinos funcionais, corrida na areia e até stand-up paddle como complemento. O personal monta o circuito com implementos portáteis e usa a estrutura do calçadão como apoio.',
+  },
+];
+
+const title = 'Personal Trainer na Ponta Verde (Maceió): guia do bairro';
+const description =
+  'Personal trainer na Ponta Verde: a rotina de treino da orla mais nobre de Maceió — calçadão, prédios beira-mar, praia — com preços e como escolher.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Maceió</p>
+    <h1>Personal trainer na Ponta Verde: a rotina de treino da orla mais bonita de Maceió</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Domingo, 6h30 da manhã: a orla da Ponta Verde está fechada para carros,
+      o mar esverdeado que dá nome ao bairro ainda não tem banhistas e o
+      calçadão pertence a quem treina. É nesse cenário — o mesmo que estampa o
+      cartão-postal de Maceió — que trabalha o
+      <strong>personal trainer na Ponta Verde</strong>, o bairro que junta a
+      orla mais valorizada de Alagoas, prédios de alto padrão à beira-mar e
+      uma cultura de treino ao ar livre que funciona o ano inteiro. Esta é a
+      rotina de quem treina por lá, hora a hora.
+    </p>
+
+    <div class="prose">
+      <h2>5h50 — O calçadão acorda primeiro</h2>
+      <p>
+        Antes do sol esquentar, o calçadão plano que emenda Pajuçara, Ponta
+        Verde e Jatiúca já está em movimento: é o point oficial dos corredores
+        de Maceió, com quiosques de água de coco fazendo as vezes de posto de
+        hidratação. Os personal trainers do bairro concentram ali as sessões
+        de corrida e caminhada estruturada — e usam a Faixa Verde da avenida
+        Sílvio Carlos Viana, criada para a prática esportiva, como pista
+        segura nos trechos de mais movimento. Quem pedala segue pela ciclovia
+        que acompanha toda a orla urbana.
+      </p>
+
+      <h2>6h30 — A areia e o mar calmo entram no treino</h2>
+      <p>
+        A praia da Ponta Verde tem uma vantagem técnica que pouca orla
+        brasileira oferece: mar quase sempre calmo. Isso abre o cardápio do
+        personal — treino funcional na areia fofa, corrida na faixa firme da
+        maré baixa, stand-up paddle como aeróbico complementar. O circuito
+        clássico do bairro combina 20 minutos de funcional na areia com a
+        volta pelo calçadão, tudo num raio de 500 metros da porta dos prédios
+        da orla.
+      </p>
+
+      <h2>8h30 — O treino migra para dentro dos prédios</h2>
+      <p>
+        Quando o sol alagoano assume o turno, a rotina muda de endereço: os
+        edifícios de alto padrão da beira-mar — caso do Residencial Da Vinci,
+        de plantas de 413 m² e fachada envidraçada de frente para o mar, do
+        Pátmos e dos vizinhos do trecho nobre entre o Marco dos Corais e os
+        Sete Coqueiros, onde o m² de luxo já passa de R$ 35 mil — têm
+        academias próprias cada vez mais completas. É ali que acontece o
+        treino de força das famílias e dos moradores 60+ do bairro, com o
+        personal levando avaliação física e progressão até a estrutura do
+        condomínio. Quem prefere academia de rua tem a Smart Fit do bairro e
+        os studios do miolo da Ponta Verde como base climatizada.
+      </p>
+
+      <h2>16h45 — A segunda janela do dia</h2>
+      <p>
+        O fim de tarde devolve a orla a quem treina: a temperatura cede, o
+        calçadão volta a encher e as sessões acompanhadas reaparecem entre os
+        coqueiros. Para quem busca emagrecimento — o objetivo mais comum nos
+        pacotes do bairro —, essa segunda janela é estratégica: o guia sobre
+        <a href="/emagrecimento/quantas-calorias-queima-a-musculacao/">quantas
+        calorias a musculação queima</a> explica por que a combinação de
+        força indoor e aeróbico na orla rende mais que qualquer um dos dois
+        sozinho.
+      </p>
+
+      <h2>Quanto custa personal trainer na Ponta Verde</h2>
+      <p>
+        A referência de Maceió, publicada no guia de
+        <a href="/personal-trainer/maceio-al/">personal trainer em
+        Maceió</a>, é de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais. Na Ponta Verde,
+        os valores gravitam para o topo — o bairro concentra o público de
+        maior renda da capital e os profissionais mais disputados, com as
+        vagas das primeiras horas da manhã lotando primeiro. O acompanhamento
+        online (R$ 160 a R$ 410 mensais) é o complemento comum de quem viaja.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Os critérios técnicos valem como em qualquer lugar — avaliação física
+        na primeira semana, periodização explicada com clareza, experiência
+        com o seu objetivo e zero promessa de milagre —, todos detalhados no
+        guia <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>. Na Ponta Verde, some o critério do território: o bom
+        profissional do bairro domina as duas janelas de temperatura, conhece
+        o calçadão como a palma da mão e transita bem entre a areia, o
+        condomínio e o studio. E a regra de sempre: dores e limitações passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Ponta Verde" />
+
+    <WhatsAppCta tema="geral" localidade="na Ponta Verde" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

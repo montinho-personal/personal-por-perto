@@ -1,0 +1,222 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia completo da capital gaúcha: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/descanso-entre-series/',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'O detalhe técnico que muda o resultado do treino de força.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-moinhos-de-vento';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer no Moinhos de Vento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Moinhos de Vento?',
+    resposta:
+      'Em Porto Alegre, a aula avulsa varia de R$ 80 a R$ 190 e o pacote mensal de R$ 400 a R$ 1.150. No Moinhos de Vento, bairro mais tradicionalmente valorizado da capital, os profissionais experientes trabalham no topo dessas faixas, sobretudo a domicílio e nos horários da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Moinhos de Vento?',
+    resposta:
+      'O Parcão — Parque Moinhos de Vento, aberto em 1972 — é o coração esportivo do bairro, com pista de caminhada e corrida e espaço de sobra para treino funcional. As ruas arborizadas do entorno, como a Padre Chagas e transversais, completam os percursos de corrida leve.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios do Moinhos?',
+    resposta:
+      'Sim — dos clássicos amplos do bairro aos lançamentos com academia própria, como os empreendimentos da nova geração no entorno do Parcão, o atendimento no condomínio ou dentro do apartamento é um dos formatos mais procurados, principalmente no inverno.',
+  },
+  {
+    pergunta: 'Como fica o treino no inverno gaúcho?',
+    resposta:
+      'Migra para dentro: academia do prédio, studio ou apartamento nos dias de frio de um dígito, e Parcão nos dias limpos. Bons profissionais do bairro mantêm plano duplo permanente — a rotina não pode depender da previsão do tempo.',
+  },
+  {
+    pergunta: 'O Moinhos é bom para quem corre?',
+    resposta:
+      'Sim: o Parcão concentra corredores o dia inteiro, e provas de rua da cidade costumam passar pela região. Para treinos longos, muitos moradores combinam o parque com percursos até a orla do Guaíba, com acompanhamento de personal especializado em corrida.',
+  },
+];
+
+const title = 'Personal Trainer no Moinhos de Vento: preços e onde treinar';
+const description =
+  'Personal trainer no Moinhos de Vento, em Porto Alegre: quanto custa, treino no Parcão, nos prédios e no inverno — e como escolher bem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer no Moinhos de Vento: tudo o que os moradores perguntam antes de contratar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe treino mais porto-alegrense que uma volta no Parcão às 7h da
+      manhã? O Parque Moinhos de Vento é o centro de gravidade do bairro desde
+      1972 — mas quem procura um
+      <strong>personal trainer no Moinhos de Vento</strong> logo descobre que
+      a rotina de treino do bairro vai muito além dele: prédios clássicos e
+      lançamentos com academia própria, studios discretos nas transversais da
+      Padre Chagas e um inverno que exige plano B. Este artigo responde às
+      perguntas que os moradores realmente fazem.
+    </p>
+
+    <div class="prose">
+      <h2>O Parcão dá conta de um treino completo?</h2>
+      <p>
+        Para o aeróbico e o funcional, sim — a pista do parque e seus
+        gramados absorvem corrida, caminhada em ritmo e circuitos com peso do
+        corpo e implementos portáteis, e é isso que os personal trainers do
+        bairro fazem ali todas as manhãs. Para força de verdade, com
+        progressão de carga, o parque tem limite: o arranjo mais comum do
+        Moinhos combina duas sessões de força indoor com uma ou duas sessões
+        de corrida ou funcional no Parcão. É o equilíbrio que aproveita o
+        cartão-postal sem abrir mão do resultado.
+      </p>
+
+      <h2>Onde acontece o treino indoor do bairro?</h2>
+      <p>
+        Em três lugares. Nos <strong>prédios com academia</strong> — a nova
+        geração do bairro, de empreendimentos como o Yoo Moinhos, o Luciana
+        250 e o Casa Moinhos, já nasce com espaço fitness de série. Nos
+        <strong>studios</strong> das transversais da rua Padre Chagas e do
+        entorno do Hospital Moinhos de Vento, com atendimento individual e
+        hora marcada. E nos <strong>apartamentos amplos dos prédios
+        clássicos</strong>, muitos sem academia própria, onde o personal a
+        domicílio monta a estrutura — o formato preferido dos moradores de
+        longa data. Detalhes técnicos como
+        <a href="/musculacao/descanso-entre-series/">o tempo de descanso entre
+        séries</a> fazem mais diferença nesses espaços compactos do que
+        qualquer máquina.
+      </p>
+
+      <h2>E quando o inverno chega?</h2>
+      <p>
+        A pergunta mais gaúcha de todas tem resposta simples: o treino muda de
+        endereço, não de frequência. Nos dias de frio de um dígito e chuva, a
+        sessão migra para a academia do prédio, o studio ou a sala de casa;
+        nos dias limpos, o Parcão volta a ser a pista oficial. O profissional
+        certo para o Moinhos mantém esse plano duplo como rotina — e não
+        cancela treino por causa do tempo, porque constância é exatamente o
+        que separa quem evolui de quem recomeça toda primavera.
+      </p>
+
+      <h2>Quanto custa um personal no bairro mais tradicional de Porto Alegre?</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/porto-alegre-rs/">personal trainer em Porto
+        Alegre</a>, é de R$ 80 a R$ 190 pela aula avulsa e de R$ 400 a
+        R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais. No Moinhos, o
+        mercado opera no topo das faixas: o bairro concentra o público mais
+        exigente da cidade, os horários de 6h às 8h lotam primeiro e o
+        atendimento a domicílio nos apartamentos clássicos é o serviço de
+        maior valor. Treino em dupla — comum entre casais do bairro — divide
+        o investimento sem diluir a atenção.
+      </p>
+
+      <h2>Como escolher entre tantos profissionais na região?</h2>
+      <p>
+        Com o filtro técnico de sempre: avaliação física na primeira semana,
+        periodização que o profissional explique com clareza, experiência
+        real com o seu objetivo e honestidade sobre prazos — nada de
+        transformação garantida em oito semanas. O passo a passo completo
+        está no guia <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>. No Moinhos, some o critério do clima: pergunte ao
+        candidato qual é o plano para os dias de chuva. Quem responde na hora,
+        com alternativa concreta, é quem vai manter sua rotina viva em julho.
+        E vale a regra editorial do portal: dores e limitações passam primeiro
+        por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Moinhos de Vento" />
+
+    <WhatsAppCta tema="geral" localidade="no Moinhos de Vento" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

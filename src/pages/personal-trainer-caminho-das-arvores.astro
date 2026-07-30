@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/salvador-ba/',
+    titulo: 'Personal trainer em Salvador',
+    descricao: 'O guia completo da capital baiana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que faz a academia do condomínio gerar resultado de verdade.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-caminho-das-arvores';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Salvador', url: '/personal-trainer/salvador-ba/' },
+  { nome: 'Personal Trainer no Caminho das Árvores', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Caminho das Árvores?',
+    resposta:
+      'Em Salvador, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Caminho das Árvores — segundo metro quadrado mais caro da capital —, os valores ficam no topo dessas faixas, principalmente no atendimento dentro dos condomínios.',
+  },
+  {
+    pergunta: 'Onde treinar com personal no Caminho das Árvores?',
+    resposta:
+      'Nas academias do bairro (o quadrilátero reúne da Smart Fit da Alameda das Espatódeas à Bodytech do Shopping da Bahia), nos studios de treino personalizado, nas academias dos novos condomínios de luxo e nas alamedas arborizadas e planas do bairro, boas para corrida leve acompanhada.',
+  },
+  {
+    pergunta: 'Os prédios novos do bairro têm academia?',
+    resposta:
+      'Sim — a nova geração de torres que está substituindo as mansões do bairro, como o Legacy e o Iconic, inclui academia e áreas de bem-estar completas, e o personal que atende no condomínio transforma essa estrutura em treino com método.',
+  },
+  {
+    pergunta: 'O que é a onda de verticalização do Caminho das Árvores?',
+    resposta:
+      'O bairro nasceu nos anos 1970 como o primeiro loteamento planejado de Salvador, só de casas. Hoje as mansões estão sendo demolidas para dar lugar a torres de luxo com m² a partir de R$ 15 mil — incluindo o Legacy, que será a torre mais alta da cidade, com 54 pavimentos.',
+  },
+  {
+    pergunta: 'Treinar às 5h30 funciona em Salvador?',
+    resposta:
+      'É o horário de ouro: o calor soteropolitano empurra o treino ao ar livre para o início da manhã ou o fim da tarde. Dentro das academias climatizadas e dos condomínios, qualquer horário funciona — e é aí que a rotina do bairro realmente acontece.',
+  },
+];
+
+const title = 'Personal Trainer no Caminho das Árvores: guia completo';
+const description =
+  'Personal trainer no Caminho das Árvores, em Salvador: preços, treino nos novos condomínios de luxo, academias do bairro e como escolher bem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Salvador</p>
+    <h1>Personal trainer no Caminho das Árvores: treino de alto padrão no bairro que trocou mansões por torres</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O bairro que nasceu nos anos 1970 como o primeiro loteamento planejado de
+      Salvador — só casas, no máximo dois andares — vive hoje a transformação
+      imobiliária mais comentada da capital: as mansões estão sendo demolidas
+      para dar lugar a torres de luxo com metro quadrado a partir de R$ 15
+      mil. Para quem procura um
+      <strong>personal trainer no Caminho das Árvores</strong>, essa virada
+      muda o jogo: o treino do bairro, que antes acontecia nas casas, está
+      migrando para as academias dos condomínios novos. Este guia mostra onde
+      treinar, como escolher e quanto custa.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro em transformação — e o que isso significa para o treino</h2>
+      <p>
+        Entre a avenida Tancredo Neves e as alamedas com nome de árvore — das
+        Espatódeas, dos Flamboyants —, o Caminho das Árvores é o segundo metro
+        quadrado mais caro de Salvador e o epicentro da verticalização de alto
+        padrão: o Legacy, da OR, erguerá a torre mais alta da cidade, com 54
+        pavimentos e plantas de até 419 m²; o Iconic aposta em apenas 46
+        unidades; e edifícios como o Mansão Caymmi mantêm a tradição
+        residencial do bairro. O novo morador típico compra apartamento de
+        R$ 1 a 2 milhões — e espera do condomínio (e do próprio treino) o
+        mesmo padrão de serviço.
+      </p>
+
+      <h2>Onde treinar com personal no Caminho das Árvores</h2>
+
+      <h3>A academia do condomínio novo</h3>
+      <p>
+        As torres da nova geração chegam com academia, piscina e áreas de
+        bem-estar de série — e é nelas que o personal do bairro mais atende
+        hoje. A vantagem é dupla: zero deslocamento no calor soteropolitano e
+        estrutura climatizada em qualquer horário. O que transforma o espaço
+        em resultado é o método — avaliação física, plano periodizado e
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>
+        de verdade, não ficha genérica.
+      </p>
+
+      <h3>O circuito de academias do quadrilátero</h3>
+      <p>
+        Poucos bairros de Salvador concentram tanta oferta por quarteirão: a
+        Smart Fit da Alameda das Espatódeas e a do Salvador Shopping, a
+        Bluefit da rua Alceu Amoroso Lima, a Bodytech do Shopping da Bahia —
+        com piscina — e até conceitos diferentes, como a 4 Beach Gym, que
+        simula treino "pé na areia" dentro do shopping, e studios com clube de
+        corrida, como o Authentic Fit. Muitos personal trainers atendem
+        dentro dessas estruturas, e a densidade de opções joga o poder de
+        escolha para o aluno.
+      </p>
+
+      <h3>As alamedas e o verde por perto</h3>
+      <p>
+        As alamedas arborizadas e relativamente planas do bairro favorecem
+        corrida leve e caminhada acompanhada no início da manhã — antes das
+        9h, quando o sol da Bahia ainda perdoa. Para treinos ao ar livre mais
+        longos, o Parque da Cidade, a poucos minutos, é a válvula de escape
+        verde da região. A regra local: ao ar livre nas pontas do dia,
+        estrutura coberta no miolo.
+      </p>
+
+      <h3>Em casa: as mansões que restam e os apartamentos amplos</h3>
+      <p>
+        Nas casas remanescentes e nos apartamentos de 200 a 400 m² das torres
+        novas, o personal a domicílio segue forte — formato preferido de
+        moradores 60+ e de quem valoriza privacidade. Dores e limitações, como
+        sempre no portal: primeiro médico ou fisioterapeuta, depois o treino
+        ajustado a partir dessa orientação.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        O filtro técnico não muda: avaliação física na primeira semana,
+        periodização que o profissional explique em linguagem simples,
+        experiência comprovada com o seu objetivo e nenhuma promessa de
+        resultado com prazo — o detalhamento está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        No Caminho das Árvores, some o critério da nova era do bairro:
+        familiaridade com academias de condomínio e disponibilidade nos
+        horários de pico (6h às 8h), que lotam primeiro num bairro cada vez
+        mais vertical e executivo.
+      </p>
+
+      <h2>Quanto custa personal trainer no Caminho das Árvores</h2>
+      <p>
+        A referência de Salvador, publicada no guia de
+        <a href="/personal-trainer/salvador-ba/">personal trainer em
+        Salvador</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. No bairro, os
+        valores gravitam para o topo — o público do Caminho das Árvores paga
+        por conveniência e método, e o atendimento dentro do condomínio é o
+        serviço mais valorizado. O acompanhamento online (R$ 170 a R$ 430
+        mensais) funciona como complemento nas semanas de viagem.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Caminho das Árvores" />
+
+    <WhatsAppCta tema="geral" localidade="no Caminho das Árvores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
