@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Betim', url: 'https://www.betim.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/betim-mg.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Betim (MG) em arte com referências reais da cidade — a refinaria REGAP, o trem de carga, o Parque Ecológico Felisberto Neves e o mapa da Grande BH — Personal por Perto',
+    legenda:
+      'Treino personalizado em Betim: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

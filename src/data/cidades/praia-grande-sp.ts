@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Praia Grande', url: 'https://www.praiagrande.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/praia-grande-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Praia Grande (SP) em arte que une treino em dupla no calçadão da orla e a fileira de prédios à beira-mar da cidade — Personal por Perto',
+    legenda:
+      'Treino personalizado em Praia Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

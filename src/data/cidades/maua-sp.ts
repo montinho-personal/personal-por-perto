@@ -119,5 +119,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mauá', url: 'https://www.maua.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/maua-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Mauá (SP) em arte com referências reais da cidade — a estação Mauá da CPTM, o Paço Municipal, o Parque da Gruta Santa Luzia e o mapa do ABC paulista — Personal por Perto',
+    legenda:
+      'Treino personalizado em Mauá: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

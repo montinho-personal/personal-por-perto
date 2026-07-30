@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Diadema', url: 'https://www.diadema.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/diadema-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Diadema (SP) em arte com referências reais da cidade — o skyline do ABC, a Praça da Moça, o Parque do Paço e o Jardim Botânico municipal — Personal por Perto',
+    legenda:
+      'Treino personalizado em Diadema: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

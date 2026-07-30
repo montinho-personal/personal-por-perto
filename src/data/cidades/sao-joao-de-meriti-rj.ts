@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São João de Meriti', url: 'https://www.meriti.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/sao-joao-de-meriti-rj.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em São João de Meriti (RJ) em arte com a paisagem real da cidade — o casario denso do "Formigueiro das Américas", o trem da Baixada Fluminense e o mapa do município — Personal por Perto',
+    legenda:
+      'Treino personalizado em São João de Meriti: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

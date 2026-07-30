@@ -96,5 +96,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Guarujá', url: 'https://www.guaruja.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-24',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/guaruja-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer no Guarujá (SP) em arte que une treino em dupla no calçadão de pedras portuguesas e a orla real da cidade, com a curva de prédios à beira-mar e os coqueiros do litoral paulista — Personal por Perto',
+    legenda:
+      'Treino personalizado no Guarujá: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

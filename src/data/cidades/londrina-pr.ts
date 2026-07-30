@@ -120,5 +120,14 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Londrina', url: 'https://www.londrina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-19',
+  atualizadoEm: '2026-07-30',
+  capaArte: {
+    src: '/capas-cidade/londrina-pr.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Londrina (PR) em arte que une treino em dupla e o cartão-postal da cidade — a Catedral Metropolitana de Londrina, com sua coroa de concreto, entre o lago e o skyline londrinense — Personal por Perto',
+    legenda:
+      'Treino personalizado em Londrina: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
