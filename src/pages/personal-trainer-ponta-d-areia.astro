@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-luis-ma/',
+    titulo: 'Personal trainer em São Luís',
+    descricao: 'O guia completo da capital maranhense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'A base técnica do treino de força nas academias das torres da península.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-ponta-d-areia';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Luís', url: '/personal-trainer/sao-luis-ma/' },
+  { nome: "Personal Trainer na Ponta d'Areia", url: path },
+];
+
+const faqs = [
+  {
+    pergunta: "Quanto custa um personal trainer na Ponta d'Areia?",
+    resposta:
+      'Em São Luís, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. Na Ponta d\'Areia — o metro quadrado mais caro da cidade, na casa dos R$ 13 mil, segundo mais valorizado do Nordeste —, os valores ficam no topo dessas faixas.',
+  },
+  {
+    pergunta: "Onde treinar ao ar livre na Ponta d'Areia?",
+    resposta:
+      'No Espigão Costeiro, o calçadão sobre o mar que virou o point de caminhada, corrida e pôr do sol de São Luís; na orla da praia; e na Lagoa da Jansen, vizinha ao bairro, com pista consolidada para corrida e caminhada.',
+  },
+  {
+    pergunta: "As torres da Ponta d'Areia têm academia?",
+    resposta:
+      'Sim — a península viveu nas últimas duas décadas uma corrida de lançamentos de luxo, e as torres recentes incluem academia, piscina e áreas de lazer completas. O personal que atende no condomínio é o formato dominante do bairro.',
+  },
+  {
+    pergunta: "Qual o melhor horário para treinar em São Luís?",
+    resposta:
+      'As janelas de temperatura: do amanhecer até por volta das 8h e depois das 16h30, quando o Espigão e a orla enchem. No meio do dia, o treino acontece nas academias climatizadas dos prédios e studios.',
+  },
+  {
+    pergunta: "Personal atende a domicílio na Ponta d'Areia?",
+    resposta:
+      'Sim — nos apartamentos amplos das torres, o treino dentro de casa com equipamento portátil é comum entre moradores 60+ e famílias. Dores e limitações passam primeiro por médico ou fisioterapeuta.',
+  },
+];
+
+const title = "Personal Trainer na Ponta d'Areia (São Luís): guia";
+const description =
+  "Personal trainer na Ponta d'Areia: os melhores lugares para treinar na península mais valorizada de São Luís — Espigão, torres e Lagoa da Jansen.";
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Luís</p>
+    <h1>Personal trainer na Ponta d'Areia: onde treinar na península mais valorizada de São Luís</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Em vinte anos, a península da Ponta d'Areia trocou o horizonte baixo por
+      uma fileira de torres de luxo e assumiu o posto de metro quadrado mais
+      caro de São Luís — na casa dos R$ 13 mil, o segundo mais valorizado de
+      todo o Nordeste. Para quem procura um
+      <strong>personal trainer na Ponta d'Areia</strong>, essa transformação
+      montou um circuito de treino completo: Espigão Costeiro, orla, torres
+      com academia e a Lagoa da Jansen na vizinhança. Esta lista comentada
+      percorre cada um.
+    </p>
+
+    <div class="prose">
+      <h2>1. Espigão Costeiro: o cartão-postal que treina</h2>
+      <p>
+        O calçadão avançando sobre o mar virou o ponto de encontro de São
+        Luís — e, nas primeiras horas do dia, a pista de caminhada e corrida
+        mais concorrida da cidade. Personal trainers da península usam o
+        percurso plano e o visual da baía como cenário de sessões de corrida
+        estruturada e caminhada em ritmo, com o pôr do sol reservado ao
+        treino do fim de tarde. Ao lado, o Forte Santo Antônio reformado
+        marca o ponto de virada dos circuitos.
+      </p>
+
+      <h2>2. A orla e a areia da praia</h2>
+      <p>
+        A faixa de areia da Ponta d'Areia absorve o treino funcional do
+        bairro: circuitos com peso do corpo, deslocamentos na areia fofa e
+        potência na faixa firme da maré baixa. Como em toda capital
+        nordestina, o relógio manda: amanhecer e fim de tarde são as janelas;
+        o meio do dia pertence aos espaços climatizados.
+      </p>
+
+      <h2>3. As academias das torres</h2>
+      <p>
+        A corrida imobiliária das últimas duas décadas encheu a península de
+        torres de alto padrão com academia, piscina e lazer completo — e é
+        nelas que acontece a maior parte do treino de força do bairro. O
+        personal leva método à estrutura pronta: avaliação física,
+        periodização e progressão de carga, a base de qualquer objetivo de
+        <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia</a> bem
+        conduzido. Para o morador, é o formato que elimina deslocamento e
+        driblia o calor.
+      </p>
+
+      <h2>4. Lagoa da Jansen: o circuito vizinho</h2>
+      <p>
+        Na divisa do bairro, a Lagoa da Jansen é o equipamento público de
+        treino mais tradicional da região: pista consolidada para corrida e
+        caminhada, quadras e movimento constante no fim de tarde. Muitos
+        profissionais montam a semana ligando os dois cenários — força na
+        torre, corrida na lagoa ou no Espigão — sem precisar de carro.
+      </p>
+
+      <h2>5. Dentro do apartamento</h2>
+      <p>
+        Nos apartamentos amplos das torres, o personal a domicílio atende
+        quem valoriza privacidade total: moradores 60+, famílias com rotina
+        cheia e quem prefere treinar sem sair de casa. Equipamento portátil,
+        horário fixo e a regra editorial de sempre — dores e limitações
+        passam primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Quanto custa personal trainer na Ponta d'Areia</h2>
+      <p>
+        A referência de São Luís, publicada no guia de
+        <a href="/personal-trainer/sao-luis-ma/">personal trainer em São
+        Luís</a>, é de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$ 880
+        pelo pacote mensal com 2 a 3 sessões semanais. Na península, os
+        valores operam no topo — o bairro concentra o público de maior renda
+        da capital e os profissionais mais disputados, com os horários do
+        amanhecer lotando primeiro. O acompanhamento online (R$ 160 a R$ 410
+        mensais) cobre semanas de viagem.
+      </p>
+
+      <h2>Como escolher um personal na península</h2>
+      <p>
+        Filtre pelos critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> —
+        avaliação física inicial, periodização explicável, experiência com o
+        seu objetivo, sem promessas — e some o critério local: quem já atende
+        nas torres da Ponta d'Areia conhece as academias internas, as regras
+        de acesso e a logística do bairro, e monta a semana usando o Espigão
+        e a Jansen a favor do seu objetivo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Ponta d'Areia" />
+
+    <WhatsAppCta tema="geral" localidade="na Ponta d'Areia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

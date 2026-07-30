@@ -1,0 +1,228 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/brasilia-df/',
+    titulo: 'Personal trainer em Brasília',
+    descricao: 'O guia completo da capital federal: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona',
+    descricao: 'O formato dominante nas casas do Lago Sul, explicado em detalhe.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-lago-sul';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Brasília', url: '/personal-trainer/brasilia-df/' },
+  { nome: 'Personal Trainer no Lago Sul', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Lago Sul?',
+    resposta:
+      'Em Brasília, a aula avulsa varia de R$ 90 a R$ 220 e o pacote mensal de R$ 450 a R$ 1.300 — as faixas mais altas do país no portal. No Lago Sul, bairro de maior renda média do Brasil, o atendimento a domicílio nas casas trabalha no topo desses valores.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Lago Sul?',
+    resposta:
+      'Nas ciclovias extensas do bairro, na orla do Lago Paranoá (com o Pontão como referência), na Ermida Dom Bosco — clássica para treinos com vista do lago — e no Parque Ecológico Península Sul, com trilhas em meio ao cerrado preservado.',
+  },
+  {
+    pergunta: 'Personal a domicílio é o formato mais comum no Lago Sul?',
+    resposta:
+      'Sim — o bairro é horizontal, de casas amplas nas QIs, e boa parte delas tem academia própria, piscina e área externa. O personal que atende em casa é o padrão local, com sessões individuais e em família.',
+  },
+  {
+    pergunta: 'Treinar no Lago Paranoá conta como treino de verdade?',
+    resposta:
+      'Como aeróbico e complemento, sim — remo, stand-up paddle e ciclismo na orla são cultura local e completam bem o trabalho de força feito em casa. O personal monta a semana equilibrando os dois.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Brasília?',
+    resposta:
+      'O início da manhã e o fim de tarde, principalmente na seca (maio a setembro), quando a umidade despenca no meio do dia. Hidratação reforçada e treino nos extremos do dia são regra entre os profissionais experientes da capital.',
+  },
+];
+
+const title = 'Personal Trainer no Lago Sul: guia do bairro mais rico';
+const description =
+  'Personal trainer no Lago Sul, em Brasília: treino nas casas das QIs, na orla do Paranoá e na Ermida — com preços e como escolher bem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Brasília</p>
+    <h1>Personal trainer no Lago Sul: a rotina de treino do bairro mais rico do Brasil</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O nascer do sol na Ermida Dom Bosco, com o Lago Paranoá espelhado e o
+      Plano Piloto do outro lado, é provavelmente o cenário de treino mais
+      cinematográfico do Centro-Oeste — e é rotina de terça-feira para quem
+      mora por ali. O <strong>personal trainer no Lago Sul</strong> trabalha
+      no bairro de maior renda média do país (R$ 23 mil mensais por morador,
+      segundo o Mapa da Riqueza da FGV — quase o triplo do segundo colocado) e
+      num território que não se parece com nenhum outro: horizontal, verde e
+      construído em volta de um lago. Esta é a rotina de treino de quem vive
+      nas QIs.
+    </p>
+
+    <div class="prose">
+      <h2>6h15 — O treino começa em casa</h2>
+      <p>
+        No Lago Sul não há torres: as QIs alinham casas amplas, muitas com
+        academia própria, piscina e quintal generoso — imóveis que chegam a
+        R$ 50 milhões. O primeiro treino do dia acontece dentro delas, com o
+        personal chegando antes do expediente para a sessão de força na
+        academia da casa ou na área da piscina. É o formato dominante do
+        bairro, e o guia de
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> explica a mecânica: equipamento da casa (ou portátil),
+        avaliação física e um plano que aproveita a estrutura que o morador
+        já tem.
+      </p>
+
+      <h2>7h30 — As ciclovias e a orla do Paranoá</h2>
+      <p>
+        A malha de ciclovias do bairro é das melhores do país, e o Paranoá
+        completa o cardápio aeróbico: ciclismo pelas vias largas, corrida na
+        orla, remo e stand-up paddle saindo dos clubes e marinas. O Pontão do
+        Lago Sul, cartão-postal gastronômico, funciona de manhã como ponto de
+        encontro de grupos de corrida acompanhados. O personal do bairro
+        costuma montar semanas híbridas: força em casa, aeróbico no lago.
+      </p>
+
+      <h2>Fim de tarde — Ermida, Península Sul e o cerrado</h2>
+      <p>
+        Quando o sol ameniza, os cenários naturais assumem: a Ermida Dom
+        Bosco, com seu gramado de frente para o lago, recebe treinos
+        funcionais e sessões de mobilidade ao pôr do sol; o Parque Ecológico
+        Península Sul oferece trilhas em cerrado nativo para caminhada em
+        ritmo e trail leve; e o Jardim Botânico, vizinho, estende as opções.
+        Na seca de Brasília — maio a setembro —, os profissionais experientes
+        concentram o treino ao ar livre nesses dois extremos do dia e
+        reforçam hidratação como parte do método.
+      </p>
+
+      <h2>O treino em família: a marca do bairro</h2>
+      <p>
+        Mais do que em qualquer bairro vertical, o treino no Lago Sul é
+        doméstico e familiar: sessões em sequência para o casal, filhos
+        adolescentes iniciando musculação na academia da casa, avós em
+        trabalho de força e equilíbrio. O personal vira, na prática, o
+        profissional de saúde mais presente da rotina da família — sempre em
+        conjunto com médico ou fisioterapeuta quando há dores ou limitações,
+        como manda a regra editorial do portal.
+      </p>
+
+      <h2>Quanto custa personal trainer no Lago Sul</h2>
+      <p>
+        A referência de Brasília, publicada no guia de
+        <a href="/personal-trainer/brasilia-df/">personal trainer em
+        Brasília</a>, é a mais alta do portal: R$ 90 a R$ 220 pela aula
+        avulsa e R$ 450 a R$ 1.300 pelo pacote mensal com 2 a 3 sessões
+        semanais. No Lago Sul, o domicílio nas QIs opera no topo — o
+        deslocamento até o bairro e o padrão de serviço esperado puxam o
+        valor. Pacotes família, com sessões em sequência na mesma casa, são o
+        arranjo mais comum para otimizar o investimento.
+      </p>
+
+      <h2>Como escolher um personal no Lago Sul</h2>
+      <p>
+        Os critérios técnicos estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física inicial, periodização explicável, experiência com o
+        seu objetivo, zero promessa de milagre. No Lago Sul, acrescente dois
+        filtros práticos: logística compatível com o bairro (quem já atende
+        nas QIs otimiza horários entre casas próximas) e versatilidade de
+        cenário — o bom profissional local transita da academia da casa para
+        o funcional na Ermida sem perder o fio da periodização.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Lago Sul" />
+
+    <WhatsAppCta tema="geral" localidade="no Lago Sul" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

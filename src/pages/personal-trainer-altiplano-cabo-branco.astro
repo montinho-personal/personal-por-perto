@@ -1,0 +1,231 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/joao-pessoa-pb/',
+    titulo: 'Personal trainer em João Pessoa',
+    descricao: 'O guia completo da capital paraibana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'O objetivo por trás de boa parte dos pacotes fechados na orla.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-altiplano-cabo-branco';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em João Pessoa', url: '/personal-trainer/joao-pessoa-pb/' },
+  { nome: 'Personal Trainer no Altiplano Cabo Branco', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Altiplano Cabo Branco?',
+    resposta:
+      'Em João Pessoa, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. No Altiplano — o polo vertical de luxo da capital — os valores ficam no topo dessas faixas, principalmente no atendimento dentro das torres.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Altiplano e no Cabo Branco?',
+    resposta:
+      'No calçadão da orla de Cabo Branco, plano e extenso, ideal para corrida e caminhada nas janelas de temperatura; na areia da praia; e no entorno do Farol do Cabo Branco e da Estação Cabo Branco, no alto da falésia, para treinos com subidas.',
+  },
+  {
+    pergunta: 'Por que o Altiplano virou o bairro das torres de luxo?',
+    resposta:
+      'O plano diretor de João Pessoa restringe prédios altos na beira-mar — e o Altiplano, no alto da falésia, virou a alternativa natural: torres como o Tour Geneve oferecem vista para o oceano sem infringir a regra da orla.',
+  },
+  {
+    pergunta: 'As torres do Altiplano têm academia?',
+    resposta:
+      'Os lançamentos de alto padrão, sim — academias completas, piscinas e áreas de lazer fazem parte do pacote, e o personal que atende no condomínio é o formato que mais cresce no bairro.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em João Pessoa?',
+    resposta:
+      'A cidade onde o sol nasce primeiro nas Américas treina cedo: do amanhecer até por volta das 8h e depois das 16h30. No meio do dia, o treino migra para as academias climatizadas dos prédios e studios.',
+  },
+];
+
+const title = 'Personal Trainer no Altiplano Cabo Branco: guia completo';
+const description =
+  'Personal trainer no Altiplano Cabo Branco, em João Pessoa: preços, treino nas torres com vista-mar, na orla e na falésia — e como escolher bem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de João Pessoa</p>
+    <h1>Personal trainer no Altiplano Cabo Branco: treino de alto padrão no alto da falésia</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      João Pessoa proíbe torres na beira-mar — e foi essa regra que criou o
+      bairro de luxo mais peculiar do Nordeste: no alto da falésia do Cabo
+      Branco, o Altiplano verticalizou com vista para o oceano sem tocar na
+      orla. Para quem procura um
+      <strong>personal trainer no Altiplano Cabo Branco</strong>, o resultado
+      é um território de treino duplo: as torres com estrutura completa lá em
+      cima, o calçadão plano da praia lá embaixo. Este guia cobre contexto,
+      lugares, preços e critérios de escolha.
+    </p>
+
+    <div class="prose">
+      <h2>O território: a falésia que virou endereço de luxo</h2>
+      <p>
+        O Altiplano é o polo vertical de alto padrão da capital paraibana —
+        torres como o Tour Geneve entregam a vista de oceano que a orla
+        protegida não pode oferecer, com academias, piscinas e lazer completo
+        no pacote. Aos pés da falésia, a praia de Cabo Branco estende seu
+        calçadão plano até o ponto mais oriental das Américas, onde ficam o
+        Farol do Cabo Branco e a Estação Cabo Branco, assinada por Oscar
+        Niemeyer. Entre o alto e a orla, a ladeira é o acidente geográfico
+        que os personal trainers locais transformaram em equipamento de
+        treino.
+      </p>
+
+      <h2>Quanto custa personal trainer no Altiplano</h2>
+      <p>
+        A referência de João Pessoa, publicada no guia de
+        <a href="/personal-trainer/joao-pessoa-pb/">personal trainer em João
+        Pessoa</a>, é de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais. No Altiplano,
+        os valores operam no topo — o bairro concentra o público de maior
+        renda da cidade, e o atendimento dentro das torres é o serviço mais
+        valorizado. O acompanhamento online (R$ 160 a R$ 410 mensais)
+        complementa semanas de viagem.
+      </p>
+
+      <h2>Onde treinar com personal no Altiplano Cabo Branco</h2>
+
+      <h3>As academias das torres</h3>
+      <p>
+        Nos lançamentos de alto padrão do bairro, a academia própria virou
+        regra — e é nela que acontece o treino de força dos moradores, com o
+        personal levando avaliação física, periodização e progressão à
+        estrutura pronta e climatizada. Para objetivos de
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a> — os mais pedidos no bairro —, é a base da semana.
+      </p>
+
+      <h3>O calçadão de Cabo Branco</h3>
+      <p>
+        Lá embaixo, a orla oferece um dos calçadões mais agradáveis do
+        Nordeste: plano, extenso e arborizado, perfeito para corrida
+        estruturada e caminhada em ritmo. Na cidade onde o sol nasce primeiro
+        nas Américas, o horário é lei: amanhecer e fim de tarde concentram o
+        movimento — e as sessões acompanhadas.
+      </p>
+
+      <h3>A falésia e o entorno do Farol</h3>
+      <p>
+        A subida do nível do mar ao Altiplano é o treino de condicionamento
+        que a geografia deu de presente ao bairro: personal trainers locais
+        usam a ladeira em treinos intervalados, e o platô do Farol e da
+        Estação Cabo Branco, com vista aberta para o oceano, recebe
+        circuitos funcionais ao pôr do sol.
+      </p>
+
+      <h3>Em casa, nos apartamentos com vista</h3>
+      <p>
+        Nos apartamentos amplos das torres, o atendimento a domicílio segue
+        forte entre moradores 60+ e famílias — equipamento portátil, horário
+        sob medida e privacidade. A regra editorial de sempre: dores e
+        limitações passam primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Use os critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> —
+        avaliação física na primeira semana, periodização explicada com
+        clareza, experiência com o seu objetivo, honestidade sobre prazos. No
+        Altiplano, some o filtro do território: o bom profissional local
+        monta a semana usando os dois níveis do bairro — força na torre,
+        aeróbico na orla, ladeira como intervalado — e tem agenda desenhada
+        para as janelas de temperatura da capital mais ensolarada do país.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Altiplano Cabo Branco" />
+
+    <WhatsAppCta tema="geral" localidade="no Altiplano" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

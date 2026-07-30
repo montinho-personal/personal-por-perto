@@ -1,0 +1,231 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/natal-rn/',
+    titulo: 'Personal trainer em Natal',
+    descricao: 'O guia completo da capital potiguar: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-emagrecimento/',
+    titulo: 'Personal trainer para emagrecimento',
+    descricao: 'Como escolher o profissional certo para o objetivo mais comum do país.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-petropolis-natal';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Natal', url: '/personal-trainer/natal-rn/' },
+  { nome: 'Personal Trainer em Petrópolis', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Petrópolis, Natal?',
+    resposta:
+      'Em Natal, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. Em Petrópolis e no vizinho Tirol — que juntos concentram as maiores rendas da cidade, mais de 350% da média de Natal —, os valores ficam no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Petrópolis?',
+    resposta:
+      'Nas ruas largas e arborizadas do bairro, planas o bastante para corrida leve acompanhada, e na vizinhança imediata: o Parque das Dunas, na divisa com o Tirol, é a grande área verde da cidade, e a orla da Praia dos Artistas fica a minutos de descida.',
+  },
+  {
+    pergunta: 'Os prédios de Petrópolis têm academia?',
+    resposta:
+      'Os da verticalização recente, sim — o bairro vive uma renovação do estoque de imóveis, com prédios modernos (muitos com vista para o mar) que incluem espaço fitness. Nos casarões e edifícios antigos, o personal a domicílio resolve.',
+  },
+  {
+    pergunta: 'Que horário treinar ao ar livre em Natal?',
+    resposta:
+      'Do amanhecer até por volta das 8h e depois das 16h30 — o sol potiguar é dos mais fortes do país. No meio do dia, o treino migra para a academia do prédio, o studio ou a sala climatizada de casa.',
+  },
+  {
+    pergunta: 'Personal atende famílias em Petrópolis?',
+    resposta:
+      'Sim — o formato em dupla ou família é comum no bairro, com casal e filhos dividindo sessões na academia do prédio ou em casa. O requisito técnico é a individualização de carga e progressão para cada aluno.',
+  },
+];
+
+const title = 'Personal Trainer em Petrópolis (Natal): guia por perfil';
+const description =
+  'Personal trainer em Petrópolis, bairro nobre de Natal: o guia para cada perfil de morador, com preços, prédios com vista-mar e Parque das Dunas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Natal</p>
+    <h1>Personal trainer em Petrópolis: o treino certo para cada perfil do bairro nobre de Natal</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Petrópolis e o vizinho Tirol concentram, juntos, rendas superiores a
+      350% da média de Natal — e desde a origem foram desenhados para ser o
+      endereço da elite potiguar. Para quem procura um
+      <strong>personal trainer em Petrópolis</strong>, o bairro oferece uma
+      mistura rara no Nordeste: casarões históricos e prédios novos com vista
+      para o mar, ruas largas e arborizadas e o Parque das Dunas na
+      vizinhança. Este guia organiza as recomendações por perfil de morador.
+    </p>
+
+    <div class="prose">
+      <h2>O território: entre os casarões e a verticalização com vista-mar</h2>
+      <p>
+        Na Zona Leste de Natal, Petrópolis vive uma renovação: os casarões
+        que fizeram a fama do bairro dividem as quadras com prédios modernos
+        e sofisticados, muitos com vista para o mar — e com academia própria,
+        o que mudou a logística do treino local. A poucos minutos, o Parque
+        das Dunas (na divisa com o Tirol) oferece a maior área verde da
+        cidade, e a descida para a orla completa o cardápio. O calor
+        potiguar impõe o relógio: ar livre nas pontas do dia, estrutura
+        climatizada no miolo.
+      </p>
+
+      <h2>Perfil 1 — O executivo e o profissional liberal</h2>
+      <p>
+        Médicos, advogados e empresários concentram-se no bairro — muitos
+        trabalhando na própria região. Para esse perfil, a sessão de 50
+        minutos às 6h na academia do prédio ou num studio próximo é a que
+        sobrevive à agenda, com plano B estruturado para semanas de plantão
+        ou viagem (acompanhamento online, de R$ 160 a R$ 410 mensais na
+        referência de Natal).
+      </p>
+
+      <h2>Perfil 2 — A família em renovação</h2>
+      <p>
+        A troca de gerações do bairro trouxe famílias jovens para os prédios
+        novos: casal dividindo sessão na academia do condomínio, adolescentes
+        iniciando musculação com supervisão e o Parque das Dunas como
+        programa ativo do fim de semana. O formato em dupla divide o custo
+        sem diluir a atenção — desde que o profissional individualize carga e
+        progressão.
+      </p>
+
+      <h2>Perfil 3 — O morador tradicional 60+</h2>
+      <p>
+        Nos casarões e nos apartamentos antigos, mora a geração que construiu
+        a reputação do bairro — e é para ela que o personal a domicílio mais
+        trabalha: força, equilíbrio e autonomia, com equipamento portátil e
+        horário fixo. A regra editorial vale sempre: dores e limitações
+        passam primeiro por médico ou fisioterapeuta, e o treino se ajusta a
+        partir daí.
+      </p>
+
+      <h2>Perfil 4 — Quem quer emagrecer com método</h2>
+      <p>
+        O objetivo mais comum do bairro (e do país) pede sistema, não
+        milagre: força na academia do prédio, aeróbico nas janelas de
+        temperatura — caminhada no Parque das Dunas, corrida leve nas ruas
+        arborizadas — e rotina alimentar acompanhada por profissional de
+        nutrição. O guia de
+        <a href="/guias/personal-trainer-para-emagrecimento/">personal
+        trainer para emagrecimento</a> mostra como escolher o profissional
+        certo para essa missão.
+      </p>
+
+      <h2>Quanto custa personal trainer em Petrópolis</h2>
+      <p>
+        A referência de Natal, publicada no guia de
+        <a href="/personal-trainer/natal-rn/">personal trainer em
+        Natal</a>, é de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais. Em
+        Petrópolis–Tirol, o eixo mais valorizado da capital, os valores
+        gravitam para o topo — em especial no atendimento a domicílio e nos
+        horários da manhã, os primeiros a lotar.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Use o filtro técnico do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física na primeira semana, periodização explicada com
+        clareza, experiência real com o seu perfil e honestidade sobre
+        prazos. Em Petrópolis, some o critério do relógio potiguar: o bom
+        profissional do bairro tem agenda desenhada para as duas janelas de
+        temperatura e alternativa climatizada pronta para o meio do dia.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Petrópolis (Natal)" />
+
+    <WhatsAppCta tema="geral" localidade="em Petrópolis" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

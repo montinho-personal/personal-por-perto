@@ -31,6 +31,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-cambui/', titulo: 'Personal trainer no Cambuí (Campinas)' },
   { categoria: 'Bairros', url: '/personal-trainer-copacabana/', titulo: 'Personal trainer em Copacabana (Rio de Janeiro)' },
   { categoria: 'Bairros', url: '/personal-trainer-adrianopolis/', titulo: 'Personal trainer em Adrianópolis (Manaus)' },
+  { categoria: 'Bairros', url: '/personal-trainer-lago-sul/', titulo: 'Personal trainer no Lago Sul (Brasília)' },
+  { categoria: 'Bairros', url: '/personal-trainer-petropolis-natal/', titulo: 'Personal trainer em Petrópolis (Natal)' },
+  { categoria: 'Bairros', url: '/personal-trainer-ponta-d-areia/', titulo: "Personal trainer na Ponta d'Areia (São Luís)" },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-goias/', titulo: 'Personal trainer no Jardim Goiás (Goiânia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-altiplano-cabo-branco/', titulo: 'Personal trainer no Altiplano Cabo Branco (João Pessoa)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/goiania-go/',
+    titulo: 'Personal trainer em Goiânia',
+    descricao: 'O guia completo da capital goiana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que transforma a academia do condomínio em resultado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-jardim-goias';
+const atualizadoEm = '2026-07-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Goiânia', url: '/personal-trainer/goiania-go/' },
+  { nome: 'Personal Trainer no Jardim Goiás', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jardim Goiás?',
+    resposta:
+      'Em Goiânia, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Jardim Goiás — o endereço mais valorizado da capital —, os valores ficam no topo dessas faixas, sobretudo no atendimento dentro dos condomínios-resort do entorno do Flamboyant.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Jardim Goiás?',
+    resposta:
+      'O Parque Flamboyant é o coração do bairro: pistas de caminhada e corrida, lagos e gramados que recebem treinos funcionais acompanhados o dia inteiro — com pico nas primeiras horas da manhã e no fim de tarde.',
+  },
+  {
+    pergunta: 'As torres do Jardim Goiás têm boa estrutura de treino?',
+    resposta:
+      'Entre as melhores do Centro-Oeste: lançamentos como o Legítimo e o Autêntico, com arquitetura da Perkins & Will, incluem de quadra de tênis oficial a quadra de areia, além de academias completas — estrutura de clube dentro do condomínio.',
+  },
+  {
+    pergunta: 'Personal atende no condomínio no Jardim Goiás?',
+    resposta:
+      'É o formato dominante do bairro — o personal transforma a estrutura resort das torres em treino com método: avaliação física, periodização e progressão. Cada condomínio tem suas regras de acesso de prestadores.',
+  },
+  {
+    pergunta: 'O que é melhor no bairro: treinar no parque ou no prédio?',
+    resposta:
+      'Os dois, cada um no seu papel: força na academia do condomínio, aeróbico e funcional no Flamboyant. A vizinhança imediata entre torres e parque é justamente a maior vantagem de treino do Jardim Goiás.',
+  },
+];
+
+const title = 'Personal Trainer no Jardim Goiás: qual formato escolher';
+const description =
+  'Personal trainer no Jardim Goiás: compare treino no condomínio-resort, no Parque Flamboyant, em studio e a domicílio — com preços de Goiânia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Goiânia</p>
+    <h1>Personal trainer no Jardim Goiás: parque, condomínio-resort, studio ou casa?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum bairro do Centro-Oeste construiu tanto em volta de um parque: o
+      Jardim Goiás cresceu abraçado ao Flamboyant, e suas torres de luxo
+      disputam vista para os lagos como quem disputa vaga na primeira fila.
+      Para quem procura um <strong>personal trainer no Jardim Goiás</strong>,
+      isso significa uma escolha boa de ter: treinar no parque, na estrutura
+      resort do condomínio, num studio ou em casa. Este comparativo coloca os
+      quatro formatos lado a lado.
+    </p>
+
+    <div class="prose">
+      <h2>O cenário: o bairro que o Flamboyant organizou</h2>
+      <p>
+        O endereço mais valorizado de Goiânia se estrutura em volta do Parque
+        Flamboyant e das avenidas que o cercam, onde a verticalização de alto
+        padrão corre acelerada. Os exemplos mais ambiciosos são o Legítimo e
+        o Autêntico, torres com arquitetura da Perkins & Will que incluem
+        quadra de tênis oficial, quadra de areia e apartamentos de 420 m² com
+        vista para o parque — estrutura de clube incorporada ao condomínio.
+        É essa régua que define o treino do bairro.
+      </p>
+
+      <h2>Formato 1 — A academia do condomínio-resort</h2>
+      <p>
+        Nas torres novas, a pergunta não é se há estrutura, e sim se ela é
+        bem usada: academia completa, piscinas, quadras. O personal que
+        atende no condomínio transforma o pacote em resultado com avaliação
+        física, plano periodizado e
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a> de
+        verdade. Para executivos do agronegócio e profissionais liberais que
+        moram no bairro, é o formato que sobrevive à agenda: zero
+        deslocamento, qualquer horário, clima irrelevante.
+      </p>
+
+      <h2>Formato 2 — O Parque Flamboyant</h2>
+      <p>
+        O parque é o aeróbico oficial do bairro: pistas de caminhada e
+        corrida contornando os lagos, gramados para funcional e um movimento
+        que começa antes do sol nascer. Personal trainers do Jardim Goiás
+        montam ali as sessões de corrida estruturada e os circuitos ao ar
+        livre — nas janelas de temperatura do calor goiano, início da manhã
+        e fim de tarde. A vizinhança imediata com as torres permite semanas
+        híbridas sem carro: força no prédio, corrida no parque.
+      </p>
+
+      <h2>Formato 3 — Studios e academias do entorno</h2>
+      <p>
+        O eixo do bairro concentra studios de treino personalizado e
+        academias completas, opção de quem busca equipamento específico ou
+        prefere separar casa e treino. Muitos profissionais mantêm horários
+        fixos nesses espaços e completam a agenda com atendimentos nos
+        condomínios — flexibilidade que joga a favor de quem quer variar o
+        formato na mesma semana.
+      </p>
+
+      <h2>Formato 4 — Em casa</h2>
+      <p>
+        Nos apartamentos amplos e nas casas remanescentes do bairro, o
+        personal a domicílio atende quem valoriza privacidade máxima —
+        moradores 60+, famílias com crianças pequenas, quem trabalha em home
+        office. Equipamento portátil, horário sob medida e a regra editorial
+        de sempre: dores e limitações passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jardim Goiás</h2>
+      <p>
+        A referência de Goiânia, publicada no guia de
+        <a href="/personal-trainer/goiania-go/">personal trainer em
+        Goiânia</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. No Jardim
+        Goiás, o mercado trabalha no topo — o bairro concentra o público de
+        maior renda da capital, e o atendimento dentro dos condomínios é o
+        serviço mais valorizado. Treinar em dupla, prática comum entre
+        casais do bairro, divide o investimento sem perder individualização.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        Escolha o formato pela logística da sua semana e o profissional
+        pelos critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física inicial, periodização explicável, experiência com o
+        seu objetivo, sem promessa de resultado. No Jardim Goiás, o teste
+        local é simples: pergunte como o candidato montaria sua semana entre
+        o condomínio e o Flamboyant. Quem conhece o bairro responde com um
+        plano — quem não conhece, com um discurso.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jardim Goiás" />
+
+    <WhatsAppCta tema="geral" localidade="no Jardim Goiás" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
