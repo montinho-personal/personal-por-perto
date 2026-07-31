@@ -35,7 +35,10 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-savassi';
-const atualizadoEm = '2026-07-30';
+const atualizadoEm = '2026-07-31';
+const capa = '/capas-bairros/savassi.webp';
+const capaAlt =
+  'Capa do guia de personal trainer na Savassi: atleta junto à placa da Praça Diogo de Vasconcelos, coração do bairro em Belo Horizonte — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
@@ -76,19 +79,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Belo Horizonte</p>
     <h1>Personal trainer na Savassi e no Lourdes: o que perguntar antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Em 2026, o Lourdes ultrapassou a vizinha Savassi e assumiu o posto de

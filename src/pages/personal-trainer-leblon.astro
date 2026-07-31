@@ -35,7 +35,10 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-leblon';
-const atualizadoEm = '2026-07-29';
+const atualizadoEm = '2026-07-31';
+const capa = '/capas-bairros/leblon.webp';
+const capaAlt =
+  'Capa do guia de personal trainer no Leblon: atleta no calçadão com o Morro Dois Irmãos, a praia e os prédios da orla ao fundo — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
@@ -76,19 +79,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros do Rio de Janeiro</p>
     <h1>Personal trainer no Leblon: as respostas que você procuraria antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Faz sentido pagar <strong>personal trainer no Leblon</strong> quando o
