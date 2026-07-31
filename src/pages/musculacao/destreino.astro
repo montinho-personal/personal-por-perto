@@ -39,7 +39,10 @@ const relacionados = [
 ];
 
 const path = '/musculacao/destreino';
-const atualizadoEm = '2026-07-29';
+const atualizadoEm = '2026-07-31';
+const capa = '/capas-conteudo/destreino.webp';
+const capaAlt =
+  'Capa do artigo Destreino: calendário marcado com semanas sem treinar ao lado do banco com halteres e do painel do que diminui na pausa — força, volume e memória muscular — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -80,19 +83,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Destreino: quanto tempo parado você perde músculo?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Uma semana de viagem e o pânico bate: "vou perder tudo". Respira.

@@ -96,5 +96,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vitória da Conquista', url: 'https://www.pmvc.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-31',
+  capaArte: {
+    src: '/capas-cidade/vitoria-da-conquista-ba.webp',
+    w: 1200,
+    h: 849,
+    alt: 'Arte de capa de personal trainer em Vitória da Conquista: atletas treinando com halteres em colagem com o Cristo de Mário Cravo, a Praça Tancredo Neves, a avenida Olívia Flores, a Lagoa das Bateias e o Parque de Exposições Teopompo de Almeida',
+    legenda: 'Treino personalizado em Vitória da Conquista: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

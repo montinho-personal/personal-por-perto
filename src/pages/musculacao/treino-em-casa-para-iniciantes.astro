@@ -40,7 +40,10 @@ const relacionados = [
 ];
 
 const path = '/musculacao/treino-em-casa-para-iniciantes';
-const atualizadoEm = '2026-07-18';
+const atualizadoEm = '2026-07-31';
+const capa = '/capas-conteudo/treino-em-casa-para-iniciantes.webp';
+const capaAlt =
+  'Capa do artigo Treino em casa para iniciantes: halteres, step, mini band e colchonete diante do quadro com agachamento, flexão apoiada, prancha, avanço e elevação pélvica — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -81,19 +84,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Treino em casa para iniciantes: como começar sem equipamentos</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Você não precisa de academia para começar a treinar — precisa de um plano.

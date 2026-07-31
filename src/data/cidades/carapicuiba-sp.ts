@@ -110,5 +110,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3510609' },
   ],
-  atualizadoEm: '2026-07-11',
+  atualizadoEm: '2026-07-31',
+  capaArte: {
+    src: '/capas-cidade/carapicuiba-sp.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Arte de capa de personal trainer em Carapicuíba: personal trainer diante da capela da Aldeia de Carapicuíba, patrimônio histórico do município, com a placa da aldeia, o trem da linha da CPTM e os prédios da cidade ao fundo',
+    legenda: 'Treino personalizado em Carapicuíba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

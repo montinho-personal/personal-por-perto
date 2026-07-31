@@ -40,7 +40,10 @@ const relacionados = [
 ];
 
 const path = '/musculacao/musculacao-depois-dos-40';
-const atualizadoEm = '2026-07-18';
+const atualizadoEm = '2026-07-31';
+const capa = '/capas-conteudo/musculacao-depois-dos-40.webp';
+const capaAlt =
+  'Capa do artigo Musculação depois dos 40: homem grisalho sentado no banco de treino com halteres aos pés, ao lado do quadro com força, mobilidade e recuperação — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -81,19 +84,32 @@ const description =
 
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Musculação depois dos 40: o que muda e como treinar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe uma mentira confortável circulando por aí: a de que depois dos 40

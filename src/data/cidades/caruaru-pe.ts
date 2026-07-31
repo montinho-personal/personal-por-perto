@@ -96,5 +96,12 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caruaru', url: 'https://www.caruaru.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-07-31',
+  capaArte: {
+    src: '/capas-cidade/caruaru-pe.webp',
+    w: 1200,
+    h: 849,
+    alt: 'Arte de capa de personal trainer em Caruaru: atletas treinando com halteres em colagem com a Feira de Caruaru, o Pátio de Eventos Luiz Gonzaga, as esculturas de barro do Alto do Moura e o Morro do Bom Jesus',
+    legenda: 'Treino personalizado em Caruaru: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
