@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/florianopolis-sc/',
+    titulo: 'Personal trainer em Florianópolis',
+    descricao: 'O guia completo da capital catarinense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou Full Body: qual a melhor divisão de treino',
+    descricao: 'Como organizar a semana entre o calçadão e a academia do prédio.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-beira-mar-norte';
+const atualizadoEm = '2026-07-31';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Florianópolis', url: '/personal-trainer/florianopolis-sc/' },
+  { nome: 'Personal Trainer na Beira-Mar Norte', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Beira-Mar Norte?',
+    resposta:
+      'Em Florianópolis, a aula avulsa varia de R$ 90 a R$ 210 e o pacote mensal de R$ 450 a R$ 1.250 — as faixas mais altas do Sul. Na Beira-Mar Norte, endereço dos imóveis mais valorizados da capital, os valores operam no topo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Beira-Mar Norte?',
+    resposta:
+      'No calçadão da avenida, que se estende por cerca de 7 km entre o Centro e a região da Agronômica, com ciclovia, academias ao ar livre e quadras de areia — o maior equipamento público de treino de Florianópolis.',
+  },
+  {
+    pergunta: 'Os prédios da Beira-Mar Norte têm academia?',
+    resposta:
+      'As torres de alto padrão da avenida, em geral, sim — e o atendimento no condomínio é um dos formatos mais comuns. Nos edifícios mais antigos, o personal a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no calçadão?',
+    resposta:
+      'O amanhecer é dos moradores mais velhos e dos grupos de caminhada; o fim de tarde, dos corredores e das quadras de areia. Bons profissionais da região têm agenda nas duas janelas — e alternativa coberta para os dias de vento sul e chuva.',
+  },
+  {
+    pergunta: 'Dá para treinar na Beira-Mar Norte no inverno?',
+    resposta:
+      'Sim — o inverno da ilha é ameno na comparação com o resto do Sul, e o calçadão funciona o ano todo. Nos dias de vento sul mais duro, a sessão migra para a academia do prédio ou studio, sem quebrar a rotina.',
+  },
+];
+
+const title = 'Personal Trainer na Beira-Mar Norte (Floripa): guia';
+const description =
+  'Os melhores lugares para treinar com personal trainer na Beira-Mar Norte: calçadão de 7 km, academias ao ar livre, torres — com preços de Floripa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Florianópolis</p>
+    <h1>Personal trainer na Beira-Mar Norte: os lugares onde a avenida mais valorizada do Sul treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quando o galo canta, a avenida já está em movimento: idosos caminhando
+      no calçadão, corredores marcando ritmo na ciclovia, grupos nas
+      academias ao ar livre. A Beira-Mar Norte — os 7 km que ligam o Centro à
+      Agronômica, com os imóveis mais valorizados de Florianópolis — funciona
+      como a maior academia a céu aberto de Santa Catarina. Para quem procura
+      um <strong>personal trainer na Beira-Mar Norte</strong>, esta lista
+      comentada percorre os cenários onde o treino da avenida realmente
+      acontece.
+    </p>
+
+    <div class="prose">
+      <h2>1. O calçadão: 7 km de pista contínua</h2>
+      <p>
+        O passeio da avenida é o equipamento público mais democrático da
+        capital: plano, contínuo e de frente para a baía. Os personal
+        trainers da região usam o percurso para tudo — caminhada em ritmo,
+        corrida progressiva, treinos intervalados entre pontos de referência
+        — e a vista da ponte Hercílio Luz no horizonte não cansa nunca. O
+        pico da manhã é dos moradores mais velhos; o fim de tarde, dos
+        corredores.
+      </p>
+
+      <h2>2. As academias ao ar livre e as quadras de areia</h2>
+      <p>
+        Ao longo do passeio, as estações de ginástica ao ar livre e as
+        quadras de areia viram estações de treino funcional nas mãos de um
+        bom profissional: força com peso do corpo, circuitos, potência na
+        areia. É o complemento gratuito que transforma a caminhada em
+        programa completo — e o cenário preferido das sessões em dupla da
+        avenida.
+      </p>
+
+      <h2>3. As torres de alto padrão</h2>
+      <p>
+        A Beira-Mar Norte concentra os apartamentos mais caros da capital, e
+        as torres de alto padrão incluem academias próprias — onde o
+        personal leva avaliação física, periodização e progressão. Para
+        organizar a semana entre o condomínio e o calçadão, a lógica das
+        divisões de treino do guia
+        <a href="/musculacao/abc-ou-full-body/">ABC ou Full Body</a> é a que
+        os profissionais da região mais aplicam: força na torre, aeróbico na
+        avenida.
+      </p>
+
+      <h2>4. A Agronômica e o miolo residencial</h2>
+      <p>
+        Atrás da avenida, a Agronômica guarda o lado bairro da região: ruas
+        tranquilas, prédios residenciais e o acesso ao corredor verde do
+        Itacorubi. É onde mora boa parte de quem treina na Beira-Mar — e
+        onde o atendimento a domicílio atende os moradores 60+ e as famílias
+        que preferem treinar em casa. Como sempre no portal: dores e
+        limitações passam primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>5. Studios e academias do entorno</h2>
+      <p>
+        O corredor entre o Centro e a Agronômica reúne studios de treino
+        personalizado e academias completas — a alternativa climatizada para
+        os dias de vento sul e a base de muitos profissionais que atendem a
+        avenida. A densidade joga a favor do aluno: há oferta para todos os
+        formatos e bolsos.
+      </p>
+
+      <h2>Quanto custa personal trainer na Beira-Mar Norte</h2>
+      <p>
+        A referência de Florianópolis, publicada no guia de
+        <a href="/personal-trainer/florianopolis-sc/">personal trainer em
+        Florianópolis</a>, é de R$ 90 a R$ 210 pela aula avulsa e de R$ 450
+        a R$ 1.250 pelo pacote mensal com 2 a 3 sessões semanais — as faixas
+        mais altas do Sul do país. Na Beira-Mar Norte, endereço dos imóveis
+        mais valorizados da cidade, o mercado opera no topo, com o
+        atendimento nas torres como serviço de maior valor.
+      </p>
+
+      <h2>Como escolher um personal na avenida</h2>
+      <p>
+        Use o filtro do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> —
+        avaliação física inicial, periodização explicável, experiência com o
+        seu objetivo, sem promessas — e o teste local: pergunte como o
+        candidato monta a semana entre a torre e o calçadão, e qual é o
+        plano para o vento sul. Quem treina gente na avenida há anos
+        responde com um sistema, não com improviso.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Beira-Mar Norte" />
+
+    <WhatsAppCta tema="geral" localidade="na Beira-Mar Norte" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia completo da capital gaúcha: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona',
+    descricao: 'O formato dominante nas casas e condomínios do Três Figueiras.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-tres-figueiras';
+const atualizadoEm = '2026-07-31';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer no Três Figueiras', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Três Figueiras?',
+    resposta:
+      'Em Porto Alegre, a aula avulsa varia de R$ 80 a R$ 190 e o pacote mensal de R$ 400 a R$ 1.150. No Três Figueiras — bairro com renda média estimada em cerca de 36 salários mínimos, uma das maiores da capital —, os valores operam no topo, sobretudo a domicílio.',
+  },
+  {
+    pergunta: 'Qual formato de treino funciona melhor no Três Figueiras?',
+    resposta:
+      'O bairro é majoritariamente horizontal — casas e condomínios fechados —, então o personal a domicílio é o formato rei: treino na academia da casa, na garagem adaptada ou na área externa. Studios do entorno e as academias da região do Iguatemi completam as opções.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Três Figueiras?',
+    resposta:
+      'Nas ruas arborizadas e tranquilas do próprio bairro, ideais para corrida leve e caminhada em ritmo, e nas praças da região. Para treinos longos, o Parcão (Moinhos de Vento) e a orla do Guaíba ficam a poucos minutos de carro.',
+  },
+  {
+    pergunta: 'Personal atende dentro dos condomínios fechados do bairro?',
+    resposta:
+      'Sim — é o cenário típico: condomínios horizontais como os do eixo nobre do bairro recebem o profissional na casa do aluno, mediante as regras de acesso de cada um. Sessões em família, com horários em sequência, são comuns.',
+  },
+  {
+    pergunta: 'E no inverno gaúcho, como fica o treino?',
+    resposta:
+      'Dentro de casa — a vantagem do formato domicílio é justamente essa: com estrutura na própria residência, o frio de um dígito não cancela sessão. O personal monta o plano para o espaço disponível e a rotina segue o ano inteiro.',
+  },
+];
+
+const title = 'Personal Trainer no Três Figueiras (POA): qual formato';
+const description =
+  'Personal trainer no Três Figueiras: compare domicílio, condomínio, studio e rua no bairro das casas de alto padrão de Porto Alegre — com preços.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer no Três Figueiras: domicílio, condomínio, studio ou rua?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Enquanto o Moinhos de Vento treina no Parcão à vista de todos, o Três
+      Figueiras treina atrás dos muros: o bairro de casas e condomínios
+      fechados com renda média estimada em 36 salários mínimos — uma das
+      maiores de Porto Alegre — construiu uma cultura de treino doméstica e
+      discreta. Para quem procura um
+      <strong>personal trainer no Três Figueiras</strong>, a pergunta não é
+      onde treinar na cidade, e sim qual formato aproveita melhor a
+      estrutura que já existe em casa. Este comparativo responde.
+    </p>
+
+    <div class="prose">
+      <h2>O contexto: o refúgio horizontal da zona nobre</h2>
+      <p>
+        Vizinho de Boa Vista, Petrópolis e Chácara das Pedras, o Três
+        Figueiras é um enclave de ruas arborizadas e casas amplas — muitas em
+        condomínios fechados — a poucos minutos dos shoppings Iguatemi e
+        Bourbon Country. Diferente dos bairros verticais, aqui a academia
+        raramente é do prédio: é da casa. E isso define o mercado local de
+        treino.
+      </p>
+
+      <h2>Formato 1 — A domicílio: o rei do bairro</h2>
+      <p>
+        Nas casas do Três Figueiras, o personal chega e a academia já está
+        montada — na sala de treino da casa, na garagem adaptada ou na área
+        da piscina. É o formato dominante: privacidade total, zero
+        deslocamento e sessões em família com horários em sequência. O guia
+        de <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> detalha a mecânica; no inverno gaúcho, é também o
+        formato que nunca cancela — o frio fica do lado de fora.
+      </p>
+
+      <h2>Formato 2 — O condomínio fechado</h2>
+      <p>
+        Nos condomínios horizontais do bairro, o treino ganha camada social:
+        vizinhos dividindo horários do mesmo profissional, uso das áreas
+        comuns (quadra, piscina, salão) e a logística resolvida — o personal
+        que já atende no condomínio conhece as regras de acesso e emenda
+        sessões em casas vizinhas. Para o profissional, é rota otimizada;
+        para o morador, preço melhor por sessão.
+      </p>
+
+      <h2>Formato 3 — Studios e academias do entorno</h2>
+      <p>
+        Quem prefere separar casa e treino encontra studios de atendimento
+        individual e academias completas no eixo dos shoppings e nos bairros
+        vizinhos. É a escolha de quem busca equipamento pesado específico ou
+        gosta do ritual de sair para treinar — e muitos profissionais do
+        bairro mantêm base nesses espaços, o que facilita o formato híbrido.
+      </p>
+
+      <h2>Formato 4 — As ruas do bairro e os parques vizinhos</h2>
+      <p>
+        As ruas tranquilas e arborizadas do Três Figueiras são um circuito
+        natural de corrida leve e caminhada — sessões que saem da porta de
+        casa e voltam, sem carro. Para volumes maiores, o Parcão e a orla do
+        Guaíba ficam a minutos: muitos personal trainers montam a semana
+        híbrida, com força em casa e o longão do fim de semana no parque.
+      </p>
+
+      <h2>Quanto custa personal trainer no Três Figueiras</h2>
+      <p>
+        A referência de Porto Alegre, publicada no guia de
+        <a href="/personal-trainer/porto-alegre-rs/">personal trainer em
+        Porto Alegre</a>, é de R$ 80 a R$ 190 pela aula avulsa e de R$ 400 a
+        R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais. No Três
+        Figueiras, o domicílio — o formato da casa — opera no topo das
+        faixas: o bairro tem um dos maiores poderes aquisitivos da capital e
+        espera o padrão de serviço correspondente. Pacotes família são o
+        arranjo mais comum para otimizar o investimento.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        Escolha o formato pela sua estrutura real (a maioria do bairro já
+        tem a academia em casa; falta o método) e o profissional pelos
+        critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física inicial, periodização explicável, experiência com o
+        seu perfil, sem promessas. No Três Figueiras, o critério extra é a
+        rota: quem já atende em casas e condomínios do bairro encaixa seu
+        horário com facilidade — e chega com o treino desenhado para o
+        espaço que você tem.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Três Figueiras" />
+
+    <WhatsAppCta tema="geral" localidade="no Três Figueiras" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

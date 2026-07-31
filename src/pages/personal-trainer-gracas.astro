@@ -1,0 +1,223 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/recife-pe/',
+    titulo: 'Personal trainer no Recife',
+    descricao: 'O guia completo da capital pernambucana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para terceira idade',
+    descricao: 'O formato mais procurado nos bairros tradicionais da Zona Norte.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-gracas';
+const atualizadoEm = '2026-07-31';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Recife', url: '/personal-trainer/recife-pe/' },
+  { nome: 'Personal Trainer nas Graças', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer nas Graças?',
+    resposta:
+      'No Recife, a aula avulsa varia de R$ 70 a R$ 170 e o pacote mensal de R$ 360 a R$ 980. Nas Graças e no Espinheiro — o eixo nobre da Zona Norte —, os valores ficam no topo dessas faixas, sobretudo no atendimento dentro dos prédios e nos horários da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre nas Graças e no Espinheiro?',
+    resposta:
+      'O Parque da Jaqueira, na divisa dos bairros, é o terceiro maior parque do Recife e o point de corrida e funcional da Zona Norte. Dentro dos bairros, as ruas arborizadas — como a rua Amélia e suas transversais — recebem caminhada e corrida leve acompanhadas.',
+  },
+  {
+    pergunta: 'Os prédios das Graças têm academia?',
+    resposta:
+      'A verticalização intensa dos dois bairros trouxe torres com espaço fitness próprio, e o atendimento no condomínio é o formato que mais cresce. Nos edifícios antigos e nos casarões preservados, o personal a domicílio resolve.',
+  },
+  {
+    pergunta: 'Qual a diferença de treinar nas Graças e em Boa Viagem?',
+    resposta:
+      'Boa Viagem tem a orla e o treino de praia; a Zona Norte tem o parque, as ruas de sombra e a rotina de bairro tradicional. Muitos profissionais atendem nas duas regiões — a escolha prática é treinar perto de casa, que é o que sustenta a constância.',
+  },
+  {
+    pergunta: 'Personal atende moradores 60+ nas Graças?',
+    resposta:
+      'É uma das maiores especialidades da região — os bairros tradicionais da Zona Norte concentram famílias de longa data, e o treino de força para autonomia, em casa ou no prédio, é o serviço com agenda mais cheia. Dores e limitações passam primeiro por médico ou fisioterapeuta.',
+  },
+];
+
+const title = 'Personal Trainer nas Graças (Recife): guia do bairro';
+const description =
+  'Personal trainer nas Graças e no Espinheiro: a rotina de treino da Zona Norte nobre do Recife — Parque da Jaqueira, prédios e preços.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Recife</p>
+    <h1>Personal trainer nas Graças: a rotina de treino da Zona Norte nobre do Recife</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      São 5h40 e a rua Amélia ainda tem cheiro de madrugada quando o primeiro
+      grupo de corrida dobra em direção ao Parque da Jaqueira. A cena se
+      repete todo dia útil no eixo Graças–Espinheiro — o coração nobre da
+      Zona Norte, onde o
+      <strong>personal trainer nas Graças</strong> trabalha entre casarões
+      centenários, torres novas com academia e o terceiro maior parque da
+      cidade na esquina. Esta é a rotina de treino de quem mora ali, contada
+      hora a hora.
+    </p>
+
+    <div class="prose">
+      <h2>5h50 — O Parque da Jaqueira acorda primeiro</h2>
+      <p>
+        Na divisa dos bairros, o Parque da Jaqueira é o equipamento público
+        de treino mais importante da Zona Norte: pista de corrida, ciclovia,
+        quadras e sombra de jaqueiras seculares. Antes do sol pesar, é ali
+        que os personal trainers da região concentram as sessões de corrida
+        estruturada e os circuitos funcionais — o parque faz o papel que a
+        orla faz em Boa Viagem, com a vantagem da sombra.
+      </p>
+
+      <h2>7h30 — As ruas de sombra e a volta para casa</h2>
+      <p>
+        Graças e Espinheiro são bairros de árvores antigas, e as ruas
+        arborizadas — a Amélia à frente — funcionam como extensão do treino:
+        caminhada em ritmo, corrida leve, mobilidade na praça. É também a
+        hora em que o treino volta para dentro: nos prédios da verticalização
+        recente, com academia própria, o personal atende no condomínio; nos
+        edifícios antigos e casarões preservados, o atendimento a domicílio
+        com equipamento portátil é o formato da casa.
+      </p>
+
+      <h2>10h às 16h — O intervalo do calor é dos espaços climatizados</h2>
+      <p>
+        Como em todo o Recife, o miolo do dia pertence às academias e studios
+        climatizados do eixo — e é quando treinam os profissionais liberais
+        do bairro que conseguem janelas no meio da agenda. A regra dos bons
+        profissionais da região é a mesma da cidade: ao ar livre nas pontas
+        do dia, estrutura coberta no restante, sem sessão cancelada por
+        causa do tempo.
+      </p>
+
+      <h2>17h — A hora dos 60+ e das famílias</h2>
+      <p>
+        Os bairros tradicionais da Zona Norte concentram moradores de longa
+        data, e o fim de tarde é o horário clássico do treino de força para
+        autonomia — em casa, no prédio ou no parque, sempre com progressão
+        conservadora e em conjunto com médico ou fisioterapeuta quando há
+        limitações. O guia de
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal
+        trainer para terceira idade</a> detalha o que exigir do profissional
+        para esse público — o mais fiel do bairro.
+      </p>
+
+      <h2>Quanto custa personal trainer nas Graças</h2>
+      <p>
+        A referência do Recife, publicada no guia de
+        <a href="/personal-trainer/recife-pe/">personal trainer no
+        Recife</a>, é de R$ 70 a R$ 170 pela aula avulsa e de R$ 360 a
+        R$ 980 pelo pacote mensal com 2 a 3 sessões semanais. No eixo
+        Graças–Espinheiro, os valores operam no topo: a região disputa com
+        a vizinha Jaqueira o posto de endereço mais nobre da Zona Norte, e
+        os horários da manhã — os das cenas deste artigo — são os primeiros
+        a lotar. O acompanhamento online (R$ 180 a R$ 450 mensais) cobre as
+        semanas de viagem.
+      </p>
+
+      <h2>Como escolher um personal na região</h2>
+      <p>
+        Com o filtro do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a> —
+        avaliação física inicial, periodização explicável, experiência com o
+        seu perfil, honestidade sobre prazos — e com o teste local: pergunte
+        onde o profissional atende às 6h de uma terça-feira. Se a resposta
+        incluir o Parque da Jaqueira, as ruas de sombra ou a academia do seu
+        prédio, você encontrou alguém que conhece o território.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer nas Graças" />
+
+    <WhatsAppCta tema="geral" localidade="nas Graças" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

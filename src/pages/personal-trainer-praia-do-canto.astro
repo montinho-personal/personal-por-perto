@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/vitoria-es/',
+    titulo: 'Personal trainer em Vitória',
+    descricao: 'O guia completo da capital capixaba: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'O objetivo mais pedido nos pacotes da orla capixaba.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-praia-do-canto';
+const atualizadoEm = '2026-07-31';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Vitória', url: '/personal-trainer/vitoria-es/' },
+  { nome: 'Personal Trainer na Praia do Canto', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Praia do Canto?',
+    resposta:
+      'Em Vitória, a aula avulsa varia de R$ 85 a R$ 200 e o pacote mensal de R$ 420 a R$ 1.200. Na Praia do Canto — o bairro mais valorizado da capital —, os valores ficam no topo dessas faixas, sobretudo a domicílio e nos horários da manhã.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Praia do Canto?',
+    resposta:
+      'Na orla da Curva da Jurema, com quiosques e mar calmo para stand-up paddle e caiaque; na Praça dos Namorados, com quadras (inclusive de tênis) e feiras ativas; e nas ruas largas e arborizadas do bairro, boas para corrida leve acompanhada.',
+  },
+  {
+    pergunta: 'Os prédios da Praia do Canto têm academia?',
+    resposta:
+      'Os edifícios modernos do bairro, em geral, sim — e o atendimento no condomínio é um dos formatos mais comuns. Nos prédios mais antigos, o personal a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'O que é o Triângulo das Bermudas da Praia do Canto?',
+    resposta:
+      'É o polígono boêmio entre as ruas Joaquim Lírio e João da Cruz, coração dos bares e restaurantes do bairro. Para o treino, é referência de localização: os studios e academias da região gravitam em volta dele.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal na Curva da Jurema?',
+    resposta:
+      'Sim — o calçadão plano, os quiosques de apoio e o mar calmo fazem da Curva da Jurema o cenário aquático e funcional do bairro: corrida na orla, circuitos na faixa de areia e SUP como aeróbico complementar.',
+  },
+];
+
+const title = 'Personal Trainer na Praia do Canto (Vitória): guia';
+const description =
+  'Personal trainer na Praia do Canto: o guia por perfil no bairro mais nobre de Vitória — Curva da Jurema, Praça dos Namorados e preços.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Vitória</p>
+    <h1>Personal trainer na Praia do Canto: o treino certo para cada perfil do bairro mais nobre de Vitória</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos bairros brasileiros concentram tanta vida em tão poucos
+      quarteirões: a Praia do Canto reúne a orla da Curva da Jurema, o
+      polígono boêmio do Triângulo das Bermudas, a Praça dos Namorados e o
+      metro quadrado mais valorizado da capital capixaba. Para quem procura
+      um <strong>personal trainer na Praia do Canto</strong>, essa densidade
+      é uma vantagem: tudo fica a minutos a pé — o que muda é o perfil de
+      quem treina. Este guia separa as recomendações pelos quatro perfis do
+      bairro.
+    </p>
+
+    <div class="prose">
+      <h2>O território: orla, praça e o Triângulo</h2>
+      <p>
+        A vida ativa do bairro corre em três polos. A
+        <strong>Curva da Jurema</strong>, com calçadão, quiosques e um mar
+        calmo que convida ao stand-up paddle e ao caiaque, é a orla oficial.
+        A <strong>Praça dos Namorados</strong>, com quadras — inclusive de
+        tênis — e feiras, é o centro esportivo e social. E o
+        <strong>Triângulo das Bermudas</strong>, entre as ruas Joaquim Lírio
+        e João da Cruz, marca o coração gastronômico em volta do qual
+        gravitam os studios e academias. Prédios modernos com espaço fitness
+        completam a estrutura de treino do bairro.
+      </p>
+
+      <h2>Perfil 1 — O executivo que resolve tudo a pé</h2>
+      <p>
+        Advogados, médicos e empresários do bairro treinam cedo: sessão de
+        50 minutos às 6h na academia do prédio ou num studio perto do
+        Triângulo, antes do expediente. O personal certo para esse perfil
+        trabalha com eficiência máxima e plano B para semanas de viagem
+        (acompanhamento online, de R$ 190 a R$ 490 mensais na referência de
+        Vitória).
+      </p>
+
+      <h2>Perfil 2 — A família da orla</h2>
+      <p>
+        Nos edifícios com vista para a baía, o treino é programa doméstico:
+        casal dividindo a sessão no condomínio, filhos iniciando musculação
+        com supervisão e o fim de tarde na Curva da Jurema como complemento
+        ativo — SUP, caiaque, caminhada no calçadão. O formato em dupla
+        divide o custo sem diluir a atenção, desde que o profissional
+        individualize carga e progressão.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ das quadras internas</h2>
+      <p>
+        O bairro tradicional guarda moradores de longa data, e para eles o
+        personal a domicílio é o formato natural: força, equilíbrio e
+        autonomia com equipamento portátil, em casa ou na academia do
+        prédio, com caminhadas na Praça dos Namorados como rotina social. A
+        regra editorial vale sempre: dores e limitações passam primeiro por
+        médico ou fisioterapeuta.
+      </p>
+
+      <h2>Perfil 4 — Quem busca estética com método</h2>
+      <p>
+        O público jovem-adulto do bairro mais badalado de Vitória pede
+        composição corporal: perder gordura preservando músculo. O caminho é
+        o mesmo em qualquer endereço — força progressiva, aeróbico
+        estruturado e rotina — e o guia de
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a> explica a lógica que o bom profissional vai aplicar,
+        longe das promessas de prazo que não existem.
+      </p>
+
+      <h2>Quanto custa personal trainer na Praia do Canto</h2>
+      <p>
+        A referência de Vitória, publicada no guia de
+        <a href="/personal-trainer/vitoria-es/">personal trainer em
+        Vitória</a>, é de R$ 85 a R$ 200 pela aula avulsa e de R$ 420 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais — faixas
+        entre as mais altas do Sudeste fora do eixo Rio–São Paulo. Na Praia
+        do Canto, o mercado opera no topo, com os horários de 6h às 8h
+        lotando primeiro.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        O filtro técnico está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física inicial, periodização explicável, experiência real
+        com o seu perfil, sem promessa de resultado. Na Praia do Canto, some
+        o critério do território: o bom profissional local monta a semana
+        usando os três polos — força no prédio ou studio, funcional na
+        praça, aeróbico na orla — e conhece o mapa do bairro como quem
+        conhece o próprio treino.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Praia do Canto" />
+
+    <WhatsAppCta tema="geral" localidade="na Praia do Canto" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -36,6 +36,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-ponta-d-areia/', titulo: "Personal trainer na Ponta d'Areia (São Luís)" },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-goias/', titulo: 'Personal trainer no Jardim Goiás (Goiânia)' },
   { categoria: 'Bairros', url: '/personal-trainer-altiplano-cabo-branco/', titulo: 'Personal trainer no Altiplano Cabo Branco (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-batista-campos/', titulo: 'Personal trainer no Batista Campos (Belém)' },
+  { categoria: 'Bairros', url: '/personal-trainer-gracas/', titulo: 'Personal trainer nas Graças (Recife)' },
+  { categoria: 'Bairros', url: '/personal-trainer-praia-do-canto/', titulo: 'Personal trainer na Praia do Canto (Vitória)' },
+  { categoria: 'Bairros', url: '/personal-trainer-beira-mar-norte/', titulo: 'Personal trainer na Beira-Mar Norte (Florianópolis)' },
+  { categoria: 'Bairros', url: '/personal-trainer-tres-figueiras/', titulo: 'Personal trainer no Três Figueiras (Porto Alegre)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

@@ -1,0 +1,219 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belem-pa/',
+    titulo: 'Personal trainer em Belém',
+    descricao: 'O guia completo da capital paraense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/como-emagrecer-fazendo-musculacao/',
+    titulo: 'Como emagrecer fazendo musculação',
+    descricao: 'O método que funciona em qualquer clima — inclusive no calor de Belém.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-batista-campos';
+const atualizadoEm = '2026-07-31';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belém', url: '/personal-trainer/belem-pa/' },
+  { nome: 'Personal Trainer no Batista Campos', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Batista Campos?',
+    resposta:
+      'Em Belém, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Batista Campos — um dos bairros mais valorizados da capital —, os valores ficam no topo dessas faixas, principalmente no atendimento dentro dos prédios.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Batista Campos?',
+    resposta:
+      'Na Praça Batista Campos, o cartão-postal de 26 mil m² com lagos, pontes de madeira e coretos centenários — recém-revitalizada, é o ponto clássico de caminhada, corrida leve e treino funcional do bairro, nas janelas de temperatura do clima belenense.',
+  },
+  {
+    pergunta: 'Os prédios do Batista Campos têm academia?',
+    resposta:
+      'A verticalização recente trouxe torres com espaço fitness próprio, e nelas o personal atende no condomínio. Nos edifícios mais antigos e nos casarões preservados do bairro, o atendimento a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Belém?',
+    resposta:
+      'Antes das 8h ou depois das 16h30 — e de olho na chuva da tarde, quase diária. O personal experiente de Belém monta a semana com plano duplo: praça nas janelas de tempo bom, estrutura coberta e climatizada no restante.',
+  },
+  {
+    pergunta: 'Personal atende executivos no Batista Campos?',
+    resposta:
+      'Sim — o bairro é vizinho do centro comercial da cidade e concentra profissionais liberais. Sessões de 45 a 60 minutos no início da manhã, na academia do prédio ou em studio próximo, são o formato mais procurado.',
+  },
+];
+
+const title = 'Personal Trainer no Batista Campos (Belém): guia';
+const description =
+  'Personal trainer no Batista Campos: preços de Belém, treino na praça histórica, nos prédios novos e a domicílio — respostas diretas do bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belém</p>
+    <h1>Personal trainer no Batista Campos: o que saber antes de contratar no bairro-jardim de Belém</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Dá para treinar bem numa cidade onde chove quase todo dia à tarde? No
+      Batista Campos, a resposta dos moradores é sim — e há mais de um século:
+      a praça de 1904 que dá nome ao bairro, com seus 26 mil m² de lagos,
+      pontes e coretos de ferro, é o ponto de treino mais tradicional de
+      Belém. Quem procura um
+      <strong>personal trainer no Batista Campos</strong> encontra um bairro
+      que mistura casarões do Ciclo da Borracha com torres novas de academia
+      própria — e uma rotina de treino desenhada pelo relógio do calor e da
+      chuva. Este artigo responde às perguntas que os belenenses fazem.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o Batista Campos virou o endereço do treino em Belém?</h2>
+      <p>
+        Porque junta as três coisas que o treino urbano pede: um espaço
+        público de qualidade rara — a Praça Batista Campos, revitalizada e
+        cercada de quiosques e restaurantes —, uma verticalização recente que
+        trouxe prédios com espaço fitness, e a vizinhança do centro comercial
+        da capital, que enche o bairro de profissionais liberais com agenda
+        apertada e disposição para investir em saúde. Os casarões preservados
+        do auge da borracha completam o cenário — e abrigam parte do público
+        mais tradicional do bairro.
+      </p>
+
+      <h2>Onde o treino acontece, na prática?</h2>
+      <p>
+        Em três cenários. Na <strong>praça</strong>: caminhada em ritmo,
+        corrida leve nas alamedas e circuitos funcionais nos gramados, sempre
+        nas janelas do clima — antes das 8h ou no fim da tarde, driblando a
+        chuva quase diária. Nos <strong>prédios novos</strong>: as torres da
+        verticalização recente incluem academias, e o personal leva método à
+        estrutura climatizada — o formato que mais cresce no bairro. E
+        <strong>dentro de casa</strong>: nos apartamentos amplos e casarões, o
+        atendimento a domicílio com equipamento portátil é o preferido dos
+        moradores 60+ — com a ressalva de sempre: dores e limitações passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência de Belém, publicada no guia de
+        <a href="/personal-trainer/belem-pa/">personal trainer em Belém</a>,
+        é de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo
+        pacote mensal com 2 a 3 sessões semanais. No Batista Campos, os
+        valores operam no topo — o bairro disputa com o vizinho Nazaré o
+        posto de endereço mais valorizado do centro expandido, e o
+        atendimento dentro dos condomínios é o serviço mais procurado. O
+        acompanhamento online (R$ 170 a R$ 430 mensais) cobre semanas de
+        viagem.
+      </p>
+
+      <h2>O calor e a chuva atrapalham o resultado?</h2>
+      <p>
+        Não, se o plano os respeitar. Suar mais não emagrece mais — o que
+        decide é o sistema: treino de força consistente, aeróbico nas
+        janelas certas e rotina alimentar, como explica o guia de
+        <a href="/emagrecimento/como-emagrecer-fazendo-musculacao/">como
+        emagrecer fazendo musculação</a>. O diferencial do personal
+        belenense é a logística: plano A na praça, plano B na academia do
+        prédio, hidratação como parte do método — e nenhuma sessão cancelada
+        por causa do tempo.
+      </p>
+
+      <h2>Como escolher um personal no Batista Campos?</h2>
+      <p>
+        Com o filtro técnico do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física na primeira semana, periodização explicada com
+        clareza, experiência com o seu objetivo e zero promessa de milagre.
+        E com o filtro local: pergunte ao candidato qual é o plano para a
+        chuva das 15h. Quem treina gente no bairro há anos responde na hora —
+        e é essa resposta que mantém sua rotina viva no inverno amazônico.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Batista Campos" />
+
+    <WhatsAppCta tema="geral" localidade="no Batista Campos" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
