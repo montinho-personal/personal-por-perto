@@ -1,0 +1,243 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia completo da capital: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que separa treino que evolui de treino que só cansa.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-perdizes';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer em Perdizes', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Perdizes?',
+    resposta:
+      'A referência de São Paulo é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Em Perdizes — metro quadrado de R$ 13,1 mil segundo o FipeZAP de janeiro de 2026 —, os profissionais experientes trabalham na metade superior dessas faixas, principalmente a domicílio e nas manhãs de semana.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Perdizes?',
+    resposta:
+      'O clássico absoluto é o canteiro central da avenida Sumaré, usado como pista de corrida e caminhada desde os anos 1970 — são cerca de 6 km somando ida e volta até a avenida Paulo VI. Completam o circuito as ladeiras do bairro, que viram estações naturais de subida, e o Parque da Água Branca, na borda de Perdizes.',
+  },
+  {
+    pergunta: 'As ladeiras de Perdizes atrapalham ou ajudam o treino?',
+    resposta:
+      'Ajudam — nas mãos de um bom profissional. O bairro é um dos mais íngremes da Zona Oeste, e as subidas de ruas como a Monte Alegre e a Cardoso de Almeida funcionam como treino de força e condicionamento gratuito. Quem tem limitação de joelho deve avaliar antes com médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios novos do bairro?',
+    resposta:
+      'Sim. A nova geração de torres de Perdizes — caso do On The Sky, na avenida Sumaré — nasce com academias completas, e os edifícios clássicos das ruas Wanderley e Monte Alegre têm espaço fitness reformado. O atendimento no condomínio é hoje um dos formatos que mais crescem no bairro.',
+  },
+  {
+    pergunta: 'O metrô mudou o mercado de personal em Perdizes?',
+    resposta:
+      'Mudou o mapa do bairro: a estação Perdizes da Linha 6-Laranja, inaugurada em julho de 2026, encurtou o deslocamento de profissionais que atendem em vários bairros e valorizou os studios do entorno. Para quem contrata, significa mais oferta de horários — inclusive nos períodos de pico.',
+  },
+];
+
+const title = 'Personal Trainer em Perdizes (SP): guia completo do bairro';
+const description =
+  'Personal trainer em Perdizes: preços, treino no canteiro da Sumaré, ladeiras, prédios com academia e como escolher bem no bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer em Perdizes: o guia do bairro das ladeiras e da Sumaré</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Em julho de 2026, Perdizes entrou no mapa do metrô — a estação da Linha
+      6-Laranja encostou o bairro no resto da cidade e acelerou uma valorização
+      que já vinha acima da média paulistana. Mas quem procura um
+      <strong>personal trainer em Perdizes</strong> descobre que o principal
+      equipamento esportivo do bairro é bem mais antigo: o canteiro central da
+      avenida Sumaré, pista de corrida informal dos moradores desde 1969. Este
+      guia reúne o que importa para contratar bem por aqui: contexto, preços,
+      lugares de treino e critérios de escolha.
+    </p>
+
+    <div class="prose">
+      <h2>Perdizes em modo treino: colinas, PUC e uma nova geração de torres</h2>
+      <p>
+        Perdizes é um bairro de colinas — das mais íngremes da Zona Oeste — e
+        essa topografia define o treino local tanto quanto define o charme das
+        ruas Wanderley, Monte Alegre e Cardoso de Almeida. O perfil de morador
+        mistura famílias tradicionais, professores e alunos da PUC-SP e um
+        público novo atraído pelos lançamentos: o On The Sky, da Cyrela com
+        assinatura do estúdio YOO, ergue na avenida Sumaré os seus 42 andares —
+        o prédio mais alto do bairro —, enquanto o Maison Cyrela Perdizes
+        aposta em plantas familiares generosas. Nos clássicos, edifícios como o
+        Terrazza Maggiore, na rua Wanderley, mantêm o padrão que fez do bairro
+        um dos metros quadrados mais valorizados da região: R$ 13,1 mil em
+        média, com alta de 6,3% em doze meses segundo o FipeZAP de janeiro de
+        2026.
+      </p>
+
+      <h2>Quanto custa personal trainer em Perdizes</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Em Perdizes, o
+        mercado trabalha na metade superior das faixas: o bairro concentra
+        profissionais veteranos da Zona Oeste, e os horários de 6h às 8h — os
+        preferidos de quem treina antes do trabalho ou das aulas — são os
+        primeiros a lotar. O acompanhamento online (R$ 200 a R$ 500 mensais)
+        completa as semanas de viagem, e o treino em dupla, comum entre casais
+        do bairro, divide o custo da sessão presencial.
+      </p>
+
+      <h2>Onde treinar com personal em Perdizes</h2>
+
+      <h3>O canteiro central da Sumaré: a pista oficial do bairro</h3>
+      <p>
+        Desde a inauguração da avenida, em 1969, o canteiro gramado da Sumaré
+        funciona como pista de corrida e caminhada dos moradores — hoje
+        compartilhado com a ciclovia e somando cerca de 6 km de ida e volta até
+        a avenida Paulo VI. É ali que os personal trainers do bairro montam os
+        treinos de corrida, os intervalados e as sessões funcionais ao ar
+        livre, com estações de ginástica ao longo do percurso. Aos domingos, o
+        programa Agita Sumaré ocupa a avenida com atividades de lazer.
+      </p>
+
+      <h3>As ladeiras: a academia gratuita de Perdizes</h3>
+      <p>
+        Subidas como as da Monte Alegre e da Cardoso de Almeida são recurso de
+        treino, não obstáculo: sprints curtos em rampa, caminhadas inclinadas e
+        circuitos de subida constroem perna e fôlego sem equipamento nenhum.
+        Bons profissionais do bairro desenham rotas que dosam a inclinação
+        conforme o nível do aluno — e quem tem joelho ou quadril sensível passa
+        primeiro por médico ou fisioterapeuta antes de encarar as rampas.
+      </p>
+
+      <h3>Parque da Água Branca e arredores</h3>
+      <p>
+        Na borda baixa do bairro, o Parque da Água Branca oferece sombra,
+        pistas planas e estrutura histórica para treinos leves e alongamento —
+        o contraponto perfeito às ladeiras. No entorno imediato, a região da
+        Pompeia e a Barra Funda ampliam o raio de opções de quem treina
+        acompanhado.
+      </p>
+
+      <h3>Studios, academias e a academia do prédio</h3>
+      <p>
+        O miolo de Perdizes concentra studios de treino personalizado e
+        academias de vizinhança nas transversais da Cardoso de Almeida, e a
+        nova safra de prédios trouxe espaços fitness de padrão clube — caso das
+        torres recém-entregues da Sumaré. Para quem mora nos edifícios
+        clássicos, o personal a domicílio com equipamento portátil segue sendo
+        o formato mais prático. Seja qual for o cenário, o que faz o resultado
+        aparecer é a <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> bem planejada — não o endereço.
+      </p>
+
+      <h2>Como escolher um personal em Perdizes</h2>
+      <p>
+        Valem os critérios de qualquer bairro concorrido de São Paulo:
+        avaliação física na primeira semana, periodização que o profissional
+        explique com clareza, experiência real com o seu objetivo e zero
+        promessa de milagre — o passo a passo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Em Perdizes, acrescente o filtro local: pergunte como o profissional
+        usa o bairro. Quem treina gente por aqui há anos tem rota na Sumaré,
+        sabe dosar as ladeiras e conhece as regras de acesso dos condomínios —
+        e monta a semana combinando esses cenários a favor do seu objetivo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Perdizes" />
+
+    <WhatsAppCta tema="geral" localidade="em Perdizes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

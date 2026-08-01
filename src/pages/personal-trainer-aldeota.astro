@@ -1,0 +1,241 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/fortaleza-ce/',
+    titulo: 'Personal trainer em Fortaleza',
+    descricao: 'O guia completo da capital cearense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-meireles/',
+    titulo: 'Personal trainer no Meireles',
+    descricao: 'O guia do bairro vizinho da Beira Mar, por perfil de morador.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-aldeota';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Fortaleza', url: '/personal-trainer/fortaleza-ce/' },
+  { nome: 'Personal Trainer na Aldeota', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Aldeota?',
+    resposta:
+      'Em Fortaleza, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Na Aldeota — metro quadrado entre os mais altos da cidade, na faixa de R$ 11 mil a R$ 14 mil —, os profissionais experientes trabalham no topo dessas faixas, principalmente nos studios e no atendimento em condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar de graça na Aldeota?',
+    resposta:
+      'Na Praça das Flores (oficialmente Praça Carlos Alberto Studart Gomes), que ganhou uma academia ao ar livre com mais de 20 equipamentos, e na Praça Luíza Távora, que tem pista de cooper. As duas concentram o treino ao ar livre do miolo do bairro.',
+  },
+  {
+    pergunta: 'O Parque do Cocó serve para quem mora na Aldeota?',
+    resposta:
+      'Sim — o parque fica na divisa leste do bairro e oferece cerca de 6 km de percursos arborizados, o refúgio natural para treinos longos sem repetir paisagem e para fugir do sol forte de Fortaleza.',
+  },
+  {
+    pergunta: 'A Aldeota tem boa oferta de academias?',
+    resposta:
+      'É uma das maiores concentrações de academias e studios de Fortaleza, das redes de baixo custo aos espaços premium — e muitos personal trainers da cidade mantêm horários fixos nessas estruturas. A densidade joga a favor de quem contrata: dá para escolher a pé.',
+  },
+  {
+    pergunta: 'Que horas treinar ao ar livre na Aldeota?',
+    resposta:
+      'Como em toda Fortaleza, nas pontas do dia: de 5h30 às 7h30 ou depois das 16h30. No meio do dia, o treino migra para academias climatizadas, para a sombra do Cocó ou para a academia do prédio.',
+  },
+];
+
+const title = 'Personal Trainer na Aldeota (Fortaleza): onde treinar';
+const description =
+  'Personal trainer na Aldeota: as praças, o Parque do Cocó, os studios e a academia do prédio — lista comentada com preços de Fortaleza.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Fortaleza</p>
+    <h1>Personal trainer na Aldeota: os cinco lugares onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Se o vizinho Meireles tem a orla, a Aldeota tem todo o resto: praças com
+      academia ao ar livre, pista de cooper, um parque de verdade na divisa e
+      a maior concentração de academias e studios de Fortaleza. É o bairro
+      onde o treino se resolve a pé — e onde quem procura um
+      <strong>personal trainer na Aldeota</strong> encontra o mercado mais
+      denso da capital. Esta lista comentada percorre os cinco cenários onde
+      os moradores realmente treinam, com o que cada um entrega e para quem
+      funciona melhor.
+    </p>
+
+    <div class="prose">
+      <h2>1. Praça das Flores: a sala de estar esportiva do bairro</h2>
+      <p>
+        A Praça Carlos Alberto Studart Gomes — que nenhum fortalezense chama
+        de outra coisa senão Praça das Flores — é o coração verde da Aldeota e
+        ganhou uma academia ao ar livre com mais de 20 equipamentos
+        distribuídos em três áreas. De manhã cedo, personal trainers usam a
+        estrutura para circuitos de força e mobilidade com alunos de todas as
+        idades; no fim da tarde, a praça vira ponto de funcionais em grupo
+        pequeno. É o lugar certo para quem quer começar sem pisar em academia.
+      </p>
+
+      <h2>2. Praça Luíza Távora: a pista de cooper clássica</h2>
+      <p>
+        Poucas quadras adiante, a Praça Luíza Távora oferece o que falta à
+        maioria dos bairros centrais: pista de cooper de verdade, sombreada e
+        com movimento constante. Serve aos treinos de corrida leve, aos
+        educativos de técnica e à caminhada estruturada dos moradores 60+ —
+        público numeroso nos edifícios tradicionais do entorno. Profissionais
+        do bairro alternam a pista com as ruas internas mais arborizadas para
+        variar estímulo sem sair do raio de um quilômetro.
+      </p>
+
+      <h2>3. Parque do Cocó: o pulmão na divisa</h2>
+      <p>
+        Na borda leste da Aldeota começa o Parque do Cocó, com cerca de 6 km
+        de percursos em meio ao mangue e à mata — o cenário dos treinos longos
+        de corrida, do trail leve e das sessões regenerativas de fim de
+        semana. Num bairro de sol forte quase o ano inteiro, a sombra do Cocó
+        é recurso técnico: é para lá que os bons profissionais deslocam o
+        volume aeróbico nos meses mais quentes, mantendo as pontas do dia —
+        5h30 às 7h30, depois das 16h30 — para o treino a céu aberto.
+      </p>
+
+      <h2>4. Academias e studios: a maior densidade da cidade</h2>
+      <p>
+        Entre as avenidas Santos Dumont e Desembargador Moreira, a Aldeota
+        concentra academias de todos os formatos — das redes de baixo custo
+        aos studios premium de treino personalizado. Para quem contrata
+        personal, essa densidade significa liberdade: dá para escolher a
+        estrutura pela vizinhança, pelo equipamento ou pelo horário, e muitos
+        profissionais da cidade mantêm agenda fixa em mais de uma casa do
+        bairro. O treino de força que sustenta qualquer objetivo — inclusive o
+        emagrecimento — mora aqui.
+      </p>
+
+      <h2>5. A academia do prédio: a nova era vertical</h2>
+      <p>
+        A safra recente de lançamentos elevou o padrão do treino doméstico na
+        Aldeota. O Atmos Aldeota, da J. Simões, na esquina das ruas Vicente
+        Leite e Paula Ney, sobe 30 pavimentos com rooftop e piscinas; o
+        Promenade Aldeota, da Mota Machado, na rua Carolina Sucupira, e
+        clássicos como o Place Royale, na rua Maria Tomásia — a poucos passos
+        da Praça Portugal —, e o Palais Royal, na rua Marcos Macêdo, mantêm
+        espaços fitness que recebem o personal do morador. Com metro quadrado
+        na faixa de R$ 11 mil a R$ 14 mil, o bairro trata academia de prédio
+        como item de série — e o formato condomínio é hoje o que mais cresce
+        entre famílias e executivos locais.
+      </p>
+
+      <h2>Quanto custa personal trainer na Aldeota</h2>
+      <p>
+        A referência de Fortaleza, publicada no guia de
+        <a href="/personal-trainer/fortaleza-ce/">personal trainer em
+        Fortaleza</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais. Na Aldeota, o
+        mercado trabalha no topo das faixas — o bairro divide com o vizinho
+        <a href="/personal-trainer-meireles/">Meireles</a> o público mais
+        exigente da capital, e os horários das pontas do dia lotam primeiro.
+        O acompanhamento online (R$ 170 a R$ 430 mensais) cobre semanas de
+        viagem, e o treino em dupla divide o custo da sessão presencial.
+      </p>
+
+      <h2>Como escolher entre tantos profissionais</h2>
+      <p>
+        Densidade de oferta pede filtro afiado: avaliação física na primeira
+        semana, periodização que o profissional explique com clareza,
+        experiência comprovada com o seu objetivo e nenhuma promessa de
+        resultado garantido — os critérios completos estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Na Aldeota, acrescente a pergunta local: em quais dos cinco cenários o
+        profissional realmente atende? Quem conhece o bairro monta a semana
+        combinando praça, pista, parque, studio e prédio — e dores ou
+        limitações, como sempre, passam primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Aldeota" />
+
+    <WhatsAppCta tema="geral" localidade="na Aldeota" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

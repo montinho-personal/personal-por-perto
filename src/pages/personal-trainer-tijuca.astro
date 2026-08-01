@@ -1,0 +1,222 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-copacabana/',
+    titulo: 'Personal trainer em Copacabana',
+    descricao: 'O guia do bairro mais famoso da Zona Sul — preços, orla e formatos.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-tijuca';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer na Tijuca', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Tijuca?',
+    resposta:
+      'A referência do Rio é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. Na Tijuca, o custo tende ao meio dessas faixas — abaixo da Zona Sul para um serviço equivalente, o que faz do bairro um dos melhores custo-benefícios da cidade para treino acompanhado.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Tijuca?',
+    resposta:
+      'Os três clássicos: o entorno do Maracanã, com volta de cerca de 1.800 metros usada para treinos curtos de corrida; a Praça Afonso Pena e as praças do miolo do bairro para funcionais; e o Parque Nacional da Tijuca, com trilhas e subidas de estrada de floresta para quem quer volume e desnível.',
+  },
+  {
+    pergunta: 'Personal trainer na Tijuca é o mesmo mercado da Barra da Tijuca?',
+    resposta:
+      'Não — são bairros diferentes em zonas diferentes. A Tijuca fica na Zona Norte, com perfil vertical e tradicional; a Barra da Tijuca, na Zona Oeste, é horizontal e de condomínios. Os mercados de personal são independentes, com preços e formatos próprios em cada um.',
+  },
+  {
+    pergunta: 'Os prédios novos da Tijuca têm estrutura para treinar?',
+    resposta:
+      'Os lançamentos recentes — como os da rua Conde de Bonfim e do entorno da rua Uruguai — já nascem com espaço fitness, piscina e áreas de lazer completas, e o personal no condomínio vem crescendo no bairro. Nos prédios antigos, o atendimento a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Dá para treinar na Floresta da Tijuca com personal?',
+    resposta:
+      'Sim — o Parque Nacional da Tijuca abre das 8h às 18h e as estradas internas e trilhas, como o percurso da cancela à Mesa do Imperador, oferecem quilômetros de subida em meio à mata. Profissionais especializados em corrida de montanha e condicionamento usam a floresta como pista de treino avançado.',
+  },
+];
+
+const title = 'Personal Trainer na Tijuca (RJ): preços e onde treinar';
+const description =
+  'Personal trainer na Tijuca: quanto custa, onde treinar — Maracanã, praças, Floresta da Tijuca — e como escolher bem na Zona Norte do Rio.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer na Tijuca: o que os moradores perguntam antes de contratar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum bairro do Rio treina entre dois gigantes como a Tijuca: de um
+      lado, o Maracanã, cujo entorno vira pista de corrida todas as manhãs; do
+      outro, a Floresta da Tijuca, uma das maiores florestas urbanas do mundo,
+      replantada ainda no século XIX. Entre os dois, o bairro mais tradicional
+      da Zona Norte concentra uma procura crescente por
+      <strong>personal trainer na Tijuca</strong> — e uma série de dúvidas
+      práticas que este artigo responde, uma a uma, na ordem em que os
+      moradores costumam fazê-las.
+    </p>
+
+    <div class="prose">
+      <h2>Onde a Tijuca treina, afinal?</h2>
+      <p>
+        Em três cenários que poucos bairros reúnem. O primeiro é o entorno do
+        Maracanã: a volta de cerca de 1.800 metros ao redor do estádio enche de
+        corredores de manhã e à noite — treino curto, plano e mensurável (só
+        evite dias de jogo). O segundo é o miolo do bairro: a Praça Saens Peña
+        e a Praça Afonso Pena ancoram caminhadas, funcionais e alongamento
+        entre as ruas arborizadas. O terceiro é o que nenhum outro bairro tem
+        na porta: o Parque Nacional da Tijuca, aberto das 8h às 18h, com
+        estradas de floresta e percursos como o da cancela à Mesa do Imperador
+        — quilômetros de subida contínua para treinos de montanha. Sobre a
+        confusão de nomes: a <a href="/personal-trainer-barra-da-tijuca/">Barra
+        da Tijuca</a> é outro bairro, em outra zona, com outro mercado.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no Rio
+        de Janeiro</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. Na Tijuca, os
+        valores tendem ao meio das faixas — e é aí que mora a vantagem: o
+        metro quadrado da Zona Norte custa uma fração do da Zona Sul, e o
+        serviço de personal acompanha essa lógica sem perder qualidade. Muitos
+        profissionais que atendem em Botafogo ou Copacabana moram na Tijuca e
+        abrem horários locais com valores mais amigáveis, sobretudo fora do
+        pico.
+      </p>
+
+      <h2>O treino no prédio funciona por aqui?</h2>
+      <p>
+        Cada vez mais. A Tijuca vive um ciclo de renovação imobiliária, e os
+        lançamentos chegam com estrutura que os prédios antigos do bairro nunca
+        tiveram: o Terrazas Tijuca, da W3, na rua Conde de Bonfim 735, e o
+        Ícone Gabizo, da Safira, na rua Professor Gabizo — com coberturas de
+        até 235 m² —, nascem com espaço fitness e lazer completo, assim como o
+        Inspira Tijuca, de apenas 28 unidades junto à rua Uruguai, e o Relier,
+        na rua Doutor Renato Rocco. Nesses endereços, o personal leva método à
+        academia do condomínio. Nos edifícios mais antigos da Conde de Bonfim e
+        da Barão de Mesquita, o atendimento a domicílio com equipamento
+        portátil segue firme — formato preferido dos moradores 60+, numerosos
+        no bairro.
+      </p>
+
+      <h2>Que objetivo os tijucanos mais levam ao personal?</h2>
+      <p>
+        Os profissionais da região relatam um tripé: emagrecimento com saúde,
+        força para a vida real — escadas, filhos no colo, sacolas da feira
+        livre — e preparação para provas de corrida, cultura forte
+        num bairro espremido entre o Maracanã e a floresta. Dores e limitações
+        entram no plano só depois de avaliação com médico ou fisioterapeuta; o
+        personal ajusta o treino a partir do laudo, nunca no lugar dele.
+      </p>
+
+      <h2>Como escolher bem na Tijuca?</h2>
+      <p>
+        Com os filtros de sempre — avaliação física inicial, periodização
+        explicada, experiência comprovada com o seu objetivo e nenhuma
+        promessa de resultado — detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        E com um filtro tijucano: pergunte onde o profissional treina os
+        alunos. Quem conhece o bairro de verdade tem resposta pronta — a volta
+        do Maracanã para dia de semana, as praças para o funcional, a floresta
+        para o fim de semana — e usa cada cenário no momento certo do plano.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer na Tijuca" />
+
+    <WhatsAppCta tema="geral" localidade="na Tijuca" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

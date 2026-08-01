@@ -1,0 +1,232 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-savassi/',
+    titulo: 'Personal trainer na Savassi',
+    descricao: 'O guia do quadrilátero mais valorizado de BH — preços e onde treinar.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-buritis';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Buritis', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Buritis?',
+    resposta:
+      'Em Belo Horizonte, a aula avulsa varia de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. No Buritis, bairro verticalizado da região Oeste com forte perfil de classe média alta, os valores costumam ficar no meio dessas faixas — com o atendimento na academia do prédio puxando o formato mais contratado.',
+  },
+  {
+    pergunta: 'Onde fica a pista de cooper do Buritis?',
+    resposta:
+      'Na rua Henrique Badaró Portugal, a rua mais esportiva do bairro: a pista tem cerca de 800 metros somando ida e volta, com boa infraestrutura e movimento concentrado de manhã cedo e no fim da tarde.',
+  },
+  {
+    pergunta: 'O que é o Parque Aggeo Pio Sobrinho?',
+    resposta:
+      'É a segunda maior área verde municipal de Belo Horizonte: cerca de 612 mil m² integrados ao maciço da Serra do Curral, com trilhas na mata preservada e equipamentos de ginástica. Fica na avenida Professor Mário Werneck e abre das 8h às 18h — o cenário do bairro para treinos em meio à natureza.',
+  },
+  {
+    pergunta: 'As ladeiras do Buritis atrapalham o treino?',
+    resposta:
+      'São o contrário: recurso gratuito de condicionamento. O bairro fica em região alta, na casa dos mil metros de altitude, e as subidas viram estações de treino de perna e fôlego. Quem tem limitação articular deve passar antes por médico ou fisioterapeuta para dosar inclinações.',
+  },
+  {
+    pergunta: 'Os prédios do Buritis têm academia própria?',
+    resposta:
+      'A maioria dos edifícios das últimas décadas sim — o bairro cresceu verticalizado já na era do lazer completo, e torres da rua Cônsul Walter e da avenida Professor Mário Werneck contam com espaço fitness, piscina e sauna. O personal no condomínio é o formato que mais cresce por lá.',
+  },
+];
+
+const title = 'Personal Trainer no Buritis (BH): o guia do bairro';
+const description =
+  'Personal trainer no Buritis: preços de BH, a pista da Henrique Badaró, o Parque Aggeo Pio Sobrinho e o treino nas ladeiras do bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Buritis: treino em três altitudes na região Oeste de BH</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Buritis não é plano em nenhum lugar — e transformou isso em identidade.
+      Construído nas encostas da região Oeste, na casa dos mil metros de
+      altitude, o bairro mais verticalizado desse lado de Belo Horizonte
+      organiza o treino dos moradores em três cotas: a pista de cooper lá
+      embaixo, as ladeiras no meio e a serra lá em cima. Quem procura um
+      <strong>personal trainer no Buritis</strong> contrata, na prática, um
+      guia para circular entre esses três andares — e este artigo mostra como
+      cada um funciona.
+    </p>
+
+    <div class="prose">
+      <h2>Primeira altitude: a pista da Henrique Badaró</h2>
+      <p>
+        Toda manhã, a rua Henrique Badaró Portugal acorda como a esteira
+        coletiva do bairro: a pista de cooper de cerca de 800 metros (ida e
+        volta) concentra corredores, caminhantes e treinos funcionais entre
+        cafés e restaurantes. É o único trecho verdadeiramente plano da rotina
+        local — e por isso os profissionais do bairro o reservam para o que
+        precisa de piso regular: técnica de corrida, intervalados curtos,
+        educativos e sessões com iniciantes. Nos horários de pico, de 6h às 8h
+        e no fim da tarde, a pista é também o ponto de encontro natural entre
+        personal e aluno.
+      </p>
+
+      <h2>Segunda altitude: as ladeiras que constroem perna</h2>
+      <p>
+        Entre a pista e a serra, o Buritis inteiro é subida. As transversais
+        que escalam a partir da avenida Professor Mário Werneck — espinha
+        dorsal do bairro — variam de rampas suaves a paredões que fazem
+        qualquer coxa reclamar. Um bom profissional transforma esse desenho em
+        periodização: sprints em rampa para potência, caminhadas inclinadas
+        para condicionamento de base, circuitos que sobem e descem conforme a
+        fase do treino. A altitude elevada soma um bônus discreto de demanda
+        cardiorrespiratória — e dores ou limitações articulares, como sempre,
+        passam primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Terceira altitude: o Parque Aggeo Pio Sobrinho e a Serra do Curral</h2>
+      <p>
+        No topo do bairro, na própria Mário Werneck, o Parque Aggeo Pio
+        Sobrinho guarda cerca de 612 mil m² de mata integrada ao maciço da
+        Serra do Curral — a segunda maior área verde municipal de BH, aberta
+        das 8h às 18h. Trilhas na reserva, equipamentos de ginástica e sombra
+        de verdade fazem dele o cenário dos treinos longos de fim de semana,
+        das sessões regenerativas e do trail running que cresce na cidade. É o
+        andar de cima do treino buritiense: quando a pista fica pequena e a
+        ladeira vira rotina, a serra renova o estímulo.
+      </p>
+
+      <h2>O quarto cenário: a academia do prédio</h2>
+      <p>
+        O Buritis cresceu vertical já na era do lazer completo, e isso mudou o
+        mercado local de personal. Edifícios como o Mirante do Buritis, na rua
+        Cônsul Walter — via conhecida pelas torres de alto padrão, muitas com
+        um apartamento por andar —, o Turim, na Mário Werneck, e lançamentos
+        recentes como o Vista, de torre única com coberturas de 200 m², contam
+        com espaço fitness, piscina e sauna dentro do condomínio. O personal
+        leva o método até lá: força na academia do prédio, aeróbico na pista ou
+        nas ladeiras, e a semana fecha sem carro. Nos edifícios mais antigos, o
+        atendimento em casa com equipamento portátil cumpre o mesmo papel.
+      </p>
+
+      <h2>Quanto custa personal trainer no Buritis</h2>
+      <p>
+        A referência de Belo Horizonte, publicada no guia de
+        <a href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de R$ 400
+        a R$ 1.100 pelo pacote mensal com 2 a 3 sessões semanais. No Buritis,
+        os valores costumam ocupar o meio das faixas — abaixo do eixo
+        <a href="/personal-trainer-savassi/">Savassi–Lourdes</a>, com
+        estrutura de treino comparável. O acompanhamento online (R$ 180 a
+        R$ 470 mensais) completa semanas de viagem, e o treino em dupla divide
+        o custo entre vizinhos de condomínio — arranjo comum no bairro.
+      </p>
+
+      <h2>Como escolher um personal no Buritis</h2>
+      <p>
+        Use os critérios universais — avaliação física na primeira semana,
+        periodização explicada com clareza, experiência real com o seu
+        objetivo e nenhuma promessa de milagre —, detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        E acrescente o teste das três altitudes: peça ao candidato um esboço de
+        semana usando o bairro. Quem trabalha no Buritis de verdade responde na
+        hora — pista para técnica, ladeira para força, parque para volume — e
+        ainda sabe em qual andar do seu prédio fica a academia.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Buritis" />
+
+    <WhatsAppCta tema="geral" localidade="no Buritis" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
