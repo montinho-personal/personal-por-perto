@@ -1,0 +1,228 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/natal-rn/',
+    titulo: 'Personal trainer em Natal',
+    descricao: 'O guia completo da capital potiguar: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-petropolis-natal/',
+    titulo: 'Personal trainer em Petrópolis (Natal)',
+    descricao: 'O guia do bairro vizinho, entre a Praia dos Artistas e o centro.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-tirol';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Natal', url: '/personal-trainer/natal-rn/' },
+  { nome: 'Personal Trainer no Tirol', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Tirol?',
+    resposta:
+      'Em Natal, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. No Tirol — endereço mais tradicional da elite natalense, ao lado de Petrópolis —, os profissionais experientes trabalham no topo dessas faixas, sobretudo a domicílio e nos condomínios com academia.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Tirol?',
+    resposta:
+      'O cartão de visita é o Parque das Dunas: o Bosque dos Namorados, sua área de uso público, tem pista de caminhada em meio à mata — o cenário mais agradável de Natal para treinos leves e regenerativos. As avenidas largas e arborizadas do bairro completam o circuito de corrida.',
+  },
+  {
+    pergunta: 'O que é o Parque das Dunas e por que ele importa para o treino?',
+    resposta:
+      'É uma das maiores áreas de mata atlântica sobre dunas preservada em área urbana no Brasil, colada no Tirol. Além do microclima mais fresco, o Bosque dos Namorados oferece pista de caminhada com sombra de verdade — item raro numa cidade de sol forte o ano inteiro.',
+  },
+  {
+    pergunta: 'Os prédios do Tirol têm estrutura para treinar?',
+    resposta:
+      'Os lançamentos de alto padrão sim: torres recentes do bairro entregam academia equipada, piscina e áreas de lazer completas, e o personal no condomínio cresce ano a ano. Nos edifícios mais antigos, o atendimento em casa com equipamento portátil é o formato usual.',
+  },
+  {
+    pergunta: 'Tirol ou Petrópolis: qual escolher para treinar?',
+    resposta:
+      'São vizinhos e funcionam como um bairro só: o Tirol tem o Parque das Dunas e o Midway Mall; Petrópolis fica mais perto da orla urbana. A maioria dos profissionais atende nos dois — a escolha prática é treinar no raio de dez minutos de casa.',
+  },
+];
+
+const title = 'Personal Trainer no Tirol (Natal): preços e onde treinar';
+const description =
+  'Personal trainer no Tirol: quanto custa, o treino no Bosque dos Namorados do Parque das Dunas e como escolher bem no bairro nobre de Natal.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Natal</p>
+    <h1>Personal trainer no Tirol: as respostas que os moradores procuram</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Tirol tem um privilégio que nenhum outro bairro nobre de capital
+      nordestina repete: dormir colado numa das maiores matas urbanas sobre
+      dunas do país. É esse vizinho verde — o Parque das Dunas — que define o
+      treino de quem mora nas ruas largas e arborizadas do bairro mais
+      tradicional de Natal. A seguir, as perguntas que chegam com mais
+      frequência a quem busca um <strong>personal trainer no Tirol</strong> —
+      respondidas na ordem em que costumam aparecer.
+    </p>
+
+    <div class="prose">
+      <h2>Onde o Tirol treina, afinal?</h2>
+      <p>
+        Em três cenários principais. O primeiro é o Bosque dos Namorados, a
+        área de uso público do Parque das Dunas: pista de caminhada em meio à
+        mata, microclima mais fresco e o silêncio que falta ao resto da
+        cidade — o lugar dos treinos leves, das sessões regenerativas e da
+        caminhada estruturada dos moradores 60+. O segundo são as próprias
+        avenidas do bairro, largas e arborizadas, como a Hermes da Fonseca e a
+        Prudente de Morais, que recebem corrida e caminhada nas pontas do dia.
+        O terceiro é indoor: as academias do eixo Tirol–Petrópolis e os
+        espaços fitness dos prédios novos, onde mora o treino de força.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/natal-rn/">personal trainer em Natal</a>,
+        vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$ 880 pelo
+        pacote mensal com 2 a 3 sessões semanais. No Tirol, o mercado trabalha
+        no topo das faixas: o bairro concentra o público mais exigente da
+        capital potiguar, os horários de 5h30 às 7h30 lotam primeiro — em
+        Natal, treina-se cedo para fugir do sol — e o atendimento a domicílio
+        é o serviço de maior valor. O acompanhamento online (R$ 160 a R$ 410
+        mensais) completa as semanas de viagem.
+      </p>
+
+      <h2>Os prédios novos mudaram o treino no Tirol?</h2>
+      <p>
+        Mudaram o padrão. A verticalização de alto padrão do bairro trouxe
+        torres com academia equipada, piscina e lazer de clube — caso do
+        Ícone Tirol, da Espacial, torre única de 31 unidades na rua Nival
+        Câmara, com plantas de mais de 180 m², e do Living Garden, complexo de
+        três torres de 30 andares na rua Ceará-Mirim. Nesses endereços, o
+        personal leva o método até a academia do condomínio, e a sessão
+        acontece sem carro, sem trânsito e sem desculpa. Nos edifícios
+        tradicionais do bairro, o treino em casa com equipamento portátil
+        cumpre o mesmo papel.
+      </p>
+
+      <h2>Que objetivos os moradores mais levam ao personal?</h2>
+      <p>
+        O tripé local: saúde e longevidade — o Tirol tem população madura
+        numerosa, que busca força para preservar músculo, osso e autonomia —,
+        estética de praia o ano inteiro e condicionamento para corrida, que
+        cresce na cidade. Dores e limitações passam primeiro por médico ou
+        fisioterapeuta; o personal constrói o plano a partir da liberação, e
+        o Bosque dos Namorados vira o cenário perfeito da fase de base.
+      </p>
+
+      <h2>Treinar cedo é obrigatório no Tirol?</h2>
+      <p>
+        Não é obrigatório — mas é o que a cidade ensina. Com sol forte quase o
+        ano inteiro, as janelas de 5h30 às 7h30 e do fim de tarde concentram o
+        treino ao ar livre, e o Bosque dos Namorados amplia a margem com sua
+        sombra fechada. Quem só pode treinar no meio do dia resolve indoor: a
+        academia do prédio ou os studios climatizados do eixo Tirol–Petrópolis
+        mantêm a constância sem brigar com o termômetro. O bom profissional do
+        bairro tem agenda desenhada para essas duas realidades.
+      </p>
+
+      <h2>Como escolher bem no Tirol?</h2>
+      <p>
+        Com os filtros de sempre — avaliação física na primeira semana,
+        periodização explicada com clareza, experiência comprovada com o seu
+        objetivo e nenhuma promessa de milagre —, detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        E com o filtro do bairro: pergunte como o profissional usa o Parque
+        das Dunas e as avenidas na montagem da semana. Quem atende no Tirol de
+        verdade tem resposta na ponta da língua — e provavelmente também
+        atende no vizinho <a href="/personal-trainer-petropolis-natal/">
+        Petrópolis</a>, o que dobra as opções de horário e cenário.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Tirol" />
+
+    <WhatsAppCta tema="geral" localidade="no Tirol" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

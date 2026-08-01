@@ -1,0 +1,239 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/niteroi-rj/',
+    titulo: 'Personal trainer em Niterói',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'O objetivo mais pedido aos personal trainers — explicado sem mito.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-icarai';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Niterói', url: '/personal-trainer/niteroi-rj/' },
+  { nome: 'Personal Trainer em Icaraí', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Icaraí?',
+    resposta:
+      'Em Niterói, a aula avulsa varia de R$ 80 a R$ 190 e o pacote mensal de R$ 400 a R$ 1.150. Em Icaraí — o coração valorizado da cidade, com os prédios da orla entre os metros quadrados mais caros de Niterói —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Icaraí?',
+    resposta:
+      'No calçadão da Praia de Icaraí, a pista de corrida e caminhada mais movimentada de Niterói; na areia, onde vôlei, futevôlei e funcionais acontecem o dia inteiro; e no Campo de São Bento, o parque de cerca de 36 mil m² que funciona como o jardim público central do bairro.',
+  },
+  {
+    pergunta: 'Dá para nadar ou fazer esporte no mar de Icaraí?',
+    resposta:
+      'A praia é voltada para a Baía de Guanabara e nem sempre tem condição de banho — por isso o esporte do bairro se concentra na areia e no calçadão. Para natação estruturada, os moradores usam clubes e academias com piscina da região.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios da orla de Icaraí?',
+    resposta:
+      'Sim — os edifícios da avenida Jornalista Alberto Francisco Torres e os lançamentos recentes do bairro têm espaços fitness que recebem o personal do morador, e o atendimento no apartamento com equipamento portátil segue comum nos prédios mais antigos.',
+  },
+  {
+    pergunta: 'Icaraí tem boa oferta de academias e studios?',
+    resposta:
+      'É a maior concentração de Niterói: academias de rede, studios de treino personalizado e espaços de yoga e pilates se espalham pelas ruas internas — Gavião Peixoto, Moreira César e arredores —, quase tudo acessível a pé.',
+  },
+];
+
+const title = 'Personal Trainer em Icaraí (Niterói): guia do bairro';
+const description =
+  'Personal trainer em Icaraí: preços de Niterói, treino no calçadão da praia, no Campo de São Bento e nos prédios da orla — e como escolher.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Niterói</p>
+    <h1>Personal trainer em Icaraí: treino de frente para o cartão-postal</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Icaraí acorda em movimento: o calçadão da praia, com o Rio de Janeiro
+      inteiro desenhado do outro lado da Baía de Guanabara, é a esteira
+      coletiva de Niterói — e a areia, uma arena permanente de vôlei e
+      futevôlei. Quem procura um <strong>personal trainer em Icaraí</strong>
+      contrata num dos mercados mais completos do estado fora da capital:
+      orla, parque histórico, densidade de academias e uma safra nova de
+      prédios com estrutura própria. Este guia cobre o essencial — contexto,
+      preços, lugares e critérios — para fechar com o profissional certo.
+    </p>
+
+    <div class="prose">
+      <h2>Icaraí em modo treino: como o bairro se organiza</h2>
+      <p>
+        O bairro é compacto e caminhável: a vida corre entre a orla da avenida
+        Jornalista Alberto Francisco Torres — endereço dos prédios de frente
+        para a baía, entre os metros quadrados mais valorizados de Niterói — e
+        o miolo comercial das ruas Gavião Peixoto e Moreira César. A
+        renovação imobiliária chegou com força: a Soter ergue o ÍON, com
+        fachada assinada pelo escritório franco-brasileiro Triptyque na
+        esquina da Gavião Peixoto com a Capitão Zeferino, e lançou em 2026 o
+        Clarice, na rua Domingues de Sá, no Jardim Icaraí — enquanto projetos
+        como o MB Loft, na rua Mariz e Barros, apostam em plantas compactas.
+        Entre a orla e o miolo, o Campo de São Bento fecha o triângulo
+        esportivo do bairro.
+      </p>
+
+      <h2>Quanto custa personal trainer em Icaraí</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/niteroi-rj/">personal trainer em
+        Niterói</a>, vai de R$ 80 a R$ 190 pela aula avulsa e de R$ 400 a
+        R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais. Icaraí é o
+        topo do mercado niteroiense: os horários de 6h às 8h no calçadão são
+        os mais disputados, e o atendimento em domicílio nos prédios da orla é
+        o serviço de maior valor. O treino em dupla — prática comum entre
+        casais do bairro — divide o custo, e o acompanhamento online (R$ 190 a
+        R$ 480 mensais) cobre as semanas de travessia intensa para o Rio.
+      </p>
+
+      <h2>Onde treinar com personal em Icaraí</h2>
+
+      <h3>O calçadão da praia: a pista oficial</h3>
+      <p>
+        Plano, contínuo e com a vista mais famosa de Niterói, o calçadão de
+        Icaraí concentra corrida, caminhada e funcionais do amanhecer à noite.
+        Personal trainers do bairro usam o percurso para treinos de ritmo — e
+        a possibilidade de emendar até a orla de São Francisco estica os
+        treinos longos sem repetir paisagem.
+      </p>
+
+      <h3>A areia: vôlei, futevôlei e força específica</h3>
+      <p>
+        Como a praia é de baía e nem sempre abre para banho, a areia virou o
+        verdadeiro campo esportivo do bairro: aulas de vôlei e futevôlei,
+        circuitos funcionais e treinos de potência que aproveitam a
+        instabilidade do piso. É o cenário favorito para quem quer
+        condicionamento sem monotonia — e o complemento natural da força feita
+        indoor, na lógica da
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a> que domina os pedidos aos profissionais da região.
+      </p>
+
+      <h3>Campo de São Bento: o jardim histórico</h3>
+      <p>
+        Com cerca de 36 mil m², o parque mais querido de Niterói oferece
+        sombra, aléias planas e movimento constante — o cenário das
+        caminhadas estruturadas, dos treinos leves de recuperação e das
+        sessões com o público 60+, numeroso nos edifícios tradicionais do
+        entorno. Dores e limitações, como sempre, passam primeiro por médico
+        ou fisioterapeuta.
+      </p>
+
+      <h3>Academias, studios e a academia do prédio</h3>
+      <p>
+        O miolo de Icaraí concentra a maior oferta de academias e studios da
+        cidade, quase tudo a pé. E a nova geração de lançamentos — do ÍON ao
+        Clarice — chega com espaço fitness de série, consolidando o formato
+        que mais cresce: o personal na academia do condomínio, com força
+        estruturada sem sair do prédio.
+      </p>
+
+      <h2>Como escolher um personal em Icaraí</h2>
+      <p>
+        Os critérios são os de todo mercado maduro: avaliação física na
+        primeira semana, periodização que o profissional saiba explicar,
+        experiência real com o seu objetivo e honestidade sobre prazos — o
+        passo a passo está no guia <a href={rotas.comoEscolher}>como escolher
+        um personal trainer</a>. Em Icaraí, acrescente o filtro do bairro:
+        pergunte como o candidato combina calçadão, areia, parque e prédio na
+        mesma semana. Quem treina gente no bairro há anos tem essa resposta
+        pronta — e agenda estruturada nos dois picos do calçadão, o amanhecer
+        e o fim de tarde.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Icaraí" />
+
+    <WhatsAppCta tema="geral" localidade="em Icaraí" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

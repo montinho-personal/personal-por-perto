@@ -46,6 +46,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-buritis/', titulo: 'Personal trainer no Buritis (Belo Horizonte)' },
   { categoria: 'Bairros', url: '/personal-trainer-pituba/', titulo: 'Personal trainer na Pituba (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-aldeota/', titulo: 'Personal trainer na Aldeota (Fortaleza)' },
+  { categoria: 'Bairros', url: '/personal-trainer-brooklin/', titulo: 'Personal trainer no Brooklin (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-icarai/', titulo: 'Personal trainer em Icaraí (Niterói)' },
+  { categoria: 'Bairros', url: '/personal-trainer-tirol/', titulo: 'Personal trainer no Tirol (Natal)' },
+  { categoria: 'Bairros', url: '/personal-trainer-13-de-julho/', titulo: 'Personal trainer no 13 de Julho (Aracaju)' },
+  { categoria: 'Bairros', url: '/personal-trainer-umarizal/', titulo: 'Personal trainer no Umarizal (Belém)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

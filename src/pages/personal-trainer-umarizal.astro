@@ -1,0 +1,238 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belem-pa/',
+    titulo: 'Personal trainer em Belém',
+    descricao: 'O guia completo da capital paraense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-batista-campos/',
+    titulo: 'Personal trainer no Batista Campos',
+    descricao: 'O guia do bairro vizinho e da praça mais querida de Belém.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-umarizal';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belém', url: '/personal-trainer/belem-pa/' },
+  { nome: 'Personal Trainer no Umarizal', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Umarizal?',
+    resposta:
+      'Em Belém, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Umarizal — o bairro mais verticalizado e valorizado da capital paraense —, os profissionais experientes trabalham no topo dessas faixas, sobretudo no atendimento em condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Umarizal?',
+    resposta:
+      'Na orla: o Ver-o-Rio, com o pôr do sol sobre a Baía do Guajará, e o Porto Futuro, o parque que renovou a região da Doca, concentram caminhada, corrida e funcionais. O eixo da avenida Visconde de Souza Franco completa o circuito urbano do bairro.',
+  },
+  {
+    pergunta: 'Como treinar no clima de Belém, com calor e chuva diária?',
+    resposta:
+      'Com o relógio local: as janelas são o início da manhã, antes do calor pesar, e o fim de tarde, depois da chuva que costuma cair no meio do dia. Profissionais experientes do Umarizal montam a agenda em torno dessas duas janelas e mantêm plano B indoor para os dias de chuva fora de hora.',
+  },
+  {
+    pergunta: 'Os prédios do Umarizal têm boa estrutura de treino?',
+    resposta:
+      'As torres de alto padrão do bairro entregam academias completas, piscinas e áreas de lazer de clube — e o personal no condomínio é o formato dominante entre executivos e famílias. Nos edifícios mais antigos, o atendimento no apartamento com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Qual a diferença entre treinar no Umarizal e no Batista Campos?',
+    resposta:
+      'O Umarizal é vertical e tem a orla da baía; o Batista Campos, vizinho, é mais horizontal e gira em torno da praça histórica. Muitos moradores combinam: força na academia do prédio no Umarizal e treinos ao ar livre na Praça Batista Campos — e boa parte dos profissionais atende nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Umarizal (Belém): guia por perfil';
+const description =
+  'Personal trainer no Umarizal: o guia por perfil — executivo, família das torres, 60+ e corredor da orla — com preços de Belém.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belém</p>
+    <h1>Personal trainer no Umarizal: o guia por perfil do bairro mais vertical da Amazônia</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O prédio mais alto da Amazônia está nascendo no Umarizal: o ICONIQ, da
+      Quadra Engenharia, projeta seus 41 pavimentos e 134 metros sobre a
+      avenida Visconde de Souza Franco. É o símbolo de um bairro que
+      verticalizou a vida paraense — e que organiza o treino em torno de
+      torres com academia, da orla da Baía do Guajará e de um clima que impõe
+      suas próprias regras. Quem procura um
+      <strong>personal trainer no Umarizal</strong> se encaixa em um dos
+      quatro perfis abaixo — encontre o seu.
+    </p>
+
+    <div class="prose">
+      <h2>O território: a Doca, a orla e as torres</h2>
+      <p>
+        O Umarizal se estrutura em camadas: o eixo da avenida Visconde de
+        Souza Franco — a Doca, no vocabulário belenense —, a orla do Ver-o-Rio
+        e do novo parque Porto Futuro, e o miolo denso de torres residenciais.
+        O padrão construtivo subiu junto com os prédios: além do ICONIQ, a
+        mesma Quadra ergue o Il Palagio, de frente para o Porto Futuro, com
+        unidades de 4 suítes e 620 m² e o primeiro uso residencial de vidro
+        curvo e fachada ventilada no Pará. Nessas torres, a academia do
+        condomínio virou o centro de treino do bairro — clima controlado num
+        lugar onde o tempo muda todo dia à mesma hora.
+      </p>
+
+      <h2>Perfil 1 — O executivo da Doca</h2>
+      <p>
+        Agenda cheia e escritório perto: para esse perfil, a sessão de 45 a 60
+        minutos às 6h da manhã, na academia do próprio prédio, é a única que
+        atravessa a semana inteira. O profissional certo trabalha eficiência —
+        força estruturada, mobilidade e condicionamento no mesmo bloco — e
+        mantém acompanhamento online (R$ 170 a R$ 430 mensais na referência de
+        Belém) para as viagens a São Paulo e Brasília que fazem parte da
+        rotina corporativa local.
+      </p>
+
+      <h2>Perfil 2 — A família das torres</h2>
+      <p>
+        Nos condomínios com lazer completo, o treino vira programa doméstico:
+        casal dividindo a sessão, filhos adolescentes começando musculação com
+        supervisão, tudo na academia do prédio. O formato em dupla ou em
+        sequência — um horário atrás do outro, com o mesmo profissional —
+        divide custo e cria constância. O essencial é que o personal
+        individualize carga e progressão para cada membro, mesmo com todos
+        treinando no mesmo espaço.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ do bairro que envelheceu bem</h2>
+      <p>
+        O Umarizal tem gerações que viram o bairro verticalizar — e uma
+        população madura numerosa nos edifícios mais tradicionais. Para esse
+        público, o arranjo ideal combina a caminhada no Ver-o-Rio ou no Porto
+        Futuro, nos horários frescos, com duas sessões semanais de força no
+        condomínio ou em casa, orientadas por profissional experiente em
+        treino para longevidade. Dores e limitações passam primeiro por médico
+        ou fisioterapeuta; o treino entra depois, sob medida.
+      </p>
+
+      <h2>Perfil 4 — O corredor da orla</h2>
+      <p>
+        Correr em Belém é correr contra o relógio do clima: o amanhecer é a
+        janela nobre, antes do calor equatorial pesar, e o fim de tarde —
+        depois da chuva quase pontual do meio do dia — é a segunda chance,
+        com o pôr do sol sobre a Baía do Guajará como recompensa no
+        Ver-o-Rio. O personal de corrida monta a semana nessas janelas, usa o
+        Porto Futuro e o eixo da Doca para os treinos de ritmo e guarda o
+        plano B indoor para os dias em que a chuva desrespeita o horário.
+      </p>
+
+      <h2>Quanto custa personal trainer no Umarizal</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/belem-pa/">personal trainer em Belém</a>,
+        vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo
+        pacote mensal com 2 a 3 sessões semanais. No Umarizal, o mercado
+        trabalha no topo das faixas — é o endereço mais valorizado da cidade,
+        e o atendimento nos condomínios de alto padrão é o serviço de maior
+        valor. O vizinho <a href="/personal-trainer-batista-campos/">Batista
+        Campos</a> compartilha boa parte dos profissionais, o que amplia as
+        opções de agenda.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os critérios objetivos valem para todos: avaliação física na primeira
+        semana, periodização que o profissional explique sem jargão,
+        experiência real com o seu objetivo e honestidade sobre prazos — o
+        passo a passo está no guia <a href={rotas.comoEscolher}>como escolher
+        um personal trainer</a>. No Umarizal, some o filtro do clima: pergunte
+        ao candidato como ele resolve a semana quando a chuva muda de horário.
+        Quem atende no bairro há anos tem plano B decorado — e é essa
+        flexibilidade que mantém a constância que gera resultado.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Umarizal" />
+
+    <WhatsAppCta tema="geral" localidade="no Umarizal" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

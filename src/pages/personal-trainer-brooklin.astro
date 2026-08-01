@@ -1,0 +1,241 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia completo da capital: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-moema/',
+    titulo: 'Personal trainer em Moema',
+    descricao: 'O guia do bairro vizinho, entre o Ibirapuera e o aeroporto.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-brooklin';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer no Brooklin', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Brooklin?',
+    resposta:
+      'A referência de São Paulo é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. No Brooklin — metro quadrado de lançamento na casa dos R$ 17 mil —, os profissionais experientes trabalham no topo dessas faixas, sobretudo no atendimento em condomínio e nos horários de antes do expediente.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Brooklin?',
+    resposta:
+      'O Parque Severo Gomes, na vizinha Granja Julieta, tem pista de cooper, aparelhos de ginástica e quase 35 mil m² de área verde; o Parque do Cordeiro completa a dupla. Nos fins de semana, as calçadas largas do eixo Berrini e a ciclovia da Marginal Pinheiros servem aos treinos longos.',
+  },
+  {
+    pergunta: 'Os prédios novos do Brooklin têm academia de verdade?',
+    resposta:
+      'A safra recente elevou o padrão: lançamentos de alto padrão do bairro, como os da rua Michigan, entregam academias equipadas, piscinas e áreas de bem-estar de nível de clube — e o personal no condomínio virou o formato que mais cresce na região.',
+  },
+  {
+    pergunta: 'Personal atende na hora do almoço na região da Berrini?',
+    resposta:
+      'Sim — é uma especialidade local. A vizinhança corporativa da Berrini e da Chucri Zaidan criou demanda por sessões de 45 a 60 minutos no meio do dia, em academias e studios próximos aos escritórios, com treino eficiente e volta pontual ao trabalho.',
+  },
+  {
+    pergunta: 'Brooklin ou Campo Belo: onde treinar?',
+    resposta:
+      'Os dois formam um tecido contínuo e a maioria dos profissionais atende em ambos. A escolha prática é pela logística: treine no raio de dez minutos de casa ou do trabalho — a constância pesa mais que o endereço.',
+  },
+];
+
+const title = 'Personal Trainer no Brooklin (SP): formatos e preços';
+const description =
+  'Personal trainer no Brooklin: domicílio, academia do prédio, studio ou parque — o comparativo dos formatos, com preços de São Paulo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer no Brooklin: qual formato combina com a sua rotina?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos bairros de São Paulo mudaram tanto em uma geração: o Brooklin das
+      casinhas com nome de rua americana — Michigan, Nova York, Nebraska —
+      virou também o Brooklin das torres de altíssimo padrão e do metrô da
+      Linha 5-Lilás. Para quem procura um
+      <strong>personal trainer no Brooklin</strong>, essa transformação criou
+      um cardápio de formatos que poucos endereços oferecem juntos. Este
+      comparativo percorre os quatro — domicílio, prédio, studio e parque —
+      para você decidir onde o seu treino rende mais.
+    </p>
+
+    <div class="prose">
+      <h2>O contexto: um bairro, duas eras</h2>
+      <p>
+        O Brooklin de hoje convive em duas velocidades. De um lado, as ruas
+        arborizadas de casas térreas e sobrados que deram fama ao bairro; de
+        outro, a fronteira corporativa da Berrini e a nova geração de
+        lançamentos que empurrou o metro quadrado de lançamento à casa dos
+        R$ 17 mil — caso do CASA Senses, da Cyrela em parceria com a Hines na
+        rua Michigan, com projeto do LE Arquitetos e paisagismo de Benedito
+        Abbud, e do TESS Brooklin, torre única na esquina da Michigan com a
+        Nova York, de plantas entre 130 e 300 m². Cada era do bairro pede um
+        formato de treino diferente — e é isso que o comparativo abaixo
+        organiza.
+      </p>
+
+      <h2>Formato 1 — A domicílio: o herdeiro das casas do Brooklin</h2>
+      <p>
+        Nas ruas residenciais que resistem entre as torres, o personal a
+        domicílio segue sendo o formato clássico: o profissional chega com
+        equipamento portátil, monta a sessão na garagem, no quintal ou na
+        sala, e a família inteira aproveita — do adolescente ao avô. É a
+        escolha de quem valoriza privacidade e zero deslocamento, e o serviço
+        de maior valor agregado do bairro. Funciona especialmente bem para
+        moradores 60+, cujas dores e limitações passam primeiro por médico ou
+        fisioterapeuta antes de o treino começar.
+      </p>
+
+      <h2>Formato 2 — A academia do prédio: o padrão da nova era</h2>
+      <p>
+        Os lançamentos da rua Michigan e arredores entregam academias de nível
+        de clube, piscinas e áreas de bem-estar — estrutura que transforma o
+        condomínio no cenário mais eficiente do bairro para o treino de força.
+        O personal leva o método; o prédio entra com o equipamento. Para quem
+        mora nas torres novas, é o formato de melhor relação
+        tempo-resultado: sem trânsito, sem estacionamento, sem desculpa.
+      </p>
+
+      <h2>Formato 3 — Studio e academia: a hora do almoço da Berrini</h2>
+      <p>
+        A vizinhança corporativa criou uma especialidade local: a sessão de 45
+        a 60 minutos no meio do dia. Studios de treino personalizado e
+        academias do eixo Brooklin–Campo Belo recebem executivos que treinam
+        entre reuniões, com personal cronometrando estímulo e volta pontual ao
+        escritório. Se o seu dia só tem essa janela, procure profissionais com
+        agenda fixa perto do trabalho — e treino desenhado para caber nela.
+      </p>
+
+      <h2>Formato 4 — Parques e ciclovias: o pulmão verde da região</h2>
+      <p>
+        O Parque Severo Gomes, na vizinha Granja Julieta, oferece quase 35 mil
+        m² com pista de cooper, aparelhos de ginástica e sombra — o cenário
+        das sessões funcionais e da corrida leve. O Parque do Cordeiro
+        completa a dupla verde, e a malha cicloviária que liga a avenida
+        Roberto Marinho aos dois parques soma quilômetros de percurso. Nos
+        fins de semana, as calçadas largas da Berrini esvaziam e viram pista —
+        e a ciclovia da Marginal Pinheiros recebe os treinos longos de bike e
+        corrida.
+      </p>
+
+      <h2>Quanto custa personal trainer no Brooklin</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais. No Brooklin, o
+        atendimento em domicílio e nos condomínios de alto padrão trabalha no
+        topo das faixas; studios e parques ficam no meio. O acompanhamento
+        online (R$ 200 a R$ 500 mensais) segura as semanas de viagem — rotina
+        comum num bairro de tanta gente do mercado corporativo. Para comparar
+        com o vizinho, veja também o guia de
+        <a href="/personal-trainer-moema/">personal trainer em Moema</a>.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        A regra prática: casa térrea pede domicílio; torre nova pede
+        condomínio; expediente na Berrini pede studio ao meio-dia; e todo
+        plano bem-feito reserva um dia de parque. Escolhido o formato, valem
+        os critérios do guia <a href={rotas.comoEscolher}>como escolher um
+        personal trainer</a>: avaliação física na primeira semana,
+        periodização explicada com clareza, experiência real com o seu
+        objetivo e nenhuma promessa de resultado garantido. No Brooklin, o
+        bom profissional transita entre as duas eras do bairro — e monta a
+        semana usando o melhor de cada uma.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Brooklin" />
+
+    <WhatsAppCta tema="geral" localidade="no Brooklin" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

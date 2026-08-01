@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/aracaju-se/',
+    titulo: 'Personal trainer em Aracaju',
+    descricao: 'O guia completo da capital sergipana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A base de qualquer objetivo de emagrecimento — com ou sem personal.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-13-de-julho';
+const atualizadoEm = '2026-08-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Aracaju', url: '/personal-trainer/aracaju-se/' },
+  { nome: 'Personal Trainer no 13 de Julho', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no 13 de Julho?',
+    resposta:
+      'Em Aracaju, a aula avulsa varia de R$ 60 a R$ 140 e o pacote mensal de R$ 300 a R$ 820. No 13 de Julho — o metro quadrado mais caro da capital sergipana —, os profissionais experientes trabalham no topo dessas faixas, principalmente no atendimento a domicílio e nos horários do calçadão.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no 13 de Julho?',
+    resposta:
+      'No calçadão da avenida Beira Mar, à margem do rio Sergipe: são cerca de 5 km com pista de corrida, ciclovia, quadras e academias ao ar livre. O Parque da Sementeira, na divisa com o Grageru, completa o circuito com trilhas sombreadas e gramados para treinos funcionais.',
+  },
+  {
+    pergunta: 'O calçadão do 13 de Julho é bom para corrida?',
+    resposta:
+      'É a pista de rua mais tradicional de Aracaju: plana, contínua e com o visual do encontro dos rios. Nos horários de menos calor — antes das 7h30 e depois das 16h30 —, concentra corredores de todos os níveis, grupos de treino e sessões acompanhadas por personal.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios da avenida Beira Mar?',
+    resposta:
+      'Sim — os edifícios de alto padrão da orla, muitos com academia própria, recebem o personal do morador, e o atendimento no apartamento é comum nos prédios que não têm espaço fitness. Cada condomínio tem suas regras de acesso de prestadores.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'Como em toda Aracaju, nas pontas do dia: o amanhecer é o pico do calçadão, e o fim de tarde, a segunda janela — com o pôr do sol sobre o rio como bônus. No meio do dia, o treino migra para academias climatizadas ou para a sombra da Sementeira.',
+  },
+];
+
+const title = 'Personal Trainer no 13 de Julho (Aracaju): o guia';
+const description =
+  'Personal trainer no 13 de Julho: preços de Aracaju, o calçadão do rio Sergipe, o Parque da Sementeira e o treino nos prédios da Beira Mar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Aracaju</p>
+    <h1>Personal trainer no 13 de Julho: a vida em volta do calçadão do rio</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo bairro tem um centro; o 13 de Julho tem uma margem. A vida do
+      endereço mais valorizado de Aracaju gira em torno do calçadão da avenida
+      Beira Mar, onde o rio Sergipe encontra o Poxim — e é ali, entre a pista
+      de corrida e os prédios que substituíram os casarões a partir dos anos
+      1980, que trabalha o <strong>personal trainer no 13 de Julho</strong>.
+      Este artigo percorre o bairro como os moradores o vivem: começando pelo
+      calçadão e voltando para dentro, do parque aos prédios.
+    </p>
+
+    <div class="prose">
+      <h2>A margem: 5 km de calçadão à beira do rio</h2>
+      <p>
+        O calçadão do 13 de Julho soma cerca de 5 km com pista de corrida,
+        ciclovia, quadras, academias ao ar livre e mirante — a estrutura
+        esportiva pública mais completa de Sergipe, com o visual do rio no
+        lugar do mar. É a espinha dorsal do treino local: corrida e caminhada
+        nas pontas do dia, funcionais nos bolsões de equipamento, alongamento
+        com vista para o pôr do sol. Os personal trainers do bairro montam ali
+        os treinos de ritmo e os circuitos ao ar livre — sempre respeitando o
+        relógio do calor aracajuano, que manda treinar antes das 7h30 ou
+        depois das 16h30.
+      </p>
+
+      <h2>O quintal verde: Parque da Sementeira</h2>
+      <p>
+        Na divisa com o Grageru, o Parque Augusto Franco — a Sementeira, como
+        a cidade o chama — oferece o contraponto sombreado do calçadão:
+        trilhas, gramados e lago numa das maiores áreas verdes de Aracaju.
+        É para lá que os profissionais deslocam os treinos de meio de manhã,
+        as sessões regenerativas e os funcionais em grupo pequeno que precisam
+        de espaço e sombra. A dupla calçadão–Sementeira permite variar
+        estímulo a semana inteira sem pegar o carro.
+      </p>
+
+      <h2>Os prédios: a orla que virou vertical</h2>
+      <p>
+        A partir dos anos 1980, os edifícios de alto padrão tomaram o lugar
+        dos casarões da avenida Beira Mar — e alguns entraram para o
+        imaginário da cidade, como a Mansão Vincent van Gogh, pioneira em
+        Aracaju no conceito de um apartamento por andar com piscina privativa
+        em cada unidade e cobertura triplex de mais de 1.100 m². Nessa orla
+        verticalizada, o treino dentro do condomínio é o formato de maior
+        valor: academia do prédio quando há, apartamento com equipamento
+        portátil quando não há. Famílias inteiras treinam em sequência com o
+        mesmo profissional — arranjo que divide custo e multiplica adesão.
+      </p>
+
+      <h2>Quanto custa personal trainer no 13 de Julho</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/aracaju-se/">personal trainer em
+        Aracaju</a>, vai de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a
+        R$ 820 pelo pacote mensal com 2 a 3 sessões semanais. No 13 de Julho,
+        o mercado trabalha no topo: o bairro tem o metro quadrado mais caro de
+        Sergipe, o público mais exigente e os horários de calçadão mais
+        disputados da cidade. O acompanhamento online (R$ 150 a R$ 390
+        mensais) cobre viagens, e o treino em dupla é o caminho para reduzir o
+        custo por pessoa sem perder acompanhamento.
+      </p>
+
+      <h2>O objetivo mais pedido — e o que realmente funciona</h2>
+      <p>
+        Nos relatos dos profissionais que atendem na orla, o pedido número um
+        combina emagrecimento e definição para a vida de clima quente o ano
+        inteiro. A resposta técnica é menos glamourosa que o calçadão:
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> consistente, força duas a três vezes por semana e
+        aeróbico que a rotina sustente. O papel do personal é fazer esse tripé
+        caber na agenda — e o bairro, com pista, parque e prédio no mesmo
+        quilômetro, torna a logística fácil. Dores e limitações, antes de
+        tudo, passam por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como escolher
+        um personal trainer</a>: avaliação física na primeira semana,
+        periodização explicada com clareza, experiência real com o seu
+        objetivo e nenhuma promessa de resultado. No 13 de Julho, acrescente
+        o teste da margem: pergunte ao candidato como ele monta uma semana
+        entre o calçadão, a Sementeira e o seu prédio. Quem trabalha no bairro
+        responde com endereços e horários — e sabe que às 5h50 a pista já está
+        em movimento.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no 13 de Julho" />
+
+    <WhatsAppCta tema="geral" localidade="no 13 de Julho" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
