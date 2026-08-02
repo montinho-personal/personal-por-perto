@@ -1,5 +1,6 @@
 ---
 import type { FAQ } from '../lib/types';
+import { paragrafos } from '../lib/texto';
 export interface Props {
   faqs: FAQ[];
   titulo?: string;
@@ -16,7 +17,7 @@ const { faqs, titulo = 'Perguntas frequentes', id = 'perguntas-frequentes' } = A
         <details class="faq-item" open={i === 0}>
           <summary>{f.pergunta}</summary>
           <div class="faq-body">
-            <p set:html={f.resposta} />
+            {paragrafos(f.resposta).map((t) => <p set:html={t} />)}
           </div>
         </details>
       ))

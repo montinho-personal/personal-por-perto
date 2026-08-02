@@ -10,6 +10,7 @@ import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import WhatsAppCta from '../../components/WhatsAppCta.astro';
 import { whatsappUrl } from '../../lib/links';
+import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, deCidade } from '../../lib/gramatica';
@@ -281,19 +282,13 @@ const objetivoDesc: Record<string, string> = {
     <article class="prose article">
       <section id="panorama">
         <h2>Panorama {deN} para quem treina</h2>
-        <p>{cidade.resumoEconomico}</p>
-        <p>
-          Para quem leva o treino a sério, vale entender o contexto local. {cidade.culturaEsportiva}
-        </p>
+        {paragrafos(cidade.resumoEconomico).map((t) => <p>{t}</p>)}
+        {paragrafos(`Para quem leva o treino a sério, vale entender o contexto local. ${cidade.culturaEsportiva}`).map((t) => <p>{t}</p>)}
         <div class="callout">
           <strong>Clima e treino:</strong>
           {cidade.clima} {cidade.climaTreino}
         </div>
-        <p>
-          A mobilidade também pesa na decisão. {cidade.mobilidade} Na prática, isso
-          influencia a escolha entre treinar perto de casa, do trabalho ou contar com
-          um personal que vá até você.
-        </p>
+        {paragrafos(`A mobilidade também pesa na decisão. ${cidade.mobilidade} Na prática, isso influencia a escolha entre treinar perto de casa, do trabalho ou contar com um personal que vá até você.`).map((t) => <p>{t}</p>)}
         {
           cidade.bairrosNobres.length > 0 && (
             <p>
@@ -322,7 +317,7 @@ const objetivoDesc: Record<string, string> = {
 
       <section id="mercado">
         <h2>O mercado de personal trainers {emN}</h2>
-        <p>{mercadoTexto}</p>
+        {paragrafos(mercadoTexto).map((t) => <p>{t}</p>)}
         {
           cidade.destaquesFitness.length > 0 && (
             <>
@@ -714,7 +709,7 @@ const objetivoDesc: Record<string, string> = {
           aproveitar cada um deles.
         </p>
         <h3>Treino em academia</h3>
-        <p>{cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`}</p>
+        {paragrafos(cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`).map((t) => <p>{t}</p>)}
         {
           cidade.academiasProximas && cidade.academiasProximas.length > 0 && (
             <>
@@ -745,7 +740,7 @@ const objetivoDesc: Record<string, string> = {
         <ul>
           {cidade.parques.map((p) => (<li><strong>{p.nome}:</strong> {p.descricao}</li>))}
         </ul>
-        {cidade.ciclovias && <p>{cidade.ciclovias}</p>}
+        {cidade.ciclovias && paragrafos(cidade.ciclovias).map((t) => <p>{t}</p>)}
       </section>
 
       <CtaMontinho cidade={n} localidade={emN} variante="inline" />
