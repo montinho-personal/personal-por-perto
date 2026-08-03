@@ -357,6 +357,9 @@ import { cidade as ourinhos } from './ourinhos-sp';
 import { cidade as leme } from './leme-sp';
 import { cidade as cubatao } from './cubatao-sp';
 import { cidade as alfenas } from './alfenas-mg';
+import { cidade as encantado } from './encantado-rs';
+import { cidade as monteSiao } from './monte-siao-mg';
+import { cidade as amargosa } from './amargosa-ba';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1092,6 +1095,8 @@ export const cidades: Cidade[] = [
   caieiras, bebedouro, araguari, joaoMonlevade, rioBonito, sarandi, indaial, farroupilha,
   guanambi, arcoverde, aquiraz, mineiros, caceres, pontaPora, codo, altamira, patos,
   caico, lagarto, ariquemes,
+  // Bloco 47 (3 cidades)
+  encantado, monteSiao, amargosa,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

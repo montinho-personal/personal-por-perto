@@ -1,0 +1,252 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-savassi/',
+    titulo: 'Personal trainer na Savassi',
+    descricao: 'O guia do quadrilátero mais valorizado de BH — preços e onde treinar.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-sion';
+const atualizadoEm = '2026-08-03';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Sion', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Sion?',
+    resposta:
+      'Em Belo Horizonte, a aula avulsa varia de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. No Sion — um dos bairros mais arborizados e valorizados da Zona Sul —, os profissionais experientes trabalham no terço superior dessas faixas, sobretudo a domicílio e no condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Sion?',
+    resposta:
+      'Nas praças arborizadas do bairro — a Praça Alaska é a mais conhecida —, nas ruas tranquilas de copas fechadas e, na vizinhança imediata, na subida para o Parque das Mangabeiras e a Praça do Papa, o percurso de rampa mais clássico da Zona Sul de BH.',
+  },
+  {
+    pergunta: 'O Sion é bom para quem gosta de treinar em subida?',
+    resposta:
+      'É um dos melhores endereços de BH para isso: o bairro se debruça sobre a Serra do Curral, e as rampas em direção às Mangabeiras funcionam como estações naturais de condicionamento. Quem tem limitação articular deve avaliar antes com médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Os prédios do Sion têm academia própria?',
+    resposta:
+      'Os lançamentos sim: torres recentes do bairro entregam academia equipada, piscina e lazer completo, e o personal no condomínio cresce ano a ano. Nos edifícios mais antigos das ruas arborizadas, o atendimento a domicílio com equipamento portátil é o formato usual.',
+  },
+  {
+    pergunta: 'Sion ou Savassi: onde treinar?',
+    resposta:
+      'São vizinhos de perfis opostos e complementares: o Sion é residencial, arborizado e tranquilo; a Savassi é urbana e cheia de studios. Muitos moradores combinam força no prédio ou em casa no Sion com serviços e studios da Savassi — e boa parte dos profissionais atende nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Sion (BH): formatos e preços';
+const description =
+  'Personal trainer no Sion: domicílio, academia do prédio, praças ou a subida da serra — o comparativo dos formatos, com preços de BH.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Sion: qual formato combina com o bairro-jardim da serra?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Sion é o bairro que Belo Horizonte escolheu para morar com calma:
+      ruas de copas fechadas, praças a cada poucas quadras e a Serra do
+      Curral na linha do horizonte. Essa vocação residencial molda o
+      mercado de treino local — aqui, o exercício acontece perto de casa
+      ou dentro dela.
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer no Sion</strong>,
+      este comparativo percorre os quatro formatos do bairro — domicílio,
+      prédio, praças e a subida da serra — para você decidir onde o seu
+      treino rende mais.
+    </p>
+
+    <div class="prose">
+      <h2>O contexto: um bairro-jardim que começou a verticalizar</h2>
+      <p>
+        O Sion tradicional é de casas e edifícios baixos entre árvores.
+        A safra recente de lançamentos, porém, elevou o padrão: o Soho
+        Residence, da Projecon, na rua Estados Unidos, traz plantas de 4
+        quartos com lazer de clube, e o S1ON by MIP, torre de 19 andares
+        com dois apartamentos por andar, aposta na vista para a Serra do
+        Curral como argumento principal.
+      </p>
+
+      <p>
+        Essa transição define os formatos de treino disponíveis — e o
+        melhor para você depende de qual Sion é o seu.
+      </p>
+
+      <h2>Formato 1 — A domicílio: o clássico das ruas arborizadas</h2>
+      <p>
+        Nos edifícios tradicionais e nas casas remanescentes, o personal
+        a domicílio é o formato histórico do bairro: equipamento portátil,
+        sessão na sala, na garagem ou na área externa, zero deslocamento.
+      </p>
+
+      <p>
+        É a escolha natural das famílias e do público 60+, numeroso no
+        bairro — com a ressalva de sempre: dores e limitações passam
+        primeiro por médico ou fisioterapeuta, e o treino se constrói a
+        partir daí.
+      </p>
+
+      <h2>Formato 2 — A academia do prédio: a aposta dos lançamentos</h2>
+      <p>
+        As torres novas chegam com academia equipada, piscina e sauna — e
+        o personal leva o método até elas. Para quem mora nos lançamentos,
+        é o formato de melhor relação tempo-resultado: força estruturada
+        sem sair do condomínio, antes do expediente ou no fim do dia.
+      </p>
+
+      <h2>Formato 3 — As praças: o treino ao ar livre de vizinhança</h2>
+      <p>
+        A Praça Alaska e as demais praças do bairro ancoram funcionais,
+        alongamento e caminhada estruturada em meio às árvores. É o
+        cenário dos treinos leves, das sessões em dupla e do contato com o
+        ar livre sem sair do raio de cinco quadras de casa.
+      </p>
+
+      <h2>Formato 4 — A subida da serra: o diferencial do Sion</h2>
+      <p>
+        Nenhum outro formato é tão do bairro quanto este: o Sion se
+        debruça sobre a Serra do Curral, e as rampas em direção ao Parque
+        das Mangabeiras e à Praça do Papa — na vizinhança imediata — são o
+        percurso de subida mais clássico da Zona Sul de BH.
+      </p>
+
+      <p>
+        Bons profissionais transformam esse desnível em periodização:
+        caminhada inclinada para base, sprints em rampa para potência, e a
+        vista da cidade como recompensa no topo.
+      </p>
+
+      <h2>Quanto custa personal trainer no Sion</h2>
+      <p>
+        A referência de Belo Horizonte, publicada no guia de
+        <a href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de
+        R$ 400 a R$ 1.100 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Sion, o mercado ocupa o terço superior das faixas — perfil
+        semelhante ao do eixo <a href="/personal-trainer-savassi/">
+        Savassi–Lourdes</a>, com o domicílio como formato de maior valor.
+        O acompanhamento online (R$ 180 a R$ 470 mensais) completa as
+        semanas de viagem, e o treino em dupla divide o custo entre
+        vizinhos e casais.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        A regra prática do bairro: edifício antigo pede domicílio; torre
+        nova pede condomínio; treino leve pede praça; e todo plano
+        bem-feito reserva um dia de serra.
+      </p>
+
+      <p>
+        Escolhido o formato, valem os critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação física na primeira semana, periodização explicada com
+        clareza, experiência real com o seu objetivo e nenhuma promessa de
+        milagre. E o teste local: pergunte ao candidato qual rampa do
+        bairro ele usa nos treinos — quem atende no Sion responde na hora.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Sion" />
+
+    <WhatsAppCta tema="geral" localidade="no Sion" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -51,6 +51,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-tirol/', titulo: 'Personal trainer no Tirol (Natal)' },
   { categoria: 'Bairros', url: '/personal-trainer-13-de-julho/', titulo: 'Personal trainer no 13 de Julho (Aracaju)' },
   { categoria: 'Bairros', url: '/personal-trainer-umarizal/', titulo: 'Personal trainer no Umarizal (Belém)' },
+  { categoria: 'Bairros', url: '/personal-trainer-ponta-negra/', titulo: 'Personal trainer na Ponta Negra (Manaus)' },
+  { categoria: 'Bairros', url: '/personal-trainer-sion/', titulo: 'Personal trainer no Sion (Belo Horizonte)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jatiuca/', titulo: 'Personal trainer na Jatiúca (Maceió)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

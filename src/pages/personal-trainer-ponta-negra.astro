@@ -1,0 +1,257 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/manaus-am/',
+    titulo: 'Personal trainer em Manaus',
+    descricao: 'O guia completo da capital amazonense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-adrianopolis/',
+    titulo: 'Personal trainer em Adrianópolis',
+    descricao: 'O guia do bairro nobre tradicional de Manaus, no centro expandido.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-ponta-negra';
+const atualizadoEm = '2026-08-03';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Manaus', url: '/personal-trainer/manaus-am/' },
+  { nome: 'Personal Trainer na Ponta Negra', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Ponta Negra?',
+    resposta:
+      'Em Manaus, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Na Ponta Negra — um dos endereços mais valorizados da capital, com condomínios de alto padrão de frente para o rio —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Ponta Negra?',
+    resposta:
+      'No calçadão da orla, com cerca de 5 km de pedra portuguesa à beira do rio Negro, nas quadras esportivas do complexo turístico — vôlei, futebol e skate — e na areia da praia fluvial. É a estrutura pública de treino mais completa de Manaus.',
+  },
+  {
+    pergunta: 'Pode treinar na praia da Ponta Negra?',
+    resposta:
+      'Sim — a areia da praia fluvial recebe funcionais, treinos de potência e esportes de areia o dia inteiro. Só o banho de rio tem restrição de horário: por segurança, a entrada na água é liberada apenas até as 17h.',
+  },
+  {
+    pergunta: 'Que horas treinar na orla para fugir do calor de Manaus?',
+    resposta:
+      'Nas pontas do dia: o amanhecer, antes do calor equatorial pesar, e o fim de tarde, quando o pôr do sol sobre o rio Negro vira o cenário mais famoso da cidade. No meio do dia, o treino migra para a academia do condomínio, com clima controlado.',
+  },
+  {
+    pergunta: 'Os condomínios da Ponta Negra têm estrutura de treino?',
+    resposta:
+      'É um dos diferenciais do bairro: os residenciais de alto padrão da avenida Coronel Teixeira e do entorno da orla contam com academias, piscinas e quadras — e o personal no condomínio é o formato dominante entre os moradores.',
+  },
+];
+
+const title = 'Personal Trainer na Ponta Negra (Manaus): onde treinar';
+const description =
+  'Personal trainer na Ponta Negra: o calçadão de 5 km, a praia do rio Negro, as quadras da orla e a academia do condomínio — com preços de Manaus.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Manaus</p>
+    <h1>Personal trainer na Ponta Negra: os lugares onde a orla de Manaus treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Manaus tem praia — e ela fica na Ponta Negra. A orla do rio Negro,
+      com seu calçadão de pedra portuguesa, o anfiteatro e a areia clara,
+      é o quintal esportivo da cidade e o coração do bairro mais novo
+      entre os endereços de alto padrão da capital.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer na Ponta Negra</strong>
+      encontra um cardápio de cenários que nenhum outro bairro amazonense
+      reúne. Esta lista comentada percorre, um a um, os lugares onde os
+      moradores realmente treinam.
+    </p>
+
+    <div class="prose">
+      <h2>1. O calçadão da orla: 5 km à beira do rio Negro</h2>
+      <p>
+        O complexo turístico da Ponta Negra soma cerca de 5 km de calçadão
+        em pedra portuguesa, com jardins, mirante e o anfiteatro que recebe
+        os grandes eventos da cidade. É a pista de corrida e caminhada mais
+        movimentada de Manaus — plana, contínua e com o rio como paisagem.
+      </p>
+
+      <p>
+        Os personal trainers do bairro montam ali os treinos de ritmo e as
+        sessões funcionais ao ar livre, sempre nas janelas do clima
+        equatorial: amanhecer e fim de tarde, quando o pôr do sol sobre o
+        rio Negro transforma o treino em programa.
+      </p>
+
+      <h2>2. As quadras do complexo: vôlei, futebol e skate</h2>
+      <p>
+        Ao longo da orla, as quadras esportivas mantêm o bairro em
+        movimento o dia inteiro — vôlei, futebol, skate e treinos em grupo
+        pequeno. Para quem busca condicionamento sem monotonia, o personal
+        usa essa estrutura pública como extensão da academia: circuitos,
+        potência e agilidade com equipamento mínimo.
+      </p>
+
+      <h2>3. A areia da praia fluvial</h2>
+      <p>
+        A praia da Ponta Negra — a mais famosa da cidade — é também
+        estação de treino: a areia instável recruta mais músculo a cada
+        passada, e os funcionais de areia são tradição local. Vale saber:
+        o banho de rio é liberado só até as 17h, mas o treino na faixa de
+        areia não tem hora.
+      </p>
+
+      <h2>4. A academia do condomínio: o formato dominante</h2>
+      <p>
+        A Ponta Negra cresceu vertical e planejada: os residenciais de
+        alto padrão da avenida Coronel Teixeira — caso do River Side, com
+        academia, quadras e piscinas — nasceram com estrutura de clube. O
+        personal leva o método até lá, e a sessão acontece com clima
+        controlado, item valioso numa cidade onde o meio do dia não perdoa.
+      </p>
+
+      <p>
+        Entre famílias, o arranjo mais comum é a sequência de horários com
+        o mesmo profissional; entre executivos, a sessão das 6h antes do
+        trânsito da Coronel Teixeira.
+      </p>
+
+      <h2>5. O plano B da chuva: studios e academias</h2>
+      <p>
+        Em Manaus, a chuva não pede licença. As academias e studios do
+        eixo Ponta Negra completam o circuito para os dias em que a orla
+        não colabora — e muitos profissionais do bairro mantêm horários
+        fixos nessas estruturas, o que garante a constância que gera
+        resultado.
+      </p>
+
+      <h2>O objetivo mais pedido na orla</h2>
+      <p>
+        Nos relatos dos profissionais que atendem no bairro, o pedido
+        número um combina condicionamento e estética para a vida de calor
+        o ano inteiro — com a corrida na orla como porta de entrada e a
+        força no condomínio como base. O papel do personal é fazer os
+        dois caberem na mesma semana, respeitando o relógio equatorial.
+      </p>
+
+      <h2>Quanto custa personal trainer na Ponta Negra</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/manaus-am/">personal trainer em
+        Manaus</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Na Ponta Negra, o mercado trabalha no topo das faixas — o bairro
+        disputa com o tradicional
+        <a href="/personal-trainer-adrianopolis/">Adrianópolis</a> o
+        público de maior renda da cidade, e o atendimento em condomínio é
+        o serviço mais valorizado. O acompanhamento online (R$ 170 a
+        R$ 430 mensais) cobre as semanas de viagem.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de resultado.
+      </p>
+
+      <p>
+        Na Ponta Negra, some o filtro local: pergunte como o profissional
+        combina orla, areia, quadras e condomínio na mesma semana — e como
+        resolve os dias de chuva. Dores e limitações, como sempre, passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Ponta Negra" />
+
+    <WhatsAppCta tema="geral" localidade="na Ponta Negra" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
