@@ -1,0 +1,254 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/vitoria-es/',
+    titulo: 'Personal trainer em Vitória',
+    descricao: 'O guia completo da capital capixaba: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-praia-do-canto/',
+    titulo: 'Personal trainer na Praia do Canto',
+    descricao: 'O guia do bairro da Curva da Jurema e do Triângulo das Bermudas.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-jardim-da-penha';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Vitória', url: '/personal-trainer/vitoria-es/' },
+  { nome: 'Personal Trainer em Jardim da Penha', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Jardim da Penha?',
+    resposta:
+      'Em Vitória, a aula avulsa varia de R$ 85 a R$ 200 e o pacote mensal de R$ 420 a R$ 1.200. Em Jardim da Penha — um dos bairros mais completos da capital —, os valores ficam na metade superior das faixas, com studios e orla puxando a demanda.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Jardim da Penha?',
+    resposta:
+      'Na Praia de Camburi, a maior do Espírito Santo: são 6 km de orla com calçadão, ciclovia e equipamentos de ginástica. Dentro do bairro, as sete praças e as ruas largas e arborizadas completam o circuito de treino de vizinhança.',
+  },
+  {
+    pergunta: 'A orla de Camburi é boa para corrida?',
+    resposta:
+      'É a pista de rua mais completa de Vitória: 6 km contínuos e planos de Jardim da Penha a Jardim Camburi, com calçadão, ciclovia e quiosques de apoio. Nas pontas do dia, concentra corredores de todos os níveis e grupos de treino.',
+  },
+  {
+    pergunta: 'O perfil universitário da UFES muda o mercado do bairro?',
+    resposta:
+      'Muda para melhor: a vizinhança do campus enche o bairro de gente jovem e ativa, sustenta studios e academias variadas e cria oferta de horários flexíveis — dos treinos de 6h aos noturnos depois da última aula.',
+  },
+  {
+    pergunta: 'Jardim da Penha ou Praia do Canto: onde treinar?',
+    resposta:
+      'Os dois têm orla e mercado forte. A Praia do Canto é mais compacta e sofisticada; Jardim da Penha é maior, universitário e tem Camburi na porta. A escolha prática é o raio de dez minutos de casa — e muitos profissionais atendem nos dois.',
+  },
+];
+
+const title = 'Personal Trainer em Jardim da Penha (Vitória): formatos';
+const description =
+  'Personal trainer em Jardim da Penha: domicílio, prédio, studio ou a orla de Camburi — o comparativo dos formatos, com preços de Vitória.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Vitória</p>
+    <h1>Personal trainer em Jardim da Penha: qual formato combina com o bairro de Camburi?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Jardim da Penha é o bairro que Vitória escolheu para viver a pé:
+      ruas largas e arborizadas, sete praças, a UFES na vizinhança e os
+      6 km da Praia de Camburi — a maior do Espírito Santo — como
+      quintal esportivo.
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer em Jardim da
+      Penha</strong>, este comparativo percorre os quatro formatos do
+      bairro — domicílio, prédio, studio e orla — para você decidir onde
+      o seu treino rende mais.
+    </p>
+
+    <div class="prose">
+      <h2>O contexto: o bairro mais caminhável da capital</h2>
+      <p>
+        Poucos endereços capixabas reúnem tanta vida em escala humana: o
+        comércio de rua, o campus da UFES e a orla criam um bairro onde
+        quase tudo se resolve sem carro — inclusive o treino. O público
+        mistura famílias, estudantes e profissionais liberais, e o
+        mercado de personal se organizou para atender os três.
+      </p>
+
+      <h2>Formato 1 — A orla de Camburi: a pista oficial</h2>
+      <p>
+        Os 6 km de calçadão, ciclovia e equipamentos de ginástica fazem
+        de Camburi a estrutura pública de treino mais completa do
+        estado. Nas pontas do dia, o personal monta ali treinos de
+        corrida, funcionais na areia e circuitos nos equipamentos — com
+        o mar de paisagem e os quiosques de apoio.
+      </p>
+
+      <h2>Formato 2 — Studios e academias: a densidade universitária</h2>
+      <p>
+        A vizinhança da UFES sustenta uma rede de studios e academias
+        rara fora dos grandes centros: horários flexíveis, das 6h ao
+        fim da noite, e estruturas para todos os bolsos. Para quem
+        trabalha ou estuda no bairro, é o formato que melhor casa com a
+        agenda — treino eficiente entre compromissos.
+      </p>
+
+      <h2>Formato 3 — A academia do prédio</h2>
+      <p>
+        A verticalização das últimas décadas trouxe espaços fitness aos
+        condomínios do bairro, e o personal leva o método até eles:
+        força estruturada a um elevador de casa, clima controlado nos
+        dias de chuva e a constância que sustenta qualquer objetivo.
+      </p>
+
+      <h2>Formato 4 — A domicílio: a tradição das ruas tranquilas</h2>
+      <p>
+        Nas ruas internas, o atendimento em casa com equipamento
+        portátil segue firme — o formato preferido das famílias e do
+        público 60+, numeroso num bairro que envelheceu bem. Dores e
+        limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+
+      <h2>O quinto elemento: as sete praças</h2>
+      <p>
+        Entre um formato e outro, as praças do bairro funcionam como
+        estações de treino de vizinhança: alongamento, funcionais em
+        grupo pequeno e a caminhada diária que faz de Jardim da Penha um
+        dos bairros mais ativos de Vitória.
+      </p>
+
+      <h2>Quanto custa personal trainer em Jardim da Penha</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/vitoria-es/">personal trainer em
+        Vitória</a>, vai de R$ 85 a R$ 200 pela aula avulsa e de R$ 420
+        a R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Em Jardim da Penha, os valores ficam na metade superior das
+        faixas — abaixo do pico da vizinha
+        <a href="/personal-trainer-praia-do-canto/">Praia do Canto</a>,
+        com estrutura comparável. O treino em dupla divide o custo, e o
+        acompanhamento online (R$ 190 a R$ 490 mensais) cobre as semanas
+        de viagem.
+      </p>
+
+      <h2>O objetivo mais pedido no bairro</h2>
+      <p>
+        Quem atende em Jardim da Penha relata um padrão: constância
+        acima de tudo. O morador quer um plano que caiba na vida a pé
+        do bairro — orla, praça e studio no mesmo raio — e resultados
+        sustentáveis, sem radicalismo. A resposta técnica é força duas
+        a três vezes por semana e aeróbico regular em Camburi.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        A regra prática do bairro: manhã livre pede orla; agenda cheia
+        pede studio; prédio com academia pede condomínio; e todo plano
+        bem-feito reserva um dia de Camburi.
+      </p>
+
+      <p>
+        Escolhido o formato, valem os critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>: avaliação física na primeira semana, periodização
+        explicada com clareza, experiência real com o seu objetivo e
+        nenhuma promessa de milagre. Em Jardim da Penha, o bom
+        profissional transita entre a orla, as praças e o indoor — e
+        monta a semana usando o melhor de cada um.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Jardim da Penha" />
+
+    <WhatsAppCta tema="geral" localidade="em Jardim da Penha" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

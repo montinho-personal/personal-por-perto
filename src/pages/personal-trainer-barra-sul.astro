@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/balneario-camboriu-sc/',
+    titulo: 'Personal trainer em Balneário Camboriú',
+    descricao: 'O guia completo da capital catarinense do verão: preços e formatos.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo leva para ver resultados na musculação',
+    descricao: 'Prazos honestos para cada objetivo — sem promessa de milagre.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-barra-sul';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Balneário Camboriú', url: '/personal-trainer/balneario-camboriu-sc/' },
+  { nome: 'Personal Trainer na Barra Sul', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Barra Sul?',
+    resposta:
+      'Em Balneário Camboriú, a aula avulsa varia de R$ 100 a R$ 250 e o pacote mensal de R$ 500 a R$ 1.500 — as faixas mais altas do país fora do eixo Rio-SP. Na Barra Sul, endereço dos prédios mais altos do Brasil, os profissionais trabalham no teto.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Barra Sul?',
+    resposta:
+      'No calçadão da Avenida Atlântica, que termina na Barra Sul e concentra corrida e caminhada o ano todo; no molhe da Barra, o píer que avança sobre o mar; e na areia da praia Central, alargada e com faixa generosa para funcionais.',
+  },
+  {
+    pergunta: 'As mega-torres da Barra Sul têm estrutura de treino?',
+    resposta:
+      'As melhores do país: o Yachthouse, prédio mais alto do Brasil, tem mais de 10 mil m² de lazer, e o One Tower dedica 4 andares inteiros ao lazer. Academias de padrão clube, piscinas e spas fazem do condomínio o centro de treino do bairro.',
+  },
+  {
+    pergunta: 'O personal atende turistas e moradores de temporada?',
+    resposta:
+      'Sim — é uma especialidade local: pacotes curtos de temporada, treino na academia do prédio ou na praia e acompanhamento online no resto do ano. O verão multiplica a demanda, e os horários lotam com antecedência.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar na Barra Sul?',
+    resposta:
+      'Fora do verão, o dia inteiro é treinável — o clima de Santa Catarina ajuda. Na alta temporada, as pontas do dia vencem: amanhecer no calçadão antes do movimento e fim de tarde no molhe, com o pôr do sol como recompensa.',
+  },
+];
+
+const title = 'Personal Trainer na Barra Sul (BC): guia do bairro';
+const description =
+  'Personal trainer na Barra Sul: os prédios mais altos do Brasil, o molhe, o calçadão da Atlântica e os preços de Balneário Camboriú.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Balneário Camboriú</p>
+    <h1>Personal trainer na Barra Sul: treino aos pés dos prédios mais altos do Brasil</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Os dois prédios mais altos do Brasil moram no mesmo bairro — e o
+      bairro é a Barra Sul. O Yachthouse, de 294 metros e assinatura
+      Pininfarina na avenida Normando Tedesco, e o One Tower, de 290
+      metros na Avenida Atlântica, transformaram o extremo sul de
+      Balneário Camboriú no endereço vertical mais famoso do país.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer na Barra Sul</strong>
+      entra no mercado mais valorizado do Sul do Brasil. Este guia cobre
+      contexto, preços, lugares e critérios de escolha.
+    </p>
+
+    <div class="prose">
+      <h2>Barra Sul em modo treino: como o bairro se organiza</h2>
+      <p>
+        A vida do bairro corre entre três marcos: a ponta final do
+        calçadão da Avenida Atlântica, a Marina Tedesco — de onde saem
+        os passeios náuticos — e o molhe da Barra, o píer que avança
+        sobre o encontro do rio Camboriú com o mar.
+      </p>
+
+      <p>
+        A verticalização extrema fez o resto: o Yachthouse, do Grupo
+        Pasqualotto & GT com design Pininfarina, sobe 81 andares com
+        dois apartamentos por andar e mais de 10 mil m² de lazer; o One
+        Tower, da FG Empreendimentos, entrega 84 pavimentos com 4
+        andares inteiros de lazer. Nessas torres, a academia do
+        condomínio tem padrão de clube internacional.
+      </p>
+
+      <h2>Quanto custa personal trainer na Barra Sul</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/balneario-camboriu-sc/">personal
+        trainer em Balneário Camboriú</a>, vai de R$ 100 a R$ 250 pela
+        aula avulsa e de R$ 500 a R$ 1.500 pelo pacote mensal — as
+        faixas mais altas do país fora do eixo Rio–São Paulo.
+      </p>
+
+      <p>
+        Na Barra Sul, o mercado trabalha no teto: o público das
+        mega-torres espera serviço à altura do endereço, e o verão
+        adiciona escassez — moradores fixos garantem horários antes de
+        dezembro, e visitantes de temporada contratam pacotes curtos com
+        antecedência. O online (R$ 220 a R$ 550 mensais) mantém o plano
+        vivo no resto do ano.
+      </p>
+
+      <h2>Onde treinar com personal na Barra Sul</h2>
+
+      <h3>O calçadão da Atlântica: a pista que termina no bairro</h3>
+      <p>
+        O calçadão da praia Central desemboca na Barra Sul — corrida e
+        caminhada com a muralha de torres de um lado e o mar do outro.
+        Fora do verão, é treinável o dia inteiro; na alta temporada, o
+        amanhecer é a janela dos moradores.
+      </p>
+
+      <h3>O molhe da Barra: o treino sobre o mar</h3>
+      <p>
+        O píer que avança sobre o canal é o percurso mais cênico da
+        cidade: caminhada de ida e volta sobre a água, com o pôr do sol
+        atrás das torres como espetáculo diário. Personal trainers usam
+        o molhe para treinos de ritmo e sessões regenerativas.
+      </p>
+
+      <h3>A areia alargada da praia Central</h3>
+      <p>
+        Desde o alargamento da faixa de areia, a praia ganhou espaço
+        generoso para funcionais, treinos de potência e esportes — a
+        instabilidade da areia recruta mais músculo a cada movimento, e
+        o personal transforma isso em estímulo planejado.
+      </p>
+
+      <h3>A academia da torre: o padrão internacional</h3>
+      <p>
+        Nas mega-torres, o treino de força acontece sem sair do prédio:
+        academias completas, piscinas e spas que rivalizam com clubes.
+        O personal leva método e progressão — e sobre prazos honestos de
+        evolução, o guia de
+        <a href="/musculacao/quanto-tempo-para-ver-resultados/">quanto
+        tempo leva para ver resultados</a> alinha as expectativas.
+      </p>
+
+      <h2>O objetivo mais pedido nas torres</h2>
+      <p>
+        Nos relatos de quem atende no bairro, o pedido número um une
+        estética e performance para a vida de praia o ano inteiro — com
+        a recomposição corporal como meta técnica e o verão como prazo
+        emocional. O bom profissional transforma o prazo em processo:
+        progressão planejada, não pressa.
+      </p>
+
+      <h2>Como escolher um personal na Barra Sul</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado garantido.
+      </p>
+
+      <p>
+        No bairro, some dois filtros locais: experiência com o público
+        de temporada — pacotes curtos pedem método direto ao ponto — e
+        familiaridade com as regras de acesso das grandes torres. Dores
+        e limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Barra Sul" />
+
+    <WhatsAppCta tema="geral" localidade="na Barra Sul" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

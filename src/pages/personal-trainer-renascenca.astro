@@ -1,0 +1,263 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-luis-ma/',
+    titulo: 'Personal trainer em São Luís',
+    descricao: 'O guia completo da capital maranhense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-ponta-d-areia/',
+    titulo: "Personal trainer na Ponta d'Areia",
+    descricao: 'O guia da península do calçadão sobre o mar, em São Luís.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-renascenca';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Luís', url: '/personal-trainer/sao-luis-ma/' },
+  { nome: 'Personal Trainer no Renascença', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Renascença?',
+    resposta:
+      'Em São Luís, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. No Renascença — o bairro de maior IDH da capital, segundo o PNUD —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Renascença?',
+    resposta:
+      'A Lagoa da Jansen é a resposta do bairro: o parque em volta da lagoa tem calçadão, ciclovia e quadras, e concentra a corrida e a caminhada da região nas pontas do dia. As ruas arborizadas do Renascença II completam o circuito.',
+  },
+  {
+    pergunta: 'Que horas treinar no calor de São Luís?',
+    resposta:
+      'Nas pontas do dia: de 5h30 às 7h30 ou depois das 16h30, quando a brisa da ilha ajuda. No meio do dia, o treino migra para a academia do prédio ou studio climatizado — rotina padrão do litoral maranhense.',
+  },
+  {
+    pergunta: 'Os prédios do Renascença têm academia própria?',
+    resposta:
+      'A verticalização recente sim: lançamentos como o Renaissance Conceito chegam com espaço fitness e lazer completo, e o personal no condomínio cresce ano a ano. Nos edifícios mais antigos, o atendimento no apartamento resolve.',
+  },
+  {
+    pergunta: 'Renascença ou Ponta d’Areia: onde treinar?',
+    resposta:
+      'São vizinhos e se completam: a Ponta d’Areia tem a praia e o calçadão sobre o mar; o Renascença tem a Lagoa da Jansen e a maior densidade de serviços. Muitos moradores combinam os dois — e boa parte dos profissionais atende em ambos.',
+  },
+];
+
+const title = 'Personal Trainer no Renascença (São Luís): onde treinar';
+const description =
+  'Personal trainer no Renascença: a Lagoa da Jansen, os prédios novos, os studios e as praças — lista comentada com preços de São Luís.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Luís</p>
+    <h1>Personal trainer no Renascença: os lugares onde o bairro de maior IDH treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Renascença carrega um título que nenhum outro bairro de São Luís
+      tem: o maior IDH da capital, segundo o PNUD. Entre o Renascença I
+      e o II, o endereço reúne as torres novas, os restaurantes e os
+      serviços mais sofisticados da ilha — com a Lagoa da Jansen de
+      quintal esportivo.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Renascença</strong>
+      encontra o mercado mais denso do Maranhão. Esta lista comentada
+      percorre os lugares onde os moradores realmente treinam.
+    </p>
+
+    <div class="prose">
+      <h2>1. Lagoa da Jansen: o circuito oficial</h2>
+      <p>
+        O parque em volta da lagoa é o centro esportivo da região:
+        calçadão, ciclovia e quadras que enchem nas pontas do dia —
+        amanhecer e fim de tarde, quando a brisa entra e o sol dá
+        trégua.
+      </p>
+
+      <p>
+        É ali que os personal trainers do bairro montam treinos de
+        corrida, caminhadas estruturadas e circuitos funcionais, com a
+        volta completa da lagoa servindo de régua de evolução para os
+        alunos.
+      </p>
+
+      <h2>2. As ruas arborizadas do Renascença II</h2>
+      <p>
+        Atrás dos eixos comerciais, as ruas internas do Renascença II —
+        planas, largas e sombreadas — recebem o treino de vizinhança:
+        corrida leve, caminhada do público 60+ e os deslocamentos a pé
+        que fazem do bairro um dos mais caminháveis de São Luís.
+      </p>
+
+      <h2>3. A academia do prédio: a nova era vertical</h2>
+      <p>
+        A verticalização de alto padrão mudou o treino local:
+        lançamentos como o Renaissance Conceito, da Monteplan, chegam
+        com espaço fitness e lazer completo — e o personal leva o método
+        até a academia do condomínio, com clima controlado para o meio
+        do dia impossível da ilha.
+      </p>
+
+      <p>
+        Entre famílias, o arranjo em sequência de horários com o mesmo
+        profissional é comum; nos edifícios mais antigos, o atendimento
+        dentro do apartamento com equipamento portátil cumpre o papel.
+      </p>
+
+      <h2>4. Studios e academias: a maior densidade do Maranhão</h2>
+      <p>
+        O eixo Renascença–Ponta d'Areia concentra a maior oferta de
+        academias e studios do estado, das redes aos espaços premium.
+        Para quem contrata personal, a densidade vira liberdade: dá para
+        escolher a estrutura pela vizinhança, pelo equipamento ou pelo
+        horário — quase tudo em raio curto.
+      </p>
+
+      <h2>5. A praia a minutos: o bônus da península</h2>
+      <p>
+        Quando o plano pede areia e mar, o calçadão da vizinha
+        <a href="/personal-trainer-ponta-d-areia/">Ponta d'Areia</a>
+        fica a poucos minutos — treinos de ritmo sobre o mar, funcionais
+        na areia e o pôr do sol da baía como recompensa. A dupla
+        lagoa–praia é o maior patrimônio esportivo da região.
+      </p>
+
+      <h2>O objetivo mais pedido no bairro</h2>
+      <p>
+        Nos relatos dos profissionais locais, o pedido número um combina
+        condicionamento e composição corporal para a vida no calor da
+        ilha — com a Lagoa da Jansen como porta de entrada e a força na
+        academia como base que sustenta o resultado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Renascença</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/sao-luis-ma/">personal trainer em São
+        Luís</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Renascença, o mercado trabalha no topo: o bairro reúne o
+        público de maior renda do Maranhão, e os horários das pontas do
+        dia lotam primeiro. O acompanhamento online (R$ 160 a R$ 410
+        mensais) cobre as semanas de viagem, e o treino em dupla divide
+        o custo da sessão.
+      </p>
+
+      <h2>O treino em dupla: o arranjo que mais cresce</h2>
+      <p>
+        Entre casais e vizinhos de condomínio, a sessão compartilhada
+        avança no bairro: divide o custo, cria compromisso mútuo e cabe
+        em qualquer cenário — da volta da lagoa à academia do prédio. A
+        condição é o profissional individualizar carga e progressão
+        para cada aluno.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado.
+      </p>
+
+      <p>
+        No Renascença, some o filtro local: pergunte como o profissional
+        combina lagoa, prédio e praia na mesma semana. Quem atende no
+        bairro tem essa resposta pronta — e dores ou limitações, como
+        sempre, passam primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Renascença" />
+
+    <WhatsAppCta tema="geral" localidade="no Renascença" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
