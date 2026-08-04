@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/curitiba-pr/',
+    titulo: 'Personal trainer em Curitiba',
+    descricao: 'O guia completo da capital paranaense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-batel/',
+    titulo: 'Personal trainer no Batel',
+    descricao: 'O guia do bairro de metro quadrado mais alto de Curitiba.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-cabral';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Curitiba', url: '/personal-trainer/curitiba-pr/' },
+  { nome: 'Personal Trainer no Cabral', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Cabral?',
+    resposta:
+      'Em Curitiba, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Cabral — metro quadrado na casa dos R$ 12 mil, entre os mais altos da cidade —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre perto do Cabral?',
+    resposta:
+      'O Parque São Lourenço, na divisa do bairro, é o queridinho: inaugurado em 1972, tem 204 mil m² e uma volta de cerca de 1,6 km em torno do lago, apontada por muitos corredores como a melhor de Curitiba. As ruas arborizadas do bairro completam o circuito diário.',
+  },
+  {
+    pergunta: 'O Cabral tem prédios novos com academia?',
+    resposta:
+      'É um dos bairros com maior concentração de lançamentos de Curitiba: projetos como o Joá Cabral, de 32 unidades entre 138 e 348 m², e o Aura Cabral, com piscina aquecida e espaço fitness, chegam com estrutura completa — e o personal no condomínio cresce junto.',
+  },
+  {
+    pergunta: 'Como treinar no inverno curitibano?',
+    resposta:
+      'Com plano B estruturado: nos meses frios, a força migra para a academia do prédio ou studio climatizado, e o aeróbico aproveita as janelas de sol do meio do dia no São Lourenço. Profissionais experientes do bairro montam a semana em torno do termômetro.',
+  },
+  {
+    pergunta: 'Cabral ou Batel: qual mercado escolher?',
+    resposta:
+      'Os dois estão no topo de Curitiba. O Batel é mais denso e comercial; o Cabral, mais residencial e verde, com o São Lourenço na porta. A escolha prática é treinar no raio de dez minutos de casa — e vários profissionais atendem nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Cabral (Curitiba): guia por perfil';
+const description =
+  'Personal trainer no Cabral: o guia por perfil — executivo, família, 60+ e corredor do São Lourenço — com preços de Curitiba.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Curitiba</p>
+    <h1>Personal trainer no Cabral: o guia certo para cada perfil do bairro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Cabral vive seu momento: metro quadrado na casa dos R$ 12 mil,
+      uma das maiores concentrações de lançamentos de Curitiba e o Parque
+      São Lourenço — para muitos corredores, a melhor volta da cidade —
+      na porta.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Cabral</strong> se
+      encaixa em um dos quatro perfis abaixo. Encontre o seu — e o
+      formato de treino que combina com ele.
+    </p>
+
+    <div class="prose">
+      <h2>O território: entre a avenida e o parque</h2>
+      <p>
+        O bairro se organiza entre o eixo comercial da avenida Munhoz da
+        Rocha e as ruas residenciais arborizadas que descem em direção ao
+        Parque São Lourenço. A verticalização recente elevou o padrão:
+        lançamentos como o Joá Cabral — 32 unidades exclusivas de 138 a
+        348 m² — e o Aura Cabral, com piscina aquecida e espaço fitness,
+        trouxeram estrutura de clube para dentro dos condomínios.
+      </p>
+
+      <h2>Perfil 1 — O executivo do eixo norte</h2>
+      <p>
+        Trabalha no centro cívico ou nos escritórios da região e mora a
+        minutos deles. Para esse perfil, a sessão de 45 a 60 minutos às
+        6h30, na academia do prédio ou num studio do bairro, é a única
+        que sobrevive à agenda — com o online (R$ 180 a R$ 450 mensais
+        na referência de Curitiba) segurando as semanas de viagem.
+      </p>
+
+      <h2>Perfil 2 — A família dos lançamentos</h2>
+      <p>
+        Nos condomínios novos, o treino vira programa doméstico: casal em
+        dupla na academia do prédio, filhos adolescentes iniciando
+        musculação com supervisão. O formato divide custo e cria
+        constância — desde que o personal individualize carga e
+        progressão para cada membro, mesmo treinando todos juntos.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ das ruas arborizadas</h2>
+      <p>
+        O Cabral tradicional tem gerações nos mesmos edifícios — e para
+        esse público o arranjo ideal combina a caminhada no São Lourenço,
+        nos horários de sol, com duas sessões semanais de força em casa
+        ou no condomínio, orientadas por profissional experiente em
+        treino para longevidade.
+      </p>
+
+      <p>
+        A regra de sempre vale em dobro no inverno curitibano: dores e
+        limitações passam primeiro por médico ou fisioterapeuta, e o
+        aquecimento ganha o dobro da atenção nos dias frios.
+      </p>
+
+      <h2>Perfil 4 — O corredor do São Lourenço</h2>
+      <p>
+        Na divisa do bairro, o Parque São Lourenço — inaugurado em 1972,
+        com 204 mil m² — oferece a volta de cerca de 1,6 km em torno do
+        lago que muitos corredores apontam como a melhor de Curitiba:
+        piso bom, paisagem e movimento constante.
+      </p>
+
+      <p>
+        O personal de corrida usa a volta como régua de ritmo, as ruas
+        do bairro para os deslocamentos e o inverno como aliado — em
+        Curitiba, o frio é combustível de prova pessoal, não desculpa.
+      </p>
+
+      <h2>O quinto cenário: studios e academias do eixo</h2>
+      <p>
+        Além do parque e dos prédios, o eixo da avenida Munhoz da Rocha
+        e as ruas comerciais do bairro concentram studios de treino
+        personalizado e academias completas — a rede de apoio dos dias
+        de chuva e das semanas de inverno rigoroso.
+      </p>
+
+      <h2>Quanto custa personal trainer no Cabral</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/curitiba-pr/">personal trainer em
+        Curitiba</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Cabral, o mercado trabalha no topo — perfil semelhante ao do
+        <a href="/personal-trainer-batel/">Batel</a>, com a vantagem do
+        parque na porta. O treino em dupla divide o custo, e o
+        atendimento no condomínio é o formato que mais cresce no bairro.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os critérios objetivos valem para todos: avaliação física na
+        primeira semana, periodização que o profissional explique sem
+        jargão, experiência real com o seu objetivo e honestidade sobre
+        prazos — o passo a passo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>.
+      </p>
+
+      <p>
+        No Cabral, some o filtro do termômetro: pergunte ao candidato
+        como ele monta a semana em julho. Quem atende no bairro tem o
+        plano B do inverno decorado — e é essa flexibilidade que mantém o
+        resultado aparecendo o ano inteiro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Cabral" />
+
+    <WhatsAppCta tema="geral" localidade="no Cabral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

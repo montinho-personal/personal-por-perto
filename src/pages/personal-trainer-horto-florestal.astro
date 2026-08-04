@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/salvador-ba/',
+    titulo: 'Personal trainer em Salvador',
+    descricao: 'O guia completo da capital baiana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-pituba/',
+    titulo: 'Personal trainer na Pituba',
+    descricao: 'O guia por perfil do bairro tradicional da orla de Salvador.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-horto-florestal';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Salvador', url: '/personal-trainer/salvador-ba/' },
+  { nome: 'Personal Trainer no Horto Florestal', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Horto Florestal?',
+    resposta:
+      'Em Salvador, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Horto Florestal — o endereço mais exclusivo da capital baiana —, os profissionais mais experientes trabalham no teto dessas faixas, sobretudo no atendimento dentro dos condomínios.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Horto Florestal?',
+    resposta:
+      'Nas ruas arborizadas e tranquilas do próprio bairro, ideais para caminhada e corrida leve, e nas áreas verdes do entorno do eixo da avenida Waldemar Falcão. Para volumes maiores, os moradores complementam com os parques da região e a orla da cidade, a minutos de carro.',
+  },
+  {
+    pergunta: 'Os prédios do Horto Florestal têm boa estrutura de treino?',
+    resposta:
+      'É a marca do bairro: torres como as do Vale do Loire, com dois apartamentos de 328 m² por andar, e lançamentos como o Poème Horto, com piscina de raia e quadra de tênis, entregam estrutura de clube — e o personal no condomínio é o formato dominante.',
+  },
+  {
+    pergunta: 'O personal atende dentro dos apartamentos do bairro?',
+    resposta:
+      'Sim — nos apartamentos amplos do Horto, muitos com 300 m² ou mais, o treino dentro de casa com equipamento portátil é comum, especialmente entre famílias e moradores 60+. Cada condomínio tem suas regras de acesso de prestadores.',
+  },
+  {
+    pergunta: 'Qual a diferença entre treinar no Horto Florestal e na Pituba?',
+    resposta:
+      'O Horto é verde, silencioso e vertical de alto luxo — o treino acontece dentro dos condomínios e nas ruas calmas. A Pituba tem a orla e a vida urbana. Muitos moradores combinam os dois: força no prédio, aeróbico no calçadão da orla — e vários profissionais atendem em ambos.',
+  },
+];
+
+const title = 'Personal Trainer no Horto Florestal (Salvador): o guia';
+const description =
+  'Personal trainer no Horto Florestal: preços, o treino nos condomínios de alto luxo e nas ruas verdes do bairro mais exclusivo de Salvador.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Salvador</p>
+    <h1>Personal trainer no Horto Florestal: as respostas do endereço mais exclusivo de Salvador</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Horto Florestal é o bairro que Salvador reservou para o silêncio:
+      ruas verdes, torres de altíssimo padrão e uma vida que acontece
+      dentro dos condomínios — longe do burburinho da orla, mas a minutos
+      dela.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Horto Florestal</strong>
+      costuma chegar com as mesmas dúvidas. Este artigo responde às
+      principais, uma a uma, na ordem em que elas aparecem.
+    </p>
+
+    <div class="prose">
+      <h2>Onde o Horto treina, afinal?</h2>
+      <p>
+        Principalmente dentro de casa — no melhor sentido. O bairro
+        concentra as torres mais exclusivas da capital: o Vale do Loire,
+        com suas duas torres de 27 andares e dois apartamentos de 328 m²
+        por andar, e o Poème Horto, da Moura Dubeux, torre única de 36
+        andares com piscina de raia e quadra de tênis, resumem o padrão
+        local — academia, piscina e lazer de clube no próprio condomínio.
+      </p>
+
+      <p>
+        Fora dos muros, as ruas arborizadas do eixo da avenida Waldemar
+        Falcão recebem caminhada e corrida leve em silêncio raro para
+        Salvador. E a orla da cidade fica a minutos de carro para os
+        treinos de calçadão.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/salvador-ba/">personal trainer em
+        Salvador</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Horto, o mercado trabalha no teto: o bairro reúne o público de
+        maior renda da cidade, e o atendimento dentro dos condomínios — o
+        formato dominante — é o serviço mais valorizado. O acompanhamento
+        online (R$ 170 a R$ 430 mensais) cobre as semanas de viagem de um
+        público que viaja muito.
+      </p>
+
+      <h2>O treino no condomínio funciona mesmo?</h2>
+      <p>
+        No Horto, é o coração do mercado. As academias dos prédios têm
+        padrão de studio, e o personal leva método, progressão e
+        regularidade até elas — sem carro, sem trânsito, sem desculpa.
+        Nos apartamentos amplos, o treino dentro de casa com equipamento
+        portátil atende famílias inteiras em sequência de horários.
+      </p>
+
+      <p>
+        O formato favorece dois públicos em especial: executivos que
+        treinam às 6h antes do expediente e moradores 60+ que buscam
+        força e autonomia — sempre com dores e limitações avaliadas antes
+        por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Que objetivos os moradores mais levam ao personal?</h2>
+      <p>
+        Os profissionais que atendem no bairro relatam um tripé:
+        longevidade com força — o Horto tem gerações convivendo nos
+        mesmos prédios —, estética com saúde e condicionamento para a
+        vida ativa de quem divide a semana entre Salvador, São Paulo e o
+        exterior. Consistência pesa mais que intensidade: o plano precisa
+        sobreviver à agenda.
+      </p>
+
+      <p>
+        Entre as famílias, cresce ainda um quarto pedido: a musculação
+        supervisionada para adolescentes, aproveitando a academia do
+        próprio prédio — com carga, técnica e progressão ajustadas pelo
+        profissional para cada fase.
+      </p>
+
+      <h2>E quando o treino pede rua?</h2>
+      <p>
+        O Horto resolve quase tudo dentro dos muros, mas o plano
+        bem-feito reserva saídas: a caminhada nas ruas verdes do bairro
+        para os dias leves, os parques da região para o volume aeróbico
+        e a orla da cidade para os treinos longos de fim de semana.
+      </p>
+
+      <p>
+        Bons profissionais alternam os cenários com propósito — o
+        condomínio para a força, a rua para o fôlego — e mantêm a semana
+        variada sem sacrificar a privacidade que definiu a escolha pelo
+        bairro.
+      </p>
+
+      <h2>Como escolher bem no Horto Florestal?</h2>
+      <p>
+        Com os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado garantido.
+      </p>
+
+      <p>
+        E com o filtro do bairro: pergunte se o profissional já atende em
+        condomínios do Horto e como resolve as regras de acesso de cada
+        torre. Quem trabalha ali conhece o protocolo — e monta a semana
+        combinando o prédio, as ruas verdes e, quando o plano pede, a
+        orla da vizinha <a href="/personal-trainer-pituba/">Pituba</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Horto Florestal" />
+
+    <WhatsAppCta tema="geral" localidade="no Horto Florestal" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

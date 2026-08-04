@@ -54,6 +54,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-ponta-negra/', titulo: 'Personal trainer na Ponta Negra (Manaus)' },
   { categoria: 'Bairros', url: '/personal-trainer-sion/', titulo: 'Personal trainer no Sion (Belo Horizonte)' },
   { categoria: 'Bairros', url: '/personal-trainer-jatiuca/', titulo: 'Personal trainer na Jatiúca (Maceió)' },
+  { categoria: 'Bairros', url: '/personal-trainer-horto-florestal/', titulo: 'Personal trainer no Horto Florestal (Salvador)' },
+  { categoria: 'Bairros', url: '/personal-trainer-miramar/', titulo: 'Personal trainer no Miramar (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-cabral/', titulo: 'Personal trainer no Cabral (Curitiba)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

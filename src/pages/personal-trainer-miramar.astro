@@ -1,0 +1,257 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/joao-pessoa-pb/',
+    titulo: 'Personal trainer em João Pessoa',
+    descricao: 'O guia completo da capital paraibana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-altiplano-cabo-branco/',
+    titulo: 'Personal trainer no Altiplano Cabo Branco',
+    descricao: 'O guia do bairro de luxo no alto da falésia de João Pessoa.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-miramar';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em João Pessoa', url: '/personal-trainer/joao-pessoa-pb/' },
+  { nome: 'Personal Trainer no Miramar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Miramar?',
+    resposta:
+      'Em João Pessoa, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. No Miramar — bairro nobre no eixo da avenida Epitácio Pessoa —, os profissionais experientes trabalham no topo dessas faixas, sobretudo a domicílio e no condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Miramar?',
+    resposta:
+      'Nas ruas arborizadas e planas do bairro, como a rua das Acácias, e no corredor da avenida Epitácio Pessoa. As praias de Tambaú e Cabo Branco, com calçadão e ciclovia, ficam a poucos minutos — o complemento natural do treino do bairro.',
+  },
+  {
+    pergunta: 'O Clube Cabo Branco conta como estrutura de treino?',
+    resposta:
+      'Para quem é sócio, sim: o clube, tradicional no bairro, tem estrutura esportiva completa e faz parte da rotina de muitas famílias do Miramar. Personal trainers credenciados acompanham o treino conforme as regras do clube.',
+  },
+  {
+    pergunta: 'Os prédios do Miramar têm academia própria?',
+    resposta:
+      'Os lançamentos sim: torres como o Eco Premium, de um apartamento por andar, entregam espaço fitness e lazer completo. Nos edifícios mais antigos das ruas internas, o atendimento em casa com equipamento portátil é o formato usual.',
+  },
+  {
+    pergunta: 'Miramar ou Altiplano: onde treinar?',
+    resposta:
+      'São perfis diferentes: o Miramar é central, plano e arborizado, colado na Epitácio Pessoa; o Altiplano fica no alto da falésia, mais afastado. A escolha prática é pela logística da sua semana — e vários profissionais atendem nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Miramar (João Pessoa): o guia';
+const description =
+  'Personal trainer no Miramar: preços de João Pessoa, o treino no bairro-ponte da Epitácio Pessoa, o Clube Cabo Branco e os prédios novos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de João Pessoa</p>
+    <h1>Personal trainer no Miramar: o bairro-ponte que treina no meio do caminho</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo mundo atravessa o Miramar — e é exatamente essa a sua força. O
+      bairro cresceu em volta da avenida Epitácio Pessoa, o corredor que
+      liga o centro de João Pessoa às praias, e transformou a posição de
+      passagem em endereço: ruas arborizadas, clube tradicional e o
+      prédio mais alto do Nordeste na esquina.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Miramar</strong> herda
+      essa geografia privilegiada: tudo fica no meio do caminho. Este
+      artigo percorre o bairro como ele funciona — do eixo para dentro, e
+      do bairro para o mar.
+    </p>
+
+    <div class="prose">
+      <h2>O eixo: a Epitácio Pessoa e o gigante da esquina</h2>
+      <p>
+        A avenida Epitácio Pessoa é a espinha do bairro — e nela se
+        ergue o Tour Geneve, complexo de 54 andares e 183 metros que
+        detém o título de prédio mais alto do Nordeste, com rooftop
+        panorâmico sobre o mar e a cidade.
+      </p>
+
+      <p>
+        Para o treino, o eixo funciona como régua de deslocamento: em
+        poucos minutos, o morador do Miramar está no calçadão de Tambaú,
+        na ciclovia da orla ou nas academias que pontuam a avenida. É a
+        logística mais fácil de João Pessoa — e logística, em treino,
+        vira constância.
+      </p>
+
+      <h2>O miolo: ruas planas, sombra e silêncio</h2>
+      <p>
+        Atrás do corredor movimentado, o Miramar guarda ruas residenciais
+        arborizadas e planas — como a rua das Acácias —, ideais para
+        caminhada estruturada, corrida leve e os treinos funcionais de
+        vizinhança. É o cenário do dia a dia: perto de casa, sem carro,
+        no fresco da sombra.
+      </p>
+
+      <h2>O clube: a tradição esportiva do bairro</h2>
+      <p>
+        O Clube Cabo Branco, tradicional no Miramar, é parte da
+        identidade local: estrutura esportiva completa que atravessa
+        gerações das famílias do bairro. Para os sócios, é o cenário
+        natural do treino acompanhado — personal trainers credenciados
+        atuam conforme as regras da casa.
+      </p>
+
+      <h2>Os prédios: a verticalização de um apartamento por andar</h2>
+      <p>
+        A safra nova do bairro aposta na exclusividade: o Eco Premium, da
+        Eco Construções, sobe 31 andares com um único apartamento de
+        206 m² por andar — 4 suítes e varanda gourmet de 23 m² — e teve
+        todas as unidades vendidas logo após o lançamento.
+      </p>
+
+      <p>
+        Nessas torres, o personal atende na academia do condomínio; nos
+        edifícios mais antigos, o treino dentro do apartamento com
+        equipamento portátil segue firme — o formato preferido das
+        famílias e do público 60+.
+      </p>
+
+      <h2>Quanto custa personal trainer no Miramar</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/joao-pessoa-pb/">personal trainer em
+        João Pessoa</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de
+        R$ 320 a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Miramar, o mercado trabalha no topo — o bairro divide com o
+        <a href="/personal-trainer-altiplano-cabo-branco/">Altiplano Cabo
+        Branco</a> o público de maior renda da cidade. O acompanhamento
+        online (R$ 160 a R$ 410 mensais) cobre as semanas de viagem, e o
+        treino em dupla divide o custo entre casais.
+      </p>
+
+      <h2>O objetivo mais pedido no Miramar</h2>
+      <p>
+        Nos relatos de quem atende no bairro, o pedido número um combina
+        saúde e consistência: moradores que querem treinar perto de casa,
+        sem depender de deslocamento, e transformar a localização
+        privilegiada em rotina que se sustenta o ano inteiro.
+      </p>
+
+      <p>
+        A resposta técnica é a mesma em qualquer endereço — força duas a
+        três vezes por semana, aeróbico regular e progressão planejada —,
+        mas no Miramar a logística joga a favor: tudo fica a minutos, e
+        constância é questão de método, não de agenda.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Miramar, some o teste da ponte: pergunte ao candidato como ele
+        monta a semana usando o bairro e a orla — ruas internas para o
+        dia a dia, calçadão para o aeróbico, clube ou prédio para a
+        força. Quem atende ali tem essa resposta pronta. E dores ou
+        limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Miramar" />
+
+    <WhatsAppCta tema="geral" localidade="no Miramar" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
