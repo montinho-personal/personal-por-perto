@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/campo-grande-ms/',
+    titulo: 'Personal trainer em Campo Grande',
+    descricao: 'O guia completo da capital sul-mato-grossense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A base de qualquer objetivo de emagrecimento — com ou sem personal.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-jardim-dos-estados';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Campo Grande', url: '/personal-trainer/campo-grande-ms/' },
+  { nome: 'Personal Trainer no Jardim dos Estados', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jardim dos Estados?',
+    resposta:
+      'Em Campo Grande, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Jardim dos Estados — o endereço mais tradicional e valorizado da capital —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Jardim dos Estados?',
+    resposta:
+      'No eixo da avenida Afonso Pena, com sua ciclovia no canteiro central, e no Parque das Nações Indígenas, a grande área verde da vizinhança, com pistas de caminhada e corrida em meio à natureza. As ruas largas e arborizadas do bairro completam o circuito.',
+  },
+  {
+    pergunta: 'O Parque das Nações Indígenas fica perto do bairro?',
+    resposta:
+      'Sim — o parque, um dos maiores urbanos do país, fica no prolongamento da própria Afonso Pena, a minutos do bairro. É o cenário dos treinos de corrida, caminhada e bike dos moradores da região nobre de Campo Grande.',
+  },
+  {
+    pergunta: 'Personal atende nas casas do Jardim dos Estados?',
+    resposta:
+      'É o formato histórico do bairro: nas residências amplas das ruas arborizadas, o treino em casa com equipamento portátil segue dominante — e os condomínios verticais novos somam a academia do prédio como alternativa.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Campo Grande?',
+    resposta:
+      'Nas pontas do dia: o calor do centro-oeste manda treinar de 5h30 às 7h30 ou depois das 17h. No meio do dia, a sombra do Parque das Nações e os espaços climatizados são o refúgio dos treinos.',
+  },
+];
+
+const title = 'Personal Trainer no Jardim dos Estados (Campo Grande)';
+const description =
+  'Personal trainer no Jardim dos Estados: preços, a ciclovia da Afonso Pena, o Parque das Nações Indígenas e como escolher bem em Campo Grande.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Campo Grande</p>
+    <h1>Personal trainer no Jardim dos Estados: o guia do centro nobre de Campo Grande</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Jardim dos Estados nasceu nos anos 1950, quando os pecuaristas
+      de Mato Grosso do Sul ergueram suas mansões na parte alta da
+      cidade — e nunca saiu do topo: é o "centro nobre" de Campo Grande,
+      com a rua Euclides da Cunha fazendo as vezes de Oscar Freire local.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Jardim dos
+      Estados</strong> herda a melhor geografia de treino da capital.
+      Este guia cobre contexto, preços, lugares e critérios de escolha.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro em modo treino: como ele se organiza</h2>
+      <p>
+        O Jardim dos Estados vive entre dois eixos: a avenida Afonso
+        Pena — a grande via da cidade, com ciclovia no canteiro central
+        — e as ruas largas e arborizadas onde as mansões históricas
+        convivem com a verticalização recente de alto padrão.
+      </p>
+
+      <p>
+        A topografia elevada, das mais altas da cidade, garante brisa
+        nas manhãs e nos fins de tarde — as duas janelas de treino que o
+        calor do centro-oeste permite ao ar livre.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jardim dos Estados</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/campo-grande-ms/">personal trainer em
+        Campo Grande</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de
+        R$ 350 a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Jardim dos Estados, o mercado trabalha no topo: o bairro
+        concentra as famílias tradicionais e o público de maior renda da
+        cidade, e o atendimento em casa é o serviço de maior valor. O
+        acompanhamento online (R$ 170 a R$ 430 mensais) cobre as semanas
+        na fazenda ou em viagem — rotina comum por aqui.
+      </p>
+
+      <h2>Onde treinar com personal no bairro</h2>
+
+      <h3>A Afonso Pena: a espinha dorsal</h3>
+      <p>
+        A ciclovia do canteiro central da Afonso Pena é o corredor
+        esportivo da cidade: caminhada, corrida e bike ligando o bairro
+        ao restante da região nobre. Nas manhãs de domingo, vira o
+        passeio oficial campo-grandense — de família inteira, bicicleta
+        e tênis de corrida dividindo a mesma pista.
+      </p>
+
+      <h3>Parque das Nações Indígenas: o gigante da vizinhança</h3>
+      <p>
+        No prolongamento da avenida, a minutos do bairro, o Parque das
+        Nações Indígenas — um dos maiores parques urbanos do país —
+        oferece pistas de caminhada e corrida, sombra e o verde que o
+        clima exige. É o cenário dos treinos longos, dos regenerativos e
+        do aeróbico que sustenta qualquer objetivo, inclusive o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> de quem busca emagrecer.
+      </p>
+
+      <h3>A casa e o condomínio: o formato histórico</h3>
+      <p>
+        Nas residências amplas do bairro, o personal a domicílio é
+        tradição: equipamento portátil, área externa generosa e
+        privacidade. A verticalização recente somou a academia do prédio
+        à equação — clima controlado para o meio do dia impossível do
+        verão sul-mato-grossense.
+      </p>
+
+      <h3>Studios e academias da região</h3>
+      <p>
+        O entorno da Afonso Pena e da Euclides da Cunha concentra
+        studios de treino personalizado e academias completas — a rede
+        de apoio para a força estruturada e para os dias em que o
+        termômetro não colabora.
+      </p>
+
+      <h2>O objetivo mais pedido no bairro</h2>
+      <p>
+        Quem atende na região nobre de Campo Grande relata um tripé:
+        saúde e longevidade nas famílias tradicionais — com gerações
+        convivendo nas mesmas quadras —, composição corporal para a
+        vida social intensa do bairro e condicionamento para quem
+        divide a semana entre a cidade e o campo.
+      </p>
+
+      <p>
+        Em todos os casos, a receita é a mesma: força duas a três vezes
+        por semana, aeróbico regular nas janelas frescas do dia e um
+        plano que sobreviva às viagens — papel que o acompanhamento
+        online cumpre cada vez melhor.
+      </p>
+
+      <h2>Como escolher um personal no Jardim dos Estados</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e honestidade sobre prazos.
+      </p>
+
+      <p>
+        No bairro, some o filtro local: pergunte como o profissional
+        combina a Afonso Pena, o Parque das Nações e a sua casa na mesma
+        semana — e como ajusta o plano nas semanas de fazenda. Dores e
+        limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jardim dos Estados" />
+
+    <WhatsAppCta tema="geral" localidade="no Jardim dos Estados" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

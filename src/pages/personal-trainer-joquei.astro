@@ -1,0 +1,257 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/teresina-pi/',
+    titulo: 'Personal trainer em Teresina',
+    descricao: 'O guia completo da capital piauiense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer por grupo muscular',
+    descricao: 'A dose certa de treino de força para cada objetivo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-joquei';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Teresina', url: '/personal-trainer/teresina-pi/' },
+  { nome: 'Personal Trainer no Jóquei', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jóquei?',
+    resposta:
+      'Em Teresina, a aula avulsa varia de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. No Jóquei — coração da zona Leste e endereço mais valorizado da capital —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Jóquei?',
+    resposta:
+      'O Parque Potycabana, na avenida Raul Lopes, é a resposta da cidade inteira: pista de caminhada de 1,5 km, pista de padrão oficial de atletismo, academia ao ar livre, ciclovia e quadras, aberto diariamente das 5h às 22h, à margem do rio Poti.',
+  },
+  {
+    pergunta: 'Que horas treinar no calor de Teresina?',
+    resposta:
+      'Numa das capitais mais quentes do país, o relógio manda: de 5h às 7h da manhã ou depois das 17h. Não por acaso, o Potycabana abre às 5h — e é nesse horário que os personal trainers do Jóquei concentram as sessões ao ar livre.',
+  },
+  {
+    pergunta: 'Os prédios do Jóquei têm academia própria?',
+    resposta:
+      'As torres de alto padrão dos eixos das avenidas Dom Severino e Homero Castelo Branco contam com espaços fitness completos, e o personal no condomínio é formato consolidado no bairro. Nos edifícios sem estrutura, o atendimento no apartamento resolve.',
+  },
+  {
+    pergunta: 'O Jóquei tem boa oferta de academias?',
+    resposta:
+      'A zona Leste concentra a maior densidade de academias e studios de Teresina, com o Jóquei no centro dela — das redes aos espaços premium, quase tudo em raio curto, complementado pela estrutura pública do Potycabana.',
+  },
+];
+
+const title = 'Personal Trainer no Jóquei (Teresina): onde treinar';
+const description =
+  'Personal trainer no Jóquei: o Potycabana, a beira do rio Poti, os prédios da zona Leste e os studios — lista comentada com preços de Teresina.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Teresina</p>
+    <h1>Personal trainer no Jóquei: os lugares onde a zona Leste treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Às 5h da manhã, quando o Potycabana abre os portões, o Jóquei já
+      está de tênis no pé. Numa das capitais mais quentes do Brasil, o
+      bairro mais valorizado de Teresina aprendeu a treinar no ritmo do
+      termômetro — cedo, à beira do rio Poti, ou dentro das torres com
+      clima controlado.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Jóquei</strong>
+      encontra a estrutura mais completa do Piauí. Esta lista comentada
+      percorre os lugares onde os moradores realmente treinam.
+    </p>
+
+    <div class="prose">
+      <h2>1. Parque Potycabana: a academia pública da cidade</h2>
+      <p>
+        Na avenida Raul Lopes, à margem do rio Poti, o Potycabana é o
+        centro esportivo de Teresina: pista de caminhada de 1,5 km,
+        pista de padrão oficial de atletismo, academia ao ar livre,
+        ciclovia e quadras — tudo aberto diariamente das 5h às 22h.
+      </p>
+
+      <p>
+        É ali que os personal trainers do bairro montam os treinos de
+        corrida, os intervalados na pista oficial e os circuitos
+        funcionais do amanhecer, quando a temperatura ainda permite
+        intensidade ao ar livre.
+      </p>
+
+      <h2>2. A beira-rio: o pôr do sol mais famoso do Piauí</h2>
+      <p>
+        O corredor da Raul Lopes ao longo do Poti — com a Ponte Estaiada
+        como cartão-postal — estende o treino para além do parque:
+        caminhada, corrida e bike com o rio de paisagem. No fim de
+        tarde, depois das 17h, é o cenário preferido da segunda janela
+        de treino do dia.
+      </p>
+
+      <h2>3. A academia do prédio: o clima controlado das torres</h2>
+      <p>
+        Nos eixos das avenidas Dom Severino e Homero Castelo Branco, as
+        torres de alto padrão do Jóquei entregam espaços fitness
+        completos — e no meio do dia teresinense, clima controlado não é
+        luxo, é método. O personal leva o treino de força até lá, e a
+        sessão acontece sem depender do termômetro.
+      </p>
+
+      <p>
+        Entre famílias, o arranjo em sequência de horários com o mesmo
+        profissional é comum; entre executivos, a sessão das 6h antes do
+        expediente é a que sobrevive à semana.
+      </p>
+
+      <h2>4. Studios e academias: a maior densidade do Piauí</h2>
+      <p>
+        O Jóquei e a zona Leste concentram a maior oferta de academias e
+        studios do estado — das redes aos espaços premium. Para quem
+        contrata personal, a densidade vira liberdade de escolha: dá
+        para fechar a estrutura pela vizinhança, pelo equipamento ou
+        pelo horário, quase tudo em raio curto.
+      </p>
+
+      <h2>5. O treino em casa: o formato das ruas tranquilas</h2>
+      <p>
+        Nas ruas residenciais do bairro, o atendimento a domicílio com
+        equipamento portátil segue firme — o formato preferido do
+        público 60+ e de quem valoriza privacidade. Dores e limitações,
+        como sempre, passam primeiro por médico ou fisioterapeuta, e o
+        treino se constrói a partir daí.
+      </p>
+
+      <h2>O objetivo mais pedido na zona Leste</h2>
+      <p>
+        Nos relatos dos profissionais do bairro, o pedido número um
+        combina condicionamento e composição corporal para a vida no
+        calor — com a corrida no Potycabana como porta de entrada e a
+        força na academia como base que sustenta o resultado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jóquei</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/teresina-pi/">personal trainer em
+        Teresina</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320
+        a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Jóquei, o mercado trabalha no topo: o bairro concentra o
+        público de maior renda do Piauí, e os horários das 5h às 7h — os
+        mais frescos — são os primeiros a lotar. O acompanhamento online
+        (R$ 160 a R$ 410 mensais) cobre as semanas de viagem, e o treino
+        em dupla divide o custo da sessão presencial.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza — inclusive a lógica
+        de <a href="/musculacao/quantas-series-e-repeticoes/">séries e
+        repetições</a> do seu plano —, experiência real com o seu
+        objetivo e nenhuma promessa de resultado.
+      </p>
+
+      <p>
+        No Jóquei, some o filtro do calor: pergunte ao candidato como
+        ele monta a semana entre o Potycabana das 5h30 e a academia
+        climatizada do meio do dia. Quem atende no bairro tem essa
+        resposta decorada — e agenda estruturada nas duas janelas.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jóquei" />
+
+    <WhatsAppCta tema="geral" localidade="no Jóquei" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

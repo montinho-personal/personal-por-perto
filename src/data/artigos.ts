@@ -57,6 +57,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-horto-florestal/', titulo: 'Personal trainer no Horto Florestal (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-miramar/', titulo: 'Personal trainer no Miramar (João Pessoa)' },
   { categoria: 'Bairros', url: '/personal-trainer-cabral/', titulo: 'Personal trainer no Cabral (Curitiba)' },
+  { categoria: 'Bairros', url: '/personal-trainer-joquei/', titulo: 'Personal trainer no Jóquei (Teresina)' },
+  { categoria: 'Bairros', url: '/personal-trainer-setor-marista/', titulo: 'Personal trainer no Setor Marista (Goiânia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-dos-estados/', titulo: 'Personal trainer no Jardim dos Estados (Campo Grande)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

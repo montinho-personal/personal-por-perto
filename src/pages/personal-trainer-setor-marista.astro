@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/goiania-go/',
+    titulo: 'Personal trainer em Goiânia',
+    descricao: 'O guia completo da capital goiana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-jardim-goias/',
+    titulo: 'Personal trainer no Jardim Goiás',
+    descricao: 'O guia do bairro do Flamboyant e do Parque Cascavel, em Goiânia.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-setor-marista';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Goiânia', url: '/personal-trainer/goiania-go/' },
+  { nome: 'Personal Trainer no Setor Marista', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Setor Marista?',
+    resposta:
+      'Em Goiânia, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Marista — o bairro mais valorizado da capital goiana —, os profissionais experientes trabalham no teto dessas faixas, sobretudo no atendimento em condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Setor Marista?',
+    resposta:
+      'Nas ruas arborizadas do próprio bairro, ideais para caminhada e corrida leve, e no Parque Areião, a grande área verde na borda do Marista, com trilhas sombreadas — o refúgio contra o sol goiano.',
+  },
+  {
+    pergunta: 'Os prédios novos do Marista têm boa estrutura de treino?',
+    resposta:
+      'É a marca do bairro: lançamentos de altíssimo padrão, como as torres de um apartamento por andar dos grandes incorporadores locais, entregam academias completas, piscinas e lazer de clube — e o personal no condomínio é o formato dominante.',
+  },
+  {
+    pergunta: 'O personal atende na hora do almoço no Marista?',
+    resposta:
+      'Sim — o bairro concentra clínicas, escritórios e restaurantes, e a sessão de 45 a 60 minutos no meio do dia, em studio climatizado, virou especialidade local para quem trabalha na região.',
+  },
+  {
+    pergunta: 'Marista ou Jardim Goiás: onde treinar?',
+    resposta:
+      'Os dois lideram o mercado goianiense. O Jardim Goiás tem o Flamboyant e o Parque Cascavel; o Marista é mais residencial e gastronômico, com o Areião na borda. A escolha prática é o raio de dez minutos de casa — e muitos profissionais atendem nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Setor Marista (Goiânia): formatos';
+const description =
+  'Personal trainer no Setor Marista: domicílio, academia do prédio, studio ou Parque Areião — o comparativo dos formatos, com preços de Goiânia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Goiânia</p>
+    <h1>Personal trainer no Setor Marista: qual formato combina com o topo de Goiânia?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Se Goiânia tem um endereço que dita o padrão, é o Setor Marista: o
+      bairro dos restaurantes premiados, das clínicas de referência e
+      dos lançamentos que redesenharam o alto padrão goiano — torres de
+      um apartamento por andar com plantas que passam dos 600 m².
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer no Setor
+      Marista</strong>, este comparativo percorre os quatro formatos do
+      bairro — domicílio, prédio, studio e o verde do Areião — para você
+      decidir onde o seu treino rende mais.
+    </p>
+
+    <div class="prose">
+      <h2>O contexto: o bairro que virou vitrine do luxo goiano</h2>
+      <p>
+        A verticalização de altíssimo padrão transformou o Marista:
+        lançamentos como o Solenne, da Consciente — 4 suítes em plantas
+        de 369 a 697 m², um apartamento por andar — e o City Altier
+        Ricardo Paranhos, de duas torres com 42 pavimentos e 140 metros
+        de altura, trouxeram para Goiânia o padrão de estrutura que
+        antes só se via nas maiores capitais.
+      </p>
+
+      <p>
+        Essa nova era mudou também o treino: a academia de clube dentro
+        do condomínio virou item de série — e o mercado de personal do
+        bairro se organizou em torno dela.
+      </p>
+
+      <h2>Formato 1 — A domicílio: a tradição das ruas arborizadas</h2>
+      <p>
+        Nas casas e nos edifícios clássicos do Marista, o personal a
+        domicílio segue sendo o formato histórico: equipamento portátil,
+        sessão na área externa ou na sala, zero deslocamento. É a
+        escolha natural das famílias tradicionais e do público 60+ — com
+        dores e limitações sempre avaliadas antes por médico ou
+        fisioterapeuta.
+      </p>
+
+      <h2>Formato 2 — A academia do prédio: o padrão da nova era</h2>
+      <p>
+        Nos lançamentos, o personal leva o método até a academia do
+        condomínio — completa, climatizada e a um elevador de casa. Para
+        quem mora nas torres novas, é o formato de melhor relação
+        tempo-resultado: força estruturada às 6h, antes do expediente, ou
+        no fim do dia, sem trânsito no meio.
+      </p>
+
+      <h2>Formato 3 — Studio: a hora do almoço do polo de serviços</h2>
+      <p>
+        O Marista concentra clínicas, escritórios e consultórios — e uma
+        rede de studios de treino personalizado que atende a sessão de
+        45 a 60 minutos no meio do dia. Para quem trabalha no bairro, é
+        a janela que sobrevive à agenda: treino eficiente, banho e volta
+        pontual ao consultório.
+      </p>
+
+      <h2>Formato 4 — O Areião: o pulmão verde da borda</h2>
+      <p>
+        Na divisa do bairro, o Parque Areião oferece trilhas sombreadas
+        e o contato com o verde que o sol goiano exige. É o cenário dos
+        treinos leves, das sessões regenerativas e do aeróbico de fim de
+        tarde — o contraponto ao ar livre da força feita indoor.
+      </p>
+
+      <h2>O quinto elemento: o treino em dupla</h2>
+      <p>
+        Entre casais e sócios de consultório, o treino em dupla cresce
+        no Marista: divide o custo da sessão, cria compromisso mútuo e
+        cabe em qualquer um dos quatro formatos. A condição é o
+        profissional individualizar carga e progressão para cada um —
+        mesmo com os dois treinando lado a lado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Setor Marista</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/goiania-go/">personal trainer em
+        Goiânia</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Marista, o mercado trabalha no teto — o bairro disputa com o
+        <a href="/personal-trainer-jardim-goias/">Jardim Goiás</a> o
+        público mais exigente de Goiânia, e o atendimento nos
+        condomínios de altíssimo padrão é o serviço de maior valor. O
+        acompanhamento online (R$ 170 a R$ 430 mensais) cobre as semanas
+        de viagem.
+      </p>
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        A regra prática do bairro: casa tradicional pede domicílio;
+        torre nova pede condomínio; expediente no polo de serviços pede
+        studio ao meio-dia; e todo plano bem-feito reserva um dia de
+        Areião.
+      </p>
+
+      <p>
+        Escolhido o formato, valem os critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>: avaliação física na primeira semana, periodização
+        explicada com clareza, experiência real com o seu objetivo e
+        nenhuma promessa de milagre. No Marista, o bom profissional
+        transita entre os quatro cenários — e monta a semana usando o
+        melhor de cada um.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Setor Marista" />
+
+    <WhatsAppCta tema="geral" localidade="no Setor Marista" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
