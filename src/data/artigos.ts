@@ -60,6 +60,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-joquei/', titulo: 'Personal trainer no Jóquei (Teresina)' },
   { categoria: 'Bairros', url: '/personal-trainer-setor-marista/', titulo: 'Personal trainer no Setor Marista (Goiânia)' },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-dos-estados/', titulo: 'Personal trainer no Jardim dos Estados (Campo Grande)' },
+  { categoria: 'Bairros', url: '/personal-trainer-bela-vista/', titulo: 'Personal trainer no Bela Vista (Porto Alegre)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-das-americas/', titulo: 'Personal trainer no Jardim das Américas (Cuiabá)' },
+  { categoria: 'Bairros', url: '/personal-trainer-grageru/', titulo: 'Personal trainer no Grageru (Aracaju)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },

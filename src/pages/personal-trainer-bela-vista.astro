@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia completo da capital gaúcha: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-moinhos-de-vento/',
+    titulo: 'Personal trainer no Moinhos de Vento',
+    descricao: 'O guia do bairro do Parcão, vizinho ilustre da Bela Vista.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-bela-vista';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer no Bela Vista', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Bela Vista?',
+    resposta:
+      'Em Porto Alegre, a aula avulsa varia de R$ 80 a R$ 190 e o pacote mensal de R$ 400 a R$ 1.150. No Bela Vista — um dos endereços mais valorizados da capital gaúcha —, os profissionais experientes trabalham no topo dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Bela Vista?',
+    resposta:
+      'O coração é a Praça da Encol (oficialmente Praça Carlos Simão Arnt): arborizada, movimentada e cercada de cafés, concentra caminhada, funcionais e treinos em dupla. As ruas tranquilas do bairro e o Parcão, no vizinho Moinhos de Vento, completam o circuito.',
+  },
+  {
+    pergunta: 'Os prédios do Bela Vista têm academia própria?',
+    resposta:
+      'Os lançamentos de alto padrão sim — o bairro vive uma verticalização de luxo com academias completas, piscinas e espaços de bem-estar. Nas casas e nos edifícios clássicos, o atendimento a domicílio com equipamento portátil segue sendo o formato tradicional.',
+  },
+  {
+    pergunta: 'Como treinar no inverno de Porto Alegre?',
+    resposta:
+      'Com plano B estruturado: nos meses frios e chuvosos, a força migra para a academia do prédio ou studio climatizado, e o aeróbico aproveita as janelas de sol — que o porto-alegrense aprende a ler desde cedo. Constância vale mais que condição perfeita.',
+  },
+  {
+    pergunta: 'Bela Vista ou Moinhos de Vento: onde treinar?',
+    resposta:
+      'São vizinhos e se completam: o Moinhos tem o Parcão e a vida de rua da Padre Chagas; o Bela Vista é mais residencial e silencioso, com a Praça da Encol de quintal. A maioria dos profissionais atende nos dois — a escolha é pela logística de casa.',
+  },
+];
+
+const title = 'Personal Trainer no Bela Vista (POA): respostas e preços';
+const description =
+  'Personal trainer no Bela Vista: quanto custa, o treino na Praça da Encol, os prédios de alto padrão e como escolher bem em Porto Alegre.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer no Bela Vista: o que os moradores perguntam antes de fechar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Bela Vista é o silêncio mais valorizado de Porto Alegre: ruas
+      arborizadas onde mansões históricas convivem com a verticalização
+      de luxo mais intensa da capital, tudo a poucos quarteirões da
+      Praça da Encol — a sala de estar ao ar livre do bairro.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Bela Vista</strong>
+      costuma chegar com as mesmas dúvidas. Este artigo responde às
+      principais, uma a uma.
+    </p>
+
+    <div class="prose">
+      <h2>Onde o Bela Vista treina, afinal?</h2>
+      <p>
+        Em três cenários. O primeiro é a Praça da Encol — oficialmente
+        Praça Carlos Simão Arnt —, o ponto de encontro do bairro:
+        caminhada, funcionais, treinos em dupla e alongamento entre as
+        árvores, com café na sequência como ritual local.
+      </p>
+
+      <p>
+        O segundo são as ruas internas, tranquilas e arborizadas, ideais
+        para corrida leve e deslocamentos a pé. O terceiro é indoor: as
+        academias dos prédios novos e os studios do eixo da avenida
+        Carlos Gomes, a fronteira corporativa do bairro.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/porto-alegre-rs/">personal trainer em
+        Porto Alegre</a>, vai de R$ 80 a R$ 190 pela aula avulsa e de
+        R$ 400 a R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Bela Vista, o mercado trabalha no topo: o bairro tem um dos
+        maiores poderes aquisitivos da capital e espera o padrão de
+        serviço correspondente. O atendimento a domicílio é o formato de
+        maior valor, e o acompanhamento online (R$ 190 a R$ 480 mensais)
+        cobre as semanas de viagem.
+      </p>
+
+      <h2>O treino no prédio funciona por aqui?</h2>
+      <p>
+        Cada vez mais: a verticalização de alto padrão trouxe academias
+        completas, piscinas e espaços de bem-estar para dentro dos
+        condomínios — e o personal leva o método até eles. Nos casarões
+        e edifícios clássicos, o treino em casa com equipamento portátil
+        mantém a tradição do bairro.
+      </p>
+
+      <p>
+        No inverno porto-alegrense, essa estrutura vira estratégia: a
+        força fica indoor, o aeróbico aproveita as janelas de sol, e a
+        semana não depende do tempo.
+      </p>
+
+      <h2>Que objetivos os moradores mais levam ao personal?</h2>
+      <p>
+        Os profissionais da região relatam o tripé clássico dos bairros
+        maduros: longevidade com força para o público 60+, numeroso nos
+        edifícios tradicionais; composição corporal para a vida social
+        intensa; e condicionamento para quem corre — com o Parcão do
+        vizinho <a href="/personal-trainer-moinhos-de-vento/">Moinhos de
+        Vento</a> como pista de referência.
+      </p>
+
+      <p>
+        Dores e limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta — e o treino se constrói a partir da liberação.
+      </p>
+
+      <h2>E o treino em dupla, funciona no bairro?</h2>
+      <p>
+        Funciona — e cresce: entre casais e vizinhos de condomínio, a
+        sessão compartilhada divide o custo e cria compromisso mútuo,
+        seja na academia do prédio, seja na Praça da Encol. A condição
+        técnica é uma só: o profissional precisa individualizar carga e
+        progressão para cada aluno, mesmo com os dois treinando lado a
+        lado.
+      </p>
+
+      <p>
+        Para famílias com adolescentes, a musculação supervisionada na
+        academia do condomínio completa o pacote — com técnica e
+        progressão ajustadas para cada fase da vida.
+      </p>
+
+      <h2>E quem trabalha na Carlos Gomes?</h2>
+      <p>
+        A fronteira corporativa do bairro criou uma demanda própria: a
+        sessão de 45 a 60 minutos encaixada antes do expediente ou na
+        hora do almoço, em studio ou na academia do prédio comercial.
+        Para esse público, eficiência é o critério — treino direto ao
+        ponto, banho e volta pontual à mesa.
+      </p>
+
+      <p>
+        É também o perfil que mais usa o acompanhamento online nas
+        semanas de viagem, mantendo a progressão viva entre uma sessão
+        presencial e outra.
+      </p>
+
+      <h2>Como escolher bem no Bela Vista?</h2>
+      <p>
+        Com os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado garantido.
+      </p>
+
+      <p>
+        E com o filtro local: pergunte ao candidato como ele monta a
+        semana entre a Praça da Encol, o prédio e as janelas de sol do
+        inverno. Quem atende no bairro tem essa resposta pronta — e
+        agenda estruturada nos horários que o Bela Vista realmente usa.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Bela Vista" />
+
+    <WhatsAppCta tema="geral" localidade="no Bela Vista" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/aracaju-se/',
+    titulo: 'Personal trainer em Aracaju',
+    descricao: 'O guia completo da capital sergipana: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-13-de-julho/',
+    titulo: 'Personal trainer no 13 de Julho',
+    descricao: 'O guia do bairro do calçadão do rio Sergipe, vizinho do Grageru.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-grageru';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Aracaju', url: '/personal-trainer/aracaju-se/' },
+  { nome: 'Personal Trainer no Grageru', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Grageru?',
+    resposta:
+      'Em Aracaju, a aula avulsa varia de R$ 60 a R$ 140 e o pacote mensal de R$ 300 a R$ 820. No Grageru — bairro nobre residencial colado no Parque da Sementeira —, os profissionais experientes trabalham na metade superior dessas faixas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Grageru?',
+    resposta:
+      'O Parque da Sementeira é o quintal do bairro: trilhas sombreadas, gramados e lago numa das maiores áreas verdes de Aracaju. As ruas arborizadas e planas do Grageru completam o circuito de caminhada e corrida leve do dia a dia.',
+  },
+  {
+    pergunta: 'O Grageru fica perto do calçadão do 13 de Julho?',
+    resposta:
+      'Sim — o bairro faz divisa com o 13 de Julho, e o calçadão da Beira Mar fica a minutos. Muitos moradores combinam: força no condomínio ou studio do Grageru, corrida no calçadão do rio — e vários profissionais atendem nos dois bairros.',
+  },
+  {
+    pergunta: 'Personal atende nos condomínios do Grageru?',
+    resposta:
+      'É o formato que mais cresce: os edifícios novos do bairro chegam com espaço fitness, e o personal leva o método até eles. Nos prédios sem estrutura e nas casas, o atendimento com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Qual perfil de morador mais contrata personal no bairro?',
+    resposta:
+      'O Grageru é bairro de famílias e de moradores de longa data: os perfis mais comuns são o casal que treina em dupla, o público 60+ em busca de força e autonomia, e os profissionais liberais que treinam nas pontas do dia.',
+  },
+];
+
+const title = 'Personal Trainer no Grageru (Aracaju): guia por perfil';
+const description =
+  'Personal trainer no Grageru: o guia por perfil — família, 60+, profissional liberal e corredor — com a Sementeira de quintal e preços de Aracaju.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Aracaju</p>
+    <h1>Personal trainer no Grageru: o guia certo para cada perfil do bairro da Sementeira</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Se o 13 de Julho tem a margem do rio, o Grageru tem o parque: o
+      bairro cresceu colado na Sementeira, a maior área verde de
+      Aracaju, e transformou essa vizinhança em estilo de vida — ruas
+      planas e arborizadas, condomínios familiares e o verde a uma
+      caminhada de distância.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Grageru</strong> se
+      encaixa em um dos quatro perfis abaixo. Encontre o seu — e o
+      formato que combina com ele.
+    </p>
+
+    <div class="prose">
+      <h2>O território: entre a Sementeira e a Beira Mar</h2>
+      <p>
+        O Grageru é o miolo residencial nobre de Aracaju: faz divisa com
+        o 13 de Julho e com os eixos de serviços da zona sul, tem o
+        Parque da Sementeira de quintal e o calçadão do rio Sergipe a
+        minutos. Os edifícios novos chegam com espaço fitness, e as ruas
+        internas mantêm a escala tranquila que definiu o bairro.
+      </p>
+
+      <h2>Perfil 1 — A família dos condomínios</h2>
+      <p>
+        Nos edifícios familiares do bairro, o treino é programa
+        doméstico: casal em dupla na academia do prédio, filhos
+        adolescentes iniciando musculação com supervisão, avós no
+        horário seguinte. O formato em sequência divide custo e cria
+        constância — desde que o personal individualize carga e
+        progressão para cada um.
+      </p>
+
+      <h2>Perfil 2 — O morador 60+ das ruas arborizadas</h2>
+      <p>
+        O Grageru tem gerações de moradores de longa data — e para esse
+        público o arranjo ideal combina a caminhada na Sementeira, nos
+        horários frescos, com duas sessões semanais de força em casa ou
+        no condomínio, orientadas por profissional experiente em treino
+        para longevidade.
+      </p>
+
+      <p>
+        A regra inegociável: dores e limitações passam primeiro por
+        médico ou fisioterapeuta, e o treino se constrói a partir da
+        liberação.
+      </p>
+
+      <h2>Perfil 3 — O profissional liberal das pontas do dia</h2>
+      <p>
+        Consultórios, escritórios e clínicas cercam o bairro — e quem
+        trabalha neles treina antes das 7h30 ou depois das 17h, no
+        studio ou na academia do prédio. Para as semanas de plantão e
+        viagem, o acompanhamento online (R$ 150 a R$ 390 mensais na
+        referência de Aracaju) mantém o plano vivo.
+      </p>
+
+      <h2>Perfil 4 — O corredor da Sementeira e do calçadão</h2>
+      <p>
+        O corredor do Grageru tem a melhor dupla de pistas de Aracaju em
+        raio curto: as trilhas sombreadas da Sementeira para rodagens e
+        regenerativos, e o calçadão do vizinho
+        <a href="/personal-trainer-13-de-julho/">13 de Julho</a> para os
+        treinos de ritmo à beira do rio.
+      </p>
+
+      <p>
+        O personal de corrida alterna os dois cenários conforme a fase
+        do plano — sombra para o volume, margem aberta para a
+        velocidade — sempre nas janelas do calor aracajuano.
+      </p>
+
+      <h2>O quinto elemento: a Sementeira como agenda</h2>
+      <p>
+        O que une os quatro perfis é o parque: a Sementeira funciona
+        como a agenda ao ar livre do bairro — caminhada dos 60+ de
+        manhã, funcionais em grupo no fim de tarde, rodagens dos
+        corredores no sábado. Bons profissionais do Grageru conhecem os
+        horários de cada tribo e encaixam o aluno na janela certa.
+      </p>
+
+      <h2>Quanto custa personal trainer no Grageru</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/aracaju-se/">personal trainer em
+        Aracaju</a>, vai de R$ 60 a R$ 140 pela aula avulsa e de R$ 300
+        a R$ 820 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Grageru, os profissionais experientes ficam na metade
+        superior das faixas — abaixo do vizinho 13 de Julho, com
+        estrutura de treino comparável. O treino em dupla, forte no
+        bairro, divide o custo por pessoa sem perder acompanhamento.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os critérios objetivos valem para todos: avaliação física na
+        primeira semana, periodização que o profissional explique sem
+        jargão, experiência real com o seu objetivo e honestidade sobre
+        prazos — o passo a passo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>.
+      </p>
+
+      <p>
+        No Grageru, some o filtro do parque: pergunte ao candidato como
+        ele usa a Sementeira na montagem da semana. Quem atende no
+        bairro responde com percursos e horários — e sabe que o verde de
+        quintal é o maior patrimônio esportivo do endereço.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Grageru" />
+
+    <WhatsAppCta tema="geral" localidade="no Grageru" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

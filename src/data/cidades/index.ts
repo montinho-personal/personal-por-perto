@@ -366,6 +366,9 @@ import { cidade as cajuru } from './cajuru-sp';
 import { cidade as tresPassos } from './tres-passos-rs';
 import { cidade as rosarioDoSul } from './rosario-do-sul-rs';
 import { cidade as itaporangaDAjuda } from './itaporanga-d-ajuda-se';
+import { cidade as tresCoroas } from './tres-coroas-rs';
+import { cidade as praiaGrandeSC } from './praia-grande-sc';
+import { cidade as orleans } from './orleans-sc';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1103,7 +1106,7 @@ export const cidades: Cidade[] = [
   caico, lagarto, ariquemes,
   // Bloco 47 (3 cidades)
   encantado, monteSiao, amargosa, doisIrmaos, areiaBranca, cajuru,
-  tresPassos, rosarioDoSul, itaporangaDAjuda,
+  tresPassos, rosarioDoSul, itaporangaDAjuda, tresCoroas, praiaGrandeSC, orleans,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

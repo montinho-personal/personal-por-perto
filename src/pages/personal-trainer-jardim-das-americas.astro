@@ -1,0 +1,258 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/cuiaba-mt/',
+    titulo: 'Personal trainer em Cuiabá',
+    descricao: 'O guia completo da capital mato-grossense: preços, formatos e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/',
+    titulo: 'Cardio e musculação no mesmo dia',
+    descricao: 'Como combinar os dois estímulos sem perder resultado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-jardim-das-americas';
+const atualizadoEm = '2026-08-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Cuiabá', url: '/personal-trainer/cuiaba-mt/' },
+  { nome: 'Personal Trainer no Jardim das Américas', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jardim das Américas?',
+    resposta:
+      'Em Cuiabá, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. No Jardim das Américas — o metro quadrado mais alto da capital —, os profissionais experientes trabalham no teto dessas faixas, sobretudo no atendimento em condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre perto do Jardim das Américas?',
+    resposta:
+      'O Parque Mãe Bonifácia, a poucos minutos do bairro, é a resposta da cidade: trilhas arborizadas e circuito interno levemente ondulado, o ponto de encontro da corrida cuiabana. O Parque das Águas, com 1,5 km de pista e ciclovia de 1,6 km, completa a dupla.',
+  },
+  {
+    pergunta: 'Que horas treinar no calor de Cuiabá?',
+    resposta:
+      'Numa das capitais mais quentes do país, as janelas são rígidas: de 5h30 às 7h30 ou depois das 17h30. No meio do dia, o treino migra para a academia climatizada do prédio ou studio — em Cuiabá, clima controlado é método, não conforto.',
+  },
+  {
+    pergunta: 'Os prédios do Jardim das Américas têm academia própria?',
+    resposta:
+      'É a marca do bairro: as torres de alto padrão que fizeram dele o endereço mais valorizado de Cuiabá entregam academias completas, piscinas e lazer de clube — e o personal no condomínio é o formato dominante entre os moradores.',
+  },
+  {
+    pergunta: 'O bairro é bom para quem treina cedo?',
+    resposta:
+      'É ideal: a localização entre o Mãe Bonifácia e os eixos de serviços permite treinar às 6h no parque ou no prédio e estar no trabalho às 8h — a logística curta é o maior luxo do endereço.',
+  },
+];
+
+const title = 'Personal Trainer no Jardim das Américas (Cuiabá): guia';
+const description =
+  'Personal trainer no Jardim das Américas: preços de Cuiabá, o Parque Mãe Bonifácia ao lado, as torres com academia e o relógio do calor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Cuiabá</p>
+    <h1>Personal trainer no Jardim das Américas: treino no ritmo do termômetro cuiabano</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Cuiabá é a capital que treina contra o relógio — e o Jardim das
+      Américas é onde esse relógio bate mais forte. O endereço de metro
+      quadrado mais alto da cidade organizou a vida em torno de duas
+      certezas: o calor que manda no meio do dia e as torres com
+      estrutura de clube que resolvem o resto.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Jardim das
+      Américas</strong> aprende rápido essa coreografia. Este artigo
+      percorre o bairro como ele funciona — do amanhecer no parque ao
+      clima controlado das torres.
+    </p>
+
+    <div class="prose">
+      <h2>O território: o quilômetro mais valorizado de Cuiabá</h2>
+      <p>
+        O Jardim das Américas concentra a verticalização de mais alto
+        padrão da capital mato-grossense: torres com academias
+        completas, piscinas e lazer de clube, cercadas por serviços,
+        clínicas e os shoppings da região oeste.
+      </p>
+
+      <p>
+        A localização fecha a conta: o Parque Mãe Bonifácia — o pulmão
+        verde mais querido de Cuiabá — fica a poucos minutos, e os eixos
+        de trabalho da cidade estão em raio curto. Logística curta, em
+        cidade quente, é o maior luxo que existe.
+      </p>
+
+      <h2>O amanhecer: Mãe Bonifácia e Parque das Águas</h2>
+      <p>
+        Entre 5h30 e 7h30, o treino cuiabano acontece ao ar livre — e os
+        dois endereços preferidos do bairro são vizinhos. O Mãe
+        Bonifácia oferece trilhas arborizadas e um circuito interno
+        levemente ondulado, ideal para rodagens, progressivos e
+        intervalados curtos à sombra.
+      </p>
+
+      <p>
+        O Parque das Águas, no Centro Político Administrativo, soma 1,5
+        km de pista de caminhada, 1,6 km de ciclovia e academia ao ar
+        livre em 270 mil m² — a alternativa plana e aberta para os
+        treinos de ritmo.
+      </p>
+
+      <h2>O meio do dia: a academia do condomínio</h2>
+      <p>
+        Quando o termômetro passa dos 35°C — rotina em boa parte do ano
+        —, o treino do bairro migra para dentro: as academias das torres
+        recebem o personal do morador com clima controlado, e a força
+        estruturada acontece sem negociar com o sol.
+      </p>
+
+      <p>
+        É o formato dominante do Jardim das Américas: sessão de 45 a 60
+        minutos no prédio, antes do expediente ou na pausa do almoço,
+        com o profissional trazendo método e progressão. Sobre como
+        combinar força e aeróbico na mesma semana — ou no mesmo dia —, o
+        guia de <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">
+        cardio e musculação</a> explica a ordem que funciona.
+      </p>
+
+      <h2>O fim de tarde: a segunda janela</h2>
+      <p>
+        Depois das 17h30, o bairro volta para a rua: caminhada nas vias
+        arborizadas, funcionais nos condomínios e a segunda leva de
+        corrida no Mãe Bonifácia, agora com o pôr do sol do cerrado como
+        cenário. Famílias aproveitam a janela para o treino em dupla —
+        arranjo que divide custo e cria constância.
+      </p>
+
+      <h2>O objetivo mais pedido no bairro</h2>
+      <p>
+        Quem atende no endereço mais valorizado de Cuiabá relata um
+        padrão: condicionamento e composição corporal para a vida no
+        calor extremo, com a saúde cardiovascular como pano de fundo. A
+        receita técnica é constância nas duas janelas do dia — e um
+        plano que não dependa do termômetro para acontecer.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jardim das Américas</h2>
+      <p>
+        A referência da capital, publicada no guia de
+        <a href="/personal-trainer/cuiaba-mt/">personal trainer em
+        Cuiabá</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Jardim das Américas, o mercado trabalha no teto: o bairro
+        reúne o público de maior renda de Mato Grosso, e o atendimento
+        nos condomínios é o serviço mais valorizado. O acompanhamento
+        online (R$ 170 a R$ 430 mensais) cobre as semanas de fazenda e
+        de viagem — rotina comum do agro cuiabano.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado.
+      </p>
+
+      <p>
+        No Jardim das Américas, some o filtro do termômetro: pergunte ao
+        candidato como ele monta a semana entre o parque das 6h e a
+        academia climatizada do meio-dia. Quem atende no bairro tem essa
+        coreografia decorada. E dores ou limitações, como sempre, passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jardim das Américas" />
+
+    <WhatsAppCta tema="geral" localidade="no Jardim das Américas" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
