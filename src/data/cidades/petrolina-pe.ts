@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Petrolina', url: 'https://petrolina.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-05',
+
+  capaArte: {
+    src: '/capas-cidade/petrolina-pe.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Petrolina (PE) em arte que reúne treino com halteres, a orla do Rio São Francisco com a Ponte Presidente Dutra e o letreiro Eu Amo Petrolina — Personal por Perto',
+    legenda:
+      'Treino personalizado em Petrolina: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
