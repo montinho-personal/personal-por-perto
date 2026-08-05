@@ -1,0 +1,326 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer e erros comuns',
+    descricao: 'O exercício que carrega a cadeia posterior inteira — e onde ele entra no dia de costas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O empurrar que precisa ser equilibrado pelo puxar — e por que isso importa para o ombro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'Costas é o grupo em que mais gente sobe peso sem somar estímulo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-costas';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de costas: como montar o seu', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que eu sinto o bíceps mais que as costas na puxada?',
+    resposta:
+      'Porque o braço está fazendo o trabalho que deveria ser da escápula. Nos puxadores, o movimento começa com a escápula descendo e retraindo — só depois o cotovelo flexiona. Quem inicia pelo braço transforma remada e puxada em rosca com peso grande. Reduzir a carga, pensar em "puxar com o cotovelo" e segurar meio segundo na contração resolve na maioria dos casos.',
+  },
+  {
+    pergunta: 'Barra fixa ou puxada na polia: qual é melhor?',
+    resposta:
+      'São complementares. A barra fixa exige estabilizar o corpo inteiro e costuma render mais para dorsais, mas depende de você conseguir mover o próprio peso — o que exclui muita gente no começo. A polia permite ajustar a carga com precisão, treinar até perto da falha com segurança e trabalhar amplitudes que a barra não permite. O caminho comum é usar a polia para construir força e migrar para a barra conforme a relação peso-força melhora.',
+  },
+  {
+    pergunta: 'Preciso fazer pegada aberta para ter costas largas?',
+    resposta:
+      'A pegada muito aberta é mito herdado de revista antiga. Ela reduz a amplitude e não aumenta a ativação de dorsais de forma relevante. Uma pegada pouco mais larga que os ombros permite mais amplitude e mais carga ao longo do tempo — e é a amplitude com progressão, não a largura da mão, que constrói a largura das costas.',
+  },
+  {
+    pergunta: 'Quantas séries de costas fazer por semana?',
+    resposta:
+      'De 10 a 20 séries semanais cobrem bem a maioria dos casos, distribuídas em duas sessões. Costas é um grupo grande, com funções variadas, e responde melhor a variedade de ângulos do que a repetição do mesmo exercício: uma puxada vertical, uma remada horizontal e um trabalho de escápula já formam um dia completo.',
+  },
+  {
+    pergunta: 'Treino de costas ajuda na postura?',
+    resposta:
+      'Ajuda, mas não do jeito que costumam vender. Fortalecer romboides, trapézio médio e inferior melhora a capacidade de sustentar o tronco ereto ao longo do dia — o que reduz a fadiga postural. O que não existe é exercício que "corrija" postura de forma passiva ou permanente. Dor persistente nas costas ou no pescoço precisa de avaliação de médico ou fisioterapeuta, não de mais uma série de remada.',
+  },
+];
+
+const title = 'Treino de costas: como montar o seu (e os erros)';
+const description =
+  'Guia do treino de costas: por que você sente o bíceps, como puxar com a escápula, puxada x remada, barra fixa x polia, volume semanal e os erros mais comuns.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de costas: como montar o seu (e os erros mais comuns)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Costas é o grupo muscular com a maior distância entre esforço e
+      resultado. Muita gente puxa peso alto duas vezes por semana durante
+      anos e continua sem largura nenhuma.
+    </p>
+
+    <p class="lead">
+      Quase sempre o problema não é volume nem carga: é que o braço está
+      fazendo o trabalho que deveria ser das costas. Este guia mostra como
+      resolver isso e como montar um dia de costas que funciona.
+    </p>
+
+    <div class="prose">
+      <h2>O que "costas" quer dizer, na prática</h2>
+      <p>
+        Não é um músculo, é uma região com funções diferentes. O grande
+        dorsal puxa o braço para baixo e para trás — é ele que dá a
+        largura. O trapézio, em suas três porções, eleva, retrai e
+        deprime a escápula.
+      </p>
+
+      <p>
+        Somam-se os romboides, que aproximam as escápulas, e os eretores
+        da espinha, que sustentam a coluna. Cada um responde a um vetor
+        de puxada diferente.
+      </p>
+
+      <p>
+        É por isso que um dia de costas completo precisa de mais de um
+        ângulo — e por que fazer três variações da mesma puxada não é
+        variedade, é repetição.
+      </p>
+
+      <h2>O erro que trava quase todo mundo</h2>
+      <p>
+        Você sente o bíceps queimar e as costas não. O motivo é
+        mecânico: o movimento está começando pelo cotovelo em vez de
+        começar pela escápula.
+      </p>
+
+      <p>
+        A ordem correta é outra. Primeiro a escápula desce e retrai —
+        como se você guardasse os ombros nos bolsos de trás. Só depois o
+        cotovelo flexiona e puxa a carga.
+      </p>
+
+      <p>
+        Três ajustes resolvem na maioria dos casos: reduzir a carga,
+        pensar em "puxar com o cotovelo" em vez de com a mão, e segurar
+        meio segundo no ponto de maior contração. É desconfortável no
+        começo porque o peso cai — e é exatamente esse o sinal de que
+        antes o braço estava carregando.
+      </p>
+
+      <VideoYouTube
+        id="DKRu25uPjSg"
+        titulo="Dorsais ou costas: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de costas e demonstra a execução correta de cada um."
+      />
+
+      <h2>Os quatro padrões que montam um dia completo</h2>
+      <p>
+        <strong>1. Puxada vertical.</strong> Barra fixa, puxada na polia
+        alta, puxada com pegada neutra. É o padrão que mais recruta
+        dorsais e o principal responsável pela largura.
+      </p>
+
+      <p>
+        <strong>2. Remada horizontal.</strong> Remada curvada, remada
+        cavalinho, remada sentada na polia. Trabalha a espessura,
+        recrutando trapézio médio e romboides junto com o dorsal.
+      </p>
+
+      <p>
+        <strong>3. Extensão de quadril com carga.</strong> O
+        <a href="/musculacao/levantamento-terra-como-fazer/">levantamento
+        terra</a> e suas variações carregam os eretores da espinha e o
+        trapézio de forma que nenhum puxador reproduz.
+      </p>
+
+      <p>
+        <strong>4. Trabalho isolado de escápula.</strong> Face pull,
+        crucifixo inverso, encolhimento. Pequeno em carga, grande em
+        efeito — é o que equilibra a quantidade de
+        <a href="/musculacao/supino-como-fazer/">supino</a> e empurrar
+        que a maioria faz.
+      </p>
+
+      <h2>Barra fixa ou polia?</h2>
+      <p>
+        A barra fixa exige estabilizar o corpo inteiro e costuma render
+        mais para dorsais — mas depende de você conseguir mover o próprio
+        peso, o que exclui boa parte de quem está começando.
+      </p>
+
+      <p>
+        A polia permite ajustar a carga com precisão, chegar perto da
+        falha com segurança e trabalhar amplitudes que a barra não
+        permite.
+      </p>
+
+      <p>
+        O caminho usual é construir força na polia e migrar para a barra
+        conforme a relação peso-força melhora. Não são rivais: são etapas.
+      </p>
+
+      <h2>Os mitos que sobrevivem</h2>
+      <p>
+        <strong>"Pegada bem aberta alarga as costas."</strong> Reduz a
+        amplitude sem ganho relevante de ativação. Pouco mais larga que
+        os ombros costuma render mais.
+      </p>
+
+      <p>
+        <strong>"Puxada por trás da nuca é melhor."</strong> Coloca o
+        ombro em rotação externa extrema com carga, sem entregar nada que
+        a puxada à frente não entregue. Não compensa o risco.
+      </p>
+
+      <p>
+        <strong>"Costas é dia de bíceps."</strong> Treinar os dois no
+        mesmo dia é uma escolha de organização, não uma regra. O problema
+        é quando o bíceps já chega exausto do trabalho de costas mal
+        executado — aí ele vira o limitante de tudo.
+      </p>
+
+      <h2>Volume e frequência</h2>
+      <p>
+        De 10 a 20 séries semanais cobrem bem a maioria, distribuídas em
+        duas sessões. Duas frequências semanais costumam render mais que
+        uma sessão gigante, porque a qualidade da execução cai muito no
+        fim de um volume alto.
+      </p>
+
+      <p>
+        Faixas de 6 a 12 repetições funcionam bem para hipertrofia; o
+        trabalho de escápula rende mais em faixas mais altas, de 12 a 20,
+        com carga leve e contração controlada.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        reforçam o mesmo princípio de sempre: o que sustenta o ganho é a
+        sobrecarga progressiva ao longo dos meses, não o número de
+        exercícios diferentes numa sessão.
+      </p>
+
+      <h2>Um exemplo de sessão</h2>
+      <p>
+        Puxada vertical, 3 a 4 séries de 8 a 12 repetições. Remada
+        horizontal, 3 a 4 séries de 8 a 12. Uma segunda puxada em ângulo
+        diferente, 3 séries de 10 a 15.
+      </p>
+
+      <p>
+        Fecha com trabalho de escápula — face pull ou crucifixo inverso —
+        em 3 séries de 12 a 20 repetições, com carga leve e execução
+        limpa. Registre carga e repetições: a
+        <a href="/musculacao/progressao-de-carga/">progressão</a> é o que
+        transforma essa sessão em resultado ao longo dos meses.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Costas é o grupo em que a diferença entre execução boa e ruim é
+        mais difícil de perceber sozinho — o movimento acontece atrás de
+        você, literalmente.
+      </p>
+
+      <p>
+        Um personal trainer identifica em uma sessão se você está puxando
+        com a escápula ou com o braço, ajusta a carga e organiza a
+        progressão. Para quem treina costas há anos sem ver largura
+        aparecer, costuma ser o ajuste que faltava.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de costas" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

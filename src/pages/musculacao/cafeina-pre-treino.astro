@@ -1,0 +1,319 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/creatina-o-que-e-como-tomar/',
+    titulo: 'Creatina: o que é, para que serve e como tomar',
+    descricao: 'O outro suplemento com evidência sólida — e o que muda entre os dois.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa muscular',
+    descricao: 'O que a cafeína no fim do dia custa exatamente onde você não vê.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-ate-a-falha/',
+    titulo: 'Treinar até a falha funciona?',
+    descricao: 'A cafeína muda a percepção de esforço — e isso mexe com o seu RIR.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/cafeina-pre-treino';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cafeína no pré-treino: como usar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto de cafeína tomar antes do treino?',
+    resposta:
+      'As faixas mais usadas na literatura de desempenho ficam entre 3 e 6 mg por quilo de peso corporal, tomados de 30 a 60 minutos antes — o que dá algo entre 210 e 420 mg para uma pessoa de 70 kg. Doses acima disso raramente melhoram o desempenho e aumentam efeitos indesejados. Quem nunca usou deve começar bem abaixo da faixa e observar a resposta, e quem tem qualquer condição cardiovascular precisa conversar com o médico antes.',
+  },
+  {
+    pergunta: 'Café resolve ou preciso de suplemento?',
+    resposta:
+      'Café resolve, e é a fonte mais barata. Uma xícara de café coado tem, em média, entre 80 e 100 mg de cafeína, o que significa que duas a três xícaras já colocam a maioria das pessoas dentro da faixa útil. A vantagem do suplemento em cápsula ou pó é saber exatamente a dose — em café, a variação entre grão, torra e método de preparo é grande.',
+  },
+  {
+    pergunta: 'A cafeína perde efeito com o tempo?',
+    resposta:
+      'Parte dele, sim. O organismo desenvolve tolerância a alguns efeitos, especialmente os de alerta e estímulo, embora o ganho de desempenho pareça se manter melhor do que a sensação subjetiva sugere. Na prática, quem toma café o dia inteiro sente pouco antes do treino. Reduzir o consumo geral e reservar a dose maior para os dias de treino pesado é a estratégia mais usada.',
+  },
+  {
+    pergunta: 'Posso tomar pré-treino à noite?',
+    resposta:
+      'Pode, mas é o custo mais alto do suplemento. A cafeína tem meia-vida longa — em torno de cinco horas para a maioria das pessoas —, então uma dose às 20h ainda tem metade circulando à 1h da manhã. Como o sono é o que consolida a recuperação e o ganho de massa, trocar sono por desempenho no treino da noite costuma ser um mau negócio. Para treino noturno, doses menores ou pré-treino sem cafeína fazem mais sentido.',
+  },
+  {
+    pergunta: 'Pré-treino sem cafeína vale a pena?',
+    resposta:
+      'Vale para quem treina à noite, é muito sensível ou tem restrição médica ao estimulante. O que muda é a expectativa: sem cafeína, o produto não entrega o "tapa" de alerta — ele trabalha com outros ingredientes, como beta-alanina e citrulina, cujo efeito é mais discreto e mais lento de perceber. Não é substituto direto, é uma ferramenta diferente.',
+  },
+];
+
+const title = 'Cafeína no pré-treino: quanto tomar e quando';
+const description =
+  'Cafeína no pré-treino: a dose com respaldo (3 a 6 mg/kg), café x suplemento, tolerância, o custo no sono e para quem o pré-treino sem cafeína faz sentido.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cafeína no pré-treino: quanto tomar, quando e o que ela custa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A cafeína é, junto com a creatina, um dos pouquíssimos suplementos
+      com respaldo consistente para desempenho. Ela funciona, é barata e
+      está em quase todo pré-treino do mercado.
+    </p>
+
+    <p class="lead">
+      O problema é que quase ninguém usa direito: dose no chute, horário
+      errado e uma conta que ninguém faz — o que ela cobra do sono. Este
+      guia organiza os três pontos.
+    </p>
+
+    <div class="prose">
+      <h2>O que a cafeína faz de verdade</h2>
+      <p>
+        Ela bloqueia os receptores de adenosina — a molécula que se
+        acumula ao longo do dia e sinaliza cansaço ao cérebro. Com esses
+        receptores ocupados, o sinal de fadiga chega abafado.
+      </p>
+
+      <p>
+        O efeito prático é o mais importante para quem treina:
+        <strong>a percepção de esforço cai</strong>. A mesma série parece
+        menos pesada, o que permite fazer mais repetições ou usar mais
+        carga antes de considerar que chegou ao limite.
+      </p>
+
+      <p>
+        Some a isso um aumento modesto de alerta, foco e disposição. Não
+        é energia criada do nada — é fadiga adiada. A conta chega depois,
+        e é isso que muita gente esquece.
+      </p>
+
+      <h2>A dose que tem respaldo</h2>
+      <p>
+        As faixas mais usadas na literatura de desempenho ficam entre
+        <strong>3 e 6 mg por quilo de peso corporal</strong>, tomados de
+        30 a 60 minutos antes do treino.
+      </p>
+
+      <p>
+        Para uma pessoa de 70 kg, isso dá entre 210 e 420 mg. Doses acima
+        raramente melhoram o desempenho e aumentam a chance de tremor,
+        taquicardia, ansiedade e desconforto gástrico.
+      </p>
+
+      <p>
+        Quem nunca usou deve começar bem abaixo da faixa — 100 a 150 mg —
+        e observar a resposta ao longo de algumas semanas. Sensibilidade
+        à cafeína varia muito entre pessoas, e não há vantagem em
+        descobrir isso com dose alta.
+      </p>
+
+      <p>
+        Quem tem qualquer condição cardiovascular, arritmia, hipertensão
+        não controlada, transtorno de ansiedade ou usa medicação de uso
+        contínuo precisa conversar com o médico antes de incluir dose
+        alta de estimulante na rotina.
+      </p>
+
+      <h2>Café ou suplemento?</h2>
+      <p>
+        Café resolve, e é a fonte mais barata que existe. Uma xícara de
+        café coado tem, em média, entre 80 e 100 mg — duas a três xícaras
+        já colocam a maioria dentro da faixa útil.
+      </p>
+
+      <p>
+        A vantagem do suplemento em cápsula ou pó é a precisão: você sabe
+        exatamente quanto está tomando. Em café, a variação entre grão,
+        torra, moagem e método de preparo é grande o bastante para
+        atrapalhar quem quer ajustar dose com cuidado.
+      </p>
+
+      <p>
+        Os pré-treinos comerciais são cafeína somada a outros
+        ingredientes — beta-alanina, citrulina, tirosina. Não há nada de
+        errado nisso, mas vale saber que a maior parte do efeito que você
+        sente vem da cafeína, e que ela sozinha custa uma fração do
+        preço.
+      </p>
+
+      <VideoYouTube
+        id="QY7sY3jyd00"
+        titulo="Pré-treino sem cafeína vale a pena? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin discute o papel da cafeína no pré-treino e em que situações a versão sem estimulante faz sentido."
+      />
+
+      <h2>O custo escondido: o sono</h2>
+      <p>
+        Aqui está a parte que quase ninguém calcula. A cafeína tem
+        meia-vida longa — em torno de cinco horas para a maioria das
+        pessoas.
+      </p>
+
+      <p>
+        Isso significa que uma dose de 300 mg às 20h ainda tem cerca de
+        150 mg circulando à 1h da manhã. O sono fica mais fragmentado e
+        menos profundo, muitas vezes sem que a pessoa perceba, porque ela
+        adormece normalmente.
+      </p>
+
+      <p>
+        E sono é o que consolida a recuperação e o ganho de massa, como
+        detalha o guia sobre
+        <a href="/musculacao/sono-e-ganho-de-massa/">sono e ganho de
+        massa muscular</a>. Trocar horas de sono por um treino um pouco
+        melhor é um péssimo negócio no médio prazo.
+      </p>
+
+      <p>
+        Para quem treina à noite, a saída é dose reduzida, pré-treino sem
+        cafeína ou simplesmente nenhum estimulante.
+      </p>
+
+      <h2>Tolerância: por que ela para de funcionar</h2>
+      <p>
+        O organismo se adapta. Parte do efeito de alerta diminui com o
+        uso diário, embora o ganho de desempenho pareça se manter melhor
+        do que a sensação subjetiva sugere.
+      </p>
+
+      <p>
+        Na prática, quem toma café o dia inteiro sente pouco antes do
+        treino. A estratégia mais usada é reduzir o consumo geral e
+        reservar a dose maior para os dias de treino pesado — o que
+        devolve boa parte da resposta.
+      </p>
+
+      <h2>Cafeína e a leitura do próprio esforço</h2>
+      <p>
+        Há um efeito colateral pouco discutido: se a percepção de esforço
+        cai, a sua estimativa de repetições em reserva também muda.
+      </p>
+
+      <p>
+        Quem usa RIR para regular a intensidade, como discute o guia
+        sobre <a href="/musculacao/treinar-ate-a-falha/">treinar até a
+        falha</a>, precisa considerar que a mesma sensação corresponde a
+        uma proximidade diferente do limite real quando há estimulante
+        envolvido.
+      </p>
+
+      <p>
+        Não é motivo para não usar. É motivo para não confiar apenas na
+        sensação — registrar carga e repetições continua sendo o
+        parâmetro confiável.
+      </p>
+
+      <h2>O que ela não faz</h2>
+      <p>
+        Não constrói músculo. Não substitui alimentação nem sono. Não
+        compensa treino sem progressão de carga.
+      </p>
+
+      <p>
+        As diretrizes de prescrição de exercício sistematizadas por
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        deixam a hierarquia clara: suplementação é a última camada, e ela
+        só rende quando treino, alimentação e recuperação já estão em
+        ordem.
+      </p>
+
+      <p>
+        A cafeína é uma boa ferramenta — talvez a melhor relação
+        custo-benefício do mercado de suplementos. Mas é uma ferramenta
+        para melhorar um treino que já funciona, não para salvar um que
+        não existe.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre cafeína no pré-treino" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

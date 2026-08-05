@@ -1,0 +1,341 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'O bíceps já trabalha muito aqui — e ignorar isso é o erro que estoura o braço.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'Volume por grupo muscular — e por que braço é o que mais sofre com excesso.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/descanso-entre-series/',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'O intervalo curto do treino de braço é herança de revista, não de literatura.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-bracos';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de braços: bíceps e tríceps', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual músculo faz o braço parecer maior: bíceps ou tríceps?',
+    resposta:
+      'O tríceps, com folga. Ele ocupa cerca de dois terços do volume do braço e é o que dá a espessura vista de lado e por trás. O bíceps aparece na foto de frente com o braço flexionado, mas quem só treina rosca constrói um braço fino visto de perfil. Se o objetivo é tamanho, o tríceps merece pelo menos tanto volume quanto o bíceps — muitas vezes mais.',
+  },
+  {
+    pergunta: 'Preciso de um dia só para braço?',
+    resposta:
+      'Não obrigatoriamente. Bíceps e tríceps já recebem estímulo relevante nos exercícios de costas e de peito, e para muita gente 4 a 8 séries diretas por semana em cada um resolvem. Um dia dedicado faz sentido para quem já tem base, quer priorizar o grupo ou treina em divisões de cinco ou seis dias. Para iniciantes, encaixar braço no fim do dia de costas e de peito costuma render mais.',
+  },
+  {
+    pergunta: 'Rosca direta com barra reta ou W?',
+    resposta:
+      'A barra W reduz o estresse no punho e no cotovelo por permitir uma pegada mais neutra, e é a escolha mais confortável para a maioria. A barra reta permite supinação completa, o que alguns preferem pela sensação de contração. Não há diferença dramática de resultado — escolha a que não gera desconforto articular e progrida nela.',
+  },
+  {
+    pergunta: 'Por que meu cotovelo dói no treino de tríceps?',
+    resposta:
+      'As causas mais comuns são carga alta em exercícios que alongam muito o tríceps (como a testa e a francesa), volume crescendo rápido demais e travar o cotovelo com força no fim de cada repetição. Reduzir a carga, trocar temporariamente por variações na polia e controlar a fase excêntrica costuma resolver. Dor que persiste apesar do ajuste é caso para médico ou fisioterapeuta antes de continuar treinando.',
+  },
+  {
+    pergunta: 'Quantas séries de braço fazer por semana?',
+    resposta:
+      'De 6 a 12 séries diretas por semana para cada um cobrem bem a maioria — lembrando que costas e peito já somam estímulo indireto relevante. Faixas de 8 a 15 repetições funcionam bem para os dois grupos, que respondem bem a volume moderado com boa execução. Braço é justamente o grupo em que mais gente empilha séries sem progredir carga, e é por isso que ele trava.',
+  },
+];
+
+const title = 'Treino de braços: bíceps e tríceps que funciona';
+const description =
+  'Guia do treino de braços: por que o tríceps importa mais para o tamanho, quantas séries fazer, rosca e extensão sem dor no cotovelo e os erros que travam o braço.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de braços: como montar bíceps e tríceps que funcionam</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Braço é o grupo mais treinado e o menos planejado da academia
+      brasileira. Todo mundo faz rosca; quase ninguém sabe dizer quantas
+      séries semanais faz nem se a carga subiu nos últimos três meses.
+    </p>
+
+    <p class="lead">
+      O resultado é previsível: muito volume, pouca progressão e um braço
+      que parou de crescer há anos. Este guia organiza as duas coisas.
+    </p>
+
+    <div class="prose">
+      <h2>O tríceps é dois terços do braço</h2>
+      <p>
+        Comece por aqui, porque isso muda a prioridade de quase todo
+        mundo. O tríceps ocupa cerca de dois terços do volume do braço —
+        é ele que dá a espessura vista de lado e por trás.
+      </p>
+
+      <p>
+        O bíceps aparece na foto de frente, com o cotovelo flexionado, e
+        por isso monopoliza a atenção. Mas quem só treina rosca constrói
+        um braço que some de perfil.
+      </p>
+
+      <p>
+        Se o objetivo é tamanho, o tríceps merece pelo menos tanto volume
+        quanto o bíceps. Na prática, para a maioria, ele merece mais.
+      </p>
+
+      <h2>Quanto de estímulo indireto você já recebe</h2>
+      <p>
+        Antes de somar séries, conte as que já existem. O bíceps trabalha
+        forte em toda puxada e remada do
+        <a href="/musculacao/treino-de-costas/">dia de costas</a>; o
+        tríceps trabalha em todo supino e desenvolvimento.
+      </p>
+
+      <p>
+        Isso significa que o braço de quem treina peito e costas com
+        seriedade já recebe volume considerável antes da primeira rosca.
+        Ignorar essa conta é como somar horas extras a alguém que já está
+        no limite: não aumenta a produção, aumenta o cansaço.
+      </p>
+
+      <p>
+        É por isso que a recomendação de 6 a 12 séries diretas semanais
+        para cada grupo costuma bastar — e por que quem faz 25 séries de
+        bíceps por semana normalmente não cresce mais que quem faz 10.
+      </p>
+
+      <VideoYouTube
+        id="fxo67d2yPM8"
+        titulo="Bíceps: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de bíceps e demonstra a execução correta de cada um."
+      />
+
+      <h2>Bíceps: os ângulos que fazem diferença</h2>
+      <p>
+        O bíceps flexiona o cotovelo e supina o antebraço, e atravessa a
+        articulação do ombro — o que significa que a posição do braço
+        muda o estímulo.
+      </p>
+
+      <p>
+        <strong>Braço à frente do corpo</strong> (rosca scott, rosca na
+        polia baixa com apoio) enfatiza a porção curta e o pico de
+        contração.
+      </p>
+
+      <p>
+        <strong>Braço atrás do corpo</strong> (rosca inclinada no banco)
+        alonga a porção longa e costuma ser o ângulo mais negligenciado —
+        e o que mais gente sente como "novo" quando começa a incluir.
+      </p>
+
+      <p>
+        <strong>Pegada neutra ou pronada</strong> (rosca martelo, rosca
+        inversa) traz o braquial e o braquiorradial para o trabalho.
+        Ambos ficam sob o bíceps e empurram o volume total do braço para
+        cima.
+      </p>
+
+      <h2>Tríceps: as três cabeças e o que cada uma pede</h2>
+      <p>
+        O tríceps tem três porções, e a longa é a única que cruza o
+        ombro. Isso tem consequência prática: ela só recebe alongamento
+        completo quando o braço está acima da cabeça.
+      </p>
+
+      <p>
+        Por isso um dia completo combina <strong>trabalho com o braço
+        para cima</strong> (tríceps testa, francesa, extensão sobre a
+        cabeça na polia) com <strong>trabalho com o braço ao lado do
+        corpo</strong> (tríceps na polia com barra ou corda, coice).
+      </p>
+
+      <p>
+        E há o padrão que carrega mais peso de todos: os
+        <strong>exercícios compostos de empurrar</strong> — paralelas,
+        supino fechado e mergulho no banco. Eles permitem carga alta e
+        são a base do crescimento do grupo.
+      </p>
+
+      <h2>Os erros que travam o braço</h2>
+      <p>
+        <strong>Balançar o corpo na rosca.</strong> O impulso do quadril
+        tira o bíceps justamente do trecho mais difícil. Se você precisa
+        balançar, a carga está alta demais.
+      </p>
+
+      <p>
+        <strong>Cotovelo viajando.</strong> Na rosca, ele fica fixo ao
+        lado do tronco; quando ele avança, o ombro assume parte do
+        trabalho.
+      </p>
+
+      <p>
+        <strong>Meia amplitude.</strong> Parar antes da extensão completa
+        "para manter a tensão" é hábito comum e custa estímulo. A
+        amplitude completa com carga honesta rende mais.
+      </p>
+
+      <p>
+        <strong>Volume que só cresce.</strong> Somar séries é a resposta
+        fácil quando o braço trava. A resposta que funciona é somar carga
+        ou repetições nas séries que você já faz.
+      </p>
+
+      <p>
+        <strong>Descanso curto por princípio.</strong> Intervalo de 30
+        segundos entre séries é herança de revista. Como discute o guia
+        sobre <a href="/musculacao/descanso-entre-series/">descanso entre
+        séries</a>, dar tempo suficiente permite usar mais carga — e
+        carga é o que gera o estímulo.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 6 a 12 séries diretas semanais para cada grupo, distribuídas
+        em duas sessões, cobrem bem a maioria. Faixas de 8 a 15
+        repetições funcionam para os dois.
+      </p>
+
+      <p>
+        Duas frequências semanais rendem mais que uma sessão longa,
+        porque a qualidade de execução despenca no fim de um volume alto
+        — e execução ruim em braço é justamente o que gera dor de
+        cotovelo.
+      </p>
+
+      <p>
+        As referências de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        apontam o de sempre: progressão registrada ao longo dos meses
+        vale mais que qualquer combinação criativa de exercícios.
+      </p>
+
+      <h2>Um exemplo de sessão</h2>
+      <p>
+        <strong>Tríceps:</strong> um composto de empurrar (paralelas ou
+        supino fechado), 3 séries de 6 a 10; uma extensão com braço acima
+        da cabeça, 3 séries de 10 a 15; uma extensão na polia com braço
+        ao lado, 2 a 3 séries de 12 a 15.
+      </p>
+
+      <p>
+        <strong>Bíceps:</strong> uma rosca com braço à frente, 3 séries
+        de 8 a 12; uma rosca inclinada, 3 séries de 10 a 12; uma rosca
+        martelo, 2 a 3 séries de 10 a 15.
+      </p>
+
+      <p>
+        Registre carga e repetições de tudo. Sem esse registro, é
+        impossível saber se o braço está progredindo ou apenas repetindo
+        o mesmo estímulo há meses.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Braço é o grupo em que o excesso é o problema mais comum, e é
+        difícil se autoavaliar nisso — a sensação de queimação é
+        confundida com estímulo produtivo o tempo todo.
+      </p>
+
+      <p>
+        Um personal trainer organiza o volume total contando o estímulo
+        indireto, corrige a execução que gera dor de cotovelo e define
+        quando a carga sobe. Para quem tem braço travado há anos, é o
+        ajuste que costuma destravar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de braços" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

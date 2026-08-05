@@ -376,6 +376,8 @@ import { cidade as piranhas } from './piranhas-al';
 import { cidade as palmeiras } from './palmeiras-ba';
 import { cidade as xiqueXique } from './xique-xique-ba';
 import { cidade as apiuna } from './apiuna-sc';
+import { cidade as carolina } from './carolina-ma';
+import { cidade as buique } from './buique-pe';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1115,7 +1117,7 @@ export const cidades: Cidade[] = [
   encantado, monteSiao, amargosa, doisIrmaos, areiaBranca, cajuru,
   tresPassos, rosarioDoSul, itaporangaDAjuda, tresCoroas, praiaGrandeSC, orleans,
   chapadaDosGuimaraes, cavalcante, aiuruoca, piranhas, palmeiras,
-  xiqueXique, apiuna,
+  xiqueXique, apiuna, carolina, buique,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

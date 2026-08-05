@@ -1,0 +1,353 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/',
+    titulo: 'Cardio e musculação no mesmo dia: como combinar',
+    descricao: 'Efeito de interferência, ordem dos treinos e como organizar a semana.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Treinar com dor no joelho: o que pode e o que evitar',
+    descricao: 'A queixa mais comum de quem corre — e o que a força tem a ver com ela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros comuns',
+    descricao: 'O exercício-base da força de perna que sustenta a corrida.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-corredores';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para corredores', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Musculação atrapalha a corrida?',
+    resposta:
+      'Ao contrário: o treino de força bem dosado melhora a economia de corrida — você gasta menos energia para manter o mesmo ritmo — e reduz o risco de lesão por sobrecarga. O que atrapalha é volume mal distribuído: sessão de perna pesada na véspera do treino longo, ou musculação tão extensa que rouba a recuperação da corrida. O problema é a organização da semana, não a musculação em si.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana o corredor deve fazer musculação?',
+    resposta:
+      'Duas sessões semanais cobrem bem a maioria dos corredores amadores, com foco em membros inferiores, quadril e core. Em períodos de volume alto de corrida, uma sessão de manutenção já preserva os ganhos. O importante é que essas sessões sejam de força de verdade, com carga que desafie — circuito leve com muita repetição não entrega o estímulo que protege a articulação.',
+  },
+  {
+    pergunta: 'Preciso de personal se já tenho treinador de corrida?',
+    resposta:
+      'Os papéis são diferentes e costumam se complementar. O treinador de corrida cuida do volume, do ritmo e da periodização das provas; o personal cuida da sala de musculação — execução, carga e progressão da força. Muitos corredores têm os dois, e o essencial é que eles conversem: a semana precisa fazer sentido como um todo, não como duas planilhas concorrentes.',
+  },
+  {
+    pergunta: 'Devo treinar perna se corro no dia seguinte?',
+    resposta:
+      'Depende do que é o treino do dia seguinte. Perna pesada na véspera de um longo ou de um treino intervalado costuma prejudicar os dois. A organização mais comum é colocar a musculação de membros inferiores no mesmo dia de um treino de corrida mais leve, ou pelo menos 24 a 48 horas antes das sessões-chave da semana.',
+  },
+  {
+    pergunta: 'Qual o melhor exercício de musculação para corredor?',
+    resposta:
+      'Não existe um só, mas há uma base clara: padrões de agachamento e de extensão de quadril, trabalho unilateral (avanço, afundo, step-up), fortalecimento de posterior de coxa e panturrilha, e estabilidade de quadril e core. O trabalho unilateral merece destaque porque a corrida é, do começo ao fim, um exercício de apoio em uma perna só.',
+  },
+  {
+    pergunta: 'Correr todo dia é ruim?',
+    resposta:
+      'Não é ruim por si só, mas exige que o volume total e a progressão sejam bem controlados — a maioria das lesões de corrida vem de aumentar carga rápido demais, não de correr com frequência. Ter pelo menos um dia sem impacto por semana ajuda na recuperação. Dor que persiste, piora durante a corrida ou muda o seu jeito de pisar precisa de avaliação de médico ou fisioterapeuta, não de mais quilômetros.',
+  },
+];
+
+const title = 'Personal trainer para corredores: o guia completo';
+const description =
+  'Personal trainer para corredores: por que a força melhora a economia de corrida, quantas sessões fazer, como organizar a semana e quais exercícios priorizar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para corredores: por que a sala de musculação importa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma crença antiga entre corredores: musculação deixa pesado,
+      rouba energia e atrapalha o ritmo. Ela sobreviveu por décadas — e
+      envelheceu mal.
+    </p>
+
+    <p class="lead">
+      Hoje o treino de força é parte estruturada da preparação de
+      corredor amador a elite, por dois motivos objetivos: melhora a
+      economia de corrida e reduz lesão. Este guia explica como encaixá-lo
+      na semana sem prejudicar o que importa — os quilômetros.
+    </p>
+
+    <div class="prose">
+      <h2>O que a força faz pela corrida</h2>
+      <p>
+        <strong>Melhora a economia de corrida.</strong> Este é o ganho
+        mais direto: um sistema neuromuscular mais forte gasta menos
+        energia para manter o mesmo ritmo. Na prática, o mesmo pace passa
+        a custar menos.
+      </p>
+
+      <p>
+        <strong>Aumenta a rigidez elástica.</strong> Tendões e músculos
+        mais preparados devolvem melhor a energia a cada passada, o que é
+        exatamente o que a corrida exige milhares de vezes por treino.
+      </p>
+
+      <p>
+        <strong>Reduz lesão por sobrecarga.</strong> A maioria das
+        queixas de corredor — joelho, canela, tendão de Aquiles, quadril
+        — envolve tecido submetido a impacto repetido sem estrutura
+        suficiente para absorvê-lo.
+      </p>
+
+      <p>
+        <strong>Protege a massa magra.</strong> Volume alto de corrida
+        com alimentação apertada é um cenário clássico de perda de
+        músculo. A força é o sinal que impede isso.
+      </p>
+
+      <h2>O mito do "efeito de interferência"</h2>
+      <p>
+        A ideia de que treinar força e resistência juntos anula os dois
+        ganhos existe na literatura, mas o tamanho do problema é bem
+        menor do que a fama sugere — e depende de volume, intensidade e
+        organização.
+      </p>
+
+      <p>
+        Para o corredor amador, que faz duas sessões de força por semana
+        e não busca hipertrofia máxima, a interferência prática é
+        pequena. O guia sobre
+        <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">cardio e
+        musculação no mesmo dia</a> detalha a mecânica.
+      </p>
+
+      <VideoYouTube
+        id="RcSykCRkUFs"
+        titulo="Aeróbico e hipertrofia: como um ajuda o outro — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica por que o trabalho aeróbico bem conduzido pode somar ao treino de força em vez de competir com ele."
+      />
+
+      <h2>Quantas sessões, e de que tipo</h2>
+      <p>
+        Duas sessões semanais cobrem bem a maioria dos corredores
+        amadores. Em fases de volume alto ou perto de prova, uma sessão
+        de manutenção já preserva os ganhos.
+      </p>
+
+      <p>
+        O ponto crítico é o tipo de estímulo. Precisa ser força de
+        verdade, com carga que desafie — faixas de 4 a 8 repetições para
+        o trabalho principal, e 8 a 12 para o complementar.
+      </p>
+
+      <p>
+        Circuito leve com trinta repetições não entrega o que protege a
+        articulação. É treino aeróbico disfarçado de musculação, e o
+        corredor já tem aeróbico de sobra.
+      </p>
+
+      <h2>Os exercícios que mais importam</h2>
+      <p>
+        <strong>Padrão de agachamento.</strong> O
+        <a href="/musculacao/agachamento-como-fazer/">agachamento</a> e
+        suas variações constroem a base de força de quadríceps e glúteo.
+      </p>
+
+      <p>
+        <strong>Extensão de quadril.</strong> Levantamento terra romeno,
+        elevação pélvica e stiff carregam posterior de coxa e glúteo — os
+        motores da propulsão.
+      </p>
+
+      <p>
+        <strong>Trabalho unilateral.</strong> Avanço, afundo búlgaro e
+        step-up. Merecem destaque porque a corrida é, do começo ao fim,
+        apoio em uma perna só — e assimetria entre os lados é fonte
+        frequente de lesão.
+      </p>
+
+      <p>
+        <strong>Panturrilha e pé.</strong> Elevação de panturrilha com
+        joelho estendido e flexionado. É o tecido que mais absorve
+        impacto por quilômetro rodado, e o mais esquecido nos programas.
+      </p>
+
+      <p>
+        <strong>Quadril e core.</strong> Abdução de quadril, prancha com
+        variações, anti-rotação. Estabilidade de quadril fraca aparece na
+        passada como queda pélvica — e no joelho como dor.
+      </p>
+
+      <h2>Como organizar a semana</h2>
+      <p>
+        A regra de ouro é simples: <strong>a musculação não pode
+        comprometer as sessões-chave de corrida</strong>, que costumam ser
+        o treino longo e o intervalado.
+      </p>
+
+      <p>
+        A organização mais comum coloca a força no mesmo dia de um treino
+        de corrida leve — corrida primeiro, musculação depois, se o foco
+        for a corrida —, ou ao menos 24 a 48 horas antes das sessões
+        importantes.
+      </p>
+
+      <p>
+        Evite perna pesada na véspera do longo. É o erro que mais faz
+        corredor concluir, equivocadamente, que "musculação atrapalha".
+      </p>
+
+      <h2>Dor de corredor: o que a força resolve e o que não resolve</h2>
+      <p>
+        A maioria das queixas de corrida é de sobrecarga: tecido exposto
+        a mais impacto do que ele suporta no momento. A força aumenta
+        essa tolerância, e por isso costuma fazer parte da solução.
+      </p>
+
+      <p>
+        Mas ela não substitui diagnóstico. Dor que persiste, que piora ao
+        longo da corrida ou que muda o seu jeito de pisar precisa de
+        avaliação de médico ou fisioterapeuta antes de qualquer ajuste de
+        treino — como detalha o guia sobre
+        <a href="/musculacao/treinar-com-dor-no-joelho/">treinar com dor
+        no joelho</a>.
+      </p>
+
+      <p>
+        As diretrizes de prescrição de exercício sistematizadas por
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        reforçam o princípio da progressão gradual — a maior parte das
+        lesões de corrida vem de aumentar carga rápido demais.
+      </p>
+
+      <h2>Personal ou treinador de corrida?</h2>
+      <p>
+        Os papéis são diferentes. O treinador de corrida cuida do volume,
+        do ritmo, da periodização e do calendário de provas. O personal
+        cuida da sala de musculação: execução, carga e progressão da
+        força.
+      </p>
+
+      <p>
+        Muitos corredores têm os dois, e o que faz a combinação funcionar
+        é a comunicação entre eles. A semana precisa fazer sentido como
+        um todo — duas planilhas independentes competindo pela mesma
+        recuperação é a receita do desgaste.
+      </p>
+
+      <p>
+        Quem tem só um, o mais comum é começar pelo treinador de corrida
+        e somar o personal quando o volume cresce ou quando a primeira
+        dor recorrente aparece.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, progressão registrada e
+        nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Acrescente três perguntas específicas. Ele já treinou corredores e
+        sabe o que é uma semana de corrida com longo e intervalado? Como
+        ele encaixa a força sem comprometer as sessões-chave? E o
+        programa inclui trabalho unilateral e de quadril, ou é só
+        máquina bilateral?
+      </p>
+
+      <p>
+        Quem trabalha com corredores responde as três de imediato — e
+        pergunta o seu calendário de provas antes de montar qualquer
+        coisa.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer para corredores" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

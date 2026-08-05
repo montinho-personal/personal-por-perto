@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'O que você constrói durante o déficit é o que sustenta o peso depois.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento: por que a balança trava',
+    descricao: 'O irmão do reganho — e por que os dois têm a mesma raiz.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer',
+    descricao: 'O gasto silencioso que despenca no fim da dieta e ninguém percebe.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/como-manter-o-peso-perdido';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Como manter o peso perdido', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que quase todo mundo reganha o peso?',
+    resposta:
+      'Porque o emagrecimento é tratado como projeto com data de término. Quando a dieta acaba, a pessoa volta exatamente aos hábitos que produziram o peso anterior — e o corpo, agora com gasto energético menor e sinais de fome mais intensos, reganha rápido. Não é falta de força de vontade: é um plano que nunca previu a fase seguinte.',
+  },
+  {
+    pergunta: 'O metabolismo fica lento depois de emagrecer?',
+    resposta:
+      'Fica menor, e isso é diferente de "lento". Um corpo mais leve gasta menos por ser mais leve, e há ainda uma redução adicional ligada à perda de massa magra e à queda do movimento espontâneo. Quem preserva músculo com treino de força durante o processo chega ao fim com um gasto bem melhor preservado do que quem emagreceu só com restrição alimentar.',
+  },
+  {
+    pergunta: 'Quanto tempo dura a fase de manutenção?',
+    resposta:
+      'Ela não termina — é o novo normal, e é assim que precisa ser encarada. O que muda é a exigência: manter exige atenção, não o mesmo rigor do déficit. Na prática, isso significa comer no gasto (e não abaixo dele), manter o treino de força e acompanhar peso e medidas com uma frequência que permita corrigir cedo, antes que a diferença vire quilos.',
+  },
+  {
+    pergunta: 'Devo continuar contando calorias depois de emagrecer?',
+    resposta:
+      'Nem todo mundo precisa. Muita gente mantém o peso ancorada em hábitos estáveis — refeições parecidas, treino fixo, poucos extras — sem contar nada. Contar volta a ser útil quando o peso começa a subir de forma consistente e você não sabe explicar por quê. O mais importante é ter algum indicador acompanhado: peso semanal, medida de cintura ou a roupa de referência.',
+  },
+  {
+    pergunta: 'O efeito sanfona faz mal à saúde?',
+    resposta:
+      'Ciclos repetidos de perda e reganho são associados a piora da composição corporal ao longo do tempo — a tendência é reganhar mais gordura do que músculo a cada volta. Além do efeito físico, o desgaste emocional é real e alimenta o ciclo. Quem já passou por várias rodadas se beneficia especialmente de um plano orientado por profissionais, com acompanhamento médico e nutricional além do treino.',
+  },
+];
+
+const title = 'Como manter o peso perdido depois da dieta';
+const description =
+  'Como manter o peso perdido: por que o reganho acontece, o que muda no gasto energético, o papel do treino de força e como montar a fase de manutenção.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Como manter o peso perdido depois que a dieta acaba</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Emagrecer é a parte fácil. Difícil é a segunda-feira depois do
+      último dia da dieta, quando o objetivo foi atingido e ninguém
+      combinou o que vem a seguir.
+    </p>
+
+    <p class="lead">
+      É nesse vácuo que o reganho acontece — e ele quase nunca é falta de
+      disciplina. É a consequência previsível de um plano que nunca teve
+      uma fase dois. Este guia trata dela.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o corpo empurra o peso de volta</h2>
+      <p>
+        Três coisas mudam quando você emagrece, e as três trabalham
+        contra a manutenção.
+      </p>
+
+      <p>
+        <strong>Você gasta menos.</strong> Um corpo mais leve consome
+        menos energia para existir e para se mover. Isso é aritmética,
+        não sabotagem.
+      </p>
+
+      <p>
+        <strong>Você se mexe menos.</strong> Em déficit, o corpo reduz o
+        movimento espontâneo — o famoso NEAT — sem que você perceba.
+        Menos passos, menos gesticulação, mais elevador. O guia sobre
+        <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos
+        por dia</a> detalha o tamanho desse efeito.
+      </p>
+
+      <p>
+        <strong>Você sente mais fome.</strong> Os sinais hormonais de
+        apetite se intensificam e podem permanecer alterados por um bom
+        tempo depois do fim do processo.
+      </p>
+
+      <p>
+        Somando os três: no dia em que a dieta acaba, você precisa de
+        menos comida do que antes e sente vontade de comer mais. É por
+        isso que voltar aos hábitos antigos reganha o peso — e reganha
+        rápido.
+      </p>
+
+      <h2>O que você constrói durante decide o depois</h2>
+      <p>
+        Aqui está a variável que mais separa quem mantém de quem
+        reganha, e ela é decidida meses antes: <strong>quanta massa
+        magra sobreviveu ao déficit</strong>.
+      </p>
+
+      <p>
+        Quem emagreceu com treino de força e proteína adequada chega ao
+        fim com o gasto energético melhor preservado, mais força e uma
+        composição corporal que aguenta uma oscilação alimentar sem
+        desastre.
+      </p>
+
+      <p>
+        Quem emagreceu só cortando comida chega mais leve e mais fraco, e
+        com um gasto menor do que o peso sozinho justificaria. É a
+        situação em que o reganho é mais rápido e mais gorduroso. O guia
+        sobre
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">
+        como preservar massa muscular emagrecendo</a> cobre essa fase.
+      </p>
+
+      <VideoYouTube
+        id="QmZFZ6lKhuQ"
+        titulo="Cutting e bulking: fazendo a transição entre eles — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica como fazer a transição ao sair de uma fase de restrição calórica sem provocar reganho descontrolado."
+      />
+
+      <h2>A transição: saindo do déficit sem estourar</h2>
+      <p>
+        O erro mais comum é o corte abrupto: no dia seguinte ao fim da
+        dieta, a pessoa volta ao padrão alimentar de antes, de uma vez.
+      </p>
+
+      <p>
+        A alternativa é subir a ingestão de forma gradual até o nível de
+        manutenção, ao longo de algumas semanas, acompanhando peso e
+        medidas. Uma parte do ganho inicial é água e conteúdo intestinal,
+        e reconhecer isso evita pânico desnecessário.
+      </p>
+
+      <p>
+        Essa subida controlada tem um objetivo claro: chegar a comer no
+        próprio gasto sem passar por cima dele. É uma fase que exige
+        atenção, e é justamente onde o acompanhamento profissional rende
+        mais.
+      </p>
+
+      <h2>Os pilares da manutenção</h2>
+      <p>
+        <strong>1. Treino de força, para sempre.</strong> Duas a três
+        sessões semanais. É o que segura a massa magra construída e o que
+        mantém o gasto de repouso onde ele está.
+      </p>
+
+      <p>
+        <strong>2. Passos como base diária.</strong> É o componente que
+        mais silenciosamente despenca quando a rotina aperta — e o mais
+        fácil de recuperar quando você percebe.
+      </p>
+
+      <p>
+        <strong>3. Proteína estável.</strong> Ela ajuda na saciedade e
+        sustenta o músculo. Não é algo que se abandona junto com a dieta.
+      </p>
+
+      <p>
+        <strong>4. Um indicador acompanhado.</strong> Peso semanal,
+        medida de cintura ou uma peça de roupa de referência. Não
+        importa qual — importa ter algum, para corrigir cedo.
+      </p>
+
+      <p>
+        <strong>5. Uma faixa, não um número.</strong> Defina dois ou três
+        quilos de tolerância. Quando o peso cruza o topo da faixa, você
+        volta a um déficit leve por poucas semanas. É um ajuste pequeno,
+        e é o que impede a diferença de virar dez quilos em um ano.
+      </p>
+
+      <h2>A regra da faixa, em detalhe</h2>
+      <p>
+        Essa é a ferramenta mais prática deste guia. Escolha um peso de
+        referência e uma tolerância — por exemplo, 78 kg com faixa até
+        81 kg.
+      </p>
+
+      <p>
+        Enquanto o peso oscila dentro dela, nada muda: você come no
+        gasto, treina e vive. Quando ele cruza o topo por duas semanas
+        seguidas, entra um déficit leve até voltar à faixa.
+      </p>
+
+      <p>
+        A vantagem é psicológica e prática ao mesmo tempo. Você para de
+        reagir a cada oscilação diária, que é normal, e passa a agir
+        apenas quando existe tendência real — sempre cedo, quando a
+        correção ainda é pequena.
+      </p>
+
+      <h2>Manutenção não é dieta permanente</h2>
+      <p>
+        Vale dizer com clareza: manter não significa continuar em
+        restrição. Significa comer no seu gasto, o que é uma quantidade
+        bem maior de comida do que a fase de emagrecimento permitia.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        apontam a mesma direção estrutural: atividade aeróbica semanal
+        somada a fortalecimento muscular em pelo menos dois dias — uma
+        rotina para a vida, não um protocolo temporário.
+      </p>
+
+      <p>
+        Se a sua manutenção parece uma dieta eterna, provavelmente o peso
+        escolhido está abaixo do que a sua rotina sustenta. Esse é um
+        ajuste legítimo, e conversar sobre ele com médico e nutricionista
+        é mais produtivo do que insistir num número que exige sofrimento
+        permanente.
+      </p>
+
+      <h2>Onde o personal trainer entra</h2>
+      <p>
+        A manutenção é a fase com menos motivação disponível: não há mais
+        a balança descendo toda semana para alimentar o entusiasmo.
+      </p>
+
+      <p>
+        O que sustenta a rotina nesse período é ter um novo objetivo de
+        desempenho — ficar mais forte, correr melhor, dominar um
+        exercício — no lugar do objetivo de peso que acabou. É
+        exatamente o que um bom acompanhamento oferece: um plano que
+        continua evoluindo depois que a balança parou.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre manter o peso perdido" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

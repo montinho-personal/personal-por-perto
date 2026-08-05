@@ -72,6 +72,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-botafogo/', titulo: 'Personal trainer em Botafogo (Rio de Janeiro)' },
   { categoria: 'Bairros', url: '/personal-trainer-morada-da-colina/', titulo: 'Personal trainer na Morada da Colina (Uberlândia)' },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-aquarius/', titulo: 'Personal trainer no Jardim Aquarius (São José dos Campos)' },
+  { categoria: 'Bairros', url: '/personal-trainer-vila-madalena/', titulo: 'Personal trainer na Vila Madalena (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-manaira/', titulo: 'Personal trainer em Manaíra (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-lagoa-da-conceicao/', titulo: 'Personal trainer na Lagoa da Conceição (Florianópolis)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -84,6 +87,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-corredores/', titulo: 'Personal trainer para corredores: o guia completo' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
 
   // Musculação
@@ -117,6 +121,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-de-abdomen/', titulo: 'Treino de abdômen: o que funciona de verdade' },
   { categoria: 'Musculação', url: '/musculacao/supino-como-fazer/', titulo: 'Supino: como fazer, variações e erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/levantamento-terra-como-fazer/', titulo: 'Levantamento terra: como fazer e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-costas/', titulo: 'Treino de costas: como montar o seu (e os erros)' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-bracos/', titulo: 'Treino de braços: bíceps e tríceps que funciona' },
+  { categoria: 'Musculação', url: '/musculacao/cafeina-pre-treino/', titulo: 'Cafeína no pré-treino: quanto tomar e quando' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -131,6 +138,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-perder-barriga/', titulo: 'Como perder barriga: a verdade sobre a gordura localizada' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quantos-passos-por-dia/', titulo: 'Quantos passos por dia para emagrecer?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/jejum-intermitente-funciona/', titulo: 'Jejum intermitente funciona para emagrecer?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/como-manter-o-peso-perdido/', titulo: 'Como manter o peso perdido depois da dieta' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

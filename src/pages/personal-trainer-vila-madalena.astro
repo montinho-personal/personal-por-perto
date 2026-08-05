@@ -1,0 +1,315 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-perdizes/',
+    titulo: 'Personal trainer em Perdizes',
+    descricao: 'O bairro vizinho, com o mesmo relevo inclinado da Zona Oeste.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona',
+    descricao: 'O formato que domina bairros de prédio antigo e casa reformada.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-vila-madalena';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer na Vila Madalena', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Vila Madalena?',
+    resposta:
+      'Em São Paulo, a aula avulsa vai de R$ 80 a R$ 200 e o pacote mensal de R$ 400 a R$ 1.200. A Vila Madalena trabalha no meio para o topo dessa faixa — abaixo de Jardins e Itaim Bibi, acima da média da cidade. O atendimento em casa é o formato mais comum e costuma embutir o deslocamento no valor.',
+  },
+  {
+    pergunta: 'A Vila Madalena é boa para correr?',
+    resposta:
+      'É um dos bairros mais inclinados da Zona Oeste, o que a torna ótima para quem quer estímulo e difícil para quem está começando. As ruas sobem e descem em quase todos os sentidos, e o miolo entre Aspicuelta, Girassol e Purpurina rende séries de subida sem sair de casa. Para corrida longa e plana, o Parque Villa-Lobos, no Alto de Pinheiros, resolve.',
+  },
+  {
+    pergunta: 'Os prédios da Vila Madalena têm academia?',
+    resposta:
+      'Alguns lançamentos recentes, sim. Mas o bairro é feito majoritariamente de casas, sobrados e edifícios pequenos e antigos, sem área de lazer — e é por isso que o personal a domicílio é o formato dominante aqui, com o profissional levando o material para a sala, o quintal ou a laje.',
+  },
+  {
+    pergunta: 'Dá para chegar de metrô para treinar no bairro?',
+    resposta:
+      'Dá. A estação Vila Madalena, da Linha 2–Verde, foi inaugurada em 1998 e fica na Praça Américo Jacomino, com acesso pela Rua Heitor Penteado. A estação Santuário Nossa Senhora de Fátima–Sumaré, na mesma linha, atende a outra ponta. Isso amplia bastante o raio de profissionais que conseguem atender no bairro sem carro.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar na Vila Madalena?',
+    resposta:
+      'De manhã cedo, sem discussão. O bairro é de vida noturna intensa, e as ruas amanhecem vazias e silenciosas — o oposto do que acontece a partir do fim da tarde. Nos dias de chuva do verão paulistano, a academia ou o treino coberto seguram a rotina.',
+  },
+];
+
+const title = 'Personal Trainer na Vila Madalena (São Paulo)';
+const description =
+  'Personal trainer na Vila Madalena: preços de São Paulo, as ladeiras do bairro, o Beco do Batman, o metrô da Linha 2 e por que o treino em casa domina aqui.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer na Vila Madalena: o bairro que só é plano no mapa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo mundo conhece a Vila Madalena pela noite, pelo grafite e pelos
+      bares de rua de nome estranho. Quase ninguém a descreve pelo que ela
+      tem de mais físico: o relevo.
+    </p>
+
+    <p class="lead">
+      Este é um dos bairros mais inclinados da Zona Oeste de São Paulo, e
+      isso muda tudo para quem treina. Quem procura um <strong>personal
+      trainer na Vila Madalena</strong> encontra um mercado moldado por
+      duas coisas — a ladeira e a casa. Esta é a história de como o bairro
+      chegou até aí.
+    </p>
+
+    <div class="prose">
+      <h2>De vila operária a território de artista</h2>
+      <p>
+        A Vila Madalena nasceu como bairro popular do distrito de
+        Pinheiros e virou, ao longo das décadas de 1970 e 1980, o
+        endereço de estudantes, artistas e músicos que fugiam do preço do
+        centro expandido.
+      </p>
+
+      <p>
+        Essa herança deixou uma marca urbana que sobreviveu à
+        valorização: o bairro continua feito de casas, sobrados e
+        edifícios pequenos, com poucas torres e menos ainda de área de
+        lazer.
+      </p>
+
+      <p>
+        Guarde esse detalhe. Ele é a razão pela qual, aqui, o personal
+        entra pela porta da sala em vez de subir para a academia do
+        décimo andar.
+      </p>
+
+      <h2>O relevo que ninguém coloca no anúncio</h2>
+      <p>
+        As ruas da Vila sobem e descem em quase todos os sentidos. O
+        miolo formado por Aspicuelta, Girassol, Purpurina, Fidalga e
+        Harmonia é uma sequência de rampas curtas e íngremes.
+      </p>
+
+      <p>
+        Para quem treina, isso é matéria-prima. Dá para montar séries de
+        subida a duzentos metros de casa, com descida ativa como
+        descanso, sem precisar de pista nem de equipamento.
+      </p>
+
+      <p>
+        Para quem está começando, é o contrário: o mesmo trajeto que
+        parece um passeio no mapa cobra fôlego que iniciante ainda não
+        tem. O ajuste, aqui, é escolher o sentido do percurso — e um
+        profissional que conhece o bairro faz isso sem pensar.
+      </p>
+
+      <h2>Os marcos que organizam o território</h2>
+      <p>
+        O <strong>Beco do Batman</strong> é o mais conhecido: o encontro
+        de três becos entre as ruas Gonçalo Afonso e Medeiros de
+        Albuquerque, virado museu a céu aberto de arte urbana desde que o
+        retrato do herói apareceu ali nos anos 1980. Nos fins de semana,
+        vira feira de artesanato.
+      </p>
+
+      <p>
+        A cerca de oitocentos metros dali fica a <strong>Praça Benedito
+        Calixto</strong>, que aos sábados recebe uma feira com cerca de
+        320 expositores — antiguidades, artesanato e chorinho no fim da
+        tarde.
+      </p>
+
+      <p>
+        Nenhum dos dois é lugar de treinar. Mas os dois explicam o ritmo
+        do bairro: movimentado à tarde e à noite, vazio e silencioso pela
+        manhã. É de manhã cedo que a Vila Madalena vira academia a céu
+        aberto.
+      </p>
+
+      <h2>O metrô mudou o raio de atendimento</h2>
+      <p>
+        A estação Vila Madalena, da Linha 2–Verde, foi inaugurada em 1998
+        na Praça Américo Jacomino, com acesso pela Rua Heitor Penteado. A
+        estação Santuário Nossa Senhora de Fátima–Sumaré atende a outra
+        ponta.
+      </p>
+
+      <p>
+        Isso importa mais para o mercado de personal do que parece: um
+        bairro servido por metrô amplia muito o número de profissionais
+        que conseguem atender ali sem carro — e, na prática, aumenta a
+        oferta e melhora a competição por preço.
+      </p>
+
+      <h2>Onde o treino acontece de verdade</h2>
+      <p>
+        <strong>Dentro de casa.</strong> É o formato dominante. Sala,
+        quintal, laje ou garagem, com o profissional levando halteres,
+        elásticos e o que mais o plano exigir. O guia sobre
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> detalha o que esperar do formato.
+      </p>
+
+      <p>
+        <strong>Nas ladeiras.</strong> O trabalho aeróbico intenso do
+        bairro sai de graça das próprias ruas — desde que a articulação
+        esteja em ordem. Quem tem dor no joelho ou histórico de lesão
+        deve passar por médico ou fisioterapeuta antes de incluir
+        subidas repetidas.
+      </p>
+
+      <p>
+        <strong>Na academia de rua.</strong> O bairro tem oferta
+        razoável, do estúdio pequeno à rede grande, o que resolve os dias
+        de chuva e a necessidade de carga alta.
+      </p>
+
+      <p>
+        <strong>Nos parques vizinhos.</strong> Para corrida longa e
+        plana, a saída é o Parque Villa-Lobos, no Alto de Pinheiros, a
+        poucos minutos. A Praça do Pôr do Sol, no mesmo bairro vizinho,
+        cumpre o papel de fim de tarde.
+      </p>
+
+      <h2>Quanto custa personal trainer na Vila Madalena</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Vila Madalena fica no meio para o topo: abaixo de Jardins e
+        Itaim Bibi, acima da média da cidade. Como o atendimento a
+        domicílio é o padrão, o deslocamento costuma estar embutido — e é
+        aí que o treino em dupla, comum entre casais e vizinhos de rua,
+        derruba o valor por pessoa.
+      </p>
+
+      <h2>Quem treina aqui</h2>
+      <p>
+        O perfil de morador ajuda a explicar o mercado: público
+        jovem-adulto, muita gente de criação, tecnologia e serviços, com
+        rotina irregular e viagens frequentes.
+      </p>
+
+      <p>
+        O que esse perfil pede é constância possível, não plano ideal:
+        duas ou três sessões de força bem aproveitadas, aeróbico
+        aproveitando as ladeiras e acompanhamento online nas semanas
+        fora. É um bairro em que o plano rígido demais simplesmente não
+        sobrevive ao mês.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, progressão registrada e
+        nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Vila, acrescente duas perguntas de território. Ele sabe montar
+        sessão completa em sala de dez metros quadrados, com pouco
+        equipamento? E como ele usa as ladeiras do bairro ao longo do
+        mês, sem transformar todo treino em subida? Quem atende aqui
+        responde as duas de imediato.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Vila Madalena" />
+
+    <WhatsAppCta tema="geral" localidade="na Vila Madalena" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

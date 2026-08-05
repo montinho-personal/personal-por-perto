@@ -1,0 +1,308 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/florianopolis-sc/',
+    titulo: 'Personal trainer em Florianópolis',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-jurere-internacional/',
+    titulo: 'Personal trainer em Jurerê Internacional',
+    descricao: 'O outro polo de treino da ilha, no norte — e como os dois se diferenciam.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'O formato que sustenta a rotina de quem vive entre a ilha e a viagem.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-lagoa-da-conceicao';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Florianópolis', url: '/personal-trainer/florianopolis-sc/' },
+  { nome: 'Personal Trainer na Lagoa da Conceição', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Lagoa da Conceição?',
+    resposta:
+      'Em Florianópolis, a aula avulsa vai de R$ 90 a R$ 210 e o pacote mensal de R$ 450 a R$ 1.250. A Lagoa fica no meio dessa faixa — abaixo de Jurerê Internacional e acima da média da ilha. O treino ao ar livre é tão presente aqui que muitos profissionais trabalham sem custo de academia, o que ajuda a segurar o preço.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Lagoa?',
+    resposta:
+      'Nas duas frentes que dão nome ao bairro. A Avenida das Rendeiras, à beira da lagoa, é o percurso plano de caminhada e corrida; a Trilha da Costa da Lagoa, que sai do Canto dos Araçás, é o estímulo intenso. Somam-se as dunas da Joaquina e as praias vizinhas, Mole e Joaquina, a poucos minutos.',
+  },
+  {
+    pergunta: 'A Trilha da Costa da Lagoa é pesada?',
+    resposta:
+      'É de dificuldade média. O percurso leva cerca de duas horas, é bem sinalizado e tem poucos trechos que exigem esforço grande — mas é longo o bastante para cobrar preparo. Sai do Canto dos Araçás, a 25 minutos a pé do centrinho da Lagoa (ou 5 minutos de carro). Quem tem dor no joelho ou histórico de lesão deve passar por médico ou fisioterapeuta antes de encarar a distância.',
+  },
+  {
+    pergunta: 'Dá para treinar dentro d’água na Lagoa?',
+    resposta:
+      'É uma das marcas do bairro. Stand up paddle, canoa havaiana e remo são praticados na lagoa o ano todo, e a água protegida do mar aberto torna o ambiente mais previsível que o das praias. Como qualquer esporte de remada, exige trabalho de ombro e core bem conduzido para não virar dor — e é aí que o personal complementa.',
+  },
+  {
+    pergunta: 'A Lagoa é boa para quem treina de manhã cedo?',
+    resposta:
+      'É o melhor horário do bairro. A Lagoa tem vida noturna intensa e amanhece silenciosa, com a Avenida das Rendeiras praticamente vazia. No verão, treinar cedo também evita o pico de radiação e o trânsito de temporada, que é o maior inimigo da constância aqui.',
+  },
+  {
+    pergunta: 'Os imóveis da Lagoa têm academia própria?',
+    resposta:
+      'Alguns condomínios mais novos, sim. Mas o bairro é feito majoritariamente de casas, sobrados e edifícios pequenos — a legislação e a topografia limitam a verticalização —, então o padrão aqui é a academia de rua ou o atendimento a domicílio, com o profissional levando o material.',
+  },
+];
+
+const title = 'Personal Trainer na Lagoa da Conceição (Florianópolis)';
+const description =
+  'Personal trainer na Lagoa da Conceição: preços de Florianópolis, a Avenida das Rendeiras, a Trilha da Costa da Lagoa, esportes de remada e como montar a semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Florianópolis</p>
+    <h1>Personal trainer na Lagoa da Conceição: as perguntas de quem mora aqui</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem se muda para a Lagoa da Conceição costuma chegar com a mesma
+      lista de dúvidas. Onde correr? A trilha é pesada demais? Preciso de
+      academia se tenho a lagoa na frente de casa?
+    </p>
+
+    <p class="lead">
+      Este guia responde uma por uma, na ordem em que elas aparecem — e
+      no fim explica quanto custa e como escolher um <strong>personal
+      trainer na Lagoa da Conceição</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>Onde exatamente eu treino aqui?</h2>
+      <p>
+        O bairro oferece três ambientes distintos, e a maioria das
+        pessoas usa só um deles.
+      </p>
+
+      <p>
+        A <strong>Avenida das Rendeiras</strong>, à beira da lagoa, é o
+        percurso plano: caminhada, corrida leve e trabalho aeróbico
+        contínuo, com a água de um lado e o morro do outro. É o endereço
+        mais óbvio e o mais usado.
+      </p>
+
+      <p>
+        A <strong>Trilha da Costa da Lagoa</strong> é o oposto: percurso
+        longo, terreno técnico e cerca de duas horas de caminho. Sai do
+        Canto dos Araçás, a 25 minutos a pé do centrinho.
+      </p>
+
+      <p>
+        E há a <strong>água</strong>, que na Lagoa é ambiente de treino
+        de verdade — stand up paddle, canoa havaiana e remo funcionam o
+        ano todo, protegidos do mar aberto.
+      </p>
+
+      <h2>A trilha é pesada demais para mim?</h2>
+      <p>
+        A Costa da Lagoa é classificada como de dificuldade média. É bem
+        sinalizada e tem poucos trechos que exigem esforço grande — o que
+        pesa é a distância e o tempo, não a inclinação.
+      </p>
+
+      <p>
+        Do outro lado da trilha existe uma comunidade tradicional,
+        registrada pela prefeitura como área de preservação cultural, com
+        menos de mil moradores e pesca artesanal ainda viva. O acesso é
+        por trilha ou por barco.
+      </p>
+
+      <p>
+        Na prática, isso torna o percurso um objetivo de treino com
+        recompensa clara — e um bom marco de evolução para quem começou
+        na Avenida das Rendeiras.
+      </p>
+
+      <h2>Preciso de academia se tenho tudo isso ao ar livre?</h2>
+      <p>
+        Precisa. Lagoa, trilha e remada resolvem a parte aeróbica e o
+        prazer de treinar num dos lugares mais bonitos do país. Nenhum
+        deles substitui o treino de força.
+      </p>
+
+      <p>
+        Força é o que preserva massa muscular, protege ombro e joelho de
+        quem rema e caminha muito, e sustenta a densidade óssea ao longo
+        dos anos. O arranjo que funciona aqui é sempre híbrido: duas a
+        três sessões de força na semana e o ar livre em volta delas.
+      </p>
+
+      <h2>Onde essa parte de força acontece?</h2>
+      <p>
+        Na academia de rua, na maioria dos casos. A Lagoa é feita de
+        casas, sobrados e edifícios pequenos — a topografia e a
+        legislação limitam a verticalização —, então a academia de
+        condomínio é exceção, não regra.
+      </p>
+
+      <p>
+        A alternativa forte é o atendimento a domicílio, com o
+        profissional levando halteres e elásticos. Funciona bem nos
+        primeiros meses, desde que exista um plano claro de para onde ir
+        quando o corpo pedir mais carga.
+      </p>
+
+      <h2>Qual o melhor horário?</h2>
+      <p>
+        De manhã cedo. A Lagoa tem vida noturna intensa e amanhece
+        silenciosa, com a Avenida das Rendeiras quase vazia — o oposto do
+        fim de tarde.
+      </p>
+
+      <p>
+        No verão, treinar cedo também evita o pico de radiação e o
+        trânsito de temporada, que é o maior inimigo da constância aqui.
+        No inverno, mais frio e úmido, a janela abre o dia todo e as
+        trilhas ficam ainda melhores.
+      </p>
+
+      <h2>E as praias vizinhas, entram no plano?</h2>
+      <p>
+        Entram, e é uma vantagem do bairro. Do fim da Avenida das
+        Rendeiras sai o acesso à SC-406 em direção à Praia Mole, e a
+        Joaquina — com suas dunas — fica a poucos minutos.
+      </p>
+
+      <p>
+        As dunas merecem destaque: correr ou caminhar em areia fofa é um
+        dos estímulos mais pesados que existem para pernas e tornozelo, e
+        justamente por isso pede introdução gradual. Entre a Joaquina e a
+        Mole há ainda a trilha curta para a Praia do Gravatá.
+      </p>
+
+      <h2>Quanto custa personal trainer na Lagoa da Conceição?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/florianopolis-sc/">personal trainer em
+        Florianópolis</a>, vai de R$ 90 a R$ 210 pela aula avulsa e de
+        R$ 450 a R$ 1.250 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Lagoa fica no meio: abaixo de
+        <a href="/personal-trainer-jurere-internacional/">Jurerê
+        Internacional</a> e acima da média da ilha. Um detalhe local
+        ajuda a segurar o preço — como boa parte do trabalho acontece ao
+        ar livre, muitos profissionais operam sem custo de academia.
+      </p>
+
+      <p>
+        O treino em dupla divide o valor entre casal ou vizinhos, e o
+        acompanhamento online (R$ 200 a R$ 500 mensais) resolve as
+        semanas fora, comuns num bairro com tanta gente de trabalho
+        remoto.
+      </p>
+
+      <h2>Como escolher o profissional?</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, progressão registrada e
+        nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Lagoa, some duas perguntas de território. Ele monta força para
+        quem rema — ou seja, sabe cuidar de ombro e core sob volume alto
+        de remada? E como ele encaixa trilha e duna no mês sem
+        transformar toda semana em prova de resistência?
+      </p>
+
+      <p>
+        Quem atende aqui há tempo responde as duas de imediato. E, como
+        sempre, dores e limitações articulares são assunto de médico ou
+        fisioterapeuta antes de entrar no plano de treino.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Lagoa da Conceição" />
+
+    <WhatsAppCta tema="geral" localidade="na Lagoa da Conceição" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
