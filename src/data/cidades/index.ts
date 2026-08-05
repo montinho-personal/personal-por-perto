@@ -372,6 +372,8 @@ import { cidade as orleans } from './orleans-sc';
 import { cidade as chapadaDosGuimaraes } from './chapada-dos-guimaraes-mt';
 import { cidade as cavalcante } from './cavalcante-go';
 import { cidade as aiuruoca } from './aiuruoca-mg';
+import { cidade as piranhas } from './piranhas-al';
+import { cidade as palmeiras } from './palmeiras-ba';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1110,7 +1112,7 @@ export const cidades: Cidade[] = [
   // Bloco 47 (3 cidades)
   encantado, monteSiao, amargosa, doisIrmaos, areiaBranca, cajuru,
   tresPassos, rosarioDoSul, itaporangaDAjuda, tresCoroas, praiaGrandeSC, orleans,
-  chapadaDosGuimaraes, cavalcante, aiuruoca,
+  chapadaDosGuimaraes, cavalcante, aiuruoca, piranhas, palmeiras,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

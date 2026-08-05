@@ -1,0 +1,265 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/santos-sp/',
+    titulo: 'Personal trainer em Santos',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para a terceira idade',
+    descricao: 'Força e autonomia depois dos 60 — o que muda no treino.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-gonzaga';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Santos', url: '/personal-trainer/santos-sp/' },
+  { nome: 'Personal Trainer no Gonzaga', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Gonzaga?',
+    resposta:
+      'Em Santos, a aula avulsa varia de R$ 85 a R$ 190 e o pacote mensal de R$ 420 a R$ 1.150. No Gonzaga — o coração da orla santista —, os profissionais experientes trabalham no topo dessas faixas, sobretudo no atendimento a domicílio e no condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Gonzaga?',
+    resposta:
+      'Na orla: o calçadão e os jardins da praia — o maior jardim frontal de praia em extensão do mundo — concentram caminhada, corrida e funcionais. A areia e a orla da avenida Bartolomeu de Gusmão completam o circuito, com quiosques de apoio ao longo do percurso.',
+  },
+  {
+    pergunta: 'Existe área exclusiva para corrida na orla de Santos?',
+    resposta:
+      'Sim. A prefeitura reserva um trecho da avenida Bartolomeu de Gusmão, entre a Praça Santo Antônio do Embaré e a rua Alexandre Martins, para treinos de corrida às terças, quartas e quintas, das 4h às 6h — asfalto plano e sem disputa com o trânsito.',
+  },
+  {
+    pergunta: 'O Gonzaga é bom bairro para o público 60+ treinar?',
+    resposta:
+      'É um dos melhores do país: orla plana, calçadas largas, tudo a pé e uma população madura numerosa. O treino de força a domicílio ou no condomínio, combinado à caminhada na orla, é o arranjo mais contratado do bairro.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios do Gonzaga?',
+    resposta:
+      'Sim — os edifícios da orla e das ruas internas recebem o personal do morador, na academia do condomínio quando há e no apartamento com equipamento portátil quando não há. Cada prédio tem suas regras de acesso de prestadores.',
+  },
+];
+
+const title = 'Personal Trainer no Gonzaga (Santos): preços e onde treinar';
+const description =
+  'Personal trainer no Gonzaga: quanto custa, o treino nos jardins da orla, a faixa exclusiva de corrida e como escolher bem em Santos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Santos</p>
+    <h1>Personal trainer no Gonzaga: o que os moradores da orla perguntam antes de contratar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Gonzaga treina dentro de um recorde mundial: os jardins da orla
+      santista formam o maior jardim frontal de praia em extensão do
+      planeta, e é por eles que passa a caminhada diária do bairro mais
+      movimentado de Santos.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Gonzaga</strong> chega
+      quase sempre com as mesmas dúvidas. Este artigo responde às
+      principais, uma a uma.
+    </p>
+
+    <div class="prose">
+      <h2>Onde o Gonzaga treina, afinal?</h2>
+      <p>
+        Na orla, antes de tudo. O calçadão que corta os jardins é plano,
+        contínuo e sombreado em bons trechos — cenário ideal para
+        caminhada estruturada, corrida leve e funcionais com equipamento
+        portátil, tudo a poucos metros de casa.
+      </p>
+
+      <p>
+        A areia entra como segundo piso, para trabalho de potência e
+        estabilidade, e as ruas internas do bairro — planas e
+        arborizadas — completam os deslocamentos. É um dos bairros mais
+        caminháveis do litoral brasileiro.
+      </p>
+
+      <h2>Existe horário reservado para quem corre?</h2>
+      <p>
+        Existe, e poucos moradores sabem aproveitar. A prefeitura libera
+        um trecho da avenida Bartolomeu de Gusmão — entre a Praça Santo
+        Antônio do Embaré e a rua Alexandre Martins — para treinos de
+        corrida às terças, quartas e quintas, das 4h às 6h.
+      </p>
+
+      <p>
+        Para quem treina para provas, é a janela mais valiosa da cidade:
+        asfalto plano, sem trânsito e com o mar do lado. Bons
+        profissionais do bairro montam a periodização em torno dela.
+      </p>
+
+      <h2>Quanto custa um personal no bairro?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/santos-sp/">personal trainer em
+        Santos</a>, vai de R$ 85 a R$ 190 pela aula avulsa e de R$ 420 a
+        R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Gonzaga, o mercado trabalha no topo: o bairro concentra a
+        maior densidade de moradores e de profissionais da orla, e o
+        atendimento a domicílio é o serviço de maior valor. O
+        acompanhamento online (R$ 190 a R$ 480 mensais) cobre as semanas
+        fora, comuns num bairro com muita gente que divide a vida entre
+        Santos e São Paulo.
+      </p>
+
+      <h2>O bairro é bom para quem tem mais de 60 anos?</h2>
+      <p>
+        É referência nacional nisso. Santos tem uma das populações mais
+        maduras do país, e o Gonzaga reúne as condições que esse público
+        precisa: orla plana, calçadas largas, serviços a pé e prédios
+        com elevador em quase toda parte.
+      </p>
+
+      <p>
+        O arranjo mais contratado combina caminhada diária na orla com
+        duas sessões semanais de força em casa ou no condomínio — a
+        receita descrita no guia de
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal
+        trainer para a terceira idade</a>. Dores e limitações passam
+        primeiro por médico ou fisioterapeuta.
+      </p>
+
+      <h2>E o treino dentro do prédio, funciona?</h2>
+      <p>
+        Funciona e cresce. Os edifícios da orla e das quadras internas
+        recebem o personal na academia do condomínio quando ela existe,
+        e no próprio apartamento quando não existe — com equipamento
+        portátil e método adaptado ao espaço.
+      </p>
+
+      <p>
+        Para famílias, o formato em sequência de horários com o mesmo
+        profissional divide custo e cria constância entre gerações que
+        moram no mesmo prédio.
+      </p>
+
+      <h2>E quem quer treinar na areia?</h2>
+      <p>
+        A faixa de areia entre o calçadão e o mar é um recurso que o
+        bairro tem de graça e poucos usam com método. A instabilidade do
+        piso recruta mais estabilizadores a cada passada e transforma
+        exercícios simples em estímulo completo.
+      </p>
+
+      <p>
+        Funcionais, deslocamentos laterais e trabalho de potência rendem
+        bem ali — com a ressalva de sempre: areia fofa exige progressão
+        gradual em quem tem tornozelo ou joelho sensível, e a maré baixa
+        oferece a faixa firme mais amigável para começar.
+      </p>
+
+      <h2>Como escolher bem no Gonzaga?</h2>
+      <p>
+        Com os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de resultado garantido.
+      </p>
+
+      <p>
+        E com o filtro da orla: pergunte como o profissional usa o
+        calçadão, a areia e a faixa exclusiva de corrida na montagem da
+        semana. Quem atende no bairro há anos responde com trechos e
+        horários — não com generalidades.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Gonzaga" />
+
+    <WhatsAppCta tema="geral" localidade="no Gonzaga" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

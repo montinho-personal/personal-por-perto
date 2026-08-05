@@ -1,0 +1,262 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/brasilia-df/',
+    titulo: 'Personal trainer em Brasília',
+    descricao: 'O guia completo do DF: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-lago-sul/',
+    titulo: 'Personal trainer no Lago Sul',
+    descricao: 'O guia do bairro das mansões e do treino a domicílio em Brasília.',
+    tipo: 'Bairros',
+  },
+];
+
+const path = '/personal-trainer-sudoeste';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Brasília', url: '/personal-trainer/brasilia-df/' },
+  { nome: 'Personal Trainer no Sudoeste', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Sudoeste?',
+    resposta:
+      'Em Brasília, a aula avulsa varia de R$ 90 a R$ 220 e o pacote mensal de R$ 450 a R$ 1.300 — as faixas mais altas do Centro-Oeste. No Sudoeste, de IDH altíssimo, os profissionais experientes trabalham no topo delas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Sudoeste?',
+    resposta:
+      'O Parque da Cidade Sarah Kubitschek, vizinho ao setor, é o maior parque urbano da América Latina e oferece circuitos de 4, 6 e 10 km para caminhada, corrida e bike. Dentro do setor, as superquadras arborizadas e as ciclovias completam o circuito diário.',
+  },
+  {
+    pergunta: 'Como funcionam as quadras do Sudoeste para quem treina?',
+    resposta:
+      'O setor segue o modelo das superquadras de Brasília: as SQSW são residenciais, verdes e com passagem livre entre blocos — ótimas para caminhada e corrida leve —, enquanto as CLSW concentram comércio, studios e academias, tudo em raio curto.',
+  },
+  {
+    pergunta: 'Personal atende nos prédios do Sudoeste?',
+    resposta:
+      'Sim, e é formato consolidado: os blocos residenciais do setor contam com espaços fitness, e o atendimento no condomínio elimina deslocamento. Nos prédios sem estrutura, o treino no apartamento com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'Sudoeste ou Lago Sul: onde treinar?',
+    resposta:
+      'São perfis opostos. O Lago Sul é horizontal, de mansões e treino a domicílio; o Sudoeste é vertical, compacto e caminhável, com o Parque da Cidade na porta. A escolha é pela logística da sua semana — e vários profissionais atendem nos dois.',
+  },
+];
+
+const title = 'Personal Trainer no Sudoeste (Brasília): guia por perfil';
+const description =
+  'Personal trainer no Sudoeste: o guia por perfil — servidor, família das quadras, 60+ e corredor do Parque da Cidade — com preços de Brasília.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Brasília</p>
+    <h1>Personal trainer no Sudoeste: o guia certo para cada perfil do setor</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Sudoeste tem um dos maiores IDHs do Brasil e um privilégio
+      geográfico raro: divide a cerca com o Parque da Cidade Sarah
+      Kubitschek, o maior parque urbano da América Latina. Poucos
+      endereços do país colocam 10 km de pista a uma caminhada de casa.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer no Sudoeste</strong> se
+      encaixa em um dos quatro perfis abaixo. Encontre o seu — e o
+      formato que combina com ele.
+    </p>
+
+    <div class="prose">
+      <h2>O território: superquadras, comércio local e o parque</h2>
+      <p>
+        O setor segue a gramática de Brasília: as SQSW residenciais são
+        verdes, arborizadas e de passagem livre entre blocos; as CLSW
+        concentram comércio, serviços, studios e academias. Tudo em raio
+        curto, a pé — o que faz do Sudoeste um dos setores mais
+        caminháveis do Plano Piloto.
+      </p>
+
+      <p>
+        Do lado de fora, o Parque da Cidade fecha a conta com circuitos
+        de 4, 6 e 10 km para caminhada, corrida e bike, além de quadras
+        e áreas de convivência. É a maior estrutura pública de treino do
+        Centro-Oeste.
+      </p>
+
+      <h2>Perfil 1 — O servidor de agenda cheia</h2>
+      <p>
+        Trabalha na Esplanada ou nos órgãos do eixo e mora a minutos
+        deles. Para esse perfil, a sessão de 45 a 60 minutos às 6h30, no
+        prédio ou no studio da quadra comercial, é a que atravessa a
+        semana — e o online (R$ 200 a R$ 520 mensais na referência do
+        DF) segura os períodos de viagem a serviço.
+      </p>
+
+      <h2>Perfil 2 — A família das quadras</h2>
+      <p>
+        Nas SQSW, o treino é assunto de bloco: casal em dupla, filhos
+        adolescentes iniciando musculação com supervisão e o mesmo
+        profissional atendendo em sequência de horários. O formato
+        divide custo e cria constância — desde que carga e progressão
+        sejam individualizadas para cada um.
+      </p>
+
+      <h2>Perfil 3 — O morador 60+ do setor que amadureceu</h2>
+      <p>
+        O Sudoeste foi ocupado a partir dos anos 1990 e hoje tem uma
+        geração que envelheceu no mesmo endereço. Para esse público, o
+        arranjo ideal combina caminhada no Parque da Cidade, nos
+        horários frescos, com duas sessões semanais de força em casa ou
+        no condomínio.
+      </p>
+
+      <p>
+        A regra inegociável do portal vale aqui como em todo lugar:
+        dores e limitações passam primeiro por médico ou fisioterapeuta,
+        e o treino se constrói a partir da liberação.
+      </p>
+
+      <h2>Perfil 4 — O corredor do Parque da Cidade</h2>
+      <p>
+        É o perfil mais bem servido do DF. Os circuitos de 4, 6 e 10 km
+        permitem periodizar volume sem repetir paisagem, e a marcação
+        por distância vira régua de evolução semana a semana.
+      </p>
+
+      <p>
+        O personal de corrida usa o parque para os treinos longos e de
+        ritmo, as ciclovias do setor para os deslocamentos e a academia
+        do prédio para a força complementar — o tripé que sustenta
+        qualquer prova de rua.
+      </p>
+
+      <h2>O clima de Brasília entra no plano</h2>
+      <p>
+        A seca do inverno pede hidratação redobrada e atenção às vias
+        aéreas; o verão chuvoso concentra as pancadas no fim da tarde.
+        Bons profissionais do Sudoeste montam a semana em torno disso —
+        e mantêm plano B indoor sempre engatilhado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Sudoeste</h2>
+      <p>
+        A referência do DF, publicada no guia de
+        <a href="/personal-trainer/brasilia-df/">personal trainer em
+        Brasília</a>, vai de R$ 90 a R$ 220 pela aula avulsa e de R$ 450
+        a R$ 1.300 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Sudoeste, o mercado trabalha no topo — perfil semelhante ao
+        do <a href="/personal-trainer-lago-sul/">Lago Sul</a>, com a
+        diferença do formato: lá o domicílio nas mansões, aqui o
+        condomínio e o parque. O treino em dupla é o caminho mais comum
+        para dividir o custo por pessoa.
+      </p>
+
+      <h2>Como escolher, seja qual for o seu perfil</h2>
+      <p>
+        Os critérios objetivos valem para todos: avaliação física na
+        primeira semana, periodização que o profissional explique sem
+        jargão, experiência real com o seu objetivo e honestidade sobre
+        prazos — o passo a passo está no guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>.
+      </p>
+
+      <p>
+        No Sudoeste, some o filtro do parque: pergunte qual circuito o
+        candidato usa em cada fase do plano. Quem atende no setor
+        responde com quilometragem — e sabe que o maior patrimônio
+        esportivo do endereço fica do outro lado da cerca.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Sudoeste" />
+
+    <WhatsAppCta tema="geral" localidade="no Sudoeste" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,266 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/londrina-pr/',
+    titulo: 'Personal trainer em Londrina',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O princípio que separa treino que evolui de treino que só cansa.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-gleba-palhano';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Londrina', url: '/personal-trainer/londrina-pr/' },
+  { nome: 'Personal Trainer na Gleba Palhano', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Gleba Palhano?',
+    resposta:
+      'Em Londrina, a aula avulsa varia de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Na Gleba Palhano — o endereço mais valorizado da cidade —, os profissionais experientes trabalham no topo dessas faixas, com o atendimento em condomínio na frente.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Gleba Palhano?',
+    resposta:
+      'No Lago Igapó, o cartão-postal de Londrina, a poucos minutos do bairro: o entorno reúne pista de caminhada, ciclovia e áreas verdes que concentram a corrida da cidade nas pontas do dia. As ruas largas e planas do bairro completam o circuito.',
+  },
+  {
+    pergunta: 'Os prédios da Gleba Palhano têm academia própria?',
+    resposta:
+      'É a marca do bairro. Foram cerca de 100 prédios construídos na última década, a maioria de alto padrão e com espaço fitness, piscina e lazer completo — e o personal no condomínio é o formato dominante entre os moradores.',
+  },
+  {
+    pergunta: 'Como treinar no clima de Londrina?',
+    resposta:
+      'O verão quente e úmido pede as pontas do dia; o inverno seco libera o meio-dia e torna o Igapó ainda mais agradável. Nos dias de chuva ou frio forte, a academia do prédio segura a constância — vantagem estrutural do bairro.',
+  },
+  {
+    pergunta: 'A Gleba Palhano é boa para quem treina cedo?',
+    resposta:
+      'É ideal: o bairro é plano, seguro e concentra serviços em raio curto, com o Igapó a poucos minutos. Dá para treinar às 6h no lago ou no prédio e estar no trabalho às 8h, sem depender de deslocamento longo.',
+  },
+];
+
+const title = 'Personal Trainer na Gleba Palhano (Londrina): o guia';
+const description =
+  'Personal trainer na Gleba Palhano: preços de Londrina, o Lago Igapó, as torres com academia e o treino no bairro mais valorizado da cidade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Londrina</p>
+    <h1>Personal trainer na Gleba Palhano: o bairro que subiu cem prédios em dez anos</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Em uma década, a Gleba Palhano ganhou cerca de cem prédios — a
+      maioria de alto padrão — e virou o metro quadrado mais desejado de
+      Londrina. Foi a verticalização mais rápida do norte do Paraná, e
+      ela mudou também o jeito como o bairro treina.
+    </p>
+
+    <p class="lead">
+      Quem procura um <strong>personal trainer na Gleba Palhano</strong>
+      encontra um mercado organizado em torno de duas âncoras: a
+      academia do condomínio e o Lago Igapó. Este artigo percorre o
+      bairro como ele funciona — de dentro das torres para fora.
+    </p>
+
+    <div class="prose">
+      <h2>O território: um bairro planejado que cresceu para cima</h2>
+      <p>
+        A Gleba Palhano é jovem no traçado e adulta no padrão: ruas
+        largas e planas, quadras generosas e uma malha de serviços que
+        se formou junto com as torres — shoppings, clínicas,
+        restaurantes e escritórios em raio curto.
+      </p>
+
+      <p>
+        O vetor da valorização tem nome: a proximidade do Lago Igapó, o
+        cartão-postal de Londrina, criou um eixo urbano que combina
+        áreas verdes, mobilidade e qualidade de vida — e puxou os
+        lançamentos de alto padrão para a região sul da cidade.
+      </p>
+
+      <h2>Dentro das torres: a academia como item de série</h2>
+      <p>
+        Nos prédios da Gleba, espaço fitness não é diferencial — é
+        padrão. Piscina, sauna e salão de lazer completam a estrutura, e
+        o personal leva até ela o que o equipamento sozinho não entrega:
+        método, individualização e a
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> que faz o resultado aparecer.
+      </p>
+
+      <p>
+        É o formato dominante do bairro. Para executivos, a sessão das
+        6h antes do expediente; para famílias, os horários em sequência
+        com o mesmo profissional; para o público 60+, o treino de força
+        que preserva autonomia — sempre com dores e limitações avaliadas
+        antes por médico ou fisioterapeuta.
+      </p>
+
+      <h2>Fora das torres: o Lago Igapó</h2>
+      <p>
+        A poucos minutos do bairro, o Igapó é o quintal esportivo de
+        Londrina inteira: pista de caminhada, ciclovia e áreas verdes
+        que enchem no amanhecer e no fim de tarde, quando a cidade
+        inteira parece descer para a beira do lago.
+      </p>
+
+      <p>
+        Os personal trainers da Gleba usam o percurso como régua de
+        evolução para os alunos de corrida e como cenário dos treinos
+        aeróbicos que complementam a força feita no prédio.
+      </p>
+
+      <h2>O clima como variável do plano</h2>
+      <p>
+        Londrina tem verão quente e úmido e inverno seco de temperaturas
+        agradáveis. Na prática, o plano bem-feito alterna: nas pontas do
+        dia do verão, treino ao ar livre no Igapó; no inverno, o
+        meio-dia libera e o lago fica ainda melhor.
+      </p>
+
+      <p>
+        Nos dias de chuva — frequentes no norte do Paraná —, a academia
+        da torre resolve sem negociação. É a vantagem estrutural que faz
+        do bairro um dos mais constantes da cidade em adesão a treino.
+      </p>
+
+      <h2>Quanto custa personal trainer na Gleba Palhano</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/londrina-pr/">personal trainer em
+        Londrina</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Na Gleba Palhano, o mercado trabalha no topo: o bairro concentra
+        o público de maior renda de Londrina e a maior densidade de
+        academias de condomínio da cidade. O treino em dupla divide o
+        custo entre casais e vizinhos, e o online (R$ 170 a R$ 430
+        mensais) cobre as semanas de viagem.
+      </p>
+
+      <h2>O objetivo mais pedido no bairro</h2>
+      <p>
+        Quem atende na Gleba relata um padrão claro: composição corporal
+        e saúde para um público jovem-adulto de renda alta, com agenda
+        cheia e pouca tolerância a treino ineficiente. A demanda por
+        sessões curtas e bem planejadas é a marca do endereço.
+      </p>
+
+      <p>
+        A resposta técnica é sempre a mesma: força duas a três vezes por
+        semana com progressão real, aeróbico regular no Igapó e um plano
+        que sobreviva às semanas de viagem — papel que o acompanhamento
+        online cumpre bem.
+      </p>
+
+      <h2>Como escolher um personal no bairro</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Gleba, some duas perguntas locais: o profissional já atende
+        em condomínios do bairro e conhece as regras de acesso das
+        torres? E como ele combina a academia do prédio com o Igapó ao
+        longo da semana? Quem trabalha ali responde sem hesitar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Gleba Palhano" />
+
+    <WhatsAppCta tema="geral" localidade="na Gleba Palhano" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

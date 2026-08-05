@@ -1,0 +1,299 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-perder-barriga/',
+    titulo: 'Como perder barriga: o que funciona de verdade',
+    descricao: 'Abdômen aparente é resultado de gordura baixa — e este guia explica como chegar lá.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O mesmo raciocínio de estímulo e progressão aplicado ao maior músculo do corpo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que pode e o que evitar',
+    descricao: 'O core protege a lombar — mas nem todo exercício de abdômen é amigo dela.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-abdomen';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de abdômen: o que funciona de verdade', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Abdominal queima a gordura da barriga?',
+    resposta:
+      'Não. A redução localizada de gordura por exercício específico não se sustenta na literatura: o corpo mobiliza gordura de forma sistêmica, seguindo genética e balanço energético, e não do músculo que está trabalhando. Abdominal treina o músculo abdominal — o que é ótimo para força e estabilidade —, mas quem faz o abdômen aparecer é o déficit calórico consistente somado ao treino de força do corpo inteiro.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar abdômen?',
+    resposta:
+      'Duas a três sessões semanais, com 48 horas entre elas, cobrem bem a necessidade da maioria. O abdômen é músculo como qualquer outro: responde a estímulo, carga progressiva e descanso — e não a repetição diária infinita. Séries de 8 a 20 repetições (ou 20 a 60 segundos nos isométricos), com 2 a 4 séries por exercício, é a faixa prática que funciona.',
+  },
+  {
+    pergunta: 'Prancha é melhor que abdominal tradicional?',
+    resposta:
+      'Não é melhor nem pior — é diferente. A prancha treina anti-extensão: a capacidade de resistir ao movimento, que é a principal função real do core no dia a dia e nos grandes exercícios. O abdominal tradicional treina flexão de tronco, que também tem valor. Um programa completo usa os dois padrões, mais anti-rotação e anti-flexão lateral.',
+  },
+  {
+    pergunta: 'Preciso treinar abdômen se já faço agachamento e levantamento terra?',
+    resposta:
+      'Os grandes exercícios exigem muito do core como estabilizador, e isso já entrega parte do trabalho. Ainda assim, o treino direto tem valor para quem quer desenvolvimento visível, para quem tem fraqueza específica de core e para quem precisa de mais proteção lombar. Pense no abdômen direto como complemento — não como substituto dos multiarticulares.',
+  },
+  {
+    pergunta: 'Abdominal pode piorar dor nas costas?',
+    resposta:
+      'Pode, dependendo do exercício e do seu caso. Movimentos de flexão repetida da coluna — como o abdominal completo com pés presos — costumam ser mal tolerados por quem tem sensibilidade lombar ou histórico de hérnia. As opções mais seguras para esse perfil são os isométricos e os padrões anti-movimento. Dor lombar existente merece avaliação de médico ou fisioterapeuta antes de qualquer programa.',
+  },
+];
+
+const title = 'Treino de abdômen: o que funciona de verdade';
+const description =
+  'Treino de abdômen sem mito: por que abdominal não queima gordura localizada, as quatro funções do core, quantas séries e vezes por semana, e os exercícios que valem a pena.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de abdômen: o que funciona de verdade (e o que é mito)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum músculo do corpo acumula tanta lenda quanto o abdômen. A
+      promessa dos "300 abdominais por dia" resiste há décadas, mesmo
+      contrariando a fisiologia mais básica: <strong>o exercício
+      abdominal treina o músculo, mas não escolhe de onde o corpo tira
+      gordura</strong>.
+    </p>
+
+    <p class="lead">
+      Este guia separa o que a prática sustenta do que é folclore de
+      academia: as funções reais do core, quanto treinar, quais
+      exercícios valem a pena e por que o abdômen definido é, antes de
+      tudo, uma consequência de outra coisa.
+    </p>
+
+    <div class="prose">
+      <h2>O mito número um: redução localizada</h2>
+      <p>
+        A ideia de que trabalhar um músculo queima a gordura que está
+        por cima dele é intuitiva — e errada. A mobilização de gordura
+        acontece de forma sistêmica, comandada por balanço energético,
+        hormônios e genética, não pelo músculo que está em atividade.
+      </p>
+
+      <p>
+        Na prática: dá para ter um abdômen forte e bem desenvolvido
+        completamente escondido sob uma camada de gordura. Quem faz o
+        desenho aparecer é o déficit calórico sustentado — o assunto do
+        guia sobre <a href="/emagrecimento/como-perder-barriga/">como
+        perder barriga</a> — combinado ao treino de força do corpo
+        inteiro.
+      </p>
+
+      <h2>O que o core realmente faz</h2>
+      <p>
+        Pensar o abdômen apenas como "flexionar o tronco" é reduzir o
+        problema. O core trabalha em quatro padrões, e um programa
+        completo cobre todos eles.
+      </p>
+
+      <p>
+        <strong>Anti-extensão:</strong> resistir a que a lombar arqueie
+        — é o que a prancha e o ab wheel treinam.
+        <strong>Anti-rotação:</strong> resistir a que o tronco gire,
+        como no pallof press. <strong>Anti-flexão lateral:</strong>
+        resistir à inclinação, treinado na caminhada do fazendeiro com
+        peso de um lado só. E, por fim, a <strong>flexão de
+        tronco</strong> propriamente dita — o abdominal clássico e suas
+        variações.
+      </p>
+
+      <p>
+        Os três primeiros são padrões de estabilização, e é neles que
+        mora a função protetora que sustenta agachamento, levantamento
+        terra e a vida fora da academia.
+      </p>
+
+      <h2>Quanto treinar: volume, frequência e carga</h2>
+      <p>
+        O abdômen segue as mesmas regras dos outros músculos. Duas a
+        três sessões semanais, com 48 horas de intervalo, dão conta na
+        maioria dos casos — e as diretrizes gerais de treino de força de
+        entidades como o <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        se aplicam aqui como em qualquer grupo muscular.
+      </p>
+
+      <p>
+        Volume prático: 2 a 4 séries por exercício, 2 a 4 exercícios por
+        sessão, cobrindo padrões diferentes. Nos dinâmicos, 8 a 20
+        repetições; nos isométricos, 20 a 60 segundos de qualidade — não
+        de sofrimento.
+      </p>
+
+      <p>
+        E a parte que quase ninguém aplica: <strong>progressão de
+        carga</strong>. Se você faz o mesmo número de abdominais há um
+        ano, o estímulo acabou. Adicione carga, aumente a alavanca,
+        desacelere a fase excêntrica — a lógica é a mesma descrita no
+        guia de <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a>.
+      </p>
+
+      <h2>Os exercícios que valem a pena</h2>
+      <p>
+        Para anti-extensão: prancha frontal (com progressões de tempo e
+        de alavanca), ab wheel e dead bug — este último especialmente
+        seguro para iniciantes e para quem tem histórico lombar.
+      </p>
+
+      <p>
+        Para anti-rotação: pallof press na polia ou com elástico, e
+        variações de prancha com toque alternado. Para anti-flexão
+        lateral: prancha lateral e caminhada do fazendeiro unilateral,
+        que ainda treina pegada e postura de quebra.
+      </p>
+
+      <p>
+        Para flexão de tronco: elevação de pernas suspenso ou na
+        paralela, crunch na polia alta (que permite carga progressiva
+        real) e variações no banco declinado. Note o padrão: as versões
+        que permitem adicionar peso são as que continuam evoluindo com
+        você.
+      </p>
+
+      <h2>Quem tem dor lombar precisa de cuidado extra</h2>
+      <p>
+        Nem todo exercício de abdômen é aliado da coluna. Flexões
+        repetidas e sob carga — como o abdominal completo com os pés
+        presos — costumam ser mal toleradas por quem tem sensibilidade
+        lombar ou histórico de hérnia de disco.
+      </p>
+
+      <p>
+        Para esse perfil, o caminho passa pelos isométricos e pelos
+        padrões anti-movimento, que fortalecem sem repetir a flexão. O
+        artigo sobre <a href="/musculacao/treinar-com-dor-lombar/">
+        treinar com dor lombar</a> detalha o raciocínio — e a regra
+        continua valendo: dor existente é assunto de médico ou
+        fisioterapeuta antes de qualquer programa.
+      </p>
+
+      <h2>A conta que ninguém quer ouvir</h2>
+      <p>
+        O abdômen visível é um percentual de gordura, não um número de
+        repetições. Para a maioria dos homens, o desenho começa a
+        aparecer abaixo de aproximadamente 12% a 15%; nas mulheres, a
+        faixa equivalente fica em torno de 20% a 24% — e essas faixas
+        variam com genética e distribuição individual.
+      </p>
+
+      <p>
+        Isso significa que o treino de abdômen constrói a estrutura, mas
+        quem revela é a cozinha e a consistência. Treinar o músculo sem
+        cuidar do resto é montar um quadro e deixá-lo coberto.
+      </p>
+
+      <h2>Como encaixar na sua semana</h2>
+      <p>
+        A forma mais sustentável é anexar 8 a 12 minutos de core ao
+        final de duas ou três sessões que você já faz, alternando os
+        padrões. Assim o abdômen não vira um treino a mais para caber na
+        agenda — vira parte do que já existe.
+      </p>
+
+      <p>
+        Se o seu objetivo envolve estética abdominal com prazo, um
+        acompanhamento profissional acelera o processo por dois motivos:
+        seleção correta de exercícios para o seu caso e ajuste do plano
+        conforme a resposta do seu corpo — que é a parte que não cabe em
+        artigo nenhum.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de abdômen" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

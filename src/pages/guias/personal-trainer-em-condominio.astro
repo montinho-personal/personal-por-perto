@@ -1,0 +1,309 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona',
+    descricao: 'O formato irmão — quando o treino acontece dentro do seu apartamento.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'As faixas de preço por formato e o que faz o valor subir ou cair.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-em-condominio';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer em condomínio: como funciona', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O condomínio pode proibir personal trainer na academia do prédio?',
+    resposta:
+      'Pode regulamentar, e muitos regulamentam. A convenção e o regimento interno definem se prestadores externos podem atuar nas áreas comuns, em quais horários e sob quais exigências — cadastro na portaria, apresentação de documentação, seguro ou credenciamento são condições comuns. Proibição total existe em alguns prédios, mas é menos frequente do que a regulamentação. O caminho é consultar o regimento antes de contratar, não depois.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer no condomínio?',
+    resposta:
+      'Costuma custar o mesmo que o atendimento presencial padrão da sua cidade — em muitos casos um pouco menos que o domicílio puro, porque o profissional não precisa transportar equipamento. Onde o formato realmente economiza é no treino em dupla ou em pequenos grupos de vizinhos: o valor da sessão é dividido, e o custo por pessoa cai bastante sem perder acompanhamento.',
+  },
+  {
+    pergunta: 'A academia do prédio é suficiente para hipertrofia?',
+    resposta:
+      'Na maioria dos casos, sim, principalmente nos primeiros anos de treino. O que constrói músculo é estímulo adequado com progressão — e halteres, alguns aparelhos e criatividade cobrem isso por bastante tempo. A limitação aparece em fases avançadas ou objetivos específicos de força máxima, quando faltam barras, anilhas pesadas e agachamento livre. Um bom profissional adapta o plano ao que existe, em vez de reclamar do que falta.',
+  },
+  {
+    pergunta: 'Preciso avisar o síndico ou a portaria?',
+    resposta:
+      'Sim, e isso resolve 90% dos atritos. O procedimento usual é o morador comunicar a portaria e cadastrar o profissional como prestador autorizado, com horários definidos. Em prédios mais estruturados, exige-se documentação e, às vezes, comprovação de seguro. Transparência antecipada evita a situação clássica: o personal barrado no portão no dia da primeira sessão.',
+  },
+  {
+    pergunta: 'Posso treinar com personal em grupo com vizinhos?',
+    resposta:
+      'Pode, se o regimento permitir e o espaço comportar. É um dos formatos que mais crescem: três ou quatro vizinhos dividem o custo, criam compromisso mútuo e a adesão dispara. A condição técnica é o profissional individualizar carga e progressão para cada participante — treino em grupo não pode virar aula genérica com pessoas de níveis diferentes fazendo a mesma coisa.',
+  },
+];
+
+const title = 'Personal trainer em condomínio: como funciona e quanto custa';
+const description =
+  'Personal trainer na academia do prédio: regras do condomínio, o que a portaria costuma exigir, quanto custa, se a estrutura basta para hipertrofia e como funciona o treino em grupo com vizinhos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer em condomínio: como funciona e quanto custa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A academia do prédio deixou de ser um cômodo com esteira e espelho.
+      Nos lançamentos das últimas duas décadas, ela virou item de série —
+      e, em muitos bairros de alto padrão do país, já é
+      <strong>o formato dominante de treino acompanhado</strong>.
+    </p>
+
+    <p class="lead">
+      Faz sentido: zero deslocamento, clima controlado, horário flexível
+      e privacidade. Mas o formato tem regras próprias — de convenção
+      condominial a limites de equipamento. Este guia cobre o que você
+      precisa saber antes de chamar um profissional para treinar no seu
+      prédio.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o formato cresceu tanto</h2>
+      <p>
+        A conta é de tempo. Uma sessão de uma hora numa academia externa
+        custa, na prática, uma hora e meia ou duas — trânsito,
+        estacionamento, vestiário. Na academia do prédio, o custo real é
+        a hora treinada mais o elevador.
+      </p>
+
+      <p>
+        Some a isso o clima controlado, que resolve chuva, frio e calor
+        extremo, e o resultado é adesão maior. Constância é o principal
+        preditor de resultado em treino — e o condomínio ataca
+        exatamente a barreira que mais derruba planos: a logística.
+      </p>
+
+      <h2>A primeira coisa a checar: o regimento interno</h2>
+      <p>
+        Cada condomínio decide se prestadores externos podem atuar nas
+        áreas comuns. A regra costuma estar na convenção ou no regimento
+        interno, e vale a leitura antes de qualquer contratação.
+      </p>
+
+      <p>
+        As condições mais comuns são: cadastro do profissional na
+        portaria, apresentação de documentos, restrição de horários de
+        pico e, em prédios mais estruturados, exigência de seguro ou
+        credenciamento formal.
+      </p>
+
+      <p>
+        Proibição total existe, mas é minoria. O cenário mais frequente
+        é o da regulamentação — e o atrito clássico acontece quando
+        ninguém avisou a portaria e o profissional é barrado no dia da
+        primeira sessão.
+      </p>
+
+      <h2>Como fazer direito, passo a passo</h2>
+      <p>
+        Comece consultando o regimento ou perguntando ao síndico quais
+        são as exigências. Em seguida, cadastre o profissional como
+        prestador autorizado, com horários definidos, e confirme o que a
+        portaria precisa receber — documento, telefone, período.
+      </p>
+
+      <p>
+        Combine também as regras de uso do espaço: se pode levar
+        equipamento portátil, se há limite de pessoas simultâneas, se
+        existe horário reservado. Cinco minutos de conversa prévia
+        evitam meses de desgaste com vizinhos.
+      </p>
+
+      <h2>Quanto custa</h2>
+      <p>
+        O valor acompanha a faixa presencial da sua cidade — que varia
+        bastante entre regiões, como mostra o guia
+        <a href={rotas.quantoCusta}>quanto custa um personal
+        trainer</a>. Em geral fica próximo do atendimento presencial
+        padrão e um pouco abaixo do domicílio puro, já que o
+        profissional não precisa transportar equipamento.
+      </p>
+
+      <p>
+        A economia real do formato aparece em outro lugar: no
+        <strong>treino em dupla ou em pequeno grupo</strong>. Casais,
+        pais e filhos ou vizinhos que dividem a sessão reduzem o custo
+        por pessoa de forma significativa — e ganham o compromisso mútuo
+        que ajuda na constância.
+      </p>
+
+      <p>
+        Muitos profissionais também praticam preço melhor quando têm
+        vários alunos no mesmo edifício, porque otimizam deslocamento.
+        Vale perguntar.
+      </p>
+
+      <h2>A academia do prédio dá conta?</h2>
+      <p>
+        Para a imensa maioria dos objetivos, sim. Halteres, alguns
+        aparelhos, banco ajustável e elásticos cobrem anos de progressão
+        — e o que constrói músculo é estímulo adequado com sobrecarga
+        progressiva, não a marca do equipamento.
+      </p>
+
+      <p>
+        As limitações aparecem em objetivos específicos: força máxima,
+        agachamento e levantamento terra com carga alta, ou fases
+        avançadas que exigem variedade de barras e anilhas pesadas.
+      </p>
+
+      <p>
+        Nesses casos, o arranjo comum é híbrido — parte no prédio, parte
+        numa academia externa. E aqui vai o critério de qualidade: um
+        bom profissional adapta o plano ao equipamento disponível, com
+        criatividade e método. Quem só reclama do que falta está
+        entregando pouco.
+      </p>
+
+      <h2>Onde o formato realmente brilha</h2>
+      <p>
+        <strong>Executivos com agenda apertada:</strong> a sessão das 6h
+        antes do expediente só sobrevive quando não depende de
+        deslocamento.
+      </p>
+
+      <p>
+        <strong>Famílias:</strong> o mesmo profissional atende em
+        sequência de horários — casal, filhos adolescentes com
+        supervisão, avós no treino de força — sem ninguém sair de casa.
+      </p>
+
+      <p>
+        <strong>Público 60+:</strong> segurança, banheiro conhecido,
+        zero exposição e a possibilidade de treinar de chinelo até a
+        porta. Para esse perfil, o condomínio costuma ser a diferença
+        entre treinar e não treinar.
+      </p>
+
+      <p>
+        <strong>Quem está começando:</strong> a academia cheia intimida
+        muita gente. Aprender os padrões básicos num ambiente reservado
+        é uma vantagem que se subestima demais.
+      </p>
+
+      <h2>O que perguntar antes de fechar</h2>
+      <p>
+        Além dos critérios universais do guia
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a> — avaliação física na primeira semana, periodização
+        explicada, experiência com o seu objetivo —, três perguntas são
+        específicas deste formato.
+      </p>
+
+      <p>
+        O profissional já atende em condomínios e conhece o
+        procedimento de acesso? Ele consegue montar o plano com o
+        equipamento que o seu prédio tem, e não com o que gostaria que
+        tivesse? E, se o seu objetivo exigir mais estrutura em algum
+        momento, ele tem um plano híbrido para propor?
+      </p>
+
+      <p>
+        Se a academia do seu prédio não existe ou é pequena demais, o
+        caminho é o <a href="/guias/personal-trainer-a-domicilio/">
+        personal a domicílio</a> com equipamento portátil — que resolve
+        dentro do apartamento o que o condomínio não oferece. E dores ou
+        limitações, como sempre, passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em condomínio" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

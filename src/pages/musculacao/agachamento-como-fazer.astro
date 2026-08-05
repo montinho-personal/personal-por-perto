@@ -1,0 +1,312 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Treinar com dor no joelho: o que pode e o que evitar',
+    descricao: 'O agachamento não é vilão do joelho — mas exige ajustes em quem já sente dor.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'Onde o agachamento entra (e onde não basta) na construção de glúteos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/maquina-ou-peso-livre/',
+    titulo: 'Máquina ou peso livre: qual escolher',
+    descricao: 'Leg press, hack e agachamento livre — o que cada um entrega de verdade.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/agachamento-como-fazer';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Agachamento: como fazer, variações e erros comuns', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O joelho pode passar da ponta do pé no agachamento?',
+    resposta:
+      'Pode — e em muitos corpos precisa. A regra de "nunca passar do pé" virou dogma de academia sem sustentação: restringir artificialmente o avanço do joelho aumenta a inclinação do tronco e joga carga para a lombar. O que importa é a distribuição do movimento entre quadril, joelho e tornozelo, respeitando a proporção dos seus segmentos. Quem tem dor patelofemoral pode se beneficiar de limitar o avanço temporariamente, mas isso é ajuste individual, não regra universal.',
+  },
+  {
+    pergunta: 'Preciso agachar até embaixo?',
+    resposta:
+      'A maior amplitude que você consegue manter com controle e sem compensações costuma render mais — inclusive para glúteos e adutores. Mas "até embaixo" depende de mobilidade de tornozelo e quadril, e forçar profundidade sem ter amplitude gera o butt wink (retroversão pélvica no fundo), que coloca a lombar em flexão sob carga. Trabalhe a amplitude que você domina hoje e ganhe profundidade com mobilidade, não com teimosia.',
+  },
+  {
+    pergunta: 'Agachamento faz mal para os joelhos?',
+    resposta:
+      'Ao contrário: bem executado e com progressão adequada, é um dos melhores exercícios para fortalecer a musculatura que protege o joelho. O que faz mal é carga alta com técnica ruim, volume que cresce rápido demais e ignorar dor persistente. Quem já tem dor ou lesão diagnosticada deve passar por médico ou fisioterapeuta antes — e a partir daí o agachamento costuma entrar como parte da solução, não do problema.',
+  },
+  {
+    pergunta: 'Agachamento livre ou no Smith?',
+    resposta:
+      'O livre exige e treina mais estabilização, tem transferência maior para a vida real e permite trajetória natural. O Smith fixa a barra num trilho, o que reduz a demanda de equilíbrio e pode ser útil para iniciantes, para trabalho isolado ou para quem treina sem parceiro em cargas altas — desde que a posição dos pés respeite a trajetória imposta. Não são concorrentes: são ferramentas para momentos diferentes.',
+  },
+  {
+    pergunta: 'Quantas séries de agachamento fazer por semana?',
+    resposta:
+      'Para a maioria, 3 a 6 séries semanais de agachamento, distribuídas em duas sessões, já entregam bom estímulo dentro de um volume total de 10 a 20 séries semanais para pernas. Iniciantes progridem bem com faixas de 5 a 10 repetições focando técnica; quem busca hipertrofia costuma trabalhar entre 6 e 12. O erro comum é somar séries sem somar carga — progressão é o que faz o exercício continuar funcionando.',
+  },
+];
+
+const title = 'Agachamento: como fazer, variações e erros comuns';
+const description =
+  'Guia do agachamento: técnica passo a passo, o mito do joelho passar do pé, profundidade e butt wink, variações (livre, frontal, búlgaro, goblet) e quantas séries fazer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Agachamento: como fazer, variações e erros comuns</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O agachamento é o exercício mais estudado, mais executado e mais
+      mal orientado das academias brasileiras. Ele carrega regras que
+      viraram lenda — "o joelho não pode passar do pé", "tem que descer
+      até o chão" — e que, aplicadas cegamente, criam mais problema do
+      que resolvem.
+    </p>
+
+    <p class="lead">
+      Este guia organiza o que importa: a técnica em cinco pontos, a
+      profundidade certa para o <em>seu</em> corpo, as variações que
+      valem a pena e os erros que travam a evolução da maioria.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o agachamento vale tanto</h2>
+      <p>
+        É um movimento multiarticular que recruta quadríceps, glúteos,
+        adutores e posteriores ao mesmo tempo, com forte exigência de
+        core como estabilizador. Poucos exercícios entregam tanto
+        estímulo por minuto de treino.
+      </p>
+
+      <p>
+        Fora da academia, ele treina o padrão que você repete o dia
+        inteiro: sentar e levantar. É por isso que entidades de
+        referência em treinamento de força, como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>,
+        tratam o agachamento como movimento fundamental em programas de
+        qualquer nível.
+      </p>
+
+      <h2>A técnica em cinco pontos</h2>
+      <p>
+        <strong>1. Posição dos pés.</strong> Comece com afastamento
+        aproximado da largura dos ombros e pontas levemente para fora
+        (entre 15° e 30°). Não existe uma posição universal: proporções
+        de fêmur e tronco mudam o que funciona para cada um.
+      </p>
+
+      <p>
+        <strong>2. Barra e tronco.</strong> Na barra alta, ela apoia
+        sobre o trapézio e o tronco fica mais vertical; na barra baixa,
+        desce um pouco e o tronco inclina mais, exigindo mais do
+        quadril. Escolha uma e domine antes de alternar.
+      </p>
+
+      <p>
+        <strong>3. A descida.</strong> Inicie empurrando o quadril para
+        trás e dobrando os joelhos ao mesmo tempo, mantendo o peso
+        distribuído no pé inteiro — nem só no calcanhar, nem só na
+        ponta. Desça com controle, sem "cair" na posição.
+      </p>
+
+      <p>
+        <strong>4. O fundo.</strong> Vá até a maior profundidade que
+        você mantém sem perder a curvatura neutra da lombar. É o seu
+        limite útil hoje — e ele se amplia com mobilidade.
+      </p>
+
+      <p>
+        <strong>5. A subida.</strong> Empurre o chão com os pés e suba
+        com quadril e ombros juntos. Se o quadril sobe primeiro e o
+        tronco desaba para frente, a carga está alta demais para a sua
+        técnica atual.
+      </p>
+
+      <h2>O mito do joelho que não pode passar do pé</h2>
+      <p>
+        A orientação nasceu de um estudo antigo sobre forças no joelho e
+        virou dogma. O problema é que impedir o avanço do joelho não faz
+        a carga desaparecer — ela migra para o quadril e para a lombar,
+        que passam a compensar com mais inclinação de tronco.
+      </p>
+
+      <p>
+        Em corpos com fêmur longo, o avanço do joelho é praticamente
+        inevitável em qualquer agachamento profundo. A pergunta certa
+        não é "o joelho passou?", e sim "a carga está distribuída e o
+        movimento está controlado?".
+      </p>
+
+      <p>
+        Exceção legítima: quem tem dor patelofemoral em atividade pode
+        se beneficiar de limitar temporariamente o avanço — como ajuste
+        individual e transitório, discutido no artigo sobre
+        <a href="/musculacao/treinar-com-dor-no-joelho/">treinar com dor
+        no joelho</a>.
+      </p>
+
+      <h2>Profundidade: até onde descer</h2>
+      <p>
+        Amplitude maior tende a render mais estímulo para glúteos e
+        adutores e melhor transferência funcional. Mas ela precisa ser
+        <em>sua</em>: profundidade emprestada com compensação não é
+        ganho, é risco.
+      </p>
+
+      <p>
+        O sinal de alerta é o <strong>butt wink</strong> — a bacia gira
+        para trás no fundo e a lombar entra em flexão sob carga.
+        Costuma indicar limitação de mobilidade de tornozelo ou quadril,
+        e o caminho é trabalhar mobilidade, reduzir amplitude
+        temporariamente ou usar calçado com salto rígido de halterofilia.
+      </p>
+
+      <h2>As variações que valem a pena</h2>
+      <p>
+        <strong>Goblet squat:</strong> com halter ou kettlebell junto ao
+        peito, é a melhor porta de entrada — o contrapeso frontal
+        facilita manter o tronco ereto e ensina o padrão.
+      </p>
+
+      <p>
+        <strong>Agachamento frontal:</strong> barra à frente, tronco
+        mais vertical, ênfase maior em quadríceps e enorme demanda de
+        core. Exige mobilidade de punho e ombro.
+      </p>
+
+      <p>
+        <strong>Búlgaro (afundo com pé elevado):</strong> unilateral,
+        brutalmente eficiente para glúteos e para corrigir assimetrias,
+        com menos carga na coluna. É o coringa de quem treina em casa ou
+        no condomínio.
+      </p>
+
+      <p>
+        <strong>Hack e leg press:</strong> guiados, permitem carga alta
+        com menos exigência de estabilização — úteis como complemento,
+        conforme discutido no guia
+        <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso
+        livre</a>. Complemento, não substituto.
+      </p>
+
+      <h2>Os cinco erros que mais travam a evolução</h2>
+      <p>
+        Carga alta demais para a técnica atual; calcanhar saindo do chão
+        por falta de mobilidade de tornozelo; joelhos colapsando para
+        dentro na subida (valgo dinâmico); descer rápido e sem controle
+        na fase excêntrica; e — o mais comum de todos — repetir a mesma
+        carga por meses.
+      </p>
+
+      <p>
+        Esse último é o que separa quem evolui de quem só frequenta: sem
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a>, o agachamento vira exercício de manutenção.
+      </p>
+
+      <h2>Quanto agachar por semana</h2>
+      <p>
+        Uma referência prática: 3 a 6 séries semanais de agachamento
+        dentro de um volume total de 10 a 20 séries para pernas,
+        distribuídas em duas sessões. Iniciantes ganham mais em faixas
+        de 5 a 10 repetições com foco em técnica; para hipertrofia, 6 a
+        12 é a zona mais usada.
+      </p>
+
+      <p>
+        Se existe um exercício em que vale a pena ter alguém olhando de
+        fora nas primeiras semanas, é este. Correção de padrão no início
+        economiza anos de compensação — e é exatamente o tipo de coisa
+        que vídeo nenhum consegue fazer por você.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre agachamento" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

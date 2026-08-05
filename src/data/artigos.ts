@@ -66,6 +66,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-renascenca/', titulo: 'Personal trainer no Renascença (São Luís)' },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-da-penha/', titulo: 'Personal trainer em Jardim da Penha (Vitória)' },
   { categoria: 'Bairros', url: '/personal-trainer-barra-sul/', titulo: 'Personal trainer na Barra Sul (Balneário Camboriú)' },
+  { categoria: 'Bairros', url: '/personal-trainer-gonzaga/', titulo: 'Personal trainer no Gonzaga (Santos)' },
+  { categoria: 'Bairros', url: '/personal-trainer-gleba-palhano/', titulo: 'Personal trainer na Gleba Palhano (Londrina)' },
+  { categoria: 'Bairros', url: '/personal-trainer-sudoeste/', titulo: 'Personal trainer no Sudoeste (Brasília)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -77,6 +80,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },
+  { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
 
   // Musculação
   { categoria: 'Musculação', url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino de musculação para iniciantes: como começar' },
@@ -105,6 +110,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/sono-e-ganho-de-massa/', titulo: 'Sono e ganho de massa muscular: o treino invisível' },
   { categoria: 'Musculação', url: '/musculacao/maquina-ou-peso-livre/', titulo: 'Máquina ou peso livre: qual é melhor para ganhar músculo?' },
   { categoria: 'Musculação', url: '/musculacao/destreino/', titulo: 'Destreino: quanto tempo parado você perde músculo?' },
+  { categoria: 'Musculação', url: '/musculacao/agachamento-como-fazer/', titulo: 'Agachamento: como fazer, variações e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-abdomen/', titulo: 'Treino de abdômen: o que funciona de verdade' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -117,6 +124,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/quantas-calorias-queima-a-musculacao/', titulo: 'Quantas calorias a musculação queima? A conta honesta' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/aerobico-em-jejum/', titulo: 'Aeróbico em jejum funciona para emagrecer?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-perder-barriga/', titulo: 'Como perder barriga: a verdade sobre a gordura localizada' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/quantos-passos-por-dia/', titulo: 'Quantos passos por dia para emagrecer?' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

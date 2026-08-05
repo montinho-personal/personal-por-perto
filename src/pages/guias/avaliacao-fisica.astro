@@ -1,0 +1,309 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'A avaliação física é um dos critérios que separam profissional de vendedor de treino.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/quanto-tempo-para-ver-resultados/',
+    titulo: 'Quanto tempo demora para ver resultados?',
+    descricao: 'Reavaliar é como você descobre se está no prazo — ou fora dele.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'O objetivo que só faz sentido acompanhar com avaliação — a balança não mostra.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/guias/avaliacao-fisica';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Avaliação física: o que é e para que serve', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A avaliação física é obrigatória para começar a treinar?',
+    resposta:
+      'Não é obrigatória por lei, mas é a prática recomendada — e a ausência dela é um sinal de alerta sobre o profissional. A avaliação estabelece o ponto de partida, identifica limitações e permite montar um plano com base em dados, não em suposição. Sem ela, o treino é chute com boa intenção, e a única forma de saber se funcionou é esperar meses para ver.',
+  },
+  {
+    pergunta: 'Bioimpedância é confiável?',
+    resposta:
+      'É útil para acompanhar tendências, não para cravar números absolutos. O resultado varia bastante com hidratação, horário, alimentação e ciclo menstrual — por isso a medição só faz sentido se repetida sempre nas mesmas condições. Comparar a sua bioimpedância de hoje com a de três meses atrás, no mesmo horário e estado, diz muito. Comparar o número com o de outra pessoa não diz quase nada.',
+  },
+  {
+    pergunta: 'De quanto em quanto tempo devo refazer a avaliação?',
+    resposta:
+      'A cada 8 a 12 semanas é o intervalo mais usado — tempo suficiente para que mudanças reais apareçam sem gerar ansiedade com oscilação. Perimetria e testes de força podem ser conferidos com mais frequência; composição corporal pede mais paciência. Reavaliar toda semana costuma gerar mais frustração do que informação.',
+  },
+  {
+    pergunta: 'A avaliação física substitui exames médicos?',
+    resposta:
+      'De jeito nenhum. São coisas diferentes: a avaliação física mapeia condicionamento, composição corporal e padrões de movimento para orientar o treino; exames e consulta médica investigam saúde, diagnosticam condições e liberam para atividade. Quem tem dor, doença crônica ou histórico cardíaco deve passar por médico antes — e o profissional de educação física trabalha a partir dessa orientação.',
+  },
+  {
+    pergunta: 'Preciso pagar à parte pela avaliação com personal?',
+    resposta:
+      'Depende do profissional. Muitos incluem a avaliação inicial no pacote como parte do serviço; outros cobram à parte, sobretudo quando usam equipamentos específicos. O que importa é ter clareza antes de fechar: pergunte se está incluída, com que frequência será refeita e se você receberá o relatório. Avaliação sem devolutiva escrita perde metade do valor.',
+  },
+];
+
+const title = 'Avaliação física: o que é, o que mede e por que importa';
+const description =
+  'Avaliação física explicada: o que ela mede (anamnese, composição corporal, perimetria, testes), com que frequência refazer, se bioimpedância é confiável e por que ela é critério para escolher um personal.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Avaliação física: o que é, o que mede e por que importa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma pergunta que separa o profissional sério do vendedor de
+      treino, e ela é feita logo na primeira semana: <strong>"onde você
+      está hoje?"</strong>. Quem começa a prescrever antes de responder
+      isso está adivinhando.
+    </p>
+
+    <p class="lead">
+      A avaliação física é o que transforma treino em processo
+      mensurável. Este guia explica o que ela mede, o que cada número
+      significa de verdade, com que frequência refazer — e por que a
+      ausência dela é um dos maiores sinais de alerta na hora de
+      contratar.
+    </p>
+
+    <div class="prose">
+      <h2>Para que ela serve, na prática</h2>
+      <p>
+        A avaliação cumpre três funções. A primeira é <strong>definir o
+        ponto de partida</strong>: sem linha de base, não existe forma
+        objetiva de saber se o plano funcionou.
+      </p>
+
+      <p>
+        A segunda é <strong>identificar limitações e riscos</strong> —
+        dores, restrições de mobilidade, assimetrias, histórico de
+        lesão — que mudam a seleção de exercícios antes da primeira
+        série.
+      </p>
+
+      <p>
+        A terceira é <strong>individualizar o plano</strong>. Duas
+        pessoas com o mesmo objetivo e idades parecidas podem precisar
+        de programas completamente diferentes, e é a avaliação que
+        revela isso.
+      </p>
+
+      <h2>O que uma avaliação completa mede</h2>
+      <p>
+        <strong>Anamnese.</strong> A conversa estruturada sobre
+        histórico de saúde, medicamentos, dores, cirurgias, rotina,
+        sono, estresse e experiência prévia com treino. É a parte menos
+        glamourosa e a mais importante — muito do plano se decide aqui.
+      </p>
+
+      <p>
+        <strong>Composição corporal.</strong> A separação entre massa
+        gorda e massa magra, por bioimpedância ou dobras cutâneas. É o
+        dado que explica por que a balança sozinha engana: dá para
+        perder gordura, ganhar músculo e o peso não se mexer.
+      </p>
+
+      <p>
+        <strong>Perimetria.</strong> As medidas de circunferência
+        (braço, cintura, quadril, coxa). Simples, barata e
+        surpreendentemente informativa quando acompanhada ao longo do
+        tempo — a relação cintura-quadril, por exemplo, é indicador de
+        saúde metabólica.
+      </p>
+
+      <p>
+        <strong>Testes funcionais e de força.</strong> Padrões de
+        movimento (agachar, empurrar, puxar), mobilidade articular e
+        alguma medida de força ou resistência. Revelam compensações que
+        nenhuma balança mostra.
+      </p>
+
+      <p>
+        <strong>Marcadores cardiorrespiratórios.</strong> Frequência
+        cardíaca de repouso, pressão arterial e, quando pertinente,
+        testes submáximos de condicionamento — dentro do que
+        recomendam entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.
+      </p>
+
+      <h2>Bioimpedância: como interpretar sem se iludir</h2>
+      <p>
+        A bioimpedância estima a composição corporal passando uma
+        corrente elétrica de baixa intensidade pelo corpo. O método é
+        prático e rápido, mas sensível: hidratação, horário,
+        alimentação recente, exercício no dia anterior e ciclo menstrual
+        mexem no resultado.
+      </p>
+
+      <p>
+        A consequência prática é simples e quase sempre ignorada:
+        <strong>o valor absoluto importa menos que a tendência</strong>.
+        Medir sempre no mesmo horário, em condições parecidas e com o
+        mesmo aparelho é o que torna a comparação útil.
+      </p>
+
+      <p>
+        Comparar seu percentual com o de outra pessoa — ou com o de
+        outro aparelho — é o caminho mais rápido para conclusões erradas.
+      </p>
+
+      <h2>De quanto em quanto tempo reavaliar</h2>
+      <p>
+        O intervalo mais usado é de 8 a 12 semanas. É tempo suficiente
+        para mudanças reais aparecerem e curto o bastante para corrigir
+        o rumo antes de perder um trimestre inteiro.
+      </p>
+
+      <p>
+        Perimetria e testes de força toleram checagens mais frequentes,
+        porque respondem mais rápido. Composição corporal pede
+        paciência: medir a cada duas semanas costuma capturar mais ruído
+        do que sinal.
+      </p>
+
+      <p>
+        A reavaliação é também o momento de calibrar expectativa. O guia
+        sobre <a href="/musculacao/quanto-tempo-para-ver-resultados/">
+        quanto tempo demora para ver resultados</a> ajuda a entender se
+        o que você está vendo está dentro do prazo esperado.
+      </p>
+
+      <h2>O que a avaliação física não é</h2>
+      <p>
+        Ela <strong>não substitui consulta e exames médicos</strong>.
+        São instrumentos com finalidades distintas: a avaliação orienta
+        a prescrição do treino; a medicina investiga saúde, diagnostica
+        e libera para a prática.
+      </p>
+
+      <p>
+        Quem tem dor persistente, doença crônica, histórico
+        cardiovascular ou está retomando após lesão precisa da
+        orientação de médico ou fisioterapeuta primeiro. O bom
+        profissional de educação física trabalha a partir dessa
+        orientação — e não por cima dela.
+      </p>
+
+      <p>
+        Ela também não é uma sentença. Percentual de gordura alto ou
+        teste ruim não são veredictos morais: são o ponto de partida
+        que, daqui a doze semanas, você vai olhar com outros olhos.
+      </p>
+
+      <h2>Por que isso é critério para escolher um personal</h2>
+      <p>
+        Quando o portal recomenda perguntar sobre avaliação física antes
+        de fechar pacote, não é formalidade. Um profissional que avalia
+        está assumindo compromisso com resultado mensurável — e se
+        expondo à comparação depois.
+      </p>
+
+      <p>
+        Quem pula essa etapa está entregando treino genérico com
+        embalagem personalizada. A diferença aparece em três meses,
+        quando um sabe exatamente o que mudou e o outro só tem a
+        impressão de que "melhorou um pouco".
+      </p>
+
+      <p>
+        Na hora de contratar, vale perguntar de forma direta: a
+        avaliação está incluída? Com que frequência será refeita? Eu
+        recebo um relatório? As respostas dizem muito — o checklist
+        completo está no guia <a href={rotas.comoEscolher}>como escolher
+        um personal trainer</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre avaliação física" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

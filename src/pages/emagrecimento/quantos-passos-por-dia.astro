@@ -1,0 +1,284 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A base matemática do emagrecimento — e onde os passos entram nela.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio para emagrecer',
+    descricao: 'O papel de cada um — e por que caminhar não substitui o treino de força.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento: por que a balança trava',
+    descricao: 'A queda silenciosa dos passos é uma das causas mais comuns do platô.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/quantos-passos-por-dia';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Quantos passos por dia para emagrecer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantos passos por dia preciso dar para emagrecer?',
+    resposta:
+      'Não existe número mágico, mas a faixa de 8.000 a 10.000 passos diários é a mais associada a bons resultados de composição corporal e saúde na literatura recente — com ganhos relevantes já a partir de 7.000. Para efeito de emagrecimento, o que importa é o aumento em relação à sua média atual: sair de 3.000 para 7.000 muda muito mais a conta do que ir de 9.000 para 12.000.',
+  },
+  {
+    pergunta: 'De onde veio a meta de 10 mil passos?',
+    resposta:
+      'De uma campanha de marketing japonesa dos anos 1960, que lançou um pedômetro chamado "manpo-kei" — literalmente "medidor de 10 mil passos". O número foi escolhido por ser redondo e memorável, não por pesquisa. A ciência veio depois e, curiosamente, encontrou benefícios reais em faixas próximas — o que fez a meta acidental envelhecer bem.',
+  },
+  {
+    pergunta: 'Caminhar emagrece mesmo ou preciso correr?',
+    resposta:
+      'Caminhar emagrece porque aumenta o gasto energético diário, e é justamente por ser sustentável que funciona: dá para fazer todo dia, não gera fadiga que atrapalhe o treino de força e tem baixíssimo risco de lesão. Correr gasta mais por minuto, mas cobra mais recuperação. Para emagrecimento, o melhor exercício aeróbico é o que você consegue manter meses — não o que queima mais numa sessão.',
+  },
+  {
+    pergunta: 'Quantas calorias 10 mil passos queimam?',
+    resposta:
+      'Depende de peso, ritmo e terreno, mas uma estimativa comum fica entre 300 e 500 kcal para 10 mil passos em adultos de porte médio. É um número relevante — equivale a boa parte de um déficit diário —, mas cuidado com o efeito compensação: se a caminhada vira licença para comer mais, a conta zera. Os passos ajudam justamente por serem gasto silencioso e cumulativo.',
+  },
+  {
+    pergunta: 'Passos substituem a musculação no emagrecimento?',
+    resposta:
+      'Não. Os passos aumentam o gasto; a musculação preserva a massa magra durante o déficit — e é ela que mantém o metabolismo e o resultado estético. Emagrecer só com caminhada e dieta costuma custar músculo junto com a gordura. O arranjo que funciona é o trio: déficit alimentar moderado, treino de força duas a três vezes por semana e passos como base diária.',
+  },
+];
+
+const title = 'Quantos passos por dia para emagrecer? O que a ciência diz';
+const description =
+  'Quantos passos por dia para emagrecer: a faixa que funciona (7.000 a 10.000), a origem da meta dos 10 mil, quantas calorias queima e por que passos não substituem musculação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Quantos passos por dia para emagrecer? O que a ciência diz</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A meta dos 10 mil passos não nasceu num laboratório: veio de uma
+      campanha publicitária japonesa dos anos 1960, criada para vender
+      um pedômetro. O número era redondo e soava bem — só isso.
+    </p>
+
+    <p class="lead">
+      Décadas depois, a ciência foi checar o palpite e encontrou algo
+      curioso: <strong>a faixa realmente funciona, e os maiores ganhos
+      aparecem antes dela</strong>. Este guia explica quantos passos
+      fazem diferença para quem quer emagrecer, por que eles pesam tanto
+      na conta e onde eles não bastam.
+    </p>
+
+    <div class="prose">
+      <h2>O número que importa é o seu ponto de partida</h2>
+      <p>
+        A pergunta "quantos passos por dia" tem uma resposta
+        desconfortável: depende de quantos você dá hoje. Quem faz 3.000
+        passos diários e sobe para 7.000 muda a própria conta energética
+        de forma significativa.
+      </p>
+
+      <p>
+        Já quem faz 9.000 e vai para 12.000 ganha bem menos por passo
+        adicionado. A curva de benefício é mais íngreme no começo — e é
+        por isso que a meta genérica engana tanta gente.
+      </p>
+
+      <p>
+        Como referência prática: a faixa de <strong>8.000 a 10.000
+        passos</strong> é a mais associada a boa composição corporal e
+        saúde geral, com benefícios relevantes já a partir de 7.000.
+      </p>
+
+      <h2>Por que passos pesam tanto na conta do emagrecimento</h2>
+      <p>
+        O gasto energético diário tem quatro componentes: metabolismo
+        basal, digestão, exercício estruturado e — o mais subestimado —
+        o <strong>NEAT</strong>, sigla para o gasto de todas as
+        atividades que não são treino: andar, subir escada, ficar em pé,
+        gesticular, arrumar a casa.
+      </p>
+
+      <p>
+        O NEAT é o componente mais variável entre pessoas, e a caminhada
+        é a sua alavanca mais fácil de puxar. Uma sessão de musculação de
+        uma hora pode gastar 250 kcal; 10 mil passos ao longo do dia
+        somam entre 300 e 500 kcal, dependendo de peso e ritmo — sem
+        exigir recuperação nenhuma.
+      </p>
+
+      <p>
+        Some isso ao <a href="/emagrecimento/deficit-calorico-como-funciona/">
+        déficit calórico</a> alimentar e a matemática do emagrecimento
+        fica muito mais confortável de sustentar.
+      </p>
+
+      <h2>A armadilha silenciosa: o NEAT que despenca</h2>
+      <p>
+        Aqui está o fenômeno que explica boa parte dos platôs. Quando
+        você entra em déficit, o corpo reage economizando energia — e
+        uma das formas é reduzir movimento espontâneo, sem que você
+        perceba.
+      </p>
+
+      <p>
+        Você anda menos pela casa, senta mais rápido, gesticula menos,
+        pega o elevador. Os passos caem de 9.000 para 6.000 sem nenhuma
+        decisão consciente, e o déficit que você calculou some no ar.
+      </p>
+
+      <p>
+        Monitorar passos serve exatamente para isso: transformar uma
+        queda invisível em número visível. É uma das causas mais comuns
+        do <a href="/emagrecimento/plato-de-emagrecimento/">platô de
+        emagrecimento</a> — e das mais fáceis de corrigir.
+      </p>
+
+      <h2>Como aumentar seus passos sem virar um projeto</h2>
+      <p>
+        A caminhada de 40 minutos é ótima, mas depende de janela na
+        agenda. Quem tem rotina apertada ganha mais espalhando o
+        movimento pelo dia — e o total sobe sem cerimônia.
+      </p>
+
+      <p>
+        Descer um ponto antes do destino, estacionar longe de propósito,
+        atender ligações em pé e andando, escada em vez de elevador nos
+        primeiros andares, uma volta de dez minutos depois do almoço.
+        Cada item soma entre 500 e 1.500 passos.
+      </p>
+
+      <p>
+        Três desses hábitos já colocam a maioria das pessoas na faixa
+        alvo, sem precisar reservar uma hora do dia para caminhar.
+      </p>
+
+      <h2>Onde os passos não bastam</h2>
+      <p>
+        Caminhar aumenta o gasto — mas não dá ao corpo motivo nenhum
+        para preservar músculo durante o déficit. Quem emagrece só com
+        dieta e caminhada tende a perder massa magra junto com a
+        gordura, e o resultado é a balança feliz com o espelho
+        indiferente.
+      </p>
+
+      <p>
+        Quem cumpre esse papel é o treino de força, duas a três vezes por
+        semana, com carga progressiva. A comparação está detalhada no
+        guia <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">
+        musculação ou cardio para emagrecer</a>.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        seguem a mesma lógica: atividade aeróbica semanal <em>somada</em>
+        a fortalecimento muscular em pelo menos dois dias — não uma no
+        lugar da outra.
+      </p>
+
+      <h2>O arranjo que funciona</h2>
+      <p>
+        Na prática, o trio que sustenta emagrecimento com composição
+        corporal decente é sempre o mesmo: déficit alimentar moderado,
+        musculação duas a três vezes por semana e passos como base
+        diária constante.
+      </p>
+
+      <p>
+        Os passos são a parte mais fácil de manter e a primeira a cair
+        quando a rotina aperta. Vigiar esse número — mesmo sem
+        obsessão — é uma das formas mais simples de manter o processo em
+        pé quando a motivação oscila.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre passos e emagrecimento" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
