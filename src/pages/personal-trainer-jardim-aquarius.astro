@@ -1,0 +1,338 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-jose-dos-campos-sp/',
+    titulo: 'Personal trainer em São José dos Campos',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'Regras de acesso, equipamento disponível e o que exigir da academia do prédio.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física: o que ela deve incluir',
+    descricao: 'O que esperar da primeira semana com um personal — e o que é enrolação.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-jardim-aquarius';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São José dos Campos', url: '/personal-trainer/sao-jose-dos-campos-sp/' },
+  { nome: 'Personal Trainer no Jardim Aquarius', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jardim Aquarius?',
+    resposta:
+      'Em São José dos Campos, a aula avulsa vai de R$ 80 a R$ 185 e o pacote mensal de R$ 400 a R$ 1.100. O Jardim Aquarius trabalha na metade superior dessas faixas: é o bairro mais verticalizado da cidade, com público de renda alta e forte demanda por atendimento dentro do condomínio.',
+  },
+  {
+    pergunta: 'O que exatamente é o Jardim Aquarius?',
+    resposta:
+      '"Jardim Aquarius" é o nome popular do Parque Residencial Aquarius e dos loteamentos menores ao redor — entre eles Jardim Aquarius, Bosque Imperial, Jardim Altos do Esplanada, Jardim Cassiano Ricardo e Royal Park. É um dos bairros mais novos de São José dos Campos e, ao mesmo tempo, o mais vertical.',
+  },
+  {
+    pergunta: 'Os prédios do bairro têm academia própria?',
+    resposta:
+      'Praticamente todos os empreendimentos recentes entregam espaço fitness, e muitos vão além, com piscina, quadra e salão. É a marca do Aquarius e a razão pela qual o personal em condomínio é o formato dominante aqui — sem deslocamento, com horário exclusivo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Jardim Aquarius?',
+    resposta:
+      'As ruas largas e planas do bairro já servem para caminhada e corrida. A poucos minutos ficam a ciclovia da Avenida São João e o Parque da Cidade Roberto Burle Marx, com cerca de um milhão de metros quadrados e jardins projetados pelo próprio Burle Marx — o maior espaço verde estruturado da cidade.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'O clima subtropical de altitude de São José, a cerca de 600 m, deixa o ar livre confortável quase o ano todo. No verão chuvoso, a manhã costuma render mais que o fim de tarde; no inverno seco e ameno, qualquer horário funciona. Nos dias de chuva, a academia do prédio resolve sem negociação.',
+  },
+  {
+    pergunta: 'O bairro é bom para quem está começando a treinar?',
+    resposta:
+      'É um dos melhores da cidade. O terreno é plano, o bairro é seguro, a academia costuma ficar no próprio prédio e a rede de serviços cabe em raio curto. O que falta ao iniciante não é estrutura — é método, e é justamente aí que a avaliação física da primeira semana define o rumo dos meses seguintes.',
+  },
+];
+
+const title = 'Personal Trainer no Jardim Aquarius (São José dos Campos)';
+const description =
+  'Personal trainer no Jardim Aquarius: preços de São José dos Campos, as torres com academia, a ciclovia da São João, o Parque da Cidade e como montar a semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São José dos Campos</p>
+    <h1>Personal trainer no Jardim Aquarius: o guia do bairro mais vertical de São José</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Jardim Aquarius é uma contradição bem resolvida: um dos bairros
+      mais novos de São José dos Campos e, ao mesmo tempo, o mais
+      verticalizado da cidade. Cresceu para cima em poucas décadas, com
+      torre atrás de torre.
+    </p>
+
+    <p class="lead">
+      Isso mudou o jeito como o bairro treina. Quem procura um
+      <strong>personal trainer no Jardim Aquarius</strong> encontra um
+      mercado organizado em torno da academia do condomínio — com o
+      espaço aberto do Vale do Paraíba logo ali como complemento. Este
+      guia cobre o bairro inteiro: território, formatos, preços e semana
+      de treino.
+    </p>
+
+    <div class="prose">
+      <h2>O que é, afinal, o Jardim Aquarius</h2>
+      <p>
+        O nome pegou popularmente para designar o Parque Residencial
+        Aquarius e os loteamentos menores dentro ou ao redor dos seus
+        limites: Jardim Aquarius, Bosque Imperial, Jardim Altos do
+        Esplanada, Jardim Cassiano Ricardo e Royal Park.
+      </p>
+
+      <p>
+        Na prática, o morador chama tudo de Aquarius. É uma área
+        planejada, de traçado regular e ruas largas, com avenidas como a
+        Salmão organizando a circulação interna.
+      </p>
+
+      <p>
+        A verticalização é a sua marca visual. Empreendimentos como
+        Landscape, Terraço Aquarius, Pátio Condomínio Clube, Premiere,
+        Altos do Esplanada II e o Residencial Village Aquarius, na Rua
+        Villa-Lobos, formam a silhueta do bairro — e o Edifício Supremo
+        acrescenta o pé comercial, com dez andares de salas.
+      </p>
+
+      <p>
+        A legislação de zoneamento mais recente estabelece limite de
+        quinze pavimentos e afastamento mínimo de dez metros para novos
+        prédios — um freio que preserva ventilação e insolação entre as
+        torres.
+      </p>
+
+      <h2>A academia do condomínio como centro de gravidade</h2>
+      <p>
+        Num bairro assim, espaço fitness não é diferencial: é item de
+        entrega. Piscina, quadra e salão completam o pacote na maioria das
+        torres, e o resultado é previsível — o personal vai até o prédio.
+      </p>
+
+      <p>
+        É o formato dominante do Aquarius, e ele resolve o maior inimigo
+        da constância: o deslocamento. Sem trajeto, a taxa de falta
+        despenca, e a sessão das 6h antes do trabalho deixa de ser
+        heroísmo.
+      </p>
+
+      <p>
+        O limite do formato também é conhecido. Academia de condomínio
+        costuma ter halteres até um teto modesto e poucas máquinas, o que
+        pode travar quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos. O guia sobre
+        <a href="/guias/personal-trainer-em-condominio/">personal trainer
+        em condomínio</a> lista o que conferir antes de fechar pacote.
+      </p>
+
+      <h2>Fora das torres: ruas planas, ciclovia e parque</h2>
+      <p>
+        O traçado plano e as calçadas largas fazem do próprio bairro um
+        circuito de caminhada decente — e é o que a maioria usa no dia a
+        dia, sem cerimônia.
+      </p>
+
+      <p>
+        A poucos minutos está a ciclovia da Avenida São João, o eixo
+        aeróbico da região, e o Colinas Shopping, na mesma avenida,
+        concentra academias de rua para quem prefere estrutura completa.
+      </p>
+
+      <p>
+        O espaço aberto de referência, porém, é o Parque da Cidade Roberto
+        Burle Marx: cerca de um milhão de metros quadrados na antiga
+        Fazenda Têxtil Parahyba, com jardins assinados por Burle Marx e a
+        Residência Olivo Gomes, projetada por Rino Levi. É corrida longa e
+        caminhada com paisagem de arquitetura moderna.
+      </p>
+
+      <h2>O clima do Vale entra no plano</h2>
+      <p>
+        São José fica a cerca de 600 m de altitude, com clima subtropical
+        de altitude: verão quente e chuvoso, inverno seco e ameno. A
+        altitude modera o calor do Vale e torna o treino ao ar livre
+        confortável quase o ano inteiro.
+      </p>
+
+      <p>
+        Na prática, o verão pede manhã — as pancadas de chuva se
+        concentram no fim de tarde. No inverno, a janela abre o dia todo,
+        e é a melhor época para as corridas longas no parque.
+      </p>
+
+      <p>
+        Nos dias fechados, a academia da torre segura a semana. É a
+        vantagem estrutural que faz do Aquarius um dos bairros mais
+        constantes da cidade em adesão a treino.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jardim Aquarius</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/sao-jose-dos-campos-sp/">personal
+        trainer em São José dos Campos</a>, vai de R$ 80 a R$ 185 pela
+        aula avulsa e de R$ 400 a R$ 1.100 pelo pacote mensal com 2 a 3
+        sessões semanais.
+      </p>
+
+      <p>
+        O Aquarius trabalha na metade de cima. O bairro concentra renda
+        alta, densidade de torres e demanda por horário exclusivo — os
+        três fatores que empurram o preço para o topo da faixa.
+      </p>
+
+      <p>
+        Duas saídas reduzem o custo sem cortar qualidade: o treino em
+        dupla, comum entre casais e vizinhos do mesmo prédio, e o
+        acompanhamento online (R$ 185 a R$ 470 mensais) nas semanas de
+        viagem — formato natural num bairro de profissionais ligados ao
+        polo tecnológico da região.
+      </p>
+
+      <h2>O perfil de aluno mais comum</h2>
+      <p>
+        Quem atende no bairro relata um padrão claro: adulto de agenda
+        cheia, ligado a empresas do eixo tecnológico e aeronáutico, com
+        pouca tolerância a treino ineficiente e objetivo de composição
+        corporal e saúde.
+      </p>
+
+      <p>
+        A resposta técnica é sempre parecida. Força duas a três vezes por
+        semana com progressão real, aeróbico regular no parque ou na
+        ciclovia, e um plano que sobreviva às semanas fora de casa.
+      </p>
+
+      <p>
+        Quem chega com dor lombar, no ombro ou no joelho — frequente em
+        rotina de escritório — precisa de avaliação de médico ou
+        fisioterapeuta antes de o plano ser montado. O treino entra depois
+        disso, e costuma fazer parte da solução.
+      </p>
+
+      <h2>Como montar a semana no bairro</h2>
+      <p>
+        O arranjo que mais funciona combina as duas âncoras. Duas a três
+        sessões de força na academia da torre, com o personal
+        acompanhando execução e carga.
+      </p>
+
+      <p>
+        Fora delas, aeróbico ao ar livre: caminhada nas ruas planas do
+        próprio bairro nos dias curtos, corrida no Parque da Cidade ou na
+        ciclovia da São João nos dias longos.
+      </p>
+
+      <p>
+        A base disso tudo é uma
+        <a href="/guias/avaliacao-fisica/">avaliação física</a> feita na
+        primeira semana — sem ela, o plano é chute bem-intencionado.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        periodização explicada com clareza, experiência real com o seu
+        objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Aquarius, some duas perguntas locais. Ele já atende em
+        condomínios do bairro e conhece as regras de acesso das torres? E
+        o que ele faz quando o equipamento do prédio não acompanha mais a
+        sua progressão? Quem trabalha aqui responde as duas de imediato.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jardim Aquarius" />
+
+    <WhatsAppCta tema="geral" localidade="no Jardim Aquarius" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,317 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const ministerioSaude = fontesExternas.ministerioSaude;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta que o jejum intermitente apenas organiza de outro jeito.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/aerobico-em-jejum/',
+    titulo: 'Aeróbico em jejum queima mais gordura?',
+    descricao: 'O primo mais famoso do tema — e o que a literatura realmente mostra.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'O ponto de atenção número um de quem concentra a comida em poucas horas.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/jejum-intermitente-funciona';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Jejum intermitente funciona?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Jejum intermitente emagrece mais que dieta normal?',
+    resposta:
+      'Quando as calorias e as proteínas são equiparadas, a maior parte dos estudos não encontra diferença relevante na perda de gordura entre jejum intermitente e dieta contínua. Ou seja: o jejum não tem um efeito metabólico mágico. O que ele tem é um efeito comportamental — reduzir a janela de alimentação faz muita gente comer menos sem contar caloria, e é aí que o resultado aparece.',
+  },
+  {
+    pergunta: 'Quais são os protocolos mais comuns de jejum intermitente?',
+    resposta:
+      'O 16/8 é o mais popular: 16 horas sem comer e uma janela de 8 horas para as refeições, o que na prática significa pular o café da manhã ou o jantar. Existem ainda o 14/10, mais brando; o 5:2, com dois dias de ingestão bem reduzida na semana; o jejum em dias alternados; e o OMAD, uma refeição por dia — este último bem mais difícil de conciliar com proteína suficiente.',
+  },
+  {
+    pergunta: 'Jejum intermitente faz perder músculo?',
+    resposta:
+      'Não por causa do jejum em si, mas por causa do que ele costuma provocar: proteína total mais baixa e refeições concentradas demais. Quem faz musculação e mantém a ingestão proteica ao longo da janela preserva massa magra sem problema. O risco aparece em quem emagrece só com dieta, sem treino de força, e come muito abaixo da própria necessidade de proteína.',
+  },
+  {
+    pergunta: 'Posso treinar em jejum?',
+    resposta:
+      'Pode, e muita gente prefere pela praticidade. O que a literatura mostra é que treinar em jejum não acelera a perda de gordura quando o total do dia é igual — o corpo compensa nas horas seguintes. Para treino de força pesado, comer antes costuma render mais desempenho. Para caminhada e aeróbico leve, treinar em jejum é indiferente e funciona bem para quem se sente melhor assim.',
+  },
+  {
+    pergunta: 'Para quem o jejum intermitente não é indicado?',
+    resposta:
+      'Gestantes, lactantes, pessoas com histórico de transtorno alimentar, adolescentes em crescimento e quem usa medicação que exige horários fixos ou tem risco de hipoglicemia — casos que precisam de acompanhamento de médico ou nutricionista antes de qualquer mudança. Quem tem qualquer condição de saúde deve conversar com o profissional que acompanha o caso antes de adotar o protocolo.',
+  },
+];
+
+const title = 'Jejum intermitente funciona para emagrecer?';
+const description =
+  'Jejum intermitente funciona? O que a evidência mostra sobre perda de gordura, protocolos (16/8, 5:2, OMAD), perda de músculo, treino em jejum e para quem não serve.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Jejum intermitente funciona para emagrecer? O que a evidência mostra</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O jejum intermitente virou a dieta mais comentada da última década
+      — e, com isso, ganhou dois grupos igualmente barulhentos: quem jura
+      que ele "liga" um interruptor metabólico e quem afirma que ele não
+      passa de moda.
+    </p>
+
+    <p class="lead">
+      A resposta honesta é menos empolgante e mais útil: <strong>ele
+      funciona, mas não pelo motivo que a maioria imagina</strong>. Este
+      guia separa o efeito real do marketing.
+    </p>
+
+    <div class="prose">
+      <h2>O que é jejum intermitente, exatamente</h2>
+      <p>
+        Jejum intermitente não é uma dieta específica: é uma forma de
+        organizar <em>quando</em> você come, não o que você come. Em vez
+        de espalhar refeições ao longo do dia inteiro, você concentra a
+        alimentação em uma janela e passa o resto do tempo sem consumir
+        calorias.
+      </p>
+
+      <p>
+        Os protocolos mais usados são o 16/8, com dezesseis horas de jejum
+        e oito de janela; o 14/10, mais brando; o 5:2, com dois dias
+        semanais de ingestão bem reduzida; o jejum em dias alternados; e o
+        OMAD, uma única refeição diária.
+      </p>
+
+      <p>
+        Na prática, o 16/8 costuma significar simplesmente pular o café da
+        manhã ou o jantar — o que explica boa parte da sua popularidade.
+      </p>
+
+      <h2>O que a evidência mostra sobre perda de gordura</h2>
+      <p>
+        Quando os estudos equiparam calorias e proteína entre os grupos, a
+        maior parte deles não encontra diferença relevante entre jejum
+        intermitente e dieta contínua na perda de gordura.
+      </p>
+
+      <p>
+        Isso não significa que ele não funcione. Significa que ele
+        funciona pelo mesmo mecanismo de qualquer dieta que dá certo: o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
+      </p>
+
+      <p>
+        O jejum é uma ferramenta para chegar ao déficit, não um atalho
+        para contorná-lo. E é uma ferramenta boa — para quem ela serve.
+      </p>
+
+      <h2>Por que então tanta gente emagrece com ele</h2>
+      <p>
+        Porque comportamento pesa mais que bioquímica na vida real.
+        Reduzir a janela de oito horas por dia elimina de saída o café da
+        manhã apressado, o lanche da madrugada e boa parte das
+        beliscadas.
+      </p>
+
+      <p>
+        Muita gente come várias centenas de calorias a menos sem contar
+        nada — só por ter menos horas disponíveis para comer. Some a isso
+        a simplicidade da regra ("não como antes do meio-dia") e você tem
+        uma dieta fácil de seguir.
+      </p>
+
+      <p>
+        Aderência é o que decide o resultado de qualquer plano alimentar.
+        E o jejum tem aderência alta em um perfil específico: quem prefere
+        poucas refeições grandes a muitas refeições pequenas.
+      </p>
+
+      <VideoYouTube
+        id="sYj79G66-vE"
+        titulo="4 exemplos de jejum intermitente — Leandro Twin"
+        legenda="No vídeo: Leandro Twin apresenta quatro formatos diferentes de jejum intermitente e o raciocínio por trás de cada um."
+      />
+
+      <h2>Onde o jejum cobra a conta: a proteína</h2>
+      <p>
+        Aqui está o problema real, e ele é pouco falado. Concentrar toda a
+        comida do dia em oito horas — ou pior, em uma refeição — torna
+        muito mais difícil bater a meta de proteína.
+      </p>
+
+      <p>
+        Isso importa porque proteína e treino de força são exatamente o
+        que protege a massa magra durante o emagrecimento. Sem eles, a
+        balança desce e o espelho não muda: você perde músculo junto com a
+        gordura.
+      </p>
+
+      <p>
+        Quem adota jejum e treina precisa distribuir a proteína com
+        cuidado dentro da janela. O guia sobre
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">
+        como preservar massa muscular emagrecendo</a> detalha os
+        parâmetros.
+      </p>
+
+      <h2>Treinar em jejum: vale a pena?</h2>
+      <p>
+        Para força pesada, comer antes costuma render mais desempenho —
+        e desempenho é o que gera o estímulo que preserva músculo.
+      </p>
+
+      <p>
+        Para aeróbico leve e caminhada, treinar em jejum é indiferente do
+        ponto de vista da gordura perdida no fim do dia, e muita gente
+        prefere pela praticidade. O tema tem guia próprio:
+        <a href="/emagrecimento/aerobico-em-jejum/">aeróbico em
+        jejum</a>.
+      </p>
+
+      <h2>Para quem o jejum intermitente costuma funcionar</h2>
+      <p>
+        Funciona bem para quem já pula o café da manhã naturalmente, para
+        quem prefere refeições maiores e para quem tem rotina que torna
+        inviável comer várias vezes ao dia.
+      </p>
+
+      <p>
+        Também ajuda quem sente que "conta caloria" é insustentável a
+        longo prazo — a regra de horário é mais simples de seguir do que
+        uma planilha.
+      </p>
+
+      <h2>Para quem ele não serve</h2>
+      <p>
+        Quem treina pesado e tem dificuldade de comer bastante em pouco
+        tempo tende a se sabotar. Quem sente fome intensa e perde a
+        concentração no jejum também — e não há prêmio por sofrer com um
+        protocolo que não combina com você.
+      </p>
+
+      <p>
+        Há ainda os casos que exigem cautela clínica: gestantes,
+        lactantes, pessoas com histórico de transtorno alimentar,
+        adolescentes em crescimento e quem usa medicação com horários
+        fixos ou risco de hipoglicemia. Nesses casos, a conversa é com
+        médico ou nutricionista antes de qualquer mudança.
+      </p>
+
+      <p>
+        As orientações oficiais de alimentação e atividade física
+        publicadas pelo
+        <a href={ministerioSaude.url} target="_blank" rel="noopener">{ministerioSaude.nome}</a>
+        seguem o princípio geral: mudanças alimentares sustentáveis, com
+        acompanhamento profissional quando há condição de saúde
+        envolvida.
+      </p>
+
+      <h2>O que realmente decide o resultado</h2>
+      <p>
+        Se você emagrecer com jejum intermitente, não terá sido pelo
+        jejum: terá sido pelo déficit que ele te ajudou a manter, pela
+        proteína que você conseguiu bater e pelo treino de força que
+        preservou o músculo no caminho.
+      </p>
+
+      <p>
+        Esses três elementos funcionam com ou sem janela restrita. O jejum
+        é só uma das formas de organizá-los — e a melhor forma é sempre a
+        que você consegue manter por meses, não por duas semanas.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre jejum intermitente" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

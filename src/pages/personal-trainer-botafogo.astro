@@ -1,0 +1,337 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-copacabana/',
+    titulo: 'Personal trainer em Copacabana',
+    descricao: 'O bairro vizinho, com a praia mais movimentada do país como academia.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer',
+    descricao: 'Por que o deslocamento a pé pesa tanto na conta — e Botafogo é bairro de andar.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-botafogo';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
+  { nome: 'Personal Trainer em Botafogo', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Botafogo?',
+    resposta:
+      'No Rio, a aula avulsa vai de R$ 80 a R$ 200 e o pacote mensal de R$ 400 a R$ 1.200. Botafogo trabalha no miolo dessa faixa: é mais acessível que Leblon e Ipanema e mais caro que a Zona Norte. O atendimento na academia do prédio e o treino em dupla são os formatos que mais puxam o custo para baixo.',
+  },
+  {
+    pergunta: 'Dá para treinar ao ar livre em Botafogo?',
+    resposta:
+      'Dá, e o bairro tem três opções distintas: a orla da enseada, com ciclovia e calçadão de frente para o Pão de Açúcar; a subida do Mirante do Pasmado, no Parque Yitzhak Rabin; e a Pista Cláudio Coutinho, na Urca vizinha, alcançável a pé pela enseada. A água da Baía de Guanabara não é própria para banho, mas a areia e o calçadão são usados para exercício o dia inteiro.',
+  },
+  {
+    pergunta: 'Botafogo tem prédios com academia própria?',
+    resposta:
+      'Os lançamentos mais recentes, sim — quase todos entregam espaço fitness. Mas Botafogo é um bairro de estoque antigo, com muitos edifícios das décadas de 1950 a 1980 sem área de lazer. Por isso o personal a domicílio, dentro do apartamento, é mais comum aqui do que em bairros verticalizados recentemente.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'No verão carioca, início da manhã e fim da tarde — o calor e a umidade do meio-dia cobram caro de quem treina fora. No inverno ameno, a janela abre o dia todo. Como o bairro é servido pelas Linhas 1 e 2 do metrô, muita gente encaixa a sessão antes ou depois do trabalho sem depender de carro.',
+  },
+  {
+    pergunta: 'Botafogo é plano ou tem ladeira?',
+    resposta:
+      'Os dois. A faixa junto à enseada e as ruas Voluntários da Pátria e São Clemente são planas; a partir daí o terreno sobe rápido em direção a Humaitá, ao Pasmado e às encostas. É um bairro que oferece percurso plano para quem está começando e ladeira de verdade para quem quer estímulo — dentro do mesmo quilômetro quadrado.',
+  },
+  {
+    pergunta: 'Vale a pena treinar em academia de shopping em Botafogo?',
+    resposta:
+      'Para quem passa por ali no trajeto, é uma solução prática: o Botafogo Praia Shopping e o Rio Sul concentram academias, estacionamento e conveniência num raio curto do metrô. A ressalva é a de sempre — estrutura não substitui método, e o resultado vem da progressão de carga bem conduzida, não da quantidade de máquinas.',
+  },
+];
+
+const title = 'Personal Trainer em Botafogo (Rio): o guia do bairro';
+const description =
+  'Personal trainer em Botafogo: preços do Rio, a orla da enseada, o Mirante do Pasmado, a Pista Cláudio Coutinho e os endereços onde o bairro realmente treina.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer em Botafogo: os endereços onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Botafogo não tem praia de banho. Tem uma enseada em forma de arco,
+      com o Pão de Açúcar plantado na saída — e é justamente essa
+      geografia que faz do bairro um dos mais interessantes do Rio para
+      quem treina.
+    </p>
+
+    <p class="lead">
+      Em vez de uma orla única, aqui existe uma coleção de lugares
+      diferentes a poucos minutos um do outro: calçadão plano, ladeira
+      severa, mirante, praças e academias de shopping. Este guia percorre
+      os principais, um a um, e explica o que cada um serve na semana de
+      quem procura um <strong>personal trainer em Botafogo</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>1. A orla da enseada: o calçadão plano do bairro</h2>
+      <p>
+        É o endereço mais óbvio e o mais usado. A faixa que acompanha a
+        Praia de Botafogo reúne calçadão e ciclovia com vista contínua
+        para o Pão de Açúcar — o tipo de cenário que faz caminhada longa
+        parecer curta.
+      </p>
+
+      <p>
+        As águas da Baía de Guanabara não servem para banho, e isso muda
+        o uso do espaço: a areia funciona como área de exercício e ponto
+        de encontro, não como praia de veraneio. Corrida, funcional na
+        areia e treino de mobilidade acontecem ali o dia inteiro.
+      </p>
+
+      <p>
+        Para quem está começando, é o melhor ponto de partida do bairro:
+        totalmente plano, iluminado e movimentado nas duas pontas do dia.
+      </p>
+
+      <h2>2. O Mirante do Pasmado: a ladeira que o bairro guarda</h2>
+      <p>
+        Poucos quarteirões acima da enseada, o Mirante do Pasmado fica
+        dentro do Parque Yitzhak Rabin, com acesso pela Rua General
+        Severiano em direção à Praça Engenheiro Bernardo Saião.
+      </p>
+
+      <p>
+        A subida é curta e íngreme, e a vista do alto abre para a enseada,
+        o Pão de Açúcar e o Corcovado. Na prática, é o intervalo de
+        ladeira que Botafogo oferece de graça: dá para transformar o
+        trecho em séries de subida com descida ativa como descanso.
+      </p>
+
+      <p>
+        Personal trainers do bairro costumam usar o Pasmado como bloco
+        único de condicionamento, uma vez por semana, junto à força feita
+        na academia ou em casa.
+      </p>
+
+      <h2>3. A Pista Cláudio Coutinho, ali do lado</h2>
+      <p>
+        Da ponta da enseada dá para seguir a pé até a Urca e chegar à
+        Pista Cláudio Coutinho, no pé do Morro da Urca — um dos percursos
+        mais bonitos da cidade, encaixado entre a pedra e o mar.
+      </p>
+
+      <p>
+        Tecnicamente já é o bairro vizinho, mas na rotina de quem mora em
+        Botafogo ela conta como quintal: caminhada, corrida leve e trilha
+        curta cabem no mesmo deslocamento a pé.
+      </p>
+
+      <h2>4. Praça Nelson Mandela e o entorno do metrô</h2>
+      <p>
+        Entre as ruas São Clemente e Voluntários da Pátria, a Praça
+        Nelson Mandela é o centro nervoso do bairro — colada à estação
+        Botafogo do metrô, servida pelas Linhas 1 e 2.
+      </p>
+
+      <p>
+        Não é lugar de treinar, e sim o motivo pelo qual tanta gente
+        consegue treinar aqui: o acesso de metrô permite encaixar a
+        sessão antes ou depois do expediente, sem carro e sem trânsito.
+        Para o personal, isso significa agenda com horários viáveis de
+        manhã cedo e no fim da tarde.
+      </p>
+
+      <h2>5. As academias de shopping: Botafogo Praia e Rio Sul</h2>
+      <p>
+        O Botafogo Praia Shopping, na Praia de Botafogo, 400, fica a
+        poucos minutos a pé do metrô e concentra academia, serviços e
+        estacionamento. O Rio Sul, um dos maiores centros comerciais da
+        cidade, cumpre papel parecido na outra ponta do bairro.
+      </p>
+
+      <p>
+        É a estrutura que resolve os dias de chuva e o meio-dia de verão.
+        Vale lembrar que equipamento não é método: o que muda o resultado
+        é a <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> bem conduzida ao longo dos meses.
+      </p>
+
+      <h2>6. Voluntários da Pátria, São Clemente e o andar cotidiano</h2>
+      <p>
+        Botafogo é bairro de caminhar. Comércio de rua, escolas, clínicas
+        e restaurantes se distribuem ao longo de eixos que dá para
+        percorrer a pé, e o morador acumula passos sem perceber.
+      </p>
+
+      <p>
+        Isso pesa mais do que parece na conta de quem quer emagrecer: o
+        gasto diário fora do treino é justamente o componente que
+        diferencia rotinas parecidas. O guia sobre
+        <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos
+        por dia</a> detalha por que esse número importa tanto.
+      </p>
+
+      <h2>7. Dentro de casa: o formato mais comum do bairro</h2>
+      <p>
+        Botafogo tem estoque imobiliário antigo. Boa parte dos prédios é
+        das décadas de 1950 a 1980 e não tem área de lazer — diferente do
+        que acontece em bairros verticalizados na última década.
+      </p>
+
+      <p>
+        Por isso o atendimento a domicílio é forte aqui: o personal chega
+        com o material, monta a sessão na sala e trabalha com peso
+        corporal, elásticos e halteres. Funciona bem, desde que a
+        progressão esteja planejada e o aluno saiba onde vai buscar carga
+        quando o corpo pedir mais.
+      </p>
+
+      <p>
+        Nos lançamentos mais novos, o espaço fitness já vem de série, e o
+        formato muda: sessão no próprio condomínio, com equipamento
+        disponível e sem deslocamento nenhum.
+      </p>
+
+      <h2>Quanto custa personal trainer em Botafogo</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/rio-de-janeiro-rj/">personal trainer no
+        Rio de Janeiro</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de
+        R$ 400 a R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Botafogo fica no meio dessa faixa. É mais barato que Leblon e
+        Ipanema e mais caro que a Zona Norte, com boa oferta de
+        profissionais por causa da densidade populacional e da facilidade
+        de acesso pelo metrô.
+      </p>
+
+      <p>
+        O treino em dupla divide o custo entre casal, amigos ou vizinhos,
+        e o acompanhamento online (R$ 200 a R$ 500 mensais) costuma
+        entrar como complemento das semanas mais apertadas.
+      </p>
+
+      <h2>Como montar a semana usando o bairro</h2>
+      <p>
+        O arranjo que mais funciona aqui combina os endereços em vez de
+        escolher um. Duas a três sessões de força — em casa, no
+        condomínio ou na academia — sustentam massa muscular e
+        articulação.
+      </p>
+
+      <p>
+        Fora delas, a orla resolve o aeróbico contínuo e o Pasmado
+        entrega o estímulo intenso da semana. Quem tem dor ou limitação
+        articular deve passar por médico ou fisioterapeuta antes de
+        incluir a subida — ladeira é carga, e carga sem avaliação vira
+        problema.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, experiência real com o seu
+        objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Botafogo, acrescente duas perguntas locais. O profissional
+        atende em apartamento sem academia — e sabe montar sessão com
+        pouco espaço e pouco equipamento? E como ele usa a enseada e o
+        Pasmado ao longo do mês? Quem trabalha no bairro responde as duas
+        sem pensar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Botafogo" />
+
+    <WhatsAppCta tema="geral" localidade="em Botafogo" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

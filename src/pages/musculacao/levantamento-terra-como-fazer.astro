@@ -1,0 +1,347 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que pode e o que evitar',
+    descricao: 'O terra costuma ser acusado — e, bem conduzido, faz parte da solução.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros comuns',
+    descricao: 'O outro grande exercício de perna — e como os dois se dividem na semana.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O terra é o exercício que mais pune progressão apressada.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/levantamento-terra-como-fazer';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Levantamento terra: como fazer e erros comuns', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Levantamento terra faz mal para a coluna?',
+    resposta:
+      'Bem executado e com progressão adequada, é um dos exercícios que mais fortalecem a musculatura que sustenta a coluna. O que faz mal é carga alta com lombar em flexão, volume que cresce rápido demais e ego batendo recorde toda semana. Quem já tem dor lombar ou lesão diagnosticada precisa passar por médico ou fisioterapeuta antes — e, na maioria dos casos, o terra volta ao programa depois, com carga e variação ajustadas.',
+  },
+  {
+    pergunta: 'Terra é exercício de perna ou de costas?',
+    resposta:
+      'Dos dois, e essa é a graça dele. O terra convencional recruta glúteo, posterior de coxa e eretores da espinha como motores principais, com dorsais e trapézio trabalhando forte para segurar a barra e manter o tronco firme. Na prática, a maioria dos programas o coloca no dia de perna ou de posterior, mas encaixá-lo no dia de costas também funciona — o que não dá é somar terra pesado e agachamento pesado na mesma sessão sem contar o custo de recuperação.',
+  },
+  {
+    pergunta: 'Qual a diferença entre terra convencional, sumô e romeno?',
+    resposta:
+      'O convencional parte do chão com pés na largura do quadril e é o mais equilibrado entre quadril e joelho. O sumô abre bastante as pernas, reduz a distância que a barra percorre e exige menos flexão de tronco — costuma ser mais confortável para quem tem tronco longo. O romeno não parte do chão: começa em pé e desce controlando o quadril para trás, com joelho quase estendido, e é o mais específico para posterior de coxa e glúteo.',
+  },
+  {
+    pergunta: 'Preciso de cinto e strap para fazer terra?',
+    resposta:
+      'Não para começar. O cinto ajuda em séries realmente pesadas, aumentando a pressão intra-abdominal, mas usá-lo em toda série leve atrapalha o desenvolvimento da própria estabilização. O strap resolve quando a pegada falha antes das pernas — o que é comum em séries longas —, mas vale alternar com séries sem strap para não deixar o antebraço para trás.',
+  },
+  {
+    pergunta: 'Quantas séries de levantamento terra fazer por semana?',
+    resposta:
+      'Menos do que a maioria imagina. De 3 a 6 séries semanais, em uma ou duas sessões, já entregam bom estímulo — o terra é caro em recuperação e compete com todo o resto do treino de perna e costas. Faixas de 3 a 8 repetições funcionam bem para força e faixas de 6 a 10 para hipertrofia, sempre com técnica estável antes de subir carga.',
+  },
+];
+
+const title = 'Levantamento terra: como fazer e erros comuns';
+const description =
+  'Guia do levantamento terra: técnica passo a passo, posição da lombar, variações (convencional, sumô, romeno), dor nas costas, cinto e strap e quantas séries fazer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Levantamento terra: como fazer, variações e erros comuns</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos exercícios dividem tanto a academia. Para uns, o levantamento
+      terra é o exercício mais completo que existe; para outros, é uma
+      hérnia de disco esperando a vez.
+    </p>
+
+    <p class="lead">
+      A verdade não fica no meio: fica na técnica. O terra é seguro e
+      extremamente produtivo quando a coluna se mantém neutra e a carga
+      sobe devagar — e vira problema quando qualquer uma dessas duas
+      condições falha. Este guia cobre as duas.
+    </p>
+
+    <div class="prose">
+      <h2>O que o terra trabalha</h2>
+      <p>
+        O levantamento terra é um padrão de extensão de quadril com carga
+        no chão. Os motores principais são glúteo, posterior de coxa e os
+        eretores da espinha.
+      </p>
+
+      <p>
+        Em volta deles, quase todo o resto trabalha: dorsais e trapézio
+        seguram a barra e o tronco, quadríceps participa na saída do chão
+        e o antebraço decide, muitas vezes, quando a série acaba.
+      </p>
+
+      <p>
+        É por isso que ele aparece em programas de força, de hipertrofia e
+        de preparação para esporte — e também por isso que ele cobra caro
+        em recuperação.
+      </p>
+
+      <h2>A técnica, do chão para cima</h2>
+      <p>
+        <strong>1. Posição inicial.</strong> Pés na largura do quadril,
+        barra sobre o meio do pé — não colada na canela nem afastada. Essa
+        distância é o detalhe que mais muda a mecânica do movimento.
+      </p>
+
+      <p>
+        <strong>2. A pegada.</strong> Desça flexionando quadril e joelho e
+        segure a barra pouco fora da linha das pernas, com braços
+        estendidos. O braço é cabo de aço aqui: ele não puxa, ele
+        sustenta.
+      </p>
+
+      <p>
+        <strong>3. Armar a coluna.</strong> Peito aberto, olhar à frente e
+        baixo, lombar neutra — nem arqueada demais, nem arredondada. Puxe
+        a folga da barra antes de tirar o peso do chão; o barulhinho do
+        aço encostando na anilha é o sinal de que você está armado.
+      </p>
+
+      <p>
+        <strong>4. A subida.</strong> Empurre o chão com as pernas em vez
+        de puxar a barra com as costas. A barra sobe rente à perna, e
+        quadril e ombro devem subir juntos — se o quadril dispara na
+        frente, o exercício vira uma boa-noite improvisada.
+      </p>
+
+      <p>
+        <strong>5. O topo.</strong> Termine em pé, com quadril estendido e
+        glúteo contraído. Não hiperextenda a lombar nem jogue os ombros
+        para trás: o movimento acaba quando o corpo fica reto.
+      </p>
+
+      <p>
+        <strong>6. A descida.</strong> Faz parte do exercício. Quadril
+        para trás primeiro, barra rente à perna, coluna neutra até o chão.
+        Largar o peso de qualquer jeito é jogar fora metade do estímulo.
+      </p>
+
+      <p>
+        A execução e os cuidados estão detalhados no vídeo abaixo, do
+        canal do Leandro Twin.
+      </p>
+
+      <VideoYouTube
+        id="QiqUXcz2iyA"
+        titulo="Levantamento terra: execução correta e cuidados — Leandro Twin"
+        legenda="No vídeo: Leandro Twin mostra a execução do levantamento terra e os cuidados que separam o exercício produtivo do exercício arriscado."
+      />
+
+      <h2>Os erros que causam problema</h2>
+      <p>
+        <strong>Lombar arredondada sob carga.</strong> É o erro que dá ao
+        exercício a má fama. Coluna em flexão com peso pesado é a receita
+        conhecida de lesão — e o motivo pelo qual carga só sobe depois que
+        a técnica se estabiliza.
+      </p>
+
+      <p>
+        <strong>Quadril subindo antes do ombro.</strong> Transfere todo o
+        trabalho para a lombar e some com a participação da perna. Costuma
+        indicar carga acima do que as pernas conseguem empurrar.
+      </p>
+
+      <p>
+        <strong>Barra longe do corpo.</strong> Cada centímetro de
+        afastamento aumenta o braço de alavanca sobre a coluna. A barra
+        deve raspar a canela e a coxa na subida.
+      </p>
+
+      <p>
+        <strong>Puxar com o braço.</strong> Braço flexionado no terra é
+        risco desnecessário para o bíceps. Ele fica estendido do começo ao
+        fim.
+      </p>
+
+      <p>
+        <strong>Progressão apressada.</strong> O terra é o exercício em
+        que mais gente sobe carga rápido demais, porque o peso inicial é
+        alto e a evolução dos primeiros meses é rápida. É também o que
+        mais pune isso.
+      </p>
+
+      <h2>As variações e para quem servem</h2>
+      <p>
+        <strong>Convencional.</strong> A versão-base, com pés na largura
+        do quadril. Equilibra bem a demanda entre quadril e joelho e
+        permite a maior progressão de longo prazo.
+      </p>
+
+      <p>
+        <strong>Sumô.</strong> Pernas bem abertas e mãos por dentro. A
+        barra percorre menos distância e o tronco fica mais vertical —
+        opção comum para quem tem tronco longo ou desconforto na lombar
+        no convencional.
+      </p>
+
+      <p>
+        <strong>Romeno.</strong> Não parte do chão: começa em pé e desce
+        controlando o quadril para trás com joelho quase estendido. É o
+        mais específico para posterior de coxa e glúteo, e o mais fácil de
+        encaixar em academia com pouco espaço.
+      </p>
+
+      <p>
+        <strong>Com halteres ou trap bar.</strong> Trajetória mais amigável
+        e menos exigência de mobilidade. Boa porta de entrada para
+        iniciantes e para quem treina em academia de condomínio, onde a
+        barra olímpica raramente existe.
+      </p>
+
+      <h2>Terra e dor lombar</h2>
+      <p>
+        Existe uma diferença grande entre "a lombar cansou" e "a lombar
+        doeu". Fadiga localizada nos eretores depois de uma série pesada é
+        esperada; dor aguda, irradiada ou que persiste dias depois não é.
+      </p>
+
+      <p>
+        Quem já tem dor lombar deve passar por médico ou fisioterapeuta
+        antes de incluir o exercício. Feito isso, o terra costuma entrar
+        como parte do tratamento, não como vilão — o guia sobre
+        <a href="/musculacao/treinar-com-dor-lombar/">treinar com dor
+        lombar</a> detalha os ajustes mais usados.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 3 a 6 séries semanais, em uma ou duas sessões, cobrem bem o
+        estímulo para a maioria. É menos do que o intuitivo, e o motivo é
+        o custo: o terra compete por recuperação com o
+        <a href="/musculacao/agachamento-como-fazer/">agachamento</a> e
+        com todo o trabalho de costas.
+      </p>
+
+      <p>
+        Faixas de 3 a 8 repetições servem bem para força; 6 a 10 para
+        hipertrofia. Séries muito longas tendem a degradar a técnica
+        justamente quando a fadiga aparece — e técnica degradada no terra
+        custa mais caro do que em qualquer outro exercício.
+      </p>
+
+      <p>
+        As referências de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        são claras quanto ao princípio: a carga só deve subir depois que o
+        padrão de movimento se mantém estável em todas as repetições da
+        série.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O terra é o exercício em que ninguém consegue se avaliar sozinho.
+        A pessoa não vê a própria lombar, não percebe o quadril disparando
+        e sente que "está tudo bem" até o dia em que não está.
+      </p>
+
+      <p>
+        Um personal trainer resolve isso com uma sessão de ajuste e um
+        plano de progressão realista. Se você pretende ter o terra no
+        programa por anos — e ele merece esse espaço —, vale começar com
+        alguém corrigindo o movimento.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre levantamento terra" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

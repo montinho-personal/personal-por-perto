@@ -69,6 +69,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-gonzaga/', titulo: 'Personal trainer no Gonzaga (Santos)' },
   { categoria: 'Bairros', url: '/personal-trainer-gleba-palhano/', titulo: 'Personal trainer na Gleba Palhano (Londrina)' },
   { categoria: 'Bairros', url: '/personal-trainer-sudoeste/', titulo: 'Personal trainer no Sudoeste (Brasília)' },
+  { categoria: 'Bairros', url: '/personal-trainer-botafogo/', titulo: 'Personal trainer em Botafogo (Rio de Janeiro)' },
+  { categoria: 'Bairros', url: '/personal-trainer-morada-da-colina/', titulo: 'Personal trainer na Morada da Colina (Uberlândia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-aquarius/', titulo: 'Personal trainer no Jardim Aquarius (São José dos Campos)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -112,6 +115,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/destreino/', titulo: 'Destreino: quanto tempo parado você perde músculo?' },
   { categoria: 'Musculação', url: '/musculacao/agachamento-como-fazer/', titulo: 'Agachamento: como fazer, variações e erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treino-de-abdomen/', titulo: 'Treino de abdômen: o que funciona de verdade' },
+  { categoria: 'Musculação', url: '/musculacao/supino-como-fazer/', titulo: 'Supino: como fazer, variações e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/levantamento-terra-como-fazer/', titulo: 'Levantamento terra: como fazer e erros comuns' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -125,6 +130,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/aerobico-em-jejum/', titulo: 'Aeróbico em jejum funciona para emagrecer?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-perder-barriga/', titulo: 'Como perder barriga: a verdade sobre a gordura localizada' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quantos-passos-por-dia/', titulo: 'Quantos passos por dia para emagrecer?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/jejum-intermitente-funciona/', titulo: 'Jejum intermitente funciona para emagrecer?' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },
@@ -132,6 +138,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro/', titulo: 'Treino para quem usa Mounjaro: como adaptar' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/fraqueza-para-treinar/', titulo: 'Mounjaro dá fraqueza para treinar? O que fazer' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/', titulo: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo' },
+  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/ozempic-e-treino/', titulo: 'Ozempic e treino: como adaptar a musculação' },
 
   // Humor fitness
   { categoria: 'Humor fitness', url: '/humor-fitness/perfis-de-memes-fitness/', titulo: 'Perfis de memes fitness para seguir no Instagram' },

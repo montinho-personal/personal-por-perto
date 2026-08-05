@@ -1,0 +1,348 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/musculacao/musculacao-feminina-mitos/',
+    titulo: 'Musculação feminina: 7 mitos que atrapalham o resultado',
+    descricao: 'O "vou ficar musculosa" e outros mitos que ainda travam treino de mulher.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O objetivo mais pedido — e o que realmente entrega resultado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-para-mulheres';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para mulheres', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O treino de mulher precisa ser diferente do treino de homem?',
+    resposta:
+      'Os princípios são idênticos: sobrecarga progressiva, volume adequado, técnica e recuperação. O que muda é o ponto de partida e as prioridades — distribuição de força entre membros superiores e inferiores, objetivos mais frequentes, e fases da vida que pedem ajuste, como gestação, pós-parto e climatério. Treino "feminino" que se resume a peso baixo e muita repetição não é adaptação: é subestimação.',
+  },
+  {
+    pergunta: 'Musculação deixa a mulher masculinizada?',
+    resposta:
+      'Não. O ganho de massa muscular depende de contexto hormonal, e mulheres produzem uma fração da testosterona masculina — o resultado natural do treino de força é firmeza, densidade e contorno, não volume masculino. Os corpos que alimentam esse medo envolvem recursos farmacológicos, não musculação. O que a maioria das mulheres busca com anos de academia é exatamente o que o treino de força bem feito entrega.',
+  },
+  {
+    pergunta: 'Preciso de personal mulher para me sentir à vontade?',
+    resposta:
+      'É uma preferência legítima e bastante comum, principalmente em avaliações que envolvem medidas corporais e em quem está começando. Mas o que define a qualidade do serviço não é o gênero: é o método, a escuta e o respeito ao seu ritmo. Vale escolher pelo que te deixa confortável e avaliar o profissional pelos mesmos critérios técnicos de sempre.',
+  },
+  {
+    pergunta: 'Posso treinar durante a menstruação?',
+    resposta:
+      'Pode, e a maioria se beneficia de manter a rotina. É comum que a percepção de esforço aumente e o desempenho caia em alguns dias do ciclo — nesse caso, reduzir carga ou volume e manter a frequência costuma funcionar melhor do que parar. Cólicas intensas, fluxo muito forte ou qualquer sintoma que atrapalhe o dia a dia merecem avaliação médica, não ajuste apenas no treino.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer para mulheres?',
+    resposta:
+      'O preço não varia por gênero: depende de cidade, formato e experiência. As faixas de mercado no Brasil vão de R$ 60 a R$ 200 pela aula avulsa e de R$ 300 a R$ 1.200 pelo pacote mensal, com o online entre R$ 100 e R$ 500. O treino em dupla ou trio, comum entre amigas e vizinhas, é o que mais reduz o custo por pessoa sem perder acompanhamento.',
+  },
+  {
+    pergunta: 'Quanto tempo leva para ver resultado?',
+    resposta:
+      'As primeiras mudanças costumam ser de desempenho e disposição, nas quatro a seis primeiras semanas. Mudanças visíveis de composição corporal aparecem entre o terceiro e o sexto mês para quem treina com consistência e come de forma adequada. Qualquer promessa de transformação em trinta dias é marketing, não prescrição.',
+  },
+];
+
+const title = 'Personal trainer para mulheres: o guia completo';
+const description =
+  'Personal trainer para mulheres: o que muda (e o que não muda) no treino feminino, mitos, fases da vida, preços, treino em dupla e como escolher o profissional.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para mulheres: o guia completo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Durante décadas, o "treino feminino" da academia brasileira foi uma
+      versão diluída do masculino: menos carga, mais repetição, muito
+      aeróbico e a promessa implícita de que peso pesado era território
+      dos homens.
+    </p>
+
+    <p class="lead">
+      Essa ideia envelheceu mal. Este guia explica o que realmente muda
+      quando o aluno é uma mulher — e o que não muda em nada —, para que
+      a escolha de um <strong>personal trainer</strong> seja feita por
+      critério técnico, não por marketing.
+    </p>
+
+    <div class="prose">
+      <h2>O que não muda: os princípios do treino</h2>
+      <p>
+        Músculo cresce pelos mesmos motivos em qualquer corpo: tensão
+        mecânica suficiente, volume adequado, técnica consistente e
+        recuperação. Não existe fisiologia feminina que dispense
+        sobrecarga progressiva.
+      </p>
+
+      <p>
+        Isso significa que a mulher que quer resultado precisa da mesma
+        coisa que o homem precisa — carga que desafie, progressão
+        registrada e um plano que evolua ao longo dos meses.
+      </p>
+
+      <p>
+        Um bom profissional trata isso como ponto de partida, não como
+        detalhe negociável. Treino feminino que nunca sai do peso de dois
+        quilos não é adaptação — é subestimação.
+      </p>
+
+      <h2>O que muda: prioridades e ponto de partida</h2>
+      <p>
+        Na média, mulheres chegam à academia com força relativa maior nos
+        membros inferiores e menor nos superiores, o que costuma exigir
+        mais paciência e mais volume no trabalho de puxar e empurrar.
+      </p>
+
+      <p>
+        Os objetivos declarados também tendem a ser diferentes: glúteo,
+        composição corporal, densidade óssea e saúde na maturidade
+        aparecem com mais frequência do que ganho de tamanho geral.
+      </p>
+
+      <p>
+        E há um ponto que muda de verdade a periodização: as fases da
+        vida. Gestação, pós-parto, amamentação e climatério pedem ajustes
+        reais — e sempre com liberação e acompanhamento médico antes de
+        alterações no plano.
+      </p>
+
+      <VideoYouTube
+        id="GXAMZzz5q0E"
+        titulo="Como montar uma divisão de treino feminino — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica como estruturar uma divisão de treino para mulheres, com o raciocínio de volume e distribuição pelos grupos musculares."
+      />
+
+      <h2>Os mitos que ainda travam resultado</h2>
+      <p>
+        <strong>"Vou ficar musculosa demais."</strong> O ganho de massa
+        depende de contexto hormonal, e a produção de testosterona
+        feminina é uma fração da masculina. O que o treino de força
+        entrega naturalmente é firmeza e contorno.
+      </p>
+
+      <p>
+        <strong>"Peso pesado é coisa de homem."</strong> Carga alta com
+        técnica correta é justamente o que constrói densidade óssea — um
+        fator central para a saúde da mulher depois dos 40.
+      </p>
+
+      <p>
+        <strong>"Aeróbico primeiro, musculação depois."</strong> Para
+        composição corporal, a força é a prioridade, e o aeróbico entra
+        como complemento. O tema tem guia próprio em
+        <a href="/musculacao/musculacao-feminina-mitos/">musculação
+        feminina: 7 mitos</a>.
+      </p>
+
+      <h2>O objetivo mais pedido — e o que ele exige</h2>
+      <p>
+        Glúteo é, de longe, o pedido mais frequente. E é também o
+        objetivo em que mais se perde tempo com estímulo insuficiente:
+        muita repetição com elástico, pouca carga e nenhuma progressão.
+      </p>
+
+      <p>
+        O que funciona é o que funciona para qualquer músculo — carga
+        progressiva em padrões de extensão de quadril e agachamento,
+        volume semanal adequado e paciência de meses. O guia sobre
+        <a href="/musculacao/treino-de-gluteos/">treino de glúteos</a>
+        detalha a combinação.
+      </p>
+
+      <h2>Fases da vida e ajustes reais</h2>
+      <p>
+        <strong>Gestação e pós-parto.</strong> O exercício costuma ser
+        recomendado nas gestações sem intercorrência, com adaptações — e
+        sempre com liberação do obstetra. No pós-parto, o retorno é
+        gradual, com atenção especial ao assoalho pélvico e à parede
+        abdominal, idealmente com fisioterapeuta envolvido.
+      </p>
+
+      <p>
+        <strong>Climatério e menopausa.</strong> A queda hormonal acelera
+        a perda de massa óssea e muscular, e o treino de força passa de
+        recomendável a essencial. É a fase em que o acompanhamento
+        profissional mais muda a trajetória de longo prazo.
+      </p>
+
+      <p>
+        <strong>Ciclo menstrual.</strong> É comum que o desempenho oscile
+        ao longo do ciclo. Ajustar carga e volume nos dias piores mantém
+        a frequência sem forçar — e frequência é o que constrói
+        resultado.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        são explícitas quanto ao fortalecimento muscular em pelo menos
+        dois dias por semana, para todas as faixas etárias adultas.
+      </p>
+
+      <h2>Formatos de atendimento</h2>
+      <p>
+        <strong>Na academia.</strong> Maior variedade de carga e
+        equipamento, ideal para quem quer progredir por anos.
+      </p>
+
+      <p>
+        <strong>A domicílio ou no condomínio.</strong> Privacidade e zero
+        deslocamento — o formato preferido de quem está começando e não se
+        sente à vontade em sala cheia, e de mães com agenda apertada.
+      </p>
+
+      <p>
+        <strong>Em dupla ou trio.</strong> O formato que mais cresceu:
+        amigas ou vizinhas dividem o custo e ganham compromisso mútuo, o
+        que costuma elevar a frequência.
+      </p>
+
+      <p>
+        <strong>Online.</strong> Bom como complemento e para quem já tem
+        base técnica; limitado como formato único para iniciantes, que
+        precisam de correção presencial de execução.
+      </p>
+
+      <h2>Quanto custa</h2>
+      <p>
+        O preço não varia por gênero. As faixas de mercado no Brasil vão
+        de R$ 60 a R$ 200 pela aula avulsa e de R$ 300 a R$ 1.200 pelo
+        pacote mensal com 2 a 3 sessões semanais, com forte variação entre
+        cidades e formatos.
+      </p>
+
+      <p>
+        O acompanhamento online costuma ficar entre R$ 100 e R$ 500 por
+        mês. O detalhamento por cidade e formato está no guia sobre
+        <a href="/guias/quanto-custa-personal-trainer/">quanto custa um
+        personal trainer</a>.
+      </p>
+
+      <h2>Como escolher a profissional ou o profissional certo</h2>
+      <p>
+        Os critérios técnicos são os mesmos de sempre: avaliação física na
+        primeira semana, plano explicado com clareza, progressão
+        registrada e nenhuma promessa de transformação em trinta dias.
+      </p>
+
+      <p>
+        Acrescente três perguntas que importam aqui. Ele já atendeu alunas
+        no seu momento de vida — pós-parto, climatério, retorno depois de
+        anos parada? Como ele lida com dias de desempenho baixo? E a carga
+        vai subir ao longo dos meses ou o treino vai ficar parado no
+        mesmo peso?
+      </p>
+
+      <p>
+        Preferir uma profissional mulher é uma escolha legítima e comum,
+        principalmente em avaliações com medidas corporais. Só não deve
+        substituir os critérios técnicos — deve somar a eles.
+      </p>
+
+      <p>
+        E vale dizer o óbvio que muita gente ainda ouve errado: dores e
+        limitações articulares são assunto de médico ou fisioterapeuta
+        antes de entrar no plano de treino. Um bom profissional
+        encaminha, não improvisa diagnóstico.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer para mulheres" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

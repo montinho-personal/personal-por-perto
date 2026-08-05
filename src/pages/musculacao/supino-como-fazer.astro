@@ -1,0 +1,338 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro: o que pode e o que evitar',
+    descricao: 'O supino é o exercício que mais aparece nas queixas de ombro — e quase sempre por ajuste técnico.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O que fazer quando o supino trava por meses no mesmo peso.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/maquina-ou-peso-livre/',
+    titulo: 'Máquina ou peso livre: qual escolher',
+    descricao: 'Barra, halteres, Smith ou articulado — o que cada versão do supino entrega.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/supino-como-fazer';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Supino: como fazer, variações e erros comuns', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A barra deve encostar no peito no supino?',
+    resposta:
+      'Na maioria dos corpos, sim — tocar o peito garante amplitude completa, e amplitude completa costuma render mais hipertrofia do que meio movimento com carga maior. O "tocar" precisa ser controlado, não uma quicada: a barra desce, encosta de leve e sobe. Quem tem dor de ombro ou histórico de lesão pode precisar limitar a descida temporariamente, mas isso é ajuste individual feito com orientação, não regra geral.',
+  },
+  {
+    pergunta: 'Supino reto, inclinado ou declinado: qual é melhor?',
+    resposta:
+      'Não são concorrentes. O reto é o exercício-base e recruta o peitoral inteiro com boa carga; o inclinado enfatiza a porção clavicular (o "superior de peito"), historicamente a mais negligenciada; o declinado carrega mais a porção esternocostal e costuma ser mais confortável para ombros sensíveis. Um programa completo usa o reto como âncora e alterna inclinado ou declinado como segundo estímulo.',
+  },
+  {
+    pergunta: 'Por que meu ombro dói no supino?',
+    resposta:
+      'As causas técnicas mais comuns são cotovelo aberto a 90° em relação ao tronco, escápulas soltas em vez de retraídas e depressas, e amplitude forçada além do que a mobilidade permite. Fechar o cotovelo para algo em torno de 45 a 70°, plantar as escápulas no banco e reduzir a carga costuma resolver. Se a dor persiste mesmo com o ajuste, é caso para médico ou fisioterapeuta antes de continuar carregando.',
+  },
+  {
+    pergunta: 'Preciso fazer supino para ter peitoral?',
+    resposta:
+      'Não obrigatoriamente. O peitoral responde a qualquer padrão de empurrar horizontal com carga progressiva — crucifixo, crossover, flexão com peso, supino em máquina articulada. O supino livre é o mais eficiente por permitir muita carga e progressão longa, mas quem não se adapta a ele monta peito perfeitamente bem com outras ferramentas.',
+  },
+  {
+    pergunta: 'Quantas séries de supino fazer por semana?',
+    resposta:
+      'Para a maioria, 4 a 8 séries semanais de supino distribuídas em duas sessões cobrem bem o estímulo, dentro de um volume total de 10 a 20 séries semanais para peitoral. Iniciantes rendem mais em faixas de 6 a 10 repetições, com folga técnica; quem busca hipertrofia trabalha bem entre 6 e 12. Somar séries sem somar carga ao longo dos meses é o erro que trava a maioria.',
+  },
+];
+
+const title = 'Supino: como fazer, variações e erros comuns';
+const description =
+  'Guia do supino: técnica passo a passo, posição de escápulas e cotovelos, amplitude, variações (reto, inclinado, halteres, Smith), dor no ombro e quantas séries fazer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Supino: como fazer, variações e erros comuns</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O supino é o exercício mais disputado da academia na segunda-feira
+      e o mais mal executado da semana inteira. Ele parece simples —
+      deitar, descer, subir — e é justamente essa aparência que esconde
+      os detalhes que decidem entre peitoral crescendo e ombro doendo.
+    </p>
+
+    <p class="lead">
+      Este guia cobre a técnica ponto a ponto, as variações e os erros
+      que aparecem em quase toda sala de musculação do país.
+    </p>
+
+    <div class="prose">
+      <h2>O que o supino trabalha de verdade</h2>
+      <p>
+        O supino é um empurrar horizontal. O motor principal é o peitoral
+        maior, com participação forte do tríceps e da porção anterior do
+        deltoide.
+      </p>
+
+      <p>
+        Isso importa por um motivo prático: quem sente o exercício quase
+        todo no ombro ou quase todo no tríceps normalmente não tem um
+        problema muscular, e sim de posicionamento. Mudar o ângulo do
+        cotovelo e a posição das escápulas costuma redistribuir a carga
+        para onde ela deveria estar.
+      </p>
+
+      <h2>A técnica, do banco para cima</h2>
+      <p>
+        <strong>1. Os cinco pontos de contato.</strong> Pés firmes no
+        chão, glúteo no banco, costas apoiadas, escápulas plantadas e
+        cabeça encostada. Nada disso é detalhe estético — é o que dá base
+        estável para empurrar.
+      </p>
+
+      <p>
+        <strong>2. Escápulas retraídas e deprimidas.</strong> Puxe os
+        ombros para trás e para baixo, como se guardasse as escápulas nos
+        bolsos de trás. Essa é a diferença entre um ombro protegido e um
+        ombro que sobe junto com a barra.
+      </p>
+
+      <p>
+        <strong>3. Pegada.</strong> Um pouco mais larga que a linha dos
+        ombros, com o punho alinhado ao antebraço — barra na base da
+        palma, não nos dedos. Pegada larga demais encurta a amplitude e
+        estressa o ombro; estreita demais transfere o trabalho para o
+        tríceps.
+      </p>
+
+      <p>
+        <strong>4. Descida controlada.</strong> A barra desce em direção
+        à altura do mamilo ou pouco abaixo, com o cotovelo em algo entre
+        45 e 70° em relação ao tronco. Cotovelo a 90° é o erro clássico
+        que castiga o ombro.
+      </p>
+
+      <p>
+        <strong>5. Subida.</strong> Empurre firme, sem travar o cotovelo
+        com força no fim. A trajetória natural é levemente diagonal, em
+        direção aos ombros — não uma linha perfeitamente vertical.
+      </p>
+
+      <p>
+        A execução com barra em detalhe está no vídeo abaixo, do canal do
+        Leandro Twin.
+      </p>
+
+      <VideoYouTube
+        id="EZMYCLKuGow"
+        titulo="Como fazer supino reto — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução do supino reto com barra, com atenção à pegada, à posição das escápulas e à trajetória."
+      />
+
+      <h2>Os cinco erros mais comuns</h2>
+      <p>
+        <strong>Cotovelo aberto a 90°.</strong> É o erro que mais gera
+        queixa de ombro. Fechar o ângulo protege a articulação sem
+        reduzir o estímulo no peitoral.
+      </p>
+
+      <p>
+        <strong>Escápulas soltas.</strong> Sem base retraída, o ombro
+        rola para frente a cada repetição e assume carga que não é dele.
+      </p>
+
+      <p>
+        <strong>Quicar a barra no peito.</strong> Usar o tórax como
+        trampolim tira o músculo do trabalho justamente no ponto mais
+        difícil — e é como muita gente "levanta" um peso que não
+        controla.
+      </p>
+
+      <p>
+        <strong>Levantar o quadril do banco.</strong> Transforma o reto
+        num declinado improvisado e some com a amplitude real. Se você
+        precisa disso para completar a série, a carga está alta demais.
+      </p>
+
+      <p>
+        <strong>Meia amplitude com peso de foto.</strong> O erro mais
+        popular de todos. Amplitude completa com carga honesta rende
+        mais músculo do que meio movimento com carga de vitrine.
+      </p>
+
+      <h2>As variações e o que cada uma entrega</h2>
+      <p>
+        <strong>Barra reta.</strong> A versão-base. Permite mais carga
+        absoluta e é a melhor ferramenta para progressão de longo prazo.
+      </p>
+
+      <p>
+        <strong>Halteres.</strong> Amplitude maior, trajetória livre e
+        exigência de estabilização — ótimo para corrigir assimetrias
+        entre os lados, com o custo de carga total menor.
+      </p>
+
+      <p>
+        <strong>Inclinado (30 a 45°).</strong> Enfatiza a porção superior
+        do peitoral, a mais esquecida em quem só faz reto.
+      </p>
+
+      <p>
+        <strong>Declinado.</strong> Carrega a porção inferior e costuma
+        ser a variação mais amigável para ombros sensíveis.
+      </p>
+
+      <p>
+        <strong>Smith e articulado.</strong> Trajetória guiada, menos
+        demanda de equilíbrio. Útil para iniciantes, para trabalho até
+        perto da falha sem parceiro e para academias de condomínio com
+        equipamento limitado — como discute o guia sobre
+        <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso
+        livre</a>.
+      </p>
+
+      <h2>Supino e dor no ombro</h2>
+      <p>
+        O supino não é inimigo do ombro; supino mal posicionado é. Na
+        maioria das queixas, o ajuste de cotovelo, escápula e amplitude
+        resolve em poucas sessões.
+      </p>
+
+      <p>
+        Quando a dor persiste mesmo com técnica corrigida e carga
+        reduzida, o caminho é avaliação com médico ou fisioterapeuta
+        antes de seguir carregando. O detalhamento do que pode e do que
+        evitar está no guia sobre
+        <a href="/musculacao/treinar-com-dor-no-ombro/">treinar com dor
+        no ombro</a>.
+      </p>
+
+      <h2>Volume, séries e progressão</h2>
+      <p>
+        Entre 4 e 8 séries semanais de supino, distribuídas em duas
+        sessões, cobrem bem o estímulo para a maioria — dentro de um
+        volume total de 10 a 20 séries semanais para peitoral.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        apontam na mesma direção: o que sustenta o ganho ao longo do
+        tempo é a sobrecarga progressiva, não a quantidade de exercícios
+        diferentes.
+      </p>
+
+      <p>
+        Na prática, isso significa registrar carga e repetições e ter um
+        critério claro para subir o peso — assunto do guia sobre
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a>.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O supino é o exercício em que um ajuste de dois centímetros no
+        cotovelo muda a sessão inteira — e é quase impossível enxergar
+        isso sozinho, deitado, embaixo da barra.
+      </p>
+
+      <p>
+        Um personal trainer resolve isso rápido: corrige a posição,
+        define a carga inicial com critério e organiza a progressão dos
+        meses seguintes. Para quem está começando, é a diferença entre
+        seis meses de evolução e seis meses de repetição.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre supino" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

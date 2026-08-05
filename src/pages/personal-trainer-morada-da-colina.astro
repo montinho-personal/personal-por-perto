@@ -1,0 +1,350 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/uberlandia-mg/',
+    titulo: 'Personal trainer em Uberlândia',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'Regras de acesso, equipamento disponível e o que exigir da academia do prédio.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'Para quem o formato remoto entrega resultado — e para quem não entrega.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-morada-da-colina';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Uberlândia', url: '/personal-trainer/uberlandia-mg/' },
+  { nome: 'Personal Trainer na Morada da Colina', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Morada da Colina?',
+    resposta:
+      'Em Uberlândia, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. A Morada da Colina, por ser um dos endereços mais valorizados da cidade, trabalha na metade superior dessas faixas — principalmente no atendimento dentro do condomínio, que embute deslocamento e exclusividade de horário.',
+  },
+  {
+    pergunta: 'Qual o melhor formato de treino no bairro?',
+    resposta:
+      'Depende de três variáveis: o que o seu prédio tem, quanto tempo você perde no deslocamento e quanta autonomia você já tem para treinar sozinho. Quem mora em torre com espaço fitness costuma render mais no condomínio; quem mora em casa ou em edifício antigo se resolve melhor na academia de rua, e o bairro tem cerca de doze delas.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Morada da Colina?',
+    resposta:
+      'No Parque Municipal da Gávea, que tem um dos portões de acesso na Avenida dos Vinhedos, 555, dentro do próprio bairro. São cerca de 182 mil m² com pista de caminhada pavimentada, trilha de 2,7 km, córrego e orquidário — o espaço verde de referência da região.',
+  },
+  {
+    pergunta: 'Os prédios da Morada da Colina têm academia?',
+    resposta:
+      'Os lançamentos verticais mais recentes, sim: espaço fitness virou item padrão nas torres do bairro. O estoque de casas e de edifícios mais antigos, não — e é aí que o atendimento a domicílio e a academia de rua dividem o mercado.',
+  },
+  {
+    pergunta: 'Vale a pena treinar online morando no bairro?',
+    resposta:
+      'Como formato único, raramente — quem está começando precisa de correção de execução presencial. Como complemento, funciona bem: o híbrido, com uma sessão presencial por semana e as demais orientadas à distância, é a fórmula mais usada por quem viaja a trabalho ou tem agenda irregular.',
+  },
+];
+
+const title = 'Personal Trainer na Morada da Colina (Uberlândia)';
+const description =
+  'Personal trainer na Morada da Colina: preços de Uberlândia e a comparação honesta entre academia de rua, condomínio, domicílio, Parque da Gávea e online.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Uberlândia</p>
+    <h1>Personal trainer na Morada da Colina: qual formato escolher</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Na Morada da Colina, a pergunta quase nunca é "existe personal
+      trainer por aqui?". Existe, e muito — o bairro tem cerca de doze
+      academias e um dos metros quadrados mais valorizados de Uberlândia.
+    </p>
+
+    <p class="lead">
+      A pergunta real é outra: <strong>qual formato de atendimento
+      compensa no seu caso</strong>. Academia de rua, academia do
+      condomínio, dentro de casa, no parque ou online — este guia compara
+      os cinco com as condições concretas do bairro.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro em duas camadas</h2>
+      <p>
+        A Morada da Colina se organiza em torno de eixos como a Avenida
+        Oscarina Cunha Chaves e a Rua da Carioca, com pouco mais de
+        sessenta ruas e uma malha de serviços densa: cerca de duzentos
+        estabelecimentos comerciais em raio curto, entre restaurantes,
+        clínicas e comércio de vizinhança.
+      </p>
+
+      <p>
+        Mas o bairro convive com duas camadas de moradia. Uma é o estoque
+        horizontal e os edifícios mais antigos; a outra são as torres
+        recentes — Spazio Unigarden, Studio Home, Edifício Califórnia,
+        Jardim da Colina, Torre da Colina —, que entregam lazer completo e
+        espaço fitness de série.
+      </p>
+
+      <p>
+        Essa divisão é o que define, na prática, qual formato de treino
+        faz sentido para cada morador. Vamos a eles.
+      </p>
+
+      <h2>Formato 1: academia de rua com personal</h2>
+      <p>
+        É o mais tradicional e o de maior variedade de equipamento. O
+        bairro concentra cerca de doze academias, o que significa que a
+        distância até a mais próxima quase sempre cabe numa caminhada
+        curta.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> carga disponível, variedade de máquinas
+        e a possibilidade de progredir por anos sem esbarrar em limite de
+        equipamento.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> horário compartilhado — em pico, você
+        divide aparelho e o ritmo da sessão cai. E soma o custo da
+        mensalidade da academia ao do personal.
+      </p>
+
+      <h2>Formato 2: personal na academia do condomínio</h2>
+      <p>
+        Nas torres novas do bairro, o espaço fitness é padrão de entrega,
+        e o profissional vai até lá. É o formato que mais cresceu na
+        Morada da Colina na última década.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> zero deslocamento, horário exclusivo e
+        constância — quem treina no próprio prédio falta muito menos.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> teto de carga. A maioria das academias
+        de condomínio tem halteres até um limite modesto e poucas
+        máquinas; quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> pode esbarrar nesse teto em um ou dois anos.
+      </p>
+
+      <p>
+        Antes de fechar, vale conferir o que o guia sobre
+        <a href="/guias/personal-trainer-em-condominio/">personal trainer
+        em condomínio</a> detalha: regras de acesso do profissional,
+        horários liberados e o inventário real de equipamento.
+      </p>
+
+      <h2>Formato 3: personal a domicílio</h2>
+      <p>
+        Para quem mora em casa ou em edifício sem lazer, o profissional
+        leva o material e monta a sessão na sala, na garagem ou no
+        quintal.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> privacidade total e flexibilidade de
+        horário. É o formato preferido de quem está começando e não se
+        sente à vontade em academia cheia.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> equipamento. Funciona muito bem nos
+        primeiros meses com peso corporal, elásticos e halteres, mas
+        depende de um plano claro de para onde ir quando o corpo pedir
+        mais carga.
+      </p>
+
+      <h2>Formato 4: ar livre no Parque Municipal da Gávea</h2>
+      <p>
+        O bairro tem um trunfo que poucos endereços de Uberlândia
+        oferecem: um dos portões do Parque Municipal da Gávea fica na
+        Avenida dos Vinhedos, 555, dentro da própria Morada da Colina.
+      </p>
+
+      <p>
+        São cerca de 182 mil m² com pista de caminhada pavimentada,
+        trilha de 2,7 km, córrego, orquidário e o espaço de ciência
+        ligado à universidade. Para caminhada, corrida e treino funcional
+        ao ar livre, é a melhor base do bairro.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> custo zero de estrutura, ambiente
+        agradável e percurso medido para progredir na corrida.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> força. Ar livre não substitui treino
+        resistido — e é a força que preserva massa magra e articulação ao
+        longo dos anos.
+      </p>
+
+      <h2>Formato 5: acompanhamento online</h2>
+      <p>
+        O treino remoto entrou de vez na rotina de quem viaja a trabalho
+        — perfil comum num bairro de renda alta do Triângulo Mineiro.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> custo (R$ 160 a R$ 400 mensais na
+        cidade) e continuidade nas semanas fora.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> correção de execução em tempo real.
+        Como o guia sobre <a href="/guias/personal-online-funciona/">
+        personal online</a> detalha, o formato rende bem para quem já tem
+        base e mal para quem está no primeiro mês de academia.
+      </p>
+
+      <h2>O clima de Uberlândia entra na conta</h2>
+      <p>
+        A cidade fica a cerca de 863 m de altitude, com verão úmido (média
+        perto de 24,7 °C) e inverno seco (18,8 °C). Isso torna o treino ao
+        ar livre viável o ano inteiro.
+      </p>
+
+      <p>
+        Mas o inverno seco traz ar poeirento, e o verão pede hidratação
+        reforçada. Na prática, o parque rende mais no começo da manhã e no
+        fim da tarde, e o ambiente coberto segura os dias de chuva forte
+        de dezembro a março.
+      </p>
+
+      <h2>Quanto custa personal trainer na Morada da Colina</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/uberlandia-mg/">personal trainer em
+        Uberlândia</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de
+        R$ 320 a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Morada da Colina fica na metade de cima. O atendimento em
+        condomínio e a domicílio são os mais caros — embutem deslocamento
+        e exclusividade —, e o treino em dupla, comum entre casais e
+        vizinhos do mesmo prédio, é o que mais reduz o valor por pessoa.
+      </p>
+
+      <h2>Como decidir sem errar</h2>
+      <p>
+        Três perguntas resolvem a escolha. O seu prédio tem espaço fitness
+        com halteres acima de 20 kg? Você aguenta trinta minutos de
+        deslocamento por sessão sem faltar? Você já treina há mais de um
+        ano com técnica estável?
+      </p>
+
+      <p>
+        Três "sim" apontam para academia de rua; um "sim" só no primeiro
+        aponta para o condomínio; nenhum "sim" aponta para o domicílio com
+        acompanhamento próximo. Em todos os casos, dores e limitações
+        articulares devem passar por médico ou fisioterapeuta antes de
+        entrar no plano.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Morada da Colina, some uma pergunta local: como ele adapta o
+        plano quando o equipamento do prédio não acompanha a progressão? A
+        resposta separa quem tem método de quem só tem repertório de
+        aparelho.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Morada da Colina" />
+
+    <WhatsAppCta tema="geral" localidade="na Morada da Colina" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
