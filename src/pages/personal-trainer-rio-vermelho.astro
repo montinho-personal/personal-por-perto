@@ -1,0 +1,323 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/salvador-ba/',
+    titulo: 'Personal trainer em Salvador',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-caminho-das-arvores/',
+    titulo: 'Personal trainer no Caminho das Árvores',
+    descricao: 'O bairro corporativo de Salvador, com outra lógica de treino.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer',
+    descricao: 'Num bairro que se percorre a pé, esse número sobe sozinho.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-rio-vermelho';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Salvador', url: '/personal-trainer/salvador-ba/' },
+  { nome: 'Personal Trainer no Rio Vermelho', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Rio Vermelho?',
+    resposta:
+      'Em Salvador, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. O Rio Vermelho trabalha no meio dessa faixa — abaixo dos bairros corporativos e acima da média da cidade. Como boa parte do trabalho acontece na orla, muitos profissionais operam sem custo de academia, o que ajuda a segurar o preço.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Rio Vermelho?',
+    resposta:
+      'A orla é a resposta principal: a faixa que passa pela Praia da Paciência e segue em direção a Santana concentra caminhada e corrida nas pontas do dia. Para estímulo intenso, as ladeiras do bairro — o Morro do Conselho é a mais conhecida — entregam subida de verdade a poucos minutos do calçadão. O Parque Costa Azul, vizinho, resolve a corrida mais longa.',
+  },
+  {
+    pergunta: 'O mar do Rio Vermelho serve para nadar?',
+    resposta:
+      'Depende do trecho e do dia. A costa ali é de pedras e recifes, com trechos de mar aberto e correnteza — bem diferente das piscinas naturais da Ribeira ou de Itapuã. Vale checar as condições e a balneabilidade antes, e para treino de natação a maioria dos moradores usa piscina. Para exercício na areia e no calçadão, porém, o bairro é excelente.',
+  },
+  {
+    pergunta: 'Os prédios do Rio Vermelho têm academia?',
+    resposta:
+      'Os lançamentos recentes, sim. Mas o bairro tem estoque antigo e uma malha de casarões, sobrados e edifícios pequenos — herança dos três núcleos históricos que o formaram —, então o atendimento a domicílio é bem mais comum aqui do que em bairros verticalizados na última década.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'Começo da manhã, com folga. O Rio Vermelho é o bairro mais boêmio de Salvador e vive à noite — o que deixa as manhãs silenciosas e a orla livre. O fim da tarde é a segunda janela, mas divide espaço com o movimento dos bares. O calor e a umidade de Salvador tornam o meio-dia inviável para treino ao ar livre.',
+  },
+  {
+    pergunta: 'Dá para treinar no Rio Vermelho em 2 de fevereiro?',
+    resposta:
+      'Nesse dia, não conte com a orla. A festa de Iemanjá concentra a cidade inteira na Praia da Paciência e na Casa de Iemanjá, com as oferendas da colônia de pescadores — o bairro fica tomado desde a madrugada. É o dia de trocar o treino ao ar livre por ambiente coberto, ou simplesmente de participar.',
+  },
+];
+
+const title = 'Personal Trainer no Rio Vermelho (Salvador)';
+const description =
+  'Personal trainer no Rio Vermelho: preços de Salvador, a orla da Praia da Paciência, as ladeiras do bairro, os largos históricos e onde o treino realmente acontece.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Salvador</p>
+    <h1>Personal trainer no Rio Vermelho: os endereços onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Rio Vermelho tem fama de bairro de noite: acarajé, bar de calçada,
+      música até tarde. Mas quem mora ali conhece a outra metade da
+      história — a que acontece antes das sete da manhã, quando a orla
+      esvazia de boêmio e enche de gente treinando.
+    </p>
+
+    <p class="lead">
+      Este guia percorre os lugares do bairro um a um e explica o que cada
+      um serve na semana de quem procura um <strong>personal trainer no
+      Rio Vermelho</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>1. A orla e a Praia da Paciência</h2>
+      <p>
+        É o endereço principal. A faixa de orla que passa pela Praia da
+        Paciência e segue em direção a Santana concentra caminhada,
+        corrida e treino funcional nas duas pontas do dia.
+      </p>
+
+      <p>
+        A costa aqui é de pedras e recifes, não de mar de banho como em
+        Itapuã — o que muda o uso do espaço. A areia e o calçadão
+        funcionam como área de exercício e ponto de encontro, com o mar
+        como cenário, não como piscina.
+      </p>
+
+      <p>
+        Para quem está começando, é o melhor ponto de partida do bairro:
+        plano, movimentado e com serviços em raio curto.
+      </p>
+
+      <h2>2. As ladeiras — o estímulo que o bairro guarda</h2>
+      <p>
+        O Rio Vermelho não é plano. Poucos quarteirões acima da orla, o
+        terreno sobe rápido, e o Morro do Conselho é a subida mais
+        conhecida do bairro.
+      </p>
+
+      <p>
+        Na prática, é intervalado de graça: dá para montar séries de
+        subida com descida ativa como descanso, sem pista e sem
+        equipamento. Personal trainers do bairro costumam usar as
+        ladeiras como bloco único de condicionamento, uma vez por semana.
+      </p>
+
+      <p>
+        Quem tem dor no joelho ou histórico de lesão deve passar por
+        médico ou fisioterapeuta antes de incluir subidas repetidas —
+        ladeira é carga, e carga sem avaliação vira problema.
+      </p>
+
+      <h2>3. Largo de Santana, o coração do bairro</h2>
+      <p>
+        Conhecido também como Largo da Dinha, em homenagem à baiana de
+        acarajé, o Largo de Santana guarda a antiga igreja de Santana,
+        erguida na primeira metade do século XIX e hoje encravada no meio
+        da rua.
+      </p>
+
+      <p>
+        Não é lugar de treinar — é lugar de entender o ritmo do bairro.
+        À noite ele é o centro da boemia; de manhã, é praticamente
+        deserto. Essa inversão explica por que a agenda dos profissionais
+        daqui se concentra tão fortemente no começo do dia.
+      </p>
+
+      <h2>4. Largo da Mariquita e o Mercado do Peixe</h2>
+      <p>
+        O Largo da Mariquita abriga o Mercado do Rio Vermelho, o Mercado
+        do Peixe — feira tradicional e a céu aberto que é uma das
+        instituições mais antigas do bairro.
+      </p>
+
+      <p>
+        Vale a menção por um motivo prático: é o marco que organiza a
+        circulação do bairro, e é a partir dele que se distribuem os
+        percursos de caminhada que os moradores usam no dia a dia.
+      </p>
+
+      <h2>5. A Casa de Iemanjá e a colônia de pescadores</h2>
+      <p>
+        Na orla fica a Casa de Iemanjá, centro das oferendas do 2 de
+        fevereiro, quando a colônia de pescadores do bairro conduz a
+        maior festa de Iemanjá da cidade.
+      </p>
+
+      <p>
+        Para quem treina, isso é informação de calendário: nesse dia o
+        bairro inteiro fica tomado desde a madrugada, e a orla sai da
+        equação. É o dia de trocar por ambiente coberto — ou de
+        participar.
+      </p>
+
+      <h2>6. Parque Costa Azul, ali do lado</h2>
+      <p>
+        Para corrida longa e treino em área verde, o Parque Costa Azul,
+        no bairro vizinho, é a saída natural. Está a poucos minutos e
+        oferece o que a orla do Rio Vermelho não tem: sombra contínua e
+        percurso fechado.
+      </p>
+
+      <h2>7. Dentro de casa: o formato mais comum</h2>
+      <p>
+        O Rio Vermelho se formou a partir de três núcleos — Paciência,
+        Mariquita e Santana — e essa origem deixou uma malha de casarões,
+        sobrados e edifícios pequenos.
+      </p>
+
+      <p>
+        Resultado: muita moradia sem área de lazer, e um mercado em que o
+        personal a domicílio é forte. O profissional chega com o
+        material, monta a sessão na sala ou no quintal e trabalha com
+        peso corporal, elásticos e halteres.
+      </p>
+
+      <p>
+        Funciona bem, desde que a
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> esteja planejada e exista um plano de para onde ir
+        quando o corpo pedir mais.
+      </p>
+
+      <h2>Quanto custa personal trainer no Rio Vermelho</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/salvador-ba/">personal trainer em
+        Salvador</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Rio Vermelho fica no meio: abaixo dos bairros corporativos e
+        acima da média da cidade. Um detalhe local ajuda — como boa parte
+        do trabalho acontece na orla, muitos profissionais operam sem
+        custo de academia.
+      </p>
+
+      <p>
+        O treino em dupla divide o valor entre casal ou vizinhos, e o
+        online (R$ 170 a R$ 430 mensais) cobre as semanas fora.
+      </p>
+
+      <h2>Como montar a semana usando o bairro</h2>
+      <p>
+        O arranjo que funciona combina os ambientes em vez de escolher
+        um. Duas a três sessões de força — em casa, no condomínio ou na
+        academia — sustentam massa muscular e articulação.
+      </p>
+
+      <p>
+        Fora delas, a orla resolve o aeróbico contínuo e as ladeiras
+        entregam o estímulo intenso da semana. O calor e a umidade de
+        Salvador empurram tudo para antes das oito da manhã ou depois das
+        cinco da tarde.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, progressão registrada e
+        nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Rio Vermelho, some duas perguntas locais. Ele sabe montar
+        sessão completa em casa antiga, com pouco espaço e pouco
+        equipamento? E como ele usa a orla e as ladeiras ao longo do mês,
+        sem transformar toda semana em subida? Quem atende aqui responde
+        as duas sem hesitar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Rio Vermelho" />
+
+    <WhatsAppCta tema="geral" localidade="no Rio Vermelho" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

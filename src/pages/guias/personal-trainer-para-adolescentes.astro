@@ -1,0 +1,371 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'Por onde começar quando o corpo ainda está aprendendo os movimentos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'O que explicar para um adolescente ansioso por resultado rápido.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-adolescentes';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para adolescentes', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Musculação atrapalha o crescimento?',
+    resposta:
+      'Essa ideia circulou por décadas e não se sustenta na literatura atual. Entidades de referência em pediatria e em treinamento de força apontam que o treino resistido, com orientação adequada e progressão apropriada à idade, é seguro e traz benefícios — inclusive para densidade óssea e postura. O risco nunca esteve no treino em si, e sim na prática mal orientada, com carga excessiva e técnica ruim. Antes de começar, a avaliação com o pediatra ou médico que acompanha o adolescente é o passo obrigatório.',
+  },
+  {
+    pergunta: 'Com que idade um adolescente pode começar a treinar?',
+    resposta:
+      'Não existe um número universal, e a maturação varia bastante entre indivíduos da mesma idade. Referências internacionais indicam que o treino resistido pode ser introduzido já na pré-adolescência quando há supervisão qualificada e ênfase em técnica, não em carga. Na prática, o critério que importa mais que a idade é a capacidade de seguir instrução e executar os movimentos com controle — e a liberação médica prévia.',
+  },
+  {
+    pergunta: 'Adolescente pode tomar suplemento?',
+    resposta:
+      'Essa decisão é de médico e nutricionista, não do personal trainer nem da loja de suplementos. O ponto de partida para essa faixa etária é quase sempre a alimentação: adolescentes em crescimento têm demanda energética e proteica alta, e ajustar a comida costuma resolver o que o suplemento prometeria. Vale desconfiar de qualquer profissional que sugira suplementação para um adolescente sem encaminhamento clínico.',
+  },
+  {
+    pergunta: 'O treino deve ser diferente do de um adulto?',
+    resposta:
+      'Os princípios são os mesmos, mas a ênfase muda. Para o adolescente, a prioridade é aprender padrões de movimento com técnica limpa, construir base de força com carga moderada e desenvolver o hábito — não buscar carga máxima nem volume de atleta. Faixas de repetição moderadas, progressão lenta e variedade de estímulos rendem mais nessa fase do que qualquer protocolo copiado de treino adulto.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer para adolescente?',
+    resposta:
+      'O preço não muda por faixa etária: depende de cidade, formato e experiência. As faixas de mercado no Brasil vão de R$ 60 a R$ 200 pela aula avulsa e de R$ 300 a R$ 1.200 pelo pacote mensal. O treino em dupla ou em pequeno grupo — irmãos, primos, amigos da escola — é o formato que mais reduz o custo por pessoa e costuma funcionar bem nessa idade, porque o componente social ajuda na adesão.',
+  },
+  {
+    pergunta: 'E se o adolescente só quiser ficar "grande" rápido?',
+    resposta:
+      'É a expectativa mais comum e a que mais gera frustração e risco. A conversa honesta sobre prazos — meses e anos, não semanas — é parte do trabalho de um bom profissional, e é o que protege o adolescente de recorrer a atalhos perigosos. Redirecionar o objetivo para desempenho (ficar mais forte, dominar um exercício, melhorar no esporte) costuma sustentar a motivação muito melhor do que a meta estética isolada.',
+  },
+];
+
+const title = 'Personal trainer para adolescentes: o guia';
+const description =
+  'Personal trainer para adolescentes: se a musculação atrapalha o crescimento, com que idade começar, o que muda no treino, suplementação e como escolher o profissional.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para adolescentes: o guia para pais e responsáveis</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A frase é sempre parecida: "meu filho quer começar a treinar, mas
+      dizem que musculação atrapalha o crescimento". A preocupação é
+      legítima e a informação, desatualizada.
+    </p>
+
+    <p class="lead">
+      Este guia trata do que mudou no entendimento sobre treino na
+      adolescência, do que continua exigindo cuidado e de como escolher
+      um <strong>personal trainer</strong> para essa faixa etária — com
+      uma ressalva que atravessa o texto inteiro: nada aqui substitui a
+      avaliação do médico que acompanha o adolescente.
+    </p>
+
+    <div class="prose">
+      <h2>O mito que envelheceu mal</h2>
+      <p>
+        A ideia de que levantar peso "fecha as cartilagens de
+        crescimento" circulou por décadas em academia e em consultório.
+        Ela não se sustenta na literatura atual.
+      </p>
+
+      <p>
+        Entidades de referência em pediatria e em treinamento de força
+        apontam na direção oposta: o treino resistido, com orientação
+        adequada e progressão apropriada à idade, é seguro e traz
+        benefícios — incluindo fortalecimento ósseo e muscular, melhora
+        postural e desenvolvimento motor.
+      </p>
+
+      <p>
+        O risco, quando existe, nunca esteve no exercício em si. Está na
+        prática mal orientada: carga alta demais, técnica ruim, ausência
+        de supervisão e progressão apressada.
+      </p>
+
+      <VideoYouTube
+        id="0ZsO5iEbFQE"
+        titulo="Crianças e adolescentes podem fazer musculação? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin responde à dúvida mais comum de pais sobre treino resistido na infância e na adolescência."
+      />
+
+      <h2>A idade não é o critério principal</h2>
+      <p>
+        Dois adolescentes de quatorze anos podem estar em estágios de
+        maturação bem diferentes. Por isso, a idade cronológica é um guia
+        fraco.
+      </p>
+
+      <p>
+        Referências internacionais indicam que o treino resistido pode
+        ser introduzido já na pré-adolescência quando há supervisão
+        qualificada e ênfase em técnica em vez de carga.
+      </p>
+
+      <p>
+        Na prática, os critérios que importam são outros: o adolescente
+        consegue seguir instrução? Executa os movimentos com controle?
+        Tem liberação do médico que o acompanha? Essas três respostas
+        pesam mais que a data de nascimento.
+      </p>
+
+      <h2>O que muda no treino nessa fase</h2>
+      <p>
+        Os princípios são os mesmos de qualquer treino — sobrecarga
+        progressiva, técnica, recuperação. O que muda é a ênfase.
+      </p>
+
+      <p>
+        <strong>Técnica antes de carga.</strong> Esta fase é a melhor
+        janela da vida para aprender padrões de movimento. O que se
+        constrói aqui em qualidade de execução acompanha a pessoa por
+        décadas.
+      </p>
+
+      <p>
+        <strong>Progressão lenta.</strong> A tentação de subir peso toda
+        semana é grande, e é justamente o que precisa ser contido.
+      </p>
+
+      <p>
+        <strong>Variedade de estímulo.</strong> Esporte, treino de força,
+        atividade livre. Especializar cedo demais em um único formato
+        raramente é a melhor escolha.
+      </p>
+
+      <p>
+        <strong>Faixas moderadas de repetição.</strong> Trabalho até
+        falha e cargas máximas não têm papel relevante nessa fase — e
+        são justamente o que o adolescente vê no vídeo e quer copiar.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        para essa faixa etária combinam atividade aeróbica diária com
+        fortalecimento muscular e ósseo em pelo menos três dias por
+        semana.
+      </p>
+
+      <h2>A conversa sobre prazo — e por que ela protege</h2>
+      <p>
+        A expectativa mais comum do adolescente é ficar grande rápido. É
+        também a que mais gera frustração e, em alguns casos, risco real.
+      </p>
+
+      <p>
+        Um profissional sério é honesto sobre prazos: ganho de massa
+        muscular se mede em meses e anos, não em semanas — como detalha o
+        guia sobre
+        <a href="/musculacao/hipertrofia-como-funciona/">como funciona a
+        hipertrofia</a>.
+      </p>
+
+      <p>
+        Redirecionar o objetivo ajuda muito. Metas de desempenho — ficar
+        mais forte, dominar um exercício, melhorar no esporte — sustentam
+        a motivação melhor do que a meta estética isolada, e são
+        verificáveis semana a semana.
+      </p>
+
+      <p>
+        Essa conversa é a principal barreira contra atalhos. Um
+        adolescente que entende o prazo real tem menos motivo para
+        procurar o que promete encurtá-lo.
+      </p>
+
+      <h2>Suplementação: quem decide</h2>
+      <p>
+        Não é o personal trainer, e definitivamente não é a loja. Essa
+        decisão é de médico e nutricionista.
+      </p>
+
+      <p>
+        O ponto de partida nessa faixa etária é quase sempre a
+        alimentação: adolescentes em crescimento têm demanda energética e
+        proteica alta, e ajustar a comida costuma resolver o que o
+        suplemento prometeria resolver.
+      </p>
+
+      <p>
+        Vale desconfiar de qualquer profissional que sugira suplementação
+        para um adolescente sem encaminhamento clínico — e desconfiar
+        muito mais de qualquer menção a substância que prometa acelerar
+        resultado.
+      </p>
+
+      <h2>Sinais de alerta ao escolher</h2>
+      <p>
+        <strong>Promessa de prazo.</strong> "Fica grande em três meses"
+        não é objetivo, é marketing.
+      </p>
+
+      <p>
+        <strong>Carga alta na primeira semana.</strong> Antes de técnica
+        estável, peso é risco.
+      </p>
+
+      <p>
+        <strong>Treino copiado de adulto.</strong> A planilha do
+        fisiculturista que o adolescente admira não é ponto de partida.
+      </p>
+
+      <p>
+        <strong>Qualquer sugestão de suplemento ou substância.</strong>
+        Fora do escopo do profissional de treino, sem exceção.
+      </p>
+
+      <p>
+        <strong>Resistência ao diálogo com os pais.</strong> Nessa faixa
+        etária, o responsável precisa entender o plano.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, plano explicado com clareza, progressão registrada e
+        nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Acrescente três perguntas específicas. Ele já atendeu
+        adolescentes e sabe ajustar a progressão para essa fase? Como ele
+        lida com a pressa por resultado? E ele exige a liberação médica
+        antes de começar?
+      </p>
+
+      <p>
+        As referências de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        tratam a supervisão qualificada como condição — e não como
+        detalhe — do treino resistido nessa faixa etária.
+      </p>
+
+      <h2>O que o treino nessa idade realmente constrói</h2>
+      <p>
+        Se a expectativa é estética, o resultado costuma decepcionar no
+        curto prazo. Se a expectativa é o que de fato se constrói, ela é
+        difícil de superar.
+      </p>
+
+      <p>
+        Um adolescente que aprende a treinar direito sai dessa fase com
+        padrões de movimento sólidos, base de força, hábito estabelecido
+        e uma relação com o próprio corpo baseada em progressão, não em
+        comparação.
+      </p>
+
+      <p>
+        O guia sobre
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a> cobre a estrutura das primeiras semanas — que, com
+        supervisão e liberação médica, serve bem como ponto de partida.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer para adolescentes" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

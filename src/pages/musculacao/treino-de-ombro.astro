@@ -1,0 +1,340 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro: o que pode e o que evitar',
+    descricao: 'A articulação que mais reclama na academia — e como ajustar o treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'O trabalho de escápula que sustenta o ombro sob carga.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O deltoide anterior já trabalha muito aqui — e isso muda o seu volume.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-ombro';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de ombro: como montar o seu', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual porção do ombro faz mais diferença na largura?',
+    resposta:
+      'A porção lateral do deltoide, com folga. É ela que amplia a silhueta vista de frente e cria a impressão de cintura mais estreita. A porção anterior já recebe estímulo alto em todo supino e desenvolvimento, e a posterior é a mais negligenciada de todas. Na prática, quem quer ombro largo precisa de mais elevação lateral e mais trabalho posterior — não de mais desenvolvimento.',
+  },
+  {
+    pergunta: 'Desenvolvimento por trás da nuca faz mal?',
+    resposta:
+      'Coloca o ombro em rotação externa extrema com carga acima da cabeça, e não entrega nada que o desenvolvimento à frente não entregue. Para a maioria das pessoas, não compensa o risco — especialmente em quem tem mobilidade limitada de ombro ou histórico de dor. O desenvolvimento à frente, com barra ou halteres, cobre o mesmo objetivo com menos estresse articular.',
+  },
+  {
+    pergunta: 'Por que meu ombro estala ou dói na elevação lateral?',
+    resposta:
+      'As causas técnicas mais comuns são subir o braço acima da linha do ombro com carga, usar impulso de tronco e rodar o punho para baixo no topo — o famoso "despejar a jarra", que aumenta o pinçamento. Reduzir a carga, parar na altura do ombro e manter o polegar levemente para cima costuma resolver. Dor que persiste apesar do ajuste é caso para médico ou fisioterapeuta antes de continuar.',
+  },
+  {
+    pergunta: 'Preciso de um dia só para ombro?',
+    resposta:
+      'Não obrigatoriamente. O deltoide anterior já trabalha forte em todo empurrar horizontal, então muita gente resolve bem com 6 a 12 séries diretas semanais, distribuídas ao longo da semana. Um dia dedicado faz sentido para quem já tem base, quer priorizar o grupo ou treina em divisões de cinco ou seis dias — mas ele deve ser dominado por lateral e posterior, não por mais desenvolvimento.',
+  },
+  {
+    pergunta: 'Quantas séries de ombro fazer por semana?',
+    resposta:
+      'De 8 a 16 séries semanais no total costumam cobrir bem, mas a distribuição importa mais que o número: algo como metade para a porção lateral, um terço para a posterior e o restante para a anterior, que já recebe muito estímulo indireto. Faixas de 10 a 20 repetições funcionam especialmente bem para lateral e posterior, que respondem melhor a carga moderada com execução limpa.',
+  },
+];
+
+const title = 'Treino de ombro: como montar o seu (e os erros)';
+const description =
+  'Guia do treino de ombro: as três porções do deltoide, por que a lateral define a largura, elevação lateral sem dor, o que evitar e quantas séries fazer por semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de ombro: como montar o seu (e os erros mais comuns)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O ombro é a articulação mais móvel do corpo e, não por coincidência,
+      a que mais reclama na academia. É também o grupo em que a maioria
+      treina exatamente a porção errada.
+    </p>
+
+    <p class="lead">
+      Quem quer ombro largo faz desenvolvimento. Mas o desenvolvimento
+      carrega principalmente a porção que já trabalha em todo supino — e
+      a que realmente alarga a silhueta acaba subtreinada. Este guia
+      corrige a distribuição.
+    </p>
+
+    <div class="prose">
+      <h2>As três porções e o que cada uma faz</h2>
+      <p>
+        O deltoide tem três porções, com funções distintas.
+      </p>
+
+      <p>
+        <strong>Anterior.</strong> Eleva o braço à frente. Trabalha forte
+        em todo empurrar horizontal — <a href="/musculacao/supino-como-fazer/">supino</a>,
+        crucifixo, flexão — e em todo desenvolvimento. É a porção que
+        mais recebe estímulo indireto e a que menos precisa de trabalho
+        isolado.
+      </p>
+
+      <p>
+        <strong>Lateral.</strong> Afasta o braço do corpo. É a porção que
+        amplia a silhueta vista de frente e cria a impressão de cintura
+        mais estreita. É a que a maioria quer e a que poucos treinam o
+        suficiente.
+      </p>
+
+      <p>
+        <strong>Posterior.</strong> Leva o braço para trás. É a mais
+        negligenciada de todas, e a que mais faz diferença para postura e
+        para a saúde do ombro a longo prazo.
+      </p>
+
+      <VideoYouTube
+        id="ftGDjOrEfvk"
+        titulo="Deltoides ou ombros: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de ombro e demonstra a execução correta de cada um."
+      />
+
+      <h2>A conta que quase ninguém faz</h2>
+      <p>
+        Antes de somar séries de ombro, conte as que já existem. Quem faz
+        um dia de peito decente já acumulou volume considerável de
+        deltoide anterior antes da primeira elevação frontal.
+      </p>
+
+      <p>
+        Isso significa que a elevação frontal — exercício popularíssimo —
+        é o menos necessário do repertório para a maioria das pessoas. O
+        tempo gasto nela rende muito mais em lateral ou posterior.
+      </p>
+
+      <p>
+        A distribuição que costuma funcionar: cerca de metade do volume
+        direto para a lateral, um terço para a posterior e o resto para a
+        anterior.
+      </p>
+
+      <h2>Elevação lateral: o exercício mais mal executado</h2>
+      <p>
+        <strong>Pare na altura do ombro.</strong> Passar disso transfere
+        o trabalho para o trapézio e aumenta o pinçamento na
+        articulação.
+      </p>
+
+      <p>
+        <strong>Sem impulso de tronco.</strong> Se você precisa jogar o
+        corpo para subir o peso, a carga está alta demais — e este é um
+        exercício em que carga alta quase nunca compensa.
+      </p>
+
+      <p>
+        <strong>Não "despeje a jarra".</strong> Rodar o punho para baixo
+        no topo é dica antiga de revista e aumenta o estresse articular.
+        Mantenha o polegar levemente para cima ou o punho neutro.
+      </p>
+
+      <p>
+        <strong>Cotovelo levemente flexionado e fixo.</strong> Ele lidera
+        o movimento; a mão apenas acompanha.
+      </p>
+
+      <p>
+        <strong>Carga leve, execução limpa.</strong> A lateral responde
+        muito bem a faixas de 12 a 20 repetições com controle — muito
+        melhor do que a séries pesadas com técnica ruim.
+      </p>
+
+      <h2>Desenvolvimento: como fazer sem castigar o ombro</h2>
+      <p>
+        O desenvolvimento é o exercício de maior carga do grupo e vale a
+        pena, desde que bem posicionado.
+      </p>
+
+      <p>
+        Faça <strong>à frente</strong>, nunca por trás da nuca: a versão
+        atrás coloca o ombro em rotação externa extrema com carga sem
+        entregar vantagem correspondente.
+      </p>
+
+      <p>
+        Halteres permitem trajetória mais natural e são a escolha mais
+        amigável para ombros sensíveis; a barra permite mais carga
+        absoluta. Sentado com apoio dá estabilidade; em pé exige mais
+        core e menos carga.
+      </p>
+
+      <h2>Posterior: o que muda a médio prazo</h2>
+      <p>
+        Crucifixo inverso, face pull e variações na polia. Carga leve,
+        faixas altas de repetição, execução controlada.
+      </p>
+
+      <p>
+        Além do efeito estético — é a porção que dá profundidade ao ombro
+        visto de lado —, ela equilibra a quantidade de empurrar que a
+        maioria dos programas acumula. Esse equilíbrio é o que mantém a
+        articulação saudável ao longo dos anos, e o
+        <a href="/musculacao/treino-de-costas/">trabalho de escápula do
+        dia de costas</a> soma no mesmo sentido.
+      </p>
+
+      <h2>Ombro e dor: onde está a fronteira</h2>
+      <p>
+        Fadiga localizada no deltoide depois de uma série é esperada. Dor
+        aguda, dor que irradia para o braço ou estalos com desconforto
+        não são.
+      </p>
+
+      <p>
+        Na maioria dos casos, o ajuste técnico resolve: reduzir amplitude
+        na lateral, fechar o cotovelo no supino, tirar o desenvolvimento
+        atrás da nuca. Quando a dor persiste apesar disso, o caminho é
+        avaliação com médico ou fisioterapeuta antes de seguir
+        carregando — o guia sobre
+        <a href="/musculacao/treinar-com-dor-no-ombro/">treinar com dor
+        no ombro</a> detalha os ajustes mais usados.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 8 a 16 séries semanais no total cobrem bem a maioria, com a
+        distribuição pesando para lateral e posterior. Duas frequências
+        semanais rendem mais que uma sessão longa.
+      </p>
+
+      <p>
+        As faixas variam por porção: desenvolvimento em 6 a 12
+        repetições; lateral e posterior em 10 a 20, com carga moderada.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        apontam o princípio de sempre: progressão registrada ao longo dos
+        meses vale mais que variedade de exercícios numa sessão.
+      </p>
+
+      <h2>Um exemplo de sessão</h2>
+      <p>
+        Desenvolvimento à frente com halteres, 3 a 4 séries de 8 a 12.
+        Elevação lateral, 4 séries de 12 a 20. Crucifixo inverso ou face
+        pull, 3 a 4 séries de 12 a 20.
+      </p>
+
+      <p>
+        Repare no que não está aí: elevação frontal. Ela só entra se você
+        treina pouco peito ou tem um motivo específico — para a maioria,
+        o volume indireto já cobre.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Ombro é o grupo em que erro de execução vira dor mais rápido, e
+        em que a diferença entre "está no lugar certo" e "está no
+        trapézio" é sutil demais para se autoavaliar.
+      </p>
+
+      <p>
+        Um personal trainer identifica isso numa sessão, ajusta a carga e
+        distribui o volume entre as três porções — que é justamente onde
+        a maioria dos programas caseiros erra.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de ombro" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

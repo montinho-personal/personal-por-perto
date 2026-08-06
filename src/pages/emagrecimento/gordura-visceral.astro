@@ -1,0 +1,327 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-perder-barriga/',
+    titulo: 'Como perder barriga: a verdade sobre a gordura localizada',
+    descricao: 'Por que não existe exercício que queima gordura de um lugar só.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A base do processo — e o que a visceral tem de diferente nele.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física: o que ela deve incluir',
+    descricao: 'A medida de cintura é o indicador mais barato que existe para isso.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/gordura-visceral';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Gordura visceral: o que é e como reduzir', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre gordura visceral e subcutânea?',
+    resposta:
+      'A subcutânea fica logo abaixo da pele — é a que você consegue pinçar com os dedos. A visceral fica mais profunda, na cavidade abdominal, envolvendo órgãos como fígado e intestino, e não dá para pinçar. Essa diferença de localização importa porque a visceral é metabolicamente muito mais ativa: ela libera substâncias inflamatórias diretamente na circulação que vai para o fígado, e é a mais associada a risco cardiometabólico.',
+  },
+  {
+    pergunta: 'Como saber se tenho gordura visceral em excesso?',
+    resposta:
+      'A medida de circunferência da cintura é o indicador prático mais usado — barato, rápido e razoavelmente informativo quando acompanhado ao longo do tempo. Exames de imagem dão o quadro preciso, mas raramente são necessários para orientar a conduta. O ponto importante: a interpretação dos valores e a decisão sobre exames são do médico que acompanha você, não de uma tabela de internet.',
+  },
+  {
+    pergunta: 'Existe o "falso magro"?',
+    resposta:
+      'Existe, e é justamente o caso que mostra por que a balança engana. É a pessoa com peso e índice de massa corporal dentro da faixa considerada normal, mas com pouca massa muscular e acúmulo de gordura na região abdominal profunda. Do ponto de vista de risco metabólico, esse perfil pode estar em situação pior que alguém mais pesado e com mais músculo — e nenhuma balança comum detecta isso.',
+  },
+  {
+    pergunta: 'Abdominal reduz gordura visceral?',
+    resposta:
+      'Não diretamente. Não existe redução localizada de gordura por exercício de um grupo muscular específico — a mobilização de gordura acontece de forma sistêmica, conforme o déficit energético do corpo inteiro. Abdominal fortalece a musculatura do core, o que é útil por outros motivos, mas não escolhe de onde a gordura sai. O que reduz a visceral é o déficit calórico sustentado somado a treino de força e atividade regular.',
+  },
+  {
+    pergunta: 'A gordura visceral sai mais fácil ou mais difícil?',
+    resposta:
+      'A literatura sugere que ela costuma responder relativamente bem ao início de um processo de perda de peso — em parte por ser metabolicamente ativa. Isso é uma boa notícia prática: melhorias em marcadores de saúde podem aparecer antes de mudanças estéticas expressivas. Mas o processo é o mesmo de qualquer emagrecimento, sem atalho específico, e o acompanhamento clínico é quem confirma o que está mudando.',
+  },
+];
+
+const title = 'Gordura visceral: o que é e como reduzir';
+const description =
+  'Gordura visceral: a diferença para a subcutânea, por que ela importa mais para a saúde, o "falso magro", como acompanhar e o que realmente reduz — sem promessa fácil.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Gordura visceral: o que é, por que importa e como reduzir</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Duas pessoas com o mesmo peso, a mesma altura e o mesmo índice de
+      massa corporal podem ter perfis de saúde bem diferentes. A variável
+      que mais explica essa diferença não aparece na balança: é
+      <strong>onde</strong> a gordura está.
+    </p>
+
+    <p class="lead">
+      Este guia explica o que é a gordura visceral, por que ela recebe
+      tanta atenção clínica e o que, na prática, funciona para reduzi-la.
+      Sem atalho — porque não existe.
+    </p>
+
+    <div class="prose">
+      <h2>Duas gorduras, dois comportamentos</h2>
+      <p>
+        <strong>A subcutânea</strong> fica logo abaixo da pele. É a que
+        você consegue pinçar com os dedos, a que aparece no espelho e a
+        que a maioria das pessoas quer perder por motivo estético.
+      </p>
+
+      <p>
+        <strong>A visceral</strong> fica mais profunda, dentro da
+        cavidade abdominal, envolvendo órgãos como fígado e intestino.
+        Não dá para pinçar. Ela é o que faz a barriga ser dura e
+        protuberante em vez de mole.
+      </p>
+
+      <p>
+        A diferença não é só de endereço. A visceral é metabolicamente
+        muito mais ativa e libera substâncias inflamatórias diretamente
+        na circulação que chega ao fígado — o que a associa mais
+        fortemente a risco cardiometabólico do que a subcutânea.
+      </p>
+
+      <h2>Por que a balança não conta essa história</h2>
+      <p>
+        Peso e índice de massa corporal não distinguem músculo de gordura,
+        nem gordura profunda de gordura superficial. São indicadores
+        populacionais úteis e péssimos guias individuais.
+      </p>
+
+      <p>
+        Daí o caso do <strong>falso magro</strong>: peso na faixa
+        considerada normal, pouca massa muscular e acúmulo de gordura na
+        região abdominal profunda. Do ponto de vista de risco metabólico,
+        esse perfil pode estar pior do que alguém mais pesado e com mais
+        músculo.
+      </p>
+
+      <p>
+        É o exemplo mais claro de por que composição corporal diz mais que
+        peso — e por que a
+        <a href="/guias/avaliacao-fisica/">avaliação física</a> vale mais
+        que a pesagem semanal.
+      </p>
+
+      <VideoYouTube
+        id="U0tayQbg0a4"
+        titulo="Estratégias para falso magro com gordura localizada — Leandro Twin"
+        legenda="No vídeo: Leandro Twin discute o caso do falso magro — peso normal com acúmulo abdominal — e as estratégias de treino e dieta para esse perfil."
+      />
+
+      <h2>Como acompanhar sem exame caro</h2>
+      <p>
+        A circunferência da cintura é o indicador prático mais usado.
+        Barato, rápido e razoavelmente informativo — principalmente
+        quando acompanhado ao longo do tempo, e não como número isolado.
+      </p>
+
+      <p>
+        Meça sempre nas mesmas condições: mesma hora do dia, mesma altura
+        do abdome, fita paralela ao chão, sem apertar e ao fim de uma
+        expiração normal. A tendência ao longo dos meses é o que
+        interessa.
+      </p>
+
+      <p>
+        Exames de imagem dão o quadro preciso, mas raramente são
+        necessários para orientar a conduta. E vale ser explícito: a
+        interpretação dos valores, a necessidade de exames e qualquer
+        conclusão clínica são do médico que acompanha você.
+      </p>
+
+      <h2>O que não funciona</h2>
+      <p>
+        <strong>Abdominal.</strong> Não existe redução localizada de
+        gordura por exercício de um grupo muscular. A mobilização
+        acontece de forma sistêmica, conforme o déficit do corpo inteiro
+        — assunto detalhado no guia sobre
+        <a href="/emagrecimento/como-perder-barriga/">como perder
+        barriga</a>.
+      </p>
+
+      <p>
+        <strong>Cintas, cremes e aparelhos.</strong> Não alcançam a
+        gordura profunda e não alteram o balanço energético, que é o que
+        de fato move a agulha.
+      </p>
+
+      <p>
+        <strong>Chás e "detox".</strong> Não há atalho metabólico. O que
+        muda o quadro é o mesmo conjunto de sempre, aplicado por meses.
+      </p>
+
+      <h2>O que funciona</h2>
+      <p>
+        <strong>Déficit calórico sustentado.</strong> É a base de
+        qualquer redução de gordura, incluindo a visceral. O guia sobre
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> explica a mecânica.
+      </p>
+
+      <p>
+        <strong>Treino de força.</strong> Preserva massa magra durante o
+        processo — essencial no caso do falso magro, em que o problema é
+        justamente pouco músculo somado a gordura abdominal. Emagrecer
+        perdendo músculo aqui piora o quadro em vez de melhorar.
+      </p>
+
+      <p>
+        <strong>Atividade aeróbica regular.</strong> Aumenta o gasto e
+        traz benefícios cardiometabólicos que vão além do peso perdido.
+      </p>
+
+      <p>
+        <strong>Sono e álcool.</strong> Sono curto crônico e consumo
+        alcoólico elevado são fatores associados a acúmulo abdominal —
+        dois pontos que costumam ser tratados como secundários e não são.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        combinam exatamente esses elementos: atividade aeróbica semanal
+        somada a fortalecimento muscular em pelo menos dois dias.
+      </p>
+
+      <h2>A boa notícia sobre a ordem das coisas</h2>
+      <p>
+        A literatura sugere que a gordura visceral costuma responder
+        relativamente bem ao início de um processo de perda de peso — em
+        parte por ser metabolicamente ativa.
+      </p>
+
+      <p>
+        Na prática, isso significa que melhorias em marcadores de saúde
+        podem aparecer antes de mudanças estéticas expressivas. Quem está
+        no segundo mês, achando que "não mudou nada" porque o espelho
+        ainda não respondeu, pode já ter mudado bastante onde mais
+        importa.
+      </p>
+
+      <p>
+        Quem confirma isso é o acompanhamento clínico, com os exames que
+        o médico julgar pertinentes — não a percepção no espelho.
+      </p>
+
+      <h2>Onde o personal trainer entra</h2>
+      <p>
+        O papel aqui é específico e limitado, e vale dizer com clareza: o
+        diagnóstico e a conduta clínica são do médico, e a orientação
+        alimentar é do nutricionista.
+      </p>
+
+      <p>
+        O que o acompanhamento de treino agrega é a parte que sustenta o
+        resultado: um plano de força que preserve massa magra durante o
+        déficit, dose de aeróbico compatível com a rotina e o
+        acompanhamento de medidas — cintura incluída — para que a
+        tendência apareça em número, e não em impressão.
+      </p>
+
+      <p>
+        É o tipo de processo em que o progresso é lento e cumulativo. O
+        que decide não é a intensidade do primeiro mês: é o que continua
+        acontecendo no sexto.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre gordura visceral" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

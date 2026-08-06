@@ -1,0 +1,344 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros comuns',
+    descricao: 'O exercício-base do dia de perna, ponto a ponto.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer e erros comuns',
+    descricao: 'A outra metade da perna — a que quase ninguém treina direito.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O objetivo mais pedido, com a mecânica que realmente entrega.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-pernas';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de pernas: como montar o seu', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Preciso agachar para ter pernas grandes?',
+    resposta:
+      'Não obrigatoriamente, mas ajuda muito. O agachamento permite carga alta num padrão que recruta quadríceps e glúteo ao mesmo tempo, o que o torna eficiente. Quem não se adapta a ele constrói pernas perfeitamente bem com leg press, hack, agachamento búlgaro e extensora — desde que a progressão de carga exista. O exercício importa menos do que a sobrecarga aplicada ao longo dos meses.',
+  },
+  {
+    pergunta: 'Por que meu posterior de coxa não cresce?',
+    resposta:
+      'Porque quase ninguém o treina de verdade. Agachamento e leg press recrutam pouco posterior, e a mesa flexora sozinha não cobre a função de extensão de quadril. O posterior precisa dos dois padrões: flexão de joelho (mesa flexora, flexora em pé) e extensão de quadril com joelho quase estendido (stiff, terra romeno, bom-dia). Faltando o segundo, o grupo trava.',
+  },
+  {
+    pergunta: 'Leg press substitui o agachamento?',
+    resposta:
+      'Substitui parcialmente. O leg press carrega bem quadríceps e glúteo com menos exigência de estabilização e de mobilidade de tornozelo, o que o torna uma ótima opção para iniciantes, para quem tem desconforto lombar ou para volume adicional. O que ele não treina é a estabilização de tronco sob carga, que tem transferência maior para a vida real e para o esporte.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar pernas?',
+    resposta:
+      'Duas sessões semanais costumam render mais que uma sessão gigante, porque a qualidade de execução despenca no fim de um volume alto — e perna é o grupo em que técnica degradada mais custa caro. Um volume total de 10 a 20 séries semanais para o conjunto cobre bem a maioria, distribuído entre quadríceps, posterior, glúteo e panturrilha.',
+  },
+  {
+    pergunta: 'Precisa treinar panturrilha separado?',
+    resposta:
+      'Precisa, se o objetivo é desenvolvê-la. Ela recebe pouco estímulo direto nos exercícios grandes de perna e responde bem a volume alto e frequência alta — algo como 6 a 12 séries semanais distribuídas em duas ou três sessões, com amplitude completa e pausa no alongamento. É também o tecido que mais absorve impacto em quem corre, o que dá um motivo funcional além do estético.',
+  },
+];
+
+const title = 'Treino de pernas: como montar o seu (e os erros)';
+const description =
+  'Guia do treino de pernas: os quatro padrões que montam um dia completo, por que o posterior não cresce, leg press x agachamento, volume semanal e panturrilha.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de pernas: como montar o seu (e os erros mais comuns)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma piada antiga sobre pular o dia de perna. A piada mais
+      cara, porém, é outra: fazer o dia de perna e treinar só metade
+      dela.
+    </p>
+
+    <p class="lead">
+      Agachamento, leg press, extensora — todos empurram carga sobre o
+      quadríceps. O posterior de coxa, que responde por boa parte do
+      volume e quase toda a proteção do joelho, sai da sessão quase
+      intacto. Este guia organiza a perna inteira.
+    </p>
+
+    <div class="prose">
+      <h2>A perna tem quatro trabalhos, não um</h2>
+      <p>
+        <strong>Quadríceps.</strong> Estende o joelho. É o grupo mais
+        treinado e o que responde aos padrões de agachamento e leg press.
+      </p>
+
+      <p>
+        <strong>Posterior de coxa.</strong> Faz duas coisas: flexiona o
+        joelho e estende o quadril. Essa dupla função é a chave de tudo —
+        e a razão pela qual um exercício só nunca basta.
+      </p>
+
+      <p>
+        <strong>Glúteo.</strong> Extensor de quadril principal, motor da
+        propulsão e estabilizador da pelve.
+      </p>
+
+      <p>
+        <strong>Panturrilha.</strong> Recebe pouco estímulo indireto e
+        precisa de trabalho próprio, com volume e frequência maiores que
+        o resto.
+      </p>
+
+      <VideoYouTube
+        id="Pz9d3OYNKKw"
+        titulo="Treino de pernas com foco no quadríceps — Leandro Twin"
+        legenda="No vídeo: Leandro Twin monta um treino de pernas com foco em quadríceps e explica a escolha e a ordem dos exercícios."
+      />
+
+      <h2>Os quatro padrões que montam um dia completo</h2>
+      <p>
+        <strong>1. Agachamento (joelho dominante).</strong>
+        <a href="/musculacao/agachamento-como-fazer/">Agachamento
+        livre</a>, frontal, hack, leg press. Carrega quadríceps e glúteo
+        com carga alta.
+      </p>
+
+      <p>
+        <strong>2. Extensão de quadril (quadril dominante).</strong>
+        Stiff, <a href="/musculacao/levantamento-terra-como-fazer/">terra
+        romeno</a>, elevação pélvica, bom-dia. É aqui que o posterior e o
+        glúteo realmente trabalham — e é justamente esse padrão que a
+        maioria dos treinos caseiros esquece.
+      </p>
+
+      <p>
+        <strong>3. Trabalho unilateral.</strong> Avanço, afundo búlgaro,
+        step-up. Corrige assimetrias entre os lados e tem transferência
+        alta para corrida e esporte.
+      </p>
+
+      <p>
+        <strong>4. Isolados de fechamento.</strong> Extensora, mesa
+        flexora, panturrilha. Complementam o que os grandes não cobrem —
+        especialmente a flexão de joelho e a panturrilha.
+      </p>
+
+      <h2>Por que o posterior é o grande esquecido</h2>
+      <p>
+        Porque a mesa flexora sozinha cobre só metade da função dele. O
+        posterior também estende o quadril, e essa parte só é treinada
+        com joelho quase estendido e quadril indo para trás.
+      </p>
+
+      <p>
+        Na prática: quem faz agachamento, leg press, extensora e mesa
+        flexora tem um dia de perna que parece completo e não é. Falta o
+        stiff ou o terra romeno — e é ali que mora boa parte do volume da
+        coxa vista de perfil.
+      </p>
+
+      <p>
+        Há também um motivo de saúde. Um posterior forte protege o
+        joelho, equilibrando a força do quadríceps, e reduz risco de
+        lesão em quem corre ou pratica esporte com mudança de direção.
+      </p>
+
+      <h2>Os erros que travam o dia de perna</h2>
+      <p>
+        <strong>Meia amplitude com muito peso.</strong> Perna é onde o
+        ego mais aparece — e onde a amplitude reduzida mais custa
+        resultado.
+      </p>
+
+      <p>
+        <strong>Volume concentrado numa sessão só.</strong> Vinte séries
+        de perna numa segunda-feira rendem menos que dez séries duas
+        vezes por semana, porque a execução degrada com a fadiga.
+      </p>
+
+      <p>
+        <strong>Nunca variar a posição dos pés.</strong> Pequenas
+        mudanças de abertura e rotação alteram a distribuição do estímulo
+        e permitem trabalhar a mesma articulação por ângulos diferentes.
+      </p>
+
+      <p>
+        <strong>Ignorar a panturrilha.</strong> Ela precisa de mais
+        volume e mais frequência que o resto, e quase sempre recebe as
+        sobras de tempo no fim da sessão.
+      </p>
+
+      <p>
+        <strong>Progredir carga sem registrar.</strong> Vale para todos
+        os grupos, mas em perna a diferença aparece rápido: sem registro,
+        a carga fica parada por meses sem que ninguém perceba.
+      </p>
+
+      <h2>Leg press ou agachamento livre?</h2>
+      <p>
+        Não são rivais. O agachamento livre exige e treina estabilização
+        de tronco, tem transferência maior para a vida real e permite
+        progressão de longo prazo.
+      </p>
+
+      <p>
+        O leg press carrega bem com menos exigência de mobilidade de
+        tornozelo e menos demanda lombar — o que o torna útil para
+        iniciantes, para quem tem desconforto na coluna e para volume
+        adicional depois do exercício principal.
+      </p>
+
+      <p>
+        A escolha honesta é usar os dois em momentos diferentes, e não
+        eleger um vencedor.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 10 a 20 séries semanais para o conjunto da perna cobrem bem a
+        maioria, distribuídas em duas sessões. Faixas de 6 a 12
+        repetições para os padrões grandes, 10 a 15 para os isolados e 12
+        a 20 para panturrilha.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        reforçam o princípio central: a carga só deve subir depois que o
+        padrão de movimento se mantém estável em todas as repetições.
+      </p>
+
+      <p>
+        Quem tem dor no joelho, no quadril ou na lombar precisa de
+        avaliação de médico ou fisioterapeuta antes de aumentar carga —
+        perna é o grupo em que ignorar isso cobra mais rápido.
+      </p>
+
+      <h2>Um exemplo de sessão</h2>
+      <p>
+        Agachamento ou leg press, 3 a 4 séries de 6 a 12. Stiff ou terra
+        romeno, 3 a 4 séries de 8 a 12. Um unilateral (avanço ou
+        búlgaro), 3 séries de 10 a 12 por perna.
+      </p>
+
+      <p>
+        Fecha com extensora e mesa flexora, 2 a 3 séries de 10 a 15 cada,
+        e panturrilha em 3 a 4 séries de 12 a 20, com amplitude completa
+        e pausa embaixo.
+      </p>
+
+      <p>
+        Se o objetivo inclui glúteo especificamente, o guia sobre
+        <a href="/musculacao/treino-de-gluteos/">treino de glúteos</a>
+        detalha como redistribuir esse mesmo volume.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Perna é o grupo de maior carga absoluta e maior custo de
+        recuperação — o que significa que erro de dosagem aqui atrapalha
+        a semana inteira, não só a sessão.
+      </p>
+
+      <p>
+        Um personal trainer equilibra a distribuição entre os quatro
+        padrões, corrige amplitude e define quando a carga sobe. Para
+        quem tem dia de perna há anos e coxa parada no mesmo lugar,
+        costuma ser o ajuste que faltava.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de pernas" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

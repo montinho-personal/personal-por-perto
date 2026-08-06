@@ -1,0 +1,312 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-savassi/',
+    titulo: 'Personal trainer na Savassi',
+    descricao: 'O bairro vizinho, de perfil mais jovem e comercial.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'O que exigir da academia do prédio antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-lourdes';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Lourdes', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Lourdes?',
+    resposta:
+      'Em Belo Horizonte, a aula avulsa vai de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. O Lourdes é um dos endereços mais valorizados da cidade e trabalha no topo dessas faixas — com o atendimento dentro do condomínio na frente, por embutir deslocamento e exclusividade de horário.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Lourdes?',
+    resposta:
+      'A Praça da Liberdade, na divisa do bairro, é o principal espaço: jardins, alamedas e um circuito de caminhada que enche nas pontas do dia. Somam-se a Praça Marília de Dirceu e a praça da Assembleia Legislativa, além das próprias ruas do bairro, que têm passeios largos e arborizados — herança do projeto urbanístico original.',
+  },
+  {
+    pergunta: 'Os prédios do Lourdes têm academia?',
+    resposta:
+      'Depende da geração do prédio, e o bairro tem várias. Os lançamentos recentes entregam espaço fitness completo; já os edifícios pequenos de três ou quatro andares, que marcaram o início da verticalização de BH, quase nunca têm área de lazer. É por isso que o atendimento a domicílio convive com o de condomínio aqui.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'O inverno seco de Belo Horizonte, entre junho e setembro, é uma janela excelente para o treino ao ar livre em qualquer horário. No verão, as chuvas de fim de tarde recomendam antecipar a sessão para a manhã, e a hidratação pede atenção nos dias mais quentes.',
+  },
+  {
+    pergunta: 'Lourdes é bom para quem quer caminhar até a academia?',
+    resposta:
+      'É um dos melhores da cidade para isso. O bairro é compacto, tem passeios largos e concentra serviços em raio curto, com a Savassi e o Centro a poucos quarteirões. Boa parte dos moradores resolve o deslocamento a pé — o que faz o gasto energético diário subir sem esforço consciente.',
+  },
+];
+
+const title = 'Personal Trainer no Lourdes (Belo Horizonte)';
+const description =
+  'Personal trainer no Lourdes: preços de Belo Horizonte, a Praça da Liberdade, as gerações de prédio do bairro e como o treino se organiza no endereço mais nobre de BH.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Lourdes: o bairro onde Belo Horizonte começou a subir</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Antes de existir oficialmente, o Lourdes já tinha um centro de
+      gravidade: a Basílica de Nossa Senhora de Lourdes, inaugurada em
+      1923. O bairro cresceu em volta dela e só foi fundado formalmente
+      em meados dos anos 1930.
+    </p>
+
+    <p class="lead">
+      Nesse intervalo, ele definiu o que seria pelos cem anos seguintes —
+      o endereço da elite mineira. E foi ali que Belo Horizonte aprendeu a
+      construir para cima. Essa história explica, melhor do que qualquer
+      tabela, como funciona o mercado de <strong>personal trainer no
+      Lourdes</strong> hoje.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro ato: as casas da elite</h2>
+      <p>
+        O Lourdes nasceu no início do século XX como área residencial de
+        luxo, ocupada pelas famílias mais abastadas da capital recém-
+        planejada.
+      </p>
+
+      <p>
+        Duas marcas daquele momento sobreviveram e ainda organizam o
+        bairro: os passeios largos e a arborização das ruas, herança do
+        traçado original. É o tipo de detalhe urbano que parece
+        decorativo e não é — ele define se um bairro convida ou não a
+        percorrer a pé.
+      </p>
+
+      <h2>Segundo ato: os primeiros prédios de BH</h2>
+      <p>
+        Foi no Lourdes que começou a verticalização de Belo Horizonte,
+        com empreendimentos pequenos, de três ou quatro andares, que hoje
+        parecem modestos ao lado das torres vizinhas.
+      </p>
+
+      <p>
+        Esses edifícios continuam ali, com apartamentos amplos e nenhuma
+        área de lazer — porque a ideia de "prédio com academia" ainda não
+        existia. Para quem treina, isso importa muito: é a razão pela
+        qual o atendimento a domicílio segue forte num bairro que, à
+        primeira vista, parece dominado por torres modernas.
+      </p>
+
+      <h2>Terceiro ato: as torres e os escritórios</h2>
+      <p>
+        A partir das últimas décadas, o bairro ganhou empreendimentos de
+        grande porte, misturando unidades residenciais, salas e espaços
+        corporativos — com jardins nas fachadas e lazer completo.
+      </p>
+
+      <p>
+        O resultado é um bairro de gerações sobrepostas. Numa mesma rua
+        convivem o edifício de quatro andares dos anos 1950, sem
+        elevador social separado, e a torre nova com espaço fitness,
+        piscina e salão.
+      </p>
+
+      <p>
+        É essa sobreposição que explica por que, no Lourdes, não existe
+        um formato de treino dominante. Existem dois, e eles convivem.
+      </p>
+
+      <h2>O formato A: personal na academia do condomínio</h2>
+      <p>
+        Nas torres recentes, o espaço fitness é padrão de entrega, e o
+        profissional vai até lá. Zero deslocamento, horário exclusivo e
+        uma taxa de falta muito menor — a vantagem prática do formato.
+      </p>
+
+      <p>
+        O limite conhecido é o teto de carga: academia de condomínio
+        costuma ter halteres até um limite modesto e poucas máquinas, o
+        que pode travar quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos. O guia sobre
+        <a href="/guias/personal-trainer-em-condominio/">personal trainer
+        em condomínio</a> lista o que conferir antes de fechar.
+      </p>
+
+      <h2>O formato B: personal dentro do apartamento</h2>
+      <p>
+        Nos edifícios das primeiras gerações — e são muitos —, não há
+        área de lazer. O profissional chega com o material e monta a
+        sessão na sala, aproveitando que os apartamentos antigos do
+        bairro costumam ser generosos em metragem.
+      </p>
+
+      <p>
+        Funciona bem, com peso corporal, elásticos e halteres, desde que
+        exista um plano claro de para onde ir quando o corpo pedir mais
+        carga.
+      </p>
+
+      <h2>O quintal do bairro: a Praça da Liberdade</h2>
+      <p>
+        Na divisa do Lourdes está a Praça da Liberdade, com seus jardins e
+        alamedas — o espaço aberto de referência da região e um dos
+        circuitos de caminhada mais usados de Belo Horizonte.
+      </p>
+
+      <p>
+        Somam-se a Praça Marília de Dirceu e a praça da Assembleia
+        Legislativa, e as próprias ruas do bairro, cujos passeios largos
+        e arborizados fazem o percurso cotidiano render.
+      </p>
+
+      <p>
+        Esse último ponto pesa mais do que parece: num bairro compacto,
+        com Savassi e Centro a poucos quarteirões, muita gente resolve o
+        dia a pé — e o gasto energético sobe sem decisão consciente,
+        como detalha o guia sobre
+        <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos
+        por dia</a>.
+      </p>
+
+      <h2>O clima entra na conta</h2>
+      <p>
+        O inverno seco de Belo Horizonte, de junho a setembro, é uma
+        janela excelente para o ar livre em praticamente qualquer
+        horário.
+      </p>
+
+      <p>
+        No verão, as chuvas de fim de tarde recomendam antecipar a
+        sessão, e o calor pede hidratação reforçada. Nos dias fechados, a
+        academia — do prédio ou de rua — sustenta a rotina.
+      </p>
+
+      <h2>Quanto custa personal trainer no Lourdes</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de
+        R$ 400 a R$ 1.100 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Lourdes trabalha no topo. É o endereço de maior renda da região
+        central, e o atendimento em condomínio e a domicílio — os dois
+        formatos dominantes aqui — são justamente os que embutem
+        deslocamento e exclusividade de horário.
+      </p>
+
+      <p>
+        O treino em dupla, comum entre casais e vizinhos do mesmo prédio,
+        é o que mais reduz o valor por pessoa, e o online (R$ 180 a
+        R$ 470 mensais) cobre bem as semanas de viagem.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Lourdes, some uma pergunta que a história do bairro torna
+        obrigatória: o que ele faz quando o prédio não tem academia — ou
+        quando tem, mas o equipamento não acompanha mais a sua
+        progressão? Quem atende aqui já resolveu essa questão dezenas de
+        vezes, nas duas gerações de edifício.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Lourdes" />
+
+    <WhatsAppCta tema="geral" localidade="no Lourdes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

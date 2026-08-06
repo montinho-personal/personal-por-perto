@@ -1,0 +1,362 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/alongamento-antes-do-treino/',
+    titulo: 'Alongamento antes do treino: ajuda ou atrapalha?',
+    descricao: 'O primo confuso do aquecimento — e por que os dois não são a mesma coisa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'As séries de aproximação são parte da conta — e não contam como volume.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-de-treino-por-dia/',
+    titulo: 'Quanto tempo de treino por dia é suficiente?',
+    descricao: 'Onde o aquecimento cabe numa sessão de 45 a 60 minutos.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/aquecimento-antes-do-treino';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Aquecimento antes do treino: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto tempo deve durar o aquecimento?',
+    resposta:
+      'Entre 5 e 10 minutos de aquecimento geral costumam bastar para a maioria, somados às séries de aproximação do primeiro exercício. Aquecimento longo demais consome energia que deveria ir para o treino; curto demais deixa a primeira série valendo menos do que poderia. No frio, ele precisa ser mais longo — é o ajuste sazonal mais importante e o mais ignorado.',
+  },
+  {
+    pergunta: 'Vinte minutos de esteira contam como aquecimento?',
+    resposta:
+      'Contam como aeróbico, não como aquecimento. O objetivo do aquecimento é elevar a temperatura corporal e preparar as articulações que vão trabalhar — cinco minutos de intensidade leve a moderada dão conta disso. Vinte minutos antes de um treino de força consomem energia e podem reduzir o desempenho nas primeiras séries, que costumam ser as mais importantes da sessão.',
+  },
+  {
+    pergunta: 'O que são séries de aproximação?',
+    resposta:
+      'São séries com carga progressivamente maior que antecedem as séries de trabalho, servindo para preparar o movimento específico e calibrar o peso do dia. Num supino de 80 kg, por exemplo, você pode fazer 12 repetições com a barra, 8 com 40 kg e 4 com 60 kg antes da primeira série valendo. Elas não contam no volume de treino — e confundi-las com séries efetivas é um erro comum de quem monta a própria planilha.',
+  },
+  {
+    pergunta: 'Preciso aquecer antes de cada exercício?',
+    resposta:
+      'Do primeiro exercício de cada padrão de movimento, sim. Do segundo e do terceiro exercício que usam a mesma articulação, geralmente não — a musculatura já está preparada. Na prática: aqueça bem antes do supino e vá direto ao crucifixo depois; aqueça antes do agachamento e não precisa repetir o processo na extensora.',
+  },
+  {
+    pergunta: 'Alongamento serve como aquecimento?',
+    resposta:
+      'Não são a mesma coisa. Alongamento estático prolongado antes do treino pode reduzir temporariamente a produção de força, o que é o oposto do que se quer antes de uma série pesada. Mobilidade articular dinâmica, sim, tem lugar no aquecimento — movimentos controlados na amplitude que você vai usar. O alongamento estático rende mais depois do treino ou em sessão separada.',
+  },
+];
+
+const title = 'Aquecimento antes do treino: como fazer certo';
+const description =
+  'Aquecimento antes do treino: quanto tempo dura, o que ele realmente faz, séries de aproximação, mobilidade x alongamento e o ajuste que o frio exige.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Aquecimento antes do treino: como fazer certo (e o que não é aquecimento)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Há dois tipos de pessoa na academia: quem entra e vai direto para a
+      primeira série pesada, e quem passa vinte minutos na esteira
+      achando que está aquecendo.
+    </p>
+
+    <p class="lead">
+      Os dois estão errados, e pelo mesmo motivo — nenhum dos dois sabe
+      para que serve o aquecimento. Este guia responde isso primeiro, e
+      só depois entra no como.
+    </p>
+
+    <div class="prose">
+      <h2>Para que o aquecimento serve, de fato</h2>
+      <p>
+        <strong>Eleva a temperatura do músculo.</strong> Músculo mais
+        quente contrai e relaxa mais rápido, o que se traduz em mais
+        força disponível.
+      </p>
+
+      <p>
+        <strong>Prepara a articulação.</strong> O movimento aumenta a
+        produção de líquido sinovial, que reduz o atrito nas superfícies
+        articulares.
+      </p>
+
+      <p>
+        <strong>Ensaia o padrão de movimento.</strong> Este é o ponto
+        mais subestimado: as primeiras repetições de um exercício
+        recalibram a coordenação. Você não "aquece o músculo" apenas —
+        você lembra o corpo de como fazer aquele movimento.
+      </p>
+
+      <p>
+        <strong>Calibra a carga do dia.</strong> Nem todo dia você está
+        igual. As séries de aproximação dizem, antes da série valendo, se
+        hoje é dia de subir ou de segurar.
+      </p>
+
+      <h2>Aquecimento geral: 5 a 10 minutos, e só</h2>
+      <p>
+        Cinco a dez minutos de atividade leve a moderada — esteira,
+        bicicleta, elíptico, o que estiver livre — bastam para elevar a
+        temperatura corporal.
+      </p>
+
+      <p>
+        O erro clássico é esticar isso para vinte ou trinta minutos. Não
+        é aquecimento, é aeróbico — e aeróbico antes de treino de força
+        consome energia que deveria ir para as primeiras séries, que são
+        justamente as mais produtivas da sessão.
+      </p>
+
+      <p>
+        A régua é simples: se você terminou o aquecimento cansado, ele
+        foi longo demais.
+      </p>
+
+      <h2>Mobilidade: o passo que quase todo mundo pula</h2>
+      <p>
+        Depois do aquecimento geral, vale trabalhar a mobilidade das
+        articulações que vão entrar na sessão. Movimentos controlados,
+        na amplitude que você vai usar, sem carga ou com carga mínima.
+      </p>
+
+      <p>
+        Antes de um dia de perna: rotação de quadril, agachamento sem
+        carga, mobilidade de tornozelo. Antes de peito e ombro: rotação
+        de ombro, movimento de escápula, abertura de peitoral.
+      </p>
+
+      <p>
+        Isso é diferente de alongamento estático prolongado, que pode
+        reduzir temporariamente a produção de força — exatamente o
+        oposto do que se quer antes de uma série pesada. O guia sobre
+        <a href="/musculacao/alongamento-antes-do-treino/">alongamento
+        antes do treino</a> trata dessa distinção em detalhe.
+      </p>
+
+      <h2>Séries de aproximação: a parte que importa mais</h2>
+      <p>
+        Esta é a etapa que realmente prepara o exercício específico, e é
+        a mais negligenciada por quem monta a própria planilha.
+      </p>
+
+      <p>
+        Funciona assim: antes da primeira série valendo, você faz séries
+        com carga crescente e repetições decrescentes. Num supino de
+        80 kg, algo como 12 repetições com a barra vazia, 8 com 40 kg e 4
+        com 60 kg.
+      </p>
+
+      <p>
+        Cada uma delas prepara o padrão de movimento naquela carga e vai
+        dizendo como o corpo responde. Ao chegar na série de trabalho,
+        você já sabe se o dia rende.
+      </p>
+
+      <p>
+        Ponto crítico: <strong>séries de aproximação não contam no
+        volume de treino</strong>. Quem soma as três de aquecimento nas
+        "quatro séries de supino" está fazendo, na verdade, uma série
+        efetiva. É um dos erros que mais atrapalham o cálculo da
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a>.
+      </p>
+
+      <VideoYouTube
+        id="EyI9CzQ3LTU"
+        titulo="Séries de aquecimento, ajuste e trabalho — Leandro Twin"
+        legenda="No vídeo: Leandro Twin separa os três tipos de série de uma sessão e explica quais delas contam como volume de treino."
+      />
+
+      <h2>Do segundo exercício em diante</h2>
+      <p>
+        Aqui a conta muda. Se você já aqueceu e fez aproximações no
+        supino, o crucifixo que vem depois não precisa do mesmo
+        processo — a articulação e a musculatura já estão prontas.
+      </p>
+
+      <p>
+        A regra prática: aqueça bem o primeiro exercício de cada padrão
+        de movimento. Nos seguintes, no máximo uma série leve de ajuste,
+        e às vezes nem isso.
+      </p>
+
+      <p>
+        Isso resolve boa parte da queixa de "não tenho tempo para
+        aquecer". Bem organizado, o aquecimento completo de uma sessão
+        ocupa de 10 a 15 minutos, não meia hora.
+      </p>
+
+      <h2>O ajuste que o frio exige</h2>
+      <p>
+        Este é o fator sazonal mais ignorado. Em dias frios, a
+        temperatura muscular parte de um ponto mais baixo, e o mesmo
+        aquecimento de sempre chega insuficiente.
+      </p>
+
+      <p>
+        Na prática: alongue o aquecimento geral, some séries de
+        aproximação a mais e considere roupa em camadas nos primeiros
+        minutos. Em cidades de inverno rigoroso, isso deixa de ser
+        detalhe e vira prevenção de lesão.
+      </p>
+
+      <h2>Quando o aquecimento importa mais</h2>
+      <p>
+        <strong>Antes de exercícios de carga alta.</strong> Agachamento,
+        terra e supino pesado cobram mais preparação que uma cadeira
+        extensora.
+      </p>
+
+      <p>
+        <strong>De manhã cedo.</strong> A temperatura corporal está no
+        ponto mais baixo do dia e a mobilidade costuma estar reduzida.
+      </p>
+
+      <p>
+        <strong>Depois de tempo parado.</strong> Voltando de férias ou de
+        pausa, o padrão de movimento precisa de mais repetições para
+        voltar ao normal.
+      </p>
+
+      <p>
+        <strong>Com histórico de lesão.</strong> Aqui o aquecimento é
+        parte do plano, e o detalhe do que fazer deve vir do médico ou
+        fisioterapeuta que acompanha o caso — não de uma regra geral de
+        internet.
+      </p>
+
+      <p>
+        As diretrizes de prescrição de exercício sistematizadas por
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        tratam o aquecimento como parte estruturada da sessão, e não como
+        um extra opcional.
+      </p>
+
+      <h2>O modelo completo, em ordem</h2>
+      <p>
+        <strong>1.</strong> Cinco a dez minutos de atividade leve a
+        moderada. <strong>2.</strong> Dois a quatro minutos de mobilidade
+        das articulações do dia. <strong>3.</strong> Duas a quatro séries
+        de aproximação no primeiro exercício, com carga crescente.
+      </p>
+
+      <p>
+        <strong>4.</strong> Séries de trabalho. <strong>5.</strong> Nos
+        exercícios seguintes do mesmo padrão, no máximo uma série de
+        ajuste.
+      </p>
+
+      <p>
+        Total: de 10 a 15 minutos, dentro de uma sessão de 45 a 60 —
+        proporção que cabe bem na organização discutida no guia sobre
+        <a href="/musculacao/quanto-tempo-de-treino-por-dia/">quanto
+        tempo de treino por dia</a>.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Aquecimento é onde a economia de tempo parece inofensiva e não é.
+        Cortar quinze minutos por semana em aproximações custa carga nas
+        séries que importam — e o efeito só aparece meses depois, quando
+        a progressão trava sem motivo aparente.
+      </p>
+
+      <p>
+        Um personal trainer dimensiona isso pelo seu caso: quantas
+        aproximações, com que carga, e o que muda no inverno ou depois de
+        uma pausa. É um ajuste pequeno com efeito acumulado grande.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre aquecimento antes do treino" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
