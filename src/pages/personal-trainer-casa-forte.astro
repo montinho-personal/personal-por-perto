@@ -1,0 +1,320 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/recife-pe/',
+    titulo: 'Personal trainer no Recife',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-gracas/',
+    titulo: 'Personal trainer nas Graças',
+    descricao: 'O bairro vizinho, com o mesmo perfil arborizado e residencial.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para a terceira idade',
+    descricao: 'O treino de força que preserva autonomia — demanda forte num bairro consolidado.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-casa-forte';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer no Recife', url: '/personal-trainer/recife-pe/' },
+  { nome: 'Personal Trainer em Casa Forte', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Casa Forte?',
+    resposta:
+      'No Recife, a aula avulsa vai de R$ 70 a R$ 170 e o pacote mensal de R$ 360 a R$ 980. Casa Forte trabalha no meio para o topo dessa faixa — é um dos bairros mais valorizados da Zona Norte, com forte demanda por atendimento em condomínio e a domicílio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Casa Forte?',
+    resposta:
+      'A Praça de Casa Forte é o endereço principal: o primeiro jardim público projetado por Roberto Burle Marx no Recife, de 1934, com espelhos d’água e espécies da Amazônia e da Mata Atlântica. Além dela, as próprias ruas do bairro — um dos mais arborizados da cidade — oferecem sombra contínua, o que faz muita diferença no calor pernambucano.',
+  },
+  {
+    pergunta: 'Casa Forte é bom para quem quer resolver tudo a pé?',
+    resposta:
+      'É um dos melhores do Recife para isso. O bairro concentra escolas, comércio, serviços e restaurantes em raio curto, e a arborização torna o percurso viável mesmo nas horas mais quentes. Na prática, o morador acumula passos sem decisão consciente — o que pesa bastante na conta de quem quer emagrecer.',
+  },
+  {
+    pergunta: 'Os prédios de Casa Forte têm academia?',
+    resposta:
+      'Os lançamentos das últimas décadas, sim, quase todos com espaço fitness. Mas o bairro guarda um estoque relevante de casas e de edifícios mais antigos, herança do seu perfil residencial tradicional — e é nessa parte que o atendimento a domicílio segue forte.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'Começo da manhã e fim de tarde, como em todo o Recife: o calor e a umidade cobram caro do treino ao ar livre no meio do dia. A vantagem local é a arborização, que amplia um pouco essa janela — sob as árvores da praça e das ruas internas, a sensação térmica cai de forma perceptível.',
+  },
+];
+
+const title = 'Personal Trainer em Casa Forte (Recife): o guia';
+const description =
+  'Personal trainer em Casa Forte: preços do Recife, a Praça de Casa Forte de Burle Marx, a arborização do bairro e o formato de treino certo para cada perfil de morador.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Recife</p>
+    <h1>Personal trainer em Casa Forte: o formato certo para cada morador</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Casa Forte tem uma vantagem que quase nenhum bairro de capital
+      nordestina oferece: sombra. É um dos endereços mais arborizados do
+      Recife, e isso muda concretamente o que é possível fazer ao ar
+      livre numa cidade de calor e umidade altos.
+    </p>
+
+    <p class="lead">
+      Mas o bairro reúne moradores muito diferentes no mesmo território.
+      Este guia percorre os perfis que mais procuram um <strong>personal
+      trainer em Casa Forte</strong> e mostra o que muda em cada caso.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro, o território</h2>
+      <p>
+        Casa Forte ocupa o sítio onde funcionou, no século XVII, o
+        engenho de dona Ana Paes — a mesma casa-forte que deu nome ao
+        bairro e palco da Batalha de Casa Forte, em 1645, entre
+        luso-brasileiros e holandeses.
+      </p>
+
+      <p>
+        Dessa origem sobrou o traçado generoso e a vocação residencial
+        que o bairro nunca perdeu. Hoje ele combina casas, edifícios
+        antigos e lançamentos com lazer completo, com comércio, escolas e
+        serviços concentrados em raio curto.
+      </p>
+
+      <p>
+        No centro de tudo está a <strong>Praça de Casa Forte</strong>, o
+        primeiro jardim público projetado por Roberto Burle Marx no
+        Recife, em 1934, quando ele dirigia os Parques e Jardins do
+        governo estadual. Os canteiros reúnem espécies da Amazônia e da
+        Mata Atlântica, e dois espelhos d’água separam a flora aquática
+        sul-americana da de outras regiões tropicais.
+      </p>
+
+      <p>
+        Não é um parque de treino. É melhor que isso: é o centro
+        arborizado de um bairro inteiro que dá para percorrer a pé.
+      </p>
+
+      <h2>Perfil 1: quem quer resolver o dia caminhando</h2>
+      <p>
+        É o uso mais comum do bairro e o mais subestimado. Escolas,
+        padaria, farmácia, comércio e restaurantes cabem em distâncias
+        curtas, e a arborização torna o trajeto viável mesmo nas horas
+        quentes.
+      </p>
+
+      <p>
+        Isso pesa mais do que parece na conta de quem quer emagrecer: o
+        gasto diário fora do treino é justamente o componente que
+        diferencia rotinas parecidas, como detalha o guia sobre
+        <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos
+        por dia</a>.
+      </p>
+
+      <p>
+        Para esse perfil, o papel do personal é somar força ao que a
+        caminhada já entrega — porque andar aumenta o gasto, mas não
+        preserva massa muscular sozinho.
+      </p>
+
+      <h2>Perfil 2: quem mora em torre com lazer completo</h2>
+      <p>
+        Nos lançamentos das últimas décadas, o espaço fitness é padrão
+        de entrega, e o profissional vai até o prédio.
+      </p>
+
+      <p>
+        A vantagem é a constância: sem deslocamento, a taxa de falta
+        despenca — e num bairro de calor e chuva frequente, ter treino
+        garantido dentro de casa vale mais do que em cidade de clima
+        ameno.
+      </p>
+
+      <p>
+        O limite conhecido é o teto de carga, que costuma travar quem
+        avança na <a href="/musculacao/progressao-de-carga/">progressão
+        de carga</a> depois de um ou dois anos.
+      </p>
+
+      <h2>Perfil 3: quem mora em casa ou edifício antigo</h2>
+      <p>
+        Casa Forte guarda um estoque relevante de casas e de prédios
+        mais antigos, sem área de lazer. Aqui o atendimento a domicílio é
+        a saída natural — e o quintal, quando existe, é uma vantagem que
+        apartamento nenhum oferece.
+      </p>
+
+      <p>
+        O profissional leva o material e monta a sessão com peso
+        corporal, elásticos e halteres. Funciona bem, desde que exista um
+        plano claro de para onde ir quando o corpo pedir mais carga.
+      </p>
+
+      <h2>Perfil 4: o público 60+</h2>
+      <p>
+        Bairro consolidado, com moradores de longa data, tem naturalmente
+        uma parcela grande de público maduro — e essa é a demanda que
+        mais cresce em endereços assim.
+      </p>
+
+      <p>
+        O objetivo aqui não é estético: é autonomia. Treino de força
+        preserva massa muscular, densidade óssea e equilíbrio, e as ruas
+        planas e sombreadas do bairro permitem caminhada segura.
+      </p>
+
+      <p>
+        Dores e limitações articulares precisam de avaliação de médico ou
+        fisioterapeuta antes de o plano ser montado. Feito isso, o
+        caminho está no guia sobre
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal
+        trainer para a terceira idade</a>.
+      </p>
+
+      <h2>Perfil 5: a família que treina junto</h2>
+      <p>
+        Num bairro de perfil familiar, o treino em dupla e em pequeno
+        grupo é natural — casal, pai e filho, vizinhas do mesmo prédio.
+      </p>
+
+      <p>
+        Além de dividir o custo, esse formato cria compromisso mútuo, que
+        na prática é o que mais eleva a frequência ao longo dos meses.
+      </p>
+
+      <h2>O clima manda no horário de todo mundo</h2>
+      <p>
+        Independentemente do perfil, o calor e a umidade do Recife
+        empurram o treino ao ar livre para as pontas do dia. As chuvas,
+        frequentes, pedem um plano B em ambiente coberto.
+      </p>
+
+      <p>
+        A arborização de Casa Forte amplia essa janela um pouco: sob as
+        árvores da praça e das ruas internas, a sensação térmica cai de
+        forma perceptível. É a vantagem estrutural do bairro, e um bom
+        profissional a usa em vez de ignorá-la.
+      </p>
+
+      <h2>Quanto custa personal trainer em Casa Forte</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/recife-pe/">personal trainer no
+        Recife</a>, vai de R$ 70 a R$ 170 pela aula avulsa e de R$ 360 a
+        R$ 980 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Casa Forte trabalha no meio para o topo. O atendimento em
+        condomínio e a domicílio são os mais caros, por embutirem
+        deslocamento e exclusividade de horário; o treino em dupla é o
+        que mais reduz o valor por pessoa, e o online (R$ 180 a R$ 450
+        mensais) cobre bem as semanas de viagem.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Casa Forte, some duas perguntas locais. Ele sabe montar sessão
+        em casa ou em quintal, com pouco equipamento? E como ele
+        aproveita a arborização do bairro ao longo da semana, em vez de
+        tratar todo treino como coisa de ambiente fechado? Quem atende
+        aqui responde as duas sem hesitar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Casa Forte" />
+
+    <WhatsAppCta tema="geral" localidade="em Casa Forte" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

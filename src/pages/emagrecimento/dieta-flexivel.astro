@@ -1,0 +1,352 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const ministerioSaude = fontesExternas.ministerioSaude;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta que a dieta flexível apenas torna mais fácil de administrar.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-manter-o-peso-perdido/',
+    titulo: 'Como manter o peso perdido depois da dieta',
+    descricao: 'A fase em que a flexibilidade deixa de ser conforto e vira necessidade.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/jejum-intermitente-funciona/',
+    titulo: 'Jejum intermitente funciona para emagrecer?',
+    descricao: 'Outra forma de organizar o mesmo déficit — com regra de horário em vez de conta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/dieta-flexivel';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Dieta flexível: o que é e como funciona', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é dieta flexível?',
+    resposta:
+      'É uma abordagem que define metas diárias de calorias e de macronutrientes — proteína, carboidrato e gordura — e permite que você as atinja com os alimentos que preferir, em vez de seguir um cardápio fixo. Ficou conhecida pela sigla IIFYM, de "if it fits your macros". Não é uma dieta específica: é um método de organizar qualquer dieta, e o que ela flexibiliza são as escolhas, não os números.',
+  },
+  {
+    pergunta: 'Posso comer o que quiser na dieta flexível?',
+    resposta:
+      'Dentro das metas, sim — e é aí que mora o mal-entendido mais comum. Bater 150 g de proteína e 2.000 kcal comendo majoritariamente ultraprocessado é matematicamente possível e nutricionalmente ruim: faltam fibras, micronutrientes e saciedade. A recomendação prática que acompanha o método é a regra dos 80/20, com a maior parte da ingestão vindo de alimentos minimamente processados.',
+  },
+  {
+    pergunta: 'Preciso pesar toda a comida?',
+    resposta:
+      'No começo, pesar ajuda muito — não para virar rotina permanente, mas para calibrar a percepção. Depois de algumas semanas, a maioria das pessoas estima porções com precisão razoável e passa a pesar só o que é fácil de errar, como óleo, castanha e queijo. O objetivo do método é ganhar autonomia, não criar dependência de balança.',
+  },
+  {
+    pergunta: 'Dieta flexível funciona melhor que dieta tradicional?',
+    resposta:
+      'Não há vantagem metabólica: quando calorias e proteína são equiparadas, os resultados tendem a ser parecidos. A vantagem é comportamental. Um método que permite comer em restaurante, ir a aniversário e adaptar a comida da casa costuma ser sustentado por mais tempo — e tempo de adesão é o que decide o resultado de qualquer plano alimentar.',
+  },
+  {
+    pergunta: 'Para quem a dieta flexível não é indicada?',
+    resposta:
+      'Para quem tem histórico de transtorno alimentar, o registro constante de números pode alimentar padrões prejudiciais, e a abordagem precisa ser discutida com a equipe que acompanha o caso. Pessoas com condições clínicas que exigem restrições específicas — diabetes, doença renal, doença celíaca, entre outras — precisam de orientação individualizada de médico e nutricionista, que se sobrepõe a qualquer método genérico.',
+  },
+];
+
+const title = 'Dieta flexível: o que é e como funciona na prática';
+const description =
+  'Dieta flexível (IIFYM): o que é, como definir calorias e macros, a regra dos 80/20, se precisa pesar comida e para quem o método não é indicado.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Dieta flexível: o que é e como funciona na prática</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A dieta flexível costuma ser apresentada de dois jeitos igualmente
+      errados: como licença para comer besteira o dia inteiro, ou como
+      uma planilha obsessiva que exige balança em todo restaurante.
+    </p>
+
+    <p class="lead">
+      Ela não é nenhum dos dois. É um método de organizar a alimentação
+      por metas em vez de por cardápio — e a sua vantagem real não é
+      metabólica, é comportamental. Este guia explica como usá-la sem
+      cair nas duas armadilhas.
+    </p>
+
+    <div class="prose">
+      <h2>O que é, exatamente</h2>
+      <p>
+        Você define metas diárias de calorias e de macronutrientes —
+        proteína, carboidrato e gordura — e atinge essas metas com os
+        alimentos que preferir.
+      </p>
+
+      <p>
+        A sigla que popularizou o método é IIFYM, de <em>if it fits your
+        macros</em>: se couber nos seus macros, cabe no seu dia. Em vez
+        de "café da manhã é ovo com aveia", a regra vira "o café da manhã
+        precisa entregar X de proteína e Y de carboidrato".
+      </p>
+
+      <p>
+        Repare no que ela flexibiliza: <strong>as escolhas, não os
+        números</strong>. A conta continua a mesma de sempre — o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>. O método só muda a forma de administrá-la.
+      </p>
+
+      <h2>Por que ela funciona para tanta gente</h2>
+      <p>
+        Não por vantagem metabólica. Quando calorias e proteína são
+        equiparadas, dieta flexível e cardápio fixo produzem resultados
+        parecidos.
+      </p>
+
+      <p>
+        A vantagem é a aderência. Um método que permite jantar fora,
+        comer o bolo do aniversário e adaptar o almoço da casa da mãe
+        sobrevive a meses de vida real — coisa que uma lista de seis
+        refeições fixas raramente faz.
+      </p>
+
+      <p>
+        E tempo de adesão é o que decide o resultado de qualquer plano
+        alimentar. A melhor dieta não é a mais eficiente no papel: é a
+        que você mantém.
+      </p>
+
+      <VideoYouTube
+        id="Kz5zNRAvEyc"
+        titulo="Como montar uma dieta passo a passo — Leandro Twin"
+        legenda="No vídeo: Leandro Twin monta uma dieta passo a passo, definindo calorias e distribuição de macronutrientes."
+      />
+
+      <h2>Como montar as metas</h2>
+      <p>
+        <strong>1. Calorias.</strong> Parta de uma estimativa do seu
+        gasto e aplique um déficit moderado. Estimativas iniciais são
+        sempre aproximadas — o número real aparece ao acompanhar peso e
+        medidas por duas ou três semanas e ajustar.
+      </p>
+
+      <p>
+        <strong>2. Proteína.</strong> É o macro que mais importa em
+        déficit, porque protege a massa magra junto com o treino de
+        força. Costuma ser definido primeiro e mantido estável.
+      </p>
+
+      <p>
+        <strong>3. Gordura.</strong> Tem um piso a respeitar, por
+        questões hormonais e de absorção de vitaminas. Não é o macro para
+        cortar até o fim.
+      </p>
+
+      <p>
+        <strong>4. Carboidrato.</strong> Ocupa o que sobra das calorias.
+        É o macro mais ajustável, e o que costuma variar conforme o
+        volume de treino da semana.
+      </p>
+
+      <p>
+        Os valores específicos de cada um dependem do seu peso,
+        composição corporal, nível de atividade e histórico — e definir
+        isso é trabalho de nutricionista, não de calculadora de
+        internet.
+      </p>
+
+      <h2>A regra dos 80/20</h2>
+      <p>
+        Aqui está a resposta ao mal-entendido mais comum. Sim, é
+        matematicamente possível bater todos os macros comendo
+        majoritariamente ultraprocessado.
+      </p>
+
+      <p>
+        Também é nutricionalmente ruim. Faltam fibras, micronutrientes e
+        — o mais prático de todos — saciedade. Quem tenta cabe as
+        calorias em pizza e chocolate passa o dia com fome, e é a fome
+        que derruba a dieta.
+      </p>
+
+      <p>
+        Daí a recomendação que acompanha o método: cerca de 80% da
+        ingestão vindo de alimentos minimamente processados, e os 20%
+        restantes livres. Não é moralismo alimentar — é a proporção que
+        faz a conta fechar sem sofrimento.
+      </p>
+
+      <h2>Preciso pesar tudo para sempre?</h2>
+      <p>
+        Não. Pesar no começo serve para calibrar a percepção, e a
+        calibração é o objetivo real.
+      </p>
+
+      <p>
+        Depois de algumas semanas, a maioria das pessoas estima porções
+        com precisão razoável. A partir daí, dá para pesar só o que é
+        fácil de errar por muito: óleo, castanha, queijo, pasta de
+        amendoim — itens de densidade calórica alta em volume pequeno.
+      </p>
+
+      <p>
+        O método bem aplicado gera autonomia. Se depois de meses você
+        ainda não consegue estimar um prato sem balança, algo na
+        aplicação está desviado do propósito.
+      </p>
+
+      <h2>Os erros mais comuns</h2>
+      <p>
+        <strong>Tratar "flexível" como "livre".</strong> A flexibilidade
+        está nas escolhas dentro das metas, não na ausência de metas.
+      </p>
+
+      <p>
+        <strong>Ignorar fibras e micronutrientes.</strong> Macros são
+        três números; nutrição é bem mais que isso.
+      </p>
+
+      <p>
+        <strong>Recalcular a cada dois dias.</strong> O peso oscila por
+        água, sal e conteúdo intestinal. Ajustes se fazem sobre
+        tendências de duas a três semanas.
+      </p>
+
+      <p>
+        <strong>Compensar excesso com jejum no dia seguinte.</strong>
+        Isso não é flexibilidade, é ciclo de restrição e compensação — e
+        costuma ser o começo de uma relação ruim com a comida.
+      </p>
+
+      <h2>Para quem o método não serve</h2>
+      <p>
+        Para quem tem histórico de transtorno alimentar, o registro
+        constante de números pode alimentar padrões prejudiciais. Nesses
+        casos, a abordagem precisa ser discutida com a equipe que
+        acompanha a pessoa — e frequentemente a recomendação vai em outra
+        direção.
+      </p>
+
+      <p>
+        Também não serve como solução genérica para quem tem condições
+        clínicas com restrições específicas — diabetes, doença renal,
+        doença celíaca, entre outras. Nesses casos, a orientação
+        individualizada de médico e nutricionista se sobrepõe a qualquer
+        método.
+      </p>
+
+      <p>
+        E há um perfil mais simples: quem prefere não pensar em comida.
+        Para essas pessoas, um cardápio fixo e repetitivo pode ser mais
+        confortável — e conforto, aqui, é vantagem, não preguiça.
+      </p>
+
+      <h2>A parte que a dieta não faz sozinha</h2>
+      <p>
+        Nenhuma organização alimentar preserva massa magra sem treino de
+        força. Emagrecer só com números na planilha custa músculo junto
+        com a gordura, e o resultado é a balança feliz com o espelho
+        indiferente.
+      </p>
+
+      <p>
+        As orientações oficiais de alimentação e atividade física
+        publicadas pelo
+        <a href={ministerioSaude.url} target="_blank" rel="noopener">{ministerioSaude.nome}</a>
+        seguem o mesmo princípio: mudança alimentar sustentável somada a
+        atividade física regular, com acompanhamento profissional quando
+        há condição de saúde envolvida.
+      </p>
+
+      <p>
+        E quando a fase de perda termina, a flexibilidade deixa de ser
+        conforto e vira necessidade — é ela que sustenta a
+        <a href="/emagrecimento/como-manter-o-peso-perdido/">manutenção
+        do peso</a> quando não há mais balança descendo para motivar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre dieta flexível" />
+
+    <WhatsAppCta tema="alimentacao" />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

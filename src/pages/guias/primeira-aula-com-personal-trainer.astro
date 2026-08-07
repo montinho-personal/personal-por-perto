@@ -1,0 +1,362 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física: o que ela deve incluir',
+    descricao: 'O que a primeira semana precisa entregar — e o que é enrolação.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'O que esperar das primeiras semanas de treino de verdade.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/primeira-aula-com-personal-trainer';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Primeira aula com personal trainer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Como é a primeira aula com um personal trainer?',
+    resposta:
+      'A primeira sessão bem conduzida é mais conversa e avaliação do que treino pesado. Ela costuma incluir anamnese — histórico de saúde, lesões, medicação, rotina e objetivo —, alguma medida de referência e um bloco de movimento leve para o profissional observar como você se move. Sair exausto e dolorido não é sinal de boa primeira aula; é sinal de que o profissional pulou a etapa de avaliar.',
+  },
+  {
+    pergunta: 'Preciso de atestado médico para começar?',
+    resposta:
+      'Muitas academias exigem, e a exigência faz sentido independentemente da regra do estabelecimento. Quem tem qualquer condição de saúde, usa medicação contínua, está acima do peso, é sedentário há muito tempo ou tem histórico familiar de doença cardiovascular deve passar por avaliação médica antes de iniciar. Um profissional sério pede isso em vez de tratar como burocracia.',
+  },
+  {
+    pergunta: 'Vou ficar com dor depois da primeira aula?',
+    resposta:
+      'Alguma dor muscular tardia é comum quando o corpo não está habituado, e ela costuma aparecer entre 24 e 48 horas depois. O que não deve acontecer é dor incapacitante que atrapalhe subir escada ou trabalhar por dias — isso indica carga ou volume excessivos para um primeiro contato. Dor articular, aguda ou localizada em uma articulação é outro assunto, e merece avaliação.',
+  },
+  {
+    pergunta: 'O que devo levar e vestir?',
+    resposta:
+      'Roupa confortável que permita movimento amplo, tênis adequado para treino de força — não de corrida amortecida demais —, garrafa de água e toalha. Se tiver exames recentes, laudos de lesão antiga ou lista de medicação em uso, leve: essas informações mudam o plano e são exatamente o que o profissional precisa saber antes de prescrever qualquer coisa.',
+  },
+  {
+    pergunta: 'Posso desistir se não gostar da primeira aula?',
+    resposta:
+      'Pode, e vale fazer a primeira sessão como aula avulsa antes de fechar pacote longo. É prática comum e legítima. A primeira aula é justamente o momento de avaliar se a comunicação funciona, se o profissional escuta e se explica o que está fazendo — critérios que nenhum currículo revela e que definem os meses seguintes.',
+  },
+  {
+    pergunta: 'Quanto tempo até ver resultado?',
+    resposta:
+      'As primeiras mudanças são de desempenho e disposição, e aparecem nas quatro a seis primeiras semanas: você sobe carga, cansa menos, dorme melhor. Mudanças visíveis de composição corporal costumam aparecer entre o terceiro e o sexto mês com consistência. Qualquer promessa de transformação em trinta dias é marketing, e é um sinal de alerta logo na primeira conversa.',
+  },
+];
+
+const title = 'Primeira aula com personal trainer: o que esperar';
+const description =
+  'Primeira aula com personal trainer: como é a sessão, o que levar, a anamnese e a avaliação, o que deve acontecer, os sinais de alerta e quanto tempo até ver resultado.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Primeira aula com personal trainer: o que esperar de verdade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma expectativa comum sobre a primeira aula: sair de lá
+      destruído, com a sensação de que o dinheiro valeu. É exatamente o
+      contrário do que uma boa primeira sessão entrega.
+    </p>
+
+    <p class="lead">
+      A primeira aula é de coleta de informação. O que se decide nela —
+      carga inicial, restrições, prioridades — define os seis meses
+      seguintes. Este guia descreve como ela deve ser e o que observar
+      enquanto acontece.
+    </p>
+
+    <div class="prose">
+      <h2>Antes: o que preparar</h2>
+      <p>
+        <strong>Informação de saúde.</strong> Exames recentes, laudos de
+        lesão antiga, cirurgias, lista de medicação em uso. Isso não é
+        detalhe burocrático: muda a prescrição.
+      </p>
+
+      <p>
+        <strong>Liberação médica, quando for o caso.</strong> Quem tem
+        condição de saúde conhecida, usa medicação contínua, está acima
+        do peso, é sedentário há muito tempo ou tem histórico familiar de
+        doença cardiovascular deve passar por avaliação médica antes de
+        iniciar.
+      </p>
+
+      <p>
+        <strong>Um objetivo em palavras suas.</strong> "Quero emagrecer"
+        é ponto de partida; "quero conseguir subir os quatro andares do
+        prédio sem parar" é bem melhor, porque é verificável.
+      </p>
+
+      <p>
+        <strong>O básico material.</strong> Roupa que permita movimento
+        amplo, tênis adequado para treino de força, água e toalha.
+      </p>
+
+      <h2>Bloco 1: a anamnese</h2>
+      <p>
+        A sessão começa sentado, e isso costuma surpreender quem esperava
+        ir direto para o aparelho.
+      </p>
+
+      <p>
+        O profissional deve perguntar sobre histórico de treino, lesões,
+        cirurgias, dores atuais, medicação, qualidade do sono, rotina de
+        trabalho, deslocamento e alimentação em linhas gerais. E sobre o
+        que você já tentou antes e por que parou — esta última é a
+        pergunta mais reveladora de todas.
+      </p>
+
+      <p>
+        Se a primeira aula pula essa etapa, o plano que vier depois será
+        genérico por construção. Não há como individualizar sem
+        informação.
+      </p>
+
+      <h2>Bloco 2: as medidas de referência</h2>
+      <p>
+        Não precisa ser sofisticado. Precisa existir e ser repetível.
+      </p>
+
+      <p>
+        Peso, circunferências principais, e — quando disponível — alguma
+        estimativa de composição corporal. O valor está menos no número
+        de hoje e mais na comparação daqui a oito ou doze semanas.
+      </p>
+
+      <p>
+        O guia sobre <a href="/guias/avaliacao-fisica/">avaliação
+        física</a> detalha o que essa etapa deve incluir e o que é
+        acessório.
+      </p>
+
+      <h2>Bloco 3: o movimento</h2>
+      <p>
+        Aqui o profissional observa como você se move: agachar, empurrar,
+        puxar, e como estão mobilidade de ombro, quadril e tornozelo.
+      </p>
+
+      <p>
+        A carga é leve de propósito. O objetivo não é testar o seu
+        limite, e sim ver o seu padrão — onde a amplitude trava, qual
+        lado compensa, o que dói.
+      </p>
+
+      <p>
+        É também o momento em que ele calibra a carga inicial do
+        programa. Errar isso para cima gera dor desnecessária; errar para
+        baixo custa semanas de estímulo insuficiente.
+      </p>
+
+      <VideoYouTube
+        id="DLND8-OCMek"
+        titulo="O primeiro dia é o mais difícil — Leandro Twin"
+        legenda="No vídeo: Leandro Twin fala sobre o começo — a etapa em que a barreira é mais psicológica que física."
+      />
+
+      <h2>Bloco 4: a explicação do plano</h2>
+      <p>
+        A sessão deve terminar com você entendendo o que vem pela frente:
+        quantas vezes por semana, quanto tempo por sessão, qual o foco
+        das primeiras semanas e como o progresso será medido.
+      </p>
+
+      <p>
+        Você não precisa entender periodização. Precisa entender a
+        lógica: por que essa frequência, por que esses exercícios, o que
+        muda daqui a um mês.
+      </p>
+
+      <p>
+        As diretrizes de prescrição de exercício sistematizadas por
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        tratam avaliação e prescrição individualizada como etapas
+        estruturadas — não como conversa informal antes do treino.
+      </p>
+
+      <h2>O que NÃO deve acontecer</h2>
+      <p>
+        <strong>Treino máximo no primeiro dia.</strong> Sem saber como
+        você se move e como recupera, carga alta é chute.
+      </p>
+
+      <p>
+        <strong>Sair incapacitado.</strong> Alguma dor muscular tardia é
+        normal; não conseguir descer escada por três dias não é. Isso não
+        é intensidade — é dosagem errada.
+      </p>
+
+      <p>
+        <strong>Nenhuma pergunta sobre saúde.</strong> É o sinal de
+        alerta mais grave da lista.
+      </p>
+
+      <p>
+        <strong>Promessa de prazo.</strong> "Em trinta dias você muda" é
+        marketing, e aparecer na primeira conversa já diz muito.
+      </p>
+
+      <p>
+        <strong>Sugestão de suplemento ou substância.</strong> Fora do
+        escopo, e ainda mais fora no primeiro encontro.
+      </p>
+
+      <p>
+        <strong>Falar mais do que escuta.</strong> A primeira aula é
+        principalmente sobre você.
+      </p>
+
+      <h2>Depois: o que sentir e o que observar</h2>
+      <p>
+        A dor muscular tardia costuma aparecer entre 24 e 48 horas
+        depois, e é esperada quando o corpo não está habituado.
+      </p>
+
+      <p>
+        Dor articular, dor aguda durante o movimento ou dor localizada em
+        uma articulação específica são outra categoria. Se aparecerem,
+        comunique — e, se persistirem, procure médico ou fisioterapeuta
+        antes da próxima sessão.
+      </p>
+
+      <p>
+        Vale também anotar três coisas nas 48 horas seguintes: como você
+        dormiu, como se sentiu no dia seguinte e se ficou com vontade de
+        voltar. Essa última é o melhor preditor de aderência que existe.
+      </p>
+
+      <h2>A pergunta que fecha a decisão</h2>
+      <p>
+        Vale fazer a primeira sessão como aula avulsa antes de fechar
+        pacote longo. É prática comum e legítima.
+      </p>
+
+      <p>
+        E, ao sair, responda a si mesmo: <strong>eu entendi o que vamos
+        fazer e por quê?</strong> Se a resposta for sim, o profissional
+        provavelmente sabe o que está fazendo. Se for não, mais aulas
+        dificilmente vão esclarecer.
+      </p>
+
+      <p>
+        Os demais critérios estão no guia <a href={rotas.comoEscolher}>
+        como escolher um personal trainer</a> — e a estrutura das
+        semanas seguintes, no guia sobre
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a>.
+      </p>
+
+      <h2>Sobre a expectativa de resultado</h2>
+      <p>
+        As primeiras mudanças são de desempenho e disposição, nas quatro
+        a seis primeiras semanas: você sobe carga, cansa menos, dorme
+        melhor.
+      </p>
+
+      <p>
+        Mudanças visíveis de composição corporal costumam aparecer entre
+        o terceiro e o sexto mês com consistência. Saber disso desde a
+        primeira aula é o que impede a frustração da sexta semana — o
+        momento em que a maioria das pessoas desiste, justamente quando o
+        processo está funcionando.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a primeira aula com personal trainer" />
+
+    <WhatsAppCta tema="iniciantes" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

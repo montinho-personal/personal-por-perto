@@ -1,0 +1,342 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belem-pa/',
+    titulo: 'Personal trainer em Belém',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-batista-campos/',
+    titulo: 'Personal trainer no Batista Campos',
+    descricao: 'O bairro vizinho, com a praça mais arborizada de Belém.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'Regras de acesso e o que exigir da academia do prédio.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-nazare-belem';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belém', url: '/personal-trainer/belem-pa/' },
+  { nome: 'Personal Trainer em Nazaré', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Nazaré?',
+    resposta:
+      'Em Belém, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Nazaré trabalha no topo dessas faixas: é um dos endereços de maior renda da cidade, com forte demanda por atendimento dentro do condomínio, que embute deslocamento e exclusividade de horário.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Nazaré?',
+    resposta:
+      'As próprias ruas resolvem boa parte. Belém é a Cidade das Mangueiras, e Nazaré é um bairro residencial e arborizado — onde há copa contínua sobre a calçada, a sensação térmica cai de forma perceptível. A Praça Santuário, o Largo de Nazaré e o vizinho Bosque Rodrigues Alves, com 15 hectares de floresta amazônica preservada, completam o circuito.',
+  },
+  {
+    pergunta: 'Os prédios de Nazaré têm academia?',
+    resposta:
+      'Depende da geração do edifício. O bairro reúne construções do ciclo da borracha, prédios residenciais e comerciais erguidos entre os anos 1960 e 1990 — geralmente sem área de lazer — e lançamentos recentes com espaço fitness completo. Por isso o atendimento a domicílio convive com o de condomínio aqui.',
+  },
+  {
+    pergunta: 'Como o Círio de Nazaré afeta o treino no bairro?',
+    resposta:
+      'Afeta bastante, e vale planejar. No segundo domingo de outubro, a maior procissão religiosa do país reúne mais de dois milhões de pessoas, e a Avenida Nazaré e o entorno da basílica ficam tomados por dias — com arcos decorados montados antes da data. Nessa semana, o treino ao ar livre no bairro sai da equação, e o ambiente coberto assume.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Belém?',
+    resposta:
+      'Começo da manhã e fim de tarde. O calor e a umidade da cidade cobram caro no meio do dia, e as chuvas de tarde são quase um horário fixo do calendário. A vantagem de Nazaré é a sombra: nas ruas cobertas pelas mangueiras, a janela confortável fica um pouco mais larga.',
+  },
+  {
+    pergunta: 'Nazaré é bom para caminhar no dia a dia?',
+    resposta:
+      'É um dos melhores de Belém. O bairro é predominantemente residencial, com serviços essenciais em raio curto — restaurantes, mercados, comércio — e a arborização torna o percurso viável mesmo em dia quente. Na prática, o morador acumula passos sem decisão consciente.',
+  },
+];
+
+const title = 'Personal Trainer em Nazaré (Belém): o guia completo';
+const description =
+  'Personal trainer em Nazaré: preços de Belém, a sombra das mangueiras, o Bosque Rodrigues Alves, o efeito do Círio no calendário e como montar a semana de treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belém</p>
+    <h1>Personal trainer em Nazaré: treinar à sombra das mangueiras de Belém</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Numa cidade de calor e umidade constantes, sombra não é detalhe
+      estético — é infraestrutura de treino. E Nazaré, bairro residencial
+      e arborizado de Belém, a Cidade das Mangueiras, tem bastante dela.
+    </p>
+
+    <p class="lead">
+      Este guia cobre o bairro inteiro para quem procura um
+      <strong>personal trainer em Nazaré</strong>: território, formatos
+      de atendimento, preços, o calendário que muda tudo em outubro e
+      como montar a semana.
+    </p>
+
+    <div class="prose">
+      <h2>O território: 250 anos em volta de uma capela</h2>
+      <p>
+        A ocupação de Nazaré começou em 1774, com a construção de uma
+        capela dedicada a Nossa Senhora de Nazaré — a mesma devoção que
+        daria origem ao Círio, realizado desde 1793.
+      </p>
+
+      <p>
+        O bairro cresceu em volta disso e guarda camadas visíveis da
+        história da cidade: construções valiosas do ciclo da borracha,
+        prédios residenciais e comerciais das décadas de 1960 a 1990, e
+        lançamentos recentes.
+      </p>
+
+      <p>
+        Hoje é predominantemente residencial, com moradores de renda alta
+        e serviços essenciais em raio curto. No centro de tudo está a
+        Basílica Santuário de Nossa Senhora de Nazaré, cartão-postal da
+        cidade, e a Praça Santuário — o Largo de Nazaré — dentro do
+        Centro Arquitetônico do bairro.
+      </p>
+
+      <h2>A sombra como vantagem estrutural</h2>
+      <p>
+        Belém é conhecida como a Cidade das Mangueiras — resultado de um
+        projeto municipal de arborização do início do século XX —, e o
+        perfil residencial de Nazaré preservou boa parte dessa copa sobre
+        as calçadas, o que derruba a sensação térmica de forma
+        perceptível.
+      </p>
+
+      <p>
+        Na prática, isso alarga a janela de treino ao ar livre nas ruas que
+        têm essa cobertura. Onde uma via exposta fica impraticável às dez
+        da manhã, uma rua sombreada ainda permite caminhada.
+      </p>
+
+      <p>
+        É a vantagem local mais concreta do bairro — e a que um
+        profissional que trabalha aqui usa deliberadamente, em vez de
+        tratar todo treino como assunto de ambiente fechado.
+      </p>
+
+      <h2>O verde estruturado: o Bosque Rodrigues Alves</h2>
+      <p>
+        A poucos minutos do bairro está o Bosque Rodrigues Alves, um
+        pedaço de floresta amazônica preservado dentro da capital: 15
+        hectares, dos quais mais de 80% são área verde e apenas 20%
+        caminhos de circulação.
+      </p>
+
+      <p>
+        São mais de dez mil árvores de trezentas espécies, e uma média de
+        vinte mil visitantes por mês. Para caminhada em sombra plena e
+        treino ao ar livre com temperatura tolerável, é o melhor endereço
+        da região.
+      </p>
+
+      <h2>Dentro dos prédios: duas gerações, dois formatos</h2>
+      <p>
+        Os <strong>lançamentos recentes</strong> entregam espaço fitness
+        de série, e o profissional vai até o prédio. Sem deslocamento, a
+        taxa de falta despenca — e numa cidade de chuva quase diária,
+        treino garantido dentro de casa vale mais do que em clima seco.
+      </p>
+
+      <p>
+        O limite é o teto de carga: halteres até um valor modesto e
+        poucas máquinas travam quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos. O guia sobre
+        <a href="/guias/personal-trainer-em-condominio/">personal trainer
+        em condomínio</a> lista o que conferir antes de fechar pacote.
+      </p>
+
+      <p>
+        Já os <strong>edifícios das décadas de 1960 a 1990</strong>, muito
+        presentes no bairro, não têm área de lazer. Ali o atendimento a
+        domicílio é a saída natural, com o profissional levando o
+        material.
+      </p>
+
+      <h2>Outubro muda tudo</h2>
+      <p>
+        Este é o item de calendário que nenhum guia genérico traz. No
+        segundo domingo de outubro, o Círio de Nazaré reúne mais de dois
+        milhões de pessoas na maior procissão religiosa do país.
+      </p>
+
+      <p>
+        A Avenida Nazaré e o entorno da basílica ficam tomados por dias,
+        com arcos decorados montados antes da data e o trajeto oficial
+        identificado pela prefeitura.
+      </p>
+
+      <p>
+        Para quem treina, a leitura é prática: nessa semana, o ar livre
+        no bairro sai da equação e o ambiente coberto assume. Um plano
+        bem-feito antecipa isso em vez de perder a semana.
+      </p>
+
+      <h2>O clima entra na conta o ano inteiro</h2>
+      <p>
+        O calor e a umidade de Belém empurram o treino ao ar livre para o
+        começo da manhã e o fim da tarde, com hidratação reforçada. As
+        chuvas de tarde são quase um horário fixo do calendário.
+      </p>
+
+      <p>
+        A consequência prática é que o plano precisa ser híbrido por
+        desenho, não por improviso: um ambiente aberto e um coberto
+        disponíveis na mesma semana.
+      </p>
+
+      <h2>Quanto custa personal trainer em Nazaré</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/belem-pa/">personal trainer em
+        Belém</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Nazaré trabalha no topo. É um dos endereços de maior renda da
+        cidade, e o atendimento em condomínio e a domicílio — os formatos
+        dominantes aqui — são justamente os que embutem deslocamento e
+        exclusividade.
+      </p>
+
+      <p>
+        O treino em dupla, comum entre casais e vizinhos do mesmo prédio,
+        é o que mais reduz o valor por pessoa; o online (R$ 170 a R$ 430
+        mensais) cobre bem as semanas fora.
+      </p>
+
+      <h2>O perfil de aluno mais comum</h2>
+      <p>
+        Bairro consolidado e de renda alta reúne dois grupos grandes:
+        adultos de agenda cheia, com objetivo de composição corporal e
+        saúde, e moradores de longa data no público 60+, cuja prioridade
+        é autonomia.
+      </p>
+
+      <p>
+        Para o segundo grupo, o treino de força é o que preserva massa
+        muscular, densidade óssea e equilíbrio — e as ruas planas e
+        sombreadas do bairro permitem caminhada segura. Dores e
+        limitações articulares precisam de avaliação de médico ou
+        fisioterapeuta antes de o plano ser montado.
+      </p>
+
+      <h2>Como montar a semana no bairro</h2>
+      <p>
+        Duas a três sessões de força, no prédio, em casa ou na academia,
+        sustentam massa muscular e articulação.
+      </p>
+
+      <p>
+        Fora delas, o aeróbico aproveita a sombra: ruas arborizadas do
+        bairro nos dias curtos, Bosque Rodrigues Alves nos dias longos.
+        Em outubro, o plano se reorganiza inteiro para dentro.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Nazaré, some duas perguntas locais. Ele já atende em
+        condomínios do bairro e conhece as regras de acesso das torres? E
+        como ele reorganiza o plano na semana do Círio? Quem trabalha
+        aqui responde as duas sem pensar — a segunda, principalmente,
+        separa quem conhece Belém de quem só conhece treino.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Nazaré" />
+
+    <WhatsAppCta tema="geral" localidade="em Nazaré" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

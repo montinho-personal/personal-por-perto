@@ -1,0 +1,346 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const acsm = fontesExternas.acsm;
+
+const relacionados = [
+  {
+    url: '/musculacao/creatina-o-que-e-como-tomar/',
+    titulo: 'Creatina: o que é, para que serve e como tomar',
+    descricao: 'O suplemento com mais evidência do mercado — e o mais barato.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/whey-protein-o-que-e-como-tomar/',
+    titulo: 'Whey protein: o que é e como tomar',
+    descricao: 'Comida em pó, não fórmula mágica — e por que essa distinção importa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/cafeina-pre-treino/',
+    titulo: 'Cafeína no pré-treino: quanto tomar e quando',
+    descricao: 'O terceiro item da lista curta do que realmente tem respaldo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/suplementos-que-nao-funcionam';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Suplementos que não funcionam', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'BCAA funciona para ganhar massa muscular?',
+    resposta:
+      'Para quem já consome proteína suficiente ao longo do dia, o BCAA não acrescenta nada relevante — os aminoácidos que ele fornece já vêm em quantidade muito maior de qualquer fonte proteica completa. Há ainda um problema de dose: as cápsulas comuns do mercado trazem cerca de 1 g cada, e a maioria das pessoas toma quatro a seis por dia, muito abaixo do que qualquer efeito hipotético exigiria. Uma porção de whey ou de frango entrega mais BCAA e custa menos.',
+  },
+  {
+    pergunta: 'Glutamina serve para alguma coisa?',
+    resposta:
+      'Para hipertrofia, não há respaldo consistente. A glutamina é largamente utilizada pelas células do trato gastrointestinal e do sistema imune, e é nesses contextos clínicos específicos que ela tem uso reconhecido — sempre sob indicação de médico ou nutricionista. Como suplemento de academia para ganhar músculo, é dinheiro que renderia mais em comida.',
+  },
+  {
+    pergunta: 'Termogênico emagrece?',
+    resposta:
+      'A maior parte do efeito percebido em termogênicos vem da cafeína que eles contêm — e cafeína pura custa uma fração do preço. O aumento de gasto energético é pequeno demais para mover a agulha sozinho, e não substitui déficit calórico. Além disso, fórmulas com muitos estimulantes podem gerar efeitos indesejados e são contraindicadas em várias condições de saúde, o que torna a conversa com o médico obrigatória antes de usar.',
+  },
+  {
+    pergunta: 'Quais suplementos realmente têm respaldo?',
+    resposta:
+      'A lista é curta e barata: creatina, cafeína e proteína em pó — esta última entendida como praticidade para bater a meta proteica, não como fórmula especial. Dependendo do caso, entram ainda vitamina D e ômega-3, mas essas são decisões clínicas, tomadas com exame e orientação de médico ou nutricionista, e não escolhas de prateleira.',
+  },
+  {
+    pergunta: 'Se não funciona, por que tanta gente jura que sentiu diferença?',
+    resposta:
+      'Porque quase ninguém começa um suplemento isoladamente. Ele costuma entrar junto com mais disciplina no treino, mais atenção à dieta e mais sono — e o resultado desse conjunto é creditado ao pote. Some a isso o efeito placebo, que é real e mensurável em desempenho. A forma de testar é mudar uma variável de cada vez, o que praticamente ninguém faz.',
+  },
+];
+
+const title = 'Suplementos que não funcionam: a lista honesta';
+const description =
+  'Suplementos que não funcionam: BCAA, glutamina, termogênicos e outros itens sem respaldo — e a lista curta e barata do que realmente tem evidência.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Suplementos que não funcionam: a lista honesta</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A loja de suplementos tem centenas de produtos. A lista do que tem
+      respaldo consistente cabe em três linhas — e as três são baratas.
+    </p>
+
+    <p class="lead">
+      Este guia percorre o que costuma ocupar o resto da prateleira e
+      explica, item a item, por que a promessa não se sustenta. Antes de
+      qualquer coisa, uma ressalva: qualquer suplementação em contexto de
+      saúde é decisão de médico ou nutricionista, não de vendedor nem de
+      personal.
+    </p>
+
+    <div class="prose">
+      <h2>BCAA: o mais vendido e o menos necessário</h2>
+      <p>
+        Os aminoácidos de cadeia ramificada — leucina, isoleucina e
+        valina — são reais e importantes. O problema é a lógica de vendê-
+        los separados.
+      </p>
+
+      <p>
+        Qualquer fonte proteica completa já os entrega em quantidade
+        muito maior: uma porção de whey, de frango, de ovos ou de carne
+        traz mais BCAA do que a dose típica do suplemento.
+      </p>
+
+      <p>
+        E há o problema da dose. As cápsulas comuns trazem cerca de 1 g
+        cada, e a maioria das pessoas toma quatro a seis por dia. Mesmo
+        que houvesse efeito isolado a ser obtido, essa quantidade não
+        chegaria perto do necessário.
+      </p>
+
+      <p>
+        Conclusão prática: para quem já bate a meta de proteína, o BCAA é
+        redundante. Para quem não bate, o dinheiro rende
+        incomparavelmente mais em comida ou em
+        <a href="/musculacao/whey-protein-o-que-e-como-tomar/">whey
+        protein</a>.
+      </p>
+
+      <VideoYouTube
+        id="LR281xnGCWQ"
+        titulo="Tudo sobre BCAA e os mitos do suplemento — Leandro Twin"
+        legenda="No vídeo: Leandro Twin revisa o que o BCAA faz, os mitos em torno dele e em que situações a suplementação isolada se justifica."
+      />
+
+      <h2>Glutamina: o mal-entendido mais duradouro</h2>
+      <p>
+        A glutamina é o aminoácido mais abundante do corpo, e essa
+        abundância virou argumento de marketing.
+      </p>
+
+      <p>
+        O que se sabe é que ela é largamente utilizada pelas células do
+        trato gastrointestinal e do sistema imune. É nesses contextos
+        clínicos específicos que a suplementação tem uso reconhecido — e
+        sempre sob indicação profissional.
+      </p>
+
+      <p>
+        Para hipertrofia em pessoas saudáveis que já comem proteína
+        suficiente, não há respaldo consistente. É provavelmente o item
+        com maior distância entre popularidade e evidência na prateleira
+        inteira.
+      </p>
+
+      <h2>Termogênicos: cafeína com margem</h2>
+      <p>
+        Abra o rótulo da maioria dos termogênicos e o ingrediente que
+        explica quase todo o efeito percebido é a cafeína.
+      </p>
+
+      <p>
+        Cafeína funciona — para desempenho, com dose e horário
+        definidos, como detalha o guia sobre
+        <a href="/musculacao/cafeina-pre-treino/">cafeína no
+        pré-treino</a>. O que ela não faz é criar déficit calórico. O
+        aumento de gasto energético é pequeno demais para mover a agulha
+        sozinho.
+      </p>
+
+      <p>
+        E há um custo além do financeiro: fórmulas com muitos
+        estimulantes empilhados podem gerar taquicardia, ansiedade e
+        insônia, e são contraindicadas em diversas condições de saúde.
+        Quem tem qualquer questão cardiovascular precisa conversar com o
+        médico antes — isso não é formalidade.
+      </p>
+
+      <h2>Os outros suspeitos frequentes</h2>
+      <p>
+        <strong>Pré-treinos "proprietary blend".</strong> Rótulos que
+        informam apenas o total da mistura, sem a dose de cada
+        ingrediente, tornam impossível saber o que você está tomando. Se
+        a dose não está no rótulo, a informação foi omitida por um
+        motivo.
+      </p>
+
+      <p>
+        <strong>Bloqueadores de carboidrato e de gordura.</strong> A
+        promessa é anular o que você comeu. O efeito real é marginal, e a
+        lógica é a de sempre: nenhum comprimido resolve o balanço
+        energético.
+      </p>
+
+      <p>
+        <strong>Hipercalóricos.</strong> Não são fraude — são açúcar e
+        maltodextrina em pó, com preço de suplemento. Funcionam para
+        quem precisa de calorias e não consegue comer, mas comida de
+        verdade entrega o mesmo com mais nutrientes e menos custo.
+      </p>
+
+      <p>
+        <strong>Testosterona "natural" e boosters hormonais.</strong>
+        Categoria em que a promessa é mais agressiva e a evidência, mais
+        rala. Qualquer questão hormonal real é assunto de médico, com
+        exame — não de suplemento comprado por conta própria.
+      </p>
+
+      <h2>A lista curta do que tem respaldo</h2>
+      <p>
+        <strong>Creatina monoidratada.</strong> O suplemento mais
+        estudado do mercado, com efeito consistente sobre desempenho em
+        esforços curtos e intensos. Barata, segura para pessoas
+        saudáveis e sem necessidade de versões "avançadas" — o guia sobre
+        <a href="/musculacao/creatina-o-que-e-como-tomar/">creatina</a>
+        detalha dose e uso.
+      </p>
+
+      <p>
+        <strong>Cafeína.</strong> Melhora desempenho por reduzir a
+        percepção de esforço, com dose e horário conhecidos.
+      </p>
+
+      <p>
+        <strong>Proteína em pó.</strong> Não é fórmula especial: é
+        praticidade para bater a meta proteica. Se você bate com comida,
+        ela é opcional.
+      </p>
+
+      <p>
+        Vitamina D e ômega-3 entram em alguns casos, mas essas são
+        decisões clínicas, tomadas com exame e orientação de médico ou
+        nutricionista — não escolhas de prateleira.
+      </p>
+
+      <h2>Por que tanta gente jura que sentiu diferença</h2>
+      <p>
+        Porque quase ninguém começa um suplemento isoladamente. Ele entra
+        junto com mais disciplina no treino, mais atenção à dieta e mais
+        sono — e o resultado do conjunto é creditado ao pote.
+      </p>
+
+      <p>
+        Some a isso o efeito placebo, que é real e mensurável em
+        desempenho. Acreditar que o pré-treino vai render costuma render.
+      </p>
+
+      <p>
+        Testar de verdade exigiria mudar uma variável por vez, mantendo
+        todo o resto igual por semanas. Praticamente ninguém faz isso — e
+        é por isso que a experiência pessoal, aqui, engana com tanta
+        facilidade.
+      </p>
+
+      <h2>A hierarquia que resolve a conta</h2>
+      <p>
+        As diretrizes de prescrição de exercício sistematizadas por
+        entidades como o
+        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        colocam a suplementação onde ela pertence: na última camada.
+      </p>
+
+      <p>
+        Antes dela vêm treino com progressão de carga, alimentação
+        adequada em calorias e proteína, sono suficiente e consistência
+        ao longo dos meses. Quem tem essas quatro coisas em ordem ganha
+        pouco somando pote; quem não tem, não compensa nada somando pote.
+      </p>
+
+      <h2>Uma régua para a próxima compra</h2>
+      <p>
+        Três perguntas resolvem quase todos os casos. O rótulo informa a
+        dose de cada ingrediente separadamente? A promessa é específica e
+        modesta, ou genérica e grandiosa? E existe um alimento comum que
+        entrega a mesma coisa por menos?
+      </p>
+
+      <p>
+        Se a terceira resposta for "sim", você já tem a decisão. E se a
+        dúvida envolver saúde — medicação em uso, condição
+        cardiovascular, gravidez, qualquer diagnóstico —, a resposta não
+        está neste texto nem no balcão: está com o profissional que
+        acompanha você.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre suplementos" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

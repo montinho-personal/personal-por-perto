@@ -1,0 +1,351 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'O trabalho de escápula que sustenta o tronco ereto o dia inteiro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que pode e o que evitar',
+    descricao: 'Dor não é postura ruim — e confundir as duas atrasa o tratamento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu',
+    descricao: 'A porção posterior é a mais negligenciada — e a que mais pesa aqui.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/musculacao-e-postura';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Musculação e postura: o que o treino resolve', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Musculação corrige a postura?',
+    resposta:
+      'Melhora, mas não "corrige" no sentido de consertar um defeito permanente. O treino de força aumenta a capacidade de sustentar o tronco ereto ao longo do dia — o que reduz a fadiga postural e faz a pessoa passar mais tempo em posições confortáveis. O que não existe é exercício que altere passivamente o alinhamento do esqueleto. Alterações estruturais diagnosticadas, como escoliose, são assunto de médico e fisioterapeuta.',
+  },
+  {
+    pergunta: 'Existe postura errada?',
+    resposta:
+      'A ideia de uma única postura correta envelheceu. A literatura recente aponta que a relação entre alinhamento postural e dor é bem mais fraca do que se acreditava, e que muita gente com postura considerada "ruim" não sente nada. O que costuma incomodar não é a posição em si, e sim ficar tempo demais em qualquer posição — a melhor postura é a próxima.',
+  },
+  {
+    pergunta: 'Quais músculos treinar para melhorar a postura?',
+    resposta:
+      'Os que sustentam o tronco contra a gravidade: trapézio médio e inferior, romboides, deltoide posterior, eretores da espinha, glúteo e a musculatura profunda do core. Na prática, isso significa mais trabalho de puxar do que de empurrar — o oposto do que a maioria dos programas caseiros faz, com peito e ombro anterior sobrando.',
+  },
+  {
+    pergunta: 'Ficar sentado o dia todo estraga a postura?',
+    resposta:
+      'O problema não é a cadeira: é a imobilidade prolongada. Ficar horas na mesma posição gera desconforto e rigidez independentemente de qual seja essa posição. Pausas curtas para levantar e mover a cada meia hora ou hora costumam ajudar mais que qualquer investimento em cadeira ergonômica — que também tem seu valor, mas resolve menos do que promete.',
+  },
+  {
+    pergunta: 'Dor nas costas é problema de postura?',
+    resposta:
+      'Nem sempre, e tratar as duas como sinônimos atrasa o cuidado. Dor lombar e cervical têm causas múltiplas, e o alinhamento postural é apenas um fator entre vários — muitas vezes secundário. Dor persistente, que irradia ou que atrapalha o sono precisa de avaliação de médico ou fisioterapeuta antes de qualquer ajuste de treino.',
+  },
+];
+
+const title = 'Musculação e postura: o que o treino resolve';
+const description =
+  'Musculação e postura: o que o treino de força realmente melhora, por que não existe postura única correta, quais músculos priorizar e quando procurar um profissional.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Musculação e postura: o que o treino resolve (e o que não resolve)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Faz musculação que endireita as costas" é um conselho bem
+      intencionado e mal formulado. Ele mistura duas coisas diferentes:
+      alinhamento do esqueleto e capacidade de sustentar o corpo.
+    </p>
+
+    <p class="lead">
+      O treino de força mexe muito na segunda e quase nada na primeira —
+      e entender essa diferença muda o que você deve esperar dos
+      próximos meses.
+    </p>
+
+    <div class="prose">
+      <h2>O que mudou no entendimento sobre postura</h2>
+      <p>
+        Durante décadas, ensinou-se que existe uma postura correta e que
+        desviar dela causa dor. A literatura recente é bem mais cautelosa
+        com essa relação.
+      </p>
+
+      <p>
+        O que se observa é que muita gente com alinhamento considerado
+        "ruim" não sente nada, e muita gente com alinhamento
+        considerado bom sente dor. A correlação entre os dois é bem mais
+        fraca do que a intuição sugere.
+      </p>
+
+      <p>
+        Isso não torna postura irrelevante. Torna a conversa mais
+        honesta: o objetivo não é atingir uma posição ideal, e sim ter
+        capacidade e variedade de movimento suficientes para o dia a dia.
+      </p>
+
+      <h2>O que a musculação realmente melhora</h2>
+      <p>
+        <strong>Resistência da musculatura postural.</strong> Sustentar o
+        tronco ereto por horas é um trabalho de resistência muscular.
+        Quem tem essa musculatura fraca cansa e desaba na cadeira no meio
+        da tarde — e é justamente isso que o treino de força melhora.
+      </p>
+
+      <p>
+        <strong>Consciência corporal.</strong> Treinar padrões de
+        movimento com atenção à posição da escápula e da coluna ensina a
+        perceber onde o corpo está. Essa percepção transborda para fora
+        da academia.
+      </p>
+
+      <p>
+        <strong>Equilíbrio entre grupos.</strong> A rotina moderna soma
+        muitas horas com ombros à frente. Um programa que puxa mais do
+        que empurra compensa parte disso.
+      </p>
+
+      <p>
+        <strong>Tolerância à carga do cotidiano.</strong> Costas mais
+        fortes lidam melhor com carregar criança, mala e compra — as
+        situações em que a queixa costuma aparecer.
+      </p>
+
+      <VideoYouTube
+        id="Lz6cPCEwtlw"
+        titulo="Arrumando a postura e focando no músculo fraco — Leandro Twin"
+        legenda="No vídeo: Leandro Twin trata do trabalho em musculatura enfraquecida e do que o treino pode fazer pela postura."
+      />
+
+      <h2>O que a musculação não faz</h2>
+      <p>
+        <strong>Não altera o esqueleto.</strong> Escoliose, hipercifose
+        estrutural e alterações ósseas diagnosticadas não são
+        "corrigidas" por exercício. Elas são acompanhadas por médico e
+        fisioterapeuta, e o treino entra como parte do manejo — com
+        orientação específica, não com um programa genérico.
+      </p>
+
+      <p>
+        <strong>Não resolve dor sozinha.</strong> Dor lombar e cervical
+        têm causas múltiplas. Tratar dor como sinônimo de postura ruim
+        atrasa o diagnóstico do que realmente está acontecendo.
+      </p>
+
+      <p>
+        <strong>Não compensa doze horas sentado.</strong> Uma hora de
+        treino não anula o efeito da imobilidade prolongada. Ela soma —
+        mas o que resolve mesmo é quebrar o tempo parado ao longo do dia.
+      </p>
+
+      <h2>Os músculos que mais importam aqui</h2>
+      <p>
+        <strong>Trapézio médio e inferior, romboides.</strong> Retraem e
+        deprimem a escápula. São os antagonistas diretos da postura de
+        ombros à frente, e o alvo do trabalho de escápula descrito no
+        guia sobre <a href="/musculacao/treino-de-costas/">treino de
+        costas</a>.
+      </p>
+
+      <p>
+        <strong>Deltoide posterior.</strong> A porção mais negligenciada
+        do ombro e uma das mais relevantes para o equilíbrio do conjunto,
+        como trata o guia sobre
+        <a href="/musculacao/treino-de-ombro/">treino de ombro</a>.
+      </p>
+
+      <p>
+        <strong>Eretores da espinha.</strong> Sustentam a coluna. São
+        carregados em qualquer padrão de extensão de quadril com carga.
+      </p>
+
+      <p>
+        <strong>Glúteo.</strong> Estabiliza a pelve. Glúteo fraco
+        transfere trabalho para a lombar em quase tudo que se faz em pé.
+      </p>
+
+      <p>
+        <strong>Core profundo.</strong> Trabalhado com prancha,
+        anti-rotação e exercícios de anti-extensão — não com abdominal
+        infinito.
+      </p>
+
+      <h2>A proporção que corrige o desequilíbrio</h2>
+      <p>
+        A regra prática mais útil deste texto: <strong>puxe pelo menos
+        tanto quanto você empurra</strong>. Para muita gente com rotina
+        de escritório, a proporção ideal é ainda mais favorável ao puxar.
+      </p>
+
+      <p>
+        Na contagem semanal, isso significa somar as séries de supino,
+        desenvolvimento, crucifixo e flexão de um lado, e as de remada,
+        puxada, face pull e crucifixo inverso do outro — e verificar se
+        o segundo número não está bem menor que o primeiro.
+      </p>
+
+      <p>
+        Na maioria dos programas caseiros, está. E corrigir essa
+        proporção costuma render mais sensação de "postura melhor" do
+        que qualquer exercício específico de correção postural.
+      </p>
+
+      <h2>O fator que pesa mais que o treino</h2>
+      <p>
+        Se você passa dez horas por dia sentado e treina uma, a variável
+        dominante não é o treino.
+      </p>
+
+      <p>
+        O que mais ajuda é quebrar o tempo parado: levantar a cada meia
+        hora ou hora, mudar de posição, andar enquanto fala ao telefone.
+        Não porque a posição sentada seja errada, mas porque
+        <em>qualquer</em> posição mantida por tempo demais incomoda.
+      </p>
+
+      <p>
+        As recomendações globais de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        tratam a redução do tempo sedentário como recomendação própria,
+        separada da de exercício — o que diz bastante sobre o peso dessa
+        variável.
+      </p>
+
+      <h2>Quando não é caso de academia</h2>
+      <p>
+        Dor persistente, dor que irradia para braço ou perna,
+        formigamento, perda de força ou dor que atrapalha o sono não são
+        assunto de ajuste de treino.
+      </p>
+
+      <p>
+        São casos para médico ou fisioterapeuta, e o treino entra depois
+        do que eles indicarem — como detalha o guia sobre
+        <a href="/musculacao/treinar-com-dor-lombar/">treinar com dor
+        lombar</a>. Insistir em "fortalecer para passar" antes disso
+        costuma custar tempo.
+      </p>
+
+      <h2>O que esperar, e em quanto tempo</h2>
+      <p>
+        A mudança que aparece primeiro é a de resistência: você aguenta
+        mais tempo ereto sem desabar, e o fim de tarde fica menos
+        pesado. Isso costuma ser perceptível em poucas semanas.
+      </p>
+
+      <p>
+        Mudança visível no alinhamento é mais lenta, menos garantida e
+        menos importante do que o marketing sugere. O ganho real está em
+        capacidade, não em foto de perfil.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A conta de puxar versus empurrar é simples de entender e difícil
+        de aplicar sozinho — quase todo mundo subestima quanto empurrar
+        já faz.
+      </p>
+
+      <p>
+        Um personal trainer refaz essa distribuição, corrige a execução
+        do trabalho de escápula (que é sutil e fácil de fazer errado) e
+        encaminha quando o caso é clínico em vez de muscular. Esse último
+        ponto, aliás, é um bom critério de escolha: profissional sério
+        reconhece o limite do próprio escopo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre musculação e postura" />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

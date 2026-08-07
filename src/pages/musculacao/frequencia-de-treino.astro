@@ -1,0 +1,352 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou Full Body: qual a melhor divisão',
+    descricao: 'A divisão é o que traduz a frequência escolhida em rotina real.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'Volume semanal — a variável que a frequência apenas distribui.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-de-treino-por-dia/',
+    titulo: 'Quanto tempo de treino por dia é suficiente?',
+    descricao: 'Mais frequência com sessões curtas costuma render mais que o contrário.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/frequencia-de-treino';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Frequência de treino: quantas vezes treinar cada músculo', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas vezes por semana devo treinar cada músculo?',
+    resposta:
+      'Duas vezes por semana é a recomendação que mais aparece na literatura como ponto de partida seguro para a maioria. Mas a frequência não age sozinha: ela distribui o volume semanal. Doze séries em uma sessão ou seis séries em duas sessões tendem a produzir resultado parecido quando o total é igual — a vantagem da frequência maior está na qualidade de execução, que cai bastante no fim de sessões longas.',
+  },
+  {
+    pergunta: 'Treinar o mesmo músculo dois dias seguidos faz mal?',
+    resposta:
+      'Não faz mal por princípio, mas costuma ser improdutivo. A musculatura precisa de tempo para se recuperar do estímulo, e treinar novamente antes disso tende a comprometer o desempenho da segunda sessão sem acrescentar estímulo útil. Grupos pequenos e músculos posturais toleram melhor frequências altas; grupos grandes com carga alta, como perna e costas, pedem mais espaçamento.',
+  },
+  {
+    pergunta: 'Posso treinar todos os dias?',
+    resposta:
+      'Pode, desde que o volume por sessão seja compatível. Treinar seis dias por semana com sessões curtas e bem distribuídas é uma organização legítima e funciona bem para quem tem agenda fragmentada. O problema aparece quando a pessoa treina todos os dias com o volume de quem treina três — aí o total semanal fica alto demais e a recuperação não acompanha.',
+  },
+  {
+    pergunta: 'Treinar 3 vezes por semana é suficiente?',
+    resposta:
+      'É suficiente para a maioria das pessoas, especialmente iniciantes e intermediários. Três sessões de corpo inteiro ou uma divisão bem montada cobrem todos os grupos com frequência de duas vezes ou próximo disso. Quem tem só três dias disponíveis não está em desvantagem relevante — está em desvantagem apenas quem usa esses três dias sem progressão de carga.',
+  },
+  {
+    pergunta: 'Frequência maior acelera o resultado?',
+    resposta:
+      'Não por si só. Frequência é a forma de distribuir o volume, não uma variável mágica. O que acelera resultado é somar volume adequado com progressão de carga ao longo dos meses. A frequência maior ajuda indiretamente: permite fazer o mesmo volume total com mais qualidade por série, e costuma melhorar a aderência de quem prefere sessões curtas.',
+  },
+];
+
+const title = 'Frequência de treino: quantas vezes treinar por semana';
+const description =
+  'Frequência de treino: quantas vezes treinar cada músculo por semana, por que ela apenas distribui o volume, quanto tempo de recuperação e como escolher a sua.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Frequência de treino: quantas vezes treinar cada músculo por semana</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Cada músculo uma vez por semana" foi lei na academia brasileira
+      por décadas. Depois veio a onda oposta: "tudo duas vezes, sem
+      exceção". As duas frases erram pelo mesmo motivo.
+    </p>
+
+    <p class="lead">
+      Frequência não é uma variável isolada — ela só faz sentido junto
+      com o volume que você distribui. Este guia explica como as duas se
+      relacionam e como escolher a sua.
+    </p>
+
+    <div class="prose">
+      <h2>O que a frequência realmente faz</h2>
+      <p>
+        Frequência é quantas vezes por semana um mesmo músculo recebe
+        estímulo. Só isso.
+      </p>
+
+      <p>
+        Ela não cria estímulo do nada: <strong>ela distribui o volume que
+        você já tinha</strong>. Doze séries semanais de peito podem ser
+        feitas de uma vez ou divididas em duas sessões de seis. O total é
+        o mesmo.
+      </p>
+
+      <p>
+        E é justamente por isso que a discussão "uma ou duas vezes" tem
+        resposta menos dramática do que parece: quando o volume semanal é
+        equiparado, os resultados tendem a ficar próximos.
+      </p>
+
+      <VideoYouTube
+        id="o2CKMCrN-1o"
+        titulo="Treinar o mesmo músculo duas vezes por semana — Leandro Twin"
+        legenda="No vídeo: Leandro Twin discute a frequência de treino por grupo muscular e por que ela precisa ser lida junto com volume e intensidade."
+      />
+
+      <h2>Então por que a frequência maior costuma ser recomendada?</h2>
+      <p>
+        Por uma razão prática, não mágica: <strong>qualidade de
+        execução</strong>.
+      </p>
+
+      <p>
+        Na décima série seguida do mesmo grupo muscular, a técnica
+        degrada, a carga cai e o estímulo por série vale menos. Dividir
+        esse mesmo volume em duas sessões faz cada série render mais.
+      </p>
+
+      <p>
+        Há também um ganho de aderência. Sessões mais curtas e mais
+        frequentes cabem melhor em agenda apertada do que sessões longas
+        — assunto do guia sobre
+        <a href="/musculacao/quanto-tempo-de-treino-por-dia/">quanto
+        tempo de treino por dia</a>.
+      </p>
+
+      <p>
+        A recomendação de <strong>duas vezes por semana por grupo</strong>
+        é o ponto de partida mais citado justamente por equilibrar essas
+        duas coisas — não porque uma vez "não funciona".
+      </p>
+
+      <h2>Quanto tempo de recuperação um músculo precisa</h2>
+      <p>
+        Depende do tamanho do grupo, da carga usada e do seu nível de
+        treino. Como referência prática:
+      </p>
+
+      <p>
+        <strong>Grupos grandes com carga alta</strong> — perna, costas —
+        pedem mais espaçamento entre sessões, porque o custo de
+        recuperação é maior e compete com o resto da semana.
+      </p>
+
+      <p>
+        <strong>Grupos menores</strong> — ombro lateral, panturrilha,
+        antebraço, abdome — toleram frequências mais altas, e alguns
+        respondem especialmente bem a três sessões semanais com volume
+        moderado.
+      </p>
+
+      <p>
+        <strong>Iniciantes</strong> recuperam mais rápido do estímulo
+        porque usam cargas absolutas menores — e se beneficiam muito de
+        frequência alta, porque cada sessão é também uma aula de técnica.
+      </p>
+
+      <h2>Como a divisão traduz isso na prática</h2>
+      <p>
+        <strong>Full body, 3x por semana.</strong> Frequência 3 para
+        todos os grupos, com volume baixo por sessão. Excelente para
+        iniciantes e para quem tem poucos dias disponíveis.
+      </p>
+
+      <p>
+        <strong>Upper/lower, 4x por semana.</strong> Frequência 2 para
+        tudo, com volume médio. É a organização com melhor
+        custo-benefício para a maioria dos intermediários.
+      </p>
+
+      <p>
+        <strong>ABC, 6x por semana.</strong> Frequência 2, com volume
+        maior por sessão e mais espaço para exercícios acessórios. Exige
+        disponibilidade real de seis dias.
+      </p>
+
+      <p>
+        <strong>ABC, 3x por semana.</strong> Frequência 1 por grupo.
+        Funciona, desde que o volume por sessão seja alto o suficiente —
+        e é aqui que a queda de qualidade nas últimas séries cobra o
+        preço. O guia sobre
+        <a href="/musculacao/abc-ou-full-body/">ABC ou full body</a>
+        compara os formatos em detalhe.
+      </p>
+
+      <h2>O erro mais comum: somar frequência sem rever o volume</h2>
+      <p>
+        A pessoa treinava peito uma vez por semana com doze séries. Leu
+        que frequência dois é melhor, e passou a treinar duas vezes por
+        semana — com doze séries em cada.
+      </p>
+
+      <p>
+        O volume dobrou de uma semana para a outra. O que costuma vir
+        depois é fadiga acumulada, queda de desempenho e a conclusão
+        equivocada de que "frequência alta não funciona para mim".
+      </p>
+
+      <p>
+        A regra é simples: ao aumentar a frequência, <strong>divida o
+        volume</strong>, não o repita. Se o total precisar subir, que
+        suba depois e aos poucos, como qualquer outra variável.
+      </p>
+
+      <h2>Quando a frequência maior atrapalha</h2>
+      <p>
+        <strong>Quando você não tem os dias.</strong> Um plano de seis
+        dias cumprido em três é pior que um plano de três dias cumprido
+        integralmente.
+      </p>
+
+      <p>
+        <strong>Quando a recuperação não acompanha.</strong> Sono curto,
+        alimentação insuficiente ou período de estresse alto reduzem a
+        capacidade de recuperar — e a frequência precisa respeitar isso.
+      </p>
+
+      <p>
+        <strong>Quando o objetivo é força máxima.</strong> Aí a lógica
+        muda um pouco: as sessões pesadas precisam de mais espaçamento, e
+        a organização segue outra régua.
+      </p>
+
+      <h2>O que a literatura sustenta</h2>
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        tratam volume, intensidade e frequência como variáveis
+        interdependentes — nenhuma delas se otimiza isoladamente.
+      </p>
+
+      <p>
+        Traduzindo: não existe "a melhor frequência". Existe a frequência
+        que permite você fazer o volume adequado com boa execução, dentro
+        dos dias que você realmente tem. O guia sobre
+        <a href="/musculacao/quantas-series-e-repeticoes/">quantas séries
+        e repetições</a> cobre o outro lado dessa mesma conta.
+      </p>
+
+      <h2>Como escolher a sua, em três perguntas</h2>
+      <p>
+        <strong>Quantos dias por semana você consegue treinar de
+        verdade?</strong> Não o ideal — o real, considerando trabalho,
+        deslocamento e imprevistos.
+      </p>
+
+      <p>
+        <strong>Quanto tempo tem cada sessão?</strong> Sessões de 45
+        minutos favorecem frequência maior com volume menor.
+      </p>
+
+      <p>
+        <strong>Você está começando ou já tem anos de treino?</strong>
+        Iniciantes ganham mais com frequência alta, pela repetição do
+        padrão de movimento; avançados precisam de volume total maior e
+        distribuição mais cuidadosa.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A conta de volume por grupo, distribuída ao longo da semana, é
+        onde a maioria dos treinos caseiros se perde — normalmente com
+        peito e bíceps sobrando e perna e costas faltando.
+      </p>
+
+      <p>
+        Um personal trainer monta essa distribuição a partir dos dias que
+        você tem de fato, e a ajusta quando a rotina muda. É um trabalho
+        de planilha que rende mais do que qualquer exercício novo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre frequência de treino" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

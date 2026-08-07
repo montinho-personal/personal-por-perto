@@ -78,6 +78,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-rio-vermelho/', titulo: 'Personal trainer no Rio Vermelho (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-lourdes/', titulo: 'Personal trainer no Lourdes (Belo Horizonte)' },
   { categoria: 'Bairros', url: '/personal-trainer-agua-verde/', titulo: 'Personal trainer no Água Verde (Curitiba)' },
+  { categoria: 'Bairros', url: '/personal-trainer-casa-forte/', titulo: 'Personal trainer em Casa Forte (Recife)' },
+  { categoria: 'Bairros', url: '/personal-trainer-vila-mariana/', titulo: 'Personal trainer na Vila Mariana (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-nazare-belem/', titulo: 'Personal trainer em Nazaré (Belém)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -92,6 +95,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-corredores/', titulo: 'Personal trainer para corredores: o guia completo' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-adolescentes/', titulo: 'Personal trainer para adolescentes: o guia' },
+  { categoria: 'Guias', url: '/guias/primeira-aula-com-personal-trainer/', titulo: 'Primeira aula com personal trainer: o que esperar' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
 
   // Musculação
@@ -131,6 +135,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-de-ombro/', titulo: 'Treino de ombro: como montar o seu (e os erros)' },
   { categoria: 'Musculação', url: '/musculacao/treino-de-pernas/', titulo: 'Treino de pernas: como montar o seu (e os erros)' },
   { categoria: 'Musculação', url: '/musculacao/aquecimento-antes-do-treino/', titulo: 'Aquecimento antes do treino: como fazer certo' },
+  { categoria: 'Musculação', url: '/musculacao/frequencia-de-treino/', titulo: 'Frequência de treino: quantas vezes treinar por semana' },
+  { categoria: 'Musculação', url: '/musculacao/suplementos-que-nao-funcionam/', titulo: 'Suplementos que não funcionam: a lista honesta' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-e-postura/', titulo: 'Musculação e postura: o que o treino resolve' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -147,6 +154,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/jejum-intermitente-funciona/', titulo: 'Jejum intermitente funciona para emagrecer?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-manter-o-peso-perdido/', titulo: 'Como manter o peso perdido depois da dieta' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/gordura-visceral/', titulo: 'Gordura visceral: o que é e como reduzir' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/dieta-flexivel/', titulo: 'Dieta flexível: o que é e como funciona na prática' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },
