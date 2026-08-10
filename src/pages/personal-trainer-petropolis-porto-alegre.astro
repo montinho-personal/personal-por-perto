@@ -1,0 +1,332 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-moinhos-de-vento/',
+    titulo: 'Personal trainer no Moinhos de Vento',
+    descricao: 'O bairro vizinho, com o Parcão a poucos minutos.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/musculacao/aquecimento-antes-do-treino/',
+    titulo: 'Aquecimento antes do treino: como fazer certo',
+    descricao: 'No inverno gaúcho, o ajuste do aquecimento deixa de ser detalhe.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-petropolis-porto-alegre';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer no Petrópolis', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Petrópolis?',
+    resposta:
+      'Em Porto Alegre, a aula avulsa vai de R$ 80 a R$ 190 e o pacote mensal de R$ 400 a R$ 1.150. O Petrópolis trabalha no meio para o topo dessa faixa — é um bairro nobre da zona leste, com boa oferta de profissionais e forte demanda por atendimento em condomínio e a domicílio.',
+  },
+  {
+    pergunta: 'Qual o melhor formato de treino no bairro?',
+    resposta:
+      'Depende do seu prédio e da sua tolerância a deslocamento. O Petrópolis tem infraestrutura urbana completa sem perder o perfil residencial: academias, comércio e serviços ao longo da Protásio Alves e das ruas em volta, torres recentes com espaço fitness e um estoque de casas e edifícios antigos onde o atendimento a domicílio faz mais sentido.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Petrópolis?',
+    resposta:
+      'O bairro é rico em áreas verdes e tem ruas tranquilas que servem bem para caminhada e corrida leve. Para percurso estruturado, o Parcão, no Moinhos de Vento, e a Redenção, no Bom Fim, ficam a poucos minutos — os dois maiores circuitos de treino ao ar livre da zona central da cidade.',
+  },
+  {
+    pergunta: 'O frio de Porto Alegre atrapalha o treino?',
+    resposta:
+      'Muda a preparação, não o plano. No inverno gaúcho, o aquecimento precisa ser mais longo e a roupa em camadas faz diferença real na prevenção de lesões. O vento e a chuva do inverno também pedem um plano B em ambiente coberto — e é aí que ter academia no prédio ou perto de casa vale mais do que em cidade de clima ameno.',
+  },
+  {
+    pergunta: 'Dá para resolver o dia a pé no Petrópolis?',
+    resposta:
+      'Boa parte dele, sim. Ao longo da Avenida Protásio Alves e nas ruas em volta os moradores encontram supermercados, farmácias, cafés, restaurantes, academias, bancos e serviços — e o centro fica a cerca de 15 minutos. É um bairro que combina infraestrutura completa com perfil residencial, o que faz o gasto energético diário subir sem esforço consciente.',
+  },
+];
+
+const title = 'Personal Trainer no Petrópolis (Porto Alegre)';
+const description =
+  'Personal trainer no Petrópolis: preços de Porto Alegre e a comparação entre academia de rua, condomínio, domicílio, Parcão e Redenção, e acompanhamento online.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer no Petrópolis: qual formato compensa no bairro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Petrópolis nasceu nos anos 1920 como a zona rural de Porto
+      Alegre, ocupada por chácaras de famílias tradicionais. Cem anos
+      depois, virou um dos endereços mais procurados da capital — sem
+      perder o perfil residencial.
+    </p>
+
+    <p class="lead">
+      Essa combinação cria uma oferta de treino incomum, com formatos
+      muito diferentes convivendo no mesmo território. Este guia compara
+      os cinco, com as condições concretas do bairro.
+    </p>
+
+    <div class="prose">
+      <h2>O território, em uma frase</h2>
+      <p>
+        Bairro nobre da zona leste, a cerca de quinze minutos do centro,
+        entre duas das principais avenidas da cidade — a Protásio Alves
+        e a Ipiranga.
+      </p>
+
+      <p>
+        Ao longo da Protásio e das ruas em volta estão supermercados,
+        farmácias, cafés, restaurantes, academias, bancos e serviços. Nas
+        ruas internas, o perfil é residencial e arborizado, com boa
+        quantidade de áreas verdes.
+      </p>
+
+      <p>
+        É esse equilíbrio — infraestrutura completa sem barulho de
+        corredor comercial — que torna a escolha do formato uma decisão
+        real aqui. Vamos aos cinco.
+      </p>
+
+      <h2>Formato 1: academia de rua</h2>
+      <p>
+        A opção de maior variedade de equipamento, com oferta boa ao
+        longo dos eixos principais.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> carga disponível e possibilidade de
+        progredir por anos sem esbarrar em limite de equipamento — além
+        de resolver os dias de chuva e frio, que no inverno gaúcho não
+        são poucos.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> horário compartilhado no pico e o
+        custo da mensalidade somado ao do personal.
+      </p>
+
+      <h2>Formato 2: academia do condomínio</h2>
+      <p>
+        Nos empreendimentos mais recentes, o espaço fitness é item de
+        entrega, e o profissional vai até o prédio.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> zero deslocamento e horário exclusivo.
+        Num bairro de inverno rigoroso, isso pesa mais do que parece —
+        sair de casa em julho é a barreira que mais derruba a
+        frequência.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> teto de carga. Halteres até um limite
+        modesto e poucas máquinas travam quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos.
+      </p>
+
+      <h2>Formato 3: a domicílio</h2>
+      <p>
+        O Petrópolis guarda um estoque relevante de casas e de edifícios
+        antigos, herança do tempo das chácaras e da ocupação gradual do
+        bairro. Nessa parte, o atendimento em casa é a saída natural.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> privacidade, flexibilidade de horário
+        e, quando há quintal, um espaço que apartamento nenhum oferece.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> equipamento — o que exige um plano
+        claro de para onde ir quando o corpo pedir mais carga.
+      </p>
+
+      <h2>Formato 4: ar livre, dentro e fora do bairro</h2>
+      <p>
+        As ruas arborizadas e tranquilas do miolo residencial servem bem
+        para caminhada e corrida leve, e as áreas verdes do bairro
+        completam o circuito do dia a dia.
+      </p>
+
+      <p>
+        Para percurso estruturado, os dois maiores circuitos da zona
+        central estão a poucos minutos: o Parcão, no
+        <a href="/personal-trainer-moinhos-de-vento/">Moinhos de
+        Vento</a>, e a Redenção, no Bom Fim.
+      </p>
+
+      <p>
+        <strong>Ganha em:</strong> custo zero e ambiente agradável.
+        <strong>Perde em:</strong> força — e é ela que preserva massa
+        magra e articulação ao longo dos anos.
+      </p>
+
+      <h2>Formato 5: acompanhamento online</h2>
+      <p>
+        <strong>Ganha em:</strong> custo (R$ 190 a R$ 480 mensais na
+        cidade) e continuidade nas semanas fora.
+      </p>
+
+      <p>
+        <strong>Perde em:</strong> correção de execução em tempo real —
+        o formato rende bem para quem já tem base e mal para quem está no
+        primeiro mês.
+      </p>
+
+      <h2>O inverno gaúcho entra na conta</h2>
+      <p>
+        É o fator local mais distintivo, e o que mais separa um plano que
+        sobrevive a julho de um que não sobrevive.
+      </p>
+
+      <p>
+        No frio, o aquecimento precisa ser mais longo e a roupa em
+        camadas faz diferença real na prevenção de lesões — assunto do
+        guia sobre
+        <a href="/musculacao/aquecimento-antes-do-treino/">aquecimento
+        antes do treino</a>.
+      </p>
+
+      <p>
+        O vento e a chuva pedem um plano B coberto disponível na mesma
+        semana. Não é luxo: é o que impede que dois meses de inverno
+        virem dois meses parado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Petrópolis</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/porto-alegre-rs/">personal trainer em
+        Porto Alegre</a>, vai de R$ 80 a R$ 190 pela aula avulsa e de
+        R$ 400 a R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Petrópolis fica no meio para o topo. O atendimento em
+        condomínio e a domicílio são os mais caros, por embutirem
+        deslocamento; o treino em dupla, comum entre casais e vizinhos, é
+        o que mais derruba o valor por pessoa.
+      </p>
+
+      <h2>Como decidir sem errar</h2>
+      <p>
+        Três perguntas resolvem. Seu prédio tem espaço fitness com
+        halteres acima de 20 kg? Você sai de casa para treinar numa manhã
+        de 8 °C com chuva? Você já treina há mais de um ano com técnica
+        estável?
+      </p>
+
+      <p>
+        Um "não" na segunda pergunta praticamente decide a favor do
+        condomínio ou do domicílio — e é uma resposta honesta que muita
+        gente demora um inverno inteiro para dar a si mesma. Um "não" na
+        terceira aponta para acompanhamento presencial próximo, em
+        qualquer ambiente.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, progressão registrada
+        e nenhuma promessa de milagre. Dores e limitações articulares
+        passam por médico ou fisioterapeuta antes de entrar no plano.
+      </p>
+
+      <p>
+        No Petrópolis, some a pergunta local: como ele adapta o
+        aquecimento e a estrutura da sessão no inverno? Quem trabalha em
+        Porto Alegre há tempo responde sem pensar — e essa resposta vale
+        mais aqui do que em qualquer capital de clima quente.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Petrópolis" />
+
+    <WhatsAppCta tema="geral" localidade="no Petrópolis" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,309 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/fortaleza-ce/',
+    titulo: 'Personal trainer em Fortaleza',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-meireles/',
+    titulo: 'Personal trainer no Meireles',
+    descricao: 'O bairro da orla, com outra lógica de treino ao ar livre.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Com um parque de 1.575 hectares ao lado, este é um bairro de corredor.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-coco-fortaleza';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Fortaleza', url: '/personal-trainer/fortaleza-ce/' },
+  { nome: 'Personal Trainer no Cocó', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Cocó?',
+    resposta:
+      'Em Fortaleza, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. O Cocó trabalha no meio para o topo dessa faixa — é um bairro de classe média alta com forte verticalização, e o atendimento dentro do condomínio, que embute deslocamento e exclusividade, é o mais caro.',
+  },
+  {
+    pergunta: 'O Parque do Cocó é bom para treinar?',
+    resposta:
+      'É o melhor endereço público de Fortaleza para isso. O Parque Estadual do Cocó tem 1.575 hectares, atravessa 15 bairros e é um dos maiores parques urbanos do Brasil e da América Latina. Sombra contínua, percursos longos e ar mais fresco por conta do rio — numa cidade de sol forte, essa combinação vale mais que qualquer equipamento.',
+  },
+  {
+    pergunta: 'Dá para chegar ao bairro sem carro?',
+    resposta:
+      'Dá. O corredor de BRT que liga Antônio Bezerra ao Papicu passa pela região, com estação na Avenida Engenheiro Santana Júnior, e há linhas de ônibus que conectam o terminal do Papicu ao parque. Isso amplia o raio de profissionais que conseguem atender no bairro sem depender de carro.',
+  },
+  {
+    pergunta: 'Os prédios do Cocó têm academia?',
+    resposta:
+      'A maioria dos empreendimentos sim — o bairro se urbanizou a partir dos anos 1980 e concentra alguns dos apartamentos mais bem estruturados da cidade, com espaço fitness como item padrão. É por isso que o personal em condomínio é o formato dominante aqui.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'Começo da manhã e fim de tarde, como em toda Fortaleza: o sol e o calor cobram caro no meio do dia, com hidratação e proteção solar obrigatórias. A vantagem do Cocó é a sombra do parque, que estende essa janela de forma perceptível em relação à orla exposta.',
+  },
+  {
+    pergunta: 'O Cocó é bom para quem está começando?',
+    resposta:
+      'É um dos melhores da cidade. O terreno é plano, o parque oferece percurso seguro e sombreado, o bairro é bem servido de comércio e serviços e a academia costuma ficar no próprio prédio. O que falta ao iniciante aqui não é estrutura — é progressão planejada.',
+  },
+];
+
+const title = 'Personal Trainer no Cocó (Fortaleza): o guia';
+const description =
+  'Personal trainer no Cocó: preços de Fortaleza, o Parque Estadual do Cocó com 1.575 hectares, as torres com academia e os endereços onde o bairro realmente treina.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Fortaleza</p>
+    <h1>Personal trainer no Cocó: os endereços onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Fortaleza é conhecida pela orla, e com razão. Mas o bairro que
+      oferece as melhores condições para treinar ao ar livre na cidade
+      não fica na praia — fica em volta de um rio.
+    </p>
+
+    <p class="lead">
+      O Cocó tem, colado nele, um parque de 1.575 hectares. Este guia
+      percorre os lugares do bairro um a um e explica o que cada um serve
+      na semana de quem procura um <strong>personal trainer no
+      Cocó</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>1. O Parque Estadual do Cocó</h2>
+      <p>
+        É o endereço principal, e por larga margem. O parque se estende
+        da divisa entre Fortaleza e Maracanaú até a foz do rio Cocó,
+        atravessa 15 bairros e figura entre os maiores parques urbanos do
+        Brasil e da América Latina.
+      </p>
+
+      <p>
+        Para quem treina, três coisas importam mais que o tamanho:
+        <strong>sombra contínua</strong>, percursos longos sem repetir
+        quilômetro e o ar mais fresco que o rio e a mata proporcionam.
+      </p>
+
+      <p>
+        Numa cidade de sol forte o ano inteiro, essa combinação vale mais
+        que qualquer equipamento. É o que permite treino ao ar livre em
+        horários que, na orla exposta, seriam impraticáveis.
+      </p>
+
+      <h2>2. O rio Cocó e o microclima do bairro</h2>
+      <p>
+        O parque leva o nome do rio que o corta pelo meio — um dos mais
+        importantes de Fortaleza e da região metropolitana.
+      </p>
+
+      <p>
+        O efeito prático para quem mora ali é o conforto térmico: a massa
+        de água e a mata em volta seguram a temperatura de forma
+        perceptível em relação aos bairros mais adensados. É uma vantagem
+        que não aparece em anúncio de imóvel e aparece muito na rotina de
+        quem treina.
+      </p>
+
+      <h2>3. As ciclovias das avenidas principais</h2>
+      <p>
+        As vias de acesso ao bairro contam com ciclovias, e o sistema
+        público de bicicletas compartilhadas atende a região.
+      </p>
+
+      <p>
+        Para quem usa o pedal como base aeróbica — ou simplesmente para
+        chegar ao treino sem carro —, é uma estrutura que muda o
+        cotidiano. O terreno plano do bairro ajuda ainda mais.
+      </p>
+
+      <h2>4. Dentro das torres: o formato dominante</h2>
+      <p>
+        O Cocó começou a se urbanizar nos anos 1980 e hoje concentra
+        alguns dos apartamentos mais bem estruturados de Fortaleza, com
+        espaço fitness como item padrão de entrega.
+      </p>
+
+      <p>
+        Por isso o personal em condomínio é o formato mais comum aqui:
+        zero deslocamento, horário exclusivo e uma taxa de falta bem
+        menor — o que importa numa cidade em que o calor do meio-dia
+        desestimula qualquer trajeto.
+      </p>
+
+      <p>
+        O limite conhecido é o teto de carga da academia do prédio, que
+        costuma travar quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos.
+      </p>
+
+      <h2>5. O acesso: BRT e a Engenheiro Santana Júnior</h2>
+      <p>
+        O corredor de BRT que liga Antônio Bezerra ao Papicu passa pela
+        região, com estação na Avenida Engenheiro Santana Júnior, e há
+        linhas de ônibus conectando o terminal do Papicu ao parque.
+      </p>
+
+      <p>
+        Isso importa mais para o mercado de personal do que parece: um
+        bairro bem servido de transporte amplia o número de profissionais
+        que conseguem atender ali sem carro — o que melhora a oferta e a
+        competição por preço.
+      </p>
+
+      <h2>6. A orla, a poucos minutos</h2>
+      <p>
+        O Cocó não é bairro de praia, mas a orla está próxima o
+        suficiente para entrar no plano de quem quer variar.
+      </p>
+
+      <p>
+        A diferença é de exposição: no calçadão, sol direto e brisa
+        marítima; no parque, sombra e ar mais fresco. Um plano bem-feito
+        no bairro alterna os dois em vez de depender de um só — e reserva
+        a orla para os horários de menor radiação.
+      </p>
+
+      <h2>Quanto custa personal trainer no Cocó</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/fortaleza-ce/">personal trainer em
+        Fortaleza</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Cocó trabalha no meio para o topo. É um bairro de classe média
+        alta com forte verticalização, e o atendimento em condomínio — o
+        formato dominante — é justamente o que embute deslocamento e
+        exclusividade de horário.
+      </p>
+
+      <p>
+        O treino em dupla, comum entre casais e vizinhos do mesmo prédio,
+        é o que mais reduz o valor por pessoa; o online (R$ 170 a R$ 430
+        mensais) cobre bem as semanas fora.
+      </p>
+
+      <h2>Como montar a semana usando o bairro</h2>
+      <p>
+        Duas a três sessões de força — na academia do prédio ou de rua —
+        sustentam massa muscular e articulação. É a parte que nenhum
+        parque substitui.
+      </p>
+
+      <p>
+        Fora delas, o Cocó resolve o aeróbico com folga: percursos longos
+        no parque nos dias de volume maior, ruas planas do bairro nos
+        dias curtos. Quem tem dor no joelho ou no quadril deve passar por
+        médico ou fisioterapeuta antes de aumentar o volume de corrida.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Cocó, some duas perguntas locais. Ele já atende em condomínios
+        do bairro e conhece as regras de acesso das torres? E como ele
+        usa o parque ao longo do mês, em vez de tratar todo treino como
+        assunto de ambiente fechado? Quem trabalha aqui responde as duas
+        sem hesitar — a segunda separa quem conhece o bairro de quem só
+        conhece a planilha.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Cocó" />
+
+    <WhatsAppCta tema="geral" localidade="no Cocó" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

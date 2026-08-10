@@ -1,0 +1,315 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/goiania-go/',
+    titulo: 'Personal trainer em Goiânia',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-jardim-goias/',
+    titulo: 'Personal trainer no Jardim Goiás',
+    descricao: 'O bairro vizinho, com o Parque Flamboyant como âncora.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'O formato dominante num bairro que subiu em torres nas últimas décadas.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-setor-bueno';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Goiânia', url: '/personal-trainer/goiania-go/' },
+  { nome: 'Personal Trainer no Setor Bueno', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Setor Bueno?',
+    resposta:
+      'Em Goiânia, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. O Setor Bueno trabalha no meio para o topo dessa faixa: é um dos bairros mais valorizados da capital, com alta densidade de torres e forte demanda por atendimento dentro do condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Setor Bueno?',
+    resposta:
+      'No Parque Vaca Brava, criado em 1951 e transformado em Área de Proteção Ambiental em 1985. São cerca de 80 mil metros quadrados no coração do bairro — pista de caminhada, sombra e o espaço de lazer mais usado pelos moradores. As avenidas largas do setor completam o circuito para quem corre distâncias maiores.',
+  },
+  {
+    pergunta: 'Os prédios do Setor Bueno têm academia?',
+    resposta:
+      'A maioria dos lançamentos das últimas décadas, sim — a verticalização foi rápida e o espaço fitness virou item padrão de entrega. O bairro guarda também casas e edifícios mais antigos, sem área de lazer, e é nessa parte que o atendimento a domicílio segue forte.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Goiânia?',
+    resposta:
+      'Manhã cedo ou fim de tarde. No auge da seca, entre maio e setembro, a baixa umidade exige hidratação reforçada e recomenda evitar o meio do dia. As chuvas se concentram de outubro a abril e pedem um plano B em ambiente coberto — que, num bairro de torres, costuma estar no próprio prédio.',
+  },
+  {
+    pergunta: 'O Setor Bueno é plano?',
+    resposta:
+      'Em boa parte, sim. Goiânia é uma cidade de relevo suave, e as avenidas largas do setor — como a T-63, a T-4 e a T-9 — têm inclinação leve. É um bairro confortável para quem está começando a correr, sem a ladeira severa que outros endereços impõem já no primeiro quilômetro.',
+  },
+];
+
+const title = 'Personal Trainer no Setor Bueno (Goiânia)';
+const description =
+  'Personal trainer no Setor Bueno: preços de Goiânia, o Parque Vaca Brava, a história do bairro que saiu de chácara a segundo mais populoso e onde o treino acontece.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Goiânia</p>
+    <h1>Personal trainer no Setor Bueno: de chácara a bairro de torres</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      No início dos anos 1950, o Setor Bueno era uma chácara onde
+      carroceiros moravam e plantavam, com um córrego cortando a área
+      onde hoje fica o Goiânia Shopping. Era periferia.
+    </p>
+
+    <p class="lead">
+      Setenta anos depois, é um dos endereços mais valorizados da
+      capital e um dos mais verticalizados. Essa trajetória explica,
+      melhor que qualquer tabela de preços, como funciona o mercado de
+      <strong>personal trainer no Setor Bueno</strong> hoje.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro ato: o loteamento dos irmãos Bueno</h2>
+      <p>
+        A história do setor começa junto com a da própria cidade, em
+        1933. Mas o bairro como se conhece hoje nasceu do projeto de
+        loteamento assinado nos anos 1950 pelos engenheiros Abelardo e
+        Jerônymo Coimbra Bueno — os mesmos que dão nome ao lugar.
+      </p>
+
+      <p>
+        Foi um traçado pensado para uma cidade que ainda não existia
+        naquele tamanho: avenidas largas e quadras generosas numa área
+        que, na época, era considerada distante do centro.
+      </p>
+
+      <p>
+        Guarde esse detalhe. As avenidas largas de então são hoje o que
+        permite correr no bairro sem disputar espaço com carro — uma
+        vantagem que nasceu de uma decisão urbanística de setenta anos
+        atrás.
+      </p>
+
+      <h2>Segundo ato: Brasília puxa o crescimento</h2>
+      <p>
+        A partir de 1960, a região começou a receber moradores de outras
+        localidades. A construção de Brasília, ali perto, gerou
+        oportunidades de trabalho e movimentou toda a economia goiana.
+      </p>
+
+      <p>
+        Com mais população vieram mais investimentos públicos, e o bairro
+        se consolidou. É desse período o Parque Vaca Brava — criado em
+        1951 e transformado em Área de Proteção Ambiental em 1985 — que
+        se tornaria o quintal esportivo do setor.
+      </p>
+
+      <h2>Terceiro ato: a verticalização</h2>
+      <p>
+        Nas últimas décadas, o Setor Bueno subiu. Virou o segundo bairro
+        mais populoso de Goiânia, com influência comercial forte e uma
+        densidade de torres que mudou a paisagem inteira.
+      </p>
+
+      <p>
+        As avenidas T-63, T-4, T-9 e a Avenida 85 estruturam a
+        circulação, conectando o bairro ao Jardim América, à região Sul
+        e à Praça Cívica, no centro.
+      </p>
+
+      <p>
+        Para quem treina, o efeito dessa verticalização é direto: <strong>
+        a academia do condomínio virou o formato dominante</strong>.
+        Espaço fitness deixou de ser diferencial e passou a ser item de
+        entrega na maior parte dos lançamentos.
+      </p>
+
+      <h2>O que sobrou da cidade antiga</h2>
+      <p>
+        O bairro não é só torre. Guarda casas e edifícios mais antigos,
+        sem área de lazer, e é nessa parte que o atendimento a domicílio
+        segue forte — com o profissional levando halteres, elásticos e o
+        que o plano exigir.
+      </p>
+
+      <p>
+        Funciona bem, desde que a
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> esteja planejada e exista uma saída para quando o corpo
+        pedir mais.
+      </p>
+
+      <h2>O Parque Vaca Brava, no meio de tudo</h2>
+      <p>
+        São cerca de 80 mil metros quadrados no coração do bairro, com
+        pista de caminhada, sombra e uma programação cultural que ocupa o
+        espaço em datas comemorativas.
+      </p>
+
+      <p>
+        É o endereço público mais usado do setor e o que resolve a parte
+        aeróbica de quem mora ali. Nas pontas do dia, é o ponto de
+        encontro de quem caminha e corre.
+      </p>
+
+      <p>
+        Para distâncias maiores, as avenidas largas do bairro entram no
+        circuito — planas o bastante para quem está construindo base de
+        corrida.
+      </p>
+
+      <h2>O clima do Cerrado entra no plano</h2>
+      <p>
+        Goiânia tem duas estações bem marcadas, e as duas exigem ajuste.
+      </p>
+
+      <p>
+        No auge da seca, entre maio e setembro, a baixa umidade cobra
+        hidratação reforçada e recomenda evitar o meio do dia — a manhã
+        cedo e o fim de tarde são as janelas confortáveis.
+      </p>
+
+      <p>
+        De outubro a abril, as chuvas concentradas pedem um plano B
+        coberto. Num bairro de torres, ele costuma estar no próprio
+        prédio, o que é justamente a vantagem estrutural do Setor Bueno.
+      </p>
+
+      <h2>Quanto custa personal trainer no Setor Bueno</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/goiania-go/">personal trainer em
+        Goiânia</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Setor Bueno trabalha no meio para o topo. A alta densidade de
+        torres e a renda do bairro puxam o preço, e o atendimento em
+        condomínio — o formato dominante — é o que embute deslocamento e
+        exclusividade de horário.
+      </p>
+
+      <p>
+        O treino em dupla, comum entre casais e vizinhos do mesmo prédio,
+        é o que mais reduz o valor por pessoa; o online (R$ 170 a R$ 430
+        mensais) cobre bem as semanas fora.
+      </p>
+
+      <h2>Como montar a semana no bairro</h2>
+      <p>
+        Duas a três sessões de força na academia do prédio ou de rua
+        sustentam massa muscular e articulação. É a parte que o parque
+        não substitui.
+      </p>
+
+      <p>
+        Fora delas, o Vaca Brava resolve o aeróbico nos dias curtos e as
+        avenidas do setor cobrem os dias longos. Quem tem dor no joelho
+        ou no quadril deve passar por médico ou fisioterapeuta antes de
+        aumentar o volume de corrida.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Setor Bueno, some duas perguntas que a história do bairro
+        torna inevitáveis. Ele já atende em condomínios do setor e
+        conhece as regras de acesso das torres? E o que ele faz quando o
+        equipamento do prédio não acompanha mais a sua progressão? Quem
+        trabalha aqui já resolveu as duas dezenas de vezes.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Setor Bueno" />
+
+    <WhatsAppCta tema="geral" localidade="no Setor Bueno" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

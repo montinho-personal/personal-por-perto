@@ -1,0 +1,344 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const ministerioSaude = fontesExternas.ministerioSaude;
+
+const relacionados = [
+  {
+    url: '/musculacao/destreino/',
+    titulo: 'Destreino: quanto tempo parado você perde músculo?',
+    descricao: 'A resposta que tranquiliza quem precisa parar por uma semana.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa muscular',
+    descricao: 'A variável que mais acelera a recuperação — e a mais negligenciada.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: posso treinar assim?',
+    descricao: 'Outra situação em que a régua é distinguir desconforto de sinal de alerta.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treinar-doente-ou-gripado';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treinar doente ou gripado: pode?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Posso treinar gripado?',
+    resposta:
+      'Depende dos sintomas, e a decisão final é de quem acompanha a sua saúde. Uma orientação bastante difundida distingue sintomas acima e abaixo do pescoço: coriza e congestão nasal leve costumam permitir atividade reduzida, enquanto febre, dores no corpo, tosse produtiva, falta de ar ou mal-estar importante indicam repouso. Essa régua é um ponto de partida prático, não um diagnóstico — na dúvida, procure um médico.',
+  },
+  {
+    pergunta: 'Treinar com febre é perigoso?',
+    resposta:
+      'Febre é o sinal mais claro de que o corpo está mobilizando recursos para combater uma infecção, e exercitar-se nesse estado aumenta a demanda cardiovascular e a perda de líquidos num momento em que o organismo já está sobrecarregado. A recomendação padrão é não treinar com febre e procurar avaliação médica — especialmente se ela persistir ou vier acompanhada de outros sintomas.',
+  },
+  {
+    pergunta: 'Perco massa muscular se parar uma semana?',
+    resposta:
+      'Praticamente nada. A perda mensurável de massa muscular leva semanas para começar, e o que se sente nos primeiros dias de volta é queda de desempenho e de sensação de bombeamento, não perda real de tecido. Uma semana parada por doença custa muito menos do que treinar doente e prolongar a recuperação por mais duas.',
+  },
+  {
+    pergunta: 'Quando posso voltar a treinar depois de uma gripe?',
+    resposta:
+      'A orientação prática mais comum é esperar estar sem febre e com os sintomas em franca melhora antes de retomar, e voltar com carga e volume reduzidos por alguns dias em vez de emendar no treino de antes. Quem teve quadro mais intenso ou apresentou sintomas cardíacos ou respiratórios precisa de liberação médica antes de voltar — isso não é excesso de cautela.',
+  },
+  {
+    pergunta: 'Exercício fortalece a imunidade?',
+    resposta:
+      'A atividade física regular e moderada está associada a benefícios amplos de saúde, e é nesse conjunto que o exercício ajuda o organismo. O que não existe é treino que impeça de ficar gripado, nem sessão que "queime" um vírus. E há o outro lado: volume alto somado a sono curto e alimentação insuficiente cria um cenário de desgaste em que as pessoas costumam adoecer com mais frequência.',
+  },
+];
+
+const title = 'Treinar doente ou gripado: pode ou não pode?';
+const description =
+  'Treinar doente ou gripado: a régua dos sintomas acima e abaixo do pescoço, quando parar, quando voltar, quanto músculo se perde na pausa e quando procurar médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treinar doente ou gripado: pode ou não pode?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A pergunta chega sempre acompanhada de um medo específico: "se eu
+      parar, perco tudo o que ganhei". É esse medo, e não a doença, que
+      leva muita gente à academia com febre.
+    </p>
+
+    <p class="lead">
+      Este guia responde as duas coisas — o que a pausa realmente custa e
+      como decidir se treinar hoje faz sentido. Com uma ressalva que vale
+      para o texto inteiro: nada aqui substitui a avaliação de um médico.
+    </p>
+
+    <div class="prose">
+      <h2>A régua mais usada: acima ou abaixo do pescoço</h2>
+      <p>
+        Existe uma orientação prática bastante difundida no meio
+        esportivo que separa os sintomas por localização.
+      </p>
+
+      <p>
+        <strong>Acima do pescoço</strong> — coriza, congestão nasal leve,
+        espirros, garganta levemente irritada. Costuma permitir atividade
+        física reduzida, com carga e volume menores.
+      </p>
+
+      <p>
+        <strong>Abaixo do pescoço</strong> — febre, dores no corpo,
+        calafrios, tosse produtiva, falta de ar, náusea, mal-estar
+        importante. Indica repouso.
+      </p>
+
+      <p>
+        É um ponto de partida útil, e não um diagnóstico. Ela não
+        substitui avaliação médica, e existem quadros que começam
+        "leves" e não são. Na dúvida, a resposta correta é procurar um
+        médico, não consultar uma régua.
+      </p>
+
+      <VideoYouTube
+        id="mR3ONPRJKsw"
+        titulo="Estou doente, como ficam os treinos? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin trata de como ajustar treino e dieta durante um período de doença."
+      />
+
+      <h2>Por que treinar doente costuma sair caro</h2>
+      <p>
+        <strong>O corpo já está em déficit de recuperação.</strong> Uma
+        infecção mobiliza energia e recursos. Somar o estímulo de treino
+        a isso compete com o processo que você quer que aconteça rápido.
+      </p>
+
+      <p>
+        <strong>O desempenho cai de qualquer jeito.</strong> A sessão que
+        você faz doente rende menos, com menos carga e pior execução — o
+        estímulo é inferior e o custo é maior.
+      </p>
+
+      <p>
+        <strong>O risco de prolongar o quadro é real.</strong> Um dia de
+        treino forçado que vira mais quatro dias de cama é o pior negócio
+        possível na conta de semanas.
+      </p>
+
+      <p>
+        <strong>E há a academia.</strong> Treinar com quadro infeccioso
+        expõe outras pessoas — um argumento que não tem nada a ver com
+        hipertrofia e continua valendo.
+      </p>
+
+      <h2>O medo infundado: quanto você perde parando</h2>
+      <p>
+        Aqui está a informação que resolve a ansiedade da maioria das
+        pessoas: <strong>uma semana parada não custa massa muscular
+        relevante</strong>.
+      </p>
+
+      <p>
+        A perda mensurável de tecido leva semanas para começar. O que se
+        sente nos primeiros dias de volta — músculo menos "cheio", menos
+        força na primeira série — é queda de desempenho e de retenção de
+        glicogênio, e volta rápido.
+      </p>
+
+      <p>
+        O guia sobre <a href="/musculacao/destreino/">destreino</a>
+        detalha os prazos reais. A conclusão prática é direta: o custo de
+        parar cinco dias é muito menor que o de arrastar uma doença por
+        três semanas.
+      </p>
+
+      <h2>Se você vai treinar com sintomas leves</h2>
+      <p>
+        <strong>Reduza o volume, não só a carga.</strong> Metade das
+        séries costuma ser melhor ajuste que metade do peso.
+      </p>
+
+      <p>
+        <strong>Corte a intensidade alta.</strong> Nada de séries até a
+        falha, técnicas avançadas ou tentativas de recorde.
+      </p>
+
+      <p>
+        <strong>Evite aeróbico intenso.</strong> A demanda
+        cardiovascular alta é justamente o que não combina com organismo
+        em recuperação.
+      </p>
+
+      <p>
+        <strong>Hidrate mais que o normal.</strong> Febre, sudorese e
+        congestão aumentam a perda de líquidos.
+      </p>
+
+      <p>
+        <strong>Tenha um critério de parada.</strong> Combine consigo
+        mesmo: se piorar durante a sessão, encerra. E respeite.
+      </p>
+
+      <h2>Quando não é caso de ajustar treino</h2>
+      <p>
+        Alguns sinais tiram a decisão do campo do treino e colocam no do
+        cuidado médico: febre persistente, falta de ar, dor no peito,
+        palpitação, tontura, sintomas que pioram ao longo dos dias.
+      </p>
+
+      <p>
+        Nesses casos, a pergunta deixa de ser "posso treinar?" e passa a
+        ser "preciso ser avaliado?". A resposta é sim, e o treino espera.
+      </p>
+
+      <p>
+        As orientações oficiais de saúde publicadas pelo
+        <a href={ministerioSaude.url} target="_blank" rel="noopener">{ministerioSaude.nome}</a>
+        são o ponto de partida para condutas gerais — e o profissional
+        que acompanha você é quem individualiza.
+      </p>
+
+      <h2>Como voltar depois</h2>
+      <p>
+        A orientação prática mais comum é retomar sem febre e com os
+        sintomas em franca melhora — e voltar com carga e volume
+        reduzidos por alguns dias, em vez de emendar no treino de antes.
+      </p>
+
+      <p>
+        Uma progressão de retorno que funciona bem: primeira sessão com
+        cerca de metade do volume habitual e carga confortável; segunda e
+        terceira subindo gradualmente; a partir da quarta, retomada
+        normal, conforme a resposta.
+      </p>
+
+      <p>
+        Quem teve quadro mais intenso, ficou internado ou apresentou
+        sintomas cardíacos ou respiratórios precisa de liberação médica
+        antes de voltar. Isso não é excesso de cautela — é o
+        procedimento.
+      </p>
+
+      <h2>A parte que quase ninguém conecta</h2>
+      <p>
+        Há uma relação de mão dupla que vale conhecer. Volume de treino
+        alto somado a sono curto, alimentação insuficiente e estresse
+        acumulado cria um cenário de desgaste em que as pessoas costumam
+        adoecer com mais frequência.
+      </p>
+
+      <p>
+        Se você vive gripado, a pergunta útil talvez não seja "posso
+        treinar doente?", e sim "meu volume e minha recuperação estão
+        equilibrados?" — assunto do guia sobre
+        <a href="/musculacao/sono-e-ganho-de-massa/">sono e ganho de
+        massa muscular</a>.
+      </p>
+
+      <p>
+        Atividade física regular e moderada está associada a benefícios
+        amplos de saúde. O que não existe é treino que impeça de ficar
+        gripado — nem sessão que resolva um quadro já instalado.
+      </p>
+
+      <h2>O resumo prático</h2>
+      <p>
+        Sintomas leves acima do pescoço, sem febre: dá para treinar
+        reduzido, com critério de parada combinado.
+      </p>
+
+      <p>
+        Febre, dores no corpo, tosse produtiva, falta de ar ou mal-estar:
+        repouso, e avaliação médica se persistir ou piorar.
+      </p>
+
+      <p>
+        E, em qualquer cenário: a semana parada custa muito menos do que
+        a maioria das pessoas imagina. Esse medo é o pior conselheiro
+        possível na hora de decidir.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treinar doente" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

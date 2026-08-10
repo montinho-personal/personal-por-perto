@@ -81,6 +81,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-casa-forte/', titulo: 'Personal trainer em Casa Forte (Recife)' },
   { categoria: 'Bairros', url: '/personal-trainer-vila-mariana/', titulo: 'Personal trainer na Vila Mariana (São Paulo)' },
   { categoria: 'Bairros', url: '/personal-trainer-nazare-belem/', titulo: 'Personal trainer em Nazaré (Belém)' },
+  { categoria: 'Bairros', url: '/personal-trainer-coco-fortaleza/', titulo: 'Personal trainer no Cocó (Fortaleza)' },
+  { categoria: 'Bairros', url: '/personal-trainer-petropolis-porto-alegre/', titulo: 'Personal trainer no Petrópolis (Porto Alegre)' },
+  { categoria: 'Bairros', url: '/personal-trainer-setor-bueno/', titulo: 'Personal trainer no Setor Bueno (Goiânia)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -96,6 +99,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-corredores/', titulo: 'Personal trainer para corredores: o guia completo' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-adolescentes/', titulo: 'Personal trainer para adolescentes: o guia' },
   { categoria: 'Guias', url: '/guias/primeira-aula-com-personal-trainer/', titulo: 'Primeira aula com personal trainer: o que esperar' },
+  { categoria: 'Guias', url: '/guias/como-nao-desistir-do-treino/', titulo: 'Como não desistir do treino: o guia da constância' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
 
   // Musculação
@@ -138,6 +142,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/frequencia-de-treino/', titulo: 'Frequência de treino: quantas vezes treinar por semana' },
   { categoria: 'Musculação', url: '/musculacao/suplementos-que-nao-funcionam/', titulo: 'Suplementos que não funcionam: a lista honesta' },
   { categoria: 'Musculação', url: '/musculacao/musculacao-e-postura/', titulo: 'Musculação e postura: o que o treino resolve' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-panturrilha/', titulo: 'Treino de panturrilha: como fazer crescer' },
+  { categoria: 'Musculação', url: '/musculacao/tecnicas-avancadas-de-treino/', titulo: 'Técnicas avançadas de treino: quando usar' },
+  { categoria: 'Musculação', url: '/musculacao/treinar-doente-ou-gripado/', titulo: 'Treinar doente ou gripado: pode ou não pode?' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -155,6 +162,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-manter-o-peso-perdido/', titulo: 'Como manter o peso perdido depois da dieta' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/gordura-visceral/', titulo: 'Gordura visceral: o que é e como reduzir' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/dieta-flexivel/', titulo: 'Dieta flexível: o que é e como funciona na prática' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta: o guia prático' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

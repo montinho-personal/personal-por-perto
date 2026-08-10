@@ -1,0 +1,338 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const ministerioSaude = fontesExternas.ministerioSaude;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/dieta-flexivel/',
+    titulo: 'Dieta flexível: o que é e como funciona',
+    descricao: 'O método que torna comer fora uma decisão de conta, não de culpa.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta semanal que explica por que um jantar não estraga nada.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-manter-o-peso-perdido/',
+    titulo: 'Como manter o peso perdido depois da dieta',
+    descricao: 'Comer fora sem descarrilar é a habilidade central da manutenção.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/comer-fora-e-dieta';
+const atualizadoEm = '2026-08-05';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Comer fora sem sair da dieta', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Um jantar fora estraga a dieta?',
+    resposta:
+      'Não, e entender por quê muda a relação com a comida. O emagrecimento responde ao saldo energético acumulado ao longo de semanas, não ao resultado de um dia isolado. Uma refeição mais calórica dentro de uma semana bem conduzida é absorvida pela média sem consequência relevante. O que estraga não é o jantar: é o ciclo de culpa que costuma vir depois dele e que transforma um dia em uma semana perdida.',
+  },
+  {
+    pergunta: 'Como pedir em restaurante sem sair do plano?',
+    resposta:
+      'Três decisões resolvem a maior parte: escolher uma fonte de proteína como base do prato, pedir os acompanhamentos mais calóricos separados quando possível e prestar atenção ao que vem antes e depois — couvert, bebida e sobremesa costumam somar mais que o prato principal. Bebida alcoólica, em particular, é a variável mais subestimada de uma noite fora.',
+  },
+  {
+    pergunta: 'Vale a pena "guardar" calorias para o jantar?',
+    resposta:
+      'Distribuir as calorias do dia deixando mais espaço para a refeição social é uma estratégia legítima e bastante usada. O que não funciona bem é jejuar o dia inteiro para compensar: chegar ao restaurante com fome extrema costuma resultar em comer bem mais do que se planejava. Reduzir moderadamente ao longo do dia, mantendo a proteína, funciona melhor que zerar.',
+  },
+  {
+    pergunta: 'Como não perder o progresso em viagem?',
+    resposta:
+      'Redefinindo o objetivo. Em viagem curta, manter o peso já é um bom resultado — tentar seguir déficit em contexto de rotina alterada costuma gerar frustração. Três âncoras costumam bastar: garantir proteína em pelo menos duas refeições, manter os passos altos (viagem costuma ajudar nisso) e fazer alguma sessão de força, mesmo curta e improvisada.',
+  },
+  {
+    pergunta: 'Como voltar à rotina depois de um período fora?',
+    resposta:
+      'Retomando exatamente o que era feito antes, sem compensação. A tentação de fazer déficit agressivo ou treino extra para "pagar" os dias fora costuma piorar as coisas, porque cria um ciclo de excesso e punição. Parte do peso ganho em poucos dias é água, sal e conteúdo intestinal, e some sozinho na primeira semana de rotina normal.',
+  },
+];
+
+const title = 'Comer fora sem sair da dieta: o guia prático';
+const description =
+  'Comer fora e dieta: por que um jantar não estraga nada, como pedir em restaurante, o peso do álcool, viagens e como voltar à rotina sem ciclo de compensação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Comer fora sem sair da dieta: o guia prático</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A maioria das dietas não morre num restaurante. Morre na
+      segunda-feira seguinte, quando a pessoa decide que "já estragou
+      tudo mesmo" e deixa a semana inteira ir junto.
+    </p>
+
+    <p class="lead">
+      O jantar de sábado quase nunca é o problema. O ciclo de culpa e
+      compensação é. Este guia trata dos dois — primeiro a matemática,
+      depois as decisões práticas.
+    </p>
+
+    <div class="prose">
+      <h2>A conta é semanal, não diária</h2>
+      <p>
+        O emagrecimento responde ao saldo energético acumulado ao longo
+        de semanas. Não existe mecanismo que anule um mês de trabalho por
+        causa de uma refeição.
+      </p>
+
+      <p>
+        Na prática: uma refeição mais calórica dentro de uma semana bem
+        conduzida é absorvida pela média sem consequência relevante. É
+        assim que o <a href="/emagrecimento/deficit-calorico-como-funciona/">
+        déficit calórico</a> funciona de verdade.
+      </p>
+
+      <p>
+        Repare no que isso muda. Se a conta é semanal, comer fora deixa
+        de ser transgressão e vira variável — algo que você planeja, e
+        não algo de que você se arrepende.
+      </p>
+
+      <h2>O que realmente pesa numa noite fora</h2>
+      <p>
+        <strong>A bebida alcoólica.</strong> É a variável mais
+        subestimada. Ela soma calorias que não geram saciedade nenhuma e,
+        em quantidade, tende a reduzir o critério nas escolhas seguintes
+        — inclusive a da sobremesa.
+      </p>
+
+      <p>
+        <strong>O que vem antes.</strong> Couvert, entrada e o pãozinho
+        na mesa somam bastante antes de o prato principal chegar.
+      </p>
+
+      <p>
+        <strong>A gordura de preparo.</strong> Molhos, frituras e o óleo
+        usado na cozinha são responsáveis por boa parte da diferença
+        entre o mesmo prato feito em casa e no restaurante.
+      </p>
+
+      <p>
+        <strong>O tamanho da porção.</strong> Restaurante serve porção
+        maior que a doméstica, quase sempre. Dividir ou levar metade
+        resolve sem drama.
+      </p>
+
+      <h2>Três decisões que resolvem a maior parte</h2>
+      <p>
+        <strong>1. Escolha a proteína primeiro.</strong> Defina a fonte
+        proteica como base do prato e monte o resto em volta. Proteína
+        entrega saciedade e é o macro que mais protege a massa magra em
+        déficit.
+      </p>
+
+      <p>
+        <strong>2. Peça o que puder separado.</strong> Molho à parte,
+        acompanhamento à parte. Você decide a quantidade em vez de
+        recebê-la pronta.
+      </p>
+
+      <p>
+        <strong>3. Escolha uma indulgência, não três.</strong> Entrada,
+        bebida e sobremesa somadas costumam pesar mais que o prato.
+        Escolher a que realmente importa para você é mais sustentável do
+        que abrir mão de todas.
+      </p>
+
+      <h2>Guardar calorias funciona? Depende de como</h2>
+      <p>
+        Distribuir as calorias do dia deixando mais espaço para a
+        refeição social é estratégia legítima e bastante usada.
+      </p>
+
+      <p>
+        O que não funciona bem é jejuar o dia inteiro para compensar.
+        Chegar ao restaurante com fome extrema costuma resultar em comer
+        muito mais do que se planejava — e a economia da tarde vira
+        déficit negativo na noite.
+      </p>
+
+      <p>
+        Reduzir moderadamente ao longo do dia, mantendo a proteína alta,
+        funciona melhor. É o tipo de manobra que a
+        <a href="/emagrecimento/dieta-flexivel/">dieta flexível</a>
+        organiza bem, porque trata a questão como conta e não como moral.
+      </p>
+
+      <VideoYouTube
+        id="AgcyPmQzDaE"
+        titulo="Como manter o shape em viagens curtas e longas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin discute as estratégias para manter treino e alimentação em ordem durante viagens de duração variada."
+      />
+
+      <h2>Viagem: mude o objetivo, não o esforço</h2>
+      <p>
+        Em viagem curta, tentar seguir déficit em contexto de rotina
+        alterada costuma gerar mais frustração que resultado.
+      </p>
+
+      <p>
+        A redefinição que funciona é simples: <strong>manter o peso já é
+        um bom resultado</strong>. Três âncoras costumam bastar.
+      </p>
+
+      <p>
+        <strong>Proteína em pelo menos duas refeições.</strong> É o que
+        protege a massa magra e o que mais segura o apetite.
+      </p>
+
+      <p>
+        <strong>Passos altos.</strong> Viagem costuma ajudar nisso
+        sozinha — e o gasto acumulado compensa parte do excedente.
+      </p>
+
+      <p>
+        <strong>Alguma sessão de força.</strong> Curta, improvisada, na
+        academia do hotel ou no quarto com peso corporal. O objetivo é
+        manter o estímulo, não progredir.
+      </p>
+
+      <h2>A volta: o momento que mais atrapalha</h2>
+      <p>
+        Aqui está o erro que custa mais que a viagem inteira. A tentação
+        é fazer déficit agressivo ou treino extra para "pagar" os dias
+        fora.
+      </p>
+
+      <p>
+        Isso cria um ciclo de excesso e punição que, repetido, vira uma
+        relação ruim com a comida — e frequentemente termina em novo
+        excesso.
+      </p>
+
+      <p>
+        O que funciona é retomar exatamente o que era feito antes, sem
+        compensação. Vale lembrar também que parte do peso ganho em
+        poucos dias é água, sal e conteúdo intestinal, e some sozinho na
+        primeira semana de rotina normal.
+      </p>
+
+      <h2>O caso das ocasiões recorrentes</h2>
+      <p>
+        Um jantar por mês não muda nada. Quatro refeições fora por
+        semana, sim — e essa é a situação real de muita gente que come
+        fora por trabalho.
+      </p>
+
+      <p>
+        Nesse cenário, a conversa muda de "como sobreviver a essa noite"
+        para "como estruturar um padrão que inclua isso". Escolher dois
+        ou três restaurantes de referência com opções previsíveis, e ter
+        um pedido padrão em cada um, costuma resolver melhor do que
+        decidir na hora, todas as vezes.
+      </p>
+
+      <p>
+        As orientações oficiais de alimentação publicadas pelo
+        <a href={ministerioSaude.url} target="_blank" rel="noopener">{ministerioSaude.nome}</a>
+        seguem essa lógica de padrão sustentável — e a individualização,
+        quando há condição de saúde envolvida, é sempre de médico e
+        nutricionista.
+      </p>
+
+      <h2>A habilidade que sustenta o longo prazo</h2>
+      <p>
+        Comer fora sem descarrilar não é um truque para a fase de perda
+        de peso. É a habilidade central da
+        <a href="/emagrecimento/como-manter-o-peso-perdido/">manutenção</a>,
+        que é a fase mais longa de todas.
+      </p>
+
+      <p>
+        Quem só consegue seguir o plano dentro de casa tem um plano que
+        funciona em condições de laboratório. Quem aprende a navegar
+        restaurante, viagem e aniversário tem um que funciona na vida —
+        e é esse que dura anos.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre comer fora e dieta" />
+
+    <WhatsAppCta tema="alimentacao" />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
