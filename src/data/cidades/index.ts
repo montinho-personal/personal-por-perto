@@ -384,6 +384,8 @@ import { cidade as alcobaca } from './alcobaca-ba';
 import { cidade as analandia } from './analandia-sp';
 import { cidade as luisCorreia } from './luis-correia-pi';
 import { cidade as goncalves } from './goncalves-mg';
+import { cidade as tibagi } from './tibagi-pr';
+import { cidade as saoJoseDosAusentes } from './sao-jose-dos-ausentes-rs';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1124,7 +1126,7 @@ export const cidades: Cidade[] = [
   tresPassos, rosarioDoSul, itaporangaDAjuda, tresCoroas, praiaGrandeSC, orleans,
   chapadaDosGuimaraes, cavalcante, aiuruoca, piranhas, palmeiras,
   xiqueXique, apiuna, carolina, buique, saoRoqueDeMinas, japaratinga,
-  alcobaca, analandia, luisCorreia, goncalves,
+  alcobaca, analandia, luisCorreia, goncalves, tibagi, saoJoseDosAusentes,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

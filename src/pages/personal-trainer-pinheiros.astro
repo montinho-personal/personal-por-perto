@@ -1,0 +1,342 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-vila-madalena/',
+    titulo: 'Personal trainer na Vila Madalena',
+    descricao: 'O bairro vizinho, com o relevo que Pinheiros não tem.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'O formato que cresceu junto com as torres do eixo Faria Lima.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-pinheiros';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
+  { nome: 'Personal Trainer em Pinheiros', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Pinheiros?',
+    resposta:
+      'Em São Paulo, a aula avulsa vai de R$ 80 a R$ 200 e o pacote mensal de R$ 400 a R$ 1.200. Pinheiros trabalha na metade superior dessa faixa: é um dos endereços mais valorizados da cidade, puxado pelo eixo corporativo da Faria Lima, e o atendimento dentro do condomínio é o mais caro.',
+  },
+  {
+    pergunta: 'Dá para treinar sem carro em Pinheiros?',
+    resposta:
+      'É o bairro mais bem servido da Linha 4–Amarela do Metrô, com quatro estações atendendo o território: Oscar Freire, Fradique Coutinho, Faria Lima e Pinheiros. Essa densidade é rara em São Paulo e amplia bastante o número de profissionais que conseguem atender ali sem depender de carro.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Pinheiros?',
+    resposta:
+      'O bairro é denso e tem pouca área verde própria — esse é o seu ponto fraco. As ruas internas servem para caminhada, e o Largo da Batata funciona como espaço aberto de circulação. Para percurso estruturado, a saída é o entorno: o Parque Villa-Lobos, no Alto de Pinheiros, e a orla do Rio Pinheiros, com sua ciclovia, ficam a poucos minutos.',
+  },
+  {
+    pergunta: 'Os prédios de Pinheiros têm academia?',
+    resposta:
+      'Os lançamentos do eixo Faria Lima, quase todos — o adensamento das últimas décadas trouxe torres com lazer completo. Mas o bairro guarda muita casa e edifício antigo nas ruas internas, sem área de lazer, e é ali que o atendimento a domicílio segue forte.',
+  },
+  {
+    pergunta: 'Pinheiros é bom para quem trabalha na Faria Lima?',
+    resposta:
+      'É praticamente o cenário ideal, e explica boa parte da demanda local. Morar e trabalhar no mesmo eixo elimina o deslocamento, que é o principal motivo de abandono de rotina em São Paulo. Na prática, a sessão das 7h antes do expediente ou a das 19h logo depois deixam de ser heroísmo e viram hábito.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar no bairro?',
+    resposta:
+      'O clima ameno de São Paulo favorece o ar livre quase o ano todo. No verão chuvoso, a manhã rende mais que o fim de tarde; no inverno seco, vale atenção aos dias de baixa umidade e pico de poluição — situação em que a academia coberta é a escolha sensata, não preguiça.',
+  },
+];
+
+const title = 'Personal Trainer em Pinheiros (São Paulo): o guia';
+const description =
+  'Personal trainer em Pinheiros: preços de São Paulo, as quatro estações da Linha 4, o eixo Faria Lima, a pouca área verde do bairro e como montar a semana de treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer em Pinheiros: o guia completo do bairro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Pinheiros tem uma vantagem que quase nenhum bairro de São Paulo
+      oferece — quatro estações de metrô da mesma linha — e uma
+      desvantagem que quase todo bairro adensado tem: pouquíssimo verde
+      próprio.
+    </p>
+
+    <p class="lead">
+      Essas duas coisas definem como se treina aqui. Este guia cobre o
+      bairro inteiro para quem procura um <strong>personal trainer em
+      Pinheiros</strong>: território, formatos, preços e a semana de
+      treino que funciona no lugar.
+    </p>
+
+    <div class="prose">
+      <h2>O território: o eixo que reorganizou o bairro</h2>
+      <p>
+        Pinheiros é hoje um dos endereços mais valorizados de São Paulo, e
+        o motor disso tem nome e endereço: o eixo corporativo-residencial
+        do início da Avenida Brigadeiro Faria Lima, em torno do Largo da
+        Batata.
+      </p>
+
+      <p>
+        Em volta desse eixo se acumulou uma densidade rara de serviços e
+        cultura — Sesc Pinheiros, Instituto Tomie Ohtake, Casa Natura
+        Musical, a feira da Praça Benedito Calixto.
+      </p>
+
+      <p>
+        O bairro convive, porém, com os efeitos colaterais desse
+        adensamento: pressão sobre a mobilidade e pouca área verde dentro
+        dos próprios limites. Para quem treina, essa é a variável que
+        mais pesa.
+      </p>
+
+      <h2>O metrô como infraestrutura de treino</h2>
+      <p>
+        Pinheiros é o bairro mais bem servido da <strong>Linha
+        4–Amarela</strong>, com quatro estações atendendo o território:
+        Oscar Freire, Fradique Coutinho, Faria Lima e Pinheiros.
+      </p>
+
+      <p>
+        Isso importa mais para o mercado de personal do que qualquer
+        característica física do bairro. Um território com essa densidade
+        de transporte amplia enormemente o número de profissionais que
+        conseguem atender ali sem carro.
+      </p>
+
+      <p>
+        Mais oferta significa melhor competição por preço e mais chance
+        de encontrar alguém com experiência específica no seu objetivo —
+        um luxo que bairros mal servidos de transporte não têm.
+      </p>
+
+      <h2>Dentro dos prédios: duas realidades</h2>
+      <p>
+        Os <strong>lançamentos do eixo Faria Lima</strong> entregam lazer
+        completo com espaço fitness, e o profissional vai até o prédio.
+        Zero deslocamento, horário exclusivo — o formato que mais cresceu
+        aqui na última década.
+      </p>
+
+      <p>
+        O limite é o teto de carga: halteres até um valor modesto e
+        poucas máquinas travam quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos. O guia sobre
+        <a href="/guias/personal-trainer-em-condominio/">personal trainer
+        em condomínio</a> lista o que conferir antes de fechar.
+      </p>
+
+      <p>
+        Nas <strong>ruas internas</strong>, porém, o bairro guarda muita
+        casa e edifício antigo sem área de lazer. Ali o atendimento a
+        domicílio é a saída, e a academia de rua — abundante ao longo dos
+        eixos comerciais — completa o quadro.
+      </p>
+
+      <h2>O ponto fraco: o verde</h2>
+      <p>
+        Vale ser direto sobre isso, porque nenhum guia imobiliário será.
+        Pinheiros é denso e tem pouca área verde própria.
+      </p>
+
+      <p>
+        As ruas internas servem para caminhada e o Largo da Batata
+        funciona como espaço aberto de circulação, mas nenhum dos dois é
+        um parque.
+      </p>
+
+      <p>
+        A saída está no entorno, e é boa: o <strong>Parque
+        Villa-Lobos</strong>, no Alto de Pinheiros, e a ciclovia da orla
+        do Rio Pinheiros ficam a poucos minutos, e resolvem corrida longa
+        e pedal. Quem mora aqui e quer treinar ao ar livre com regularidade
+        precisa incorporar esse deslocamento ao plano — não adianta
+        fingir que o bairro resolve sozinho.
+      </p>
+
+      <h2>O vizinho que complementa</h2>
+      <p>
+        A <a href="/personal-trainer-vila-madalena/">Vila Madalena</a>,
+        colada a Pinheiros, oferece exatamente o que falta aqui: relevo.
+        As ladeiras de lá são o estímulo intenso que as ruas planas de
+        Pinheiros não entregam.
+      </p>
+
+      <p>
+        Na prática, muita gente que mora em Pinheiros usa a Vila para o
+        trabalho de subida e o Villa-Lobos para o volume longo. É uma
+        combinação que funciona bem e que um profissional que conhece a
+        região monta sem pensar.
+      </p>
+
+      <h2>Quem treina aqui</h2>
+      <p>
+        O perfil dominante é previsível pelo território: adulto ligado ao
+        eixo corporativo da Faria Lima, com agenda cheia, pouca tolerância
+        a deslocamento e objetivo de composição corporal e saúde.
+      </p>
+
+      <p>
+        Para quem mora e trabalha no mesmo eixo — cenário comum aqui —, a
+        rotina fica estruturalmente mais fácil: a sessão das 7h antes do
+        expediente deixa de ser heroísmo. Deslocamento é o principal
+        motivo de abandono de rotina em São Paulo, e esse morador
+        simplesmente não tem esse problema.
+      </p>
+
+      <p>
+        Quem chega com dor lombar, no ombro ou no joelho — frequente em
+        rotina de escritório — precisa de avaliação de médico ou
+        fisioterapeuta antes de o plano ser montado.
+      </p>
+
+      <h2>Quanto custa personal trainer em Pinheiros</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Pinheiros trabalha na metade superior. O eixo Faria Lima puxa o
+        preço, e o atendimento em condomínio embute deslocamento e
+        exclusividade de horário.
+      </p>
+
+      <p>
+        O que segura o valor é a oferta: o acesso de metrô traz muito
+        profissional para o bairro, e a competição aparece. O treino em
+        dupla divide o custo, e o online (R$ 200 a R$ 500 mensais) cobre
+        as semanas de viagem.
+      </p>
+
+      <h2>Como montar a semana no bairro</h2>
+      <p>
+        Duas a três sessões de força — no prédio, em casa ou na academia
+        de rua — sustentam massa muscular e articulação. É a base, e
+        Pinheiros resolve bem essa parte.
+      </p>
+
+      <p>
+        O aeróbico exige mais planejamento: ruas internas nos dias
+        curtos, Villa-Lobos ou a ciclovia do rio nos dias longos, ladeiras
+        da Vila Madalena quando o objetivo é intensidade.
+      </p>
+
+      <p>
+        No verão chuvoso, antecipe para a manhã; no inverno seco, atenção
+        aos dias de pico de poluição, em que o ambiente coberto é a
+        escolha certa.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Pinheiros, some duas perguntas locais. Ele já atende em
+        condomínios do eixo Faria Lima e conhece as regras de acesso das
+        torres? E como ele resolve a parte ao ar livre num bairro sem
+        parque próprio? A segunda pergunta separa quem conhece o
+        território de quem só conhece o CEP.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Pinheiros" />
+
+    <WhatsAppCta tema="geral" localidade="em Pinheiros" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

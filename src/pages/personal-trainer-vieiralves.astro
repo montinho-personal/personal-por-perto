@@ -1,0 +1,320 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/manaus-am/',
+    titulo: 'Personal trainer em Manaus',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-adrianopolis/',
+    titulo: 'Personal trainer em Adrianópolis',
+    descricao: 'O bairro vizinho, com quem Vieiralves divide o topo do mercado.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/emagrecimento/comer-fora-e-dieta/',
+    titulo: 'Comer fora sem sair da dieta',
+    descricao: 'Assunto obrigatório num endereço que é polo gastronômico da cidade.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-vieiralves';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Manaus', url: '/personal-trainer/manaus-am/' },
+  { nome: 'Personal Trainer no Vieiralves', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Vieiralves?',
+    resposta:
+      'Em Manaus, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. O Vieiralves trabalha no topo dessas faixas: é uma das áreas mais caras da cidade, ao lado de Adrianópolis e Ponta Negra, com forte demanda por atendimento dentro do condomínio.',
+  },
+  {
+    pergunta: 'Vieiralves é um bairro?',
+    resposta:
+      'Tecnicamente não — é um conjunto residencial dentro do bairro Nossa Senhora das Graças, na zona Centro-Sul de Manaus, ao lado dos conjuntos Manauense e Vila Amazonas. Mas o nome pegou popularmente e hoje designa toda a região no uso cotidiano, inclusive em anúncio de imóvel e endereço comercial.',
+  },
+  {
+    pergunta: 'Os prédios do Vieiralves têm academia?',
+    resposta:
+      'A maioria dos empreendimentos recentes, sim. A região é uma das que mais atraem lançamentos residenciais em Manaus, justamente pelo perfil de renda alta, e espaço fitness virou item padrão de entrega. É por isso que o personal em condomínio é o formato dominante aqui.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Vieiralves?',
+    resposta:
+      'As ruas internas do conjunto servem para caminhada, mas a região é densa e comercial — não tem parque próprio. Para percurso estruturado, os moradores costumam recorrer ao entorno da cidade. O calor e a umidade de Manaus, de qualquer forma, empurram o treino ao ar livre para bem cedo ou depois do pôr do sol.',
+  },
+  {
+    pergunta: 'Como treinar num bairro que é polo gastronômico?',
+    resposta:
+      'É a contradição prática de morar aqui: as ruas Pará e João Valério concentram restaurantes, pizzarias e bares, e comer fora deixa de ser evento para virar rotina. A saída não é evitar — é planejar. Quem come fora várias vezes por semana precisa de um padrão de pedido definido, não de força de vontade renovada a cada noite.',
+  },
+];
+
+const title = 'Personal Trainer no Vieiralves (Manaus): o guia';
+const description =
+  'Personal trainer no Vieiralves: preços de Manaus, as torres com academia, o desafio de treinar num polo gastronômico e o formato certo para cada perfil de morador.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Manaus</p>
+    <h1>Personal trainer no Vieiralves: o formato certo para cada morador</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Vieiralves tem uma característica que complica e facilita ao
+      mesmo tempo a vida de quem treina: é o polo gastronômico e noturno
+      de Manaus. Restaurante, pizzaria e bar em cada quarteirão.
+    </p>
+
+    <p class="lead">
+      Isso muda o cálculo de quem mora aqui — e muda de forma diferente
+      para cada perfil. Este guia percorre os moradores que mais procuram
+      um <strong>personal trainer no Vieiralves</strong> e mostra o que
+      se ajusta em cada caso.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro, o que é o Vieiralves</h2>
+      <p>
+        Tecnicamente, é um conjunto residencial dentro do bairro Nossa
+        Senhora das Graças, na zona Centro-Sul de Manaus — ao lado dos
+        conjuntos Manauense e Vila Amazonas, que compõem o mesmo bairro.
+      </p>
+
+      <p>
+        Na prática, o nome pegou e hoje designa toda a região no uso
+        cotidiano, de anúncio de imóvel a endereço comercial. É uma área
+        de classe média-alta e alta, entre as mais caras da cidade ao
+        lado de Adrianópolis e Ponta Negra.
+      </p>
+
+      <p>
+        Duas vias organizam tudo: as ruas <strong>Pará</strong> e
+        <strong>João Valério</strong>, que estão entre os principais
+        eixos comerciais de Manaus e concentram centros comerciais,
+        restaurantes, clínicas e lojas.
+      </p>
+
+      <h2>Perfil 1: quem mora em torre e tem agenda cheia</h2>
+      <p>
+        É o perfil mais numeroso. A região é uma das que mais atraem
+        lançamentos residenciais em Manaus, e os empreendimentos recentes
+        entregam espaço fitness de série.
+      </p>
+
+      <p>
+        Para esse morador, o formato é o personal dentro do condomínio.
+        Numa cidade de calor e umidade constantes, com chuva quase
+        diária, não precisar sair de casa é o que sustenta a frequência —
+        vale mais aqui do que em clima seco.
+      </p>
+
+      <p>
+        O ponto de atenção é o teto de carga da academia do prédio, que
+        costuma travar quem avança na
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos.
+      </p>
+
+      <h2>Perfil 2: quem come fora quase todo dia</h2>
+      <p>
+        Este perfil é praticamente uma criação do território. Morar no
+        polo gastronômico da cidade significa que comer fora deixa de ser
+        evento e vira rotina.
+      </p>
+
+      <p>
+        A saída não é evitar — é planejar. Quem come fora quatro vezes por
+        semana precisa de um padrão de pedido definido em dois ou três
+        lugares de referência, não de força de vontade renovada a cada
+        noite.
+      </p>
+
+      <p>
+        O guia sobre
+        <a href="/emagrecimento/comer-fora-e-dieta/">comer fora sem sair
+        da dieta</a> trata exatamente disso — e é leitura mais útil aqui
+        do que em qualquer outro bairro do portal.
+      </p>
+
+      <h2>Perfil 3: quem quer emagrecer e está começando</h2>
+      <p>
+        A região é densa e comercial, sem parque próprio — o que tira do
+        iniciante a opção mais confortável de começar caminhando num
+        percurso agradável.
+      </p>
+
+      <p>
+        Na prática, o começo aqui costuma ser dentro: academia do prédio
+        ou de rua, com o aeróbico feito em esteira ou bicicleta enquanto a
+        base é construída. Não é o ideal romântico, mas é o que sobrevive
+        ao clima.
+      </p>
+
+      <p>
+        E o essencial continua valendo: caminhada e aeróbico aumentam o
+        gasto, mas é o treino de força que preserva massa magra durante o
+        déficit.
+      </p>
+
+      <h2>Perfil 4: o público 60+</h2>
+      <p>
+        Área consolidada e de renda alta reúne naturalmente uma parcela
+        grande de moradores de longa data — e essa demanda cresce em
+        endereços assim.
+      </p>
+
+      <p>
+        O objetivo aqui não é estético: é autonomia. Treino de força
+        preserva massa muscular, densidade óssea e equilíbrio, e o
+        ambiente climatizado do condomínio torna a sessão viável em
+        qualquer horário do ano.
+      </p>
+
+      <p>
+        Dores e limitações articulares precisam de avaliação de médico ou
+        fisioterapeuta antes de o plano ser montado.
+      </p>
+
+      <h2>Perfil 5: a família que treina junto</h2>
+      <p>
+        Num conjunto de condomínios com lazer completo, o treino em dupla
+        e em pequeno grupo é natural — casal, pai e filho, vizinhos do
+        mesmo andar.
+      </p>
+
+      <p>
+        Além de dividir o custo, esse formato cria compromisso mútuo, que
+        na prática é o que mais eleva a frequência ao longo dos meses.
+      </p>
+
+      <h2>O clima manda no horário de todo mundo</h2>
+      <p>
+        Independentemente do perfil, o calor e a umidade de Manaus
+        empurram o treino ao ar livre para bem cedo de manhã ou para
+        depois do pôr do sol, com hidratação reforçada.
+      </p>
+
+      <p>
+        As chuvas frequentes tornam obrigatório um plano B em ambiente
+        fechado. Num bairro de torres, ele costuma estar no próprio
+        prédio — e essa é a vantagem estrutural do Vieiralves.
+      </p>
+
+      <h2>Quanto custa personal trainer no Vieiralves</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/manaus-am/">personal trainer em
+        Manaus</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Vieiralves trabalha no topo. É uma das áreas mais caras da
+        cidade, e o atendimento em condomínio — o formato dominante —
+        embute deslocamento e exclusividade de horário.
+      </p>
+
+      <p>
+        O treino em dupla é o que mais reduz o valor por pessoa, e o
+        online (R$ 170 a R$ 430 mensais) cobre bem as semanas de viagem.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Vieiralves, some duas perguntas locais. Ele já atende em
+        condomínios da região e conhece as regras de acesso das torres? E
+        como ele lida com um aluno que come fora quatro vezes por semana
+        — orienta um padrão viável ou só manda evitar? A segunda separa
+        quem entende o território de quem entrega planilha genérica.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Vieiralves" />
+
+    <WhatsAppCta tema="geral" localidade="no Vieiralves" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

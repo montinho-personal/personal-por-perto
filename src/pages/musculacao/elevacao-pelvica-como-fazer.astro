@@ -1,0 +1,356 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O programa completo em que a elevação pélvica é uma das peças.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros comuns',
+    descricao: 'O outro padrão que constrói glúteo — e por que os dois se completam.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-posterior-de-coxa/',
+    titulo: 'Treino de posterior de coxa: como fazer crescer',
+    descricao: 'O grupo que divide com o glúteo a função de estender o quadril.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/elevacao-pelvica-como-fazer';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Elevação pélvica: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Elevação pélvica e hip thrust são a mesma coisa?',
+    resposta:
+      'Na prática das academias brasileiras, os nomes são usados como sinônimo. Há quem diferencie: a elevação pélvica ou ponte de glúteo feita com as costas no chão, e o hip thrust com a parte superior das costas apoiada num banco, o que aumenta a amplitude do movimento. A versão no banco permite mais amplitude e costuma render mais — é ela que a maioria chama de hip thrust.',
+  },
+  {
+    pergunta: 'Elevação pélvica substitui o agachamento?',
+    resposta:
+      'Não, e nem deveria. Os dois carregam o glúteo de formas diferentes: o agachamento estimula mais na posição alongada, com o quadril flexionado, e a elevação pélvica mais na posição encurtada, com o quadril estendido no topo. Um programa completo usa os dois padrões, porque eles cobrem partes distintas da curva de força do movimento.',
+  },
+  {
+    pergunta: 'Por que sinto na lombar em vez do glúteo?',
+    resposta:
+      'As causas mais comuns são hiperextensão da lombar no topo, queixo levantado e falta de retroversão da pelve na contração final. O movimento termina quando o tronco fica paralelo ao chão — subir além disso não é mais extensão de quadril, é extensão de coluna. Manter o queixo levemente para baixo, olhar para frente e contrair o glúteo no topo costuma resolver. Dor que persiste apesar do ajuste é caso para médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Quantas repetições fazer de elevação pélvica?',
+    resposta:
+      'Faixas de 8 a 15 repetições funcionam bem para a maioria, com pausa de um segundo no topo — a pausa é o que mais diferencia a execução produtiva da mecânica. É um exercício que tolera carga alta, mas em que a carga só rende quando a amplitude e a contração final são mantidas. Peso que impede a pausa no topo é peso demais.',
+  },
+  {
+    pergunta: 'Dá para fazer elevação pélvica em casa?',
+    resposta:
+      'Dá, e é uma das melhores opções para quem treina fora da academia. A versão no chão com peso corporal serve para começar; a partir daí dá para progredir com uma perna só, com elástico acima dos joelhos, com halter sobre o quadril ou apoiando as costas no sofá para ganhar amplitude. A progressão de carga é o que importa, não o equipamento.',
+  },
+];
+
+const title = 'Elevação pélvica: como fazer e os erros comuns';
+const description =
+  'Elevação pélvica (hip thrust): execução passo a passo, por que dói na lombar, diferença para o agachamento, repetições, variações e como progredir em casa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Elevação pélvica: como fazer e os erros mais comuns</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A elevação pélvica virou o exercício mais popular do treino de
+      glúteos na última década — e, com a popularidade, veio a execução
+      apressada: muito peso, meia amplitude e a queixa mais frequente de
+      todas, "sinto na lombar".
+    </p>
+
+    <p class="lead">
+      Este guia trata da técnica ponto a ponto, do erro que causa aquela
+      dor e de como progredir com ou sem academia.
+    </p>
+
+    <div class="prose">
+      <h2>O que o exercício faz</h2>
+      <p>
+        A elevação pélvica é um padrão de <strong>extensão de
+        quadril</strong>. O motor principal é o glúteo máximo, com
+        participação do posterior de coxa e ação estabilizadora do core.
+      </p>
+
+      <p>
+        O que a diferencia do agachamento é <em>onde</em> ela carrega. O
+        agachamento estimula o glúteo mais na posição alongada, com o
+        quadril flexionado; a elevação pélvica carrega mais na posição
+        encurtada, com o quadril estendido no topo.
+      </p>
+
+      <p>
+        Por isso os dois se completam em vez de competir — e por que um
+        programa que só tem um dos padrões deixa parte da curva de força
+        sem estímulo.
+      </p>
+
+      <VideoYouTube
+        id="TcGDJPMs2-0"
+        titulo="Glúteos: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de glúteo, incluindo os padrões de extensão de quadril, e demonstra a execução de cada um."
+      />
+
+      <h2>A técnica, ponto a ponto</h2>
+      <p>
+        <strong>1. Apoio.</strong> A borda inferior das escápulas apoiada
+        no banco, que serve de eixo para o movimento. Banco baixo demais
+        reduz a amplitude; alto demais tira a estabilidade.
+      </p>
+
+      <p>
+        <strong>2. Pés.</strong> Na largura do quadril, com a canela
+        aproximadamente vertical no topo do movimento. Pé muito à frente
+        transfere trabalho para o posterior; muito atrás, para o
+        quadríceps.
+      </p>
+
+      <p>
+        <strong>3. Queixo e olhar.</strong> Queixo levemente para baixo,
+        olhar à frente, acompanhando o movimento. Este detalhe parece
+        secundário e é justamente o que evita a hiperextensão lombar.
+      </p>
+
+      <p>
+        <strong>4. A subida.</strong> Empurre pelos calcanhares e estenda
+        o quadril até o tronco ficar paralelo ao chão. <strong>Pare
+        ali.</strong>
+      </p>
+
+      <p>
+        <strong>5. O topo.</strong> Contraia o glúteo e mantenha a pausa
+        por cerca de um segundo, com a pelve em leve retroversão — como
+        se você "escondesse" o cóccix.
+      </p>
+
+      <p>
+        <strong>6. A descida.</strong> Controlada, sem quicar no chão. A
+        fase excêntrica faz parte do estímulo.
+      </p>
+
+      <h2>Por que dói na lombar</h2>
+      <p>
+        Esta é a queixa número um do exercício, e ela quase sempre tem a
+        mesma origem: <strong>o movimento não parou onde deveria</strong>.
+      </p>
+
+      <p>
+        A extensão de quadril termina quando o tronco fica paralelo ao
+        chão. Subir além disso não é mais extensão de quadril — é
+        extensão de coluna, e é a lombar que paga.
+      </p>
+
+      <p>
+        Três ajustes resolvem na maioria dos casos: parar no paralelo,
+        manter o queixo levemente para baixo e contrair o glúteo com leve
+        retroversão de pelve no topo, em vez de arquear as costas.
+      </p>
+
+      <p>
+        Se a dor persistir mesmo com o ajuste e com carga reduzida, o
+        caminho é avaliação com médico ou fisioterapeuta antes de
+        continuar carregando.
+      </p>
+
+      <h2>Os outros erros comuns</h2>
+      <p>
+        <strong>Amplitude curta.</strong> Subir metade do caminho com
+        muito peso é o erro mais visível. A amplitude completa com carga
+        honesta rende mais.
+      </p>
+
+      <p>
+        <strong>Sem pausa no topo.</strong> É onde o glúteo está em maior
+        encurtamento e maior tensão. Passar direto desperdiça justamente o
+        ponto mais produtivo do movimento.
+      </p>
+
+      <p>
+        <strong>Pé mal posicionado.</strong> A canela deve estar perto da
+        vertical no topo. Ajustar a distância do pé é o teste mais rápido
+        quando você sente tudo no posterior ou tudo no quadríceps.
+      </p>
+
+      <p>
+        <strong>Carga acima da execução.</strong> Se o peso impede a
+        pausa no topo, ele está alto demais — a régua é simples e quase
+        ninguém aplica.
+      </p>
+
+      <h2>As variações e para quem servem</h2>
+      <p>
+        <strong>No chão (ponte de glúteo).</strong> Amplitude menor,
+        nenhuma exigência de equipamento. É a porta de entrada e a versão
+        que funciona em qualquer lugar.
+      </p>
+
+      <p>
+        <strong>Com as costas no banco.</strong> A versão clássica, com
+        mais amplitude e mais potencial de carga. É a que a maioria chama
+        de hip thrust.
+      </p>
+
+      <p>
+        <strong>Unilateral.</strong> Uma perna por vez, com o peso
+        corporal ou com carga leve. Corrige assimetrias e é excelente
+        para quem corre.
+      </p>
+
+      <p>
+        <strong>Com elástico acima dos joelhos.</strong> Adiciona demanda
+        de abdução, o que recruta mais o glúteo médio junto.
+      </p>
+
+      <p>
+        <strong>Na máquina específica.</strong> Onde existe, facilita o
+        posicionamento e a troca de carga — útil para séries pesadas sem
+        depender de ajudante.
+      </p>
+
+      <h2>Como progredir em casa</h2>
+      <p>
+        A elevação pélvica é um dos melhores exercícios para quem treina
+        fora da academia, justamente porque a progressão não depende de
+        equipamento sofisticado.
+      </p>
+
+      <p>
+        Um caminho que funciona: comece no chão com peso corporal, passe
+        para a versão unilateral, depois apoie as costas no sofá para
+        ganhar amplitude, e então adicione carga — halter, anilha,
+        mochila com peso — sobre o quadril, com uma toalha dobrada para
+        conforto.
+      </p>
+
+      <p>
+        O princípio é o mesmo de sempre, sistematizado por entidades como
+        a <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>:
+        o que constrói músculo é a
+        <a href="/musculacao/progressao-de-carga/">sobrecarga
+        progressiva</a> registrada ao longo dos meses, não o equipamento
+        usado.
+      </p>
+
+      <h2>Onde ela entra no programa</h2>
+      <p>
+        Faixas de 8 a 15 repetições, com pausa de um segundo no topo, em
+        3 a 4 séries. Duas vezes por semana costuma ser suficiente.
+      </p>
+
+      <p>
+        Ela não substitui o
+        <a href="/musculacao/agachamento-como-fazer/">agachamento</a> nem
+        o trabalho de posterior — os três cobrem partes diferentes do
+        mesmo conjunto. O guia sobre
+        <a href="/musculacao/treino-de-gluteos/">treino de glúteos</a>
+        mostra como distribuir o volume entre eles.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A elevação pélvica parece simples e tem quatro variáveis que
+        mudam tudo: altura do banco, distância do pé, ponto de parada no
+        topo e posição do queixo.
+      </p>
+
+      <p>
+        Um personal trainer ajusta as quatro numa sessão. Para quem faz o
+        exercício há meses sentindo na lombar em vez de no glúteo, é
+        normalmente aí que está a resposta — e não em trocar de
+        exercício.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre elevação pélvica" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

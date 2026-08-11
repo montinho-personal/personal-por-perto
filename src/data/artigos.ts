@@ -84,6 +84,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-coco-fortaleza/', titulo: 'Personal trainer no Cocó (Fortaleza)' },
   { categoria: 'Bairros', url: '/personal-trainer-petropolis-porto-alegre/', titulo: 'Personal trainer no Petrópolis (Porto Alegre)' },
   { categoria: 'Bairros', url: '/personal-trainer-setor-bueno/', titulo: 'Personal trainer no Setor Bueno (Goiânia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-pinheiros/', titulo: 'Personal trainer em Pinheiros (São Paulo)' },
+  { categoria: 'Bairros', url: '/personal-trainer-lagoa-nova/', titulo: 'Personal trainer na Lagoa Nova (Natal)' },
+  { categoria: 'Bairros', url: '/personal-trainer-vieiralves/', titulo: 'Personal trainer no Vieiralves (Manaus)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -145,6 +148,10 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-de-panturrilha/', titulo: 'Treino de panturrilha: como fazer crescer' },
   { categoria: 'Musculação', url: '/musculacao/tecnicas-avancadas-de-treino/', titulo: 'Técnicas avançadas de treino: quando usar' },
   { categoria: 'Musculação', url: '/musculacao/treinar-doente-ou-gripado/', titulo: 'Treinar doente ou gripado: pode ou não pode?' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-peito/', titulo: 'Treino de peito: como montar o seu (e os erros)' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-posterior-de-coxa/', titulo: 'Treino de posterior de coxa: como fazer crescer' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-trapezio/', titulo: 'Treino de trapézio: as três porções e como treinar' },
+  { categoria: 'Musculação', url: '/musculacao/elevacao-pelvica-como-fazer/', titulo: 'Elevação pélvica: como fazer e os erros comuns' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

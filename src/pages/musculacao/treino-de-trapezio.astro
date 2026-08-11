@@ -1,0 +1,347 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/musculacao-e-postura/',
+    titulo: 'Musculação e postura: o que o treino resolve',
+    descricao: 'O trapézio médio e inferior são o centro dessa conversa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'Onde o trabalho de escápula se encaixa no dia de puxar.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu',
+    descricao: 'Por que o trapézio rouba a elevação lateral — e como evitar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-trapezio';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de trapézio: as três porções', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Encolhimento é o único exercício de trapézio?',
+    resposta:
+      'É o mais conhecido e cobre apenas uma das três porções — a superior, que eleva a escápula. As porções média e inferior, responsáveis por retrair e deprimir a escápula, precisam de outros movimentos: remada com foco em retração, face pull, crucifixo inverso e a elevação em Y. Treinar só encolhimento deixa dois terços do músculo de fora.',
+  },
+  {
+    pergunta: 'Trapézio grande deixa o ombro parecendo menor?',
+    resposta:
+      'Pode dar essa impressão visual, sim, quando a porção superior é muito desenvolvida em relação ao deltoide lateral. Mas o problema costuma ser o inverso do que se imagina: não é trapézio demais, é deltoide lateral de menos. Em vez de evitar treinar trapézio, o ajuste mais produtivo é aumentar o volume de elevação lateral — e priorizar as porções média e inferior do trapézio, que não interferem nessa silhueta.',
+  },
+  {
+    pergunta: 'Por que meu trapézio dói ou fica tenso o tempo todo?',
+    resposta:
+      'Tensão persistente na região costuma estar mais ligada à postura mantida por muitas horas, ao estresse e à imobilidade prolongada do que à falta de treino. Fortalecer trapézio médio e inferior ajuda na capacidade de sustentar o tronco, mas dor ou tensão que não passa merece avaliação de médico ou fisioterapeuta — não mais uma série de encolhimento.',
+  },
+  {
+    pergunta: 'Preciso de um dia só para trapézio?',
+    resposta:
+      'Não. O trapézio já recebe estímulo relevante em levantamento terra, remadas e no trabalho de escápula do dia de costas. Para a maioria, 4 a 8 séries diretas por semana bastam, encaixadas no dia de costas ou de ombro. Um trabalho dedicado faz sentido para quem quer priorizar o grupo ou para quem tem as porções média e inferior visivelmente fracas.',
+  },
+  {
+    pergunta: 'Encolhimento com halteres ou barra?',
+    resposta:
+      'Halteres permitem trajetória mais natural e amplitude um pouco maior, além de trabalhar cada lado independentemente. A barra permite mais carga absoluta, mas obriga a manter o peso à frente ou atrás do corpo, o que muda levemente o ângulo. Nenhum é superior — escolha o que permite amplitude completa com pausa no topo e progrida nele.',
+  },
+];
+
+const title = 'Treino de trapézio: as três porções e como treinar';
+const description =
+  'Treino de trapézio: as três porções do músculo, por que encolhimento cobre só uma, os exercícios de escápula que faltam, volume semanal e o efeito na postura.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de trapézio: as três porções e como treinar cada uma</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Para a maioria das pessoas, treinar trapézio significa uma coisa:
+      encolhimento. Três séries no fim do dia de costas, com peso alto e
+      amplitude curta.
+    </p>
+
+    <p class="lead">
+      O problema é que o encolhimento cobre uma das três porções do
+      músculo — e não é a que mais faz diferença para postura e saúde do
+      ombro. Este guia trata das três.
+    </p>
+
+    <div class="prose">
+      <h2>Um músculo, três funções</h2>
+      <p>
+        O trapézio é um músculo grande que cobre boa parte das costas
+        altas, com fibras em três direções e funções distintas.
+      </p>
+
+      <p>
+        <strong>Porção superior.</strong> Eleva a escápula — é o gesto de
+        dar de ombros. É a porção visível de frente, entre o pescoço e o
+        ombro, e a que o encolhimento treina.
+      </p>
+
+      <p>
+        <strong>Porção média.</strong> Retrai a escápula, aproximando-a
+        da coluna. É a que sustenta o tronco ereto ao longo do dia.
+      </p>
+
+      <p>
+        <strong>Porção inferior.</strong> Deprime a escápula, puxando-a
+        para baixo. É a mais negligenciada de todas e uma das mais
+        relevantes para a mecânica saudável do ombro.
+      </p>
+
+      <VideoYouTube
+        id="xEK5fk8zG5s"
+        titulo="Trapézios: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de trapézio e demonstra a execução correta de cada um."
+      />
+
+      <h2>Os exercícios de cada porção</h2>
+      <p>
+        <strong>Superior:</strong> encolhimento com barra, halteres ou na
+        máquina; remada alta com pegada aberta. É a porção com mais
+        potencial de carga.
+      </p>
+
+      <p>
+        <strong>Média:</strong> remada com foco em retração — pausando
+        com as escápulas juntas —, crucifixo inverso e face pull. Carga
+        moderada, execução limpa.
+      </p>
+
+      <p>
+        <strong>Inferior:</strong> elevação em Y, puxada com ênfase em
+        depressão de escápula, face pull com o cotovelo alto. É onde a
+        carga é menor e a atenção precisa ser maior.
+      </p>
+
+      <p>
+        Repare no padrão: a porção mais fácil de treinar é a que menos
+        precisa de trabalho dedicado, porque já recebe estímulo alto em
+        levantamento terra e remadas. As duas que mais importam para
+        postura são as que exigem exercícios específicos.
+      </p>
+
+      <h2>A execução do encolhimento</h2>
+      <p>
+        <strong>Suba reto.</strong> O movimento é vertical, em direção às
+        orelhas. Rodar os ombros para trás em círculo não acrescenta nada
+        e adiciona estresse desnecessário à articulação.
+      </p>
+
+      <p>
+        <strong>Pause no topo.</strong> Um segundo de contração vale mais
+        do que dez repetições rápidas com o dobro do peso.
+      </p>
+
+      <p>
+        <strong>Desça até o alongamento.</strong> A amplitude completa
+        inclui deixar a escápula descer no fim da repetição.
+      </p>
+
+      <p>
+        <strong>Sem impulso de tronco.</strong> Se você precisa balançar
+        o corpo, a carga está alta demais — e o trapézio não é o grupo
+        onde vale forçar a barra.
+      </p>
+
+      <h2>O mito do trapézio que "encolhe" o ombro</h2>
+      <p>
+        Existe uma crença de que trapézio desenvolvido faz o ombro
+        parecer menor, e por isso muita gente evita treinar o grupo.
+      </p>
+
+      <p>
+        A impressão visual pode existir quando a porção superior está
+        muito desenvolvida em relação ao deltoide lateral. Mas o
+        diagnóstico costuma ser o oposto: <strong>não é trapézio demais,
+        é deltoide lateral de menos</strong>.
+      </p>
+
+      <p>
+        O ajuste produtivo é aumentar o volume de elevação lateral, como
+        detalha o guia sobre
+        <a href="/musculacao/treino-de-ombro/">treino de ombro</a> — e
+        priorizar as porções média e inferior do trapézio, que não
+        interferem nessa silhueta e melhoram a postura.
+      </p>
+
+      <h2>O trapézio que rouba a elevação lateral</h2>
+      <p>
+        Há um ponto de contato importante entre os dois grupos. Na
+        elevação lateral, subir o braço acima da linha do ombro
+        transfere o trabalho para o trapézio superior.
+      </p>
+
+      <p>
+        Ou seja: quem faz elevação lateral com amplitude exagerada está,
+        na prática, treinando trapézio achando que treina ombro — e
+        depois reclama que o ombro não cresce e o trapézio incomoda.
+      </p>
+
+      <p>
+        Parar na altura do ombro resolve as duas queixas de uma vez.
+      </p>
+
+      <h2>O que isso tem a ver com postura</h2>
+      <p>
+        As porções média e inferior são antagonistas diretas da posição
+        de ombros à frente que a rotina de escritório produz.
+      </p>
+
+      <p>
+        Fortalecê-las aumenta a capacidade de sustentar o tronco ereto ao
+        longo do dia — o que reduz a fadiga postural. O que elas não
+        fazem é "corrigir" alinhamento de forma passiva, como trata o
+        guia sobre
+        <a href="/musculacao/musculacao-e-postura/">musculação e
+        postura</a>.
+      </p>
+
+      <p>
+        E vale a distinção: tensão persistente na região do trapézio
+        costuma ter mais a ver com imobilidade prolongada e estresse do
+        que com falta de treino. Dor que não passa é assunto de médico ou
+        fisioterapeuta.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 4 a 8 séries diretas por semana bastam para a maioria,
+        encaixadas no dia de costas ou de ombro — lembrando que o
+        trapézio já trabalha forte em levantamento terra e remadas.
+      </p>
+
+      <p>
+        Faixas de 8 a 15 repetições para o encolhimento; de 12 a 20 para
+        o trabalho de porção média e inferior, com carga leve e contração
+        controlada.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        apontam o de sempre: progressão registrada ao longo dos meses
+        rende mais que variedade de exercícios numa sessão.
+      </p>
+
+      <h2>Um exemplo de encaixe</h2>
+      <p>
+        No dia de costas, depois do trabalho principal: encolhimento, 3
+        séries de 8 a 15 com pausa no topo. Face pull ou crucifixo
+        inverso, 3 séries de 12 a 20.
+      </p>
+
+      <p>
+        Se a prioridade é postura e não tamanho, inverta a proporção —
+        mais face pull e elevação em Y, menos encolhimento. O guia sobre
+        <a href="/musculacao/treino-de-costas/">treino de costas</a>
+        mostra como isso se encaixa no restante da sessão.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O trabalho de porção média e inferior é sutil: a diferença entre
+        fazer com a escápula e fazer com o braço é pequena no movimento e
+        enorme no efeito.
+      </p>
+
+      <p>
+        Um personal trainer identifica isso rápido e ajusta a proporção
+        entre as três porções — que é justamente onde a maioria dos
+        programas caseiros erra, concentrando tudo no encolhimento.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de trapézio" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

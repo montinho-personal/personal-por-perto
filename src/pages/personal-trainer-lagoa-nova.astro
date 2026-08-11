@@ -1,0 +1,320 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/natal-rn/',
+    titulo: 'Personal trainer em Natal',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-tirol/',
+    titulo: 'Personal trainer no Tirol',
+    descricao: 'O bairro vizinho, do outro lado do Parque das Dunas.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'O calor de Natal é uma das barreiras que mais derrubam rotina.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-lagoa-nova';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Natal', url: '/personal-trainer/natal-rn/' },
+  { nome: 'Personal Trainer na Lagoa Nova', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Lagoa Nova?',
+    resposta:
+      'Em Natal, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. A Lagoa Nova trabalha no meio para o topo dessa faixa — é um bairro nobre, em verticalização acelerada, com forte demanda por atendimento dentro do condomínio.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Lagoa Nova?',
+    resposta:
+      'As ruas internas do bairro são arborizadas e mais calmas que as avenidas principais, o que já resolve caminhada e corrida leve. Para percurso estruturado, o Parque das Dunas fica ao lado — o acesso mais usado é pelo Capim Macio — e oferece trilhas com sombra plena, o que numa cidade de radiação forte muda completamente a conta.',
+  },
+  {
+    pergunta: 'Os prédios da Lagoa Nova têm academia?',
+    resposta:
+      'Os lançamentos recentes, sim. O bairro passa por uma verticalização em curso e o espaço fitness virou item padrão de entrega. Vale saber que o plano diretor limita a altura das edificações na faixa que margeia o Parque das Dunas — entre Capim Macio, Lagoa Nova, Nova Descoberta e Tirol —, o que preserva a ventilação e a paisagem da região.',
+  },
+  {
+    pergunta: 'Dá para resolver o dia a pé no bairro?',
+    resposta:
+      'Boa parte dele. A Lagoa Nova combina infraestrutura consolidada com perfil residencial, e a proximidade da UFRN traz uma rede de comércio e serviços em raio curto. As avenidas Senador Salgado Filho e Nevaldo Rocha cortam o bairro e conectam rapidamente às outras zonas da cidade.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Natal?',
+    resposta:
+      'Começo da manhã e fim de tarde, sem exceção. O calor e a radiação de Natal são intensos, e o meio do dia é inviável ao ar livre sem proteção reforçada. A vantagem da Lagoa Nova é a arborização das ruas internas, que ameniza a sensação térmica em relação às avenidas expostas.',
+  },
+  {
+    pergunta: 'A Lagoa Nova é boa para quem está começando?',
+    resposta:
+      'É um bom ponto de partida: bairro seguro, ruas arborizadas, serviços em raio curto e academia frequentemente no próprio prédio. O Parque das Dunas ao lado dá um percurso seguro e sombreado para construir base aeróbica sem enfrentar o sol aberto da orla.',
+  },
+];
+
+const title = 'Personal Trainer na Lagoa Nova (Natal): o guia';
+const description =
+  'Personal trainer na Lagoa Nova: preços de Natal, o Parque das Dunas ao lado, a verticalização do bairro e as respostas para quem está chegando na região.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Natal</p>
+    <h1>Personal trainer na Lagoa Nova: as perguntas de quem mora aqui</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem se muda para a Lagoa Nova costuma chegar com a mesma lista de
+      dúvidas. O Parque das Dunas dá para usar? Preciso ir até a orla
+      para treinar? Como se treina com esse sol?
+    </p>
+
+    <p class="lead">
+      Este guia responde uma por uma, na ordem em que elas aparecem — e
+      no fim explica quanto custa e como escolher um <strong>personal
+      trainer na Lagoa Nova</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>O Parque das Dunas é do bairro?</h2>
+      <p>
+        Não exatamente, mas está ao lado — e é o ativo mais importante da
+        região para quem treina. O acesso mais usado se dá pelo Capim
+        Macio, vizinho.
+      </p>
+
+      <p>
+        O que ele oferece é justamente o que falta numa cidade de sol
+        forte: <strong>sombra plena e percurso protegido</strong>. Onde a
+        orla exposta fica impraticável às nove da manhã, a trilha
+        sombreada ainda permite caminhada e corrida leve.
+      </p>
+
+      <p>
+        A presença do parque também moldou a própria forma do bairro: o
+        plano diretor de Natal limita a altura das edificações na faixa
+        que margeia a unidade, entre Capim Macio, Lagoa Nova, Nova
+        Descoberta e Tirol. É uma regra de paisagem que, na prática,
+        preserva ventilação.
+      </p>
+
+      <h2>Preciso ir até a orla para treinar?</h2>
+      <p>
+        Não. E essa é a boa notícia para quem mora aqui, porque a orla
+        cobra deslocamento e entrega sol aberto.
+      </p>
+
+      <p>
+        As ruas internas da Lagoa Nova são arborizadas e mais calmas que
+        as avenidas principais — servem bem para caminhada e corrida
+        leve no dia a dia. Somadas ao parque, resolvem quase todo o
+        trabalho aeróbico sem sair da região.
+      </p>
+
+      <p>
+        A orla continua sendo uma opção agradável para variar, mas deixa
+        de ser necessidade. Num plano bem montado, ela entra como
+        eventualidade, não como base.
+      </p>
+
+      <h2>E a parte de força, onde acontece?</h2>
+      <p>
+        Depende da geração do seu imóvel, e o bairro tem as duas.
+      </p>
+
+      <p>
+        Os <strong>lançamentos recentes</strong> — e a verticalização
+        aqui está em curso, acelerada — entregam espaço fitness de série.
+        O profissional vai até o prédio, sem deslocamento e com horário
+        exclusivo. Numa cidade de calor forte, não ter que sair de casa
+        vale mais do que parece.
+      </p>
+
+      <p>
+        O limite conhecido é o teto de carga, que costuma travar quem
+        avança na <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> depois de um ou dois anos.
+      </p>
+
+      <p>
+        O bairro guarda também um estoque de <strong>casas de alto
+        padrão</strong> e edifícios mais antigos, sem área de lazer — e
+        ali o atendimento a domicílio é a saída natural, com a vantagem
+        do quintal quando ele existe.
+      </p>
+
+      <h2>Como se treina com esse sol?</h2>
+      <p>
+        Ajustando o horário, e sem negociar. O calor e a radiação de
+        Natal são intensos, e o meio do dia é inviável ao ar livre sem
+        proteção reforçada.
+      </p>
+
+      <p>
+        As janelas confortáveis são o começo da manhã e o fim da tarde. A
+        vantagem da Lagoa Nova é a arborização das ruas internas, que
+        ameniza a sensação térmica em relação às avenidas expostas — e a
+        sombra do parque, que amplia um pouco mais essa janela.
+      </p>
+
+      <p>
+        Hidratação e proteção solar não são detalhe aqui. Um profissional
+        que trabalha em Natal trata os dois como parte da prescrição, não
+        como lembrete.
+      </p>
+
+      <h2>Dá para resolver o dia a pé?</h2>
+      <p>
+        Boa parte dele. A Lagoa Nova combina infraestrutura consolidada
+        com perfil residencial, e a proximidade da UFRN trouxe uma rede
+        densa de comércio e serviços.
+      </p>
+
+      <p>
+        As avenidas Senador Salgado Filho e Nevaldo Rocha cortam o bairro
+        e conectam rapidamente às outras zonas da cidade — o que resolve
+        o que não cabe a pé.
+      </p>
+
+      <p>
+        Esse andar cotidiano pesa mais do que parece na conta de quem
+        quer emagrecer, como detalha o guia sobre
+        <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos
+        por dia</a>.
+      </p>
+
+      <h2>Quanto custa personal trainer na Lagoa Nova?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/natal-rn/">personal trainer em
+        Natal</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Lagoa Nova fica no meio para o topo. É um bairro nobre em
+        verticalização acelerada, e o atendimento em condomínio — o
+        formato que mais cresce aqui — embute deslocamento e
+        exclusividade de horário.
+      </p>
+
+      <p>
+        O treino em dupla, comum entre casais e vizinhos do mesmo prédio,
+        é o que mais reduz o valor por pessoa; o online (R$ 160 a R$ 410
+        mensais) cobre bem as semanas fora.
+      </p>
+
+      <h2>Como montar a semana?</h2>
+      <p>
+        Duas a três sessões de força — no prédio, em casa ou na academia
+        de rua — sustentam massa muscular e articulação. Nenhum parque
+        substitui essa parte.
+      </p>
+
+      <p>
+        Fora delas, o aeróbico aproveita a sombra: ruas internas nos dias
+        curtos, Parque das Dunas nos dias longos. Quem tem dor no joelho
+        ou no quadril deve passar por médico ou fisioterapeuta antes de
+        aumentar o volume de corrida.
+      </p>
+
+      <h2>Como escolher o profissional?</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Lagoa Nova, some duas perguntas locais. Ele já atende em
+        condomínios do bairro e conhece as regras de acesso das torres? E
+        como ele usa a sombra — do parque e das ruas internas — em vez de
+        empurrar todo treino para o ambiente fechado? Quem trabalha aqui
+        responde as duas sem hesitar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Lagoa Nova" />
+
+    <WhatsAppCta tema="geral" localidade="na Lagoa Nova" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

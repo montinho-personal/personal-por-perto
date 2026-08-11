@@ -1,0 +1,335 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O exercício-base do grupo, ponto a ponto.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'O puxar que equilibra todo esse empurrar — e protege o ombro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/frequencia-de-treino/',
+    titulo: 'Frequência de treino: quantas vezes treinar por semana',
+    descricao: 'Como distribuir o volume de peito entre uma ou duas sessões.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-peito';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de peito: como montar o seu', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Existe treino para peitoral superior e inferior?',
+    resposta:
+      'O peitoral maior é um músculo só, mas tem porções com origens diferentes — a clavicular, na parte de cima, e a esternocostal, na de baixo — que podem ser recrutadas de forma desigual conforme o ângulo. Isso significa que variar a inclinação faz sentido, sim, mas não que existam dois músculos independentes. Para a maioria, um trabalho em ângulo reto e outro inclinado já cobrem bem o grupo.',
+  },
+  {
+    pergunta: 'Quantas séries de peito por semana?',
+    resposta:
+      'De 10 a 20 séries semanais cobrem bem a maioria, distribuídas em duas sessões. Vale lembrar de contar o estímulo indireto: o peitoral trabalha em qualquer desenvolvimento de ombro e em todo exercício de empurrar. Quem faz um dia de ombro pesado já acumulou volume de peitoral antes da primeira supino.',
+  },
+  {
+    pergunta: 'Crucifixo ou supino: qual é melhor para peito?',
+    resposta:
+      'São complementares e nenhum substitui o outro. O supino é um exercício multiarticular que permite carga alta e é o motor da progressão de longo prazo; o crucifixo isola melhor o peitoral e trabalha o alongamento na fase excêntrica, que o supino cobre menos. Um programa completo usa o supino como base e o crucifixo ou o crossover como complemento.',
+  },
+  {
+    pergunta: 'Meu peito não cresce, só o ombro dói. O que fazer?',
+    resposta:
+      'Quase sempre é posicionamento. Escápulas soltas e cotovelo aberto a 90° em relação ao tronco transferem o trabalho para o deltoide anterior e estressam a articulação. Retrair e deprimir as escápulas, fechar o cotovelo para algo entre 45 e 70° e reduzir a carga costuma resolver em poucas sessões. Se a dor persistir apesar do ajuste, o caminho é médico ou fisioterapeuta antes de continuar carregando.',
+  },
+  {
+    pergunta: 'Flexão de braço serve para hipertrofia?',
+    resposta:
+      'Serve, principalmente para iniciantes e para quem treina em casa — mas ela tem um teto. Como a carga é o próprio peso corporal, chega um momento em que o estímulo deixa de ser suficiente e a progressão precisa vir de variações mais difíceis, elevação dos pés, colete ou elástico. Para quem já tem base, a flexão funciona melhor como complemento de volume do que como exercício principal.',
+  },
+];
+
+const title = 'Treino de peito: como montar o seu (e os erros)';
+const description =
+  'Treino de peito: as porções do peitoral, ângulos que fazem diferença, supino e crucifixo, volume semanal, o estímulo indireto que ninguém conta e os erros comuns.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de peito: como montar o seu (e os erros mais comuns)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Peito é o grupo mais treinado da academia brasileira e um dos que
+      mais geram queixa de ombro. Não é coincidência — as duas coisas têm
+      a mesma raiz.
+    </p>
+
+    <p class="lead">
+      Este guia trata do grupo inteiro: como o peitoral funciona, quais
+      ângulos importam de verdade, quanto volume fazer e por que a conta
+      quase sempre inclui séries que ninguém contabiliza.
+    </p>
+
+    <div class="prose">
+      <h2>Um músculo, duas porções</h2>
+      <p>
+        O peitoral maior é um músculo só, mas tem fibras com origens
+        diferentes: a <strong>porção clavicular</strong>, na parte de
+        cima, e a <strong>esternocostal</strong>, na parte de baixo e no
+        meio.
+      </p>
+
+      <p>
+        Elas podem ser recrutadas de forma desigual conforme o ângulo do
+        tronco. É por isso que variar a inclinação faz sentido — mas não
+        significa que existam dois músculos independentes a serem
+        treinados em dias separados.
+      </p>
+
+      <p>
+        Na prática, para a maioria das pessoas, um trabalho em ângulo
+        reto e outro inclinado já cobrem bem o grupo. O declinado entra
+        como opção, especialmente para quem tem ombro sensível.
+      </p>
+
+      <VideoYouTube
+        id="SMwa5kU-ryE"
+        titulo="Peitoral: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os principais exercícios de peitoral e demonstra a execução correta de cada um."
+      />
+
+      <h2>A conta que quase ninguém faz</h2>
+      <p>
+        Antes de somar séries de peito, conte as que já existem. O
+        peitoral trabalha em <em>todo</em> exercício de empurrar — o que
+        inclui o desenvolvimento de ombro e as paralelas do dia de
+        tríceps.
+      </p>
+
+      <p>
+        Quem faz um dia de ombro pesado já acumulou volume relevante de
+        peitoral antes da primeira supino da semana. Ignorar isso é como
+        planejar um orçamento sem contar metade das despesas.
+      </p>
+
+      <p>
+        Por isso a faixa de 10 a 20 séries semanais deve ser lida como
+        volume <em>total</em>, incluindo o indireto — e não como
+        exercícios de peito somados isoladamente.
+      </p>
+
+      <h2>Os três padrões que montam um dia completo</h2>
+      <p>
+        <strong>1. Empurrar horizontal com carga alta.</strong> O
+        <a href="/musculacao/supino-como-fazer/">supino</a> em suas
+        variações — barra, halteres, máquina articulada. É o motor da
+        progressão de longo prazo, porque permite carga que nenhum
+        isolador permite.
+      </p>
+
+      <p>
+        <strong>2. Empurrar em ângulo diferente.</strong> Inclinado para
+        enfatizar a porção clavicular, declinado para a esternocostal.
+        Um segundo ângulo por sessão costuma bastar.
+      </p>
+
+      <p>
+        <strong>3. Isolador com alongamento.</strong> Crucifixo,
+        crossover, peck deck. Trabalham o peitoral na fase excêntrica de
+        forma que o supino cobre menos, e permitem chegar perto da falha
+        com segurança.
+      </p>
+
+      <h2>Os erros que travam o grupo</h2>
+      <p>
+        <strong>Cotovelo aberto a 90°.</strong> É a origem da maior parte
+        das queixas de ombro em quem faz peito. Fechar para algo entre 45
+        e 70° em relação ao tronco protege a articulação sem reduzir o
+        estímulo no peitoral.
+      </p>
+
+      <p>
+        <strong>Escápulas soltas.</strong> Sem retração e depressão, o
+        ombro rola para frente e assume carga que não é dele — e o
+        peitoral recebe menos.
+      </p>
+
+      <p>
+        <strong>Só supino reto, sempre.</strong> Um único ângulo por anos
+        deixa a porção clavicular subtreinada, o que aparece como peito
+        "caído" visto de frente.
+      </p>
+
+      <p>
+        <strong>Meia amplitude com carga de vitrine.</strong> Amplitude
+        completa com peso honesto rende mais do que meio movimento com
+        peso de foto — vale para qualquer grupo e especialmente aqui.
+      </p>
+
+      <p>
+        <strong>Volume que só cresce.</strong> Quando o peito trava, a
+        reação comum é somar exercícios. A que funciona é somar carga nas
+        séries que já existem.
+      </p>
+
+      <h2>O contrapeso que o programa precisa</h2>
+      <p>
+        Este é o ponto que mais separa um programa bem montado de um
+        improviso: <strong>quem empurra muito precisa puxar pelo
+        menos tanto</strong>.
+      </p>
+
+      <p>
+        O excesso de empurrar sem o puxar correspondente desequilibra o
+        ombro e piora a postura que a rotina de escritório já castiga. O
+        trabalho de escápula descrito no guia sobre
+        <a href="/musculacao/treino-de-costas/">treino de costas</a> é o
+        contrapeso direto disso.
+      </p>
+
+      <p>
+        Na contagem semanal, some as séries de supino, desenvolvimento,
+        crucifixo e flexão de um lado; as de remada, puxada, face pull e
+        crucifixo inverso do outro. Se o segundo número for
+        significativamente menor, está aí o ajuste mais rentável do seu
+        programa.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        De 10 a 20 séries semanais, distribuídas em duas sessões, cobrem
+        bem a maioria. Duas frequências rendem mais que uma sessão longa,
+        porque a execução degrada no fim de um volume alto — assunto do
+        guia sobre <a href="/musculacao/frequencia-de-treino/">frequência
+        de treino</a>.
+      </p>
+
+      <p>
+        Faixas de 6 a 12 repetições funcionam bem para os multiarticulares
+        e de 10 a 15 para os isoladores.
+      </p>
+
+      <p>
+        As diretrizes de treinamento de força sistematizadas por
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        apontam o princípio de sempre: o que sustenta o ganho é a
+        sobrecarga progressiva registrada ao longo dos meses.
+      </p>
+
+      <h2>Um exemplo de sessão</h2>
+      <p>
+        Supino reto (barra ou halteres), 3 a 4 séries de 6 a 12. Supino
+        inclinado, 3 séries de 8 a 12. Um isolador — crucifixo ou
+        crossover —, 3 séries de 10 a 15.
+      </p>
+
+      <p>
+        Se o dia inclui ombro, reduza uma série de peito: o
+        desenvolvimento já somou estímulo. Essa subtração é o tipo de
+        ajuste que quase ninguém faz e que evita fadiga acumulada sem
+        ganho correspondente.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Peito é o grupo em que um ajuste de dois centímetros no cotovelo
+        muda a sessão inteira — e é praticamente impossível enxergar isso
+        sozinho, deitado no banco.
+      </p>
+
+      <p>
+        Um personal trainer corrige o posicionamento, conta o volume real
+        incluindo o indireto e equilibra a proporção entre empurrar e
+        puxar. Para quem treina peito há anos com ombro reclamando, é
+        normalmente aí que está a resposta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de peito" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
