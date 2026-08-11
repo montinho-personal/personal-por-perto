@@ -94,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional da Serra da Canastra', url: 'https://www.gov.br/icmbio/' },
     { nome: 'Prefeitura de São Roque de Minas', url: 'https://www.saoroquedeminas.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-06',
 };

@@ -98,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Luís Correia', url: 'https://www.luiscorreia.pi.gov.br/' },
     { nome: 'ICMBio — APA Delta do Parnaíba', url: 'https://www.gov.br/icmbio/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-10',
 };

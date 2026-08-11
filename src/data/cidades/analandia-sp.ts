@@ -90,5 +90,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Analândia', url: 'https://www.analandia.sp.gov.br/' },
     { nome: 'Guia de Áreas Protegidas SP — APA Corumbataí', url: 'https://guiadeareasprotegidas.sp.gov.br/ap/area-de-protecao-ambiental-corumbatai-botucatu-tejupa-perimetro-corumbatai/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-07',
 };

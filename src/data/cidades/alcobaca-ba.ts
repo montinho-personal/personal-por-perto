@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alcobaça', url: 'https://www.alcobaca.ba.gov.br/' },
     { nome: 'ICMBio — Parque Nacional Marinho dos Abrolhos', url: 'https://www.gov.br/icmbio/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-07',
 };

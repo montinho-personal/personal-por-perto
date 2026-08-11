@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Gonçalves', url: 'https://www.goncalves.mg.gov.br/' },
     { nome: 'Minas Gerais — Destino Gonçalves', url: 'https://www.minasgerais.com.br/pt/destinos/goncalves' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-10',
 };

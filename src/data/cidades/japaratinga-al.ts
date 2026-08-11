@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Japaratinga', url: 'https://www.japaratinga.al.gov.br/' },
     { nome: 'ICMBio — APA Costa dos Corais', url: 'https://www.gov.br/icmbio/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-06',
 };
