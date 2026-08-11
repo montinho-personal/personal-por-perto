@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-luis-ma/',
+    titulo: 'Personal trainer em São Luís',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer?',
+    descricao: 'A pergunta que o calçadão da Litorânea responde na prática.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'O formato que atende os condomínios da orla do Calhau.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-calhau';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em São Luís', url: '/personal-trainer/sao-luis-ma/' },
+  { nome: 'Personal Trainer no Calhau', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Calhau?',
+    resposta:
+      'Em São Luís, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. O Calhau trabalha na metade de cima dessas faixas: é um dos bairros mais valorizados da orla, com condomínios de médio e alto padrão e demanda constante por treino na Litorânea e a domicílio.',
+  },
+  {
+    pergunta: 'O calçadão da Litorânea é bom para correr?',
+    resposta:
+      'É o principal corredor de treino ao ar livre de São Luís: plano, contínuo e de frente para o mar, com quiosques servindo de ponto de apoio e hidratação. O movimento é maior no início da manhã e no fim da tarde — os horários em que o calor dá trégua e o bairro inteiro aparece para treinar.',
+  },
+  {
+    pergunta: 'Dá para treinar na areia da praia do Calhau?',
+    resposta:
+      'Dá, e com uma vantagem local: quando a maré recua — e em São Luís ela recua muito —, abre-se uma faixa larga de areia firme, ótima para corrida leve e circuitos. Vale respeitar o básico: conferir a tábua de marés, evitar o sol a pino e hidratar mais do que o habitual.',
+  },
+  {
+    pergunta: 'Que estrutura pública de esporte o bairro oferece?',
+    resposta:
+      'A orla concentra a estrutura: o calçadão para caminhada e corrida, áreas de quiosque que funcionam como ponto de encontro dos grupos de treino e espaços de areia usados para futebol, vôlei e funcional. É treino de rua no melhor sentido — aberto, gratuito e movimentado.',
+  },
+  {
+    pergunta: 'Personal no condomínio funciona no Calhau?',
+    resposta:
+      'Funciona e cresce. Os prédios mais novos do bairro e da vizinhança entregam espaço fitness, e o atendimento a domicílio cobre as casas e os condomínios sem estrutura. Para quem tem rotina apertada, é o formato que elimina a única variável instável do bairro: o trânsito da avenida nos horários de pico.',
+  },
+];
+
+const title = 'Personal Trainer no Calhau (São Luís): o guia';
+const description =
+  'Personal trainer no Calhau: preços de São Luís, o calçadão da Litorânea, a praia na maré baixa e os melhores lugares do bairro para treinar com acompanhamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Luís</p>
+    <h1>Personal trainer no Calhau: os endereços onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Alguns bairros treinam escondidos, dentro de academias e garagens.
+      O Calhau treina em público: no fim da tarde, o calçadão da avenida
+      Litorânea vira a maior academia a céu aberto de São Luís.
+    </p>
+
+    <p class="lead">
+      Este guia percorre, lugar por lugar, os endereços de treino do
+      bairro — e mostra onde um <strong>personal trainer no
+      Calhau</strong> encaixa cada tipo de aluno.
+    </p>
+
+    <div class="prose">
+      <h2>1. O calçadão da avenida Litorânea</h2>
+      <p>
+        É o protagonista. Inaugurada nos anos 1990, a Litorânea
+        transformou a relação da cidade com a orla — e o calçadão que a
+        acompanha virou o corredor oficial de caminhada, corrida, bike,
+        skate e até passeio com cachorro.
+      </p>
+
+      <p>
+        Para o treino estruturado, o traçado plano e contínuo é ideal
+        para rodagem, tiros marcados por quiosque e progressões de
+        caminhada — inclusive para quem está começando pelo básico dos
+        <a href="/emagrecimento/quantos-passos-por-dia/">passos
+        diários</a>. Nos horários de pico do treino, cedo e no fim da
+        tarde, o movimento é constante e a segurança melhora junto.
+      </p>
+
+      <h2>2. A praia na maré baixa</h2>
+      <p>
+        A praia do Calhau, com suas dunas e coqueiros, tem um fenômeno
+        que muda o treino: a grande variação de maré de São Luís. Quando
+        o mar recua, sobra uma faixa larga de areia firme e plana —
+        pista natural para corrida leve, educativos e circuitos com o
+        peso do corpo.
+      </p>
+
+      <p>
+        O personal local trabalha com a tábua de marés na cabeça: a
+        mesma praia que às 6h oferece pista dura pode, horas depois,
+        virar areia fofa e exigente. Essa alternância, bem usada, vira
+        ferramenta de treino — fofo para força e panturrilha, firme para
+        volume.
+      </p>
+
+      <h2>3. Os quiosques como base de treino</h2>
+      <p>
+        A orla do Calhau é pontuada de quiosques que funcionam como
+        vestiário informal do bairro: ponto de encontro dos grupos de
+        corrida, base de hidratação e referência de distância para os
+        tiros.
+      </p>
+
+      <p>
+        Em volta deles, as áreas de areia concentram vôlei, futevôlei e
+        treino funcional em grupo. Para quem prefere treinar acompanhado
+        e ao ar livre, é aqui que o personal monta a sessão — material
+        próprio, dupla ou pequeno grupo, custo dividido.
+      </p>
+
+      <h2>4. As academias do bairro e do entorno</h2>
+      <p>
+        Quem precisa de carga e máquina encontra academias no próprio
+        Calhau e no eixo que o liga aos bairros vizinhos da orla. É o
+        endereço do treino de força que sustenta o resto — a corrida da
+        Litorânea rende mais quando há musculação por trás.
+      </p>
+
+      <p>
+        O arranjo comum é híbrido: força na academia duas vezes por
+        semana, treino de orla nos outros dias. O personal que circula
+        bem entre os dois mundos é o que mais aparece por aqui.
+      </p>
+
+      <h2>5. Condomínios e o treino em casa</h2>
+      <p>
+        A orla do Calhau e as ruas internas concentram condomínios de
+        médio e alto padrão — muitos com espaço fitness — e casas que
+        recebem o <a href="/guias/personal-trainer-a-domicilio/">personal
+        a domicílio</a> com material portátil.
+      </p>
+
+      <p>
+        É o formato de quem quer eliminar variáveis: sem trânsito, sem
+        depender do tempo e com horário garantido. No calor de São Luís,
+        essa previsibilidade segura muita rotina que a força de vontade
+        sozinha não seguraria.
+      </p>
+
+      <h2>O clima como regra do jogo</h2>
+      <p>
+        São Luís é quente e úmida o ano todo, com estação de chuvas
+        pesada no primeiro semestre. Na prática, o treino ao ar livre do
+        Calhau vive de dois horários — o começo da manhã e o fim da
+        tarde — e de um plano B coberto para os dias de tempestade.
+      </p>
+
+      <p>
+        Hidratação aqui não é detalhe: é parte do programa. E qualquer
+        dor ou limitação que já exista — joelho, lombar, ombro — passa
+        por avaliação de médico ou fisioterapeuta antes de o volume de
+        treino subir.
+      </p>
+
+      <h2>Quanto custa personal trainer no Calhau</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/sao-luis-ma/">personal trainer em São
+        Luís</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Calhau trabalha na metade de cima dessas faixas, como os
+        demais bairros valorizados da orla. O treino em dupla na
+        Litorânea é o caminho clássico para dividir o custo, e o online
+        (R$ 160 a R$ 410 mensais) complementa semanas de viagem.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Calhau, acrescente o teste local: pergunte como o profissional
+        usa a maré no programa. Quem treina gente na orla há anos fala de
+        areia firme e fofa, horário e tábua de marés com naturalidade —
+        quem decorou planilha genérica muda de assunto.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Calhau" />
+
+    <WhatsAppCta tema="geral" localidade="no Calhau" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -386,6 +386,8 @@ import { cidade as luisCorreia } from './luis-correia-pi';
 import { cidade as goncalves } from './goncalves-mg';
 import { cidade as tibagi } from './tibagi-pr';
 import { cidade as saoJoseDosAusentes } from './sao-jose-dos-ausentes-rs';
+import { cidade as itamonte } from './itamonte-mg';
+import { cidade as jaguariaiva } from './jaguariaiva-pr';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1127,6 +1129,7 @@ export const cidades: Cidade[] = [
   chapadaDosGuimaraes, cavalcante, aiuruoca, piranhas, palmeiras,
   xiqueXique, apiuna, carolina, buique, saoRoqueDeMinas, japaratinga,
   alcobaca, analandia, luisCorreia, goncalves, tibagi, saoJoseDosAusentes,
+  itamonte, jaguariaiva,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

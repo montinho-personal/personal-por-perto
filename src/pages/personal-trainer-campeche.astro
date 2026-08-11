@@ -1,0 +1,306 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/florianopolis-sc/',
+    titulo: 'Personal trainer em Florianópolis',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-lagoa-da-conceicao/',
+    titulo: 'Personal trainer na Lagoa da Conceição',
+    descricao: 'O distrito do qual o Campeche se separou em 1995 — e o outro jeito de treinar na ilha.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Leitura natural num bairro com quilômetros de areia plana e reta.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-campeche';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Florianópolis', url: '/personal-trainer/florianopolis-sc/' },
+  { nome: 'Personal Trainer no Campeche', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Campeche?',
+    resposta:
+      'Em Florianópolis, a aula avulsa vai de R$ 90 a R$ 210 e o pacote mensal de R$ 450 a R$ 1.250. O Campeche transita no meio dessa faixa: mais acessível que Jurerê Internacional, com oferta crescente de profissionais acompanhando a expansão do bairro. O treino ao ar livre — na praia e nas lagoas — reduz o custo de estrutura de muitos atendimentos.',
+  },
+  {
+    pergunta: 'Qual a relação do Campeche com o Pequeno Príncipe?',
+    resposta:
+      'O bairro abrigou o primeiro campo de pouso de Florianópolis, usado nas décadas de 1920 e 1930 como escala dos pilotos da Latécoère — depois Aéropostale — na linha da América do Sul. Antoine de Saint-Exupéry, autor de O Pequeno Príncipe, foi um desses pilotos e esteve na ilha algumas vezes. A avenida Pequeno Príncipe, principal via do bairro, homenageia a obra.',
+  },
+  {
+    pergunta: 'O Campeche é bom para treinar ao ar livre?',
+    resposta:
+      'É um dos melhores territórios da ilha para isso: a praia é a maior do sul da ilha, plana e de areia longa, ótima para corrida e caminhada; o terreno do bairro é uma planície, o que favorece a bike no dia a dia; e as lagoas protegidas — Lagoa Pequena e Lagoa da Chica — oferecem entorno tranquilo para treinos leves e alongamento.',
+  },
+  {
+    pergunta: 'O mar do Campeche serve para treino na água?',
+    resposta:
+      'Com ressalvas. É praia de mar aberto, com ondas e correntes — território de surf, não de natação contínua como as praias abrigadas do norte da ilha. Para quem surfa, aliás, o treino de força em terra faz diferença direta em remada e explosão. Natação estruturada costuma migrar para piscina ou para a Lagoa da Conceição.',
+  },
+  {
+    pergunta: 'Os condomínios novos do Campeche têm academia?',
+    resposta:
+      'Boa parte dos lançamentos recentes entrega espaço fitness, reflexo do crescimento acelerado do bairro nas últimas décadas. As academias de porte da região e os estúdios menores completam a oferta. Na prática, quem mora no Campeche escolhe entre treinar em casa, no condomínio, na academia ou na areia — e o personal se adapta aos quatro cenários.',
+  },
+];
+
+const title = 'Personal Trainer no Campeche (Florianópolis): guia';
+const description =
+  'Personal trainer no Campeche: preços de Florianópolis, a praia mais longa do sul da ilha, as lagoas protegidas e o bairro que nasceu de um campo de aviação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Florianópolis</p>
+    <h1>Personal trainer no Campeche: treinar na pista do Pequeno Príncipe</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo bairro tem uma história de origem. A do Campeche é difícil de
+      superar: a planície entre o morro e o mar abrigou o primeiro campo
+      de pouso de Florianópolis — e entre os pilotos que desciam ali
+      estava Antoine de Saint-Exupéry.
+    </p>
+
+    <p class="lead">
+      Essa geografia de pista de pouso — plana, longa, aberta — é
+      exatamente o que faz do bairro um dos melhores lugares da ilha para
+      treinar fora de quatro paredes. Este guia percorre o território e o
+      mercado de <strong>personal trainer no Campeche</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>Da pista de pouso ao bairro que mais cresce</h2>
+      <p>
+        Nas décadas de 1920 e 1930, o campo de aviação do Campeche servia
+        de escala aos pilotos da Latécoère — que depois virou Aéropostale
+        — na rota da América do Sul. Saint-Exupéry, autor de
+        <em>O Pequeno Príncipe</em>, esteve na ilha algumas vezes nesse
+        período e virou personagem da cultura local.
+      </p>
+
+      <p>
+        A homenagem ficou no mapa: a <strong>avenida Pequeno
+        Príncipe</strong>, principal via do bairro, carrega o nome da
+        obra. E a antiga Vila do Pontal virou distrito próprio em
+        dezembro de 1995, quando se separou da Lagoa da Conceição.
+      </p>
+
+      <p>
+        De lá para cá, o Campeche se tornou um dos territórios que mais
+        crescem em Florianópolis — casas de rua, servidões, condomínios
+        novos e uma população que mistura nativos, famílias jovens e
+        gente que chegou do resto do país atrás de qualidade de vida.
+      </p>
+
+      <h2>A geografia que define o treino</h2>
+      <p>
+        O bairro é uma planície costeira. De um lado, a
+        <strong>maior praia do sul da ilha</strong>: quilômetros de areia
+        reta, com a Ilha do Campeche emoldurando o horizonte. Do outro,
+        duas lagoas protegidas por lei — a Lagoa Pequena e a Lagoa da
+        Chica — cercadas de vegetação de restinga.
+      </p>
+
+      <p>
+        Para o treino, isso se traduz em três pistas naturais. A areia,
+        para corrida, caminhada e circuitos funcionais — dura perto da
+        água na maré baixa, fofa e exigente perto da restinga. As ruas e
+        servidões planas, que fazem da bike um meio de transporte real.
+        E o entorno das lagoas, para sessões leves e dias de recuperação.
+      </p>
+
+      <p>
+        O mar, vale dizer, é de ondas: praia de surfista, não de nado
+        contínuo. Quem surfa encontra no treino de força em terra o
+        complemento direto de remada e explosão — e quem quer nadar
+        estruturado migra para piscina.
+      </p>
+
+      <h2>Quem procura personal trainer aqui</h2>
+      <p>
+        O perfil do bairro produz três demandas claras. A primeira é o
+        <strong>corredor de areia</strong> — o morador que já corre na
+        praia e quer estrutura: planilha, força para sustentar volume e
+        prevenção das dores que a areia fofa cobra de tornozelo e
+        panturrilha. O guia de
+        <a href="/guias/personal-trainer-para-corredores/">personal
+        trainer para corredores</a> detalha esse trabalho.
+      </p>
+
+      <p>
+        A segunda é a <strong>família jovem</strong> que se mudou para o
+        Campeche atrás de rotina ao ar livre — e que quer treino no
+        quintal, na praia ou no condomínio, muitas vezes em dupla.
+      </p>
+
+      <p>
+        A terceira é quem trabalha remoto. O bairro concentra
+        profissionais de agenda flexível, que treinam em horários fora do
+        pico e valorizam o personal que monta o programa em torno do dia
+        de trabalho — não o contrário.
+      </p>
+
+      <h2>Onde o treino acontece</h2>
+      <p>
+        <strong>Na areia.</strong> O clássico do bairro. Corrida no trecho
+        firme, tiros e circuitos na areia fofa, força com o peso do corpo
+        e acessórios. De manhã cedo, a praia funciona como a academia a
+        céu aberto do Campeche.
+      </p>
+
+      <p>
+        <strong>Em casa e no condomínio.</strong> A expansão imobiliária
+        trouxe lançamentos com espaço fitness, e o padrão de casa com
+        quintal abre espaço para o treino a domicílio com material do
+        próprio personal.
+      </p>
+
+      <p>
+        <strong>Na academia.</strong> A oferta cresceu junto com o bairro
+        — academias de porte e estúdios menores atendem quem prefere
+        estrutura completa de musculação, especialmente à noite e nos
+        meses de chuva.
+      </p>
+
+      <h2>Quanto custa personal trainer no Campeche</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/florianopolis-sc/">personal trainer em
+        Florianópolis</a>, vai de R$ 90 a R$ 210 pela aula avulsa e de
+        R$ 450 a R$ 1.250 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Campeche transita no meio dessa faixa. A oferta de
+        profissionais cresce com o bairro, e o treino ao ar livre reduz o
+        custo de estrutura — o que segura o preço na comparação com os
+        endereços de academia cara. O online (R$ 200 a R$ 500 mensais)
+        atende bem quem viaja com frequência.
+      </p>
+
+      <h2>Campeche ou Lagoa da Conceição?</h2>
+      <p>
+        As duas ex-metades do mesmo distrito envelheceram diferente. A
+        <a href="/personal-trainer-lagoa-da-conceicao/">Lagoa da
+        Conceição</a> virou polo de esporte aquático e vida noturna; o
+        Campeche seguiu residencial, de praia aberta e ritmo de bairro.
+      </p>
+
+      <p>
+        Para o treino, a escolha é quase estética: remo, SUP e trilha com
+        mirante de um lado; areia longa, planície e rotina de outro. Os
+        preços são parecidos — o que muda é o cenário e o perfil de
+        vizinhança.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Campeche, acrescente duas perguntas locais. O profissional
+        sabe trabalhar a transição entre areia firme e fofa sem
+        sobrecarregar panturrilha e tornozelo? E tem plano B estruturado
+        para os dias de vento sul e chuva — em casa, no condomínio ou na
+        academia? Quem treina gente do bairro há tempo responde às duas
+        sem hesitar.
+      </p>
+
+      <p>
+        Um detalhe final: dores e limitações que já existem — joelho,
+        lombar, tornozelo — pedem avaliação de médico ou fisioterapeuta
+        antes de o programa começar. Na dúvida, essa ordem nunca falha.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Campeche" />
+
+    <WhatsAppCta tema="geral" localidade="no Campeche" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

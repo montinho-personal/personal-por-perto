@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer e erros comuns',
+    descricao: 'O exercício onde a pegada fraca cobra a conta primeiro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu',
+    descricao: 'Remadas e puxadas dependem da mão que segura a barra.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'O antebraço fecha o conjunto que a camiseta mostra.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/pegada-e-antebraco';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Pegada e antebraço', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Preciso treinar antebraço diretamente?',
+    resposta:
+      'Depende do que já acontece no seu treino. Terra, remadas, barra fixa e carregamentos pesados estimulam bastante os flexores do punho. O trabalho direto faz sentido quando a pegada falha antes das costas nos exercícios de puxar, quando o antebraço é visivelmente defasado ou quando seu esporte exige pegada forte — escalada, jiu-jitsu, tênis.',
+  },
+  {
+    pergunta: 'Usar straps atrapalha o desenvolvimento da pegada?',
+    resposta:
+      'Usar sempre, sim; usar com critério, não. A estratégia mais comum é fazer as séries leves e médias sem straps, deixando-os para as séries mais pesadas de terra e remada — assim a pegada recebe estímulo crescente e as costas não ficam reféns da mão. Quem usa straps da primeira à última série terceiriza o trabalho e estaciona a pegada.',
+  },
+  {
+    pergunta: 'Quais são os melhores exercícios para antebraço?',
+    resposta:
+      'Para os flexores: rosca de punho e carregamento de peso (farmer’s walk). Para os extensores, que quase todo mundo esquece: rosca de punho inversa. Para o braquiorradial: rosca inversa e rosca martelo. Para a pegada como um todo: suspensão na barra fixa por tempo e carregamentos pesados. Dois ou três desses, duas vezes por semana, já mudam o quadro.',
+  },
+  {
+    pergunta: 'Quanto tempo demora para o antebraço crescer?',
+    resposta:
+      'É um grupo de evolução lenta: músculos pequenos, muito usados no dia a dia e habituados a trabalho constante. Com treino direto e progressão registrada, as primeiras mudanças de força na pegada aparecem em semanas; as visuais costumam pedir alguns meses. Consistência importa mais que variedade de exercícios.',
+  },
+  {
+    pergunta: 'Dor no punho ou no cotovelo ao treinar antebraço é comum?',
+    resposta:
+      'Desconforto muscular é esperado; dor articular no punho ou na face externa/interna do cotovelo, não. Esses quadros costumam nascer de volume repentino demais — o clássico é dobrar o treino de pegada de uma semana para outra. Reduza volume e carga e, se a dor persistir ou limitar movimentos do dia a dia, procure médico ou fisioterapeuta antes de continuar.',
+  },
+];
+
+const title = 'Pegada e antebraço: como treinar o elo mais fraco';
+const description =
+  'Pegada e antebraço: quando o trabalho direto vale a pena, os exercícios para flexores, extensores e braquiorradial, o uso certo de straps e um plano semanal.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Pegada e antebraço: o elo mais fraco do seu treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Acontece num momento previsível: a série de levantamento terra em
+      que as costas aguentariam mais duas repetições — mas a barra
+      escorrega da mão. A pegada virou o teto do treino.
+    </p>
+
+    <p class="lead">
+      Este guia trata do par que resolve isso: a força de pegada e o
+      antebraço que a sustenta. Quando treinar direto, com quais
+      exercícios, e onde os straps entram sem atrapalhar.
+    </p>
+
+    <div class="prose">
+      <h2>Por que a pegada vira gargalo</h2>
+      <p>
+        Nos exercícios de puxar, a corrente é simples: costas geram
+        força, braços transmitem, mãos seguram. Costas e braços crescem
+        com o treino normal — a mão, que segura tudo, raramente recebe
+        atenção própria.
+      </p>
+
+      <p>
+        Resultado: no
+        <a href="/musculacao/levantamento-terra-como-fazer/">terra</a>,
+        na remada pesada e na barra fixa, a série termina quando o dedo
+        abre, não quando o músculo-alvo falha. O estímulo que deveria
+        chegar às costas fica limitado pelo elo mais fraco.
+      </p>
+
+      <p>
+        Fora da academia, a lógica continua: força de pegada é uma das
+        medidas de força mais usadas em avaliação física, justamente por
+        refletir o quanto o corpo consegue aplicar no mundo real.
+      </p>
+
+      <h2>O antebraço em três peças</h2>
+      <p>
+        <strong>Flexores do punho</strong>, na face interna: fecham a mão
+        e flexionam o punho. São o motor da pegada e a parte mais
+        volumosa do antebraço.
+      </p>
+
+      <p>
+        <strong>Extensores do punho</strong>, na face externa: abrem a
+        mão e estendem o punho. Trabalham como estabilizadores em
+        qualquer pegada forte — e são os grandes esquecidos.
+      </p>
+
+      <p>
+        <strong>Braquiorradial</strong>, o músculo que cruza do úmero ao
+        rádio: flexiona o cotovelo em pegada neutra e pronada. É ele que
+        dá espessura à parte alta do antebraço e conecta o conjunto ao
+        <a href="/musculacao/treino-de-bracos/">treino de braços</a>.
+      </p>
+
+      <VideoYouTube
+        id="Dr-9K8qYzAU"
+        titulo="Antebraço: execução correta — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do trabalho direto de antebraço."
+      />
+
+      <h2>Quem precisa de trabalho direto</h2>
+      <p>
+        Nem todo mundo. Terra, remada, barra fixa e carregamentos já
+        entregam estímulo considerável — quem treina puxadas pesadas duas
+        vezes por semana tem antebraço em atividade constante.
+      </p>
+
+      <p>
+        Os três sinais de que o trabalho direto vale a pena: a pegada
+        falha antes das costas nos exercícios de puxar; o antebraço é
+        visivelmente defasado em relação ao braço; ou o seu esporte cobra
+        pegada — escalada, lutas de agarre, tênis, remo.
+      </p>
+
+      <h2>Os exercícios que resolvem</h2>
+      <p>
+        <strong>Rosca de punho</strong> — sentado, antebraços apoiados,
+        flexionando o punho com barra ou halteres. Alto volume, carga
+        moderada, amplitude completa.
+      </p>
+
+      <p>
+        <strong>Rosca de punho inversa</strong> — o espelho do anterior,
+        para os extensores. Carga bem menor, execução limpa; é o
+        exercício que equilibra o par e protege o punho.
+      </p>
+
+      <p>
+        <strong>Rosca inversa e rosca martelo</strong> — flexão de
+        cotovelo em pegada pronada e neutra, colocando o braquiorradial
+        no centro do trabalho.
+      </p>
+
+      <p>
+        <strong>Farmer's walk</strong> — caminhar segurando halteres ou
+        anilhas pesadas. Treina a pegada na função em que ela mais
+        importa: sustentar carga por tempo.
+      </p>
+
+      <p>
+        <strong>Suspensão na barra</strong> — pendurar-se por tempo, com
+        o ombro ativo. Progressão natural: duas mãos, carga externa, uma
+        mão.
+      </p>
+
+      <VideoYouTube
+        id="P4swC2ezxEw"
+        titulo="Treino de pegada: execução correta — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra o trabalho específico de força de pegada."
+      />
+
+      <h2>Straps: aliado ou muleta?</h2>
+      <p>
+        Os dois — depende do critério. O strap existe para que a série
+        pesada de terra ou remada não termine na mão; sem ele, as costas
+        de quem já move carga alta ficariam sub-treinadas.
+      </p>
+
+      <p>
+        O arranjo que preserva os dois objetivos: séries leves e médias
+        sem straps, séries pesadas com. Assim a pegada trabalha em
+        progressão real e o
+        <a href="/musculacao/treino-de-costas/">treino de costas</a> não
+        fica refém dela.
+      </p>
+
+      <p>
+        A muleta começa quando o strap entra já no aquecimento. Quem
+        nunca segura nada pesado com a própria mão não deveria se
+        surpreender com a pegada que não cresce.
+      </p>
+
+      <h2>Volume, frequência e progressão</h2>
+      <p>
+        Para o trabalho direto: 4 a 8 séries semanais, divididas em duas
+        sessões, no fim do treino — antebraço cansado atrapalha tudo o
+        que vem depois.
+      </p>
+
+      <p>
+        Faixas: 10 a 20 repetições nas roscas de punho, 8 a 12 nas
+        roscas inversa e martelo, 30 a 60 segundos nos carregamentos e
+        suspensões. E o cuidado de sempre com grupo pequeno: subir
+        volume devagar. Dor articular no punho ou cotovelo que persiste
+        é assunto de médico ou fisioterapeuta.
+      </p>
+
+      <h2>Um plano de 15 minutos, duas vezes por semana</h2>
+      <p>
+        Dia A, após o treino de puxar: farmer's walk, 3 idas de 30 a 40
+        metros; rosca de punho, 3 séries de 12 a 20.
+      </p>
+
+      <p>
+        Dia B, após qualquer treino: suspensão na barra, 3 séries até
+        perto do limite; rosca inversa, 3 séries de 8 a 12; rosca de
+        punho inversa, 2 séries de 15 a 20.
+      </p>
+
+      <p>
+        Oito a doze semanas desse arranjo, com progressão anotada,
+        costumam devolver a hierarquia correta ao treino: as costas
+        voltam a falhar antes da mão.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Antebraço é território de ajuste fino: a diferença entre a rosca
+        de punho que constrói e a que inflama é pequena — amplitude,
+        carga e velocidade importam mais do que em grupos grandes.
+      </p>
+
+      <p>
+        Um personal trainer diagnostica se a sua pegada é gargalo real
+        ou impressão, monta a dose certa de trabalho direto e decide
+        onde os straps entram no seu caso específico. É o tipo de
+        detalhe que planilha genérica não cobre.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre pegada e antebraço" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,323 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/musculacao/musculacao-e-postura/',
+    titulo: 'Musculação e postura: o que o treino resolve',
+    descricao: 'A base técnica do que este guia aplica à rotina de escritório.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que pode e o que não pode',
+    descricao: 'A queixa número um de quem passa o dia na cadeira.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer/',
+    titulo: 'Quantas vezes por semana treinar com personal',
+    descricao: 'A frequência mínima que compensa oito horas diárias de cadeira.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-para-quem-trabalha-sentado';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal para quem trabalha sentado', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Treinar compensa oito horas sentado por dia?',
+    resposta:
+      'Compensa parte — e é a parte que está ao seu alcance. O treino estruturado devolve força ao que a cadeira enfraquece (glúteos, costas, core), melhora a capacidade de sustentar o tronco e eleva o gasto do dia. Mas uma hora de treino não anula sozinha dez horas de imobilidade: o pacote completo inclui pausas para levantar ao longo do dia e mais movimento fora do expediente.',
+  },
+  {
+    pergunta: 'Que treino é prioridade para quem trabalha sentado?',
+    resposta:
+      'Força, com ênfase no que a cadeira desliga: glúteos e posterior de coxa (elevação pélvica, terra romeno, agachamento), costas médias (remadas, face pull) e core (pranchas e carregamentos). Complementam o quadro a mobilidade de quadril e torácica e algum condicionamento aeróbico. É o desenho inverso da rotina de escritório.',
+  },
+  {
+    pergunta: 'Sentar muito causa dor nas costas?',
+    resposta:
+      'A relação mais consistente é com a imobilidade prolongada e o descondicionamento, não com uma "postura errada" única. Corpos fortes toleram a cadeira melhor do que corpos enfraquecidos. De toda forma, dor lombar persistente, que irradia para a perna ou vem com formigamento, precisa de avaliação de médico ou fisioterapeuta antes de qualquer programa de treino.',
+  },
+  {
+    pergunta: 'De quantas pausas por dia eu preciso?',
+    resposta:
+      'A referência prática é levantar a cada 30 a 60 minutos, nem que seja por um ou dois minutos — água, banheiro, uma volta no corredor, algumas repetições de agachamento livre. O total importa menos que a frequência: dez micro-pausas espalhadas valem mais que uma caminhada única depois de oito horas ininterruptas de cadeira.',
+  },
+  {
+    pergunta: 'Quantas sessões semanais com personal fazem diferença nesse caso?',
+    resposta:
+      'Duas a três sessões de força por semana já revertem boa parte do quadro típico de escritório, desde que haja regularidade. Quem só consegue uma sessão presencial pode combinar com planilha para os outros dias (formato híbrido). O personal também ajuda no que ninguém vê: montar as pausas do expediente e encaixar o treino na agenda real, não na ideal.',
+  },
+];
+
+const title = 'Personal trainer para quem trabalha sentado';
+const description =
+  'Personal trainer para quem trabalha sentado: o que a cadeira faz com o corpo, o treino que reverte o quadro, as pausas que importam e o formato de acompanhamento certo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para quem trabalha sentado o dia inteiro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Faça a conta do seu dia: oito a dez horas na cadeira do trabalho,
+      mais o trânsito, mais o sofá. Para boa parte de quem trabalha em
+      escritório — ou em home office —, o corpo passa 12 horas por dia
+      dobrado em um ângulo de 90 graus.
+    </p>
+
+    <p class="lead">
+      Este guia mostra o que essa rotina faz com o corpo, o que o treino
+      consegue reverter, e como um personal trainer monta o programa de
+      quem vive sentado — dentro e fora da sessão.
+    </p>
+
+    <div class="prose">
+      <h2>O que a cadeira faz com o corpo</h2>
+      <p>
+        Nada de misterioso: o corpo se adapta ao que faz com frequência.
+        Sentado, o glúteo passa o dia desligado, o quadril fica em
+        flexão constante, as costas médias se alongam sob carga baixa e
+        o pescoço se projeta para a tela.
+      </p>
+
+      <p>
+        Meses e anos disso produzem o quadro clássico: glúteos e
+        posterior de coxa enfraquecidos, rigidez de quadril, fadiga
+        lombar no fim do dia, ombros à frente. Somam-se o gasto calórico
+        baixo e o círculo vicioso — quanto mais cansado o corpo, menos
+        vontade de se mover.
+      </p>
+
+      <p>
+        Vale nomear o que a ciência já consolidou: tempo sentado em
+        excesso é fator de risco independente para saúde, e as
+        diretrizes de atividade física da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        recomendam explicitamente limitar o tempo sedentário e
+        substituí-lo por movimento de qualquer intensidade.
+      </p>
+
+      <VideoYouTube
+        id="JHc4TxfFTf4"
+        titulo="Se você trabalha sentado, veja esse vídeo — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica o impacto de passar o dia sentado e o que fazer a respeito."
+      />
+
+      <h2>A boa notícia: o quadro reverte</h2>
+      <p>
+        Nenhuma dessas adaptações é sentença. Músculo enfraquecido
+        fortalece, quadril rígido recupera amplitude, disposição volta.
+        O corpo que se adaptou à cadeira se adapta ao treino — basta que
+        o treino exista e aponte na direção certa.
+      </p>
+
+      <p>
+        A ressalva de sempre: dor instalada — lombar que irradia,
+        formigamento, dor que não passa com repouso — é assunto de
+        médico ou fisioterapeuta primeiro. O personal entra depois do
+        sinal verde, e os dois trabalhos se complementam.
+      </p>
+
+      <h2>O treino desenhado como antídoto</h2>
+      <p>
+        <strong>Prioridade 1 — a cadeia que a cadeira desliga:</strong>
+        glúteos e posterior de coxa. Elevação pélvica, terra romeno,
+        agachamento, afundo. É o centro do programa, não acessório.
+      </p>
+
+      <p>
+        <strong>Prioridade 2 — as costas que seguram o dia:</strong>
+        remadas com foco em retração, face pull, trabalho de trapézio
+        médio e inferior. O guia de
+        <a href="/musculacao/musculacao-e-postura/">musculação e
+        postura</a> explica por que fortalecer vale mais que "lembrar de
+        sentar reto".
+      </p>
+
+      <p>
+        <strong>Prioridade 3 — core e quadril:</strong> pranchas,
+        carregamentos e mobilidade de quadril e coluna torácica no
+        aquecimento. Dez minutos bem gastos por sessão.
+      </p>
+
+      <p>
+        <strong>Prioridade 4 — fôlego:</strong> caminhada rápida, bike
+        ou o aeróbico que couber, duas a três vezes por semana. O
+        objetivo é reverter o gasto baixo e devolver disposição.
+      </p>
+
+      <h2>As pausas valem tanto quanto o treino</h2>
+      <p>
+        Aqui está o dado que mais surpreende: uma hora de treino não
+        anula, sozinha, dez horas de imobilidade. O que muda o dia é
+        quebrá-lo — levantar a cada 30 a 60 minutos, nem que por dois
+        minutos.
+      </p>
+
+      <p>
+        Na prática: água longe da mesa, reunião por telefone andando,
+        cinco agachamentos livres a cada ida ao banheiro, escada em vez
+        de elevador. Parece pouco; espalhado por anos de vida de
+        escritório, é enorme.
+      </p>
+
+      <p>
+        Um bom personal monta esse protocolo de pausas junto com o
+        programa de treino — porque sabe que o resultado dos alunos de
+        escritório se decide também entre as sessões.
+      </p>
+
+      <h2>O formato de acompanhamento certo</h2>
+      <p>
+        <strong>Duas a três sessões semanais</strong> de força resolvem
+        a maioria dos casos — o guia sobre
+        <a href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
+        vezes por semana treinar com personal</a> detalha a conta.
+      </p>
+
+      <p>
+        Os horários que funcionam para quem trabalha sentado: antes do
+        expediente (a sessão que reunião nenhuma atropela), o almoço
+        estendido (quando a empresa ou o home office permitem) e o fim
+        do dia com hora marcada — que funciona também como fronteira
+        entre trabalho e vida.
+      </p>
+
+      <p>
+        Para quem viaja ou tem agenda instável, o híbrido — presencial
+        fixo mais planilha acompanhada — mantém a constância que esse
+        perfil mais precisa e menos consegue sozinho.
+      </p>
+
+      <h2>Home office: o caso extremo</h2>
+      <p>
+        Quem trabalha de casa perdeu até o deslocamento — há dias de
+        menos de mil passos. Em compensação, ganhou a janela do almoço e
+        o fim de tarde sem trânsito, e o personal a domicílio ou online
+        encaixa o treino exatamente nessas brechas.
+      </p>
+
+      <p>
+        Para esse perfil, a regra das pausas vira quase prescrição
+        médica de tão importante: sem os deslocamentos involuntários do
+        escritório, todo movimento do dia precisa ser intencional.
+      </p>
+
+      <h2>O que esperar em 90 dias</h2>
+      <p>
+        Nas primeiras semanas: mais disposição e menos fadiga lombar no
+        fim do dia — efeito de ativar o que estava desligado. Entre um e
+        dois meses: força visivelmente maior nos básicos e a sensação de
+        "aguentar o dia" melhor.
+      </p>
+
+      <p>
+        Aos 90 dias, com duas a três sessões semanais e as pausas
+        rodando, o comum é que a pessoa não se reconheça na descrição do
+        início deste guia. O corpo adaptável que criou o problema é o
+        mesmo que o desfaz.
+      </p>
+
+      <h2>Como escolher o profissional para esse objetivo</h2>
+      <p>
+        Procure quem pergunta pela sua rotina de trabalho na avaliação —
+        horas de cadeira, pausas, dores — e desenha o programa em volta
+        dela. Quem entrega o mesmo treino para o atleta de fim de semana
+        e para quem faz dez horas diárias de reunião não entendeu o
+        problema.
+      </p>
+
+      <p>
+        E desconfie na direção certa: para esse perfil, promessa de
+        transformação em quatro semanas vale menos que um plano honesto
+        de constância — porque o adversário aqui não é a carga do
+        agachamento, é a agenda.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal para quem trabalha sentado" />
+
+    <WhatsAppCta tema="dores" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

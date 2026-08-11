@@ -1,0 +1,294 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const ministerioSaude = fontesExternas.ministerioSaude;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta que a água ajuda a fechar — mas não substitui.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-perder-barriga/',
+    titulo: 'Como perder barriga: a verdade sobre a gordura localizada',
+    descricao: 'Onde a retenção confunde a leitura do espelho e da balança.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer?',
+    descricao: 'Outro hábito simples que soma mais do que aparenta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/agua-e-emagrecimento';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Água e emagrecimento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Beber água emagrece de verdade?',
+    resposta:
+      'Sozinha, não — água não tem propriedade queimadora de gordura. O que ela faz é facilitar o processo por três vias: um ou dois copos antes das refeições aumentam a saciedade e tendem a reduzir o quanto se come; trocar bebidas calóricas por água corta centenas de calorias líquidas do dia; e o corpo bem hidratado treina melhor. O emagrecimento continua dependendo de déficit calórico.',
+  },
+  {
+    pergunta: 'Quanta água devo beber por dia?',
+    resposta:
+      'A referência prática de cerca de 2 litros por dia (ou 35 ml por quilo de peso) serve como ponto de partida, mas a necessidade real varia com calor, treino e corpo. Os dois sinais mais úteis no dia a dia: sede — que já indica atraso — e a cor da urina, que deve ficar amarelo-clara. Dias de treino intenso e calor pedem mais.',
+  },
+  {
+    pergunta: 'Água gelada queima mais calorias?',
+    resposta:
+      'Tecnicamente o corpo gasta energia para aquecer a água gelada, mas o efeito é pequeno demais para importar — algumas poucas calorias por copo. Ninguém emagrece por temperatura de bebida. Se a água gelada faz você beber mais água ao longo do dia, ótimo; o benefício está no hábito, não no termômetro.',
+  },
+  {
+    pergunta: 'Retenção de líquido engorda?',
+    resposta:
+      'Retenção não é gordura — é água acumulada temporariamente nos tecidos, influenciada por sódio, carboidrato, hormônios, sono e até pelo estresse. Ela mexe na balança e no espelho de um dia para outro, o que gordura nenhuma faz nessa velocidade. Paradoxalmente, beber pouca água piora a retenção. Inchaço persistente ou desproporcional merece avaliação médica.',
+  },
+  {
+    pergunta: 'Chá, café e água com limão contam como água?',
+    resposta:
+      'Contam para a hidratação, desde que sem calorias relevantes — café e chá sem açúcar hidratam, sim. O que não conta é o que vem doce: suco, refrigerante e chá adoçado somam calorias líquidas que sabotam o processo. E a água com limão não tem efeito emagrecedor especial: é água, com gosto de limão.',
+  },
+];
+
+const title = 'Água e emagrecimento: o que ela faz de verdade';
+const description =
+  'Água e emagrecimento: o efeito real na saciedade, a troca de bebidas calóricas, o mito da água gelada, retenção de líquido e quanto beber por dia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Água e emagrecimento: o que ela faz — e o que inventaram</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos conselhos sobrevivem a todas as modas de dieta como o "beba
+      mais água". E poucos acumulam tanta lenda em volta: água gelada que
+      queima gordura, água com limão que destrava o metabolismo, litros
+      contados como se fossem remédio.
+    </p>
+
+    <p class="lead">
+      A verdade é menos mágica e mais útil: a água ajuda a emagrecer por
+      três mecanismos concretos — nenhum deles milagroso. Este guia
+      separa o que funciona do que é folclore.
+    </p>
+
+    <div class="prose">
+      <h2>Mecanismo 1: saciedade antes da refeição</h2>
+      <p>
+        Água ocupa espaço no estômago. Um ou dois copos 20 a 30 minutos
+        antes das refeições aumentam a sensação de plenitude e tendem a
+        reduzir o tamanho da refeição que vem em seguida — efeito
+        modesto, mas real e gratuito.
+      </p>
+
+      <p>
+        Ele também corrige uma confusão comum: sede lida como fome. Boa
+        parte das "fomes" de meio de tarde diminui com um copo de água e
+        dez minutos de paciência — teste barato antes de abrir a
+        geladeira.
+      </p>
+
+      <h2>Mecanismo 2: a troca que corta centenas de calorias</h2>
+      <p>
+        O maior efeito da água no emagrecimento não está no que ela tem,
+        mas no que ela substitui. Refrigerante, suco, chá adoçado e
+        bebida alcoólica somam calorias líquidas — as mais fáceis de
+        consumir e as que menos saciam.
+      </p>
+
+      <p>
+        Quem troca duas latas de refrigerante e um copo de suco por água
+        corta na faixa de 300 a 400 calorias do dia sem tocar na comida.
+        Para muita gente, só essa troca já cria o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> que faltava.
+      </p>
+
+      <VideoYouTube
+        id="RY1ZjIAylDc"
+        titulo="Beber água emagrece? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica o que a água realmente faz — e não faz — pelo emagrecimento."
+      />
+
+      <h2>Mecanismo 3: treino melhor, gasto maior</h2>
+      <p>
+        Desidratação leve já derruba desempenho: menos força, menos
+        repetições, percepção de esforço maior. Quem treina desidratado
+        treina pior — e queima menos ao longo das semanas.
+      </p>
+
+      <p>
+        O corpo hidratado sustenta a sessão inteira de musculação e o
+        volume de passos do dia. É efeito indireto, mas se acumula:
+        emagrecimento é a soma de semanas, e as semanas são feitas de
+        treinos bem executados.
+      </p>
+
+      <h2>Os mitos, um por um</h2>
+      <p>
+        <strong>Água gelada queima gordura.</strong> O corpo gasta
+        energia para aquecê-la — poucas calorias por copo, irrelevante
+        no total do dia. Beba na temperatura que fizer você beber mais.
+      </p>
+
+      <p>
+        <strong>Água com limão emagrece.</strong> É água com gosto. O
+        limão não acelera metabolismo nem "alcaliniza" nada relevante
+        para gordura. Se o sabor ajuda no hábito, use — pelo motivo
+        certo.
+      </p>
+
+      <p>
+        <strong>Litros contados valem por si.</strong> Forçar volumes
+        enormes não acelera resultado e, no extremo, faz mal. Hidratação
+        é ajuste contínuo, não competição.
+      </p>
+
+      <h2>Retenção: a água que confunde a balança</h2>
+      <p>
+        O corpo retém mais ou menos líquido conforme sódio, carboidrato,
+        hormônios, sono e estresse. Essas oscilações movem a balança em
+        um ou dois quilos de um dia para outro — velocidade que gordura
+        nenhuma tem.
+      </p>
+
+      <p>
+        Duas consequências práticas. Primeira: pesagem diária isolada
+        mente; a média semanal conta a história real — o guia sobre
+        <a href="/emagrecimento/como-perder-barriga/">perder barriga</a>
+        mostra como interpretar. Segunda: beber pouca água piora a
+        retenção, não o contrário. Inchaço persistente, desproporcional
+        ou acompanhado de outros sintomas é caso de avaliação médica.
+      </p>
+
+      <h2>Quanto beber, na prática</h2>
+      <p>
+        A referência habitual — cerca de 2 litros por dia, ou 35 ml por
+        quilo de peso — funciona como ponto de partida. As diretrizes de
+        alimentação saudável do
+        <a href={ministerioSaude.url} target="_blank" rel="noopener">{ministerioSaude.nome}</a>
+        colocam a água como a bebida a ser preferida ao longo do dia,
+        no lugar de bebidas adoçadas.
+      </p>
+
+      <p>
+        No dia a dia, dois sinais valem mais que a conta: sede (que já
+        indica atraso) e cor da urina (amarelo-claro é a meta). Calor,
+        treino pesado e dias longos de caminhada — como os do hábito de
+        <a href="/emagrecimento/quantos-passos-por-dia/">passos
+        diários</a> — pedem mais.
+      </p>
+
+      <h2>Como transformar isso em hábito</h2>
+      <p>
+        Garrafa à vista na mesa de trabalho. Copo cheio antes de cada
+        refeição. Água como bebida padrão em restaurante — o resto vira
+        exceção consciente. São três gatilhos simples que resolvem a
+        hidratação de quase todo mundo sem aplicativo nem planilha.
+      </p>
+
+      <p>
+        E a regra de ouro da troca: nada de calorias líquidas no
+        automático. Doce que se bebe engana a saciedade duas vezes.
+      </p>
+
+      <h2>O lugar da água no plano inteiro</h2>
+      <p>
+        Água não substitui déficit, treino de força nem sono — ela
+        lubrifica os três. É coadjuvante de luxo: barata, sem efeito
+        colateral e com benefícios que vão muito além da balança.
+      </p>
+
+      <p>
+        Um personal trainer que acompanha seu emagrecimento trata a
+        hidratação como parte do programa — junto do treino, dos passos
+        e da rotina de sono. Nenhuma peça sozinha resolve; o conjunto,
+        sim.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre água e emagrecimento" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

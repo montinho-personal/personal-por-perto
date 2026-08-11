@@ -87,6 +87,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-pinheiros/', titulo: 'Personal trainer em Pinheiros (São Paulo)' },
   { categoria: 'Bairros', url: '/personal-trainer-lagoa-nova/', titulo: 'Personal trainer na Lagoa Nova (Natal)' },
   { categoria: 'Bairros', url: '/personal-trainer-vieiralves/', titulo: 'Personal trainer no Vieiralves (Manaus)' },
+  { categoria: 'Bairros', url: '/personal-trainer-campeche/', titulo: 'Personal trainer no Campeche (Florianópolis)' },
+  { categoria: 'Bairros', url: '/personal-trainer-itaigara/', titulo: 'Personal trainer no Itaigara (Salvador)' },
+  { categoria: 'Bairros', url: '/personal-trainer-calhau/', titulo: 'Personal trainer no Calhau (São Luís)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -103,6 +106,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-adolescentes/', titulo: 'Personal trainer para adolescentes: o guia' },
   { categoria: 'Guias', url: '/guias/primeira-aula-com-personal-trainer/', titulo: 'Primeira aula com personal trainer: o que esperar' },
   { categoria: 'Guias', url: '/guias/como-nao-desistir-do-treino/', titulo: 'Como não desistir do treino: o guia da constância' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Personal trainer para quem trabalha sentado' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
 
   // Musculação
@@ -152,6 +156,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/treino-de-posterior-de-coxa/', titulo: 'Treino de posterior de coxa: como fazer crescer' },
   { categoria: 'Musculação', url: '/musculacao/treino-de-trapezio/', titulo: 'Treino de trapézio: as três porções e como treinar' },
   { categoria: 'Musculação', url: '/musculacao/elevacao-pelvica-como-fazer/', titulo: 'Elevação pélvica: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-abdomen-avancado/', titulo: 'Treino de abdômen avançado: carga, alavanca e progressão' },
+  { categoria: 'Musculação', url: '/musculacao/pegada-e-antebraco/', titulo: 'Pegada e antebraço: como treinar o elo mais fraco' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -170,6 +176,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/gordura-visceral/', titulo: 'Gordura visceral: o que é e como reduzir' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/dieta-flexivel/', titulo: 'Dieta flexível: o que é e como funciona na prática' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta: o guia prático' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/agua-e-emagrecimento/', titulo: 'Água e emagrecimento: o que ela faz de verdade' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo: qual faz sentido?' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

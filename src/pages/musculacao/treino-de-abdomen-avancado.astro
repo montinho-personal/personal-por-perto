@@ -1,0 +1,317 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-abdomen/',
+    titulo: 'Treino de abdômen: o que funciona de verdade',
+    descricao: 'O ponto de partida — comece por ele se ainda não domina o básico.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/tecnicas-avancadas-de-treino/',
+    titulo: 'Técnicas avançadas de treino: quando usar',
+    descricao: 'A mesma lógica de progressão aplicada aos outros grupos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/como-perder-barriga/',
+    titulo: 'Como perder barriga: a verdade sobre a gordura localizada',
+    descricao: 'Por que abdômen forte e barriga chapada são objetivos diferentes.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/musculacao/treino-de-abdomen-avancado';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de abdômen avançado', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Abdômen precisa de carga como os outros músculos?',
+    resposta:
+      'Precisa, se o objetivo é que ele continue evoluindo. O reto abdominal responde aos mesmos princípios dos demais grupos: tensão, amplitude e progressão. Quem já faz 30 repetições fáceis de abdominal no solo não estimula mais nada repetindo a série — o próximo passo é adicionar carga (polia, anilha) ou piorar a alavanca (ab wheel, elevações com controle).',
+  },
+  {
+    pergunta: 'Treinar abdômen todo dia acelera o resultado?',
+    resposta:
+      'Não. Como qualquer músculo, o abdômen cresce no descanso entre os estímulos. Duas a quatro sessões semanais bem feitas, com 6 a 12 séries no total, rendem mais do que abdominal diário — que costuma virar volume raso, sem progressão. Frequência alta só faz sentido com volume baixo por sessão e intensidade controlada.',
+  },
+  {
+    pergunta: 'Exercícios avançados de abdômen definem mais a barriga?',
+    resposta:
+      'Definição é outra conversa. Exercício avançado torna o músculo mais forte e mais espesso; quem revela ou esconde esse músculo é o percentual de gordura, que depende de déficit calórico. Não existe exercício, avançado ou não, que queime a gordura de uma região específica.',
+  },
+  {
+    pergunta: 'Prancha ainda vale para quem está avançado?',
+    resposta:
+      'Vale, desde que progrida. A prancha básica de 60 segundos deixa de ser estímulo rápido — as versões que continuam desafiando são a prancha com braços estendidos à frente (alavanca maior), com carga nas costas, com apoios reduzidos ou a rollout no ab wheel, que é a prancha em movimento. Segurar 3 minutos parado é teste de paciência, não de força.',
+  },
+  {
+    pergunta: 'Dor lombar em exercício de abdômen avançado é normal?',
+    resposta:
+      'Não é. Desconforto muscular na região abdominal é esperado; dor na lombar indica que a alavanca escolhida está acima do que o seu core sustenta — a pelve cede e a coluna assume o trabalho. Regrida para uma variação mais curta e reconstrua. Dor que persiste ou irradia é caso de médico ou fisioterapeuta antes de qualquer novo treino.',
+  },
+];
+
+const title = 'Treino de abdômen avançado: carga e alavanca';
+const description =
+  'Treino de abdômen avançado: como progredir com carga na polia, ab wheel, alavancas maiores e anti-rotação quando o abdominal comum ficou fácil demais.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de abdômen avançado: o que fazer quando ficou fácil</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe um momento em que o treino de abdômen para de funcionar: as
+      30 repetições saem fáceis, a prancha vira contagem de tempo e nada
+      muda há meses.
+    </p>
+
+    <p class="lead">
+      O diagnóstico é simples — o estímulo ficou pequeno para o músculo
+      que você construiu. Este guia mostra como destravar a progressão
+      com os mesmos princípios que fazem qualquer grupo crescer: carga,
+      alavanca e variedade de função.
+    </p>
+
+    <div class="prose">
+      <h2>O erro de tratar o abdômen como exceção</h2>
+      <p>
+        Ninguém espera crescer o peitoral repetindo para sempre a mesma
+        flexão. Com o abdômen, porém, a regra silenciosamente muda:
+        repete-se o mesmo abdominal por anos, só aumentando repetições.
+      </p>
+
+      <p>
+        O reto abdominal é músculo como qualquer outro. Responde a
+        tensão, amplitude e progressão — e estaciona quando o estímulo
+        estaciona. Repetição infinita treina resistência, não força nem
+        espessura.
+      </p>
+
+      <p>
+        A base desse raciocínio está no guia de
+        <a href="/musculacao/treino-de-abdomen/">treino de abdômen</a>;
+        este artigo começa onde aquele termina.
+      </p>
+
+      <VideoYouTube
+        id="6BaCyH08vT0"
+        titulo="Abdômen: os melhores exercícios e suas execuções corretas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin percorre os melhores exercícios de abdômen e demonstra a execução correta de cada um."
+      />
+
+      <h2>Caminho 1: adicionar carga externa</h2>
+      <p>
+        O upgrade mais direto. O <strong>abdominal na polia alta</strong>
+        (cable crunch) é o exemplo clássico: ajoelhado, corda na nuca,
+        flexão de tronco contra a resistência do cabo — com carga
+        ajustável em incrementos pequenos, exatamente como num supino.
+      </p>
+
+      <p>
+        Alternativas: abdominal no solo segurando anilha contra o peito,
+        crunch na máquina específica e elevação de pernas com caneleira.
+        A regra de progressão é a mesma dos outros grupos — quando a
+        faixa de 10 a 15 repetições ficar confortável, sobe a carga.
+      </p>
+
+      <h2>Caminho 2: piorar a alavanca</h2>
+      <p>
+        Sem equipamento, o corpo vira a carga — e a alavanca vira o
+        ajuste fino. O <strong>ab wheel (rollout)</strong> é o melhor
+        exemplo: quanto mais longe a roda vai, maior o braço de momento
+        e mais brutal a exigência de segurar a extensão do tronco.
+      </p>
+
+      <p>
+        Na mesma família: prancha com braços à frente, elevação de
+        pernas na barra fixa (dos joelhos dobrados até as pernas
+        estendidas), dragon flag em amplitude parcial. Todas permitem
+        progressão em centímetros — literalmente.
+      </p>
+
+      <p>
+        A armadilha é pular etapas. Se a pelve cede e a lombar arqueia,
+        a variação escolhida está grande demais: regrida um passo e
+        consolide. Dor lombar em treino de abdômen nunca é preço normal
+        a pagar — e dor que persiste é assunto de médico ou
+        fisioterapeuta.
+      </p>
+
+      <h2>Caminho 3: treinar as outras funções do core</h2>
+      <p>
+        O abdômen avançado não é só flexão de tronco mais pesada. O core
+        tem funções que o abdominal tradicional não toca — e que
+        aparecem na performance dos exercícios grandes.
+      </p>
+
+      <p>
+        <strong>Anti-rotação:</strong> o Pallof press — segurar o cabo à
+        frente do peito resistindo à rotação — e suas variações em passada.
+      </p>
+
+      <p>
+        <strong>Anti-flexão lateral:</strong> a caminhada do fazendeiro
+        unilateral (suitcase carry), que obriga o oblíquo a sustentar o
+        tronco reto contra a carga de um lado só.
+      </p>
+
+      <p>
+        <strong>Anti-extensão dinâmica:</strong> o próprio rollout e a
+        prancha com deslocamento. Juntas, essas funções constroem o
+        tronco que segura agachamento e terra pesados.
+      </p>
+
+      <h2>Volume, frequência e onde encaixar</h2>
+      <p>
+        De 6 a 12 séries diretas por semana, divididas em 2 a 4 sessões,
+        cobrem a maioria dos avançados — lembrando que agachamento,
+        terra e desenvolvimento em pé já exigem muito do core como
+        estabilizador.
+      </p>
+
+      <p>
+        Faixas de repetição: 8 a 15 nos movimentos com carga, 6 a 12 nas
+        alavancas difíceis, 30 a 45 segundos nos carregamentos. O
+        princípio de progressão documentada — as diretrizes de força de
+        entidades como a
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        insistem nisso — vale aqui como em qualquer grupo: anote e
+        supere.
+      </p>
+
+      <p>
+        No encaixe da semana, o abdômen entra bem no fim das sessões de
+        força ou em dias separados curtos. A mesma lógica das
+        <a href="/musculacao/tecnicas-avancadas-de-treino/">técnicas
+        avançadas de treino</a> se aplica: intensificar é ferramenta
+        pontual, não estilo de vida.
+      </p>
+
+      <h2>O que o treino avançado não faz</h2>
+      <p>
+        Nenhuma dessas progressões queima gordura localizada. O músculo
+        fica mais forte e mais espesso; quem decide se ele aparece é o
+        percentual de gordura — assunto do guia sobre
+        <a href="/emagrecimento/como-perder-barriga/">como perder
+        barriga</a>.
+      </p>
+
+      <p>
+        Aliás, o abdômen espesso sob uma camada de gordura pode até
+        aumentar a circunferência. Força e definição são projetos
+        paralelos: um se resolve no treino, o outro na cozinha.
+      </p>
+
+      <h2>Um modelo de sessão avançada</h2>
+      <p>
+        Duas vezes por semana, no fim do treino: cable crunch, 3 séries
+        de 10 a 15 com progressão de carga; rollout no ab wheel, 3
+        séries de 6 a 10 na maior amplitude controlável; suitcase carry,
+        3 idas de 30 a 40 metros por lado.
+      </p>
+
+      <p>
+        Simples, pesado e progressivo. Em oito semanas, esse arranjo
+        muda mais o abdômen do que um ano de abdominal infinito.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Exercícios de alavanca longa têm margem de erro pequena: a
+        diferença entre o rollout que constrói e o que sobrecarrega a
+        lombar é a posição da pelve — difícil de ver de dentro.
+      </p>
+
+      <p>
+        Um personal trainer calibra a variação certa para o seu nível,
+        corrige a pelve em tempo real e decide a hora de progredir. No
+        treino avançado, esse ajuste fino é exatamente o que separa
+        estímulo de lesão.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de abdômen avançado" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,310 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/dieta-flexivel/',
+    titulo: 'Dieta flexível: o que é e como funciona',
+    descricao: 'A abordagem que torna a refeição livre quase desnecessária.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/comer-fora-e-dieta/',
+    titulo: 'Comer fora sem sair da dieta: o guia prático',
+    descricao: 'Como o jantar de sábado entra na conta sem drama.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-manter-o-peso-perdido/',
+    titulo: 'Como manter o peso perdido depois da dieta',
+    descricao: 'A fase em que a relação com a comida decide tudo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/refeicao-livre';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Refeição livre e dia do lixo', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre refeição livre e dia do lixo?',
+    resposta:
+      'Escala. A refeição livre é uma refeição fora do plano — um jantar, uma pizza, uma sobremesa de verdade — dentro de um dia normal. O dia do lixo libera 24 horas de tudo, sem limite. A primeira cabe na matemática semanal de quase qualquer dieta; o segundo pode desfazer o déficit de vários dias em algumas horas, além de reforçar a lógica de oito e oitenta com a comida.',
+  },
+  {
+    pergunta: 'Refeição livre atrapalha o emagrecimento?',
+    resposta:
+      'Uma refeição livre planejada, dentro de uma semana consistente, não desfaz o processo — o déficit se fecha na média dos sete dias, não em cada prato. O que atrapalha é o efeito dominó: a refeição que vira dia, o dia que vira fim de semana. Planejamento (quando, onde, com quem) é o que separa válvula de escape de sabotagem.',
+  },
+  {
+    pergunta: 'A balança sobe depois da refeição livre. Engordei?',
+    resposta:
+      'Quase certamente não. Refeições grandes, mais salgadas e mais ricas em carboidrato aumentam a retenção de líquido e o conteúdo do trato digestivo — a balança pode subir um quilo ou mais no dia seguinte sem que isso seja gordura. Em dois ou três dias de rotina normal, o número volta. Ganhar gordura de verdade exige superávit sustentado, não um jantar.',
+  },
+  {
+    pergunta: 'Com que frequência posso fazer refeição livre?',
+    resposta:
+      'O arranjo mais comum e sustentável é uma por semana, marcada num contexto social que importa — o almoço de domingo, o jantar com amigos. Quem está no início de um processo com muita gordura a perder às vezes prefere quinzenal; quem já está em manutenção pode ter mais flexibilidade. O critério honesto: ela deve caber na sua média semanal sem zerar o déficit.',
+  },
+  {
+    pergunta: 'E se a refeição livre sempre termina em exagero descontrolado?',
+    resposta:
+      'Aí o problema mudou de natureza. Se toda liberação vira episódio de comer compulsivo — comer muito além da fome, com sensação de perda de controle e culpa depois —, o padrão merece atenção profissional: médico, nutricionista ou psicólogo com experiência em comportamento alimentar. Restringir cada vez mais não resolve esse ciclo; costuma alimentá-lo.',
+  },
+];
+
+const title = 'Refeição livre e dia do lixo: qual faz sentido?';
+const description =
+  'Refeição livre ou dia do lixo: a diferença entre os dois, a matemática do déficit semanal, o efeito na balança e como liberar sem perder o controle do processo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Refeição livre e dia do lixo: a diferença que decide a dieta</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Toda dieta esbarra na mesma pergunta em algum sábado à noite: e a
+      pizza? A resposta que a cultura fitness deu por anos foi o "dia do
+      lixo" — 24 horas de tudo liberado como prêmio pela semana perfeita.
+    </p>
+
+    <p class="lead">
+      Só que existe uma distância enorme entre uma refeição fora do plano
+      e um dia inteiro sem plano. Essa distância — de matemática e de
+      mentalidade — costuma decidir quem sustenta o processo e quem
+      recomeça toda segunda-feira.
+    </p>
+
+    <div class="prose">
+      <h2>Os dois nomes, definidos</h2>
+      <p>
+        <strong>Refeição livre:</strong> uma refeição da semana fora do
+        padrão — o jantar de sábado, o almoço de domingo — dentro de um
+        dia normal. Antes e depois dela, a rotina segue.
+      </p>
+
+      <p>
+        <strong>Dia do lixo (cheat day):</strong> um dia inteiro sem
+        regra. Café da manhã, lanches, almoço, jantar e o que couber
+        entre eles, tudo liberado como compensação pela semana restrita.
+      </p>
+
+      <p>
+        Parecem variações da mesma ideia. Na prática, produzem
+        resultados — e relações com a comida — muito diferentes.
+      </p>
+
+      <h2>A matemática que ninguém faz</h2>
+      <p>
+        O emagrecimento se decide na média da semana, não em cada prato.
+        Suponha um <a href="/emagrecimento/dieta-flexivel/">plano</a>
+        que gera um déficit de 300 a 500 calorias por dia — cerca de
+        2.500 a 3.500 na semana.
+      </p>
+
+      <p>
+        Uma refeição livre generosa adiciona, tipicamente, 500 a 1.000
+        calorias além do habitual. Dói na média, mas não a destrói: o
+        déficit semanal sobrevive com folga.
+      </p>
+
+      <p>
+        Um dia do lixo é outra ordem de grandeza. Comendo sem limite por
+        24 horas, chegar a 2.000, 3.000 ou mais calorias acima da
+        manutenção não é raro — o suficiente para engolir o déficit da
+        semana inteira em um único dia. A pessoa fez tudo "certo" seis
+        dias e não sai do lugar, sem entender por quê.
+      </p>
+
+      <VideoYouTube
+        id="D-t5JnXITc4"
+        titulo="Dia do lixo e refeição livre: prós e contras — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica o que são refeição livre e dia do lixo, os prós e contras de cada um e o que ele recomenda na prática."
+      />
+
+      <h2>O efeito psicológico dos dois modelos</h2>
+      <p>
+        A refeição livre trata comida como parte da vida: existe espaço
+        programado para o prazer e para o social, e o resto da semana
+        não é penitência — é rotina.
+      </p>
+
+      <p>
+        O dia do lixo, pelo nome e pela estrutura, ensina outra coisa:
+        que existe comida de santo e comida de pecador, semana de
+        prisão e domingo de fuga. Esse pêndulo restrição-exagero é
+        exatamente o padrão que mais derruba dietas — e que, levado ao
+        extremo, merece atenção profissional.
+      </p>
+
+      <p>
+        Não por acaso, quem migra para abordagens flexíveis costuma
+        relatar que a "vontade louca" de sábado diminui: comida proibida
+        é a que mais grita.
+      </p>
+
+      <h2>A balança de segunda-feira</h2>
+      <p>
+        Depois de qualquer refeição grande — mais sal, mais carboidrato,
+        mais volume —, o corpo retém líquido e o trato digestivo carrega
+        mais conteúdo. A balança sobe um quilo ou mais sem que nada
+        disso seja gordura.
+      </p>
+
+      <p>
+        Quem não sabe disso entra em pânico, restringe demais na
+        segunda, chega faminto na quarta e exagera de novo. Quem sabe,
+        espera: dois ou três dias de rotina e o número volta à
+        tendência. É a média semanal que conta a verdade.
+      </p>
+
+      <h2>Como fazer uma refeição livre que funciona</h2>
+      <p>
+        <strong>Marque no calendário.</strong> Livre não é impulsiva: é
+        o jantar de sábado escolhido, não o pacote de biscoito de
+        terça-feira à noite na frente da TV.
+      </p>
+
+      <p>
+        <strong>Ancore no social.</strong> A refeição rende mais quando
+        compra algo que importa — aniversário, encontro, restaurante
+        que você ama. O guia de
+        <a href="/emagrecimento/comer-fora-e-dieta/">comer fora sem sair
+        da dieta</a> ajuda a montar o resto da semana em volta dela.
+      </p>
+
+      <p>
+        <strong>Coma sentado, devagar e sem culpa.</strong> Culpa não
+        queima caloria — só encomenda o próximo exagero.
+      </p>
+
+      <p>
+        <strong>Volte à rotina na refeição seguinte.</strong> Não
+        compense com jejum punitivo nem com cardio de castigo; a
+        compensação exagerada é o primeiro passo do pêndulo.
+      </p>
+
+      <h2>Quem talvez não precise de nenhuma das duas</h2>
+      <p>
+        Na dieta flexível bem montada, os alimentos preferidos já cabem
+        no plano em porções normais — o que dissolve a própria
+        necessidade de "liberar". Quando nada é proibido, nada precisa
+        de dia de fuga.
+      </p>
+
+      <p>
+        E na fase de <a href="/emagrecimento/como-manter-o-peso-perdido/">manutenção</a>,
+        a margem calórica cresce: a pizza da sexta deixa de ser evento
+        contábil e vira só jantar. Esse é, no fundo, o destino desejável
+        do processo inteiro.
+      </p>
+
+      <h2>O sinal de alerta que não deve ser ignorado</h2>
+      <p>
+        Se toda liberação termina em episódio de descontrole — comer
+        muito além da fome, esconder comida, culpa intensa depois —, o
+        assunto deixou de ser dieta. Padrões assim pedem acompanhamento
+        de médico, nutricionista ou psicólogo com experiência em
+        comportamento alimentar, e quanto antes, melhor.
+      </p>
+
+      <p>
+        Restringir mais forte nunca é a saída desse ciclo — costuma ser
+        o combustível dele.
+      </p>
+
+      <h2>O papel do treino nessa conversa</h2>
+      <p>
+        Quem treina força com consistência tem mais margem: massa
+        muscular eleva o gasto diário, e a semana ativa acomoda melhor
+        uma refeição generosa. Um personal trainer que acompanha seu
+        processo ajuda a encaixar a refeição livre no desenho da semana
+        — do treino de sábado de manhã ao ritmo de segunda — em vez de
+        tratá-la como acidente.
+      </p>
+
+      <p>
+        Comida boa e processo sério não são inimigos. Mal planejados, se
+        atrapalham; bem planejados, um sustenta o outro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre refeição livre e dia do lixo" />
+
+    <WhatsAppCta tema="alimentacao" />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

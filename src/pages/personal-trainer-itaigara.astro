@@ -1,0 +1,302 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/salvador-ba/',
+    titulo: 'Personal trainer em Salvador',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-rio-vermelho/',
+    titulo: 'Personal trainer no Rio Vermelho',
+    descricao: 'O bairro boêmio da cidade — e um contraste completo com o Itaigara.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio',
+    descricao: 'O formato que domina os endereços verticais do bairro.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-itaigara';
+const atualizadoEm = '2026-08-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Salvador', url: '/personal-trainer/salvador-ba/' },
+  { nome: 'Personal Trainer no Itaigara', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Itaigara?',
+    resposta:
+      'Em Salvador, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. O Itaigara trabalha no topo dessas faixas: é um dos endereços de maior renda da cidade, com demanda forte por atendimento em condomínio e academias bem equipadas na vizinhança.',
+  },
+  {
+    pergunta: 'Qual o melhor formato de treino no Itaigara?',
+    resposta:
+      'Depende da rotina. O personal no condomínio vence para quem tem agenda apertada e prédio com espaço fitness; a academia vence para quem precisa de carga e equipamento completo; o Parque da Cidade, logo ao lado, é imbatível para treino ao ar livre de manhã cedo; e o online cobre semanas de viagem. Muitos moradores combinam dois formatos.',
+  },
+  {
+    pergunta: 'O que é o Alto do Itaigara?',
+    resposta:
+      'É a área mais valorizada do bairro, com empreendimentos residenciais de alto padrão. Para o treino, a lógica é a mesma do restante do Itaigara — condomínios com estrutura de lazer e academias próximas —, com peso ainda maior do atendimento dentro do prédio.',
+  },
+  {
+    pergunta: 'Dá para treinar ao ar livre no Itaigara?',
+    resposta:
+      'Sim, e com qualidade rara para Salvador: o Parque da Cidade Joventino Silva fica colado no bairro e concentra caminhada, corrida e treino funcional em meio ao verde. No calor soteropolitano, o horário faz diferença — cedo de manhã ou no fim da tarde, com hidratação reforçada.',
+  },
+  {
+    pergunta: 'Treino em dupla funciona no bairro?',
+    resposta:
+      'Funciona bem — é o formato que mais reduz o valor por pessoa e combina com o perfil do Itaigara: casais, vizinhos do mesmo condomínio e famílias que dividem o horário. O personal monta a sessão para os dois níveis e o compromisso mútuo ajuda a manter a frequência.',
+  },
+];
+
+const title = 'Personal Trainer no Itaigara (Salvador): o guia';
+const description =
+  'Personal trainer no Itaigara: preços de Salvador, condomínio versus academia versus Parque da Cidade, e o formato certo para cada rotina num dos bairros de maior renda da capital baiana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Salvador</p>
+    <h1>Personal trainer no Itaigara: cada formato posto na balança</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Itaigara é um dos endereços de maior renda de Salvador — e um dos
+      poucos onde todos os formatos de treino estão disponíveis a poucos
+      minutos de casa: condomínio com espaço fitness, academias
+      completas, um grande parque urbano na porta e a opção online.
+    </p>
+
+    <p class="lead">
+      Quando tudo está disponível, a pergunta muda: não é "onde dá para
+      treinar", é "qual formato rende mais para a minha rotina". Este
+      guia compara as opções de <strong>personal trainer no
+      Itaigara</strong> uma a uma.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro em duas linhas</h2>
+      <p>
+        Planejado, arborizado e de renda alta, o Itaigara combina
+        condomínios com estrutura completa de lazer, comércio de
+        vizinhança forte e a Avenida ACM como eixo de ligação com o resto
+        da cidade. O Alto do Itaigara concentra os empreendimentos mais
+        valorizados.
+      </p>
+
+      <p>
+        Nos anos 2000, levantamentos municipais apontavam ali um dos
+        índices de desenvolvimento humano mais altos do país — retrato de
+        um bairro que envelheceu bem e mantém demanda constante por
+        saúde, treino e qualidade de vida.
+      </p>
+
+      <h2>Formato 1: personal no condomínio</h2>
+      <p>
+        <strong>Para quem faz sentido:</strong> agenda apertada, prédio
+        com espaço fitness, pouca tolerância a deslocamento.
+      </p>
+
+      <p>
+        É o formato dominante no bairro, e por bons motivos: elimina o
+        trânsito da ACM, aproveita a academia que o condomínio já
+        entrega e cabe em janelas curtas — a sessão começa na hora
+        marcada porque o aluno desceu de elevador.
+      </p>
+
+      <p>
+        O limite é o teto de equipamento. Espaço fitness de prédio cobre
+        muito bem os dois primeiros anos; depois, quem avança em carga
+        pode precisar complementar na academia. O guia de
+        <a href="/guias/personal-trainer-em-condominio/">personal em
+        condomínio</a> detalha como extrair o máximo do formato.
+      </p>
+
+      <h2>Formato 2: academia com personal</h2>
+      <p>
+        <strong>Para quem faz sentido:</strong> objetivos de hipertrofia
+        e força, gosto por estrutura completa, rotina que permite o
+        deslocamento curto.
+      </p>
+
+      <p>
+        A região do Itaigara e do entorno concentra academias bem
+        equipadas, e o personal que atende nelas trabalha sem o teto de
+        carga do condomínio. É o formato que melhor sustenta progressão
+        longa de musculação.
+      </p>
+
+      <p>
+        O custo total soma a mensalidade da academia ao pacote do
+        personal — no topo das faixas do bairro. Em troca, nenhum
+        equipamento falta.
+      </p>
+
+      <h2>Formato 3: o Parque da Cidade como academia</h2>
+      <p>
+        <strong>Para quem faz sentido:</strong> quem quer treinar cedo,
+        ao ar livre, e sente falta de verde na rotina.
+      </p>
+
+      <p>
+        É o trunfo geográfico do Itaigara: o Parque da Cidade Joventino
+        Silva fica colado no bairro. Caminhada, corrida, circuito
+        funcional com o material do personal — tudo em meio à vegetação,
+        antes do calor subir.
+      </p>
+
+      <p>
+        As restrições são o clima e o horário. Salvador é quente o ano
+        inteiro, e o formato funciona de verdade no início da manhã e no
+        fim da tarde, com plano B para os dias de chuva.
+      </p>
+
+      <h2>Formato 4: online e híbrido</h2>
+      <p>
+        <strong>Para quem faz sentido:</strong> quem viaja com
+        frequência ou quer reduzir o custo mantendo acompanhamento.
+      </p>
+
+      <p>
+        O online em Salvador vai de R$ 170 a R$ 430 mensais — fração do
+        presencial. Puro, exige disciplina; como complemento, é o que
+        mantém o programa vivo nas semanas fora da cidade. O híbrido —
+        presencial fixo por semana mais planilha acompanhada — virou o
+        arranjo preferido de muitos executivos do bairro.
+      </p>
+
+      <h2>A comparação em uma régua só</h2>
+      <p>
+        Custo por resultado: o condomínio vence para consistência, a
+        academia vence para carga, o parque vence para bem-estar e
+        adesão, o online vence para orçamento. Conveniência: condomínio
+        primeiro, parque logo atrás — os dois praticamente eliminam
+        deslocamento.
+      </p>
+
+      <p>
+        Progressão de longo prazo: academia na frente, condomínio no
+        meio, parque como complemento. Não existe resposta única — existe
+        a rotina de cada morador. E a combinação de dois formatos cobre
+        quase todos os casos.
+      </p>
+
+      <h2>Quanto custa personal trainer no Itaigara</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/salvador-ba/">personal trainer em
+        Salvador</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350
+        a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Itaigara trabalha no topo dessas faixas, junto com os demais
+        endereços de alta renda da orla e do miolo nobre. O treino em
+        dupla é o caminho mais eficiente para reduzir o valor por pessoa
+        sem abrir mão do acompanhamento.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com
+        o seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Itaigara, some o filtro do formato: peça ao profissional que
+        defenda o arranjo que ele propõe para a sua rotina — e desconfie
+        de quem oferece o mesmo pacote para o executivo que viaja, para o
+        casal do condomínio e para o corredor do parque. Quem conhece o
+        bairro monta arranjos diferentes para os três.
+      </p>
+
+      <p>
+        E o de sempre: dores e limitações — joelho, ombro, lombar —
+        passam por avaliação de médico ou fisioterapeuta antes de o
+        programa começar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Itaigara" />
+
+    <WhatsAppCta tema="geral" localidade="no Itaigara" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
