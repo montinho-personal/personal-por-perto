@@ -122,5 +122,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaquaquecetuba', url: 'https://www.itaquaquecetuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3523107' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/itaquaquecetuba-sp.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Itaquaquecetuba (SP) em arte que reúne treino funcional com bola e corda naval, a Igreja Matriz Nossa Senhora d’Ajuda e o Parque Ecológico Mário do Canto — Personal por Perto',
+    legenda:
+      'Treino personalizado em Itaquaquecetuba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

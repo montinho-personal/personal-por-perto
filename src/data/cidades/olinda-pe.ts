@@ -95,5 +95,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Olinda', url: 'https://www.olinda.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/olinda-pe.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Olinda (PE) em arte que reúne treino com halteres e corda naval, o Alto da Sé, o casario do centro histórico e a orla de Casa Caiada — Personal por Perto',
+    legenda:
+      'Treino personalizado em Olinda: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

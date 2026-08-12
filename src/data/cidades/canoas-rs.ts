@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Canoas', url: 'https://www.canoas.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/canoas-rs.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Canoas (RS) em arte que reúne musculação, a Praça do Avião, o parque Capão do Corvo e o calçadão do Centro — Personal por Perto',
+    legenda:
+      'Treino personalizado em Canoas: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

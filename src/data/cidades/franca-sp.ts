@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Franca', url: 'https://www.franca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/franca-sp.webp',
+    w: 1200,
+    h: 800,
+    alt:
+      'Personal trainer em Franca (SP) em arte que reúne corrida urbana, a catedral e o horizonte da cidade com seu lago de lazer — Personal por Perto',
+    legenda:
+      'Treino personalizado em Franca: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
