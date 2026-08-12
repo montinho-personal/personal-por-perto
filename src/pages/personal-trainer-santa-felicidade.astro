@@ -1,0 +1,327 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/curitiba-pr/',
+    titulo: 'Personal trainer em Curitiba',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-ecoville/',
+    titulo: 'Personal trainer no Ecoville',
+    descricao: 'O bairro vizinho, com quem Santa Felicidade divide a região oeste.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/emagrecimento/comer-fora-e-dieta/',
+    titulo: 'Comer fora sem sair da dieta',
+    descricao: 'Leitura obrigatória em um bairro com trinta cantinas italianas.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/personal-trainer-santa-felicidade';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Curitiba', url: '/personal-trainer/curitiba-pr/' },
+  { nome: 'Personal Trainer em Santa Felicidade', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Santa Felicidade?',
+    resposta:
+      'Em Curitiba, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Santa Felicidade trabalha no meio dessa faixa — abaixo do Batel e do Ecoville, acima da média da cidade. O bairro tem muita casa com espaço próprio, o que favorece o atendimento a domicílio sem custo de academia.',
+  },
+  {
+    pergunta: 'Dá para treinar ao ar livre em Santa Felicidade?',
+    resposta:
+      'Dá, e com estrutura de sobra: o Parque Barigui fica a poucos minutos pela Avenida Manoel Ribas, e o bairro ainda tem chácaras urbanas, ruas arborizadas e áreas de preservação no entorno. O limite é o frio — Curitiba tem invernos rigorosos, e o plano B coberto precisa existir de junho a agosto.',
+  },
+  {
+    pergunta: 'Como treinar morando no bairro das cantinas?',
+    resposta:
+      'É a questão prática de Santa Felicidade: são cerca de 30 restaurantes, alguns com mais de mil lugares, além de vinícolas e cantinas. A saída não é evitar — é planejar. Quem almoça fora nos fins de semana precisa de um padrão de pedido definido e de uma semana de treino que acomode isso, não de culpa na segunda-feira.',
+  },
+  {
+    pergunta: 'Qual o perfil de quem contrata personal no bairro?',
+    resposta:
+      'Três grupos se destacam: famílias tradicionais de origem italiana, com moradores 60+ que buscam autonomia e saúde; moradores de casa e chácara urbana, que preferem o treino a domicílio; e o público que trabalha no comércio e na gastronomia local, com horários invertidos e demanda por sessões fora do pico.',
+  },
+  {
+    pergunta: 'Santa Felicidade tem academia?',
+    resposta:
+      'Tem academias de rua e estúdios distribuídos pela Manoel Ribas e adjacências, suficientes para quem quer musculação com estrutura completa. Muitos moradores, porém, combinam academia com treino em casa ou no Barigui — arranjo que funciona bem em um bairro de casas e distâncias curtas de carro.',
+  },
+  {
+    pergunta: 'O bairro é bom para quem está começando a treinar?',
+    resposta:
+      'É favorável: as distâncias são curtas, há parque perto, ruas planas em boa parte do miolo residencial e uma cultura de caminhada em família. Para o iniciante, o combo que mais funciona é caminhada no Barigui somada a duas ou três sessões semanais de força — em casa ou em academia, conforme a preferência.',
+  },
+];
+
+const title = 'Personal Trainer em Santa Felicidade (Curitiba)';
+const description =
+  'Personal trainer em Santa Felicidade: preços de Curitiba, o Parque Barigui a minutos, o desafio de morar no bairro das cantinas e os formatos que funcionam em um bairro de casas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Curitiba</p>
+    <h1>Personal trainer em Santa Felicidade: o guia do bairro italiano</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Santa Felicidade é o bairro onde Curitiba come. São cerca de 30
+      restaurantes, cantinas e vinícolas herdados de uma colônia italiana
+      fundada em 1878 — e uma reputação gastronômica que atravessa o
+      estado.
+    </p>
+
+    <p class="lead">
+      Isso cria uma equação particular para quem mora aqui e quer treinar.
+      Este guia percorre o bairro inteiro: o território, os perfis, onde
+      treinar, quanto custa e o que perguntar antes de contratar um
+      <strong>personal trainer em Santa Felicidade</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>De colônia a bairro: como Santa Felicidade se formou</h2>
+      <p>
+        A história começa em 1878, quando as primeiras famílias italianas
+        — vindas sobretudo do Vêneto e de Trento — se instalaram na região
+        então conhecida como Taquaral. Parte das terras foi doada por Dona
+        Felicidade Borges, que acabou dando nome ao lugar.
+      </p>
+
+      <p>
+        Os imigrantes produziram queijo, vinho, hortigranjeiros e erva-mate
+        — a base do que viraria, um século depois, o polo gastronômico da
+        cidade. Hoje o bairro reúne cerca de 25 mil moradores e mantém
+        chácaras urbanas, vinícolas tradicionais e condomínios cercados de
+        área verde.
+      </p>
+
+      <p>
+        A <strong>Avenida Manoel Ribas</strong> é a espinha dorsal: liga o
+        bairro ao centro de Curitiba e passa pelo Parque Barigui no
+        caminho. É por ela que se organiza quase tudo — comércio,
+        restaurantes e o deslocamento diário.
+      </p>
+
+      <h2>A geografia do treino</h2>
+      <p>
+        Santa Felicidade é um bairro de casas, não de torres. Terrenos
+        maiores, quintais, chácaras urbanas e condomínios horizontais
+        formam a paisagem — e isso muda o que é possível no treino
+        doméstico.
+      </p>
+
+      <p>
+        O grande equipamento público está a poucos minutos: o
+        <strong>Parque Barigui</strong>, um dos cartões-postais de
+        Curitiba, com pista, área verde e estrutura para caminhada,
+        corrida e treino funcional ao ar livre.
+      </p>
+
+      <p>
+        No miolo residencial, as ruas arborizadas e de tráfego moderado
+        servem à caminhada diária e ao pedal leve. É um bairro que, ao
+        contrário de muitos endereços verticais, permite treinar fora sem
+        precisar entrar no carro.
+      </p>
+
+      <h2>Quem procura personal trainer no bairro</h2>
+      <p>
+        <strong>As famílias tradicionais.</strong> Santa Felicidade tem
+        moradores de longa data e uma parcela relevante de público 60+.
+        Aqui o objetivo raramente é estético: é autonomia, equilíbrio e
+        preservação de massa muscular — trabalho de força bem conduzido,
+        com progressão paciente.
+      </p>
+
+      <p>
+        <strong>Quem mora em casa e quer treinar em casa.</strong> O
+        formato a domicílio é natural em um bairro assim: espaço existe,
+        deslocamento some e o personal leva o material. Para agenda
+        apertada, é o arranjo que mais sustenta frequência.
+      </p>
+
+      <p>
+        <strong>Quem trabalha na gastronomia local.</strong> Restaurante e
+        vinícola funcionam em horário invertido — o pico do trabalho é
+        justamente o fim de semana e a noite. Esse morador precisa de
+        sessões em horários que academia cheia não oferece, e é um público
+        fiel a quem se adapta.
+      </p>
+
+      <h2>Onde treinar: as quatro opções reais</h2>
+      <p>
+        <strong>Em casa.</strong> A opção mais usada. Com quintal,
+        garagem coberta ou uma sala livre, dá para montar um programa
+        completo de força com halteres, elásticos e peso do corpo.
+      </p>
+
+      <p>
+        <strong>No Parque Barigui.</strong> A poucos minutos pela Manoel
+        Ribas. Caminhada, corrida, circuito funcional — e a vantagem de um
+        parque grande o bastante para variar percurso.
+      </p>
+
+      <p>
+        <strong>Em academia do bairro.</strong> Para quem precisa de carga
+        alta e equipamento completo, especialmente no inverno, quando o
+        ambiente coberto vira o padrão.
+      </p>
+
+      <p>
+        <strong>Em condomínio.</strong> Os empreendimentos mais recentes
+        entregam espaço fitness, e o
+        <a href="/guias/personal-trainer-em-condominio/">atendimento em
+        condomínio</a> cresce junto com eles.
+      </p>
+
+      <h2>O inverno curitibano organiza o ano</h2>
+      <p>
+        Curitiba tem o inverno mais rigoroso entre as capitais brasileiras,
+        e Santa Felicidade, na parte alta da cidade, sente isso com folga.
+        De junho a agosto, o treino ao ar livre exige aquecimento mais
+        longo, roupa em camadas e tolerância ao desconforto.
+      </p>
+
+      <p>
+        O erro comum é tratar o inverno como pausa. O ajuste correto é
+        inverter as proporções: mais força em ambiente coberto, menos
+        volume ao ar livre — e retomar o parque na primavera com base
+        construída, não do zero.
+      </p>
+
+      <h2>A questão das cantinas</h2>
+      <p>
+        Morar no polo gastronômico da cidade significa que comer fora deixa
+        de ser evento e vira parte da rotina — almoço de domingo em
+        família, jantar com visitantes, vinho da vinícola do bairro.
+      </p>
+
+      <p>
+        A abordagem que funciona não é a proibição, e sim o planejamento: um
+        padrão de pedido definido nos dois ou três lugares que você mais
+        frequenta, e uma semana de treino que já conta com essa refeição.
+        O guia sobre
+        <a href="/emagrecimento/comer-fora-e-dieta/">comer fora sem sair da
+        dieta</a> trata exatamente disso.
+      </p>
+
+      <h2>Quanto custa personal trainer em Santa Felicidade</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/curitiba-pr/">personal trainer em
+        Curitiba</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Santa Felicidade fica no meio dessa faixa: abaixo do Batel e do
+        <a href="/personal-trainer-ecoville/">Ecoville</a>, acima da média
+        da cidade. O treino a domicílio, que dispensa academia, e o treino
+        em dupla — comum entre casais e vizinhos — são os caminhos para
+        reduzir o valor por sessão.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Santa Felicidade, some duas perguntas locais. Ele atende a
+        domicílio com material próprio e sabe montar treino em espaço
+        residencial? E como reorganiza o programa no inverno, quando o
+        parque sai da equação por semanas? Quem trabalha no bairro há tempo
+        responde às duas sem hesitar.
+      </p>
+
+      <p>
+        E o de sempre: dores e limitações — joelho, ombro, lombar — pedem
+        avaliação de médico ou fisioterapeuta antes de o plano começar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Santa Felicidade" />
+
+    <WhatsAppCta tema="geral" localidade="em Santa Felicidade" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

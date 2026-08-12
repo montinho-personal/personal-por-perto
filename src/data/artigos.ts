@@ -90,6 +90,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-campeche/', titulo: 'Personal trainer no Campeche (Florianópolis)' },
   { categoria: 'Bairros', url: '/personal-trainer-itaigara/', titulo: 'Personal trainer no Itaigara (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-calhau/', titulo: 'Personal trainer no Calhau (São Luís)' },
+  { categoria: 'Bairros', url: '/personal-trainer-santa-felicidade/', titulo: 'Personal trainer em Santa Felicidade (Curitiba)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-camburi/', titulo: 'Personal trainer em Jardim Camburi (Vitória)' },
+  { categoria: 'Bairros', url: '/personal-trainer-goiabeiras/', titulo: 'Personal trainer em Goiabeiras (Cuiabá)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -158,6 +161,10 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/elevacao-pelvica-como-fazer/', titulo: 'Elevação pélvica: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treino-de-abdomen-avancado/', titulo: 'Treino de abdômen avançado: carga, alavanca e progressão' },
   { categoria: 'Musculação', url: '/musculacao/pegada-e-antebraco/', titulo: 'Pegada e antebraço: como treinar o elo mais fraco' },
+  { categoria: 'Musculação', url: '/musculacao/remada-curvada-como-fazer/', titulo: 'Remada curvada: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/puxada-como-fazer/', titulo: 'Puxada: como fazer, pegadas e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/rosca-direta-como-fazer/', titulo: 'Rosca direta: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/desenvolvimento-como-fazer/', titulo: 'Desenvolvimento: como fazer e os erros comuns' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -178,6 +185,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta: o guia prático' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/agua-e-emagrecimento/', titulo: 'Água e emagrecimento: o que ela faz de verdade' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo: qual faz sentido?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/alcool-e-emagrecimento/', titulo: 'Álcool e emagrecimento: o que a bebida faz de verdade' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

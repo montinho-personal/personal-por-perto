@@ -1,0 +1,319 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu (e os erros)',
+    descricao: 'Como puxada e remada se dividem dentro do treino completo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/remada-curvada-como-fazer/',
+    titulo: 'Remada curvada: como fazer e os erros comuns',
+    descricao: 'A puxada horizontal que complementa o trabalho da puxada alta.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro: o que pode e o que não pode',
+    descricao: 'Por que a puxada por trás da nuca saiu de cena.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/puxada-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Puxada: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Puxada na frente ou atrás da nuca?',
+    resposta:
+      'Na frente. A versão atrás da nuca obriga o ombro a uma rotação externa extrema com a cabeça projetada à frente — combinação desnecessária, já que o estímulo nas costas é equivalente ao da versão frontal. Não há benefício que compense o desconforto e o risco articular, e por isso ela saiu dos programas mais bem montados.',
+  },
+  {
+    pergunta: 'Qual a largura de pegada ideal na puxada?',
+    resposta:
+      'Um pouco mais aberta que a largura dos ombros — em torno de uma vez e meia essa distância. Pegada exageradamente aberta encurta a amplitude e limita a carga sem dar mais recrutamento; pegada muito fechada transforma o exercício em trabalho de bíceps. Entre os extremos, há uma faixa ampla que funciona: escolha a que permite puxar até a clavícula com o cotovelo descendo rente ao tronco.',
+  },
+  {
+    pergunta: 'Até onde devo puxar a barra?',
+    resposta:
+      'Até a altura da clavícula ou logo acima do peito, sem forçar o encosto da barra no corpo. Puxar além disso não aumenta o trabalho do dorsal: apenas joga o tronco para trás e transfere o esforço para o trapézio e os ombros. O fim do movimento é onde o cotovelo chega ao lado do tronco.',
+  },
+  {
+    pergunta: 'Puxada substitui a barra fixa?',
+    resposta:
+      'Cobre o mesmo padrão de movimento, mas não é idêntica. A barra fixa exige sustentar o próprio peso e recruta mais o core; a puxada na polia permite ajustar a carga com precisão, o que a torna insubstituível para quem ainda não faz barra fixa e para trabalhar faixas altas de repetição. O caminho comum é usar a puxada para construir força até conseguir a barra fixa — e depois manter as duas.',
+  },
+  {
+    pergunta: 'Sinto mais o bíceps que as costas. O que fazer?',
+    resposta:
+      'Três ajustes resolvem a maior parte dos casos: pensar em puxar com o cotovelo em vez de com a mão; iniciar o movimento deprimindo a escápula, antes de dobrar o braço; e reduzir a carga o suficiente para conseguir controlar a descida. Se ainda assim o bíceps domina, vale testar a pegada neutra com triângulo, que costuma facilitar a percepção do dorsal.',
+  },
+];
+
+const title = 'Puxada: como fazer, pegadas e erros comuns';
+const description =
+  'Puxada na polia alta: largura de pegada, até onde puxar, por que a versão atrás da nuca saiu de cena e como sentir as costas em vez do bíceps.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Puxada: como fazer para sentir as costas, não o bíceps</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A puxada na polia alta é o exercício de costas mais executado do
+      mundo — e o mais frequentemente convertido, sem querer, em treino
+      de bíceps.
+    </p>
+
+    <p class="lead">
+      A diferença entre as duas coisas cabe em três detalhes de execução.
+      Este guia percorre a técnica, as pegadas, o velho debate da nuca e
+      como programar a puxada dentro da semana.
+    </p>
+
+    <div class="prose">
+      <h2>O que a puxada treina</h2>
+      <p>
+        É o padrão de puxada vertical: o grande dorsal é o motor
+        principal, com participação do redondo maior, da porção baixa do
+        trapézio, dos rombóides e do bíceps como flexor de cotovelo.
+      </p>
+
+      <p>
+        É esse padrão que constrói a largura das costas — o famoso "V" —,
+        enquanto a puxada horizontal, representada pela
+        <a href="/musculacao/remada-curvada-como-fazer/">remada
+        curvada</a>, responde mais pela espessura. Um treino completo
+        precisa dos dois.
+      </p>
+
+      <VideoYouTube
+        id="9FFLBDWXSZA"
+        titulo="Como realizar perfeitamente a puxada para costas — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da puxada na polia alta."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>O ajuste do banco.</strong> A almofada precisa travar as
+        coxas com firmeza. Se a coxa levanta durante a série, todo o
+        trabalho vira impulso — e a carga está alta demais.
+      </p>
+
+      <p>
+        <strong>A pegada.</strong> Cerca de uma vez e meia a largura dos
+        ombros, palmas para a frente na versão clássica. Braços
+        estendidos no início, sem que os ombros subam até as orelhas.
+      </p>
+
+      <p>
+        <strong>O início do movimento.</strong> Aqui está o detalhe que
+        muda tudo: antes de dobrar o cotovelo, deprima a escápula — puxe
+        os ombros para baixo. É esse gesto que "liga" o dorsal.
+      </p>
+
+      <p>
+        <strong>A puxada.</strong> Leve a barra até a altura da clavícula,
+        com o cotovelo descendo rente ao tronco. O tronco pode inclinar
+        levemente para trás, uns 10 a 15 graus — o que não pode é
+        balançar a cada repetição.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Controlada, deixando a escápula
+        elevar-se de volta e o dorsal alongar por completo. A amplitude
+        total do alongamento é parte do estímulo, não perda de tempo.
+      </p>
+
+      <h2>Por que a puxada atrás da nuca saiu de cena</h2>
+      <p>
+        Durante décadas ela foi tratada como a versão "mais completa". Não
+        é. Puxar atrás da nuca exige rotação externa extrema do ombro e
+        obriga a projetar a cabeça para a frente — uma posição
+        desconfortável e desnecessária.
+      </p>
+
+      <p>
+        O recrutamento do dorsal é equivalente ao da versão frontal, que
+        não impõe nenhuma dessas exigências. Sem ganho e com desconforto
+        articular, a conta não fecha, especialmente para quem tem
+        histórico de <a href="/musculacao/treinar-com-dor-no-ombro/">dor
+        no ombro</a>.
+      </p>
+
+      <h2>As pegadas e o que cada uma muda</h2>
+      <p>
+        <strong>Pronada aberta.</strong> A clássica. Ênfase na largura,
+        com o dorsal em posição favorável e menor participação do bíceps.
+      </p>
+
+      <p>
+        <strong>Neutra (triângulo).</strong> Palmas frente a frente.
+        Costuma ser a mais confortável para ombro e punho, e a que mais
+        gente relata "sentir as costas".
+      </p>
+
+      <p>
+        <strong>Supinada.</strong> Palmas para o corpo, pegada na largura
+        dos ombros. Recruta mais bíceps e permite carga maior — boa como
+        variação, ruim como escolha única.
+      </p>
+
+      <p>
+        Nenhuma delas é obrigatória o ano inteiro. Alternar entre ciclos
+        de treino é o que mantém o estímulo e poupa as articulações.
+      </p>
+
+      <h2>Os erros que roubam o resultado</h2>
+      <p>
+        <strong>Balançar o tronco.</strong> Quando o corpo vai para trás
+        e volta a cada repetição, o movimento virou remada com impulso.
+        Reduza a carga.
+      </p>
+
+      <p>
+        <strong>Puxar demais para baixo.</strong> Passar da clavícula não
+        recruta mais dorsal — só empurra o trabalho para trapézio e
+        ombros.
+      </p>
+
+      <p>
+        <strong>Soltar a subida.</strong> Deixar o peso voltar sozinho
+        joga fora a fase excêntrica, que tem participação relevante no
+        crescimento muscular.
+      </p>
+
+      <p>
+        <strong>Encolher os ombros.</strong> Se as orelhas somem entre os
+        trapézios no início do movimento, falta o comando de deprimir a
+        escápula.
+      </p>
+
+      <h2>Puxada e barra fixa: quem faz o quê</h2>
+      <p>
+        A barra fixa exige sustentar o próprio corpo e recruta mais core;
+        a puxada permite dosar a carga com precisão. Para quem ainda não
+        faz barra fixa, a puxada é a ferramenta que constrói a força
+        necessária.
+      </p>
+
+      <p>
+        Para quem já faz, as duas convivem bem: barra fixa como exercício
+        de força no início do treino, puxada para volume e faixas mais
+        altas de repetição depois.
+      </p>
+
+      <h2>Como programar na semana</h2>
+      <p>
+        De 3 a 4 séries de 8 a 15 repetições, uma a duas vezes por
+        semana, dentro do
+        <a href="/musculacao/treino-de-costas/">treino de costas</a> — em
+        geral junto de uma puxada horizontal, que cobre a outra metade do
+        trabalho.
+      </p>
+
+      <p>
+        A progressão vem da combinação de carga e amplitude: subir o peso
+        só faz sentido enquanto você mantém a descida controlada e o
+        alongamento completo no topo. Peso alto com meia amplitude é o
+        atalho mais comum para estacionar.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A sensação de "não sentir as costas" é uma das queixas mais
+        comuns da academia — e quase sempre se resolve com ajustes que o
+        próprio praticante não percebe sozinho: o timing da escápula, a
+        altura do cotovelo, o balanço mínimo do tronco.
+      </p>
+
+      <p>
+        Um personal trainer corrige isso em duas ou três sessões, escolhe
+        a pegada que funciona para a sua estrutura e define quando trocar
+        a variação. É o tipo de detalhe que muda um exercício de "não
+        pego nada" para o principal construtor das suas costas.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a puxada" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

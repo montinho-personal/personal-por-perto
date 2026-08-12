@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/vitoria-es/',
+    titulo: 'Personal trainer em Vitória',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-jardim-da-penha/',
+    titulo: 'Personal trainer em Jardim da Penha',
+    descricao: 'O vizinho do outro lado da orla, com quem divide a praia de Camburi.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Leitura natural para quem tem 6 km de orla contínua na porta de casa.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-jardim-camburi';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Vitória', url: '/personal-trainer/vitoria-es/' },
+  { nome: 'Personal Trainer em Jardim Camburi', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Jardim Camburi?',
+    resposta:
+      'Em Vitória, a aula avulsa vai de R$ 85 a R$ 200 e o pacote mensal de R$ 420 a R$ 1.200. Jardim Camburi trabalha na metade de baixo dessa faixa — é um bairro de classe média com muita oferta de profissionais, o que segura o preço em comparação com Praia do Canto e Mata da Praia.',
+  },
+  {
+    pergunta: 'A orla de Camburi é boa para correr?',
+    resposta:
+      'É o principal corredor de treino ao ar livre de Vitória: cerca de 6 km de orla contínua com calçadão, ciclovia e estrutura de apoio. O traçado plano permite marcar ritmo com precisão, e o movimento constante no início da manhã e no fim da tarde traz sensação de segurança.',
+  },
+  {
+    pergunta: 'Jardim Camburi é mesmo um "bairro-cidade"?',
+    resposta:
+      'É como os moradores o descrevem, e faz sentido: é o bairro mais populoso do Espírito Santo, com comércio, serviços, escolas e lazer próprios. Na prática do treino, isso significa que quase tudo se resolve a pé ou de bicicleta — academia, praia e parque estão dentro do próprio bairro ou a poucos minutos.',
+  },
+  {
+    pergunta: 'Dá para usar a bicicleta no dia a dia do bairro?',
+    resposta:
+      'Dá. Jardim Camburi tem ciclovia e ciclorrota sinalizadas, além de Zona de Velocidade Segura (Zona 30) em parte das vias, e liga-se à ciclovia da orla. Para quem treina, a bike serve tanto de deslocamento quanto de aeróbico complementar sem impacto — útil para quem já corre bastante na areia ou no calçadão.',
+  },
+  {
+    pergunta: 'O calor de Vitória atrapalha o treino no bairro?',
+    resposta:
+      'Organiza mais do que atrapalha. O calor e a umidade empurram o treino ao ar livre para antes das 8h e depois das 17h — os dois horários em que a orla fica cheia. No meio do dia, a saída é ambiente coberto e climatizado, com hidratação reforçada em qualquer horário.',
+  },
+];
+
+const title = 'Personal Trainer em Jardim Camburi (Vitória)';
+const description =
+  'Personal trainer em Jardim Camburi: preços de Vitória, os 6 km da orla de Camburi, a rede de ciclovias e o formato certo para cada perfil de morador do maior bairro do ES.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Vitória</p>
+    <h1>Personal trainer em Jardim Camburi: o treino de cada morador</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Jardim Camburi é o bairro mais populoso do Espírito Santo, e os
+      moradores o chamam de bairro-cidade — comércio, serviços, escolas e
+      lazer próprios, com 6 km de orla logo ali.
+    </p>
+
+    <p class="lead">
+      Bairro desse tamanho não tem um morador típico: tem vários. Este
+      guia percorre os perfis que mais procuram um
+      <strong>personal trainer em Jardim Camburi</strong> e mostra o que
+      muda no plano de cada um.
+    </p>
+
+    <div class="prose">
+      <h2>Antes dos perfis: o território</h2>
+      <p>
+        O bairro fica na porção continental de Vitória, entre a Praia de
+        Camburi e a Rodovia Norte-Sul, com o aeroporto e áreas de
+        preservação no entorno. É autossuficiente a ponto de muita gente
+        passar semanas sem sair dele.
+      </p>
+
+      <p>
+        Para o treino, três ativos organizam tudo: a orla de Camburi, com
+        cerca de 6 km de calçadão e ciclovia; a malha cicloviária interna,
+        com ciclorrota sinalizada e Zona 30 em parte das vias; e a
+        concentração de academias e estúdios que um bairro populoso
+        naturalmente atrai.
+      </p>
+
+      <h2>Perfil 1: o casal jovem no primeiro imóvel</h2>
+      <p>
+        É um dos públicos que mais crescem no bairro. Rotina de trabalho
+        cheia, orçamento planejado e vontade de aproveitar a orla que
+        motivou a mudança.
+      </p>
+
+      <p>
+        Para esse perfil, o arranjo que funciona é o treino em dupla: duas
+        ou três sessões semanais, custo dividido, compromisso mútuo. Some
+        caminhada ou corrida na orla nos dias livres e o programa se
+        sustenta sem virar mais uma conta pesada no mês.
+      </p>
+
+      <h2>Perfil 2: o corredor de orla</h2>
+      <p>
+        Os 6 km contínuos de Camburi criam corredores em série. O morador
+        que já corre e quer estrutura busca o personal por três motivos:
+        planilha, força para sustentar volume e prevenção das dores que
+        aparecem quando o quilômetro sobe sem base.
+      </p>
+
+      <p>
+        É o trabalho descrito no guia de
+        <a href="/guias/personal-trainer-para-corredores/">personal
+        trainer para corredores</a> — e vale lembrar que correr na areia,
+        opção óbvia aqui, cobra bem mais de tornozelo e panturrilha do que
+        o calçadão.
+      </p>
+
+      <h2>Perfil 3: o morador tradicional, de longa data</h2>
+      <p>
+        Jardim Camburi tem população heterogênea, com muita gente que
+        chegou há décadas e envelheceu no bairro. Aqui o objetivo é
+        autonomia: força, equilíbrio e densidade óssea preservadas.
+      </p>
+
+      <p>
+        O ambiente ajuda — calçadão plano, comércio a pé, vizinhança
+        conhecida. O treino de força é o centro do plano, e qualquer
+        limitação articular pede avaliação de médico ou fisioterapeuta
+        antes do começo.
+      </p>
+
+      <h2>Perfil 4: quem quer emagrecer e não sabe por onde começar</h2>
+      <p>
+        Esse morador tem uma vantagem que muitos bairros não oferecem: a
+        caminhada mais agradável da cidade a poucos quarteirões. O começo
+        costuma ser exatamente esse — volume de passos na orla, três a
+        cinco vezes por semana.
+      </p>
+
+      <p>
+        O que não pode faltar é a força. Caminhada aumenta o gasto, mas é
+        a musculação que preserva massa magra durante o déficit — e é ela
+        que muda a composição corporal, não só o número da balança.
+      </p>
+
+      <h2>Perfil 5: quem trabalha na Norte-Sul e chega em casa às 19h</h2>
+      <p>
+        O bairro é rota de quem trabalha no eixo industrial e portuário da
+        Grande Vitória. Esse morador chega tarde, cansado, e precisa de
+        um plano que sobreviva a isso.
+      </p>
+
+      <p>
+        Duas saídas funcionam: a sessão antes do expediente, que reunião
+        nenhuma atropela, ou o personal em casa no fim do dia, sem o
+        deslocamento extra até a academia. O
+        <a href="/guias/personal-trainer-a-domicilio/">atendimento a
+        domicílio</a> resolve bem esse caso.
+      </p>
+
+      <h2>O clima define o horário de todo mundo</h2>
+      <p>
+        Independentemente do perfil, o calor e a umidade capixabas
+        empurram o treino ao ar livre para antes das 8h ou depois das 17h.
+        É por isso que a orla tem dois picos diários bem marcados.
+      </p>
+
+      <p>
+        No meio do dia, a alternativa é ambiente coberto. E hidratação
+        reforçada não é detalhe: é parte do programa em qualquer horário.
+      </p>
+
+      <h2>Quanto custa personal trainer em Jardim Camburi</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/vitoria-es/">personal trainer em
+        Vitória</a>, vai de R$ 85 a R$ 200 pela aula avulsa e de R$ 420 a
+        R$ 1.200 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Jardim Camburi trabalha na metade de baixo dessa faixa. Bairro
+        populoso significa muita oferta de profissionais, e isso segura o
+        preço em comparação com <a href="/personal-trainer-praia-do-canto/">Praia
+        do Canto</a> e com os endereços mais caros da ilha.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Jardim Camburi, acrescente o teste do perfil: peça que ele
+        explique por que o plano proposto serve para a sua rotina — e não
+        para a do vizinho. Em um bairro que abriga casal jovem, corredor,
+        morador 60+ e trabalhador de turno, quem entrega o mesmo pacote
+        para todos não entendeu o território.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Jardim Camburi" />
+
+    <WhatsAppCta tema="geral" localidade="em Jardim Camburi" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

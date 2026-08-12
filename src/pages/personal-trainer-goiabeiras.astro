@@ -1,0 +1,300 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/cuiaba-mt/',
+    titulo: 'Personal trainer em Cuiabá',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-jardim-das-americas/',
+    titulo: 'Personal trainer no Jardim das Américas',
+    descricao: 'O bairro vizinho, onde fica o campus principal da UFMT.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/musculacao/aquecimento-antes-do-treino/',
+    titulo: 'Aquecimento antes do treino: como fazer certo',
+    descricao: 'Detalhe que muda de figura em uma cidade de 40 °C.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-goiabeiras';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Cuiabá', url: '/personal-trainer/cuiaba-mt/' },
+  { nome: 'Personal Trainer em Goiabeiras', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Goiabeiras?',
+    resposta:
+      'Em Cuiabá, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. Goiabeiras trabalha no meio dessa faixa: é um bairro consolidado, com boa oferta de academias e público universitário — o que puxa para baixo o preço das sessões em grupo e da modalidade online.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar ao ar livre em Goiabeiras?',
+    resposta:
+      'Antes das 7h e depois das 18h, sem exceção prática. Cuiabá é uma das capitais mais quentes do Brasil, com máximas frequentemente acima de 38 °C na estação seca. No meio do dia, o treino ao ar livre deixa de ser desconfortável e passa a ser arriscado — a alternativa é ambiente climatizado.',
+  },
+  {
+    pergunta: 'O que tem perto de Goiabeiras para treinar?',
+    resposta:
+      'O bairro é vizinho do Jardim das Américas, onde fica o campus principal da UFMT, e está a poucos minutos do Parque Mãe Bonifácia, a maior área verde urbana da capital e o principal refúgio de quem quer caminhar e correr na sombra. A Arena Pantanal, no mesmo eixo, completa a região esportiva da cidade.',
+  },
+  {
+    pergunta: 'Existe personal para estudante em Goiabeiras?',
+    resposta:
+      'É uma demanda comum na região, pela proximidade da UFMT. O formato que costuma caber no orçamento é o treino em pequeno grupo — três ou quatro pessoas dividindo a sessão — ou o acompanhamento online com uma avaliação presencial no começo. Ambos custam uma fração do atendimento individual.',
+  },
+  {
+    pergunta: 'Como o calor muda o treino de musculação?',
+    resposta:
+      'Menos do que se imagina dentro de uma academia climatizada, e muito fora dela. O que realmente muda é a hidratação — que precisa começar antes da sessão — e o aquecimento, que fica mais curto porque o corpo já chega aquecido. O descanso entre séries tende a ser um pouco maior no calor, e isso não é perda de rendimento: é ajuste.',
+  },
+  {
+    pergunta: 'Goiabeiras é um bairro caminhável?',
+    resposta:
+      'É razoavelmente caminhável no miolo residencial, com comércio de vizinhança, supermercados e serviços próximos. A limitação não é o traçado, é o clima: caminhar 15 minutos ao meio-dia em Cuiabá é experiência diferente de caminhar 15 minutos em qualquer capital do Sul. Sombra e horário definem tudo.',
+  },
+];
+
+const title = 'Personal Trainer em Goiabeiras (Cuiabá): o guia';
+const description =
+  'Personal trainer em Goiabeiras: preços de Cuiabá, como o calor de 40 °C organiza o treino, o Parque Mãe Bonifácia ao lado e os formatos que funcionam perto da UFMT.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Cuiabá</p>
+    <h1>Personal trainer em Goiabeiras: as dúvidas de quem treina no calor</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Treinar em Cuiabá é um problema de engenharia térmica antes de ser
+      um problema de treino. E em Goiabeiras, bairro consolidado da região
+      leste, as perguntas que aparecem são sempre as mesmas.
+    </p>
+
+    <p class="lead">
+      Este guia responde uma a uma — do horário viável ao formato que cabe
+      no bolso do estudante da UFMT — para quem procura um
+      <strong>personal trainer em Goiabeiras</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>Onde fica Goiabeiras e por que isso importa</h2>
+      <p>
+        Goiabeiras é um bairro residencial consolidado de Cuiabá, com
+        comércio de vizinhança, supermercados, serviços de saúde e boa
+        oferta de moradia. Faz divisa com o
+        <a href="/personal-trainer-jardim-das-americas/">Jardim das
+        Américas</a>, onde fica o campus principal da UFMT.
+      </p>
+
+      <p>
+        Essa vizinhança define o perfil de quem mora e treina aqui:
+        famílias estabelecidas somadas a um contingente universitário —
+        estudantes, professores e servidores — com rotinas e orçamentos
+        bem diferentes entre si.
+      </p>
+
+      <p>
+        No mesmo eixo estão a Arena Pantanal e, a poucos minutos, o Parque
+        Mãe Bonifácia, a maior área verde urbana da capital. É o conjunto
+        que dá ao bairro opções reais de treino fora de casa.
+      </p>
+
+      <h2>Qual é o horário viável para treinar fora?</h2>
+      <p>
+        Antes das 7h e depois das 18h. Não é preferência, é limite
+        prático: Cuiabá figura entre as capitais mais quentes do país, e na
+        estação seca as máximas passam com folga dos 38 °C, com umidade
+        baixíssima.
+      </p>
+
+      <p>
+        Entre o meio da manhã e o fim da tarde, treino ao ar livre sai da
+        conta. Quem só tem esse intervalo livre precisa de ambiente
+        climatizado — academia, condomínio ou casa com ventilação
+        adequada. Insistir no sol a pino não é disciplina, é risco.
+      </p>
+
+      <h2>O calor prejudica o ganho de massa?</h2>
+      <p>
+        Não diretamente. O que o calor faz é aumentar a percepção de
+        esforço, acelerar a desidratação e exigir mais tempo de
+        recuperação entre séries. Se a hidratação está em dia e o ambiente
+        é tolerável, o estímulo de força acontece normalmente.
+      </p>
+
+      <p>
+        O ajuste honesto é aceitar descanso um pouco maior entre séries
+        pesadas nos meses mais quentes. Isso não é queda de rendimento: é
+        o que permite manter a carga alta na série seguinte.
+      </p>
+
+      <h2>Preciso mudar o aquecimento?</h2>
+      <p>
+        Sim, e para menos. Em Cuiabá o corpo já chega quente — a parte de
+        elevação da temperatura corporal, que em cidade fria toma vários
+        minutos, aqui é quase automática.
+      </p>
+
+      <p>
+        O que continua obrigatório são as séries de aproximação do próprio
+        exercício, que preparam articulação e padrão de movimento. O guia
+        sobre <a href="/musculacao/aquecimento-antes-do-treino/">aquecimento
+        antes do treino</a> detalha essa diferença entre aquecer o corpo e
+        preparar o movimento.
+      </p>
+
+      <h2>E a hidratação, quanto é suficiente?</h2>
+      <p>
+        A regra prática de Cuiabá é começar antes: chegar hidratado à
+        sessão vale mais do que beber muito durante. Ao longo do treino, o
+        gole regular a cada intervalo funciona melhor que grandes volumes
+        de uma vez.
+      </p>
+
+      <p>
+        Dois sinais valem mais que qualquer meta em litros: sede, que já
+        indica atraso, e a cor da urina ao longo do dia. Em estação seca,
+        a necessidade sobe — e cãibras recorrentes ou tontura no treino
+        são motivo para procurar avaliação médica, não para insistir.
+      </p>
+
+      <h2>Onde treinar sem ficar exposto ao sol?</h2>
+      <p>
+        <strong>Parque Mãe Bonifácia.</strong> A maior área verde urbana
+        da cidade, a poucos minutos do bairro. A sombra da mata faz uma
+        diferença real de temperatura em relação à rua aberta.
+      </p>
+
+      <p>
+        <strong>Academia climatizada.</strong> A opção padrão do horário
+        comercial em Cuiabá, e a que garante constância nos meses de pico
+        de calor.
+      </p>
+
+      <p>
+        <strong>Em casa ou no condomínio.</strong> Com ventilação e
+        material do próprio personal, resolve bem — especialmente para
+        quem prefere não sair de casa no fim de tarde, quando o asfalto
+        ainda devolve calor.
+      </p>
+
+      <h2>Quanto custa e o que cabe no orçamento de estudante?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/cuiaba-mt/">personal trainer em
+        Cuiabá</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        Goiabeiras fica no meio dessa faixa. Para o público universitário,
+        os dois formatos que realmente cabem são o treino em pequeno grupo
+        — três ou quatro pessoas dividindo a sessão — e o
+        <a href="/guias/personal-online-funciona/">acompanhamento
+        online</a> com avaliação presencial no início.
+      </p>
+
+      <h2>Como escolher o profissional aqui?</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Em Goiabeiras, faça uma pergunta a mais: como ele reorganiza o
+        programa entre a estação seca e a chuvosa? Quem treina gente em
+        Cuiabá há tempo tem resposta pronta — muda horário, muda ambiente,
+        ajusta volume. Quem não tem, provavelmente vai te passar a mesma
+        planilha que passaria em Curitiba.
+      </p>
+
+      <p>
+        E o de sempre: dores e limitações — joelho, ombro, lombar — pedem
+        avaliação de médico ou fisioterapeuta antes de o plano começar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Goiabeiras" />
+
+    <WhatsAppCta tema="geral" localidade="em Goiabeiras" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

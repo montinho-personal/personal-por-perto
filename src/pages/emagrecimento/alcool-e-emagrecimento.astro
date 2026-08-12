@@ -1,0 +1,316 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const oms = fontesExternas.oms;
+
+const relacionados = [
+  {
+    url: '/emagrecimento/refeicao-livre/',
+    titulo: 'Refeição livre e dia do lixo: qual faz sentido?',
+    descricao: 'Onde a noite de bar se encaixa no planejamento da semana.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta em que as calorias líquidas entram sem avisar.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa muscular: o treino invisível',
+    descricao: 'O canal pelo qual o álcool mais atrapalha o resultado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/emagrecimento/alcool-e-emagrecimento';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Álcool e emagrecimento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias tem o álcool?',
+    resposta:
+      'Cada grama de álcool fornece cerca de 7 calorias — mais que carboidrato e proteína (4 cada) e menos que gordura (9). São calorias sem valor nutricional relevante e que praticamente não saciam, o que as torna especialmente fáceis de acumular. Uma noite com cinco latas de cerveja adiciona algo em torno de 700 calorias antes de qualquer petisco.',
+  },
+  {
+    pergunta: 'Beber atrapalha o ganho de massa muscular?',
+    resposta:
+      'Consumos altos prejudicam de duas formas: reduzem a síntese proteica nas horas seguintes e desorganizam o sono, que é quando boa parte da recuperação acontece. Doses moderadas e ocasionais têm impacto bem menor. Na prática, o padrão importa mais que a dose isolada: beber muito toda semana atrapalha; um copo eventual, dentro de uma rotina consistente, não desfaz meses de treino.',
+  },
+  {
+    pergunta: 'Qual bebida engorda menos?',
+    resposta:
+      'A conta é sempre volume vezes teor alcoólico, mais o açúcar que vem junto. Destilados puros com água com gás e limão ficam entre as opções mais econômicas; cerveja e vinho variam conforme a quantidade; caipirinhas, drinques doces e refrigerantes como misturador são os mais calóricos. Mas a diferença entre bebidas costuma pesar menos que a quantidade total da noite.',
+  },
+  {
+    pergunta: 'Posso treinar no dia seguinte à bebedeira?',
+    resposta:
+      'Pode, com expectativa ajustada: desidratação, sono ruim e glicogênio reduzido derrubam a força e aumentam a percepção de esforço. Um treino leve ou uma caminhada costumam ser mais produtivos que insistir em cargas máximas. Hidratar bem e comer normalmente ao longo do dia acelera a recuperação. Se o mal-estar for intenso, descansar é a decisão correta.',
+  },
+  {
+    pergunta: 'Preciso cortar o álcool para emagrecer?',
+    resposta:
+      'Não necessariamente — precisa contabilizá-lo. Muita gente monta uma dieta impecável de segunda a sexta e ignora as calorias líquidas do fim de semana, que sozinhas anulam o déficit acumulado. As duas saídas que funcionam são reduzir a frequência ou reservar espaço calórico planejado para a ocasião. Cortar por completo é opção, não obrigação, e vale a ressalva de que, do ponto de vista de saúde, menos álcool é sempre melhor.',
+  },
+];
+
+const title = 'Álcool e emagrecimento: o que a bebida faz';
+const description =
+  'Álcool e emagrecimento: quantas calorias tem a bebida, por que ela derruba a síntese proteica e o sono, qual opção pesa menos e como encaixar sem anular a semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Álcool e emagrecimento: a conta que ninguém faz</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe um padrão que se repete em quem treina há meses sem ver a
+      balança andar: alimentação controlada de segunda a sexta, treino em
+      dia — e uma sexta-feira que ninguém contabiliza.
+    </p>
+
+    <p class="lead">
+      O álcool não é vilão moral nem detalhe irrelevante. Ele tem efeitos
+      concretos sobre calorias, sono e recuperação, e entender esses três
+      canais é o que permite decidir onde ele cabe na sua rotina.
+    </p>
+
+    <div class="prose">
+      <h2>Canal 1: as calorias que passam despercebidas</h2>
+      <p>
+        Cada grama de álcool fornece cerca de <strong>7 calorias</strong> —
+        acima de carboidrato e proteína, que entregam 4, e abaixo da
+        gordura, com 9. São calorias praticamente sem valor nutricional e,
+        pior para quem emagrece, sem poder de saciedade.
+      </p>
+
+      <p>
+        A conta prática assusta mais que a teoria. Cinco latas de cerveja
+        somam em torno de 700 calorias; algumas caipirinhas passam
+        facilmente disso. Nenhuma dessas calorias tira a fome — o que nos
+        leva ao problema seguinte.
+      </p>
+
+      <p>
+        <strong>O que vem junto costuma pesar mais que a bebida.</strong>
+        Porção de fritas, queijo, petisco: o álcool reduz a inibição e
+        aumenta o apetite, e a soma da noite dobra ou triplica com
+        facilidade. Para quem acompanha o
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>, é aqui que a semana costuma virar.
+      </p>
+
+      <VideoYouTube
+        id="FUBIt7ko6qI"
+        titulo="Álcool atrapalha a hipertrofia muscular? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica o efeito real do álcool sobre o ganho de massa muscular."
+      />
+
+      <h2>Canal 2: síntese proteica e recuperação</h2>
+      <p>
+        Consumos elevados de álcool reduzem a síntese proteica nas horas
+        seguintes — o processo pelo qual o corpo aproveita o estímulo do
+        treino. Não é que o treino "se perca", mas a janela de recuperação
+        fica menos eficiente.
+      </p>
+
+      <p>
+        Importante manter a proporção: esse efeito é dose-dependente. Uma
+        taça de vinho no jantar não tem o mesmo impacto de uma noite
+        inteira de consumo pesado, e ninguém perde músculo por beber
+        socialmente de vez em quando.
+      </p>
+
+      <h2>Canal 3: o sono, que é onde mais dói</h2>
+      <p>
+        O álcool dá sono, mas piora o sono. Ele encurta as fases mais
+        restauradoras e fragmenta a noite, o que explica a sensação de ter
+        dormido oito horas e acordado moído.
+      </p>
+
+      <p>
+        Como o <a href="/musculacao/sono-e-ganho-de-massa/">sono</a> é
+        onde acontece boa parte da recuperação e da regulação hormonal do
+        apetite, esse é provavelmente o canal mais subestimado: dorme-se
+        mal, treina-se pior no dia seguinte e come-se mais ao longo do
+        dia.
+      </p>
+
+      <h2>O efeito cascata do dia seguinte</h2>
+      <p>
+        Some os três canais e o resultado é o padrão clássico de sábado:
+        acordar tarde, pular o café, chegar faminto ao almoço, escolher
+        pior e trocar o treino por sofá.
+      </p>
+
+      <p>
+        A noite de sexta, sozinha, raramente destrói uma semana. O que
+        destrói é o efeito cascata dos dois dias seguintes — e essa parte
+        está inteiramente sob controle de quem planeja.
+      </p>
+
+      <h2>Qual bebida pesa menos</h2>
+      <p>
+        A conta é simples: volume × teor alcoólico, mais o açúcar do que
+        vem junto. Destilado puro com água com gás e limão fica entre as
+        opções mais econômicas. Cerveja e vinho dependem da quantidade — o
+        problema raramente é a primeira taça.
+      </p>
+
+      <p>
+        No topo da lista calórica ficam caipirinhas, drinques doces e
+        qualquer bebida misturada com refrigerante ou suco açucarado.
+        Ainda assim, vale repetir: a quantidade total da noite pesa mais
+        que a escolha entre uma bebida e outra.
+      </p>
+
+      <h2>Como encaixar sem anular a semana</h2>
+      <p>
+        <strong>Planeje como refeição livre.</strong> Se a noite de bar
+        acontece toda semana, ela ocupa o lugar da
+        <a href="/emagrecimento/refeicao-livre/">refeição livre</a> — não
+        se soma a ela.
+      </p>
+
+      <p>
+        <strong>Coma antes de sair.</strong> Chegar saciado reduz drasticamente
+        o consumo de petiscos, que é onde a maior parte das calorias mora.
+      </p>
+
+      <p>
+        <strong>Alterne com água.</strong> Um copo de água entre as doses
+        reduz o total consumido e ameniza a desidratação da manhã
+        seguinte.
+      </p>
+
+      <p>
+        <strong>Proteja o dia seguinte.</strong> Café da manhã normal,
+        hidratação e algum movimento — mesmo que seja só caminhada. É o
+        que impede o efeito cascata.
+      </p>
+
+      <h2>E treinar no dia seguinte?</h2>
+      <p>
+        Pode, com expectativa ajustada. Desidratação, sono ruim e
+        glicogênio reduzido derrubam força e aumentam a percepção de
+        esforço; insistir em cargas máximas costuma render frustração.
+      </p>
+
+      <p>
+        Treino leve, aeróbico moderado ou caminhada longa fazem mais pela
+        recuperação do que um treino pesado mal executado. E se o
+        mal-estar for grande, descansar é a decisão correta — não uma
+        falha de disciplina.
+      </p>
+
+      <h2>A ressalva que não é sobre estética</h2>
+      <p>
+        Este guia trata de emagrecimento e treino, mas vale registrar o
+        que a evidência de saúde pública diz: não existe nível de consumo
+        de álcool isento de risco, e as diretrizes da
+        <a href={oms.url} target="_blank" rel="noopener">{oms.nome}</a>
+        são claras em recomendar redução do consumo na população.
+      </p>
+
+      <p>
+        Quem convive com dependência, faz uso de medicamentos ou tem
+        condição de saúde envolvida deve tratar o assunto com um médico —
+        não com uma planilha de calorias.
+      </p>
+
+      <h2>Onde entra o acompanhamento</h2>
+      <p>
+        A pergunta que resolve o problema não é "posso beber?", e sim
+        "onde isso cabe na minha semana?". Um personal trainer que
+        acompanha seu processo desenha a semana em volta da vida real —
+        incluindo o happy hour de sexta — em vez de fingir que ele não
+        existe.
+      </p>
+
+      <p>
+        É a diferença entre um plano que dura três semanas e um que dura
+        três anos.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre álcool e emagrecimento" />
+
+    <WhatsAppCta tema="alimentacao" />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

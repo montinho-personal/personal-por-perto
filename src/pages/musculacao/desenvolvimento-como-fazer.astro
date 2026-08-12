@@ -1,0 +1,314 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu (e os erros)',
+    descricao: 'Onde o desenvolvimento se encaixa no treino completo de deltoide.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro: o que pode e o que não pode',
+    descricao: 'Leitura obrigatória antes de insistir em carga acima da cabeça.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O empurrar horizontal que divide o ombro com o desenvolvimento.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/desenvolvimento-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Desenvolvimento: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Desenvolvimento sentado ou em pé?',
+    resposta:
+      'Em pé, o exercício exige mais do core e da estabilização geral, mas costuma permitir menos carga e abre espaço para compensar com a lombar. Sentado com encosto, a carga sobe e o foco fica no deltoide — vantagem para quem busca hipertrofia. Para iniciantes, a versão sentada com halteres é a porta de entrada mais segura; a versão em pé faz mais sentido para quem treina força e transferência para o esporte.',
+  },
+  {
+    pergunta: 'Desenvolvimento pela frente ou atrás da nuca?',
+    resposta:
+      'Pela frente. A versão atrás da nuca exige rotação externa máxima do ombro em amplitude que boa parte das pessoas não tem com conforto, e não entrega recrutamento superior do deltoide que justifique isso. É um exercício que saiu dos bons programas pelo mesmo motivo da puxada atrás da nuca: risco desnecessário sem benefício correspondente.',
+  },
+  {
+    pergunta: 'Até onde devo descer a barra ou os halteres?',
+    resposta:
+      'Até que o cotovelo fique aproximadamente na altura do ombro, formando cerca de 90 graus — ou um pouco abaixo, se você tem mobilidade confortável para isso. Descer muito além disso amplia a exigência da articulação sem ganho proporcional. E no topo, estenda os cotovelos sem travar bruscamente nem encolher os ombros.',
+  },
+  {
+    pergunta: 'Preciso fazer desenvolvimento se já faço supino?',
+    resposta:
+      'O supino recruta bastante o deltoide anterior, mas não substitui o empurrar vertical. O desenvolvimento coloca o ombro em uma linha de força diferente e trabalha o deltoide em amplitude que o supino não alcança. Para quem busca ombros completos, os dois padrões — horizontal e vertical — precisam existir na semana, junto de elevações laterais para a porção medial.',
+  },
+  {
+    pergunta: 'Sinto dor no ombro no desenvolvimento. O que fazer?',
+    resposta:
+      'Primeiro, reduza a amplitude e a carga e teste a versão com halteres em pegada neutra, que costuma ser a mais tolerada. Se a dor persiste, pare de insistir: dor articular recorrente em movimento acima da cabeça precisa de avaliação de médico ou fisioterapeuta antes de qualquer ajuste de treino. Enquanto isso, o trabalho de ombro pode continuar com elevações em amplitude confortável e com foco no manguito rotador.',
+  },
+];
+
+const title = 'Desenvolvimento: como fazer e os erros comuns';
+const description =
+  'Desenvolvimento de ombro: sentado ou em pé, barra ou halteres, até onde descer, por que a versão atrás da nuca saiu de cena e como programar na semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Desenvolvimento: o exercício que constrói o ombro inteiro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Elevação lateral é o exercício que todo mundo associa a treino de
+      ombro. Mas quem tem deltoide desenvolvido de verdade construiu com
+      outra coisa: carga acima da cabeça, no desenvolvimento.
+    </p>
+
+    <p class="lead">
+      É o exercício multiarticular do ombro — o equivalente ao supino no
+      peito e ao agachamento na perna. Este guia mostra como executar,
+      qual versão escolher e como encaixar na semana sem castigar a
+      articulação.
+    </p>
+
+    <div class="prose">
+      <h2>O que o desenvolvimento treina</h2>
+      <p>
+        O alvo principal é o deltoide anterior, com participação
+        importante do deltoide medial, do trapézio superior e do tríceps
+        como extensor de cotovelo. O core trabalha para estabilizar,
+        especialmente na versão em pé.
+      </p>
+
+      <p>
+        É o único padrão de empurrar vertical do treino. Por isso ele não
+        é intercambiável com o supino: as duas linhas de força são
+        diferentes, e o ombro precisa das duas.
+      </p>
+
+      <VideoYouTube
+        id="EuQAfhXBEvs"
+        titulo="Como fazer desenvolvimento — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do desenvolvimento."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>Posição inicial.</strong> Sentado com encosto ou em pé com
+        pés na largura do quadril. Abdômen firme, costelas para baixo — o
+        erro mais comum em pé é jogar as costelas para cima e arquear a
+        lombar.
+      </p>
+
+      <p>
+        <strong>A pegada.</strong> Um pouco mais aberta que a largura dos
+        ombros com a barra; na largura dos ombros com halteres, que também
+        aceitam pegada neutra. Punho alinhado com o antebraço.
+      </p>
+
+      <p>
+        <strong>O ponto de partida.</strong> Barra ou halteres na altura
+        do queixo, cotovelos ligeiramente à frente do tronco — não
+        totalmente abertos para os lados.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Empurre para cima e ligeiramente para
+        trás, terminando com o peso alinhado sobre a cabeça. Estenda os
+        cotovelos sem travar com impacto e sem encolher os ombros.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Controlada, até o cotovelo voltar à
+        altura do ombro, formando cerca de 90 graus. É onde o movimento
+        recomeça.
+      </p>
+
+      <h2>Sentado ou em pé: o que muda</h2>
+      <p>
+        <strong>Sentado com encosto</strong> permite mais carga e
+        concentra o trabalho no deltoide, porque o tronco está apoiado.
+        É a escolha padrão de quem treina para hipertrofia.
+      </p>
+
+      <p>
+        <strong>Em pé</strong> transforma o exercício em um trabalho de
+        corpo inteiro: core, glúteo e eretora sustentam a posição. Rende
+        menos carga, mas transfere melhor para esporte e vida real.
+      </p>
+
+      <p>
+        A escolha não precisa ser definitiva. Muitos programas usam a
+        versão em pé como exercício de força no começo do treino e a
+        sentada para volume depois.
+      </p>
+
+      <h2>Barra ou halteres?</h2>
+      <p>
+        A <strong>barra</strong> permite carga maior e progressão precisa,
+        mas fixa a trajetória — o que incomoda quem tem restrição de
+        mobilidade no ombro.
+      </p>
+
+      <p>
+        Os <strong>halteres</strong> liberam a trajetória, permitem pegada
+        neutra (a mais tolerada por ombros sensíveis) e corrigem
+        assimetrias entre os lados. Costumam ser a melhor porta de
+        entrada.
+      </p>
+
+      <h2>Por que o desenvolvimento atrás da nuca saiu de cena</h2>
+      <p>
+        Ele exige rotação externa máxima do ombro em uma amplitude que
+        muita gente simplesmente não tem — e obriga a projetar a cabeça
+        para a frente para dar passagem à barra.
+      </p>
+
+      <p>
+        O recrutamento do deltoide não é superior ao da versão frontal.
+        Sem ganho e com exigência articular alta, o cálculo não fecha,
+        sobretudo para quem já tem histórico de
+        <a href="/musculacao/treinar-com-dor-no-ombro/">dor no ombro</a>.
+      </p>
+
+      <h2>Os erros mais comuns</h2>
+      <p>
+        <strong>Arquear a lombar.</strong> Na versão em pé, é o jeito
+        mais fácil de "ganhar" alguns quilos: o tronco inclina para trás
+        e o exercício vira um supino inclinado improvisado. Abdômen firme
+        e costelas para baixo resolvem.
+      </p>
+
+      <p>
+        <strong>Cotovelos totalmente abertos.</strong> Alinhados com a
+        linha dos ombros, aumentam o estresse articular sem benefício.
+        Um pouco à frente é a posição mais confortável e igualmente
+        eficaz.
+      </p>
+
+      <p>
+        <strong>Amplitude curta.</strong> Descer só um palmo e voltar
+        mantém a queimação, mas entrega pouco. O cotovelo precisa chegar
+        à altura do ombro.
+      </p>
+
+      <p>
+        <strong>Encolher os ombros no topo.</strong> Trapézio assumindo o
+        que era do deltoide — sinal de carga alta demais.
+      </p>
+
+      <h2>Como programar na semana</h2>
+      <p>
+        Como exercício principal de ombro: 3 a 4 séries de 6 a 12
+        repetições, uma a duas vezes por semana, no começo do
+        <a href="/musculacao/treino-de-ombro/">treino de ombro</a> — antes
+        das elevações, enquanto você está descansado.
+      </p>
+
+      <p>
+        Vale considerar o volume total de empurrar da semana: quem faz
+        <a href="/musculacao/supino-como-fazer/">supino</a> pesado duas
+        vezes já entrega bastante trabalho ao deltoide anterior. Nesse
+        caso, uma sessão de desenvolvimento e mais volume de elevação
+        lateral costuma equilibrar melhor o ombro.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Movimento acima da cabeça é onde diferenças individuais de
+        mobilidade mais aparecem. A mesma execução que é confortável para
+        uma pessoa pode ser inviável para outra — e insistir na versão
+        "certa" do vídeo é a receita para dor no ombro.
+      </p>
+
+      <p>
+        Um personal trainer testa qual variação a sua articulação
+        comporta, ajusta amplitude e pegada e distribui o volume de
+        empurrar ao longo da semana. É o tipo de ajuste que evita meses
+        de treino com desconforto.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o desenvolvimento" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
