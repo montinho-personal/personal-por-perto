@@ -93,6 +93,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-santa-felicidade/', titulo: 'Personal trainer em Santa Felicidade (Curitiba)' },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-camburi/', titulo: 'Personal trainer em Jardim Camburi (Vitória)' },
   { categoria: 'Bairros', url: '/personal-trainer-goiabeiras/', titulo: 'Personal trainer em Goiabeiras (Cuiabá)' },
+  { categoria: 'Bairros', url: '/personal-trainer-cabo-branco/', titulo: 'Personal trainer no Cabo Branco (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-bigorrilho/', titulo: 'Personal trainer no Bigorrilho (Curitiba)' },
+  { categoria: 'Bairros', url: '/personal-trainer-santa-monica/', titulo: 'Personal trainer no Santa Mônica (Uberlândia)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -165,6 +168,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/puxada-como-fazer/', titulo: 'Puxada: como fazer, pegadas e erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/rosca-direta-como-fazer/', titulo: 'Rosca direta: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/desenvolvimento-como-fazer/', titulo: 'Desenvolvimento: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/elevacao-lateral-como-fazer/', titulo: 'Elevação lateral: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/stiff-como-fazer/', titulo: 'Stiff: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/crucifixo-como-fazer/', titulo: 'Crucifixo: como fazer (reto, inclinado e máquina)' },
+  { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

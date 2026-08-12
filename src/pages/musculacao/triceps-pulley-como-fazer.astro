@@ -1,0 +1,306 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'Onde o tríceps pulley se encaixa no treino completo de braço.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/rosca-direta-como-fazer/',
+    titulo: 'Rosca direta: como fazer e os erros comuns',
+    descricao: 'O par do pulley no dia de braços — mesmos princípios, outro lado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O multiarticular que já entrega meio treino de tríceps.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/triceps-pulley-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Tríceps pulley: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O cotovelo pode se mover no tríceps pulley?',
+    resposta:
+      'O ideal é que fique praticamente parado ao lado do tronco, funcionando como dobradiça — é isso que mantém o trabalho no tríceps. Um deslize pequeno e constante é tolerável em séries pesadas; o problema é o cotovelo subindo e descendo a cada repetição, transformando o exercício num empurrão de ombro e costas. Se ele não para, a carga está alta demais.',
+  },
+  {
+    pergunta: 'Barra reta, barra V ou corda no tríceps pulley?',
+    resposta:
+      'As três funcionam, e a diferença é de conforto e detalhe. A barra reta mantém o punho pronado e permite mais carga; a barra V dá posição neutra ao punho, aliviando quem sente desconforto; a corda permite abrir as mãos no final, aumentando a amplitude de extensão e o encurtamento do tríceps. Alternar entre elas ao longo dos ciclos é a abordagem mais completa.',
+  },
+  {
+    pergunta: 'Devo inclinar o tronco à frente no pulley?',
+    resposta:
+      'Uma inclinação leve — 10 a 15 graus — é natural e ajuda a estabilizar. O que não funciona é debruçar o corpo sobre o cabo para empurrar o peso com o peso corporal: a carga desce, mas quem trabalhou foi o tronco. Tronco quase ereto, abdômen firme e o movimento acontecendo só no cotovelo.',
+  },
+  {
+    pergunta: 'Tríceps pulley bilateral ou unilateral?',
+    resposta:
+      'O bilateral é a base: mais carga, mais praticidade, progressão mais simples. O unilateral entra como ferramenta específica — corrige assimetrias entre os braços, aumenta a amplitude e a conexão com o músculo, e costuma ser feito com pegada invertida ou neutra. Um bom programa usa o bilateral como principal e o unilateral como complemento periódico.',
+  },
+  {
+    pergunta: 'Quantas séries de tríceps por semana?',
+    resposta:
+      'De 6 a 10 séries diretas semanais bastam para a maioria — lembrando que supino e desenvolvimento já trabalham o tríceps intensamente. Quem faz dois treinos de empurrar por semana precisa de menos isolamento do que imagina; o excesso costuma aparecer como dor no cotovelo antes de aparecer como braço maior.',
+  },
+];
+
+const title = 'Tríceps pulley: como fazer e os erros comuns';
+const description =
+  'Tríceps pulley: cotovelo parado, barra reta, V ou corda, a inclinação certa do tronco e os erros que tiram o tríceps do movimento. Com vídeo de execução.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Tríceps pulley: como fazer o cabo trabalhar para o braço</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O tríceps pulley é provavelmente o exercício de braço mais
+      praticado das academias — e um dos mais descaracterizados: cotovelo
+      passeando, tronco debruçado no cabo, meia amplitude no final.
+    </p>
+
+    <p class="lead">
+      Bem executado, é um isolador preciso do músculo que forma dois
+      terços do volume do braço. Este guia mostra a técnica, as pegadas e
+      os erros que valem corrigir.
+    </p>
+
+    <div class="prose">
+      <h2>O que o tríceps pulley treina</h2>
+      <p>
+        O tríceps braquial — as três porções que ocupam a parte de trás
+        do braço e respondem pela maior parte da sua circunferência. No
+        pulley, com o cotovelo junto ao tronco, as porções lateral e
+        medial dominam o trabalho.
+      </p>
+
+      <p>
+        Vale o lembrete de proporção: quem quer braço grande precisa mais
+        de tríceps que de bíceps — e o
+        <a href="/musculacao/treino-de-bracos/">treino de braços</a>
+        completo distribui o volume nessa medida.
+      </p>
+
+      <VideoYouTube
+        id="dTqDKC0D6P4"
+        titulo="Como fazer tríceps pulley bilateral — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do tríceps pulley."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>Posição.</strong> De frente para a polia alta, pés na
+        largura do quadril, tronco quase ereto com leve inclinação à
+        frente. Pegue a barra com as mãos na largura dos ombros.
+      </p>
+
+      <p>
+        <strong>O ponto de partida.</strong> Cotovelos colados ao tronco,
+        antebraços flexionados um pouco acima da paralela. Ombros
+        deprimidos, longe das orelhas.
+      </p>
+
+      <p>
+        <strong>A extensão.</strong> Empurre a barra para baixo até a
+        extensão completa do cotovelo, sem travar com impacto. O cotovelo
+        não sai do lugar — só o antebraço se move.
+      </p>
+
+      <p>
+        <strong>O topo do movimento.</strong> No ponto final, contraia o
+        tríceps por um instante. Com a corda, abra as mãos levemente para
+        fora — é onde a amplitude extra aparece.
+      </p>
+
+      <p>
+        <strong>A volta.</strong> Controlada, até o antebraço passar da
+        paralela — resistindo ao cabo, não acompanhando. Soltar a volta é
+        jogar fora metade da série.
+      </p>
+
+      <h2>Os erros clássicos do pulley</h2>
+      <p>
+        <strong>Cotovelo passeando.</strong> Sobe e desce a cada
+        repetição, transformando extensão de tríceps em puxada de ombro.
+        É o sinal universal de carga excessiva.
+      </p>
+
+      <p>
+        <strong>Debruçar no cabo.</strong> O tronco inclina 45 graus e o
+        peso corporal empurra a barra. A pilha desce inteira; o tríceps
+        assiste.
+      </p>
+
+      <p>
+        <strong>Meia amplitude.</strong> Sem estender por completo
+        embaixo e sem deixar o antebraço subir o suficiente em cima, a
+        série vira um balanço curto no meio do caminho.
+      </p>
+
+      <p>
+        <strong>Punho quebrado.</strong> O punho dobrando para baixo na
+        extensão desloca tensão para o antebraço. Punho firme, alinhado.
+      </p>
+
+      <p>
+        <strong>Ombro subindo.</strong> Trapézio encolhendo junto com o
+        esforço — corrige-se deprimindo o ombro antes de cada série e,
+        quase sempre, tirando um pouco de carga.
+      </p>
+
+      <h2>Barra reta, V ou corda?</h2>
+      <p>
+        A <strong>barra reta</strong> é a opção de carga: punho pronado,
+        pegada estável, progressão simples.
+      </p>
+
+      <p>
+        A <strong>barra V</strong> coloca o punho em posição neutra — o
+        alívio clássico para quem sente desconforto de punho ou cotovelo
+        com a reta.
+      </p>
+
+      <p>
+        A <strong>corda</strong> é a opção de amplitude: permite abrir as
+        mãos no final da extensão, aumentando o encurtamento do tríceps.
+        Rende menos carga e mais precisão.
+      </p>
+
+      <p>
+        A versão <strong>unilateral</strong>, com pegada neutra ou
+        invertida, fecha o kit: corrige assimetrias e melhora a conexão
+        com o músculo — complemento periódico, não substituto do
+        bilateral.
+      </p>
+
+      <h2>Quanto volume de tríceps faz sentido</h2>
+      <p>
+        De 6 a 10 séries diretas por semana — porque o
+        <a href="/musculacao/supino-como-fazer/">supino</a> e o
+        desenvolvimento já entregam trabalho pesado ao tríceps em toda
+        sessão de empurrar.
+      </p>
+
+      <p>
+        O pulley entra no fim desses treinos ou no dia de braços, em 3 a
+        4 séries de 10 a 15 repetições. Sinal de excesso: dor na região
+        do cotovelo que persiste entre sessões — caso para reduzir volume
+        e, se continuar, procurar médico ou fisioterapeuta.
+      </p>
+
+      <h2>Progressão que funciona</h2>
+      <p>
+        No pulley, a progressão honesta é por repetições e controle:
+        completou todas as séries no topo da faixa com cotovelo parado,
+        sobe uma placa. Se a placa nova faz o tronco debruçar, volta.
+      </p>
+
+      <p>
+        Anotar carga e repetições vale aqui como em qualquer isolador —
+        sem registro, a tendência é repetir a mesma série por meses.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O pulley é o exercício em que os erros são pequenos, cumulativos
+        e invisíveis para quem executa: dois dedos de deslize no
+        cotovelo, cinco graus a mais de inclinação, um palmo a menos de
+        amplitude.
+      </p>
+
+      <p>
+        Um personal trainer zera esses desvios em poucas sessões, escolhe
+        a pegada certa para a sua articulação e calibra o volume junto
+        com o resto do treino de empurrar. Em músculo que já trabalha em
+        todo supino, eficiência importa mais que quantidade.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o tríceps pulley" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

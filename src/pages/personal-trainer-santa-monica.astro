@@ -1,0 +1,277 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/uberlandia-mg/',
+    titulo: 'Personal trainer em Uberlândia',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-morada-da-colina/',
+    titulo: 'Personal trainer na Morada da Colina',
+    descricao: 'O bairro nobre da cidade — e um contraste completo com o Santa Mônica.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'O formato que cabe no orçamento de quem vive a vida universitária.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-santa-monica';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Uberlândia', url: '/personal-trainer/uberlandia-mg/' },
+  { nome: 'Personal Trainer no Santa Mônica', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Santa Mônica?',
+    resposta:
+      'Em Uberlândia, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. O Santa Mônica trabalha na metade de baixo dessas faixas: o perfil universitário puxa a demanda para treino em pequeno grupo, planos flexíveis e acompanhamento online, formatos que custam menos que o atendimento individual clássico.',
+  },
+  {
+    pergunta: 'Onde treinar de graça no Santa Mônica?',
+    resposta:
+      'O Parque do Sabiá, colado no bairro, é a resposta: uma das duas maiores academias ao ar livre do parque fica na entrada do lado Santa Mônica, e o anel interno tem pista de caminhada e corrida em volta da represa. Somam-se as praças do bairro e a estrutura esportiva aberta à comunidade no entorno do campus da UFU.',
+  },
+  {
+    pergunta: 'Existe personal trainer para estudante da UFU?',
+    resposta:
+      'É a demanda característica do bairro. Os formatos que cabem no orçamento estudantil são o treino em pequeno grupo — três ou quatro dividindo a sessão no Sabiá ou em academia — e o online com avaliação presencial no início do plano. Personals da região montam horários no contraturno das aulas, incluindo início de manhã e horário de almoço.',
+  },
+  {
+    pergunta: 'O Parque do Sabiá serve para treino estruturado?',
+    resposta:
+      'Serve, e é o principal espaço público de treino da cidade: pista em volta da represa com distâncias conhecidas, academias ao ar livre nas entradas dos lados Santa Mônica e Tibery, e sombra suficiente para circuitos no calor. De manhã cedo e no fim da tarde o movimento é grande — o que ajuda na segurança e atrapalha um pouco no espaço.',
+  },
+  {
+    pergunta: 'Qual o perfil de quem mora no Santa Mônica?',
+    resposta:
+      'Mistura típica de bairro universitário consolidado: estudantes e professores da UFU em repúblicas e apartamentos, famílias antigas do bairro e um comércio autossuficiente que atende os dois públicos. Para o personal, isso significa dois mercados no mesmo CEP — o jovem de orçamento curto e o morador estabelecido que quer atendimento individual.',
+  },
+];
+
+const title = 'Personal Trainer no Santa Mônica (Uberlândia)';
+const description =
+  'Personal trainer no Santa Mônica: preços de Uberlândia, o Parque do Sabiá na porta, o campus da UFU e os formatos que cabem no bolso universitário.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Uberlândia</p>
+    <h1>Personal trainer no Santa Mônica: os lugares onde o bairro treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Santa Mônica é o bairro universitário de Uberlândia: abriga o
+      campus-sede da UFU desde os anos 1960 e a mistura clássica de
+      repúblicas, famílias antigas e comércio que funciona para os dois
+      mundos.
+    </p>
+
+    <p class="lead">
+      Para quem treina, é um dos territórios mais bem servidos da cidade.
+      Este guia percorre, lugar por lugar, os endereços de treino de quem
+      procura um <strong>personal trainer no Santa Mônica</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>1. O Parque do Sabiá, a âncora de tudo</h2>
+      <p>
+        Colado no bairro, o Sabiá é o principal parque urbano de
+        Uberlândia: represa, pista de caminhada e corrida no anel
+        interno, sombra de mata e estrutura esportiva completa.
+      </p>
+
+      <p>
+        Duas das maiores academias ao ar livre do parque ficam justamente
+        nas entradas dos lados Santa Mônica e Tibery — de graça, com boa
+        variedade de aparelhos. É onde os personals do bairro concentram
+        as sessões matinais, e onde o treino em pequeno grupo rende mais
+        por menos.
+      </p>
+
+      <h2>2. O campus da UFU e seu entorno</h2>
+      <p>
+        O campus Santa Mônica, com 280 mil m², organiza o fluxo do bairro
+        — e o hábito esportivo dele. O entorno concentra quadras, espaços
+        abertos e a rotina de caminhada de quem cruza o campus a pé todos
+        os dias.
+      </p>
+
+      <p>
+        Para o personal, o campus define dois horários de ouro: o começo
+        da manhã antes das aulas e o fim de tarde depois delas. É a
+        agenda inversa à do executivo — e quem atende aqui aprende a
+        montá-la.
+      </p>
+
+      <h2>3. As academias do bairro</h2>
+      <p>
+        O Santa Mônica é autossuficiente em comércio, e isso vale para o
+        fitness: academias de rua de vários portes e preços, de unidades
+        tradicionais a low-cost, distribuídas pelas avenidas principais.
+      </p>
+
+      <p>
+        Para quem precisa de carga e máquina, é o complemento natural do
+        Sabiá — força na academia, aeróbico e funcional no parque. O
+        personal que circula nos dois cobre o programa inteiro.
+      </p>
+
+      <h2>4. As repúblicas e o treino em casa</h2>
+      <p>
+        Bairro universitário significa muita gente morando em apartamento
+        compartilhado, quintal pequeno e orçamento curto. O treino em
+        casa com material portátil — elásticos, halteres, peso do corpo —
+        resolve o básico, e o
+        <a href="/guias/personal-online-funciona/">acompanhamento
+        online</a> dá método a quem não pode pagar o presencial cheio.
+      </p>
+
+      <p>
+        O arranjo que mais cresce entre estudantes é o híbrido invertido:
+        uma sessão presencial quinzenal para correção e o resto da semana
+        por planilha.
+      </p>
+
+      <h2>5. As praças e o miolo residencial</h2>
+      <p>
+        Fora do eixo do parque, o bairro tem praças com academia ao ar
+        livre e ruas de tráfego moderado no miolo residencial — o
+        suficiente para a caminhada diária das famílias antigas do Santa
+        Mônica, público que também procura personal, com objetivo de
+        saúde e autonomia.
+      </p>
+
+      <p>
+        Para esse morador 60+, o roteiro é força duas a três vezes por
+        semana e caminhada nos demais dias — com qualquer dor ou
+        limitação avaliada por médico ou fisioterapeuta antes do começo.
+      </p>
+
+      <h2>O calor do cerrado organiza o relógio</h2>
+      <p>
+        Uberlândia é quente e seca boa parte do ano. O treino ao ar livre
+        rende antes das 9h e depois das 17h; no meio do dia, a sombra do
+        Sabiá ajuda, mas o padrão é migrar para ambiente coberto.
+      </p>
+
+      <p>
+        Na estação seca, hidratação vira parte do programa — especialmente
+        para quem soma caminhada no parque com treino de força na mesma
+        semana.
+      </p>
+
+      <h2>Quanto custa personal trainer no Santa Mônica</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/uberlandia-mg/">personal trainer em
+        Uberlândia</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de
+        R$ 320 a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Santa Mônica fica na metade de baixo — o oposto da
+        <a href="/personal-trainer-morada-da-colina/">Morada da
+        Colina</a>, que ocupa o topo. O motivo é o perfil: aqui o formato
+        campeão é o pequeno grupo no Sabiá e o online estudantil, ambos
+        com custo por pessoa bem menor que o individual.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Santa Mônica, o teste local é de agenda e de bolso: pergunte
+        se ele monta grupos no Sabiá, se tem plano compatível com
+        semestre letivo — inclusive pausa de férias sem multa — e como
+        funciona o híbrido com planilha. Quem atende o bairro de verdade
+        responde às três sem estranhar a pergunta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Santa Mônica" />
+
+    <WhatsAppCta tema="geral" localidade="no Santa Mônica" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

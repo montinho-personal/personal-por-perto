@@ -1,0 +1,300 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu (e os erros)',
+    descricao: 'Onde a elevação lateral se encaixa no treino completo de deltoide.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/desenvolvimento-como-fazer/',
+    titulo: 'Desenvolvimento: como fazer e os erros comuns',
+    descricao: 'O multiarticular que divide a semana com a elevação lateral.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'A régua geral que a elevação lateral dobra para cima.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/elevacao-lateral-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Elevação lateral: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Até que altura devo levantar os halteres na elevação lateral?',
+    resposta:
+      'Até a linha dos ombros, com o braço aproximadamente paralelo ao chão. Subir além disso transfere o trabalho para o trapézio e aumenta a exigência da articulação sem ganho para o deltoide medial. Se o ombro "encolhe" perto do topo, é sinal de que a carga está alta ou a subida passou do ponto.',
+  },
+  {
+    pergunta: 'Cotovelo esticado ou dobrado na elevação lateral?',
+    resposta:
+      'Levemente dobrado e travado nessa posição — em torno de 10 a 20 graus. O erro não é dobrar, é mudar o ângulo durante a série: quando o cotovelo dobra mais na subida, o braço encurta como alavanca e o exercício fica artificialmente mais fácil. Escolha o ângulo e mantenha do início ao fim.',
+  },
+  {
+    pergunta: 'Por que sinto o trapézio em vez do ombro?',
+    resposta:
+      'Quase sempre é excesso de carga. Quando o halter pesa mais do que o deltoide medial consegue mover, o corpo recruta o trapézio para "encolher" o ombro e completar a repetição. Reduza o peso, deixe o ombro deprimido (longe da orelha) e pense em empurrar o halter para longe, não para cima — a sensação muda na primeira série.',
+  },
+  {
+    pergunta: 'Quantas repetições fazer na elevação lateral?',
+    resposta:
+      'Faixas mais altas funcionam melhor: 12 a 20 repetições, às vezes mais. O deltoide medial responde bem a volume e tempo sob tensão, e cargas altas em faixa baixa quase sempre degeneram em balanço e trapézio. É um exercício de execução paciente, não de recorde de carga.',
+  },
+  {
+    pergunta: 'Elevação lateral com halteres, polia ou máquina?',
+    resposta:
+      'Os três funcionam, com perfis diferentes. O halter é o padrão, mas quase não gera tensão no início do movimento; a polia mantém tensão constante do começo ao fim e é excelente como variação; a máquina estabiliza tudo e permite chegar perto da falha com segurança. Alternar entre elas ao longo dos ciclos é a melhor estratégia.',
+  },
+];
+
+const title = 'Elevação lateral: como fazer e os erros comuns';
+const description =
+  'Elevação lateral: até onde subir, cotovelo dobrado ou esticado, por que o trapézio rouba o movimento e as faixas de repetição que fazem o deltoide medial crescer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Elevação lateral: o exercício que faz o ombro parecer largo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum exercício define tanto a silhueta do ombro quanto a elevação
+      lateral — é ela que trabalha o deltoide medial, a porção que dá
+      largura à parte de cima do corpo.
+    </p>
+
+    <p class="lead">
+      E poucos exercícios são tão sabotados pela pressa: carga demais,
+      balanço, trapézio assumindo tudo. Este guia mostra a execução que
+      funciona e os ajustes que mudam o resultado.
+    </p>
+
+    <div class="prose">
+      <h2>O que a elevação lateral treina</h2>
+      <p>
+        O alvo é o deltoide medial — a porção lateral do ombro, que quase
+        nenhum outro exercício atinge diretamente. Supino e
+        desenvolvimento cuidam bem do deltoide anterior; remadas e
+        crucifixo invertido, do posterior. O medial depende da elevação
+        lateral.
+      </p>
+
+      <p>
+        É por isso que ela é presença fixa em qualquer
+        <a href="/musculacao/treino-de-ombro/">treino de ombro</a> bem
+        montado: sem ela, o deltoide cresce desequilibrado — forte de
+        frente, estreito de lado.
+      </p>
+
+      <VideoYouTube
+        id="IwWvZ0rlNXs"
+        titulo="Como fazer elevação lateral — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da elevação lateral."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>Posição.</strong> Em pé, pés na largura do quadril, tronco
+        levemente inclinado à frente — uns poucos graus, o suficiente para
+        alinhar o deltoide medial com a direção do movimento. Halteres ao
+        lado do corpo.
+      </p>
+
+      <p>
+        <strong>O cotovelo.</strong> Levemente dobrado, entre 10 e 20
+        graus, e travado nesse ângulo do início ao fim. O braço funciona
+        como uma alavanca de comprimento fixo.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Eleve os braços para os lados até a
+        linha dos ombros, pensando em empurrar os halteres para longe do
+        corpo — não para cima. O punho termina na altura do cotovelo, ou
+        um dedo abaixo.
+      </p>
+
+      <p>
+        <strong>O ombro.</strong> Deprimido o tempo todo — longe da
+        orelha. Se ele encolhe, o trapézio entrou e o deltoide saiu.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Controlada, resistindo ao peso, sem
+        deixar os halteres despencarem. Metade do estímulo mora aqui.
+      </p>
+
+      <h2>Os erros que transformam o exercício em outro</h2>
+      <p>
+        <strong>Carga de ego.</strong> O erro-mãe. Elevação lateral com
+        peso demais vira um balanço de corpo inteiro com participação
+        generosa do trapézio. O deltoide medial é um músculo pequeno:
+        halteres modestos, bem movidos, constroem mais ombro que pesos
+        impressionantes mal levantados.
+      </p>
+
+      <p>
+        <strong>Subir além da linha do ombro.</strong> A partir dali o
+        trabalho migra para o trapézio e a articulação paga o preço.
+      </p>
+
+      <p>
+        <strong>Dobrar o cotovelo durante a série.</strong> Encurta a
+        alavanca e facilita artificialmente as últimas repetições —
+        engana a planilha, não o músculo.
+      </p>
+
+      <p>
+        <strong>Punho acima do cotovelo.</strong> "Despejar a jarra"
+        exagerado ou punho alto demais mudam a linha de força. O punho
+        termina na altura do cotovelo.
+      </p>
+
+      <p>
+        <strong>Balanço de quadril.</strong> Impulso é repetição que não
+        conta. Se precisa balançar para subir, o peso está errado.
+      </p>
+
+      <h2>Halter, polia ou máquina?</h2>
+      <p>
+        O <strong>halter</strong> é o padrão universal — simples,
+        disponível, eficaz. A limitação técnica: no início do movimento,
+        com o braço ao lado do corpo, a tensão sobre o deltoide é quase
+        zero.
+      </p>
+
+      <p>
+        A <strong>polia baixa</strong> resolve exatamente isso: o cabo
+        mantém tensão constante do primeiro ao último grau de amplitude.
+        Feita atrás do corpo, é a variação preferida de muitos avançados.
+      </p>
+
+      <p>
+        A <strong>máquina</strong> estabiliza o tronco e guia a
+        trajetória, permitindo chegar perto da falha com segurança — útil
+        em séries finais e para iniciantes aprenderem o padrão.
+      </p>
+
+      <h2>Séries, repetições e frequência</h2>
+      <p>
+        O deltoide medial gosta de volume: 12 a 20 repetições por série,
+        às vezes mais, em 3 a 4 séries por sessão, uma a duas vezes por
+        semana. É uma exceção deliberada à
+        <a href="/musculacao/quantas-series-e-repeticoes/">régua geral de
+        séries e repetições</a> — faixa baixa e carga alta simplesmente
+        não funcionam bem aqui.
+      </p>
+
+      <p>
+        A progressão vem mais de repetições e controle do que de saltos
+        de carga: dos 8 kg bem feitos aos 10 kg bem feitos há meses de
+        distância, e está tudo certo com isso.
+      </p>
+
+      <h2>Onde encaixar na semana</h2>
+      <p>
+        Depois do exercício pesado de ombro — em geral o
+        <a href="/musculacao/desenvolvimento-como-fazer/">desenvolvimento</a> —,
+        quando o deltoide já está aquecido mas ainda tem gás para o
+        trabalho isolado. Em dias de volume extra, funciona também como
+        exercício único, em séries longas.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A elevação lateral tem a pior relação entre aparência de
+        simplicidade e sutileza real: ângulo de cotovelo, altura final,
+        posição do ombro e ritmo mudam completamente quem trabalha — e
+        nada disso é visível de dentro.
+      </p>
+
+      <p>
+        Um personal trainer calibra carga e execução em poucas sessões e
+        transforma um exercício que "não pega" no construtor principal da
+        largura do seu ombro. Em músculo pequeno, técnica é quase tudo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a elevação lateral" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

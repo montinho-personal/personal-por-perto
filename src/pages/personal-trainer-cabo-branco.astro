@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/joao-pessoa-pb/',
+    titulo: 'Personal trainer em João Pessoa',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-altiplano-cabo-branco/',
+    titulo: 'Personal trainer no Altiplano Cabo Branco',
+    descricao: 'O vizinho de cima da falésia, com quem divide o nome e a vista.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Leitura natural numa orla que amanhece cheia de gente correndo.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-cabo-branco';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em João Pessoa', url: '/personal-trainer/joao-pessoa-pb/' },
+  { nome: 'Personal Trainer no Cabo Branco', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Cabo Branco?',
+    resposta:
+      'Em João Pessoa, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. O Cabo Branco trabalha na metade de cima dessas faixas, junto com Manaíra e Tambaú — é orla nobre, com condomínios de frente para o mar e demanda constante por treino na praia e no calçadão.',
+  },
+  {
+    pergunta: 'O que o Cabo Branco tem de único para treinar?',
+    resposta:
+      'O amanhecer mais precoce do país. O bairro fica ao lado da Ponta do Seixas, o ponto mais oriental das Américas — é aqui que o sol nasce primeiro no continente. Na prática, o treino das 5h da manhã já acontece com claridade plena, e a orla amanhece movimentada mais cedo que em qualquer outra capital.',
+  },
+  {
+    pergunta: 'A praia do Cabo Branco é boa para correr?',
+    resposta:
+      'É a melhor da cidade para isso: mar calmo, faixa de areia que firma bem na maré baixa e um calçadão contínuo que segue até Tambaú e Manaíra — dá para montar percursos de vários quilômetros sem cruzamento. O trecho sob as falésias, perto do farol, é o mais bonito e o mais tranquilo.',
+  },
+  {
+    pergunta: 'Qual a diferença entre Cabo Branco e Altiplano Cabo Branco?',
+    resposta:
+      'O Cabo Branco é o bairro da orla, na parte baixa, com o calçadão e a praia; o Altiplano fica no alto da falésia, mais residencial e de condomínios novos. Os dois dividem o nome e a vista, mas o treino muda: embaixo, areia e calçadão; em cima, ruas planas, condomínios com academia e a Estação Cabo Branco como referência.',
+  },
+  {
+    pergunta: 'Dá para treinar no meio do dia no Cabo Branco?',
+    resposta:
+      'Ao ar livre, não é recomendável: o sol do litoral paraibano é forte o ano inteiro e a sombra na orla é escassa. O padrão local é treinar cedo — aproveitando o amanhecer mais cedo do país — ou depois das 16h, quando a falésia começa a sombrear parte da praia. No intervalo, academia ou condomínio.',
+  },
+];
+
+const title = 'Personal Trainer no Cabo Branco (João Pessoa)';
+const description =
+  'Personal trainer no Cabo Branco: preços de João Pessoa, o treino onde o sol nasce primeiro nas Américas, a orla sob as falésias e os formatos que funcionam no bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de João Pessoa</p>
+    <h1>Personal trainer no Cabo Branco: treinar onde o sol chega primeiro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo dia, o primeiro raio de sol do continente americano toca o
+      Brasil a poucos minutos daqui — na Ponta do Seixas, o ponto mais
+      oriental das Américas, vizinho imediato do Cabo Branco.
+    </p>
+
+    <p class="lead">
+      Esse detalhe geográfico molda a rotina do bairro: a orla amanhece
+      antes e treina antes. Este guia percorre o território e o mercado de
+      <strong>personal trainer no Cabo Branco</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro na ponta do mapa</h2>
+      <p>
+        O Cabo Branco é a orla sul de João Pessoa: uma faixa de praia de
+        mar calmo que corre do Busto de Tamandaré até as falésias, onde o
+        terreno sobe e a cidade dá lugar ao verde.
+      </p>
+
+      <p>
+        No alto da falésia está o <strong>Farol do Cabo Branco</strong>,
+        inaugurado em 1972 com seu desenho inspirado numa planta de sisal
+        — homenagem a um dos sustentos históricos da Paraíba. Dali se
+        avista a <strong>Ponta do Seixas</strong>, o extremo leste do
+        continente.
+      </p>
+
+      <p>
+        A avenida beira-mar concentra os condomínios mais valorizados da
+        capital, de frente para um calçadão que segue sem interrupção até
+        Tambaú e Manaíra — a espinha dorsal do treino ao ar livre
+        pessoense.
+      </p>
+
+      <h2>O amanhecer como vantagem competitiva</h2>
+      <p>
+        Ser o bairro mais oriental das Américas tem uma consequência
+        prática: o dia começa mais cedo. Às 4h45 de verão já há claridade;
+        às 5h30, a orla está em plena atividade — corredores, ciclistas,
+        grupos de funcional na areia.
+      </p>
+
+      <p>
+        Para quem treina, isso resolve o problema clássico do litoral: o
+        calor. A janela fresca da manhã aqui é mais longa do que em
+        qualquer outra capital, e o personal local monta a agenda em
+        torno dela.
+      </p>
+
+      <h2>Onde o treino acontece</h2>
+      <p>
+        <strong>No calçadão e na areia.</strong> O percurso plano e
+        contínuo serve à corrida estruturada — assunto do guia de
+        <a href="/guias/personal-trainer-para-corredores/">personal para
+        corredores</a> —, e a areia firme da maré baixa vira pista natural.
+        O trecho sob as falésias é o mais silencioso da orla.
+      </p>
+
+      <p>
+        <strong>No mar calmo.</strong> Protegida pelos arrecifes, a praia
+        do Cabo Branco tem águas tranquilas que acomodam natação de
+        travessia leve, SUP e o banho de recuperação pós-treino.
+      </p>
+
+      <p>
+        <strong>Nos condomínios da beira-mar.</strong> Os edifícios da
+        avenida entregam espaço fitness quase como regra, e o
+        <a href="/guias/personal-trainer-em-condominio/">atendimento em
+        condomínio</a> é o formato dominante entre moradores de agenda
+        cheia.
+      </p>
+
+      <p>
+        <strong>Nas academias do eixo da orla.</strong> Para quem precisa
+        de carga e estrutura completa, a oferta se concentra nas
+        transversais e no eixo que liga o bairro a Tambaú.
+      </p>
+
+      <h2>Quem procura personal trainer aqui</h2>
+      <p>
+        O perfil dominante é o morador dos condomínios da orla:
+        profissionais liberais, aposentados de alto padrão e famílias que
+        escolheram o bairro pela qualidade de vida. O treino em condomínio
+        e o da manhã na praia são os formatos que sustentam essa rotina.
+      </p>
+
+      <p>
+        Há também o público 60+, numeroso na orla sul, para quem o
+        objetivo é autonomia — força, equilíbrio e caminhada segura no
+        calçadão. Dores e limitações articulares, como sempre, passam por
+        avaliação de médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        E existe o visitante de temporada: o Cabo Branco recebe hóspedes
+        de longa estadia no verão, e pacotes curtos de algumas semanas são
+        parte do mercado local.
+      </p>
+
+      <h2>O sobe e desce com o Altiplano</h2>
+      <p>
+        O bairro divide o nome com o
+        <a href="/personal-trainer-altiplano-cabo-branco/">Altiplano Cabo
+        Branco</a>, no alto da falésia — endereço dos condomínios novos e
+        da Estação Cabo Branco, o centro cultural desenhado por Oscar
+        Niemeyer.
+      </p>
+
+      <p>
+        Para o treino, a ladeira que liga os dois é um recurso: subidas
+        curtas e intensas a minutos da orla plana. Personals locais usam o
+        contraste — base aeróbica embaixo, tiro de subida em cima — como
+        variação de estímulo sem sair do bairro.
+      </p>
+
+      <h2>Quanto custa personal trainer no Cabo Branco</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/joao-pessoa-pb/">personal trainer em
+        João Pessoa</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de
+        R$ 320 a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Cabo Branco trabalha na metade de cima, no mesmo patamar de
+        Manaíra e Tambaú. O treino em dupla na orla é o caminho clássico
+        para dividir custo, e o online (R$ 160 a R$ 410 mensais) cobre as
+        temporadas fora da cidade.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Cabo Branco, some o teste local: pergunte a que horas ele
+        começa a atender. Quem trabalha na orla sul sabe que o dia útil do
+        treino começa antes das 5h30 — e um profissional que só abre
+        agenda às 7h vai te entregar a pior parte do calor.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Cabo Branco" />
+
+    <WhatsAppCta tema="geral" localidade="no Cabo Branco" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

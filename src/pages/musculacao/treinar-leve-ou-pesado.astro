@@ -1,0 +1,295 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-ate-a-falha/',
+    titulo: 'Treinar até a falha: quando vale a pena',
+    descricao: 'A variável que decide se o treino leve funciona ou não.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'As faixas de carga e repetição postas lado a lado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Progressão de carga: como evoluir sem estacionar',
+    descricao: 'O princípio que vale para qualquer faixa de peso.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treinar-leve-ou-pesado';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treinar leve ou pesado?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Treinar leve dá resultado?',
+    resposta:
+      'Dá, com uma condição inegociável: a série precisa chegar perto da falha. A pesquisa das últimas décadas mostrou que cargas leves (até 30 repetições) constroem músculo de forma comparável às pesadas, desde que o esforço final seja alto. O que não funciona é o treino leve E confortável — parar a série quando começa a incomodar não gera estímulo em nenhuma faixa de carga.',
+  },
+  {
+    pergunta: 'Qual a diferença de resultado entre carga leve e pesada?',
+    resposta:
+      'Para hipertrofia, quase nenhuma, quando as duas são levadas perto da falha. Para força máxima, a carga pesada vence — força é habilidade específica, treinada com pesos altos e poucas repetições. Para resistência muscular, a leve leva vantagem. A escolha depende do objetivo, das articulações e até do equipamento disponível.',
+  },
+  {
+    pergunta: 'Quando faz sentido treinar mais leve?',
+    resposta:
+      'Nos cenários em que o peso alto atrapalha: volta de lesão ou desconforto articular (com liberação de médico ou fisioterapeuta), exercícios de isolamento que degeneram com carga alta (elevação lateral é o exemplo clássico), treino em casa com equipamento limitado, fases de recuperação e alunos iniciantes consolidando técnica. Em todos eles, o esforço continua alto — só a carga é menor.',
+  },
+  {
+    pergunta: 'Treino leve com muitas repetições queima mais gordura?',
+    resposta:
+      'Não — esse é um mito antigo. O gasto calórico de uma série longa é apenas marginalmente maior, e "definição" é questão de déficit calórico, não de faixa de repetição. Quem está emagrecendo se beneficia de manter cargas desafiadoras justamente para preservar massa muscular durante o processo.',
+  },
+  {
+    pergunta: 'Como saber se meu treino leve está perto o suficiente da falha?',
+    resposta:
+      'O teste prático: nas últimas duas ou três repetições, a velocidade cai visivelmente e você não conseguiria fazer mais que uma ou duas além das programadas. Se termina a série no mesmo ritmo em que começou, havia muitas repetições sobrando — e o estímulo ficou abaixo do necessário. Séries leves honestas incomodam bastante no final; é o preço da faixa.',
+  },
+];
+
+const title = 'Treinar leve ou pesado: o que muda no resultado';
+const description =
+  'Treinar leve ou pesado: o que a ciência mostra sobre hipertrofia com cargas baixas, a condição da falha, quando cada faixa faz sentido e os mitos da definição.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treinar leve ou pesado: o que muda de verdade no resultado</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Durante décadas, a academia viveu de uma certeza: músculo se
+      constrói com carga pesada, e treino leve é coisa de quem não quer
+      resultado. A pesquisa das últimas décadas complicou essa certeza.
+    </p>
+
+    <p class="lead">
+      A resposta atual é mais interessante — e mais útil — que os dois
+      extremos. Este guia mostra o que cada faixa de carga entrega, a
+      condição que decide tudo e quando cada uma faz sentido na prática.
+    </p>
+
+    <div class="prose">
+      <h2>O que a ciência mudou de ideia</h2>
+      <p>
+        Os estudos que compararam cargas pesadas (faixa de 6 a 12
+        repetições) com cargas leves (20, 30 repetições) chegaram a um
+        resultado que surpreendeu o senso comum: para hipertrofia, o
+        crescimento é comparável — <strong>desde que as séries cheguem
+        perto da falha</strong>.
+      </p>
+
+      <p>
+        O músculo não conta o número escrito na anilha. Ele responde à
+        tensão e ao esforço das últimas repetições, quando as fibras de
+        maior potencial de crescimento entram em ação. Esse ponto chega
+        com 8 repetições pesadas ou com 25 leves — o caminho é diferente,
+        o destino é parecido.
+      </p>
+
+      <VideoYouTube
+        id="USf4vklDC8A"
+        titulo="Vale a pena treinar leve? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin responde se o treino com cargas leves dá resultado."
+        short={true}
+      />
+
+      <h2>A condição que decide tudo</h2>
+      <p>
+        A palavra-chave do parágrafo anterior é <em>perto da falha</em> —
+        e é aqui que o treino leve costuma fracassar na prática.
+      </p>
+
+      <p>
+        Uma série de 25 repetições levada a sério dói. As últimas cinco
+        repetições queimam mais que qualquer série pesada. Quem escolhe o
+        treino leve para fugir do desconforto para a série na repetição
+        15, confortável — e não gera estímulo nenhum.
+      </p>
+
+      <p>
+        O guia sobre <a href="/musculacao/treinar-ate-a-falha/">treinar
+        até a falha</a> detalha essa régua: não é preciso falhar sempre,
+        mas é preciso chegar perto. Com carga leve, essa regra deixa de
+        ser recomendação e vira requisito.
+      </p>
+
+      <h2>Onde o pesado continua imbatível</h2>
+      <p>
+        <strong>Força máxima.</strong> Força é habilidade específica:
+        quem quer levantar pesado precisa treinar pesado. Séries de 3 a 6
+        repetições com cargas altas ensinam o sistema nervoso a recrutar
+        — e nenhuma série de 25 substitui isso.
+      </p>
+
+      <p>
+        <strong>Eficiência de tempo.</strong> Uma série pesada de 8
+        repetições termina em 25 segundos; uma leve de 30 passa de um
+        minuto e meio, com desconforto metabólico crescente. Em treinos
+        de volume alto, a conta do tempo pesa.
+      </p>
+
+      <p>
+        <strong>Progressão mensurável.</strong> A
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> é mais fácil de enxergar e registrar na faixa pesada —
+        subir de 60 kg para 62,5 kg é objetivo; "queimar mais" não é.
+      </p>
+
+      <h2>Onde o leve resolve problemas reais</h2>
+      <p>
+        <strong>Articulações que reclamam.</strong> Joelho, ombro ou
+        cotovelo sensíveis toleram muito melhor 20 repetições com carga
+        moderada do que 6 com carga máxima — com avaliação de médico ou
+        fisioterapeuta quando há dor instalada.
+      </p>
+
+      <p>
+        <strong>Isoladores que degeneram com peso.</strong> Elevação
+        lateral, crucifixo, extensões: a técnica desses exercícios
+        desmonta com carga alta. Faixas de 12 a 20 são o habitat natural
+        deles.
+      </p>
+
+      <p>
+        <strong>Treino em casa.</strong> Com halteres limitados, a única
+        progressão disponível é de repetições e proximidade da falha — e
+        ela funciona, como os estudos mostram.
+      </p>
+
+      <p>
+        <strong>Fases de recuperação.</strong> Semanas leves programadas
+        dão fôlego a articulações e cabeça sem parar o estímulo por
+        completo.
+      </p>
+
+      <h2>O mito da definição</h2>
+      <p>
+        "Leve com muitas repetições define; pesado com poucas cresce" —
+        a frase mais repetida e mais errada do vestiário. Definição é
+        percentual de gordura, que se resolve com déficit calórico, não
+        com faixa de repetição.
+      </p>
+
+      <p>
+        Ironia: quem está emagrecendo se beneficia de manter carga
+        desafiadora, porque é ela que sinaliza ao corpo para preservar
+        massa muscular durante o déficit.
+      </p>
+
+      <h2>Como combinar as duas na prática</h2>
+      <p>
+        Os melhores programas não escolhem um lado — distribuem. Os
+        multiarticulares grandes (agachamento, supino, terra, remada)
+        vivem bem nas faixas de 5 a 10 repetições. Os isoladores e as
+        máquinas rendem mais de 10 a 20. E séries ocasionais de 20 a 30
+        têm lugar em fases específicas e exercícios tolerantes.
+      </p>
+
+      <p>
+        A régua completa está no guia de
+        <a href="/musculacao/quantas-series-e-repeticoes/">séries e
+        repetições</a> — e o princípio unificador é um só: perto do
+        limite, com técnica intacta, em qualquer faixa.
+      </p>
+
+      <h2>Onde entra o acompanhamento</h2>
+      <p>
+        A dificuldade real do treino leve é de calibragem: saber se a
+        série chegou perto o suficiente da falha exige experiência que o
+        iniciante ainda não tem — e o erro sistemático para o lado
+        confortável é invisível de dentro.
+      </p>
+
+      <p>
+        Um personal trainer define qual faixa serve a cada exercício do
+        seu programa, empurra as séries leves até onde elas precisam ir e
+        protege as pesadas com técnica. A resposta para "leve ou pesado?"
+        certa para você é essa: os dois, cada um no lugar certo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treinar leve ou pesado" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
