@@ -1,0 +1,287 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/campo-grande-ms/',
+    titulo: 'Personal trainer em Campo Grande',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-jardim-dos-estados/',
+    titulo: 'Personal trainer no Jardim dos Estados',
+    descricao: 'O vizinho com quem divide a Afonso Pena e o topo do mercado local.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio',
+    descricao: 'O formato que domina os condomínios fechados do bairro.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-chacara-cachoeira';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Campo Grande', url: '/personal-trainer/campo-grande-ms/' },
+  { nome: 'Personal Trainer na Chácara Cachoeira', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Chácara Cachoeira?',
+    resposta:
+      'Em Campo Grande, a aula avulsa vai de R$ 70 a R$ 160 e o pacote mensal de R$ 350 a R$ 950. A Chácara Cachoeira trabalha no topo dessas faixas: é o bairro de maior renda da cidade, com condomínios fechados de alto padrão e demanda forte por atendimento dentro de casa e do condomínio.',
+  },
+  {
+    pergunta: 'O que é o Parque das Nações Indígenas para quem treina?',
+    resposta:
+      'É a maior vantagem geográfica do bairro: 119 hectares de parque urbano colados na região, com pista de cooper de 4 km, quadras, pista de skate e lago. É um dos maiores parques urbanos do mundo dentro de perímetro urbano — e funciona como a academia a céu aberto de toda a região nobre de Campo Grande.',
+  },
+  {
+    pergunta: 'Qual o formato de treino mais comum no bairro?',
+    resposta:
+      'O atendimento em casa e em condomínio fechado. A Chácara Cachoeira é um bairro de mansões e condomínios de alto padrão, com espaço de sobra para treinar sem sair de casa — o personal leva o material ou usa a estrutura do próprio condomínio. O Parque das Nações e as academias da Afonso Pena completam o cardápio.',
+  },
+  {
+    pergunta: 'Como o calor de Campo Grande afeta o treino?',
+    resposta:
+      'Organizando os horários: a cidade é quente boa parte do ano, com máximas frequentes acima de 33 °C. O treino ao ar livre rende antes das 8h e depois das 17h — os horários de pico do Parque das Nações. No meio do dia, o padrão é ambiente climatizado, em casa ou na academia, com hidratação reforçada em qualquer cenário.',
+  },
+  {
+    pergunta: 'Vale treinar em dupla ou família no bairro?',
+    resposta:
+      'É um dos formatos que mais crescem: casais e famílias dos condomínios dividindo a sessão em casa ou no parque. Além de reduzir o valor por pessoa, o compromisso mútuo sustenta a frequência — e em um bairro em que o espaço físico não é limitação, o treino a dois funciona sem improviso.',
+  },
+];
+
+const title = 'Personal Trainer na Chácara Cachoeira (C. Grande)';
+const description =
+  'Personal trainer na Chácara Cachoeira: preços de Campo Grande, o Parque das Nações Indígenas ao lado, os condomínios de alto padrão e o formato certo para cada perfil.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Campo Grande</p>
+    <h1>Personal trainer na Chácara Cachoeira: o treino de cada perfil</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Chácara Cachoeira é o endereço de maior renda de Campo Grande —
+      as antigas chácaras viraram mansões e condomínios fechados, com a
+      Avenida Afonso Pena de um lado e o Parque das Nações Indígenas
+      praticamente na esquina.
+    </p>
+
+    <p class="lead">
+      Espaço e estrutura não faltam; o que muda é a rotina de cada
+      morador. Este guia percorre os perfis que mais procuram um
+      <strong>personal trainer na Chácara Cachoeira</strong> e o arranjo
+      que funciona para cada um.
+    </p>
+
+    <div class="prose">
+      <h2>Antes dos perfis: o território</h2>
+      <p>
+        O bairro nasceu de chácaras que a expansão imobiliária converteu
+        em residências de alto padrão — hoje é o maior PIB por bairro da
+        cidade, com ruas arborizadas, condomínios fechados e a vizinhança
+        do <a href="/personal-trainer-jardim-dos-estados/">Jardim dos
+        Estados</a> compondo o eixo nobre da Afonso Pena.
+      </p>
+
+      <p>
+        Para o treino, o trunfo é o <strong>Parque das Nações
+        Indígenas</strong>: 119 hectares — um dos maiores parques urbanos
+        do mundo —, com pista de cooper de 4 km, quadras e lago. A região
+        inteira treina lá de manhã cedo e no fim da tarde.
+      </p>
+
+      <h2>Perfil 1: o dono de casa com quintal de sobra</h2>
+      <p>
+        O morador clássico do bairro tem em casa o que muita academia
+        gostaria de ter: espaço. O treino a domicílio com material do
+        personal — ou com um home gym montado — é o formato natural, sem
+        deslocamento e no horário exato.
+      </p>
+
+      <p>
+        Para esse perfil, o desafio não é estrutura, é constância: a
+        agenda executiva que banca a mansão também atropela o treino. A
+        sessão com hora marcada existe para vencer exatamente isso.
+      </p>
+
+      <h2>Perfil 2: a família do condomínio fechado</h2>
+      <p>
+        Os condomínios de alto padrão do bairro entregam academia,
+        piscina e áreas de lazer — e o
+        <a href="/guias/personal-trainer-em-condominio/">personal em
+        condomínio</a> transforma essa estrutura em programa: sessões
+        individuais, em dupla ou em família, dentro do próprio
+        empreendimento.
+      </p>
+
+      <p>
+        O treino de casal é o arranjo que mais cresce aqui: divide o
+        custo, cria compromisso mútuo e aproveita o mesmo horário para
+        dois objetivos diferentes — o personal monta a sessão em paralelo.
+      </p>
+
+      <h2>Perfil 3: o corredor do Parque das Nações</h2>
+      <p>
+        A pista de 4 km do parque criou uma comunidade de corrida sólida
+        na região nobre. O morador que já roda quilômetros procura o
+        personal para estruturar: planilha, força de sustentação e
+        prevenção — joelho e canela agradecem.
+      </p>
+
+      <p>
+        O trabalho de força, duas vezes por semana em casa ou na
+        academia, é o que transforma o corredor de fim de semana em
+        corredor de prova — sem as dores que o volume improvisado cobra.
+      </p>
+
+      <h2>Perfil 4: o público 60+ do bairro consolidado</h2>
+      <p>
+        Bairro maduro tem moradores maduros: uma parcela relevante da
+        Chácara Cachoeira envelheceu junto com as casas, e a demanda por
+        treino de autonomia — força, equilíbrio, densidade óssea — é
+        constante.
+      </p>
+
+      <p>
+        O formato em casa é o preferido, com progressão paciente e
+        avaliação de médico ou fisioterapeuta antes do programa quando há
+        dores ou limitações. O objetivo é claro: subir escada, carregar
+        neto, viver a casa grande sem depender de ninguém.
+      </p>
+
+      <h2>Perfil 5: o executivo do agronegócio que viaja</h2>
+      <p>
+        Campo Grande é capital do agro, e o bairro concentra quem toca
+        fazenda e empresa ao mesmo tempo — semanas na cidade, semanas no
+        campo. Para esse perfil, o arranjo híbrido resolve: presencial
+        quando está na cidade, planilha acompanhada quando está fora.
+      </p>
+
+      <p>
+        O online (R$ 170 a R$ 430 mensais) sustenta as semanas de
+        fazenda, e o personal ajusta o programa ao que existe por lá —
+        nem que seja um par de halteres e um pátio.
+      </p>
+
+      <h2>O calor organiza o relógio de todos</h2>
+      <p>
+        Independentemente do perfil, o calor campo-grandense empurra o
+        treino ao ar livre para antes das 8h e depois das 17h. O Parque
+        das Nações tem seus dois picos diários exatamente nesses
+        horários; no meio do dia, o ambiente climatizado assume.
+      </p>
+
+      <h2>Quanto custa personal trainer na Chácara Cachoeira</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/campo-grande-ms/">personal trainer em
+        Campo Grande</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de
+        R$ 350 a R$ 950 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Chácara Cachoeira trabalha no topo dessas faixas — o
+        atendimento em casa e em condomínio embute deslocamento e
+        exclusividade. O treino em dupla é o redutor de custo clássico do
+        bairro.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Chácara Cachoeira, some o filtro do formato: ele atende em
+        casa com material próprio? Conhece os condomínios da região e
+        suas regras de acesso? E tem plano para as suas semanas de
+        viagem, se o agro fizer parte da sua vida? Quem trabalha no
+        bairro responde às três sem titubear.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Chácara Cachoeira" />
+
+    <WhatsAppCta tema="geral" localidade="na Chácara Cachoeira" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

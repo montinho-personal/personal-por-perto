@@ -1,0 +1,296 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-posterior-de-coxa/',
+    titulo: 'Treino de posterior de coxa: como fazer crescer',
+    descricao: 'Onde a mesa flexora se encaixa no treino completo de posteriores.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/stiff-como-fazer/',
+    titulo: 'Stiff: como fazer e os erros comuns',
+    descricao: 'O par da mesa flexora — alongamento de um lado, encurtamento do outro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu (e os erros)',
+    descricao: 'O quadro geral em que posterior e quadríceps se equilibram.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/mesa-flexora-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Mesa flexora: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Para que serve a mesa flexora?',
+    resposta:
+      'Para isolar o posterior de coxa na função de flexionar o joelho — deitado de bruços, você dobra as pernas contra a resistência da máquina. É o complemento natural do stiff e do terra romeno, que trabalham o mesmo músculo pela outra função (estender o quadril) e na posição alongada. Juntos, os dois ângulos cobrem o posterior por completo.',
+  },
+  {
+    pergunta: 'Mesa flexora ou cadeira flexora: qual é melhor?',
+    resposta:
+      'As duas flexionam o joelho; a diferença está na posição do quadril. Na mesa (deitado), o quadril fica estendido; na cadeira (sentado), fica flexionado — o que alonga mais o posterior e, pela evidência recente, tende a gerar um estímulo de crescimento um pouco maior. Na prática: use a que existir na sua academia e, se houver as duas, alterne ou priorize a sentada.',
+  },
+  {
+    pergunta: 'Por que o quadril levanta durante a mesa flexora?',
+    resposta:
+      'Porque a carga está alta demais ou o posterior fadigou: o corpo compensa elevando o quadril do banco para "roubar" amplitude com a lombar. Além de tirar o trabalho do músculo-alvo, o padrão sobrecarrega a coluna. Trave o quadril contra o estofado, segure firme nos apoios e escolha uma carga que permita a série inteira sem descolar.',
+  },
+  {
+    pergunta: 'Quantas séries e repetições na mesa flexora?',
+    resposta:
+      'De 3 a 4 séries de 10 a 15 repetições funcionam bem para a maioria — o posterior responde a volume com controle, especialmente na fase de retorno. Descer devagar (2 a 3 segundos) vale mais do que empilhar placas. Uma a duas sessões semanais, combinadas com um exercício de quadril como o stiff, cobrem o músculo por inteiro.',
+  },
+  {
+    pergunta: 'Mesa flexora ajuda a prevenir lesão de posterior?',
+    resposta:
+      'Ajuda como parte do conjunto. O posterior de coxa é o músculo mais lesionado em esportes de corrida e chute, e a prevenção passa por fortalecê-lo em todas as funções — flexão de joelho (mesa), extensão de quadril (stiff) e trabalho excêntrico. Quem pratica futebol, corrida ou beach tennis tem na mesa flexora um seguro barato, desde que o programa não pare nela.',
+  },
+];
+
+const title = 'Mesa flexora: como fazer e os erros comuns';
+const description =
+  'Mesa flexora: para que serve, a diferença para a cadeira flexora, por que o quadril não pode levantar e como combinar com o stiff para o posterior completo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Mesa flexora: o isolador que o posterior de coxa merece</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O posterior de coxa é o músculo mais negligenciado do treino de
+      pernas — e o mais lesionado nos esportes. A mesa flexora existe
+      exatamente para fechar essa conta.
+    </p>
+
+    <p class="lead">
+      Parece uma máquina à prova de erro: deite e dobre as pernas. Mas há
+      três ou quatro detalhes que separam a série que constrói posterior
+      da série que só balança o estofado. Este guia mostra todos.
+    </p>
+
+    <div class="prose">
+      <h2>O que a mesa flexora treina</h2>
+      <p>
+        Os isquiotibiais — bíceps femoral, semitendíneo e semimembranáceo
+        — na função de flexionar o joelho, com participação da
+        panturrilha como coadjuvante.
+      </p>
+
+      <p>
+        O detalhe que importa: o posterior tem duas funções (dobrar o
+        joelho e estender o quadril), e nenhum exercício cobre as duas ao
+        mesmo tempo com a mesma qualidade. A mesa flexora cuida da
+        primeira; o <a href="/musculacao/stiff-como-fazer/">stiff</a> e o
+        terra romeno, da segunda. O
+        <a href="/musculacao/treino-de-posterior-de-coxa/">treino de
+        posterior completo</a> precisa dos dois ângulos.
+      </p>
+
+      <VideoYouTube
+        id="2-ULaRrQa7c"
+        titulo="Como fazer mesa flexora — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da mesa flexora."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>O ajuste da máquina.</strong> O eixo de rotação alinhado
+        com o joelho e o rolo apoiado logo acima do calcanhar, no
+        tendão de Aquiles — não no meio da panturrilha. Ajuste errado é a
+        causa número um de desconforto.
+      </p>
+
+      <p>
+        <strong>Posição.</strong> Deitado de bruços, quadril colado no
+        estofado, mãos firmes nos apoios. O tronco fica estável do início
+        ao fim.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Flexione os joelhos trazendo o rolo em
+        direção ao glúteo, sem arrancada. O topo é onde o posterior
+        contrai por completo — segure um instante.
+      </p>
+
+      <p>
+        <strong>A volta.</strong> O coração do exercício: desça em 2 a 3
+        segundos, resistindo à carga, até quase estender os joelhos —
+        sem deixar as placas baterem.
+      </p>
+
+      <p>
+        <strong>Os pés.</strong> Mantê-los em dorsiflexão (puxados para
+        cima) aumenta a participação da panturrilha; em ponta, isola mais
+        o posterior. Vale alternar, mas não trocar no meio da série.
+      </p>
+
+      <h2>Os erros que esvaziam a máquina</h2>
+      <p>
+        <strong>Quadril levantando do banco.</strong> O clássico. A cada
+        repetição o quadril sobe, a lombar entra e a amplitude vira
+        ilusão. Carga alta demais — reduza e trave o quadril.
+      </p>
+
+      <p>
+        <strong>Repetição chicoteada.</strong> Subir com impulso e soltar
+        a descida transforma o exercício em balanço. O posterior cresce
+        na fase de retorno controlada.
+      </p>
+
+      <p>
+        <strong>Amplitude pela metade.</strong> Nem contração completa em
+        cima, nem extensão quase total embaixo. A série fica mais fácil e
+        o resultado, menor.
+      </p>
+
+      <p>
+        <strong>Rolo no lugar errado.</strong> No meio da panturrilha,
+        machuca; longe demais do calcanhar, encurta a alavanca. Trinta
+        segundos de ajuste resolvem o incômodo inteiro.
+      </p>
+
+      <h2>Mesa ou cadeira flexora?</h2>
+      <p>
+        A cadeira flexora (sentada) trabalha o mesmo movimento com o
+        quadril flexionado — o que mantém o posterior mais alongado
+        durante a série. A evidência recente aponta uma pequena vantagem
+        de crescimento para essa posição.
+      </p>
+
+      <p>
+        A leitura prática: se a academia tem as duas, a sentada pode ser
+        a principal e a mesa, a variação; se só tem uma, a que existe é a
+        certa. A diferença entre as máquinas é menor que a diferença
+        entre fazer bem e fazer de qualquer jeito.
+      </p>
+
+      <h2>Séries, repetições e a dupla com o stiff</h2>
+      <p>
+        De 3 a 4 séries de 10 a 15 repetições, uma a duas vezes por
+        semana. A dupla clássica do dia de posteriores: stiff primeiro
+        (função quadril, posição alongada), mesa flexora depois (função
+        joelho, contração completa).
+      </p>
+
+      <p>
+        Dentro do <a href="/musculacao/treino-de-pernas/">treino de
+        pernas</a> completo, essa dupla equilibra o volume que
+        agachamento e leg press despejam no quadríceps — e é esse
+        equilíbrio que protege joelho e posterior nos esportes.
+      </p>
+
+      <h2>Para quem corre, chuta ou salta</h2>
+      <p>
+        O posterior de coxa é o músculo mais lesionado do futebol e da
+        corrida — o famoso estiramento. Fortalecê-lo nas duas funções,
+        com ênfase no trabalho excêntrico (a descida lenta da mesa), é o
+        seguro mais barato que existe contra semanas de afastamento.
+      </p>
+
+      <p>
+        Dor aguda atrás da coxa durante corrida ou chute, porém, não se
+        resolve com máquina: é caso de médico ou fisioterapeuta antes de
+        qualquer treino.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Na mesa flexora, os erros são de milímetros e segundos: o rolo
+        dois dedos acima do lugar, o quadril descolando meio centímetro,
+        a descida meio segundo mais rápida a cada série.
+      </p>
+
+      <p>
+        Um personal trainer ajusta a máquina para o seu corpo, fixa o
+        ritmo certo e equilibra o volume entre posterior e quadríceps —
+        o desequilíbrio que ele mais corrige em aluno novo. É o tipo de
+        acerto que aparece no espelho e, principalmente, no que não
+        acontece: a lesão que não veio.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a mesa flexora" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

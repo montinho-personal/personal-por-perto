@@ -1,0 +1,277 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/teresina-pi/',
+    titulo: 'Personal trainer em Teresina',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-joquei/',
+    titulo: 'Personal trainer no Jóquei',
+    descricao: 'O vizinho da zona leste, do outro lado do eixo da Frei Serafim.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/musculacao/aquecimento-antes-do-treino/',
+    titulo: 'Aquecimento antes do treino: como fazer certo',
+    descricao: 'O que muda quando a cidade inteira já é um aquecimento.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-fatima-teresina';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Teresina', url: '/personal-trainer/teresina-pi/' },
+  { nome: 'Personal Trainer no Fátima', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no bairro de Fátima?',
+    resposta:
+      'Em Teresina, a aula avulsa vai de R$ 65 a R$ 150 e o pacote mensal de R$ 320 a R$ 880. O Fátima trabalha no topo dessas faixas, junto com o Jóquei e os demais endereços da zona leste — é área nobre, com condomínios verticais e demanda constante por atendimento no prédio.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar ao ar livre no Fátima?',
+    resposta:
+      'Antes das 7h ou depois das 17h30 — Teresina é uma das capitais mais quentes do Brasil, com máximas frequentes acima de 36 °C na segunda metade do ano, o famoso "B-R-O bró". Entre esses horários, o treino migra para ambiente climatizado. A vantagem do bairro é a proximidade do rio Poti, que dá alguma brisa ao entardecer.',
+  },
+  {
+    pergunta: 'O que o bairro tem por perto para treinar?',
+    resposta:
+      'O eixo de lazer da zona leste: a Ponte Estaiada com seu mirante, a Potycabana — o parque urbano mais movimentado da cidade, com pistas e quadras — e a orla do rio Poti para caminhada no fim de tarde. Somam-se as academias da região, entre as mais bem equipadas de Teresina.',
+  },
+  {
+    pergunta: 'Treinar no calor de Teresina exige cuidado especial?',
+    resposta:
+      'Exige método, não medo. Hidratação começa antes da sessão; o aquecimento é mais curto, porque o corpo já chega aquecido; o descanso entre séries pode ser um pouco maior; e o treino ao ar livre respeita rigorosamente a janela dos horários frescos. Tontura, cãibra recorrente ou mal-estar em treino no calor pedem avaliação médica.',
+  },
+  {
+    pergunta: 'Os condomínios do Fátima têm academia?',
+    resposta:
+      'A maioria dos empreendimentos verticais recentes, sim — a zona leste concentrou os lançamentos de médio e alto padrão da última década, e espaço fitness virou item de série. É por isso que o formato dominante no bairro é o personal dentro do condomínio, no horário em que o sol não permite rua.',
+  },
+];
+
+const title = 'Personal Trainer no Fátima (Teresina): o guia';
+const description =
+  'Personal trainer no bairro de Fátima: preços de Teresina, a Ponte Estaiada e a Potycabana ao lado, e como treinar bem numa das capitais mais quentes do país.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Teresina</p>
+    <h1>Personal trainer no Fátima: as perguntas de quem treina a 36 °C</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Fátima é um dos endereços nobres da zona leste de Teresina — a
+      região que cresceu do outro lado do rio Poti, com a Ponte Estaiada
+      como cartão-postal e a Potycabana como quintal esportivo.
+    </p>
+
+    <p class="lead">
+      Treinar aqui é negociar com o termômetro. Este guia responde, uma a
+      uma, as dúvidas de quem procura um <strong>personal trainer no
+      Fátima</strong> — a começar pela mais importante: a que horas.
+    </p>
+
+    <div class="prose">
+      <h2>Onde fica o Fátima e por que ele importa</h2>
+      <p>
+        O bairro integra o eixo nobre da zona leste, consolidado desde os
+        anos 1970, quando a expansão da cidade atravessou o rio Poti. Ao
+        lado estão o <a href="/personal-trainer-joquei/">Jóquei</a> e os
+        demais endereços de maior renda da capital.
+      </p>
+
+      <p>
+        A vizinhança imediata reúne o melhor conjunto de lazer ativo de
+        Teresina: a <strong>Ponte Estaiada João Isidoro França</strong>,
+        inaugurada em 2010 com mirante de 95 metros, a
+        <strong>Potycabana</strong> — o parque urbano mais movimentado da
+        cidade — e a orla do Poti.
+      </p>
+
+      <h2>A que horas dá para treinar ao ar livre?</h2>
+      <p>
+        Antes das 7h ou depois das 17h30, sem meio-termo prático.
+        Teresina disputa ano a ano o posto de capital mais quente do
+        país, e no "B-R-O bró" — os meses terminados em -bro, de setembro
+        a dezembro — as máximas passam de 36 °C com regularidade.
+      </p>
+
+      <p>
+        A cidade inteira se adapta: a Potycabana lota às 5h30 da manhã e
+        volta a lotar quando o sol desce. Entre um pico e outro, quem
+        treina está em ambiente climatizado — e o personal local monta a
+        agenda em torno dessa realidade.
+      </p>
+
+      <h2>O calor atrapalha o resultado do treino?</h2>
+      <p>
+        Dentro de um ambiente climatizado, não. O que o calor muda é a
+        logística: hidratação que começa antes da sessão, descanso um
+        pouco maior entre séries pesadas e atenção redobrada a sinais de
+        superaquecimento em qualquer atividade externa.
+      </p>
+
+      <p>
+        Há até um bônus: o
+        <a href="/musculacao/aquecimento-antes-do-treino/">aquecimento</a>
+        fica mais curto, porque a elevação de temperatura corporal que em
+        cidade fria toma minutos aqui é automática. As séries de
+        aproximação continuam obrigatórias — aquecer articulação é
+        diferente de aquecer corpo.
+      </p>
+
+      <h2>Onde treinar no bairro e no entorno?</h2>
+      <p>
+        <strong>Na Potycabana e na orla do Poti</strong>, nos horários
+        frescos: caminhada, corrida, funcional e o circuito de quadras do
+        parque, com a Estaiada iluminada de cenário no fim do dia.
+      </p>
+
+      <p>
+        <strong>No condomínio</strong>, o formato dominante: os prédios
+        da zona leste entregam espaço fitness de série, e o personal no
+        prédio resolve o horário do meio do dia sem exposição ao sol.
+      </p>
+
+      <p>
+        <strong>Nas academias da zona leste</strong>, as mais bem
+        equipadas da capital, para quem precisa de carga completa — o
+        complemento natural do treino de condomínio quando a progressão
+        avança.
+      </p>
+
+      <h2>Existe treino para quem sobe o mirante ou corre na Estaiada?</h2>
+      <p>
+        A ponte e a orla criaram uma cena de corrida noturna forte na
+        zona leste. O corredor do Fátima procura o personal pelos motivos
+        clássicos — planilha, força, prevenção — mais um local: aprender
+        a correr bem no calor, com estratégia de hidratação e ritmo
+        ajustado ao termômetro, não ao relógio.
+      </p>
+
+      <p>
+        Para quem está começando, a progressão caminhada-corrida na
+        Potycabana, duas a três vezes por semana, somada à força no
+        condomínio, é o arranjo que mais sobrevive ao verão teresinense.
+      </p>
+
+      <h2>Quanto custa personal trainer no Fátima?</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/teresina-pi/">personal trainer em
+        Teresina</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320
+        a R$ 880 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        O Fátima trabalha no topo dessas faixas, como todo o eixo nobre
+        da zona leste. O treino em dupla no condomínio e o online
+        (R$ 160 a R$ 410 mensais) são os redutores de custo que
+        funcionam por aqui.
+      </p>
+
+      <h2>Como escolher o profissional?</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        No Fátima, a pergunta local é uma só: como ele monta o programa
+        entre o clima e a rotina — que parte da semana vai para o
+        condomínio, que parte vai para a Potycabana, e o que acontece no
+        auge do B-R-O bró? Quem treina gente em Teresina há anos responde
+        com um plano pronto. Quem hesita vai te entregar a planilha de
+        outra cidade.
+      </p>
+
+      <p>
+        E o de sempre: dores e limitações — joelho, ombro, lombar — pedem
+        avaliação de médico ou fisioterapeuta antes de o plano começar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Fátima" />
+
+    <WhatsAppCta tema="geral" localidade="no Fátima" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

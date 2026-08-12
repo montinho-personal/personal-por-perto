@@ -1,0 +1,288 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu (e os erros)',
+    descricao: 'O quadro completo em que o posterior costuma ser o esquecido.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/elevacao-lateral-como-fazer/',
+    titulo: 'Elevação lateral: como fazer e os erros comuns',
+    descricao: 'A irmã do crucifixo invertido — medial de um lado, posterior do outro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/musculacao-e-postura/',
+    titulo: 'Musculação e postura: o que o treino resolve',
+    descricao: 'Por que fortalecer as costas altas muda a posição dos ombros.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/crucifixo-invertido-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Crucifixo invertido: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que o crucifixo invertido treina?',
+    resposta:
+      'O deltoide posterior — a porção de trás do ombro — com participação dos rombóides e do trapézio médio. É o músculo mais esquecido do treino de ombro: o anterior trabalha em todo supino e desenvolvimento, o medial tem a elevação lateral, e o posterior fica sem exercício direto na maioria dos programas. O resultado é o desequilíbrio que puxa os ombros para a frente.',
+  },
+  {
+    pergunta: 'Crucifixo invertido na máquina, com halteres ou na polia?',
+    resposta:
+      'A máquina (peck deck invertido) é a mais estável e a melhor para aprender e para chegar perto da falha; os halteres, com o tronco inclinado, exigem mais controle e trabalham estabilizadores; a polia permite tensão constante e ângulos variados. Para a maioria, a máquina como base e uma das outras como variação é o arranjo que funciona.',
+  },
+  {
+    pergunta: 'Por que sinto mais as costas do que o ombro no crucifixo invertido?',
+    resposta:
+      'Porque a escápula está fazendo o trabalho: quando você junta as escápulas com força a cada repetição, rombóides e trapézio dominam e o deltoide posterior participa menos. Para focar no ombro, mantenha as escápulas relativamente estáveis e pense em levar as mãos para os lados, em arco — não em apertar as costas. Os dois padrões são válidos; o que muda é o alvo.',
+  },
+  {
+    pergunta: 'Quanto peso usar no crucifixo invertido?',
+    resposta:
+      'Pouco — o deltoide posterior é um músculo pequeno movendo uma alavanca longa. Cargas que permitam 12 a 20 repetições controladas rendem mais do que placas altas com o tronco embalando. É o mesmo princípio da elevação lateral: em isolador de ombro, técnica e volume constroem mais do que carga.',
+  },
+  {
+    pergunta: 'O crucifixo invertido melhora a postura?',
+    resposta:
+      'Contribui, dentro de um conjunto. Fortalecer deltoide posterior, rombóides e trapézio médio equilibra a tração entre a frente e as costas do ombro — o desequilíbrio típico de quem faz muito supino e pouca puxada, somado a horas de mesa e celular. Postura, porém, é padrão de hábito e força geral: um exercício ajuda, o programa completo resolve.',
+  },
+];
+
+const title = 'Crucifixo invertido: como fazer e os erros';
+const description =
+  'Crucifixo invertido: o exercício do deltoide posterior — máquina, halteres ou polia, o truque da escápula, quanto peso usar e por que ele equilibra o ombro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Crucifixo invertido: o exercício do ombro que ninguém vê</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O deltoide posterior é o músculo invisível do treino: não aparece
+      no espelho, não trabalha nos exercícios favoritos e não dói quando
+      falta — até os ombros começarem a rolar para a frente.
+    </p>
+
+    <p class="lead">
+      O crucifixo invertido existe para ele. Este guia mostra as três
+      formas de fazer, o truque da escápula que muda o alvo e o peso
+      certo para um músculo que exige paciência.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o posterior fica para trás</h2>
+      <p>
+        Faça as contas do seu treino de empurrar e puxar: o deltoide
+        anterior trabalha em todo supino e desenvolvimento; o medial tem
+        a <a href="/musculacao/elevacao-lateral-como-fazer/">elevação
+        lateral</a> cativa; o posterior depende das remadas — onde é
+        coadjuvante — e de mais nada.
+      </p>
+
+      <p>
+        O resultado, meses depois, é visível de lado: ombro forte na
+        frente, vazio atrás, com a postura enrolando junto. O crucifixo
+        invertido é o exercício que fecha essa conta — e o motivo de ele
+        estar em todo <a href="/musculacao/treino-de-ombro/">treino de
+        ombro</a> bem montado.
+      </p>
+
+      <VideoYouTube
+        id="5LNfbY1tKgs"
+        titulo="Crucifixo invertido na máquina — Bluefit + Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do crucifixo invertido na máquina."
+      />
+
+      <h2>A execução na máquina, passo a passo</h2>
+      <p>
+        <strong>O ajuste.</strong> Banco na altura em que as manoplas
+        ficam na linha dos ombros; braços das alavancas na posição
+        frontal. Peito apoiado no encosto — ele é seu seguro contra o
+        embalo.
+      </p>
+
+      <p>
+        <strong>A pegada.</strong> Neutra ou pronada, com os cotovelos
+        levemente flexionados e travados nesse ângulo — como no crucifixo
+        de peito, só que ao contrário.
+      </p>
+
+      <p>
+        <strong>A abertura.</strong> Leve as mãos para trás em arco, até
+        a linha do tronco — o ponto em que o deltoide posterior contrai
+        por completo. Além disso, quem trabalha é a escápula.
+      </p>
+
+      <p>
+        <strong>O truque do alvo.</strong> Escápulas relativamente
+        estáveis e o pensamento em "abrir os braços" mantêm o foco no
+        ombro; apertar as escápulas a cada repetição desloca o trabalho
+        para rombóides e trapézio. Os dois são úteis — escolha um por
+        série, não os dois ao acaso.
+      </p>
+
+      <p>
+        <strong>A volta.</strong> Controlada, sem deixar as placas
+        baterem, preservando a tensão para a repetição seguinte.
+      </p>
+
+      <h2>As três versões e quando usar cada uma</h2>
+      <p>
+        <strong>Máquina (peck deck invertido).</strong> A base: trajetória
+        guiada, tronco apoiado, segurança para intensificar. É por onde
+        se aprende e onde se faz a maior parte do volume.
+      </p>
+
+      <p>
+        <strong>Halteres com tronco inclinado.</strong> A versão livre:
+        sentado na ponta do banco ou em pé com o tronco a 45 graus,
+        abrindo os halteres em arco. Exige mais controle e paga em
+        estabilizadores — a variação de quem já domina o padrão.
+      </p>
+
+      <p>
+        <strong>Polia (cross invertido).</strong> Tensão constante do
+        início ao fim e liberdade de ângulo. Excelente como segunda
+        opção e para séries de acabamento.
+      </p>
+
+      <h2>Os erros que escondem o resultado</h2>
+      <p>
+        <strong>Carga de elevação de ego.</strong> O posterior é pequeno
+        e a alavanca é longa: peso alto vira embalo de tronco e trabalho
+        de trapézio. De 12 a 20 repetições limpas é a faixa da casa.
+      </p>
+
+      <p>
+        <strong>Encolher os ombros.</strong> As orelhas somem entre os
+        trapézios e o deltoide sai da jogada. Ombros deprimidos antes de
+        cada série.
+      </p>
+
+      <p>
+        <strong>Cotovelo dobrando no meio da série.</strong> Transforma o
+        crucifixo em remada — outro exercício, outro alvo.
+      </p>
+
+      <p>
+        <strong>Amplitude além da linha do tronco.</strong> Forçar as
+        mãos para trás do corpo não recruta mais posterior; só estressa
+        a articulação.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 3 a 4 séries de 12 a 20 repetições, duas vezes por semana se
+        o posterior for prioridade — no fim do treino de ombro ou no dia
+        de costas, onde conversa bem com as remadas.
+      </p>
+
+      <p>
+        Para quem passa o dia sentado e sente os ombros enrolando, a
+        dupla crucifixo invertido + fortalecimento de costas médias é o
+        núcleo do trabalho descrito no guia de
+        <a href="/musculacao/musculacao-e-postura/">musculação e
+        postura</a> — com a ressalva de sempre: dor instalada passa por
+        médico ou fisioterapeuta antes do treino.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O crucifixo invertido tem um agravante único: o músculo-alvo
+        fica exatamente onde você não consegue ver nem tocar durante a
+        série. A diferença entre trabalhar deltoide posterior e trapézio
+        é um padrão de escápula que só um olho externo confere.
+      </p>
+
+      <p>
+        Um personal trainer define o padrão certo para o seu objetivo,
+        trava a carga no ponto em que a técnica sobrevive e encaixa o
+        exercício onde ele rende — no fim das contas, é o músculo
+        invisível que decide se o seu ombro é completo ou só metade.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o crucifixo invertido" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

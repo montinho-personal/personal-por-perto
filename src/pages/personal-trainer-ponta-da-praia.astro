@@ -1,0 +1,291 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/santos-sp/',
+    titulo: 'Personal trainer em Santos',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-gonzaga/',
+    titulo: 'Personal trainer no Gonzaga',
+    descricao: 'O coração comercial da orla santista, alguns canais adiante.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para terceira idade',
+    descricao: 'Leitura essencial num dos bairros que melhor envelhecem no país.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-ponta-da-praia';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Santos', url: '/personal-trainer/santos-sp/' },
+  { nome: 'Personal Trainer na Ponta da Praia', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Ponta da Praia?',
+    resposta:
+      'Em Santos, a aula avulsa vai de R$ 85 a R$ 190 e o pacote mensal de R$ 420 a R$ 1.150. A Ponta da Praia trabalha na metade de cima dessas faixas: é um dos endereços mais valorizados da orla, com forte demanda do público 60+ e dos praticantes de remo e esportes náuticos dos clubes da Avenida Rei Pelé.',
+  },
+  {
+    pergunta: 'O que diferencia a Ponta da Praia dos outros bairros da orla?',
+    resposta:
+      'A vocação náutica. Entre os canais 6 e 7, o bairro concentra os clubes de regatas da cidade, o Deck do Pescador, o Museu da Pesca e o Aquário Municipal — e a vista dupla: praia de um lado, navios cruzando o estuário do outro. É o bairro de Santos onde o mar é rotina de treino, não só paisagem.',
+  },
+  {
+    pergunta: 'Dá para treinar remo na Ponta da Praia?',
+    resposta:
+      'É o melhor lugar da Baixada para isso: os clubes da Avenida Rei Pelé mantêm garagens de remo e escolinhas, e o estuário oferece água abrigada para treino o ano todo. O personal entra no preparo físico de terra — força de pernas, costas e core — que sustenta a remada e previne as dores lombares típicas do esporte.',
+  },
+  {
+    pergunta: 'O bairro é bom para quem está na terceira idade?',
+    resposta:
+      'É um dos melhores do país: plano, seguro, com o calçadão da orla na porta, o Centro Esportivo Rebouças com piscina olímpica nas redondezas e uma vizinhança consolidada de moradores de longa data. O treino de força para autonomia — equilíbrio, massa muscular, densidade óssea — é a especialidade dos personals locais.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Ponta da Praia?',
+    resposta:
+      'O calçadão de mosaico da orla é a pista principal, com quilômetros contínuos rumo ao Gonzaga; a faixa de areia serve a corrida leve e funcional; e a região do Deck do Pescador e do Emissário concentra alongamento e treino ao amanhecer, com a vista do canal do porto. A ciclovia da orla completa o circuito.',
+  },
+  {
+    pergunta: 'Os prédios da Ponta da Praia têm academia?',
+    resposta:
+      'Os lançamentos das últimas décadas, em geral, sim — o bairro passou por renovação imobiliária forte e os edifícios novos entregam espaço fitness. Nos prédios antigos, mais numerosos, o formato que resolve é o personal a domicílio com material portátil ou a academia de rua, bem representada no bairro.',
+  },
+];
+
+const title = 'Personal Trainer na Ponta da Praia (Santos): guia';
+const description =
+  'Personal trainer na Ponta da Praia: preços de Santos, os clubes de remo da Rei Pelé, o calçadão entre os canais 6 e 7 e o treino do bairro que vive de frente para o estuário.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Santos</p>
+    <h1>Personal trainer na Ponta da Praia: o guia do bairro do remo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo bairro de orla tem praia. A Ponta da Praia tem praia, canal de
+      porto, clubes de regatas centenários e navios passando na janela —
+      é a esquina de Santos onde a cidade encontra o estuário.
+    </p>
+
+    <p class="lead">
+      Essa vocação náutica define quem mora e quem treina aqui. Este guia
+      percorre o território completo: onde treinar, quem procura, quanto
+      custa e o que perguntar a um <strong>personal trainer na Ponta da
+      Praia</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>O bairro entre os canais 6 e 7</h2>
+      <p>
+        A Ponta da Praia é o extremo leste da orla santista, onde o
+        calçadão de mosaico termina no encontro com o canal do porto. São
+        pouco mais de 31 mil moradores num bairro que passou por forte
+        renovação imobiliária nas últimas décadas.
+      </p>
+
+      <p>
+        A <strong>Avenida Rei Pelé</strong> concentra a identidade local:
+        os clubes de regatas da cidade — Internacional, Saldanha da Gama,
+        Regatas Santista, Vasco —, o Museu da Pesca e o Deck do Pescador,
+        de onde se assiste ao balé dos navios.
+      </p>
+
+      <p>
+        Complete o quadro com o Aquário Municipal, um dos cartões-postais
+        de Santos, e o Centro Esportivo Rebouças, com sua piscina
+        olímpica, nas redondezas — e o resultado é um bairro onde
+        esporte e água são parte da paisagem cotidiana.
+      </p>
+
+      <h2>A geografia do treino</h2>
+      <p>
+        <strong>O calçadão.</strong> A pista universal de Santos passa
+        aqui e segue plana por quilômetros até o
+        <a href="/personal-trainer-gonzaga/">Gonzaga</a> e além — mosaico
+        contínuo, ciclovia paralela e movimento constante.
+      </p>
+
+      <p>
+        <strong>A areia e o estuário.</strong> A faixa de praia serve ao
+        funcional e à corrida leve; a água abrigada do estuário, aos
+        esportes de remo o ano inteiro — vantagem rara sobre as praias de
+        mar aberto.
+      </p>
+
+      <p>
+        <strong>Clubes e piscina.</strong> Os clubes da Rei Pelé mantêm
+        estrutura náutica e social, e o Rebouças oferece piscina olímpica
+        pública — o eixo aquático mais completo da Baixada.
+      </p>
+
+      <h2>Quem procura personal trainer aqui</h2>
+      <p>
+        <strong>O remador.</strong> Das escolinhas dos clubes aos mestres
+        veteranos, o remo pede preparo de terra: pernas, costas, core e
+        mobilidade. O personal que entende a remada — e as dores lombares
+        que ela cobra quando falta força — tem clientela cativa no bairro.
+      </p>
+
+      <p>
+        <strong>O público 60+.</strong> A Ponta da Praia é um dos
+        endereços que melhor envelhecem no país: plana, segura, com tudo a
+        pé. O trabalho de força para autonomia, descrito no guia de
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal
+        para terceira idade</a>, é a demanda mais constante — sempre com
+        avaliação de médico ou fisioterapeuta quando há dores ou
+        limitações.
+      </p>
+
+      <p>
+        <strong>As famílias da renovação imobiliária.</strong> Os prédios
+        novos trouxeram casais e famílias jovens, que treinam no espaço
+        fitness do condomínio, no calçadão e na areia — muitas vezes em
+        dupla.
+      </p>
+
+      <h2>Onde treinar: as opções reais</h2>
+      <p>
+        <strong>Ao ar livre</strong>, o circuito calçadão–areia–Deck é
+        imbatível ao amanhecer, quando o sol nasce sobre o canal.
+        <strong>Em casa e no condomínio</strong>, o personal a domicílio
+        cobre os prédios antigos sem academia, e os novos entregam espaço
+        fitness de série.
+      </p>
+
+      <p>
+        <strong>Nas academias do bairro</strong>, para quem precisa de
+        carga completa, e <strong>nos clubes</strong>, para quem combina
+        musculação com o esporte náutico — o arranjo mais característico
+        da Ponta da Praia.
+      </p>
+
+      <h2>O clima santista e o treino</h2>
+      <p>
+        Santos é quente e úmida no verão e amena no inverno — o calçadão
+        funciona o ano todo, com o verão pedindo horários de ponta
+        (manhã cedo, fim de tarde) e hidratação reforçada.
+      </p>
+
+      <p>
+        A ressaca do mar, comum no outono e inverno, é o único fator que
+        tira a areia da equação por alguns dias — o calçadão e o
+        condomínio cobrem a lacuna.
+      </p>
+
+      <h2>Quanto custa personal trainer na Ponta da Praia</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/santos-sp/">personal trainer em
+        Santos</a>, vai de R$ 85 a R$ 190 pela aula avulsa e de R$ 420 a
+        R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Ponta da Praia trabalha na metade de cima, como convém a um dos
+        endereços mais valorizados da orla. O treino em dupla no calçadão
+        e o online (R$ 190 a R$ 480 mensais) são os caminhos para reduzir
+        o custo por sessão.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Ponta da Praia, some duas perguntas locais. Ele tem experiência
+        com o público 60+ — sabe progredir força com paciência e
+        segurança? E entende o preparo físico do remo, se esse for o seu
+        mundo? As duas respostas separam quem conhece o bairro de quem só
+        atende nele.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Ponta da Praia" />
+
+    <WhatsAppCta tema="geral" localidade="na Ponta da Praia" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

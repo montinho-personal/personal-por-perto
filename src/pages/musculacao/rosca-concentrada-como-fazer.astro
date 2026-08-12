@@ -1,0 +1,286 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/rosca-direta-como-fazer/',
+    titulo: 'Rosca direta: como fazer e os erros comuns',
+    descricao: 'O exercício de carga que a concentrada complementa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/rosca-alternada-como-fazer/',
+    titulo: 'Rosca alternada: como fazer e os erros comuns',
+    descricao: 'A outra rosca unilateral — com giro e em pé.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'Onde cada rosca se encaixa no volume da semana.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/rosca-concentrada-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Rosca concentrada: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Para que serve a rosca concentrada?',
+    resposta:
+      'Para tirar tudo do caminho e deixar só o bíceps trabalhar. Sentado, com o cotovelo apoiado na parte interna da coxa, não há tronco para embalar, ombro para ajudar nem espaço para roubar — é a rosca mais estrita que existe. Por isso é a escolha clássica para o fim do treino de braço e para quem quer aprender a sentir o bíceps contraindo.',
+  },
+  {
+    pergunta: 'A rosca concentrada faz o pico do bíceps crescer?',
+    resposta:
+      'O formato do pico é sobretudo genético — comprimento do ventre muscular e inserções. O que a concentrada faz é garantir contração completa com supinação total, o que desenvolve o bíceps inteiro, incluindo a porção que forma o pico. Ela ajuda a maximizar o que a sua genética permite; nenhum exercício muda o desenho do músculo.',
+  },
+  {
+    pergunta: 'Quanto peso usar na rosca concentrada?',
+    resposta:
+      'Pouco — e é proposital. Sem nenhum músculo auxiliar disponível, a carga que o bíceps move sozinho é bem menor do que na rosca direta: halteres que permitam 10 a 15 repetições estritas por braço. Se você precisa balançar o tronco ou levantar o cotovelo da coxa para subir o halter, o peso está alto e o exercício deixou de ser concentrado.',
+  },
+  {
+    pergunta: 'Em que posição fica o cotovelo na rosca concentrada?',
+    resposta:
+      'Apoiado na face interna da coxa, um pouco acima do joelho, com o braço apontando para o chão. O apoio é o mecanismo do exercício: ele trava o cotovelo no lugar e impede qualquer compensação. O erro comum é apoiar em cima do joelho e deixar o cotovelo escorregar durante a série — o apoio fica firme do início ao fim.',
+  },
+  {
+    pergunta: 'A rosca concentrada substitui a rosca direta?',
+    resposta:
+      'Não — elas têm papéis diferentes. A direta é o exercício de carga e progressão, feito no começo do treino de braço; a concentrada é o exercício de acabamento, feito no fim, com peso leve e execução perfeita. O programa completo usa as duas: uma constrói a base, a outra garante que cada fibra trabalhe até o final.',
+  },
+];
+
+const title = 'Rosca concentrada: como fazer e os erros comuns';
+const description =
+  'Rosca concentrada: o apoio do cotovelo na coxa, quanto peso usar, o mito do pico do bíceps e por que ela fecha o treino de braço em vez de abri-lo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Rosca concentrada: a rosca em que não dá para roubar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Toda rosca tem um jeito de trapacear: embalar o tronco, adiantar o
+      cotovelo, encurtar a descida. A concentrada foi desenhada para
+      eliminar todos — o cotovelo apoiado na coxa não deixa ninguém
+      ajudar o bíceps.
+    </p>
+
+    <p class="lead">
+      É o exercício mais honesto do treino de braço, e o mais
+      subestimado por quem mede tudo em quilos. Este guia mostra a
+      execução, o peso certo e o lugar dela no programa.
+    </p>
+
+    <div class="prose">
+      <h2>O que a rosca concentrada treina</h2>
+      <p>
+        O bíceps braquial, sozinho como em nenhum outro exercício. Com o
+        cotovelo travado contra a coxa, o ombro sai do movimento, o
+        tronco perde a alavanca para embalar e o braquial trabalha de
+        coadjuvante silencioso.
+      </p>
+
+      <p>
+        A posição também favorece a supinação máxima — girar o mindinho
+        na direção do ombro no topo —, o detalhe que completa a
+        contração e faz a concentrada render mais do que a carga sugere.
+      </p>
+
+      <VideoYouTube
+        id="EEpvOQAAtRo"
+        titulo="Como fazer rosca concentrada — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da rosca concentrada."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>Posição.</strong> Sentado no banco, pés afastados, tronco
+        inclinado à frente. O cotovelo apoia na face interna da coxa, um
+        pouco acima do joelho, com o braço apontando para o chão.
+      </p>
+
+      <p>
+        <strong>O apoio.</strong> É o coração do exercício: firme do
+        início ao fim. A mão livre pode apoiar na outra coxa para
+        estabilizar o tronco.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Flexione o cotovelo levando o halter
+        na direção do ombro, girando o punho para fora no caminho — a
+        supinação completa no topo. O cotovelo não sai da coxa nem um
+        centímetro.
+      </p>
+
+      <p>
+        <strong>O topo.</strong> Um a dois segundos de contração
+        deliberada — é aqui que a concentrada ganha o nome.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Lenta, resistindo, até a extensão
+        completa do cotovelo. Sem pressa: com peso leve, a fase
+        excêntrica é onde mora o estímulo.
+      </p>
+
+      <h2>Os erros que desconcentram a concentrada</h2>
+      <p>
+        <strong>Cotovelo escorregando.</strong> O apoio desliza pela coxa
+        durante a série e vira alavanca de trapaça. Reposicione e, se
+        continuar, reduza o peso.
+      </p>
+
+      <p>
+        <strong>Embalar com o tronco.</strong> Mesmo sentado, dá para
+        balançar — o tronco sobe junto com o halter. Sinal universal de
+        carga errada.
+      </p>
+
+      <p>
+        <strong>Meia descida.</strong> Parar a caminho da extensão
+        completa encurta o exercício que existe justamente para ser
+        completo.
+      </p>
+
+      <p>
+        <strong>Pular a supinação.</strong> Subir com o punho neutro
+        deixa na mesa a parte da contração que diferencia a concentrada
+        de qualquer outra rosca unilateral.
+      </p>
+
+      <p>
+        <strong>Ego na anilha.</strong> A concentrada com halter pesado
+        vira um cabo de guerra torto. O peso certo parece leve na
+        primeira repetição e honesto na décima segunda.
+      </p>
+
+      <h2>O mito do pico</h2>
+      <p>
+        A concentrada carrega há décadas a fama de "fazer o pico do
+        bíceps". A verdade: o formato do músculo — alto, achatado, longo,
+        curto — é genético. Nenhum exercício redesenha inserção.
+      </p>
+
+      <p>
+        O que ela faz de verdade é garantir que o bíceps inteiro trabalhe
+        até a contração máxima, o que desenvolve tudo o que a sua
+        genética permite — incluindo o pico que você tem, seja ele qual
+        for.
+      </p>
+
+      <h2>Onde ela entra no programa</h2>
+      <p>
+        No fim do treino de braço, como acabamento: 2 a 3 séries de 10 a
+        15 repetições por braço, depois que a
+        <a href="/musculacao/rosca-direta-como-fazer/">rosca direta</a>
+        (carga) e a
+        <a href="/musculacao/rosca-alternada-como-fazer/">alternada</a>
+        (giro e simetria) fizeram a parte pesada.
+      </p>
+
+      <p>
+        Dentro do limite de 6 a 12 séries semanais de bíceps do
+        <a href="/musculacao/treino-de-bracos/">treino de braços</a>, a
+        concentrada é a sobremesa — pequena, precisa e no final. Usá-la
+        como prato principal é inverter a lógica do volume.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A concentrada é o exercício-diagnóstico do bíceps: feita na
+        frente de um bom profissional, revela em uma série se você sabe
+        contrair o músculo ou apenas mover o peso — e essa informação
+        corrige todas as outras roscas do seu treino.
+      </p>
+
+      <p>
+        Um personal trainer usa exatamente isso: ensina a supinação
+        completa aqui, com peso leve e cotovelo travado, e transfere o
+        aprendizado para a rosca direta e a alternada. É o caminho mais
+        curto entre "fazer rosca" e "treinar bíceps".
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a rosca concentrada" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

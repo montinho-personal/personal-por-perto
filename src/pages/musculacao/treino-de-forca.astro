@@ -1,0 +1,310 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { fontesExternas } from '../../data/fontesExternas';
+
+const nsca = fontesExternas.nsca;
+
+const relacionados = [
+  {
+    url: '/musculacao/treinar-leve-ou-pesado/',
+    titulo: 'Treinar leve ou pesado: o que muda no resultado',
+    descricao: 'A discussão de carga que este guia leva para o extremo pesado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Progressão de carga: como evoluir sem estacionar',
+    descricao: 'O princípio que o treino de força transforma em objetivo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o crescimento muscular',
+    descricao: 'O outro objetivo — e por que os caminhos se separam.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-de-forca';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino de força', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre treino de força e de hipertrofia?',
+    resposta:
+      'O objetivo e, por consequência, a estrutura. A hipertrofia busca músculo maior: 6 a 20 repetições, várias séries perto da falha, volume alto. A força busca levantar mais peso: 1 a 6 repetições com cargas altas, longe da falha na maior parte do tempo, descansos longos e muita prática dos mesmos levantamentos. Os dois se alimentam — músculo maior tem potencial de mais força, e força maior permite treinar hipertrofia com mais carga.',
+  },
+  {
+    pergunta: 'Quantas repetições no treino de força?',
+    resposta:
+      'A faixa clássica vai de 1 a 6 repetições por série nos exercícios principais, com a maior parte do trabalho entre 3 e 5. O motivo: força é em grande parte adaptação neural — o sistema nervoso aprendendo a recrutar mais fibras de uma vez — e isso se treina com carga alta e execução perfeita, não com fadiga acumulada.',
+  },
+  {
+    pergunta: 'Preciso treinar até a falha para ganhar força?',
+    resposta:
+      'Não — e em geral é contraproducente. O treino de força clássico trabalha com 2 a 4 repetições de reserva: cargas altas, séries curtas e paradas antes da velocidade despencar. A falha frequente acumula fadiga que atrapalha a prática de qualidade nas sessões seguintes. A exceção são testes ocasionais de máxima, que são avaliação, não rotina.',
+  },
+  {
+    pergunta: 'Quanto tempo descansar entre séries no treino de força?',
+    resposta:
+      'De 3 a 5 minutos entre séries pesadas dos exercícios principais — bem mais do que na hipertrofia. O objetivo é recuperar quase por completo o sistema nervoso e os estoques de energia imediata para que a próxima série saia com a mesma qualidade. Descanso curto em série pesada só garante que a segunda série seja pior que a primeira.',
+  },
+  {
+    pergunta: 'Iniciante deve fazer treino de força?',
+    resposta:
+      'Deve construir a base primeiro: alguns meses de treino geral, aprendendo agachamento, supino, terra e desenvolvimento com cargas moderadas e faixas de 6 a 12. Com a técnica estável, a transição para faixas de força fica segura e rende rápido — iniciantes progridem de sessão em sessão. Carga máxima sem técnica consolidada é o atalho clássico para lesão.',
+  },
+];
+
+const title = 'Treino de força: como funciona e como montar';
+const description =
+  'Treino de força: as diferenças para a hipertrofia, faixas de 1 a 6 repetições, descansos longos, repetições de reserva e como estruturar a semana para levantar mais.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino de força: quando o objetivo é levantar mais, não parecer maior</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe um momento em que parte de quem treina muda a pergunta: em
+      vez de "como fica maior?", passa a valer "quanto eu levanto?". O
+      treino de força é a resposta estruturada para essa segunda
+      pergunta.
+    </p>
+
+    <p class="lead">
+      Ele parece musculação comum — mesmos exercícios, mesma academia —,
+      mas funciona por regras próprias: menos repetições, mais descanso,
+      menos falha e muito mais prática. Este guia mostra as regras.
+    </p>
+
+    <div class="prose">
+      <h2>Força é habilidade, não só músculo</h2>
+      <p>
+        O tamanho do músculo importa, mas a força máxima depende
+        igualmente do sistema nervoso: quantas fibras ele recruta ao
+        mesmo tempo, com que coordenação e com que confiança no
+        movimento. É por isso que dois atletas do mesmo tamanho levantam
+        cargas muito diferentes.
+      </p>
+
+      <p>
+        Essa metade neural se treina como habilidade — repetindo o gesto
+        com carga alta e execução perfeita, sessão após sessão. Da mesma
+        forma que ninguém aprende piano tocando até a exaustão, ninguém
+        aprende a levantar pesado falhando sempre.
+      </p>
+
+      <VideoYouTube
+        id="MSiPOg--BHw"
+        titulo="Tudo sobre treino de força — Leandro Twin"
+        legenda="No vídeo: Leandro Twin explica como o treino de força funciona e como estruturá-lo."
+      />
+
+      <h2>As cinco regras que mudam</h2>
+      <p>
+        <strong>1. Faixa de 1 a 6 repetições.</strong> O grosso do
+        trabalho entre 3 e 5, com cargas de 80 a 90% da máxima. É a
+        intensidade que ensina o sistema nervoso a recrutar.
+      </p>
+
+      <p>
+        <strong>2. Longe da falha.</strong> Duas a quatro repetições de
+        reserva na maioria das séries. A velocidade da barra caindo é o
+        sinal de parar — fadiga acumulada é inimiga da prática de
+        qualidade.
+      </p>
+
+      <p>
+        <strong>3. Descansos de 3 a 5 minutos.</strong> Recuperação quase
+        completa entre séries pesadas. Pressa aqui só garante séries
+        piores.
+      </p>
+
+      <p>
+        <strong>4. Poucos exercícios, muita frequência.</strong> Os
+        levantamentos principais — agachamento, supino, terra,
+        desenvolvimento — aparecem duas ou mais vezes por semana. É
+        prática deliberada, não variedade.
+      </p>
+
+      <p>
+        <strong>5. Progressão planejada.</strong> A carga sobe em
+        incrementos pequenos e programados, com semanas mais leves
+        respirando entre blocos pesados — o princípio de
+        <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> elevado a plano central, como as diretrizes da
+        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
+        estabelecem para o treinamento de força.
+      </p>
+
+      <h2>Força ou hipertrofia: os caminhos se separam</h2>
+      <p>
+        A <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia</a>
+        quer volume perto da falha; a força quer qualidade longe dela. A
+        hipertrofia varia exercícios; a força repete. A hipertrofia
+        descansa 1 a 2 minutos; a força, 3 a 5.
+      </p>
+
+      <p>
+        Mas não são inimigas: músculo maior é potencial de força, e força
+        maior carrega mais peso nas faixas de hipertrofia. Programas
+        maduros alternam blocos dos dois — ou usam o esquema clássico de
+        exercício principal pesado seguido de acessórios em faixa de
+        crescimento, a ponte entre este guia e o de
+        <a href="/musculacao/treinar-leve-ou-pesado/">treinar leve ou
+        pesado</a>.
+      </p>
+
+      <h2>Uma semana de força na prática</h2>
+      <p>
+        <strong>Dia 1:</strong> agachamento 5x3 pesado, supino 4x4,
+        acessórios leves de costas e core. <strong>Dia 2:</strong> terra
+        3x3, desenvolvimento 4x5, acessórios de posterior e ombro.
+        <strong>Dia 3:</strong> agachamento 3x5 mais leve, supino 5x3
+        pesado, remada e braços.
+      </p>
+
+      <p>
+        Três sessões, quatro levantamentos se revezando entre pesado e
+        moderado, acessórios cumprindo papel de saúde articular. É uma
+        estrutura clássica — as variações existem aos montes, mas todas
+        respeitam as cinco regras.
+      </p>
+
+      <h2>Os erros de quem chega da hipertrofia</h2>
+      <p>
+        <strong>Testar máxima toda semana.</strong> Teste é avaliação
+        ocasional; treino é prática com margem. Quem só testa não
+        progride.
+      </p>
+
+      <p>
+        <strong>Descanso curto por hábito.</strong> Os 90 segundos da
+        hipertrofia sabotam a série pesada seguinte.
+      </p>
+
+      <p>
+        <strong>Volume alto demais.</strong> Vinte séries semanais de
+        agachamento pesado não cabem na recuperação de ninguém que
+        trabalha e dorme como gente normal.
+      </p>
+
+      <p>
+        <strong>Ignorar a técnica sob fadiga.</strong> Na carga alta, o
+        desvio pequeno vira risco grande. A série termina quando a
+        técnica termina.
+      </p>
+
+      <h2>Para quem é o treino de força</h2>
+      <p>
+        Para quem quer quebrar platôs de carga, para quem compete ou
+        pensa em competir, para quem gosta de progresso mensurável — e
+        para o público que mais se beneficia e menos se vê nele: pessoas
+        de meia-idade em diante, para quem força é o indicador de saúde
+        que mais prediz autonomia.
+      </p>
+
+      <p>
+        A ressalva de sempre vale em dobro com carga alta: dores
+        articulares, histórico de lesão ou condições de saúde pedem
+        avaliação de médico ou fisioterapeuta antes do primeiro bloco
+        pesado.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O treino de força é onde o acompanhamento mais se paga: a
+        diferença entre 85% e 95% da máxima é invisível para quem está
+        sob a barra e óbvia para quem está de fora. Regular a carga do
+        dia, cortar a série na hora certa e planejar os blocos é
+        trabalho técnico.
+      </p>
+
+      <p>
+        Um personal trainer com vivência de força monta a progressão,
+        segura o entusiasmo nos dias bons e ajusta nos ruins — e é essa
+        regulagem, mais que qualquer programa baixado, que separa quem
+        levanta mais a cada ano de quem coleciona estalos no ombro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de força" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -96,6 +96,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-cabo-branco/', titulo: 'Personal trainer no Cabo Branco (João Pessoa)' },
   { categoria: 'Bairros', url: '/personal-trainer-bigorrilho/', titulo: 'Personal trainer no Bigorrilho (Curitiba)' },
   { categoria: 'Bairros', url: '/personal-trainer-santa-monica/', titulo: 'Personal trainer no Santa Mônica (Uberlândia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-ponta-da-praia/', titulo: 'Personal trainer na Ponta da Praia (Santos)' },
+  { categoria: 'Bairros', url: '/personal-trainer-chacara-cachoeira/', titulo: 'Personal trainer na Chácara Cachoeira (Campo Grande)' },
+  { categoria: 'Bairros', url: '/personal-trainer-fatima-teresina/', titulo: 'Personal trainer no Fátima (Teresina)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -173,6 +176,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/crucifixo-como-fazer/', titulo: 'Crucifixo: como fazer (reto, inclinado e máquina)' },
   { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
+  { categoria: 'Musculação', url: '/musculacao/mesa-flexora-como-fazer/', titulo: 'Mesa flexora: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/rosca-alternada-como-fazer/', titulo: 'Rosca alternada: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/rosca-concentrada-como-fazer/', titulo: 'Rosca concentrada: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/crucifixo-invertido-como-fazer/', titulo: 'Crucifixo invertido: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/treino-de-forca/', titulo: 'Treino de força: como funciona e como montar' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
