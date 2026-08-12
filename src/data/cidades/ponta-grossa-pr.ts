@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ponta Grossa', url: 'https://www.pontagrossa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/ponta-grossa-pr.webp',
+    w: 1200,
+    h: 849,
+    alt:
+      'Personal trainer em Ponta Grossa (PR) em arte que reúne treino com halteres, os arenitos do Parque Estadual de Vila Velha, o Lago de Olarias e a Estação Saudade — Personal por Perto',
+    legenda:
+      'Treino personalizado em Ponta Grossa: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
