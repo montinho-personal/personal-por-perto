@@ -26,9 +26,14 @@ export const cidade: Cidade = {
 
   parques: [
     {
-      nome: 'Nova Orla de Cariacica',
+      nome: 'Nova Orla de Cariacica (Porto de Santana)',
       descricao:
-        'Na Avenida Vale do Rio Doce, tem calçadão, academia ao ar livre, ciclovia, pista de skate e vista do manguezal.',
+        'Inaugurada no fim de 2023, tem 1,95 km de calçadão com passarela suspensa sobre o mangue, ciclovia, academia popular, pista de skate e vista para a baía — virou o principal point de treino ao ar livre da cidade.',
+    },
+    {
+      nome: 'Parque Natural Municipal Monte Mochuara',
+      descricao:
+        'Com 436 hectares de Mata Atlântica em Roças Velhas, oferece trilhas de subida com trechos de mata densa e encostas rochosas — treino natural de perna e fôlego com vista da Grande Vitória.',
     },
     {
       nome: 'Complexo Hugo Viola',
@@ -56,7 +61,7 @@ export const cidade: Cidade = {
     {
       nome: 'Corrida Rústica de Cariacica',
       descricao:
-        'Prova organizada pela prefeitura, parte do calendário esportivo da cidade.',
+        'Prova de 5 km organizada pela prefeitura no aniversário da cidade, com percurso pela Nova Orla — parte fixa do calendário esportivo municipal.',
     },
     {
       nome: 'Corrida da Família',
@@ -65,7 +70,7 @@ export const cidade: Cidade = {
     },
   ],
   culturaEsportiva:
-    'Cariacica tem tradição no futebol amador e um uso crescente dos espaços públicos revitalizados — orla e complexos esportivos — para caminhada, corrida e treino funcional.',
+    'Cariacica tem tradição no futebol amador e abriga o Estádio Kleber Andrade, o principal palco do futebol capixaba. Os espaços públicos revitalizados — a Nova Orla à frente — vêm mudando o hábito da cidade: caminhada, corrida e treino funcional ao ar livre crescem ano a ano.',
   academias:
     'A oferta é dominada por academias de bairro voltadas à população trabalhadora, complementadas pela Nova Orla e pelos complexos esportivos públicos gratuitos.',
 
@@ -96,6 +101,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar de graça em Cariacica?',
+      resposta:
+        'A cidade tem uma das melhores redes públicas da Grande Vitória: a Nova Orla de Porto de Santana (1,95 km com academia popular e ciclovia), o Complexo Hugo Viola e a Estação Cidadania em Nova Brasília, com pista de atletismo. Muitos personals atendem nesses espaços com material próprio, o que barateia o acompanhamento.',
+    },
+    {
+      pergunta: 'A trilha do Monte Mochuara serve como treino?',
+      resposta:
+        'Serve — e dos bons. A subida pelo parque natural, com 436 hectares de Mata Atlântica, é treino de perna e fôlego com desnível real. Para quem está começando, vale preparar a base com algumas semanas de caminhada e fortalecimento antes de encarar; dores em joelho ou tornozelo pedem avaliação de médico ou fisioterapeuta antes.',
+    },
+    {
+      pergunta: 'O personal atende na Nova Orla?',
+      resposta:
+        'Sim — a orla virou o ponto de encontro do treino ao ar livre da cidade, e o formato de sessão com material portátil funciona bem no calçadão e na academia popular. Cedo de manhã e no fim da tarde são os horários de pico, pelos mesmos motivos de clima que valem para todo o litoral capixaba.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/cariacica-es.webp',

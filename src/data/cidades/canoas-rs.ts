@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Getúlio Vargas (Capão do Corvo)',
       descricao:
-        'Tem pista de atletismo, pista de caminhada e ciclismo, academia ao ar livre, ginásio e sala de fitness, recebendo dezenas de milhares de visitantes por mês.',
+        'Inaugurado em 1980 na Avenida Farroupilha, no Marechal Rondon, recebe cerca de 40 mil pessoas por mês. Tem pista oficial de atletismo, pista de caminhada e ciclismo, academia ao ar livre, quadras, campo e até um mini-zoológico.',
     },
     {
       nome: 'Parque Eduardo Gomes (Parcão)',
@@ -66,7 +66,7 @@ export const cidade: Cidade = {
     },
   ],
   culturaEsportiva:
-    'Canoas tem forte fomento público ao esporte de base e à corrida de rua nos bairros, com equipamentos de lazer ativo bem distribuídos pela cidade.',
+    'Conhecida como Capital do Avião — herança da Base Aérea e eternizada na Praça do Avião, no Centro —, Canoas tem forte fomento público ao esporte de base e à corrida de rua nos bairros, com equipamentos de lazer ativo bem distribuídos pela cidade.',
   academias:
     'A oferta reúne redes comerciais (como a Smart Fit) e o programa público gratuito de musculação, complementados pela boa rede de parques com pista de atletismo e academia ao ar livre.',
 
@@ -89,7 +89,7 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial e universitário da Grande Porto Alegre, Canoas tem ótima rede de parques e forte fomento público ao esporte. Um personal trainer ajuda a aproveitar o Parque Getúlio Vargas e o Parcão com método, alternando o treino ao ar livre com a academia nos meses frios.',
 
-  vizinhas: ['porto-alegre-rs', 'caxias-do-sul-rs', 'santa-maria-rs'],
+  vizinhas: ['porto-alegre-rs', 'esteio-rs', 'gravatai-rs'],
 
   fontes: [
     { nome: 'IBGE Cidades — Canoas', url: 'https://cidades.ibge.gov.br/brasil/rs/canoas/panorama' },
@@ -97,6 +97,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'Onde fazer treino de pista em Canoas?',
+      resposta:
+        'O Capão do Corvo tem pista oficial de atletismo aberta à população — raridade em parque urbano. Para corredores, isso significa treino intervalado com distância exata, sem depender de GPS; para o personal, é o cenário ideal para tiros, educativos e testes de ritmo. O parque recebe cerca de 40 mil pessoas por mês, então cedo de manhã é o horário mais tranquilo.',
+    },
+    {
+      pergunta: 'Como treinar no inverno úmido de Canoas?',
+      resposta:
+        'O frio úmido da Grande Porto Alegre pede plano B estruturado: musculação em academia como base da semana e as sessões ao ar livre encaixadas nas janelas de tempo seco. Aquecimento mais longo e roupa em camadas resolvem a maior parte dos dias — e o programa público de musculação da cidade é alternativa gratuita para quem está começando.',
+    },
+    {
+      pergunta: 'Existe opção gratuita de treino em Canoas?',
+      resposta:
+        'Sim, e das melhores da região metropolitana: o programa público de musculação nos Centros Municipais de Esporte e Lazer, as academias ao ar livre do Capão do Corvo e do Parcão (esta com estrutura adaptada para pessoas com deficiência) e o circuito municipal de corrida pelos bairros. O personal entra para dar método ao que a estrutura pública oferece de graça.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/canoas-rs.webp',

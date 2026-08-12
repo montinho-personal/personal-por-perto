@@ -19,7 +19,7 @@ export const cidade: Cidade = {
     'Cidade histórica e turística, Olinda foi o primeiro conjunto urbano do Brasil declarado Patrimônio Mundial pela Unesco. O turismo cultural, o Carnaval e o artesanato são pilares da economia, que também se apoia na dinâmica metropolitana — Olinda integra a Região Metropolitana do Recife, com forte conurbação. A orla e as ladeiras do sítio histórico dão à cidade um cenário único para treinar.',
 
   mercado:
-    'O mercado fitness reúne redes e academias de bairro, e a prefeitura mantém o projeto "Academia do Bairro", com treino funcional e ginástica em áreas públicas. A cultura de treino ao ar livre é forte na orla, e as ladeiras históricas funcionam como academia natural para quem corre.',
+    'O mercado fitness reúne redes e academias de bairro, e a prefeitura mantém o projeto "Academia do Bairro", com treino funcional, ritmos e ginástica em 16 polos espalhados por nove bairros — incluindo a orla do Bairro Novo. A cultura de treino ao ar livre é forte no calçadão, e as ladeiras históricas funcionam como academia natural para quem corre.',
 
   bairrosNobres: ['Casa Caiada', 'Bairro Novo', 'Jardim Atlântico', 'Carmo'],
   bairrosPopulares: ['Peixinhos', 'Aguazinha', 'Jardim Brasil', 'Bultrins'],
@@ -88,7 +88,7 @@ export const cidade: Cidade = {
   conclusao:
     'Entre a orla e o casario histórico, Olinda oferece cenários únicos para treinar — do calçadão plano às ladeiras do Alto da Sé. Um personal trainer ajuda a transformar essa geografia em um plano consistente, respeitando o clima quente e o seu objetivo.',
 
-  vizinhas: ['recife-pe', 'jaboatao-dos-guararapes-pe', 'caruaru-pe'],
+  vizinhas: ['recife-pe', 'paulista-pe', 'jaboatao-dos-guararapes-pe'],
 
   fontes: [
     { nome: 'IBGE Cidades — Olinda', url: 'https://cidades.ibge.gov.br/brasil/pe/olinda/panorama' },
@@ -96,6 +96,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'Treinar nas ladeiras de Olinda é para qualquer nível?',
+      resposta:
+        'Com dosagem, sim. A subida é um dos estímulos mais eficientes que existem — fortalece pernas e eleva o fôlego rápido —, mas ladeira de paralelepípedo cobra técnica e tornozelo preparado. O caminho seguro: construir base no calçadão plano da orla por algumas semanas e introduzir as ladeiras aos poucos, de preferência com acompanhamento. Dor em joelho ou tornozelo pede avaliação de médico ou fisioterapeuta.',
+    },
+    {
+      pergunta: 'A Academia do Bairro substitui o personal trainer?',
+      resposta:
+        'São coisas complementares. O programa público oferece aulas coletivas gratuitas de funcional e ginástica em 16 polos da cidade — ótima porta de entrada. O personal entra quando você precisa de plano individual: objetivo específico, progressão de carga, limitação física ou horário que as turmas não cobrem. Muita gente combina os dois.',
+    },
+    {
+      pergunta: 'Qual o melhor horário para correr na orla de Olinda?',
+      resposta:
+        'Início da manhã e fim da tarde — o padrão do litoral pernambucano. O calçadão do Bairro Novo a Rio Doce é plano, contínuo e com brisa constante, o que alivia o calor. No meio do dia, o sol a pino torna o treino desconfortável e arriscado sem hidratação reforçada.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/olinda-pe.webp',

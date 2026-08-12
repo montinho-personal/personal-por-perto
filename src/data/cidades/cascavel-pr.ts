@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Ecológico Paulo Gorski (Lago Municipal)',
       descricao:
-        'Tem pista de mais de 6 km ao redor do lago, academia ao ar livre e bebedouros — o principal point de treino ao ar livre da cidade.',
+        'Com o zoológico, forma a maior reserva ecológica urbana do sul do Brasil — cerca de 1,17 milhão de m², 600 mil deles de mata nativa. A pista em volta do lago tem pouco mais de 4 km, plana e sombreada, com marcação de distância no piso, mais um trecho de paver de 1.750 m e ciclovia asfaltada paralela.',
     },
     {
       nome: 'Parque Ambiental Vitória',
@@ -66,12 +66,12 @@ export const cidade: Cidade = {
     },
   ],
   culturaEsportiva:
-    'Cascavel tem forte tradição no automobilismo (Autódromo Zilmar Beux) e um calendário ativo de corridas e ciclismo no Lago Municipal, que funciona como o coração esportivo da cidade.',
+    'Cascavel tem forte tradição no automobilismo (Autódromo Zilmar Beux) e um calendário de corridas que roda de março a novembro, com as provas maiores concentradas no inverno seco e ameno — algumas atraem até atletas do Paraguai e da Argentina, reflexo da posição de fronteira. O Lago Municipal é o coração esportivo da cidade.',
   academias:
     'A oferta é consolidada, com academias e estúdios de musculação atendendo um público de renda elevada nos bairros nobres, e bem complementada pela rede pública de parques.',
 
   destaquesFitness: [
-    'Lago Municipal: pista de mais de 6 km, principal point de treino ao ar livre.',
+    'Lago Municipal: a maior reserva ecológica urbana do sul do país, com pista plana e sombreada de mais de 4 km.',
     'Renda elevada e bairros nobres que favorecem o personal training premium.',
     'Rede pública de parques com academias ao ar livre.',
     'Calendário regular de corridas e ciclismo, que gera demanda por assessoria.',
@@ -87,9 +87,9 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Capital do Oeste paranaense, de boa renda e bem planejada, Cascavel tem no Lago Municipal o seu cartão-postal esportivo. Um personal trainer ajuda a aproveitar a pista do lago e as academias da cidade com método, respeitando o frio do inverno.',
+    'Capital do Oeste paranaense, de boa renda e bem planejada, Cascavel tem no Lago Municipal o seu cartão-postal esportivo — e na Catedral e na Avenida Brasil o seu eixo urbano. Um personal trainer ajuda a aproveitar a pista do lago e as academias da cidade com método, respeitando o frio do inverno.',
 
-  vizinhas: ['foz-do-iguacu-pr', 'curitiba-pr', 'maringa-pr'],
+  vizinhas: ['toledo-pr', 'foz-do-iguacu-pr', 'guarapuava-pr'],
 
   fontes: [
     { nome: 'IBGE Cidades — Cascavel', url: 'https://cidades.ibge.gov.br/brasil/pr/cascavel/panorama' },
@@ -97,6 +97,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'A pista do Lago Municipal serve para treino sério?',
+      resposta:
+        'Serve — é uma das melhores pistas urbanas do interior do Paraná: pouco mais de 4 km planos e sombreados em volta do lago, com marcação de distância pintada no piso, mais o anel de paver de 1.750 m para variações. Dá para estruturar de rodagem leve a treino intervalado com precisão de distância, e a ciclovia paralela acomoda o ciclismo sem conflito.',
+    },
+    {
+      pergunta: 'Como fica o treino no inverno de Cascavel?',
+      resposta:
+        'O inverno traz manhãs frias e geadas ocasionais, mas é justamente a estação seca — quando o calendário de corridas da cidade concentra as provas maiores. Na prática: aquecimento mais longo, roupa em camadas e, para quem prefere, sessões no meio da tarde ou em ambiente coberto. O personal ajusta o plano à estação em vez de pausá-lo.',
+    },
+    {
+      pergunta: 'Cascavel tem personal trainer para corrida?',
+      resposta:
+        'Tem, e a demanda cresce com o calendário local de provas de 5 km à meia maratona. O trabalho combina planilha de corrida com treino de força — o que mais previne lesão em corredor amador — e usa o Lago Municipal como pista de referência. Para quem compete, o inverno é a janela de provas; o verão, a base.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/cascavel-pr.webp',

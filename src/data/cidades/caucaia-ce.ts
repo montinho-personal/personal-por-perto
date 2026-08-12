@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Segunda maior cidade do Ceará e integrante da Região Metropolitana de Fortaleza, Caucaia tem a segunda maior economia do estado, puxada pela indústria ligada ao Complexo Industrial e Portuário do Pecém (siderurgia, ZPE e energia), além de forte comércio e serviços. O turismo é destaque na Praia do Cumbuco, meca internacional do kitesurf.',
 
   mercado:
-    'O mercado é pulverizado em bairros populosos da Jurema, com academias de bairro, enquanto o eixo litorâneo do Cumbuco, Tabuba e Icaraí atende turismo e veraneio, com demanda por treino funcional, kitesurf e atividades de praia.',
+    'O mercado tem duas caras bem distintas. Nos bairros populosos do eixo da Jurema, o personal trabalha em academias de bairro e no atendimento a domicílio, com preços de cidade metropolitana. No litoral — Cumbuco, Tabuba e Icaraí —, a demanda vem do veraneio, dos condomínios de praia e de um público internacional de kitesurfistas que passa temporadas na cidade e procura preparo físico específico para o esporte.',
 
   bairrosNobres: ['Cumbuco', 'Tabuba', 'Icaraí', 'Iparana'],
   bairrosPopulares: ['Jurema', 'Parque Albano', 'Nova Metrópole', 'Parque Potira'],
@@ -29,17 +29,22 @@ export const cidade: Cidade = {
     {
       nome: 'Praia do Cumbuco',
       descricao:
-        'Cerca de 4 km de orla com dunas e lagoas; meca do kitesurf e do windsurf e ideal para corrida e treino funcional na areia.',
+        'Cerca de 4 km de orla com dunas e coqueiros, a 27 km de Fortaleza; meca do kitesurf e do windsurf e pista natural para corrida e treino funcional na areia.',
     },
     {
-      nome: 'Praia de Icaraí',
+      nome: 'Lagoa do Cauípe',
       descricao:
-        'Orla urbana de fácil acesso para caminhada e esportes de praia.',
+        'Lagoa de água doce e rasa com vento médio de 20 nós, considerada um dos melhores spots do mundo para o kitesurf freestyle — recebe etapas nacionais e internacionais.',
     },
     {
-      nome: 'Praia da Tabuba',
+      nome: 'Lagoa do Banana',
       descricao:
-        'Orla com boa infraestrutura de lazer, usada para atividade ao ar livre.',
+        'Lagoa entre as dunas do Cumbuco, com barracas e esportes aquáticos; alternativa de águas calmas para lazer ativo e stand up paddle.',
+    },
+    {
+      nome: 'Praias de Icaraí e Tabuba',
+      descricao:
+        'Orlas urbanas de fácil acesso, usadas para caminhada, corrida e esportes de praia pelos moradores da região litorânea.',
     },
   ],
   ciclovias:
@@ -55,26 +60,26 @@ export const cidade: Cidade = {
 
   corridas: [
     {
-      nome: 'Bota Pra Correr — Etapa Cumbuco',
+      nome: 'Bota Pra Correr — etapa Cumbuco',
       descricao:
-        'Festival nacional de corrida em cenário de dunas, lagoas e vento, no Cumbuco.',
+        'Festival nacional de corrida que colocou Caucaia no mapa da corrida de rua, com percursos entre dunas, lagoas e o vento constante do litoral.',
     },
     {
-      nome: 'Eventos de turismo esportivo no Cumbuco',
+      nome: 'Provas do calendário de turismo esportivo',
       descricao:
-        'Provas ligadas ao calendário de turismo esportivo da cidade.',
+        'A prefeitura vem atraindo eventos de corrida e esportes de praia para o Cumbuco, que recebe atletas de todo o país na temporada de vento.',
     },
   ],
   culturaEsportiva:
-    'Caucaia tem forte cultura de esportes de vento e praia (kitesurf e windsurf de nível internacional no Cumbuco) e um calendário emergente de corridas de turismo esportivo.',
+    'Os esportes de vento são a identidade da cidade: o Cumbuco e a Lagoa do Cauípe já receberam o Campeonato Brasileiro de Kitesurf e a final do Mundial de Freestyle, e na temporada de vento — do meio para o fim do ano — o litoral vira colônia internacional de atletas. Futebol de bairro, beach tennis e a corrida de rua em crescimento completam o quadro.',
   academias:
-    'A oferta reúne academias de bairro na região da Jurema e serviços voltados ao turismo no eixo litorâneo, com as praias funcionando como academia a céu aberto.',
+    'A oferta reúne academias de bairro na região da Jurema e no Centro, estúdios e serviços voltados ao turismo no eixo litorâneo, além das praias e lagoas funcionando como academia a céu aberto — muitos personals atendem direto na areia, com material próprio.',
 
   destaquesFitness: [
     'Cumbuco como hub internacional de kitesurf e windsurf.',
+    'Lagoa do Cauípe: vento médio de 20 nós e um dos melhores spots de freestyle do mundo.',
     'Orla extensa (Cumbuco, Icaraí e Tabuba) para corrida e funcional na areia.',
-    'Demanda crescente de turismo esportivo.',
-    'Rede de academias de bairro na região da Jurema.',
+    'Bota Pra Correr e calendário crescente de turismo esportivo.',
   ],
 
   precos: {
@@ -87,9 +92,9 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Segunda maior do Ceará e meca do kitesurf no Cumbuco, Caucaia une indústria do Pecém e litoral vibrante. Um personal trainer ajuda a aproveitar a orla com método, ajustando horários e hidratação ao calor e ao vento do litoral.',
+    'Segunda maior cidade do Ceará, Caucaia une a indústria do Pecém, os bairros densos da Jurema e um litoral que é referência mundial do kitesurf. Um personal trainer daqui transita entre esses mundos: musculação de base para quem vive a rotina metropolitana e preparo físico específico — core, pernas e fôlego — para quem encara o vento do Cumbuco e da Lagoa do Cauípe.',
 
-  vizinhas: ['fortaleza-ce', 'sobral-ce'],
+  vizinhas: ['fortaleza-ce', 'maracanau-ce', 'maranguape-ce'],
 
   fontes: [
     { nome: 'IBGE Cidades — Caucaia', url: 'https://cidades.ibge.gov.br/brasil/ce/caucaia/panorama' },
@@ -97,6 +102,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'Existe personal trainer para kitesurf em Caucaia?',
+      resposta:
+        'Sim — é uma demanda típica do Cumbuco e da Lagoa do Cauípe. O preparo físico para o kite trabalha core, pernas, pegada e fôlego, além de mobilidade para as quedas e manobras. Na temporada de vento, do meio para o fim do ano, muitos atletas visitantes contratam pacotes curtos de algumas semanas.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Caucaia?',
+      resposta:
+        'O litoral é a academia a céu aberto da cidade: corrida e funcional na areia do Cumbuco, Icaraí e Tabuba, e águas calmas na Lagoa do Banana. O calor pede início de manhã ou fim de tarde — e o vento constante, comum à tarde, muda o esforço da corrida na orla.',
+    },
+    {
+      pergunta: 'O personal atende nos bairros da Jurema e do Centro?',
+      resposta:
+        'Sim. Fora do eixo turístico, o atendimento acontece nas academias de bairro e a domicílio, com preços de região metropolitana — em geral abaixo dos praticados no litoral na alta temporada. O treino em dupla é comum para dividir o custo.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/caucaia-ce.webp',

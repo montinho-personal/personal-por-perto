@@ -29,7 +29,12 @@ export const cidade: Cidade = {
     {
       nome: 'Parque de Exposições Fernando Costa',
       descricao:
-        'Conta com duas academias ao ar livre, aberto em dias úteis para caminhada e treino.',
+        'Inaugurado em 1953, tem cerca de dez hectares com pistas de caminhada e corrida e duas academias ao ar livre — além de sediar os grandes eventos da cidade, como a Expoagro.',
+    },
+    {
+      nome: 'Complexo Poliesportivo (Pedrocão)',
+      descricao:
+        'No Residencial Paraíso, abriga o ginásio do Sesi Franca Basquete e espaços abertos para caminhada e esporte — o coração esportivo da cidade.',
     },
     {
       nome: 'Jardim Zoobotânico',
@@ -89,7 +94,7 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do calçado e potência do basquete, Franca tem altitude favorável e forte cultura esportiva. Um personal trainer ajuda a aproveitar o Jardim Zoobotânico e o Parque dos Trabalhadores com método, tirando partido do clima seco de altitude.',
 
-  vizinhas: ['ribeirao-preto-sp', 'sao-paulo-sp'],
+  vizinhas: ['ribeirao-preto-sp', 'batatais-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Franca', url: 'https://cidades.ibge.gov.br/brasil/sp/franca/panorama' },
@@ -97,6 +102,25 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   atualizadoEm: '2026-08-12',
+
+
+  faqsExtra: [
+    {
+      pergunta: 'Existe preparo físico para basquete amador em Franca?',
+      resposta:
+        'É uma demanda natural na capital do basquete: força de pernas e core, salto, mudança de direção e prevenção de tornozelo e joelho. Personals com vivência de quadra montam esse trabalho em paralelo aos treinos técnicos — e a base de musculação vale para qualquer nível, do recreativo ao federado.',
+    },
+    {
+      pergunta: 'A altitude de Franca ajuda no condicionamento?',
+      resposta:
+        'Os cerca de 1.040 m elevam levemente a demanda cardiorrespiratória do treino — quem chega do litoral sente os primeiros dias. Para o morador, o efeito prático é um condicionamento que rende quando se corre em cidades mais baixas. O inverno seco e ameno completa um cenário raro no interior paulista para treinar ao ar livre.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Franca?',
+      resposta:
+        'O circuito clássico: pista de 1,3 km do Jardim Zoobotânico para rodagem leve, trilhas de mais de 6 km do Parque dos Trabalhadores para volume, e as pistas e academias ao ar livre do Parque Fernando Costa. Personals costumam alternar esses espaços com sessões de força em academia.',
+    },
+  ],
 
   capaArte: {
     src: '/capas-cidade/franca-sp.webp',
