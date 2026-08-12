@@ -95,5 +95,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Várzea Grande', url: 'https://www.varzeagrande.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/varzea-grande-mt.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Várzea Grande (MT) em arte que reúne treino de força, a caixa d’água da Avenida Filinto Müller, a igreja matriz do Centro, o Aeroporto Marechal Rondon e a Passagem da Conceição, no rio Cuiabá — Personal por Perto',
+    legenda:
+      'Treino personalizado em Várzea Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

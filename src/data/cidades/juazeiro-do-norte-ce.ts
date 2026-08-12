@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juazeiro do Norte', url: 'https://juazeirodonorte.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/juazeiro-do-norte-ce.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Juazeiro do Norte (CE) em arte que reúne agachamento e levantamento terra, a estátua do Padre Cícero na Colina do Horto, o Aeroporto Orlando Bezerra de Menezes e os bairros Centro, Salesianos, Lagoa Seca e Pirajá — Personal por Perto',
+    legenda:
+      'Treino personalizado em Juazeiro do Norte: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

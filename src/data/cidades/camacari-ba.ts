@@ -95,5 +95,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Camaçari', url: 'https://www.camacari.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/camacari-ba.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Camaçari (BA) em arte que reúne levantamento terra e agachamento, a igreja do Centro e as praias de Barra do Jacuípe e Arembepe — Personal por Perto',
+    legenda:
+      'Treino personalizado em Camaçari: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

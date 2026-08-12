@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Foz do Iguaçu', url: 'https://www.fozdoiguacu.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/foz-do-iguacu-pr.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Foz do Iguaçu (PR) em arte que reúne treino de força, o Marco das Três Fronteiras em Porto Meira, a Avenida Brasil no Centro, a usina de Itaipu e as Cataratas do Iguaçu — Personal por Perto',
+    legenda:
+      'Treino personalizado em Foz do Iguaçu: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
