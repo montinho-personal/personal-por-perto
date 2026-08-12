@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Paulista', url: 'https://www.paulista.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/paulista-pe.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Paulista (PE) em arte que reúne treino de musculação, a orla do Janga, a praia de Maria Farinha e as piscinas naturais de Pau Amarelo — Personal por Perto',
+    legenda:
+      'Treino personalizado em Paulista: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

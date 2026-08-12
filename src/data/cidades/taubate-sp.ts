@@ -95,5 +95,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Taubaté', url: 'https://www.taubate.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/taubate-sp.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Taubaté (SP) em arte que reúne levantamento terra, o Cristo Redentor da Praça Santa Terezinha, a igreja do Centro e o Museu da Imigração Italiana de Quiririm — Personal por Perto',
+    legenda:
+      'Treino personalizado em Taubaté: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

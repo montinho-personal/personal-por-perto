@@ -119,5 +119,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Vicente', url: 'https://www.saovicente.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/sao-vicente-sp.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em São Vicente (SP) em arte que reúne treino funcional com corda naval, a Ponte Pênsil no Japuí, a Ilha Porchat e as praias do Itararé e do Gonzaguinha — Personal por Perto',
+    legenda:
+      'Treino personalizado em São Vicente: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
