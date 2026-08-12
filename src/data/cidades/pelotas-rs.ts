@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pelotas', url: 'https://www.pelotas.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/pelotas-rs.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Pelotas (RS) em arte que reúne treino com corda naval e kettlebell, o Mercado Central, as torres do Centro histórico e o pontão da praia do Laranjal — Personal por Perto',
+    legenda:
+      'Treino personalizado em Pelotas: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

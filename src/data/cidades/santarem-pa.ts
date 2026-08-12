@@ -95,5 +95,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santarém', url: 'https://www.santarem.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/santarem-pa.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Santarém (PA) em arte que reúne treino funcional, a catedral do Centro, o mirante da cidade, a orla do Tapajós e a praia de Alter do Chão — Personal por Perto',
+    legenda:
+      'Treino personalizado em Santarém: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

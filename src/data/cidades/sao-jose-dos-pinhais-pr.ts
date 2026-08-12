@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Pinhais', url: 'https://www.sjp.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/sao-jose-dos-pinhais-pr.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em São José dos Pinhais (PR) em arte que reúne treino com corda naval, a Catedral São José, o Aeroporto Internacional Afonso Pena e o portal do Caminho do Vinho — Personal por Perto',
+    legenda:
+      'Treino personalizado em São José dos Pinhais: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

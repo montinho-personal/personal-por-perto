@@ -79,5 +79,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ribeirão das Neves', url: 'https://www.ribeiraodasneves.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/ribeirao-das-neves-mg.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Ribeirão das Neves (MG) em arte que reúne treino com corda naval e kettlebell, a Igreja Matriz Nossa Senhora das Neves, a vista do Veneza e o Parque da Lajinha, em Justinópolis — Personal por Perto',
+    legenda:
+      'Treino personalizado em Ribeirão das Neves: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };

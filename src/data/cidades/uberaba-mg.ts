@@ -96,5 +96,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Uberaba', url: 'https://www.uberaba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-12',
+
+  capaArte: {
+    src: '/capas-cidade/uberaba-mg.webp',
+    w: 1200,
+    h: 900,
+    alt:
+      'Personal trainer em Uberaba (MG) em arte que reúne treino com corda naval e kettlebell, a Igreja da Abadia, o Mercado Municipal e o Parque Fernando Costa — Personal por Perto',
+    legenda:
+      'Treino personalizado em Uberaba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
 };
