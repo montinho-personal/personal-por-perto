@@ -394,6 +394,8 @@ import { cidade as cananeia } from './cananeia-sp';
 import { cidade as santoAmaroDoMaranhao } from './santo-amaro-do-maranhao-ma';
 import { cidade as saoGabrielDaCachoeira } from './sao-gabriel-da-cachoeira-am';
 import { cidade as uiramuta } from './uiramuta-rr';
+import { cidade as barcelos } from './barcelos-am';
+import { cidade as colinasDoSul } from './colinas-do-sul-go';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1136,7 +1138,7 @@ export const cidades: Cidade[] = [
   xiqueXique, apiuna, carolina, buique, saoRoqueDeMinas, japaratinga,
   alcobaca, analandia, luisCorreia, goncalves, tibagi, saoJoseDosAusentes,
   itamonte, jaguariaiva, iporanga, piracuruca, cananeia, santoAmaroDoMaranhao,
-  saoGabrielDaCachoeira, uiramuta,
+  saoGabrielDaCachoeira, uiramuta, barcelos, colinasDoSul,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

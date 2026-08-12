@@ -1,0 +1,299 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-em-casa-para-iniciantes/',
+    titulo: 'Treino em casa para iniciantes',
+    descricao: 'O programa completo em que a flexão é a peça central.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O irmão com barra do mesmo padrão de movimento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/mergulho-nas-paralelas-como-fazer/',
+    titulo: 'Mergulho nas paralelas: como fazer e evoluir',
+    descricao: 'O degrau seguinte do empurrar com o peso do corpo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/flexao-de-braco-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Flexão de braço: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Não consigo fazer flexão no chão. Por onde começo?',
+    resposta:
+      'Pela inclinação: flexão com as mãos na parede, depois num banco ou mesa, baixando o apoio a cada semana até chegar ao chão. É uma progressão melhor do que a flexão de joelhos, porque mantém o corpo inteiro alinhado e o core trabalhando. Quem segue a escada de inclinação decrescente chega à flexão completa em semanas.',
+  },
+  {
+    pergunta: 'Qual a posição correta dos cotovelos na flexão?',
+    resposta:
+      'Apontando para trás em ângulo de 20 a 45 graus em relação ao tronco — nem colados ao corpo, nem abertos a 90 graus formando um "T". O cotovelo muito aberto sobrecarrega o ombro; muito fechado, desloca quase tudo para o tríceps. O meio-termo distribui o trabalho entre peito, tríceps e deltoide como o exercício foi desenhado para fazer.',
+  },
+  {
+    pergunta: 'Flexão de braço substitui o supino?',
+    resposta:
+      'No início, sim — os dois treinam o mesmo padrão, e a flexão bem executada constrói peito e tríceps de verdade. O limite aparece com a força: quando 20 ou mais repetições saem fáceis, o peso corporal vira carga leve, e a progressão exige variações mais difíceis (pés elevados, carga nas costas, flexão arqueiro) ou a barra do supino, onde a carga sobe sem limite.',
+  },
+  {
+    pergunta: 'Quantas flexões por dia devo fazer?',
+    resposta:
+      'A pergunta certa é por semana, e a resposta segue a lógica de qualquer músculo: 2 a 4 sessões com 3 a 5 séries perto do limite rendem mais do que o desafio de "100 por dia", que vira volume raso de resistência. Músculo cresce com esforço progressivo e descanso — a flexão não é exceção por ser feita no chão da sala.',
+  },
+  {
+    pergunta: 'O que fazer quando a flexão ficar fácil?',
+    resposta:
+      'Progredir como em qualquer exercício: pés elevados no banco (mais peito superior e ombro), mochila com peso nas costas, flexão com pausa embaixo, variações unilaterais como a arqueiro — e, na academia, migrar o padrão para supino e mergulho nas paralelas. Fácil demais é o sinal de que o estímulo acabou, não de que o exercício "cumpriu sua função para sempre".',
+  },
+];
+
+const title = 'Flexão de braço: como fazer e evoluir do zero';
+const description =
+  'Flexão de braço: a técnica completa, a posição dos cotovelos, a escada do zero à primeira flexão, quantas fazer por semana e como progredir quando ficar fácil.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Flexão de braço: o exercício mais democrático que existe</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum exercício precisa de menos e entrega tanto: a flexão de
+      braço treina peito, tríceps, ombro e core com o equipamento que
+      todo mundo tem — o chão.
+    </p>
+
+    <p class="lead">
+      E nenhum é tão maltratado: quadril caído, meia descida, pescoço
+      mergulhando no lugar do peito. Este guia mostra a técnica que
+      transforma a flexão em construtor de verdade — do zero à variação
+      com carga.
+    </p>
+
+    <div class="prose">
+      <h2>O que a flexão treina</h2>
+      <p>
+        O padrão de empurrar horizontal com o próprio corpo: peitoral
+        como motor, tríceps e deltoide anterior na transmissão — e, o
+        bônus que o <a href="/musculacao/supino-como-fazer/">supino</a>
+        não dá, o core inteiro sustentando o corpo em prancha do início
+        ao fim.
+      </p>
+
+      <p>
+        É por essa dupla função — empurrar mais estabilizar — que a
+        flexão é a peça central de qualquer
+        <a href="/musculacao/treino-em-casa-para-iniciantes/">treino em
+        casa</a> bem montado.
+      </p>
+
+      <VideoYouTube
+        id="dHgoYiCraCw"
+        titulo="Como fazer flexão de braço — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da flexão de braço."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A base.</strong> Mãos no chão um pouco mais abertas que
+        os ombros, dedos apontando à frente, pés juntos ou levemente
+        afastados. O corpo forma uma linha reta da nuca ao calcanhar —
+        a prancha é o chassi do exercício.
+      </p>
+
+      <p>
+        <strong>Os cotovelos.</strong> Apontando para trás, em ângulo de
+        20 a 45 graus com o tronco. Nem colados, nem abertos em "T" — o
+        meio-termo que protege o ombro e distribui o trabalho.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Em 2 segundos, com o peito liderando
+        o caminho até quase tocar o chão. Quadril e cabeça descem junto
+        com o tronco — não antes, não depois.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Empurre o chão até a extensão completa
+        dos cotovelos, mantendo a prancha intacta. O abdômen firme é o
+        que impede o quadril de chicotear.
+      </p>
+
+      <h2>Do zero à primeira flexão: a escada da inclinação</h2>
+      <p>
+        A progressão mais eficiente não é a flexão de joelhos — é a
+        inclinação decrescente, que preserva a prancha completa desde o
+        primeiro dia.
+      </p>
+
+      <p>
+        <strong>Degrau 1:</strong> mãos na parede, corpo inclinado.
+        <strong>Degrau 2:</strong> mãos numa mesa ou banco alto.
+        <strong>Degrau 3:</strong> banco baixo ou degrau de escada.
+        <strong>Degrau 4:</strong> o chão. Em cada estação, quando 12 a
+        15 repetições limpas saírem, desça o apoio.
+      </p>
+
+      <p>
+        Duas a três sessões por semana levam a maioria das pessoas da
+        parede ao chão em semanas — e a flexão de joelhos fica como
+        ferramenta auxiliar para as últimas repetições da série.
+      </p>
+
+      <h2>Os erros que desmontam a flexão</h2>
+      <p>
+        <strong>Quadril caído.</strong> A lombar arqueia, a prancha
+        quebra e o exercício vira desconforto de coluna. Core firme ou
+        série encerrada.
+      </p>
+
+      <p>
+        <strong>Quadril empinado.</strong> O corpo em "V" invertido
+        encurta o caminho e tira o peito do trabalho.
+      </p>
+
+      <p>
+        <strong>Pescoço mergulhando.</strong> A cabeça desce, o peito
+        fica — a ilusão de amplitude mais comum do exercício. Quem toca
+        o chão primeiro é o peito, não o nariz.
+      </p>
+
+      <p>
+        <strong>Meia descida.</strong> Os últimos dez centímetros são a
+        parte que constrói. Amplitude completa em menos repetições vale
+        mais que o dobro pela metade.
+      </p>
+
+      <p>
+        <strong>Cotovelo em "T".</strong> Os braços abertos a 90 graus
+        colocam o ombro na posição que ele menos gosta — e é dor
+        anunciada com o volume.
+      </p>
+
+      <h2>Quando ficar fácil: as progressões</h2>
+      <p>
+        <strong>Pés elevados</strong> no banco ou sofá, deslocando ênfase
+        para peito superior e ombro. <strong>Carga nas costas</strong> —
+        mochila com livros resolve em casa. <strong>Pausa de 2
+        segundos</strong> embaixo, eliminando o impulso. <strong>Flexão
+        arqueiro</strong> e variações unilaterais, para quem mira a
+        flexão a um braço.
+      </p>
+
+      <p>
+        E, na academia, o padrão migra naturalmente para o supino e para
+        o <a href="/musculacao/mergulho-nas-paralelas-como-fazer/">mergulho
+        nas paralelas</a> — os degraus seguintes do empurrar. A flexão
+        continua no programa como volume, aquecimento e treino de
+        viagem.
+      </p>
+
+      <h2>Quantas por semana</h2>
+      <p>
+        Esqueça o desafio das 100 por dia: músculo responde a esforço
+        progressivo, não a contagem. De 2 a 4 sessões semanais, com 3 a 5
+        séries levadas perto do limite — na variação que torna 8 a 15
+        repetições desafiadoras —, constroem mais peito do que qualquer
+        maratona diária de repetições fáceis.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A flexão é o exercício que todo mundo acha que sabe fazer — e o
+        que um olho treinado mais corrige em primeira sessão: dois dedos
+        de quadril caído, o pescoço adiantando, o cotovelo abrindo sob
+        fadiga.
+      </p>
+
+      <p>
+        Um personal trainer calibra a variação exata para a sua força de
+        hoje e a progressão para a de amanhã — em casa, no parque ou na
+        academia. É o exercício mais barato do mundo; bem orientado, ele
+        rende como os caros.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a flexão de braço" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

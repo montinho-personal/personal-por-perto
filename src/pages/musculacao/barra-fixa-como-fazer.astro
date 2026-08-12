@@ -1,0 +1,293 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/puxada-como-fazer/',
+    titulo: 'Puxada: como fazer, pegadas e erros comuns',
+    descricao: 'A ferramenta que constrói a força até a primeira barra.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu (e os erros)',
+    descricao: 'Onde a barra fixa se encaixa no treino completo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/pegada-e-antebraco/',
+    titulo: 'Pegada e antebraço: como treinar o elo mais fraco',
+    descricao: 'A mão que aguenta o corpo inteiro pendurado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/barra-fixa-como-fazer';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Barra fixa: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Não consigo fazer nenhuma barra fixa. Por onde começo?',
+    resposta:
+      'Pelo caminho progressivo: puxada na polia para construir força de base, suspensão na barra por tempo para acostumar pegada e ombro, negativas (subir com apoio e descer o mais devagar possível) e barra com elástico de assistência. A maioria das pessoas que segue essa escada consistentemente chega à primeira barra completa em algumas semanas ou poucos meses.',
+  },
+  {
+    pergunta: 'Barra fixa com pegada pronada ou supinada?',
+    resposta:
+      'A pronada (palmas para a frente) é a barra fixa clássica, com mais ênfase no dorsal; a supinada (palmas para você) recruta mais bíceps e costuma ser mais fácil — por isso é boa porta de entrada. A neutra, quando a barra permite, é a mais confortável para os ombros. As três constroem costas; alternar entre elas é a abordagem completa.',
+  },
+  {
+    pergunta: 'Até onde preciso subir na barra fixa?',
+    resposta:
+      'O padrão completo é queixo acima da linha da barra, com o movimento partindo de braços estendidos embaixo. Meia amplitude — nem estender embaixo, nem passar o queixo em cima — é o erro que mais infla números e menos constrói costas. Cinco barras completas valem mais que dez pela metade.',
+  },
+  {
+    pergunta: 'Balançar o corpo na barra fixa é errado?',
+    resposta:
+      'Para o objetivo de musculação, sim: o kipping (impulso de quadril) transforma a barra em exercício de momento, tirando o trabalho do dorsal. Ele existe como técnica específica de modalidades como o crossfit, com propósito e contexto próprios. Para construir costas, a regra é subir sem balanço — se precisa de impulso, é sinal de que a progressão assistida ainda é o caminho.',
+  },
+  {
+    pergunta: 'Quantas barras fixas por treino fazem sentido?',
+    resposta:
+      'Depois que as repetições completas existem, o formato clássico é somar volume em várias séries curtas: 4 a 6 séries parando longe da falha rendem mais do que duas séries até o limite. Quem faz 8 ou mais repetições limpas pode progredir com carga adicional no cinto — a barra fixa lastreada é um dos melhores construtores de costas que existem.',
+  },
+];
+
+const title = 'Barra fixa: como fazer e evoluir do zero';
+const description =
+  'Barra fixa: o caminho do zero à primeira repetição, pegada pronada ou supinada, amplitude completa, o balanço que rouba o exercício e como progredir com carga.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Barra fixa: do zero à primeira repetição (e além dela)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A barra fixa é o teste de força mais honesto da academia: ou o seu
+      corpo sobe, ou não sobe. Não há pino para ajustar nem placa para
+      aliviar — e é exatamente por isso que ela intimida tanta gente.
+    </p>
+
+    <p class="lead">
+      A boa notícia: existe um caminho progressivo que leva do zero à
+      primeira repetição, e ele funciona para praticamente todo mundo.
+      Este guia mostra esse caminho — e o que fazer depois que a
+      primeira barra sai.
+    </p>
+
+    <div class="prose">
+      <h2>O que a barra fixa treina</h2>
+      <p>
+        O padrão de puxada vertical com o próprio corpo: grande dorsal
+        como motor, bíceps e antebraço como transmissão, core inteiro
+        como estabilizador — pendurado, o tronco precisa se segurar
+        sozinho.
+      </p>
+
+      <p>
+        É a diferença para a
+        <a href="/musculacao/puxada-como-fazer/">puxada na polia</a>:
+        mesmo movimento, mas com exigência extra de estabilização e a
+        carga fixa do peso corporal. Uma constrói a força; a outra prova.
+      </p>
+
+      <VideoYouTube
+        id="thg6cGXSlvY"
+        titulo="Como fazer barra fixa — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da barra fixa."
+      />
+
+      <h2>A execução completa, passo a passo</h2>
+      <p>
+        <strong>A pegada.</strong> Pronada, um pouco mais aberta que os
+        ombros, com o polegar envolvendo a barra. Ombros ativos — longe
+        das orelhas — já na posição pendurada.
+      </p>
+
+      <p>
+        <strong>O início.</strong> Braços estendidos, corpo firme, core
+        contraído para não balançar. É daqui que toda repetição parte —
+        não da metade.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Puxe o cotovelo para baixo e para
+        trás, pensando em levar o peito à barra, até o queixo passar da
+        linha dela. Sem pescoço esticando para "roubar" o centímetro
+        final.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Controlada, até a extensão quase
+        completa dos braços. Despencar economiza tempo e desperdiça a
+        metade excêntrica do exercício.
+      </p>
+
+      <h2>Do zero à primeira barra: a escada</h2>
+      <p>
+        <strong>Degrau 1 — puxada na polia.</strong> Construa força no
+        padrão com carga ajustável, progredindo até puxar algo próximo do
+        seu peso corporal.
+      </p>
+
+      <p>
+        <strong>Degrau 2 — suspensão na barra.</strong> Pendure-se com
+        ombros ativos por 20 a 40 segundos. Acostuma pegada, cotovelo e
+        ombro à carga total — trabalho que conversa com o guia de
+        <a href="/musculacao/pegada-e-antebraco/">pegada e antebraço</a>.
+      </p>
+
+      <p>
+        <strong>Degrau 3 — negativas.</strong> Suba com apoio de banco ou
+        salto e desça o mais devagar que conseguir, em 3 a 5 segundos. A
+        fase excêntrica é onde a força específica da barra se constrói
+        mais rápido.
+      </p>
+
+      <p>
+        <strong>Degrau 4 — assistência decrescente.</strong> Elástico na
+        barra ou máquina graviton, reduzindo a ajuda semana a semana até
+        ela desaparecer.
+      </p>
+
+      <p>
+        Com duas a três sessões semanais dessa escada, a primeira barra
+        completa costuma sair em semanas — e a quinta vem bem mais rápido
+        que a primeira.
+      </p>
+
+      <h2>Os erros que travam a evolução</h2>
+      <p>
+        <strong>Meia amplitude.</strong> Não estender embaixo e não
+        passar o queixo em cima infla o número e esvazia o resultado.
+      </p>
+
+      <p>
+        <strong>Balanço de quadril.</strong> O kipping tem lugar em
+        modalidades específicas; na musculação, é momento roubando
+        trabalho do dorsal.
+      </p>
+
+      <p>
+        <strong>Pescoço esticado.</strong> O queixo que se estica para
+        cruzar a barra denuncia a repetição que acabou dois centímetros
+        antes.
+      </p>
+
+      <p>
+        <strong>Só treinar até a falha.</strong> Barra fixa responde
+        melhor a volume distribuído — muitas séries longe do limite —
+        do que a poucas séries até o colapso.
+      </p>
+
+      <h2>Depois das dez: como continuar progredindo</h2>
+      <p>
+        Quando 8 a 10 repetições limpas existem, o peso corporal vira
+        carga leve — e a progressão pede lastro: cinto com anilha,
+        colete ou halter entre os pés, voltando a faixas de 5 a 8
+        repetições.
+      </p>
+
+      <p>
+        A barra lastreada entra no
+        <a href="/musculacao/treino-de-costas/">treino de costas</a> como
+        exercício de força principal, com a puxada e as remadas
+        completando o volume. É o mesmo princípio de progressão de
+        qualquer levantamento — só que o "peso morto" é você.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A escada do zero à primeira barra é simples no papel e cheia de
+        escolhas na prática: quanta assistência usar, quando reduzir,
+        quantas negativas cabem sem fritar o cotovelo. Dosar isso sozinho
+        é o que faz muita gente estacionar no degrau dois.
+      </p>
+
+      <p>
+        Um personal trainer calibra a progressão semana a semana e
+        garante o detalhe que mais importa: cada repetição da escada
+        feita com a técnica da repetição final. A primeira barra fixa da
+        vida é inesquecível — com método, ela chega antes.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a barra fixa" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

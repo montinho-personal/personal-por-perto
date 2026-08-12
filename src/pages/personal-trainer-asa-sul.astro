@@ -1,0 +1,299 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/brasilia-df/',
+    titulo: 'Personal trainer em Brasília',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-sudoeste/',
+    titulo: 'Personal trainer no Sudoeste',
+    descricao: 'O vizinho planejado que herdou a lógica das superquadras.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-quem-trabalha-sentado/',
+    titulo: 'Personal trainer para quem trabalha sentado',
+    descricao: 'Leitura obrigatória na capital das reuniões e dos gabinetes.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-asa-sul';
+const atualizadoEm = '2026-08-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Brasília', url: '/personal-trainer/brasilia-df/' },
+  { nome: 'Personal Trainer na Asa Sul', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Asa Sul?',
+    resposta:
+      'Em Brasília, a aula avulsa vai de R$ 90 a R$ 220 e o pacote mensal de R$ 450 a R$ 1.300. A Asa Sul trabalha na metade de cima dessas faixas — abaixo do Lago Sul, no mesmo patamar do Sudoeste —, com forte demanda por treino nas superquadras e no Parque da Cidade.',
+  },
+  {
+    pergunta: 'O que é treinar numa superquadra?',
+    resposta:
+      'É treinar dentro do desenho de Lucio Costa: blocos residenciais sobre pilotis, cercados por cinturões de árvores, com áreas verdes internas, quadras e o comércio local a poucos passos. Na prática, a superquadra funciona como um mini-parque privado de acesso público — sombra, gramado e espaço para o treino funcional na porta de casa.',
+  },
+  {
+    pergunta: 'O Parque da Cidade é bom para treinar?',
+    resposta:
+      'É um dos maiores parques urbanos do mundo, colado na Asa Sul: pistas de caminhada e corrida de vários quilômetros, ciclovia, quadras e academias ao ar livre. É o coração esportivo de Brasília — de manhã cedo e no fim da tarde, metade do Plano Piloto treina lá.',
+  },
+  {
+    pergunta: 'O que é o Eixão do Lazer?',
+    resposta:
+      'Aos domingos e feriados, o Eixo Rodoviário — a via expressa que corta o Plano Piloto — fecha para carros e vira o maior espaço de lazer da cidade: quilômetros de asfalto livre para corrida, bike, skate e caminhada. Para quem treina na Asa Sul, é o programa dominical de rodagem longa por excelência.',
+  },
+  {
+    pergunta: 'Qual o perfil de quem contrata personal na Asa Sul?',
+    resposta:
+      'O bairro concentra servidores públicos, diplomatas, profissionais liberais e uma população madura que envelheceu com a cidade — as quadras-modelo dos anos 1960 têm moradores de décadas. A demanda dominante é o treino de saúde e autonomia em casa ou na quadra, seguida do executivo de gabinete que precisa vencer as dez horas diárias de cadeira.',
+  },
+];
+
+const title = 'Personal Trainer na Asa Sul (Brasília): o guia';
+const description =
+  'Personal trainer na Asa Sul: preços de Brasília, o treino nas superquadras de Lucio Costa, o Parque da Cidade ao lado e o Eixão do Lazer aos domingos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Brasília</p>
+    <h1>Personal trainer na Asa Sul: treinar no desenho de Lucio Costa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Asa Sul não é um bairro que ganhou áreas verdes — é um projeto em
+      que o verde veio antes dos prédios. Nas superquadras de Lucio
+      Costa, cada bloco nasceu sobre pilotis, cercado de árvores, com o
+      espaço livre como regra.
+    </p>
+
+    <p class="lead">
+      Sessenta anos depois, esse desenho virou o melhor território de
+      treino residencial do país. Este guia percorre a Asa Sul de quem
+      procura um <strong>personal trainer</strong> — da superquadra ao
+      Parque da Cidade.
+    </p>
+
+    <div class="prose">
+      <h2>O projeto que virou rotina</h2>
+      <p>
+        Quando Lucio Costa desenhou o Plano Piloto, a superquadra era uma
+        aposta: quadras de cerca de 280 por 280 metros, blocos de seis
+        andares sobre pilotis, cinturões de árvores de copa densa e a
+        vida cotidiana resolvida na escala do pedestre.
+      </p>
+
+      <p>
+        Nas quadras-modelo — a 107, a 108, a 307 e a 308 Sul —, o
+        conjunto ganhou assinatura tripla: edifícios de Oscar Niemeyer,
+        jardins de Burle Marx e azulejos de Athos Bulcão. É patrimônio
+        vivo, e as pessoas treinam nele todos os dias.
+      </p>
+
+      <p>
+        Para o morador, a consequência prática é única no Brasil: o
+        gramado sombreado, a quadra esportiva e o comércio local ficam a
+        distância de chinelo. O treino ao ar livre não exige
+        deslocamento — exige só decisão.
+      </p>
+
+      <h2>A superquadra como academia</h2>
+      <p>
+        O formato que mais cresce na Asa Sul é o personal na própria
+        quadra: sessões de funcional no gramado, circuitos usando bancos
+        e barras das áreas de convivência, corrida leve nos caminhos
+        internos — tudo sob as árvores que o projeto plantou há sessenta
+        anos.
+      </p>
+
+      <p>
+        Os pilotis dão o plano B de chuva, e os blocos com academia
+        interna — comuns nas quadras renovadas — completam o arranjo. Em
+        uma cidade de sol forte e ar seco, a sombra da superquadra vale
+        estrutura.
+      </p>
+
+      <h2>O Parque da Cidade na porta</h2>
+      <p>
+        Na borda oeste da Asa Sul está o Parque da Cidade Sarah
+        Kubitschek, um dos maiores parques urbanos do mundo — pistas de
+        vários quilômetros, ciclovia, quadras, academias ao ar livre e o
+        movimento constante que faz dele o coração esportivo do Distrito
+        Federal.
+      </p>
+
+      <p>
+        O arranjo clássico do morador: força na superquadra ou na
+        academia durante a semana, rodagem longa no parque no sábado. Os
+        marcos internos do parque servem de régua de distância, e a
+        sombra dos estacionamentos arborizados abriga o funcional em
+        grupo.
+      </p>
+
+      <h2>O Eixão do Lazer: o domingo brasiliense</h2>
+      <p>
+        Aos domingos e feriados, o Eixo Rodoviário fecha para carros e o
+        Plano Piloto inteiro desce para o asfalto: corrida, bike, skate,
+        caminhada em família. O Eixão do Lazer é o ritual dominical da
+        cidade — e o dia de treino longo de quem mora na Asa Sul.
+      </p>
+
+      <p>
+        Para o personal, é a sessão semanal de volume: rodagens
+        progressivas com quilometragem exata, no plano perfeito do eixo,
+        com pontos de hidratação nas quadras vizinhas.
+      </p>
+
+      <h2>Quem procura personal trainer aqui</h2>
+      <p>
+        <strong>O morador de longa data.</strong> As quadras pioneiras
+        envelheceram com seus moradores, e a demanda por treino de
+        autonomia — força, equilíbrio, densidade óssea — é a mais
+        constante do bairro. Dores e limitações passam por médico ou
+        fisioterapeuta antes do programa, como sempre.
+      </p>
+
+      <p>
+        <strong>O servidor de gabinete.</strong> Dez horas de cadeira,
+        reuniões em cadeia e o corpo cobrando — o caso descrito no guia
+        do <a href="/guias/personal-trainer-para-quem-trabalha-sentado/">personal
+        para quem trabalha sentado</a>. A sessão cedo, antes do
+        expediente, é a que sobrevive à agenda de Brasília.
+      </p>
+
+      <p>
+        <strong>As famílias das quadras.</strong> Treino em dupla no
+        gramado, filhos na quadra esportiva ao lado — a superquadra foi
+        desenhada exatamente para essa cena.
+      </p>
+
+      <h2>O clima do cerrado organiza o ano</h2>
+      <p>
+        Brasília tem duas estações: a chuvosa, de outubro a abril, e a
+        seca, com umidade que despenca entre junho e setembro. Na seca, a
+        hidratação vira protagonista — treinar no cerrado seco desidrata
+        sem avisar — e os horários de sol forte pedem sombra ou ambiente
+        coberto.
+      </p>
+
+      <p>
+        A vantagem local: as manhãs secas de céu limpo estão entre as
+        melhores condições de treino ao ar livre do país. O personal
+        brasiliense monta o ano em torno delas.
+      </p>
+
+      <h2>Quanto custa personal trainer na Asa Sul</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/brasilia-df/">personal trainer em
+        Brasília</a>, vai de R$ 90 a R$ 220 pela aula avulsa e de R$ 450
+        a R$ 1.300 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        A Asa Sul fica na metade de cima — abaixo do Lago Sul, lado a
+        lado com o <a href="/personal-trainer-sudoeste/">Sudoeste</a>. O
+        treino em dupla na superquadra é o redutor de custo mais natural
+        do bairro, e o online (R$ 200 a R$ 520 mensais) cobre as
+        temporadas de recesso fora da capital.
+      </p>
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação física na primeira
+        semana, periodização explicada com clareza, experiência real com o
+        seu objetivo e nenhuma promessa de milagre.
+      </p>
+
+      <p>
+        Na Asa Sul, some a pergunta do território: ele monta treino na
+        superquadra — com o que o gramado, os pilotis e as barras
+        oferecem — ou só trabalha em academia? E como usa o Parque da
+        Cidade e o Eixão na semana do aluno? Quem entende Brasília treina
+        com o desenho da cidade a favor; quem não entende, treina apesar
+        dele.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Asa Sul" />
+
+    <WhatsAppCta tema="geral" localidade="na Asa Sul" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -99,6 +99,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-ponta-da-praia/', titulo: 'Personal trainer na Ponta da Praia (Santos)' },
   { categoria: 'Bairros', url: '/personal-trainer-chacara-cachoeira/', titulo: 'Personal trainer na Chácara Cachoeira (Campo Grande)' },
   { categoria: 'Bairros', url: '/personal-trainer-fatima-teresina/', titulo: 'Personal trainer no Fátima (Teresina)' },
+  { categoria: 'Bairros', url: '/personal-trainer-atalaia/', titulo: 'Personal trainer na Atalaia (Aracaju)' },
+  { categoria: 'Bairros', url: '/personal-trainer-asa-sul/', titulo: 'Personal trainer na Asa Sul (Brasília)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -181,6 +183,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/rosca-concentrada-como-fazer/', titulo: 'Rosca concentrada: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/crucifixo-invertido-como-fazer/', titulo: 'Crucifixo invertido: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treino-de-forca/', titulo: 'Treino de força: como funciona e como montar' },
+  { categoria: 'Musculação', url: '/musculacao/barra-fixa-como-fazer/', titulo: 'Barra fixa: como fazer e evoluir do zero' },
+  { categoria: 'Musculação', url: '/musculacao/remada-unilateral-como-fazer/', titulo: 'Remada unilateral (serrote): como fazer' },
+  { categoria: 'Musculação', url: '/musculacao/mergulho-nas-paralelas-como-fazer/', titulo: 'Mergulho nas paralelas: como fazer e evoluir' },
+  { categoria: 'Musculação', url: '/musculacao/elevacao-frontal-como-fazer/', titulo: 'Elevação frontal: como fazer e quando usar' },
+  { categoria: 'Musculação', url: '/musculacao/flexao-de-braco-como-fazer/', titulo: 'Flexão de braço: como fazer e evoluir do zero' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
