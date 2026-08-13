@@ -26,9 +26,9 @@ export const cidade: Cidade = {
 
   parques: [
     {
-      nome: 'Orla do Rio Tocantins',
+      nome: 'Orla Sebastião Miranda (Rio Tocantins)',
       descricao:
-        'Um dos principais cartões-postais e local preferido para caminhada, corrida e ciclismo, com vista para o rio.',
+        'O principal cartão-postal da Velha Marabá e o local preferido para caminhada, corrida e ciclismo, com vista para o rio — palco de largadas das grandes provas da cidade.',
     },
     {
       nome: 'Orla do Encontro dos Rios (Parque do Tocantins)',
@@ -53,6 +53,11 @@ export const cidade: Cidade = {
     'Marabá é cortada pela BR-230 (Transamazônica) e pela BR-155, além de contar com ferrovia, hidrovia (Tocantins) e aeroporto — um importante entroncamento logístico do sudeste paraense.',
 
   corridas: [
+    {
+      nome: 'Corrida do Aço',
+      descricao:
+        'A prova mais tradicional da cidade, com mais de dez edições e mais de 1.400 atletas, largada na Praça São Félix de Valois, junto à Orla Sebastião Miranda.',
+    },
     {
       nome: 'Meia Maratona de Marabá',
       descricao:
@@ -88,12 +93,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo logístico e minerador do sudeste do Pará, Marabá tem nas orlas do Tocantins e do Itacaiúnas seus principais espaços de treino. Um personal trainer ajuda a aproveitá-las com método, ajustando horários e hidratação ao calor amazônico.',
 
-  vizinhas: ['parauapebas-pa', 'belem-pa'],
+  vizinhas: ['parauapebas-pa', 'tucurui-pa'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Qual o melhor horário para treinar ao ar livre em Marabá?',
+      resposta:
+        'Antes das 7h30 ou depois das 17h30 — o calor amazônico, que passa dos 30 °C boa parte do ano, torna o meio do dia inviável. A Orla Sebastião Miranda concentra o movimento nessas janelas, com o pôr do sol sobre o Tocantins como bônus. Hidratação reforçada é regra o ano inteiro, especialmente na seca de maio a setembro.',
+    },
+    {
+      pergunta: 'Personal trainer atende nos três núcleos de Marabá?',
+      resposta:
+        'Sim. Nova Marabá, Cidade Nova e Velha Marabá têm academias próprias, e os profissionais costumam organizar a agenda por núcleo por causa das distâncias — a cidade é espalhada como poucas. O atendimento a domicílio é comum nas folhas da Nova Marabá e na Cidade Nova, e o formato online cobre quem mora nos núcleos mais distantes.',
+    },
+    {
+      pergunta: 'Como treinar na época das chuvas em Marabá?',
+      resposta:
+        'De novembro a março, as pancadas diárias pedem plano B: academias cobertas nos três núcleos, treino em casa com acompanhamento e aproveitamento das janelas secas do dia. Nas cheias maiores do Tocantins, trechos da orla podem alagar — o personal ajusta o circuito para praças e ruas altas sem perder a rotina.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Marabá', url: 'https://cidades.ibge.gov.br/brasil/pa/maraba/panorama' },
     { nome: 'Prefeitura de Marabá', url: 'https://www.maraba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };

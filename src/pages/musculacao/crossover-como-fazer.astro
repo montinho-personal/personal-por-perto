@@ -1,0 +1,288 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/crucifixo-como-fazer/',
+    titulo: 'Crucifixo: como fazer (reto, inclinado e máquina)',
+    descricao: 'O mesmo padrão de abrir e fechar, com halteres e no voador.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer, variações e erros comuns',
+    descricao: 'O empurrar pesado que o crossover complementa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-peito/',
+    titulo: 'Treino de peito: como montar o seu (e os erros)',
+    descricao: 'Onde a polia entra na arquitetura do dia de peito.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/crossover-como-fazer';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Crossover: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre crossover na polia alta, média e baixa?',
+    resposta:
+      'A direção do cabo muda a região do peitoral mais enfatizada. Polia alta, com as mãos descendo em diagonal: porção inferior. Polia média, na linha do peito: a porção medial, no padrão mais parecido com o crucifixo. Polia baixa, com as mãos subindo: porção superior (clavicular). O músculo trabalha inteiro nas três — a regulagem desloca a ênfase, não liga e desliga regiões.',
+  },
+  {
+    pergunta: 'Crossover e crucifixo são o mesmo exercício?',
+    resposta:
+      'O padrão é o mesmo — adução horizontal, o abraço contra resistência. A diferença é a fonte de tensão: o halter do crucifixo pesa para baixo e quase zera a tensão quando as mãos se encontram no alto; o cabo puxa de lado e mantém o peitoral sob tensão do início ao fim, inclusive no ponto final, onde o crucifixo relaxa. Por isso os dois se complementam em vez de se repetirem.',
+  },
+  {
+    pergunta: 'Pode cruzar as mãos no final do crossover?',
+    resposta:
+      'Pode — é daí que vem o nome. Cruzar uma mão sobre a outra alonga o movimento além da linha média e aproveita justamente a vantagem do cabo, que segue puxando quando o halter já teria desistido. Alterne qual braço cruza por cima a cada série. Quem prefere parar com as mãos se encontrando também está certo: o cruzamento é um bônus, não uma obrigação.',
+  },
+  {
+    pergunta: 'Quanto peso usar no crossover?',
+    resposta:
+      'Menos do que no supino, por definição: é um isolador de braços quase estendidos, com alavanca longa. Carga alta cobra impulso de tronco, cotovelos dobrando no meio do caminho e ombros rolando à frente — os três sinais de que a placa venceu. A faixa de 10 a 15 repetições com contração sentida no final costuma render mais que qualquer disputa com a pilha.',
+  },
+  {
+    pergunta: 'Crossover no início ou no fim do treino de peito?',
+    resposta:
+      'Nas duas posições ele funciona, com papéis diferentes. No fim, é o clássico: levar o peitoral à exaustão com segurança depois dos supinos. No início, leve, serve de pré-ativação — acordar o músculo antes das cargas pesadas. Como exercício principal, só em fases específicas ou para quem não pode empurrar pesado; o normal é ser o complemento que fecha a conta.',
+  },
+];
+
+const title = 'Crossover: como fazer, polias e erros comuns';
+const description =
+  'Crossover na polia: alta, média ou baixa para cada ênfase, a diferença real para o crucifixo, o cruzamento final, a carga certa e onde encaixar no treino de peito.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Crossover: o abraço na polia que o halter não consegue imitar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo exercício de peito com peso livre tem o mesmo ponto cego: a
+      tensão morre exatamente onde o peitoral mais aperta, com as mãos
+      se encontrando à frente do corpo. O crossover existe para
+      preencher esse vazio — o cabo puxa de lado e não perdoa
+      centímetro nenhum do movimento.
+    </p>
+
+    <p class="lead">
+      Este guia mostra as três alturas de polia, a execução, os erros
+      e o lugar certo do exercício no dia de peito.
+    </p>
+
+    <div class="prose">
+      <h2>O que o crossover treina</h2>
+      <p>
+        O peitoral maior na adução horizontal — o gesto de abraçar
+        contra resistência —, com deltoide anterior em apoio e o core
+        segurando o tronco parado entre as duas torres. Os braços
+        ficam quase estendidos o tempo todo: quem dobra e estica o
+        cotovelo está fazendo supino de cabo, outro exercício.
+      </p>
+
+      <p>
+        É o primo de polia do
+        <a href="/musculacao/crucifixo-como-fazer/">crucifixo</a> —
+        mesmo padrão, curva de resistência oposta. O halter pesa mais
+        embaixo, na posição alongada; o cabo mantém tensão até o
+        aperto final. Juntos, cobrem o movimento inteiro — é por isso
+        que o <a href="/musculacao/treino-de-peito/">treino de
+        peito</a> completo costuma ter os dois em semanas ou treinos
+        diferentes.
+      </p>
+
+      <VideoYouTube
+        id="jqTlJt3JXzQ"
+        titulo="Como fazer cross over — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do crossover na polia."
+      />
+
+      <h2>As três alturas de polia</h2>
+      <p>
+        <strong>Polia alta.</strong> As mãos viajam de cima para
+        baixo, se encontrando na altura do umbigo: ênfase na porção
+        inferior do peitoral. A versão mais comum.
+      </p>
+
+      <p>
+        <strong>Polia média.</strong> Cabo na linha do peito,
+        trajetória horizontal: a que mais se parece com o crucifixo,
+        com ênfase medial.
+      </p>
+
+      <p>
+        <strong>Polia baixa.</strong> As mãos sobem em diagonal até a
+        linha dos ombros: ênfase na porção superior — a alternativa de
+        cabo ao crucifixo inclinado.
+      </p>
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A base.</strong> Um pé à frente do outro, tronco
+        levemente inclinado, um passo adiante da linha das torres —
+        para a tensão já existir na posição aberta. Ombros para trás e
+        para baixo, peito estufado.
+      </p>
+
+      <p>
+        <strong>A abertura.</strong> Braços abertos na linha do
+        padrão escolhido, cotovelos com a flexão leve que não muda
+        mais até o fim da série. O alongamento aparece no peito — não
+        no ombro rolando à frente.
+      </p>
+
+      <p>
+        <strong>O fechamento.</strong> Desenhe o arco até as mãos se
+        encontrarem — ou cruzarem — à frente do corpo, em 1 a 2
+        segundos, e aperte o peitoral por um instante no final. O
+        movimento nasce no peito; as mãos são só a ponta do compasso.
+      </p>
+
+      <p>
+        <strong>A volta.</strong> Resista à abertura em 2 a 3
+        segundos, até o alongamento confortável — sem deixar as
+        torres puxarem os ombros para a frente no fim.
+      </p>
+
+      <h2>Os erros que desmontam o crossover</h2>
+      <p>
+        <strong>Virar supino de cabo.</strong> Cotovelo dobrando e
+        esticando a cada repetição — o tríceps agradece, o peitoral
+        perde o isolamento que justificava o exercício.
+      </p>
+
+      <p>
+        <strong>Carga de composto.</strong> A placa alta demais cobra
+        tronco embalando e ombro rolando à frente no alongamento — o
+        ponto exato em que o peso errado vira risco.
+      </p>
+
+      <p>
+        <strong>Encurtar o final.</strong> Parar o movimento com as
+        mãos ainda afastadas joga fora o único trecho em que o
+        crossover é insubstituível.
+      </p>
+
+      <p>
+        <strong>Tronco de pêndulo.</strong> Inclinar e voltar a cada
+        repetição transforma isolamento em embalo. A inclinação se
+        escolhe antes da série — e congela.
+      </p>
+
+      <p>
+        <strong>Pressa na volta.</strong> Deixar as torres puxarem os
+        braços de volta desperdiça a metade excêntrica — e é nela que
+        o alongamento sob tensão constrói.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 4 séries de 10 a 15 repetições, tipicamente fechando o
+        dia de peito depois do
+        <a href="/musculacao/supino-como-fazer/">supino</a> e das
+        demais cargas pesadas. Alternar a altura da polia entre fases
+        — alta num ciclo, baixa no outro — distribui a ênfase sem
+        inchar o treino. A progressão privilegia a qualidade do aperto
+        final sobre o número da placa.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O crossover é o exercício das pequenas trapaças invisíveis: o
+        cotovelo que dobra um pouco mais a cada série, o passo que
+        recua até a tensão inicial sumir, o tronco que embala no ritmo
+        da música. Nenhuma delas aparece para quem está dentro.
+      </p>
+
+      <p>
+        Um personal trainer trava essas fugas, escolhe a altura de
+        polia para o seu objetivo e equilibra a dupla crucifixo—
+        crossover ao longo das semanas. É o ajuste fino que transforma
+        o acessório de fim de treino em ferramenta de verdade.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o crossover" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

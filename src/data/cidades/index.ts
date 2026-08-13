@@ -398,6 +398,8 @@ import { cidade as barcelos } from './barcelos-am';
 import { cidade as colinasDoSul } from './colinas-do-sul-go';
 import { cidade as pacaraima } from './pacaraima-rr';
 import { cidade as eldorado } from './eldorado-sp';
+import { cidade as apiai } from './apiai-sp';
+import { cidade as alcantara } from './alcantara-ma';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1142,6 +1144,7 @@ export const cidades: Cidade[] = [
   itamonte, jaguariaiva, iporanga, piracuruca, cananeia, santoAmaroDoMaranhao,
   saoGabrielDaCachoeira, uiramuta, barcelos, colinasDoSul,
   pacaraima, eldorado,
+  apiai, alcantara,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

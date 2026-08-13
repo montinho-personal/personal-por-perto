@@ -193,6 +193,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/face-pull-como-fazer/', titulo: 'Face pull: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/prancha-abdominal-como-fazer/', titulo: 'Prancha abdominal: como fazer e progredir' },
   { categoria: 'Musculação', url: '/musculacao/leg-press-como-fazer/', titulo: 'Leg press: como fazer, pés e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/agachamento-bulgaro-como-fazer/', titulo: 'Agachamento búlgaro: como fazer e progredir' },
+  { categoria: 'Musculação', url: '/musculacao/cadeira-extensora-como-fazer/', titulo: 'Cadeira extensora: como fazer e regular certo' },
+  { categoria: 'Musculação', url: '/musculacao/crossover-como-fazer/', titulo: 'Crossover: como fazer, polias e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/melhor-horario-para-treinar/', titulo: 'Melhor horário para treinar: manhã ou noite?' },
+  { categoria: 'Musculação', url: '/musculacao/voltar-a-treinar-depois-de-parar/', titulo: 'Voltar a treinar depois de parar: o guia da volta' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

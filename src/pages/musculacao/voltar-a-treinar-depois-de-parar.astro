@@ -1,0 +1,267 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/destreino/',
+    titulo: 'Destreino: quanto você realmente perde parado',
+    descricao: 'A conta honesta do que os meses parados levaram — e do que ficou.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'Para esta ser a última vez que você precisa recomeçar.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: o que é normal',
+    descricao: 'A dor dos primeiros treinos de volta, explicada.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/voltar-a-treinar-depois-de-parar';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Voltar a treinar depois de parar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Com quanto peso devo voltar depois de meses parado?',
+    resposta:
+      'A régua prática: um a três meses parado, volte com 50% a 60% das cargas antigas; seis meses ou mais, com 40% a 50% — e nas primeiras duas semanas, termine toda série com repetições sobrando. Parece pouco, e é de propósito: a força volta rápido, mas tendões e articulações readaptam mais devagar que os músculos. A pressa da primeira semana é a lesão da terceira.',
+  },
+  {
+    pergunta: 'Quanto tempo leva para recuperar o que perdi?',
+    resposta:
+      'Menos do que levou para construir — graças à memória muscular. Músculo readquirido volta em fração do tempo original: quem treinou um ano e parou seis meses costuma se reaproximar do nível antigo em 2 a 3 meses de volta consistente. Os núcleos das células musculares construídos no passado permanecem e aceleram a reconstrução. A memória trabalha a seu favor; a impaciência, contra.',
+  },
+  {
+    pergunta: 'Devo voltar com o mesmo treino de antes?',
+    resposta:
+      'Não no começo. As duas primeiras semanas pedem menos volume (2 a 3 séries por exercício, treinos de corpo inteiro 2 a 3 vezes na semana) e exercícios simples, de preferência com máquinas e halteres antes das barras pesadas. A partir da terceira ou quarta semana, o treino antigo — ou um melhor — volta gradualmente. Recomeço não é continuação: é uma rampa.',
+  },
+  {
+    pergunta: 'A dor muscular dos primeiros treinos de volta é normal?',
+    resposta:
+      'É a mais forte que existe — o estímulo novo em músculo desacostumado gera a famosa dor tardia em dose máxima, especialmente 24 a 72 horas depois. Ela assusta, mas é benigna e diminui drasticamente já na segunda semana. O que a atenua: começar com pouco volume, evitar a falha nas primeiras sessões e não zerar a atividade nos dias seguintes — caminhar e alongar ajudam mais que o sofá.',
+  },
+  {
+    pergunta: 'Parei por causa de lesão ou problema de saúde. Como voltar?',
+    resposta:
+      'Com liberação primeiro: quem parou por lesão, cirurgia ou condição de saúde volta ao treino depois do aval de médico ou fisioterapeuta, e idealmente com o programa desenhado em conjunto com esse profissional. A volta existe para quase todo caso — mas a ordem dos passos não se inverte. Para pausas por rotina, viagem ou desânimo, basta a rampa de cargas descrita acima.',
+  },
+];
+
+const title = 'Voltar a treinar depois de parar: o guia da volta';
+const description =
+  'Voltar a treinar depois de meses ou anos parado: com quanto peso recomeçar, a rampa das primeiras semanas, a memória muscular e como não repetir a desistência.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Voltar a treinar: o guia de quem está recomeçando (de novo)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Todo mundo que treina há anos já parou alguma vez. A diferença
+      entre quem constrói um físico e quem coleciona recomeços não é
+      nunca parar — é saber voltar: sem a pressa que machuca, sem a
+      culpa que paralisa e com a rampa certa nas primeiras semanas.
+    </p>
+
+    <p class="lead">
+      Este guia é essa rampa: quanto peso, quanto volume, o que
+      esperar da dor e da memória muscular — e como fazer desta volta
+      a última.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro, a boa notícia: a memória muscular existe</h2>
+      <p>
+        Músculo construído deixa herança. As adaptações celulares dos
+        seus anos de treino — os núcleos ganhos pelas fibras — resistem
+        muito tempo à pausa, e é por isso que recuperar é sempre mais
+        rápido que construir: meses de reconquista para anos de
+        construção original.
+      </p>
+
+      <p>
+        A conta exata do que se perde está no guia do
+        <a href="/musculacao/destreino/">destreino</a> — o resumo é
+        que a força resiste semanas, o músculo resiste mais do que o
+        espelho sugere (parte do "murchamento" é só glicogênio e água)
+        e o condicionamento é o primeiro a ir e o primeiro a voltar.
+        Nada do que você construiu foi em vão.
+      </p>
+
+      <h2>A regra de ouro: volte por baixo</h2>
+      <p>
+        O erro clássico da volta é único e sempre o mesmo: retomar de
+        onde parou. A força até responde rápido — mas tendões,
+        ligamentos e articulações readaptam no ritmo deles, mais
+        lento. O corpo aguenta o primeiro treino nostálgico; ele cobra
+        na segunda e na terceira semana.
+      </p>
+
+      <p>
+        <strong>Pausa de 1 a 3 meses:</strong> volte com 50% a 60% das
+        cargas antigas. <strong>Pausa de 6 meses ou mais:</strong> 40%
+        a 50%, com calma dobrada. <strong>Anos parado ou primeira vez
+        séria:</strong> trate como iniciante — é um elogio, não um
+        rebaixamento: o progresso de iniciante é o mais rápido que
+        existe.
+      </p>
+
+      <h2>As quatro primeiras semanas, na prática</h2>
+      <p>
+        <strong>Semanas 1 e 2 — a reapresentação.</strong> Corpo
+        inteiro, 2 a 3 sessões, 2 a 3 séries por exercício, longe da
+        falha — toda série termina com 3 ou 4 repetições sobrando.
+        Máquinas e halteres antes das barras pesadas. O objetivo não é
+        estimular: é reacostumar.
+      </p>
+
+      <p>
+        <strong>Semanas 3 e 4 — a rampa.</strong> Volume e carga sobem
+        a cada sessão, a divisão de treino antiga (ou uma melhor)
+        reaparece, a falha ainda fica para depois. A dor tardia já
+        despencou; a empolgação, idealmente, não.
+      </p>
+
+      <p>
+        <strong>Do segundo mês em diante</strong> — treino normal, com
+        a memória muscular puxando os números para cima em velocidade
+        que iniciante nenhum conhece. É a fase mais gratificante da
+        musculação: progresso visível semana a semana.
+      </p>
+
+      <h2>A dor do recomeço (e por que ela engana)</h2>
+      <p>
+        A <a href="/musculacao/dor-muscular-pos-treino/">dor
+        tardia</a> dos primeiros treinos de volta é a mais intensa que
+        existe — músculo desacostumado mais estímulo novo é a receita
+        dela em dose máxima. Ela não é sinal de lesão nem de exagero
+        necessário: é só o preço da reapresentação, e cai pela metade
+        já na segunda semana.
+      </p>
+
+      <p>
+        O perigo real é o oposto dela: usar a dor como desculpa para
+        parar de novo na semana um. Movimento leve nos dias seguintes
+        — caminhada, alongamento, a próxima sessão mais leve — encurta
+        a dor; o sofá a prolonga.
+      </p>
+
+      <h2>Para esta ser a última volta</h2>
+      <p>
+        Quem está voltando já sabe como se para: a semana caótica, a
+        viagem, a lesão pequena que virou pausa grande. A volta é a
+        hora de instalar as defesas — treino com hora fixa e
+        frequência honesta (3 vezes bem-feitas valem mais que 6
+        prometidas), a regra do treino mínimo para os dias ruins e as
+        estratégias do guia de
+        <a href="/guias/como-nao-desistir-do-treino/">como não
+        desistir do treino</a>.
+      </p>
+
+      <p>
+        E quem parou por lesão, cirurgia ou saúde volta com aval de
+        médico ou fisioterapeuta — a rampa continua valendo, mas quem
+        define o primeiro degrau é a avaliação, não o guia.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A volta é o momento em que o acompanhamento mais paga: é
+        quando a empolgação quer pular a rampa, a vergonha compara o
+        corpo de hoje com o de antes e a técnica está enferrujada nos
+        detalhes que você nem lembra que esqueceu.
+      </p>
+
+      <p>
+        Um personal trainer calibra o ponto de partida real — não o da
+        memória —, segura a progressão no ritmo que os tendões
+        aguentam e transforma o recomeço em rotina antes que a
+        motivação inicial acabe. Recomeçar sozinho já deu no que deu;
+        desta vez, mude uma variável.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre voltar a treinar" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

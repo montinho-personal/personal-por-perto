@@ -50,9 +50,14 @@ export const cidade: Cidade = {
     'O treino ao ar livre é confortável boa parte do ano; o inverno pede agasalho, mas permite corrida na orla.',
 
   mobilidade:
-    'São José é cortada de norte a sul pela BR-101 na faixa leste; o novo Contorno Viário da Grande Florianópolis aliviou o tráfego, e a conurbação com Florianópolis é total.',
+    'São José é cortada de norte a sul pela BR-101 na faixa leste; o novo Contorno Viário da Grande Florianópolis aliviou o tráfego, e a conurbação com Florianópolis é total. A Beira-Mar de Barreiros, maior obra urbana da história do município, começou a sair do papel em 2026 e vai estender a orla de lazer para o norte da cidade.',
 
   corridas: [
+    {
+      nome: 'Meia Maratona de São José',
+      descricao:
+        'Prova consolidada no calendário catarinense, com percursos na orla; a cidade estreou também uma maratona completa em 2025.',
+    },
     {
       nome: 'Corrida Polícia Civil — São José',
       descricao:
@@ -88,12 +93,29 @@ export const cidade: Cidade = {
   conclusao:
     'Conurbada a Florianópolis e de IDHM muito alto, São José tem na Beira-Mar uma academia a céu aberto e uma rede de parques em expansão. Um personal trainer ajuda a aproveitar a orla com método, num clima ameno boa parte do ano.',
 
-  vizinhas: ['florianopolis-sc', 'itajai-sc'],
+  vizinhas: ['florianopolis-sc', 'palhoca-sc'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Quanto custa um personal trainer em São José em relação a Florianópolis?',
+      resposta:
+        'Um pouco menos, em geral 10% a 20% abaixo dos valores da capital — com a vantagem de evitar as pontes e o trânsito da Ilha. Kobrasol e Campinas concentram os valores mais altos, próximos dos de Florianópolis; nos bairros do eixo Barreiros–Areias, os pacotes mensais ficam mais acessíveis. Muitos josefenses que trabalham na capital preferem treinar na própria cidade justamente pela logística.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em São José?',
+      resposta:
+        'A Beira-Mar de São José é o ponto principal: 2,5 km de pista, ciclovia, academia ao ar livre e vista para o mar, com movimento do amanhecer à noite. O Parque Linear de Serraria e as praças revitalizadas de Kobrasol completam o circuito — e a futura Beira-Mar de Barreiros, em obras, vai dobrar a orla disponível nos próximos anos.',
+    },
+    {
+      pergunta: 'Personal trainer atende em condomínio e estúdio em Kobrasol e Campinas?',
+      resposta:
+        'Sim — é um dos formatos mais comuns da cidade. Kobrasol e Campinas têm alta densidade de prédios com academia própria, e o atendimento em estúdio por sessão avulsa ou pacote é forte na região. Para quem mora nos bairros mais ao norte, o atendimento a domicílio e o formato online cobrem bem a rotina de quem cruza a BR-101 todos os dias.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — São José', url: 'https://cidades.ibge.gov.br/brasil/sc/sao-jose/panorama' },
     { nome: 'Prefeitura de São José', url: 'https://www.saojose.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };

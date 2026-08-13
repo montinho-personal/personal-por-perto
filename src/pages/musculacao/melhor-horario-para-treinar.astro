@@ -1,0 +1,257 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa: a relação que ninguém treina',
+    descricao: 'O fator que pesa mais que o relógio do treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/cafeina-pre-treino/',
+    titulo: 'Cafeína no pré-treino: quanto tomar e quando',
+    descricao: 'O estimulante que muda de regra conforme o horário.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/frequencia-de-treino/',
+    titulo: 'Frequência de treino: quantas vezes por semana',
+    descricao: 'A variável que importa mais do que a hora do dia.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/melhor-horario-para-treinar';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Melhor horário para treinar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Existe um horário que dá mais resultado na musculação?',
+    resposta:
+      'A força e o desempenho tendem a ser um pouco maiores no fim da tarde, quando a temperatura corporal está no pico — a diferença aparece em estudos, mas é pequena. Para hipertrofia e emagrecimento no longo prazo, o que os dados mostram é empate: quem treina de manhã e quem treina à noite ganham praticamente o mesmo, desde que treinem com constância. O melhor horário é o que a sua rotina sustenta o ano inteiro.',
+  },
+  {
+    pergunta: 'Treinar em jejum de manhã queima mais gordura?',
+    resposta:
+      'Queima mais gordura durante a sessão, mas o balanço do dia se ajusta e o resultado final de semanas é igual ao de quem treina alimentado — quem decide o emagrecimento é o déficit calórico total. Treine em jejum se for confortável e o desempenho não cair; coma antes se sentir fraqueza. Nos dois casos, o horário e o estômago pesam menos que a consistência.',
+  },
+  {
+    pergunta: 'Treinar à noite atrapalha o sono?',
+    resposta:
+      'Para a maioria, não — treinos vigorosos até uma hora antes de deitar não pioram o sono na média dos estudos. Pessoas mais sensíveis, porém, sentem o corpo acelerado; nesse caso vale encerrar o treino 2 a 3 horas antes de dormir e cortar a cafeína do pré-treino a partir do meio da tarde, porque ela, sim, é sabotadora comprovada de sono.',
+  },
+  {
+    pergunta: 'Sou mais fraco de manhã. Isso muda os ganhos?',
+    resposta:
+      'A força matinal costuma ser um pouco menor mesmo — a temperatura corporal e a mobilidade estão mais baixas. Dois consolos: um aquecimento mais longo encurta boa parte da diferença, e o corpo se adapta ao horário em poucas semanas de treino consistente — quem treina sempre de manhã acaba rendendo de manhã. Os ganhos de longo prazo não ficam para trás por causa do relógio.',
+  },
+  {
+    pergunta: 'Faz mal variar o horário do treino a cada dia?',
+    resposta:
+      'Mal não faz — treino feito vale mais que treino perfeito não feito. O que se perde com o horário aleatório é a força do hábito: treinos em horário fixo viram compromisso automático e sobrevivem melhor às semanas caóticas. Se a agenda muda por natureza (turnos, plantões, filhos), a solução é planejar a semana no domingo, e não esperar o horário ideal aparecer.',
+  },
+];
+
+const title = 'Melhor horário para treinar: manhã ou noite?';
+const description =
+  'Manhã, tarde ou noite: o que a ciência diz sobre o melhor horário para treinar, jejum, sono, cafeína e por que a constância vence o relógio.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Melhor horário para treinar: o que o relógio muda — e o que ele não muda</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucas perguntas de academia geram tanta resposta confiante com
+      tão pouca diferença prática: treinar de manhã ou à noite? A
+      ciência tem uma resposta — só que ela é menos empolgante e mais
+      útil do que os dois times gostariam.
+    </p>
+
+    <p class="lead">
+      Este guia separa o que o horário realmente muda (desempenho
+      agudo, hábito, sono) do que ele não muda (o resultado de meses)
+      — e mostra como escolher o seu.
+    </p>
+
+    <div class="prose">
+      <h2>O que a ciência mostra</h2>
+      <p>
+        No curto prazo, o corpo tem hora: força, potência e
+        flexibilidade atingem o pico no fim da tarde, junto com a
+        temperatura corporal — de manhã cedo, o motor está frio e os
+        números caem um pouco. Essa diferença é real e mensurável.
+      </p>
+
+      <p>
+        No longo prazo, ela quase desaparece. Estudos comparando
+        grupos que treinaram meses de manhã ou à noite encontram
+        ganhos de músculo e força praticamente iguais — e mais: quem
+        treina sempre no mesmo horário se adapta a ele, encurtando a
+        desvantagem matinal. O corpo aprende a hora do esforço.
+      </p>
+
+      <p>
+        Tradução prática: o relógio influencia o treino de hoje; a
+        <a href="/musculacao/frequencia-de-treino/">frequência
+        semanal</a> decide o resultado do ano.
+      </p>
+
+      <h2>O caso da manhã</h2>
+      <p>
+        <strong>A agenda protege o treino.</strong> Às 6h da manhã,
+        nenhuma reunião atrasou, nenhum imprevisto aconteceu, ninguém
+        marcou happy hour. A taxa de presença de quem treina cedo
+        costuma ser a maior — pelo simples fato de que o dia ainda não
+        teve tempo de sabotar.
+      </p>
+
+      <p>
+        <strong>Os custos.</strong> Motor frio (aquecimento mais
+        longo, obrigatório), força um pouco menor nas primeiras
+        semanas e a tentação de cortar o sono para caber o treino —
+        o único erro capaz de anular o benefício, porque o
+        <a href="/musculacao/sono-e-ganho-de-massa/">sono</a> constrói
+        mais músculo que qualquer horário.
+      </p>
+
+      <h2>O caso da noite</h2>
+      <p>
+        <strong>O corpo está pronto.</strong> Temperatura no pico,
+        articulações soltas, refeições do dia abastecendo o treino —
+        é o horário dos recordes pessoais. Para quem descarrega o
+        estresse do trabalho na barra, é também terapia de agenda.
+      </p>
+
+      <p>
+        <strong>Os custos.</strong> A academia cheia entre 18h e 21h,
+        o dia inteiro de chances para o imprevisto engolir o treino e,
+        para os sensíveis, o corpo acelerado na hora de dormir. A
+        <a href="/musculacao/cafeina-pre-treino/">cafeína do
+        pré-treino</a> depois das 16h é o sabotador clássico — o
+        problema costuma ser ela, não o treino.
+      </p>
+
+      <h2>Jejum, almoço e outros detalhes</h2>
+      <p>
+        Treinar em jejum não queima mais gordura no fim do mês — o
+        déficit calórico total manda. O treino do horário de almoço
+        funciona perfeitamente para sessões de 40 a 50 minutos. Quem
+        trabalha em turnos trata o "dia" pelo próprio relógio: treino
+        no meio do turno de descanso, refeição antes, sono protegido
+        depois. Em todos os casos, a regra é a mesma: o detalhe
+        alimenta a consistência ou atrapalha — e deve ser julgado só
+        por isso.
+      </p>
+
+      <h2>Como escolher o seu horário</h2>
+      <p>
+        <strong>1.</strong> Olhe a agenda real — não a idealizada — e
+        ache a janela que sobrevive à sua pior semana típica.
+        <strong>2.</strong> Fixe essa janela por quatro semanas, como
+        compromisso inegociável. <strong>3.</strong> Avalie: presença
+        alta e energia ok? Achou. Faltas se acumulando? O problema é a
+        janela, não você — troque e repita o teste.
+      </p>
+
+      <p>
+        O melhor horário para treinar é uma descoberta empírica sobre
+        a sua vida — não uma verdade fisiológica universal.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O horário certo é, no fundo, um problema de engenharia de
+        rotina — e é exatamente aí que o acompanhamento profissional
+        mais muda o jogo: a sessão marcada com outra pessoa é o
+        compromisso que a força de vontade sozinha não replica.
+      </p>
+
+      <p>
+        Um personal trainer encaixa o treino na sua agenda real,
+        ajusta aquecimento e volume ao horário escolhido — mais rampa
+        de manhã, menos estimulante à noite — e segura a constância
+        nas semanas em que o relógio conspira. O horário vira detalhe;
+        a presença vira regra.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre horário de treino" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,292 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu (e os erros)',
+    descricao: 'O quadro completo em que a extensora é o isolador de quadríceps.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/mesa-flexora-como-fazer/',
+    titulo: 'Mesa flexora: como fazer e os erros comuns',
+    descricao: 'A irmã da extensora — mesma lógica, músculo oposto.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Treinar com dor no joelho: o que pode e o que não pode',
+    descricao: 'Onde a extensora entra como amiga — e onde exige cautela.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/cadeira-extensora-como-fazer';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cadeira extensora', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Como regular a cadeira extensora do jeito certo?',
+    resposta:
+      'Três pontos: o eixo da máquina alinhado com o centro do joelho (não acima nem abaixo), o encosto ajustado para a coxa ficar inteira apoiada no banco, e o rolo sobre o peito do pé, logo acima do tornozelo. Regulagem errada é a causa número um de desconforto no exercício — vale os trinta segundos de ajuste antes da primeira série.',
+  },
+  {
+    pergunta: 'Cadeira extensora faz mal para o joelho?',
+    resposta:
+      'Para joelhos saudáveis, não — é um exercício seguro e dos mais usados justamente em fortalecimento. A má fama vem do uso errado: carga excessiva com chute e impulso, amplitude jogada e regulagem torta. Quem tem condropatia ou dor patelar deve ajustar arco de movimento e carga com orientação — e dor persistente é caso de médico ou fisioterapeuta antes de insistir.',
+  },
+  {
+    pergunta: 'Extensora substitui o agachamento?',
+    resposta:
+      'Não — eles fazem trabalhos diferentes. O agachamento e o leg press carregam o quadríceps junto com glúteo e adutores num padrão de corpo inteiro; a extensora isola o quadríceps e é o único exercício comum que o desafia de verdade com o joelho quase estendido e o reto femoral em posição de trabalhar. No programa, ela complementa os compostos — sozinha, deixa o resto da perna sem estímulo.',
+  },
+  {
+    pergunta: 'Segurar embaixo ou em cima: onde pausar na extensora?',
+    resposta:
+      'No topo, com o joelho estendido, um segundo de contração máxima vale ouro — é o ponto em que o quadríceps trabalha com mais intensidade e onde a pressa rouba mais resultado. A descida volta controlada, em 2 a 3 segundos, sem deixar a placa bater. Subida firme, pausa curta no alto, descida resistida: essa é a receita inteira do exercício.',
+  },
+  {
+    pergunta: 'Quantas séries de cadeira extensora por semana?',
+    resposta:
+      'De 2 a 4 séries de 10 a 15 repetições, uma a duas vezes por semana, costumam bastar — sempre somadas ao volume de agachamento, leg press e afundo, que já trabalham o quadríceps pesado. Ela também funciona como pré-ativação leve antes dos compostos e como exercício final para levar o músculo perto da falha sem risco técnico.',
+  },
+];
+
+const title = 'Cadeira extensora: como fazer e regular certo';
+const description =
+  'Cadeira extensora: a regulagem em três pontos, a pausa no topo que muda o resultado, o mito de que faz mal ao joelho e como encaixar no treino de pernas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cadeira extensora: o isolador que quase ninguém regula direito</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      É a máquina em que todo mundo senta, quase ninguém ajusta e
+      metade chuta o peso para cima. A cadeira extensora é o único
+      exercício comum que isola o quadríceps de verdade — quando o
+      banco, o eixo e o rolo estão no lugar certo.
+    </p>
+
+    <p class="lead">
+      Este guia mostra a regulagem em três pontos, a execução que
+      transforma a máquina simples em construtor sério e o papel dela
+      ao lado dos exercícios pesados.
+    </p>
+
+    <div class="prose">
+      <h2>O que a extensora treina</h2>
+      <p>
+        O quadríceps — as quatro cabeças da frente da coxa — na única
+        função delas: estender o joelho. Sem glúteo, sem lombar, sem
+        equilíbrio: só a coxa contra o rolo. É essa pureza que faz
+        dela a ferramenta certa para dar volume ao quadríceps sem
+        custo técnico e para acordar o músculo antes dos compostos.
+      </p>
+
+      <p>
+        No <a href="/musculacao/treino-de-pernas/">treino de
+        pernas</a>, ela é a metade da dupla de isoladores — a
+        <a href="/musculacao/mesa-flexora-como-fazer/">mesa
+        flexora</a> cuida da parte de trás, a extensora da frente. As
+        duas juntas fecham o que agachamento e leg press deixam aberto.
+      </p>
+
+      <VideoYouTube
+        id="el3oHblB5DM"
+        titulo="Como fazer cadeira extensora — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta da cadeira extensora."
+      />
+
+      <h2>A regulagem: os três pontos</h2>
+      <p>
+        <strong>1. O eixo.</strong> O centro de giro da máquina
+        alinhado com o centro do seu joelho. Desalinhado, o rolo
+        arrasta na canela e o joelho trabalha em ângulo torto.
+      </p>
+
+      <p>
+        <strong>2. O encosto.</strong> Ajustado para a coxa apoiar
+        inteira no banco, com a dobra do joelho na borda. Encosto
+        longe demais deixa a coxa solta; perto demais, o joelho
+        engolido pelo assento.
+      </p>
+
+      <p>
+        <strong>3. O rolo.</strong> Sobre o peito do pé, logo acima do
+        tornozelo — não no meio da canela, onde encurta a alavanca e
+        pressiona o osso.
+      </p>
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A base.</strong> Quadril colado no banco, mãos nas
+        alças laterais, tronco firme contra o encosto — ele não
+        participa do movimento.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Estenda os joelhos em 1 a 2
+        segundos, sem chute, até a extensão completa — ou quase, se o
+        joelho pedir.
+      </p>
+
+      <p>
+        <strong>O topo.</strong> Um segundo de contração máxima, coxa
+        dura como pedra. É o metro quadrado mais valioso do exercício.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Resista à volta em 2 a 3 segundos,
+        até perto de 90 graus ou da amplitude confortável, sem a placa
+        tocar a pilha entre as repetições.
+      </p>
+
+      <h2>Os erros de sempre</h2>
+      <p>
+        <strong>Chutar o peso.</strong> O impulso que transforma
+        tensão em trajetória: o peso sobe voando e desce despencando,
+        e o quadríceps assiste. Se precisa chutar, sobrou placa.
+      </p>
+
+      <p>
+        <strong>Quadril levantando.</strong> O corpo escorregando para
+        frente a cada repetição para "ajudar" — sinal de carga errada
+        ou encosto mal regulado.
+      </p>
+
+      <p>
+        <strong>Amplitude pela metade.</strong> Sem a extensão
+        completa lá em cima, o exercício perde exatamente o trecho em
+        que ele é insubstituível.
+      </p>
+
+      <p>
+        <strong>Regulagem herdada.</strong> Usar a máquina como o
+        aluno anterior deixou. Trinta segundos de ajuste separam o
+        exercício certo do desconforto crônico.
+      </p>
+
+      <p>
+        <strong>Extensora como treino inteiro.</strong> Ela isola —
+        não constrói a perna sozinha. Glúteo, posterior e adutores
+        ficam de fora por definição.
+      </p>
+
+      <h2>Extensora e joelho: amiga, com regras</h2>
+      <p>
+        Bem regulada e com carga progressiva, a extensora é
+        ferramenta clássica de fortalecimento — inclusive para
+        joelhos sensíveis, com arco de movimento ajustado. As regras
+        práticas estão no guia de
+        <a href="/musculacao/treinar-com-dor-no-joelho/">treinar com
+        dor no joelho</a>; a regra das regras é que dor persistente se
+        investiga com médico ou fisioterapeuta, não se atropela com
+        mais placa.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 4 séries de 10 a 15 repetições, depois dos compostos —
+        ou antes, leve, como pré-ativação. A progressão privilegia o
+        controle: só sobe a placa quando todas as repetições saem com
+        pausa no topo e descida resistida. Na extensora, a placa que
+        sobe rápido demais é a que menos constrói.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A extensora parece à prova de erro — e é exatamente onde os
+        erros se escondem: a regulagem herdada do aluno anterior, o
+        chute que cresce placa a placa, a amplitude que encolhe sem
+        ninguém notar.
+      </p>
+
+      <p>
+        Um personal trainer regula a máquina para o seu fêmur, define
+        o arco certo para o seu joelho e cobra o segundo de contração
+        que separa a extensora decorativa da extensora que constrói
+        quadríceps. Máquina simples rende mais com olhar treinado.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a cadeira extensora" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
