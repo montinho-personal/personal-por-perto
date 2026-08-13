@@ -115,10 +115,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['campinas-sp', 'piracicaba-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/limeira-sp.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Limeira (SP) em arte que reúne a igreja do Centro, o Horto Florestal e o estádio Limeirão — Personal por Perto',
+    legenda: 'Treino personalizado em Limeira: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Limeira', url: 'https://cidades.ibge.gov.br/brasil/sp/limeira/panorama' },
     { nome: 'Prefeitura de Limeira', url: 'https://www.limeira.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-08-13',
 };

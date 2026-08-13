@@ -113,6 +113,13 @@ export const cidade: Cidade = {
         'É uma das especialidades locais: a cidade é cercada de subidas, e provas de trail fazem parte do calendário o ano todo. O preparo trabalha força de pernas, panturrilha e core, técnica de descida e adaptação ao desnível — treinável no Parque Cremerie e nas próprias ruas íngremes. Para quem mira travessias na Serra dos Órgãos, o personal monta a progressão de meses.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/petropolis-rj.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Petrópolis (RJ) em arte que reúne o Palácio de Cristal, o Museu Imperial e o Palácio Quitandinha — Personal por Perto',
+    legenda: 'Treino personalizado em Petrópolis: um plano feito para o seu corpo, a sua rotina e o clima de serra, do Centro a Itaipava.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Petrópolis', url: 'https://cidades.ibge.gov.br/brasil/rj/petropolis/panorama' },
     { nome: 'Prefeitura de Petrópolis', url: 'https://www.petropolis.rj.gov.br/' },

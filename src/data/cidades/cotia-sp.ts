@@ -115,10 +115,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['sao-paulo-sp', 'osasco-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/cotia-sp.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Cotia (SP) em arte que reúne o Templo Zu Lai, o verde da Granja Viana e o Pátio Cotia — Personal por Perto',
+    legenda: 'Treino personalizado em Cotia: um plano feito para o seu corpo e a sua rotina, do Centro à Granja Viana, com acompanhamento profissional.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Cotia', url: 'https://cidades.ibge.gov.br/brasil/sp/cotia/panorama' },
     { nome: 'Prefeitura de Cotia', url: 'https://www.cotia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-11',
+  atualizadoEm: '2026-08-13',
 };

@@ -113,6 +113,13 @@ export const cidade: Cidade = {
         'Sim — é uma das demandas mais comuns da cidade. Quem roda turnos na Anhanguera e na região de Nova Veneza precisa de horários fora do padrão (início da manhã, meio da tarde, fim da noite) e de planos que se adaptem à escala. Muitos profissionais locais montam agendas quinzenais junto com a escala do aluno, e o formato online cobre as semanas viradas.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/sumare-sp.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Sumaré (SP) em arte que reúne o Cristo Redentor, a Praça das Bandeiras e o Horto Florestal — Personal por Perto',
+    legenda: 'Treino personalizado em Sumaré: um plano feito para o seu corpo e a sua rotina, do Centro a Nova Veneza, com acompanhamento profissional.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Sumaré', url: 'https://cidades.ibge.gov.br/brasil/sp/sumare/panorama' },
     { nome: 'Prefeitura de Sumaré', url: 'https://www.sumare.sp.gov.br/' },
