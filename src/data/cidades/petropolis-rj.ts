@@ -57,7 +57,12 @@ export const cidade: Cidade = {
     {
       nome: 'BaueRun',
       descricao:
-        'Corrida de 7 km com largada no Palácio de Cristal, pelo Centro Histórico, integrada à festa Bauernfest.',
+        'Corrida de 7 km com largada no Palácio de Cristal, pelo Centro Histórico, integrada à festa Bauernfest — tradicionalmente no fim de junho.',
+    },
+    {
+      nome: 'Provas de trail run da serra',
+      descricao:
+        'O calendário anual reúne provas de montanha com largadas em pontos como o Palácio Quitandinha e percursos de 5 km a ultradistâncias.',
     },
     {
       nome: '15K Petrópolis x Itaipava',
@@ -89,12 +94,29 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade Imperial e serrana, Petrópolis é um cenário privilegiado para corrida, trilhas e treino de resistência. Um personal trainer ajuda a aproveitar o clima frio a seu favor, com aquecimento e periodização adequados, do Parque Cremerie às provas de serra.',
 
-  vizinhas: ['rio-de-janeiro-rj', 'duque-de-caxias-rj', 'juiz-de-fora-mg'],
+  vizinhas: ['teresopolis-rj', 'duque-de-caxias-rj', 'mage-rj'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Como treinar no frio de Petrópolis?',
+      resposta:
+        'Com aquecimento mais longo e roupa em camadas — o corpo demora mais para entrar em ritmo em manhãs de 10 °C. A boa notícia: o frio de serra é aliado da corrida e das trilhas, porque o esforço rende mais sem o desgaste do calor. Nos meses úmidos, vale deslocar treinos ao ar livre para o meio do dia e manter a alternativa indoor combinada com o personal.',
+    },
+    {
+      pergunta: 'Personal trainer atende em Itaipava e nos distritos?',
+      resposta:
+        'Sim. Itaipava tem cena própria de academias, estúdios e condomínios, com atendimento a domicílio forte — e valores próximos aos do Centro. Araras, Corrêas e Cascatinha também concentram atendimento. Como os deslocamentos na BR-495 e na Estrada União e Indústria pesam na agenda, muitos profissionais organizam os dias por distrito.',
+    },
+    {
+      pergunta: 'Existe preparo específico para trilhas e corrida de montanha em Petrópolis?',
+      resposta:
+        'É uma das especialidades locais: a cidade é cercada de subidas, e provas de trail fazem parte do calendário o ano todo. O preparo trabalha força de pernas, panturrilha e core, técnica de descida e adaptação ao desnível — treinável no Parque Cremerie e nas próprias ruas íngremes. Para quem mira travessias na Serra dos Órgãos, o personal monta a progressão de meses.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Petrópolis', url: 'https://cidades.ibge.gov.br/brasil/rj/petropolis/panorama' },
     { nome: 'Prefeitura de Petrópolis', url: 'https://www.petropolis.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };

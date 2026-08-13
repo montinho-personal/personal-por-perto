@@ -1,0 +1,295 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer com segurança',
+    descricao: 'O patriarca da família — o terra completo, do chão.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/stiff-como-fazer/',
+    titulo: 'Stiff: como fazer e os erros comuns',
+    descricao: 'O primo de joelhos mais estendidos e alongamento maior.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-posterior-de-coxa/',
+    titulo: 'Treino de posterior de coxa: o guia completo',
+    descricao: 'O grupo muscular que o romeno constrói como poucos.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/levantamento-terra-romeno-como-fazer';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Terra romeno: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre terra romeno e stiff?',
+    resposta:
+      'O grau de flexão do joelho e o alongamento resultante. No romeno, o joelho mantém uma flexão leve e constante — em torno de 15 a 30 graus — e o quadril comanda o movimento, o que permite mais carga. No stiff, o joelho fica mais estendido, o alongamento do posterior é maior e a carga possível, menor. Na prática das academias os nomes se misturam; o que define o exercício é a posição do joelho, não a plaquinha da ficha.',
+  },
+  {
+    pergunta: 'Terra romeno e levantamento terra são o mesmo exercício?',
+    resposta:
+      'Não. O terra tradicional parte do chão a cada repetição, com o joelho dobrando bastante — é um movimento de corpo inteiro com forte participação de quadríceps. O romeno parte de cima, do rack ou da posição em pé, e desce só até onde a coluna se mantém neutra, sem apoiar a barra no chão entre as repetições. O romeno é uma dobradiça de quadril quase pura: menos quadríceps, mais posterior e glúteo, tensão constante do início ao fim.',
+  },
+  {
+    pergunta: 'Até onde devo descer no terra romeno?',
+    resposta:
+      'Até onde o quadril consegue ir para trás com a coluna neutra — para a maioria, a barra chega entre o joelho e o meio da canela. O limite é individual e depende da mobilidade de posterior: no instante em que a lombar começa a arredondar, a descida acabou. Descer mais do que a mobilidade permite não alonga mais o músculo; só transfere a carga para a coluna.',
+  },
+  {
+    pergunta: 'Por que sinto o terra romeno na lombar e não no posterior?',
+    resposta:
+      'Quase sempre é a barra viajando longe do corpo ou a descida indo além do ponto em que a coluna se mantém neutra. A barra deve deslizar rente à coxa e à canela, e o movimento deve nascer do quadril indo para trás — não do tronco despencando à frente. Se o desconforto persistir mesmo com a técnica corrigida, o caso é de avaliação com médico ou fisioterapeuta antes de insistir.',
+  },
+  {
+    pergunta: 'Quantas séries e repetições de terra romeno fazer?',
+    resposta:
+      'De 3 a 4 séries de 8 a 12 repetições funcionam bem para a maioria, com a descida controlada em 2 a 3 segundos. O romeno tolera carga alta, mas responde melhor à técnica impecável do que ao recorde: o alongamento sob tensão é o que constrói o posterior. No programa, ele costuma ocupar o posto de exercício principal de extensão de quadril do dia de pernas ou de posterior.',
+  },
+];
+
+const title = 'Levantamento terra romeno: como fazer';
+const description =
+  'Terra romeno: a técnica passo a passo, a diferença para o stiff e o terra tradicional, até onde descer, os erros que jogam a carga na lombar e como programar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Terra romeno: a dobradiça que constrói posterior e glúteo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos exercícios aparecem em tantas fichas com tantos nomes
+      trocados: terra romeno, stiff, terra de pernas duras. E poucos
+      rendem tanto quando são feitos pelo que realmente são — a
+      dobradiça de quadril mais carregável da academia.
+    </p>
+
+    <p class="lead">
+      Este guia mostra a execução passo a passo, o mapa que separa o
+      romeno dos primos e os erros que transferem o trabalho do
+      posterior para a lombar.
+    </p>
+
+    <div class="prose">
+      <h2>O que o terra romeno treina</h2>
+      <p>
+        O padrão de extensão de quadril com joelho quase estendido:
+        posterior de coxa e glúteo como motores, eretores da espinha
+        segurando a coluna neutra, trapézio e antebraço sustentando a
+        barra. É a metade do
+        <a href="/musculacao/treino-de-posterior-de-coxa/">treino de
+        posterior</a> que a mesa flexora não cobre — e a que mais
+        falta nas fichas.
+      </p>
+
+      <p>
+        A assinatura do exercício é a tensão constante: a barra não
+        volta ao chão entre as repetições, e o posterior trabalha
+        alongando e encurtando sem descanso, como um elástico que
+        nunca afrouxa de vez.
+      </p>
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>O início.</strong> Diferente do terra tradicional, o
+        romeno começa de cima: barra tirada do rack na altura das
+        coxas — ou halteres em pé —, pés na largura do quadril, pegada
+        pronada um pouco mais aberta que as pernas.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> O movimento inteiro nasce do
+        quadril deslizando para trás, como se você procurasse uma
+        parede distante com o bumbum. O joelho dobra de
+        leve — 15 a 30 graus — e trava nesse ângulo; o tronco inclina
+        à frente como consequência do quadril, não por vontade
+        própria. A barra desliza rente à coxa, em 2 a 3 segundos.
+      </p>
+
+      <p>
+        <strong>O limite.</strong> A barra desce até entre o joelho e
+        o meio da canela — exatamente até onde a coluna se mantém
+        neutra e o alongamento do posterior fica firme. Esse ponto é
+        seu, não do vídeo que você assistiu.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Leve o quadril à frente e volte à
+        posição ereta, apertando o glúteo no topo — sem inclinar o
+        tronco para trás nem hiperextender a lombar. Em cima, o corpo
+        fica em pé, alto e neutro; a próxima repetição parte dali.
+      </p>
+
+      <h2>Romeno, stiff e terra: o mapa da família</h2>
+      <p>
+        O <strong><a href="/musculacao/levantamento-terra-como-fazer/">terra
+        tradicional</a></strong> parte do chão, dobra bem os joelhos e
+        recruta o corpo inteiro — é o teste de força total da família.
+        O <strong>romeno</strong> parte de cima, mantém o joelho em
+        flexão leve e constante e isola a dobradiça de quadril com
+        carga alta. O <strong><a href="/musculacao/stiff-como-fazer/">stiff</a></strong>
+        estende o joelho um pouco mais, alonga mais o posterior e
+        aceita menos peso.
+      </p>
+
+      <p>
+        Não existe o "certo" entre os três — existe o adequado ao
+        objetivo do ciclo. Para aprender a dobradiça e carregar o
+        posterior com segurança, o romeno costuma ser a porta de
+        entrada mais generosa: o rack elimina a parte mais técnica do
+        terra (tirar a barra do chão) e o joelho levemente dobrado
+        alivia a exigência de mobilidade do stiff.
+      </p>
+
+      <h2>Os erros que jogam a carga na lombar</h2>
+      <p>
+        <strong>Barra longe do corpo.</strong> Cada centímetro de
+        distância multiplica a alavanca sobre a coluna. A barra
+        desliza encostada na perna — a ponto de raspar.
+      </p>
+
+      <p>
+        <strong>Descer além da mobilidade.</strong> Quando o quadril
+        já não vai mais para trás e a barra continua descendo, quem
+        cede é a lombar. O recorde de amplitude não constrói posterior
+        — constrói dor.
+      </p>
+
+      <p>
+        <strong>Transformar em agachamento.</strong> O joelho que
+        dobra cada vez mais durante a descida rouba o alongamento do
+        posterior e desfigura o exercício. O ângulo escolhido no
+        início se mantém até o fim.
+      </p>
+
+      <p>
+        <strong>Puxar com o tronco.</strong> A subida nasce do quadril
+        indo à frente, não das costas levantando o peso. Se o tronco
+        sobe primeiro e o quadril fica atrás, a carga está alta.
+      </p>
+
+      <p>
+        <strong>Hiperextender no topo.</strong> Empurrar o quadril à
+        frente demais e arquear a lombar no final não é "completar o
+        movimento" — é trocar a contração do glúteo por compressão de
+        coluna.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 3 a 4 séries de 8 a 12 repetições, com descida controlada,
+        cobrem a maioria dos objetivos. No dia de pernas, o romeno
+        entra como o exercício principal de extensão de quadril,
+        casando com a mesa flexora — que cobre a outra função do
+        posterior. No treino de glúteos, reveza com a elevação pélvica
+        como construtor de base.
+      </p>
+
+      <p>
+        A progressão é a de sempre: subir a carga quando todas as
+        séries saem no topo da faixa com a coluna neutra e o
+        alongamento no lugar certo — a parte de trás da coxa, nunca a
+        lombar.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A dobradiça de quadril é o padrão de movimento que mais gente
+        faz errado sem saber: o espelho não mostra a lombar
+        arredondando, e o desconforto só aparece depois. É também o
+        padrão com maior retorno quando bem aprendido — ele sustenta o
+        romeno, o stiff, o terra e metade dos exercícios de glúteo.
+      </p>
+
+      <p>
+        Um personal trainer enxerga o que você não vê: o milímetro em
+        que a coluna cede, o ponto exato da sua amplitude, a carga que
+        a técnica sustenta. No terra romeno, esse olhar de fora é a
+        diferença entre anos de posterior crescendo e meses de lombar
+        reclamando.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o terra romeno" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

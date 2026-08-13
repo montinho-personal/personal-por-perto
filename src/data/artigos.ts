@@ -188,6 +188,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/mergulho-nas-paralelas-como-fazer/', titulo: 'Mergulho nas paralelas: como fazer e evoluir' },
   { categoria: 'Musculação', url: '/musculacao/elevacao-frontal-como-fazer/', titulo: 'Elevação frontal: como fazer e quando usar' },
   { categoria: 'Musculação', url: '/musculacao/flexao-de-braco-como-fazer/', titulo: 'Flexão de braço: como fazer e evoluir do zero' },
+  { categoria: 'Musculação', url: '/musculacao/levantamento-terra-romeno-como-fazer/', titulo: 'Levantamento terra romeno: como fazer' },
+  { categoria: 'Musculação', url: '/musculacao/afundo-como-fazer/', titulo: 'Afundo: como fazer, variações e erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/face-pull-como-fazer/', titulo: 'Face pull: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/prancha-abdominal-como-fazer/', titulo: 'Prancha abdominal: como fazer e progredir' },
+  { categoria: 'Musculação', url: '/musculacao/leg-press-como-fazer/', titulo: 'Leg press: como fazer, pés e erros comuns' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

@@ -1,0 +1,287 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros',
+    descricao: 'O exercício livre que o leg press complementa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu (e os erros)',
+    descricao: 'Onde o leg press entra na arquitetura do dia de perna.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/maquina-ou-peso-livre/',
+    titulo: 'Máquina ou peso livre: o que rende mais?',
+    descricao: 'O debate inteiro do qual o leg press é o exemplo clássico.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/leg-press-como-fazer';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Leg press: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Onde posicionar os pés no leg press?',
+    resposta:
+      'A posição neutra — pés no centro da plataforma, na largura do quadril — distribui o trabalho entre quadríceps e glúteo e serve à maioria. Pés mais altos na plataforma deslocam a ênfase para glúteo e posterior; mais baixos, para o quadríceps (com mais estresse de joelho); mais afastados, com pontas levemente para fora, envolvem adutores. São ajustes de ênfase, não exercícios diferentes — a base do resultado continua sendo carga progressiva com amplitude completa.',
+  },
+  {
+    pergunta: 'Até onde descer a plataforma do leg press?',
+    resposta:
+      'Até o ponto em que o quadril ainda está colado no banco. Quando o joelho se aproxima demais do peito, o quadril enrola e a lombar descola do encosto — é a "bundinha levantando", o erro mais perigoso da máquina, que transfere a carga para a coluna no pior ângulo. A amplitude certa é individual: pare uma repetição antes de o quadril começar a subir e você achou o seu fundo.',
+  },
+  {
+    pergunta: 'Leg press substitui o agachamento?',
+    resposta:
+      'Para carregar quadríceps e glúteo, sim — e com menos exigência de mobilidade e de técnica, o que o torna ótimo para iniciantes e para dias de coluna sensível. O que ele não replica é a estabilização de tronco sob carga e a coordenação de corpo inteiro do agachamento livre. Programas completos costumam usar os dois: um como construtor de base, o outro como volume pesado adicional.',
+  },
+  {
+    pergunta: 'Posso travar os joelhos no topo do leg press?',
+    resposta:
+      'Estender até quase o fim, sim; travar com impacto, não. A extensão completa e controlada faz parte da amplitude. O problema é o hábito de "encaixar" a articulação com o joelho em hiperextensão para descansar sob carga — toneladas apoiadas no osso, com o músculo de folga. Termine a subida com o joelho estendido mas "macio", sem o tranco final.',
+  },
+  {
+    pergunta: 'Por que consigo tanto peso no leg press?',
+    resposta:
+      'Porque a máquina elimina o custo de estabilização e o ângulo do trenó desconta parte da gravidade — parte das placas é sustentada pela estrutura, não por você. É por isso que o leg press aceita cargas que o agachamento jamais aceitaria, e por isso que comparar os dois números não faz sentido. Use o privilégio a favor: carga alta com segurança, desde que a amplitude não encolha a cada anilha nova.',
+  },
+];
+
+const title = 'Leg press: como fazer, pés e erros comuns';
+const description =
+  'Leg press: onde posicionar os pés para cada ênfase, até onde descer sem arredondar a lombar, o mito de travar os joelhos e como usar a carga alta a favor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Leg press: o trenó que constrói perna — quando é bem usado</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhuma máquina da academia carrega tanto peso — nem tanta
+      lenda. O leg press é o construtor de pernas mais acessível que
+      existe: carga alta, coluna apoiada, técnica simples.
+    </p>
+
+    <p class="lead">
+      Simples, não à prova de erro: a amplitude que encolhe, o quadril
+      que enrola no fundo, o joelho travado no topo. Este guia mostra
+      a regulagem, a posição dos pés para cada objetivo e os limites
+      que mantêm o trenó do seu lado.
+    </p>
+
+    <div class="prose">
+      <h2>O que o leg press treina</h2>
+      <p>
+        O padrão de empurrar com as pernas, sem a conta de equilíbrio:
+        quadríceps e glúteo como motores, posterior e adutores em
+        apoio, com o tronco entregue ao encosto. É o exemplo perfeito
+        do debate
+        <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso
+        livre</a> — a máquina abre mão da estabilização para permitir
+        mais carga com menos técnica.
+      </p>
+
+      <p>
+        No <a href="/musculacao/treino-de-pernas/">treino de
+        pernas</a>, isso o torna a peça mais versátil do quebra-cabeça:
+        exercício principal para iniciantes, volume pesado depois do
+        <a href="/musculacao/agachamento-como-fazer/">agachamento</a>
+        para intermediários, válvula de escape nos dias em que a
+        coluna pede trégua.
+      </p>
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A regulagem.</strong> Sente com o quadril e a lombar
+        colados no encosto e ajuste o banco: no ponto mais fundo, o
+        joelho deve dobrar bem sem que o quadril enrole. Pés no centro
+        da plataforma, na largura do quadril.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Destrave a segurança e desça a
+        plataforma em 2 a 3 segundos, joelhos viajando na direção dos
+        pés — nem fechando para dentro, nem abrindo em compasso. O
+        quadril permanece colado no banco do primeiro ao último
+        centímetro.
+      </p>
+
+      <p>
+        <strong>O fundo.</strong> O limite é o instante anterior ao
+        quadril levantar. Para a maioria, o joelho chega perto de 90
+        graus ou um pouco além; a sua amplitude é a que preserva a
+        lombar no encosto.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Empurre pelo pé inteiro — calcanhar
+        incluído — até a extensão quase completa, sem o tranco de
+        travar o joelho. O pé nunca perde contato com a plataforma.
+      </p>
+
+      <h2>A posição dos pés: o menu de ênfases</h2>
+      <p>
+        <strong>Centro, largura do quadril:</strong> o padrão —
+        quadríceps e glúteo dividem a conta. <strong>Pés altos:</strong>
+        mais glúteo e posterior, menos joelho. <strong>Pés
+        baixos:</strong> mais quadríceps, mais exigência da
+        articulação. <strong>Base larga, pontas para fora:</strong>
+        adutores entram na jogada. <strong>Unilateral:</strong> uma
+        perna por vez, para expor e corrigir diferenças entre os lados.
+      </p>
+
+      <p>
+        Nenhuma dessas versões faz milagre isolado — são deslocamentos
+        de ênfase sobre o mesmo padrão. Escolha uma, registre a carga
+        e progrida nela antes de colecionar variações.
+      </p>
+
+      <h2>Os erros clássicos do leg press</h2>
+      <p>
+        <strong>A bundinha que levanta.</strong> O erro número um. No
+        fundo, o quadril enrola, a lombar descola e a coluna assume a
+        carga em flexão. A amplitude termina onde o quadril começa a
+        subir — sem exceção.
+      </p>
+
+      <p>
+        <strong>Amplitude de enfeite.</strong> A plataforma que desce
+        um palmo, cercada de anilhas: muita placa, pouco músculo. Meia
+        descida constrói metade de perna — e ego inteiro.
+      </p>
+
+      <p>
+        <strong>Joelho travado com impacto.</strong> O descanso sobre
+        a articulação em hiperextensão, com o músculo de férias.
+        Extensão quase completa, joelho macio.
+      </p>
+
+      <p>
+        <strong>Joelhos desabando para dentro.</strong> O valgo sob
+        fadiga, o mesmo vilão do agachamento. Joelho na linha do pé,
+        série inteira.
+      </p>
+
+      <p>
+        <strong>Mãos empurrando os joelhos.</strong> A ajuda escondida
+        que ninguém conta nas planilhas. As mãos ficam nas alças — se
+        precisou empurrar a perna, a carga mentiu.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 3 a 4 séries de 8 a 15 repetições cobrem quase todos os
+        objetivos — o leg press aceita bem faixas mais altas, porque a
+        técnica degrada pouco com a fadiga. Na arquitetura do dia:
+        exercício principal para quem está começando, segundo pesado
+        depois do agachamento, ou dez repetições longas de pura
+        hipertrofia no fim.
+      </p>
+
+      <p>
+        A progressão pede um combinado consigo: anilha nova só entra
+        se a amplitude ficar. O caderno registra carga <em>e</em>
+        profundidade — no leg press, um número sem o outro não diz
+        nada.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O leg press engana pela simplicidade: é a máquina em que mais
+        gente treina pesado com amplitude pela metade — e jura que
+        progride. De fora, os dois palmos que faltam no fundo são
+        óbvios; de dentro, invisíveis.
+      </p>
+
+      <p>
+        Um personal trainer regula o banco para o seu fêmur, define o
+        seu fundo seguro, escolhe a posição de pés para o seu objetivo
+        e cobra a amplitude quando as placas sobem. É o que separa o
+        trenó que constrói pernas do que só empilha anilhas.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o leg press" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

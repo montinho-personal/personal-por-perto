@@ -1,0 +1,276 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-abdomen/',
+    titulo: 'Treino de abdômen: como fazer do jeito certo',
+    descricao: 'O quadro completo dos padrões que o core precisa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-abdomen-avancado/',
+    titulo: 'Treino de abdômen avançado: as progressões',
+    descricao: 'Para quando segurar a prancha ficar fácil demais.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-em-casa-para-iniciantes/',
+    titulo: 'Treino em casa para iniciantes',
+    descricao: 'O programa em que a prancha entra sem equipamento nenhum.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/prancha-abdominal-como-fazer';
+const atualizadoEm = '2026-08-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Prancha: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto tempo devo segurar a prancha?',
+    resposta:
+      'Menos do que as competições de rede social sugerem: séries de 20 a 45 segundos com técnica perfeita rendem mais do que minutos de quadril caído. Quando um minuto limpo fica confortável, o caminho não é somar tempo — é dificultar: apoio em três pontos, pés elevados, prancha com arrasto. Tempo infinito em prancha fácil treina paciência, não core.',
+  },
+  {
+    pergunta: 'Prancha ou abdominal tradicional: qual é melhor?',
+    resposta:
+      'São padrões diferentes, não concorrentes. A prancha treina anti-extensão — resistir ao movimento, que é a principal função do core na vida real e nos exercícios pesados. O abdominal tradicional treina flexão de tronco, que também tem lugar. Um programa completo usa os dois, mais anti-rotação e anti-flexão lateral. Quem só faz um deles cobre metade do mapa.',
+  },
+  {
+    pergunta: 'Posso fazer prancha todos os dias?',
+    resposta:
+      'Pode, porque a isometria de baixa carga recupera rápido — mas não precisa. O core responde como qualquer músculo: estímulo desafiador e descanso rendem mais do que repetição diária do fácil. Duas a quatro sessões semanais, com progressão de dificuldade, superam o ritual diário de três minutos no automático. Constância importa; dificuldade progressiva importa mais.',
+  },
+  {
+    pergunta: 'Por que a prancha faz o corpo tremer?',
+    resposta:
+      'O tremor é o sistema nervoso recrutando e revezando fibras sob fadiga — sinal de que o desafio é real, não de que algo está errado. Ele aparece mais perto do limite e em quem está começando. O critério para encerrar a série não é o tremor: é a quebra da postura. Quando o quadril cai ou sobe e não volta, a série acabou, com ou sem tremedeira.',
+  },
+  {
+    pergunta: 'Prancha ajuda a definir a barriga?',
+    resposta:
+      'A prancha fortalece a musculatura profunda e melhora a sustentação do tronco, mas definição de barriga é assunto de percentual de gordura — e isso se resolve com déficit calórico, treino completo e tempo. Nenhum exercício de core, prancha incluída, queima a gordura localizada sobre ele. O que ela entrega é um tronco mais forte e estável, dentro e fora da academia.',
+  },
+];
+
+const title = 'Prancha abdominal: como fazer e progredir';
+const description =
+  'Prancha abdominal: a técnica ponto a ponto, quanto tempo segurar de verdade, o mito do recorde, as variações e como progredir quando ficar fácil.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Prancha: o exercício parado que trabalha mais que muito movimento</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A prancha é o exercício mais honesto do treino de core: sem
+      repetição para contar, sem impulso para roubar — só você,
+      o chão e a gravidade tentando vencer a sua postura.
+    </p>
+
+    <p class="lead">
+      E é também o mais mal feito: quadril nas alturas, lombar em
+      rampa, recordes de tempo em posição nenhuma. Este guia mostra a
+      prancha que funciona — e o que fazer quando ela ficar fácil.
+    </p>
+
+    <div class="prose">
+      <h2>O que a prancha treina</h2>
+      <p>
+        Anti-extensão: a capacidade de impedir que a lombar arqueie
+        sob carga. É a função número um do core — é ela que segura a
+        sua coluna num agachamento pesado, numa mudança de sofá e em
+        cada hora sentado — e é o padrão central de qualquer
+        <a href="/musculacao/treino-de-abdomen/">treino de abdômen</a>
+        bem montado.
+      </p>
+
+      <p>
+        Na posição, trabalham juntos o reto e o transverso do abdome,
+        os oblíquos, o glúteo e o serrátil — uma corrente de tensão da
+        nuca ao calcanhar. A prancha não treina um músculo: treina a
+        colaboração entre eles.
+      </p>
+
+      <h2>A execução, ponto a ponto</h2>
+      <p>
+        <strong>Os apoios.</strong> Antebraços no chão, cotovelos
+        exatamente sob os ombros, mãos soltas ou entrelaçadas — sem
+        esmagar o pescoço para dentro dos ombros. Pés na largura do
+        quadril.
+      </p>
+
+      <p>
+        <strong>A linha.</strong> Nuca, costas e calcanhar formam uma
+        reta — a mesma da flexão de braço. O olhar cai no chão, um
+        palmo à frente das mãos; o pescoço é continuação da coluna.
+      </p>
+
+      <p>
+        <strong>A tensão.</strong> A parte invisível que separa a
+        prancha de verdade da pose: aperte o glúteo, encaixe o quadril
+        levemente para trás (como quem esconde o cóccix), firme o
+        abdômen como se fosse levar um soco e empurre o chão com os
+        antebraços até as costas ficarem largas.
+      </p>
+
+      <p>
+        <strong>A respiração.</strong> Curta e contínua, sem prender.
+        Sustentar a tensão respirando é exatamente a habilidade que a
+        prancha ensina — e a que o agachamento pesado cobra depois.
+      </p>
+
+      <h2>Os erros que anulam o exercício</h2>
+      <p>
+        <strong>Quadril caído.</strong> A lombar vira rede de descanso
+        e a anti-extensão vira extensão pura — o oposto do treino.
+        Sinal de fadiga: série encerrada.
+      </p>
+
+      <p>
+        <strong>Quadril nas alturas.</strong> A barraca de camping: o
+        corpo em "V" invertido descansa o abdômen e finge esforço. A
+        linha reta é o contrato.
+      </p>
+
+      <p>
+        <strong>Cotovelos fora do lugar.</strong> Muito à frente dos
+        ombros, sobrecarregam o ombro; muito atrás, encurtam a
+        alavanca e facilitam demais.
+      </p>
+
+      <p>
+        <strong>Pescoço em periscópio.</strong> Olhar para a frente
+        dobra a cervical e tensiona o trapézio. O chão é a vista.
+      </p>
+
+      <p>
+        <strong>Recorde de tempo em pose quebrada.</strong> Os minutos
+        depois que a postura cedeu não contam para o core — contam só
+        para o cronômetro.
+      </p>
+
+      <h2>Quando ficar fácil: as progressões</h2>
+      <p>
+        <strong>Menos apoios.</strong> Levantar uma perna, depois um
+        braço, depois braço e perna opostos — cada ponto retirado
+        multiplica o trabalho anti-rotação.
+      </p>
+
+      <p>
+        <strong>Pés elevados</strong> no banco, deslocando mais peso
+        para o tronco. <strong>Prancha com toque de ombro</strong> e
+        <strong>com arrasto de anilha</strong>, somando instabilidade
+        controlada. <strong>Prancha lateral</strong>, cobrindo a
+        anti-flexão lateral que a frontal não treina.
+      </p>
+
+      <p>
+        Dali em diante, o caminho é o do
+        <a href="/musculacao/treino-de-abdomen-avancado/">treino de
+        abdômen avançado</a>: ab wheel, pallof press, carregamentos —
+        a prancha como base, não como teto.
+      </p>
+
+      <h2>Séries e encaixe no treino</h2>
+      <p>
+        De 3 a 4 séries de 20 a 45 segundos de tensão real, duas a
+        quatro vezes por semana — no fim do treino, para não roubar
+        estabilidade dos exercícios pesados, ou em casa, onde ela
+        dispensa qualquer equipamento. Progrediu a dificuldade, não o
+        relógio: essa é a regra que mantém a prancha rendendo por anos.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A prancha tem um problema óbvio: você não se vê nela. O
+        quadril que cedeu dois dedos, a lombar que virou rampa, o
+        pescoço em periscópio — de dentro, tudo parece uma linha reta.
+      </p>
+
+      <p>
+        Um personal trainer corrige a posição em segundos, escolhe a
+        progressão certa para o seu nível e encaixa o trabalho de core
+        onde ele multiplica o resto do treino. No exercício em que o
+        detalhe é tudo, o olhar de fora vale o exercício inteiro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a prancha" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

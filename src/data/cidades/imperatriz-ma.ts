@@ -89,12 +89,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do sudoeste maranhense às margens do Tocantins, Imperatriz tem orla bem estruturada e uma cena de corrida em plena expansão. Um personal trainer ajuda a aproveitar a Beira-Rio e o Horto Arara Azul com método, ajustando horários e hidratação ao calor da região.',
 
-  vizinhas: ['sao-luis-ma', 'belem-pa', 'palmas-to'],
+  vizinhas: ['acailandia-ma', 'araguaina-to'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Qual o melhor horário para treinar ao ar livre em Imperatriz?',
+      resposta:
+        'Antes das 8h ou depois das 17h30 — o calor forte da região torna o meio do dia inviável para corrida e funcional. A Beira-Rio concentra o movimento nesses horários, com o pôr do sol sobre o Tocantins como bônus do treino da tarde. Hidratação reforçada é regra o ano inteiro, especialmente na estação seca.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Imperatriz?',
+      resposta:
+        'A orla do Tocantins (Beira-Rio) é o principal ponto: calçadão, ciclovia, quadras e mais de 600 m de pista na Av. João de Deus. O Parque Ambiental Horto Arara Azul soma uma pista de cerca de 900 m em meio a 32 hectares de área verde. Praças e ginásios do entorno do Centro completam o circuito de treino funcional.',
+    },
+    {
+      pergunta: 'Personal trainer de Imperatriz atende as cidades da região?',
+      resposta:
+        'Sim — como polo do sudoeste maranhense, Imperatriz atrai alunos de João Lisboa, Davinópolis e municípios do Bico do Papagaio. O atendimento presencial se concentra na cidade, e a consultoria online cobre quem mora mais longe, com planilha semanal e ajustes a distância. Para quem se prepara para as provas locais, o formato misto é o mais comum.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Imperatriz', url: 'https://cidades.ibge.gov.br/brasil/ma/imperatriz/panorama' },
     { nome: 'Prefeitura de Imperatriz', url: 'https://imperatriz.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };

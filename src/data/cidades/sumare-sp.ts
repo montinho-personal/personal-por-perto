@@ -55,6 +55,11 @@ export const cidade: Cidade = {
 
   corridas: [
     {
+      nome: 'Good Run Sumaré',
+      descricao:
+        'Prova de rua com percursos de 5 km e 10 km e categoria de caminhada, no calendário regional de setembro.',
+    },
+    {
       nome: 'Circuito de Corrida e Caminhada — Etapa Sumaré',
       descricao:
         'Etapa de circuito regional realizada no centro esportivo municipal.',
@@ -89,12 +94,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial da RM de Campinas, Sumaré tem mercado fitness acessível e bons espaços verdes. Um personal trainer ajuda a aproveitar o Horto e o Parque da Floresta com método, com a estrutura de Campinas logo ao lado.',
 
-  vizinhas: ['campinas-sp', 'americana-sp'],
+  vizinhas: ['campinas-sp', 'hortolandia-sp', 'americana-sp', 'nova-odessa-sp'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Quanto custa um personal trainer em Sumaré em relação a Campinas?',
+      resposta:
+        'Em geral, 15% a 30% menos. Sumaré tem perfil industrial e mercado de academias de bairro, com sessões avulsas partindo de valores mais acessíveis que os do Cambuí ou do Taquaral. Quem trabalha em Campinas e mora em Sumaré costuma treinar na própria cidade justamente por essa diferença — e pela economia de deslocamento nas rodovias.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Sumaré?',
+      resposta:
+        'O Horto Florestal, em torno da represa, é o principal ponto de caminhada e corrida arborizada; o Parque da Floresta, junto à represa Marcelo Pedroni, concentra o movimento dos fins de semana; e o centro esportivo municipal recebe treinos, provas e circuitos regionais. No verão, manhã cedo e fim de tarde são as janelas que funcionam.',
+    },
+    {
+      pergunta: 'Personal trainer atende quem trabalha em turnos na indústria de Sumaré?',
+      resposta:
+        'Sim — é uma das demandas mais comuns da cidade. Quem roda turnos na Anhanguera e na região de Nova Veneza precisa de horários fora do padrão (início da manhã, meio da tarde, fim da noite) e de planos que se adaptem à escala. Muitos profissionais locais montam agendas quinzenais junto com a escala do aluno, e o formato online cobre as semanas viradas.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Sumaré', url: 'https://cidades.ibge.gov.br/brasil/sp/sumare/panorama' },
     { nome: 'Prefeitura de Sumaré', url: 'https://www.sumare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };
