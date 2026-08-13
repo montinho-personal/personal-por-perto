@@ -108,6 +108,13 @@ export const cidade: Cidade = {
         'Sim — como polo do sudoeste maranhense, Imperatriz atrai alunos de João Lisboa, Davinópolis e municípios do Bico do Papagaio. O atendimento presencial se concentra na cidade, e a consultoria online cobre quem mora mais longe, com planilha semanal e ajustes a distância. Para quem se prepara para as provas locais, o formato misto é o mais comum.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/imperatriz-ma.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Imperatriz (MA) em arte que reúne a orla da Beira-Rio, o Estádio Frei Epifânio e o skyline da cidade — Personal por Perto',
+    legenda: 'Treino personalizado em Imperatriz: um plano feito para o seu corpo, a sua rotina e o calor do sudoeste maranhense, do Centro à Nova Imperatriz.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Imperatriz', url: 'https://cidades.ibge.gov.br/brasil/ma/imperatriz/panorama' },
     { nome: 'Prefeitura de Imperatriz', url: 'https://imperatriz.ma.gov.br/' },

@@ -117,10 +117,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['sao-paulo-sp', 'osasco-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/taboao-da-serra-sp.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Taboão da Serra (SP) em arte que reúne a Praça Nicola Vivilechio, o Parque das Hortênsias e o Santuário Santa Terezinha — Personal por Perto',
+    legenda: 'Treino personalizado em Taboão da Serra: um plano feito para o seu corpo e a sua rotina, do Centro ao Parque Pinheiros, com acompanhamento profissional.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Taboão da Serra', url: 'https://cidades.ibge.gov.br/brasil/sp/taboao-da-serra/panorama' },
     { nome: 'Prefeitura de Taboão da Serra', url: 'https://www.ts.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  atualizadoEm: '2026-08-13',
 };

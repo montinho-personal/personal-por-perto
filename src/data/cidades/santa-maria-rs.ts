@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['porto-alegre-rs', 'caxias-do-sul-rs', 'pelotas-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/santa-maria-rs.webp',
+    w: 1200,
+    h: 900,
+    alt: 'Personal trainer em Santa Maria (RS) em arte que reúne a Vila Belga, a Gare da estação ferroviária, a catedral do Centro e o campus da UFSM em Camobi — Personal por Perto',
+    legenda: 'Treino personalizado em Santa Maria: um plano feito para o seu corpo e a sua rotina, do Centro a Camobi, com acompanhamento profissional na cidade e região.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Santa Maria', url: 'https://cidades.ibge.gov.br/brasil/rs/santa-maria/panorama' },
     { nome: 'Prefeitura de Santa Maria', url: 'https://www.santamaria.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-13',
 };
