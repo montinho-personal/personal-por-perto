@@ -1,0 +1,280 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/triceps-pulley-como-fazer/',
+    titulo: 'Tríceps pulley: como fazer e os erros comuns',
+    descricao: 'O tríceps de braço ao lado do corpo — a outra metade da dupla.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'O quadro completo em que a testa é o alongamento do tríceps.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/mergulho-nas-paralelas-como-fazer/',
+    titulo: 'Mergulho nas paralelas: como fazer e evoluir',
+    descricao: 'O composto pesado que convive com a testa no dia de tríceps.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/triceps-testa-como-fazer';
+const atualizadoEm = '2026-08-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Tríceps testa: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que o tríceps testa é tão importante?',
+    resposta:
+      'Porque é dos poucos exercícios que trabalham o tríceps com o braço à frente ou acima da cabeça — posição que alonga a cabeça longa, a maior das três, que fica encurtada nos exercícios de braço ao lado do corpo, como o pulley. Treinar o músculo alongado é um dos estímulos mais eficientes de hipertrofia, e é por isso que a testa (e a francesa, prima dela) aparece em quase todo programa sério de braços.',
+  },
+  {
+    pergunta: 'Tríceps testa com barra reta, barra W ou halteres?',
+    resposta:
+      'A barra W é a preferida da maioria: a pegada semipronada alivia punhos e cotovelos sem perder carga. A barra reta funciona para quem tem punhos confortáveis nela. Os halteres, com pegada neutra, são a versão mais amigável para o cotovelo e permitem trabalhar cada braço por igual — com um pouco menos de carga total. Vale usar a que permitir progredir sem desconforto.',
+  },
+  {
+    pergunta: 'Tríceps testa dói o cotovelo. O que fazer?',
+    resposta:
+      'Primeiro, revisar os suspeitos de sempre: carga alta demais, descida rápida, cotovelos abrindo e barra descendo na direção errada. Depois, testar as variações mais amigáveis: barra W ou halteres, descer a barra atrás da cabeça em vez de na testa (o que alonga mais e estressa menos o ponto de dor) ou migrar temporariamente para extensões na polia. Se a dor persistir mesmo com esses ajustes, o caso é de médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Qual a diferença entre tríceps testa e tríceps francês?',
+    resposta:
+      'A posição do braço. Na testa, deitado, os braços apontam para o teto e a barra desce até a testa (ou um pouco atrás dela). Na francesa, o braço fica acima da cabeça — sentado ou em pé — e o peso desce por trás, com alongamento ainda maior da cabeça longa. A testa costuma permitir mais carga; a francesa, mais alongamento. Muitos programas alternam entre as duas de ciclo em ciclo.',
+  },
+  {
+    pergunta: 'Quantas séries de tríceps testa fazer?',
+    resposta:
+      'De 2 a 4 séries de 8 a 12 repetições, uma a duas vezes por semana, somadas ao restante do volume de tríceps — pulley, mergulho, supino fechado. O total semanal de 6 a 10 séries diretas cobre a maioria. Um detalhe de programação que poupa cotovelo: evitar concentrar todo o volume de testa e francesa no mesmo dia, já que ambas estressam a mesma região.',
+  },
+];
+
+const title = 'Tríceps testa: como fazer sem dor no cotovelo';
+const description =
+  'Tríceps testa: a execução correta, barra W, reta ou halteres, por que ela alonga a cabeça longa, as diferenças para a francesa e como poupar o cotovelo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Tríceps testa: o exercício que alonga o que o pulley esquece</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Dois terços do braço são tríceps — e um terço do tríceps quase
+      nunca é treinado por inteiro. A cabeça longa, a maior das três,
+      só alonga de verdade quando o braço sobe: é aí que o tríceps
+      testa entra, e é por isso que ele resiste a todas as modas.
+    </p>
+
+    <p class="lead">
+      É também o exercício com a pior fama de cotovelo da academia —
+      quase sempre por erro evitável. Este guia mostra a execução, as
+      variações e os ajustes que mantêm o cotovelo do seu lado.
+    </p>
+
+    <div class="prose">
+      <h2>O que o tríceps testa treina</h2>
+      <p>
+        As três cabeças do tríceps na extensão de cotovelo — com a
+        vantagem exclusiva da posição: deitado, com os braços
+        apontando para o teto, a cabeça longa (que cruza o ombro)
+        trabalha alongada. É o complemento exato do
+        <a href="/musculacao/triceps-pulley-como-fazer/">tríceps no
+        pulley</a>, que a trabalha encurtada com o braço ao lado do
+        corpo.
+      </p>
+
+      <p>
+        Um <a href="/musculacao/treino-de-bracos/">dia de braços</a>
+        completo tem os dois ângulos — braço para cima, braço para
+        baixo. Quem só faz pulley treina dois terços do tríceps com
+        eficiência e deixa o terço maior no modo econômico.
+      </p>
+
+      <VideoYouTube
+        id="uL9ajNZaHDk"
+        titulo="Rosca testa é melhor que tríceps pulley? — Leandro Twin"
+        legenda="No vídeo: Leandro Twin compara a rosca testa (tríceps testa) com o tríceps pulley e explica quando usar cada um."
+      />
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A base.</strong> Deitado no banco reto, pés firmes no
+        chão, barra W segura com pegada pronada na largura dos ombros
+        — braços estendidos apontando para o teto, ou levemente
+        inclinados em direção à cabeça.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Dobre apenas o cotovelo, em 2 a 3
+        segundos, levando a barra até a testa — ou um pouco atrás
+        dela, versão que alonga mais e costuma poupar o cotovelo. O
+        braço (do ombro ao cotovelo) fica parado como uma coluna.
+      </p>
+
+      <p>
+        <strong>Os cotovelos.</strong> Apontando para o teto,
+        levemente fechados — sem abrir para os lados conforme a
+        fadiga chega. Cotovelo aberto é carga vazando para o ombro.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Estenda até quase travar,
+        apertando o tríceps no topo — sem transformar o final em
+        empurrão de peito, que é o que acontece quando o cotovelo
+        desce da posição.
+      </p>
+
+      <h2>Barra reta, W ou halteres</h2>
+      <p>
+        <strong>Barra W:</strong> o padrão — punho em ângulo neutro
+        confortável, carga alta possível. <strong>Barra reta:</strong>
+        para punhos que a toleram bem. <strong>Halteres com pegada
+        neutra:</strong> a versão mais gentil com o cotovelo, ótima
+        para igualar os braços. <strong>Na polia com corda,
+        deitado:</strong> tensão contínua, boa alternativa em fases de
+        cotovelo sensível.
+      </p>
+
+      <h2>Os erros que cobram no cotovelo</h2>
+      <p>
+        <strong>Carga de supino.</strong> O erro-mãe: a testa é
+        exercício de isolamento com alavanca longa — ela pune peso de
+        ego mais rápido que qualquer outro exercício de braço.
+      </p>
+
+      <p>
+        <strong>Descida em queda livre.</strong> A barra despencando
+        até a testa transfere o freio para o tendão do cotovelo. Os 2
+        a 3 segundos de descida não são estética: são proteção.
+      </p>
+
+      <p>
+        <strong>Cotovelos abrindo.</strong> Quando eles apontam para
+        os lados, o exercício vira um supino fechado torto — menos
+        tríceps, mais estresse articular.
+      </p>
+
+      <p>
+        <strong>Braço balançando.</strong> O úmero que vai e vem a
+        cada repetição transforma isolamento em pullover disfarçado.
+        A coluna do braço fica fixa; só o antebraço viaja.
+      </p>
+
+      <p>
+        <strong>Todo o volume no mesmo ponto.</strong> Testa,
+        francesa e extensão na polia acima da cabeça no mesmo dia:
+        três exercícios estressando o mesmo trecho do tendão. O
+        cotovelo agradece a distribuição pela semana.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 4 séries de 8 a 12 repetições, depois do composto
+        pesado do dia — supino fechado ou
+        <a href="/musculacao/mergulho-nas-paralelas-como-fazer/">mergulho
+        nas paralelas</a> — e antes ou no lugar do pulley, conforme o
+        ciclo. A progressão na testa é paciente por natureza: meio
+        quilo a mais com técnica intacta vale mais que dois com o
+        cotovelo reclamando.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        A testa é o exercício em que a diferença entre construir
+        tríceps e construir tendinite mora em três detalhes: a carga
+        certa, a velocidade da descida e o cotovelo que não abre. De
+        dentro da série, os três degradam juntos — e em silêncio.
+      </p>
+
+      <p>
+        Um personal trainer calibra a variação para o seu punho e o
+        seu cotovelo, distribui testa e francesa pela semana sem
+        sobrecarregar o tendão e cobra a excêntrica que protege. No
+        exercício mais delicado do braço, o olhar de fora é o melhor
+        seguro.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o tríceps testa" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

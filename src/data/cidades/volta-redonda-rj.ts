@@ -55,6 +55,11 @@ export const cidade: Cidade = {
 
   corridas: [
     {
+      nome: 'Circuito Rio Antigo — Etapa Volta Redonda',
+      descricao:
+        'Etapa do circuito estadual com percursos de 5 km de corrida e 3 km de caminhada, com largada no Aterrado, em frente ao Estádio Raulino de Oliveira.',
+    },
+    {
       nome: 'Meia Maratona do Aço',
       descricao:
         'Prova com percursos de 5 km, 10 km e 21 km, uma das principais do calendário do Sul Fluminense.',
@@ -89,12 +94,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial do Sul Fluminense, Volta Redonda transformou a orla do Paraíba em um excelente espaço de treino. Um personal trainer ajuda a aproveitar a Beira-Rio e a Ilha São João com método, encaixando o treino na rotina e mirando resultados consistentes.',
 
-  vizinhas: ['rio-de-janeiro-rj', 'petropolis-rj', 'nova-iguacu-rj'],
+  vizinhas: ['barra-mansa-rj', 'resende-rj'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Volta Redonda?',
+      resposta:
+        'A Ilha São João é o coração esportivo da cidade — pista, quadras, academia ao ar livre e eventos o ano todo —, seguida da orla do Paraíba do Sul na Avenida Beira-Rio e do calçadão do Aterrado, onde acontecem as largadas das provas de rua. É uma das cidades do interior fluminense com melhor estrutura pública de treino.',
+    },
+    {
+      pergunta: 'Personal trainer atende quem trabalha em turnos na CSN?',
+      resposta:
+        'Sim — a Cidade do Aço vive de escala, e os profissionais locais estão acostumados a montar agendas por turno: treino no meio da manhã para quem sai da madrugada, fim de tarde para o turno da manhã, planos quinzenais que giram com a escala. O formato online cobre as semanas viradas.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Volta Redonda?',
+      resposta:
+        'Os valores ficam em geral 20% a 35% abaixo dos praticados na capital: sessões avulsas mais acessíveis nos bairros e pacotes mensais que variam com a frequência semanal. Vila Santa Cecília e Aterrado concentram os valores mais altos; o treino em dupla e os pacotes trimestrais são as formas mais comuns de reduzir o custo por sessão.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Volta Redonda', url: 'https://cidades.ibge.gov.br/brasil/rj/volta-redonda/panorama' },
     { nome: 'Prefeitura de Volta Redonda', url: 'https://www.voltaredonda.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-16',
 };

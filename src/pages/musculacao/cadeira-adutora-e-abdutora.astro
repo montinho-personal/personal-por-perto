@@ -1,0 +1,281 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: como montar (e os mitos)',
+    descricao: 'Onde a abdutora entra como coadjuvante do glúteo médio.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu (e os erros)',
+    descricao: 'O quadro completo em que as cadeiras são acessórios.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Treinar com dor no joelho: o que pode e o que não pode',
+    descricao: 'Por que adutores e abdutores fortes protegem o joelho.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/cadeira-adutora-e-abdutora';
+const atualizadoEm = '2026-08-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cadeira adutora e abdutora', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre cadeira adutora e abdutora?',
+    resposta:
+      'O sentido do movimento — e o músculo do outro lado da coxa. Na adutora, você fecha as pernas contra a resistência e trabalha os adutores, a musculatura da parte interna da coxa. Na abdutora, você abre as pernas contra a resistência e trabalha o glúteo médio e os demais abdutores, na parte externa do quadril. São máquinas gêmeas de funções opostas — e quase todo programa se beneficia das duas em algum grau.',
+  },
+  {
+    pergunta: 'Cadeira abdutora aumenta o bumbum?',
+    resposta:
+      'Ela desenvolve principalmente o glúteo médio — o músculo lateral do quadril, que dá o contorno superior e "arredonda" a região vista de trás —, não o glúteo máximo, que responde pelos volumes maiores. Para o conjunto crescer, a abdutora entra como coadjuvante de elevação pélvica, agachamento e afundos. Sozinha, melhora o detalhe; no time certo, melhora o todo.',
+  },
+  {
+    pergunta: 'A cadeira adutora afina a parte interna da coxa?',
+    resposta:
+      'Ela fortalece e dá tônus à musculatura interna, mas não queima a gordura localizada da região — redução de medidas é assunto de déficit calórico, e nenhum exercício escolhe de onde a gordura sai. O que a adutora entrega de verdade: adutores fortes para estabilizar joelho e quadril, mais força no agachamento profundo e proteção contra os estiramentos de virilha comuns em esportes com mudança de direção.',
+  },
+  {
+    pergunta: 'Essas máquinas são exercícios "de mulher"?',
+    resposta:
+      'É um dos rótulos mais bobos da academia. Adutores e glúteo médio estabilizam o quadril e o joelho de qualquer pessoa — homens que jogam futebol, correm ou agacham pesado têm nesses músculos um elo fraco clássico: o estiramento de virilha e o joelho que desaba para dentro no agachamento nascem exatamente aí. As duas cadeiras são de quem quer quadril estável e pernas completas.',
+  },
+  {
+    pergunta: 'Quantas séries de adutora e abdutora fazer?',
+    resposta:
+      'De 2 a 3 séries de 12 a 15 repetições de cada, uma a duas vezes por semana, no fim do treino de pernas ou glúteos, costumam bastar — são músculos que respondem bem a volumes moderados com boa execução. Segurar um instante na posição final (pernas abertas na abdutora, fechadas na adutora) e voltar devagar vale mais que empilhar placas com metade da amplitude.',
+  },
+];
+
+const title = 'Cadeira adutora e abdutora: para que servem';
+const description =
+  'Cadeira adutora e abdutora: a diferença entre as duas, o que cada uma treina de verdade, os mitos de afinar e aumentar, e como encaixar no treino de pernas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cadeira adutora e abdutora: as gêmeas que ninguém sabe para que servem</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Uma abre, a outra fecha — e as duas carregam mais mito por metro
+      quadrado que qualquer outro canto da academia: "afina a coxa",
+      "aumenta o bumbum", "exercício de mulher". A verdade é mais
+      útil: são as máquinas que estabilizam o quadril que sustenta
+      todo o resto do seu treino.
+    </p>
+
+    <p class="lead">
+      Este guia explica o que cada uma treina de fato, desmonta os
+      mitos e mostra a execução e o encaixe certos.
+    </p>
+
+    <div class="prose">
+      <h2>O que cada cadeira treina</h2>
+      <p>
+        <strong>Adutora (fecha as pernas):</strong> os adutores da
+        parte interna da coxa — longo, curto, magno. Eles aproximam a
+        perna da linha do corpo, ajudam na extensão do quadril e
+        estabilizam a pelve a cada passo, agachamento e mudança de
+        direção.
+      </p>
+
+      <p>
+        <strong>Abdutora (abre as pernas):</strong> o glúteo médio e
+        os demais abdutores da lateral do quadril. São eles que
+        impedem o quadril de cair para o lado no apoio de uma perna só
+        — e o joelho de desabar para dentro no agachamento e na
+        corrida.
+      </p>
+
+      <p>
+        Juntas, formam o sistema de estabilização lateral do quadril:
+        invisível nas fotos, decisivo no
+        <a href="/musculacao/treino-de-pernas/">treino de pernas</a>
+        inteiro — e na saúde do
+        <a href="/musculacao/treinar-com-dor-no-joelho/">joelho</a>,
+        que herda cada instabilidade que o quadril deixa passar.
+      </p>
+
+      <h2>Os mitos, um por um</h2>
+      <p>
+        <strong>"A adutora afina a parte interna da coxa."</strong>
+        Fortalece, tonifica — mas não escolhe de onde a gordura sai.
+        Medidas são assunto de déficit calórico; a máquina entrega
+        músculo e estabilidade, não lipoaspiração.
+      </p>
+
+      <p>
+        <strong>"A abdutora aumenta o bumbum."</strong> Ela desenvolve
+        o glúteo médio, o contorno lateral e superior. O volume
+        principal vem do glúteo máximo — território de elevação
+        pélvica, agachamento e búlgaro, como mostra o
+        <a href="/musculacao/treino-de-gluteos/">guia de glúteos</a>.
+        A abdutora é o acabamento, não a obra.
+      </p>
+
+      <p>
+        <strong>"São exercícios de mulher."</strong> Estiramento de
+        virilha em pelada de fim de semana e joelho valgo sob barra
+        pesada são, na prática, epidemias masculinas — e nascem
+        exatamente nos músculos que essas cadeiras treinam.
+      </p>
+
+      <h2>A execução — as regras valem para as duas</h2>
+      <p>
+        <strong>A regulagem.</strong> Ajuste a abertura inicial para
+        começar com alongamento confortável, sem forçar. Quadril
+        colado no banco, coluna apoiada no encosto — ele fica parado
+        do início ao fim.
+      </p>
+
+      <p>
+        <strong>O movimento.</strong> Abra (ou feche) em 1 a 2
+        segundos até a amplitude completa, segure um instante na
+        contração máxima e volte resistindo em 2 a 3 segundos — sem a
+        placa bater na pilha entre as repetições.
+      </p>
+
+      <p>
+        <strong>O tronco.</strong> Sem inclinar para a frente ou
+        segurar impulso com as mãos: se o corpo precisa ajudar, a
+        carga passou do ponto.
+      </p>
+
+      <h2>Os erros de sempre</h2>
+      <p>
+        <strong>Amplitude encolhida com placa esticada.</strong> O
+        clássico das duas máquinas: muito peso, vinte centímetros de
+        movimento. Amplitude cheia com carga honesta constrói;
+        vibração curta com pilha cheia enfeita.
+      </p>
+
+      <p>
+        <strong>Quadril escorregando do banco.</strong> O corpo
+        deslizando para ganhar ângulo — sinal de regulagem errada ou
+        carga demais.
+      </p>
+
+      <p>
+        <strong>Velocidade de metrônomo acelerado.</strong> Abre-fecha
+        em ritmo de pisca-alerta, sem pausa e sem excêntrica. Esses
+        músculos respondem ao tempo sob tensão, não à frequência.
+      </p>
+
+      <p>
+        <strong>Esperar da máquina o que ela não faz.</strong> Nem
+        queima localizada, nem bumbum novo em folha. Estabilidade,
+        força lateral e acabamento — é isso que elas entregam, e já é
+        muito.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 3 séries de 12 a 15 repetições de cada, no fim do
+        treino de pernas ou de glúteos, uma a duas vezes por semana. A
+        abdutora casa bem em superset com a adutora — mesmo banco,
+        funções opostas, tempo dobrado de aproveitamento. A progressão
+        privilegia a pausa na contração e a volta lenta antes de
+        qualquer placa nova.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O valor dessas máquinas depende de contexto: para quem tem
+        joelho que desaba no agachamento, a abdutora é correção; para
+        quem joga futebol, a adutora é seguro de virilha; para quem
+        busca glúteo, é acabamento de um programa maior. O mesmo
+        exercício, três papéis — e a dose certa muda em cada um.
+      </p>
+
+      <p>
+        Um personal trainer identifica qual papel cabe no seu caso,
+        regula amplitude e carga para o seu quadril e encaixa as
+        gêmeas onde elas somam em vez de ocupar espaço. Máquina
+        simples, decisão de gente.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre adutora e abdutora" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

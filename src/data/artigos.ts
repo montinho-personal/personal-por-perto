@@ -198,6 +198,11 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/crossover-como-fazer/', titulo: 'Crossover: como fazer, polias e erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/melhor-horario-para-treinar/', titulo: 'Melhor horário para treinar: manhã ou noite?' },
   { categoria: 'Musculação', url: '/musculacao/voltar-a-treinar-depois-de-parar/', titulo: 'Voltar a treinar depois de parar: o guia da volta' },
+  { categoria: 'Musculação', url: '/musculacao/rosca-martelo-como-fazer/', titulo: 'Rosca martelo: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/triceps-testa-como-fazer/', titulo: 'Tríceps testa: como fazer sem dor no cotovelo' },
+  { categoria: 'Musculação', url: '/musculacao/remada-sentada-como-fazer/', titulo: 'Remada sentada: como fazer (máquina e polia)' },
+  { categoria: 'Musculação', url: '/musculacao/cadeira-adutora-e-abdutora/', titulo: 'Cadeira adutora e abdutora: para que servem' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-e-ansiedade/', titulo: 'Musculação e ansiedade: o que o treino pode fazer' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

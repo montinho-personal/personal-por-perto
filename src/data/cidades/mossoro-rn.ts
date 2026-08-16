@@ -54,6 +54,11 @@ export const cidade: Cidade = {
 
   corridas: [
     {
+      nome: 'Corrida Mossoró Cidade Junina',
+      descricao:
+        'Prova de 5 km e 10 km dentro da programação do maior São João do Rio Grande do Norte, com largada no corredor cultural do centro histórico.',
+    },
+    {
       nome: 'Corrida do Servidor',
       descricao:
         'Promovida pela prefeitura na Semana do Servidor, na Avenida João da Escóssia, com percursos de 3 km e 5 km.',
@@ -88,12 +93,29 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade do sol, do sal e do petróleo, Mossoró tem boa estrutura pública para treinar — desde que se respeite o calor do semiárido. Um personal trainer ajuda a montar uma rotina segura, com horários e hidratação ajustados, aproveitando o Parque Ecológico e a Avenida João da Escóssia.',
 
-  vizinhas: ['natal-rn', 'fortaleza-ce'],
+  vizinhas: ['areia-branca-rn', 'natal-rn'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Qual o melhor horário para treinar ao ar livre em Mossoró?',
+      resposta:
+        'Antes das 7h ou depois das 17h — Mossoró é uma das cidades mais quentes do país, e o meio do dia passa facilmente dos 35 °C na estação seca. O corredor da Avenida João da Escóssia e o Parque Maurício de Oliveira concentram o movimento nessas janelas, sempre com hidratação reforçada.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Mossoró?',
+      resposta:
+        'A Avenida João da Escóssia é a "pista" da cidade, com canteiro central usado por corredores e ciclistas; o Parque Ecológico Professor Maurício de Oliveira soma trilhas e área verde, e a orla do rio Apodi-Mossoró, no centro, recebe caminhada no fim de tarde. Em junho, o calendário esportivo se mistura à festa do Mossoró Cidade Junina.',
+    },
+    {
+      pergunta: 'O personal trainer de Mossoró atende a região do oeste potiguar?',
+      resposta:
+        'Sim — como polo do oeste do estado, Mossoró atrai alunos de Areia Branca, Baraúna, Açu e Grossos. O atendimento presencial se concentra na cidade e nas praias próximas na temporada (Tibau e Areia Branca), e a consultoria online cobre o interior, com planilha semanal e ajustes a distância.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Mossoró', url: 'https://cidades.ibge.gov.br/brasil/rn/mossoro/panorama' },
     { nome: 'Prefeitura de Mossoró', url: 'https://www.prefeiturademossoro.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-16',
 };

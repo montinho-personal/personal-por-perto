@@ -1,0 +1,278 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa: a relação que ninguém treina',
+    descricao: 'O outro pilar do bem-estar que o treino melhora.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'A constância que transforma o efeito agudo em rotina.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/voltar-a-treinar-depois-de-parar/',
+    titulo: 'Voltar a treinar depois de parar: o guia da volta',
+    descricao: 'Para quem quer recomeçar — inclusive pela cabeça.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/musculacao-e-ansiedade';
+const atualizadoEm = '2026-08-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Musculação e ansiedade', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Musculação ajuda mesmo contra a ansiedade?',
+    resposta:
+      'As evidências apontam que sim — como aliada, não como cura. Revisões de estudos mostram que o exercício de força reduz sintomas ansiosos em pessoas com e sem diagnóstico, com efeito comparável ao do exercício aeróbico. Os mecanismos prováveis somam neuroquímica (endorfinas, regulação do cortisol), sono melhor, autoeficácia e o efeito de exposição: aprender que coração acelerado nem sempre é ameaça. Nada disso substitui psicoterapia ou tratamento médico quando indicados.',
+  },
+  {
+    pergunta: 'Treino pesado pode piorar a ansiedade?',
+    resposta:
+      'Pode, em contextos específicos: volume e intensidade além da recuperação elevam o estresse fisiológico, e a privação de sono que às vezes acompanha o excesso de treino é gatilho clássico. Quem está em fase ansiosa aguda costuma responder melhor a sessões moderadas, com folga entre elas, do que a programas punitivos. O treino deve ser válvula de escape, não mais uma cobrança — e a dose certa é individual.',
+  },
+  {
+    pergunta: 'Musculação ou aeróbico: qual é melhor para a ansiedade?',
+    resposta:
+      'Os dois funcionam e os estudos não coroam um vencedor claro — a musculação tem a vantagem prática da estrutura (séries, pausas, progressão mensurável), que muita gente ansiosa acha organizadora, e o aeróbico tem o efeito calmante agudo bem documentado. A melhor resposta costuma ser a mais simples: o que você consegue manter com prazer e constância. Combinações das duas modalidades são o padrão-ouro do bem-estar geral.',
+  },
+  {
+    pergunta: 'Quanto tempo até sentir o efeito do treino no humor?',
+    resposta:
+      'Há dois relógios. O efeito agudo aparece na primeira sessão: a maioria relata tensão menor e cabeça mais clara já na saída do treino, efeito que dura horas. O efeito crônico — sintomas menores na semana como um todo — costuma se consolidar com algumas semanas de regularidade, tipicamente 6 a 12 semanas nos estudos, com 2 a 3 sessões semanais. Constância moderada vence intensidade esporádica.',
+  },
+  {
+    pergunta: 'Preciso de psicólogo se já treino?',
+    resposta:
+      'Treino não substitui tratamento — complementa. Se a ansiedade limita seu dia a dia, atrapalha sono, trabalho ou relações, ou convive com crises, o caminho passa por avaliação de psicólogo ou médico; o treino entra como parte do cuidado, muitas vezes recomendado pelos próprios profissionais de saúde. Sinal de alerta invertido também vale: usar o treino para fugir de tudo, com culpa intensa ao descansar, merece conversa profissional.',
+  },
+];
+
+const title = 'Musculação e ansiedade: o que o treino pode fazer';
+const description =
+  'Musculação e ansiedade: o que as evidências mostram, os mecanismos, a dose que ajuda, quando o treino pode piorar o quadro e por que ele não substitui tratamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Musculação e ansiedade: o que a barra pode e o que ela não pode</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem treina conhece a sensação: entra na academia com a cabeça a
+      mil e sai com ela no lugar. A ciência confirma que isso não é
+      impressão — e explica por quê. Mas entre "o treino ajuda" e "o
+      treino resolve" existe uma distância que este artigo faz questão
+      de respeitar.
+    </p>
+
+    <p class="lead">
+      Aqui está o que as evidências mostram, a dose que funciona,
+      os sinais de que o treino está atrapalhando em vez de ajudar — e
+      onde entram os profissionais de saúde mental.
+    </p>
+
+    <div class="prose">
+      <h2>O que os estudos mostram</h2>
+      <p>
+        O exercício de força reduz sintomas de ansiedade — é o que
+        apontam revisões sistemáticas conduzidas em pessoas com e sem
+        transtornos diagnosticados, com efeitos de magnitude comparável
+        à do aeróbico. Em população geral, treinar regularmente está
+        associado a menos sintomas ansiosos e depressivos e a melhor
+        qualidade de vida.
+      </p>
+
+      <p>
+        A honestidade estatística: os efeitos são moderados, variam de
+        pessoa para pessoa e foram medidos quase sempre como
+        <em>complemento</em> — não como substituto — de psicoterapia e
+        tratamento médico. O treino é aliado documentado; cura
+        prometida é placa de charlatão.
+      </p>
+
+      <h2>Por que funciona: os mecanismos</h2>
+      <p>
+        <strong>Neuroquímica.</strong> A sessão de treino mexe com
+        endorfinas, serotonina e a regulação do eixo do estresse — o
+        banho químico que explica a cabeça leve pós-treino.
+      </p>
+
+      <p>
+        <strong>Sono.</strong> Treino regular é dos melhores indutores
+        de <a href="/musculacao/sono-e-ganho-de-massa/">sono
+        profundo</a> que existem — e sono ruim é combustível de
+        ansiedade. O círculo, aqui, é virtuoso.
+      </p>
+
+      <p>
+        <strong>Exposição ao próprio corpo.</strong> Coração
+        acelerado, respiração curta, suor: os sinais do esforço são os
+        mesmos da ansiedade. Treinar ensina o cérebro, repetição após
+        repetição, que essas sensações podem ser seguras — uma
+        dessensibilização de brinde.
+      </p>
+
+      <p>
+        <strong>Estrutura e autoeficácia.</strong> Séries contadas,
+        cargas anotadas, progresso visível: para uma cabeça ansiosa, o
+        treino é uma ilha de controle e previsibilidade — e cada
+        recorde pequeno deposita na conta da autoconfiança.
+      </p>
+
+      <h2>A dose que ajuda</h2>
+      <p>
+        Os protocolos dos estudos parecem com um treino comum de
+        academia: 2 a 3 sessões semanais, intensidade moderada, 6 a
+        12 semanas para o efeito se consolidar — com o efeito agudo
+        aparecendo já na primeira sessão. Não precisa de heroísmo:
+        constância moderada supera intensidade esporádica em tudo que
+        diz respeito ao humor.
+      </p>
+
+      <p>
+        Para quem está começando do zero — ou recomeçando depois de
+        uma fase difícil —, a rampa do guia de
+        <a href="/musculacao/voltar-a-treinar-depois-de-parar/">voltar
+        a treinar</a> vale dobrado: começar leve demais é impossível
+        quando o objetivo inclui a cabeça.
+      </p>
+
+      <h2>Quando o treino atrapalha</h2>
+      <p>
+        <strong>Excesso sem recuperação.</strong> Volume punitivo,
+        sono encurtado para caber o treino, estimulantes empilhados no
+        pré-treino: receita de estresse fisiológico — o oposto do
+        efeito buscado.
+      </p>
+
+      <p>
+        <strong>O treino como cobrança.</strong> Quando faltar um dia
+        gera culpa desproporcional, ou o treino vira a única
+        estratégia para aguentar a vida, ele deixou de ser válvula e
+        virou sintoma. É conversa para levar ao psicólogo — sem
+        vergonha e sem demora.
+      </p>
+
+      <p>
+        <strong>Ansiedade que limita.</strong> Crises, sono
+        cronicamente ruim, prejuízo no trabalho ou nas relações:
+        nesses cenários, o treino é parte do cuidado, mas quem conduz
+        o tratamento é psicólogo e, quando indicado, médico. Procurar
+        ajuda é o passo forte — inclusive para o treino render mais.
+      </p>
+
+      <h2>Como montar a rotina anti-ansiedade</h2>
+      <p>
+        <strong>Frequência antes de intensidade:</strong> 2 a 3
+        sessões que acontecem valem mais que 6 planejadas. <strong>
+        Horário protegido:</strong> treino com hora marcada resiste à
+        semana caótica — e a previsibilidade, por si, acalma.
+        <strong>Métricas de processo:</strong> presença e cargas
+        anotadas, não espelho diário. <strong>Margem para dias
+        ruins:</strong> a versão mínima do treino (20 minutos, básico)
+        mantém a corrente inteira — como ensina o guia de
+        <a href="/guias/como-nao-desistir-do-treino/">como não
+        desistir</a>.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Para quem treina também pela cabeça, o acompanhamento muda o
+        jogo em dois pontos: o compromisso marcado com outra pessoa —
+        que segura a rotina exatamente nas semanas em que a ansiedade
+        empurra para o sofá — e a dose calibrada, que mantém o treino
+        no território que ajuda, longe do excesso que cobra.
+      </p>
+
+      <p>
+        Um personal trainer não substitui psicólogo nem médico — e um
+        bom profissional é o primeiro a dizer isso. O que ele faz é
+        cuidar para que a parte física do cuidado aconteça de verdade,
+        semana após semana, no volume certo para a sua fase. Cabeça e
+        barra, cada uma com seu especialista.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino e ansiedade" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

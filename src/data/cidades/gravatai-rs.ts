@@ -88,12 +88,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo automotivo da Grande Porto Alegre, Gravataí tem mercado amplo e cultura de corrida e pedal em alta. Um personal trainer ajuda a aproveitar as praças, a orla do rio e o bike park com método, ajustando a rotina à sazonalidade do clima gaúcho.',
 
-  vizinhas: ['porto-alegre-rs', 'canoas-rs'],
+  vizinhas: ['cachoeirinha-rs', 'alvorada-rs', 'porto-alegre-rs'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Gravataí?',
+      resposta:
+        'O circuito clássico combina a Praça Xangai e as praças revitalizadas do centro, a orla do rio Gravataí nas horas frescas e, para quem gosta de subida e trilha, o Morro Itacolomi — o mirante natural da cidade, procurado para caminhada forte e treino de perna. O Eco Bike Park Vento Negro completa o cardápio para quem pedala.',
+    },
+    {
+      pergunta: 'Personal trainer atende quem trabalha em turnos na indústria de Gravataí?',
+      resposta:
+        'Sim — com o polo industrial e a GM na cidade, a agenda por turnos é rotina para os profissionais locais: treinos no meio da manhã, no início da tarde ou no contraturno da escala. Muitos montam o plano quinzenal junto com a escala do aluno, e o formato online cobre as semanas viradas.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Gravataí em relação a Porto Alegre?',
+      resposta:
+        'Em geral, 10% a 25% menos que nos bairros nobres da capital, com sessões avulsas e pacotes mensais mais acessíveis nos bairros e valores maiores no centro e nos condomínios novos. Quem trabalha em Porto Alegre e mora em Gravataí costuma treinar na própria cidade pela economia de tempo na freeway.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Gravataí', url: 'https://cidades.ibge.gov.br/brasil/rs/gravatai/panorama' },
     { nome: 'Prefeitura de Gravataí', url: 'https://www.gravatai.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-16',
 };
