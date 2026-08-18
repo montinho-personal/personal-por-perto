@@ -89,12 +89,29 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do voo livre, Governador Valadares une o Rio Doce, a Ilha dos Araújos e o Pico da Ibituruna numa cultura outdoor única. Um personal trainer ajuda a aproveitar o calçadão e o trail do Ibituruna com método, ajustando o treino ao calor do leste mineiro.',
 
-  vizinhas: ['ipatinga-mg', 'belo-horizonte-mg'],
+  vizinhas: ['ipatinga-mg', 'teofilo-otoni-mg'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Existe preparo físico para voo livre em Governador Valadares?',
+      resposta:
+        'É uma especialidade que só existe em poucos lugares do mundo — e o Ibituruna, considerado um dos melhores sítios de voo livre do Brasil, faz de Valadares um deles. O preparo trabalha core e lombar para as horas de decolagem e comando, pernas para as corridas de decolagem em rampa com equipamento nas costas e mobilidade de ombro. Na temporada de competições, pilotos visitantes contratam pacotes curtos de condicionamento.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em Governador Valadares?',
+      resposta:
+        'A orla do rio Doce é o corredor clássico de caminhada e corrida, com o Ibituruna de moldura; a subida do pico, para quem busca perna e fôlego, é o teste definitivo da cidade — quase mil metros de ganho até a rampa. Praças revitalizadas e as ilhas do rio completam o circuito. No calor do vale, manhã cedo e fim de tarde são as janelas que funcionam.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Governador Valadares?',
+      resposta:
+        'Os valores ficam abaixo dos praticados em Belo Horizonte — sessões avulsas mais acessíveis e pacotes mensais que variam com a frequência semanal. O centro e o bairro de Lourdes concentram os valores mais altos; treino em dupla e pacotes trimestrais são as formas mais comuns de reduzir o custo por sessão. A consultoria online atende quem está nos distritos e nas cidades menores da região.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Governador Valadares', url: 'https://cidades.ibge.gov.br/brasil/mg/governador-valadares/panorama' },
     { nome: 'Prefeitura de Governador Valadares', url: 'https://www.valadares.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-18',
 };

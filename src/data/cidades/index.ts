@@ -402,6 +402,8 @@ import { cidade as apiai } from './apiai-sp';
 import { cidade as alcantara } from './alcantara-ma';
 import { cidade as tutoia } from './tutoia-ma';
 import { cidade as paulinoNeves } from './paulino-neves-ma';
+import { cidade as canindeDeSaoFrancisco } from './caninde-de-sao-francisco-se';
+import { cidade as piraju } from './piraju-sp';
 import { cidade as saoSebastiaoDoParaiso } from './sao-sebastiao-do-paraiso-mg';
 import { cidade as uba } from './uba-mg';
 import { cidade as tresCoracoes } from './tres-coracoes-mg';
@@ -1148,6 +1150,7 @@ export const cidades: Cidade[] = [
   pacaraima, eldorado,
   apiai, alcantara,
   tutoia, paulinoNeves,
+  canindeDeSaoFrancisco, piraju,
   // Bloco 18 (polos regionais, RMs e interior)
   mairipora, ourinhos, leme, cubatao, alfenas, saoSebastiaoDoParaiso, uba, tresCoracoes,
   valenca, cianorte, telemacoBorba, ararangua, gaspar, santoAngelo, santoAntonioDeJesus,

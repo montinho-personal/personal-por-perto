@@ -89,12 +89,29 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade de alta renda na RM de Campinas, Indaiatuba tem um parque linear excepcional e uma das cenas de corrida mais fortes do interior. Um personal trainer ajuda a aproveitar o Parque Ecológico com método, num clima de altitude favorável o ano todo.',
 
-  vizinhas: ['campinas-sp', 'sorocaba-sp'],
+  vizinhas: ['campinas-sp', 'salto-sp', 'itu-sp'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Indaiatuba?',
+      resposta:
+        'O Parque Ecológico é o cartão-postal e a pista oficial da cidade: quilômetros de pista de caminhada e ciclovia em anel contínuo, com academia ao ar livre e o palco das principais corridas — da Corrida Cidade de Indaiatuba às provas beneficentes do calendário. O Parque do Mirim, com o Circuito Eco Ambiental, é a alternativa com clima de natureza.',
+    },
+    {
+      pergunta: 'Personal trainer atende em condomínio em Indaiatuba?',
+      resposta:
+        'Sim — é um dos mercados de condomínio mais fortes do interior paulista: a cidade cresceu em loteamentos fechados com academias próprias, e o atendimento a domicílio é rotina dos profissionais locais. Muitos moradores que trabalham em Campinas ou em Salto preferem treinar no próprio condomínio pela economia de deslocamento.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Indaiatuba em relação a Campinas?',
+      resposta:
+        'Os valores são próximos — Indaiatuba tem renda alta e público exigente —, com sessões avulsas levemente mais acessíveis que as do Cambuí e pacotes competitivos nos condomínios, onde o profissional otimiza a agenda atendendo vários alunos no mesmo endereço. O formato em dupla é comum entre vizinhos e casais.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Indaiatuba', url: 'https://cidades.ibge.gov.br/brasil/sp/indaiatuba/panorama' },
     { nome: 'Prefeitura de Indaiatuba', url: 'https://www.indaiatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-18',
 };

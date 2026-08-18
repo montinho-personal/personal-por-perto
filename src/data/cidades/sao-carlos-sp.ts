@@ -89,12 +89,29 @@ export const cidade: Cidade = {
   conclusao:
     'Capital da Tecnologia e cidade universitária, São Carlos tem clima de altitude favorável e ótimos espaços públicos. Um personal trainer ajuda a aproveitar o Parque do Bicão e a pista da UFSCar com método, num ambiente de alta escolaridade e cultura esportiva consolidada.',
 
-  vizinhas: ['araraquara-sp', 'ribeirao-preto-sp'],
+  vizinhas: ['araraquara-sp', 'rio-claro-sp'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Como é treinar numa cidade universitária como São Carlos?',
+      resposta:
+        'O esporte universitário dá o tom: com USP e UFSCar, a cidade tem atléticas ativas o ano inteiro e a TUSCA — a maior competição universitária multiesportiva do Brasil — como ápice do calendário. Para o personal trainer, isso significa demanda sazonal típica: atletas de atlética buscando preparação específica no semestre e estudantes montando rotina de treino entre aulas e provas.',
+    },
+    {
+      pergunta: 'Onde treinar ao ar livre em São Carlos?',
+      resposta:
+        'O Parque do Kartódromo e o do Bicão são os pontos clássicos de caminhada e corrida, com o Circuito Cidades Paulistas passando pela cidade no calendário de provas. O clima ameno de altitude — São Carlos fica a mais de 800 metros — é aliado raro no interior paulista: dá para treinar ao ar livre em quase qualquer horário fora do verão.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em São Carlos?',
+      resposta:
+        'O mercado tem duas faixas bem definidas: pacotes acessíveis voltados ao público universitário — treino em dupla e horários de baixa procura — e atendimento premium nos bairros residenciais e condomínios, com valores próximos aos de Araraquara. A consultoria online é forte, puxada pela população jovem e familiarizada com tecnologia.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — São Carlos', url: 'https://cidades.ibge.gov.br/brasil/sp/sao-carlos/panorama' },
     { nome: 'Prefeitura de São Carlos', url: 'https://www.saocarlos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-18',
 };

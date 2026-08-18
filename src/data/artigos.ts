@@ -119,6 +119,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/como-nao-desistir-do-treino/', titulo: 'Como não desistir do treino: o guia da constância' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Personal trainer para quem trabalha sentado' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-a-noite/', titulo: 'Personal trainer para quem trabalha à noite' },
 
   // Musculação
   { categoria: 'Musculação', url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino de musculação para iniciantes: como começar' },
@@ -203,6 +204,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/remada-sentada-como-fazer/', titulo: 'Remada sentada: como fazer (máquina e polia)' },
   { categoria: 'Musculação', url: '/musculacao/cadeira-adutora-e-abdutora/', titulo: 'Cadeira adutora e abdutora: para que servem' },
   { categoria: 'Musculação', url: '/musculacao/musculacao-e-ansiedade/', titulo: 'Musculação e ansiedade: o que o treino pode fazer' },
+  { categoria: 'Musculação', url: '/musculacao/supino-inclinado-como-fazer/', titulo: 'Supino inclinado: como fazer e quando usar' },
+  { categoria: 'Musculação', url: '/musculacao/encolhimento-como-fazer/', titulo: 'Encolhimento de ombros: como fazer certo' },
+  { categoria: 'Musculação', url: '/musculacao/supino-fechado-como-fazer/', titulo: 'Supino fechado: como fazer e os erros comuns' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
@@ -224,6 +228,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/agua-e-emagrecimento/', titulo: 'Água e emagrecimento: o que ela faz de verdade' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo: qual faz sentido?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/alcool-e-emagrecimento/', titulo: 'Álcool e emagrecimento: o que a bebida faz de verdade' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/como-acelerar-o-metabolismo/', titulo: 'Como acelerar o metabolismo: o que funciona' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },

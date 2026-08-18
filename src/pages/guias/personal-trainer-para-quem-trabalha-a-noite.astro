@@ -1,0 +1,269 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/melhor-horario-para-treinar/',
+    titulo: 'Melhor horário para treinar: manhã ou noite?',
+    descricao: 'A versão diurna da pergunta — e por que o seu relógio é outro.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/sono-e-ganho-de-massa/',
+    titulo: 'Sono e ganho de massa: a relação que ninguém treina',
+    descricao: 'O pilar que o turno noturno mais ameaça — e como defendê-lo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-quem-trabalha-sentado/',
+    titulo: 'Personal para quem trabalha sentado',
+    descricao: 'O guia irmão, para a rotina que adoece de outro jeito.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-para-quem-trabalha-a-noite';
+const atualizadoEm = '2026-08-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal para quem trabalha à noite', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual o melhor horário de treino para quem trabalha à noite?',
+    resposta:
+      'O que respeitar o seu sono principal — a regra número um do turno noturno. Os encaixes que mais funcionam: treinar depois de acordar (o "café da manhã" do plantonista, mesmo que seja às 15h), no início da "manhã" pessoal, ou antes de entrar no plantão, nunca roubando horas da cama para caber o treino. Quem sai do plantão deve dormir primeiro e treinar depois — treinar exausto, com 20 horas acordado, rende pouco e cobra caro.',
+  },
+  {
+    pergunta: 'Treinar depois do plantão noturno faz mal?',
+    resposta:
+      'Treinar em privação aguda de sono é a pior janela: coordenação, força e disposição caem, a percepção de esforço sobe e o risco de lesão aumenta. A recomendação prática é inverter a ordem — dormir o sono principal e treinar ao acordar. Exceção razoável: uma caminhada leve ou mobilidade pós-plantão para desacelerar antes de dormir. O treino pesado fica para depois da cama, não antes.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar trabalhando em turnos?',
+    resposta:
+      'De 2 a 4 sessões, ancoradas na escala — não no calendário. Para escalas 12x36, o padrão é treinar nos dias de folga e, se a disposição permitir, num dos dias de plantão após o sono. Para turno fixo noturno, 3 sessões na "manhã" pessoal funcionam bem. O plano precisa ter uma versão mínima para as semanas viradas: 2 treinos bem-feitos mantêm o progresso que zero treino destrói.',
+  },
+  {
+    pergunta: 'O personal trainer adapta o treino para escala 12x36?',
+    resposta:
+      'Os bons fazem exatamente isso — é uma das adaptações mais comuns em cidades com hospitais, indústrias e segurança forte. Na prática: agenda quinzenal montada junto com a escala, sessões presenciais nas folgas, treino da semana virada em formato reduzido ou online, e ajuste de volume conforme o sono da semana. O formato misto (presencial + planilha nos dias de plantão) é o que mais se vê.',
+  },
+  {
+    pergunta: 'Trabalho à noite e não consigo emagrecer. Tem relação?',
+    resposta:
+      'Tem — o turno noturno mexe com os hormônios da fome, aumenta a vontade de comida calórica de madrugada e derruba o NEAT do dia seguinte. Não é sentença: com refeições planejadas para o plantão, proteína adequada, sono principal protegido e treino consistente, plantonistas emagrecem como qualquer pessoa. O que não funciona é aplicar sem adaptação uma dieta feita para quem vive de dia. Condições como apneia e insônia crônica merecem avaliação médica.',
+  },
+];
+
+const title = 'Personal trainer para quem trabalha à noite';
+const description =
+  'Treino para quem trabalha à noite ou em escala 12x36: o melhor horário, por que não treinar saindo do plantão, sono, alimentação e como o personal adapta tudo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para quem trabalha à noite: treino para quem vive na contramão</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Enfermeiros, vigilantes, motoristas, operadores de fábrica,
+      porteiros: milhões de brasileiros trabalham enquanto o resto
+      dorme — e recebem conselhos de treino feitos para quem acorda às
+      7h. "Treine de manhã cedo" não significa nada para quem chega em
+      casa às 8h com doze horas de plantão nas costas.
+    </p>
+
+    <p class="lead">
+      Este guia traduz o treino para o relógio de quem vive na
+      contramão: horários, sono, alimentação de plantão e o formato de
+      acompanhamento que funciona com escala.
+    </p>
+
+    <div class="prose">
+      <h2>A regra número um: o sono manda</h2>
+      <p>
+        Para quem trabalha à noite, o
+        <a href="/musculacao/sono-e-ganho-de-massa/">sono</a> não é
+        um pilar do treino — é o pilar. O turno já cobra um imposto de
+        descanso; o treino não pode cobrar outro. Tradução prática:
+        nenhuma sessão de treino justifica encurtar o sono principal, e
+        o horário de treinar se define depois de proteger a cama, não
+        antes.
+      </p>
+
+      <p>
+        O erro clássico é o inverso: sair do plantão às 7h, treinar
+        "aproveitando o embalo" com 20 horas acordado e dormir mal em
+        seguida. Rende pouco, cobra muito e é a receita da desistência
+        em um mês.
+      </p>
+
+      <h2>Os encaixes que funcionam</h2>
+      <p>
+        <strong>Ao acordar</strong> — o melhor horário do plantonista:
+        o corpo descansou, e o treino abre a "manhã" pessoal, seja ela
+        às 14h ou às 16h. <strong>Antes do plantão</strong> — segunda
+        melhor janela: treino, refeição e trabalho, com a energia do
+        dia pessoal ainda alta. <strong>Na folga</strong> — as
+        sessões-âncora da semana, especialmente na escala 12x36.
+        <strong>Nunca:</strong> entre o fim do plantão e o sono, exceto
+        caminhada leve para desacelerar.
+      </p>
+
+      <p>
+        Quem quiser entender a versão diurna da discussão — e por que
+        o relógio biológico se adapta ao horário treinado — encontra no
+        guia do
+        <a href="/musculacao/melhor-horario-para-treinar/">melhor
+        horário para treinar</a>. A lição vale dobrada aqui:
+        consistência no seu fuso vence perfeição no fuso dos outros.
+      </p>
+
+      <h2>O treino em si: o que muda</h2>
+      <p>
+        <strong>Volume honesto.</strong> Quem dorme de dia costuma
+        dormir um pouco pior — a recuperação pede margem: 2 a 4
+        sessões bem-feitas, longe do volume punitivo.
+      </p>
+
+      <p>
+        <strong>Versão mínima para semanas viradas.</strong> O plano
+        precisa de um "modo 20 minutos": básico, corpo inteiro, que
+        mantém a corrente nas semanas em que a escala atropela.
+      </p>
+
+      <p>
+        <strong>Estimulantes com hora.</strong> Pré-treino com cafeína
+        na "tarde" pessoal de quem vai dormir em seguida é sabotagem —
+        a regra dos horários vale no seu fuso, não no do relógio da
+        parede.
+      </p>
+
+      <p>
+        <strong>Luz e rotina.</strong> Treinar em horário fixo do seu
+        dia pessoal ajuda o corpo a saber que horas são — o treino
+        vira âncora do ritmo, não mais uma bagunça nele.
+      </p>
+
+      <h2>Alimentação de plantão, sem heroísmo</h2>
+      <p>
+        O plantão noturno é o território da comida de conveniência —
+        e da fome de madrugada, que os hormônios bagunçados
+        amplificam. As defesas práticas: refeição de verdade antes do
+        turno, lanches planejados com proteína para a madrugada
+        (evitando a roleta da lanchonete), hidratação constante e a
+        refeição pós-plantão leve, para não atrapalhar o sono que vem.
+        A dieta do plantonista se desenha pela escala — nutricionista
+        que entende de turno faz diferença.
+      </p>
+
+      <h2>Como o personal trainer se adapta à escala</h2>
+      <p>
+        O acompanhamento de quem trabalha à noite é um produto
+        diferente — e os profissionais das cidades industriais, de
+        hospital e de porto conhecem bem: agenda quinzenal montada
+        junto com a escala; presencial nas folgas e planilha nos dias
+        de plantão; ajuste de volume conforme o sono real da semana
+        (relatado, não idealizado); e a versão mínima combinada de
+        antemão para as semanas viradas.
+      </p>
+
+      <p>
+        O formato misto — presencial + online — costuma ser o
+        vencedor: a sessão marcada segura a rotina, e a planilha cobre
+        os dias em que o relógio não deixa.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Quem vive na contramão desiste do treino por um motivo
+        específico: o plano genérico quebra na primeira semana de
+        escala — e a culpa cai em quem treina, não no plano. O
+        acompanhamento certo inverte isso: o plano é que se dobra à
+        escala, não o contrário.
+      </p>
+
+      <p>
+        Um personal trainer que entende de turno constrói o treino em
+        volta do seu sono, monta a agenda com a sua escala na mão e
+        mantém o progresso andando nas semanas viradas. Para quem
+        trabalha enquanto a cidade dorme, esse ajuste não é luxo — é a
+        diferença entre treinar sempre e desistir de novo.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino e trabalho noturno" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

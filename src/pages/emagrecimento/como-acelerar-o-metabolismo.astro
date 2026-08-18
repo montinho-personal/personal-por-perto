@@ -1,0 +1,268 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'A conta que o metabolismo integra — e que decide o resultado.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    titulo: 'Quantas calorias a musculação queima?',
+    descricao: 'Os números honestos do gasto do treino.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento: por que acontece',
+    descricao: 'A adaptação metabólica na prática — e como destravar.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/como-acelerar-o-metabolismo';
+const atualizadoEm = '2026-08-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Como acelerar o metabolismo', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Dá para acelerar o metabolismo de verdade?',
+    resposta:
+      'Dá para aumentá-lo de forma modesta e real — não da forma milagrosa que os produtos prometem. As alavancas com efeito comprovado: ganhar massa muscular (cada quilo de músculo soma um pouco ao gasto de repouso e muito ao gasto em atividade), mexer-se mais fora do treino (o NEAT, maior variável do gasto diário entre pessoas) e manter proteína adequada, que tem o maior efeito térmico entre os nutrientes. Chás, shots e "termogênicos naturais" têm efeito irrisório ou nulo.',
+  },
+  {
+    pergunta: 'Metabolismo lento é a causa do meu excesso de peso?',
+    resposta:
+      'Raramente. Estudos que medem o gasto energético real mostram que pessoas com excesso de peso costumam ter metabolismo absoluto igual ou maior que o de pessoas magras — corpos maiores gastam mais energia para funcionar. Condições que reduzem o metabolismo de verdade, como o hipotireoidismo, existem e se diagnosticam com exame — se há suspeita, o caminho é médico e não suplemento. Para a maioria, a conta que decide é ingestão versus gasto total.',
+  },
+  {
+    pergunta: 'Emagrecer deixa o metabolismo mais lento?',
+    resposta:
+      'Um pouco, e por dois motivos: o corpo menor gasta menos (efeito matemático inevitável) e existe a adaptação metabólica — o organismo fica levemente mais econômico durante o déficit, algo entre 5% e 15% além do esperado pelo novo peso. É real, mas não é o "metabolismo destruído" do marketing: a adaptação atenua com pausas estratégicas de dieta, proteína alta e treino de força, e reverte em grande parte na manutenção.',
+  },
+  {
+    pergunta: 'Café, chá verde e pimenta aceleram o metabolismo?',
+    resposta:
+      'Tecnicamente sim, na prática quase nada: a cafeína e compostos como as catequinas do chá verde elevam o gasto em porcentagens pequenas e passageiras — dezenas de calorias no dia, facilmente anuladas por um gole de refrigerante. Nenhum alimento ou chá compensa rotina sedentária ou excesso calórico. O papel deles honesto: coadjuvantes de energia e prazer, não motores de emagrecimento.',
+  },
+  {
+    pergunta: 'Comer de 3 em 3 horas acelera o metabolismo?',
+    resposta:
+      'Não — esse é um dos mitos mais longevos da nutrição. O efeito térmico da alimentação depende do total e da composição do que você come no dia, não do número de refeições em que o divide. Seis refeições pequenas e três maiores com as mesmas calorias e proteína produzem o mesmo gasto. A frequência ideal é a que organiza a sua fome e a sua rotina — critério de adesão, não de metabolismo.',
+  },
+];
+
+const title = 'Como acelerar o metabolismo: o que funciona';
+const description =
+  'Como acelerar o metabolismo de verdade: massa muscular, NEAT e proteína — e por que chás, termogênicos e comer de 3 em 3 horas não fazem o que prometem.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Acelerar o metabolismo: o que funciona, o que é chá caro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucas palavras vendem tanto quanto "metabolismo": shots
+      matinais, termogênicos, protocolos de destravar, culpados
+      perfeitos para qualquer balança emperrada. A fisiologia por trás
+      é menos vendável — e muito mais útil.
+    </p>
+
+    <p class="lead">
+      Este guia separa as três alavancas que aumentam o gasto de
+      verdade dos mitos que só aceleram o boleto — e explica o que o
+      metabolismo realmente faz no seu emagrecimento.
+    </p>
+
+    <div class="prose">
+      <h2>O que é o metabolismo, sem mistério</h2>
+      <p>
+        É a soma de tudo que o corpo gasta: o metabolismo basal
+        (60-70% do total — o custo de estar vivo), o efeito térmico da
+        comida (~10%), o exercício físico e o NEAT — a atividade que
+        não é treino: andar, subir escada, gesticular, se remexer. O
+        emagrecimento acontece quando a ingestão fica abaixo dessa
+        soma, como mostra o guia do
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
+      </p>
+
+      <p>
+        A parte que ninguém conta: entre duas pessoas do mesmo
+        tamanho, a maior diferença de gasto diário não está no basal
+        nem no treino — está no NEAT, que varia centenas de calorias
+        entre o dia sentado e o dia em movimento.
+      </p>
+
+      <h2>As três alavancas que funcionam</h2>
+      <p>
+        <strong>1. Massa muscular.</strong> Músculo é tecido
+        metabolicamente ativo: cada quilo soma um pouco ao gasto de
+        repouso — menos do que a lenda diz, mais do que zero — e
+        multiplica o gasto em movimento, porque um corpo forte se move
+        mais e com mais intensidade. O bônus composto: quem treina
+        força preserva músculo no déficit, evitando a queda de gasto
+        que acompanha a perda de massa magra.
+      </p>
+
+      <p>
+        <strong>2. NEAT.</strong> A alavanca subestimada: transformar
+        o dia sedentário em dia em movimento — passos, escadas,
+        pausas ativas, tarefas em pé — adiciona mais gasto que a
+        maioria dos treinos. É o motivo de os
+        <a href="/emagrecimento/quantos-passos-por-dia/">passos
+        diários</a> preverem tanto resultado.
+      </p>
+
+      <p>
+        <strong>3. Proteína.</strong> O nutriente com maior efeito
+        térmico: 20% a 30% das calorias da proteína se perdem na
+        própria digestão, contra cerca de 5-10% dos carboidratos e
+        0-3% das gorduras. Dieta com proteína adequada gasta mais para
+        ser processada, segura mais a fome e protege o músculo — o
+        raro caso de ganho triplo.
+      </p>
+
+      <h2>O que não funciona (e por quê)</h2>
+      <p>
+        <strong>Chás e shots "termogênicos".</strong> Efeito medido em
+        dezenas de calorias passageiras — um pires de granola anula o
+        dia de chá verde. <strong>Comer de 3 em 3 horas.</strong> O
+        efeito térmico depende do total do dia, não do fracionamento.
+        <strong>"Destravar o metabolismo" com protocolos.</strong>
+        Metabolismo não trava — o que trava é a adesão à dieta, e isso
+        se resolve com plano, não com ritual.
+      </p>
+
+      <p>
+        <strong>Termogênicos em cápsula.</strong> Os que fazem algo
+        relevante fazem via estimulante (cafeína, que você pode tomar
+        de graça no café) — com efeito que o corpo tolera em semanas.
+        Os "naturais sem estimulante" fazem companhia ao boleto.
+      </p>
+
+      <h2>E quando o metabolismo desacelera de verdade?</h2>
+      <p>
+        Dois cenários reais. O primeiro é fisiológico e esperado: em
+        déficit prolongado, o corpo fica 5% a 15% mais econômico — a
+        adaptação metabólica que explica parte dos
+        <a href="/emagrecimento/plato-de-emagrecimento/">platôs</a> e
+        se administra com pausas de dieta, proteína e treino de força.
+      </p>
+
+      <p>
+        O segundo é clínico: condições como hipotireoidismo reduzem o
+        gasto de verdade e têm diagnóstico por exame. Cansaço
+        persistente, frio constante, queda de cabelo e balança
+        emperrada apesar de rotina consistente são motivo de consulta
+        médica — não de dobrar o termogênico.
+      </p>
+
+      <h2>O plano prático</h2>
+      <p>
+        <strong>Treino de força 3x na semana</strong> para construir e
+        proteger o músculo. <strong>Passos diários com meta</strong> —
+        o NEAT vira hábito quando é contado. <strong>Proteína em toda
+        refeição</strong>, na dose do seu peso e objetivo.
+        <strong>Sono em dia</strong>, porque a privação bagunça fome e
+        disposição — e o NEAT despenca no dia mal dormido. Nenhum
+        desses itens é vendável em cápsula; todos aparecem na
+        balança.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        "Meu metabolismo é lento" costuma ser o diagnóstico que a
+        pessoa dá a si mesma quando a rotina está desorganizada — e o
+        acompanhamento profissional é o que separa a hipótese real da
+        desculpa confortável: medir, ajustar, comparar semanas.
+      </p>
+
+      <p>
+        Um personal trainer constrói a parte do metabolismo que
+        depende de treino — massa muscular e movimento diário — e
+        mantém a consistência que nenhum chá substitui. Para a parte
+        clínica, médico; para a nutricional, nutricionista; para fazer
+        o corpo gastar mais todos os dias, treino bem conduzido.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre metabolismo" />
+
+    <WhatsAppCta tema="emagrecimento" />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
