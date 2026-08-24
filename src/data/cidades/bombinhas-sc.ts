@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['itapema-sc', 'balneario-camboriu-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/bombinhas-sc.webp',
+    w: 1200,
+    h: 800,
+    alt: 'Personal trainer em Bombinhas (SC) em arte com as praias de Bombas, Mariscal, Conceição, Quatro Ilhas e Zimbros — Personal por Perto',
+    legenda: 'Treino personalizado em Bombinhas: um plano feito para o seu corpo e a sua rotina, da praia à academia, o ano inteiro.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Bombinhas', url: 'https://cidades.ibge.gov.br/brasil/sc/bombinhas/panorama' },
     { nome: 'Turismo de Bombinhas — Prefeitura', url: 'https://turismo.bombinhas.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-24',
 };

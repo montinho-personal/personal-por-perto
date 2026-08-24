@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
@@ -78,21 +78,38 @@ const title = 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo'
 const description =
   'O papel do exercício aeróbico durante o uso de Mounjaro (tirzepatida) sob prescrição médica: por que o cardio complementa — e não substitui — o treino de força, dose moderada e progressiva, e como combinar os dois na semana. Conteúdo educativo, não substitui orientação médica.';
 
+const capa = '/capas-conteudo/cardio-para-quem-usa-mounjaro.webp';
+const capaAlt =
+  'Arte da capa: corredor em pista estilizada com halter — cardio para quem usa Mounjaro sem perder músculo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Mounjaro e Treino</p>
     <h1>Cardio para quem usa Mounjaro: como encaixar sem perder músculo</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O exercício aeróbico tem um papel legítimo para quem usa Mounjaro

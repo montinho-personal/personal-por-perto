@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/dieta-flexivel';
-const atualizadoEm = '2026-08-07';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -78,21 +78,38 @@ const title = 'Dieta flexível: o que é e como funciona na prática';
 const description =
   'Dieta flexível (IIFYM): o que é, como definir calorias e macros, a regra dos 80/20, se precisa pesar comida e para quem o método não é indicado.';
 
+const capa = '/capas-conteudo/dieta-flexivel.webp';
+const capaAlt =
+  'Arte da capa: dieta flexível — equilíbrio entre comida de verdade e prazer, sem terrorismo alimentar — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Dieta flexível: o que é e como funciona na prática</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A dieta flexível costuma ser apresentada de dois jeitos igualmente

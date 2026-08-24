@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/cadeira-adutora-e-abdutora';
-const atualizadoEm = '2026-08-16';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Cadeira adutora e abdutora: para que servem';
 const description =
   'Cadeira adutora e abdutora: a diferença entre as duas, o que cada uma treina de verdade, os mitos de afinar e aumentar, e como encaixar no treino de pernas.';
 
+const capa = '/capas-conteudo/cadeira-adutora-e-abdutora.webp';
+const capaAlt =
+  'Arte da capa: as cadeiras adutora e abdutora lado a lado — parecidas, mas não iguais: parte interna da coxa e glúteos/parte externa do quadril — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Cadeira adutora e abdutora: as gêmeas que ninguém sabe para que servem</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Uma abre, a outra fecha — e as duas carregam mais mito por metro

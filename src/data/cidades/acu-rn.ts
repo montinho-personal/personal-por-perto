@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['mossoro-rn', 'natal-rn'],
 
+  capaArte: {
+    src: '/capas-cidade/acu-rn.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Açu (RN) em arte que reúne a praça da Igreja Matriz, as palmeiras do Vale do Açu e o treino de força — Personal por Perto',
+    legenda: 'Treino personalizado em Açu: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional no Vale do Açu.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Açu', url: 'https://cidades.ibge.gov.br/brasil/rn/acu/panorama' },
     { nome: 'Prefeitura Municipal de Assu', url: 'https://assu.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-24',
 };

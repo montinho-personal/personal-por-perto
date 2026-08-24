@@ -77,11 +77,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['santa-maria-rs', 'cruz-alta-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/santiago-rs.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Santiago (RS) em arte que reúne a igreja matriz, os símbolos gaúchos e o treino de força — Personal por Perto',
+    legenda: 'Treino personalizado em Santiago: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na região.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Santiago', url: 'https://cidades.ibge.gov.br/brasil/rs/santiago/panorama' },
     { nome: 'Prefeitura Municipal de Santiago', url: 'https://www.santiago.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Rádio Santiago FM — Estimativa populacional', url: 'https://radiosantiago.com.br/geral/cidade/estimativa-populacional-de-santiago-passa-de-50-mil-habitantes/' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-08-24',
 };

@@ -83,10 +83,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['alto-paraiso-de-goias-go', 'cavalcante-go'],
 
+  capaArte: {
+    src: '/capas-cidade/colinas-do-sul-go.webp',
+    w: 1200,
+    h: 800,
+    alt: 'Personal trainer em Colinas do Sul (GO) em arte que reúne a Cachoeira Pedra Rolada, a praça central e a igreja da cidade — Personal por Perto',
+    legenda: 'Treino personalizado em Colinas do Sul: um plano feito para o seu corpo e a sua rotina, entre o lago da Serra da Mesa e a Chapada.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Colinas do Sul', url: 'https://cidades.ibge.gov.br/brasil/go/colinas-do-sul/panorama' },
     { nome: 'Visit Veadeiros — Colinas do Sul', url: 'https://visitveadeiros.com.br/colinas-do-sul/' },
     { nome: 'ICMBio — Parque Nacional da Chapada dos Veadeiros', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/cerrado/lista-de-ucs/parna-da-chapada-dos-veadeiros' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-24',
 };

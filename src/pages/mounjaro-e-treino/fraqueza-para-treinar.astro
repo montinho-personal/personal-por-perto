@@ -42,7 +42,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/fraqueza-para-treinar';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
@@ -81,21 +81,38 @@ const title = 'Mounjaro dá fraqueza para treinar? O que fazer';
 const description =
   'Por que a disposição para treinar pode cair em algumas fases do uso de Mounjaro (tirzepatida), estratégias legítimas de treino para dias de menos energia e sinais de que é hora de falar com o médico. Conteúdo educativo, não substitui orientação médica.';
 
+const capa = '/capas-conteudo/fraqueza-para-treinar.webp';
+const capaAlt =
+  'Arte da capa: atleta sentado com a cabeça baixa diante de um 0% — fraqueza para treinar, causas e como recuperar a energia — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Mounjaro e Treino</p>
     <h1>Mounjaro dá fraqueza para treinar? O que fazer</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="800"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Uma queixa comum de quem usa Mounjaro (tirzepatida) sob prescrição

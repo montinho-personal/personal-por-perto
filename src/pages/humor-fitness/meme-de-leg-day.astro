@@ -30,7 +30,7 @@ const relacionados = [
 ];
 
 const path = '/humor-fitness/meme-de-leg-day';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Humor fitness', url: rotas.humor },
@@ -69,20 +69,37 @@ const title = 'Meme de leg day: por que o treino de perna rende tanta piada';
 const description =
   'De onde vem o meme de leg day: a escada do dia seguinte, o "never skip leg day" e a ciência que explica por que o treino de perna é o mais temido — e o mais zoado.';
 
+const capa = '/capas-conteudo/meme-de-leg-day.webp';
+const capaAlt =
+  'Arte da capa: sobrevivente do leg day sem conseguir levantar do banco — por que o treino de perna rende tanta piada — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container article-solo">
     <article class="article-page">
     <p class="eyebrow">Humor fitness</p>
     <h1>Meme de leg day: por que o treino de perna rende tanta piada</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhum treino tem a biografia do leg day: temido na véspera, sofrido na

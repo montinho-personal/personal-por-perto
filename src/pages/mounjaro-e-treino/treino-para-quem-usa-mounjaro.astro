@@ -45,7 +45,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/treino-para-quem-usa-mounjaro';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
@@ -84,21 +84,38 @@ const title = 'Treino para quem usa Mounjaro: como adaptar';
 const description =
   'Como adaptar o treino durante o uso de Mounjaro (tirzepatida) sob prescrição médica: prioridade ao treino de força, cardio complementar, progressão conservadora e constância. Conteúdo educativo, não substitui orientação médica.';
 
+const capa = '/capas-conteudo/treino-para-quem-usa-mounjaro.webp';
+const capaAlt =
+  'Arte da capa: halter e caneta de aplicação em um só objeto — treino para quem usa Mounjaro, com carga, energia e recuperação ajustadas — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Mounjaro e Treino</p>
     <h1>Treino para quem usa Mounjaro: como adaptar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Quem usa Mounjaro (tirzepatida) sob prescrição médica costuma

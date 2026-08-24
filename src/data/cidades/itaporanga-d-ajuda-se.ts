@@ -86,10 +86,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['aracaju-se', 'estancia-se'],
 
+  capaArte: {
+    src: '/capas-cidade/itaporanga-d-ajuda-se.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Itaporanga d\'Ajuda (SE) em arte que reúne a Praia da Caueira, o letreiro da cidade e a igreja histórica — Personal por Perto',
+    legenda: 'Treino personalizado em Itaporanga d\'Ajuda: um plano feito para o seu corpo e a sua rotina, do centro à Caueira.',
+  },
   fontes: [
     { nome: "IBGE Cidades — Itaporanga d'Ajuda", url: 'https://cidades.ibge.gov.br/brasil/se/itaporanga-dajuda/panorama' },
     { nome: "Prefeitura de Itaporanga d'Ajuda", url: 'https://itaporanga.se.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-08-24',
 };
