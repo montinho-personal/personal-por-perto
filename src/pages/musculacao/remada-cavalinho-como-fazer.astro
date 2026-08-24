@@ -1,0 +1,265 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/remada-curvada-como-fazer/',
+    titulo: 'Remada curvada: como fazer e os erros comuns',
+    descricao: 'A remada livre que o cavalinho aproxima do iniciante.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/remada-sentada-como-fazer/',
+    titulo: 'Remada sentada: como fazer (máquina e polia)',
+    descricao: 'A outra remada apoiada do arsenal de costas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu (e os erros)',
+    descricao: 'O quadro completo das puxadas horizontais e verticais.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/remada-cavalinho-como-fazer';
+const atualizadoEm = '2026-08-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Remada cavalinho', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é a remada cavalinho?',
+    resposta:
+      'É a remada com a barra ancorada no chão — no suporte landmine ou num canto de parede — e o corpo por cima dela, puxando pela extremidade carregada com um triângulo ou pegada direta. O apelido vem da posição: o tronco inclinado "montado" sobre a barra. Muitas academias têm a versão em máquina (T-bar com apoio de peito), que reproduz o movimento com o tronco sustentado.',
+  },
+  {
+    pergunta: 'Qual a vantagem do cavalinho sobre a remada curvada?',
+    resposta:
+      'O arco fixo da barra ancorada guia a trajetória — sobra menos coisa para estabilizar do que na remada curvada livre, o que permite mais carga com técnica mais fácil de manter. É o meio-termo perfeito entre a curvada (livre total) e a remada na máquina (guiada total): exige postura de dobradiça, mas perdoa mais. Para muita gente, é a remada pesada mais confortável que existe.',
+  },
+  {
+    pergunta: 'Cavalinho com triângulo ou pegada aberta?',
+    resposta:
+      'O triângulo (pegada neutra e fechada) enfatiza o meio das costas e o dorsal, com os cotovelos rente ao corpo — a versão padrão. A pegada aberta na barra ou nas alças largas da máquina, com cotovelos mais afastados, traz mais trapézio médio e deltoide posterior. Alternar entre elas ao longo das fases cobre as costas por completo — a lógica de sempre das remadas.',
+  },
+  {
+    pergunta: 'Quanto de anilha cabe na remada cavalinho?',
+    resposta:
+      'Bastante — e é aí que mora o cuidado. Como a barra ancora no chão e a trajetória é guiada, o cavalinho aceita cargas altas; mas o tronco inclinado continua sendo sustentado pela sua lombar, como na curvada. A régua prática: a carga certa é a que sobe sem o tronco levantar junto. Anilhas menores (de 20 kg ou menos) também preservam a amplitude, porque as gigantes batem no peito antes da contração completa.',
+  },
+  {
+    pergunta: 'Quantas séries de remada cavalinho fazer?',
+    resposta:
+      'De 3 a 4 séries de 8 a 12 repetições, como remada principal do dia de costas ou revezando com a curvada entre fases. Na máquina com apoio de peito, vale explorar também séries de 12 a 15 — o apoio elimina a fadiga de lombar e deixa as costas irem mais longe. Somada às demais puxadas, ela compõe o volume horizontal da semana.',
+  },
+];
+
+const title = 'Remada cavalinho: como fazer e os erros';
+const description =
+  'Remada cavalinho (T-bar): a barra ancorada, triângulo ou pegada aberta, a vantagem sobre a curvada, a carga certa e os erros que jogam o trabalho na lombar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Remada cavalinho: a remada pesada que a barra ancorada facilita</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Entre a remada curvada — livre e exigente — e as máquinas —
+      guiadas e limitadas — existe um meio-termo com apelido de
+      brinquedo e vocação de construtor: o cavalinho, a remada da
+      barra ancorada no chão.
+    </p>
+
+    <p class="lead">
+      Este guia mostra a montagem, a execução nas versões livre e com
+      apoio, as pegadas e os erros que transformam a remada em
+      levantamento de tronco.
+    </p>
+
+    <div class="prose">
+      <h2>O que o cavalinho treina</h2>
+      <p>
+        O cardápio completo da puxada horizontal: grande dorsal,
+        rombóides e trapézio médio, deltoide posterior e bíceps — com
+        os eretores da espinha sustentando o tronco inclinado, como na
+        <a href="/musculacao/remada-curvada-como-fazer/">remada
+        curvada</a>. A diferença está na barra: ancorada, ela desenha
+        um arco fixo que guia o movimento e reduz a conta de
+        estabilização.
+      </p>
+
+      <p>
+        No <a href="/musculacao/treino-de-costas/">treino de
+        costas</a>, isso o coloca no posto de remada pesada mais
+        acessível: carga de curvada, técnica de máquina — o degrau
+        ideal entre uma e outra.
+      </p>
+
+      <h2>A montagem e a execução</h2>
+      <p>
+        <strong>A âncora.</strong> Barra no suporte landmine (ou num
+        canto firme), anilhas na outra extremidade, triângulo
+        encaixado sob a barra junto às anilhas.
+      </p>
+
+      <p>
+        <strong>A posição.</strong> Montado sobre a barra, pés na
+        largura do quadril, joelhos dobrados, tronco inclinado em
+        dobradiça — coluna neutra da nuca ao quadril, como numa
+        curvada bem-feita.
+      </p>
+
+      <p>
+        <strong>A puxada.</strong> Leve os cotovelos para trás, rente
+        ao corpo, até as anilhas se aproximarem do peito — com um
+        instante de aperto de escápulas no topo.
+      </p>
+
+      <p>
+        <strong>A volta.</strong> Resista em 2 a 3 segundos até a
+        extensão completa, deixando a escápula deslizar no fim para
+        alongar o dorsal — sem a coluna arredondar junto.
+      </p>
+
+      <p>
+        <strong>Na máquina com apoio.</strong> O peito no anteparo
+        terceiriza a lombar e libera carga e repetições — a versão
+        mais amiga dos dias de coluna cansada, na mesma lógica da
+        <a href="/musculacao/remada-sentada-como-fazer/">remada
+        sentada</a>.
+      </p>
+
+      <h2>Os erros de sempre</h2>
+      <p>
+        <strong>Levantar o tronco junto.</strong> O sinal universal de
+        carga demais: a cada repetição, a remada vira extensão de
+        lombar. O tronco escolhe o ângulo e congela nele.
+      </p>
+
+      <p>
+        <strong>Anilhas gigantes.</strong> As de 45 encostam no peito
+        antes da contração completa — amplitude sequestrada pelo
+        diâmetro. Anilhas menores preservam o arco inteiro.
+      </p>
+
+      <p>
+        <strong>Puxar com o bíceps.</strong> Mão de gancho, cotovelo
+        de motor, escápula primeiro — a regra de toda puxada vale em
+        dobro na carga alta do cavalinho.
+      </p>
+
+      <p>
+        <strong>Coluna arredondada na montagem.</strong> O erro
+        acontece antes da primeira repetição: quem monta torto,
+        puxa torto. A dobradiça de quadril é o pré-requisito.
+      </p>
+
+      <p>
+        <strong>Amplitude picada.</strong> Sem o alongamento embaixo e
+        o aperto em cima, sobra o meio — a parte que menos constrói.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 3 a 4 séries de 8 a 12 repetições como remada principal —
+        ou de 12 a 15 na versão com apoio, quando o objetivo é volume
+        sem custo de lombar. No programa, ele reveza com a curvada
+        entre fases: mesma família, exigências diferentes, costas
+        completas. A progressão pede o contrato de sempre: anilha nova
+        só entra com tronco parado e arco completo.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O cavalinho tem a armadilha das remadas pesadas: a carga sobe
+        fácil — e o tronco sobe junto, um grau por semana, sem que
+        ninguém de dentro perceba. A barra guiada dá confiança; a
+        confiança, sem olho de fora, vira pressa.
+      </p>
+
+      <p>
+        Um personal trainer trava o ângulo do tronco, escolhe a pegada
+        e a versão para o seu momento e decide quando o cavalinho
+        assume o posto de remada principal. É o exercício certo para
+        carregar pesado — desde que alguém confira quem está
+        carregando: as costas ou a lombar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a remada cavalinho" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

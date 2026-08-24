@@ -1,0 +1,275 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-peito/',
+    titulo: 'Treino de peito: como montar o seu (e os erros)',
+    descricao: 'Um dos dois territórios que o pullover disputa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-costas/',
+    titulo: 'Treino de costas: como montar o seu (e os erros)',
+    descricao: 'O outro território — e como o dorsal entra no movimento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/triceps-testa-como-fazer/',
+    titulo: 'Tríceps testa: como fazer sem dor no cotovelo',
+    descricao: 'O vizinho de banco que compartilha o cuidado com o cotovelo.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/pullover-como-fazer';
+const atualizadoEm = '2026-08-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Pullover: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Pullover é exercício de peito ou de costas?',
+    resposta:
+      'Os dois participam — e a execução decide o sócio majoritário. Com os braços mais estendidos e a pegada neutra, o alongamento enfatiza o grande dorsal; com os cotovelos levemente mais dobrados e a intenção de "abraçar" na subida, o peitoral assume mais. O serrátil e o tríceps (cabeça longa) trabalham nas duas versões. Na prática, ele costuma entrar no dia de peito ou de costas conforme a intenção — e funciona nos dois.',
+  },
+  {
+    pergunta: 'Pullover com halter, barra ou na polia?',
+    resposta:
+      'O halter no banco é o clássico: uma mão sobre a outra segurando a face interna do peso, amplitude grande e alongamento profundo. A polia alta (ajoelhado ou em pé, braços quase estendidos) mantém tensão contínua e é a melhor versão para sentir o dorsal. A barra e a máquina específica (rara nas academias) completam o cardápio. Para aprender, halter; para isolar dorsal, polia.',
+  },
+  {
+    pergunta: 'Até onde descer o halter no pullover?',
+    resposta:
+      'Até o alongamento firme sem o ombro reclamar e sem a lombar arquear do banco — para a maioria, o braço passa um pouco da linha da cabeça. Descer além da mobilidade cobra da cápsula do ombro e faz o quadril despencar, os dois erros clássicos do exercício. O alongamento cresce com as semanas; a amplitude do vídeo de fisiculturista, não é meta da primeira sessão.',
+  },
+  {
+    pergunta: 'Pullover expande a caixa torácica?',
+    resposta:
+      'Essa é a lenda mais antiga do exercício — a "expansão de caixa" prometida nos treinos de décadas passadas. A estrutura óssea do tórax adulto não se expande com exercício; o que cresce são os músculos sobre ela: peitoral, dorsal e serrátil, que dão o visual de tronco mais amplo. O pullover constrói esse conjunto como poucos — só não mexe no esqueleto.',
+  },
+  {
+    pergunta: 'Quantas séries de pullover fazer?',
+    resposta:
+      'De 2 a 3 séries de 10 a 15 repetições, uma a duas vezes por semana, como acessório de alongamento no fim do treino de peito ou de costas. É exercício de sensação e controle: carga moderada, descida de 2 a 3 segundos e o alongamento como protagonista rendem mais que qualquer halter recorde — que, aqui, só encurta a amplitude e ameaça o ombro.',
+  },
+];
+
+const title = 'Pullover: como fazer e o que ele treina';
+const description =
+  'Pullover: peito ou costas, halter ou polia, até onde descer sem cobrar do ombro, a lenda da expansão da caixa torácica e como programar o clássico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Pullover: o clássico que treina peito e costas no mesmo arco</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos exercícios carregam tanta história: o pullover atravessou
+      todas as eras da musculação — das promessas antigas de "expandir
+      a caixa torácica" ao ostracismo — e voltou pelo motivo certo: é
+      dos raros movimentos que alongam peito e dorsal sob carga no
+      mesmo gesto.
+    </p>
+
+    <p class="lead">
+      Este guia mostra a execução no halter e na polia, o limite que
+      protege o ombro e o que o exercício entrega de verdade.
+    </p>
+
+    <div class="prose">
+      <h2>O que o pullover treina</h2>
+      <p>
+        O arco de braços por cima da cabeça recruta uma sociedade
+        incomum: peitoral maior e grande dorsal — rivais em quase todo
+        exercício — trabalham juntos, com serrátil anterior e a cabeça
+        longa do tríceps completando o time. É por isso que ele
+        transita entre o
+        <a href="/musculacao/treino-de-peito/">treino de peito</a> e o
+        <a href="/musculacao/treino-de-costas/">de costas</a> sem
+        pertencer de vez a nenhum.
+      </p>
+
+      <p>
+        O que o torna especial é a posição: os dois músculos recebem
+        carga no alongamento máximo — o estímulo que a ciência recente
+        mais valoriza para hipertrofia, e que pouquíssimos exercícios
+        entregam para o dorsal.
+      </p>
+
+      <VideoYouTube
+        id="-KaMXMMIVrU"
+        titulo="Como fazer pull over — Leandro Twin"
+        legenda="No vídeo: Leandro Twin demonstra a execução correta do pullover."
+      />
+
+      <h2>A execução com halter, passo a passo</h2>
+      <p>
+        <strong>A base.</strong> Deitado no banco reto, pés firmes,
+        quadril apoiado. Segure um halter com as duas mãos sobrepostas
+        na face interna da carga, braços estendidos sobre o peito com
+        cotovelos levemente dobrados — ângulo que congela até o fim.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Leve o halter em arco por trás da
+        cabeça, em 2 a 3 segundos, até o alongamento firme de peito e
+        dorsal — sem o quadril levantar e sem a lombar virar ponte.
+      </p>
+
+      <p>
+        <strong>O limite.</strong> O fundo é onde o ombro segue
+        confortável e o tronco segue no banco. Passou disso, é
+        mobilidade emprestada da articulação errada.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Traga o halter de volta pelo mesmo
+        arco até a vertical do peito, sentindo o par peito-dorsal
+        fechar o movimento. O cotovelo não estica nem dobra no
+        caminho — quem trabalha é o ombro.
+      </p>
+
+      <h2>Na polia: a versão do dorsal</h2>
+      <p>
+        Em pé ou ajoelhado de frente para a polia alta, braços quase
+        estendidos, puxe a barra em arco até a linha do quadril e
+        resista na volta. A tensão contínua e o tronco estável fazem
+        desta a melhor versão para aprender a sentir o dorsal — e a
+        favorita de quem usa o pullover no dia de costas.
+      </p>
+
+      <h2>Os erros de sempre</h2>
+      <p>
+        <strong>Carga de ego.</strong> O halter grande demais encurta
+        o arco, arqueia a lombar e empurra o ombro além do limite — os
+        três erros num só.
+      </p>
+
+      <p>
+        <strong>Cotovelo bombando.</strong> Dobrar e esticar a cada
+        repetição transforma o pullover em tríceps testa torto — e o
+        cotovelo, como no
+        <a href="/musculacao/triceps-testa-como-fazer/">vizinho de
+        banco</a>, cobra a conta.
+      </p>
+
+      <p>
+        <strong>Quadril subindo.</strong> A ponte de lombar que
+        "ajuda" o fundo: sinal de carga demais ou amplitude forçada.
+      </p>
+
+      <p>
+        <strong>Pressa no alongamento.</strong> A metade de trás do
+        arco é o exercício inteiro — despachá-la para contar
+        repetição é jogar fora o motivo de estar ali.
+      </p>
+
+      <p>
+        <strong>Esperar expansão óssea.</strong> A caixa torácica
+        adulta não cresce com halter — os músculos sobre ela, sim. A
+        meta certa poupa frustração.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 3 séries de 10 a 15 repetições, fechando o dia de peito
+        ou de costas — ou nos dois, alternando a versão: halter com
+        intenção de peito num, polia com intenção de dorsal no outro.
+        A progressão privilegia amplitude e controle; o halter só
+        cresce quando o arco inteiro vem junto.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O pullover é exercício de sensação: a diferença entre a versão
+        que constrói e a que só balança peso mora em detalhes que não
+        aparecem no espelho — o cotovelo que congela, o arco completo,
+        o quadril que fica no banco enquanto o ombro alonga.
+      </p>
+
+      <p>
+        Um personal trainer calibra o fundo seguro para o seu ombro,
+        escolhe halter ou polia conforme a sua intenção e encaixa o
+        clássico onde ele soma. Exercício centenário rende mais com
+        olho moderno.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o pullover" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,280 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/levantamento-terra-romeno-como-fazer/',
+    titulo: 'Levantamento terra romeno: como fazer',
+    descricao: 'A dobradiça com barra nas mãos — o primo mais carregável.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/stiff-como-fazer/',
+    titulo: 'Stiff: como fazer e os erros comuns',
+    descricao: 'O outro membro da família de dobradiças de quadril.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-posterior-de-coxa/',
+    titulo: 'Treino de posterior de coxa: o guia completo',
+    descricao: 'O grupo que o bom-dia trabalha junto com a lombar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/bom-dia-como-fazer';
+const atualizadoEm = '2026-08-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Bom-dia: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O bom-dia é perigoso para a coluna?',
+    resposta:
+      'Com carga errada, é dos que mais punem; com carga certa, é dos que mais protegem. O exercício coloca a barra longe do quadril — a alavanca mais longa da academia —, o que multiplica o torque sobre a lombar. É por isso que ele se faz leve: com fração do peso do agachamento, os eretores e o posterior recebem estímulo enorme. Quem respeita a alavanca constrói uma lombar blindada; quem carrega como agachamento paga o preço.',
+  },
+  {
+    pergunta: 'Qual a diferença entre bom-dia, stiff e terra romeno?',
+    resposta:
+      'Os três são dobradiças de quadril; muda onde a carga mora. No stiff e no romeno, a barra fica nas mãos, pendurada abaixo do tronco. No bom-dia, ela fica nas costas, como no agachamento — o que alonga a alavanca e transforma os eretores da espinha em protagonistas, com posterior e glúteo dividindo o resto. Resultado: mesmo padrão, ênfase deslocada para a cadeia que sustenta a coluna.',
+  },
+  {
+    pergunta: 'Quanto peso usar no bom-dia?',
+    resposta:
+      'Muito menos do que o orgulho sugere: comece com a barra vazia e progrida devagar — a referência comum é trabalhar com algo entre 25% e 50% do que você agacha, em séries de 8 a 12 repetições controladas. O bom-dia é exercício de qualidade de movimento e acúmulo paciente, não de recorde. Se o tronco não sobe sem arredondar, a barra está pesada.',
+  },
+  {
+    pergunta: 'Até onde descer no bom-dia?',
+    resposta:
+      'Até onde o quadril vai para trás com a coluna neutra — para a maioria, o tronco chega perto do paralelo com o chão, com joelhos levemente dobrados. O limite é idêntico ao do stiff: no instante em que a lombar começa a arredondar, a amplitude acabou. Flexibilidade de posterior define o seu fundo, e ele cresce com as semanas.',
+  },
+  {
+    pergunta: 'Quem não deve fazer bom-dia?',
+    resposta:
+      'Quem está com dor lombar ativa ou em retorno de lesão de coluna deve deixar o bom-dia para depois — há dobradiças mais amigáveis para essas fases, como o romeno com halteres e a elevação pélvica, e a liberação de médico ou fisioterapeuta vem antes de qualquer barra nas costas. Iniciantes se beneficiam de aprender primeiro a dobradiça no romeno, que perdoa mais.',
+  },
+];
+
+const title = 'Bom-dia (good morning): como fazer certo';
+const description =
+  'Bom-dia (good morning): a dobradiça com barra nas costas, por que ele se faz leve, a diferença para stiff e terra romeno e como blindar a lombar sem se machucar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Bom-dia: a dobradiça que blinda a lombar — se você não tiver pressa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Nenhum exercício divide tanto os vestiários: para uns, o bom-dia
+      é lenda de era antiga que destrói coluna; para outros, é o
+      segredo de lombares à prova de tudo. Os dois lados descrevem o
+      mesmo exercício — com cargas diferentes.
+    </p>
+
+    <p class="lead">
+      Este guia mostra a execução, a alavanca que explica a fama dupla
+      e o lugar do bom-dia na família das dobradiças de quadril.
+    </p>
+
+    <div class="prose">
+      <h2>O que o bom-dia treina</h2>
+      <p>
+        A extensão de quadril com a barra nas costas: posterior de
+        coxa e glúteo como motores, e os eretores da espinha — a
+        musculatura que corre ao longo da coluna — trabalhando como em
+        nenhum outro acessório, porque a barra no trapézio cria a
+        alavanca mais longa da academia.
+      </p>
+
+      <p>
+        É o terceiro membro da família que o
+        <a href="/musculacao/stiff-como-fazer/">stiff</a> e o
+        <a href="/musculacao/levantamento-terra-romeno-como-fazer/">terra
+        romeno</a> formam — mesmo padrão de dobradiça, carga em outro
+        lugar. No
+        <a href="/musculacao/treino-de-posterior-de-coxa/">treino de
+        posterior</a>, ele entra como a variação que mais soma lombar
+        ao pacote.
+      </p>
+
+      <h2>A execução, passo a passo</h2>
+      <p>
+        <strong>A barra.</strong> Nas costas, na mesma posição do
+        agachamento — apoiada no trapézio, nunca no pescoço —, com as
+        escápulas firmes criando a prateleira.
+      </p>
+
+      <p>
+        <strong>A base.</strong> Pés na largura do quadril, joelhos
+        levemente dobrados e fixos nesse ângulo — como no romeno, o
+        ângulo escolhido não muda durante a série.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Empurre o quadril para trás e
+        deixe o tronco inclinar à frente como consequência, em 2 a 3
+        segundos, com a coluna neutra da nuca ao sacro. O nome vem
+        daqui: o gesto lembra uma reverência de cumprimento.
+      </p>
+
+      <p>
+        <strong>O limite.</strong> Tronco perto do paralelo com o chão
+        — ou antes, onde a lombar começar a pedir arredondamento. O
+        alongamento do posterior avisa quando chega.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Quadril à frente até o corpo
+        voltar à vertical, glúteo fechando o movimento — sem
+        hiperextender a lombar no topo.
+      </p>
+
+      <h2>A física que explica a fama dupla</h2>
+      <p>
+        No stiff, a barra pendura das mãos e desce junto com o tronco,
+        encurtando a alavanca. No bom-dia, a barra mora nas costas: a
+        cada grau de inclinação, a distância entre ela e o quadril
+        cresce — e o torque sobre a lombar cresce junto. O mesmo peso
+        que é morno no agachamento vira enorme no bom-dia.
+      </p>
+
+      <p>
+        Essa é a chave do exercício inteiro: <strong>ele se faz
+        leve</strong>. Com 25% a 50% da carga do agachamento, os
+        eretores recebem estímulo de sobra. Quem entende isso ganha
+        uma lombar blindada; quem ignora vira a estatística que
+        alimenta a má fama.
+      </p>
+
+      <h2>Os erros que sustentam a lenda ruim</h2>
+      <p>
+        <strong>Carga de agachamento.</strong> O erro-mãe. A barra que
+        você agacha não é a barra que você reverencia — nem perto.
+      </p>
+
+      <p>
+        <strong>Arredondar a lombar.</strong> Sob alavanca longa, o
+        arredondamento é o pior cenário da academia. Coluna neutra é o
+        contrato inegociável do exercício.
+      </p>
+
+      <p>
+        <strong>Dobrar os joelhos na descida.</strong> Virar
+        mini-agachamento alivia o posterior e mata o propósito. O
+        ângulo do joelho congela no início.
+      </p>
+
+      <p>
+        <strong>Pressa na amplitude.</strong> Forçar o paralelo no
+        primeiro mês, antes de o posterior alongar. O fundo cresce com
+        as semanas — não com a vontade.
+      </p>
+
+      <p>
+        <strong>Fazer cansado.</strong> Bom-dia no fim do treino, com
+        eretores exaustos do terra e do agachamento, é pedir para a
+        técnica ceder. Ele rende no começo ou no meio da sessão.
+      </p>
+
+      <h2>Séries, repetições e onde encaixar</h2>
+      <p>
+        De 2 a 3 séries de 8 a 12 repetições, uma a duas vezes por
+        semana, com progressão paciente — meio quilo bem-feito por
+        semana constrói mais que qualquer salto. No programa, ele
+        reveza com stiff e romeno como a dobradiça acessória do dia de
+        pernas ou de posterior, e brilha nos ciclos de fortalecimento
+        de lombar de quem agacha e puxa pesado.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        O bom-dia é o exercício em que o erro custa mais caro e o
+        acerto paga melhor — exatamente o perfil de movimento que não
+        se aprende sozinho no espelho. A coluna neutra sob alavanca
+        longa é sensação que precisa ser calibrada de fora.
+      </p>
+
+      <p>
+        Um personal trainer ensina a dobradiça na ordem certa — romeno
+        primeiro, bom-dia depois —, trava a carga na fração adequada e
+        enxerga o milímetro de arredondamento que você não sente. No
+        exercício da reverência, a humildade é literalmente a técnica.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o bom-dia" />
+
+    <WhatsAppCta tema="hipertrofia" />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

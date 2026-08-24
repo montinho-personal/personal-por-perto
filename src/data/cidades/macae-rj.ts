@@ -88,12 +88,29 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do Petróleo e cidade de renda alta, Macaé tem orla equipada e cultura esportiva forte. Um personal trainer ajuda a aproveitar a Praia dos Cavaleiros e a Lagoa de Imboassica com método, conciliando a rotina exigente do setor offshore com treino consistente.',
 
-  vizinhas: ['cabo-frio-rj', 'campos-dos-goytacazes-rj', 'rio-de-janeiro-rj'],
+  vizinhas: ['rio-das-ostras-rj', 'casimiro-de-abreu-rj', 'campos-dos-goytacazes-rj'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Macaé?',
+      resposta:
+        'O eixo clássico vai da Praia de Imbetiba à Lagoa de Imboassica — o mesmo percurso da 10 Milhas de Macaé, a prova que reúne milhares de corredores no meio do ano. A orla urbana, o calçadão dos Cavaleiros e o Parque de Coroa Grande completam o circuito, sempre nas janelas de manhã cedo e fim de tarde por causa do calor úmido.',
+    },
+    {
+      pergunta: 'Personal trainer atende quem trabalha embarcado na indústria do petróleo?',
+      resposta:
+        'É a especialidade da capital nacional do petróleo: escalas 14x14 e 21x21 pedem planos em blocos — treino presencial intensivo nas semanas em terra e planilha para a academia da plataforma nas semanas embarcado. Os profissionais locais dominam esse formato, e a consultoria online fecha o ciclo. Avaliações periódicas garantem que o embarque não desfaça o progresso do desembarque.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Macaé?',
+      resposta:
+        'A renda do petróleo sustenta valores acima da média do interior fluminense, especialmente na Praia dos Cavaleiros e na Glória — mais próximos dos praticados na capital. Pacotes em blocos para embarcados, treino em dupla e horários fora de pico são as formas comuns de otimizar o custo. A alta rotatividade de profissionais que chegam e saem da cidade mantém o mercado competitivo.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Macaé', url: 'https://cidades.ibge.gov.br/brasil/rj/macae/panorama' },
     { nome: 'Prefeitura de Macaé', url: 'https://macae.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-24',
 };

@@ -89,12 +89,29 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do oeste catarinense com IDHM alto e mercado fitness maduro, Chapecó tem boa estrutura para treinar o ano todo. Um personal trainer ajuda a periodizar o treino conforme as estações — do verão quente ao inverno rigoroso — e a aproveitar parques como o Ecoparque.',
 
-  vizinhas: ['florianopolis-sc', 'criciuma-sc', 'itajai-sc'],
+  vizinhas: ['xanxere-sc', 'concordia-sc', 'erechim-rs'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Chapecó?',
+      resposta:
+        'O Ecoparque é o coração verde da cidade — pistas, trilhas e o palco de treinos abertos e corridas do calendário, do Circuito Unimed às provas beneficentes. As avenidas largas do centro planejado completam o circuito urbano, e o trail run cresce forte na região, com provas que vão de 5 km a ultras de 45 km nos morros do oeste.',
+    },
+    {
+      pergunta: 'Personal trainer atende quem trabalha em turnos nos frigoríficos de Chapecó?',
+      resposta:
+        'Sim — a capital do oeste vive de agroindústria, e as escalas dos frigoríficos e das indústrias moldam a agenda dos profissionais locais: treinos no meio da manhã, início da tarde e contraturno são rotina. Muitos montam o plano quinzenal junto com a escala do aluno, e o formato online cobre as semanas viradas.',
+    },
+    {
+      pergunta: 'Como é treinar no inverno de Chapecó?',
+      resposta:
+        'O oeste catarinense tem inverno de verdade: madrugadas perto de zero, geada e tardes que não passam dos 15 °C. O treino ao ar livre migra para o fim da manhã e o início da tarde, o aquecimento alonga e as academias cobertas lotam — reservar horário com o personal nos meses frios é sabedoria local. No verão, o jogo inverte: calor forte e treino cedo.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Chapecó', url: 'https://cidades.ibge.gov.br/brasil/sc/chapeco/panorama' },
     { nome: 'Prefeitura de Chapecó', url: 'https://www.chapeco.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-24',
 };

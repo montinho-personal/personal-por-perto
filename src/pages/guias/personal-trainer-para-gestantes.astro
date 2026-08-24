@@ -1,0 +1,283 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-para-mulheres/',
+    titulo: 'Personal trainer para mulheres',
+    descricao: 'O guia geral do treino feminino — antes, durante e depois.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física: o que é e o que mede',
+    descricao: 'O ponto de partida — ainda mais importante na gestação.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/voltar-a-treinar-depois-de-parar/',
+    titulo: 'Voltar a treinar depois de parar',
+    descricao: 'A rampa que também vale para o pós-parto liberado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/personal-trainer-para-gestantes';
+const atualizadoEm = '2026-08-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal para gestantes', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Grávida pode fazer musculação?',
+    resposta:
+      'Na maioria das gestações sem complicações, pode — e as diretrizes internacionais recomendam exercício regular na gravidez pelos benefícios documentados: menos dor lombar, melhor controle de peso e glicemia, preparo para o parto e recuperação mais rápida. A condição inegociável: liberação do obstetra antes de começar (ou continuar), reavaliada ao longo dos trimestres. Cada gestação é única, e quem autoriza e delimita o treino é o médico que a acompanha.',
+  },
+  {
+    pergunta: 'Quem já treinava pode continuar? E quem nunca treinou pode começar?',
+    resposta:
+      'Com liberação médica, os dois cenários funcionam — com rampas diferentes. Quem já treinava costuma manter boa parte da rotina no primeiro trimestre, com adaptações progressivas dali em diante; quem nunca treinou pode começar na gestação (o exercício é recomendado, não proibido, para iniciantes), partindo de cargas leves, movimentos simples e supervisão próxima. O que não muda: intensidade moderada como regra e a máxima de nunca treinar até a exaustão.',
+  },
+  {
+    pergunta: 'O que evitar no treino durante a gravidez?',
+    resposta:
+      'As listas variam por trimestre e por gestação, mas os consensos incluem: exercícios com risco de queda ou impacto no abdômen, esportes de contato, manobras de Valsalva (prender o ar sob esforço máximo), cargas máximas, ambientes muito quentes e, conforme a gestação avança, exercícios deitada de costas por períodos prolongados. Abdominais tradicionais dão lugar ao trabalho de core adaptado. A lista definitiva, para o seu caso, vem do obstetra e orienta o personal.',
+  },
+  {
+    pergunta: 'Quais os sinais para parar o treino imediatamente?',
+    resposta:
+      'Sangramento, perda de líquido, contrações regulares, tontura ou desmaio, falta de ar antes do esforço, dor no peito, dor de cabeça forte, inchaço súbito ou diminuição dos movimentos do bebê são sinais de interromper na hora e contatar o obstetra. Um bom personal de gestantes conhece essa lista de cor, monta o treino longe dos limites e trata qualquer sinal com a seriedade que merece — essa vigilância é parte do serviço.',
+  },
+  {
+    pergunta: 'Quando dá para voltar a treinar depois do parto?',
+    resposta:
+      'Quando o obstetra liberar — os prazos típicos giram em torno de semanas após parto normal e um pouco mais após cesárea, mas variam caso a caso. A volta começa por caminhada, assoalho pélvico e core profundo, com atenção à diástase abdominal, e progride como todo recomeço: por baixo, com paciência. O acompanhamento profissional no pós-parto encurta o caminho de volta com segurança — nunca contra o calendário do médico.',
+  },
+];
+
+const title = 'Personal trainer para gestantes: o guia';
+const description =
+  'Treino na gravidez: o que as diretrizes recomendam, a liberação do obstetra, o que muda por trimestre, sinais de alerta e como o personal adapta tudo com segurança.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Personal trainer para gestantes: treinar bem os meses que mais importam</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucas fases da vida acumulam tanto conselho contraditório:
+      "não pode pegar peso", "tem que repousar", "exercício faz bem",
+      "cuidado com tudo". No meio do fogo cruzado, a ciência é mais
+      clara do que parece — e mais generosa com o treino do que as
+      avós imaginam.
+    </p>
+
+    <p class="lead">
+      Este guia organiza o consenso: o que o exercício entrega na
+      gestação, a regra de ouro da liberação médica, o que muda por
+      trimestre e o papel do personal nessa fase.
+    </p>
+
+    <div class="prose">
+      <h2>Antes de tudo: a regra que não se negocia</h2>
+      <p>
+        Todo treino de gestante começa no consultório: é o
+        <strong>obstetra</strong> quem libera, delimita e reavalia o
+        exercício ao longo da gravidez. Gestações com complicações —
+        e a lista de condições é individual — podem ter restrições
+        específicas ou contraindicação, e só o médico que acompanha o
+        caso sabe dizer. O personal trabalha <em>dentro</em> dessa
+        moldura, nunca no lugar dela.
+      </p>
+
+      <p>
+        Com a liberação em mãos, o cenário muda de "pode treinar?"
+        para "como treinar bem" — e aí as evidências são animadoras.
+      </p>
+
+      <h2>O que o treino entrega na gestação</h2>
+      <p>
+        As diretrizes internacionais recomendam atividade física
+        regular na gravidez sem complicações — em geral 150 minutos
+        semanais de intensidade moderada, incluindo trabalho de força
+        — pelos benefícios documentados: <strong>menos dor
+        lombar</strong> (a queixa número um da gestação),
+        <strong>melhor controle de peso e de glicemia</strong>,
+        <strong>humor e sono melhores</strong>, <strong>preparo
+        físico para o parto</strong> — que é, afinal, um evento
+        atlético — e <strong>recuperação pós-parto mais
+        rápida</strong>.
+      </p>
+
+      <p>
+        A musculação entra como protagonista: força de pernas e
+        glúteos para carregar o peso que cresce, costas fortes para a
+        postura que muda, core e assoalho pélvico preparados para o
+        que vem.
+      </p>
+
+      <h2>O que muda por trimestre</h2>
+      <p>
+        <strong>Primeiro trimestre.</strong> Para quem já treinava,
+        pouca mudança estrutural — o ajuste é de disposição: enjoos e
+        sono pedem sessões flexíveis. Quem está começando parte do
+        básico com supervisão.
+      </p>
+
+      <p>
+        <strong>Segundo trimestre.</strong> O centro de gravidade
+        migra e as adaptações entram: exercícios deitada de costas por
+        tempo prolongado saem de cena, o equilíbrio pede apoios e
+        máquinas, abdominais tradicionais dão lugar ao core adaptado.
+      </p>
+
+      <p>
+        <strong>Terceiro trimestre.</strong> Volume e amplitude se
+        ajustam ao corpo da reta final: mais máquinas e apoios, foco
+        em mobilidade, assoalho pélvico e manutenção — chegar bem ao
+        parto é a meta, não o recorde.
+      </p>
+
+      <h2>As regras práticas de toda a gestação</h2>
+      <p>
+        <strong>Intensidade moderada</strong> — a régua clássica é o
+        teste da fala: dá para conversar durante o esforço.
+        <strong>Sem Valsalva</strong> — prender o ar sob esforço
+        máximo fica para depois. <strong>Sem risco de queda ou
+        impacto</strong> no abdômen. <strong>Calor sob
+        controle</strong> — hidratação constante e ambientes
+        ventilados. <strong>Exaustão nunca</strong> — a série termina
+        com folga, sempre.
+      </p>
+
+      <p>
+        E a lista de sinais de alerta — sangramento, contrações,
+        tontura, falta de ar desproporcional — interrompe o treino na
+        hora e aciona o obstetra. Um bom profissional a conhece de
+        cor.
+      </p>
+
+      <h2>O pós-parto: a volta que também tem regras</h2>
+      <p>
+        A liberação médica reabre o jogo — nos prazos do obstetra,
+        não do calendário alheio. A volta começa por caminhada,
+        assoalho pélvico e core profundo, com atenção à diástase, e
+        segue a lógica de todo
+        <a href="/musculacao/voltar-a-treinar-depois-de-parar/">recomeço
+        bem-feito</a>: por baixo, progressivo, sem heroísmo. O corpo
+        que gestou e pariu merece a mesma paciência que construiu o
+        bebê.
+      </p>
+
+      <h2>Como o personal trabalha com gestantes</h2>
+      <p>
+        O atendimento a gestantes é uma especialização de verdade:
+        <a href="/guias/avaliacao-fisica/">avaliação</a> adaptada,
+        comunicação com o obstetra quando necessário, treino
+        remontado a cada fase e a vigilância dos sinais que pedem
+        pausa. O formato costuma ser presencial — em casa, no
+        condomínio ou no estúdio —, com a frequência ajustada à
+        disposição de cada semana.
+      </p>
+
+      <p>
+        E há o valor que não aparece na planilha: a segurança de ter
+        alguém ao lado em cada sessão, numa fase em que treinar
+        sozinha gera mais dúvida do que resultado.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Na gestação, a resposta é quase tautológica: é a fase da vida
+        em que o acompanhamento deixa de ser aceleração e vira
+        segurança. O treino certo muda a cada trimestre — às vezes a
+        cada semana — e a régua entre o estímulo que faz bem e o
+        esforço que passa do ponto é fina demais para o olho de
+        dentro.
+      </p>
+
+      <p>
+        Um personal experiente em gestantes trabalha em dupla com o
+        obstetra: ele define os limites, ela ou ele constrói o melhor
+        treino dentro deles. Nove meses bem treinados — e um pós-parto
+        bem recomeçado — são dos melhores investimentos que uma mãe
+        pode fazer em si mesma.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino na gestação" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

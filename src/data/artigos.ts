@@ -120,6 +120,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Personal trainer para quem trabalha sentado' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-a-noite/', titulo: 'Personal trainer para quem trabalha à noite' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-gestantes/', titulo: 'Personal trainer para gestantes: o guia' },
 
   // Musculação
   { categoria: 'Musculação', url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino de musculação para iniciantes: como começar' },
@@ -207,6 +208,10 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/supino-inclinado-como-fazer/', titulo: 'Supino inclinado: como fazer e quando usar' },
   { categoria: 'Musculação', url: '/musculacao/encolhimento-como-fazer/', titulo: 'Encolhimento de ombros: como fazer certo' },
   { categoria: 'Musculação', url: '/musculacao/supino-fechado-como-fazer/', titulo: 'Supino fechado: como fazer e os erros comuns' },
+  { categoria: 'Musculação', url: '/musculacao/bom-dia-como-fazer/', titulo: 'Bom-dia (good morning): como fazer certo' },
+  { categoria: 'Musculação', url: '/musculacao/pullover-como-fazer/', titulo: 'Pullover: como fazer e o que ele treina' },
+  { categoria: 'Musculação', url: '/musculacao/remada-cavalinho-como-fazer/', titulo: 'Remada cavalinho: como fazer e os erros' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-na-menopausa/', titulo: 'Musculação na menopausa: por onde começar' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },

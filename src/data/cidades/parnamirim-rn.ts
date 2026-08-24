@@ -88,12 +88,29 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade que mais cresce no RN e conurbada a Natal, Parnamirim une praias e academias modernas em Nova Parnamirim. Um personal trainer ajuda a aproveitar as orlas de Pirangi e Cotovelo com método, ajustando horários e hidratação ao calor litorâneo.',
 
-  vizinhas: ['natal-rn', 'mossoro-rn'],
+  vizinhas: ['natal-rn', 'macaiba-rn', 'nisia-floresta-rn'],
 
+  faqsExtra: [
+    {
+      pergunta: 'Onde treinar ao ar livre em Parnamirim?',
+      resposta:
+        'O Parque Aluízio Alves é a pista oficial — anel de caminhada e corrida, academia ao ar livre e o palco das provas locais —, seguido das ruas planas de Nova Parnamirim e da orla de Pirangi, com o maior cajueiro do mundo de vizinho. O calendário tem tradição: a Corrida do Trabalhador passa das nove edições e a Corrida Histórica larga em frente à Base Aérea.',
+    },
+    {
+      pergunta: 'Personal trainer atende em Nova Parnamirim e nos condomínios?',
+      resposta:
+        'Sim — Nova Parnamirim é um dos maiores adensamentos residenciais do estado, colado em Natal, e o atendimento em condomínio e a domicílio é o formato que mais cresce. Muitos moradores trabalham em Natal e treinam no próprio bairro pela economia de tempo na BR-101; o personal que atende os dois lados da divisa é figura comum.',
+    },
+    {
+      pergunta: 'Quanto custa personal trainer em Parnamirim em relação a Natal?',
+      resposta:
+        'Levemente menos nos bairros tradicionais e valores parecidos em Nova Parnamirim, que na prática funciona como extensão da capital. Sessões avulsas acessíveis nas academias de bairro, pacotes mensais competitivos nos condomínios e treino em dupla como estratégia comum de custo. A praia de Pirangi puxa a demanda sazonal no verão.',
+    },
+  ],
   fontes: [
     { nome: 'IBGE Cidades — Parnamirim', url: 'https://cidades.ibge.gov.br/brasil/rn/parnamirim/panorama' },
     { nome: 'Prefeitura de Parnamirim', url: 'https://www.parnamirim.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-24',
 };

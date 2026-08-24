@@ -1,0 +1,264 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/musculacao-depois-dos-40/',
+    titulo: 'Musculação depois dos 40: o guia completo',
+    descricao: 'O quadro geral da força na maturidade — para todos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/musculacao-feminina-mitos/',
+    titulo: 'Musculação feminina: os mitos que atrasam',
+    descricao: 'As lendas que afastam mulheres da barra — desmontadas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-forca/',
+    titulo: 'Treino de força: como funciona e como montar',
+    descricao: 'O método que vira prioridade nesta fase.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/musculacao-na-menopausa';
+const atualizadoEm = '2026-08-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Musculação na menopausa', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que a musculação vira prioridade na menopausa?',
+    resposta:
+      'Porque a queda do estrogênio acelera exatamente o que o treino de força combate: a perda de massa muscular e de densidade óssea ganha velocidade a partir da transição, e a osteoporose se torna o risco feminino por excelência. O estímulo mecânico da musculação é dos poucos sinais que dizem ao osso e ao músculo para ficarem — nenhuma caminhada, por melhor que seja, substitui esse papel. É a fase em que a barra deixa de ser estética e vira saúde estrutural.',
+  },
+  {
+    pergunta: 'Musculação ajuda nos sintomas da menopausa?',
+    resposta:
+      'As evidências apontam benefícios reais em várias frentes: sono, humor, disposição, controle do peso e da circunferência abdominal — a gordura que migra para a região central nesta fase. Sobre ondas de calor, os resultados são mistos: algumas mulheres relatam melhora, outras não notam diferença. O que o treino não é: tratamento hormonal. Reposição e manejo de sintomas intensos são conversa com ginecologista — o treino soma, não substitui.',
+  },
+  {
+    pergunta: 'Nunca treinei. Dá para começar na menopausa?',
+    resposta:
+      'Dá — e os estudos com mulheres que começam força depois dos 50 mostram ganhos expressivos de massa, força e densidade óssea em qualquer idade de partida. O caminho é o de todo bom começo: avaliação inicial (incluindo liberação médica se houver condições de saúde), técnica antes de carga, progressão paciente. Começar na menopausa não é tarde; é exatamente a hora em que cada quilo de músculo passa a valer mais.',
+  },
+  {
+    pergunta: 'Que tipo de treino funciona melhor nesta fase?',
+    resposta:
+      'Treino de força progressivo, 2 a 4 vezes por semana, com exercícios compostos (agachar, puxar, empurrar, dobradiça) e cargas que desafiem de verdade — o estímulo ósseo pede intensidade, não repetições infinitas com pesinho. Somam-se exercícios de impacto moderado quando as articulações permitem (saltitos, subida de degrau), equilíbrio para prevenção de quedas e o cardio de sempre para o coração. Proteína adequada fecha a conta.',
+  },
+  {
+    pergunta: 'Musculação previne osteoporose?',
+    resposta:
+      'O treino de força com carga progressiva está entre as intervenções mais bem documentadas para manter e, em alguns casos, aumentar a densidade óssea na pós-menopausa — coluna e fêmur incluídos. Prevenir de forma absoluta, nenhuma intervenção garante: genética, histórico e saúde hormonal pesam, e o diagnóstico e tratamento da osteoporose são médicos (densitometria, ginecologista ou endocrinologista). O papel do treino é ser o melhor aliado não farmacológico disponível — comprovadamente.',
+  },
+];
+
+const title = 'Musculação na menopausa: por onde começar';
+const description =
+  'Musculação na menopausa: por que a força vira prioridade, o efeito em ossos, músculo e sintomas, como começar do zero depois dos 50 e o que é assunto médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Musculação na menopausa: a fase em que a força vira prioridade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe um momento na vida da mulher em que o treino de força
+      muda de categoria: deixa de ser sobre estética ou disposição e
+      vira infraestrutura — osso, músculo, equilíbrio, independência.
+      Esse momento é a menopausa, e quase ninguém avisa com a clareza
+      que o assunto merece.
+    </p>
+
+    <p class="lead">
+      Este guia explica o que muda no corpo, o que a musculação
+      comprovadamente faz por essa fase — e o que é assunto de
+      consultório, não de academia.
+    </p>
+
+    <div class="prose">
+      <h2>O que muda no corpo — e por que o treino responde</h2>
+      <p>
+        A queda do estrogênio na transição menopausal acelera dois
+        processos silenciosos: a perda de massa muscular, que já vinha
+        lenta desde os 30, engata outra marcha; e a densidade óssea
+        entra na década de maior perda da vida — a janela em que a
+        osteoporose se instala. Somam-se a redistribuição de gordura
+        para o abdômen, o sono pior e a disposição em montanha-russa.
+      </p>
+
+      <p>
+        A musculação é a contramedida mais direta que existe: o
+        estímulo mecânico da carga é o sinal que músculo e osso
+        entendem. É o mesmo princípio do
+        <a href="/musculacao/musculacao-depois-dos-40/">treino depois
+        dos 40</a> — com a urgência multiplicada pela fase.
+      </p>
+
+      <h2>O que as evidências mostram</h2>
+      <p>
+        Em mulheres na pós-menopausa, o treino de força progressivo
+        está associado a <strong>manutenção e ganho de massa
+        muscular</strong> em qualquer idade de início;
+        <strong>preservação da densidade óssea</strong> em coluna e
+        fêmur — com protocolos de carga alta figurando entre as
+        intervenções não farmacológicas mais eficazes;
+        <strong>melhor composição corporal</strong>, com efeito na
+        gordura abdominal; e <strong>sono, humor e disposição</strong>
+        melhores. Sobre ondas de calor, os resultados são mistos —
+        honestidade obriga.
+      </p>
+
+      <p>
+        O que o treino não faz: repor hormônio, tratar osteoporose
+        instalada sozinho ou substituir o acompanhamento
+        ginecológico. A divisão é limpa — sintomas intensos, reposição
+        hormonal e diagnósticos são conversa com ginecologista ou
+        endocrinologista; a parte do movimento, essa é da academia.
+      </p>
+
+      <h2>O treino desta fase, na prática</h2>
+      <p>
+        <strong>Força como espinha dorsal.</strong> De 2 a 4 sessões
+        semanais de
+        <a href="/musculacao/treino-de-forca/">treino de força</a>
+        com os padrões compostos — agachar, dobradiça, empurrar,
+        puxar — e progressão de carga de verdade: o osso responde a
+        desafio, não a pesinho de enfeite.
+      </p>
+
+      <p>
+        <strong>Impacto na dose certa.</strong> Quando joelhos e
+        histórico permitem, impacto moderado — subir degrau, saltitos,
+        caminhada vigorosa — soma estímulo ósseo que a máquina não dá.
+      </p>
+
+      <p>
+        <strong>Equilíbrio e potência.</strong> Exercícios
+        unilaterais e movimentos rápidos controlados treinam o
+        reflexo que previne a queda — porque osso forte importa, e não
+        cair importa mais ainda.
+      </p>
+
+      <p>
+        <strong>Proteína e recuperação.</strong> A síntese muscular
+        fica menos sensível com a idade: proteína adequada em cada
+        refeição e sono cuidado deixam o mesmo treino render mais.
+      </p>
+
+      <h2>Começando do zero depois dos 50</h2>
+      <p>
+        A melhor notícia do assunto: os estudos com iniciantes tardias
+        mostram que o corpo responde em qualquer década. O roteiro é o
+        do bom começo — avaliação física, liberação médica quando há
+        condições de saúde na história, técnica antes de carga e
+        progressão paciente —, com um detalhe a favor: nesta fase, a
+        motivação costuma ser mais sólida que aos 20, porque o porquê
+        é concreto.
+      </p>
+
+      <p>
+        E os mitos que afastaram tantas mulheres da barra — "vai
+        masculinizar", "é perigoso", "não é para a minha idade" — já
+        foram desmontados um a um no guia de
+        <a href="/musculacao/musculacao-feminina-mitos/">mitos da
+        musculação feminina</a>. Na menopausa, eles custam mais caro
+        do que nunca.
+      </p>
+
+      <h2>Quando vale ter alguém olhando</h2>
+      <p>
+        Esta é a fase em que o treino precisa ser ao mesmo tempo mais
+        desafiador — o osso pede intensidade — e mais bem calibrado:
+        articulações, histórico e sintomas variam semana a semana. É
+        exatamente o tipo de equação que se resolve melhor em dupla.
+      </p>
+
+      <p>
+        Um personal trainer monta a progressão que desafia sem
+        atropelar, ajusta o treino aos dias difíceis sem perder o fio
+        e transforma a recomendação genérica — "faça musculação" — no
+        programa específico que a sua década pede. A menopausa é o
+        momento certo de levar a força a sério; companhia certa faz a
+        seriedade durar.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre musculação na menopausa" />
+
+    <WhatsAppCta tema="geral" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
