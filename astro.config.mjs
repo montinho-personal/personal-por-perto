@@ -24,7 +24,11 @@ const dataRevisao = (iso) => new Date(`${iso}T12:00:00Z`);
 
 export default defineConfig({
   site: SITE,
-  trailingSlash: 'ignore',
+  // Padrão oficial de URL: SEMPRE com barra final. Em produção, o host
+  // (Vercel) redireciona 308 a variante sem barra — ver vercel.json.
+  // 'always' garante o mesmo comportamento no dev/preview e impede
+  // regressões de links internos sem barra.
+  trailingSlash: 'always',
   build: {
     inlineStylesheets: 'auto',
     // 'directory' gera /pagina/index.html — URLs limpas em qualquer host
