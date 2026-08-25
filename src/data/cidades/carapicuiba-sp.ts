@@ -110,7 +110,15 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3510609' },
   ],
-  atualizadoEm: '2026-07-31',
+  fotoCorpo: {
+    src: '/montinho/personal-trainer-aldeia-da-serra.webp',
+    alt: 'Antes e depois do Montinho Personal: da adolescência com sobrepeso ao físico definido no espelho da academia — personal trainer destacado pelo portal para quem treina em Carapicuíba',
+    legenda:
+      'Antes e depois reais do Montinho Personal, profissional destacado pelo portal na região oeste da Grande São Paulo, que inclui Carapicuíba.',
+    w: 1200,
+    h: 1200,
+  },
+  atualizadoEm: '2026-08-25',
   capaArte: {
     src: '/capas-cidade/carapicuiba-sp.webp',
     w: 1200,

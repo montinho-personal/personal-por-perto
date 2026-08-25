@@ -114,6 +114,22 @@ export interface Cidade {
    * padrão no hero, na imagem Open Graph e no sitemap de imagens. Usada em
    * cidades priorizadas que receberam criativo próprio com cartão-postal local.
    */
+  /**
+   * Foto real do profissional destacado, exibida no corpo do artigo (antes da
+   * seção "O mercado de personal trainers"). Nunca substitui a capa, o
+   * Open Graph nem o sitemap de imagens. Dimensões reais do WebP em px.
+   */
+  fotoCorpo?: {
+    /** Caminho do WebP (a partir de /public). */
+    src: string;
+    /** ALT descritivo, em português, do que a foto mostra. */
+    alt: string;
+    /** Legenda editorial exibida sob a foto. */
+    legenda: string;
+    w: number;
+    h: number;
+  };
+
   capaArte?: {
     /** Caminho do WebP (a partir de /public). */
     src: string;

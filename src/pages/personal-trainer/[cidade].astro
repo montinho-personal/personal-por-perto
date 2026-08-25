@@ -313,6 +313,21 @@ const objetivoDesc: Record<string, string> = {
             </p>
           )
         }
+        {
+          cidade.fotoCorpo && (
+            <figure class="foto-personal foto-corpo">
+              <img
+                src={cidade.fotoCorpo.src}
+                alt={cidade.fotoCorpo.alt}
+                width={cidade.fotoCorpo.w}
+                height={cidade.fotoCorpo.h}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>{cidade.fotoCorpo.legenda}</figcaption>
+            </figure>
+          )
+        }
       </section>
 
       <section id="mercado">
@@ -966,6 +981,10 @@ const objetivoDesc: Record<string, string> = {
   .fotos-grid .foto-personal {
     margin: 0;
     max-width: none;
+  }
+  /* Foto real no corpo do artigo (campo fotoCorpo da cidade) */
+  .foto-corpo {
+    max-width: 520px;
   }
   .foto-personal img {
     display: block;

@@ -108,5 +108,13 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — São Roque', url: 'https://cidades.ibge.gov.br/brasil/sp/sao-roque/panorama' },
     { nome: 'Prefeitura de São Roque', url: 'https://www.saoroque.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  fotoCorpo: {
+    src: '/montinho/cotia-sp-foto.webp',
+    alt: 'Montinho Personal de costas em pose de duplo bíceps diante do espelho da academia, mostrando as costas e os ombros definidos — personal trainer destacado pelo portal para quem treina em São Roque',
+    legenda:
+      'Constância que aparece: o Montinho Personal, profissional destacado pelo portal, é referência de método para quem treina em São Roque.',
+    w: 739,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };

@@ -117,5 +117,13 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Embu das Artes', url: 'https://cidadeembudasartes.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  fotoCorpo: {
+    src: '/montinho/embu-das-artes-sp-foto.webp',
+    alt: 'Montinho Personal de regata cinza em selfie no espelho, na área de halteres da academia — personal trainer destacado pelo portal para quem treina em Embu das Artes',
+    legenda:
+      'Treino em dia na área de halteres: a vivência prática que o Montinho Personal, destacado pelo portal, leva a quem treina em Embu das Artes.',
+    w: 901,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };

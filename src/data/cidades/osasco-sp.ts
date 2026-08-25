@@ -127,5 +127,13 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Osasco: um plano sob medida para o seu objetivo, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  fotoCorpo: {
+    src: '/montinho/osasco-sp-foto.webp',
+    alt: 'Antes e depois do Montinho Personal: à esquerda, selfie no espelho com sobrepeso; à direita, sem camisa e com o físico definido — personal trainer destacado pelo portal para quem treina em Osasco',
+    legenda:
+      'Antes e depois reais do Montinho Personal: a transformação que virou método e serve de referência para quem busca personal trainer em Osasco.',
+    w: 1600,
+    h: 1497,
+  },
+  atualizadoEm: '2026-08-25',
 };
