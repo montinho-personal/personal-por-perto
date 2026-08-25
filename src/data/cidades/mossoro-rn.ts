@@ -112,10 +112,17 @@ export const cidade: Cidade = {
         'Sim — como polo do oeste do estado, Mossoró atrai alunos de Areia Branca, Baraúna, Açu e Grossos. O atendimento presencial se concentra na cidade e nas praias próximas na temporada (Tibau e Areia Branca), e a consultoria online cobre o interior, com planilha semanal e ajustes a distância.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/mossoro-rn.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Mossoró (RN) em arte que reúne o casario histórico do centro, as palmeiras da cidade e o treino de força com halteres e kettlebell — Personal por Perto',
+    legenda: 'Treino inteligente para resultados reais em Mossoró: musculação com propósito e acompanhamento profissional no oeste potiguar.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Mossoró', url: 'https://cidades.ibge.gov.br/brasil/rn/mossoro/panorama' },
     { nome: 'Prefeitura de Mossoró', url: 'https://www.prefeiturademossoro.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-08-25',
 };

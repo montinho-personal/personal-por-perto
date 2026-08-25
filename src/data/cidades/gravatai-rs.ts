@@ -107,10 +107,17 @@ export const cidade: Cidade = {
         'Em geral, 10% a 25% menos que nos bairros nobres da capital, com sessões avulsas e pacotes mensais mais acessíveis nos bairros e valores maiores no centro e nos condomínios novos. Quem trabalha em Porto Alegre e mora em Gravataí costuma treinar na própria cidade pela economia de tempo na freeway.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/gravatai-rs.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Gravataí (RS) em arte que reúne a Igreja Matriz Nossa Senhora dos Anjos, o casario do centro histórico e o treino de força com halteres e corda naval — Personal por Perto',
+    legenda: 'Treino inteligente para resultados reais em Gravataí: força, disciplina e constância com acompanhamento profissional na Região Metropolitana de Porto Alegre.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Gravataí', url: 'https://cidades.ibge.gov.br/brasil/rs/gravatai/panorama' },
     { nome: 'Prefeitura de Gravataí', url: 'https://www.gravatai.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-08-25',
 };
