@@ -112,10 +112,17 @@ export const cidade: Cidade = {
         'Sim — é um dos formatos mais comuns da cidade. Kobrasol e Campinas têm alta densidade de prédios com academia própria, e o atendimento em estúdio por sessão avulsa ou pacote é forte na região. Para quem mora nos bairros mais ao norte, o atendimento a domicílio e o formato online cobrem bem a rotina de quem cruza a BR-101 todos os dias.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/sao-jose-sc.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em São José (SC) em arte que reúne a Igreja Matriz, o Theatro Adolpho Mello, a Beira-Mar de São José e o treino de força — Personal por Perto',
+    legenda: 'Treino inteligente para resultados reais em São José: força, disciplina e constância com acompanhamento profissional na Grande Florianópolis.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — São José', url: 'https://cidades.ibge.gov.br/brasil/sc/sao-jose/panorama' },
     { nome: 'Prefeitura de São José', url: 'https://www.saojose.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-25',
 };

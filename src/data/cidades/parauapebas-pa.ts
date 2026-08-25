@@ -118,10 +118,17 @@ export const cidade: Cidade = {
         'Com preparo progressivo: o calendário local vai de provas de 5 km gratuitas, como as do Circuito Corrida Vale, a percursos de 10 km e 15 km. Um personal trainer monta a base de semanas — fortalecimento, progressão de volume e adaptação ao calor — para estrear sem lesão e evoluir de prova em prova.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/parauapebas-pa.webp',
+    w: 1200,
+    h: 800,
+    alt: 'Personal trainer em Parauapebas (PA) em arte com o portal de entrada da cidade, a bandeira do Pará, a serra dos Carajás ao fundo e a cachoeira, as palmeiras e a mineração que marcam a região — Personal por Perto',
+    legenda: 'Treino personalizado em Parauapebas: seu objetivo, meu compromisso — resultados reais com acompanhamento profissional na terra de Carajás.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Parauapebas', url: 'https://cidades.ibge.gov.br/brasil/pa/parauapebas/panorama' },
     { nome: 'Prefeitura de Parauapebas', url: 'https://www.parauapebas.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-25',
 };

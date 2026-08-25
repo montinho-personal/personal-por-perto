@@ -112,10 +112,17 @@ export const cidade: Cidade = {
         'De novembro a março, as pancadas diárias pedem plano B: academias cobertas nos três núcleos, treino em casa com acompanhamento e aproveitamento das janelas secas do dia. Nas cheias maiores do Tocantins, trechos da orla podem alagar — o personal ajusta o circuito para praças e ruas altas sem perder a rotina.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/maraba-pa.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Marabá (PA) em arte que reúne a ponte rodoferroviária sobre o rio Tocantins, a orla e o treino de força com corda naval — Personal por Perto',
+    legenda: 'Treino personalizado em Marabá: força, disciplina e constância com acompanhamento profissional no sudeste do Pará.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Marabá', url: 'https://cidades.ibge.gov.br/brasil/pa/maraba/panorama' },
     { nome: 'Prefeitura de Marabá', url: 'https://www.maraba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-25',
 };
