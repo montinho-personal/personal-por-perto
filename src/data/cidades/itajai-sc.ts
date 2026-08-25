@@ -114,10 +114,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['balneario-camboriu-sc', 'florianopolis-sc', 'joinville-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/itajai-sc.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Itajaí (SC) em arte que reúne o molhe da barra com o farol, a orla verticalizada ao fundo, o porto com navio porta-contêineres e cenas de treino com halteres — Personal por Perto',
+    legenda: 'Treino personalizado em Itajaí: foco, disciplina e constância com acompanhamento profissional na cidade do maior porto pesqueiro e de contêineres de Santa Catarina.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Itajaí', url: 'https://cidades.ibge.gov.br/brasil/sc/itajai/panorama' },
     { nome: 'Prefeitura de Itajaí', url: 'https://www.itajai.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-08-25',
 };
