@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/supino-como-fazer';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Supino: como fazer, variações e erros comuns';
 const description =
   'Guia do supino: técnica passo a passo, posição de escápulas e cotovelos, amplitude, variações (reto, inclinado, halteres, Smith), dor no ombro e quantas séries fazer.';
 
+const capa = '/capas-conteudo/supino-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta deitada no banco de supino reto com a trajetória da barra, pegada e controle — supino reto: como fazer, técnica, postura e controle da barra — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Supino: como fazer, variações e erros comuns</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O supino é o exercício mais disputado da academia na segunda-feira
