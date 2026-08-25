@@ -107,10 +107,17 @@ export const cidade: Cidade = {
         'Levemente menos nos bairros tradicionais e valores parecidos em Nova Parnamirim, que na prática funciona como extensão da capital. Sessões avulsas acessíveis nas academias de bairro, pacotes mensais competitivos nos condomínios e treino em dupla como estratégia comum de custo. A praia de Pirangi puxa a demanda sazonal no verão.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/parnamirim-rn.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Parnamirim (RN) em arte com o mapa do Rio Grande do Norte marcando a cidade, a orla ao fundo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Parnamirim: foco, disciplina e resultados com acompanhamento profissional na Grande Natal.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Parnamirim', url: 'https://cidades.ibge.gov.br/brasil/rn/parnamirim/panorama' },
     { nome: 'Prefeitura de Parnamirim', url: 'https://www.parnamirim.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-25',
 };

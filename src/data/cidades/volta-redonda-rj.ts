@@ -113,10 +113,17 @@ export const cidade: Cidade = {
         'Os valores ficam em geral 20% a 35% abaixo dos praticados na capital: sessões avulsas mais acessíveis nos bairros e pacotes mensais que variam com a frequência semanal. Vila Santa Cecília e Aterrado concentram os valores mais altos; o treino em dupla e os pacotes trimestrais são as formas mais comuns de reduzir o custo por sessão.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/volta-redonda-rj.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Volta Redonda (RJ) em arte com a silhueta do parque siderúrgico e das montanhas ao fundo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Volta Redonda: na Cidade do Aço, corpo em ação — força e movimento com acompanhamento profissional no sul fluminense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Volta Redonda', url: 'https://cidades.ibge.gov.br/brasil/rj/volta-redonda/panorama' },
     { nome: 'Prefeitura de Volta Redonda', url: 'https://www.voltaredonda.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-08-25',
 };

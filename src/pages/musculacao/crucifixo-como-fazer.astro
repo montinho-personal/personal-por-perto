@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/crucifixo-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Crucifixo: como fazer (reto, inclinado e máquina)';
 const description =
   'Crucifixo: a diferença para o supino, até onde descer, cotovelo fixo, as versões reto, inclinado e peck deck, e os erros que tiram o peitoral do movimento.';
 
+const capa = '/capas-conteudo/crucifixo-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: guia do crucifixo com halteres no banco, posição inicial e final, cotovelos levemente flexionados, escápulas apoiadas e abertura em arco sem exagerar — crucifixo: como fazer, técnica, postura e amplitude — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Crucifixo: o isolador que o supino não substitui</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Todo treino de peito gira em torno do supino — e é justo. Mas o

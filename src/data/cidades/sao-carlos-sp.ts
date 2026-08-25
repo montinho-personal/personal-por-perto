@@ -108,10 +108,17 @@ export const cidade: Cidade = {
         'O mercado tem duas faixas bem definidas: pacotes acessíveis voltados ao público universitário — treino em dupla e horários de baixa procura — e atendimento premium nos bairros residenciais e condomínios, com valores próximos aos de Araraquara. A consultoria online é forte, puxada pela população jovem e familiarizada com tecnologia.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/sao-carlos-sp.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em São Carlos (SP) em arte com a torre-mirante da cidade, o skyline ao fundo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em São Carlos: disciplina, constância e evolução com acompanhamento profissional na cidade universitária do interior paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — São Carlos', url: 'https://cidades.ibge.gov.br/brasil/sp/sao-carlos/panorama' },
     { nome: 'Prefeitura de São Carlos', url: 'https://www.saocarlos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-18',
+  atualizadoEm: '2026-08-25',
 };

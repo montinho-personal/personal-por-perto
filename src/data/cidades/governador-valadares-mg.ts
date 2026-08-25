@@ -108,10 +108,17 @@ export const cidade: Cidade = {
         'Os valores ficam abaixo dos praticados em Belo Horizonte — sessões avulsas mais acessíveis e pacotes mensais que variam com a frequência semanal. O centro e o bairro de Lourdes concentram os valores mais altos; treino em dupla e pacotes trimestrais são as formas mais comuns de reduzir o custo por sessão. A consultoria online atende quem está nos distritos e nas cidades menores da região.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/governador-valadares-mg.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Governador Valadares (MG) em arte com o Pico da Ibituruna ao fundo, o skyline da cidade e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Governador Valadares: movimento, força e resultado com acompanhamento profissional no leste mineiro, aos pés da Ibituruna.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Governador Valadares', url: 'https://cidades.ibge.gov.br/brasil/mg/governador-valadares/panorama' },
     { nome: 'Prefeitura de Governador Valadares', url: 'https://www.valadares.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-18',
+  atualizadoEm: '2026-08-25',
 };

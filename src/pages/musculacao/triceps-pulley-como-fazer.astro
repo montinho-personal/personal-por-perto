@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/triceps-pulley-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Tríceps pulley: como fazer e os erros comuns';
 const description =
   'Tríceps pulley: cotovelo parado, barra reta, V ou corda, a inclinação certa do tronco e os erros que tiram o tríceps do movimento. Com vídeo de execução.';
 
+const capa = '/capas-conteudo/triceps-pulley-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem executando tríceps na polia com corda, ao lado dos cinco passos da técnica correta — pegada neutra, cotovelos fixos, empurrar a corda para baixo, extensão total e contração do tríceps — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Tríceps pulley: como fazer o cabo trabalhar para o braço</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="800"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O tríceps pulley é provavelmente o exercício de braço mais

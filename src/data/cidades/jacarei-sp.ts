@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['sao-jose-dos-campos-sp', 'taubate-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/jacarei-sp.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Jacareí (SP) em arte com o mapa do estado de São Paulo marcando a cidade e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Jacareí: foco, disciplina e constância com acompanhamento profissional no Vale do Paraíba.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Jacareí', url: 'https://cidades.ibge.gov.br/brasil/sp/jacarei/panorama' },
     { nome: 'Prefeitura de Jacareí', url: 'https://www.jacarei.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

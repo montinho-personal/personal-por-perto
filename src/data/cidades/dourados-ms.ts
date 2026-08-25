@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['campo-grande-ms', 'cuiaba-mt'],
 
+  capaArte: {
+    src: '/capas-cidade/dourados-ms.webp',
+    vertical: true,
+    w: 1000,
+    h: 1500,
+    alt: 'Personal trainer em Dourados (MS) em pôster vertical com o skyline da cidade ao pé da arte e o treino com halteres em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Dourados: propósito, evolução e resultados com acompanhamento profissional no sul de Mato Grosso do Sul.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Dourados', url: 'https://cidades.ibge.gov.br/brasil/ms/dourados/panorama' },
     { nome: 'Prefeitura de Dourados', url: 'https://www.dourados.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

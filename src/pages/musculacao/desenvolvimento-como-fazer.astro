@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/desenvolvimento-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Desenvolvimento: como fazer e os erros comuns';
 const description =
   'Desenvolvimento de ombro: sentado ou em pé, barra ou halteres, até onde descer, por que a versão atrás da nuca saiu de cena e como programar na semana.';
 
+const capa = '/capas-conteudo/desenvolvimento-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: guia do desenvolvimento de ombros com halteres, posição inicial e final, core firme, cotovelos abaixo dos punhos e alerta para não arquear a lombar — desenvolvimento de ombros: como fazer, técnica e controle — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Desenvolvimento: o exercício que constrói o ombro inteiro</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Elevação lateral é o exercício que todo mundo associa a treino de
