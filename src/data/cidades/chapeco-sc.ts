@@ -108,10 +108,17 @@ export const cidade: Cidade = {
         'O oeste catarinense tem inverno de verdade: madrugadas perto de zero, geada e tardes que não passam dos 15 °C. O treino ao ar livre migra para o fim da manhã e o início da tarde, o aquecimento alonga e as academias cobertas lotam — reservar horário com o personal nos meses frios é sabedoria local. No verão, o jogo inverte: calor forte e treino cedo.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/chapeco-sc.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Chapecó (SC) em arte que reúne o skyline do centro, a catedral e um pavilhão de teto curvo, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Chapecó: foco, disciplina e constância com acompanhamento profissional no oeste catarinense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Chapecó', url: 'https://cidades.ibge.gov.br/brasil/sc/chapeco/panorama' },
     { nome: 'Prefeitura de Chapecó', url: 'https://www.chapeco.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-25',
 };

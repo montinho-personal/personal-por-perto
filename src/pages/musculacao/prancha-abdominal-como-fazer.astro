@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/prancha-abdominal-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Prancha abdominal: como fazer e progredir';
 const description =
   'Prancha abdominal: a técnica ponto a ponto, quanto tempo segurar de verdade, o mito do recorde, as variações e como progredir quando ficar fácil.';
 
+const capa = '/capas-conteudo/prancha-abdominal-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: guia da prancha abdominal com corpo alinhado, abdômen contraído, quadril neutro, cotovelos abaixo dos ombros e alerta para não deixar a lombar afundar — prancha abdominal: como fazer, técnica e tempo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Prancha: o exercício parado que trabalha mais que muito movimento</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A prancha é o exercício mais honesto do treino de core: sem

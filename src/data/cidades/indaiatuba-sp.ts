@@ -108,10 +108,17 @@ export const cidade: Cidade = {
         'Os valores são próximos — Indaiatuba tem renda alta e público exigente —, com sessões avulsas levemente mais acessíveis que as do Cambuí e pacotes competitivos nos condomínios, onde o profissional otimiza a agenda atendendo vários alunos no mesmo endereço. O formato em dupla é comum entre vizinhos e casais.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/indaiatuba-sp.webp',
+    w: 1200,
+    h: 800,
+    alt: 'Personal trainer em Indaiatuba (SP) em arte com o skyline urbano ao fundo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Indaiatuba: seu melhor investimento é em você, com acompanhamento profissional na região metropolitana de Campinas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Indaiatuba', url: 'https://cidades.ibge.gov.br/brasil/sp/indaiatuba/panorama' },
     { nome: 'Prefeitura de Indaiatuba', url: 'https://www.indaiatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-18',
+  atualizadoEm: '2026-08-25',
 };
