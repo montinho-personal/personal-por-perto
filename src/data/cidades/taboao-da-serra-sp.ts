@@ -129,5 +129,13 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Taboão da Serra', url: 'https://www.ts.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  fotoCorpo: {
+    src: '/montinho/taboao-da-serra-sp-foto.webp',
+    alt: 'Montinho Personal sem camisa, de bermuda estampada, em selfie de corpo inteiro no espelho da academia — personal trainer destacado pelo portal para quem treina em Taboão da Serra',
+    legenda:
+      'Físico construído com mais de 20 anos de musculação: o Montinho Personal, destacado pelo portal, é referência para quem treina em Taboão da Serra.',
+    w: 901,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };

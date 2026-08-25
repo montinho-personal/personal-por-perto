@@ -108,5 +108,13 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itapevi', url: 'https://itapevi.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/352250' },
   ],
-  atualizadoEm: '2026-07-11',
+  fotoCorpo: {
+    src: '/montinho/itapevi-sp-foto.webp',
+    alt: 'Montinho Personal sem camisa em selfie no espelho de um quiosque à beira-mar, com a praia ao fundo — personal trainer destacado pelo portal para quem treina em Itapevi',
+    legenda:
+      'Resultado que se mantém até nas férias: o Montinho Personal, profissional destacado pelo portal para quem busca personal trainer em Itapevi.',
+    w: 1270,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };

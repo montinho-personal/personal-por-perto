@@ -119,5 +119,13 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cajamar', url: 'https://cajamar.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-14',
+  fotoCorpo: {
+    src: '/montinho/cajamar-sp-foto.webp',
+    alt: 'Montinho Personal de regata preta e mochila no ombro, em selfie no espelho do elevador a caminho de um atendimento — personal trainer destacado pelo portal para quem treina em Cajamar',
+    legenda:
+      'A caminho de um atendimento: a rotina em domicílio e em condomínios que o Montinho Personal leva à região oeste, incluindo Cajamar.',
+    w: 901,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };

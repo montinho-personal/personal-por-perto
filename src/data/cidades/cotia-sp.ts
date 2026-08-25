@@ -127,5 +127,13 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cotia', url: 'https://www.cotia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  fotoCorpo: {
+    src: '/montinho/cotia-sp-foto.webp',
+    alt: 'Montinho Personal de costas em pose de duplo bíceps diante do espelho da academia, mostrando as costas e os ombros definidos — personal trainer destacado pelo portal para quem treina em Cotia',
+    legenda:
+      'Mais de 20 anos de musculação nas costas — literalmente: o Montinho Personal, profissional destacado pelo portal para quem treina em Cotia e na Granja Viana.',
+    w: 739,
+    h: 1600,
+  },
+  atualizadoEm: '2026-08-25',
 };
