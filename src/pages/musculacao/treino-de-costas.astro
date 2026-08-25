@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/treino-de-costas';
-const atualizadoEm = '2026-08-24';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Treino de costas: como montar o seu (e os erros)';
 const description =
   'Guia do treino de costas: por que você sente o bíceps, como puxar com a escápula, puxada x remada, barra fixa x polia, volume semanal e os erros mais comuns.';
 
+const capa = '/capas-conteudo/treino-de-costas.webp';
+const capaAlt =
+  'Arte da capa: homem executando puxada frontal na polia, de costas, ao lado da lista puxada frontal, remada curvada, remada baixa, pulldown unilateral, face pull e hiperextensão lombar — treino de costas completo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Treino de costas: como montar o seu (e os erros mais comuns)</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Costas é o grupo muscular com a maior distância entre esforço e
