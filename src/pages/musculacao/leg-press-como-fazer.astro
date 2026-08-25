@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/leg-press-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Leg press: como fazer, pés e erros comuns';
 const description =
   'Leg press: onde posicionar os pés para cada ênfase, até onde descer sem arredondar a lombar, o mito de travar os joelhos e como usar a carga alta a favor.';
 
+const capa = '/capas-conteudo/leg-press-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta no leg press 45° com marcações de pés na largura dos ombros, joelhos alinhados, descida controlada e alerta para não travar os joelhos — leg press: como fazer, técnica e amplitude — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Leg press: o trenó que constrói perna — quando é bem usado</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhuma máquina da academia carrega tanto peso — nem tanta

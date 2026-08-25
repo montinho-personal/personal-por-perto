@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/barra-fixa-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Barra fixa: como fazer e evoluir do zero';
 const description =
   'Barra fixa: o caminho do zero à primeira repetição, pegada pronada ou supinada, amplitude completa, o balanço que rouba o exercício e como progredir com carga.';
 
+const capa = '/capas-conteudo/barra-fixa-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta na barra fixa com marcações de pegada, escápulas retraídas, cotovelos próximos ao corpo e queixo acima da barra — barra fixa: como fazer, técnica, postura e controle do movimento — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Barra fixa: do zero à primeira repetição (e além dela)</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A barra fixa é o teste de força mais honesto da academia: ou o seu
