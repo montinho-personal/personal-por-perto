@@ -9,7 +9,7 @@ import { site } from '../data/site';
 import { montinhoUrl } from '../lib/links';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import Transformacao from '../components/Transformacao.astro';
-import WhatsAppCta from '../components/WhatsAppCta.astro';
+import ContextualCta from '../components/ContextualCta.astro';
 
 const path = '/montinho-personal';
 const crumbs = [
@@ -100,7 +100,7 @@ const schema = [breadcrumbSchema(crumbs), faqSchema(faqs), personMontinhoSchema(
 
     <Faq faqs={faqs} />
 
-    <WhatsAppCta tema="geral" />
+    <ContextualCta path={path} assunto={title} />
     <InstagramFollow tema="emagrecimento" />
 
     <div class="final-cta card">

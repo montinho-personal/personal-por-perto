@@ -8,7 +8,7 @@ import CityCard from '../../components/CityCard.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
-import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
 import FerramentaCta from '../../components/FerramentaCta.astro';
 import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
@@ -721,7 +721,13 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
-      <WhatsAppCta tema="cidade" contexto={n} localidade={emN} />
+      <ContextualCta
+        path={path}
+        cidadeNome={n}
+        uf={cidade.uf}
+        localidade={emN}
+        assunto={title}
+      />
 
       <section id="onde-treinar">
         <h2>Onde treinar {emN}: academia, condomínio e ar livre</h2>

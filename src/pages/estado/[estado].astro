@@ -8,6 +8,7 @@ import { formatNumber, formatDateLong } from '../../lib/slug';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { emCidade } from '../../lib/gramatica';
 import { site } from '../../data/site';
+import ContextualCta from '../../components/ContextualCta.astro';
 
 export function getStaticPaths() {
   return estados.map((estado) => ({
@@ -106,6 +107,12 @@ const schema = [
       <p class="muted small" style="margin-top: var(--sp-6)">
         Hub atualizado em {formatDateLong(estado.atualizadoEm)}.
       </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container container-narrow">
+      <ContextualCta path={path} assunto={title} />
     </div>
   </section>
 </Base>

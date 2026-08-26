@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
+import ContextualCta from '../../components/ContextualCta.astro';
 
 const path = '/guias';
 const crumbs = [
@@ -151,6 +152,12 @@ const schema = [
         <a href="/musculacao/">musculação</a> e de
         <a href="/emagrecimento/">emagrecimento</a>.
       </p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container container-narrow">
+      <ContextualCta path={path} assunto={title} />
     </div>
   </section>
 </Base>

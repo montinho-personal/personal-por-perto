@@ -2,13 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
-import FerramentaCta from '../../components/FerramentaCta.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
-import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -122,8 +121,6 @@ const schema = [
       objetivo, exija uma avaliação inicial e entenda como o profissional acompanha a
       sua evolução. Abaixo, o passo a passo completo.
     </p>
-
-    <FerramentaCta titulo="Quer um atalho antes de ler os critérios?" />
 
     <div class="prose">
       <h2>1. Confirme o registro profissional</h2>
@@ -283,7 +280,7 @@ const schema = [
 
     <Faq faqs={faqs} />
 
-    <WhatsAppCta tema="iniciantes" />
+    <ContextualCta path={path} assunto={title} />
     <InstagramFollow tema="geral" />
     <AutorMontinho />
 

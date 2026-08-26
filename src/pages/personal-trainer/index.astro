@@ -7,6 +7,7 @@ import { estados } from '../../data/estados';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { emCidade } from '../../lib/gramatica';
 import { site } from '../../data/site';
+import ContextualCta from '../../components/ContextualCta.astro';
 
 const path = '/personal-trainer';
 const crumbs = [
@@ -121,6 +122,12 @@ const schema = [
       <a class="btn btn-primary btn-lg" href="/montinho-personal/" style="margin-top: var(--sp-4)">
         Ver acompanhamento online
       </a>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container container-narrow">
+      <ContextualCta path={path} assunto={title} />
     </div>
   </section>
 </Base>

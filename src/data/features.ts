@@ -1,0 +1,21 @@
+/**
+ * Feature flags das ferramentas do portal.
+ *
+ * O motor de CTA só oferece uma ferramenta quando a flag está ligada. Isso
+ * garante a regra mais importante da lista: nenhum leitor cai em link
+ * quebrado por causa de uma ferramenta que ainda não foi publicada. Quando
+ * a ferramenta entrar no ar, basta ligar a flag — o motor passa a usá-la
+ * sozinho, sem tocar em página nenhuma.
+ */
+export const features = {
+  /** /ferramentas/encontre-seu-personal-ideal/ — publicada. */
+  personalMatch: true,
+  /** "Treino para Minha Rotina" — ainda não existe. */
+  rotinaTreino: false,
+  /** Calculadora de preço de personal por cidade — ainda não existe. */
+  calculadoraPreco: false,
+  /** "Personal Score" (avaliação de profissional) — ainda não existe. */
+  personalScore: false,
+} as const;
+
+export type Feature = keyof typeof features;

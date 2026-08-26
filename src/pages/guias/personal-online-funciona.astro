@@ -2,13 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
-import FerramentaCta from '../../components/FerramentaCta.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
-import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -129,8 +128,6 @@ const schema = [
       beneficiar mais da supervisão próxima do presencial — pelo menos
       numa fase inicial.
     </p>
-
-    <FerramentaCta titulo="Online ou presencial: qual combina com você?" />
 
     <p class="lead">
       Não existe resposta única; existe a melhor opção para o seu perfil
@@ -298,7 +295,7 @@ const schema = [
 
     <Faq faqs={faqs} />
 
-    <WhatsAppCta tema="geral" />
+    <ContextualCta path={path} assunto={title} />
     <InstagramFollow tema="geral" />
     <AutorMontinho />
 
