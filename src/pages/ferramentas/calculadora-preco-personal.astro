@@ -1,0 +1,654 @@
+---
+/**
+ * Calculadora de Preço do Personal por Cidade.
+ *
+ * Duas decisões estruturais:
+ *
+ * 1. A rota não disputa com /guias/quanto-custa-personal-trainer/. Aquele
+ *    guia já responde a intenção informacional ("quanto custa") e tem
+ *    histórico; esta página atende a intenção de ferramenta. As duas se
+ *    linkam em vez de se canibalizar.
+ *
+ * 2. Os dados de todas as 980 cidades são embutidos como JSON estático
+ *    e enxuto (~40 KB). Cálculo instantâneo, sem requisição, sem servidor
+ *    — e o conteúdo editorial inteiro já vem no HTML.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { cidades } from '../../data/cidades';
+import { ATUALIZADO_EM, SESSOES_MES_PACOTE } from '../../data/precos';
+import { brl, faixaBrl, calcularPreco } from '../../lib/calculadoraPreco';
+
+const path = '/ferramentas/calculadora-preco-personal';
+const atualizadoEm = ATUALIZADO_EM;
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Calculadora de preço', url: path },
+];
+
+const title = 'Quanto Custa um Personal Trainer? Calculadora por Cidade';
+const description =
+  'Escolha sua cidade, o formato e a frequência de treino e veja uma faixa de referência de quanto pode custar um personal trainer por sessão e por mês.';
+
+/**
+ * Payload mínimo para o cliente: slug, nome, UF e os seis números.
+ * Nada de descrição, parques ou FAQ — só o que a conta usa.
+ */
+const dadosCidades = cidades.map((c) => ({
+  s: c.slug,
+  n: c.nome,
+  u: c.uf,
+  a: [c.precos.avulsaMin, c.precos.avulsaMax],
+  m: [c.precos.mensalMin, c.precos.mensalMax],
+  o: [c.precos.onlineMin, c.precos.onlineMax],
+}));
+
+// Exemplo real renderizado no servidor, para a página valer mesmo sem JS
+// e para o buscador ver números concretos em vez de um formulário vazio.
+const exemplo = calcularPreco(cidades, { cidadeSlug: 'sao-paulo-sp', formato: 'presencial', frequencia: 3 });
+const exemploOnline = calcularPreco(cidades, { cidadeSlug: 'sao-paulo-sp', formato: 'online', frequencia: 3 });
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${new URL(path + '/', site.dominio).href}#webpage`,
+    url: new URL(path + '/', site.dominio).href,
+    name: 'Calculadora de preço do personal trainer por cidade',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+  },
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cp-hero">
+    <div class="container cp-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Quanto custa um personal trainer na sua cidade?</h1>
+      <p class="cp-hero-lead">
+        Escolha sua cidade, o formato de acompanhamento e quantas vezes por
+        semana você pretende treinar. A calculadora mostra a faixa de
+        referência por sessão e por mês — e explica a conta.
+      </p>
+      <p class="cp-micro">Gratuito, sem cadastro. O resultado aparece na hora.</p>
+
+      <div id="cp-app" class="cp-app" data-calc data-atualizado={atualizadoEm}>
+        <form class="cp-form" id="cp-form">
+          <div class="cp-campo">
+            <label class="cp-label" for="cp-cidade">Sua cidade</label>
+            <input
+              id="cp-cidade"
+              class="cp-input"
+              type="text"
+              autocomplete="off"
+              placeholder="Digite a cidade (ex.: Campinas)"
+              role="combobox"
+              aria-expanded="false"
+              aria-controls="cp-sugestoes"
+              aria-autocomplete="list"
+            />
+            <ul class="cp-sugestoes" id="cp-sugestoes" role="listbox" aria-label="Cidades"></ul>
+            <p class="cp-ajuda" id="cp-cidade-ajuda">
+              Não encontrou? Você ainda pode calcular com a referência nacional.
+            </p>
+          </div>
+
+          <fieldset class="cp-campo">
+            <legend class="cp-label">Formato do acompanhamento</legend>
+            <div class="cp-chips" data-grupo="formato">
+              <button type="button" class="cp-chip cp-chip--on" data-formato="presencial">Presencial</button>
+              <button type="button" class="cp-chip" data-formato="online">Online</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="cp-campo" data-campo-frequencia>
+            <legend class="cp-label">Quantas vezes por semana</legend>
+            <div class="cp-chips" data-grupo="frequencia">
+              <button type="button" class="cp-chip" data-freq="1">1×</button>
+              <button type="button" class="cp-chip" data-freq="2">2×</button>
+              <button type="button" class="cp-chip cp-chip--on" data-freq="3">3×</button>
+              <button type="button" class="cp-chip" data-freq="4">4×</button>
+              <button type="button" class="cp-chip" data-freq="5">5×</button>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn-primary btn-lg cp-calcular">Calcular preço</button>
+        </form>
+
+        <output class="cp-resultado" id="cp-resultado" aria-live="polite"></output>
+      </div>
+    </div>
+  </header>
+
+  <div class="container cp-conteudo">
+    <article class="prose cp-artigo">
+      <p class="cp-atualizado">Faixas revisadas em {formatDateLong(atualizadoEm)}</p>
+
+      <!-- Exemplo server-side: a página responde à busca mesmo sem JS. -->
+      <section class="cp-exemplo" aria-label="Exemplo de estimativa">
+        <h2 id="exemplo">Um exemplo: São Paulo, presencial, 3× por semana</h2>
+        <div class="cp-exemplo-grid">
+          <div>
+            <p class="cp-exemplo-rot">Por sessão avulsa</p>
+            <p class="cp-exemplo-num">{faixaBrl(exemplo.porSessao!)}</p>
+          </div>
+          <div>
+            <p class="cp-exemplo-rot">Pacote mensal (≈{exemplo.sessoesMes} sessões)</p>
+            <p class="cp-exemplo-num">{faixaBrl(exemplo.mensal)}</p>
+          </div>
+          <div>
+            <p class="cp-exemplo-rot">Acompanhamento online</p>
+            <p class="cp-exemplo-num">{faixaBrl(exemploOnline.mensal)}<span>/mês</span></p>
+          </div>
+        </div>
+        <p class="cp-exemplo-nota">
+          Use a calculadora acima para ver a faixa da sua cidade. Todas as 980
+          cidades do portal estão na base.
+        </p>
+      </section>
+
+      <h2 id="o-que-altera">O que altera o preço de um personal trainer</h2>
+      <p>
+        O valor de um personal varia principalmente por <strong>cidade</strong>,
+        <strong>frequência semanal</strong>, <strong>duração da sessão</strong>,
+        <strong>deslocamento</strong>, <strong>local do treino</strong>,
+        <strong>experiência do profissional</strong> e
+        <strong>formato da contratação</strong>. Dois profissionais igualmente
+        competentes podem cobrar valores bem diferentes na mesma cidade — e o
+        motivo raramente é qualidade: é logística.
+      </p>
+      <p>
+        Deslocamento é o fator mais subestimado. Um atendimento em domicílio
+        ocupa o dobro do tempo do profissional em relação a uma sessão dentro
+        da academia onde ele já está. Isso aparece no preço, e é justo que
+        apareça.
+      </p>
+
+      <h2 id="aula-ou-mes">Personal cobra por aula ou por mês?</h2>
+      <p>
+        Os dois formatos existem. A <strong>aula avulsa</strong> é mais cara
+        por sessão e faz sentido para experimentar ou para treinos pontuais. O
+        <strong>pacote mensal</strong> costuma sair bem mais em conta por
+        sessão, porque dá previsibilidade de agenda ao profissional — mas
+        exige compromisso de frequência.
+      </p>
+      <p>
+        Na prática, a diferença é grande: nas faixas de referência do portal,
+        a sessão dentro de um pacote mensal costuma custar cerca de metade da
+        avulsa. Se você já sabe que vai manter a rotina, o pacote quase sempre
+        é a decisão financeira melhor.
+      </p>
+
+      <h2 id="frequencia">Quanto custa treinar 2, 3 ou 5 vezes por semana</h2>
+      <p>
+        A conta parte de quantas sessões cabem no mês. Um mês tem, em média,
+        4,33 semanas (52 ÷ 12) — por isso treinar 3× por semana dá
+        aproximadamente 13 sessões mensais, não 12. Treinar 5× dá cerca de 22.
+      </p>
+      <p>
+        Vale um alerta que a calculadora repete: frequência alta multiplica o
+        custo rápido. Antes de contratar 5× por semana, confira se você
+        sustenta essa rotina — pagar por 22 sessões e usar 10 é o pior
+        cenário possível.
+      </p>
+
+      <h2 id="presencial-online">Presencial ou online: qual a diferença</h2>
+      <p>
+        Não é a mesma coisa vendida mais barata. O <strong>presencial</strong>
+        entrega presença durante o treino: correção em tempo real, segurança
+        para quem está começando e o empurrão de ter alguém esperando por
+        você. O <strong>online individualizado</strong> entrega planejamento,
+        progressão, ajustes e acompanhamento a distância — com flexibilidade
+        de horário e sem depender da agenda de ninguém.
+      </p>
+      <p>
+        Quem tem insegurança técnica, está começando ou quer supervisão
+        constante tende a ganhar mais com o presencial. Quem já executa os
+        movimentos com razoável segurança e tem rotina variável costuma
+        ganhar mais com o online. Se você não sabe em qual grupo está, o
+        portal tem uma ferramenta para isso:
+        <a href="/ferramentas/encontre-seu-personal-ideal/">Encontre seu Personal Ideal</a>.
+      </p>
+
+      <h2 id="comparar">Como comparar propostas</h2>
+      <p>
+        Preço isolado diz pouco. Ao receber um orçamento, pergunte o que está
+        incluído: duração da sessão, avaliação inicial, reavaliação periódica,
+        ajuste do treino quando a rotina mudar, suporte entre as sessões e o
+        que acontece quando você falta. Duas propostas com o mesmo valor
+        mensal podem entregar coisas muito diferentes.
+      </p>
+
+      <h2 id="metodologia">Como calculamos os preços</h2>
+      <div class="callout">
+        <p>
+          <strong>Estas faixas não são uma pesquisa de preços praticados.</strong>
+          São estimativas editoriais construídas cidade a cidade pela redação
+          do Personal por Perto a partir do perfil de cada município — porte,
+          renda, IDHM e custo de vida da região.
+        </p>
+      </div>
+      <p>
+        Por isso a ferramenta nunca diz "preço médio" nem cita tamanho de
+        amostra: não existe amostra. O que existe é uma referência de ordem
+        de grandeza, útil para você chegar em uma negociação sabendo se o
+        valor proposto está dentro ou muito fora do esperado para a sua
+        cidade.
+      </p>
+      <p>A conta em si é simples e está aberta:</p>
+      <ul class="check-list">
+        <li>sessões por mês = frequência semanal × 4,33 semanas;</li>
+        <li>
+          para 2 e 3 vezes por semana, a faixa mensal vem direto do dado de
+          pacote da cidade, que é definido justamente para essa frequência;
+        </li>
+        <li>
+          para 1, 4 e 5 vezes, o valor por sessão dentro do pacote
+          (faixa mensal ÷ {SESSOES_MES_PACOTE} sessões) é multiplicado pela
+          quantidade de sessões — e o resultado é marcado como extrapolação;
+        </li>
+        <li>
+          arredondamento único: dezena mais próxima até {brl(1000)}, cinquentena
+          acima disso. Estimativa com centavos passaria uma precisão que o
+          dado não tem;
+        </li>
+        <li>
+          cidade fora da base cai para a referência nacional — e a ferramenta
+          avisa, em vez de fingir que o número é local.
+        </li>
+      </ul>
+      <p class="cp-limite">
+        <strong>Limitações.</strong> A base não distingue sessão de 30 e de 60
+        minutos, aula individual de dupla, nem experiência do profissional.
+        Também não acompanha variação de preço ao longo do tempo. Quando o
+        portal passar a coletar preços reais informados por profissionais e
+        alunos, esta seção será reescrita com amostra, período e fonte — e a
+        ferramenta passará a dizer "mediana" onde hoje diz "faixa de
+        referência".
+      </p>
+      <p>
+        Para o guia completo sobre contratação, com tabela por formato e dicas
+        de negociação, veja
+        <a href={rotas.quantoCusta}>quanto custa um personal trainer</a>.
+      </p>
+    </article>
+  </div>
+
+  <div class="container cp-conteudo">
+    <ContextualCta path={path} assunto={title} />
+  </div>
+
+  <!-- Dados de preço das 980 cidades, para cálculo instantâneo no cliente. -->
+  <script type="application/json" id="cp-dados" set:html={JSON.stringify(dadosCidades)} />
+
+  <script>
+    import { iniciarCalculadora } from '../../scripts/calculadoraPreco.client';
+    iniciarCalculadora();
+  </script>
+
+  <style is:global>
+    /* is:global: o resultado é construído por JS e não recebe o atributo
+       de escopo do Astro. Todas as classes usam o prefixo `cp-`. */
+
+    .cp-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cp-hero-inner {
+      max-width: 780px;
+    }
+    .cp-hero h1 {
+      color: #fff;
+      max-width: 20ch;
+    }
+    .cp-hero .eyebrow {
+      color: #ffb488;
+    }
+    .cp-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 60ch;
+    }
+    .cp-micro {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: #aab0ba;
+    }
+
+    /* ------------------------------ Formulário ------------------------------ */
+    .cp-app {
+      margin-top: var(--sp-6);
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .cp-form {
+      display: grid;
+      gap: var(--sp-5);
+    }
+    .cp-campo {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .cp-label {
+      display: block;
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--ink-soft);
+      margin-bottom: var(--sp-2);
+      padding: 0;
+    }
+    .cp-input {
+      width: 100%;
+      min-height: 52px;
+      padding: 0.8rem 1rem;
+      font: inherit;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .cp-input:focus {
+      border-color: var(--brand);
+      outline: none;
+    }
+    .cp-ajuda {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+    .cp-sugestoes {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-2) 0 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      max-height: 240px;
+      overflow-y: auto;
+      box-shadow: var(--shadow);
+      background: #fff;
+    }
+    .cp-sugestoes:empty {
+      display: none;
+    }
+    .cp-sugestoes button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.7rem 1rem;
+      min-height: 48px;
+      border: 0;
+      background: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    .cp-sugestoes button:hover,
+    .cp-sugestoes button:focus-visible {
+      background: var(--accent-50);
+    }
+    .cp-sug-uf {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .cp-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+    .cp-chip {
+      min-height: 48px;
+      min-width: 56px;
+      padding: 0.6rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      font: inherit;
+      font-weight: 650;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .cp-chip:hover {
+      border-color: var(--brand);
+    }
+    .cp-chip--on {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+    .cp-calcular {
+      width: 100%;
+      text-decoration: none;
+    }
+    [data-campo-frequencia][hidden] {
+      display: none;
+    }
+
+    /* ------------------------------ Resultado ------------------------------ */
+    .cp-resultado:empty {
+      display: none;
+    }
+    .cp-resultado {
+      display: block;
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--line);
+    }
+    .cp-res-origem {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+      margin: 0;
+    }
+    .cp-res-titulo {
+      margin: var(--sp-2) 0 0;
+      font-size: var(--step-2);
+      line-height: 1.2;
+    }
+    .cp-numeros {
+      display: grid;
+      gap: var(--sp-4);
+      margin-top: var(--sp-5);
+    }
+    @media (min-width: 640px) {
+      .cp-numeros {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .cp-num {
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-4);
+    }
+    .cp-num--principal {
+      background: var(--accent-50);
+      border-color: #f7d4bd;
+    }
+    .cp-num-rot {
+      margin: 0;
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .cp-num-val {
+      margin: var(--sp-2) 0 0;
+      font-size: var(--step-2);
+      font-weight: 750;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .cp-num--principal .cp-num-val {
+      color: var(--accent-600);
+    }
+    .cp-num-obs {
+      margin: var(--sp-2) 0 0;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .cp-ressalva {
+      margin-top: var(--sp-4);
+      padding: var(--sp-3) var(--sp-4);
+      border-left: 3px solid var(--gold);
+      background: #fffaf0;
+      font-size: var(--step--1);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+    .cp-confianca {
+      margin-top: var(--sp-4);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .cp-confianca strong {
+      color: var(--ink-soft);
+    }
+    .cp-memoria {
+      margin-top: var(--sp-4);
+      font-size: var(--step--1);
+    }
+    .cp-memoria summary {
+      cursor: pointer;
+      font-weight: 650;
+      color: var(--brand-600);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .cp-memoria table {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+    }
+    .cp-memoria th {
+      white-space: nowrap;
+      color: var(--muted);
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .cp-acoes {
+      margin-top: var(--sp-5);
+      display: grid;
+      gap: var(--sp-3);
+    }
+    .cp-acoes .btn {
+      width: 100%;
+      text-decoration: none;
+    }
+    .cp-feedback {
+      margin-top: var(--sp-5);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+    .cp-feedback button {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      min-height: 40px;
+      font: inherit;
+      cursor: pointer;
+    }
+    .cp-feedback button:hover {
+      border-color: var(--brand);
+    }
+
+    /* ------------------------------ Conteúdo ------------------------------ */
+    .cp-conteudo {
+      padding-block: var(--sp-7);
+    }
+    .cp-artigo {
+      max-width: var(--container-narrow);
+      margin-inline: auto;
+    }
+    .cp-atualizado {
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+    .cp-artigo h2 {
+      margin-top: var(--sp-7);
+      font-size: var(--step-2);
+    }
+    .cp-artigo p {
+      margin-top: var(--sp-4);
+      line-height: 1.7;
+    }
+    .cp-artigo ul {
+      margin-top: var(--sp-4);
+    }
+    .cp-exemplo {
+      margin-top: var(--sp-5);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .cp-exemplo h2 {
+      margin-top: 0;
+      font-size: var(--step-1);
+    }
+    .cp-exemplo-grid {
+      display: grid;
+      gap: var(--sp-4);
+      margin-top: var(--sp-4);
+    }
+    @media (min-width: 640px) {
+      .cp-exemplo-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .cp-exemplo-rot {
+      margin: 0;
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .cp-exemplo-num {
+      margin: var(--sp-1) 0 0;
+      font-weight: 750;
+      font-size: var(--step-1);
+      line-height: 1.2;
+    }
+    .cp-exemplo-num span {
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .cp-exemplo-nota {
+      margin-top: var(--sp-4);
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+    .cp-limite {
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</Base>

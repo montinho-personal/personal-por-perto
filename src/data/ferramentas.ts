@@ -25,6 +25,15 @@ export const ferramentas: Ferramenta[] = [
     selo: 'Cerca de 1 minuto',
     disponivel: true,
   },
+  {
+    slug: 'calculadora-preco-personal',
+    nome: 'Calculadora de Preço do Personal',
+    chamada: 'Quanto pode custar um acompanhamento na sua cidade?',
+    descricao:
+      'Escolha a cidade, o formato e a frequência de treino para ver a faixa de referência por sessão e por mês — com a conta aberta e a procedência do dado declarada.',
+    selo: 'Resultado na hora',
+    disponivel: true,
+  },
 ];
 
 /** URL canônica (com barra final) de uma ferramenta. */

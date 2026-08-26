@@ -12,8 +12,8 @@ export const features = {
   personalMatch: true,
   /** "Treino para Minha Rotina" — ainda não existe. */
   rotinaTreino: false,
-  /** Calculadora de preço de personal por cidade — ainda não existe. */
-  calculadoraPreco: false,
+  /** /ferramentas/calculadora-preco-personal/ — publicada. */
+  calculadoraPreco: true,
   /** "Personal Score" (avaliação de profissional) — ainda não existe. */
   personalScore: false,
 } as const;

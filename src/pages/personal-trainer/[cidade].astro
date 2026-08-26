@@ -426,6 +426,17 @@ const objetivoDesc: Record<string, string> = {
         </p>
       </section>
 
+      <aside class="calc-cta">
+        <p class="calc-cta-tit">Quanto custa um personal {emN}?</p>
+        <p class="calc-cta-sub">
+          Escolha a frequência de treino e veja a faixa de referência por sessão
+          e por mês, com a conta aberta.
+        </p>
+        <a class="btn btn-primary calc-cta-btn" href={`/ferramentas/calculadora-preco-personal/#c=${cidade.slug}`}>
+          Calcular preço {emN}
+        </a>
+      </aside>
+
       <FerramentaCta
         cidadeSlug={cidade.slug}
         titulo={`Ainda em dúvida entre presencial e online ${emN}?`}
@@ -953,6 +964,39 @@ const objetivoDesc: Record<string, string> = {
 </Base>
 
 <style>
+  .calc-cta {
+    margin: var(--sp-6) 0;
+    padding: var(--sp-5);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    background: #fffaf0;
+  }
+  .calc-cta-tit {
+    margin: 0;
+    font-weight: 750;
+    font-size: var(--step-1);
+    line-height: 1.25;
+  }
+  .calc-cta-sub {
+    margin: var(--sp-2) 0 0;
+    color: var(--muted);
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+  .calc-cta-btn {
+    margin-top: var(--sp-4);
+    text-decoration: none;
+  }
+  .calc-cta-btn:hover {
+    text-decoration: none;
+  }
+  @media (max-width: 560px) {
+    .calc-cta-btn {
+      width: 100%;
+    }
+  }
+
   .hero {
     padding: var(--sp-7) 0 var(--sp-6);
     background: linear-gradient(180deg, var(--brand-50), #fff);

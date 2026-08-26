@@ -52,6 +52,7 @@ export interface CampanhaCtx {
 }
 
 const FERRAMENTA_MATCH = '/ferramentas/encontre-seu-personal-ideal/';
+const FERRAMENTA_PRECO = '/ferramentas/calculadora-preco-personal/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -144,15 +145,15 @@ export const campanhas: Record<string, Campanha> = {
     id: 'precoComparacao',
     nivel: 'diagnostico',
     render: 'card',
-    requer: 'personalMatch',
+    requer: 'calculadoraPreco',
     eyebrow: 'Antes de comparar preço',
-    titulo: 'Antes de comparar só o preço, compare o que está incluído',
+    titulo: 'Quanto custa um personal na sua cidade?',
     texto:
-      'Presencial, online e híbrido custam diferente porque entregam coisas diferentes. Saber qual formato resolve o seu caso evita pagar caro pelo que você não precisa.',
-    rotulo: 'Descobrir qual formato combina comigo',
-    destino: FERRAMENTA_MATCH,
-    microcopy: 'Leva cerca de 1 minuto.',
-    secundario: { rotulo: 'Ver faixas de preço por formato', destino: '/guias/quanto-custa-personal-trainer/' },
+      'A calculadora cruza cidade, formato e frequência e mostra a faixa de referência por sessão e por mês — com a conta aberta e a procedência do dado declarada.',
+    rotulo: 'Calcular o preço na minha cidade',
+    destino: FERRAMENTA_PRECO,
+    microcopy: 'Resultado na hora, sem cadastro.',
+    secundario: { rotulo: 'Descobrir qual formato combina comigo', destino: FERRAMENTA_MATCH },
   },
 
   farmacologicoMassa: {
