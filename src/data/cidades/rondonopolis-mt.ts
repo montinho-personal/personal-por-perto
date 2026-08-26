@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['cuiaba-mt', 'campo-grande-ms'],
 
+  capaArte: {
+    src: '/capas-cidade/rondonopolis-mt.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Rondonópolis (MT) em arte quadrada com a ponte sobre o rio Vermelho, o Parque das Águas e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Rondonópolis: foco, disciplina e constância com acompanhamento profissional no sul de Mato Grosso.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Rondonópolis', url: 'https://cidades.ibge.gov.br/brasil/mt/rondonopolis/panorama' },
     { nome: 'Prefeitura de Rondonópolis', url: 'https://www.rondonopolis.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };
