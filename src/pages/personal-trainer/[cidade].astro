@@ -10,6 +10,8 @@ import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
 import FerramentaCta from '../../components/FerramentaCta.astro';
+import MapaFitness from '../../components/MapaFitness.astro';
+import { resumoMapaFitness } from '../../lib/fitnessPlaces';
 import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
@@ -41,6 +43,9 @@ const n = cidade.nome;
 const emN = emCidade(cidade); // "em São Paulo" | "no Rio de Janeiro"
 const deN = deCidade(cidade); // "de São Paulo" | "do Rio de Janeiro"
 const path = `/personal-trainer/${cidade.slug}`;
+
+// Mapa Fitness: a seção interativa só existe onde há dado suficiente.
+const mapa = resumoMapaFitness(cidade);
 const url = new URL(path, site.dominio).href;
 
 // Capa única da cidade (gerada por scripts/gen-capas.ts): WebP na página,
@@ -721,13 +726,6 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
-      <ContextualCta
-        path={path}
-        cidadeNome={n}
-        uf={cidade.uf}
-        localidade={emN}
-        assunto={title}
-      />
 
       <section id="onde-treinar">
         <h2>Onde treinar {emN}: academia, condomínio e ar livre</h2>
@@ -738,7 +736,7 @@ const objetivoDesc: Record<string, string> = {
         <h3>Treino em academia</h3>
         {paragrafos(cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`).map((t) => <p>{t}</p>)}
         {
-          cidade.academiasProximas && cidade.academiasProximas.length > 0 && (
+          !mapa.exibirSecao && cidade.academiasProximas && cidade.academiasProximas.length > 0 && (
             <>
               <p>Alguns espaços de treino conhecidos na cidade e na região:</p>
               <ul>
@@ -763,12 +761,35 @@ const objetivoDesc: Record<string, string> = {
           disponível — uma solução prática para quem tem agenda cheia.
         </p>
         <h3>Treino ao ar livre</h3>
-        <p>Entre os espaços públicos mais usados para atividade física {emN} estão:</p>
-        <ul>
-          {cidade.parques.map((p) => (<li><strong>{p.nome}:</strong> {p.descricao}</li>))}
-        </ul>
+        {
+          !mapa.exibirSecao && (
+            <>
+              <p>Entre os espaços públicos mais usados para atividade física {emN} estão:</p>
+              <ul>
+                {cidade.parques.map((p) => (<li><strong>{p.nome}:</strong> {p.descricao}</li>))}
+              </ul>
+            </>
+          )
+        }
+        {mapa.exibirSecao && (
+          <p>
+            Os espaços públicos {emN} atendem a perfis bem diferentes de treino — do
+            caminhante que quer segurança e piso plano a quem precisa de pista medida
+            para correr. O mapa abaixo reúne o que a redação levantou na cidade.
+          </p>
+        )}
         {cidade.ciclovias && paragrafos(cidade.ciclovias).map((t) => <p>{t}</p>)}
+
+        <MapaFitness cidade={cidade} emN={emN} />
       </section>
+
+      <ContextualCta
+        path={path}
+        cidadeNome={n}
+        uf={cidade.uf}
+        localidade={emN}
+        assunto={title}
+      />
 
       <CtaMontinho cidade={n} localidade={emN} variante="inline" />
 

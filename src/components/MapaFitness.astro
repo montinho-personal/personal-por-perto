@@ -1,0 +1,406 @@
+---
+/**
+ * Mapa Fitness da Cidade.
+ *
+ * Ordem de prioridade da experiência: lista primeiro, mapa depois.
+ * Todo o conteúdo é renderizado no servidor — filtros, cartões, notas
+ * editoriais e características. Quem chega sem JavaScript, com conexão
+ * ruim ou por leitor de tela recebe a mesma informação; o JavaScript
+ * apenas filtra sem recarregar e, quando há coordenadas verificadas,
+ * desenha o mapa.
+ *
+ * O componente não decide se deve aparecer: quem decide é
+ * `resumoMapaFitness`, pelo limiar de qualidade. Cidade com dado
+ * insuficiente não ganha caixa cinza vazia — ganha nada.
+ */
+import { resumoMapaFitness, ROTULO_ATIVIDADE, type Atividade } from '../lib/fitnessPlaces';
+import type { Cidade } from '../lib/types';
+
+export interface Props {
+  cidade: Cidade;
+  /** Locução flexionada ("no Rio de Janeiro"). */
+  emN: string;
+}
+
+const { cidade, emN } = Astro.props;
+const resumo = resumoMapaFitness(cidade);
+
+/** Objetivos oferecidos como filtro — só os que existem nesta cidade. */
+const ATIVIDADES_FILTRO: Atividade[] = ['musculacao', 'correr', 'caminhar', 'funcional', 'ar-livre'];
+const atividadesPresentes = ATIVIDADES_FILTRO.filter((a) =>
+  resumo.locais.some((l) => l.atividades.includes(a)),
+);
+
+const idMapa = `mapa-fitness-${cidade.slug}`;
+---
+
+{
+  resumo.exibirSecao && (
+    <div class="mf" id={idMapa} data-mapa-fitness data-cidade={cidade.slug} data-uf={cidade.uf}>
+      <h3 class="mf-titulo">Mapa fitness {emN}</h3>
+      <p class="mf-sub">
+        {resumo.total} espaços para treinar {emN} reunidos pela redação — parques,
+        pistas, academias e áreas ao ar livre. Use os filtros para encontrar o que
+        combina com o seu treino.
+      </p>
+
+      <div class="mf-filtros" role="group" aria-label="Filtrar locais">
+        <div class="mf-chips" data-grupo="categoria">
+          <button type="button" class="mf-chip mf-chip--on" data-filtro="categoria" data-valor="">
+            Todos <span class="mf-chip-n">{resumo.total}</span>
+          </button>
+          {resumo.categorias.map((c) => (
+            <button type="button" class="mf-chip" data-filtro="categoria" data-valor={c.id}>
+              {c.rotulo} <span class="mf-chip-n">{c.total}</span>
+            </button>
+          ))}
+        </div>
+
+        {atividadesPresentes.length > 1 && (
+          <div class="mf-objetivo">
+            <label class="mf-label" for={`${idMapa}-obj`}>O que você quer fazer?</label>
+            <div class="mf-chips" data-grupo="atividade">
+              <button
+                type="button"
+                id={`${idMapa}-obj`}
+                class="mf-chip mf-chip--on"
+                data-filtro="atividade"
+                data-valor=""
+              >
+                Tanto faz
+              </button>
+              {atividadesPresentes.map((a) => (
+                <button type="button" class="mf-chip" data-filtro="atividade" data-valor={a}>
+                  {ROTULO_ATIVIDADE[a]}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* O mapa gráfico só existe quando há coordenadas verificadas. */}
+      {resumo.exibirMapa && (
+        <>
+          <a class="mf-pular" href={`#${idMapa}-lista`}>Pular o mapa e ver a lista</a>
+          <div
+            class="mf-mapa"
+            data-mapa-canvas
+            role="application"
+            aria-label={`Mapa interativo com ${resumo.comCoordenada} locais para treinar em ${cidade.nome}`}
+          >
+            <p class="mf-mapa-espera">Carregando o mapa…</p>
+          </div>
+        </>
+      )}
+
+      <ul class="mf-lista" id={`${idMapa}-lista`} data-lista>
+        {resumo.locais.map((l) => (
+          <li
+            class="mf-item"
+            data-local={l.slug}
+            data-categoria={l.categoria}
+            data-atividades={l.atividades.join(' ')}
+            data-lat={l.lat}
+            data-lng={l.lng}
+          >
+            <article class="mf-card">
+              <div class="mf-card-topo">
+                <h4 class="mf-card-nome">{l.nome}</h4>
+                <span class="mf-tag" data-cat={l.categoria}>{l.categoriaRotulo}</span>
+              </div>
+              {l.nota && <p class="mf-card-nota">{l.nota}</p>}
+              {l.atividades.length > 0 && (
+                <p class="mf-card-att">
+                  <span class="mf-card-att-rot">Bom para:</span>{' '}
+                  {l.atividades.map((a) => ROTULO_ATIVIDADE[a]).join(' · ')}
+                </p>
+              )}
+              {l.caracteristicas.length > 0 && (
+                <ul class="mf-feats">
+                  {l.caracteristicas.map((f) => (
+                    <li>{f}</li>
+                  ))}
+                </ul>
+              )}
+              {l.lat != null && l.lng != null && (
+                <a
+                  class="mf-como-chegar"
+                  href={`https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}`}
+                  target="_blank"
+                  rel="noopener"
+                  data-mf-direcoes
+                >
+                  Como chegar
+                </a>
+              )}
+            </article>
+          </li>
+        ))}
+      </ul>
+
+      <p class="mf-vazio" data-vazio hidden>
+        Nenhum local com esse filtro. <button type="button" class="mf-limpar" data-limpar>Limpar filtros</button>
+      </p>
+
+      <details class="mf-metodologia">
+        <summary>Como selecionamos os locais</summary>
+        <p>
+          Os espaços listados foram identificados pela redação do Personal por
+          Perto a partir de fontes públicas e de material oficial das prefeituras,
+          e revisados um a um. As características citadas (pista, iluminação,
+          aparelhos) só aparecem quando constam da apuração daquele local —
+          nunca por suposição.
+        </p>
+        <p>
+          A lista é editorial e não exaustiva, e o portal não tem vínculo
+          comercial com os espaços citados. Estruturas e horários mudam:
+          confirme os detalhes diretamente com o local antes de se deslocar.
+          {resumo.exibirMapa
+            ? ' As coordenadas do mapa vêm do OpenStreetMap (ODbL) e passam por conferência automática de município.'
+            : ''}
+        </p>
+      </details>
+    </div>
+  )
+}
+
+<!--
+  is:global é necessário: o Leaflet cria os marcadores em tempo de execução,
+  e elementos criados por JS não recebem o atributo de escopo do Astro.
+  Todas as classes usam o prefixo `mf-`/`leaflet-`.
+-->
+<style is:global>
+  .mf-pin {
+    background: none;
+    border: 0;
+    filter: drop-shadow(0 2px 3px rgba(10, 11, 14, 0.35));
+  }
+  .mf-pin svg {
+    display: block;
+  }
+  .leaflet-container {
+    font: inherit;
+    border-radius: var(--radius);
+  }
+  .leaflet-popup-content {
+    font-size: var(--step--1);
+    font-weight: 600;
+  }
+
+  .mf {
+    margin: var(--sp-6) 0;
+  }
+  .mf-titulo {
+    margin-bottom: var(--sp-2);
+  }
+  .mf-sub {
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-5);
+  }
+
+  /* ------------------------------ Filtros ------------------------------ */
+  .mf-filtros {
+    display: grid;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-5);
+  }
+  .mf-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+  }
+  .mf-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.5rem 0.95rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 650;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .mf-chip:hover {
+    border-color: var(--brand);
+  }
+  .mf-chip--on {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+  }
+  .mf-chip-n {
+    font-size: 0.8em;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+  .mf-label {
+    display: block;
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--muted);
+    margin-bottom: var(--sp-2);
+  }
+
+  /* ------------------------------- Mapa -------------------------------- */
+  .mf-pular {
+    display: inline-block;
+    font-size: var(--step--1);
+    margin-bottom: var(--sp-2);
+  }
+  .mf-mapa {
+    /* Altura reservada desde o servidor: o mapa nunca empurra o conteúdo. */
+    height: 340px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background: var(--bg-tint-2);
+    display: grid;
+    place-items: center;
+    margin-bottom: var(--sp-5);
+    overflow: hidden;
+  }
+  @media (min-width: 720px) {
+    .mf-mapa {
+      height: 420px;
+    }
+  }
+  .mf-mapa-espera {
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+
+  /* ------------------------------- Lista ------------------------------- */
+  .mf-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--sp-3);
+  }
+  @media (min-width: 720px) {
+    .mf-lista {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+  }
+  .mf-item[hidden] {
+    display: none;
+  }
+  .mf-card {
+    height: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--sp-4);
+    background: #fff;
+  }
+  .mf-item--ativo .mf-card {
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  .mf-card-topo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-3);
+  }
+  .mf-card-nome {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.3;
+  }
+  .mf-tag {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: var(--bg-tint-2);
+    color: var(--ink-soft);
+    border: 1px solid var(--line);
+    /* Categoria nunca é comunicada só por cor: o rótulo vem escrito. */
+  }
+  .mf-card-nota {
+    margin: var(--sp-3) 0 0;
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .mf-card-att {
+    margin: var(--sp-3) 0 0;
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .mf-card-att-rot {
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .mf-feats {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-3) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+  .mf-feats li {
+    font-size: 0.78rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--brand-50);
+    color: var(--brand-700);
+    border: 1px solid var(--brand-100);
+  }
+  .mf-como-chegar {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: var(--sp-2);
+    font-size: var(--step--1);
+    font-weight: 650;
+  }
+
+  .mf-vazio {
+    margin-top: var(--sp-4);
+    color: var(--muted);
+  }
+  .mf-vazio[hidden] {
+    display: none;
+  }
+  .mf-limpar {
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 650;
+    color: var(--brand-600);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    min-height: 44px;
+  }
+
+  .mf-metodologia {
+    margin-top: var(--sp-5);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .mf-metodologia summary {
+    cursor: pointer;
+    font-weight: 650;
+    color: var(--ink-soft);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .mf-metodologia p {
+    margin-top: var(--sp-3);
+    line-height: 1.6;
+  }
+</style>
+
+<script>
+  import { iniciarMapaFitness } from '../scripts/mapaFitness.client';
+  iniciarMapaFitness();
+</script>
