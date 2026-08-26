@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['marilia-sp', 'bauru-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/presidente-prudente-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Presidente Prudente (SP) em arte quadrada com a Catedral São Sebastião, o Parque do Povo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Presidente Prudente: treino para uma vida com propósito, com acompanhamento profissional no oeste paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Presidente Prudente', url: 'https://cidades.ibge.gov.br/brasil/sp/presidente-prudente/panorama' },
     { nome: 'Prefeitura de Presidente Prudente', url: 'https://www.presidenteprudente.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

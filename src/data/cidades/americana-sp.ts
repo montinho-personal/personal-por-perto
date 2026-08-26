@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['campinas-sp', 'limeira-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/americana-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Americana (SP) em arte quadrada com o casarão do Museu Municipal, o pôr do sol na Represa de Salto Grande e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Americana: disciplina, foco e resultado com acompanhamento profissional na região metropolitana de Campinas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Americana', url: 'https://cidades.ibge.gov.br/brasil/sp/americana/panorama' },
     { nome: 'Prefeitura de Americana', url: 'https://www.americana.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

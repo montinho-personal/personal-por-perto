@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['porto-alegre-rs', 'canoas-rs', 'caxias-do-sul-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/novo-hamburgo-rs.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Novo Hamburgo (RS) em arte quadrada com o sapato símbolo do Museu Nacional do Calçado, o parque municipal e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Novo Hamburgo: foco, disciplina e constância com acompanhamento profissional no Vale dos Sinos.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Novo Hamburgo', url: 'https://cidades.ibge.gov.br/brasil/rs/novo-hamburgo/panorama' },
     { nome: 'Prefeitura de Novo Hamburgo', url: 'https://www.novohamburgo.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

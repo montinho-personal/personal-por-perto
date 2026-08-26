@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['petrolina-pe', 'salvador-ba'],
 
+  capaArte: {
+    src: '/capas-cidade/juazeiro-ba.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Juazeiro (BA) em arte quadrada com a orla do rio São Francisco ao entardecer, a Ponte Presidente Dutra iluminada e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Juazeiro: foco, disciplina e constância com acompanhamento profissional às margens do São Francisco.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Juazeiro', url: 'https://cidades.ibge.gov.br/brasil/ba/juazeiro/panorama' },
     { nome: 'Prefeitura de Juazeiro', url: 'https://www.juazeiro.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };

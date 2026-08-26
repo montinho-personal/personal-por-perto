@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['goiania-go', 'aparecida-de-goiania-go'],
 
+  capaArte: {
+    src: '/capas-cidade/rio-verde-go.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Rio Verde (GO) em arte quadrada com o parque linear e a pista de caminhada da cidade e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Rio Verde: foco, disciplina e constância com acompanhamento profissional no sudoeste goiano.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Rio Verde', url: 'https://cidades.ibge.gov.br/brasil/go/rio-verde/panorama' },
     { nome: 'Prefeitura de Rio Verde', url: 'https://www.rioverde.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };
