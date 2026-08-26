@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-vila-madalena';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer na Vila Madalena (São Paulo)';
 const description =
   'Personal trainer na Vila Madalena: preços de São Paulo, as ladeiras do bairro, o Beco do Batman, o metrô da Linha 2 e por que o treino em casa domina aqui.';
 
+const capa = '/capas-bairros/vila-madalena.webp';
+const capaAlt =
+  'Personal trainer na Vila Madalena (São Paulo) em arte quadrada com a ladeira grafitada do bairro e o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de São Paulo</p>
     <h1>Personal trainer na Vila Madalena: o bairro que só é plano no mapa</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) auto 0; max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Todo mundo conhece a Vila Madalena pela noite, pelo grafite e pelos

@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['sao-luis-ma', 'bacabal-ma'],
 
+  capaArte: {
+    src: '/capas-cidade/sao-jose-de-ribamar-ma.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em São José de Ribamar (MA) em arte quadrada com a igreja histórica da cidade, os barcos na praia e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em São José de Ribamar: treino para uma vida com propósito, com acompanhamento profissional na Grande São Luís.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — São José de Ribamar', url: 'https://cidades.ibge.gov.br/brasil/ma/sao-jose-de-ribamar/panorama' },
     { nome: 'Prefeitura de São José de Ribamar', url: 'https://www.saojosederibamar.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/211120' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-25',
 };
