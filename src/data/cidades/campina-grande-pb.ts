@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes, estúdios e academias locais, com forte demanda do público jovem e universitário, complementada pelas academias populares públicas a céu aberto.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Catolé', detalhe: 'na Av. Prefeito Severino Bezerra Cabral' },
+    { nome: 'Smart Fit Cruzeiro', detalhe: 'segunda unidade da rede na cidade' },
+    { nome: 'Selfit Campina Grande', detalhe: 'na Rua Dr. Severino Cruz, no Centro: musculação, funcional e lutas' },
+    { nome: 'Bluefit Campina Grande', detalhe: 'unidade da rede na cidade' },
+  ],
+
   destaquesFitness: [
     'Clima de altitude favorável ao treino ao ar livre o ano todo.',
     'Açude Velho e Parque da Criança como hubs gratuitos de caminhada e corrida.',
@@ -96,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campina Grande', url: 'https://campinagrande.pb.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/campina-grande-pb.webp',
     w: 1200,

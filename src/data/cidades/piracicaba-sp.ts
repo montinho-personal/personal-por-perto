@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit, consolidada como referência local, e academias e estúdios de bairro, com a orla funcionando como grande espaço de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Shopping Piracicaba', detalhe: 'na Avenida Limeira, na Vila Areão' },
+    { nome: 'Smart Fit Av. 31 de Março', detalhe: 'na Paulicéia' },
+    { nome: 'Smart Fit Vila Rezende', detalhe: 'terceira unidade da rede na cidade' },
+  ],
+
   destaquesFitness: [
     'Orla do Rio Piracicaba (Rua do Porto e Engenho Central) como principal corredor de treino.',
     'Polo universitário ESALQ-USP, que gera público jovem e ativo.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Piracicaba', url: 'https://www.piracicaba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/piracicaba-sp.webp',
     w: 1200,

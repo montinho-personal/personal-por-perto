@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes consolidadas e boxes de crossfit em vários bairros, complementada por espaços públicos com academia ao ar livre e pista.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Vilar dos Teles', detalhe: 'na Av. Automóvel Clube' },
+    { nome: 'Smart Fit Shopping Grande Rio', detalhe: 'na Rua Maria Soares Sendas, no Parque Barreto' },
+    { nome: 'Life Fit São João de Meriti', detalhe: 'rede fluminense com duas unidades na cidade' },
+  ],
+
   destaquesFitness: [
     'Altíssima densidade populacional — enorme base potencial de alunos por km².',
     'Redes consolidadas e boxes de crossfit em vários bairros.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São João de Meriti', url: 'https://www.meriti.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/sao-joao-de-meriti-rj.webp',
     w: 1200,

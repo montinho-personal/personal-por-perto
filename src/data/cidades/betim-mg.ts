@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit e dezenas de academias e boxes locais de musculação e funcional, com demanda puxada pelo grande público industrial da cidade.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Betim Shopping', detalhe: 'unidade da rede dentro do shopping' },
+    { nome: 'Pratique Fitness São Caetano', detalhe: 'na Av. Tapajós: maior rede da região metropolitana de BH' },
+    { nome: 'Pratique Fitness Chácaras', detalhe: 'na Av. Bandeirantes' },
+    { nome: 'Pratique Fitness Decamão', detalhe: 'na Av. Edmeia Matos Lazzarotti' },
+    { nome: 'Pratique Fitness Senhora das Graças', detalhe: 'na Rua do Acre' },
+  ],
+
   destaquesFitness: [
     'Público trabalhador, que demanda horários flexíveis (cedo e pós-turno).',
     'Boa malha de redes e boxes de crossfit e funcional.',
@@ -96,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Betim', url: 'https://www.betim.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/betim-mg.webp',
     w: 1200,
