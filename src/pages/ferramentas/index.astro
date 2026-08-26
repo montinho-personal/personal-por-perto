@@ -1,0 +1,138 @@
+---
+/**
+ * Hub de ferramentas do portal. Nasce com uma ferramenta e é a casa das
+ * próximas (calculadora de preço, treino para a rotina, comparador
+ * presencial × online) — por isso o índice é montado a partir do registro
+ * central em src/data/ferramentas.ts.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+import { ferramentas, urlFerramenta } from '../../data/ferramentas';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: path },
+];
+
+const title = 'Ferramentas para escolher seu treino | Personal por Perto';
+const description =
+  'Ferramentas gratuitas do Personal por Perto para ajudar você a decidir que tipo de acompanhamento, treino e investimento fazem sentido para a sua rotina.';
+
+const disponiveis = ferramentas.filter((f) => f.disponivel);
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema(
+    'Ferramentas do Personal por Perto',
+    disponiveis.map((f) => f.nome),
+    site.dominio,
+    disponiveis.map((f) => new URL(urlFerramenta(f.slug), site.dominio).href),
+  ),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="section-sm">
+    <div class="container fer-intro">
+      <p class="eyebrow">Ferramentas</p>
+      <h1>Ferramentas do Personal por Perto</h1>
+      <p class="fer-lead">
+        Conteúdo explica; ferramenta decide junto com você. Estas são gratuitas,
+        não pedem cadastro para mostrar o resultado e existem para responder as
+        perguntas que travam a maioria das pessoas antes de começar a treinar.
+      </p>
+    </div>
+  </header>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid grid-2">
+        {
+          ferramentas.map((f) =>
+            f.disponivel ? (
+              <a class="card card-hover fer-card" href={urlFerramenta(f.slug)}>
+                {f.selo && <span class="pill pill-accent">{f.selo}</span>}
+                <h2 class="fer-nome">{f.nome}</h2>
+                <p class="fer-chamada">{f.chamada}</p>
+                <p class="fer-desc">{f.descricao}</p>
+                <span class="fer-acao">Abrir ferramenta →</span>
+              </a>
+            ) : (
+              <div class="card fer-card fer-card--breve">
+                <span class="pill pill-neutral">Em breve</span>
+                <h2 class="fer-nome">{f.nome}</h2>
+                <p class="fer-desc">{f.descricao}</p>
+              </div>
+            ),
+          )
+        }
+      </div>
+
+      <p class="fer-nota">
+        Procurando conteúdo em vez de ferramenta? Comece pelos
+        <a href={rotas.guias}>guias de contratação</a> ou pelo diretório de
+        <a href={rotas.cidades}>personal trainer por cidade</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .fer-intro {
+    max-width: 720px;
+  }
+  .fer-lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .fer-card {
+    display: block;
+    color: inherit;
+  }
+  .fer-card:hover {
+    text-decoration: none;
+  }
+  .fer-nome {
+    margin-top: var(--sp-3);
+    font-size: var(--step-2);
+  }
+  .fer-chamada {
+    margin-top: var(--sp-2);
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .fer-desc {
+    margin-top: var(--sp-3);
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .fer-acao {
+    display: inline-block;
+    margin-top: var(--sp-4);
+    font-weight: 700;
+    color: var(--accent-600);
+  }
+  .fer-card--breve {
+    opacity: 0.75;
+  }
+  .fer-nota {
+    margin-top: var(--sp-6);
+    color: var(--muted);
+    font-size: var(--step--1);
+  }
+</style>

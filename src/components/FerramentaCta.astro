@@ -1,0 +1,83 @@
+---
+/**
+ * Chamada contextual para a ferramenta "Encontre seu Personal Ideal".
+ *
+ * Zero JS, uma linha de link. Quando recebe um `cidadeSlug`, o contexto viaja
+ * por FRAGMENTO (#c=slug) — nunca por query string: fragmento não é rastreado
+ * nem indexado pelo Google, então 980 páginas de cidade podem apontar para a
+ * ferramenta sem criar variantes de URL nem desperdiçar crawl budget.
+ */
+export interface Props {
+  /** Slug da cidade de origem, para pré-preencher a etapa de localização. */
+  cidadeSlug?: string;
+  /** Texto da pergunta; há variação por contexto para não repetir âncora. */
+  titulo?: string;
+  compacto?: boolean;
+}
+
+const {
+  cidadeSlug,
+  titulo = 'Não sabe que tipo de personal escolher?',
+  compacto = false,
+} = Astro.props;
+
+const href = `/ferramentas/encontre-seu-personal-ideal/${cidadeSlug ? `#c=${cidadeSlug}` : ''}`;
+---
+
+<aside class:list={['fcta', compacto && 'fcta--compacto']}>
+  <div class="fcta-txt">
+    <p class="fcta-tit">{titulo}</p>
+    <p class="fcta-sub">
+      Responda 8 perguntas rápidas e descubra qual formato de acompanhamento
+      combina com a sua rotina — presencial, online ou híbrido.
+    </p>
+  </div>
+  <a class="btn btn-primary fcta-btn" href={href}>Fazer o teste de 1 minuto</a>
+</aside>
+
+<style>
+  .fcta {
+    margin: var(--sp-6) 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    padding: var(--sp-5);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius);
+    background: var(--bg-tint);
+  }
+  .fcta-txt {
+    min-width: min(100%, 280px);
+    flex: 1 1 320px;
+  }
+  .fcta-tit {
+    margin: 0;
+    font-weight: 750;
+    font-size: var(--step-1);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .fcta-sub {
+    margin: var(--sp-2) 0 0;
+    color: var(--muted);
+    font-size: var(--step--1);
+    line-height: 1.55;
+  }
+  .fcta-btn {
+    flex-shrink: 0;
+  }
+  .fcta--compacto {
+    padding: var(--sp-4);
+  }
+  .fcta--compacto .fcta-tit {
+    font-size: var(--step-0);
+  }
+  @media (max-width: 560px) {
+    .fcta-btn {
+      width: 100%;
+    }
+  }
+</style>

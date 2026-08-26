@@ -1,0 +1,787 @@
+---
+/**
+ * Ferramenta "Encontre seu Personal Ideal".
+ *
+ * Arquitetura: o HTML da página é 100% estático e indexável (hero, conteúdo
+ * editorial, metodologia). O quiz é progressive enhancement — a marcação das
+ * etapas é gerada no cliente por um script pequeno que importa o motor de
+ * recomendação (src/lib/personalMatch.ts). Nenhum framework, nenhuma
+ * hidratação: só JS de comportamento.
+ *
+ * O resultado NUNCA vira URL indexável: o estado vive em memória e em
+ * sessionStorage. O contexto de cidade vindo das páginas locais chega por
+ * fragmento (#c=slug), que o Google não rastreia.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+import { regiaoPresencial } from '../../data/atendimentoPresencial';
+
+const path = '/ferramentas/encontre-seu-personal-ideal';
+const atualizadoEm = '2026-08-26';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Encontre seu Personal Ideal', url: path },
+];
+
+const title = 'Encontre Seu Personal Ideal | Personal por Perto';
+const description =
+  'Responda 8 perguntas rápidas e descubra que tipo de personal e acompanhamento combina com seu objetivo, sua rotina e sua experiência. Gratuito e sem cadastro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${new URL(path + '/', site.dominio).href}#webpage`,
+    url: new URL(path + '/', site.dominio).href,
+    name: 'Encontre seu Personal Ideal',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: {
+      '@type': 'Thing',
+      name: 'Escolha de personal trainer e formato de acompanhamento',
+    },
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <!-- ============================ HERO ============================ -->
+  <header class="pm-hero">
+    <div class="container pm-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Encontre seu Personal Ideal</h1>
+      <p class="pm-hero-lead">
+        Responda algumas perguntas e descubra que tipo de acompanhamento faz
+        mais sentido para o seu objetivo, a sua rotina e a sua experiência —
+        antes de gastar dinheiro com o formato errado.
+      </p>
+
+      <ul class="pm-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 1 minuto</li>
+        <li><span aria-hidden="true">✓</span> Resultado personalizado</li>
+        <li><span aria-hidden="true">✓</span> Gratuito</li>
+      </ul>
+
+      <!-- O quiz assume este bloco quando o JS carrega. -->
+      <div id="pm-app" class="pm-app" data-estado="inicial">
+        <div class="pm-start">
+          <button type="button" class="btn btn-primary btn-lg pm-start-btn" id="pm-iniciar">
+            Descobrir meu perfil
+          </button>
+          <p class="pm-microcopy">Sem cadastro para ver o resultado.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent pm-noscript">
+          <p>
+            <strong>O teste precisa de JavaScript para funcionar.</strong> Se
+            preferir, o conteúdo abaixo explica os mesmos critérios que a
+            ferramenta usa — dá para chegar à sua conclusão lendo, só leva
+            alguns minutos a mais.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <!-- ===================== CONTEÚDO EDITORIAL ===================== -->
+  <div class="container pm-conteudo">
+    <article class="prose pm-artigo">
+      <p class="pm-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="como-escolher">Como escolher um personal trainer</h2>
+      <p>
+        A pergunta que quase todo mundo faz é "qual é o melhor personal?". A
+        pergunta útil é outra: <strong>qual é o melhor personal para o meu
+        momento?</strong> São coisas diferentes. Um profissional excelente para
+        um atleta experiente pode ser a escolha errada para quem entra na
+        academia pela primeira vez — e vice-versa.
+      </p>
+      <p>
+        Na prática, a escolha depende de quatro coisas que ninguém pergunta no
+        anúncio: quantos dias por semana você realmente treina (não quantos
+        gostaria), quanto tempo tem em cada sessão, o que você já sabe executar
+        sozinho e qual é o obstáculo que mais atrapalha seus resultados hoje.
+        Duas pessoas com o mesmo objetivo e rotinas diferentes precisam de
+        acompanhamentos diferentes.
+      </p>
+      <p>
+        É por isso que a ferramenta acima não pergunta seu peso nem sua altura.
+        Esses dados importam para montar o treino — não para decidir que
+        <em>tipo</em> de acompanhamento você precisa contratar. Se quiser
+        aprofundar os critérios de avaliação de um profissional, o portal tem um
+        guia dedicado a
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+
+      <h2 id="presencial-online-hibrido">Personal presencial, online ou híbrido?</h2>
+      <p>
+        Os três formatos existem porque resolvem problemas diferentes. Colocar
+        um contra o outro como se um fosse universalmente superior é o erro mais
+        comum de quem está escolhendo.
+      </p>
+
+      <h3>Quando o presencial faz mais sentido</h3>
+      <p>
+        Presença física resolve o que texto e vídeo não resolvem: correção de
+        execução em tempo real e segurança para quem nunca treinou. Se você
+        entra na academia sem saber o que fazer com um aparelho, ou trava por
+        medo de fazer errado na frente dos outros, ter alguém do lado acelera
+        muito o começo. Também faz sentido quando existe limitação física a
+        contornar — nesse caso, com orientação prévia de médico ou
+        fisioterapeuta.
+      </p>
+      <p>
+        O ponto de atenção é o custo por semana. Presencial três vezes por
+        semana é caro, e boa parte desse valor está pagando por presença que
+        você talvez só precise nas primeiras semanas.
+      </p>
+
+      <h3>Quando o online individualizado faz mais sentido</h3>
+      <p>
+        Acompanhamento online não é "planilha por e-mail". No formato
+        individualizado, o profissional monta o treino a partir da sua rotina
+        real, ajusta quando a semana muda, acompanha sua evolução e corrige
+        execução por vídeo. Faz mais sentido quando você já consegue executar os
+        movimentos com razoável segurança e o seu gargalo é
+        <strong>organização, progressão e constância</strong> — que é o caso da
+        maioria de quem já treinou alguma vez na vida.
+      </p>
+      <p>
+        Também é a resposta natural para quem tem rotina imprevisível: horário
+        que muda, viagens, plantões. Um plano que se adapta vale mais do que uma
+        aula marcada que você desmarca.
+      </p>
+
+      <h3>Quando o híbrido é a resposta honesta</h3>
+      <p>
+        Muita gente tem demanda dos dois lados: precisa ajustar execução (o que
+        pede presença) e organizar a rotina (o que pede planejamento). O híbrido
+        resolve isso com um período presencial curto e focado, seguido de
+        acompanhamento a distância. É o formato menos divulgado e, para uma
+        parcela grande das pessoas, o mais eficiente por real investido.
+      </p>
+
+      <h2 id="por-que-objetivo-nao-basta">Por que só o objetivo não define seu personal</h2>
+      <p>
+        "Quero emagrecer" é ponto de partida, não critério de escolha. Duas
+        pessoas querendo emagrecer — uma com dois dias livres e histórico de
+        abandonar treino em três semanas, outra com cinco dias livres e dois
+        anos de academia — precisam de acompanhamentos radicalmente diferentes.
+        A primeira precisa de um plano à prova de semana ruim; a segunda, de
+        progressão bem gerida.
+      </p>
+      <p>
+        O objetivo diz para onde você vai. A rotina, a experiência e o seu
+        obstáculo principal dizem <em>como</em> chegar lá — e é isso que define
+        o profissional certo.
+      </p>
+
+      <h2 id="quantas-vezes">Quantas vezes por semana eu preciso de um personal?</h2>
+      <p>
+        Não existe número fixo, e desconfie de quem diz que existe. O que existe
+        é uma relação entre autonomia e frequência de acompanhamento: quanto
+        menos você domina a execução, mais presença ajuda no início; quanto mais
+        autônomo você é, mais o valor se concentra no planejamento e nos ajustes
+        periódicos.
+      </p>
+      <p>
+        Um caminho comum e sensato é começar com mais acompanhamento e reduzir
+        conforme a execução vira automática. Acompanhamento que aumenta sua
+        dependência ao longo do tempo, em vez de sua autonomia, é sinal de
+        alerta.
+      </p>
+
+      <h2 id="metodologia">Como calculamos seu resultado</h2>
+      <p>
+        A ferramenta não sorteia respostas nem usa inteligência artificial para
+        inventar texto. Ela cruza sete fatores com pesos definidos por nós:
+      </p>
+      <ul class="check-list">
+        <li><strong>Objetivo</strong> — para onde você quer ir.</li>
+        <li><strong>Experiência</strong> — o quanto você já executa sozinho com segurança.</li>
+        <li><strong>Disponibilidade real</strong> — dias que você sustenta em uma semana comum.</li>
+        <li><strong>Tempo por sessão</strong> — o que cabe de fato em cada treino.</li>
+        <li><strong>Local de treino</strong> — o equipamento disponível muda a prescrição.</li>
+        <li><strong>Maior dificuldade</strong> — o fator de maior peso, porque é o seu gargalo real.</li>
+        <li><strong>O que você espera do profissional</strong> — presença, planejamento, correção ou cobrança.</li>
+        <li><strong>Localização</strong> — determina se o presencial é viável de verdade.</li>
+      </ul>
+      <p>
+        Cada resposta soma pontos para dois lados: demanda por presença e
+        demanda por planejamento. Quando um lado predomina com folga, a
+        recomendação é presencial ou online. Quando os dois pontuam alto, ou
+        quando ficam próximos, o resultado é híbrido — porque seria desonesto
+        forçar uma escolha binária em quem tem demanda dupla.
+      </p>
+      <p>
+        O resultado é orientativo. Ele ajuda a definir <em>formato</em> de
+        acompanhamento, não substitui avaliação individual, não prescreve treino
+        e não diagnostica nada. Se você tem dor, lesão ou alguma condição de
+        saúde, converse com um médico ou fisioterapeuta antes de começar.
+      </p>
+
+      <aside class="pm-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>. Quando o perfil de
+          quem responde é compatível com o trabalho dele, essa opção aparece no
+          resultado — e, quando não é, a ferramenta diz isso com todas as
+          letras. O cálculo do formato recomendado (presencial, online ou
+          híbrido) é feito antes e independentemente dessa checagem de
+          compatibilidade.
+        </p>
+        <p class="pm-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e revisada
+          por <a href={rotas.montinho}>{montinho.nome}</a>, personal trainer com
+          mais de 20 anos de experiência em musculação. Atendimento presencial
+          em {regiaoPresencial}; acompanhamento online para todo o Brasil.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <!-- ==================== TEMPLATES DO QUIZ ===================== -->
+  <!-- Marcação inerte: o script clona estes moldes conforme a etapa. -->
+  <template id="pm-tpl-quiz">
+    <div class="pm-quiz" role="group" aria-labelledby="pm-pergunta-titulo">
+      <div class="pm-progresso">
+        <div class="pm-progresso-barra"><span class="pm-progresso-preenchido"></span></div>
+        <p class="pm-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="pm-pergunta" id="pm-pergunta-titulo"></h2>
+      <p class="pm-ajuda"></p>
+      <div class="pm-opcoes"></div>
+      <div class="pm-nav">
+        <button type="button" class="pm-voltar">← Voltar</button>
+        <button type="button" class="btn btn-primary pm-avancar" hidden>Continuar</button>
+      </div>
+      <p class="pm-reforco"></p>
+    </div>
+  </template>
+
+  <!--
+    is:global é obrigatório aqui: o quiz e o resultado são criados via JS
+    (document.createElement), e elementos criados em tempo de execução não
+    recebem o atributo de escopo que o Astro injeta na marcação estática —
+    com <style> escopado, todo o CSS do quiz seria ignorado. Todas as classes
+    usam o prefixo `pm-` e só esta página carrega esta folha.
+  -->
+  <style is:global>
+    /* ------------------------------- Hero ------------------------------- */
+    .pm-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .pm-hero-inner {
+      max-width: 780px;
+    }
+    .pm-hero h1 {
+      color: #fff;
+      max-width: 18ch;
+    }
+    .pm-hero .eyebrow {
+      color: #ffb488;
+    }
+    .pm-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 60ch;
+    }
+    .pm-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .pm-hero-selos li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .pm-hero-selos span {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .pm-app {
+      margin-top: var(--sp-6);
+    }
+    .pm-start-btn {
+      width: 100%;
+      max-width: 380px;
+    }
+    .pm-microcopy {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: #aab0ba;
+    }
+    .pm-noscript {
+      margin-top: var(--sp-5);
+      color: var(--ink);
+    }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .pm-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .pm-progresso-barra {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--bg-tint-2);
+      overflow: hidden;
+    }
+    .pm-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .pm-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .pm-pergunta {
+      margin-top: var(--sp-4);
+      font-size: var(--step-2);
+      line-height: 1.2;
+    }
+    .pm-ajuda {
+      margin-top: var(--sp-2);
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+    .pm-ajuda:empty {
+      display: none;
+    }
+    .pm-opcoes {
+      display: grid;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    @media (min-width: 620px) {
+      .pm-opcoes.pm-opcoes--curtas {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+    }
+    .pm-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
+    }
+    .pm-opcao:hover {
+      border-color: var(--brand);
+      background: var(--bg-tint);
+    }
+    .pm-opcao[aria-pressed='true'],
+    .pm-opcao.pm-sel {
+      border-color: var(--accent);
+      background: var(--accent-50);
+    }
+    .pm-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      color: #fff;
+    }
+    .pm-opcao[aria-pressed='true'] .pm-opcao-marca,
+    .pm-opcao.pm-sel .pm-opcao-marca {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .pm-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .pm-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .pm-voltar:hover {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+    /*
+      `.btn { display: inline-flex }` do CSS global tem especificidade maior
+      que a regra [hidden] do navegador — sem isto, o botão "Continuar"
+      aparece também nas perguntas de escolha única, que avançam sozinhas.
+    */
+    .pm-quiz [hidden] {
+      display: none;
+    }
+    /* O "Voltar" é exceção: fica invisível mas mantém o espaço, para a
+       linha de navegação não pular entre as etapas. */
+    .pm-voltar[hidden] {
+      visibility: hidden;
+      display: block;
+    }
+    .pm-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+    .pm-reforco:empty {
+      display: none;
+    }
+
+    /* Campo de cidade */
+    .pm-cidade-campo {
+      position: relative;
+    }
+    .pm-cidade-campo input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      font: inherit;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      min-height: 56px;
+    }
+    .pm-cidade-campo input:focus {
+      border-color: var(--brand);
+      outline: none;
+    }
+    .pm-sugestoes {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-2) 0 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      max-height: 260px;
+      overflow-y: auto;
+      box-shadow: var(--shadow);
+    }
+    .pm-sugestoes:empty {
+      display: none;
+    }
+    .pm-sugestoes li button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border: 0;
+      background: #fff;
+      font: inherit;
+      cursor: pointer;
+      min-height: 48px;
+    }
+    .pm-sugestoes li button:hover,
+    .pm-sugestoes li button:focus-visible {
+      background: var(--accent-50);
+    }
+    .pm-sug-uf {
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .pm-pular {
+      margin-top: var(--sp-4);
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .pm-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .pm-res-perfil {
+      border-bottom: 1px solid var(--line-soft);
+      padding-bottom: var(--sp-5);
+    }
+    .pm-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+    }
+    .pm-res-nome {
+      margin-top: var(--sp-2);
+      font-size: var(--step-3);
+      line-height: 1.15;
+    }
+    .pm-res-resumo {
+      margin-top: var(--sp-3);
+      color: var(--ink-soft);
+      font-size: var(--step-1);
+      line-height: 1.5;
+    }
+    .pm-res-modelo {
+      margin-top: var(--sp-5);
+      background: var(--brand-50);
+      border: 1px solid var(--brand-100);
+      border-radius: var(--radius);
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .pm-res-modelo strong {
+      display: block;
+      font-size: var(--step-1);
+      color: var(--brand-700);
+    }
+    .pm-bloco {
+      margin-top: var(--sp-6);
+    }
+    .pm-bloco h3 {
+      font-size: var(--step-1);
+      margin-bottom: var(--sp-3);
+    }
+    .pm-bloco p + p {
+      margin-top: var(--sp-3);
+    }
+    .pm-bloco ul {
+      display: grid;
+      gap: 0.55rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .pm-bloco ul li {
+      position: relative;
+      padding-left: 1.6rem;
+      line-height: 1.55;
+    }
+    .pm-bloco ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .pm-nao ul li::before {
+      content: '—';
+      color: var(--muted);
+    }
+    .pm-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .pm-compat h3 {
+      color: #fff;
+      font-size: var(--step-1);
+    }
+    .pm-compat-nivel {
+      display: inline-block;
+      margin-bottom: var(--sp-3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: var(--step--1);
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+    .pm-compat-nivel[data-nivel='alta'] {
+      background: var(--accent);
+    }
+    .pm-compat p {
+      margin-top: var(--sp-3);
+      line-height: 1.6;
+    }
+    .pm-compat-ressalva {
+      font-size: var(--step--1);
+      color: #aab0ba;
+      border-left: 3px solid rgba(255, 255, 255, 0.2);
+      padding-left: var(--sp-3);
+    }
+    .pm-acoes {
+      margin-top: var(--sp-5);
+      display: grid;
+      gap: var(--sp-3);
+    }
+    .pm-acoes .btn {
+      width: 100%;
+    }
+    .pm-acoes-nota {
+      font-size: var(--step--1);
+      color: #aab0ba;
+      text-align: center;
+      margin: 0;
+    }
+    .pm-secundario {
+      display: inline-block;
+      margin-top: var(--sp-2);
+      color: #fff;
+      text-decoration: underline;
+      font-size: var(--step--1);
+    }
+    .pm-conteudo-sug {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .pm-conteudo-sug ul {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-3) 0 0;
+      display: grid;
+      gap: var(--sp-2);
+    }
+    .pm-conteudo-sug a {
+      color: var(--brand-600);
+      font-weight: 600;
+    }
+    .pm-rodape-res {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+      align-items: center;
+      justify-content: space-between;
+    }
+    .pm-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .pm-feedback button {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      cursor: pointer;
+      min-height: 40px;
+    }
+    .pm-feedback button:hover {
+      border-color: var(--brand);
+    }
+    .pm-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+    }
+    .pm-aviso {
+      margin-top: var(--sp-5);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .pm-conteudo {
+      padding-block: var(--sp-8);
+    }
+    .pm-artigo {
+      max-width: var(--container-narrow);
+      margin-inline: auto;
+    }
+    .pm-atualizado {
+      color: var(--muted);
+      font-size: var(--step--1);
+      margin-bottom: var(--sp-5);
+    }
+    .pm-artigo h2 {
+      margin-top: var(--sp-7);
+      font-size: var(--step-2);
+    }
+    .pm-artigo h3 {
+      margin-top: var(--sp-5);
+      font-size: var(--step-1);
+    }
+    .pm-artigo p {
+      margin-top: var(--sp-4);
+      line-height: 1.7;
+    }
+    .pm-artigo ul {
+      margin-top: var(--sp-4);
+    }
+    .pm-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .pm-disclosure h2 {
+      margin-top: 0;
+      font-size: var(--step-1);
+    }
+    .pm-metodologia-nota {
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+  </style>
+
+  <script>
+    import { iniciarPersonalMatch } from '../../scripts/personalMatch.client';
+    iniciarPersonalMatch();
+  </script>
+</Base>

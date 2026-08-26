@@ -24,6 +24,13 @@ export const GET: APIRoute = () => {
       u: a.url,
       k: a.titulo,
     })),
+    {
+      t: 'Encontre seu Personal Ideal',
+      s: 'Ferramenta',
+      u: '/ferramentas/encontre-seu-personal-ideal/',
+      k: 'teste quiz encontrar personal ideal escolher personal online presencial hibrido acompanhamento',
+    },
+    { t: 'Ferramentas', s: 'Seção', u: '/ferramentas/', k: 'ferramentas testes calculadora' },
     { t: 'Encontrar personal por cidade', s: 'Seção', u: '/personal-trainer/', k: 'encontrar personal cidades diretorio' },
     { t: 'Guias de contratação', s: 'Seção', u: '/guias/', k: 'guias contratar personal trainer' },
     { t: 'Musculação', s: 'Seção', u: '/musculacao/', k: 'musculacao treino hipertrofia' },

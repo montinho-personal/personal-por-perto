@@ -9,6 +9,7 @@ import Sidebar from '../../components/Sidebar.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import FerramentaCta from '../../components/FerramentaCta.astro';
 import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
@@ -419,6 +420,11 @@ const objetivoDesc: Record<string, string> = {
           tabela por cidade e dicas de como economizar sem perder qualidade.
         </p>
       </section>
+
+      <FerramentaCta
+        cidadeSlug={cidade.slug}
+        titulo={`Ainda em dúvida entre presencial e online ${emN}?`}
+      />
 
       {
         ehTambore && (
