@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, redes como a Smart Fit e estúdios de funcional e crossfit, com a proximidade de Goiânia ampliando opções e referências de treino.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Av. Rio Verde', detalhe: 'no Setor dos Afonsos, na Avenida Rio Verde' },
+    { nome: 'Smart Fit Buriti Shopping', detalhe: 'unidade da rede dentro do Buriti Shopping' },
+  ],
+
   destaquesFitness: [
     'Boa rede de parques com pista e academia ao ar livre.',
     'Calendário ativo de corridas de rua.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aparecida de Goiânia', url: 'https://www.aparecida.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/aparecida-de-goiania-go.webp',
     w: 1200,

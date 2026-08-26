@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes consolidadas (Smart Fit, Starfit, Skyfit) nos bairros nobres e na orla, complementadas pela enorme estrutura ao ar livre dos calçadões litorâneos.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Jaboatão', detalhe: 'na Av. Ayrton Senna da Silva, em Piedade' },
+    { nome: 'Smart Fit Shopping Guararapes', detalhe: 'na Av. General Barreto de Menezes, dentro do shopping' },
+    { nome: 'Starfit Academia', detalhe: 'academia local em Piedade, com musculação e aulas, atendendo também Candeias' },
+  ],
+
   destaquesFitness: [
     'Corredor ao ar livre contínuo: cerca de 8 km de ciclovia e 4,5 km de praia em Piedade.',
     'Redes consolidadas (Smart Fit, Starfit, Skyfit) nos bairros nobres.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jaboatão dos Guararapes', url: 'https://www.jaboatao.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/jaboatao-dos-guararapes-pe.webp',
     w: 1200,

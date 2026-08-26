@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes como a Smart Fit (concentradas no polo comercial do Eldorado) e academias locais, complementadas pelos núcleos do programa "Contagem Ativa" e pelas áreas de treino dos parques.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Contagem', detalhe: 'no Big Shopping, na Av. João César de Oliveira, no Eldorado' },
+    { nome: 'Pratique Fitness Eldorado', detalhe: 'na Rua Mário Vital: unidade da maior rede da região metropolitana de BH' },
+    { nome: 'Pratique Fitness Novo Eldorado', detalhe: 'segunda unidade da rede, atendendo o Novo Eldorado' },
+  ],
+
   destaquesFitness: [
     'Redes como a Smart Fit concentradas no Eldorado, principal polo comercial.',
     'Programa público "Contagem Ativa" com cerca de 70 núcleos e milhares de alunos.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Contagem', url: 'https://portal.contagem.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/contagem-mg.webp',
     w: 1200,

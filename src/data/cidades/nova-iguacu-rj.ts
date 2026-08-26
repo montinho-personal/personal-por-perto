@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit e academias locais, concentradas no eixo da Via Light e no Centro, complementadas pela Vila Olímpica e pelas trilhas do Mendanha.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Nova Iguaçu Centro', detalhe: 'na Rua Arcelino Pereira Neves, no Centro' },
+    { nome: 'Smart Fit Alto da Posse', detalhe: 'na Av. Henrique Duque Estrada Meyer, no Alto da Posse' },
+    { nome: 'Smart Fit Rancho Novo', detalhe: 'na Rua Deputado Darcílio Ayres Raunhetti, no Rancho Novo' },
+    { nome: 'Smart Fit Via Light', detalhe: 'unidade da rede junto ao shopping Via Light' },
+  ],
+
   destaquesFitness: [
     'Trilhas e cachoeiras do Parque Natural do Mendanha para treino ao ar livre.',
     'Eixo Via Light: academias (Smart Fit) e palco de corridas.',
@@ -96,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Nova Iguaçu', url: 'https://www.novaiguacu.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/nova-iguacu-rj.webp',
     w: 1200,
