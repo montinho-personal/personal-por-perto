@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é boa para o porte da cidade, concentrada principalmente nos bairros de maior renda da zona sul, e bem complementada pelos espaços ao ar livre da Represa Municipal.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Centro', detalhe: 'uma das três unidades da rede na cidade' },
+    { nome: 'Smart Fit Avenida JK', detalhe: 'unidade da rede na Avenida Juscelino Kubitschek' },
+    { nome: 'Smart Fit Shopping Cidade Norte', detalhe: 'unidade dentro do shopping, na zona norte' },
+    { nome: 'Selfit Rio Preto', detalhe: 'rede com musculação, ginástica, spinning, lutas e dança' },
+    { nome: 'Allp Fit Rio Preto', detalhe: 'unidade da rede em expansão na cidade' },
+  ],
+
   destaquesFitness: [
     'Polo de saúde (FAMERP e Hospital de Base) com ecossistema favorável ao bem-estar.',
     'Calendário robusto de corridas (Seguralta Marathon, LIVE! RUN XP).',
@@ -96,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Preto', url: 'https://www.riopreto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/sao-jose-do-rio-preto-sp.webp',
     w: 1200,

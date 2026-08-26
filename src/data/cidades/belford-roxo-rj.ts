@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta se concentra em academias de bairro e estúdios de pequeno e médio porte, distribuídos pelo Centro e pelos eixos comerciais, complementados por atendimento domiciliar e personal trainer — formato que atende bem quem tem rotina de deslocamento para a capital.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Belford Roxo', detalhe: 'na Rua Alberto Rocha, no Centro' },
+    { nome: 'Life Fit Belford Roxo', detalhe: 'unidade da rede fluminense na cidade' },
+  ],
+
   destaquesFitness: [
     'Forte cultura de futebol amador e de várzea nos campos e quadras de bairro.',
     'Academias de bairro e estúdios espalhados pelo Centro e eixos comerciais.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belford Roxo', url: 'https://prefeituradebelfordroxo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM (Belford Roxo)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300456' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/belford-roxo-rj.webp',
     w: 1200,

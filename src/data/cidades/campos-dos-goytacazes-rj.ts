@@ -69,6 +69,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta acompanha o porte da cidade, com academias e estúdios premium concentrados na Pelinca, complementados pelas áreas verdes e pelas margens do Paraíba do Sul.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Campos dos Goytacazes', detalhe: 'na Rua Barão de Miracema, no Centro' },
+  ],
+
   destaquesFitness: [
     'Maior mercado consumidor do Norte Fluminense (mais de 480 mil habitantes).',
     'Polo universitário que amplia o público jovem e fitness.',
@@ -95,7 +99,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campos', url: 'https://www.campos.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/campos-dos-goytacazes-rj.webp',
     w: 1200,

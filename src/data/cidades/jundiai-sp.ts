@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes nacionais (Smart Fit) e estúdios de funcional e crossfit, atendendo um público de alta renda que valoriza tanto a musculação quanto o treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Jardim Liberdade', detalhe: 'na Av. Antônio Frederico Ozanan' },
+    { nome: 'Smart Fit Jundiaí Shopping', detalhe: 'unidade da rede dentro do shopping' },
+    { nome: 'Bluefit Centro', detalhe: 'na Rua XV de Novembro, no Centro' },
+    { nome: 'Bluefit Anhangabaú', detalhe: 'na Av. Nove de Julho' },
+    { nome: 'Bluefit Ponte de Campinas', detalhe: 'na Av. União dos Ferroviários' },
+  ],
+
   destaquesFitness: [
     'Parque da Cidade com pistas de cooper de 2,1 km, academia ao ar livre e ciclovia iluminada.',
     'Serra do Japi para trilha e caminhada em Mata Atlântica preservada.',
@@ -96,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jundiaí', url: 'https://www.jundiai.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/jundiai-sp.webp',
     w: 1200,
