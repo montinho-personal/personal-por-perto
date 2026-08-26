@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o crescimento da classe média e o público universitário, complementada pelo novo parque esportivo da Lagoa das Bateias.',
 
+  academiasProximas: [
+    { nome: 'Ativa Fitness Candeias', detalhe: 'na Av. Eratóstenes Menezes: cerca de 2.700 m² com musculação, ginástica e natação' },
+    { nome: 'Ativa Fitness Recreio', detalhe: 'segunda unidade da rede local, na Av. Siqueira Campos' },
+    { nome: 'Smart Fit Vitória da Conquista', detalhe: 'na Avenida Olívia Flores, em Candeias' },
+  ],
+
   destaquesFitness: [
     'Clima de altitude ameno, ideal para treino ao ar livre.',
     'Polo universitário e de saúde, com público qualificado.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vitória da Conquista', url: 'https://www.pmvc.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-31',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/vitoria-da-conquista-ba.webp',
     w: 1200,

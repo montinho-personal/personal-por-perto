@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e boxes de crossfit em expansão, com a orla do São Francisco funcionando como hub público de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Petrolina', detalhe: 'na Av. da Integração, na Vila Eduardo' },
+    { nome: 'Selfit Tancredo Neves', detalhe: 'na Av. Presidente Tancredo Neves, no Centro' },
+    { nome: 'Selfit Antônio Cassimiro', detalhe: 'na Av. Fernando Farias' },
+  ],
+
   destaquesFitness: [
     'Orla do São Francisco como academia a céu aberto.',
     'Calendário consistente de corridas de rua com chancela da CBAt.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Petrolina', url: 'https://petrolina.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-08-26',
 
   capaArte: {
     src: '/capas-cidade/petrolina-pe.webp',

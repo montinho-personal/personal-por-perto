@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes nacionais (Smart Fit, Bluefit) e academias locais, com planos corporativos e mais de 40 academias ao ar livre, sustentadas por um polo de saúde e universidades.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Getúlio Vargas I', detalhe: 'na Av. Getúlio Vargas, na Vila Aviação' },
+    { nome: 'Smart Fit Getúlio Vargas II', detalhe: 'segunda unidade na mesma avenida, no Jardim Aeroporto' },
+  ],
+
   destaquesFitness: [
     'Parque Vitória Régia como principal espaço público para atividade física.',
     'Mais de 40 academias ao ar livre distribuídas pela cidade.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bauru', url: 'https://www.bauru.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/bauru-sp.webp',
     w: 1200,

@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne grandes redes (Smart Fit, Skyfit) e academias locais consolidadas, com musculação e funcional em alta, complementadas pela estrutura pública da Via Parque.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Caruaru', detalhe: 'na Rua Adjar da Silva Casé, em Indianópolis' },
+    { nome: 'Smart Fit Shopping Difusora', detalhe: 'unidade da rede dentro do shopping' },
+    { nome: 'Selfit Maurício de Nassau', detalhe: 'na Av. Oswaldo Cruz' },
+    { nome: 'Selfit Indianópolis', detalhe: 'na Av. José Rodrigues de Jesus' },
+    { nome: 'Skyfit Caruaru', detalhe: 'unidade da rede na cidade' },
+  ],
+
   destaquesFitness: [
     'Via Parque (cerca de 7 km): principal infraestrutura de treino ao ar livre da cidade.',
     'Clima de altitude, mais ameno — vantagem para corrida e ciclismo.',
@@ -96,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caruaru', url: 'https://www.caruaru.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-31',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/caruaru-pe.webp',
     w: 1200,
