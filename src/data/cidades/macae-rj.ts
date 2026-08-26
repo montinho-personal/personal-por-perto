@@ -107,10 +107,17 @@ export const cidade: Cidade = {
         'A renda do petróleo sustenta valores acima da média do interior fluminense, especialmente na Praia dos Cavaleiros e na Glória — mais próximos dos praticados na capital. Pacotes em blocos para embarcados, treino em dupla e horários fora de pico são as formas comuns de otimizar o custo. A alta rotatividade de profissionais que chegam e saem da cidade mantém o mercado competitivo.',
     },
   ],
+  capaArte: {
+    src: '/capas-cidade/macae-rj.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Macaé (RJ) em arte quadrada com a orla e a avenida à beira-mar, as torres do parque industrial do petróleo e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Macaé: mente forte e corpo preparado, com acompanhamento profissional na capital do petróleo.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Macaé', url: 'https://cidades.ibge.gov.br/brasil/rj/macae/panorama' },
     { nome: 'Prefeitura de Macaé', url: 'https://macae.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-25',
 };

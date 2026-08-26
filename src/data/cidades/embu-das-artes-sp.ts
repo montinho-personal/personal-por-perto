@@ -112,6 +112,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['taboao-da-serra-sp', 'cotia-sp', 'sao-paulo-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/embu-das-artes-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Embu das Artes (SP) em arte quadrada com a igreja do Largo dos Jesuítas, as bancas da feira de artes e artesanato e o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Embu das Artes: movimento que transforma, com acompanhamento profissional na cidade da arte, a oeste da Grande São Paulo.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Embu das Artes', url: 'https://cidades.ibge.gov.br/brasil/sp/embu-das-artes/panorama' },
     { nome: 'Prefeitura de Embu das Artes', url: 'https://cidadeembudasartes.sp.gov.br/' },
