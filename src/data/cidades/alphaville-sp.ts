@@ -70,9 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta inclui academias como a 24 Horas Premium e a Gaviões, a Bodytech no Iguatemi Alphaville, unidades de Smart Fit e CrossFit, além de muitos estúdios boutique e do Alphaville Tênis Clube. Ainda assim, grande parte da demanda é atendida dentro dos próprios condomínios, por personais que treinam o aluno em casa.',
   academiasProximas: [
-    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium dentro do shopping Iguatemi' },
-    { nome: '24 Horas Premium', detalhe: 'academia com acesso 24 horas na região' },
-    { nome: 'Gaviões', detalhe: 'rede paulista com estrutura ampla de musculação e aulas' },
+    { nome: 'Ironberg Alphaville', detalhe: 'centro de treinamento de grande porte na Estrada Aldeinha, no Alphaville Empresarial, com foco em musculação de alta performance' },
+    { nome: 'NitroGym Tamboré', detalhe: 'unidade de cerca de 3 mil m² no Shopping Tamboré, com musculação, avaliação física e sauna' },
+    { nome: 'Arena 18', detalhe: 'na Rua Mário Quintana: esportes de areia (beach tennis, vôlei e futevôlei) somados a musculação e treino funcional' },
+    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'cerca de 1.000 m² no piso lazer do shopping Iguatemi, na Al. Rio Negro' },
+    { nome: 'Academia 24h Premium', detalhe: 'na Alameda Grajaú, no Alphaville Centro, com funcionamento 24 horas e grade ampla de aulas' },
+    { nome: 'Academia Gaviões Alphaville', detalhe: 'unidade da rede paulista no Alphaville Industrial, com funcionamento 24 horas' },
     { nome: 'Smart Fit', detalhe: 'rede de baixo custo com unidades em Alphaville e no entorno' },
     { nome: 'Alphaville Tênis Clube', detalhe: 'clube tradicional com estrutura esportiva completa' },
     { nome: 'Estúdios boutique e boxes de CrossFit', detalhe: 'espalhados pelo centro comercial e arredores' },
@@ -136,5 +139,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Alphaville com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-08-26',
 };

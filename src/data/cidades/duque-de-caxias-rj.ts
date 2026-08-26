@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro voltadas à grande população trabalhadora e a estrutura da Vila Olímpica, complementadas pelas trilhas da Taquara para o treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Duque de Caxias 2', detalhe: 'na Rua José de Alvarenga, no Centro' },
+    { nome: 'Smart Fit Caxias Shopping', detalhe: 'na Rodovia Washington Luiz, dentro do Caxias Shopping' },
+    { nome: 'Smart Fit Jardim Vinte e Cinco de Agosto', detalhe: 'na Rua Professor José de Souza, atendendo o bairro' },
+  ],
+
   destaquesFitness: [
     'Parque Natural da Taquara: trilhas e cachoeiras para treino na natureza.',
     'Vila Olímpica (maior da Baixada): pista de atletismo, musculação e quadras.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Duque de Caxias', url: 'https://duquedecaxias.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-08-26',
   capaArte: {
     src: '/capas-cidade/duque-de-caxias-rj.webp',
     w: 1200,

@@ -70,6 +70,7 @@ export const cidade: Cidade = {
   academias:
     'Além das academias dos próprios condomínios, a região conta com unidades como a Academia Tamboré e estúdios e centros de treino no Centro Empresarial Tamboré. A maior parte da demanda, porém, é atendida por personais que treinam o aluno dentro do condomínio.',
   academiasProximas: [
+    { nome: 'NitroGym Tamboré', detalhe: 'no Shopping Tamboré, na Av. Piracema: cerca de 3 mil m² com musculação, avaliação física e sauna' },
     { nome: 'Academia Tamboré', detalhe: 'referência da própria região' },
     { nome: 'Bluefit Tamboré', detalhe: 'unidade da rede na Av. Tucunaré' },
     { nome: 'Estúdios do Centro Empresarial Tamboré', detalhe: 'opções de treino junto ao polo corporativo' },
@@ -129,5 +130,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Tamboré com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-08-26',
 };

@@ -69,6 +69,9 @@ export const cidade: Cidade = {
   academias:
     'A demanda por personal training e wellness corporativo é alta, dada a renda e o perfil executivo de Alphaville e Tamboré. Condomínios de alto padrão frequentemente contam com estrutura própria de treino, o que valoriza o atendimento individual e personalizado.',
   academiasProximas: [
+    { nome: 'Ironberg Alphaville', detalhe: 'centro de treinamento de grande porte na Estrada Aldeinha, no Alphaville Empresarial' },
+    { nome: 'NitroGym Tamboré', detalhe: 'academia de cerca de 3 mil m² no Shopping Tamboré, com musculação, avaliação física e sauna' },
+    { nome: 'Arena 18', detalhe: 'esportes de areia e musculação na Rua Mário Quintana, em Alphaville' },
     { nome: 'Smart Fit', detalhe: 'unidades no Centro, na Av. Zélia e no Parque Shopping Barueri' },
     { nome: 'Bluefit', detalhe: 'unidades em Bethaville e no Tamboré' },
     { nome: 'Academias de condomínio', detalhe: 'estrutura própria nos residenciais de Alphaville, Tamboré e Aldeia da Serra' },
@@ -129,5 +132,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-08-26',
 };
