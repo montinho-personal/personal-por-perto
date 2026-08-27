@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o perfil litorâneo da cidade, complementada pela enorme estrutura ao ar livre dos calçadões da Enseada e de Pitangueiras.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Pão de Açúcar Enseada', detalhe: 'na Av. Dom Pedro I, no Jardim Tejereba' },
+    { nome: 'Smart Fit Vicente de Carvalho', detalhe: 'na Rua Cristóvão Gil Lopes, em Vicente de Carvalho' },
+    { nome: 'Smart Fit Pitangueiras', detalhe: 'no bairro de Pitangueiras' },
+  ],
+
   destaquesFitness: [
     'Calçadões da Enseada e de Pitangueiras como academia ao ar livre natural.',
     'Surfe e esportes de praia (Enseada com cerca de 6 km).',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Guarujá', url: 'https://www.guaruja.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/guaruja-sp.webp',
     w: 1200,

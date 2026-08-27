@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é consolidada, com academias e estúdios de musculação atendendo um público de renda elevada nos bairros nobres, e bem complementada pela rede pública de parques.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Cascavel', detalhe: 'na Rua Paraná, no Centro' },
+    { nome: 'Bluefit Cascavel', detalhe: 'na Av. Barão do Rio Branco, no São Cristóvão' },
+  ],
+
   destaquesFitness: [
     'Lago Municipal: a maior reserva ecológica urbana do sul do país, com pista plana e sombreada de mais de 4 km.',
     'Renda elevada e bairros nobres que favorecem o personal training premium.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cascavel', url: 'https://www.cascavel.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [

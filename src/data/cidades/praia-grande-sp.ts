@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit (várias unidades), a Bluefit, boxes de crossfit e academias locais, com a orla e suas academias ao ar livre funcionando como uma enorme extensão de treino.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Pres. Costa e Silva', detalhe: 'na Av. Presidente Costa e Silva, no Boqueirão' },
+    { nome: 'Smart Fit Litoral Plaza', detalhe: 'no Litoral Plaza Shopping' },
+    { nome: 'Smart Fit Ocian', detalhe: 'no bairro Ocian' },
+    { nome: 'Smart Fit Atacadão Praia Grande', detalhe: 'junto ao Atacadão' },
+  ],
+
   destaquesFitness: [
     'Maior ciclovia à beira-mar do país (cerca de 22,5 km).',
     'Academias ao ar livre distribuídas ao longo de toda a orla.',
@@ -96,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Praia Grande', url: 'https://www.praiagrande.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/praia-grande-sp.webp',
     w: 1200,

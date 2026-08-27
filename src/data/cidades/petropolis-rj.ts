@@ -75,6 +75,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta valoriza as academias indoor e o treino funcional por causa do clima frio, com um nicho crescente em trilhas e corrida de serra, atendendo um público turístico e de alto padrão.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Petrópolis', detalhe: 'na Rua do Imperador, no Centro' },
+    { nome: 'Körper Pátio Petrópolis', detalhe: 'na Rua Marechal Deodoro, dentro do Pátio Petrópolis Shopping' },
+  ],
+
   destaquesFitness: [
     'Clima serrano frio que favorece corrida, trilhas e treino de resistência.',
     'Parque Cremerie, com cerca de 47 mil m² e trilhas para treino ao ar livre.',
@@ -125,5 +130,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Petrópolis', url: 'https://www.petropolis.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-27',
 };
