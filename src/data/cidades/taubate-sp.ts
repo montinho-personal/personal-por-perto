@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes, academias tradicionais, boxes de crossfit e centros de treinamento funcional, complementada por parques públicos gratuitos com pistas de caminhada e corrida.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Taubaté', detalhe: 'na Av. Itália, no Jardim das Nações' },
+    { nome: 'Smart Fit Extra Taubaté', detalhe: 'na Av. Juscelino Kubitschek, no Jardim Eulália' },
+    { nome: 'Smart Fit Tauste Taubaté', detalhe: 'na Rua Domingos Rodrigues do Prado, na Vila Edmundo' },
+  ],
+
   destaquesFitness: [
     'Parques públicos gratuitos com pistas de caminhada e corrida (Itaim, Jardim das Nações).',
     'Malha cicloviária extensa (cerca de 90 km, em expansão).',
@@ -95,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Taubaté', url: 'https://www.taubate.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/taubate-sp.webp',

@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'Como polo regional do Cariri, concentra a maior oferta de academias e eventos esportivos da região, complementada pela Colina do Horto e pelas praças centrais.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Juazeiro do Norte', detalhe: 'na Av. Padre Cícero, no Triângulo' },
+    { nome: 'Selfit Juazeiro do Norte', detalhe: 'também na Av. Padre Cícero, no Antônio Vieira' },
+  ],
+
   destaquesFitness: [
     'Colina do Horto como desafio natural de subida e trekking.',
     'Polo regional do Cariri que concentra academias e eventos.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juazeiro do Norte', url: 'https://juazeirodonorte.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/juazeiro-do-norte-ce.webp',

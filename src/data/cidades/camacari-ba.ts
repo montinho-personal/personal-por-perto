@@ -69,6 +69,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha a renda industrial e o litoral de alto padrão; muitos condomínios têm estrutura própria de treino, e a procura por personal trainers é puxada pelo público de maior poder aquisitivo de Guarajuba e Busca Vida.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Camaçari', detalhe: 'no Boulevard Shopping, na BA-535' },
+  ],
+
   destaquesFitness: [
     'Litoral de alto padrão (Guarajuba, Busca Vida) com público para atendimento personalizado.',
     'Orla de Guarajuba com calçadão e ciclovia para treino ao ar livre.',
@@ -95,7 +99,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Camaçari', url: 'https://www.camacari.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/camacari-ba.webp',

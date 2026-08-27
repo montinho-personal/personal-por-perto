@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes e academias locais (26Fit, SkyFit, +FIT), com um mercado de personal training qualificado pela universidade e bem complementado pelos espaços ao ar livre da orla.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Três Vendas', detalhe: 'na Av. Fernando Osório' },
+    { nome: 'Skyfit Pelotas', detalhe: 'no bairro Fragata' },
+  ],
+
   destaquesFitness: [
     'Pista do Parque Una (cerca de 890 m) no centro da cidade.',
     'Orla do Laranjal: calçadão, academia ao ar livre e quadras de areia na beira da lagoa.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pelotas', url: 'https://www.pelotas.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/pelotas-rs.webp',

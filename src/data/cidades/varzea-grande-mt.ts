@@ -69,6 +69,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro e estúdios, em um mercado de grande volume populacional, complementada por três parques ambientais com academia ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Várzea Grande Shopping', detalhe: 'na Av. Presidente Arthur Bernardes' },
+    { nome: 'Bluefit Várzea Grande', detalhe: 'na Av. Filinto Müller' },
+  ],
+
   destaquesFitness: [
     'Parque Bernardo Berneck, com pista de 3,5 km e aulas gratuitas — polo de treino ao ar livre.',
     'Mercado de grande volume populacional (cerca de 300 mil habitantes) na RM de Cuiabá.',
@@ -95,7 +100,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Várzea Grande', url: 'https://www.varzeagrande.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/varzea-grande-mt.webp',
