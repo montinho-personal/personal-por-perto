@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/recomposicao-corporal';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -79,21 +79,38 @@ const title = 'Recomposição corporal: perder gordura e ganhar músculo ao mesm
 const description =
   'O que é recomposição corporal, por que ela é possível apesar da regra do "bulking e cutting", para quem acontece mais rápido, os requisitos de treino, proteína e déficit — e por que a balança engana no processo.';
 
+const capa = '/capas-conteudo/recomposicao-corporal.webp';
+const capaAlt =
+  'Arte da capa: silhueta de tronco definido entre uma seta para cima e outra para baixo — recomposição corporal: ganhar músculo e perder gordura ao mesmo tempo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Recomposição corporal: perder gordura e ganhar músculo ao mesmo tempo</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe uma regra repetida à exaustão na academia: para ganhar

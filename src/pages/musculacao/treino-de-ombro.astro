@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/treino-de-ombro';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Treino de ombro: como montar o seu (e os erros)';
 const description =
   'Guia do treino de ombro: as três porções do deltoide, por que a lateral define a largura, elevação lateral sem dor, o que evitar e quantas séries fazer por semana.';
 
+const capa = '/capas-conteudo/treino-de-ombro.webp';
+const capaAlt =
+  'Arte da capa: silhueta de costas em desenvolvimento com halteres — treino de ombro: como montar o seu — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Treino de ombro: como montar o seu (e os erros mais comuns)</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="800"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O ombro é a articulação mais móvel do corpo e, não por coincidência,

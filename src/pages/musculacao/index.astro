@@ -295,13 +295,17 @@ const title = 'Musculação: guias sobre treino, hipertrofia e progressão de ca
 const description =
   'Conteúdos sobre musculação com base na ciência do exercício: como começar, hipertrofia, divisão de treino, volume de séries e progressão de carga.';
 
+const capa = '/capas-conteudo/musculacao.webp';
+const capaAlt =
+  'Arte da capa: três silhuetas executando agachamento, supino e puxada, numeradas de um a três — musculação: treino de força em geral — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema('Artigos sobre musculação', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
 ];
 ---
 
-<Base title={title} description={description} path={path} schema={schema}>
+<Base title={title} description={description} path={path} image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <header class="section-sm tint">
     <div class="container">
@@ -312,6 +316,19 @@ const schema = [
         estabelecidos da ciência do exercício — para treinar melhor, sozinho ou
         com acompanhamento profissional.
       </p>
+      <figure style="margin: var(--sp-6) 0 0; max-width: 720px">
+        <img
+          src={capa}
+          alt={capaAlt}
+          width="1200"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+        />
+      </figure>
+
     </div>
   </header>
 
