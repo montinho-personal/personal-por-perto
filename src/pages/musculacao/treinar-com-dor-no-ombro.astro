@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/treinar-com-dor-no-ombro';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -79,21 +79,38 @@ const title = 'Dor no ombro: dá para treinar? O que ajustar na musculação';
 const description =
   'Dor no ombro raramente significa parar de treinar: veja os ajustes práticos (amplitude, variações, equilíbrio entre empurrar e puxar), o papel do manguito rotador e os sinais que pedem avaliação médica.';
 
+const capa = '/capas-conteudo/treinar-com-dor-no-ombro.webp';
+const capaAlt =
+  'Arte da capa: silhueta com o braço elevado e o arco de amplitude do ombro dividido entre a faixa confortável e a dolorosa — treinar com dor no ombro: o que ajustar — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Dor no ombro: dá para treinar? O que ajustar na musculação</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Depois da lombar e do joelho, o ombro fecha o pódio das dores de

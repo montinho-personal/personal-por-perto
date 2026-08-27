@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/guias/avaliacao-fisica';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -78,21 +78,38 @@ const title = 'Avaliação física: o que é, o que mede e por que importa';
 const description =
   'Avaliação física explicada: o que ela mede (anamnese, composição corporal, perimetria, testes), com que frequência refazer, se bioimpedância é confiável e por que ela é critério para escolher um personal.';
 
+const capa = '/capas-conteudo/avaliacao-fisica.webp';
+const capaAlt =
+  'Arte da capa: silhueta em perfil ao lado de uma prancheta de avaliação, fita métrica e os itens composição corporal, medidas e mobilidade — avaliação física: o que é, o que mede e por que importa — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guias</p>
     <h1>Avaliação física: o que é, o que mede e por que importa</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe uma pergunta que separa o profissional sério do vendedor de

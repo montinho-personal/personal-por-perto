@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/elevacao-lateral-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Elevação lateral: como fazer e os erros comuns';
 const description =
   'Elevação lateral: até onde subir, cotovelo dobrado ou esticado, por que o trapézio rouba o movimento e as faixas de repetição que fazem o deltoide medial crescer.';
 
+const capa = '/capas-conteudo/elevacao-lateral-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta executando elevação lateral com halteres, com os deltoides destacados e a trajetória correta até a linha dos ombros — elevação lateral: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Elevação lateral: o exercício que faz o ombro parecer largo</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhum exercício define tanto a silhueta do ombro quanto a elevação

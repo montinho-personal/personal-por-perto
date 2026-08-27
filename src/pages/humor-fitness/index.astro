@@ -48,13 +48,17 @@ const title = 'Humor fitness: memes de academia e a cultura de rir do próprio s
 const description =
   'O lado leve da vida na academia: memes de treino, perfis de humor fitness no Instagram e as piadas que todo marombeiro reconhece.';
 
+const capa = '/capas-conteudo/humor-fitness.webp';
+const capaAlt =
+  'Arte da capa: três quadrinhos em estilo HQ com cenas de academia — o agachamento pesado, a pose de duplo bíceps e o susto na balança — humor fitness: rir do próprio shape — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema('Conteúdos de humor fitness', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
 ];
 ---
 
-<Base title={title} description={description} path={path} schema={schema}>
+<Base title={title} description={description} path={path} image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <header class="section-sm tint">
     <div class="container">
@@ -65,6 +69,19 @@ const schema = [
         leve do portal: memes, perfis de humor e as piadas que unem quem vive a
         rotina da academia.
       </p>
+      <figure style="margin: var(--sp-6) 0 0; max-width: 720px">
+        <img
+          src={capa}
+          alt={capaAlt}
+          width="1200"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+        />
+      </figure>
+
     </div>
   </header>
 

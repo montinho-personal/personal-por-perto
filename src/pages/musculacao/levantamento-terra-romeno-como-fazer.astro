@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/levantamento-terra-romeno-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Levantamento terra romeno: como fazer';
 const description =
   'Terra romeno: a técnica passo a passo, a diferença para o stiff e o terra tradicional, até onde descer, os erros que jogam a carga na lombar e como programar.';
 
+const capa = '/capas-conteudo/levantamento-terra-romeno-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta no levantamento terra romeno com o posterior de coxa destacado, barra próxima às pernas e o alerta de parar abaixo do joelho — levantamento terra romeno: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Terra romeno: a dobradiça que constrói posterior e glúteo</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Poucos exercícios aparecem em tantas fichas com tantos nomes

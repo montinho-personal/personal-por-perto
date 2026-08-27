@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-trainer-para-corredores';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -83,21 +83,38 @@ const title = 'Personal trainer para corredores: o guia completo';
 const description =
   'Personal trainer para corredores: por que a força melhora a economia de corrida, quantas sessões fazer, como organizar a semana e quais exercícios priorizar.';
 
+const capa = '/capas-conteudo/personal-trainer-para-corredores.webp';
+const capaAlt =
+  'Arte da capa: corredor em passada ao lado de um agachamento com barra, tênis de corrida e halteres — personal trainer para corredores: treino de força que sustenta a corrida — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guias</p>
     <h1>Personal trainer para corredores: por que a sala de musculação importa</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe uma crença antiga entre corredores: musculação deixa pesado,

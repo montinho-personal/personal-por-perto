@@ -52,7 +52,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/como-preservar-massa-muscular-emagrecendo';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -91,21 +91,38 @@ const title = 'Como preservar massa muscular durante o emagrecimento';
 const description =
   'Entenda por que o emagrecimento pode levar junto massa muscular, o papel do treino de força e da proteína para evitar isso, e os sinais de que a perda de massa magra está acontecendo.';
 
+const capa = '/capas-conteudo/como-preservar-massa-muscular-emagrecendo.webp';
+const capaAlt =
+  'Arte da capa: silhueta dividida entre o físico com massa preservada e o perfil enfraquecido, com halter, marmita de proteína e setas de ganho e perda — como preservar massa muscular emagrecendo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Como preservar massa muscular durante o emagrecimento</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Emagrecer sem cuidado pode levar embora não só gordura, mas também

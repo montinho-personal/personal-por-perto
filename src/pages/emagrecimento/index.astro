@@ -115,13 +115,17 @@ const title = 'Emagrecimento: musculação, cardio e déficit calórico explicad
 const description =
   'Conteúdos sobre emagrecimento com base na ciência do exercício: musculação e cardio, déficit calórico, preservação de massa muscular e platôs.';
 
+const capa = '/capas-conteudo/emagrecimento.webp';
+const capaAlt =
+  'Arte da capa: balança de pratos equilibrando massa magra e gordura, com halter, prato de comida de verdade e a legenda recomposição corporal — emagrecimento — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema('Artigos sobre emagrecimento', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
 ];
 ---
 
-<Base title={title} description={description} path={path} schema={schema}>
+<Base title={title} description={description} path={path} image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <header class="section-sm tint">
     <div class="container">
@@ -132,6 +136,19 @@ const schema = [
         milagrosas nem prescrição de dieta. Para orientação nutricional
         individual, procure um nutricionista.
       </p>
+      <figure style="margin: var(--sp-6) 0 0; max-width: 720px">
+        <img
+          src={capa}
+          alt={capaAlt}
+          width="1200"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+        />
+      </figure>
+
     </div>
   </header>
 

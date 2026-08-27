@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/triceps-testa-como-fazer';
-const atualizadoEm = '2026-08-16';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Tríceps testa: como fazer sem dor no cotovelo';
 const description =
   'Tríceps testa: a execução correta, barra W, reta ou halteres, por que ela alonga a cabeça longa, as diferenças para a francesa e como poupar o cotovelo.';
 
+const capa = '/capas-conteudo/triceps-testa-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta deitada no banco executando o tríceps testa com barra, com a trajetória do movimento e o tríceps destacado — tríceps testa: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Tríceps testa: o exercício que alonga o que o pulley esquece</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Dois terços do braço são tríceps — e um terço do tríceps quase

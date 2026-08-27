@@ -55,13 +55,17 @@ const title = 'Mounjaro e treino: musculação, massa muscular e adaptação do 
 const description =
   'Conteúdo educativo sobre exercício para quem usa Mounjaro (tirzepatida): musculação, preservação de massa muscular e adaptação do treino. Não substitui orientação médica.';
 
+const capa = '/capas-conteudo/mounjaro-e-treino.webp';
+const capaAlt =
+  'Arte da capa: silhueta segurando um halter ao lado da palavra massa muscular em destaque — Mounjaro e treino: musculação e preservação de massa muscular — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema('Artigos sobre Mounjaro e treino', artigos.map((a) => a.titulo), new URL(path, site.dominio).href),
 ];
 ---
 
-<Base title={title} description={description} path={path} schema={schema}>
+<Base title={title} description={description} path={path} image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <header class="section-sm tint">
     <div class="container">
@@ -78,6 +82,19 @@ const schema = [
         medicamento por conta própria — decisões sobre o tratamento são do seu
         médico. Em caso de sintomas, procure atendimento de saúde.
       </p>
+      <figure style="margin: var(--sp-6) 0 0; max-width: 720px">
+        <img
+          src={capa}
+          alt={capaAlt}
+          width="1200"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+        />
+      </figure>
+
     </div>
   </header>
 

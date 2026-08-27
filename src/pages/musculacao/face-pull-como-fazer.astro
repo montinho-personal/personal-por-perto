@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/face-pull-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Face pull: como fazer e os erros comuns';
 const description =
   'Face pull: o que ele treina de verdade, a altura certa da polia, a pegada, a carga que funciona e por que ele virou o exercício queridinho da saúde do ombro.';
 
+const capa = '/capas-conteudo/face-pull-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta puxando a corda da polia alta na altura do rosto, com o deltoide posterior destacado e a trajetória do movimento — face pull: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Face pull: o exercício pequeno que segura o ombro inteiro</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Numa academia dominada por supino e desenvolvimento, o face pull
