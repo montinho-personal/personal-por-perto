@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/musculacao-e-postura';
-const atualizadoEm = '2026-08-07';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Musculação e postura: o que o treino resolve';
 const description =
   'Musculação e postura: o que o treino de força realmente melhora, por que não existe postura única correta, quais músculos priorizar e quando procurar um profissional.';
 
+const capa = '/capas-conteudo/musculacao-e-postura.webp';
+const capaAlt =
+  'Arte da capa: duas silhuetas de perfil comparadas por um eixo vertical — uma com ombros à frente e outra alinhada — musculação e postura: o que o treino resolve — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Musculação e postura: o que o treino resolve (e o que não resolve)</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       "Faz musculação que endireita as costas" é um conselho bem
