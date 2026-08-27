@@ -74,6 +74,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios distribuídos pelos núcleos urbanos (Nova Marabá, Cidade Nova e Velha Marabá), complementada pelas orlas dos rios.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Marabá Cidade Nova', detalhe: 'na Av. Hiléia, na Cidade Nova' },
+    { nome: 'Selfit Shopping Partage Marabá', detalhe: 'na Transamazônica, na Nova Marabá' },
+  ],
+
   destaquesFitness: [
     'Orla do Rio Tocantins como principal corredor de caminhada, corrida e ciclismo.',
     'Orla do Encontro dos Rios com academia ao ar livre.',
@@ -124,5 +129,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Marabá', url: 'https://www.maraba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

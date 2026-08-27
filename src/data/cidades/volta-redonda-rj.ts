@@ -75,6 +75,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é boa, sustentada pelo IDHM alto e pela renda industrial, e bem complementada pela estrutura ao ar livre da Avenida Beira-Rio e da Ilha São João.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Volta Redonda', detalhe: 'na Av. Amaral Peixoto, no Centro' },
+  ],
+
   destaquesFitness: [
     'Orla Beira-Rio com cerca de 7 km, ciclovia e academia ao ar livre.',
     'Ilha São João como espaço clássico de treino.',
@@ -125,5 +129,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Volta Redonda', url: 'https://www.voltaredonda.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

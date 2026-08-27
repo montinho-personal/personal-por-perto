@@ -74,6 +74,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o setor de serviços e o público universitário e da indústria do petróleo, complementada pelo Parque Ecológico Maurício de Oliveira e pela Avenida João da Escóssia.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Alto de São Manoel', detalhe: 'na Av. Presidente Dutra' },
+    { nome: 'Smart Fit Centro Mossoró', detalhe: 'na Rua Juvenal Lamartine, no Centro' },
+    { nome: 'Selfit Mossoró', detalhe: 'na Av. João da Escóssia, na Nova Betânia' },
+  ],
+
   destaquesFitness: [
     'Parque Ecológico Maurício de Oliveira como principal espaço público gratuito de treino.',
     'Avenida João da Escóssia como rota-referência para corrida e provas de rua.',
@@ -124,5 +130,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mossoró', url: 'https://www.prefeiturademossoro.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

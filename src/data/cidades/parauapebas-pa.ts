@@ -80,6 +80,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é sustentada pela renda elevada da mineração, complementada pelo Complexo Turístico e pela Avenida Parque.',
 
+  academiasProximas: [
+    { nome: 'Fit Mania Beira Rio', detalhe: 'na Av. Sônia Côrtes, no Beira Rio' },
+    { nome: 'Fit Mania Rua 10', detalhe: 'na Rua 10, na Cidade Nova' },
+    { nome: 'Fit Mania Cidade Jardim', detalhe: 'na Av. dos Ipês, no Cidade Jardim' },
+  ],
+
   destaquesFitness: [
     'Complexo Turístico de 150 mil m² com ciclovia, pista e academia ao ar livre.',
     'Renda per capita elevada (mineração) sustentando o mercado fitness.',
@@ -130,5 +136,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Parauapebas', url: 'https://www.parauapebas.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

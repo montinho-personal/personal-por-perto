@@ -69,6 +69,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro e assessorias, com mercado amplo na região metropolitana, complementada por praças, pela orla do Rio Gravataí e pelo bike park.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Atacadão Gravataí', detalhe: 'na Av. Dorival Cândido Luz de Oliveira, na Cohab C' },
+  ],
+
   destaquesFitness: [
     'Praça Xangai e orla do Rio Gravataí: academias ao ar livre e pistas de caminhada de bairro.',
     'Eco Bike Park Vento Negro: a maior trilha de bike do RS para ciclismo e MTB.',
@@ -119,5 +123,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Gravataí', url: 'https://www.gravatai.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };
