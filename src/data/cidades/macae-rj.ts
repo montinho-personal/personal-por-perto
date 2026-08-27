@@ -69,6 +69,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios voltados a um público de alta renda, complementada pela orla equipada com aparelhos de ginástica e ciclovia.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Dom Atacadista Macaé' },
+  ],
+
   destaquesFitness: [
     'Público de alta renda do setor de petróleo.',
     'Orla equipada com academias ao ar livre e ciclovia.',
@@ -119,5 +123,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Macaé', url: 'https://macae.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

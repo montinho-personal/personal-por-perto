@@ -70,6 +70,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o crescimento da cidade, concentrada nas regiões de maior valorização, complementada pelo Parque das Águas e pelas academias ao ar livre das praças.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Rondonópolis', detalhe: 'na Av. Lions Internacional, no Residencial Sagrada Família' },
+  ],
+
   destaquesFitness: [
     'Calendário robusto de corridas de rua (Trabalhador, Justiça e Cidadania, Circuito Sesc).',
     'Parque das Águas como principal área verde para atividade ao ar livre.',
@@ -103,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rondonópolis', url: 'https://www.rondonopolis.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

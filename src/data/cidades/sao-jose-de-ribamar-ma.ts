@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit no Maiobão, academias de bairro e estúdios de musculação e funcional, complementados pela estrutura da vizinha São Luís. A orla e as praias funcionam como grandes extensões ao ar livre para treino e atividades de areia.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Maiobão', detalhe: 'no Maiobão' },
+    { nome: 'Selfit Ribamar Moropóia', detalhe: 'na Av. Clodomir Cardoso' },
+    { nome: 'Selfit Vila Sarney Filho', detalhe: 'na Estrada de Ribamar' },
+  ],
+
   destaquesFitness: [
     'Praias de mar calmo (Panaquatira, Araçagi) ideais para caminhada, corrida e esportes de areia.',
     'Conurbação total com São Luís, que amplia o acesso a academias e a corridas de rua.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José de Ribamar', url: 'https://www.saojosederibamar.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/211120' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

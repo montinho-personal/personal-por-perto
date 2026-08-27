@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne grandes redes e estúdios, com público de IDHM muito alto, complementada por parques completos como o Pinheirinho e o São José.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Av. Trinta e Seis', detalhe: 'na Av. Padre Francisco Salles Culturato, no Centro' },
+    { nome: 'Smart Fit Maurício Galli' },
+    { nome: 'Bluefit Vila Sedenho', detalhe: 'na Rua Maurício Galli, na Vila Sedenho' },
+  ],
+
   destaquesFitness: [
     'Alto número de dias ensolarados, favorável ao treino ao ar livre (com cuidado no calor do verão).',
     'Parque Pinheirinho como hub público completo (academia ao ar livre, pistas e ciclovia).',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araraquara', url: 'https://www.araraquara.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-08-27',
 };
