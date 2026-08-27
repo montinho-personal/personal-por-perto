@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/afundo-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Afundo: como fazer, variações e erros comuns';
 const description =
   'Afundo, avanço e passada: as diferenças, a técnica passo a passo, o mito do joelho na ponta do pé, o búlgaro e como programar o unilateral no treino de pernas.';
 
+const capa = '/capas-conteudo/afundo-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: silhueta executando o afundo com o joelho da frente a 90 graus, ao lado dos quadros de variação com halteres e do erro comum de passada curta — afundo: como fazer, variações e erros comuns — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Afundo, avanço e passada: o guia do treino de uma perna só</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Toda perna forte esconde uma assimetria — e o exercício que a
