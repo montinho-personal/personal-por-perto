@@ -23,7 +23,7 @@ import { rotas } from '../../lib/links';
 import { regiaoPresencial } from '../../data/atendimentoPresencial';
 
 const path = '/ferramentas/encontre-seu-personal-ideal';
-const atualizadoEm = '2026-08-26';
+const atualizadoEm = '2026-08-27';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -33,14 +33,15 @@ const crumbs = [
 
 const title = 'Encontre Seu Personal Ideal | Personal por Perto';
 const description =
-  'Responda 8 perguntas rápidas e descubra que tipo de personal e acompanhamento combina com seu objetivo, sua rotina e sua experiência. Gratuito e sem cadastro.';
+  'Diagnóstico gratuito: responda 9 perguntas rápidas e descubra que tipo de acompanhamento combina com seu objetivo, sua rotina e sua experiência — com plano de ação e checklist. Sem cadastro.';
 
+const urlCanonica = new URL(path + '/', site.dominio).href;
 const schema = [
   breadcrumbSchema(crumbs),
   {
     '@type': 'WebPage',
-    '@id': `${new URL(path + '/', site.dominio).href}#webpage`,
-    url: new URL(path + '/', site.dominio).href,
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
     name: 'Encontre seu Personal Ideal',
     description,
     inLanguage: site.idioma,
@@ -50,6 +51,21 @@ const schema = [
       '@type': 'Thing',
       name: 'Escolha de personal trainer e formato de acompanhamento',
     },
+  },
+  // A página É uma aplicação de uso direto no navegador — o schema
+  // descreve exatamente o que existe nela, sem rating inventado.
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Diagnóstico Personal Ideal',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que cruza objetivo, experiência, rotina e expectativa para indicar o formato de acompanhamento de treino mais adequado — presencial, online ou híbrido.',
   },
   personMontinhoSchema(),
 ];
@@ -209,7 +225,9 @@ const schema = [
       <h2 id="metodologia">Como calculamos seu resultado</h2>
       <p>
         A ferramenta não sorteia respostas nem usa inteligência artificial para
-        inventar texto. Ela cruza sete fatores com pesos definidos por nós:
+        inventar texto. Ela cruza nove fatores com pesos definidos por nós — e o
+        resultado mostra, em "Entenda minha recomendação", quais das suas
+        respostas mais pesaram no cálculo:
       </p>
       <ul class="check-list">
         <li><strong>Objetivo</strong> — para onde você quer ir.</li>
@@ -219,6 +237,7 @@ const schema = [
         <li><strong>Local de treino</strong> — o equipamento disponível muda a prescrição.</li>
         <li><strong>Maior dificuldade</strong> — o fator de maior peso, porque é o seu gargalo real.</li>
         <li><strong>O que você espera do profissional</strong> — presença, planejamento, correção ou cobrança.</li>
+        <li><strong>Limitações a considerar</strong> — sem perguntar qual: a resposta só ajusta a orientação e reforça a ressalva profissional.</li>
         <li><strong>Localização</strong> — determina se o presencial é viável de verdade.</li>
       </ul>
       <p>
@@ -233,6 +252,59 @@ const schema = [
         acompanhamento, não substitui avaliação individual, não prescreve treino
         e não diagnostica nada. Se você tem dor, lesão ou alguma condição de
         saúde, converse com um médico ou fisioterapeuta antes de começar.
+      </p>
+
+      <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+
+      <h3>O resultado define qual personal eu devo contratar?</h3>
+      <p>
+        Não. Ele indica o <em>formato</em> de acompanhamento que tende a fazer
+        mais sentido para o seu cenário e o que procurar (e evitar) em um
+        profissional. A escolha da pessoa continua sendo sua — e o checklist do
+        resultado existe justamente para essa conversa.
+      </p>
+
+      <h3>Preciso informar meus dados para ver o resultado?</h3>
+      <p>
+        Não. O diagnóstico aparece na hora, sem cadastro, sem e-mail e sem
+        telefone. A única informação pessoal opcional é a cidade, usada apenas
+        para dizer se o atendimento presencial é viável no seu caso — e dá para
+        pular essa etapa.
+      </p>
+
+      <h3>O diagnóstico é gratuito?</h3>
+      <p>Sim, completamente — inclusive refazer quantas vezes quiser.</p>
+
+      <h3>Posso usar mesmo sem pretender contratar um personal?</h3>
+      <p>
+        Pode, e é um bom uso: o resultado inclui um plano de passos, a estrutura
+        de treino provável para a sua rotina e os sinais de atenção ao avaliar
+        qualquer serviço — útil também para quem vai seguir por conta própria.
+      </p>
+
+      <h3>Personal presencial é sempre melhor?</h3>
+      <p>
+        Não. Presença resolve execução e insegurança; planejamento resolve
+        organização, progressão e constância. Qual pesa mais depende do seu
+        momento — é exatamente isso que a ferramenta cruza. Para muita gente o
+        formato mais eficiente é o híbrido ou o online individualizado.
+      </p>
+
+      <h3>O resultado substitui uma avaliação?</h3>
+      <p>
+        Não substitui. Ele orienta a escolha do formato de acompanhamento; a
+        avaliação individual — física e, quando houver dor ou condição de
+        saúde, com médico ou fisioterapeuta — continua sendo o primeiro passo
+        de qualquer treino sério.
+      </p>
+
+      <h3>Minha situação mudou. Vale refazer?</h3>
+      <p>
+        Vale — o "personal ideal" muda quando a rotina muda. Quem tinha cinco
+        dias e passou a ter três, quem saiu do começo para a fase de progressão,
+        quem trocou academia por condomínio: tudo isso altera o resultado. A
+        página lembra a data do seu último diagnóstico para facilitar a
+        comparação.
       </p>
 
       <aside class="pm-disclosure">
@@ -733,6 +805,166 @@ const schema = [
       font-size: var(--step--1);
       color: var(--muted);
       line-height: 1.5;
+    }
+    .pm-aviso-limitacao {
+      background: var(--bg-tint);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: var(--sp-3) var(--sp-4);
+      color: var(--ink-soft);
+    }
+
+    /* ------------------- Painel de dimensões (barras) ------------------- */
+    .pm-painel .pm-dim {
+      margin-top: var(--sp-3);
+    }
+    .pm-dim-topo {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--step--1);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .pm-dim-num {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .pm-dim-barra {
+      height: 10px;
+      border-radius: 999px;
+      background: var(--bg-tint-2);
+      overflow: hidden;
+    }
+    /* Nunca vermelho: as barras descrevem cenário, não problema. */
+    .pm-dim-cheio {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand-400, var(--brand)), var(--brand-600, var(--brand)));
+    }
+    .pm-dim-nota {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    /* --------------------- Entenda minha recomendação ------------------- */
+    .pm-detalhes {
+      margin-top: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--bg-tint);
+    }
+    .pm-detalhes summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--brand-600);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .pm-detalhes ol {
+      margin: var(--sp-2) 0 0 1.2rem;
+      display: grid;
+      gap: 0.4rem;
+    }
+    .pm-detalhes p {
+      margin-top: var(--sp-2);
+    }
+
+    /* --------------------------- Comparador ----------------------------- */
+    .pm-tabela-rolagem {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .pm-comparador {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--step--1);
+      min-width: 520px;
+    }
+    .pm-comparador th,
+    .pm-comparador td {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .pm-comparador thead th {
+      font-weight: 800;
+      border-bottom: 2px solid var(--line);
+    }
+    .pm-comparador tbody th {
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+    .pm-comparador-destaque {
+      background: var(--accent-50);
+    }
+    .pm-comparador-destaque td {
+      font-weight: 700;
+    }
+
+    /* --------------------------- Plano de ação -------------------------- */
+    .pm-passos {
+      margin: 0 0 0 1.2rem;
+      padding: 0;
+      display: grid;
+      gap: var(--sp-4);
+    }
+    .pm-passos li::marker {
+      font-weight: 800;
+      color: var(--accent-600);
+    }
+    .pm-passos strong {
+      display: block;
+    }
+    .pm-passos p {
+      margin-top: 0.3rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    /* ----------------------- Checklist e sinais ------------------------- */
+    .pm-checklist ul li::before {
+      content: '□';
+      color: var(--brand-600);
+    }
+    .pm-copiar {
+      margin-top: var(--sp-4);
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.5rem 1.1rem;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .pm-copiar:hover {
+      border-color: var(--brand);
+      background: var(--bg-tint);
+    }
+    .pm-flags ul li::before {
+      content: '△';
+      color: var(--accent-600);
+    }
+    .pm-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.5rem 1.1rem;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .pm-compartilhar:hover {
+      border-color: var(--brand);
+      background: var(--bg-tint);
+    }
+    .pm-ultimo {
+      max-width: 46ch;
     }
 
     /* ---------------------------- Editorial ----------------------------- */

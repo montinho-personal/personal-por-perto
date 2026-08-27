@@ -8,6 +8,7 @@
  *
  * Uso: npm run test:match
  */
+import { existsSync } from 'node:fs';
 import { personalMatchEngine, type MatchRespostas } from '../src/lib/personalMatch';
 
 interface Persona {
@@ -118,6 +119,80 @@ const personas: Persona[] = [
       espera: [],
     },
   },
+  {
+    nome: 'H — Com limitação declarada (iniciante, condomínio)',
+    r: {
+      objetivo: 'longevidade',
+      experiencia: 'comecando',
+      dias: '3',
+      tempo: '30a45',
+      local: 'condominio',
+      dificuldade: 'naoSeiFazer',
+      espera: ['montarTreino'],
+      limitacao: 'sim',
+      cidadeSlug: 'alphaville-sp',
+      cidadeNome: 'Alphaville',
+      uf: 'SP',
+    },
+  },
+  {
+    nome: 'I — Prefere tratar limitação com profissional',
+    r: {
+      objetivo: 'emagrecer',
+      experiencia: 'algumTempo',
+      dias: '4',
+      tempo: '45a60',
+      local: 'academia',
+      dificuldade: 'semResultado',
+      espera: ['evolucao'],
+      limitacao: 'profissional',
+      cidadeSlug: 'campinas-sp',
+      cidadeNome: 'Campinas',
+      uf: 'SP',
+    },
+  },
+  {
+    nome: 'J — Autonomia altíssima: híbrido deveria perder força',
+    r: {
+      objetivo: 'massa',
+      experiencia: 'experiente',
+      dias: '6+',
+      tempo: '60a90',
+      local: 'academia',
+      dificuldade: 'progressao',
+      espera: ['montarTreino', 'evolucao'],
+      limitacao: 'nao',
+      cidadeSlug: 'porto-alegre-rs',
+      cidadeNome: 'Porto Alegre',
+      uf: 'RS',
+    },
+  },
+  {
+    nome: 'K — Tempo mínimo, rotina caótica, sem cidade',
+    r: {
+      objetivo: 'condicionamento',
+      experiencia: 'voltando',
+      dias: '2',
+      tempo: 'ate30',
+      local: 'casa',
+      dificuldade: 'tempo',
+      espera: ['adaptacao'],
+      limitacao: 'nao',
+    },
+  },
+  {
+    nome: 'L — Contradição: quer presença, mas rotina imprevisível',
+    r: {
+      objetivo: 'definir',
+      experiencia: 'algumTempo',
+      dias: '4',
+      tempo: 'varia',
+      local: 'varia',
+      dificuldade: 'rotinaMuda',
+      espera: ['presenca', 'execucao'],
+      limitacao: 'nao',
+    },
+  },
 ];
 
 /* ------------------------------ execução ------------------------------ */
@@ -161,11 +236,43 @@ for (const { p, res } of resultados) {
   assert(res.caracteristicas.length >= 4, `${p.nome}: poucas características`);
   assert(res.naoPrecisa.length >= 1, `${p.nome}: sem bloco "não precisa"`);
   assert(res.whatsapp.includes('Personal por Perto'), `${p.nome}: WhatsApp sem contexto de origem`);
+  // As red flags CITAM o que evitar ("resultado garantido") — são a exceção
+  // legítima do filtro de promessas, então saem da checagem.
+  const { redFlags: _flags, ...semFlags } = res;
   assert(
-    !/\bcuras?\b|\bcurar\b|garantid|milagr|com certeza você vai/i.test(JSON.stringify(res)),
+    !/\bcuras?\b|\bcurar\b|garantid|milagr|com certeza você vai/i.test(JSON.stringify(semFlags)),
     `${p.nome}: promessa indevida no texto`,
   );
   assert(!/CREF|CONFEF/i.test(JSON.stringify(res)), `${p.nome}: menção proibida a conselho`);
+
+  // --- Invariantes 2.0 ---
+  const dims = Object.entries(res.dimensoes);
+  assert(
+    dims.every(([, v]) => v >= 0 && v <= 100),
+    `${p.nome}: dimensão fora da escala 0–100`,
+  );
+  assert(res.influencias.length === 3, `${p.nome}: "entenda a recomendação" deveria ter 3 influências`);
+  assert(res.plano.length === 3, `${p.nome}: plano de ação deveria ter exatamente 3 passos`);
+  assert(res.checklist.length >= 5, `${p.nome}: checklist curta demais`);
+  assert(res.redFlags.length >= 4, `${p.nome}: red flags ausentes`);
+  assert(res.comparador.length === 5, `${p.nome}: comparador incompleto`);
+  const linhaCenario = res.comparador.find((l) => l.criterio === 'Para o seu cenário')!;
+  const colunaRecomendada =
+    res.modelo === 'presencial' ? linhaCenario.presencial : res.modelo === 'online' ? linhaCenario.online : linhaCenario.hibrido;
+  assert(
+    colunaRecomendada === 'Muito adequado',
+    `${p.nome}: o formato recomendado (${res.modelo}) não aparece como "Muito adequado" no comparador`,
+  );
+  // O share nunca pode vazar limitação ou cidade.
+  assert(
+    !/limita|condi[çc][ãa]o|dor\b/i.test(res.share) && !(p.r.cidadeNome && res.share.includes(p.r.cidadeNome)),
+    `${p.nome}: share contém dado sensível`,
+  );
+  // URLs de conteúdo recomendado precisam existir no código-fonte.
+  for (const c of res.conteudo) {
+    const arquivo = `src/pages${c.url.replace(/\/$/, '')}.astro`;
+    assert(existsSync(arquivo), `${p.nome}: conteúdo recomendado aponta para página inexistente: ${c.url}`);
+  }
 }
 
 /* --------------------------- invariantes gerais ------------------------ */
@@ -211,9 +318,48 @@ for (const { p, res } of resultados) {
   assert(res.conteudo.length >= 2, `${p.nome}: poucas sugestões de conteúdo`);
 }
 
-// 8. Variedade real: as 7 personas não podem colapsar em 2 formatos só.
+// 8. Variedade real: as personas não podem colapsar em 2 formatos só.
 const perfisDistintos = new Set(resultados.map((r) => r.res.perfil));
 assert(perfisDistintos.size >= 4, `Pouca variedade de arquétipos: ${perfisDistintos.size}`);
+
+// 9. Persona H (limitação declarada): característica + aviso obrigatórios.
+const h = resultados[7].res;
+assert(
+  h.caracteristicas.some((c) => /fisioterapeuta/.test(c)) && Boolean(h.avisoLimitacao),
+  'Persona H (limitação) deveria receber característica de adaptação e aviso',
+);
+assert(
+  h.checklist.some((c) => /m[ée]dico ou fisioterapeuta/.test(c)),
+  'Persona H: checklist deveria incluir a pergunta sobre a condição',
+);
+
+// 10. Persona I (prefere tratar com profissional): aviso próprio, sem inventar limitação.
+const i = resultados[8].res;
+assert(
+  Boolean(i.avisoLimitacao) && /primeira conversa/.test(i.avisoLimitacao!),
+  'Persona I deveria receber o aviso de levar o tema à primeira conversa',
+);
+
+// 11. Persona J (autonomia altíssima, online com folga): híbrido não pode
+// aparecer superdimensionado no comparador.
+const j = resultados[9].res;
+assert(j.modelo === 'online', `Persona J deveria ser online (obteve ${j.modelo})`);
+assert(j.dimensoes.autonomia >= 75, `Persona J deveria ter autonomia alta (${j.dimensoes.autonomia})`);
+const linhaJ = j.comparador.find((l) => l.criterio === 'Para o seu cenário')!;
+assert(linhaJ.hibrido !== 'Muito adequado', 'Persona J: híbrido não deveria ser "Muito adequado"');
+
+// 12. Coerência das dimensões entre personas: experiente > iniciante em autonomia.
+const autonomiaA = resultados[0].res.dimensoes.autonomia; // nunca treinou
+const autonomiaB = resultados[1].res.dimensoes.autonomia; // experiente
+assert(
+  autonomiaB > autonomiaA + 20,
+  `Autonomia deveria separar iniciante (${autonomiaA}) de experiente (${autonomiaB})`,
+);
+
+// 13. Persona L (contradição presença × rotina imprevisível) não pode quebrar
+// nem sair sem explicação das duas demandas.
+const l = resultados[10].res;
+assert(l.plano.length === 3 && l.influencias.length === 3, 'Persona L: resultado incompleto na contradição');
 
 console.log('\n' + '='.repeat(72));
 console.log(`Arquétipos distintos nas ${resultados.length} personas: ${perfisDistintos.size}`);

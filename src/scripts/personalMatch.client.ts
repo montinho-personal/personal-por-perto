@@ -138,6 +138,17 @@ const ETAPAS: Etapa[] = [
     ],
   },
   {
+    chave: 'limitacao',
+    nome: 'limitacao',
+    pergunta: 'Existe alguma condição, dor ou limitação a considerar no seu treino?',
+    ajuda: 'Não perguntamos qual — a resposta só ajusta a orientação. A ferramenta não é avaliação médica.',
+    opcoes: [
+      { valor: 'nao', rotulo: 'Não' },
+      { valor: 'sim', rotulo: 'Sim' },
+      { valor: 'profissional', rotulo: 'Prefiro tratar disso direto com um profissional' },
+    ],
+  },
+  {
     chave: 'espera',
     nome: 'expectativa',
     pergunta: 'O que você mais espera de um personal?',
@@ -293,7 +304,18 @@ function renderEtapa(): void {
   garantirVisivel();
   focarTitulo();
   ev('personal_match_step', { step_number: pos, step_name: etapa.nome });
+
+  // Marcos de funil (25/50/75) — um disparo por sessão, por marco.
+  const pct = Math.round((pos / total) * 100);
+  for (const marco of [25, 50, 75]) {
+    if (pct >= marco && !marcosDisparados.has(marco)) {
+      marcosDisparados.add(marco);
+      ev('personal_match_progress', { milestone: marco });
+    }
+  }
 }
+
+const marcosDisparados = new Set<number>();
 
 /** Pergunta de escolha única: clicar responde e avança. */
 function montarSimples(etapa: Etapa, caixa: HTMLElement): void {
@@ -529,11 +551,85 @@ function renderResultado(r: ReturnType<typeof personalMatchEngine>): void {
   cab.appendChild(modelo);
   raiz.appendChild(cab);
 
+  // --- Painel visual de dimensões ---
+  const painel = el('section', 'pm-bloco pm-painel');
+  painel.appendChild(el('h3', undefined, 'Seu cenário atual'));
+  const dims: { rotulo: string; valor: number }[] = [
+    { rotulo: 'Autonomia hoje', valor: r.dimensoes.autonomia },
+    { rotulo: 'Supervisão recomendada', valor: r.dimensoes.supervisao },
+    { rotulo: 'Flexibilidade necessária', valor: r.dimensoes.flexibilidade },
+    { rotulo: 'Base de constância', valor: r.dimensoes.constancia },
+  ];
+  for (const d of dims) {
+    const linha = el('div', 'pm-dim');
+    const topo = el('div', 'pm-dim-topo');
+    topo.appendChild(el('span', undefined, d.rotulo));
+    topo.appendChild(el('span', 'pm-dim-num', `${d.valor}`));
+    linha.appendChild(topo);
+    const barra = el('div', 'pm-dim-barra');
+    barra.setAttribute('role', 'img');
+    barra.setAttribute('aria-label', `${d.rotulo}: ${d.valor} de 100`);
+    const cheio = el('span', 'pm-dim-cheio');
+    cheio.style.width = `${d.valor}%`;
+    barra.appendChild(cheio);
+    linha.appendChild(barra);
+    painel.appendChild(linha);
+  }
+  painel.appendChild(
+    el('p', 'pm-dim-nota', 'Escala orientativa de 0 a 100, calculada só das suas respostas — descreve o cenário, não a pessoa.'),
+  );
+  raiz.appendChild(painel);
+
   // --- Por que chegamos nisso ---
   const porque = el('section', 'pm-bloco');
   porque.appendChild(el('h3', undefined, 'Por que chegamos nisso'));
   for (const p of r.porque) porque.appendChild(el('p', undefined, p));
+
+  // Transparência do cálculo: as 3 respostas que mais pesaram.
+  const det = el('details', 'pm-detalhes');
+  det.appendChild(el('summary', undefined, 'Entenda minha recomendação'));
+  const detCorpo = el('div');
+  detCorpo.appendChild(el('p', undefined, 'As três respostas que mais influenciaram o resultado:'));
+  const olInf = el('ol');
+  for (const inf of r.influencias) olInf.appendChild(el('li', undefined, inf));
+  detCorpo.appendChild(olInf);
+  det.appendChild(detCorpo);
+  det.addEventListener('toggle', () => {
+    if (det.open) ev('personal_match_explain_open');
+  });
+  porque.appendChild(det);
   raiz.appendChild(porque);
+
+  // --- Comparador de formatos ---
+  const comp = el('section', 'pm-bloco');
+  comp.appendChild(el('h3', undefined, 'Como as opções se comparam para você'));
+  const rolagem = el('div', 'pm-tabela-rolagem');
+  const tabela = el('table', 'pm-comparador');
+  const thead = el('thead');
+  const trCab = el('tr');
+  for (const c of ['', 'Presencial', 'Online', 'Híbrido']) {
+    const th = el('th', undefined, c);
+    th.scope = 'col';
+    trCab.appendChild(th);
+  }
+  thead.appendChild(trCab);
+  tabela.appendChild(thead);
+  const tbody = el('tbody');
+  for (const linha of r.comparador) {
+    const tr = el('tr');
+    const th = el('th', undefined, linha.criterio);
+    th.scope = 'row';
+    tr.appendChild(th);
+    tr.appendChild(el('td', undefined, linha.presencial));
+    tr.appendChild(el('td', undefined, linha.online));
+    tr.appendChild(el('td', undefined, linha.hibrido));
+    if (linha.criterio === 'Para o seu cenário') tr.classList.add('pm-comparador-destaque');
+    tbody.appendChild(tr);
+  }
+  tabela.appendChild(tbody);
+  rolagem.appendChild(tabela);
+  comp.appendChild(rolagem);
+  raiz.appendChild(comp);
 
   // --- Características ---
   const carac = el('section', 'pm-bloco');
@@ -557,11 +653,50 @@ function renderResultado(r: ReturnType<typeof personalMatchEngine>): void {
   nao.appendChild(ulN);
   raiz.appendChild(nao);
 
-  // --- Próximo passo ---
-  const passo = el('section', 'pm-bloco');
-  passo.appendChild(el('h3', undefined, 'Próximo passo recomendado'));
-  passo.appendChild(el('p', undefined, r.proximoPasso));
-  raiz.appendChild(passo);
+  // --- Plano de ação: próximos 3 passos ---
+  const plano = el('section', 'pm-bloco');
+  plano.appendChild(el('h3', undefined, 'Seus próximos 3 passos'));
+  const olPlano = el('ol', 'pm-passos');
+  for (const p of r.plano) {
+    const li = el('li');
+    li.appendChild(el('strong', undefined, p.titulo));
+    li.appendChild(el('p', undefined, p.texto));
+    olPlano.appendChild(li);
+  }
+  plano.appendChild(olPlano);
+  raiz.appendChild(plano);
+
+  // --- Checklist para a conversa ---
+  const chk = el('section', 'pm-bloco pm-checklist');
+  chk.appendChild(el('h3', undefined, 'Leve estas perguntas para a conversa com qualquer personal'));
+  const ulChk = el('ul');
+  for (const item of r.checklist) ulChk.appendChild(el('li', undefined, item));
+  chk.appendChild(ulChk);
+  const copiar = el('button', 'pm-copiar', 'Copiar checklist');
+  copiar.type = 'button';
+  copiar.addEventListener('click', () => {
+    const texto = 'Perguntas para o personal (Personal por Perto):\n' + r.checklist.map((i) => `- ${i}`).join('\n');
+    void navigator.clipboard?.writeText(texto).then(
+      () => {
+        copiar.textContent = 'Copiado ✓';
+        ev('personal_match_checklist_copy');
+        window.setTimeout(() => (copiar.textContent = 'Copiar checklist'), 2500);
+      },
+      () => {
+        copiar.textContent = 'Não deu para copiar automaticamente';
+      },
+    );
+  });
+  chk.appendChild(copiar);
+  raiz.appendChild(chk);
+
+  // --- Sinais de atenção ---
+  const flags = el('section', 'pm-bloco pm-flags');
+  flags.appendChild(el('h3', undefined, 'Sinais de atenção ao escolher um profissional'));
+  const ulF = el('ul');
+  for (const f of r.redFlags) ulF.appendChild(el('li', undefined, f));
+  flags.appendChild(ulF);
+  raiz.appendChild(flags);
 
   // --- Compatibilidade com o Montinho ---
   raiz.appendChild(blocoMontinho(r));
@@ -588,7 +723,11 @@ function renderResultado(r: ReturnType<typeof personalMatchEngine>): void {
   sug.appendChild(ulS);
   raiz.appendChild(sug);
 
-  // --- Aviso de limites ---
+  // --- Avisos de limites ---
+  if (r.avisoLimitacao) {
+    const avisoLim = el('p', 'pm-aviso pm-aviso-limitacao', r.avisoLimitacao);
+    raiz.appendChild(avisoLim);
+  }
   raiz.appendChild(
     el(
       'p',
@@ -604,7 +743,23 @@ function renderResultado(r: ReturnType<typeof personalMatchEngine>): void {
   app.dataset.estado = 'resultado';
   garantirVisivel();
   focarTitulo();
+
+  // Salva um resumo NÃO sensível do resultado (sem limitação, sem cidade)
+  // para a página oferecer "sua rotina mudou? refaça" numa visita futura —
+  // e encerra o progresso da sessão: quem concluiu não está "no meio do
+  // quiz", então a revisita deve oferecer refazer, não continuar.
+  try {
+    localStorage.setItem(
+      CHAVE_ULTIMO,
+      JSON.stringify({ data: new Date().toISOString().slice(0, 10), modelo: r.modeloRotulo, perfil: r.perfil }),
+    );
+    sessionStorage.removeItem(CHAVE_SESSAO);
+  } catch {
+    /* sem persistência: recurso opcional */
+  }
 }
+
+const CHAVE_ULTIMO = 'ppp-pm-ultimo';
 
 function blocoMontinho(r: ReturnType<typeof personalMatchEngine>): HTMLElement {
   const box = el('section', 'pm-compat');
@@ -668,6 +823,30 @@ function rodapeResultado(r: ReturnType<typeof personalMatchEngine>): HTMLElement
   nao.addEventListener('click', () => responder('nao'));
   fb.append(sim, nao);
   rodape.appendChild(fb);
+
+  // Compartilhar: share nativo no celular, clipboard no desktop.
+  // O texto vem do motor e nunca inclui limitação ou cidade.
+  const compartilhar = el('button', 'pm-compartilhar', 'Compartilhar meu diagnóstico');
+  compartilhar.type = 'button';
+  compartilhar.addEventListener('click', () => {
+    ev('personal_match_share');
+    if (navigator.share) {
+      void navigator.share({ text: r.share }).catch(() => {
+        /* cancelado pela pessoa: nada a fazer */
+      });
+    } else {
+      void navigator.clipboard?.writeText(r.share).then(
+        () => {
+          compartilhar.textContent = 'Copiado para colar onde quiser ✓';
+          window.setTimeout(() => (compartilhar.textContent = 'Compartilhar meu diagnóstico'), 2500);
+        },
+        () => {
+          compartilhar.textContent = 'Não deu para copiar automaticamente';
+        },
+      );
+    }
+  });
+  rodape.appendChild(compartilhar);
 
   const refazer = el('button', 'pm-refazer', 'Refazer o teste');
   refazer.type = 'button';
@@ -736,5 +915,24 @@ export function iniciarPersonalMatch(): void {
       ev('personal_match_start', retomando ? { resumed: true } : undefined);
       render();
     });
+
+    // Quem já concluiu numa visita anterior vê o convite honesto de refazer:
+    // o cenário muda quando a rotina muda — motivo legítimo de retorno.
+    if (!retomando) {
+      try {
+        const bruto = localStorage.getItem(CHAVE_ULTIMO);
+        if (bruto) {
+          const ultimo = JSON.parse(bruto) as { data?: string; modelo?: string };
+          if (ultimo?.data && ultimo?.modelo) {
+            const [ano, mes, dia] = ultimo.data.split('-');
+            const nota = el('p', 'pm-microcopy pm-ultimo');
+            nota.textContent = `Você fez este diagnóstico em ${dia}/${mes}/${ano} (resultado: ${ultimo.modelo.toLowerCase()}). Sua rotina mudou? Vale refazer.`;
+            iniciar.insertAdjacentElement('afterend', nota);
+          }
+        }
+      } catch {
+        /* sem persistência: segue sem a nota */
+      }
+    }
   }
 }
