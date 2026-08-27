@@ -65,6 +65,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de musculação e personal trainers na sede, com o litoral somando treinos ao ar livre — e a estrutura de Aracaju a meia hora de distância.',
 
+  academiasProximas: [
+    { nome: 'Academia Transforms' },
+    { nome: 'Cria Fitness', detalhe: 'na Caueira' },
+    { nome: 'X-ploud Academia', detalhe: 'na Rua Hermílio Carvalho' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Praia da Caueira: areia larga e mar aberto para treinos ao ar livre.',
     'Estuário do Vaza-Barris, entre manguezais e coqueirais.',
@@ -98,5 +105,5 @@ export const cidade: Cidade = {
     { nome: "Prefeitura de Itaporanga d'Ajuda", url: 'https://itaporanga.se.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-27',
 };

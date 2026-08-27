@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se concentra no Centro e nos bairros mais estruturados, complementada por academias ao ar livre em praças e pela orla como grande espaço gratuito de treino.',
 
+  academiasProximas: [
+    { nome: 'Corpus Academia' },
+    { nome: 'Flex Academia', detalhe: 'na Rua Coronel José Pórfirio, na orla' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Orla do rio Xingu como principal espaço de caminhada e treino ao ar livre.',
     'Academias ao ar livre em praças do Centro e dos bairros.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Altamira', url: 'https://altamira.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/altamira-pa.webp',
     w: 1200,

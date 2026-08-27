@@ -69,6 +69,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta combina um nicho premium ligado ao turismo náutico e aos condomínios de luxo com uma ampla rede de academias públicas ao ar livre espalhadas pelos bairros.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Angra dos Reis', detalhe: 'no Shopping Piratas, na Estrada do Marinas' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Nicho premium ligado ao turismo náutico e a condomínios de luxo (Frade).',
     'Rede de academias públicas ao ar livre distribuída pelos bairros.',
@@ -95,7 +100,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Angra dos Reis', url: 'https://portal.angra.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/angra-dos-reis-rj.webp',
     w: 1200,

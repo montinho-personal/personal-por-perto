@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com nicho premium nos condomínios fechados, complementada pelos lagos urbanos e pela trilha da Pedra Grande.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Atibaia', detalhe: 'na Alameda Lucas Nogueira Garcez, no Jardim Paulista' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Clima de altitude ameno — treino outdoor o ano todo.',
     'Trilhas e Pedra Grande para trail running e condicionamento.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Atibaia', url: 'https://www.atibaia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/atibaia-sp.webp',
     w: 1200,

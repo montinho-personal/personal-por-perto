@@ -69,6 +69,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com base industrial e operária ampla, e tem no Lago Jaboti o principal polo de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Ph.D Sports Apucarana', detalhe: 'na Praça Interventor Manoel Ribas, no Centro' },
+    { nome: 'Allp Fit Apucarana', detalhe: 'na Av. Minas Gerais' },
+    { nome: 'Body Fit Apucarana', detalhe: 'na Av. Munhoz da Rocha' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Lago Jaboti: pista de 3 km iluminada, academia ao ar livre e ciclovia.',
     'Tradição forte de corrida de rua (Prova 28 de Janeiro, com milhares de atletas).',
@@ -95,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Apucarana', url: 'https://www.apucarana.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/apucarana-pr.webp',
     w: 1200,

@@ -95,6 +95,13 @@ export interface Cidade {
    * nomes reais confirmados, nunca inventados.
    */
   academiasProximas?: AcademiaProxima[];
+  /**
+   * Data (YYYY-MM-DD) da última checagem das academias da cidade. Marcar
+   * mesmo quando a busca não encontra nada verificável — em município
+   * pequeno isso é resultado legítimo, não pendência. Sem esta data, a
+   * cidade continua na fila de `npm run audit:academias`.
+   */
+  academiasVerificadasEm?: string;
   destaquesFitness: string[];
 
   precos: Precos;

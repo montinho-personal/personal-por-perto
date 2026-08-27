@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, estúdios de treino funcional e espaços de musculação, com treino de força e funcional em alta entre os arcoverdenses.',
 
+  academiasProximas: [
+    { nome: 'F3 Fitness', detalhe: 'na Rua Joel de Holanda Cavalcante, na Boa Vista' },
+    { nome: "Academia D'Fitnness", detalhe: 'na Av. José Bonifácio, em São Cristóvão' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Clima semiárido de altitude (cerca de 663 m), mais ameno que o do sertão baixo.',
     'Polo regional de comércio e serviços como "Porta do Sertão".',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Arcoverde', url: 'https://www.arcoverde.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/arcoverde-pe.webp',
     w: 1200,

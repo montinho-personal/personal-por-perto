@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias, estúdios e personal trainers distribuídos perto dos campi e dos bairros residenciais, complementada pela estrutura ao ar livre da orla e dos parques.',
 
+  academiasProximas: [
+    { nome: 'Alpha Sports', detalhe: 'na Rua José Constâncio da Silveira, no Centro' },
+    { nome: 'Body Health Alfenas', detalhe: 'na Av. José Paulino da Costa, no Centro' },
+    { nome: 'Contorno do Corpo', detalhe: 'na Av. Jovino Fernandes Salles, no Novo Horizonte' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Orla do Lago de Furnas como cenário para corrida, caminhada e ciclismo.',
     'Polo universitário (Unifal-MG e Unifenas) que sustenta uma demanda jovem por treino.',
@@ -96,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alfenas', url: 'https://www.alfenas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/alfenas-mg.webp',
     w: 1200,

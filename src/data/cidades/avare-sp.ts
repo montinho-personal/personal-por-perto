@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios no centro e nos bairros, complementada pelos espaços ao ar livre da orla da represa, do Largo São João e do Camping Municipal Costa Azul.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Avaré', detalhe: 'na Av. Prefeito Paulo Novais, no Centro' },
+    { nome: 'Ph.D Sports Avaré', detalhe: 'no Jardim Brabância' },
+    { nome: 'Arena Academia', detalhe: 'na Rua Lineu Prestes, na Vila Maria' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Orla da Represa de Jurumirim, com praias de água doce e cenário para treino outdoor.',
     'Vocação náutica e de pesca esportiva, que atrai público para atividades ao ar livre.',
@@ -96,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Avaré', url: 'https://www.avare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3504503' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/avare-sp.webp',
     w: 1200,

@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é composta por academias de musculação e treino funcional distribuídas pelos bairros mais estruturados, como Centro, Bombas e José Amândio, com porte compatível com um município pequeno e uma demanda que oscila conforme a temporada turística.',
 
+  academiasProximas: [
+    { nome: 'Academia Power Gym', detalhe: 'na Rua Cachalote, no José Amândio' },
+    { nome: 'Elemento Fit', detalhe: 'na Rua Martim Pescador, em Bombas' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Capital Nacional do Mergulho Ecológico, às portas da Reserva Biológica Marinha do Arvoredo.',
     'Península com dezenas de praias e trilhas em Mata Atlântica, cenário natural para treino ao ar livre.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Turismo de Bombinhas — Prefeitura', url: 'https://turismo.bombinhas.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-27',
 };

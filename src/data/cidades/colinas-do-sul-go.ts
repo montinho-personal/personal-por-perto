@@ -62,6 +62,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta formal é mínima e concentrada no centro. O personal local trabalha entre o atendimento a domicílio, o treino ao ar livre e o acompanhamento online — o formato que sustenta quem passa temporadas na região.',
 
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Única cidade da Chapada dos Veadeiros banhada pelo lago da Serra da Mesa.',
     'Trilhas e cachoeiras da vertente oeste da chapada, longe das multidões.',
@@ -95,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Visit Veadeiros — Colinas do Sul', url: 'https://visitveadeiros.com.br/colinas-do-sul/' },
     { nome: 'ICMBio — Parque Nacional da Chapada dos Veadeiros', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/cerrado/lista-de-ucs/parna-da-chapada-dos-veadeiros' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-27',
 };

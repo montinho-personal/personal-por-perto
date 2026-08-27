@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o porte de cidade média e o público universitário, complementada pelas praças e avenidas do centro e pela orla do rio Piranhas-Açu para o treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Star Fitness Assú', detalhe: 'na Rua João Cobe' },
+    { nome: 'Armazém Fitness Assú', detalhe: 'na Rua Monsenhor Júlio Alves Bezerra' },
+    { nome: 'Prática Fitness', detalhe: 'na Rua Augusto Severo, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Orla do rio Piranhas-Açu como espaço natural para caminhada e treino ao ar livre.',
     'Barragem Armando Ribeiro Gonçalves como referência regional de lazer e atividade ao ar livre.',
@@ -103,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Assu', url: 'https://assu.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-27',
 };

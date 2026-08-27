@@ -53,6 +53,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é compatível com o porte de um polo regional, concentrada no Centro e nos bairros de classe média, e complementada pelo atendimento domiciliar e pelas academias ao ar livre municipais.',
 
+  academiasProximas: [
+    { nome: 'Selfit Alagoinhas', detalhe: 'na Av. Doutor João Dantas, em Santa Terezinha' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Polo regional do nordeste baiano, com academias e estúdios que atendem também as cidades do entorno.',
     'Calendário de corridas de rua em crescimento (Alagoinhas Night Run, Corrida do Tonho).',
@@ -79,7 +84,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alagoinhas', url: 'https://www.alagoinhas.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/alagoinhas-ba.webp',
     w: 1200,

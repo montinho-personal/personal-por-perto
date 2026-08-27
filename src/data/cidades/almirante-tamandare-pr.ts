@@ -60,6 +60,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é predominantemente de academias de bairro e estúdios menores, complementada pelo atendimento domiciliar de personal trainers, formato bem adaptado à realidade residencial e à renda local.',
 
+  academiasProximas: [
+    { nome: 'Ph.D Sports Almirante Tamandaré' },
+    { nome: 'Academia Movimento', detalhe: 'na Rua José Milek Filho, na Campina do Arruda' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Cidade popular da RM Curitiba conurbada à capital, com mercado de academias de bairro e atendimento domiciliar.',
     'Provas de rua municipais da SMEL (5 km e 10 km) incentivando a corrida.',
@@ -86,7 +92,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Almirante Tamandaré', url: 'https://tamandare.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/almirante-tamandare-pr.webp',
     w: 1200,

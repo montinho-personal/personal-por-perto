@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é ampla e diversificada (musculação, cross training e redes nacionais), num polo universitário regional, complementada pelo Parque do Povo e pelo Balneário da Amizade.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Presidente Prudente', detalhe: 'na Rua Siqueira Campos, na Vila Roberto' },
+    { nome: 'Bluefit Presidente Prudente', detalhe: 'na Av. Coronel José Soares Marcondes, no Jardim Bongiovani' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Parque do Povo como maior ativo para treino ao ar livre (pista, academia ao ar livre, ciclovia).',
     'Balneário da Amizade: opção gratuita à beira de lago, com pista e equipamentos de ginástica.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Presidente Prudente', url: 'https://www.presidenteprudente.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

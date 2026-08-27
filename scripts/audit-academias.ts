@@ -168,6 +168,26 @@ for (const c of cidades) {
 }
 if (!dup) console.log('  nenhuma');
 
+/*
+ * Capa sem academias: página pela metade.
+ *
+ * Regra do projeto (CLAUDE.md): quem sobe a arte de capa de uma cidade
+ * verifica as academias dela no mesmo commit. Esta lista existe para a
+ * regra não depender de memória — ela precisa ficar vazia.
+ */
+console.log('\nPENDÊNCIA — cidades com capa de arte e ainda sem academias');
+const capaSemAcademia = cidades
+  .filter((c) => c.capaArte && !c.academiasProximas?.length && !c.academiasVerificadasEm)
+  .sort((a, b) => (b.populacao ?? 0) - (a.populacao ?? 0));
+if (!capaSemAcademia.length) {
+  console.log('  nenhuma — toda cidade com capa tem academia citada');
+} else {
+  for (const c of capaSemAcademia) {
+    console.log(`  ${String(c.populacao ?? 0).padStart(9)} hab.  ${c.nome}/${c.uf}  (${c.slug})`);
+  }
+  console.log(`  → ${capaSemAcademia.length} página(s) no ar com capa e sem academias.`);
+}
+
 /* Prioridade: cidades grandes sem academia nomeada. */
 console.log('\nPRIORIDADE — cidades grandes sem nenhuma academia citada');
 const prioridade = semAcademia.sort((a, b) => b.pop - a.pop).slice(0, 20);

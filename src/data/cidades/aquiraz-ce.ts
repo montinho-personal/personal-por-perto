@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta vai das academias de resorts e condomínios de Porto das Dunas a estúdios e academias de bairro na sede, com presença marcante de treino funcional e atividades de praia.',
 
+  academiasProximas: [
+    { nome: 'ProFitness Academia', detalhe: 'na Rua Major José Câmara, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Orla de Porto das Dunas: frente de mar estruturada para treino ao ar livre.',
     'Sol o ano todo favorece o exercício ao ar livre (com cuidado térmico).',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aquiraz', url: 'https://www.aquiraz.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/aquiraz-ce.webp',
     w: 1200,

@@ -56,6 +56,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios de musculação e treino funcional é a mais robusta entre as cidades da microrregião de Santiago, concentrada no Centro e em bairros como Vila Itú, com espaço também para o trabalho de personal trainers em atendimento individual e em domicílio.',
 
+  academiasProximas: [
+    { nome: 'Academia Performance', detalhe: 'no Centro' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     '"Terra dos Poetas": Rua dos Poetas com quatro quarteirões dedicados a escritores, boa para caminhada no Centro.',
     'Origem na antiga Estância de São Miguel, um dos grandes centros de criação de gado das reduções jesuíticas.',
@@ -90,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Rádio Santiago FM — Estimativa populacional', url: 'https://radiosantiago.com.br/geral/cidade/estimativa-populacional-de-santiago-passa-de-50-mil-habitantes/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-08-27',
 };

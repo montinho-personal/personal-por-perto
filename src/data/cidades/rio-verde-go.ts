@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes, boxes de crossfit e academias funcionais já estabelecidas, com público de renda alta, complementada pelo Parque Lauro Martins Filho.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Rio Verde', detalhe: 'na Av. Presidente Vargas' },
+    { nome: 'Smart Fit Havan Rio Verde' },
+    { nome: 'Bluefit Cidade Rio Verde', detalhe: 'na Av. Presidente Vargas, no Jardim Presidente' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Capital do agronegócio com renda alta e público jovem — terreno fértil para personal trainers.',
     'Boxes de crossfit e academias funcionais já estabelecidos.',
@@ -103,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Verde', url: 'https://www.rioverde.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

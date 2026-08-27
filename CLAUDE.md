@@ -18,6 +18,25 @@ refactors sem alteração de conteúdo renderizado e correções de infraestrutu
 (sitemap, redirects). Nesses casos, não alterar `atualizadoEm` em massa —
 o Google ignora `lastmod` quando tudo muda ao mesmo tempo.
 
+## Capa nova em cidade obriga checagem de academias
+
+Ao subir a `capaArte` de uma cidade/região, verificar as academias da mesma
+cidade e preencher `academiasProximas` no mesmo commit. Capa e academias
+andam juntas: a página só vai ao ar "redonda" quando tem as duas.
+
+Critério de verificação (nunca inventar nome):
+- Página oficial da rede vale sozinha; na falta dela, exigir duas fontes
+  independentes com o mesmo endereço.
+- Sempre conferir a UF na fonte — nomes de cidade e bairro se repetem
+  muito no Brasil (Juazeiro/BA × Juazeiro do Norte/CE, Macaé/RJ ×
+  Maceió/AL, Sumaré cidade × bairro de São Paulo).
+- Sem endereço confirmado, entra só o `nome` — `detalhe` é opcional.
+- Unidade em pré-venda ou "em breve" não entra até abrir.
+- Preferir poucas entradas certas a muitas duvidosas.
+
+`npm run audit:academias` lista as cidades que têm capa e ainda não têm
+academias — essa lista precisa ficar zerada.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.

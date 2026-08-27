@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada principalmente por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média do litoral.',
 
+  academiasProximas: [
+    { nome: 'Arena Fitness Acaraú', detalhe: 'na Av. José Monteiro de Melo, no Buriti' },
+  ],
+  academiasVerificadasEm: '2026-08-27',
+
   destaquesFitness: [
     'Litoral oeste cearense com praias de areal extenso, como Arpoeiras e Aranaú, para treino ao ar livre.',
     'Vento forte o ano todo, que faz da orla um polo de kitesurf e windsurf.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Acaraú', url: 'https://www.acarau.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-08-27',
   capaArte: {
     src: '/capas-cidade/acarau-ce.webp',
     w: 1200,
