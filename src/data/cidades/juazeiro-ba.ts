@@ -70,6 +70,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes e academias de musculação no centro e nos bairros de classe média, complementada pela orla do São Francisco e pelo Parque da Lagoa de Calu.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Juazeiro' },
+  ],
+
   destaquesFitness: [
     'Orla do São Francisco (Oeste e Leste) como academia a céu aberto.',
     'Parque da Lagoa de Calu, com pista, ciclovia e quadras.',
@@ -103,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juazeiro', url: 'https://www.juazeiro.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

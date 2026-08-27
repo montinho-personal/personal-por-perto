@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com grupos de corrida apoiados pelo poder público, complementada pelo Bosque Municipal e pela pista de cooper das Esmeraldas.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Marília', detalhe: 'na Av. Tiradentes, no Fragata' },
+    { nome: 'Bluefit Marília', detalhe: 'na Av. Tancredo Neves, no Centro' },
+    { nome: 'Panobianco Nova Marília', detalhe: 'na Av. João Ramalho, no Parque São Jorge' },
+  ],
+
   destaquesFitness: [
     'Bosque Municipal Rangel Pietraroia: pista asfaltada e academia ao ar livre gratuita.',
     'Avenida das Esmeraldas: pista de cooper de mais de 3 km, hub de corrida da cidade.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Marília', url: 'https://www.marilia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

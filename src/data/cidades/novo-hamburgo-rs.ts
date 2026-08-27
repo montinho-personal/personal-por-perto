@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios consolidados, com bom poder de compra metropolitano, complementada pelo Parcão e pelas margens do Rio dos Sinos.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Novo Hamburgo', detalhe: 'na Rua Primeiro de Março, no Centro' },
+    { nome: 'Smart Fit Stok Center Novo Hamburgo' },
+  ],
+
   destaquesFitness: [
     'Parcão como referência de treino ao ar livre (trilhas e academia pública).',
     'Inverno frio que impulsiona musculação e treino indoor.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Novo Hamburgo', url: 'https://www.novohamburgo.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

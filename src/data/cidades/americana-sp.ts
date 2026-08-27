@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com público de IDHM muito alto, complementada pelo conjunto Parque Ecológico/Jardim Botânico e pela ciclovia da Avenida Brasil.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Americana', detalhe: 'na Av. Brasil' },
+    { nome: 'Panobianco Americana', detalhe: 'na Av. Campos Sales, no Jardim Girassol' },
+    { nome: 'Panobianco Zanaga' },
+  ],
+
   destaquesFitness: [
     'Avenida Brasil como corredor urbano de corrida e ciclismo.',
     'Conjunto Parque Ecológico + Jardim Botânico como maior área verde para treino.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Americana', url: 'https://www.americana.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

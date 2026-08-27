@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias está em crescimento, complementada por parques públicos com academia ao ar livre e pela proximidade do polo de São José dos Campos.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Jacareí', detalhe: 'na Av. Joaquim Miguel Martins de Siqueira, no Jardim Pereira do Amparo' },
+    { nome: 'Bluefit Jacareí Centro', detalhe: 'na mesma avenida, algumas quadras adiante' },
+    { nome: 'Smart Fit Villa Branca', detalhe: 'no Villa Branca' },
+  ],
+
   destaquesFitness: [
     'Retomada do calendário oficial de corridas de rua, com distâncias de 3 a 10 km e provas kids.',
     'Malha cicloviária em expansão (cerca de 22 km projetados).',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jacareí', url: 'https://www.jacarei.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };
