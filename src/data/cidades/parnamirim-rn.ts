@@ -69,6 +69,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta concentra academias modernas em Nova Parnamirim, de redes a estúdios locais, complementada pelas orlas de Pirangi e Cotovelo.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Parnamirim Centro', detalhe: 'na Av. Brigadeiro Everaldo Breves' },
+    { nome: 'Smart Fit Av. Ayrton Senna', detalhe: 'na Av. Ayrton Senna' },
+    { nome: 'Smart Fit Cidade Atacadão Parnamirim', detalhe: 'junto ao Atacadão' },
+    { nome: 'Selfit Parnamirim', detalhe: 'na Nova Parnamirim' },
+  ],
+
   destaquesFitness: [
     'Orlas de Pirangi e Cotovelo como academias a céu aberto.',
     'Concentração de academias modernas em Nova Parnamirim.',
@@ -119,5 +126,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Parnamirim', url: 'https://www.parnamirim.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

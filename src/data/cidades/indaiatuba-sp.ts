@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta inclui academias premium e estúdios, com público de alta renda, complementada por um dos melhores espaços públicos de treino do interior paulista.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Indaiatuba', detalhe: 'na Rua das Primaveras, no Parque Mall' },
+    { nome: 'Bluefit Indaiatuba Centro', detalhe: 'na Praça Leonor de Barros Camargo' },
+    { nome: 'Panobianco Indaiatuba', detalhe: 'na Rua Augusto de Oliveira Camargo, no Centro' },
+    { nome: 'Panobianco Morada do Sol', detalhe: 'na Rua Seraphin Gilberto Candello, no Jardim Morada do Sol' },
+  ],
+
   destaquesFitness: [
     'Parque Ecológico (cerca de 16 km) — um dos melhores espaços públicos de treino do interior paulista.',
     'Alta renda e mercado premium para personal e estúdios.',
@@ -120,5 +127,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Indaiatuba', url: 'https://www.indaiatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

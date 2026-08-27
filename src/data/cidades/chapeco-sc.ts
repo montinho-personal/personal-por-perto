@@ -70,6 +70,10 @@ export const cidade: Cidade = {
   academias:
     'O mercado é maduro, com grandes redes e estúdios boutique, complementado pela boa infraestrutura pública ao ar livre (Ecoparque, CEU e Parque das Palmeiras).',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Chapecó', detalhe: 'na Av. Fernando Machado, junto ao Pátio Chapecó' },
+  ],
+
   destaquesFitness: [
     'Cerca de 255 mil habitantes e IDHM alto — base sólida para serviços de bem-estar.',
     'Mercado maduro: grandes redes e estúdios boutique.',
@@ -120,5 +124,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Chapecó', url: 'https://www.chapeco.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

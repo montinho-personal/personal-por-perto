@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne grandes redes, estúdios e espaços públicos gratuitos de qualidade (Bicão, Kartódromo e a pista da UFSCar), com público universitário acostumado à atividade física.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit São Carlos', detalhe: 'na Av. Francisco Pereira Lopes, no Jardim Bandeirantes' },
+    { nome: 'Bluefit São Carlos', detalhe: 'na Av. Comendador Alfredo Mafei, no Jardim São Carlos' },
+  ],
+
   destaquesFitness: [
     'Clima ameno de altitude que favorece o treino ao ar livre o ano todo.',
     'Grande público universitário (USP/UFSCar) com cultura de atividade física.',
@@ -120,5 +125,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Carlos', url: 'https://www.saocarlos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é complementada por uma cultura ao ar livre forte, com a Ilha dos Araújos e o Ibituruna como espaços naturais de treino.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit GV Shopping', detalhe: 'na Rua 7 de Setembro, no Centro' },
+    { nome: 'Smart Fit Esplanadinha', detalhe: 'no bairro Esplanadinha' },
+  ],
+
   destaquesFitness: [
     'Capital do voo livre — esporte de aventura no DNA da cidade.',
     'Ilha dos Araújos: calçadão de 4,5 km, hub de corrida e ciclismo.',
@@ -120,5 +125,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Governador Valadares', url: 'https://www.valadares.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };
