@@ -74,6 +74,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes fortes em Campinas e Kobrasol e estúdios, com público de IDHM muito alto, complementada pela Beira-Mar e pelos novos parques lineares.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Shopping Itaguaçu', detalhe: 'na Rua Gerôncio Thives, em Barreiros' },
+  ],
+
   destaquesFitness: [
     'Beira-Mar de São José: pista de 2,5 km, ciclovia e academia ao ar livre.',
     'Redes fortes em Campinas/Kobrasol.',
@@ -124,5 +128,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José', url: 'https://www.saojose.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-08-27',
 };

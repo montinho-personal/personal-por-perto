@@ -70,6 +70,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios voltados ao grande público estudantil, além das academias públicas gratuitas da prefeitura, com o Parque Itaimbé e o campus da UFSM como grandes espaços ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Santa Maria', detalhe: 'no Shopping Praça Nova, na Urlândia' },
+  ],
+
   destaquesFitness: [
     'Parque Itaimbé: pista de caminhada central aberta 24 horas.',
     'Campus da UFSM: pistas de caminhada e ciclismo e grande público fitness estudantil.',
@@ -103,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Maria', url: 'https://www.santamaria.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-27',
 };

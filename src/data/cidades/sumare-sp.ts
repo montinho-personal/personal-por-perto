@@ -75,6 +75,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro e estúdios em expansão, complementada por espaços verdes públicos como o Horto e o Parque da Floresta.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Sumaré', detalhe: 'na Praça da República, no Centro' },
+    { nome: 'Bluefit Sumaré', detalhe: 'na Praça Manoel de Vasconcelos, também no Centro' },
+  ],
+
   destaquesFitness: [
     'Mercado de academias acessível e em expansão, junto ao crescimento populacional.',
     'Espaços verdes públicos (Horto, Parque da Floresta) para treino funcional e outdoor.',
@@ -125,5 +130,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sumaré', url: 'https://www.sumare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-27',
 };

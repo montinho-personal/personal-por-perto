@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro e redes maiores, com demanda puxada pela corrida de rua, complementada pela orla do Tocantins e pelo novo Parque Horto Arara Azul.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Imperatriz', detalhe: 'no Imperial Shopping, na BR-010' },
+    { nome: 'Smart Fit Centro Imperatriz', detalhe: 'no Centro' },
+  ],
+
   destaquesFitness: [
     'Orla do Tocantins como principal ponto de treino ao ar livre.',
     'Cena de corrida de rua em expansão acelerada.',
@@ -120,5 +125,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Imperatriz', url: 'https://imperatriz.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-08-27',
 };

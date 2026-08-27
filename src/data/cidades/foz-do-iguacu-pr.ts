@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes nacionais (Smart Fit, Bluefit) e estúdios de personal, em um mercado em expansão sustentado pelo turismo e pela boa renda local.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Foz do Iguaçu', detalhe: 'na Av. Costa e Silva, no Jardim Polo Centro' },
+    { nome: 'Smart Fit Max Atacadista JK', detalhe: 'na Av. Juscelino Kubitschek, no América' },
+    { nome: 'Smart Fit República Argentina', detalhe: 'na Av. República Argentina, no Jardim São Paulo' },
+  ],
+
   destaquesFitness: [
     'Cenários únicos para treino ao ar livre: Parque Nacional, lago de Itaipu e orlas.',
     'Investimento público e da Itaipu em academias, pistas e ciclovias.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Foz do Iguaçu', url: 'https://www.fozdoiguacu.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/foz-do-iguacu-pr.webp',
