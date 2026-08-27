@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes comerciais (como a Smart Fit) e o programa público gratuito de musculação, complementados pela boa rede de parques com pista de atletismo e academia ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Canoas', detalhe: 'na Av. Farroupilha, no Marechal Rondon' },
+    { nome: 'Smart Fit ParkShopping Canoas', detalhe: 'dentro do ParkShopping Canoas' },
+  ],
+
   destaquesFitness: [
     'Parque Getúlio Vargas: pista de atletismo e academia ao ar livre de referência.',
     'Parcão (Eduardo Gomes): ampla estrutura ao ar livre, inclusive adaptada para PcD.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Canoas', url: 'https://www.canoas.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [

@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com a proximidade de Curitiba ampliando público e eventos, e o clima frio favorecendo o treino indoor de força.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Shopping São José', detalhe: 'na Rua Dona Izabel a Redentora, no Centro' },
+    { nome: 'Smart Fit Rua Joinville', detalhe: 'na Rua Joinville' },
+    { nome: 'Smart Fit Afonso Pena', detalhe: 'no bairro Afonso Pena' },
+  ],
+
   destaquesFitness: [
     'Ginásio Ney Braga como epicentro de provas de rua.',
     'Rede ampla de parques lineares com academia ao ar livre.',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Pinhais', url: 'https://www.sjp.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/sao-jose-dos-pinhais-pr.webp',

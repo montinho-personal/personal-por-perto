@@ -53,6 +53,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta concentra-se em academias de bairro distribuídas pelas regiões do Centro, Justinópolis e Veneza, complementadas por personal trainers que atendem em domicílio e por treino online — formatos que conversam bem com o perfil popular e a rotina de deslocamento da cidade.',
 
+  academiasProximas: [
+    { nome: 'Pratique Fitness Centro', detalhe: 'na Rua Ari Teixeira da Costa, no Centro' },
+    { nome: 'Pratique Fitness Veneza', detalhe: 'na Av. Osvaldo Alves Araújo, no Veneza' },
+  ],
+
   destaquesFitness: [
     'Academias de bairro espalhadas pelas três grandes regiões da cidade.',
     'Atendimento domiciliar e treino online, alinhados à rotina de cidade-dormitório.',
@@ -79,7 +84,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ribeirão das Neves', url: 'https://www.ribeiraodasneves.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/ribeirao-das-neves-mg.webp',

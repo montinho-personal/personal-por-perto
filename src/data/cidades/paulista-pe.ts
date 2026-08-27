@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, ampliada pela proximidade do Recife, com as praias do Janga e de Pau Amarelo como academia a céu aberto.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Janga', detalhe: 'na Av. João Fonseca de Albuquerque, no Janga' },
+    { nome: 'Selfit Paulista', detalhe: 'no Paulista North Way Shopping, na PE-15' },
+  ],
+
   destaquesFitness: [
     'Orla do Janga com calçadão e ciclofaixa — ideal para corrida e funcional outdoor.',
     'Pau Amarelo, com piscinas naturais e areia larga para treino na praia.',
@@ -96,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Paulista', url: 'https://www.paulista.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/paulista-pe.webp',

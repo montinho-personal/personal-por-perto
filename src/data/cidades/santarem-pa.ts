@@ -69,6 +69,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias se consolida, complementada por academias ao ar livre em praças de bairro (como a Praça das Flores) e pela orla fluvial como grande espaço de treino.',
 
+  academiasProximas: [
+    { nome: 'Selfit Santarém', detalhe: 'na Av. Mendonça Furtado, no Santa Clara' },
+    { nome: '26fit Santarém', detalhe: 'na Rua Rosa Vermelha, no Aeroporto Velho' },
+  ],
+
   destaquesFitness: [
     'Orla fluvial como principal espaço de caminhada e treino.',
     'Academias ao ar livre instaladas em praças de bairro.',
@@ -95,7 +100,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santarém', url: 'https://www.santarem.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/santarem-pa.webp',
