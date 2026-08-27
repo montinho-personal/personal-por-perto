@@ -75,6 +75,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias, estúdios e personal trainers, complementada por parques com academia ao ar livre e trilhas longas como a do Parque dos Trabalhadores.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Franca', detalhe: 'na Av. Dr. Ismael Alonso y Alonso, no Jardim Veneza' },
+    { nome: 'Smart Fit Franca II', detalhe: 'na Rua São Paulo, na Vila Aparecida' },
+    { nome: 'Panobianco Estação', detalhe: 'na Rua Frei Germano, na Estação' },
+    { nome: 'Bluefit Franca', detalhe: 'na Av. Alonso y Alonso, no Centro' },
+    { nome: 'Bluefit Franca Estação', detalhe: 'na Av. Rio Branco, na Estação' },
+  ],
+
   destaquesFitness: [
     'Capital do basquete brasileiro (Sesi Franca) — cultura esportiva forte.',
     'Altitude de cerca de 1.040 m, atrativa para treino de resistência.',
@@ -101,7 +109,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Franca', url: 'https://www.franca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [

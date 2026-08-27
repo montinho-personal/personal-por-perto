@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne a Smart Fit e academias locais, complementadas pelos parques com pistas e academias ao ar livre (Manoel Ribas, Olarias e Parque Linear).',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Ponta Grossa', detalhe: 'na Rua Jacob Holzmann, nas Olarias' },
+    { nome: 'Smart Fit Condor Nova Rússia', detalhe: 'na Av. João Manoel dos Santos Ribas, na Nova Rússia' },
+    { nome: 'Bluefit Ponta Grossa', detalhe: 'na Rua Ermelino de Leão, junto ao Shopping Palladium' },
+  ],
+
   destaquesFitness: [
     'Rede de parques com pistas e academias ao ar livre (Manoel Ribas, Olarias, Parque Linear).',
     'Calendário robusto de corridas de rua (Corrida Cidade e Maratona de PG).',
@@ -96,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ponta Grossa', url: 'https://www.pontagrossa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
   capaArte: {
     src: '/capas-cidade/ponta-grossa-pr.webp',

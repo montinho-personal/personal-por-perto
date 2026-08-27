@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes e academias de bairro, complementadas pelo programa público "Academia do Bairro" e pela enorme estrutura ao ar livre da orla e do sítio histórico.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Patteo Olinda Shopping', detalhe: 'na Rua Carmelita Muniz de Araújo, em Casa Caiada' },
+    { nome: 'Smart Fit Mix Mateus Peixinhos', detalhe: 'na Av. Presidente Kennedy, em Santa Tereza' },
+    { nome: 'Selfit Casa Caiada', detalhe: 'na Av. Carlos de Lima Cavalcante, em Casa Caiada' },
+  ],
+
   destaquesFitness: [
     'Orla com calçadão é o "QG" de corrida e caminhada da cidade.',
     'Ladeiras do sítio histórico como treino natural de subida e intervalado.',
@@ -95,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Olinda', url: 'https://www.olinda.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [

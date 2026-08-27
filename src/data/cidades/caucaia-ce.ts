@@ -75,6 +75,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro na região da Jurema e no Centro, estúdios e serviços voltados ao turismo no eixo litorâneo, além das praias e lagoas funcionando como academia a céu aberto — muitos personals atendem direto na areia, com material próprio.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Iandê Shopping Caucaia', detalhe: 'na Av. Edson da Mota Correia, no Centro' },
+    { nome: 'Bluefit Iandê Shopping', detalhe: 'no piso inferior do mesmo shopping' },
+    { nome: 'Smart Fit Rotatória Estruturante', detalhe: 'na rodovia CE-085, na saída para o litoral' },
+  ],
+
   destaquesFitness: [
     'Cumbuco como hub internacional de kitesurf e windsurf.',
     'Lagoa do Cauípe: vento médio de 20 nós e um dos melhores spots de freestyle do mundo.',
@@ -101,7 +107,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caucaia', url: 'https://www.caucaia.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [

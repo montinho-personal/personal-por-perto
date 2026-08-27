@@ -74,6 +74,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é dominada por academias de bairro voltadas à população trabalhadora, complementadas pela Nova Orla e pelos complexos esportivos públicos gratuitos.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Cariacica', detalhe: 'na Av. Expedito Garcia, em Campo Grande' },
+    { nome: 'Point Fitness', detalhe: 'na Av. Getúlio Vargas, também em Campo Grande' },
+  ],
+
   destaquesFitness: [
     'Orla revitalizada com academia ao ar livre, um hub natural para o personal.',
     'Complexos esportivos públicos gratuitos em vários bairros.',
@@ -100,7 +105,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cariacica', url: 'https://www.cariacica.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-08-27',
 
 
   faqsExtra: [
