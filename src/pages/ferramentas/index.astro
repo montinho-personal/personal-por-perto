@@ -1,37 +1,53 @@
 ---
 /**
- * Hub de ferramentas do portal. Nasce com uma ferramenta e é a casa das
- * próximas (calculadora de preço, treino para a rotina, comparador
- * presencial × online) — por isso o índice é montado a partir do registro
- * central em src/data/ferramentas.ts.
+ * Hub de ferramentas do portal.
+ *
+ * Não é uma página de índice com dois links: é a página que responde
+ * "que ferramenta resolve o meu problema?" e explica o critério por trás
+ * delas. Os cards são montados a partir do registro central em
+ * src/data/ferramentas.ts — publicar ferramenta nova é acrescentar a
+ * entrada lá, e o hub, o rodapé e o schema acompanham sozinhos.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
-import { ferramentas, urlFerramenta } from '../../data/ferramentas';
+import { ferramentas, ferramentasDisponiveis, urlFerramenta } from '../../data/ferramentas';
 import { rotas } from '../../lib/links';
+import { formatDateLong } from '../../lib/slug';
 
 const path = '/ferramentas';
+const atualizadoEm = '2026-08-27';
+
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Ferramentas', url: path },
 ];
 
-const title = 'Ferramentas para escolher seu treino | Personal por Perto';
+const title = 'Ferramentas gratuitas para escolher personal e treino | Personal por Perto';
 const description =
-  'Ferramentas gratuitas do Personal por Perto para ajudar você a decidir que tipo de acompanhamento, treino e investimento fazem sentido para a sua rotina.';
+  'Ferramentas gratuitas e sem cadastro: descubra se precisa de personal presencial, online ou híbrido e veja a faixa de preço de acompanhamento na sua cidade. Resultado na hora.';
 
-const disponiveis = ferramentas.filter((f) => f.disponivel);
+const urlCanonica = new URL(path + '/', site.dominio).href;
 
 const schema = [
   breadcrumbSchema(crumbs),
+  {
+    '@type': 'CollectionPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Ferramentas do Personal por Perto',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+  },
   itemListSchema(
-    'Ferramentas do Personal por Perto',
-    disponiveis.map((f) => f.nome),
+    'Ferramentas gratuitas do Personal por Perto',
+    ferramentasDisponiveis.map((f) => f.nome),
     site.dominio,
-    disponiveis.map((f) => new URL(urlFerramenta(f.slug), site.dominio).href),
+    ferramentasDisponiveis.map((f) => new URL(urlFerramenta(f.slug), site.dominio).href),
   ),
 ];
 ---
@@ -39,51 +55,169 @@ const schema = [
 <Base title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
+  <!-- ============================= HERO ============================= -->
   <header class="section-sm">
     <div class="container fer-intro">
-      <p class="eyebrow">Ferramentas</p>
+      <p class="eyebrow">Ferramentas gratuitas</p>
       <h1>Ferramentas do Personal por Perto</h1>
       <p class="fer-lead">
-        Conteúdo explica; ferramenta decide junto com você. Estas são gratuitas,
-        não pedem cadastro para mostrar o resultado e existem para responder as
-        perguntas que travam a maioria das pessoas antes de começar a treinar.
+        Conteúdo explica. Ferramenta decide junto com você. Estas foram feitas
+        para responder, com os seus dados, as duas perguntas que mais travam
+        quem está prestes a contratar um acompanhamento: <strong>de que tipo
+        de personal eu preciso</strong> e <strong>quanto isso deveria
+        custar</strong>.
       </p>
+      <ul class="fer-selos">
+        <li><span aria-hidden="true">✓</span> Gratuitas, sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Resultado na hora</li>
+        <li><span aria-hidden="true">✓</span> Método aberto e explicado</li>
+      </ul>
     </div>
   </header>
 
+  <!-- ============================ CARDS ============================= -->
   <section class="section-sm">
     <div class="container">
-      <div class="grid grid-2">
+      <div class="fer-lista">
         {
           ferramentas.map((f) =>
             f.disponivel ? (
-              <a class="card card-hover fer-card" href={urlFerramenta(f.slug)}>
-                {f.selo && <span class="pill pill-accent">{f.selo}</span>}
-                <h2 class="fer-nome">{f.nome}</h2>
-                <p class="fer-chamada">{f.chamada}</p>
+              <article class="card fer-card">
+                <div class="fer-card-topo">
+                  {f.selo && <span class="pill pill-accent">{f.selo}</span>}
+                  <h2 class="fer-nome">
+                    <a href={urlFerramenta(f.slug)}>{f.nome}</a>
+                  </h2>
+                  {f.perguntaCentral && <p class="fer-pergunta">Responde: “{f.perguntaCentral}”</p>}
+                </div>
+
                 <p class="fer-desc">{f.descricao}</p>
-                <span class="fer-acao">Abrir ferramenta →</span>
-              </a>
+
+                {f.paraQuem && (
+                  <p class="fer-paraquem">
+                    <strong>Para quem é:</strong> {f.paraQuem}
+                  </p>
+                )}
+
+                {f.entrega && (
+                  <div class="fer-entrega">
+                    <h3>O que você leva ao terminar</h3>
+                    <ul class="check-list">
+                      {f.entrega.map((e) => (
+                        <li>{e}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {f.naoFaz && (
+                  <p class="fer-naofaz">
+                    <strong>O que ela não faz:</strong> {f.naoFaz}
+                  </p>
+                )}
+
+                <a class="btn btn-primary fer-btn" href={urlFerramenta(f.slug)}>
+                  Abrir {f.nomeCurto.toLowerCase()}
+                </a>
+              </article>
             ) : (
-              <div class="card fer-card fer-card--breve">
-                <span class="pill pill-neutral">Em breve</span>
-                <h2 class="fer-nome">{f.nome}</h2>
+              <article class="card fer-card fer-card--breve">
+                <div class="fer-card-topo">
+                  <span class="pill pill-neutral">Em breve</span>
+                  <h2 class="fer-nome">{f.nome}</h2>
+                </div>
                 <p class="fer-desc">{f.descricao}</p>
-              </div>
+              </article>
             ),
           )
         }
       </div>
-
-      <p class="fer-nota">
-        Procurando conteúdo em vez de ferramenta? Comece pelos
-        <a href={rotas.guias}>guias de contratação</a> ou pelo diretório de
-        <a href={rotas.cidades}>personal trainer por cidade</a>.
-      </p>
     </div>
   </section>
 
+  <!-- ====================== CONTEÚDO EDITORIAL ====================== -->
   <section class="section-sm tint">
+    <div class="container">
+      <article class="prose fer-artigo">
+        <p class="fer-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+        <h2 id="qual-usar">Qual ferramenta usar primeiro</h2>
+        <p>
+          Depende de onde você travou. Se a dúvida ainda é <em>que tipo</em> de
+          acompanhamento contratar — se vale um personal do seu lado na academia
+          ou se um acompanhamento a distância resolveria melhor —, comece pelo
+          <a href={urlFerramenta('encontre-seu-personal-ideal')}>diagnóstico do
+          personal ideal</a>. Ele é a porta de entrada natural, porque a
+          resposta dele muda tudo o que vem depois, inclusive o preço.
+        </p>
+        <p>
+          Se o formato você já decidiu e a dúvida é <em>quanto custa</em>, vá
+          direto para a
+          <a href={urlFerramenta('calculadora-preco-personal')}>calculadora de
+          preço</a>. Ela mostra a faixa de referência por sessão e por mês na
+          sua cidade, com a conta aberta — porque o preço muda muito conforme o
+          formato, a frequência e a região, e chegar à conversa sem parâmetro
+          nenhum é o que faz muita gente aceitar o primeiro número que ouve.
+        </p>
+
+        <h2 id="por-que-gratuitas">Por que elas são gratuitas e não pedem cadastro</h2>
+        <p>
+          Porque bloquear resultado atrás de formulário transforma uma ajuda em
+          isca. As duas ferramentas mostram o resultado completo na hora, sem
+          e-mail, sem telefone e sem cadastro. A única informação opcional é a
+          cidade, usada para dizer se o atendimento presencial é viável no seu
+          caso — e dá para pular.
+        </p>
+        <p>
+          O portal é mantido por um profissional que atende presencialmente na
+          região de Alphaville e online no Brasil inteiro. Quando o seu perfil
+          combina com esse trabalho, isso aparece no resultado; quando não
+          combina, a ferramenta diz isso com todas as letras e indica o caminho
+          honesto. Essa é a troca: a ferramenta precisa ser útil mesmo para
+          quem nunca vai contratar nada.
+        </p>
+
+        <h2 id="como-funcionam">Como elas chegam ao resultado</h2>
+        <p>
+          Nenhuma das duas sorteia resposta nem usa inteligência artificial para
+          inventar texto. As duas são determinísticas: as mesmas respostas
+          produzem sempre o mesmo resultado, calculado por regras que estão
+          descritas na própria página de cada ferramenta.
+        </p>
+        <p>
+          Isso vale também para o que elas <em>não</em> afirmam. O diagnóstico
+          não diz que você é de um "tipo" nem promete resultado; a calculadora
+          declara que trabalha com faixa de referência editorial e nunca alega
+          preço médio de mercado, porque não existe coleta de preços praticados
+          por trás. Preferimos entregar um número mais humilde e verdadeiro do
+          que um número redondo e inventado.
+        </p>
+
+        <h2 id="limites">O que as ferramentas não fazem</h2>
+        <p>
+          Elas ajudam a decidir <strong>formato e faixa de investimento</strong>.
+          Não prescrevem treino, não fazem avaliação física, não diagnosticam
+          nada e não substituem a orientação individual de um profissional. Se
+          você tem dor, lesão ou alguma condição de saúde, converse com um
+          médico ou fisioterapeuta antes de começar a treinar — e leve essa
+          orientação para quem for te acompanhar.
+        </p>
+
+        <h2 id="mais">Prefere ler antes de usar</h2>
+        <p>
+          As ferramentas nasceram do conteúdo do portal, e o conteúdo continua
+          lá para quem quiser se aprofundar. Os
+          <a href={rotas.guias}>guias de contratação</a> destrincham critérios,
+          formatos e preços em texto; o diretório de
+          <a href={rotas.cidades}>personal trainer por cidade</a> traz o
+          panorama local de cada região, com academias e espaços de treino
+          verificados.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-sm">
     <div class="container">
       <CtaMontinho variante="destaque" />
     </div>
@@ -92,7 +226,7 @@ const schema = [
 
 <style>
   .fer-intro {
-    max-width: 720px;
+    max-width: 760px;
   }
   .fer-lead {
     margin-top: var(--sp-4);
@@ -100,18 +234,55 @@ const schema = [
     color: var(--ink-soft);
     line-height: 1.55;
   }
-  .fer-card {
-    display: block;
-    color: inherit;
+  .fer-selos {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-5) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3) var(--sp-5);
+    font-size: var(--step--1);
+    color: var(--muted);
   }
-  .fer-card:hover {
-    text-decoration: none;
+  .fer-selos li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .fer-selos span {
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* Cards em coluna única até 900px: o conteúdo de cada um é denso e
+     duas colunas estreitas empilhariam texto demais lado a lado. */
+  .fer-lista {
+    display: grid;
+    gap: var(--sp-5);
+  }
+  @media (min-width: 900px) {
+    .fer-lista {
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
+    }
+  }
+  .fer-card {
+    display: flex;
+    flex-direction: column;
   }
   .fer-nome {
     margin-top: var(--sp-3);
     font-size: var(--step-2);
+    line-height: 1.2;
   }
-  .fer-chamada {
+  .fer-nome a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .fer-nome a:hover {
+    color: var(--brand-600);
+  }
+  .fer-pergunta {
     margin-top: var(--sp-2);
     font-weight: 600;
     color: var(--ink-soft);
@@ -121,18 +292,55 @@ const schema = [
     color: var(--muted);
     line-height: 1.6;
   }
-  .fer-acao {
-    display: inline-block;
+  .fer-paraquem {
     margin-top: var(--sp-4);
-    font-weight: 700;
-    color: var(--accent-600);
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .fer-entrega {
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--line-soft);
+  }
+  .fer-entrega h3 {
+    font-size: var(--step-0);
+    margin-bottom: var(--sp-3);
+  }
+  .fer-naofaz {
+    margin-top: var(--sp-4);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  /* Empurra o botão para a base: com cards de alturas diferentes, as
+     chamadas de ação ficam alinhadas entre si. */
+  .fer-btn {
+    margin-top: auto;
+    align-self: flex-start;
+    margin-block-start: var(--sp-5);
   }
   .fer-card--breve {
     opacity: 0.75;
   }
-  .fer-nota {
-    margin-top: var(--sp-6);
+
+  .fer-artigo {
+    max-width: var(--container-narrow);
+    margin-inline: auto;
+  }
+  .fer-atualizado {
     color: var(--muted);
     font-size: var(--step--1);
+    margin-bottom: var(--sp-5);
+  }
+  .fer-artigo h2 {
+    margin-top: var(--sp-7);
+    font-size: var(--step-2);
+  }
+  .fer-artigo h2:first-of-type {
+    margin-top: 0;
+  }
+  .fer-artigo p {
+    margin-top: var(--sp-4);
+    line-height: 1.7;
   }
 </style>

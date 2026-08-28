@@ -1,19 +1,36 @@
 ---
 /**
  * Rodapé global. Estrutura em blocos semânticos (Encontrar Personal,
- * Localidades populares, Conteúdos, Institucional), cada um em <details>
- * nativo: colapsável no mobile (sem JS), sempre expandido no desktop via
- * CSS, e com os links sempre presentes no DOM independentemente do estado
- * visual — nada é ocultado do crawler.
+ * Ferramentas, Localidades populares, Conteúdos, Institucional), cada um em
+ * <details> nativo: colapsável no mobile (sem JS), sempre expandido no
+ * desktop via CSS, e com os links sempre presentes no DOM independentemente
+ * do estado visual — nada é ocultado do crawler.
+ *
+ * O bloco de Ferramentas sai do registro central (src/data/ferramentas.ts):
+ * publicar uma ferramenta nova a coloca no rodapé automaticamente, e as
+ * marcadas como indisponíveis nunca viram link quebrado.
  */
 import Logo from './Logo.astro';
 import { site } from '../data/site';
 import { montinho } from '../data/montinho';
 import { cidadesPopularesFooter } from '../data/destaques';
+import { ferramentasDisponiveis, urlFerramenta } from '../data/ferramentas';
+import { cidades } from '../data/cidades';
 import { formatMonthYear } from '../lib/slug';
 import { emCidade } from '../lib/gramatica';
 
 const anoAtual = 2026;
+
+/**
+ * "Atualizado em" derivado do conteúdo, não escrito à mão: é a data de
+ * revisão mais recente entre as páginas de cidade. Estava fixa no código e
+ * ficou dois meses defasada — uma data de atualização errada em todas as
+ * páginas é pior do que não ter data nenhuma.
+ */
+const ultimaAtualizacao = cidades.reduce(
+  (maior, c) => (c.atualizadoEm > maior ? c.atualizadoEm : maior),
+  '2026-01-01',
+);
 ---
 
 <footer class="site-footer">
@@ -36,6 +53,21 @@ const anoAtual = 2026;
       <ul>
         <li><a href="/personal-trainer/">Buscar personal por cidade</a></li>
         <li><a href="/montinho-personal/">Acompanhamento online (todo o Brasil)</a></li>
+        <li><a href="/guias/como-escolher-personal-trainer/">Como escolher um personal</a></li>
+      </ul>
+    </details>
+
+    <details class="footer-acc" open>
+      <summary>Ferramentas gratuitas</summary>
+      <ul>
+        {
+          ferramentasDisponiveis.map((f) => (
+            <li>
+              <a href={urlFerramenta(f.slug)}>{f.nomeCurto}</a>
+            </li>
+          ))
+        }
+        <li><a href="/ferramentas/">Todas as ferramentas</a></li>
       </ul>
     </details>
 
@@ -84,7 +116,7 @@ const anoAtual = 2026;
 
   <div class="container footer-bottom">
     <p>© {anoAtual} {site.nome}. Conteúdo informativo e editorial.</p>
-    <p>Atualizado em {formatMonthYear('2026-06-28')}.</p>
+    <p>Atualizado em {formatMonthYear(ultimaAtualizacao)}.</p>
   </div>
 </footer>
 
@@ -96,14 +128,26 @@ const anoAtual = 2026;
     margin-top: var(--sp-9);
     font-size: var(--step--1);
   }
+  /* Cinco blocos de navegação + marca. Acima de 1180px tudo cabe em uma
+     linha; abaixo disso a marca passa a ocupar a largura inteira e os
+     blocos se reorganizam, para as colunas não ficarem estreitas demais
+     para rótulos longos ("Personal Trainer em São Paulo"). */
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
-    gap: var(--sp-6);
+    grid-template-columns: 1.2fr repeat(5, minmax(0, 1fr));
+    gap: var(--sp-6) var(--sp-5);
   }
-  @media (max-width: 980px) {
+  @media (max-width: 1180px) {
     .footer-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (max-width: 760px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (max-width: 520px) {
