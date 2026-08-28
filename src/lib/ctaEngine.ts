@@ -211,6 +211,12 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
       regra: 'TEMA_ROTINA',
       motivo: 'conteúdo de rotina: adequar treino ao tempo real disponível',
     },
+    'constancia-aderencia': {
+      id: 'constanciaDiagnostico',
+      alt: 'rotinaTreino',
+      regra: 'TEMA_CONSTANCIA',
+      motivo: 'quem lê sobre não desistir quer saber por que para, não como dividir o treino',
+    },
     emagrecimento: {
       id: 'emagrecimentoEstrategia',
       regra: 'TEMA_EMAGRECIMENTO',

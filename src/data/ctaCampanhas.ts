@@ -54,6 +54,7 @@ export interface CampanhaCtx {
 const FERRAMENTA_MATCH = '/ferramentas/encontre-seu-personal-ideal/';
 const FERRAMENTA_PRECO = '/ferramentas/calculadora-preco-personal/';
 const FERRAMENTA_AUDITORIA = '/ferramentas/meu-treino-faz-sentido/';
+const FERRAMENTA_CONSTANCIA = '/ferramentas/diagnostico-da-constancia/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -84,6 +85,20 @@ export const campanhas: Record<string, Campanha> = {
     rotulo: 'Montar treino para minha rotina',
     destino: '/ferramentas/treino-para-minha-rotina/',
     microcopy: 'Leva cerca de 1 minuto.',
+  },
+
+  constanciaDiagnostico: {
+    id: 'constanciaDiagnostico',
+    nivel: 'diagnostico',
+    render: 'card',
+    requer: 'diagnosticoConstancia',
+    eyebrow: 'Seu próximo passo',
+    titulo: 'Começar de novo é fácil. O difícil é não parar na terceira semana',
+    texto:
+      'Quem começa e para raramente tem problema de vontade: costuma ter um plano que pede mais dias, mais tempo ou mais deslocamento do que a semana real entrega. Dá para descobrir qual é o seu gargalo.',
+    rotulo: 'Descobrir meu principal gargalo',
+    destino: FERRAMENTA_CONSTANCIA,
+    microcopy: 'Cerca de 1 minuto. Sem cadastro para ver o resultado.',
   },
 
   emagrecimentoEstrategia: {

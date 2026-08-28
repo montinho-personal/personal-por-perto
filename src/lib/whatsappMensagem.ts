@@ -32,6 +32,8 @@ const INTERESSE: Record<Topico, string> = {
   'dor-saude': 'estou retomando os treinos com algumas limitações e queria entender como você adapta o planejamento.',
   iniciantes: 'sou iniciante e queria entender como começar com orientação.',
   'rotina-tempo': 'minha rotina é corrida e queria entender como funcionaria um treino pensado no tempo que eu tenho.',
+  'constancia-aderencia':
+    'já comecei e parei algumas vezes e queria entender como manter uma rotina que sobreviva às semanas ruins.',
   'publico-especifico': 'queria entender como funcionaria um acompanhamento para o meu caso.',
   farmacologico:
     'estou em processo de emagrecimento e queria entender como estruturar o treino para preservar massa muscular.',

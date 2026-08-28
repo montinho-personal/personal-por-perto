@@ -1,0 +1,611 @@
+---
+/**
+ * Ferramenta "Diagnóstico da Constância".
+ *
+ * Auditor de aderência: encontra o desalinhamento entre o plano de treino
+ * e a rotina real. HTML estático e indexável; a ferramenta é progressive
+ * enhancement, com o motor em src/lib/constancia.ts.
+ *
+ * Self-canonical. O resultado é estado da ferramenta, nunca URL — nenhuma
+ * combinação de gargalos gera página própria.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas/diagnostico-da-constancia';
+const atualizadoEm = '2026-08-28';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Diagnóstico da Constância', url: path },
+];
+
+const title = 'Por que não consigo manter o treino? Faça o diagnóstico | Personal por Perto';
+const description =
+  'Descubra o que está atrapalhando a sua constância no treino — frequência, deslocamento, plano B ou clareza — e qual ajuste faz mais diferença agora. Grátis, sem cadastro.';
+
+const urlCanonica = new URL(path + '/', site.dominio).href;
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Diagnóstico da Constância',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: { '@type': 'Thing', name: 'Aderência e constância em rotina de treino' },
+  },
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Diagnóstico da Constância',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que compara o plano de treino com a rotina real para identificar o principal gargalo de constância e sugerir uma semana-alvo e uma semana mínima viável.',
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="dc-hero">
+    <div class="container dc-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Por que você não consegue manter o treino?</h1>
+      <p class="dc-hero-lead">
+        Responda algumas perguntas e descubra o que mais está atrapalhando a
+        sua constância — e qual ajuste pode fazer mais diferença agora. Não
+        estamos avaliando a sua força de vontade: estamos comparando o seu
+        plano com a sua semana real.
+      </p>
+
+      <ul class="dc-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 1 minuto</li>
+        <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Resultado personalizado</li>
+      </ul>
+
+      <div id="dc-app" class="dc-app" data-estado="inicial">
+        <div class="dc-start">
+          <button type="button" class="btn btn-primary btn-lg dc-start-btn" id="dc-iniciar">
+            Descobrir meu principal gargalo
+          </button>
+          <p class="dc-microcopy">Sem cadastro para ver o resultado.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent dc-noscript">
+          <p>
+            <strong>A ferramenta precisa de JavaScript para funcionar.</strong>
+            O conteúdo abaixo explica os mesmos critérios que ela usa.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <div class="container dc-conteudo">
+    <article class="prose dc-artigo">
+      <p class="dc-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="por-que-dificil">Por que é tão difícil manter uma rotina de treino</h2>
+      <p>
+        A explicação mais comum — falta de disciplina — costuma ser a menos
+        útil, porque não indica o que fazer. Na prática, a maior parte das
+        rotinas de treino não falha por desinteresse: falha porque a estratégia
+        escolhida exige mais tempo, mais dias, mais deslocamento ou mais
+        decisões do que a semana real consegue sustentar.
+      </p>
+      <p>
+        Quando alguém planeja cinco treinos e consegue três, o problema
+        raramente está nos dois que faltaram. Está no fato de que o plano foi
+        desenhado para uma semana que quase nunca acontece — e, contra esse
+        plano, toda semana normal vira fracasso.
+      </p>
+
+      <h2 id="constancia-motivacao">Constância depende de motivação?</h2>
+      <p>
+        Motivação existe e ajuda, mas ela oscila por natureza: sobe depois de
+        um bom treino, cai numa semana de trabalho pesado. Construir uma rotina
+        que só funciona nos dias de motivação alta significa treinar poucos dias
+        por mês.
+      </p>
+      <p>
+        O que sustenta constância a longo prazo costuma ser mais mundano:
+        reduzir o atrito para começar, ter o treino já decidido antes de chegar,
+        encurtar o deslocamento e ter uma versão mínima da sessão para os dias
+        ruins. São ajustes de sistema, não de caráter.
+      </p>
+
+      <h2 id="quantos-dias">Quantos dias preciso treinar para criar consistência</h2>
+      <p>
+        Não existe número mágico. O número que funciona é aquele que você repete
+        — e repetir três dias por seis meses entrega muito mais do que cinco
+        dias por três semanas. Do ponto de vista de resultado, duas ou três
+        sessões semanais bem estruturadas já produzem adaptação real,
+        especialmente para quem está começando ou retomando.
+      </p>
+      <p>
+        Um bom teste: escolha o número que você conseguiria cumprir na sua pior
+        semana do último mês. Esse é o seu piso. Construa a partir dele e trate
+        os dias extras como bônus, não como obrigação.
+      </p>
+
+      <h2 id="perder-treino">O que fazer quando perder um treino</h2>
+      <p>
+        Continuar. Parece óbvio, mas o padrão mais comum entre quem abandona é
+        outro: perder a segunda-feira, concluir que a semana está perdida e
+        decidir "recomeçar na próxima". A próxima vira a seguinte, e a pausa de
+        dois dias vira meses.
+      </p>
+      <p>
+        A saída é parar de usar o calendário como placar. Se o treino A estava
+        marcado para segunda e não aconteceu, o treino A é o próximo — feito no
+        primeiro dia disponível. A sequência continua de onde parou; ela não
+        volta ao início.
+      </p>
+
+      <h2 id="treino-longo">Por que treinos muito longos podem atrapalhar a aderência</h2>
+      <p>
+        Uma sessão de noventa minutos exige um bloco grande e contínuo de
+        agenda. Blocos grandes são exatamente os primeiros a desaparecer numa
+        semana cheia — e, quando some, não sobra nada, porque o plano não previu
+        versão menor.
+      </p>
+      <p>
+        Reduzir a sessão costuma preservar boa parte do resultado, desde que os
+        exercícios principais fiquem. Uma sessão de quarenta minutos que
+        acontece rende mais do que uma de noventa que é cancelada.
+      </p>
+
+      <h2 id="semana-minima">Como criar uma semana mínima de treino</h2>
+      <p>
+        A semana mínima é a versão reduzida do seu plano: o número de sessões e
+        a duração que você ainda consegue cumprir quando tudo dá errado. Ela
+        existe para que a semana ruim não vire semana zerada.
+      </p>
+      <p>
+        Defina-a com calma, hoje, e não no meio da correria — porque decidir
+        sob pressão, cansado, quase sempre termina em não treinar. Se a sua
+        semana-alvo tem três sessões de quarenta e cinco minutos, a mínima pode
+        ser duas de vinte e cinco. Não é a mesma coisa, mas é radicalmente
+        diferente de zero.
+      </p>
+
+      <h2 id="metodologia">Como fazemos o diagnóstico</h2>
+      <p>
+        A ferramenta cruza a frequência planejada com a realizada, a duração das
+        sessões, o tempo até começar a treinar, a previsibilidade da semana, o
+        que acontece quando você perde um treino, os motivos declarados de
+        falta, a clareza sobre o que fazer, a percepção de progresso e a
+        existência de um plano mínimo. As regras são determinísticas: as mesmas
+        respostas produzem sempre o mesmo diagnóstico.
+      </p>
+      <p>
+        Duas decisões merecem estar explícitas. A primeira: a ferramenta
+        <strong>não avalia traços de personalidade</strong> e não faz
+        diagnóstico psicológico — ela olha para comportamentos e números
+        declarados. A segunda: quando nenhum sinal é forte o suficiente, ela
+        diz isso em vez de inventar um gargalo. Um auditor que sempre encontra
+        problema não é confiável.
+      </p>
+      <p>
+        O resultado aponta no máximo três pontos, com uma única mudança
+        principal sugerida. Quinze dicas não ajudam ninguém a começar.
+      </p>
+
+      <h2 id="ferramentas-irmas">Depois do diagnóstico</h2>
+      <p>
+        O próximo passo depende do gargalo encontrado. Se o plano exige mais
+        dias do que a rotina comporta, o caminho é remontar a semana no
+        <a href={rotas.ferramentaRotina}>treino para minha rotina</a>. Se o
+        treino existe mas está mal organizado, vale passar pelo
+        <a href={rotas.ferramentaAuditoria}>meu treino faz sentido?</a>. E se
+        faltar estrutura e acompanhamento, o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a> ajuda
+        a definir que tipo de suporte faz sentido.
+      </p>
+
+      <aside class="dc-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>. O diagnóstico é
+          calculado só a partir das suas respostas, e a opção de acompanhamento
+          só aparece quando o gargalo encontrado é do tipo que um acompanhamento
+          resolve. Quando o problema é deslocamento, por exemplo, a ferramenta
+          sugere reduzir a distância — não contratar alguém.
+        </p>
+        <p class="dc-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e revisada
+          por <a href={rotas.montinho}>{montinho.nome}</a>, personal trainer com
+          mais de 20 anos de experiência em musculação. As recomendações seguem
+          princípios de aderência ao exercício: redução de atrito, planejamento
+          de contingência, clareza de tarefa e feedback de progresso.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <template id="dc-tpl">
+    <div class="dc-quiz" role="group" aria-labelledby="dc-pergunta-titulo">
+      <div class="dc-progresso">
+        <div class="dc-progresso-barra"><span class="dc-progresso-preenchido"></span></div>
+        <p class="dc-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="dc-pergunta" id="dc-pergunta-titulo"></h2>
+      <p class="dc-contexto"></p>
+      <p class="dc-ajuda"></p>
+      <div class="dc-opcoes"></div>
+      <div class="dc-nav">
+        <button type="button" class="dc-voltar">← Voltar</button>
+        <button type="button" class="btn btn-primary dc-avancar" hidden>Continuar</button>
+      </div>
+      <p class="dc-reforco"></p>
+    </div>
+  </template>
+
+  <!-- is:global obrigatório: quiz e resultado são criados via JS. Prefixo `dc-`. -->
+  <style is:global>
+    .dc-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .dc-hero-inner { max-width: 800px; }
+    .dc-hero h1 { color: #fff; max-width: 20ch; }
+    .dc-hero .eyebrow { color: #ffb488; }
+    .dc-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 62ch;
+    }
+    .dc-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .dc-hero-selos li { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .dc-hero-selos span { color: var(--accent); font-weight: 800; }
+    .dc-app { margin-top: var(--sp-6); }
+    .dc-start-btn { width: 100%; max-width: 400px; }
+    .dc-microcopy { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+    .dc-noscript { margin-top: var(--sp-5); color: var(--ink); }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .dc-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .dc-progresso-barra { height: 6px; border-radius: 999px; background: var(--bg-tint-2); overflow: hidden; }
+    .dc-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .dc-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .dc-pergunta { margin-top: var(--sp-4); font-size: var(--step-2); line-height: 1.2; }
+    /* O plano declarado, lembrado na pergunta em que ele é o contraste. */
+    .dc-contexto {
+      margin-top: var(--sp-3);
+      display: inline-block;
+      background: var(--brand-50);
+      border: 1px solid var(--brand-100);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--brand-700);
+    }
+    .dc-ajuda { margin-top: var(--sp-3); color: var(--muted); font-size: var(--step--1); }
+    .dc-ajuda:empty, .dc-reforco:empty, .dc-contexto:empty { display: none; }
+    .dc-opcoes { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+    @media (min-width: 620px) {
+      .dc-opcoes.dc-opcoes--curtas { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    }
+    .dc-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .dc-opcao:hover { border-color: var(--brand); background: var(--bg-tint); }
+    .dc-opcao.dc-sel,
+    .dc-opcao[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-50); }
+    .dc-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+    }
+    .dc-opcao.dc-sel .dc-opcao-marca,
+    .dc-opcao[aria-pressed='true'] .dc-opcao-marca { background: var(--accent); border-color: var(--accent); }
+    .dc-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .dc-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .dc-voltar:hover { color: var(--ink); text-decoration: underline; }
+    .dc-quiz [hidden] { display: none; }
+    .dc-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .dc-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .dc-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+    }
+    .dc-res-titulo { margin-top: var(--sp-2); font-size: var(--step-3); line-height: 1.15; }
+    .dc-res-resumo {
+      margin-top: var(--sp-3);
+      color: var(--ink-soft);
+      font-size: var(--step-1);
+      line-height: 1.55;
+    }
+    .dc-observacao {
+      margin-top: var(--sp-5);
+      background: var(--bg-tint);
+      border-left: 3px solid var(--brand);
+      border-radius: var(--radius);
+      padding: var(--sp-3) var(--sp-4);
+      font-size: var(--step--1);
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .dc-bloco { margin-top: var(--sp-6); }
+    .dc-bloco h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .dc-parte { margin-top: var(--sp-4); }
+    .dc-parte h4 {
+      font-size: var(--step--1);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .dc-parte p { line-height: 1.65; }
+
+    /* Semana-alvo × mínima */
+    .dc-semana { background: var(--bg-tint); border-radius: var(--radius); padding: var(--sp-5); }
+    .dc-par { display: flex; flex-wrap: wrap; gap: var(--sp-4); margin-bottom: var(--sp-4); }
+    .dc-par-item {
+      flex: 1 1 150px;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-4);
+      text-align: center;
+    }
+    .dc-par-item--min { border-color: var(--accent); }
+    .dc-par-num {
+      display: block;
+      font-size: var(--step-4);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-700);
+    }
+    .dc-par-item--min .dc-par-num { color: var(--accent-600); }
+    .dc-par-rot {
+      display: block;
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+    .dc-par-dur {
+      display: block;
+      margin-top: 0.2rem;
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+    .dc-principio {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line);
+      font-weight: 700;
+      color: var(--brand-700);
+      line-height: 1.5;
+    }
+
+    /* A única mudança */
+    .dc-uma {
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: var(--accent-50);
+    }
+    .dc-uma h3 { color: var(--accent-600); }
+    .dc-uma p { line-height: 1.65; font-weight: 600; }
+
+    .dc-secundario {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-3) var(--sp-4);
+      margin-bottom: var(--sp-2);
+    }
+    .dc-secundario summary {
+      cursor: pointer;
+      font-weight: 700;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .dc-secundario p { margin-top: var(--sp-2); line-height: 1.6; }
+    .dc-sec-mostra { color: var(--muted); }
+
+    .dc-proximo-btn { margin-top: var(--sp-4); }
+    .dc-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .dc-compat h3 { color: #fff; font-size: var(--step-1); }
+    .dc-compat p { margin-top: var(--sp-3); line-height: 1.6; }
+    .dc-acoes { margin-top: var(--sp-5); display: grid; gap: var(--sp-3); }
+    .dc-acoes .btn { width: 100%; }
+    .dc-acoes-nota { font-size: var(--step--1); color: #aab0ba; text-align: center; margin: 0; }
+    .dc-continuar {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .dc-continuar h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .dc-links { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2); }
+    .dc-links a { color: var(--brand-600); font-weight: 600; }
+    .dc-aviso {
+      margin-top: var(--sp-5);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .dc-rodape {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-4);
+      align-items: center;
+    }
+    .dc-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-right: auto;
+    }
+    .dc-feedback button,
+    .dc-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .dc-feedback button:hover, .dc-compartilhar:hover { border-color: var(--brand); }
+    .dc-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      min-height: 44px;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .dc-conteudo { padding-block: var(--sp-8); }
+    .dc-artigo { max-width: var(--container-narrow); margin-inline: auto; }
+    .dc-atualizado { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-5); }
+    .dc-artigo h2 { margin-top: var(--sp-7); font-size: var(--step-2); }
+    .dc-artigo p { margin-top: var(--sp-4); line-height: 1.7; }
+    .dc-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .dc-disclosure h2 { margin-top: 0; font-size: var(--step-1); }
+    .dc-metodologia-nota { font-size: var(--step--1); color: var(--muted); }
+  </style>
+
+  <script>
+    import { iniciarConstancia } from '../../scripts/constancia.client';
+    iniciarConstancia();
+  </script>
+</Base>

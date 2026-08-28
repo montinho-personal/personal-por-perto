@@ -91,6 +91,27 @@ export const ferramentas: Ferramenta[] = [
     disponivel: true,
   },
   {
+    slug: 'diagnostico-da-constancia',
+    nome: 'Diagnóstico da Constância',
+    nomeCurto: 'Diagnóstico da constância',
+    chamada: 'Por que você começa e para?',
+    descricao:
+      'Compara o treino que você planeja com a semana que realmente acontece e aponta o gargalo que mais pesa na sua constância — frequência, deslocamento, ausência de plano B ou carga de decisão.',
+    selo: 'Cerca de 1 minuto',
+    perguntaCentral: 'Por que não consigo manter uma rotina de treino?',
+    paraQuem:
+      'Para quem já tentou várias vezes, culpa a própria disciplina e desconfia que o problema pode ser outro.',
+    entrega: [
+      'O gargalo principal com nome e explicação, citando os números que você declarou',
+      'Sua semana-alvo e sua semana mínima viável, com duração para cada uma',
+      'Uma única mudança para fazer nesta semana — não quinze dicas',
+      'O próximo passo escolhido pelo gargalo: remontar a rotina, reduzir distância ou buscar acompanhamento',
+    ],
+    naoFaz:
+      'Não avalia personalidade nem faz diagnóstico psicológico, não culpa a sua disciplina e não inventa gargalo quando não encontra sinal claro.',
+    disponivel: true,
+  },
+  {
     slug: 'calculadora-preco-personal',
     nome: 'Calculadora de Preço do Personal',
     nomeCurto: 'Calculadora de preço',

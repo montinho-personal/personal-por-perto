@@ -32,6 +32,7 @@ export type Topico =
   | 'dor-saude'
   | 'iniciantes'
   | 'rotina-tempo'
+  | 'constancia-aderencia'
   | 'publico-especifico'
   | 'farmacologico'
   | 'nutricao-suplementos'
@@ -104,11 +105,19 @@ const SLUGS_ROTINA = new Set([
   'quanto-tempo-de-treino-por-dia',
   'treino-abc-como-montar',
   'abc-ou-full-body',
+  'descanso-entre-series',
+  'sono-e-ganho-de-massa',
+]);
+
+/*
+ * Conteúdo de ADERÊNCIA — quem lê aqui não quer saber como dividir o
+ * treino: quer saber como não parar. Estava misturado com o de estrutura,
+ * e recebia o CTA de montar rotina quando o problema é outro.
+ */
+const SLUGS_CONSTANCIA = new Set([
   'como-nao-desistir-do-treino',
   'destreino',
   'voltar-a-treinar-depois-de-parar',
-  'descanso-entre-series',
-  'sono-e-ganho-de-massa',
   'quanto-tempo-para-ver-resultados',
 ]);
 
@@ -242,6 +251,9 @@ export function classificarPagina(
   }
   if (SLUGS_INICIANTE.has(slug)) {
     return { tipo: 'artigo', topico: 'iniciantes', funil: 'tofu', regra: 'ART_INICIANTE' };
+  }
+  if (SLUGS_CONSTANCIA.has(slug)) {
+    return { tipo: 'artigo', topico: 'constancia-aderencia', funil: 'mofu', regra: 'ART_CONSTANCIA' };
   }
   if (SLUGS_ROTINA.has(slug)) {
     return { tipo: 'artigo', topico: 'rotina-tempo', funil: 'mofu', regra: 'ART_ROTINA' };

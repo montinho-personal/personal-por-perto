@@ -16,6 +16,8 @@ export const features = {
   calculadoraPreco: true,
   /** /ferramentas/meu-treino-faz-sentido/ — publicada. */
   auditoriaTreino: true,
+  /** /ferramentas/diagnostico-da-constancia/ — publicada. */
+  diagnosticoConstancia: true,
   /** "Personal Score" (avaliação de profissional) — ainda não existe. */
   personalScore: false,
 } as const;
