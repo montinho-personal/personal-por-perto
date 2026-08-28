@@ -55,6 +55,10 @@ export const rotas = {
   emagrecimento: '/emagrecimento/',
   mounjaro: '/mounjaro-e-treino/',
   humor: '/humor-fitness/',
+  ferramentas: '/ferramentas/',
+  ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',
+  ferramentaPreco: '/ferramentas/calculadora-preco-personal/',
+  ferramentaRotina: '/ferramentas/treino-para-minha-rotina/',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

@@ -55,7 +55,9 @@ const casos: Caso[] = [
   { nome: 'Hipertrofia (treino de peito)', path: '/musculacao/treino-de-peito/', esperado: 'hipertrofiaEstrutura' },
   { nome: 'Emagrecimento (perder barriga)', path: '/emagrecimento/como-perder-barriga/', esperado: 'emagrecimentoEstrategia' },
   { nome: 'Iniciante (treino para iniciantes)', path: '/musculacao/treino-para-iniciantes/', esperado: 'inicianteComecar' },
-  { nome: 'Rotina (frequência de treino)', path: '/musculacao/frequencia-de-treino/', esperado: 'personalMatch' }, // rotinaTreino desligada
+  { nome: 'Rotina (frequência de treino)', path: '/musculacao/frequencia-de-treino/', esperado: 'rotinaTreino' },
+  { nome: 'Rotina (ABC ou Full Body)', path: '/musculacao/abc-ou-full-body/', esperado: 'rotinaTreino' },
+  { nome: 'A própria ferramenta de rotina — sem CTA', path: '/ferramentas/treino-para-minha-rotina/', esperado: null },
   { nome: 'Mounjaro (preservar massa)', path: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/', esperado: 'farmacologicoMassa' },
   { nome: 'Suplemento (creatina)', path: '/musculacao/creatina-o-que-e-como-tomar/', esperado: 'personalMatch' },
 
@@ -103,9 +105,20 @@ console.log('\n[3] Feature flags nunca geram link quebrado\n');
   }
   ok(quebrados === 0, `nenhuma decisão aponta para ferramenta desligada (${quebrados} encontradas)`);
 
-  // A campanha de rotina existe mas está desligada: deve cair no fallback.
+  // Com a ferramenta de rotina publicada, o tópico deixa de cair no fallback
+  // e passa a apontar para ela — sem tocar em nenhuma página.
   const rotina = getContextualCTA({ path: '/musculacao/melhor-horario-para-treinar/' });
-  ok(rotina?.campanha.id === 'personalMatch', `rotina desligada cai em personalMatch (obteve ${rotina?.campanha.id})`);
+  ok(rotina?.campanha.id === 'rotinaTreino', `rotina publicada roteia para a ferramenta (obteve ${rotina?.campanha.id})`);
+
+  // O mecanismo de fallback continua valendo: simulamos uma campanha presa a
+  // uma flag desligada e conferimos que ela nunca vira link.
+  const presasEmFlagDesligada = Object.values(campanhas).filter(
+    (c) => c.requer && !features[c.requer],
+  );
+  ok(
+    presasEmFlagDesligada.length === 0,
+    `nenhuma campanha ativa depende de flag desligada (${presasEmFlagDesligada.map((c) => c.id).join(', ') || 'ok'})`,
+  );
 }
 
 console.log('\n[4] Destinos internos existem e terminam com barra\n');

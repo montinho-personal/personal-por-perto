@@ -49,6 +49,27 @@ export const ferramentas: Ferramenta[] = [
     disponivel: true,
   },
   {
+    slug: 'treino-para-minha-rotina',
+    nome: 'Treino para Minha Rotina',
+    nomeCurto: 'Treino para minha rotina',
+    chamada: 'Como organizar o treino dentro da semana que você realmente tem?',
+    descricao:
+      'Sete perguntas sobre objetivo, dias reais, tempo por sessão, local e previsibilidade da sua semana devolvem uma estrutura de treino executável — com semana mínima viável para quando o mês aperta.',
+    selo: 'Cerca de 1 minuto',
+    perguntaCentral: 'Como devo dividir meu treino com os dias que tenho?',
+    paraQuem:
+      'Para quem já decidiu treinar e trava na organização: quantos dias, como dividir, o que fazer quando a semana não fecha.',
+    entrega: [
+      'A estrutura de treino que combina com os seus dias e o seu tempo, com a explicação de por que ela e não outra',
+      'Sua semana ideal e, principalmente, sua semana mínima viável — a que evita recomeçar do zero',
+      'Versão reduzida da sessão para os dias corridos, além do que priorizar e do que evitar',
+      'Uma estrutura alternativa, porque fingir que existe uma única resposta correta seria desonesto',
+    ],
+    naoFaz:
+      'Não monta ficha de exercícios, não define séries, repetições ou cargas e não substitui avaliação individual.',
+    disponivel: true,
+  },
+  {
     slug: 'calculadora-preco-personal',
     nome: 'Calculadora de Preço do Personal',
     nomeCurto: 'Calculadora de preço',

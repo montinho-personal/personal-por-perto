@@ -354,6 +354,19 @@ export function iniciarCalculadora(): void {
     }
   }
 
+  /*
+   * Frequência herdada da ferramenta de rotina (#f=N). Quem acabou de
+   * definir que treina 3× por semana não deve ter que informar isso de novo.
+   * Fragmento, nunca querystring: não gera URL indexável.
+   */
+  const mf = window.location.hash.match(/[#&]f=([1-5])/);
+  if (mf) {
+    frequencia = Number(mf[1]) as Frequencia;
+    document.querySelectorAll<HTMLButtonElement>('[data-freq]').forEach((b) => {
+      b.setAttribute('aria-pressed', b.dataset.freq === mf[1] ? 'true' : 'false');
+    });
+  }
+
   /* ---- Autocomplete ---- */
   let debounce = 0;
   const buscar = (termo: string) => {

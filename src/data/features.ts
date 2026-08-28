@@ -10,8 +10,8 @@
 export const features = {
   /** /ferramentas/encontre-seu-personal-ideal/ — publicada. */
   personalMatch: true,
-  /** "Treino para Minha Rotina" — ainda não existe. */
-  rotinaTreino: false,
+  /** /ferramentas/treino-para-minha-rotina/ — publicada. */
+  rotinaTreino: true,
   /** /ferramentas/calculadora-preco-personal/ — publicada. */
   calculadoraPreco: true,
   /** "Personal Score" (avaliação de profissional) — ainda não existe. */

@@ -151,6 +151,15 @@ const schema = [
           resposta dele muda tudo o que vem depois, inclusive o preço.
         </p>
         <p>
+          Se você já decidiu que vai treinar e o nó é <em>como organizar a
+          semana</em> — quantos dias, como dividir, o que fazer quando não dá
+          para cumprir tudo —, o
+          <a href={urlFerramenta('treino-para-minha-rotina')}>treino para minha
+          rotina</a> é o caminho. Ele parte da sua disponibilidade real, não da
+          semana ideal, e entrega também a semana mínima viável: o número de
+          sessões que segura a rotina quando o mês aperta.
+        </p>
+        <p>
           Se o formato você já decidiu e a dúvida é <em>quanto custa</em>, vá
           direto para a
           <a href={urlFerramenta('calculadora-preco-personal')}>calculadora de
@@ -158,6 +167,11 @@ const schema = [
           sua cidade, com a conta aberta — porque o preço muda muito conforme o
           formato, a frequência e a região, e chegar à conversa sem parâmetro
           nenhum é o que faz muita gente aceitar o primeiro número que ouve.
+        </p>
+        <p>
+          As três conversam entre si: ao terminar uma, o resultado sugere a
+          próxima já com o seu contexto, sem perguntar de novo o que você
+          acabou de responder.
         </p>
 
         <h2 id="por-que-gratuitas">Por que elas são gratuitas e não pedem cadastro</h2>
@@ -255,14 +269,16 @@ const schema = [
   }
 
   /* Cards em coluna única até 900px: o conteúdo de cada um é denso e
-     duas colunas estreitas empilhariam texto demais lado a lado. */
+     duas colunas estreitas empilhariam texto demais lado a lado. Acima
+     disso, auto-fit acomoda qualquer quantidade de ferramentas sem deixar
+     linha órfã quando o número é ímpar. */
   .fer-lista {
     display: grid;
     gap: var(--sp-5);
   }
   @media (min-width: 900px) {
     .fer-lista {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       align-items: start;
     }
   }

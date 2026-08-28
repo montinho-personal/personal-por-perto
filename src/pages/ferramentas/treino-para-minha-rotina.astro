@@ -1,0 +1,834 @@
+---
+/**
+ * Ferramenta "Treino para Minha Rotina".
+ *
+ * O HTML da página é 100% estático e indexável (hero, conteúdo editorial,
+ * metodologia). A ferramenta é progressive enhancement: as etapas são
+ * geradas no cliente por um script pequeno que importa o motor
+ * (src/lib/rotinaTreino.ts). Nenhum framework, nenhuma hidratação.
+ *
+ * O resultado NUNCA vira URL indexável: vive em memória e sessionStorage.
+ * O contexto de cidade das páginas locais chega por fragmento (#c=slug),
+ * que o Google não rastreia. Self-canonical, sem variação por parâmetro.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas/treino-para-minha-rotina';
+const atualizadoEm = '2026-08-27';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Treino para Minha Rotina', url: path },
+];
+
+const title = 'Treino para Minha Rotina: monte sua estrutura de treino | Personal por Perto';
+const description =
+  'Diga quantos dias e quanto tempo você realmente tem e descubra uma estrutura de treino que caiba na sua semana — com semana mínima viável e plano para os dias corridos. Grátis, sem cadastro.';
+
+const urlCanonica = new URL(path + '/', site.dominio).href;
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Treino para Minha Rotina',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: { '@type': 'Thing', name: 'Organização e divisão de treino de musculação' },
+  },
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Treino para Minha Rotina',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que cruza objetivo, experiência, dias disponíveis, tempo por sessão, local e previsibilidade da rotina para sugerir uma estrutura de treino semanal executável.',
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <!-- ============================ HERO ============================ -->
+  <header class="rt-hero">
+    <div class="container rt-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Monte um treino que caiba na sua rotina</h1>
+      <p class="rt-hero-lead">
+        Responda algumas perguntas sobre o seu objetivo, o tempo que você tem e
+        a sua disponibilidade real — e descubra uma estrutura de treino que faça
+        sentido para a sua semana. A de verdade, não a ideal.
+      </p>
+
+      <ul class="rt-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 1 minuto</li>
+        <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Gratuito</li>
+      </ul>
+
+      <div id="rt-app" class="rt-app" data-estado="inicial">
+        <div class="rt-start">
+          <button type="button" class="btn btn-primary btn-lg rt-start-btn" id="rt-iniciar">
+            Montar minha rotina de treino
+          </button>
+          <p class="rt-microcopy">O resultado aparece na hora, sem pedir seus dados.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent rt-noscript">
+          <p>
+            <strong>A ferramenta precisa de JavaScript para funcionar.</strong>
+            O conteúdo abaixo explica os mesmos critérios que ela usa — dá para
+            chegar à sua conclusão lendo, só leva alguns minutos a mais.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <!-- ===================== CONTEÚDO EDITORIAL ===================== -->
+  <div class="container rt-conteudo">
+    <article class="prose rt-artigo">
+      <p class="rt-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="como-montar">Como montar uma rotina de treino</h2>
+      <p>
+        A maior parte das rotinas de treino falha por um motivo simples: foram
+        montadas para a semana que a pessoa gostaria de ter, não para a semana
+        que ela tem. Um plano de cinco dias é excelente no papel e inútil para
+        quem consegue ir três vezes — porque a estrutura que não é cumprida não
+        produz resultado nenhum.
+      </p>
+      <p>
+        Montar uma rotina começa por responder honestamente <strong>quantos dias
+        você sustenta numa semana comum</strong>. Não na melhor semana do ano:
+        na média, incluindo a semana em que o trabalho aperta e o filho fica
+        doente. É desse número que sai tudo o mais — a divisão, o que cabe em
+        cada sessão e o que precisa ficar de fora.
+      </p>
+
+      <h2 id="quantos-dias">Quantos dias por semana devo treinar?</h2>
+      <p>
+        Não existe número universal. Existe o número que você repete. Do ponto
+        de vista de estímulo, treinar cada grupo muscular duas vezes por semana
+        costuma render mais do que uma — e é por isso que, com poucos dias
+        disponíveis, estruturas de corpo inteiro geralmente fazem mais sentido
+        do que dividir o corpo em muitas partes.
+      </p>
+      <p>
+        Mais dias não é automaticamente melhor. Seis treinos semanais só rendem
+        se a recuperação, o sono e a alimentação acompanharem; sem isso, viram
+        volume acumulado sem adaptação. Quem está começando costuma progredir
+        bem com três sessões — e tem a vantagem de deixar espaço para crescer
+        depois, em vez de já começar no teto.
+      </p>
+
+      <h2 id="dois-ou-tres-dias">Treino de 2 ou 3 dias por semana funciona?</h2>
+      <p>
+        Funciona, e para muita gente é a melhor escolha disponível. Com dois
+        dias, uma estrutura de corpo inteiro em cada sessão garante que nenhum
+        grupo muscular passe a semana inteira sem estímulo. Com três, a mesma
+        lógica se mantém e ainda sobra espaço para variar a ênfase entre as
+        sessões.
+      </p>
+      <p>
+        O erro comum de quem tem dois ou três dias é copiar a divisão de quem
+        treina cinco: acaba treinando peito uma vez por semana, costas uma vez
+        por semana, e recebendo pouco estímulo em cada grupo. Menos dias pedem
+        mais abrangência por sessão, não menos.
+      </p>
+
+      <h2 id="qual-divisao">Como escolher a divisão de treino</h2>
+      <p>
+        A divisão é consequência de quatro coisas: quantos dias você tem, quanto
+        tempo cabe em cada sessão, há quanto tempo você treina e o quanto a sua
+        semana é previsível. Quem tem 30 minutos e quatro dias se beneficia de
+        dividir o corpo — não dá para cobrir tudo em meia hora. Quem tem 60
+        minutos e três dias consegue fazer corpo inteiro com folga.
+      </p>
+      <p>
+        A previsibilidade é o fator mais ignorado. Se você não sabe em que dia
+        vai conseguir treinar, uma divisão amarrada a segunda, quarta e sexta
+        vai te fazer sentir que perdeu a semana toda vez que a segunda-feira
+        virar. Quem tem rotina instável rende mais seguindo uma sequência.
+        Aprofundamos a comparação no guia sobre
+        <a href="/musculacao/abc-ou-full-body/">ABC ou Full Body</a>.
+      </p>
+
+      <h2 id="semana-que-nao-fecha">O que fazer quando não consigo cumprir a semana</h2>
+      <p>
+        Esta é provavelmente a parte mais importante — e a menos discutida. A
+        maioria das pessoas não abandona o treino por falta de informação:
+        abandona porque perdeu dois treinos, concluiu que "perdeu a semana" e
+        decidiu recomeçar na segunda. A segunda seguinte vira a próxima, e a
+        pausa vira meses.
+      </p>
+      <p>
+        A saída é ter, desde o começo, uma <strong>semana mínima viável</strong>:
+        o número reduzido de sessões que ainda mantém a rotina de pé quando tudo
+        dá errado. Se a sua semana ideal tem quatro treinos, a mínima pode ter
+        dois. Não é a mesma coisa — mas é radicalmente diferente de zero, e
+        principalmente evita o recomeço do zero. Vale o mesmo para a duração:
+        uma sessão de 25 minutos num dia corrido preserva a sequência que uma
+        sessão pulada quebra.
+      </p>
+
+      <h2 id="full-body-ou-dividido">Full Body ou treino dividido?</h2>
+      <p>
+        Corpo inteiro tende a fazer mais sentido com poucos dias disponíveis,
+        para quem está começando e para quem tem rotina imprevisível — porque
+        cada sessão é autossuficiente e faltar a um treino tem custo menor.
+        Divisões por segmento (superior/inferior, ou por padrão de movimento)
+        ganham vantagem quando há quatro dias ou mais, sessões curtas que não
+        comportam o corpo todo, ou necessidade de mais volume por grupo
+        muscular.
+      </p>
+      <p>
+        Nenhuma das duas é superior em abstrato. A pergunta certa não é qual
+        divisão é melhor, e sim qual delas sobrevive à sua semana.
+      </p>
+
+      <h2 id="metodologia">Como a ferramenta chega ao resultado</h2>
+      <p>
+        Ela não sorteia respostas nem usa inteligência artificial para inventar
+        texto: as mesmas respostas produzem sempre a mesma estrutura, calculada
+        por regras definidas por nós. São sete fatores cruzados — objetivo,
+        experiência, dias reais, tempo por sessão, local de treino,
+        previsibilidade da semana e o obstáculo principal.
+      </p>
+      <p>
+        Duas decisões de projeto merecem ser explicadas. A primeira: a
+        ferramenta pode <strong>reduzir</strong> o número de dias que você
+        declarou. Se você tem seis dias livres mas nunca treinou, ela planeja
+        menos sessões e explica por quê — disponibilidade não é obrigação, e
+        começar no teto é o caminho mais curto para abandonar. A segunda: ela
+        sempre apresenta uma estrutura alternativa, porque fingir que existe uma
+        única resposta correta seria desonesto.
+      </p>
+      <p>
+        O que ela deliberadamente <em>não</em> faz: não monta ficha de
+        exercícios, não define séries e repetições por grupo muscular, não
+        calcula volume individual e não interpreta condição de saúde. Ela
+        organiza a semana. O resto depende de avaliação individual — e é
+        exatamente aí que um acompanhamento profissional entra.
+      </p>
+      <p>
+        Esta ferramenta oferece orientação geral de organização de treino e não
+        substitui avaliação individual. Se você tem dor, lesão ou alguma
+        condição de saúde, converse com um médico ou fisioterapeuta antes de
+        começar.
+      </p>
+
+      <h2 id="ferramentas-irmas">Depois de montar a estrutura</h2>
+      <p>
+        Saber como organizar a semana é metade do caminho. A outra metade é
+        decidir se você vai fazer isso sozinho ou com acompanhamento — e o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a> ajuda
+        nessa escolha, cruzando a mesma rotina com a sua autonomia atual. Se a
+        dúvida for de investimento, a
+        <a href={rotas.ferramentaPreco}>calculadora de preço</a> mostra a faixa
+        de referência na sua cidade para a frequência que você acabou de
+        definir.
+      </p>
+
+      <aside class="rt-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>. A estrutura sugerida
+          pela ferramenta é calculada só a partir das suas respostas, antes e
+          independentemente de qualquer recomendação comercial — e ela continua
+          útil para quem nunca vai contratar acompanhamento nenhum.
+        </p>
+        <p class="rt-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e revisada
+          por <a href={rotas.montinho}>{montinho.nome}</a>, personal trainer com
+          mais de 20 anos de experiência em musculação.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <!-- ==================== MOLDE DAS ETAPAS ===================== -->
+  <template id="rt-tpl">
+    <div class="rt-quiz" role="group" aria-labelledby="rt-pergunta-titulo">
+      <div class="rt-progresso">
+        <div class="rt-progresso-barra"><span class="rt-progresso-preenchido"></span></div>
+        <p class="rt-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="rt-pergunta" id="rt-pergunta-titulo"></h2>
+      <p class="rt-ajuda"></p>
+      <div class="rt-opcoes"></div>
+      <div class="rt-nav">
+        <button type="button" class="rt-voltar">← Voltar</button>
+      </div>
+      <p class="rt-reforco"></p>
+    </div>
+  </template>
+
+  <!--
+    is:global é obrigatório: o quiz e o resultado são criados via JS
+    (document.createElement), e elementos criados em tempo de execução não
+    recebem o atributo de escopo que o Astro injeta na marcação estática.
+    Todas as classes usam o prefixo `rt-` e só esta página carrega esta folha.
+  -->
+  <style is:global>
+    /* ------------------------------- Hero ------------------------------- */
+    .rt-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .rt-hero-inner {
+      max-width: 780px;
+    }
+    .rt-hero h1 {
+      color: #fff;
+      max-width: 20ch;
+    }
+    .rt-hero .eyebrow {
+      color: #ffb488;
+    }
+    .rt-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 60ch;
+    }
+    .rt-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .rt-hero-selos li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .rt-hero-selos span {
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .rt-app {
+      margin-top: var(--sp-6);
+    }
+    .rt-start-btn {
+      width: 100%;
+      max-width: 400px;
+    }
+    .rt-microcopy {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: #aab0ba;
+    }
+    .rt-ultimo {
+      max-width: 46ch;
+    }
+    .rt-noscript {
+      margin-top: var(--sp-5);
+      color: var(--ink);
+    }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .rt-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .rt-progresso-barra {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--bg-tint-2);
+      overflow: hidden;
+    }
+    .rt-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .rt-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .rt-pergunta {
+      margin-top: var(--sp-4);
+      font-size: var(--step-2);
+      line-height: 1.2;
+    }
+    .rt-ajuda {
+      margin-top: var(--sp-2);
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+    .rt-ajuda:empty,
+    .rt-reforco:empty {
+      display: none;
+    }
+    .rt-opcoes {
+      display: grid;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    @media (min-width: 620px) {
+      .rt-opcoes.rt-opcoes--curtas {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+    }
+    .rt-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .rt-opcao:hover {
+      border-color: var(--brand);
+      background: var(--bg-tint);
+    }
+    .rt-opcao.rt-sel {
+      border-color: var(--accent);
+      background: var(--accent-50);
+    }
+    .rt-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+    }
+    .rt-opcao.rt-sel .rt-opcao-marca {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .rt-nav {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+    }
+    .rt-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .rt-voltar:hover {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+    /* `.btn { display:inline-flex }` do CSS global vence a regra [hidden]
+       do navegador por especificidade — sem isto o "Voltar" reapareceria. */
+    .rt-quiz [hidden] {
+      display: none;
+    }
+    .rt-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .rt-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .rt-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+    }
+    .rt-cenario {
+      padding-bottom: var(--sp-4);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .rt-chips {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-3) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+    }
+    .rt-chips li {
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: var(--step--1);
+      font-weight: 600;
+    }
+    .rt-res-cabecalho {
+      margin-top: var(--sp-5);
+    }
+    .rt-res-titulo {
+      margin-top: var(--sp-2);
+      font-size: var(--step-3);
+      line-height: 1.15;
+    }
+    .rt-badge {
+      display: inline-block;
+      margin-top: var(--sp-3);
+      background: var(--accent-50);
+      color: var(--accent-600);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: var(--step--1);
+      font-weight: 700;
+    }
+    .rt-bloco {
+      margin-top: var(--sp-6);
+    }
+    .rt-bloco h3 {
+      font-size: var(--step-1);
+      margin-bottom: var(--sp-3);
+    }
+    .rt-bloco p + p {
+      margin-top: var(--sp-3);
+    }
+    .rt-nota {
+      font-size: var(--step--1);
+      color: var(--muted);
+      margin-top: var(--sp-3);
+    }
+
+    /* Semana */
+    .rt-semana {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--step--1);
+    }
+    .rt-semana th,
+    .rt-semana td {
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .rt-semana th {
+      font-weight: 600;
+      color: var(--ink-soft);
+      width: 40%;
+    }
+    .rt-semana td {
+      font-weight: 700;
+    }
+    .rt-semana .rt-descanso {
+      font-weight: 400;
+      color: var(--muted);
+    }
+    .rt-sequencia {
+      margin: 0 0 0 1.2rem;
+      padding: 0;
+      display: grid;
+      gap: var(--sp-2);
+    }
+    .rt-sequencia li::marker {
+      font-weight: 800;
+      color: var(--accent-600);
+    }
+
+    /* Semana mínima: o par ideal × mínima */
+    .rt-minima {
+      background: var(--bg-tint);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .rt-par {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-4);
+    }
+    .rt-par-item {
+      flex: 1 1 140px;
+      background: #fff;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-4);
+      text-align: center;
+    }
+    .rt-par-item--min {
+      border-color: var(--accent);
+    }
+    .rt-par-num {
+      display: block;
+      font-size: var(--step-4);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-700);
+    }
+    .rt-par-item--min .rt-par-num {
+      color: var(--accent-600);
+    }
+    .rt-par-rot {
+      display: block;
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .rt-duracoes {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--sp-3);
+      display: grid;
+      gap: var(--sp-2);
+    }
+    .rt-duracoes strong {
+      color: var(--brand-700);
+    }
+
+    .rt-prioridades {
+      margin: 0 0 0 1.2rem;
+      padding: 0;
+      display: grid;
+      gap: var(--sp-3);
+    }
+    .rt-prioridades li::marker {
+      font-weight: 800;
+      color: var(--accent-600);
+    }
+    .rt-evitar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .rt-evitar ul li {
+      position: relative;
+      padding-left: 1.6rem;
+      line-height: 1.55;
+    }
+    .rt-evitar ul li::before {
+      content: '×';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .rt-alternativa {
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .rt-alt-nome {
+      font-weight: 800;
+      color: var(--brand-700);
+    }
+
+    /* Montinho */
+    .rt-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .rt-compat h3 {
+      color: #fff;
+      font-size: var(--step-1);
+    }
+    .rt-compat p {
+      margin-top: var(--sp-3);
+      line-height: 1.6;
+    }
+    .rt-compat-ressalva {
+      font-size: var(--step--1);
+      color: #aab0ba;
+      border-left: 3px solid rgba(255, 255, 255, 0.2);
+      padding-left: var(--sp-3);
+    }
+    .rt-acoes {
+      margin-top: var(--sp-5);
+      display: grid;
+      gap: var(--sp-3);
+    }
+    .rt-acoes .btn {
+      width: 100%;
+    }
+    .rt-acoes-nota {
+      font-size: var(--step--1);
+      color: #aab0ba;
+      text-align: center;
+      margin: 0;
+    }
+
+    .rt-continuar {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .rt-continuar h3 {
+      font-size: var(--step-1);
+      margin-bottom: var(--sp-3);
+    }
+    .rt-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--sp-2);
+    }
+    .rt-links a {
+      color: var(--brand-600);
+      font-weight: 600;
+    }
+    .rt-aviso {
+      margin-top: var(--sp-5);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .rt-rodape {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-4);
+      align-items: center;
+      justify-content: space-between;
+    }
+    .rt-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+    }
+    .rt-feedback button,
+    .rt-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .rt-feedback button:hover,
+    .rt-compartilhar:hover {
+      border-color: var(--brand);
+    }
+    .rt-compartilhar {
+      font-weight: 600;
+    }
+    .rt-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      min-height: 44px;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .rt-conteudo {
+      padding-block: var(--sp-8);
+    }
+    .rt-artigo {
+      max-width: var(--container-narrow);
+      margin-inline: auto;
+    }
+    .rt-atualizado {
+      color: var(--muted);
+      font-size: var(--step--1);
+      margin-bottom: var(--sp-5);
+    }
+    .rt-artigo h2 {
+      margin-top: var(--sp-7);
+      font-size: var(--step-2);
+    }
+    .rt-artigo p {
+      margin-top: var(--sp-4);
+      line-height: 1.7;
+    }
+    .rt-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .rt-disclosure h2 {
+      margin-top: 0;
+      font-size: var(--step-1);
+    }
+    .rt-metodologia-nota {
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+  </style>
+
+  <script>
+    import { iniciarRotinaTreino } from '../../scripts/rotinaTreino.client';
+    iniciarRotinaTreino();
+  </script>
+</Base>
