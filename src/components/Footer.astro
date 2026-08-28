@@ -49,16 +49,17 @@ const ultimaAtualizacao = cidades.reduce(
     </div>
 
     <details class="footer-acc" open>
-      <summary>Encontrar Personal</summary>
+      <summary>Personal Trainer</summary>
       <ul>
-        <li><a href="/personal-trainer/">Buscar personal por cidade</a></li>
-        <li><a href="/montinho-personal/">Acompanhamento online (todo o Brasil)</a></li>
+        <li><a href="/personal-trainer/">Buscar por cidade</a></li>
+        <li><a href="/montinho-personal/">Acompanhamento online</a></li>
         <li><a href="/guias/como-escolher-personal-trainer/">Como escolher um personal</a></li>
+        <li><a href="/guias/quanto-custa-personal-trainer/">Quanto custa um personal</a></li>
       </ul>
     </details>
 
     <details class="footer-acc" open>
-      <summary>Ferramentas gratuitas</summary>
+      <summary>Ferramentas</summary>
       <ul>
         {
           ferramentasDisponiveis.map((f) => (
@@ -72,32 +73,13 @@ const ultimaAtualizacao = cidades.reduce(
     </details>
 
     <details class="footer-acc" open>
-      <summary>Localidades populares</summary>
+      <summary>Conteúdo</summary>
       <ul>
-        {
-          cidadesPopularesFooter.map((c) => (
-            <li>
-              <a href={`/personal-trainer/${c.slug}/`}>Personal Trainer {emCidade(c)}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </details>
-
-    <details class="footer-acc" open>
-      <summary>Conteúdos</summary>
-      <ul>
-        <li><a href="/guias/como-escolher-personal-trainer/">Como escolher um personal</a></li>
-        <li><a href="/guias/quanto-custa-personal-trainer/">Quanto custa um personal</a></li>
-        <li><a href="/musculacao/treino-para-iniciantes/">Musculação para iniciantes</a></li>
-        <li><a href="/musculacao/hipertrofia-como-funciona/">Hipertrofia: como funciona</a></li>
-        <li><a href="/emagrecimento/como-emagrecer-fazendo-musculacao/">Como emagrecer fazendo musculação</a></li>
-        <li><a href="/emagrecimento/deficit-calorico-como-funciona/">Déficit calórico: como funciona</a></li>
-        <li><a href="/musculacao/">Todos os conteúdos de musculação</a></li>
-        <li><a href="/emagrecimento/">Todos os conteúdos de emagrecimento</a></li>
+        <li><a href="/musculacao/">Musculação</a></li>
+        <li><a href="/emagrecimento/">Emagrecimento</a></li>
         <li><a href="/mounjaro-e-treino/">Mounjaro e treino</a></li>
+        <li><a href="/guias/">Guias de contratação</a></li>
         <li><a href="/humor-fitness/">Humor fitness</a></li>
-        <li><a href="/guias/">Todos os guias</a></li>
       </ul>
     </details>
 
@@ -114,6 +96,26 @@ const ultimaAtualizacao = cidades.reduce(
     </details>
   </div>
 
+  <!--
+    Cidades em destaque saem das colunas e viram uma faixa própria: são
+    oito links de mesma natureza, e empilhados numa coluna deixavam o
+    rodapé desequilibrado (11 itens contra 3). Em linha, ocupam menos
+    altura e continuam inteiros no DOM para o crawler.
+  -->
+  <nav class="container footer-cidades" aria-label="Cidades em destaque">
+    <span class="footer-cidades-rot">Cidades em destaque</span>
+    <ul>
+      {
+        cidadesPopularesFooter.map((c) => (
+          <li>
+            <a href={`/personal-trainer/${c.slug}/`}>{c.nome}</a>
+          </li>
+        ))
+      }
+      <li><a class="footer-cidades-todas" href="/personal-trainer/">Ver todas as cidades</a></li>
+    </ul>
+  </nav>
+
   <div class="container footer-bottom">
     <p>© {anoAtual} {site.nome}. Conteúdo informativo e editorial.</p>
     <p>Atualizado em {formatMonthYear(ultimaAtualizacao)}.</p>
@@ -128,18 +130,16 @@ const ultimaAtualizacao = cidades.reduce(
     margin-top: var(--sp-9);
     font-size: var(--step--1);
   }
-  /* Cinco blocos de navegação + marca. Acima de 1180px tudo cabe em uma
-     linha; abaixo disso a marca passa a ocupar a largura inteira e os
-     blocos se reorganizam, para as colunas não ficarem estreitas demais
-     para rótulos longos ("Personal Trainer em São Paulo"). */
+  /* Marca + quatro colunas de navegação, com contagens equilibradas
+     (4/4/5/6). A marca fica mais larga porque carrega texto corrido. */
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.2fr repeat(5, minmax(0, 1fr));
+    grid-template-columns: 1.5fr repeat(4, minmax(0, 1fr));
     gap: var(--sp-6) var(--sp-5);
   }
-  @media (max-width: 1180px) {
+  @media (max-width: 1080px) {
     .footer-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .footer-brand {
       grid-column: 1 / -1;
@@ -233,14 +233,65 @@ const ultimaAtualizacao = cidades.reduce(
     }
   }
 
-  .footer-bottom {
+  /* Faixa de cidades: links em linha, separados por ponto médio. */
+  .footer-cidades {
     margin-top: var(--sp-7);
+    padding-top: var(--sp-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--sp-2) var(--sp-4);
+  }
+  .footer-cidades-rot {
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .footer-cidades ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+  }
+  .footer-cidades li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+  }
+  /* Separador decorativo entre os links, exceto depois do último. */
+  .footer-cidades li:not(:last-child)::after {
+    content: '·';
+    color: #5c6470;
+  }
+  .footer-cidades-todas {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* O botão flutuante do WhatsApp é position:fixed no canto inferior
+     direito e cobria a linha da direita ("Atualizado em…"). A reserva
+     abaixo garante que o texto termine acima dele. */
+  .footer-bottom {
+    margin-top: var(--sp-5);
     padding-block: var(--sp-4);
+    padding-bottom: calc(var(--sp-4) + 4rem);
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem;
     color: #888f99;
+  }
+  @media (min-width: 761px) {
+    .footer-bottom {
+      /* No desktop o botão fica só à direita: basta afastar essa coluna. */
+      padding-bottom: var(--sp-4);
+    }
+    .footer-bottom p:last-child {
+      margin-right: 12rem;
+    }
   }
 </style>
