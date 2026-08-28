@@ -426,16 +426,19 @@ const schema = [
       color: var(--muted);
       margin-bottom: var(--sp-3);
     }
+    /* Cinco modelos em uma linha só no desktop: a grade anterior usava
+       cartões altos que empurravam o botão "Continuar" para fora da tela
+       em telas de 1080px de altura. */
     .at-modelos-grade {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: var(--sp-2);
     }
     .at-modelo {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
-      padding: 0.7rem 0.9rem;
+      gap: 0.1rem;
+      padding: 0.6rem 0.8rem;
       border: 2px solid var(--line);
       border-radius: var(--radius);
       background: #fff;
@@ -443,10 +446,21 @@ const schema = [
       text-align: left;
       cursor: pointer;
       min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
     }
     .at-modelo:hover { border-color: var(--brand); background: var(--bg-tint); }
-    .at-modelo strong { font-size: var(--step-0); }
-    .at-modelo span { font-size: var(--step--1); color: var(--muted); }
+    /* Estado selecionado: borda de destaque, fundo e marca de conferido —
+       não depende só de cor. */
+    .at-modelo[aria-pressed='true'] {
+      border-color: var(--accent);
+      background: var(--accent-50);
+    }
+    .at-modelo[aria-pressed='true'] strong::after {
+      content: ' ✓';
+      color: var(--accent-600);
+    }
+    .at-modelo strong { font-size: var(--step-0); line-height: 1.25; }
+    .at-modelo span { font-size: var(--step--1); color: var(--muted); line-height: 1.3; }
     .at-modelos-nota {
       margin-top: var(--sp-3);
       font-size: var(--step--1);

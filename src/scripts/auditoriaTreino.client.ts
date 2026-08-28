@@ -423,19 +423,38 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
   const semanaAtual = () => respostas.semana!;
 
   // --- Modelos prontos ---
+  // Declarados antes da grade porque os handlers dos modelos os usam.
+  const listaDias = el('div', 'at-dias');
+  const resumo = el('p', 'at-semana-resumo');
+  resumo.setAttribute('aria-live', 'polite');
+
   const modelos = el('div', 'at-modelos');
   modelos.appendChild(el('p', 'at-modelos-rot', 'Começar por uma divisão conhecida'));
   const grade = el('div', 'at-modelos-grade');
+
+  /** Só um modelo fica marcado por vez; editar à mão desmarca todos. */
+  const marcarModelo = (id: string | null) => {
+    grade.querySelectorAll<HTMLButtonElement>('.at-modelo').forEach((b) => {
+      b.setAttribute('aria-pressed', b.dataset.modelo === id ? 'true' : 'false');
+    });
+  };
+
   for (const m of MODELOS) {
     const b = el('button', 'at-modelo');
     b.type = 'button';
+    b.dataset.modelo = m.id;
+    b.setAttribute('aria-pressed', 'false');
     b.appendChild(el('strong', undefined, m.nome));
     b.appendChild(el('span', undefined, m.descricao));
     b.addEventListener('click', () => {
       respostas.semana = m.semana.map((d) => [...d]);
       salvar();
       ev('training_audit_preset', { preset: m.id });
+      marcarModelo(m.id);
       redesenharDias();
+      // A semana preenchida fica abaixo da grade de modelos: sem trazer
+      // para a vista, a pessoa clica e tem a impressão de que nada mudou.
+      listaDias.scrollIntoView({ block: 'start' });
     });
     grade.appendChild(b);
   }
@@ -446,11 +465,7 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
   caixa.appendChild(modelos);
 
   // --- Dias ---
-  const listaDias = el('div', 'at-dias');
   caixa.appendChild(listaDias);
-
-  const resumo = el('p', 'at-semana-resumo');
-  resumo.setAttribute('aria-live', 'polite');
   caixa.appendChild(resumo);
 
   const atualizarResumo = () => {
@@ -482,6 +497,9 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
           if (dia.includes(g)) respostas.semana![i] = dia.filter((x) => x !== g);
           else dia.push(g);
           salvar();
+          // A semana deixou de ser a divisão pronta escolhida: manter o
+          // card marcado passaria a informação errada.
+          marcarModelo(null);
           c.setAttribute('aria-pressed', respostas.semana![i].includes(g) ? 'true' : 'false');
           val.textContent = rotuloDia(respostas.semana![i]);
           det.classList.toggle('at-dia--cheio', respostas.semana![i].length > 0);
