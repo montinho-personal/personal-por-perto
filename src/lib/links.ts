@@ -59,6 +59,7 @@ export const rotas = {
   ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',
   ferramentaPreco: '/ferramentas/calculadora-preco-personal/',
   ferramentaRotina: '/ferramentas/treino-para-minha-rotina/',
+  ferramentaAuditoria: '/ferramentas/meu-treino-faz-sentido/',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

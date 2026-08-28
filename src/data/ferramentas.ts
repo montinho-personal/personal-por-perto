@@ -70,6 +70,27 @@ export const ferramentas: Ferramenta[] = [
     disponivel: true,
   },
   {
+    slug: 'meu-treino-faz-sentido',
+    nome: 'Meu treino faz sentido?',
+    nomeCurto: 'Analisar meu treino',
+    chamada: 'O treino que você já faz está organizado de forma coerente?',
+    descricao:
+      'Monte a sua semana de treino e receba uma auditoria da estrutura: exposição por grupo muscular, alinhamento com a sua prioridade, progressão e se o programa cabe na rotina que você tem.',
+    selo: 'Cerca de 2 minutos',
+    perguntaCentral: 'Meu treino está bem montado?',
+    paraQuem:
+      'Para quem já treina e desconfia que algo na organização do programa está travando o resultado — mas não sabe o quê.',
+    entrega: [
+      'A exposição declarada de cada grupo muscular na sua semana, comparada com a prioridade que você elegeu',
+      'No máximo três pontos para revisar, cada um com o que significa, por que importa e o que conferir',
+      'A indicação de quão confiável é cada apontamento — e uma seção fixa com o que a análise não consegue avaliar',
+      'O próximo passo escolhido pelo problema principal, seja remontar a semana ou buscar acompanhamento',
+    ],
+    naoFaz:
+      'Não diz que um treino está certo ou errado, não trata nenhuma divisão como superior, não calcula volume por grupo e não avalia dor, lesão ou execução.',
+    disponivel: true,
+  },
+  {
     slug: 'calculadora-preco-personal',
     nome: 'Calculadora de Preço do Personal',
     nomeCurto: 'Calculadora de preço',

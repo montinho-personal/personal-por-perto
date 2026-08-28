@@ -53,6 +53,7 @@ export interface CampanhaCtx {
 
 const FERRAMENTA_MATCH = '/ferramentas/encontre-seu-personal-ideal/';
 const FERRAMENTA_PRECO = '/ferramentas/calculadora-preco-personal/';
+const FERRAMENTA_AUDITORIA = '/ferramentas/meu-treino-faz-sentido/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -75,7 +76,7 @@ export const campanhas: Record<string, Campanha> = {
     id: 'rotinaTreino',
     nivel: 'diagnostico',
     render: 'card',
-    requer: 'rotinaTreino', // desligada: o motor cai para personalMatch
+    requer: 'rotinaTreino',
     eyebrow: 'Seu próximo passo',
     titulo: 'Quantos dias por semana você consegue treinar?',
     texto:
@@ -103,14 +104,17 @@ export const campanhas: Record<string, Campanha> = {
     id: 'hipertrofiaEstrutura',
     nivel: 'diagnostico',
     render: 'card',
-    requer: 'personalMatch',
+    // Quem lê sobre estrutura de hipertrofia quase sempre já treina — e a
+    // pergunta prática costuma ser sobre o próprio programa, não sobre
+    // contratar alguém. Por isso o destino aqui é a auditoria.
+    requer: 'auditoriaTreino',
     eyebrow: 'Seu próximo passo',
     titulo: 'Treinar mais não significa necessariamente progredir mais',
     texto:
-      'Volume, frequência, execução e progressão precisam conversar entre si dentro da sua semana. O tipo de acompanhamento que você escolhe determina quem cuida disso.',
-    rotulo: 'Descobrir como estruturar meu treino',
-    destino: FERRAMENTA_MATCH,
-    microcopy: 'Leva cerca de 1 minuto.',
+      'Volume, frequência e progressão precisam conversar entre si dentro da sua semana. Vale conferir se o treino que você já faz está distribuído de forma coerente com o seu objetivo.',
+    rotulo: 'Analisar meu treino',
+    destino: FERRAMENTA_AUDITORIA,
+    microcopy: 'Cerca de 2 minutos. Sem cadastro para ver a análise.',
   },
 
   execucaoProximoPasso: {

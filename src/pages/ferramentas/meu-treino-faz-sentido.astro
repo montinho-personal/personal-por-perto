@@ -1,0 +1,767 @@
+---
+/**
+ * Ferramenta "Meu treino faz sentido?".
+ *
+ * Auditoria estrutural de um programa de treino que a pessoa já faz. O
+ * HTML é estático e indexável; a ferramenta é progressive enhancement,
+ * com o motor em src/lib/auditoriaTreino.ts.
+ *
+ * Self-canonical: o resultado é estado da ferramenta, nunca URL. Nenhuma
+ * combinação de respostas gera página própria.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas/meu-treino-faz-sentido';
+const atualizadoEm = '2026-08-27';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Meu treino faz sentido?', url: path },
+];
+
+const title = 'Meu Treino Faz Sentido? Analise sua divisão e frequência | Personal por Perto';
+const description =
+  'Conte como sua semana de treino está organizada e receba uma análise da frequência, distribuição, progressão e coerência com o seu objetivo. Grátis, sem cadastro.';
+
+const urlCanonica = new URL(path + '/', site.dominio).href;
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Meu treino faz sentido?',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: { '@type': 'Thing', name: 'Análise de estrutura de treino de musculação' },
+  },
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Meu treino faz sentido?',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que audita a estrutura de um programa de treino: distribuição semanal, frequência declarada por grupo, alinhamento com a prioridade, progressão e aderência.',
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="at-hero">
+    <div class="container at-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Meu treino faz sentido?</h1>
+      <p class="at-hero-lead">
+        Conte como a sua semana de treino está organizada e receba uma análise
+        da estrutura: frequência, distribuição, progressão e coerência com o
+        seu objetivo. Sem veredito de certo ou errado — treino tem contexto.
+      </p>
+
+      <ul class="at-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 2 minutos</li>
+        <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Gratuito</li>
+      </ul>
+
+      <div id="at-app" class="at-app" data-estado="inicial">
+        <div class="at-start">
+          <button type="button" class="btn btn-primary btn-lg at-start-btn" id="at-iniciar">
+            Analisar meu treino
+          </button>
+          <p class="at-microcopy">
+            A ferramenta avalia a estrutura geral do programa — não substitui
+            uma avaliação individual.
+          </p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent at-noscript">
+          <p>
+            <strong>A ferramenta precisa de JavaScript para funcionar.</strong>
+            O conteúdo abaixo explica os mesmos critérios que ela usa — dá para
+            fazer a própria análise lendo.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <div class="container at-conteudo">
+    <article class="prose at-artigo">
+      <p class="at-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="treino-bem-montado">Como saber se um treino está bem montado</h2>
+      <p>
+        Um treino bem estruturado precisa considerar objetivo, frequência,
+        volume, progressão, recuperação e — principalmente — se a pessoa
+        consegue cumpri-lo. Esse último item costuma ser o mais ignorado e o
+        mais decisivo: um programa excelente no papel que você executa pela
+        metade produz menos resultado do que um programa simples que você
+        cumpre inteiro.
+      </p>
+      <p>
+        Não existe divisão universalmente superior. Full Body, Upper/Lower,
+        Push/Pull/Legs e o clássico "um grupo por dia" funcionam em contextos
+        diferentes, para pessoas diferentes, em fases diferentes. Quem diz que
+        uma delas é sempre a melhor está simplificando um problema que depende
+        de disponibilidade, experiência, prioridade e recuperação.
+      </p>
+
+      <h2 id="o-que-analisar">O que analisar em uma divisão de treino</h2>
+      <p>
+        Três perguntas resolvem a maior parte dos casos. Primeira: os grupos
+        que você elegeu como prioridade recebem mais atenção do que os demais,
+        ou menos? É comum alguém dizer que a prioridade são pernas e ter uma
+        semana com quatro dias de superiores e um de inferiores.
+      </p>
+      <p>
+        Segunda: existe algum critério para aumentar a dificuldade ao longo do
+        tempo? Sem isso, o treino vira repetição — e o corpo se adapta ao que
+        já conhece. Terceira: a semana que está no papel é a semana que
+        acontece na prática? Se você montou cinco dias e cumpre três, o
+        problema provavelmente não está nos exercícios.
+      </p>
+
+      <h2 id="frequencia-importa">Frequência importa?</h2>
+      <p>
+        Importa, mas não isoladamente. Distribuir o mesmo volume em duas
+        sessões costuma ser pelo menos tão eficiente quanto concentrar tudo em
+        uma — e às vezes um pouco melhor, porque permite mais qualidade em cada
+        série. O ponto é que <strong>frequência não é volume</strong>: um grupo
+        que aparece uma vez por semana com muitas séries bem executadas pode
+        receber mais estímulo que outro que aparece duas com pouco trabalho.
+      </p>
+      <p>
+        Por isso esta ferramenta fala em "exposição declarada", e não em volume.
+        Ela sabe quantas vezes cada grupo aparece na sua semana; não sabe
+        quantas séries você faz nem quão perto do limite elas terminam.
+      </p>
+
+      <h2 id="progredindo">Como saber se estou progredindo</h2>
+      <p>
+        Pelo registro. Se você não anota carga, séries e repetições, a avaliação
+        de progresso passa a depender de memória — e memória tende a inflar
+        resultado. Um caderno resolve: com o histórico da semana anterior à
+        vista, fica claro se houve avanço, estagnação ou queda.
+      </p>
+      <p>
+        Vale a pena aprofundar em
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>, que
+        é o mecanismo por trás de praticamente todo resultado de longo prazo em
+        treino de força.
+      </p>
+
+      <h2 id="mais-dias">Treinar mais dias significa treino melhor?</h2>
+      <p>
+        Não necessariamente. Mais dias só rendem se a recuperação, o sono e a
+        alimentação acompanharem — e se a pessoa realmente conseguir manter a
+        frequência ao longo dos meses. Seis treinos semanais executados por três
+        semanas e abandonados no quarto mês entregam menos que três treinos
+        semanais mantidos o ano inteiro.
+      </p>
+      <p>
+        Também não significa que treinar poucos dias seja inútil. Duas sessões
+        semanais bem estruturadas produzem resultado real, especialmente para
+        quem está começando ou retomando.
+      </p>
+
+      <h2 id="quando-revisar">Quando vale revisar seu treino</h2>
+      <p>
+        Alguns sinais costumam indicar que a estrutura merece uma olhada: você
+        repete as mesmas cargas há meses; a parte do corpo que mais te importa é
+        a que menos aparece na semana; você monta um programa e cumpre metade;
+        ou as sessões ficaram longas demais para o tempo que você tem.
+      </p>
+      <p>
+        Nenhum desses sinais significa que o treino está errado. Significa que
+        vale conferir se a organização ainda corresponde ao seu momento — que
+        muda com o tempo, com a rotina e com o objetivo.
+      </p>
+
+      <h2 id="metodologia">Como fazemos a análise</h2>
+      <p>
+        A ferramenta cruza a sua distribuição semanal, o objetivo declarado, a
+        prioridade muscular, o método de progressão, o registro de cargas, o
+        tempo de sessão e a aderência real para identificar pontos de coerência
+        ou de possível revisão. As regras são determinísticas: as mesmas
+        respostas produzem sempre a mesma análise.
+      </p>
+      <p>
+        Três decisões de projeto merecem estar explícitas. A primeira: a
+        ferramenta <strong>nunca diz que um treino está certo ou errado</strong>,
+        porque treino tem contexto e ela conhece apenas parte dele. A segunda:
+        cada ponto levantado vem com o quanto ele é confiável — quando a
+        conclusão depende de volume ou intensidade, que não temos, isso é dito.
+        A terceira: existe uma seção fixa dizendo <em>o que a análise não
+        consegue avaliar</em>, porque um auditor que finge saber tudo não é
+        confiável.
+      </p>
+      <p>
+        Ela também não interpreta dor, lesão ou condição de saúde. A análise é
+        sobre estrutura de treino; qualquer limitação física precisa ser avaliada
+        separadamente por um médico ou fisioterapeuta.
+      </p>
+
+      <h2 id="ferramentas-irmas">Depois da análise</h2>
+      <p>
+        Se o ponto principal for que o programa exige mais dias do que a sua
+        rotina comporta, o caminho natural é remontar a estrutura a partir da
+        disponibilidade real — é o que faz o
+        <a href={rotas.ferramentaRotina}>treino para minha rotina</a>. Se o nó
+        for progressão ou falta de acompanhamento, o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a> ajuda a
+        entender que tipo de suporte faz sentido para o seu caso.
+      </p>
+
+      <aside class="at-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>. A análise é calculada
+          só a partir das suas respostas, antes e independentemente de qualquer
+          recomendação comercial — e é útil para quem não pretende contratar
+          acompanhamento nenhum.
+        </p>
+        <p class="at-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e revisada
+          por <a href={rotas.montinho}>{montinho.nome}</a>, personal trainer com
+          mais de 20 anos de experiência em musculação. As regras seguem
+          princípios amplamente aceitos de treinamento — sobrecarga progressiva,
+          volume, frequência, recuperação, aderência e especificidade.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <template id="at-tpl">
+    <div class="at-quiz" role="group" aria-labelledby="at-pergunta-titulo">
+      <div class="at-progresso">
+        <div class="at-progresso-barra"><span class="at-progresso-preenchido"></span></div>
+        <p class="at-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="at-pergunta" id="at-pergunta-titulo"></h2>
+      <p class="at-ajuda"></p>
+      <div class="at-opcoes"></div>
+      <div class="at-nav">
+        <button type="button" class="at-voltar">← Voltar</button>
+        <button type="button" class="btn btn-primary at-avancar" hidden>Continuar</button>
+      </div>
+      <p class="at-reforco"></p>
+    </div>
+  </template>
+
+  <!--
+    is:global obrigatório: quiz e resultado são criados via JS e elementos
+    criados em tempo de execução não recebem o atributo de escopo do Astro.
+    Todas as classes usam o prefixo `at-`.
+  -->
+  <style is:global>
+    .at-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .at-hero-inner { max-width: 780px; }
+    .at-hero h1 { color: #fff; max-width: 18ch; }
+    .at-hero .eyebrow { color: #ffb488; }
+    .at-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 62ch;
+    }
+    .at-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .at-hero-selos li { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .at-hero-selos span { color: var(--accent); font-weight: 800; }
+    .at-app { margin-top: var(--sp-6); }
+    .at-start-btn { width: 100%; max-width: 360px; }
+    .at-microcopy {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: #aab0ba;
+      max-width: 46ch;
+    }
+    .at-noscript { margin-top: var(--sp-5); color: var(--ink); }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .at-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .at-progresso-barra {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--bg-tint-2);
+      overflow: hidden;
+    }
+    .at-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .at-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .at-pergunta { margin-top: var(--sp-4); font-size: var(--step-2); line-height: 1.2; }
+    .at-ajuda { margin-top: var(--sp-2); color: var(--muted); font-size: var(--step--1); }
+    .at-ajuda:empty, .at-reforco:empty { display: none; }
+    .at-opcoes { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+    @media (min-width: 620px) {
+      .at-opcoes.at-opcoes--curtas {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+    .at-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .at-opcao:hover { border-color: var(--brand); background: var(--bg-tint); }
+    .at-opcao.at-sel,
+    .at-opcao[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-50); }
+    .at-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+    }
+    .at-opcao.at-sel .at-opcao-marca,
+    .at-opcao[aria-pressed='true'] .at-opcao-marca {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .at-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .at-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .at-voltar:hover { color: var(--ink); text-decoration: underline; }
+    .at-quiz [hidden] { display: none; }
+    .at-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ------------------- Construtor da semana (etapa crítica) ----------- */
+    .at-modelos { margin-bottom: var(--sp-5); }
+    .at-modelos-rot {
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: var(--sp-3);
+    }
+    .at-modelos-grade {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--sp-2);
+    }
+    .at-modelo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.7rem 0.9rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      min-height: 56px;
+    }
+    .at-modelo:hover { border-color: var(--brand); background: var(--bg-tint); }
+    .at-modelo strong { font-size: var(--step-0); }
+    .at-modelo span { font-size: var(--step--1); color: var(--muted); }
+    .at-modelos-nota {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .at-dias { display: grid; gap: var(--sp-2); }
+    .at-dia {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .at-dia summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--sp-3);
+      padding: 0.8rem 1rem;
+      cursor: pointer;
+      min-height: 52px;
+      list-style: none;
+      font-weight: 600;
+    }
+    .at-dia summary::-webkit-details-marker { display: none; }
+    .at-dia--cheio { border-color: var(--accent); background: var(--accent-50); }
+    .at-dia-nome { flex-shrink: 0; }
+    .at-dia-val {
+      font-weight: 400;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-align: right;
+    }
+    .at-dia--cheio .at-dia-val { color: var(--brand-700); font-weight: 600; }
+    .at-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      padding: 0 1rem 1rem;
+    }
+    .at-chip {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .at-chip:hover { border-color: var(--brand); }
+    .at-chip[aria-pressed='true'] {
+      background: var(--brand-700);
+      border-color: var(--brand-700);
+      color: #fff;
+      font-weight: 600;
+    }
+    .at-semana-resumo {
+      margin-top: var(--sp-4);
+      font-weight: 600;
+      color: var(--brand-700);
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .at-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .at-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+    }
+    .at-veredito {
+      margin-top: var(--sp-2);
+      font-size: var(--step-3);
+      line-height: 1.15;
+    }
+    .at-res-resumo {
+      margin-top: var(--sp-3);
+      color: var(--ink-soft);
+      font-size: var(--step-1);
+      line-height: 1.55;
+    }
+    .at-bloco { margin-top: var(--sp-6); }
+    .at-bloco h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .at-nota {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Frequência: barra + número, nunca só cor */
+    .at-freq { width: 100%; border-collapse: collapse; }
+    .at-freq th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--ink-soft);
+      padding: 0.4rem 0.75rem 0.4rem 0;
+      width: 45%;
+      font-size: var(--step--1);
+    }
+    .at-freq td { padding: 0.4rem 0; display: flex; align-items: center; gap: 0.6rem; }
+    .at-freq-barra {
+      display: block;
+      height: 10px;
+      min-width: 8px;
+      border-radius: 999px;
+      background: var(--brand-600, var(--brand));
+    }
+    .at-freq-num {
+      font-size: var(--step--1);
+      font-weight: 700;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .at-fortes ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .at-fortes li { position: relative; padding-left: 1.6rem; line-height: 1.55; }
+    .at-fortes li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    /* Alertas: cada um com as três partes */
+    .at-alerta {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      margin-bottom: var(--sp-4);
+    }
+    .at-alerta-topo {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      margin-bottom: var(--sp-3);
+    }
+    .at-alerta-ordem {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--brand-700);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: var(--step--1);
+      flex-shrink: 0;
+    }
+    .at-alerta-conf {
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--muted);
+      background: var(--bg-tint);
+      border-radius: 999px;
+      padding: 0.2rem 0.7rem;
+    }
+    .at-alerta h4 { font-size: var(--step-1); line-height: 1.25; }
+    .at-alerta-oque { margin-top: var(--sp-2); line-height: 1.6; }
+    .at-alerta-parte { margin-top: var(--sp-4); }
+    .at-alerta-parte h5 {
+      font-size: var(--step--1);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .at-alerta-parte p { line-height: 1.6; }
+    .at-alerta-link {
+      display: inline-block;
+      margin-top: var(--sp-4);
+      font-weight: 600;
+      color: var(--brand-600);
+    }
+
+    .at-limites {
+      background: var(--bg-tint);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .at-limites ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .at-limites li { position: relative; padding-left: 1.6rem; line-height: 1.55; }
+    .at-limites li::before {
+      content: '?';
+      position: absolute;
+      left: 0;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .at-proximo-btn { margin-top: var(--sp-4); }
+    .at-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .at-compat h3 { color: #fff; font-size: var(--step-1); }
+    .at-compat p { margin-top: var(--sp-3); line-height: 1.6; }
+    .at-acoes { margin-top: var(--sp-5); display: grid; gap: var(--sp-3); }
+    .at-acoes .btn { width: 100%; }
+    .at-acoes-nota {
+      font-size: var(--step--1);
+      color: #aab0ba;
+      text-align: center;
+      margin: 0;
+    }
+    .at-continuar {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .at-continuar h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .at-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--sp-2);
+    }
+    .at-links a { color: var(--brand-600); font-weight: 600; }
+    .at-aviso {
+      margin-top: var(--sp-5);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .at-rodape {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-4);
+      align-items: center;
+    }
+    .at-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-right: auto;
+    }
+    .at-feedback button,
+    .at-corrigir,
+    .at-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .at-corrigir { font-weight: 600; }
+    .at-feedback button:hover,
+    .at-corrigir:hover,
+    .at-compartilhar:hover { border-color: var(--brand); }
+    .at-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      min-height: 44px;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .at-conteudo { padding-block: var(--sp-8); }
+    .at-artigo { max-width: var(--container-narrow); margin-inline: auto; }
+    .at-atualizado { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-5); }
+    .at-artigo h2 { margin-top: var(--sp-7); font-size: var(--step-2); }
+    .at-artigo p { margin-top: var(--sp-4); line-height: 1.7; }
+    .at-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .at-disclosure h2 { margin-top: 0; font-size: var(--step-1); }
+    .at-metodologia-nota { font-size: var(--step--1); color: var(--muted); }
+  </style>
+
+  <script>
+    import { iniciarAuditoriaTreino } from '../../scripts/auditoriaTreino.client';
+    iniciarAuditoriaTreino();
+  </script>
+</Base>

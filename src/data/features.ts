@@ -14,6 +14,8 @@ export const features = {
   rotinaTreino: true,
   /** /ferramentas/calculadora-preco-personal/ — publicada. */
   calculadoraPreco: true,
+  /** /ferramentas/meu-treino-faz-sentido/ — publicada. */
+  auditoriaTreino: true,
   /** "Personal Score" (avaliação de profissional) — ainda não existe. */
   personalScore: false,
 } as const;
