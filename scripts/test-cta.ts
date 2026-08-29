@@ -46,7 +46,9 @@ const casos: Caso[] = [
   { nome: 'Quanto custa personal', path: '/guias/quanto-custa-personal-trainer/', esperado: 'precoComparacao', varianteEsperada: 'endArticle' },
   { nome: 'A calculadora de preço — sem CTA', path: '/ferramentas/calculadora-preco-personal/', esperado: null },
   { nome: 'Vale a pena contratar', path: '/guias/vale-a-pena-contratar-personal-trainer/', esperado: 'precoComparacao' },
-  { nome: 'Personal online funciona', path: '/guias/personal-online-funciona/', esperado: 'personalMatch' },
+  // Quem lê este artigo está na decisão de formato, não na de contratar:
+  // vai para a ferramenta que responde exatamente presencial × online.
+  { nome: 'Personal online funciona', path: '/guias/personal-online-funciona/', esperado: 'formatoAcompanhamento' },
   { nome: 'Guia de público específico (gestantes)', path: '/guias/personal-trainer-para-gestantes/', esperado: 'personalMatch' },
 
   // --- Temas ---

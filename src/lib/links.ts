@@ -62,6 +62,7 @@ export const rotas = {
   ferramentaAuditoria: '/ferramentas/meu-treino-faz-sentido/',
   ferramentaConstancia: '/ferramentas/diagnostico-da-constancia/',
   ferramentaScore: '/ferramentas/personal-score/',
+  ferramentaFormato: '/ferramentas/presencial-ou-online/',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

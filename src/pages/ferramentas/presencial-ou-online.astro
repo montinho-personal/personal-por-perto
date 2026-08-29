@@ -1,0 +1,695 @@
+---
+/**
+ * Ferramenta "Personal presencial ou online: qual combina comigo?".
+ *
+ * Traduz a pergunta que a pessoa faz ("online ou presencial?") na pergunta
+ * que resolve o problema dela ("qual é o meu gargalo?"). HTML estático e
+ * indexável; a ferramenta é progressive enhancement, com o motor em
+ * src/lib/presencialOuOnline.ts.
+ *
+ * Self-canonical. Nenhuma combinação de respostas gera URL própria — não
+ * existe ?resultado=online, e o resultado é estado da ferramenta.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas/presencial-ou-online';
+const atualizadoEm = '2026-08-29';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Presencial ou online', url: path },
+];
+
+const title = 'Personal Online ou Presencial? Descubra Qual Combina com Você';
+const description =
+  'Compare personal presencial e acompanhamento online e descubra qual formato combina mais com sua experiência, rotina e necessidade de suporte. Grátis, sem cadastro.';
+
+const urlCanonica = new URL(path + '/', site.dominio).href;
+
+const faq = [
+  {
+    p: 'Qual a diferença entre personal presencial e online?',
+    r: 'O personal presencial oferece supervisão física durante a sessão: ele está ali enquanto você treina, corrige a execução na hora e conduz o ritmo. No acompanhamento online, o profissional atua por meio de planejamento, ajustes, acompanhamento de progresso e feedback remoto — normalmente com análise de execução por vídeo. A diferença central não é qualidade nem preço: é a presença física durante o treino. A melhor escolha depende do que você realmente precisa.',
+  },
+  {
+    p: 'Para quem o presencial faz mais sentido?',
+    r: 'Costuma fazer mais sentido para quem está começando, não se sente seguro com a execução dos exercícios, sente necessidade real de alguém ao lado durante a sessão ou não se sentiria confortável recebendo correção por vídeo. Também para quem consegue manter horários combinados e aceita algum deslocamento. Nesses casos, o feedback imediato acelera bastante a fase inicial.',
+  },
+  {
+    p: 'Para quem o online pode funcionar melhor?',
+    r: 'Para quem já tem autonomia — entra na academia sabendo o que fazer e executa com segurança — e cuja necessidade principal é planejamento, progressão e ajuste do treino ao longo do tempo. Também para quem tem rotina imprevisível e não consegue sustentar horário fixo, ou para quem não aceita deslocamento. Nesse cenário, pagar pela presença física em todas as sessões costuma não ser o que destrava o resultado.',
+  },
+  {
+    p: 'Personal online consegue corrigir execução?',
+    r: 'Consegue, por outro caminho. No presencial a correção acontece durante o exercício; no online, o equivalente é a análise por vídeo, com o aluno gravando as séries e recebendo o retorno depois. Funciona bem para quem já tem alguma base e aceita esse formato. Para quem tem bastante dúvida sobre a própria execução ou não se sente confortável gravando, a correção presencial tende a render mais no começo.',
+  },
+  {
+    p: 'Online é sempre mais barato?',
+    r: 'Costuma custar menos por mês, mas tratar o online como "a versão barata do presencial" é um erro de leitura. São modelos de entrega diferentes: um vende presença e condução durante a sessão, o outro vende planejamento e acompanhamento contínuo. Existe online caro e bem estruturado, e existe presencial barato e mal feito. E há um risco prático: escolher online só pelo preço, sem ter autonomia para treinar sozinho, costuma sair mais caro no fim — porque o serviço não é usado.',
+  },
+  {
+    p: 'Personal presencial é sempre melhor?',
+    r: 'Não. Presença física é um recurso específico, não sinônimo de qualidade. Um acompanhamento presencial pode se resumir a contar repetições, sem avaliação, sem progressão planejada e sem registro nenhum da evolução. Um acompanhamento online pode ter avaliação detalhada, progressão organizada, análise de execução por vídeo e revisão mensal. O formato define como o serviço é entregue; a qualidade depende de quem entrega.',
+  },
+  {
+    p: 'Modelo híbrido vale a pena?',
+    r: 'Vale quando existe demanda real dos dois lados ao mesmo tempo — por exemplo, alguém com autonomia suficiente para treinar sozinho, mas que quer checagem técnica presencial de tempos em tempos, ou alguém que precisa de supervisão mas tem uma rotina que não comporta horário fixo. O híbrido só funciona se as duas partes forem combinadas de forma explícita: quantas sessões presenciais, com que frequência e o que acontece entre elas. Sem isso, vira um presencial esparso sem acompanhamento.',
+  },
+  {
+    p: 'A ferramenta empurra o resultado para o serviço de vocês?',
+    r: 'Não, e isso é testado. O motor é determinístico e a cobertura geográfica não entra na conta da recomendação — as mesmas respostas produzem o mesmo formato dentro e fora da área de atendimento presencial. Existe um teste automatizado que varre milhares de combinações de respostas para garantir que nenhum formato domine o resultado, e outro que confirma que, quando o melhor encaixe é presencial em uma região não atendida, a resposta continua sendo presencial.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Personal presencial ou online: qual combina comigo?',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: { '@type': 'Thing', name: 'Formatos de acompanhamento em treinamento personalizado' },
+  },
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Presencial ou online: qual combina comigo?',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que cruza experiência, autonomia, necessidade de supervisão, aceitação de correção remota, rotina e logística para indicar se personal presencial, acompanhamento online ou modelo híbrido faz mais sentido.',
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${urlCanonica}#faq`,
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.p,
+      acceptedAnswer: { '@type': 'Answer', text: f.r },
+    })),
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="po-hero">
+    <div class="container po-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Personal presencial ou online: qual combina comigo?</h1>
+      <p class="po-hero-lead">
+        Responda algumas perguntas e descubra qual formato de acompanhamento
+        combina mais com a sua experiência, a sua rotina e a sua necessidade
+        de suporte. Não perguntamos qual você prefere — procuramos qual você
+        precisa.
+      </p>
+
+      <ul class="po-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 1 minuto</li>
+        <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Resultado explicado</li>
+      </ul>
+
+      <div id="po-app" class="po-app" data-estado="inicial">
+        <div class="po-start">
+          <button type="button" class="btn btn-primary btn-lg po-start-btn" id="po-iniciar">
+            Descobrir qual combina comigo
+          </button>
+          <p class="po-microcopy">O cálculo acontece no seu navegador. Nada é enviado para lugar nenhum.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent po-noscript">
+          <p>
+            <strong>A ferramenta precisa de JavaScript para funcionar.</strong>
+            O conteúdo abaixo compara os dois formatos com os mesmos critérios
+            que ela usa.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <div class="container po-conteudo">
+    <article class="prose po-artigo">
+      <p class="po-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="diferenca">Qual a diferença entre personal presencial e online?</h2>
+      <p>
+        O personal presencial oferece <strong>supervisão física durante a
+        sessão</strong>: ele está ali enquanto você treina, corrige a execução
+        na hora e conduz o ritmo. No acompanhamento online, o profissional
+        atua por meio de <strong>planejamento, ajustes, acompanhamento de
+        progresso e feedback remoto</strong>, normalmente com análise de
+        execução por vídeo.
+      </p>
+      <p>
+        A diferença central não é qualidade nem preço — é a presença física
+        durante o treino. Tudo o mais que costuma ser atribuído a um formato
+        ou a outro (avaliação inicial, progressão planejada, registro de
+        cargas, cobrança de constância) pode existir nos dois. A melhor
+        escolha depende do que você realmente precisa.
+      </p>
+
+      <h2 id="presencial">Para quem o presencial faz mais sentido?</h2>
+      <p>
+        Costuma fazer mais sentido para quem está começando, não se sente
+        seguro com a execução dos exercícios, sente necessidade real de
+        alguém ao lado durante a sessão, ou não se sentiria confortável
+        recebendo correção por vídeo. Some a isso a logística: conseguir
+        manter horários combinados e aceitar algum deslocamento.
+      </p>
+      <p>
+        Nessa fase, o feedback imediato vale muito. Ajustar um agachamento no
+        momento em que ele acontece é diferente de descobrir o erro três dias
+        depois, num vídeo — e a diferença aparece principalmente em quem
+        ainda não construiu repertório.
+      </p>
+
+      <h2 id="online">Para quem o online pode funcionar melhor?</h2>
+      <p>
+        Para quem já possui autonomia — entra na academia sabendo o que fazer
+        e executa com segurança — e cuja necessidade principal é
+        planejamento, progressão e ajuste do treino ao longo do tempo. Também
+        para quem tem rotina imprevisível e não sustenta horário fixo, ou
+        para quem não aceita deslocamento.
+      </p>
+      <p>
+        Para quem já possui autonomia para executar os treinos, acompanhamento
+        remoto pode oferecer planejamento e ajustes sem exigir horário fixo
+        com o profissional. Nesse cenário, pagar pela presença física em todas
+        as sessões costuma não ser o que destrava o resultado.
+      </p>
+
+      <h2 id="correcao">Personal online consegue corrigir execução?</h2>
+      <p>
+        Consegue, por outro caminho. No presencial, a correção acontece
+        durante o exercício; no online, o equivalente legítimo é a análise por
+        vídeo — o aluno grava as séries e recebe o retorno depois. Funciona
+        bem para quem já tem alguma base e aceita esse formato.
+      </p>
+      <p>
+        Para quem tem bastante dúvida sobre a própria execução, ou não se
+        sente confortável gravando, a correção presencial tende a render mais
+        no começo. Não é uma limitação da tecnologia: é uma questão de quanto
+        repertório a pessoa já tem para interpretar o retorno que recebe.
+      </p>
+
+      <h2 id="preco">Online é sempre mais barato?</h2>
+      <p>
+        Costuma custar menos por mês, mas tratar o online como "a versão
+        barata do presencial" é um erro de leitura. São modelos de entrega
+        diferentes: um vende presença e condução durante a sessão, o outro
+        vende planejamento e acompanhamento contínuo. Existe online caro e bem
+        estruturado, e existe presencial barato e mal feito.
+      </p>
+      <p>
+        Há também um risco prático que vale nomear: escolher o online só pelo
+        preço, sem ter autonomia para treinar sozinho, costuma sair mais caro
+        no fim — porque o serviço simplesmente não é usado. Se o seu ponto de
+        partida é o valor, a
+        <a href={rotas.ferramentaPreco}>calculadora de preço</a> mostra as
+        faixas de referência dos dois formatos na sua cidade.
+      </p>
+
+      <h2 id="presencial-melhor">Personal presencial é sempre melhor?</h2>
+      <p>
+        Não. Presença física é um recurso específico, não sinônimo de
+        qualidade. Um acompanhamento presencial pode se resumir a contar
+        repetições — sem avaliação inicial, sem progressão planejada e sem
+        nenhum registro da evolução. Um acompanhamento online pode ter
+        avaliação detalhada, progressão organizada, análise de execução por
+        vídeo e revisão mensal.
+      </p>
+      <p>
+        O formato define <em>como</em> o serviço é entregue. A qualidade
+        depende de quem entrega. É por isso que, depois de escolher o formato,
+        vale conferir o que um bom acompanhamento deveria oferecer — a
+        ferramenta <a href={rotas.ferramentaScore}>Personal Score</a> avalia
+        exatamente isso, e usa critérios diferentes conforme o modelo
+        contratado.
+      </p>
+
+      <h2 id="hibrido">Modelo híbrido vale a pena?</h2>
+      <p>
+        Vale quando existe demanda real dos dois lados ao mesmo tempo. Dois
+        cenários são os mais comuns: alguém com autonomia suficiente para
+        treinar sozinho, mas que quer checagem técnica presencial de tempos em
+        tempos; e alguém que precisa de supervisão mas tem uma rotina que não
+        comporta horário fixo toda semana.
+      </p>
+      <p>
+        O híbrido só funciona se as duas partes forem combinadas de forma
+        explícita: quantas sessões presenciais, com que frequência e o que
+        acontece entre elas. Sem esse acerto, ele vira um presencial esparso
+        sem acompanhamento — o pior dos dois mundos.
+      </p>
+
+      <h2 id="metodologia">Como chegamos ao resultado?</h2>
+      <p>
+        A ferramenta cruza fatores como autonomia, experiência, segurança com
+        a execução, necessidade de supervisão durante a sessão, aceitação de
+        correção remota, previsibilidade da agenda, tolerância a deslocamento,
+        necessidade de cobrança e — principalmente — o que você diz precisar
+        de um profissional. As regras são determinísticas: as mesmas respostas
+        produzem sempre o mesmo resultado.
+      </p>
+      <p>
+        Três decisões merecem estar explícitas. A primeira: o
+        <strong>orçamento tem peso baixo e é anulado</strong> quando a pessoa
+        declara não ter autonomia para treinar sozinha — preço não pode
+        decidir um formato que a necessidade contradiz. A segunda: quando os
+        fatores apontam para lados diferentes, a ferramenta
+        <strong>mostra o conflito</strong> em vez de escolher um vencedor e
+        esconder o resto. A terceira: existe um quarto resultado possível —
+        "os dois formatos podem funcionar" —, porque forçar uma resposta
+        binária quando o perfil não pede seria inventar precisão.
+      </p>
+      <p>
+        A ferramenta também não exibe percentuais do tipo "online 87%
+        / presencial 13%". Esse número daria uma impressão de exatidão que um
+        questionário de onze perguntas não sustenta.
+      </p>
+
+      <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+      {
+        faq.map((f) => (
+          <div class="po-faq">
+            <h3>{f.p}</h3>
+            <p>{f.r}</p>
+          </div>
+        ))
+      }
+
+      <h2 id="ferramentas-irmas">Depois de escolher o formato</h2>
+      <p>
+        Se quiser aprofundar a análise cruzando objetivo, dias disponíveis e
+        local de treino, o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a>
+        desenha a estrutura completa. Para comparar custos, use a
+        <a href={rotas.ferramentaPreco}>calculadora de preço</a>. Se você já
+        tem um profissional e quer saber se o acompanhamento está de pé, o
+        <a href={rotas.ferramentaScore}>Personal Score</a> avalia a estrutura
+        do serviço. E se o obstáculo for encaixar o treino na semana, comece
+        pelo <a href={rotas.ferramentaRotina}>treino para minha rotina</a>.
+      </p>
+
+      <aside class="po-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>, que atende
+          presencialmente na região de Alphaville e em formato online para
+          todo o Brasil. Uma ferramenta que escolhe entre presencial e online,
+          mantida por quem vende os dois, tem um conflito de interesse óbvio —
+          e o jeito honesto de lidar com isso é declarar e testar.
+        </p>
+        <p>
+          Na prática: a cobertura geográfica não entra no cálculo da
+          recomendação, e existe um teste automatizado que confirma isso — as
+          mesmas respostas produzem o mesmo formato dentro e fora da área
+          atendida. Outro teste varre milhares de combinações de respostas
+          para garantir que nenhum formato domine o resultado. Quando o melhor
+          encaixe é presencial numa região não atendida, a ferramenta diz
+          presencial e oferece um próximo passo útil em vez de uma venda.
+        </p>
+        <p class="po-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e
+          revisada por <a href={rotas.montinho}>{montinho.nome}</a>, personal
+          trainer com mais de 20 anos de experiência em musculação. Os fatores
+          avaliados seguem elementos consolidados de prescrição e aderência:
+          autonomia técnica, necessidade de supervisão, individualização,
+          progressão planejada e viabilidade logística.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <template id="po-tpl">
+    <div class="po-quiz" role="group" aria-labelledby="po-pergunta-titulo">
+      <div class="po-progresso">
+        <div class="po-progresso-barra"><span class="po-progresso-preenchido"></span></div>
+        <p class="po-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="po-pergunta" id="po-pergunta-titulo"></h2>
+      <p class="po-ajuda"></p>
+      <div class="po-opcoes"></div>
+      <div class="po-nav">
+        <button type="button" class="po-voltar">← Voltar</button>
+        <button type="button" class="btn btn-primary po-avancar" hidden>Continuar</button>
+      </div>
+      <p class="po-reforco"></p>
+    </div>
+  </template>
+
+  <!-- is:global obrigatório: quiz e resultado são criados via JS. Prefixo `po-`. -->
+  <style is:global>
+    .po-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .po-hero-inner { max-width: 800px; }
+    .po-hero h1 { color: #fff; max-width: 22ch; }
+    .po-hero .eyebrow { color: #ffb488; }
+    .po-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 62ch;
+    }
+    .po-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .po-hero-selos li { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .po-hero-selos span { color: var(--accent); font-weight: 800; }
+    .po-app { margin-top: var(--sp-6); }
+    .po-start-btn { width: 100%; max-width: 420px; }
+    .po-microcopy { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+    .po-noscript { margin-top: var(--sp-5); color: var(--ink); }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .po-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .po-progresso-barra { height: 6px; border-radius: 999px; background: var(--bg-tint-2); overflow: hidden; }
+    .po-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .po-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .po-pergunta { margin-top: var(--sp-4); font-size: var(--step-2); line-height: 1.2; }
+    .po-ajuda { margin-top: var(--sp-3); color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
+    .po-ajuda:empty, .po-reforco:empty { display: none; }
+    .po-opcoes { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+    @media (min-width: 620px) {
+      .po-opcoes.po-opcoes--curtas { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    }
+    .po-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .po-opcao:hover { border-color: var(--brand); background: var(--bg-tint); }
+    .po-opcao.po-sel,
+    .po-opcao[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-50); }
+    .po-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+    }
+    .po-opcao.po-sel .po-opcao-marca,
+    .po-opcao[aria-pressed='true'] .po-opcao-marca { background: var(--accent); border-color: var(--accent); }
+    .po-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .po-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .po-voltar:hover { color: var(--ink); text-decoration: underline; }
+    .po-quiz [hidden] { display: none; }
+    .po-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .po-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .po-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-600);
+    }
+    .po-res-titulo { margin-top: var(--sp-2); font-size: var(--step-3); line-height: 1.15; }
+    .po-res-alt { margin-top: var(--sp-2); color: var(--muted); font-weight: 600; font-size: var(--step--1); }
+    .po-res-porque {
+      margin-top: var(--sp-5);
+      color: var(--ink-soft);
+      font-size: var(--step-1);
+      line-height: 1.6;
+    }
+
+    .po-gargalo {
+      margin-top: var(--sp-6);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: var(--accent-50);
+    }
+    .po-gargalo h3 { font-size: var(--step-1); color: var(--accent-600); margin-bottom: var(--sp-2); }
+    .po-gargalo p { line-height: 1.65; font-weight: 600; }
+
+    .po-conflito {
+      margin-top: var(--sp-5);
+      background: var(--bg-tint);
+      border-left: 4px solid var(--brand);
+      border-radius: var(--radius);
+      padding: var(--sp-4) var(--sp-5);
+    }
+    .po-conflito h3 { font-size: var(--step-0); line-height: 1.3; margin-bottom: var(--sp-2); }
+    .po-conflito p { line-height: 1.65; font-size: var(--step--1); color: var(--ink-soft); }
+
+    .po-par { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+    @media (min-width: 700px) { .po-par { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .po-par-item { border: 1px solid var(--line); border-left-width: 4px; border-radius: var(--radius); padding: var(--sp-4); }
+    .po-par--bom { border-left-color: #1f8a54; }
+    .po-par--atencao { border-left-color: var(--accent); }
+    .po-par-item h4 {
+      font-size: var(--step--1);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .po-par-item p { line-height: 1.6; font-size: var(--step--1); }
+
+    .po-desempate { margin-top: var(--sp-6); }
+    .po-desempate h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .po-desempate-grid { display: grid; gap: var(--sp-3); }
+    @media (min-width: 700px) { .po-desempate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .po-desempate-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-4);
+      background: var(--bg-tint);
+    }
+    .po-desempate-item h4 { font-size: var(--step-0); margin-bottom: var(--sp-2); color: var(--brand-700); }
+    .po-desempate-item p { line-height: 1.6; font-size: var(--step--1); }
+
+    .po-bloco { margin-top: var(--sp-6); }
+    .po-bloco h3 { font-size: var(--step-1); margin-bottom: var(--sp-2); }
+    .po-bloco-nota { font-size: var(--step--1); color: var(--muted); line-height: 1.5; margin-bottom: var(--sp-4); }
+
+    .po-tabela-wrap { overflow-x: auto; }
+    .po-tabela { width: 100%; border-collapse: collapse; font-size: var(--step--1); min-width: 460px; }
+    .po-tabela th, .po-tabela td {
+      text-align: left;
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--line-soft);
+      vertical-align: top;
+    }
+    .po-tabela thead th { font-weight: 800; color: var(--brand-700); border-bottom: 2px solid var(--line); }
+    .po-tabela tbody th { font-weight: 700; }
+    .po-linha-destaque { background: var(--accent-50); }
+
+    .po-qualidade {
+      margin-top: var(--sp-6);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .po-qualidade h3 { font-size: var(--step-1); margin-bottom: var(--sp-2); }
+    .po-qualidade p { line-height: 1.65; font-size: var(--step--1); }
+
+    .po-proximo-btn { margin-top: var(--sp-4); }
+    .po-passos { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-3); }
+    .po-passos li { border-left: 3px solid var(--line); padding-left: var(--sp-4); }
+    .po-passo-link { display: block; font-weight: 700; color: var(--brand-600); }
+    .po-passo-txt { display: block; margin-top: 0.2rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+
+    .po-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .po-compat h3 { color: #fff; font-size: var(--step-1); }
+    .po-compat p { margin-top: var(--sp-3); line-height: 1.6; }
+    .po-acoes { margin-top: var(--sp-5); display: grid; gap: var(--sp-3); }
+    .po-acoes .btn { width: 100%; }
+    .po-acoes-nota { font-size: var(--step--1); color: #aab0ba; text-align: center; margin: 0; }
+
+    /* Presencial fora da área: informação honesta, deliberadamente sem CTA. */
+    .po-semencaixe {
+      margin-top: var(--sp-6);
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: var(--bg-tint);
+    }
+    .po-semencaixe h3 { font-size: var(--step-0); margin-bottom: var(--sp-2); }
+    .po-semencaixe p { line-height: 1.6; font-size: var(--step--1); color: var(--ink-soft); }
+
+    .po-continuar {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .po-continuar h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .po-links { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2); }
+    .po-links a { color: var(--brand-600); font-weight: 600; }
+    .po-aviso { margin-top: var(--sp-5); font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    .po-rodape {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-4);
+      align-items: center;
+    }
+    .po-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-right: auto;
+    }
+    .po-feedback button,
+    .po-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .po-feedback button:hover, .po-compartilhar:hover { border-color: var(--brand); }
+    .po-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      min-height: 44px;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .po-conteudo { padding-block: var(--sp-8); }
+    .po-artigo { max-width: var(--container-narrow); margin-inline: auto; }
+    .po-atualizado { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-5); }
+    .po-artigo h2 { margin-top: var(--sp-7); font-size: var(--step-2); }
+    .po-artigo p { margin-top: var(--sp-4); line-height: 1.7; }
+    .po-faq { margin-top: var(--sp-5); }
+    .po-faq h3 { font-size: var(--step-0); line-height: 1.35; }
+    .po-faq p { margin-top: var(--sp-2); }
+    .po-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .po-disclosure h2 { margin-top: 0; font-size: var(--step-1); }
+    .po-metodologia-nota { font-size: var(--step--1); color: var(--muted); }
+  </style>
+
+  <script>
+    import { iniciarPresencialOuOnline } from '../../scripts/presencialOuOnline.client';
+    iniciarPresencialOuOnline();
+  </script>
+</Base>

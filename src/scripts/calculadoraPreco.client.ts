@@ -367,6 +367,20 @@ export function iniciarCalculadora(): void {
     });
   }
 
+  /*
+   * Formato herdado da ferramenta "presencial ou online" (#m=). Quem acabou
+   * de descobrir que o encaixe é online não deve chegar aqui com presencial
+   * pré-selecionado — comparar o custo do formato errado não ajuda ninguém.
+   */
+  const mm = window.location.hash.match(/[#&]m=(presencial|online)/i);
+  if (mm) {
+    formato = mm[1].toLowerCase() as Formato;
+    app.querySelectorAll<HTMLButtonElement>('[data-formato]').forEach((b) => {
+      b.classList.toggle('cp-chip--on', b.dataset.formato === formato);
+    });
+    campoFreq.hidden = formato === 'online';
+  }
+
   /* ---- Autocomplete ---- */
   let debounce = 0;
   const buscar = (termo: string) => {

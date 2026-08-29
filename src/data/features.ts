@@ -18,7 +18,10 @@ export const features = {
   auditoriaTreino: true,
   /** /ferramentas/diagnostico-da-constancia/ — publicada. */
   diagnosticoConstancia: true,
+  /** /ferramentas/personal-score/ — publicada. */
   personalScore: true,
+  /** /ferramentas/presencial-ou-online/ — publicada. */
+  formatoAcompanhamento: true,
 } as const;
 
 export type Feature = keyof typeof features;

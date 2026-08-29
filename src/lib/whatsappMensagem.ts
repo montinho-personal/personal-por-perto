@@ -26,6 +26,8 @@ const INTERESSE: Record<Topico, string> = {
   'local-comercial': 'queria entender como funciona o seu acompanhamento.',
   'preco-contratacao': 'queria entender o que está incluído no acompanhamento e como funcionam os formatos.',
   'escolha-decisao': 'queria entender qual formato de acompanhamento faria mais sentido no meu caso.',
+  'formato-acompanhamento':
+    'estou decidindo entre acompanhamento presencial e online e queria entender como cada formato funciona no seu trabalho.',
   'avaliacao-acompanhamento':
     'já treino com acompanhamento e queria entender como você organiza planejamento, progressão e revisão do treino.',
   emagrecimento: 'meu objetivo é emagrecer e queria entender como funcionaria um acompanhamento para a minha rotina.',

@@ -56,6 +56,7 @@ const FERRAMENTA_PRECO = '/ferramentas/calculadora-preco-personal/';
 const FERRAMENTA_AUDITORIA = '/ferramentas/meu-treino-faz-sentido/';
 const FERRAMENTA_CONSTANCIA = '/ferramentas/diagnostico-da-constancia/';
 const FERRAMENTA_SCORE = '/ferramentas/personal-score/';
+const FERRAMENTA_FORMATO = '/ferramentas/presencial-ou-online/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -99,6 +100,20 @@ export const campanhas: Record<string, Campanha> = {
       'Quem começa e para raramente tem problema de vontade: costuma ter um plano que pede mais dias, mais tempo ou mais deslocamento do que a semana real entrega. Dá para descobrir qual é o seu gargalo.',
     rotulo: 'Descobrir meu principal gargalo',
     destino: FERRAMENTA_CONSTANCIA,
+    microcopy: 'Cerca de 1 minuto. Sem cadastro para ver o resultado.',
+  },
+
+  formatoAcompanhamento: {
+    id: 'formatoAcompanhamento',
+    nivel: 'diagnostico',
+    render: 'card',
+    requer: 'formatoAcompanhamento',
+    eyebrow: 'Seu próximo passo',
+    titulo: 'Presencial ou online: qual faz mais sentido para você?',
+    texto:
+      'A resposta depende menos de preço do que se costuma imaginar, e mais de autonomia, necessidade de supervisão e do que a sua agenda aguenta. Onze perguntas indicam qual formato encaixa no seu momento — e explicam o porquê.',
+    rotulo: 'Descobrir qual combina comigo',
+    destino: FERRAMENTA_FORMATO,
     microcopy: 'Cerca de 1 minuto. Sem cadastro para ver o resultado.',
   },
 

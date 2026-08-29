@@ -112,6 +112,27 @@ export const ferramentas: Ferramenta[] = [
     disponivel: true,
   },
   {
+    slug: 'presencial-ou-online',
+    nome: 'Presencial ou online?',
+    nomeCurto: 'Presencial ou online',
+    chamada: 'Qual formato de acompanhamento combina com o seu momento?',
+    descricao:
+      'Cruza experiência, autonomia, necessidade de supervisão, aceitação de correção por vídeo e logística para indicar se personal presencial, acompanhamento online ou modelo híbrido faz mais sentido — e explica o trade-off quando os fatores apontam para lados diferentes.',
+    selo: 'Cerca de 1 minuto',
+    perguntaCentral: 'Personal presencial ou online: qual combina comigo?',
+    paraQuem:
+      'Para quem está decidindo entre pagar por presença durante o treino ou por planejamento e acompanhamento a distância.',
+    entrega: [
+      'O formato que melhor encaixa no seu momento, com quatro respostas possíveis — inclusive "os dois funcionam"',
+      'O seu gargalo real nomeado: supervisão, planejamento, flexibilidade ou constância',
+      'O trade-off explicado quando a sua necessidade e a sua rotina apontam para lados opostos',
+      'Um comparador dos dois formatos que não finge que planejamento pertence só a um deles',
+    ],
+    naoFaz:
+      'Não diz que um formato é melhor que o outro, não trata online como versão barata do presencial, não deixa o preço decidir sozinho e não muda a recomendação por causa da região que atendemos.',
+    disponivel: true,
+  },
+  {
     slug: 'personal-score',
     nome: 'Personal Score',
     nomeCurto: 'Avaliar meu acompanhamento',

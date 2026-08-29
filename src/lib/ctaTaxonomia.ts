@@ -27,6 +27,7 @@ export type Topico =
   | 'preco-contratacao'
   | 'escolha-decisao'
   | 'avaliacao-acompanhamento'
+  | 'formato-acompanhamento'
   | 'emagrecimento'
   | 'hipertrofia'
   | 'execucao-exercicio'
@@ -92,7 +93,14 @@ const SLUGS_PRECO = new Set([
 ]);
 
 /** Guias de escolha e decisão de formato. */
-const SLUGS_ESCOLHA = new Set(['como-escolher-personal-trainer', 'personal-online-funciona']);
+const SLUGS_ESCOLHA = new Set(['como-escolher-personal-trainer']);
+
+/**
+ * Quem lê "personal online funciona?" já está exatamente na decisão que a
+ * ferramenta de formato resolve. O diagnóstico completo é um passo largo
+ * demais para essa intenção.
+ */
+const SLUGS_FORMATO = new Set(['personal-online-funciona']);
 
 /**
  * Quem lê estes já contratou (ou acabou de contratar) alguém. A dúvida não é
@@ -248,6 +256,9 @@ export function classificarPagina(
   }
   if (SLUGS_ESCOLHA.has(slug)) {
     return { tipo: 'artigo', topico: 'escolha-decisao', funil: 'mofu', regra: 'ART_ESCOLHA' };
+  }
+  if (SLUGS_FORMATO.has(slug)) {
+    return { tipo: 'artigo', topico: 'formato-acompanhamento', funil: 'mofu', regra: 'ART_FORMATO' };
   }
   if (SLUGS_ACOMPANHAMENTO.has(slug)) {
     return { tipo: 'artigo', topico: 'avaliacao-acompanhamento', funil: 'mofu', regra: 'ART_ACOMPANHAMENTO' };
