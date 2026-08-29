@@ -26,6 +26,7 @@ export type Topico =
   | 'local-comercial'
   | 'preco-contratacao'
   | 'escolha-decisao'
+  | 'avaliacao-acompanhamento'
   | 'emagrecimento'
   | 'hipertrofia'
   | 'execucao-exercicio'
@@ -91,12 +92,14 @@ const SLUGS_PRECO = new Set([
 ]);
 
 /** Guias de escolha e decisão de formato. */
-const SLUGS_ESCOLHA = new Set([
-  'como-escolher-personal-trainer',
-  'personal-online-funciona',
-  'primeira-aula-com-personal-trainer',
-  'avaliacao-fisica',
-]);
+const SLUGS_ESCOLHA = new Set(['como-escolher-personal-trainer', 'personal-online-funciona']);
+
+/**
+ * Quem lê estes já contratou (ou acabou de contratar) alguém. A dúvida não é
+ * mais "qual formato escolher", e sim "o que estou recebendo está de pé" —
+ * outro CTA, outra ferramenta.
+ */
+const SLUGS_ACOMPANHAMENTO = new Set(['primeira-aula-com-personal-trainer', 'avaliacao-fisica']);
 
 /** Conteúdo de rotina, tempo e constância. */
 const SLUGS_ROTINA = new Set([
@@ -245,6 +248,9 @@ export function classificarPagina(
   }
   if (SLUGS_ESCOLHA.has(slug)) {
     return { tipo: 'artigo', topico: 'escolha-decisao', funil: 'mofu', regra: 'ART_ESCOLHA' };
+  }
+  if (SLUGS_ACOMPANHAMENTO.has(slug)) {
+    return { tipo: 'artigo', topico: 'avaliacao-acompanhamento', funil: 'mofu', regra: 'ART_ACOMPANHAMENTO' };
   }
   if (SLUGS_PUBLICO.has(slug)) {
     return { tipo: 'artigo', topico: 'publico-especifico', funil: 'bofu', regra: 'ART_PUBLICO' };

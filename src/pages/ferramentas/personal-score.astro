@@ -1,0 +1,706 @@
+---
+/**
+ * Ferramenta "Personal Score: avalie seu acompanhamento".
+ *
+ * Auditor da estrutura de um serviço contratado — nunca um juiz de
+ * profissionais. HTML estático e indexável; a ferramenta é progressive
+ * enhancement, com o motor em src/lib/personalScore.ts.
+ *
+ * Self-canonical. Nenhuma combinação de respostas gera URL própria, e o
+ * nome de nenhum profissional é coletado, guardado ou exibido em lugar
+ * algum — não existe ranking nem base pública.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { montinho } from '../../data/montinho';
+import { rotas } from '../../lib/links';
+
+const path = '/ferramentas/personal-score';
+const atualizadoEm = '2026-08-29';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Personal Score', url: path },
+];
+
+const title = 'Meu personal está me acompanhando bem? Avalie | Personal por Perto';
+const description =
+  'Avalie a estrutura do acompanhamento que você contratou: individualização, progressão, evolução acompanhada e clareza. Receba perguntas prontas para levar ao seu profissional. Grátis, sem cadastro.';
+
+const urlCanonica = new URL(path + '/', site.dominio).href;
+
+const faq = [
+  {
+    p: 'Esta ferramenta diz se o meu personal é bom ou ruim?',
+    r: 'Não, e essa é uma decisão de projeto, não uma limitação técnica. Ela avalia a estrutura do serviço a partir do que você percebe: se existe individualização, se a progressão está clara, se a sua evolução é acompanhada. Competência técnica, adequação de cada exercício ao seu corpo e conduta profissional não são observáveis a partir de um questionário — e fingir que são seria desonesto.',
+  },
+  {
+    p: 'Uma nota baixa significa que eu deveria trocar de profissional?',
+    r: 'Não. Na maior parte dos casos, uma nota baixa aponta falta de comunicação, e não ausência de trabalho: muitos profissionais têm um critério de progressão claro que simplesmente nunca foi explicado ao aluno. Por isso o resultado entrega perguntas para a próxima conversa, e não uma recomendação de troca.',
+  },
+  {
+    p: 'Acompanhamento online é avaliado com o mesmo critério do presencial?',
+    r: 'Com o mesmo critério, mas não com a mesma expectativa. No presencial, a correção de execução acontece durante a sessão; no online, o equivalente legítimo é a análise por vídeo. Um serviço online completo pode alcançar exatamente a mesma pontuação de um presencial — presença física não é sinônimo de planejamento.',
+  },
+  {
+    p: 'E se eu só comprei um treino montado, sem acompanhamento?',
+    r: 'Então o questionário fica mais curto e a avaliação considera apenas cinco aspectos: o que foi levantado antes, individualização, adequação à sua rotina, progressão e clareza. Cobrar suporte diário ou correção de execução de quem vendeu um programa avulso seria avaliar o serviço por algo que ele nunca prometeu.',
+  },
+  {
+    p: 'Vocês guardam o nome do meu personal?',
+    r: 'Não perguntamos e não guardamos. Não existe ranking de profissionais, base pública nem qualquer registro que identifique alguém. As respostas ficam no seu navegador e o cálculo acontece no seu próprio dispositivo.',
+  },
+  {
+    p: 'O que eu faço com o resultado?',
+    r: 'Leve as perguntas para a sua próxima conversa. Elas foram escritas para serem diretas sem soar como cobrança, e costumam resolver a maior parte das dúvidas de estrutura. Se depois disso a expectativa continuar desalinhada, aí sim faz sentido avaliar formato ou profissional.',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  {
+    '@type': 'WebPage',
+    '@id': `${urlCanonica}#webpage`,
+    url: urlCanonica,
+    name: 'Personal Score: avalie seu acompanhamento',
+    description,
+    inLanguage: site.idioma,
+    dateModified: atualizadoEm,
+    isPartOf: { '@id': `${site.dominio}/#website` },
+    about: { '@type': 'Thing', name: 'Qualidade do acompanhamento em treinamento personalizado' },
+  },
+  {
+    '@type': 'WebApplication',
+    '@id': `${urlCanonica}#app`,
+    name: 'Personal Score',
+    url: urlCanonica,
+    applicationCategory: 'HealthApplication',
+    operatingSystem: 'Web',
+    inLanguage: site.idioma,
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+    description:
+      'Ferramenta gratuita que avalia a estrutura de um acompanhamento de treino contratado — individualização, progressão, monitoramento e clareza — normalizada pelo modelo de serviço, e devolve perguntas para levar ao profissional.',
+  },
+  {
+    '@type': 'FAQPage',
+    '@id': `${urlCanonica}#faq`,
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.p,
+      acceptedAnswer: { '@type': 'Answer', text: f.r },
+    })),
+  },
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="ps-hero">
+    <div class="container ps-hero-inner">
+      <p class="eyebrow">Ferramenta gratuita</p>
+      <h1>Seu acompanhamento está entregando o que deveria?</h1>
+      <p class="ps-hero-lead">
+        Responda algumas perguntas sobre o serviço que você contratou e receba
+        uma leitura da estrutura dele — mais um conjunto de perguntas para
+        levar à sua próxima conversa. Não avaliamos o seu profissional:
+        avaliamos como o acompanhamento está organizado.
+      </p>
+
+      <ul class="ps-hero-selos">
+        <li><span aria-hidden="true">⏱</span> Cerca de 2 minutos</li>
+        <li><span aria-hidden="true">✓</span> Sem cadastro</li>
+        <li><span aria-hidden="true">✓</span> Não pedimos o nome de ninguém</li>
+      </ul>
+
+      <div id="ps-app" class="ps-app" data-estado="inicial">
+        <div class="ps-start">
+          <button type="button" class="btn btn-primary btn-lg ps-start-btn" id="ps-iniciar">
+            Avaliar meu acompanhamento
+          </button>
+          <p class="ps-microcopy">O cálculo acontece no seu navegador. Nada é enviado para lugar nenhum.</p>
+        </div>
+      </div>
+
+      <noscript>
+        <div class="callout callout-accent ps-noscript">
+          <p>
+            <strong>A ferramenta precisa de JavaScript para funcionar.</strong>
+            O conteúdo abaixo explica os mesmos critérios que ela usa — e serve
+            como checklist mesmo sem responder ao questionário.
+          </p>
+        </div>
+      </noscript>
+    </div>
+  </header>
+
+  <div class="container ps-conteudo">
+    <article class="prose ps-artigo">
+      <p class="ps-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <h2 id="o-que-avalia">O que esta ferramenta avalia — e o que ela não avalia</h2>
+      <p>
+        Ela avalia a <strong>estrutura do serviço</strong>: se o seu contexto foi
+        levantado antes de o treino ser montado, se as escolhas parecem
+        consideradas para o seu caso, se existe um critério de progressão que
+        você consegue identificar, se a sua evolução é acompanhada de alguma
+        forma, se o programa cabe na sua semana e se você entende o que está
+        fazendo.
+      </p>
+      <p>
+        Ela <strong>não</strong> avalia competência técnica, adequação de cada
+        exercício ao seu corpo, segurança da prescrição nem conduta
+        profissional. Nada disso é observável a partir de um questionário
+        respondido por quem está do outro lado do serviço. O resultado inclui
+        essa ressalva de forma fixa, porque uma ferramenta que finge enxergar
+        mais do que enxerga não serve para decidir nada.
+      </p>
+
+      <h2 id="modelo-contratado">Cada modelo é avaliado pelo que ele promete</h2>
+      <p>
+        Este é o critério mais importante do cálculo. Um programa de treino
+        entregue uma única vez não prometeu suporte diário, correção de
+        execução nem ajuste semanal — cobrar isso seria avaliar o serviço por
+        algo que ele nunca vendeu. Um atendimento em dupla ou grupo entrega,
+        por definição, menos atenção individual do que um atendimento
+        exclusivo, e isso é característica do formato, não defeito de quem
+        atende.
+      </p>
+      <p>
+        Por isso o questionário muda conforme a sua primeira resposta. Quem
+        contratou um treino avulso responde a menos perguntas e é avaliado em
+        cinco aspectos; quem contratou acompanhamento contínuo é avaliado em
+        nove. As pontuações não são comparáveis entre modelos diferentes — e
+        não deveriam ser.
+      </p>
+
+      <h2 id="online-presencial">Online não perde ponto por ser online</h2>
+      <p>
+        Presença física não é sinônimo de planejamento. Existe acompanhamento
+        presencial que se resume a contar repetições, e existe consultoria
+        online com avaliação inicial detalhada, progressão registrada, análise
+        de execução por vídeo e revisão mensal. O que a ferramenta procura é a
+        <em>função</em>, não o meio: no presencial, a correção acontece durante
+        a sessão; no online, o equivalente legítimo é a análise por vídeo.
+      </p>
+      <p>
+        Quando nenhuma das duas está acontecendo, aí sim aparece um ponto de
+        atenção — mas ele é sobre a ausência da função, não sobre o formato.
+        Se você ainda está decidindo entre os dois, o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a>
+        trata dessa escolha diretamente.
+      </p>
+
+      <h2 id="sinais">Sinais de que o acompanhamento está bem estruturado</h2>
+      <p>
+        Alguns indicadores aparecem com frequência em serviços bem organizados,
+        independentemente do formato. O treino foi montado depois de alguém
+        perguntar sobre o seu objetivo, a sua experiência, a sua rotina e as
+        suas limitações. Você sabe o que deveria melhorar nas próximas semanas.
+        Existe um critério para aumentar carga, repetições ou dificuldade, e
+        esse critério não é "quando der vontade". Cargas ou medidas são
+        registradas em algum lugar. Quando a sua rotina muda, o plano muda
+        junto.
+      </p>
+      <p>
+        Nenhum desses itens sozinho define qualidade, e a ausência de um deles
+        não condena ninguém. É o conjunto que diferencia acompanhamento de
+        entrega de ficha.
+      </p>
+
+      <h2 id="expectativa">Nem todo desconforto é problema do profissional</h2>
+      <p>
+        Vale dizer isso com todas as letras: parte do desalinhamento que a
+        ferramenta encontra não vem do serviço, e sim de expectativa nunca
+        combinada. Quem contratou duas sessões semanais e espera resposta no
+        WhatsApp em qualquer horário está comparando o serviço com algo que não
+        foi vendido. Quem mudou de emprego e não avisou que a rotina virou de
+        cabeça para baixo não pode esperar que o treino tenha se ajustado
+        sozinho.
+      </p>
+      <p>
+        É por isso que o entregável central do resultado são perguntas, e não
+        veredito. Uma conversa de dez minutos resolve boa parte do que aparece
+        aqui — e, quando não resolve, você passa a ter um motivo concreto em vez
+        de uma sensação difusa.
+      </p>
+
+      <h2 id="metodologia">Como a pontuação é calculada</h2>
+      <p>
+        Cada aspecto recebe uma pontuação de 0 a 100 a partir das suas
+        respostas, e a nota final é a média ponderada apenas dos aspectos que
+        (a) fazem parte do modelo que você contratou e (b) você conseguiu
+        avaliar. Individualização, progressão e adequação à rotina pesam mais,
+        porque são o núcleo do que diferencia acompanhamento de prescrição
+        avulsa.
+      </p>
+      <p>
+        Quando você responde "não sei" ou "não lembro", o aspecto fica marcado
+        como <strong>sem informação suficiente</strong> e sai da conta — ele
+        nunca vira zero. Se sobrar pouca informação, o resultado diz
+        explicitamente que a leitura é parcial, em vez de exibir um número com
+        precisão que não tem. As regras são determinísticas: as mesmas
+        respostas produzem sempre o mesmo resultado.
+      </p>
+      <p>
+        A nota é uma síntese visual, não um veredito. O que importa está abaixo
+        dela: os aspectos individuais, os pontos que valem conversa e as
+        perguntas.
+      </p>
+
+      <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
+      {
+        faq.map((f) => (
+          <div class="ps-faq">
+            <h3>{f.p}</h3>
+            <p>{f.r}</p>
+          </div>
+        ))
+      }
+
+      <h2 id="ferramentas-irmas">Depois da avaliação</h2>
+      <p>
+        O próximo passo depende do que apareceu. Se o treino não cabe na sua
+        semana, o caminho é remontar a estrutura no
+        <a href={rotas.ferramentaRotina}>treino para minha rotina</a>. Se a
+        dúvida é sobre a organização do programa em si, o
+        <a href={rotas.ferramentaAuditoria}>meu treino faz sentido?</a> analisa
+        distribuição e frequência por grupo. Se o ponto for suporte,
+        flexibilidade ou correção, talvez a questão seja de formato — e o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a>
+        ajuda a definir qual faz sentido. E se você quiser saber se o valor que
+        paga está dentro da faixa da sua cidade, use a
+        <a href={rotas.ferramentaPreco}>calculadora de preço</a>.
+      </p>
+
+      <aside class="ps-disclosure">
+        <h2 id="transparencia">Transparência</h2>
+        <p>
+          O Personal por Perto é um projeto de conteúdo ligado ao
+          <a href={rotas.montinho}>Montinho Personal</a>, que é personal
+          trainer. Uma ferramenta que avalia acompanhamento e é mantida por
+          alguém que vende acompanhamento tem um conflito de interesse óbvio, e
+          o jeito honesto de lidar com isso é declará-lo e limitar a própria
+          oferta.
+        </p>
+        <p>
+          Foi o que fizemos: o resultado nunca sugere trocar de profissional, o
+          convite para conversar só aparece quando a avaliação encontra pontos
+          relevantes, e ele é apresentado explicitamente como ponto de
+          comparação — não como alternativa ao seu profissional atual. Quando o
+          acompanhamento aparece consistente, a ferramenta diz isso e não
+          oferece nada.
+        </p>
+        <p class="ps-metodologia-nota">
+          Metodologia desenvolvida pela redação do Personal por Perto e revisada
+          por <a href={rotas.montinho}>{montinho.nome}</a>, personal trainer com
+          mais de 20 anos de experiência em musculação. Os aspectos avaliados
+          seguem elementos consolidados de prescrição de treinamento:
+          levantamento de contexto, individualização, progressão planejada,
+          monitoramento e comunicação do plano.
+        </p>
+      </aside>
+    </article>
+  </div>
+
+  <section class="section-sm tint">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <template id="ps-tpl">
+    <div class="ps-quiz" role="group" aria-labelledby="ps-pergunta-titulo">
+      <div class="ps-progresso">
+        <div class="ps-progresso-barra"><span class="ps-progresso-preenchido"></span></div>
+        <p class="ps-progresso-txt" aria-live="polite"></p>
+      </div>
+      <h2 class="ps-pergunta" id="ps-pergunta-titulo"></h2>
+      <p class="ps-ajuda"></p>
+      <div class="ps-opcoes"></div>
+      <div class="ps-nav">
+        <button type="button" class="ps-voltar">← Voltar</button>
+        <button type="button" class="btn btn-primary ps-avancar" hidden>Continuar</button>
+      </div>
+      <p class="ps-reforco"></p>
+    </div>
+  </template>
+
+  <!-- is:global obrigatório: quiz e resultado são criados via JS. Prefixo `ps-`. -->
+  <style is:global>
+    .ps-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-8);
+      border-bottom: 4px solid var(--accent);
+    }
+    .ps-hero-inner { max-width: 800px; }
+    .ps-hero h1 { color: #fff; max-width: 20ch; }
+    .ps-hero .eyebrow { color: #ffb488; }
+    .ps-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d4d8df;
+      max-width: 62ch;
+    }
+    .ps-hero-selos {
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-5) 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-5);
+      font-size: var(--step--1);
+      color: #c7ccd4;
+    }
+    .ps-hero-selos li { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .ps-hero-selos span { color: var(--accent); font-weight: 800; }
+    .ps-app { margin-top: var(--sp-6); }
+    .ps-start-btn { width: 100%; max-width: 400px; }
+    .ps-microcopy { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+    .ps-noscript { margin-top: var(--sp-5); color: var(--ink); }
+
+    /* ------------------------------- Quiz ------------------------------- */
+    .ps-quiz {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .ps-progresso-barra { height: 6px; border-radius: 999px; background: var(--bg-tint-2); overflow: hidden; }
+    .ps-progresso-preenchido {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+    .ps-progresso-txt {
+      margin-top: var(--sp-2);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .ps-pergunta { margin-top: var(--sp-4); font-size: var(--step-2); line-height: 1.2; }
+    .ps-ajuda { margin-top: var(--sp-3); color: var(--muted); font-size: var(--step--1); line-height: 1.5; }
+    .ps-ajuda:empty, .ps-reforco:empty { display: none; }
+    .ps-opcoes { display: grid; gap: var(--sp-3); margin-top: var(--sp-5); }
+    @media (min-width: 620px) {
+      .ps-opcoes.ps-opcoes--curtas { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    }
+    .ps-opcao {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 56px;
+      transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .ps-opcao:hover { border-color: var(--brand); background: var(--bg-tint); }
+    .ps-opcao.ps-sel,
+    .ps-opcao[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-50); }
+    /* "Nada disso" e "não lembro" não são resposta do mesmo tipo das outras. */
+    .ps-opcao--excl { color: var(--muted); font-weight: 500; }
+    .ps-opcao-marca {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--line);
+    }
+    .ps-opcao.ps-sel .ps-opcao-marca,
+    .ps-opcao[aria-pressed='true'] .ps-opcao-marca { background: var(--accent); border-color: var(--accent); }
+    .ps-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      margin-top: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .ps-voltar {
+      background: none;
+      border: 0;
+      padding: 0.5rem 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .ps-voltar:hover { color: var(--ink); text-decoration: underline; }
+    .ps-quiz [hidden] { display: none; }
+    .ps-reforco {
+      margin-top: var(--sp-4);
+      padding-top: var(--sp-4);
+      border-top: 1px solid var(--line-soft);
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ----------------------------- Resultado ---------------------------- */
+    .ps-resultado {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-6);
+      box-shadow: var(--shadow-lg);
+    }
+    .ps-res-cabecalho {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-5);
+      flex-wrap: wrap;
+    }
+    .ps-medidor {
+      flex-shrink: 0;
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 5px solid var(--brand-600);
+      color: var(--brand-700);
+      background: var(--bg-tint);
+    }
+    .ps-medidor--muitoConsistente { border-color: #1f8a54; color: #1f8a54; background: #eaf6ef; }
+    .ps-medidor--consistente { border-color: var(--brand-600); color: var(--brand-700); }
+    .ps-medidor--algunsPontos { border-color: var(--accent); color: var(--accent-600); background: var(--accent-50); }
+    .ps-medidor--variosPontos { border-color: #b4571f; color: #b4571f; background: #fdf1e8; }
+    .ps-medidor-num { font-size: var(--step-4); font-weight: 800; line-height: 1; }
+    .ps-medidor-den { font-size: var(--step--1); font-weight: 700; opacity: 0.75; }
+    .ps-res-cab-txt { flex: 1 1 240px; }
+    .ps-res-rotulo {
+      font-size: var(--step--1);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ps-res-titulo { margin-top: var(--sp-2); font-size: var(--step-2); line-height: 1.2; }
+    .ps-res-resumo {
+      margin-top: var(--sp-5);
+      color: var(--ink-soft);
+      font-size: var(--step-1);
+      line-height: 1.6;
+    }
+    .ps-ressalva {
+      margin-top: var(--sp-4);
+      background: var(--bg-tint);
+      border-left: 3px solid var(--brand);
+      border-radius: var(--radius);
+      padding: var(--sp-3) var(--sp-4);
+      font-size: var(--step--1);
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+    .ps-bloco { margin-top: var(--sp-6); }
+    .ps-bloco h3 { font-size: var(--step-1); margin-bottom: var(--sp-2); }
+    .ps-bloco-nota { font-size: var(--step--1); color: var(--muted); line-height: 1.5; margin-bottom: var(--sp-4); }
+
+    /* Pilares */
+    .ps-pilares { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2); }
+    @media (min-width: 620px) {
+      .ps-pilares { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .ps-pilar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      padding: 0.7rem 0.95rem;
+      border: 1px solid var(--line);
+      border-left-width: 4px;
+      border-radius: var(--radius);
+      font-size: var(--step--1);
+    }
+    .ps-pilar-nome { font-weight: 700; }
+    .ps-pilar-nivel { color: var(--muted); text-align: right; flex-shrink: 0; }
+    .ps-n-forte { border-left-color: #1f8a54; }
+    .ps-n-forte .ps-pilar-nivel { color: #1f8a54; font-weight: 700; }
+    .ps-n-bom { border-left-color: var(--brand-600); }
+    .ps-n-atencao { border-left-color: var(--accent); }
+    .ps-n-atencao .ps-pilar-nivel { color: var(--accent-600); font-weight: 700; }
+    .ps-n-revisar { border-left-color: #b4571f; }
+    .ps-n-revisar .ps-pilar-nivel { color: #b4571f; font-weight: 700; }
+    .ps-n-semdados { border-left-color: var(--line); background: var(--bg-tint); }
+
+    .ps-lista-check { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2); }
+    .ps-lista-check li { position: relative; padding-left: 1.6rem; line-height: 1.6; }
+    .ps-lista-check li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #1f8a54;
+      font-weight: 800;
+    }
+
+    /* Pontos de atenção */
+    .ps-atencao {
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius);
+      padding: var(--sp-4) var(--sp-5);
+      margin-bottom: var(--sp-3);
+    }
+    .ps-atencao h4 { font-size: var(--step-0); line-height: 1.3; }
+    .ps-atencao p { margin-top: var(--sp-3); line-height: 1.65; font-size: var(--step--1); }
+    .ps-atencao strong { color: var(--ink); }
+    .ps-atencao-relato { color: var(--ink-soft); }
+    .ps-atencao-link {
+      display: inline-block;
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      font-weight: 600;
+      color: var(--brand-600);
+    }
+
+    /* Perguntas: o entregável central */
+    .ps-perguntas {
+      border: 2px solid var(--brand-600);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: var(--bg-tint);
+    }
+    .ps-perguntas h3 { color: var(--brand-700); }
+    .ps-lista-num { margin: 0; padding-left: 1.3rem; display: grid; gap: var(--sp-3); }
+    .ps-lista-num li { line-height: 1.6; font-weight: 600; }
+    .ps-copiar {
+      margin-top: var(--sp-5);
+      border: 1px solid var(--brand-600);
+      background: #fff;
+      color: var(--brand-700);
+      border-radius: 999px;
+      padding: 0.5rem 1.2rem;
+      font: inherit;
+      font-weight: 700;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .ps-copiar:hover { background: var(--brand-50); }
+
+    .ps-proximo-btn { margin-top: var(--sp-4); }
+    .ps-limitacoes {
+      border-top: 1px solid var(--line-soft);
+      padding-top: var(--sp-5);
+    }
+    .ps-limitacoes ul { margin: 0; padding-left: 1.2rem; display: grid; gap: var(--sp-2); }
+    .ps-limitacoes li { font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+
+    .ps-compat {
+      margin-top: var(--sp-6);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+      background: linear-gradient(155deg, var(--brand-700), var(--brand-800));
+      color: #d4d8df;
+      border-top: 4px solid var(--accent);
+    }
+    .ps-compat h3 { color: #fff; font-size: var(--step-1); }
+    .ps-compat p { margin-top: var(--sp-3); line-height: 1.6; }
+    .ps-acoes { margin-top: var(--sp-5); display: grid; gap: var(--sp-3); }
+    .ps-acoes .btn { width: 100%; }
+    .ps-acoes-nota { font-size: var(--step--1); color: #aab0ba; text-align: center; margin: 0; }
+    .ps-continuar {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+    }
+    .ps-continuar h3 { font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .ps-links { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--sp-2); }
+    .ps-links a { color: var(--brand-600); font-weight: 600; }
+    .ps-aviso {
+      margin-top: var(--sp-5);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .ps-rodape {
+      margin-top: var(--sp-6);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3) var(--sp-4);
+      align-items: center;
+    }
+    .ps-feedback {
+      font-size: var(--step--1);
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-right: auto;
+    }
+    .ps-feedback button,
+    .ps-compartilhar {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+      min-height: 44px;
+    }
+    .ps-feedback button:hover, .ps-compartilhar:hover { border-color: var(--brand); }
+    .ps-refazer {
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: var(--step--1);
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      padding: 0.4rem 0;
+      min-height: 44px;
+    }
+
+    /* ---------------------------- Editorial ----------------------------- */
+    .ps-conteudo { padding-block: var(--sp-8); }
+    .ps-artigo { max-width: var(--container-narrow); margin-inline: auto; }
+    .ps-atualizado { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-5); }
+    .ps-artigo h2 { margin-top: var(--sp-7); font-size: var(--step-2); }
+    .ps-artigo p { margin-top: var(--sp-4); line-height: 1.7; }
+    .ps-faq { margin-top: var(--sp-5); }
+    .ps-faq h3 { font-size: var(--step-0); line-height: 1.35; }
+    .ps-faq p { margin-top: var(--sp-2); }
+    .ps-disclosure {
+      margin-top: var(--sp-7);
+      background: var(--bg-tint);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: var(--sp-5);
+    }
+    .ps-disclosure h2 { margin-top: 0; font-size: var(--step-1); }
+    .ps-metodologia-nota { font-size: var(--step--1); color: var(--muted); }
+  </style>
+
+  <script>
+    import { iniciarPersonalScore } from '../../scripts/personalScore.client';
+    iniciarPersonalScore();
+  </script>
+</Base>

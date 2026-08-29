@@ -205,6 +205,12 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
 
   /* ---- Prioridade 6: ferramenta temática ---- */
   const porTopico: Partial<Record<Topico, { id: string; alt?: string; regra: string; motivo: string }>> = {
+    'avaliacao-acompanhamento': {
+      id: 'scoreAcompanhamento',
+      alt: 'personalMatch',
+      regra: 'TEMA_ACOMPANHAMENTO',
+      motivo: 'quem já contratou não quer escolher formato: quer saber se o que recebe está de pé',
+    },
     'rotina-tempo': {
       id: 'rotinaTreino',
       alt: 'personalMatch',

@@ -94,8 +94,10 @@ console.log('\n[2] CTA manual na página silencia o motor\n');
 
 console.log('\n[3] Feature flags nunca geram link quebrado\n');
 {
+  // Estado informativo: ter zero flags desligadas é legítimo (todas as
+  // ferramentas publicadas) e não pode ser transformado em falha de teste.
   const desligadas = (Object.keys(features) as (keyof typeof features)[]).filter((f) => !features[f]);
-  ok(desligadas.length > 0, `flags desligadas no momento: ${desligadas.join(', ')}`);
+  console.log(`     flags desligadas no momento: ${desligadas.join(', ') || 'nenhuma'}`);
 
   // Nenhuma decisão pode apontar para ferramenta desligada.
   const todosCaminhos = casos.map((c) => c.path);

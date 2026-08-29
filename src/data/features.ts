@@ -18,8 +18,7 @@ export const features = {
   auditoriaTreino: true,
   /** /ferramentas/diagnostico-da-constancia/ — publicada. */
   diagnosticoConstancia: true,
-  /** "Personal Score" (avaliação de profissional) — ainda não existe. */
-  personalScore: false,
+  personalScore: true,
 } as const;
 
 export type Feature = keyof typeof features;

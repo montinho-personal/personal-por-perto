@@ -55,6 +55,7 @@ const FERRAMENTA_MATCH = '/ferramentas/encontre-seu-personal-ideal/';
 const FERRAMENTA_PRECO = '/ferramentas/calculadora-preco-personal/';
 const FERRAMENTA_AUDITORIA = '/ferramentas/meu-treino-faz-sentido/';
 const FERRAMENTA_CONSTANCIA = '/ferramentas/diagnostico-da-constancia/';
+const FERRAMENTA_SCORE = '/ferramentas/personal-score/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -99,6 +100,20 @@ export const campanhas: Record<string, Campanha> = {
     rotulo: 'Descobrir meu principal gargalo',
     destino: FERRAMENTA_CONSTANCIA,
     microcopy: 'Cerca de 1 minuto. Sem cadastro para ver o resultado.',
+  },
+
+  scoreAcompanhamento: {
+    id: 'scoreAcompanhamento',
+    nivel: 'diagnostico',
+    render: 'card',
+    requer: 'personalScore',
+    eyebrow: 'Seu próximo passo',
+    titulo: 'Você já contratou. Está recebendo o que deveria?',
+    texto:
+      'A sensação de que algo não está redondo no acompanhamento costuma ser difícil de nomear. Uma avaliação da estrutura do serviço — individualização, progressão, evolução acompanhada — transforma essa sensação em perguntas concretas para a próxima conversa.',
+    rotulo: 'Avaliar meu acompanhamento',
+    destino: FERRAMENTA_SCORE,
+    microcopy: 'Cerca de 2 minutos. Não pedimos o nome de ninguém.',
   },
 
   emagrecimentoEstrategia: {

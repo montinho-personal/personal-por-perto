@@ -112,6 +112,27 @@ export const ferramentas: Ferramenta[] = [
     disponivel: true,
   },
   {
+    slug: 'personal-score',
+    nome: 'Personal Score',
+    nomeCurto: 'Avaliar meu acompanhamento',
+    chamada: 'O acompanhamento que você paga está entregando o que deveria?',
+    descricao:
+      'Avalia a estrutura do serviço que você contratou — individualização, progressão, acompanhamento da evolução e clareza — comparando com o que o seu modelo se propõe a entregar, e não com um ideal genérico.',
+    selo: 'Cerca de 2 minutos',
+    perguntaCentral: 'Meu personal está me acompanhando bem?',
+    paraQuem:
+      'Para quem já paga por acompanhamento e tem a sensação de que algo não está redondo — mas não sabe se a expectativa é justa.',
+    entrega: [
+      'Uma leitura de cada aspecto do serviço, avaliando só o que faz parte do modelo que você contratou',
+      'No máximo três pontos que valem conversa, cada um com o que você relatou e o que aquilo pode significar',
+      'De três a cinco perguntas prontas para levar à próxima conversa — o entregável mais útil da ferramenta',
+      'Uma seção fixa com o que a ferramenta honestamente não consegue avaliar',
+    ],
+    naoFaz:
+      'Não diz que um profissional é bom ou ruim, não sugere troca, não avalia competência técnica nem a adequação dos exercícios ao seu corpo, e não guarda o nome de ninguém.',
+    disponivel: true,
+  },
+  {
     slug: 'calculadora-preco-personal',
     nome: 'Calculadora de Preço do Personal',
     nomeCurto: 'Calculadora de preço',
