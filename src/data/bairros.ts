@@ -11,7 +11,7 @@
  * área, que é o comportamento seguro (nunca promete presencial).
  */
 export const cidadePorBairro: Record<string, string> = {
-  'personal-trainer-13-de-julho': 'aracaju-se',
+'personal-trainer-13-de-julho': 'aracaju-se',
   'personal-trainer-adrianopolis': 'manaus-am',
   'personal-trainer-agua-verde': 'curitiba-pr',
   'personal-trainer-aldeota': 'fortaleza-ce',
@@ -37,6 +37,7 @@ export const cidadePorBairro: Record<string, string> = {
   'personal-trainer-campeche': 'florianopolis-sc',
   'personal-trainer-casa-forte': 'recife-pe',
   'personal-trainer-chacara-cachoeira': 'campo-grande-ms',
+  'personal-trainer-cidade-maia': 'guarulhos-sp',
   'personal-trainer-coco-fortaleza': 'fortaleza-ce',
   'personal-trainer-copacabana': 'rio-de-janeiro-rj',
   'personal-trainer-ecoville': 'curitiba-pr',
@@ -56,6 +57,7 @@ export const cidadePorBairro: Record<string, string> = {
   'personal-trainer-jardim-camburi': 'vitoria-es',
   'personal-trainer-jardim-da-penha': 'vitoria-es',
   'personal-trainer-jardim-das-americas': 'cuiaba-mt',
+  'personal-trainer-jardim-das-flores': 'osasco-sp',
   'personal-trainer-jardim-dos-estados': 'campo-grande-ms',
   'personal-trainer-jardim-goias': 'goiania-go',
   'personal-trainer-jardins': 'sao-paulo-sp',
@@ -98,6 +100,7 @@ export const cidadePorBairro: Record<string, string> = {
   'personal-trainer-tres-figueiras': 'porto-alegre-rs',
   'personal-trainer-umarizal': 'belem-pa',
   'personal-trainer-vieiralves': 'manaus-am',
+  'personal-trainer-vila-galvao': 'guarulhos-sp',
   'personal-trainer-vila-madalena': 'sao-paulo-sp',
   'personal-trainer-vila-mariana': 'sao-paulo-sp',
   'personal-trainer-vila-nova-conceicao': 'sao-paulo-sp',

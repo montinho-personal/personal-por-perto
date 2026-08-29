@@ -22,6 +22,9 @@ export const cidadesPresencial = [
   'carapicuiba-sp',
   'osasco-sp',
   'cotia-sp',
+  // Região que atravessa Cotia, Carapicuíba, Jandira, Osasco e Embu das
+  // Artes — todos já dentro do raio, então ela entra inteira.
+  'granja-viana-sp',
 ] as const;
 
 /**

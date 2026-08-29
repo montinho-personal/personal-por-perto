@@ -1,0 +1,322 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio: como funciona e quanto custa',
+    descricao: 'O formato em que o profissional vai até você — e como ele se compara em preço.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona e quanto custa',
+    descricao: 'Treinar na academia do prédio: regras, vantagens e limitações de estrutura.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.ferramentaPreco,
+    titulo: 'Calculadora de preço do personal',
+    descricao: 'Simule a faixa de referência na sua cidade, por formato e frequência.',
+    tipo: 'Ferramenta',
+  },
+];
+
+const path = '/guias/personal-trainer-em-academia';
+const atualizadoEm = '2026-08-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer em academia: como funciona', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Posso levar meu próprio personal trainer para a academia?',
+    resposta:
+      'Depende inteiramente da academia, e não existe regra única no Brasil. Algumas liberam sem custo, outras cobram uma taxa mensal do profissional externo, outras exigem que ele seja credenciado à casa e há as que simplesmente não permitem. É a primeira pergunta a fazer — antes de escolher o profissional e antes de assinar a matrícula, porque descobrir isso depois costuma inviabilizar o plano inteiro.',
+  },
+  {
+    pergunta: 'Qual a diferença entre o personal da academia e um personal externo?',
+    resposta:
+      'O da casa já tem acesso liberado, conhece os equipamentos e costuma ter pacotes integrados à mensalidade — mas você escolhe dentro da lista de quem trabalha ali. O externo você escolhe livremente, o que amplia muito as opções e permite continuar com o mesmo profissional se você trocar de academia. Em contrapartida, ele precisa de autorização e às vezes paga taxa, o que pode aparecer no preço da sua sessão.',
+  },
+  {
+    pergunta: 'Quanto custa treinar com personal dentro da academia?',
+    resposta:
+      'O valor da sessão segue a faixa da sua cidade, e a academia adiciona duas variáveis: a mensalidade, que você paga de qualquer forma, e a eventual taxa cobrada do profissional externo, que costuma ser repassada. Em geral, o personal em academia sai mais barato que o atendimento a domicílio, porque o profissional não gasta tempo em deslocamento nem carrega equipamento. A calculadora do portal simula a faixa da sua cidade por formato.',
+  },
+  {
+    pergunta: 'Vale a pena pagar personal se a academia já tem professor de sala?',
+    resposta:
+      'São serviços diferentes. O professor de sala orienta quem está treinando naquele momento, atende várias pessoas ao mesmo tempo e não acompanha a sua progressão ao longo dos meses. O personal trabalha só com você: monta o programa a partir do seu caso, registra a evolução e ajusta o plano. Se a sua dúvida é pontual — como fazer um exercício —, o professor de sala resolve. Se é estrutural — o que fazer, em que ordem, por quanto tempo —, aí o acompanhamento individual faz diferença.',
+  },
+  {
+    pergunta: 'Personal em academia funciona para iniciante?',
+    resposta:
+      'Funciona muito bem, e é provavelmente o melhor cenário para quem está começando: equipamento variado disponível, correção de execução na hora e um ambiente que já traz o hábito de sair de casa para treinar. A ressalva é a mesma de sempre — quem tem dor, lesão ou alguma condição de saúde deve conversar antes com médico ou fisioterapeuta, e o treino se ajusta a partir daí.',
+  },
+  {
+    pergunta: 'Em horário de pico dá para treinar com personal?',
+    resposta:
+      'Dá, mas rende menos. Academia cheia significa esperar equipamento, o que estica o descanso entre séries de forma imprevisível e desorganiza justamente o que o acompanhamento tenta controlar. Profissionais experientes contornam isso montando o treino com alternativas para cada exercício, ou negociando com o aluno um horário de menor movimento. Se o seu único horário possível é o pico, diga isso na primeira conversa — muda a forma de montar o programa.',
+  },
+];
+
+const title = 'Personal trainer em academia: como funciona (2026)';
+const description =
+  'Como funciona contratar personal trainer para treinar na academia: regras para profissional externo, diferença para o professor de sala, custos envolvidos e quando esse formato compensa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Personal trainer em academia: como funciona</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      É o formato mais comum de todos e, curiosamente, o que mais gera
+      dúvida na hora de contratar — porque envolve um terceiro na conversa:
+      a academia. Ela tem regras próprias sobre quem pode dar aula ali
+      dentro, e essas regras mudam de casa para casa.
+    </p>
+
+    <p class="lead">
+      Este guia explica como o formato funciona na prática, o que perguntar
+      antes de fechar qualquer coisa, quanto custa de verdade e em que
+      situações ele compensa mais do que treinar em casa.
+    </p>
+
+    <div class="prose">
+      <h2>A pergunta que vem antes de todas: a academia permite?</h2>
+      <p>
+        Não existe regra nacional sobre personal externo em academia. Cada
+        estabelecimento define a própria política, e as quatro situações
+        mais comuns são:
+      </p>
+      <ul>
+        <li>
+          <strong>Liberado sem custo.</strong> O profissional se identifica
+          na recepção e atende normalmente. Mais frequente em academias de
+          bairro e em redes de baixo custo.
+        </li>
+        <li>
+          <strong>Liberado com taxa.</strong> A academia cobra um valor
+          mensal do profissional externo para permitir o atendimento. Essa
+          taxa costuma ser repassada ao aluno, embutida no preço da sessão —
+          vale perguntar se é o caso.
+        </li>
+        <li>
+          <strong>Apenas credenciados.</strong> Só atendem ali os
+          profissionais cadastrados pela casa. Você escolhe dentro de uma
+          lista, o que reduz as opções mas simplifica a logística.
+        </li>
+        <li>
+          <strong>Não permitido.</strong> Algumas academias reservam o
+          atendimento individual à própria equipe. Nesse caso, ou você
+          contrata alguém de lá, ou muda de academia, ou muda de formato.
+        </li>
+      </ul>
+      <p>
+        Faça essa pergunta <em>antes</em> de escolher o profissional e antes
+        de assinar a matrícula. É o erro mais comum de quem contrata:
+        acertar tudo com o personal e descobrir na primeira sessão que ele
+        não pode entrar.
+      </p>
+
+      <h2>Personal externo ou personal da casa?</h2>
+      <p>
+        Os dois caminhos são legítimos, e a escolha é sobre o que você
+        prioriza.
+      </p>
+      <p>
+        O <strong>personal da academia</strong> já tem acesso, conhece cada
+        equipamento da sala e costuma oferecer pacotes integrados à
+        mensalidade. A limitação é a lista: você escolhe entre quem trabalha
+        ali, e se trocar de academia, perde o profissional.
+      </p>
+      <p>
+        O <strong>personal externo</strong> você escolhe livremente, o que
+        importa bastante quando seu objetivo é específico ou quando você já
+        confia em alguém. Ele acompanha você se mudar de academia, de bairro
+        ou de cidade. Em troca, precisa de autorização e às vezes de taxa.
+      </p>
+
+      <h2>Personal não é professor de sala — e a diferença é grande</h2>
+      <p>
+        Toda academia tem professor de sala incluído na mensalidade, e muita
+        gente conclui que já tem acompanhamento. São coisas diferentes.
+      </p>
+      <p>
+        O professor de sala atende todos os alunos presentes ao mesmo tempo.
+        Ele tira dúvida de execução, corrige um movimento perigoso, monta
+        uma ficha padrão. O que ele não faz — não por falta de competência,
+        mas por impossibilidade prática — é acompanhar a sua progressão ao
+        longo de meses, registrar suas cargas e ajustar o programa conforme
+        você evolui.
+      </p>
+      <p>
+        A regra prática: se a sua dúvida é <em>como fazer este
+        exercício</em>, o professor de sala resolve e você não precisa pagar
+        a mais. Se a dúvida é <em>o que fazer, em que ordem, com que carga e
+        por quanto tempo</em>, aí o acompanhamento individual muda o jogo.
+      </p>
+
+      <h2>Quanto custa, de verdade</h2>
+      <p>
+        A conta tem três parcelas, e vale enxergar todas antes de decidir:
+      </p>
+      <ul>
+        <li>A mensalidade da academia, que você pagaria de qualquer forma.</li>
+        <li>O valor das sessões com o profissional, na faixa da sua cidade.</li>
+        <li>A eventual taxa de profissional externo, quando existir e for repassada.</li>
+      </ul>
+      <p>
+        Comparado ao
+        <a href="/guias/personal-trainer-a-domicilio/">atendimento a domicílio</a>,
+        o personal em academia costuma sair mais barato: o profissional não
+        gasta tempo em deslocamento nem carrega equipamento, e isso aparece
+        no preço. Comparado ao
+        <a href="/guias/personal-trainer-em-condominio/">treino na academia do condomínio</a>,
+        a vantagem muda de lado — o condomínio elimina o deslocamento do
+        aluno, mas costuma ter estrutura mais limitada.
+      </p>
+      <p>
+        Para ver a faixa de referência da sua cidade por formato e
+        frequência, a <a href={rotas.ferramentaPreco}>calculadora de preço
+        do portal</a> abre a conta inteira, inclusive como as semanas do mês
+        entram no cálculo.
+      </p>
+
+      <h2>Quando o formato compensa mais</h2>
+      <p>
+        O personal em academia é a melhor escolha em três situações
+        bastante comuns:
+      </p>
+      <ul>
+        <li>
+          <strong>Quando o objetivo depende de equipamento.</strong> Ganho
+          de massa com progressão de carga real precisa de peso ajustável e
+          variedade — coisa que academia tem e sala de casa raramente tem.
+        </li>
+        <li>
+          <strong>Quando você está começando.</strong> Ter correção de
+          execução na hora, num ambiente com todos os equipamentos
+          disponíveis, encurta bastante a curva inicial.
+        </li>
+        <li>
+          <strong>Quando sair de casa faz parte do hábito.</strong> Para
+          muita gente, o deslocamento até a academia é o gatilho que faz o
+          treino acontecer. Treinar em casa, nesses casos, costuma render
+          menos constância, não mais.
+        </li>
+      </ul>
+      <p>
+        Ele compensa menos quando o deslocamento é longo, quando o único
+        horário possível é o pico da academia, ou quando a rotina é
+        imprevisível a ponto de o horário marcado virar um problema. Nesses
+        casos, vale olhar os outros formatos — ou descobrir qual combina
+        com a sua rotina usando o
+        <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a>.
+      </p>
+
+      <h2>O que perguntar antes de fechar</h2>
+      <p>
+        Além dos critérios gerais do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>,
+        três perguntas são específicas deste formato:
+      </p>
+      <ul>
+        <li>A academia permite profissional externo, e há taxa? Ela está embutida no seu preço?</li>
+        <li>Como o treino é adaptado quando o equipamento está ocupado no meu horário?</li>
+        <li>Se eu trocar de academia, o acompanhamento continua?</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> confirme a política da academia antes de
+        tudo, entenda que personal e professor de sala resolvem problemas
+        diferentes, e some as três parcelas do custo antes de comparar com
+        outros formatos. Se você tem dor, lesão ou alguma condição de saúde,
+        converse antes com médico ou fisioterapeuta — o treino se ajusta a
+        partir dessa orientação.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

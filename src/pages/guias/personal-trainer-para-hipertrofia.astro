@@ -1,0 +1,312 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios gerais que valem para qualquer objetivo: avaliação inicial, método e sinais de alerta.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona o ganho de massa',
+    descricao: 'O mecanismo por trás do crescimento muscular, sem atalho e sem mito.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Progressão de carga: como aplicar',
+    descricao: 'O princípio que separa treino que evolui de treino que só cansa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: rotas.ferramentaAuditoria,
+    titulo: 'Meu treino faz sentido?',
+    descricao: 'Ferramenta gratuita: auditoria da estrutura do treino que você já faz.',
+    tipo: 'Ferramenta',
+  },
+];
+
+const path = '/guias/personal-trainer-para-hipertrofia';
+const atualizadoEm = '2026-08-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para hipertrofia: como escolher', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Preciso de personal trainer para ganhar massa muscular?',
+    resposta:
+      'Não é obrigatório, mas ajuda mais em hipertrofia do que na maioria dos objetivos. O motivo é que ganho de massa depende de variáveis que precisam ser controladas ao longo de meses — volume por grupo muscular, frequência, proximidade da falha e progressão — e errar a dose em qualquer uma delas custa tempo. Quem já sabe registrar treino e progredir sozinho consegue avançar sem acompanhamento; quem treina há anos sem mudar carga nem estrutura costuma ganhar bastante com um olhar externo.',
+  },
+  {
+    pergunta: 'Em quanto tempo dá para ver ganho de massa com acompanhamento?',
+    resposta:
+      'Não existe prazo garantido, e desconfie de quem oferece um. A velocidade de ganho depende de ponto de partida, tempo de treino prévio, consistência, alimentação, sono e fatores individuais que nenhum profissional controla. O que um bom acompanhamento entrega não é prazo: é a certeza de que o estímulo está sendo aplicado e progredido de forma coerente, o que é a única parte da equação que está sob controle.',
+  },
+  {
+    pergunta: 'Personal trainer pode montar minha dieta para hipertrofia?',
+    resposta:
+      'Não. Prescrever dieta, cardápio ou plano alimentar individualizado é atividade privativa de nutricionista. Um personal trainer pode reforçar a importância da alimentação e orientar hábitos gerais dentro do próprio escopo, mas o ajuste de calorias e proteína deve vir de um profissional de nutrição. Em hipertrofia isso pesa muito, porque não existe ganho de massa relevante sem suporte alimentar — e um profissional sério é o primeiro a dizer isso e indicar a parceria.',
+  },
+  {
+    pergunta: 'Preciso treinar todos os dias para ganhar massa?',
+    resposta:
+      'Não. O que importa é o volume semanal total por grupo muscular e a qualidade das séries, não o número de dias na academia. Três a quatro sessões bem estruturadas por semana sustentam ganho de massa consistente para a maior parte das pessoas, e cinco ou seis dias só fazem diferença quando o volume não caberia em menos. Treinar mais dias sem recuperação adequada atrapalha o resultado em vez de acelerá-lo.',
+  },
+  {
+    pergunta: 'Como saber se o treino de hipertrofia está funcionando?',
+    resposta:
+      'Pelo registro, não pela sensação. Se as cargas, as repetições ou a qualidade de execução estão avançando ao longo de semanas, o estímulo está sendo aplicado. Dor muscular no dia seguinte não mede nada — ela varia com novidade do exercício e não com eficácia. Medidas e fotos em intervalos maiores complementam, porque hipertrofia é um processo lento e a balança sozinha conta uma história incompleta.',
+  },
+  {
+    pergunta: 'Acompanhamento online funciona para hipertrofia?',
+    resposta:
+      'Funciona bem, e em alguns aspectos é até mais natural para esse objetivo do que para outros. Hipertrofia depende de planejamento de volume, progressão registrada e revisão periódica — tudo isso é feito à distância sem perda. O que o online exige em troca é disciplina de registro: sem anotar carga e repetições, nenhum profissional consegue ajustar nada. Se a sua maior dificuldade é execução técnica em exercícios complexos, uma fase inicial presencial ou análise por vídeo ajuda.',
+  },
+];
+
+const title = 'Personal trainer para hipertrofia: como escolher (2026)';
+const description =
+  'O que procurar num personal trainer com foco em ganho de massa: controle de volume e progressão, registro de treino, individualização real e os sinais de alerta desse nicho.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Personal trainer para hipertrofia: como escolher</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Hipertrofia é o objetivo em que a diferença entre um treino bem
+      estruturado e um treino qualquer aparece mais devagar — e por isso
+      mesmo custa mais caro. Dá para treinar dois anos com afinco, sair
+      suado de toda sessão e ganhar muito pouco, simplesmente porque o
+      volume nunca foi controlado e a carga nunca subiu.
+    </p>
+
+    <p class="lead">
+      Em resumo: procure alguém que registre o seu treino, que saiba
+      explicar quanto volume semanal cada grupo muscular está recebendo,
+      que tenha um critério claro de progressão e que reconheça o limite da
+      própria formação no lado alimentar. Abaixo, o detalhamento e os sinais
+      de alerta específicos desse nicho.
+    </p>
+
+    <div class="prose">
+      <h2>Por que hipertrofia é um objetivo especialmente fácil de errar</h2>
+      <p>
+        Emagrecimento dá feedback rápido: a balança e o espelho respondem em
+        semanas. Ganho de massa, não. O processo é lento o bastante para que
+        um programa mal montado pareça funcionar por meses — a pessoa está
+        treinando, está cansada, está com a rotina em dia, e só muito depois
+        percebe que as cargas são as mesmas de um ano atrás.
+      </p>
+      <p>
+        É por isso que, aqui, o critério de escolha do profissional pesa
+        mais do que em outros objetivos. O mecanismo do ganho de massa está
+        explicado em
+        <a href="/musculacao/hipertrofia-como-funciona/">hipertrofia: como funciona</a>;
+        o que interessa neste guia é como reconhecer quem sabe aplicá-lo.
+      </p>
+
+      <h2>O que procurar num profissional com foco em hipertrofia</h2>
+      <p>
+        Além dos critérios gerais de qualquer contratação, detalhados em
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>,
+        olhe para quatro pontos específicos:
+      </p>
+      <ul>
+        <li>
+          <strong>Ele registra o seu treino.</strong> Este é o filtro mais
+          simples e o mais revelador. Sem registro de carga, repetições e
+          séries, ninguém — nem o melhor profissional do mundo — consegue
+          saber se você progrediu. Pergunte diretamente onde esse registro
+          fica e como ele é revisado. "Está tudo na minha cabeça" não é uma
+          resposta aceitável quando o profissional acompanha dezenas de
+          alunos.
+        </li>
+        <li>
+          <strong>Ele sabe dizer quanto volume cada grupo está recebendo.</strong>
+          Volume semanal por grupo muscular é a variável mais associada ao
+          ganho de massa. Um profissional que trabalha com hipertrofia
+          consegue responder, sem hesitar, quantas séries semanais o seu
+          peito, as suas costas e as suas pernas estão recebendo — e por que
+          esse número, e não outro. Se a resposta for vaga, o programa
+          provavelmente foi montado por hábito, não por critério.
+        </li>
+        <li>
+          <strong>Ele tem um critério explícito de progressão.</strong>
+          Aumentar carga quando "dá vontade" não é progressão. Existem
+          vários critérios legítimos — subir carga ao completar a faixa de
+          repetições, adicionar repetições antes de peso, aumentar séries ao
+          longo de um bloco — e o profissional deve conseguir explicar o que
+          usa com você, em linguagem simples. O princípio está detalhado em
+          <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+        </li>
+        <li>
+          <strong>Ele individualiza a partir da sua rotina, não só do seu
+          objetivo.</strong> Um programa de cinco dias é irrelevante para
+          quem consegue três. Bons profissionais montam o volume dentro dos
+          dias que você tem de verdade, em vez de prescrever o ideal e
+          culpar o aluno depois. Se quiser entender qual estrutura cabe na
+          sua semana antes mesmo de contratar, a ferramenta de
+          <a href={rotas.ferramentaRotina}>treino para minha rotina</a>
+          devolve isso de graça.
+        </li>
+      </ul>
+
+      <h2>Sinais de alerta específicos deste nicho</h2>
+      <ul>
+        <li>
+          <strong>Promessa de quantidade de massa em prazo determinado.</strong>
+          "5 kg de músculo em 3 meses" não é meta, é marketing. A velocidade
+          de ganho depende de fatores individuais que ninguém controla —
+          ponto de partida, tempo de treino prévio, genética, sono,
+          alimentação. Profissional sério trabalha com processo, não com
+          número prometido.
+        </li>
+        <li>
+          <strong>Treino que nunca muda — ou que muda toda semana.</strong>
+          Os dois extremos são problema. Repetir o mesmo estímulo por um ano
+          desperdiça adaptação; trocar tudo a cada semana impede a
+          progressão de acontecer, porque não dá para progredir num
+          exercício que você fez uma vez só. O meio-termo — blocos de
+          algumas semanas com progressão dentro deles — é o que costuma
+          funcionar.
+        </li>
+        <li>
+          <strong>Foco excessivo em técnicas avançadas.</strong>
+          Drop-set, rest-pause e afins têm lugar, mas são detalhe diante de
+          volume adequado e progressão consistente. Quando o discurso começa
+          pelas técnicas e não pelo básico, geralmente é porque o básico não
+          está sendo feito.
+        </li>
+        <li>
+          <strong>Orientação sobre substâncias.</strong> Este é o sinal de
+          alerta mais sério do nicho. Recomendação de anabolizantes ou de
+          qualquer medicamento está fora do escopo de um personal trainer e
+          é assunto médico. Um profissional que oferece esse tipo de
+          orientação está ultrapassando um limite que não deveria — e o
+          risco é seu, não dele.
+        </li>
+        <li>
+          <strong>Prescrição de dieta.</strong> Não existe hipertrofia
+          relevante sem suporte alimentar, mas montar cardápio é atribuição
+          de nutricionista. O bom sinal é o contrário do que muita gente
+          espera: o profissional que diz "essa parte não é minha, vamos
+          buscar um nutricionista" está sendo competente, não limitado.
+        </li>
+      </ul>
+
+      <h2>Como avaliar se o acompanhamento está funcionando</h2>
+      <p>
+        Depois de contratar, o teste é objetivo e não depende de opinião:
+        olhe o registro. Em três meses de acompanhamento bem conduzido, algo
+        precisa ter subido — carga, repetições com a mesma carga, ou
+        qualidade de execução em exercícios que antes você não fazia direito.
+        Se nada mudou e ninguém percebeu que nada mudou, o problema não é o
+        seu esforço.
+      </p>
+      <p>
+        Dor muscular no dia seguinte, aliás, não mede nada. Ela varia com a
+        novidade do estímulo, não com a eficácia dele — treinos que doem
+        muito podem render pouco, e treinos que não doem podem estar
+        funcionando perfeitamente.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o profissional certo para hipertrofia
+        registra o seu treino, sabe dizer quanto volume cada grupo recebe,
+        tem um critério de progressão que consegue explicar e monta o
+        programa dentro dos dias que você realmente tem. Se você já treina e
+        quer conferir a estrutura do que faz hoje antes de decidir qualquer
+        coisa, a ferramenta
+        <a href={rotas.ferramentaAuditoria}>meu treino faz sentido?</a>
+        faz essa análise gratuitamente.
+      </div>
+
+      <p>
+        Uma ressalva que vale para qualquer objetivo: se você tem dor,
+        lesão ou alguma condição de saúde, converse antes com médico ou
+        fisioterapeuta. O treino se adapta a partir dessa orientação — e
+        nenhum programa de hipertrofia justifica treinar por cima de uma dor
+        não investigada.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

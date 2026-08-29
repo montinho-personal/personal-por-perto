@@ -1,0 +1,281 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/guarulhos-sp/',
+    titulo: 'Personal trainer em Guarulhos',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-vila-galvao/',
+    titulo: 'Personal trainer na Vila Galvão',
+    descricao: 'O bairro vizinho, com o Lago dos Patos e ciclovia própria.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/musculacao/frequencia-de-treino/',
+    titulo: 'Frequência de treino: quantas vezes por semana',
+    descricao: 'Quantos dias realmente fazem diferença — e por que mais nem sempre é melhor.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/personal-trainer-cidade-maia';
+const atualizadoEm = '2026-08-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Guarulhos', url: '/personal-trainer/guarulhos-sp/' },
+  { nome: 'Personal Trainer na Cidade Maia', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Cidade Maia?',
+    resposta:
+      'A referência de Guarulhos é de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a R$ 800 pelo pacote mensal com 2 a 3 sessões por semana. A região do Distrito Maia concentra a maior renda da cidade e trabalha no topo dessas faixas, principalmente em atendimento a domicílio e horários de pico. O acompanhamento online fica entre R$ 150 e R$ 400 mensais.',
+  },
+  {
+    pergunta: 'Como é a pista do Bosque Maia para corrida?',
+    resposta:
+      'São 3 km em piso de concreto, plana, dentro de um parque de cerca de 170 mil m². A combinação de circuito medido, terreno plano e percurso repetível é o que falta na maior parte de Guarulhos — e é exatamente o que permite controlar ritmo com alguma precisão. O parque tem ainda trilhas na mata, quadras poliesportivas, pista de skate, academia ao ar livre e lago.',
+  },
+  {
+    pergunta: 'O que acontece na Avenida Paulo Faccini aos domingos?',
+    resposta:
+      'O entorno do Bosque Maia recebe ciclofaixa de lazer, o que transforma a avenida em espaço para caminhada, corrida e pedal sem disputa com o trânsito. É a melhor janela semanal para treino aeróbio de volume maior na região.',
+  },
+  {
+    pergunta: 'Personal trainer atende em condomínio na Cidade Maia?',
+    resposta:
+      'Atende, e é um dos formatos mais procurados. A região concentra empreendimentos com academia própria e área de lazer estruturada, o que torna o treino em casa uma alternativa completa. Como o trânsito das rodovias de Guarulhos pesa no dia a dia, esse formato costuma ser o que melhor sustenta a rotina. Confirme antes as regras do condomínio para entrada de profissional externo.',
+  },
+  {
+    pergunta: 'Quem trabalha em turno no aeroporto consegue treinar com personal?',
+    resposta:
+      'Consegue, e é um perfil comum em Guarulhos. Quem trabalha em escala no aeroporto, nos terminais de carga e nos centros de distribuição precisa de horários variáveis — meio da manhã, início da tarde ou noite. Um profissional acostumado à cidade monta sessões objetivas nesses horários e reajusta o plano a cada troca de escala. Para semanas muito imprevisíveis, o acompanhamento online com treino planilhado costuma segurar melhor a rotina.',
+  },
+  {
+    pergunta: 'A Cidade Maia é o mesmo que Distrito Maia?',
+    resposta:
+      'Não exatamente. Distrito Maia é como se chama informalmente a região de maior renda no entorno do Bosque Maia, que reúne bairros como Jardim Maia, Cidade Maia e Parque Renato Maia. Na prática, quem procura personal na região costuma usar os nomes de forma intercambiável — e a oferta de profissionais e de estrutura é basicamente a mesma nos três.',
+  },
+];
+
+const title = 'Personal Trainer na Cidade Maia (Guarulhos): o guia';
+const description =
+  'Personal trainer na Cidade Maia, em Guarulhos: a pista de 3 km do Bosque Maia, a ciclofaixa dominical da Paulo Faccini, treino em condomínio e as faixas de preço da cidade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Guarulhos</p>
+    <h1>Personal trainer na Cidade Maia: treinar ao lado do melhor parque da cidade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Guarulhos tem 1,29 milhão de habitantes e concentra boa parte da
+      prática esportiva pública em um único lugar: o Bosque Maia. Morar na
+      região que o cerca — o chamado Distrito Maia, que reúne Cidade Maia,
+      Jardim Maia e Parque Renato Maia — é ter de graça o que o resto da
+      cidade precisa atravessar o trânsito para alcançar.
+    </p>
+
+    <p class="lead">
+      Este guia explica o que fazer com essa vantagem, para quem procura
+      <strong>personal trainer na Cidade Maia</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>1. Bosque Maia: a pista de 3 km que organiza o treino</h2>
+      <p>
+        O maior parque de Guarulhos tem cerca de 170 mil m² e uma pista de
+        3 km em piso de concreto, plana. Some a isso trilhas na mata,
+        quadras poliesportivas, pista de skate, academia ao ar livre e lago,
+        e você tem a estrutura pública mais completa da cidade — a poucos
+        minutos de casa.
+      </p>
+
+      <p>
+        O que a pista entrega de fato é previsibilidade. Um circuito medido,
+        plano e repetível é o que permite trabalhar ritmo com controle: dá
+        para saber exatamente quanto você correu, comparar semanas e montar
+        progressão de verdade. Em percurso irregular, cheio de semáforo e
+        subida, essa leitura se perde.
+      </p>
+
+      <h2>2. A academia ao ar livre e o que ela resolve</h2>
+      <p>
+        O Bosque Maia tem academia ao ar livre gratuita junto à pista. Como
+        toda estrutura desse tipo, ela cobre bem treino funcional,
+        mobilidade e aquecimento, e não substitui musculação — os
+        equipamentos têm carga fixa e limitada.
+      </p>
+
+      <p>
+        O uso inteligente é combinar: aquecimento e mobilidade no parque,
+        trabalho de força com progressão de carga na academia ou em casa. A
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a> é
+        o que faz o treino continuar rendendo depois das primeiras semanas,
+        e ela precisa de carga ajustável.
+      </p>
+
+      <h2>3. A ciclofaixa de domingo na Paulo Faccini</h2>
+      <p>
+        Aos domingos, a Avenida Paulo Faccini, no entorno do parque, recebe
+        ciclofaixa de lazer. Para quem treina, é a melhor janela semanal de
+        volume aeróbio: espaço contínuo, sem disputa com o trânsito, num
+        município em que essa combinação é rara.
+      </p>
+
+      <p>
+        Quem monta a semana com alguma estratégia costuma usar exatamente
+        isso: rodagem curta na pista durante a semana e o treino mais longo
+        no domingo, aproveitando a avenida liberada.
+      </p>
+
+      <h2>4. Academias da região</h2>
+      <p>
+        A Smart Fit tem unidade na própria Avenida Paulo Faccini, em frente
+        ao Bosque Maia, e a Bluefit mantém unidades em vários pontos de
+        Guarulhos, incluindo o Centro e a Gopouva. Nas regiões de maior
+        renda da cidade, como o Distrito Maia, também vêm crescendo os
+        estúdios de treino funcional, com sessões individuais ou em grupo
+        pequeno.
+      </p>
+
+      <p>
+        Vale confirmar com antecedência a política de cada casa sobre levar
+        personal trainer externo — ela muda bastante de uma para outra.
+      </p>
+
+      <h2>5. O treino em casa e no condomínio</h2>
+      <p>
+        A região concentra empreendimentos com academia própria e área de
+        lazer estruturada. Para quem tem essa estrutura no prédio, o
+        atendimento em domicílio é imbatível em economia de tempo — e tempo
+        é justamente o recurso mais escasso numa cidade cortada pela Dutra,
+        pela Fernão Dias e pela Ayrton Senna.
+      </p>
+
+      <p>
+        Há ainda um público específico e numeroso em Guarulhos: quem
+        trabalha em escala no aeroporto, nos terminais de carga e nos
+        centros de distribuição. Para essas rotinas, o que resolve não é o
+        horário fixo, e sim um plano que aceite ser remontado a cada troca
+        de escala — com uma versão reduzida da sessão para as semanas
+        impossíveis.
+      </p>
+
+      <h2>Quanto custa personal trainer na Cidade Maia</h2>
+      <p>
+        A referência de Guarulhos, levantada pelo Personal por Perto no guia
+        de <a href="/personal-trainer/guarulhos-sp/">personal trainer em
+        Guarulhos</a>, é de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a
+        R$ 800 pelo pacote mensal com 2 a 3 sessões semanais. O Distrito
+        Maia trabalha no topo dessas faixas — é a região de maior renda da
+        cidade e a que mais demanda atendimento em domicílio.
+      </p>
+
+      <p>
+        O acompanhamento online, de R$ 150 a R$ 400 mensais, segue como
+        alternativa econômica e como a opção mais realista para escalas
+        irregulares. É também o formato do Montinho Personal, destacado por
+        este portal, para quem mora em Guarulhos: a base presencial dele
+        fica na região de Alphaville, então o portal não promete
+        atendimento presencial aqui. A
+        <a href={rotas.ferramentaPreco}>calculadora de preço</a> simula a
+        conta com a sua frequência real.
+      </p>
+
+      <h2>Como escolher entre os profissionais da região</h2>
+      <p>
+        Os critérios gerais estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Um critério local a somar: pergunte como o profissional usa a
+        estrutura que existe aqui. Quem conhece a região sabe a diferença
+        entre prescrever "corra 30 minutos" e prescrever um trabalho na
+        pista de 3 km com ritmo controlado — e sabe o que fazer com a
+        academia ao ar livre em vez de ignorá-la.
+      </p>
+
+      <p>
+        A ressalva de sempre vale aqui também: quem tem dor, lesão ou alguma
+        condição de saúde deve conversar antes com médico ou fisioterapeuta,
+        e o treino se ajusta a partir dessa orientação.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Cidade Maia" />
+
+    <ContextualCta path={path} localidade="na Cidade Maia" assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

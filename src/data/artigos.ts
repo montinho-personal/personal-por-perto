@@ -101,6 +101,9 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-fatima-teresina/', titulo: 'Personal trainer no Fátima (Teresina)' },
   { categoria: 'Bairros', url: '/personal-trainer-atalaia/', titulo: 'Personal trainer na Atalaia (Aracaju)' },
   { categoria: 'Bairros', url: '/personal-trainer-asa-sul/', titulo: 'Personal trainer na Asa Sul (Brasília)' },
+  { categoria: 'Bairros', url: '/personal-trainer-jardim-das-flores/', titulo: 'Personal trainer no Jardim das Flores (Osasco)' },
+  { categoria: 'Bairros', url: '/personal-trainer-vila-galvao/', titulo: 'Personal trainer na Vila Galvão (Guarulhos)' },
+  { categoria: 'Bairros', url: '/personal-trainer-cidade-maia/', titulo: 'Personal trainer na Cidade Maia (Guarulhos)' },
 
   // Guias
   { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
@@ -111,6 +114,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-mulheres/', titulo: 'Personal trainer para mulheres: o guia completo' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-hipertrofia/', titulo: 'Personal trainer para hipertrofia: como escolher' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-em-academia/', titulo: 'Personal trainer em academia: como funciona' },
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },

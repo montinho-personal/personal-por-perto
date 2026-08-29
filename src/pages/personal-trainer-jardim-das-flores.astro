@@ -1,0 +1,292 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/osasco-sp/',
+    titulo: 'Personal trainer em Osasco',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer/granja-viana-sp/',
+    titulo: 'Personal trainer na Granja Viana',
+    descricao: 'A região vizinha, do outro lado do eixo oeste — e como o mercado muda por lá.',
+    tipo: 'Região',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-jardim-das-flores';
+const atualizadoEm = '2026-08-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Osasco', url: '/personal-trainer/osasco-sp/' },
+  { nome: 'Personal Trainer no Jardim das Flores', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Jardim das Flores?',
+    resposta:
+      'A referência de Osasco é de R$ 60 a R$ 150 pela aula avulsa e de R$ 320 a R$ 850 pelo pacote mensal com 2 a 3 sessões por semana. O Jardim das Flores, um dos bairros de maior renda da cidade, trabalha no terço superior dessas faixas — principalmente no atendimento a domicílio e em condomínio. O acompanhamento online, de R$ 150 a R$ 400 mensais, segue como a alternativa mais econômica.',
+  },
+  {
+    pergunta: 'O Parque Dionísio Álvarez Mateos serve para treinar?',
+    resposta:
+      'Serve, e é o grande trunfo do bairro. São cerca de 52 mil m² com pista de caminhada e corrida, equipamentos de ginástica ao ar livre e lago — estrutura suficiente para treino funcional completo, aquecimento, mobilidade e trabalho aeróbio. Por ficar dentro do Jardim das Flores, elimina deslocamento para quem mora ali: o treino começa a cinco minutos de casa.',
+  },
+  {
+    pergunta: 'Existem aulas gratuitas no parque do bairro?',
+    resposta:
+      'Sim. A Secretaria de Esporte, Recreação e Lazer de Osasco oferece aulas públicas gratuitas nos parques municipais — caminhada orientada, ginástica funcional, pilates, yoga e tai chi —, geralmente no início da manhã. É um bom ponto de partida para quem está começando, e muita gente usa essas aulas como porta de entrada antes de contratar acompanhamento individual.',
+  },
+  {
+    pergunta: 'Personal trainer atende em condomínio no Jardim das Flores?',
+    resposta:
+      'Atende, e é um dos formatos mais procurados no bairro. Osasco é uma cidade compacta, com cerca de 65 km², o que torna o deslocamento do profissional rápido e viabiliza o atendimento em casa ou na academia do prédio. Cada condomínio tem a própria regra para entrada de profissional externo — vale confirmar antes de fechar o pacote.',
+  },
+  {
+    pergunta: 'Dá para treinar em Osasco com um personal de Alphaville?',
+    resposta:
+      'Dá. Osasco é vizinha de Barueri e está dentro do raio de atendimento presencial do Montinho Personal, o profissional destacado pelo portal, que tem base em Alphaville. O atendimento presencial no Jardim das Flores pode ser combinado conforme agenda e local, e o acompanhamento online cobre qualquer rotina.',
+  },
+  {
+    pergunta: 'O bairro é bom para corrida de rua?',
+    resposta:
+      'É razoável para volumes moderados, com a pista do parque como base. Para volumes maiores, o caminho é a ciclofaixa de lazer que a cidade monta aos domingos, das 7h às 12h, ligando o Parque Chico Mendes ao boulevard em frente à Prefeitura — cerca de 7 km de ida e volta, com empréstimo de bicicletas. Durante a semana, o Chico Mendes, com seus 114 mil m², complementa o Dionísio para quem quer mais quilometragem.',
+  },
+];
+
+const title = 'Personal Trainer no Jardim das Flores (Osasco): o guia';
+const description =
+  'Personal trainer no Jardim das Flores, em Osasco: o parque de 52 mil m² dentro do bairro, aulas públicas gratuitas, atendimento em condomínio e as faixas de preço da cidade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Osasco</p>
+    <h1>Personal trainer no Jardim das Flores: onde treinar no bairro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos bairros da Grande São Paulo têm um parque de 52 mil metros
+      quadrados dentro dos próprios limites. O Jardim das Flores tem — e
+      isso muda a conta de quem procura <strong>personal trainer no Jardim
+      das Flores</strong>, porque o melhor cenário de treino ao ar livre da
+      região está a poucos minutos de caminhada de boa parte das casas.
+    </p>
+
+    <p class="lead">
+      Este guia percorre os lugares onde os moradores realmente treinam, os
+      formatos que funcionam num bairro de renda alta de uma cidade compacta,
+      e quanto custa cada um.
+    </p>
+
+    <div class="prose">
+      <h2>1. Parque Dionísio Álvarez Mateos: o parque que é do bairro</h2>
+      <p>
+        O Parque Ecológico Dionísio Álvarez Mateos ocupa cerca de 52 mil m²
+        no Jardim das Flores e reúne pista de caminhada e corrida,
+        equipamentos de ginástica ao ar livre e lago. É também a sede do
+        Ecomuseu de Osasco, o que dá ao espaço um movimento constante e uma
+        sensação de segurança que nem todo parque de bairro oferece.
+      </p>
+
+      <p>
+        Para o treino, a leitura prática é simples: a estrutura cobre bem
+        trabalho funcional, mobilidade, aquecimento e volume aeróbio
+        moderado. Não substitui a academia em treino de força pesado — os
+        equipamentos ao ar livre têm carga fixa e limitada —, mas resolve
+        uma sessão completa de condicionamento sem que ninguém precise
+        entrar no carro.
+      </p>
+
+      <h2>2. As aulas públicas da SEREL: o degrau de entrada</h2>
+      <p>
+        A Secretaria de Esporte, Recreação e Lazer de Osasco mantém aulas
+        gratuitas nos parques municipais — caminhada orientada, ginástica
+        funcional, pilates, yoga e tai chi —, quase sempre no início da
+        manhã. É uma oferta pública de qualidade rara, e vale usá-la pelo
+        que ela é: um jeito de voltar a se mexer com alguma orientação e
+        sem custo.
+      </p>
+
+      <p>
+        O limite também é claro. Aula coletiva não individualiza carga,
+        não corrige a sua execução especificamente e não acompanha a sua
+        progressão ao longo dos meses. Muita gente do bairro faz o caminho
+        natural: começa nas aulas públicas, ganha o hábito e depois contrata
+        acompanhamento individual para estruturar o que vem a seguir.
+      </p>
+
+      <h2>3. A academia do prédio e o treino em casa</h2>
+      <p>
+        O Jardim das Flores é um dos bairros de maior renda de Osasco, com
+        boa presença de prédios com academia própria e casas com espaço
+        para treinar. Somando isso ao tamanho da cidade — Osasco tem cerca
+        de 65 km², e atravessá-la leva poucos minutos fora do pico —, o
+        atendimento em domicílio fica logisticamente barato para o
+        profissional e conveniente para o morador.
+      </p>
+
+      <p>
+        É o formato que mais economiza tempo, e o que mais sobrevive a
+        semanas cheias. Quem depende de deslocar-se até uma academia
+        costuma perder o treino justamente nos dias em que a agenda aperta;
+        quem treina em casa perde bem menos.
+      </p>
+
+      <h2>4. Academias no bairro e no entorno</h2>
+      <p>
+        Osasco tem oferta consolidada de redes — Smart Fit e Bluefit têm
+        unidades espalhadas pela cidade, incluindo o eixo do KM 18 e a
+        Avenida Getúlio Vargas —, além de academias de bairro. Para quem
+        quer treino de força com carga progressiva de verdade, essa é a
+        base: parque e aula pública complementam, mas não substituem
+        equipamento.
+      </p>
+
+      <p>
+        Muitas academias permitem que o aluno leve o próprio personal
+        trainer, e cada uma tem uma política diferente para isso. Confirmar
+        as condições de acesso antes de fechar o pacote evita a surpresa
+        mais comum de quem contrata acompanhamento sem checar.
+      </p>
+
+      <h2>5. Quando o parque não é o suficiente: Chico Mendes e a ciclofaixa</h2>
+      <p>
+        Para volumes maiores de corrida, o Parque Chico Mendes — o maior da
+        cidade, com cerca de 114 mil m² — soma pistas de caminhada,
+        quadras, trilhas leves e academia ao ar livre gratuita, funcionando
+        das 6h às 18h. E aos domingos, das 7h às 12h, Osasco monta uma
+        ciclofaixa de lazer ligando o Chico Mendes ao boulevard em frente à
+        Prefeitura: cerca de 7 km de ida e volta, com empréstimo de
+        bicicletas.
+      </p>
+
+      <p>
+        Para quem treina corrida com alguma seriedade, esse conjunto
+        permite montar uma semana honesta: rodagem leve na pista do
+        Dionísio, volume maior no Chico Mendes e o longão de domingo na
+        ciclofaixa.
+      </p>
+
+      <h2>Quanto custa personal trainer no Jardim das Flores</h2>
+      <p>
+        A referência de Osasco, levantada pelo Personal por Perto no guia de
+        <a href="/personal-trainer/osasco-sp/">personal trainer em Osasco</a>,
+        é de R$ 60 a R$ 150 pela aula avulsa e de R$ 320 a R$ 850 pelo
+        pacote mensal com 2 a 3 sessões semanais. No Jardim das Flores, os
+        valores tendem ao terço superior dessas faixas, porque o formato
+        dominante — atendimento em casa ou no condomínio — embute o
+        deslocamento do profissional.
+      </p>
+
+      <p>
+        O acompanhamento online, de R$ 150 a R$ 400 mensais, é a alternativa
+        mais econômica e funciona bem para quem já tem estrutura em casa ou
+        na academia do prédio. Se quiser simular a conta com a sua
+        frequência real, a
+        <a href={rotas.ferramentaPreco}>calculadora de preço do portal</a>
+        faz isso em alguns cliques.
+      </p>
+
+      <h2>Um detalhe local que vale considerar</h2>
+      <p>
+        Osasco é vizinha de Barueri, e o Jardim das Flores está dentro do
+        raio de atendimento presencial do Montinho Personal, o profissional
+        destacado por este portal, que tem base em Alphaville. Na prática,
+        isso significa que o presencial aqui não é hipótese: pode ser
+        combinado conforme agenda e local, com o acompanhamento online como
+        alternativa para rotinas mais imprevisíveis.
+      </p>
+
+      <p>
+        Como em qualquer contratação, os critérios do guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>
+        continuam valendo — avaliação inicial séria, método que o
+        profissional saiba explicar em linguagem simples e nenhuma promessa
+        de resultado garantido. E a ressalva de sempre: quem tem dor, lesão
+        ou alguma condição de saúde deve conversar antes com médico ou
+        fisioterapeuta, e o treino se ajusta a partir daí.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Jardim das Flores" />
+
+    <ContextualCta path={path} localidade="no Jardim das Flores" assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

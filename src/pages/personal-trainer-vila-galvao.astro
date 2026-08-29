@@ -1,0 +1,281 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/guarulhos-sp/',
+    titulo: 'Personal trainer em Guarulhos',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-cidade-maia/',
+    titulo: 'Personal trainer na Cidade Maia',
+    descricao: 'O bairro vizinho, no entorno do Bosque Maia e da pista de 3 km.',
+    tipo: 'Bairro',
+  },
+  {
+    url: rotas.ferramentaRotina,
+    titulo: 'Montar treino para minha rotina',
+    descricao: 'Ferramenta gratuita: a estrutura de treino que cabe nos dias que você realmente tem.',
+    tipo: 'Ferramenta',
+  },
+];
+
+const path = '/personal-trainer-vila-galvao';
+const atualizadoEm = '2026-08-29';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Guarulhos', url: '/personal-trainer/guarulhos-sp/' },
+  { nome: 'Personal Trainer na Vila Galvão', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Vila Galvão?',
+    resposta:
+      'A referência de Guarulhos é de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a R$ 800 pelo pacote mensal com 2 a 3 sessões por semana. A Vila Galvão, um dos bairros de maior renda da cidade, trabalha no terço superior dessas faixas, sobretudo no atendimento em domicílio. O acompanhamento online fica entre R$ 150 e R$ 400 mensais.',
+  },
+  {
+    pergunta: 'O Lago dos Patos serve para treinar?',
+    resposta:
+      'Serve bem para condicionamento. São cerca de 52 mil m² com pista para cooper e caminhada e equipamentos de ginástica ao ar livre. É a estrutura pública de referência do bairro e resolve treino funcional, aquecimento, mobilidade e volume aeróbio moderado — sem precisar atravessar a cidade até o Bosque Maia.',
+  },
+  {
+    pergunta: 'A Vila Galvão tem ciclovia?',
+    resposta:
+      'Tem. A ciclovia da Vila Galvão sai do Lago dos Patos e vai até as proximidades da Rua São Miguel do Araguaia. Para quem treina corrida ou pedal, ela resolve o problema mais comum de treinar em Guarulhos: encontrar um trecho contínuo e protegido do trânsito das rodovias que cortam a cidade.',
+  },
+  {
+    pergunta: 'Vale a pena ir até o Bosque Maia treinando na Vila Galvão?',
+    resposta:
+      'Depende do volume. Para sessões de condicionamento e treino funcional, o Lago dos Patos resolve e economiza deslocamento. Para corrida com quilometragem maior, o Bosque Maia compensa: são cerca de 170 mil m² com pista plana de 3 km, trilhas na mata e academia ao ar livre — e aos domingos a Avenida Paulo Faccini, no entorno, recebe ciclofaixa de lazer.',
+  },
+  {
+    pergunta: 'Personal trainer atende em condomínio na Vila Galvão?',
+    resposta:
+      'Atende, e é um formato comum no bairro. A Vila Galvão tem boa presença de prédios com academia própria e de casas com espaço para treinar. Como o trânsito das rodovias de Guarulhos pesa no dia a dia, treinar sem sair de casa costuma ser o que melhor sustenta a rotina no longo prazo. Cada condomínio tem a própria regra para profissional externo — confirme antes de fechar.',
+  },
+  {
+    pergunta: 'Como funciona o acompanhamento online para quem mora em Guarulhos?',
+    resposta:
+      'Funciona como em qualquer cidade, e costuma fazer bastante sentido aqui. O profissional monta o programa, ajusta conforme a sua evolução e acompanha à distância, com você treinando na academia do bairro, no condomínio ou no parque. É o formato do Montinho Personal, destacado pelo portal, para quem mora em Guarulhos — a base presencial dele fica na região de Alphaville, do outro lado da metrópole, então o portal não promete presencial aqui.',
+  },
+];
+
+const title = 'Personal Trainer na Vila Galvão (Guarulhos): o guia';
+const description =
+  'Personal trainer na Vila Galvão, em Guarulhos: o Lago dos Patos com 52 mil m², a ciclovia do bairro, atendimento em condomínio e as faixas de preço da cidade.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Guarulhos</p>
+    <h1>Personal trainer na Vila Galvão: onde treinar sem atravessar a cidade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Treinar em Guarulhos é, antes de tudo, um problema de trânsito. A
+      cidade é cortada por três rodovias, tem 1,29 milhão de habitantes e
+      concentra boa parte da prática esportiva pública em um único parque —
+      o Bosque Maia. Quem mora longe dele costuma desistir do treino ao ar
+      livre no meio do caminho.
+    </p>
+
+    <p class="lead">
+      A Vila Galvão é a exceção. Quem procura <strong>personal trainer na
+      Vila Galvão</strong> tem, dentro do próprio bairro, parque com pista,
+      equipamentos de ginástica e ciclovia — e é isso que muda a conta.
+    </p>
+
+    <div class="prose">
+      <h2>1. Lago dos Patos: o parque que dispensa o deslocamento</h2>
+      <p>
+        Com cerca de 52 mil m², o Lago dos Patos reúne pista para cooper e
+        caminhada e equipamentos de ginástica ao ar livre. É a alternativa
+        de bairro para quem não quer encarar o percurso até o Bosque Maia —
+        e, para a maior parte das sessões, é suficiente.
+      </p>
+
+      <p>
+        A leitura honesta da estrutura: ela cobre bem treino funcional,
+        mobilidade, aquecimento e trabalho aeróbio moderado. Equipamento ao
+        ar livre tem carga fixa, então treino de força com progressão real
+        continua pedindo academia. O erro comum é tratar o parque como
+        substituto da musculação; o uso certo é tratá-lo como complemento
+        que elimina deslocamento.
+      </p>
+
+      <h2>2. A ciclovia da Vila Galvão: o trecho contínuo que falta em Guarulhos</h2>
+      <p>
+        A ciclovia do bairro sai do Lago dos Patos e segue até as
+        proximidades da Rua São Miguel do Araguaia. Num município onde o
+        trânsito de rodovia é o principal obstáculo ao treino ao ar livre,
+        ter um trecho contínuo e protegido perto de casa vale mais do que
+        parece.
+      </p>
+
+      <p>
+        Para corrida, ela funciona como base de rodagem leve durante a
+        semana. Para pedal, é o percurso natural de quem quer treinar sem
+        disputar espaço com caminhão.
+      </p>
+
+      <h2>3. Academias no bairro e no entorno</h2>
+      <p>
+        Guarulhos tem oferta consolidada de redes: a Bluefit mantém
+        unidades em vários pontos da cidade, incluindo a Vila Galvão, e a
+        Smart Fit tem unidades como a da Avenida Paulo Faccini, em frente
+        ao Bosque Maia. Para treino de força com carga progressiva, essa
+        é a base — parque e ciclovia complementam.
+      </p>
+
+      <p>
+        Cada academia tem a própria política sobre o aluno levar personal
+        trainer externo. Confirmar isso antes de fechar o pacote evita a
+        surpresa mais comum de quem contrata acompanhamento sem checar as
+        condições de acesso.
+      </p>
+
+      <h2>4. O treino em casa e no condomínio</h2>
+      <p>
+        A Vila Galvão está entre os bairros de maior renda de Guarulhos, com
+        presença relevante de prédios com academia própria e casas com
+        espaço para treinar. Somando isso ao peso do trânsito local, o
+        atendimento em domicílio é o formato que melhor sobrevive às semanas
+        cheias.
+      </p>
+
+      <p>
+        Vale a regra prática que serve para a cidade inteira: escolher um
+        formato que não dependa de atravessar Guarulhos. Um treino
+        excelente que exige 40 minutos de deslocamento perde para um treino
+        bom que começa em cinco.
+      </p>
+
+      <h2>5. Quando vale ir até o Bosque Maia</h2>
+      <p>
+        O Bosque Maia é o maior parque da cidade, com cerca de 170 mil m²,
+        pista plana de 3 km em piso de concreto, trilhas na mata, quadras
+        poliesportivas, pista de skate, academia ao ar livre e lago. Aos
+        domingos, a Avenida Paulo Faccini, no entorno, recebe ciclofaixa de
+        lazer.
+      </p>
+
+      <p>
+        Para quem treina corrida com alguma seriedade, a pista de 3 km é o
+        que a Vila Galvão não tem: um circuito plano, medido e repetível,
+        onde dá para controlar ritmo com precisão. A divisão que funciona é
+        rodagem leve no bairro durante a semana e o treino mais longo — ou o
+        intervalado — no Bosque Maia.
+      </p>
+
+      <h2>Quanto custa personal trainer na Vila Galvão</h2>
+      <p>
+        A referência de Guarulhos, levantada pelo Personal por Perto no guia
+        de <a href="/personal-trainer/guarulhos-sp/">personal trainer em
+        Guarulhos</a>, é de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a
+        R$ 800 pelo pacote mensal com 2 a 3 sessões semanais. Na Vila
+        Galvão, os valores tendem ao terço superior, principalmente no
+        atendimento em domicílio, que embute o deslocamento do profissional.
+      </p>
+
+      <p>
+        O acompanhamento online, de R$ 150 a R$ 400 mensais, é a alternativa
+        mais econômica — e, numa cidade onde o deslocamento é o gargalo,
+        muitas vezes a mais realista. A
+        <a href={rotas.ferramentaPreco}>calculadora de preço do portal</a>
+        simula a conta com a sua frequência real.
+      </p>
+
+      <h2>Como escolher entre os profissionais do bairro</h2>
+      <p>
+        Os critérios gerais estão no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>:
+        avaliação inicial séria, método que o profissional saiba explicar em
+        linguagem simples, experiência real com o seu objetivo e nenhuma
+        promessa de resultado garantido.
+      </p>
+
+      <p>
+        Um critério local que vale somar: pergunte como o profissional lida
+        com semanas em que o deslocamento trava. Quem atende em Guarulhos e
+        não tem uma versão reduzida do treino para os dias ruins tende a
+        perder o aluno na terceira semana cheia. E a ressalva de sempre:
+        quem tem dor, lesão ou alguma condição de saúde deve conversar antes
+        com médico ou fisioterapeuta, e o treino se ajusta a partir daí.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Vila Galvão" />
+
+    <ContextualCta path={path} localidade="na Vila Galvão" assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
