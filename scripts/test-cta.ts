@@ -51,6 +51,16 @@ const casos: Caso[] = [
   { nome: 'Personal online funciona', path: '/guias/personal-online-funciona/', esperado: 'formatoAcompanhamento' },
   { nome: 'Guia de público específico (gestantes)', path: '/guias/personal-trainer-para-gestantes/', esperado: 'personalMatch' },
 
+  // --- Entradas amplas: o único lugar em que o mapa é o próximo passo ---
+  { nome: 'Hub de musculação', path: '/musculacao/', esperado: 'mapaDoTreino', varianteEsperada: 'featured' },
+  { nome: 'Hub de emagrecimento', path: '/emagrecimento/', esperado: 'mapaDoTreino' },
+  { nome: 'Hub de guias', path: '/guias/', esperado: 'mapaDoTreino' },
+  // Exceção deliberada: público e necessidade específicos.
+  { nome: 'Hub de Mounjaro mantém o CTA temático', path: '/mounjaro-e-treino/', esperado: 'farmacologicoMassa' },
+  // Hub local continua no diagnóstico de formato, que é mais direto.
+  { nome: 'Hub de cidades mantém o diagnóstico', path: '/personal-trainer/', esperado: 'personalMatch' },
+  { nome: 'Página de estado mantém o diagnóstico', path: '/estado/parana/', esperado: 'personalMatch' },
+
   // --- Temas ---
   { nome: 'Execução de exercício (agachamento)', path: '/musculacao/agachamento-como-fazer/', esperado: 'execucaoProximoPasso', varianteEsperada: 'subtle' },
   { nome: 'Execução de exercício (remada curvada)', path: '/musculacao/remada-curvada-como-fazer/', esperado: 'execucaoProximoPasso' },
@@ -188,7 +198,37 @@ console.log('\n[5] Mensagem de WhatsApp é contextual\n');
   ok(!/quero saber mais/i.test(artigo), 'nunca usa "quero saber mais"');
 }
 
-console.log('\n[6] Nenhuma promessa indevida na copy das campanhas\n');
+console.log('\n[6] O mapa não vaza para páginas com intenção nomeada\n');
+{
+  // Apontar para o hub em página específica troca uma resposta por um menu.
+  const especificas = [
+    '/musculacao/supino-como-fazer/',
+    '/musculacao/treino-de-peito/',
+    '/emagrecimento/como-perder-barriga/',
+    '/guias/quanto-custa-personal-trainer/',
+    '/guias/como-nao-desistir-do-treino/',
+    '/personal-trainer/fortaleza-ce/',
+    '/personal-trainer/barueri-sp/',
+    '/personal-trainer-moema/',
+    '/musculacao/treinar-com-dor-lombar/',
+  ];
+  let vazou = 0;
+  for (const p of especificas) {
+    const d = getContextualCTA({ path: p, cidadeNome: 'Teste' });
+    if (d?.campanha.id === 'mapaDoTreino') {
+      vazou += 1;
+      console.log(`     vazou em ${p}`);
+    }
+  }
+  ok(vazou === 0, `mapa ausente nas ${especificas.length} páginas com problema já nomeado`);
+
+  // E o inverso: em entrada ampla, ele precisa estar mesmo.
+  const amplas = ['/musculacao/', '/emagrecimento/', '/guias/'];
+  const cobertas = amplas.filter((p) => getContextualCTA({ path: p })?.campanha.id === 'mapaDoTreino');
+  ok(cobertas.length === amplas.length, `mapa presente nos ${amplas.length} hubs de seção`);
+}
+
+console.log('\n[7] Nenhuma promessa indevida na copy das campanhas\n');
 {
   const texto = JSON.stringify(
     Object.values(campanhas).map((c) => [

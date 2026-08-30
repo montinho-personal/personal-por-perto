@@ -6,6 +6,7 @@ import Faq from '../components/Faq.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import Transformacao from '../components/Transformacao.astro';
 import WhatsAppCta from '../components/WhatsAppCta.astro';
+import { ETAPAS, FERRAMENTAS, SITUACOES } from '../lib/jornada';
 import { whatsappUrl } from '../lib/links';
 import { cidades, getCidade } from '../data/cidades';
 import { estados } from '../data/estados';
@@ -104,8 +105,8 @@ const schema = [
           >
             Falar no WhatsApp
           </a>
-            <a class="btn btn-ghost btn-lg" href="/ferramentas/encontre-seu-personal-ideal/">
-            Descobrir meu perfil
+            <a class="btn btn-ghost btn-lg" href="/ferramentas/">
+            Descobrir meu próximo passo
           </a>
           <a class="btn btn-ghost btn-lg" href="/personal-trainer/">Ver cidades</a>
         </div>
@@ -162,6 +163,49 @@ const schema = [
           <p>Mostramos como avaliar formação, método e resultados — e explicamos toda recomendação editorial.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- MEU MAPA DO TREINO -->
+  <section class="section-sm tint" id="mapa-do-treino">
+    <div class="container">
+      <div class="text-center" style="max-width: 64ch; margin-inline: auto;">
+        <p class="eyebrow">Meu Mapa do Treino</p>
+        <h2>Você não precisa de mais uma dica. Precisa do seu próximo passo.</h2>
+        <p class="lead">
+          Treino, rotina, constância, acompanhamento e investimento são etapas
+          da mesma decisão. Sete ferramentas gratuitas mostram em qual delas
+          você está — e qual resolve o seu caso agora. Não é preciso usar
+          todas.
+        </p>
+      </div>
+
+      <ul class="mapa-situacoes">
+        {
+          SITUACOES.slice(0, 4).map((sit) => (
+            <li>
+              <a class="mapa-sit" href={FERRAMENTAS[sit.destino].url}>
+                <span class="mapa-sit-frase">“{sit.frase}”</span>
+                <span class="mapa-sit-destino">{FERRAMENTAS[sit.destino].nome} →</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mapa-etapas-linha">
+        {ETAPAS.map((e, i) => (
+          <>
+            {i > 0 && <span class="mapa-seta" aria-hidden="true">›</span>}
+            <span class="mapa-etapa">{e.nome}</span>
+          </>
+        ))}
+      </p>
+
+      <p class="text-center" style="margin-top: var(--sp-5)">
+        <a class="btn btn-primary btn-lg" href="/ferramentas/">Ver o mapa completo</a>
+      </p>
+      <p class="mapa-micro">Gratuito, sem cadastro. O que você responde fica salvo só no seu navegador.</p>
     </div>
   </section>
 
@@ -553,5 +597,59 @@ const schema = [
   }
   .guides-list a {
     font-weight: 600;
+  }
+
+  /* ------------------------- Meu Mapa do Treino ------------------------- */
+  .mapa-situacoes {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-6) 0 0;
+    display: grid;
+    gap: var(--sp-3);
+  }
+  @media (min-width: 640px) {
+    .mapa-situacoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .mapa-sit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 100%;
+    padding: var(--sp-4) var(--sp-5);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.12s ease, transform 0.12s ease;
+  }
+  .mapa-sit:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .mapa-sit:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .mapa-sit-frase { font-weight: 700; line-height: 1.35; }
+  .mapa-sit-destino { font-size: var(--step--1); color: var(--brand-600); font-weight: 600; }
+
+  .mapa-etapas-linha {
+    margin-top: var(--sp-6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    font-size: var(--step--1);
+  }
+  .mapa-etapa {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    font-weight: 700;
+    color: var(--brand-700);
+  }
+  .mapa-seta { color: var(--muted); font-weight: 800; }
+  .mapa-micro {
+    margin-top: var(--sp-3);
+    text-align: center;
+    font-size: var(--step--1);
+    color: var(--muted);
   }
 </style>

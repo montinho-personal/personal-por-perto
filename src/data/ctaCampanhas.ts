@@ -57,6 +57,7 @@ const FERRAMENTA_AUDITORIA = '/ferramentas/meu-treino-faz-sentido/';
 const FERRAMENTA_CONSTANCIA = '/ferramentas/diagnostico-da-constancia/';
 const FERRAMENTA_SCORE = '/ferramentas/personal-score/';
 const FERRAMENTA_FORMATO = '/ferramentas/presencial-ou-online/';
+const MAPA_DO_TREINO = '/ferramentas/';
 
 export const campanhas: Record<string, Campanha> = {
   /* ---------------------------- DIAGNÓSTICO ---------------------------- */
@@ -101,6 +102,25 @@ export const campanhas: Record<string, Campanha> = {
     rotulo: 'Descobrir meu principal gargalo',
     destino: FERRAMENTA_CONSTANCIA,
     microcopy: 'Cerca de 1 minuto. Sem cadastro para ver o resultado.',
+  },
+
+  /*
+   * Único CTA que aponta para o hub, e de propósito: ele só serve a quem
+   * ainda NÃO tem um problema nomeado. Em página com intenção identificada,
+   * mandar para o mapa acrescenta um passo de decisão em vez de resolver —
+   * por isso ele não é oferecido em artigo de tema, cidade ou bairro.
+   */
+  mapaDoTreino: {
+    id: 'mapaDoTreino',
+    nivel: 'diagnostico',
+    render: 'card',
+    eyebrow: 'Por onde começar',
+    titulo: 'Você não precisa de mais uma dica. Precisa do seu próximo passo',
+    texto:
+      'Treino, rotina, constância, acompanhamento e investimento são etapas da mesma decisão. O Meu Mapa do Treino mostra em qual delas você está e qual ferramenta resolve o seu caso agora — sem cadastro e sem precisar usar todas.',
+    rotulo: 'Descobrir meu próximo passo',
+    destino: MAPA_DO_TREINO,
+    microcopy: 'Sete etapas, uma pergunta cada. Você começa por onde fizer sentido.',
   },
 
   formatoAcompanhamento: {

@@ -65,6 +65,7 @@ export interface DecisaoCta {
  *  2. Segurança editorial (humor, institucional, CTA manual já presente)
  *  3. Contexto local com atendimento presencial
  *  4. Contexto local fora da área
+ *  4.5 Entradas amplas (home e hubs de seção) -> Meu Mapa do Treino
  *  5. Intenção BOFU (preço, contratação, público específico)
  *  6. Ferramenta temática (rotina, emagrecimento, hipertrofia, iniciante…)
  *  7. Categoria
@@ -174,6 +175,29 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
       'standard',
       'LOCAL_04',
       'página local ampla: diagnóstico serve melhor que oferta de uma cidade só',
+    );
+  }
+
+  /*
+   * ---- Prioridade 4.5: entradas amplas ----
+   *
+   * Home e hubs de seção. Quem chega aqui está navegando, não trazendo um
+   * problema nomeado — e mandar essa pessoa para uma ferramenta específica
+   * é adivinhar qual é a dor dela. O mapa começa perguntando exatamente
+   * isso, então ele é o único lugar em que apontar para o hub resolve mais
+   * do que atrapalha.
+   *
+   * Exceção deliberada: o hub de Mounjaro tem público e necessidade
+   * específicos (preservar massa durante emagrecimento acelerado), e a
+   * campanha temática fala direto com isso. O hub local já foi resolvido
+   * em LOCAL_04, acima.
+   */
+  if (cls.tipo === 'home' || (cls.tipo === 'hub' && cls.topico !== 'farmacologico')) {
+    return decidir(
+      resolver('mapaDoTreino', 'personalMatch'),
+      'featured',
+      'ENTRADA_AMPLA',
+      'home ou hub de seção: o problema ainda não foi nomeado, então o mapa serve melhor que uma ferramenta específica',
     );
   }
 
