@@ -23,12 +23,12 @@ const atualizadoEm = '2026-08-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
-  { nome: 'Ferramentas', url: path },
+  { nome: 'Meu Mapa do Treino', url: path },
 ];
 
-const title = 'Ferramentas gratuitas para escolher personal e treino | Personal por Perto';
+const title = 'Meu Mapa do Treino: descubra seu próximo passo | Personal por Perto';
 const description =
-  'Ferramentas gratuitas e sem cadastro: descubra se precisa de personal presencial, online ou híbrido e veja a faixa de preço de acompanhamento na sua cidade. Resultado na hora.';
+  'Sete ferramentas gratuitas e sem cadastro que mostram qual é o seu próximo passo: constância, rotina, estrutura do treino, formato de acompanhamento e preço na sua cidade.';
 
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
@@ -38,14 +38,14 @@ const schema = [
     '@type': 'CollectionPage',
     '@id': `${urlCanonica}#webpage`,
     url: urlCanonica,
-    name: 'Ferramentas do Personal por Perto',
+    name: 'Meu Mapa do Treino',
     description,
     inLanguage: site.idioma,
     dateModified: atualizadoEm,
     isPartOf: { '@id': `${site.dominio}/#website` },
   },
   itemListSchema(
-    'Ferramentas gratuitas do Personal por Perto',
+    'Meu Mapa do Treino: as sete etapas',
     ferramentasDisponiveis.map((f) => f.nome),
     site.dominio,
     ferramentasDisponiveis.map((f) => new URL(urlFerramenta(f.slug), site.dominio).href),
@@ -59,7 +59,7 @@ const schema = [
   <!-- ============================= HERO ============================= -->
   <header class="section-sm">
     <div class="container fer-intro">
-      <p class="eyebrow">Ferramentas gratuitas · Meu Mapa do Treino</p>
+      <p class="eyebrow">Meu Mapa do Treino · gratuito, sem cadastro</p>
       <h1>Você não precisa de mais uma dica. Precisa descobrir o seu próximo passo.</h1>
       <p class="fer-lead">
         Treino, rotina, constância, acompanhamento e investimento não são
