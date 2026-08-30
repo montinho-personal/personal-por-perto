@@ -10,6 +10,7 @@
  */
 import { diagnosticarConstancia, type Barreira, type ConstanciaRespostas } from '../lib/constancia';
 import { whatsappUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -578,6 +579,19 @@ function renderResultado(r: ReturnType<typeof diagnosticarConstancia>): void {
       'dc-aviso',
       'Este diagnóstico avalia a organização da sua rotina de treino a partir do que você declarou. Não é avaliação psicológica nem substitui orientação profissional. Se você tem dor, lesão ou alguma condição de saúde, converse com um médico ou fisioterapeuta antes de começar.',
     ),
+  );
+
+  anexarContinuidade(
+    raiz,
+    'constancia',
+    {
+      diasReais: r.semana.alvo,
+      gargalo: r.principal?.id,
+      gargaloRotulo: r.principal?.titulo,
+      cidadeSlug: respostas.cidadeSlug,
+      cidadeNome: respostas.cidadeNome,
+    },
+    r.proximoPasso.url,
   );
 
   raiz.appendChild(rodape(r));

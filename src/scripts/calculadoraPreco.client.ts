@@ -19,6 +19,7 @@ import {
 } from '../lib/calculadoraPreco';
 import { SESSOES_MES_PACOTE } from '../data/precos';
 import { whatsappUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 import { coberturaPresencial } from '../data/atendimentoPresencial';
 
 /* ------------------------------------------------------------------ *
@@ -304,6 +305,15 @@ function render(raiz: HTMLElement, saida: Saida): void {
   box.appendChild(fb);
 
   raiz.replaceChildren(box);
+
+  // A calculadora não é um quiz: ela recalcula a cada mudança. Registrar a
+  // etapa aqui é correto — o valor gravado é sempre o último visto.
+  anexarContinuidade(box, 'preco', {
+    faixaPreco: `${faixaBrl(saida.mensal)} por mês`,
+    formato,
+    cidadeSlug: selecionada?.s,
+    cidadeNome: selecionada?.n,
+  });
 
   ev('price_calculator_result', {
     city: selecionada?.s ?? '',

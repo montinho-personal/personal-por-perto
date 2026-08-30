@@ -15,10 +15,11 @@ import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
 import { ferramentas, ferramentasDisponiveis, urlFerramenta } from '../../data/ferramentas';
 import { rotas } from '../../lib/links';
+import { ETAPAS, FERRAMENTAS, SITUACOES } from '../../lib/jornada';
 import { formatDateLong } from '../../lib/slug';
 
 const path = '/ferramentas';
-const atualizadoEm = '2026-08-27';
+const atualizadoEm = '2026-08-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -58,14 +59,13 @@ const schema = [
   <!-- ============================= HERO ============================= -->
   <header class="section-sm">
     <div class="container fer-intro">
-      <p class="eyebrow">Ferramentas gratuitas</p>
-      <h1>Ferramentas do Personal por Perto</h1>
+      <p class="eyebrow">Ferramentas gratuitas · Meu Mapa do Treino</p>
+      <h1>Você não precisa de mais uma dica. Precisa descobrir o seu próximo passo.</h1>
       <p class="fer-lead">
-        Conteúdo explica. Ferramenta decide junto com você. Estas foram feitas
-        para responder, com os seus dados, as duas perguntas que mais travam
-        quem está prestes a contratar um acompanhamento: <strong>de que tipo
-        de personal eu preciso</strong> e <strong>quanto isso deveria
-        custar</strong>.
+        Treino, rotina, constância, acompanhamento e investimento não são
+        assuntos separados — são etapas da mesma decisão. Estas ferramentas
+        existem para você descobrir <strong>em qual delas você está</strong>
+        e o que resolve o seu caso agora. Não é preciso usar todas.
       </p>
       <ul class="fer-selos">
         <li><span aria-hidden="true">✓</span> Gratuitas, sem cadastro</li>
@@ -75,9 +75,104 @@ const schema = [
     </div>
   </header>
 
-  <!-- ============================ CARDS ============================= -->
-  <section class="section-sm">
+  <!-- ===================== ONDE VOCÊ ESTÁ HOJE ====================== -->
+  <section class="section-sm" id="onde-voce-esta">
     <div class="container">
+      <div class="fer-intro">
+        <h2>Onde você está hoje?</h2>
+        <p class="hj-sub">
+          Escolha a frase que mais parece com a sua situação. Cada uma leva
+          direto à ferramenta que resolve aquele problema — e explica por quê.
+        </p>
+      </div>
+
+      <ul class="hj-situacoes">
+        {
+          SITUACOES.map((sit) => (
+            <li>
+              <a
+                class="hj-sit"
+                href={FERRAMENTAS[sit.destino].url}
+                data-situacao={sit.id}
+              >
+                <span class="hj-sit-frase">“{sit.frase}”</span>
+                <span class="hj-sit-detalhe">{sit.detalhe}</span>
+                <span class="hj-sit-destino">
+                  Começar por: <strong>{FERRAMENTAS[sit.destino].nome}</strong>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="hj-rot-wrap">
+        <p class="hj-rot-chamada">Nenhuma dessas descreve o seu caso?</p>
+        <button type="button" class="btn btn-secondary" id="hj-abrir-roteador">
+          Descobrir meu próximo passo
+        </button>
+        <p class="hj-rot-micro">Quatro perguntas. Serve só para indicar por onde começar.</p>
+        <div id="hj-roteador" class="hj-rot" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= MEU MAPA DO TREINO ===================== -->
+  <section class="section-sm tint" id="hj-mapa-secao">
+    <div class="container">
+      <div id="hj-mapa" hidden></div>
+      <noscript>
+        <p class="hj-sub">
+          O mapa da jornada precisa de JavaScript. Todas as ferramentas e todo o
+          conteúdo desta página funcionam normalmente sem ele.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <!-- =========================== A JORNADA ========================== -->
+  <section class="section-sm" id="jornada">
+    <div class="container">
+      <div class="fer-intro">
+        <h2>As sete etapas de uma decisão sobre treino</h2>
+        <p class="hj-sub">
+          Muita gente procura solução antes de entender qual é o problema:
+          troca de treino, tenta aumentar a frequência, muda de academia,
+          contrata alguém — e para de novo. Quase sempre o que falta não é
+          motivação, e sim identificar qual é a próxima decisão correta.
+          Cada etapa abaixo responde uma pergunta, e cada resposta indica a
+          seguinte.
+        </p>
+      </div>
+
+      <ol class="hj-etapas-lista">
+        {
+          ETAPAS.map((e) => (
+            <li class="hj-etapa-card">
+              <span class="hj-etapa-num">{e.ordem}</span>
+              <div>
+                <h3>
+                  {e.nome} — <a href={FERRAMENTAS[e.ferramenta].url}>{FERRAMENTAS[e.ferramenta].nome}</a>
+                </h3>
+                <p class="hj-etapa-pergunta">Responde: “{e.pergunta}”</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================ CARDS ============================= -->
+  <section class="section-sm" id="todas">
+    <div class="container">
+      <div class="fer-intro">
+        <h2>Todas as ferramentas, em detalhe</h2>
+        <p class="hj-sub">
+          O que cada uma pergunta, o que ela entrega ao terminar e — com a
+          mesma clareza — o que ela não faz.
+        </p>
+      </div>
       <div class="fer-lista">
         {
           ferramentas.map((f) =>
@@ -236,6 +331,10 @@ const schema = [
       <CtaMontinho variante="destaque" />
     </div>
   </section>
+  <script>
+    import { iniciarHub } from '../../scripts/hubJornada.client';
+    iniciarHub();
+  </script>
 </Base>
 
 <style>
@@ -359,4 +458,264 @@ const schema = [
     margin-top: var(--sp-4);
     line-height: 1.7;
   }
+</style>
+
+<!-- is:global obrigatório: mapa, plano e roteador nascem via JS. Prefixo `hj-`. -->
+<style is:global>
+  .hj-sub {
+    margin-top: var(--sp-3);
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 68ch;
+  }
+
+  /* ------------------------ Onde você está hoje ------------------------ */
+  .hj-situacoes {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-5) 0 0;
+    display: grid;
+    gap: var(--sp-3);
+  }
+  @media (min-width: 700px) {
+    .hj-situacoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1080px) {
+    .hj-situacoes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .hj-sit {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    height: 100%;
+    padding: var(--sp-4) var(--sp-5);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.12s ease, transform 0.12s ease;
+  }
+  .hj-sit:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .hj-sit:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+  .hj-sit-frase { font-size: var(--step-0); font-weight: 700; line-height: 1.35; }
+  .hj-sit-detalhe { font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .hj-sit-destino {
+    margin-top: auto;
+    padding-top: var(--sp-3);
+    font-size: var(--step--1);
+    color: var(--brand-600);
+  }
+
+  /* ----------------------------- Roteador ------------------------------ */
+  .hj-rot-wrap {
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--line-soft);
+    text-align: center;
+  }
+  .hj-rot-chamada { font-weight: 700; margin-bottom: var(--sp-3); }
+  .hj-rot-micro { margin-top: var(--sp-2); font-size: var(--step--1); color: var(--muted); }
+  .hj-rot { margin-top: var(--sp-5); }
+  .hj-rot-box {
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: left;
+    background: #fff;
+    border: 2px solid var(--brand-600);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+    box-shadow: var(--shadow-lg);
+  }
+  .hj-rot-passo {
+    font-size: var(--step--1);
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hj-rot-pergunta { margin-top: var(--sp-2); font-size: var(--step-1); line-height: 1.25; }
+  .hj-rot-opcoes { display: grid; gap: var(--sp-2); margin-top: var(--sp-4); }
+  .hj-rot-opcao {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    font: inherit;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    min-height: 52px;
+  }
+  .hj-rot-opcao:hover { border-color: var(--accent); background: var(--accent-50); }
+  .hj-rot-voltar {
+    margin-top: var(--sp-4);
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: var(--step--1);
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    min-height: 44px;
+    display: block;
+  }
+  .hj-rot-rotulo {
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-600);
+  }
+  .hj-rot-titulo { margin-top: var(--sp-2); font-size: var(--step-2); line-height: 1.2; }
+  .hj-rot-etapa { margin-top: var(--sp-2); font-size: var(--step--1); color: var(--muted); font-weight: 600; }
+  .hj-rot-porque { margin-top: var(--sp-3); line-height: 1.65; }
+  .hj-rot-resultado .btn { margin-top: var(--sp-4); }
+
+  /* -------------------------- Meu Mapa do Treino ----------------------- */
+  .hj-mapa-box {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    box-shadow: var(--shadow);
+  }
+  .hj-mapa-titulo { font-size: var(--step-2); }
+  .hj-mapa-sub { margin-top: var(--sp-2); color: var(--muted); }
+  .hj-mapa-lista {
+    margin: var(--sp-5) 0 0;
+    display: grid;
+    gap: var(--sp-3);
+  }
+  @media (min-width: 700px) {
+    .hj-mapa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .hj-mapa-item {
+    border-left: 3px solid var(--accent);
+    padding-left: var(--sp-4);
+  }
+  .hj-mapa-item dt {
+    font-size: var(--step--1);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+  .hj-mapa-item dd { margin: 0.15rem 0 0; font-weight: 700; font-size: var(--step-0); }
+
+  .hj-mapa-etapas {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-5) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2) var(--sp-4);
+  }
+  .hj-etapa { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--step--1); color: var(--muted); }
+  .hj-etapa-marca { font-weight: 800; }
+  .hj-etapa--feita { color: var(--ink); font-weight: 700; }
+  .hj-etapa--feita .hj-etapa-marca { color: #1f8a54; }
+
+  .hj-continue {
+    margin-top: var(--sp-6);
+    padding: var(--sp-5);
+    border-radius: var(--radius);
+    background: var(--bg-tint);
+    border-left: 4px solid var(--brand-600);
+  }
+  .hj-continue-rotulo {
+    font-size: var(--step--1);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--brand-700);
+  }
+  .hj-continue-porque { margin-top: var(--sp-2); line-height: 1.65; }
+  .hj-continue .btn { margin-top: var(--sp-4); }
+
+  .hj-plano {
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-5);
+    border-top: 1px solid var(--line);
+  }
+  .hj-plano h3 { font-size: var(--step-1); }
+  .hj-plano-resumo { margin-top: var(--sp-2); color: var(--muted); line-height: 1.6; }
+  .hj-plano-acoes { margin: var(--sp-4) 0 0; padding-left: 1.3rem; display: grid; gap: var(--sp-2); }
+  .hj-plano-acoes li { line-height: 1.6; }
+
+  .hj-escolha { margin-top: var(--sp-5); }
+  .hj-escolha h4 { font-size: var(--step-0); }
+  .hj-escolha-grade { display: grid; gap: var(--sp-3); margin-top: var(--sp-3); }
+  @media (min-width: 700px) {
+    .hj-escolha-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .hj-escolha-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: var(--sp-4);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .hj-escolha-item:hover { border-color: var(--brand); }
+  .hj-escolha-item span { font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .hj-escolha-item--destaque { border-color: var(--accent); background: var(--accent-50); }
+
+  .hj-mapa-rodape {
+    margin-top: var(--sp-6);
+    padding-top: var(--sp-4);
+    border-top: 1px solid var(--line-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hj-mapa-rodape p { font-size: var(--step--1); color: var(--muted); line-height: 1.5; flex: 1 1 320px; margin: 0; }
+  .hj-apagar {
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font: inherit;
+    font-size: var(--step--1);
+    cursor: pointer;
+    min-height: 44px;
+  }
+  .hj-apagar:hover { border-color: #b4571f; color: #b4571f; }
+  .hj-apagado { color: var(--muted); }
+
+  /* ---------------------------- As 7 etapas ---------------------------- */
+  .hj-etapas-lista { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-3); }
+  @media (min-width: 760px) {
+    .hj-etapas-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .hj-etapa-card {
+    display: flex;
+    gap: var(--sp-4);
+    align-items: flex-start;
+    padding: var(--sp-4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+  .hj-etapa-num {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--brand-700);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+  }
+  .hj-etapa-card h3 { font-size: var(--step-0); line-height: 1.35; }
+  .hj-etapa-card h3 a { color: var(--brand-600); }
+  .hj-etapa-pergunta { margin-top: 0.25rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
 </style>

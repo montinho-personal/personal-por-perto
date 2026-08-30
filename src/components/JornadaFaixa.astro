@@ -1,0 +1,153 @@
+---
+/**
+ * Faixa da jornada — o elemento que diz "esta página faz parte de algo maior".
+ *
+ * Renderizada em HTML estático, com a etapa atual já marcada no servidor:
+ * quem chega do Google direto nesta ferramenta entende, sem JavaScript
+ * nenhum, onde está e o que vem antes e depois. O JavaScript só acrescenta
+ * as marcas de etapa JÁ CONCLUÍDA, que dependem do mapa local.
+ *
+ * Isso importa para Core Web Vitals: a faixa ocupa o mesmo espaço com ou
+ * sem script, então marcar as etapas concluídas não desloca nada.
+ */
+import { ETAPAS, FERRAMENTAS, type FerramentaId } from '../lib/jornada';
+
+interface Props {
+  /** Ferramenta desta página. */
+  atual: FerramentaId;
+}
+
+const { atual } = Astro.props;
+const etapaAtual = FERRAMENTAS[atual].etapa;
+const ordemAtual = ETAPAS.find((e) => e.id === etapaAtual)!.ordem;
+---
+
+<nav class="jf" aria-label="Sua posição na jornada">
+  <p class="jf-titulo">
+    <span class="jf-tag">Meu Mapa do Treino</span>
+    <span class="jf-sub">Esta é a etapa {ordemAtual} de {ETAPAS.length}</span>
+  </p>
+
+  <ol class="jf-lista" data-jornada-faixa>
+    {
+      ETAPAS.map((e) => (
+        <li
+          class:list={['jf-item', { 'jf-item--atual': e.id === etapaAtual }]}
+          data-etapa={e.id}
+          aria-current={e.id === etapaAtual ? 'step' : undefined}
+        >
+          <a href={FERRAMENTAS[e.ferramenta].url} class="jf-link">
+            <span class="jf-marca" aria-hidden="true" />
+            <span class="jf-nome">{e.nome}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+
+  <p class="jf-nota">
+    <a href="/ferramentas/">Ver o mapa completo</a> — as etapas concluídas ficam
+    salvas só no seu navegador.
+  </p>
+</nav>
+
+<style is:global>
+  .jf {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--sp-4);
+    background: #fff;
+    margin-bottom: var(--sp-5);
+  }
+  .jf-titulo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem var(--sp-3);
+    margin-bottom: var(--sp-3);
+  }
+  .jf-tag {
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brand-700);
+  }
+  .jf-sub { font-size: var(--step--1); color: var(--muted); }
+
+  .jf-lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 0.15rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .jf-lista::-webkit-scrollbar { display: none; }
+
+  .jf-item { flex: 1 0 auto; min-width: 0; }
+  .jf-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.35rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+    min-height: 44px;
+    justify-content: center;
+  }
+  .jf-link:hover { background: var(--bg-tint); color: var(--ink); }
+  .jf-link:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+  /* A marca é a barra de progresso: cada item pinta o próprio segmento. */
+  .jf-marca {
+    display: block;
+    width: 100%;
+    min-width: 26px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--line);
+  }
+  .jf-item--feita .jf-marca { background: #1f8a54; }
+  .jf-item--feita .jf-nome { color: var(--ink); }
+  .jf-item--feita .jf-nome::after {
+    content: ' ✓';
+    color: #1f8a54;
+    font-weight: 800;
+  }
+  .jf-item--atual .jf-marca { background: var(--accent); }
+  .jf-item--atual .jf-nome { color: var(--accent-600); font-weight: 800; }
+
+  .jf-nota {
+    margin-top: var(--sp-3);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .jf-nota a { color: var(--brand-600); font-weight: 600; }
+
+  @media (max-width: 520px) {
+    .jf-link { font-size: 0.68rem; }
+    .jf-sub { width: 100%; }
+  }
+</style>
+
+<script>
+  import { lerMapa } from '../scripts/mapaTreino';
+  import { etapasConcluidas } from '../lib/jornada';
+
+  // Marca as etapas já concluídas. Puramente aditivo: sem isso, a faixa
+  // continua correta, apenas sem o histórico.
+  const faixa = document.querySelector('[data-jornada-faixa]');
+  if (faixa) {
+    for (const id of etapasConcluidas(lerMapa())) {
+      faixa.querySelector(`[data-etapa="${id}"]`)?.classList.add('jf-item--feita');
+    }
+  }
+</script>

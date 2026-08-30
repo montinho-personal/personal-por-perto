@@ -20,6 +20,7 @@ import {
   type ScoreResultado,
 } from '../lib/personalScore';
 import { whatsappUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -672,6 +673,17 @@ function renderResultado(r: ScoreResultado): void {
       'ps-aviso',
       'Este resultado é uma leitura da estrutura do serviço a partir do que você declarou — não é uma avaliação do profissional, da competência técnica dele nem da adequação dos exercícios ao seu corpo. Se você tem dor, lesão ou alguma condição de saúde, converse com um médico ou fisioterapeuta.',
     ),
+  );
+
+  anexarContinuidade(
+    raiz,
+    'score',
+    {
+      score: r.score,
+      scorePonto: r.atencao[0]?.titulo,
+      formato: r.analytics.service_type,
+    },
+    r.proximoPasso.url,
   );
 
   raiz.appendChild(rodape(r));

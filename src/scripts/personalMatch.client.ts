@@ -12,6 +12,7 @@
  */
 import { personalMatchEngine, type Espera, type MatchRespostas } from '../lib/personalMatch';
 import { whatsappUrl, montinhoUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 
 /* ------------------------------------------------------------------ *
  * Analytics — só dispara se o GA foi carregado (consentimento LGPD).
@@ -737,6 +738,13 @@ function renderResultado(r: ReturnType<typeof personalMatchEngine>): void {
   );
 
   // --- Feedback + refazer ---
+  anexarContinuidade(raiz, 'personalIdeal', {
+    objetivo: r.analytics.goal,
+    formato: r.modelo,
+    formatoRotulo: r.modeloRotulo,
+    autonomia: r.dimensoes.autonomia >= 70 ? 'alta' : r.dimensoes.autonomia >= 40 ? 'intermediária' : 'em construção',
+  });
+
   raiz.appendChild(rodapeResultado(r));
 
   app.replaceChildren(raiz);

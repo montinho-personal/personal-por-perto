@@ -12,6 +12,7 @@
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import JornadaFaixa from '../../components/JornadaFaixa.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
 import { breadcrumbSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -102,6 +103,10 @@ const schema = [
 
 <Base title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
+
+  <div class="container jf-wrap">
+    <JornadaFaixa atual="score" />
+  </div>
 
   <header class="ps-hero">
     <div class="container ps-hero-inner">

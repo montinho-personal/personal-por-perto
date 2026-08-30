@@ -17,6 +17,7 @@ import {
 } from '../lib/presencialOuOnline';
 import { whatsappUrl } from '../lib/links';
 import { coberturaPresencial } from '../data/atendimentoPresencial';
+import { anexarContinuidade } from './jornada.client';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -376,6 +377,15 @@ function avancar(): void {
   }
 }
 
+/** Rótulos legíveis do gargalo, para o mapa da jornada. */
+const ROTULO_GARGALO: Record<string, string> = {
+  supervisao: 'Precisa de supervisão',
+  planejamento: 'Falta planejamento',
+  flexibilidade: 'Rotina imprevisível',
+  constancia: 'Constância',
+  misto: 'Vários fatores ao mesmo tempo',
+};
+
 /* ------------------------------------------------------------------ *
  * Resultado
  * ------------------------------------------------------------------ */
@@ -598,6 +608,23 @@ function renderResultado(r: Resultado): void {
       'po-aviso',
       'Esta é uma recomendação de formato de serviço a partir do que você declarou — não é avaliação física nem orientação clínica. Se você tem dor, lesão ou alguma condição de saúde, converse com um médico ou fisioterapeuta antes de começar.',
     ),
+  );
+
+  anexarContinuidade(
+    raiz,
+    'formato',
+    {
+      experiencia: respostas.experiencia,
+      objetivo: respostas.objetivo,
+      autonomia: respostas.autonomia,
+      formato: r.formato,
+      formatoRotulo: r.rotulo,
+      gargalo: r.gargalo,
+      gargaloRotulo: ROTULO_GARGALO[r.gargalo],
+      cidadeSlug: respostas.cidadeSlug,
+      cidadeNome: respostas.cidadeNome,
+    },
+    r.proximoPasso.url,
   );
 
   raiz.appendChild(rodape(r));

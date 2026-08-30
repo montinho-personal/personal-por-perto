@@ -12,6 +12,7 @@
  */
 import { rotinaTreinoEngine, type RotinaRespostas } from '../lib/rotinaTreino';
 import { whatsappUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 
 /* ------------------------------------------------------------------ *
  * Analytics — só dispara se o GA foi carregado (consentimento LGPD).
@@ -485,6 +486,13 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
       'Esta ferramenta oferece orientação geral de organização de treino: ela sugere como distribuir a semana, não prescreve exercícios, séries ou cargas, e não substitui avaliação individual. Se você tem dor, lesão ou alguma condição de saúde, converse com um médico ou fisioterapeuta antes de começar.',
     ),
   );
+
+  anexarContinuidade(raiz, 'rotina', {
+    objetivo: r.analytics.goal,
+    experiencia: r.analytics.experience,
+    diasReais: r.divisao.sessoes.length,
+    divisao: r.divisao.nome,
+  });
 
   raiz.appendChild(rodape(r));
 

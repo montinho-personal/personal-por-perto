@@ -17,6 +17,7 @@ import {
   type Semana,
 } from '../lib/auditoriaTreino';
 import { whatsappUrl } from '../lib/links';
+import { anexarContinuidade } from './jornada.client';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -727,6 +728,12 @@ function renderResultado(r: ReturnType<typeof analisarTreino>): void {
       'Esta é uma auditoria estrutural: ela avalia como o programa está organizado, não a sua execução nem a adequação individual dos exercícios. Não substitui avaliação profissional. Dor, lesão ou condição de saúde precisam ser avaliadas separadamente por um médico ou fisioterapeuta.',
     ),
   );
+
+  anexarContinuidade(raiz, 'auditoria', {
+    objetivo: r.analytics.goal,
+    experiencia: r.analytics.experience,
+    diasReais: r.analytics.days_per_week,
+  });
 
   raiz.appendChild(rodape(r));
 
