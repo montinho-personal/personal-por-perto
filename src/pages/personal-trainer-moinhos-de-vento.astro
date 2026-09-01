@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-moinhos-de-vento';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer no Moinhos de Vento: preços e onde treinar';
 const description =
   'Personal trainer no Moinhos de Vento, em Porto Alegre: quanto custa, treino no Parcão, nos prédios e no inverno — e como escolher bem.';
 
+const capa = '/capas-bairros/moinhos-de-vento.webp';
+const capaAlt =
+  'Personal trainer no Moinhos de Vento (Porto Alegre) em arte com o moinho do Parque Moinhos de Vento, a placa da Rua Padre Chagas e o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Porto Alegre</p>
     <h1>Personal trainer no Moinhos de Vento: tudo o que os moradores perguntam antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe treino mais porto-alegrense que uma volta no Parcão às 7h

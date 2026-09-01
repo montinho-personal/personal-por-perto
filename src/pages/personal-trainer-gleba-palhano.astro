@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-gleba-palhano';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Londrina', url: '/personal-trainer/londrina-pr/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer na Gleba Palhano (Londrina): o guia';
 const description =
   'Personal trainer na Gleba Palhano: preços de Londrina, o Lago Igapó, as torres com academia e o treino no bairro mais valorizado da cidade.';
 
+const capa = '/capas-bairros/gleba-palhano.webp';
+const capaAlt =
+  'Personal trainer na Gleba Palhano (Londrina) em arte com os edifícios altos do bairro e o Lago Igapó ao entardecer, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Londrina</p>
     <h1>Personal trainer na Gleba Palhano: o bairro que subiu cem prédios em dez anos</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Em uma década, a Gleba Palhano ganhou cerca de cem prédios — a
