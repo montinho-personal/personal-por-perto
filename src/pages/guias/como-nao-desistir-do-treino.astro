@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/guias/como-nao-desistir-do-treino';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -78,21 +78,38 @@ const title = 'Como não desistir do treino: o guia da constância';
 const description =
   'Como não desistir do treino: por que a motivação falha, o plano mínimo que sobrevive à semana ruim, como voltar depois de parar e os marcadores que sustentam a rotina.';
 
+const capa = '/capas-conteudo/como-nao-desistir-do-treino.webp';
+const capaAlt =
+  'Arte da capa: silhueta subindo degraus rumo ao topo — como não desistir do treino — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guias</p>
     <h1>Como não desistir do treino: o guia da constância</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A academia lota em janeiro e esvazia em março. Todo ano, na mesma

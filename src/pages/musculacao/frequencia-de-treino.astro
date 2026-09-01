@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/frequencia-de-treino';
-const atualizadoEm = '2026-08-07';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Frequência de treino: quantas vezes treinar por semana';
 const description =
   'Frequência de treino: quantas vezes treinar cada músculo por semana, por que ela apenas distribui o volume, quanto tempo de recuperação e como escolher a sua.';
 
+const capa = '/capas-conteudo/frequencia-de-treino.webp';
+const capaAlt =
+  'Arte da capa: semana de segunda a domingo com os dias de treino, recuperação ativa e mobilidade, ao lado das faixas de 3x para iniciante, 4x para intermediário e 5x para avançado — frequência de treino: quantos dias por semana — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Frequência de treino: quantas vezes treinar cada músculo por semana</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       "Cada músculo uma vez por semana" foi lei na academia brasileira

@@ -81,7 +81,7 @@ const relacionados = [
 ];
 
 const path = '/humor-fitness/perfis-de-memes-fitness';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Humor fitness', url: rotas.humor },
@@ -120,9 +120,13 @@ const title = 'Perfis de memes fitness para seguir no Instagram';
 const description =
   'Curadoria dos perfis de memes fitness no Instagram: Rindo do Shape, Shape Prometido, as Marombeiras e mais — o humor que todo mundo que treina reconhece.';
 
+const capa = '/capas-conteudo/perfis-de-memes-fitness.webp';
+const capaAlt =
+  'Arte da capa: homem rindo do celular cercado por ícones de halter, coqueteleira, marmita e tênis — perfis de memes fitness: para rir, se identificar e continuar treinando — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   itemListSchema(
     'Perfis de memes fitness no Instagram',
@@ -133,13 +137,26 @@ const schema = [
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container article-solo">
     <article class="article-page">
     <p class="eyebrow">Humor fitness</p>
     <h1>Perfis de memes fitness para seguir no Instagram</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Entre uma série e outra, todo mundo que treina já mandou um meme no grupo

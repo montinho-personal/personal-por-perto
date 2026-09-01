@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/comer-fora-e-dieta';
-const atualizadoEm = '2026-08-10';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -78,21 +78,38 @@ const title = 'Comer fora sem sair da dieta: o guia prático';
 const description =
   'Comer fora e dieta: por que um jantar não estraga nada, como pedir em restaurante, o peso do álcool, viagens e como voltar à rotina sem ciclo de compensação.';
 
+const capa = '/capas-conteudo/comer-fora-e-dieta.webp';
+const capaAlt =
+  'Arte da capa: prato dividido entre proteína de qualidade, vegetais e fibras e carboidratos na medida, entre garfo e faca — comer fora e dieta: como manter o foco no restaurante — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Comer fora sem sair da dieta: o guia prático</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A maioria das dietas não morre num restaurante. Morre na

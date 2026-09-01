@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/crossover-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Crossover: como fazer, polias e erros comuns';
 const description =
   'Crossover na polia: alta, média ou baixa para cada ênfase, a diferença real para o crucifixo, o cruzamento final, a carga certa e onde encaixar no treino de peito.';
 
+const capa = '/capas-conteudo/crossover-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem executando o crossover nas polias, com os cabos cruzando à frente do corpo — crossover: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Crossover: o abraço na polia que o halter não consegue imitar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Todo exercício de peito com peso livre tem o mesmo ponto cego: a
