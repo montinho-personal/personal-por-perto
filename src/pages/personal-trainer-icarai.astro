@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-icarai';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Niterói', url: '/personal-trainer/niteroi-rj/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer em Icaraí (Niterói): guia do bairro';
 const description =
   'Personal trainer em Icaraí: preços de Niterói, treino no calçadão da praia, no Campo de São Bento e nos prédios da orla — e como escolher.';
 
+const capa = '/capas-bairros/icarai.webp';
+const capaAlt =
+  'Personal trainer em Icaraí (Niterói) em arte com a placa da Rua Ator Paulo Gustavo e o comércio do bairro, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Niterói</p>
     <h1>Personal trainer em Icaraí: treino de frente para o cartão-postal</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="800"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Icaraí acorda em movimento: o calçadão da praia, com o Rio de
