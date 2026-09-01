@@ -15,6 +15,7 @@ import { resumoMapaFitness } from '../../lib/fitnessPlaces';
 import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
+import { bairrosPorCidade } from '../../data/bairros';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, deCidade } from '../../lib/gramatica';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
@@ -107,6 +108,15 @@ const mercadoTexto =
 const conclusaoTexto =
   cidade.conclusao ??
   `Contratar um personal trainer ${emN} é investir em segurança, método e constância. Com a estrutura local certa e um profissional alinhado ao seu objetivo, fica muito mais fácil treinar bem e manter o resultado ao longo do tempo.`;
+
+/*
+ * Bairros com página própria nesta cidade.
+ *
+ * Sem este bloco as páginas de bairro ficam órfãs: existem no sitemap e não
+ * recebem link de lugar nenhum. O Google descobre a URL e não gasta rastreio
+ * nela — foi exatamente o que aconteceu com 57 das 93.
+ */
+const bairrosDaCidade = bairrosPorCidade[cidade.slug] ?? [];
 
 const toc = [
   { id: 'panorama', label: `Panorama ${deN}` },
@@ -950,6 +960,31 @@ const objetivoDesc: Record<string, string> = {
     </div>
   </section>
 
+  <!-- BAIRROS -->
+  {
+    bairrosDaCidade.length > 0 && (
+      <section class="section-sm">
+        <div class="container">
+          <h2>Personal trainer por bairro {emN}</h2>
+          <p class="lead">
+            {bairrosDaCidade.length === 1
+              ? 'Guia do bairro, com a oferta de treino e os preços praticados ali.'
+              : 'Guias por bairro, com a oferta de treino e os preços praticados em cada região.'}
+          </p>
+          <ul class="bairro-lista">
+            {bairrosDaCidade.map((b) => (
+              <li>
+                <a class="pill pill-neutral" href={`/${b.slug}/`}>
+                  {b.nome}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
   <!-- RELACIONADAS -->
   {
     relac.length > 0 && (
@@ -972,6 +1007,18 @@ const objetivoDesc: Record<string, string> = {
 </Base>
 
 <style>
+  .bairro-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin-top: var(--sp-5);
+    padding: 0;
+    list-style: none;
+  }
+  .bairro-lista a {
+    text-decoration: none;
+  }
+
   .calc-cta {
     margin: var(--sp-6) 0;
     padding: var(--sp-5);

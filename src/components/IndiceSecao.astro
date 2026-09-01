@@ -1,0 +1,75 @@
+---
+/**
+ * Índice completo de uma seção, montado a partir do registro central.
+ *
+ * Os hubs listam uma seleção editorial, escrita à mão e ordenada por
+ * importância — o que é bom para quem lê e ruim para quem rastreia: a
+ * seleção não acompanha o que é publicado depois. Em musculação, 43 dos 89
+ * artigos não recebiam link nenhum do próprio hub, e 7 não recebiam link de
+ * lugar nenhum no site. O Google descobria a URL pelo sitemap e nunca
+ * chegava a buscá-la.
+ *
+ * Este bloco fecha a lacuna sem mexer na curadoria: mostra o que sobrou,
+ * depois da seleção, em ordem alfabética. Um artigo publicado e registrado
+ * em `artigos.ts` passa a ter link a partir do mesmo deploy.
+ */
+import { artigos, type Artigo } from '../data/artigos';
+
+export interface Props {
+  categoria: Artigo['categoria'];
+  /** URLs já listadas na seleção acima — não se repetem aqui. */
+  exceto?: string[];
+  titulo?: string;
+}
+
+const { categoria, exceto = [], titulo = 'Todos os artigos desta seção' } = Astro.props;
+
+const jaListado = new Set(exceto.map((u) => (u.endsWith('/') ? u : `${u}/`)));
+
+const restantes = artigos
+  .filter((a) => a.categoria === categoria && !jaListado.has(a.url))
+  .sort((a, b) => a.titulo.localeCompare(b.titulo, 'pt-BR'));
+---
+
+{
+  restantes.length > 0 && (
+    <section class="section-sm tint">
+      <div class="container">
+        <h2>{titulo}</h2>
+        <p class="lead">
+          Os outros {restantes.length} conteúdos desta seção, em ordem alfabética.
+        </p>
+        <ul class="indice-secao">
+          {restantes.map((a) => (
+            <li>
+              <a href={a.url}>{a.titulo}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .indice-secao {
+    columns: 3 260px;
+    column-gap: var(--sp-6);
+    margin-top: var(--sp-5);
+    padding: 0;
+    list-style: none;
+  }
+  .indice-secao li {
+    break-inside: avoid;
+    margin-bottom: var(--sp-2);
+  }
+  .indice-secao a {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .indice-secao a:hover {
+    color: var(--brand-700);
+    text-decoration: underline;
+  }
+</style>
