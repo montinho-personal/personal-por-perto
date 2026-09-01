@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/remada-unilateral-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Remada unilateral (serrote): como fazer';
 const description =
   'Remada unilateral com halter, o serrote: o apoio que poupa a lombar, até onde puxar, o giro de tronco tolerável e como programar no treino de costas.';
 
+const capa = '/capas-conteudo/remada-unilateral-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem apoiado no banco executando a remada unilateral com halter — remada unilateral: como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Remada unilateral: por que o serrote é a remada que a lombar agradece</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Toda remada livre cobra um pedágio da lombar — menos uma. Com a mão

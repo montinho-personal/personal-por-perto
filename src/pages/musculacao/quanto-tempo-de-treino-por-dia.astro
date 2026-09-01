@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/quanto-tempo-de-treino-por-dia';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -79,21 +79,38 @@ const title = 'Quanto tempo de treino por dia é suficiente?';
 const description =
   'Treino de 30 minutos funciona? Mais de 1 hora cataboliza? O que define a duração ideal da sessão de musculação é o volume de séries efetivas — veja as faixas práticas por objetivo e rotina.';
 
+const capa = '/capas-conteudo/quanto-tempo-de-treino-por-dia.webp';
+const capaAlt =
+  'Arte da capa: relógio com uma fatia de tempo destacada ao lado de um halter — quanto tempo de treino por dia: menos tempo, mais estratégia — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Quanto tempo de treino por dia é suficiente?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Entre o mito do "menos de 1 hora não adianta" e o medo do "mais de 1

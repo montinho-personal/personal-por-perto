@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/ozempic-e-treino';
-const atualizadoEm = '2026-08-05';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: '/mounjaro-e-treino/' },
@@ -78,21 +78,38 @@ const title = 'Ozempic e treino: como adaptar a musculação';
 const description =
   'Ozempic e treino: por que a musculação é essencial durante o tratamento, como lidar com a queda de energia, proteína, volume de treino e o que muda no pós.';
 
+const capa = '/capas-conteudo/ozempic-e-treino.webp';
+const capaAlt =
+  'Arte da capa: caneta de aplicação alinhada a uma barra com anilha, formando um único eixo — Ozempic e treino: como adaptar a musculação durante o tratamento — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Mounjaro e Treino</p>
     <h1>Ozempic e treino: como adaptar a musculação durante o tratamento</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O Ozempic não foi criado para emagrecer. É um medicamento indicado

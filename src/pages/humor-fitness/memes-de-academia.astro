@@ -30,7 +30,7 @@ const relacionados = [
 ];
 
 const path = '/humor-fitness/memes-de-academia';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Humor fitness', url: rotas.humor },
@@ -64,20 +64,37 @@ const title = 'Memes de academia: os melhores para mandar no grupo de treino';
 const description =
   'O guia dos memes de academia: leg day, dor do dia seguinte, segunda-feira internacional do peito, frango com batata-doce e projeto verão — e onde encontrar os melhores.';
 
+const capa = '/capas-conteudo/memes-de-academia.webp';
+const capaAlt =
+  'Arte da capa: homem sentado no banco da academia rindo do celular, ao lado de halteres e coqueteleira — memes de academia: o lado engraçado de quem treina — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container article-solo">
     <article class="article-page">
     <p class="eyebrow">Humor fitness</p>
     <h1>Memes de academia: os melhores para mandar no grupo de treino</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Toda academia do Brasil tem dois grupos de WhatsApp: o oficial, com os

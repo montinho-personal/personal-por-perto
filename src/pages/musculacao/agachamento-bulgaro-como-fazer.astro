@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/agachamento-bulgaro-como-fazer';
-const atualizadoEm = '2026-08-13';
+const atualizadoEm = '2026-08-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -74,21 +74,38 @@ const title = 'Agachamento búlgaro: como fazer e progredir';
 const description =
   'Agachamento búlgaro: a altura do banco, o apoio do pé, passo curto ou longo para cada ênfase, por que ele é tão difícil e como progredir do peso do corpo à barra.';
 
+const capa = '/capas-conteudo/agachamento-bulgaro-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem com o pé de trás apoiado no banco executando o agachamento búlgaro com halter — agachamento búlgaro: como fazer, técnica, execução e equilíbrio — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Agachamento búlgaro: muito resultado com pouca carga — e por isso ele dói</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 auto var(--sp-5); max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhum exercício de perna tem fama tão contraditória: o mais
