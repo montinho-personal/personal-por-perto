@@ -325,10 +325,10 @@ console.log('\n[9] Parâmetros de medição\n');
   });
   const t = d!.tracking;
   const obrigatorios = [
-    'cta_campaign',
-    'cta_variant',
-    'cta_type',
-    'cta_position',
+    'campaign',
+    'variant',
+    'offer_type',
+    'position',
     'page_type',
     'cluster',
     'funnel_stage',
@@ -338,7 +338,7 @@ console.log('\n[9] Parâmetros de medição\n');
   const faltando = obrigatorios.filter((k) => !t[k]);
   ok(faltando.length === 0, `todos os parâmetros presentes${faltando.length ? ' — faltam ' + faltando.join(', ') : ''}`);
   ok(t.search_intent === 'local', 'intenção de busca da página de cidade é local');
-  ok(t.cta_position === 'meio', 'posição chega ao analytics');
+  ok(t.position === 'meio', 'posição chega ao analytics');
 }
 
 console.log('\n' + '='.repeat(64));

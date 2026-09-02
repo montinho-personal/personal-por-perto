@@ -24,11 +24,11 @@ function ev(nome: string, params: Record<string, unknown>): void {
 
 function dados(el: HTMLElement): Record<string, unknown> {
   return {
-    recommendation_context: el.dataset.rec || '',
-    recommendation_variant: el.dataset.recVariant || '',
-    recommendation_variant_ab: el.dataset.recVariantAb || '',
-    recommendation_position: el.dataset.recPosition || '',
-    recommendation_destination: el.dataset.recDestination || '',
+    campaign: el.dataset.rec || '',
+    variant: el.dataset.recVariant || '',
+    variant_ab: el.dataset.recVariantAb || '',
+    position: el.dataset.recPosition || '',
+    offer_destination: el.dataset.recDestination || '',
     page_type: el.dataset.recPageType || '',
     cluster: el.dataset.recCluster || '',
     offer_intent: el.dataset.recIntent || '',

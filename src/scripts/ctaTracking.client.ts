@@ -21,11 +21,11 @@ function ev(nome: string, params: Record<string, unknown>): void {
 /** Lê os data-attributes que o componente já renderizou no servidor. */
 function dados(el: HTMLElement): Record<string, unknown> {
   return {
-    cta_campaign: el.dataset.cta || '',
-    cta_variant: el.dataset.ctaVariant || '',
-    cta_type: el.dataset.ctaType || '',
-    cta_position: el.dataset.ctaPosition || '',
-    cta_text: el.dataset.ctaText || '',
+    campaign: el.dataset.cta || '',
+    variant: el.dataset.ctaVariant || '',
+    offer_type: el.dataset.ctaType || '',
+    position: el.dataset.ctaPosition || '',
+    message: el.dataset.ctaText || '',
     page_type: el.dataset.ctaPageType || '',
     cluster: el.dataset.ctaCategory || '',
     funnel_stage: el.dataset.ctaFunnel || '',

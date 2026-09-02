@@ -97,10 +97,10 @@ export interface DecisaoCta {
   motivo: string;
   /** Dados não sensíveis para o analytics. */
   tracking: {
-    cta_campaign: string;
-    cta_variant: VarianteCta;
-    cta_type: TipoCta;
-    cta_position: PosicaoCta;
+    campaign: string;
+    variant: VarianteCta;
+    offer_type: TipoCta;
+    position: PosicaoCta;
     page_type: string;
     cluster: Topico;
     funnel_stage: Funil;
@@ -178,10 +178,10 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
       tipo: tipoDaCampanha(campanha),
       posicao,
       tracking: {
-        cta_campaign: campanha.id,
-        cta_variant: variante,
-        cta_type: tipoDaCampanha(campanha),
-        cta_position: posicao,
+        campaign: campanha.id,
+        variant: variante,
+        offer_type: tipoDaCampanha(campanha),
+        position: posicao,
         page_type: cls.tipo,
         cluster: cls.topico,
         funnel_stage: cls.funil,

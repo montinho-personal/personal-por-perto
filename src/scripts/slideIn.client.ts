@@ -144,12 +144,12 @@ export function iniciarSlideIn(): void {
   };
 
   const dados = (): Record<string, unknown> => ({
-    slidein_variant: variante,
-    slidein_variant_ab: LETRA_SLIDE[variante],
-    slidein_rule: el.dataset.regra || '',
-    slidein_block: el.dataset.bloco || '',
-    slidein_message: titEl.textContent || '',
-    slidein_destination: destino,
+    variant: variante,
+    variant_ab: LETRA_SLIDE[variante],
+    campaign: el.dataset.regra || '',
+    campaign_block: el.dataset.bloco || '',
+    message: titEl.textContent || '',
+    offer_destination: destino,
     page_type: el.dataset.pageType || '',
     page_title: el.dataset.tituloArtigo || '',
     cluster: el.dataset.cluster || '',

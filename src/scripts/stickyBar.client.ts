@@ -146,13 +146,13 @@ export function iniciarStickyBar(): void {
   if (bar.dataset.suprimir) return;
 
   const dados = (): Record<string, unknown> => ({
-    sticky_variant: variante,
+    variant: variante,
     // Mesma variante, duas leituras: a semântica explica o teste, a letra
     // cabe na tabela do GA sem truncar.
-    sticky_variant_ab: LETRA_VARIANTE[variante],
-    sticky_rule: bar.dataset.regra || '',
-    sticky_message: msgEl.textContent || '',
-    sticky_destination: bar.dataset.destino || '',
+    variant_ab: LETRA_VARIANTE[variante],
+    campaign: bar.dataset.regra || '',
+    message: msgEl.textContent || '',
+    offer_destination: bar.dataset.destino || '',
     page_type: bar.dataset.pageType || '',
     cluster: bar.dataset.cluster || '',
     funnel_stage: bar.dataset.funil || '',

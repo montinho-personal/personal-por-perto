@@ -12,7 +12,12 @@ resolver no código.
 
 ## 1. Dimensões personalizadas (Administrar → Definições personalizadas)
 
-Escopo **Evento** em todas. Limite da conta: 50 — a lista usa 18.
+Escopo **Evento** em todas. Limite da conta: 50 — a lista usa 25.
+
+Se quiser fazer em duas etapas, as 9 primeiras (contexto da página) já
+sustentam qualquer relatório; as 6 de clique respondem "qual botão
+converte"; as 10 de campanha só interessam quando você for otimizar as
+superfícies de conversão.
 
 ### Contexto da página (as mais importantes: cruzam com TODOS os eventos)
 
@@ -39,18 +44,23 @@ Escopo **Evento** em todas. Limite da conta: 50 — a lista usa 18.
 | Destino | `destination` | a URL/âncora exata |
 | Texto do elemento | `element_text` | rótulo visível, cortado em 60 caracteres |
 
-### Campanhas de conversão (CTA, sticky, slide-in, bloco editorial)
+### Campanhas de conversão (CTA contextual, sticky, slide-in, bloco editorial)
+
+As quatro superfícies usam os MESMOS nomes, então uma dimensão serve às
+quatro e o nome do evento (`sticky_click`, `slidein_click`…) diz qual é.
 
 | Nome de exibição | Parâmetro | O que é |
 |---|---|---|
+| Campanha | `campaign` | a regra/contexto que decidiu mostrar aquilo |
+| Bloco da campanha | `campaign_block` | subdivisão, hoje só no slide-in |
+| Variante | `variant` | nome semântico: pergunta, benefício, problema… |
+| Variante (A/B/C) | `variant_ab` | a mesma variante em uma letra, para a tabela |
+| Posição | `position` | início, meio, fim, pós-artigo, corpo |
+| Mensagem | `message` | o texto exibido |
+| Tipo da oferta | `offer_type` | ajuda, diagnóstico, decisão, comercial |
 | Intenção da oferta | `offer_intent` | o que aquele componente está oferecendo |
-| Variante (A/B/C) | `cta_variant` | letra da variante em teste |
-| Posição do CTA | `cta_position` | início, meio, fim, pós-artigo |
-
-> Os parâmetros próprios de cada superfície (`sticky_rule`, `slidein_block`,
-> `recommendation_context`, `cta_campaign`…) só valem a pena registrar
-> quando você for otimizar aquela superfície especificamente. Comece pelas
-> 18 acima; elas respondem "qual botão converte", que é a pergunta atual.
+| Destino da oferta | `offer_destination` | para onde o componente aponta |
+| Tempo na página (s) | `time_on_page` | tempo ATIVO até o disparo (slide-in) |
 
 ---
 
@@ -88,5 +98,11 @@ DebugView fica vazio e parece que o rastreio quebrou.
 O vocabulário acima é único para as cinco superfícies: o mesmo conceito usa
 o mesmo nome em todo lugar, para que uma dimensão sirva a todos os
 relatórios. Ao criar um evento novo, reutilize os nomes desta tabela em vez
-de inventar um sinônimo (`device_type`, `content_category`, `scroll_depth` e
-`article_title` já foram eliminados exatamente por isso).
+de inventar um sinônimo — `device_type`, `content_category`,
+`content_cluster`, `scroll_depth`, `posicao_pct`, `article_title`,
+`sticky_variant`, `slidein_variant` e `recommendation_variant` já foram
+eliminados exatamente por isso.
+
+Antes eram 41 parâmetros distintos para 25 conceitos. O que cabia em uma
+dimensão estava gastando quatro, e nenhum relatório conseguia comparar as
+superfícies entre si.
