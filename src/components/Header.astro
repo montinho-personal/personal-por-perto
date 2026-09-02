@@ -18,7 +18,7 @@ const isActive = (url: string) => {
     </a>
 
     <!-- Busca e CTA visíveis só no desktop (no mobile ficam dentro do menu) -->
-    <form class="nav-busca so-desktop" action="/personal-trainer/" method="get" role="search">
+    <form class="nav-busca so-desktop" action="/personal-trainer/" method="get" role="search" data-track="header:busca">
       <label class="sr-only" for="busca-header">Buscar no portal</label>
       <input
         id="busca-header"
@@ -32,7 +32,7 @@ const isActive = (url: string) => {
         aria-autocomplete="list"
       />
       <button type="submit" aria-label="Buscar">🔎</button>
-      <div class="busca-sug" hidden>
+      <div class="busca-sug" hidden data-track="header:sugestao-busca">
         <ul id="busca-header-sug" role="listbox" aria-label="Sugestões de busca"></ul>
       </div>
     </form>
@@ -65,7 +65,7 @@ const isActive = (url: string) => {
             aria-autocomplete="list"
           />
           <button type="submit" aria-label="Buscar">🔎</button>
-          <div class="busca-sug" hidden>
+          <div class="busca-sug" hidden data-track="header:sugestao-busca">
             <ul id="busca-menu-sug" role="listbox" aria-label="Sugestões de busca"></ul>
           </div>
         </form>

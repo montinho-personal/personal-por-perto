@@ -980,7 +980,7 @@ const objetivoDesc: Record<string, string> = {
               ? 'Guia do bairro, com a oferta de treino e os preços praticados ali.'
               : 'Guias por bairro, com a oferta de treino e os preços praticados em cada região.'}
           </p>
-          <ul class="bairro-lista">
+          <ul class="bairro-lista" data-track="bairros-da-cidade:pilula">
             {bairrosDaCidade.map((b) => (
               <li>
                 <a class="pill pill-neutral" href={`/${b.slug}/`}>
@@ -1001,7 +1001,7 @@ const objetivoDesc: Record<string, string> = {
         <div class="container">
           <h2>Personal trainer em cidades próximas</h2>
           <p class="lead">Explore o guia de outras cidades da região e compare.</p>
-          <div class="grid grid-4" style="margin-top: var(--sp-5)">
+          <div class="grid grid-4" style="margin-top: var(--sp-5)" data-track="cidades-proximas:card">
             {relac.map((c) => (<CityCard cidade={c} />))}
           </div>
           <p style="margin-top: var(--sp-5)">

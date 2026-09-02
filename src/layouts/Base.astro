@@ -8,6 +8,8 @@ import StickyBar from '../components/StickyBar.astro';
 import SlideIn from '../components/SlideIn.astro';
 import { site } from '../data/site';
 import { organizationSchema, websiteSchema, graph } from '../lib/schema';
+import { classificarPagina } from '../lib/ctaTaxonomia';
+import { cidadePorBairro } from '../data/bairros';
 
 export interface Props {
   title: string;
@@ -37,6 +39,16 @@ const {
 const pathCanonico = path.endsWith('/') ? path : `${path}/`;
 const canonical = new URL(pathCanonico, site.dominio).href;
 const ogImage = image.startsWith('http') ? image : new URL(image, site.dominio).href;
+
+/*
+ * Contexto da página para o rastreio, resolvido uma vez aqui.
+ *
+ * Sem isto, cada evento de clique chegaria ao GA sem saber de que TIPO de
+ * página veio — e "qual botão converte" sem saber onde o botão estava é
+ * meia resposta. Fica no <body> porque o rastreador é delegado: um listener
+ * só, que lê o contexto do documento em vez de recebê-lo botão a botão.
+ */
+const clsPagina = classificarPagina(pathCanonico, (b) => cidadePorBairro[b]);
 
 // Toda página carrega Organization + WebSite e mescla os nós específicos.
 const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
@@ -80,7 +92,11 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body>
+  <body
+    data-page-type={clsPagina.tipo}
+    data-cluster={clsPagina.topico}
+    data-intent={clsPagina.funil}
+  >
     <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
     <Header />
     <main id="conteudo">
@@ -91,6 +107,14 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
     <Lightbox />
     <StickyBar path={path} />
     <SlideIn path={path} assunto={title} />
+
+    <script>
+      // Rastreio universal de cliques: um listener delegado para o site
+      // inteiro, sem marcação nas páginas. Só age depois do consentimento,
+      // porque `gtag` só existe a partir dele.
+      import { iniciarRastreio } from '../scripts/rastreio.client';
+      iniciarRastreio();
+    </script>
 
     <div id="cookie-aviso" class="cookie-aviso" hidden role="dialog" aria-live="polite" aria-label="Aviso de cookies">
       <p class="cookie-texto">
