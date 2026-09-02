@@ -28,7 +28,7 @@
  *   página seria pior ainda para quem está lendo.
  */
 import { sortearVariante } from '../lib/stickyBar';
-import type { VarianteSticky } from '../data/stickyMensagens';
+import { LETRA_VARIANTE, type VarianteSticky } from '../data/stickyMensagens';
 import { lerMapa } from './mapaTreino';
 import { FERRAMENTAS, ETAPAS, type FerramentaId } from '../lib/jornada';
 
@@ -141,6 +141,9 @@ export function iniciarStickyBar(): void {
 
   const dados = (): Record<string, unknown> => ({
     sticky_variant: variante,
+    // Mesma variante, duas leituras: a semântica explica o teste, a letra
+    // cabe na tabela do GA sem truncar.
+    sticky_variant_ab: LETRA_VARIANTE[variante],
     sticky_rule: bar.dataset.regra || '',
     sticky_message: msgEl.textContent || '',
     sticky_destination: bar.dataset.destino || '',

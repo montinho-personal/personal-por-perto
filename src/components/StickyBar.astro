@@ -105,11 +105,11 @@ const sticky = getSticky({ path });
   .sticky-in {
     display: flex;
     align-items: center;
-    gap: var(--sp-3, 0.75rem);
+    gap: 0.625rem;
     max-width: 1180px;
     margin: 0 auto;
-    padding: 0.6rem clamp(0.75rem, 3vw, 1.25rem);
-    min-height: 56px;
+    padding: 0.5rem clamp(0.875rem, 3vw, 1.25rem);
+    min-height: 60px;
   }
 
   .sticky-txt {
@@ -126,9 +126,12 @@ const sticky = getSticky({ path });
     line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    font-size: 0.84rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    line-height: 1.25;
+    /* 1.35 em vez de 1.25: duas linhas justas ficam apertadas num texto
+       em peso 600, e o respiro entre elas é o que separa "compacto" de
+       "espremido". Cabe na altura porque o botão já define o piso. */
+    line-height: 1.35;
     color: var(--ink, #16181d);
   }
 
@@ -139,31 +142,63 @@ const sticky = getSticky({ path });
     color: var(--ink-soft, #3a3f47);
   }
 
+  /*
+   * O botão era o problema de layout, não o texto.
+   *
+   * Com rótulo em linha única ele ficava com 156 a 163px — metade de uma
+   * tela de 320px — e sobravam 130px para a mensagem, que por isso quebrava
+   * em três linhas. Deixar o rótulo quebrar em duas linhas dentro da
+   * pílula derruba a largura para perto de 100px e devolve ~55px ao texto,
+   * sem encolher fonte a ponto de prejudicar a leitura.
+   *
+   * A altura mínima de 44px é requisito de toque, não estética: é o alvo
+   * recomendado para o dedo, e o botão tinha 34px.
+   */
   .sticky-btn {
+    /*
+     * Sem encolher: com `flex-shrink: 1` a pílula colapsava até o
+     * min-content (a palavra mais longa do rótulo) e o texto quebrava em
+     * três linhas, deixando o botão com 58px de altura. Com shrink zero a
+     * largura é min(natural, teto), e a quebra acontece só por causa do
+     * teto — em duas linhas, como se quer.
+     */
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
-    padding: 0.55rem 0.9rem;
+    justify-content: center;
+    min-height: 44px;
+    max-width: 38%;
+    padding: 0.4rem 0.85rem;
     border-radius: 999px;
     background: var(--accent, #f1681d);
     color: #fff;
-    font-size: var(--step--1, 0.9rem);
+    font-size: 0.8125rem;
     font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
     text-decoration: none;
-    white-space: nowrap;
+    white-space: normal;
   }
   .sticky-btn:hover {
     background: var(--accent-600, #db5713);
   }
 
+  /*
+   * Fechar: ícone discreto, alvo generoso.
+   *
+   * O X pesa pouco na hierarquia de propósito — quem fecha já decidiu —,
+   * mas errar o toque é frustrante. Daí 40px de área clicável para um
+   * ícone de 16px, e margem negativa para o alvo crescer sem afastar o
+   * ícone da borda.
+   */
   .sticky-x {
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* Alvo de toque de 32px, com a área clicável maior que o ícone. */
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
+    margin-right: -0.25rem;
     padding: 0;
     border: 0;
     border-radius: 999px;
@@ -176,25 +211,73 @@ const sticky = getSticky({ path });
   }
 
   /*
-   * Telas estreitas.
+   * Foco visível.
    *
-   * A altura alvo é 50–65px, e quem manda nela é o número de linhas da
-   * mensagem. Com o botão em tamanho cheio sobravam ~160px para o texto e
-   * a maior mensagem quebrava em três linhas (69px). Enxugar o botão
-   * devolve ~30px para a coluna de texto, e as mensagens de até 60
-   * caracteres passam a caber em duas linhas.
+   * Faltava por completo: quem navega por teclado percorria a barra sem
+   * ver onde estava. O anel usa contorno, e não cor de fundo, para não
+   * depender de percepção de cor.
+   */
+  .sticky-btn:focus-visible,
+  .sticky-x:focus-visible {
+    outline: 2px solid var(--ink, #16181d);
+    outline-offset: 2px;
+  }
+
+  /*
+   * Faixa mobile inteira: o rótulo do botão quebra em duas linhas.
+   *
+   * Sem este teto o botão fica com a largura natural do rótulo em linha
+   * única — 138px em 390px de tela — e sobram 170px para a mensagem, seis
+   * pixels a menos do que ela precisa para caber em duas linhas. O
+   * resultado era um aparelho de 390px pior que um de 360px, onde a fonte
+   * menor já resolvia. O teto força a quebra e devolve a diferença.
+   *
+   * 33% é o número calibrado, não arredondado: acima disso a mensagem
+   * volta a três linhas em 390px; abaixo, o rótulo do botão é que quebra
+   * em três e a pílula cresce para 58px de altura. (Foi também por isso
+   * que `text-wrap: balance` saiu: num rótulo de três palavras dentro de
+   * uma caixa estreita, equilibrar as linhas produz exatamente as três
+   * linhas que não cabem.)
    */
   @media (max-width: 430px) {
+    .sticky-btn {
+      max-width: 33%;
+      /*
+       * Padding lateral menor no mobile.
+       *
+       * Com 13,6px de cada lado, a caixa interna do botão ficava com
+       * 91,8px em 390px de tela — e a maior linha do rótulo ("Montar
+       * minha") precisa de 102px. Faltavam dez pixels, e o rótulo quebrava
+       * em três linhas. Enxugar o padding devolve esses pixels DENTRO do
+       * botão, sem tirar nada da coluna de texto: alargar a pílula
+       * resolveria o rótulo e estragaria a mensagem.
+       */
+      padding: 0.4rem 0.625rem;
+    }
+  }
+
+  /*
+   * Telas muito estreitas (iPhone SE e Androids de 360px).
+   *
+   * Aqui a aritmética não fecha em duas linhas para toda copy: com o
+   * rótulo pedido — "Montar minha rotina" — e um alvo de toque honesto,
+   * as mensagens mais longas ocupam três linhas. A escolha é deliberada:
+   * antes três linhas legíveis em 72px do que fonte reduzida a ponto de
+   * ninguém ler. Acima de 390px, que é onde está a maioria do tráfego,
+   * duas linhas passam a ser a regra.
+   */
+  @media (max-width: 380px) {
     .sticky-in {
       gap: 0.5rem;
       padding: 0.5rem 0.75rem;
     }
     .sticky-msg {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
     }
     .sticky-btn {
-      padding: 0.45rem 0.7rem;
-      font-size: 0.76rem;
+      max-width: 36%;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.78rem;
     }
   }
 

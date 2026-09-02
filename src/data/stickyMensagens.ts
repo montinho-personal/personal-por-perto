@@ -32,6 +32,18 @@ export type VarianteSticky = 'pergunta' | 'beneficio' | 'problema';
 
 export const VARIANTES: VarianteSticky[] = ['pergunta', 'beneficio', 'problema'];
 
+/**
+ * Rótulo curto de cada variante para o analytics.
+ *
+ * O nome semântico diz o que está sendo testado; a letra é o que cabe num
+ * relatório do GA sem quebrar a coluna. Os dois vão no evento.
+ */
+export const LETRA_VARIANTE: Record<VarianteSticky, 'A' | 'B' | 'C'> = {
+  pergunta: 'A',
+  beneficio: 'B',
+  problema: 'C',
+};
+
 export interface RegraSticky {
   /** Identificador estável — vai para o analytics, não muda com a copy. */
   id: string;
@@ -96,11 +108,21 @@ export const REGRAS: Partial<Record<Topico, RegraSticky>> = {
     requer: 'auditoriaTreino',
   },
 
+  /*
+   * Rotina — as três copies em teste.
+   *
+   * A do slot `problema` é a que já estava no ar; as outras duas entraram
+   * para o teste A/B. Registro de honestidade: "Seu treino não cabe na sua
+   * rotina?" também é uma formulação de problema, não de benefício. Ficou
+   * no slot do benefício porque foi pedida, mas na hora de ler o resultado
+   * vale lembrar que este teste compara duas formulações de problema
+   * contra uma pergunta neutra — e não os três enquadramentos.
+   */
   'rotina-tempo': {
     id: 'rotina',
     mensagem: {
-      pergunta: 'Quantos dias você tem de verdade?',
-      beneficio: 'Monte um treino que cabe na sua semana',
+      pergunta: 'Quantos dias você realmente consegue treinar?',
+      beneficio: 'Seu treino não cabe na sua rotina?',
       problema: 'A semana aperta e o treino é o que cai?',
     },
     rotulo: 'Montar minha rotina',

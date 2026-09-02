@@ -32,8 +32,12 @@ const href = whatsappUrl(mensagem);
     right: clamp(0.75rem, 2vw, 1.25rem);
     /* Sobe quando a sticky bar abre: ela publica a própria altura em
        --sticky-h, e aqui o botão só reage. Nenhum dos dois conhece o
-       outro, então mexer em um não quebra o outro. */
-    bottom: calc(clamp(0.75rem, 2vw, 1.25rem) + var(--sticky-h, 0px));
+       outro, então mexer em um não quebra o outro.
+
+       O piso de 0.875rem existe para o respiro entre os dois nunca cair
+       abaixo de 14px: com 0.75rem o botão encostava na barra em telas de
+       320 a 390px, onde 2vw ainda é menor que o mínimo. */
+    bottom: calc(clamp(0.875rem, 2vw, 1.25rem) + var(--sticky-h, 0px));
     transition: bottom 260ms ease-out;
     z-index: 90;
     display: inline-flex;
