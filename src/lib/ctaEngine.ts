@@ -23,12 +23,58 @@ import { campanhas, type Campanha, type VarianteCta } from '../data/ctaCampanhas
 import { features } from '../data/features';
 import { coberturaPresencial } from '../data/atendimentoPresencial';
 import { cidadePorBairro } from '../data/bairros';
-import { classificarPagina, type Classificacao, type Funil, type Topico } from './ctaTaxonomia';
+import {
+  classificarPagina,
+  type Classificacao,
+  type Funil,
+  type IntencaoBusca,
+  type Topico,
+} from './ctaTaxonomia';
 import { ctaOverrides } from '../data/ctaOverrides';
+
+/**
+ * Onde o bloco está no artigo. Não é decoração: o tipo de CTA aceitável
+ * muda com a posição — comercial no primeiro terço é anúncio, e ajuda no
+ * último terço desperdiça quem já leu tudo.
+ *
+ *   inicio — 20 a 35% do artigo
+ *   meio   — 45 a 65%
+ *   fim    — 75 a 90%
+ *   pos    — depois do artigo, fora do corpo
+ */
+export type PosicaoCta = 'inicio' | 'meio' | 'fim' | 'pos';
+
+/**
+ * Os quatro tipos do briefing, derivados do nível e do destino da campanha
+ * em vez de declarados campanha a campanha — assim uma campanha nova não
+ * pode nascer sem tipo.
+ *
+ *   A ajuda       — topo de funil, continua a leitura
+ *   B diagnostico — leva a uma ferramenta que entrega valor antes de vender
+ *   C decisao     — a pessoa está comparando; a ferramenta decide
+ *   D comercial   — apresenta o serviço
+ */
+export type TipoCta = 'ajuda' | 'diagnostico' | 'decisao' | 'comercial';
+
+const FERRAMENTAS_DE_DECISAO = [
+  '/ferramentas/encontre-seu-personal-ideal/',
+  '/ferramentas/presencial-ou-online/',
+  '/ferramentas/calculadora-preco-personal/',
+];
+
+function tipoDaCampanha(c: Campanha): TipoCta {
+  if (c.nivel === 'comercial') return 'comercial';
+  if (c.nivel === 'educacional') return 'ajuda';
+  return FERRAMENTAS_DE_DECISAO.includes(c.destino) ? 'decisao' : 'diagnostico';
+}
 
 export interface ContextoCta {
   /** Caminho da página, com ou sem barra final. */
   path: string;
+  /** Posição do bloco no artigo. Sem isso o padrão é o fim do corpo. */
+  posicao?: PosicaoCta;
+  /** Título do artigo, para o analytics distinguir páginas do mesmo tópico. */
+  tituloArtigo?: string;
   cidadeNome?: string;
   uf?: string;
   /** Locução flexionada ("no Rio de Janeiro"). */
@@ -43,6 +89,8 @@ export interface DecisaoCta {
   campanha: Campanha;
   variante: VarianteCta;
   classificacao: Classificacao;
+  tipo: TipoCta;
+  posicao: PosicaoCta;
   /** Identificador da regra que decidiu — aparece no atributo de debug. */
   regra: string;
   /** Explicação legível da decisão. */
@@ -51,9 +99,13 @@ export interface DecisaoCta {
   tracking: {
     cta_campaign: string;
     cta_variant: VarianteCta;
+    cta_type: TipoCta;
+    cta_position: PosicaoCta;
     page_type: string;
     content_category: Topico;
     funnel_stage: Funil;
+    search_intent: IntencaoBusca;
+    article_title?: string;
     city?: string;
     state?: string;
   };
@@ -87,26 +139,54 @@ const normalizar = (path: string) => (path.endsWith('/') ? path : `${path}/`);
 export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
   const path = normalizar(ctx.path);
   const cls = classificarPagina(path, (b) => cidadePorBairro[b]);
+  const posicao: PosicaoCta = ctx.posicao ?? 'fim';
 
   const decidir = (
-    campanha: Campanha | null,
+    campanhaPedida: Campanha | null,
     variante: VarianteCta,
     regra: string,
     motivo: string,
   ): DecisaoCta | null => {
-    if (!campanha) return null;
+    if (!campanhaPedida) return null;
+
+    /*
+     * Trava de posição.
+     *
+     * CTA comercial no primeiro terço do artigo é anúncio: a pessoa ainda
+     * não leu o suficiente para o convite fazer sentido, e o bloco vira
+     * exatamente o que o portal não quer parecer. Em vez de confiar em
+     * quem for inserir o componente lembrar disso, a regra vive aqui —
+     * pedir comercial no início devolve o diagnóstico, que é o passo
+     * anterior da jornada.
+     */
+    let campanha = campanhaPedida;
+    let motivoFinal = motivo;
+    if (posicao === 'inicio' && tipoDaCampanha(campanha) === 'comercial') {
+      const alternativa = resolver('personalMatch');
+      if (alternativa) {
+        campanha = alternativa;
+        motivoFinal = `${motivo} — rebaixado: comercial não entra no início do artigo`;
+      }
+    }
+
     return {
       campanha,
       variante,
       classificacao: cls,
       regra,
-      motivo,
+      motivo: motivoFinal,
+      tipo: tipoDaCampanha(campanha),
+      posicao,
       tracking: {
         cta_campaign: campanha.id,
         cta_variant: variante,
+        cta_type: tipoDaCampanha(campanha),
+        cta_position: posicao,
         page_type: cls.tipo,
         content_category: cls.topico,
         funnel_stage: cls.funil,
+        search_intent: cls.intencaoBusca,
+        article_title: ctx.tituloArtigo,
         city: cls.cidadeSlug,
         state: ctx.uf,
       },
@@ -144,6 +224,39 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
 
   /* ---- Prioridade 3 e 4: contexto local ---- */
   if (cls.tipo === 'cidade' || cls.tipo === 'bairro') {
+    /*
+     * A escada da página local.
+     *
+     * Uma página de cidade carrega mais de um CTA, e repetir a mesma
+     * oferta comercial em dois pontos do artigo é o erro que mais faz um
+     * portal parecer folheto. Cada posição recebe um degrau diferente:
+     *
+     *   início — quem ainda está lendo o panorama decide QUE tipo de
+     *            acompanhamento quer, não com quem
+     *   meio   — já viu os preços da cidade; a pergunta virou presencial
+     *            ou online
+     *   fim    — leu tudo, e aí sim a recomendação comercial é conclusão
+     *
+     * Sem isso, o CTA do meio e o do fim saíam idênticos: mesma campanha,
+     * mesmo texto, 600px de distância um do outro.
+     */
+    if (posicao === 'inicio') {
+      return decidir(
+        resolver('personalMatch'),
+        'standard',
+        'LOCAL_ESCADA_1',
+        'início da página local: decidir o formato vem antes de decidir com quem',
+      );
+    }
+    if (posicao === 'meio') {
+      return decidir(
+        resolver('formatoAcompanhamento', 'personalMatch'),
+        'standard',
+        'LOCAL_ESCADA_2',
+        'meio da página local: logo depois dos preços, a dúvida é presencial ou online',
+      );
+    }
+
     const cobertura = coberturaPresencial(cls.cidadeSlug);
     if (cobertura === 'atende') {
       return decidir(

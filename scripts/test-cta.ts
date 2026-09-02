@@ -8,7 +8,9 @@
  *
  * Uso: npm run test:cta
  */
-import { getContextualCTA } from '../src/lib/ctaEngine';
+import { getContextualCTA, type PosicaoCta } from '../src/lib/ctaEngine';
+import { cidades } from '../src/data/cidades';
+import { bairros } from '../src/data/bairros';
 import { campanhas } from '../src/data/ctaCampanhas';
 import { features } from '../src/data/features';
 import { montarMensagemWhatsapp } from '../src/lib/whatsappMensagem';
@@ -243,6 +245,100 @@ console.log('\n[7] Nenhuma promessa indevida na copy das campanhas\n');
   ok(!/\bcura\b|milagr|garantid/i.test(texto), 'sem promessa de cura ou garantia');
   ok(!texto.includes('!!'), 'sem exagero marketeiro (múltiplas exclamações)');
   ok(!/MELHOR PERSONAL|TRANSFORME SEU CORPO/i.test(texto), 'sem alegação superlativa inverificável');
+}
+
+/* ------------------------------------------------------------------ *
+ * [8] Escada de posição — o que o briefing chama de "não repetir"
+ * ------------------------------------------------------------------ */
+console.log('\n[8] Posição do CTA muda o degrau da jornada\n');
+{
+  const POSICOES: PosicaoCta[] = ['inicio', 'meio', 'fim'];
+
+  // Nenhum CTA comercial no primeiro terço, em página nenhuma.
+  const rotas = [
+    '/personal-trainer/recife-pe/',
+    '/personal-trainer/barueri-sp/',
+    '/personal-trainer-batel/',
+    '/guias/quanto-custa-personal-trainer/',
+    '/musculacao/treino-de-peito/',
+    '/emagrecimento/deficit-calorico-como-funciona/',
+  ];
+  const comerciaisCedo = rotas.filter(
+    (r) => getContextualCTA({ path: r, posicao: 'inicio' })?.tipo === 'comercial',
+  );
+  ok(comerciaisCedo.length === 0, `nenhum CTA comercial no início (${comerciaisCedo.join(', ')})`);
+
+  /*
+   * Escada só existe onde o bloco já foi feito.
+   *
+   * O BLOCO 1 (cidade e bairro) tem posições distintas — é o que a
+   * asserção seguinte cobre, nas 1.074 páginas. Os artigos ainda devolvem
+   * a mesma campanha nas três posições, e isso não é defeito em produção:
+   * cada artigo renderiza UM único CTA, no fim. Vira defeito no dia em que
+   * um artigo receber o segundo bloco — que é justamente o trabalho dos
+   * BLOCOS 2 a 8. Este contador existe para marcar esse alvo.
+   */
+  const artigos = rotas.filter((r) => !r.startsWith('/personal-trainer'));
+  const semEscada = artigos.filter((r) => {
+    const ids = POSICOES.map((p) => getContextualCTA({ path: r, posicao: p })?.campanha.id);
+    return new Set(ids).size === 1;
+  });
+  console.log(
+    `  · ${semEscada.length} de ${artigos.length} artigos amostrados ainda sem escada de posição` +
+      ' (esperado: blocos 2 a 8 pendentes)',
+  );
+
+  // A escada local vale para as 1.074 páginas locais, não para uma amostra.
+  const locais = [
+    ...cidades.map((c) => `/personal-trainer/${c.slug}/`),
+    ...bairros.map((b) => `/${b.slug}/`),
+  ];
+  let quebras = 0;
+  let exemplo = '';
+  for (const r of locais) {
+    const meio = getContextualCTA({ path: r, posicao: 'meio' });
+    const fim = getContextualCTA({ path: r, posicao: 'fim' });
+    if (!meio || !fim) continue;
+    if (meio.campanha.id === fim.campanha.id || meio.tipo === fim.tipo) {
+      quebras++;
+      if (!exemplo) exemplo = `${r} (${meio.campanha.id} / ${fim.campanha.id})`;
+    }
+  }
+  ok(quebras === 0, `as ${locais.length} páginas locais têm meio e fim distintos${quebras ? ` — ${quebras} falham, ex.: ${exemplo}` : ''}`);
+
+  // O fim da página local é o único ponto em que a oferta comercial entra.
+  const fimBarueri = getContextualCTA({ path: '/personal-trainer/barueri-sp/', posicao: 'fim' });
+  const fimRecife = getContextualCTA({ path: '/personal-trainer/recife-pe/', posicao: 'fim' });
+  ok(fimBarueri?.campanha.id === 'localPresencial', 'cidade atendida: presencial no fim');
+  ok(fimRecife?.campanha.id === 'onlineCoaching', 'cidade fora da área: online no fim, nunca presencial');
+}
+
+/* ------------------------------------------------------------------ *
+ * [9] Tracking — os parâmetros que o relatório precisa
+ * ------------------------------------------------------------------ */
+console.log('\n[9] Parâmetros de medição\n');
+{
+  const d = getContextualCTA({
+    path: '/personal-trainer/recife-pe/',
+    posicao: 'meio',
+    tituloArtigo: 'Personal Trainer no Recife',
+  });
+  const t = d!.tracking;
+  const obrigatorios = [
+    'cta_campaign',
+    'cta_variant',
+    'cta_type',
+    'cta_position',
+    'page_type',
+    'content_category',
+    'funnel_stage',
+    'search_intent',
+    'article_title',
+  ] as const;
+  const faltando = obrigatorios.filter((k) => !t[k]);
+  ok(faltando.length === 0, `todos os parâmetros presentes${faltando.length ? ' — faltam ' + faltando.join(', ') : ''}`);
+  ok(t.search_intent === 'local', 'intenção de busca da página de cidade é local');
+  ok(t.cta_position === 'meio', 'posição chega ao analytics');
 }
 
 console.log('\n' + '='.repeat(64));

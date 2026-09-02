@@ -44,10 +44,61 @@ export type Topico =
 /** Estágio de intenção comercial. */
 export type Funil = 'tofu' | 'mofu' | 'bofu';
 
+/**
+ * Intenção de busca — o que a pessoa queria do Google ao chegar aqui.
+ *
+ * Não é sinônimo de funil. O funil mede quão perto do dinheiro a página
+ * está; a intenção mede que TIPO de resposta a pessoa espera. Quem busca
+ * "personal trainer em Recife" e quem busca "quanto custa personal" estão
+ * ambos em bofu, mas um quer uma lista e o outro quer um número — e o
+ * próximo passo certo é diferente para cada um.
+ *
+ *   informativa   — quer entender algo
+ *   comparativa   — está pesando duas opções
+ *   transacional  — quer contratar
+ *   local         — quer alguém perto
+ *   problema      — tem uma dor ou um travamento concreto
+ *   ferramenta    — já está numa página de decisão
+ */
+export type IntencaoBusca =
+  | 'informativa'
+  | 'comparativa'
+  | 'transacional'
+  | 'local'
+  | 'problema'
+  | 'ferramenta';
+
+/**
+ * Intenção derivada do tópico. Derivada, e não declarada página a página,
+ * porque são 1.262 páginas: uma tabela manual desatualiza no primeiro
+ * artigo publicado depois.
+ */
+const INTENCAO_POR_TOPICO: Record<Topico, IntencaoBusca> = {
+  'local-comercial': 'local',
+  'preco-contratacao': 'transacional',
+  'escolha-decisao': 'comparativa',
+  'formato-acompanhamento': 'comparativa',
+  'avaliacao-acompanhamento': 'problema',
+  'publico-especifico': 'transacional',
+  'constancia-aderencia': 'problema',
+  'dor-saude': 'problema',
+  emagrecimento: 'informativa',
+  hipertrofia: 'informativa',
+  'execucao-exercicio': 'informativa',
+  iniciantes: 'informativa',
+  'rotina-tempo': 'problema',
+  farmacologico: 'problema',
+  'nutricao-suplementos': 'informativa',
+  humor: 'informativa',
+  institucional: 'informativa',
+};
+
 export interface Classificacao {
   tipo: TipoPagina;
   topico: Topico;
   funil: Funil;
+  /** O que a pessoa esperava encontrar ao buscar. */
+  intencaoBusca: IntencaoBusca;
   /** Slug da cidade quando a página é local (cidade ou bairro). */
   cidadeSlug?: string;
   /** Regra que produziu a classificação — aparece no modo debug. */
@@ -162,11 +213,15 @@ const semBarras = (path: string) => path.replace(/^\/+|\/+$/g, '');
 /**
  * Classifica uma página pelo caminho. `cidadeDeBairro` é injetado pelo
  * chamador (mapa bairro -> cidade) para manter esta função sem dependências.
+ *
+ * A intenção de busca é anexada no invólucro abaixo, e não em cada um dos
+ * 25 pontos de retorno: derivar num lugar só evita que uma rota nova saia
+ * com a intenção esquecida.
  */
-export function classificarPagina(
+function classificarBase(
   path: string,
   cidadeDeBairro?: (bairroSlug: string) => string | undefined,
-): Classificacao {
+): Omit<Classificacao, 'intencaoBusca'> {
   const p = semBarras(path);
   const partes = p.split('/').filter(Boolean);
 
@@ -296,4 +351,23 @@ export function classificarPagina(
   }
 
   return { tipo: 'artigo', topico: 'escolha-decisao', funil: 'tofu', regra: 'FALLBACK' };
+}
+
+export function classificarPagina(
+  path: string,
+  cidadeDeBairro?: (bairroSlug: string) => string | undefined,
+): Classificacao {
+  const base = classificarBase(path, cidadeDeBairro);
+  /*
+   * Duas exceções em que o tipo de página fala mais alto que o tópico:
+   * uma página de ferramenta é sempre intenção de ferramenta, e um hub
+   * local é navegação local, não a transação de uma cidade específica.
+   */
+  const intencaoBusca =
+    base.tipo === 'ferramenta'
+      ? 'ferramenta'
+      : base.tipo === 'cidade' || base.tipo === 'bairro' || base.tipo === 'estado'
+        ? 'local'
+        : INTENCAO_POR_TOPICO[base.topico];
+  return { ...base, intencaoBusca };
 }

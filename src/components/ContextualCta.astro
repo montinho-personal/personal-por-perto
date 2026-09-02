@@ -15,7 +15,7 @@
  * vocabulário visual.
  */
 import WhatsAppCta from './WhatsAppCta.astro';
-import { getContextualCTA, textoCampanha } from '../lib/ctaEngine';
+import { getContextualCTA, textoCampanha, type PosicaoCta } from '../lib/ctaEngine';
 import { montarMensagemWhatsapp } from '../lib/whatsappMensagem';
 import { whatsappUrl } from '../lib/links';
 
@@ -30,11 +30,26 @@ export interface Props {
   assunto?: string;
   /** A página já tem CTA comercial próprio: o motor se cala. */
   temCtaManual?: boolean;
+  /**
+   * Onde este bloco está no artigo: 'inicio' (20–35%), 'meio' (45–65%),
+   * 'fim' (75–90%) ou 'pos' (depois do corpo). Além de ir para o
+   * analytics, a posição é regra: o motor recusa CTA comercial no início.
+   */
+  posicao?: PosicaoCta;
 }
 
-const { path, cidadeNome, uf, localidade, assunto, temCtaManual } = Astro.props;
+const { path, cidadeNome, uf, localidade, assunto, temCtaManual, posicao } = Astro.props;
 
-const decisao = getContextualCTA({ path, cidadeNome, uf, localidade, assunto, temCtaManual });
+const decisao = getContextualCTA({
+  path,
+  cidadeNome,
+  uf,
+  localidade,
+  assunto,
+  temCtaManual,
+  posicao,
+  tituloArtigo: assunto,
+});
 
 // Sem decisão = sem CTA. É o comportamento correto em humor, institucional
 // e onde a página já resolve a conversão sozinha.
@@ -82,9 +97,14 @@ const t = decisao?.tracking;
       aria-labelledby={`ccta-tit-${c.id}`}
       data-cta={c.id}
       data-cta-variant={decisao!.variante}
+      data-cta-type={t!.cta_type}
+      data-cta-position={t!.cta_position}
       data-cta-page-type={t!.page_type}
       data-cta-category={t!.content_category}
       data-cta-funnel={t!.funnel_stage}
+      data-cta-intent={t!.search_intent}
+      data-cta-title={t!.article_title}
+      data-cta-text={titulo}
       data-cta-city={t!.city}
       data-cta-debug={debug}
     >

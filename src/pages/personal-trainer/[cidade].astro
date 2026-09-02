@@ -818,9 +818,8 @@ const objetivoDesc: Record<string, string> = {
         uf={cidade.uf}
         localidade={emN}
         assunto={title}
+        posicao="meio"
       />
-
-      <CtaMontinho cidade={n} localidade={emN} variante="inline" />
 
       <section id="objetivos">
         <h2>Treino por objetivo {emN}</h2>
@@ -904,6 +903,18 @@ const objetivoDesc: Record<string, string> = {
       </section>
 
       <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer ${emN}`} />
+
+      <!--
+        Recomendação editorial na faixa de 75–90% do artigo.
+
+        Estava colada no CTA contextual, no meio da página: os dois blocos
+        somavam 2.252px seguidos — cerca de 12% da altura do artigo em
+        chamada, um atrás do outro. Separar resolve as duas coisas de uma
+        vez: o meio deixa de ser um paredão e o último terço, que estava
+        vazio, passa a ter o convite comercial no ponto em que ele deixa de
+        ser interrupção e vira conclusão.
+      -->
+      <CtaMontinho cidade={n} localidade={emN} variante="inline" />
 
       <section id="conclusao">
         <h2>Conclusão</h2>
