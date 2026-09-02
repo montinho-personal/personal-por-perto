@@ -37,6 +37,20 @@ Critério de verificação (nunca inventar nome):
 `npm run audit:academias` lista as cidades que têm capa e ainda não têm
 academias — essa lista precisa ficar zerada.
 
+## Relatórios enviados: arquivar sempre, no mesmo commit
+
+Todo relatório de Search Console ou Analytics que o Renato mandar entra em
+`docs/relatorios/AAAA-MM-DD-<origem>/`, com os arquivos originais, e tem os
+números-chave registrados na tabela de `docs/relatorios/README.md`.
+
+Isso não é burocracia: sem a série histórica, cada relatório vira um número
+solto e nenhuma conversa consegue responder "melhorou?". O arquivo existe
+para que a comparação seja possível meses depois, sem depender de reabrir
+planilha nem da memória de ninguém.
+
+Ao arquivar um relatório novo, comparar com o anterior e dizer o que mudou
+— inclusive quando a resposta for "quase nada", que também é informação.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.
