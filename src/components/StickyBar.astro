@@ -1,0 +1,206 @@
+---
+/**
+ * Barra fixa de próximo passo.
+ *
+ * Renderizada no servidor já escondida (`hidden` + translateY), com as três
+ * variantes de mensagem em data-attributes. O cliente sorteia uma, revela a
+ * barra no gatilho e nunca mais troca o texto.
+ *
+ * CORE WEB VITALS
+ *
+ * `position: fixed` está fora do fluxo: aparecer não empurra nada, então o
+ * CLS é zero por construção — não por ajuste. Nada é injetado no `<head>`,
+ * nenhuma biblioteca é carregada e o script só roda depois da hidratação,
+ * então LCP e INP também ficam intactos. Não há intersticial: a barra
+ * ocupa ~56px do rodapé e some com um toque.
+ *
+ * CONVIVÊNCIA COM O BOTÃO DE WHATSAPP
+ *
+ * O `.wpp-float` já mora no canto inferior direito. Em vez de disputar
+ * espaço, a barra publica a própria altura em `--sticky-h` e o botão sobe
+ * por conta própria. Nenhum dos dois precisa saber do outro.
+ */
+import { getSticky } from '../lib/stickyBar';
+
+export interface Props {
+  /** Caminho da página. O motor deduz o resto — inclusive a cidade. */
+  path: string;
+}
+
+const { path } = Astro.props;
+const sticky = getSticky({ path });
+---
+
+{
+  sticky && (
+    <div
+      id="ppp-sticky"
+      class="sticky"
+      hidden
+      data-sticky
+      data-regra={sticky.regra}
+      data-intencao={sticky.intencao}
+      data-page-type={sticky.classificacao.tipo}
+      data-cluster={sticky.classificacao.topico}
+      data-funil={sticky.classificacao.funil}
+      data-cidade={sticky.classificacao.cidadeSlug ?? ''}
+      data-destino={sticky.destino}
+      data-motivo={sticky.motivo}
+      data-msg-pergunta={sticky.mensagens.pergunta}
+      data-msg-beneficio={sticky.mensagens.beneficio}
+      data-msg-problema={sticky.mensagens.problema}
+      role="complementary"
+      aria-label="Próximo passo sugerido"
+    >
+      <div class="sticky-in">
+        <div class="sticky-txt">
+          <p class="sticky-msg" data-sticky-msg />
+          {sticky.ressalva && <p class="sticky-ressalva">{sticky.ressalva}</p>}
+        </div>
+        <a class="sticky-btn" href={sticky.destino} data-sticky-link>
+          {sticky.rotulo}
+        </a>
+        <button type="button" class="sticky-x" data-sticky-fechar aria-label="Fechar sugestão">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+            <path
+              d="M5 5l10 10M15 5L5 15"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              fill="none"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+<script>
+  // Só carrega quando a barra existe na página — em humor, política e
+  // institucional o componente não renderiza nada, e o script nem chega.
+  import { iniciarStickyBar } from '../scripts/stickyBar.client';
+  iniciarStickyBar();
+</script>
+
+<style>
+  .sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 95;
+    background: var(--bg, #fff);
+    border-top: 1px solid var(--line, #e4e7ec);
+    box-shadow: 0 -6px 24px rgb(22 24 29 / 8%);
+    /* Safe area do iPhone: sem isso o botão encosta na barra de gestos. */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    transform: translateY(110%);
+    transition: transform 260ms ease-out;
+  }
+  .sticky[data-aberta] {
+    transform: translateY(0);
+  }
+
+  .sticky-in {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3, 0.75rem);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0.6rem clamp(0.75rem, 3vw, 1.25rem);
+    min-height: 56px;
+  }
+
+  .sticky-txt {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sticky-msg {
+    margin: 0;
+    /* Teto rígido de altura: nenhuma copy prevista chega a três linhas,
+       mas um texto novo mais longo deforma a barra em vez de avisar. */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink, #16181d);
+  }
+
+  .sticky-ressalva {
+    margin: 0.15rem 0 0;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: var(--ink-soft, #3a3f47);
+  }
+
+  .sticky-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: var(--accent, #f1681d);
+    color: #fff;
+    font-size: var(--step--1, 0.9rem);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .sticky-btn:hover {
+    background: var(--accent-600, #db5713);
+  }
+
+  .sticky-x {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* Alvo de toque de 32px, com a área clicável maior que o ícone. */
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft, #3a3f47);
+    cursor: pointer;
+  }
+  .sticky-x:hover {
+    background: var(--bg-tint, #f6f7f9);
+  }
+
+  /*
+   * Telas estreitas.
+   *
+   * A altura alvo é 50–65px, e quem manda nela é o número de linhas da
+   * mensagem. Com o botão em tamanho cheio sobravam ~160px para o texto e
+   * a maior mensagem quebrava em três linhas (69px). Enxugar o botão
+   * devolve ~30px para a coluna de texto, e as mensagens de até 60
+   * caracteres passam a caber em duas linhas.
+   */
+  @media (max-width: 430px) {
+    .sticky-in {
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+    }
+    .sticky-msg {
+      font-size: 0.8rem;
+    }
+    .sticky-btn {
+      padding: 0.45rem 0.7rem;
+      font-size: 0.76rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sticky {
+      transition: none;
+    }
+  }
+</style>
