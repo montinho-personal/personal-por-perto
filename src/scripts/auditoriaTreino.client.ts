@@ -452,7 +452,11 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
       salvar();
       ev('training_audit_preset', { preset: m.id });
       marcarModelo(m.id);
-      redesenharDias();
+      // Abre o primeiro dia treinado: ver as opções marcadas uma vez
+      // ensina o mecanismo inteiro. Com todos os dias fechados, a divisão
+      // pronta parece prescrição — e ninguém ajusta o que não parece
+      // ajustável.
+      redesenharDias(primeiroDiaTreinado());
       // A semana preenchida fica abaixo da grade de modelos: sem trazer
       // para a vista, a pessoa clica e tem a impressão de que nada mudou.
       listaDias.scrollIntoView({ block: 'start' });
@@ -466,6 +470,16 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
   caixa.appendChild(modelos);
 
   // --- Dias ---
+  // A instrução mora aqui, e não junto da grade de modelos: depois de
+  // escolher uma divisão a página rola até esta lista, e é neste ponto que
+  // a pessoa precisa saber que o que está vendo é editável.
+  caixa.appendChild(
+    el(
+      'p',
+      'at-dias-ajuda',
+      'Toque em cada dia para ajustar ao que você realmente faz — os dias vazios ficam como descanso.',
+    ),
+  );
   caixa.appendChild(listaDias);
   caixa.appendChild(resumo);
 
@@ -477,10 +491,15 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
     botao.hidden = treinados === 0;
   };
 
-  function redesenharDias(): void {
+  /** Índice do primeiro dia com algum grupo marcado. */
+  const primeiroDiaTreinado = (): number =>
+    semanaAtual().findIndex((d) => d.length > 0);
+
+  function redesenharDias(abrirIndice = -1): void {
     listaDias.replaceChildren();
     for (let i = 0; i < 7; i++) {
       const det = el('details', 'at-dia');
+      if (i === abrirIndice) det.open = true;
       const sum = el('summary');
       const nome = el('span', 'at-dia-nome', DIAS_NOME[i]);
       const val = el('span', 'at-dia-val');
@@ -502,6 +521,8 @@ function montarSemana(caixa: HTMLElement, botao: HTMLButtonElement): void {
           // card marcado passaria a informação errada.
           marcarModelo(null);
           c.setAttribute('aria-pressed', respostas.semana![i].includes(g) ? 'true' : 'false');
+          // Nota: nada de redesenhar aqui — o dia aberto se fecharia
+          // debaixo do dedo de quem está marcando vários grupos seguidos.
           val.textContent = rotuloDia(respostas.semana![i]);
           det.classList.toggle('at-dia--cheio', respostas.semana![i].length > 0);
           atualizarResumo();

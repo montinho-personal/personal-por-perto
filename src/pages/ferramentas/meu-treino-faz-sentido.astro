@@ -20,7 +20,7 @@ import { montinho } from '../../data/montinho';
 import { rotas } from '../../lib/links';
 
 const path = '/ferramentas/meu-treino-faz-sentido';
-const atualizadoEm = '2026-08-27';
+const atualizadoEm = '2026-09-02';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -490,6 +490,50 @@ const schema = [
       font-weight: 600;
     }
     .at-dia summary::-webkit-details-marker { display: none; }
+
+    /*
+     * Seta de abrir/fechar.
+     *
+     * O marcador nativo do <details> tinha sido escondido e nada o
+     * substituiu: a linha do dia, já preenchida por uma divisão pronta,
+     * ficava idêntica a um resultado impresso. Quem lê "Segunda — Peito,
+     * Costas, Ombros" sem nenhuma pista de que aquilo é editável conclui
+     * que a ferramenta prescreveu um treino que não é o dela, e desiste
+     * ali. A seta é o que devolve a leitura de "isto é um campo".
+     */
+    .at-dia summary::after {
+      content: '';
+      flex-shrink: 0;
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-left: 0.15rem;
+      border-right: 2px solid var(--ink-soft);
+      border-bottom: 2px solid var(--ink-soft);
+      transform: rotate(45deg) translate(-2px, -2px);
+      transition: transform 160ms ease-out;
+    }
+    .at-dia[open] summary::after {
+      transform: rotate(-135deg) translate(-2px, -2px);
+    }
+    .at-dia--cheio summary::after { border-color: var(--accent-600); }
+    @media (prefers-reduced-motion: reduce) {
+      .at-dia summary::after { transition: none; }
+    }
+
+    /*
+     * Instrução no ponto em que ela é necessária.
+     *
+     * A observação "ajuste depois como quiser" vivia acima da grade de
+     * divisões — e o clique num modelo rola a lista de dias para a vista,
+     * deixando a instrução fora da tela exatamente quando ela passaria a
+     * fazer sentido.
+     */
+    .at-dias-ajuda {
+      margin: 0 0 var(--sp-3);
+      font-size: var(--step--1);
+      color: var(--ink-soft);
+    }
+
     .at-dia--cheio { border-color: var(--accent); background: var(--accent-50); }
     .at-dia-nome { flex-shrink: 0; }
     .at-dia-val {
