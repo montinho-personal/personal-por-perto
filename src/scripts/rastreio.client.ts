@@ -138,7 +138,8 @@ export function iniciarRastreio(): void {
   const contexto = {
     page_type: b.dataset.pageType || '',
     cluster: b.dataset.cluster || '',
-    intent: b.dataset.intent || '',
+    funnel_stage: b.dataset.funnel || '',
+    search_intent: b.dataset.searchIntent || '',
   };
 
   document.addEventListener(
@@ -163,14 +164,14 @@ export function iniciarRastreio(): void {
       ev('clique_elemento', {
         // Identificador estável e de baixa cardinalidade: é por ele que se
         // agrupa no relatório.
-        elemento_id: declarado || `${regiao}:${papel}`,
-        regiao,
-        papel,
-        destino_grupo: grupo,
-        destino,
-        texto: textoDe(el),
+        element_id: declarado || `${regiao}:${papel}`,
+        region: regiao,
+        link_role: papel,
+        destination_group: grupo,
+        destination: destino,
+        element_text: textoDe(el),
         ...contexto,
-        posicao_pct: rolagem(),
+        scroll_pct: rolagem(),
         device: window.innerWidth >= 768 ? 'desktop' : 'mobile',
       });
     },

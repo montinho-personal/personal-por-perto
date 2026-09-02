@@ -154,12 +154,13 @@ export function iniciarStickyBar(): void {
     sticky_message: msgEl.textContent || '',
     sticky_destination: bar.dataset.destino || '',
     page_type: bar.dataset.pageType || '',
-    content_cluster: bar.dataset.cluster || '',
+    cluster: bar.dataset.cluster || '',
     funnel_stage: bar.dataset.funil || '',
-    intent_level: bar.dataset.intencao || '',
+    offer_intent: bar.dataset.intencao || '',
+    search_intent: bar.dataset.intentBusca || '',
     city: bar.dataset.cidade || '',
-    device_type: window.innerWidth >= LARGURA_MOBILE ? 'desktop' : 'mobile',
-    scroll_depth: Math.round(rolagem() * 100),
+    device: window.innerWidth >= LARGURA_MOBILE ? 'desktop' : 'mobile',
+    scroll_pct: Math.round(rolagem() * 100),
   });
 
   let aberta = false;

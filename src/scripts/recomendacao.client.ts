@@ -31,7 +31,9 @@ function dados(el: HTMLElement): Record<string, unknown> {
     recommendation_destination: el.dataset.recDestination || '',
     page_type: el.dataset.recPageType || '',
     cluster: el.dataset.recCluster || '',
-    intent: el.dataset.recIntent || '',
+    offer_intent: el.dataset.recIntent || '',
+    funnel_stage: el.dataset.recFunnel || '',
+    search_intent: el.dataset.recSearchIntent || '',
     page_title: document.title,
     device: window.innerWidth >= 768 ? 'desktop' : 'mobile',
   };

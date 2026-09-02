@@ -102,10 +102,10 @@ export interface DecisaoCta {
     cta_type: TipoCta;
     cta_position: PosicaoCta;
     page_type: string;
-    content_category: Topico;
+    cluster: Topico;
     funnel_stage: Funil;
     search_intent: IntencaoBusca;
-    article_title?: string;
+    page_title?: string;
     city?: string;
     state?: string;
   };
@@ -183,10 +183,10 @@ export function getContextualCTA(ctx: ContextoCta): DecisaoCta | null {
         cta_type: tipoDaCampanha(campanha),
         cta_position: posicao,
         page_type: cls.tipo,
-        content_category: cls.topico,
+        cluster: cls.topico,
         funnel_stage: cls.funil,
         search_intent: cls.intencaoBusca,
-        article_title: ctx.tituloArtigo,
+        page_title: ctx.tituloArtigo,
         city: cls.cidadeSlug,
         state: ctx.uf,
       },

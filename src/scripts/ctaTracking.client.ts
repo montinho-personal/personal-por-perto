@@ -27,10 +27,10 @@ function dados(el: HTMLElement): Record<string, unknown> {
     cta_position: el.dataset.ctaPosition || '',
     cta_text: el.dataset.ctaText || '',
     page_type: el.dataset.ctaPageType || '',
-    content_category: el.dataset.ctaCategory || '',
+    cluster: el.dataset.ctaCategory || '',
     funnel_stage: el.dataset.ctaFunnel || '',
     search_intent: el.dataset.ctaIntent || '',
-    article_title: el.dataset.ctaTitle || '',
+    page_title: el.dataset.ctaTitle || '',
     city: el.dataset.ctaCity || '',
     // Largura decide o layout do portal inteiro; é o proxy honesto de
     // dispositivo sem tentar adivinhar aparelho pelo user agent.

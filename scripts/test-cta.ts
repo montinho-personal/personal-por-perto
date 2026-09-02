@@ -330,10 +330,10 @@ console.log('\n[9] Parâmetros de medição\n');
     'cta_type',
     'cta_position',
     'page_type',
-    'content_category',
+    'cluster',
     'funnel_stage',
     'search_intent',
-    'article_title',
+    'page_title',
   ] as const;
   const faltando = obrigatorios.filter((k) => !t[k]);
   ok(faltando.length === 0, `todos os parâmetros presentes${faltando.length ? ' — faltam ' + faltando.join(', ') : ''}`);

@@ -154,11 +154,12 @@ export function iniciarSlideIn(): void {
     page_title: el.dataset.tituloArtigo || '',
     cluster: el.dataset.cluster || '',
     subcluster: el.dataset.subcluster || '',
-    intent: el.dataset.intencao || '',
+    offer_intent: el.dataset.intencao || '',
     search_intent: el.dataset.intentBusca || '',
-    scroll_depth: Math.round(rolagem() * 100),
+    funnel_stage: el.dataset.funil || '',
+    scroll_pct: Math.round(rolagem() * 100),
     time_on_page: Math.round(ativoMs / 1000),
-    device_type: window.innerWidth >= 768 ? 'desktop' : 'mobile',
+    device: window.innerWidth >= 768 ? 'desktop' : 'mobile',
   });
 
   let aberto = false;
