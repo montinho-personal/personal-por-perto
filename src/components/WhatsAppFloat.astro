@@ -38,7 +38,7 @@ const href = whatsappUrl(mensagem);
        abaixo de 14px: com 0.75rem o botão encostava na barra em telas de
        320 a 390px, onde 2vw ainda é menor que o mínimo. */
     bottom: calc(clamp(0.875rem, 2vw, 1.25rem) + var(--sticky-h, 0px));
-    transition: bottom 260ms ease-out;
+
     z-index: 90;
     display: inline-flex;
     align-items: center;
@@ -50,7 +50,22 @@ const href = whatsappUrl(mensagem);
     text-decoration: none;
     font-weight: 700;
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
-    transition: transform 0.15s ease, filter 0.15s ease;
+    /*
+     * Uma declaração só, de propósito.
+     *
+     * A transição de `bottom` estava declarada mais acima no bloco e era
+     * sobrescrita por esta — resultado: o botão PULAVA ao subir e ao
+     * descer com a sticky bar, em vez de acompanhar o movimento dela. Em
+     * CSS a última declaração da mesma propriedade vence, e `transition`
+     * é uma propriedade só, não uma lista acumulável.
+     *
+     * O tempo de `bottom` é o mesmo da barra (260ms), para os dois se
+     * moverem juntos em vez de um atrás do outro.
+     */
+    transition:
+      bottom 260ms ease-out,
+      transform 0.15s ease,
+      filter 0.15s ease;
   }
   .wpp-float:hover {
     filter: brightness(1.07);
