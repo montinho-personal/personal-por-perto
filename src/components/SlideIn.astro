@@ -1,0 +1,211 @@
+---
+/**
+ * Slide-in contextual.
+ *
+ * Entra por baixo no mobile e pelo canto inferior direito no desktop,
+ * depois que o comportamento indica leitura de verdade. Não é modal: não
+ * escurece a página, não trava o scroll e não rouba o foco — quem estiver
+ * lendo continua lendo.
+ *
+ * Renderizado no servidor já escondido, com os três títulos em
+ * data-attributes. O cliente sorteia um antes de exibir; como o bloco
+ * nasce fora da tela, ninguém vê a troca.
+ *
+ * CORE WEB VITALS
+ * `position: fixed` está fora do fluxo — aparecer não empurra nada, então
+ * o CLS é zero por construção. Nenhuma biblioteca, nenhuma requisição, e o
+ * script só existe nas 32 páginas do bloco piloto.
+ */
+import { getSlideIn } from '../lib/slideIn';
+
+export interface Props {
+  path: string;
+  /** Título do artigo, usado só na medição. */
+  assunto?: string;
+}
+
+const { path, assunto } = Astro.props;
+const slide = getSlideIn({ path, tituloArtigo: assunto });
+---
+
+{
+  slide && (
+    <aside
+      id="ppp-slidein"
+      class="slidein"
+      hidden
+      data-regra={slide.regra}
+      data-bloco={slide.bloco}
+      data-destino={slide.destino}
+      data-cluster={slide.classificacao.topico}
+      data-subcluster={slide.classificacao.regra}
+      data-page-type={slide.classificacao.tipo}
+      data-intencao={slide.intencao}
+      data-intent-busca={slide.classificacao.intencaoBusca}
+      data-titulo-artigo={assunto ?? ''}
+      data-motivo={slide.motivo}
+      data-t-pergunta={slide.titulos.pergunta}
+      data-t-problema={slide.titulos.problema}
+      data-t-resultado={slide.titulos.resultado}
+      aria-labelledby="ppp-slidein-tit"
+      aria-label="Sugestão de próximo passo"
+    >
+      <p class="slidein-rotulo">{slide.rotulo}</p>
+      <h2 class="slidein-tit" id="ppp-slidein-tit" data-slidein-tit />
+      <p class="slidein-desc">{slide.descricao}</p>
+      <a class="slidein-btn" href={slide.destino} data-slidein-link>
+        {slide.botao}
+      </a>
+      <button type="button" class="slidein-x" data-slidein-fechar aria-label="Fechar sugestão">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+          <path
+            d="M5 5l10 10M15 5L5 15"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            fill="none"
+          />
+        </svg>
+      </button>
+    </aside>
+  )
+}
+
+<script>
+  // Só existe nas páginas do bloco ativo: fora delas o componente não
+  // renderiza nada e este script nem é incluído no bundle da página.
+  import { iniciarSlideIn } from '../scripts/slideIn.client';
+  iniciarSlideIn();
+</script>
+
+<style>
+  .slidein {
+    position: fixed;
+    z-index: 96; /* acima da sticky bar (95), abaixo do lightbox (1000) */
+    box-sizing: border-box;
+    background: var(--bg, #fff);
+    border: 1px solid var(--line, #e4e7ec);
+    border-radius: var(--radius-lg, 18px);
+    box-shadow: 0 14px 40px rgb(22 24 29 / 16%);
+    padding: 1rem 1.1rem 1.1rem;
+    transition:
+      transform 280ms ease-out,
+      opacity 280ms ease-out;
+  }
+
+  /* Mobile: folha inferior, centrada, respeitando a safe area. */
+  @media (max-width: 767px) {
+    .slidein {
+      left: 50%;
+      right: auto;
+      bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+      width: min(88vw, 400px);
+      transform: translate(-50%, calc(100% + 1.5rem));
+      opacity: 0;
+    }
+    .slidein[data-aberto] {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+
+  /* Desktop: cartão discreto no canto, sem cobrir o corpo do artigo. */
+  @media (min-width: 768px) {
+    .slidein {
+      right: clamp(1rem, 2vw, 1.5rem);
+      bottom: clamp(1rem, 2vw, 1.5rem);
+      width: 340px;
+      transform: translateX(calc(100% + 2rem));
+      opacity: 0;
+    }
+    .slidein[data-aberto] {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .slidein-rotulo {
+    margin: 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-600, #db5713);
+  }
+
+  .slidein-tit {
+    margin: 0.35rem 0 0;
+    /* Menor que um h2 de artigo: isto é uma sugestão, não uma seção. */
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: 700;
+    /* O X mora no canto; sem esta folga o título passa por baixo dele. */
+    padding-right: 1.75rem;
+    color: var(--ink, #16181d);
+  }
+
+  .slidein-desc {
+    margin: 0.4rem 0 0;
+    font-size: 0.83rem;
+    line-height: 1.45;
+    color: var(--ink-soft, #3a3f47);
+  }
+
+  .slidein-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 0.85rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--accent, #f1681d);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+  .slidein-btn:hover {
+    background: var(--accent-600, #db5713);
+    text-decoration: none;
+  }
+
+  .slidein-x {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft, #3a3f47);
+    cursor: pointer;
+  }
+  .slidein-x:hover {
+    background: var(--bg-tint, #f6f7f9);
+  }
+
+  .slidein-btn:focus-visible,
+  .slidein-x:focus-visible {
+    outline: 2px solid var(--ink, #16181d);
+    outline-offset: 2px;
+  }
+
+  /*
+   * Sem movimento para quem pediu menos movimento: o bloco aparece e
+   * desaparece, sem deslizar. `visibility` acompanha para o elemento não
+   * ficar clicável enquanto invisível.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .slidein {
+      transition: opacity 120ms linear;
+      transform: none !important;
+    }
+  }
+</style>

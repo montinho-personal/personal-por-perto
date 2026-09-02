@@ -33,6 +33,18 @@ export type VarianteSticky = 'pergunta' | 'beneficio' | 'problema';
 export const VARIANTES: VarianteSticky[] = ['pergunta', 'beneficio', 'problema'];
 
 /**
+ * Sorteia a variante.
+ *
+ * Mora aqui, e não no motor, por um motivo de peso — literal: o motor
+ * importa a base de cidades para resolver a locução local, e o cliente que
+ * importasse dele levaria as 982 cidades para o navegador. Este módulo é
+ * só texto.
+ */
+export function sortearVariante(): VarianteSticky {
+  return VARIANTES[Math.floor(Math.random() * VARIANTES.length)];
+}
+
+/**
  * Rótulo curto de cada variante para o analytics.
  *
  * O nome semântico diz o que está sendo testado; a letra é o que cabe num

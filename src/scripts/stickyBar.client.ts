@@ -27,8 +27,14 @@
  *   entre páginas transformaria o teste em ruído — e trocar dentro da mesma
  *   página seria pior ainda para quem está lendo.
  */
-import { sortearVariante } from '../lib/stickyBar';
-import { LETRA_VARIANTE, type VarianteSticky } from '../data/stickyMensagens';
+/*
+ * Importar do módulo de DADOS, nunca do motor.
+ *
+ * O motor resolve a locução da cidade e por isso importa a base inteira —
+ * 982 arquivos. Um único `import` do motor aqui arrastava tudo isso para o
+ * bundle do navegador: 5,19 MB de JavaScript em toda página do portal.
+ */
+import { sortearVariante, LETRA_VARIANTE, type VarianteSticky } from '../data/stickyMensagens';
 import { lerMapa } from './mapaTreino';
 import { FERRAMENTAS, ETAPAS, type FerramentaId } from '../lib/jornada';
 
@@ -233,6 +239,21 @@ export function iniciarStickyBar(): void {
     }
   };
   window.addEventListener('scroll', aoRolar, { passive: true });
+
+  /*
+   * ---- Recolhe enquanto o slide-in estiver na tela ----
+   *
+   * Os dois moram no rodapé e disputariam a mesma atenção. Quem chega
+   * depois vence: o slide-in aparece só quando houve leitura de verdade, e
+   * é uma sugestão mais específica que a da barra. A barra volta com folga
+   * depois que ele sai — o próprio slide-in decide quando avisar.
+   */
+  document.addEventListener('ppp:slidein', (e) => {
+    const aberto = Boolean((e as CustomEvent<{ aberto?: boolean }>).detail?.aberto);
+    if (aberto) bloqueios.add('slidein');
+    else bloqueios.delete('slidein');
+    aplicar();
+  });
 
   /* ---- Recolhe enquanto o aviso de cookies estiver aberto ---- */
   const cookies = document.getElementById('cookie-aviso');

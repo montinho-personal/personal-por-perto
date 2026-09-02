@@ -30,14 +30,27 @@ const href = whatsappUrl(mensagem);
   .wpp-float {
     position: fixed;
     right: clamp(0.75rem, 2vw, 1.25rem);
-    /* Sobe quando a sticky bar abre: ela publica a própria altura em
-       --sticky-h, e aqui o botão só reage. Nenhum dos dois conhece o
-       outro, então mexer em um não quebra o outro.
+    /* O piso de 0.875rem existe para o respiro entre o botão e a sticky
+       bar nunca cair abaixo de 14px: com 0.75rem eles encostavam em telas
+       de 320 a 390px, onde 2vw ainda é menor que o mínimo. */
+    bottom: clamp(0.875rem, 2vw, 1.25rem);
 
-       O piso de 0.875rem existe para o respiro entre os dois nunca cair
-       abaixo de 14px: com 0.75rem o botão encostava na barra em telas de
-       320 a 390px, onde 2vw ainda é menor que o mínimo. */
-    bottom: calc(clamp(0.875rem, 2vw, 1.25rem) + var(--sticky-h, 0px));
+    /*
+     * Sobe por TRANSFORM, não por `bottom`.
+     *
+     * A barra publica a própria altura em --sticky-h e o botão só reage —
+     * nenhum dos dois conhece o outro. Mas a primeira versão disso animava
+     * `bottom`, que é propriedade de layout: o navegador registrava um
+     * layout-shift a cada quadro da transição, e o CLS da página saía de
+     * 0 para 0,0053. `transform` é composto na GPU, não recalcula layout e
+     * não conta como deslocamento.
+     *
+     * O `--lift` existe para o hover somar ao deslocamento em vez de
+     * sobrescrevê-lo: duas regras mexendo em `transform` derrubariam uma
+     * à outra.
+     */
+    --lift: 0px;
+    transform: translateY(calc(-1 * var(--sticky-h, 0px) + var(--lift)));
 
     z-index: 90;
     display: inline-flex;
@@ -63,13 +76,29 @@ const href = whatsappUrl(mensagem);
      * moverem juntos em vez de um atrás do outro.
      */
     transition:
-      bottom 260ms ease-out,
-      transform 0.15s ease,
+      transform 260ms ease-out,
       filter 0.15s ease;
   }
+  /*
+   * Some enquanto o slide-in está aberto.
+   *
+   * No mobile o slide-in é uma folha inferior centrada e o botão ficaria
+   * por cima dela; no desktop os dois ocupam o mesmo canto. Some por
+   * opacidade (e não por display) para voltar deslizando junto com o
+   * resto, e `visibility` garante que não fique clicável enquanto
+   * invisível.
+   */
+  :global(html[data-slidein]) .wpp-float {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 200ms ease-out,
+      visibility 0s linear 200ms;
+  }
+
   .wpp-float:hover {
     filter: brightness(1.07);
-    transform: translateY(-2px);
+    --lift: -2px;
   }
   .wpp-float-ico {
     display: grid;

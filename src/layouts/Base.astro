@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import Lightbox from '../components/Lightbox.astro';
 import StickyBar from '../components/StickyBar.astro';
+import SlideIn from '../components/SlideIn.astro';
 import { site } from '../data/site';
 import { organizationSchema, websiteSchema, graph } from '../lib/schema';
 
@@ -89,6 +90,7 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
     <WhatsAppFloat />
     <Lightbox />
     <StickyBar path={path} />
+    <SlideIn path={path} assunto={title} />
 
     <div id="cookie-aviso" class="cookie-aviso" hidden role="dialog" aria-live="polite" aria-label="Aviso de cookies">
       <p class="cookie-texto">

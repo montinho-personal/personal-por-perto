@@ -44,7 +44,6 @@ import {
   PADRAO,
   LOCAL_ATENDE,
   LOCAL_FORA,
-  VARIANTES,
   LIMITE_MENSAGEM,
   type RegraSticky,
   type VarianteSticky,
@@ -224,9 +223,4 @@ export function getSticky(ctx: ContextoSticky): Sticky | null {
 
   /* ---- Fallback: nunca CTA vazio ---- */
   return padrao('sem regra para o tópico: o mapa é o passo mais seguro');
-}
-
-/** Sorteia a variante. O cliente fixa a escolha pela sessão inteira. */
-export function sortearVariante(): VarianteSticky {
-  return VARIANTES[Math.floor(Math.random() * VARIANTES.length)];
 }
