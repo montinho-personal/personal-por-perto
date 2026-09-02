@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/divinopolis-mg.webp',
+    vertical: true,
+    w: 1000,
+    h: 1250,
+    alt: 'Personal trainer em Divinópolis (MG) em arte com a catedral, as palmeiras da praça central e o skyline da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Divinópolis: foco, disciplina e resultados no centro-oeste mineiro.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Divinópolis', url: 'https://cidades.ibge.gov.br/brasil/mg/divinopolis/panorama' },
     { nome: 'Prefeitura de Divinópolis', url: 'https://www.divinopolis.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['pouso-alegre-mg', 'varginha-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/itajuba-mg.webp',
+    vertical: true,
+    w: 1000,
+    h: 1500,
+    alt: 'Personal trainer em Itajubá (MG) em arte com o prédio histórico da Unifei de 1913, a Serra da Mantiqueira e o rio Sapucaí, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Itajubá: energia que vem da montanha, força que transforma, no sul de Minas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Itajubá', url: 'https://cidades.ibge.gov.br/brasil/mg/itajuba/panorama' },
     { nome: 'Prefeitura de Itajubá', url: 'https://www.itajuba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

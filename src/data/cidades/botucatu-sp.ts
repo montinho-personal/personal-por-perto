@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['bauru-sp', 'sorocaba-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/botucatu-sp.webp',
+    vertical: true,
+    w: 1000,
+    h: 1250,
+    alt: 'Personal trainer em Botucatu (SP) em arte com a rampa de voo livre na cuesta, o campus da Unesp e a Faculdade de Medicina, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Botucatu: treino perto de você, com acompanhamento profissional na cidade das cuestas paulistas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Botucatu', url: 'https://cidades.ibge.gov.br/brasil/sp/botucatu/panorama' },
     { nome: 'Prefeitura de Botucatu', url: 'https://www.botucatu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

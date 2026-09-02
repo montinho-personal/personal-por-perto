@@ -115,10 +115,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['santo-andre-sp', 'sao-paulo-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/sao-caetano-do-sul-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em São Caetano do Sul (SP) em arte com a igreja matriz, o casarão histórico e o Parque Chico Mendes, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em São Caetano do Sul: treino perto de você, com acompanhamento profissional no ABC paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — São Caetano do Sul', url: 'https://cidades.ibge.gov.br/brasil/sp/sao-caetano-do-sul/panorama' },
     { nome: 'Prefeitura de São Caetano do Sul', url: 'https://www.saocaetanodosul.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-18',
+  atualizadoEm: '2026-09-02',
 };

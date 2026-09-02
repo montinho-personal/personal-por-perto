@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['maceio-al'],
 
+  capaArte: {
+    src: '/capas-cidade/arapiraca-al.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Arapiraca (AL) em arte com o Monumento ao Fumo, a Catedral Bom Jesus dos Aflitos, a feira livre e a praça da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Arapiraca: foco, disciplina e constância na segunda maior cidade de Alagoas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Arapiraca', url: 'https://cidades.ibge.gov.br/brasil/al/arapiraca/panorama' },
     { nome: 'Prefeitura de Arapiraca', url: 'https://www.arapiraca.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };
