@@ -133,6 +133,25 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
       (function () {
         var CHAVE = 'ppp-consentimento-cookies';
 
+        /*
+         * Modo de depuração: `?ga_debug=1` em qualquer URL do site.
+         *
+         * O DebugView do GA4 só mostra sessões marcadas como depuração —
+         * navegar normalmente não aparece lá, mesmo com os eventos sendo
+         * enviados. Sem isto, conferir a instrumentação exigiria instalar
+         * uma extensão no navegador; com isto, basta a query string.
+         *
+         * Fica preso à aba (sessionStorage) para sobreviver à navegação
+         * entre páginas sem contaminar o resto da audiência: quem não pediu
+         * o parâmetro nunca entra em modo de depuração.
+         */
+        var CHAVE_DEBUG = 'ppp-ga-debug';
+        var debug = false;
+        try {
+          if (location.search.indexOf('ga_debug=1') > -1) sessionStorage.setItem(CHAVE_DEBUG, '1');
+          debug = sessionStorage.getItem(CHAVE_DEBUG) === '1';
+        } catch (e) {}
+
         // Carrega o Google Analytics 4 apenas após consentimento (LGPD).
         function carregarAnalytics() {
           if (!gaId || window.__pppGAOn) return;
@@ -144,7 +163,9 @@ const jsonLd = graph(organizationSchema(), websiteSchema(), ...schema);
           window.dataLayer = window.dataLayer || [];
           window.gtag = function () { window.dataLayer.push(arguments); };
           window.gtag('js', new Date());
-          window.gtag('config', gaId, { anonymize_ip: true });
+          var conf = { anonymize_ip: true };
+          if (debug) conf.debug_mode = true;
+          window.gtag('config', gaId, conf);
         }
 
         var consentido = null;
