@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['caxias-do-sul-rs', 'porto-alegre-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/passo-fundo-rs.webp',
+    vertical: true,
+    w: 1000,
+    h: 1250,
+    alt: 'Personal trainer em Passo Fundo (RS) em arte com a Catedral Nossa Senhora Aparecida, o Parque da Gare e o campus da Universidade de Passo Fundo, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Passo Fundo: foco, disciplina e constância no planalto gaúcho.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Passo Fundo', url: 'https://cidades.ibge.gov.br/brasil/rs/passo-fundo/panorama' },
     { nome: 'Prefeitura de Passo Fundo', url: 'https://www.pmpf.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

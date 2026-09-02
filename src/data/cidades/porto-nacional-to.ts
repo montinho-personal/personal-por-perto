@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['palmas-to', 'paraiso-do-tocantins-to', 'gurupi-to'],
 
+  capaArte: {
+    src: '/capas-cidade/porto-nacional-to.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Porto Nacional (TO) em arte com o centro histórico, a Catedral Nossa Senhora das Mercês e o rio Tocantins, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Porto Nacional: onde o Tocantins encontra a história, a força e o movimento.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Porto Nacional', url: 'https://cidades.ibge.gov.br/brasil/to/porto-nacional/panorama' },
     { nome: 'Prefeitura de Porto Nacional', url: 'https://portonacional.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

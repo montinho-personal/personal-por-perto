@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['volta-redonda-rj', 'angra-dos-reis-rj'],
 
+  capaArte: {
+    src: '/capas-cidade/resende-rj.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Resende (RJ) em arte com o Pico das Agulhas Negras, o rio Paraíba do Sul e a paisagem de Visconde de Mauá, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Resende: foco, disciplina e resultados no sul fluminense, aos pés da Serra da Mantiqueira.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Resende', url: 'https://cidades.ibge.gov.br/brasil/rj/resende/panorama' },
     { nome: 'Prefeitura de Resende', url: 'https://www.resende.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

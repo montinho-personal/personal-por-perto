@@ -78,6 +78,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['brasilia-df', 'ceilandia-df', 'aguas-claras-df'],
 
+  capaArte: {
+    src: '/capas-cidade/taguatinga-df.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Taguatinga (DF) em arte com a Praça do Relógio, a Avenida Comercial e o Parque Ecológico Saburo Onoyama, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Taguatinga: foco, disciplina e constância no coração do Distrito Federal.',
+  },
   fontes: [
     {
       nome: 'Administração Regional de Taguatinga — Governo do DF',
@@ -92,5 +99,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/wp-content/uploads/2022/05/Taguatinga.pdf',
     },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-02',
 };

@@ -95,10 +95,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['ilheus-ba', 'itabuna-ba'],
 
+  capaArte: {
+    src: '/capas-cidade/itacare-ba.webp',
+    vertical: true,
+    w: 1000,
+    h: 1500,
+    alt: 'Personal trainer em Itacaré (BA) em arte com a Praia da Concha, a Praia da Tiririca e a mata atlântica encontrando o mar, com o treino funcional na areia em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Itacaré: treino para a vida, com acompanhamento profissional no litoral sul da Bahia.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Itacaré', url: 'https://cidades.ibge.gov.br/brasil/ba/itacare/panorama' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Itacaré', url: 'https://itacare.ba.gov.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-09-02',
 };

@@ -115,10 +115,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['cascavel-pr', 'foz-do-iguacu-pr'],
 
+  capaArte: {
+    src: '/capas-cidade/toledo-pr.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Toledo (PR) em arte com a Catedral Cristo Rei, o Parque Ecológico Diva Paim Barth e os silos do agronegócio, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Toledo: mais saúde, mais energia, mais vida, com acompanhamento profissional no oeste do Paraná.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Toledo', url: 'https://cidades.ibge.gov.br/brasil/pr/toledo/panorama' },
     { nome: 'Prefeitura de Toledo', url: 'https://www.toledo.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-09-02',
 };
