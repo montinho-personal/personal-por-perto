@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['governador-valadares-mg', 'belo-horizonte-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/ipatinga-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Ipatinga (MG) em arte com a ponte em arco sobre o rio Doce, o skyline do vale e a serra ao fundo, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Ipatinga: disciplina, constância e resultados no Vale do Aço mineiro.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Ipatinga', url: 'https://cidades.ibge.gov.br/brasil/mg/ipatinga/panorama' },
     { nome: 'Prefeitura de Ipatinga', url: 'https://www.ipatinga.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

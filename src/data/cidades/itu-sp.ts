@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['sorocaba-sp', 'campinas-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/itu-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Itu (SP) em arte com a igreja matriz, o orelhão gigante e a Praça Padre Miguel, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Itu: foco, disciplina e constância na cidade dos exageros, no interior paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Itu', url: 'https://cidades.ibge.gov.br/brasil/sp/itu/panorama' },
     { nome: 'Prefeitura de Itu', url: 'https://www.itu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

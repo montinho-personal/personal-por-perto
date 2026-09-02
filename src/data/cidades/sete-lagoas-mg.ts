@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/sete-lagoas-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Sete Lagoas (MG) em arte com a Lagoa Paulino e a Serra de Santa Helena ao fundo, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Sete Lagoas: disciplina, constância e foco no centro de Minas Gerais.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Sete Lagoas', url: 'https://cidades.ibge.gov.br/brasil/mg/sete-lagoas/panorama' },
     { nome: 'Prefeitura de Sete Lagoas', url: 'https://www.setelagoas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

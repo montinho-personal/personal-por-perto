@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['florianopolis-sc', 'itajai-sc', 'chapeco-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/criciuma-sc.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Criciúma (SC) em arte com a catedral e o centro da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Criciúma: força, disciplina e resultado no sul catarinense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Criciúma', url: 'https://cidades.ibge.gov.br/brasil/sc/criciuma/panorama' },
     { nome: 'Prefeitura de Criciúma', url: 'https://www.criciuma.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

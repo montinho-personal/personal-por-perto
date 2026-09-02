@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-buritis';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer no Buritis (BH): o guia do bairro';
 const description =
   'Personal trainer no Buritis: preços de BH, a pista da Henrique Badaró, o Parque Aggeo Pio Sobrinho e o treino nas ladeiras do bairro.';
 
+const capa = '/capas-bairros/buritis.webp';
+const capaAlt =
+  'Personal trainer no Buritis (Belo Horizonte) em arte com a placa do Parque Aggeo Pio Sobrinho e as ruas arborizadas do bairro, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Belo Horizonte</p>
     <h1>Personal trainer no Buritis: treino em três altitudes na região Oeste de BH</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O Buritis não é plano em nenhum lugar — e transformou isso em

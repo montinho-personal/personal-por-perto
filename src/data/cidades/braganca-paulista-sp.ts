@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['atibaia-sp', 'campinas-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/braganca-paulista-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Bragança Paulista (SP) em arte com o letreiro Eu amo Bragança Paulista, o lago do centro e as praças da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Bragança Paulista: treino perto de você, com acompanhamento profissional no circuito das águas paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Bragança Paulista', url: 'https://cidades.ibge.gov.br/brasil/sp/braganca-paulista/panorama' },
     { nome: 'Prefeitura de Bragança Paulista', url: 'https://www.braganca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

@@ -90,10 +90,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['macae-rj', 'cabo-frio-rj'],
 
+  capaArte: {
+    src: '/capas-cidade/rio-das-ostras-rj.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Rio das Ostras (RJ) em arte com a Praia de Costazul, o píer, a Praça da Baleia e a Lagoa de Iriry, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Rio das Ostras: foco, disciplina e constância no litoral norte fluminense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Rio das Ostras', url: 'https://cidades.ibge.gov.br/brasil/rj/rio-das-ostras/panorama' },
     { nome: 'Prefeitura de Rio das Ostras', url: 'https://www.riodasostras.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

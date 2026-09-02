@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['varginha-mg', 'belo-horizonte-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/pocos-de-caldas-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Poços de Caldas (MG) em arte com o Palace Hotel, a fonte da praça central e os prédios do centro, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Poços de Caldas: mais que treino, um estilo de vida no sul de Minas.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Poços de Caldas', url: 'https://cidades.ibge.gov.br/brasil/mg/pocos-de-caldas/panorama' },
     { nome: 'Prefeitura de Poços de Caldas', url: 'https://www.pocosdecaldas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

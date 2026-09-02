@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['fortaleza-ce', 'juazeiro-do-norte-ce'],
 
+  capaArte: {
+    src: '/capas-cidade/sobral-ce.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Sobral (CE) em arte com o Arco Nossa Senhora de Fátima, a torre da catedral e o casario do centro histórico, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Sobral: mente forte, corpo forte, vida forte no noroeste cearense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Sobral', url: 'https://cidades.ibge.gov.br/brasil/ce/sobral/panorama' },
     { nome: 'Prefeitura de Sobral', url: 'https://www.sobral.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

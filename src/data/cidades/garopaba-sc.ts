@@ -96,10 +96,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['florianopolis-sc', 'palhoca-sc', 'tubarao-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/garopaba-sc.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Garopaba (SC) em arte com a enseada, os barcos de pesca e um surfista na praia, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Garopaba: seu melhor investimento é você, com acompanhamento profissional no litoral sul de Santa Catarina.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Garopaba', url: 'https://cidades.ibge.gov.br/brasil/sc/garopaba/panorama' },
     { nome: 'Prefeitura de Garopaba', url: 'https://www.garopaba.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

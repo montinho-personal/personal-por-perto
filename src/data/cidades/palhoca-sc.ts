@@ -90,10 +90,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['florianopolis-sc', 'sao-jose-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/palhoca-sc.webp',
+    w: 1200,
+    h: 675,
+    alt: 'Personal trainer em Palhoça (SC) em arte com a orla, a passarela e o mar da praia, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Palhoça: foco, disciplina e resultados na Grande Florianópolis.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Palhoça', url: 'https://cidades.ibge.gov.br/brasil/sc/palhoca/panorama' },
     { nome: 'Prefeitura de Palhoça', url: 'https://www.palhoca.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

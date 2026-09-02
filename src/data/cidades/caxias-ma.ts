@@ -81,10 +81,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['timon-ma', 'sao-luis-ma', 'imperatriz-ma'],
 
+  capaArte: {
+    src: '/capas-cidade/caxias-ma.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Caxias (MA) em arte com o Memorial da Balaiada, a igreja e o casario histórico do centro, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Caxias: foco, disciplina e constância na terra do Memorial da Balaiada, no leste maranhense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Caxias', url: 'https://cidades.ibge.gov.br/brasil/ma/caxias/panorama' },
     { nome: 'Prefeitura Municipal de Caxias', url: 'https://caxias.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

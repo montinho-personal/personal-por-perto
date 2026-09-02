@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['joinville-sc', 'blumenau-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/jaragua-do-sul-sc.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Jaraguá do Sul (SC) em arte com a Chiesetta Alpina no alto do Pico Malwee, o Parque Malwee, a Igreja Matriz São Sebastião e o centro da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Jaraguá do Sul: treino perto de você, com acompanhamento profissional no norte catarinense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Jaraguá do Sul', url: 'https://cidades.ibge.gov.br/brasil/sc/jaragua-do-sul/panorama' },
     { nome: 'Prefeitura de Jaraguá do Sul', url: 'https://www.jaraguadosul.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };
