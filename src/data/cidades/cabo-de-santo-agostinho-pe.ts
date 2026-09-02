@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['recife-pe', 'jaboatao-dos-guararapes-pe'],
 
+  capaArte: {
+    src: '/capas-cidade/cabo-de-santo-agostinho-pe.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer no Cabo de Santo Agostinho (PE) em arte com a Praia de Calhetas, o Farol de Nazaré, a Praia de Gaibu e a Enseada dos Corais, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado no Cabo de Santo Agostinho: foco, disciplina e resultados no litoral sul de Pernambuco.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Cabo de Santo Agostinho', url: 'https://cidades.ibge.gov.br/brasil/pe/cabo-de-santo-agostinho/panorama' },
     { nome: 'Prefeitura do Cabo de Santo Agostinho', url: 'https://www.cabo.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

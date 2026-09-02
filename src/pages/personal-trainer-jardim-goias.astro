@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-jardim-goias';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Goiânia', url: '/personal-trainer/goiania-go/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer no Jardim Goiás: qual formato escolher';
 const description =
   'Personal trainer no Jardim Goiás: compare treino no condomínio-resort, no Parque Flamboyant, em studio e a domicílio — com preços de Goiânia.';
 
+const capa = '/capas-bairros/jardim-goias.webp';
+const capaAlt =
+  'Personal trainer no Jardim Goiás (Goiânia) em arte com o skyline de torres do bairro e o lago do Parque Flamboyant, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Goiânia</p>
     <h1>Personal trainer no Jardim Goiás: parque, condomínio-resort, studio ou casa?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhum bairro do Centro-Oeste construiu tanto em volta de um parque: o

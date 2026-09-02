@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['novo-hamburgo-rs', 'canoas-rs', 'porto-alegre-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/sao-leopoldo-rs.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em São Leopoldo (RS) em arte com o casario histórico e o skyline da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em São Leopoldo: foco, disciplina e constância no berço da colonização alemã no Rio Grande do Sul.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — São Leopoldo', url: 'https://cidades.ibge.gov.br/brasil/rs/sao-leopoldo/panorama' },
     { nome: 'Prefeitura de São Leopoldo', url: 'https://www.saoleopoldo.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

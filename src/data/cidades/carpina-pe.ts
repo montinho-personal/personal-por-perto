@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['recife-pe', 'igarassu-pe', 'caruaru-pe'],
 
+  capaArte: {
+    src: '/capas-cidade/carpina-pe.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Carpina (PE) em arte com a igreja e o coreto da praça central e as ruas de comércio do centro, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Carpina: treino perto de você, com acompanhamento profissional na Zona da Mata Norte pernambucana.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Carpina', url: 'https://cidades.ibge.gov.br/brasil/pe/carpina/panorama' },
     { nome: 'Prefeitura de Carpina', url: 'https://www.carpina.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['cabo-frio-rj', 'saquarema-rj', 'marica-rj'],
 
+  capaArte: {
+    src: '/capas-cidade/araruama-rj.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Araruama (RJ) em arte com a Lagoa de Araruama, a Praia da Pontinha, os barcos à vela e o letreiro da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Araruama: foco, disciplina e constância às margens da maior lagoa hipersalina do mundo.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Araruama', url: 'https://cidades.ibge.gov.br/brasil/rj/araruama/panorama' },
     { nome: 'Prefeitura de Araruama', url: 'https://www.araruama.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

@@ -91,6 +91,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg', 'ribeirao-das-neves-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/santa-luzia-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Santa Luzia (MG) em arte com o Teatro Municipal Antônio Roberto de Almeida e o casario do centro histórico, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Santa Luzia: treino perto de você, com acompanhamento profissional na região metropolitana de Belo Horizonte.',
+  },
   fontes: [
     {
       nome: 'IBGE Cidades — Santa Luzia',
@@ -99,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Luzia', url: 'https://www.santaluzia.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

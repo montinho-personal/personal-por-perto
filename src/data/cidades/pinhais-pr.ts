@@ -67,9 +67,16 @@ export const cidade: Cidade = {
     'Menor município do Paraná em área, mas denso e colado a Curitiba, Pinhais oferece um cenário favorável para quem busca personal trainer: deslocamentos curtos, boa oferta de academias no Centro e nos bairros, o Parque das Águas como referência de treino ao ar livre e fácil acesso às opções da capital. Para o aluno, isso significa flexibilidade entre treino em academia, ao ar livre ou em casa — tudo a poucos minutos.',
   vizinhas: ['curitiba-pr', 'sao-jose-dos-pinhais-pr', 'araucaria-pr'],
 
+  capaArte: {
+    src: '/capas-cidade/pinhais-pr.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Pinhais (PR) em arte com o Parque das Águas, o centro de eventos Expotrade e a orla do parque, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Pinhais: treino perto de você, com acompanhamento profissional na região metropolitana de Curitiba.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Pinhais', url: 'https://cidades.ibge.gov.br/brasil/pr/pinhais/panorama' },
     { nome: 'Prefeitura de Pinhais', url: 'https://pinhais.atende.net/cidadao/pagina/caracteristicas-do-municipio' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-  ], atualizadoEm: '2026-06-29',
+  ], atualizadoEm: '2026-09-01',
 };

@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['chapeco-sc', 'concordia-sc'],
 
+  capaArte: {
+    src: '/capas-cidade/xanxere-sc.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Xanxerê (SC) em arte com a igreja matriz e a praça central da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Xanxerê: foco, disciplina e constância no oeste catarinense.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Xanxerê', url: 'https://cidades.ibge.gov.br/brasil/sc/xanxere/panorama' },
     { nome: 'Prefeitura de Xanxerê', url: 'https://xanxere.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

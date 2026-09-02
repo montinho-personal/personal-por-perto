@@ -93,10 +93,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['brasilia-df', 'aguas-claras-df'],
 
+  capaArte: {
+    src: '/capas-cidade/ceilandia-df.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Ceilândia (DF) em arte com a Feira Central de Ceilândia e as avenidas largas da região, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Ceilândia: força, foco e resultados na maior região administrativa do Distrito Federal.',
+  },
   fontes: [
     { nome: 'Administração Regional de Ceilândia (GDF)', url: 'https://www.ceilandia.df.gov.br/' },
     { nome: 'Metrô-DF — Companhia do Metropolitano do DF', url: 'https://metro.df.gov.br/' },
     { nome: 'Codeplan — PDAD Ceilândia', url: 'https://www.codeplan.df.gov.br/pdad-ceilandia-2/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-brooklin';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer no Brooklin (SP): formatos e preços';
 const description =
   'Personal trainer no Brooklin: domicílio, academia do prédio, studio ou parque — o comparativo dos formatos, com preços de São Paulo.';
 
+const capa = '/capas-bairros/brooklin.webp';
+const capaAlt =
+  'Personal trainer no Brooklin (São Paulo) em arte com a ponte estaiada Octávio Frias de Oliveira, as torres de escritórios e a ciclovia da marginal, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de São Paulo</p>
     <h1>Personal trainer no Brooklin: qual formato combina com a sua rotina?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) auto 0; max-width: 560px">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Poucos bairros de São Paulo mudaram tanto em uma geração: o

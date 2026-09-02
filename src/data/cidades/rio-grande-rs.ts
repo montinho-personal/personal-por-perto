@@ -90,10 +90,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['pelotas-rs', 'porto-alegre-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/rio-grande-rs.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Rio Grande (RS) em arte com os Molhes da Barra, o Mercado Público, a Catedral de São Pedro e a Praça Tamandaré, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Rio Grande: força e constância na cidade mais antiga do Rio Grande do Sul.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Rio Grande', url: 'https://cidades.ibge.gov.br/brasil/rs/rio-grande/panorama' },
     { nome: 'Prefeitura de Rio Grande', url: 'https://www.riogrande.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-24',
+  atualizadoEm: '2026-09-01',
 };

@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-aldeota';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-01';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Personal Trainer em Fortaleza', url: '/personal-trainer/fortaleza-ce/' },
@@ -74,21 +74,38 @@ const title = 'Personal Trainer na Aldeota (Fortaleza): onde treinar';
 const description =
   'Personal trainer na Aldeota: as praças, o Parque do Cocó, os studios e a academia do prédio — lista comentada com preços de Fortaleza.';
 
+const capa = '/capas-bairros/aldeota.webp';
+const capaAlt =
+  'Personal trainer na Aldeota (Fortaleza) em arte com os prédios do bairro e o letreiro da Aldeota, com o treino em primeiro plano — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Fortaleza</p>
     <h1>Personal trainer na Aldeota: os cinco lugares onde o bairro treina</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: var(--sp-4) 0 0">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="675"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Se o vizinho Meireles tem a orla, a Aldeota tem todo o resto:

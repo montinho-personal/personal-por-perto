@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['bauru-sp', 'botucatu-sp', 'araraquara-sp'],
 
+  capaArte: {
+    src: '/capas-cidade/jau-sp.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Jaú (SP) em arte com a catedral e os prédios históricos do centro, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Jaú: foco, disciplina e resultados no centro-oeste paulista.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Jaú', url: 'https://cidades.ibge.gov.br/brasil/sp/jau/panorama' },
     { nome: 'Prefeitura da Estância Turística de Jaú', url: 'https://www.jau.sp.gov.br/sobre-jahu' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

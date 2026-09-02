@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['campo-grande-ms', 'dourados-ms'],
 
+  capaArte: {
+    src: '/capas-cidade/tres-lagoas-ms.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Três Lagoas (MS) em arte com a orla da lagoa, os coqueiros e o mirante da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Três Lagoas: foco, disciplina e resultados no leste de Mato Grosso do Sul.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Três Lagoas', url: 'https://cidades.ibge.gov.br/brasil/ms/tres-lagoas/panorama' },
     { nome: 'Prefeitura de Três Lagoas', url: 'https://www.treslagoas.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };

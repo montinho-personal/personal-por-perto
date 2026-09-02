@@ -91,10 +91,17 @@ export const cidade: Cidade = {
 
   vizinhas: ['juiz-de-fora-mg', 'muriae-mg', 'barbacena-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/uba-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Ubá (MG) em arte com a Praça São Januário, a igreja matriz e o centro da cidade, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Ubá: treino perto de você, com acompanhamento profissional na Zona da Mata mineira.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Ubá', url: 'https://cidades.ibge.gov.br/brasil/mg/uba/panorama' },
     { nome: 'Prefeitura de Ubá', url: 'https://www.uba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-01',
 };
