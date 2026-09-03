@@ -1,0 +1,308 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/perda-de-forca-no-mounjaro/',
+    titulo: 'Mounjaro e perda de força: o que muda no treino',
+    descricao: 'A diferença entre um dia sem disposição e uma queda que persiste por semanas — e o que fazer com cada uma.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/',
+    titulo: 'Quanto tempo dura a fraqueza do Mounjaro?',
+    descricao: 'Por que a disposição vem em ondas e volta a cada aumento de dose, e quando o tempo vira sinal de alerta.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar',
+    descricao: 'Os movimentos que sustentam um treino de membros inferiores e como organizá-los na semana.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer',
+    descricao: 'Execução, variações e os ajustes que deixam o movimento seguro em fases de menos energia.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/fraqueza-nas-pernas';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Fraqueza nas pernas com Mounjaro: o que pode ser', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que a fraqueza costuma aparecer mais nas pernas?',
+    resposta:
+      'Uma explicação plausível do ponto de vista do exercício é a conta de energia: as pernas concentram os maiores grupos musculares do corpo e sustentam você o dia inteiro, então são elas que mais sentem quando a ingestão calórica cai. Some a isso o fato de que agachamento, leg press e afins são os exercícios mais exigentes de qualquer treino, e fica fácil entender por que a queda aparece primeiro ali. Isso explica um padrão comum — não substitui avaliação médica do seu caso.',
+  },
+  {
+    pergunta: 'Fraqueza nas pernas pode ser algo além da falta de energia?',
+    resposta:
+      'Pode, e é justamente por isso que este conteúdo não tenta responder pelo médico. Fraqueza em membros inferiores tem várias causas possíveis, e algumas nada têm a ver com treino ou com alimentação. O que muda a urgência é o quadro em volta: fraqueza que aparece de um lado só, dormência, formigamento, alteração de sensibilidade, dificuldade para caminhar ou subir escadas no dia a dia, ou instalação súbita — nenhum desses é assunto de planilha de treino. Procure o médico, e diante de algo agudo e importante, procure atendimento.',
+  },
+  {
+    pergunta: 'Devo parar de treinar pernas até melhorar?',
+    resposta:
+      'Parar por completo é a opção que mais custa. As pernas concentram boa parte da massa magra do corpo, e é ela que se quer preservar durante uma perda de peso acelerada. O caminho que costuma funcionar é reduzir sem interromper: menos séries, cargas confortáveis, e preferência por máquinas ou variações apoiadas quando o equilíbrio está instável. Já dificuldade real de sustentar o próprio peso é outro assunto — esse pede médico antes de qualquer treino.',
+  },
+  {
+    pergunta: 'Posso trocar agachamento livre por máquina nessa fase?',
+    resposta:
+      'Pode, e muitas vezes é a decisão mais sensata. Leg press, cadeira extensora, mesa flexora e agachamento apoiado entregam estímulo ao mesmo grupo muscular exigindo bem menos do equilíbrio e da estabilização — o que importa quando a energia está baixa. Não é rebaixar o treino: é escolher a ferramenta certa para a fase. O agachamento livre volta quando a disposição voltar.',
+  },
+  {
+    pergunta: 'Cãibras nas pernas têm a ver com isso?',
+    resposta:
+      'Cãibras são uma queixa comum e têm causas variadas — entre elas hidratação e ingestão alimentar, que costumam mudar bastante durante o tratamento. Mas a relação não é automática e o autodiagnóstico atrapalha mais do que ajuda, sobretudo quando envolve suplementação por conta própria. Cãibras frequentes, intensas ou acompanhadas de outros sintomas merecem ser levadas ao médico, que enxerga exames e histórico.',
+  },
+];
+
+const title = 'Fraqueza nas pernas com Mounjaro: o que pode ser';
+const description =
+  'Por que a queda de disposição costuma aparecer primeiro nas pernas em quem usa Mounjaro (tirzepatida), como adaptar o treino de membros inferiores nessa fase e quais sinais não são assunto de treino. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Fraqueza nas pernas com Mounjaro: o que pode ser</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Entre as queixas de quem usa Mounjaro (tirzepatida) sob prescrição, a
+      sensação de pernas pesadas ou bambas aparece com frequência — e quase
+      sempre antes de qualquer outra. Existe uma explicação simples do ponto
+      de vista do exercício para isso acontecer justamente ali.
+    </p>
+
+    <p class="lead">
+      Mas existe também uma fronteira que este texto não vai atravessar:
+      fraqueza em membros inferiores tem causas que não têm nada a ver com
+      treino nem com alimentação. Este guia mostra o que dá para ajustar na
+      academia, e é bem explícito sobre o que não é assunto de planilha.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Por que as pernas primeiro</h2>
+      <p>
+        A resposta é aritmética antes de ser fisiológica. As pernas
+        concentram os maiores grupos musculares do corpo e trabalham o dia
+        inteiro, mesmo fora da academia — cada escada, cada caminhada até o
+        carro. São elas que mais consomem energia, então são elas que mais
+        avisam quando a energia diminui.
+      </p>
+
+      <p>
+        Some a isso a natureza dos exercícios: agachamento, leg press,
+        levantamento terra e afins são os movimentos mais exigentes de
+        qualquer treino, porque recrutam muita massa muscular de uma vez.
+        Um déficit de energia que passa despercebido numa rosca direta fica
+        evidente na terceira série de agachamento.
+      </p>
+
+      <p>
+        Nada disso é diagnóstico. É a explicação de por que um padrão comum
+        se manifesta primeiro nos membros inferiores — e por que ele
+        costuma acompanhar as fases descritas em <a
+        href="/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/">quanto tempo
+        dura a fraqueza do Mounjaro</a>.
+      </p>
+
+      <h2>O que não é assunto de treino</h2>
+      <p>
+        Esta seção vem antes das dicas de propósito. "Fraqueza nas pernas" é
+        uma expressão que cobre coisas muito diferentes, e algumas delas não
+        se resolvem com ajuste de série.
+      </p>
+
+      <div class="callout">
+        <strong>Procure o médico, sem passar pela academia, se houver:</strong>
+        <ul>
+          <li>fraqueza em apenas um lado do corpo;</li>
+          <li>dormência, formigamento ou alteração de sensibilidade;</li>
+          <li>
+            dificuldade real no dia a dia — subir escadas, levantar da
+            cadeira, caminhar distâncias curtas;
+          </li>
+          <li>instalação súbita, sem relação com esforço;</li>
+          <li>
+            inchaço, dor ou vermelhidão em uma das pernas, sobretudo se
+            assimétrica;
+          </li>
+          <li>fraqueza acompanhada de tontura, desmaio ou falta de ar.</li>
+        </ul>
+        Diante de algo agudo e importante, procure atendimento — não a
+        próxima consulta de rotina.
+      </div>
+
+      <p>
+        O que este conteúdo cobre é outra coisa, bem mais delimitada:
+        pernas que respondem menos no treino, em alguém que continua
+        funcionando normalmente fora dele.
+      </p>
+
+      <h2>Como adaptar o treino de pernas nessa fase</h2>
+      <p>
+        A tentação é pular o treino de pernas até melhorar. É a decisão mais
+        cara disponível, porque são justamente as pernas que concentram boa
+        parte da massa magra que se quer preservar durante a perda de peso.
+        Cortar o estímulo dali é somar dois efeitos na mesma direção.
+      </p>
+
+      <p>
+        O ajuste sensato mantém o treino e troca as ferramentas:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Prefira apoio a equilíbrio.</strong> Leg press, cadeira
+          extensora, mesa flexora e agachamento apoiado entregam estímulo ao
+          mesmo grupo muscular exigindo muito menos estabilização. Quando as
+          pernas estão instáveis, isso é segurança e não facilitação.
+        </li>
+        <li>
+          <strong>Reduza a carga, não o esforço.</strong> Uma série levada
+          perto do limite com metade do peso continua sendo estímulo real. O
+          raciocínio completo está em <a
+          href="/mounjaro-e-treino/perda-de-forca-no-mounjaro/">Mounjaro e
+          perda de força</a>.
+        </li>
+        <li>
+          <strong>Corte volume antes de tirar o dia.</strong> Duas séries de
+          três exercícios valem muito mais que zero treino de pernas na
+          semana.
+        </li>
+        <li>
+          <strong>Cuidado com movimentos de alta demanda técnica.</strong>
+          Levantamento terra e agachamento livre com carga alta pedem
+          coordenação que a fadiga compromete. Não é o momento de perseguir
+          recorde neles.
+        </li>
+        <li>
+          <strong>Deixe margem no fim da sessão.</strong> Sair da academia
+          conseguindo descer a escada com firmeza é um critério prático
+          melhor do que qualquer número na planilha.
+        </li>
+      </ul>
+
+      <p>
+        A estrutura completa de um treino de membros inferiores, com os
+        movimentos e a organização na semana, está em <a
+        href="/musculacao/treino-de-pernas/">treino de pernas</a>.
+      </p>
+
+      <h2>Pernas pesadas não são necessariamente pernas fracas</h2>
+      <p>
+        Vale separar duas sensações que costumam ser descritas com as mesmas
+        palavras. <strong>Peso</strong> é a sensação de esforço aumentado —
+        tudo parece mais difícil, mas você consegue fazer.
+        <strong>Fraqueza</strong> é falha real de produção de força — você
+        tenta e o movimento não sai.
+      </p>
+
+      <p>
+        A primeira costuma acompanhar fases de menos energia e melhora com
+        ajuste de sessão, descanso e alimentação. A segunda, sobretudo se
+        for progressiva ou aparecer fora da academia, é a que merece
+        avaliação médica sem demora.
+      </p>
+
+      <p>
+        Registrar as cargas ajuda a distinguir as duas com honestidade —
+        "achei o treino pesado" vira "o leg press caiu de 120 kg para 80 kg
+        em cinco semanas", que é uma informação bem mais útil na consulta.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> as pernas sentem primeiro porque são os
+        maiores grupos musculares e os exercícios mais exigentes do treino —
+        um déficit de energia aparece ali antes de aparecer em qualquer outro
+        lugar. Nessa fase, troque equilíbrio por apoio, reduza carga
+        preservando o esforço e corte volume antes de tirar o dia de pernas
+        da semana. Mas fraqueza de um lado só, dormência, dificuldade para
+        caminhar no dia a dia ou instalação súbita não são assunto de treino:
+        são de médico, e alguns deles com urgência.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

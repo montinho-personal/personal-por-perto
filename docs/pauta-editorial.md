@@ -31,8 +31,8 @@ Todos com ressalva de médico, sem promessa de resultado (regra do CLAUDE.md).
 |---|---|---|---|
 | 1 | Quanto tempo dura a fraqueza do Mounjaro | `quanto-tempo-dura-a-fraqueza` | ✅ 2026-09-02 |
 | 2 | Mounjaro e perda de força: o que muda no treino | `perda-de-forca-no-mounjaro` | ✅ 2026-09-02 |
-| 3 | Fraqueza nas pernas com Mounjaro | `fraqueza-nas-pernas` | |
-| 4 | Parei o Mounjaro: manter peso e massa | `parei-o-mounjaro` | |
+| 3 | Fraqueza nas pernas com Mounjaro | `fraqueza-nas-pernas` | ✅ 2026-09-02 |
+| 4 | Parei o Mounjaro: manter peso e massa | `parei-o-mounjaro` | ✅ 2026-09-02 |
 | 5 | Cãibras e hidratação no GLP-1 | `caibras-e-hidratacao` | |
 | 6 | Ozempic ou Mounjaro para quem treina | `ozempic-ou-mounjaro-para-quem-treina` | |
 | 7 | Como ajustar a carga durante o GLP-1 | `ajustar-carga-no-glp1` | |

@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/como-manter-o-peso-perdido/',
+    titulo: 'Como manter o peso perdido',
+    descricao: 'Por que manter costuma ser mais difícil que perder, e quais hábitos aparecem em quem consegue.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/treino-de-forca/',
+    titulo: 'Treino de força: como estruturar',
+    descricao: 'Como organizar um treino voltado a produzir e sustentar força ao longo do tempo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal: perder gordura e ganhar músculo',
+    descricao: 'Quando os dois acontecem juntos, para quem costuma funcionar e o que esperar de prazo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/mounjaro-e-treino/parei-o-mounjaro';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Parei o Mounjaro: como manter peso e massa muscular', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'É verdade que o peso volta depois que se para o medicamento?',
+    resposta:
+      'Estudos de extensão com medicamentos dessa classe descrevem recuperação significativa do peso após a interrupção, e é honesto dizer isso em vez de prometer o contrário. Mas "descrito em média" não é destino individual: a média inclui quem parou o tratamento e voltou exatamente à rotina que levou ao ponto de partida. O que muda a conta é o que fica de pé depois — massa muscular preservada, hábito de treino estabelecido, alimentação sustentável. Nada disso é garantia, e as decisões sobre interromper ou manter o tratamento são do médico.',
+  },
+  {
+    pergunta: 'Por que a fome volta com tanta força?',
+    resposta:
+      'Do ponto de vista do exercício, dois fatores se somam e ambos são esperados. O primeiro é o fim do efeito do medicamento sobre o apetite — o freio que existia deixa de existir. O segundo é fisiológico e vale para qualquer emagrecimento, com ou sem remédio: um corpo mais leve gasta menos energia por dia, e a regulação do apetite tende a favorecer a recuperação do peso perdido. Entender isso ajuda a planejar em vez de se culpar. O manejo clínico da transição é assunto do médico e do nutricionista.',
+  },
+  {
+    pergunta: 'O treino consegue compensar a volta da fome?',
+    resposta:
+      'Compensar, não — a matemática do gasto calórico do exercício raramente vence a de uma ingestão maior, e prometer isso seria desonesto. O que o treino faz é outra coisa, e talvez mais importante: preservar a massa magra conquistada, o que sustenta o gasto energético de repouso e a capacidade funcional. Além disso, quem mantém rotina de treino tende a manter as outras rotinas junto. O treino é a âncora do período, não a solução isolada.',
+  },
+  {
+    pergunta: 'Devo mudar o treino depois de parar?',
+    resposta:
+      'Sim, e para melhor. Durante o uso, o treino costuma operar em modo de preservação: volume reduzido, progressão segurada, foco em manter. Com o apetite e a energia voltando ao normal, existe combustível para progredir de novo — aumentar volume gradualmente, retomar a evolução de cargas, voltar aos movimentos que a fase anterior pedia para segurar. É a hora de construir, não só de manter.',
+  },
+  {
+    pergunta: 'Quanto tempo dura a fase crítica depois de parar?',
+    resposta:
+      'Não há um prazo único e ninguém pode prometer um. O que faz diferença prática é tratar os primeiros meses como um período que exige atenção deliberada: pesagem em intervalo definido, treino em dia, comida planejada em vez de improvisada. Ganhos pequenos e estáveis são informação, não fracasso — o sinal a observar é a tendência ao longo de semanas, não o número de um dia. E acompanhamento médico e nutricional durante a transição é o que sustenta tudo isso.',
+  },
+];
+
+const title = 'Parei o Mounjaro: como manter peso e massa muscular';
+const description =
+  'O que muda no corpo e na rotina depois de interromper o Mounjaro (tirzepatida), por que a fome volta, qual o papel do treino de força na manutenção e como estruturar os primeiros meses. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Parei o Mounjaro: como manter peso e massa muscular</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A parte difícil do emagrecimento raramente é perder. É manter — e
+      quem interrompe um tratamento com Mounjaro (tirzepatida) entra
+      justamente na fase em que essa conta é cobrada, com um agravante:
+      o freio de apetite que existia deixa de existir.
+    </p>
+
+    <p class="lead">
+      Este guia trata do que está sob o seu controle nesse período: o
+      papel do treino de força na manutenção, como estruturar os primeiros
+      meses e o que os dados dizem sobre recuperação de peso — sem
+      promessas, porque promessa aqui seria desonestidade.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida), inclusive quando e como encerrá-lo, são do seu médico. Em caso de sintomas ou dúvidas, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>O que os dados dizem, sem suavizar</h2>
+      <p>
+        Estudos de extensão com medicamentos dessa classe descrevem
+        recuperação significativa do peso perdido após a interrupção do
+        tratamento. Não faz sentido esconder isso de quem está prestes a
+        parar — e também não faz sentido apresentar como sentença.
+      </p>
+
+      <p>
+        Uma média inclui todo mundo: quem parou e voltou exatamente à rotina
+        que levou ao ponto de partida, e quem mudou a rotina no caminho. A
+        única parte dessa conta que responde ao que você faz é a segunda. O
+        que fica de pé depois — massa muscular preservada, hábito de treino
+        que já existe, alimentação que se sustenta sem esforço heroico — é o
+        que separa uma trajetória da outra.
+      </p>
+
+      <p>
+        Nada disso é garantia. É o que está sob seu controle, que é
+        diferente de certeza.
+      </p>
+
+      <h2>Por que a fome volta com força</h2>
+      <p>
+        Dois fatores se somam, e os dois são esperados.
+      </p>
+
+      <p>
+        O primeiro é direto: o efeito do medicamento sobre o apetite acaba
+        quando o medicamento acaba. O que parecia autocontrole recém-adquirido
+        era, em parte, farmacológico — e essa constatação costuma ser dura
+        para quem não estava preparado para ela.
+      </p>
+
+      <p>
+        O segundo vale para qualquer emagrecimento, com ou sem remédio: um
+        corpo mais leve gasta menos energia por dia do que gastava antes, e a
+        regulação do apetite tende a empurrar na direção de recuperar o peso
+        perdido. É o mesmo mecanismo descrito em <a
+        href="/emagrecimento/como-manter-o-peso-perdido/">como manter o peso
+        perdido</a> e em <a
+        href="/emagrecimento/plato-de-emagrecimento/">platô de
+        emagrecimento</a>.
+      </p>
+
+      <p>
+        Entender isso muda a conduta: não é falha de caráter, é
+        previsibilidade. E o que é previsível pode ser planejado.
+      </p>
+
+      <h2>Por que o treino de força é a âncora</h2>
+      <p>
+        Convém ser exato sobre o que o treino faz e o que ele não faz. Ele
+        <strong>não compensa</strong> uma ingestão bem maior — a matemática do
+        gasto calórico do exercício raramente ganha essa disputa, e quem
+        promete o contrário está vendendo.
+      </p>
+
+      <p>
+        O que ele faz é preservar a massa magra construída ou mantida durante
+        o tratamento. E isso importa por dois motivos concretos: massa
+        muscular sustenta o gasto energético de repouso, e sustenta a
+        capacidade funcional — força para a vida, não só para a academia. Um
+        corpo que emagreceu perdendo músculo junto é um corpo mais frágil e
+        com metabolismo mais baixo do que precisaria ser.
+      </p>
+
+      <p>
+        A prevenção durante o tratamento está em <a
+        href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como
+        evitar perda de massa muscular usando Mounjaro</a>. Depois dele, o
+        raciocínio é o mesmo — só que agora com energia disponível para
+        progredir de verdade.
+      </p>
+
+      <h2>Agora é hora de construir, não só de manter</h2>
+      <p>
+        Durante o uso, o treino costuma operar em modo de preservação: volume
+        reduzido, progressão congelada, foco em não perder. Com o apetite e a
+        disposição voltando, esse modo deixa de fazer sentido.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Retome a progressão de cargas.</strong> A fase anterior
+          pedia segurar; esta pede evoluir. Os critérios estão em <a
+          href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+        </li>
+        <li>
+          <strong>Aumente o volume aos poucos.</strong> Voltar de duas para
+          quatro séries por exercício de uma semana para a outra é receita de
+          dor e desistência. Suba um degrau por vez.
+        </li>
+        <li>
+          <strong>Recupere os movimentos que ficaram de fora.</strong>
+          Agachamento livre, levantamento terra e outros exercícios de alta
+          demanda técnica voltam quando a energia volta.
+        </li>
+        <li>
+          <strong>Estabilize a frequência antes de aumentar a intensidade.</strong>
+          Três treinos por semana que acontecem todas as semanas valem mais
+          que cinco planejados e dois cumpridos. O tema tem guia próprio em
+          <a href="/musculacao/frequencia-de-treino/">frequência de treino</a>.
+        </li>
+      </ul>
+
+      <p>
+        Para quem quer usar essa janela para trocar composição corporal — e
+        não apenas segurar o número da balança —, o caminho está em <a
+        href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a>.
+      </p>
+
+      <h2>Os primeiros meses pedem atenção deliberada</h2>
+      <p>
+        Não existe prazo definido para a "fase crítica", e desconfie de quem
+        der um. O que funciona na prática é tratar os primeiros meses como um
+        período que exige método em vez de improviso:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Meça em intervalo definido.</strong> Pesagem numa
+          frequência combinada — não diária, não nunca. O sinal é a tendência
+          ao longo de semanas, e o número de um dia isolado não é sinal
+          nenhum.
+        </li>
+        <li>
+          <strong>Registre as cargas.</strong> Elas dizem se a massa magra
+          está sendo mantida com muito mais honestidade do que a balança, que
+          mistura tudo num número só.
+        </li>
+        <li>
+          <strong>Trate ganho pequeno como informação.</strong> Uma alta
+          modesta e estável é dado para ajustar, não motivo para abandonar
+          tudo. O abandono é o que custa caro, não a variação.
+        </li>
+        <li>
+          <strong>Mantenha o acompanhamento.</strong> Interromper o
+          medicamento não é interromper o cuidado. Médico e nutricionista
+          seguem sendo parte da conta, e alimentação nessa fase é assunto
+          deles.
+        </li>
+      </ul>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> a recuperação de peso após a interrupção
+        é descrita nos estudos e não adianta fingir o contrário — mas a média
+        inclui quem voltou à rotina antiga. O treino de força não compensa a
+        volta da fome; ele preserva a massa magra, que sustenta metabolismo e
+        função, e ancora a rotina inteira. Com energia de volta, o treino
+        muda de modo: retomar progressão, subir volume aos poucos, estabilizar
+        a frequência. E os primeiros meses pedem método — medir em intervalo
+        definido, registrar cargas, tratar variação como dado — com médico e
+        nutricionista ainda na conversa.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
