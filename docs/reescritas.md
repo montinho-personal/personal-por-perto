@@ -21,8 +21,8 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 
 | # | artigo | impr. | pos. | status |
 |---|---|---|---|---|
-| 1 | `/musculacao/treino-para-iniciantes/` | 93 | 32,7 | |
-| 2 | `/musculacao/triceps-testa-como-fazer/` | 67 | 25,7 | |
+| 1 | `/musculacao/treino-para-iniciantes/` | 93 | 32,7 | ✅ 2026-09-03 · partiu de 32,7 |
+| 2 | `/musculacao/triceps-testa-como-fazer/` | 67 | 25,7 | ✅ 2026-09-03 · partiu de 25,7 |
 | 3 | `/emagrecimento/gordura-visceral/` | 57 | 66,8 | |
 | 4 | `/emagrecimento/jejum-intermitente-funciona/` | 54 | 52,7 | |
 | 5 | `/musculacao/levantamento-terra-como-fazer/` | 39 | 40,3 | |
