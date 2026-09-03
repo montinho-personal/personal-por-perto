@@ -7,11 +7,39 @@ push direto na branch `claude/personal-perto-portal-6ask2v`. Nenhuma abre PR.
 Existem para que o trabalho repetitivo não dependa de alguém lembrar — e
 para que a pergunta "o que aconteceu com aquilo?" tenha resposta no `git log`.
 
-| rotina | quando | o que faz | avisa? |
+## As quatro diárias
+
+Horários escalonados de propósito: quatro sessões empurrando para a mesma
+branch no mesmo minuto viraria conflito de merge todo dia.
+
+| horário (BRT) | rotina | fila | o que faz |
 |---|---|---|---|
-| **FerramentaInline — 2 por dia** | todo dia, 09:00 BRT | Pega os 2 próximos artigos da fila `npm run audit:ferramentas` (por tráfego), insere o bloco no parágrafo certo, atualiza a data, builda, verifica, commita e faz push. Para sozinha quando a fila com impressão medida acabar. | push no celular |
-| **Cobrança mensal de relatórios** | dia 1º, 09:00 BRT | Pede os exports de Search Console e GA4, arquiva em `docs/relatorios/`, registra os números-chave e compara com o mês anterior. | push no celular |
-| **Comparar eventos legados × `clique_elemento`** | 02/10/2026, uma vez | Pede os números dos eventos de clique, compara os três legados com o rastreio universal e propõe (não executa) a remoção. Ver `docs/relatorios/README.md`. | — |
+| **09:00** | FerramentaInline | `npm run audit:ferramentas` | Insere o convite a uma ferramenta no corpo de 2 artigos, no parágrafo em que a dúvida aparece. |
+| **11:00** | Reescrita de artigos presos | `docs/reescritas.md` | Diagnostica por que 2 artigos com demanda estão além da página 2 e corrige a causa. |
+| **14:00** | Pauta editorial | `docs/pauta-editorial.md` | Escreve 2 artigos novos — depois de checar que o assunto já não está respondido em outro. |
+| **16:00** | Academias das cidades com capa | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades que subiram capa sem academia. |
+
+Todas mandam **push no celular** ao terminar, com o que fizeram e quanto
+falta.
+
+## As periódicas
+
+| quando | rotina | o que faz |
+|---|---|---|
+| dia 1º, 09:00 | Cobrança mensal de relatórios | Pede os exports de GSC e GA4, arquiva em `docs/relatorios/`, compara com o mês anterior. |
+| 02/10/2026, uma vez | Eventos legados × `clique_elemento` | Compara os três eventos antigos com o rastreio universal e propõe (não executa) a remoção. |
+
+## Quanto tempo cada fila leva
+
+| fila | itens | ritmo | fecha em |
+|---|---|---|---|
+| FerramentaInline | 56 com tráfego | 2/dia | ~28 dias |
+| Reescritas | 13 | 2/dia | ~7 dias |
+| Pauta editorial | 51 | 2/dia | ~26 dias |
+| Academias (com capa) | 29 | 2/dia | ~15 dias |
+
+Cada rotina **para sozinha** quando a fila acaba, avisa e pergunta o que
+fazer — nenhuma inventa trabalho para continuar existindo.
 
 ## Regras que toda rotina obedece
 
@@ -19,16 +47,27 @@ para que a pergunta "o que aconteceu com aquilo?" tenha resposta no `git log`.
 - Nunca troca de branch, nunca abre PR, nunca faz `push --force`.
 - Se algo falhar e não der para resolver, diz o que falhou e **não empurra
   nada quebrado**. Silêncio não é sucesso.
-- Data de revisão (`atualizadoEm`) sobe em toda edição visível — é o que
-  alimenta o "Atualizado em", o `dateModified` e o `lastmod` do sitemap.
+- Data de revisão (`atualizadoEm`) sobe em toda edição visível.
 - Não inclui identificador de modelo em commit, código ou comentário.
+- **Prefere entregar menos e explicar por quê a entregar o número cheio com
+  qualidade ruim.** A rotina da pauta já nasceu com instrução de cancelar
+  artigo redundante em vez de escrevê-lo; a das academias, de deixar cidade
+  sem lista em vez de publicar nome não confirmado.
 
-## Por que 2 por dia, e não 12 por semana
+## Por que 2 por dia, e não um lote grande por semana
 
 O Google ignora `lastmod` quando muitas páginas mudam no mesmo dia. Doze de
-uma vez vira ruído; duas por dia é um sinal contínuo e crível de site vivo.
-Com 56 artigos com tráfego na fila, a rotina fecha o passivo em cerca de um
-mês.
+uma vez vira ruído; oito páginas por dia distribuídas em quatro tarefas
+diferentes é sinal contínuo e crível de site vivo.
+
+## O risco que essas rotinas trazem
+
+Quatro sessões por dia escrevendo sem revisão humana acumulam volume rápido
+— e um erro de padrão se replica em dezenas de páginas antes de alguém
+notar. Duas defesas existem hoje: cada rotina verifica o próprio trabalho
+com `npm run build` e `audit:canonical` antes do push, e todas avisam no
+celular. A terceira defesa é o `git log`: vale ler os commits de vez em
+quando, não só as notificações.
 
 ## Como pausar, ajustar ou apagar
 
