@@ -51,6 +51,22 @@ planilha nem da memória de ninguém.
 Ao arquivar um relatório novo, comparar com o anterior e dizer o que mudou
 — inclusive quando a resposta for "quase nada", que também é informação.
 
+## Todo artigo leva uma ferramenta no corpo do texto
+
+Artigo novo — ou artigo editado — recebe **um** `<FerramentaInline>` no
+parágrafo em que a ferramenta responde à dúvida que o texto acabou de
+levantar. Uma só, escolhida à mão, com a frase de ligação escrita para
+aquele contexto. Nunca uma lista de ferramentas no fim.
+
+Motivo: em 02/09/2026, 140 dos 142 artigos não linkavam nenhuma das sete
+ferramentas no corpo. Elas só existiam no menu, na sidebar e no CTA
+automático do rodapé — lugares por onde quem está lendo não passa. E o CTA
+automático é o mesmo para o cluster inteiro.
+
+O bloco carrega `data-track="artigo:ferramenta-inline"`, então no GA4 dá
+para comparar este convite com o CTA do fim. Se a medição mostrar que ele
+não converte, a regra cai — mas cai por dado, não por palpite.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.

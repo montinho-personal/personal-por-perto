@@ -1,0 +1,72 @@
+---
+/**
+ * Convite a uma ferramenta, no meio do texto — onde a dúvida acabou de
+ * aparecer.
+ *
+ * O portal tem sete ferramentas e, até 02/09/2026, 140 dos 142 artigos não
+ * linkavam nenhuma delas no corpo. Elas existiam no menu, na sidebar e no
+ * CTA automático do fim — todos lugares por onde quem está LENDO não passa.
+ * O CTA do fim, além disso, é o mesmo para o cluster inteiro: um artigo
+ * sobre náusea e outro sobre parar o tratamento recebiam a oferta idêntica.
+ *
+ * Este bloco é o oposto: um convite por artigo, escolhido à mão, colocado
+ * no parágrafo em que a ferramenta responde à pergunta que o texto acabou
+ * de levantar. Não é lista de ferramentas — é UMA, a certa.
+ *
+ * Medição: `data-track` nomeia o clique para o rastreador universal
+ * (`artigo:ferramenta-inline`), então no GA4 dá para comparar este convite
+ * com o CTA automático do fim e responder qual dos dois converte.
+ */
+import { FERRAMENTAS, type FerramentaId } from '../lib/jornada';
+
+export interface Props {
+  /** Qual ferramenta — só uma por artigo. */
+  id: FerramentaId;
+  /** A frase que liga o parágrafo anterior à ferramenta. Sem ela o bloco vira propaganda. */
+  texto: string;
+  /** Rótulo do botão; o padrão é o nome da ferramenta. */
+  acao?: string;
+}
+
+const { id, texto, acao } = Astro.props;
+const f = FERRAMENTAS[id];
+---
+
+<aside class="ferr-inline" data-track="artigo:ferramenta-inline" data-ferramenta={id}>
+  <p class="ferr-rotulo">Ferramenta gratuita</p>
+  <p class="ferr-texto">{texto}</p>
+  <a class="ferr-link" href={f.url}>{acao ?? f.nome} <span aria-hidden="true">→</span></a>
+</aside>
+
+<style>
+  .ferr-inline {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-50);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: var(--sp-4) var(--sp-5);
+    margin-block: var(--sp-5);
+  }
+  .ferr-rotulo {
+    font-size: var(--step--2);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-600);
+    margin: 0 0 var(--sp-2);
+  }
+  .ferr-texto {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .ferr-link {
+    display: inline-block;
+    margin-top: var(--sp-3);
+    font-weight: 700;
+    color: var(--accent-600);
+    text-decoration: none;
+  }
+  .ferr-link:hover,
+  .ferr-link:focus-visible {
+    text-decoration: underline;
+  }
+</style>
