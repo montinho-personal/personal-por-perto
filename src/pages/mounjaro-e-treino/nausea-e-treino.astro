@@ -1,0 +1,303 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/',
+    titulo: 'Quanto tempo dura a fraqueza do Mounjaro?',
+    descricao: 'Por que a disposição vem em ondas e volta a cada aumento de dose, e quando o tempo vira sinal de alerta.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/caibras-e-hidratacao/',
+    titulo: 'Cãibras em quem usa Mounjaro: o que fazer no treino',
+    descricao: 'O que fazer no momento, o que ajustar no treino e por que suplementar mineral por conta própria é má ideia.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/fraqueza-para-treinar/',
+    titulo: 'Mounjaro dá fraqueza para treinar? O que fazer',
+    descricao: 'Por que a disposição cai em algumas fases, ajustes legítimos de treino e os sinais que pedem médico.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/melhor-horario-para-treinar/',
+    titulo: 'Melhor horário para treinar',
+    descricao: 'O que a evidência diz sobre horário, e por que a resposta prática costuma ser outra.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/nausea-e-treino';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Náusea e treino: como organizar a semana', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Posso treinar com náusea?',
+    resposta:
+      'Depende da intensidade, e o critério é mais simples do que parece: náusea leve, daquelas que você esquece quando se distrai, costuma tolerar um treino reduzido — e muitas pessoas relatam melhora com movimento leve. Náusea que domina a atenção, ou que vem com vômito, tontura ou mal-estar, não é caso de treino. Nesses dias, descansar é decisão técnica, não fraqueza. E sintomas intensos ou repetidos merecem contato com o médico prescritor.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar se sinto náusea?',
+    resposta:
+      'Não há um horário universalmente melhor, mas há um princípio útil: quem sente náusea costuma ter um padrão ao longo do dia e ao longo da semana de aplicação. Treinar na janela em que você habitualmente se sente melhor tende a resolver mais do que qualquer outro ajuste. Descobrir essa janela exige observar por algumas semanas e anotar — é a informação mais valiosa que você pode reunir nessa fase, e ela é individual.',
+  },
+  {
+    pergunta: 'Devo treinar em jejum se comer me dá enjoo?',
+    resposta:
+      'Essa decisão passa por médico e nutricionista, não pelo personal, porque envolve o quadro clínico e a alimentação do dia inteiro. Do ponto de vista do exercício, vale saber que treinar sem nenhum combustível disponível tende a reduzir o desempenho, sobretudo em treinos de força — e que em uma fase de ingestão já reduzida esse efeito costuma ser mais perceptível. Leve a pergunta à consulta em vez de testar por conta.',
+  },
+  {
+    pergunta: 'A náusea vai passar?',
+    resposta:
+      'Os estudos com tirzepatida descrevem os efeitos gastrointestinais como os adversos mais comuns, majoritariamente leves a moderados, e concentrados nas fases de adaptação e de aumento de dose — o que sugere um padrão transitório e recorrente, e não permanente. Mas isso é o padrão descrito em grupos, não uma previsão sobre você. Náusea que persiste, piora ou atrapalha a alimentação é assunto para o médico prescritor.',
+  },
+  {
+    pergunta: 'Perco muito se treinar bem menos por algumas semanas?',
+    resposta:
+      'Menos do que se imagina, desde que você não pare. A literatura de destreino mostra que a força resiste razoavelmente a períodos curtos de redução, e que manter alguma frequência preserva muito mais do que reduzir a zero. Três sessões curtas por semana em uma fase ruim é um resultado bom, não um resultado pela metade. O que custa caro é o abandono, porque cada semana fora torna a volta mais difícil.',
+  },
+];
+
+const title = 'Náusea e treino: como organizar a semana';
+const description =
+  'Como encaixar o treino quando a náusea é o efeito mais presente do uso de Mounjaro (tirzepatida): critérios para treinar ou descansar, como encontrar a sua janela do dia e o que ajustar na sessão. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Náusea e treino: como organizar a semana</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Os ensaios clínicos com tirzepatida descrevem os efeitos
+      gastrointestinais como os adversos mais comuns — e, entre eles, a
+      náusea é o que mais aparece. Quem convive com ela sabe que o problema
+      raramente é a disposição para treinar: é que treinar enjoado é
+      simplesmente ruim.
+    </p>
+
+    <p class="lead">
+      Este guia trata de organização, não de heroísmo. Critérios para
+      decidir entre treinar e descansar, como encontrar a janela do dia em
+      que o seu corpo coopera, e o que ajustar na sessão para que ela
+      aconteça.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Náusea intensa, persistente ou que atrapalhe a alimentação é assunto para quem prescreveu.</div>
+
+    <div class="prose">
+      <h2>O critério para treinar ou não</h2>
+      <p>
+        A pergunta "posso treinar enjoado?" costuma receber respostas
+        extremas: "sempre treine, é só disciplina" ou "nunca treine, respeite
+        o corpo". Nenhuma das duas ajuda. O critério útil é a
+        <strong>intensidade</strong>.
+      </p>
+
+      <p>
+        Náusea leve — aquela que você esquece quando se distrai com outra
+        coisa — costuma tolerar um treino reduzido, e muita gente relata que
+        movimento leve melhora a sensação. Náusea que domina a atenção, ou
+        que vem acompanhada de vômito, tontura ou mal-estar, não é caso de
+        treino. Descansar nesse dia é decisão técnica, não desistência.
+      </p>
+
+      <div class="callout">
+        <strong>Um teste prático:</strong> se você consegue se concentrar no
+        movimento que está executando, dá para treinar. Se o enjoo ocupa a
+        cabeça inteira, o treino não vai render nem ser seguro — e a
+        qualidade da execução é o que protege você.
+      </div>
+
+      <h2>Encontre a sua janela</h2>
+      <p>
+        Este é o ajuste de maior retorno da lista, e quase ninguém faz: a
+        náusea costuma ter padrão. Padrão ao longo do dia — melhor de manhã,
+        pior à tarde, ou o contrário — e padrão ao longo da semana de
+        aplicação, com dias tipicamente piores que outros.
+      </p>
+
+      <p>
+        Descobrir esse padrão vale mais que qualquer outro ajuste de treino,
+        porque permite mover a sessão para a janela em que o corpo coopera em
+        vez de brigar com ele. E não há como descobrir sem anotar: por duas
+        ou três semanas, registre como você se sentiu em cada período do dia.
+      </p>
+
+      <p>
+        A partir daí, a semana se reorganiza sozinha — treinos de força nos
+        dias e horários bons, sessões leves ou descanso nos ruins. Sobre
+        horário em geral, o guia de <a
+        href="/musculacao/melhor-horario-para-treinar/">melhor horário para
+        treinar</a> mostra por que a resposta prática quase sempre vence a
+        teórica: o melhor horário é o que você consegue cumprir.
+      </p>
+
+      <h2>Ajustes que fazem a sessão acontecer</h2>
+      <ul>
+        <li>
+          <strong>Encurte antes de cancelar.</strong> Vinte minutos com três
+          exercícios básicos preserva a rotina e o estímulo. É muito
+          diferente de zero.
+        </li>
+        <li>
+          <strong>Evite deitar e levantar em sequência.</strong> Alternar
+          entre supino, abdominal e exercícios em pé multiplica as mudanças de
+          posição, que costumam piorar a sensação. Agrupe por posição.
+        </li>
+        <li>
+          <strong>Cuidado com exercícios de cabeça baixa.</strong> Stiff,
+          remada curvada e afins pedem a posição menos confortável possível
+          num dia de enjoo. Existem substitutos apoiados para todos eles.
+        </li>
+        <li>
+          <strong>Intervalos mais longos.</strong> Densidade alta e enjoo não
+          combinam. Descansar mais entre séries preserva a qualidade — veja
+          <a href="/musculacao/descanso-entre-series/">descanso entre
+          séries</a>.
+        </li>
+        <li>
+          <strong>Deixe o cardio intenso para outro dia.</strong> Se houver
+          espaço para algo aeróbico, caminhada leve costuma ser mais bem
+          tolerada. A dose sensata está em <a
+          href="/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/">cardio para
+          quem usa Mounjaro</a>.
+        </li>
+      </ul>
+
+      <h2>O que não decidir sozinho</h2>
+      <p>
+        Duas perguntas aparecem sempre aqui e nenhuma delas é de personal
+        trainer.
+      </p>
+
+      <p>
+        <strong>"Devo treinar em jejum, já que comer me dá enjoo?"</strong>
+        Envolve alimentação e quadro clínico, então é conversa com médico e
+        nutricionista. O que cabe informar do lado do exercício: treinar sem
+        combustível disponível tende a reduzir o desempenho, sobretudo em
+        treino de força, e numa fase de ingestão já reduzida esse efeito
+        costuma ser mais perceptível.
+      </p>
+
+      <p>
+        <strong>"O que comer antes para não enjoar?"</strong> Mesma resposta,
+        mesmo destinatário — e com mais razão ainda, porque a resposta depende
+        do que você está conseguindo comer no resto do dia.
+      </p>
+
+      <h2>A semana boa não é a semana cheia</h2>
+      <p>
+        Talvez o ajuste mais importante seja de expectativa. Numa fase de
+        efeitos gastrointestinais, uma semana bem-sucedida não é a que
+        cumpriu o plano inteiro — é a que manteve a rotina viva.
+      </p>
+
+      <p>
+        Três sessões curtas valem mais que cinco planejadas e duas cumpridas,
+        porque a primeira configuração se sustenta e a segunda gera
+        frustração. E a literatura de destreino é clara sobre o custo real
+        disso: a força resiste bem a períodos curtos de redução, mas o
+        abandono cobra caro, porque cada semana fora torna a volta mais
+        difícil.
+      </p>
+
+      <p>
+        Sobre a duração dessa fase e por que ela costuma voltar a cada
+        aumento de dose, o assunto está em <a
+        href="/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/">quanto tempo
+        dura a fraqueza do Mounjaro</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o critério para treinar é a intensidade do
+        enjoo — se dá para se concentrar no movimento, dá para treinar
+        reduzido; se ele domina a atenção, o dia é de descanso. O ajuste de
+        maior retorno é encontrar a sua janela, e isso exige anotar por
+        algumas semanas. Na sessão, encurte em vez de cancelar, agrupe por
+        posição, evite exercícios de cabeça baixa e alongue os intervalos.
+        Jejum e alimentação pré-treino são de médico e nutricionista. E uma
+        semana bem-sucedida nessa fase é a que manteve a rotina viva, não a
+        que cumpriu o plano inteiro.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

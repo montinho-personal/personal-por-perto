@@ -33,11 +33,26 @@ Todos com ressalva de médico, sem promessa de resultado (regra do CLAUDE.md).
 | 2 | Mounjaro e perda de força: o que muda no treino | `perda-de-forca-no-mounjaro` | ✅ 2026-09-02 |
 | 3 | Fraqueza nas pernas com Mounjaro | `fraqueza-nas-pernas` | ✅ 2026-09-02 |
 | 4 | Parei o Mounjaro: manter peso e massa | `parei-o-mounjaro` | ✅ 2026-09-02 |
-| 5 | Cãibras e hidratação no GLP-1 | `caibras-e-hidratacao` | |
-| 6 | Ozempic ou Mounjaro para quem treina | `ozempic-ou-mounjaro-para-quem-treina` | |
-| 7 | Como ajustar a carga durante o GLP-1 | `ajustar-carga-no-glp1` | |
-| 8 | Náusea e treino em quem usa GLP-1 | `nausea-e-treino` | |
+| 5 | Cãibras em quem usa Mounjaro | `caibras-e-hidratacao` | ✅ 2026-09-02 |
+| — | ~~Ozempic ou Mounjaro para quem treina~~ | — | ❌ cancelado (ver nota) |
+| 7 | Como ajustar a carga durante o GLP-1 | `ajustar-carga-no-glp1` | ⚠️ ver nota |
+| 6 | Náusea e treino: como organizar a semana | `nausea-e-treino` | ✅ 2026-09-02 |
 | 9 | Mounjaro e treino depois dos 60 | `mounjaro-e-idosos` | |
+
+### Nota de 02/09/2026 — dois cancelamentos por redundância
+
+**`ozempic-ou-mounjaro-para-quem-treina` foi cancelado.** O artigo
+`/mounjaro-e-treino/ozempic-e-treino/` já traz um H2 chamado exatamente
+"Ozempic e Mounjaro: o que muda para quem treina", e a resposta honesta
+cabe em dois parágrafos: os medicamentos agem em vias diferentes, a escolha
+é médica, e **a estratégia de treino não muda entre um e outro**. Esticar
+isso em um artigo inteiro seria encher linguiça e canibalizar uma página que
+já responde. Quando a verdade é curta, publicá-la curta é a decisão certa.
+
+**`ajustar-carga-no-glp1` está sob suspeita da mesma coisa.** O artigo
+`perda-de-forca-no-mounjaro`, publicado hoje, já cobre reduzir carga
+preservando o esforço relativo e cortar volume antes de intensidade — que
+era o conteúdo previsto. Decidir o recorte (ou cancelar) antes de escrever.
 
 ## Bloco Musculação — execução (12)
 

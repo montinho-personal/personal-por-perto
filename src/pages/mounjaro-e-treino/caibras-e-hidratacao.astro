@@ -1,0 +1,328 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/fraqueza-nas-pernas/',
+    titulo: 'Fraqueza nas pernas com Mounjaro: o que pode ser',
+    descricao: 'Por que as pernas sentem primeiro, como adaptar o treino e quais sinais não são assunto de treino.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/',
+    titulo: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo',
+    descricao: 'O papel do cardio durante o tratamento, a dose sensata e os sinais que pedem interromper a sessão.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/',
+    titulo: 'Quanto tempo dura a fraqueza do Mounjaro?',
+    descricao: 'Por que a disposição vem em ondas e volta a cada aumento de dose, e quando o tempo vira sinal de alerta.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/dor-muscular-pos-treino/',
+    titulo: 'Dor muscular pós-treino: o que é normal',
+    descricao: 'Como separar o desconforto esperado do treino de sinais que merecem outro olhar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/caibras-e-hidratacao';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Cãibras em quem usa Mounjaro: o que fazer no treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Cãibras são efeito do Mounjaro?',
+    resposta:
+      'A pergunta parece simples e não tem resposta simples. Cãibras têm causas variadas — esforço, fadiga, hidratação, ingestão alimentar, condições clínicas, uso de outros medicamentos — e várias delas mudam bastante durante um tratamento que reduz o apetite. Ou seja: é plausível que o contexto favoreça, mas atribuir a causa ao medicamento é diagnóstico, e diagnóstico é do médico. Se as cãibras são frequentes, intensas ou novas para você, leve ao prescritor em vez de tentar resolver por conta.',
+  },
+  {
+    pergunta: 'Devo tomar suplemento de magnésio ou potássio?',
+    resposta:
+      'Não por conta própria, e este conteúdo não vai indicar nenhum. Suplementar mineral sem avaliação é um caminho comum para mascarar um problema em vez de resolvê-lo, e alguns minerais têm implicações clínicas relevantes em certas condições. A conduta correta é levar a queixa ao médico e ao nutricionista, que podem pedir exames e avaliar o quadro inteiro. Um profissional de educação física não tem como fazer essa recomendação com responsabilidade.',
+  },
+  {
+    pergunta: 'A cãibra durante o treino significa que devo parar a série?',
+    resposta:
+      'Sim, aquela série acabou. Insistir com a musculatura em cãibra atrapalha a execução e não entrega estímulo melhor. O procedimento razoável é interromper, alongar suavemente a região, hidratar e avaliar como o corpo responde. Se passar e você se sentir bem, o treino pode continuar com menos carga. Se voltar na mesma sessão, encerre — repetição no mesmo dia é informação, não coincidência.',
+  },
+  {
+    pergunta: 'Cãibras noturnas têm relação com o treino?',
+    resposta:
+      'Podem ter, mas nem sempre têm. Cãibras que aparecem à noite ou em repouso são uma queixa comum e independente de treino, e o padrão delas — frequência, horário, região, se acordam a pessoa — é exatamente o tipo de informação útil na consulta médica. Anote quando acontecem antes de ir. O que não faz sentido é ajustar o treino tentando resolver algo que talvez não tenha origem nele.',
+  },
+  {
+    pergunta: 'Beber mais água resolve?',
+    resposta:
+      'Hidratação adequada faz parte do cuidado, e é comum beber menos sem perceber quando o apetite está reduzido — a sede costuma acompanhar a rotina de comer. Mas tratar água como solução única para cãibras é simplificar demais um fenômeno de causas múltiplas, e pode adiar a investigação do que realmente está acontecendo. Quanto beber, e se há algo mais a ajustar, é conversa com quem acompanha o seu tratamento.',
+  },
+];
+
+const title = 'Cãibras em quem usa Mounjaro: o que fazer no treino';
+const description =
+  'Por que as cãibras aparecem com mais frequência durante o uso de Mounjaro (tirzepatida), o que fazer no momento em que acontecem, o que ajustar no treino e por que suplementar mineral por conta própria é má ideia. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Cãibras em quem usa Mounjaro: o que fazer no treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A cãibra tem uma característica que a torna especialmente incômoda:
+      ela interrompe. Não é um desconforto que dá para negociar no meio da
+      série — o músculo simplesmente para de obedecer. E ela aparece com
+      alguma frequência no relato de quem usa Mounjaro (tirzepatida) sob
+      prescrição.
+    </p>
+
+    <p class="lead">
+      Este guia trata do que está ao alcance de quem treina: o que fazer no
+      momento em que acontece, o que ajustar na rotina de treino, e por que
+      a resposta mais comum na internet — suplementar mineral por conta
+      própria — é a que mais atrapalha.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Cãibras frequentes, intensas ou novas merecem avaliação de quem prescreveu.</div>
+
+    <div class="prose">
+      <h2>Por que ninguém deveria te dar a causa</h2>
+      <p>
+        A pergunta que traz a maioria das pessoas aqui é "o Mounjaro causa
+        cãibra?". A resposta honesta é que cãibras têm causas variadas —
+        esforço e fadiga, hidratação, ingestão alimentar, condições
+        clínicas, outros medicamentos em uso — e várias delas mudam ao mesmo
+        tempo durante um tratamento que reduz bastante o apetite.
+      </p>
+
+      <p>
+        Quando várias variáveis mudam juntas, apontar uma como culpada é
+        chute. E é um chute com custo: quem se convence de que a causa é X
+        para de investigar Y. Por isso este texto não vai te dar a causa —
+        vai te dar o que fazer enquanto quem pode investigar investiga.
+      </p>
+
+      <div class="callout">
+        <strong>O que vale registrar antes da consulta:</strong> quando as
+        cãibras acontecem (durante o treino, depois, à noite), em qual
+        região, com que frequência, há quanto tempo, e se coincidem com
+        alguma mudança recente — dose, rotina, alimentação. Esse conjunto é
+        muito mais útil ao médico do que "estou tendo cãibras".
+      </div>
+
+      <h2>No momento em que acontece</h2>
+      <p>
+        A série acabou. Não existe versão em que insistir com a musculatura
+        em cãibra melhore alguma coisa: a execução se desmonta, o risco
+        sobe, e o estímulo não vem.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Interrompa e alongue suavemente</strong> a região
+          acometida, sem forçar. O alongamento aqui é para aliviar, não para
+          ganhar amplitude.
+        </li>
+        <li>
+          <strong>Hidrate-se</strong> e dê tempo ao corpo antes de decidir
+          qualquer coisa.
+        </li>
+        <li>
+          <strong>Se passou e você se sente bem</strong>, o treino pode
+          continuar — com menos carga naquele exercício.
+        </li>
+        <li>
+          <strong>Se voltou na mesma sessão</strong>, encerre. Repetição no
+          mesmo dia é informação, não coincidência.
+        </li>
+      </ul>
+
+      <p>
+        E vale a distinção que o guia de <a
+        href="/musculacao/dor-muscular-pos-treino/">dor muscular
+        pós-treino</a> desenvolve: desconforto de treino melhora com
+        recuperação; o que não melhora, ou o que assusta, muda de
+        destinatário.
+      </p>
+
+      <h2>O que ajustar no treino</h2>
+      <p>
+        Não há como o treino resolver uma causa que talvez não esteja nele.
+        Mas há como o treino parar de contribuir — e isso já reduz a
+        frequência do problema em muitos casos.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Aquecimento de verdade.</strong> Entrar frio em séries
+          pesadas cobra caro em qualquer situação, e mais ainda em uma fase
+          de menos energia. O tema tem guia próprio em <a
+          href="/musculacao/aquecimento-antes-do-treino/">aquecimento antes
+          do treino</a>.
+        </li>
+        <li>
+          <strong>Progressão de carga mais conservadora.</strong> Saltos
+          grandes de peso pedem do músculo algo para o qual ele não foi
+          preparado. Nesta fase, avance devagar — ou não avance.
+        </li>
+        <li>
+          <strong>Atenção aos movimentos de contração encurtada.</strong>
+          Panturrilha, mesa flexora, elevação pélvica e afins levam o músculo
+          a posições muito encurtadas, onde a cãibra é mais comum. Reduzir
+          carga e controlar a fase final costuma bastar.
+        </li>
+        <li>
+          <strong>Volume total menor.</strong> Fadiga acumulada é um fator
+          conhecido, e uma fase de menor ingestão calórica chega a esse ponto
+          mais rápido do que o habitual.
+        </li>
+        <li>
+          <strong>Respeite o intervalo entre séries.</strong> Encurtar
+          descanso para "compensar" o treino menor é contraproducente aqui —
+          veja <a href="/musculacao/descanso-entre-series/">descanso entre
+          séries</a>.
+        </li>
+      </ul>
+
+      <h2>Por que não indicamos magnésio nem potássio</h2>
+      <p>
+        É a recomendação mais fácil de encontrar na internet e a que este
+        conteúdo não vai fazer. Dois motivos, e os dois são sérios.
+      </p>
+
+      <p>
+        O primeiro: suplementar mineral sem avaliação pode mascarar o
+        problema em vez de resolvê-lo. Se a cãibra tinha outra origem, o
+        suplemento apenas atrasa a descoberta — e o tempo perdido é real.
+      </p>
+
+      <p>
+        O segundo: alguns minerais têm implicações clínicas relevantes
+        dependendo da condição da pessoa e dos medicamentos em uso. Essa
+        avaliação envolve exames e histórico, coisas que um profissional de
+        educação física não tem como ponderar com responsabilidade.
+      </p>
+
+      <p>
+        Hidratação e alimentação durante o tratamento são território do
+        médico e do nutricionista, sobretudo quando o apetite está reduzido e
+        a sede acompanha a rotina de comer. O papel deste conteúdo é
+        sinalizar que a pergunta merece ir para a consulta — com o registro
+        do padrão em mãos.
+      </p>
+
+      <h2>Quando não esperar a próxima consulta</h2>
+      <p>
+        Alguns quadros mudam a urgência e não são assunto de treino:
+      </p>
+
+      <ul>
+        <li>
+          dor intensa e persistente em uma das pernas, sobretudo com inchaço,
+          calor ou vermelhidão assimétrica;
+        </li>
+        <li>cãibras acompanhadas de fraqueza progressiva ou dormência;</li>
+        <li>urina muito escura após o exercício;</li>
+        <li>
+          cãibras generalizadas, muito frequentes ou que surgiram de repente
+          sem mudança de rotina;
+        </li>
+        <li>qualquer delas somada a tontura, palpitação ou desmaio.</li>
+      </ul>
+
+      <p>
+        Diante de algo agudo e importante, procure atendimento — não a
+        próxima sessão de treino nem a consulta do mês que vem.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> cãibras têm causas múltiplas e várias
+        delas mudam juntas durante o tratamento, então atribuir a causa é
+        trabalho do médico, não do texto. No momento, interrompa a série,
+        alongue com suavidade e encerre se repetir. No treino, aqueça de
+        verdade, progrida devagar, cuide dos movimentos de contração
+        encurtada e reduza volume. E não suplemente mineral por conta
+        própria: leve ao médico o registro de quando, onde e com que
+        frequência as cãibras acontecem — é isso que faz a consulta render.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
