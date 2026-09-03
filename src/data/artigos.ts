@@ -246,6 +246,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/', titulo: 'Como evitar perda de massa muscular usando Mounjaro' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro/', titulo: 'Treino para quem usa Mounjaro: como adaptar' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/fraqueza-para-treinar/', titulo: 'Mounjaro dá fraqueza para treinar? O que fazer' },
+  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/', titulo: 'Quanto tempo dura a fraqueza do Mounjaro?' },
+  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/perda-de-forca-no-mounjaro/', titulo: 'Mounjaro e perda de força: o que muda no treino' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/', titulo: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/ozempic-e-treino/', titulo: 'Ozempic e treino: como adaptar a musculação' },
 

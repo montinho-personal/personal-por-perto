@@ -1,0 +1,311 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força e da proteína.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/',
+    titulo: 'Quanto tempo dura a fraqueza do Mounjaro?',
+    descricao: 'Por que a disposição vem em ondas, o que fazer com o treino enquanto passa e quando o tempo vira sinal de alerta.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/fraqueza-para-treinar/',
+    titulo: 'Mounjaro dá fraqueza para treinar? O que fazer',
+    descricao: 'Por que a disposição cai em algumas fases, ajustes legítimos de treino e os sinais que pedem médico.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Progressão de carga: como evoluir no treino',
+    descricao: 'Princípios para ajustar a progressão — inclusive quando a fase pede segurar o ritmo em vez de acelerar.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/perda-de-forca-no-mounjaro';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Mounjaro e perda de força: o que muda no treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Perder força usando Mounjaro significa perder músculo?',
+    resposta:
+      'Não necessariamente, e confundir as duas coisas leva a decisões ruins. Força é uma habilidade que depende de vários fatores além do tamanho do músculo — energia disponível no dia, sono, hidratação, prática do movimento, motivação. Uma semana de cargas mais leves costuma refletir esses fatores, não perda de tecido. O que merece atenção é o padrão prolongado: queda consistente ao longo de semanas, em vários exercícios ao mesmo tempo, sem melhora. Esse quadro pode sugerir perda de massa magra e vale conversa com quem acompanha seu treino e com o médico.',
+  },
+  {
+    pergunta: 'É normal perder força em déficit calórico grande?',
+    resposta:
+      'Alguma oscilação é esperada, e faz sentido fisiológico: treinar com menos combustível disponível costuma render menos repetições. O que a literatura de emagrecimento descreve como evitável é a perda expressiva de massa magra, e os dois fatores mais citados na prevenção são justamente os que dependem de você — manter treino de força regular e uma ingestão adequada de proteína. Quantidade de proteína e ajustes alimentares são assunto de nutricionista e médico, não do personal.',
+  },
+  {
+    pergunta: 'Devo diminuir a carga ou insistir na que eu usava?',
+    resposta:
+      'Diminuir, sem hesitar. Insistir em uma carga que o corpo não está sustentando piora a técnica, aumenta o risco e não gera estímulo melhor. O ajuste sensato é reduzir o peso e manter a qualidade da execução e a proximidade da falha — o músculo responde ao esforço relativo, não ao número escrito na anilha. Quando a fase passar, a carga volta mais rápido do que veio na primeira vez.',
+  },
+  {
+    pergunta: 'Como saber se estou perdendo músculo ou só sem energia?',
+    resposta:
+      'O tempo separa os dois. Falta de energia oscila: um dia ruim, um bom, um ruim. Perda de massa magra aparece como uma tendência estável de queda ao longo de semanas, que não melhora nos dias em que você comeu e dormiu bem. Sinais no espelho e na roupa ajudam pouco durante um emagrecimento, porque a gordura está saindo ao mesmo tempo. A avaliação objetiva envolve acompanhamento profissional; nenhuma balança doméstica resolve isso sozinha.',
+  },
+  {
+    pergunta: 'Posso treinar pesado mesmo comendo pouco?',
+    resposta:
+      'Treinar com intensidade continua sendo importante — é o estímulo de força que sinaliza ao corpo para preservar músculo durante a perda de peso. O que muda é o volume: menos séries totais, mesma qualidade. Manter dois ou três treinos de força por semana com esforço real e reduzir o resto costuma funcionar melhor do que manter tudo pela metade. Se houver sintoma (tontura, náusea intensa, mal-estar), a prioridade é o médico, não a planilha.',
+  },
+];
+
+const title = 'Mounjaro e perda de força: o que muda no treino';
+const description =
+  'A diferença entre um dia sem disposição e uma queda de força que persiste por semanas em quem usa Mounjaro (tirzepatida), como ajustar carga e volume sem perder o estímulo, e quais sinais pedem avaliação. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Mounjaro e perda de força: o que muda no treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma diferença que muda a conduta inteira e quase ninguém
+      explica: <strong>estar sem disposição não é a mesma coisa que estar
+      mais fraco</strong>. A primeira oscila de um dia para o outro e se
+      resolve com ajuste de sessão. A segunda é uma tendência que se
+      sustenta por semanas — e essa merece ser levada a sério.
+    </p>
+
+    <p class="lead">
+      Este guia mostra como separar as duas na prática, o que a literatura
+      descreve sobre perda de massa magra em emagrecimentos rápidos, como
+      ajustar carga e volume sem abrir mão do estímulo, e quando a queda de
+      força deixa de ser assunto de treino.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Disposição e força não são a mesma coisa</h2>
+      <p>
+        Força é uma habilidade, e habilidades dependem de mais coisas do que
+        o tamanho do músculo. Sono ruim, uma refeição a menos, estresse alto,
+        hidratação baixa, o horário do treino — tudo isso muda quantas
+        repetições você faz hoje, sem que nada tenha mudado no seu corpo.
+      </p>
+
+      <p>
+        Por isso um dia de cargas mais leves não significa nada isoladamente.
+        O que informa é o <strong>padrão</strong>. E o padrão só aparece
+        quando você olha semanas, não sessões.
+      </p>
+
+      <div class="callout">
+        <strong>A distinção prática:</strong> se você teve um dia fraco e o
+        seguinte foi normal, era energia. Se as cargas vêm caindo em vários
+        exercícios ao mesmo tempo, há três ou quatro semanas, e nem os dias
+        em que você dormiu e comeu bem melhoram o quadro — aí é outra coisa.
+      </div>
+
+      <h2>O que os estudos descrevem sobre massa magra</h2>
+      <p>
+        Emagrecimentos rápidos costumam levar junto alguma massa magra, e
+        isso está descrito na literatura de composição corporal
+        independentemente de medicamento. É um fenômeno conhecido de qualquer
+        déficit calórico expressivo, e a discussão relevante não é se ele
+        existe, mas o quanto dele é evitável.
+      </p>
+
+      <p>
+        Dois fatores aparecem de forma consistente como protetores, e os dois
+        estão sob o seu controle: <strong>manter treino de força regular</strong>
+        e <strong>ingestão adequada de proteína</strong>. O primeiro é o
+        assunto desta página. O segundo é território de nutricionista e
+        médico — quantidade, distribuição e ajustes alimentares durante o
+        tratamento não se resolvem por conta própria, ainda mais quando o
+        apetite está reduzido.
+      </p>
+
+      <p>
+        O tema tem tratamento detalhado em <a
+        href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como
+        evitar perda de massa muscular usando Mounjaro</a>.
+      </p>
+
+      <h2>Reduza a carga, preserve o esforço</h2>
+      <p>
+        O erro mais comum de quem percebe a força caindo é insistir na carga
+        antiga. É uma reação compreensível e tecnicamente ruim: peso que o
+        corpo não está sustentando degrada a execução, aumenta o risco e não
+        entrega estímulo melhor.
+      </p>
+
+      <p>
+        O músculo responde ao <strong>esforço relativo</strong>, não ao
+        número na anilha. Uma série levada perto do limite com 60% da carga
+        habitual continua sendo um estímulo real de força. A mesma série com
+        a carga antiga e a técnica desmontada é pior em tudo.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Ajuste o peso, mantenha a proximidade da falha.</strong>
+          Terminar a série com uma ou duas repetições de reserva continua
+          valendo — só que com menos peso.
+        </li>
+        <li>
+          <strong>Corte volume antes de cortar intensidade.</strong> Menos
+          séries no total, mantendo algumas com esforço de verdade, preserva
+          melhor o sinal de força do que espalhar sessões mornas.
+        </li>
+        <li>
+          <strong>Registre as cargas.</strong> É o que transforma sensação em
+          dado. Sem registro, "acho que estou mais fraco" não vira informação
+          nem para você nem para o médico.
+        </li>
+        <li>
+          <strong>Não persiga recordes nesta fase.</strong> Segurar a
+          progressão é decisão técnica, não desistência — os critérios estão
+          em <a href="/musculacao/progressao-de-carga/">progressão de
+          carga</a>.
+        </li>
+      </ul>
+
+      <h2>Dois ou três treinos de força valem mais que cinco pela metade</h2>
+      <p>
+        Quando a energia é escassa, ela precisa ser gasta onde rende. Em uma
+        fase de perda de peso acelerada, o que rende é o treino de força — é
+        ele que sinaliza ao corpo que aquele músculo tem função e precisa ser
+        mantido.
+      </p>
+
+      <p>
+        Na prática, concentrar o esforço costuma funcionar melhor do que
+        diluí-lo: dois ou três treinos por semana com intensidade real,
+        cobrindo o corpo todo com movimentos básicos, em vez de cinco sessões
+        arrastadas. O cardio continua tendo lugar, mas com dose ajustada à
+        fase — assunto de <a
+        href="/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/">cardio para
+        quem usa Mounjaro</a>.
+      </p>
+
+      <h2>Quando levar ao médico</h2>
+      <p>
+        A queda de força vira assunto médico quando deixa de ser explicável
+        pelo treino. Alguns sinais que justificam procurar o prescritor sem
+        esperar mais um ciclo:
+      </p>
+
+      <ul>
+        <li>Queda consistente por semanas, sem nenhuma semana de melhora.</li>
+        <li>
+          Fraqueza desproporcional ao esforço — dificuldade em tarefas
+          cotidianas, não só na academia.
+        </li>
+        <li>
+          Sintomas somados: tontura, falta de ar, desmaio, palpitação,
+          mal-estar fora do treino.
+        </li>
+        <li>
+          Perda de peso muito rápida acompanhada de queda de desempenho
+          acentuada.
+        </li>
+      </ul>
+
+      <p>
+        Leve os registros de carga junto. Uma planilha mostrando a queda ao
+        longo de oito semanas é uma informação objetiva, bem mais útil na
+        consulta do que "acho que estou mais fraco".
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> dia ruim é energia, semanas seguidas de
+        queda são outra conversa. Alguma perda de massa magra acompanha
+        emagrecimentos rápidos, mas boa parte dela é evitável — e os dois
+        fatores mais citados na prevenção são treino de força regular e
+        proteína adequada, esta última com nutricionista. No treino, reduza a
+        carga e preserve o esforço relativo, corte volume antes de intensidade
+        e registre tudo. Quando a queda persiste, é desproporcional ou vem
+        acompanhada de sintomas, o destino é o médico prescritor.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

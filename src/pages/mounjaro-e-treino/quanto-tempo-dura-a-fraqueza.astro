@@ -1,0 +1,321 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/fraqueza-para-treinar/',
+    titulo: 'Mounjaro dá fraqueza para treinar? O que fazer',
+    descricao: 'Por que a disposição cai em algumas fases, ajustes legítimos de treino e os sinais que pedem médico.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/perda-de-forca-no-mounjaro/',
+    titulo: 'Mounjaro e perda de força: o que muda no treino',
+    descricao: 'A diferença entre um dia sem disposição e uma queda de força que persiste por semanas — e o que fazer com cada uma.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'O que os estudos mostram sobre perda de massa magra em emagrecimentos rápidos, e o papel do treino de força.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/destreino/',
+    titulo: 'Destreino: o que se perde ao parar de treinar',
+    descricao: 'Quanto tempo leva para perder força e condicionamento, e com que velocidade tudo isso volta.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza';
+const atualizadoEm = '2026-09-02';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Quanto tempo dura a fraqueza do Mounjaro?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto tempo costuma durar a falta de disposição no Mounjaro?',
+    resposta:
+      'Não existe um prazo que valha para todo mundo, e desconfie de quem der um número exato. O que a literatura do medicamento descreve é um padrão de efeitos gastrointestinais — náusea, vômito, diarreia — mais frequentes nas semanas seguintes ao início do tratamento e a cada aumento de dose, na maioria dos casos descritos como leves a moderados e transitórios. Como a disposição para treinar acompanha de perto o quanto se está comendo e como se está o estômago, é razoável que ela oscile junto. Mas o prazo do seu caso é conversa com quem prescreveu, não com o personal.',
+  },
+  {
+    pergunta: 'A fraqueza volta toda vez que aumento a dose?',
+    resposta:
+      'Pode acontecer, e isso costuma surpreender quem já tinha se adaptado. O escalonamento de dose da tirzepatida é gradual justamente porque cada degrau é um novo período de adaptação para o corpo — os estudos relatam os efeitos gastrointestinais concentrados nesses momentos. Na prática do treino, isso significa que as semanas seguintes a um ajuste de dose costumam pedir a mesma prudência das primeiras: manter a frequência, segurar a progressão de carga. Qualquer decisão sobre a dose em si é do médico.',
+  },
+  {
+    pergunta: 'Devo esperar passar antes de voltar a treinar?',
+    resposta:
+      'Esperar passar por completo raramente é a melhor escolha, porque a inatividade prolongada cobra o seu preço: perda de força e de massa magra, justamente o que mais interessa preservar em uma fase de emagrecimento. A abordagem que costuma funcionar melhor é reduzir sem parar — sessões mais curtas, cargas confortáveis, mantendo os dias de treino na semana. Já sintomas importantes, como náusea intensa, tontura ou mal-estar, pedem descanso naquele dia e avaliação médica se persistirem.',
+  },
+  {
+    pergunta: 'Como sei se a fraqueza já passou do esperado?',
+    resposta:
+      'A avaliação é médica, mas dois sinais ajudam a decidir quando procurar: o tempo e a direção. Uma fase de adaptação costuma melhorar aos poucos, com dias bons aparecendo no meio dos ruins. O que preocupa é o contrário — semanas se acumulando sem nenhuma melhora, ou um quadro que piora. Some a isso qualquer sintoma fora do padrão (tontura, fraqueza incomum, desmaio) e a resposta é procurar o médico prescritor, sem esperar mais um ciclo.',
+  },
+  {
+    pergunta: 'Perdi três semanas de treino. Perdi tudo o que tinha ganhado?',
+    resposta:
+      'Não. Estudos de destreino mostram que a força se mantém razoavelmente estável em prazos curtos de interrupção, e que o retorno aos níveis anteriores costuma ser bem mais rápido do que foi a conquista inicial. Três semanas mais fracas dentro de um ano de constância pesam pouco no resultado final. O erro mais caro nessa fase não é perder treinos: é tentar compensá-los todos de uma vez na volta.',
+  },
+];
+
+const title = 'Quanto tempo dura a fraqueza do Mounjaro?';
+const description =
+  'Por que a falta de disposição para treinar no uso de Mounjaro (tirzepatida) costuma acompanhar as fases de adaptação e os aumentos de dose, o que dá para fazer no treino enquanto isso e quando o tempo já é sinal de procurar o médico. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Quanto tempo dura a fraqueza do Mounjaro?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      É a pergunta que aparece depois da primeira: quem já entendeu
+      <em>por que</em> a disposição caiu quer saber <em>até quando</em>. A
+      resposta honesta é que não existe um prazo que sirva para todo mundo
+      — mas existe um padrão descrito nos estudos do medicamento, e ele
+      ajuda a entender o que esperar.
+    </p>
+
+    <p class="lead">
+      Este guia mostra o que a literatura descreve sobre a duração dos
+      efeitos, por que a fraqueza costuma voltar a cada aumento de dose, o
+      que fazer com o treino enquanto isso e a partir de quando o próprio
+      tempo vira motivo para procurar o médico.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico. Em caso de sintomas ou dúvidas sobre o medicamento, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>Por que ninguém consegue te dar um número</h2>
+      <p>
+        Procure "quanto tempo dura" e você vai encontrar respostas
+        confiantes: duas semanas, um mês, três meses. Nenhuma delas tem
+        como estar certa, porque a duração depende de coisas que variam de
+        pessoa para pessoa — a dose em que se está, a velocidade do
+        escalonamento, quanto se está conseguindo comer, como andam o sono
+        e o estresse, e o histórico de treino de antes.
+      </p>
+
+      <p>
+        O que dá para dizer com base na literatura é outra coisa, mais útil
+        que um número: <strong>qual é o padrão</strong>. Os ensaios clínicos
+        com tirzepatida, como o <a
+        href="https://www.nejm.org/doi/full/10.1056/NEJMoa2206038"
+        target="_blank" rel="noopener">SURMOUNT-1, publicado no New England
+        Journal of Medicine</a>, descrevem os efeitos gastrointestinais como
+        os adversos mais comuns, majoritariamente de intensidade leve a
+        moderada, e concentrados nos períodos de aumento gradual da dose.
+      </p>
+
+      <p>
+        Traduzindo para o treino: a fraqueza tende a ter <em>ondas</em>, e
+        não uma linha reta que sobe até acabar. Essa é a informação que muda
+        o comportamento de quem treina — porque quem espera uma linha reta
+        desanima quando a segunda onda chega.
+      </p>
+
+      <h2>Por que ela volta quando você já tinha se acostumado</h2>
+      <p>
+        O escalonamento de dose é a explicação mais comum para a frustração
+        de quem estava indo bem e regrediu. O tratamento é desenhado em
+        degraus, e cada degrau é uma nova adaptação — do apetite, do
+        estômago, da quantidade de comida que entra no dia.
+      </p>
+
+      <p>
+        Na prática, isso significa que as semanas seguintes a um ajuste
+        merecem a mesma prudência das primeiras: manter os dias de treino,
+        segurar a evolução de carga, não interpretar o recuo como fracasso.
+        Não é regressão do seu condicionamento — é o mesmo processo
+        acontecendo de novo, um degrau acima.
+      </p>
+
+      <div class="callout">
+        <strong>Um teste simples:</strong> se a queda de disposição apareceu
+        junto com um aumento de dose recente, você provavelmente está em uma
+        onda de adaptação. Se apareceu do nada, sem mudança nenhuma no
+        tratamento, é um dado diferente — e vale levar ao médico.
+      </div>
+
+      <h2>O que fazer com o treino enquanto passa</h2>
+      <p>
+        A tentação natural é parar e esperar. É a pior das opções
+        disponíveis, e por um motivo específico: em uma fase de emagrecimento
+        acelerado, o treino de força é justamente o que ajuda a preservar
+        massa magra. Parar durante semanas soma dois efeitos na mesma
+        direção.
+      </p>
+
+      <p>
+        A alternativa é reduzir sem interromper:
+      </p>
+      <ul>
+        <li>
+          <strong>Mantenha os dias, encolha as sessões.</strong> Três treinos
+          de 25 minutos em uma semana ruim valem mais que zero treinos e uma
+          promessa de compensar depois.
+        </li>
+        <li>
+          <strong>Congele a progressão.</strong> Repetir a carga da semana
+          anterior é uma decisão técnica legítima, não estagnação. Os
+          critérios para acelerar e segurar estão em <a
+          href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+        </li>
+        <li>
+          <strong>Priorize os básicos.</strong> Poucos movimentos que
+          recrutam muita musculatura entregam mais estímulo por minuto
+          quando o minuto está caro.
+        </li>
+        <li>
+          <strong>Não compense.</strong> Sessão dobrada depois de uma semana
+          ruim empilha fadiga em cima de um corpo que já está operando com
+          menos energia.
+        </li>
+      </ul>
+
+      <p>
+        Se a dúvida for sobre o cardio nessa fase — quanto, de que tipo, se
+        atrapalha —, o tema tem guia próprio em <a
+        href="/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/">cardio para
+        quem usa Mounjaro</a>.
+      </p>
+
+      <h2>Quando o tempo vira o próprio sinal de alerta</h2>
+      <p>
+        Existe um ponto em que a pergunta deixa de ser "quanto tempo dura" e
+        passa a ser "por que ainda não passou". Não há uma linha exata, e é
+        exatamente por isso que a avaliação é médica. Mas dois critérios
+        ajudam a decidir a hora de procurar:
+      </p>
+
+      <p>
+        <strong>A direção.</strong> Uma fase de adaptação costuma dar sinais
+        de melhora — dias bons aparecendo no meio dos ruins, ainda que
+        devagar. Semanas seguidas sem nenhuma melhora, ou um quadro que
+        piora, é outra história.
+      </p>
+
+      <p>
+        <strong>A companhia.</strong> Fraqueza sozinha é uma coisa; fraqueza
+        acompanhada de tontura, desmaio, falta de ar, ou de uma queda de
+        força que não bate com o esforço, é outra. Sintomas somados pedem
+        avaliação, não paciência.
+      </p>
+
+      <p>
+        E se a queixa principal for menos "estou sem disposição" e mais
+        "estou visivelmente mais fraco na academia", o assunto é outro e tem
+        página própria: <a
+        href="/mounjaro-e-treino/perda-de-forca-no-mounjaro/">Mounjaro e
+        perda de força</a>.
+      </p>
+
+      <h2>E se eu perder algumas semanas?</h2>
+      <p>
+        Perde-se menos do que se imagina. A pesquisa sobre destreino mostra
+        que a força é relativamente resistente a interrupções curtas, e que
+        o retorno ao nível anterior costuma ser bem mais rápido do que foi
+        chegar lá na primeira vez — um efeito que aparece de forma
+        consistente na literatura de retreinamento.
+      </p>
+
+      <p>
+        Três semanas ruins dentro de um ano de constância pesam pouco no
+        resultado final. O que realmente atrapalha é o abandono: parar e não
+        voltar, porque cada semana seguinte torna a volta mais difícil
+        psicologicamente. Se for esse o seu caso, o caminho de retorno está
+        em <a href="/musculacao/voltar-a-treinar-depois-de-parar/">voltar a
+        treinar depois de parar</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> não existe prazo único, e quem oferece um
+        está chutando. O padrão descrito nos estudos é de efeitos
+        concentrados nas fases de adaptação e nos aumentos de dose — o que
+        significa ondas, não uma linha reta. Enquanto passa, reduza sem
+        parar: mesma frequência, sessões menores, progressão congelada. E
+        quando semanas se acumulam sem melhora, ou aparecem sintomas junto,
+        o tempo deixa de ser resposta e vira motivo para procurar o médico
+        prescritor.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
