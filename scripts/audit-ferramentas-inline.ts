@@ -17,7 +17,9 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 
 const limite = Number(process.argv[2]) || 12;
-const SECOES = ['musculacao', 'emagrecimento', 'guias', 'mounjaro-e-treino', 'humor-fitness'];
+// humor-fitness fica fora: por regra do CLAUDE.md, humor não leva convite no corpo.
+// Deixá-lo na fila só empurraria duas páginas para o topo, para sempre.
+const SECOES = ['musculacao', 'emagrecimento', 'guias', 'mounjaro-e-treino'];
 
 /** Último snapshot de Páginas por artigo arquivado em docs/relatorios. */
 function lerGsc(): Record<string, { cliques: number; impressoes: number; posicao: number }> {
