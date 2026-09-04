@@ -51,6 +51,47 @@ planilha nem da memória de ninguém.
 Ao arquivar um relatório novo, comparar com o anterior e dizer o que mudou
 — inclusive quando a resposta for "quase nada", que também é informação.
 
+## Antes de qualquer tarefa em lote: de uma vez ou ao longo dos dias?
+
+Toda tarefa que toca muitas páginas passa por esta análise antes de começar,
+e a conclusão vai escrita no commit ou na resposta.
+
+**O que NÃO é motivo para dividir.** Não existe penalidade do Google por
+volume de publicação. Crawl budget é irrelevante abaixo de ~100 mil URLs —
+este site tem 1.268. Invocar essas duas coisas para justificar lentidão é
+superstição de SEO, e leva a adiar trabalho bom por medo inventado.
+
+**Os quatro motivos reais, em ordem de peso:**
+
+1. **Atribuição.** Mudou oito coisas no mesmo dia e o tráfego se moveu:
+   qual delas foi? Espalhar é o que permite ler causa e efeito depois. Este
+   é o motivo mais forte e vale mesmo quando não há risco nenhum.
+2. **Raio do erro.** Um defeito de padrão pego no segundo dia custa 4
+   páginas; pego depois do lote inteiro, custa 140. Quanto mais nova a
+   mecânica, menor o lote.
+3. **Credibilidade do `lastmod`.** O Google ignora a data quando ela muda em
+   massa. Cada bump sem revisão real gasta a confiança do sinal — e quem
+   paga a conta é a próxima reescrita de verdade, que precisa ser recrawleada
+   rápido.
+4. **Valor por página (o único risco real de política).** A política de
+   *scaled content abuse* do Google mira produzir muitas páginas sem valor
+   próprio, e cita geração automática nominalmente. O critério dela é
+   qualidade por página e variedade, não velocidade. Publicar rápido é
+   seguro; publicar rápido, igual e raso não é.
+
+**Como decidir:**
+
+| a tarefa… | então |
+|---|---|
+| corrige defeito ou quebra algo hoje | de uma vez, sem esperar |
+| é infraestrutura invisível ao leitor | de uma vez, sem tocar `atualizadoEm` |
+| altera conteúdo renderizado em muitas páginas | dividir — comece pequeno e acelere quando o padrão provar que funciona |
+| cria páginas novas | dividir sempre, e checar variedade além do ritmo |
+| depende de verificação externa (endereço, fonte) | dividir por limite de checagem honesta, não por medo |
+
+**Regra de ritmo:** a primeira leva é sempre pequena o suficiente para
+revisar item a item. Só depois de uma leva limpa o volume sobe.
+
 ## Todo artigo leva uma ferramenta no corpo do texto
 
 Artigo novo — ou artigo editado — recebe **um** `<FerramentaInline>` no
@@ -66,6 +107,14 @@ automático é o mesmo para o cluster inteiro.
 O bloco carrega `data-track="artigo:ferramenta-inline"`, então no GA4 dá
 para comparar este convite com o CTA do fim. Se a medição mostrar que ele
 não converte, a regra cai — mas cai por dado, não por palpite.
+
+**Inserir o bloco NÃO atualiza `atualizadoEm`.** É a única exceção à regra
+de data, e vale por dois motivos. Para o leitor: "atualizado em" promete
+revisão de conteúdo, e ganhar uma caixa de convite não é revisão — dizer que
+é engana quem lê. Para o Google: são 52 bumps ocos que gastariam a
+credibilidade do `lastmod` justamente onde ela importa, que é a fila de
+reescritas. Quando o mesmo commit também revisa o texto, aí sim a data sobe
+— pela revisão, não pelo bloco.
 
 ## Outras regras editoriais fixas
 

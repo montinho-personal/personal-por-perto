@@ -54,11 +54,48 @@ fazer — nenhuma inventa trabalho para continuar existindo.
   artigo redundante em vez de escrevê-lo; a das academias, de deixar cidade
   sem lista em vez de publicar nome não confirmado.
 
+## Análise de ritmo e risco — 04/09/2026
+
+A regra do CLAUDE.md ("Antes de qualquer tarefa em lote") aplicada às quatro
+filas. A conclusão que vale para todas: **não existe penalidade do Google por
+volume de publicação**, e crawl budget é irrelevante em 1.268 URLs. As
+quatro rodam a 8 páginas por dia, cerca de 19% do site em um mês — volume
+alto, risco de política concentrado em uma fila só.
+
+| fila | o que faz | risco de política | por que o ritmo é esse |
+|---|---|---|---|
+| Reescrita | melhora página existente | **nenhum** | é o que o Google pede que se faça; o limite é o diagnóstico honesto, não o medo |
+| Academias | acrescenta dado verificado | **nenhum** | melhora justamente as páginas mais vulneráveis a "conteúdo raso"; o limite é a checagem externa |
+| FerramentaInline | acrescenta um link interno | **nenhum** | o limite é atribuição: espalhar permite ler se o bloco converte |
+| Pauta editorial | **cria páginas novas** | **real** | única em que *scaled content abuse* se aplica |
+
+**Duas mudanças saíram desta análise:**
+
+1. **FerramentaInline parou de atualizar `atualizadoEm`.** Contraria a
+   instrução original da rotina, e o motivo principal é o leitor: "atualizado
+   em" promete revisão de conteúdo, e ganhar uma caixa de convite não é
+   revisão. O motivo secundário é técnico — 52 bumps ocos gastariam a
+   credibilidade do `lastmod` justo onde ela importa, que é a fila de
+   reescritas.
+
+2. **A pauta editorial para aos 20 artigos** e exige leitura do Search
+   Console para continuar. É a única fila que cria páginas, e o critério da
+   política do Google (valor e variedade por página) não se mede de dentro:
+   só o relatório diz se os artigos estão sendo indexados e ganhando posição
+   ou nascendo mortos. Vinte é amostra suficiente e correção barata; 50 sem
+   olhar seria escrever no escuro. A rotina também ganhou instrução explícita
+   de variar a estrutura — 50 artigos com o mesmo esqueleto formam um padrão
+   detectável, e o risco mora aí, não na velocidade.
+
 ## Por que 2 por dia, e não um lote grande por semana
 
 O Google ignora `lastmod` quando muitas páginas mudam no mesmo dia. Doze de
 uma vez vira ruído; oito páginas por dia distribuídas em quatro tarefas
 diferentes é sinal contínuo e crível de site vivo.
+
+Mas o motivo mais forte não é esse, e sim **atribuição**: mudou oito coisas
+no mesmo dia e o tráfego se moveu, qual delas foi? Espalhar é o que torna a
+leitura de causa e efeito possível daqui a um mês.
 
 ## O risco que essas rotinas trazem
 
