@@ -35,7 +35,7 @@ Todos com ressalva de médico, sem promessa de resultado (regra do CLAUDE.md).
 | 4 | Parei o Mounjaro: manter peso e massa | `parei-o-mounjaro` | ✅ 2026-09-02 |
 | 5 | Cãibras em quem usa Mounjaro | `caibras-e-hidratacao` | ✅ 2026-09-02 |
 | — | ~~Ozempic ou Mounjaro para quem treina~~ | — | ❌ cancelado (ver nota) |
-| 7 | Como ajustar a carga durante o GLP-1 | `ajustar-carga-no-glp1` | ⚠️ ver nota |
+| — | ~~Como ajustar a carga durante o GLP-1~~ | — | ❌ cancelado 04/09 (ver nota) |
 | 6 | Náusea e treino: como organizar a semana | `nausea-e-treino` | ✅ 2026-09-02 |
 | 9 | Mounjaro e treino depois dos 60 | `mounjaro-e-idosos` | |
 
@@ -49,10 +49,12 @@ cabe em dois parágrafos: os medicamentos agem em vias diferentes, a escolha
 isso em um artigo inteiro seria encher linguiça e canibalizar uma página que
 já responde. Quando a verdade é curta, publicá-la curta é a decisão certa.
 
-**`ajustar-carga-no-glp1` está sob suspeita da mesma coisa.** O artigo
-`perda-de-forca-no-mounjaro`, publicado hoje, já cobre reduzir carga
-preservando o esforço relativo e cortar volume antes de intensidade — que
-era o conteúdo previsto. Decidir o recorte (ou cancelar) antes de escrever.
+**`ajustar-carga-no-glp1` foi cancelado em 04/09**, pelo mesmo motivo. A
+suspeita foi verificada: `perda-de-forca-no-mounjaro` tem um H2 chamado
+"Reduza a carga, preserve o esforço" e trata de carga em 18 passagens —
+reduzir o peso mantendo a proximidade da falha, cortar volume antes de
+intensidade, registrar as cargas. É exatamente o conteúdo que este artigo
+teria. Escrevê-lo seria disputar a própria página no Google.
 
 ## Bloco Musculação — execução (12)
 
