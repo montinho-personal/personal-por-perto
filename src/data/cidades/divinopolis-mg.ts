@@ -91,6 +91,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg'],
 
+  academiasProximas: [
+    { nome: 'Smart Fit Divinópolis', detalhe: 'na Rua Goiás, no Centro' },
+    { nome: 'Skyfit Divinópolis Centro', detalhe: 'na Av. Getúlio Vargas, no Centro' },
+    { nome: 'Skyfit Divinópolis Bom Pastor', detalhe: 'na Rua Centralina, no Bom Pastor' },
+  ],
+  academiasVerificadasEm: '2026-09-04',
+
   capaArte: {
     src: '/capas-cidade/divinopolis-mg.webp',
     vertical: true,
@@ -104,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Divinópolis', url: 'https://www.divinopolis.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-04',
 };

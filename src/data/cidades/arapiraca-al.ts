@@ -91,6 +91,12 @@ export const cidade: Cidade = {
 
   vizinhas: ['maceio-al'],
 
+  academiasProximas: [
+    { nome: 'Smart Fit Arapiraca', detalhe: 'na Rua São João, no Caititus' },
+    { nome: 'Academia Acquativ', detalhe: 'na Rua Nossa Senhora da Salete, no Alto do Cruzeiro' },
+  ],
+  academiasVerificadasEm: '2026-09-04',
+
   capaArte: {
     src: '/capas-cidade/arapiraca-al.webp',
     w: 1200,
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Arapiraca', url: 'https://www.arapiraca.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-04',
 };
