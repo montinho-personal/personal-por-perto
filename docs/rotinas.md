@@ -41,6 +41,28 @@ falta.
 Cada rotina **para sozinha** quando a fila acaba, avisa e pergunta o que
 fazer — nenhuma inventa trabalho para continuar existindo.
 
+## A primeira falha, e o que ela ensinou — 04/09/2026
+
+A rotina da pauta disparou em 03/09 às 14h e não entregou nada. O motivo não
+tinha relação com a tarefa: **`node_modules/` está no `.gitignore`**, então
+toda sessão nova recebe um clone limpo, sem dependências — e o primeiro
+comando de qualquer rotina (`npm run audit:*`, `npm run build`) precisa do
+`tsx` e do `astro`, que vivem lá. O erro era `sh: 1: tsx: not found`,
+reproduzido escondendo o `node_modules` e rodando o mesmo comando.
+
+Isso quebraria **as quatro rotinas**, não só a pauta. A correção é o
+`SessionStart` hook em `.claude/hooks/session-start.sh`, que roda
+`npm install` antes de a sessão começar — na raiz, e não remendando quatro
+prompts.
+
+Duas lições que valem além deste caso:
+
+- **Rotina que não entrega não avisa sozinha.** Esta falhou em silêncio; foi
+  o `git log` vazio que denunciou. Por isso vale conferir os commits, não só
+  as notificações.
+- **O ambiente de uma sessão automatizada não é o da sessão em que ela foi
+  criada.** O que "já está instalado" aqui não está lá.
+
 ## Regras que toda rotina obedece
 
 - Lê o `CLAUDE.md` antes de tocar em qualquer arquivo.
