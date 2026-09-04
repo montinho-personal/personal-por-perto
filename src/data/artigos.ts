@@ -184,6 +184,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/elevacao-lateral-como-fazer/', titulo: 'Elevação lateral: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/stiff-como-fazer/', titulo: 'Stiff: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/crucifixo-como-fazer/', titulo: 'Crucifixo: como fazer (reto, inclinado e máquina)' },
+  { categoria: 'Musculação', url: '/musculacao/voador-como-fazer/', titulo: 'Voador (peck deck): como fazer e o ajuste que muda tudo' },
   { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
   { categoria: 'Musculação', url: '/musculacao/mesa-flexora-como-fazer/', titulo: 'Mesa flexora: como fazer e os erros comuns' },
@@ -252,6 +253,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/parei-o-mounjaro/', titulo: 'Parei o Mounjaro: como manter peso e massa muscular' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/caibras-e-hidratacao/', titulo: 'Cãibras em quem usa Mounjaro: o que fazer no treino' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/nausea-e-treino/', titulo: 'Náusea e treino: como organizar a semana' },
+  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-idosos/', titulo: 'Mounjaro e treino depois dos 60: o que muda' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/cardio-para-quem-usa-mounjaro/', titulo: 'Cardio para quem usa Mounjaro: como encaixar sem perder músculo' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/ozempic-e-treino/', titulo: 'Ozempic e treino: como adaptar a musculação' },
 

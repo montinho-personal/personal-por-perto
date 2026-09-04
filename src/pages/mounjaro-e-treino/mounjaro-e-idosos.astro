@@ -1,0 +1,310 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/',
+    titulo: 'Como evitar perda de massa muscular usando Mounjaro',
+    descricao: 'As duas alavancas com melhor suporte na literatura: treino de força regular e proteína adequada.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/mounjaro-e-treino/perda-de-forca-no-mounjaro/',
+    titulo: 'Mounjaro e perda de força: o que muda no treino',
+    descricao: 'Como separar um dia sem energia de uma queda real de força, e como ajustar carga sem perder estímulo.',
+    tipo: 'Mounjaro e Treino',
+  },
+  {
+    url: '/musculacao/musculacao-depois-dos-40/',
+    titulo: 'Musculação depois dos 40',
+    descricao: 'O que muda de verdade com a idade, o que não muda, e o protocolo de quem volta depois de anos parado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para a terceira idade',
+    descricao: 'O que esperar de um acompanhamento pensado para quem treina depois dos 60.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/mounjaro-e-treino/mounjaro-e-idosos';
+const atualizadoEm = '2026-09-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
+  { nome: 'Mounjaro e treino depois dos 60', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que a perda de massa magra preocupa mais depois dos 60?',
+    resposta:
+      'Porque ela se soma a um processo que já está em curso. A partir da meia-idade existe uma perda gradual de massa e de força relacionada à idade, descrita na literatura como sarcopenia, e um emagrecimento acelerado pode acelerar essa conta. A diferença não é o mecanismo — é a margem: quem tem 30 anos perde massa a partir de uma reserva maior, e quem tem 70 pode chegar mais rápido ao ponto em que a força começa a atrapalhar tarefas cotidianas. Por isso o treino de força deixa de ser recomendação e passa a ser o centro do plano.',
+  },
+  {
+    pergunta: 'Devo treinar mais leve por causa da idade?',
+    resposta:
+      'A idade sozinha não determina a carga. O que determina é o histórico de treino, o quadro clínico e como o corpo responde na sessão — e há literatura consistente mostrando que pessoas idosas ganham força com treino resistido bem prescrito. Treinar leve demais é um erro comum e caro: entrega pouco estímulo justamente a quem tem menos margem para perder massa. O que muda em relação a alguém mais jovem é a velocidade da progressão e o cuidado com a recuperação, não a ambição do treino.',
+  },
+  {
+    pergunta: 'Quais sinais merecem mais atenção nessa faixa etária?',
+    resposta:
+      'Os mesmos de qualquer pessoa em uso de GLP-1 — fadiga persistente, fraqueza incomum, tontura —, com um acréscimo importante: qualquer episódio de desequilíbrio, quase-queda ou queda. Nessa idade uma queda tem consequências desproporcionais, e um equilíbrio que piorou merece avaliação em vez de adaptação de treino. Some a isso perda de peso muito rápida sem acompanhamento e você tem motivo suficiente para procurar o médico prescritor antes da próxima sessão.',
+  },
+  {
+    pergunta: 'Faz sentido incluir treino de equilíbrio?',
+    resposta:
+      'Faz, e é a diferença mais concreta entre um programa para 30 anos e um para 70. Trabalho de equilíbrio e de força de membros inferiores tem lugar consolidado em programas voltados à população idosa, e ganha relevância quando há perda de peso acelerada em curso. Na prática, isso costuma significar exercícios em apoio unipodal, mudanças de direção controladas e transferências (levantar da cadeira, subir degrau) integradas ao treino — nada exótico, mas raramente incluído por quem monta o treino sozinho.',
+  },
+  {
+    pergunta: 'Quem deve acompanhar esse treino?',
+    resposta:
+      'A prescrição do medicamento e a liberação para exercício são do médico, que conhece o quadro completo e os outros medicamentos em uso. O treino em si é trabalho de um profissional de educação física, e nessa combinação — idade mais alta, perda de peso acelerada, medicação em curso — o acompanhamento presencial costuma valer mais do que em qualquer outro perfil, porque muita coisa se corrige olhando a execução, não a planilha.',
+  },
+];
+
+const title = 'Mounjaro e treino depois dos 60: o que muda';
+const description =
+  'Por que a perda de massa magra pesa mais depois dos 60 em quem usa Mounjaro (tirzepatida), por que treinar leve demais é o erro mais comum, o lugar do treino de equilíbrio e quais sinais não esperam a próxima consulta. Conteúdo educativo, não substitui orientação médica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Mounjaro e treino depois dos 60: o que muda</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A fisiologia é a mesma em qualquer idade: emagrecer rápido leva junto
+      massa magra, e o treino de força é o que reduz essa conta. O que muda
+      depois dos 60 não é o mecanismo — é a <strong>margem</strong>.
+    </p>
+
+    <p class="lead">
+      Este guia trata do que essa margem menor exige na prática: por que
+      treinar leve demais é o erro mais caro dessa faixa, o que entra no
+      treino que não entraria aos 30, e quais sinais não esperam a próxima
+      consulta.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício físico, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico, que conhece também os outros medicamentos em uso. Em caso de sintomas ou dúvidas, procure quem o prescreveu.</div>
+
+    <div class="prose">
+      <h2>A margem, e por que ela é o assunto</h2>
+      <p>
+        A partir da meia-idade existe uma perda gradual de massa e de força
+        ligada à idade — a literatura chama de sarcopenia, e ela acontece
+        mesmo em quem não emagrece. Um emagrecimento acelerado se soma a esse
+        processo em vez de acontecer em paralelo.
+      </p>
+
+      <p>
+        A diferença prática não é o quanto se perde, é <em>de onde se
+        perde</em>. Aos 30, a massa magra sai de uma reserva grande e a queda
+        de força aparece como um treino pior. Aos 70, a mesma perda pode
+        chegar mais rápido ao ponto em que levantar da cadeira, subir escada
+        ou carregar compras fica mais difícil — e aí deixou de ser assunto de
+        academia.
+      </p>
+
+      <p>
+        É por isso que, nessa faixa, o treino de força não é uma recomendação
+        entre outras: é o centro do plano. O raciocínio completo sobre
+        preservação de massa está em <a
+        href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como
+        evitar perda de massa muscular usando Mounjaro</a>.
+      </p>
+
+      <h2>O erro mais caro: treinar leve demais</h2>
+      <p>
+        A reação intuitiva a "60 anos + medicamento + perda de peso" é
+        prescrever cargas baixas e exercícios cautelosos. É compreensível, e é
+        exatamente o oposto do que a situação pede.
+      </p>
+
+      <p>
+        Existe literatura consistente mostrando que pessoas idosas ganham
+        força com treino resistido bem prescrito — a capacidade de responder
+        ao estímulo não desaparece com a idade. Treinar leve demais entrega
+        pouco estímulo justamente a quem tem menos margem para perder massa.
+        É proteção aparente com custo real.
+      </p>
+
+      <div class="callout">
+        <strong>O que muda de verdade em relação a alguém mais jovem:</strong>
+        a velocidade da progressão e o cuidado com a recuperação — não a
+        ambição do treino. Sobe-se mais devagar, descansa-se mais entre
+        sessões, e a técnica é revisada com mais frequência. A carga continua
+        precisando ser desafiadora.
+      </div>
+
+      <p>
+        Como reduzir carga sem abrir mão do esforço relativo, quando a fase
+        pedir, está em <a
+        href="/mounjaro-e-treino/perda-de-forca-no-mounjaro/">Mounjaro e perda
+        de força</a>.
+      </p>
+
+      <h2>O que entra no treino que não entraria aos 30</h2>
+      <p>
+        Aqui está a diferença mais concreta entre um programa para 30 anos e
+        um para 70, e a que mais some quando alguém monta o treino sozinho:
+        <strong>equilíbrio</strong>.
+      </p>
+
+      <p>
+        Trabalho de equilíbrio e de força de membros inferiores tem lugar
+        consolidado em programas voltados à população idosa, e ganha peso
+        quando há perda de peso acelerada em curso — porque um corpo mais
+        leve e mais fraco ao mesmo tempo muda a relação da pessoa com o
+        próprio equilíbrio.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Apoio unipodal</strong> — ficar sobre uma perna, com apoio
+          de mão disponível, progredindo para menos apoio.
+        </li>
+        <li>
+          <strong>Transferências</strong> — levantar da cadeira sem usar os
+          braços, subir e descer um degrau com controle. São os movimentos da
+          vida real, treinados de propósito.
+        </li>
+        <li>
+          <strong>Mudanças de direção controladas</strong> — caminhar mudando
+          de sentido, contornando obstáculos.
+        </li>
+        <li>
+          <strong>Força de pernas em primeiro lugar</strong> — as pernas
+          concentram a massa que mais importa preservar aqui, e o porquê disso
+          está em <a href="/mounjaro-e-treino/fraqueza-nas-pernas/">fraqueza
+          nas pernas com Mounjaro</a>.
+        </li>
+      </ul>
+
+      <FerramentaInline
+        id="formato"
+        texto="Nesta combinação — idade mais alta, perda de peso acelerada e medicação em curso — a decisão entre presencial e online pesa mais que em qualquer outro perfil, porque boa parte do ajuste se faz olhando a execução. O teste considera o seu histórico e a sua rotina."
+        acao="Descobrir se presencial ou online faz mais sentido para mim"
+      />
+
+      <h2>O sinal que não existe nas outras faixas</h2>
+      <p>
+        Os sinais de alerta do uso de GLP-1 valem para todo mundo: fadiga
+        persistente, fraqueza incomum, tontura, náusea intensa. Depois dos 60
+        entra mais um, e ele é categórico.
+      </p>
+
+      <div class="callout">
+        <strong>Qualquer desequilíbrio, quase-queda ou queda merece avaliação
+        médica</strong> — não adaptação de treino. Nessa idade uma queda tem
+        consequências desproporcionais ao susto, e um equilíbrio que piorou é
+        informação clínica, não um item para corrigir na próxima sessão.
+      </div>
+
+      <p>
+        Some a isso perda de peso muito rápida sem acompanhamento próximo, e o
+        destino é o médico prescritor antes do próximo treino.
+      </p>
+
+      <h2>Quem acompanha o quê</h2>
+      <p>
+        A divisão é a de sempre, e nesta faixa ela fica mais estrita, não
+        menos: a prescrição do medicamento e a liberação para exercício são do
+        médico — que conhece o quadro completo e os outros medicamentos em uso,
+        um detalhe que pesa mais aos 70 do que aos 30. A alimentação, com
+        apetite reduzido, é do nutricionista.
+      </p>
+
+      <p>
+        E o treino é trabalho de um profissional de educação física. Nesta
+        combinação específica, o acompanhamento presencial costuma render mais
+        do que em qualquer outro perfil, porque muita coisa se corrige olhando
+        a execução — e não a planilha.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o mecanismo é o mesmo de qualquer idade, o
+        que muda é a margem. Por isso treinar leve demais é o erro mais caro
+        aqui: quem tem menos reserva precisa de mais estímulo, não de menos —
+        o que se ajusta é a velocidade da progressão e o descanso, não a
+        ambição. Equilíbrio e transferências entram no programa por direito
+        próprio. E desequilíbrio ou queda não é assunto de treino: é de
+        médico, sem esperar a próxima consulta.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

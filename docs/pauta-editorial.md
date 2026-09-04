@@ -37,7 +37,7 @@ Todos com ressalva de médico, sem promessa de resultado (regra do CLAUDE.md).
 | — | ~~Ozempic ou Mounjaro para quem treina~~ | — | ❌ cancelado (ver nota) |
 | — | ~~Como ajustar a carga durante o GLP-1~~ | — | ❌ cancelado 04/09 (ver nota) |
 | 6 | Náusea e treino: como organizar a semana | `nausea-e-treino` | ✅ 2026-09-02 |
-| 9 | Mounjaro e treino depois dos 60 | `mounjaro-e-idosos` | |
+| 7 | Mounjaro e treino depois dos 60 | `mounjaro-e-idosos` | ✅ 2026-09-04 |
 
 ### Nota de 02/09/2026 — dois cancelamentos por redundância
 
@@ -60,7 +60,7 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 
 | Artigo | slug | status |
 |---|---|---|
-| Voador (peck deck): como fazer | `voador-como-fazer` | |
+| Voador (peck deck): como fazer | `voador-como-fazer` | ✅ 2026-09-04 · recorte declarado |
 | Rosca Scott: como fazer | `rosca-scott-como-fazer` | |
 | Cadeira flexora: como fazer | `cadeira-flexora-como-fazer` | |
 | Agachamento hack: como fazer | `agachamento-hack-como-fazer` | |
@@ -72,6 +72,23 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Panturrilha em pé: como fazer | `panturrilha-em-pe-como-fazer` | |
 | Agachamento no Smith: como fazer | `agachamento-smith-como-fazer` | |
 | Coice de glúteo na polia: como fazer | `coice-de-gluteo-como-fazer` | |
+
+### Nota de 04/09/2026 — o recorte do voador
+
+`voador-como-fazer` quase foi cancelado: `crucifixo-como-fazer` se chama
+"reto, inclinado **e máquina**" e cita o peck deck quatro vezes. Mas a
+cobertura de lá é UM parágrafo de posicionamento — diz o que é e quando
+usar, não como executar. Não é um "como fazer".
+
+Recorte adotado, e ele vale de precedente para os outros exercícios de
+máquina da fila: **o artigo-pai diz qual variação usar; o filho diz como
+executar aquela.** O voador ganhou o ângulo que só a máquina tem — ela é a
+única variação de peito que se REGULA antes de executar, e o ajuste do
+assento decide qual músculo trabalha.
+
+Para a disputa pelo termo não ficar em aberto, o crucifixo passou a linkar
+para o voador no parágrafo do peck deck. A hierarquia fica explícita para o
+leitor e para o Google, em vez de duas páginas competindo em silêncio.
 
 ## Bloco Musculação — estrutura e método (14)
 

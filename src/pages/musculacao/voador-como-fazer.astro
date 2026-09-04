@@ -1,0 +1,291 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/crucifixo-como-fazer/',
+    titulo: 'Crucifixo: como fazer (reto, inclinado e máquina)',
+    descricao: 'O guia da família inteira — qual variação usar em cada momento do treino.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-peito/',
+    titulo: 'Treino de peito: como montar',
+    descricao: 'Onde o voador entra na sessão, e quantas aberturas o peito realmente precisa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer e os erros comuns',
+    descricao: 'O composto que o voador complementa — e nunca substitui.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro',
+    descricao: 'Por que a abertura excessiva é o ponto de atenção número um de quem sente o ombro.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/voador-como-fazer';
+const atualizadoEm = '2026-09-04';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Voador (peck deck): como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre voador e crucifixo?',
+    resposta:
+      'É o mesmo padrão de movimento — adução horizontal do ombro — em ferramentas diferentes. No crucifixo com halteres, você sustenta o peso contra a gravidade, e a resistência quase some no topo. No voador, a máquina guia a trajetória e mantém tensão do início ao fim, inclusive na parte final da contração. Na prática: o crucifixo exige mais estabilização e o voador entrega mais tensão constante e mais segurança para chegar perto da falha sem ajudante.',
+  },
+  {
+    pergunta: 'Como ajustar a altura do banco no voador?',
+    resposta:
+      'Este é o ajuste que decide o exercício, e o mais ignorado. Sentado, com as costas apoiadas, as manoplas devem ficar na altura do meio do peito — não do ombro, não da barriga. Se estiverem altas demais, o esforço migra para o ombro; se estiverem baixas, o movimento vira algo entre voador e crucifixo declinado. Ajuste antes de escolher a carga, e confira a cada sessão: máquinas de academia mudam de altura o tempo todo.',
+  },
+  {
+    pergunta: 'Até onde abrir os braços no voador?',
+    resposta:
+      'Até sentir alongamento no peito, sem que o ombro role para a frente e sem dor. A máquina permite abrir muito mais do que a articulação agradece, e é aí que a maioria das queixas de ombro nasce. Um bom limite prático: as manoplas param aproximadamente na linha do tronco. Ir além disso aumenta o alongamento em troca de estresse na cápsula anterior do ombro — mau negócio.',
+  },
+  {
+    pergunta: 'Cotovelo estendido ou flexionado?',
+    resposta:
+      'Levemente flexionado e travado nessa posição do começo ao fim. Cotovelo totalmente estendido aumenta o braço de alavanca e sobrecarrega a articulação; cotovelo que dobra e estende durante a série transforma o voador em uma espécie de supino mal feito, com o tríceps roubando parte do trabalho. O ângulo escolhido no início é o mesmo do final — o que se move é o ombro.',
+  },
+  {
+    pergunta: 'Quantas séries de voador fazer?',
+    resposta:
+      'De 2 a 4 séries de 10 a 15 repetições costumam funcionar bem, normalmente ao final do treino de peito, depois dos compostos. Por manter tensão constante e não exigir estabilização, ele tolera bem trabalho perto da falha — o que o torna uma boa escolha para as séries finais. Só vale checar o volume total de aberturas na semana: quem já faz crucifixo e crossover pode estar somando estímulo repetido para o mesmo padrão.',
+  },
+];
+
+const title = 'Voador (peck deck): como fazer e o ajuste que muda tudo';
+const description =
+  'Voador na máquina: como ajustar a altura do banco (o passo que decide o exercício), até onde abrir sem cobrar do ombro, o ângulo do cotovelo, os erros mais comuns e onde encaixar no treino de peito.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Voador (peck deck): como fazer e o ajuste que muda tudo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O voador tem uma particularidade que nenhum exercício de peso livre
+      tem: <strong>ele é regulável</strong>. E é justamente por isso que a
+      maioria das pessoas faz errado — senta, escolhe o peso e nunca toca na
+      alavanca do banco.
+    </p>
+
+    <p class="lead">
+      A altura do assento decide qual músculo trabalha. Este guia começa por
+      ela, e depois trata da amplitude que o ombro tolera, do ângulo do
+      cotovelo e de onde o movimento entra na sessão.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro o banco, depois a carga</h2>
+      <p>
+        Sentado, costas apoiadas no encosto, as <strong>manoplas precisam
+        ficar na altura do meio do peito</strong>. Não do ombro, não da
+        barriga. Esse é o ajuste que separa um voador de um exercício de
+        ombro disfarçado.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Se a manopla ficar…</th>
+              <th>O que acontece</th>
+              <th>Correção</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Na altura dos ombros</td>
+              <td>O esforço migra para o deltoide anterior e a cápsula do ombro reclama</td>
+              <td>Suba o assento</td>
+            </tr>
+            <tr>
+              <td>Na altura do meio do peito</td>
+              <td>Peitoral como motor, ombro apenas estabilizando</td>
+              <td>É aqui</td>
+            </tr>
+            <tr>
+              <td>Na altura da barriga</td>
+              <td>Vira uma adução baixa, mais parecida com crossover de polia alta</td>
+              <td>Desça o assento</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Confira isso <em>toda sessão</em>. Máquina de academia muda de altura
+        o tempo todo, e um ajuste herdado da pessoa anterior é a causa mais
+        banal de um treino de peito que não rende.
+      </p>
+
+      <h2>A execução</h2>
+      <p>
+        <strong>O cotovelo.</strong> Levemente flexionado e travado nessa
+        posição do começo ao fim. Estendido por completo, aumenta a alavanca
+        sobre a articulação; dobrando e esticando durante a série, transforma
+        o voador em um supino mal feito com o tríceps roubando trabalho.
+      </p>
+
+      <p>
+        <strong>A junção.</strong> Traga as manoplas até que se aproximem à
+        frente do peito, apertando por um instante. Aqui está a vantagem da
+        máquina: a tensão continua no ponto em que o crucifixo com halteres
+        já perdeu quase toda.
+      </p>
+
+      <p>
+        <strong>A abertura.</strong> Volte controlando, até sentir alongamento
+        no peito — e pare aí. A máquina permite abrir muito mais do que o
+        ombro agradece.
+      </p>
+
+      <p>
+        <strong>As escápulas.</strong> Apoiadas e estáveis no encosto durante
+        todo o movimento. Ombro que sai do encosto na abertura é sinal de
+        amplitude excessiva ou carga alta demais.
+      </p>
+
+      <h2>O erro que cobra no ombro</h2>
+      <p>
+        De todos os erros possíveis, um responde pela maioria das queixas:
+        <strong>abrir demais</strong>. É tentador, porque a sensação de
+        alongamento é boa e a máquina não impede.
+      </p>
+
+      <p>
+        O limite prático: as manoplas param aproximadamente na linha do
+        tronco. Passar disso troca um pouco mais de alongamento por estresse
+        na cápsula anterior do ombro — e quem já sente o ombro em outros
+        exercícios sente ali primeiro. O tema tem guia próprio em <a
+        href="/musculacao/treinar-com-dor-no-ombro/">treinar com dor no
+        ombro</a>.
+      </p>
+
+      <p>
+        Os outros três, em ordem de frequência: carga alta demais (que produz
+        impulso de tronco), soltar a volta em vez de controlá-la, e o assento
+        na altura errada — que já foi tratado acima e continua sendo o mais
+        comum de todos.
+      </p>
+
+      <h2>Onde ele entra na sessão</h2>
+      <p>
+        De 2 a 4 séries de 10 a 15 repetições, tipicamente no fim do treino de
+        peito, depois dos compostos. Por manter tensão constante e não exigir
+        estabilização, o voador tolera bem trabalho perto da falha — é uma boa
+        escolha para as séries finais, quando o <a
+        href="/musculacao/supino-como-fazer/">supino</a> já cobrou o que
+        tinha para cobrar.
+      </p>
+
+      <p>
+        Uma conta que quase ninguém faz: quem já executa crucifixo com
+        halteres e crossover na polia está somando três exercícios para o
+        mesmo padrão de movimento. Não é necessariamente erro, mas precisa ser
+        escolha, não acidente. Qual variação usar em cada momento está no guia
+        do <a href="/musculacao/crucifixo-como-fazer/">crucifixo</a>.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Três aberturas no mesmo dia de peito é o excesso mais comum da academia — e ele custa recuperação sem entregar estímulo novo. A análise olha a sua semana e diz se o volume de peito está distribuído ou empilhado."
+        acao="Analisar o meu treino de peito"
+      />
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o voador é o único exercício de peito que
+        você regula antes de executar, e o ajuste do assento decide qual
+        músculo trabalha — manopla na altura do meio do peito, conferida a
+        cada sessão. Cotovelo levemente flexionado e travado, escápulas
+        apoiadas, e a abertura para na linha do tronco: abrir além disso é
+        onde nasce a maioria das queixas de ombro. De 2 a 4 séries no fim do
+        treino, contando as outras aberturas da semana antes de somar mais uma.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o voador" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
