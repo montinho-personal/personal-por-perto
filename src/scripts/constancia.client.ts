@@ -9,8 +9,8 @@
  * o número que a pessoa acabou de declarar como plano.
  */
 import { diagnosticarConstancia, type Barreira, type ConstanciaRespostas } from '../lib/constancia';
-import { whatsappUrl } from '../lib/links';
-import { anexarContinuidade } from './jornada.client';
+import { anexarProximoPasso } from './proximoPasso.client';
+import { relatoConstancia } from '../lib/relatos';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -516,45 +516,20 @@ function renderResultado(r: ReturnType<typeof diagnosticarConstancia>): void {
     raiz.appendChild(s);
   }
 
-  /* --- Próximo passo: um só, resolvendo o gargalo --- */
-  const pp = el('section', 'dc-bloco dc-proximo');
-  pp.appendChild(el('h3', undefined, 'Próximo passo'));
-  pp.appendChild(el('p', undefined, r.proximoPasso.texto));
-  const btn = el('a', 'btn btn-primary dc-proximo-btn', r.proximoPasso.rotulo);
-  btn.href = r.proximoPasso.url;
-  const eventoPorFerramenta: Record<string, string> = {
-    rotina: 'consistency_diagnosis_routine_click',
-    mapa: 'consistency_diagnosis_map_click',
-    personalIdeal: 'consistency_diagnosis_personal_match_click',
-    auditoria: 'consistency_diagnosis_audit_click',
-  };
-  btn.addEventListener('click', () =>
-    ev(eventoPorFerramenta[r.proximoPasso.ferramenta] ?? 'consistency_diagnosis_next_click', {
-      primary_barrier: r.analytics.primary_barrier,
-    }),
-  );
-  pp.appendChild(btn);
-  raiz.appendChild(pp);
-
-  /* --- Montinho: só quando o gargalo pede estrutura externa --- */
-  if (r.montinho) {
-    const m = el('section', 'dc-compat');
-    m.appendChild(el('h3', undefined, 'Quer ajuda para organizar isso?'));
-    m.appendChild(el('p', undefined, r.montinho.motivo));
-    const acoes = el('div', 'dc-acoes');
-    const wpp = el('a', 'btn btn-primary');
-    wpp.href = whatsappUrl(r.whatsapp);
-    wpp.target = '_blank';
-    wpp.rel = 'noopener';
-    wpp.textContent = 'Conversar com o Montinho';
-    wpp.addEventListener('click', () =>
-      ev('consistency_diagnosis_whatsapp_click', { primary_barrier: r.analytics.primary_barrier }),
-    );
-    acoes.appendChild(wpp);
-    acoes.appendChild(el('p', 'dc-acoes-nota', 'Abre o WhatsApp com um resumo curto. Você lê antes de enviar.'));
-    m.appendChild(acoes);
-    raiz.appendChild(m);
-  }
+  /*
+   * O próximo passo e a oferta comercial saíram daqui.
+   *
+   * Os dois blocos que ficavam neste ponto — "Próximo passo", montado pela
+   * própria engine, e "Quer ajuda para organizar isso?", com o botão de
+   * WhatsApp — agora são decididos pelo motor central, que enxerga o
+   * resultado E o mapa da pessoa. Ver docs/motor-proximo-passo.md.
+   *
+   * A saída do WhatsApp daqui é deliberada: o diagnóstico da constância é a
+   * primeira etapa da jornada, e mandar quem acabou de descobrir um gargalo
+   * direto para a conversa comercial é pular quatro degraus da escada de
+   * conversão. O motor oferece consultoria quando necessidade E intenção
+   * estiverem altas — o que não é o caso de quem está na etapa 1.
+   */
 
   /* --- Conteúdo --- */
   if (r.conteudo.length) {
@@ -581,18 +556,13 @@ function renderResultado(r: ReturnType<typeof diagnosticarConstancia>): void {
     ),
   );
 
-  anexarContinuidade(
-    raiz,
-    'constancia',
-    {
-      diasReais: r.semana.alvo,
-      gargalo: r.principal?.id,
-      gargaloRotulo: r.principal?.titulo,
-      cidadeSlug: respostas.cidadeSlug,
-      cidadeNome: respostas.cidadeNome,
-    },
-    r.proximoPasso.url,
-  );
+  const relato = relatoConstancia(r);
+  relato.perfil = {
+    ...relato.perfil,
+    cidadeSlug: respostas.cidadeSlug,
+    cidadeNome: respostas.cidadeNome,
+  };
+  anexarProximoPasso(raiz, relato);
 
   raiz.appendChild(rodape(r));
 

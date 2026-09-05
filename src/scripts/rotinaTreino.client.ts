@@ -11,8 +11,8 @@
  * rastreia.
  */
 import { rotinaTreinoEngine, type RotinaRespostas } from '../lib/rotinaTreino';
-import { whatsappUrl } from '../lib/links';
-import { anexarContinuidade } from './jornada.client';
+import { anexarProximoPasso } from './proximoPasso.client';
+import { relatoRotina } from '../lib/relatos';
 
 /* ------------------------------------------------------------------ *
  * Analytics — só dispara se o GA foi carregado (consentimento LGPD).
@@ -467,14 +467,11 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
     raiz.appendChild(alt);
   }
 
-  /* --- Próximo passo --- */
-  const passo = el('section', 'rt-bloco');
-  passo.appendChild(el('h3', undefined, 'Próximo passo'));
-  passo.appendChild(el('p', undefined, r.proximoPasso));
-  raiz.appendChild(passo);
-
-  /* --- Montinho (só aqui, depois de todo o valor) --- */
-  raiz.appendChild(blocoMontinho(r));
+  /*
+   * O próximo passo e o bloco do Montinho saíram daqui: quem decide os dois
+   * agora é o motor central, que enxerga o resultado E o mapa da pessoa.
+   * Ver docs/motor-proximo-passo.md.
+   */
 
   /* --- Ferramentas irmãs e conteúdo --- */
   raiz.appendChild(blocoContinuar(r));
@@ -487,12 +484,7 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
     ),
   );
 
-  anexarContinuidade(raiz, 'rotina', {
-    objetivo: r.analytics.goal,
-    experiencia: r.analytics.experience,
-    diasReais: r.divisao.sessoes.length,
-    divisao: r.divisao.nome,
-  });
+  anexarProximoPasso(raiz, relatoRotina(r, respostas as RotinaRespostas));
 
   raiz.appendChild(rodape(r));
 
@@ -510,30 +502,6 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
   } catch {
     /* sem persistência: recurso opcional */
   }
-}
-
-function blocoMontinho(r: ReturnType<typeof rotinaTreinoEngine>): HTMLElement {
-  const box = el('section', 'rt-compat');
-  box.appendChild(el('h3', undefined, 'Quer transformar essa estrutura em um treino individual?'));
-  box.appendChild(el('p', undefined, r.montinho.motivo));
-  if (r.montinho.ressalva) box.appendChild(el('p', 'rt-compat-ressalva', r.montinho.ressalva));
-
-  const acoes = el('div', 'rt-acoes');
-  const wpp = el('a', 'btn btn-primary');
-  wpp.href = whatsappUrl(r.whatsapp);
-  wpp.target = '_blank';
-  wpp.rel = 'noopener';
-  wpp.textContent = 'Conversar com o Montinho';
-  wpp.addEventListener('click', () =>
-    ev('routine_tool_whatsapp_click', {
-      recommended_split: r.analytics.recommended_split,
-      compatibility: r.montinho.nivel,
-    }),
-  );
-  acoes.appendChild(wpp);
-  acoes.appendChild(el('p', 'rt-acoes-nota', 'Abre o WhatsApp com as suas respostas já preenchidas. Você lê antes de enviar.'));
-  box.appendChild(acoes);
-  return box;
 }
 
 /**

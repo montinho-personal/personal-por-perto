@@ -244,6 +244,13 @@ export function iniciarSlideIn(): void {
     if (ativo && aberto) fechar('clique'); // some sem registrar dispensa
   };
 
+  /*
+   * Próximo passo calculado na tela: o slide-in cala. Hoje ele não roda em
+   * página de ferramenta — os BLOCOS são só editoriais —, mas nada no código
+   * garantia isso quando um bloco novo abrisse. Garante agora.
+   */
+  document.addEventListener('ppp:resultado', () => bloquear('resultado', true));
+
   const cookies = document.getElementById('cookie-aviso');
   if (cookies) {
     const ver = (): void => bloquear('cookies', !cookies.hidden);

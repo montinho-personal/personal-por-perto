@@ -256,6 +256,19 @@ export function iniciarStickyBar(): void {
     aplicar();
   });
 
+  /*
+   * ---- Some de vez quando há um próximo passo calculado na tela ----
+   *
+   * A barra oferece a etapa seguinte da jornada sem saber o resultado da
+   * ferramenta; o bloco de próximo passo sabe. Entre uma sugestão informada
+   * pelo resultado e uma genérica, a genérica sai — e não volta, porque a
+   * tela de resultado é o fim do percurso daquela página.
+   */
+  document.addEventListener('ppp:resultado', () => {
+    bloqueios.add('resultado');
+    aplicar();
+  });
+
   /* ---- Recolhe enquanto o aviso de cookies estiver aberto ---- */
   const cookies = document.getElementById('cookie-aviso');
   if (cookies) {

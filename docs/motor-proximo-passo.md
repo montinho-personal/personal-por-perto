@@ -359,9 +359,81 @@ sequência de ferramentas termina (7 passos, sem repetição) · nenhum modelo
 renderiza `{{template}}` cru nem texto vazio · payload de analytics sem
 cidade e sem pontuação bruta.
 
-### O que falta para a Fase 2
+---
 
-Fazer `rotina`, `auditoria` e `constancia` devolverem `RelatoFerramenta`,
-escrever `src/scripts/proximoPasso.client.ts` (render + os seis eventos) e
-suprimir sticky e slide-in na tela de resultado. As outras quatro
-ferramentas seguem no comportamento atual até o piloto dar dado.
+## 10. Fase 2 entregue — o piloto no ar
+
+`src/lib/relatos.ts` · `src/scripts/proximoPasso.client.ts`, ligados em
+**constância, rotina e auditoria**. As outras quatro ferramentas seguem
+idênticas.
+
+### As engines não foram tocadas
+
+A tradução do dialeto de cada ferramenta para o vocabulário comum ficou em
+`relatos.ts`, e não dentro de cada engine. Se cada ferramenta traduzisse a si
+mesma, a regra voltaria para dentro dela — que é o que o motor central existe
+para evitar. Os testes das três engines passam sem uma linha alterada.
+
+Três decisões de tradução que valem registro:
+
+- `faltaClareza` (constância) vira `estrutura`, não `aderencia`. Quem não sabe
+  o que fazer ao chegar na academia não tem problema de disciplina: tem um
+  treino que não existe no papel.
+- A rotina relata nível `neutro`, nunca `bom`. Ela prescreve, não avalia —
+  chamar de "bom" um resultado que não avaliou nada calaria o motor com base
+  numa conclusão que a ferramenta não tirou.
+- `recuperacao`, `equilibrio`, `prioridade` e `complexidade` (auditoria) caem
+  todos em `estrutura`: são formas diferentes de dizer que o programa está mal
+  montado, e têm a mesma resposta útil.
+
+### Um bloco, não dois
+
+Nas três ferramentas, o "Próximo passo" da própria engine e o bloco do
+Montinho saíram da tela. Onde havia duas ofertas concorrentes deduplicadas por
+comparação de URL, agora há uma decisão só.
+
+A saída do WhatsApp dessas três telas é o efeito mais visível, e é deliberada:
+constância e rotina são as etapas 1 e 2 da jornada, e mandar quem acabou de
+descobrir um gargalo direto para a conversa comercial pula quatro degraus da
+escada. Na auditoria era pior — o bloco aparecia **também para quem recebia
+veredito "coerente"**, ou seja, oferecia ajuda a quem o próprio sistema
+acabara de dizer que estava bem. Agora resultado bom termina sem CTA nenhum.
+
+As engines continuam produzindo `proximoPasso` e `montinho`; os campos ficam
+sem uso nas três ferramentas até a Fase 3 removê-los, depois que o dado do
+piloto confirmar a troca. Remover antes seria apagar a única base de
+comparação.
+
+### Coordenação com as outras superfícies
+
+`ppp:resultado` é despachado quando o bloco entra na tela. A sticky bar some
+de vez (a tela de resultado é o fim do percurso daquela página) e o slide-in
+se bloqueia — ele não roda em página de ferramenta hoje, mas nada no código
+garantia isso quando um bloco novo abrisse.
+
+### Verificação
+
+39 asserções em `npm run test:proximo`, incluindo três casos ponta a ponta
+que rodam a engine real → relato → motor. Os testes das sete ferramentas,
+da jornada, da sticky e do slide-in continuam passando. Build 1.270 páginas.
+
+Fumaça em navegador (Chromium, 390×844), percorrendo os três quizzes até o
+resultado:
+
+| ferramenta | bloco | regra | blocos antigos | sticky | template cru |
+|---|---|---|---|---|---|
+| constância | ✅ | `eixoAgenda` | 0 | oculta | não |
+| rotina | ✅ | `eixoAgenda` | 0 | oculta | não |
+| auditoria | ✅ | silêncio | 0 | oculta | não |
+
+A auditoria caiu no silêncio porque o percurso automático produziu um treino
+coerente — é o caminho "resultado bom, nenhum CTA" funcionando no navegador,
+não uma falha.
+
+### O que falta para a Fase 3
+
+Duas semanas de dado no GA4, e então: migrar `personalIdeal`, `formato`,
+`preco` e `score`; remover `proximoPasso` e `montinho` das sete engines; criar
+as dimensões `need_bucket` e `intent_bucket` no painel. A flag
+`limitacaoDeclarada` só passa a disparar de verdade na Fase 3 — das sete
+ferramentas, só o Personal Ideal pergunta sobre limitação.

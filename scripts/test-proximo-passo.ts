@@ -21,6 +21,10 @@ import {
 } from '../src/lib/proximoPasso';
 import { FERRAMENTAS, mapaVazio, type FerramentaId, type Mapa, type PerfilMapa } from '../src/lib/jornada';
 import { TEXTOS, preencher } from '../src/data/proximoPassoMensagens';
+import { relatoAuditoria, relatoConstancia, relatoRotina } from '../src/lib/relatos';
+import { diagnosticarConstancia } from '../src/lib/constancia';
+import { rotinaTreinoEngine } from '../src/lib/rotinaTreino';
+import { analisarTreino } from '../src/lib/auditoriaTreino';
 
 const falhas: string[] = [];
 const ok = (c: boolean, m: string) => {
@@ -261,6 +265,89 @@ console.log('\n[8] Analytics sem dado identificável\n');
   ok(!/Belo Horizonte/.test(payload), 'o payload não carrega cidade nem outro dado do perfil');
   ok(/need_bucket/.test(payload) && /intent_bucket/.test(payload), 'os dois escores viajam como faixa, nunca como número cru');
   ok(!/\b\d{2,3}\b/.test(payload.replace(/[^"]*"/g, '')), 'nenhuma pontuação bruta no payload');
+}
+
+/* ================================================================== */
+console.log('\n[9] Piloto ponta a ponta: engine real -> relato -> motor\n');
+
+{
+  // Semana apertada, treino sem clareza, perde o resto da semana quando falta.
+  const travada = diagnosticarConstancia({
+    diasPlanejados: '5',
+    diasReais: '1',
+    duracao: 'mais90',
+    deslocamento: 'mais30',
+    local: 'academia',
+    previsibilidade: 'quaseNunca',
+    reacaoFalta: 'perdeSemana',
+    barreiras: ['tempo', 'deslocamento'],
+    clareza: 'decideNaHora',
+    progresso: 'naoFacoIdeia',
+    planoB: 'nao',
+  });
+  const rel = relatoConstancia(travada);
+  ok(rel.ferramenta === 'constancia', 'relato da constância identifica a ferramenta');
+  ok(rel.eixo !== 'nenhum', `constância travada gera eixo (${rel.eixo})`);
+  const d = decidir(rel);
+  ok(ehAcao(d) && d.cta.url !== FERRAMENTAS.constancia.url, 'constância travada -> ação para outra ferramenta');
+}
+
+{
+  const plano = rotinaTreinoEngine({
+    objetivo: 'massa',
+    experiencia: 'regular',
+    dias: '4',
+    tempo: '45a60',
+    local: 'academia',
+    previsibilidade: 'fixa',
+    dificuldade: 'semEvolucao',
+  });
+  const rel = relatoRotina(plano, {
+    objetivo: 'massa',
+    experiencia: 'regular',
+    dias: '4',
+    tempo: '45a60',
+    local: 'academia',
+    previsibilidade: 'fixa',
+    dificuldade: 'semEvolucao',
+  });
+  ok(rel.nivel === 'neutro', 'a rotina prescreve, então nunca declara resultado "bom"');
+  ok(rel.eixo === 'progressao', 'dificuldade semEvolucao vira eixo progressao');
+  const d = decidir(rel);
+  ok(ehAcao(d) && d.cta.url === FERRAMENTAS.auditoria.url, 'quem não vê evolução é mandado para a auditoria');
+}
+
+{
+  // Treino coerente: peito/costas/pernas 2x, progressão declarada, adesão alta.
+  const coerente = analisarTreino({
+    objetivo: 'hipertrofia',
+    experiencia: '1a3anos',
+    semana: [
+      ['peito', 'triceps'],
+      ['costas', 'biceps'],
+      ['quadriceps', 'gluteos'],
+      ['peito', 'ombros'],
+      ['costas'],
+      ['quadriceps', 'posterior'],
+      [],
+    ],
+    duracao: '45a60',
+    exercicios: '4a5',
+    progressao: 'carga',
+    registro: 'sempre',
+    prioridades: ['quadriceps'],
+    aderencia: 'sempre',
+  });
+  const rel = relatoAuditoria(coerente);
+  const d = decidir(rel, comMapa(['rotina']));
+  ok(
+    rel.nivel !== 'critico',
+    `treino bem montado não é relatado como crítico (${rel.nivel})`,
+  );
+  ok(
+    !(ehAcao(d) && d.tipo === 'consultoria'),
+    'auditoria sem problema grave nunca termina em oferta comercial',
+  );
 }
 
 /* ================================================================== */

@@ -16,8 +16,8 @@ import {
   type Prioridade,
   type Semana,
 } from '../lib/auditoriaTreino';
-import { whatsappUrl } from '../lib/links';
-import { anexarContinuidade } from './jornada.client';
+import { anexarProximoPasso } from './proximoPasso.client';
+import { relatoAuditoria } from '../lib/relatos';
 
 type Gtag = (c: string, e: string, p?: Record<string, unknown>) => void;
 function ev(nome: string, params?: Record<string, unknown>): void {
@@ -690,40 +690,16 @@ function renderResultado(r: ReturnType<typeof analisarTreino>): void {
   nd.appendChild(ulN);
   raiz.appendChild(nd);
 
-  /* --- Próximo passo: um só --- */
-  const pp = el('section', 'at-bloco at-proximo');
-  pp.appendChild(el('h3', undefined, 'Próximo passo'));
-  pp.appendChild(el('p', undefined, r.proximoPasso.texto));
-  const btn = el('a', 'btn btn-primary at-proximo-btn', r.proximoPasso.rotulo);
-  btn.href = r.proximoPasso.url;
-  btn.addEventListener('click', () =>
-    ev(
-      r.proximoPasso.url.includes('treino-para-minha-rotina')
-        ? 'training_audit_routine_tool_click'
-        : 'training_audit_personal_match_click',
-      { primary_issue: r.analytics.primary_issue },
-    ),
-  );
-  pp.appendChild(btn);
-  raiz.appendChild(pp);
-
-  /* --- Montinho: depois de todo o valor --- */
-  const mont = el('section', 'at-compat');
-  mont.appendChild(el('h3', undefined, 'Quer uma análise além da estrutura?'));
-  mont.appendChild(el('p', undefined, r.montinho.motivo));
-  const acoes = el('div', 'at-acoes');
-  const wpp = el('a', 'btn btn-primary');
-  wpp.href = whatsappUrl(r.whatsapp);
-  wpp.target = '_blank';
-  wpp.rel = 'noopener';
-  wpp.textContent = 'Conversar com o Montinho';
-  wpp.addEventListener('click', () =>
-    ev('training_audit_whatsapp_click', { primary_issue: r.analytics.primary_issue, verdict: r.analytics.verdict }),
-  );
-  acoes.appendChild(wpp);
-  acoes.appendChild(el('p', 'at-acoes-nota', 'Abre o WhatsApp com um resumo curto da análise. Você lê antes de enviar.'));
-  mont.appendChild(acoes);
-  raiz.appendChild(mont);
+  /*
+   * O próximo passo e o bloco do Montinho saíram daqui: quem decide os dois
+   * agora é o motor central, que enxerga o resultado E o mapa da pessoa.
+   * Ver docs/motor-proximo-passo.md.
+   *
+   * Vale o registro de por que isto melhora a auditoria em particular: o
+   * bloco antigo oferecia o WhatsApp TAMBÉM para quem recebia veredito
+   * "coerente" — inventar um problema para vender é exatamente o que não se
+   * quer. Agora o resultado bom termina sem CTA nenhum.
+   */
 
   /* --- Conteúdo --- */
   if (r.conteudo.length) {
@@ -750,11 +726,7 @@ function renderResultado(r: ReturnType<typeof analisarTreino>): void {
     ),
   );
 
-  anexarContinuidade(raiz, 'auditoria', {
-    objetivo: r.analytics.goal,
-    experiencia: r.analytics.experience,
-    diasReais: r.analytics.days_per_week,
-  });
+  anexarProximoPasso(raiz, relatoAuditoria(r));
 
   raiz.appendChild(rodape(r));
 
