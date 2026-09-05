@@ -161,10 +161,21 @@ nenhum gargalo), então é a que melhor testa a exigência central de que o
 resultado mude o CTA. Rotina, auditoria e constância cobrem as três etapas de
 entrada da jornada, que é onde está o volume.
 
-Se a intenção era mesmo construir a Calculadora de Volume primeiro, ela entra
-como tarefa separada — construir ferramenta nova dentro do piloto do motor
-misturaria duas mecânicas novas no mesmo lote, contra a regra de ritmo do
-CLAUDE.md.
+**Decisão do Renato, 05/09/2026: a Calculadora de Volume não entra na fila
+por enquanto.** O piloto fica com constância, rotina e auditoria, e o portal
+segue com sete ferramentas. Não é pendência aberta nem lacuna a preencher —
+é uma decisão tomada, e não precisa ser reaberta a cada vez que o briefing
+original for relido.
+
+Vale para as outras citadas no mesmo briefing e igualmente inexistentes:
+Calculadora de Proteína, Déficit Calórico, Macros e Cardápio. E é coerente
+com o que já estava registrado em `src/data/slideInMensagens.ts`, onde os
+blocos 2 a 8 do slide-in foram fechados em parte por dependerem justamente da
+Calculadora de Volume e do Teste de Mobilidade.
+
+Se um dia entrar, entra como tarefa separada: construir ferramenta nova
+dentro do piloto do motor misturaria duas mecânicas novas no mesmo lote,
+contra a regra de ritmo do CLAUDE.md.
 
 ## 5. Arquitetura proposta
 
