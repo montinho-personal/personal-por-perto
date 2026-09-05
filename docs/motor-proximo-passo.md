@@ -314,3 +314,54 @@ Plano: piloto em três ferramentas → duas semanas de dado → as outras quatro
 
 Nenhuma regra de CTA é escrita na ferramenta. Se ela precisar de uma regra
 própria, a regra está no lugar errado.
+
+---
+
+## 9. Fase 1 entregue — o que existe em código
+
+`src/lib/proximoPasso.ts` · `src/data/proximoPassoMensagens.ts` ·
+`scripts/test-proximo-passo.ts` (`npm run test:proximo`, 30 asserções).
+
+Nenhuma ferramenta foi tocada. O motor está de pé e testado, e ainda não é
+chamado por ninguém — é assim que a Fase 2 pode ligar três ferramentas sem
+que as outras quatro corram risco.
+
+### O mapa de eixo → ferramenta
+
+| eixo | 1ª | 2ª | por quê |
+|---|---|---|---|
+| `aderencia` | constância | rotina | uma diagnostica o gargalo, a outra remonta a semana para ele |
+| `agenda` | rotina | constância | a 2ª **não** é o formato de propósito: "a semana não cabe" tem resposta de organização antes de ter resposta de contratação |
+| `estrutura` | auditoria | — | opção única, e isso é resposta, não lacuna: nenhuma outra ferramenta audita estrutura por outro ângulo. Esgotada, cai para o artigo do resultado |
+| `progressao` | auditoria | personal ideal | |
+| `supervisao` | personal ideal | formato | |
+| `orcamento` | preço | formato | |
+
+### Os limites que governam a consultoria
+
+`necessidade ≥ 45` **e** `intenção ≥ 60`, as duas. Um teste trava o caso que
+motivou a separação: quem tira 28/100 no Personal Score marca necessidade 95
+e intenção 0 — necessidade máxima, e o motor não oferece consultoria.
+
+### Onde o motor se cala
+
+`resultadoBom` (nível bom e necessidade < 30) · `jornadaCompleta` ·
+`semAcaoUtil`. Os três entregam um texto de fechamento: silêncio não é tela
+que acaba no vazio.
+
+### Invariantes travados em teste
+
+Resultado muda o destino · nunca oferece a ferramenta atual, uma já
+concluída no mapa ou uma feita nesta sessão · regra some depois de 2
+impressões sem clique · consultoria uma vez por sessão · limitação de saúde
+bloqueia consultoria e força a ressalva de médico ou fisioterapeuta ·
+sequência de ferramentas termina (7 passos, sem repetição) · nenhum modelo
+renderiza `{{template}}` cru nem texto vazio · payload de analytics sem
+cidade e sem pontuação bruta.
+
+### O que falta para a Fase 2
+
+Fazer `rotina`, `auditoria` e `constancia` devolverem `RelatoFerramenta`,
+escrever `src/scripts/proximoPasso.client.ts` (render + os seis eventos) e
+suprimir sticky e slide-in na tela de resultado. As outras quatro
+ferramentas seguem no comportamento atual até o piloto dar dado.
