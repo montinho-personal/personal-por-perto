@@ -121,8 +121,49 @@ passa a acontecer dentro de uma conversa existente, à vista de quem a
 acompanha, e a rotina depende daquela sessão continuar viva. Em troca, a
 sessão traz contexto que um contêiner novo nunca teria.
 
-Os prompts originais não são recuperáveis: `list_triggers` não os devolve, e
-recriar significa reescrevê-los a partir do que esta página documenta.
+### O que foi feito — 06/09/2026, à noite
+
+As cinco rotinas antigas (as quatro diárias mais uma reescrita duplicada, que
+disparava sete minutos depois da outra e atacava a mesma fila) foram apagadas,
+e quatro novas foram criadas com `persistent_session_id` apontando para a
+sessão de trabalho do projeto.
+
+| horário (UTC) | rotina | id |
+|---|---|---|
+| 12:00 | FerramentaInline | `trig_01N6xJDmUwxVMDEQjBfRFtD3` |
+| 14:00 | Reescrita de artigos presos | `trig_01MgNxGxH3bpTUgYRHsrmGbV` |
+| 17:00 | Pauta editorial | `trig_015qkrnYcjKxDdUDZfKUPGP9` |
+| 19:00 | Academias das cidades com capa | `trig_019hpMftf7uJqS8hG1SrtUus` |
+
+Detalhe que salvou a operação: **a resposta do `delete_trigger` devolve o
+prompt inteiro da rotina apagada**, embora o `list_triggers` não devolva. Os
+prompts originais, que eu havia dado por perdidos, voltaram na exclusão e
+foram reaproveitados. Três regras que os prompts novos tinham perdido e que
+foram recolocadas:
+
+- **FerramentaInline:** o bloco inline nunca pode oferecer a mesma ferramenta
+  que o CTA automático do fim da página. Sem isso, a página oferece a mesma
+  coisa duas vezes em vez de duas coisas diferentes.
+- **Academias:** `academiasVerificadasEm` é preenchido SEMPRE, inclusive
+  quando a busca não acha nada verificável. Em município pequeno, não achar é
+  resultado legítimo — e sem a data a cidade volta para a fila no dia
+  seguinte e a rotina entra em loop.
+- **Pauta:** "varie a estrutura". É o ponto que mais importa para a política
+  de *scaled content abuse* e o mais fácil de esquecer, porque cinquenta
+  artigos com o mesmo esqueleto formam um padrão detectável.
+
+Fica a lição de operação: **antes de apagar uma rotina, apague-a e leia a
+resposta** — é a única via de recuperar o prompt.
+
+### O que muda no dia a dia
+
+O trabalho passa a acontecer dentro da sessão de trabalho, à vista de quem a
+acompanha, em vez de num contêiner invisível. Em troca, a rotina depende
+daquela sessão continuar viva.
+
+As notificações push por rotina também saem: elas só existem para rotinas que
+abrem sessão nova a cada disparo. O aviso passa a ser a própria conversa —
+que é onde o Renato já lê o resultado.
 
 ## Regras que toda rotina obedece
 
