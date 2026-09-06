@@ -1,26 +1,31 @@
 # Rotinas agendadas
 
-Sessões automáticas que trabalham neste repositório sem ninguém pedir. Cada
-uma abre uma sessão nova, lê o `CLAUDE.md`, faz a tarefa, verifica e faz
-push direto na branch `claude/personal-perto-portal-6ask2v`. Nenhuma abre PR.
+Tarefas que rodam neste repositório sem ninguém pedir: leem o `CLAUDE.md`,
+fazem o trabalho, verificam e empurram direto na branch
+`claude/personal-perto-portal-6ask2v`. Nenhuma abre PR.
 
 Existem para que o trabalho repetitivo não dependa de alguém lembrar — e
 para que a pergunta "o que aconteceu com aquilo?" tenha resposta no `git log`.
 
+**Desde 06/09/2026 elas disparam DENTRO da sessão de trabalho do projeto**,
+não em contêineres novos. O motivo está no post-mortem no fim desta página:
+rotina que abre sessão nova sobe sem repositório nenhum e não tem o que
+fazer.
+
 ## As quatro diárias
 
-Horários escalonados de propósito: quatro sessões empurrando para a mesma
+Horários escalonados de propósito: quatro tarefas empurrando para a mesma
 branch no mesmo minuto viraria conflito de merge todo dia.
 
-| horário (BRT) | rotina | fila | o que faz |
+| horário (UTC / BRT) | rotina | fila | o que faz |
 |---|---|---|---|
-| **09:00** | FerramentaInline | `npm run audit:ferramentas` | Insere o convite a uma ferramenta no corpo de 2 artigos, no parágrafo em que a dúvida aparece. |
-| **11:00** | Reescrita de artigos presos | `docs/reescritas.md` | Diagnostica por que 2 artigos com demanda estão além da página 2 e corrige a causa. |
-| **14:00** | Pauta editorial | `docs/pauta-editorial.md` | Escreve 2 artigos novos — depois de checar que o assunto já não está respondido em outro. |
-| **16:00** | Academias das cidades com capa | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades que subiram capa sem academia. |
+| **12:00 / 09:00** | FerramentaInline | `npm run audit:ferramentas` | Insere o convite a uma ferramenta no corpo de 2 artigos, no parágrafo em que a dúvida aparece. |
+| **14:00 / 11:00** | Reescrita de artigos presos | `docs/reescritas.md` | Diagnostica por que 2 artigos com demanda estão além da página 2 e corrige a causa. |
+| **17:00 / 14:00** | Pauta editorial | `docs/pauta-editorial.md` | Escreve 2 artigos novos — depois de checar que o assunto já não está respondido em outro. |
+| **19:00 / 16:00** | Academias das cidades com capa | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades que subiram capa sem academia. |
 
-Todas mandam **push no celular** ao terminar, com o que fizeram e quanto
-falta.
+O aviso do resultado é a própria conversa da sessão. Push no celular por
+rotina só existe para rotina que abre sessão nova, e não é mais o caso.
 
 ## As periódicas
 
