@@ -61,8 +61,8 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Artigo | slug | status |
 |---|---|---|
 | Voador (peck deck): como fazer | `voador-como-fazer` | ✅ 2026-09-04 · recorte declarado |
-| Rosca Scott: como fazer | `rosca-scott-como-fazer` | |
-| Cadeira flexora: como fazer | `cadeira-flexora-como-fazer` | |
+| Rosca Scott: como fazer | `rosca-scott-como-fazer` | ✅ 2026-09-06 |
+| Cadeira flexora: como fazer | `cadeira-flexora-como-fazer` | ✅ 2026-09-06 · recorte declarado |
 | Agachamento hack: como fazer | `agachamento-hack-como-fazer` | |
 | Supino declinado: como fazer | `supino-declinado-como-fazer` | |
 | Tríceps francês: como fazer | `triceps-frances-como-fazer` | |
@@ -89,6 +89,24 @@ assento decide qual músculo trabalha.
 Para a disputa pelo termo não ficar em aberto, o crucifixo passou a linkar
 para o voador no parágrafo do peck deck. A hierarquia fica explícita para o
 leitor e para o Google, em vez de duas páginas competindo em silêncio.
+
+### Nota de 06/09/2026 — o recorte da cadeira flexora, e uma correção
+
+`cadeira-flexora-como-fazer` repetiu o caso do voador. `mesa-flexora-como-fazer`
+tem um H2 chamado "Mesa ou cadeira flexora?" que já diz qual das duas escolher
+— e afirma que a sentada tem pequena vantagem. Mas isso é posicionamento, não
+execução: a cadeira tem três regulagens próprias e um erro específico (o
+quadril que sai do banco e desfaz justamente a vantagem do alongamento) que
+não cabiam no parágrafo do pai. Mesmo recorte, mesmo link do pai para o
+filho.
+
+`rosca-scott-como-fazer` não precisou de recorte — o acervo tem quatro roscas
+e nenhuma cobre a Scott. Mas a checagem encontrou outra coisa: `treino-de-bracos`
+dizia que o braço à frente do corpo "enfatiza a porção curta e o pico de
+contração". A primeira metade está certa; a segunda não, porque no banco Scott
+a resistência cai justamente no topo — o trecho pesado é o de baixo. A frase
+foi corrigida no mesmo commit, e as duas páginas-pai tiveram `atualizadoEm`
+atualizado, porque link novo e correção factual são revisão de conteúdo.
 
 ## Bloco Musculação — estrutura e método (14)
 
