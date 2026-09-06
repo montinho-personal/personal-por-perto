@@ -63,6 +63,67 @@ Duas lições que valem além deste caso:
 - **O ambiente de uma sessão automatizada não é o da sessão em que ela foi
   criada.** O que "já está instalado" aqui não está lá.
 
+## A causa real — 06/09/2026, e uma correção do diagnóstico acima
+
+O hook não resolveu. Entre 05 e 06/09 as quatro rotinas dispararam sete
+vezes, todas marcadas SUCCEEDED, e **nenhuma produziu um único commit**. O
+último artigo publicado por rotina continua não existindo: tudo o que está
+no `git log` foi feito em sessão interativa.
+
+Indo atrás das sessões disparadas — o `last_run` de cada rotina traz o
+`session_id`, e `get_session` funciona nele —, o `session_context` de todas
+elas é este:
+
+```json
+{ "autofix_on_pr_create": true, "permission_mode": "auto" }
+```
+
+**Sem `sources`. Sem `outcomes`.** Nenhum repositório anexado, nenhuma branch
+de destino. Compare com uma sessão interativa deste projeto, que carrega o
+`git_repository` de origem e a branch de saída.
+
+Ou seja: cada disparo sobe um contêiner vazio, sem o código. A sessão lê um
+prompt que fala de `docs/pauta-editorial.md` e de `npm run audit:*`, não
+encontra nada disso, trabalha 7 a 10 minutos tentando se virar e termina.
+"SUCCEEDED" significa apenas que a sessão não quebrou — não que ela entregou.
+O custo já gasto assim está entre US$ 1 e US$ 2 por disparo.
+
+As sessões ainda vêm marcadas com a tag `config:routine-lineage-none`: nada
+do contexto da sessão que criou a rotina é herdado, e o repositório é parte
+desse contexto.
+
+### O que isso corrige no post-mortem de 04/09
+
+O diagnóstico de ontem está **errado como causa**, e vale dizer sem rodeio.
+O `node_modules` ausente é real e reproduzível, mas é um problema que só
+apareceria *depois* de existir um clone — e clone nunca houve. Eu reproduzi
+a falta de dependências escondendo o `node_modules` na sessão interativa e
+concluí que era isso lá também. Era inferência, não observação: as sessões
+disparadas por rotina não aparecem em `list_sessions`, e eu não tinha ido
+buscar o `session_id` pelo `last_run` da rotina, que era o caminho.
+
+O hook de `SessionStart` continua correto e útil — só não era o que estava
+travando.
+
+### Por que não dá para simplesmente consertar
+
+`create_trigger` não tem parâmetro de repositório. Uma rotina que abre sessão
+nova a cada disparo não tem como apontar para um repo — e `update_trigger`
+não aceita `persistent_session_id`, então também não dá para religar as
+rotinas existentes sem apagá-las e recriá-las.
+
+A saída é vincular cada rotina a uma **sessão persistente** que já tenha o
+repositório, a branch e o `CLAUDE.md` carregados. O disparo passa a entrar
+naquela conversa em vez de abrir um contêiner vazio.
+
+Duas consequências que precisam ser aceitas junto com a correção: o trabalho
+passa a acontecer dentro de uma conversa existente, à vista de quem a
+acompanha, e a rotina depende daquela sessão continuar viva. Em troca, a
+sessão traz contexto que um contêiner novo nunca teria.
+
+Os prompts originais não são recuperáveis: `list_triggers` não os devolve, e
+recriar significa reescrevê-los a partir do que esta página documenta.
+
 ## Regras que toda rotina obedece
 
 - Lê o `CLAUDE.md` antes de tocar em qualquer arquivo.
