@@ -23,8 +23,8 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 |---|---|---|---|---|
 | 1 | `/musculacao/treino-para-iniciantes/` | 93 | 32,7 | ✅ 2026-09-03 · partiu de 32,7 |
 | 2 | `/musculacao/triceps-testa-como-fazer/` | 67 | 25,7 | ✅ 2026-09-03 · partiu de 25,7 |
-| 3 | `/emagrecimento/gordura-visceral/` | 57 | 66,8 | |
-| 4 | `/emagrecimento/jejum-intermitente-funciona/` | 54 | 52,7 | |
+| 3 | `/emagrecimento/gordura-visceral/` | 57 | 66,8 | ✅ 2026-09-07 · partiu de 66,8 |
+| 4 | `/emagrecimento/jejum-intermitente-funciona/` | 54 | 52,7 | ✅ 2026-09-07 · partiu de 52,7 · ver nota |
 | 5 | `/musculacao/levantamento-terra-como-fazer/` | 39 | 40,3 | |
 | 6 | `/musculacao/rosca-martelo-como-fazer/` | 28 | 20,4 | |
 | 7 | `/musculacao/encolhimento-como-fazer/` | 24 | 24,8 | |
@@ -34,6 +34,50 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 11 | `/musculacao/elevacao-frontal-como-fazer/` | 16 | 20,3 | |
 | 12 | `/emagrecimento/deficit-calorico-como-funciona/` | 12 | 75,2 | |
 | 13 | `/emagrecimento/como-perder-barriga/` | 10 | 53,3 | |
+
+## Nota de 07/09/2026 — dois diagnósticos, e um deles é desconfortável
+
+**`gordura-visceral` (66,8): texto fino no lugar errado, e uma pergunta
+esquivada.** A busca mostra que quem ranqueia — laboratório de diagnóstico,
+clínicas, portais de saúde — responde três coisas que o artigo não
+respondia: quais são os números de referência, qual exame mede e quais são
+os riscos concretos. Pior: a seção existente se chamava "Como acompanhar sem
+exame caro", ou seja, **contornava** justamente a pergunta que a busca faz.
+
+Corrigido com as faixas da OMS em tabela (94/102 cm em homens, 80/88 cm em
+mulheres), a razão cintura/estatura com o corte de 0,5, um trecho sobre o
+que tomografia e bioimpedância realmente entregam, e um H2 novo listando as
+condições associadas — com a ressalva de que associação não é sentença e de
+que a interpretação é do médico. A `description` passou a citar as faixas.
+
+Antes: `Gordura visceral: a diferença para a subcutânea, por que ela importa
+mais para a saúde, o "falso magro", como acompanhar e o que realmente reduz
+— sem promessa fácil.`
+Depois: `Gordura visceral: como saber se você tem excesso pela circunferência
+da cintura (com as faixas de referência), quais exames medem, os riscos
+associados e o que realmente reduz — sem promessa fácil.`
+
+**`jejum-intermitente-funciona` (52,7): o artigo não é o problema.** É o
+diagnóstico incômodo, e vale registrar em vez de disfarçar. O texto já dizia
+a coisa certa — que o jejum funciona pelo déficit e não por mágica
+metabólica — e cobre proteína, treino em jejum e contraindicações, que é
+mais do que boa parte do que ranqueia entrega. Quem ocupa a primeira página
+são Metrópoles, Tua Saúde, Tribuna de Minas, Revista Ana Maria: domínios de
+mídia geral com autoridade que nenhuma reescrita nossa alcança no curto
+prazo.
+
+Havia uma lacuna real, e só uma: o artigo era qualitativo ("a maior parte
+dos estudos não encontra diferença") onde os concorrentes trazem número. Foi
+corrigida — revisões que somam mais de vinte ensaios e perto de duas mil
+pessoas encontram uma vantagem da ordem de algumas centenas de gramas, sem
+significância estatística. Fora isso, **não foi ampliado de propósito**:
+inflar um artigo que já responde bem, só porque está mal posicionado, é o
+desperdício que esta fila existe para evitar.
+
+Expectativa honesta: este pode não subir muito, e a causa não será o texto.
+Se na próxima leitura de relatório ele continuar parado, a conclusão a tirar
+é sobre a disputa, não sobre o artigo — e o esforço deve ir para consultas em
+que o portal tem chance real.
 
 ## O que "reescrever" significa aqui
 
