@@ -91,6 +91,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg'],
 
+  academiasProximas: [
+    { nome: 'Pratique Fitness Sete Lagoas', detalhe: 'na Rua Professor Abeylard, no Centro' },
+    { nome: 'Skyfit Academia Sete Lagoas' },
+    { nome: 'Smart Fit Sete Lagoas' },
+  ],
+  academiasVerificadasEm: '2026-09-07',
+
   capaArte: {
     src: '/capas-cidade/sete-lagoas-mg.webp',
     w: 1200,
@@ -103,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sete Lagoas', url: 'https://www.setelagoas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-07',
 };

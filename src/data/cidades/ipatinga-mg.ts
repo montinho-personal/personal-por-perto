@@ -91,6 +91,15 @@ export const cidade: Cidade = {
 
   vizinhas: ['governador-valadares-mg', 'belo-horizonte-mg'],
 
+  academiasProximas: [
+    { nome: 'Smart Fit Iguaçu', detalhe: 'na Av. Brasil, no Iguaçu' },
+    { nome: 'Smart Fit Cidade Nobre', detalhe: 'na Av. Simon Bolívar, no Cidade Nobre' },
+    { nome: 'Smart Fit Horto Ipatinga' },
+    { nome: 'Smart Fit Canaã' },
+    { nome: 'Skyfit Academia Ipatinga' },
+  ],
+  academiasVerificadasEm: '2026-09-07',
+
   capaArte: {
     src: '/capas-cidade/ipatinga-mg.webp',
     w: 1200,
@@ -103,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ipatinga', url: 'https://www.ipatinga.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-07',
 };
