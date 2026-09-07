@@ -1,0 +1,335 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer e os erros comuns',
+    descricao: 'O exercício-base que o hack complementa — e não substitui.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/leg-press-como-fazer/',
+    titulo: 'Leg press: como fazer e os erros comuns',
+    descricao: 'A outra máquina de perna guiada, e o que muda entre as duas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu',
+    descricao: 'Quantos exercícios de quadríceps a semana realmente comporta.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/cadeira-extensora-como-fazer/',
+    titulo: 'Cadeira extensora: como fazer e os erros comuns',
+    descricao: 'O isolador de quadríceps que costuma vir depois do hack.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/agachamento-hack-como-fazer';
+const atualizadoEm = '2026-09-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Agachamento hack: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Agachamento hack ou agachamento livre: qual é melhor?',
+    resposta:
+      'Melhor para quê é a pergunta que falta. O livre exige e treina estabilização de tronco, permite mais transferência para esporte e é insubstituível como padrão de movimento. O hack tira a estabilização da conta e deixa a perna receber quase todo o esforço, o que permite chegar mais perto da falha com segurança e sem parceiro. Um programa maduro costuma ter o livre como base e o hack como o exercício em que se aperta o quadríceps depois.',
+  },
+  {
+    pergunta: 'Onde colocar os pés no hack?',
+    resposta:
+      'A posição do pé decide qual músculo trabalha mais, e é o ajuste que quase ninguém faz de propósito. Pés mais baixos na plataforma aumentam a flexão do joelho e carregam mais o quadríceps; pés mais altos reduzem o percurso do joelho e trazem glúteo e posterior para o trabalho. Comece no meio, faça uma série leve e observe onde você sente — o calcanhar não pode descolar em nenhuma das posições.',
+  },
+  {
+    pergunta: 'Até onde descer no hack?',
+    resposta:
+      'Até onde você mantém as costas e o quadril colados no apoio, sem que a bacia gire para dentro no fim do movimento. A máquina permite descer mais do que muita gente controla, e é justamente aí que a lombar sai do encosto. Profundidade útil é a maior que você faz com controle — não a maior que a máquina alcança.',
+  },
+  {
+    pergunta: 'O hack machuca o joelho?',
+    resposta:
+      'Não por natureza. As queixas costumam vir de três coisas: pé baixo demais com calcanhar levantando, joelho caindo para dentro na subida, e descida rápida com repique no fim. Ajustar o pé, empurrar o joelho na direção do dedo e controlar a descida resolve a maior parte. Dor persistente no joelho não é assunto de técnica: procure um médico ou fisioterapeuta antes de continuar treinando o movimento.',
+  },
+];
+
+const title = 'Agachamento hack: como fazer e quando ele vale mais que o livre';
+const description =
+  'Agachamento hack na máquina: a comparação honesta com o agachamento livre e o leg press, onde colocar os pés (o ajuste que decide o músculo), até onde descer e os erros que cobram no joelho.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Agachamento hack: como fazer e quando ele vale mais que o livre</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O hack resolve um problema específico: <strong>ele tira o equilíbrio
+      da equação</strong>. Com as costas apoiadas no encosto e a trajetória
+      guiada pela máquina, sua perna deixa de dividir atenção com a
+      estabilização do tronco — e passa a receber quase todo o esforço.
+    </p>
+
+    <div class="prose">
+      <h2>Os três da fila de perna, lado a lado</h2>
+      <p>
+        Quase toda academia tem agachamento livre, hack e leg press, e a
+        dúvida real de quem chega até aqui não é "como usar a máquina" — é
+        "preciso dos três?". A tabela responde antes do resto do texto.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Agachamento livre</th>
+              <th>Hack</th>
+              <th>Leg press</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Exige estabilização de tronco</td>
+              <td>Muito</td>
+              <td>Pouca</td>
+              <td>Quase nenhuma</td>
+            </tr>
+            <tr>
+              <td>Carga na coluna</td>
+              <td>Alta</td>
+              <td>Moderada</td>
+              <td>Baixa</td>
+            </tr>
+            <tr>
+              <td>Chegar perto da falha sozinho</td>
+              <td>Arriscado</td>
+              <td>Seguro</td>
+              <td>Seguro</td>
+            </tr>
+            <tr>
+              <td>Amplitude de quadril</td>
+              <td>Completa</td>
+              <td>Completa</td>
+              <td>Limitada pelo assento</td>
+            </tr>
+            <tr>
+              <td>Curva de aprendizado</td>
+              <td>Longa</td>
+              <td>Curta</td>
+              <td>Curta</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A leitura prática: o <a
+        href="/musculacao/agachamento-como-fazer/">agachamento livre</a> é o
+        padrão de movimento que vale a pena aprender e manter, o hack é onde
+        você aperta a perna sem que o tronco desista antes, e o <a
+        href="/musculacao/leg-press-como-fazer/">leg press</a> é o mais
+        acessível dos três e o de menor amplitude de quadril.
+      </p>
+
+      <p>
+        Se a semana só comporta dois exercícios de quadríceps, livre e hack
+        cobrem mais território que hack e leg press — que são, entre si, os
+        mais parecidos.
+      </p>
+
+      <h2>O ajuste que decide qual músculo trabalha</h2>
+      <p>
+        A posição do pé na plataforma é o equivalente, aqui, ao ajuste do
+        assento no voador: muda o exercício e quase ninguém mexe nela de
+        propósito.
+      </p>
+
+      <p>
+        <strong>Pé mais baixo</strong> aumenta a flexão do joelho e carrega
+        o quadríceps. É a posição mais usada — e a que mais levanta
+        calcanhar quando exagerada.
+      </p>
+
+      <p>
+        <strong>Pé mais alto</strong> encurta o percurso do joelho e traz
+        glúteo e posterior de coxa para o trabalho, aproximando o
+        movimento de um agachamento mais recuado.
+      </p>
+
+      <p>
+        <strong>Base mais larga</strong> abre um pouco o quadril e costuma
+        ser mais confortável para quem sente a virilha travar na descida.
+      </p>
+
+      <p>
+        Comece no meio da plataforma, faça uma série leve e repare onde
+        você sente. Depois escolha — e mantenha por algumas semanas, para
+        conseguir comparar cargas.
+      </p>
+
+      <h2>A execução</h2>
+      <p>
+        Costas e quadril colados no apoio, ombros firmes sob as almofadas,
+        pés na largura dos ombros. Destrave as travas de segurança só
+        depois de conferir que os pés estão onde você quer.
+      </p>
+
+      <p>
+        Desça controlando, com o joelho apontando na direção dos dedos, até
+        a maior profundidade em que o quadril continua colado no encosto.
+        Suba empurrando pelo meio do pé, sem travar o joelho com força no
+        fim.
+      </p>
+
+      <p>
+        O detalhe que separa a série boa da série decorativa: nada de
+        repique no fundo. O ponto mais baixo é o mais exigente, e é
+        exatamente onde a maioria devolve o trabalho para a máquina.
+      </p>
+
+      <h2>Os quatro erros que aparecem sempre</h2>
+      <p>
+        <strong>Calcanhar levantando.</strong> Quase sempre é pé baixo
+        demais na plataforma, às vezes tornozelo travado. Suba o pé e
+        reavalie.
+      </p>
+
+      <p>
+        <strong>Joelho caindo para dentro na subida.</strong> Aparece com
+        carga alta e cansaço. Empurre o joelho na direção do dedo mínimo
+        durante toda a série; se não conseguir, o peso venceu.
+      </p>
+
+      <p>
+        <strong>Quadril saindo do encosto no fundo.</strong> É a bacia
+        girando para compensar profundidade que você ainda não controla —
+        e é a origem mais comum de incômodo lombar no hack. Suba um pouco
+        o ponto de parada.
+      </p>
+
+      <p>
+        <strong>Empilhar anilha e cortar a amplitude.</strong> O hack é o
+        exercício de perna em que mais se vê carga de vitrine com meio
+        movimento. A máquina não julga; o resultado, sim.
+      </p>
+
+      <h2>Para quem o hack costuma render mais</h2>
+      <p>
+        Para quem tem dificuldade de posicionar a barra nas costas com
+        conforto, para quem sente que a lombar cansa antes da perna no
+        agachamento livre e para quem treina sozinho e quer levar as
+        últimas séries perto da falha sem parceiro.
+      </p>
+
+      <p>
+        Uma ressalva que o tema exige: "a lombar cansa antes" é diferente
+        de "a lombar dói". Desconforto muscular ao fim de uma série pesada
+        é uma coisa; dor que aparece, persiste ou irradia é outra, e nesse
+        caso a conversa é com médico ou fisioterapeuta antes de trocar de
+        exercício — trocar a máquina não resolve um problema que não é de
+        máquina.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Agachamento livre, hack, leg press e extensora na mesma semana é a pilha mais comum do treino de pernas — quatro exercícios disputando a mesma recuperação. A análise olha a sua semana e mostra se o quadríceps está bem servido ou apenas repetido."
+        acao="Ver se meu treino de perna está empilhado"
+      />
+
+      <h2>Séries, repetições e uma confusão de nome</h2>
+      <p>
+        De 3 a 4 séries de 8 a 15 repetições funcionam bem, normalmente
+        depois do exercício livre da sessão. Por ser guiado e apoiado, o
+        hack tolera trabalho perto da falha melhor que o agachamento com
+        barra.
+      </p>
+
+      <p>
+        E vale desfazer uma confusão frequente: existe também o
+        <em>hack squat</em> com barra por trás das pernas, exercício antigo
+        e bem diferente, que exige mobilidade e prática. Quando alguém diz
+        "hack" na academia brasileira, quase sempre está falando da
+        máquina inclinada descrita aqui.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o agachamento hack" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

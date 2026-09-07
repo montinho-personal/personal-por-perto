@@ -1,0 +1,280 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/supino-como-fazer/',
+    titulo: 'Supino: como fazer e os erros comuns',
+    descricao: 'O exercício-base, e a comparação entre reto, inclinado e declinado.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/supino-inclinado-como-fazer/',
+    titulo: 'Supino inclinado: como fazer',
+    descricao: 'O ângulo oposto — e o que costuma render mais para a maioria.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-peito/',
+    titulo: 'Treino de peito: como montar',
+    descricao: 'Quantos ângulos de empurrar a sua semana realmente comporta.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro',
+    descricao: 'Antes de trocar de banco por causa do ombro, leia isto.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/supino-declinado-como-fazer';
+const atualizadoEm = '2026-09-07';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Supino declinado: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O supino declinado é melhor para a parte de baixo do peito?',
+    resposta:
+      'Ele carrega mais a porção esternocostal do peitoral, que é a parte inferior — isso é razoável e aparece na eletromiografia. O que não é razoável é a expectativa que costuma vir junto: nenhum exercício "desenha" o contorno inferior do peito, porque contorno depende de quanta gordura há por cima e de quanto músculo há por baixo, e o segundo cresce com carga e tempo, não com ângulo. Trate o declinado como um segundo estímulo, não como um redesenhador.',
+  },
+  {
+    pergunta: 'Como entrar e sair do banco declinado com segurança?',
+    resposta:
+      'Encaixe as pernas nos apoios antes de deitar, desça o tronco devagar e só então busque a barra — nessa ordem. Para sair, recoloque a barra no suporte, faça uma pausa sentado antes de levantar e evite subir de uma vez: passar tempo com a cabeça abaixo do coração e levantar rápido é o que provoca a tontura que muita gente atribui ao esforço. Se você treina sozinho, prefira halteres ou o Smith, porque devolver a barra ao suporte com o peito fatigado e deitado para trás é a parte mais arriscada do exercício.',
+  },
+  {
+    pergunta: 'O declinado é mais seguro para o ombro?',
+    resposta:
+      'Costuma ser mais confortável, porque o ângulo declinado reduz a elevação do braço em relação ao tronco e cobra menos da parte da frente do ombro do que o reto e, sobretudo, do que o inclinado. "Mais confortável" não é sinônimo de "indicado": se o seu ombro dói ao empurrar, a resposta não é mudar o banco e continuar, é entender a causa com um médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Vale a pena incluir o declinado se eu já faço reto e inclinado?',
+    resposta:
+      'Para a maioria das pessoas, dois ângulos de empurrar por semana já cobrem bem o peitoral, e o terceiro entra mais como variação ao longo dos meses do que como acréscimo permanente. Se a sua semana tem dois treinos de peito e você quer testar o declinado, o caminho mais econômico é rodar ele no lugar do reto por algumas semanas — não empilhar os três na mesma sessão.',
+  },
+];
+
+const title = 'Supino declinado: como fazer, e se ele vale a pena para você';
+const description =
+  'Supino declinado: o que ele muda em relação ao reto e ao inclinado, como entrar e sair do banco com segurança, onde a barra toca, e por que ele costuma ser variação e não exercício fixo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Supino declinado: como fazer, e se ele vale a pena para você</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Comecemos pela resposta, porque ela economiza o resto da leitura para
+      muita gente: o declinado é um <strong>bom terceiro ângulo e um
+      péssimo primeiro</strong>. Ele carrega mais a porção inferior do
+      peitoral e costuma ser o mais amigável ao ombro — mas raramente
+      justifica tomar o lugar do reto ou do inclinado numa semana de dois
+      treinos de peito.
+    </p>
+
+    <div class="prose">
+      <h2>O que muda em relação aos outros dois</h2>
+      <p>
+        Com o banco inclinado para baixo, o braço se afasta menos da linha
+        do tronco durante o movimento. Duas consequências saem daí.
+      </p>
+
+      <p>
+        A primeira é de ênfase: o esforço se distribui mais para a
+        <strong>porção esternocostal</strong> do peitoral — a parte
+        inferior —, ao contrário do <a
+        href="/musculacao/supino-inclinado-como-fazer/">inclinado</a>, que
+        privilegia a clavicular.
+      </p>
+
+      <p>
+        A segunda é de conforto: menos elevação do braço significa menos
+        demanda sobre a frente do ombro. É por isso que o declinado aparece
+        com frequência como a variação tolerada por quem não se dá bem com
+        os outros dois — assunto que o guia do <a
+        href="/musculacao/supino-como-fazer/">supino</a> trata na
+        comparação entre os três.
+      </p>
+
+      <p>
+        E há uma terceira consequência, menos citada: a amplitude é
+        naturalmente menor. Isso permite um pouco mais de carga, o que
+        agrada ao ego e explica parte da popularidade do exercício — mas
+        não é, por si, vantagem de estímulo.
+      </p>
+
+      <h2>A parte que os guias pulam: entrar e sair</h2>
+      <p>
+        O declinado é o único supino em que a logística importa tanto
+        quanto a execução, e é justamente a parte que quase nenhum vídeo
+        mostra. Deitar de cabeça para baixo segurando peso não é trivial.
+      </p>
+
+      <p>
+        <strong>Para entrar:</strong> encaixe as pernas nos apoios
+        primeiro, desça o tronco com controle e só então busque a barra ou
+        os halteres. Fazer na ordem inversa — pegar o peso e depois se
+        acomodar — é como a maioria dos sustos acontece.
+      </p>
+
+      <p>
+        <strong>Para sair:</strong> devolva a barra ao suporte, sente-se
+        devagar e espere alguns segundos antes de ficar em pé. A sensação
+        de tontura que muita gente atribui ao esforço vem, quase sempre, de
+        levantar rápido depois de um tempo com a cabeça abaixo do coração.
+      </p>
+
+      <p>
+        <strong>Se você treina sozinho:</strong> prefira halteres ou a
+        barra guiada. Recolocar uma barra livre no suporte, deitado para
+        trás e com o peito fatigado, é o momento mais arriscado do
+        exercício — e não existe versão elegante de errar isso.
+      </p>
+
+      <h2>A execução</h2>
+      <p>
+        Escápulas retraídas e apoiadas, como em qualquer supino. Pegada
+        pouco mais larga que os ombros. Cotovelo em algo entre 45 e 70
+        graus em relação ao tronco, nunca aberto a 90.
+      </p>
+
+      <p>
+        A barra desce em direção à <strong>parte baixa do peito</strong>,
+        abaixo do mamilo — mais baixo do que no reto, acompanhando o ângulo
+        do banco. Encoste sem quicar e suba pelo mesmo caminho.
+      </p>
+
+      <p>
+        Um detalhe que só aparece no declinado: como a barra passa por cima
+        do rosto e do pescoço na descida, a trajetória precisa ser
+        deliberada. Não é lugar para série apressada nem para a última
+        repetição duvidosa.
+      </p>
+
+      <h2>Se você chegou aqui por causa do ombro</h2>
+      <p>
+        Boa parte de quem procura o declinado não veio pela porção inferior
+        do peito — veio porque o supino reto ou o inclinado incomoda o
+        ombro, e alguém disse que o declinado é mais leve para a
+        articulação.
+      </p>
+
+      <p>
+        A informação está certa, e a conclusão costuma estar errada. Trocar
+        de banco alivia o sintoma sem tocar na causa, e a causa pode ser
+        técnica (cotovelo aberto demais, escápula solta, amplitude além da
+        mobilidade), pode ser volume acumulado, e pode ser algo que
+        nenhuma dessas coisas explica.
+      </p>
+
+      <p>
+        Dor no ombro que aparece ao empurrar merece avaliação de um médico
+        ou fisioterapeuta antes de virar uma questão de escolha de
+        equipamento. O que dá para adiantar sobre os ajustes técnicos está
+        em <a href="/musculacao/treinar-com-dor-no-ombro/">treinar com dor
+        no ombro</a> — mas ajuste não substitui diagnóstico.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Reto, inclinado e declinado somam três ângulos de empurrar, e a maioria das semanas tem espaço para dois. Antes de escolher qual entra, vale saber quantos treinos de peito a sua semana realmente sustenta."
+        acao="Ver quantos treinos a minha semana comporta"
+      />
+
+      <h2>Onde ele entra — e quando pular</h2>
+      <p>
+        De 3 a 4 séries de 8 a 12 repetições, como segundo exercício de
+        empurrar da sessão. Na prática, o arranjo que mais funciona é
+        rodar: reto e inclinado por alguns meses, reto e declinado nos
+        seguintes.
+      </p>
+
+      <p>
+        E vale dizer quando <em>não</em> fazer. Pule o declinado se a
+        academia não tem banco próprio — improvisar declínio empilhando
+        anilha sob o banco é uma má ideia com peso sobre o rosto. Pule
+        também se a sua semana já tem dois ângulos de empurrar bem
+        executados e progredindo: nesse caso, o terceiro ângulo não é o que
+        está faltando.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o supino declinado" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

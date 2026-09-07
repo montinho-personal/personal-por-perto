@@ -187,6 +187,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/voador-como-fazer/', titulo: 'Voador (peck deck): como fazer e o ajuste que muda tudo' },
   { categoria: 'Musculação', url: '/musculacao/rosca-scott-como-fazer/', titulo: 'Rosca Scott: como fazer e por que a parte difícil é embaixo' },
   { categoria: 'Musculação', url: '/musculacao/cadeira-flexora-como-fazer/', titulo: 'Cadeira flexora: como fazer e por que a posição sentada muda o estímulo' },
+  { categoria: 'Musculação', url: '/musculacao/agachamento-hack-como-fazer/', titulo: 'Agachamento hack: como fazer e quando ele vale mais que o livre' },
+  { categoria: 'Musculação', url: '/musculacao/supino-declinado-como-fazer/', titulo: 'Supino declinado: como fazer, e se ele vale a pena para você' },
   { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
   { categoria: 'Musculação', url: '/musculacao/mesa-flexora-como-fazer/', titulo: 'Mesa flexora: como fazer e os erros comuns' },

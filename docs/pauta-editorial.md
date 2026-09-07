@@ -63,8 +63,8 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Voador (peck deck): como fazer | `voador-como-fazer` | ✅ 2026-09-04 · recorte declarado |
 | Rosca Scott: como fazer | `rosca-scott-como-fazer` | ✅ 2026-09-06 |
 | Cadeira flexora: como fazer | `cadeira-flexora-como-fazer` | ✅ 2026-09-06 · recorte declarado |
-| Agachamento hack: como fazer | `agachamento-hack-como-fazer` | |
-| Supino declinado: como fazer | `supino-declinado-como-fazer` | |
+| Agachamento hack: como fazer | `agachamento-hack-como-fazer` | ✅ 2026-09-07 |
+| Supino declinado: como fazer | `supino-declinado-como-fazer` | ✅ 2026-09-07 · recorte declarado |
 | Tríceps francês: como fazer | `triceps-frances-como-fazer` | |
 | Rosca inversa: como fazer | `rosca-inversa-como-fazer` | |
 | Desenvolvimento Arnold: como fazer | `desenvolvimento-arnold-como-fazer` | |
@@ -107,6 +107,35 @@ contração". A primeira metade está certa; a segunda não, porque no banco Sco
 a resistência cai justamente no topo — o trecho pesado é o de baixo. A frase
 foi corrigida no mesmo commit, e as duas páginas-pai tiveram `atualizadoEm`
 atualizado, porque link novo e correção factual são revisão de conteúdo.
+
+### Nota de 07/09/2026 — o terceiro recorte, e uma correção de rumo na forma
+
+`supino-declinado-como-fazer` repetiu o padrão do voador e da cadeira
+flexora. `supino-como-fazer` já tinha um parágrafo de variação e uma FAQ
+comparando os três ângulos — posicionamento, não execução. O que não cabia no
+pai é o que o filho tem de próprio: o declinado é o único supino em que
+**entrar e sair do banco** exige método, com a barra passando sobre o rosto e
+a cabeça abaixo do coração. Link do pai para o filho adicionado, e a data de
+revisão do pai atualizada.
+
+`agachamento-hack-como-fazer` não precisou de recorte: "hack" não aparecia
+**uma única vez** em todo o acervo, apesar de existirem guias de agachamento
+livre, búlgaro e leg press.
+
+**Correção de forma, que vale de regra daqui em diante.** Os dois artigos de
+06/09 saíram com esqueleto idêntico — duas aberturas, "o que treina",
+tabela, "execução passo a passo", "os erros", callout "Resumindo", cinco
+FAQs. Repetido por cinquenta artigos, isso vira padrão detectável, que é
+exatamente o critério da política de *scaled content abuse*, além de
+entediante de ler.
+
+Os de hoje foram escritos de propósito em formas diferentes: o hack é
+comparativo, com a tabela dos três exercícios de perna logo no início e sem
+callout de fechamento; o declinado abre com o veredito em uma frase ("bom
+terceiro ângulo, péssimo primeiro"), tem a logística de entrar e sair como
+seção-espinha, quatro FAQs em vez de cinco e termina em "quando pular" em vez
+de resumo. **O assunto decide a forma** — se os dois artigos do dia saírem
+com o mesmo esqueleto, um deles está errado.
 
 ## Bloco Musculação — estrutura e método (14)
 
