@@ -12,6 +12,23 @@ arquivos originais dentro, sem renomear além de tirar o prefixo do upload.
 Depois, registrar os números-chave na tabela deste arquivo — para que uma
 comparação futura não dependa de reabrir planilha.
 
+## O que conferir no PRÓXIMO relatório
+
+Três medidas que a análise de `docs/cidades-analise.md` deixou em aberto e
+que só o relatório seguinte responde:
+
+1. **A fatia de impressões em URL sem barra final.** Na linha de base são
+   5.577 de 28.084 (20%), em 111 páginas contadas nas duas formas. O
+   `trailingSlash` entrou em 24/08/2026, no fim do período — se a fatia
+   encolher, a consolidação está acontecendo e não há nada a fazer; se não
+   encolher, existe problema no redirect.
+2. **A posição das cidades grandes NA CONSULTA, não na página.** Belo
+   Horizonte tem posição 10,4 na aba Páginas e 26,5 na consulta "personal
+   trainer belo horizonte". A segunda é a que diagnostica; a primeira engana.
+3. **CTR por faixa de cidade.** Na linha de base: 1,24% nas 20 maiores,
+   3,58% nas 630 menores. Se a inversão persistir, ela é estrutural e não
+   ruído.
+
 ## Linha de base — Search Console, 28/06 a 31/08/2026 (65 dias)
 
 Arquivos: `2026-09-01-gsc/`
