@@ -90,6 +90,14 @@ export const cidade: Cidade = {
 
   vizinhas: ['florianopolis-sc', 'sao-jose-sc'],
 
+  academiasProximas: [
+    { nome: 'Smart Fit Palhoça', detalhe: 'na Av. Atílio Pedro Pagani, no Pagani' },
+    { nome: 'Skyfit Palhoça', detalhe: 'no Pedra Branca' },
+    { nome: 'Pratique Fitness Palhoça', detalhe: 'no Passa Vinte' },
+    { nome: 'Live Sports Center', detalhe: 'no Passeio Pedra Branca' },
+  ],
+  academiasVerificadasEm: '2026-09-08',
+
   capaArte: {
     src: '/capas-cidade/palhoca-sc.webp',
     w: 1200,
@@ -102,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palhoça', url: 'https://www.palhoca.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-08',
 };

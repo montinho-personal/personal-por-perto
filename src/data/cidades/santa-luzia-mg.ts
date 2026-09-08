@@ -91,6 +91,12 @@ export const cidade: Cidade = {
 
   vizinhas: ['belo-horizonte-mg', 'contagem-mg', 'ribeirao-das-neves-mg'],
 
+  academiasProximas: [
+    { nome: 'Smart Fit Santa Luzia', detalhe: 'na Av. Brasília, no São Benedito' },
+    { nome: 'Pratique Fitness Santa Luzia', detalhe: 'na Av. Brasília, no São Benedito' },
+  ],
+  academiasVerificadasEm: '2026-09-08',
+
   capaArte: {
     src: '/capas-cidade/santa-luzia-mg.webp',
     w: 1200,
@@ -106,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Luzia', url: 'https://www.santaluzia.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-08',
 };
