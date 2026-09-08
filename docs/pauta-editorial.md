@@ -65,8 +65,8 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Cadeira flexora: como fazer | `cadeira-flexora-como-fazer` | ✅ 2026-09-06 · recorte declarado |
 | Agachamento hack: como fazer | `agachamento-hack-como-fazer` | ✅ 2026-09-07 |
 | Supino declinado: como fazer | `supino-declinado-como-fazer` | ✅ 2026-09-07 · recorte declarado |
-| Tríceps francês: como fazer | `triceps-frances-como-fazer` | |
-| Rosca inversa: como fazer | `rosca-inversa-como-fazer` | |
+| Tríceps francês: como fazer | `triceps-frances-como-fazer` | ✅ 2026-09-08 · recorte declarado |
+| Rosca inversa: como fazer | `rosca-inversa-como-fazer` | ✅ 2026-09-08 |
 | Desenvolvimento Arnold: como fazer | `desenvolvimento-arnold-como-fazer` | |
 | Elevação de pernas (infra): como fazer | `elevacao-de-pernas-como-fazer` | |
 | Panturrilha em pé: como fazer | `panturrilha-em-pe-como-fazer` | |
@@ -136,6 +136,36 @@ terceiro ângulo, péssimo primeiro"), tem a logística de entrar e sair como
 seção-espinha, quatro FAQs em vez de cinco e termina em "quando pular" em vez
 de resumo. **O assunto decide a forma** — se os dois artigos do dia saírem
 com o mesmo esqueleto, um deles está errado.
+
+### Nota de 08/09/2026 — o quarto recorte, e um pré-requisito que virou seção
+
+`triceps-frances-como-fazer` era o caso de redundância mais perigoso da fila
+até agora, porque muita gente usa os dois nomes como sinônimo.
+`triceps-testa-como-fazer` tem uma FAQ chamada exatamente "Qual a diferença
+entre tríceps testa e tríceps francês?" e cita a francesa em três passagens do
+corpo. Mas as três são posicionamento — dizem qual escolher, não como
+executar. Quarto caso do mesmo recorte (voador, cadeira flexora, supino
+declinado), com o link do pai para o filho no parágrafo em que os dois
+aparecem juntos.
+
+O ângulo próprio do filho apareceu na pesquisa e não estava em lugar nenhum do
+acervo: **o francês tem um pré-requisito de mobilidade que nenhum outro
+exercício de tríceps tem.** Quem não consegue levar o braço reto acima da
+cabeça sem arquear a lombar não deveria fazê-lo hoje — e o texto traz o teste
+de dez segundos que revela isso, com a saída (pulley e testa enquanto a
+mobilidade melhora) em vez de só o alerta.
+
+`rosca-inversa-como-fazer` não precisou de recorte: o acervo tem cinco roscas
+e nenhuma cobre a inversa. Ela aparecia em um parágrafo de `pegada-e-antebraco`
+e numa linha da `rosca-direta`, sempre como menção. O pai ganhou o link.
+
+**Forma variada, seguindo a regra de ontem.** O francês abre com a troca em
+uma frase (mais alongamento, menos carga, e um pré-requisito), tem o teste de
+mobilidade como seção-espinha e nenhuma tabela. A inversa abre com o
+constrangimento real de quem faz pela primeira vez — o peso que não sai do
+lugar — e usa uma lista numerada de sinais de carga excessiva em vez de uma
+seção de "erros", com quatro FAQs em vez de cinco. Nenhum dos dois tem callout
+de fechamento.
 
 ## Bloco Musculação — estrutura e método (14)
 

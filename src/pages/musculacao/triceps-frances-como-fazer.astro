@@ -1,0 +1,301 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/triceps-testa-como-fazer/',
+    titulo: 'Tríceps testa: como fazer sem dor no cotovelo',
+    descricao: 'O primo deitado — mais carga, menos alongamento, e o guia que compara os dois.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/triceps-pulley-como-fazer/',
+    titulo: 'Tríceps pulley: como fazer e os erros comuns',
+    descricao: 'A versão com braço ao lado do corpo, que sobra para os dias em que o cotovelo pede trégua.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'Quanto volume de tríceps a semana comporta, contando o que o supino já entrega.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro',
+    descricao: 'A posição acima da cabeça é a primeira a incomodar quem tem o ombro sensível.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/triceps-frances-como-fazer';
+const atualizadoEm = '2026-09-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Tríceps francês: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre tríceps francês e tríceps testa?',
+    resposta:
+      'A posição do braço, e ela muda tudo. No testa você fica deitado, com os braços apontando para o teto; no francês o braço sobe ao lado da cabeça e o peso desce por trás dela. Como a cabeça longa do tríceps cruza o ombro, levantar o braço já a coloca alongada antes mesmo de o cotovelo dobrar — é por isso que o francês alonga mais e o testa costuma permitir mais carga. Não são concorrentes: muitos programas alternam entre os dois de ciclo em ciclo.',
+  },
+  {
+    pergunta: 'Sentado ou em pé?',
+    resposta:
+      'Sentado com encosto, quase sempre. O encosto elimina a compensação de lombar, que é o jeito mais comum de fazer o peso subir sem o tríceps trabalhar. Em pé o exercício exige um abdômen firme o tempo todo e costuma virar um arco de coluna nas últimas repetições. Se só houver banco sem encosto, mantenha as costelas fechadas e reduza a carga — a versão em pé não é errada, é só menos generosa com quem cansa.',
+  },
+  {
+    pergunta: 'Halter, barra W ou corda na polia?',
+    resposta:
+      'O halter único segurado com as duas mãos é o clássico e o mais fácil de aprender. A barra W distribui melhor entre os dois braços e permite mais carga, mas exige um pouco mais de mobilidade de ombro para o caminho passar limpo atrás da cabeça. A corda na polia alta, feita de costas para o aparelho, é a versão mais gentil com o cotovelo, porque a resistência não desaparece no topo nem explode no fundo. Quem sente o cotovelo costuma se dar melhor com ela.',
+  },
+  {
+    pergunta: 'Por que o cotovelo dói no tríceps francês?',
+    resposta:
+      'Porque essa é a posição de maior alongamento do tríceps, e a carga chega ao cotovelo justamente onde a articulação tem menos margem. As causas mais comuns são carga alta demais, descida solta em vez de controlada e cotovelo que abre para os lados durante a série. Reduzir o peso, controlar a volta e manter os cotovelos apontados para a frente costuma resolver. Se a dor persiste depois do ajuste, ou se aparece fora do treino, é caso para médico ou fisioterapeuta antes de continuar.',
+  },
+  {
+    pergunta: 'Quantas séries de tríceps francês fazer?',
+    resposta:
+      'De 2 a 3 séries de 8 a 15 repetições, depois do exercício composto do dia. E vale a conta que quase ninguém faz: o tríceps já trabalha em todo supino e em todo desenvolvimento, então o volume direto é menor do que parece — algo entre 6 e 12 séries semanais cobre a maioria. Empilhar testa, francês e extensão na polia acima da cabeça na mesma sessão é estressar o mesmo trecho do tendão três vezes; distribua pela semana.',
+  },
+];
+
+const title = 'Tríceps francês: como fazer e por que o ombro decide se você consegue';
+const description =
+  'Tríceps francês: o que a posição acima da cabeça entrega que o testa não entrega, o teste de mobilidade que vem antes da carga, sentado ou em pé, halter ou corda, e por que o cotovelo reclama aqui.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Tríceps francês: como fazer e por que o ombro decide se você consegue</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O tríceps francês entrega o maior alongamento que o tríceps recebe em
+      qualquer exercício. Esse é o motivo de fazê-lo — e também o motivo de
+      ele ser o que mais cobra do cotovelo e o único que <strong>algumas
+      pessoas simplesmente não conseguem executar hoje</strong>, por
+      mobilidade de ombro.
+    </p>
+
+    <div class="prose">
+      <h2>O que a posição acima da cabeça muda</h2>
+      <p>
+        O tríceps tem três cabeças, e uma delas — a longa — não se prende ao
+        úmero: ela cruza a articulação do ombro e se fixa na escápula. A
+        consequência prática é direta: <strong>levantar o braço já alonga
+        essa cabeça antes de o cotovelo dobrar</strong>.
+      </p>
+
+      <p>
+        Quando você então flexiona o cotovelo com o braço lá em cima, a
+        cabeça longa chega ao alongamento máximo que consegue atingir sob
+        carga. É a mesma lógica do
+        <a href="/musculacao/triceps-testa-como-fazer/">tríceps testa</a>,
+        levada mais longe — no testa o braço aponta para o teto; aqui ele
+        vai atrás da cabeça.
+      </p>
+
+      <p>
+        A troca é honesta e vale saber antes: mais alongamento, menos carga.
+        Quem espera repetir o peso do testa no francês vai encurtar a
+        amplitude ou machucar o cotovelo, geralmente os dois.
+      </p>
+
+      <h2>O teste que vem antes da carga</h2>
+      <p>
+        Este exercício tem um pré-requisito que nenhum outro de tríceps tem,
+        e ignorá-lo é a origem de metade dos problemas: <strong>você precisa
+        conseguir levar o braço reto acima da cabeça sem arquear a
+        lombar</strong>.
+      </p>
+
+      <p>
+        O teste leva dez segundos. Sentado com as costas no encosto, levante
+        os dois braços estendidos ao lado das orelhas. Se o braço não chega
+        à vertical, ou se ele só chega quando as costelas se abrem e a
+        lombar sai do banco, a mobilidade de ombro ainda não está lá.
+      </p>
+
+      <p>
+        Isso não impede de treinar tríceps — impede de treinar tríceps
+        <em>assim</em>, hoje. A saída é usar o
+        <a href="/musculacao/triceps-pulley-como-fazer/">pulley</a> e o
+        testa enquanto a mobilidade melhora, e voltar ao francês depois. É
+        muito melhor do que forçar a amplitude com a coluna, que é o que
+        acontece quando ninguém faz esse teste.
+      </p>
+
+      <h2>A execução</h2>
+      <p>
+        <strong>A base.</strong> Sentado, costas apoiadas no encosto, pés
+        firmes. Segure um halter com as duas mãos pela face interna do peso,
+        ou uma barra W com pegada fechada, e leve-o acima da cabeça com os
+        braços estendidos.
+      </p>
+
+      <p>
+        <strong>Os cotovelos.</strong> Apontados para a frente e o mais
+        próximos possível um do outro. Eles são a dobradiça: ficam parados
+        no lugar do começo ao fim, e é só o antebraço que viaja.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Leve o peso por trás da cabeça em dois a
+        três segundos, até sentir o alongamento firme no tríceps. Devagar —
+        aqui a pressa não é estilo, é o mecanismo da lesão.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Estenda o cotovelo até quase o topo, sem
+        travar com força. O tronco não participa: se ele se move, o peso
+        venceu.
+      </p>
+
+      <h2>Onde o cotovelo entra na conversa</h2>
+      <p>
+        O tríceps francês é, junto com o testa, o exercício de braço que mais
+        aparece em queixa de cotovelo. Não é coincidência nem azar: a posição
+        alongada coloca a carga onde a articulação tem menos margem.
+      </p>
+
+      <p>
+        Três coisas explicam quase todos os casos, e as três são de execução:
+        carga alta demais, descida solta em vez de controlada, e cotovelo que
+        abre para os lados conforme a série avança. A correção é a mesma para
+        as três — menos peso, mais controle, cotovelos para a frente.
+      </p>
+
+      <p>
+        A quarta causa não é de execução, é de programação: <strong>testa,
+        francês e extensão na polia acima da cabeça na mesma sessão</strong>.
+        São três exercícios estressando o mesmo trecho do tendão no mesmo
+        dia. Distribua pela semana.
+      </p>
+
+      <p>
+        E o limite que vale repetir: dor que persiste depois do ajuste
+        técnico, ou que aparece fora do treino, não é assunto de amplitude
+        nem de carga. É avaliação de médico ou fisioterapeuta, e trocar de
+        exercício sem esse diagnóstico só adia a conversa.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="O tríceps já trabalha em todo supino e em todo desenvolvimento, então o volume direto que a semana comporta é menor do que parece — e é por isso que o cotovelo reclama antes do músculo. A análise soma o que o seu treino já entrega para cada grupo antes do primeiro exercício de braço."
+        acao="Somar o volume real do meu tríceps"
+      />
+
+      <h2>Halter, barra ou corda — e quando cada uma serve</h2>
+      <p>
+        O <strong>halter único</strong> segurado com as duas mãos é o mais
+        fácil de aprender e o que exige menos equipamento. Ponto fraco: nas
+        cargas maiores fica desconfortável de segurar.
+      </p>
+
+      <p>
+        A <strong>barra W</strong> distribui melhor entre os dois braços e
+        permite mais peso, mas pede um pouco mais de mobilidade para o
+        caminho passar limpo atrás da cabeça.
+      </p>
+
+      <p>
+        A <strong>corda na polia alta</strong>, feita de costas para o
+        aparelho, é a versão mais gentil com o cotovelo — a resistência não
+        some no topo nem explode no fundo, como acontece com o peso livre. É
+        a primeira escolha para quem já sentiu a articulação neste
+        movimento.
+      </p>
+
+      <h2>Onde ele entra na semana</h2>
+      <p>
+        De 2 a 3 séries de 8 a 15 repetições, depois do composto pesado do
+        dia. Não é exercício para abrir treino: ele rende quando o tríceps
+        já está aquecido e a carga não precisa ser grande.
+      </p>
+
+      <p>
+        Sobre volume total, a conta está no guia de
+        <a href="/musculacao/treino-de-bracos/">treino de braços</a>, e o
+        resumo é: some o que o supino e o desenvolvimento já cobram antes de
+        contar as séries diretas.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o tríceps francês" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

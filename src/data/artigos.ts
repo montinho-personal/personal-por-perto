@@ -189,6 +189,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/cadeira-flexora-como-fazer/', titulo: 'Cadeira flexora: como fazer e por que a posição sentada muda o estímulo' },
   { categoria: 'Musculação', url: '/musculacao/agachamento-hack-como-fazer/', titulo: 'Agachamento hack: como fazer e quando ele vale mais que o livre' },
   { categoria: 'Musculação', url: '/musculacao/supino-declinado-como-fazer/', titulo: 'Supino declinado: como fazer, e se ele vale a pena para você' },
+  { categoria: 'Musculação', url: '/musculacao/triceps-frances-como-fazer/', titulo: 'Tríceps francês: como fazer e por que o ombro decide se você consegue' },
+  { categoria: 'Musculação', url: '/musculacao/rosca-inversa-como-fazer/', titulo: 'Rosca inversa: como fazer e por que o peso cai pela metade' },
   { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
   { categoria: 'Musculação', url: '/musculacao/mesa-flexora-como-fazer/', titulo: 'Mesa flexora: como fazer e os erros comuns' },

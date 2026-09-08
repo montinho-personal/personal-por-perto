@@ -1,0 +1,285 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/pegada-e-antebraco/',
+    titulo: 'Pegada e antebraço: como treinar o elo mais fraco',
+    descricao: 'O guia em que a rosca inversa faz mais sentido: ela é exercício de antebraço.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/rosca-martelo-como-fazer/',
+    titulo: 'Rosca martelo: como fazer, as variações e o músculo que engrossa o braço',
+    descricao: 'A vizinha de pegada neutra — mesma família, um pouco mais generosa com a carga.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/rosca-direta-como-fazer/',
+    titulo: 'Rosca direta: como fazer e os erros comuns',
+    descricao: 'A rosca supinada de onde vem a comparação de peso que assusta todo mundo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-bracos/',
+    titulo: 'Treino de braços: bíceps e tríceps que funciona',
+    descricao: 'Onde a inversa cabe no orçamento semanal, sem virar a quarta rosca do dia.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/rosca-inversa-como-fazer';
+const atualizadoEm = '2026-09-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Rosca inversa: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que a rosca inversa é tão mais fraca que a rosca direta?',
+    resposta:
+      'Porque o bíceps não está trabalhando na função dele. Além de dobrar o cotovelo, o bíceps supina o antebraço — gira a palma para cima —, e com a palma virada para baixo ele perde boa parte da vantagem mecânica. Quem assume o trabalho é o braquiorradial, o músculo do antebraço perto do cotovelo, que é bem menor. Usar metade ou menos do peso da rosca direta é o esperado, não sinal de fraqueza.',
+  },
+  {
+    pergunta: 'A rosca inversa serve para bíceps ou para antebraço?',
+    resposta:
+      'Para os dois, mas o protagonista é o antebraço. O braquiorradial e o braquial fazem o grosso do trabalho, e os extensores do punho seguram a barra na posição — que é justamente o grupo que quase ninguém treina. Se o seu objetivo é bíceps, ela é acessório; se é antebraço mais grosso e pegada mais firme, ela é titular.',
+  },
+  {
+    pergunta: 'Barra reta, barra W ou polia?',
+    resposta:
+      'A barra W é a escolha mais confortável para a maioria, porque a leve angulação alivia o punho na pegada pronada. A barra reta cobra mais da articulação e algumas pessoas simplesmente não a toleram. A polia baixa com barra reta mantém tensão contínua e é boa opção para repetições mais altas no fim do treino. Se o punho incomoda em qualquer das três, o problema costuma ser carga, não equipamento.',
+  },
+  {
+    pergunta: 'Onde a rosca inversa entra no treino?',
+    resposta:
+      'Por último, quase sempre. Ela não compete por carga com nenhuma outra rosca e rende mais quando o objetivo é acumular repetições com boa execução — de 2 a 3 séries de 10 a 15 fecham bem o dia de braços, ou o dia de costas para quem prefere juntar antebraço com puxada. Contando que o bíceps já trabalha em toda puxada e remada, ela raramente precisa ser a terceira rosca da mesma sessão.',
+  },
+];
+
+const title = 'Rosca inversa: como fazer e por que o peso cai pela metade';
+const description =
+  'Rosca inversa: por que a pegada pronada derruba a carga, qual músculo realmente trabalha, o punho que decide a série, barra W ou reta, e onde ela entra sem virar a quarta rosca do dia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Rosca inversa: como fazer e por que o peso cai pela metade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem faz rosca inversa pela primeira vez costuma sair constrangido: o
+      peso que subia fácil na rosca direta não sai do lugar. Isso não é
+      fraqueza nem falta de técnica. <strong>É o exercício
+      funcionando</strong> — e entender por quê muda a forma de usá-lo.
+    </p>
+
+    <div class="prose">
+      <h2>O bíceps não está trabalhando na função dele</h2>
+      <p>
+        O bíceps faz duas coisas: dobra o cotovelo e <strong>supina o
+        antebraço</strong>, ou seja, gira a palma para cima. Na rosca direta,
+        com a palma já supinada, ele opera na posição de maior vantagem.
+      </p>
+
+      <p>
+        Na inversa, a palma vira para baixo. O bíceps continua ali, mas
+        perde grande parte dessa vantagem mecânica — e quem assume o comando
+        é o <strong>braquiorradial</strong>, o músculo do antebraço que sobe
+        perto do cotovelo, com ajuda do braquial por baixo do bíceps.
+      </p>
+
+      <p>
+        O braquiorradial é bem menor que o bíceps. Daí a conta: metade do
+        peso, ou menos, é o normal. Quem insiste em igualar a carga da direta
+        acaba fazendo rosca direta com o punho torto, que é outra coisa —
+        e pior.
+      </p>
+
+      <h2>A execução</h2>
+      <p>
+        <strong>A base.</strong> Em pé, pés na largura do quadril, barra
+        segurada por cima com pegada na largura dos ombros. Cotovelos
+        colados na lateral do tronco.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Flexione o cotovelo mantendo a palma
+        voltada para baixo do início ao fim. Não há giro nenhum neste
+        exercício — o punho fica exatamente onde começou.
+      </p>
+
+      <p>
+        <strong>O topo.</strong> Pare quando o antebraço chegar perto da
+        vertical. Subir além disso só traz o cotovelo para a frente e tira a
+        tensão do músculo que você veio treinar.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Dois a três segundos, até a extensão
+        quase completa. A inversa é um dos exercícios em que a fase
+        excêntrica rende mais, justamente porque a carga é baixa e dá para
+        controlar de verdade.
+      </p>
+
+      <h2>O punho é onde a série desanda</h2>
+      <p>
+        Em toda rosca o punho importa. Nesta, ele é o exercício. Manter a
+        barra na posição pronada exige trabalho ativo dos extensores do
+        punho — o grupo que quase ninguém treina e que costuma falhar antes
+        de tudo.
+      </p>
+
+      <p>
+        Os três sinais de que a carga passou do ponto, em ordem de
+        aparecimento:
+      </p>
+
+      <p>
+        <strong>1. O punho começa a ceder para baixo</strong> no meio da
+        subida, quebrando a linha reta com o antebraço. É o primeiro aviso, e
+        o mais ignorado.
+      </p>
+
+      <p>
+        <strong>2. O cotovelo migra para a frente</strong>, e o ombro entra
+        para ajudar a levantar. A partir daí o antebraço saiu da conta.
+      </p>
+
+      <p>
+        <strong>3. O tronco embala.</strong> Quando chega aqui, o exercício
+        já virou outra coisa há duas repetições.
+      </p>
+
+      <p>
+        A correção é sempre a mesma e é impopular: tirar peso. Punho firme e
+        alinhado com o antebraço vale mais que qualquer anilha extra neste
+        movimento — e é o que faz a diferença aparecer no antebraço em vez de
+        aparecer como desconforto no cotovelo.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Direta, martelo, alternada e inversa na mesma sessão é a pilha clássica do dia de braço — e o bíceps ainda trabalha em toda puxada e remada do dia de costas, que ninguém soma. A análise olha a sua semana inteira e mostra quanto de braço já existe antes da primeira rosca."
+        acao="Somar o volume real do meu braço"
+      />
+
+      <h2>Barra W, barra reta ou polia</h2>
+      <p>
+        A <strong>barra W</strong> é a mais confortável para a maioria: a
+        angulação alivia o punho na pegada pronada, que é justamente onde
+        essa versão cobra. Comece por ela.
+      </p>
+
+      <p>
+        A <strong>barra reta</strong> exige mais da articulação do punho.
+        Funciona bem para quem não sente desconforto, e simplesmente não vale
+        insistir para quem sente.
+      </p>
+
+      <p>
+        A <strong>polia baixa</strong> mantém tensão contínua inclusive
+        embaixo, onde a barra livre alivia. É a melhor escolha para fechar o
+        treino com repetições mais altas.
+      </p>
+
+      <h2>Onde ela entra — e por que costuma sumir</h2>
+      <p>
+        De 2 a 3 séries de 10 a 15 repetições, no fim do dia de braços — ou
+        no dia de costas, para quem prefere juntar antebraço com puxada, já
+        que a pegada é o elo fraco das duas coisas.
+      </p>
+
+      <p>
+        A rosca inversa some dos treinos por um motivo previsível: ela não dá
+        a sensação de bombeamento que as outras roscas dão, e a carga é
+        pequena o suficiente para parecer que não está fazendo nada. Quem
+        treina pela sensação a abandona; quem treina pelo resultado no
+        antebraço e na pegada a mantém.
+      </p>
+
+      <p>
+        O contexto completo — o que treinar de antebraço e por que ele
+        importa além da estética — está no guia de
+        <a href="/musculacao/pegada-e-antebraco/">pegada e antebraço</a>. E
+        a vizinha mais próxima dela, com pegada neutra e um pouco mais de
+        carga disponível, é a
+        <a href="/musculacao/rosca-martelo-como-fazer/">rosca martelo</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a rosca inversa" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
