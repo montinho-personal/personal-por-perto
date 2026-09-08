@@ -25,8 +25,8 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 2 | `/musculacao/triceps-testa-como-fazer/` | 67 | 25,7 | ✅ 2026-09-03 · partiu de 25,7 |
 | 3 | `/emagrecimento/gordura-visceral/` | 57 | 66,8 | ✅ 2026-09-07 · partiu de 66,8 |
 | 4 | `/emagrecimento/jejum-intermitente-funciona/` | 54 | 52,7 | ✅ 2026-09-07 · partiu de 52,7 · ver nota |
-| 5 | `/musculacao/levantamento-terra-como-fazer/` | 39 | 40,3 | |
-| 6 | `/musculacao/rosca-martelo-como-fazer/` | 28 | 20,4 | |
+| 5 | `/musculacao/levantamento-terra-como-fazer/` | 39 | 40,3 | ✅ 2026-09-08 · partiu de 40,3 · ver nota |
+| 6 | `/musculacao/rosca-martelo-como-fazer/` | 28 | 20,4 | ✅ 2026-09-08 · partiu de 20,4 |
 | 7 | `/musculacao/encolhimento-como-fazer/` | 24 | 24,8 | |
 | 8 | `/musculacao/hipertrofia-como-funciona/` | 24 | 77,3 | |
 | 9 | `/musculacao/treino-de-posterior-de-coxa/` | 17 | 39,2 | |
@@ -78,6 +78,61 @@ Expectativa honesta: este pode não subir muito, e a causa não será o texto.
 Se na próxima leitura de relatório ele continuar parado, a conclusão a tirar
 é sobre a disputa, não sobre o artigo — e o esforço deve ir para consultas em
 que o portal tem chance real.
+
+## Nota de 08/09/2026 — duas lacunas técnicas reais, e um teto que não é nosso
+
+**`levantamento-terra` (40,3): não é canibalização, e o texto era bom.**
+Checagem obrigatória feita primeiro: `levantamento-terra-romeno-como-fazer`
+está na posição 23,7 com 3 impressões, em consultas próprias — não disputa.
+O artigo tinha 918 palavras e cobria técnica em seis passos, variações, dor
+lombar e volume. Mais completo que boa parte do que ranqueia.
+
+Mas a comparação com a primeira página achou duas ausências concretas, não
+cosméticas: **pegada e respiração**. Nenhum dos dois aparecia no corpo — a
+palavra "pegada" só existia num passo genérico e numa FAQ sobre strap.
+
+Entrou um H2 sobre as três pegadas (pronada, mista, gancho) com o alerta que
+quase nenhum guia brasileiro dá: na mista, o braço supinado fica com o bíceps
+sob tensão em posição alongada, e é nele que acontecem os rompimentos raros
+mas reais do exercício — daí manter o cotovelo estendido e relaxado e
+alternar qual mão supina. E um passo de respiração e pressão intra-abdominal
+na técnica, com a regra de nunca respirar no fundo do movimento. A FAQ de
+"cinto e strap" virou "qual pegada usar", que é a consulta com demanda real.
+
+**O teto, dito com todas as letras:** a consulta-cabeça "levantamento terra"
+tem 16 impressões na posição **42,2**, e todas as variações da consulta ficam
+entre 32 e 53. Quem ocupa a primeira página é Centauro, Hipertrofia.org,
+Treino Mestre, Cia Athletica, Integralmedica e TotalPass — domínios de marca
+e de varejo. As duas lacunas eram reais e valia corrigi-las; elas não mudam
+autoridade de domínio. Se na próxima leitura ele continuar na casa dos 40, a
+conclusão é sobre a disputa, não sobre o texto.
+
+**`rosca-martelo` (20,4): texto fino, e a lacuna é a seção que o título da
+concorrência anuncia.** O artigo tinha **567 palavras** — contra 918 do terra
+e 816 do supino, os vizinhos de acervo. E o buraco era específico: a seção de
+variações listava três (simultânea, alternada, corda), enquanto o artigo
+melhor colocado da busca se chama literalmente "7 variações de rosca martelo".
+
+Entraram três variações reais que faltavam — cruzada (cross-body), banco
+inclinado e banco Scott — mais a barra H, com o que cada uma resolve, não
+como lista. O corpo passou de 567 para 743 palavras, e cresceu onde havia
+lacuna, não para engordar.
+
+Título e description mudaram, porque a consulta pede variações:
+
+Antes: `Rosca martelo: como fazer e os erros comuns`
+Depois: `Rosca martelo: como fazer, as variações e o músculo que engrossa o braço`
+
+Antes: `Rosca martelo: a pegada neutra que engrossa o braço, diferença para a
+rosca direta, alternada ou simultânea, o papel do braquial e como programar
+as séries.`
+Depois: `Rosca martelo: a pegada neutra que engrossa o braço, as seis
+variações (alternada, corda, cruzada, banco inclinado, Scott, barra H), o
+papel do braquial e do braquiorradial e como programar as séries.`
+
+Ele também ganhou o `FerramentaInline` que ainda não tinha — pela regra do
+CLAUDE.md de que artigo editado recebe um. A data subiu pela revisão, não
+pelo bloco.
 
 ## O que "reescrever" significa aqui
 
