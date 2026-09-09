@@ -1,0 +1,300 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/desenvolvimento-como-fazer/',
+    titulo: 'Desenvolvimento: como fazer, sentado ou em pé, barra ou halteres',
+    descricao: 'O artigo-pai: a mecânica do movimento e qual variação escolher para o seu caso.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro: como montar o seu (e os erros)',
+    descricao: 'Onde o Arnold cabe no orçamento semanal — e por que ele raramente é titular.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/elevacao-lateral-como-fazer/',
+    titulo: 'Elevação lateral: como fazer certo',
+    descricao: 'A porção lateral que o Arnold promete e não entrega sozinho.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-ombro/',
+    titulo: 'Treinar com dor no ombro: o que dá e o que não dá',
+    descricao: 'Antes de adicionar rotação sob carga, vale saber onde fica a fronteira.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/desenvolvimento-arnold-como-fazer';
+const atualizadoEm = '2026-09-09';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Desenvolvimento Arnold: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Em que momento exato a rotação acontece no desenvolvimento Arnold?',
+    resposta:
+      'Na primeira metade da subida, e ela termina antes da segunda. Você parte com as palmas voltadas para o rosto, na altura do queixo, e gira progressivamente à medida que os halteres sobem e se afastam — de modo que, aproximadamente na altura da testa, as palmas já estão voltadas para a frente. Da testa para cima é desenvolvimento comum. Quem gira tudo de uma vez no início, ou tenta girar lá em cima com o braço quase estendido, está fazendo outro exercício — e o segundo caso é o que mais incomoda o ombro.',
+  },
+  {
+    pergunta: 'O Arnold é melhor que o desenvolvimento com halteres comum?',
+    resposta:
+      'Não é melhor nem pior — é diferente. Ele entrega mais amplitude e mais tempo de tensão na porção anterior do deltoide, porque a posição inicial com as palmas para dentro parte de um ponto mais baixo e mais alongado. Em troca, você usa menos carga e o movimento fica mais difícil de controlar. Para volume bruto de ombro, o desenvolvimento comum rende mais; para ênfase na porção da frente com carga moderada, o Arnold tem seu lugar.',
+  },
+  {
+    pergunta: 'O desenvolvimento Arnold faz mal para o ombro?',
+    resposta:
+      'Não por si só, mas ele tem menos margem de erro que o desenvolvimento comum. Rotação sob carga exige que o ombro tenha mobilidade para chegar às duas posições sem compensar com a lombar ou com o pescoço, e a fase de transição é onde a articulação está mais vulnerável. Carga moderada e velocidade controlada resolvem a maioria dos casos. Quem tem dor, histórico de lesão ou impacto no ombro deve avaliar antes com médico ou fisioterapeuta — não é exercício para testar por conta própria nessas situações.',
+  },
+  {
+    pergunta: 'Sentado ou em pé?',
+    resposta:
+      'Sentado com encosto, na maior parte dos casos. O Arnold já pede atenção à rotação, e fazê-lo em pé acrescenta a tarefa de estabilizar o tronco justamente quando a carga muda de trajetória no meio do caminho — é atenção dividida em excesso. Em pé é uma progressão válida para quem já domina o movimento e quer o componente de estabilização, não um ponto de partida.',
+  },
+  {
+    pergunta: 'Quantas séries de Arnold fazer?',
+    resposta:
+      'De 2 a 3 séries de 8 a 12 repetições, uma vez por semana, como exercício de ênfase — não como o desenvolvimento principal do dia. A porção anterior do deltoide já recebe estímulo considerável de todo supino e de todo desenvolvimento, então acrescentar Arnold ao lado de um treino de peito volumoso costuma somar menos do que parece. Se o ombro é prioridade, a porção lateral geralmente é o investimento com melhor retorno.',
+  },
+];
+
+const title = 'Desenvolvimento Arnold: como fazer e onde a rotação começa';
+const description =
+  'Desenvolvimento Arnold: o momento exato da rotação, por que girar tudo no início ou no topo estraga o exercício, o que ele entrega a mais que o desenvolvimento comum e quando não vale a pena.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Desenvolvimento Arnold: a rotação é o exercício inteiro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Tire a rotação do desenvolvimento Arnold e sobra um desenvolvimento
+      com halteres comum. Ela não é um detalhe de estilo — é a única
+      coisa que distingue os dois. E é justamente ela que quase todo mundo
+      faz na hora errada.
+    </p>
+
+    <div class="prose">
+      <h2>Onde a rotação começa e onde ela termina</h2>
+      <p>
+        A forma mais útil de aprender este exercício não é decorar
+        posições, é entender a linha do tempo do movimento. São três
+        trechos, e a rotação vive inteira dentro do primeiro.
+      </p>
+
+      <p>
+        <strong>Do queixo à testa — a rotação.</strong> Você começa
+        sentado, halteres na altura do queixo, cotovelos à frente do
+        corpo e <strong>palmas voltadas para o seu rosto</strong>. À
+        medida que os halteres sobem, os cotovelos se abrem para os
+        lados e os antebraços giram progressivamente. Na altura da
+        testa, as palmas já estão voltadas para a frente. Todo o giro
+        acontece aqui, distribuído, e nunca de uma vez só.
+      </p>
+
+      <p>
+        <strong>Da testa ao topo — desenvolvimento puro.</strong> Daqui
+        para cima não há mais nada de especial: é um desenvolvimento com
+        halteres normal, subindo até os braços quase estendidos, sem
+        travar o cotovelo e sem deixar os halteres se chocarem.
+      </p>
+
+      <p>
+        <strong>A descida — o caminho inverso, mais devagar.</strong>
+        Desça refazendo a rotação no mesmo trecho, em cerca de dois
+        segundos, até as palmas voltarem a olhar para o rosto e os
+        cotovelos ficarem novamente à frente do corpo. É aqui que está a
+        maior parte do estímulo, e é o trecho que a pressa apaga.
+      </p>
+
+      <h2>Os dois jeitos errados de girar</h2>
+      <p>
+        Praticamente todo erro do Arnold é um erro de <em>quando</em>, não
+        de <em>como</em>.
+      </p>
+
+      <p>
+        <strong>Girar tudo no início.</strong> A pessoa parte com as
+        palmas para o rosto, gira imediatamente para a posição pronada
+        ainda na altura do peito e sobe daí. O resultado é um
+        desenvolvimento comum com um floreio no começo — a amplitude
+        extra que justifica o exercício foi embora nos primeiros
+        centímetros.
+      </p>
+
+      <p>
+        <strong>Girar no topo.</strong> O oposto, e o mais problemático:
+        subir com as palmas para dentro até quase estender o braço e só
+        então torcer o punho lá em cima. Com o braço estendido e a carga
+        acima da cabeça, o ombro está no ponto de menor margem — e é essa
+        versão que costuma estar por trás das queixas de que "o Arnold
+        machuca".
+      </p>
+
+      <p>
+        Há ainda um terceiro, herdado do desenvolvimento comum: usar a
+        lombar como impulso. Se o tronco precisa arquear para o halter
+        subir, a carga está alta demais — e num exercício que já pede
+        atenção à rotação, sobra menos ainda para corrigir o resto.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="A porção da frente do ombro, que é o alvo do Arnold, já trabalha em todo supino reto, inclinado e no desenvolvimento — e ninguém soma isso antes de acrescentar mais um exercício de ombro no fim da semana. A análise olha o seu treino inteiro e mostra quanto de deltoide anterior já existe antes do primeiro halter."
+        acao="Somar o quanto meu ombro já treina"
+      />
+
+      <h2>O que ele entrega a mais — e o que cobra em troca</h2>
+      <p>
+        A vantagem real é de amplitude. Partir com as palmas voltadas
+        para o rosto coloca o deltoide anterior numa posição mais baixa e
+        mais alongada do que o desenvolvimento comum permite, e o
+        movimento passa mais tempo sob tensão porque percorre mais
+        caminho.
+      </p>
+
+      <p>
+        O preço vem em dois itens. O primeiro é <strong>carga</strong>:
+        você vai usar menos peso que no desenvolvimento com halteres
+        tradicional, e isso não é falha de execução — é consequência da
+        posição inicial desvantajosa. O segundo é
+        <strong>controle</strong>: um movimento que muda de trajetória no
+        meio é mais difícil de manter estável, e essa dificuldade compete
+        com a atenção que você teria para o resto da técnica.
+      </p>
+
+      <p>
+        A conclusão prática segue daí. Para volume bruto de ombro, o
+        <a href="/musculacao/desenvolvimento-como-fazer/">desenvolvimento
+        comum</a> rende mais por série. O Arnold é ferramenta de ênfase,
+        com carga moderada, para quem quer trabalhar a porção da frente
+        em amplitude maior.
+      </p>
+
+      <h2>Quando ele não vale a pena</h2>
+      <p>
+        Vale dizer isso com clareza, porque é o oposto do que a fama do
+        exercício sugere.
+      </p>
+
+      <p>
+        O deltoide anterior é a porção do ombro que <strong>menos precisa
+        de trabalho direto</strong>: ele participa de todo supino, de todo
+        desenvolvimento e de boa parte dos exercícios de peito. Quem tem
+        um dia de peito volumoso e ainda acrescenta Arnold costuma estar
+        somando muito menos do que imagina — e deixando de fora a porção
+        lateral, que é a que efetivamente muda a largura do ombro e só
+        cresce com trabalho específico, como a
+        <a href="/musculacao/elevacao-lateral-como-fazer/">elevação
+        lateral</a>.
+      </p>
+
+      <p>
+        Se o ombro é prioridade e o tempo é limitado, o Arnold raramente
+        é a primeira escolha. Ele é bom no seu lugar: exercício de ênfase,
+        uma vez por semana, quando o resto do orçamento de ombro já está
+        coberto. O contexto completo de como dividir esse orçamento está
+        no guia de <a href="/musculacao/treino-de-ombro/">treino de
+        ombro</a>.
+      </p>
+
+      <h2>Quem deve pular este exercício por enquanto</h2>
+      <p>
+        O Arnold acrescenta rotação sob carga a um movimento que já leva
+        peso acima da cabeça. Para um ombro saudável e com boa
+        mobilidade, isso é apenas um estímulo diferente. Para um ombro
+        que já dói, é uma exigência a mais num lugar que já está pedindo
+        atenção.
+      </p>
+
+      <p>
+        Dor durante ou depois do movimento, histórico de lesão,
+        diagnóstico de impacto ou limitação de mobilidade para levar o
+        braço acima da cabeça: nesses casos a conversa é com médico ou
+        fisioterapeuta antes, e o treino se organiza em cima do que eles
+        liberarem. O que dá e o que não dá nessas situações está no guia
+        sobre <a href="/musculacao/treinar-com-dor-no-ombro/">treinar com
+        dor no ombro</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o desenvolvimento Arnold" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

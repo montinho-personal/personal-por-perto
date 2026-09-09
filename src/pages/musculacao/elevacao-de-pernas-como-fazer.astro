@@ -1,0 +1,330 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-abdomen/',
+    titulo: 'Treino de abdômen: o que funciona e o que é perda de tempo',
+    descricao: 'O artigo-pai: quanto treinar, o que o core faz e por que abdominal não queima barriga.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-abdomen-avancado/',
+    titulo: 'Treino de abdômen avançado: como progredir',
+    descricao: 'Os três caminhos de progressão — e onde a elevação de pernas entra em cada um.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/prancha-abdominal-como-fazer/',
+    titulo: 'Prancha abdominal: como fazer e por quanto tempo',
+    descricao: 'O outro exercício anti-extensão — e o que ele treina que a elevação de pernas não treina.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que dá e o que não dá',
+    descricao: 'Leitura obrigatória antes de tirar os pés do chão com a lombar sensível.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/elevacao-de-pernas-como-fazer';
+const atualizadoEm = '2026-09-09';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Elevação de pernas: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A elevação de pernas trabalha o "abdômen inferior"?',
+    resposta:
+      'Não existe um músculo chamado abdômen inferior. O reto abdominal é um músculo único, do esterno ao púbis, com os tendões transversais que criam a aparência de "gominhos" separados. É possível que a parte de baixo dele receba um pouco mais de ativação em exercícios que levam a pelve na direção das costelas, mas isso não é o mesmo que existir um músculo separado que a elevação de pernas isola. A aparência da região baixa da barriga depende muito mais de percentual de gordura do que de qual exercício você escolhe.',
+  },
+  {
+    pergunta: 'Quem faz o trabalho na elevação de pernas: o abdômen ou o flexor de quadril?',
+    resposta:
+      'Os dois, e a proporção depende de como você executa. Levantar a perna é função dos flexores de quadril, principalmente o psoas — esse trabalho existe e não tem como eliminá-lo. O abdômen entra de duas formas: isometricamente, impedindo que a lombar arqueie enquanto o peso das pernas puxa a pelve, e dinamicamente, se você levar a pelve para trás no fim do movimento. Quem só sobe e desce a perna com a lombar solta está fazendo quase só flexão de quadril.',
+  },
+  {
+    pergunta: 'Por que minha lombar arqueia ou dói na elevação de pernas?',
+    resposta:
+      'Porque as pernas são uma alavanca longa e pesada, e o psoas se prende à própria coluna lombar. Quando o abdômen não consegue segurar a pelve na posição, a lombar arqueia e passa a receber a carga que era para ser do core. É o mecanismo que transforma um exercício de abdômen em queixa lombar. A solução é reduzir a alavanca — joelhos mais dobrados, amplitude menor — até que a lombar permaneça encostada ou estável durante toda a série. Quem já tem dor lombar deve conversar com médico ou fisioterapeuta antes de incluir o exercício.',
+  },
+  {
+    pergunta: 'Elevação de pernas deitado ou na barra fixa: qual escolher?',
+    resposta:
+      'A que você consegue fazer sem perder a posição da lombar. Deitado é o degrau mais fácil e onde a maioria deveria começar, porque o chão dá referência imediata de quando a lombar saiu do lugar. A barra fixa é o degrau mais difícil, e não só pelo abdômen: ela exige que a pegada aguente a série inteira e que você não balance. Pular direto para a barra costuma produzir muito balanço e pouco abdômen.',
+  },
+  {
+    pergunta: 'Quantas séries e repetições de elevação de pernas?',
+    resposta:
+      'De 2 a 4 séries de 8 a 15 repetições, duas vezes por semana, é uma faixa razoável para a maioria. Mas o critério que manda aqui não é o número: é a última repetição em que a lombar ainda ficou onde deveria. Encerre a série ali, mesmo que faltem repetições no papel — as repetições feitas com a lombar arqueada não somam ao abdômen e somam à queixa do dia seguinte.',
+  },
+];
+
+const title = 'Elevação de pernas: como fazer e o que ela realmente treina';
+const description =
+  'Elevação de pernas: por que o "abdômen inferior" não existe, quanto do trabalho é do flexor de quadril, a regra da lombar que define a série e os quatro degraus de progressão.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Elevação de pernas: o exercício do "infra" que não treina o infra</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A elevação de pernas é conhecida como o exercício do abdômen
+      inferior. O problema é que <strong>abdômen inferior não
+      existe</strong> — e entender o que ela treina de verdade muda
+      completamente como executá-la.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro, o mito</h2>
+      <p>
+        O reto abdominal é <strong>um músculo só</strong>, que vai do
+        esterno ao púbis. Os "gominhos" não são músculos separados: são
+        faixas de tecido conjuntivo atravessando o mesmo ventre muscular,
+        do mesmo jeito que as costuras de um colchão não o dividem em
+        vários colchões.
+      </p>
+
+      <p>
+        Existe alguma diferença de ativação entre as regiões conforme o
+        exercício? Provavelmente sim, em grau modesto. Isso é bem
+        diferente de "a elevação de pernas isola o infra". E a parte que
+        ninguém gosta de ouvir: a aparência da região baixa da barriga
+        responde muito mais a percentual de gordura do que a qual
+        exercício você escolheu — o guia de
+        <a href="/musculacao/treino-de-abdomen/">treino de abdômen</a>
+        trata dessa conta em detalhe.
+      </p>
+
+      <h2>Então o que a elevação de pernas treina?</h2>
+      <p>
+        Duas coisas ao mesmo tempo, e só uma delas é o abdômen.
+      </p>
+
+      <p>
+        <strong>Flexão de quadril.</strong> Levantar a perna é trabalho
+        dos flexores de quadril, com o psoas à frente. Esse trabalho
+        existe, é grande, e não tem como removê-lo do exercício.
+      </p>
+
+      <p>
+        <strong>Anti-extensão lombar.</strong> Enquanto as pernas sobem e
+        descem, o peso delas puxa a pelve e tenta arquear a lombar. Quem
+        impede isso é o abdômen, trabalhando <em>isometricamente</em>. É
+        aqui que mora a maior parte do estímulo abdominal do exercício —
+        não no movimento das pernas.
+      </p>
+
+      <p>
+        Há ainda um terceiro componente, opcional e frequentemente
+        esquecido: no fim da subida, levar a <strong>pelve na direção
+        das costelas</strong>, tirando o quadril do apoio. Esse trecho
+        curto é a única parte em que o reto abdominal encurta de fato. É
+        também o mais difícil, e o primeiro que some quando a carga
+        aumenta.
+      </p>
+
+      <p>
+        A consequência prática é direta: se você sobe e desce a perna com
+        a lombar solta, está fazendo um exercício de psoas com o abdômen
+        de espectador.
+      </p>
+
+      <h2>A regra que define a série</h2>
+      <p>
+        Toda a execução da elevação de pernas cabe numa frase:
+        <strong>a série acaba quando a lombar sai do lugar</strong>.
+      </p>
+
+      <p>
+        Deitado, isso significa a região baixa das costas encostada no
+        chão do começo ao fim. Suspenso, significa não deixar o tronco
+        arquear para trás enquanto as pernas sobem. No momento em que
+        você precisa arquear para completar a repetição, a repetição
+        deixou de ser sua e passou a ser da lombar.
+      </p>
+
+      <p>
+        Duas correções resolvem quase todos os casos, e ambas são
+        impopulares porque parecem "facilitar":
+      </p>
+
+      <p>
+        <strong>Dobre mais os joelhos.</strong> A dificuldade aqui vem do
+        comprimento da alavanca, não do peso. Perna dobrada encurta a
+        alavanca e devolve o controle imediatamente.
+      </p>
+
+      <p>
+        <strong>Reduza a amplitude por baixo.</strong> A lombar quase
+        sempre cede no fim da descida, quando as pernas chegam perto do
+        chão ou da vertical. Pare antes desse ponto — a amplitude
+        completa não vale nada se a posição se perde nela.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Se a maior parte do trabalho abdominal aqui é isométrico e anti-extensão, vale a pergunta seguinte: o seu treino de core já cobre as outras funções, ou são três exercícios fazendo a mesma coisa? A análise olha a sua semana e mostra o que está repetido e o que ficou de fora."
+        acao="Ver o que o meu core já cobre"
+      />
+
+      <h2>Os quatro degraus, do mais fácil ao mais difícil</h2>
+      <p>
+        Elevação de pernas não é um exercício — é uma família, ordenada
+        por dificuldade. Subir de degrau antes da hora é o que produz as
+        séries de balanço que não treinam nada.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Degrau</th><th>O que muda</th><th>Quando subir</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Deitado no chão</strong></td>
+              <td>O chão avisa na hora em que a lombar sai do lugar — é a melhor referência que existe</td>
+              <td>Quando 12 a 15 repetições saem com a lombar encostada o tempo todo</td>
+            </tr>
+            <tr>
+              <td><strong>2. Banco declinado</strong></td>
+              <td>Aumenta a exigência por baixo e permite segurar o banco para estabilizar o tronco</td>
+              <td>Quando o trecho final da descida deixa de ser o ponto de falha</td>
+            </tr>
+            <tr>
+              <td><strong>3. Paralelas com apoio de costas</strong></td>
+              <td>Tira o apoio do quadril e obriga o core a sustentar a pelve no ar, sem exigir pegada</td>
+              <td>Quando você consegue levar a pelve para trás no topo, e não só a perna para cima</td>
+            </tr>
+            <tr>
+              <td><strong>4. Barra fixa</strong></td>
+              <td>Nada estabiliza o tronco, e a pegada precisa durar a série inteira</td>
+              <td>Quando a série sai sem balanço nenhum — se o corpo oscila, volte um degrau</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Em qualquer degrau, joelhos dobrados é uma versão mais fácil e
+        pernas estendidas uma versão mais difícil. Isso dá oito níveis
+        reais de progressão sem nenhum peso extra — e é por isso que a
+        elevação de pernas aparece como exemplo no caminho de "piorar a
+        alavanca" do guia de
+        <a href="/musculacao/treino-de-abdomen-avancado/">treino de
+        abdômen avançado</a>.
+      </p>
+
+      <h2>Quem precisa de cautela extra</h2>
+      <p>
+        O psoas se prende diretamente às vértebras lombares. Isso
+        significa que, num quadro de lombar sensível, o exercício não é
+        neutro: a tração do próprio músculo somada à alavanca das pernas
+        pode incomodar mesmo com boa execução.
+      </p>
+
+      <p>
+        Se você tem dor lombar, histórico de hérnia ou desconforto que
+        aparece justamente ao tirar os pés do chão, a conversa é com
+        médico ou fisioterapeuta antes de incluir o exercício — e não
+        depois. Existem alternativas de anti-extensão que cobram menos da
+        região, como a
+        <a href="/musculacao/prancha-abdominal-como-fazer/">prancha</a>,
+        e o guia sobre <a href="/musculacao/treinar-com-dor-lombar/">treinar
+        com dor lombar</a> trata de onde fica a fronteira.
+      </p>
+
+      <h2>Onde encaixar</h2>
+      <p>
+        De 2 a 4 séries de 8 a 15 repetições, duas vezes por semana,
+        atendem bem à maioria — no fim do treino, junto do resto do
+        trabalho de core, ou como bloco próprio.
+      </p>
+
+      <p>
+        E vale repetir o critério, porque ele é o que diferencia este
+        exercício feito bem de feito por fazer: encerre a série na última
+        repetição em que a lombar ficou onde deveria. As que vêm depois
+        não somam ao abdômen — somam à queixa de amanhã.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a elevação de pernas" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

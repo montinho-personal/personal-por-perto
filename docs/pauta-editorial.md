@@ -67,11 +67,51 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Supino declinado: como fazer | `supino-declinado-como-fazer` | ✅ 2026-09-07 · recorte declarado |
 | Tríceps francês: como fazer | `triceps-frances-como-fazer` | ✅ 2026-09-08 · recorte declarado |
 | Rosca inversa: como fazer | `rosca-inversa-como-fazer` | ✅ 2026-09-08 |
-| Desenvolvimento Arnold: como fazer | `desenvolvimento-arnold-como-fazer` | |
-| Elevação de pernas (infra): como fazer | `elevacao-de-pernas-como-fazer` | |
+| Desenvolvimento Arnold: como fazer | `desenvolvimento-arnold-como-fazer` | ✅ 2026-09-09 · recorte declarado |
+| Elevação de pernas (infra): como fazer | `elevacao-de-pernas-como-fazer` | ✅ 2026-09-09 |
 | Panturrilha em pé: como fazer | `panturrilha-em-pe-como-fazer` | |
 | Agachamento no Smith: como fazer | `agachamento-smith-como-fazer` | |
 | Coice de glúteo na polia: como fazer | `coice-de-gluteo-como-fazer` | |
+
+### Nota de 09/09/2026 — o quarto recorte, e uma variação de forma deliberada
+
+`desenvolvimento-arnold-como-fazer` é o quarto caso do padrão
+pai-diz-qual-variação / filho-diz-como-executar, depois de voador,
+cadeira flexora e supino declinado. A checagem: a palavra "Arnold" não
+aparecia em nenhum arquivo do acervo, e `desenvolvimento-como-fazer` tem
+H2 de sentado/em pé, barra/halteres e atrás da nuca — nenhum deles cobre
+a rotação. Link do pai para o filho adicionado no parágrafo dos halteres,
+com a data de revisão do pai atualizada.
+
+O ângulo próprio do filho é o único que a variação tem: **a rotação é o
+exercício inteiro**, e praticamente todo erro do Arnold é de *quando*
+girar, não de *como*. Girar tudo no início devolve um desenvolvimento
+comum com floreio; girar no topo, com o braço estendido e a carga acima
+da cabeça, é a versão por trás das queixas de que "o Arnold machuca". O
+artigo também diz o que a fama do exercício não diz: o deltoide anterior
+é a porção que menos precisa de trabalho direto, então ele raramente é a
+primeira escolha quando o tempo é curto.
+
+`elevacao-de-pernas-como-fazer` não precisou de recorte no sentido
+habitual — `treino-de-abdomen` e `treino-de-abdomen-avancado` citam o
+exercício em listas, nunca em execução. Mas ganhou um ângulo que corrige
+o próprio termo de busca: **o "infra" não existe**. O reto abdominal é um
+músculo só, e o que a elevação de pernas de fato treina é flexão de
+quadril (psoas) somada a anti-extensão lombar isométrica. Isso não é
+curiosidade anatômica: é o que explica por que a lombar arqueia, e por
+que a regra da série é "encerre na última repetição em que a lombar ficou
+onde deveria".
+
+**Sobre a forma, que é o ponto que a rotina manda vigiar.** Os dois
+saíram com esqueletos diferentes de propósito, e diferentes dos seis
+"como fazer" anteriores do bloco. O Arnold é organizado como linha do
+tempo do movimento (três trechos, com a rotação inteira dentro do
+primeiro) mais uma seção de "os dois jeitos errados de girar" — não o
+base/subida/topo/descida padrão. A elevação de pernas abre por correção
+de mito, e sua seção central é uma **tabela de quatro degraus de
+progressão** com o critério de quando subir de cada um, em vez de lista
+de erros. Se o próximo par sair com o esqueleto de um destes, é sinal de
+reescrever um.
 
 ### Nota de 04/09/2026 — o recorte do voador
 
