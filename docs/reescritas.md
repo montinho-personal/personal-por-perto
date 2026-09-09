@@ -27,9 +27,9 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 4 | `/emagrecimento/jejum-intermitente-funciona/` | 54 | 52,7 | ✅ 2026-09-07 · partiu de 52,7 · ver nota |
 | 5 | `/musculacao/levantamento-terra-como-fazer/` | 39 | 40,3 | ✅ 2026-09-08 · partiu de 40,3 · ver nota |
 | 6 | `/musculacao/rosca-martelo-como-fazer/` | 28 | 20,4 | ✅ 2026-09-08 · partiu de 20,4 |
-| 7 | `/musculacao/encolhimento-como-fazer/` | 24 | 24,8 | |
-| 8 | `/musculacao/hipertrofia-como-funciona/` | 24 | 77,3 | |
-| 9 | `/musculacao/treino-de-posterior-de-coxa/` | 17 | 39,2 | |
+| 7 | `/musculacao/encolhimento-como-fazer/` | 24 | 24,8 | ✅ 2026-09-09 · partiu de 24,8 (41,1 na consulta-cabeça) |
+| 8 | `/musculacao/hipertrofia-como-funciona/` | 24 | 77,3 | ⛔ 2026-09-09 · não reescrito · canibalização + teto · ver nota |
+| 9 | `/musculacao/treino-de-posterior-de-coxa/` | 17 | 39,2 | ✅ 2026-09-09 · partiu de 39,2 |
 | 10 | `/guias/avaliacao-fisica/` | 16 | 78,2 | |
 | 11 | `/musculacao/elevacao-frontal-como-fazer/` | 16 | 20,3 | |
 | 12 | `/emagrecimento/deficit-calorico-como-funciona/` | 12 | 75,2 | |
@@ -133,6 +133,113 @@ papel do braquial e do braquiorradial e como programar as séries.`
 Ele também ganhou o `FerramentaInline` que ainda não tinha — pela regra do
 CLAUDE.md de que artigo editado recebe um. A data subiu pela revisão, não
 pelo bloco.
+
+## Nota de 09/09/2026 — a média enganou, e um artigo saiu da fila sem reescrita
+
+**`encolhimento` (24,8): a posição da fila estava errada — a real é 41.**
+Este é o mesmo efeito já documentado nas páginas de cidade, agora em
+artigo. A posição média de 24,8 é a mistura de duas coisas muito
+diferentes: a consulta genérica `encolhimento` (3 impressões, posição 25)
+e a consulta que realmente importa, `encolhimento de ombro` (9
+impressões, posição **41,1**), mais `encolhimento ombro` (43) e
+`encolhimento de ombros` (45). Na busca que traz demanda, o artigo está
+na quinta página, não na terceira.
+
+Isso muda o diagnóstico de faixa: não é caso de título (o `title` já
+dizia "Encolhimento de ombros"), é o caso de posição 40+ — texto raso
+perto do que ranqueia. E a comparação com a primeira página achou onde:
+**os implementos**. O artigo despachava halteres, barra, Smith e polia
+num parágrafo único, enquanto dois dos melhores colocados constroem o
+título inteiro em cima disso ("Encolhimento de ombro com halter, barra e
+polia"). Mesmo padrão da `rosca-martelo`, mesma correção.
+
+O parágrafo virou um H2 com seis implementos e o que cada um resolve —
+incluindo barra por trás do corpo e barra hexagonal, que não existiam no
+texto. Entrou também um parágrafo de anatomia que faltava: o levantador
+da escápula, que participa da elevação e é a origem mais provável da
+tensão cervical do dia seguinte, mais os romboides como estabilizadores.
+O H1 ganhou "de ombros" para bater com a consulta.
+
+Antes: `Encolhimento: por que não girar os ombros, halteres, barra ou
+Smith, a pausa no topo que faz o trapézio crescer e quando o exercício é
+realmente necessário.`
+Depois: `Encolhimento de ombros: por que não girar, o que cada implemento
+resolve (halteres, barra, barra por trás, Smith, polia e barra
+hexagonal), a pausa no topo que faz o trapézio crescer e quando o
+exercício é necessário.`
+
+O `title` não mudou: já correspondia à busca.
+
+**`hipertrofia-como-funciona` (77,3): NÃO reescrito, por dois motivos que
+se somam.** A checagem de canibalização mudou o plano, e vale registrar
+em vez de reescrever por reescrever.
+
+*Canibalização, no subtópico onde ele tem tração.* As duas melhores
+consultas do artigo são `quantas séries por grupo muscular hipertrofia`
+(posição 29) e `quantas séries para hipertrofia` (39) — e
+`/musculacao/quantas-series-e-repeticoes/` está com **47 impressões na
+posição 17,6**, o dobro da impressão e um terço da posição. O artigo
+dedica um H2 inteiro e a primeira FAQ exatamente ao assunto que o irmão
+já ranqueia melhor. Aprofundar esse trecho pioraria a disputa interna,
+não a externa.
+
+*Teto na consulta-cabeça.* No que o artigo de fato persegue —
+`o que é hipertrofia`, `hipertrofia muscular`, `hipertrofia o que é` e as
+variações com erro de digitação —, as posições vão de **76 a 99**. Nessa
+faixa o Google não está dizendo "melhore o título": está dizendo que a
+página não compete pela definição, uma das consultas informacionais mais
+disputadas do fitness brasileiro.
+
+O artigo em si é bom e não tem lacuna técnica aparente: cobre os três
+mecanismos, sobrecarga progressiva, volume, faixa de repetições,
+proximidade da falha, recuperação e proteína, com ACSM e ISSN citados.
+Reescrevê-lo seria trocar palavras de lugar.
+
+**A recomendação, para quando houver decisão do Renato:** o caminho aqui
+não é reescrita, é consolidação — decidir qual das duas páginas fica com
+o volume de séries e fazer a outra apenas linkar. Isso é mudança de
+arquitetura de conteúdo, não tarefa de rotina diária, e não deve ser
+feita em lote.
+
+**`treino-de-posterior-de-coxa` (39,2): sem canibalização, e duas lacunas
+concretas.** Checagem primeiro: `stiff` (posição 9,6), `mesa-flexora`
+(6,0) e `terra-romeno` (23,7) ranqueiam nas consultas próprias deles e
+não disputam o cluster `treino de posterior` — que aparece em catorze
+variações, todas entre 41 e 52. Faixa de posição 40+, portanto: densidade.
+
+O artigo já era bom — nove H2, o princípio dos dois padrões (que a
+concorrência trata como o ponto central), stiff × terra romeno, erros,
+motivo funcional e volume. As duas ausências eram específicas:
+
+1. **Flexora sentada e deitada tratadas como intercambiáveis**, listadas
+   lado a lado sem distinção. A porção longa do bíceps femoral cruza duas
+   articulações, então o alongamento dela depende do quadril: sentada,
+   com quadril flexionado, começa a série esticada; deitada, não. Treinar
+   em posição alongada é uma das poucas variáveis com evidência
+   consistente de vantagem — e nenhuma das páginas melhor colocadas em
+   português diz isso.
+2. **O nórdico citado numa lista e nunca explicado.** O artigo tinha um
+   H2 sobre risco de lesão em corrida sem nomear o exercício mais
+   associado à prevenção de lesão de isquiotibiais. Entrou com execução,
+   o motivo (excêntrico sob carga alta, o padrão exato da lesão) e como
+   começar sem se machucar tentando prevenir lesão.
+
+Título e description mudaram, porque metade das consultas usa
+"exercícios", não "treino":
+
+Antes: `Treino de posterior de coxa: como fazer crescer`
+Depois: `Posterior de coxa: os exercícios e o treino que faz crescer`
+
+Antes: `Treino de posterior de coxa: por que ele não cresce, as duas
+funções do grupo, stiff e terra romeno, mesa flexora, volume semanal e o
+papel dele para quem corre.`
+Depois: `Exercícios para posterior de coxa: por que ele não cresce, as
+duas funções do grupo, stiff e terra romeno, por que a flexora sentada
+rende mais que a deitada, o nórdico e o volume semanal.`
+
+Os dois artigos ganharam o `FerramentaInline` que não tinham — auditoria
+no encolhimento, rotina no posterior, cada um diferente do destino do CTA
+do fim. Nos dois, a data subiu pela revisão, não pelo bloco.
 
 ## O que "reescrever" significa aqui
 
