@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Há forte tradição de corrida de rua no Vale do Sinos, com calendário ativo, e cultura esportiva ligada ao porte universitário da cidade.',
   academias:
     'A oferta reúne academias e estúdios, com grande público universitário (Unisinos), complementada pelo Largo Rui Porto e pelas trilhas do Parque Imperatriz Leopoldina.',
+  academiasProximas: [
+    { nome: 'Smart Fit Macromix São Leopoldo', detalhe: 'na Av. Theodomiro Porto da Fonseca, no Padre Réus' },
+    { nome: 'Sport Fitt Academia', detalhe: 'na Rua Brasil, no Centro' },
+    { nome: 'Academia Sul Fit', detalhe: 'na Rua Emílio H. Dexheimer, no Jardim América' },
+  ],
+  academiasVerificadasEm: '2026-09-09',
 
   destaquesFitness: [
     'Público universitário (Unisinos), que amplia a demanda por treino e estúdios.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Leopoldo', url: 'https://www.saoleopoldo.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-09',
 };

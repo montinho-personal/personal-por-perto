@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'O Criciúma EC (o "Tigre"), campeão da Copa do Brasil de 1991, é uma paixão local. Essa cultura esportiva se reflete em um calendário ativo de corridas — incluindo maratona e ultra de 24 horas — e no uso intenso dos parques.',
   academias:
     'A oferta reúne academias, estúdios e assessorias de corrida (como a Criciúma Runners), sustentadas pelo bom padrão de renda e bem complementadas pelos espaços públicos equipados.',
+  academiasProximas: [
+    { nome: 'Smart Fit Criciúma', detalhe: 'na Av. Centenário, no Centro' },
+    { nome: 'Pratique Fitness Criciúma', detalhe: 'no Centro' },
+    { nome: 'SkyFit Criciúma', detalhe: 'na Av. Centenário' },
+  ],
+  academiasVerificadasEm: '2026-09-09',
 
   destaquesFitness: [
     'Cidade de IDHM alto, com público que valoriza saúde.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Criciúma', url: 'https://www.criciuma.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-09',
 };
