@@ -30,8 +30,8 @@ qualquer número aqui seria memória, não fonte.
 | UF | ausentes |
 |---|---|
 | SE | São Cristóvão · Simão Dias |
-| PE | Araripina · Moreno |
-| PA | Redenção · Oriximiná · São Félix do Xingu · Moju · Igarapé-Miri · Vigia · Novo Progresso |
+| PE | ~~Araripina~~ (09/09) · Moreno |
+| PA | ~~Redenção~~ (09/09) · Oriximiná · São Félix do Xingu · Moju · Igarapé-Miri · Vigia · Novo Progresso |
 | MA | Coroatá · Buriticupu · Itapecuru Mirim · Zé Doca · Viana |
 | AM | Iranduba · Humaitá · Manicoré |
 | RN | Assu |

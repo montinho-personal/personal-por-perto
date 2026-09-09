@@ -16,6 +16,7 @@ import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { bairrosPorCidade } from '../../data/bairros';
+import { videoDaPagina } from '../../data/videosMontinho';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, deCidade } from '../../lib/gramatica';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
@@ -44,6 +45,9 @@ const n = cidade.nome;
 const emN = emCidade(cidade); // "em São Paulo" | "no Rio de Janeiro"
 const deN = deCidade(cidade); // "de São Paulo" | "do Rio de Janeiro"
 const path = `/personal-trainer/${cidade.slug}`;
+// Vídeo do canal do Montinho para esta página: estável por cidade, variado
+// entre cidades. Antes, quatro das cinco páginas com vídeo repetiam a mesma peça.
+const videoMontinho = videoDaPagina(cidade.slug);
 
 // Mapa Fitness: a seção interativa só existe onde há dado suficiente.
 const mapa = resumoMapaFitness(cidade);
@@ -503,7 +507,7 @@ const objetivoDesc: Record<string, string> = {
             </div>
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/yndKE1GrnUQ"
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
                 title="Vídeo do Montinho Personal, personal trainer que atende Tamboré"
                 width="340"
                 height="604"
@@ -562,7 +566,7 @@ const objetivoDesc: Record<string, string> = {
             </div>
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/yndKE1GrnUQ"
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
                 title="Vídeo do Montinho Personal, personal trainer que atende a Aldeia da Serra"
                 width="340"
                 height="604"
@@ -621,7 +625,7 @@ const objetivoDesc: Record<string, string> = {
             </div>
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/yndKE1GrnUQ"
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
                 title="Vídeo do Montinho Personal, personal trainer com base em Alphaville, Barueri"
                 width="340"
                 height="604"
@@ -680,7 +684,7 @@ const objetivoDesc: Record<string, string> = {
             </div>
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/yndKE1GrnUQ"
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
                 title="Vídeo do Montinho Personal, personal trainer que atende Santana de Parnaíba e região"
                 width="340"
                 height="604"
@@ -738,7 +742,7 @@ const objetivoDesc: Record<string, string> = {
             </figure>
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/MrfzaQWFqPs"
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
                 title="Vídeo do Montinho Personal, personal trainer com base em Alphaville"
                 width="340"
                 height="604"
