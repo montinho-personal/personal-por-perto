@@ -1,0 +1,264 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'Os critérios honestos para saber se o formato remoto atende ao seu perfil.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-iniciantes/',
+    titulo: 'Personal trainer para iniciantes',
+    descricao: 'Vale a pena contratar no começo? Os três fatores que decidem.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-barreiro';
+const atualizadoEm = '2026-09-09';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Barreiro', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Barreiro?',
+    resposta:
+      'A referência de Belo Horizonte vai de R$ 80 a R$ 180 pela aula avulsa e de R$ 400 a R$ 1.100 pelo pacote mensal. O Barreiro trabalha na base dessas faixas, e o formato mais contratado não é o pacote presencial completo: é a sessão avulsa para aprender a execução, ou o acompanhamento online com encontros pontuais.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Barreiro?',
+    resposta:
+      'O Parque Ecológico Roberto Burle Marx, também chamado Parque das Águas, é o principal: 176 mil m² no bairro Flávio Marques Lisboa, no Barreiro de Cima, com quadra esportiva, espaço de caminhada e trilhas, dentro do complexo ecológico da Serra do Rola Moça. O parque passou por obras de requalificação iniciadas em setembro de 2024.',
+  },
+  {
+    pergunta: 'O Barreiro tem estrutura para treinar ou preciso sair da região?',
+    resposta:
+      'Tem, e não precisa sair. O Barreiro é a maior regional de Belo Horizonte em número de bairros (54) e em extensão (53,6 km²), com 278 mil moradores pelo Censo 2022 — é uma cidade média dentro da capital, com academias, praças e comércio próprios. O que existe menos por aqui é studio de treino personalizado, não estrutura.',
+  },
+  {
+    pergunta: 'Vale contratar poucas sessões só para aprender?',
+    resposta:
+      'Vale, e é um caminho legítimo e muito usado no Barreiro. Contratar de quatro a oito sessões para aprender a execução dos exercícios principais, entender a progressão e sair com um treino escrito costuma resolver a maior barreira de quem começa — que é insegurança, não falta de academia. Depois disso, treinar sozinho com check-ins pontuais é uma escolha razoável, não um plano B.',
+  },
+  {
+    pergunta: 'Personal online faz sentido para quem mora no Barreiro?',
+    resposta:
+      'Faz bastante, e por um motivo prático: a região é grande e o deslocamento interno consome tempo real. O acompanhamento online remove esse custo e costuma sair mais barato que o presencial. A contrapartida honesta é que ele exige mais autonomia — quem nunca treinou tende a render mais com algumas sessões presenciais antes de migrar.',
+  },
+];
+
+const title = 'Personal Trainer no Barreiro (BH): preços e formatos que cabem';
+const description =
+  'Personal trainer no Barreiro, BH: os preços na base da faixa da capital, o Parque Burle Marx, o formato de poucas sessões para aprender e quando o online compensa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Barreiro: a região que é uma cidade dentro de BH</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Barreiro tem 54 bairros, 53,6 km² e 278 mil moradores pelo Censo
+      2022 — é a maior regional de Belo Horizonte em número de bairros e
+      em extensão, e faz divisa com quatro municípios. Procurar
+      <strong>personal trainer no Barreiro</strong> não é procurar num
+      bairro: é procurar numa cidade média inteira, e isso muda as
+      respostas.
+    </p>
+
+    <div class="prose">
+      <h2>O que existe e o que falta</h2>
+      <p>
+        Estrutura para treinar não falta. A região tem academias de rua,
+        praças, quadras e comércio completo dentro do próprio perímetro —
+        a rotina de quem treina aqui raramente exige atravessar a cidade,
+        e isso é uma vantagem real de constância que os bairros da Zona
+        Sul não têm.
+      </p>
+
+      <p>
+        O que existe menos é <strong>studio de treino
+        personalizado</strong>. A oferta de acompanhamento individual é
+        mais rarefeita do que na Savassi ou no Belvedere, e é por isso
+        que os formatos contratados aqui são diferentes — não por
+        preferência, por disponibilidade.
+      </p>
+
+      <h2>Quanto custa, e no que o dinheiro é gasto</h2>
+      <p>
+        A referência da capital, no guia de <a
+        href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de
+        R$ 400 a R$ 1.100 pelo pacote mensal. O Barreiro trabalha na base
+        dessas faixas.
+      </p>
+
+      <p>
+        Mais importante que o número: o formato mais contratado aqui não
+        é o pacote presencial completo. São <strong>poucas sessões para
+        aprender</strong> — tipicamente de quatro a oito — ou
+        acompanhamento online com encontros pontuais.
+      </p>
+
+      <ContextualCta path={path} localidade="no Barreiro" assunto={title} posicao="meio" />
+
+      <h2>Poucas sessões não é plano B</h2>
+      <p>
+        Vale dizer isso com clareza, porque muito texto sobre personal
+        trainer trata o pacote longo como o único caminho legítimo e o
+        resto como concessão de quem não pode pagar. Não é assim.
+      </p>
+
+      <p>
+        A maior barreira de quem começa não é falta de academia — é não
+        saber o que fazer dentro dela. Quatro a oito sessões acompanhadas
+        para aprender a execução dos exercícios principais, entender como
+        a carga progride e sair com um treino escrito resolvem
+        exatamente essa barreira. Depois disso, treinar sozinho com
+        check-ins pontuais é uma escolha razoável e defensável.
+      </p>
+
+      <p>
+        Os três fatores que decidem se vale contratar no começo —
+        orçamento, nível de insegurança e tempo disponível — estão no
+        guia de <a href="/guias/personal-trainer-para-iniciantes/">personal
+        trainer para iniciantes</a>.
+      </p>
+
+      <h2>Onde treinar ao ar livre</h2>
+      <p>
+        O <strong>Parque Ecológico Roberto Burle Marx</strong>, também
+        conhecido como Parque das Águas, é o endereço da região: 176 mil
+        m² no bairro Flávio Marques Lisboa, no Barreiro de Cima, dentro
+        do complexo ecológico da Serra do Rola Moça. Tem quadra
+        esportiva, espaço de caminhada e trilhas, com vegetação típica de
+        cerrado. Passou por obras de requalificação iniciadas em setembro
+        de 2024.
+      </p>
+
+      <p>
+        Para volumes maiores de caminhada e corrida, a própria extensão
+        da região ajuda: são 53,6 km² com avenidas largas e trechos
+        planos entre as ladeiras — dá para montar percurso sem repetir o
+        mesmo quarteirão.
+      </p>
+
+      <h2>Quando o online compensa aqui</h2>
+      <p>
+        Numa região deste tamanho, o deslocamento interno consome tempo
+        real, e é ele — não o preço da hora — que costuma inviabilizar o
+        presencial. O acompanhamento online remove esse custo e sai mais
+        barato.
+      </p>
+
+      <p>
+        A contrapartida honesta: o online exige mais autonomia. Quem
+        nunca treinou rende mais com algumas sessões presenciais antes de
+        migrar, justamente para aprender a execução com alguém olhando.
+        Os critérios para saber se o formato remoto atende ao seu perfil
+        estão no guia <a href="/guias/personal-online-funciona/">personal
+        trainer online funciona?</a>
+      </p>
+
+      <h2>Como escolher bem no Barreiro</h2>
+      <p>
+        Valem os filtros gerais do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a> — avaliação física na primeira
+        semana, periodização explicada, experiência com o seu objetivo e
+        nenhuma promessa de milagre. Dores e limitações passam por médico
+        ou fisioterapeuta antes, e o personal trabalha em conjunto com
+        eles.
+      </p>
+
+      <p>
+        O critério extra da região é geográfico: pergunte
+        <strong>em quais bairros do Barreiro</strong> o profissional
+        atende de fato. São 54 — e "atendo no Barreiro" pode significar
+        um raio de três quarteirões ou a regional inteira.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Barreiro" />
+
+    <ContextualCta path={path} localidade="no Barreiro" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

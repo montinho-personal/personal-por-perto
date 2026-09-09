@@ -1,0 +1,244 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'As faixas por formato — e por que a mais barata nem sempre é a mais econômica.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer/',
+    titulo: 'Quantas vezes por semana com personal',
+    descricao: 'O ajuste que faz o acompanhamento caber no orçamento sem perder o efeito.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-cidade-nova-bh';
+const atualizadoEm = '2026-09-09';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Cidade Nova', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Cidade Nova?',
+    resposta:
+      'A referência de Belo Horizonte vai de R$ 80 a R$ 180 pela aula avulsa e de R$ 400 a R$ 1.100 pelo pacote mensal. No Cidade Nova o mercado trabalha no terço inferior e no meio dessas faixas — bem distante do que se pratica na Savassi ou no Belvedere. É um dos bairros de BH onde acompanhamento profissional cabe em orçamento de classe média sem virar exceção.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Cidade Nova?',
+    resposta:
+      'O Parque Ecológico Marcos Mazzoni é a principal área verde do bairro, com teatro de arena, aparelhos de ginástica e bastante sombra. E há um recurso que quase ninguém de fora conhece: o canteiro central arborizado da Avenida José Cândido Silveira, usado diariamente para corrida, caminhada e bicicleta.',
+  },
+  {
+    pergunta: 'Duas sessões por semana com personal já resolvem?',
+    resposta:
+      'Para a maior parte dos objetivos, sim — e é o arranjo mais comum no bairro. O formato que funciona bem é duas sessões acompanhadas com o profissional e mais uma ou duas executadas sozinho com o treino prescrito. Sai bem mais barato que acompanhamento diário e mantém o que importa: alguém corrigindo execução e ajustando carga com regularidade.',
+  },
+  {
+    pergunta: 'Personal atende em condomínio no Cidade Nova?',
+    resposta:
+      'Sim, e é comum. O bairro tem muitos prédios com sala de ginástica, e o atendimento na academia do condomínio elimina a mensalidade de academia da conta — o que costuma ser justamente o que faz o acompanhamento caber. Nos edifícios sem estrutura, o atendimento a domicílio com equipamento portátil resolve.',
+  },
+  {
+    pergunta: 'O Cidade Nova é longe de tudo para quem treina?',
+    resposta:
+      'Não. O bairro fica na região Nordeste, a segunda mais populosa de Belo Horizonte pelo Censo 2022, com quase 294 mil moradores — e tem comércio, academias e serviço completos dentro do próprio perímetro. A rotina de treino aqui raramente exige sair do bairro, o que é uma vantagem real de constância.',
+  },
+];
+
+const title = 'Personal Trainer no Cidade Nova (BH): preços e como cabe';
+const description =
+  'Personal trainer no Cidade Nova, BH: os preços reais fora da Zona Sul, o Parque Marcos Mazzoni, o canteiro da José Cândido Silveira e o formato que cabe no orçamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Cidade Nova: quanto custa fora da Zona Sul de BH</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quase tudo que se escreve sobre <strong>personal trainer em Belo
+      Horizonte</strong> é escrito olhando para a Savassi, o Lourdes e o
+      Belvedere — e os preços que aparecem nesses textos afastam muita
+      gente que nem precisaria ser afastada. Este artigo é sobre a outra
+      ponta: o que custa e como funciona um acompanhamento no
+      <strong>Cidade Nova</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>A faixa real do bairro</h2>
+      <p>
+        A referência da capital, no guia de <a
+        href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de
+        R$ 400 a R$ 1.100 pelo pacote mensal com 2 a 3 sessões semanais.
+        É uma faixa larga de propósito: ela cobre a cidade inteira.
+      </p>
+
+      <p>
+        No Cidade Nova o mercado trabalha no terço inferior e no meio
+        dela. A distância para o que se pratica na Savassi não é
+        pequena, e não tem a ver com qualidade do profissional — tem a
+        ver com custo de deslocamento, poder aquisitivo do entorno e
+        concorrência local. Na prática: acompanhamento profissional aqui
+        cabe em orçamento de classe média sem ser exceção.
+      </p>
+
+      <ContextualCta path={path} localidade="no Cidade Nova" assunto={title} posicao="meio" />
+
+      <h2>O arranjo que faz caber</h2>
+      <p>
+        O formato mais comum no bairro não é o acompanhamento diário — é
+        <strong>duas sessões acompanhadas por semana</strong>, mais uma
+        ou duas executadas sozinho com o treino prescrito e ajustado pelo
+        profissional.
+      </p>
+
+      <p>
+        Funciona porque preserva o que realmente importa no
+        acompanhamento: alguém corrigindo execução e mexendo na carga com
+        regularidade. O que se perde é a presença nos dias intermediários
+        — e, para a maioria dos objetivos, isso não é o que decide
+        resultado. O raciocínio completo está no guia sobre <a
+        href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
+        vezes por semana treinar com personal trainer</a>.
+      </p>
+
+      <p>
+        Há ainda um corte de custo específico do bairro: muitos prédios do
+        Cidade Nova têm sala de ginástica, e treinar ali com o personal
+        elimina a mensalidade de academia da conta. Em orçamento
+        apertado, é frequentemente esse item — e não o preço da hora do
+        profissional — que decide se o acompanhamento acontece ou não.
+      </p>
+
+      <h2>Onde treinar por ali</h2>
+      <p>
+        O <strong>Parque Ecológico Marcos Mazzoni</strong> é a área verde
+        de referência do bairro: teatro de arena, aparelhos de ginástica,
+        brinquedos e bastante sombra — o que importa mais do que parece
+        para quem treina de manhã no verão mineiro.
+      </p>
+
+      <p>
+        E existe um recurso que quem não mora ali desconhece: o
+        <strong>canteiro central arborizado da Avenida José Cândido
+        Silveira</strong>, usado diariamente para corrida, caminhada e
+        bicicleta. É pista contínua, sombreada e dentro do bairro — a
+        estrutura que sustenta a rotina de quem não quer depender de
+        deslocamento para treinar.
+      </p>
+
+      <p>
+        No comércio, o bairro tem de tudo sem exigir saída: Feira dos
+        Produtores, Minas Shopping e uma rede densa de academias de rua.
+        O Cidade Nova fica na região Nordeste, a segunda mais populosa de
+        Belo Horizonte pelo Censo 2022, com quase 294 mil moradores.
+      </p>
+
+      <h2>Como escolher bem no Cidade Nova</h2>
+      <p>
+        Os critérios são os mesmos de qualquer bairro — avaliação física
+        na primeira semana, periodização explicada, experiência com o seu
+        objetivo, nenhuma promessa de milagre —, detalhados no guia <a
+        href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+        Dores e limitações passam por médico ou fisioterapeuta antes, e o
+        personal trabalha em conjunto com eles.
+      </p>
+
+      <p>
+        O critério extra aqui é sobre dinheiro, e é o mais honesto:
+        pergunte o preço do pacote de <strong>duas</strong> sessões
+        semanais, não o da aula avulsa. Quem só cota avulsa costuma
+        entregar um número que assusta e não corresponde ao que a maioria
+        do bairro realmente contrata. As faixas por formato estão no guia
+        de <a href={rotas.quantoCusta}>quanto custa um personal
+        trainer</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Cidade Nova" />
+
+    <ContextualCta path={path} localidade="no Cidade Nova" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

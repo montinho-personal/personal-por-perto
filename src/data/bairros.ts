@@ -1,5 +1,5 @@
 /**
- * Os 93 bairros que têm página própria.
+ * Os 97 bairros que têm página própria.
  *
  * Fonte única: cada entrada carrega o slug, o nome do bairro, a locução já
  * flexionada ("no Batel", "na Aldeota", "nos Jardins" — em português a
@@ -7,7 +7,9 @@
  * na maioria dos casos) e a cidade-mãe.
  *
  * Os dados foram extraídos dos breadcrumbs das próprias páginas e conferidos
- * contra o mapa que existia antes: as 93 linhas bateram sem divergência.
+ * contra o mapa que existia antes: as 93 linhas originais bateram sem
+ * divergência. As quatro de Belo Horizonte acrescentadas em 09/09/2026
+ * (Barreiro, Belvedere, Cidade Nova e Pampulha) nasceram já com a linha aqui.
  *
  * Dois bairros repetem nome em cidades diferentes (Petrópolis, em Natal e em
  * Porto Alegre), por isso o slug carrega a cidade e o nome exibido, não. Quem
@@ -38,10 +40,12 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-atalaia', nome: 'Atalaia', locucao: 'na Atalaia', cidade: 'aracaju-se' },
   { slug: 'personal-trainer-barra-da-tijuca', nome: 'Barra da Tijuca', locucao: 'na Barra da Tijuca', cidade: 'rio-de-janeiro-rj' },
   { slug: 'personal-trainer-barra-sul', nome: 'Barra Sul', locucao: 'na Barra Sul', cidade: 'balneario-camboriu-sc' },
+  { slug: 'personal-trainer-barreiro', nome: 'Barreiro', locucao: 'no Barreiro', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-batel', nome: 'Batel', locucao: 'no Batel', cidade: 'curitiba-pr' },
   { slug: 'personal-trainer-batista-campos', nome: 'Batista Campos', locucao: 'no Batista Campos', cidade: 'belem-pa' },
   { slug: 'personal-trainer-beira-mar-norte', nome: 'Beira-Mar Norte', locucao: 'na Beira-Mar Norte', cidade: 'florianopolis-sc' },
   { slug: 'personal-trainer-bela-vista', nome: 'Bela Vista', locucao: 'no Bela Vista', cidade: 'porto-alegre-rs' },
+  { slug: 'personal-trainer-belvedere', nome: 'Belvedere', locucao: 'no Belvedere', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-bigorrilho', nome: 'Bigorrilho', locucao: 'no Bigorrilho', cidade: 'curitiba-pr' },
   { slug: 'personal-trainer-boa-viagem', nome: 'Boa Viagem', locucao: 'em Boa Viagem', cidade: 'recife-pe' },
   { slug: 'personal-trainer-botafogo', nome: 'Botafogo', locucao: 'em Botafogo', cidade: 'rio-de-janeiro-rj' },
@@ -56,6 +60,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-casa-forte', nome: 'Casa Forte', locucao: 'em Casa Forte', cidade: 'recife-pe' },
   { slug: 'personal-trainer-chacara-cachoeira', nome: 'Chácara Cachoeira', locucao: 'na Chácara Cachoeira', cidade: 'campo-grande-ms' },
   { slug: 'personal-trainer-cidade-maia', nome: 'Cidade Maia', locucao: 'na Cidade Maia', cidade: 'guarulhos-sp' },
+  { slug: 'personal-trainer-cidade-nova-bh', nome: 'Cidade Nova', locucao: 'no Cidade Nova', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-coco-fortaleza', nome: 'Cocó', locucao: 'no Cocó', cidade: 'fortaleza-ce' },
   { slug: 'personal-trainer-copacabana', nome: 'Copacabana', locucao: 'em Copacabana', cidade: 'rio-de-janeiro-rj' },
   { slug: 'personal-trainer-ecoville', nome: 'Ecoville', locucao: 'no Ecoville', cidade: 'curitiba-pr' },
@@ -94,6 +99,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-moinhos-de-vento', nome: 'Moinhos de Vento', locucao: 'no Moinhos de Vento', cidade: 'porto-alegre-rs' },
   { slug: 'personal-trainer-morada-da-colina', nome: 'Morada da Colina', locucao: 'na Morada da Colina', cidade: 'uberlandia-mg' },
   { slug: 'personal-trainer-nazare-belem', nome: 'Nazaré', locucao: 'em Nazaré', cidade: 'belem-pa' },
+  { slug: 'personal-trainer-pampulha', nome: 'Pampulha', locucao: 'na Pampulha', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-perdizes', nome: 'Perdizes', locucao: 'em Perdizes', cidade: 'sao-paulo-sp' },
   { slug: 'personal-trainer-petropolis-natal', nome: 'Petrópolis', locucao: 'em Petrópolis', cidade: 'natal-rn' },
   { slug: 'personal-trainer-petropolis-porto-alegre', nome: 'Petrópolis', locucao: 'no Petrópolis', cidade: 'porto-alegre-rs' },

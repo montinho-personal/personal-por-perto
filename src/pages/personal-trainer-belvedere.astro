@@ -1,0 +1,256 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belo-horizonte-mg/',
+    titulo: 'Personal trainer em Belo Horizonte',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-sion/',
+    titulo: 'Personal trainer no Sion',
+    descricao: 'O vizinho de serra, com a mesma topografia e outro perfil de moradia.',
+    tipo: 'Bairros',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio',
+    descricao: 'As regras de acesso e o que a academia do prédio realmente entrega.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-belvedere';
+const atualizadoEm = '2026-09-09';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
+  { nome: 'Personal Trainer no Belvedere', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Belvedere?',
+    resposta:
+      'Em Belo Horizonte, a aula avulsa varia de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. No Belvedere os valores ficam no topo dessas faixas, e por um motivo específico do bairro: o atendimento acontece dentro do condomínio, em horário fixo e com deslocamento curto do profissional entre torres vizinhas — o que sustenta pacote mensal em vez de aula avulsa.',
+  },
+  {
+    pergunta: 'A academia do prédio no Belvedere é suficiente?',
+    resposta:
+      'Para a maior parte dos objetivos, sim. Os empreendimentos do bairro entregam sala de musculação equipada, e a limitação raramente é de equipamento — é de programação: sem alguém organizando progressão de carga, a academia vira o lugar onde se repete o mesmo treino por meses. É exatamente aí que o personal entra no Belvedere, e não para "dar acesso" a uma estrutura que o morador já tem.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Belvedere?',
+    resposta:
+      'O Parque da Serra do Curral é o endereço da região: cerca de 400 mil m² protegendo a serra tombada pelo IPHAN, com dez mirantes distribuídos ao longo de 4 mil metros de percurso. O Mirante Belvedere, aberto em setembro de 2023, é o ponto mais movimentado. Fora deles, as ruas do bairro são planas e arborizadas — boas para caminhada e corrida leve.',
+  },
+  {
+    pergunta: 'Personal do Belvedere também atende na Vila da Serra?',
+    resposta:
+      'Muitos sim. O Belvedere faz divisa com a Vila da Serra e o Vale do Sereno, já em Nova Lima, e na prática os dois lados formam um mercado só: o profissional cruza a divisa em poucos minutos. Vale confirmar antes de fechar pacote, porque a agenda de quem atende os dois lados costuma ser mais disputada.',
+  },
+  {
+    pergunta: 'Dá para treinar na Serra do Curral com limitação articular?',
+    resposta:
+      'Depende do trecho e da avaliação. O percurso dos mirantes tem desnível, e subida acumulada cobra joelho e quadril de quem está começando ou tem histórico de dor. A conversa correta é com médico ou fisioterapeuta antes, e o personal trabalha em cima do que eles liberarem — parte plana do bairro, esteira do prédio ou trecho curto da serra, conforme o caso.',
+  },
+];
+
+const title = 'Personal Trainer no Belvedere (BH): preços e formatos';
+const description =
+  'Personal trainer no Belvedere: quanto custa, por que a academia do prédio não basta sozinha, o Parque da Serra do Curral e a divisa com a Vila da Serra.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belo Horizonte</p>
+    <h1>Personal trainer no Belvedere: o bairro onde a academia já existe — e mesmo assim falta alguém</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Belvedere é um caso raro em Belo Horizonte: praticamente todo
+      morador já tem uma sala de musculação a um elevador de distância. E
+      é justamente por isso que a pergunta sobre <strong>personal trainer
+      no Belvedere</strong> costuma ser outra — não "onde treinar", mas
+      "por que não sai do lugar com tudo isso disponível".
+    </p>
+
+    <div class="prose">
+      <h2>O problema do bairro não é acesso</h2>
+      <p>
+        Nos bairros onde a academia fica a três quarteirões, metade da
+        conversa com um personal é sobre logística: horário, deslocamento,
+        qual academia escolher. No Belvedere essa conversa não existe. Os
+        empreendimentos entregam sala equipada, e o morador desce quando
+        quiser.
+      </p>
+
+      <p>
+        O que sobra é o problema mais difícil, e o mais silencioso: a
+        <strong>programação</strong>. Equipamento disponível sem
+        progressão organizada produz um efeito bem conhecido — o mesmo
+        treino repetido por meses, com a mesma carga, e a sensação
+        legítima de estar treinando sem estar evoluindo.
+      </p>
+
+      <p>
+        Quem contrata um personal no Belvedere raramente está comprando
+        acesso. Está comprando método para uma estrutura que já pagou.
+      </p>
+
+      <h2>Quanto custa por ali</h2>
+      <p>
+        A referência da capital, publicada no guia de <a
+        href="/personal-trainer/belo-horizonte-mg/">personal trainer em
+        Belo Horizonte</a>, é de R$ 80 a R$ 180 pela aula avulsa e de
+        R$ 400 a R$ 1.100 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Belvedere o padrão fica no topo da faixa, e a composição é
+        diferente da de outros bairros: aqui quase não se vende aula
+        avulsa. O atendimento acontece dentro do condomínio, em horário
+        fixo, e o profissional que já tem dois alunos na mesma torre
+        consegue encaixar um terceiro sem deslocamento nenhum — o que
+        empurra o mercado inteiro para o formato de pacote mensal.
+      </p>
+
+      <ContextualCta path={path} localidade="no Belvedere" assunto={title} posicao="meio" />
+
+      <h2>A serra que o bairro tem de graça</h2>
+      <p>
+        O <strong>Parque da Serra do Curral</strong> protege cerca de 400
+        mil m² da serra tombada pelo IPHAN e distribui dez mirantes ao
+        longo de 4 mil metros de percurso. É a área verde de referência
+        da região, e de lá se enxerga metade dos cartões-postais da
+        cidade — da Lagoa da Pampulha ao Mineirão.
+      </p>
+
+      <p>
+        O <strong>Mirante Belvedere</strong>, inaugurado em setembro de
+        2023, virou o ponto mais movimentado do bairro ao ar livre. E as
+        ruas do Belvedere, planas e arborizadas, resolvem a caminhada do
+        dia a dia sem que ninguém precise sair de carro.
+      </p>
+
+      <p>
+        Um aviso honesto sobre a serra: o percurso tem desnível de
+        verdade, e subida acumulada cobra joelho e quadril. Quem tem
+        histórico de dor articular conversa primeiro com médico ou
+        fisioterapeuta — o personal monta o treino em cima do que eles
+        liberarem, não por cima.
+      </p>
+
+      <h2>A divisa que quase ninguém considera</h2>
+      <p>
+        O Belvedere termina onde começa a Vila da Serra e o Vale do
+        Sereno, já em Nova Lima. Na prática, os dois lados formam um
+        mercado só: o profissional cruza a divisa em poucos minutos, e
+        boa parte de quem atende no Belvedere atende do outro lado
+        também.
+      </p>
+
+      <p>
+        Isso é vantagem e é armadilha. Vantagem porque amplia muito a
+        lista de profissionais disponíveis. Armadilha porque a agenda de
+        quem atende os dois lados é a mais disputada da região — os
+        horários de 6h às 8h fecham primeiro, e quem procura em janeiro
+        pega o que sobrou. Pergunte a agenda real antes de fechar
+        pacote.
+      </p>
+
+      <h2>Como escolher bem no Belvedere</h2>
+      <p>
+        Valem os filtros de sempre — avaliação física na primeira semana,
+        periodização explicada com clareza, experiência com o seu
+        objetivo e zero promessa de milagre —, detalhados no guia <a
+        href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+
+      <p>
+        E vale um critério extra, específico do bairro: pergunte como o
+        profissional monta treino <strong>dentro da limitação de
+        equipamento do seu prédio</strong>. Academia de condomínio é
+        completa para o essencial e quase nunca tem tudo — quem sabe
+        trabalhar com o que existe ali entrega mais do que quem só sabe
+        prescrever para academia grande. As regras de acesso e o que
+        esperar da estrutura estão no guia de <a
+        href="/guias/personal-trainer-em-condominio/">personal trainer em
+        condomínio</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Belvedere" />
+
+    <ContextualCta path={path} localidade="no Belvedere" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
