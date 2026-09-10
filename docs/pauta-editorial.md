@@ -69,9 +69,59 @@ teria. Escrevê-lo seria disputar a própria página no Google.
 | Rosca inversa: como fazer | `rosca-inversa-como-fazer` | ✅ 2026-09-08 |
 | Desenvolvimento Arnold: como fazer | `desenvolvimento-arnold-como-fazer` | ✅ 2026-09-09 · recorte declarado |
 | Elevação de pernas (infra): como fazer | `elevacao-de-pernas-como-fazer` | ✅ 2026-09-09 |
-| Panturrilha em pé: como fazer | `panturrilha-em-pe-como-fazer` | |
-| Agachamento no Smith: como fazer | `agachamento-smith-como-fazer` | |
-| Coice de glúteo na polia: como fazer | `coice-de-gluteo-como-fazer` | |
+| Panturrilha em pé: como fazer | `panturrilha-em-pe-como-fazer` | ❌ 2026-09-10 · cancelado · ver nota |
+| Agachamento no Smith: como fazer | `agachamento-smith-como-fazer` | ✅ 2026-09-10 · recorte declarado |
+| Coice de glúteo na polia: como fazer | `coice-de-gluteo-como-fazer` | ✅ 2026-09-10 · recorte declarado |
+
+### Nota de 10/09/2026 — o quarto cancelamento, e por que este é diferente
+
+**`panturrilha-em-pe-como-fazer` foi cancelado.** É o primeiro caso em que
+a checagem de redundância derrubou um artigo que parecia igual aos quatro
+recortes já aprovados — e a diferença vale registrar, porque é ela que
+separa recorte de duplicata.
+
+Nos precedentes (voador, cadeira flexora, supino declinado, Arnold) o
+artigo-pai trazia **posicionamento**: dizia qual variação escolher e por
+quê, sem ensinar a executá-la. Aqui não. `treino-de-panturrilha` tem um H2
+chamado "A execução, ponto a ponto" com quatro parágrafos — descer até o
+calcanhar passar da linha do degrau com pausa, subir até a extensão total,
+manter o joelho estável, usar carga que permita tudo isso. Isso É a execução
+da panturrilha em pé, escrita para ela.
+
+O que sobraria de próprio ao filho — implementos e posição do pé — não
+chega a um artigo. Escrevê-lo seria repetir o pai com outras palavras e
+disputar a mesma consulta. Quando a verdade é curta, publicá-la curta é a
+decisão certa.
+
+**`agachamento-smith-como-fazer` entrou pelo motivo oposto.**
+`agachamento-como-fazer` tem UMA FAQ posicionando o Smith ("livre ou
+Smith?") e a seção de variações nem o menciona — lista goblet, frontal,
+búlgaro, hack e leg press. Posicionamento puro, zero execução.
+
+E o filho tem um ângulo que nenhum outro agachamento tem: **como a barra
+desce em linha reta e não acompanha o tronco, é a posição dos pés que
+define o exercício**. Pé sob o quadril, como no livre, empurra o joelho
+para a frente — é daí que vem a maior parte das queixas de joelho no
+aparelho, e não do aparelho. O artigo se organiza em torno dessa variável:
+três posições de pé, três exercícios diferentes, com o teste prático
+(calcanhar no chão e costas encostadas na barra) que resolve o ajuste sem
+depender de espelho. Link do pai para o filho adicionado na seção de
+variações, com a data de revisão do pai atualizada.
+
+**`coice-de-gluteo-como-fazer` é o mesmo padrão de recorte.**
+`treino-de-gluteos` cita "coice no cabo" em uma frase, como acessório —
+posicionamento. O ângulo próprio do filho é uma correção de percepção: **a
+amplitude que se vê não é a que se treina**. A extensão de quadril útil
+além da neutra é curta, e a altura extra que a perna alcança vem da lombar
+arqueando. O artigo se organiza como diagnóstico — dois testes (a mão nas
+costas, o perfil no espelho) antes da execução —, o que é uma forma
+diferente das usadas até aqui no bloco. Link do pai para o filho
+adicionado, com a data do pai atualizada.
+
+**Sobre a forma.** O Smith é organizado por uma variável de decisão (onde
+ficam os pés), o coice por um autoteste. Nenhum dos dois usa o
+base/subida/topo/descida padrão nem repete a linha do tempo do Arnold ou a
+tabela de degraus da elevação de pernas.
 
 ### Nota de 09/09/2026 — o quarto recorte, e uma variação de forma deliberada
 

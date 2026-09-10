@@ -1,0 +1,297 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/treino-de-gluteos/',
+    titulo: 'Treino de glúteos: o que funciona de verdade',
+    descricao: 'O artigo-pai: as três famílias de exercícios e onde os acessórios entram.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/elevacao-pelvica-como-fazer/',
+    titulo: 'Elevação pélvica: como fazer',
+    descricao: 'O exercício que carrega o glúteo de verdade — o titular que o coice complementa.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que dá e o que não dá',
+    descricao: 'Leitura útil se a lombar aparece toda vez que a perna sobe.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu',
+    descricao: 'Onde o acessório cabe numa semana que já tem agachamento e dobradiça.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/coice-de-gluteo-como-fazer';
+const atualizadoEm = '2026-09-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Coice de glúteo: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Até que altura devo levantar a perna no coice de glúteo?',
+    resposta:
+      'Bem menos do que a maioria levanta. A extensão de quadril útil aqui é curta: a partir do momento em que a perna passa da linha do tronco, quem continua subindo quase sempre é a coluna lombar arqueando, não o quadril estendendo. O critério não é altura, é o ponto em que a lombar começa a se mexer — pare uma fração antes dele. Uma perna que sobe pouco com o tronco imóvel treina mais glúteo do que uma perna que sobe muito com as costas em arco.',
+  },
+  {
+    pergunta: 'Como saber se estou usando o glúteo ou a lombar?',
+    resposta:
+      'Ponha a mão na região baixa das costas durante a série. Se você sente a musculatura lombar endurecendo e a coluna mudando de forma conforme a perna sobe, a extensão está vindo dali. O outro teste é o espelho de perfil: se o quadril gira e o corpo inteiro se inclina para o lado oposto a cada repetição, o movimento está acontecendo no tronco. Glúteo trabalhando com tronco parado é a única versão que conta.',
+  },
+  {
+    pergunta: 'O coice de glúteo faz o glúteo crescer?',
+    resposta:
+      'Contribui, mas não sustenta o crescimento sozinho. Ele é um exercício de isolamento com carga limitada e amplitude curta — características que o tornam um bom acessório e um péssimo titular. Quem monta o treino de glúteo em cima de coice, abdução e elásticos costuma estranhar a falta de resultado; o crescimento vem dos exercícios que carregam pesado, como elevação pélvica, agachamento e dobradiça de quadril, com o coice fechando a sessão.',
+  },
+  {
+    pergunta: 'Coice na polia, na máquina ou com caneleira?',
+    resposta:
+      'A polia é a melhor das três, porque mantém tensão do começo ao fim e permite progressão em incrementos pequenos e objetivos. A máquina específica estabiliza o tronco e é útil justamente para quem compensa com a lombar. A caneleira é a mais limitada em carga, o que a torna razoável para ativação antes do treino ou para treinar em casa, e insuficiente como estímulo principal.',
+  },
+  {
+    pergunta: 'Sinto a lombar toda vez que faço coice. É normal?',
+    resposta:
+      'É comum, e é sinal de execução a corrigir, não de exercício ruim. Na maioria dos casos a causa é amplitude excessiva com o abdômen solto: sem o core segurando a pelve, a perna só sobe às custas da coluna. Reduza a altura, contraia o abdômen antes de iniciar a repetição e diminua a carga até que o tronco permaneça imóvel. Se o desconforto persistir mesmo com o movimento curto e controlado, a conversa é com médico ou fisioterapeuta antes de continuar.',
+  },
+];
+
+const title = 'Coice de glúteo: como fazer e por que a amplitude engana';
+const description =
+  'Coice de glúteo: por que boa parte da altura da perna vem da lombar e não do quadril, o teste da mão nas costas, polia ou caneleira e o lugar certo dele no treino.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Coice de glúteo: a amplitude que você vê não é a que você treina</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      No coice de glúteo, a perna sobe bastante e a sensação é de
+      amplitude generosa. Só que boa parte dessa altura não vem do
+      quadril estendendo — vem da <strong>coluna lombar
+      arqueando</strong>. E o que arqueia não treina glúteo.
+    </p>
+
+    <div class="prose">
+      <h2>De onde vem a altura</h2>
+      <p>
+        O glúteo máximo estende o quadril: leva a coxa para trás em
+        relação ao tronco. O detalhe que muda a execução é que essa
+        extensão, além da posição neutra, tem <strong>alcance
+        curto</strong> — bem mais curto do que a perna consegue subir.
+      </p>
+
+      <p>
+        Quando a perna passa desse ponto e continua subindo, alguma
+        articulação está fornecendo o movimento extra. Em pé, de quatro
+        ou na máquina, essa articulação é quase sempre a mesma: a
+        lombar, que arqueia e joga a pelve para a frente, criando a
+        ilusão de que o quadril foi mais longe.
+      </p>
+
+      <p>
+        O resultado prático é irônico. A pessoa faz uma série com
+        amplitude visivelmente grande, sente as costas trabalhando,
+        conclui que "pegou" — e o glúteo participou apenas do primeiro
+        terço do movimento.
+      </p>
+
+      <h2>Como descobrir qual dos dois está trabalhando</h2>
+      <p>
+        Dois testes resolvem em uma série, e nenhum exige equipamento.
+      </p>
+
+      <p>
+        <strong>A mão nas costas.</strong> Apoie a mão na região baixa
+        das costas e faça repetições lentas. Se a musculatura lombar
+        endurece e a coluna muda de forma conforme a perna sobe, a
+        extensão está vindo dali. O que você quer sentir é a pelve
+        parada e a coxa se movendo em relação a ela.
+      </p>
+
+      <p>
+        <strong>O perfil no espelho.</strong> Olhe de lado. Se o corpo
+        inteiro se inclina para o lado oposto a cada repetição, ou se o
+        quadril gira acompanhando a perna, o movimento está acontecendo
+        no tronco. Tronco imóvel é o critério de validade da série
+        inteira.
+      </p>
+
+      <p>
+        Feito o diagnóstico, a correção é sempre a mesma sequência, e é
+        impopular porque cada passo parece "facilitar": contraia o
+        abdômen antes de iniciar a repetição, reduza a altura até o
+        ponto em que o tronco fica parado, e só então volte a pensar em
+        carga.
+      </p>
+
+      <h2>A execução, com a amplitude certa</h2>
+      <p>
+        <strong>A posição.</strong> Em pé de frente para a polia, de
+        quatro no colchonete ou apoiado na máquina específica — a
+        posição importa menos que o tronco firme. Abdômen contraído,
+        costelas para baixo, quadril quadrado com o chão.
+      </p>
+
+      <p>
+        <strong>A subida.</strong> Leve a coxa para trás, não para cima.
+        A diferença de imagem mental é o que mais corrige este exercício:
+        quem pensa "para cima" arqueia; quem pensa "para trás" estende o
+        quadril.
+      </p>
+
+      <p>
+        <strong>O topo.</strong> Pare quando a coxa alinhar com o tronco
+        e segure por um segundo, apertando o glúteo. Este segundo vale
+        mais que qualquer centímetro extra — num exercício de amplitude
+        curta, é onde ele acontece.
+      </p>
+
+      <p>
+        <strong>A descida.</strong> Dois segundos de volta controlada,
+        sem deixar o peso bater na pilha. A tensão contínua é a única
+        moeda que este exercício tem, já que carga alta ele não permite.
+      </p>
+
+      <p>
+        <strong>O joelho.</strong> Mantenha o ângulo constante, seja ele
+        estendido ou dobrado a 90 graus. Estender e dobrar o joelho
+        durante a repetição transfere trabalho para o posterior de coxa
+        e é o segundo jeito mais comum de tirar o glúteo da conta.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Se o coice é acessório, ele precisa vir depois de algo que carregue pesado — e a pergunta que sobra é onde encaixar elevação pélvica, agachamento e dobradiça de quadril nos dias que você realmente tem. O organizador monta essa distribuição a partir da sua disponibilidade, não de uma semana ideal."
+        acao="Organizar a minha semana de perna"
+      />
+
+      <h2>Polia, máquina ou caneleira</h2>
+      <p>
+        A <strong>polia</strong> é a melhor das três: tensão do começo ao
+        fim e progressão em incrementos pequenos e objetivos, que é
+        exatamente o que um acessório precisa para não estagnar.
+      </p>
+
+      <p>
+        A <strong>máquina específica</strong> tem uma vantagem que quase
+        ninguém aproveita de propósito: ela apoia o tronco. Para quem
+        compensa com a lombar — e, pelos testes acima, é muita gente —,
+        ela é a melhor opção justamente por isso.
+      </p>
+
+      <p>
+        A <strong>caneleira</strong> limita muito a carga. Serve bem para
+        ativação antes do treino de perna e para quem treina em casa, e
+        não sustenta estímulo principal.
+      </p>
+
+      <h2>O lugar dele no treino</h2>
+      <p>
+        De 2 a 3 séries de 12 a 20 repetições, no fim da sessão, depois
+        do trabalho pesado. É acessório — e isso não é demérito, é
+        função.
+      </p>
+
+      <p>
+        O erro clássico não está na execução, está na hierarquia: montar
+        o treino de glúteo inteiro com coice, abdução e elásticos, e
+        estranhar a falta de resultado. O crescimento vem dos exercícios
+        que carregam de verdade — a
+        <a href="/musculacao/elevacao-pelvica-como-fazer/">elevação
+        pélvica</a>, o agachamento e a dobradiça de quadril —, com o
+        coice fechando a sessão. A hierarquia completa está no guia de
+        <a href="/musculacao/treino-de-gluteos/">treino de glúteos</a>.
+      </p>
+
+      <p>
+        E se a lombar aparecer mesmo com o movimento curto e o tronco
+        parado, o assunto deixa de ser técnica: é conversa com médico ou
+        fisioterapeuta antes de continuar carregando, como trata o guia
+        sobre <a href="/musculacao/treinar-com-dor-lombar/">treinar com
+        dor lombar</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o coice de glúteo" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -1,0 +1,300 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros comuns',
+    descricao: 'O artigo-pai: a técnica do agachamento livre e qual variação escolher.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/maquina-ou-peso-livre/',
+    titulo: 'Máquina ou peso livre: o que rende mais',
+    descricao: 'O debate maior em que o Smith é o caso mais discutido.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-hack-como-fazer/',
+    titulo: 'Agachamento hack: como fazer',
+    descricao: 'O outro agachamento guiado — e o que ele resolve que o Smith não.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu',
+    descricao: 'Onde o agachamento guiado entra numa semana que já tem livre e leg press.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/agachamento-smith-como-fazer';
+const atualizadoEm = '2026-09-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Agachamento no Smith: como fazer', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Onde colocar os pés no agachamento no Smith?',
+    resposta:
+      'Ligeiramente à frente da linha do quadril — não embaixo dela, como no agachamento livre. A barra do Smith desce em linha reta e não acompanha o seu tronco, então os pés precisam estar adiantados o suficiente para que o joelho não seja empurrado para a frente na descida. Pé muito adiantado transforma o exercício num leg press em pé, com carga na lombar; pé embaixo do quadril trava o movimento nos primeiros centímetros. O ajuste certo é o que permite descer até a paralela com o tronco encostado na barra e sem o calcanhar levantar.',
+  },
+  {
+    pergunta: 'Agachamento no Smith é pior que o livre?',
+    resposta:
+      'Não é pior, é outra coisa. O livre treina o padrão de movimento inteiro, incluindo a estabilização que a vida real cobra, e tem transferência maior para esporte e para o dia a dia. O Smith remove a estabilização e devolve isso em forma de carga e de segurança para treinar sozinho perto da falha. Quem escolhe um dos dois como "o certo" está comparando ferramentas que resolvem problemas diferentes.',
+  },
+  {
+    pergunta: 'Dá para treinar até a falha sozinho no Smith?',
+    resposta:
+      'É a principal vantagem prática dele. Os ganchos de segurança travam a barra com um giro do punho, então uma repetição que não sobe termina com você girando os punhos, não preso embaixo do peso. Isso permite levar séries de perna perto da falha sem parceiro — algo que no agachamento livre exige gaiola com barras de segurança bem reguladas, e que muita gente simplesmente evita.',
+  },
+  {
+    pergunta: 'O Smith serve para iniciante?',
+    resposta:
+      'Serve, com uma ressalva importante. Ele reduz a demanda de equilíbrio e deixa o iniciante focar em profundidade e ritmo, o que é útil nas primeiras semanas. A ressalva é que ele não ensina o padrão do agachamento livre — a trajetória é imposta pelo trilho, não construída por você. Quem pretende agachar livre um dia deve praticar o livre com carga leve em paralelo, e não usar o Smith como substituto permanente.',
+  },
+  {
+    pergunta: 'Sinto o joelho ou a lombar no Smith. O que ajustar?',
+    resposta:
+      'Quase sempre é a posição dos pés, e o sintoma diz para que lado. Desconforto na frente do joelho costuma indicar pé pouco adiantado, com o joelho sendo empurrado à frente pela trajetória fixa da barra. Desconforto na lombar costuma indicar o oposto: pé adiantado demais, com o quadril deslizando para baixo da barra e a coluna assumindo a inclinação. Se o ajuste não resolver e o desconforto persistir, é conversa com médico ou fisioterapeuta antes de continuar carregando.',
+  },
+];
+
+const title = 'Agachamento no Smith: como fazer e onde colocar os pés';
+const description =
+  'Agachamento no Smith: por que a posição dos pés decide o exercício inteiro, o que a barra guiada dá e o que ela cobra, como treinar perto da falha sozinho e quando o livre é a escolha melhor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Agachamento no Smith: quem manda no exercício são os seus pés</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      No agachamento livre, a barra segue o seu corpo. No Smith é o
+      contrário: a barra desce em linha reta, decidida pelo trilho, e o
+      seu corpo é que precisa se organizar em volta dela.
+    </p>
+
+    <p class="lead">
+      Toda a diferença entre um bom agachamento no Smith e um exercício
+      que castiga joelho ou lombar está numa variável só —
+      <strong>onde você planta os pés</strong>. Este guia trata dela
+      primeiro, porque tudo o mais depende disso.
+    </p>
+
+    <div class="prose">
+      <h2>A regra que o trilho impõe</h2>
+      <p>
+        Agache livre e repare no que acontece: conforme você desce, o
+        quadril vai para trás e o tronco se inclina à frente, e a barra
+        continua em cima do meio do pé porque ela acompanha esse
+        movimento. Esse ajuste contínuo é o agachamento.
+      </p>
+
+      <p>
+        No Smith a barra não pode fazer isso. Ela desce reto. Se você
+        posicionar os pés como no livre — sob o quadril —, a descida
+        empurra o joelho para a frente, porque não há para onde o
+        quadril ir. É daí que vem a maior parte das queixas de joelho
+        neste exercício, e não do aparelho em si.
+      </p>
+
+      <p>
+        A correção é simples e quase ninguém faz: <strong>adiante os pés
+        alguns centímetros</strong> em relação à linha do quadril. O
+        suficiente para que, na descida, a canela fique perto da
+        vertical e o quadril tenha espaço para descer sem empurrar o
+        joelho.
+      </p>
+
+      <h2>Três posições de pé, três exercícios diferentes</h2>
+      <p>
+        Vale conhecer as três, porque a mesma máquina entrega coisas
+        distintas conforme onde você pisa — e porque duas delas são
+        escolhas legítimas e uma é erro.
+      </p>
+
+      <p>
+        <strong>Pé sob o quadril (a posição do livre).</strong> É o
+        erro. A trajetória fixa e o quadril sem espaço somam pressão na
+        frente do joelho, e a amplitude trava cedo. Se você montou
+        assim e o exercício parece "estranho", é isto.
+      </p>
+
+      <p>
+        <strong>Pé alguns centímetros à frente.</strong> A posição
+        padrão, e a que este guia recomenda. Distribui o trabalho entre
+        quadríceps, glúteo e posterior de forma parecida com a de um
+        agachamento livre, com a estabilização removida.
+      </p>
+
+      <p>
+        <strong>Pé bem à frente, com o corpo recostado na barra.</strong>
+        Vira outro exercício — algo entre agachamento e leg press em pé,
+        com ênfase forte em glúteo e posterior. É uma escolha válida
+        quando esse é o objetivo declarado, e uma armadilha quando é
+        acidente: quanto mais adiantado o pé, mais o quadril desliza
+        para baixo da barra e mais a lombar assume a inclinação.
+      </p>
+
+      <p>
+        O teste que resolve na prática: desça até a paralela e confira
+        duas coisas — o calcanhar continua no chão e as costas continuam
+        encostadas na barra. Se o calcanhar levanta, o pé está atrasado;
+        se as costas descolam, está adiantado demais.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Agachamento livre, leg press, hack e Smith na mesma semana é a pilha clássica de quem gosta de dia de perna — e os quatro são o mesmo padrão de movimento com estabilização diferente. A análise soma o que a sua semana já cobre e mostra se o problema é falta de estímulo ou repetição do mesmo."
+        acao="Somar o volume real da minha perna"
+      />
+
+      <h2>O que a barra guiada dá</h2>
+      <p>
+        <strong>Treinar perto da falha sozinho.</strong> É a vantagem
+        mais concreta e a menos citada. Os ganchos travam a barra com um
+        giro de punho, então a repetição que não sobe termina com você
+        girando os punhos — e não preso embaixo do peso. No livre, isso
+        exige gaiola com barras de segurança bem reguladas, e boa parte
+        das pessoas simplesmente evita chegar perto da falha por medo.
+      </p>
+
+      <p>
+        <strong>Carga sem custo de equilíbrio.</strong> Sem a tarefa de
+        estabilizar, mais do esforço vai para as pernas. Para volume de
+        hipertrofia no fim do treino, quando o core já está cansado, isso
+        é útil.
+      </p>
+
+      <p>
+        <strong>Uma variável a menos para o iniciante.</strong> Nas
+        primeiras semanas, dá para aprender profundidade e ritmo sem
+        gerenciar equilíbrio ao mesmo tempo.
+      </p>
+
+      <h2>E o que ela cobra</h2>
+      <p>
+        <strong>A estabilização não é treinada.</strong> Ela não some do
+        exercício por acaso — ela é justamente parte do que o
+        <a href="/musculacao/agachamento-como-fazer/">agachamento
+        livre</a> desenvolve, e o que dá a ele transferência para
+        esporte e para carregar coisas na vida real.
+      </p>
+
+      <p>
+        <strong>A trajetória é dela, não sua.</strong> Se o trilho não
+        combina com a sua proporção de fêmur e tronco, você não tem como
+        ajustar a barra — só o corpo. Para a maioria isso é resolvido
+        pela posição dos pés; para alguns, simplesmente não fica
+        confortável, e insistir não é virtude.
+      </p>
+
+      <p>
+        <strong>Ele não ensina o livre.</strong> Esta é a ressalva que
+        mais importa para iniciante: o padrão que você pratica aqui não
+        se transfere inteiro para a barra livre, porque metade do
+        trabalho — construir a própria trajetória — foi feito pelo
+        aparelho. Quem pretende agachar livre um dia deve praticar o
+        livre leve em paralelo, não depois.
+      </p>
+
+      <h2>Como encaixar sem duplicar</h2>
+      <p>
+        De 3 a 4 séries de 8 a 12 repetições, como segundo exercício de
+        quadríceps do dia — depois do livre, não no lugar dele, quando os
+        dois estiverem na mesma sessão.
+      </p>
+
+      <p>
+        O erro de programação mais comum não é técnico: é ter agachamento
+        livre, leg press, hack e Smith na mesma semana e tratar os quatro
+        como exercícios diferentes. São o mesmo padrão com graus
+        diferentes de estabilização — e um dia de perna assim tem muito
+        volume de agachar e pouco de dobradiça de quadril, que é o que
+        costuma faltar de verdade. O quadro completo está no guia de
+        <a href="/musculacao/treino-de-pernas/">treino de pernas</a>, e o
+        debate maior sobre guiado versus livre está em
+        <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso
+        livre</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o agachamento no Smith" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
