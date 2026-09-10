@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cidade tem calendário ativo de corrida de rua (circuito municipal e meia maratona internacional) e uma forte rede pública de academias ao ar livre.',
   academias:
     'A oferta reúne academias e estúdios, com grande público universitário (UPF) e de saúde, complementada pelo Parque da Gare e pela rede de academias ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit Passo Fundo', detalhe: 'na Av. Presidente Vargas' },
+    { nome: 'Academia Simbiose', detalhe: 'na Rua Coronel Chicuta, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-10',
 
   destaquesFitness: [
     'Parque da Gare como cartão-postal e principal ponto de corrida e caminhada.',
@@ -104,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Passo Fundo', url: 'https://www.pmpf.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-10',
 };

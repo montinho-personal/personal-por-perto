@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Há forte ligação com o mar — esportes de praia, surfe e mergulho (Calhetas) —, além de um calendário ativo de corridas de rua ligado a Suape e ao eixo do Paiva.',
   academias:
     'A oferta reúne academias de bairro e estúdios premium no eixo do Paiva, complementada pela orla de Gaibu e pela ciclovia.',
+  academiasProximas: [
+    { nome: 'Strong Fit 09', detalhe: 'na Av. Laura Cavalcante, em Gaibu' },
+    { nome: 'Luzia Academia', detalhe: 'na Rua Prefeito José Alberto Lima' },
+  ],
+  academiasVerificadasEm: '2026-09-10',
 
   destaquesFitness: [
     'Orla de Gaibu como academia natural para corrida e funcional na areia.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura do Cabo de Santo Agostinho', url: 'https://www.cabo.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-10',
 };
