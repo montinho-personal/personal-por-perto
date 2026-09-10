@@ -30,8 +30,8 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 7 | `/musculacao/encolhimento-como-fazer/` | 24 | 24,8 | ✅ 2026-09-09 · partiu de 24,8 (41,1 na consulta-cabeça) |
 | 8 | `/musculacao/hipertrofia-como-funciona/` | 24 | 77,3 | ⛔ 2026-09-09 · não reescrito · canibalização + teto · ver nota |
 | 9 | `/musculacao/treino-de-posterior-de-coxa/` | 17 | 39,2 | ✅ 2026-09-09 · partiu de 39,2 |
-| 10 | `/guias/avaliacao-fisica/` | 16 | 78,2 | |
-| 11 | `/musculacao/elevacao-frontal-como-fazer/` | 16 | 20,3 | |
+| 10 | `/guias/avaliacao-fisica/` | 16 | 78,2 | ✅ 2026-09-10 · partiu de 78,2 (83,8 na consulta-cabeça) |
+| 11 | `/musculacao/elevacao-frontal-como-fazer/` | 16 | 20,3 | ✅ 2026-09-10 · partiu de 20,3 |
 | 12 | `/emagrecimento/deficit-calorico-como-funciona/` | 12 | 75,2 | |
 | 13 | `/emagrecimento/como-perder-barriga/` | 10 | 53,3 | |
 
@@ -240,6 +240,88 @@ rende mais que a deitada, o nórdico e o volume semanal.`
 Os dois artigos ganharam o `FerramentaInline` que não tinham — auditoria
 no encolhimento, rotina no posterior, cada um diferente do destino do CTA
 do fim. Nos dois, a data subiu pela revisão, não pelo bloco.
+
+### Nota de 10/09/2026 — uma faixa de 78 que NÃO era teto, e uma de 20 que era título
+
+**`avaliacao-fisica` (78,2): a exceção da regra "posição 70+ é teto".** Nos
+dois casos anteriores dessa faixa — `jejum-intermitente` e
+`hipertrofia-como-funciona` — quem ocupava a primeira página eram domínios
+de mídia geral e o veredito foi honesto: não dá para alcançar no curto
+prazo. Aqui a busca mostrou outra coisa. Para `avaliação física` (12
+impressões, posição **83,8**) quem ranqueia são blogs de nicho de educação
+física, sites de clínicas e revistas científicas — nada de Metrópoles ou
+Tua Saúde. É disputa alcançável.
+
+E a lacuna era de um ângulo inteiro, não de acabamento: **sete dos nove
+resultados da primeira página são sobre dobras cutâneas e sobre a
+comparação dobras × bioimpedância**. O artigo tinha um H2 dedicado à
+bioimpedância e a expressão "dobras cutâneas" aparecia **uma única vez**,
+numa oração subordinada. O leitor que busca "avaliação física" no Brasil
+quer saber, na prática, como medem a gordura dele — e metade da resposta
+não estava lá.
+
+Entraram dois H2: um sobre o método do adipômetro (o que a pinça mede, que
+os milímetros entram numa equação, os protocolos de Pollock 3 e 7 dobras e
+Faulkner, e a regra de ouro de ser avaliado sempre pela mesma pessoa) e
+outro comparando os dois métodos numa tabela, com a conclusão que nenhum
+dos concorrentes dá: os dois estimam, nenhum mede — medição direta é DEXA
+—, então escolha um e fique com ele, porque alternar produz números que não
+conversam. Uma FAQ nova cobre a mesma pergunta.
+
+Antes: `Avaliação física: o que é, o que mede e por que importa`
+Depois: `Avaliação física: o que mede, dobras ou bioimpedância`
+
+Antes: `Avaliação física explicada: o que ela mede (anamnese, composição
+corporal, perimetria, testes), com que frequência refazer, se bioimpedância
+é confiável e por que ela é critério para escolher um personal.`
+Depois: `Avaliação física: o que ela mede, como funcionam as dobras cutâneas
+com adipômetro e a bioimpedância, qual dos dois métodos escolher, com que
+frequência refazer e por que a ausência dela é sinal de alerta.`
+
+**`elevacao-frontal` (20,3): título, e a mesma lacuna de implementos pela
+quarta vez.** Faixa clássica de "quase primeira página", onde a tabela de
+causas manda olhar título e trecho de destaque. Sem canibalização:
+`elevacao-lateral` está em 9,9 nas consultas próprias e não disputa.
+
+Os títulos que ranqueiam prometem todos a mesma tríade — "Elevação frontal:
+como fazer, benefícios e variações", "para que serve e como fazer", "Como
+fazer, Músculos Trabalhados e Dicas". O nosso dizia "como fazer e quando
+usar": "quando usar" é o ângulo honesto do artigo, e é abstrato demais para
+competir com "para que serve" e "variações" no snippet.
+
+A lacuna de conteúdo é a mesma que já apareceu em `rosca-martelo`,
+`encolhimento` e agora aqui pela terceira vez: **os implementos despachados
+numa linha**. Viraram um H2 com cinco variações e o que cada uma resolve —
+e o critério que organiza a seção não é o músculo, é o problema real do
+exercício, que é manter o tronco parado.
+
+Entrou também um motivo que faltava: passar da linha do ombro não só
+"adiciona trapézio", como o texto dizia — leva o braço à faixa em que o
+espaço sob o acrômio se estreita, com a ressalva de médico ou
+fisioterapeuta para quem já sente dor ali.
+
+Antes: `Elevação frontal: como fazer e quando usar`
+Depois: `Elevação frontal: como fazer, para que serve e as variações`
+
+Antes: `Elevação frontal: até onde subir, halteres, anilha ou polia, por que
+nem todo programa precisa dela e como encaixar sem duplicar o trabalho do
+supino.`
+Depois: `Elevação frontal: qual músculo ela treina, até onde subir e por
+quê, o que cada variação resolve (halteres alternados, anilha, barra,
+polia) e por que nem todo programa precisa dela.`
+
+O H1 não mudou de propósito: "o exercício certo que quase ninguém precisa
+fazer" é o que o artigo tem de próprio contra sete guias idênticos, e a
+tag `title` já carrega os termos da busca.
+
+Os dois ganharam o `FerramentaInline` que não tinham — auditoria nos dois,
+contra personal-score e encontre-seu-personal-ideal nos CTAs do fim. A data
+subiu pela revisão.
+
+**Padrão que já dá para nomear.** Quatro das sete reescritas desta fila
+tiveram a mesma causa: uma seção de variações ou implementos espremida num
+parágrafo, enquanto a concorrência constrói o título em cima dela. Vale
+olhar isso primeiro nas próximas.
 
 ## O que "reescrever" significa aqui
 

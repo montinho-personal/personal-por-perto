@@ -8,6 +8,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -39,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/guias/avaliacao-fisica';
-const atualizadoEm = '2026-08-25';
+const atualizadoEm = '2026-09-10';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -58,6 +59,11 @@ const faqs = [
       'É útil para acompanhar tendências, não para cravar números absolutos. O resultado varia bastante com hidratação, horário, alimentação e ciclo menstrual — por isso a medição só faz sentido se repetida sempre nas mesmas condições. Comparar a sua bioimpedância de hoje com a de três meses atrás, no mesmo horário e estado, diz muito. Comparar o número com o de outra pessoa não diz quase nada.',
   },
   {
+    pergunta: 'Dobras cutâneas ou bioimpedância: qual é mais confiável?',
+    resposta:
+      'Nenhum dos dois mede — os dois estimam, por caminhos diferentes. Nas dobras, o avaliador pinça a pele com um adipômetro em pontos padronizados e os milímetros entram numa equação (Pollock de 3 ou 7 dobras, Faulkner de 4); a fragilidade é a técnica de quem avalia, e por isso vale sempre ser medido pela mesma pessoa. Na bioimpedância, uma corrente de baixa intensidade atravessa o corpo, e a fragilidade é o seu estado no dia — hidratação, alimentação, horário, treino recente. Medição direta de gordura corporal só em exames de imagem como o DEXA. Na prática, escolha um método e fique com ele: alternar entre os dois produz uma série de números que não conversam entre si.',
+  },
+  {
     pergunta: 'De quanto em quanto tempo devo refazer a avaliação?',
     resposta:
       'A cada 8 a 12 semanas é o intervalo mais usado — tempo suficiente para que mudanças reais apareçam sem gerar ansiedade com oscilação. Perimetria e testes de força podem ser conferidos com mais frequência; composição corporal pede mais paciência. Reavaliar toda semana costuma gerar mais frustração do que informação.',
@@ -74,9 +80,9 @@ const faqs = [
   },
 ];
 
-const title = 'Avaliação física: o que é, o que mede e por que importa';
+const title = 'Avaliação física: o que mede, dobras ou bioimpedância';
 const description =
-  'Avaliação física explicada: o que ela mede (anamnese, composição corporal, perimetria, testes), com que frequência refazer, se bioimpedância é confiável e por que ela é critério para escolher um personal.';
+  'Avaliação física: o que ela mede, como funcionam as dobras cutâneas com adipômetro e a bioimpedância, qual dos dois métodos escolher, com que frequência refazer e por que a ausência dela é sinal de alerta.';
 
 const capa = '/capas-conteudo/avaliacao-fisica.webp';
 const capaAlt =
@@ -186,6 +192,88 @@ const schema = [
         <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.
       </p>
 
+      <h2>Dobras cutâneas: o método do adipômetro</h2>
+      <p>
+        É o método mais usado nas academias brasileiras, e o mais mal
+        compreendido. O avaliador pinça a pele em pontos padronizados do
+        corpo com um <strong>adipômetro</strong> (também chamado de
+        compasso de dobras cutâneas) e mede, em milímetros, a espessura
+        da prega — pele mais a gordura logo abaixo dela.
+      </p>
+
+      <p>
+        Esses milímetros não são o resultado. Eles entram numa
+        <strong>equação</strong> que estima o percentual de gordura a
+        partir dos valores, do sexo e da idade. Os protocolos mais
+        comuns são o de Pollock, em versões de 3 e de 7 dobras, e o de
+        Faulkner, de 4 dobras. Trocar de protocolo entre uma avaliação e
+        outra é como trocar de régua no meio da obra: os números deixam
+        de ser comparáveis.
+      </p>
+
+      <p>
+        A grande vantagem é o custo — o equipamento é barato e o método
+        é praticável em qualquer lugar. A grande fragilidade tem nome:
+        <strong>o avaliador</strong>. Pinçar dois centímetros ao lado do
+        ponto correto, ou apertar com pressão diferente, muda o
+        resultado de forma perceptível. Por isso a regra de ouro do
+        método é ser sempre avaliado <strong>pela mesma pessoa</strong>,
+        que é o que torna a série histórica confiável mesmo quando o
+        número absoluto não é exato.
+      </p>
+
+      <h2>Dobras ou bioimpedância: qual escolher</h2>
+      <p>
+        A pergunta aparece em toda avaliação, e a resposta honesta
+        decepciona quem espera um vencedor: <strong>os dois estimam, e
+        nenhum mede</strong>. Percentual de gordura só é medido
+        diretamente por exames de imagem como o DEXA, que raramente
+        estão ao alcance de quem treina em academia.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th></th><th>Dobras cutâneas</th><th>Bioimpedância</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Do que depende</strong></td>
+              <td>Da técnica de quem avalia</td>
+              <td>Do seu estado no dia (água, comida, treino)</td>
+            </tr>
+            <tr>
+              <td><strong>Ponto fraco</strong></td>
+              <td>Avaliador diferente muda o número</td>
+              <td>Horário diferente muda o número</td>
+            </tr>
+            <tr>
+              <td><strong>Como blindar</strong></td>
+              <td>Mesmo avaliador, mesmo protocolo</td>
+              <td>Mesmo horário, mesmo aparelho, jejum e hidratação padronizados</td>
+            </tr>
+            <tr>
+              <td><strong>Custo</strong></td>
+              <td>Baixo</td>
+              <td>Depende do aparelho</td>
+            </tr>
+            <tr>
+              <td><strong>Melhor uso</strong></td>
+              <td>Acompanhamento longo com o mesmo profissional</td>
+              <td>Medição rápida e repetível sem depender de técnica</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A conclusão prática vale mais que a escolha: <strong>escolha um e
+        fique com ele</strong>. Alternar entre dobras e bioimpedância ao
+        longo dos meses produz uma série de números que não conversam
+        entre si — e a leitura de tendência, que é a única coisa útil
+        aqui, se perde.
+      </p>
+
       <h2>Bioimpedância: como interpretar sem se iludir</h2>
       <p>
         A bioimpedância estima a composição corporal passando uma
@@ -206,6 +294,12 @@ const schema = [
         Comparar seu percentual com o de outra pessoa — ou com o de
         outro aparelho — é o caminho mais rápido para conclusões erradas.
       </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="A avaliação responde onde você está; ela não responde se o que você faz entre uma medição e outra justifica o resultado esperado. Essa é a outra metade da conta — e a análise olha a sua semana de treino inteira para mostrar o que está sustentando o número e o que está só ocupando espaço."
+        acao="Analisar o meu treino atual"
+      />
 
       <h2>De quanto em quanto tempo reavaliar</h2>
       <p>
