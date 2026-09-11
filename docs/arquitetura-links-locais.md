@@ -146,3 +146,60 @@ Avisa, sem falhar, em: bairro que não linka o estado, bairro que não linka o
 hub, `target="_blank"` interno e âncora vazia. Os 91 avisos de
 `bairro-nao-linka-estado` que restam são exatamente os bairros fora do piloto —
 o contador vai a zero quando a expansão terminar.
+
+---
+
+## 9. Linha de base para a reavaliação
+
+Números informados pelo Renato em 11/09/2026, do relatório do Search Console
+do período **28/06 a 10/09/2026**. Ficam registrados aqui porque sem eles a
+comparação de outubro vira memória, e memória não mede nada.
+
+### Páginas de bairro (o que a arquitetura quer mover)
+
+| métrica | valor em 10/09/2026 |
+|---|---|
+| páginas publicadas no sitemap | 114 |
+| páginas que apareceram na exportação | 58 |
+| cliques | 24 |
+| impressões | 702 |
+| CTR | 3,42% |
+| posição média | 9,45 |
+| páginas com ao menos 1 clique | 16 |
+| páginas sem nenhum clique | 42 |
+| posição média das impressões novas do período | ~8,54 |
+
+### Comparação com cidades, no mesmo período
+
+| tipo | cliques | impressões | CTR | posição |
+|---|---|---|---|---|
+| cidade | 506 | 26.761 | 1,89% | 8,95 |
+| bairro | 24 | 702 | 3,42% | 9,45 |
+
+### O que comparar em 02/10/2026, e em que ordem
+
+1. **Cobertura, antes de qualquer coisa.** Quantas das 114 páginas de bairro
+   aparecem na exportação? Eram 58. Se esse número subir, a arquitetura está
+   fazendo o trabalho dela — descoberta e rastreio —, independentemente de
+   posição.
+2. **As 10 do piloto, uma a uma.** Tijuca, Barra da Tijuca, Savassi, Icaraí,
+   Boa Viagem, Leblon, Moema, Brooklin, Asa Sul, Gleba Palhano. Impressões,
+   cliques e **posição por consulta** — não posição média por página, que já
+   provou enganar (ver `docs/cidades-analise.md`, seção 5.1).
+3. **Savassi × Lourdes.** As duas páginas passaram a disputar consultas
+   diferentes. Conferir se a consulta "personal trainer lourdes bh" migrou
+   para a página do Lourdes.
+4. **Bairros fora do piloto como grupo de controle.** Eles receberam a
+   correção de regência dos hubs estaduais e o link do hub estadual, mas
+   **não** o bloco `BairroLocal` nem o breadcrumb de cinco níveis. Se os dez
+   do piloto se moverem e os outros não, a atribuição fica limpa.
+
+### A ressalva honesta
+
+Três semanas é pouco para ler posição. É tempo suficiente para ler
+**rastreio e cobertura** — se o Google voltou às páginas e se mais delas
+passaram a aparecer. Mudança de posição em consulta local costuma levar mais
+que um mês, e qualquer leitura de posição em 02/10 é indício, não conclusão.
+
+Se a cobertura subir e a posição não se mexer, a conclusão correta é
+"funcionou até aqui, espere mais" — não "não funcionou".
