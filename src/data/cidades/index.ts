@@ -1013,6 +1013,8 @@ import { cidade as rioPardo } from './rio-pardo-rs';
 import { cidade as itaqui } from './itaqui-rs';
 import { cidade as redencaoPa } from './redencao-pa';
 import { cidade as araripina } from './araripina-pe';
+import { cidade as saoCristovaoSe } from './sao-cristovao-se';
+import { cidade as simaoDias } from './simao-dias-se';
 
 export const cidades: Cidade[] = [
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
@@ -1298,6 +1300,8 @@ export const cidades: Cidade[] = [
   itaqui,
   redencaoPa,
   araripina,
+  saoCristovaoSe,
+  simaoDias,
 ];
 
 /** Mapa slug -> cidade para lookups O(1). */

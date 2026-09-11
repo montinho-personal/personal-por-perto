@@ -29,7 +29,7 @@ qualquer número aqui seria memória, não fonte.
 
 | UF | ausentes |
 |---|---|
-| SE | São Cristóvão · Simão Dias |
+| SE | ~~São Cristóvão~~ (11/09) · ~~Simão Dias~~ (11/09) |
 | PE | ~~Araripina~~ (09/09) · Moreno |
 | PA | ~~Redenção~~ (09/09) · Oriximiná · São Félix do Xingu · Moju · Igarapé-Miri · Vigia · Novo Progresso |
 | MA | Coroatá · Buriticupu · Itapecuru Mirim · Zé Doca · Viana |
