@@ -1,0 +1,136 @@
+---
+/**
+ * Bloco de navegação local da página de bairro — o degrau que faltava na
+ * hierarquia Brasil › Estado › Cidade › Bairro.
+ *
+ * O QUE ELE RESOLVE
+ *
+ * Antes deste componente, 63 das 101 páginas de bairro recebiam exatamente
+ * UM link interno em todo o site: a pílula na página da cidade. Nenhuma
+ * linkava o estado, nenhuma linkava o hub nacional, e as poucas que linkavam
+ * bairros irmãos faziam isso por listas escritas à mão, sem critério comum.
+ *
+ * Aqui os links saem do resolver central (`src/lib/geo.ts`), o que garante
+ * três coisas: a cidade-mãe é sempre a correta, o estado é sempre o da
+ * cidade, e bairro relacionado só aparece quando existe relação declarada ou
+ * mesma zona da cidade. Bairro sem relação real não ganha lista inventada —
+ * ele simplesmente sobe para a cidade e para o estado.
+ *
+ * As âncoras são escritas em frase, não em lista de palavra-chave: o bloco é
+ * editorial e serve ao leitor que está decidindo onde treinar.
+ */
+import { cidadeDoBairro, getBairro, relacionadosDoBairro, rota } from '../lib/geo';
+import { estadoPorSlug } from '../data/estados';
+import { emCidade, emEstado } from '../lib/gramatica';
+
+export interface Props {
+  /** Slug do bairro, como registrado em src/data/bairros.ts. */
+  slug: string;
+  /** Guias editoriais contextuais (0 a 2), escolhidos pela página. */
+  guias?: { url: string; texto: string }[];
+}
+
+const { slug, guias = [] } = Astro.props;
+
+const bairro = getBairro(slug);
+if (!bairro) throw new Error(`BairroLocal: bairro "${slug}" não registrado em src/data/bairros.ts`);
+
+const cidade = cidadeDoBairro(slug)!;
+const estado = estadoPorSlug[cidade.estadoSlug];
+const relacionados = relacionadosDoBairro(slug, 4);
+const emN = emCidade(cidade);
+---
+
+<section class="section-sm tint" aria-labelledby="navegacao-local">
+  <div class="container">
+    <h2 id="navegacao-local">Onde este bairro se encaixa</h2>
+
+    <p class="local-texto">
+      {bairro.nome} é um dos bairros cobertos pelo
+      <a href={rota.cidade(cidade.slug)}>guia de personal trainer {emN}</a>, que
+      reúne as faixas de preço da cidade inteira, os formatos de atendimento e
+      os espaços públicos de treino.
+      {
+        estado && (
+          <>
+            {' '}Para comparar com outras cidades da região, o hub de{' '}
+            <a href={rota.estado(cidade.estadoSlug)}>personal trainer {emEstado(estado)}</a>{' '}
+            lista todas as que já têm guia publicado.
+          </>
+        )
+      }
+    </p>
+
+    {
+      relacionados.length > 0 && (
+        <>
+          <h3 class="local-sub">Bairros relacionados</h3>
+          <ul class="local-lista" data-track="bairro:relacionados">
+            {relacionados.map((r) => (
+              <li>
+                <a href={r.url}>Personal trainer {r.bairro.locucao}</a>
+                <span class="local-motivo"> — {r.motivo}.</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )
+    }
+
+    {
+      guias.length > 0 && (
+        <p class="local-texto local-guias">
+          Antes de fechar com qualquer profissional, vale ler{' '}
+          {guias.map((g, i) => (
+            <>
+              {i > 0 && (i === guias.length - 1 ? ' e ' : ', ')}
+              <a href={g.url}>{g.texto}</a>
+            </>
+          ))}
+          .
+        </p>
+      )
+    }
+
+    <p class="local-texto local-todos">
+      <a href={rota.hub()}>Ver o índice de cidades do portal</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .local-texto {
+    max-width: 70ch;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-top: var(--sp-3);
+  }
+  .local-sub {
+    font-size: var(--step-0);
+    margin-top: var(--sp-5);
+  }
+  .local-lista {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-3) 0 0;
+    display: grid;
+    gap: var(--sp-3);
+    max-width: 70ch;
+  }
+  .local-lista li {
+    line-height: 1.5;
+  }
+  .local-lista a {
+    font-weight: 600;
+  }
+  .local-motivo {
+    color: var(--muted);
+  }
+  .local-guias {
+    margin-top: var(--sp-4);
+  }
+  .local-todos {
+    margin-top: var(--sp-4);
+    font-size: var(--step--1);
+  }
+</style>

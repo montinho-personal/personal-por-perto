@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { bairrosDoEstado } from '../../lib/geo';
+import { deEstado, emEstado, emEstadoCap } from '../../lib/gramatica';
 import CityCard from '../../components/CityCard.astro';
 import { estados } from '../../data/estados';
 import { cidadesPorEstado } from '../../data/cidades';
@@ -25,19 +27,32 @@ const popTotal = lista.reduce(
   0,
 );
 
+/*
+ * Seleção PEQUENA de bairros do estado — no máximo seis, e no máximo um por
+ * cidade antes de repetir. O hub estadual existe para distribuir autoridade às
+ * cidades; listar todos os bairros de todas as cidades transformaria a página
+ * num diretório e diluiria o sinal que ela deveria concentrar.
+ *
+ * O ganho real está do outro lado: antes disso, nenhuma página de bairro
+ * recebia um único link de um hub estadual.
+ */
+const bairrosDestaque = bairrosDoEstado(estado.slug, 6);
+
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Cidades', url: '/personal-trainer/' },
   { nome: estado.nome, url: path },
 ];
 
-const title = `Personal Trainer no ${estado.nome} (${estado.uf}) — guia por cidade`;
-const description = `Guia de personal trainer no ${estado.nome}: cidades cobertas, como escolher, quanto custa e onde treinar. Dados locais reais e recomendações editoriais.`;
+const emE = emEstado(estado);
+const deE = deEstado(estado);
+const title = `Personal Trainer ${emE} (${estado.uf}) — guia por cidade`;
+const description = `Guia de personal trainer ${emE}: cidades cobertas, como escolher, quanto custa e onde treinar. Dados locais reais e recomendações editoriais.`;
 
 const schema = [
   breadcrumbSchema(crumbs),
   itemListSchema(
-    `Cidades do ${estado.nome} com guia de personal trainer`,
+    `Cidades ${deE} com guia de personal trainer`,
     lista.map((c) => `Personal Trainer ${emCidade(c)}`),
     new URL(path, site.dominio).href,
     lista.map((c) => new URL(`/personal-trainer/${c.slug}`, site.dominio).href),
@@ -51,7 +66,7 @@ const schema = [
   <header class="hero">
     <div class="container">
       <p class="eyebrow">Hub estadual · Região {estado.regiao}</p>
-      <h1>Personal Trainer no {estado.nome} ({estado.uf})</h1>
+      <h1>Personal Trainer {emE} ({estado.uf})</h1>
       <p class="hero-intro">{estado.descricao}</p>
       <div class="trust-strip">
         <span>✔ {lista.length} cidade(s) publicada(s)</span>
@@ -63,7 +78,7 @@ const schema = [
 
   <section class="section">
     <div class="container">
-      <h2>Cidades do {estado.nome}</h2>
+      <h2>Cidades {deE}</h2>
       <p class="lead" style="max-width: 60ch">
         Escolha a sua cidade para ver o guia completo — com panorama local, faixas de
         preço e onde treinar.
@@ -74,13 +89,36 @@ const schema = [
     </div>
   </section>
 
+  {
+    bairrosDestaque.length > 0 && (
+      <section class="section-sm">
+        <div class="container">
+          <h2>Guias por bairro {emE}</h2>
+          <p class="lead" style="max-width: 62ch">
+            Nas cidades maiores o portal desce um nível e publica guias por bairro,
+            com a oferta de treino e os preços praticados em cada região. Estes são
+            alguns; o restante fica na página de cada cidade.
+          </p>
+          <ul class="estado-bairros" data-track="estado:bairro">
+            {bairrosDestaque.map((b) => (
+              <li>
+                <a href={b.url}>Personal trainer {b.bairro.locucao}</a>
+                <span class="estado-bairro-cidade"> — {b.motivo}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
   <section class="section-sm tint">
     <div class="container">
       <div class="grid grid-2">
         <div>
           <h2>Como usar este hub</h2>
           <p class="prose">
-            Este é o ponto de partida para encontrar um personal trainer no {estado.nome}.
+            Este é o ponto de partida para encontrar um personal trainer {emE}.
             Cada cidade tem uma página própria com dados reais — população, parques,
             clima, mobilidade e cultura esportiva — porque a melhor escolha depende do
             contexto local. Use também os guias gerais para decidir com mais segurança.
@@ -140,5 +178,20 @@ const schema = [
   }
   .small {
     font-size: var(--step--1);
+  }
+
+  .estado-bairros {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-5) 0 0;
+    display: grid;
+    gap: var(--sp-3);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .estado-bairros a {
+    font-weight: 600;
+  }
+  .estado-bairro-cidade {
+    color: var(--muted);
   }
 </style>

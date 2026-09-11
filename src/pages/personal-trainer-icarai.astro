@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,12 +37,8 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-icarai';
-const atualizadoEm = '2026-09-01';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer em Niterói', url: '/personal-trainer/niteroi-rj/' },
-  { nome: 'Personal Trainer em Icaraí', url: path },
-];
+const atualizadoEm = '2026-09-11';
+const crumbs = crumbsBairro('personal-trainer-icarai');
 
 const faqs = [
   {
@@ -240,6 +238,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-icarai"
+    guias={[
+      { url: '/guias/personal-online-funciona/', texto: 'quando o acompanhamento online dá conta' },
+      { url: '/guias/como-escolher-personal-trainer/', texto: 'os critérios de escolha que valem em qualquer cidade' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

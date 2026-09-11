@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,12 +37,8 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-tijuca';
-const atualizadoEm = '2026-09-01';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
-  { nome: 'Personal Trainer na Tijuca', url: path },
-];
+const atualizadoEm = '2026-09-11';
+const crumbs = crumbsBairro('personal-trainer-tijuca');
 
 const faqs = [
   {
@@ -234,6 +232,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-tijuca"
+    guias={[
+      { url: '/guias/como-escolher-personal-trainer/', texto: 'os critérios que separam profissional de vendedor de treino' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'as faixas de preço por formato' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

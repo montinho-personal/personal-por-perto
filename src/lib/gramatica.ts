@@ -50,3 +50,65 @@ export function deCidade({ slug, nome }: CidadeLoc): string {
   const art = ARTIGO_POR_SLUG[slug];
   return art ? `${DE[art]} ${nome}` : `de ${nome}`;
 }
+
+/**
+ * Regência dos 26 estados e do DF.
+ *
+ * Ao contrário das cidades, aqui a maioria PEDE artigo — e o portal escrevia
+ * "no" em todos, o que produzia "Personal Trainer no São Paulo" e "no Bahia"
+ * no H1 e no <title> dos 27 hubs estaduais. A tabela abaixo é fechada: são 27
+ * entradas, todas conhecidas, então não há espaço para adivinhação.
+ *
+ * Sem artigo (uso padrão com "em"): São Paulo, Minas Gerais, Goiás,
+ * Pernambuco, Alagoas, Sergipe, Rondônia, Roraima, Santa Catarina, Mato
+ * Grosso e Mato Grosso do Sul.
+ */
+const ARTIGO_POR_ESTADO: Record<string, ArtigoCidade | null> = {
+  'sao-paulo': null,
+  'minas-gerais': null,
+  goias: null,
+  pernambuco: null,
+  alagoas: null,
+  sergipe: null,
+  rondonia: null,
+  roraima: null,
+  'santa-catarina': null,
+  'mato-grosso': null,
+  'mato-grosso-do-sul': null,
+  bahia: 'a',
+  paraiba: 'a',
+  'rio-de-janeiro': 'o',
+  'espirito-santo': 'o',
+  parana: 'o',
+  'rio-grande-do-sul': 'o',
+  'rio-grande-do-norte': 'o',
+  'distrito-federal': 'o',
+  ceara: 'o',
+  amazonas: 'o',
+  tocantins: 'o',
+  para: 'o',
+  piaui: 'o',
+  maranhao: 'o',
+  acre: 'o',
+  amapa: 'o',
+};
+
+type EstadoLoc = { slug: string; nome: string };
+
+/** Locução com "em": "em São Paulo" | "no Pará" | "na Bahia". */
+export function emEstado({ slug, nome }: EstadoLoc): string {
+  const art = ARTIGO_POR_ESTADO[slug];
+  return art ? `${EM[art]} ${nome}` : `em ${nome}`;
+}
+
+/** Como emEstado, com inicial maiúscula. */
+export function emEstadoCap(estado: EstadoLoc): string {
+  const s = emEstado(estado);
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/** Locução com "de": "de São Paulo" | "do Pará" | "da Bahia". */
+export function deEstado({ slug, nome }: EstadoLoc): string {
+  const art = ARTIGO_POR_ESTADO[slug];
+  return art ? `${DE[art]} ${nome}` : `de ${nome}`;
+}

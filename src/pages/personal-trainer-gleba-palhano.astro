@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,12 +37,8 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-gleba-palhano';
-const atualizadoEm = '2026-09-01';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer em Londrina', url: '/personal-trainer/londrina-pr/' },
-  { nome: 'Personal Trainer na Gleba Palhano', url: path },
-];
+const atualizadoEm = '2026-09-11';
+const crumbs = crumbsBairro('personal-trainer-gleba-palhano');
 
 const faqs = [
   {
@@ -250,6 +248,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-gleba-palhano"
+    guias={[
+      { url: '/guias/personal-trainer-em-condominio/', texto: 'o treino na academia do prédio' },
+      { url: '/guias/como-escolher-personal-trainer/', texto: 'os critérios objetivos de escolha' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Londrina', url: 'https://www.londrina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-09-11',
   capaArte: {
     src: '/capas-cidade/londrina-pr.webp',
     w: 1200,

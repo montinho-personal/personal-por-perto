@@ -129,5 +129,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Brasília: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-09-11',
 };

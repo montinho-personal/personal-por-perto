@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,12 +37,8 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-asa-sul';
-const atualizadoEm = '2026-09-01';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer em Brasília', url: '/personal-trainer/brasilia-df/' },
-  { nome: 'Personal Trainer na Asa Sul', url: path },
-];
+const atualizadoEm = '2026-09-11';
+const crumbs = crumbsBairro('personal-trainer-asa-sul');
 
 const faqs = [
   {
@@ -283,6 +281,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-asa-sul"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

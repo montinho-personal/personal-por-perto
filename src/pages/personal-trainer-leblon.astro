@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,15 +37,11 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-leblon';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-11';
 const capa = '/capas-bairros/leblon.webp';
 const capaAlt =
   'Capa do guia de personal trainer no Leblon: atleta no calçadão com o Morro Dois Irmãos, a praia e os prédios da orla ao fundo — Personal por Perto';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer no Rio de Janeiro', url: '/personal-trainer/rio-de-janeiro-rj/' },
-  { nome: 'Personal Trainer no Leblon', url: path },
-];
+const crumbs = crumbsBairro('personal-trainer-leblon');
 
 const faqs = [
   {
@@ -271,6 +269,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-leblon"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o formato a domicílio, o mais contratado por aqui' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'a referência de preço por tipo de pacote' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

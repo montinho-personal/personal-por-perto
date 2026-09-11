@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,39 +37,35 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-savassi';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-11';
 const capa = '/capas-bairros/savassi.webp';
 const capaAlt =
   'Capa do guia de personal trainer na Savassi: atleta junto à placa da Praça Diogo de Vasconcelos, coração do bairro em Belo Horizonte — Personal por Perto';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer em Belo Horizonte', url: '/personal-trainer/belo-horizonte-mg/' },
-  { nome: 'Personal Trainer na Savassi', url: path },
-];
+const crumbs = crumbsBairro('personal-trainer-savassi');
 
 const faqs = [
   {
     pergunta: 'Quanto custa um personal trainer na Savassi?',
     resposta:
-      'Em Belo Horizonte, a aula avulsa varia de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. Na Savassi e no Lourdes — os bairros de metro quadrado mais alto da capital —, os valores ficam no topo dessas faixas, sobretudo nos horários de pico e a domicílio.',
+      'Em Belo Horizonte, a aula avulsa varia de R$ 80 a R$ 180 e o pacote mensal de R$ 400 a R$ 1.100. Na Savassi — um dos endereços de metro quadrado mais alto da capital —, os valores ficam no topo dessas faixas, sobretudo nos horários de pico e no atendimento a domicílio.',
   },
   {
     pergunta: 'Onde treinar ao ar livre na região da Savassi?',
     resposta:
-      'O circuito da Praça da Liberdade é o clássico para caminhada, corrida leve e funcional; a Praça Marília de Dirceu e a Praça da Assembleia atendem o Lourdes; e o Parque Municipal Américo Renné Giannetti, na borda do centro, é a maior área verde próxima para treinos mais longos.',
+      'O circuito da Praça da Liberdade é o clássico para caminhada, corrida leve e funcional, a poucos minutos a pé do quadrilátero. Para volume maior, o Parque Municipal Américo Renné Giannetti, na borda do centro, é a maior área verde próxima. Praça Marília de Dirceu e Praça da Assembleia ficam já no bairro vizinho e também recebem atendimento.',
   },
   {
-    pergunta: 'Personal atende em prédio na Savassi e no Lourdes?',
+    pergunta: 'Personal atende em prédio na Savassi?',
     resposta:
-      'Sim — é um formato em expansão, já que os lançamentos da região incluem academia própria. Nos casarões e prédios antigos do Lourdes, sem espaço fitness, o atendimento a domicílio com equipamento portátil é o caminho usual.',
+      'Sim — é um formato em expansão, já que os lançamentos da região incluem academia própria. Nos edifícios mais antigos da Savassi, sem espaço fitness, o atendimento a domicílio com equipamento portátil é o caminho usual.',
   },
   {
-    pergunta: 'Savassi ou Lourdes: qual é melhor para treinar?',
+    pergunta: 'Savassi ou Lourdes: qual dos dois bairros escolher?',
     resposta:
-      'São vizinhos e se complementam: a Savassi concentra studios, academias e vida urbana; o Lourdes tem ruas arborizadas, praças e perfil residencial. Muitos profissionais atendem nos dois — a escolha prática é treinar perto de onde você mora ou trabalha.',
+      'São vizinhos e se complementam, e a diferença é de perfil: a Savassi concentra studios, academias e vida urbana, com sessões encaixadas a pé entre compromissos; o Lourdes é residencial, de ruas arborizadas e casarões, onde o treino acontece mais em casa e no prédio. Muitos profissionais atendem nos dois. Se o seu endereço é do lado de lá, o guia específico é o de personal trainer no Lourdes — esta página trata da Savassi.',
   },
   {
-    pergunta: 'O Minas Tênis Clube conta como estrutura de treino na região?',
+    pergunta: 'O Minas Tênis Clube conta como estrutura de treino para quem mora na Savassi?',
     resposta:
       'Para quem é sócio, sim — o Minas I, no Lourdes, tem infraestrutura esportiva completa e é parte da rotina de muitas famílias da região. Personal trainers credenciados podem acompanhar o treino conforme as regras do clube.',
   },
@@ -75,7 +73,7 @@ const faqs = [
 
 const title = 'Personal Trainer na Savassi (BH): respostas e preços';
 const description =
-  'Personal trainer na Savassi e no Lourdes: quanto custa, onde treinar — Praça da Liberdade, clube, prédio — e como escolher bem em BH.';
+  'Personal trainer na Savassi: quanto custa, onde treinar — Praça da Liberdade, studios, prédio — e como escolher bem no quadrilátero mais movimentado de BH.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -90,7 +88,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Bairros de Belo Horizonte</p>
-    <h1>Personal trainer na Savassi e no Lourdes: o que perguntar antes de contratar</h1>
+    <h1>Personal trainer na Savassi: o que perguntar antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: var(--sp-4) 0 0">
@@ -107,33 +105,36 @@ const schema = [
     </figure>
 
     <p class="lead">
-      Em 2026, o Lourdes ultrapassou a vizinha Savassi e assumiu o posto de
-      aluguel residencial mais caro de Belo Horizonte — e os dois bairros
-      seguem acima dos R$ 15 mil por metro quadrado na venda, no topo da
-      capital mineira. É nesse quadrilátero que se concentra a maior procura
-      por <strong>personal trainer na Savassi</strong> e arredores. Este
-      artigo responde, pergunta por pergunta, o que os moradores da região
-      querem saber antes de contratar.
+      A Savassi segue acima dos R$ 15 mil por metro quadrado na venda, no
+      topo da capital mineira, e é o quadrilátero onde se concentra a maior
+      procura por <strong>personal trainer na Savassi</strong>. Este artigo
+      responde, pergunta por pergunta, o que os moradores do bairro querem
+      saber antes de contratar.
     </p>
 
     <div class="prose">
-      <h2>Onde o treino acontece: Savassi ou Lourdes?</h2>
+      <h2>Onde o treino acontece na Savassi</h2>
       <p>
-        Nos dois — mas de jeitos diferentes. A Savassi, em volta da
-        praça Diogo de Vasconcelos e do Pátio Savassi, é o lado urbano
-        e jovem: studios, academias e sessões encaixadas entre
-        compromissos, a pé.
+        Em volta da praça Diogo de Vasconcelos e do Pátio Savassi, num
+        raio que se percorre a pé. É o lado urbano e jovem do
+        Centro-Sul de BH: studios, academias e sessões encaixadas entre
+        compromissos, quase sempre sem carro no meio.
       </p>
 
       <p>
-        O Lourdes é o lado residencial e tradicional: ruas
-        arborizadas, casarões históricos misturados a lançamentos de
-        alto padrão — como o Soul Savassi, na divisa das duas regiões,
-        o Savassi Lifestyle, na rua Pernambuco, e o José Torres
-        Franco, da Patrimar, na rua Espírito Santo — cujas maisons, na
-        casa dos R$ 15 milhões, disputam o posto de apartamento mais
-        caro de BH — e treinos que acontecem em casa, no prédio ou nas
-        praças.
+        Os lançamentos de alto padrão do quadrilátero — o Soul Savassi,
+        o Savassi Lifestyle na rua Pernambuco, o José Torres Franco na
+        rua Espírito Santo — vêm com academia própria, o que explica o
+        peso do atendimento dentro do condomínio por aqui.
+      </p>
+
+      <p>
+        Se o seu endereço fica do outro lado da divisa, o perfil muda:
+        o bairro vizinho é residencial, de ruas arborizadas e casarões,
+        com o treino acontecendo mais em casa e nas praças. Esse
+        território tem guia próprio, o de
+        <a href="/personal-trainer-lourdes/">personal trainer no
+        Lourdes</a>.
       </p>
 
       <p>
@@ -151,12 +152,11 @@ const schema = [
       </p>
 
       <p>
-        Na Savassi–Lourdes, o padrão fica no terço superior das
-        faixas: o público é exigente, os horários de 6h às 8h lotam
-        primeiro e o atendimento a domicílio nos casarões e coberturas
-        do Lourdes é o serviço de maior valor. O acompanhamento online
-        (R$ 180 a R$ 470 mensais) completa as semanas de viagem de um
-        público que viaja muito.
+        Na Savassi o padrão fica no terço superior das faixas: o
+        público é exigente, os horários de 6h às 8h lotam primeiro e o
+        atendimento a domicílio nas coberturas do bairro é o serviço de
+        maior valor. O acompanhamento online (R$ 180 a R$ 470 mensais)
+        completa as semanas de viagem de um público que viaja muito.
       </p>
 
       <!--
@@ -173,7 +173,7 @@ const schema = [
         A resposta clássica é o circuito da Praça da Liberdade: o
         conjunto arquitetônico mais famoso de BH funciona de manhã
         como pista de caminhada, corrida leve e treino funcional. No
-        Lourdes, a Praça Marília de Dirceu e a Praça da Assembleia
+        bairro vizinho, a Praça Marília de Dirceu e a Praça da Assembleia
         recebem sessões acompanhadas em meio às árvores. E para
         volumes maiores, o Parque Municipal Américo Renné Giannetti —
         a grande área verde histórica na borda do centro — fecha o
@@ -188,12 +188,13 @@ const schema = [
 
       <h2>E quem prefere clube ou academia?</h2>
       <p>
-        O Lourdes abriga o Minas Tênis Clube I, uma das maiores
-        estruturas esportivas do país e parte da identidade da região
-        — para os sócios, é o cenário natural do treino acompanhado.
-        Fora do clube, a Savassi concentra academias e studios de
-        treino personalizado em raio curto, e muitos personal trainers
-        da cidade mantêm horários fixos nessas casas.
+        A Savassi concentra academias e studios de treino
+        personalizado em raio curto, e muitos personal trainers da
+        cidade mantêm horários fixos nessas casas. A poucos minutos, já
+        no <a href="/personal-trainer-lourdes/">Lourdes</a>, fica o
+        Minas Tênis Clube I — uma das maiores estruturas esportivas do
+        país e o cenário natural do treino acompanhado para quem é
+        sócio.
       </p>
 
       <p>
@@ -206,11 +207,11 @@ const schema = [
 
       <h2>Personal no prédio funciona na região?</h2>
       <p>
-        Cada vez mais. Os lançamentos de alto padrão da região vêm com
+        Cada vez mais. Os lançamentos de alto padrão do bairro vêm com
         academia própria, e o personal leva método até ela. Nos edifícios
-        antigos e casarões do Lourdes — charmosos, mas sem espaço fitness —,
-        o atendimento a domicílio com equipamento portátil resolve, e é o
-        formato preferido dos moradores mais velhos. A regra editorial de
+        mais antigos da Savassi — sem espaço fitness —, o atendimento a
+        domicílio com equipamento portátil resolve, e é o formato
+        preferido dos moradores mais velhos. A regra editorial de
         sempre: dores e limitações passam primeiro por médico ou
         fisioterapeuta, e o personal trabalha em conjunto com eles.
       </p>
@@ -226,9 +227,10 @@ const schema = [
       </p>
 
       <p>
-        Quem conhece o circuito local — as praças, o clube, as
-        academias da Savassi e as regras dos prédios do Lourdes —
-        monta rotinas que aproveitam o melhor dos dois bairros.
+        Quem conhece o circuito local — as praças, as academias do
+        quadrilátero e as regras de acesso dos prédios — monta rotinas
+        que aproveitam o bairro inteiro, e não só a academia mais
+        próxima.
       </p>
     </div>
 
@@ -243,6 +245,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-savassi"
+    guias={[
+      { url: '/guias/como-escolher-personal-trainer/', texto: 'o passo a passo para escolher um personal trainer' },
+      { url: '/guias/primeira-aula-com-personal-trainer/', texto: 'o que esperar da primeira aula' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,12 +37,8 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-boa-viagem';
-const atualizadoEm = '2026-09-01';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer no Recife', url: '/personal-trainer/recife-pe/' },
-  { nome: 'Personal Trainer em Boa Viagem', url: path },
-];
+const atualizadoEm = '2026-09-11';
+const crumbs = crumbsBairro('personal-trainer-boa-viagem');
 
 const faqs = [
   {
@@ -231,6 +229,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-boa-viagem"
+    guias={[
+      { url: '/guias/personal-trainer-para-corredores/', texto: 'o que a corrida sozinha não desenvolve' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'as faixas de preço praticadas no país' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">

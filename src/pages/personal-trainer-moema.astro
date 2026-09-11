@@ -8,9 +8,11 @@ import RelatedArticles from '../components/RelatedArticles.astro';
 import InstagramFollow from '../components/InstagramFollow.astro';
 import AutorMontinho from '../components/AutorMontinho.astro';
 import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
 import { formatDateLong } from '../lib/slug';
 import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
 import { rotas } from '../lib/links';
 
 const relacionados = [
@@ -35,15 +37,11 @@ const relacionados = [
 ];
 
 const path = '/personal-trainer-moema';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-11';
 const capa = '/capas-bairros/moema.webp';
 const capaAlt =
   'Capa do guia de personal trainer em Moema: atleta na avenida Ibirapuera, com a placa da avenida e os prédios arborizados do bairro — Personal por Perto';
-const crumbs = [
-  { nome: 'Início', url: '/' },
-  { nome: 'Personal Trainer em São Paulo', url: '/personal-trainer/sao-paulo-sp/' },
-  { nome: 'Personal Trainer em Moema', url: path },
-];
+const crumbs = crumbsBairro('personal-trainer-moema');
 
 const faqs = [
   {
@@ -283,6 +281,14 @@ const schema = [
 
     <Sidebar />
   </div>
+
+  <BairroLocal
+    slug="personal-trainer-moema"
+    guias={[
+      { url: '/guias/personal-trainer-para-corredores/', texto: 'o acompanhamento de quem já corre' },
+      { url: '/guias/como-escolher-personal-trainer/', texto: 'como filtrar profissionais antes de fechar' },
+    ]}
+  />
 
   <section class="section-sm">
     <div class="container">
