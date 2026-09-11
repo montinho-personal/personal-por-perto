@@ -34,7 +34,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/bom-dia-como-fazer';
-const atualizadoEm = '2026-08-24';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -73,21 +73,38 @@ const title = 'Bom-dia (good morning): como fazer certo';
 const description =
   'Bom-dia (good morning): a dobradiça com barra nas costas, por que ele se faz leve, a diferença para stiff e terra romeno e como blindar a lombar sem se machucar.';
 
+const capa = '/capas-conteudo/bom-dia-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem executando o exercício bom dia com barra nas costas, com glúteos e posteriores destacados e os pontos quadril para trás, coluna neutra e joelhos semiflexionados — bom dia: como fazer do jeito certo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Bom-dia: a dobradiça que blinda a lombar — se você não tiver pressa</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Nenhum exercício divide tanto os vestiários: para uns, o bom-dia

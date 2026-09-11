@@ -36,7 +36,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/rosca-alternada-como-fazer';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -75,21 +75,38 @@ const title = 'Rosca alternada: como fazer e os erros comuns';
 const description =
   'Rosca alternada: o giro de punho que diferencia o exercício, em pé ou sentado, alternar ou levantar junto, e os erros que tiram o bíceps do movimento.';
 
+const capa = '/capas-conteudo/rosca-alternada-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem executando a rosca alternada com halteres, com o bíceps destacado e os pontos cotovelos fixos, sem balanço e amplitude completa — rosca alternada: como fazer do jeito certo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Rosca alternada: a rosca que treina o giro, não só a dobra</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O bíceps tem duas funções — dobrar o cotovelo e girar o antebraço —

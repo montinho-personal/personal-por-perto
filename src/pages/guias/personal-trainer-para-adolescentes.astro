@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-trainer-para-adolescentes';
-const atualizadoEm = '2026-08-06';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -84,21 +84,38 @@ const title = 'Personal trainer para adolescentes: o guia';
 const description =
   'Personal trainer para adolescentes: se a musculação atrapalha o crescimento, com que idade começar, o que muda no treino, suplementação e como escolher o profissional.';
 
+const capa = '/capas-conteudo/personal-trainer-para-adolescentes.webp';
+const capaAlt =
+  'Arte da capa: personal trainer orientando dois adolescentes em exercícios com kettlebell e halteres na academia — personal trainer para adolescentes: segurança, técnica e evolução na fase certa — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guias</p>
     <h1>Personal trainer para adolescentes: o guia para pais e responsáveis</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       A frase é sempre parecida: "meu filho quer começar a treinar, mas
