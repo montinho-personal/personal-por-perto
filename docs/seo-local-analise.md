@@ -102,3 +102,30 @@ depois de uma leva limpa o volume sobe.
 
 Bairro da mesma cidade também tem vantagem de atribuição: se o tráfego de
 BH se mover, sabemos qual mudança mexeu.
+
+## 6. Execução
+
+| leva | data | cidade | bairros |
+|---|---|---|---|
+| 1 | 09/09/2026 | Belo Horizonte | Barreiro, Belvedere, Cidade Nova, Pampulha |
+| 2 | 11/09/2026 | Porto Alegre | Menino Deus, Cidade Baixa |
+
+**Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
+— Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
+mesmo cluster nobre centro-norte, e dois deles usam a mesma forma
+("formato 1, formato 2..."). Os dois novos foram escolhidos por zona e por
+perfil econômico diferentes, não por CEP nobre.
+
+- **Menino Deus** (Zona Sul, ~31 mil moradores em 230 ha): o bairro tem
+  Parque Marinha do Brasil e o trecho 3 da Orla do Guaíba a pé. O ângulo é
+  o inventário honesto — tudo o que o espaço público entrega de graça, e a
+  única coisa que falta, que é carga progressiva.
+- **Cidade Baixa** (boêmio, estudantil, kitnets, Redenção na divisa): o
+  ângulo são três restrições reais do bairro — espaço, tempo de
+  permanência e o relógio —, e o formato de acompanhamento que sobrevive
+  a uma mudança de endereço.
+
+**Ainda sem dados.** A leva de BH foi ao ar em 09/09; nenhum relatório novo
+chegou desde então. A ordem seguinte continua sendo a da seção 4 — Salvador
+(949 impressões, 18 cliques, 5 bairros) é a próxima —, mas a decisão de
+acelerar ou parar depende do export de Páginas, não de palpite.

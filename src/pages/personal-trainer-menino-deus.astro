@@ -1,0 +1,292 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino de musculação para iniciantes',
+    descricao: 'O que fazer com a parte que o parque não entrega: carga.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Para quem já roda o Marinha e quer saber o que falta na semana.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-menino-deus';
+const atualizadoEm = '2026-09-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer no Menino Deus', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Menino Deus?',
+    resposta:
+      'A referência de Porto Alegre vai de R$ 80 a R$ 190 pela aula avulsa e de R$ 400 a R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais. No Menino Deus os valores ficam no meio dessas faixas — o bairro tem renda alta, mas não o padrão de metro quadrado do Moinhos ou do Três Figueiras, e a concorrência entre profissionais que atendem no Parque Marinha ajuda a segurar o preço.',
+  },
+  {
+    pergunta: 'Dá para treinar só no Parque Marinha do Brasil?',
+    resposta:
+      'Dá para fazer muita coisa, e falta uma. O parque entrega pista, trilhas, quadras, campos, espaço aberto e a orla logo ali — cardio, deslocamento e trabalho com o peso do corpo estão resolvidos de graça. O que ele não entrega é carga progressiva: não existe barra, anilha nem máquina, e o peso do próprio corpo deixa de ser desafio depois de alguns meses. Quem treina só ali costuma ter fôlego excelente e força estagnada.',
+  },
+  {
+    pergunta: 'O que o trecho 3 da Orla do Guaíba oferece para quem treina?',
+    resposta:
+      'São 1,6 km ao longo da avenida Edvaldo Pereira Paiva, entre a foz do Arroio Dilúvio e o Parque Gigante, entregues em 2022. Tem pista de caminhada totalmente acessível, ciclovia, iluminação em LED, vestiário, 29 quadras e estruturas de apoio ao esporte — além da maior pista de skate da América Latina. Para quem mora no Menino Deus, é uma segunda estrutura pública a poucos minutos da primeira.',
+  },
+  {
+    pergunta: 'Personal atende dentro do Parque Marinha?',
+    resposta:
+      'É comum, e é uma das cenas mais visíveis do bairro no começo da manhã e no fim da tarde. Vale confirmar com o profissional como ele resolve os dias de chuva e os meses de inverno, porque um plano que só existe ao ar livre perde vários treinos por mês entre junho e setembro — e é justamente a interrupção, não a intensidade, que costuma derrubar o resultado.',
+  },
+  {
+    pergunta: 'Vale a pena ter academia além do parque?',
+    resposta:
+      'Depende do seu objetivo, e a resposta honesta é sim para a maioria. Se a meta é saúde geral e condicionamento, o parque resolve bem. Se envolve ganho de massa, mudança de composição corporal ou proteção articular a longo prazo, é preciso carga que aumente ao longo dos meses — e isso exige equipamento, seja em academia, em casa ou na estrutura do prédio. Quem tem dor ou limitação deve passar por médico ou fisioterapeuta antes de definir esse caminho.',
+  },
+];
+
+const title = 'Personal Trainer no Menino Deus (POA): parque, orla e preços';
+const description =
+  'Personal trainer no Menino Deus, Porto Alegre: o que o Parque Marinha do Brasil e a Orla do Guaíba entregam de graça, o que eles não entregam, quanto custa e como montar a semana.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer no Menino Deus: o bairro tem tudo, menos peso</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Poucos bairros de Porto Alegre têm a sorte do Menino Deus: o
+      <strong>Parque Marinha do Brasil</strong> de um lado, o trecho 3 da
+      <strong>Orla do Guaíba</strong> do outro, e tudo a pé. É estrutura
+      pública melhor do que a de muita academia paga.
+    </p>
+
+    <p class="lead">
+      Por isso este guia não começa por "onde treinar" — isso está
+      resolvido. Começa pelo inventário honesto do que está disponível de
+      graça e, principalmente, pelo que falta.
+    </p>
+
+    <div class="prose">
+      <h2>O que o bairro te dá</h2>
+      <p>
+        O <strong>Parque Marinha do Brasil</strong> é o ativo principal:
+        uma faixa verde ampla na margem do Guaíba, arborizada, com
+        trilhas, quadras poliesportivas, campos de futebol, área de skate
+        e patinação, estacionamento e até parcão. Cabe corrida longa,
+        caminhada, funcional, esporte coletivo e treino com o peso do
+        corpo, tudo no mesmo lugar.
+      </p>
+
+      <p>
+        A poucos minutos, o <strong>trecho 3 da Orla do Guaíba</strong>
+        acrescenta outra camada. São 1,6 km ao longo da avenida Edvaldo
+        Pereira Paiva, entre a foz do Arroio Dilúvio e o Parque Gigante,
+        entregues em 2022: pista de caminhada totalmente acessível,
+        ciclovia, iluminação em LED, vestiário, 29 quadras com estruturas
+        de apoio ao esporte e a maior pista de skate da América Latina.
+      </p>
+
+      <p>
+        Some a isso a densidade do bairro — cerca de 31 mil moradores em
+        230 hectares — e o resultado é previsível: no começo da manhã e
+        no fim da tarde, o parque vira o ponto de encontro de quem treina
+        no Menino Deus, com personal trainers atendendo ali em horário
+        fixo.
+      </p>
+
+      <h2>E o que ele não te dá</h2>
+      <p>
+        Uma coisa só, e ela é decisiva: <strong>carga progressiva</strong>.
+      </p>
+
+      <p>
+        Não existe barra, anilha nem máquina no Parque Marinha. O peso do
+        próprio corpo funciona muito bem como estímulo nos primeiros
+        meses, e depois para de funcionar — porque ele não aumenta. Você
+        continua pesando o mesmo, e a única forma de progredir passa a ser
+        fazer mais repetições, o que resolve resistência e não resolve
+        força.
+      </p>
+
+      <p>
+        O sintoma é reconhecível e comum no bairro: a pessoa treina há
+        um ano, tem fôlego excelente, corre bem — e a força parou no
+        lugar onde estava no terceiro mês. Não é falta de disciplina. É o
+        teto do equipamento disponível.
+      </p>
+
+      <h2>Como fechar a lacuna</h2>
+      <p>
+        A solução não é abandonar o parque — seria trocar um ativo raro
+        por uma esteira. É <strong>somar</strong>, e há três caminhos
+        comuns no bairro:
+      </p>
+
+      <p>
+        <strong>Duas sessões de carga por semana em academia</strong>, com
+        o resto da semana no parque. É o arranjo mais eficiente para quem
+        já usa bem o espaço aberto: o cardio continua de graça, e a
+        mensalidade paga só o que a rua não tem.
+      </p>
+
+      <p>
+        <strong>A academia do prédio.</strong> O Menino Deus é vertical e
+        boa parte dos prédios mais recentes tem sala de musculação. Para
+        quem mora num deles, a conta é ainda melhor: carga no elevador,
+        cardio na esquina, mensalidade zero.
+      </p>
+
+      <p>
+        <strong>Equipamento mínimo em casa.</strong> Um par de halteres
+        ajustáveis e uma banda resolvem mais do que parece quando o
+        programa é bem montado — e cabem num apartamento compacto, que é
+        o padrão de boa parte do bairro.
+      </p>
+
+      <ContextualCta path={path} localidade="no Menino Deus" assunto={title} posicao="meio" />
+
+      <h2>Quanto custa por aqui</h2>
+      <p>
+        A referência da capital, publicada no guia de <a
+        href="/personal-trainer/porto-alegre-rs/">personal trainer em
+        Porto Alegre</a>, é de R$ 80 a R$ 190 pela aula avulsa e de
+        R$ 400 a R$ 1.150 pelo pacote mensal com 2 a 3 sessões semanais.
+      </p>
+
+      <p>
+        No Menino Deus o padrão fica no meio dessas faixas. O bairro tem
+        renda alta e escolaridade alta, mas não o metro quadrado do
+        Moinhos de Vento ou do Três Figueiras — e há um fator que empurra
+        o preço para baixo: atender no parque não tem custo de estrutura
+        para o profissional, e a concorrência entre quem atende ali é
+        visível. Quem cobra o topo da faixa costuma estar vendendo
+        atendimento a domicílio ou em studio, não sessão ao ar livre.
+      </p>
+
+      <h2>O inverno é a variável que ninguém coloca na conta</h2>
+      <p>
+        Um plano que existe só ao ar livre é um plano com quatro meses de
+        fragilidade em Porto Alegre. Entre junho e setembro, a combinação
+        de frio, chuva e escuridão às seis da tarde tira vários treinos
+        por mês de quem não tem alternativa coberta.
+      </p>
+
+      <p>
+        E o que derruba resultado quase nunca é a intensidade da sessão —
+        é a interrupção. Perguntar ao profissional <strong>o que acontece
+        no dia de chuva</strong> antes de fechar o pacote diz mais sobre
+        ele do que qualquer credencial no perfil.
+      </p>
+
+      <h2>Como escolher bem no Menino Deus</h2>
+      <p>
+        Valem os filtros de sempre — avaliação física na primeira semana,
+        periodização explicada com clareza, experiência com o seu
+        objetivo e zero promessa de milagre —, detalhados no guia <a
+        href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+
+      <p>
+        E vale uma pergunta específica do bairro: <strong>como ele
+        progride carga sem equipamento</strong>. Quem atende no parque e
+        tem resposta boa para isso — variações mais difíceis, alavancas
+        piores, tempo sob tensão, pausa, unilateral — conhece o ofício.
+        Quem só responde "aumenta a repetição" está entregando exatamente
+        o teto descrito aqui em cima.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer no Menino Deus" />
+
+    <ContextualCta path={path} localidade="no Menino Deus" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

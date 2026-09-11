@@ -1,5 +1,5 @@
 /**
- * Os 97 bairros que têm página própria.
+ * Os 99 bairros que têm página própria.
  *
  * Fonte única: cada entrada carrega o slug, o nome do bairro, a locução já
  * flexionada ("no Batel", "na Aldeota", "nos Jardins" — em português a
@@ -59,6 +59,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-campeche', nome: 'Campeche', locucao: 'no Campeche', cidade: 'florianopolis-sc' },
   { slug: 'personal-trainer-casa-forte', nome: 'Casa Forte', locucao: 'em Casa Forte', cidade: 'recife-pe' },
   { slug: 'personal-trainer-chacara-cachoeira', nome: 'Chácara Cachoeira', locucao: 'na Chácara Cachoeira', cidade: 'campo-grande-ms' },
+  { slug: 'personal-trainer-cidade-baixa', nome: 'Cidade Baixa', locucao: 'na Cidade Baixa', cidade: 'porto-alegre-rs' },
   { slug: 'personal-trainer-cidade-maia', nome: 'Cidade Maia', locucao: 'na Cidade Maia', cidade: 'guarulhos-sp' },
   { slug: 'personal-trainer-cidade-nova-bh', nome: 'Cidade Nova', locucao: 'no Cidade Nova', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-coco-fortaleza', nome: 'Cocó', locucao: 'no Cocó', cidade: 'fortaleza-ce' },
@@ -94,6 +95,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-lourdes', nome: 'Lourdes', locucao: 'no Lourdes', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-manaira', nome: 'Manaíra', locucao: 'em Manaíra', cidade: 'joao-pessoa-pb' },
   { slug: 'personal-trainer-meireles', nome: 'Meireles', locucao: 'no Meireles', cidade: 'fortaleza-ce' },
+  { slug: 'personal-trainer-menino-deus', nome: 'Menino Deus', locucao: 'no Menino Deus', cidade: 'porto-alegre-rs' },
   { slug: 'personal-trainer-miramar', nome: 'Miramar', locucao: 'no Miramar', cidade: 'joao-pessoa-pb' },
   { slug: 'personal-trainer-moema', nome: 'Moema', locucao: 'em Moema', cidade: 'sao-paulo-sp' },
   { slug: 'personal-trainer-moinhos-de-vento', nome: 'Moinhos de Vento', locucao: 'no Moinhos de Vento', cidade: 'porto-alegre-rs' },

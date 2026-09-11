@@ -1,0 +1,312 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/porto-alegre-rs/',
+    titulo: 'Personal trainer em Porto Alegre',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/musculacao/melhor-horario-para-treinar/',
+    titulo: 'Qual o melhor horário para treinar',
+    descricao: 'A resposta honesta para quem dorme tarde — e por que ela não é "de manhã".',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-iniciantes/',
+    titulo: 'Personal trainer para iniciantes',
+    descricao: 'Vale a pena contratar no começo? Os três fatores que decidem.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-online-funciona/',
+    titulo: 'Personal trainer online funciona?',
+    descricao: 'O formato que sobrevive a mudança de endereço e de cidade.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-cidade-baixa';
+const atualizadoEm = '2026-09-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Porto Alegre', url: '/personal-trainer/porto-alegre-rs/' },
+  { nome: 'Personal Trainer na Cidade Baixa', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Cidade Baixa?',
+    resposta:
+      'A referência de Porto Alegre vai de R$ 80 a R$ 190 pela aula avulsa e de R$ 400 a R$ 1.150 pelo pacote mensal. Na Cidade Baixa o mercado trabalha na base dessas faixas, e o formato mais vendido não é o pacote mensal completo: são sessões avulsas, pacotes curtos para aprender e acompanhamento online. O bairro tem o aluguel médio de apartamento em torno de R$ 1.800 e um público que ainda está montando a vida financeira — o preço se ajusta a isso.',
+  },
+  {
+    pergunta: 'Dá para treinar bem só na Redenção?',
+    resposta:
+      'Dá, e é o que a maioria do bairro faz. O Parque Farroupilha tem 37,5 hectares, volta completa de 2,5 km em terra batida, aparelhos de ginástica, quadras de futebol, tênis e vôlei, e áreas de gramado. A limitação é a mesma de qualquer parque: não há carga que aumente. Para condicionamento e saúde geral, resolve; para ganho de massa consistente ao longo dos meses, precisa somar equipamento em algum momento.',
+  },
+  {
+    pergunta: 'Treinar de manhã cedo funciona em um bairro que dorme tarde?',
+    resposta:
+      'Para quem dorme às duas da manhã, não — e insistir nisso é um dos motivos mais comuns de desistência por aqui. Treino às 7h depois de cinco horas de sono rende pouco, machuca mais e cobra do resto do dia. A pergunta útil não é qual horário é melhor no abstrato, é qual horário sobrevive à sua semana de verdade. Para boa parte da Cidade Baixa, isso significa fim de tarde ou início da noite, não o amanhecer.',
+  },
+  {
+    pergunta: 'Vale contratar personal morando de aluguel por um ano só?',
+    resposta:
+      'Vale, e o formato é que muda. Pacote longo com foco em estrutura de academia específica faz pouco sentido para quem vai mudar de endereço no fim do contrato. Faz muito mais sentido contratar algumas sessões para aprender execução e sair com um treino escrito que funcione em qualquer lugar — ou acompanhamento online, que atravessa a mudança sem interrupção. O que você leva junto é o conhecimento, não a matrícula.',
+  },
+  {
+    pergunta: 'Kitnet sem espaço: dá para treinar em casa na Cidade Baixa?',
+    resposta:
+      'Dá, com escopo honesto. Num apartamento compacto cabem elásticos, uma banda de resistência e halteres ajustáveis, e isso já sustenta um programa de força razoável por um bom tempo — desde que alguém organize a progressão, que é a parte que o equipamento não resolve. O que não cabe é agachamento com barra e supino. Combinar casa com Redenção cobre bastante coisa; o teto aparece quando o objetivo é ganho de massa significativo.',
+  },
+];
+
+const title = 'Personal Trainer na Cidade Baixa (POA): o plano que cabe na mudança';
+const description =
+  'Personal trainer na Cidade Baixa, Porto Alegre: preços reais para o bolso do bairro, a Redenção a pé, o horário que sobrevive à noite da Cidade Baixa e o formato que aguenta trocar de endereço.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Porto Alegre</p>
+    <h1>Personal trainer na Cidade Baixa: o plano precisa caber na caixa de mudança</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Cidade Baixa é o bairro onde as pessoas moram <em>por enquanto</em>:
+      apartamentos compactos e kitnets, contratos de aluguel curtos, a
+      UFRGS logo ali e um calendário de vida que gira com o calendário
+      acadêmico.
+    </p>
+
+    <p class="lead">
+      Isso muda o que faz sentido contratar. O treino que funciona aqui
+      não é o que depende de uma academia específica — é o que
+      <strong>continua funcionando depois da mudança</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>Três restrições reais, e o que cada uma elimina</h2>
+      <p>
+        Antes de falar de exercício, vale nomear o que o bairro impõe.
+        Cada uma dessas restrições descarta um formato inteiro de
+        acompanhamento — e é por não nomeá-las que muita gente contrata
+        errado e desiste em dois meses.
+      </p>
+
+      <p>
+        <strong>1. O espaço.</strong> A oferta de moradia aqui é
+        dominada por apartamentos compactos, kitnets e unidades de um a
+        dois dormitórios. Não cabe rack, não cabe barra, e a maioria
+        desses prédios não tem sala de musculação. Isso elimina o plano
+        de treino em casa com equipamento pesado.
+      </p>
+
+      <p>
+        <strong>2. O tempo de permanência.</strong> Contrato de aluguel
+        de um ano, mudança de cidade depois da formatura, troca de
+        endereço quando o valor sobe. Isso elimina o pacote longo
+        amarrado a uma academia específica — e torna caro qualquer
+        investimento que não seja portátil.
+      </p>
+
+      <p>
+        <strong>3. O relógio do bairro.</strong> A Cidade Baixa é a
+        região boêmia de Porto Alegre, com bares que fecham tarde e uma
+        rotina que, em boa parte das semanas, não combina com acordar às
+        seis. Isso elimina o plano de treino no amanhecer — e é a
+        restrição que mais gente finge que não existe.
+      </p>
+
+      <h2>O relógio, que é a restrição mais ignorada</h2>
+      <p>
+        Vale insistir nesta, porque ela é a que faz mais estrago em
+        silêncio. A pessoa contrata, marca 7h da manhã com a melhor das
+        intenções, cumpre duas semanas, começa a faltar e conclui que
+        "não tem disciplina".
+      </p>
+
+      <p>
+        O que aconteceu foi outra coisa: treino depois de cinco horas de
+        sono rende menos, aumenta o risco de execução ruim e cobra do
+        resto do dia. Não é fraqueza de caráter — é aritmética de
+        recuperação, e o
+        <a href="/musculacao/melhor-horario-para-treinar/">melhor horário
+        para treinar</a> é sempre o que sobrevive à semana real, não o
+        que soa mais virtuoso.
+      </p>
+
+      <p>
+        Para boa parte de quem mora aqui, a janela honesta é o fim da
+        tarde ou o início da noite. Um profissional que insiste no
+        amanhecer sem perguntar a que horas você dorme está montando um
+        plano para outra pessoa.
+      </p>
+
+      <ContextualCta path={path} localidade="na Cidade Baixa" assunto={title} posicao="meio" />
+
+      <h2>A Redenção resolve metade</h2>
+      <p>
+        O Parque Farroupilha faz divisa com o bairro, e é o melhor
+        equipamento que a Cidade Baixa tem: 37,5 hectares, volta completa
+        de <strong>2,5 km em terra batida</strong> — piso mais gentil com
+        o joelho que o asfalto —, aparelhos de ginástica, quadras de
+        futebol, tênis e vôlei, e gramado à vontade.
+      </p>
+
+      <p>
+        Para condicionamento, caminhada, corrida e treino com o peso do
+        corpo, é solução completa e gratuita, a pé de casa. A metade que
+        ela não resolve é a mesma de qualquer parque: <strong>carga que
+        aumenta</strong>. O peso do seu corpo não sobe de mês em mês, e
+        sem isso a força estaciona.
+      </p>
+
+      <p>
+        Num apartamento compacto, o complemento realista é pequeno e
+        cabe embaixo da cama: elásticos, uma banda de resistência e
+        halteres ajustáveis. Não substituem uma academia, e sustentam um
+        programa de força honesto por bastante tempo quando alguém
+        organiza a progressão.
+      </p>
+
+      <h2>O formato que atravessa a mudança</h2>
+      <p>
+        Juntando as três restrições, sobram dois arranjos que fazem
+        sentido de verdade aqui — e nenhum deles é o pacote mensal longo
+        que se vende por padrão.
+      </p>
+
+      <p>
+        <strong>Poucas sessões para aprender.</strong> Quatro a oito
+        sessões presenciais para aprender a execução, entender como a
+        carga progride e sair com um treino escrito. O que você leva
+        junto na mudança é o conhecimento, e ele não vence. Para quem
+        está começando, os três fatores que decidem se isso compensa
+        estão no guia de <a href="/guias/personal-trainer-para-iniciantes/">personal
+        trainer para iniciantes</a>.
+      </p>
+
+      <p>
+        <strong>Acompanhamento online.</strong> Custa menos que o
+        presencial, não depende de endereço e atravessa a mudança sem
+        interromper nada — inclusive mudança para outra cidade. A
+        contrapartida honesta é que exige autonomia, o que faz dele a
+        segunda etapa natural de quem já passou pelo aprendizado
+        presencial. Os critérios estão no guia
+        <a href="/guias/personal-online-funciona/">personal trainer online
+        funciona?</a>
+      </p>
+
+      <h2>Quanto custa por aqui</h2>
+      <p>
+        A referência da capital, no guia de <a
+        href="/personal-trainer/porto-alegre-rs/">personal trainer em
+        Porto Alegre</a>, vai de R$ 80 a R$ 190 pela aula avulsa e de
+        R$ 400 a R$ 1.150 pelo pacote mensal. A Cidade Baixa trabalha na
+        base dessas faixas — o bairro tem aluguel médio de apartamento em
+        torno de R$ 1.800 e um público que ainda está montando a vida
+        financeira.
+      </p>
+
+      <p>
+        O conselho prático sobre dinheiro é o mesmo de qualquer bairro
+        com orçamento apertado, e quase ninguém segue: peça a cotação do
+        que você realmente vai contratar — pacote curto ou online — e não
+        a da aula avulsa. Quem só cota avulsa recebe um número que
+        assusta e não corresponde ao que faria.
+      </p>
+
+      <h2>Como escolher bem na Cidade Baixa</h2>
+      <p>
+        Os critérios gerais estão no guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        periodização explicada, experiência com o seu objetivo, nenhuma
+        promessa de milagre. Dor ou limitação passa por médico ou
+        fisioterapeuta antes, e o personal trabalha a partir disso.
+      </p>
+
+      <p>
+        O critério extra daqui é uma pergunta só, e ela filtra rápido:
+        <strong>"o que acontece com o meu treino se eu mudar de
+        endereço?"</strong>. Quem responde com um plano — treino escrito,
+        adaptação para outra estrutura, migração para online — entendeu o
+        bairro. Quem responde que "aí a gente vê" não entendeu.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer na Cidade Baixa" />
+
+    <ContextualCta path={path} localidade="na Cidade Baixa" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
