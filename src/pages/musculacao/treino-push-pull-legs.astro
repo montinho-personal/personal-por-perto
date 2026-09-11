@@ -1,0 +1,353 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou full body: qual divisão escolher',
+    descricao: 'O comparativo das outras duas divisões — e a lógica de frequência que vale para todas.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-abc-como-montar/',
+    titulo: 'Treino ABC: como montar o seu',
+    descricao: 'A alternativa mais comum ao push pull legs, com exemplo completo de A, B e C.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'O volume semanal por grupo, que é o número que a divisão precisa entregar.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-para-iniciantes/',
+    titulo: 'Treino para iniciantes: por onde começar',
+    descricao: 'Se você está nos primeiros meses, a resposta sobre divisão é outra.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/treino-push-pull-legs';
+const atualizadoEm = '2026-09-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino push pull legs', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Push pull legs em 3 dias por semana funciona?',
+    resposta:
+      'Funciona, mas entrega menos do que a fama sugere. Em três dias você fecha o ciclo uma vez por semana, ou seja, cada grupo muscular é treinado uma vez a cada sete dias — a mesma frequência de um ABC de três dias, sem nenhuma vantagem sobre ele. A pesquisa sobre frequência aponta que distribuir o mesmo volume em duas sessões por semana tende a render mais que concentrar em uma. Se três dias é o seu teto, o push pull legs não é a escolha que mais aproveita esses dias.',
+  },
+  {
+    pergunta: 'Qual é a diferença entre push pull legs e ABC?',
+    resposta:
+      'O critério de agrupamento. O ABC costuma dividir por região ou por sessão de treino montada caso a caso, enquanto o push pull legs divide por função: tudo que empurra num dia, tudo que puxa no outro, pernas no terceiro. A consequência prática é que no push pull legs os músculos auxiliares treinam junto com os principais — o tríceps no dia de empurrar, o bíceps no dia de puxar —, em vez de receberem um dia separado depois de já terem trabalhado. É essa organização que reduz a chance de treinar tríceps na véspera do dia de peito.',
+  },
+  {
+    pergunta: 'O deltoide posterior entra no dia de push ou de pull?',
+    resposta:
+      'No de pull, e essa é a confusão mais comum da divisão. O ombro aparece inteiro no dia de empurrar na cabeça da maioria das pessoas, mas a porção posterior do deltoide não empurra: ela puxa o braço para trás, e trabalha nas remadas e nos exercícios de face pull. Colocar elevação posterior no dia de push é dar a ela um estímulo redundante num dia em que ela já está cansada de estabilizar. Mesma lógica para o trapézio, que pertence ao dia de puxar.',
+  },
+  {
+    pergunta: 'Dá para fazer push pull legs em 4 ou 5 dias por semana?',
+    resposta:
+      'Dá, e é onde a divisão fica desconfortável. Com quatro ou cinco dias o ciclo de três não fecha dentro da semana, então ele passa a rodar de forma contínua: o dia de perna cai numa terça nesta semana e num sábado na seguinte. Quem tem rotina fixa e depende de saber o que treina em cada dia costuma abandonar por aí. É perfeitamente possível manter, mas exige tratar o treino por ciclo e não por semana — e aceitar que o calendário não vai se repetir.',
+  },
+  {
+    pergunta: 'Preciso de dois dias de perna no push pull legs de 6 dias?',
+    resposta:
+      'Na versão de seis dias você acaba com dois dias de perna por semana, sim, e isso costuma ser o ponto de ruptura de quem tenta a divisão. Duas sessões de perna em sete dias é um volume que exige recuperação real, e a tentação é montar as duas iguais e pesadas. O caminho mais sustentável é diferenciá-las: uma centrada em agachamento e joelho, outra em dobradiça de quadril e posterior. Se a segunda sessão vira sempre a que você pula, o problema não é falta de disciplina — é que seis dias não cabem na sua semana.',
+  },
+];
+
+const title = 'Treino push pull legs: como montar e em quantos dias';
+const description =
+  'Push pull legs: o que entra em cada dia, por que a versão de 3 dias rende menos do que parece, as semanas de 3 e 6 dias prontas e quando o ABC é melhor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Push pull legs: a divisão que depende de quantos dias você tem</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O push pull legs divide o treino por <strong>função do
+      movimento</strong>: um dia para tudo que empurra, um para tudo que
+      puxa, um para pernas. É uma organização elegante e popular — e o que
+      decide se ela vale a pena para você não é nenhuma dessas qualidades,
+      é <strong>quantos dias por semana você treina de verdade</strong>.
+      Em três dias, ela não oferece nada que o ABC não ofereça. Em seis,
+      ela é provavelmente a melhor divisão disponível.
+    </p>
+
+    <div class="prose">
+      <h2>O que entra em cada dia</h2>
+      <p>
+        A regra é a direção da força, não a região do corpo. Isso resolve
+        sozinho o problema que atrapalha a maioria das divisões caseiras:
+        o músculo auxiliar treinar num dia e o principal no seguinte.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Push (empurrar):</strong> peito, ombro nas porções
+          anterior e lateral, e tríceps. Supino, desenvolvimento,
+          crucifixo, elevação lateral, extensões de tríceps.
+        </li>
+        <li>
+          <strong>Pull (puxar):</strong> dorsais, trapézio, deltoide
+          posterior e bíceps. Barra fixa, puxada, remadas, face pull,
+          roscas.
+        </li>
+        <li>
+          <strong>Legs (pernas):</strong> quadríceps, posterior, glúteo e
+          panturrilha. Agachamento, leg press, dobradiça de quadril,
+          flexoras, extensora.
+        </li>
+      </ul>
+
+      <p>
+        Duas alocações costumam sair erradas, e as duas são no ombro. O
+        <strong>deltoide posterior é pull</strong>, não push: ele leva o
+        braço para trás, e trabalha nas remadas. E o
+        <strong>trapézio é pull</strong> também, mesmo que o encolhimento
+        pareça um exercício à parte. Quem coloca os dois no dia de
+        empurrar está treinando-os cansados e repetindo estímulo.
+      </p>
+
+      <h2>A conta que decide tudo</h2>
+      <p>
+        Push pull legs é um ciclo de três dias. O que importa não é quantos
+        dias você treina, é <strong>quantas vezes o ciclo fecha</strong> —
+        porque é isso que define com que frequência cada grupo muscular é
+        estimulado.
+      </p>
+
+      <p>
+        Três dias por semana: o ciclo fecha uma vez, e cada grupo é
+        treinado <strong>uma vez a cada sete dias</strong>. Seis dias: o
+        ciclo fecha duas vezes, e cada grupo é treinado
+        <strong>duas vezes por semana</strong>.
+      </p>
+
+      <p>
+        Essa diferença é o artigo inteiro. A literatura sobre frequência
+        aponta na mesma direção de forma consistente: para um mesmo volume
+        semanal, dividir em duas sessões tende a render mais do que
+        concentrar numa só. Ou seja, o push pull legs de três dias entrega
+        a frequência mais baixa possível, e não compensa isso com nenhuma
+        vantagem própria — um ABC de três dias faz exatamente o mesmo. A
+        divisão só mostra o que tem de melhor quando há seis dias para
+        rodar duas voltas.
+      </p>
+
+      <h2>As duas semanas, lado a lado</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Versão 3 dias</th>
+              <th>Versão 6 dias</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Segunda</td>
+              <td>Push</td>
+              <td>Push A</td>
+            </tr>
+            <tr>
+              <td>Terça</td>
+              <td>—</td>
+              <td>Pull A</td>
+            </tr>
+            <tr>
+              <td>Quarta</td>
+              <td>Pull</td>
+              <td>Legs A</td>
+            </tr>
+            <tr>
+              <td>Quinta</td>
+              <td>—</td>
+              <td>Push B</td>
+            </tr>
+            <tr>
+              <td>Sexta</td>
+              <td>Legs</td>
+              <td>Pull B</td>
+            </tr>
+            <tr>
+              <td>Sábado</td>
+              <td>—</td>
+              <td>Legs B</td>
+            </tr>
+            <tr>
+              <td>Frequência por grupo</td>
+              <td>1× por semana</td>
+              <td>2× por semana</td>
+            </tr>
+            <tr>
+              <td>Volume por sessão</td>
+              <td>Alto</td>
+              <td>Metade, dividido em duas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Na versão de seis dias, A e B não são cópias. O objetivo de repetir
+        o ciclo é variar ênfase e cansaço: se o Push A abre com supino
+        reto pesado, o Push B abre com desenvolvimento e trata o peito com
+        inclinado e volume moderado. Duas sessões idênticas na mesma semana
+        é a receita mais rápida de abandonar a divisão.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="A tabela acima só funciona se os dias existirem de verdade na sua semana — e é aí que a divisão costuma cair, não na teoria. A ferramenta parte dos dias e do tempo que você realmente tem e devolve a distribuição que fecha, incluindo o que fazer quando são quatro dias e o ciclo de três não encaixa."
+        acao="Ver quantos dias a minha semana comporta de verdade"
+      />
+
+      <h2>Quando o ABC é a escolha melhor</h2>
+      <p>
+        Três situações, e nenhuma delas é sobre o push pull legs ser ruim.
+      </p>
+
+      <p>
+        <strong>Você treina três ou quatro dias.</strong> Em três, como já
+        vimos, não há ganho. Em quatro ou cinco o problema é outro e mais
+        chato: o ciclo de três não fecha dentro de sete dias, então ele
+        passa a rodar continuamente e o dia de perna migra pelo calendário
+        — terça numa semana, sábado na outra. Quem precisa saber de véspera
+        o que vai treinar costuma desistir por aí. Um
+        <a href="/musculacao/treino-abc-como-montar/">ABC de quatro dias</a>
+        se repete igual toda semana.
+      </p>
+
+      <p>
+        <strong>Você está nos primeiros meses.</strong> Quem começa evolui
+        bem com o corpo inteiro a cada sessão e ainda não tem volume para
+        justificar separar empurrar de puxar. O caminho está em
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a>.
+      </p>
+
+      <p>
+        <strong>Você tem um ponto fraco declarado.</strong> Divisões por
+        função tratam o corpo de forma equilibrada por desenho. Quem
+        precisa dar atenção desproporcional a um grupo específico consegue
+        isso com menos esforço numa divisão montada caso a caso — a
+        comparação completa está em
+        <a href="/musculacao/abc-ou-full-body/">ABC ou full body</a>.
+      </p>
+
+      <h2>O erro de quem copia a versão de seis dias</h2>
+      <p>
+        A versão de seis dias circula na internet como o padrão da divisão,
+        e é copiada por gente que treina quatro. O resultado previsível é a
+        semana começar completa e terminar truncada, com o segundo dia de
+        perna sempre sendo o sacrificado — o que transforma um programa de
+        duas sessões de perna num de uma, com o volume de cada sessão
+        errado para isso.
+      </p>
+
+      <p>
+        Vale também dizer o óbvio que os programas de seis dias costumam
+        omitir: seis sessões consecutivas sem dia de folga cobram
+        recuperação. O formato tradicional roda três dias, descansa um, e
+        repete — o que dá seis treinos em oito dias, não em sete. Se você
+        precisa que o calendário se repita toda segunda, essa é mais uma
+        razão para olhar o ABC.
+      </p>
+
+      <p>
+        A regra de decisão, então, é curta: <strong>seis dias disponíveis e
+        rotina flexível, push pull legs. Menos que isso, ou agenda que
+        precisa se repetir, ABC.</strong> A divisão não é o que faz o
+        músculo crescer — quem faz é o volume semanal por grupo, explicado
+        em <a href="/musculacao/quantas-series-e-repeticoes/">quantas
+        séries e repetições</a>. A divisão é só o calendário que entrega
+        esse volume sem atropelar a recuperação.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

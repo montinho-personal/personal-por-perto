@@ -1,0 +1,316 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/leg-press-como-fazer/',
+    titulo: 'Leg press: como fazer',
+    descricao: 'O artigo-pai: execução passo a passo, posição dos pés e os erros clássicos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-hack-como-fazer/',
+    titulo: 'Agachamento hack: como fazer',
+    descricao: 'O terceiro aparelho da família, e a tabela que compara os três.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-no-joelho/',
+    titulo: 'Treinar com dor no joelho',
+    descricao: 'Leitura útil antes de escolher o aparelho, se o joelho já reclama.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu',
+    descricao: 'Onde o leg press cabe numa semana que já tem agachamento.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/leg-press-45-ou-horizontal';
+const atualizadoEm = '2026-09-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Leg press 45° ou horizontal', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Por que consigo muito mais peso no leg press 45° do que no horizontal?',
+    resposta:
+      'Porque não é o mesmo peso. No 45° o carrinho desliza por uma rampa inclinada, e a força que você precisa vencer é apenas a componente do peso ao longo dessa rampa — algo em torno de 70% do que as anilhas marcam, antes de descontar o que os trilhos absorvem. No horizontal, a resistência costuma chegar por alavanca ou cabo, com relação própria entre o que está escrito e o que o seu joelho sente. Comparar quilos entre as duas máquinas não diz nada, e comparar com o agachamento livre diz menos ainda.',
+  },
+  {
+    pergunta: 'Qual dos dois é melhor para quem tem dor lombar?',
+    resposta:
+      'Nenhum dos dois por si só: o que importa é até onde você desce. A dor costuma aparecer quando a amplitude passa do ponto em que a pelve consegue ficar neutra — aí ela gira, a lombar arredonda contra o encosto e recebe carga em flexão. Isso acontece nas duas máquinas, mas tende a aparecer mais cedo no 45°, porque o tronco está fixo e toda a carga chega pelo quadril. Na prática, o horizontal costuma ser mais fácil de manter dentro da amplitude segura. Dor lombar que persiste pede avaliação de médico ou fisioterapeuta antes de ajustar treino.',
+  },
+  {
+    pergunta: 'O 45° faz mais glúteo que o horizontal?',
+    resposta:
+      'A diferença entre as máquinas é menor do que a diferença causada pela posição dos pés em qualquer uma delas. Pé mais alto na plataforma aumenta a flexão de quadril e a participação de glúteo e posterior; pé mais baixo desloca a ênfase para o quadríceps. Isso vale nos dois aparelhos. Se o objetivo é glúteo, ajustar o pé no aparelho que você já usa rende mais do que trocar de máquina.',
+  },
+  {
+    pergunta: 'Se a academia tem os dois, qual eu devo usar?',
+    resposta:
+      'Use o que permite a maior amplitude com a pelve neutra, e esse teste é individual — depende do comprimento do seu fêmur, da sua mobilidade de tornozelo e do desenho específico daquele aparelho. Faça uma série leve em cada um prestando atenção em onde o quadril começa a girar, e fique com o que oferece mais curso antes disso. Na dúvida entre dois que empataram, o 45° permite progressão de carga mais fina e costuma ser a escolha para treino pesado.',
+  },
+  {
+    pergunta: 'O horizontal é só para idosos e iniciantes?',
+    resposta:
+      'É uma fama injusta que vem da facilidade de entrar e sair dele. O horizontal realmente é mais acessível para quem tem dificuldade de se levantar de uma posição deitada e reclinada — o que inclui idosos, pessoas com obesidade e quem está em reabilitação —, e essa é uma vantagem real, não um demérito. Mas a musculatura não sabe em que ângulo ela está trabalhando: o estímulo depende de carga, amplitude e proximidade da falha, que o horizontal entrega igualmente bem.',
+  },
+];
+
+const title = 'Leg press 45° ou horizontal: o que realmente muda';
+const description =
+  'Leg press 45° ou horizontal: por que os quilos não se comparam, o que muda de fato para a lombar e o joelho, e qual escolher se a academia tem os dois.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Leg press 45° ou horizontal: o que realmente muda</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta, antes do resto: <strong>para o músculo, quase
+      nada</strong>. Os dois aparelhos treinam os mesmos grupos pelo mesmo
+      padrão de movimento, e nenhuma das duas versões tem vantagem de
+      estímulo sobre a outra. O que muda de verdade são três coisas
+      práticas — quanto peso aparece escrito, até onde dá para descer sem
+      a lombar entrar na conta, e quão fácil é entrar e sair da máquina.
+    </p>
+
+    <div class="prose">
+      <h2>Lado a lado</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>45° (inclinado)</th>
+              <th>Horizontal (sentado)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Como a carga chega</td>
+              <td>Carrinho por rampa, anilhas livres</td>
+              <td>Alavanca ou cabo, placas ou anilhas</td>
+            </tr>
+            <tr>
+              <td>Número na máquina</td>
+              <td>Bem maior que a carga real</td>
+              <td>Mais próximo do que se sente</td>
+            </tr>
+            <tr>
+              <td>Posição do tronco</td>
+              <td>Reclinado, quadril baixo</td>
+              <td>Sentado, quadril mais aberto</td>
+            </tr>
+            <tr>
+              <td>Risco de pelve girar no fundo</td>
+              <td>Aparece mais cedo</td>
+              <td>Aparece mais tarde</td>
+            </tr>
+            <tr>
+              <td>Entrar e sair</td>
+              <td>Exige levantar do reclinado</td>
+              <td>Simples, como de uma cadeira</td>
+            </tr>
+            <tr>
+              <td>Incremento de carga</td>
+              <td>Fino (anilhas pequenas)</td>
+              <td>Grosso (salto entre placas)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Por que os quilos não se comparam</h2>
+      <p>
+        Esta é a diferença que mais confunde, e ela é de física, não de
+        treino. No leg press 45°, o carrinho não sobe na vertical: ele
+        desliza por uma rampa. Contra a gravidade, o que resiste ao seu
+        empurrão é apenas a <strong>componente do peso ao longo dessa
+        rampa</strong> — na inclinação de 45°, cerca de 70% do que as
+        anilhas marcam. Some o atrito dos trilhos e o peso do próprio
+        carrinho, que ninguém conta, e o número perde qualquer sentido
+        absoluto.
+      </p>
+
+      <p>
+        No horizontal, a resistência quase sempre passa por um sistema de
+        alavanca ou por um cabo, cada um com a sua relação entre o que
+        está escrito na placa e o que chega ao joelho — e essa relação
+        muda de fabricante para fabricante.
+      </p>
+
+      <p>
+        A conclusão prática vale a pena guardar: <strong>o número do leg
+        press só serve para comparar você com você mesmo, naquela
+        máquina</strong>. Trocar de aparelho zera a referência, e trocar
+        de academia também. Quem se orgulha de 300 kg no 45° e se
+        constrange com 80 no horizontal está comparando duas coisas que não
+        se comparam.
+      </p>
+
+      <h2>A diferença que importa: onde a lombar entra</h2>
+      <p>
+        O leg press tem um limite de amplitude que não é o do joelho, é o
+        do quadril. Conforme a plataforma se aproxima do tronco, chega um
+        ponto em que o quadril não flexiona mais — e o movimento que
+        continua vem da <strong>pelve girando para trás</strong>, o que
+        arredonda a lombar contra o encosto. Como a coluna está presa e a
+        carga é alta, é a pior hora possível para ela se mexer.
+      </p>
+
+      <p>
+        Isso acontece nos dois aparelhos. Mas no 45° o quadril começa mais
+        fechado e todo o carrinho chega por ele, então esse ponto costuma
+        aparecer mais cedo. No horizontal, o tronco está mais erguido e
+        sobra mais curso antes de a pelve se envolver.
+      </p>
+
+      <p>
+        O sinal para observar não é o joelho tocar o peito — é a lombar
+        descolando do encosto. Quando ela descola, você passou do ponto, e
+        a repetição seguinte precisa parar antes. Se a dor na região baixa
+        das costas persiste mesmo com amplitude curta e carga moderada, a
+        conversa é com médico ou fisioterapeuta antes de continuar
+        ajustando o treino sozinho.
+      </p>
+
+      <FerramentaInline
+        id="personalIdeal"
+        texto="Onde a sua pelve começa a girar é algo que não dá para ver de dentro do aparelho, e é justamente o que decide a amplitude segura. Um par de olhos treinados resolve isso em duas séries; o teste ajuda a encontrar o profissional com o perfil e o formato que servem ao seu caso."
+        acao="Ver que tipo de profissional serve ao meu caso"
+      />
+
+      <h2>A diferença que ninguém menciona: entrar e sair</h2>
+      <p>
+        No 45° você se deita reclinado com o quadril baixo, e no fim da
+        série precisa se levantar dessa posição com as pernas cansadas.
+        Para quem tem dificuldade de se erguer de um assento fundo — idosos,
+        pessoas com obesidade, quem está em reabilitação de joelho ou
+        quadril — isso é um obstáculo real, e às vezes a razão silenciosa
+        pela qual a pessoa simplesmente para de usar o aparelho.
+      </p>
+
+      <p>
+        O horizontal se senta e se levanta como uma cadeira. Isso não é
+        detalhe de conforto: é o que decide se o exercício vai ser feito
+        toda semana ou evitado. E vale dizer o contrário do preconceito
+        comum — o músculo não sabe em que ângulo está trabalhando. O
+        estímulo depende de carga, amplitude e proximidade da falha, e o
+        horizontal entrega os três.
+      </p>
+
+      <h2>Qual escolher</h2>
+      <p>
+        Um teste, feito uma vez: faça uma série leve em cada aparelho
+        prestando atenção em um único ponto — onde a lombar começa a
+        descolar do encosto. Fique com o que oferece mais amplitude antes
+        disso. O resultado é individual e depende do comprimento do seu
+        fêmur, da sua mobilidade de tornozelo e do desenho daquela máquina
+        específica; não existe resposta que valha para todo mundo.
+      </p>
+
+      <p>
+        Se os dois empatarem, o critério de desempate é o objetivo. Para
+        treino pesado com progressão semanal, o 45° permite acrescentar
+        anilhas pequenas e avançar em degraus finos. Para quem prioriza
+        facilidade de acesso, consistência e controle de amplitude, o
+        horizontal. E a execução, que é a mesma nos dois, está detalhada em
+        <a href="/musculacao/leg-press-como-fazer/">leg press: como
+        fazer</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> para o músculo, os dois são
+        equivalentes. O 45° mostra números inflados porque a carga sobe por
+        uma rampa, permite progressão mais fina e é o preferido para treino
+        pesado; o horizontal tem amplitude segura mais generosa e é muito
+        mais fácil de entrar e sair. Escolha pelo aparelho em que você
+        desce mais fundo sem a lombar descolar do encosto — e pare de
+        comparar os quilos entre as duas máquinas, porque eles não medem a
+        mesma coisa.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

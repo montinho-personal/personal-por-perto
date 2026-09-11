@@ -261,8 +261,8 @@ de fechamento.
 
 | Artigo | slug | status |
 |---|---|---|
-| Treino push pull legs | `treino-push-pull-legs` | |
-| Leg press 45 ou horizontal | `leg-press-45-ou-horizontal` | |
+| Treino push pull legs | `treino-push-pull-legs` | ✅ 2026-09-11 · recorte declarado |
+| Leg press 45 ou horizontal | `leg-press-45-ou-horizontal` | ✅ 2026-09-11 · recorte declarado |
 | Treino de antebraço | `treino-de-antebraco` | |
 | Amplitude de movimento | `amplitude-de-movimento` | |
 | Cadência do movimento | `cadencia-do-movimento` | |
@@ -275,6 +275,56 @@ de fechamento.
 | Drop set: quando usar | `series-drop-set` | ⚠️ |
 | Treinar em jejum | `treino-em-jejum` | ⚠️ |
 | Puxada supinada: como fazer | `puxada-supinada-como-fazer` | ⚠️ |
+
+### Nota de 11/09/2026 — os dois recortes que fecham a parada dos 20
+
+**`treino-push-pull-legs`.** Checagem primeiro: `abc-ou-full-body` tem
+**zero** ocorrência de "push", "pull" ou "legs" no texto inteiro, e
+`treino-abc-como-montar` trata só do ABC. A divisão por função nunca foi
+coberta pelo portal — a única menção em todo o site estava na página da
+ferramenta de auditoria.
+
+O ângulo próprio é uma conta que os guias de PPL quase nunca fazem: **push
+pull legs é um ciclo de três dias, e o que importa não é quantos dias você
+treina, é quantas vezes o ciclo fecha.** Em três dias ele fecha uma vez, o
+que dá frequência de 1× por semana por grupo — exatamente o que um ABC de
+três dias entrega, sem nenhuma vantagem. A divisão só mostra o que tem de
+melhor em seis dias, quando o ciclo roda duas voltas. O artigo se organiza
+em torno dessa aritmética, com as duas semanas em tabela e uma seção sobre
+o desconforto de quatro ou cinco dias, em que o ciclo de três não fecha
+dentro da semana e o dia de perna migra pelo calendário.
+
+Recorte: o pai (`abc-ou-full-body`) compara duas divisões e agora **linka**
+para a terceira, com a ressalva de que abaixo de seis dias ela não compete
+com o ABC. Data de revisão do pai atualizada.
+
+**`leg-press-45-ou-horizontal`.** Aqui a checagem foi mais delicada, e vale
+registrar o que quase derrubou o artigo. `leg-press-como-fazer` existe e é
+bom — mas menciona "45°" **uma única vez em todo o arquivo, no texto
+alternativo da capa**. O corpo nunca distingue as duas máquinas.
+
+A sobreposição real é uma FAQ do pai: "Por que consigo tanto peso no leg
+press?", que em quatro frases diz que o ângulo do trenó desconta parte da
+gravidade. É posicionamento sobre o 45° isolado — e não menciona a máquina
+horizontal em nenhum momento, que é justamente a comparação que a consulta
+pede. O filho desdobra a física (a componente do peso na rampa, o atrito,
+o peso do carrinho, a relação de alavanca do horizontal) e acrescenta duas
+coisas que o pai não tem: **onde a pelve começa a girar aparece mais cedo
+no 45°**, porque o tronco está fixo e toda a carga chega pelo quadril; e a
+diferença de entrar e sair da máquina, que decide se o exercício vai ser
+feito toda semana por quem tem dificuldade de se erguer de um assento fundo.
+
+Recorte: pai ensina execução (igual nas duas máquinas), filho responde qual
+aparelho. Link do pai para o filho adicionado na seção da posição dos pés,
+com a data de revisão do pai atualizada.
+
+**Variação de estrutura, que é o ponto mais fácil de esquecer.** Os dois
+saíram com esqueletos diferentes de propósito: o PPL abre com a resposta
+condicional, constrói a aritmética de frequência, mostra o calendário em
+tabela e fecha com uma regra de decisão em uma frase — **sem callout
+"Resumindo"**. O leg press abre com a resposta curta ("para o músculo,
+quase nada"), põe a tabela comparativa logo no primeiro H2 e fecha com
+callout. Se tivessem saído com o mesmo esqueleto, um teria sido reescrito.
 
 ## Bloco Emagrecimento (12)
 
