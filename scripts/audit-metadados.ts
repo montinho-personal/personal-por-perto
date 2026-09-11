@@ -33,8 +33,10 @@
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { bairros } from '../src/data/bairros';
 
 const DIST = 'dist';
+const DOMINIO = 'https://www.personalporperto.com.br';
 
 const args = process.argv.slice(2);
 const soPiloto = args.includes('--piloto');
@@ -129,6 +131,67 @@ const SUPERLATIVOS = /\b(os|as) melhores\b|\bo melhor\b|\bimperd[ií]vel\b|\bdef
 /** Lixo de template que nunca deve chegar ao HTML. */
 const LIXO = /\b(undefined|null|NaN|\[object Object\])\b/;
 
+/**
+ * Largura estimada em pixels.
+ *
+ * O Google não corta por caractere, corta por largura: "Personal Trainer na
+ * Gleba Palhano" e "Personal Trainer em Icaraí" têm comprimentos parecidos e
+ * larguras bem diferentes, porque `l`, `i` e `í` ocupam um terço de um `m`.
+ * Contar caractere é a aproximação grosseira; esta é a menos grosseira.
+ *
+ * A tabela abaixo é a largura relativa de cada classe de caractere em Arial,
+ * normalizada para o corpo da fonte (1.0 = tamanho da fonte).
+ *
+ * CALIBRAÇÃO: os vinte textos do piloto foram medidos no Chromium com
+ * `canvas.measureText` em Arial 20px e 14px. A tabela crua superestimava de
+ * forma consistente — entre 3,6% e 4,9%, média 4,2% —, então entra o fator
+ * `CALIBRE`. Depois dele o erro cai para menos de 1% contra o navegador.
+ * Continua sendo estimativa: a SERP real varia com dispositivo, com a fonte
+ * que o Google serve e com o prefixo de data que ele às vezes acrescenta.
+ */
+const CALIBRE = 0.958;
+const LARGURA_TITULO_PX = 600; // uma linha de título no desktop
+/**
+ * Orçamento de duas linhas de descrição no desktop. É aproximado de propósito:
+ * não existe número oficial, e o que circula como "920px" corresponde a um
+ * layout mais antigo. 990px equivale a cerca de 155 caracteres na medição
+ * deste projeto (6,39px por caractere), que é onde o corte costuma cair.
+ */
+const LARGURA_DESC_PX = 990;
+const FONTE_TITULO = 20;
+const FONTE_DESC = 14;
+
+function larguraRelativa(c: string): number {
+  if ('iíjl|!.,;:\'’`[]()'.includes(c)) return 0.28;
+  if ('ftr I'.includes(c)) return 0.34;
+  if ('mwMW—'.includes(c)) return 0.86;
+  if (c >= 'A' && c <= 'Z') return 0.68;
+  if ('0123456789'.includes(c)) return 0.56;
+  return 0.55;
+}
+
+/** Largura estimada de uma frase, em pixels, para um corpo de fonte. */
+function larguraPx(frase: string, fonte: number): number {
+  let total = 0;
+  for (const c of frase) total += larguraRelativa(c) * fonte;
+  return Math.round(total * CALIBRE);
+}
+
+/** Nomes de bairro por slug de página, para checar presença no título. */
+const NOME_DO_BAIRRO = new Map(bairros.map((b) => [b.slug, b.nome]));
+
+/**
+ * Comparação tolerante a acento e caixa: o título escreve "Icaraí" e o dado
+ * diz "Icaraí", mas um eventual "Icarai" no título não deve passar batido
+ * como ausência — nem gerar alarme falso.
+ */
+function normaliza(s: string): string {
+  return s
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
 /** Emoji e pictogramas — fora do padrão editorial do portal. */
 const EMOJI =
   /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{FE0F}\u{2022}\u{2B00}-\u{2BFF}]/u;
@@ -214,6 +277,8 @@ interface Pagina {
   twDesc: string;
   nTitles: number;
   nDescs: number;
+  pxTitle: number;
+  pxDesc: number;
 }
 
 const erros: string[] = [];
@@ -242,8 +307,38 @@ for (const [rota, arquivo] of alvo) {
     twDesc: metas(head, 'twitter:description', 'name')[0] ?? '',
     nTitles: titles.length,
     nDescs: descs.length,
+    pxTitle: larguraPx(titles[0] ?? '', FONTE_TITULO),
+    pxDesc: larguraPx(descs[0] ?? '', FONTE_DESC),
   };
   paginas.push(p);
+
+  // --- canonical: presente, absoluto, com www, com barra final e auto-referente
+  const canonical = (head.match(/<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i) ??
+    [])[1];
+  if (!canonical) {
+    erros.push(`${rota} sem <link rel="canonical">`);
+  } else if (canonical !== `${DOMINIO}${rota}`) {
+    erros.push(`${rota} canonical divergente: ${canonical}`);
+  }
+
+  // --- indexação permitida
+  const robots = metas(head, 'robots', 'name')[0] ?? '';
+  if (/noindex/i.test(robots)) {
+    erros.push(`${rota} com meta robots noindex — metadado revisado numa página fora do índice`);
+  }
+
+  // --- o bairro precisa estar no título da própria página de bairro
+  const slugBairro = rota.replace(/^\/|\/$/g, '');
+  const nomeBairro = NOME_DO_BAIRRO.get(slugBairro);
+  if (nomeBairro && p.title && !normaliza(p.title).includes(normaliza(nomeBairro))) {
+    erros.push(`${rota} title não contém o nome do bairro ("${nomeBairro}"): ${p.title}`);
+  }
+
+  // --- largura: o corte real da SERP é em pixel, não em caractere
+  if (p.pxTitle > LARGURA_TITULO_PX)
+    avisos.push(`${rota} title ~${p.pxTitle}px, acima dos ${LARGURA_TITULO_PX}px do desktop`);
+  if (p.pxDesc > LARGURA_DESC_PX)
+    avisos.push(`${rota} description ~${p.pxDesc}px, acima dos ${LARGURA_DESC_PX}px do desktop`);
 
   // --- presença e unicidade dentro da própria página
   if (p.nTitles !== 1) erros.push(`${rota} tem ${p.nTitles} <title> (esperado 1)`);
@@ -327,10 +422,20 @@ if (!soPiloto) {
 // -------------------------------------------------------------------- saída
 
 if (comTabela) {
-  console.log('\nrota'.padEnd(46) + 'title'.padStart(6) + 'desc'.padStart(7));
+  console.log(
+    '\nrota'.padEnd(46) +
+      'title'.padStart(6) +
+      'px'.padStart(6) +
+      'desc'.padStart(6) +
+      'px'.padStart(6),
+  );
   for (const p of [...paginas].sort((a, b) => a.rota.localeCompare(b.rota))) {
     console.log(
-      p.rota.padEnd(46) + String(p.title.length).padStart(6) + String(p.description.length).padStart(7),
+      p.rota.padEnd(46) +
+        String(p.title.length).padStart(6) +
+        String(p.pxTitle).padStart(6) +
+        String(p.description.length).padStart(6) +
+        String(p.pxDesc).padStart(6),
     );
   }
 }

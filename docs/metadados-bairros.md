@@ -16,6 +16,33 @@ A consequência prática: editar as duas constantes no topo do `.astro` atualiza
 os seis de forma coerente, e qualquer divergência entre eles é defeito, não
 escolha. É exatamente isso que `npm run audit:metadados` verifica.
 
+## 1.1. Linha de base por página — 28/06 a 10/09/2026
+
+Números informados pelo Renato, do Search Console. Registrados **antes** da
+publicação, que é a única hora em que registrá-los tem valor.
+
+| bairro | URL confirmada | cliques | impr. | CTR | pos. | problema |
+|---|---|---|---|---|---|---|
+| Tijuca | `/personal-trainer-tijuca/` | 3 | 85 | 3,53% | 8,53 | subiu para ~7,12 nas 34 impressões recentes e parou de converter |
+| Barra da Tijuca | `/personal-trainer-barra-da-tijuca/` | 2 | 78 | 2,56% | 8,12 | bem posicionada, pouca atração; 30 impressões recentes sem clique |
+| Savassi | `/personal-trainer-savassi/` | 0 | 28 | 0% | 8,79 | sem clique + disputava a intenção do Lourdes |
+| Icaraí | `/personal-trainer-icarai/` | 0 | 26 | 0% | 7,38 | maior desperdício de CTR do lote |
+| Boa Viagem | `/personal-trainer-boa-viagem/` | 0 | 26 | 0% | 8,92 | primeira página sem proposta competitiva |
+| Leblon | `/personal-trainer-leblon/` | 1 | 34 | 2,94% | 13,38 | posição recente ~7,99 sem clique novo |
+| Moema | `/personal-trainer-moema/` | 1 | 26 | 3,85% | 8,88 | já converte, falta diferenciação |
+| Brooklin | `/personal-trainer-brooklin/` | 0 | 13 | 0% | 9,08 | amostra pequena, posição competitiva |
+| Asa Sul | `/personal-trainer-asa-sul/` | 0 | 14 | 0% | 9,43 | boa posição, nenhum clique |
+| Gleba Palhano | `/personal-trainer-gleba-palhano/` | 0 | 15 | 0% | 6,87 | melhor posição do lote, nenhum clique |
+
+As dez URLs foram conferidas uma a uma no `dist/` e no sitemap — nenhuma
+presumida. Todas existem, todas estão no sitemap, todas com barra final.
+
+**A limitação, dita de frente:** não há exportação consulta × página. Então não
+dá para saber qual consulta gerou cada impressão, e nada aqui afirma isso. A
+leitura de "intenção principal" por bairro vem do conteúdo da página e da SERP
+pesquisada à mão, não de dado de consulta. Enquanto essa exportação não existir,
+a atribuição por consulta continua sendo hipótese.
+
 ## 2. O diagnóstico do estado anterior
 
 Auditoria das dez páginas antes da mudança:
@@ -234,6 +261,36 @@ snippet ocupa espaço sem informar.
 Todos os dez títulos entre 51 e 57 caracteres, todas as descrições entre 138 e
 153. Zero duplicatas entre si e com o resto do site.
 
+### Largura real, medida no navegador
+
+Caractere não é a unidade de corte da SERP — pixel é. As vinte frases foram
+medidas no Chromium com `canvas.measureText`, em Arial 20px (título) e 14px
+(descrição), que é o que o Google serve no desktop:
+
+| bairro | title px | descrição px |
+|---|---|---|
+| Tijuca | 500 | 946 |
+| Barra da Tijuca | 474 | 929 |
+| Savassi | 516 | 955 |
+| Icaraí | 476 | 918 |
+| Boa Viagem | 496 | 990 |
+| Leblon | 494 | 970 |
+| Moema | 498 | 973 |
+| Brooklin | 474 | 939 |
+| Asa Sul | 528 | 916 |
+| Gleba Palhano | 510 | 883 |
+
+Os dez títulos cabem com folga na linha de ~600px do desktop — o mais largo,
+Asa Sul, usa 528px. As descrições vão de 883px a 990px, contra um orçamento de
+trabalho de ~990px para duas linhas. **Boa Viagem está exatamente no limite**:
+se o Google prefixar a data, é a primeira a perder as últimas palavras — e como
+a frase termina em "no Recife", o que se perde é a localidade, não o miolo.
+Fica anotada como a única a revisar se a medição de outubro mostrar truncamento.
+
+A medição também serviu para calibrar o estimador da auditoria: a tabela crua
+superestimava 4,2% em média, e o fator de correção derrubou o erro para menos
+de 1% contra o navegador.
+
 ### O que cada snippet promete, e onde a página entrega
 
 Cada afirmação foi conferida contra o HTML antes de entrar:
@@ -259,10 +316,12 @@ atendimento presencial do Montinho fora de Alphaville.
 `npm run audit:metadados` (`--piloto`, `--tabela`) roda sobre o `dist/` e falha
 com código 1 em: `<title>` ou meta description ausente ou repetida na mesma
 página, `og:`/`twitter:` divergindo do par canônico, título ou descrição
-duplicados entre páginas, frase proibida, emoji, lixo de template e comprimento
-fora de 25–70 / 100–175. Avisa, sem falhar, quando o comprimento sai da faixa
-editorial (45–60 / 135–160), quando há superlativo a conferir, caixa alta ou
-palavra repetida três vezes ou mais.
+duplicados entre páginas, canonical ausente ou divergente da própria URL,
+página com `noindex`, página de bairro cujo título não contém o nome do bairro,
+frase proibida, emoji, lixo de template e comprimento fora de 25–70 / 100–175.
+Avisa, sem falhar, quando o comprimento sai da faixa editorial (45–60 /
+135–160), quando a largura estimada passa de 600px / 990px, quando há
+superlativo a conferir, caixa alta ou palavra repetida três vezes ou mais.
 
 As frases proibidas estão codificadas com o motivo de cada uma — presencial
 fora de Alphaville, profissionais cadastrados, "os melhores personais" sem
@@ -274,8 +333,10 @@ CREF/CONFEF. A regra comercial passa a ser verificada por máquina.
 1.291 páginas auditadas. As dez do piloto passam **sem um aviso sequer**.
 
 No resto do site: **zero** título duplicado, **zero** descrição duplicada,
-**zero** divergência entre as seis tags, **zero** frase proibida, **zero** lixo
-de template. Os 321 defeitos são todos de comprimento — 153 títulos e 168
+**zero** divergência entre as seis tags, **zero** canonical ausente ou
+divergente, **zero** página com `noindex`, **zero** bairro ausente do próprio
+título (nas 101 páginas de bairro), **zero** frase proibida, **zero** lixo de
+template. Os 321 defeitos são todos de comprimento — 153 títulos e 168
 descrições longos demais —, e 234 deles estão em páginas de cidade, onde o
 template estoura com nomes compridos ("São Sebastião do Paraíso", "São Miguel
 dos Milagres"). É um defeito de gabarito, não de redação: corrige-se no
