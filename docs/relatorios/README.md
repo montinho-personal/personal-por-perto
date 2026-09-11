@@ -76,6 +76,45 @@ Duas observações que valem para a próxima leitura:
 - **Celular é 82% dos cliques.** Qualquer decisão de layout que pese
   desktop contra mobile já tem resposta.
 
+## Cobertura de indexação — 11/09/2026
+
+Arquivos: `2026-09-11-gsc-coverage/`. Análise completa em
+`docs/indexacao-analise.md`.
+
+Este é um export de **Cobertura**, não de Desempenho: traz indexação, não
+cliques. Ele não substitui o export de Páginas que as filas de reescrita e
+de pauta estão esperando.
+
+### O número que importa
+
+| | 29/06/2026 | 03/09/2026 |
+|---|---|---|
+| Páginas indexadas | 146 | **1.172** |
+| Páginas não indexadas | 520 | 395 |
+| Impressões/dia | 83 | ~1.000 |
+
+Com 1.294 páginas publicadas, **90,6% do site está indexado**. Em 29/06 eram
+22%. Esta é a notícia do relatório, e ela é boa.
+
+### Os cinco motivos de não indexação, e o que cada um significa
+
+| motivo | 01/09 | 11/09 | leitura |
+|---|---|---|---|
+| Página alternativa com tag canônica adequada | 206 | 202 | **não é defeito** |
+| Rastreada, mas não indexada | 48 | 75 | 2/3 são URLs sem barra |
+| Cópia: Google escolheu outra canônica | 46 | 43 | **o problema real** |
+| Página com redirecionamento | 6 | 27 | **não é defeito** |
+| Detectada, mas não indexada | 92 | 48 | fila de rastreio, melhorou |
+
+### O que mudou desde 01/09
+
+A comparação honesta: **quase nada se moveu, e isso é informação.** Três das
+cinco linhas ficaram praticamente paradas em dez dias. As duas que se
+mexeram contam histórias opostas — "detectada mas não indexada" caiu 44
+(o Google rastreou o que estava na fila) e "rastreada mas não indexada"
+subiu 27 (parte do que ele rastreou, decidiu não indexar). Somadas, é o
+mesmo lote de páginas andando um degrau na esteira.
+
 ## Analytics — sem linha de base ainda
 
 O rastreio de cliques subiu em 02/09/2026 e as 15 dimensões personalizadas

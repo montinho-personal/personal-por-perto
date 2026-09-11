@@ -19,6 +19,7 @@ import { bairrosDaCidade as listaDeBairros, rota } from '../../lib/geo';
 import { videoDaPagina } from '../../data/videosMontinho';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, deCidade } from '../../lib/gramatica';
+import { tituloCidade, descricaoCidade } from '../../lib/metaCidade';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
 import { fontesExternas } from '../../data/fontesExternas';
 import { formatNumber, faixaBRL, formatDateLong, formatBRL } from '../../lib/slug';
@@ -144,11 +145,8 @@ const tiposTreino = [
   'Treino ao ar livre',
 ];
 
-const title = `Personal Trainer ${emN} (${cidade.uf}): guia completo e quanto custa`;
-const description = `Como escolher um personal trainer ${emN} (${cidade.uf}), quanto custa (${faixaBRL(
-  cidade.precos.avulsaMin,
-  cidade.precos.avulsaMax,
-)} a aula), onde treinar e dicas por objetivo. Guia editorial independente, atualizado.`;
+const title = tituloCidade(cidade);
+const description = descricaoCidade(cidade);
 
 const schema = [
   breadcrumbSchema(crumbs),
