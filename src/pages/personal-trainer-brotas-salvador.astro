@@ -1,0 +1,276 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/salvador-ba/',
+    titulo: 'Personal trainer em Salvador',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-itaigara/',
+    titulo: 'Personal trainer no Itaigara',
+    descricao: 'O bairro vizinho, com o Parque da Cidade como quintal.',
+    tipo: 'Bairros',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'As faixas por formato — e por que a mais barata nem sempre é a mais econômica.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer/',
+    titulo: 'Quantas vezes por semana com personal',
+    descricao: 'O ajuste que faz o acompanhamento caber no orçamento sem perder o efeito.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-brotas-salvador';
+const atualizadoEm = '2026-09-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Salvador', url: '/personal-trainer/salvador-ba/' },
+  { nome: 'Personal Trainer em Brotas', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Brotas?',
+    resposta:
+      'A referência de Salvador vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal. Em Brotas a faixa praticada é larga de verdade, e isso não é vagueza: o bairro tem áreas de metro quadrado alto e áreas bem mais acessíveis, e o preço acompanha o endereço exato, não o nome do bairro. Cotação por telefone sem dizer a rua costuma vir alta por precaução.',
+  },
+  {
+    pergunta: 'Por que o preço varia tanto dentro do mesmo bairro?',
+    resposta:
+      'Porque Brotas é o segundo bairro mais populoso de Salvador, com cerca de 80 mil moradores e grande extensão, e concentra realidades socioeconômicas bem diferentes dentro do mesmo nome. Some a isso o deslocamento: atravessar Brotas em horário de pico leva tempo, e o profissional que cruza o bairro embute isso no preço ou passa a cancelar. Quem atende perto de você cobra menos e falta menos.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Brotas?',
+    resposta:
+      'O Dique do Tororó é a melhor opção da vizinhança imediata: são mais de 2,5 km de calçada contornando o espelho d\'água, com área verde, pista de caminhada, espaços para esporte e as oito esculturas de orixás de Tatti Moreno. O Parque da Cidade fica próximo e amplia bastante as opções para quem tem carro ou mora do lado certo do bairro. Dentro de Brotas, as ruas com aclive servem de estímulo natural — e são as mesmas que tornam a caminhada mais puxada do que parece no mapa.',
+  },
+  {
+    pergunta: 'Vale mais academia de bairro ou personal em Brotas?',
+    resposta:
+      'As duas coisas resolvem problemas diferentes e o orçamento costuma decidir. Brotas tem boa oferta de academias de rua com mensalidade acessível, o que cobre o acesso a equipamento. O personal entra quando o que falta é programação e correção — e o arranjo que mais cabe aqui é duas sessões acompanhadas por semana, com o resto executado sozinho na mesma academia, em vez de acompanhamento diário.',
+  },
+  {
+    pergunta: 'O que perguntar a um personal que diz atender em Brotas?',
+    resposta:
+      'Em quais trechos ele atende de fato, e quanto tempo leva do ponto dele até o seu. Num bairro desse tamanho, "atendo em Brotas" pode significar um raio de três quarteirões ou uma travessia de quarenta minutos — e a segunda hipótese aparece depois, em forma de atraso, remarcação e cancelamento. A pergunta parece burocrática e é o melhor previsor de constância que existe por aqui.',
+  },
+];
+
+const title = 'Personal Trainer em Brotas (Salvador): preço, distância e o que perguntar';
+const description =
+  'Personal trainer em Brotas, Salvador: por que o preço varia tanto dentro do mesmo bairro, o peso do deslocamento no segundo bairro mais populoso da cidade, o Dique do Tororó e o formato que cabe.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Salvador</p>
+    <h1>Personal trainer em Brotas: o bairro grande demais para ter uma resposta só</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Brotas é o segundo bairro mais populoso de Salvador — cerca de 80
+      mil moradores — e um dos mais extensos. Dentro do mesmo nome cabem
+      áreas de metro quadrado alto e áreas bem mais acessíveis.
+    </p>
+
+    <p class="lead">
+      Por isso a pergunta "quanto custa um personal em Brotas" não tem
+      uma resposta, tem uma faixa larga. Este guia explica de que
+      <strong>depende</strong> — e qual pergunta você precisa fazer para
+      sair da faixa e chegar a um número.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o nome do bairro não define o preço</h2>
+      <p>
+        Em bairros pequenos e homogêneos, saber o nome basta para estimar
+        o valor. Em Brotas, não. A extensão e a desigualdade interna do
+        bairro fazem com que duas casas separadas por dois quilômetros
+        tenham realidades de mercado diferentes.
+      </p>
+
+      <p>
+        Consequência prática, e é a mais útil deste texto: quando você
+        pergunta o preço só dizendo "moro em Brotas", o profissional
+        responde por precaução — ou seja, alto. Dizer a rua, ou ao menos
+        a referência mais próxima, costuma mudar o número na hora.
+      </p>
+
+      <h2>A variável que ninguém coloca na conta: a distância</h2>
+      <p>
+        Num bairro deste tamanho, o deslocamento do profissional é parte
+        do serviço — e alguém paga por ele. Atravessar Brotas em horário
+        de pico consome tempo real, e esse tempo aparece de duas formas.
+      </p>
+
+      <p>
+        <strong>No preço</strong>, quando o profissional é honesto e
+        embute a viagem no valor da sessão. É o cenário bom: você sabe o
+        que está pagando.
+      </p>
+
+      <p>
+        <strong>Na constância</strong>, quando ele não embute. A conta
+        fecha nos primeiros meses e depois começa a não fechar: atrasos,
+        pedidos de remarcação, cancelamentos em dia de chuva. Não é má
+        vontade — é aritmética de agenda, e ela sempre vence.
+      </p>
+
+      <p>
+        Daí a pergunta que vale mais que qualquer credencial no perfil:
+        <strong>"em que trecho de Brotas você atende, e quanto tempo leva
+        até aqui?"</strong>. Quem atende perto de você cobra menos e falta
+        menos. É o melhor previsor de constância disponível neste bairro.
+      </p>
+
+      <ContextualCta path={path} localidade="em Brotas" assunto={title} posicao="meio" />
+
+      <h2>O arranjo que cabe no orçamento daqui</h2>
+      <p>
+        Brotas tem boa oferta de academias de rua com mensalidade
+        acessível. Isso resolve o acesso a equipamento — que em muitos
+        bairros é justamente o item caro.
+      </p>
+
+      <p>
+        O que sobra para o personal resolver é programação e correção de
+        execução. E o formato que mais cabe aqui não é o acompanhamento
+        diário: são <strong>duas sessões acompanhadas por semana</strong>,
+        com mais uma ou duas executadas sozinho na mesma academia, com o
+        treino prescrito e ajustado.
+      </p>
+
+      <p>
+        Funciona porque preserva o essencial — alguém corrigindo execução
+        e mexendo na carga com regularidade — e corta o que menos pesa no
+        resultado, que é a presença nos dias intermediários. O raciocínio
+        completo está no guia sobre <a
+        href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
+        vezes por semana treinar com personal trainer</a>, e as faixas por
+        formato estão em <a href={rotas.quantoCusta}>quanto custa um
+        personal trainer</a>.
+      </p>
+
+      <h2>Onde treinar ao ar livre</h2>
+      <p>
+        O <strong>Dique do Tororó</strong> é o melhor endereço da
+        vizinhança imediata: mais de 2,5 km de calçada contornando o
+        espelho d'água, com área verde densa, pista de caminhada, espaços
+        para esporte, deques e anfiteatro — e as oito esculturas de
+        orixás de Tatti Moreno flutuando no lago, que fazem do lugar um
+        ponto de referência cultural além de esportivo.
+      </p>
+
+      <p>
+        O <a href="/personal-trainer-itaigara/">Parque da Cidade</a>,
+        ali perto, amplia bastante as opções para quem mora do lado certo
+        do bairro ou tem carro.
+      </p>
+
+      <p>
+        E há um recurso de graça que os moradores costumam tratar como
+        obstáculo: <strong>as ruas com aclive</strong>. Brotas é acidentado,
+        e isso significa que uma caminhada de trinta minutos aqui não é a
+        mesma coisa que trinta minutos no plano. Nas mãos de um bom
+        profissional, as subidas do bairro viram estações de
+        condicionamento sem custo nenhum.
+      </p>
+
+      <h2>Como escolher bem em Brotas</h2>
+      <p>
+        Os critérios gerais estão no guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        periodização explicada, experiência com o seu objetivo, nenhuma
+        promessa de milagre. Dor ou limitação passa por médico ou
+        fisioterapeuta antes, e o personal trabalha a partir disso.
+      </p>
+
+      <p>
+        Os dois critérios extras daqui são os deste texto, e nenhum é
+        sobre técnica: <strong>diga a rua antes de pedir preço</strong>, e
+        <strong>pergunte a distância antes de fechar</strong>. Em Brotas,
+        essas duas perguntas explicam mais sobre o que vai acontecer nos
+        próximos seis meses do que qualquer certificado.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas rápidas sobre personal trainer em Brotas" />
+
+    <ContextualCta path={path} localidade="em Brotas" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

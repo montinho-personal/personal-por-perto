@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salvador', url: 'https://www.salvador.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-09-11',
   capaArte: {
     src: '/capas-cidade/salvador-ba.webp',
     w: 1200,

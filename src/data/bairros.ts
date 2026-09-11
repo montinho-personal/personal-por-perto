@@ -1,5 +1,5 @@
 /**
- * Os 99 bairros que têm página própria.
+ * Os 101 bairros que têm página própria.
  *
  * Fonte única: cada entrada carrega o slug, o nome do bairro, a locução já
  * flexionada ("no Batel", "na Aldeota", "nos Jardins" — em português a
@@ -11,10 +11,11 @@
  * divergência. As quatro de Belo Horizonte acrescentadas em 09/09/2026
  * (Barreiro, Belvedere, Cidade Nova e Pampulha) nasceram já com a linha aqui.
  *
- * Dois bairros repetem nome em cidades diferentes (Petrópolis, em Natal e em
- * Porto Alegre), por isso o slug carrega a cidade e o nome exibido, não. Quem
- * mostra a lista sempre a mostra dentro da página da cidade, então não há
- * ambiguidade para o leitor.
+ * Alguns bairros repetem nome em cidades diferentes — Petrópolis (Natal e
+ * Porto Alegre), Barra (Salvador, ao lado da Barra da Tijuca e da Barra Sul)
+ * e Brotas (Salvador) —, por isso o slug carrega a cidade e o nome exibido,
+ * não. Quem mostra a lista sempre a mostra dentro da página da cidade, então
+ * não há ambiguidade para o leitor.
  *
  * Ao publicar um bairro novo, acrescente a linha aqui. Sem isso ele fica
  * órfão: nenhuma página do site aponta para ele, e o Google chega a
@@ -39,6 +40,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-asa-sul', nome: 'Asa Sul', locucao: 'na Asa Sul', cidade: 'brasilia-df' },
   { slug: 'personal-trainer-atalaia', nome: 'Atalaia', locucao: 'na Atalaia', cidade: 'aracaju-se' },
   { slug: 'personal-trainer-barra-da-tijuca', nome: 'Barra da Tijuca', locucao: 'na Barra da Tijuca', cidade: 'rio-de-janeiro-rj' },
+  { slug: 'personal-trainer-barra-salvador', nome: 'Barra', locucao: 'na Barra', cidade: 'salvador-ba' },
   { slug: 'personal-trainer-barra-sul', nome: 'Barra Sul', locucao: 'na Barra Sul', cidade: 'balneario-camboriu-sc' },
   { slug: 'personal-trainer-barreiro', nome: 'Barreiro', locucao: 'no Barreiro', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-batel', nome: 'Batel', locucao: 'no Batel', cidade: 'curitiba-pr' },
@@ -50,6 +52,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-boa-viagem', nome: 'Boa Viagem', locucao: 'em Boa Viagem', cidade: 'recife-pe' },
   { slug: 'personal-trainer-botafogo', nome: 'Botafogo', locucao: 'em Botafogo', cidade: 'rio-de-janeiro-rj' },
   { slug: 'personal-trainer-brooklin', nome: 'Brooklin', locucao: 'no Brooklin', cidade: 'sao-paulo-sp' },
+  { slug: 'personal-trainer-brotas-salvador', nome: 'Brotas', locucao: 'em Brotas', cidade: 'salvador-ba' },
   { slug: 'personal-trainer-buritis', nome: 'Buritis', locucao: 'no Buritis', cidade: 'belo-horizonte-mg' },
   { slug: 'personal-trainer-cabo-branco', nome: 'Cabo Branco', locucao: 'no Cabo Branco', cidade: 'joao-pessoa-pb' },
   { slug: 'personal-trainer-cabral', nome: 'Cabral', locucao: 'no Cabral', cidade: 'curitiba-pr' },

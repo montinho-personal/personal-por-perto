@@ -109,6 +109,7 @@ BH se mover, sabemos qual mudança mexeu.
 |---|---|---|---|
 | 1 | 09/09/2026 | Belo Horizonte | Barreiro, Belvedere, Cidade Nova, Pampulha |
 | 2 | 11/09/2026 | Porto Alegre | Menino Deus, Cidade Baixa |
+| 3 | 11/09/2026 | Salvador | Barra, Brotas |
 
 **Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
 — Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
@@ -124,6 +125,30 @@ perfil econômico diferentes, não por CEP nobre.
   ângulo são três restrições reais do bairro — espaço, tempo de
   permanência e o relógio —, e o formato de acompanhamento que sobrevive
   a uma mudança de endereço.
+
+**Salvador (leva 3).** Os cinco bairros que já existiam — Caminho das
+Árvores, Itaigara, Horto Florestal, Pituba e Rio Vermelho — cobrem bem o
+eixo nobre da orla, e nenhum deles sai dele. Os dois novos foram escolhidos
+por contraste.
+
+- **Barra** (o cartão-postal, um dos principais circuitos de Carnaval do
+  estado): o ângulo são dois pisos e dois calendários. A areia é tratada
+  como superior por padrão e quase ninguém menciona que a praia é
+  inclinada — correr paralelo à água é treinar com um pé sempre mais baixo
+  que o outro. E o bairro tem duas interrupções previsíveis que derrubam
+  rotina: o sol de todo dia, que estreita a janela a dois blocos, e o
+  Carnaval, que tira o calçadão por semanas.
+- **Brotas** (segundo bairro mais populoso de Salvador, ~80 mil moradores,
+  grande desigualdade interna): o ângulo é que o nome do bairro não define
+  o preço. A extensão faz o deslocamento do profissional virar variável
+  central — ele aparece no preço, quando embutido com honestidade, ou na
+  constância, em forma de atraso e cancelamento. O texto se organiza em
+  torno das duas perguntas que resolvem isso.
+
+Formas: a Barra usa tabela comparativa de superfícies; Brotas, uma cadeia
+de causa (tamanho → distância → preço → constância). Nenhuma repete os
+"formatos numerados" do Itaigara, os "perfis" da Pituba, os "endereços
+numerados" do Rio Vermelho nem o Q&A do Horto.
 
 **Ainda sem dados.** A leva de BH foi ao ar em 09/09; nenhum relatório novo
 chegou desde então. A ordem seguinte continua sendo a da seção 4 — Salvador
