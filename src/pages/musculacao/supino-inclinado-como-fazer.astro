@@ -36,7 +36,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/supino-inclinado-como-fazer';
-const atualizadoEm = '2026-09-02';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -75,21 +75,38 @@ const title = 'Supino inclinado: como fazer e quando usar';
 const description =
   'Supino inclinado: a inclinação certa do banco, barra ou halteres, por que ele enfatiza a porção superior do peito e como combiná-lo com o supino reto.';
 
+const capa = '/capas-conteudo/supino-inclinado-como-fazer.webp';
+const capaAlt =
+  'Arte da capa: homem no banco inclinado executando o supino com barra, com o peitoral superior destacado e os pontos ângulo de 30 a 45 graus, execução com controle e foco no peitoral superior — supino inclinado: como fazer do jeito certo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Supino inclinado: o ângulo que completa o peito</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Todo peito malfeito conta a mesma história: anos de supino reto,

@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/aerobico-em-jejum';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -78,21 +78,38 @@ const title = 'Aeróbico em jejum funciona para emagrecer? O que diz a ciência'
 const description =
   'Treinar em jejum queima mais gordura na sessão, mas não emagrece mais no fim do mês: estudos mostram perda igual quando as calorias são as mesmas. Veja quando faz sentido, os riscos e para quem não é indicado.';
 
+const capa = '/capas-conteudo/aerobico-em-jejum.webp';
+const capaAlt =
+  'Arte da capa: mulher correndo na esteira ao amanhecer, ao lado dos pontos queima calórica, energia e performance e quando faz sentido — aeróbico em jejum: vale a pena? benefícios, cuidados e como fazer — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Aeróbico em jejum funciona para emagrecer?</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       O aeróbico em jejum — o famoso AEJ — é um dos rituais mais defendidos

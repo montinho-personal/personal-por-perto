@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/gordura-visceral';
-const atualizadoEm = '2026-09-07';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -79,21 +79,38 @@ const title = 'Gordura visceral: o que é e como reduzir';
 const description =
   'Gordura visceral: como saber se você tem excesso pela circunferência da cintura (com as faixas de referência), quais exames medem, os riscos associados e o que realmente reduz — sem promessa fácil.';
 
+const capa = '/capas-conteudo/gordura-visceral.webp';
+const capaAlt =
+  'Arte da capa: ilustração do abdômen mostrando a gordura visceral ao redor dos órgãos internos, ao lado dos pontos saúde interna, cintura abdominal e risco metabólico — gordura visceral: o que é, por que importa e como reduzir — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Gordura visceral: o que é, por que importa e como reduzir</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Duas pessoas com o mesmo peso, a mesma altura e o mesmo índice de

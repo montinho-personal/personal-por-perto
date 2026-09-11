@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/guias/primeira-aula-com-personal-trainer';
-const atualizadoEm = '2026-08-07';
+const atualizadoEm = '2026-09-11';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -83,21 +83,38 @@ const title = 'Primeira aula com personal trainer: o que esperar';
 const description =
   'Primeira aula com personal trainer: como é a sessão, o que levar, a anamnese e a avaliação, o que deve acontecer, os sinais de alerta e quanto tempo até ver resultado.';
 
+const capa = '/capas-conteudo/primeira-aula-com-personal-trainer.webp';
+const capaAlt =
+  'Arte da capa: personal trainer corrigindo a postura de uma aluna no agachamento, ao lado dos pontos avaliação inicial, técnica e postura e plano certo para você — primeira aula com personal trainer: o que esperar — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guias</p>
     <h1>Primeira aula com personal trainer: o que esperar de verdade</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="849"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Existe uma expectativa comum sobre a primeira aula: sair de lá
