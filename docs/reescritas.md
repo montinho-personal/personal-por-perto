@@ -32,8 +32,12 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 9 | `/musculacao/treino-de-posterior-de-coxa/` | 17 | 39,2 | ✅ 2026-09-09 · partiu de 39,2 |
 | 10 | `/guias/avaliacao-fisica/` | 16 | 78,2 | ✅ 2026-09-10 · partiu de 78,2 (83,8 na consulta-cabeça) |
 | 11 | `/musculacao/elevacao-frontal-como-fazer/` | 16 | 20,3 | ✅ 2026-09-10 · partiu de 20,3 |
-| 12 | `/emagrecimento/deficit-calorico-como-funciona/` | 12 | 75,2 | |
-| 13 | `/emagrecimento/como-perder-barriga/` | 10 | 53,3 | |
+| 12 | `/emagrecimento/deficit-calorico-como-funciona/` | 12 | 75,2 | ✅ 2026-09-11 · partiu de 75,2 · ver nota |
+| 13 | `/emagrecimento/como-perder-barriga/` | 10 | 53,3 | ✅ 2026-09-11 · partiu de 53,3 · ver nota |
+
+**Fila encerrada em 11/09/2026.** 12 dos 13 reescritos; `hipertrofia-como-funciona`
+saiu sem reescrita, por canibalização somada a teto. A próxima fila depende de
+um export novo do Search Console.
 
 ## Nota de 07/09/2026 — dois diagnósticos, e um deles é desconfortável
 
@@ -322,6 +326,97 @@ subiu pela revisão.
 tiveram a mesma causa: uma seção de variações ou implementos espremida num
 parágrafo, enquanto a concorrência constrói o título em cima dela. Vale
 olhar isso primeiro nas próximas.
+
+## Nota de 11/09/2026 — a fila fecha com o padrão mais claro de todos
+
+**`deficit-calorico-como-funciona` (75,2): o artigo esquivava a pergunta da
+busca, e isso estava escrito no próprio H2.** É a repetição exata do caso
+`gordura-visceral`, e agora dá para chamar de padrão: quem ranqueia para
+"déficit calórico" são Drogasil, dr.consulta, Dasa, Memed, Omnicalculator e
+blogs de nutrição — e quase todos prometem **a conta**: "como calcular e
+aplicar", "Como fazer déficit calórico: guia completo", uma calculadora.
+
+O nosso artigo tinha um H2 chamado **"Por que 'definir o número certo' não é
+tão simples"**, e o texto embaixo dizia que definir o déficit "é trabalho de
+avaliação nutricional individual, não algo que se resolve com uma conta
+padrão". Estava certo e estava esquivando: a ressalva ocupava o lugar da
+resposta. A FAQ correspondente fazia o mesmo — a pergunta era "qual o número
+certo de calorias?" e a resposta começava com "não existe um número universal".
+
+A correção é estrutural, não cosmética: **responder primeiro, ressalvar
+depois.** Entrou um H2 "Como a conta é feita, na prática" com os três passos —
+Mifflin-St Jeor com a fórmula e um exemplo numérico fechado, os fatores de
+atividade (1,2 a 1,725) e o corte de 10% a 25% — e o H2 antigo virou "Por que
+esse número é uma estimativa, e não uma sentença", agora com as três razões
+concretas: a fórmula usa peso total e ignora composição corporal, o fator de
+atividade resume o NEAT num multiplicador só, e a regra dos 3.500 kcal supõe
+gasto constante enquanto o peso cai — que é aritmética, não falta de
+disciplina, e uma das causas do platô.
+
+A ressalva de nutricionista continua, no lugar certo: depois da resposta.
+
+Antes: `Déficit calórico: como funciona para emagrecer`
+Depois: `Déficit calórico: como calcular o seu e quanto cortar`
+
+Antes: `Entenda o conceito de balanço energético por trás do emagrecimento,
+por que o déficit calórico é a base fisiológica da perda de peso, e o papel do
+NEAT e do exercício estruturado nessa equação.`
+Depois: `Déficit calórico: como calcular o seu pela fórmula de Mifflin-St
+Jeor, o fator de atividade, quanto cortar — e por que o número é ponto de
+partida, não meta.`
+
+**O teto, dito com todas as letras:** Drogasil e Dasa são domínios de saúde
+corporativa que nenhuma reescrita alcança no curto prazo. A lacuna era real e
+valia corrigir de qualquer forma; se ele continuar na casa dos 70, a conclusão
+é sobre a disputa, não sobre o texto.
+
+**`como-perder-barriga` (53,3): o artigo é bom, e ignorava metade da SERP.**
+Checagem de canibalização primeiro: `gordura-visceral` (66,8) trata do termo
+clínico e da circunferência da cintura, `como-emagrecer-fazendo-musculacao` e
+`deficit-calorico` são linkados por este e tratam de mecanismo — nenhum disputa
+"como perder barriga". Sem canibalização.
+
+Faixa de posição 40+, portanto densidade. E a ausência era de um ângulo
+inteiro: **quem ranqueia para "gordura localizada" são clínicas de estética**
+— Nivea, Clínica Ser Cirurgia Plástica, Personalize Pharma —, vendendo
+criolipólise e lipo enzimática. O artigo tinha um H2 chamado "O que não
+funciona (e insiste em ser vendido)" que cobria cinta, gel, chá e treino
+localizado, e **não mencionava nenhum procedimento estético**. O leitor que
+chega com a pergunta que a indústria responde saía sem resposta nossa.
+
+Entrou um H2 dedicado, e a resposta honesta não é "não funciona": a
+criolipólise tem estudos atrás e reduz a gordura da área tratada. O que ela
+não faz é o que a busca quer — age só na subcutânea e não alcança a visceral,
+a indicação é estética para quem já está perto do peso, e as células que ficam
+continuam respondendo ao que a pessoa come. A lipo enzimática entra com a
+ressalva de base de evidência mais frágil. Nos dois, decisão médica e avaliação
+individual. Uma FAQ nova cobre a mesma pergunta.
+
+Esse é o tipo de resposta que ninguém naquela primeira página dá: as clínicas
+vendem e os artigos de "mito" ignoram.
+
+O `title` não mudou — já carrega "perder barriga" e "gordura localizada", os
+dois termos da busca.
+
+Antes: `Abdominais não queimam a gordura da barriga: a queima localizada é
+mito. Veja o que funciona de verdade — déficit calórico, musculação, cardio e
+paciência — e a diferença entre barriga de gordura e de inchaço.`
+Depois: `Por que abdominal não seca a barriga, como distinguir gordura de
+inchaço, o que a criolipólise faz e o que ela não faz — e o que realmente
+funciona.`
+
+Os dois ganharam o `FerramentaInline` que não tinham — constância no déficit
+(a conta é a parte fácil; sustentar é onde quebra) e rotina no barriga (o
+artigo lista o que funciona, não quando cada coisa cabe na semana). Os dois
+CTAs do fim vão para `encontre-seu-personal-ideal`, então nenhum dos blocos
+repete o destino. Nos dois, a data subiu pela revisão, não pelo bloco.
+
+**O padrão que a fila inteira ensinou.** Duas causas dominaram as doze
+reescritas: (1) seção de variações ou implementos espremida num parágrafo,
+enquanto a concorrência constrói o título em cima dela — quatro casos; (2)
+artigo que **contorna** a pergunta da busca em nome da ressalva correta —
+`gordura-visceral`, `avaliacao-fisica` e agora `deficit-calorico`, três casos.
+Vale procurar as duas primeiro na próxima fila.
 
 ## O que "reescrever" significa aqui
 

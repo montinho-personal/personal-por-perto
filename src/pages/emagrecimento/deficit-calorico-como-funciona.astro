@@ -8,6 +8,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -52,14 +53,14 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/deficit-calorico-como-funciona';
-const atualizadoEm = '2026-09-08';
+const atualizadoEm = '2026-09-11';
 const capa = '/capas-conteudo/deficit-calorico-como-funciona.webp';
 const capaAlt =
   'Infográfico de balanço de energia (gasto maior que consumo) com fita métrica na cintura, ilustrando o guia sobre como funciona o déficit calórico — Personal por Perto';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
-  { nome: 'Déficit calórico: como funciona para emagrecer', url: path },
+  { nome: 'Déficit calórico: como calcular o seu e quanto cortar', url: path },
 ];
 
 const faqs = [
@@ -71,7 +72,7 @@ const faqs = [
   {
     pergunta: 'Qual o número certo de calorias para o meu déficit?',
     resposta:
-      'Não existe um número universal. O gasto calórico total depende de fatores individuais como peso, altura, idade, sexo, composição corporal, nível de atividade e até genética, e a forma correta de estimar isso — e de definir quanto reduzir com segurança — é através de avaliação nutricional individual, não de fórmulas genéricas de internet.',
+      'A estimativa se faz em três passos: calcular a taxa metabólica basal pela equação de Mifflin-St Jeor — (10 × peso em kg) + (6,25 × altura em cm) − (5 × idade) + 5 para homens ou − 161 para mulheres —, multiplicar pelo fator de atividade (cerca de 1,2 sedentário, 1,375 leve, 1,55 moderado, 1,725 intenso) e cortar de 10% a 25% desse total. O que essa conta não captura é a composição corporal, porque ela usa só o peso, nem quanto você se mexe fora do treino. Por isso o número é ponto de partida a ser ajustado pelo que a balança e a fita métrica mostrarem nas semanas seguintes, com acompanhamento de nutricionista para o ajuste alimentar.',
   },
   {
     pergunta: 'Déficit calórico agressivo emagrece mais rápido, então é melhor?',
@@ -90,9 +91,9 @@ const faqs = [
   },
 ];
 
-const title = 'Déficit calórico: como funciona para emagrecer';
+const title = 'Déficit calórico: como calcular o seu e quanto cortar';
 const description =
-  'Entenda o conceito de balanço energético por trás do emagrecimento, por que o déficit calórico é a base fisiológica da perda de peso, e o papel do NEAT e do exercício estruturado nessa equação.';
+  'Déficit calórico: como calcular o seu pela fórmula de Mifflin-St Jeor, o fator de atividade, quanto cortar — e por que o número é ponto de partida, não meta.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -107,7 +108,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
-    <h1>Déficit calórico: como funciona para emagrecer</h1>
+    <h1>Déficit calórico: como calcular o seu e quanto cortar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
@@ -129,8 +130,15 @@ const schema = [
       busque a diferença em suas reservas. É um conceito simples de entender,
       mas que costuma ser mal aplicado — seja por tentar acertar um número
       "mágico" sem avaliação individual, seja por cortar calorias de forma
-      agressiva demais. Abaixo, como o balanço energético funciona e o que
-      realmente entra nessa conta.
+      agressiva demais.
+    </p>
+
+    <p class="lead">
+      A conta que a maioria das calculadoras faz tem três passos: estimar o
+      gasto em repouso pela equação de Mifflin-St Jeor, multiplicar por um
+      fator de atividade e cortar de 10% a 25% do resultado. Abaixo, cada
+      passo com exemplo — e, logo em seguida, as três razões pelas quais esse
+      número é um ponto de partida a ajustar, não uma meta a perseguir.
     </p>
 
     <div class="prose">
@@ -157,26 +165,94 @@ const schema = [
         mantém o peso ou ganha peso ao longo do tempo.
       </p>
 
-      <h2>Por que "definir o número certo" não é tão simples</h2>
+      <h2>Como a conta é feita, na prática</h2>
       <p>
-        É tentador procurar uma fórmula pronta que diga exatamente
-        quantas calorias comer por dia. O problema é que o gasto
-        calórico total de cada pessoa depende de uma combinação de
-        fatores individuais — peso, altura, idade, sexo, composição
-        corporal, nível de atividade, histórico de dietas, entre
-        outros — que fórmulas genéricas não capturam com precisão.
+        A conta tem três passos, e vale conhecê-los mesmo sabendo que o
+        resultado é uma estimativa. Entender de onde sai o número é o que
+        permite desconfiar dele na hora certa.
       </p>
 
       <p>
-        Por isso, definir o tamanho do déficit e como distribuí-lo na
-        alimentação é trabalho de avaliação nutricional individual,
-        não algo que se resolve com uma conta padrão. Diretrizes de
-        organizações como a <a href={oms.url} target="_blank"
-        rel="noopener">{oms.nome}</a> reforçam que estratégias de
-        controle de peso funcionam melhor quando combinam orientação
-        alimentar individualizada com atividade física regular, e não
-        um número de calorias isolado.
+        <strong>1. A taxa metabólica basal.</strong> É o que o corpo gasta
+        parado, só para funcionar. A equação mais usada hoje é a de
+        Mifflin-St Jeor, adotada como referência para adultos pela Academy
+        of Nutrition and Dietetics desde 2005 por errar menos que as
+        anteriores:
       </p>
+
+      <div class="callout">
+        <strong>TMB</strong> = (10 × peso em kg) + (6,25 × altura em cm)
+        − (5 × idade em anos) + <strong>5</strong> para homens ou
+        <strong>−161</strong> para mulheres.
+        <br /><br />
+        Uma mulher de 70 kg, 1,65 m e 35 anos: (10 × 70) + (6,25 × 165)
+        − (5 × 35) − 161 = <strong>1.395 kcal/dia</strong> em repouso.
+      </div>
+
+      <p>
+        <strong>2. O fator de atividade.</strong> A TMB é multiplicada por
+        um número que representa o quanto a pessoa se mexe: em torno de
+        1,2 para quem é sedentário, 1,375 para atividade leve (1 a 3 dias
+        de treino por semana), 1,55 para moderada (3 a 5 dias) e 1,725
+        para intensa (6 a 7 dias). O resultado é o gasto energético total.
+        No exemplo acima, com treino três vezes por semana: 1.395 × 1,375
+        ≈ <strong>1.918 kcal/dia</strong>.
+      </p>
+
+      <p>
+        <strong>3. O corte.</strong> Sobre esse total se aplica o déficit.
+        A referência mais comum é de 10% a 25% do gasto, ou os clássicos
+        500 kcal por dia — que, pela regra tradicional de 3.500 kcal por
+        meio quilo de gordura, projetam cerca de 0,5 kg por semana. No
+        exemplo, algo entre 1.440 e 1.730 kcal por dia.
+      </p>
+
+      <h2>Por que esse número é uma estimativa, e não uma sentença</h2>
+      <p>
+        Agora a parte que as calculadoras não mostram. A equação usa o
+        peso total e ignora a composição corporal: duas pessoas de 80 kg,
+        uma com 20% e outra com 35% de gordura, recebem o mesmo resultado
+        — e gastam diferente, porque músculo e gordura não consomem
+        energia na mesma proporção. Em quadros de obesidade, a fórmula
+        tende a superestimar, e o cálculo costuma ser refeito com peso
+        ajustado.
+      </p>
+
+      <p>
+        O fator de atividade é ainda mais grosseiro: ele resume num único
+        multiplicador tudo o que a pessoa faz fora do treino, que é
+        justamente a parte mais variável do gasto — o NEAT, detalhado mais
+        abaixo.
+      </p>
+
+      <p>
+        E a regra dos 3.500 kcal tem um defeito conhecido: ela supõe que o
+        gasto continua o mesmo enquanto o peso cai, e não continua. Um
+        corpo mais leve gasta menos para se manter e menos para se mover,
+        então a projeção linear sempre promete mais do que a balança
+        entrega depois de algumas semanas. Não é falha de disciplina — é
+        aritmética, e é uma das causas do
+        <a href="/emagrecimento/plato-de-emagrecimento/">platô de
+        emagrecimento</a>.
+      </p>
+
+      <p>
+        Daí o uso correto da conta: ela serve como ponto de partida a ser
+        ajustado pelo que acontece de verdade nas semanas seguintes — não
+        como número a ser perseguido. E o ajuste fino da alimentação é
+        trabalho de nutricionista, não de personal trainer. Diretrizes de
+        organizações como a <a href={oms.url} target="_blank"
+        rel="noopener">{oms.nome}</a> reforçam que estratégias de controle
+        de peso funcionam melhor quando combinam orientação alimentar
+        individualizada com atividade física regular, e não um número de
+        calorias isolado.
+      </p>
+
+      <FerramentaInline
+        id="constancia"
+        texto="A conta acima é a parte fácil: o que decide o resultado é conseguir sustentar o corte por semanas, e é aí que a maioria das tentativas termina. O diagnóstico mapeia onde a sua constância costuma quebrar — o fim de semana, a semana cheia de trabalho, o mês em que o treino some — antes de você escolher o tamanho do déficit."
+        acao="Descobrir onde a minha constância costuma quebrar"
+      />
 
       <h2>Déficit moderado x déficit agressivo</h2>
       <p>
