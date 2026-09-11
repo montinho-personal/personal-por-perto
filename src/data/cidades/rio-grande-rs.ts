@@ -68,6 +68,11 @@ export const cidade: Cidade = {
     'Há cultura de corrida de rua organizada (com associação local de corredores e calendário próprio) e forte presença universitária da FURG, que move eventos esportivos.',
   academias:
     'A oferta de academias é ampla (musculação, crossfit e pilates), impulsionada pela FURG e pelo polo naval, com a Praia do Cassino como cenário ímpar de treino.',
+  academiasProximas: [
+    { nome: 'Academia Musculomania', detalhe: 'na Avenida Atlântica, no Cassino' },
+    { nome: 'KS Fitness', detalhe: 'na Avenida Atlântica, no Cassino' },
+  ],
+  academiasVerificadasEm: '2026-09-11',
 
   destaquesFitness: [
     'Praia do Cassino (a maior praia do mundo) como cenário ímpar de corrida e treino na areia.',
@@ -102,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Grande', url: 'https://www.riogrande.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-11',
 };

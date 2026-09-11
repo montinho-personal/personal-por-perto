@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura de corrida de rua é crescente, com a Meia Maratona como evento-âncora e forte uso esportivo dos espaços públicos da orla do Acaraú.',
   academias:
     'A oferta reúne academias e estúdios, com público universitário expressivo, complementada pela orla do Acaraú e por academias ao ar livre nas praças.',
+  academiasProximas: [
+    { nome: 'Smart Fit Sobral', detalhe: 'na Av. Monsenhor José Aloísio Pinto, no Dom Expedito, dentro do North Shopping' },
+    { nome: 'Selfit Sobral', detalhe: 'na Rua Doutor Monte, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-11',
 
   destaquesFitness: [
     'Orla revitalizada do Rio Acaraú como pista pública de corrida e ciclismo.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sobral', url: 'https://www.sobral.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-11',
 };
