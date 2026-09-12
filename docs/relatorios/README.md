@@ -76,6 +76,88 @@ Duas observações que valem para a próxima leitura:
 - **Celular é 82% dos cliques.** Qualquer decisão de layout que pese
   desktop contra mobile já tem resposta.
 
+## Desempenho — Search Console, 24/06 a 12/09/2026 (77 dias)
+
+Arquivos: `2026-09-12-gsc-desempenho/`.
+
+### O site está crescendo, e rápido
+
+| janela | dias | cliques/dia | impressões/dia | CTR |
+|---|---|---|---|---|
+| até 31/08 (base anterior) | 65 | 7,1 | 431 | 1,64% |
+| 01/09 a 12/09 | 12 | **11,1** | **942** | 1,18% |
+
+Cliques por dia **+56%**, impressões por dia **+119%**. O CTR caiu de 1,64%
+para 1,18%, e a explicação provável é aritmética, não piora: impressões novas
+entram por páginas recém-descobertas, que aparecem em posições baixas e quase
+não recebem clique. Diluição de CTR por expansão é o padrão esperado de quem
+está sendo indexado em volume — o relatório de cobertura de 11/09 mostra
+exatamente isso, 146 páginas indexadas em junho contra 1.172 em setembro.
+
+Totais do período: **593 cliques, 39.290 impressões, CTR 1,51%**.
+
+Celular segue dominante: 487 cliques de 593 (82%), posição média 8,58 contra
+12,88 no computador.
+
+### As três perguntas que este relatório respondeu
+
+**1. Os 12 artigos reescritos se moveram?** Quatro sim, oito não. E "não" aqui
+quer dizer literalmente zero impressão nova em 12 dias.
+
+| artigo | posição | impressões |
+|---|---|---|
+| `elevacao-frontal-como-fazer` | 20,3 → **16,6** | 16 → 24 |
+| `treino-de-posterior-de-coxa` | 39,2 → **37,2** | 17 → 18 |
+| `treino-para-iniciantes` | 32,7 → **31,0** | 93 → 100 |
+| `rosca-martelo-como-fazer` | 20,4 → **19,2** | 28 → 31 |
+| os outros 8 | sem mudança | sem impressão nova |
+
+**Cliques somados dos 12: zero.** Movimentos de +1 a +8 impressões são ruído,
+e três dos oito parados foram republicados há um ou dois dias. A leitura
+honesta é que ainda não dá para ler: o próximo relatório é que responde.
+
+**2. Os 20 artigos novos estão vivos?** Nenhum dos 20 aparece no export — mas
+isso **não significa zero impressão**. A aba Páginas tem exatamente 1.000
+linhas (o teto) e o piso é de 2 impressões, então o que se pode afirmar é que
+nenhum deles passou de ~2 impressões. Com 1 a 10 dias de publicado, isso é
+cedo demais para ser sinal de qualquer coisa.
+
+**3. A fila de reescritas tem sucessor?** Quase não. Com o mesmo critério (10+
+impressões e posição pior que 20), sobraram **dois** artigos — e um deles já
+estava marcado para tratamento manual.
+
+### A fatia de URL sem barra final CRESCEU
+
+A pendência registrada na leitura anterior era esta, e a resposta é
+desconfortável: 111 páginas aparecem nas duas formas de URL, e **30% das
+impressões** estão na versão sem barra, contra 20% na base anterior.
+
+A configuração está correta — `vercel.json` com `"trailingSlash": true` e
+Astro com `trailingSlash: 'always'` —, e o relatório de cobertura confirma que
+o Google encontra a canônica (202 páginas em "alternativa com tag canônica
+adequada"). Então não é redirect quebrado: é o Google continuando a exibir a
+URL antiga no resultado, três semanas depois da consolidação.
+
+**Ressalva de método:** os dois percentuais vêm de exports com janelas
+diferentes, ambos limitados a 1.000 linhas, então não são estritamente
+comparáveis. O que é robusto, dentro deste export sozinho: 111 páginas
+duplicadas e 30% das impressões na forma antiga. Vale reconferir no próximo,
+e só tratar como problema se continuar subindo.
+
+### Bairros: cedo demais
+
+| | base 11/09 | 12/09 |
+|---|---|---|
+| páginas na exportação | 58 | 59 |
+| cliques | 24 | 25 |
+| impressões | 702 | 740 |
+| CTR | 3,42% | 3,38% |
+| posição | 9,45 | 9,38 |
+
+A arquitetura de links e os metadados do piloto entraram em 11/09 — um dia
+antes do fim deste período. Não há nada a ler aqui, e a data marcada continua
+sendo 02/10.
+
 ## Cobertura de indexação — 11/09/2026
 
 Arquivos: `2026-09-11-gsc-coverage/`. Análise completa em

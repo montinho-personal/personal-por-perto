@@ -36,8 +36,80 @@ existe, o assunto já foi pesquisado, a página já é conhecida do Google.
 | 13 | `/emagrecimento/como-perder-barriga/` | 10 | 53,3 | ✅ 2026-09-11 · partiu de 53,3 · ver nota |
 
 **Fila encerrada em 11/09/2026.** 12 dos 13 reescritos; `hipertrofia-como-funciona`
-saiu sem reescrita, por canibalização somada a teto. A próxima fila depende de
-um export novo do Search Console.
+saiu sem reescrita, por canibalização somada a teto.
+
+---
+
+# Fila 2 — aberta em 12/09/2026
+
+Do export de Desempenho de 24/06 a 12/09, arquivado em
+`docs/relatorios/2026-09-12-gsc-desempenho/`. Mesmo critério de entrada: 10
+impressões ou mais e posição pior que 20, somando as duas formas de URL.
+
+**Sobraram dois.** A fila 1 absorveu praticamente todo o estoque de artigos
+com demanda medida e posição ruim — o que é um resultado bom, e também
+significa que esta rotina vai parar de novo em poucos dias.
+
+| # | artigo | impr. | cli. | pos. | status |
+|---|---|---|---|---|---|
+| 1 | `/guias/quanto-custa-personal-trainer/` | 783 | 4 | 25,8 | ⏸ reservado para tratamento manual |
+| 2 | `/musculacao/pullover-como-fazer/` | 62 | 1 | 21,1 | |
+
+O item 1 **não deve entrar na rotina diária**. Ele é o maior ativo do portal
+— 783 impressões, mais que o dobro de qualquer outro artigo da fila 1 inteira
+— e já estava marcado como "fora desta fila" desde 03/09, com o motivo:
+merece reescrita manual e com atenção, não em lote. A posição de 25,8 é de
+"quase primeira página", onde título e trecho de destaque decidem, e errar
+nele custa caro.
+
+## O que a fila 1 produziu, medido em 12/09
+
+Resultado por artigo, somando as duas formas de URL:
+
+| artigo | pos. base → 12/09 | impr. base → 12/09 |
+|---|---|---|
+| `elevacao-frontal-como-fazer` | 20,3 → **16,6** | 16 → 24 |
+| `treino-de-posterior-de-coxa` | 39,2 → **37,2** | 17 → 18 |
+| `treino-para-iniciantes` | 32,7 → **31,0** | 93 → 100 |
+| `rosca-martelo-como-fazer` | 20,4 → **19,2** | 28 → 31 |
+| `triceps-testa-como-fazer` | 25,7 → 25,7 | 67 → 67 |
+| `gordura-visceral` | 66,8 → 66,8 | 57 → 57 |
+| `jejum-intermitente-funciona` | 52,7 → 52,7 | 54 → 54 |
+| `levantamento-terra-como-fazer` | 40,3 → 40,3 | 39 → 39 |
+| `encolhimento-como-fazer` | 24,8 → 24,8 | 24 → 24 |
+| `avaliacao-fisica` | 78,2 → 78,2 | 16 → 16 |
+| `deficit-calorico-como-funciona` | 75,2 → 75,2 | 12 → 12 |
+| `como-perder-barriga` | 53,3 → 53,3 | 10 → 10 |
+
+**Quatro se moveram, oito não receberam nenhuma impressão nova. Zero cliques
+no conjunto.**
+
+### O que NÃO se pode concluir disso
+
+Quase tudo. Os quatro que subiram ganharam de 1 a 8 impressões — números que
+cabem inteiros dentro do ruído. Dos oito parados, três foram republicados em
+10 e 11/09, ou seja, tiveram um ou dois dias de vida antes do fim do período.
+E zero clique em 457 impressões é o mesmo zero que havia antes da fila
+começar: o volume é pequeno demais para que um clique a mais ou a menos
+signifique alguma coisa.
+
+O que **dá** para dizer: nada piorou, e o único artigo que se mexeu de forma
+visível foi o mais recente dos quatro de posição 20-25 — que é exatamente a
+faixa em que a tabela de causas prevê que título e trecho decidem. É indício
+fraco a favor da hipótese, não confirmação.
+
+### A ressalva que vale repetir
+
+Duas das doze reescritas já tinham teto declarado no diagnóstico
+(`jejum-intermitente` e `levantamento-terra`, que disputam com Metrópoles,
+Tua Saúde, Centauro e Integralmedica). As duas estão entre as oito paradas.
+Isso não surpreende e não muda o veredito: quando o diagnóstico diz "a causa
+é autoridade de domínio", ficar parado é o resultado previsto, não a
+refutação da reescrita.
+
+**Próxima leitura:** com o volume atual, uma janela de 30 dias é o mínimo
+para distinguir movimento de ruído. Reler em meados de outubro, no mesmo
+relatório que responder pelo piloto de bairros (02/10) e pela pauta.
 
 ## Nota de 07/09/2026 — dois diagnósticos, e um deles é desconfortável
 

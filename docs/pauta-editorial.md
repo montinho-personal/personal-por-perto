@@ -6,6 +6,59 @@ publicados: nenhum slug abaixo colide com página existente.
 **Produção em blocos de 2**, bem feitos, na ordem desta lista. Marcar `✅`
 com a data quando publicar.
 
+---
+
+## ⏸ PARADA DOS 20 — medida em 12/09/2026, e NÃO liberada
+
+Os 20 saíram entre 02/09 e 11/09. O export de Desempenho de 12/09
+(`docs/relatorios/2026-09-12-gsc-desempenho/`) foi lido para decidir se a
+fila continua. **A decisão é continuar parado, e o motivo não é mau
+resultado — é que ainda não existe resultado para ler.**
+
+### O que o export mostrou
+
+Nenhum dos 20 artigos aparece na aba Páginas. E aqui está a parte que
+importa mais que o número: **isso não quer dizer zero impressão.** A aba tem
+exatamente 1.000 linhas, que é o teto do export, e a última linha listada tem
+2 impressões. Só 7 páginas com 1 impressão entraram. Ou seja, o que se pode
+afirmar é que nenhum dos 20 passou de cerca de 2 impressões — não que nenhum
+teve impressão alguma.
+
+Com 1 a 10 dias de publicado, isso não é sinal de nada. Artigo novo em site
+de autoridade média costuma levar semanas para começar a aparecer, e o
+relatório de cobertura de 11/09 mostra 48 páginas em "detectada, mas não
+indexada" — fila de rastreio em que páginas novas naturalmente esperam.
+
+### Por que a parada continua
+
+A pergunta que a parada existe para responder é se os 20 estão sendo
+indexados, recebendo impressão e ganhando posição, ou nascendo mortos. **O
+relatório não respondeu nem uma coisa nem outra.** Liberar a fila agora seria
+publicar mais 20 sem nunca ter lido o sinal dos primeiros 20 — o que
+esvaziaria o propósito da parada em vez de cumpri-lo.
+
+Publicar rápido é seguro; publicar rápido sem saber se o que já saiu vale
+alguma coisa é o que a política de *scaled content abuse* mira, e é o único
+risco real desta fila.
+
+### O que libera
+
+Um export de Desempenho por volta de **09 a 15/10**, quando o mais novo dos
+20 tiver ~30 dias. Três perguntas, nesta ordem:
+
+1. **Quantos dos 20 aparecem na exportação?** É a medida de descoberta, e a
+   primeira a olhar. Se a maioria aparecer, a fila retoma.
+2. **Em que posição?** Posição ruim com impressão é melhor que impressão
+   nenhuma — significa que o Google entendeu o assunto e a página está na
+   disputa.
+3. **Os sete de Mounjaro se saem diferente dos onze de execução?** São dois
+   blocos com naturezas distintas, e se um funcionar e o outro não, a
+   correção de rumo é sobre qual bloco continuar, não sobre parar tudo.
+
+Um drilldown de Cobertura ajudaria a antecipar a resposta 1, porque diria
+quais URLs estão em "detectada, mas não indexada" — o export de cobertura
+simples só traz contagens.
+
 ## Como esta lista foi montada
 
 Cruzando o export de Consultas do Search Console (`docs/relatorios/`) com o
