@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Há forte vínculo com atividades ao ar livre (caminhada, ciclismo e esportes náuticos na represa), favorecido pelo clima de serra, com o Lago do Taboão como coração da prática esportiva pública.',
   academias:
     'A oferta reúne academias e estúdios, com nicho premium nos condomínios de alto padrão, complementada pelo Lago do Taboão e pela represa.',
+  academiasProximas: [
+    { nome: 'Smart Fit Bragança Paulista', detalhe: 'na Av. Alpheu Grimello' },
+    { nome: 'Bluefit Bragança Paulista', detalhe: 'na Av. Plínio Salgado' },
+    { nome: 'Skyfit Bragança Paulista', detalhe: 'na Rua Quinze de Dezembro, no Matadouro' },
+  ],
+  academiasVerificadasEm: '2026-09-12',
 
   destaquesFitness: [
     'Lago do Taboão como hub de corrida, ciclismo e treino funcional ao ar livre.',
@@ -103,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bragança Paulista', url: 'https://www.braganca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-12',
 };

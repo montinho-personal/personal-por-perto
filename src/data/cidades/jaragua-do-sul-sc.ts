@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cidade tem calendário denso de corridas de rua e trail, com associação local de corredores ativa e forte adesão a atividades ao ar livre nos parques e morros.',
   academias:
     'A oferta inclui estúdios premium e academias, com público de altíssima renda, complementada pelo Parque Malwee e pelo Parque Linear Via Verde.',
+  academiasProximas: [
+    { nome: 'Smart Fit Jaraguá do Sul', detalhe: 'na Av. Getúlio Vargas, no Centro' },
+    { nome: 'UFit Jaraguá do Sul', detalhe: 'na Rua Expedicionário João Zapela, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-12',
 
   destaquesFitness: [
     'Público de altíssima renda e baixo desemprego — clientes com poder de compra.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jaraguá do Sul', url: 'https://www.jaraguadosul.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-12',
 };
