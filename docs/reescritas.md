@@ -12,7 +12,7 @@ posição de partida quando republicar.
 
 ## Por que esta fila vale mais que criar artigo novo
 
-Estes 13 artigos somam **407 impressões e 0 cliques**. Zero. Eles já
+Estes 13 artigos somam **457 impressões e 0 cliques**. Zero. Eles já
 disputam a busca e perdem — subir da posição 40 para a 15 vale mais que um
 artigo novo que começa do nada. E não custa artigo novo nenhum: o texto já
 existe, o assunto já foi pesquisado, a página já é conhecida do Google.
