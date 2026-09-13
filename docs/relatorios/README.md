@@ -158,6 +158,25 @@ A arquitetura de links e os metadados do piloto entraram em 11/09 — um dia
 antes do fim deste período. Não há nada a ler aqui, e a data marcada continua
 sendo 02/10.
 
+## Drilldown de cobertura — 13/09/2026
+
+Arquivos: `2026-09-13-gsc-coverage-drilldown/`, com os dois motivos que
+importavam. Análise em `docs/pauta-editorial.md`.
+
+| motivo | URLs | tendência no período |
+|---|---|---|
+| Detectada, mas não indexada | 48 | 421 → 48 (drenando) |
+| Rastreada, mas não indexada | 75 | 98 → 75 |
+
+**O que respondeu:** dos 20 artigos publicados entre 02/09 e 11/09, catorze
+não aparecem em nenhum dos dois motivos (indexados), seis estão em "detectada,
+nunca rastreada" e **nenhum** foi recusado pelo Google. Os seis na fila são
+exatamente os seis publicados no mesmo dia, em 02/09.
+
+Há também, na mesma data, dois drilldowns de **outra propriedade**
+(`2026-09-13-gsc-montinhopersonal/`). Eles não entram nesta série — o LEIA.md
+da pasta explica por quê.
+
 ## Cobertura de indexação — 11/09/2026
 
 Arquivos: `2026-09-11-gsc-coverage/`. Análise completa em

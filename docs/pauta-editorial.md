@@ -41,6 +41,58 @@ Publicar rápido é seguro; publicar rápido sem saber se o que já saiu vale
 alguma coisa é o que a política de *scaled content abuse* mira, e é o único
 risco real desta fila.
 
+### 13/09/2026 — o drilldown respondeu metade da pergunta, e a metade boa
+
+Os dois drilldowns de cobertura do portal (arquivados em
+`docs/relatorios/2026-09-13-gsc-coverage-drilldown/`) permitiram localizar cada
+um dos 20 artigos. O resultado:
+
+| situação | quantos |
+|---|---|
+| Não aparecem em nenhum dos dois motivos — ou seja, **indexados** | **14** |
+| "Detectada, mas não indexada" — nunca rastreada | 6 |
+| "Rastreada, mas não indexada" — o Google olhou e recusou | **0** |
+
+**Nenhum artigo foi recusado.** Essa é a informação que a parada existia para
+obter: os 20 não estão nascendo mortos. Catorze já estão no índice com 2 a 11
+dias de publicados, e os seis restantes estão na fila de descoberta, que
+encolheu de 421 para 48 URLs no período — o Google está drenando.
+
+**Ressalva de método:** os catorze "indexados" são inferência, não leitura
+direta. Existem cinco motivos de não indexação e temos o drilldown de dois. Os
+outros três — alternativa com canônica, cópia e redirecionamento — atingem
+sobretudo URL sem barra e páginas de cidade, não artigo novo com canonical
+próprio. É uma inferência forte, mas é inferência.
+
+### O padrão que ninguém tinha previsto
+
+Os seis não rastreados **são exatamente os seis publicados no mesmo dia**, em
+02/09, todos no bloco Mounjaro. O sétimo artigo do mesmo bloco, publicado
+sozinho em 04/09, está indexado. E os onze de musculação, publicados a dois
+por dia, estão todos indexados.
+
+| leva | publicados | indexados |
+|---|---|---|
+| 02/09 — seis de uma vez, mesma seção | 6 | **0** |
+| 04/09 em diante — dois por dia | 14 | **14** |
+
+A hipótese óbvia era link interno, e **ela está errada**: os seis não
+rastreados têm em média 3,5 links de entrada (de 1 a 6), contra 2 dos
+indexados. `nausea-e-treino` tem um único link e não foi rastreado;
+`mounjaro-e-idosos` tem um único link e está indexado. Não é topologia.
+
+O que sobra como hipótese é o **ritmo de publicação**: seis URLs novas
+aparecendo no mesmo dia, na mesma seção, contra duas por dia distribuídas.
+É exatamente o que a regra de ritmo do CLAUDE.md prevê por outros motivos —
+atribuição e raio de erro —, e aqui apareceu um terceiro: a fila de rastreio
+parece tratar melhor quem chega espaçado.
+
+**Isso é hipótese, não conclusão.** Uma amostra de uma leva contra sete não
+prova nada, e as explicações concorrentes são banais: a seção Mounjaro é mais
+nova, ou a fila é simplesmente arbitrária. O que dá para fazer é registrar e
+conferir: se os seis forem rastreados nas próximas semanas sem nada mudar, a
+hipótese cai e a resposta era só tempo.
+
 ### O que libera
 
 Um export de Desempenho por volta de **09 a 15/10**, quando o mais novo dos
