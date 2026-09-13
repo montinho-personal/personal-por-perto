@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cidade tem calendário municipal robusto, com cerca de duas dezenas de corridas ao longo do ano, além de forte cultura de trail, hiking e ciclismo de montanha favorecida pelo relevo.',
   academias:
     'A oferta reúne redes e estúdios de musculação e funcional, com o turismo de bem-estar e a alta renda sustentando a demanda, complementada pelos parques e trilhas.',
+  academiasProximas: [
+    { nome: 'Smart Fit Poços de Caldas', detalhe: 'na Av. João Pinheiro, no Centro' },
+    { nome: 'Skyfit Poços de Caldas', detalhe: 'na Av. Mansur Frayha, no Bortolan' },
+  ],
+  academiasVerificadasEm: '2026-09-13',
 
   destaquesFitness: [
     'Clima de altitude ameno: janela de treino ao ar livre o ano inteiro.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Poços de Caldas', url: 'https://www.pocosdecaldas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-13',
 };

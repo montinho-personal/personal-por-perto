@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'O calendário concentra corridas de rua e ciclismo entre setembro e outubro, com apoio da Secretaria de Esportes e forte valorização do cicloturismo.',
   academias:
     'A oferta reúne academias locais e estúdios, com forte presença de condomínios de alto padrão que abrem nicho para personal em condomínio, e ciclovias revitalizadas.',
+  academiasProximas: [
+    { nome: 'Smart Fit Itu', detalhe: 'na Av. Antônio Gazola, no Jardim Corazza' },
+    { nome: 'Skyfit Itu', detalhe: 'na Rua Cecília M. de Mattos, no Jardim São José' },
+  ],
+  academiasVerificadasEm: '2026-09-13',
 
   destaquesFitness: [
     'Mercado grande (maior das cidades premium da região em população).',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itu', url: 'https://www.itu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-13',
 };
