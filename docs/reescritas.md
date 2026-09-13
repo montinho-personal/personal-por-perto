@@ -53,7 +53,63 @@ significa que esta rotina vai parar de novo em poucos dias.
 | # | artigo | impr. | cli. | pos. | status |
 |---|---|---|---|---|---|
 | 1 | `/guias/quanto-custa-personal-trainer/` | 783 | 4 | 25,8 | ⏸ reservado para tratamento manual |
-| 2 | `/musculacao/pullover-como-fazer/` | 62 | 1 | 21,1 | |
+| 2 | `/musculacao/pullover-como-fazer/` | 62 | 1 | 21,1 | ✅ 2026-09-13 · partiu de 21,1 · ver nota |
+
+## Nota de 13/09/2026 — o padrão da esquiva pela quarta vez
+
+**`pullover-como-fazer` (21,1): título que não carrega a pergunta, e um
+artigo que a contornava.** Sem canibalização — "pullover" aparece 22 vezes no
+próprio artigo e uma única vez no resto do acervo.
+
+A busca é inequívoca sobre qual é a pergunta. Metade da primeira página
+constrói o título em cima dela: "Fazer pullover no treino de peito ou de
+costas?" (Hipertrofia.org), "O exercício Pullover é de peito ou de costas?"
+(MundoBoaForma), "Pullover no treino de costas ou peito?" (Grande Atleta). O
+nosso `title` dizia "Pullover: como fazer e o que ele treina" — genérico, sem
+a pergunta que traz a demanda.
+
+Faixa de posição 21, que é onde a tabela de causas manda olhar título. Mas o
+diagnóstico não parou aí: **o corpo também esquivava.** O texto dizia que o
+pullover "transita entre o treino de peito e o de costas sem pertencer de vez
+a nenhum" — verdadeiro, elegante, e nenhuma ajuda para quem precisa decidir em
+que dia colocá-lo. É a mesma falha de `gordura-visceral`, `avaliacao-fisica` e
+`deficit-calorico`: a ressalva correta ocupando o lugar da resposta. Quarta
+ocorrência do padrão.
+
+O que entrou, e nenhum concorrente da primeira página entrega junto:
+
+1. **A evidência, com o conflito dito.** Um estudo brasileiro de 2011 mediu
+   ativação do peitoral maior significativamente maior que a do dorsal em
+   todas as fases; outro trabalho não encontrou diferença relevante. Nenhum
+   aponta predomínio do dorsal — o que contraria a fama do exercício. Citar o
+   conflito em vez de escolher um estudo é o que separa a nossa resposta da
+   dos outros.
+2. **O que NÃO muda a ênfase.** Barra ou halter dá no mesmo: medido, e
+   publicado na Revista Brasileira de Medicina do Esporte. Isso encerra uma
+   discussão de vestiário que nenhum dos concorrentes menciona.
+3. **O que muda de fato:** posição do cotovelo, estabilidade da caixa
+   torácica e tensão contínua da polia — com a recomendação prática de qual
+   versão usar em cada dia.
+
+O corpo foi de 622 para 1.070 palavras, e cresceu onde havia lacuna. A FAQ
+"Pullover é exercício de peito ou de costas?" também esquivava e passou a
+abrir pela resposta.
+
+Antes: `Pullover: como fazer e o que ele treina`
+Depois: `Pullover é de peito ou de costas? Como fazer e erros`
+
+Antes: `Pullover: peito ou costas, halter ou polia, até onde descer sem cobrar
+do ombro, a lenda da expansão da caixa torácica e como programar o clássico.`
+Depois: `Pullover é de peito ou de costas? O que os estudos de ativação
+mostram, o que muda a ênfase na execução e até onde descer sem cobrar do
+ombro.`
+
+O H1 não mudou: "o clássico que treina peito e costas no mesmo arco" é o que o
+artigo tem de próprio, e agora a `title` carrega os termos da busca.
+
+**A fila 2 fica com um item só**, o `quanto-custa-personal-trainer`, que
+segue reservado para tratamento manual. Na prática, a rotina diária de
+reescritas não tem mais o que fazer até um export novo.
 
 O item 1 **não deve entrar na rotina diária**. Ele é o maior ativo do portal
 — 783 impressões, mais que o dobro de qualquer outro artigo da fila 1 inteira
