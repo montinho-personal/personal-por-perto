@@ -1,0 +1,318 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/amplitude-de-movimento/',
+    titulo: 'Amplitude de movimento: a metade que importa mais',
+    descricao: 'A outra variável de execução — e a que tem efeito muito maior que a cadência.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'O volume semanal, que decide bem mais que a velocidade de cada repetição.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-ate-a-falha/',
+    titulo: 'Treinar até a falha: precisa mesmo?',
+    descricao: 'A proximidade da falha é a variável que a cadência costuma ser confundida com.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quanto-tempo-de-treino-por-dia/',
+    titulo: 'Quanto tempo de treino por dia',
+    descricao: 'Onde a cadência lenta cobra o preço: a sessão que estica sem render mais.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/cadencia-do-movimento';
+const atualizadoEm = '2026-09-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cadência do movimento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que significam os quatro números da cadência, tipo 3-1-1-0?',
+    resposta:
+      'São os segundos de cada fase, sempre na mesma ordem: excêntrica (a descida, quando o músculo alonga sob carga), pausa embaixo, concêntrica (a subida) e pausa em cima. Em 3-1-1-0, você desce em três segundos, para um segundo no fundo, sobe em um e emenda a repetição seguinte sem pausa. A letra X às vezes aparece no lugar do terceiro número e quer dizer "o mais rápido que você conseguir mover", com a carga controlada.',
+  },
+  {
+    pergunta: 'Treinar devagar dá mais hipertrofia?',
+    resposta:
+      'Dentro de uma faixa larga, não faz diferença relevante. A meta-análise de referência sobre duração de repetição encontrou resultados de hipertrofia semelhantes em qualquer coisa entre 0,5 e 8 segundos por repetição, o que cobre praticamente tudo o que se faz numa academia. O que sai dessa faixa para baixo — repetições jogadas com impulso — e para cima — super-lento de 10 segundos ou mais — tende a render menos. Vale registrar a ressalva do próprio estudo: ele não separou a fase excêntrica da concêntrica, e os participantes não eram treinados.',
+  },
+  {
+    pergunta: 'Vale a pena cronometrar as repetições?',
+    resposta:
+      'Para a maioria das pessoas, não. Contar segundos consome atenção que faria mais diferença aplicada à amplitude, à carga e à proximidade da falha, e costuma se perder sozinho nas últimas repetições, que são justamente as que mais importam. A cadência é útil como instrução qualitativa — "desça controlado, sem despencar" — e como ferramenta pontual para corrigir quem usa impulso. Como número a ser perseguido em toda série, dá mais trabalho do que entrega.',
+  },
+  {
+    pergunta: 'A descida é mais importante que a subida?',
+    resposta:
+      'Ela merece mais atenção, e por dois motivos práticos. É na fase excêntrica que o músculo produz mais força e que o dano muscular se concentra, e é também onde a maioria das pessoas simplesmente solta o peso — o que transforma metade do movimento em queda assistida. Dito isso, a evidência não sustenta que alongar deliberadamente a excêntrica produza mais hipertrofia dentro daquela faixa de 0,5 a 8 segundos. Controlar a descida é diferente de cronometrá-la.',
+  },
+  {
+    pergunta: 'Cadência lenta serve para quem treina em casa com pouco peso?',
+    resposta:
+      'Serve, e é uma das aplicações mais úteis dela. Quando a carga disponível é menor do que o ideal, desacelerar a repetição aumenta o tempo sob tensão e ajuda a levar a série para perto da falha com o peso que existe. É um ajuste de contexto, não uma técnica superior: quem tem carga suficiente resolve o mesmo problema colocando mais peso na barra.',
+  },
+];
+
+const title = 'Cadência do movimento: a velocidade importa mesmo?';
+const description =
+  'Cadência na musculação: como ler os quatro números, o que a pesquisa diz sobre treinar devagar e por que controlar a descida não é cronometrá-la.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cadência do movimento: a velocidade importa mesmo?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Resposta curta, antes do resto: <strong>muito menos do que a internet
+      sugere</strong>. Dentro da faixa em que quase todo mundo treina, a
+      velocidade da repetição não decide o resultado — e a atenção gasta
+      contando segundos rende mais aplicada em outro lugar.
+    </p>
+
+    <div class="prose">
+      <h2>Como se lê a notação</h2>
+      <p>
+        Antes de discutir se importa, vale saber o que os quatro números
+        significam. Eles aparecem sempre na mesma ordem, e a ordem começa pela
+        descida — o que confunde bastante gente.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Fase</th>
+              <th>Em 3-1-1-0</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1º</td>
+              <td>Excêntrica — a descida, músculo alongando sob carga</td>
+              <td>3 segundos</td>
+            </tr>
+            <tr>
+              <td>2º</td>
+              <td>Pausa embaixo, no ponto alongado</td>
+              <td>1 segundo</td>
+            </tr>
+            <tr>
+              <td>3º</td>
+              <td>Concêntrica — a subida</td>
+              <td>1 segundo</td>
+            </tr>
+            <tr>
+              <td>4º</td>
+              <td>Pausa em cima, antes da próxima repetição</td>
+              <td>0 — emenda direto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Quando aparece um <strong>X</strong> no terceiro número, ele quer dizer
+        "o mais rápido que você conseguir", com a carga sob controle — comum em
+        programas de força e potência, em que a intenção de acelerar importa
+        mais que o cronômetro.
+      </p>
+
+      <h2>O que a pesquisa mostrou</h2>
+      <p>
+        A meta-análise de referência sobre duração de repetição comparou
+        protocolos e chegou a um resultado desconfortável para quem vende
+        cadência como segredo: a hipertrofia foi <strong>semelhante em
+        qualquer coisa entre 0,5 e 8 segundos por repetição</strong>.
+      </p>
+
+      <p>
+        Essa faixa é enorme. Ela cobre desde a repetição rápida e controlada de
+        quem treina força até a descida deliberadamente lenta de quem conta
+        três tempos — e, no meio, praticamente tudo o que se faz numa academia
+        comum. O que fica de fora, nas duas pontas, são os extremos: a
+        repetição jogada com impulso, que não é velocidade e sim ausência de
+        controle, e o super-lento de dez segundos ou mais, que reduz tanto a
+        carga possível que sai perdendo.
+      </p>
+
+      <p>
+        Duas ressalvas do próprio estudo, que honestamente enfraquecem a
+        conclusão: ele não separou a duração da fase excêntrica da concêntrica,
+        e os participantes não eram treinados. Então o que se pode afirmar é
+        que a cadência total não parece decidir o resultado — não que cada fase
+        seja indiferente.
+      </p>
+
+      <h2>A descida merece atenção — mas não cronômetro</h2>
+      <p>
+        Se existe uma fase que vale olhar, é a excêntrica, e por dois motivos
+        práticos que não dependem de estudo nenhum.
+      </p>
+
+      <p>
+        O primeiro: é nela que o músculo produz mais força e onde o dano
+        muscular se concentra. O segundo, mais banal e mais comum: é onde a
+        maioria das pessoas simplesmente <strong>solta o peso</strong>. Metade
+        do movimento vira queda assistida pela gravidade, e a série entrega bem
+        menos do que a planilha registra.
+      </p>
+
+      <p>
+        A correção não é contar três segundos. É a instrução qualitativa que
+        todo bom profissional dá há décadas: <em>desça controlado, sem
+        despencar</em>. Controlar a descida e cronometrar a descida são coisas
+        diferentes — a primeira resolve o problema, a segunda ocupa a cabeça
+        com um número.
+      </p>
+
+      <h2>Quando contar segundos atrapalha</h2>
+      <p>
+        Há um custo escondido na cadência prescrita, e ele aparece justamente
+        nas repetições que mais importam. Perto da falha, manter o ritmo fica
+        impossível — a subida desacelera sozinha, queira você ou não. Quem
+        persegue o número tende a fazer uma de duas coisas: encerrar a série
+        antes da hora para "manter a cadência", ou reduzir a carga até que o
+        ritmo caiba. As duas trocam estímulo por obediência a um protocolo.
+      </p>
+
+      <p>
+        O outro custo é o tempo. Uma cadência de quatro segundos por repetição
+        transforma uma série de dez repetições em quarenta segundos de trabalho
+        contra vinte — e, somado ao descanso, estica a sessão inteira. Quem tem
+        quarenta minutos disponíveis precisa decidir se prefere mais séries ou
+        séries mais lentas. Não dá para ter os dois.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Essa conta é bem concreta: cadência lenta come minutos, e o que sobra decide quantas séries cabem na sessão. A ferramenta parte do tempo que você tem de verdade em cada dia e devolve a distribuição que fecha, em vez do programa ideal que não cabe."
+        acao="Ver quantas séries cabem no meu tempo real"
+      />
+
+      <h2>Onde a cadência é de fato útil</h2>
+      <p>
+        Três situações, todas específicas — o que já diz muito sobre o tamanho
+        real da variável.
+      </p>
+
+      <p>
+        <strong>Para corrigir impulso.</strong> Quem balança o corpo para
+        subir o peso responde bem a uma cadência prescrita por algumas semanas:
+        o número força o controle que a instrução verbal não conseguiu. É
+        ferramenta de correção, com prazo.
+      </p>
+
+      <p>
+        <strong>Quando a carga disponível é menor que o ideal.</strong> Treino
+        em casa com halteres leves, viagem, academia mal equipada. Desacelerar
+        aumenta o tempo sob tensão e leva a série para perto da falha com o
+        peso que existe. Ajuste de contexto, não técnica superior — quem tem
+        carga suficiente resolve o mesmo problema pondo mais peso na barra.
+      </p>
+
+      <p>
+        <strong>Em reabilitação e em exercícios de alto risco técnico.</strong>
+        Aqui a lentidão serve à segurança e ao aprendizado do movimento, não à
+        hipertrofia. E, nesse contexto, quem define o protocolo é o profissional
+        que acompanha o caso — médico ou fisioterapeuta quando há lesão
+        envolvida.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> a cadência total não decide o resultado
+        dentro da faixa em que se treina de verdade, que vai de meio segundo a
+        oito por repetição. O que decide é o de sempre — carga progressiva,
+        volume, proximidade da falha e
+        <a href="/musculacao/amplitude-de-movimento/">amplitude</a>. Controle a
+        descida em vez de cronometrá-la, use cadência prescrita como correção
+        temporária de impulso ou como remédio para carga insuficiente, e gaste
+        a sua atenção nas variáveis que mexem o ponteiro.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

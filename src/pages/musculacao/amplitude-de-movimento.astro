@@ -1,0 +1,288 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/tecnicas-avancadas-de-treino/',
+    titulo: 'Técnicas avançadas de treino: quais valem a pena',
+    descricao: 'Onde as repetições parciais entram como técnica de extensão de série — e por que não substituem a amplitude.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-de-posterior-de-coxa/',
+    titulo: 'Posterior de coxa: os exercícios e o treino que faz crescer',
+    descricao: 'O grupo em que a posição alongada muda mais a escolha do exercício.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'A outra variável que decide o estímulo, e que interage com a amplitude.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/leg-press-45-ou-horizontal/',
+    titulo: 'Leg press 45° ou horizontal: o que realmente muda',
+    descricao: 'Um caso concreto em que a escolha do aparelho é a escolha da amplitude segura.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/amplitude-de-movimento';
+const atualizadoEm = '2026-09-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Amplitude de movimento', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Amplitude completa é sempre melhor que parcial?',
+    resposta:
+      'Não é uma regra tão limpa quanto parece, e a pesquisa recente ajudou a desfazer o slogan. O que determina o resultado não é a palavra "completa", é em que comprimento o músculo trabalha: amplitudes parciais feitas na metade alongada do movimento produzem hipertrofia comparável à amplitude completa, e às vezes superior. Já as parciais feitas na metade encurtada — aquelas que param antes de descer — ficam claramente atrás das duas. Na prática, a amplitude completa segue sendo o padrão sensato porque cobre a metade alongada por definição, sem exigir que você acerte um recorte.',
+  },
+  {
+    pergunta: 'Por que a posição alongada rende mais?',
+    resposta:
+      'A explicação mais aceita é a tensão passiva. Quando o músculo está esticado sob carga, além da tensão que ele mesmo produz ao contrair, existe a tensão do próprio tecido sendo estirado — e esse estímulo mecânico ativa vias moleculares associadas ao crescimento. É por isso que exercícios que carregam o músculo na posição longa, como a flexora sentada para o posterior de coxa ou o crucifixo com amplitude generosa, tendem a render mais que os equivalentes na posição curta.',
+  },
+  {
+    pergunta: 'Devo descer o máximo possível em todo exercício?',
+    resposta:
+      'Não. A amplitude útil termina onde a articulação ainda está estável e o movimento ainda acontece onde deveria. No leg press, por exemplo, descer além do ponto em que a pelve gira transfere a carga para a lombar; no agachamento, o mesmo vale quando o quadril enrola no fundo. Amplitude máxima e amplitude útil não são sinônimos, e ultrapassar a segunda não acrescenta estímulo — só troca o músculo que recebe a carga. Se há dor ou limitação articular conhecida, a definição do limite é conversa com médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Reduzir a carga para ganhar amplitude compensa?',
+    resposta:
+      'Quase sempre sim, e é a troca que mais gente faz ao contrário. Carga que encurta a amplitude a cada série entrega menos estímulo do que uma carga menor movida por inteiro, porque justamente a parte que se perde ao encurtar costuma ser a metade alongada — a que mais importa. Uma boa régua: se você não consegue manter a mesma amplitude da primeira à última repetição, o peso está acima do que aquele exercício comporta hoje.',
+  },
+  {
+    pergunta: 'Amplitude curta nunca serve para nada?',
+    resposta:
+      'Serve em dois casos legítimos. O primeiro é como técnica de extensão no fim da série: depois de esgotar as repetições completas, continuar em amplitude parcial estende o estímulo, e é assim que ela aparece entre as técnicas avançadas. O segundo é a limitação real — mobilidade, dor articular, pós-operatório —, em que a amplitude possível é a amplitude certa e o trabalho é ampliá-la com o tempo, não forçá-la de uma vez. O que não se sustenta é escolher amplitude curta para levantar mais peso.',
+  },
+];
+
+const title = 'Amplitude de movimento: até onde descer em cada exercício';
+const description =
+  'Amplitude de movimento: por que a metade alongada vale mais que a completa, onde a amplitude útil termina e o que fazer quando a carga encurta.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Amplitude de movimento: a metade que importa mais</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Faça amplitude completa" é o conselho mais repetido da academia, e ele
+      está certo — mas pelo motivo errado. O que a pesquisa dos últimos anos
+      mostrou não é que o movimento inteiro tenha algo de mágico: é que
+      <strong>a metade alongada faz quase todo o trabalho</strong>, e a
+      amplitude completa é boa porque inclui essa metade sem que você precise
+      acertar um recorte.
+    </p>
+
+    <div class="prose">
+      <h2>O que a pesquisa achou quando separou as metades</h2>
+      <p>
+        A pergunta parecia resolvida: amplitude completa contra amplitude
+        parcial, e a completa ganhava. Até alguém dividir a parcial em duas
+        categorias diferentes — a que trabalha na porção em que o músculo está
+        <strong>esticado</strong> e a que trabalha na porção em que ele está
+        <strong>encurtado</strong>.
+      </p>
+
+      <p>
+        Com essa separação, o resultado mudou de forma. As parciais alongadas
+        produzem hipertrofia comparável à amplitude completa, e em alguns
+        estudos a superam. As parciais encurtadas — aquelas que param antes de
+        descer — ficam atrás das duas. Um estudo de oito semanas com
+        panturrilha, feito com 42 mulheres, encontrou ganho maior tanto na
+        amplitude completa quanto na parcial alongada, contra a encurtada. Um
+        estudo brasileiro com agachamento chegou ao mesmo lugar pelo
+        quadríceps.
+      </p>
+
+      <p>
+        Ou seja: o que separa um estímulo bom de um medíocre não é quanto do
+        movimento você percorre, é <strong>onde</strong> você o percorre.
+      </p>
+
+      <h2>Por que o músculo esticado responde mais</h2>
+      <p>
+        A explicação mais aceita é a tensão passiva. Quando o músculo contrai,
+        ele gera tensão ativa — é o que todo mundo chama de "fazer força". Mas
+        quando ele está alongado sob carga, soma-se a tensão do próprio tecido
+        sendo estirado, sem que ele faça nada para isso. É essa tensão extra
+        que parece acionar as vias moleculares associadas ao crescimento.
+      </p>
+
+      <p>
+        Isso explica observações que antes pareciam avulsas. Por que a flexora
+        sentada tende a render mais que a deitada para o posterior de coxa: com
+        o quadril flexionado, a porção longa do bíceps femoral começa a série
+        já esticada. Por que o crucifixo com amplitude generosa cresce peito de
+        um jeito que a máquina com curso curto não cresce. Por que quem faz
+        meio agachamento pesado há anos costuma ter perna menos desenvolvida do
+        que o volume de treino sugeriria.
+      </p>
+
+      <h2>Onde a amplitude útil termina</h2>
+      <p>
+        Aqui mora o mal-entendido oposto, e ele é perigoso: "descer o máximo
+        possível" não é a conclusão. Amplitude máxima e amplitude útil são
+        coisas diferentes, e a segunda termina no ponto em que a articulação
+        ainda está estável e o movimento ainda acontece onde deveria.
+      </p>
+
+      <p>
+        No leg press, esse ponto é onde a pelve começa a girar e a lombar
+        descola do encosto — o que passa dali é carga em flexão de coluna, não
+        amplitude de quadríceps. No agachamento, é o mesmo quadril enrolando no
+        fundo. No supino, é o ombro rolando para a frente quando a barra desce
+        além do que a mobilidade permite.
+      </p>
+
+      <p>
+        A regra prática: a amplitude útil vai até onde o movimento é do
+        <strong>músculo</strong>. Quando outra articulação entra para fornecer
+        o curso extra, você não ganhou amplitude — trocou de exercício. E se
+        existe dor, limitação de mobilidade conhecida ou pós-operatório, quem
+        define esse limite é médico ou fisioterapeuta, não a régua geral.
+      </p>
+
+      <FerramentaInline
+        id="personalIdeal"
+        texto="O ponto em que a sua pelve gira, o seu ombro rola ou o seu quadril enrola não dá para ver de dentro do exercício — e é exatamente ele que separa amplitude útil de carga na articulação errada. Um par de olhos treinados resolve isso em duas séries; o teste ajuda a encontrar o profissional com o perfil e o formato que servem ao seu caso."
+        acao="Ver que tipo de profissional serve ao meu caso"
+      />
+
+      <h2>A troca que quase todo mundo faz ao contrário</h2>
+      <p>
+        Carga e amplitude competem, e a escolha é feita todo dia sem que
+        ninguém perceba que está escolhendo. Quando o peso sobe além do que o
+        exercício comporta, a amplitude encolhe sozinha — e encolhe sempre pelo
+        mesmo lado.
+      </p>
+
+      <p>
+        Repare na próxima série pesada que você vir: o que se perde é o fundo.
+        O agachamento fica mais alto, o supino para mais longe do peito, a rosca
+        não estende o cotovelo no final. Ou seja, a carga extra é paga
+        exatamente com a metade que mais importa. É uma troca ruim disfarçada
+        de progresso, porque o número da planilha sobe enquanto o estímulo cai.
+      </p>
+
+      <p>
+        A régua que resolve: <strong>se a amplitude da última repetição é
+        menor que a da primeira, o peso está acima do que aquele exercício
+        comporta hoje.</strong> Não é questão de disciplina nem de "aguentar" —
+        é a definição prática de carga excessiva.
+      </p>
+
+      <h2>Quando a amplitude curta é a escolha certa</h2>
+      <p>
+        Dois casos, e nenhum deles é "para levantar mais peso".
+      </p>
+
+      <p>
+        <strong>Como extensão no fim da série.</strong> Esgotadas as
+        repetições completas, continuar em amplitude parcial estende o estímulo
+        de uma série que já chegou perto do limite. É assim que a parcial
+        aparece entre as
+        <a href="/musculacao/tecnicas-avancadas-de-treino/">técnicas avançadas
+        de treino</a> — complemento no fim, nunca substituto do padrão. E,
+        pelo que a pesquisa mostra, faz diferença qual metade você escolhe para
+        essas últimas repetições.
+      </p>
+
+      <p>
+        <strong>Como limitação real.</strong> Mobilidade restrita, dor
+        articular, recuperação de cirurgia. Aqui a amplitude possível é a
+        amplitude certa, e o trabalho é ampliá-la ao longo de meses — não
+        forçá-la numa sessão. Treinar dentro do que é seguro hoje constrói
+        músculo; treinar além disso constrói lesão.
+      </p>
+
+      <p>
+        Juntando tudo numa frase: <strong>use a maior amplitude em que o
+        movimento continua sendo do músculo, e desconfie de qualquer carga que
+        encurte essa amplitude ao longo da série.</strong> O resto — parciais,
+        recortes, variações — é ajuste fino em cima disso.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

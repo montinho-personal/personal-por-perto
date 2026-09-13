@@ -8,7 +8,25 @@ com a data quando publicar.
 
 ---
 
-## ⏸ PARADA DOS 20 — medida em 12/09/2026, e NÃO liberada
+## ▶ PARADA DOS 20 — LIBERADA em 13/09/2026 pelo Renato
+
+A fila volta a produzir **dois por dia**, com uma regra nova que saiu da
+própria medição (ver "o padrão que ninguém tinha previsto", mais abaixo):
+
+> **Nunca publicar uma leva grande no mesmo dia e na mesma seção.** Dois por
+> dia, espalhados. A leva de seis de 02/09 é a única cujos artigos seguem sem
+> rastreamento.
+
+O que sustentou a liberação: **zero artigos recusados pelo Google**, 14 dos 20
+indexados em poucos dias e a fila de descoberta encolhendo de 421 para 48
+URLs. O risco que a parada protegia — publicar volume que o Google olha e
+recusa — não se materializou.
+
+O que **não** foi respondido, e segue em aberto: impressões e posição. O mais
+velho dos 20 tem 11 dias e nenhum passou de ~2 impressões, o que é normal
+nessa idade e não é informação. **Reler em meados de outubro.**
+
+### O histórico da parada, para quem vier depois
 
 Os 20 saíram entre 02/09 e 11/09. O export de Desempenho de 12/09
 (`docs/relatorios/2026-09-12-gsc-desempenho/`) foi lido para decidir se a
@@ -368,9 +386,9 @@ de fechamento.
 |---|---|---|
 | Treino push pull legs | `treino-push-pull-legs` | ✅ 2026-09-11 · recorte declarado |
 | Leg press 45 ou horizontal | `leg-press-45-ou-horizontal` | ✅ 2026-09-11 · recorte declarado |
-| Treino de antebraço | `treino-de-antebraco` | |
-| Amplitude de movimento | `amplitude-de-movimento` | |
-| Cadência do movimento | `cadencia-do-movimento` | |
+| Treino de antebraço | `treino-de-antebraco` | ❌ 2026-09-13 · cancelado · ver nota |
+| Amplitude de movimento | `amplitude-de-movimento` | ✅ 2026-09-13 · recorte declarado |
+| Cadência do movimento | `cadencia-do-movimento` | ✅ 2026-09-13 |
 | Respiração no treino | `respiracao-no-treino` | |
 | Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | |
 | Academia lotada: como treinar | `academia-lotada-como-treinar` | |
@@ -430,6 +448,53 @@ tabela e fecha com uma regra de decisão em uma frase — **sem callout
 "Resumindo"**. O leg press abre com a resposta curta ("para o músculo,
 quase nada"), põe a tabela comparativa logo no primeiro H2 e fecha com
 callout. Se tivessem saído com o mesmo esqueleto, um teria sido reescrito.
+
+### Nota de 13/09/2026 — o quinto cancelamento, e dois artigos de princípio
+
+**`treino-de-antebraco` foi cancelado.** `pegada-e-antebraco` já existe e já é
+o artigo de treino de antebraço, não só de pegada: tem os H2 "O antebraço em
+três peças", "Quem precisa de trabalho direto", "Os exercícios que resolvem",
+"Volume, frequência e progressão" e "Um plano de 15 minutos, duas vezes por
+semana". A própria `description` dele promete "os exercícios para flexores,
+extensores e braquiorradial… e um plano semanal".
+
+O que sobraria de próprio ao filho é nada — seria o mesmo artigo com outro
+nome, disputando a mesma consulta contra o irmão. É o caso mais claro de
+cancelamento que a fila já teve.
+
+**`amplitude-de-movimento` entrou com recorte declarado.**
+`tecnicas-avancadas-de-treino` tem um H2 sobre repetições parciais, mas ele
+trata a parcial como técnica de extensão de série e diz explicitamente que ela
+"é um complemento no fim, não um substituto da amplitude completa". Isso é
+posicionamento, não tratamento do tema.
+
+O ângulo próprio do filho contraria o senso comum, e vem da pesquisa recente:
+**amplitude completa não tem nada de mágico — a metade alongada é que faz o
+trabalho.** Quando os estudos separaram as parciais em "alongadas" e
+"encurtadas", as alongadas alcançaram a amplitude completa e às vezes a
+superaram, enquanto as encurtadas ficaram atrás das duas. A amplitude completa
+segue sendo o padrão sensato porque cobre a metade que importa sem exigir que
+ninguém acerte um recorte. O artigo se organiza em torno disso, e fecha com a
+régua prática: se a amplitude da última repetição é menor que a da primeira, o
+peso está acima do que o exercício comporta.
+
+Link do pai para o filho pendente — o pai trata parciais como técnica, e o
+filho como princípio; os dois se complementam sem competir.
+
+**`cadencia-do-movimento` não teve sobreposição nenhuma.** Zero H2 sobre o
+tema no acervo inteiro, e a menção mais forte em qualquer artigo eram três
+ocorrências soltas da palavra. O ângulo é a resposta honesta que quase nenhum
+conteúdo de cadência dá: dentro da faixa em que se treina de verdade — de 0,5
+a 8 segundos por repetição —, a velocidade não decide o resultado. O que o
+artigo acrescenta é o custo escondido: perto da falha a cadência prescrita é
+impossível de manter, e quem persegue o número encerra a série antes da hora
+ou reduz a carga; e cadência lenta come minutos, o que decide quantas séries
+cabem na sessão.
+
+**Estrutura variada, como sempre.** Amplitude é prosa de princípio, sem
+tabela, e fecha com uma regra em uma frase — sem callout. Cadência abre com a
+notação em tabela logo no primeiro H2 e fecha com callout "Resumindo". Se os
+dois tivessem saído com o mesmo esqueleto, um seria reescrito.
 
 ## Bloco Emagrecimento (12)
 
