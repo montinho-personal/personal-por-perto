@@ -389,8 +389,8 @@ de fechamento.
 | Treino de antebraço | `treino-de-antebraco` | ❌ 2026-09-13 · cancelado · ver nota |
 | Amplitude de movimento | `amplitude-de-movimento` | ✅ 2026-09-13 · recorte declarado |
 | Cadência do movimento | `cadencia-do-movimento` | ✅ 2026-09-13 |
-| Respiração no treino | `respiracao-no-treino` | |
-| Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | |
+| Respiração no treino | `respiracao-no-treino` | ✅ 2026-09-14 · recorte declarado |
+| Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | ✅ 2026-09-14 · recorte declarado |
 | Academia lotada: como treinar | `academia-lotada-como-treinar` | |
 | Treinar duas vezes por dia | `treinar-duas-vezes-por-dia` | |
 | Musculação na gravidez | `musculacao-na-gravidez` | |
@@ -495,6 +495,52 @@ cabem na sessão.
 tabela, e fecha com uma regra em uma frase — sem callout. Cadência abre com a
 notação em tabela logo no primeiro H2 e fecha com callout "Resumindo". Se os
 dois tivessem saído com o mesmo esqueleto, um seria reescrito.
+
+### Nota de 14/09/2026 — dois recortes, e uma tensão que vale o artigo
+
+**`respiracao-no-treino`.** Zero H2 sobre o tema no acervo e nenhum artigo
+mencionando "respira" mais de duas vezes. A sobreposição é pontual: o
+`levantamento-terra-como-fazer` ganhou, na reescrita de 08/09, um passo de
+respiração dentro da técnica — "respire no topo, nunca no fundo". Isso é
+aplicação num exercício, não o princípio.
+
+O ângulo próprio é uma correção, não uma explicação: **"expire no esforço" é
+uma boa regra geral e uma péssima regra universal.** Ela funciona em máquina,
+isolador e faixa moderada; falha exatamente no agachamento pesado e no terra,
+porque expirar na subida esvazia a pressão intra-abdominal que está segurando
+a coluna.
+
+E o artigo carrega uma tensão que quase nenhum conteúdo brasileiro registra: o
+Colégio Americano de Medicina do Esporte **recomenda evitar** a manobra de
+Valsalva pelo risco ligado à elevação de pressão arterial — medições em
+levantadores registram valores da ordem de 300 por 280 mmHg —, enquanto a
+prática padrão do levantamento pesado depende dela. As duas coisas são
+verdadeiras e estão escritas lado a lado, com a ressalva de médico onde ela
+pesa: hipertensão, doença cardíaca, doença vascular. Quatro menções a médico
+no texto, e uma FAQ dedicada ao sinal de alerta (tontura no fim da série).
+
+Recorte: pai aplica no exercício, filho trata o princípio e o risco. Link do
+pai adicionado, com a data de revisão atualizada.
+
+**`cinto-e-luva-de-treino`.** `pegada-e-antebraco` tem um H2 "Straps: aliado ou
+muleta?" — e é só sobre strap, e só pelo ângulo do desenvolvimento da pegada.
+O cinto, que funciona por mecanismo completamente diferente, não aparece lá.
+
+O ângulo próprio: **o cinto não segura a lombar — ele é uma parede contra a
+qual o abdômen empurra.** Quem aperta o cinto e relaxa o abdômen não está
+usando o acessório. Some-se a isso o corte prático dos 80% da carga máxima,
+com o recado embutido de que quem não sabe a própria máxima não está na faixa
+em que ele faz diferença; e a observação sobre a luva que ninguém faz: o
+tecido engrossa a barra e pode atrapalhar a pegada que as pessoas imaginam que
+ele ajuda.
+
+Recorte: pai trata o strap como questão de pegada, filho compara os três
+acessórios. Link do pai adicionado, com a data de revisão atualizada.
+
+**Estrutura variada.** Respiração é uma correção em duas metades — onde a regra
+funciona, onde ela falha — e fecha com uma frase-regra, sem callout. Cinto tem
+um veredito explícito ao fim de cada seção e fecha com ordem de compra mais
+callout. Nenhum dos dois repete o par de ontem (prosa-princípio + tabela).
 
 ## Bloco Emagrecimento (12)
 

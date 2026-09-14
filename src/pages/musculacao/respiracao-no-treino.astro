@@ -1,0 +1,275 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer, pegadas e erros',
+    descricao: 'O exercício em que a respiração deixa de ser detalhe e vira parte da técnica.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer, variações e erros',
+    descricao: 'O outro movimento em que travar o tronco muda o que a coluna recebe.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-com-dor-lombar/',
+    titulo: 'Treinar com dor lombar: o que dá e o que não dá',
+    descricao: 'Leitura obrigatória antes de experimentar qualquer técnica de travamento.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/amplitude-de-movimento/',
+    titulo: 'Amplitude de movimento: a metade que importa mais',
+    descricao: 'A outra variável de execução que muda o estímulo mais do que parece.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/respiracao-no-treino';
+const atualizadoEm = '2026-09-14';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Respiração no treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Devo expirar na subida do peso?',
+    resposta:
+      'Na maior parte do treino, sim, e a instrução funciona bem: inspire na fase fácil, expire na fase de esforço. Ela cobre rosca, elevação lateral, cadeira extensora, máquinas em geral e qualquer série em faixa moderada de repetição com carga que você controla. Onde ela falha é justamente nos exercícios pesados com a coluna carregada — agachamento, levantamento terra, desenvolvimento em pé —, porque expirar durante a subida esvazia a pressão que está segurando o tronco. Aí a regra muda.',
+  },
+  {
+    pergunta: 'O que é a manobra de Valsalva?',
+    resposta:
+      'É inspirar fundo, prender o ar e contrair a musculatura abdominal e do assoalho pélvico durante o esforço. O ar preso transforma o tronco numa estrutura pressurizada — a pressão intra-abdominal sobe e passa a dar sustentação à frente das vértebras lombares, reduzindo a carga que o disco recebe. É o que todo levantador pesado faz, com ou sem esse nome, e é a razão de a instrução de "expirar no esforço" não se aplicar ao agachamento máximo.',
+  },
+  {
+    pergunta: 'Prender a respiração faz mal?',
+    resposta:
+      'Ela cobra um preço mensurável: a pressão arterial dispara durante a apneia sob carga, e medições em levantadores registram valores da ordem de 300 por 280 mmHg, com picos relatados bem acima disso. Por causa desse efeito, o Colégio Americano de Medicina do Esporte recomenda evitar a manobra pelo risco potencial associado ao aumento da pressão. Na prática, quem é saudável e usa a técnica em poucas séries pesadas convive com isso; quem tem hipertensão, doença cardíaca ou vascular precisa conversar com médico antes — e essa não é uma formalidade.',
+  },
+  {
+    pergunta: 'Como respirar numa série longa, de 15 ou 20 repetições?',
+    resposta:
+      'Prender o ar por quinze repetições não é opção, e nem é necessário — série longa quase sempre significa carga moderada, que não exige o travamento. Respire no ritmo do movimento, expirando na fase de esforço. Se for uma série longa de exercício pesado com coluna carregada, a solução é respirar no ponto de menor exigência do movimento (o topo, onde o esqueleto sustenta a carga) e nunca no fundo, onde a estrutura precisa estar pressurizada.',
+  },
+  {
+    pergunta: 'Fiquei tonto na série. O que aconteceu?',
+    resposta:
+      'A tontura ou o escurecimento da visão ao fim de uma série pesada costuma ser consequência direta da apneia: a pressão dentro do peito sobe, o retorno de sangue ao coração cai e a pressão despenca no instante em que você solta o ar. É comum e costuma passar em segundos, mas é um aviso de que a técnica foi longe demais para aquela série. Se acontecer com frequência, ou se vier acompanhado de dor no peito, falta de ar ou palpitação, pare e procure um médico antes de continuar treinando pesado.',
+  },
+];
+
+const title = 'Respiração no treino: quando expirar e quando prender';
+const description =
+  'Respiração na musculação: por que "expire no esforço" falha nos exercícios pesados, o que a apneia faz pela coluna e o preço que ela cobra.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Respiração no treino: a instrução certa que falha na hora errada</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      "Inspire na descida, expire na subida." É a única orientação de
+      respiração que a maioria recebe, ela está certa para quase todo o
+      treino — e está errada exatamente nos exercícios em que respirar
+      errado tem consequência: os pesados, com a coluna carregada.
+    </p>
+
+    <div class="prose">
+      <h2>Onde a regra funciona</h2>
+      <p>
+        Comecemos pelo que não precisa mudar. Inspirar na fase fácil e
+        expirar na fase de esforço serve bem para a maior parte do que se faz
+        numa academia: rosca, elevação lateral, extensora, flexora, máquinas
+        em geral, e qualquer série em faixa moderada de repetição com carga
+        que você controla do começo ao fim.
+      </p>
+
+      <p>
+        Nesses casos o tronco não precisa de sustentação extra — a máquina
+        estabiliza, ou a carga é baixa o suficiente para que a musculatura
+        dê conta sozinha. Respirar no ritmo do movimento é confortável,
+        sustentável e não custa nada.
+      </p>
+
+      <h2>Onde ela falha, e por quê</h2>
+      <p>
+        Agora o outro lado. No agachamento pesado, no levantamento terra e no
+        desenvolvimento em pé, a coluna está sustentando carga e precisa de
+        rigidez. Essa rigidez não vem só dos músculos: vem de
+        <strong>pressão</strong>.
+      </p>
+
+      <p>
+        Quando você inspira fundo, prende o ar e contrai o abdômen e o
+        assoalho pélvico, o tronco vira uma estrutura pressurizada. A pressão
+        intra-abdominal sobe e passa a dar sustentação à frente das vértebras
+        lombares, reduzindo a carga que chega ao disco. É a chamada manobra
+        de Valsalva, e todo levantador pesado a executa — com ou sem saber o
+        nome.
+      </p>
+
+      <p>
+        Daí o problema da instrução genérica: <strong>expirar durante a
+        subida esvazia justamente a estrutura que está segurando a
+        coluna</strong>. O momento em que o praticante solta o ar "para fazer
+        força" é o momento em que ele perde a sustentação. É a aplicação
+        correta de uma regra no lugar errado.
+      </p>
+
+      <h2>O preço, dito com número</h2>
+      <p>
+        Não existe almoço grátis aqui, e vale saber o custo antes de adotar a
+        técnica. Prender o ar sob carga faz a pressão arterial disparar:
+        medições em levantadores durante o esforço registram valores da ordem
+        de <strong>300 por 280 mmHg</strong>, com picos relatados
+        consideravelmente acima disso. São números transitórios, que duram
+        segundos — e ainda assim são números altos.
+      </p>
+
+      <p>
+        Por causa desse efeito, o Colégio Americano de Medicina do Esporte
+        recomenda <strong>evitar</strong> a manobra, pelo risco potencial
+        ligado a essa elevação de pressão. Vale registrar essa recomendação
+        exatamente como ela é, porque ela cria uma tensão real: a orientação
+        das entidades de saúde e a prática padrão do levantamento pesado não
+        apontam para o mesmo lugar.
+      </p>
+
+      <p>
+        A leitura honesta dessa tensão: a recomendação existe para a
+        população geral, que inclui muita gente com pressão alta sem
+        diagnóstico. Quem é saudável, treina pesado e usa o travamento em
+        poucas séries por sessão convive com o risco de forma diferente de
+        quem tem <strong>hipertensão, doença cardíaca, doença vascular ou
+        histórico de AVC</strong> — e para esse segundo grupo a conversa é
+        com médico antes de qualquer experimento, não depois.
+      </p>
+
+      <p>
+        E há um sinal que não se deve ignorar: tontura ou visão escurecendo
+        no fim da série. Isso acontece porque a pressão dentro do peito sobe,
+        o retorno de sangue ao coração cai, e a pressão despenca no instante
+        em que o ar é solto. É comum, passa em segundos, e é um aviso de que
+        aquela série foi longe demais. Se vier acompanhado de dor no peito,
+        falta de ar ou palpitação, a conversa é com médico.
+      </p>
+
+      <FerramentaInline
+        id="formato"
+        texto="Travar o tronco é das poucas coisas do treino que quase ninguém aprende lendo: o instante em que a pressão se perde alguém de fora enxerga na primeira série, e você não sente de dentro. Vale pesar quanto da sua correção depende de estar perto — o teste cruza a sua rotina, o seu histórico e essa necessidade de supervisão."
+        acao="Descobrir se presencial ou online faz mais sentido para mim"
+      />
+
+      <h2>Como decidir, na prática</h2>
+      <p>
+        Uma pergunta resolve a maior parte dos casos: <strong>a sua coluna
+        está sustentando a carga?</strong>
+      </p>
+
+      <p>
+        Se sim — barra nas costas, barra nas mãos, peso acima da cabeça em pé
+        —, o tronco precisa estar pressurizado durante a parte difícil, e a
+        respiração acontece entre as repetições, não no meio delas. Se não —
+        você está deitado, sentado, apoiado numa máquina, ou a carga é
+        moderada —, respire no ritmo do movimento e não pense mais nisso.
+      </p>
+
+      <p>
+        O caso intermediário é a série longa de exercício pesado, em que
+        segurar o ar por doze repetições não é possível. A solução não é
+        respirar em qualquer lugar: é respirar
+        <strong>no ponto de menor exigência</strong> — em geral o topo do
+        movimento, onde o esqueleto sustenta a carga — e nunca no fundo, que
+        é onde a estrutura mais precisa estar firme. É a regra que o guia do
+        <a href="/musculacao/levantamento-terra-como-fazer/">levantamento
+        terra</a> aplica passo a passo.
+      </p>
+
+      <p>
+        Em uma frase: <strong>a instrução de expirar no esforço é uma boa
+        regra geral e uma péssima regra universal.</strong> O que decide não
+        é o exercício ter nome difícil — é a coluna estar ou não carregando
+        o peso.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

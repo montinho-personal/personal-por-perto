@@ -1,0 +1,285 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/pegada-e-antebraco/',
+    titulo: 'Pegada e antebraço: como treinar o elo mais fraco',
+    descricao: 'O artigo que trata o strap pelo outro ângulo: o que ele faz com a sua pegada.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/respiracao-no-treino/',
+    titulo: 'Respiração no treino: quando expirar e quando prender',
+    descricao: 'O mecanismo de pressão que o cinto amplifica — e que funciona sem ele.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/levantamento-terra-como-fazer/',
+    titulo: 'Levantamento terra: como fazer, pegadas e erros',
+    descricao: 'O exercício em que os três acessórios aparecem ao mesmo tempo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O que nenhum acessório substitui, e o motivo de a maioria não precisar deles ainda.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/cinto-e-luva-de-treino';
+const atualizadoEm = '2026-09-14';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cinto, luva e strap', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O cinto de musculação enfraquece o core?',
+    resposta:
+      'A resposta depende inteiramente de quanto você o usa. Usado em todas as séries de todos os exercícios, ele realmente assume parte do trabalho que a musculatura do tronco faria — e o que não trabalha não se desenvolve. Usado só nas séries mais pesadas de agachamento e terra, não há motivo para isso acontecer: o resto do treino continua exigindo estabilização sem apoio nenhum. O mito é meio verdadeiro, e a metade que importa é a da dose.',
+  },
+  {
+    pergunta: 'A partir de que carga vale usar cinto?',
+    resposta:
+      'A recomendação mais comum é reservá-lo para séries em torno de 80% ou mais da sua carga máxima, e em movimentos que carregam a coluna — agachamento, levantamento terra, desenvolvimento em pé. Abaixo disso ele não acrescenta nada que a sua própria musculatura não resolva. Vale notar o que isso significa na prática: quem ainda não sabe qual é a própria carga máxima provavelmente não está treinando na faixa em que o cinto faz diferença.',
+  },
+  {
+    pergunta: 'O cinto segura a lombar?',
+    resposta:
+      'Não é assim que ele funciona, e essa imagem atrapalha o uso correto. O cinto não é uma cinta ortopédica que imobiliza a coluna por fora: ele é uma superfície contra a qual o seu abdômen empurra. Você inspira, trava o tronco e pressiona o abdômen contra o cinto — é essa pressão interna que sustenta a frente das vértebras lombares. Quem aperta o cinto e relaxa o abdômen esperando que ele faça o trabalho não está usando o acessório, está usando um acessório de moda.',
+  },
+  {
+    pergunta: 'Luva de academia serve para alguma coisa?',
+    resposta:
+      'Serve para conforto e para evitar calo, e isso é tudo — não melhora pegada, não protege articulação e não aumenta carga. Há inclusive um efeito contrário a considerar: a camada de tecido entre a mão e a barra aumenta a circunferência do que você segura e reduz a sensibilidade do contato, o que na prática pode dificultar a pegada em cargas altas. Se o incômodo do calo é o que faz você pular séries, a luva resolve um problema real. Fora isso, é o acessório mais dispensável dos três.',
+  },
+  {
+    pergunta: 'Usar strap é trapaça?',
+    resposta:
+      'Não, mas ele resolve um problema e cria outro, e o arranjo importa. O strap existe para que a série pesada de terra ou remada termine no músculo-alvo e não na mão que abriu — sem ele, quem move carga alta treinaria as costas abaixo do que poderia. O custo é que a pegada deixa de ser exigida e, portanto, deixa de crescer. A solução conhecida é simples: séries leves e médias sem strap, séries pesadas com. Quem coloca o strap já no aquecimento não deveria estranhar a pegada que não evolui.',
+  },
+];
+
+const title = 'Cinto, luva e strap: quais valem a pena e quando';
+const description =
+  'Cinto, luva e strap de treino: o que cada um faz de verdade, a partir de que carga o cinto entra e por que a luva é a mais dispensável.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cinto, luva e strap: o que cada um faz, e para quem</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Os três dividem a mesma prateleira e a mesma fama de "coisa de quem
+      treina sério", mas resolvem problemas completamente diferentes — e um
+      deles resolve um problema que quase ninguém tem. O veredito de cada um
+      está no fim da seção respectiva, sem enrolação.
+    </p>
+
+    <div class="prose">
+      <h2>O cinto: pressão, não sustentação</h2>
+      <p>
+        A imagem que quase todo mundo tem do cinto está errada, e é ela que
+        faz o acessório ser mal usado. Ele não é uma cinta ortopédica que
+        segura a lombar por fora. Ele é <strong>uma superfície contra a qual
+        o seu abdômen empurra</strong>.
+      </p>
+
+      <p>
+        O mecanismo é o mesmo da
+        <a href="/musculacao/respiracao-no-treino/">respiração travada</a>:
+        você inspira fundo, contrai o abdômen e a pressão dentro do tronco
+        sobe, dando sustentação à frente das vértebras lombares e reduzindo a
+        carga que chega ao disco. O cinto entra como parede — o abdômen tem
+        contra o que empurrar, e a pressão que se consegue gerar é maior.
+      </p>
+
+      <p>
+        Daí a consequência prática que muita gente inverte: <strong>quem
+        aperta o cinto e relaxa o abdômen não está usando o cinto.</strong>
+        Sem o travamento ativo, ele é um cinto de moda. E é por isso que
+        aprender a respiração travada vem antes de comprar qualquer coisa.
+      </p>
+
+      <p>
+        Sobre o medo mais comum — "o cinto enfraquece o core" —, a resposta
+        honesta é: depende da dose, e o mito é meio verdadeiro. Usado em toda
+        série de todo exercício, ele assume parte do trabalho que a
+        musculatura do tronco faria, e o que não trabalha não se desenvolve.
+        Usado só nas séries mais pesadas, não há por que isso acontecer: o
+        resto do treino segue exigindo estabilização sem apoio.
+      </p>
+
+      <p>
+        <strong>Veredito:</strong> vale, para séries em torno de 80% ou mais
+        da carga máxima em agachamento, terra e desenvolvimento em pé. Abaixo
+        disso não acrescenta. E há um recado embutido nesse número — quem
+        ainda não sabe qual é a própria carga máxima quase certamente não
+        está treinando na faixa em que o cinto faz diferença.
+      </p>
+
+      <FerramentaInline
+        id="personalIdeal"
+        texto="Empurrar o abdômen contra o cinto em vez de esperar que ele segure a lombar é a diferença entre usar o acessório e usar um enfeite — e é uma correção que praticamente ninguém faz sozinho, porque de dentro as duas coisas parecem iguais. O teste ajuda a encontrar o profissional com o perfil e o formato que servem ao seu caso."
+        acao="Ver que tipo de profissional serve ao meu caso"
+      />
+
+      <h2>O strap: a muleta que também é ferramenta</h2>
+      <p>
+        O strap é o único dos três que resolve um problema real e cria outro
+        no mesmo gesto — e é por isso que ele gera mais discussão que os
+        outros dois juntos.
+      </p>
+
+      <p>
+        O problema que ele resolve: em séries pesadas de levantamento terra e
+        remada, a mão costuma falhar antes das costas. Sem strap, quem move
+        carga alta treina o dorsal abaixo do que poderia, porque o elo mais
+        fraco encerra a série. O problema que ele cria é o espelho disso: a
+        pegada deixa de ser exigida e, portanto, deixa de crescer.
+      </p>
+
+      <p>
+        O arranjo que preserva os dois objetivos é conhecido e simples:
+        <strong>séries leves e médias sem strap, séries pesadas com</strong>.
+        Assim a pegada trabalha em progressão real nas séries em que ela dá
+        conta, e as costas não ficam reféns dela nas séries em que não dá. O
+        tratamento completo dessa troca está em
+        <a href="/musculacao/pegada-e-antebraco/">pegada e antebraço</a>.
+      </p>
+
+      <p>
+        <strong>Veredito:</strong> vale, com disciplina de uso. A muleta
+        começa quando o strap entra já no aquecimento.
+      </p>
+
+      <h2>A luva: a mais vendida e a menos necessária</h2>
+      <p>
+        A luva é o acessório que mais gente compra primeiro e o que menos
+        muda alguma coisa. Ela serve para conforto e para evitar calo. Isso é
+        tudo — não melhora pegada, não protege articulação, não aumenta
+        carga.
+      </p>
+
+      <p>
+        E há um efeito contrário que vale considerar antes de comprar: a
+        camada de tecido entre a mão e a barra <strong>aumenta a
+        circunferência do que você segura</strong> e reduz a sensibilidade do
+        contato. Barra mais grossa é barra mais difícil de segurar — o que
+        significa que, em carga alta, a luva pode atrapalhar exatamente o que
+        as pessoas imaginam que ela ajuda.
+      </p>
+
+      <p>
+        <strong>Veredito:</strong> vale só se o incômodo do calo é o que está
+        fazendo você pular séries ou reduzir carga. É um problema legítimo e
+        a luva o resolve. Fora esse caso, é dispensável.
+      </p>
+
+      <h2>A ordem certa de comprar</h2>
+      <p>
+        Se a pergunta é "o que eu compro primeiro", a resposta quase sempre é
+        <strong>nada ainda</strong> — e não por economia. Nos primeiros um ou
+        dois anos, a carga está abaixo do ponto em que qualquer um dos três
+        muda alguma coisa, e o que decide o resultado é
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>,
+        técnica e frequência.
+      </p>
+
+      <p>
+        Quando a carga chegar lá, a ordem é ditada por qual elo falha
+        primeiro no seu treino, não pela prateleira da loja: <strong>strap se
+        a mão abre antes das costas; cinto se você já treina perto do máximo
+        em agachamento ou terra; luva se o calo está atrapalhando de
+        verdade.</strong>
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o cinto é uma parede para o abdômen
+        empurrar, e só funciona com o tronco travado — reserve-o para as
+        séries em torno de 80% do máximo. O strap deixa a série pesada
+        terminar no músculo e não na mão, com a regra de entrar só nas
+        pesadas. A luva resolve calo e mais nada, e pode até atrapalhar a
+        pegada por engrossar a barra. E se você está começando, os três
+        podem esperar: nenhum deles substitui carga que progride.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
