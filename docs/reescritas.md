@@ -52,7 +52,7 @@ significa que esta rotina vai parar de novo em poucos dias.
 
 | # | artigo | impr. | cli. | pos. | status |
 |---|---|---|---|---|---|
-| 1 | `/guias/quanto-custa-personal-trainer/` | 783 | 4 | 25,8 | ⏸ reservado para tratamento manual |
+| 1 | `/guias/quanto-custa-personal-trainer/` | 783 | 4 | 25,8 | ✅ 2026-09-14 · tratamento manual · ver nota |
 | 2 | `/musculacao/pullover-como-fazer/` | 62 | 1 | 21,1 | ✅ 2026-09-13 · partiu de 21,1 · ver nota |
 
 ## Nota de 13/09/2026 — o padrão da esquiva pela quarta vez
@@ -117,6 +117,97 @@ O item 1 **não deve entrar na rotina diária**. Ele é o maior ativo do portal
 merece reescrita manual e com atenção, não em lote. A posição de 25,8 é de
 "quase primeira página", onde título e trecho de destaque decidem, e errar
 nele custa caro.
+
+## Nota de 14/09/2026 — o maior ativo do portal, tratado à mão
+
+**`quanto-custa-personal-trainer` (25,8 na média da página):** reescrito fora
+da rotina diária, a pedido do Renato. São 783 impressões e 4 cliques — mais
+demanda represada que os treze artigos da fila 1 somados.
+
+### A média de 25,8 esconde duas realidades opostas
+
+O export de consultas mostra mais de 130 buscas distintas de preço chegando a
+esta página. E elas se separam por **fraseado**, não por assunto:
+
+| fraseado | exemplo | posição |
+|---|---|---|
+| "quanto custa" | `quanto custa um personal trainer` (196 impr) | **13,4** |
+| "valor" | `valor personal trainer` (93 impr) | 16,0 |
+| "valor … mensal" | `valor personal trainer mensal` (46 impr) | 12,3 |
+| **"preço"** | `personal trainer preço` (65 impr) | **38,7** |
+| **ordem invertida** | `personal trainer quanto custa` (23 impr) | **49,8** |
+
+O `title` antigo era `Quanto custa um personal trainer em 2026? Preços por
+formato e cidade` — 69 caracteres. Ele abre com o fraseado que ranqueia bem e
+deixa "Preços" **depois do corte**, somado a um "em 2026" que gasta orçamento
+e envelhece sozinho. A correção foi encurtar e trazer o termo fraco para
+dentro da faixa visível.
+
+### A lacuna com demanda medida: frequência
+
+Três consultas sobre frequência somam quase 120 impressões em posições de 8 a
+12, com dois cliques no total: `valor de um personal trainer 3 vezes por
+semana` (49 impr, pos 11,1), `valor personal trainer mensal` (46, 12,3) e
+`valor de personal trainer mensal` (16, 8,1). O artigo não tinha **nenhuma
+seção sobre frequência** — só um item de lista dizendo que ela influencia.
+
+### O achado que só nós podíamos ter
+
+Ao agregar as faixas das 985 cidades publicadas, apareceu uma inconsistência
+no próprio artigo: a abertura afirmava `R$ 60 a R$ 200` para a aula avulsa,
+enquanto a **mediana das nossas cidades é R$ 50 a R$ 120**, com extremos de
+R$ 35 (interior) a R$ 250 (Alphaville, Tamboré, Campos do Jordão). O número
+publicado não batia com os dados do próprio portal.
+
+Corrigido, e virou o diferencial: nenhum concorrente tem 985 cidades para
+tirar mediana. Mais importante, a agregação revelou a conta que **ninguém
+publica** — o custo por sessão dentro do pacote:
+
+| frequência | sessões/mês | por sessão, cidade mediana |
+|---|---|---|
+| avulsa | — | R$ 50 – R$ 120 |
+| 2× por semana | ≈ 9 | R$ 30 – R$ 80 |
+| 3× por semana | ≈ 13 | R$ 20 – R$ 54 |
+
+Duas a três vezes de diferença pela mesma hora do mesmo profissional. O artigo
+agora explica de onde vem (a agenda é o produto; horário vago não se estoca) e
+tira a conclusão contraintuitiva: **comprar avulso para economizar custa mais
+caro por sessão que fechar o pacote que parecia não caber.**
+
+### E a seção sobre o ruído da própria busca
+
+Um H2 novo explica por que os valores na internet vão de R$ 30 a R$ 300 pela
+mesma coisa: metade dos resultados responde "quanto **cobrar**" e não "quanto
+**pagar**" — são guias de precificação para o profissional; marketplaces
+exibem o piso da base como se fosse média; e quase ninguém diz se o número é
+por sessão ou por mês. Nenhum concorrente da primeira página faz esse serviço.
+
+O corpo de prosa foi de cerca de 600 para cerca de 1.400 palavras, e as FAQs
+de 4 para 7 — as três novas vieram direto das consultas medidas (hora-aula,
+três vezes por semana, personal na academia).
+
+Antes: `Quanto custa um personal trainer em 2026? Preços por formato e cidade`
+Depois: `Quanto custa um personal trainer: preços por aula e por mês`
+
+Antes: `Quanto custa um personal trainer no Brasil: faixas por aula avulsa,
+pacote mensal e acompanhamento online, o que influencia o preço e uma tabela
+comparativa por cidade.`
+Depois: `Quanto custa um personal trainer: a faixa por aula avulsa, o preço
+por frequência semanal, por que o pacote sai bem mais barato e as faixas de
+985 cidades.`
+
+O H1 não mudou — "Quanto custa um personal trainer?" é a pergunta literal, e a
+`title` agora carrega os termos que faltavam.
+
+### O que conferir no próximo relatório
+
+1. **`personal trainer preço` saiu de 38,7?** É a consulta que o título novo
+   tenta destravar, e a mais isolada para ler.
+2. **As consultas de frequência ganharam clique?** Eram ~120 impressões em
+   posição 8–12 com dois cliques; agora existe seção dedicada a elas.
+3. **A média da página continua enganando?** Se a posição média cair sem que
+   as consultas-cabeça se movam, o que mudou foi a composição, não o
+   desempenho.
 
 ## O que a fila 1 produziu, medido em 12/09
 

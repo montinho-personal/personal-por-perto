@@ -37,7 +37,7 @@ const relacionados = [
 ];
 
 const path = '/guias/quanto-custa-personal-trainer';
-const atualizadoEm = '2026-09-02';
+const atualizadoEm = '2026-09-14';
 const capa = '/capas-conteudo/quanto-custa-personal-trainer.webp';
 const capaAlt =
   'Personal trainer com halter e prancheta ao lado de uma etiqueta de preço, ilustrando o guia sobre quanto custa um personal trainer — Personal por Perto';
@@ -62,12 +62,27 @@ const faqs = [
   {
     pergunta: 'Quanto custa um personal trainer por mês?',
     resposta:
-      'Um pacote mensal presencial com 2 a 3 sessões por semana costuma variar de R$ 300 a R$ 1.300, dependendo da cidade, do bairro e da experiência do profissional. O acompanhamento online mensal é mais acessível, geralmente entre R$ 150 e R$ 500.',
+      'Na cidade brasileira mediana, o pacote mensal presencial com 2 a 3 sessões por semana fica entre R$ 260 e R$ 700 — número apurado a partir das faixas das 985 cidades publicadas pelo portal. Nos extremos, vai de R$ 200 em municípios pequenos a R$ 1.500 em bairros como Alphaville e em estâncias como Campos do Jordão. O acompanhamento online mensal é mais acessível, geralmente entre R$ 120 e R$ 360.',
+  },
+  {
+    pergunta: 'Qual o valor da hora-aula de um personal trainer?',
+    resposta:
+      'Depende de você comprar avulso ou em pacote, e a diferença é grande. Comprada avulsa, a hora fica entre R$ 50 e R$ 120 na cidade mediana. Dentro de um pacote de três vezes por semana, a mesma hora do mesmo profissional sai por R$ 20 a R$ 54 — uma diferença de duas a três vezes. Quem pesquisa "valor da hora" e recebe só o primeiro número acaba superestimando bastante o custo de um acompanhamento contínuo.',
+  },
+  {
+    pergunta: 'Quanto custa treinar 3 vezes por semana com personal?',
+    resposta:
+      'Em reais, quase o mesmo que treinar duas vezes: o pacote mensal presencial fica na faixa de R$ 260 a R$ 700 na cidade mediana, tanto para duas quanto para três sessões semanais. O que muda é o valor por sessão, que cai de R$ 30–80 para R$ 20–54 conforme a frequência sobe. É por isso que aumentar a frequência costuma ser a forma mais barata de aumentar o volume de treino acompanhado.',
+  },
+  {
+    pergunta: 'Quanto custa um personal dentro da academia?',
+    resposta:
+      'O valor da sessão segue a faixa da sua cidade, mas a academia acrescenta duas variáveis ao orçamento: a mensalidade, que você pagaria de qualquer forma, e a eventual taxa cobrada de profissional externo, que costuma ser repassada ao aluno. Algumas academias liberam sem custo, outras cobram do profissional, e há as que só permitem quem é da casa — é a primeira pergunta a fazer, antes de escolher o profissional. O guia de personal trainer em academia trata das regras e do que perguntar.',
   },
   {
     pergunta: 'Por que o preço do personal varia tanto?',
     resposta:
-      'O valor depende da experiência e especialização do profissional, da cidade e do bairro, do formato (presencial ou online), da frequência semanal e de a sessão ser individual ou em dupla. Locais de maior renda e maior custo de vida tendem a praticar preços mais altos.',
+      'Há duas camadas de variação, e confundir as duas é o que faz o preço parecer aleatório. A primeira é real: experiência do profissional, cidade e bairro, formato presencial ou online, frequência semanal e sessão individual ou em dupla — locais de maior renda praticam valores mais altos, e a aula avulsa custa mais por sessão que o pacote. A segunda é ruído de pesquisa: metade do que se acha na internet responde "quanto cobrar" em vez de "quanto pagar", marketplaces exibem o piso da base como se fosse média, e quase ninguém informa se o número é por sessão ou por mês. Comparar preço sem separar essas duas camadas não leva a lugar nenhum.',
   },
   {
     pergunta: 'Personal trainer online é mais barato?',
@@ -81,9 +96,9 @@ const faqs = [
   },
 ];
 
-const title = 'Quanto custa um personal trainer em 2026? Preços por formato e cidade';
+const title = 'Quanto custa um personal trainer: preços por aula e por mês';
 const description =
-  'Quanto custa um personal trainer no Brasil: faixas por aula avulsa, pacote mensal e acompanhamento online, o que influencia o preço e uma tabela comparativa por cidade.';
+  'Quanto custa um personal trainer: a faixa por aula avulsa, o preço por frequência semanal, por que o pacote sai bem mais barato e as faixas de 985 cidades.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -115,11 +130,21 @@ const schema = [
     </figure>
 
     <p class="lead">
-      No Brasil, uma aula avulsa de personal trainer costuma custar de
-      <strong>R$ 60 a R$ 200</strong>, pacotes mensais variam de
-      <strong>R$ 300 a R$ 1.300</strong> e o acompanhamento online fica, em média,
-      entre <strong>R$ 150 e R$ 500</strong> por mês. O valor exato depende da cidade,
-      do formato e da experiência do profissional.
+      Na cidade brasileira típica, a aula avulsa de personal trainer custa de
+      <strong>R$ 50 a R$ 120</strong>, o pacote mensal fica entre
+      <strong>R$ 260 e R$ 700</strong> e o acompanhamento online, entre
+      <strong>R$ 120 e R$ 360</strong> por mês. Esses são os valores medianos
+      das 985 cidades que o portal cobre — e a palavra "mediana" importa,
+      porque os extremos vão de R$ 35 a aula no interior a R$ 250 em Alphaville
+      e Campos do Jordão.
+    </p>
+
+    <p class="lead">
+      O número que interessa a você, porém, quase nunca é o da aula avulsa:
+      quem contrata de verdade fecha pacote, e aí a conta muda por completo —
+      a sessão dentro de um pacote de três vezes por semana sai por
+      <strong>R$ 20 a R$ 54</strong> na cidade mediana. A seção sobre
+      frequência explica de onde vem essa diferença.
     </p>
 
     <aside class="calc-atalho">
@@ -137,13 +162,74 @@ const schema = [
             <tr><th>Formato</th><th>Faixa típica</th><th>Quando faz sentido</th></tr>
           </thead>
           <tbody>
-            <tr><td>Aula avulsa (presencial)</td><td>R$ 60 – R$ 200</td><td>Experimentar ou treinos pontuais</td></tr>
-            <tr><td>Pacote mensal (2–3x/semana)</td><td>R$ 300 – R$ 1.300</td><td>Constância e presença física</td></tr>
-            <tr><td>Acompanhamento online</td><td>R$ 150 – R$ 500/mês</td><td>Flexibilidade e melhor custo-benefício</td></tr>
+            <tr><td>Aula avulsa (presencial)</td><td>R$ 50 – R$ 120</td><td>Experimentar ou treinos pontuais</td></tr>
+            <tr><td>Pacote mensal (2–3x/semana)</td><td>R$ 260 – R$ 700</td><td>Constância e presença física</td></tr>
+            <tr><td>Acompanhamento online</td><td>R$ 120 – R$ 360/mês</td><td>Flexibilidade e melhor custo-benefício</td></tr>
             <tr><td>Sessão em dupla/grupo</td><td>Rateio por aluno</td><td>Dividir custo com amigos ou cônjuge</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="muted small">
+        Valores medianos das 985 cidades publicadas pelo portal. Nos extremos,
+        a aula avulsa vai de R$ 35 a R$ 250 e o pacote mensal, de R$ 200 a
+        R$ 1.500.
+      </p>
+
+      <h2>Quanto custa por frequência de treino</h2>
+      <p>
+        Esta é a conta que decide o orçamento de verdade, e quase nenhum guia
+        de preço mostra: o que muda o valor mensal não é só a cidade, é
+        <strong>quantas vezes por semana</strong> você treina — e o preço por
+        sessão cai conforme a frequência sobe.
+      </p>
+
+      <div class="table-wrap" data-track="tabela-precos:frequencia">
+        <table>
+          <thead>
+            <tr><th>Frequência</th><th>Sessões por mês</th><th>Por sessão, na cidade mediana</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Avulsa, sem pacote</td><td>—</td><td>R$ 50 – R$ 120</td></tr>
+            <tr><td>2× por semana</td><td>≈ 9</td><td>R$ 30 – R$ 80</td></tr>
+            <tr><td>3× por semana</td><td>≈ 13</td><td>R$ 20 – R$ 54</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        O mensal fica praticamente o mesmo entre duas e três vezes por semana
+        — o que muda é quantas sessões cabem nele. Por isso a pergunta
+        "quanto custa treinar três vezes por semana" quase sempre tem a mesma
+        resposta em reais que "quanto custa treinar duas vezes", e uma
+        resposta bem diferente em valor por sessão.
+      </p>
+
+      <h2>Por que o pacote sai tão mais barato que a aula avulsa</h2>
+      <p>
+        Repare no salto da tabela acima: a mesma hora do mesmo profissional
+        custa R$ 50 a R$ 120 comprada avulsa e R$ 20 a R$ 54 dentro de um
+        pacote de três vezes por semana. É uma diferença de duas a três vezes,
+        e ela não é promoção.
+      </p>
+
+      <p>
+        A explicação é do lado de quem vende. A agenda de um personal é o
+        produto: horário vago não se estoca nem se revende depois. Um aluno
+        fixo de três vezes por semana ocupa treze horários por mês com
+        previsibilidade total, zero custo de captação e nenhuma janela
+        ociosa entre atendimentos. O avulso ocupa uma hora, some, e deixa o
+        profissional com o mesmo trabalho de encontrar quem preencha aquele
+        horário na semana seguinte.
+      </p>
+
+      <p>
+        A consequência prática é contraintuitiva e vale dizer com todas as
+        letras: <strong>tentar economizar comprando aulas avulsas costuma
+        custar mais caro por sessão do que fechar o pacote que você acha que
+        não cabe no bolso.</strong> Se a dúvida é orçamento, o caminho não é
+        reduzir o compromisso — é reduzir a frequência dentro de um pacote, ou
+        olhar o formato online.
+      </p>
 
       <h2>O que influencia o preço</h2>
       <ul>
@@ -153,13 +239,49 @@ const schema = [
         <li><strong>Frequência semanal</strong> e duração do contrato — o impacto de cada
         formato está em <a href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
         vezes por semana treinar com personal</a>.</li>
-        <li><strong>Estrutura</strong> — academia própria, condomínio, parque ou estúdio.</li>
+        <li><strong>Estrutura</strong> — academia, condomínio, parque ou estúdio.
+        Treinar dentro de uma academia acrescenta duas linhas ao orçamento: a
+        mensalidade e a eventual taxa de profissional externo, explicadas em
+        <a href="/guias/personal-trainer-em-academia/">personal trainer em
+        academia</a>.</li>
       </ul>
       <p>
         Antes de comparar preços, vale garantir que o profissional é qualificado:
         confira o registro profissional ativo e a experiência com o seu objetivo. Os
         demais critérios estão no guia <a href={rotas.comoEscolher}>como escolher um
         personal trainer</a> — preço sem qualidade costuma sair caro.
+      </p>
+
+      <h2>Por que os números que você acha na internet não batem</h2>
+      <p>
+        Quem pesquisa preço de personal encontra valores que variam de R$ 30 a
+        R$ 300 pela mesma coisa, e desiste de comparar. A dispersão tem três
+        causas concretas, e reconhecê-las resolve metade da confusão.
+      </p>
+
+      <p>
+        <strong>1. Metade dos resultados não é para você.</strong> Boa parte do
+        que ranqueia para "preço de personal trainer" responde a
+        <em>"quanto cobrar"</em>, não a <em>"quanto pagar"</em> — são guias de
+        precificação escritos para o profissional montar a própria tabela. Os
+        números ali são metas de faturamento e margem, não o que o aluno paga.
+        Dá para identificar pelo título e pelo público a quem o texto fala.
+      </p>
+
+      <p>
+        <strong>2. Marketplace mostra "a partir de".</strong> Plataformas que
+        listam profissionais exibem o piso da base para atrair o clique. O
+        valor existe, mas pertence ao profissional mais barato cadastrado
+        naquela região — não é preço médio, é preço mínimo, e a diferença
+        entre os dois é justamente a que você quer saber.
+      </p>
+
+      <p>
+        <strong>3. Quase ninguém diz se o número é por sessão ou por mês.</strong>
+        "R$ 300" pode ser o pacote mensal inteiro numa cidade do interior ou
+        duas sessões e meia em Alphaville. Sem a unidade e sem a cidade, o
+        número não significa nada — e é por isso que este guia publica os dois
+        recortes e a tabela por cidade logo abaixo.
       </p>
 
       <FerramentaInline
