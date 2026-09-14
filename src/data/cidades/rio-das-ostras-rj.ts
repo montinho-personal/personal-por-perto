@@ -68,6 +68,10 @@ export const cidade: Cidade = {
     'A cidade tem forte ligação com esportes de praia e ao ar livre, com eventos esportivos públicos recorrentes; também sedia o tradicional Rio das Ostras Jazz & Blues.',
   academias:
     'A oferta de academias e estúdios é sustentada pela alta renda e pela cultura de praia, complementada pela orla equipada de Costazul e pela Lagoa de Iriry.',
+  academiasProximas: [
+    { nome: 'Smart Fit Rio das Ostras', detalhe: 'na Estrada Prof. Leandro Faria Sarzedas, no Harmonia, dentro do Shopping Plaza' },
+  ],
+  academiasVerificadasEm: '2026-09-14',
 
   destaquesFitness: [
     'Orla de Costazul totalmente equipada (ciclovia e academia ao ar livre).',
@@ -102,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio das Ostras', url: 'https://www.riodasostras.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-14',
 };

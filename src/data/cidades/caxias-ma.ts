@@ -59,6 +59,11 @@ export const cidade: Cidade = {
     'A cultura esportiva mistura o futebol, as caminhadas na orla do Itapecuru e no centro histórico e os eventos esportivos ligados ao calendário da cidade. Como polo regional, Caxias concentra atividades e competições que atraem moradores das cidades vizinhas.',
   academias:
     'A oferta é dominada por academias de bairro e por personal trainers que atendem em domicílio e em espaços ao ar livre, complementadas por redes de baixo custo voltadas ao público popular.',
+  academiasProximas: [
+    { nome: 'Arena Fitness Caxias', detalhe: 'na BR-316, no Bela Vista, dentro do Caxias Shopping' },
+    { nome: 'Power Academia', detalhe: 'na Rua Manoel Gonçalves, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-14',
 
   destaquesFitness: [
     'Polo regional do leste maranhense, que concentra a oferta de serviços da região.',
@@ -93,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Caxias', url: 'https://caxias.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-14',
 };
