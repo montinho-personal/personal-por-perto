@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Há forte vínculo com a Unesp (eventos esportivos universitários e duathlon) e um calendário municipal de corridas em consolidação, com comunidade de corredores ativa.',
   academias:
     'A oferta reúne academias e estúdios, com público universitário e da área de saúde, complementada pelo novo Parque Linear e pelos parques municipais.',
+  academiasProximas: [
+    { nome: 'Smart Fit Botucatu', detalhe: 'na Rua Amando de Barros, no Centro' },
+    { nome: 'SkyFit Academia Botucatu', detalhe: 'na Avenida Doutor Vital Brasil, no Jardim Bom Pastor' },
+  ],
+  academiasVerificadasEm: '2026-09-15',
 
   destaquesFitness: [
     'Clima de altitude (bons ares), ideal para o treino outdoor o ano todo.',
@@ -104,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Botucatu', url: 'https://www.botucatu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-15',
 };

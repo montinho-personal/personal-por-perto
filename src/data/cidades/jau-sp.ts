@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva de Jaú combina tradição no futebol com uma cena crescente de corrida e caminhada nos parques às margens do rio. Os espaços públicos ao ar livre e as academias de bairro democratizam o acesso, e o atendimento domiciliar atende bem quem trabalha no polo calçadista.',
   academias:
     'A oferta reúne academias de bairro distribuídas pelos setores residenciais e uma presença marcante de personal trainers que atendem em casa e em condomínios, formato que se encaixa nas rotinas puxadas da cidade industrial.',
+  academiasProximas: [
+    { nome: 'Smart Fit Jaú', detalhe: 'na Rua Antônio Prado Lyra, perto do Jaú Shopping' },
+    { nome: 'SkyFit Academia Jaú', detalhe: 'na Rua Cônego Anselmo Valvekens, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-15',
 
   destaquesFitness: [
     'Parques às margens do Rio Jaú como principais espaços públicos para treino ao ar livre.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Jaú', url: 'https://www.jau.sp.gov.br/sobre-jahu' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-15',
 };
