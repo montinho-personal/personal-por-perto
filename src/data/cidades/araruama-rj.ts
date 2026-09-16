@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura é voltada à lagoa e à nova orla — corrida, caminhada, ciclismo, vôlei de praia e canoagem nas águas calmas —, com a Orla Oscar Niemeyer como novo cartão-postal e palco de eventos.',
   academias:
     'A oferta de academias é espalhada pelos distritos, com a Orla Oscar Niemeyer e as praias da lagoa funcionando como academia a céu aberto.',
+  academiasProximas: [
+    { nome: 'Smart Fit Shopping Araruama', detalhe: 'na Avenida John Kennedy, no Centro' },
+    { nome: 'Academia Mitra Araruama', detalhe: 'na Avenida Nilo Peçanha, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Orla Oscar Niemeyer (cerca de 10,8 km, com ciclovia) — infraestrutura de primeira para treino outdoor.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araruama', url: 'https://www.araruama.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-16',
 };

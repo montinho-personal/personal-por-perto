@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Cidade em forte expansão, com público jovem industrial e universitário, Três Lagoas promove circuitos de corrida e usa suas lagoas como palco esportivo.',
   academias:
     'A oferta de academias e estúdios acompanha o boom da celulose e o público universitário, com a Lagoa Maior como epicentro do treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'SkyFit Academia Três Lagoas', detalhe: 'na Avenida Jamil Jorge Salomão' },
+    { nome: 'Academia R1 Fit', detalhe: 'na Avenida Professor João Thomes, no Quinta da Lagoa' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Lagoa Maior: pista de mais de 2,5 km e academia ao ar livre — epicentro do treino outdoor.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Três Lagoas', url: 'https://www.treslagoas.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-16',
 };
