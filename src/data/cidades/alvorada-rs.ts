@@ -86,6 +86,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['porto-alegre-rs', 'viamao-rs', 'gravatai-rs', 'cachoeirinha-rs'],
 
+  capaArte: {
+    src: '/capas-cidade/alvorada-rs.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Alvorada (RS) em arte com o Chimarródromo, a cuia de chimarrão, o letreiro da cidade e o skyline de Porto Alegre ao fundo, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Alvorada: foco, disciplina e constância na Região Metropolitana de Porto Alegre.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Alvorada', url: 'https://cidades.ibge.gov.br/brasil/rs/alvorada/panorama' },
     { nome: 'Prefeitura de Alvorada', url: 'https://www.alvorada.rs.gov.br/' },

@@ -96,6 +96,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['montes-claros-mg', 'teofilo-otoni-mg'],
 
+  capaArte: {
+    src: '/capas-cidade/janauba-mg.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Janaúba (MG) em arte com a Barragem do Bico da Pedra no rio Gorutuba, a orla da cidade e a fruticultura irrigada do norte de Minas, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Janaúba: foco, disciplina e constância no norte mineiro.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Janaúba', url: 'https://cidades.ibge.gov.br/brasil/mg/janauba/panorama' },
     { nome: 'Prefeitura de Janaúba', url: 'https://janauba.mg.gov.br/' },

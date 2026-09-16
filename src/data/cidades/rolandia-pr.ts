@@ -95,6 +95,13 @@ export const cidade: Cidade = {
 
   vizinhas: ['londrina-pr', 'arapongas-pr', 'maringa-pr'],
 
+  capaArte: {
+    src: '/capas-cidade/rolandia-pr.webp',
+    w: 1200,
+    h: 1200,
+    alt: 'Personal trainer em Rolândia (PR) em arte com o Lago San Fernando, a igreja matriz, o cafezal e o casario de colonização alemã, com o treino em primeiro plano — Personal por Perto',
+    legenda: 'Treino personalizado em Rolândia: foco, disciplina e constância no norte do Paraná.',
+  },
   fontes: [
     { nome: 'IBGE Cidades — Rolândia', url: 'https://cidades.ibge.gov.br/brasil/pr/rolandia/panorama' },
     { nome: 'Prefeitura de Rolândia', url: 'https://www.rolandia.pr.gov.br/' },
