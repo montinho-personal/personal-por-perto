@@ -68,6 +68,11 @@ export const cidade: Cidade = {
     'A cidade tem calendário municipal de corridas de rua ativo (com aferição oficial) e uso intenso dos parques públicos gratuitos, com tradição esportiva ligada também ao agronegócio.',
   academias:
     'A oferta reúne academias e estúdios, com base de clientes que vem também das cidades vizinhas, complementada pelo Parque Baguaçu e pelo Bosque Municipal.',
+  academiasProximas: [
+    { nome: 'Smart Fit Araçatuba', detalhe: 'na Avenida Joaquim Pompeu de Toledo, dentro do Araçatuba Shopping' },
+    { nome: 'Panobianco Concórdia Araçatuba', detalhe: 'na Avenida Odorindo Perenha' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Parque Baguaçu como principal polo público de corrida, ciclismo e treino funcional.',
@@ -95,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araçatuba', url: 'https://www.aracatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-16',
 };

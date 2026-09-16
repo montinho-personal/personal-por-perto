@@ -59,6 +59,11 @@ export const cidade: Cidade = {
     'A cultura esportiva local gira em torno do futebol e das ações comunitárias de bairro, com a presença marcante do CT do Internacional na Bela Vista como referência regional de formação.',
   academias:
     'A oferta é dominada por academias de bairro distribuídas pelos centros comerciais da cidade, complementadas pela forte procura por atendimento domiciliar — formato que combina com a rotina de quem trabalha na capital.',
+  academiasProximas: [
+    { nome: '61 Academia', detalhe: 'na Avenida Presidente Getúlio Vargas' },
+    { nome: 'Usina do Corpo Alvorada', detalhe: 'na Avenida Presidente Getúlio Vargas, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Academias de bairro acessíveis espalhadas pelos centros comerciais.',
@@ -86,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alvorada', url: 'https://www.alvorada.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-16',
 };

@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A rotina ativa de Janaúba gira em torno da pista de Cooper da Avenida Ecológica e da orla do Gorutuba, pontos de encontro de quem caminha e corre. O público universitário e o clima quente favorecem o treino orientado em horários estratégicos.',
   academias:
     'A oferta acompanha o porte de cidade média e o público universitário, com academias de musculação, estúdios e treino funcional, complementada pelos espaços ao ar livre na Avenida Ecológica e na orla do rio Gorutuba.',
+  academiasProximas: [
+    { nome: 'X-Training Academia', detalhe: 'na Avenida Brasil, no Centro' },
+    { nome: 'Bodyart Academia', detalhe: 'na Rua Américo Soares, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Polo regional do norte de Minas, com comércio forte e público universitário (UFVJM e polos EAD).',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Janaúba', url: 'https://janauba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-16',
 };

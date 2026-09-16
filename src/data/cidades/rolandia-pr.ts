@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'Rolândia tem cultura esportiva ativa para uma cidade de seu porte, com corrida de rua organizada em torno da associação Os Tucanos, ciclismo de estrada e caminhadas ecológicas. A proximidade com Londrina amplia o acesso a provas e grupos de treino na Região Metropolitana.',
   academias:
     'A oferta reúne academias locais de musculação e redes de fitness, além de estúdios de treino funcional, complementadas pela ampla estrutura disponível na vizinha Londrina para quem busca variedade de modalidades.',
+  academiasProximas: [
+    { nome: 'Bodyfit Rolândia' },
+  ],
+  academiasVerificadasEm: '2026-09-16',
 
   destaquesFitness: [
     'Cidade plana e arborizada, favorável a caminhada, corrida e ciclismo no dia a dia.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rolândia', url: 'https://www.rolandia.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-16',
 };
