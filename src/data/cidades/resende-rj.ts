@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cidade tem forte cultura de esportes ao ar livre e de aventura (mountain bike, corrida de montanha e trilhas no Itatiaia e na Mantiqueira), com a influência militar da AMAN no condicionamento físico.',
   academias:
     'A oferta de academias e estúdios é sustentada pela classe média e pelo público militar, complementada pelo Parque das Águas e pela proximidade do Itatiaia.',
+  academiasProximas: [
+    { nome: 'Smart Fit Resende Shopping', detalhe: 'na Avenida Saturnino Braga, no Centro, dentro do Resende Shopping' },
+    { nome: 'SkyFit Academia Resende', detalhe: 'na Avenida Coronel Professor Antônio Esteves' },
+  ],
+  academiasVerificadasEm: '2026-09-17',
 
   destaquesFitness: [
     'Parque das Águas como hub público de treino à beira do Paraíba do Sul.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Resende', url: 'https://www.resende.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-17',
 };

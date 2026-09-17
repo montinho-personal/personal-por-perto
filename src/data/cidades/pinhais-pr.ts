@@ -46,6 +46,11 @@ export const cidade: Cidade = {
     'A vida esportiva ao ar livre de Pinhais gira em torno do Parque das Águas, que reúne pistas, ciclovia e academia ao ar livre e sedia provas de corrida e eventos ao longo do ano. Somada à proximidade dos parques de Curitiba, essa estrutura faz da prática de exercícios parte natural da rotina de quem mora numa cidade compacta e densa.',
   academias:
     'A oferta de academias e estúdios se concentra no Centro e em bairros como Weissópolis e Maria Antonieta, complementada pela facilidade de acesso às opções de Curitiba. A densidade urbana e os deslocamentos curtos também favorecem o treino funcional e o atendimento de personal em casa e em condomínios.',
+  academiasProximas: [
+    { nome: 'Smart Fit Pinhais', detalhe: 'na Avenida Maringá, no Jardim Guairacá' },
+    { nome: 'Academia Ph.D Sports Pinhais Jacob', detalhe: 'na Avenida Jacob Macanhan' },
+  ],
+  academiasVerificadasEm: '2026-09-17',
 
   destaquesFitness: [
     'Parque das Águas: cerca de 450 mil m² com pistas de corrida, ciclovia e academia ao ar livre, às margens do Rio Iguaçu.',
@@ -78,5 +83,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Pinhais', url: 'https://cidades.ibge.gov.br/brasil/pr/pinhais/panorama' },
     { nome: 'Prefeitura de Pinhais', url: 'https://pinhais.atende.net/cidadao/pagina/caracteristicas-do-municipio' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-  ], atualizadoEm: '2026-09-01',
+  ], atualizadoEm: '2026-09-17',
 };
