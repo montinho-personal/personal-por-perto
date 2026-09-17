@@ -39,7 +39,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/treino-de-trapezio';
-const atualizadoEm = '2026-08-18';
+const atualizadoEm = '2026-09-17';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -78,21 +78,38 @@ const title = 'Treino de trapézio: as três porções e como treinar';
 const description =
   'Treino de trapézio: as três porções do músculo, por que encolhimento cobre só uma, os exercícios de escápula que faltam, volume semanal e o efeito na postura.';
 
+const capa = '/capas-conteudo/treino-de-trapezio.webp';
+const capaAlt =
+  'Arte da capa: costas de personal trainer em encolhimento com halteres, com as três porções do trapézio destacadas e rotuladas superior, médio e inferior — treino de trapézio: as três porções — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Musculação</p>
     <h1>Treino de trapézio: as três porções e como treinar cada uma</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Para a maioria das pessoas, treinar trapézio significa uma coisa:

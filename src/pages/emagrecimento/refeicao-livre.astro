@@ -35,7 +35,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/refeicao-livre';
-const atualizadoEm = '2026-09-08';
+const atualizadoEm = '2026-09-17';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -74,21 +74,38 @@ const title = 'Refeição livre e dia do lixo: qual faz sentido?';
 const description =
   'Refeição livre ou dia do lixo: a diferença entre os dois, a matemática do déficit semanal, o efeito na balança e como liberar sem perder o controle do processo.';
 
+const capa = '/capas-conteudo/refeicao-livre.webp';
+const capaAlt =
+  'Arte da capa: comparação lado a lado entre um prato único servido com pizza e salada e uma mesa tomada por embalagens e sobras, com os selos 1 e 24h — refeição livre ou dia do lixo — Personal por Perto';
+
 const schema = [
   breadcrumbSchema(crumbs),
-  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, imagem: new URL(capa, site.dominio).href, atualizadoEm }),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
 ---
 
-<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+<Base title={title} description={description} path={path} ogType="article" image={capa} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
     <h1>Refeição livre e dia do lixo: a diferença que decide a dieta</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <figure style="margin: 0 0 var(--sp-5)">
+      <img
+        src={capa}
+        alt={capaAlt}
+        width="1200"
+        height="1200"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg)"
+      />
+    </figure>
 
     <p class="lead">
       Toda dieta esbarra na mesma pergunta em algum sábado à noite: e a
