@@ -1,0 +1,295 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'A pergunta que o Aterro impõe: como evoluir sem poder somar anilha.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/treinar-no-calor-e-no-frio/',
+    titulo: 'Treinar no calor, no frio e na chuva',
+    descricao: 'O que muda quando o treino depende do tempo lá fora.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-flamengo';
+const atualizadoEm = '2026-09-19';
+const crumbs = crumbsBairro('personal-trainer-flamengo');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Flamengo?',
+    resposta:
+      'A referência do Rio de Janeiro é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. No Flamengo, o atendimento no Aterro costuma ficar na parte de baixo e no meio dessas faixas: o profissional não paga diária de academia nem transporta equipamento pesado, e o bairro é compacto, o que reduz o custo de deslocamento dele. É um dos bairros da Zona Sul onde o acompanhamento presencial sai mais em conta.',
+  },
+  {
+    pergunta: 'Dá para treinar musculação de verdade no Aterro?',
+    resposta:
+      'Dá, com um limite que aparece mais cedo do que na academia. O Aterro tem aparelhos públicos, barras e espaço, e o treino de peso corporal bem conduzido sustenta meses de progresso — a progressão vem de cadência, amplitude, trabalho unilateral e alavanca, não de anilha. Para quem já treina pesado há anos e busca força máxima, o Aterro funciona melhor como parte da semana do que como a semana inteira.',
+  },
+  {
+    pergunta: 'Os prédios do Flamengo têm academia no condomínio?',
+    resposta:
+      'Muitos não têm, e isso é característica do bairro, não defeito. Boa parte do Flamengo é formada por prédios antigos, sem garagem ampla nem área comum — o que, aliás, é parte do motivo de a taxa de condomínio ser mais baixa que em bairros de lançamento recente. Na prática, o morador que quer treinar em casa costuma montar um cantinho no próprio apartamento, e quem quer estrutura sai para a rua ou para uma academia do bairro.',
+  },
+  {
+    pergunta: 'E nos dias de chuva, como fica?',
+    resposta:
+      'Essa é a pergunta prática mais importante do bairro. Quem depende só do Aterro perde a sessão quando chove, e duas chuvas no mês viram duas semanas capengas. A saída é combinar com o profissional um plano B curto desde o começo — vinte minutos de peso corporal dentro de casa, ou uma diária em academia do bairro. Não precisa ser o treino ideal; precisa existir antes de a chuva chegar.',
+  },
+  {
+    pergunta: 'O Montinho atende presencialmente no Flamengo?',
+    resposta:
+      'Não. O atendimento presencial do Montinho acontece exclusivamente na Arena 18, em Alphaville, na Grande São Paulo. Para quem mora no Flamengo, o que existe é o acompanhamento online, que atende todo o Brasil — e esta página serve para entender o mercado do bairro e escolher bem um profissional local.',
+  },
+];
+
+const title = 'Personal trainer no Flamengo: treinar no Aterro';
+const description =
+  'Personal trainer no Flamengo: por que o treino aqui acontece fora de casa, o que o Aterro oferece de verdade, o plano B para dias de chuva e a faixa de preço do Rio.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer no Flamengo: o bairro em que o treino acontece fora de casa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Existe uma inversão que define o Flamengo e que quase nenhum guia
+      de bairro menciona. Nos bairros verticais recentes, o prédio
+      resolve o treino e a rua não serve para nada. Aqui é o contrário:
+      <strong>o prédio raramente tem academia, e a rua tem o maior
+      parque urbano à beira-mar do mundo.</strong>
+    </p>
+
+    <p class="lead">
+      Boa parte do bairro é de edifícios antigos, sem área comum — o que
+      ajuda a explicar as taxas de condomínio mais baixas que as de
+      lançamento — e todos eles ficam a poucos minutos do Aterro. Esse
+      par de fatos decide o formato de treino de quem mora aqui.
+    </p>
+
+    <div class="prose">
+      <h2>O Aterro, sem romantismo</h2>
+      <p>
+        O Parque do Flamengo é o maior parque público da cidade e o
+        maior parque urbano à beira-mar do mundo, entre o Centro e a
+        Zona Sul, de frente para a Baía de Guanabara. Para quem treina,
+        três coisas importam de verdade.
+      </p>
+
+      <p>
+        <strong>A pista.</strong> Percurso longo, plano e contínuo, com
+        vista do Pão de Açúcar — o tipo de trecho que permite treino de
+        ritmo sem parar em esquina. É onde acontece a maior parte das
+        corridas de rua do Rio, e a Corrida de São Sebastião é a mais
+        tradicional delas.
+      </p>
+
+      <p>
+        <strong>A ciclovia Mané Garrincha</strong>, com cerca de 7,1 km
+        pavimentados atravessando o Aterro até a Marina da Glória. Dá
+        para fazer volume de pedal sem disputar espaço com carro.
+      </p>
+
+      <p>
+        <strong>O domingo.</strong> Aos domingos e feriados a pista
+        fecha para veículos, como acontece nas orlas de Copacabana,
+        Ipanema e Leblon. É o dia em que o parque vira, na prática, uma
+        estrutura esportiva do tamanho de um bairro.
+      </p>
+
+      <p>
+        Há ainda quadras, pista de skate e áreas de aparelhos — mas o
+        valor central do Aterro, para quem treina com acompanhamento,
+        está na pista e no espaço aberto.
+      </p>
+
+      <h2>O que isso faz com o formato de atendimento</h2>
+      <p>
+        Em bairros de condomínio-clube, o personal ao ar livre é
+        exceção. No Flamengo, ele é o padrão — e isso muda o que você
+        deve procurar num profissional.
+      </p>
+
+      <p>
+        O ponto prático: um personal que só sabe operar dentro de
+        academia equipada vai desperdiçar o melhor do bairro e, pior,
+        vai transformar o Aterro numa versão pobre da academia. O
+        profissional que rende aqui é o que sabe construir progressão
+        sem carga externa — cadência, amplitude, trabalho unilateral,
+        alavanca — e que chega com elástico e o que mais for preciso na
+        mochila.
+      </p>
+
+      <p>
+        É exatamente o assunto do guia de
+        <a href="/guias/treinar-ao-ar-livre/">treinar ao ar livre</a>, e
+        vale a leitura antes de fechar pacote: com ele em mãos, dá para
+        fazer ao profissional as perguntas certas na primeira conversa.
+      </p>
+
+      <h2>O que o bairro não resolve</h2>
+      <p>
+        Dois limites honestos.
+      </p>
+
+      <p>
+        <strong>A chuva.</strong> Quem depende só do Aterro perde a
+        sessão quando chove — e duas chuvas no mês viram duas semanas
+        capengas. Isso não é detalhe: é a principal causa de rotina
+        quebrada em bairro de treino ao ar livre. O combinado do plano B
+        precisa existir desde a primeira semana, não depois do primeiro
+        temporal. O guia de
+        <a href="/guias/treinar-no-calor-e-no-frio/">treino em cada
+        clima</a> trata disso em detalhe.
+      </p>
+
+      <p>
+        <strong>A carga.</strong> Para quem busca força máxima e já
+        treina pesado há anos, o Aterro é excelente complemento e
+        limitado como base única. A combinação que funciona para esse
+        perfil costuma ser academia do bairro durante a semana e Aterro
+        no fim de semana, quando a pista fecha.
+      </p>
+
+      <h2>Quanto custa, e por que costuma sair mais em conta</h2>
+      <p>
+        A referência da cidade é de R$ 80 a R$ 200 pela aula avulsa e
+        de R$ 400 a R$ 1.200 pelo pacote mensal, com o acompanhamento
+        online em torno de R$ 200 a R$ 500 por mês. O Flamengo tende à
+        parte de baixo e ao meio dessas faixas, por três motivos
+        somados: o profissional não paga diária de academia, não
+        transporta equipamento pesado e se desloca pouco, porque o
+        bairro é compacto e tem três estações de metrô ao redor.
+      </p>
+
+      <p>
+        Na Zona Sul, isso faz do Flamengo um dos endereços em que o
+        acompanhamento presencial é mais acessível — sem que o treino
+        seja pior por isso. As faixas completas por formato estão no
+        guia de <a href={rotas.quantoCusta}>quanto custa um personal
+        trainer</a>.
+      </p>
+
+      <ContextualCta path={path} localidade="no Flamengo" assunto={title} posicao="meio" />
+
+      <h2>Como escolher no Flamengo</h2>
+      <p>
+        Os fundamentos não mudam: avaliação física na primeira semana,
+        método de progressão claro, experiência com o seu objetivo e
+        comunicação honesta, sem promessa de resultado com prazo. O
+        passo a passo está no guia de
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>.
+      </p>
+
+      <p>
+        As duas perguntas específicas daqui são simples e revelam
+        bastante. A primeira: <em>como você faz progressão sem
+        equipamento?</em> Quem responde "aumento as repetições" e para
+        por aí não vai te levar longe no Aterro. A segunda:
+        <em>o que a gente faz quando chove?</em> Se não houver resposta
+        pronta, o plano ainda não existe.
+      </p>
+
+      <p>
+        E, como em qualquer início de treino, dor instalada, limitação
+        articular ou retorno de lesão passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Flamengo" />
+
+    <ContextualCta path={path} localidade="no Flamengo" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-flamengo"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'como progredir treinando no Aterro, sem carga externa' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'quanto custa cada formato de acompanhamento' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

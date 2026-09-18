@@ -975,6 +975,7 @@ import { cidade as serraDoSalitre } from './serra-do-salitre-mg';
 import { cidade as guairaSp } from './guaira-sp';
 import { cidade as ibia } from './ibia-mg';
 import { cidade as rioParanaiba } from './rio-paranaiba-mg';
+import { cidade as camposAltos } from './campos-altos-mg';
 import { cidade as santiago } from './santiago-rs';
 import { cidade as novoGama } from './novo-gama-go';
 import { cidade as itapaci } from './itapaci-go';
@@ -1028,7 +1029,7 @@ export const cidades: Cidade[] = [
   saoLuizGonzaga, sarandiRs, batatais, fredericoWestphalen,
   santoAntonioDasMissoes, saoMiguelDasMissoes, saoSimao, carmoDoParanaiba,
   monteCarmelo, coromandel, saoGotardo, santaHelenaDeGoias, serraDoSalitre,
-  rioParanaiba,
+  rioParanaiba, camposAltos,
   guairaSp, ibia,
   // Bloco 44 (Vale do São Francisco PE, Vale dos Vinhedos/agronegócio RS, agronegócio PR/SC, Venda Nova do Imigrante ES)
   lagoaGrande, santaMariaDaBoaVista, cabrobo, petrolandia, novaPrata,
