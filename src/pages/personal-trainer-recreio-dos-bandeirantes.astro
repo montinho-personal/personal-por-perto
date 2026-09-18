@@ -1,0 +1,314 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/rio-de-janeiro-rj/',
+    titulo: 'Personal trainer no Rio de Janeiro',
+    descricao: 'O guia completo da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'O que fazer quando o aparelho da orla não tem onde colocar anilha.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-em-condominio/',
+    titulo: 'Personal trainer em condomínio: como funciona',
+    descricao: 'As regras de acesso, o que a portaria costuma exigir e o treino em grupo de vizinhos.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-recreio-dos-bandeirantes';
+const atualizadoEm = '2026-09-18';
+const crumbs = crumbsBairro('personal-trainer-recreio-dos-bandeirantes');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Recreio dos Bandeirantes?',
+    resposta:
+      'A referência do Rio de Janeiro é de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal. No Recreio, o atendimento dentro de condomínio tende a ficar no meio da faixa, e o deslocamento pesa mais do que em bairros compactos: o bairro é longo e o profissional que atravessa a avenida das Américas para atender costuma embutir esse tempo no valor. Fechar com quem já atende no seu condomínio ou a poucos quarteirões costuma sair mais barato pelo mesmo serviço.',
+  },
+  {
+    pergunta: 'Dá para treinar na praia do Recreio o ano todo?',
+    resposta:
+      'Dá, com dois ajustes. O primeiro é o horário: no verão, início da manhã e fim de tarde evitam o pior da radiação e do calor. O segundo é a areia — a fofa exige bem mais de tornozelo e panturrilha do que o asfalto, e quem chega da rua deveria começar por trechos curtos na areia dura, perto da água, antes de fazer sessões inteiras na areia solta. O mar do Recreio é aberto e costuma ter corrente forte, o que importa para quem pensa em incluir nado.',
+  },
+  {
+    pergunta: 'Os condomínios do Recreio têm academia própria?',
+    resposta:
+      'Boa parte tem, e é o que define o formato de treino no bairro. O padrão urbanístico de prédios baixos em condomínios fechados fez da academia interna um item comum, e o personal atende na própria estrutura, respeitando as regras de acesso de prestador de cada condomínio. Estrutura de condomínio costuma cobrir bem os primeiros anos de treino; a limitação aparece em fases avançadas de força, quando faltam barras e anilhas pesadas.',
+  },
+  {
+    pergunta: 'Onde correr e pedalar no Recreio?',
+    resposta:
+      'A orla concentra tudo: o calçadão acompanha a praia e a ciclovia começa no bairro e segue pela orla carioca, o que permite treinos longos sem repetir trecho. O Parque Natural Municipal Chico Mendes, na área de restinga, tem trilhas curtas e serve melhor à caminhada leve e ao contato com a natureza do que à corrida de ritmo.',
+  },
+  {
+    pergunta: 'O Montinho atende presencialmente no Recreio?',
+    resposta:
+      'Não. O atendimento presencial do Montinho acontece exclusivamente na Arena 18, em Alphaville, na Grande São Paulo. Para quem mora no Recreio, o que existe é o acompanhamento online, que funciona para todo o Brasil — e esta página serve para entender o mercado do bairro e escolher bem um profissional local.',
+  },
+];
+
+const title = 'Personal trainer no Recreio dos Bandeirantes: onde treinar';
+const description =
+  'Personal trainer no Recreio dos Bandeirantes: os quatro lugares onde o treino acontece no bairro — condomínio, areia, parque e academia —, a faixa de preço do Rio e o que o tamanho do bairro muda na escolha.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Rio de Janeiro</p>
+    <h1>Personal trainer no Recreio dos Bandeirantes: os quatro lugares onde o treino acontece</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Recreio é um dos poucos bairros do país em que as quatro
+      opções de treino competem de verdade entre si. Tem condomínio com
+      academia própria, tem cinco quilômetros de praia quase contínua,
+      tem parque de restinga e tem academia de rua — e nenhuma das
+      quatro é obviamente melhor que as outras.
+    </p>
+
+    <p class="lead">
+      Por isso este guia não é organizado por perfil de morador, e sim
+      <strong>por lugar</strong>. No Recreio, escolher onde treinar é
+      quase a decisão inteira: ela define o custo, o tipo de estímulo
+      possível e, principalmente, quantas sessões sobrevivem a uma
+      semana cheia.
+    </p>
+
+    <div class="prose">
+      <h2>A variável que manda no bairro: distância</h2>
+      <p>
+        O Recreio é comprido. Cresceu a partir dos anos 1980 com
+        planejamento próprio — avenidas largas, prédios baixos,
+        condomínios fechados — e abriga hoje algo em torno de 80 mil
+        moradores num traçado que não se atravessa a pé.
+      </p>
+
+      <p>
+        Isso tem uma consequência prática que quem mora sabe e quem
+        chega descobre tarde: <strong>a sessão que exige carro raramente
+        sobrevive à terceira semana.</strong> A pergunta útil antes de
+        contratar não é qual lugar é melhor no papel, é qual deles fica
+        a menos de dez minutos da sua porta.
+      </p>
+
+      <h2>Lugar 1 — A academia do condomínio</h2>
+      <p>
+        É o formato dominante do bairro, pelo mesmo motivo que na Barra:
+        o padrão de condomínio fechado com estrutura própria transformou
+        a academia interna em item comum, e o personal atende ali, sem
+        deslocamento nenhum do aluno.
+      </p>
+
+      <p>
+        A estrutura típica — halteres, alguns aparelhos, espaço para
+        peso corporal — cobre bem os primeiros anos de treino e boa
+        parte dos objetivos de saúde e composição corporal. O limite
+        aparece em fases avançadas de força, quando faltam barra
+        olímpica, anilhas pesadas e agachamento livre. Um bom
+        profissional adapta o plano ao que existe em vez de reclamar do
+        que falta.
+      </p>
+
+      <p>
+        O detalhe burocrático que atrasa mais gente do que deveria:
+        cada condomínio tem sua regra de acesso de prestador — cadastro
+        na portaria, documentação, horário autorizado. O
+        <a href="/guias/personal-trainer-em-condominio/">guia do
+        atendimento em condomínio</a> cobre o que costuma ser exigido,
+        e resolver isso antes evita a cena clássica do personal barrado
+        no portão no dia da primeira sessão.
+      </p>
+
+      <h2>Lugar 2 — A areia e o calçadão</h2>
+      <p>
+        O Recreio tem a praia mais contínua da Zona Oeste, com o
+        calçadão à beira-mar e a ciclovia que começa no bairro e segue
+        pela orla carioca. Para corrida longa e pedal, é difícil achar
+        estrutura melhor em qualquer lugar do Rio.
+      </p>
+
+      <p>
+        A areia merece um parágrafo próprio, porque é onde mais gente
+        se machuca por empolgação. Correr na areia fofa é
+        substancialmente mais duro que correr no asfalto e cobra muito
+        mais de tornozelo, pé e panturrilha. Quem vem da rua deveria
+        começar por trechos curtos na areia dura, junto à água, e só
+        depois migrar para a solta. É progressão como qualquer outra —
+        só que quase ninguém a trata assim.
+      </p>
+
+      <p>
+        Vale lembrar que o mar do Recreio é aberto, com ondas e
+        corrente que variam bastante ao longo da orla. Isso não
+        atrapalha o treino em terra, mas muda a conversa para quem
+        pensa em incluir nado ou esportes de água.
+      </p>
+
+      <h2>Lugar 3 — O Parque Chico Mendes</h2>
+      <p>
+        O Parque Natural Municipal Chico Mendes preserva um trecho de
+        restinga com a Lagoinha das Tachas e fauna local — jacarés
+        incluídos — e tem trilhas curtas e área de convívio.
+      </p>
+
+      <p>
+        É importante ser honesto sobre o que ele serve: o Chico Mendes
+        é excelente para caminhada leve, mobilidade e para quem está
+        recomeçando e se sente intimidado por academia. Não é o espaço
+        de quem precisa de pista medida para treino de ritmo — para
+        isso, o calçadão da orla resolve melhor.
+      </p>
+
+      <h2>Lugar 4 — A academia de rua e os aparelhos da orla</h2>
+      <p>
+        A orla tem áreas de lazer com aparelhos públicos, e o bairro
+        tem academias de rua para quem prefere estrutura completa a
+        treinar dentro do condomínio.
+      </p>
+
+      <p>
+        Se a sua opção for o aparelho público, vale entender de
+        antemão o limite dele: <strong>aparelho de praça não tem onde
+        colocar anilha</strong>, e a progressão precisa vir de cadência,
+        amplitude, trabalho unilateral e alavanca. É o assunto do guia
+        de <a href="/guias/treinar-ao-ar-livre/">treinar ao ar
+        livre</a>, e é o que separa quem evolui meses ao ar livre de
+        quem trava em três semanas.
+      </p>
+
+      <h2>Quanto custa, e o que o tamanho do bairro faz com o preço</h2>
+      <p>
+        A referência da cidade é de R$ 80 a R$ 200 pela aula avulsa e
+        de R$ 400 a R$ 1.200 pelo pacote mensal, com o acompanhamento
+        online em torno de R$ 200 a R$ 500 por mês. O Recreio fica no
+        meio dessas faixas com uma variável a mais: o deslocamento.
+      </p>
+
+      <p>
+        Como o bairro é longo, o profissional que atravessa a avenida
+        das Américas para atender embute esse tempo no valor — e faz
+        sentido que embuta. Fechar com quem já atende no seu condomínio
+        ou a poucos quarteirões costuma render o mesmo serviço por menos,
+        e com agenda mais estável. As faixas completas por formato estão
+        no guia de <a href={rotas.quantoCusta}>quanto custa um personal
+        trainer</a>.
+      </p>
+
+      <ContextualCta path={path} localidade="no Recreio dos Bandeirantes" assunto={title} posicao="meio" />
+
+      <h2>Como escolher no Recreio</h2>
+      <p>
+        Os fundamentos são os mesmos de qualquer lugar: avaliação física
+        na primeira semana, método de progressão claro, experiência com
+        o seu objetivo e comunicação honesta, sem promessa de resultado
+        com prazo. O passo a passo está no guia de
+        <a href={rotas.comoEscolher}>como escolher um personal
+        trainer</a>.
+      </p>
+
+      <p>
+        O filtro que é específico daqui vem em duas perguntas. A
+        primeira é logística: ele já atende no seu condomínio ou na sua
+        parte do bairro? A segunda é de repertório: ele sabe trabalhar
+        fora da academia convencional — na areia, no calçadão, com o
+        que existe na estrutura do prédio? No Recreio, o profissional
+        que só sabe operar dentro de uma academia equipada está
+        desperdiçando o melhor do bairro.
+      </p>
+
+      <p>
+        E, como em qualquer início de treino, dor instalada, limitação
+        articular ou retorno de lesão passam primeiro por médico ou
+        fisioterapeuta.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Recreio dos Bandeirantes" />
+
+    <ContextualCta path={path} localidade="no Recreio dos Bandeirantes" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-recreio-dos-bandeirantes"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'como progredir treinando na orla e nos aparelhos públicos' },
+      { url: '/guias/personal-trainer-em-condominio/', texto: 'como funciona o atendimento na academia do condomínio' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
