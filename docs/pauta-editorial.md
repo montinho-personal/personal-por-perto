@@ -574,6 +574,124 @@ callout. Nenhum dos dois repete o par de ontem (prosa-princípio + tabela).
 | Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | |
 | Personal trainer para obesidade | `personal-trainer-para-obesidade` | ⚠️ |
 
+## Bloco Local (7) — aberto em 18/09/2026
+
+O sexto bloco, e o primeiro que existe para servir o lado do portal que
+responde por quase toda a demanda: as 985 cidades e os 108 bairros.
+
+### O diagnóstico que abriu o bloco
+
+Os cinco blocos anteriores são todos de consulta nacional. Os 20 artigos
+publicados entre 02 e 11/09 não encostaram no lado local, que na linha de
+base de 10/09 respondia por **26.761 impressões contra 702 dos bairros** —
+e as páginas de artigo nem entram nessa conta. A criação e o SEO local
+vinham funcionando como dois projetos que não se encontram.
+
+### O critério de entrada, que é diferente dos outros blocos
+
+Nos blocos anteriores, o artigo entrava se havia consulta com demanda e sem
+dono. Aqui o critério é outro, porque a checagem de consultas deu um
+resultado incômodo (ver a nota abaixo): **quase toda consulta local com
+demanda já tem dono**. O que sobra é estrutural.
+
+Entra no bloco o assunto que **as 985 páginas de cidade levantam e nenhum
+artigo responde**. É uma lacuna medível no próprio repositório, não uma
+aposta:
+
+| campo presente na página de cidade | cidades | artigos que respondem |
+|---|---|---|
+| `parques` (parque, praça, orla, academia ao ar livre) | 985 | **0** |
+| `climaTreino` (calor, frio, chuva, umidade) | 985 | **0** |
+| `corridas` (provas de rua da cidade) | 985 | **0** |
+| `ciclovias` | 966 | **0** |
+
+Uma página de cidade hoje linka para **um** guia (`personal-online-funciona`)
+e sete ferramentas. Ela abre seções inteiras sobre onde treinar ao ar livre,
+sobre o clima local e sobre as provas da cidade, e não tem para onde mandar
+o leitor. São 985 fontes de link apontando para lugar nenhum.
+
+### A lista
+
+| # | Artigo | slug | status |
+|---|---|---|---|
+| 1 | Treinar ao ar livre: parque, praça e academia pública | `treinar-ao-ar-livre` | |
+| 2 | Treinar no calor, no frio e na chuva | `treinar-no-calor-e-no-frio` | |
+| 3 | Primeira corrida de rua: como se preparar | `primeira-corrida-de-rua` | |
+| 4 | Pedalar como treino: ciclovia, bike e perna | `pedalar-como-treino` | |
+| 5 | Treinar na praia: o que a areia muda | `treinar-na-praia` | ⚠️ recorte de #1 |
+| 6 | Academia de bairro ou rede grande | `academia-de-bairro-ou-rede` | ⚠️ |
+| 7 | Mudei de cidade: como retomar o treino | `mudei-de-cidade` | ⚠️ sem demanda medida |
+
+**Produção: 2 por vez**, decidido pelo Renato em 18/09/2026 — mesma regra dos
+outros blocos, pelo mesmo motivo: lote pequeno o suficiente para revisar item
+a item antes de acelerar.
+
+Os três ⚠️ precisam de recorte decidido antes de escrever. `treinar-na-praia`
+só entra se #1 deixar a areia de fora de propósito; `academia-de-bairro-ou-rede`
+precisa ser conferido contra `/guias/personal-trainer-em-academia/`; e
+`mudei-de-cidade` não tem nenhuma demanda medida — entra por último, ou não
+entra.
+
+### Nota de 18/09/2026 — o que a checagem de consultas locais achou, e por que ela NÃO virou artigo
+
+Antes de montar a lista, o export de Consultas de 12/09 foi lido procurando
+demanda local sem dono. Três clusters apareceram, e **nenhum dos três virou
+artigo** — o que vale registrar, porque a tentação de transformar demanda em
+artigo novo é exatamente o que produz página sem valor próprio.
+
+**Cluster "personal de academia × personal particular" — 49 consultas, 488
+impressões, posição ponderada 15,9.** Inclui "academia com personal incluso",
+"toda academia tem personal", "qual valor de um personal na academia". Parece
+um artigo pronto. Mas `/guias/personal-trainer-em-academia/` já existe e está
+em **posição 8,0** com 54 impressões. O cluster é dez vezes maior do que a
+página captura — isso é caso de reescrita e expansão da página existente, não
+de artigo novo. Artigo novo aqui disputaria a própria página.
+
+**Cluster "perto de mim" — 11 consultas, 54 impressões, posição 12,9.**
+É consulta navegacional. Quem dá a resposta é o hub e a página de cidade, não
+um artigo. Criar um artigo "personal trainer perto de mim" seria criar uma
+página que não pode entregar o que o título promete.
+
+**O cluster que mudou a leitura, e que vale mais que este bloco inteiro:**
+as consultas de cabeça local — `personal trainer <capital>` — somam cerca de
+300 impressões **em posições de 21 a 41**:
+
+| consulta | impressões | posição |
+|---|---|---|
+| personal trainer rio de janeiro | 90 | 24,4 |
+| personal trainer porto alegre | 29 | 28,4 |
+| personal trainer goiania (+ variantes) | 44 | 21,2 a 24,2 |
+| personal trainer sao paulo | 17 | 34,9 |
+| personal trainer curitiba | 17 | 41,1 |
+| personal trainer em barueri | 15 | 23,7 |
+| personal trainer bh / belo horizonte | 24 | 25,1 a 27,7 |
+| personal trainer brasilia (+ preço) | 23 | 24,3 a 32,5 |
+| personal trainer salvador | 9 | 34,4 |
+
+São páginas que **já existem** e estão além da página 2 na consulta que
+carrega o nome delas. Nenhum artigo novo move esse número. Isso é uma **fila
+3 de reescritas, das páginas de capital** — e pelo critério de retorno por
+hora ela ganha deste bloco com folga. Fica registrada aqui para não se
+perder; abrir a fila é decisão separada.
+
+### As regras que valem só para este bloco
+
+**Nenhum artigo deste bloco cita cidade específica no título, no slug ou na
+description.** São guias nacionais que servem a intenção local — a página de
+cidade é que linka para eles, não o contrário. Artigo com nome de cidade
+disputaria a página da própria cidade.
+
+**Vale a restrição comercial inteira.** Nada aqui pode afirmar ou sugerir
+atendimento presencial do Montinho fora da Arena 18, em Alphaville. O
+acompanhamento online é para todo o Brasil; o presencial, não.
+
+**Cada artigo precisa de link de volta.** Um artigo deste bloco só cumpre o
+propósito se a página de cidade passar a linkar para ele. O link entra no
+mesmo commit, no template `[cidade].astro`, na seção que levanta o assunto —
+e é uma mudança que toca 985 páginas de uma vez, então ela **não** sobe
+`atualizadoEm` em massa (é link de infraestrutura, não revisão de conteúdo).
+
+
 ---
 
 ## ⚠️ Sobreposição parcial — decidir o recorte antes de escrever
