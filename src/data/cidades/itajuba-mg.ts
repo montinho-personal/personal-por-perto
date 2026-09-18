@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Há tradição em corrida de rua ligada às datas cívicas (a Corrida de São José existe desde 1993) e forte uso do Parque da Cidade, com a população universitária reforçando a cultura de atividade física.',
   academias:
     'A oferta reúne academias e estúdios, com grande público universitário (UNIFEI), complementada pelo Parque da Cidade e pelas trilhas da serra.',
+  academiasProximas: [
+    { nome: 'Núcleo Academia', detalhe: 'na Rua Francisco Masseli, no Centro' },
+    { nome: 'GymFlix Academia Itajubá', detalhe: 'na Rua Geraldino Campista, no Santo Antônio' },
+  ],
+  academiasVerificadasEm: '2026-09-18',
 
   destaquesFitness: [
     'Grande público jovem universitário (UNIFEI) — perfil ideal para academias e estúdios.',
@@ -104,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itajubá', url: 'https://www.itajuba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-18',
 };

@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva de Ubá se apoia em academias de bairro, futebol e em uma cena crescente de corrida de rua, alimentada por um público ativo ligado à indústria e ao comércio. As praças do Centro e as áreas verdes do entorno favorecem caminhada e corrida em percursos planos.',
   academias:
     'A oferta combina academias de bairro, estúdios de treinamento funcional e unidades de redes nas avenidas centrais, dando boa cobertura para musculação e aulas, com espaço para treino ao ar livre nas praças e no parque florestal.',
+  academiasProximas: [
+    { nome: 'Academia Alta Performance de Ubá', detalhe: 'na Rua Santa Cruz, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-18',
 
   destaquesFitness: [
     'Capital Nacional do Móvel, maior polo moveleiro de Minas Gerais, com forte público ligado à indústria.',
@@ -103,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ubá', url: 'https://www.uba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-18',
 };
