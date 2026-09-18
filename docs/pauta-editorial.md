@@ -614,8 +614,8 @@ o leitor. São 985 fontes de link apontando para lugar nenhum.
 
 | # | Artigo | slug | status |
 |---|---|---|---|
-| 1 | Treinar ao ar livre: parque, praça e academia pública | `treinar-ao-ar-livre` | |
-| 2 | Treinar no calor, no frio e na chuva | `treinar-no-calor-e-no-frio` | |
+| 1 | Treinar ao ar livre: parque, praça e academia pública | `treinar-ao-ar-livre` | ✅ 2026-09-18 · 985 links de entrada |
+| 2 | Treinar no calor, no frio e na chuva | `treinar-no-calor-e-no-frio` | ✅ 2026-09-18 · 985 links de entrada |
 | 3 | Primeira corrida de rua: como se preparar | `primeira-corrida-de-rua` | |
 | 4 | Pedalar como treino: ciclovia, bike e perna | `pedalar-como-treino` | |
 | 5 | Treinar na praia: o que a areia muda | `treinar-na-praia` | ⚠️ recorte de #1 |
