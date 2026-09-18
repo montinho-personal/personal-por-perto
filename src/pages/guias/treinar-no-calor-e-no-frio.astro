@@ -1,0 +1,340 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'O espaço em que o clima pesa mais — parque, praça e academia pública.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'O clima é a desculpa mais usada, mas raramente é a causa real.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/treinar-no-calor-e-no-frio';
+const atualizadoEm = '2026-09-18';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Treinar no calor e no frio', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'É normal render menos treinando no calor?',
+    resposta:
+      'É normal e esperado. No calor o corpo divide o fluxo de sangue entre o músculo que trabalha e a pele que precisa dissipar calor, a frequência cardíaca sobe para a mesma intensidade e a percepção de esforço aumenta. O resultado é o mesmo treino parecendo mais difícil e, com frequência, saindo com menos repetições ou menos velocidade. Isso não é falta de condicionamento nem sinal de que a semana foi perdida — é fisiologia. O erro é insistir na carga da semana passada como se o termômetro não existisse.',
+  },
+  {
+    pergunta: 'Quanta água beber durante o treino no calor?',
+    resposta:
+      'Não existe um número que sirva para todo mundo, porque a taxa de suor varia muito entre pessoas e entre dias. A referência prática mais confiável é beber em goles regulares ao longo da sessão em vez de esperar a sede, e usar a cor da urina como leitura grosseira depois — amarelo claro indica hidratação adequada. Em sessões longas e muito suadas, repor também sal faz diferença. Quem tem restrição de líquido por condição de saúde segue o que médico ou nutricionista orientou, não uma regra genérica de artigo.',
+  },
+  {
+    pergunta: 'O frio atrapalha o treino de musculação?',
+    resposta:
+      'Atrapalha pouco o desempenho dentro da academia e bastante o aquecimento. Músculo e tendão frios têm menos complacência, e a primeira série pesada feita direto, sem preparação, é onde aparecem os estiramentos de inverno. Na musculação o ajuste é simples: aquecimento geral mais longo e uma série leve a mais em cada exercício principal. Ao ar livre o frio pesa mais, principalmente em corrida — a via aérea reage ao ar frio e seco e a sensação de falta de ar é comum nos primeiros minutos.',
+  },
+  {
+    pergunta: 'Posso treinar na chuva?',
+    resposta:
+      'Chuva leve, sem trovoada, é mais questão de conforto que de risco — o problema é o piso escorregadio e a temperatura corporal caindo rápido em roupa molhada. Trovoada é a exceção categórica: nada de espaço aberto, pista, orla ou parque. O que a chuva costuma quebrar não é o treino do dia, é a semana: quem só tem plano de ar livre perde a sessão inteira. Ter um plano B de vinte minutos dentro de casa é o que impede um dia de chuva de virar uma semana zerada.',
+  },
+  {
+    pergunta: 'Quando o clima é motivo real para não treinar?',
+    resposta:
+      'Trovoada, calor extremo somado a umidade alta e qualquer sinal de que o corpo parou de responder — tontura, náusea, calafrio no meio do calor, confusão, pele que para de suar. Esses últimos não são "clima difícil", são sinais de alerta de doença do calor e pedem interrupção imediata, sombra, líquido e ajuda. Pessoas com doença cardiovascular, respiratória ou em uso de medicação que afeta a regulação de temperatura devem definir com o médico os limites próprios antes de treinar em extremos.',
+  },
+];
+
+const title = 'Treinar no calor, no frio e na chuva: o que muda';
+const description =
+  'O que o calor faz com o desempenho, por que o frio cobra no aquecimento e não no rendimento, o papel da umidade, e a regra de ajustar uma variável por vez em vez de abandonar a sessão.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Treinar no calor, no frio e na chuva: o que muda de verdade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Brasil treina em climas que não têm nada a ver entre si. A mesma
+      sessão de terça-feira acontece a 34 graus com umidade alta em
+      Teresina e a 9 graus com vento em Caxias do Sul — e as duas pessoas
+      leem o mesmo conselho genérico de treino.
+    </p>
+
+    <p class="lead">
+      A regra que resolve quase tudo cabe numa frase:
+      <strong>clima difícil muda uma variável do treino, não o treino
+      inteiro.</strong> Saber qual variável é a diferença entre ajustar a
+      sessão e perder a semana.
+    </p>
+
+    <div class="prose">
+      <h2>A tabela que resume o artigo</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Clima</th><th>O que ele cobra</th><th>A variável que muda</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Calor</td><td>Desempenho e segurança</td><td>Horário e expectativa de carga</td></tr>
+            <tr><td>Umidade alta</td><td>A capacidade de se resfriar</td><td>Duração e intensidade</td></tr>
+            <tr><td>Frio</td><td>O aquecimento</td><td>Tempo de preparação</td></tr>
+            <tr><td>Chuva</td><td>O plano da semana</td><td>O local, não o treino</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>O calor: o que ele faz, sem exagero e sem minimizar</h2>
+      <p>
+        Treinar no calor coloca o corpo em duas tarefas que competem
+        entre si. O músculo quer sangue para trabalhar; a pele quer
+        sangue para dissipar calor. Como o volume é o mesmo, algo cede —
+        e o que cede é o desempenho.
+      </p>
+
+      <p>
+        Na prática isso aparece assim: a frequência cardíaca sobe para a
+        mesma intensidade, a percepção de esforço aumenta e o mesmo
+        treino sai com menos repetições ou menos velocidade. Quem corre
+        sente primeiro e de forma mais óbvia; quem faz musculação sente
+        no fôlego entre séries e na sensação de que o descanso de um
+        minuto ficou curto.
+      </p>
+
+      <p>
+        <strong>O ponto que mais gera frustração é de expectativa.</strong>
+        Perder ritmo num dia quente não é sinal de que você regrediu, e a
+        pior reação possível é forçar a carga da semana passada para
+        provar o contrário. A leitura correta é comparar dias parecidos
+        entre si — a terça quente com a outra terça quente, não com o
+        sábado ameno.
+      </p>
+
+      <h3>O que ajustar no calor</h3>
+      <p>
+        <strong>O horário, que é a alavanca mais poderosa.</strong> Início
+        de manhã e fim de tarde resolvem a maior parte do problema em
+        cidade quente: menos calor acumulado no asfalto, menos radiação
+        direta. Em boa parte do Norte e do Nordeste, é a diferença entre
+        um treino possível e um treino inviável.
+      </p>
+
+      <p>
+        <strong>A hidratação em goles regulares</strong>, ao longo da
+        sessão, em vez de esperar a sede — que é um sinal tardio. Depois
+        do treino, a cor da urina serve como leitura grosseira: amarelo
+        claro indica reposição adequada. Em sessão longa e muito suada,
+        repor sal também importa.
+      </p>
+
+      <p>
+        <strong>A expectativa de carga.</strong> Em dia muito quente,
+        manter a carga e aceitar uma ou duas repetições a menos preserva
+        o estímulo melhor do que cortar peso para bater o número
+        planejado.
+      </p>
+
+      <h2>A umidade é o fator que quase ninguém cita</h2>
+      <p>
+        Suor só resfria quando evapora. Com umidade alta, ele escorre sem
+        evaporar — e o corpo perde líquido sem ganhar resfriamento. É por
+        isso que 30 graus em Cuiabá, seco, são mais toleráveis que 30
+        graus em Belém ou em Santos.
+      </p>
+
+      <p>
+        A consequência prática é direta: em dia abafado, o ajuste não é
+        beber mais e seguir igual. É encurtar a sessão ou tirar
+        intensidade, porque a via de resfriamento do corpo está
+        parcialmente bloqueada. Sessão de uma hora vira sessão de
+        quarenta minutos bem feitos.
+      </p>
+
+      <h2>O frio engana pelo lado contrário</h2>
+      <p>
+        O frio quase não atrapalha o desempenho — em várias modalidades
+        ele ajuda, porque o corpo gasta menos energia se resfriando.
+        Quem corre costuma marcar os melhores tempos em dias frios.
+      </p>
+
+      <p>
+        O que o frio cobra é o <strong>aquecimento</strong>. Músculo e
+        tendão frios têm menos complacência, e a primeira série pesada
+        feita direto, sem preparação, é onde aparecem os estiramentos de
+        inverno. O erro não é treinar no frio: é treinar no frio do mesmo
+        jeito que se treina em fevereiro.
+      </p>
+
+      <h3>O que ajustar no frio</h3>
+      <p>
+        <strong>Dobre o aquecimento geral.</strong> Cinco a dez minutos de
+        movimento contínuo antes de qualquer coisa, e uma série leve a
+        mais em cada exercício principal. É o ajuste de maior retorno do
+        inverno inteiro.
+      </p>
+
+      <p>
+        <strong>Vista em camadas que saiam.</strong> A primeira camada
+        deve ser de tecido que transporta suor; a de cima, o corta-vento
+        que você tira depois de dez minutos. Ficar de roupa molhada
+        parado depois do treino é o que resfria de verdade.
+      </p>
+
+      <p>
+        <strong>Ao ar livre, conte com os primeiros minutos ruins.</strong>
+        Ar frio e seco irrita a via aérea e a sensação de falta de ar no
+        começo é comum. Começar mais devagar e respirar pelo nariz nos
+        primeiros minutos ajuda. Quem tem asma ou broncoespasmo
+        induzido por exercício deve tratar isso com médico antes, e não
+        no improviso.
+      </p>
+
+      <FerramentaInline
+        id="constancia"
+        texto="Clima é a desculpa mais usada e quase nunca a causa real — quem para em julho costuma ter parado por outro motivo, e o frio só deu o nome. O diagnóstico olha o seu histórico de paradas e mostra qual é o padrão que se repete antes de a semana desmontar."
+        acao="Descobrir o que realmente derruba a minha constância"
+      />
+
+      <h2>A chuva quebra a semana, não o treino</h2>
+      <p>
+        Chuva leve sem trovoada é questão de conforto: o risco real é o
+        piso escorregadio e a temperatura corporal caindo rápido em roupa
+        encharcada. Trovoada é exceção categórica — nada de pista, orla,
+        parque ou qualquer espaço aberto.
+      </p>
+
+      <p>
+        Mas o estrago da chuva raramente é o dia. É a semana. Quem tem
+        apenas um plano, e esse plano é ao ar livre, perde a sessão
+        inteira quando chove — e duas chuvas num mês viram duas semanas
+        capengas.
+      </p>
+
+      <p>
+        A correção é ter um plano B curto e escrito antes de precisar
+        dele: vinte minutos de peso corporal em casa, resolvidos numa
+        sala. Não precisa ser o treino ideal. Precisa existir no momento
+        em que a janela mostra água.
+      </p>
+
+      <h2>Quando o clima é motivo real para não treinar</h2>
+      <p>
+        Trovoada, calor extremo somado a umidade alta, e qualquer sinal de
+        que a regulação de temperatura falhou: tontura, náusea, dor de
+        cabeça latejante, calafrio no meio do calor, confusão mental ou
+        pele que para de suar. Isso não é "dia difícil" — é sinal de
+        alerta de doença do calor, e pede parar na hora, buscar sombra,
+        repor líquido e procurar ajuda.
+      </p>
+
+      <p>
+        Vale uma ressalva que não é formalidade. Pessoas com doença
+        cardiovascular ou respiratória, gestantes e quem usa medicação
+        que afeta a regulação de temperatura ou a hidratação têm limites
+        próprios em clima extremo, e esses limites se definem com médico
+        — não com regra de artigo.
+      </p>
+
+      <h2>A regra que fica</h2>
+      <p>
+        Em qualquer dos quatro cenários, a decisão é a mesma: identifique
+        a única variável que aquele clima cobra e mexa nela. Calor pede
+        horário e expectativa. Umidade pede duração. Frio pede
+        aquecimento. Chuva pede lugar.
+      </p>
+
+      <p>
+        Nenhum deles pede que a sessão seja cancelada — e é justamente
+        aí que a maioria das semanas se perde, trocando um ajuste de dez
+        minutos por um dia zerado que vira três.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treinar no calor e no frio" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="iniciantes" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
