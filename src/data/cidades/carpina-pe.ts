@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva carpinense mistura a paixão regional pelo futebol com o crescimento da corrida de rua e do treino funcional ao ar livre. Praças, o entorno do lago no centro e os equipamentos públicos de ginástica funcionam como pontos naturais de treino, e provas como o Corre Carpina dão visibilidade ao esporte amador na cidade.',
   academias:
     'A oferta reúne academias de bairro, estúdios de treino funcional e personais autônomos, complementados por praças com aparelhos de ginástica e pelos espaços abertos do centro e do parque de eventos.',
+  academiasProximas: [
+    { nome: 'Smart Fit Carpina', detalhe: 'na Avenida Agamenon Magalhães, no São José' },
+    { nome: 'Match Fit Carpina', detalhe: 'na Rua Dom Lustosa, no São José' },
+  ],
+  academiasVerificadasEm: '2026-09-19',
 
   destaquesFitness: [
     'Parque de Eventos Jota Cândido oferece ampla área aberta para treinos em grupo e caminhadas.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Carpina', url: 'https://www.carpina.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-19',
 };

@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva se apoia na orla do lago e nas praias de água doce, que viram polos de lazer e atividade física na temporada, e no público universitário da UFT e do IFTO, que ajuda a movimentar a corrida de rua e o treino ao ar livre na cidade.',
   academias:
     'A oferta de academias acompanha o porte de uma cidade média universitária, concentrada nos bairros centrais e de maior movimento. O grande diferencial é a estrutura natural ao ar livre, com a orla, as praias e o centro histórico como cenário para o treino.',
+  academiasProximas: [
+    { nome: 'Workout Academia', detalhe: 'na Avenida Joaquim Aires' },
+    { nome: 'Academia Espaço Fitness', detalhe: 'na Rua Coronel Pinheiro, no São Judas Tadeu' },
+  ],
+  academiasVerificadasEm: '2026-09-19',
 
   destaquesFitness: [
     'Orla da Avenida Beira Lago e centro histórico tombado como cenário para caminhada e treino ao ar livre.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Porto Nacional', url: 'https://portonacional.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-19',
 };
