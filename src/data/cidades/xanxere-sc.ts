@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cena de corrida de rua é organizada e ativa, com a ACORXAN promovendo treinos e provas, além de etapas de circuitos estaduais. O esporte amador encontra apoio nas estruturas públicas e no engajamento das associações locais.',
   academias:
     'O parque de academias atende à demanda de cidade média, com unidades de bairro e estúdios de pilates e funcional, complementado pela atuação de personal trainers e pela infraestrutura esportiva pública.',
+  academiasProximas: [
+    { nome: 'Academia Espaço Fitness', detalhe: 'na Rua Coronel Passos Maia, no Centro' },
+    { nome: 'Lead Academia', detalhe: 'na Travessa Ernesto Carmelli, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-20',
 
   destaquesFitness: [
     'Cerca de 52 mil habitantes e IDHM alto — base sólida para serviços de bem-estar.',
@@ -103,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Xanxerê', url: 'https://xanxere.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-20',
 };

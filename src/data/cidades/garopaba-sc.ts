@@ -74,6 +74,11 @@ export const cidade: Cidade = {
     'Garopaba é um dos berços do surfe no Brasil, com a Praia do Silveira como referência histórica. A cultura esportiva mistura surfe, treino na areia, trilhas pelos costões e provas de praia, num ambiente que valoriza a atividade física ao ar livre e o contato com o mar.',
   academias:
     'A oferta de academias e estúdios atende a comunidade local e cresce na temporada, com forte presença de treino funcional, beach training e preparo voltado ao surfe; muitos profissionais trabalham ao ar livre, na praia e em condomínios.',
+  academiasProximas: [
+    { nome: 'Academia da Praia', detalhe: 'na Rua Victor Carlos Nauck, no Centro' },
+    { nome: 'Academia Corpus Garopaba', detalhe: 'na Rodovia SC-434, no Areias de Palhocinha' },
+  ],
+  academiasVerificadasEm: '2026-09-20',
 
   destaquesFitness: [
     'Berço do surfe brasileiro: Praia do Silveira é point histórico e gera demanda por preparo físico para o mar.',
@@ -108,5 +113,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Garopaba', url: 'https://www.garopaba.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-20',
 };
