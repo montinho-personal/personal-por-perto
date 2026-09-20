@@ -1,0 +1,314 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'A ciclovia e o parque como estrutura de treino da sua cidade.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/treino-de-pernas/',
+    titulo: 'Treino de pernas: como montar o seu',
+    descricao: 'O que a bike não substitui — e onde a perna realmente cresce.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/',
+    titulo: 'Cardio e musculação no mesmo dia',
+    descricao: 'A ordem e o intervalo que evitam um atrapalhar o outro.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/guias/pedalar-como-treino';
+const atualizadoEm = '2026-09-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Pedalar como treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Pedalar aumenta a perna?',
+    resposta:
+      'Depende quase inteiramente da resistência, não da distância. Pedal urbano em terreno plano, com marcha leve e cadência alta, é estímulo cardiovascular com carga baixa demais para fazer o músculo crescer — por isso muita gente pedala anos sem mudança visível na perna. Pedalar em subida, com marcha pesada e cadência baixa, aproxima o estímulo do que o músculo entende como treino de força. Ainda assim, para hipertrofia de perna, a musculação continua sendo mais eficiente e mais fácil de progredir.',
+  },
+  {
+    pergunta: 'Pedalar substitui o treino de perna na academia?',
+    resposta:
+      'Não substitui, complementa. A bike trabalha principalmente quadríceps e glúteo em amplitude parcial, com pouca exigência de posterior de coxa e quase nenhuma de panturrilha em alongamento. Faltam os padrões de extensão de quadril com carga e o trabalho excêntrico que a musculação entrega. Quem quer pernas mais fortes pedala e treina força; quem só pedala melhora o condicionamento e a resistência, que também é resultado legítimo.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana dá para pedalar sem atrapalhar a musculação?',
+    resposta:
+      'Duas a três sessões por semana convivem bem com um treino de força de três a quatro dias, desde que o pedal pesado não caia imediatamente antes do dia de perna. O deslocamento diário de bicicleta, em ritmo leve, praticamente não conflita — é atividade de baixa intensidade e costuma ajudar na recuperação. O que cobra caro é empilhar pedal longo e treino de perna pesado em sequência, sem tempo de recuperação entre eles.',
+  },
+  {
+    pergunta: 'Qual o ajuste mínimo da bicicleta para não sentir dor?',
+    resposta:
+      'Três medidas resolvem a maior parte das queixas: altura do selim (com o pé no ponto mais baixo, o joelho fica levemente flexionado, nunca totalmente estendido nem muito dobrado), recuo do selim e altura do guidão, que define quanto a lombar precisa arquear. Dor no joelho na frente costuma indicar selim baixo demais; dor atrás do joelho, selim alto demais. Dor persistente, formigamento nas mãos ou dormência na região do selim não se resolvem com regulagem de internet — pedem avaliação presencial e, se persistirem, médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'Ciclovia, rua ou bicicleta ergométrica: qual é melhor?',
+    resposta:
+      'Cada uma resolve um problema. A ciclovia dá volume contínuo com segurança e é onde o pedal longo acontece. A rua é deslocamento ativo — vale muito como atividade diária, mas o trânsito impede controlar intensidade. A ergométrica é a única em que dá para fixar resistência e tempo com precisão, o que a torna a melhor opção quando o objetivo é um estímulo específico ou quando chove. A melhor das três costuma ser a que existe no seu caminho.',
+  },
+];
+
+const title = 'Pedalar como treino: o que a bike faz pela perna';
+const description =
+  'O que pedalar entrega de verdade, por que a perna de quem pedala em terreno plano não muda, a variável que altera o estímulo, e como encaixar o pedal na semana sem atrapalhar o treino de força.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Pedalar como treino: o que a bike faz — e o que ela não faz — pela perna</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A bicicleta é o equipamento de treino mais subaproveitado do país.
+      Muita cidade tem ciclovia, quase todo mundo tem acesso a uma bike,
+      e o pedal resolve condicionamento com uma fração do impacto que a
+      corrida cobra.
+    </p>
+
+    <p class="lead">
+      Mas existe uma frustração recorrente que os guias de ciclismo não
+      encaram de frente:
+      <strong>é possível pedalar por anos e não ver a perna mudar.</strong>
+      Isso não é falta de esforço nem genética — é uma questão de qual
+      variável você está treinando.
+    </p>
+
+    <div class="prose">
+      <h2>O que pedalar entrega, e entrega bem</h2>
+      <p>
+        <strong>Condicionamento cardiovascular.</strong> O pedal sustenta
+        esforço contínuo por muito tempo, o que é exatamente o estímulo
+        que o coração e o sistema aeróbico entendem. Para quem quer
+        melhorar fôlego, é tão eficiente quanto correr.
+      </p>
+
+      <p>
+        <strong>Baixo impacto.</strong> Não existe fase de aterrissagem.
+        Isso faz da bike uma das melhores escolhas para quem tem peso
+        alto, dor articular em atividade de impacto ou está voltando de
+        uma pausa longa — sempre com a ressalva de que dor instalada é
+        assunto de médico ou fisioterapeuta antes de virar treino.
+      </p>
+
+      <p>
+        <strong>Deslocamento ativo.</strong> É a única modalidade que
+        resolve treino e trajeto na mesma meia hora. Para quem tem
+        agenda apertada, isso vale mais que qualquer detalhe de
+        prescrição.
+      </p>
+
+      <h2>E o que ela não entrega</h2>
+      <p>
+        O ponto que explica a frustração: <strong>pedalar em terreno
+        plano, com marcha leve e cadência alta, é carga baixa
+        repetida muitas vezes.</strong> Isso treina resistência, não
+        força — e músculo cresce respondendo a tensão alta, não a
+        repetição infinita de tensão baixa.
+      </p>
+
+      <p>
+        Some a isso a mecânica do movimento. A pedalada trabalha
+        sobretudo quadríceps e glúteo, em amplitude parcial, com
+        participação modesta do posterior de coxa e quase nenhuma
+        exigência de panturrilha em posição alongada. Falta o que a
+        musculação entrega de sobra: extensão de quadril sob carga,
+        amplitude completa e trabalho excêntrico.
+      </p>
+
+      <p>
+        É por isso que quem pedala muito tem perna resistente e nem
+        sempre perna forte — e por que a comparação com a coxa do
+        ciclista de pista, que treina potência em carga alta e faz
+        musculação, não se aplica a quem vai de bike para o trabalho.
+      </p>
+
+      <h2>A variável que muda o jogo: resistência, não distância</h2>
+      <p>
+        Se o objetivo inclui a perna, a alavanca não é pedalar mais
+        longe. É pedalar mais pesado.
+      </p>
+
+      <p>
+        <strong>Subida é o agachamento de quem pedala.</strong> Marcha
+        pesada, cadência baixa, tronco firme e força aplicada no pedal —
+        essa combinação aproxima o estímulo do que o músculo reconhece
+        como treino de força. Um trecho de ladeira repetido algumas
+        vezes vale mais para a perna do que dez quilômetros planos.
+      </p>
+
+      <p>
+        Na ergométrica, o mesmo princípio: resistência alta com cadência
+        controlada, em blocos curtos, em vez de meia hora girando leve
+        enquanto se olha o celular.
+      </p>
+
+      <p>
+        A ressalva honesta: mesmo assim, para <em>hipertrofia</em> de
+        perna a musculação continua mais eficiente, porque nela a carga
+        é ajustável ao quilo e a progressão é mensurável. O pedal pesado
+        soma; não substitui o
+        <a href="/musculacao/treino-de-pernas/">treino de pernas</a>.
+      </p>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="A dúvida prática que sobra é se o seu pedal está contando como treino de perna ou só somando cansaço antes do dia de agachamento. A análise separa o volume por função dentro da sua semana e mostra onde o pedal está ajudando e onde está atrapalhando."
+        acao="Ver como o pedal se encaixa no meu treino"
+      />
+
+      <h2>Ciclovia, rua ou ergométrica</h2>
+      <p>
+        <strong>A ciclovia</strong> é onde o pedal longo acontece com
+        segurança e continuidade — sem semáforo, sem ônibus ao lado. É
+        o espaço de volume.
+      </p>
+
+      <p>
+        <strong>A rua</strong> é deslocamento ativo, e o valor dela está
+        aí: substituir trajeto por atividade. O que a rua não permite é
+        controlar intensidade, porque o trânsito decide por você.
+      </p>
+
+      <p>
+        <strong>A ergométrica</strong> é a única em que dá para fixar
+        resistência e tempo com precisão. Isso a torna a melhor opção
+        para estímulo específico, e o plano B óbvio nos dias de chuva —
+        assunto do guia de
+        <a href="/guias/treinar-no-calor-e-no-frio/">treino em cada
+        clima</a>.
+      </p>
+
+      <h2>Como encaixar na semana sem atrapalhar a força</h2>
+      <p>
+        Duas a três sessões de pedal convivem bem com um treino de força
+        de três a quatro dias. A única regra que importa de verdade:
+        <strong>pedal pesado e dia de perna não se encostam.</strong>
+        Ladeira na véspera do agachamento transforma o treino de perna
+        num treino de perna cansada.
+      </p>
+
+      <p>
+        Deslocamento diário em ritmo leve é outra história — é atividade
+        de baixa intensidade e praticamente não conflita com nada. Para
+        quem quer combinar as duas coisas no mesmo dia, a ordem e o
+        intervalo estão no guia de
+        <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">cardio e
+        musculação no mesmo dia</a>.
+      </p>
+
+      <h2>Os três ajustes que evitam a maior parte das dores</h2>
+      <p>
+        <strong>Altura do selim.</strong> Com o pé no ponto mais baixo,
+        o joelho fica levemente flexionado — nem estendido por completo,
+        nem muito dobrado. Dor na frente do joelho costuma indicar selim
+        baixo; dor atrás, selim alto.
+      </p>
+
+      <p>
+        <strong>Recuo do selim</strong>, que define o alinhamento do
+        joelho sobre o pedal, e <strong>altura do guidão</strong>, que
+        decide quanto a lombar precisa arquear. Guidão baixo demais é a
+        causa mais comum de dor lombar em pedal longo.
+      </p>
+
+      <p>
+        Esses três resolvem a maioria das queixas. Dor persistente,
+        formigamento nas mãos ou dormência na região do selim não se
+        resolvem com regulagem lida na internet — pedem ajuste
+        presencial e, se continuarem, médico ou fisioterapeuta.
+      </p>
+
+      <h2>Segurança, em duas linhas</h2>
+      <p>
+        Capacete sempre, luz dianteira e traseira a partir do fim de
+        tarde, e a consciência de que ciclovia compartilhada com pedestre
+        pede velocidade de convívio, não de treino. Quando o objetivo do
+        dia é intensidade, o lugar é a ergométrica ou um trecho de
+        ciclovia vazio — não o calçadão às seis da tarde.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre pedalar como treino" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="iniciantes" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

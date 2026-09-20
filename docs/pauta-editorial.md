@@ -616,8 +616,8 @@ o leitor. São 985 fontes de link apontando para lugar nenhum.
 |---|---|---|---|
 | 1 | Treinar ao ar livre: parque, praça e academia pública | `treinar-ao-ar-livre` | ✅ 2026-09-18 · 985 links de entrada |
 | 2 | Treinar no calor, no frio e na chuva | `treinar-no-calor-e-no-frio` | ✅ 2026-09-18 · 985 links de entrada |
-| 3 | Primeira corrida de rua: como se preparar | `primeira-corrida-de-rua` | |
-| 4 | Pedalar como treino: ciclovia, bike e perna | `pedalar-como-treino` | |
+| 3 | Primeira corrida de rua: como se preparar | `primeira-corrida-de-rua` | ✅ 2026-09-20 · 987 links de entrada |
+| 4 | Pedalar como treino: ciclovia, bike e perna | `pedalar-como-treino` | ✅ 2026-09-20 · 967 links de entrada |
 | 5 | Treinar na praia: o que a areia muda | `treinar-na-praia` | ⚠️ recorte de #1 |
 | 6 | Academia de bairro ou rede grande | `academia-de-bairro-ou-rede` | ⚠️ |
 | 7 | Mudei de cidade: como retomar o treino | `mudei-de-cidade` | ⚠️ sem demanda medida |
@@ -673,6 +673,37 @@ carrega o nome delas. Nenhum artigo novo move esse número. Isso é uma **fila
 3 de reescritas, das páginas de capital** — e pelo critério de retorno por
 hora ela ganha deste bloco com folga. Fica registrada aqui para não se
 perder; abrir a fila é decisão separada.
+
+### Nota de 20/09/2026 — os dois recortes do bloco, e um link condicional
+
+**`primeira-corrida-de-rua` tem irmão publicado, e o recorte é limpo.**
+`/guias/personal-trainer-para-corredores/` já existe, mas parte de quem já
+corre: os H2 dele são sobre o que a força faz pela corrida, o efeito de
+interferência, quantas sessões e quais exercícios. Nenhum trata de chegar à
+primeira prova. O filho fica com a entrada — escolher distância e data,
+o teste dos 30 minutos, alternar corrida e caminhada — e linka para o pai
+na seção em que a musculação aparece. O pai não foi alterado, então a data
+de revisão dele não subiu.
+
+**`pedalar-como-treino` tem um vizinho ainda não escrito.** O bloco
+Emagrecimento tem `esteira-ou-bicicleta` na fila. Quando for escrito, ele
+precisa ficar na comparação de máquina para emagrecer; o guia de pedal
+trata de outra coisa — o que a bike faz pela perna e como ela convive com
+o treino de força. Se os dois se aproximarem, o que sai é o mais novo.
+
+**Um detalhe de implementação que vale registrar:** o link de volta do guia
+de pedal está dentro de `{cidade.ciclovias && ...}`, ou seja, ele só aparece
+nas cidades que têm o campo preenchido. São 967 das 987 — 20 cidades não
+exibem o convite. Isso é proposital: numa cidade sem nenhuma informação de
+ciclovia, puxar o leitor para um guia de pedal seria promessa sem lastro
+local.
+
+**Variação de esqueleto, como o bloco exige.** O guia de corrida é
+organizado por decisões numeradas (três antes da planilha, uma depois da
+linha de chegada) e não tem tabela; o de pedal abre pelo que a bike entrega,
+vira no que ela não entrega e gira em torno de uma única variável
+(resistência, não distância). Nenhum dos dois repete a lista de cinco
+variáveis do guia de ar livre nem a tabela de decisão do guia de clima.
 
 ### As regras que valem só para este bloco
 

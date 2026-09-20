@@ -302,6 +302,12 @@ const objetivoDesc: Record<string, string> = {
         <h2>Panorama {deN} para quem treina</h2>
         {paragrafos(cidade.resumoEconomico).map((t) => <p>{t}</p>)}
         {paragrafos(`Para quem leva o treino a sério, vale entender o contexto local. ${cidade.culturaEsportiva}`).map((t) => <p>{t}</p>)}
+        <p>
+          Provas de rua são a porta de entrada mais acessível para quem quer
+          voltar a se mexer — e o que decide não é a planilha:{' '}
+          <a href="/guias/primeira-corrida-de-rua/">como se preparar para a
+          primeira corrida</a>.
+        </p>
         <div class="callout">
           <strong>Clima e treino:</strong>
           {cidade.clima} {cidade.climaTreino}{' '}
@@ -816,6 +822,13 @@ const objetivoDesc: Record<string, string> = {
           </p>
         )}
         {cidade.ciclovias && paragrafos(cidade.ciclovias).map((t) => <p>{t}</p>)}
+        {cidade.ciclovias && (
+          <p>
+            Vale saber o que a bike entrega e o que ela não entrega antes de
+            contar o pedal como treino de perna —{' '}
+            <a href="/guias/pedalar-como-treino/">pedalar como treino</a>.
+          </p>
+        )}
 
         <MapaFitness cidade={cidade} emN={emN} />
       </section>
