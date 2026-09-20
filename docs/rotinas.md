@@ -22,7 +22,7 @@ branch no mesmo minuto viraria conflito de merge todo dia.
 | **12:00 / 09:00** | FerramentaInline | `npm run audit:ferramentas` | Insere o convite a uma ferramenta no corpo de 2 artigos, no parágrafo em que a dúvida aparece. |
 | **14:00 / 11:00** | Reescrita de artigos presos | `docs/reescritas.md` | Diagnostica por que 2 artigos com demanda estão além da página 2 e corrige a causa. |
 | **17:00 / 14:00** | Pauta editorial | `docs/pauta-editorial.md` | Escreve 2 artigos novos — depois de checar que o assunto já não está respondido em outro. |
-| **19:00 / 16:00** | Academias das cidades com capa | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades que subiram capa sem academia. |
+| **19:00 / 16:00** | Academias, por demanda | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades, na ordem de impressão no Search Console. |
 
 O aviso do resultado é a própria conversa da sessão. Push no celular por
 rotina só existe para rotina que abre sessão nova, e não é mais o caso.
@@ -41,10 +41,67 @@ rotina só existe para rotina que abre sessão nova, e não é mais o caso.
 | FerramentaInline | 56 com tráfego | 2/dia | ~28 dias |
 | Reescritas | 13 | 2/dia | ~7 dias |
 | Pauta editorial | 51 | 2/dia | ~26 dias |
-| Academias (com capa) | 29 | 2/dia | ~15 dias |
+| Academias (por demanda) | 771 sem academia, ~230 com impressão medida | 2/dia | a fila mais longa do projeto |
 
 Cada rotina **para sozinha** quando a fila acaba, avisa e pergunta o que
 fazer — nenhuma inventa trabalho para continuar existindo.
+
+## 21/09/2026 — a fila das academias mudou de escopo e de critério
+
+A pendência que a rotina existia para zerar — cidade com capa de arte no ar e
+sem nenhuma academia citada — **foi zerada**. O auditor passou a responder
+"nenhuma: toda cidade com capa tem academia citada".
+
+Com a pendência vazia, a rotina teria parado sozinha e perguntado o que fazer,
+como todas fazem. O Renato decidiu antes: **seguir pelas cidades sem academia**,
+que são 771 das 987.
+
+E o critério de ordenação mudou junto. A seção de prioridade do
+`audit:academias` ordenava por população, e população não prevê busca — é o
+mesmo erro que o `audit:capas` já tinha corrigido no próprio cabeçalho. Agora
+ela ordena por **impressão no Search Console**, lendo o mesmo
+`paginas-por-cidade.json` da fila de capas, com população só como desempate.
+Sem relatório arquivado, cai para população e diz que caiu, no rótulo da
+seção.
+
+**A pendência de capa continua furando a fila.** O prompt novo manda conferir
+aquela seção primeiro: se uma capa nova subir sem academia, ela volta ao topo,
+porque é página no ar pela metade.
+
+### O que o prompt novo ganhou, e de onde veio cada coisa
+
+Cada item abaixo saiu de um erro real desta fila, não de precaução genérica:
+
+- **Ordem de busca em três passos**, com a fonte oficial local antes dos
+  agregadores. Xanxerê/SC tinha lista de academias mantida pela prefeitura —
+  a melhor fonte que a fila já achou para município pequeno, e ninguém teria
+  procurado.
+- **Wellhub e Gympass contam como uma fonte só.** São a mesma empresa, e eu
+  quase as tratei como duas em Ubá.
+- **Alerta de fonte fabricada**, com o domínio nomeado. `sairpromundo.com`
+  produziu três endereços falsos em dois dias — "Rua da Saúde, 123",
+  "Avenida do Sol, 789" e "Rua das Flores, 432". O padrão é rua de nome
+  genérico com numeração redonda, fonte única, sem telefone nem CNPJ, sempre
+  em post de título numerado.
+- **Endereço divergente: usar só a parte consistente.** Apareceu quatro vezes
+  — bairro conflitante em Jaú, Três Lagoas, Porto Nacional e Pinhais, e número
+  conflitante em Garopaba (540, 576 e 638 na mesma rua).
+- **Regra própria para o DF.** Em Taguatinga e Ceilândia a sigla de UF não
+  distingue nada, e existe uma Taguatinga em Tocantins. A prova de localização
+  é o formato de quadra — QNA, QSD, QNB, QNN.
+- **Novos pares de cidade homônima** na lista de armadilhas: Ubá × Uberlândia
+  e Pinhais × São José dos Pinhais, os dois quase publicados errados.
+
+### A convergência que o critério novo revelou
+
+As dez primeiras da nova ordem são, quase na mesma sequência, as cidades cujas
+capas estão paradas em `public/` esperando publicação: Cachoeiro, Ilhéus,
+Paranavaí, Rio Claro, Itapetininga, Salto, Santa Bárbara d'Oeste, Araguaína,
+Varginha e Viçosa.
+
+Não foi planejado — as duas filas usam o mesmo sinal, então apontam para as
+mesmas páginas. O efeito prático é bom: verificar academia nessas cidades
+**adianta** a próxima leva de capas em vez de competir com ela.
 
 ## A primeira falha, e o que ela ensinou — 04/09/2026
 
@@ -138,7 +195,7 @@ sessão de trabalho do projeto.
 | 12:00 | FerramentaInline | `trig_01N6xJDmUwxVMDEQjBfRFtD3` |
 | 14:00 | Reescrita de artigos presos | `trig_01MgNxGxH3bpTUgYRHsrmGbV` |
 | 17:00 | Pauta editorial | `trig_015qkrnYcjKxDdUDZfKUPGP9` |
-| 19:00 | Academias das cidades com capa | `trig_019hpMftf7uJqS8hG1SrtUus` |
+| 19:00 | Academias, por demanda | `trig_019hpMftf7uJqS8hG1SrtUus` |
 
 Detalhe que salvou a operação: **a resposta do `delete_trigger` devolve o
 prompt inteiro da rotina apagada**, embora o `list_triggers` não devolva. Os
