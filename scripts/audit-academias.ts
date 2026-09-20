@@ -10,8 +10,34 @@
  * Uso: npm run audit:academias
  *      npm run audit:academias -- --cidades   (lista as cidades sem academia)
  */
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { cidades } from '../src/data/cidades';
 import { getFitnessPlaces } from '../src/lib/fitnessPlaces';
+
+/**
+ * Último snapshot de Páginas do Search Console arquivado em docs/relatorios/.
+ *
+ * A fila de prioridade usava população, e população não prevê busca: o
+ * critério mudou em 21/09/2026, quando a pendência de capas zerou e a fila
+ * passou a percorrer as cidades sem academia. Mesma lógica de `audit:capas` —
+ * academia em página que já recebe impressão tem retorno imediato; academia em
+ * página que ninguém vê é trabalho no vazio.
+ */
+function lerGsc(): Record<string, { cliques: number; impressoes: number }> {
+  const raiz = 'docs/relatorios';
+  if (!existsSync(raiz)) return {};
+  const pastas = readdirSync(raiz)
+    .filter((d) => existsSync(`${raiz}/${d}/paginas-por-cidade.json`))
+    .sort()
+    .reverse();
+  if (!pastas.length) return {};
+  return JSON.parse(readFileSync(`${raiz}/${pastas[0]}/paginas-por-cidade.json`, 'utf8'));
+}
+
+const gsc = lerGsc();
+const temGsc = Object.keys(gsc).length > 0;
+const impr = (slug: string): number => gsc[slug]?.impressoes ?? 0;
+const cliq = (slug: string): number => gsc[slug]?.cliques ?? 0;
 
 const detalhado = process.argv.includes('--cidades');
 
@@ -188,16 +214,43 @@ if (!capaSemAcademia.length) {
   console.log(`  → ${capaSemAcademia.length} página(s) no ar com capa e sem academias.`);
 }
 
-/* Prioridade: cidades grandes sem academia nomeada. */
-console.log('\nPRIORIDADE — cidades grandes sem nenhuma academia citada');
-const prioridade = semAcademia.sort((a, b) => b.pop - a.pop).slice(0, 20);
+/*
+ * Prioridade: cidades sem academia nomeada, ordenadas por DEMANDA MEDIDA.
+ *
+ * Ordena por impressão no Search Console, com população como desempate. Sem
+ * relatório arquivado, cai para população e avisa — para ninguém confundir
+ * "não há dado" com "não há demanda".
+ */
+const rotuloOrdem = temGsc
+  ? 'ordenadas por impressão no Search Console'
+  : 'ordenadas por população (SEM DADO de GSC — arquive um relatório)';
+console.log(`\nPRIORIDADE — cidades sem nenhuma academia citada, ${rotuloOrdem}`);
+const prioridade = [...semAcademia]
+  .sort((a, b) => impr(b.slug) - impr(a.slug) || b.pop - a.pop)
+  .slice(0, 20);
+console.log('    IMPR  CLI   POPULAÇÃO  CIDADE');
 for (const c of prioridade) {
-  console.log(`  ${String(c.pop).padStart(9)} hab.  ${c.nome}/${c.uf}  (${c.slug})`);
+  console.log(
+    `  ${String(impr(c.slug)).padStart(6)}  ${String(cliq(c.slug)).padStart(3)}  ` +
+      `${String(c.pop).padStart(10)}  ${c.nome}/${c.uf}  (${c.slug})`,
+  );
+}
+if (temGsc) {
+  const comDemanda = semAcademia.filter((c) => impr(c.slug) > 0).length;
+  console.log(
+    `\n  ${comDemanda} das ${semAcademia.length} cidades sem academia têm impressão registrada.`,
+  );
+  console.log(
+    '  O export de Páginas corta em 1.000 linhas com piso de ~2 impressões:',
+  );
+  console.log(
+    '  impressão zero aqui significa "não passou do piso", não "ninguém buscou".',
+  );
 }
 if (detalhado) {
   console.log(`\nTODAS AS ${semAcademia.length} CIDADES SEM ACADEMIA CITADA`);
-  for (const c of semAcademia.sort((a, b) => b.pop - a.pop)) {
-    console.log(`  ${String(c.pop).padStart(9)} hab.  ${c.nome}/${c.uf}`);
+  for (const c of [...semAcademia].sort((a, b) => impr(b.slug) - impr(a.slug) || b.pop - a.pop)) {
+    console.log(`  ${String(impr(c.slug)).padStart(6)} impr  ${String(c.pop).padStart(9)} hab.  ${c.nome}/${c.uf}  (${c.slug})`);
   }
 }
 
