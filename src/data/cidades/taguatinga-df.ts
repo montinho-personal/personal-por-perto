@@ -55,6 +55,12 @@ export const cidade: Cidade = {
     'Taguatinga tem cultura esportiva forte e cotidiana: moradores que usam o Parque Saburo Onoyama para caminhada, corrida e atividades em família, somados à densa oferta de academias de bairro e ao movimento das avenidas comerciais. O perfil de classe média, com presença de profissionais com ensino superior, se traduz em busca por acompanhamento profissional e constância nos treinos.',
   academias:
     'A oferta é numerosa e distribuída: academias de bairro nas quadras residenciais e redes e estúdios concentrados ao longo da Avenida Comercial e dos setores centrais, o que amplia o espaço de atuação do personal trainer em toda a região.',
+  academiasProximas: [
+    { nome: 'Smart Fit Taguatinga Norte', detalhe: 'na QNA 56, em Taguatinga Norte' },
+    { nome: 'Bluefit Taguatinga Norte', detalhe: 'na QNB 11, em Taguatinga Norte' },
+    { nome: 'Smart Fit Taguatinga Sul', detalhe: 'na QSD, no Pistão Sul' },
+  ],
+  academiasVerificadasEm: '2026-09-21',
 
   destaquesFitness: [
     'Maior polo comercial do DF fora do Plano Piloto: grande fluxo de pessoas e visibilidade para o profissional.',
@@ -99,5 +105,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/wp-content/uploads/2022/05/Taguatinga.pdf',
     },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-21',
 };

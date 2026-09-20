@@ -71,6 +71,11 @@ export const cidade: Cidade = {
     'A cultura esportiva de Ceilândia é de raiz comunitária: futebol de quadra e de campo, academias de bairro, treino em praça e atividade física ao ar livre fazem parte do cotidiano. Essa identidade se mistura à forte presença nordestina, expressa em espaços como a Casa do Cantador, projeto de Oscar Niemeyer inaugurado em 1986 para celebrar a cultura do repente e da embolada, e nas feiras que são o coração econômico e social da região.',
   academias:
     'A oferta é dominada por academias de bairro espalhadas pelas quadras, com preços acessíveis, ao lado de unidades de redes populares e de estúdios menores. Boa parte da demanda, porém, é atendida fora desse circuito: no atendimento domiciliar e no treino ao ar livre, em academias públicas, praças e parques — formatos que combinam com o orçamento popular dos moradores.',
+  academiasProximas: [
+    { nome: 'Smart Fit Ceilândia Norte', detalhe: 'na QNN 9, em Ceilândia Norte' },
+    { nome: 'Bluefit Ceilândia', detalhe: 'na QNN 7, em Ceilândia Norte' },
+  ],
+  academiasVerificadasEm: '2026-09-21',
 
   destaquesFitness: [
     'Maior região administrativa do DF em população, com público popular numeroso.',
@@ -105,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Metrô-DF — Companhia do Metropolitano do DF', url: 'https://metro.df.gov.br/' },
     { nome: 'Codeplan — PDAD Ceilândia', url: 'https://www.codeplan.df.gov.br/pdad-ceilandia-2/' },
   ],
-  atualizadoEm: '2026-09-01',
+  atualizadoEm: '2026-09-21',
 };

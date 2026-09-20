@@ -73,6 +73,11 @@ export const cidade: Cidade = {
     'O surf é a marca esportiva da cidade, com a Tiririca como palco de campeonatos, ao lado de um ecoturismo intenso de trilhas, cachoeiras e passeios de caiaque e canoa pela Mata Atlântica. Corridas de rua e de trilha, como a Itacaré Run e a M Trail, reforçam a vocação recente da cidade para o esporte ao ar livre.',
   academias:
     'A oferta é pequena e concentrada perto da Praia da Concha e do Centro, com academias de musculação e estúdios funcionais que também atendem surfistas e turistas de longa estada.',
+  academiasProximas: [
+    { nome: 'Itacaré Training Concept', detalhe: 'no Loteamento Conchas do Mar, ao lado do Mirante da Ponta do Xaréu' },
+    { nome: 'Academia Gym', detalhe: 'na Rua Lodonio Almeida, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-21',
 
   destaquesFitness: [
     'Mais de 20 praias urbanas e selvagens cercadas por Mata Atlântica, ligadas pelo Caminho das Praias.',
@@ -108,5 +113,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Itacaré', url: 'https://itacare.ba.gov.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-09-21',
 };
