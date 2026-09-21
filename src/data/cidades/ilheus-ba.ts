@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A corrida de rua virou febre na cidade, com a orla como palco principal, somada a uma forte cultura de praia e de esportes ao ar livre.',
   academias:
     'A oferta reúne academias em bairros como Pontal e Centro, com a orla da Av. Soares Lopes e as praias funcionando como academia a céu aberto.',
+  academiasProximas: [
+    { nome: 'Smart Fit Ilhéus', detalhe: 'na Avenida Tancredo Neves, 2500, no Jardim Atlântico' },
+    { nome: 'Allp Fit Ilhéus', detalhe: 'na Avenida Itabuna, 1681, no Conquista' },
+  ],
+  academiasVerificadasEm: '2026-09-21',
 
   destaquesFitness: [
     'Orla da Av. Soares Lopes como hub de corrida e treino funcional ao ar livre.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ilhéus', url: 'https://www.ilheus.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-21',
 };

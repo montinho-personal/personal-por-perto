@@ -68,6 +68,11 @@ export const cidade: Cidade = {
     'A cidade tem forte tradição futebolística (com o Estrela do Norte FC) e calendário ativo de corridas de rua organizado pela prefeitura e pela liga desportiva local.',
   academias:
     'A oferta reúne redes e academias locais consolidadas, complementada pela orla da Beira-Rio e pelo Parque do Itabira para o treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit Cachoeiro do Itapemirim', detalhe: 'na Avenida Jones dos Santos Neves, 1148, no Agostinho Simonato' },
+    { nome: 'Wellness Club Cachoeiro', detalhe: 'no terceiro piso do Shopping Sul, no Paraíso' },
+  ],
+  academiasVerificadasEm: '2026-09-21',
 
   destaquesFitness: [
     'Orla da Avenida Beira-Rio (Rio Itapemirim) — principal palco de caminhada, corrida e eventos.',
@@ -95,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cachoeiro de Itapemirim', url: 'https://www.cachoeiro.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-21',
 };
