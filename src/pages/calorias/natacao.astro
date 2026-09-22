@@ -289,7 +289,7 @@ const schema = [
                 )),
               )}
             </div>
-            <p class="cn-dica" id="cn-como-reconhecer">{B.comoReconhecer}</p>
+            <p class="cn-dica cn-como-slot" id="cn-como-reconhecer">{B.comoReconhecer}</p>
           </div>
 
           <div class="cn-campo cn-campo-modo">
@@ -792,6 +792,15 @@ const schema = [
     .cn-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
     .cn-campo input[type='range'] { width: 100%; min-height: 44px; }
     .cn-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); }
+    /* A descrição da faixa escolhida vai de uma a três linhas conforme o
+       estilo. Sem altura reservada, trocar de faixa empurrava o campo de
+       baixo em uma linha — mesmo defeito que movia a lista de ritmos da
+       caminhada, só que menor. O espaço é reservado para o texto mais longo
+       de cada largura. */
+    .cn-como-slot { min-height: 4.6em; line-height: 1.5; }
+    @media (min-width: 560px) {
+      .cn-como-slot { min-height: 3.1em; }
+    }
     .cn-comparativo { font-weight: 400; color: var(--muted); }
 
     #cn-bloco-ritmo > .cn-campo,

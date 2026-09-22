@@ -270,8 +270,24 @@ export function iniciarCalculadoraCaminhada(): void {
   [peso, inclinacao, ...Object.values(campos)].forEach((el) => {
     el.addEventListener('input', calcula);
   });
+  /**
+   * Escreve a descrição do ritmo escolhido no slot abaixo da lista.
+   *
+   * Antes ela vivia dentro de cada opção, escondida por CSS nas não
+   * escolhidas — e trocar de ritmo remontava a lista inteira, movendo as
+   * outras opções em até 68px no celular, debaixo do dedo de quem estava
+   * tocando. Com o slot embaixo, a lista tem altura fixa.
+   */
+  function atualizaNotaRitmo(): void {
+    const nota = $<HTMLElement>('#cc-ritmo-nota');
+    if (nota) nota.textContent = ritmo(ritmoEscolhido()).comoReconhecer;
+  }
+
   document.querySelectorAll<HTMLInputElement>('input[name="cc-ritmo"]').forEach((el) => {
-    el.addEventListener('change', calcula);
+    el.addEventListener('change', () => {
+      atualizaNotaRitmo();
+      calcula();
+    });
   });
 
   // Atalhos de tempo/distância/passos: preenchem e já calculam.
@@ -292,5 +308,6 @@ export function iniciarCalculadoraCaminhada(): void {
   if (limite) limite.max = String(INCLINACAO_MAX);
 
   evento('calculator_view');
+  atualizaNotaRitmo();
   calcula();
 }

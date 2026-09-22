@@ -286,11 +286,23 @@ const schema = [
                 <span>
                   <strong>{r.nome}</strong>
                   <small class="cc-faixa-r">{r.faixa}</small>
-                  <small class="cc-como">{r.comoReconhecer}</small>
                 </span>
               </label>
             ))}
           </fieldset>
+
+          <!--
+            A descrição do ritmo escolhido mora AQUI, num slot único abaixo
+            da lista — e não dentro de cada opção.
+
+            Quando ela ficava dentro da opção, escolher um ritmo encolhia a
+            descrição do anterior e expandia a do novo: a lista inteira se
+            remontava, e no celular as opções chegavam a andar 68px debaixo
+            do dedo de quem estava tocando. Com o slot embaixo, tocar numa
+            opção nunca move nenhuma outra. É o mesmo desenho que as
+            calculadoras de natação e escada já usavam.
+          -->
+          <p class="cc-dica cc-ritmo-nota" id="cc-ritmo-nota">{ritmo('moderado').comoReconhecer}</p>
 
           <div class="cc-campo">
             <label for="cc-inclinacao">
@@ -773,12 +785,23 @@ const schema = [
     }
     .cc-ritmo input { margin-top: 0.3rem; width: 20px; height: 20px; flex: none; }
     .cc-ritmo small { display: block; color: var(--muted); font-size: var(--step--1); }
-    /* A descrição longa só aparece no ritmo escolhido. Quatro delas abertas
-       empurravam o resultado uns 300px para baixo no celular — e quem já
-       escolheu não precisa mais ler as outras. A faixa de velocidade, que é
-       o que diferencia um ritmo do outro, fica sempre visível. */
-    .cc-ritmo input:not(:checked) ~ span .cc-como { display: none; }
-    .cc-ritmo .cc-como { margin-top: 0.15rem; }
+    /* A descrição do ritmo escolhido fica no slot abaixo da lista, não
+       dentro da opção. Manter as quatro abertas empurrava o resultado uns
+       300px para baixo no celular; mantê-las dentro da opção, uma por vez,
+       fazia a lista se remontar a cada toque. O slot resolve os dois: a
+       lista tem altura fixa, e só uma descrição aparece.
+
+       A altura reservada é para o texto mais longo no celular, onde ele
+       ocupa três linhas. Sem isso, trocar de ritmo ainda moveria em uma
+       linha tudo o que vem abaixo — pouco, mas do mesmo tipo de defeito. */
+    .cc-ritmo-nota {
+      min-height: 4.6em;
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+    @media (min-width: 560px) {
+      .cc-ritmo-nota { min-height: 3.1em; }
+    }
 
     .cc-erro {
       margin-top: var(--sp-4);
