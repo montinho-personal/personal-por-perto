@@ -71,7 +71,7 @@ import {
   tabelaPorPeso,
   tabelaPorTempo,
 } from '../../lib/calorias/natacao';
-import { kcalPorKgPorKm as corridaPorKm } from '../../lib/calorias/corrida';
+import { kcalPorKgPorKm as corridaPorKm, metCorrida } from '../../lib/calorias/corrida';
 
 const path = '/calorias/natacao';
 const atualizadoEm = '2026-09-22';
@@ -107,13 +107,29 @@ const TAB_CUSTO = tabelaCustoCrawl(PESO_PADRAO);
 const RAZAO_ESTILO = EX_BORBO.kcal / EX_COSTAS.kcal;
 const INFLACAO = EX_60.kcal / EX_PISCINA.kcal - 1;
 const CUSTO_CORRIDA_KM = corridaPorKm(10) * PESO_PADRAO;
+
+/*
+ * A que velocidade correr custa o mesmo por minuto que este nado.
+ *
+ * Resolvido pela equação da ACSM do próprio motor da corrida, e não
+ * escrito à mão: a primeira versão desta página afirmava "8 METs, o mesmo
+ * que correr a uns 8 km/h", e 8 km/h dá 8,6 METs pela mesma equação que a
+ * página de corrida usa. Duas páginas do mesmo cluster não podem discordar
+ * uma da outra sobre o mesmo número.
+ */
+function velocidadeEquivalente(met: number): number {
+  let v = 5;
+  while (v < 20 && metCorrida(v) < met) v += 0.05;
+  return Math.round(v * 10) / 10;
+}
+const CORRIDA_EQUIV = velocidadeEquivalente(B.met);
 const CUSTO_NADO_KM = (EX_1000.kcal / EX_1000.metros) * 1000;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
 /* 47 caracteres. */
 const title = 'Quantas Calorias a Natação Gasta? Calcule o Seu';
-/* 152 caracteres. */
+/* 150 caracteres. */
 const description =
   'Calcule as calorias do seu nado por estilo, distância ou tempo de piscina. Veja por que o estilo pesa mais que o ritmo — e o erro do relógio da borda.';
 
@@ -128,7 +144,7 @@ const faqs = [
   },
   {
     pergunta: 'Nadar gasta mais calorias que correr?',
-    resposta: `Por minuto, muitas vezes sim: crawl em ritmo médio dá 8,0 METs, o mesmo que correr a uns 8 km/h. Por distância, não há comparação — nadar 1 km custa cerca de ${Math.round(CUSTO_NADO_KM)} kcal para ${PESO_PADRAO} kg, contra cerca de ${Math.round(CUSTO_CORRIDA_KM)} kcal de 1 km de corrida. Mas 1 km de nado leva uns 22 minutos e 1 km de corrida leva uns 6. São unidades diferentes de esforço.`,
+    resposta: `Por minuto, muitas vezes sim: crawl em ritmo médio dá ${n(B.met)} METs, o mesmo que correr a cerca de ${n(CORRIDA_EQUIV)} km/h. Por distância, não há comparação — nadar 1 km custa cerca de ${Math.round(CUSTO_NADO_KM)} kcal para ${PESO_PADRAO} kg, contra cerca de ${Math.round(CUSTO_CORRIDA_KM)} kcal de 1 km de corrida. Mas 1 km de nado leva uns 22 minutos e 1 km de corrida leva uns 6. São unidades diferentes de esforço.`,
   },
   {
     pergunta: 'Natação emagrece?',
@@ -605,7 +621,8 @@ const schema = [
         <h2>Nadar ou correr?</h2>
         <p>
           Por minuto, natação e corrida se encontram: crawl em ritmo médio dá {n(B.met)} METs,
-          perto do que correr a 8 km/h cobra. Por distância, não há comparação — nadar um
+          o mesmo que correr a cerca de {n(CORRIDA_EQUIV)} km/h cobra. Por distância, não há
+          comparação — nadar um
           quilômetro custa cerca de {Math.round(CUSTO_NADO_KM)} kcal para {PESO_PADRAO} kg, contra
           cerca de {Math.round(CUSTO_CORRIDA_KM)} kcal de um quilômetro de corrida.
         </p>

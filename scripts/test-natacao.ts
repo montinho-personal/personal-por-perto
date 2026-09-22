@@ -50,6 +50,7 @@ import {
   tabelaPorTempo,
   velocidadeDeRitmo,
 } from '../src/lib/calorias/natacao';
+import { metCorrida } from '../src/lib/calorias/corrida';
 
 const falhas: string[] = [];
 const ok = (c: boolean, m: string) => {
@@ -353,6 +354,31 @@ console.log('\n[13] O aviso de ritmo incoerente com a faixa\n');
   const r = ritmoDaBanda(banda('crawl', 'medio'))!;
   ok(!ritmoIncoerente('crawl', 'medio', r * (1 + DESVIO_RITMO_ALERTA)), 'no limite exato do desvio ainda não dispara');
   ok(ritmoIncoerente('crawl', 'medio', r * (1 + DESVIO_RITMO_ALERTA) + 1), 'um segundo além dispara');
+}
+
+/* ------------------------------------------------------------------ */
+console.log('\n[14] As duas páginas do cluster não podem discordar\n');
+{
+  /*
+   * A página de natação compara o nado com a corrida ("o mesmo que correr
+   * a X km/h"). Esse X precisa sair da MESMA equação que a página de
+   * corrida usa, não da memória de quem escreveu.
+   *
+   * A primeira versão afirmava "8 METs, o mesmo que correr a uns 8 km/h".
+   * Pela equação da ACSM, 8 km/h dá 8,6 METs — a comparação exagerava a
+   * corrida equivalente em quase 10%.
+   */
+  const metNado = metNatacao('crawl', 'medio');
+  const equivalente = (met: number): number => {
+    let v = 5;
+    while (v < 20 && metCorrida(v) < met) v += 0.05;
+    return Math.round(v * 10) / 10;
+  };
+  const v = equivalente(metNado);
+  console.log(`     crawl médio = ${metNado} METs → correr a ${v.toLocaleString('pt-BR')} km/h = ${metCorrida(v).toFixed(2)} METs`);
+  ok(Math.abs(metCorrida(v) - metNado) < 0.3, `a velocidade equivalente devolve o mesmo MET do nado (${metCorrida(v).toFixed(2)} vs ${metNado})`);
+  ok(v > 7 && v < 7.7, `e ela fica perto de 7,3 km/h — NÃO de 8 km/h, que daria ${metCorrida(8).toFixed(1)} METs`);
+  ok(metCorrida(8) > metNado, 'correr a 8 km/h custa mais por minuto que crawl médio');
 }
 
 /* ------------------------------------------------------------------ */
