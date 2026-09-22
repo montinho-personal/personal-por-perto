@@ -15,9 +15,8 @@
  * Então o cluster nasce como irmão de /musculacao/ e /emagrecimento/: um
  * cluster editorial com ferramenta dentro, não uma gaveta de widgets.
  *
- * O hub começa com uma atividade só, de propósito. Publicar o índice com
- * doze linhas cinzas de "em breve" não ajuda ninguém e ainda promete o que
- * a página não entrega.
+ * O hub lista só o que existe. Publicar o índice com doze linhas cinzas de
+ * "em breve" não ajuda ninguém e ainda promete o que a página não entrega.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -25,6 +24,7 @@ import ContextualCta from '../../components/ContextualCta.astro';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
 import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
+import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
 
 const path = '/calorias';
 const crumbs = [
@@ -34,6 +34,7 @@ const crumbs = [
 
 const MOD = ritmo('moderado');
 const EX_30 = arredondaKcal(deTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal);
+const EX_5KM = formataFaixa(deDistancia(5, PESO_PADRAO, 6));
 
 const ferramentas = [
   {
@@ -41,6 +42,12 @@ const ferramentas = [
     nome: 'Caminhada',
     calcula: 'Por tempo, distância, passos ou meta de calorias — com ritmo e inclinação.',
     exemplo: `30 min moderados ≈ ${EX_30} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/corrida/',
+    nome: 'Corrida',
+    calcula: 'Por distância, tempo ou meta, com o seu pace — e a faixa, porque economia de corrida varia.',
+    exemplo: `5 km a 6:00/km ≈ ${EX_5KM} para ${PESO_PADRAO} kg`,
   },
 ];
 
@@ -105,7 +112,7 @@ const schema = [
           educativa, não avaliação metabólica nem prescrição de treino.
         </p>
         <p class="muted">
-          O cluster está começando pela caminhada e cresce por demanda real, uma atividade por vez.
+          O cluster cresce por demanda real, uma atividade por vez.
           Publicar doze páginas rasas de uma vez seria mais rápido e pior.
         </p>
       </div>

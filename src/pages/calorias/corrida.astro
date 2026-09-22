@@ -1,0 +1,766 @@
+---
+/**
+ * Quantas calorias a corrida gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA A PÁGINA DA CAMINHADA
+ *
+ * As duas não podem ser a mesma página com outro MET, e não são — a física
+ * é diferente. A caminhada responde por TEMPO, porque andar rápido custa
+ * bem mais por quilômetro do que passear. A corrida responde por DISTÂNCIA,
+ * porque o custo por quilômetro quase não muda com a velocidade: entre pace
+ * 7:00 e 4:30 a variação é de menos de 4%.
+ *
+ * Isso dá à página uma tese própria, uma regra de bolso própria ("correr
+ * 1 km custa mais ou menos o seu peso em calorias") e uma estrutura própria
+ * — organizada por distância de prova, que é como corredor pensa.
+ *
+ * E o resultado é uma FAIXA, não um número: economia de corrida varia entre
+ * pessoas o bastante para que um valor exato seja desonesto.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  FONTES,
+  KCAL_POR_KG_GORDURA,
+  NOTA_FAIXA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  arredondaKcal,
+  deDistancia,
+  deKcal,
+  deTempo,
+  faixaEmTexto,
+  formataFaixa,
+  formataKm,
+  formataPace,
+  formataTempo,
+  formataVelocidade,
+  kcalPorKgPorKm,
+  metDaInclinacao,
+  simulacaoUmQuilo,
+  tabelaPorDistancia,
+  tabelaPorPace,
+  tabelaPorPeso,
+} from '../../lib/calorias/corrida';
+import { kcalPorKgPorKm as caminhadaPorKm } from '../../lib/calorias/caminhada';
+
+const path = '/calorias/corrida';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Corrida', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const PACE = 6;
+const EX_5KM = deDistancia(5, PESO_PADRAO, PACE);
+const EX_10KM = deDistancia(10, PESO_PADRAO, PACE);
+const EX_1KM = deDistancia(1, PESO_PADRAO, PACE);
+const EX_30MIN = deTempo(30, PESO_PADRAO, PACE);
+const EX_60MIN = deTempo(60, PESO_PADRAO, PACE);
+const EX_500 = deKcal(500, PESO_PADRAO, PACE);
+const EX_SUBIDA = deDistancia(5, PESO_PADRAO, PACE, 5);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, PACE);
+
+const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, PACE);
+const TAB_PESO = tabelaPorPeso(5, PACE);
+const TAB_PACE = tabelaPorPace(PESO_PADRAO, 5);
+
+const CUSTO_CORRIDA = kcalPorKgPorKm(10);
+const CUSTO_CAMINHADA = caminhadaPorKm(5, 0);
+const RAZAO = CUSTO_CORRIDA / CUSTO_CAMINHADA;
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 47 caracteres. */
+const title = 'Quantas Calorias a Corrida Gasta? Calcule por Km';
+/* 138 caracteres. */
+const description =
+  'Calcule as calorias da sua corrida por distância, tempo ou pace. Veja por que o custo por quilômetro quase não muda com o ritmo.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias se gasta correndo 5 km?',
+    resposta: `Para uma pessoa de ${PESO_PADRAO} kg em ritmo de ${formataPace(PACE)} por quilômetro, algo ${faixaEmTexto(EX_5KM)} — cerca de ${formataTempo(EX_5KM.minutos)} de corrida. O peso é o que mais muda esse número: alguém de 50 kg fica perto de ${TAB_PESO[0].kcal} kcal e alguém de 100 kg, perto de ${TAB_PESO[5].kcal} kcal na mesma distância.`,
+  },
+  {
+    pergunta: 'Correr 10 km gasta quantas calorias?',
+    resposta: `Cerca de ${arredondaKcal(EX_10KM.kcal)} kcal (${faixaEmTexto(EX_10KM)}) para ${PESO_PADRAO} kg. Vale a regra de bolso: correr 1 km custa aproximadamente o seu peso em calorias, então 10 km ficam perto de dez vezes isso. É uma aproximação boa o bastante para planejar, e ela funciona porque o custo por quilômetro quase não muda com a velocidade.`,
+  },
+  {
+    pergunta: 'Correr mais rápido gasta mais calorias?',
+    resposta: `Por minuto, sim. Por quilômetro, quase não. Entre um pace de 7:00 e um de 4:30, o custo de cada quilômetro varia menos de 4% — você gasta mais por minuto correndo rápido, mas termina antes, e as duas coisas se cancelam. Correr mais rápido gasta mais no total só se você correr a mesma quantidade de TEMPO, não a mesma distância.`,
+  },
+  {
+    pergunta: '30 minutos de corrida queimam quantas calorias?',
+    resposta: `Para ${PESO_PADRAO} kg a ${formataPace(PACE)} por quilômetro, ${faixaEmTexto(EX_30MIN)} — o que dá cerca de ${formataKm(EX_30MIN.km)}. Uma hora nesse mesmo ritmo fica ${faixaEmTexto(EX_60MIN)}.`,
+  },
+  {
+    pergunta: 'Quanto preciso correr para gastar 500 calorias?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKm(EX_500.km)} — em torno de ${formataTempo(EX_500.minutos)} a ${formataPace(PACE)} por quilômetro. Quanto maior o peso, menos distância é preciso, porque o custo por quilômetro é proporcional ao peso que você carrega.`,
+  },
+  {
+    pergunta: 'Corrida ou caminhada: qual gasta mais?',
+    resposta: `No mesmo tempo, a corrida gasta bem mais. No mesmo quilômetro, também — correr custa cerca de ${n(RAZAO * 100 - 100, 0)}% a mais por quilômetro do que caminhar em ritmo moderado. O que a caminhada tem a favor é outra coisa: ela é muito mais fácil de repetir todo dia, e o que decide o emagrecimento é o acúmulo de semanas, não o pico de uma sessão.`,
+  },
+  {
+    pergunta: 'Correr emagrece?',
+    resposta:
+      'Ajuda, aumentando o gasto do dia, e costuma render bem por minuto investido. Mas não resolve sozinha: o resultado depende do balanço energético ao longo de semanas. E há um detalhe que pega muita gente — correr abre o apetite em algumas pessoas mais do que caminhar, e uma corrida de 400 kcal é anulada por um lanche desatento.',
+  },
+  {
+    pergunta: 'Correr na subida gasta mais calorias?',
+    resposta: `Gasta. A 10 km/h, cada 5% de inclinação somam cerca de ${n(metDaInclinacao(10, 5))} METs. Uma curiosidade da física: na corrida o custo de subir é a METADE do da caminhada por unidade de inclinação, porque a fase aérea aproveita energia elástica que o andar não tem. Correr ${formataKm(5)} a 5% de inclinação sobe de ${formataFaixa(EX_5KM)} para ${formataFaixa(EX_SUBIDA)}.`,
+  },
+  {
+    pergunta: 'Por que o resultado é uma faixa e não um número exato?',
+    resposta: NOTA_FAIXA,
+  },
+  {
+    pergunta: 'Correr todo dia perde barriga?',
+    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} E correr todo dia traz outro risco: volume que cresce rápido demais é a causa mais comum de lesão em quem está começando. ${NOTA_SEGURANCA}`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/caminhada/',
+    titulo: 'Quantas calorias a caminhada gasta?',
+    descricao: 'A conta da caminhada, que funciona ao contrário: por tempo, não por distância.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/guias/primeira-corrida-de-rua/',
+    titulo: 'Primeira corrida de rua: como se preparar',
+    descricao: 'As três decisões antes da planilha, e o teste dos 30 minutos.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'Por que a força melhora a economia de corrida — e o gasto por quilômetro.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Onde o gasto da corrida entra, e por que ele é a menor peça da conta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cr-hero">
+    <div class="container cr-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias a corrida gasta?</h1>
+      <p class="cr-hero-lead">
+        Correr 1 km custa aproximadamente <strong>o seu peso em calorias</strong>. Para
+        {PESO_PADRAO} kg, 5 km ficam <strong>{faixaEmTexto(EX_5KM)}</strong> — e o ritmo muda
+        isso menos do que quase todo mundo imagina.
+      </p>
+      <p class="cr-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cr-layout">
+    <article class="cr-main">
+      <section id="cr-app" class="cr-app" aria-labelledby="cr-app-h">
+        <h2 id="cr-app-h" class="cr-app-h">Calculadora de calorias da corrida</h2>
+
+        <div class="cr-modos" role="tablist" aria-label="O que você sabe sobre a sua corrida">
+          <button type="button" class="cr-modo is-ativo" data-modo="distancia" role="tab" aria-selected="true">
+            Sei a distância
+          </button>
+          <button type="button" class="cr-modo" data-modo="tempo" role="tab" aria-selected="false" tabindex="-1">
+            Sei o tempo
+          </button>
+          <button type="button" class="cr-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cr-campos">
+          <div class="cr-campo">
+            <label for="cr-peso">Seu peso (kg)</label>
+            <input id="cr-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="cr-campo cr-campo-modo">
+            <label for="cr-km">Distância corrida (km)</label>
+            <input id="cr-km" type="text" inputmode="decimal" autocomplete="off" value="5" />
+            <div class="cr-presets">
+              {[
+                ['3', '3 km'],
+                ['5', '5 km'],
+                ['10', '10 km'],
+                ['21.1', 'Meia'],
+                ['42.2', 'Maratona'],
+              ].map(([v, r]) => (
+                <button type="button" class="cr-preset" data-alvo="distancia" data-valor={v}>{r}</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cr-campo cr-campo-modo" hidden>
+            <label for="cr-minutos">Tempo correndo (minutos)</label>
+            <input id="cr-minutos" type="text" inputmode="numeric" autocomplete="off" value="30" />
+            <div class="cr-presets">
+              {[20, 30, 45, 60, 90].map((v) => (
+                <button type="button" class="cr-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cr-campo cr-campo-modo" hidden>
+            <label for="cr-meta">Meta de gasto (kcal)</label>
+            <input id="cr-meta" type="text" inputmode="numeric" autocomplete="off" value="500" />
+            <div class="cr-presets">
+              {[200, 300, 500, 800].map((v) => (
+                <button type="button" class="cr-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cr-campo">
+            <label for="cr-pace">
+              Ritmo por quilômetro <span class="cr-pace-kmh" id="cr-pace-kmh"></span>
+            </label>
+            <input id="cr-pace" type="text" inputmode="numeric" autocomplete="off" value="6:00" placeholder="6:00" />
+            <div class="cr-presets">
+              {[
+                ['7:00', '7:00'],
+                ['6:30', '6:30'],
+                ['6:00', '6:00'],
+                ['5:30', '5:30'],
+                ['5:00', '5:00'],
+                ['4:30', '4:30'],
+              ].map(([v, r]) => (
+                <button type="button" class="cr-preset" data-alvo="pace" data-valor={v}>{r}</button>
+              ))}
+            </div>
+          </div>
+
+          <details class="cr-ajustes">
+            <summary>
+              Corri em subida
+              <span class="cr-ajustes-estado" id="cr-estado">no plano</span>
+            </summary>
+            <div class="cr-campo">
+              <label for="cr-inclinacao">
+                Inclinação média — <output id="cr-inclinacao-valor" for="cr-inclinacao">0%</output>
+              </label>
+              <input id="cr-inclinacao" type="range" value="0" min="0" max="15" step="1" />
+              <p class="cr-dica">Para esteira inclinada ou percurso de subida constante.</p>
+            </div>
+          </details>
+        </div>
+
+        <p id="cr-erro" class="cr-erro" role="status" hidden></p>
+
+        <div id="cr-saida" class="cr-saida" role="status" aria-live="polite">
+          <p class="cr-resultado">
+            <span class="cr-numero">{formataFaixa(EX_5KM).replace(' kcal', '')}</span>
+            <span class="cr-unidade">kcal</span>
+          </p>
+          <p class="cr-frase"></p>
+
+          <dl class="cr-detalhes">
+            <div><dt>Distância</dt><dd class="cr-d-km">—</dd></div>
+            <div><dt>Tempo</dt><dd class="cr-d-tempo">—</dd></div>
+            <div><dt>Ritmo</dt><dd class="cr-d-pace">—</dd></div>
+            <div><dt>Por quilômetro</dt><dd class="cr-d-porkm">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cr-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cr-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="cr-nota cr-nota-faixa" hidden>
+            <span class="cr-nota-faixa-txt"></span>{' '}
+            <a href="/calorias/caminhada/">Ver a calculadora da caminhada</a>.
+          </p>
+          <p class="cr-nota">{NOTA_FAIXA}</p>
+
+          <div class="cr-proximo">
+            <p class="cr-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde o que decide o
+              resultado: <strong>quanto disso cabe na sua semana sem te machucar</strong>. Em quem
+              está começando a correr, o erro mais caro não é gastar pouco — é subir o volume rápido
+              demais e parar por lesão.
+            </p>
+            <div class="cr-proximo-acoes">
+              <a class="cr-btn cr-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cr-btn cr-btn-secundario cr-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cr-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cr-conteudo">
+        <h2>A regra de bolso: 1 km custa o seu peso em calorias</h2>
+        <p>
+          Correr um quilômetro custa aproximadamente <strong>1 kcal por quilo de peso corporal</strong>.
+          Para {PESO_PADRAO} kg isso dá cerca de {arredondaKcal(EX_1KM.kcal)} kcal por quilômetro —
+          e é por isso que 5 km ficam perto de {arredondaKcal(EX_5KM.kcal)} kcal e 10 km, perto de{' '}
+          {arredondaKcal(EX_10KM.kcal)} kcal.
+        </p>
+        <p>
+          A regra funciona porque o custo da corrida por unidade de distância é quase constante. Ela
+          erra um pouco para mais em quem corre muito devagar e um pouco para menos em quem corre
+          muito rápido, mas dá para planejar a semana inteira com ela sem abrir calculadora nenhuma.
+        </p>
+
+        <h2>Correr mais rápido gasta mais calorias?</h2>
+        <p>
+          <strong>Por minuto, sim. Por quilômetro, quase não.</strong> Essa é a parte
+          contraintuitiva, e é a mais útil desta página.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Correr 5 km em ritmos diferentes, para {PESO_PADRAO} kg, no plano</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ritmo</th><th scope="col">Velocidade</th>
+                <th scope="col">Tempo</th><th scope="col">Gasto total</th><th scope="col">Por km</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PACE.map((l) => (
+                <tr>
+                  <th scope="row">{formataPace(l.paceMin)} /km</th>
+                  <td>{formataVelocidade(l.velocidade)}</td>
+                  <td>{formataTempo(l.minutos)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>≈ {Math.round(l.porKm)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare na última coluna: entre o pace de 7:00 e o de 4:30 — que é a diferença entre um
+          trote e um ritmo de prova — o custo de cada quilômetro se mexe muito pouco. Você gasta mais
+          por minuto correndo rápido, mas <strong>termina antes</strong>, e as duas coisas quase se
+          cancelam.
+        </p>
+        <p>
+          A consequência prática: correr mais rápido só aumenta o gasto total se você mantiver o
+          mesmo <em>tempo</em> de corrida. Se a meta é distância fixa, acelerar muda o cronômetro,
+          não a conta calórica.
+        </p>
+
+        <h2>Calorias por distância: de 1 km à maratona</h2>
+        <p>
+          A tabela é para {PESO_PADRAO} kg em ritmo de {formataPace(PACE)} por quilômetro. Para o seu
+          peso, use a calculadora — ou multiplique a distância pelo seu peso, que a aproximação
+          resolve.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por distância, para {PESO_PADRAO} kg a {formataPace(PACE)}/km</caption>
+            <thead>
+              <tr><th scope="col">Distância</th><th scope="col">Tempo</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {TAB_DIST.map((l) => (
+                <tr>
+                  <th scope="row">{l.nome}</th>
+                  <td>{formataTempo(l.minutos)}</td>
+                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Calorias correndo 5 km por peso corporal</h2>
+        <p>
+          O peso é a variável que mais muda o resultado — muito mais que o ritmo. Corpos maiores
+          gastam mais porque carregam mais massa a cada passada.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Correr 5 km a {formataPace(PACE)}/km, por peso corporal</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">5 km (bruto)</th><th scope="col">Acréscimo ao dia</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>≈ {l.kcalLiquida} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A segunda coluna desconta o que você gastaria parado no mesmo tempo. Na corrida essa
+          diferença pesa pouco — a intensidade é alta e o repouso representa uma fatia pequena —, o
+          contrário do que acontece na caminhada.
+        </p>
+
+        <h2>Corrida ou caminhada: qual gasta mais?</h2>
+        <p>
+          No mesmo <strong>tempo</strong>, a corrida ganha com folga. No mesmo{' '}
+          <strong>quilômetro</strong>, também ganha, mas por uma margem menor do que se imagina:
+          correr custa cerca de {n(CUSTO_CORRIDA, 2)} kcal por quilo por quilômetro, contra{' '}
+          {n(CUSTO_CAMINHADA, 2)} de uma caminhada moderada — cerca de {n(RAZAO * 100 - 100, 0)}% a
+          mais.
+        </p>
+        <p>
+          O que muda o jogo não está nessa conta. A caminhada é muito mais fácil de repetir todo dia,
+          não cobra recuperação e quase não lesiona; a corrida entrega mais por minuto, mas tem teto
+          de volume. Para emagrecimento, o que decide é o acúmulo de semanas — e é por isso que{' '}
+          <a href="/calorias/caminhada/">a conta da caminhada</a> costuma somar mais no mês do que
+          parece à primeira vista.
+        </p>
+
+        <h2>Quanto correr para gastar 500 calorias?</h2>
+        <p>
+          Para {PESO_PADRAO} kg, cerca de <strong>{formataKm(EX_500.km)}</strong> — em torno de{' '}
+          {formataTempo(EX_500.minutos)} a {formataPace(PACE)} por quilômetro. Como o custo é
+          proporcional ao peso, quem pesa mais precisa de menos distância para a mesma meta.
+        </p>
+        <p>
+          E vale o lembrete de sempre: meta de caloria não é estratégia. Quinhentas calorias correndo
+          são anuladas por um lanche desatento, e o que decide é{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">o déficit da semana inteira</a>.
+        </p>
+
+        <h2>Quanto correr para perder 1 kg?</h2>
+        <p>
+          Um quilo de gordura corporal armazena cerca de {KCAL_POR_KG_GORDURA.toLocaleString('pt-BR')} kcal.
+          Para {PESO_PADRAO} kg, essa energia corresponderia a aproximadamente{' '}
+          <strong>{formataKm(UM_QUILO.km)}</strong> de corrida — mais de duas maratonas.
+        </p>
+        <div class="callout">
+          <strong>Isso não significa que correr essa distância faz perder exatamente 1 kg.</strong> É
+          uma simulação teórica, para dar noção de ordem de grandeza. O corpo não responde em linha
+          reta: o gasto cai conforme a pessoa emagrece, e o exercício mexe no apetite.
+        </div>
+        <p>
+          O número serve para mostrar por que tentar emagrecer só correndo é ineficiente — e por que
+          a corrida rende muito mais quando entra numa estratégia junto com treino de força e
+          alimentação.
+        </p>
+
+        <h2>Correr na subida: a física que surpreende</h2>
+        <p>
+          Subir custa mais, como era de esperar: a 10 km/h, cada 5% de inclinação somam cerca de{' '}
+          {n(metDaInclinacao(10, 5))} METs. Correr 5 km a 5% sobe de {formataFaixa(EX_5KM)} para{' '}
+          {formataFaixa(EX_SUBIDA)}.
+        </p>
+        <p>
+          O que surpreende é a comparação com a caminhada: na corrida, o custo de subir é
+          <strong> metade</strong> do da caminhada por unidade de inclinação. O motivo é a fase
+          aérea — correndo, parte da energia da subida volta pelo sistema elástico de tendões e
+          músculos, coisa que andar não tem. É por isso que uma ladeira que destrói quem caminha
+          rápido incomoda menos quem trota.
+        </p>
+
+        <h2>Como calculamos</h2>
+        <p>
+          O gasto sai da equação metabólica de corrida da ACSM, que separa o custo de avançar do
+          custo de subir:
+        </p>
+        <pre class="cr-formula">VO₂ = 0,2 × v + 0,9 × v × inclinação + 3,5    (v em m/min)
+kcal/min = MET × 3,5 × peso (kg) ÷ 200</pre>
+        <p>
+          Dois detalhes que explicam tudo o que esta página afirma. O coeficiente horizontal da
+          corrida (0,2) é o <strong>dobro</strong> do da caminhada (0,1): correr custa o dobro de
+          andar na mesma velocidade. E o coeficiente de subida (0,9) é a <strong>metade</strong> do
+          da caminhada (1,8), pela energia elástica da fase aérea.
+        </p>
+        <p>
+          A equação é validada para corrida acima de <strong>8 km/h</strong> (pace de 7:30 por
+          quilômetro). Abaixo disso a maioria das pessoas está caminhando, e a calculadora avisa em
+          vez de responder com a conta errada.
+        </p>
+        <p>
+          O resultado aparece como <strong>faixa</strong> porque {NOTA_FAIXA.charAt(0).toLowerCase() + NOTA_FAIXA.slice(1, NOTA_FAIXA.indexOf('.') + 1)}{' '}
+          A faixa é de 10% para cada lado do centro estimado.
+        </p>
+        <p class="cr-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_FAIXA}</p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cr-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da corrida" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraCorrida } from '../../scripts/caloriasCorrida.client';
+    iniciarCalculadoraCorrida();
+  </script>
+
+  <style is:global>
+    /* is:global: partes do resultado são reescritas por JS e não recebem o
+       atributo de escopo do Astro. Todas as classes usam o prefixo `cr-`. */
+    .cr-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cr-hero-inner { max-width: 780px; }
+    .cr-hero h1 { color: #fff; max-width: 22ch; }
+    .cr-hero .eyebrow { color: #ffb488; }
+    .cr-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cr-hero-lead strong { color: #fff; }
+    .cr-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cr-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cr-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cr-main { min-width: 0; max-width: 760px; }
+
+    .cr-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cr-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cr-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cr-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cr-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cr-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cr-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cr-campos { display: grid; gap: var(--sp-4); }
+    .cr-campo label { display: block; font-weight: 700; font-size: var(--step--1); margin-bottom: 0.4rem; }
+    .cr-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cr-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cr-campo input[type='range'] { width: 100%; min-height: 44px; }
+    .cr-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); }
+    /* A velocidade equivalente ao lado do rótulo: quem pensa em km/h na
+       esteira não precisa converter de cabeça. */
+    .cr-pace-kmh { font-weight: 400; color: var(--muted); }
+
+    .cr-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cr-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cr-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cr-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cr-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .cr-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cr-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cr-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cr-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cr-ajustes > .cr-campo { padding-bottom: var(--sp-4); }
+
+    .cr-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cr-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cr-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cr-numero {
+      font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cr-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cr-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cr-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cr-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cr-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cr-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cr-nota-faixa {
+      border-left: 3px solid var(--accent);
+      padding-left: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    .cr-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cr-proximo-lead { line-height: 1.6; }
+    .cr-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cr-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cr-btn-primario { background: var(--brand-600); color: #fff; }
+    .cr-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cr-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cr-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cr-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cr-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cr-conteudo { margin-top: var(--sp-7); }
+    /* Repetido aqui de propósito: o `is:global` da página da caminhada só
+       existe quando aquela página está carregada. Cada página do cluster
+       carrega o que usa. */
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cr-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cr-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cr-fontes li { margin-bottom: 0.6rem; }
+    .cr-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
