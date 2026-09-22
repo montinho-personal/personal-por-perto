@@ -1,0 +1,353 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/descanso-entre-series/',
+    titulo: 'Quanto tempo descansar entre séries',
+    descricao: 'A variável que a academia cheia ataca primeiro — e o que ela custa em carga.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/tecnicas-avancadas-de-treino/',
+    titulo: 'Técnicas avançadas de treino: quais valem',
+    descricao: 'Bi-set e circuito como escolha, não como saída de emergência.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/progressao-de-carga/',
+    titulo: 'Como progredir de carga na musculação',
+    descricao: 'O que precisa continuar acontecendo mesmo na semana em que nada dá certo.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou full body: qual divisão escolher',
+    descricao: 'A divisão muda quantos aparelhos disputados a sua sessão depende.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/academia-lotada-como-treinar';
+const atualizadoEm = '2026-09-22';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Academia lotada: como treinar', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual é o horário mais cheio da academia?',
+    resposta:
+      'O padrão mais comum é o fim de tarde nos dias úteis, aproximadamente das 16h às 20h, com segunda-feira sendo o dia mais movimentado da semana. Há picos menores no começo da manhã e na hora do almoço. Mas o padrão da sua academia específica pode ser diferente, e não é preciso adivinhar: a ficha do estabelecimento no Google Maps mostra os horários de maior movimento por dia da semana, medidos e não estimados. Vale conferir antes de reorganizar a rotina inteira com base numa suposição.',
+  },
+  {
+    pergunta: 'Treinar em academia cheia atrapalha o resultado?',
+    resposta:
+      'Atrapalha se você deixar que ela encurte o intervalo entre séries. Quando o aparelho está disputado, a reação natural é apressar a série seguinte para não perder o lugar — e intervalo curto demais reduz a carga que você consegue usar na próxima série. Como o estímulo da musculação depende de carga e volume ao longo das semanas, é por aí que o resultado escapa. O aparelho que você não usou custa muito menos do que o intervalo que você cortou.',
+  },
+  {
+    pergunta: 'Posso trocar o exercício quando o aparelho está ocupado?',
+    resposta:
+      'Pode, desde que a troca mantenha o padrão de movimento. Trocar supino reto na barra por supino com halteres preserva o estímulo; trocar supino por crucifixo, não — sai um exercício composto, que carrega muito peso, e entra um isolador, que carrega pouco. A regra prática é substituir dentro da mesma família: empurrar por empurrar, puxar por puxar, agachar por agachar. Mudar o implemento é ajuste; mudar a família é outro treino.',
+  },
+  {
+    pergunta: 'Vale fazer bi-set ou circuito quando a academia está cheia?',
+    resposta:
+      'Vale, com uma ressalva importante: bi-set e circuito são técnicas legítimas quando escolhidas de propósito, com objetivo definido. O problema é adotá-los como fuga — circular entre três aparelhos livres "para não parar" transforma o treino de força num trabalho metabólico com peso, que é uma coisa diferente e costuma render menos para quem treina buscando massa muscular. Se for usar, use sabendo o que está trocando.',
+  },
+  {
+    pergunta: 'Quando vale a pena trocar de academia por causa da lotação?',
+    resposta:
+      'Quando a lotação passou a decidir o seu treino em vez de apenas incomodar. Os sinais são objetivos: você já não consegue fazer os exercícios principais do seu programa na maior parte das sessões, as sessões passaram a durar bem mais tempo pelo mesmo volume, ou você começou a faltar para evitar o movimento. Um desses três, de forma consistente por algumas semanas, é motivo real — e é mais barato trocar de academia do que perder meses de progresso.',
+  },
+];
+
+const title = 'Academia lotada: como treinar sem perder o resultado';
+const description =
+  'Academia cheia: por que o intervalo entre séries é o que a lotação realmente custa, quais substituições preservam o estímulo e quando trocar de academia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Academia lotada: o que a lotação realmente custa no seu treino</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A queixa de quem treina em academia cheia é sempre a mesma: "não
+      consegui fazer os exercícios que queria". Mas não é o exercício que
+      você deixou de fazer que segura o seu resultado.
+    </p>
+
+    <p class="lead">
+      É o intervalo que você cortou para não perder o aparelho. Este guia
+      organiza a sessão em torno disso — o que proteger primeiro, o que
+      trocar sem prejuízo e o que só piora quando você improvisa.
+    </p>
+
+    <div class="prose">
+      <h2>A variável que a lotação ataca</h2>
+      <p>
+        Repare no que acontece na prática. O banco está ocupado, alguém
+        circula por perto de olho nele, e você apressa a próxima série para
+        não dar bobeira. Fez a série com 40 segundos de descanso quando o seu
+        treino pedia 2 minutos.
+      </p>
+
+      <p>
+        Intervalo curto demais tem uma consequência direta e previsível: você
+        usa menos carga na série seguinte. Como discute o guia sobre
+        <a href="/musculacao/descanso-entre-series/">descanso entre
+        séries</a>, dar tempo suficiente é o que permite repetir a carga alta
+        — e carga é o que gera o estímulo.
+      </p>
+
+      <p>
+        Some isso ao longo de um mês de treinos apressados e o resultado é
+        conhecido: o mesmo número de séries, a mesma sensação de cansaço e
+        uma <a href="/musculacao/progressao-de-carga/">progressão de
+        carga</a> que parou. O aparelho que você não pegou não custou nada
+        perto disso.
+      </p>
+
+      <h2>O exercício-âncora: um por sessão que você não troca</h2>
+      <p>
+        A decisão que organiza tudo o mais é essa. Escolha, antes de entrar,
+        <strong>um exercício da sessão que você vai fazer de qualquer
+        jeito</strong> — normalmente o composto mais pesado do dia:
+        agachamento, supino, remada, terra, desenvolvimento.
+      </p>
+
+      <p>
+        Esse é o exercício pelo qual vale esperar. Se o rack estiver ocupado,
+        você espera, aquece outra coisa enquanto isso, e faz. Com intervalo
+        inteiro, com a carga certa, sem pressa.
+      </p>
+
+      <p>
+        Todo o resto da sessão é negociável. Essa hierarquia declarada antes
+        de começar é o que impede a decisão ruim na hora — porque na hora,
+        com o relógio correndo, quase todo mundo escolhe o que está livre em
+        vez do que importa.
+      </p>
+
+      <h2>As substituições que preservam o estímulo</h2>
+      <p>
+        A regra é uma só: <strong>troque o implemento, não a família do
+        movimento</strong>. Empurrar continua empurrando, puxar continua
+        puxando, agachar continua agachando.
+      </p>
+
+      <p>
+        Funcionam bem: supino reto na barra por supino com halteres; leg press
+        por agachamento com halter à frente; puxada na polia por remada
+        curvada, se o alvo for a mesma região das
+        <a href="/musculacao/treino-de-costas/">costas</a>; desenvolvimento na
+        máquina por desenvolvimento com halteres.
+      </p>
+
+      <p>
+        Não funciona: trocar um composto por um isolador porque o isolador
+        estava livre. Supino por crucifixo, agachamento por cadeira
+        extensora, remada por rosca. Sai o exercício que carrega muito peso e
+        entra o que carrega pouco — e a diferença de estímulo entre os dois
+        não é pequena.
+      </p>
+
+      <p>
+        O teste mental é rápido: se a carga que você usaria no substituto for
+        uma fração pequena da carga do original, não é substituição, é outro
+        treino.
+      </p>
+
+      <h2>Bi-set e circuito: técnica, não fuga</h2>
+      <p>
+        A saída mais comum em academia cheia é circular entre três aparelhos
+        livres sem parar. Funciona no sentido de ocupar o tempo — e é aí que
+        está a armadilha, porque parece produtivo.
+      </p>
+
+      <p>
+        Bi-set, tri-set e circuito são
+        <a href="/musculacao/tecnicas-avancadas-de-treino/">técnicas
+        legítimas</a> quando escolhidas com objetivo. Adotadas por falta de
+        espaço, elas transformam o treino de força em trabalho metabólico
+        com peso: o coração sobe, o suor vem, e a carga de cada exercício cai
+        porque não houve recuperação entre eles.
+      </p>
+
+      <p>
+        Para quem treina buscando massa muscular, isso é uma troca ruim feita
+        sem perceber que era uma troca. Use se quiser — sabendo o que está
+        abrindo mão.
+      </p>
+
+      <h2>Comece pelo fim</h2>
+      <p>
+        Há um ajuste simples que quase ninguém faz: inverter a ordem quando o
+        aparelho do primeiro exercício está tomado.
+      </p>
+
+      <p>
+        Se o seu dia de pernas começa no agachamento livre e o rack está
+        disputado, comece pelo que estaria no fim — o trabalho de posterior,
+        de panturrilha, o isolador —, e volte ao agachamento quando abrir.
+        Você não perdeu a sessão nem fez o exercício principal com pressa.
+      </p>
+
+      <p>
+        A única ressalva é não inverter sempre. O exercício que você faz
+        primeiro recebe a sua melhor energia, e se o composto pesado for
+        sempre o último da fila, ele vai progredir menos.
+      </p>
+
+      <h2>A divisão do treino também decide isso</h2>
+      <p>
+        Um detalhe estrutural que muda muito: quanto mais a sua sessão depende
+        de aparelhos específicos, mais ela sofre com a lotação. Uma divisão
+        que concentra tudo em máquinas é frágil; uma que usa barra, halteres e
+        peso corporal tem sempre para onde ir.
+      </p>
+
+      <p>
+        É uma das variáveis a considerar na escolha entre
+        <a href="/musculacao/abc-ou-full-body/">ABC ou full body</a> — e vale
+        especialmente para quem só consegue treinar no horário de pico e não
+        tem como mudar isso.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Boa parte do problema da academia cheia se resolve antes da sessão, no horário em que você vai. A ferramenta parte dos dias e das janelas que a sua semana realmente tem e mostra que estrutura cabe neles."
+        acao="Montar o treino para os meus horários"
+      />
+
+      <h2>O que resolve fora da sessão</h2>
+      <p>
+        O ajuste de horário é o que mais resolve, quando existe margem para
+        ele. O padrão mais comum de pico é o fim de tarde dos dias úteis,
+        entre 16h e 20h, com segunda-feira liderando a semana.
+      </p>
+
+      <p>
+        Mas não vale reorganizar a vida com base numa média. A ficha da sua
+        academia no Google Maps mostra os horários de maior movimento por dia,
+        com dado medido. Às vezes a diferença entre a sessão travada e a
+        sessão tranquila é chegar 45 minutos mais tarde.
+      </p>
+
+      <h2>Quando a lotação vira motivo para trocar de academia</h2>
+      <p>
+        Nem tudo se resolve com estratégia, e vale reconhecer o limite. Três
+        sinais, se aparecerem juntos por algumas semanas:
+      </p>
+
+      <p>
+        <strong>Você não consegue fazer os exercícios principais</strong> na
+        maior parte das sessões — não um dia ruim, a maioria delas.
+      </p>
+
+      <p>
+        <strong>A sessão dobrou de duração</strong> para o mesmo volume de
+        trabalho, porque metade do tempo é espera.
+      </p>
+
+      <p>
+        <strong>Você começou a faltar</strong> para não enfrentar o movimento.
+        Esse é o mais sério dos três, porque é o que custa mais caro.
+      </p>
+
+      <p>
+        Trocar de academia é mais barato do que perder meses de progresso.
+        Quando os três aparecem, a conta já não fecha a favor de ficar.
+      </p>
+
+      <h2>Onde um acompanhamento muda o jogo</h2>
+      <p>
+        O que resolve academia cheia não é criatividade na hora, é ter o plano
+        B decidido antes. Um profissional que conhece a sua academia monta o
+        treino já com as substituições previstas, define qual é o
+        exercício-âncora de cada sessão e ajusta a divisão para depender menos
+        do aparelho disputado.
+      </p>
+
+      <p>
+        É uma diferença pequena no papel e grande no resultado: você para de
+        improvisar três vezes por semana.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treinar em academia lotada" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

@@ -201,6 +201,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/cadencia-do-movimento/', titulo: 'Cadência do movimento: a velocidade importa mesmo?' },
   { categoria: 'Musculação', url: '/musculacao/respiracao-no-treino/', titulo: 'Respiração no treino: quando expirar e quando prender' },
   { categoria: 'Musculação', url: '/musculacao/cinto-e-luva-de-treino/', titulo: 'Cinto, luva e strap: quais valem a pena e quando' },
+  { categoria: 'Musculação', url: '/musculacao/academia-lotada-como-treinar/', titulo: 'Academia lotada: como treinar sem perder o resultado' },
   { categoria: 'Musculação', url: '/musculacao/triceps-pulley-como-fazer/', titulo: 'Tríceps pulley: como fazer e os erros comuns' },
   { categoria: 'Musculação', url: '/musculacao/treinar-leve-ou-pesado/', titulo: 'Treinar leve ou pesado: o que muda no resultado' },
   { categoria: 'Musculação', url: '/musculacao/mesa-flexora-como-fazer/', titulo: 'Mesa flexora: como fazer e os erros comuns' },

@@ -1,0 +1,291 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/campinas-sp/',
+    titulo: 'Personal trainer em Campinas',
+    descricao: 'O guia da cidade: faixas de preço, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-cambui/',
+    titulo: 'Personal trainer no Cambuí',
+    descricao: 'O bairro vizinho que usa a Lagoa como complemento — aqui ela é o ponto de partida.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'As cinco formas de aumentar a dificuldade quando não existe anilha para colocar.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios objetivos para filtrar profissionais antes de fechar pacote.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-taquaral';
+const atualizadoEm = '2026-09-22';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Personal Trainer em Campinas', url: '/personal-trainer/campinas-sp/' },
+  { nome: 'Personal Trainer no Taquaral', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Dá para fazer todo o treino na Lagoa do Taquaral?',
+    resposta:
+      'Dá para fazer bastante coisa, e de graça: o Parque Portugal abre todos os dias das 6h às 21h e tem ciclovia, ciclofaixa, quadras e aparelhos de ginástica em 630 mil metros quadrados. O que ele não tem é carga ajustável. Aparelho de praça trabalha contra o peso do próprio corpo, e a partir de algumas semanas o mesmo exercício deixa de ser desafio. Para quem treina força com objetivo de ganho de massa, a Lagoa funciona bem como parte da semana, não como a semana inteira.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer no Taquaral?',
+    resposta:
+      'A referência de Campinas é de R$ 70 a R$ 160 pela aula avulsa e de R$ 360 a R$ 950 pelo pacote mensal com duas ou três sessões por semana. O Taquaral é um bairro residencial de alto padrão da região leste, então os valores tendem à metade de cima dessas faixas — com uma exceção conhecida: o atendimento feito dentro do parque costuma custar menos que o de studio, porque não há aluguel de espaço embutido no preço.',
+  },
+  {
+    pergunta: 'Qual formato faz mais sentido para quem mora no Taquaral?',
+    resposta:
+      'Depende do que você quer da semana. Quem busca condicionamento, perda de peso e regularidade resolve muito com a combinação parque mais academia de bairro. Quem tem objetivo de ganho de massa precisa de uma base coberta com carga progressiva, e o parque entra como complemento aeróbico. E quem tem agenda imprevisível costuma render mais com atendimento a domicílio, que elimina o deslocamento — curto aqui, mas ainda assim o primeiro item a cair numa semana corrida.',
+  },
+  {
+    pergunta: 'O que fazer quando chove no Taquaral?',
+    resposta:
+      'Essa é a pergunta prática de quem apostou tudo no parque. O verão de Campinas concentra chuva de fim de tarde, que é justamente o horário de maior movimento na Lagoa. Ter um plano coberto definido de antemão — a academia do bairro, o studio ou uma sessão curta em casa — é o que impede que a semana perca duas sessões. Decidir na hora, debaixo de chuva, quase sempre termina em não treinar.',
+  },
+  {
+    pergunta: 'O Montinho atende presencialmente no Taquaral?',
+    resposta:
+      'Não. O atendimento presencial do Montinho acontece exclusivamente na Arena 18, em Alphaville, na Grande São Paulo. Para quem mora no Taquaral, o que existe é o acompanhamento online, que atende todo o Brasil — e esta página serve para entender o mercado do bairro e escolher bem um profissional local.',
+  },
+];
+
+const title = 'Personal Trainer no Taquaral (Campinas): parque ou academia';
+const description =
+  'Personal trainer no Taquaral: o que a Lagoa do Taquaral resolve no treino, o que ela não resolve, os formatos do bairro e a faixa de preço de Campinas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Campinas</p>
+    <h1>Personal trainer no Taquaral: quando o parque basta e quando não</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Morar no Taquaral significa ter o maior espaço de lazer de Campinas a
+      pé de casa. E é exatamente por isso que o treino de quem mora aqui
+      costuma travar: com a Lagoa na esquina, a pergunta "preciso de mais
+      alguma coisa?" quase nunca é feita.
+    </p>
+
+    <p class="lead">
+      Esta página responde a ela sem rodeio. O que o Parque Portugal
+      entrega, o que ele não entrega, e qual formato de
+      <strong>personal trainer no Taquaral</strong> cobre a diferença.
+    </p>
+
+    <div class="prose">
+      <h2>O que a Lagoa resolve — e é muita coisa</h2>
+      <p>
+        O Parque Portugal, que todo mundo em Campinas chama de Lagoa do
+        Taquaral, ocupa cerca de 630 mil metros quadrados na avenida Heitor
+        Penteado e abre todos os dias das 6h às 21h, com entrada gratuita.
+        Dentro dele há ciclovia, ciclofaixa, quadras, pistas de skate e
+        aparelhos de ginástica.
+      </p>
+
+      <p>
+        Para caminhada, corrida, pedal e treino de peso corporal, isso é
+        estrutura de sobra — melhor do que a de muita academia paga. Quem
+        mora no bairro tem, de graça e sem deslocamento, o cenário que outras
+        regiões da cidade precisam pegar o carro para alcançar.
+      </p>
+
+      <p>
+        O horário estendido também importa mais do que parece: abrir às 6h e
+        fechar às 21h cobre tanto quem treina antes do trabalho quanto quem
+        só consegue depois do jantar.
+      </p>
+
+      <h2>O que ela não resolve: carga</h2>
+      <p>
+        Aqui está o limite, e ele é específico. Os aparelhos de praça
+        trabalham contra o peso do próprio corpo, e peso do próprio corpo não
+        aumenta quando você fica mais forte. Depois de algumas semanas, o
+        mesmo exercício deixa de ser um desafio — e um estímulo que não
+        cresce para de gerar adaptação.
+      </p>
+
+      <p>
+        Isso não significa que treino ao ar livre não funcione. Significa que
+        ele precisa de outras formas de progredir: cadência mais lenta,
+        amplitude maior, versão unilateral, alavanca mais difícil, menos
+        descanso. O guia sobre
+        <a href="/guias/treinar-ao-ar-livre/">como progredir sem carga</a>
+        detalha as cinco, e elas resolvem bem por um tempo.
+      </p>
+
+      <p>
+        Mas há um teto. Para objetivo de ganho de massa muscular, chega o
+        ponto em que é preciso poder colocar mais peso na barra — e nenhuma
+        variação de cadência substitui isso.
+      </p>
+
+      <h2>Formato 1 — Parque com acompanhamento</h2>
+      <p>
+        É o formato mais associado ao bairro, e o mais mal aproveitado. A
+        maioria de quem treina na Lagoa faz a mesma volta, na mesma
+        velocidade, há anos. Um profissional transforma o mesmo espaço em
+        treino progressivo: define o estímulo de cada sessão, controla ritmo e
+        intervalo, e usa as variações que o parque permite.
+      </p>
+
+      <p>
+        Costuma ser também o formato mais barato do bairro, porque não carrega
+        aluguel de espaço no preço.
+      </p>
+
+      <h2>Formato 2 — Academia do bairro</h2>
+      <p>
+        O Taquaral é um dos bairros mais bem servidos de comércio e serviços
+        de Campinas, e a oferta de academias acompanha. É a base coberta que o
+        parque não oferece: carga ajustável, previsível em dia de chuva, e a
+        progressão que o objetivo de hipertrofia exige.
+      </p>
+
+      <h2>Formato 3 — A domicílio</h2>
+      <p>
+        As ruas planas e arborizadas tornam o deslocamento curto, mas semana
+        cheia não perdoa nem trajeto curto. Para quem tem agenda
+        imprevisível, o personal a domicílio é o formato que menos depende de
+        logística — e dores ou limitações, como sempre, passam antes por
+        médico ou fisioterapeuta.
+      </p>
+
+      <h2>Formato 4 — O híbrido, que é o que o bairro pede</h2>
+      <p>
+        Na prática, a combinação é o que faz sentido aqui: força coberta duas
+        ou três vezes por semana, com carga que sobe, e a Lagoa cobrindo o
+        aeróbico e o treino de fim de semana. É o arranjo que usa o parque
+        pelo que ele tem de melhor sem pedir dele o que ele não tem.
+      </p>
+
+      <p>
+        Vale dizer o contraste com o bairro vizinho: quem mora no
+        <a href="/personal-trainer-cambui/">Cambuí</a> usa a Lagoa como
+        complemento e precisa se deslocar até ela. No Taquaral a relação se
+        inverte — o parque é o ponto de partida, e o que precisa ser buscado
+        é a base coberta.
+      </p>
+
+      <h2>Quanto custa personal trainer no Taquaral</h2>
+      <p>
+        A referência de Campinas, publicada no guia de
+        <a href="/personal-trainer/campinas-sp/">personal trainer em
+        Campinas</a>, é de R$ 70 a R$ 160 pela aula avulsa e de R$ 360 a
+        R$ 950 pelo pacote mensal com duas ou três sessões semanais.
+      </p>
+
+      <p>
+        No Taquaral, bairro residencial de alto padrão da região leste, os
+        valores tendem à metade de cima dessas faixas. A exceção é o
+        atendimento dentro do parque, que costuma sair abaixo do studio pelo
+        motivo já dito: não há espaço alugado no custo.
+      </p>
+
+      <ContextualCta path={path} localidade="no Taquaral" assunto={title} posicao="meio" />
+
+      <h2>Como decidir — e como escolher o profissional</h2>
+      <p>
+        Escolha o formato pelo objetivo, não pela proximidade: condicionamento
+        e regularidade o parque cobre com folga; ganho de massa pede base
+        coberta. Escolha o profissional pelos critérios técnicos — avaliação
+        inicial, progressão que ele consiga explicar, experiência com o seu
+        objetivo, sem promessa de resultado —, detalhados no guia
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>.
+      </p>
+
+      <p>
+        E um teste local que vale a pergunta: peça para o profissional
+        descrever como ele faz o exercício ficar mais difícil na semana 8, sem
+        anilha. Quem atende no parque há tempo responde na hora. Quem nunca
+        pensou nisso vai repetir a mesma sessão até você parar de ir.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Taquaral" />
+
+    <ContextualCta path={path} localidade="no Taquaral" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

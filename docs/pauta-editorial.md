@@ -391,7 +391,7 @@ de fechamento.
 | Cadência do movimento | `cadencia-do-movimento` | ✅ 2026-09-13 |
 | Respiração no treino | `respiracao-no-treino` | ✅ 2026-09-14 · recorte declarado |
 | Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | ✅ 2026-09-14 · recorte declarado |
-| Academia lotada: como treinar | `academia-lotada-como-treinar` | |
+| Academia lotada: como treinar | `academia-lotada-como-treinar` | ✅ 2026-09-22 · recorte declarado |
 | Treinar duas vezes por dia | `treinar-duas-vezes-por-dia` | |
 | Musculação na gravidez | `musculacao-na-gravidez` | |
 | Treino full body: como montar | `treino-full-body-como-montar` | ⚠️ |

@@ -1017,6 +1017,7 @@ import { cidade as redencaoPa } from './redencao-pa';
 import { cidade as araripina } from './araripina-pe';
 import { cidade as saoCristovaoSe } from './sao-cristovao-se';
 import { cidade as simaoDias } from './simao-dias-se';
+import { cidade as saoJoaquimDaBarra } from './sao-joaquim-da-barra-sp';
 
 export const cidades: Cidade[] = [
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
@@ -1030,7 +1031,7 @@ export const cidades: Cidade[] = [
   santoAntonioDasMissoes, saoMiguelDasMissoes, saoSimao, carmoDoParanaiba,
   monteCarmelo, coromandel, saoGotardo, santaHelenaDeGoias, serraDoSalitre,
   rioParanaiba, camposAltos,
-  guairaSp, ibia,
+  guairaSp, ibia, saoJoaquimDaBarra,
   // Bloco 44 (Vale do São Francisco PE, Vale dos Vinhedos/agronegócio RS, agronegócio PR/SC, Venda Nova do Imigrante ES)
   lagoaGrande, santaMariaDaBoaVista, cabrobo, petrolandia, novaPrata,
   saoMarcos, monteBeloDoSul, jales, palotina, assisChateaubriand, ubirata,
