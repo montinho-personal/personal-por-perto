@@ -232,7 +232,10 @@ export function iniciarCalculadoraCorrida(): void {
 
   document.querySelectorAll<HTMLButtonElement>('.cr-preset').forEach((b) => {
     b.addEventListener('click', () => {
-      const alvo = b.dataset.alvo === 'pace' ? pace : campos[(b.dataset.alvo as Modo) ?? modo];
+      // Sem data-alvo não é preset. Hoje todos têm; a guarda evita que um
+      // botão futuro com a mesma classe apague o campo do modo atual.
+      if (!b.dataset.alvo) return;
+      const alvo = b.dataset.alvo === 'pace' ? pace : campos[b.dataset.alvo as Modo];
       if (!alvo) return;
       alvo.value = b.dataset.valor ?? '';
       calcula();

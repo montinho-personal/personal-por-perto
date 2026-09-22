@@ -1,0 +1,902 @@
+---
+/**
+ * Quantas calorias a natação gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS TRÊS DO CLUSTER
+ *
+ * Caminhada: o gasto responde ao TEMPO. Corrida: à DISTÂNCIA, e o ritmo
+ * quase não importa por quilômetro. Bicicleta: à VELOCIDADE, de forma
+ * explosiva. Natação: ao ESTILO e à TÉCNICA — e é a única das quatro em que
+ * a variável que mais manda não é algo que a pessoa controla no relógio.
+ *
+ * Trocar peito recreativo (5,3 METs) por borboleta (13,8) muda o gasto em
+ * 2,6 vezes sem mexer em tempo, distância nem esforço percebido. E entre
+ * duas pessoas nadando na MESMA velocidade, a técnica responde por até 55%
+ * de diferença no custo.
+ *
+ * A CORREÇÃO QUE A CATEGORIA INTEIRA IGNORA
+ *
+ * Os METs valem para o nado acontecendo. "Uma hora de natação" quase sempre
+ * quer dizer uma hora de PISCINA, com borda e descanso entre séries.
+ * Aplicar o MET ao relógio inteiro infla o resultado em mais de 40% num
+ * cenário comum — e é o que todas as calculadoras concorrentes fazem.
+ *
+ * O QUE ESTA PÁGINA SE RECUSA A INVENTAR
+ *
+ * O Compêndio publica ritmo medido junto do MET só para o crawl. Nos outros
+ * estilos existe o MET, não a velocidade. Em vez de preencher a lacuna com
+ * um número plausível, a ferramenta pede o ritmo de quem está usando — e
+ * diz por quê.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  CENARIOS_PISCINA,
+  ESTILOS,
+  FONTES,
+  KCAL_POR_KG_GORDURA,
+  NOTA_APETITE,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_PISCINA,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  NOTA_SEM_RITMO_MEDIDO,
+  NOTA_TECNICA,
+  PESO_PADRAO,
+  arredondaKcal,
+  banda,
+  dePiscina,
+  deDistancia,
+  deKcal,
+  deTempo,
+  estilo,
+  formataMetros,
+  formataRitmo,
+  formataRitmoCurto,
+  formataTempo,
+  ritmoDaBanda,
+  simulacaoUmQuilo,
+  tabelaCustoCrawl,
+  tabelaPorDistancia,
+  tabelaPorEstilo,
+  tabelaPorPeso,
+  tabelaPorTempo,
+} from '../../lib/calorias/natacao';
+import { kcalPorKgPorKm as corridaPorKm } from '../../lib/calorias/corrida';
+
+const path = '/calorias/natacao';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Natação', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EST = 'crawl' as const;
+const BANDA = 'medio';
+const B = banda(EST, BANDA);
+const RITMO = ritmoDaBanda(B)!;
+
+const EX_60 = deTempo(60, PESO_PADRAO, EST, BANDA);
+const EX_30 = deTempo(30, PESO_PADRAO, EST, BANDA);
+const EX_PISCINA = dePiscina(60, PESO_PADRAO, EST, BANDA, 30);
+const EX_1000 = deDistancia(1000, PESO_PADRAO, EST, BANDA, RITMO);
+const EX_PEITO = deTempo(60, PESO_PADRAO, 'peito', 'lazer');
+const EX_BORBO = deTempo(60, PESO_PADRAO, 'borboleta', 'geral');
+const EX_COSTAS = deTempo(60, PESO_PADRAO, 'costas', 'lazer');
+const EX_400 = deKcal(400, PESO_PADRAO, EST, BANDA, RITMO);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, EST, BANDA, RITMO);
+
+const TAB_ESTILO = tabelaPorEstilo(PESO_PADRAO, 60);
+const TAB_PESO = tabelaPorPeso(60, EST, BANDA);
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, EST, BANDA);
+const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, EST, BANDA, RITMO);
+const TAB_CUSTO = tabelaCustoCrawl(PESO_PADRAO);
+
+const RAZAO_ESTILO = EX_BORBO.kcal / EX_COSTAS.kcal;
+const INFLACAO = EX_60.kcal / EX_PISCINA.kcal - 1;
+const CUSTO_CORRIDA_KM = corridaPorKm(10) * PESO_PADRAO;
+const CUSTO_NADO_KM = (EX_1000.kcal / EX_1000.metros) * 1000;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 47 caracteres. */
+const title = 'Quantas Calorias a Natação Gasta? Calcule o Seu';
+/* 152 caracteres. */
+const description =
+  'Calcule as calorias do seu nado por estilo, distância ou tempo de piscina. Veja por que o estilo pesa mais que o ritmo — e o erro do relógio da borda.';
+
+const faqs = [
+  {
+    pergunta: '1 hora de natação gasta quantas calorias?',
+    resposta: `Depende muito mais do estilo do que do tempo. Para ${PESO_PADRAO} kg: cerca de ${arredondaKcal(EX_COSTAS.kcal)} kcal de costas recreativo, ${arredondaKcal(EX_PEITO.kcal)} kcal de peito recreativo, ${arredondaKcal(EX_60.kcal)} kcal de crawl em ritmo médio e cerca de ${arredondaKcal(EX_BORBO.kcal).toLocaleString('pt-BR')} kcal de borboleta. E atenção: esses números valem para uma hora de NADO, não de piscina.`,
+  },
+  {
+    pergunta: 'Por que os números da internet sobre natação são tão diferentes entre si?',
+    resposta: `Por três motivos somados. Primeiro, a maioria não diz para qual peso o número vale. Segundo, quase nenhuma separa os estilos, e a diferença entre eles passa de duas vezes e meia. Terceiro, e o maior: quase todas aplicam o MET ao relógio da piscina inteiro, borda incluída — o que num cenário comum de ${30}% de descanso infla o resultado em ${Math.round(INFLACAO * 100)}%.`,
+  },
+  {
+    pergunta: 'Nadar gasta mais calorias que correr?',
+    resposta: `Por minuto, muitas vezes sim: crawl em ritmo médio dá 8,0 METs, o mesmo que correr a uns 8 km/h. Por distância, não há comparação — nadar 1 km custa cerca de ${Math.round(CUSTO_NADO_KM)} kcal para ${PESO_PADRAO} kg, contra cerca de ${Math.round(CUSTO_CORRIDA_KM)} kcal de 1 km de corrida. Mas 1 km de nado leva uns 22 minutos e 1 km de corrida leva uns 6. São unidades diferentes de esforço.`,
+  },
+  {
+    pergunta: 'Natação emagrece?',
+    resposta:
+      'Ela aumenta o gasto do dia, e é a atividade de menor impacto articular entre as do nosso cluster — o que a torna sustentável para quem não consegue correr. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas. A natação entra do lado do que sai, e costuma ser a opção que dá para manter por mais tempo.',
+  },
+  {
+    pergunta: 'Nadar mais rápido gasta mais calorias por 100 metros?',
+    resposta: `Para a MESMA pessoa, sim, e bastante: acelerar na água encarece muito o metro, porque o arrasto cresce com o quadrado da velocidade. Mas se você comparar as faixas do Compêndio entre si, o custo por 100 m sai quase igual (${n(TAB_CUSTO[0].kcalPor100m)} a ${n(TAB_CUSTO[1].kcalPor100m)} kcal para ${PESO_PADRAO} kg). O motivo é que as faixas descrevem pessoas diferentes: quem nada rápido tem técnica, e técnica barateia o metro.`,
+  },
+  {
+    pergunta: 'Quanto tempo de natação para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosNado)} de nado contínuo, ou aproximadamente ${formataMetros(UM_QUILO.metros)} — o equivalente a atravessar o Canal da Mancha uma vez. O número existe para mostrar que emagrecer não sai do exercício sozinho: ele sai da soma de rotina alimentar e gasto ao longo de meses.`,
+  },
+  {
+    pergunta: 'O relógio do meu smartwatch conta certo na piscina?',
+    resposta:
+      'Ele conta melhor do que uma tabela genérica, porque detecta braçadas, viradas e pausas — ou seja, resolve sozinho o problema do tempo de borda. Mas ele não mede seu consumo de oxigênio: continua estimando a partir de modelos, e a técnica, que é a variável que mais pesa aqui, ele não enxerga. Trate os dois como estimativas, não como medição.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A comparação de custo por distância — e por que na corrida ele é quase igual para todo mundo.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/bicicleta/',
+    titulo: 'Quantas calorias a bicicleta gasta?',
+    descricao: 'A outra atividade em que o arrasto manda, e a única em que a velocidade triplica o gasto.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/como-comecar-a-treinar-acima-do-peso/',
+    titulo: 'Como começar a treinar acima do peso',
+    descricao: 'Onde a natação entra como porta de entrada, e o que ela não resolve sozinha.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Onde o gasto do nado entra, e por que ele é a menor peça da conta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cn-hero">
+    <div class="container cn-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias a natação gasta?</h1>
+      <p class="cn-hero-lead">
+        Uma hora de crawl em ritmo médio gasta cerca de{' '}
+        <strong>{arredondaKcal(EX_60.kcal)} kcal</strong> para {PESO_PADRAO} kg. Mas o estilo muda
+        isso mais que o tempo: a mesma hora de costas recreativo dá{' '}
+        <strong>{arredondaKcal(EX_COSTAS.kcal)}</strong> e de borboleta, {' '}
+        <strong>{arredondaKcal(EX_BORBO.kcal).toLocaleString('pt-BR')}</strong>.
+      </p>
+      <p class="cn-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cn-layout">
+    <article class="cn-main">
+      <section id="cn-app" class="cn-app" aria-labelledby="cn-app-h">
+        <h2 id="cn-app-h" class="cn-app-h">Calculadora de calorias da natação</h2>
+
+        <div class="cn-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="cn-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+            Tempo de nado
+          </button>
+          <button type="button" class="cn-modo" data-modo="distancia" role="tab" aria-selected="false" tabindex="-1">
+            Distância
+          </button>
+          <button type="button" class="cn-modo" data-modo="piscina" role="tab" aria-selected="false" tabindex="-1">
+            Tempo de piscina
+          </button>
+          <button type="button" class="cn-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cn-campos">
+          <div class="cn-campo">
+            <label for="cn-peso">Seu peso (kg)</label>
+            <input id="cn-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <!-- O seletor principal desta ferramenta não é um número: é o estilo. -->
+          <div class="cn-campo">
+            <span class="cn-rotulo">
+              Estilo <span class="cn-comparativo" id="cn-comparativo"></span>
+            </span>
+            <div class="cn-presets" role="group" aria-label="Estilo de nado">
+              {ESTILOS.map((e) => (
+                <button
+                  type="button"
+                  class:list={['cn-preset', 'cn-estilo', e.id === EST && 'is-ativo']}
+                  data-estilo={e.id}
+                  aria-pressed={String(e.id === EST)}
+                >
+                  {e.nomeCurto}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!--
+            Cada estilo mostra só as faixas que o Compêndio mediu para ele:
+            três no crawl, duas no costas e no peito, uma na borboleta.
+            As outras ficam escondidas, não removidas — a página precisa
+            continuar legível sem JavaScript.
+          -->
+          <div class="cn-campo">
+            <span class="cn-rotulo">Ritmo do nado</span>
+            <div class="cn-presets" role="group" aria-label="Intensidade do nado">
+              {ESTILOS.map((e) =>
+                e.bandas.map((b) => (
+                  <span class="cn-banda-item" data-estilo={e.id} hidden={e.id !== EST}>
+                    <button
+                      type="button"
+                      class:list={['cn-preset', 'cn-banda', e.id === EST && b.id === BANDA && 'is-ativo']}
+                      data-estilo={e.id}
+                      data-banda={b.id}
+                      aria-pressed={String(e.id === EST && b.id === BANDA)}
+                    >
+                      {b.nome}
+                    </button>
+                  </span>
+                )),
+              )}
+            </div>
+            <p class="cn-dica" id="cn-como-reconhecer">{B.comoReconhecer}</p>
+          </div>
+
+          <div class="cn-campo cn-campo-modo">
+            <label for="cn-minutos">Tempo de nado, sem contar a borda (minutos)</label>
+            <input id="cn-minutos" type="text" inputmode="numeric" autocomplete="off" value="60" />
+            <div class="cn-presets">
+              {[15, 30, 45, 60, 90].map((v) => (
+                <button type="button" class="cn-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cn-campo cn-campo-modo" hidden>
+            <label for="cn-metros">Distância nadada (metros)</label>
+            <input id="cn-metros" type="text" inputmode="numeric" autocomplete="off" value="1000" />
+            <div class="cn-presets">
+              {[400, 800, 1000, 1500, 2000].map((v) => (
+                <button type="button" class="cn-preset" data-alvo="distancia" data-valor={String(v)}>
+                  {v} m
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cn-campo cn-campo-modo" hidden>
+            <label for="cn-minutos-piscina">Tempo total de piscina (minutos)</label>
+            <input id="cn-minutos-piscina" type="text" inputmode="numeric" autocomplete="off" value="60" />
+            <div class="cn-presets">
+              {[30, 45, 60, 90].map((v) => (
+                <button type="button" class="cn-preset" data-alvo="piscina" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cn-campo cn-campo-modo" hidden>
+            <label for="cn-meta">Meta de gasto (kcal)</label>
+            <input id="cn-meta" type="text" inputmode="numeric" autocomplete="off" value="400" />
+            <div class="cn-presets">
+              {[200, 300, 400, 600].map((v) => (
+                <button type="button" class="cn-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!-- O ritmo só aparece onde a distância entra na conta. -->
+          <div id="cn-bloco-ritmo" hidden>
+            <div class="cn-campo">
+              <label for="cn-ritmo">Seu ritmo a cada 100 m (min:seg)</label>
+              <input id="cn-ritmo" type="text" inputmode="text" autocomplete="off" value={formataRitmoCurto(RITMO)} />
+              <div class="cn-presets">
+                {estilo('crawl').bandas.map((b) => (
+                  <button
+                    type="button"
+                    class="cn-preset"
+                    data-alvo="ritmo"
+                    data-valor={formataRitmoCurto(ritmoDaBanda(b)!)}
+                  >
+                    {formataRitmoCurto(ritmoDaBanda(b)!)}
+                  </button>
+                ))}
+              </div>
+              <p class="cn-dica" id="cn-ritmo-fonte"></p>
+            </div>
+          </div>
+
+          <!-- O cenário PISCINA: a correção que a categoria inteira ignora. -->
+          <div id="cn-bloco-descanso" hidden>
+            <div class="cn-campo">
+              <label for="cn-descanso">
+                Quanto do tempo foi borda — <output id="cn-descanso-valor" for="cn-descanso">30%</output>
+              </label>
+              <input id="cn-descanso" type="range" value="30" min="0" max="70" step="5" />
+              <div class="cn-presets">
+                {CENARIOS_PISCINA.map((c) => (
+                  <button
+                    type="button"
+                    class:list={['cn-preset', 'cn-cenario', c.id === 'aula' && 'is-ativo']}
+                    data-cenario={c.id}
+                    aria-pressed={String(c.id === 'aula')}
+                  >
+                    {c.nome}
+                  </button>
+                ))}
+              </div>
+              <p class="cn-dica">
+                Os METs valem para o nado acontecendo. Descontar a borda é o que separa esta conta
+                das que circulam por aí.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p id="cn-erro" class="cn-erro" role="status" hidden></p>
+
+        <div id="cn-saida" class="cn-saida" role="status" aria-live="polite">
+          <p class="cn-resultado">
+            <span class="cn-numero">≈ {arredondaKcal(EX_60.kcal)}</span>
+            <span class="cn-unidade">kcal</span>
+          </p>
+          <p class="cn-frase"></p>
+
+          <dl class="cn-detalhes">
+            <div><dt>Tempo de nado</dt><dd class="cn-d-tempo">—</dd></div>
+            <div class="cn-linha-piscina" hidden><dt>Na piscina</dt><dd class="cn-d-piscina">—</dd></div>
+            <div class="cn-linha-metros"><dt>Distância</dt><dd class="cn-d-metros">—</dd></div>
+            <div class="cn-linha-por100"><dt>Por 100 m</dt><dd class="cn-d-por100">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cn-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cn-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="cn-nota cn-nota-borboleta" hidden></p>
+          <p class="cn-nota cn-nota-ritmo" hidden></p>
+          <p class="cn-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cn-proximo">
+            <p class="cn-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado na natação: <strong>o quanto a sua técnica está cobrando de você
+              por metro</strong>. É a única atividade deste cluster em que a resposta para "como
+              gastar melhor" é aula, não mais tempo.
+            </p>
+            <div class="cn-proximo-acoes">
+              <a class="cn-btn cn-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cn-btn cn-btn-secundario cn-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cn-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cn-conteudo">
+        <h2>Na natação, o estilo decide mais que o tempo</h2>
+        <p>
+          Esta é a diferença central entre nadar e as outras atividades do cluster. Correndo,
+          o que decide é a distância. Pedalando, a velocidade. Nadando, o que decide é{' '}
+          <strong>o estilo</strong> — e ele muda o gasto em {n(RAZAO_ESTILO)} vezes sem que
+          a pessoa passe um minuto a mais na água.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de nado por estilo, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Estilo e ritmo</th><th scope="col">METs</th><th scope="col">1 hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ESTILO.map((l) => (
+                <tr>
+                  <th scope="row">
+                    {l.estilo.nomeCurto}
+                    <small class="cn-faixa">{l.banda.nome.toLowerCase()}</small>
+                  </th>
+                  <td>{n(l.met)}</td>
+                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare que a distância entre a primeira e a última linha é maior do que a distância
+          entre caminhar devagar e correr forte. E, ao contrário da velocidade na bicicleta,
+          trocar de estilo não é algo que a maioria das pessoas considera quando quer "gastar
+          mais na piscina".
+        </p>
+        <p class="cn-ressalva">
+          A borboleta merece uma ressalva que a tabela sozinha não dá: ela está ali com{' '}
+          {n(EX_BORBO.met)} METs, mas praticamente ninguém nada borboleta por uma hora seguida.
+          As provas terminam nos 200 metros, e no treino ela aparece em séries curtas. A conta da
+          linha está certa; o cenário de uma hora inteira dela é que quase não existe — e a
+          calculadora avisa quando você pede isso.
+        </p>
+
+        <h2>O relógio da piscina não é o relógio do nado</h2>
+        <p>{NOTA_PISCINA}</p>
+        <p>
+          O tamanho do estrago: uma hora de piscina com {30}% do tempo de borda são{' '}
+          <strong>{formataTempo(EX_PISCINA.minutosNado)} de nado</strong>. Contando o relógio
+          inteiro, a conta dá {arredondaKcal(EX_60.kcal)} kcal; contando só o nado, dá{' '}
+          {arredondaKcal(EX_PISCINA.kcal)} kcal. São{' '}
+          <strong>{Math.round(INFLACAO * 100)}% de inflação</strong> num cenário que não tem nada
+          de extremo — é uma aula comum, com séries e descanso entre elas.
+        </p>
+        <p>
+          É por isso que esta página tem um modo próprio para isso, e por isso quem responde
+          quanto descansou é você. Ninguém de fora sabe se a sua hora foi nado contínuo ou
+          conversa de borda, e fingir que sabe é o que produz os números redondos e generosos que
+          circulam por aí.
+        </p>
+
+        <h2>Por que o custo por 100 metros sai quase igual (e por que isso engana)</h2>
+        <p>
+          O Compêndio publica, só para o crawl, o ritmo medido junto do MET. Isso permite calcular
+          o custo por 100 metros — a unidade em que quem nada realmente pensa. O resultado
+          surpreende:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Custo por 100 m de crawl nas três faixas medidas, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Faixa</th><th scope="col">Ritmo</th><th scope="col">METs</th>
+                <th scope="col">Por 100 m</th><th scope="col">kJ por metro</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_CUSTO.map((l) => (
+                <tr>
+                  <th scope="row">
+                    {l.banda.nome}
+                    <small class="cn-faixa">{n(l.metrosPorMin, 0)} m/min</small>
+                  </th>
+                  <td>{formataRitmo(l.ritmo)}</td>
+                  <td>{n(l.banda.met)}</td>
+                  <td>≈ {n(l.kcalPor100m)} kcal</td>
+                  <td>{n(l.kJPorMetro, 2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Quase plano — e a faixa <strong>mais rápida é a mais barata</strong> por 100 metros.
+          Isso parece contrariar a física do arrasto, que diz que acelerar na água encarece muito
+          o metro. E contrariaria, se as três linhas descrevessem a mesma pessoa.
+        </p>
+        <p>
+          Elas não descrevem. As faixas do Compêndio são <strong>pessoas diferentes</strong>: quem
+          nada {n(TAB_CUSTO[2].metrosPorMin, 0)} metros por minuto tem uma técnica que quem nada{' '}
+          {n(TAB_CUSTO[0].metrosPorMin, 0)} não tem. São dois efeitos gigantes se cancelando — a
+          velocidade encarecendo o metro, a técnica barateando.
+        </p>
+        <p>
+          Dá para ver a assinatura da técnica comparando a tabela com uma medição independente.
+          Zamparo e colegas mediram o crawl de nadadores de elite em 0,70 kJ por metro a 1,0 m/s.
+          As duas faixas lentas do Compêndio nadam <em>mais devagar</em> que isso e mesmo assim
+          pagam 24% e 28% <em>mais caro</em> pelo metro. A faixa rápida nada 14% mais rápido que o
+          elite e quase empata com ele. A diferença não está no fôlego — está na técnica.
+        </p>
+        <p>{NOTA_TECNICA}</p>
+
+        <h2>Quanto gasta por peso e por tempo</h2>
+        <p>
+          As tabelas abaixo usam crawl em ritmo médio ({n(B.met)} METs), que é o cenário mais
+          comum de quem nada por condicionamento. Para outro estilo, use a calculadora acima.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de crawl médio por peso corporal</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th><th scope="col">Gasto bruto</th>
+                <th scope="col">Acréscimo real ao dia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                  <td>≈ {l.kcalLiquida.toLocaleString('pt-BR')} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A segunda coluna é a que importa num déficit: o número bruto inclui o que você gastaria
+          parado no mesmo tempo, e esse pedaço já estava no seu dia de qualquer forma.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Crawl médio por tempo de nado, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo</th><th scope="col">Gasto</th><th scope="col">Distância</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                  <td>{formataMetros(l.metros)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Crawl médio por distância, a {formataRitmo(RITMO)} por 100 m, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Distância</th><th scope="col">Tempo</th><th scope="col">Gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_DIST.map((l) => (
+                <tr>
+                  <th scope="row">{formataMetros(l.metros)}</th>
+                  <td>{formataTempo(l.minutos)}</td>
+                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Nadar ou correr?</h2>
+        <p>
+          Por minuto, natação e corrida se encontram: crawl em ritmo médio dá {n(B.met)} METs,
+          perto do que correr a 8 km/h cobra. Por distância, não há comparação — nadar um
+          quilômetro custa cerca de {Math.round(CUSTO_NADO_KM)} kcal para {PESO_PADRAO} kg, contra
+          cerca de {Math.round(CUSTO_CORRIDA_KM)} kcal de um quilômetro de corrida.
+        </p>
+        <p>
+          Só que essa comparação não significa o que parece: um quilômetro de nado leva uns{' '}
+          {Math.round(EX_1000.minutosNado)} minutos e um de corrida leva uns seis. O quilômetro não
+          é uma unidade comparável entre as duas. Por <em>tempo</em>, que é o que a agenda de
+          verdade limita, elas ficam muito próximas.
+        </p>
+        <p>
+          O que separa as duas de fato é outra coisa: a natação não tem impacto articular. Para
+          quem tem dor no joelho, no quadril ou na coluna, ela costuma ser a atividade que dá para
+          manter — e atividade mantida por seis meses vale mais que atividade intensa abandonada
+          em três semanas.
+        </p>
+
+        <h2>Uma coisa que a conta não mostra</h2>
+        <p>{NOTA_APETITE}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          O MET de cada estilo e intensidade vem do Compêndio de Atividades Físicas de 2024, copiado
+          e não ajustado.
+        </p>
+        <p class="cn-formula">{`crawl médio, ${PESO_PADRAO} kg, 60 min de nado
+  ${n(B.met)} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_60.kcal / 60, 2)} kcal por minuto
+  ${n(EX_60.kcal / 60, 2)} × 60 = ${n(EX_60.kcal, 0)} kcal`}</p>
+        <p>
+          A distância entra por ritmo, não por estimativa da ferramenta. E aqui há uma limitação da
+          fonte que vale declarar: {NOTA_SEM_RITMO_MEDIDO.charAt(0).toLowerCase() + NOTA_SEM_RITMO_MEDIDO.slice(1)}
+        </p>
+        <p>
+          A conferência de que a tabela é sólida veio de fora dela. Convertendo as três faixas de
+          crawl para quilojoules por metro, saem {n(TAB_CUSTO[0].kJPorMetro, 2)},{' '}
+          {n(TAB_CUSTO[1].kJPorMetro, 2)} e {n(TAB_CUSTO[2].kJPorMetro, 2)} kJ/m. A medição de
+          Zamparo em nadadores de elite dá 0,70 kJ/m a 1,0 m/s. Nenhuma das faixas recreativas fica
+          abaixo do elite, e a mais rápida converge para perto dele — que é exatamente o
+          comportamento esperado. Se alguma tivesse ficado abaixo, a tabela estaria dizendo que
+          gente comum nada mais barato que campeão mundial, e seria sinal de erro.
+        </p>
+        <p>
+          Os números são <strong>brutos</strong>: incluem o que você gastaria parado no mesmo tempo.
+          O acréscimo real ao dia é menor, e a calculadora mostra os dois. No cenário de piscina, o
+          desconto de repouso é aplicado só aos minutos de nado — na borda você gastaria o de
+          repouso de qualquer maneira.
+        </p>
+        <p class="cn-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          Há ainda um fator que nenhuma tabela captura: a água puxa calor do corpo muito mais
+          rápido que o ar, e piscina fria e piscina aquecida não cobram a mesma coisa pelo mesmo
+          nado. O Compêndio mede em condições de piscina de treino, e é isso que esta conta
+          reproduz.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cn-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da natação" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraNatacao } from '../../scripts/caloriasNatacao.client';
+    iniciarCalculadoraNatacao();
+  </script>
+
+  <style>
+    .cn-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cn-hero-inner { max-width: 780px; }
+    .cn-hero h1 { color: #fff; max-width: 22ch; }
+    .cn-hero :global(.eyebrow) { color: #ffb488; }
+    .cn-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cn-hero-lead strong { color: #fff; }
+    .cn-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cn-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cn-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cn-main { min-width: 0; max-width: 760px; }
+
+    .cn-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cn-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cn-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cn-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cn-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cn-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cn-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cn-campos { display: grid; gap: var(--sp-4); }
+    .cn-campo { margin-bottom: 0; }
+    .cn-campo label,
+    .cn-campo .cn-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cn-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cn-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cn-campo input[type='range'] { width: 100%; min-height: 44px; }
+    .cn-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); }
+    .cn-comparativo { font-weight: 400; color: var(--muted); }
+
+    #cn-bloco-ritmo > .cn-campo,
+    #cn-bloco-descanso > .cn-campo { margin-bottom: 0; }
+
+    .cn-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cn-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cn-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cn-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cn-estilo.is-ativo,
+    .cn-banda.is-ativo,
+    .cn-cenario.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cn-banda-item[hidden] { display: none; }
+
+    .cn-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cn-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cn-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cn-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cn-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cn-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cn-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cn-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cn-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cn-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cn-nota-borboleta,
+    .cn-nota-ritmo { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cn-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cn-proximo-lead { line-height: 1.6; }
+    .cn-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cn-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cn-btn-primario { background: var(--brand-600); color: #fff; }
+    .cn-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cn-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cn-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cn-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cn-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cn-conteudo { margin-top: var(--sp-7); }
+    .cn-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cn-faixa { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .cn-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cn-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cn-fontes li { margin-bottom: 0.6rem; }
+    .cn-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

@@ -26,6 +26,7 @@ import { site } from '../../data/site';
 import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
 import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
 import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '../../lib/calorias/bicicleta';
+import { deTempo as nadoPorTempo, arredondaKcal as arredondaNado } from '../../lib/calorias/natacao';
 
 const path = '/calorias';
 const crumbs = [
@@ -37,6 +38,7 @@ const MOD = ritmo('moderado');
 const EX_30 = arredondaKcal(deTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal);
 const EX_5KM = formataFaixa(deDistancia(5, PESO_PADRAO, 6));
 const EX_BIKE = arredondaBike(deTempoRua(60, PESO_PADRAO, VELOCIDADE_PADRAO).kcal);
+const EX_NADO = arredondaNado(nadoPorTempo(60, PESO_PADRAO, 'crawl', 'medio').kcal);
 
 const ferramentas = [
   {
@@ -56,6 +58,12 @@ const ferramentas = [
     nome: 'Bicicleta',
     calcula: 'Na rua por velocidade, na ergométrica por watts — porque são escalas diferentes.',
     exemplo: `1 hora a ${VELOCIDADE_PADRAO} km/h ≈ ${EX_BIKE} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/natacao/',
+    nome: 'Natação',
+    calcula: 'Por estilo, distância ou tempo de piscina — descontando a borda, que é o erro da categoria.',
+    exemplo: `1 hora de crawl médio ≈ ${EX_NADO} kcal para ${PESO_PADRAO} kg`,
   },
 ];
 

@@ -295,8 +295,15 @@ export function iniciarCalculadoraBicicleta(): void {
   document.querySelectorAll<HTMLButtonElement>('.cb-preset').forEach((b) => {
     b.addEventListener('click', () => {
       const alvoId = b.dataset.alvo;
-      const alvo =
-        alvoId === 'velocidade' ? velocidade : alvoId === 'watts' ? watts : campos[(alvoId as Modo) ?? modo];
+      /*
+       * Sem data-alvo não é preset: são os botões de NÍVEL DE ESFORÇO, que
+       * usam a mesma classe só pela aparência de pílula e têm handler
+       * próprio. Sem esta guarda eles caíam no `?? modo` e apagavam o campo
+       * do modo atual a cada clique — o resultado sumia logo depois de o
+       * nível tê-lo calculado.
+       */
+      if (!alvoId) return;
+      const alvo = alvoId === 'velocidade' ? velocidade : alvoId === 'watts' ? watts : campos[alvoId as Modo];
       if (!alvo) return;
       alvo.value = b.dataset.valor ?? '';
       calcula();
