@@ -28,6 +28,7 @@ import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
 import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '../../lib/calorias/bicicleta';
 import { deTempo as nadoPorTempo, arredondaKcal as arredondaNado } from '../../lib/calorias/natacao';
 import { deAndares, formataKcal as formataEscada } from '../../lib/calorias/escada';
+import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib/calorias/corda';
 
 const path = '/calorias';
 const crumbs = [
@@ -41,6 +42,7 @@ const EX_5KM = formataFaixa(deDistancia(5, PESO_PADRAO, 6));
 const EX_BIKE = arredondaBike(deTempoRua(60, PESO_PADRAO, VELOCIDADE_PADRAO).kcal);
 const EX_NADO = arredondaNado(nadoPorTempo(60, PESO_PADRAO, 'crawl', 'medio').kcal);
 const EX_ESCADA = formataEscada(deAndares(10, PESO_PADRAO).kcalSubida);
+const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
 
 const ferramentas = [
   {
@@ -72,6 +74,12 @@ const ferramentas = [
     nome: 'Escada',
     calcula: 'Por andares, degraus ou máquina — a única conta do site que sai da física, e não de tabela.',
     exemplo: `10 andares ≈ ${EX_ESCADA} kcal líquidas para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/corda/',
+    nome: 'Pular corda',
+    calcula: 'Por tempo, pulos ou séries — e a conta que desmonta a lenda dos 10 minutos.',
+    exemplo: `10 min em ritmo moderado ≈ ${EX_CORDA} kcal para ${PESO_PADRAO} kg`,
   },
 ];
 

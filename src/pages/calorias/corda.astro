@@ -1,0 +1,853 @@
+---
+/**
+ * Quantas calorias pular corda gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS CINCO
+ *
+ * Caminhada responde ao tempo; corrida, à distância; bicicleta, à
+ * velocidade; natação, ao estilo; escada, à altura vertical. Na corda, a
+ * variável que todo mundo acha que decide — a cadência — quase não decide
+ * nada. É a sexta física do cluster, e a que contraria a intuição de forma
+ * mais limpa.
+ *
+ * A LENDA QUE ESTA PÁGINA DESMONTA
+ *
+ * "Dez minutos de corda queimam mais que trinta minutos de corrida" circula
+ * em veículo grande. Algumas das matérias que a repetem trazem, no mesmo
+ * texto, o dado que a refuta: corda a 110 pulos por minuto e corrida a 11
+ * km/h têm praticamente o mesmo MET. Se o MET é igual, dez minutos valem
+ * dez minutos.
+ *
+ * A refutação aqui não é retórica: ela é calculada ao vivo pelo motor da
+ * corrida deste mesmo site, e aparece em cada resultado da ferramenta.
+ *
+ * O CONTRASTE COM A ESCADA, DE PROPÓSITO
+ *
+ * A página de escada mostra que massa × gravidade × altura resolve o gasto
+ * quase inteiro. Aqui a mesma conta explica pouco mais de um quarto. Dizer
+ * isso é mais honesto — e mais interessante — que aplicar a mesma régua nas
+ * duas e fingir que serve.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ALTURA_PULO,
+  EFICIENCIA,
+  FAIXAS,
+  FONTES,
+  KCAL_POR_KG_GORDURA,
+  MINUTOS_ALERTA,
+  NOTA_BRUTO,
+  NOTA_CADENCIA,
+  NOTA_ESTIMATIVA,
+  NOTA_FISICA,
+  NOTA_LENDA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  NOTA_SERIES,
+  PESO_PADRAO,
+  SEGUNDOS_PADRAO,
+  SERIES_PADRAO,
+  arredondaKcal,
+  cadenciaDaFaixa,
+  dePulos,
+  deKcal,
+  deSeries,
+  deTempo,
+  faixa,
+  formataKcal,
+  formataPulos,
+  formataTempo,
+  fracaoExplicadaPelaAltura,
+  kcalPorMinuto,
+  metCorda,
+  simulacaoUmQuilo,
+  tabelaPorFaixa,
+  tabelaPorPeso,
+  tabelaPorTempo,
+} from '../../lib/calorias/corda';
+import { metCorrida } from '../../lib/calorias/corrida';
+
+const path = '/calorias/corda';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Pular corda', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const MOD = faixa('moderado');
+const EX_10 = deTempo(10, PESO_PADRAO, 'moderado');
+const EX_1 = deTempo(1, PESO_PADRAO, 'moderado');
+const EX_100 = dePulos(100, PESO_PADRAO, 'moderado');
+const EX_SERIES = deSeries(SERIES_PADRAO, SEGUNDOS_PADRAO, PESO_PADRAO, 'moderado');
+const EX_RELOGIO = deTempo(20, PESO_PADRAO, 'moderado');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO);
+
+const TAB_FAIXA = tabelaPorFaixa(PESO_PADRAO);
+const TAB_PESO = tabelaPorPeso();
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO);
+
+/* A refutação da lenda, calculada e não escrita à mão. */
+function velocidadeComMet(met: number): number {
+  for (let v = 5; v < 25; v += 0.01) if (metCorrida(v) >= met) return Math.round(v * 10) / 10;
+  return 0;
+}
+const V_EQUIV = velocidadeComMet(MOD.met);
+const MIN_CORRIDA_10 = EX_10.kcal / kcalPorMinuto(metCorrida(V_EQUIV), PESO_PADRAO);
+const MET_DA_LENDA = metCorrida(V_EQUIV) * 3;
+const PACE_EQUIV = 60 / V_EQUIV;
+const PACE_TXT = `${Math.floor(PACE_EQUIV)}min${String(Math.round((PACE_EQUIV % 1) * 60)).padStart(2, '0')}`;
+
+/* O contraste com a escada. */
+const FISICA = fracaoExplicadaPelaAltura(PESO_PADRAO, 'moderado');
+
+/* A inflação de contar o treino inteiro como corda. */
+const INFLACAO_RELOGIO = EX_RELOGIO.kcal / EX_SERIES.kcal;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 47 caracteres. */
+const title = 'Quantas Calorias Pular Corda Gasta? Calcule';
+/* 153 caracteres. */
+const description =
+  'Calcule as calorias de pular corda por tempo, pulos ou séries. E a conta que desmonta a lenda dos 10 minutos de corda valerem 30 minutos de corrida.';
+
+const faqs = [
+  {
+    pergunta: '10 minutos de pular corda queimam mais que 30 minutos de corrida?',
+    resposta: `Não, e a diferença é de três vezes. Corda em ritmo moderado dá ${n(MOD.met)} METs, que é praticamente o mesmo de correr a ${n(V_EQUIV)} km/h. Com o MET igual, 10 minutos de corda valem 10 minutos de corrida — cerca de ${formataKcal(EX_10.kcal)} kcal para ${PESO_PADRAO} kg. Para a frase ser verdadeira, a corda teria de valer ${n(MET_DA_LENDA, 0)} METs, acima do que qualquer pessoa sustenta.`,
+  },
+  {
+    pergunta: '10 minutos de pular corda gastam quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_10.kcal)} kcal para ${PESO_PADRAO} kg em ritmo moderado — uns ${formataPulos(EX_10.pulos)}. O detalhe que muda tudo: são 10 minutos de corda GIRANDO, sem contar o descanso entre séries. Quem soma o treino inteiro chega a um número bem maior que o real.`,
+  },
+  {
+    pergunta: 'Pular corda mais rápido gasta mais calorias?',
+    resposta: `Quase não muda. De ${MOD.cadencia} para ${FAIXAS[2].cadencia} pulos por minuto — ${n((FAIXAS[2].cadencia / MOD.cadencia - 1) * 100, 0)}% mais rápido — o custo por minuto sobe só ${n((FAIXAS[2].met / MOD.met - 1) * 100, 1)}%. E cada pulo fica cerca de 18% mais BARATO, porque pulo rápido é pulo baixo. Para gastar mais, o caminho é pular mais tempo ou pular mais alto, não girar a corda mais rápido.`,
+  },
+  {
+    pergunta: '100 pulos de corda queimam quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_100.kcal)} kcal para ${PESO_PADRAO} kg, em pouco menos de um minuto. Dá uma ideia de escala: para os 7.700 kcal de um quilo de gordura seriam mais de ${n(UM_QUILO.pulos / 1000, 0)} mil pulos.`,
+  },
+  {
+    pergunta: 'Quantos minutos de corda por dia para emagrecer?',
+    resposta:
+      'A pergunta tem uma armadilha: emagrecimento se decide no balanço de semanas, e o exercício é a menor peça dessa conta. Dito isso, corda é uma das atividades de maior gasto por minuto que existe — e justamente por isso ninguém sustenta muito tempo dela. O uso realista é em séries curtas, como parte de um treino, não como bloco longo de cardio.',
+  },
+  {
+    pergunta: 'Por que esta calculadora limita o tempo a 60 minutos?',
+    resposta: `Porque corda contínua além disso não existe fora de tentativa de recorde, e um campo que aceita três horas sugere que a ferramenta considera isso normal. Acima de ${MINUTOS_ALERTA} minutos seguidos ela já avisa: quem informou mais provavelmente está somando o descanso entre séries, e para esse caso existe o modo de séries.`,
+  },
+  {
+    pergunta: 'Pular corda é melhor que correr para emagrecer?',
+    resposta: `Por minuto, a corda ganha de quase qualquer corrida que a maioria das pessoas consegue manter. Por sessão, ela perde feio, porque a sessão é curta: dez minutos de corda contra quarenta de corrida não é disputa. A corda é excelente como estímulo intenso e curto, e ruim como volume — e volume é o que acumula caloria.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A comparação que desmonta a lenda: mesma equação, mesmo site, números que conversam.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/escada/',
+    titulo: 'Quantas calorias subir escada gasta?',
+    descricao: 'A atividade em que a física simples resolve — e o contraste com esta, em que ela não resolve.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/musculacao/treino-em-casa-para-iniciantes/',
+    titulo: 'Treino em casa para iniciantes',
+    descricao: 'Onde a corda entra num treino sem academia, e em que dose.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Por que 145 kcal de corda mudam pouco, e o que muda muito.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cj-hero">
+    <div class="container cj-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias pular corda gasta?</h1>
+      <p class="cj-hero-lead">
+        Dez minutos de corda em ritmo moderado gastam cerca de{' '}
+        <strong>{formataKcal(EX_10.kcal)} kcal</strong> para {PESO_PADRAO} kg. Não são os
+        "equivalentes a 30 minutos de corrida" que circulam por aí —{' '}
+        <strong>são equivalentes a dez</strong>. E ainda assim é muito.
+      </p>
+      <p class="cj-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cj-layout">
+    <article class="cj-main">
+      <section id="cj-app" class="cj-app" aria-labelledby="cj-app-h">
+        <h2 id="cj-app-h" class="cj-app-h">Calculadora de calorias da corda</h2>
+
+        <div class="cj-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="cj-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+            Tempo de corda
+          </button>
+          <button type="button" class="cj-modo" data-modo="pulos" role="tab" aria-selected="false" tabindex="-1">
+            Número de pulos
+          </button>
+          <button type="button" class="cj-modo" data-modo="series" role="tab" aria-selected="false" tabindex="-1">
+            Séries
+          </button>
+          <button type="button" class="cj-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cj-campos">
+          <div class="cj-campo">
+            <label for="cj-peso">Seu peso (kg)</label>
+            <input id="cj-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="cj-campo">
+            <span class="cj-rotulo">Ritmo</span>
+            <div class="cj-presets" role="group" aria-label="Ritmo da corda">
+              {FAIXAS.map((f) => (
+                <button
+                  type="button"
+                  class:list={['cj-preset', 'cj-faixa', f.id === 'moderado' && 'is-ativo']}
+                  data-faixa={f.id}
+                  aria-pressed={String(f.id === 'moderado')}
+                >
+                  {f.nome}
+                </button>
+              ))}
+            </div>
+            <p class="cj-dica cj-faixa-slot" id="cj-faixa-dica">{MOD.faixa}. {MOD.comoReconhecer}</p>
+          </div>
+
+          <div class="cj-campo cj-campo-modo">
+            <label for="cj-minutos">Tempo de corda girando (minutos)</label>
+            <input id="cj-minutos" type="text" inputmode="numeric" autocomplete="off" value="10" />
+            <div class="cj-presets">
+              {[1, 3, 5, 10, 15].map((v) => (
+                <button type="button" class="cj-preset" data-alvo="tempo" data-valor={String(v)}>{v} min</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cj-campo cj-campo-modo" hidden>
+            <label for="cj-pulos">Número de pulos</label>
+            <input id="cj-pulos" type="text" inputmode="numeric" autocomplete="off" value="1000" />
+            <div class="cj-presets">
+              {[100, 300, 500, 1000, 2000].map((v) => (
+                <button type="button" class="cj-preset" data-alvo="pulos" data-valor={String(v)}>{v}</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cj-campo cj-campo-modo" hidden>
+            <label for="cj-series">Quantas séries</label>
+            <input id="cj-series" type="text" inputmode="numeric" autocomplete="off" value={SERIES_PADRAO} />
+            <div class="cj-presets">
+              {[4, 6, 8, 10, 12].map((v) => (
+                <button type="button" class="cj-preset" data-alvo="series" data-valor={String(v)}>{v}</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cj-campo cj-campo-modo" hidden>
+            <label for="cj-meta">Meta de gasto (kcal)</label>
+            <input id="cj-meta" type="text" inputmode="numeric" autocomplete="off" value="150" />
+            <div class="cj-presets">
+              {[50, 100, 150, 300].map((v) => (
+                <button type="button" class="cj-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!-- O bloco de séries só existe no modo de séries. -->
+          <div id="cj-bloco-series" hidden>
+            <div class="cj-campo">
+              <label for="cj-segundos">Segundos de corda por série</label>
+              <input id="cj-segundos" type="text" inputmode="numeric" autocomplete="off" value={SEGUNDOS_PADRAO} />
+              <div class="cj-presets">
+                {[20, 30, 45, 60, 90].map((v) => (
+                  <button type="button" class="cj-preset" data-alvo="segundos" data-valor={String(v)}>{v} s</button>
+                ))}
+              </div>
+              <p class="cj-dica">
+                Só o tempo em que a corda girou. O descanso entre as séries não entra — nele você
+                gasta o de repouso, que já estava no seu dia.
+              </p>
+            </div>
+          </div>
+
+          <details class="cj-ajustes">
+            <summary>
+              Sei a minha cadência
+              <span class="cj-ajustes-estado">ajuste fino</span>
+            </summary>
+            <div class="cj-campo">
+              <label for="cj-cadencia">Pulos por minuto</label>
+              <input id="cj-cadencia" type="text" inputmode="numeric" autocomplete="off" value={cadenciaDaFaixa('moderado')} />
+              <p class="cj-dica">
+                A cadência vem do ritmo escolhido acima. Mexer aqui só muda a contagem de pulos e o
+                custo por pulo — o gasto por minuto é definido pelo ritmo, que é como o Compêndio
+                mediu. Se a cadência sair da faixa do ritmo, a ferramenta avisa.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <p id="cj-erro" class="cj-erro" role="status" hidden></p>
+
+        <div id="cj-saida" class="cj-saida" role="status" aria-live="polite">
+          <p class="cj-resultado">
+            <span class="cj-numero">≈ {formataKcal(EX_10.kcal)}</span>
+            <span class="cj-unidade">kcal</span>
+          </p>
+          <p class="cj-frase"></p>
+
+          <dl class="cj-detalhes">
+            <div><dt>Tempo de corda</dt><dd class="cj-d-tempo">—</dd></div>
+            <div class="cj-linha-series" hidden><dt>Séries</dt><dd class="cj-d-series">—</dd></div>
+            <div><dt>Pulos</dt><dd class="cj-d-pulos">—</dd></div>
+            <div><dt>Equivale a correr</dt><dd class="cj-d-corrida">—</dd></div>
+            <div><dt>Por pulo</dt><dd class="cj-d-porpulo">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cj-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cj-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="cj-nota cj-nota-tempo" hidden></p>
+          <p class="cj-nota cj-nota-cadencia" hidden></p>
+          <p class="cj-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cj-proximo">
+            <p class="cj-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado: <strong>quanto disso você consegue repetir na semana</strong>. A
+              corda é a atividade deste cluster com o maior gasto por minuto e a menor duração
+              possível — o que a torna um ótimo estímulo e um péssimo plano de cardio isolado.
+            </p>
+            <div class="cj-proximo-acoes">
+              <a class="cj-btn cj-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cj-btn cj-btn-secundario cj-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cj-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cj-conteudo">
+        <h2>A lenda dos 10 minutos, desmontada com a conta</h2>
+        <p>
+          "Dez minutos de corda queimam mais calorias que trinta minutos de corrida" é uma das
+          frases mais repetidas do fitness brasileiro. E o engraçado é que algumas das matérias
+          que a publicam trazem, no mesmo texto, o dado que a derruba: corda a{' '}
+          {MOD.cadencia} pulos por minuto e corrida a cerca de {n(V_EQUIV)} km/h têm praticamente
+          o mesmo MET.
+        </p>
+        <p>
+          Se o custo por minuto é igual, dez minutos de um valem dez minutos do outro. Não trinta.
+          Para a frase ser verdadeira, pular corda teria de valer{' '}
+          <strong>{n(MET_DA_LENDA, 0)} METs</strong> — mais do que qualquer atividade humana
+          sustentada, e quase três vezes a faixa mais rápida que o Compêndio mediu.
+        </p>
+        <p class="cj-formula">{`corda moderada       ${n(MOD.met)} METs
+correr a ${n(V_EQUIV)} km/h   ${n(metCorrida(V_EQUIV), 1)} METs   ← praticamente igual
+
+10 min de corda      ${formataKcal(EX_10.kcal)} kcal  (${PESO_PADRAO} kg)
+10 min de corrida    ${formataKcal(kcalPorMinuto(metCorrida(V_EQUIV), PESO_PADRAO) * 10)} kcal
+30 min de corrida    ${formataKcal(kcalPorMinuto(metCorrida(V_EQUIV), PESO_PADRAO) * 30)} kcal  ← o que a lenda promete`}</p>
+        <p>
+          O que é verdade, e continua impressionante: esses dez minutos custam o mesmo que correr
+          dez minutos a <strong>{n(V_EQUIV)} km/h</strong>, que é ritmo de {PACE_TXT} por
+          quilômetro. Pouca gente corre assim. A corda não é mágica — ela é <em>intensa</em>, e é
+          exatamente por isso que ninguém aguenta meia hora dela.
+        </p>
+        <p class="cj-ressalva">
+          A calculadora acima mostra essa equivalência a cada resultado, na linha "equivale a
+          correr". Ela é calculada pela mesma equação que a nossa{' '}
+          <a href="/calorias/corrida/">calculadora de corrida</a> usa — duas páginas do mesmo site
+          não podem discordar sobre o mesmo número.
+        </p>
+
+        <h2>Pular mais rápido quase não muda o gasto</h2>
+        <p>
+          Esta é a parte que contraria a intuição de todo mundo. Nos valores medidos, subir de{' '}
+          {MOD.cadencia} para {FAIXAS[2].cadencia} pulos por minuto — quase{' '}
+          {n((FAIXAS[2].cadencia / MOD.cadencia - 1) * 100, 0)}% mais rápido — custa apenas{' '}
+          <strong>{n((FAIXAS[2].met / MOD.met - 1) * 100, 1)}% a mais</strong> por minuto.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Dez minutos de corda em cada faixa medida, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ritmo</th><th scope="col">METs</th>
+                <th scope="col">10 min</th><th scope="col">Pulos</th><th scope="col">Por pulo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_FAIXA.map((l) => (
+                <tr>
+                  <th scope="row">
+                    {l.faixa.nome}
+                    <small class="cj-faixa-txt">{l.faixa.faixa}</small>
+                  </th>
+                  <td>{n(l.faixa.met)}</td>
+                  <td>≈ {formataKcal(l.kcal10min)} kcal</td>
+                  <td>{l.pulos10min.toLocaleString('pt-BR')}</td>
+                  <td>{n(l.porPulo, 3)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Olhe a última coluna: o pulo da faixa rápida é cerca de <strong>18% mais barato</strong>{' '}
+          que o da moderada. O motivo é simples e ninguém diz — <strong>pulo rápido é pulo
+          baixo</strong>. Quem acelera não passa a trabalhar mais por repetição; passa a trabalhar
+          menos por repetição e a repetir mais vezes.
+        </p>
+        <p>
+          Compare com a <a href="/calorias/bicicleta/">bicicleta</a>, onde dobrar a velocidade
+          triplica o gasto porque a velocidade cria trabalho novo contra o ar. Na corda, acelerar
+          não cria trabalho novo — redistribui o mesmo. {NOTA_CADENCIA}
+        </p>
+        <p class="cj-ressalva">
+          Uma ressalva que a tabela pede: entre a faixa lenta e a moderada o custo por pulo{' '}
+          <em>sobe</em>, e não cai. As três faixas do Compêndio não são três pontos de uma curva —
+          são medições de gestos diferentes. A lenta inclui uma batida de marcação entre os pulos,
+          que é outro movimento. A queda por pulo aparece de verdade entre a moderada e a rápida,
+          que são o mesmo gesto em velocidades diferentes.
+        </p>
+
+        <h2>Corda não se faz em bloco contínuo</h2>
+        <p>
+          Se a cadência quase não muda o custo por minuto, o que decide é quantos minutos de corda
+          realmente aconteceram. E aqui está o erro que infla todos os números do assunto: a corda
+          é feita em séries, com descanso entre elas, porque a intensidade não permite outra coisa.
+        </p>
+        <p>
+          {SERIES_PADRAO} séries de {SEGUNDOS_PADRAO} segundos são{' '}
+          <strong>{formataTempo(EX_SERIES.minutos)} de corda</strong> — e{' '}
+          {formataKcal(EX_SERIES.kcal)} kcal para {PESO_PADRAO} kg. Se você contasse os cerca de 20
+          minutos que esse treino leva de relógio, chegaria a {formataKcal(EX_RELOGIO.kcal)} kcal:{' '}
+          <strong>{n(INFLACAO_RELOGIO)} vezes mais</strong> que o real.
+        </p>
+        <p>{NOTA_SERIES}</p>
+        <p>
+          É por isso que a ferramenta tem um modo de séries, e por isso ela avisa quando alguém
+          informa mais de {MINUTOS_ALERTA} minutos contínuos: esse número quase sempre é treino
+          inteiro, não corda girando.
+        </p>
+
+        <h2>Quanto custa, por tempo e por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Corda em ritmo moderado ({MOD.cadencia} pulos/min), para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo de corda</th><th scope="col">Pulos</th><th scope="col">Gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>{l.pulos.toLocaleString('pt-BR')}</td>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A tabela para em {MINUTOS_ALERTA} minutos de propósito. Não é limite de conta — é que
+          corda contínua além disso praticamente não acontece, e uma tabela que oferecesse "60
+          minutos de corda" estaria sugerindo um cenário que não existe.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Dez minutos de corda moderada por peso corporal</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th><th scope="col">Gasto bruto</th>
+                <th scope="col">Acréscimo real ao dia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.kcal10min)} kcal</td>
+                  <td>≈ {formataKcal(l.kcalLiquida)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Aqui a física não resolve — e na escada resolvia</h2>
+        <p>
+          A nossa <a href="/calorias/escada/">página de escada</a> mostra que massa × gravidade ×
+          altura explica o gasto quase inteiro: dá para calcular subir escada sem tabela nenhuma.
+          Seria natural tentar a mesma régua na corda, que também é erguer o corpo várias vezes. Ela
+          não funciona, e o tamanho do buraco é informativo.
+        </p>
+        <p class="cj-formula">{`erguer ${PESO_PADRAO} kg uns ${n(ALTURA_PULO * 100, 0)} cm, ${MOD.cadencia} vezes por minuto,
+a ${n(EFICIENCIA * 100, 0)}% de eficiência
+
+  ${n(FISICA.mecanico, 2)} kcal/min   ← o que a física de altura prevê
+  ${n(FISICA.medido, 2)} kcal/min  ← o que a medição direta encontra
+
+  explica ${n(FISICA.fracao * 100, 0)}% do gasto real`}</p>
+        <p>{NOTA_FISICA}</p>
+        <p>
+          A diferença entre as duas atividades é o que cada uma cobra. Na escada, o corpo sobe e
+          fica lá: o trabalho é levantar peso contra a gravidade, e acabou. Na corda, o corpo sobe e
+          desce dezenas de vezes por minuto, e o caro não é a subida — é absorver a aterrissagem,
+          reverter o movimento rápido e produzir força em pouquíssimo tempo.
+        </p>
+
+        <h2>Corda ou corrida?</h2>
+        <p>
+          Por minuto, a corda ganha de quase qualquer corrida que a maioria consegue manter. Por
+          sessão, ela perde feio — e a sessão é o que conta no fim da semana. Dez minutos de corda
+          contra quarenta de corrida não é disputa.
+        </p>
+        <p>
+          O uso que faz sentido é o inverso do que a lenda sugere: em vez de trocar a corrida pela
+          corda esperando gastar mais, usar a corda como o estímulo intenso e curto que ela é — em
+          séries, dentro de um treino, ou como aquecimento. Ela também entrega coisas que a
+          corrida não entrega tão bem: coordenação, rigidez de tornozelo e um trabalho de
+          panturrilha que pouca atividade iguala.
+        </p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          Os METs de cada faixa vêm do Compêndio de Atividades Físicas, copiados e não ajustados —
+          8,8 abaixo de 100 pulos por minuto, {n(MOD.met)} entre 100 e 120 e{' '}
+          {n(FAIXAS[2].met)} entre 120 e 160.
+        </p>
+        <p class="cj-formula">{`10 min de corda moderada, ${PESO_PADRAO} kg
+  ${n(MOD.met)} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_10.kcal / 10, 2)} kcal por minuto
+  ${n(EX_10.kcal / 10, 2)} × 10 = ${n(EX_10.kcal, 0)} kcal`}</p>
+        <p>
+          A cadência vem da faixa escolhida, e não de um valor fixo: a faixa do Compêndio{' '}
+          <em>é definida</em> pela cadência, e deixar as duas se contradizerem devolveria o esforço
+          de uma pessoa com o ritmo de outra. Ela serve para converter tempo em pulos e para o
+          custo por pulo — se você ajustar a cadência para fora da faixa do ritmo, a ferramenta
+          avisa.
+        </p>
+        <p>
+          A comparação com a corrida usa a equação da ACSM, a mesma da nossa página de corrida. Não
+          há número escrito à mão nesta página: tudo o que você lê foi calculado pelos mesmos
+          motores que a calculadora usa, e conferido por testes.
+        </p>
+        <p class="cj-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          A maior fonte de erro aqui é a mais banal: <strong>errar a corda</strong>. Quem para a
+          cada dez pulos para reposicionar a corda tem muito menos tempo de corda girando do que o
+          relógio mostra, e a conta devolve mais do que a pessoa gastou. Quanto mais iniciante,
+          maior esse desconto — e o modo de séries é a forma honesta de lidar com ele.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cj-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da corda" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraCorda } from '../../scripts/caloriasCorda.client';
+    iniciarCalculadoraCorda();
+  </script>
+
+  <style>
+    .cj-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cj-hero-inner { max-width: 780px; }
+    .cj-hero h1 { color: #fff; max-width: 22ch; }
+    .cj-hero :global(.eyebrow) { color: #ffb488; }
+    .cj-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cj-hero-lead strong { color: #fff; }
+    .cj-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cj-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cj-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cj-main { min-width: 0; max-width: 760px; }
+
+    .cj-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cj-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cj-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cj-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cj-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cj-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cj-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cj-campos { display: grid; gap: var(--sp-4); }
+    .cj-campo { margin-bottom: 0; }
+    .cj-campo label,
+    .cj-campo .cj-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cj-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cj-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cj-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Altura reservada para a descrição mais longa em cada largura. Sem ela,
+       trocar de ritmo empurraria os campos de baixo em uma linha — o mesmo
+       defeito que já corrigimos na caminhada e na natação. */
+    .cj-faixa-slot { min-height: 4.6em; }
+    @media (min-width: 560px) {
+      .cj-faixa-slot { min-height: 3.1em; }
+    }
+
+    .cj-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cj-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cj-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cj-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cj-faixa.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cj-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .cj-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cj-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cj-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cj-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cj-ajustes > .cj-campo { padding-bottom: var(--sp-4); }
+
+    .cj-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cj-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cj-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cj-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cj-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cj-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cj-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cj-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cj-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cj-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cj-nota-tempo,
+    .cj-nota-cadencia { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cj-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cj-proximo-lead { line-height: 1.6; }
+    .cj-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cj-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cj-btn-primario { background: var(--brand-600); color: #fff; }
+    .cj-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cj-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cj-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cj-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cj-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cj-conteudo { margin-top: var(--sp-7); }
+    .cj-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cj-faixa-txt { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .cj-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cj-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cj-fontes li { margin-bottom: 0.6rem; }
+    .cj-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
