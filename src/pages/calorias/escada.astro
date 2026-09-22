@@ -1,0 +1,892 @@
+---
+/**
+ * Quantas calorias subir escada gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS QUATRO
+ *
+ * Caminhada responde ao TEMPO. Corrida, à DISTÂNCIA. Bicicleta, à
+ * VELOCIDADE. Natação, ao ESTILO. Escada responde à ALTURA VERTICAL — e é
+ * a única das cinco cujo número não sai de uma tabela medida, e sim de uma
+ * conta de física: massa × gravidade × altura.
+ *
+ * Por isso dez andares custam o mesmo subidos devagar ou depressa. A pressa
+ * muda a potência, não o trabalho. É a página do cluster em que a intuição
+ * de "quanto mais suado, mais caloria" quebra de forma mais limpa.
+ *
+ * O NÚMERO GRANDE AQUI É O LÍQUIDO
+ *
+ * Inversão deliberada em relação às outras quatro, explicada no corpo: o
+ * trabalho vertical é exato e independe do ritmo; o bruto depende de uma
+ * cadência suposta. Numa página que existe para mostrar que dá para
+ * calcular sem supor, o número exato vem primeiro.
+ *
+ * A CORREÇÃO QUE ESTA PÁGINA FAZ
+ *
+ * "Subir um degrau queima 0,17 caloria" é a frase mais repetida do assunto
+ * em português, e é citada sem dizer de quem é o corpo. Um degrau custa
+ * 0,079 kcal para 50 kg e 0,158 para 100 kg — o peso não é detalhe da
+ * conta, é metade dela.
+ *
+ * E a página responde com números a pergunta que todo mundo faz: trocar o
+ * elevador pela escada emagrece? Dez andares por dia, cinco dias por
+ * semana, dão 0,6 kg de gordura em um ano inteiro. Hábito excelente,
+ * alavanca fraca — as duas coisas ao mesmo tempo, com a conta na mesa.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  CADENCIA_PADRAO,
+  DEGRAUS_POR_ANDAR_MAX,
+  DEGRAUS_POR_ANDAR_MIN,
+  DEGRAUS_POR_ANDAR_PADRAO,
+  ESPELHO_MAX,
+  ESPELHO_MIN,
+  ESPELHO_PADRAO,
+  FATOR_DESCIDA,
+  FONTES,
+  G,
+  KCAL_POR_KG_POR_METRO,
+  NOTA_BRUTO,
+  NOTA_CORRIMAO,
+  NOTA_DESCIDA,
+  NOTA_ELEVADOR,
+  NOTA_ESPELHO,
+  NOTA_ESTIMATIVA,
+  NOTA_LIQUIDO_PRIMEIRO,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  O2_POR_KG_POR_METRO,
+  PESO_PADRAO,
+  RITMOS,
+  arredondaKcal,
+  deAndares,
+  deTempo,
+  eficienciaImplicita,
+  formataAndares,
+  formataDegraus,
+  formataKcal,
+  formataMetros,
+  formataTempo,
+  kcalDeSubir,
+  projecaoRotina,
+  simulacaoUmQuilo,
+  tabelaPorAndares,
+  tabelaPorPeso,
+  tabelaPorRitmo,
+  trabalhoMecanico,
+} from '../../lib/calorias/escada';
+import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
+
+const path = '/calorias/escada';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Escada', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_10 = deAndares(10, PESO_PADRAO);
+const EX_10_IDA = deAndares(10, PESO_PADRAO, DEGRAUS_POR_ANDAR_PADRAO, ESPELHO_PADRAO, CADENCIA_PADRAO, true);
+const EX_1 = deAndares(1, PESO_PADRAO);
+const EX_MAQUINA = deTempo(20, PESO_PADRAO);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO);
+const ROTINA = projecaoRotina(10, PESO_PADRAO);
+const ROTINA_30 = projecaoRotina(30, PESO_PADRAO);
+
+const TAB_PESO = tabelaPorPeso();
+const TAB_ANDARES = tabelaPorAndares(PESO_PADRAO);
+const TAB_RITMO = tabelaPorRitmo(PESO_PADRAO);
+
+const EFICIENCIA = eficienciaImplicita();
+const TRABALHO_1M = trabalhoMecanico(PESO_PADRAO, 1);
+const ACSM_1M = kcalDeSubir(PESO_PADRAO, 1);
+
+/* Quanto tempo de caminhada moderada custa o mesmo que 10 andares. */
+const MOD = ritmoCaminhada('moderado');
+const kcalCaminhadaPorMin = caminhadaTempo(60, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal / 60;
+const MINUTOS_CAMINHADA = EX_10.kcalSubida / kcalCaminhadaPorMin;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 48 caracteres. */
+const title = 'Quantas Calorias Subir Escada Gasta? Calcule';
+/* 151 caracteres. */
+const description =
+  'Calcule as calorias de subir escada por andares, degraus ou tempo. A única conta do site que sai da física — e a resposta honesta sobre o elevador.';
+
+const faqs = [
+  {
+    pergunta: 'Subir 10 andares gasta quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_10.kcalSubida)} kcal líquidas para ${PESO_PADRAO} kg — são ${EX_10.degraus} degraus e ${formataMetros(EX_10.metros)} de altura. Se você descer a pé também, some 23%: dá cerca de ${formataKcal(EX_10_IDA.kcalLiquida)} kcal. É menos do que a maioria das pessoas imagina, e a página explica por quê.`,
+  },
+  {
+    pergunta: 'Subir um degrau queima 0,17 caloria?',
+    resposta: `Esse número circula sem dizer de quem é o corpo, e é justamente o peso que decide. Um degrau de ${n(ESPELHO_PADRAO * 100)} cm custa ${n(kcalDeSubir(50, ESPELHO_PADRAO), 3)} kcal para 50 kg e ${n(kcalDeSubir(100, ESPELHO_PADRAO), 3)} kcal para 100 kg — exatamente o dobro. Qualquer "X calorias por degrau" sem peso ao lado é uma frase incompleta.`,
+  },
+  {
+    pergunta: 'Subir escada mais rápido gasta mais calorias?',
+    resposta: `Por minuto, sim. No total de uma subida, não. Subir ${formataAndares(10)} custa as mesmas ${formataKcal(EX_10.kcalSubida)} kcal de trabalho devagar ou depressa — o que muda é levar ${formataTempo(TAB_RITMO[0].minutosDezAndares)} ou ${formataTempo(TAB_RITMO[2].minutosDezAndares)}, e a intensidade ir de ${n(TAB_RITMO[0].met)} a ${n(TAB_RITMO[2].met)} METs. A pressa muda a potência, não o trabalho.`,
+  },
+  {
+    pergunta: 'Trocar o elevador pela escada emagrece?',
+    resposta: `Faz bem e emagrece pouco. ${ROTINA.andaresPorDia} andares por dia, cinco dias por semana, dão ${formataKcal(ROTINA.porDia)} kcal por dia e cerca de ${Math.round(ROTINA.porAno).toLocaleString('pt-BR')} kcal no ano — perto de ${n(ROTINA.quilosNoAno, 1)} kg de gordura em doze meses, e isso é uma estimativa otimista. Como hábito de condicionamento e de movimento no dia, vale muito; como alavanca de emagrecimento sozinha, é fraca.`,
+  },
+  {
+    pergunta: 'Descer escada também queima calorias?',
+    resposta: `Queima, mas pouco: cerca de ${Math.round(FATOR_DESCIDA * 100)}% do que custa subir a mesma altura. O músculo trabalha freando o corpo, e não erguendo — é trabalho excêntrico, barato em energia e caro em desgaste. É a descida, não a subida, que costuma castigar o joelho e doer no dia seguinte.`,
+  },
+  {
+    pergunta: 'Subir escada equivale a quantos minutos de caminhada?',
+    resposta: `Subir ${formataAndares(10)} gasta mais ou menos o mesmo que ${formataTempo(MINUTOS_CAMINHADA)} de caminhada moderada para ${PESO_PADRAO} kg. Parece pouco perto do esforço, e é: a escada é intensa por minuto e curta em duração. Ela ganha da caminhada em intensidade e perde feio em volume, que é o que acumula caloria.`,
+  },
+  {
+    pergunta: 'Por que esta calculadora mostra o número líquido em destaque?',
+    resposta:
+      'Porque é o único que não depende de suposição. O trabalho de erguer o seu corpo até uma altura é exato e seria o mesmo se você tivesse levado o dobro do tempo. O bruto inclui o que você gastaria parado naquele tempo, e portanto depende da cadência que a ferramenta supõe. Nas outras calculadoras do site o bruto vem em destaque; aqui a ordem se inverte, e o bruto continua na tela logo abaixo.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer?',
+    descricao: 'O outro lado do movimento acumulado no dia — e por que o volume ganha da intensidade.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/calorias/caminhada/',
+    titulo: 'Quantas calorias a caminhada gasta?',
+    descricao: 'A comparação direta: a mesma constante de subida, aplicada a rampa em vez de degrau.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/guias/personal-trainer-para-quem-trabalha-sentado/',
+    titulo: 'Personal trainer para quem trabalha sentado',
+    descricao: 'Onde a escada entra numa rotina de escritório, e o que ela não resolve sozinha.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Por que 18 kcal por dia mudam pouco, e o que muda muito.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="ce-hero">
+    <div class="container ce-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias subir escada gasta?</h1>
+      <p class="ce-hero-lead">
+        Subir {formataAndares(10)} custa cerca de{' '}
+        <strong>{formataKcal(EX_10.kcalSubida)} kcal</strong> para {PESO_PADRAO} kg. E esta é a
+        única conta do site que <strong>não vem de tabela</strong>: sai da física de erguer o seu
+        corpo {formataMetros(EX_10.metros)} de altura.
+      </p>
+      <p class="ce-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container ce-layout">
+    <article class="ce-main">
+      <section id="ce-app" class="ce-app" aria-labelledby="ce-app-h">
+        <h2 id="ce-app-h" class="ce-app-h">Calculadora de calorias da escada</h2>
+
+        <div class="ce-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="ce-modo is-ativo" data-modo="andares" role="tab" aria-selected="true">
+            Andares
+          </button>
+          <button type="button" class="ce-modo" data-modo="degraus" role="tab" aria-selected="false" tabindex="-1">
+            Degraus
+          </button>
+          <button type="button" class="ce-modo" data-modo="tempo" role="tab" aria-selected="false" tabindex="-1">
+            Máquina de escada
+          </button>
+          <button type="button" class="ce-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="ce-campos">
+          <div class="ce-campo">
+            <label for="ce-peso">Seu peso (kg)</label>
+            <input id="ce-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+            <p class="ce-dica">
+              Aqui o peso não é um detalhe: ele multiplica o resultado inteiro. É por isso que
+              "X calorias por degrau" sem peso ao lado não quer dizer nada.
+            </p>
+          </div>
+
+          <div class="ce-campo ce-campo-modo">
+            <label for="ce-andares">Andares subidos</label>
+            <input id="ce-andares" type="text" inputmode="numeric" autocomplete="off" value="10" />
+            <div class="ce-presets">
+              {[1, 3, 5, 10, 20].map((v) => (
+                <button type="button" class="ce-preset" data-alvo="andares" data-valor={String(v)}>
+                  {v} {v === 1 ? 'andar' : 'andares'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="ce-campo ce-campo-modo" hidden>
+            <label for="ce-degraus">Degraus subidos</label>
+            <input id="ce-degraus" type="text" inputmode="numeric" autocomplete="off" value="160" />
+            <div class="ce-presets">
+              {[50, 100, 160, 300, 500].map((v) => (
+                <button type="button" class="ce-preset" data-alvo="degraus" data-valor={String(v)}>{v}</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="ce-campo ce-campo-modo" hidden>
+            <label for="ce-minutos">Tempo na máquina de escada (minutos)</label>
+            <input id="ce-minutos" type="text" inputmode="numeric" autocomplete="off" value="20" />
+            <div class="ce-presets">
+              {[10, 15, 20, 30, 45].map((v) => (
+                <button type="button" class="ce-preset" data-alvo="tempo" data-valor={String(v)}>{v} min</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="ce-campo ce-campo-modo" hidden>
+            <label for="ce-meta">Meta de gasto (kcal)</label>
+            <input id="ce-meta" type="text" inputmode="numeric" autocomplete="off" value="100" />
+            <div class="ce-presets">
+              {[50, 100, 200, 300].map((v) => (
+                <button type="button" class="ce-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!-- A descida é uma caixa, não um modo: é a mesma subida com 23% a mais. -->
+          <div id="ce-bloco-descida" class="ce-campo">
+            <label class="ce-check">
+              <input id="ce-descida" type="checkbox" />
+              <span>Desci a pé também (soma {Math.round(FATOR_DESCIDA * 100)}%)</span>
+            </label>
+          </div>
+
+          <details class="ce-ajustes">
+            <summary>
+              A minha escada
+              <span class="ce-ajustes-estado" id="ce-estado">
+                {n(ESPELHO_PADRAO * 100)} cm · {DEGRAUS_POR_ANDAR_PADRAO} degraus/andar · normal
+              </span>
+            </summary>
+            <div class="ce-campo">
+              <label for="ce-espelho">Altura do degrau (cm)</label>
+              <input id="ce-espelho" type="text" inputmode="decimal" autocomplete="off" value={n(ESPELHO_PADRAO * 100)} />
+              <p class="ce-dica">{NOTA_ESPELHO}</p>
+            </div>
+            <div class="ce-campo">
+              <label for="ce-degraus-andar">Degraus por andar</label>
+              <input id="ce-degraus-andar" type="text" inputmode="numeric" autocomplete="off" value={DEGRAUS_POR_ANDAR_PADRAO} />
+              <p class="ce-dica">
+                {DEGRAUS_POR_ANDAR_PADRAO} é o que dá um pé-direito residencial comum de 2,80 m com
+                degrau de {n(ESPELHO_PADRAO * 100)} cm. Prédio comercial costuma ter mais.
+              </p>
+            </div>
+            <div class="ce-campo">
+              <label for="ce-cadencia">Ritmo de subida (degraus por minuto)</label>
+              <input id="ce-cadencia" type="text" inputmode="numeric" autocomplete="off" value={CADENCIA_PADRAO} />
+              <div class="ce-presets">
+                {RITMOS.map((r) => (
+                  <button
+                    type="button"
+                    class:list={['ce-preset', 'ce-ritmo', r.cadencia === CADENCIA_PADRAO && 'is-ativo']}
+                    data-ritmo={r.id}
+                    aria-pressed={String(r.cadencia === CADENCIA_PADRAO)}
+                  >
+                    {r.nome}
+                  </button>
+                ))}
+              </div>
+              <p class="ce-dica" id="ce-ritmo-dica">
+                O ritmo muda o tempo e a intensidade. Não muda o número grande: o trabalho de subir
+                é o mesmo depressa ou devagar.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <p id="ce-erro" class="ce-erro" role="status" hidden></p>
+
+        <div id="ce-saida" class="ce-saida" role="status" aria-live="polite">
+          <p class="ce-resultado">
+            <span class="ce-numero">≈ {formataKcal(EX_10.kcalSubida)}</span>
+            <span class="ce-unidade">kcal líquidas</span>
+          </p>
+          <p class="ce-frase"></p>
+
+          <dl class="ce-detalhes">
+            <div><dt>Degraus</dt><dd class="ce-d-degraus">—</dd></div>
+            <div class="ce-linha-andares" hidden><dt>Andares</dt><dd class="ce-d-andares">—</dd></div>
+            <div><dt>Altura vencida</dt><dd class="ce-d-metros">—</dd></div>
+            <div class="ce-linha-descida" hidden><dt>Parcela da descida</dt><dd class="ce-d-descida">—</dd></div>
+            <div><dt>Tempo de subida</dt><dd class="ce-d-tempo">—</dd></div>
+            <div><dt>Gasto bruto</dt><dd class="ce-d-bruto">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="ce-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="ce-nota ce-nota-destaque">{NOTA_LIQUIDO_PRIMEIRO}</p>
+          <p class="ce-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="ce-proximo">
+            <p class="ce-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado: <strong>o que cabe no seu dia de forma repetível</strong>. A
+              escada é intensa por minuto e curta em duração — ótima como hábito e como estímulo
+              para a perna, fraca como alavanca de caloria sozinha.
+            </p>
+            <div class="ce-proximo-acoes">
+              <a class="ce-btn ce-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="ce-btn ce-btn-secundario ce-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="ce-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose ce-conteudo">
+        <h2>A única conta deste site que não vem de tabela</h2>
+        <p>
+          As outras quatro calculadoras do nosso cluster copiam valores medidos: alguém colocou
+          pessoas para andar, correr, pedalar e nadar com um analisador de gases, e o Compêndio de
+          Atividades Físicas publicou o resultado. Subir escada é diferente, porque o gasto é
+          dominado por um trabalho que a física resolve sozinha:
+        </p>
+        <p class="ce-formula">{`trabalho = massa × gravidade × altura
+
+erguer ${PESO_PADRAO} kg em 1 metro
+  ${PESO_PADRAO} × ${n(G, 2)} × 1 = ${n(PESO_PADRAO * G, 0)} J = ${n(TRABALHO_1M, 3)} kcal`}</p>
+        <p>
+          Não há arrasto do ar para estimar, não há técnica mudando o custo em 55% como na
+          natação, não há economia de movimento variando entre pessoas. Há um corpo sendo erguido
+          uma altura. É por isso que a variável que decide aqui não é tempo, distância nem
+          velocidade — é <strong>altura vertical</strong>.
+        </p>
+
+        <h3>As duas pontas conferem</h3>
+        <p>
+          Trabalho mecânico não é gasto metabólico: o corpo é ineficiente, e a diferença é o calor.
+          Para atravessar essa ponte a conta usa a constante da ACSM para trabalho vertical —{' '}
+          <strong>{n(O2_POR_KG_POR_METRO, 1)} mL de oxigênio por quilo por metro subido</strong>,
+          líquidos, o que dá {n(KCAL_POR_KG_POR_METRO, 3)} kcal por quilo por metro.
+        </p>
+        <p>
+          A conferência sai de graça. Erguer {PESO_PADRAO} kg em um metro são{' '}
+          {n(TRABALHO_1M, 3)} kcal de trabalho; a constante da ACSM cobra {n(ACSM_1M, 3)} kcal por
+          isso. A eficiência implícita é de <strong>{n(EFICIENCIA * 100, 1)}%</strong> — dentro da
+          faixa de 23% a 27% que a literatura mede para subida de escada. A física e a fisiologia
+          chegaram ao mesmo lugar sem terem sido ajustadas uma para a outra.
+        </p>
+        <p>
+          Há uma segunda conferência, contra o Compêndio. Nas cadências reais de subida, esta conta
+          derivada devolve de {n(TAB_RITMO[0].met)} a {n(TAB_RITMO[2].met)} METs. O Compêndio
+          publica 4,5 METs para subida lenta e 9,3 para rápida. A faixa derivada cai dentro da
+          faixa medida — de novo, sem calibragem.
+        </p>
+        <p class="ce-ressalva">
+          E uma terceira, interna: o motor da nossa{' '}
+          <a href="/calorias/caminhada/">calculadora de caminhada</a> usa a mesma constante de{' '}
+          {n(O2_POR_KG_POR_METRO, 1)} no termo de inclinação. Subir uma rampa e subir um degrau
+          cobram exatamente a mesma coisa pela mesma altura, nas duas páginas. Duas páginas do
+          mesmo site não podem medir subida com réguas diferentes.
+        </p>
+
+        <h2>"Subir um degrau queima 0,17 caloria" é uma frase incompleta</h2>
+        <p>
+          É a informação mais repetida do assunto em português, e ela omite exatamente a variável
+          que decide: <strong>de quem é o corpo</strong>. Como o trabalho é massa × gravidade ×
+          altura, o peso não é um detalhe de ajuste — ele é metade da conta, e dobrar o peso dobra
+          o resultado, sem exceção.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              Gasto líquido de subir, por peso corporal, com degrau de {n(ESPELHO_PADRAO * 100)} cm
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th><th scope="col">1 degrau</th>
+                <th scope="col">1 andar</th><th scope="col">10 andares</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>{n(l.porDegrau, 3)} kcal</td>
+                  <td>≈ {formataKcal(l.porAndar)} kcal</td>
+                  <td>≈ {formataKcal(l.dezAndares)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare que nenhuma linha chega perto de 0,17 kcal por degrau até os 100 kg. Números como
+          esse costumam vir de uma pessoa mais pesada, de um degrau mais alto, ou de uma conta que
+          somou o metabolismo de repouso do tempo da subida — e nenhuma dessas escolhas é dita.
+        </p>
+
+        <h2>A pressa muda a potência, não o trabalho</h2>
+        <p>
+          Esta é a parte que mais contraria a intuição. Subir {formataAndares(10)} correndo deixa
+          você bem mais ofegante que subir devagar, e o total gasto é <strong>o mesmo</strong>.
+          O que muda é em quanto tempo você gasta aquilo — ou seja, a intensidade.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Subir {formataAndares(10)} ({EX_10.degraus} degraus) para {PESO_PADRAO} kg, em três ritmos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ritmo</th><th scope="col">Degraus/min</th>
+                <th scope="col">Tempo</th><th scope="col">METs</th><th scope="col">Gasto líquido</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_RITMO.map((l) => (
+                <tr>
+                  <th scope="row">
+                    {l.ritmo.nome}
+                    <small class="ce-faixa">{l.ritmo.cadencia} degraus/min</small>
+                  </th>
+                  <td>{l.ritmo.cadencia}</td>
+                  <td>{formataTempo(l.minutosDezAndares)}</td>
+                  <td>{n(l.met)}</td>
+                  <td>≈ {formataKcal(EX_10.kcalSubida)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A última coluna é idêntica nas três linhas, e é a tese da página inteira. Compare com a
+          bicicleta, onde <a href="/calorias/bicicleta/">dobrar a velocidade triplica o gasto</a>:
+          lá a velocidade cria trabalho novo contra o ar, aqui ela só comprime o mesmo trabalho em
+          menos tempo. Físicas diferentes, resultados opostos.
+        </p>
+        <p class="ce-ressalva">
+          Uma ressalva honesta: subir rápido não é inútil. Ele não gasta mais caloria naquela
+          subida, mas cobra mais do sistema cardiovascular por minuto, e é isso que gera adaptação.
+          Quem sobe escada como treino está atrás da intensidade, não da caloria — e faz bem.
+        </p>
+
+        <h2>Quanto custa, por número de andares</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              Gasto líquido para {PESO_PADRAO} kg, com {DEGRAUS_POR_ANDAR_PADRAO} degraus por andar
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Andares</th><th scope="col">Degraus</th><th scope="col">Altura</th>
+                <th scope="col">Só subindo</th><th scope="col">Subindo e descendo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ANDARES.map((l) => (
+                <tr>
+                  <th scope="row">{l.andares}</th>
+                  <td>{l.degraus}</td>
+                  <td>{formataMetros(l.metros)}</td>
+                  <td>≈ {formataKcal(l.soSubindo)} kcal</td>
+                  <td>≈ {formataKcal(l.comDescida)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_DESCIDA}</p>
+
+        <h2>Trocar o elevador pela escada emagrece?</h2>
+        <p>
+          É a pergunta que traz a maioria das pessoas até aqui, e a resposta honesta tem duas
+          metades que parecem brigar e não brigam. {NOTA_ELEVADOR}
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              Projeção para {PESO_PADRAO} kg, cinco dias por semana, cinquenta e duas semanas
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Rotina</th><th scope="col">Por dia</th>
+                <th scope="col">Por mês</th><th scope="col">No ano</th><th scope="col">Em gordura</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[ROTINA, ROTINA_30].map((r) => (
+                <tr>
+                  <th scope="row">{r.andaresPorDia} andares/dia</th>
+                  <td>≈ {formataKcal(r.porDia)} kcal</td>
+                  <td>≈ {Math.round(r.porMes).toLocaleString('pt-BR')} kcal</td>
+                  <td>≈ {Math.round(r.porAno).toLocaleString('pt-BR')} kcal</td>
+                  <td>≈ {n(r.quilosNoAno, 1)} kg</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Dez andares por dia, todo dia útil, por um ano inteiro, dão cerca de{' '}
+          <strong>{n(ROTINA.quilosNoAno, 1)} kg</strong> de gordura — e essa conta ainda é
+          otimista, porque usa a regra dos 7.700 kcal por quilo, que a literatura mostra
+          superestimar a perda ao longo do tempo.
+        </p>
+        <p>
+          Isso não é um argumento contra a escada. É um argumento contra esperar dela o que ela não
+          entrega. Ela é excelente como hábito: não custa tempo extra no dia, fortalece a perna,
+          melhora condicionamento e, ao contrário de quase tudo, não depende de você "arranjar
+          tempo para treinar". Só não é por onde o emagrecimento acontece — isso se decide
+          principalmente no <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+          calórico</a>, e o exercício é a menor peça dessa conta.
+        </p>
+
+        <h2>Escada ou caminhada?</h2>
+        <p>
+          Subir {formataAndares(10)} gasta mais ou menos o mesmo que{' '}
+          <strong>{formataTempo(MINUTOS_CAMINHADA)} de caminhada moderada</strong> para{' '}
+          {PESO_PADRAO} kg. Parece pouco perto de como a escada cansa, e é exatamente esse o ponto:
+          a escada é muito intensa por minuto e muito curta em duração.
+        </p>
+        <p>
+          A caloria acumula por volume, e volume é onde a escada perde feio — ninguém sobe escada
+          por quarenta minutos seguidos, e quase todo mundo consegue caminhar por quarenta minutos.
+          Por outro lado, o estímulo por minuto é bem maior, e é isso que a torna útil como treino
+          curto. As duas coisas cabem na mesma rotina e respondem a perguntas diferentes.
+        </p>
+        <p>
+          A máquina de escada da academia resolve justamente a limitação do volume: ela permite
+          manter a subida por tempo longo. {formataTempo(20)} nela, para {PESO_PADRAO} kg, dão
+          cerca de <strong>{formataKcal(EX_MAQUINA.kcalSubida)} kcal líquidas</strong> —{' '}
+          {formataDegraus(EX_MAQUINA.degraus)} e {formataMetros(EX_MAQUINA.metros)} de altura,
+          bem mais que o prédio mais alto do Brasil.
+        </p>
+
+        <h2>Uma coisa que a conta não mostra</h2>
+        <p>{NOTA_CORRIMAO}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          O gasto líquido da subida é a altura vertical multiplicada por{' '}
+          {n(KCAL_POR_KG_POR_METRO, 3)} kcal por quilo, que é a constante da ACSM de{' '}
+          {n(O2_POR_KG_POR_METRO, 1)} mL de O₂ por quilo por metro convertida a 5 kcal por litro de
+          oxigênio.
+        </p>
+        <p class="ce-formula">{`subir ${formataAndares(10)} com ${PESO_PADRAO} kg
+  ${EX_10.degraus} degraus × ${n(ESPELHO_PADRAO, 3)} m = ${n(EX_10.metros, 1)} m de altura
+  ${n(EX_10.metros, 1)} × ${n(KCAL_POR_KG_POR_METRO, 3)} × ${PESO_PADRAO} = ${n(EX_10.kcalSubida, 1)} kcal líquidas`}</p>
+        <p>
+          A altura do degrau parte de {n(ESPELHO_PADRAO * 100)} cm — dentro da faixa de 16 a 18 cm
+          que a NBR 9050 estabelece, e escolhida por fechar exatamente os{' '}
+          {DEGRAUS_POR_ANDAR_PADRAO} degraus de um pé-direito residencial comum de 2,80 m. Os dois
+          são ajustáveis, e os dois
+          entram multiplicando o resultado inteiro — por isso a ferramenta mostra o que está usando
+          no resumo do bloco "A minha escada", em vez de esconder o padrão.
+        </p>
+        <p>
+          A descida entra como {Math.round(FATOR_DESCIDA * 100)}% do custo da subida, que é o valor
+          medido diretamente comparando subida e descida da mesma escada.
+        </p>
+        <p>{NOTA_BRUTO}</p>
+        <p class="ce-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          Uma limitação específica: a conta cobre o trabalho vertical, que é o que domina, mas não
+          o custo de mover as pernas para a frente a cada degrau nem o de manter o equilíbrio. Em
+          subida lenta isso é pequeno; em subida muito rápida, ou subindo dois degraus por vez, a
+          parcela cresce e o gasto real fica um pouco acima do que esta página devolve.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="ce-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da escada" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraEscada } from '../../scripts/caloriasEscada.client';
+    iniciarCalculadoraEscada();
+  </script>
+
+  <style>
+    .ce-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .ce-hero-inner { max-width: 780px; }
+    .ce-hero h1 { color: #fff; max-width: 22ch; }
+    .ce-hero :global(.eyebrow) { color: #ffb488; }
+    .ce-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .ce-hero-lead strong { color: #fff; }
+    .ce-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .ce-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .ce-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .ce-main { min-width: 0; max-width: 760px; }
+
+    .ce-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .ce-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .ce-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .ce-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ce-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .ce-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .ce-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .ce-campos { display: grid; gap: var(--sp-4); }
+    .ce-campo { margin-bottom: 0; }
+    .ce-campo label { display: block; font-weight: 700; font-size: var(--step--1); margin-bottom: 0.4rem; }
+    .ce-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .ce-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .ce-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+
+    .ce-check {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      min-height: 44px;
+      font-weight: 600;
+      font-size: var(--step--1);
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+    .ce-check input { width: 22px; height: 22px; accent-color: var(--brand-600); flex: none; }
+    .ce-check:focus-within { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: var(--radius); }
+
+    .ce-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .ce-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .ce-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .ce-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ce-ritmo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .ce-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .ce-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .ce-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ce-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .ce-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .ce-ajustes > .ce-campo { padding-bottom: var(--sp-4); }
+
+    .ce-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .ce-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .ce-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .ce-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .ce-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .ce-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .ce-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .ce-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .ce-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .ce-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .ce-nota-destaque { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .ce-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .ce-proximo-lead { line-height: 1.6; }
+    .ce-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .ce-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .ce-btn-primario { background: var(--brand-600); color: #fff; }
+    .ce-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .ce-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .ce-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .ce-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ce-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .ce-conteudo { margin-top: var(--sp-7); }
+    .ce-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .ce-faixa { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .ce-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .ce-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .ce-fontes li { margin-bottom: 0.6rem; }
+    .ce-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
