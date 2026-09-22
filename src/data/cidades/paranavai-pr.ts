@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva combina o hábito da musculação e do funcional com uma cena de corrida de rua em crescimento, apoiada nas avenidas largas e nas praças do Centro. A presença universitária e o perfil de cidade-polo ajudam a sustentar a procura por treino orientado.',
   academias:
     'A oferta reúne academias de musculação, estúdios de treinamento funcional e box de crossfit, atendendo tanto o público universitário quanto famílias e trabalhadores do comércio e do agronegócio local.',
+  academiasProximas: [
+    { nome: 'Smart Fit Paranavaí', detalhe: 'na Avenida Heitor Alencar Furtado, 6737, no Jardim Paraíso' },
+    { nome: 'Bodyfit Academia', detalhe: 'na Avenida Rio Grande do Norte, 1565, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-22',
 
   destaquesFitness: [
     'Praça dos Pioneiros como principal espaço público para caminhada e treino ao ar livre.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Paranavaí', url: 'https://www.paranavai.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-22',
 };

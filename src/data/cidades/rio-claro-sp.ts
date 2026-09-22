@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'Rio Claro tem calendário ativo de corridas de rua e de mountain bike/trail (na Floresta Estadual e na Cidade Azul), com público engajado pela presença universitária.',
   academias:
     'A oferta reúne academias e estúdios, com público universitário da Unesp, complementada pelo Parque Lago Azul e pela Floresta Estadual.',
+  academiasProximas: [
+    { nome: 'Smart Fit Rio Claro', detalhe: 'na Rua Quatorze, no bairro Estádio' },
+    { nome: 'Skyfit Rio Claro', detalhe: 'na Rua 6-A, 1336, na Vila Alemã' },
+    { nome: 'Panobianco Rio Claro Covabra', detalhe: 'na Avenida Visconde de Rio Claro, 2230, no Santa Cruz' },
+  ],
+  academiasVerificadasEm: '2026-09-22',
 
   destaquesFitness: [
     'Floresta Estadual como maior área natural para trail running e trilhas da região.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Claro', url: 'https://www.rioclaro.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-22',
 };
