@@ -1,0 +1,168 @@
+---
+/**
+ * Hub do cluster "Calorias por atividade".
+ *
+ * POR QUE ESTE CLUSTER NÃO MORA EM /ferramentas/
+ *
+ * `/ferramentas/` é o Meu Mapa do Treino: sete etapas de uma jornada de
+ * decisão sobre acompanhamento, com registro tipado em `lib/jornada.ts`,
+ * faixa de progresso e um componente de convite preso a esses sete ids.
+ * Calculadora de gasto calórico não é etapa dessa jornada — quem chega
+ * perguntando "quantas calorias gastei" não está decidindo se contrata
+ * personal. Misturar as duas coisas quebraria o modelo da jornada e
+ * diluiria as duas propostas.
+ *
+ * Então o cluster nasce como irmão de /musculacao/ e /emagrecimento/: um
+ * cluster editorial com ferramenta dentro, não uma gaveta de widgets.
+ *
+ * O hub começa com uma atividade só, de propósito. Publicar o índice com
+ * doze linhas cinzas de "em breve" não ajuda ninguém e ainda promete o que
+ * a página não entrega.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
+import { site } from '../../data/site';
+import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
+
+const path = '/calorias';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: path },
+];
+
+const MOD = ritmo('moderado');
+const EX_30 = arredondaKcal(deTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal);
+
+const ferramentas = [
+  {
+    url: '/calorias/caminhada/',
+    nome: 'Caminhada',
+    calcula: 'Por tempo, distância, passos ou meta de calorias — com ritmo e inclinação.',
+    exemplo: `30 min moderados ≈ ${EX_30} kcal para ${PESO_PADRAO} kg`,
+  },
+];
+
+/* 49 caracteres. */
+const title = 'Quantas Calorias Cada Atividade Gasta | Calcule';
+/* 148 caracteres. */
+const description =
+  'Calculadoras de gasto calórico por atividade, feitas uma a uma com os dados que você realmente tem. Metodologia aberta, fontes citadas e sem cadastro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  itemListSchema(
+    'Calculadoras de calorias por atividade',
+    ferramentas.map((f) => f.nome),
+    new URL(path, site.dominio).href,
+  ),
+];
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="section-sm tint">
+    <div class="container">
+      <p class="eyebrow">Ferramentas do portal</p>
+      <h1>Quantas calorias cada atividade gasta</h1>
+      <p class="lead" style="max-width: 62ch">
+        Uma calculadora por atividade, feita com as informações que quem pratica aquela atividade
+        realmente tem — e não a mesma caixa de peso e minutos com o nome trocado.
+      </p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="grid grid-2">
+        {
+          ferramentas.map((f) => (
+            <a class="card card-hover cal-card" href={f.url}>
+              <h2>{f.nome}</h2>
+              <p>{f.calcula}</p>
+              <p class="cal-exemplo">{f.exemplo}</p>
+              <span class="cal-link">Calcular →</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="cal-nota">
+        <h2>Como estas calculadoras são feitas</h2>
+        <p>
+          Cada atividade ganha a sua, e cada uma pede entradas diferentes porque as pessoas sabem
+          coisas diferentes. Quem caminhou sabe o tempo, a distância ou os passos. Quem corre sabe o
+          pace. Quem pedala sabe a velocidade média. Uma caixa única de &ldquo;peso + minutos&rdquo;
+          obrigaria quase todo mundo a fazer uma conversão de cabeça antes de usar a ferramenta.
+        </p>
+        <p>
+          Três compromissos valem para todas. <strong>A metodologia fica aberta</strong>, com a
+          fórmula visível e a fonte de cada número citada. <strong>Onde a conta é imprecisa, a
+          página diz</strong> — inclusive quando o valor foi interpolado em vez de medido.
+          E <strong>nenhuma delas promete quilo perdido</strong>: gasto calórico é uma estimativa
+          educativa, não avaliação metabólica nem prescrição de treino.
+        </p>
+        <p class="muted">
+          O cluster está começando pela caminhada e cresce por demanda real, uma atividade por vez.
+          Publicar doze páginas rasas de uma vez seria mais rápido e pior.
+        </p>
+      </div>
+
+      <div class="cal-relacionado">
+        <h2>Conteúdos que explicam o resto da conta</h2>
+        <ul>
+          <li>
+            <a href="/emagrecimento/deficit-calorico-como-funciona/">Déficit calórico: como funciona</a>
+            — onde o gasto do exercício entra, e por que ele é a menor peça.
+          </li>
+          <li>
+            <a href="/emagrecimento/quantas-calorias-queima-a-musculacao/">Quantas calorias a musculação queima</a>
+            — a conta honesta, incluindo o que o EPOC realmente vale.
+          </li>
+          <li>
+            <a href="/emagrecimento/quantos-passos-por-dia/">Quantos passos por dia para emagrecer</a>
+            — de onde veio a meta dos 10 mil.
+          </li>
+          <li>
+            <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">Musculação ou cardio para emagrecer</a>
+            — por que &ldquo;qual gasta mais&rdquo; é a pergunta errada.
+          </li>
+          <li>
+            <a href="/ferramentas/">Meu Mapa do Treino</a> — as sete ferramentas de decisão sobre
+            treino e acompanhamento. É outro caminho, para outra pergunta.
+          </li>
+        </ul>
+      </div>
+
+      <ContextualCta path={path} assunto={title} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .cal-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .cal-card:hover { text-decoration: none; }
+  .cal-card h2 { font-size: var(--step-2); }
+  .cal-card p { color: var(--ink-soft); }
+  .cal-exemplo {
+    font-size: var(--step--1);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .cal-link { font-weight: 700; color: var(--brand-600); margin-top: auto; }
+  .cal-nota { margin-top: var(--sp-7); }
+  .cal-nota h2,
+  .cal-relacionado h2 { font-size: var(--step-2); margin-bottom: var(--sp-3); }
+  .cal-nota p { margin-bottom: var(--sp-3); line-height: 1.6; }
+  .cal-relacionado { margin-top: var(--sp-6); }
+  .cal-relacionado ul { display: grid; gap: var(--sp-3); }
+  .cal-relacionado li { line-height: 1.55; }
+</style>

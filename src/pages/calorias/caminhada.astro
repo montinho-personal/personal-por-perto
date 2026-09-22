@@ -1,0 +1,857 @@
+---
+/**
+ * Quantas calorias a caminhada gasta — página e calculadora.
+ *
+ * UMA URL, NÃO DUAS
+ *
+ * A SERP desta consulta mistura calculadora e artigo no mesmo bloco: a
+ * intenção é híbrida — a pessoa quer o número e, logo depois, entender o
+ * número. Com zero autoridade no cluster (nenhuma consulta de "caloria"
+ * aparecia no Search Console de 12/09), dividir em duas URLs racharia a
+ * força pela metade para atender uma intenção que é uma só.
+ *
+ * POR QUE OS NÚMEROS ESTÃO RESOLVIDOS EM HTML
+ *
+ * O robô não digita peso. Sem as tabelas e os exemplos calculados no
+ * servidor, esta página seria um formulário vazio para o Google e para
+ * quem chegou sem vontade de preencher nada. Todos os números abaixo saem
+ * do MESMO motor da calculadora — nada é recalculado à mão, então texto e
+ * ferramenta nunca divergem.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  FONTES,
+  KCAL_POR_KG_GORDURA,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  RITMOS,
+  arredondaKcal,
+  arredondaPassos,
+  dePassos,
+  deDistancia,
+  deKcal,
+  deTempo,
+  formataKm,
+  formataTempo,
+  kcalPorKgPorKm,
+  metDaInclinacao,
+  ritmo,
+  simulacaoUmQuilo,
+  tabelaPorDistancia,
+  tabelaPorInclinacao,
+  tabelaPorPeso,
+  tabelaPorRitmo,
+  tabelaPorTempo,
+} from '../../lib/calorias/caminhada';
+
+const path = '/calorias/caminhada';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Caminhada', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo motor da calculadora ── */
+const MOD = ritmo('moderado');
+const EX_30 = deTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_60 = deTempo(60, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_12_3_30 = deTempo(30, PESO_PADRAO, 4.8, 12, MOD.cadencia);
+const EX_PLANO_48 = deTempo(30, PESO_PADRAO, 4.8, 0, MOD.cadencia);
+const EX_10MIL = dePassos(10000, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_5KM = deDistancia(5, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_10KM = deDistancia(10, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_300 = deKcal(300, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_500 = deKcal(500, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+
+const TAB_PESO = tabelaPorPeso(30, MOD.velocidade, 0);
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, MOD.velocidade, 0);
+const TAB_RITMO = tabelaPorRitmo(PESO_PADRAO, 30);
+const TAB_INCL = tabelaPorInclinacao(PESO_PADRAO, 30, 4.8);
+const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, MOD.velocidade);
+
+const POR_MIN = EX_30.kcal / 30;
+const CUSTO_KM = kcalPorKgPorKm(MOD.velocidade, 0);
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 55 caracteres. */
+const title = 'Quantas Calorias a Caminhada Gasta? Calcule o Seu';
+/* 152 caracteres. */
+const description =
+  'Calcule quantas calorias a sua caminhada gastou por tempo, distância ou passos, com o seu peso, o seu ritmo e a inclinação. Grátis e sem cadastro.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias 30 minutos de caminhada queimam?',
+    resposta: `Para uma pessoa de ${PESO_PADRAO} kg em ritmo moderado (cerca de 5 km/h, no plano), aproximadamente ${arredondaKcal(EX_30.kcal)} kcal. O peso muda bastante esse número: alguém de 50 kg fica perto de ${TAB_PESO[0].kcal} kcal e alguém de 100 kg, perto de ${TAB_PESO[5].kcal} kcal nos mesmos 30 minutos.`,
+  },
+  {
+    pergunta: '1 hora de caminhada gasta quantas calorias?',
+    resposta: `Cerca de ${arredondaKcal(EX_60.kcal)} kcal para ${PESO_PADRAO} kg a 5 km/h no plano — em torno de ${formataKm(EX_60.km)}. Com inclinação o número sobe muito: a 4,8 km/h com 12%, meia hora já passa de ${arredondaKcal(EX_12_3_30.kcal)} kcal.`,
+  },
+  {
+    pergunta: '10 mil passos queimam quantas calorias?',
+    resposta: `Em ritmo moderado, 10 mil passos levam cerca de ${formataTempo(EX_10MIL.minutos)} e representam aproximadamente ${arredondaKcal(EX_10MIL.kcal)} kcal para quem pesa ${PESO_PADRAO} kg. A conta usa a cadência (cerca de 100 passos por minuto), não o tamanho da passada — que varia com a altura e tornaria o número um chute com cara de exato.`,
+  },
+  {
+    pergunta: 'Quanto tempo de caminhada para gastar 300 calorias?',
+    resposta: `Para ${PESO_PADRAO} kg em ritmo moderado, cerca de ${formataTempo(EX_300.minutos)} — em torno de ${formataKm(EX_300.km)}. Para 500 kcal, algo perto de ${formataTempo(EX_500.minutos)}. Quanto maior o peso ou o ritmo, menos tempo leva.`,
+  },
+  {
+    pergunta: 'Caminhada inclinada gasta mais calorias?',
+    resposta: `Gasta, e bastante. A inclinação acrescenta o custo de subir o próprio peso ao custo de andar: a 4,8 km/h, 12% de inclinação somam cerca de ${n(metDaInclinacao(4.8, 12))} METs — o que mais que dobra o gasto em relação ao plano na mesma velocidade. É por isso que o método 12-3-30 rende: não por mágica, por física.`,
+  },
+  {
+    pergunta: 'Caminhar emagrece?',
+    resposta:
+      'Ajuda, como qualquer atividade que aumenta o gasto do dia, e tem uma vantagem rara: é fácil de repetir. O que ela não faz é resolver sozinha — o resultado depende do balanço energético ao longo de semanas, não de uma caminhada isolada. Meia hora por dia soma algo real no mês, desde que o que acontece nas outras 23 horas e meia não desfaça a conta.',
+  },
+  {
+    pergunta: 'Caminhar todo dia perde barriga?',
+    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} A caminhada entra como uma das fontes de gasto do dia, ao lado do treino de força e da alimentação — e é a combinação que decide.`,
+  },
+  {
+    pergunta: 'Esteira ou rua: qual gasta mais calorias?',
+    resposta:
+      'Na mesma velocidade e no plano, o gasto é parecido. A rua costuma custar um pouco mais por causa do vento, do piso irregular e das pequenas subidas; a esteira ganha quando entra a inclinação, que na rua depende de existir ladeira. Esta calculadora trata os dois do mesmo jeito, porque o que decide é velocidade e inclinação, não o lugar.',
+  },
+  {
+    pergunta: 'Esse número é o que a caminhada acrescenta ao meu dia?',
+    resposta: `Não exatamente, e essa diferença importa para quem conta déficit. O número principal é bruto: inclui o que você gastaria parado nesse mesmo tempo. Para ${PESO_PADRAO} kg, 30 minutos moderados dão cerca de ${arredondaKcal(EX_30.kcal)} kcal brutas, e o que a caminhada realmente acrescenta é em torno de ${arredondaKcal(EX_30.kcalLiquida)} kcal. A calculadora mostra os dois.`,
+  },
+  {
+    pergunta: 'Quem está acima do peso pode caminhar todo dia?',
+    resposta: `Pode, e é uma das melhores portas de entrada: o impacto é baixo e o gasto por minuto é maior justamente porque o corpo move mais massa. Vale começar sem inclinação e com um tempo que não deixe dor no dia seguinte. ${NOTA_SEGURANCA}`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer',
+    descricao: 'De onde saiu a meta dos 10 mil passos — e o que ela vale de verdade.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'O que decide o emagrecimento, e onde o gasto da caminhada entra nessa conta.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre: como progredir sem carga',
+    descricao: 'O que fazer quando a caminhada deixa de ser desafio e não há anilha para colocar.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio para emagrecer',
+    descricao: 'Por que a pergunta "qual gasta mais" é a pergunta errada.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({
+    titulo: title,
+    descricao: description,
+    url: new URL(path, site.dominio).href,
+    atualizadoEm,
+  }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cc-hero">
+    <div class="container cc-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias a caminhada gasta?</h1>
+      <p class="cc-hero-lead">
+        Uma pessoa de {PESO_PADRAO} kg caminhando 30 minutos em ritmo moderado gasta
+        aproximadamente <strong>{arredondaKcal(EX_30.kcal)} kcal</strong>. O número muda com o seu
+        peso, o seu ritmo e a inclinação — calcule o seu abaixo, pelo dado que você tem.
+      </p>
+      <p class="cc-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cc-layout">
+    <article class="cc-main">
+      <!-- ───────────────────────── A calculadora ───────────────────────── -->
+      <section id="cc-app" class="cc-app" aria-labelledby="cc-app-h">
+        <h2 id="cc-app-h" class="cc-app-h">Calculadora de calorias da caminhada</h2>
+
+        <div class="cc-modos" role="tablist" aria-label="O que você sabe sobre a sua caminhada">
+          <button type="button" class="cc-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+            Sei o tempo
+          </button>
+          <button type="button" class="cc-modo" data-modo="distancia" role="tab" aria-selected="false" tabindex="-1">
+            Sei a distância
+          </button>
+          <button type="button" class="cc-modo" data-modo="passos" role="tab" aria-selected="false" tabindex="-1">
+            Sei os passos
+          </button>
+          <button type="button" class="cc-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cc-campos">
+          <div class="cc-campo">
+            <label for="cc-peso">Seu peso (kg)</label>
+            <input id="cc-peso" type="number" inputmode="decimal" value={PESO_PADRAO} min="30" max="250" step="0.1" />
+          </div>
+
+          <div class="cc-campo cc-campo-modo">
+            <label for="cc-minutos">Tempo caminhando (minutos)</label>
+            <input id="cc-minutos" type="number" inputmode="numeric" value="30" min="1" max="600" step="1" />
+            <div class="cc-presets">
+              {[10, 20, 30, 45, 60, 90].map((v) => (
+                <button type="button" class="cc-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cc-campo cc-campo-modo" hidden>
+            <label for="cc-km">Distância caminhada (km)</label>
+            <input id="cc-km" type="number" inputmode="decimal" value="5" min="0.1" max="100" step="0.1" />
+            <div class="cc-presets">
+              {[1, 2, 3, 5, 10].map((v) => (
+                <button type="button" class="cc-preset" data-alvo="distancia" data-valor={String(v)}>{v} km</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cc-campo cc-campo-modo" hidden>
+            <label for="cc-passos">Passos dados</label>
+            <input id="cc-passos" type="number" inputmode="numeric" value="10000" min="100" max="100000" step="100" />
+            <div class="cc-presets">
+              {[3000, 5000, 8000, 10000, 15000].map((v) => (
+                <button type="button" class="cc-preset" data-alvo="passos" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cc-campo cc-campo-modo" hidden>
+            <label for="cc-meta">Meta de gasto (kcal)</label>
+            <input id="cc-meta" type="number" inputmode="numeric" value="300" min="10" max="3000" step="10" />
+            <div class="cc-presets">
+              {[100, 200, 300, 500].map((v) => (
+                <button type="button" class="cc-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <fieldset class="cc-campo cc-ritmos">
+            <legend>Ritmo</legend>
+            {RITMOS.map((r) => (
+              <label class="cc-ritmo">
+                <input type="radio" name="cc-ritmo" value={r.id} checked={r.id === 'moderado'} />
+                <span>
+                  <strong>{r.nome}</strong>
+                  <small>{r.faixa} · {r.comoReconhecer}</small>
+                </span>
+              </label>
+            ))}
+          </fieldset>
+
+          <div class="cc-campo">
+            <label for="cc-inclinacao">
+              Inclinação (esteira ou subida) — <output id="cc-inclinacao-valor" for="cc-inclinacao">0%</output>
+            </label>
+            <input id="cc-inclinacao" type="range" value="0" min="0" max="15" step="1" />
+            <p class="cc-dica">Deixe em 0% para caminhada no plano. O método 12-3-30 usa 12%.</p>
+          </div>
+        </div>
+
+        <p id="cc-erro" class="cc-erro" role="status" hidden></p>
+
+        <div id="cc-saida" class="cc-saida" role="status" aria-live="polite">
+          <p class="cc-resultado">
+            <span class="cc-numero">≈ {arredondaKcal(EX_30.kcal)}</span>
+            <span class="cc-unidade">kcal</span>
+          </p>
+          <p class="cc-frase"></p>
+
+          <dl class="cc-detalhes">
+            <div><dt>Tempo</dt><dd class="cc-d-tempo">—</dd></div>
+            <div><dt>Distância</dt><dd class="cc-d-km">—</dd></div>
+            <div><dt>Passos</dt><dd class="cc-d-passos">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cc-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cc-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="cc-nota cc-nota-interpolado" hidden></p>
+          <p class="cc-nota cc-alerta-volume" hidden>
+            Esse tempo é pouco prático como meta diária. Distribuir o gasto entre caminhada, treino
+            de força e o movimento do dia costuma render mais — e sobreviver a mais semanas.
+          </p>
+          <p class="cc-nota">{NOTA_ESTIMATIVA}</p>
+
+          <!-- Conversão: contexto → insight → dois próximos passos distintos. -->
+          <div class="cc-proximo">
+            <p class="cc-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado: <strong>quanto disso cabe na sua semana, toda semana</strong>.
+              Gasto calórico é uma peça — treino, alimentação e constância são as outras três.
+            </p>
+            <div class="cc-proximo-acoes">
+              <a class="cc-btn cc-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cc-btn cc-btn-secundario cc-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cc-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── Conteúdo ───────────────────────── -->
+      <div class="prose cc-conteudo">
+        <h2>Quantas calorias a caminhada gasta por minuto?</h2>
+        <p>
+          Para uma pessoa de {PESO_PADRAO} kg em ritmo moderado (cerca de 5 km/h, no plano), cada
+          minuto de caminhada custa aproximadamente <strong>{n(POR_MIN)} kcal</strong>. Isso dá cerca
+          de {arredondaKcal(EX_30.kcal)} kcal em 30 minutos e {arredondaKcal(EX_60.kcal)} kcal em uma
+          hora — em torno de {formataKm(EX_60.km)} e {arredondaPassos(EX_60.passos).toLocaleString('pt-BR')} passos.
+        </p>
+        <p>
+          Quatro coisas mudam esse número: <strong>peso corporal</strong> (é o que mais pesa — corpos
+          maiores movem mais massa a cada passo), <strong>ritmo</strong>,
+          <strong>inclinação</strong> e <strong>tempo</strong>. Condicionamento muda menos do que
+          quase todo mundo imagina: quem treina há anos gasta praticamente o mesmo que quem começou
+          ontem, no mesmo passo. A diferença é que consegue manter o passo por mais tempo.
+        </p>
+
+        <h2>Calorias da caminhada por peso: tabela de 30 minutos</h2>
+        <p>
+          A coluna da direita é a que quase nenhuma tabela mostra: o quanto a caminhada
+          <em>acrescenta</em> ao seu dia, descontando o que você gastaria parado no mesmo tempo. É
+          esse o número que vale quando se está contando déficit.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado em 30 minutos de caminhada moderada (5 km/h, no plano), por peso</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">30 min (bruto)</th><th scope="col">Acréscimo ao dia</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>≈ {l.kcalLiquida} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>10, 20, 30, 45, 60 e 90 minutos: quantas calorias?</h2>
+        <p>
+          O gasto é proporcional ao tempo — uma hora custa o dobro de meia hora, no mesmo ritmo. A
+          tabela é para {PESO_PADRAO} kg em ritmo moderado, e serve para mostrar por que
+          &ldquo;30 minutos de caminhada&rdquo; não tem uma resposta só: tem uma para cada peso.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por tempo de caminhada moderada, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Tempo</th><th scope="col">Gasto</th><th scope="col">Distância</th></tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>{formataKm(l.km)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Caminhar 5 km ou 10 km gasta quantas calorias?</h2>
+        <p>
+          Para {PESO_PADRAO} kg em ritmo moderado, <strong>5 km</strong> dão cerca de{' '}
+          {arredondaKcal(EX_5KM.kcal)} kcal em {formataTempo(EX_5KM.minutos)}, e
+          <strong> 10 km</strong>, cerca de {arredondaKcal(EX_10KM.kcal)} kcal em{' '}
+          {formataTempo(EX_10KM.minutos)}.
+        </p>
+        <p>
+          Vale um aviso aqui, porque circula um número errado sobre isso. Você vai encontrar por aí
+          que 10 km de caminhada gastam cerca de 735 kcal para 70 kg. Isso daria 1,05 kcal por quilo
+          por quilômetro — que é o custo aproximado da <strong>corrida</strong>, não o da caminhada.
+          Andando em ritmo moderado o custo fica perto de <strong>{n(CUSTO_KM, 2)} kcal por quilo por
+          quilômetro</strong>, cerca de um quarto abaixo disso. É pouco intuitivo, mas correr e
+          caminhar a mesma distância não gastam o mesmo: correr custa mais por quilômetro, e não só
+          por ser mais rápido.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por distância em ritmo moderado, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Distância</th><th scope="col">Tempo</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {TAB_DIST.map((l) => (
+                <tr>
+                  <th scope="row">{l.km} km</th>
+                  <td>{formataTempo(l.minutos)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Ritmo leve, moderado ou rápido: quanto muda?</h2>
+        <p>
+          Muda mais do que parece. Entre o passeio a 4 km/h e o passo quase de corrida a 6,5 km/h, o
+          gasto por minuto quase dobra — e a distância no mesmo tempo também.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado em 30 minutos por ritmo, para {PESO_PADRAO} kg, no plano</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ritmo</th><th scope="col">METs</th>
+                <th scope="col">30 min</th><th scope="col">Distância</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_RITMO.map((l) => (
+                <tr>
+                  <th scope="row">{l.ritmo.nome}<small class="cc-faixa">{l.ritmo.faixa}</small></th>
+                  <td>{n(l.ritmo.met)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>{formataKm(l.km)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Um termômetro sem relógio: no moderado dá para falar, mas não cantar; no rápido, só frases
+          curtas.
+        </p>
+
+        <h2>Caminhada inclinada e o 12-3-30: quantas calorias?</h2>
+        <p>
+          A inclinação é o que separa a esteira da rua. Andar no plano custa o deslocamento
+          horizontal; inclinar acrescenta o custo de subir o próprio peso, e esse custo cresce em
+          linha reta com a porcentagem. A 4,8 km/h com 12% de inclinação — o método 12-3-30 — meia
+          hora passa de <strong>{arredondaKcal(EX_12_3_30.kcal)} kcal</strong> para {PESO_PADRAO} kg,
+          contra {arredondaKcal(EX_PLANO_48.kcal)} kcal no plano na mesma velocidade.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado em 30 minutos a 4,8 km/h por inclinação, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Inclinação</th><th scope="col">METs</th><th scope="col">30 min</th></tr>
+            </thead>
+            <tbody>
+              {TAB_INCL.map((l) => (
+                <tr><th scope="row">{l.inclinacao}%</th><td>{n(l.met)}</td><td>≈ {l.kcal} kcal</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A ressalva que o painel da esteira não mostra: <strong>segurar no apoio anula boa parte
+          disso</strong>, porque transfere para os braços parte do peso que a conta supõe nas pernas.
+          Se você precisa segurar para acompanhar, a inclinação está alta demais para hoje.
+        </p>
+
+        <h2>10 mil passos gastam quantas calorias?</h2>
+        <p>
+          Em ritmo moderado, cerca de 100 passos por minuto, 10 mil passos são{' '}
+          <strong>{formataTempo(EX_10MIL.minutos)}</strong> de caminhada e algo em torno de{' '}
+          <strong>{arredondaKcal(EX_10MIL.kcal)} kcal</strong> para {PESO_PADRAO} kg — se fossem
+          todos seguidos e no mesmo passo. Na vida real eles se espalham pelo dia, boa parte em ritmo
+          de corredor de escritório, e o gasto real fica abaixo disso.
+        </p>
+        <p>
+          A calculadora converte passos em <em>tempo</em> pela cadência, e não em distância pela
+          passada. Passada varia com altura e com ritmo; assumir 75 cm para todo mundo daria um
+          número com cara de exato e miolo de chute. Sobre a meta em si — de onde ela saiu e o que
+          ela vale —, <a href="/emagrecimento/quantos-passos-por-dia/">quantos passos por dia para
+          emagrecer</a> responde.
+        </p>
+
+        <h2>Quanto tempo caminhar para gastar 300 ou 500 calorias?</h2>
+        <p>
+          Para {PESO_PADRAO} kg em ritmo moderado, <strong>300 kcal</strong> pedem cerca de{' '}
+          {formataTempo(EX_300.minutos)} ({formataKm(EX_300.km)}), e <strong>500 kcal</strong>, algo
+          perto de {formataTempo(EX_500.minutos)} ({formataKm(EX_500.km)}). Com inclinação ou passo
+          mais rápido cai bastante; com peso maior também, porque o gasto por minuto é proporcional
+          ao peso.
+        </p>
+        <p>
+          Só não confunda uma meta de caloria com uma estratégia. Trezentas calorias caminhando são
+          anuladas por um lanche desatento — o que decide é{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">o déficit da semana inteira</a>, e
+          a caminhada é uma das peças dele. A mais fácil de repetir, aliás, que não é pouco.
+        </p>
+
+        <h2>Quanto tempo de caminhada para perder 1 kg?</h2>
+        <p>
+          Essa pergunta tem uma resposta matemática e uma fisiológica, e elas não são a mesma coisa.
+          Um quilo de gordura corporal armazena cerca de {KCAL_POR_KG_GORDURA.toLocaleString('pt-BR')} kcal.
+          Para {PESO_PADRAO} kg em ritmo moderado, essa energia corresponderia a aproximadamente{' '}
+          <strong>{formataTempo(UM_QUILO.minutos)}</strong> de caminhada — em torno de{' '}
+          {formataKm(UM_QUILO.km)}.
+        </p>
+        <div class="callout">
+          <strong>Isso não significa que caminhar esse tempo faz perder exatamente 1 kg.</strong> É
+          uma simulação teórica, para dar noção de ordem de grandeza. O corpo não responde em linha
+          reta: o gasto cai conforme a pessoa emagrece, e o exercício mexe no apetite e no quanto a
+          pessoa se move no resto do dia.
+        </div>
+        <p>
+          O que a conta mostra, de verdade, é por que tentar emagrecer <em>só</em> caminhando é o
+          caminho mais lento — e por que a caminhada rende tanto quando entra numa estratégia junto
+          com treino de força e alimentação. É a mesma lógica de{' '}
+          <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação ou cardio para
+          emagrecer</a>.
+        </p>
+
+        <h2>Como calculamos</h2>
+        <p>O gasto sai da equação de METs usada em fisiologia do exercício:</p>
+        <pre class="cc-formula">kcal/min = MET × 3,5 × peso (kg) ÷ 200
+{n(MOD.met)} × 3,5 × {PESO_PADRAO} ÷ 200 ≈ {n(POR_MIN)} kcal/min</pre>
+        <p>
+          Os valores de MET no plano vêm do <strong>{FONTES[0].rotuloCurto}</strong>, que{' '}
+          {FONTES[0].resumo} Entre uma faixa medida e outra a calculadora <strong>interpola</strong> —
+          e avisa quando faz isso. O Compêndio mediu faixas, não cada décimo de km/h, e apresentar
+          valor interpolado como medido seria inventar precisão.
+        </p>
+        <p>
+          A <strong>inclinação</strong> entra pelo termo vertical da equação de caminhada da ACSM
+          (1,8 × velocidade em m/min × inclinação, dividido por 3,5 para virar MET), somado ao MET do
+          plano. Os <strong>passos</strong> viram tempo pela cadência de cada ritmo, seguindo{' '}
+          {FONTES[2].rotuloCurto}, que {FONTES[2].resumo}
+        </p>
+        <p>
+          Os números são <strong>brutos</strong>: incluem o que a pessoa gastaria parada no mesmo
+          tempo (1 MET). O acréscimo real ao dia é o bruto menos isso — para {PESO_PADRAO} kg em 30
+          minutos moderados, {arredondaKcal(EX_30.kcal)} kcal brutas viram cerca de{' '}
+          {arredondaKcal(EX_30.kcalLiquida)} kcal de acréscimo. A calculadora mostra os dois porque
+          relógios e esteiras mostram só o primeiro, e é o segundo que conta num déficit.
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          {NOTA_NAO_PRESCRICAO} {NOTA_SEGURANCA}
+        </p>
+
+        <h2>Referências</h2>
+        <ul class="cc-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+        <p class="cc-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. Os números desta página são estimativas de gasto energético, não
+          orientação médica.
+        </p>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da caminhada" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraCaminhada } from '../../scripts/caloriasCaminhada.client';
+    iniciarCalculadoraCaminhada();
+  </script>
+
+  <style is:global>
+    /* is:global: partes do resultado são reescritas por JS e não recebem o
+       atributo de escopo do Astro. Todas as classes usam o prefixo `cc-`. */
+
+    .cc-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cc-hero-inner { max-width: 780px; }
+    .cc-hero h1 { color: #fff; max-width: 22ch; }
+    .cc-hero .eyebrow { color: #ffb488; }
+    .cc-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cc-hero-lead strong { color: #fff; }
+    .cc-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cc-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cc-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cc-main { min-width: 0; max-width: 760px; }
+
+    /* ------------------------------ Calculadora ------------------------------ */
+    .cc-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cc-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cc-modos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      margin-bottom: var(--sp-5);
+    }
+    .cc-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cc-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cc-modo.is-ativo {
+      background: var(--brand-600);
+      border-color: var(--brand-600);
+      color: #fff;
+    }
+    .cc-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cc-campos { display: grid; gap: var(--sp-4); }
+    .cc-campo label,
+    .cc-ritmos legend {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cc-campo input[type='number'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cc-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cc-campo input[type='range'] { width: 100%; min-height: 44px; }
+    .cc-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); }
+
+    .cc-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cc-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cc-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cc-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cc-ritmos { border: 0; padding: 0; margin: 0; }
+    .cc-ritmo {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      padding: 0.55rem 0;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    .cc-ritmo input { margin-top: 0.3rem; width: 20px; height: 20px; flex: none; }
+    .cc-ritmo small { display: block; color: var(--muted); font-size: var(--step--1); }
+
+    .cc-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      color: var(--ink);
+      font-size: var(--step--1);
+    }
+
+    /* ------------------------------ Resultado ------------------------------ */
+    .cc-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cc-resultado {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .cc-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cc-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cc-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cc-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cc-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cc-detalhes dd {
+      margin: 0.15rem 0 0;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cc-nota {
+      margin-top: var(--sp-3);
+      font-size: var(--step--1);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .cc-proximo {
+      margin-top: var(--sp-5);
+      padding-top: var(--sp-5);
+      border-top: 1px solid var(--line);
+    }
+    .cc-proximo-lead { line-height: 1.6; }
+    .cc-proximo-acoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+    }
+    .cc-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cc-btn-primario { background: var(--brand-600); color: #fff; }
+    .cc-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cc-btn-secundario {
+      border: 1px solid var(--brand-600);
+      color: var(--brand-600);
+      background: transparent;
+    }
+    .cc-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cc-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    /* ------------------------------ Conteúdo ------------------------------ */
+    .cc-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; white-space: nowrap; }
+    .cc-faixa { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; }
+
+    .cc-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cc-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cc-fontes li { margin-bottom: 0.6rem; }
+    .cc-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

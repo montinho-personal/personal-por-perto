@@ -56,6 +56,8 @@ export const rotas = {
   mounjaro: '/mounjaro-e-treino/',
   humor: '/humor-fitness/',
   ferramentas: '/ferramentas/',
+  calorias: '/calorias/',
+  caloriasCaminhada: '/calorias/caminhada/',
   ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',
   ferramentaPreco: '/ferramentas/calculadora-preco-personal/',
   ferramentaRotina: '/ferramentas/treino-para-minha-rotina/',
