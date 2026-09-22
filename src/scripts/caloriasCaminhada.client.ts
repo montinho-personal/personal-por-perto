@@ -127,6 +127,15 @@ export function iniciarCalculadoraCaminhada(): void {
 
     inclinacaoSaida.textContent = `${incl.toLocaleString('pt-BR')}%`;
 
+    // O resumo do bloco recolhido mostra o estado atual, para ninguém
+    // precisar abri-lo só para conferir o que está selecionado.
+    const estado = $<HTMLElement>('#cc-estado');
+    if (estado) {
+      estado.textContent = `${r.nome.toLowerCase()}, ${
+        incl > 0 ? `${incl.toLocaleString('pt-BR')}% de inclinação` : 'no plano'
+      }`;
+    }
+
     if (!pesoValido(p)) return falha(`Informe um peso entre ${PESO_MIN} e ${PESO_MAX} kg.`, !peso.value.trim());
     if (!inclinacaoValida(incl)) return falha('A inclinação precisa ficar entre 0% e 15%.');
 

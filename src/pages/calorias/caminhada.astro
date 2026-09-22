@@ -219,12 +219,12 @@ const schema = [
         <div class="cc-campos">
           <div class="cc-campo">
             <label for="cc-peso">Seu peso (kg)</label>
-            <input id="cc-peso" type="number" inputmode="decimal" value={PESO_PADRAO} min="30" max="250" step="0.1" />
+            <input id="cc-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
           </div>
 
           <div class="cc-campo cc-campo-modo">
             <label for="cc-minutos">Tempo caminhando (minutos)</label>
-            <input id="cc-minutos" type="number" inputmode="numeric" value="30" min="1" max="600" step="1" />
+            <input id="cc-minutos" type="text" inputmode="numeric" autocomplete="off" value="30" />
             <div class="cc-presets">
               {[10, 20, 30, 45, 60, 90].map((v) => (
                 <button type="button" class="cc-preset" data-alvo="tempo" data-valor={String(v)}>
@@ -236,7 +236,7 @@ const schema = [
 
           <div class="cc-campo cc-campo-modo" hidden>
             <label for="cc-km">Distância caminhada (km)</label>
-            <input id="cc-km" type="number" inputmode="decimal" value="5" min="0.1" max="100" step="0.1" />
+            <input id="cc-km" type="text" inputmode="decimal" autocomplete="off" value="5" />
             <div class="cc-presets">
               {[1, 2, 3, 5, 10].map((v) => (
                 <button type="button" class="cc-preset" data-alvo="distancia" data-valor={String(v)}>{v} km</button>
@@ -246,7 +246,7 @@ const schema = [
 
           <div class="cc-campo cc-campo-modo" hidden>
             <label for="cc-passos">Passos dados</label>
-            <input id="cc-passos" type="number" inputmode="numeric" value="10000" min="100" max="100000" step="100" />
+            <input id="cc-passos" type="text" inputmode="numeric" autocomplete="off" value="10000" />
             <div class="cc-presets">
               {[3000, 5000, 8000, 10000, 15000].map((v) => (
                 <button type="button" class="cc-preset" data-alvo="passos" data-valor={String(v)}>
@@ -258,13 +258,19 @@ const schema = [
 
           <div class="cc-campo cc-campo-modo" hidden>
             <label for="cc-meta">Meta de gasto (kcal)</label>
-            <input id="cc-meta" type="number" inputmode="numeric" value="300" min="10" max="3000" step="10" />
+            <input id="cc-meta" type="text" inputmode="numeric" autocomplete="off" value="300" />
             <div class="cc-presets">
               {[100, 200, 300, 500].map((v) => (
                 <button type="button" class="cc-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
               ))}
             </div>
           </div>
+
+          <details class="cc-ajustes">
+            <summary>
+              Ajustar ritmo e inclinação
+              <span class="cc-ajustes-estado" id="cc-estado">moderado, no plano</span>
+            </summary>
 
           <fieldset class="cc-campo cc-ritmos">
             <legend>Ritmo</legend>
@@ -273,7 +279,8 @@ const schema = [
                 <input type="radio" name="cc-ritmo" value={r.id} checked={r.id === 'moderado'} />
                 <span>
                   <strong>{r.nome}</strong>
-                  <small>{r.faixa} · {r.comoReconhecer}</small>
+                  <small class="cc-faixa-r">{r.faixa}</small>
+                  <small class="cc-como">{r.comoReconhecer}</small>
                 </span>
               </label>
             ))}
@@ -286,6 +293,7 @@ const schema = [
             <input id="cc-inclinacao" type="range" value="0" min="0" max="15" step="1" />
             <p class="cc-dica">Deixe em 0% para caminhada no plano. O método 12-3-30 usa 12%.</p>
           </div>
+          </details>
         </div>
 
         <p id="cc-erro" class="cc-erro" role="status" hidden></p>
@@ -691,7 +699,7 @@ const schema = [
       font-size: var(--step--1);
       margin-bottom: 0.4rem;
     }
-    .cc-campo input[type='number'] {
+    .cc-campo input[type='text'] {
       width: 100%;
       min-height: 48px;
       padding: 0.6rem 0.8rem;
@@ -721,6 +729,32 @@ const schema = [
     .cc-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
     .cc-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
+    /* Ritmo e inclinação ficam recolhidos: os padrões (moderado, no plano)
+       servem para a maioria, e abertos eles empurravam o resultado uns 500px
+       para baixo no celular — duas telas de rolagem antes do número que a
+       pessoa veio buscar. O resumo mostra o estado atual para ninguém
+       precisar abrir só para conferir. */
+    .cc-ajustes {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 var(--sp-4);
+    }
+    .cc-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cc-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cc-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cc-ajustes > .cc-campo:last-child { padding-bottom: var(--sp-4); }
+
     .cc-ritmos { border: 0; padding: 0; margin: 0; }
     .cc-ritmo {
       display: flex;
@@ -732,6 +766,12 @@ const schema = [
     }
     .cc-ritmo input { margin-top: 0.3rem; width: 20px; height: 20px; flex: none; }
     .cc-ritmo small { display: block; color: var(--muted); font-size: var(--step--1); }
+    /* A descrição longa só aparece no ritmo escolhido. Quatro delas abertas
+       empurravam o resultado uns 300px para baixo no celular — e quem já
+       escolheu não precisa mais ler as outras. A faixa de velocidade, que é
+       o que diferencia um ritmo do outro, fica sempre visível. */
+    .cc-ritmo input:not(:checked) ~ span .cc-como { display: none; }
+    .cc-ritmo .cc-como { margin-top: 0.15rem; }
 
     .cc-erro {
       margin-top: var(--sp-4);
