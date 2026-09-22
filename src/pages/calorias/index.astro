@@ -25,6 +25,7 @@ import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
 import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
 import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
+import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '../../lib/calorias/bicicleta';
 
 const path = '/calorias';
 const crumbs = [
@@ -35,6 +36,7 @@ const crumbs = [
 const MOD = ritmo('moderado');
 const EX_30 = arredondaKcal(deTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal);
 const EX_5KM = formataFaixa(deDistancia(5, PESO_PADRAO, 6));
+const EX_BIKE = arredondaBike(deTempoRua(60, PESO_PADRAO, VELOCIDADE_PADRAO).kcal);
 
 const ferramentas = [
   {
@@ -48,6 +50,12 @@ const ferramentas = [
     nome: 'Corrida',
     calcula: 'Por distância, tempo ou meta, com o seu pace — e a faixa, porque economia de corrida varia.',
     exemplo: `5 km a 6:00/km ≈ ${EX_5KM} para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/bicicleta/',
+    nome: 'Bicicleta',
+    calcula: 'Na rua por velocidade, na ergométrica por watts — porque são escalas diferentes.',
+    exemplo: `1 hora a ${VELOCIDADE_PADRAO} km/h ≈ ${EX_BIKE} kcal para ${PESO_PADRAO} kg`,
   },
 ];
 

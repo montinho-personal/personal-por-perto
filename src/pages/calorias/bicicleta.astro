@@ -1,0 +1,860 @@
+---
+/**
+ * Quantas calorias o pedal gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS DUAS DO CLUSTER
+ *
+ * Caminhada: o gasto responde ao TEMPO. Corrida: responde à DISTÂNCIA, e o
+ * ritmo quase não importa por quilômetro. Pedal: responde à VELOCIDADE, e
+ * de forma brutal — dobrar de 14 para 28 km/h triplica o gasto por hora,
+ * porque a resistência do ar cresce com o quadrado da velocidade e a
+ * potência para vencê-la, com o cubo.
+ *
+ * É a terceira física do cluster, e é a que mais contraria a intuição de
+ * quem acha que "meia hora de bike" é uma medida que significa alguma coisa
+ * sozinha.
+ *
+ * DOIS CENÁRIOS, PORQUE SÃO DUAS ESCALAS
+ *
+ * Na rua o Compêndio mede por velocidade. Na ergométrica, por watts — sem
+ * ar para vencer, a velocidade do painel não diz nada sobre o esforço. Usar
+ * uma escala no lugar da outra é o erro mais comum das calculadoras
+ * genéricas, e ele infla o resultado com facilidade.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  EFICIENCIA,
+  FAIXAS_RUA,
+  FONTES,
+  KCAL_POR_KG_GORDURA,
+  NIVEIS_ESFORCO,
+  NOTA_ERGOMETRICA_VELOCIDADE,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  NOTA_VENTO,
+  PESO_BICICLETA,
+  PESO_PADRAO,
+  VELOCIDADE_PADRAO,
+  arredondaKcal,
+  deDistancia,
+  deErgometrica,
+  deKcalRua,
+  deTempoRua,
+  formataKm,
+  formataTempo,
+  formataVelocidade,
+  kcalPorKgPorKm,
+  metDaSubida,
+  metRua,
+  simulacaoUmQuilo,
+  tabelaErgometrica,
+  tabelaPorDistancia,
+  tabelaPorPeso,
+  tabelaPorTempo,
+  tabelaPorVelocidade,
+} from '../../lib/calorias/bicicleta';
+import { kcalPorKgPorKm as corridaPorKm } from '../../lib/calorias/corrida';
+
+const path = '/calorias/bicicleta';
+const atualizadoEm = '2026-09-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Bicicleta', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const V = VELOCIDADE_PADRAO;
+const EX_60 = deTempoRua(60, PESO_PADRAO, V);
+const EX_30 = deTempoRua(30, PESO_PADRAO, V);
+const EX_20KM = deDistancia(20, PESO_PADRAO, V);
+const EX_SUBIDA = deTempoRua(60, PESO_PADRAO, V, 5);
+const EX_ERGO45 = deErgometrica(45, PESO_PADRAO, 100);
+const EX_500 = deKcalRua(500, PESO_PADRAO, V);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, V);
+
+const TAB_VEL = tabelaPorVelocidade(PESO_PADRAO, 60);
+const TAB_PESO = tabelaPorPeso(60, V);
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, V);
+const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, V);
+const TAB_ERGO = tabelaErgometrica(PESO_PADRAO, 45);
+
+const MET_LENTO = metRua(14);
+const MET_RAPIDO = metRua(28);
+const RAZAO = MET_RAPIDO / MET_LENTO;
+const CUSTO_14 = kcalPorKgPorKm(14);
+const CUSTO_28 = kcalPorKgPorKm(28);
+const CUSTO_CORRIDA = corridaPorKm(10);
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 48 caracteres. */
+const title = 'Quantas Calorias a Bicicleta Gasta? Calcule o Seu';
+/* 154 caracteres. */
+const description =
+  'Calcule as calorias do seu pedal por tempo, distância ou na ergométrica. Veja por que dobrar a velocidade triplica o gasto — e o erro da bike de academia.';
+
+const faqs = [
+  {
+    pergunta: '1 hora de bicicleta gasta quantas calorias?',
+    resposta: `Depende muito da velocidade, mais do que em qualquer outra atividade do cluster. Para ${PESO_PADRAO} kg: cerca de ${TAB_VEL[0].kcal} kcal em ritmo de passeio (14 km/h), ${arredondaKcal(EX_60.kcal)} kcal a ${formataVelocidade(V)} e cerca de ${TAB_VEL[4].kcal} kcal num ritmo forte de 28 km/h. Dobrar a velocidade triplica o gasto.`,
+  },
+  {
+    pergunta: '30 minutos de bicicleta queimam quantas calorias?',
+    resposta: `Para ${PESO_PADRAO} kg a ${formataVelocidade(V)}, aproximadamente ${arredondaKcal(EX_30.kcal)} kcal — cerca de ${formataKm(EX_30.km)}. Como o gasto é proporcional ao tempo, uma hora no mesmo ritmo dá perto de ${arredondaKcal(EX_60.kcal)} kcal.`,
+  },
+  {
+    pergunta: 'Pedalar 20 km gasta quantas calorias?',
+    resposta: `Cerca de ${arredondaKcal(EX_20KM.kcal)} kcal para ${PESO_PADRAO} kg a ${formataVelocidade(V)}, em torno de ${formataTempo(EX_20KM.minutos)}. Aqui há uma diferença importante em relação à corrida: pedalar os mesmos 20 km mais rápido gasta MAIS, não o mesmo. O ar cobra por isso.`,
+  },
+  {
+    pergunta: 'Por que a bike da academia mostra um número diferente?',
+    resposta: NOTA_ERGOMETRICA_VELOCIDADE,
+  },
+  {
+    pergunta: 'Quantas calorias 45 minutos de bicicleta ergométrica queimam?',
+    resposta: `Para ${PESO_PADRAO} kg a 100 W — carga moderada —, aproximadamente ${arredondaKcal(EX_ERGO45.kcal)} kcal. A 150 W o mesmo tempo passa de ${TAB_ERGO[4].kcal} kcal. O que decide é a carga, não a velocidade que aparece no painel.`,
+  },
+  {
+    pergunta: 'Bicicleta ou corrida: qual gasta mais?',
+    resposta: `Por hora, a corrida costuma gastar mais, a menos que o pedal seja bem rápido. Por quilômetro não há disputa: pedalar 1 km custa cerca de ${n(kcalPorKgPorKm(21), 2)} kcal por quilo, contra ${n(CUSTO_CORRIDA, 2)} correndo — menos da metade. A bike compensa com volume: dá para pedalar duas horas sem o desgaste articular de duas horas correndo.`,
+  },
+  {
+    pergunta: 'Pedalar na subida gasta mais calorias?',
+    resposta: `Bastante. A ${formataVelocidade(V)}, 5% de subida somam cerca de ${n(metDaSubida(V, 5, PESO_PADRAO))} METs ao pedal no plano — uma hora sobe de ${arredondaKcal(EX_60.kcal)} para ${arredondaKcal(EX_SUBIDA.kcal)} kcal. E aqui o peso da própria bicicleta entra na conta, porque é massa que precisa ser erguida.`,
+  },
+  {
+    pergunta: 'Bicicleta emagrece?',
+    resposta:
+      'Ajuda como qualquer atividade que aumenta o gasto, e tem duas vantagens próprias: é de baixo impacto, o que permite volume alto sem castigar as articulações, e é fácil de encaixar no deslocamento diário. O que ela não faz é resolver sozinha — o resultado depende do balanço energético ao longo de semanas.',
+  },
+  {
+    pergunta: 'Pedalar todo dia perde barriga?',
+    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} ${NOTA_SEGURANCA}`,
+  },
+  {
+    pergunta: 'O vento atrapalha muito a estimativa?',
+    resposta: NOTA_VENTO,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/guias/pedalar-como-treino/',
+    titulo: 'Pedalar como treino: o que a bike faz pela perna',
+    descricao: 'Por que a perna de quem pedala no plano não muda — e a variável que altera isso.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A comparação direta: correr 1 km custa mais que o dobro de pedalar 1 km.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/caminhada/',
+    titulo: 'Quantas calorias a caminhada gasta?',
+    descricao: 'A terceira conta do cluster, que responde por tempo em vez de velocidade.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Onde o gasto do pedal entra, e por que ele é a menor peça da conta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cb-hero">
+    <div class="container cb-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias a bicicleta gasta?</h1>
+      <p class="cb-hero-lead">
+        Uma hora de pedal a {formataVelocidade(V)} gasta cerca de{' '}
+        <strong>{arredondaKcal(EX_60.kcal)} kcal</strong> para {PESO_PADRAO} kg. Mas a velocidade
+        muda isso mais do que em qualquer outra atividade: <strong>dobrá-la triplica o gasto</strong>.
+      </p>
+      <p class="cb-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cb-layout">
+    <article class="cb-main">
+      <section id="cb-app" class="cb-app" aria-labelledby="cb-app-h">
+        <h2 id="cb-app-h" class="cb-app-h">Calculadora de calorias do pedal</h2>
+
+        <div class="cb-modos" role="tablist" aria-label="Onde e como você pedalou">
+          <button type="button" class="cb-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+            Na rua, por tempo
+          </button>
+          <button type="button" class="cb-modo" data-modo="distancia" role="tab" aria-selected="false" tabindex="-1">
+            Na rua, por distância
+          </button>
+          <button type="button" class="cb-modo" data-modo="ergometrica" role="tab" aria-selected="false" tabindex="-1">
+            Ergométrica
+          </button>
+          <button type="button" class="cb-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cb-campos">
+          <div class="cb-campo">
+            <label for="cb-peso">Seu peso (kg)</label>
+            <input id="cb-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="cb-campo cb-campo-modo">
+            <label for="cb-minutos">Tempo pedalando (minutos)</label>
+            <input id="cb-minutos" type="text" inputmode="numeric" autocomplete="off" value="60" />
+            <div class="cb-presets">
+              {[15, 30, 45, 60, 90, 120].map((v) => (
+                <button type="button" class="cb-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cb-campo cb-campo-modo" hidden>
+            <label for="cb-km">Distância pedalada (km)</label>
+            <input id="cb-km" type="text" inputmode="decimal" autocomplete="off" value="20" />
+            <div class="cb-presets">
+              {[5, 10, 20, 30, 50].map((v) => (
+                <button type="button" class="cb-preset" data-alvo="distancia" data-valor={String(v)}>{v} km</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cb-campo cb-campo-modo" hidden>
+            <label for="cb-minutos-ergo">Tempo na ergométrica (minutos)</label>
+            <input id="cb-minutos-ergo" type="text" inputmode="numeric" autocomplete="off" value="45" />
+            <div class="cb-presets">
+              {[20, 30, 45, 60].map((v) => (
+                <button type="button" class="cb-preset" data-alvo="ergometrica" data-valor={String(v)}>
+                  {v} min
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cb-campo cb-campo-modo" hidden>
+            <label for="cb-meta">Meta de gasto (kcal)</label>
+            <input id="cb-meta" type="text" inputmode="numeric" autocomplete="off" value="500" />
+            <div class="cb-presets">
+              {[200, 300, 500, 800].map((v) => (
+                <button type="button" class="cb-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Cenário RUA: a escala é velocidade. -->
+          <div id="cb-bloco-rua">
+            <div class="cb-campo">
+              <label for="cb-velocidade">
+                Velocidade média (km/h) <span class="cb-comparativo" id="cb-comparativo"></span>
+              </label>
+              <input id="cb-velocidade" type="text" inputmode="decimal" autocomplete="off" value={V} />
+              <div class="cb-presets">
+                {FAIXAS_RUA.map((f) => (
+                  <button type="button" class="cb-preset" data-alvo="velocidade" data-valor={String(f.velocidade)}>
+                    {f.velocidade} km/h
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <details class="cb-ajustes">
+              <summary>
+                Pedalei em subida
+                <span class="cb-ajustes-estado" id="cb-estado">no plano</span>
+              </summary>
+              <div class="cb-campo">
+                <label for="cb-inclinacao">
+                  Inclinação média — <output id="cb-inclinacao-valor" for="cb-inclinacao">0%</output>
+                </label>
+                <input id="cb-inclinacao" type="range" value="0" min="0" max="15" step="1" />
+                <p class="cb-dica">
+                  Aqui entra o peso da bicicleta ({PESO_BICICLETA} kg), porque subindo é massa que precisa ser erguida.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <!-- Cenário ERGOMÉTRICA: a escala é potência. -->
+          <div id="cb-bloco-ergo" hidden>
+            <div class="cb-campo">
+              <label for="cb-watts">Potência (watts)</label>
+              <input id="cb-watts" type="text" inputmode="numeric" autocomplete="off" value="100" />
+              <p class="cb-dica">Se o painel não mostra watts, escolha o esforço abaixo:</p>
+              <div class="cb-presets">
+                {NIVEIS_ESFORCO.map((nv) => (
+                  <button type="button" class="cb-nivel cb-preset" data-nivel={nv.id} aria-pressed="false">
+                    {nv.nome}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="cb-erro" class="cb-erro" role="status" hidden></p>
+
+        <div id="cb-saida" class="cb-saida" role="status" aria-live="polite">
+          <p class="cb-resultado">
+            <span class="cb-numero">≈ {arredondaKcal(EX_60.kcal)}</span>
+            <span class="cb-unidade">kcal</span>
+          </p>
+          <p class="cb-frase"></p>
+
+          <dl class="cb-detalhes">
+            <div><dt>Tempo</dt><dd class="cb-d-tempo">—</dd></div>
+            <div class="cb-linha-km"><dt>Distância</dt><dd class="cb-d-km">—</dd></div>
+            <div class="cb-linha-porkm"><dt>Por quilômetro</dt><dd class="cb-d-porkm">—</dd></div>
+            <div class="cb-linha-watts" hidden><dt>Potência</dt><dd class="cb-d-watts">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cb-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cb-d-met">—</span> METs</dd></div>
+          </dl>
+
+          <p class="cb-nota cb-nota-intensidade" hidden></p>
+          <p class="cb-nota cb-nota-ergo" hidden></p>
+          <p class="cb-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cb-proximo">
+            <p class="cb-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado: <strong>o que o pedal está fazendo pelo seu corpo além de
+              gastar caloria</strong>. Pedalar no plano é carga baixa repetida — ótimo para volume
+              e condicionamento, fraco como estímulo de força.
+            </p>
+            <div class="cb-proximo-acoes">
+              <a class="cb-btn cb-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cb-btn cb-btn-secundario cb-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cb-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cb-conteudo">
+        <h2>Dobrar a velocidade triplica o gasto</h2>
+        <p>
+          Esta é a diferença central entre pedalar e as outras atividades. Na corrida, o custo de
+          cada quilômetro quase não muda com o ritmo. No pedal, a velocidade manda — e manda de
+          forma desproporcional: entre 14 e 28 km/h, o gasto por hora vai de{' '}
+          <strong>{n(MET_LENTO)} para {n(MET_RAPIDO)} METs</strong>, exatamente{' '}
+          <strong>{n(RAZAO, 1)} vezes</strong>.
+        </p>
+        <p>
+          O motivo é a resistência do ar. Ela cresce com o quadrado da velocidade, e a potência
+          necessária para vencê-la cresce com o cubo. Acima de uns 20 km/h no plano, o ar passa a
+          ser a força dominante — é contra ele que a maior parte do esforço vai.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de pedal por velocidade média, para {PESO_PADRAO} kg, no plano</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ritmo</th><th scope="col">METs</th>
+                <th scope="col">1 hora</th><th scope="col">Distância</th><th scope="col">Por km</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_VEL.map((l) => (
+                <tr>
+                  <th scope="row">
+                    {l.faixa.velocidade} km/h
+                    <small class="cb-faixa">{l.faixa.faixa}</small>
+                  </th>
+                  <td>{n(l.faixa.met)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>{formataKm(l.km)}</td>
+                  <td>≈ {Math.round(l.porKm)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare na última coluna, e compare com a corrida: aqui o custo por quilômetro{' '}
+          <strong>sobe</strong> cerca de 50% da faixa mais lenta à mais rápida, de{' '}
+          {n(CUSTO_14, 2)} para {n(CUSTO_28, 2)} kcal por quilo por quilômetro. Correndo, esse
+          mesmo número fica praticamente parado. São físicas diferentes.
+        </p>
+        <p class="cb-ressalva">
+          Uma ressalva honesta sobre a tabela: as faixas do Compêndio são médias medidas, de
+          larguras diferentes, não pontos de uma curva ajustada. A tendência de alta é clara, mas
+          entre duas faixas vizinhas o número pode não subir — a de 21 km/h, por exemplo, sai
+          ligeiramente abaixo da de 17,5 km/h por quilômetro. A física explica o formato geral, não
+          cada degrau.
+        </p>
+
+        <h2>O erro da bike de academia</h2>
+        <p>
+          Se você já comparou o número do painel da ergométrica com o de um aplicativo de pedal na
+          rua, provavelmente estranhou. Há um motivo, e ele é físico: <strong>na ergométrica não
+          existe ar para vencer</strong>.
+        </p>
+        <p>
+          Isso significa que a velocidade que aparece no visor não diz nada sobre o seu esforço. Dá
+          para marcar 30 km/h com a carga no mínimo, pedalando sem resistência nenhuma. O que decide
+          o gasto ali é a <strong>carga</strong> — e é por isso que o Compêndio mede bicicleta
+          estacionária em watts, não em quilômetros por hora.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>45 minutos de bicicleta ergométrica por potência, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Potência</th><th scope="col">METs</th><th scope="col">45 min</th></tr>
+            </thead>
+            <tbody>
+              {TAB_ERGO.map((l) => (
+                <tr>
+                  <th scope="row">{l.faixa.rotulo}</th>
+                  <td>{n(l.faixa.met)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Se o seu painel não mostra watts, a calculadora aceita nível de esforço — mas vale saber
+          que isso é aproximação declarada, não medição. Aula de spinning costuma ficar na faixa dos
+          150 W médios, com picos bem acima.
+        </p>
+
+        <h2>Calorias por tempo e por distância</h2>
+        <p>
+          As duas tabelas são para {PESO_PADRAO} kg a {formataVelocidade(V)}, que é um ritmo de
+          pedal de treino tranquilo. Para outra velocidade, a diferença é grande — use a calculadora.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por tempo de pedal a {formataVelocidade(V)}, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Tempo</th><th scope="col">Gasto</th><th scope="col">Distância</th></tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>{formataKm(l.km)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por distância a {formataVelocidade(V)}, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Distância</th><th scope="col">Tempo</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {TAB_DIST.map((l) => (
+                <tr>
+                  <th scope="row">{l.km} km</th>
+                  <td>{formataTempo(l.minutos)}</td>
+                  <td>≈ {l.kcal} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Calorias no pedal por peso corporal</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora a {formataVelocidade(V)} por peso corporal</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">1 hora (bruto)</th><th scope="col">Acréscimo ao dia</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {l.kcal} kcal</td>
+                  <td>≈ {l.kcalLiquida} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Bicicleta ou corrida: qual gasta mais?</h2>
+        <p>
+          <strong>Por hora</strong>, a corrida costuma ganhar, a menos que o pedal seja rápido.
+          <strong> Por quilômetro</strong>, não há disputa: pedalar 1 km a {formataVelocidade(21)}{' '}
+          custa cerca de {n(kcalPorKgPorKm(21), 2)} kcal por quilo, contra {n(CUSTO_CORRIDA, 2)}{' '}
+          correndo — menos da metade.
+        </p>
+        <p>
+          Mas a conta que importa não é essa. A bike compensa com <strong>volume</strong>: duas horas
+          de pedal são perfeitamente viáveis toda semana, duas horas de corrida cobram um preço
+          articular que a maioria não paga por muito tempo. Para quem está acima do peso ou voltando
+          de lesão, isso costuma decidir —{' '}
+          <a href="/calorias/corrida/">a conta da corrida</a> mostra o outro lado.
+        </p>
+
+        <h2>Pedalar na subida</h2>
+        <p>
+          A {formataVelocidade(V)}, 5% de subida acrescentam cerca de{' '}
+          <strong>{n(metDaSubida(V, 5, PESO_PADRAO))} METs</strong> ao pedal no plano: uma hora sai
+          de {arredondaKcal(EX_60.kcal)} para {arredondaKcal(EX_SUBIDA.kcal)} kcal.
+        </p>
+        <p>
+          A subida é também o único lugar em que o <strong>peso da bicicleta</strong> entra na conta.
+          No plano ele quase não pesa; subindo, é massa que precisa ser erguida junto com você — e é
+          por isso que ciclista se importa tanto com o peso do quadro em prova de montanha e quase
+          nada em prova plana.
+        </p>
+
+        <h2>Quanto pedalar para gastar 500 calorias?</h2>
+        <p>
+          Para {PESO_PADRAO} kg a {formataVelocidade(V)}, cerca de{' '}
+          <strong>{formataKm(EX_500.km)}</strong> — em torno de {formataTempo(EX_500.minutos)}. Em
+          ritmo mais forte cai bastante, porque o gasto por hora sobe rápido.
+        </p>
+        <p>
+          E o lembrete de sempre: meta de caloria não é estratégia. O que decide é{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">o déficit da semana inteira</a>.
+        </p>
+
+        <h2>Quanto pedalar para perder 1 kg?</h2>
+        <p>
+          Um quilo de gordura corporal armazena cerca de {KCAL_POR_KG_GORDURA.toLocaleString('pt-BR')} kcal.
+          Para {PESO_PADRAO} kg a {formataVelocidade(V)}, isso corresponderia a aproximadamente{' '}
+          <strong>{formataKm(UM_QUILO.km)}</strong> de pedal.
+        </p>
+        <div class="callout">
+          <strong>Isso não significa que pedalar essa distância faz perder exatamente 1 kg.</strong>{' '}
+          É uma simulação teórica, para dar noção de ordem de grandeza. O corpo não responde em
+          linha reta: o gasto cai conforme a pessoa emagrece, e o exercício mexe no apetite.
+        </div>
+
+        <h2>O que o pedal faz — e o que ele não faz</h2>
+        <p>
+          Gasto calórico é só uma parte da história. Pedalar no plano é carga baixa repetida milhares
+          de vezes: excelente para condicionamento e para volume de movimento sem impacto, fraco como
+          estímulo de força. A perna de quem só pedala no plano costuma não mudar de forma —{' '}
+          <a href="/guias/pedalar-como-treino/">pedalar como treino</a> trata disso com calma, e
+          explica qual variável muda esse quadro.
+        </p>
+
+        <h2>Como calculamos</h2>
+        <p>
+          O gasto sai da equação de METs, com os valores vindo do Compêndio de Atividades Físicas
+          (edição 2024) — que mede o pedal de <strong>duas formas diferentes</strong>, e é por isso
+          que esta ferramenta tem dois cenários:
+        </p>
+        <pre class="cb-formula">kcal/min = MET × 3,5 × peso (kg) ÷ 200
+
+RUA          MET por faixa de velocidade  (4,0 a 12,0)
+ERGOMÉTRICA  MET por potência em watts    (5,0 a 13,8)</pre>
+        <p>
+          Entre duas faixas medidas a calculadora <strong>interpola</strong>, e fora das pontas ela
+          segura no valor da ponta — extrapolar para 45 km/h devolveria um número que ninguém mediu.
+        </p>
+        <p>
+          A <strong>subida</strong> não vem do Compêndio: é física direta. A potência para erguer o
+          conjunto (você mais a bicicleta) é massa × gravidade × velocidade vertical; essa potência
+          mecânica vira gasto metabólico dividida pela eficiência do pedal, que a literatura situa
+          perto de {n(EFICIENCIA * 100, 0)}%.
+        </p>
+        <p>
+          Essa escolha tem uma conferência embutida, e ela fecha: os 100 W da ergométrica valem
+          6,8 METs no Compêndio, o que para {PESO_PADRAO} kg implica uma eficiência de cerca de 20%
+          — dentro da faixa da literatura e perto dos {n(EFICIENCIA * 100, 0)}% usados na conta de
+          subida. As duas pontas da ferramenta concordam.
+        </p>
+        <p>
+          Os números são <strong>brutos</strong>: incluem o que você gastaria parado no mesmo tempo.
+          O acréscimo real ao dia é menor, e a calculadora mostra os dois.
+        </p>
+        <p class="cb-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>{NOTA_VENTO}</p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cb-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do pedal" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraBicicleta } from '../../scripts/caloriasBicicleta.client';
+    iniciarCalculadoraBicicleta();
+  </script>
+
+  <style>
+    .cb-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cb-hero-inner { max-width: 780px; }
+    .cb-hero h1 { color: #fff; max-width: 22ch; }
+    .cb-hero :global(.eyebrow) { color: #ffb488; }
+    .cb-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cb-hero-lead strong { color: #fff; }
+    .cb-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cb-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cb-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cb-main { min-width: 0; max-width: 760px; }
+
+    .cb-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cb-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cb-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cb-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cb-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cb-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cb-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cb-campos { display: grid; gap: var(--sp-4); }
+    .cb-campo { margin-bottom: 0; }
+    .cb-campo label { display: block; font-weight: 700; font-size: var(--step--1); margin-bottom: 0.4rem; }
+    .cb-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cb-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cb-campo input[type='range'] { width: 100%; min-height: 44px; }
+    .cb-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); }
+    .cb-comparativo { font-weight: 400; color: var(--muted); }
+
+    #cb-bloco-rua > .cb-campo,
+    #cb-bloco-ergo > .cb-campo { margin-bottom: var(--sp-4); }
+
+    .cb-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cb-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cb-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cb-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cb-nivel.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cb-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .cb-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cb-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cb-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cb-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cb-ajustes > .cb-campo { padding-bottom: var(--sp-4); }
+
+    .cb-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cb-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cb-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cb-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cb-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cb-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cb-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cb-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cb-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cb-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cb-nota-ergo,
+    .cb-nota-intensidade { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cb-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cb-proximo-lead { line-height: 1.6; }
+    .cb-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cb-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cb-btn-primario { background: var(--brand-600); color: #fff; }
+    .cb-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cb-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cb-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cb-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cb-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cb-conteudo { margin-top: var(--sp-7); }
+    .cb-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cb-faixa { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .cb-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cb-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cb-fontes li { margin-bottom: 0.6rem; }
+    .cb-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
