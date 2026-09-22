@@ -35,6 +35,7 @@ import {
   NOTA_SEGURANCA,
   NOTA_SEM_PERDA_LOCALIZADA,
   PESO_PADRAO,
+  VARIACAO_ECONOMIA,
   arredondaKcal,
   deDistancia,
   deKcal,
@@ -46,6 +47,7 @@ import {
   formataTempo,
   formataVelocidade,
   kcalPorKgPorKm,
+  metCorrida,
   metDaInclinacao,
   simulacaoUmQuilo,
   tabelaPorDistancia,
@@ -78,6 +80,19 @@ const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, PACE);
 const TAB_PESO = tabelaPorPeso(5, PACE);
 const TAB_PACE = tabelaPorPace(PESO_PADRAO, 5);
 
+/* A conferência contra o Compêndio 2024. Os METs medidos são copiados da
+   publicação; o resto sai do motor, para a tabela nunca divergir dele. */
+const MARATONA = deDistancia(42.2, PESO_PADRAO, PACE);
+const COMPARA = [
+  { kmh: 9.66, compendio: 9.3 },
+  { kmh: 12.87, compendio: 12.0 },
+  { kmh: 15, compendio: 14.6 },
+].map((l) => ({
+  ...l,
+  acsm: metCorrida(l.kmh, 0),
+  piso: metCorrida(l.kmh, 0) * (1 - VARIACAO_ECONOMIA),
+}));
+
 const CUSTO_CORRIDA = kcalPorKgPorKm(10);
 const CUSTO_CAMINHADA = caminhadaPorKm(5, 0);
 const RAZAO = CUSTO_CORRIDA / CUSTO_CAMINHADA;
@@ -85,9 +100,9 @@ const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigit
 
 /* 47 caracteres. */
 const title = 'Quantas Calorias a Corrida Gasta? Calcule por Km';
-/* 138 caracteres. */
+/* 144 caracteres. */
 const description =
-  'Calcule as calorias da sua corrida por distância, tempo ou pace. Veja por que o custo por quilômetro quase não muda com o ritmo.';
+  'Calcule as calorias da sua corrida por distância, tempo ou pace, com o seu peso. Veja por que o custo por quilômetro quase não muda com o ritmo.';
 
 const faqs = [
   {
@@ -516,8 +531,54 @@ kcal/min = MET × 3,5 × peso (kg) ÷ 200</pre>
           vez de responder com a conta errada.
         </p>
         <p>
-          O resultado aparece como <strong>faixa</strong> porque {NOTA_FAIXA.charAt(0).toLowerCase() + NOTA_FAIXA.slice(1, NOTA_FAIXA.indexOf('.') + 1)}{' '}
-          A faixa é de 10% para cada lado do centro estimado.
+          O resultado aparece como <strong>faixa</strong> porque economia de corrida varia entre
+          pessoas. A faixa é de 10% para cada lado do centro estimado.
+        </p>
+
+        <h3>Uma conferência honesta: a ACSM lê mais alto que o Compêndio</h3>
+        <p>
+          As duas fontes mais usadas para isso não dão o mesmo número, e vale dizer em voz alta.
+          A equação da ACSM, que é a usada aqui, devolve valores de 5% a 10% acima dos METs medidos
+          pelo Compêndio de Atividades Físicas:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Comparação entre a equação da ACSM e os valores medidos do Compêndio 2024</caption>
+            <thead>
+              <tr>
+                <th scope="col">Velocidade</th><th scope="col">ACSM</th>
+                <th scope="col">Compêndio</th><th scope="col">Piso da nossa faixa</th>
+              </tr>
+            </thead>
+            <tbody>
+              {COMPARA.map((l) => (
+                <tr>
+                  <th scope="row">{formataVelocidade(l.kmh)}</th>
+                  <td>{n(l.acsm)} METs</td>
+                  <td>{n(l.compendio)} METs</td>
+                  <td>{n(l.piso)} METs</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare na última coluna: <strong>o piso da faixa cai praticamente em cima do valor do
+          Compêndio</strong> nos três pontos. Ou seja, a faixa que esta página mostra não é só a
+          variação entre pessoas — ela também cobre a diferença entre as duas melhores fontes
+          disponíveis. Quem quiser a estimativa mais conservadora deve ler o número de baixo.
+        </p>
+
+        <h3>Por que a maratona aqui parece mais alta do que você já viu</h3>
+        <p>
+          O número que circula para uma maratona de {PESO_PADRAO} kg é de cerca de 2.900 kcal, e
+          esta página mostra {arredondaKcal(TAB_DIST[5].kcal).toLocaleString('pt-BR')} kcal. As duas
+          coisas estão certas e medem gastos diferentes: o valor daqui é <strong>bruto</strong>,
+          incluindo o que o corpo gastaria em repouso durante as{' '}
+          {formataTempo(TAB_DIST[5].minutos)} de prova. Descontando esse repouso, sobram{' '}
+          <strong>{arredondaKcal(MARATONA.kcalLiquida).toLocaleString('pt-BR')} kcal</strong> — que é
+          exatamente o número consagrado. A calculadora mostra os dois: o bruto no resultado e o
+          líquido em &ldquo;acréscimo real ao dia&rdquo;.
         </p>
         <p class="cr-revisao">
           Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
@@ -553,7 +614,7 @@ kcal/min = MET × 3,5 × peso (kg) ÷ 200</pre>
     iniciarCalculadoraCorrida();
   </script>
 
-  <style is:global>
+  <style>
     /* is:global: partes do resultado são reescritas por JS e não recebem o
        atributo de escopo do Astro. Todas as classes usam o prefixo `cr-`. */
     .cr-hero {
