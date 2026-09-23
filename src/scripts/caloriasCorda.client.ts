@@ -33,6 +33,7 @@ import {
   SEGUNDOS_MIN,
   SERIES_MAX,
   SERIES_MIN,
+  VELOCIDADE_CORRIDA_REF,
   arredondaKcal,
   cadenciaDaFaixa,
   cadenciaIncoerente,
@@ -60,9 +61,6 @@ import { metCorrida } from '../lib/calorias/corrida';
 import { whatsappUrl } from '../lib/links';
 
 type Modo = 'tempo' | 'pulos' | 'series' | 'meta';
-
-/** A velocidade de corrida usada na comparação. Ritmo forte, mas comum. */
-const VELOCIDADE_CORRIDA = 10;
 
 const $ = <T extends HTMLElement>(sel: string): T | null => document.querySelector<T>(sel);
 
@@ -219,10 +217,10 @@ export function iniciarCalculadoraCorda(): void {
      * afirmar que ela é falsa, a ferramenta mostra a equivalência real a
      * cada resultado, calculada pelo motor da corrida deste site.
      */
-    const minCorrida = res.kcal / kcalPorMinuto(metCorrida(VELOCIDADE_CORRIDA), pesoKg);
+    const minCorrida = res.kcal / kcalPorMinuto(metCorrida(VELOCIDADE_CORRIDA_REF), pesoKg);
     set(
       '.cj-d-corrida',
-      `${formataTempo(minCorrida)} a ${VELOCIDADE_CORRIDA} km/h`,
+      `${formataTempo(minCorrida)} a ${VELOCIDADE_CORRIDA_REF} km/h`,
     );
 
     linha('.cj-linha-series', res.cenario === 'series');

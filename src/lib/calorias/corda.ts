@@ -81,8 +81,8 @@ export interface Fonte {
 
 export const FONTE_COMPENDIO: Fonte = {
   rotulo:
-    'Ainsworth BE, Haskell WL, Herrmann SD, et al. 2011 Compendium of Physical Activities. Medicine & Science in Sports & Exercise, 2011',
-  rotuloCurto: 'Compêndio de Atividades Físicas',
+    'Herrmann SD, Willis EA, Ainsworth BE, et al. 2024 Adult Compendium of Physical Activities. Journal of Sport and Health Science, 2024',
+  rotuloCurto: 'Compêndio de Atividades Físicas (2024)',
   url: 'https://pacompendium.com/sports/',
   resumo:
     'mede pular corda em três faixas de cadência: 8,8 METs abaixo de 100 pulos por minuto, 11,8 entre 100 e 120 e 12,3 entre 120 e 160. É a tabela que mostra que acelerar quase não muda o custo por minuto.',
@@ -133,6 +133,7 @@ export const PESO_PADRAO = 70;
  */
 export const MINUTOS_MIN = 1;
 export const MINUTOS_MAX = 60;
+/** O valor com que o campo de tempo nasce. A página o usa; não é enfeite. */
 export const MINUTOS_PADRAO = 10;
 
 /**
@@ -160,6 +161,22 @@ export const SERIES_PADRAO = 8;
 export const SEGUNDOS_MIN = 5;
 export const SEGUNDOS_MAX = 600;
 export const SEGUNDOS_PADRAO = 45;
+
+/**
+ * A velocidade de corrida que a ferramenta usa para converter o resultado em
+ * "equivale a correr tantos minutos".
+ *
+ * Mora AQUI, e não no script da interface, por um motivo concreto: enquanto
+ * ela vivia só no cliente, a prosa da página argumentava com 11,3 km/h (a
+ * velocidade de MET igual ao da corda moderada) e a ferramenta convertia para
+ * 10 km/h, sem que o texto servido mencionasse esse número em lugar nenhum.
+ * A página descrevia errado o próprio instrumento. Número que sai na tela
+ * precisa estar onde a página e os testes alcancem.
+ *
+ * Dez km/h são 6min00 por quilômetro: redondo, reconhecível e igual para
+ * todas as faixas, o que permite comparar sessões entre si.
+ */
+export const VELOCIDADE_CORRIDA_REF = 10;
 
 /** Escada e corda devolvem números pequenos: o piso de meta acompanha. */
 export const KCAL_MIN = 5;
@@ -555,6 +572,9 @@ export const NOTA_CADENCIA_INCOERENTE =
 
 export const NOTA_BRUTO =
   'O número é bruto: inclui o que você gastaria parado nesse tempo. O acréscimo real ao seu dia é um pouco menor, e é esse que conta num déficit.';
+
+export const NOTA_FONTE_LACUNA =
+  'Uma limitação de fonte que vale declarar: os valores de 11,8 e 12,3 METs estão confirmados na edição de 2024 do Compêndio, e são os mesmos da edição de 2011. O de 8,8 METs para a faixa lenta foi verificado pelo código e pela descrição na edição de 2011, e não deu para confirmar de forma independente se a de 2024 o manteve. Ele é o número menos firme desta página, e é também o que menos pesa: quase ninguém usa a calculadora para pulo lento com batida de marcação.';
 
 export const NOTA_ESTIMATIVA =
   'É uma estimativa. Na corda a variação entre pessoas vem principalmente de duas coisas que a tabela não enxerga: a altura do pulo e quantos erros de corda interrompem o ritmo. Quem erra muito gasta menos do que a conta devolve, porque a corda passou menos tempo girando.';

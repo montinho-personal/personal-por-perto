@@ -25,6 +25,7 @@ import {
   MINUTOS_MAX,
   PESO_PADRAO,
   arredondaKcal,
+  VELOCIDADE_CORRIDA_REF,
   cadenciaDaFaixa,
   cadenciaIncoerente,
   cadenciaValida,
@@ -280,6 +281,42 @@ console.log('\n[10b] O aviso de cadência brigando com a faixa\n');
   ok(cadenciaIncoerente('lento', 130), 'mas 130 em ritmo lento avisa');
   ok(!cadenciaIncoerente('moderado', 0), 'cadência zero não avisa — é campo vazio, não erro');
   ok(FAIXAS.every((f) => !cadenciaIncoerente(f.id, f.cadencia)), 'nenhuma faixa briga com a própria cadência');
+}
+
+/* ------------------------------------------------------------------ */
+console.log('\n[10c] A velocidade de referência da comparação mora no motor\n');
+{
+  /*
+   * Este bloco existe por causa de um defeito encontrado na auditoria: a
+   * velocidade de referência da linha "equivale a correr" vivia SÓ no script
+   * da interface. A prosa argumentava com 11,3 km/h (a velocidade de MET
+   * igual ao da corda) e a ferramenta convertia para 10 km/h, sem que o
+   * texto servido mencionasse esse número. A página descrevia errado o
+   * próprio instrumento, e nenhum teste podia enxergar isso.
+   */
+  ok(VELOCIDADE_CORRIDA_REF === 10, 'a referência é 10 km/h, exportada pelo motor');
+  ok(60 / VELOCIDADE_CORRIDA_REF === 6, 'que são 6min00 por quilômetro — redondo, como o texto diz');
+
+  // E ela é DIFERENTE da velocidade de MET igual, de propósito. A página
+  // precisa dizer isso; o teste garante que a diferença é real e conhecida.
+  let vIso = 0;
+  for (let v = 5; v < 25; v += 0.01) {
+    if (metCorrida(v) >= metCorda('moderado')) { vIso = Math.round(v * 10) / 10; break; }
+  }
+  console.log(`     referência da ferramenta: ${VELOCIDADE_CORRIDA_REF} km/h | velocidade de MET igual: ${vIso.toLocaleString('pt-BR')} km/h`);
+  ok(vIso !== VELOCIDADE_CORRIDA_REF, 'as duas velocidades são mesmo diferentes');
+  ok(vIso > VELOCIDADE_CORRIDA_REF, 'e a de MET igual é a mais rápida das duas');
+
+  // A conversão na referência devolve MAIS minutos que na velocidade de MET
+  // igual, porque correr a 10 km/h custa menos por minuto.
+  const corda10 = deTempo(10, PESO_PADRAO, 'moderado').kcal;
+  const minNaRef = corda10 / kcalPorMinuto(metCorrida(VELOCIDADE_CORRIDA_REF), PESO_PADRAO);
+  const minNoIso = corda10 / kcalPorMinuto(metCorrida(vIso), PESO_PADRAO);
+  console.log(`     10 min de corda = ${minNaRef.toFixed(1)} min a ${VELOCIDADE_CORRIDA_REF} km/h = ${minNoIso.toFixed(1)} min a ${vIso} km/h`);
+  ok(minNaRef > minNoIso, 'converter na referência dá mais minutos que na velocidade de MET igual');
+  ok(perto(minNoIso, 10, 0.3), 'e na velocidade de MET igual dá os 10 minutos que derrubam a lenda');
+  // O ponto que importa: nenhuma das duas chega perto de 30.
+  ok(minNaRef < 20 && minNoIso < 20, 'nenhuma das duas conversões chega perto dos 30 min da lenda');
 }
 
 /* ------------------------------------------------------------------ */

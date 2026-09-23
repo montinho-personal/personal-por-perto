@@ -48,6 +48,7 @@ import {
   NOTA_BRUTO,
   NOTA_CADENCIA,
   NOTA_ESTIMATIVA,
+  NOTA_FONTE_LACUNA,
   NOTA_FISICA,
   NOTA_LENDA,
   NOTA_NAO_PRESCRICAO,
@@ -56,7 +57,9 @@ import {
   NOTA_SERIES,
   PESO_PADRAO,
   SEGUNDOS_PADRAO,
+  MINUTOS_PADRAO,
   SERIES_PADRAO,
+  VELOCIDADE_CORRIDA_REF,
   arredondaKcal,
   cadenciaDaFaixa,
   dePulos,
@@ -78,7 +81,7 @@ import {
 import { metCorrida } from '../../lib/calorias/corrida';
 
 const path = '/calorias/corda';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-09-23';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -118,9 +121,9 @@ const INFLACAO_RELOGIO = EX_RELOGIO.kcal / EX_SERIES.kcal;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 47 caracteres. */
-const title = 'Quantas Calorias Pular Corda Gasta? Calcule';
-/* 153 caracteres. */
+/* 48 caracteres. */
+const title = 'Quantas Calorias Pular Corda Gasta? Calcule Aqui';
+/* 148 caracteres. */
 const description =
   'Calcule as calorias de pular corda por tempo, pulos ou séries. E a conta que desmonta a lenda dos 10 minutos de corda valerem 30 minutos de corrida.';
 
@@ -253,7 +256,7 @@ const schema = [
 
           <div class="cj-campo cj-campo-modo">
             <label for="cj-minutos">Tempo de corda girando (minutos)</label>
-            <input id="cj-minutos" type="text" inputmode="numeric" autocomplete="off" value="10" />
+            <input id="cj-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
             <div class="cj-presets">
               {[1, 3, 5, 10, 15].map((v) => (
                 <button type="button" class="cj-preset" data-alvo="tempo" data-valor={String(v)}>{v} min</button>
@@ -406,8 +409,13 @@ correr a ${n(V_EQUIV)} km/h   ${n(metCorrida(V_EQUIV), 1)} METs   ← praticamen
           exatamente por isso que ninguém aguenta meia hora dela.
         </p>
         <p class="cj-ressalva">
-          A calculadora acima mostra essa equivalência a cada resultado, na linha "equivale a
-          correr". Ela é calculada pela mesma equação que a nossa{' '}
+          Um detalhe de leitura, para os dois números não se confundirem. Os{' '}
+          {n(V_EQUIV)} km/h acima são a velocidade em que correr custa o <em>mesmo por minuto</em>{' '}
+          que a corda moderada — é ela que derruba a lenda. Já a linha "equivale a correr" da
+          calculadora converte o seu resultado para um ritmo fixo de{' '}
+          <strong>{VELOCIDADE_CORRIDA_REF} km/h</strong> (6min00 por quilômetro), que é redondo e
+          igual para todas as faixas, e portanto serve para comparar sessões entre si. As duas
+          contas saem da mesma equação da ACSM que a nossa{' '}
           <a href="/calorias/corrida/">calculadora de corrida</a> usa — duas páginas do mesmo site
           não podem discordar sobre o mesmo número.
         </p>
@@ -589,6 +597,7 @@ a ${n(EFICIENCIA * 100, 0)}% de eficiência
           há número escrito à mão nesta página: tudo o que você lê foi calculado pelos mesmos
           motores que a calculadora usa, e conferido por testes.
         </p>
+        <p>{NOTA_FONTE_LACUNA}</p>
         <p class="cj-revisao">
           Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
           personal trainer. {NOTA_NAO_PRESCRICAO}
