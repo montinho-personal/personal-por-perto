@@ -1,0 +1,607 @@
+---
+/**
+ * Quantas calorias gasta jogar basquete — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS DEZESSEIS
+ *
+ * A primeira página do cluster em que a medição passa a tabela. No tênis,
+ * a partida medida confirmou o Compêndio; aqui, o jogo medido em quadra
+ * custou de 19% a 32% mais que a linha de jogo. A página não esconde nem
+ * escolhe um lado: a tabela serve a quem joga, a medição a quem compete,
+ * e a calculadora tem as duas, cada uma com a fonte dita.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ESTUDO_JOGO,
+  FONTES,
+  MINUTOS_PADRAO,
+  MODALIDADES,
+  NOTA_ARREMESSOS,
+  NOTA_BRUTO,
+  NOTA_COMPETITIVO,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_QUADRA,
+  NOTA_SEGURANCA,
+  NOTA_SEM_CONFERENCIA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  SEM_CONFERENCIA,
+  deTempo,
+  formataFaixaKcal,
+  formataFaixaMet,
+  formataKcal,
+  formataMet,
+  formataTempo,
+  fraseContexto,
+  jogoMedidoContraTabela,
+  modalidade,
+  simulacaoUmQuilo,
+  tabelaPorPeso,
+} from '../../lib/calorias/basquete';
+
+const path = '/calorias/basquete';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Basquete', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX = Object.fromEntries(MODALIDADES.map((m) => [m.id, deTempo(MINUTOS_PADRAO, PESO_PADRAO, m.id)]));
+const EX_ARREMESSO_30 = deTempo(30, PESO_PADRAO, 'arremessos');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'jogo');
+const TAB_PESO = tabelaPorPeso();
+const MEDIDO = jogoMedidoContraTabela();
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+const pct = (v: number) => `${Math.round(v)}%`;
+
+/* 54 caracteres. */
+const title = 'Quantas Calorias Gasta Jogar Basquete? A Conta do Jogo';
+/* 150 caracteres. */
+const description =
+  'Calcule as calorias do basquete por jogo, treino ou arremesso — e veja por que o jogo medido em quadra custou de 19% a 32% mais que a linha da tabela.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta uma hora de basquete?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(EX.jogo.kcalMin)} kcal em uma hora de jogo, pela linha de jogo do Compêndio. Em jogo competitivo medido em quadra, de ${formataFaixaKcal(EX.competitivo.kcalMin, EX.competitivo.kcalMax)} kcal. Só arremessando, sem jogo, de ${formataFaixaKcal(EX.arremessos.kcalMin, EX.arremessos.kcalMax)}.`,
+  },
+  {
+    pergunta: 'Por que o jogo medido deu mais que a tabela?',
+    resposta: `A medição foi feita com jogadores treinados, em jogo conduzido como oficial, com árbitro: ${formataMet(MEDIDO.metMulheres)} METs nas mulheres e ${formataMet(MEDIDO.metHomens)} nos homens, contra ${formataMet(MEDIDO.metTabela)} da tabela. A tabela não diz o nível de quem jogou, e não conseguimos conferir de onde vem o ${formataMet(MEDIDO.metTabela)} para dizer o motivo da diferença. Por isso a calculadora tem as duas linhas.`,
+  },
+  {
+    pergunta: 'Conto o tempo no banco?',
+    resposta: NOTA_QUADRA,
+  },
+  {
+    pergunta: 'Quantas calorias gasta ficar só arremessando?',
+    resposta: `Cerca de ${formataFaixaKcal(EX_ARREMESSO_30.kcalMin, EX_ARREMESSO_30.kcalMax)} kcal em 30 minutos, para ${PESO_PADRAO} kg. A linha aparece com dois valores nas fontes, 4,5 e 5,0 METs, e a conta mostra os dois.`,
+  },
+  {
+    pergunta: 'Jogar basquete emagrece?',
+    resposta: `Aumenta o gasto do dia, e jogo frequente conta. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+  {
+    pergunta: 'Quanto tempo de basquete para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosMin)} de jogo, pela linha da tabela, para ${PESO_PADRAO} kg. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/volei/',
+    titulo: 'Quantas calorias gasta jogar vôlei?',
+    descricao: 'O outro esporte de salto em quadra, em que o chão decide a conta.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/futebol/',
+    titulo: 'Quantas calorias gasta jogar futebol?',
+    descricao: 'A pelada com tempo de banco, lotação e o gasto de quem joga de verdade.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A parte do jogo que é corrida, calculada sozinha, por distância e ritmo.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX.jogo.kcalMin)} kcal de uma hora de jogo entram na conta da semana.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="bq-hero">
+    <div class="container bq-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta jogar basquete?</h1>
+      <p class="bq-hero-lead">
+        Uma hora de jogo gasta cerca de <strong>{formataKcal(EX.jogo.kcalMin)} kcal</strong> para{' '}
+        {PESO_PADRAO} kg, pela tabela. Medido em quadra, o jogo competitivo custou de{' '}
+        {pct(MEDIDO.acimaMin)} a {pct(MEDIDO.acimaMax)} mais:{' '}
+        <strong>{formataFaixaKcal(EX.competitivo.kcalMin, EX.competitivo.kcalMax)} kcal</strong> na mesma hora.
+      </p>
+      <p class="bq-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container bq-layout">
+    <article class="bq-main">
+      <section id="bq-app" class="bq-app" aria-labelledby="bq-app-h">
+        <h2 id="bq-app-h" class="bq-app-h">Calculadora de calorias do basquete</h2>
+
+        <div class="bq-campos">
+          <div class="bq-campo">
+            <label for="bq-peso">Seu peso (kg)</label>
+            <input id="bq-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="bq-campo">
+            <span class="bq-rotulo">O que você fez</span>
+            <div class="bq-presets bq-presets-sem-rotulo" role="group" aria-label="Tipo de atividade">
+              {MODALIDADES.map((m) => (
+                <button
+                  type="button"
+                  class:list={['bq-preset', 'bq-modalidade', m.id === 'jogo' && 'is-ativo']}
+                  data-modalidade={m.id}
+                  aria-pressed={String(m.id === 'jogo')}
+                >
+                  {m.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="bq-dica bq-modalidade-slot" id="bq-modalidade-dica">
+              {formataFaixaMet(modalidade('jogo'))} METs — {modalidade('jogo').fonte}. {modalidade('jogo').comoReconhecer}
+            </p>
+          </div>
+
+          <!-- As abas ficam logo acima dos campos que trocam, como nas lutas. -->
+          <div class="bq-modos" role="tablist" aria-label="Como você quer contar">
+            <button type="button" class="bq-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+              Tempo em quadra
+            </button>
+            <button type="button" class="bq-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+              Tenho uma meta
+            </button>
+          </div>
+
+          <div class="bq-campo bq-campo-modo">
+            <label for="bq-minutos">Minutos em quadra, sem o banco</label>
+            <input id="bq-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="bq-presets">
+              {[20, 40, 60, 90].map((v) => (
+                <button type="button" class="bq-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="bq-campo bq-campo-modo" hidden>
+            <label for="bq-meta">Meta de gasto (kcal)</label>
+            <input id="bq-meta" type="text" inputmode="numeric" autocomplete="off" value="400" />
+            <div class="bq-presets">
+              {[200, 400, 600, 800].map((v) => (
+                <button type="button" class="bq-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p id="bq-erro" class="bq-erro" role="status" hidden></p>
+
+        <div id="bq-saida" class="bq-saida" role="status" aria-live="polite">
+          <p class="bq-resultado">
+            <span class="bq-numero">≈ {formataKcal(EX.jogo.kcalMin)}</span>
+            <span class="bq-unidade">kcal</span>
+          </p>
+          <p class="bq-frase">{fraseContexto(PESO_PADRAO, EX.jogo)}</p>
+
+          <dl class="bq-detalhes">
+            <div><dt>Tempo em quadra</dt><dd class="bq-d-tempo">{formataTempo(MINUTOS_PADRAO)}</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="bq-d-liquido">≈ {formataKcal(EX.jogo.liquidaMin)} kcal</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="bq-d-met">{formataFaixaMet(EX.jogo)}</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="bq-d-fonte">{modalidade('jogo').fonte}</dd></div>
+          </dl>
+
+          <p class="bq-nota bq-nota-linha" hidden></p>
+          <p class="bq-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="bq-proximo">
+            <p class="bq-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> no jogo. Ele não diz se o corpo aguenta
+              o jogo: salto, aterrissagem e mudança de direção pedem tornozelo, joelho e quadril que a
+              quadra não treina sozinha. <strong>Força durante a semana é o que deixa o basquete do fim
+              de semana continuar existindo.</strong>
+            </p>
+            <div class="bq-proximo-acoes">
+              <a class="bq-btn bq-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="bq-btn bq-btn-secundario bq-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="bq-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose bq-conteudo">
+        <h2>O jogo medido custou mais que a tabela</h2>
+        <p>
+          Narazaki e colegas mediram o consumo de oxigênio de {ESTUDO_JOGO.participantes} jogadores,
+          homens e mulheres de {n(ESTUDO_JOGO.idadeMedia)} anos em média, num jogo-treino de{' '}
+          {ESTUDO_JOGO.minutos} minutos conduzido como jogo de verdade, com árbitro e técnico. O
+          resultado passou a linha de jogo do Compêndio.
+        </p>
+        <p class="bq-formula">{`mulheres: ${n(ESTUDO_JOGO.vo2Mulheres)} mL de oxigênio por kg por minuto ÷ 3,5 = ${n(MEDIDO.metMulheres, 2)} METs
+homens:   ${n(ESTUDO_JOGO.vo2Homens)} mL de oxigênio por kg por minuto ÷ 3,5 = ${n(MEDIDO.metHomens, 2)} METs
+
+linha de jogo do Compêndio: ${formataMet(MEDIDO.metTabela)} METs
+a medição ficou ${pct(MEDIDO.acimaMin)} a ${pct(MEDIDO.acimaMax)} acima`}</p>
+        <p>
+          E não foi um jogo de correria o tempo todo. Pela filmagem, os jogadores passaram{' '}
+          {n(ESTUDO_JOGO.pctCorrendo)}% do tempo de jogo correndo e saltando, {n(ESTUDO_JOGO.pctAndando)}%
+          andando e {n(ESTUDO_JOGO.pctParado)}% parados. Mais da metade do jogo foi andando — e ainda
+          assim o gasto passou a tabela.
+        </p>
+        <p>{NOTA_COMPETITIVO}</p>
+
+        <h2>As quatro linhas da calculadora</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora em quadra, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Atividade</th><th scope="col">METs</th><th scope="col">Fonte</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {MODALIDADES.map((m) => (
+                <tr>
+                  <th scope="row">{m.nome}</th>
+                  <td>{formataFaixaMet(m)}</td>
+                  <td>{m.fonte}</td>
+                  <td>≈ {formataFaixaKcal(EX[m.id].kcalMin, EX[m.id].kcalMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Na tabela, o treino com exercícios de fundamento ({formataMet(modalidade('treino').metMin)} METs)
+          custa mais que o jogo ({formataMet(modalidade('jogo').metMin)}). {NOTA_ARREMESSOS}
+        </p>
+        <p>{NOTA_QUADRA}</p>
+
+        <h2>O que não está na calculadora</h2>
+        <ul class="bq-sem-conferencia" aria-label="O que não conseguimos conferir">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>{NOTA_SEM_CONFERENCIA}</p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora em quadra</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">Jogo</th><th scope="col">Treino</th><th scope="col">Competitivo, medido</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.jogo)} kcal</td>
+                  <td>≈ {formataKcal(l.treino)} kcal</td>
+                  <td>≈ {formataFaixaKcal(l.competitivoMin, l.competitivoMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          Nas linhas da tabela, o MET é o do Compêndio de Atividades Físicas de 2024. Na linha
+          competitiva, o MET sai do oxigênio medido em quadra, dividido por 3,5 — sem depender do peso
+          de quem foi medido.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem os códigos, as duas faixas e a distância entre o jogo medido e a
+          tabela.
+        </p>
+        <p class="bq-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: a medição é de 12 jogadores treinados, num jogo de
+          20 minutos. Não conferimos medição de jogo recreativo, de jogo mais longo nem de basquete
+          3x3.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="bq-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do basquete" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraBasquete } from '../../scripts/caloriasBasquete.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraBasquete();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .bq-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .bq-hero-inner { max-width: 780px; }
+    .bq-hero h1 { color: #fff; max-width: 22ch; }
+    .bq-hero :global(.eyebrow) { color: #ffb488; }
+    .bq-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .bq-hero-lead strong { color: #fff; }
+    .bq-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .bq-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .bq-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .bq-main { min-width: 0; max-width: 760px; }
+
+    .bq-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .bq-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .bq-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .bq-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .bq-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .bq-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .bq-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .bq-campos { display: grid; gap: var(--sp-4); }
+    .bq-campo { margin-bottom: 0; }
+    .bq-campo label,
+    .bq-campo .bq-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .bq-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .bq-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+    .bq-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .bq-modalidade-slot { min-height: 3em; line-height: 1.5; }
+    .bq-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .bq-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .bq-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .bq-presets-sem-rotulo { margin-top: 0; }
+    .bq-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .bq-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .bq-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .bq-modalidade.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .bq-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .bq-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .bq-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .bq-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .bq-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .bq-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .bq-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .bq-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .bq-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .bq-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .bq-nota-linha { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .bq-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .bq-proximo-lead { line-height: 1.6; }
+    .bq-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .bq-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .bq-btn-primario { background: var(--brand-600); color: #fff; }
+    .bq-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .bq-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .bq-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .bq-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .bq-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .bq-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .bq-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .bq-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .bq-fontes li { margin-bottom: 0.6rem; }
+    .bq-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

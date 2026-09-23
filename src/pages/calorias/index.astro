@@ -38,6 +38,7 @@ import { deTempo as tenisPorTempo, formataKcal as formataTenis } from '../../lib
 import { deTempo as voleiPorTempo, formataKcal as formataVolei } from '../../lib/calorias/volei';
 import { deAula as crossfitPorAula, formataKcal as formataCrossfit } from '../../lib/calorias/crossfit';
 import { deProva as hyroxProva, formataKcal as formataHyrox } from '../../lib/calorias/hyrox';
+import { deTempo as basquetePorTempo, formataKcal as formataBasquete } from '../../lib/calorias/basquete';
 import { deSessao as musculacaoSessao, formataKcal as formataMusculacao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias';
@@ -64,6 +65,7 @@ const EX_VOLEI_LAZER = formataVolei(voleiPorTempo(60, PESO_PADRAO, 'recreativo')
 const EX_CROSSFIT = formataCrossfit(crossfitPorAula(60, 20, PESO_PADRAO).kcal);
 const HYROX = hyroxProva(90, 6, PESO_PADRAO);
 const EX_HYROX = HYROX.ok ? formataHyrox(HYROX.kcal) : '—';
+const EX_BASQUETE = formataBasquete(basquetePorTempo(60, PESO_PADRAO, 'jogo').kcalMin);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
 const ferramentas = [
@@ -156,6 +158,12 @@ const ferramentas = [
     nome: 'Hyrox',
     calcula: 'Pelo tempo final e pelo pace: 8 km de corrida e 8 estações, cada parte com a sua fonte.',
     exemplo: `Prova de 1h30 com pace de 6:00 ≈ ${EX_HYROX} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/basquete/',
+    nome: 'Basquete',
+    calcula: 'Jogo, treino ou arremesso pela tabela — e o jogo competitivo pela medição feita em quadra, que passou a tabela.',
+    exemplo: `1 hora de jogo ≈ ${EX_BASQUETE} kcal para ${PESO_PADRAO} kg`,
   },
   {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
