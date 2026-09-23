@@ -29,6 +29,7 @@ import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '.
 import { deTempo as nadoPorTempo, arredondaKcal as arredondaNado } from '../../lib/calorias/natacao';
 import { deAndares, formataKcal as formataEscada } from '../../lib/calorias/escada';
 import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib/calorias/corda';
+import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
 
 const path = '/calorias';
 const crumbs = [
@@ -43,6 +44,7 @@ const EX_BIKE = arredondaBike(deTempoRua(60, PESO_PADRAO, VELOCIDADE_PADRAO).kca
 const EX_NADO = arredondaNado(nadoPorTempo(60, PESO_PADRAO, 'crawl', 'medio').kcal);
 const EX_ESCADA = formataEscada(deAndares(10, PESO_PADRAO).kcalSubida);
 const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
+const EX_DANCA = formataDanca(dancaPorTempo(45, PESO_PADRAO, 'zumba').kcal);
 
 const ferramentas = [
   {
@@ -80,6 +82,12 @@ const ferramentas = [
     nome: 'Pular corda',
     calcula: 'Por tempo, pulos ou séries — e a conta que desmonta a lenda dos 10 minutos.',
     exemplo: `10 min em ritmo moderado ≈ ${EX_CORDA} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/danca/',
+    nome: 'Dança',
+    calcula: 'Por estilo e por tempo de aula, com a fonte de cada número — inclusive o que ninguém mediu.',
+    exemplo: `45 min de Zumba ≈ ${EX_DANCA} kcal para ${PESO_PADRAO} kg`,
   },
 ];
 

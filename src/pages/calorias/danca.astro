@@ -1,0 +1,804 @@
+---
+/**
+ * Quantas calorias a dança gasta — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS SEIS
+ *
+ * Nas seis anteriores a pessoa escolhe a intensidade: o ritmo da caminhada,
+ * o pace da corrida, a velocidade do pedal, o estilo do nado, a pressa na
+ * escada, a cadência da corda. Em dança, quem escolhe é a MÚSICA. Ninguém
+ * faz uma aula de Zumba mais devagar. Por isso esta é a única calculadora
+ * do conjunto sem campo de ritmo — oferecer um seria prometer um controle
+ * que a pessoa não tem.
+ *
+ * O PROBLEMA QUE ESTA PÁGINA EXISTE PARA RESOLVER
+ *
+ * Dança é a atividade em que os números publicados têm menos relação com
+ * medição, e por dois motivos simultâneos e opostos:
+ *
+ * 1. O Compêndio não tem linha para Zumba. O "7 METs" que circula é o valor
+ *    de dança aeróbica geral (03015, que vale 7,3) reaproveitado. A medição
+ *    própria de Zumba dá 8,8 METs — ou seja, o número publicado SUBESTIMA.
+ *
+ * 2. As "369 kcal por aula de Zumba" vêm de um estudo real, mas de uma aula
+ *    de 39 minutos com mulheres de cerca de 62 kg. Citado como "uma hora",
+ *    o mesmo número SUPERESTIMA.
+ *
+ * Dois erros em direções contrárias, tirados do mesmo artigo.
+ *
+ * A TABELA SÓ TEM ESTILO COM FONTE
+ *
+ * Seis linhas, cada uma declarando de onde o número vem. Samba, forró e
+ * sertanejo ficam de fora — não por serem menos importantes, mas porque
+ * ninguém os mediu, e preencher a lacuna seria exatamente o que a página
+ * critica.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  DANCANDO_PADRAO,
+  ESTILOS,
+  ESTUDO_ZUMBA,
+  FONTES,
+  MINUTOS_PADRAO,
+  NOTA_369,
+  NOTA_BRUTO,
+  NOTA_ESTIMATIVA,
+  NOTA_INSTRUCAO,
+  NOTA_NAO_ESCOLHE,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_MEDICAO,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  NOTA_ZUMBA_NAO_ESTA,
+  PESO_PADRAO,
+  SEM_MEDICAO,
+  arredondaKcal,
+  deAula,
+  deKcal,
+  deTempo,
+  estilo,
+  formataKcal,
+  formataTempo,
+  kcalPorMinuto,
+  metDanca,
+  pesoImplicitoDoEstudo,
+  reproduzEstudo,
+  simulacaoUmQuilo,
+  tabelaPorEstilo,
+  tabelaPorPeso,
+  tabelaPorTempo,
+} from '../../lib/calorias/danca';
+
+const path = '/calorias/danca';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Dança', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_45 = deTempo(45, PESO_PADRAO, 'aerobica');
+const EX_ZUMBA_45 = deTempo(45, PESO_PADRAO, 'zumba');
+const EX_ZUMBA_60 = deTempo(60, PESO_PADRAO, 'zumba');
+const EX_SALAO_45 = deTempo(45, PESO_PADRAO, 'salao');
+const EX_AULA = deAula(60, PESO_PADRAO, 'zumba', DANCANDO_PADRAO);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'zumba');
+
+const TAB_ESTILO = tabelaPorEstilo(PESO_PADRAO);
+const TAB_PESO = tabelaPorPeso(45, 'zumba');
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, 'zumba');
+
+/* A conferência do estudo, calculada e não escrita à mão. */
+const ESTUDO = reproduzEstudo();
+const PESO_ESTUDO = pesoImplicitoDoEstudo();
+const INFLACAO_HORA = EX_ZUMBA_60.kcal / ESTUDO_ZUMBA.kcalPorAula;
+const SUBESTIMA_SETE = (metDanca('zumba') - 7) / 7;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 51 caracteres. */
+const title = 'Quantas Calorias a Dança Gasta? Zumba, Salão e Mais';
+/* 143 caracteres. */
+const description =
+  'Calcule as calorias da dança por estilo e por tempo de aula. Com a fonte de cada número — e por que o "Zumba = 7 METs" que circula está errado.';
+
+const faqs = [
+  {
+    pergunta: 'Uma hora de Zumba queima quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_ZUMBA_60.kcal)} kcal para ${PESO_PADRAO} kg, se a hora inteira for dança. Mas atenção às ${ESTUDO_ZUMBA.kcalPorAula} kcal que você vê publicadas em toda parte: elas vêm de um estudo real cuja aula tinha ${ESTUDO_ZUMBA.minutosDaAula} minutos, com ${ESTUDO_ZUMBA.participantes} mulheres de ${ESTUDO_ZUMBA.idadeMin} a ${ESTUDO_ZUMBA.idadeMax} anos e cerca de ${n(PESO_ESTUDO, 0)} kg. Citar esse número como "uma aula de uma hora" infla em cerca de ${n(INFLACAO_HORA)} vez.`,
+  },
+  {
+    pergunta: 'Quantos METs tem a Zumba?',
+    resposta: `A medição própria dá ${n(ESTUDO_ZUMBA.met)} METs. O "7 METs" que circula não é de Zumba: é o valor de dança aeróbica geral do Compêndio (código 03015, que na verdade vale ${n(metDanca('aerobica'))}) reaproveitado, porque o Compêndio não tem uma linha para Zumba. Quem publica 7 está subestimando em cerca de ${n(SUBESTIMA_SETE * 100, 0)}%.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta uma aula de dança de uma hora?',
+    resposta: `Depende de quanto da aula foi dança. Numa aula de ${formataTempo(EX_AULA.minutosAula)} com ${DANCANDO_PADRAO}% do tempo dançando — o resto sendo o professor ensinando o passo — dá cerca de ${formataKcal(EX_AULA.kcal)} kcal para ${PESO_PADRAO} kg em Zumba, contra ${formataKcal(EX_ZUMBA_60.kcal)} kcal se a hora fosse dança contínua. A diferença não é detalhe.`,
+  },
+  {
+    pergunta: 'Quantas calorias o samba gasta?',
+    resposta: `Não sabemos, e ninguém sabe: samba não tem medição de gasto energético em laboratório, nem forró, nem sertanejo, nem funk, nem axé. Você vai encontrar números para todos eles por aí — foram estimados por semelhança com outras danças, não medidos. Como referência do que É medido: dança de salão em ritmo rápido vale ${n(metDanca('salao'))} METs, o que para ${PESO_PADRAO} kg dá cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal em 45 minutos.`,
+  },
+  {
+    pergunta: 'Dançar emagrece?',
+    resposta:
+      'Ela aumenta o gasto do dia e tem uma vantagem que quase nenhuma outra atividade tem: as pessoas voltam. Adesão vale mais que intensidade no prazo de meses, e dança é das poucas coisas que gente que odeia academia mantém por anos. Mas nenhum exercício emagrece sozinho — quem decide é o balanço entre o que entra e o que sai ao longo de semanas.',
+  },
+  {
+    pergunta: 'Por que esta calculadora não tem campo de intensidade?',
+    resposta:
+      'Porque em dança você não escolhe a intensidade — a música e a coreografia escolhem. Ninguém faz uma aula de Zumba "em ritmo leve". Nas nossas outras calculadoras o campo de ritmo existe porque a pessoa realmente controla o ritmo; aqui ele seria a promessa de um controle que não existe. O que dá para escolher é a aula, e é isso que o seletor de estilo faz.',
+  },
+  {
+    pergunta: 'Dança de salão gasta menos que Zumba?',
+    resposta: `Bem menos: ${n(metDanca('salao'))} METs contra ${n(metDanca('zumba'))}, quase o dobro de diferença. Em 45 minutos para ${PESO_PADRAO} kg são cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal contra ${formataKcal(EX_ZUMBA_45.kcal)} kcal. E vale a ressalva: o valor do Compêndio é de salão RÁPIDO, dançado de verdade — não do passo básico marcado devagar.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/natacao/',
+    titulo: 'Quantas calorias a natação gasta?',
+    descricao: 'A outra atividade em que o estilo decide — e onde a técnica muda o custo em 55%.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/corda/',
+    titulo: 'Quantas calorias pular corda gasta?',
+    descricao: 'A conta que desmonta a lenda dos 10 minutos — mesmo método, outra atividade.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'Por que adesão vale mais que intensidade, que é o argumento real da dança.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Onde o gasto da aula entra, e por que ele é a menor peça da conta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cd-hero">
+    <div class="container cd-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias a dança gasta?</h1>
+      <p class="cd-hero-lead">
+        Quarenta e cinco minutos de Zumba gastam cerca de{' '}
+        <strong>{formataKcal(EX_ZUMBA_45.kcal)} kcal</strong> para {PESO_PADRAO} kg. E aqui vai o
+        que nenhuma outra página diz: <strong>o Compêndio não tem uma linha para Zumba</strong>, e o
+        "7 METs" que circula por aí é de outra coisa.
+      </p>
+      <p class="cd-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cd-layout">
+    <article class="cd-main">
+      <section id="cd-app" class="cd-app" aria-labelledby="cd-app-h">
+        <h2 id="cd-app-h" class="cd-app-h">Calculadora de calorias da dança</h2>
+
+        <div class="cd-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="cd-modo is-ativo" data-modo="dancando" role="tab" aria-selected="true">
+            Tempo dançando
+          </button>
+          <button type="button" class="cd-modo" data-modo="aula" role="tab" aria-selected="false" tabindex="-1">
+            Tempo de aula
+          </button>
+          <button type="button" class="cd-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cd-campos">
+          <div class="cd-campo">
+            <label for="cd-peso">Seu peso (kg)</label>
+            <input id="cd-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <!--
+            O único seletor de intensidade é o TIPO de dança. Não há campo de
+            ritmo, porque em dança a intensidade é escolhida pela música — um
+            campo de ritmo prometeria um controle que a pessoa não tem.
+          -->
+          <div class="cd-campo">
+            <span class="cd-rotulo">Tipo de dança</span>
+            <div class="cd-presets" role="group" aria-label="Tipo de dança">
+              {ESTILOS.map((e) => (
+                <button
+                  type="button"
+                  class:list={['cd-preset', 'cd-estilo', e.id === 'aerobica' && 'is-ativo']}
+                  data-estilo={e.id}
+                  aria-pressed={String(e.id === 'aerobica')}
+                >
+                  {e.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="cd-dica cd-estilo-slot" id="cd-estilo-dica">
+              {n(metDanca('aerobica'))} METs — Compêndio, código {estilo('aerobica').codigo}.{' '}
+              {estilo('aerobica').comoReconhecer}
+            </p>
+          </div>
+
+          <div class="cd-campo cd-campo-modo">
+            <label for="cd-minutos">Tempo dançando de verdade (minutos)</label>
+            <input id="cd-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="cd-presets">
+              {[15, 30, 45, 60, 90].map((v) => (
+                <button type="button" class="cd-preset" data-alvo="dancando" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cd-campo cd-campo-modo" hidden>
+            <label for="cd-minutos-aula">Tempo total de aula (minutos)</label>
+            <input id="cd-minutos-aula" type="text" inputmode="numeric" autocomplete="off" value="60" />
+            <div class="cd-presets">
+              {[30, 45, 60, 90].map((v) => (
+                <button type="button" class="cd-preset" data-alvo="aula" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cd-campo cd-campo-modo" hidden>
+            <label for="cd-meta">Meta de gasto (kcal)</label>
+            <input id="cd-meta" type="text" inputmode="numeric" autocomplete="off" value="400" />
+            <div class="cd-presets">
+              {[200, 300, 400, 600].map((v) => (
+                <button type="button" class="cd-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!-- O cenário de AULA: o tempo que o professor ensina o passo. -->
+          <div id="cd-bloco-aula" hidden>
+            <div class="cd-campo">
+              <label for="cd-dancando">
+                Quanto da aula foi dançando — <output id="cd-dancando-valor" for="cd-dancando">{DANCANDO_PADRAO}%</output>
+              </label>
+              <input id="cd-dancando" type="range" value={DANCANDO_PADRAO} min="20" max="100" step="5" />
+              <p class="cd-dica">
+                O resto é o professor mostrando o passo. Esse tempo entra como repouso, o que
+                subestima de propósito — você está de pé, se movendo devagar.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p id="cd-erro" class="cd-erro" role="status" hidden></p>
+
+        <div id="cd-saida" class="cd-saida" role="status" aria-live="polite">
+          <p class="cd-resultado">
+            <span class="cd-numero">≈ {formataKcal(EX_45.kcal)}</span>
+            <span class="cd-unidade">kcal</span>
+          </p>
+          <p class="cd-frase"></p>
+
+          <dl class="cd-detalhes">
+            <div><dt>Tempo dançando</dt><dd class="cd-d-dancando">—</dd></div>
+            <div class="cd-linha-aula" hidden><dt>Relógio da aula</dt><dd class="cd-d-aula">—</dd></div>
+            <div class="cd-linha-instrucao" hidden><dt>Tempo de instrução</dt><dd class="cd-d-instrucao">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cd-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cd-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="cd-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="cd-nota cd-nota-instrucao" hidden></p>
+          <p class="cd-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cd-proximo">
+            <p class="cd-proximo-lead">
+              Esse número responde <em>quanto você gastou</em>. Ele não responde a pergunta que
+              decide o resultado: <strong>por quanto tempo você vai continuar indo</strong>. A dança
+              é a atividade deste conjunto com a maior taxa de gente que volta na semana seguinte —
+              e adesão vence intensidade em qualquer prazo que importe.
+            </p>
+            <div class="cd-proximo-acoes">
+              <a class="cd-btn cd-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cd-btn cd-btn-secundario cd-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cd-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cd-conteudo">
+        <h2>O Compêndio não tem uma linha para Zumba</h2>
+        <p>{NOTA_ZUMBA_NAO_ESTA}</p>
+        <p>
+          Vale acompanhar a conta, porque ela é simples. A categoria que existe no Compêndio é{' '}
+          <strong>dança aeróbica geral</strong>, código 03015, com {n(metDanca('aerobica'))} METs.
+          Zumba não está lá. Mas existe medição própria: Luettgen, Porcari e colegas colocaram{' '}
+          {ESTUDO_ZUMBA.participantes} mulheres numa aula real e mediram{' '}
+          <strong>{n(ESTUDO_ZUMBA.met)} METs</strong>.
+        </p>
+        <p>
+          Ou seja: quem publica "Zumba = 7 METs" está usando o número de outra atividade, e ainda
+          por baixo — {n(SUBESTIMA_SETE * 100, 0)}% abaixo do que a medição encontrou.
+        </p>
+
+        <h2>E as "369 calorias" estão certas para a aula errada</h2>
+        <p>{NOTA_369}</p>
+        <p>
+          Dá para conferir que estamos lendo o artigo certo, e não repetindo de ouvido. O estudo
+          reporta {n(ESTUDO_ZUMBA.met)} METs e {n(ESTUDO_ZUMBA.kcalPorMinuto)} kcal por minuto. A
+          equação de METs devolve, a partir desses dois números, o peso das participantes:
+        </p>
+        <p class="cd-formula">{`${n(ESTUDO_ZUMBA.kcalPorMinuto)} kcal/min a ${n(ESTUDO_ZUMBA.met)} METs
+  peso = ${n(ESTUDO_ZUMBA.kcalPorMinuto)} × 200 ÷ (${n(ESTUDO_ZUMBA.met)} × 3,5) = ${n(PESO_ESTUDO, 1)} kg
+
+aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
+  ${n(ESTUDO.kcal, 0)} kcal   ← nossa conta
+  ${ESTUDO.kcalDoArtigo} kcal   ← o que o artigo reporta`}</p>
+        <p>
+          Fecha com {n(ESTUDO.erro * 100, 1)}% de diferença. E é justamente por fechar que dá para
+          afirmar o resto com segurança: as {ESTUDO_ZUMBA.kcalPorAula} kcal são de{' '}
+          {ESTUDO_ZUMBA.minutosDaAula} minutos e de um corpo de {n(PESO_ESTUDO, 0)} kg. Para{' '}
+          {PESO_PADRAO} kg e uma hora inteira de dança, a mesma intensidade dá{' '}
+          <strong>{formataKcal(EX_ZUMBA_60.kcal)} kcal</strong> — cerca de {n(INFLACAO_HORA)} vez o
+          número do artigo.
+        </p>
+
+        <h2>Os seis estilos que alguém realmente mediu</h2>
+        <p>
+          A coluna da direita é o ponto desta tabela. Cada número declara de onde veio, e é isso que
+          separa esta lista das que preenchem a lacuna com valor plausível.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>45 minutos de dança efetiva, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Estilo</th><th scope="col">METs</th>
+                <th scope="col">45 min</th><th scope="col">Fonte</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ESTILO.map((l) => (
+                <tr>
+                  <th scope="row">{l.estilo.nome}</th>
+                  <td>{n(l.estilo.met)}</td>
+                  <td>≈ {formataKcal(l.kcal45)} kcal</td>
+                  <td>
+                    {l.estilo.origem === 'compendio'
+                      ? `Compêndio ${l.estilo.codigo}`
+                      : 'Luettgen et al. (2012)'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Entre o mais barato e o mais caro há quase o dobro de diferença — dança de salão rápida
+          contra Zumba. E note que a Zumba, a única linha que não vem do Compêndio, é também a mais
+          alta: a categoria genérica que todo mundo usa no lugar dela fica{' '}
+          {n(((metDanca('zumba') - metDanca('aerobica')) / metDanca('aerobica')) * 100, 0)}% abaixo.
+        </p>
+
+        <h3>O que esta tabela não tem, e por quê</h3>
+        <p>{NOTA_SEM_MEDICAO}</p>
+        <ul class="cd-sem-medicao">
+          {SEM_MEDICAO.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>
+          Se você dança um desses, a referência mais honesta disponível é a linha de{' '}
+          <strong>dança de salão rápida</strong> para ritmos de par e a de{' '}
+          <strong>dança aeróbica</strong> para coreografia em grupo — e sabendo que é aproximação
+          por semelhança, não medição.
+        </p>
+
+        <h2>A aula não é o que você dança</h2>
+        <p>
+          Numa aula de {formataTempo(EX_AULA.minutosAula)}, o professor passa uma parte do tempo
+          mostrando o passo. Com {DANCANDO_PADRAO}% de dança efetiva — que é um cenário comum —
+          sobram {formataTempo(EX_AULA.minutosDancando)} dançando, e o gasto cai de{' '}
+          {formataKcal(EX_ZUMBA_60.kcal)} para <strong>{formataKcal(EX_AULA.kcal)} kcal</strong>.
+        </p>
+        <p>{NOTA_INSTRUCAO}</p>
+        <p class="cd-ressalva">
+          Uma diferença em relação às nossas outras páginas que vale explicar. Na{' '}
+          <a href="/calorias/natacao/">natação</a> o tempo que não é nado é descanso na borda; na{' '}
+          <a href="/calorias/corda/">corda</a> é intervalo entre séries. Na aula de dança não é
+          descanso — é aprendizado, de pé, se movendo devagar. Por isso ali nós excluímos o tempo
+          parado da conta, e aqui nós o contamos como repouso em vez de zerá-lo.
+        </p>
+
+        <h2>Quanto custa, por tempo e por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Zumba ({n(ESTUDO_ZUMBA.met)} METs) por tempo de dança, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Tempo dançando</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>45 minutos de Zumba por peso corporal</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th><th scope="col">Gasto bruto</th>
+                <th scope="col">Acréscimo real ao dia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                  <td>≈ {formataKcal(l.kcalLiquida)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Em dança você não escolhe a intensidade</h2>
+        <p>{NOTA_NAO_ESCOLHE}</p>
+        <p>
+          Isso tem uma consequência prática boa: a dança é a atividade deste conjunto em que é mais
+          difícil "pegar leve sem perceber". Na caminhada e no pedal, a tendência natural é
+          acomodar o ritmo até ele ficar confortável. Na aula, a música não deixa — e é por isso que
+          muita gente que nunca sustentou uma esteira sustenta três aulas por semana.
+        </p>
+        <p>
+          A consequência ruim é o outro lado da mesma moeda: quem precisa de menos impacto não tem
+          como reduzir dentro da aula. Aí a escolha é de aula, não de ritmo — e é para isso que a
+          linha de baixo impacto existe na tabela.
+        </p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          Cinco dos seis METs vêm do Compêndio de Atividades Físicas, copiados e não ajustados, com o
+          código de cada um visível na tabela. O sexto, o da Zumba, vem do estudo de Luettgen e
+          colegas, porque o Compêndio não a mede.
+        </p>
+        <p class="cd-formula">{`45 min de Zumba, ${PESO_PADRAO} kg
+  ${n(ESTUDO_ZUMBA.met)} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_ZUMBA_45.kcal / 45, 2)} kcal por minuto
+  ${n(EX_ZUMBA_45.kcal / 45, 2)} × 45 = ${n(EX_ZUMBA_45.kcal, 0)} kcal`}</p>
+        <p>
+          Uma nota de estrutura, para quem for conferir a fonte: na atualização de 2024 do
+          Compêndio, os códigos 03015 a 03022 saíram do capítulo de dança e foram para o de
+          condicionamento. Os valores continuam os mesmos — muda o lugar onde eles moram.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem inclusive se a nossa conta reproduz as{' '}
+          {ESTUDO_ZUMBA.kcalPorAula} kcal do artigo de Zumba — porque uma página que critica quem
+          cita estudo errado precisa provar que não está fazendo o mesmo.
+        </p>
+        <p class="cd-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: cinco linhas vêm de uma tabela de categorias
+          amplas, e uma vem de um estudo com {ESTUDO_ZUMBA.participantes} mulheres jovens. Nenhuma
+          delas foi medida em brasileiros, em aula de academia de bairro, com o público que
+          realmente faz essas aulas aqui. É o melhor dado que existe, e ainda assim é pouco.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cd-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da dança" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraDanca } from '../../scripts/caloriasDanca.client';
+    iniciarCalculadoraDanca();
+  </script>
+  <style>
+    .cd-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cd-hero-inner { max-width: 780px; }
+    .cd-hero h1 { color: #fff; max-width: 22ch; }
+    .cd-hero :global(.eyebrow) { color: #ffb488; }
+    .cd-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cd-hero-lead strong { color: #fff; }
+    .cd-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cd-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cd-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cd-main { min-width: 0; max-width: 760px; }
+
+    .cd-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cd-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cd-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cd-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cd-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cd-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cd-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cd-campos { display: grid; gap: var(--sp-4); }
+    .cd-campo { margin-bottom: 0; }
+    .cd-campo label,
+    .cd-campo .cd-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cd-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cd-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cd-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Altura reservada para a descrição mais longa em cada largura. Sem ela,
+       trocar de ritmo empurraria os campos de baixo em uma linha — o mesmo
+       defeito que já corrigimos na caminhada e na natação. */
+    /* Altura reservada para a descrição mais longa. Sem ela, trocar de
+       estilo empurraria os campos de baixo — o defeito que já corrigimos na
+       caminhada e na natação. */
+    .cd-estilo-slot { min-height: 6.2em; line-height: 1.5; }
+    @media (min-width: 560px) {
+      .cd-estilo-slot { min-height: 3.1em; }
+    }
+    .cd-sem-medicao {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .cd-sem-medicao li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .cd-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cd-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cd-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cd-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cd-estilo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cd-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .cd-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cd-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cd-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cd-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cd-ajustes > .cd-campo { padding-bottom: var(--sp-4); }
+
+    .cd-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cd-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cd-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cd-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cd-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cd-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cd-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cd-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cd-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cd-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cd-nota-tempo,
+    .cd-nota-cadencia { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cd-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cd-proximo-lead { line-height: 1.6; }
+    .cd-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cd-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cd-btn-primario { background: var(--brand-600); color: #fff; }
+    .cd-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cd-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cd-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cd-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cd-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cd-conteudo { margin-top: var(--sp-7); }
+    .cd-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cd-faixa-txt-naousado { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .cd-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cd-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cd-fontes li { margin-bottom: 0.6rem; }
+    .cd-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

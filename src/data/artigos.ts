@@ -246,6 +246,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/natacao/', titulo: 'Quantas calorias a natação gasta?' },
   { categoria: 'Calorias', url: '/calorias/escada/', titulo: 'Quantas calorias subir escada gasta?' },
   { categoria: 'Calorias', url: '/calorias/corda/', titulo: 'Quantas calorias pular corda gasta?' },
+  { categoria: 'Calorias', url: '/calorias/danca/', titulo: 'Quantas calorias a dança gasta?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },
