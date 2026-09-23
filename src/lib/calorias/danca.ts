@@ -43,7 +43,8 @@
  *
  * Só entra estilo com fonte. São seis, e cada linha declara de onde veio.
  * Samba, forró e sertanejo NÃO entram — não porque não importem, mas porque
- * ninguém mediu, e preencher a lacuna com um número plausível seria
+ * não encontramos medição que pudéssemos conferir ("não conferimos" é
+ * diferente de "ninguém mediu"), e preencher a lacuna com um número plausível seria
  * exatamente o que esta página critica.
  *
  * Nota de estrutura, para quem for conferir a fonte: na atualização de 2024
@@ -454,7 +455,7 @@ export const NOTA_APROXIMACAO_HONESTA =
   'Se você dança forró, samba no pé ou sertanejo e quer um número, a linha de dança de par em ritmo rápido é a referência mais próxima que existe. Mas é aproximação por semelhança — o mesmo procedimento que criticamos nas outras páginas, com uma diferença: aqui está dito que é aproximação, e você decide se serve.';
 
 export const NOTA_SEM_MEDICAO =
-  'Samba, forró, sertanejo, funk e axé não estão nesta tabela porque ninguém os mediu em laboratório. Você vai encontrar números para eles por aí; eles foram estimados por semelhança, não medidos. Preferimos dizer que não sabemos.';
+  'Samba, forró, sertanejo, funk e axé não estão nesta tabela porque não encontramos medição de gasto deles que pudéssemos conferir numa fonte. Você vai encontrar números para eles por aí; não sabemos de onde vêm, e preferimos dizer isso a repeti-los.';
 
 export const NOTA_INSTRUCAO =
   'O tempo em que o professor ensina o passo entra na conta como repouso. Isso subestima: você está de pé, se movendo devagar, gastando mais que sentado. O valor verdadeiro fica um pouco acima do que esta ferramenta devolve — e numa calculadora de caloria, errar para baixo com o erro declarado é melhor que inflar.';

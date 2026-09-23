@@ -87,7 +87,7 @@ const faqs = [
   },
   {
     pergunta: 'Devo descontar o tempo parado entre os pontos?',
-    resposta: `Não. Uma partida medida em laboratório teve a bola em jogo em só ${n(ESTUDO_PARTIDA.pctEmJogo)}% do tempo e, ainda assim, custou ${n(PARTIDA.metMedido)} METs pela partida inteira — praticamente os ${formataMet(PARTIDA.metDaTabela)} do Compêndio para simples. Descontar a pausa faria uma hora de simples cair de ${formataKcal(PAUSA.certo)} para ${formataKcal(PAUSA.errado)} kcal, e errado.`,
+    resposta: `Não. Uma partida medida em quadra teve a bola em jogo em só ${n(ESTUDO_PARTIDA.pctEmJogo)}% do tempo e, ainda assim, custou ${n(PARTIDA.metMedido)} METs pela partida inteira — praticamente os ${formataMet(PARTIDA.metDaTabela)} do Compêndio para simples. Descontar a pausa faria uma hora de simples cair de ${formataKcal(PAUSA.certo)} para ${formataKcal(PAUSA.errado)} kcal, e errado.`,
   },
   {
     pergunta: 'Tênis em duplas gasta menos que simples?',
@@ -295,13 +295,13 @@ const schema = [
   diferença: ${n(PARTIDA.erro * 100, 1)}%`}</p>
         <p>
           A medição da partida inteira bate com a tabela. Ou seja: o valor do Compêndio já é o tempo
-          de quadra, com as pausas dentro. Descontá-las contaria a pausa duas vezes — e uma hora de
+          de quadra, com as pausas dentro. Descontá-las tiraria a pausa duas vezes — e uma hora de
           simples, para {PESO_PADRAO} kg, cairia de {formataKcal(PAUSA.certo)} para{' '}
           {formataKcal(PAUSA.errado)} kcal.
         </p>
         <p class="ct-ressalva">
-          O que a medição não resolve: a partida era de treino, de dez minutos, e medida em 1973. As
-          pausas longas de uma partida oficial — troca de lado, água, toalha — não estavam nela. Se
+          O que a medição não resolve: a partida era de treino, de dez minutos, e medida em 1973. Dez
+          minutos não mostram as pausas longas de uma partida oficial — troca de lado, água, toalha. Se
           você jogou duas horas com várias paradas longas, o mais coerente com a medição é tirar essas
           paradas da conta e manter a pausa entre um ponto e outro.
         </p>

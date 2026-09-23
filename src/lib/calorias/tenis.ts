@@ -150,7 +150,7 @@ export const MODALIDADES: Modalidade[] = [
     metMin: 4.5,
     metMax: 6.0,
     codigos: ['15685', '15680'],
-    comoReconhecer: 'Duas linhas no Compêndio, 4,5 e 6,0, sem diferença que conseguimos conferir — por isso, faixa.',
+    comoReconhecer: 'Dois contra dois. O Compêndio tem duas linhas para duplas — por isso, faixa.',
   },
 ];
 
@@ -340,7 +340,7 @@ export const tabelaPorPeso = (): LinhaPeso[] =>
 /* ───────────────────────── Textos fixos ───────────────────────── */
 
 export const NOTA_PAUSA =
-  'Conte o tempo de quadra inteiro, com as pausas entre pontos. A tabela já as inclui: a partida medida em laboratório teve a bola em jogo em só 41% do tempo e ainda assim custou o equivalente a 7,8 METs — praticamente os 8,0 do Compêndio para simples. Descontar a pausa faria a conta cair pela metade, e errada.';
+  'Conte o tempo de quadra inteiro, com as pausas entre pontos. A tabela já as inclui: a partida medida em quadra teve a bola em jogo em só 41% do tempo e ainda assim custou o equivalente a 7,8 METs — praticamente os 8,0 do Compêndio para simples. Descontar a pausa a tiraria duas vezes — ela já baixou a média da tabela — e faria a conta cair pela metade.';
 
 export const NOTA_DUPLAS =
   'Duplas aparecem como faixa porque o Compêndio tem duas linhas para elas, 4,5 e 6,0 METs, e não conseguimos conferir o que diferencia uma da outra. Escolher uma seria inventar a diferença, então a conta mostra as duas pontas.';
@@ -352,13 +352,13 @@ export const NOTA_BRUTO =
   'O número é bruto: inclui o que você gastaria parado no mesmo tempo. O acréscimo real ao seu dia é menor, e a ferramenta mostra os dois.';
 
 export const NOTA_ESTIMATIVA =
-  'É uma estimativa. No tênis, a variação entre pessoas é grande por um motivo que a tabela não vê: o nível do jogo. Pontos longos, entre jogadores parecidos, custam muito mais do que um jogo em que metade dos saques não volta.';
+  'É uma estimativa. No tênis, a variação entre pessoas é grande por um motivo que a tabela não vê: o nível do jogo. Pontos longos, entre jogadores parecidos, tendem a custar mais do que um jogo em que metade dos saques não volta.';
 
 export const NOTA_SEM_PERDA_LOCALIZADA =
   'Nenhum exercício escolhe de onde o corpo tira gordura. O tênis aumenta o gasto do dia; onde a gordura sai primeiro é decidido por genética e hormônio.';
 
 export const NOTA_SEGURANCA =
-  'Tênis é esporte de arrancada, freada e giro, com o braço dominante repetindo o mesmo gesto centenas de vezes. Ombro, cotovelo e tornozelo são o que mais reclama, principalmente de quem joga só no fim de semana. Quem vai voltar depois de anos parado deve conversar com um médico antes, e dor que persiste é assunto para médico ou fisioterapeuta, não para jogar por cima.';
+  'Tênis é esporte de arrancada, freada e giro, com o braço dominante repetindo o mesmo gesto centenas de vezes. Ombro, cotovelo e tornozelo costumam ser o que mais reclama, principalmente em quem joga só no fim de semana. Quem vai voltar depois de anos parado deve conversar com um médico antes, e dor que persiste é assunto para médico ou fisioterapeuta, não para jogar por cima.';
 
 export const NOTA_NAO_PRESCRICAO =
   'Esta é uma estimativa educativa de gasto energético. Não é avaliação metabólica, não substitui calorimetria indireta, não prescreve treino e não diagnostica nada.';
