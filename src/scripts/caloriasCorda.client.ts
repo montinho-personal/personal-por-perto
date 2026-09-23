@@ -59,6 +59,7 @@ import {
 } from '../lib/calorias/corda';
 import { metCorrida } from '../lib/calorias/corrida';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'pulos' | 'series' | 'meta';
 
@@ -102,8 +103,10 @@ export function iniciarCalculadoraCorda(): void {
     });
     cadencia.value = String(cadenciaDaFaixa(idFaixa));
     const dica = $<HTMLElement>('#cj-faixa-dica');
-    if (dica) dica.textContent = `${f.faixa}. ${f.comoReconhecer}`;
+    if (dica) dica.textContent = textoDica(f);
   }
+
+  const textoDica = (f: (typeof FAIXAS)[number]): string => `${f.faixa}. ${f.comoReconhecer}`;
 
   function trocaFaixa(nova: string): void {
     idFaixa = nova;
@@ -293,6 +296,8 @@ export function iniciarCalculadoraCorda(): void {
   });
 
   evento('calculator_view');
+  const dicaFaixa = $<HTMLElement>('#cj-faixa-dica');
+  if (dicaFaixa) reservaAltura(dicaFaixa, FAIXAS.map(textoDica));
   desenhaFaixa();
   calcula();
 }

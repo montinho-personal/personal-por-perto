@@ -20,6 +20,7 @@
  * Nada vai para a URL: peso é dado corporal.
  */
 import {
+  TIPOS,
   EPOC_MAX,
   EPOC_MIN,
   MINUTOS_MAX,
@@ -51,6 +52,7 @@ import {
   tipo,
 } from '../lib/calorias/musculacao';
 
+import { reservaAltura } from './reservaAltura';
 type Modo = 'sessao' | 'semana' | 'musculo';
 
 const $ = <T extends HTMLElement>(sel: string): T | null => document.querySelector<T>(sel);
@@ -90,8 +92,11 @@ export function iniciarCalculadoraMusculacao(): void {
       b.setAttribute('aria-pressed', String(ativo));
     });
     const dica = $<HTMLElement>('#cm-tipo-dica');
-    if (dica) dica.textContent = `${formataMet(t.met)} METs — Compêndio, código ${t.codigo}. ${t.comoReconhecer}`;
+    if (dica) dica.textContent = textoDica(t);
   }
+
+  const textoDica = (t: (typeof TIPOS)[number]): string =>
+    `${formataMet(t.met)} METs — Compêndio, código ${t.codigo}. ${t.comoReconhecer}`;
 
   function trocaModo(novo: Modo): void {
     if (novo === modo) return;
@@ -171,7 +176,9 @@ export function iniciarCalculadoraMusculacao(): void {
       set('.cm-frase', fraseSessao(p, s));
       linhas([
         ['Acréscimo real ao dia', `≈ ${formataKcal(s.kcalLiquida)} kcal`],
-        ['Depois do treino (EPOC)', `+${EPOC_MIN} a ${EPOC_MAX} kcal`],
+        // Rótulo de exemplo, não de previsão: a revisão não dá faixa para
+        // "esta" sessão, e um treino de 10 min não ganha 22 kcal de EPOC.
+        ['EPOC nos estudos', `${EPOC_MIN} a ${EPOC_MAX} kcal`],
         ['Intensidade', `${formataMet(s.met)} METs`],
         ['De onde vem o número', `Compêndio ${t.codigo}`],
       ]);
@@ -253,6 +260,8 @@ export function iniciarCalculadoraMusculacao(): void {
   [peso, minutos, sessoes, musculo].forEach((el) => el.addEventListener('input', calcula));
 
   evento('calculator_view');
+  const dicaTipo = $<HTMLElement>('#cm-tipo-dica');
+  if (dicaTipo) reservaAltura(dicaTipo, TIPOS.map(textoDica));
   desenhaTipo();
   calcula();
 }

@@ -485,6 +485,25 @@ const isActive = (url: string) => {
   .nav-toggle::-webkit-details-marker {
     display: none;
   }
+  /*
+   * Celulares de até ~380px (360px é das larguras mais comuns em Android):
+   * marca (229px) + espaço + "☰ Menu" (104px) somavam 349px, e a área útil
+   * a 360px é de 328px. O cabeçalho ficava mais largo que a tela em TODAS as
+   * páginas — o navegador reduzia o zoom do site inteiro ou deixava rolar
+   * para o lado. Abaixo disso o botão fica só com o ícone; o nome acessível
+   * ("Abrir menu", no aria-label) continua o mesmo.
+   */
+  @media (max-width: 380px) {
+    .header-inner {
+      gap: 0.5rem;
+    }
+    .nav-toggle {
+      padding-inline: 0.6rem;
+    }
+    .nav-toggle-label {
+      display: none;
+    }
+  }
   .bars {
     display: inline-flex;
     flex-direction: column;

@@ -22,6 +22,7 @@
  * concorrendo com a canônica.
  */
 import {
+  RITMOS,
   INCLINACAO_MAX,
   KCAL_MAX,
   KCAL_MIN,
@@ -58,6 +59,7 @@ import {
   type RitmoId,
 } from '../lib/calorias/caminhada';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'distancia' | 'passos' | 'meta';
 
@@ -308,6 +310,8 @@ export function iniciarCalculadoraCaminhada(): void {
   if (limite) limite.max = String(INCLINACAO_MAX);
 
   evento('calculator_view');
+  const notaRitmo = $<HTMLElement>('#cc-ritmo-nota');
+  if (notaRitmo) reservaAltura(notaRitmo, RITMOS.map((r) => r.comoReconhecer));
   atualizaNotaRitmo();
   calcula();
 }

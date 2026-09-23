@@ -20,12 +20,14 @@ import {
   FONTE_ELIA,
   FONTE_FARINATTI,
   FONTE_REVISAO_EPOC,
+  FONTE_SCHUENKE,
   KCAL_DIA_POR_KG_GORDURA,
   KCAL_DIA_POR_KG_MUSCULO,
   MINUTOS_MAX,
   MINUTOS_MIN,
   MUSCULO_MAX,
   MUSCULO_MIN,
+  NOTA_EPOC,
   PESO_PADRAO,
   SESSOES_MAX,
   TIPOS,
@@ -98,7 +100,17 @@ console.log('\n[3] O estudo de massa muscular\n');
 /* ------------------------------------------------------------------ */
 console.log('\n[4] EPOC\n');
 {
-  ok(EPOC_MIN === 22 && EPOC_MAX === 58, 'a faixa é a das comparações da revisão: 22 a 58 kcal');
+  ok(EPOC_MIN === 22 && EPOC_MAX === 58, 'os exemplos da revisão: 22 a 58 kcal');
+  /*
+   * A revisão NÃO conclui uma faixa — conclui que as diferenças de método
+   * impedem cravar tendências. A primeira versão apresentava os exemplos
+   * como "a faixa da revisão". Estes testes impedem a volta disso.
+   */
+  ok(FONTE_REVISAO_EPOC.resumo.includes('exemplos') && FONTE_REVISAO_EPOC.resumo.includes('impedem cravar'),
+    'a fonte chama os números de exemplos e registra a ressalva da própria revisão');
+  ok(NOTA_EPOC.includes('exemplos') && !/fica entre/.test(NOTA_EPOC), 'a nota do resultado também');
+  ok(FONTE_SCHUENKE.resumo.includes('38 horas') && FONTE_SCHUENKE.resumo.includes('não diz quanto'),
+    'Schuenke entra pela duração (38 h), sem número de tamanho que não conferimos');
   ok(FONTE_REVISAO_EPOC.rotulo.startsWith('Farinatti P, Castinheiras Neto AG.'), 'a revisão é citada pelos dois autores conferidos');
   // Mesmo no topo, o EPOC é uma fração pequena de uma sessão comum.
   const v = deSessao(60, PESO_PADRAO, 'variado');

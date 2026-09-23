@@ -77,7 +77,16 @@ export const FONTE_REVISAO_EPOC: Fonte = {
   rotuloCurto: 'Farinatti e Castinheiras Neto (2013)',
   url: 'https://onlinelibrary.wiley.com/doi/10.1155/2013/825026',
   resumo:
-    'revisão de 16 estudos (155 participantes) sobre o gasto de recuperação depois da musculação. Nas comparações que ela reúne, o EPOC fica entre cerca de 22 e 58 kcal, maior com mais intensidade — real, e pequeno.',
+    'revisão de 16 estudos (155 participantes) sobre o gasto de recuperação depois da musculação. Nos exemplos que ela compara, o EPOC somou de cerca de 22 a 58 kcal; e a própria revisão conclui que as diferenças de método, principalmente no tempo de medição, impedem cravar tendências.',
+};
+
+export const FONTE_SCHUENKE: Fonte = {
+  rotulo:
+    'Schuenke MD, Mikat RP, McBride JM. Effect of an acute period of resistance exercise on excess post-exercise oxygen consumption: implications for body mass management. European Journal of Applied Physiology, 86(5):411–417, 2002',
+  rotuloCurto: 'Schuenke et al. (2002)',
+  url: 'https://link.springer.com/article/10.1007/s00421-001-0568-y',
+  resumo:
+    'mediu 7 homens depois de 31 minutos de circuito pesado (supino, power clean e agachamento): o consumo de oxigênio ainda estava acima do repouso 38 horas depois. É a prova de que o EPOC pode durar muito — o que não diz quanto ele soma.',
 };
 
 export const FONTE_ELIA: Fonte = {
@@ -107,7 +116,7 @@ export const FONTE_HALL: Fonte = {
     'demonstra que a regra dos 7.700 kcal por quilo superestima a perda ao longo do tempo: o gasto do corpo cai conforme ele emagrece, e a resposta não é linear.',
 };
 
-export const FONTES: Fonte[] = [FONTE_COMPENDIO, FONTE_FARINATTI, FONTE_REVISAO_EPOC, FONTE_ELIA, FONTE_COLLINS, FONTE_HALL];
+export const FONTES: Fonte[] = [FONTE_COMPENDIO, FONTE_FARINATTI, FONTE_REVISAO_EPOC, FONTE_SCHUENKE, FONTE_ELIA, FONTE_COLLINS, FONTE_HALL];
 
 /* ───────────────────────── Limites ───────────────────────── */
 
@@ -141,7 +150,12 @@ export const ESTUDO_MASSA = {
   crucifixo3min: 54.1,
 } as const;
 
-/** A faixa de EPOC nos estudos comparados pela revisão de 2013. */
+/**
+ * O EPOC somado nos EXEMPLOS que a revisão de 2013 compara — não uma faixa
+ * que ela conclua. A primeira versão desta página tratava estes dois
+ * números como "a faixa da revisão"; a revisão diz o contrário, que as
+ * diferenças de método impedem cravar tendências. A página agora diz isso.
+ */
 export const EPOC_MIN = 22;
 export const EPOC_MAX = 58;
 
@@ -193,7 +207,7 @@ export const TIPOS: Tipo[] = [
     nomeCurto: 'Básicos pesados',
     met: 5.0,
     codigo: '02052',
-    comoReconhecer: 'Agachamento, terra e outros exercícios que movem muito músculo, lentos ou explosivos.',
+    comoReconhecer: 'Agachamento, terra e outros exercícios que movem muito músculo.',
   },
   {
     id: 'vigoroso',
@@ -362,7 +376,7 @@ export const NOTA_DESCANSO =
   'Descansar menos não torna cada série mais cara. No estudo brasileiro de Farinatti e Castinheiras Neto, 5 séries de leg press custaram praticamente o mesmo com 1 ou com 3 minutos de pausa. O que muda com o descanso é quanta série cabe na hora — por isso a calculadora pergunta o tipo de treino, e não o intervalo.';
 
 export const NOTA_EPOC =
-  'O gasto depois do treino (EPOC) não está no número acima. Nos estudos reunidos por Farinatti e Castinheiras Neto, ele fica entre cerca de 20 e 60 kcal — mais alto em treino intenso, perto do piso em treino leve.';
+  'O gasto depois do treino (EPOC) não está no número acima, e não dá para calculá-lo pelo tempo de treino. Nos exemplos que uma revisão de 16 estudos compara, ele somou de cerca de 22 a 58 kcal — e a própria revisão avisa que as diferenças de método impedem cravar um valor.';
 
 export const NOTA_MUSCULO =
   'Não depende do seu peso nem do tipo de treino: é o gasto de repouso do tecido. O mesmo peso em gordura gastaria cerca de um terço disso.';

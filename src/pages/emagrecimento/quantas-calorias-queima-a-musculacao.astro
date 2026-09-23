@@ -15,8 +15,10 @@
  *
  * - "200 a 400 kcal por hora", sem fonte, virou a faixa do Compêndio 2024
  *   calculada para 70 kg (257 a 441 kcal) — o topo passa dos 400.
- * - "EPOC de 6% a 15% da sessão", sem fonte, virou a faixa absoluta da
- *   revisão de Farinatti e Castinheiras Neto (cerca de 22 a 58 kcal).
+ * - "EPOC de 6% a 15% da sessão", sem fonte, virou os exemplos da revisão
+ *   de Farinatti e Castinheiras Neto (cerca de 22 a 58 kcal) — declarados
+ *   como exemplos, porque a revisão não conclui uma faixa (auditoria do
+ *   mesmo dia: a primeira versão os apresentava como faixa da revisão).
  * - "10 a 13 kcal por quilo de músculo" virou os 13 de Elia, confirmados
  *   por Wang et al.; a conversão para "quilo e meio de gordura por ano"
  *   saiu, porque usava a regra dos 7.700 kcal sem a ressalva de Hall.
@@ -116,7 +118,7 @@ const faqs = [
   },
   {
     pergunta: 'O que é o efeito EPOC ("afterburn")? Ele é significativo?',
-    resposta: `EPOC é o consumo extra de oxigênio pós-exercício: depois do treino, o corpo segue gastando um pouco mais para se recuperar. É real e cresce com a intensidade, mas é pequeno: nas comparações reunidas por uma revisão de 16 estudos, ele fica entre cerca de ${EPOC_MIN} e ${EPOC_MAX} kcal. O "metabolismo turbinado por 48 horas" do marketing é exagero de um fenômeno verdadeiro, porém modesto.`,
+    resposta: `EPOC é o consumo extra de oxigênio pós-exercício: depois do treino, o corpo segue gastando um pouco mais para se recuperar. Ele pode durar bastante — um estudo mediu consumo acima do repouso 38 horas depois de um circuito pesado —, mas duração não é tamanho: nos exemplos que uma revisão de 16 estudos compara, o total somou de cerca de ${EPOC_MIN} a ${EPOC_MAX} kcal. O "metabolismo turbinado por 48 horas" do marketing acerta a duração possível e erra o que importa, que é a quantidade.`,
   },
   {
     pergunta: 'Músculo em repouso queima muitas calorias?',
@@ -276,7 +278,7 @@ const schema = [
         <p class="cm-frase">{fraseSessao(PESO_PADRAO, H_VARIADO)}</p>
         <dl class="cm-detalhes">
           <div><dt>Acréscimo real ao dia</dt><dd>≈ {formataKcal(H_VARIADO.kcalLiquida)} kcal</dd></div>
-          <div><dt>Depois do treino (EPOC)</dt><dd>+{EPOC_MIN} a {EPOC_MAX} kcal</dd></div>
+          <div><dt>EPOC nos estudos</dt><dd>{EPOC_MIN} a {EPOC_MAX} kcal</dd></div>
           <div><dt>Intensidade</dt><dd>{formataMet(H_VARIADO.met)} METs</dd></div>
           <div><dt>De onde vem o número</dt><dd>Compêndio {tipo('variado').codigo}</dd></div>
         </dl>
@@ -330,11 +332,20 @@ const schema = [
         pesados e intensos são os que mais o provocam.
       </p>
       <p>
-        O problema é a escala do folclore. Uma revisão de 16 estudos sobre
-        o EPOC da musculação reúne comparações em que ele fica{' '}
-        <strong>entre cerca de {EPOC_MIN} e {EPOC_MAX} kcal</strong> — ao lado
-        das {formataKcal(H_VARIADO.kcal)} kcal de uma hora de treino variado,
-        um acréscimo real, bem-vindo e pequeno. O emagrecimento continua sendo
+        E ele pode durar bastante: depois de 31 minutos de um circuito pesado,
+        Schuenke e colegas ainda mediram o consumo de oxigênio acima do repouso{' '}
+        <strong>38 horas depois</strong>. É daí que o marketing tira as
+        &ldquo;48 horas de metabolismo acelerado&rdquo;. O erro está em
+        confundir duração com tamanho.
+      </p>
+      <p>
+        Quanto ele soma? Uma revisão de 16 estudos sobre o EPOC da
+        musculação compara exemplos em que o total ficou{' '}
+        <strong>entre cerca de {EPOC_MIN} e {EPOC_MAX} kcal</strong> — e ela
+        mesma avisa que as diferenças de método, principalmente no tempo de
+        medição, impedem cravar um valor geral. Ao lado das{' '}
+        {formataKcal(H_VARIADO.kcal)} kcal de uma hora de treino variado, é um
+        acréscimo real, bem-vindo e pequeno. O emagrecimento continua sendo
         decidido pelo <a href="/emagrecimento/deficit-calorico-como-funciona/">balanço
         calórico do dia</a>.
       </p>
@@ -427,8 +438,8 @@ const schema = [
         <strong>Resumindo:</strong> para {PESO_PADRAO} kg, uma hora de
         musculação gasta de {formataKcal(H_VARIADO.kcal)} a{' '}
         {formataKcal(H_VIGOROSO.kcal)} kcal conforme o tipo de treino (menos do
-        que o relógio costuma dizer), o EPOC soma algo entre {EPOC_MIN} e {EPOC_MAX} kcal
-        e cada quilo de músculo gasta cerca de {KCAL_DIA_POR_KG_MUSCULO} kcal por
+        que o relógio costuma dizer), o EPOC soma algumas dezenas de kcal
+        nos exemplos estudados e cada quilo de músculo gasta cerca de {KCAL_DIA_POR_KG_MUSCULO} kcal por
         dia em repouso — nada disso é espetacular isoladamente. O valor real
         está no conjunto: a musculação é o que garante que o peso perdido seja
         gordura, mantém o metabolismo de pé e compõe ganhos permanentes ano
@@ -441,8 +452,9 @@ const schema = [
         A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso
         em kg ÷ 200</strong>, com os três valores do Compêndio 2024 copiados e
         não ajustados ({TIPOS.map((t) => `${formataMet(t.met)} para ${t.nome.toLowerCase()}, código ${t.codigo}`).join('; ')}).
-        O EPOC aparece à parte, como a faixa da revisão, porque ele não
-        depende só do tempo de treino. E o modo &ldquo;Músculo ganho&rdquo; usa o
+        O EPOC aparece à parte, como os exemplos da revisão e não como
+        previsão para a sua sessão, porque ele não se calcula pelo tempo de
+        treino. E o modo &ldquo;Músculo ganho&rdquo; usa o
         gasto de repouso de {KCAL_DIA_POR_KG_MUSCULO} kcal por quilo por dia,
         que não depende do seu peso nem do tipo de treino.
       </p>

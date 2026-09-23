@@ -21,6 +21,7 @@
  * Nada vai para a URL: peso é dado corporal.
  */
 import {
+  NIVEIS,
   KCAL_MAX,
   KCAL_MIN,
   LOCAL_MAX,
@@ -52,6 +53,7 @@ import {
   type Resultado,
 } from '../lib/calorias/futebol';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'pelada' | 'campo' | 'meta';
 
@@ -92,10 +94,11 @@ export function iniciarCalculadoraFutebol(): void {
       b.setAttribute('aria-pressed', String(ativo));
     });
     const dica = $<HTMLElement>('#cf-nivel-dica');
-    if (dica) {
-      dica.textContent = `${formataMet(nv.met)} METs — Compêndio, código ${nv.codigo}. ${nv.comoReconhecer}`;
-    }
+    if (dica) dica.textContent = textoDica(nv);
   }
+
+  const textoDica = (nv: (typeof NIVEIS)[number]): string =>
+    `${formataMet(nv.met)} METs — Compêndio, código ${nv.codigo}. ${nv.comoReconhecer}`;
 
   function desenhaFormato(): void {
     document.querySelectorAll<HTMLButtonElement>('.cf-formato').forEach((b) => {
@@ -299,6 +302,8 @@ export function iniciarCalculadoraFutebol(): void {
   });
 
   evento('calculator_view');
+  const dicaNivel = $<HTMLElement>('#cf-nivel-dica');
+  if (dicaNivel) reservaAltura(dicaNivel, NIVEIS.map(textoDica));
   desenhaNivel();
   desenhaFormato();
   calcula();

@@ -129,6 +129,12 @@ const schema = [
     'Calculadoras de calorias por atividade',
     ferramentas.map((f) => f.nome),
     new URL(path, site.dominio).href,
+    /*
+     * As URLs reais de cada ferramenta. Sem elas, o ItemList apontava os dez
+     * itens para âncoras deste hub (/calorias/#futebol…) que não existem na
+     * página — o schema descrevia uma lista de links para lugar nenhum.
+     */
+    ferramentas.map((f) => new URL(f.url, site.dominio).href),
   ),
 ];
 ---

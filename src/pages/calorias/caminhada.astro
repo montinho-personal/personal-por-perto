@@ -234,7 +234,7 @@ const schema = [
             <div class="cc-presets">
               {[10, 20, 30, 45, 60, 90].map((v) => (
                 <button type="button" class="cc-preset" data-alvo="tempo" data-valor={String(v)}>
-                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                  {v < 60 ? `${v} min` : `${Math.floor(v / 60)}h${v % 60 ? String(v % 60).padStart(2, '0') : ''}`}
                 </button>
               ))}
             </div>

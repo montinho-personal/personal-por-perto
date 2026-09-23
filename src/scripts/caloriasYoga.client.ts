@@ -51,6 +51,7 @@ import {
   type Resultado,
 } from '../lib/calorias/yoga';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'relogio' | 'meta';
 
@@ -90,11 +91,11 @@ export function iniciarCalculadoraYoga(): void {
       b.setAttribute('aria-pressed', String(ativo));
     });
     const dica = $<HTMLElement>('#cy-estilo-dica');
-    if (dica) {
-      dica.textContent =
-        `${e.met.toLocaleString('pt-BR')} METs — Compêndio, código ${e.codigo}. ${e.comoReconhecer}`;
-    }
+    if (dica) dica.textContent = textoDica(e);
   }
+
+  const textoDica = (e: (typeof ESTILOS)[number]): string =>
+    `${e.met.toLocaleString('pt-BR')} METs — Compêndio, código ${e.codigo}. ${e.comoReconhecer}`;
 
   function trocaEstilo(novo: string): void {
     idEstilo = novo;
@@ -273,6 +274,8 @@ export function iniciarCalculadoraYoga(): void {
   });
 
   evento('calculator_view');
+  const dicaEstilo = $<HTMLElement>('#cy-estilo-dica');
+  if (dicaEstilo) reservaAltura(dicaEstilo, ESTILOS.map(textoDica));
   desenhaEstilo();
   calcula();
 }

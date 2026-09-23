@@ -62,6 +62,7 @@ import {
   type Resultado,
 } from '../lib/calorias/natacao';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'distancia' | 'piscina' | 'meta';
 
@@ -394,6 +395,8 @@ export function iniciarCalculadoraNatacao(): void {
   if (descanso) descanso.max = String(DESCANSO_MAX);
 
   evento('calculator_view');
+  const comoReconhecer = $<HTMLElement>('#cn-como-reconhecer');
+  if (comoReconhecer) reservaAltura(comoReconhecer, ESTILOS.flatMap((e) => e.bandas.map((b) => b.comoReconhecer)));
   desenhaBandas();
   calcula();
   atualizaComparativo();

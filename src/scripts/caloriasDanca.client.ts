@@ -41,6 +41,7 @@ import {
   type Resultado,
 } from '../lib/calorias/danca';
 import { whatsappUrl } from '../lib/links';
+import { reservaAltura } from './reservaAltura';
 
 type Modo = 'dancando' | 'aula' | 'meta';
 
@@ -81,13 +82,15 @@ export function iniciarCalculadoraDanca(): void {
       b.setAttribute('aria-pressed', String(ativo));
     });
     const dica = $<HTMLElement>('#cd-estilo-dica');
-    if (dica) {
-      const fonte =
-        e.origem === 'compendio'
-          ? `${e.met.toLocaleString('pt-BR')} METs — Compêndio, código ${e.codigo}.`
-          : `${e.met.toLocaleString('pt-BR')} METs — medição própria, não está no Compêndio.`;
-      dica.textContent = `${fonte} ${e.comoReconhecer}`;
-    }
+    if (dica) dica.textContent = textoDica(e);
+  }
+
+  function textoDica(e: (typeof ESTILOS)[number]): string {
+    const fonte =
+      e.origem === 'compendio'
+        ? `${e.met.toLocaleString('pt-BR')} METs — Compêndio, código ${e.codigo}.`
+        : `${e.met.toLocaleString('pt-BR')} METs — medição própria, não está no Compêndio.`;
+    return `${fonte} ${e.comoReconhecer}`;
   }
 
   function trocaEstilo(novo: string): void {
@@ -255,6 +258,8 @@ export function iniciarCalculadoraDanca(): void {
   });
 
   evento('calculator_view');
+  const dicaEstilo = $<HTMLElement>('#cd-estilo-dica');
+  if (dicaEstilo) reservaAltura(dicaEstilo, ESTILOS.map(textoDica));
   desenhaEstilo();
   calcula();
 }
