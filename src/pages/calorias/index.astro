@@ -35,6 +35,7 @@ import { dePelada, formataKcal as formataFutebol, formataTempo as tempoFutebol }
 import { deRounds as lutaPorRounds, formataKcal as formataLuta } from '../../lib/calorias/lutas';
 import { deAula as hidroPorAula, formataKcal as formataHidro } from '../../lib/calorias/hidroginastica';
 import { deTempo as tenisPorTempo, formataKcal as formataTenis } from '../../lib/calorias/tenis';
+import { deTempo as voleiPorTempo, formataKcal as formataVolei } from '../../lib/calorias/volei';
 import { deSessao as musculacaoSessao, formataKcal as formataMusculacao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias';
@@ -56,6 +57,8 @@ const PELADA = dePelada(120, PESO_PADRAO, 'society', 21, 'casual');
 const EX_LUTA = formataLuta(lutaPorRounds(6, 3, 1, PESO_PADRAO, 'saco').kcal);
 const EX_HIDRO = formataHidro(hidroPorAula(50, PESO_PADRAO, 'medida').kcal);
 const EX_TENIS = formataTenis(tenisPorTempo(60, PESO_PADRAO, 'simples').kcalMin);
+const EX_VOLEI_PRAIA = formataVolei(voleiPorTempo(60, PESO_PADRAO, 'praia').kcal);
+const EX_VOLEI_LAZER = formataVolei(voleiPorTempo(60, PESO_PADRAO, 'recreativo').kcal);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
 const ferramentas = [
@@ -130,6 +133,12 @@ const ferramentas = [
     nome: 'Tênis',
     calcula: 'Simples, geral ou duplas — contando a pausa entre pontos, que a medição mostra que já está na tabela.',
     exemplo: `1 hora de simples ≈ ${EX_TENIS} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/volei/',
+    nome: 'Vôlei',
+    calcula: 'Quadra ou areia, lazer ou competição — quatro linhas do Compêndio, com o código de cada uma.',
+    exemplo: `1 hora: ≈ ${EX_VOLEI_LAZER} kcal no ginásio sem disputa, ≈ ${EX_VOLEI_PRAIA} na areia, para ${PESO_PADRAO} kg`,
   },
   {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
