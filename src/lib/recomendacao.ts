@@ -75,6 +75,10 @@ export function getRecomendacao(ctx: ContextoRecomendacao): Recomendacao | null 
   // ou não cabe, ou seria apontar para onde a pessoa já está.
   if (cls.tipo === 'institucional' || cls.tipo === 'ferramenta') return null;
   if (TOPICOS_SEM_BLOCO.includes(cls.topico)) return null;
+  // Intenção baixa nunca recebe recomendação comercial. Sem esta linha, as
+  // calculadoras de /calorias/ caíam no FALLBACK (escolha-decisao, tofu) e o
+  // motor respondia "escolha" — contradizendo a própria classificação.
+  if (cls.funil === 'tofu') return null;
 
   const contexto: ContextoRec | undefined = CONTEXTOS[cls.topico];
   if (!contexto) return null;

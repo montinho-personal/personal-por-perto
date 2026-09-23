@@ -54,6 +54,7 @@ import {
   type Resultado,
 } from '../lib/calorias/corrida';
 import { whatsappUrl } from '../lib/links';
+import { focoSemSalto } from './focoSemSalto';
 
 type Modo = 'distancia' | 'tempo' | 'meta';
 
@@ -99,7 +100,7 @@ export function iniciarCalculadoraCorrida(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    campos[novo].focus();
+    focoSemSalto(campos[novo]);
     calcula();
   }
 

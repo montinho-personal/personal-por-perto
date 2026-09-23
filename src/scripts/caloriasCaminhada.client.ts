@@ -59,6 +59,7 @@ import {
   type RitmoId,
 } from '../lib/calorias/caminhada';
 import { whatsappUrl } from '../lib/links';
+import { focoSemSalto } from './focoSemSalto';
 import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'distancia' | 'passos' | 'meta';
@@ -115,7 +116,7 @@ export function iniciarCalculadoraCaminhada(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    campos[novo].focus();
+    focoSemSalto(campos[novo]);
     calcula();
   }
 

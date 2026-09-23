@@ -54,6 +54,7 @@ import {
   type Resultado,
 } from '../lib/calorias/bicicleta';
 import { whatsappUrl } from '../lib/links';
+import { focoSemSalto } from './focoSemSalto';
 
 type Modo = 'tempo' | 'distancia' | 'ergometrica' | 'meta';
 
@@ -108,7 +109,7 @@ export function iniciarCalculadoraBicicleta(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    campos[novo].focus();
+    focoSemSalto(campos[novo]);
     calcula();
   }
 

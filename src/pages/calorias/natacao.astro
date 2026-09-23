@@ -802,6 +802,11 @@ const schema = [
       .cn-como-slot { min-height: 3.1em; }
     }
     .cn-comparativo { font-weight: 400; color: var(--muted); }
+    /* No celular o comparativo vai para a própria linha: colado ao rótulo,
+       "Costas recreativo" quebrava e empurrava os campos abaixo. */
+    @media (max-width: 479px) {
+      .cn-comparativo { display: block; }
+    }
 
     #cn-bloco-ritmo > .cn-campo,
     #cn-bloco-descanso > .cn-campo { margin-bottom: 0; }

@@ -59,6 +59,7 @@ import {
 } from '../lib/calorias/corda';
 import { metCorrida } from '../lib/calorias/corrida';
 import { whatsappUrl } from '../lib/links';
+import { focoSemSalto } from './focoSemSalto';
 import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'pulos' | 'series' | 'meta';
@@ -131,7 +132,7 @@ export function iniciarCalculadoraCorda(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    campos[novo].focus();
+    focoSemSalto(campos[novo]);
     calcula();
   }
 

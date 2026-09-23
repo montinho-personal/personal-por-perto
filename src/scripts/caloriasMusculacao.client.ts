@@ -52,6 +52,7 @@ import {
   tipo,
 } from '../lib/calorias/musculacao';
 
+import { focoSemSalto } from './focoSemSalto';
 import { reservaAltura } from './reservaAltura';
 type Modo = 'sessao' | 'semana' | 'musculo';
 
@@ -113,7 +114,7 @@ export function iniciarCalculadoraMusculacao(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    principal[novo].focus();
+    focoSemSalto(principal[novo]);
     calcula();
   }
 

@@ -51,6 +51,7 @@ import {
   type Resultado,
 } from '../lib/calorias/yoga';
 import { whatsappUrl } from '../lib/links';
+import { focoSemSalto } from './focoSemSalto';
 import { reservaAltura } from './reservaAltura';
 
 type Modo = 'tempo' | 'relogio' | 'meta';
@@ -120,7 +121,7 @@ export function iniciarCalculadoraYoga(): void {
       b.tabIndex = ativo ? 0 : -1;
     });
     evento('calculator_mode_changed', { mode: novo });
-    campos[novo].focus();
+    focoSemSalto(campos[novo]);
     calcula();
   }
 
