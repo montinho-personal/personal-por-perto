@@ -1,0 +1,681 @@
+---
+/**
+ * Quantas calorias gasta uma prova de Hyrox — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS QUINZE
+ *
+ * A primeira página do cluster que soma partes de uma prova. Não
+ * encontramos medição do Hyrox inteiro, e a página não depende dela: a
+ * prova é padronizada, então a corrida sai da equação da ACSM (a mesma da
+ * página de corrida) e as estações saem do Compêndio de 2011. A página
+ * diz, no topo e na calculadora, que o resultado é uma estimativa — e
+ * mostra quanto a divisão igual do tempo das estações pode pesar.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  CIRCUITO,
+  ESQUI,
+  ESTACOES,
+  FONTES,
+  KM_CORRIDA,
+  NOTA_BRUTO,
+  NOTA_CIRCUITO,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_PACE_LENTO,
+  NOTA_ROXZONE,
+  NOTA_SEGURANCA,
+  NOTA_SEM_MEDICAO,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PACE_PADRAO,
+  PESO_PADRAO,
+  REMO,
+  SEM_CONFERENCIA,
+  TEMPO_PADRAO,
+  deProva,
+  faixaDaDivisao,
+  formataKcal,
+  formataMet,
+  formataMinSeg,
+  formataPace,
+  formataPct,
+  formataTempo,
+  fraseContexto,
+  tabelaCenarios,
+  tabelaPorPeso,
+  type Resultado,
+} from '../../lib/calorias/hyrox';
+
+const path = '/calorias/hyrox';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Hyrox', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const resolve = (t: number, p: number, kg: number): Resultado => {
+  const r = deProva(t, p, kg);
+  if (!r.ok) throw new Error('exemplo incoerente');
+  return r;
+};
+const EX = resolve(TEMPO_PADRAO, PACE_PADRAO, PESO_PADRAO);
+const EX_90KG = resolve(TEMPO_PADRAO, PACE_PADRAO, 90);
+const CEN = tabelaCenarios(PESO_PADRAO);
+const FAIXA = faixaDaDivisao(EX);
+const TAB_PESO = tabelaPorPeso();
+const [RAPIDA, , LONGA] = CEN;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 58 caracteres. */
+const title = 'Quantas Calorias Gasta uma Prova de Hyrox? Conta por Etapa';
+/* 153 caracteres. */
+const description =
+  'Calcule as calorias de uma prova de Hyrox pelo seu tempo final e pace: 8 km de corrida e 8 estações, cada parte com fonte. Estimativa com a conta aberta.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta uma prova de Hyrox?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${CEN.map((r) => `${formataKcal(r.kcal)} kcal numa prova de ${formataTempo(r.tempoFinal)} (pace ${formataPace(r.pace)})`).join(', ').replace(/, ([^,]*)$/, ' e $1')}. É uma estimativa por partes: a corrida pela equação da ACSM, as estações pelo Compêndio de Atividades Físicas.`,
+  },
+  {
+    pergunta: 'O que gasta mais no Hyrox: a corrida ou as estações?',
+    resposta: `A corrida. Numa prova de ${formataTempo(EX.tempoFinal)} com pace de ${formataPace(EX.pace)}, ela ocupa ${formataPct(EX.pctTempoCorrida)} do tempo e faz cerca de ${formataPct(EX.pctKcalCorrida)} do gasto — ${formataKcal(EX.kcalCorrida)} das ${formataKcal(EX.kcal)} kcal. Correr a ${n(EX.velocidadeKmH)} km/h custa mais por minuto que qualquer estação na tabela.`,
+  },
+  {
+    pergunta: 'Quem termina a prova mais devagar gasta menos?',
+    resposta: `Na conta, não: gasta mais no total. Para ${PESO_PADRAO} kg, a prova de ${formataTempo(RAPIDA.tempoFinal)} fica em cerca de ${formataKcal(RAPIDA.kcal)} kcal e a de ${formataTempo(LONGA.tempoFinal)}, em ${formataKcal(LONGA.kcal)}. O gasto por minuto cai, mas o tempo em movimento sobe mais.`,
+  },
+  {
+    pergunta: 'Existe estudo que mediu o gasto de uma prova de Hyrox?',
+    resposta: NOTA_SEM_MEDICAO,
+  },
+  {
+    pergunta: 'Por que a calculadora pede o pace da corrida?',
+    resposta: `Porque é ele que separa a prova em duas partes. Os ${KM_CORRIDA} km de corrida levam 8 × o pace; o que sobra do tempo final é das estações, com a Roxzone junto. Sem o pace, não dá para saber quanto da prova foi corrida — e a corrida é a parte que mais gasta.`,
+  },
+  {
+    pergunta: 'Treinar para o Hyrox emagrece?',
+    resposta: `Aumenta o gasto do dia, e treino frequente conta. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A mesma equação da ACSM que faz a parte da corrida nesta página, para qualquer distância.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/crossfit/',
+    titulo: 'Quantas calorias gasta uma aula de crossfit?',
+    descricao: 'O WOD medido como régua, e o limite de toda conta por oxigênio.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    titulo: 'Quantas calorias a musculação queima?',
+    descricao: 'A força que segura trenó, carregamento e avanço, com o gasto no tamanho certo.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX.kcal)} kcal de uma prova entram na conta da semana.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="hx-hero">
+    <div class="container hx-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta uma prova de Hyrox?</h1>
+      <p class="hx-hero-lead">
+        Uma prova em {formataTempo(EX.tempoFinal)}, com pace de {formataPace(EX.pace)} nas corridas, gasta
+        cerca de <strong>{formataKcal(EX.kcal)} kcal</strong> para {PESO_PADRAO} kg. A corrida ocupa{' '}
+        {formataPct(EX.pctTempoCorrida)} do tempo e <strong>faz {formataPct(EX.pctKcalCorrida)} do gasto</strong>.
+      </p>
+      <p class="hx-micro">Estimativa por partes · grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container hx-layout">
+    <article class="hx-main">
+      <section id="hx-app" class="hx-app" aria-labelledby="hx-app-h">
+        <h2 id="hx-app-h" class="hx-app-h">Calculadora de calorias do Hyrox</h2>
+
+        <div class="hx-campos">
+          <div class="hx-campo">
+            <label for="hx-peso">Seu peso (kg)</label>
+            <input id="hx-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="hx-duo">
+            <div class="hx-campo">
+              <label for="hx-tempo">Tempo final da prova</label>
+              <input
+                id="hx-tempo"
+                type="text"
+                autocomplete="off"
+                value={formataTempo(TEMPO_PADRAO)}
+                aria-describedby="hx-tempo-dica"
+              />
+              <p id="hx-tempo-dica" class="hx-dica-campo">Ex.: 1h30</p>
+            </div>
+            <div class="hx-campo">
+              <label for="hx-pace">Pace médio das corridas</label>
+              <input
+                id="hx-pace"
+                type="text"
+                autocomplete="off"
+                value={formataPace(PACE_PADRAO)}
+                aria-describedby="hx-pace-dica"
+              />
+              <p id="hx-pace-dica" class="hx-dica-campo">Só das 8 corridas, em min/km. Ex.: 6:00</p>
+            </div>
+          </div>
+
+          <div class="hx-campo">
+            <p class="hx-rotulo" id="hx-exemplos-h">Exemplos de prova</p>
+            <div class="hx-presets" role="group" aria-labelledby="hx-exemplos-h">
+              {CEN.map((r) => (
+                <button
+                  type="button"
+                  class="hx-exemplo"
+                  data-tempo={formataTempo(r.tempoFinal)}
+                  data-pace={formataPace(r.pace)}
+                >
+                  {formataTempo(r.tempoFinal)} a {formataPace(r.pace)}/km
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <p class="hx-dica">
+            Estimativa por partes: corrida pela equação da ACSM, estações pelo Compêndio de Atividades
+            Físicas (2011).
+          </p>
+        </div>
+
+        <p id="hx-erro" class="hx-erro" role="status" hidden></p>
+
+        <div id="hx-saida" class="hx-saida" role="status" aria-live="polite">
+          <p class="hx-resultado">
+            <span class="hx-numero">≈ {formataKcal(EX.kcal)}</span>
+            <span class="hx-unidade">kcal</span>
+          </p>
+          <p class="hx-frase">{fraseContexto(EX)}</p>
+
+          <dl class="hx-detalhes">
+            <div><dt>Corrida (8 km)</dt><dd class="hx-d-corrida">{formataTempo(EX.minutosCorrida)}, ≈ {formataKcal(EX.kcalCorrida)} kcal</dd></div>
+            <div><dt>Estações (8)</dt><dd class="hx-d-estacoes">{formataTempo(EX.minutosEstacoes)}, ≈ {formataKcal(EX.kcalEstacoes)} kcal</dd></div>
+            <div><dt>Parte da corrida</dt><dd class="hx-d-peso">{formataPct(EX.pctKcalCorrida)} do gasto, {formataPct(EX.pctTempoCorrida)} do tempo</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="hx-d-liquido">≈ {formataKcal(EX.kcalLiquida)} kcal</dd></div>
+          </dl>
+
+          <div class="hx-por-estacao">
+            <p class="hx-por-estacao-h">Cada estação: {formataMinSeg(EX.minutosPorEstacao)}, com a Roxzone</p>
+            <ol class="hx-estacoes">
+              {EX.estacoes.map((e) => (
+                <li data-estacao={e.estacao.id}>
+                  <span class="hx-e-nome">{e.estacao.nome} <span class="hx-e-vol">{e.estacao.volume}</span></span>
+                  <span class="hx-e-kcal">≈ {formataKcal(e.kcal)} kcal</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <p class="hx-nota hx-nota-pace" hidden></p>
+          <p class="hx-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="hx-proximo">
+            <p class="hx-proximo-lead">
+              Esse número responde <em>quanto a prova custa</em>. Ele não diz onde você perde tempo. O
+              Hyrox é corrida feita depois de força, e força feita com o coração alto — <strong>e a
+              preparação precisa treinar as duas juntas, não só cada uma no seu dia.</strong>
+            </p>
+            <div class="hx-proximo-acoes">
+              <a class="hx-btn hx-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="hx-btn hx-btn-secundario hx-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="hx-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose hx-conteudo">
+        <h2>A prova é sempre a mesma</h2>
+        <p>
+          O Hyrox tem {KM_CORRIDA} corridas de 1 km, e cada uma é seguida de uma estação, sempre nesta
+          ordem. É isso que permite calcular por partes: a corrida tem equação conhecida, e cada
+          estação tem uma linha no Compêndio de Atividades Físicas.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>As 8 estações, na ordem da prova, e a intensidade usada na conta</caption>
+            <thead>
+              <tr><th scope="col">Estação</th><th scope="col">Volume</th><th scope="col">METs</th><th scope="col">Código</th></tr>
+            </thead>
+            <tbody>
+              {ESTACOES.map((e, i) => (
+                <tr>
+                  <th scope="row">{i + 1}. {e.nome}</th>
+                  <td>{e.volume}</td>
+                  <td>{formataMet(e.linha.met)}</td>
+                  <td>{e.linha.codigo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          O SkiErg entra como aparelho de esqui ({formataMet(ESQUI.met)} METs, código {ESQUI.codigo}), e o
+          remo como remo ergométrico a 100 watts, esforço moderado ({formataMet(REMO.met)}, código{' '}
+          {REMO.codigo}). {NOTA_CIRCUITO}
+        </p>
+
+        <h2>A conta, por partes</h2>
+        <p>
+          A corrida sai do pace. O tempo das estações é o que sobra do tempo final, dividido em partes
+          iguais entre as oito.
+        </p>
+        <p class="hx-formula">{`prova de ${formataTempo(EX.tempoFinal)}, pace ${formataPace(EX.pace)}, ${PESO_PADRAO} kg
+
+  corrida: 8 × ${formataPace(EX.pace)} = ${EX.minutosCorrida} min, a ${n(EX.velocidadeKmH)} km/h
+    VO2 = 0,2 × ${n(EX.velocidadeKmH * 1000 / 60)} m/min + 3,5 = ${n(EX.metCorrida * 3.5)} → ${n(EX.metCorrida, 2)} METs
+    ${n(EX.metCorrida, 2)} × 3,5 × ${PESO_PADRAO} ÷ 200 × ${EX.minutosCorrida} = ${n(EX.kcalCorrida, 0)} kcal
+
+  estações: ${formataTempo(EX.tempoFinal)} − ${EX.minutosCorrida} min = ${EX.minutosEstacoes} min, ${formataMinSeg(EX.minutosPorEstacao)} cada
+    (SkiErg ${formataMet(ESQUI.met)} + remo ${formataMet(REMO.met)} + 6 × circuito ${formataMet(CIRCUITO.met)}) METs
+    × 3,5 × ${PESO_PADRAO} ÷ 200 × ${n(EX.minutosPorEstacao, 2)} min = ${n(EX.kcalEstacoes, 0)} kcal
+
+  total ≈ ${formataKcal(EX.kcal)} kcal`}</p>
+
+        <h2>A corrida faz mais da metade do gasto</h2>
+        <p>
+          Numa prova de {formataTempo(EX.tempoFinal)}, a corrida ocupa {formataPct(EX.pctTempoCorrida)} do
+          tempo e responde por cerca de {formataPct(EX.pctKcalCorrida)} do gasto: correr a{' '}
+          {n(EX.velocidadeKmH)} km/h ({n(EX.metCorrida)} METs) custa mais por minuto que qualquer estação da
+          tabela. Quanto mais rápida a prova, mais a corrida pesa.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Três provas, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Prova</th>
+                <th scope="col">Corrida</th>
+                <th scope="col">Estações</th>
+                <th scope="col">Total</th>
+                <th scope="col">Corrida no gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CEN.map((r) => (
+                <tr>
+                  <th scope="row">{formataTempo(r.tempoFinal)}, pace {formataPace(r.pace)}</th>
+                  <td>≈ {formataKcal(r.kcalCorrida)} kcal</td>
+                  <td>≈ {formataKcal(r.kcalEstacoes)} kcal</td>
+                  <td>≈ {formataKcal(r.kcal)} kcal</td>
+                  <td>{formataPct(r.pctKcalCorrida)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          E, na conta, quem termina mais devagar gasta mais no total: o gasto por minuto cai, mas o
+          tempo em movimento sobe mais.
+        </p>
+
+        <h2>O que a divisão igual esconde</h2>
+        <p>
+          Numa prova de verdade, as estações não levam o mesmo tempo, e a conta as trata como se
+          levassem. Quanto isso pode pesar tem limite: as intensidades vão de{' '}
+          {formataMet(ESQUI.met)} a {formataMet(REMO.met)} METs. Mesmo no caso impossível de todo o tempo
+          de estação cair na mais leve — ou na mais pesada —, as estações da prova de{' '}
+          {formataTempo(EX.tempoFinal)} ficariam entre {formataKcal(FAIXA.min)} e {formataKcal(FAIXA.max)}{' '}
+          kcal. A divisão igual dá {formataKcal(EX.kcalEstacoes)}.
+        </p>
+        <p>{NOTA_ROXZONE}</p>
+
+        <h2>O que não está na calculadora</h2>
+        <ul class="hx-sem-conferencia" aria-label="O que não conseguimos conferir">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>
+          {NOTA_SEM_MEDICAO} A carga do trenó, do carregamento, do saco e da bola muda com a categoria, e
+          a conta não a usa: ela parte do tempo que você levou, não do peso que empurrou.
+        </p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Prova de {formataTempo(TEMPO_PADRAO)}, pace {formataPace(PACE_PADRAO)}</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">Corrida</th><th scope="col">Estações</th><th scope="col">Total</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.corrida)} kcal</td>
+                  <td>≈ {formataKcal(l.estacoes)} kcal</td>
+                  <td>≈ {formataKcal(l.total)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          O peso entra direto na conta: com 90 kg, a mesma prova de {formataTempo(TEMPO_PADRAO)} fica em cerca
+          de {formataKcal(EX_90KG.kcal)} kcal. {NOTA_BRUTO}
+        </p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>. Na
+          corrida, o MET sai da equação de corrida da ACSM — consumo de oxigênio = 0,2 × velocidade em
+          metros por minuto + 3,5, dividido por 3,5 —, a mesma que a nossa página de corrida usa. Nas
+          estações, o MET é o da linha do Compêndio de 2011 de cada uma.
+        </p>
+        <p>
+          O acréscimo real ao dia desconta 1 MET — o que você gastaria parado — durante todo o tempo
+          final. Nenhum número desta página foi escrito à mão: todos saem do mesmo motor que a
+          calculadora usa, e os testes conferem que ele reproduz as provas de referência do método.
+        </p>
+        <p class="hx-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>{NOTA_PACE_LENTO.replace('Nesse pace', 'Num pace mais lento que 7:30 por km')}</p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="hx-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do Hyrox" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraHyrox } from '../../scripts/caloriasHyrox.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraHyrox();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .hx-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .hx-hero-inner { max-width: 780px; }
+    .hx-hero h1 { color: #fff; max-width: 22ch; }
+    .hx-hero :global(.eyebrow) { color: #ffb488; }
+    .hx-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .hx-hero-lead strong { color: #fff; }
+    .hx-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .hx-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .hx-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .hx-main { min-width: 0; max-width: 760px; }
+
+    .hx-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .hx-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .hx-campos { display: grid; gap: var(--sp-4); }
+    .hx-campo { margin-bottom: 0; }
+    .hx-campo label,
+    .hx-campo .hx-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .hx-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .hx-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    /* Tempo e pace lado a lado só quando rótulo e dica cabem numa linha.
+       Em tela estreita eles quebram em alturas diferentes, o campo de baixo
+       subia acima do de cima e o Tab parecia voltar — então empilham. */
+    .hx-duo { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-4); }
+    @media (min-width: 520px) {
+      .hx-duo { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); align-items: start; }
+    }
+    .hx-dica-campo { margin-top: 0.3rem; font-size: var(--step--1); color: var(--muted); }
+
+    .hx-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    .hx-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .hx-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .hx-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .hx-exemplo {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .hx-exemplo:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .hx-exemplo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .hx-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .hx-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .hx-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .hx-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .hx-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .hx-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .hx-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .hx-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .hx-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .hx-por-estacao { margin-top: var(--sp-4); }
+    .hx-por-estacao-h { font-size: var(--step--1); font-weight: 700; color: var(--ink-soft); }
+    .hx-estacoes {
+      margin: 0.5rem 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: estacao;
+      font-size: var(--step--1);
+    }
+    .hx-estacoes li {
+      counter-increment: estacao;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--sp-3);
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .hx-estacoes li::before { content: counter(estacao) '.'; min-width: 1.4em; color: var(--muted); }
+    .hx-e-nome { flex: 1; }
+    .hx-e-vol { color: var(--muted); }
+    .hx-e-kcal { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .hx-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .hx-nota-pace { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .hx-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .hx-proximo-lead { line-height: 1.6; }
+    .hx-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .hx-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .hx-btn-primario { background: var(--brand-600); color: #fff; }
+    .hx-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .hx-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .hx-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .hx-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .hx-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .hx-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .hx-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .hx-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .hx-fontes li { margin-bottom: 0.6rem; }
+    .hx-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

@@ -254,6 +254,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/tenis/', titulo: 'Quantas calorias gasta jogar tênis?' },
   { categoria: 'Calorias', url: '/calorias/volei/', titulo: 'Quantas calorias gasta jogar vôlei?' },
   { categoria: 'Calorias', url: '/calorias/crossfit/', titulo: 'Quantas calorias gasta uma aula de crossfit?' },
+  { categoria: 'Calorias', url: '/calorias/hyrox/', titulo: 'Quantas calorias gasta uma prova de Hyrox?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },
