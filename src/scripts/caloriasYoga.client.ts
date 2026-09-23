@@ -11,9 +11,10 @@
  *
  * Por isso a saída ganha duas linhas que só existem nesse modo (o que o
  * aparelho marcou e o tamanho da diferença) e um aviso que aparece só na
- * prática em sala aquecida, porque é ali que a equação de frequência
- * cardíaca do relógio sai do domínio em que foi construída. Fora do calor a
- * comparação continua, mas sem afirmar uma causa que não foi medida.
+ * prática em sala aquecida, porque é sobre o calor que existe medição
+ * direta nas mesmas pessoas. O aviso diz o que foi medido (o gasto não sobe)
+ * separado do que é explicação de pesquisador (a frequência cardíaca). Fora
+ * do calor a comparação continua, sem afirmar causa nenhuma.
  *
  * NÃO existe seletor de intensidade, e isso é decisão de conteúdo: a
  * intensidade em yoga é o próprio estilo, e a escada inteira do Compêndio
@@ -28,7 +29,7 @@ import {
   KCAL_MIN,
   MINUTOS_MAX,
   MINUTOS_MIN,
-  NOTA_RELOGIO_MENTE,
+  NOTA_RELOGIO_CALOR,
   PESO_MAX,
   PESO_MIN,
   RELOGIO_MAX,
@@ -209,14 +210,14 @@ export function iniciarCalculadoraYoga(): void {
     }
 
     /*
-     * O aviso sobre a frequência cardíaca aparece quando a prática é no
-     * calor, porque é ali que a equação do relógio sai do domínio dela.
+     * O aviso sobre o calor aparece só quando a prática é no calor, porque
+     * só ali existe medição direta comparando as duas condições.
      */
     const nota = saida.querySelector<HTMLElement>('.cy-nota-relogio');
     if (nota) {
       const mostrar = res.cenario === 'relogio' && res.noCalor;
       nota.hidden = !mostrar;
-      if (mostrar) nota.textContent = NOTA_RELOGIO_MENTE;
+      if (mostrar) nota.textContent = NOTA_RELOGIO_CALOR;
     }
 
     atualizaWhatsapp(res);

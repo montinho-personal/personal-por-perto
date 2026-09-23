@@ -12,11 +12,14 @@ import {
   ESTILOS,
   ESTUDO_BIKRAM,
   ESTUDO_CALOR,
+  FONTE_HOUSTON,
+  FONTE_TRACY,
   KCAL_MIN,
   MARGEM_EMPATE,
   MINUTOS_ESTUDO,
   MINUTOS_MAX,
   MINUTOS_MIN,
+  NOTA_RELOGIO_CALOR,
   PESO_ESTUDO,
   PESO_PADRAO,
   RELOGIO_MIN,
@@ -39,6 +42,7 @@ import {
   parseNumero,
   pesoValido,
   relogioValido,
+  reproduzCalor,
   reproduzEstudo,
   simulacaoUmQuilo,
   tabelaPorEstilo,
@@ -60,10 +64,47 @@ console.log('\n[1] A CONFERÊNCIA CENTRAL: a tabela reproduz a medição direta?
 {
   const r = reproduzEstudo();
   console.log(`     ${ESTUDO_CALOR.kcalSalaNormal} kcal em ${MINUTOS_ESTUDO} min com ${PESO_ESTUDO} kg implicam ${r.metImplicado.toFixed(2)} METs`);
-  console.log(`     a tabela do Compêndio começa em ${r.metDaTabela} METs para yoga geral`);
-  ok(r.erro < 0.12, `a medição direta e a tabela concordam com menos de 12% de diferença (${(r.erro * 100).toFixed(1)}%)`);
-  ok(r.metImplicado > 2 && r.metImplicado < 2.5, `o MET implicado cai no pé da escada (${r.metImplicado.toFixed(2)})`);
-  ok(r.metImplicado < metYoga('power'), 'e bem abaixo do topo dela');
+  console.log(`     a tabela do Compêndio dá ${r.metDaTabela} METs para hatha`);
+  ok(r.erro < 0.08, `a medição direta e a tabela concordam com menos de 8% de diferença (${(r.erro * 100).toFixed(1)}%)`);
+  ok(r.metImplicado > metYoga('geral') && r.metImplicado < metYoga('hatha'),
+    `o MET implicado cai entre o yoga geral e o hatha (${r.metImplicado.toFixed(2)})`);
+  ok(r.metImplicado < metYoga('power'), 'e bem abaixo do topo da escada');
+
+  /*
+   * [1b] O peso do estudo é o do artigo.
+   *
+   * A primeira versão usava 65 kg, que não está no artigo, e a conferência
+   * "fechava" do mesmo jeito. Este teste existe para que o peso não volte a
+   * ser um número plausível escolhido à mão.
+   */
+  ok(PESO_ESTUDO === 59.6, `o peso médio dos participantes é o publicado: ${PESO_ESTUDO} kg`);
+  ok(ESTUDO_CALOR.frequenciaDiferiu === false, 'e o estudo registra que a frequência cardíaca média não diferiu');
+
+  /*
+   * [1c] A sala quente contra o hot yoga da tabela.
+   *
+   * A tabela fica ACIMA da medição. Se um dia ficar abaixo, a página passa a
+   * dizer algo que favorece a própria tese sem avisar — e o teste quebra.
+   */
+  const c = reproduzCalor();
+  console.log(`     sala quente: ${ESTUDO_CALOR.kcalSalaQuente} kcal implicam ${c.metImplicado.toFixed(2)} METs; a tabela dá ${c.metDaTabela} para hot yoga`);
+  ok(c.desvio > 0, `a tabela de hot yoga fica acima da medição no calor (+${(c.desvio * 100).toFixed(0)}%)`);
+  ok(r.desvio > 0, `e a de hatha também fica acima da sala normal (+${(r.desvio * 100).toFixed(1)}%) — nenhum desvio favorece a tese`);
+}
+
+/* ------------------------------------------------------------------ */
+console.log('\n[1d] As fontes apontam para onde os números estão\n');
+{
+  ok(FONTE_HOUSTON.rotulo.startsWith('Lambert BS'), 'o estudo do calor é citado pelo primeiro autor real (Lambert)');
+  ok(!FONTE_HOUSTON.rotulo.includes('Boyd'), 'e não pelo autor que a primeira versão atribuiu por engano');
+  ok(FONTE_HOUSTON.resumo.includes('59,6 kg'), 'o resumo traz o peso publicado');
+  ok(FONTE_TRACY.url.includes('colostate.edu'), 'os 460/330 kcal apontam para a divulgação da Colorado State');
+  ok(!FONTE_TRACY.url.includes('22820210'), 'e não para o artigo de 2013, que não os contém');
+  ok(FONTE_TRACY.resumo.includes('não artigo revisado por pares'), 'a página declara que é divulgação, não artigo');
+  ok(NOTA_RELOGIO_CALOR.includes('não chegou a diferir'),
+    'a nota do relógio declara que a frequência média não diferiu no estudo controlado');
+  ok(!/sem que o gasto suba junto\. O aparelho vê/.test(NOTA_RELOGIO_CALOR),
+    'e não afirma mais o mecanismo como fato medido');
 }
 
 /* ------------------------------------------------------------------ */
@@ -82,7 +123,7 @@ console.log('\n[2] O CALOR NÃO AUMENTA O GASTO\n');
   ok(hot > hatha, 'na tabela, hot yoga fica acima do hatha');
   ok(hot / hatha < 1.3, `mas só ${((hot / hatha - 1) * 100).toFixed(0)}% acima — não o dobro que se publica`);
 
-  // O Bikram de 90 min de Tracy e Hart, para escala.
+  // O Bikram de 90 min da Colorado State, para escala.
   const bikramMulher = ESTUDO_BIKRAM.kcalMulheres / ESTUDO_BIKRAM.minutos;
   console.log(`     Bikram de 90 min: ${ESTUDO_BIKRAM.kcalMulheres} kcal nas mulheres = ${bikramMulher.toFixed(1)} kcal/min`);
   ok(bikramMulher < 5, 'e nem o Bikram de 90 minutos passa de 5 kcal por minuto');
@@ -96,13 +137,15 @@ console.log('\n[3] A ESCADA É CURTA — trocar de estilo muda pouco\n');
   ok(perto(amp, 1.739, 0.01), `a escada inteira do yoga tem amplitude de ${amp.toFixed(2)}×`);
 
   /*
-   * A comparação que a página faz: essa amplitude é MENOR que a que existe
-   * dentro da caminhada, que é a atividade mais leve do resto do cluster.
+   * A página afirma que a escada do yoga varia MENOS que a caminhada entre
+   * devagar e rápido. A primeira versão testava a razão de velocidades, que
+   * não é o que a frase diz; o que ela diz é sobre gasto, então o teste
+   * compara METs.
    */
-  const cLeve = ritmoCaminhada('leve').velocidade;
-  const cRapido = ritmoCaminhada('muito-rapido').velocidade;
-  console.log(`     caminhada vai de ${cLeve} a ${cRapido} km/h`);
-  ok(cRapido / cLeve > 1.5, 'e a caminhada tem amplitude de velocidade comparável ou maior');
+  const mLeve = ritmoCaminhada('leve').met;
+  const mRapido = ritmoCaminhada('muito-rapido').met;
+  console.log(`     caminhada vai de ${mLeve} a ${mRapido} METs = ${(mRapido / mLeve).toFixed(2)}×`);
+  ok(mRapido / mLeve > amp, 'e a caminhada, de leve a muito rápida, tem amplitude de gasto MAIOR que a escada do yoga');
   // O ponto prático: 60 min no topo e no pé da escada diferem pouco em kcal.
   const pe = deTempo(60, PESO_PADRAO, 'geral').kcal;
   const topo = deTempo(60, PESO_PADRAO, 'power').kcal;

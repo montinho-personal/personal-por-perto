@@ -8,26 +8,28 @@
  * mecânico, qual variável decide. Esta discute o INSTRUMENTO — por que o
  * relógio de quem pergunta está errado justamente aqui.
  *
- * Relógio e aplicativo estimam caloria a partir da frequência cardíaca,
- * usando uma equação construída em temperatura normal. No calor, a
- * frequência sobe por termorregulação sem que o gasto suba. Em hot yoga o
- * aparelho vê frequência alta, aplica a equação onde ela não vale e infla.
+ * Relógio e aplicativo estimam caloria a partir da frequência cardíaca, com
+ * equações feitas para exercício em temperatura normal. Quem mediu o Bikram
+ * na Colorado State atribui a isso os números inflados de hot yoga.
  *
  * Por isso existe aqui um modo que nenhuma outra calculadora tem: a pessoa
  * informa o número que o relógio mostrou e a ferramenta compara.
  *
- * A MEDIÇÃO QUE FECHA O ASSUNTO
+ * O QUE ESTÁ MEDIDO, E O QUE É EXPLICAÇÃO
  *
- * O Houston Methodist comparou, nos mesmos praticantes, a mesma aula em sala
- * quente e em temperatura normal: 156 contra 151 kcal. Cinco
- * quilocalorias, dentro do erro. O calor faz suar, e suar não é gastar.
+ * Lambert et al. (Houston Methodist) compararam, nos mesmos 16 praticantes,
+ * a mesma sequência a 40 °C e a 23 °C: 156 contra 151 kcal, dentro do erro.
+ * E a frequência cardíaca média também não diferiu — por isso a página
+ * apresenta o mecanismo do relógio como explicação de pesquisador, não como
+ * fato medido. A primeira versão não fazia essa distinção; a auditoria de
+ * 23/09/2026 corrigiu isso, a autoria da citação e o peso dos participantes.
  *
  * E É A PRIMEIRA PÁGINA EM QUE A RESPOSTA HONESTA É "POUCO"
  *
  * A escada inteira do yoga vai de 2,3 a 4,0 METs. Uma hora de hatha para 70
  * kg dá 184 kcal, e dois quintos disso é o metabolismo de repouso. A página
- * não esconde isso nem pede desculpas: yoga e pilates entregam mobilidade,
- * core, equilíbrio e adesão. Caloria não é o produto deles.
+ * não esconde isso nem pede desculpas: yoga e pilates treinam mobilidade,
+ * core e equilíbrio. Caloria não é o produto deles.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -52,7 +54,7 @@ import {
   NOTA_ESTIMATIVA,
   NOTA_NAO_E_O_PONTO,
   NOTA_NAO_PRESCRICAO,
-  NOTA_RELOGIO_MENTE,
+  NOTA_RELOGIO_CALOR,
   NOTA_SEGURANCA,
   NOTA_SEM_PERDA_LOCALIZADA,
   PESO_ESTUDO,
@@ -69,13 +71,16 @@ import {
   formataTempo,
   kcalPorMinuto,
   metYoga,
+  reproduzCalor,
   reproduzEstudo,
   simulacaoUmQuilo,
   tabelaPorEstilo,
   tabelaPorPeso,
   tabelaPorTempo,
 } from '../../lib/calorias/yoga';
-import { PESO_PADRAO as PESO_CAM, deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
+import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
+import { ESTUDO_ZUMBA } from '../../lib/calorias/danca';
+import { metRua } from '../../lib/calorias/bicicleta';
 
 const path = '/calorias/yoga-e-pilates';
 const atualizadoEm = '2026-09-23';
@@ -102,6 +107,7 @@ const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, 'hatha');
 
 /* A conferência contra a medição direta, calculada e não escrita à mão. */
 const ESTUDO = reproduzEstudo();
+const CALOR = reproduzCalor();
 const EFEITO_CALOR = efeitoDoCalor();
 const AMPLITUDE = amplitudeDaEscada();
 
@@ -109,6 +115,25 @@ const AMPLITUDE = amplitudeDaEscada();
 const PUBLICADO_VINYASA = 550;
 const MET_PUBLICADO = PUBLICADO_VINYASA / ((3.5 * PESO_PADRAO) / 200) / 60;
 const INFLACAO_VINYASA = MET_PUBLICADO / metYoga('vinyasa');
+
+/*
+ * O número que circula para pilates vem de aula AVANÇADA, calculado para
+ * 68 kg — e a página diz isso, em vez de compará-lo com o pilates geral
+ * como se fosse a mesma aula. O Compêndio não separa níveis.
+ */
+const PUBLICADO_PILATES = 492;
+const PESO_PUBLICADO_PILATES = 68;
+const MET_PILATES_PUBLICADO = PUBLICADO_PILATES / ((3.5 * PESO_PUBLICADO_PILATES) / 200) / 60;
+
+/*
+ * A comparação com o pedal sai do motor do pedal. A primeira versão dizia
+ * "dobrar a velocidade triplica o gasto"; pelo próprio motor do site,
+ * dobrar de 12 para 24 km/h multiplica por 2,5. Escrito à mão, o número
+ * estava errado; calculado, não tem como ficar.
+ */
+const PEDAL_DE = 12;
+const PEDAL_PARA = 24;
+const FATOR_PEDAL = metRua(PEDAL_PARA) / metRua(PEDAL_DE);
 
 /* Quanto de caminhada moderada custa o mesmo que uma hora de hatha. */
 const MOD = ritmoCaminhada('moderado');
@@ -122,27 +147,31 @@ const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigit
 
 /* 52 caracteres. */
 const title = 'Quantas Calorias Yoga e Pilates Gastam? A Conta Real';
-/* 143 caracteres. */
+/*
+ * 153 caracteres. A versão anterior prometia explicar "por que seu relógio
+ * infla o hot yoga" — mais do que a medição sustenta. A promessa agora é o
+ * que a página entrega: a comparação com o relógio e o resultado medido.
+ */
 const description =
-  'Calcule as calorias de yoga e pilates por estilo. E por que seu relógio infla o hot yoga — com a medição que compara sala quente e sala normal.';
+  'Calcule as calorias de yoga e pilates por estilo e compare com o número do seu relógio. E o que a medição achou no hot yoga: o calor não aumenta o gasto.';
 
 const faqs = [
   {
     pergunta: 'Uma hora de yoga queima quantas calorias?',
-    resposta: `Cerca de ${formataKcal(EX_HATHA.kcal)} kcal para ${PESO_PADRAO} kg em hatha, o estilo mais praticado — e dois quintos disso é o metabolismo de repouso, que aconteceria de qualquer forma. Os estilos mais ativos chegam a ${formataKcal(EX_POWER.kcal)} kcal no power yoga. É bem menos do que circula por aí, e a página mostra de onde vem cada número.`,
+    resposta: `Cerca de ${formataKcal(EX_HATHA.kcal)} kcal para ${PESO_PADRAO} kg em hatha — e dois quintos disso é o metabolismo de repouso, que aconteceria de qualquer forma. Os estilos mais ativos chegam a ${formataKcal(EX_POWER.kcal)} kcal no power yoga. É bem menos do que circula por aí, e a página mostra de onde vem cada número.`,
   },
   {
     pergunta: 'Hot yoga queima mais calorias por causa do calor?',
-    resposta: `Não. O grupo do Houston Methodist comparou nos MESMOS ${ESTUDO_CALOR.participantes} praticantes a mesma aula em sala quente e em temperatura normal: ${ESTUDO_CALOR.kcalSalaQuente} ± ${ESTUDO_CALOR.erroQuente} kcal contra ${ESTUDO_CALOR.kcalSalaNormal} ± ${ESTUDO_CALOR.erroNormal} kcal. São ${n(EFEITO_CALOR * 100, 1)}% de diferença, dentro da margem de erro das duas medições. O calor faz suar muito mais, e suar não é gastar — é o corpo tentando não cozinhar.`,
+    resposta: `Não. Um grupo do Houston Methodist comparou nos MESMOS ${ESTUDO_CALOR.participantes} praticantes a mesma sequência de uma hora a 40 °C e a 23 °C: ${ESTUDO_CALOR.kcalSalaQuente} ± ${ESTUDO_CALOR.erroQuente} kcal contra ${ESTUDO_CALOR.kcalSalaNormal} ± ${ESTUDO_CALOR.erroNormal} kcal. São ${n(EFEITO_CALOR * 100, 1)}% de diferença, dentro da margem de erro das duas medições, e o consumo de oxigênio também não mudou. O calor faz suar muito mais, e suar não é gastar.`,
   },
   {
     pergunta: 'Por que meu relógio mostra muito mais calorias na aula de hot yoga?',
     resposta:
-      'Porque ele estima caloria a partir da frequência cardíaca, com uma equação construída em temperatura normal. No calor, o corpo manda sangue para a pele para dissipar calor, e a frequência sobe sem que o gasto suba junto. O aparelho vê o coração acelerado, aplica a equação fora do domínio dela e devolve um número inflado. Não é defeito do relógio — é a conta errada para a situação.',
+      'A explicação mais citada vem de quem mediu o Bikram na Colorado State: relógios estimam caloria pela frequência cardíaca, com equações feitas para exercício em temperatura normal, e no calor a frequência pode subir para dissipar calor sem que o gasto suba. É uma explicação plausível, mas vale ser honesto sobre o limite dela: no estudo do Houston Methodist, que comparou as duas salas nas mesmas pessoas, a frequência média não chegou a diferir. O que está medido, sem discussão, é o gasto — e ele não sobe com o calor. Por isso a calculadora compara o número do seu aparelho com a medição, em vez de tentar adivinhar o erro dele.',
   },
   {
     pergunta: 'Pilates queima quantas calorias em 1 hora?',
-    resposta: `Cerca de ${formataKcal(EX_PILATES.kcal)} kcal para ${PESO_PADRAO} kg. O Compêndio mede pilates geral em ${n(metYoga('pilates'))} METs, sem separar solo de aparelho — e esse valor é o mesmo do hot yoga, o que dá uma boa noção de escala. Se você viu "492 kcal por hora de pilates" em algum lugar, isso implicaria mais de 6 METs, o dobro do medido.`,
+    resposta: `Cerca de ${formataKcal(EX_PILATES.kcal)} kcal para ${PESO_PADRAO} kg. O Compêndio mede pilates geral em ${n(metYoga('pilates'))} METs, sem separar solo de aparelho nem nível — e esse valor é o mesmo do hot yoga, o que dá uma boa noção de escala. Circula um número de ${PUBLICADO_PILATES} kcal por hora, calculado para ${PESO_PUBLICADO_PILATES} kg em aula avançada: ele implicaria ${n(MET_PILATES_PUBLICADO)} METs, mais que o dobro do pilates geral. Aula avançada gasta mais que a média, mas como o Compêndio não separa níveis, não há como conferir esse número contra a tabela.`,
   },
   {
     pergunta: 'Qual estilo de yoga gasta mais calorias?',
@@ -150,7 +179,7 @@ const faqs = [
   },
   {
     pergunta: 'Yoga emagrece?',
-    resposta: `Pela via do gasto calórico, pouco: uma hora de hatha equivale a cerca de ${formataTempo(MIN_CAMINHADA)} de caminhada moderada. Pela via da adesão, é outra conversa — yoga e pilates estão entre as práticas com maior taxa de gente que continua anos depois, e atividade mantida vence atividade intensa abandonada. Só não espere que a conta da caloria explique o benefício.`,
+    resposta: `Pela via do gasto calórico, pouco: uma hora de hatha equivale a cerca de ${formataTempo(MIN_CAMINHADA)} de caminhada moderada. O que yoga e pilates fazem bem é outra coisa — mobilidade, força de core, equilíbrio — e, se for a atividade que você consegue manter, isso vale mais do que uma mais intensa que você abandona. Só não espere que a conta da caloria explique o benefício.`,
   },
   {
     pergunta: 'Quanto tempo de yoga para perder 1 kg de gordura?',
@@ -168,19 +197,19 @@ const relacionados = [
   {
     url: '/calorias/caminhada/',
     titulo: 'Quantas calorias a caminhada gasta?',
-    descricao: 'A comparação de escala: uma hora de hatha equivale a pouco mais de meia hora de caminhada.',
+    descricao: `A comparação de escala: uma hora de hatha equivale a cerca de ${formataTempo(MIN_CAMINHADA)} de caminhada moderada.`,
     tipo: 'Calorias',
   },
   {
     url: '/guias/como-nao-desistir-do-treino/',
     titulo: 'Como não desistir do treino',
-    descricao: 'Onde está o valor real destas práticas — e por que adesão vence intensidade.',
+    descricao: 'Por que a atividade que você mantém vale mais que a mais intensa.',
     tipo: 'Guia',
   },
   {
     url: '/emagrecimento/deficit-calorico-como-funciona/',
     titulo: 'Déficit calórico: como funciona',
-    descricao: 'Por que 184 kcal mudam pouco, e o que muda muito.',
+    descricao: `Por que ${formataKcal(EX_HATHA.kcal)} kcal mudam pouco, e o que muda muito.`,
     tipo: 'Emagrecimento',
   },
 ];
@@ -203,7 +232,7 @@ const schema = [
       <p class="cy-hero-lead">
         Uma hora de hatha gasta cerca de <strong>{formataKcal(EX_HATHA.kcal)} kcal</strong> para{' '}
         {PESO_PADRAO} kg — e <strong>dois quintos disso é só estar vivo</strong>. Se o seu relógio
-        mostrou o triplo numa aula de hot yoga, esta página explica exatamente por quê.
+        mostrou muito mais numa aula de hot yoga, veja o que a medição direta encontrou.
       </p>
       <p class="cy-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
     </div>
@@ -301,8 +330,8 @@ const schema = [
               <input id="cy-relogio" type="text" inputmode="numeric" autocomplete="off" value={RELOGIO_PADRAO} />
               <p class="cy-dica">
                 A ferramenta compara esse número com a estimativa baseada em medição de consumo de
-                oxigênio, e diz o tamanho da diferença. Em prática no calor, ela também explica a
-                causa.
+                oxigênio, e diz o tamanho da diferença. Em prática no calor, ela também mostra o que a
+                medição direta encontrou.
               </p>
             </div>
           </div>
@@ -333,9 +362,8 @@ const schema = [
             <p class="cy-proximo-lead">
               Esse número é pequeno, e isso não é problema da prática — é a pergunta que está
               errada. <strong>Yoga e pilates não são ferramentas de gasto calórico</strong>: eles
-              entregam mobilidade, força de core, equilíbrio e, o que mais importa no prazo de
-              anos, gente que continua praticando. Se o objetivo é déficit calórico, o caminho é
-              outro; se é conseguir se mover bem por décadas, o caminho é esse.
+              treinam mobilidade, força de core e equilíbrio. Se o objetivo é déficit calórico, o
+              caminho é outro; se é conseguir se mover bem por décadas, o caminho é esse.
             </p>
             <div class="cy-proximo-acoes">
               <a class="cy-btn cy-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
@@ -361,18 +389,18 @@ const schema = [
       </section>
 
       <div class="prose cy-conteudo">
-        <h2>Por que o seu relógio infla o hot yoga</h2>
-        <p>{NOTA_RELOGIO_MENTE}</p>
+        <h2>Por que o relógio pode inflar o hot yoga</h2>
+        <p>{NOTA_RELOGIO_CALOR}</p>
         <p>
-          É a primeira página deste nosso conjunto em que o problema não está na tabela — está no
-          aparelho de quem pergunta. Nas outras sete o erro típico é usar o MET errado; aqui o erro
-          típico é confiar num número que o seu próprio pulso produziu por uma razão que não tem
-          nada a ver com gasto.
+          É a primeira página deste nosso conjunto em que o problema não está só na tabela — está
+          também no aparelho de quem pergunta. Nas outras sete o erro típico é usar o MET errado;
+          aqui é confiar num número que o relógio calculou a partir do pulso, com uma equação que
+          não foi validada para aquela condição.
         </p>
         <p class="cy-formula">{`aula de ${formataTempo(60)} de hot yoga, ${PESO_PADRAO} kg
 
-  ${formataKcal(EX_RELOGIO.kcalRelogio)} kcal   ← um número típico de relógio
-  ${formataKcal(EX_RELOGIO.kcal)} kcal   ← estimativa por medição de oxigênio
+  ${formataKcal(EX_RELOGIO.kcalRelogio)} kcal   ← um exemplo de número de relógio
+  ${formataKcal(EX_RELOGIO.kcal)} kcal   ← estimativa pelo Compêndio (3,0 METs)
 
   o aparelho mostrou ${n(EX_RELOGIO.razaoRelogio, 1)}× mais`}</p>
         <p>
@@ -405,34 +433,47 @@ const schema = [
         </div>
         <p>
           São <strong>{n(EFEITO_CALOR * 100, 1)}%</strong> de diferença, e as duas faixas de erro se
-          sobrepõem — ou seja, não há diferença que se possa chamar de real. Os autores atribuem
-          isso à intensidade baixa da prática: ela não é suficiente para que a termorregulação
-          chegue a mexer no gasto.
+          sobrepõem — ou seja, não há diferença que se possa chamar de real. O consumo de oxigênio
+          não mudou, e a frequência cardíaca média também não. Este último ponto importa para a
+          conversa do relógio: neste estudo, o calor não chegou a acelerar o coração em média.
         </p>
         <p>
-          Há uma segunda medição na mesma direção. Tracy e Hart mediram uma sessão de Bikram de{' '}
-          {ESTUDO_BIKRAM.minutos} minutos em cerca de {ESTUDO_BIKRAM.kcalHomens} kcal nos homens e{' '}
-          {ESTUDO_BIKRAM.kcalMulheres} nas mulheres — isto é, menos de{' '}
-          {n(ESTUDO_BIKRAM.kcalMulheres / ESTUDO_BIKRAM.minutos, 1)} kcal por minuto em noventa
-          minutos de sala quente. E são eles que apontam a causa das estimativas infladas: o uso de
-          equações de frequência cardíaca fora da condição em que foram construídas.
+          Há uma segunda medição na mesma direção. Na Colorado State, o pesquisador Brian Tracy
+          mediu a taxa metabólica numa sessão de Bikram de {ESTUDO_BIKRAM.minutos} minutos: cerca
+          de {ESTUDO_BIKRAM.kcalHomens} kcal nos homens e {ESTUDO_BIKRAM.kcalMulheres} nas
+          mulheres — menos de {n(ESTUDO_BIKRAM.kcalMulheres / ESTUDO_BIKRAM.minutos, 1)} kcal por
+          minuto em noventa minutos de sala quente. É dele a explicação para as estimativas infladas
+          que circulavam: equações de frequência cardíaca, feitas para exercício em temperatura
+          normal, usadas no calor. Esses números foram divulgados pela universidade em 2014, não
+          num artigo revisado por pares — e a página prefere dizer isso a citar um artigo que não
+          os contém.
         </p>
 
         <h2>A conferência: a tabela bate com a medição direta</h2>
         <p>
           Antes de usar a tabela do Compêndio para responder qualquer coisa, vale checar se ela
           concorda com quem mediu gente de verdade. Os {ESTUDO_CALOR.kcalSalaNormal} kcal por sessão
-          do Houston Methodist, numa aula de {MINUTOS_ESTUDO} minutos com praticantes de cerca de{' '}
-          {PESO_ESTUDO} kg, implicam:
+          do Houston Methodist, numa sequência de {MINUTOS_ESTUDO} minutos de posturas mantidas, com
+          praticantes de {n(PESO_ESTUDO)} kg em média, implicam:
         </p>
-        <p class="cy-formula">{`${ESTUDO_CALOR.kcalSalaNormal} ÷ (3,5 × ${PESO_ESTUDO} ÷ 200) ÷ ${MINUTOS_ESTUDO} = ${n(ESTUDO.metImplicado, 2)} METs
+        <p class="cy-formula">{`sala normal
+  ${ESTUDO_CALOR.kcalSalaNormal} ÷ (3,5 × ${n(PESO_ESTUDO)} ÷ 200) ÷ ${MINUTOS_ESTUDO} = ${n(ESTUDO.metImplicado, 2)} METs
+  a tabela para hatha: ${n(ESTUDO.metDaTabela)} METs    diferença: ${n(ESTUDO.erro * 100, 1)}%
 
-  a tabela do Compêndio para yoga geral: ${n(ESTUDO.metDaTabela)} METs
-  diferença: ${n(ESTUDO.erro * 100, 1)}%`}</p>
+sala quente
+  ${ESTUDO_CALOR.kcalSalaQuente} ÷ (3,5 × ${n(PESO_ESTUDO)} ÷ 200) ÷ ${MINUTOS_ESTUDO} = ${n(CALOR.metImplicado, 2)} METs
+  a tabela para hot yoga: ${n(CALOR.metDaTabela)} METs    a tabela fica ${n(CALOR.desvio * 100, 0)}% acima`}</p>
         <p>
-          Fecha. A medição direta e a tabela chegam ao mesmo lugar, e as duas dizem a mesma coisa:
-          yoga é atividade de intensidade baixa. Não é uma opinião da página — é o que dois métodos
-          independentes encontram.
+          Na sala normal, fecha: a medição direta e a tabela chegam ao mesmo lugar, e as duas dizem
+          que yoga é atividade de intensidade baixa. Na sala quente, a tabela fica acima do que foi
+          medido — o que quer dizer que o número de hot yoga desta calculadora, se erra, erra
+          <strong>para mais</strong>. Nenhum dos dois desvios favorece a tese da página.
+        </p>
+        <p class="cy-ressalva">
+          Uma correção que esta seção já recebeu: a primeira versão usava 65 kg como peso dos
+          participantes, número que não está no artigo, e a conta parecia fechar do mesmo jeito. O
+          peso publicado é {n(PESO_ESTUDO)} kg. Uma conferência que fecha com o dado errado não
+          confere nada, e por isso o peso agora vem direto da tabela de participantes.
         </p>
 
         <h2>Os sete estilos medidos</h2>
@@ -462,23 +503,26 @@ const schema = [
           Em número: do pé ao topo da escada são{' '}
           <strong>{Math.round(EX_POWER.kcal - EX_GERAL.kcal)} kcal por hora</strong> de diferença —{' '}
           {formataKcal(EX_GERAL.kcal)} no yoga geral contra {formataKcal(EX_POWER.kcal)} no power. É
-          uma amplitude de {n(AMPLITUDE, 2)} vez. Comparado ao pedal, em que dobrar a velocidade
-          triplica o gasto, aqui trocar de estilo é ajuste fino.
+          uma amplitude de {n(AMPLITUDE, 2)} vez. No pedal, só dobrar a velocidade de {PEDAL_DE} para{' '}
+          {PEDAL_PARA} km/h multiplica o gasto por {n(FATOR_PEDAL)}; aqui, trocar de estilo é ajuste
+          fino.
         </p>
         <p class="cy-ressalva">
           Note que pilates e hot yoga têm o mesmo valor ({n(metYoga('pilates'))} METs). Não é erro:
-          são códigos diferentes do Compêndio que caíram na mesma medição. E serve de referência
+          são códigos diferentes do Compêndio que chegaram ao mesmo valor. E serve de referência
           útil de escala — se você já fez as duas coisas, sabe que elas cansam de formas diferentes,
           e ainda assim custam o mesmo em caloria.
         </p>
 
         <h2>O que a internet publica, e o que isso implicaria</h2>
         <p>
-          Os números que circulam para yoga são inflados por um fator de dois a três. O exemplo mais
-          comum: <strong>"vinyasa queima {PUBLICADO_VINYASA} kcal por hora"</strong>. Para{' '}
-          {PESO_PADRAO} kg, isso implicaria <strong>{n(MET_PUBLICADO)} METs</strong> — mais que uma
-          aula de Zumba, que nós medimos em outra página em 8,8. O valor medido do vinyasa é{' '}
-          {n(metYoga('vinyasa'))} METs, que dá {formataKcal(EX_VINYASA.kcal)} kcal por hora.
+          Para vinyasa, circulam faixas como &ldquo;300 a 600 kcal por hora&rdquo;. Pegue um
+          valor perto do topo: <strong>{PUBLICADO_VINYASA} kcal por hora</strong>. Para{' '}
+          {PESO_PADRAO} kg, isso implicaria <strong>{n(MET_PUBLICADO)} METs</strong> — perto dos{' '}
+          {n(ESTUDO_ZUMBA.met)} METs medidos numa aula de Zumba, que aparecem na nossa{' '}
+          <a href="/calorias/danca/">página de dança</a>. O Compêndio dá{' '}
+          {n(metYoga('vinyasa'))} METs para vinyasa, que dá {formataKcal(EX_VINYASA.kcal)} kcal por
+          hora.
         </p>
         <p>
           São <strong>{n(INFLACAO_VINYASA, 1)} vezes</strong> de diferença. Não é arredondamento:
@@ -539,8 +583,8 @@ const schema = [
         </p>
         <p>
           Só que caloria é um critério ruim para escolher entre as duas, e é aí que esta página quer
-          chegar. Caminhar não melhora mobilidade de quadril, não ensina controle de core e não
-          trabalha equilíbrio em apoio único. Yoga e pilates fazem essas três coisas, e nenhuma
+          chegar. Caminhar pouco treina mobilidade de quadril em amplitude, controle de core ou
+          equilíbrio sustentado numa perna só. Yoga e pilates treinam essas três coisas, e nenhuma
           delas aparece numa conta de kcal.
         </p>
         <p>{NOTA_NAO_E_O_PONTO}</p>

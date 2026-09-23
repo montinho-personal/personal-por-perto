@@ -7,48 +7,51 @@
  * mecânico, qual variável decide. Esta discute outra coisa — POR QUE O SEU
  * RELÓGIO ESTÁ ERRADO justamente aqui.
  *
- * Relógio e aplicativo estimam caloria a partir da frequência cardíaca. A
- * equação que faz essa conversão foi construída com gente se exercitando em
- * temperatura normal. No calor, a frequência cardíaca sobe por
- * termorregulação — o corpo manda sangue para a pele para dissipar calor —
- * sem que o gasto metabólico suba junto.
+ * Relógio e aplicativo estimam caloria a partir da frequência cardíaca, com
+ * equações construídas para exercício em temperatura normal. O pesquisador
+ * que mediu o Bikram na Colorado State atribui a isso os números inflados
+ * que circulavam: no calor, a frequência pode subir por termorregulação sem
+ * que o gasto suba junto.
  *
- * Resultado: numa aula de hot yoga o seu relógio vê frequência alta,
- * aplica uma equação que não vale ali e devolve um número inflado. Não é
- * defeito do aparelho: é a equação sendo usada fora do domínio dela.
+ * O QUE FOI MEDIDO, E O QUE É EXPLICAÇÃO
  *
- * A MEDIÇÃO QUE FECHA O ASSUNTO
+ * A distinção importa, porque a auditoria de 23/09/2026 achou a página
+ * afirmando o mecanismo como fato medido. Não é. O que está medido:
  *
- * O grupo do Houston Methodist comparou, nos MESMOS praticantes, uma aula
- * de yoga em sala quente e a mesma aula em temperatura normal:
+ *     Lambert et al. (Houston Methodist), 16 praticantes, mesma sequência
+ *     de 1 hora a 40 °C e a 23 °C:
+ *         sala normal  151 ± 4 kcal por sessão
+ *         sala quente  156 ± 7 kcal por sessão
+ *     sem diferença no consumo de oxigênio, no gasto — nem na frequência
+ *     cardíaca média.
  *
- *     sala normal  151 ± 4 kcal por sessão
- *     sala quente  156 ± 7 kcal por sessão
- *
- * Cinco quilocalorias de diferença, dentro do erro. Sem diferença
- * estatística. O calor faz suar, e suar não é gastar.
+ * Esse último ponto é o que obriga a honestidade: no único estudo que mediu
+ * as duas salas nas mesmas pessoas, a frequência média NÃO subiu. Então a
+ * explicação da frequência cardíaca é a mais citada, dada por quem mediu,
+ * mas não é um fato demonstrado pelos dois estudos. O que os dois mediram,
+ * e concordam, é o gasto: baixo, e sem aumento pelo calor.
  *
  * O QUE A INTERNET PUBLICA
  *
- * Os números que circulam para yoga são inflados por um fator de 2 a 3.
- * "Vinyasa queima 550 kcal por hora" implica 7,5 METs para 70 kg; o valor
- * medido do vinyasa é 2,7 METs, que dá 198 kcal por hora. Quase três vezes.
+ * Faixas de "300 a 600 kcal por hora" circulam para vinyasa. 550 kcal
+ * implicam 7,5 METs para 70 kg; o valor do Compêndio é 2,7 METs, que dá
+ * 198 kcal por hora. Quase três vezes.
  *
  * A CONFERÊNCIA CONTRA A TABELA
  *
- * Os 151 kcal por sessão do Houston Methodist, numa aula de uma hora com
- * praticantes de cerca de 65 kg, implicam 2,2 METs. A escada de yoga do
- * Compêndio começa em 2,3 para yoga geral. A medição direta e a tabela
- * chegam ao mesmo lugar — e as duas dizem que yoga é atividade de
- * intensidade baixa.
+ * Os 151 kcal da sala normal, numa sessão de uma hora com praticantes de
+ * 59,6 kg em média, implicam 2,4 METs — entre o yoga geral (2,3) e o hatha
+ * (2,5) do Compêndio. A medição direta e a tabela chegam ao mesmo lugar.
+ * A primeira versão desta conta usava 65 kg, peso que não está no artigo;
+ * dava 2,2 METs e parecia fechar do mesmo jeito. Fechar por acaso não é
+ * fechar, e por isso o peso agora vem da tabela de participantes.
  *
  * O QUE ISSO NÃO SIGNIFICA
  *
  * Yoga e pilates não são inúteis: eles simplesmente não são ferramentas de
- * gasto calórico. Mobilidade, força de core, equilíbrio, controle
- * respiratório e — o que a literatura mostra com mais consistência —
- * adesão de longo prazo. Esta página existe para tirar a caloria do centro
- * da conversa, não a prática.
+ * gasto calórico. Mobilidade, força de core, equilíbrio e controle
+ * respiratório são o que eles treinam. Esta página existe para tirar a
+ * caloria do centro da conversa, não a prática.
  *
  * É a primeira atividade do cluster em que a resposta honesta à pergunta do
  * título é "menos do que você imagina, e esse não é o motivo de fazer".
@@ -72,22 +75,36 @@ export const FONTE_COMPENDIO: Fonte = {
     'mede yoga geral em 2,3 METs (código 02175), hatha em 2,5 (02150), vinyasa em 2,7 (02185), hot yoga em 3,0 (02155), Surya Namaskar em 3,5 (02180), power yoga em 4,0 (02160) e pilates geral em 3,0 (02105).',
 };
 
+/*
+ * Citação corrigida na auditoria de 23/09/2026. A primeira versão atribuía
+ * o artigo a "Boyd C" — autor que não está nele. O primeiro autor é
+ * Bradley S. Lambert, e o grupo é o do Houston Methodist.
+ */
 export const FONTE_HOUSTON: Fonte = {
   rotulo:
-    'Boyd C, et al. Acute Physiologic Effects of Performing Yoga in The Heat on Energy Expenditure, Range of Motion, and Inflammatory Biomarkers. International Journal of Exercise Science, 2020',
-  rotuloCurto: 'Houston Methodist (2020)',
+    'Lambert BS, Miller KE, Delgado DA, et al. Acute Physiologic Effects of Performing Yoga in The Heat on Energy Expenditure, Range of Motion, and Inflammatory Biomarkers. International Journal of Exercise Science, 13(3):802–817, 2020',
+  rotuloCurto: 'Lambert et al., Houston Methodist (2020)',
   url: 'https://pubmed.ncbi.nlm.nih.gov/32509120/',
   resumo:
-    'comparou nos mesmos 16 praticantes uma aula de yoga em sala quente e a mesma em temperatura normal: 156 ± 7 kcal contra 151 ± 4 kcal, sem diferença estatística no consumo de oxigênio nem no gasto. É a medição direta de que o calor não aumenta o gasto.',
+    'comparou nos mesmos 16 praticantes experientes (14 mulheres e 2 homens, 59,6 kg em média) a mesma sequência de Bikram de uma hora a 40 °C e a 23 °C: 156 ± 7 kcal contra 151 ± 4 kcal. Consumo de oxigênio, gasto e frequência cardíaca média não diferiram entre as salas.',
 };
 
+/*
+ * Os 460 e 330 kcal NÃO estão no artigo de Tracy e Hart de 2013 que a
+ * primeira versão citava — aquele estudo mediu condicionamento depois de
+ * 24 sessões em oito semanas, não o gasto de uma sessão (e o link ainda
+ * apontava para o PMID errado). Os números foram
+ * divulgados pela própria universidade em 2014, com a explicação do
+ * pesquisador para as estimativas infladas. A citação agora aponta para
+ * onde o número está, e a página diz que é divulgação, não artigo.
+ */
 export const FONTE_TRACY: Fonte = {
   rotulo:
-    'Tracy BL, Hart CEF. Bikram yoga training and physical fitness in healthy young adults. Journal of Strength and Conditioning Research, 2013',
-  rotuloCurto: 'Tracy e Hart (2013)',
-  url: 'https://pubmed.ncbi.nlm.nih.gov/22820210/',
+    'Colorado State University. Researcher: "Hot" yoga yields fitness benefits — divulgação dos resultados de Brian L. Tracy, 11 de julho de 2014',
+  rotuloCurto: 'Colorado State University (2014)',
+  url: 'https://source.colostate.edu/researcher-hot-yoga-yields-fitness-benefits/',
   resumo:
-    'mediu o gasto de uma sessão de Bikram de 90 minutos em cerca de 460 kcal nos homens e 330 nas mulheres — bem abaixo do que se publicava. Os autores atribuem as estimativas infladas ao uso de equações baseadas em frequência cardíaca, que não valem no calor.',
+    'mediu por taxa metabólica uma sessão de Bikram de 90 minutos: cerca de 460 kcal nos homens e 330 nas mulheres, bem abaixo do que se publicava. O pesquisador atribui as estimativas infladas a equações de frequência cardíaca, válidas para exercício em temperatura normal. É divulgação da universidade, não artigo revisado por pares.',
 };
 
 export const FONTE_HALL: Fonte = {
@@ -128,14 +145,19 @@ export const KCAL_MAX = 2000;
  * direta em vez de afirmar que o calor não muda nada.
  */
 export const ESTUDO_CALOR = {
+  /** Sequência de Bikram de uma hora, a 23 °C e a 40 °C, umidade de 40%. */
   kcalSalaNormal: 151,
   erroNormal: 4,
   kcalSalaQuente: 156,
   erroQuente: 7,
   participantes: 16,
+  /** Peso médio dos participantes, da tabela do artigo. */
+  pesoMedio: 59.6,
+  /** A frequência cardíaca média também não diferiu entre as salas. */
+  frequenciaDiferiu: false,
 } as const;
 
-/** Bikram de 90 minutos, medido por Tracy e Hart. */
+/** Bikram de 90 minutos, medido por Brian Tracy na Colorado State (divulgação de 2014). */
 export const ESTUDO_BIKRAM = {
   minutos: 90,
   kcalHomens: 460,
@@ -192,7 +214,7 @@ export const ESTILOS: Estilo[] = [
     nomeCurto: 'Hatha',
     met: 2.5,
     codigo: '02150',
-    comoReconhecer: 'Posturas mantidas por vários ciclos de respiração, com pausa entre elas. O mais praticado.',
+    comoReconhecer: 'Posturas mantidas por vários ciclos de respiração, com pausa entre elas.',
     noCalor: false,
   },
   {
@@ -345,24 +367,50 @@ export const simulacaoUmQuilo = (pesoKg: number, idEstilo = 'hatha'): Resultado 
 /**
  * A conferência: a nossa tabela reproduz a medição do Houston Methodist?
  *
- * Eles mediram 151 kcal por sessão em sala normal. Numa aula de uma hora com
- * praticantes de cerca de 65 kg, isso implica um MET que tem que cair no pé
- * da escada de yoga do Compêndio. Se não caísse, a tabela ou a leitura do
- * estudo estariam erradas.
+ * Eles mediram 151 kcal por sessão em sala normal, numa sequência de Bikram
+ * de uma hora — posturas mantidas, o perfil do hatha. Com o peso
+ * médio dos participantes, isso implica um MET que tem que cair perto dos
+ * 2,5 do hatha. Se não caísse, a tabela ou a leitura do estudo estariam
+ * erradas.
+ *
+ * O PESO É O DO ARTIGO: 59,6 kg (14 mulheres e 2 homens). A primeira versão
+ * usava 65 kg, que não está no artigo; dava 2,2 METs, comparava com o yoga
+ * geral e parecia fechar do mesmo jeito. Uma conferência que fecha com o
+ * número errado não confere nada — só dá sorte.
  */
-export const PESO_ESTUDO = 65;
+export const PESO_ESTUDO = ESTUDO_CALOR.pesoMedio;
 export const MINUTOS_ESTUDO = 60;
 
-export const reproduzEstudo = (): { metImplicado: number; metDaTabela: number; erro: number } => {
-  const metImplicado =
-    ESTUDO_CALOR.kcalSalaNormal / ((3.5 * PESO_ESTUDO) / 200) / MINUTOS_ESTUDO;
-  const metDaTabela = metYoga('geral');
-  return {
-    metImplicado,
-    metDaTabela,
-    erro: Math.abs(metImplicado - metDaTabela) / metDaTabela,
-  };
+const metMedido = (kcal: number): number => kcal / ((3.5 * PESO_ESTUDO) / 200) / MINUTOS_ESTUDO;
+
+export interface Conferencia {
+  metImplicado: number;
+  metDaTabela: number;
+  /** Diferença relativa, com sinal: positiva quando a tabela passa da medição. */
+  desvio: number;
+  erro: number;
+}
+
+const confere = (kcal: number, idEstilo: string): Conferencia => {
+  const metImplicado = metMedido(kcal);
+  const metDaTabela = metYoga(idEstilo);
+  const desvio = metDaTabela / metImplicado - 1;
+  return { metImplicado, metDaTabela, desvio, erro: Math.abs(metImplicado - metDaTabela) / metDaTabela };
 };
+
+/** Sala normal contra o hatha da tabela. */
+export const reproduzEstudo = (): Conferencia => confere(ESTUDO_CALOR.kcalSalaNormal, 'hatha');
+
+/**
+ * Sala quente contra o hot yoga da tabela.
+ *
+ * Esta é a conferência que a primeira versão não fazia, e ela diz algo que
+ * a página precisa declarar: a medição no calor implica 2,5 METs, e o
+ * Compêndio dá 3,0 para hot yoga. A tabela que a calculadora usa fica ACIMA
+ * da medição direta — então, se há erro no número de hot yoga que mostramos,
+ * é para mais, nunca a favor da nossa tese.
+ */
+export const reproduzCalor = (): Conferencia => confere(ESTUDO_CALOR.kcalSalaQuente, 'hot');
 
 /* ───────────────────────── Formatação ───────────────────────── */
 
@@ -500,17 +548,24 @@ export const tabelaPorTempo = (pesoKg: number, idEstilo = 'hatha'): LinhaTempo[]
 
 /* ───────────────────────── Textos fixos ───────────────────────── */
 
-export const NOTA_RELOGIO_MENTE =
-  'Relógio e aplicativo estimam caloria a partir da frequência cardíaca, usando uma equação construída com gente se exercitando em temperatura normal. No calor, a frequência sobe por termorregulação — o corpo manda sangue para a pele para dissipar calor — sem que o gasto suba junto. O aparelho vê frequência alta, aplica a equação onde ela não vale e devolve um número inflado. Não é defeito do relógio: é a equação usada fora do domínio dela.';
+/*
+ * Reescrita na auditoria de 23/09/2026. A versão anterior afirmava como fato
+ * medido que "no calor a frequência sobe sem o gasto subir". Mas no estudo
+ * do Houston Methodist a frequência média NÃO diferiu entre as salas. O
+ * mecanismo é a explicação de quem mediu o Bikram na Colorado State — dada
+ * por um pesquisador, plausível, e é assim que a nota agora o apresenta.
+ */
+export const NOTA_RELOGIO_CALOR =
+  'Relógio e aplicativo estimam caloria a partir da frequência cardíaca, com equações feitas para exercício em temperatura normal. O pesquisador que mediu o Bikram na Colorado State atribui os números inflados a isso: no calor, a frequência pode subir para dissipar calor sem que o gasto suba junto. Vale a ressalva: no estudo do Houston Methodist, que comparou as duas salas nas mesmas pessoas, a frequência média não chegou a diferir. O que os dois estudos mediram, e em que concordam, é o gasto — baixo, e sem aumento pelo calor.';
 
 export const NOTA_CALOR_NAO_MUDA =
-  'A medição direta fecha o assunto: nos mesmos praticantes, a mesma aula deu 151 kcal em sala normal e 156 em sala quente. Cinco quilocalorias, dentro da margem de erro das duas medições. O calor faz suar, e suar não é gastar — é o corpo tentando não cozinhar.';
+  'A medição direta fecha o assunto: nos mesmos 16 praticantes, a mesma sequência de uma hora deu 151 kcal a 23 °C e 156 a 40 °C. Cinco quilocalorias, dentro da margem de erro das duas medições, e sem diferença no consumo de oxigênio. O calor faz suar, e suar não é gastar.';
 
 export const NOTA_ESCADA_CURTA =
   'A escada inteira do yoga vai de 2,3 a 4,0 METs. É menos variação do que existe entre caminhar devagar e caminhar rápido. Trocar de estilo de yoga para "gastar mais" muda pouco; o que muda muito é trocar de atividade.';
 
 export const NOTA_NAO_E_O_PONTO =
-  'Yoga e pilates não são ferramentas de gasto calórico, e isso não é crítica. Eles entregam mobilidade, força de core, equilíbrio, controle respiratório e — o que a literatura mostra com mais consistência — gente que continua praticando anos depois. Escolher yoga pela caloria é escolher a ferramenta certa pelo motivo errado.';
+  'Yoga e pilates não são ferramentas de gasto calórico, e isso não é crítica. O que eles treinam é mobilidade, força de core, equilíbrio e controle respiratório — e, para muita gente, são uma atividade que dá vontade de repetir, o que conta mais a longo prazo do que a intensidade de uma sessão. Escolher yoga pela caloria é escolher a ferramenta certa pelo motivo errado.';
 
 export const NOTA_BRUTO =
   'O número é bruto: inclui o que você gastaria parado no mesmo tempo. E aqui essa parcela é enorme, porque a intensidade é baixa — numa hora de hatha, exatamente dois quintos do total são o metabolismo de repouso, que aconteceria de qualquer forma. É o que acontece quando a atividade vale 2,5 METs: um deles é estar vivo.';
