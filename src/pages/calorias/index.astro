@@ -32,6 +32,7 @@ import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib
 import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
 import { deTempo as yogaPorTempo, formataKcal as formataYoga } from '../../lib/calorias/yoga';
 import { dePelada, formataKcal as formataFutebol, formataTempo as tempoFutebol } from '../../lib/calorias/futebol';
+import { deRounds as lutaPorRounds, formataKcal as formataLuta } from '../../lib/calorias/lutas';
 import { deSessao as musculacaoSessao, formataKcal as formataMusculacao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias';
@@ -50,6 +51,7 @@ const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
 const EX_DANCA = formataDanca(dancaPorTempo(45, PESO_PADRAO, 'zumba').kcal);
 const EX_YOGA = formataYoga(yogaPorTempo(60, PESO_PADRAO, 'hatha').kcal);
 const PELADA = dePelada(120, PESO_PADRAO, 'society', 21, 'casual');
+const EX_LUTA = formataLuta(lutaPorRounds(6, 3, 1, PESO_PADRAO, 'saco').kcal);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
 const ferramentas = [
@@ -108,6 +110,12 @@ const ferramentas = [
     exemplo: `2 horas de society com 21 pessoas = ${tempoFutebol(PELADA.minutosEmCampo)} em campo ≈ ${formataFutebol(PELADA.kcal)} kcal`,
   },
   {
+    url: '/calorias/lutas/',
+    nome: 'Boxe e lutas',
+    calcula: 'Por round, como quem treina conta — saco, sparring, luta e artes marciais, cada número com código.',
+    exemplo: `6 rounds de 3 min no saco ≈ ${EX_LUTA} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
     // /calorias/ disputaria a mesma busca com ele.
     url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
@@ -130,7 +138,7 @@ const schema = [
     ferramentas.map((f) => f.nome),
     new URL(path, site.dominio).href,
     /*
-     * As URLs reais de cada ferramenta. Sem elas, o ItemList apontava os dez
+     * As URLs reais de cada ferramenta. Sem elas, o ItemList apontava os
      * itens para âncoras deste hub (/calorias/#futebol…) que não existem na
      * página — o schema descrevia uma lista de links para lugar nenhum.
      */

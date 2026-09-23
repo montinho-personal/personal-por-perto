@@ -1,0 +1,792 @@
+---
+/**
+ * Quantas calorias gasta boxe, muay thai e jiu-jitsu — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS DEZ
+ *
+ * Aqui a unidade é o round. Quem treina luta conta rounds, não minutos, e o
+ * round tem duração e intervalo fixos: o tempo de esforço sai de uma conta,
+ * e o intervalo fica fora dela, como o time de fora no futebol.
+ *
+ * É a resposta para o número que a busca repete. "Boxe queima 1.000 kcal por
+ * hora" é a conta de uma hora inteira de luta no ringue — e nenhuma luta tem
+ * uma hora. A amadora tem 9 minutos de round; a profissional mais longa, 36.
+ *
+ * O QUE NÃO ENTRA
+ *
+ * Valores próprios para judô, taekwondo, kickboxing, kendo e kung fu, que
+ * circulam atribuídos ao Compêndio de 2024 e que não conseguimos conferir. O
+ * Compêndio põe judô, jiu-jitsu, caratê, kickboxing, taekwondo e muay thai
+ * como exemplos da MESMA linha de ritmo moderado; é assim que eles entram.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ATIVIDADES,
+  DESCANSO_PADRAO,
+  DURACAO_PADRAO,
+  ESTUDO_SACO,
+  FONTES,
+  GRUPOS,
+  LUTA_AMADORA,
+  LUTA_PROFISSIONAL,
+  MINUTOS_PADRAO,
+  NOTA_BRUTO,
+  NOTA_ESTIMATIVA,
+  NOTA_INTERVALO,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_RITMO_SACO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_CONFERENCIA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  ROUNDS_PADRAO,
+  SEM_CONFERENCIA,
+  atividade,
+  deLuta,
+  deRounds,
+  deTempo,
+  formataKcal,
+  formataMet,
+  formataRounds,
+  formataTempo,
+  pesoParaKcalPorHora,
+  reproduzSaco,
+  roundsEquivalentes,
+  simulacaoUmQuilo,
+  tabelaAtividades,
+  tabelaPorPeso,
+} from '../../lib/calorias/lutas';
+
+const path = '/calorias/lutas';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Boxe e lutas', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_TREINO = deRounds(ROUNDS_PADRAO, DURACAO_PADRAO, DESCANSO_PADRAO, PESO_PADRAO, 'saco');
+const EX_AMADORA = deLuta(LUTA_AMADORA, PESO_PADRAO);
+const EX_PRO = deLuta(LUTA_PROFISSIONAL, PESO_PADRAO);
+const EX_HORA_RINGUE = deTempo(60, PESO_PADRAO, 'ringue');
+const EX_HORA_SACO = deTempo(60, PESO_PADRAO, 'saco');
+const EX_MEIA_ARTE = deTempo(MINUTOS_PADRAO, PESO_PADRAO, 'arte');
+/* Cinco rolas de seis minutos, com um de intervalo: um treino de jiu-jitsu comum. */
+const EX_ROLAS = deRounds(5, 6, 1, PESO_PADRAO, 'arte');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'saco');
+
+const TAB_ATIVIDADES = tabelaAtividades(PESO_PADRAO);
+const TAB_PESO = tabelaPorPeso();
+
+/* A conferência contra a medição do saco, calculada e não escrita à mão. */
+const SACO = reproduzSaco();
+
+/* O que circula, e para quem seria verdade. */
+const CIRCULA = 1000;
+const PESO_PARA_MIL = pesoParaKcalPorHora(CIRCULA, 'ringue');
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 51 caracteres. */
+const title = 'Quantas Calorias Gasta Boxe, Muay Thai e Jiu-Jitsu?';
+/* 152 caracteres. */
+const description =
+  'Calcule as calorias de boxe, muay thai e jiu-jitsu por round, com os números do Compêndio 2024 — e veja por que a hora de luta de 1.000 kcal não existe.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta 1 hora de boxe?',
+    resposta: `Depende do que acontece nessa hora. Uma hora inteira de saco em ritmo livre dá cerca de ${formataKcal(EX_HORA_SACO.kcal)} kcal para ${PESO_PADRAO} kg. Numa aula de verdade, parte da hora é explicação, fila e intervalo — por isso a calculadora conta em rounds. ${formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)} no saco, com ${DESCANSO_PADRAO} minuto de intervalo, dão cerca de ${formataKcal(EX_TREINO.kcal)} kcal.`,
+  },
+  {
+    pergunta: 'Boxe queima 1.000 calorias por hora?',
+    resposta: `Só numa hora inteira de luta no ringue, para quem pesa a partir de uns ${n(PESO_PARA_MIL, 0)} kg — e essa hora não existe. A luta amadora tem ${LUTA_AMADORA.rounds} rounds de ${LUTA_AMADORA.duracao} minutos (cerca de ${formataKcal(EX_AMADORA.kcal)} kcal para ${PESO_PADRAO} kg); a profissional mais longa, ${LUTA_PROFISSIONAL.rounds} rounds, ${formataTempo(EX_PRO.minutosAtivos)} de luta (cerca de ${formataKcal(EX_PRO.kcal)} kcal).`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta uma aula de muay thai?',
+    resposta: `O Compêndio põe o muay thai na linha de artes marciais em ritmo moderado, ${formataMet(atividade('arte').met)} METs. ${formataTempo(EX_MEIA_ARTE.minutosAtivos)} de treino em movimento dão cerca de ${formataKcal(EX_MEIA_ARTE.kcal)} kcal para ${PESO_PADRAO} kg. A conta honesta é com o tempo em movimento: numa aula de uma hora, explicação do professor e troca de parceiro não são ${formataMet(atividade('arte').met)} METs.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta o jiu-jitsu?',
+    resposta: `Jiu-jitsu está na mesma linha do Compêndio que o muay thai e o judô: artes marciais em ritmo moderado, ${formataMet(atividade('arte').met)} METs. ${formataRounds(5, 6)} de rola, com 1 minuto entre eles, dão cerca de ${formataKcal(EX_ROLAS.kcal)} kcal para ${PESO_PADRAO} kg. Na parte técnica da aula, com a posição repetida devagar, cabe melhor a linha de ritmo lento, ${formataMet(atividade('arteLeve').met)} METs.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta bater no saco de pancada?',
+    resposta: `No ritmo livre, ${formataMet(atividade('saco').met)} METs: cerca de ${formataKcal(deTempo(DURACAO_PADRAO, PESO_PADRAO, 'saco').kcal)} kcal por round de 3 minutos para ${PESO_PADRAO} kg. Uma medição em laboratório com 29 adultos jovens batendo no saco por 30 minutos deu ${n(SACO.metMedido, 2)} METs — a ${n(SACO.erro * 100, 0)}% da tabela. Se você contou os golpes e manteve o ritmo, a tabela sobe até ${formataMet(atividade('saco180').met)} METs a 180 golpes por minuto.`,
+  },
+  {
+    pergunta: 'Treinar luta emagrece?',
+    resposta: `Aumenta o gasto do dia, e treino de luta frequente conta. Mas a conta precisa ser feita com o tempo de esforço, não com a duração da aula — e nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+  {
+    pergunta: 'Quanto tempo de boxe para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosAtivos)} de saco em ritmo livre, para ${PESO_PADRAO} kg — ${roundsEquivalentes(UM_QUILO.minutosAtivos)} rounds de 3 minutos, sem contar o intervalo. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/corda/',
+    titulo: 'Quantas calorias pular corda gasta?',
+    descricao: 'O aquecimento clássico do boxe, e a conta que desmonta a lenda dos 10 minutos.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro',
+    descricao: 'A articulação que mais trabalha no saco, e o que o treino de força faz por ela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/prancha-abdominal-como-fazer/',
+    titulo: 'Prancha abdominal: como fazer',
+    descricao: 'O tronco que transmite a força do golpe, treinado sem impacto.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX_TREINO.kcal)} kcal de um treino no saco entram na conta, e por que ela é a menor peça.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cl-hero">
+    <div class="container cl-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta boxe, muay thai ou jiu-jitsu?</h1>
+      <p class="cl-hero-lead">
+        Uma luta amadora de boxe, {LUTA_AMADORA.rounds} rounds de {LUTA_AMADORA.duracao} minutos,
+        gasta cerca de <strong>{formataKcal(EX_AMADORA.kcal)} kcal</strong> para {PESO_PADRAO} kg. Os
+        &ldquo;{n(CIRCULA, 0)} kcal por hora&rdquo; pedem uma hora de ringue, e{' '}
+        <strong>a luta profissional mais longa tem {formataTempo(EX_PRO.minutosAtivos)} de round</strong>.
+      </p>
+      <p class="cl-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cl-layout">
+    <article class="cl-main">
+      <section id="cl-app" class="cl-app" aria-labelledby="cl-app-h">
+        <h2 id="cl-app-h" class="cl-app-h">Calculadora de calorias do boxe e das lutas</h2>
+
+        <div class="cl-campos">
+          <div class="cl-campo">
+            <label for="cl-peso">Seu peso (kg)</label>
+            <input id="cl-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <!--
+            Nove linhas do Compêndio, as conferidas, em três grupos sempre visíveis.
+            Nada aparece nem some ao trocar de atividade: um seletor de ritmo
+            que só surgisse no saco empurraria os campos de baixo.
+          -->
+          <div class="cl-campo">
+            <span class="cl-rotulo">O que você treinou</span>
+            {GRUPOS.map((g) => (
+              <div class="cl-grupo">
+                <span class="cl-grupo-nome" id={`cl-grupo-${g.id}`}>{g.nome}</span>
+                <div class="cl-presets cl-presets-sem-rotulo" role="group" aria-labelledby={`cl-grupo-${g.id}`}>
+                  {ATIVIDADES.filter((a) => a.grupo === g.id).map((a) => (
+                    <button
+                      type="button"
+                      class:list={['cl-preset', 'cl-atividade', a.id === 'saco' && 'is-ativo']}
+                      data-atividade={a.id}
+                      aria-pressed={String(a.id === 'saco')}
+                    >
+                      {a.nomeCurto}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <p class="cl-dica cl-atividade-slot" id="cl-atividade-dica">
+              {formataMet(atividade('saco').met)} METs — Compêndio, código {atividade('saco').codigo}.{' '}
+              {atividade('saco').comoReconhecer}
+            </p>
+          </div>
+
+          <!--
+            As abas moram aqui, logo acima dos campos que elas trocam — e não
+            no topo, como nas outras ferramentas. Com nove atividades entre as
+            abas e o campo, trocar de modo no topo fazia a página rolar até
+            350px no celular, e a aba tocada sumia da tela.
+          -->
+          <div class="cl-modos" role="tablist" aria-label="Como você quer contar">
+            <button type="button" class="cl-modo is-ativo" data-modo="rounds" role="tab" aria-selected="true">
+              Rounds
+            </button>
+            <button type="button" class="cl-modo" data-modo="tempo" role="tab" aria-selected="false" tabindex="-1">
+              Tempo
+            </button>
+            <button type="button" class="cl-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+              Tenho uma meta
+            </button>
+          </div>
+
+          <!--
+            Os rounds em três campos lado a lado, sem atalhos: digitar "6" é
+            trivial, e atalhos em três campos empurrariam o resultado para
+            longe no celular — o defeito que já cortamos no futebol.
+          -->
+          <div class="cl-campo cl-campo-modo">
+            <div class="cl-trio">
+              <div>
+                <label for="cl-rounds">Rounds</label>
+                <input id="cl-rounds" type="text" inputmode="numeric" autocomplete="off" value={ROUNDS_PADRAO} />
+              </div>
+              <div>
+                <label for="cl-duracao">Min por round</label>
+                <input id="cl-duracao" type="text" inputmode="decimal" autocomplete="off" value={DURACAO_PADRAO} />
+              </div>
+              <div>
+                <label for="cl-descanso">Min de intervalo</label>
+                <input id="cl-descanso" type="text" inputmode="decimal" autocomplete="off" value={DESCANSO_PADRAO} />
+              </div>
+            </div>
+          </div>
+
+          <div class="cl-campo cl-campo-modo" hidden>
+            <label for="cl-minutos">Minutos em movimento, sem intervalo nem explicação</label>
+            <input id="cl-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="cl-presets">
+              {[15, 30, 45, 60].map((v) => (
+                <button type="button" class="cl-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cl-campo cl-campo-modo" hidden>
+            <label for="cl-meta">Meta de gasto (kcal)</label>
+            <input id="cl-meta" type="text" inputmode="numeric" autocomplete="off" value="300" />
+            <div class="cl-presets">
+              {[200, 300, 500, 800].map((v) => (
+                <button type="button" class="cl-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p id="cl-erro" class="cl-erro" role="status" hidden></p>
+
+        <div id="cl-saida" class="cl-saida" role="status" aria-live="polite">
+          <p class="cl-resultado">
+            <span class="cl-numero">≈ {formataKcal(EX_TREINO.kcal)}</span>
+            <span class="cl-unidade">kcal</span>
+          </p>
+          <p class="cl-frase"></p>
+
+          <dl class="cl-detalhes">
+            <div><dt>Tempo de esforço</dt><dd class="cl-d-esforco">—</dd></div>
+            <div class="cl-linha-intervalo"><dt>Intervalo</dt><dd class="cl-d-intervalo">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cl-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cl-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="cl-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="cl-nota cl-nota-ritmo" hidden></p>
+          <p class="cl-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cl-proximo">
+            <p class="cl-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> no treino. Ele não diz se ombro, punho e
+              tronco aguentam a frequência: golpe e esquiva pedem força e estabilidade que o treino
+              técnico nem sempre constrói sozinho. <strong>Força durante a semana é o que deixa o treino
+              de luta continuar existindo.</strong>
+            </p>
+            <div class="cl-proximo-acoes">
+              <a class="cl-btn cl-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cl-btn cl-btn-secundario cl-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cl-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cl-conteudo">
+        <h2>O round é a unidade da luta</h2>
+        <p>
+          Quem treina luta não conta minutos: conta rounds. &ldquo;Fiz seis no saco&rdquo;,
+          &ldquo;rolei cinco de seis&rdquo;. E o round tem duração e intervalo fixos, então o tempo
+          de esforço sai de uma conta — o intervalo fica fora dela.
+        </p>
+        <p class="cl-formula">{`tempo de esforço = rounds × minutos por round
+intervalos = rounds − 1   (depois do último, o treino acabou)
+
+${formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)} no saco, ${DESCANSO_PADRAO} min de intervalo, ${PESO_PADRAO} kg
+  esforço: ${ROUNDS_PADRAO} × ${DURACAO_PADRAO} = ${formataTempo(EX_TREINO.minutosAtivos)}
+  intervalo: ${ROUNDS_PADRAO - 1} × ${DESCANSO_PADRAO} = ${formataTempo(EX_TREINO.minutosDescanso)}, como repouso
+  total ≈ ${formataKcal(EX_TREINO.kcal)} kcal`}</p>
+        <p>{NOTA_INTERVALO}</p>
+
+        <h2>O &ldquo;{n(CIRCULA, 0)} kcal por hora&rdquo; e a hora que não existe</h2>
+        <p>
+          O número está certo por minuto: luta no ringue é a linha mais alta do boxe no Compêndio,{' '}
+          {formataMet(atividade('ringue').met)} METs. Para {PESO_PADRAO} kg, uma hora inteira daria{' '}
+          {formataKcal(EX_HORA_RINGUE.kcal)} kcal, e os {n(CIRCULA, 0)} fecham a partir de{' '}
+          {n(PESO_PARA_MIL, 0)} kg. O problema é a hora. Nenhuma luta tem uma:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Luta no ringue, {PESO_PADRAO} kg, intervalo de 1 minuto como repouso</caption>
+            <thead>
+              <tr>
+                <th scope="col">Formato</th><th scope="col">Rounds</th>
+                <th scope="col">De luta</th><th scope="col">Gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Luta amadora</th>
+                <td>{LUTA_AMADORA.rounds} × {LUTA_AMADORA.duracao} min</td>
+                <td>{formataTempo(EX_AMADORA.minutosAtivos)}</td>
+                <td>≈ {formataKcal(EX_AMADORA.kcal)} kcal</td>
+              </tr>
+              <tr>
+                <th scope="row">Profissional, a mais longa</th>
+                <td>{LUTA_PROFISSIONAL.rounds} × {LUTA_PROFISSIONAL.duracao} min</td>
+                <td>{formataTempo(EX_PRO.minutosAtivos)}</td>
+                <td>≈ {formataKcal(EX_PRO.kcal)} kcal</td>
+              </tr>
+              <tr>
+                <th scope="row">&ldquo;Uma hora de boxe&rdquo;</th>
+                <td>—</td>
+                <td>{formataTempo(EX_HORA_RINGUE.minutosAtivos)}</td>
+                <td>≈ {formataKcal(EX_HORA_RINGUE.kcal)} kcal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A luta amadora gasta menos de um sexto da &ldquo;hora de boxe&rdquo;. E o treino de quem
+          faz boxe para se exercitar não é luta no ringue: é saco, sparring e round sem adversário,
+          todos abaixo dos {formataMet(atividade('ringue').met)} METs.
+        </p>
+
+        <h2>Saco, sparring, luta: a tabela inteira</h2>
+        <p>
+          A calculadora usa nove linhas do Compêndio de 2024 — as que conseguimos conferir, cada
+          uma com o código. Os valores por round são para {DURACAO_PADRAO} minutos de esforço, sem o
+          intervalo.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>{PESO_PADRAO} kg, gasto bruto</caption>
+            <thead>
+              <tr>
+                <th scope="col">Atividade</th><th scope="col">METs</th><th scope="col">Código</th>
+                <th scope="col">Por round</th><th scope="col">30 min</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ATIVIDADES.map((l) => (
+                <tr>
+                  <th scope="row">{l.atividade.nome}</th>
+                  <td>{formataMet(l.atividade.met)}</td>
+                  <td>{l.atividade.codigo}</td>
+                  <td>≈ {formataKcal(l.porRound)} kcal</td>
+                  <td>≈ {formataKcal(l.meiaHora)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_RITMO_SACO}</p>
+        <p class="cl-ressalva">
+          Duas versões circulam. Calculadoras que ainda usam o Compêndio de 2011 mostram 12,8 METs
+          para a luta no ringue e 5,5 para o saco; a versão de 2024, usada aqui, revisou para{' '}
+          {formataMet(atividade('ringue').met)} e {formataMet(atividade('saco').met)}.
+        </p>
+
+        <h2>A conferência: o saco medido em laboratório</h2>
+        <p>
+          Antes de usar o saco em ritmo livre, vale checar se ele concorda com quem mediu. Perusek e
+          colegas acompanharam {ESTUDO_SACO.participantes} adultos jovens ({ESTUDO_SACO.homens}{' '}
+          homens e {ESTUDO_SACO.mulheres} mulheres, {n(ESTUDO_SACO.idadeMedia)} anos em média) em{' '}
+          {ESTUDO_SACO.minutos} minutos de saco, em {ESTUDO_SACO.blocos} blocos de{' '}
+          {ESTUDO_SACO.minutosPorBloco}, medindo o oxigênio consumido por calorimetria indireta.
+        </p>
+        <p class="cl-formula">{`${n(ESTUDO_SACO.vo2)} mL de oxigênio por kg por minuto ÷ 3,5 = ${n(SACO.metMedido, 2)} METs
+
+  o Compêndio para saco em ritmo livre: ${formataMet(SACO.metDaTabela)} METs
+  diferença: ${n(SACO.erro * 100, 1)}%`}</p>
+        <p>
+          Fecha. E fecha sem depender do peso de quem foi medido: o consumo de oxigênio já vem por
+          quilo, e MET é exatamente isso dividido por 3,5. A medição ainda cai entre o ritmo livre
+          ({formataMet(atividade('saco').met)}) e o de um golpe por segundo
+          ({formataMet(atividade('saco60').met)}) — onde se espera que fique um treino de saco com
+          pausas.
+        </p>
+
+        <h2>Muay thai, jiu-jitsu e judô: por que estão juntos</h2>
+        <p>{NOTA_SEM_CONFERENCIA}</p>
+        <ul class="cl-sem-conferencia" aria-label="Valores que circulam e não conferimos">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>
+          Na prática, a escolha entre as duas linhas de artes marciais é sobre o ritmo, não sobre a
+          modalidade. A parte técnica da aula, com a posição repetida devagar, fica mais perto da
+          linha de {formataMet(atividade('arteLeve').met)} METs; rola, luta de treino e sequência no
+          ritmo da luta, da de {formataMet(atividade('arte').met)}. Uma aula de uma hora costuma ter as duas
+          — e o tempo parado, que não é nenhuma delas.
+        </p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              {formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)}, {DESCANSO_PADRAO} min de intervalo como repouso
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th>
+                <th scope="col">Saco livre</th>
+                <th scope="col">Sparring</th>
+                <th scope="col">Arte marcial moderada</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.saco)} kcal</td>
+                  <td>≈ {formataKcal(l.sparring)} kcal</td>
+                  <td>≈ {formataKcal(l.arte)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>,
+          aplicada aos minutos de esforço. O intervalo entre rounds entra com 1 MET, o repouso. Os
+          nove METs vêm do Compêndio de Atividades Físicas de 2024, cada um com o código na tabela
+          acima.
+        </p>
+        <p class="cl-formula">{`${formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)} no saco, ${PESO_PADRAO} kg
+  ${formataMet(atividade('saco').met)} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_HORA_SACO.kcal / 60, 2)} kcal por minuto
+  ${n(EX_HORA_SACO.kcal / 60, 2)} × ${EX_TREINO.minutosAtivos} = ${n(EX_TREINO.kcal - EX_TREINO.kcalDescanso, 0)} kcal de esforço
+  + ${n(EX_TREINO.kcalDescanso, 0)} kcal dos ${formataTempo(EX_TREINO.minutosDescanso)} de intervalo = ${n(EX_TREINO.kcal, 0)} kcal`}</p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem três coisas que seguram a página: que o intervalo só existe entre
+          os rounds, que a medição do saco cai perto da tabela e que nenhuma luta real chega perto de
+          uma hora de ringue.
+        </p>
+        <p class="cl-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: a única medição usada aqui é de adultos jovens, em
+          saco de pancada. Não conferimos medição própria de sparring, de luta ou de treino de arte
+          marcial, e a calculadora aplica os mesmos METs a todo mundo, como faz o Compêndio.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cl-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do boxe e das lutas" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraLutas } from '../../scripts/caloriasLutas.client';
+    iniciarCalculadoraLutas();
+  </script>
+  <style>
+    .cl-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cl-hero-inner { max-width: 780px; }
+    .cl-hero h1 { color: #fff; max-width: 22ch; }
+    .cl-hero :global(.eyebrow) { color: #ffb488; }
+    .cl-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cl-hero-lead strong { color: #fff; }
+    .cl-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cl-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cl-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cl-main { min-width: 0; max-width: 760px; }
+
+    .cl-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cl-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cl-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .cl-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cl-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cl-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cl-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cl-campos { display: grid; gap: var(--sp-4); }
+    .cl-campo { margin-bottom: 0; }
+    .cl-campo label,
+    .cl-campo .cl-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cl-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cl-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    /* Três campos curtos lado a lado. O rótulo quebra linha à vontade (a
+       390px, "Min por round" já não cabe numa só) e o campo desce para o pé
+       da coluna, para os três ficarem alinhados mesmo com rótulos de
+       alturas diferentes. Reticências escondiam metade do rótulo. */
+    .cl-trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); }
+    .cl-trio > div { display: flex; flex-direction: column; justify-content: flex-end; }
+
+    .cl-grupo + .cl-grupo { margin-top: var(--sp-3); }
+    .cl-grupo-nome {
+      display: block;
+      font-size: var(--step--1);
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .cl-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .cl-atividade-slot { min-height: 3em; line-height: 1.5; }
+    .cl-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .cl-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .cl-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cl-presets-sem-rotulo { margin-top: 0; }
+    .cl-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cl-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cl-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cl-atividade.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    /* A 320px, "120 golpes/min" e "180 golpes/min" ficavam a poucos pixels de
+       caber na mesma linha. Menos respiro lateral nos botões tira duas
+       linhas do caminho até o resultado. */
+    @media (max-width: 379px) {
+      .cl-grupo .cl-presets { gap: 0.35rem; }
+      .cl-atividade { padding-inline: 0.55rem; }
+    }
+
+    .cl-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cl-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cl-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cl-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cl-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cl-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cl-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cl-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cl-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cl-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cl-nota-ritmo { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cl-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cl-proximo-lead { line-height: 1.6; }
+    .cl-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cl-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cl-btn-primario { background: var(--brand-600); color: #fff; }
+    .cl-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cl-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cl-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cl-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cl-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cl-conteudo { margin-top: var(--sp-7); }
+    .cl-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .cl-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cl-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cl-fontes li { margin-bottom: 0.6rem; }
+    .cl-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
