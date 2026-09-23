@@ -164,7 +164,7 @@ export function iniciarCalculadoraCorda(): void {
       res = deSeries(v, seg, p, idFaixa, cad);
     } else {
       if (!kcalValida(v))
-        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
       res = deKcal(v, p, idFaixa, cad);
     }
 

@@ -570,7 +570,9 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
 
   <script>
     import { iniciarCalculadoraDanca } from '../../scripts/caloriasDanca.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
     iniciarCalculadoraDanca();
+    tabelasRolaveis();
   </script>
   <style>
     .cd-hero {
@@ -759,6 +761,7 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
       font-size: var(--step--1);
     }
     .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
     .tabela-rolavel caption {
       caption-side: top;
@@ -775,7 +778,10 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
-    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. Só trocar a
+       cor deixava cinza sobre quase preto — contraste 3,9, abaixo do mínimo. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
     .tabela-rolavel tbody th { font-weight: 700; }
 
     .cd-formula {

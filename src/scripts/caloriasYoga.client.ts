@@ -139,13 +139,13 @@ export function iniciarCalculadoraYoga(): void {
     } else if (modo === 'relogio') {
       const rel = parseNumero(relogio.value);
       if (!relogioValido(rel))
-        return falha(`Informe o número do aparelho, entre ${RELOGIO_MIN} e ${RELOGIO_MAX} kcal.`, !relogio.value.trim());
+        return falha(`Informe o número do aparelho, entre ${RELOGIO_MIN} e ${RELOGIO_MAX.toLocaleString('pt-BR')} kcal.`, !relogio.value.trim());
       if (!minutosValidos(v))
         return falha(`Informe um tempo entre ${MINUTOS_MIN} e ${MINUTOS_MAX} minutos.`, !campos.relogio.value.trim());
       res = deRelogio(rel, v, p, idEstilo);
     } else {
       if (!kcalValida(v))
-        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
       res = deKcal(v, p, idEstilo);
     }
 

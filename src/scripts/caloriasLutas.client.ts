@@ -8,7 +8,7 @@
  * round, minutos de intervalo), porque são três números que a pessoa sabe de
  * cabeça — e o intervalo sai da conta como repouso.
  *
- * As nove atividades ficam sempre visíveis, em dois grupos. Os ritmos do
+ * As nove atividades ficam sempre visíveis, em três grupos. Os ritmos do
  * saco são atividades próprias, não um seletor que aparece só no saco: um
  * controle que surge e some empurra os campos de baixo, e é exatamente o
  * defeito que a auditoria de foco caça. O aviso de que os ritmos só valem
@@ -148,7 +148,7 @@ export function iniciarCalculadoraLutas(): void {
       res = deTempo(v, p, idAtividade);
     } else {
       if (!kcalValida(v))
-        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
       res = deKcal(v, p, idAtividade);
     }
 

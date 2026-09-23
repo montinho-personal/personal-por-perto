@@ -162,7 +162,7 @@ export function iniciarCalculadoraCaminhada(): void {
       res = dePassos(v, p, r.velocidade, incl, r.cadencia);
     } else {
       if (!kcalValida(v))
-        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
       res = deKcal(v, p, r.velocidade, incl, r.cadencia);
     }
 

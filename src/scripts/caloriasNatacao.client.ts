@@ -196,11 +196,11 @@ export function iniciarCalculadoraNatacao(): void {
         );
       if (modo === 'distancia') {
         if (!metrosValidos(v))
-          return falha(`Informe uma distância entre ${METROS_MIN} e ${METROS_MAX} metros.`, !campos.distancia.value.trim());
+          return falha(`Informe uma distância entre ${METROS_MIN} e ${METROS_MAX.toLocaleString('pt-BR')} metros.`, !campos.distancia.value.trim());
         res = deDistancia(v, p, idEstilo, idBanda, r);
       } else {
         if (!kcalValida(v))
-          return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+          return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
         res = deKcal(v, p, idEstilo, idBanda, r);
       }
     } else if (modo === 'piscina') {

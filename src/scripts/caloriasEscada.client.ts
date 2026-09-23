@@ -162,7 +162,7 @@ export function iniciarCalculadoraEscada(): void {
       res = deAndares(v, p, dpa, esp, cad, desceu);
     } else if (modo === 'degraus') {
       if (!degrausValidos(v))
-        return falha(`Informe entre ${DEGRAUS_MIN} e ${DEGRAUS_MAX} degraus.`, !campos.degraus.value.trim());
+        return falha(`Informe entre ${DEGRAUS_MIN} e ${DEGRAUS_MAX.toLocaleString('pt-BR')} degraus.`, !campos.degraus.value.trim());
       res = deDegraus(v, p, dpa, esp, cad, desceu);
     } else if (modo === 'tempo') {
       if (!minutosValidos(v))
@@ -170,7 +170,7 @@ export function iniciarCalculadoraEscada(): void {
       res = deTempo(v, p, dpa, esp, cad);
     } else {
       if (!kcalValida(v))
-        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX} kcal.`, !campos.meta.value.trim());
+        return falha(`Informe uma meta entre ${KCAL_MIN} e ${KCAL_MAX.toLocaleString('pt-BR')} kcal.`, !campos.meta.value.trim());
       res = deKcal(v, p, dpa, esp, cad, desceu);
     }
 
