@@ -60,6 +60,15 @@ export const cidade: Cidade = {
   academias:
     'A rede é formada principalmente por academias de bairro e estúdios de funcional e musculação, complementados pelo atendimento domiciliar do personal trainer — formato bem adaptado a uma cidade de porte médio com bairros espalhados.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Itapetininga', detalhe: 'na Av. Peixoto Gomide, no Centro' },
+    { nome: 'Bluefit Itapetininga', detalhe: 'na Rua Aristides Lobo, no Centro' },
+    { nome: 'Panobianco Itapetininga', detalhe: 'na Av. José de Morais Terra, na Vila Barth' },
+    { nome: 'Skyfit Itapetininga', detalhe: 'na Rua José de Almeida Carvalho' },
+    { nome: 'Skyfit 5 de Novembro', detalhe: 'na Av. 5 de Novembro, na Vila Nastri' },
+  ],
+  academiasVerificadasEm: '2026-09-23',
+
   destaquesFitness: [
     'Referência nacional em produtividade de soja, com economia regional aquecida pelo agronegócio.',
     'Parque Ecológico Municipal com pista de caminhada e ciclovia para treino ao ar livre.',
@@ -86,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itapetininga', url: 'https://www.itapetininga.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-23',
 };

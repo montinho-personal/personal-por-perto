@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta combina academias e estúdios locais com atendimento domiciliar, aproveitando parques e orla do rio para o treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Panobianco Salto', detalhe: 'na Praça José Francisco Archimedes Lammoglia, no Centro' },
+    { nome: 'Skyfit Salto', detalhe: 'na Rua 9 de Julho' },
+    { nome: 'Espaço Fitness', detalhe: 'na Rua Marechal Rondon, no Jardim Santa Cruz' },
+  ],
+  academiasVerificadasEm: '2026-09-23',
+
   destaquesFitness: [
     'Parques às margens do Rio Tietê (Lavras, do Lago) com pista e ciclovia para treino ao ar livre.',
     'Atrativo geológico da Rocha Moutonnée, no Projeto Geoparque Corumbataí.',
@@ -96,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Salto', url: 'https://salto.sp.gov.br/turismo/atrativos-turisticos/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-23',
 };
