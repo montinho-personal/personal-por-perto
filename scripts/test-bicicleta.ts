@@ -1,7 +1,7 @@
 /**
  * Testes do motor de calorias do pedal.
  *
- * O teste central é a TESE: dobrar a velocidade triplica o gasto por hora,
+ * O teste central é a TESE: de 14 para 28 km/h o gasto por hora triplica,
  * porque a resistência do ar cobra caro. E a conferência mais importante é
  * a coerência entre as DUAS pontas da ferramenta — a escala de velocidade
  * da rua e a escala de watts da ergométrica precisam concordar quando
@@ -73,12 +73,19 @@ console.log('\n[1] Os METs do Compêndio são copiados, não ajustados\n');
 }
 
 /* ------------------------------------------------------------------ */
-console.log('\n[2] A TESE: dobrar a velocidade triplica o gasto por hora\n');
+console.log('\n[2] A TESE: de 14 para 28 km/h o gasto por hora triplica\n');
 {
   const m14 = metRua(14);
   const m28 = metRua(28);
   console.log(`     14 km/h: ${m14} METs | 28 km/h: ${m28} METs | razão ${(m28 / m14).toFixed(2)}×`);
   ok(perto(m28 / m14, 3.0, 0.01), 'dobrar de 14 para 28 km/h TRIPLICA o MET, exatamente 3,00×');
+  /*
+   * E o "triplica" NÃO é regra geral — a página dizia que era. O fator
+   * depende do ponto de partida, e abaixo de 20 km/h dobrar nem chega a
+   * dobrar o MET. Os dois testes seguram a frase que a página agora usa.
+   */
+  ok(perto(metRua(24) / metRua(12), 2.5, 0.01), 'de 12 para 24 km/h o fator é 2,5×, não 3');
+  ok(metRua(20) / metRua(10) < 2, `de 10 para 20 km/h dobrar nem dobra o MET (${(metRua(20) / metRua(10)).toFixed(2)}×)`);
   /*
    * O que o dado NÃO sustenta, e por isso não é afirmado na página: que o
    * crescimento seja suave e acelerado faixa a faixa. Os saltos de 14→21 e

@@ -16,9 +16,11 @@
  *     ~21 km/h →  8,0 METs
  *     ~28 km/h → 12,0 METs
  *
- * Dobrar a velocidade TRIPLICA o gasto por hora. Na corrida, dobrar a
+ * De 14 para 28 km/h, o gasto por hora TRIPLICA. Na corrida, dobrar a
  * velocidade dobra o gasto por minuto e deixa o custo por quilômetro quase
- * igual; aqui nada disso vale. O pedal é a atividade em que a velocidade
+ * igual; aqui nada disso vale acima de uns 20 km/h. (O "triplica" é do par
+ * 14→28: de 12 para 24 dá 2,5×, e de 10 para 20, 1,9× — abaixo de 20 km/h o
+ * ar ainda pesa pouco.) O pedal é a atividade em que a velocidade
  * manda mais, e por isso a página é organizada em torno dela.
  *
  * E o custo por quilômetro vai na direção contrária da corrida: sobe de

@@ -67,7 +67,7 @@ import {
 import { kcalPorKgPorKm as corridaPorKm } from '../../lib/calorias/corrida';
 
 const path = '/calorias/bicicleta';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-09-23';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -94,6 +94,21 @@ const TAB_ERGO = tabelaErgometrica(PESO_PADRAO, 45);
 const MET_LENTO = metRua(14);
 const MET_RAPIDO = metRua(28);
 const RAZAO = MET_RAPIDO / MET_LENTO;
+/*
+ * O fator depende do ponto de partida. A versão anterior dizia "dobrar a
+ * velocidade triplica o gasto" como regra geral; pelo próprio motor, isso
+ * só vale para 14→28. Abaixo de uns 20 km/h dobrar quase só dobra — o ar
+ * ainda não pesa. Os pares saem do motor para a frase não poder divergir.
+ */
+const PARES = [
+  [10, 20],
+  [12, 24],
+  [14, 28],
+].map(([de, para]) => ({ de, para, fator: metRua(para) / metRua(de) }));
+/* Montada aqui, e não em JSX, para a pontuação não ganhar espaços soltos. */
+const fatorTxt = (f: number) => f.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const trechos = PARES.map((p) => `${p.de}→${p.para} km/h multiplica o gasto por ${fatorTxt(p.fator)}`);
+const FRASE_PARES = `${trechos.slice(0, -1).join(', ')} e ${trechos[trechos.length - 1]}`;
 const CUSTO_14 = kcalPorKgPorKm(14);
 const CUSTO_28 = kcalPorKgPorKm(28);
 const CUSTO_CORRIDA = corridaPorKm(10);
@@ -108,7 +123,7 @@ const description =
 const faqs = [
   {
     pergunta: '1 hora de bicicleta gasta quantas calorias?',
-    resposta: `Depende muito da velocidade, mais do que em qualquer outra atividade do cluster. Para ${PESO_PADRAO} kg: cerca de ${TAB_VEL[0].kcal} kcal em ritmo de passeio (14 km/h), ${arredondaKcal(EX_60.kcal)} kcal a ${formataVelocidade(V)} e cerca de ${TAB_VEL[4].kcal} kcal num ritmo forte de 28 km/h. Dobrar a velocidade triplica o gasto.`,
+    resposta: `Depende muito da velocidade, mais do que em qualquer outra atividade do cluster. Para ${PESO_PADRAO} kg: cerca de ${TAB_VEL[0].kcal} kcal em ritmo de passeio (14 km/h), ${arredondaKcal(EX_60.kcal)} kcal a ${formataVelocidade(V)} e cerca de ${TAB_VEL[4].kcal} kcal num ritmo forte de 28 km/h. Dobrar de 14 para 28 km/h triplica o gasto; em velocidades mais baixas, dobrar quase só dobra.`,
   },
   {
     pergunta: '30 minutos de bicicleta queimam quantas calorias?',
@@ -194,7 +209,8 @@ const schema = [
       <p class="cb-hero-lead">
         Uma hora de pedal a {formataVelocidade(V)} gasta cerca de{' '}
         <strong>{arredondaKcal(EX_60.kcal)} kcal</strong> para {PESO_PADRAO} kg. Mas a velocidade
-        muda isso mais do que em qualquer outra atividade: <strong>dobrá-la triplica o gasto</strong>.
+        muda isso mais do que em qualquer outra atividade: <strong>de 14 para 28 km/h, o gasto
+        triplica</strong>.
       </p>
       <p class="cb-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
     </div>
@@ -232,7 +248,7 @@ const schema = [
             <div class="cb-presets">
               {[15, 30, 45, 60, 90, 120].map((v) => (
                 <button type="button" class="cb-preset" data-alvo="tempo" data-valor={String(v)}>
-                  {v < 60 ? `${v} min` : `${v / 60}h`}
+                  {formataTempo(v)}
                 </button>
               ))}
             </div>
@@ -373,7 +389,7 @@ const schema = [
       </section>
 
       <div class="prose cb-conteudo">
-        <h2>Dobrar a velocidade triplica o gasto</h2>
+        <h2>De 14 para 28 km/h, o gasto triplica</h2>
         <p>
           Esta é a diferença central entre pedalar e as outras atividades. Na corrida, o custo de
           cada quilômetro quase não muda com o ritmo. No pedal, a velocidade manda — e manda de
@@ -385,6 +401,12 @@ const schema = [
           O motivo é a resistência do ar. Ela cresce com o quadrado da velocidade, e a potência
           necessária para vencê-la cresce com o cubo. Acima de uns 20 km/h no plano, o ar passa a
           ser a força dominante — é contra ele que a maior parte do esforço vai.
+        </p>
+        <p>
+          Por isso o &ldquo;triplica&rdquo; tem endereço: vale para 14→28 km/h, não para qualquer
+          dobra de velocidade. Pela mesma tabela, {FRASE_PARES}.
+          Abaixo de uns 20 km/h dobrar quase só dobra, porque o ar ainda pesa pouco; o salto
+          desproporcional aparece quando a velocidade de chegada passa dessa faixa.
         </p>
         <div class="tabela-rolavel">
           <table>
