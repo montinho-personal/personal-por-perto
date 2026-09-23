@@ -1,4 +1,28 @@
 ---
+/**
+ * Quantas calorias a musculação queima — artigo com a calculadora dentro.
+ *
+ * POR QUE A CALCULADORA MORA AQUI, E NÃO EM /calorias/musculacao/
+ *
+ * Este artigo já respondia a pergunta e o Search Console já o mostrava
+ * subindo (de 3 para 57 impressões e da posição 53 para a 10,6 entre os
+ * relatórios de 01/09 e 12/09/2026). Uma URL nova disputaria a mesma busca
+ * com ele. A calculadora entra no artigo; o hub de /calorias/ aponta para
+ * cá. URL, título e H1 ficam como estavam, porque são o que está
+ * funcionando.
+ *
+ * O QUE A REVISÃO DE 23/09/2026 CORRIGIU NO TEXTO
+ *
+ * - "200 a 400 kcal por hora", sem fonte, virou a faixa do Compêndio 2024
+ *   calculada para 70 kg (257 a 441 kcal) — o topo passa dos 400.
+ * - "EPOC de 6% a 15% da sessão", sem fonte, virou a faixa absoluta da
+ *   revisão de Farinatti e Castinheiras Neto (cerca de 22 a 58 kcal).
+ * - "10 a 13 kcal por quilo de músculo" virou os 13 de Elia, confirmados
+ *   por Wang et al.; a conversão para "quilo e meio de gordura por ano"
+ *   saiu, porque usava a regra dos 7.700 kcal sem a ressalva de Hall.
+ * - A frase sobre relógios ganhou a fonte que a sustenta (Collins et al.).
+ * - "A caminhada costuma mover mais calorias que o treino" virou conta.
+ */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
@@ -9,13 +33,52 @@ import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
-import { fontesExternas } from '../../data/fontesExternas';
+import {
+  EPOC_MAX,
+  EPOC_MIN,
+  ESTUDO_MASSA,
+  FONTES,
+  KCAL_DIA_POR_KG_GORDURA,
+  KCAL_DIA_POR_KG_MUSCULO,
+  MINUTOS_PADRAO,
+  MUSCULO_PADRAO,
+  NOTA_EPOC,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  PESO_PADRAO,
+  SESSOES_PADRAO,
+  TIPOS,
+  deMusculo,
+  deSemana,
+  deSessao,
+  formataKcal,
+  formataMet,
+  fraseSessao,
+  leituraDoEstudo,
+  tipo,
+} from '../../lib/calorias/musculacao';
+import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
 
-const acsm = fontesExternas.acsm;
+/* ── Números resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const H_VARIADO = deSessao(60, PESO_PADRAO, 'variado');
+const H_BASICOS = deSessao(60, PESO_PADRAO, 'basicos');
+const H_VIGOROSO = deSessao(60, PESO_PADRAO, 'vigoroso');
+const SEMANA = deSemana(SESSOES_PADRAO, 60, PESO_PADRAO, 'variado');
+const MUSCULO = deMusculo(MUSCULO_PADRAO);
+const ESTUDO = leituraDoEstudo();
+/* Os "100 kcal por quilo" do folclore, em quilos de músculo necessários. */
+const KG_PARA_100 = 100 / KCAL_DIA_POR_KG_MUSCULO;
+
+/* Meia hora de caminhada moderada todo dia, pelo motor da caminhada. */
+const MOD = ritmoCaminhada('moderado');
+const CAMINHADA_SEMANA = caminhadaTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal * 7;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
 const relacionados = [
   {
@@ -39,7 +102,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/quantas-calorias-queima-a-musculacao';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-09-23';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -49,34 +112,31 @@ const crumbs = [
 const faqs = [
   {
     pergunta: 'Quantas calorias queima 1 hora de musculação?',
-    resposta:
-      'As estimativas da literatura ficam tipicamente entre 200 e 400 kcal por hora, variando com peso corporal, intensidade, densidade do treino (quanto descanso entre séries) e quanto músculo trabalha em cada exercício — treinos com agachamento e terra gastam mais que sessões de rosca e panturrilha. Relógios e apps costumam superestimar bastante o número. É menos que uma hora de corrida, mas essa comparação sozinha engana: o valor da musculação para o emagrecimento está no que ela constrói, não só no que ela gasta na sessão.',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(H_VARIADO.kcal)} kcal num treino variado de academia, ${formataKcal(H_BASICOS.kcal)} num treino de básicos pesados (agachamento, terra) e ${formataKcal(H_VIGOROSO.kcal)} num treino vigoroso, pelos valores do Compêndio de Atividades Físicas. O que mais muda o número é a escolha dos exercícios: num estudo brasileiro, 5 séries de leg press custaram cerca de ${n(ESTUDO.razaoMassa)} vez o que custaram 5 séries de crucifixo. Relógios costumam superestimar bastante.`,
   },
   {
     pergunta: 'O que é o efeito EPOC ("afterburn")? Ele é significativo?',
-    resposta:
-      'EPOC é o consumo extra de oxigênio pós-exercício: depois de um treino intenso, o corpo segue gastando um pouco mais de energia por horas para se recuperar. É real, cresce com a intensidade — treinos de força pesados e intervalados geram mais — mas é modesto: as estimativas ficam na casa de 6% a 15% do gasto da própria sessão, algumas dezenas de calorias na prática. O "metabolismo turbinado por 48 horas" do marketing é exagero de um fenômeno verdadeiro, porém pequeno.',
+    resposta: `EPOC é o consumo extra de oxigênio pós-exercício: depois do treino, o corpo segue gastando um pouco mais para se recuperar. É real e cresce com a intensidade, mas é pequeno: nas comparações reunidas por uma revisão de 16 estudos, ele fica entre cerca de ${EPOC_MIN} e ${EPOC_MAX} kcal. O "metabolismo turbinado por 48 horas" do marketing é exagero de um fenômeno verdadeiro, porém modesto.`,
   },
   {
     pergunta: 'Músculo em repouso queima muitas calorias?',
-    resposta:
-      'Cada quilo de músculo consome cerca de 10 a 13 kcal por dia em repouso — mais que gordura (cerca de 4,5 kcal), mas longe dos "50 a 100 kcal por quilo" do folclore fitness. O ganho real vem do conjunto: alguns quilos de músculo somam dezenas de calorias diárias de gasto extra permanente, o corpo fica mais capaz de treinar pesado (gastando mais em cada sessão) e a rotina inteira fica mais ativa. É juro composto metabólico — pequeno no dia, decisivo no ano.',
+    resposta: `Cada quilo de músculo gasta cerca de ${KCAL_DIA_POR_KG_MUSCULO} kcal por dia em repouso — contra ${n(KCAL_DIA_POR_KG_GORDURA)} kcal do quilo de gordura, e longe dos "100 kcal por quilo" do folclore, que exigiriam quase ${n(KG_PARA_100, 0)} kg de músculo para chegar a 100 kcal por dia. O ganho real vem do conjunto: ${n(MUSCULO_PADRAO, 0)} kg de músculo somam cerca de ${formataKcal(MUSCULO.kcalDia)} kcal por dia, ${formataKcal(MUSCULO.kcalAno)} por ano, e o corpo fica capaz de treinar mais pesado.`,
   },
   {
     pergunta: 'Devo comer as calorias que o treino queimou de volta?',
     resposta:
-      'Se o objetivo é emagrecer, não — essa é uma das armadilhas mais comuns. Primeiro porque os números de apps e relógios superestimam o gasto; segundo porque "compensar" o treino com comida extra anula o déficit que faz a gordura cair. O caminho mais confiável: definir a alimentação pelo déficit calórico planejado, tratar o gasto do treino como bônus (não como crédito para gastar) e acompanhar o resultado real na balança e nas medidas ao longo das semanas, ajustando com calma.',
+      'Se o objetivo é emagrecer, não — essa é uma das armadilhas mais comuns. Primeiro porque os números de apps e relógios superestimam o gasto da musculação; segundo porque "compensar" o treino com comida extra anula o déficit que faz a gordura cair. O caminho mais confiável: definir a alimentação pelo déficit calórico planejado, tratar o gasto do treino como bônus (não como crédito para gastar) e acompanhar o resultado real na balança e nas medidas ao longo das semanas, ajustando com calma.',
   },
   {
-    pergunta: 'Para gastar mais calorias, é melhor fazer musculação em circuito?',
-    resposta:
-      'Circuitos e descansos curtos aumentam o gasto da sessão, mas cobram um preço: com menos recuperação entre séries, a carga e a qualidade do estímulo de força caem — e com elas o principal benefício da musculação. Para a maioria, funciona melhor separar papéis: treinar força com descansos adequados para construir e preservar músculo, e somar cardio (caminhada, corrida, bike) para ampliar o gasto calórico. Quem tem pouco tempo pode usar técnicas de densidade pontualmente, sem transformar todo treino em circuito.',
+    pergunta: 'Descansar menos entre as séries queima mais calorias?',
+    resposta: `Por série, não. Num estudo brasileiro, 5 séries de leg press custaram praticamente o mesmo com 1 ou com 3 minutos de descanso (cerca de ${n(ESTUDO_MASSA.legPress1min, 0)} e ${n(ESTUDO_MASSA.legPress3min, 0)} kcal). Descanso curto aumenta o gasto por hora porque cabe mais trabalho no mesmo tempo — e cobra um preço: com menos recuperação, a carga e a qualidade do estímulo de força caem. Para a maioria, funciona melhor treinar força com descansos adequados e somar cardio para ampliar o gasto.`,
   },
 ];
 
 const title = 'Quantas calorias a musculação queima? A conta honesta';
+/* 151 caracteres. */
 const description =
-  'Quanto se gasta numa sessão de musculação (200-400 kcal/h), o tamanho real do efeito EPOC, quanto o músculo queima em repouso e por que o valor do treino de força vai muito além da sessão.';
+  'Calcule quantas calorias a sua musculação queima por tipo de treino, o tamanho real do EPOC e quanto o músculo ganho gasta em repouso. A conta honesta.';
 
 const capa = '/capas-conteudo/quantas-calorias-queima-a-musculacao.webp';
 const capaAlt =
@@ -120,72 +180,184 @@ const schema = [
     </p>
 
     <p class="lead">
-      Este artigo faz a conta completa: o gasto da sessão, o tamanho
-      real do "afterburn", quanto o músculo queima em repouso e onde a
-      musculação realmente ganha o jogo do emagrecimento.
+      Este artigo faz a conta completa — o gasto da sessão, o tamanho real
+      do "afterburn", quanto o músculo queima em repouso — e a{' '}
+      <a href="#cm-app">calculadora logo abaixo</a> faz a mesma conta com o
+      seu peso.
     </p>
 
-    <div class="prose">
-      <h2>O gasto da sessão: 200 a 400 kcal por hora</h2>
-      <p>
-        As estimativas da literatura para treino de força recreacional
-        ficam tipicamente entre <strong>200 e 400 kcal por
-        hora</strong> — a faixa varia com o peso corporal (corpos
-        maiores gastam mais), a densidade da sessão (treino com pouco
-        descanso gasta mais que treino social) e os exercícios
-        escolhidos: agachamentos, terras e remadas movem muito
-        músculo; roscas e elevações, pouco.
-      </p>
+    <section id="cm-app" class="cm-app" aria-labelledby="cm-app-h">
+      <h2 id="cm-app-h" class="cm-app-h">Calcule o gasto do seu treino</h2>
 
+      <div class="cm-modos" role="tablist" aria-label="O que você quer calcular">
+        <button type="button" class="cm-modo is-ativo" data-modo="sessao" role="tab" aria-selected="true">
+          Uma sessão
+        </button>
+        <button type="button" class="cm-modo" data-modo="semana" role="tab" aria-selected="false" tabindex="-1">
+          A semana
+        </button>
+        <button type="button" class="cm-modo" data-modo="musculo" role="tab" aria-selected="false" tabindex="-1">
+          Músculo ganho
+        </button>
+      </div>
+
+      <div class="cm-campos">
+        <!-- Peso e tipo de treino somem no modo "músculo ganho": ali não fazem diferença. -->
+        <div id="cm-bloco-treino" class="cm-bloco">
+          <div class="cm-campo">
+            <label for="cm-peso">Seu peso (kg)</label>
+            <input id="cm-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+          <!--
+            O seletor é o TIPO de treino, não o descanso: a medição mostra
+            que o descanso não muda o custo do mesmo trabalho.
+          -->
+          <div class="cm-campo">
+            <span class="cm-rotulo">Tipo de treino</span>
+            <div class="cm-presets" role="group" aria-label="Tipo de treino">
+              {TIPOS.map((t) => (
+                <button
+                  type="button"
+                  class:list={['cm-preset', 'cm-tipo', t.id === 'variado' && 'is-ativo']}
+                  data-tipo={t.id}
+                  aria-pressed={String(t.id === 'variado')}
+                >
+                  {t.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="cm-dica cm-tipo-slot" id="cm-tipo-dica">
+              {formataMet(tipo('variado').met)} METs — Compêndio, código {tipo('variado').codigo}.{' '}
+              {tipo('variado').comoReconhecer}
+            </p>
+          </div>
+        </div>
+
+        <div id="cm-bloco-sessoes" class="cm-campo" hidden>
+          <label for="cm-sessoes">Sessões por semana</label>
+          <input id="cm-sessoes" type="text" inputmode="numeric" autocomplete="off" value={SESSOES_PADRAO} />
+          <div class="cm-presets">
+            {[2, 3, 4, 5].map((v) => (
+              <button type="button" class="cm-preset" data-alvo="sessoes" data-valor={String(v)}>{v}×</button>
+            ))}
+          </div>
+        </div>
+
+        <div id="cm-bloco-minutos" class="cm-campo">
+          <label for="cm-minutos">Duração do treino (minutos)</label>
+          <input id="cm-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+          <div class="cm-presets">
+            {[30, 45, 60, 90].map((v) => (
+              <button type="button" class="cm-preset" data-alvo="minutos" data-valor={String(v)}>
+                {v === 60 ? '1 hora' : v === 90 ? '1h30' : `${v} min`}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div id="cm-bloco-musculo" class="cm-campo" hidden>
+          <label for="cm-musculo">Músculo ganho (kg)</label>
+          <input id="cm-musculo" type="text" inputmode="decimal" autocomplete="off" value={MUSCULO_PADRAO} />
+          <div class="cm-presets">
+            {[1, 2, 3, 5].map((v) => (
+              <button type="button" class="cm-preset" data-alvo="musculo" data-valor={String(v)}>{v} kg</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <p id="cm-erro" class="cm-erro" role="status" hidden></p>
+
+      <div id="cm-saida" class="cm-saida" role="status" aria-live="polite">
+        <p class="cm-resultado">
+          <span class="cm-numero">≈ {formataKcal(H_VARIADO.kcal)}</span>
+          <span class="cm-unidade">kcal</span>
+        </p>
+        <p class="cm-frase">{fraseSessao(PESO_PADRAO, H_VARIADO)}</p>
+        <dl class="cm-detalhes">
+          <div><dt>Acréscimo real ao dia</dt><dd>≈ {formataKcal(H_VARIADO.kcalLiquida)} kcal</dd></div>
+          <div><dt>Depois do treino (EPOC)</dt><dd>+{EPOC_MIN} a {EPOC_MAX} kcal</dd></div>
+          <div><dt>Intensidade</dt><dd>{formataMet(H_VARIADO.met)} METs</dd></div>
+          <div><dt>De onde vem o número</dt><dd>Compêndio {tipo('variado').codigo}</dd></div>
+        </dl>
+        <p class="cm-nota cm-nota-modo">{NOTA_EPOC}</p>
+        <p class="cm-nota">{NOTA_ESTIMATIVA}</p>
+      </div>
+    </section>
+
+    <div class="prose">
+      <h2>O gasto da sessão: de {formataKcal(H_VARIADO.kcal)} a {formataKcal(H_VIGOROSO.kcal)} kcal por hora</h2>
       <p>
-        Em compêndios de gasto energético usados por entidades como o
-        <a href={acsm.url} target="_blank"
-        rel="noopener">{acsm.nome}</a>, a musculação vigorosa equivale
-        a cerca de 6 METs — na mesma vizinhança de uma caminhada muito
-        acelerada.
+        O Compêndio de Atividades Físicas, a tabela de referência para gasto
+        energético, separa a musculação em três linhas. Para {PESO_PADRAO} kg,
+        uma hora de <strong>treino variado de academia</strong> (vários
+        exercícios, 8 a 15 repetições) dá cerca de{' '}
+        <strong>{formataKcal(H_VARIADO.kcal)} kcal</strong>; uma hora de{' '}
+        <strong>básicos pesados</strong>, como agachamento e terra, cerca de{' '}
+        <strong>{formataKcal(H_BASICOS.kcal)}</strong>; e uma hora de treino{' '}
+        <strong>vigoroso</strong> de fisiculturismo ou powerlifting, cerca de{' '}
+        <strong>{formataKcal(H_VIGOROSO.kcal)}</strong>. Corpos maiores gastam
+        mais, na mesma proporção do peso.
       </p>
       <p>
-        E os relógios e apps? Superestimam com frequência, às vezes por
-        margens grandes — o gasto de força é justamente o que os algoritmos
-        de frequência cardíaca pior estimam, porque o coração acelera por
-        esforço neural e pressão, não só por consumo de oxigênio. Trate o
-        número do pulso como curiosidade, não como crédito calórico.
+        O que separa essas linhas não é o relógio: é o tipo de treino e,
+        principalmente, a escolha dos exercícios. Um estudo brasileiro de Farinatti e Castinheiras Neto
+        mediu {ESTUDO_MASSA.series} séries de {ESTUDO_MASSA.repeticoes} no leg
+        press e no crucifixo: cerca de {n(ESTUDO_MASSA.legPress1min, 0)} a{' '}
+        {n(ESTUDO_MASSA.legPress3min, 0)} kcal no leg press e{' '}
+        {n(ESTUDO_MASSA.crucifixo1min, 0)} a {n(ESTUDO_MASSA.crucifixo3min, 0)} no
+        crucifixo. O exercício que move muito músculo custou{' '}
+        <strong>{n(ESTUDO.razaoMassa)} vez</strong> o gasto do outro. E o descanso quase não mexeu no
+        resultado: com 1 ou com 3 minutos entre as séries, o leg press custou
+        praticamente o mesmo. Descansar menos não torna cada série mais cara;
+        só faz caber mais série na mesma hora.
+      </p>
+      <p>
+        E os relógios? Aqui eles erram por um motivo medido. Na musculação,
+        a frequência cardíaca sobe mais do que o consumo de oxigênio: Collins
+        e colegas encontraram, ao levantar peso, uma relação entre as duas com
+        cerca de <strong>metade da inclinação</strong> da do exercício
+        aeróbico. Para a mesma frequência, o gasto real é bem menor — e um
+        aparelho que aplica a lógica da corrida à academia infla o número.
+        Trate o número do pulso como curiosidade, não como crédito calórico.
       </p>
 
       <h2>EPOC: o "afterburn" no tamanho certo</h2>
       <p>
         O consumo extra de oxigênio pós-exercício (EPOC) existe:
         depois de uma sessão intensa, o corpo gasta energia adicional
-        por horas para repor estoques, reparar tecido e voltar ao
-        equilíbrio. Treinos pesados de força e intervalados são os que
-        mais o provocam.
+        para repor estoques, reparar tecido e voltar ao equilíbrio. Treinos
+        pesados e intensos são os que mais o provocam.
       </p>
-
       <p>
-        O problema é a escala do folclore: as medições apontam algo
-        como <strong>6% a 15% do gasto da sessão</strong> — de um
-        treino de 300 kcal, umas 20 a 45 kcal extras. Real, bem-vindo,
-        e incapaz de compensar um pão de queijo. O emagrecimento
-        continua sendo decidido pelo <a
-        href="/emagrecimento/deficit-calorico-como-funciona/">balanço
+        O problema é a escala do folclore. Uma revisão de 16 estudos sobre
+        o EPOC da musculação reúne comparações em que ele fica{' '}
+        <strong>entre cerca de {EPOC_MIN} e {EPOC_MAX} kcal</strong> — ao lado
+        das {formataKcal(H_VARIADO.kcal)} kcal de uma hora de treino variado,
+        um acréscimo real, bem-vindo e pequeno. O emagrecimento continua sendo
+        decidido pelo <a href="/emagrecimento/deficit-calorico-como-funciona/">balanço
         calórico do dia</a>.
       </p>
 
       <h2>O músculo em repouso: o mito dos 100 kcal por quilo</h2>
       <p>
         "Cada quilo de músculo queima 100 calorias por dia" é uma das lendas
-        mais repetidas das academias. O número medido é mais modesto:
-        <strong>cerca de 10 a 13 kcal por quilo por dia</strong> — contra
-        ~4,5 kcal do quilo de gordura. Ganhar 3 kg de músculo soma umas 30 a
-        40 kcal diárias de gasto permanente.
+        mais repetidas das academias. O número medido é bem mais modesto:{' '}
+        <strong>cerca de {KCAL_DIA_POR_KG_MUSCULO} kcal por quilo por dia</strong>,
+        contra {n(KCAL_DIA_POR_KG_GORDURA)} kcal do quilo de gordura. Para
+        chegar aos 100 do folclore seriam precisos quase{' '}
+        {n(KG_PARA_100, 0)} kg de músculo a mais.
       </p>
       <p>
-        Parece pouco? É aqui que a conta muda de natureza: essas
-        calorias são <em>permanentes e compostas</em>. Trinta e cinco
-        calorias por dia são ~13 mil por ano — mais de um quilo e meio
-        de gordura de margem anual, sem esforço adicional.
+        Parece pouco? É aqui que a conta muda de natureza: essas calorias são{' '}
+        <em>permanentes</em>. Ganhar {n(MUSCULO_PADRAO, 0)} kg de músculo soma
+        cerca de <strong>{formataKcal(MUSCULO.kcalDia)} kcal por dia</strong> —{' '}
+        {formataKcal(MUSCULO.kcalAno)} kcal por ano, sem treino nenhum a mais.
+        (Converter isso em quilos de gordura pela regra dos 7.700 kcal
+        superestima o resultado, porque o corpo ajusta o gasto conforme
+        emagrece.) O modo &ldquo;Músculo ganho&rdquo; da calculadora faz a conta
+        para o seu caso.
       </p>
-
       <p>
         Some o efeito indireto: mais músculo permite treinos mais
         pesados (que gastam mais), melhora a disposição geral e
@@ -207,7 +379,6 @@ const schema = [
         musculação é insubstituível: ela é o sinal que diz ao corpo em
         déficit "o músculo fica, queime o resto".
       </p>
-
       <p>
         Quem emagrece só de dieta e cardio perde massa magra junto,
         derruba o gasto de repouso e aterrissa no corpo "menor, porém
@@ -226,12 +397,13 @@ const schema = [
           tudo em circuito para "suar mais".
         </li>
         <li>
-          <strong>Cardio e passos diários:</strong> ampliar o gasto — a
-          caminhada diária costuma mover mais calorias semanais que o
-          próprio treino, pela constância. Dá para conferir isso com o seu
-          peso na
-          <a href="/calorias/caminhada/">calculadora de calorias da
-          caminhada</a>, e a comparação costuma surpreender.
+          <strong>Cardio e passos diários:</strong> ampliar o gasto. A conta
+          surpreende: para {PESO_PADRAO} kg, meia hora de caminhada moderada
+          todo dia soma cerca de {formataKcal(CAMINHADA_SEMANA)} kcal na semana,
+          mais que {SESSOES_PADRAO} treinos de uma hora de musculação variada
+          ({formataKcal(SEMANA.kcalSemana)} kcal). Dá para refazer com o seu
+          peso na <a href="/calorias/caminhada/">calculadora de calorias da
+          caminhada</a>.
         </li>
         <li>
           <strong>Déficit calórico na alimentação:</strong> o motor do
@@ -240,6 +412,11 @@ const schema = [
           estagnar.
         </li>
       </ul>
+      <FerramentaInline
+        id="rotina"
+        texto="Os três papéis só funcionam se couberem na sua semana de verdade — e é no encaixe entre dias de força, caminhada e descanso que o plano costuma morrer. A ferramenta monta essa distribuição a partir dos dias e do tempo que você realmente tem."
+        acao="Montar a semana que cabe na minha rotina"
+      />
       <p>
         Montar essa engrenagem — treino, movimento e alimentação apontando
         para o mesmo lado — é exatamente o trabalho de um bom
@@ -247,14 +424,38 @@ const schema = [
         nutricionista cuidando do prato.
       </p>
       <div class="callout">
-        <strong>Resumindo:</strong> uma sessão de musculação queima 200 a
-        400 kcal (menos do que o relógio diz), o EPOC adiciona uns 6% a 15%
-        e o músculo em repouso gasta 10 a 13 kcal/kg/dia — nada disso é
-        espetacular isoladamente. O valor real está no conjunto: a
-        musculação é o que garante que o peso perdido seja gordura, mantém o
-        metabolismo de pé e compõe ganhos permanentes ano após ano. Queime
-        calorias com o cardio e o dia ativo; construa o corpo com a força.
+        <strong>Resumindo:</strong> para {PESO_PADRAO} kg, uma hora de
+        musculação gasta de {formataKcal(H_VARIADO.kcal)} a{' '}
+        {formataKcal(H_VIGOROSO.kcal)} kcal conforme o tipo de treino (menos do
+        que o relógio costuma dizer), o EPOC soma algo entre {EPOC_MIN} e {EPOC_MAX} kcal
+        e cada quilo de músculo gasta cerca de {KCAL_DIA_POR_KG_MUSCULO} kcal por
+        dia em repouso — nada disso é espetacular isoladamente. O valor real
+        está no conjunto: a musculação é o que garante que o peso perdido seja
+        gordura, mantém o metabolismo de pé e compõe ganhos permanentes ano
+        após ano. Queime calorias com o cardio e o dia ativo; construa o corpo
+        com a força.
       </div>
+
+      <h2>Como a calculadora faz a conta</h2>
+      <p>
+        A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso
+        em kg ÷ 200</strong>, com os três valores do Compêndio 2024 copiados e
+        não ajustados ({TIPOS.map((t) => `${formataMet(t.met)} para ${t.nome.toLowerCase()}, código ${t.codigo}`).join('; ')}).
+        O EPOC aparece à parte, como a faixa da revisão, porque ele não
+        depende só do tempo de treino. E o modo &ldquo;Músculo ganho&rdquo; usa o
+        gasto de repouso de {KCAL_DIA_POR_KG_MUSCULO} kcal por quilo por dia,
+        que não depende do seu peso nem do tipo de treino.
+      </p>
+      <p class="cm-nao-prescricao">{NOTA_NAO_PRESCRICAO}</p>
+
+      <h2>Referências</h2>
+      <ul class="cm-fontes">
+        {FONTES.map((f) => (
+          <li>
+            <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+          </li>
+        ))}
+      </ul>
     </div>
 
     <VideoYouTube
@@ -281,6 +482,11 @@ const schema = [
     </div>
   </section>
 </Base>
+
+<script>
+  import { iniciarCalculadoraMusculacao } from '../../scripts/caloriasMusculacao.client';
+  iniciarCalculadoraMusculacao();
+</script>
 
 <style>
   .guide-layout {
@@ -313,4 +519,120 @@ const schema = [
   .article-page .prose {
     margin-top: var(--sp-5);
   }
+
+  /* ── Calculadora (mesmo desenho das outras nove do cluster) ── */
+  .cm-app {
+    margin-top: var(--sp-6);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-5);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+  .cm-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+  .cm-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+  .cm-modo {
+    flex: 1 1 auto;
+    min-height: 44px;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .cm-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+  .cm-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+  .cm-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  .cm-campos,
+  .cm-bloco { display: grid; gap: var(--sp-4); }
+  .cm-bloco[hidden],
+  .cm-campo[hidden] { display: none; }
+  .cm-campo label,
+  .cm-campo .cm-rotulo {
+    display: block;
+    font-weight: 700;
+    font-size: var(--step--1);
+    margin-bottom: 0.4rem;
+  }
+  .cm-campo input[type='text'] {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.6rem 0.8rem;
+    font: inherit;
+    font-size: var(--step-1);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--ink);
+  }
+  .cm-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+  .cm-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  /* Altura reservada para a descrição mais longa dos três tipos. Sem ela,
+     trocar de tipo empurraria os campos de baixo. */
+  .cm-tipo-slot { min-height: 4.6em; line-height: 1.5; }
+  @media (min-width: 560px) {
+    .cm-tipo-slot { min-height: 3.1em; }
+  }
+
+  .cm-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .cm-preset {
+    min-height: 40px;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink-soft);
+    font: inherit;
+    font-size: var(--step--1);
+    cursor: pointer;
+  }
+  .cm-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+  .cm-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .cm-tipo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+  .cm-erro {
+    margin-top: var(--sp-4);
+    padding: 0.7rem 0.9rem;
+    border-left: 3px solid #c0392b;
+    background: rgba(192, 57, 43, 0.08);
+    font-size: var(--step--1);
+  }
+
+  .cm-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+  .cm-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+  .cm-numero {
+    font-size: clamp(2.2rem, 8vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--brand-600);
+    font-variant-numeric: tabular-nums;
+  }
+  .cm-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+  .cm-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+  .cm-detalhes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--sp-3);
+    margin-top: var(--sp-4);
+    padding: var(--sp-4);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+  .cm-detalhes > div[hidden] { display: none; }
+  .cm-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+  .cm-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  .cm-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+  .cm-nota-modo { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+  .cm-nao-prescricao { font-size: var(--step--1); color: var(--muted); }
+  .cm-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+  .cm-fontes li { margin-bottom: 0.6rem; }
 </style>

@@ -32,6 +32,7 @@ import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib
 import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
 import { deTempo as yogaPorTempo, formataKcal as formataYoga } from '../../lib/calorias/yoga';
 import { dePelada, formataKcal as formataFutebol, formataTempo as tempoFutebol } from '../../lib/calorias/futebol';
+import { deSessao as musculacaoSessao, formataKcal as formataMusculacao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias';
 const crumbs = [
@@ -49,6 +50,7 @@ const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
 const EX_DANCA = formataDanca(dancaPorTempo(45, PESO_PADRAO, 'zumba').kcal);
 const EX_YOGA = formataYoga(yogaPorTempo(60, PESO_PADRAO, 'hatha').kcal);
 const PELADA = dePelada(120, PESO_PADRAO, 'society', 21, 'casual');
+const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
 const ferramentas = [
   {
@@ -104,6 +106,14 @@ const ferramentas = [
     nome: 'Futebol',
     calcula: 'Pelo tempo em campo, não pelo aluguel da quadra — na pelada, vagas ÷ gente presente.',
     exemplo: `2 horas de society com 21 pessoas = ${tempoFutebol(PELADA.minutosEmCampo)} em campo ≈ ${formataFutebol(PELADA.kcal)} kcal`,
+  },
+  {
+    // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
+    // /calorias/ disputaria a mesma busca com ele.
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    nome: 'Musculação',
+    calcula: 'Por tipo de treino, com o EPOC no tamanho certo e o gasto do músculo ganho em repouso.',
+    exemplo: `1 hora de treino variado ≈ ${EX_MUSCULACAO} kcal para ${PESO_PADRAO} kg`,
   },
 ];
 
@@ -179,10 +189,6 @@ const schema = [
           <li>
             <a href="/emagrecimento/deficit-calorico-como-funciona/">Déficit calórico: como funciona</a>
             — onde o gasto do exercício entra, e por que ele é a menor peça.
-          </li>
-          <li>
-            <a href="/emagrecimento/quantas-calorias-queima-a-musculacao/">Quantas calorias a musculação queima</a>
-            — a conta honesta, incluindo o que o EPOC realmente vale.
           </li>
           <li>
             <a href="/emagrecimento/quantos-passos-por-dia/">Quantos passos por dia para emagrecer</a>
