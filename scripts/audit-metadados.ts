@@ -440,6 +440,43 @@ if (comTabela) {
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * O comentário de contagem tem que bater com a frase que ele conta.
+ *
+ * Várias páginas trazem um comentário de "N caracteres" acima do title e da
+ * description. Ele existe para que a próxima pessoa saiba a folga
+ * que tem antes de estourar o limite — e um comentário que mente sobre isso
+ * é pior que nenhum, porque é confiado sem conferência.
+ *
+ * Eles já divergiram sete vezes no cluster de calorias, sempre do mesmo
+ * jeito: a frase foi reescrita e o número ficou. Como a conferência é
+ * mecânica, ela passa a ser feita por máquina.
+ * ------------------------------------------------------------------ */
+function fontes(dir: string, achados: string[] = []): string[] {
+  for (const nome of readdirSync(dir)) {
+    const caminho = join(dir, nome);
+    if (statSync(caminho).isDirectory()) fontes(caminho, achados);
+    else if (nome.endsWith('.astro')) achados.push(caminho);
+  }
+  return achados;
+}
+
+if (!soPiloto) {
+  const DECLARACAO = /\/\* (\d+) caracteres\.? \*\/\s*\nconst (title|description) =\s*\n?\s*'((?:[^'\\]|\\.)*)'/g;
+  for (const arquivo of fontes('src/pages')) {
+    const fonte = readFileSync(arquivo, 'utf8');
+    for (const m of fonte.matchAll(DECLARACAO)) {
+      const declarado = Number(m[1]);
+      const real = m[3].replace(/\\'/g, "'").length;
+      if (declarado !== real) {
+        erros.push(
+          `${arquivo}: o comentário diz ${declarado} caracteres, o ${m[2]} tem ${real}`,
+        );
+      }
+    }
+  }
+}
+
 console.log(`\nPáginas auditadas: ${paginas.length}${soPiloto ? ' (piloto)' : ''}`);
 
 if (avisos.length) {

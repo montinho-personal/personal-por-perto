@@ -30,6 +30,7 @@ import { deTempo as nadoPorTempo, arredondaKcal as arredondaNado } from '../../l
 import { deAndares, formataKcal as formataEscada } from '../../lib/calorias/escada';
 import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib/calorias/corda';
 import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
+import { deTempo as yogaPorTempo, formataKcal as formataYoga } from '../../lib/calorias/yoga';
 
 const path = '/calorias';
 const crumbs = [
@@ -45,6 +46,7 @@ const EX_NADO = arredondaNado(nadoPorTempo(60, PESO_PADRAO, 'crawl', 'medio').kc
 const EX_ESCADA = formataEscada(deAndares(10, PESO_PADRAO).kcalSubida);
 const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
 const EX_DANCA = formataDanca(dancaPorTempo(45, PESO_PADRAO, 'zumba').kcal);
+const EX_YOGA = formataYoga(yogaPorTempo(60, PESO_PADRAO, 'hatha').kcal);
 
 const ferramentas = [
   {
@@ -89,11 +91,17 @@ const ferramentas = [
     calcula: 'Por estilo e por tempo de aula, com a fonte de cada número — inclusive o que ninguém mediu.',
     exemplo: `45 min de Zumba ≈ ${EX_DANCA} kcal para ${PESO_PADRAO} kg`,
   },
+  {
+    url: '/calorias/yoga-e-pilates/',
+    nome: 'Yoga e pilates',
+    calcula: 'Por estilo — e o modo que compara o número do seu relógio com a medição de verdade.',
+    exemplo: `1 hora de hatha ≈ ${EX_YOGA} kcal para ${PESO_PADRAO} kg`,
+  },
 ];
 
-/* 49 caracteres. */
+/* 47 caracteres. */
 const title = 'Quantas Calorias Cada Atividade Gasta | Calcule';
-/* 148 caracteres. */
+/* 150 caracteres. */
 const description =
   'Calculadoras de gasto calórico por atividade, feitas uma a uma com os dados que você realmente tem. Metodologia aberta, fontes citadas e sem cadastro.';
 

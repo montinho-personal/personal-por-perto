@@ -1,0 +1,830 @@
+---
+/**
+ * Quantas calorias yoga e pilates gastam — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS SETE
+ *
+ * As sete anteriores discutem tabela e física: qual MET, qual trabalho
+ * mecânico, qual variável decide. Esta discute o INSTRUMENTO — por que o
+ * relógio de quem pergunta está errado justamente aqui.
+ *
+ * Relógio e aplicativo estimam caloria a partir da frequência cardíaca,
+ * usando uma equação construída em temperatura normal. No calor, a
+ * frequência sobe por termorregulação sem que o gasto suba. Em hot yoga o
+ * aparelho vê frequência alta, aplica a equação onde ela não vale e infla.
+ *
+ * Por isso existe aqui um modo que nenhuma outra calculadora tem: a pessoa
+ * informa o número que o relógio mostrou e a ferramenta compara.
+ *
+ * A MEDIÇÃO QUE FECHA O ASSUNTO
+ *
+ * O Houston Methodist comparou, nos mesmos praticantes, a mesma aula em sala
+ * quente e em temperatura normal: 156 contra 151 kcal. Cinco
+ * quilocalorias, dentro do erro. O calor faz suar, e suar não é gastar.
+ *
+ * E É A PRIMEIRA PÁGINA EM QUE A RESPOSTA HONESTA É "POUCO"
+ *
+ * A escada inteira do yoga vai de 2,3 a 4,0 METs. Uma hora de hatha para 70
+ * kg dá 184 kcal, e dois quintos disso é o metabolismo de repouso. A página
+ * não esconde isso nem pede desculpas: yoga e pilates entregam mobilidade,
+ * core, equilíbrio e adesão. Caloria não é o produto deles.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ESTILOS,
+  ESTUDO_BIKRAM,
+  ESTUDO_CALOR,
+  FONTES,
+  MINUTOS_ESTUDO,
+  MINUTOS_PADRAO,
+  NOTA_BRUTO,
+  NOTA_CALOR_NAO_MUDA,
+  NOTA_ESCADA_CURTA,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_E_O_PONTO,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_RELOGIO_MENTE,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_ESTUDO,
+  PESO_PADRAO,
+  RELOGIO_PADRAO,
+  amplitudeDaEscada,
+  arredondaKcal,
+  deKcal,
+  deRelogio,
+  deTempo,
+  efeitoDoCalor,
+  estilo,
+  formataKcal,
+  formataTempo,
+  kcalPorMinuto,
+  metYoga,
+  reproduzEstudo,
+  simulacaoUmQuilo,
+  tabelaPorEstilo,
+  tabelaPorPeso,
+  tabelaPorTempo,
+} from '../../lib/calorias/yoga';
+import { PESO_PADRAO as PESO_CAM, deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
+
+const path = '/calorias/yoga-e-pilates';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Yoga e pilates', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_HATHA = deTempo(60, PESO_PADRAO, 'hatha');
+const EX_HOT = deTempo(60, PESO_PADRAO, 'hot');
+const EX_PILATES = deTempo(60, PESO_PADRAO, 'pilates');
+const EX_VINYASA = deTempo(60, PESO_PADRAO, 'vinyasa');
+const EX_POWER = deTempo(60, PESO_PADRAO, 'power');
+const EX_GERAL = deTempo(60, PESO_PADRAO, 'geral');
+const EX_RELOGIO = deRelogio(RELOGIO_PADRAO, 60, PESO_PADRAO, 'hot');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'hatha');
+
+const TAB_ESTILO = tabelaPorEstilo(PESO_PADRAO);
+const TAB_PESO = tabelaPorPeso(60, 'hatha');
+const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, 'hatha');
+
+/* A conferência contra a medição direta, calculada e não escrita à mão. */
+const ESTUDO = reproduzEstudo();
+const EFEITO_CALOR = efeitoDoCalor();
+const AMPLITUDE = amplitudeDaEscada();
+
+/* O que a internet publica para vinyasa, e o que isso implicaria. */
+const PUBLICADO_VINYASA = 550;
+const MET_PUBLICADO = PUBLICADO_VINYASA / ((3.5 * PESO_PADRAO) / 200) / 60;
+const INFLACAO_VINYASA = MET_PUBLICADO / metYoga('vinyasa');
+
+/* Quanto de caminhada moderada custa o mesmo que uma hora de hatha. */
+const MOD = ritmoCaminhada('moderado');
+const kcalCaminhadaPorMin = caminhadaTempo(60, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal / 60;
+const MIN_CAMINHADA = EX_HATHA.kcal / kcalCaminhadaPorMin;
+
+/* A fração do total que é só metabolismo de repouso. */
+const FRACAO_REPOUSO = (EX_HATHA.kcal - EX_HATHA.kcalLiquida) / EX_HATHA.kcal;
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 52 caracteres. */
+const title = 'Quantas Calorias Yoga e Pilates Gastam? A Conta Real';
+/* 143 caracteres. */
+const description =
+  'Calcule as calorias de yoga e pilates por estilo. E por que seu relógio infla o hot yoga — com a medição que compara sala quente e sala normal.';
+
+const faqs = [
+  {
+    pergunta: 'Uma hora de yoga queima quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_HATHA.kcal)} kcal para ${PESO_PADRAO} kg em hatha, o estilo mais praticado — e dois quintos disso é o metabolismo de repouso, que aconteceria de qualquer forma. Os estilos mais ativos chegam a ${formataKcal(EX_POWER.kcal)} kcal no power yoga. É bem menos do que circula por aí, e a página mostra de onde vem cada número.`,
+  },
+  {
+    pergunta: 'Hot yoga queima mais calorias por causa do calor?',
+    resposta: `Não. O grupo do Houston Methodist comparou nos MESMOS ${ESTUDO_CALOR.participantes} praticantes a mesma aula em sala quente e em temperatura normal: ${ESTUDO_CALOR.kcalSalaQuente} ± ${ESTUDO_CALOR.erroQuente} kcal contra ${ESTUDO_CALOR.kcalSalaNormal} ± ${ESTUDO_CALOR.erroNormal} kcal. São ${n(EFEITO_CALOR * 100, 1)}% de diferença, dentro da margem de erro das duas medições. O calor faz suar muito mais, e suar não é gastar — é o corpo tentando não cozinhar.`,
+  },
+  {
+    pergunta: 'Por que meu relógio mostra muito mais calorias na aula de hot yoga?',
+    resposta:
+      'Porque ele estima caloria a partir da frequência cardíaca, com uma equação construída em temperatura normal. No calor, o corpo manda sangue para a pele para dissipar calor, e a frequência sobe sem que o gasto suba junto. O aparelho vê o coração acelerado, aplica a equação fora do domínio dela e devolve um número inflado. Não é defeito do relógio — é a conta errada para a situação.',
+  },
+  {
+    pergunta: 'Pilates queima quantas calorias em 1 hora?',
+    resposta: `Cerca de ${formataKcal(EX_PILATES.kcal)} kcal para ${PESO_PADRAO} kg. O Compêndio mede pilates geral em ${n(metYoga('pilates'))} METs, sem separar solo de aparelho — e esse valor é o mesmo do hot yoga, o que dá uma boa noção de escala. Se você viu "492 kcal por hora de pilates" em algum lugar, isso implicaria mais de 6 METs, o dobro do medido.`,
+  },
+  {
+    pergunta: 'Qual estilo de yoga gasta mais calorias?',
+    resposta: `Power yoga, com ${n(metYoga('power'))} METs — ${formataKcal(EX_POWER.kcal)} kcal por hora para ${PESO_PADRAO} kg. Mas a escada inteira vai de ${n(Math.min(...ESTILOS.map((e) => e.met)))} a ${n(Math.max(...ESTILOS.map((e) => e.met)))} METs, uma amplitude de ${n(AMPLITUDE, 2)} vez. A diferença entre o yoga mais leve e o mais forte é de ${Math.round(EX_POWER.kcal - EX_GERAL.kcal)} kcal por hora — trocar de estilo para gastar mais muda pouco.`,
+  },
+  {
+    pergunta: 'Yoga emagrece?',
+    resposta: `Pela via do gasto calórico, pouco: uma hora de hatha equivale a cerca de ${formataTempo(MIN_CAMINHADA)} de caminhada moderada. Pela via da adesão, é outra conversa — yoga e pilates estão entre as práticas com maior taxa de gente que continua anos depois, e atividade mantida vence atividade intensa abandonada. Só não espere que a conta da caloria explique o benefício.`,
+  },
+  {
+    pergunta: 'Quanto tempo de yoga para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutos)} de hatha. O número existe para deixar claro que a ferramenta é a errada para essa pergunta — e não que a prática seja ruim. Emagrecimento se decide no balanço alimentar ao longo de meses; yoga entra na conta por outros motivos.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/danca/',
+    titulo: 'Quantas calorias a dança gasta?',
+    descricao: 'A outra página do cluster em que o número publicado tem pouca relação com medição.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/caminhada/',
+    titulo: 'Quantas calorias a caminhada gasta?',
+    descricao: 'A comparação de escala: uma hora de hatha equivale a pouco mais de meia hora de caminhada.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'Onde está o valor real destas práticas — e por que adesão vence intensidade.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Por que 184 kcal mudam pouco, e o que muda muito.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cy-hero">
+    <div class="container cy-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias yoga e pilates gastam?</h1>
+      <p class="cy-hero-lead">
+        Uma hora de hatha gasta cerca de <strong>{formataKcal(EX_HATHA.kcal)} kcal</strong> para{' '}
+        {PESO_PADRAO} kg — e <strong>dois quintos disso é só estar vivo</strong>. Se o seu relógio
+        mostrou o triplo numa aula de hot yoga, esta página explica exatamente por quê.
+      </p>
+      <p class="cy-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cy-layout">
+    <article class="cy-main">
+      <section id="cy-app" class="cy-app" aria-labelledby="cy-app-h">
+        <h2 id="cy-app-h" class="cy-app-h">Calculadora de calorias de yoga e pilates</h2>
+
+        <!--
+          Os rótulos são curtos de propósito. "Meu relógio disse…" era o
+          rótulo mais largo de todas as oito calculadoras e forçava as três
+          abas a ocuparem três linhas no celular, empurrando o resultado para
+          1.545px de rolagem — 90px pior que as irmãs. O campo logo abaixo já
+          diz por extenso o que se informa aqui.
+        -->
+        <div class="cy-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="cy-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+            Tempo de prática
+          </button>
+          <button type="button" class="cy-modo" data-modo="relogio" role="tab" aria-selected="false" tabindex="-1">
+            Meu relógio
+          </button>
+          <button type="button" class="cy-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cy-campos">
+          <div class="cy-campo">
+            <label for="cy-peso">Seu peso (kg)</label>
+            <input id="cy-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="cy-campo">
+            <span class="cy-rotulo">Estilo</span>
+            <div class="cy-presets" role="group" aria-label="Estilo de prática">
+              {ESTILOS.map((e) => (
+                <button
+                  type="button"
+                  class:list={['cy-preset', 'cy-estilo', e.id === 'hatha' && 'is-ativo']}
+                  data-estilo={e.id}
+                  aria-pressed={String(e.id === 'hatha')}
+                >
+                  {e.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="cy-dica cy-estilo-slot" id="cy-estilo-dica">
+              {n(metYoga('hatha'))} METs — Compêndio, código {estilo('hatha').codigo}.{' '}
+              {estilo('hatha').comoReconhecer}
+            </p>
+          </div>
+
+          <div class="cy-campo cy-campo-modo">
+            <label for="cy-minutos">Tempo de prática (minutos)</label>
+            <input id="cy-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="cy-presets">
+              {[30, 45, 60, 75, 90].map((v) => (
+                <button type="button" class="cy-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {v < 60 ? `${v} min` : v === 60 ? '1h' : `${v} min`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cy-campo cy-campo-modo" hidden>
+            <label for="cy-minutos-relogio">Duração da aula (minutos)</label>
+            <input id="cy-minutos-relogio" type="text" inputmode="numeric" autocomplete="off" value="60" />
+            <div class="cy-presets">
+              {[45, 60, 75, 90].map((v) => (
+                <button type="button" class="cy-preset" data-alvo="relogio" data-valor={String(v)}>{v} min</button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cy-campo cy-campo-modo" hidden>
+            <label for="cy-meta">Meta de gasto (kcal)</label>
+            <input id="cy-meta" type="text" inputmode="numeric" autocomplete="off" value="200" />
+            <div class="cy-presets">
+              {[100, 150, 200, 300].map((v) => (
+                <button type="button" class="cy-preset" data-alvo="meta" data-valor={String(v)}>{v} kcal</button>
+              ))}
+            </div>
+          </div>
+
+          <!--
+            O modo que nenhuma outra calculadora tem: a pessoa chega com o
+            número do aparelho, e é esse número que precisa ser confrontado.
+          -->
+          <div id="cy-bloco-relogio" hidden>
+            <div class="cy-campo">
+              <label for="cy-relogio">Quanto o seu relógio ou aplicativo marcou (kcal)</label>
+              <input id="cy-relogio" type="text" inputmode="numeric" autocomplete="off" value={RELOGIO_PADRAO} />
+              <p class="cy-dica">
+                A ferramenta compara esse número com a estimativa baseada em medição de consumo de
+                oxigênio, e diz o tamanho da diferença. Em prática no calor, ela também explica a
+                causa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p id="cy-erro" class="cy-erro" role="status" hidden></p>
+
+        <div id="cy-saida" class="cy-saida" role="status" aria-live="polite">
+          <p class="cy-resultado">
+            <span class="cy-numero">≈ {formataKcal(EX_HATHA.kcal)}</span>
+            <span class="cy-unidade">kcal</span>
+          </p>
+          <p class="cy-frase"></p>
+
+          <dl class="cy-detalhes">
+            <div><dt>Tempo de prática</dt><dd class="cy-d-tempo">—</dd></div>
+            <div class="cy-linha-relogio" hidden><dt>Seu aparelho marcou</dt><dd class="cy-d-relogio">—</dd></div>
+            <div class="cy-linha-diferenca" hidden><dt>Diferença</dt><dd class="cy-d-diferenca">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cy-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cy-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="cy-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="cy-nota cy-nota-relogio" hidden></p>
+          <p class="cy-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cy-proximo">
+            <p class="cy-proximo-lead">
+              Esse número é pequeno, e isso não é problema da prática — é a pergunta que está
+              errada. <strong>Yoga e pilates não são ferramentas de gasto calórico</strong>: eles
+              entregam mobilidade, força de core, equilíbrio e, o que mais importa no prazo de
+              anos, gente que continua praticando. Se o objetivo é déficit calórico, o caminho é
+              outro; se é conseguir se mover bem por décadas, o caminho é esse.
+            </p>
+            <div class="cy-proximo-acoes">
+              <a class="cy-btn cy-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cy-btn cy-btn-secundario cy-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cy-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cy-conteudo">
+        <h2>Por que o seu relógio infla o hot yoga</h2>
+        <p>{NOTA_RELOGIO_MENTE}</p>
+        <p>
+          É a primeira página deste nosso conjunto em que o problema não está na tabela — está no
+          aparelho de quem pergunta. Nas outras sete o erro típico é usar o MET errado; aqui o erro
+          típico é confiar num número que o seu próprio pulso produziu por uma razão que não tem
+          nada a ver com gasto.
+        </p>
+        <p class="cy-formula">{`aula de ${formataTempo(60)} de hot yoga, ${PESO_PADRAO} kg
+
+  ${formataKcal(EX_RELOGIO.kcalRelogio)} kcal   ← um número típico de relógio
+  ${formataKcal(EX_RELOGIO.kcal)} kcal   ← estimativa por medição de oxigênio
+
+  o aparelho mostrou ${n(EX_RELOGIO.razaoRelogio, 1)}× mais`}</p>
+        <p>
+          A calculadora acima tem um modo para isso. Você informa o que o aparelho mostrou, e ela
+          devolve a comparação — porque quem chega aqui depois de uma aula de hot yoga chega com um
+          número na mão, não com uma dúvida abstrata.
+        </p>
+
+        <h2>A medição que fecha o assunto do calor</h2>
+        <p>{NOTA_CALOR_NAO_MUDA}</p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              A mesma aula, nos mesmos {ESTUDO_CALOR.participantes} praticantes, em duas temperaturas
+            </caption>
+            <thead>
+              <tr><th scope="col">Condição</th><th scope="col">Gasto medido</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Sala em temperatura normal</th>
+                <td>{ESTUDO_CALOR.kcalSalaNormal} ± {ESTUDO_CALOR.erroNormal} kcal</td>
+              </tr>
+              <tr>
+                <th scope="row">Sala aquecida</th>
+                <td>{ESTUDO_CALOR.kcalSalaQuente} ± {ESTUDO_CALOR.erroQuente} kcal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          São <strong>{n(EFEITO_CALOR * 100, 1)}%</strong> de diferença, e as duas faixas de erro se
+          sobrepõem — ou seja, não há diferença que se possa chamar de real. Os autores atribuem
+          isso à intensidade baixa da prática: ela não é suficiente para que a termorregulação
+          chegue a mexer no gasto.
+        </p>
+        <p>
+          Há uma segunda medição na mesma direção. Tracy e Hart mediram uma sessão de Bikram de{' '}
+          {ESTUDO_BIKRAM.minutos} minutos em cerca de {ESTUDO_BIKRAM.kcalHomens} kcal nos homens e{' '}
+          {ESTUDO_BIKRAM.kcalMulheres} nas mulheres — isto é, menos de{' '}
+          {n(ESTUDO_BIKRAM.kcalMulheres / ESTUDO_BIKRAM.minutos, 1)} kcal por minuto em noventa
+          minutos de sala quente. E são eles que apontam a causa das estimativas infladas: o uso de
+          equações de frequência cardíaca fora da condição em que foram construídas.
+        </p>
+
+        <h2>A conferência: a tabela bate com a medição direta</h2>
+        <p>
+          Antes de usar a tabela do Compêndio para responder qualquer coisa, vale checar se ela
+          concorda com quem mediu gente de verdade. Os {ESTUDO_CALOR.kcalSalaNormal} kcal por sessão
+          do Houston Methodist, numa aula de {MINUTOS_ESTUDO} minutos com praticantes de cerca de{' '}
+          {PESO_ESTUDO} kg, implicam:
+        </p>
+        <p class="cy-formula">{`${ESTUDO_CALOR.kcalSalaNormal} ÷ (3,5 × ${PESO_ESTUDO} ÷ 200) ÷ ${MINUTOS_ESTUDO} = ${n(ESTUDO.metImplicado, 2)} METs
+
+  a tabela do Compêndio para yoga geral: ${n(ESTUDO.metDaTabela)} METs
+  diferença: ${n(ESTUDO.erro * 100, 1)}%`}</p>
+        <p>
+          Fecha. A medição direta e a tabela chegam ao mesmo lugar, e as duas dizem a mesma coisa:
+          yoga é atividade de intensidade baixa. Não é uma opinião da página — é o que dois métodos
+          independentes encontram.
+        </p>
+
+        <h2>Os sete estilos medidos</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de prática, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Estilo</th><th scope="col">METs</th>
+                <th scope="col">1 hora</th><th scope="col">Código</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ESTILO.map((l) => (
+                <tr>
+                  <th scope="row">{l.estilo.nome}</th>
+                  <td>{n(l.estilo.met)}</td>
+                  <td>≈ {formataKcal(l.kcal60)} kcal</td>
+                  <td>{l.estilo.codigo}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_ESCADA_CURTA}</p>
+        <p>
+          Em número: do pé ao topo da escada são{' '}
+          <strong>{Math.round(EX_POWER.kcal - EX_GERAL.kcal)} kcal por hora</strong> de diferença —{' '}
+          {formataKcal(EX_GERAL.kcal)} no yoga geral contra {formataKcal(EX_POWER.kcal)} no power. É
+          uma amplitude de {n(AMPLITUDE, 2)} vez. Comparado ao pedal, em que dobrar a velocidade
+          triplica o gasto, aqui trocar de estilo é ajuste fino.
+        </p>
+        <p class="cy-ressalva">
+          Note que pilates e hot yoga têm o mesmo valor ({n(metYoga('pilates'))} METs). Não é erro:
+          são códigos diferentes do Compêndio que caíram na mesma medição. E serve de referência
+          útil de escala — se você já fez as duas coisas, sabe que elas cansam de formas diferentes,
+          e ainda assim custam o mesmo em caloria.
+        </p>
+
+        <h2>O que a internet publica, e o que isso implicaria</h2>
+        <p>
+          Os números que circulam para yoga são inflados por um fator de dois a três. O exemplo mais
+          comum: <strong>"vinyasa queima {PUBLICADO_VINYASA} kcal por hora"</strong>. Para{' '}
+          {PESO_PADRAO} kg, isso implicaria <strong>{n(MET_PUBLICADO)} METs</strong> — mais que uma
+          aula de Zumba, que nós medimos em outra página em 8,8. O valor medido do vinyasa é{' '}
+          {n(metYoga('vinyasa'))} METs, que dá {formataKcal(EX_VINYASA.kcal)} kcal por hora.
+        </p>
+        <p>
+          São <strong>{n(INFLACAO_VINYASA, 1)} vezes</strong> de diferença. Não é arredondamento:
+          é o número de outra atividade.
+        </p>
+
+        <h2>Quanto custa, por tempo e por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Hatha yoga ({n(metYoga('hatha'))} METs) por tempo, para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Tempo</th><th scope="col">Gasto bruto</th></tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.minutos)}</th>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de hatha por peso corporal</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th><th scope="col">Gasto bruto</th>
+                <th scope="col">Acréscimo real ao dia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                  <td>≈ {formataKcal(l.kcalLiquida)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+        <p>
+          Essa segunda coluna merece atenção especial aqui. Em atividade de intensidade alta o
+          metabolismo de repouso é detalhe; numa hora de hatha ele é{' '}
+          <strong>{n(FRACAO_REPOUSO * 100, 0)}% do total</strong>. Dito de outro jeito: das{' '}
+          {formataKcal(EX_HATHA.kcal)} kcal, só {formataKcal(EX_HATHA.kcalLiquida)} são acréscimo de
+          verdade ao seu dia.
+        </p>
+
+        <h2>Yoga ou caminhada?</h2>
+        <p>
+          Uma hora de hatha gasta mais ou menos o mesmo que{' '}
+          <strong>{formataTempo(MIN_CAMINHADA)} de caminhada moderada</strong> para {PESO_PADRAO} kg.
+          Se o critério de escolha for caloria, a caminhada ganha com folga e de graça.
+        </p>
+        <p>
+          Só que caloria é um critério ruim para escolher entre as duas, e é aí que esta página quer
+          chegar. Caminhar não melhora mobilidade de quadril, não ensina controle de core e não
+          trabalha equilíbrio em apoio único. Yoga e pilates fazem essas três coisas, e nenhuma
+          delas aparece numa conta de kcal.
+        </p>
+        <p>{NOTA_NAO_E_O_PONTO}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          Os sete valores vêm do Compêndio de Atividades Físicas de 2024, copiados e não ajustados,
+          com o código de cada um visível na tabela — eles ficam no capítulo de exercícios de
+          condicionamento, não num capítulo próprio de yoga.
+        </p>
+        <p class="cy-formula">{`1 hora de hatha, ${PESO_PADRAO} kg
+  ${n(metYoga('hatha'))} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_HATHA.kcal / 60, 2)} kcal por minuto
+  ${n(EX_HATHA.kcal / 60, 2)} × 60 = ${n(EX_HATHA.kcal, 0)} kcal`}</p>
+        <p>
+          A comparação com o relógio não usa nenhuma equação nossa de frequência cardíaca: ela
+          simplesmente confronta o número que você informa com a estimativa por MET. O que a página
+          afirma sobre o aparelho vem das duas medições citadas, não de um modelo próprio.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e o teste confere se a nossa tabela reproduz a medição do Houston Methodist — porque
+          uma página que corrige o relógio dos outros precisa provar que a própria régua está certa.
+        </p>
+        <p class="cy-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          Há uma limitação de fonte que vale declarar. Uma das referências que consultamos reporta
+          {' '}2,3 METs para o hatha em vez dos {n(metYoga('hatha'))} que usamos, e não foi possível
+          resolver a divergência na fonte primária. A diferença é de 8% e não muda nenhuma conclusão
+          desta página — mas é o tipo de coisa que preferimos dizer a esconder.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cy-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias de yoga e pilates" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraYoga } from '../../scripts/caloriasYoga.client';
+    iniciarCalculadoraYoga();
+  </script>
+  <style>
+    .cy-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cy-hero-inner { max-width: 780px; }
+    .cy-hero h1 { color: #fff; max-width: 22ch; }
+    .cy-hero :global(.eyebrow) { color: #ffb488; }
+    .cy-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cy-hero-lead strong { color: #fff; }
+    .cy-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cy-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cy-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cy-main { min-width: 0; max-width: 760px; }
+
+    .cy-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cy-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cy-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cy-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cy-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cy-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cy-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cy-campos { display: grid; gap: var(--sp-4); }
+    .cy-campo { margin-bottom: 0; }
+    .cy-campo label,
+    .cy-campo .cy-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cy-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cy-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cy-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Altura reservada para a descrição mais longa em cada largura — 4 linhas
+       no celular, 2 a partir de 560px. Sem ela, trocar de estilo empurraria
+       os campos de baixo, que é o defeito que já corrigimos na caminhada e na
+       natação. */
+    .cy-estilo-slot { min-height: 6.2em; line-height: 1.5; }
+    @media (min-width: 560px) {
+      .cy-estilo-slot { min-height: 3.1em; }
+    }
+
+    .cy-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cy-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cy-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cy-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cy-estilo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cy-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
+    .cy-ajustes > summary {
+      cursor: pointer;
+      padding: 0.8rem 0;
+      font-weight: 700;
+      font-size: var(--step--1);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cy-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cy-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
+    .cy-ajustes-estado { font-weight: 400; color: var(--muted); }
+    .cy-ajustes > .cy-campo { padding-bottom: var(--sp-4); }
+
+    .cy-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cy-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cy-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cy-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cy-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cy-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cy-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cy-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cy-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cy-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cy-nota-tempo,
+    .cy-nota-cadencia { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cy-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cy-proximo-lead { line-height: 1.6; }
+    .cy-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cy-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cy-btn-primario { background: var(--brand-600); color: #fff; }
+    .cy-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cy-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cy-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cy-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cy-conteudo { margin-top: var(--sp-7); }
+    .cy-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .cy-faixa-txt-naousado { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
+
+    .cy-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cy-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cy-fontes li { margin-bottom: 0.6rem; }
+    .cy-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
