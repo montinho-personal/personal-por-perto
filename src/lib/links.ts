@@ -70,6 +70,7 @@ export const rotas = {
   caloriasHidroginastica: '/calorias/hidroginastica/',
   caloriasTenis: '/calorias/tenis/',
   caloriasVolei: '/calorias/volei/',
+  caloriasCrossfit: '/calorias/crossfit/',
   /** Mora dentro do artigo, e não em /calorias/: ver o docblock da página. */
   caloriasMusculacao: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
   ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',

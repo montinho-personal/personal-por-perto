@@ -36,6 +36,7 @@ import { deRounds as lutaPorRounds, formataKcal as formataLuta } from '../../lib
 import { deAula as hidroPorAula, formataKcal as formataHidro } from '../../lib/calorias/hidroginastica';
 import { deTempo as tenisPorTempo, formataKcal as formataTenis } from '../../lib/calorias/tenis';
 import { deTempo as voleiPorTempo, formataKcal as formataVolei } from '../../lib/calorias/volei';
+import { deAula as crossfitPorAula, formataKcal as formataCrossfit } from '../../lib/calorias/crossfit';
 import { deSessao as musculacaoSessao, formataKcal as formataMusculacao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias';
@@ -59,6 +60,7 @@ const EX_HIDRO = formataHidro(hidroPorAula(50, PESO_PADRAO, 'medida').kcal);
 const EX_TENIS = formataTenis(tenisPorTempo(60, PESO_PADRAO, 'simples').kcalMin);
 const EX_VOLEI_PRAIA = formataVolei(voleiPorTempo(60, PESO_PADRAO, 'praia').kcal);
 const EX_VOLEI_LAZER = formataVolei(voleiPorTempo(60, PESO_PADRAO, 'recreativo').kcal);
+const EX_CROSSFIT = formataCrossfit(crossfitPorAula(60, 20, PESO_PADRAO).kcal);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
 const ferramentas = [
@@ -139,6 +141,12 @@ const ferramentas = [
     nome: 'Vôlei',
     calcula: 'Quadra ou areia, lazer ou competição — quatro linhas do Compêndio, com o código de cada uma.',
     exemplo: `1 hora: ≈ ${EX_VOLEI_LAZER} kcal no ginásio sem disputa, ≈ ${EX_VOLEI_PRAIA} na areia, para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/crossfit/',
+    nome: 'Crossfit',
+    calcula: 'Pelo WOD, não pela aula inteira — com um WOD medido como régua e o aviso de quando o oxigênio não vê tudo.',
+    exemplo: `Aula de 1 hora com 20 min de WOD ≈ ${EX_CROSSFIT} kcal para ${PESO_PADRAO} kg`,
   },
   {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
