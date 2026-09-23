@@ -502,8 +502,8 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
         <p>
           Isso tem uma consequência prática boa: a dança é a atividade deste conjunto em que é mais
           difícil "pegar leve sem perceber". Na caminhada e no pedal, a tendência natural é
-          acomodar o ritmo até ele ficar confortável. Na aula, a música não deixa — e é por isso que
-          muita gente que nunca sustentou uma esteira sustenta três aulas por semana.
+          acomodar o ritmo até ele ficar confortável. Na aula, a música não deixa o ritmo cair
+          sozinho.
         </p>
         <p>
           A consequência ruim é o outro lado da mesma moeda: quem precisa de menos impacto não tem
@@ -652,9 +652,6 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
     }
     .cd-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
     .cd-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
-    /* Altura reservada para a descrição mais longa em cada largura. Sem ela,
-       trocar de ritmo empurraria os campos de baixo em uma linha — o mesmo
-       defeito que já corrigimos na caminhada e na natação. */
     /* Altura reservada para a descrição mais longa. Sem ela, trocar de
        estilo empurraria os campos de baixo — o defeito que já corrigimos na
        caminhada e na natação. */
@@ -694,23 +691,6 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
     .cd-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .cd-estilo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
 
-    .cd-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
-    .cd-ajustes > summary {
-      cursor: pointer;
-      padding: 0.8rem 0;
-      font-weight: 700;
-      font-size: var(--step--1);
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .cd-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-    .cd-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
-    .cd-ajustes-estado { font-weight: 400; color: var(--muted); }
-    .cd-ajustes > .cd-campo { padding-bottom: var(--sp-4); }
-
     .cd-erro {
       margin-top: var(--sp-4);
       padding: 0.7rem 0.9rem;
@@ -744,8 +724,9 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
     .cd-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
 
     .cd-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
-    .cd-nota-tempo,
-    .cd-nota-cadencia { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+    /* Herdado da corda com os nomes dela (.cd-nota-tempo, .cd-nota-cadencia),
+       que não existem aqui — a nota da instrução nunca recebia o destaque. */
+    .cd-nota-instrucao { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
 
     .cd-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
     .cd-proximo-lead { line-height: 1.6; }
@@ -796,7 +777,6 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
     }
     .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
     .tabela-rolavel tbody th { font-weight: 700; }
-    .cd-faixa-txt-naousado { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
 
     .cd-formula {
       padding: var(--sp-4);

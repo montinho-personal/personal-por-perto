@@ -754,23 +754,6 @@ sala quente
     .cy-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .cy-estilo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
 
-    .cy-ajustes { border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); }
-    .cy-ajustes > summary {
-      cursor: pointer;
-      padding: 0.8rem 0;
-      font-weight: 700;
-      font-size: var(--step--1);
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .cy-ajustes > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-    .cy-ajustes[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: var(--sp-4); }
-    .cy-ajustes-estado { font-weight: 400; color: var(--muted); }
-    .cy-ajustes > .cy-campo { padding-bottom: var(--sp-4); }
-
     .cy-erro {
       margin-top: var(--sp-4);
       padding: 0.7rem 0.9rem;
@@ -804,8 +787,9 @@ sala quente
     .cy-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
 
     .cy-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
-    .cy-nota-tempo,
-    .cy-nota-cadencia { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+    /* Herdado com os nomes da corda (.cy-nota-tempo, .cy-nota-cadencia), que
+       não existem aqui — a nota do relógio nunca recebia o destaque. */
+    .cy-nota-relogio { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
 
     .cy-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
     .cy-proximo-lead { line-height: 1.6; }
@@ -856,7 +840,6 @@ sala quente
     }
     .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
     .tabela-rolavel tbody th { font-weight: 700; }
-    .cy-faixa-txt-naousado { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; white-space: nowrap; }
 
     .cy-formula {
       padding: var(--sp-4);
