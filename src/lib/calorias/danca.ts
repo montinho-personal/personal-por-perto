@@ -469,7 +469,7 @@ export const NOTA_ESTIMATIVA =
   'É uma estimativa. Na dança a variação entre pessoas é grande porque a amplitude do movimento é livre: duas pessoas na mesma aula, na mesma música, podem estar fazendo coisas bem diferentes. Quem marca o passo com pouca amplitude gasta bem menos que quem dança inteiro.';
 
 export const NOTA_SEM_PERDA_LOCALIZADA =
-  'Nenhum exercício escolhe de onde o corpo tira gordura. A dança aumenta o gasto do dia e é das melhores atividades para coordenação e adesão; onde a gordura sai primeiro é decidido por genética e hormônio, não pelo movimento.';
+  'Nenhum exercício escolhe de onde o corpo tira gordura. A dança aumenta o gasto do dia e treina coordenação; onde a gordura sai primeiro é decidido por genética e hormônio, não pelo movimento.';
 
 export const NOTA_SEGURANCA =
   'Aula de dança coreografada tem salto, giro e mudança rápida de direção — e tornozelo e joelho são o que mais reclama, principalmente em piso duro e com tênis errado. As versões de baixo impacto existem justamente para isso, e dor que persiste é assunto para médico ou fisioterapeuta, não para aumentar a frequência.';
