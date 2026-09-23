@@ -250,6 +250,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/yoga-e-pilates/', titulo: 'Quantas calorias yoga e pilates gastam?' },
   { categoria: 'Calorias', url: '/calorias/futebol/', titulo: 'Quantas calorias gasta jogar futebol?' },
   { categoria: 'Calorias', url: '/calorias/lutas/', titulo: 'Quantas calorias gasta boxe, muay thai e jiu-jitsu?' },
+  { categoria: 'Calorias', url: '/calorias/hidroginastica/', titulo: 'Quantas calorias gasta uma aula de hidroginástica?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },

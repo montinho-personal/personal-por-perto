@@ -1,0 +1,739 @@
+---
+/**
+ * Quantas calorias gasta a hidroginástica — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS ONZE
+ *
+ * Aqui a tabela perde para a aula. O Compêndio dá 5,5 METs para
+ * hidroginástica geral, e é esse o número que as calculadoras costumam usar. Uma aula real
+ * de 50 minutos, medida do começo ao fim com calorimetria, deu 4,26 — 23%
+ * abaixo. A opção padrão da calculadora é a aula medida; as linhas do
+ * Compêndio ficam ao lado, com código.
+ *
+ * O PÚBLICO
+ *
+ * Hidroginástica é, antes de tudo, atividade de quem tem mais de 50 ou 60
+ * anos. A aula medida é de gente de 57 anos em média, o que ajuda. O
+ * Compêndio para 60+ existe e usa outra base de repouso, mas não conseguimos
+ * conferir o valor de hidroginástica nele — e a página diz isso.
+ *
+ * O MODO DA SEMANA
+ *
+ * Ninguém faz uma aula de hidroginástica: faz duas ou três por semana, o
+ * ano todo. O modo "semana" responde a pergunta que importa para quem quer
+ * emagrecer — quanto isso soma no mês.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  AULAS_PADRAO,
+  ESTUDO_AULA,
+  FONTES,
+  MINUTOS_PADRAO,
+  NOTA_60_MAIS,
+  NOTA_AULA_MEDIDA,
+  NOTA_BRUTO,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  SEM_CONFERENCIA,
+  TIPOS,
+  aulaAbaixoDaTabela,
+  aulasEquivalentes,
+  deAula,
+  deSemana,
+  formataKcal,
+  formataMet,
+  formataPct,
+  formataTempo,
+  metHidro,
+  reproduzAula,
+  simulacaoUmQuilo,
+  tabelaAcimaDaAula,
+  tabelaPorPeso,
+  tabelaTipos,
+  tipo,
+} from '../../lib/calorias/hidroginastica';
+import { deTempo as nadoPorTempo } from '../../lib/calorias/natacao';
+
+const path = '/calorias/hidroginastica';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Hidroginástica', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_AULA = deAula(MINUTOS_PADRAO, PESO_PADRAO, 'medida');
+const EX_TABELA = deAula(MINUTOS_PADRAO, PESO_PADRAO, 'geral');
+const EX_RESIST = deAula(MINUTOS_PADRAO, PESO_PADRAO, 'resistencia');
+const EX_SEMANA = deSemana(AULAS_PADRAO, MINUTOS_PADRAO, PESO_PADRAO, 'medida');
+const SEMANAS = [1, 2, 3].map((a) => deSemana(a, MINUTOS_PADRAO, PESO_PADRAO, 'medida'));
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'medida');
+const NADO = nadoPorTempo(MINUTOS_PADRAO, PESO_PADRAO, 'peito', 'lazer');
+
+const TAB_TIPOS = tabelaTipos(PESO_PADRAO);
+const TAB_PESO = tabelaPorPeso();
+
+/* A conferência contra o próprio estudo, calculada e não escrita à mão. */
+const AULA = reproduzAula();
+const ABAIXO = aulaAbaixoDaTabela();
+const ACIMA = tabelaAcimaDaAula();
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 50 caracteres. */
+const title = 'Quantas Calorias Gasta uma Aula de Hidroginástica?';
+/* 152 caracteres. */
+const description =
+  'Calcule as calorias da hidroginástica por aula, semana ou meta. Uma aula real, medida em estudo, gastou 23% menos que a tabela usada pelas calculadoras.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta uma aula de hidroginástica?',
+    resposta: `Uma aula de ${MINUTOS_PADRAO} minutos gasta cerca de ${formataKcal(EX_AULA.kcal)} kcal para ${PESO_PADRAO} kg, pela medição de uma aula real. As calculadoras que usam a linha geral da tabela dão ${formataKcal(EX_TABELA.kcal)} kcal — e a aula medida ficou ${formataPct(ABAIXO)} abaixo delas.`,
+  },
+  {
+    pergunta: 'Hidroginástica emagrece?',
+    resposta: `Aumenta o gasto da semana, e a constância conta a favor. ${AULAS_PADRAO} aulas de ${MINUTOS_PADRAO} minutos por semana somam cerca de ${formataKcal(EX_SEMANA.kcal)} kcal para ${PESO_PADRAO} kg, ou ${formataKcal(EX_SEMANA.kcalMes)} no mês. Nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+  {
+    pergunta: 'Hidroginástica gasta mais que natação?',
+    resposta: `Depende do nado. ${formataTempo(MINUTOS_PADRAO)} nadando peito em ritmo de lazer, sem contar o tempo na borda, dão cerca de ${formataKcal(NADO.kcal)} kcal para ${PESO_PADRAO} kg; a aula de hidroginástica medida, ${formataKcal(EX_AULA.kcal)}. A diferença é que a aula não tem borda: o tempo de aula já é o tempo inteiro. A página de natação faz a conta da borda.`,
+  },
+  {
+    pergunta: 'Hidroginástica com halteres gasta mais calorias?',
+    resposta: `Não pela tabela. O Compêndio mede a hidroginástica focada em exercícios de resistência em ${formataMet(metHidro('resistencia'))} METs, abaixo da geral (${formataMet(metHidro('geral'))}): cerca de ${formataKcal(EX_RESIST.kcal)} kcal numa aula de ${MINUTOS_PADRAO} minutos para ${PESO_PADRAO} kg. O objetivo dessa aula é força, não gasto — e força é uma das capacidades que mais caem com a idade.`,
+  },
+  {
+    pergunta: 'A conta muda para quem tem mais de 60 anos?',
+    resposta: `Muda a base. O Compêndio para quem tem 60 anos ou mais usa um repouso menor (2,7 mL de oxigênio por kg por minuto, e não 3,5). Não conseguimos conferir o valor da hidroginástica nessa versão, então a calculadora usa a tabela adulta. A aula medida, feita com gente de ${n(ESTUDO_AULA.idadeMedia)} anos em média, é a referência mais próxima desse público que conseguimos conferir.`,
+  },
+  {
+    pergunta: 'Quanto tempo de hidroginástica para perder 1 kg de gordura?',
+    resposta: `Cerca de ${aulasEquivalentes(UM_QUILO.minutos)} aulas de ${MINUTOS_PADRAO} minutos, para ${PESO_PADRAO} kg, pela aula medida. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/natacao/',
+    titulo: 'Quantas calorias a natação gasta?',
+    descricao: 'A outra atividade da piscina, e a conta do tempo na borda que muda tudo.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/guias/personal-trainer-para-terceira-idade/',
+    titulo: 'Personal trainer para a terceira idade',
+    descricao: 'O que um acompanhamento acrescenta à hidroginástica para quem tem mais de 60.',
+    tipo: 'Guias',
+  },
+  {
+    url: '/musculacao/musculacao-depois-dos-40/',
+    titulo: 'Musculação depois dos 40',
+    descricao: 'A força que a água ajuda a manter, e o que o treino em terra acrescenta.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX_SEMANA.kcal)} kcal de uma semana de hidroginástica entram na conta.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="ch-hero">
+    <div class="container ch-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta uma aula de hidroginástica?</h1>
+      <p class="ch-hero-lead">
+        Uma aula de {MINUTOS_PADRAO} minutos gasta cerca de{' '}
+        <strong>{formataKcal(EX_AULA.kcal)} kcal</strong> para {PESO_PADRAO} kg, pela medição de uma
+        aula real. As calculadoras que usam a tabela dão {formataKcal(EX_TABELA.kcal)}:{' '}
+        <strong>a aula de verdade ficou {formataPct(ABAIXO)} abaixo</strong>.
+      </p>
+      <p class="ch-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container ch-layout">
+    <article class="ch-main">
+      <section id="ch-app" class="ch-app" aria-labelledby="ch-app-h">
+        <h2 id="ch-app-h" class="ch-app-h">Calculadora de calorias da hidroginástica</h2>
+
+        <div class="ch-campos">
+          <div class="ch-campo">
+            <label for="ch-peso">Seu peso (kg)</label>
+            <input id="ch-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <!--
+            A aula medida vem primeiro e é o padrão: é a única opção que
+            descreve uma aula inteira. As três linhas do Compêndio ficam ao
+            lado, com código, para quem sabe que a sua aula é diferente.
+          -->
+          <div class="ch-campo">
+            <span class="ch-rotulo">Como é a sua aula</span>
+            <div class="ch-presets ch-presets-sem-rotulo" role="group" aria-label="Tipo de aula">
+              {TIPOS.map((t) => (
+                <button
+                  type="button"
+                  class:list={['ch-preset', 'ch-tipo', t.id === 'medida' && 'is-ativo']}
+                  data-tipo={t.id}
+                  aria-pressed={String(t.id === 'medida')}
+                >
+                  {t.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="ch-dica ch-tipo-slot" id="ch-tipo-dica">
+              {formataMet(tipo('medida').met)} METs — {tipo('medida').codigo}. {tipo('medida').comoReconhecer}
+            </p>
+          </div>
+
+          <!-- As abas ficam logo acima dos campos que trocam, como nas lutas. -->
+          <div class="ch-modos" role="tablist" aria-label="Como você quer contar">
+            <button type="button" class="ch-modo is-ativo" data-modo="aula" role="tab" aria-selected="true">
+              Uma aula
+            </button>
+            <button type="button" class="ch-modo" data-modo="semana" role="tab" aria-selected="false" tabindex="-1">
+              Semana
+            </button>
+            <button type="button" class="ch-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+              Tenho uma meta
+            </button>
+          </div>
+
+          <div class="ch-campo ch-campo-modo">
+            <label for="ch-minutos">Minutos de aula</label>
+            <input id="ch-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="ch-presets">
+              {[30, 45, 50, 60].map((v) => (
+                <button type="button" class="ch-preset" data-alvo="aula" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="ch-campo ch-campo-modo" hidden>
+            <div class="ch-duo">
+              <div>
+                <label for="ch-aulas">Aulas por semana</label>
+                <input id="ch-aulas" type="text" inputmode="numeric" autocomplete="off" value={AULAS_PADRAO} />
+              </div>
+              <div>
+                <label for="ch-minutos-semana">Minutos por aula</label>
+                <input id="ch-minutos-semana" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+              </div>
+            </div>
+          </div>
+
+          <div class="ch-campo ch-campo-modo" hidden>
+            <label for="ch-meta">Meta de gasto (kcal)</label>
+            <input id="ch-meta" type="text" inputmode="numeric" autocomplete="off" value="300" />
+            <div class="ch-presets">
+              {[200, 300, 500, 1000].map((v) => (
+                <button type="button" class="ch-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p id="ch-erro" class="ch-erro" role="status" hidden></p>
+
+        <div id="ch-saida" class="ch-saida" role="status" aria-live="polite">
+          <p class="ch-resultado">
+            <span class="ch-numero">≈ {formataKcal(EX_AULA.kcal)}</span>
+            <span class="ch-unidade">kcal</span>
+          </p>
+          <p class="ch-frase"></p>
+
+          <dl class="ch-detalhes">
+            <div><dt class="ch-dt-tempo">Tempo de aula</dt><dd class="ch-d-tempo">—</dd></div>
+            <div><dt class="ch-dt-extra">No mês</dt><dd class="ch-d-extra">—</dd></div>
+            <div><dt>Acréscimo real</dt><dd class="ch-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="ch-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="ch-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="ch-nota ch-nota-tabela" hidden></p>
+          <p class="ch-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="ch-proximo">
+            <p class="ch-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> na aula. Ele não diz se o corpo está
+              ficando mais forte: a água tira o impacto, e impacto e carga são parte do que mantém
+              osso e músculo com a idade. <strong>Força fora da piscina é o que a hidroginástica não
+              faz sozinha.</strong>
+            </p>
+            <div class="ch-proximo-acoes">
+              <a class="ch-btn ch-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="ch-btn ch-btn-secundario ch-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="ch-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose ch-conteudo">
+        <h2>A aula medida contra a tabela</h2>
+        <p>
+          As calculadoras de hidroginástica costumam usar a linha geral do Compêndio de
+          Atividades Físicas, {formataMet(metHidro('geral'))} METs. Ela descreve o exercício na
+          água. Uma aula é outra coisa, e alguém mediu uma do começo ao fim.
+        </p>
+        <p>
+          Nikolai e colegas acompanharam {ESTUDO_AULA.participantes} homens e mulheres, com{' '}
+          {n(ESTUDO_AULA.idadeMedia)} anos em média, numa sessão de hidroginástica de{' '}
+          {ESTUDO_AULA.minutos} minutos, com um sistema portátil de calorimetria. Resultado:{' '}
+          <strong>{formataMet(ESTUDO_AULA.met)} METs</strong>, a {n(ESTUDO_AULA.pctReserva)}% da
+          reserva de consumo de oxigênio — intensidade moderada.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma aula de {MINUTOS_PADRAO} minutos, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">De onde vem</th><th scope="col">METs</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Aula medida (Nikolai et al.)</th>
+                <td>{formataMet(metHidro('medida'))}</td>
+                <td>≈ {formataKcal(EX_AULA.kcal)} kcal</td>
+              </tr>
+              <tr>
+                <th scope="row">Tabela, linha geral (18355)</th>
+                <td>{formataMet(metHidro('geral'))}</td>
+                <td>≈ {formataKcal(EX_TABELA.kcal)} kcal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A aula medida ficou {formataPct(ABAIXO)} abaixo da tabela — ou, dito do outro jeito, a
+          tabela aplicada à aula inteira superestima em {formataPct(ACIMA)}. Não é que a tabela
+          esteja errada: ela mede o exercício, e uma sessão inteira não é só exercício no ritmo da
+          linha geral.
+        </p>
+        <p>{NOTA_AULA_MEDIDA}</p>
+
+        <h2>A conferência: o estudo refeito pela nossa conta</h2>
+        <p>
+          Antes de pôr o {formataMet(ESTUDO_AULA.met)} na calculadora, vale conferir se a leitura do
+          estudo fecha. Ele publica o MET, a duração, o peso médio ({n(ESTUDO_AULA.pesoMedio)} kg) e o
+          gasto líquido da sessão. Os três primeiros, pela equação de METs, têm que dar o quarto:
+        </p>
+        <p class="ch-formula">{`(${formataMet(ESTUDO_AULA.met)} − 1) × 3,5 × ${n(ESTUDO_AULA.pesoMedio)} ÷ 200 × ${ESTUDO_AULA.minutos} = ${n(AULA.kcalCalculada, 0)} kcal líquidas
+
+  o artigo publica: ${n(AULA.kcalDoArtigo)} kcal
+  diferença: ${n(AULA.erro * 100, 1)}%`}</p>
+        <p>
+          Fecha. Uma diferença desse tamanho cabe no arredondamento dos números publicados e no
+          fator de conversão de oxigênio em calorias, que varia um pouco conforme o combustível
+          que o corpo está usando.
+        </p>
+
+        <h2>Uma aula, a semana e o mês</h2>
+        <p>
+          Hidroginástica não é aula avulsa: é hábito de duas ou três vezes por semana, o ano todo. É
+          na soma que ela aparece.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Aulas de {MINUTOS_PADRAO} minutos, aula medida, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Por semana</th><th scope="col">Na semana</th><th scope="col">No mês</th></tr>
+            </thead>
+            <tbody>
+              {SEMANAS.map((s) => (
+                <tr>
+                  <th scope="row">{s.aulas} {s.aulas === 1 ? 'aula' : 'aulas'}</th>
+                  <td>≈ {formataKcal(s.kcal)} kcal</td>
+                  <td>≈ {formataKcal(s.kcalMes)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          O mês usa 52 semanas divididas por 12 — 4,33 semanas, não 4. Quatro semanas redondas
+          subestimam o mês em quase 8%.
+        </p>
+
+        <h2>Os quatro tipos de aula</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>{PESO_PADRAO} kg, gasto bruto</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tipo</th><th scope="col">METs</th><th scope="col">Fonte</th>
+                <th scope="col">{MINUTOS_PADRAO} min</th><th scope="col">1 hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TIPOS.map((l) => (
+                <tr>
+                  <th scope="row">{l.tipo.nome}</th>
+                  <td>{formataMet(l.tipo.met)}</td>
+                  <td>{l.tipo.origem === 'compendio' ? `Compêndio ${l.tipo.codigo}` : l.tipo.codigo}</td>
+                  <td>≈ {formataKcal(l.aula)} kcal</td>
+                  <td>≈ {formataKcal(l.hora)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Um detalhe que parece erro e não é: a aula focada em exercícios de resistência — com
+          halteres de espuma, luvas ou caneleiras — tem o valor mais baixo da tabela,{' '}
+          {formataMet(metHidro('resistencia'))} METs. O objetivo dela é força, não gasto — e força é
+          uma das capacidades que mais caem com a idade.
+        </p>
+
+        <h2>E quem tem mais de 60?</h2>
+        <p>{NOTA_60_MAIS}</p>
+        <ul class="ch-sem-conferencia" aria-label="Valores que circulam e não conferimos">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>
+          Caminhada na água e corrida em piscina funda também ficaram de fora: valores circulam, mas
+          não conseguimos conferir as linhas do Compêndio em duas fontes independentes.
+        </p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma aula de {MINUTOS_PADRAO} minutos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th>
+                <th scope="col">Aula medida</th>
+                <th scope="col">Tabela geral</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.medida)} kcal</td>
+                  <td>≈ {formataKcal(l.geral)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          O MET padrão é o da aula medida ({formataMet(metHidro('medida'))}); as outras três opções
+          são linhas do Compêndio de Atividades Físicas de 2024, com o código na tabela acima.
+        </p>
+        <p class="ch-formula">{`${formataTempo(MINUTOS_PADRAO)} de aula comum, ${PESO_PADRAO} kg
+  ${formataMet(metHidro('medida'))} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_AULA.kcal / MINUTOS_PADRAO, 2)} kcal por minuto
+  ${n(EX_AULA.kcal / MINUTOS_PADRAO, 2)} × ${MINUTOS_PADRAO} = ${n(EX_AULA.kcal, 0)} kcal`}</p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem as duas coisas que seguram a página: que o estudo refeito pela
+          nossa conta dá o gasto que ele mesmo publicou, e que a distância entre a aula e a tabela é
+          a que a página afirma.
+        </p>
+        <p class="ch-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: a aula medida é uma aula só, de um grupo de{' '}
+          {ESTUDO_AULA.participantes} pessoas. É a melhor âncora que conseguimos conferir para uma
+          aula inteira, não uma lei. Se a sua aula tem mais deslocamento e menos pausa, o gasto
+          real tende a ficar mais perto da linha geral.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="ch-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias da hidroginástica" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraHidroginastica } from '../../scripts/caloriasHidroginastica.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraHidroginastica();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .ch-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .ch-hero-inner { max-width: 780px; }
+    .ch-hero h1 { color: #fff; max-width: 22ch; }
+    .ch-hero :global(.eyebrow) { color: #ffb488; }
+    .ch-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .ch-hero-lead strong { color: #fff; }
+    .ch-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .ch-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .ch-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .ch-main { min-width: 0; max-width: 760px; }
+
+    .ch-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .ch-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .ch-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .ch-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ch-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .ch-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .ch-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .ch-campos { display: grid; gap: var(--sp-4); }
+    .ch-campo { margin-bottom: 0; }
+    .ch-campo label,
+    .ch-campo .ch-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .ch-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .ch-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    /* Dois campos lado a lado; o campo desce para o pé da coluna, para os
+       dois ficarem alinhados se um rótulo quebrar linha. */
+    .ch-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+    .ch-duo > div { display: flex; flex-direction: column; justify-content: flex-end; }
+
+    .ch-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .ch-tipo-slot { min-height: 3em; line-height: 1.5; }
+    .ch-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .ch-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .ch-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .ch-presets-sem-rotulo { margin-top: 0; }
+    .ch-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .ch-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .ch-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ch-tipo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .ch-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .ch-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .ch-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .ch-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .ch-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .ch-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .ch-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .ch-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .ch-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .ch-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .ch-nota-tabela { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .ch-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .ch-proximo-lead { line-height: 1.6; }
+    .ch-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .ch-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .ch-btn-primario { background: var(--brand-600); color: #fff; }
+    .ch-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .ch-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .ch-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .ch-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ch-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .ch-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .ch-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .ch-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .ch-fontes li { margin-bottom: 0.6rem; }
+    .ch-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
