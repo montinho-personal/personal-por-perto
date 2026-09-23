@@ -1,0 +1,632 @@
+---
+/**
+ * Quantas calorias gasta jogar tênis — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS DOZE
+ *
+ * No futebol e nas lutas, a página desconta o tempo parado. Aqui ela avisa
+ * para NÃO descontar. A partida medida por Seliger teve a bola em jogo em
+ * 41% do tempo e custou 7,8 METs pela partida inteira — praticamente os 8,0
+ * do Compêndio para simples. A pausa entre pontos já está na tabela.
+ *
+ * AS DUPLAS
+ *
+ * Duas linhas no Compêndio (4,5 e 6,0) e nenhuma fonte que conseguimos
+ * conferir dizendo o que as separa. A calculadora mostra a faixa.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ESTUDO_PARTIDA,
+  FONTES,
+  MINUTOS_PADRAO,
+  MODALIDADES,
+  NOTA_BRUTO,
+  NOTA_DUPLAS,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_PAUSA,
+  NOTA_SEGURANCA,
+  NOTA_SEM_CONFERENCIA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  SEM_CONFERENCIA,
+  deTempo,
+  formataFaixaKcal,
+  formataFaixaMet,
+  formataKcal,
+  formataMet,
+  formataTempo,
+  modalidade,
+  reproduzPartida,
+  seDescontasseAPausa,
+  simulacaoUmQuilo,
+  tabelaPorPeso,
+} from '../../lib/calorias/tenis';
+
+const path = '/calorias/tenis';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Tênis', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_SIMPLES = deTempo(60, PESO_PADRAO, 'simples');
+const EX_GERAL = deTempo(60, PESO_PADRAO, 'geral');
+const EX_DUPLAS = deTempo(60, PESO_PADRAO, 'duplas');
+const PAUSA = seDescontasseAPausa(PESO_PADRAO);
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'simples');
+const TAB_PESO = tabelaPorPeso();
+
+/* A conferência contra a partida medida, calculada e não escrita à mão. */
+const PARTIDA = reproduzPartida();
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+
+/* 52 caracteres. */
+const title = 'Quantas Calorias Gasta Jogar Tênis? Simples e Duplas';
+/* 154 caracteres. */
+const description =
+  'Calcule as calorias do tênis em simples ou duplas. Conte o tempo de quadra inteiro: a medição em partida mostra que a pausa entre pontos já está na conta.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta 1 hora de tênis?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(EX_SIMPLES.kcalMin)} kcal numa hora de simples, ${formataKcal(EX_GERAL.kcalMin)} num jogo em esforço moderado e de ${formataFaixaKcal(EX_DUPLAS.kcalMin, EX_DUPLAS.kcalMax)} kcal em duplas. A hora é de quadra, com as pausas entre pontos: é assim que a tabela e a medição em partida contam.`,
+  },
+  {
+    pergunta: 'Devo descontar o tempo parado entre os pontos?',
+    resposta: `Não. Uma partida medida em laboratório teve a bola em jogo em só ${n(ESTUDO_PARTIDA.pctEmJogo)}% do tempo e, ainda assim, custou ${n(PARTIDA.metMedido)} METs pela partida inteira — praticamente os ${formataMet(PARTIDA.metDaTabela)} do Compêndio para simples. Descontar a pausa faria uma hora de simples cair de ${formataKcal(PAUSA.certo)} para ${formataKcal(PAUSA.errado)} kcal, e errado.`,
+  },
+  {
+    pergunta: 'Tênis em duplas gasta menos que simples?',
+    resposta: `Pela tabela, sim. Simples fica em ${formataMet(modalidade('simples').metMin)} METs; duplas, entre ${formataFaixaMet(modalidade('duplas'))}, porque o Compêndio tem duas linhas para elas e não conseguimos conferir o que as diferencia. Mesmo no topo da faixa, uma hora de duplas fica abaixo de uma hora de simples.`,
+  },
+  {
+    pergunta: 'E beach tennis?',
+    resposta:
+      'Não está nesta calculadora. Não conseguimos conferir uma linha própria de beach tennis no Compêndio, e o jogo é outro: quadra menor, areia, raquete sem corda e quase sempre em duplas. Usar o valor do tênis seria chute.',
+  },
+  {
+    pergunta: 'Jogar tênis emagrece?',
+    resposta: `Aumenta o gasto do dia, e uma partida semanal de verdade conta. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+  {
+    pergunta: 'Quanto tempo de tênis para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosMin)} de simples, para ${PESO_PADRAO} kg. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/futebol/',
+    titulo: 'Quantas calorias gasta jogar futebol?',
+    descricao: 'O esporte em que a página desconta o tempo parado — e por que lá a conta é outra.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/musculacao/treino-de-ombro/',
+    titulo: 'Treino de ombro',
+    descricao: 'A articulação que mais repete o gesto do saque, e o que o treino de força faz por ela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A base aeróbia que sustenta o terceiro set, com a conta por quilômetro.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX_SIMPLES.kcalMin)} kcal de uma hora de simples entram na conta.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="ct-hero">
+    <div class="container ct-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta jogar tênis?</h1>
+      <p class="ct-hero-lead">
+        Uma hora de simples gasta cerca de <strong>{formataKcal(EX_SIMPLES.kcalMin)} kcal</strong> para{' '}
+        {PESO_PADRAO} kg. E a hora é de quadra inteira:{' '}
+        <strong>a pausa entre pontos já está na conta</strong>, mesmo com a bola em jogo menos da
+        metade do tempo.
+      </p>
+      <p class="ct-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container ct-layout">
+    <article class="ct-main">
+      <section id="ct-app" class="ct-app" aria-labelledby="ct-app-h">
+        <h2 id="ct-app-h" class="ct-app-h">Calculadora de calorias do tênis</h2>
+
+        <div class="ct-campos">
+          <div class="ct-campo">
+            <label for="ct-peso">Seu peso (kg)</label>
+            <input id="ct-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="ct-campo">
+            <span class="ct-rotulo">Como você jogou</span>
+            <div class="ct-presets ct-presets-sem-rotulo" role="group" aria-label="Modalidade">
+              {MODALIDADES.map((m) => (
+                <button
+                  type="button"
+                  class:list={['ct-preset', 'ct-modalidade', m.id === 'simples' && 'is-ativo']}
+                  data-modalidade={m.id}
+                  aria-pressed={String(m.id === 'simples')}
+                >
+                  {m.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="ct-dica ct-modalidade-slot" id="ct-modalidade-dica">
+              {formataFaixaMet(modalidade('simples'))} METs — Compêndio, código {modalidade('simples').codigos.join(' e ')}.{' '}
+              {modalidade('simples').comoReconhecer}
+            </p>
+          </div>
+
+          <!-- As abas ficam logo acima dos campos que trocam, como nas lutas. -->
+          <div class="ct-modos" role="tablist" aria-label="Como você quer contar">
+            <button type="button" class="ct-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+              Tempo de quadra
+            </button>
+            <button type="button" class="ct-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+              Tenho uma meta
+            </button>
+          </div>
+
+          <div class="ct-campo ct-campo-modo">
+            <label for="ct-minutos">Minutos de quadra, com as pausas entre pontos</label>
+            <input id="ct-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="ct-presets">
+              {[30, 60, 90, 120].map((v) => (
+                <button type="button" class="ct-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="ct-campo ct-campo-modo" hidden>
+            <label for="ct-meta">Meta de gasto (kcal)</label>
+            <input id="ct-meta" type="text" inputmode="numeric" autocomplete="off" value="500" />
+            <div class="ct-presets">
+              {[300, 500, 700, 1000].map((v) => (
+                <button type="button" class="ct-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p id="ct-erro" class="ct-erro" role="status" hidden></p>
+
+        <div id="ct-saida" class="ct-saida" role="status" aria-live="polite">
+          <p class="ct-resultado">
+            <span class="ct-numero">≈ {formataKcal(EX_SIMPLES.kcalMin)}</span>
+            <span class="ct-unidade">kcal</span>
+          </p>
+          <p class="ct-frase"></p>
+
+          <dl class="ct-detalhes">
+            <div><dt>Tempo de quadra</dt><dd class="ct-d-tempo">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="ct-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="ct-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="ct-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="ct-nota ct-nota-duplas" hidden></p>
+          <p class="ct-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="ct-proximo">
+            <p class="ct-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> na quadra. Ele não diz se o corpo aguenta
+              o jogo: saque, arrancada e freada pedem ombro, tronco e perna que a quadra não treina
+              sozinha. <strong>Força durante a semana é o que deixa o tênis do fim de semana
+              continuar existindo.</strong>
+            </p>
+            <div class="ct-proximo-acoes">
+              <a class="ct-btn ct-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="ct-btn ct-btn-secundario ct-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="ct-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose ct-conteudo">
+        <h2>Não desconte a pausa entre pontos</h2>
+        <p>
+          No tênis, a bola fica em jogo bem menos da metade do tempo. A tentação é contar só o tempo
+          de ponto — e é o erro que esta página existe para evitar. Nas páginas de{' '}
+          <a href="/calorias/futebol/">futebol</a> e de <a href="/calorias/lutas/">lutas</a>, o tempo
+          parado sai da conta. Aqui, não.
+        </p>
+        <p>
+          Seliger e colegas mediram {ESTUDO_PARTIDA.participantes} jogadores numa partida de treino de{' '}
+          {ESTUDO_PARTIDA.minutos} minutos, em condições quase naturais. A bola ficou em jogo em{' '}
+          {n(ESTUDO_PARTIDA.pctEmJogo)}% do tempo. Mesmo assim, o consumo de oxigênio da partida
+          inteira foi de {n(ESTUDO_PARTIDA.vo2)} mL por kg por minuto:
+        </p>
+        <p class="ct-formula">{`${n(ESTUDO_PARTIDA.vo2)} ÷ 3,5 = ${n(PARTIDA.metMedido, 2)} METs pela partida inteira, pausas incluídas
+
+  o Compêndio para tênis simples: ${formataMet(PARTIDA.metDaTabela)} METs
+  diferença: ${n(PARTIDA.erro * 100, 1)}%`}</p>
+        <p>
+          A medição da partida inteira bate com a tabela. Ou seja: o valor do Compêndio já é o tempo
+          de quadra, com as pausas dentro. Descontá-las contaria a pausa duas vezes — e uma hora de
+          simples, para {PESO_PADRAO} kg, cairia de {formataKcal(PAUSA.certo)} para{' '}
+          {formataKcal(PAUSA.errado)} kcal.
+        </p>
+        <p class="ct-ressalva">
+          O que a medição não resolve: a partida era de treino, de dez minutos, e medida em 1973. As
+          pausas longas de uma partida oficial — troca de lado, água, toalha — não estavam nela. Se
+          você jogou duas horas com várias paradas longas, o mais coerente com a medição é tirar essas
+          paradas da conta e manter a pausa entre um ponto e outro.
+        </p>
+
+        <h2>Simples, geral ou duplas</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de quadra, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Modalidade</th><th scope="col">METs</th><th scope="col">Código</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {MODALIDADES.map((m) => {
+                const r = deTempo(60, PESO_PADRAO, m.id);
+                return (
+                  <tr>
+                    <th scope="row">{m.nome}</th>
+                    <td>{formataFaixaMet(m)}</td>
+                    <td>{m.codigos.join(' e ')}</td>
+                    <td>≈ {formataFaixaKcal(r.kcalMin, r.kcalMax)} kcal</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_DUPLAS}</p>
+        <p class="ct-ressalva">
+          A linha geral do tênis foi revisada em 2024: era 7,3 METs no Compêndio de 2011 e passou a{' '}
+          {formataMet(modalidade('geral').metMin)}. Calculadoras que ainda usam a versão antiga dão um
+          número mais alto para o mesmo jogo.
+        </p>
+
+        <h2>O que não está na calculadora</h2>
+        <p>{NOTA_SEM_CONFERENCIA}</p>
+        <ul class="ct-sem-conferencia" aria-label="Valores que circulam e não conferimos">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de quadra, com as pausas entre pontos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th>
+                <th scope="col">Simples</th>
+                <th scope="col">Geral</th>
+                <th scope="col">Duplas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.simples)} kcal</td>
+                  <td>≈ {formataKcal(l.geral)} kcal</td>
+                  <td>≈ {formataFaixaKcal(l.duplasMin, l.duplasMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>,
+          aplicada ao tempo de quadra. Os METs vêm do Compêndio de Atividades Físicas de 2024, com o
+          código na tabela acima.
+        </p>
+        <p class="ct-formula">{`1 hora de simples, ${PESO_PADRAO} kg
+  ${formataMet(modalidade('simples').metMin)} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_SIMPLES.kcalMin / 60, 2)} kcal por minuto
+  ${n(EX_SIMPLES.kcalMin / 60, 2)} × 60 = ${n(EX_SIMPLES.kcalMin, 0)} kcal`}</p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem as duas coisas que seguram a página: que a partida medida cai
+          perto da tabela, e que a faixa das duplas se comporta como faixa em todos os modos.
+        </p>
+        <p class="ct-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>{NOTA_PAUSA}</p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="ct-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do tênis" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraTenis } from '../../scripts/caloriasTenis.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraTenis();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .ct-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .ct-hero-inner { max-width: 780px; }
+    .ct-hero h1 { color: #fff; max-width: 22ch; }
+    .ct-hero :global(.eyebrow) { color: #ffb488; }
+    .ct-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .ct-hero-lead strong { color: #fff; }
+    .ct-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .ct-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .ct-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .ct-main { min-width: 0; max-width: 760px; }
+
+    .ct-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .ct-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .ct-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .ct-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .ct-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .ct-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .ct-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .ct-campos { display: grid; gap: var(--sp-4); }
+    .ct-campo { margin-bottom: 0; }
+    .ct-campo label,
+    .ct-campo .ct-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .ct-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .ct-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+    .ct-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .ct-modalidade-slot { min-height: 3em; line-height: 1.5; }
+    .ct-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .ct-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .ct-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .ct-presets-sem-rotulo { margin-top: 0; }
+    .ct-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .ct-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .ct-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ct-modalidade.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .ct-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .ct-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .ct-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .ct-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .ct-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .ct-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .ct-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .ct-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .ct-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .ct-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .ct-nota-duplas { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .ct-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .ct-proximo-lead { line-height: 1.6; }
+    .ct-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .ct-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .ct-btn-primario { background: var(--brand-600); color: #fff; }
+    .ct-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .ct-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .ct-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .ct-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .ct-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .ct-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .ct-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .ct-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .ct-fontes li { margin-bottom: 0.6rem; }
+    .ct-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
