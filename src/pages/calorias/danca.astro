@@ -52,7 +52,9 @@ import {
   NOTA_369,
   NOTA_BRUTO,
   NOTA_ESTIMATIVA,
+  NOTA_APROXIMACAO_HONESTA,
   NOTA_INSTRUCAO,
+  NOTA_METS_REPETIDOS,
   NOTA_NAO_ESCOLHE,
   NOTA_NAO_PRESCRICAO,
   NOTA_SEGURANCA,
@@ -128,7 +130,7 @@ const faqs = [
   },
   {
     pergunta: 'Quantas calorias o samba gasta?',
-    resposta: `Não sabemos, e ninguém sabe: samba não tem medição de gasto energético em laboratório, nem forró, nem sertanejo, nem funk, nem axé. Você vai encontrar números para todos eles por aí — foram estimados por semelhança com outras danças, não medidos. Como referência do que É medido: dança de salão em ritmo rápido vale ${n(metDanca('salao'))} METs, o que para ${PESO_PADRAO} kg dá cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal em 45 minutos.`,
+    resposta: `Ninguém mediu. Samba no pé, forró, sertanejo, funk e axé não têm medição de gasto energético em laboratório — os números que você encontra para eles por aí foram estimados por semelhança com outras danças. O que É medido e fica mais perto é a categoria de dança de par em ritmo rápido, que vale ${n(metDanca('salao'))} METs e dá cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal em 45 minutos para ${PESO_PADRAO} kg. Use como aproximação sabendo que é aproximação — a diferença entre nós e o resto da internet não é ter o número, é dizer o que ele é.`,
   },
   {
     pergunta: 'Dançar emagrece?',
@@ -419,17 +421,25 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
           alta: a categoria genérica que todo mundo usa no lugar dela fica{' '}
           {n(((metDanca('zumba') - metDanca('aerobica')) / metDanca('aerobica')) * 100, 0)}% abaixo.
         </p>
+        <p>{NOTA_METS_REPETIDOS}</p>
+        <p>
+          Vale insistir nesse último ponto, porque ele é útil na prática: baixo impacto custa{' '}
+          {n(metDanca('baixo-impacto'))} METs e alto impacto custa {n(metDanca('alto-impacto'))} —{' '}
+          <strong>{n(((metDanca('alto-impacto') / metDanca('baixo-impacto')) - 1) * 100, 0)}% de
+          diferença</strong> pelo mesmo tempo de aula. Quem precisa poupar joelho e tornozelo paga
+          esse preço em caloria, e é uma troca que vale saber que existe antes de escolher a turma.
+        </p>
 
         <h3>O que esta tabela não tem, e por quê</h3>
         <p>{NOTA_SEM_MEDICAO}</p>
         <ul class="cd-sem-medicao">
           {SEM_MEDICAO.map((s) => <li>{s}</li>)}
         </ul>
+        <p>{NOTA_APROXIMACAO_HONESTA}</p>
         <p>
-          Se você dança um desses, a referência mais honesta disponível é a linha de{' '}
-          <strong>dança de salão rápida</strong> para ritmos de par e a de{' '}
-          <strong>dança aeróbica</strong> para coreografia em grupo — e sabendo que é aproximação
-          por semelhança, não medição.
+          Para coreografia em grupo, a referência mais próxima é a linha de{' '}
+          <strong>dança aeróbica</strong> — lembrando que ela foi medida no nível de alto impacto, e
+          portanto puxa para cima se a sua aula for mais contida.
         </p>
 
         <h2>A aula não é o que você dança</h2>

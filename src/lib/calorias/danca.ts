@@ -183,7 +183,7 @@ export const ESTILOS: Estilo[] = [
     met: 4.5,
     codigo: '03031',
     origem: 'compendio',
-    comoReconhecer: 'Samba de gafieira, forró, swing — dançado de verdade, não o passo básico parado.',
+    comoReconhecer: 'A categoria do Compêndio para dança de par em ritmo rápido, dançada de verdade — não o passo básico marcado devagar.',
   },
   {
     id: 'ballet',
@@ -446,6 +446,12 @@ export const NOTA_ZUMBA_NAO_ESTA =
 
 export const NOTA_369 =
   'As 369 kcal que a internet atribui a "uma aula de Zumba" vêm de um estudo real, mas a aula medida tinha 39 minutos e as participantes eram 19 mulheres de 18 a 22 anos, com cerca de 62 kg pela própria conta do artigo. Citar o número sem essas três informações é citar outra coisa.';
+
+export const NOTA_METS_REPETIDOS =
+  'Duas coisas na tabela parecem erro de digitação e não são. Ballet e dança aeróbica de baixo impacto têm o mesmo valor (5,0), e dança aeróbica geral tem o mesmo valor do alto impacto (7,3). São códigos diferentes do Compêndio que caíram na mesma medição — e a segunda coincidência é informativa: a categoria genérica foi medida no nível do ALTO impacto. Se a sua aula é de baixo impacto, usar o valor genérico superestima em cerca de 46%.';
+
+export const NOTA_APROXIMACAO_HONESTA =
+  'Se você dança forró, samba no pé ou sertanejo e quer um número, a linha de dança de par em ritmo rápido é a referência mais próxima que existe. Mas é aproximação por semelhança — o mesmo procedimento que criticamos nas outras páginas, com uma diferença: aqui está dito que é aproximação, e você decide se serve.';
 
 export const NOTA_SEM_MEDICAO =
   'Samba, forró, sertanejo, funk e axé não estão nesta tabela porque ninguém os mediu em laboratório. Você vai encontrar números para eles por aí; eles foram estimados por semelhança, não medidos. Preferimos dizer que não sabemos.';
