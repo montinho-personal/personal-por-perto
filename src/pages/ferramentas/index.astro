@@ -1,36 +1,54 @@
 ---
 /**
- * Hub de ferramentas do portal.
+ * Central de Ferramentas do portal — /ferramentas/.
  *
- * Não é uma página de índice com dois links: é a página que responde
- * "que ferramenta resolve o meu problema?" e explica o critério por trás
- * delas. Os cards são montados a partir do registro central em
- * src/data/ferramentas.ts — publicar ferramenta nova é acrescentar a
- * entrada lá, e o hub, o rodapé e o schema acompanham sozinhos.
+ * O QUE ESTA PÁGINA É, E O QUE ELA DEIXOU DE SER
+ *
+ * Nasceu como o Meu Mapa do Treino: uma jornada de sete etapas sobre
+ * treino e acompanhamento. Funcionava para sete ferramentas; com 24 (as
+ * calculadoras de calorias ficaram de fora dela por não serem etapa da
+ * jornada) virou uma página que mostrava menos de um terço do que o
+ * portal tem. Agora ela é uma BIBLIOTECA: responde "que ferramenta resolve
+ * a minha dúvida?" para quem sabe o que quer, e mantém o Mapa como
+ * experiência guiada para quem não sabe por onde começar.
+ *
+ * Tudo sai do catálogo em src/data/ferramentas.ts: cards, filtros, busca,
+ * schema. Publicar uma ferramenta é acrescentar a entrada lá.
+ *
+ * O QUE É HTML E O QUE É JAVASCRIPT
+ *
+ * Todos os cards, todos os links e todas as seções estão no HTML: sem JS a
+ * página é a biblioteca inteira, rastreável, com as calculadoras de
+ * calorias extras atrás de um <details>. O JS acrescenta a busca por
+ * intenção, os filtros, o roteador de quatro perguntas e o mapa salvo no
+ * navegador — nenhum dos quatro esconde conteúdo de quem não o tem.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CtaMontinho from '../../components/CtaMontinho.astro';
+import Card from '../../components/FerramentaCard.astro';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
-import { ferramentas, ferramentasDisponiveis, urlFerramenta } from '../../data/ferramentas';
+import { CATEGORIAS, catalogo, destaques, porCategoria } from '../../data/ferramentas';
 import { rotas } from '../../lib/links';
-import { ETAPAS, FERRAMENTAS, SITUACOES } from '../../lib/jornada';
+import { ETAPAS } from '../../lib/jornada';
 import { formatDateLong } from '../../lib/slug';
 
 const path = '/ferramentas';
-const atualizadoEm = '2026-08-30';
+const atualizadoEm = '2026-09-23';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
-  { nome: 'Meu Mapa do Treino', url: path },
+  { nome: 'Ferramentas', url: path },
 ];
 
-/* 53 caracteres. */
-const title = 'Meu Mapa do Treino: 7 Ferramentas Grátis para Treinar';
-/* 144 caracteres. */
-const description =
-  'Sete ferramentas grátis e sem cadastro para achar seu próximo passo: constância, rotina, estrutura do treino, formato de acompanhamento e preço.';
+const total = catalogo.length;
+const DESTAQUES = destaques();
+
+/* 55 caracteres. */
+const title = 'Ferramentas Fitness Grátis: Treino, Calorias e Personal';
+/* 153 caracteres com 24 ferramentas. */
+const description = `${total} calculadoras e diagnósticos gratuitos: organize o treino, estime as calorias de cada atividade, escolha um personal e veja quanto custa. Sem cadastro.`;
 
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
@@ -40,289 +58,260 @@ const schema = [
     '@type': 'CollectionPage',
     '@id': `${urlCanonica}#webpage`,
     url: urlCanonica,
-    name: 'Meu Mapa do Treino',
+    name: 'Ferramentas do Personal por Perto',
     description,
     inLanguage: site.idioma,
     dateModified: atualizadoEm,
     isPartOf: { '@id': `${site.dominio}/#website` },
   },
   itemListSchema(
-    'Meu Mapa do Treino: as sete etapas',
-    ferramentasDisponiveis.map((f) => f.nome),
+    'Ferramentas e calculadoras do Personal por Perto',
+    catalogo.map((f) => f.nome),
     site.dominio,
-    ferramentasDisponiveis.map((f) => new URL(urlFerramenta(f.slug), site.dominio).href),
+    catalogo.map((f) => new URL(f.url, site.dominio).href),
   ),
 ];
+
+/* Exemplos de busca: as dúvidas mais buscadas no portal, na forma em que aparecem no Search Console. */
+const EXEMPLOS = ['quanto custa um personal', 'não consigo manter a academia', 'calorias correndo', 'personal online vale a pena'];
+
 ---
 
 <Base title={title} description={description} path={path} schema={schema}>
   <Breadcrumbs crumbs={crumbs} />
 
+  <!-- Ícones: um sistema só, um símbolo por categoria. -->
+  <!-- `hidden` não vale para elemento SVG: sem o display:none ele ocupa 300×150. -->
+  <svg aria-hidden="true" focusable="false" style="display:none">
+    <symbol id="fh-i-treino" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 9v6M3 10.5v3M18 9v6M21 10.5v3M6 12h12" />
+    </symbol>
+    <symbol id="fh-i-personal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10" cy="8" r="3.5" /><path d="M3.5 20a6.5 6.5 0 0 1 13 0M15.5 12.5l2 2 3.5-4" />
+    </symbol>
+    <symbol id="fh-i-calorias" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3c1 3 4 4.5 4 9a4 4 0 0 1-8 0c0-2 1-3 1.5-4 .5 1.5 1.5 2 2.5 2 0-2-.5-4 0-7z" />
+    </symbol>
+    <symbol id="fh-i-mapa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" /><path d="m15.5 8.5-2 5-5 2 2-5z" />
+    </symbol>
+  </svg>
+
   <!-- ============================= HERO ============================= -->
-  <header class="section-sm">
-    <div class="container fer-intro">
-      <p class="eyebrow">Meu Mapa do Treino · gratuito, sem cadastro</p>
-      <h1>Você não precisa de mais uma dica. Precisa descobrir o seu próximo passo.</h1>
-      <p class="fer-lead">
-        Treino, rotina, constância, acompanhamento e investimento não são
-        assuntos separados — são etapas da mesma decisão. Estas ferramentas
-        existem para você descobrir <strong>em qual delas você está</strong>
-        e o que resolve o seu caso agora. Não é preciso usar todas.
+  <header class="section-sm fh-hero">
+    <div class="container">
+      <p class="eyebrow">Ferramentas do portal · grátis, sem cadastro</p>
+      <h1>Calculadoras e ferramentas fitness gratuitas</h1>
+      <p class="lead fh-lead">
+        {total} ferramentas para organizar o treino, estimar as calorias de cada atividade, escolher
+        um personal e saber quanto ele custa. Resultado na hora, método aberto, nada de e-mail.
       </p>
-      <ul class="fer-selos">
-        <li><span aria-hidden="true">✓</span> Gratuitas, sem cadastro</li>
-        <li><span aria-hidden="true">✓</span> Resultado na hora</li>
-        <li><span aria-hidden="true">✓</span> Método aberto e explicado</li>
-      </ul>
+
+      <form class="fh-busca" role="search" id="fh-form" autocomplete="off" aria-label="Buscar ferramenta">
+        <label for="fh-busca" class="fh-busca-rotulo">O que você quer descobrir?</label>
+        <div class="fh-busca-linha">
+          <input
+            id="fh-busca"
+            type="search"
+            name="q"
+            placeholder="Busque uma dúvida ou ferramenta…"
+            aria-describedby="fh-busca-dica"
+            enterkeyhint="search"
+          />
+          <button type="submit" class="btn btn-primary fh-busca-btn">Buscar</button>
+        </div>
+        <p id="fh-busca-dica" class="fh-busca-dica">
+          Ex.:{' '}
+          {EXEMPLOS.map((e, i) => (
+            <>
+              <button type="button" class="fh-exemplo" data-exemplo={e}>{e}</button>{i < EXEMPLOS.length - 1 ? ' · ' : ''}
+            </>
+          ))}
+        </p>
+      </form>
+
+      <div class="fh-chips" role="group" aria-label="Filtrar ferramentas por necessidade">
+        <button type="button" class="fh-chip is-ativo" data-cat="todos" aria-pressed="true">
+          Todas <span class="fh-chip-n">{total}</span>
+        </button>
+        {CATEGORIAS.map((c) => (
+          <button type="button" class="fh-chip" data-cat={c.id} aria-pressed="false">
+            {c.nome} <span class="fh-chip-n">{porCategoria(c.id).length}</span>
+          </button>
+        ))}
+      </div>
+      <p id="fh-status" class="sr-only" role="status" aria-live="polite"></p>
     </div>
   </header>
 
-  <!-- ===================== ONDE VOCÊ ESTÁ HOJE ====================== -->
-  <section class="section-sm" id="onde-voce-esta">
+  <!-- ===================== RESULTADOS DA BUSCA (JS) ================== -->
+  <section class="section-sm fh-resultados" id="fh-resultados" hidden aria-labelledby="fh-resultados-h">
     <div class="container">
-      <div class="fer-intro">
-        <h2>Onde você está hoje?</h2>
-        <p class="hj-sub">
-          Escolha a frase que mais parece com a sua situação. Cada uma leva
-          direto à ferramenta que resolve aquele problema — e explica por quê.
+      <h2 id="fh-resultados-h" class="fh-h2">Resultados</h2>
+      <div class="fh-grade" id="fh-resultados-lista"></div>
+      <div class="fh-zero" id="fh-zero" hidden>
+        <p class="fh-zero-titulo">Não encontramos uma ferramenta exatamente para isso.</p>
+        <p class="fh-zero-texto">
+          Estas são as mais próximas do que costuma ser procurado — ou busque o assunto no conteúdo do portal.
         </p>
+        <div class="fh-grade" id="fh-zero-lista"></div>
+        <div class="fh-zero-acoes">
+          <a class="btn btn-secondary" id="fh-zero-portal" href={rotas.cidades}>Buscar no conteúdo do portal</a>
+          <button type="button" class="fh-limpar" id="fh-limpar">Limpar a busca</button>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <ul class="hj-situacoes">
-        {
-          SITUACOES.map((sit) => (
-            <li>
-              <a
-                class="hj-sit"
-                href={FERRAMENTAS[sit.destino].url}
-                data-situacao={sit.id}
-              >
-                <span class="hj-sit-frase">“{sit.frase}”</span>
-                <span class="hj-sit-detalhe">{sit.detalhe}</span>
-                <span class="hj-sit-destino">
-                  Começar por: <strong>{FERRAMENTAS[sit.destino].nome}</strong>
-                </span>
-              </a>
-            </li>
-          ))
-        }
+  <div id="fh-biblioteca">
+    <!-- =========================== DESTAQUES ========================== -->
+    <section class="section-sm fh-secao" id="destaques" data-cat="destaques" aria-labelledby="destaques-h">
+      <div class="container">
+        <div class="fh-secao-cab">
+          <h2 id="destaques-h" class="fh-h2">Comece por estas</h2>
+          <p class="fh-secao-sub">
+            Seleção editorial: as ferramentas que respondem às dúvidas mais buscadas no portal, a começar
+            por preço de personal, a consulta mais frequente do Search Console.
+          </p>
+        </div>
+        <div class="fh-grade">
+          {DESTAQUES.map((f, i) => <Card f={f} pos={i + 1} origem="destaques" />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= MEU MAPA DO TREINO ==================== -->
+    <section class="section-sm tint fh-mapa" id="mapa-do-treino" aria-labelledby="mapa-h">
+      <div class="container">
+        <div class="fh-mapa-box">
+          <div class="fh-mapa-cab">
+            <svg class="fh-mapa-ico" aria-hidden="true"><use href="#fh-i-mapa" /></svg>
+            <div>
+              <p class="eyebrow">Não sabe por onde começar?</p>
+              <h2 id="mapa-h" class="fh-h2">Faça o Meu Mapa do Treino</h2>
+              <p class="fh-mapa-sub">
+                Quatro perguntas indicam qual ferramenta usar primeiro. Cada resultado sugere a etapa
+                seguinte já com o seu contexto, sem perguntar de novo o que você acabou de responder.
+              </p>
+            </div>
+          </div>
+          <ol class="fh-etapas" aria-label="As sete etapas do Mapa do Treino">
+            {ETAPAS.map((e) => <li>{e.nome}</li>)}
+          </ol>
+          <div class="fh-mapa-acoes">
+            <button type="button" class="btn btn-primary" id="hj-abrir-roteador">
+              Descobrir meu próximo passo&nbsp;→
+            </button>
+            <p class="fh-mapa-micro">Serve só para indicar por onde começar. Nada é guardado fora do seu navegador.</p>
+          </div>
+          <div id="hj-roteador" class="hj-rot" hidden></div>
+          <noscript>
+            <p class="fh-mapa-micro">
+              O roteador precisa de JavaScript. Sem ele, as sete etapas estão nas seções abaixo, na
+              ordem em que aparecem em "Organizar e avaliar o treino" e "Escolher, pagar e avaliar um personal".
+            </p>
+          </noscript>
+        </div>
+        <div id="hj-mapa" hidden></div>
+      </div>
+    </section>
+
+    <!-- =========================== CATEGORIAS ========================= -->
+    {CATEGORIAS.map((c) => {
+      const lista = porCategoria(c.id);
+      const abertas = lista.slice(0, c.mostrarNoHub);
+      const mais = lista.slice(c.mostrarNoHub);
+      return (
+        <section class="section-sm fh-secao" id={`cat-${c.id}`} data-cat={c.id} aria-labelledby={`cat-${c.id}-h`}>
+          <div class="container">
+            <div class="fh-secao-cab">
+              <h2 id={`cat-${c.id}-h`} class="fh-h2">{c.titulo}</h2>
+              <p class="fh-secao-sub">{c.descricao}</p>
+            </div>
+            <div class="fh-grade">
+              {abertas.map((f, i) => <Card f={f} pos={i + 1} origem="categoria" />)}
+            </div>
+            {mais.length > 0 && (
+              <details class="fh-mais" id={`mais-${c.id}`}>
+                <summary>
+                  <span class="fh-mais-rotulo">Mais {mais.length} {mais.length === 1 ? 'atividade' : 'atividades'}</span>
+                  <span class="fh-mais-lista" aria-hidden="true">{mais.map((f) => f.nomeCurto).join(' · ')}</span>
+                </summary>
+                <div class="fh-grade fh-grade-mais">
+                  {mais.map((f, i) => <Card f={f} pos={abertas.length + i + 1} origem="mais" />)}
+                </div>
+              </details>
+            )}
+            {c.hub && (
+              <p class="fh-secao-rodape">
+                <a href={c.hub}>Ver todas as {lista.length} calculadoras de calorias, com exemplos →</a>
+              </p>
+            )}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+
+  <!-- ========================= NÃO ENCONTROU ========================= -->
+  <section class="section-sm tint" aria-labelledby="nao-encontrou-h">
+    <div class="container fh-nao">
+      <h2 id="nao-encontrou-h" class="fh-h2">Não encontrou o que queria?</h2>
+      <p class="fh-secao-sub">
+        Nem toda dúvida vira ferramenta. O conteúdo do portal cobre o resto: guias de contratação,
+        treino e emagrecimento, e o panorama de personal trainer em cada cidade.
+      </p>
+      <form class="fh-busca-portal" action={rotas.cidades} method="get" role="search" aria-label="Buscar no conteúdo do portal">
+        <label for="fh-busca-portal" class="sr-only">Buscar cidade ou assunto no portal</label>
+        <input id="fh-busca-portal" type="search" name="q" placeholder="Buscar cidade ou assunto…" />
+        <button type="submit" class="btn btn-secondary">Buscar</button>
+      </form>
+      <ul class="fh-nao-links">
+        <li><a href={rotas.guias} data-artigo="guias">Guias de contratação</a></li>
+        <li><a href={rotas.musculacao} data-artigo="musculacao">Musculação</a></li>
+        <li><a href={rotas.emagrecimento} data-artigo="emagrecimento">Emagrecimento</a></li>
+        <li><a href={rotas.cidades} data-artigo="cidades">Personal trainer por cidade</a></li>
       </ul>
-
-      <div class="hj-rot-wrap">
-        <p class="hj-rot-chamada">Nenhuma dessas descreve o seu caso?</p>
-        <button type="button" class="btn btn-secondary" id="hj-abrir-roteador">
-          Descobrir meu próximo passo
-        </button>
-        <p class="hj-rot-micro">Quatro perguntas. Serve só para indicar por onde começar.</p>
-        <div id="hj-roteador" class="hj-rot" hidden></div>
-      </div>
     </div>
   </section>
 
-  <!-- ======================= MEU MAPA DO TREINO ===================== -->
-  <section class="section-sm tint" id="hj-mapa-secao">
+  <!-- ======================= COMO SÃO FEITAS ========================= -->
+  <section class="section-sm" aria-labelledby="como-h">
     <div class="container">
-      <div id="hj-mapa" hidden></div>
-      <noscript>
-        <p class="hj-sub">
-          O mapa da jornada precisa de JavaScript. Todas as ferramentas e todo o
-          conteúdo desta página funcionam normalmente sem ele.
-        </p>
-      </noscript>
-    </div>
-  </section>
-
-  <!-- =========================== A JORNADA ========================== -->
-  <section class="section-sm" id="jornada">
-    <div class="container">
-      <div class="fer-intro">
-        <h2>As sete etapas de uma decisão sobre treino</h2>
-        <p class="hj-sub">
-          Muita gente procura solução antes de entender qual é o problema:
-          troca de treino, tenta aumentar a frequência, muda de academia,
-          contrata alguém — e para de novo. Quase sempre o que falta não é
-          motivação, e sim identificar qual é a próxima decisão correta.
-          Cada etapa abaixo responde uma pergunta, e cada resposta indica a
-          seguinte.
-        </p>
-      </div>
-
-      <ol class="hj-etapas-lista">
-        {
-          ETAPAS.map((e) => (
-            <li class="hj-etapa-card">
-              <span class="hj-etapa-num">{e.ordem}</span>
-              <div>
-                <h3>
-                  {e.nome} — <a href={FERRAMENTAS[e.ferramenta].url}>{FERRAMENTAS[e.ferramenta].nome}</a>
-                </h3>
-                <p class="hj-etapa-pergunta">Responde: “{e.pergunta}”</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============================ CARDS ============================= -->
-  <section class="section-sm" id="todas">
-    <div class="container">
-      <div class="fer-intro">
-        <h2>Todas as ferramentas, em detalhe</h2>
-        <p class="hj-sub">
-          O que cada uma pergunta, o que ela entrega ao terminar e — com a
-          mesma clareza — o que ela não faz.
-        </p>
-      </div>
-      <div class="fer-lista">
-        {
-          ferramentas.map((f) =>
-            f.disponivel ? (
-              <article class="card fer-card">
-                <div class="fer-card-topo">
-                  {f.selo && <span class="pill pill-accent">{f.selo}</span>}
-                  <h2 class="fer-nome">
-                    <a href={urlFerramenta(f.slug)}>{f.nome}</a>
-                  </h2>
-                  {f.perguntaCentral && <p class="fer-pergunta">Responde: “{f.perguntaCentral}”</p>}
-                </div>
-
-                <p class="fer-desc">{f.descricao}</p>
-
-                {f.paraQuem && (
-                  <p class="fer-paraquem">
-                    <strong>Para quem é:</strong> {f.paraQuem}
-                  </p>
-                )}
-
-                {f.entrega && (
-                  <div class="fer-entrega">
-                    <h3>O que você leva ao terminar</h3>
-                    <ul class="check-list">
-                      {f.entrega.map((e) => (
-                        <li>{e}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {f.naoFaz && (
-                  <p class="fer-naofaz">
-                    <strong>O que ela não faz:</strong> {f.naoFaz}
-                  </p>
-                )}
-
-                <a class="btn btn-primary fer-btn" href={urlFerramenta(f.slug)}>
-                  Abrir {f.nomeCurto.toLowerCase()}
-                </a>
-              </article>
-            ) : (
-              <article class="card fer-card fer-card--breve">
-                <div class="fer-card-topo">
-                  <span class="pill pill-neutral">Em breve</span>
-                  <h2 class="fer-nome">{f.nome}</h2>
-                </div>
-                <p class="fer-desc">{f.descricao}</p>
-              </article>
-            ),
-          )
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================== CONTEÚDO EDITORIAL ====================== -->
-  <section class="section-sm tint">
-    <div class="container">
-      <article class="prose fer-artigo">
-        <p class="fer-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
-
-        <h2 id="qual-usar">Qual ferramenta usar primeiro</h2>
+      <article class="prose fh-artigo">
+        <p class="fh-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
+        <h2 id="como-h">Como estas ferramentas são feitas</h2>
         <p>
-          Depende de onde você travou. Se a dúvida ainda é <em>que tipo</em> de
-          acompanhamento contratar — se vale um personal do seu lado na academia
-          ou se um acompanhamento a distância resolveria melhor —, comece pelo
-          <a href={urlFerramenta('encontre-seu-personal-ideal')}>diagnóstico do
-          personal ideal</a>. Ele é a porta de entrada natural, porque a
-          resposta dele muda tudo o que vem depois, inclusive o preço.
+          Nenhuma delas sorteia resposta nem usa inteligência artificial para inventar texto. São
+          determinísticas: as mesmas entradas produzem sempre o mesmo resultado, calculado por regras
+          descritas na própria página de cada ferramenta. Nas calculadoras de calorias, a fórmula fica
+          visível e a fonte de cada número é citada — inclusive quando o valor foi interpolado em vez
+          de medido, e a página diz isso.
         </p>
         <p>
-          Se você já decidiu que vai treinar e o nó é <em>como organizar a
-          semana</em> — quantos dias, como dividir, o que fazer quando não dá
-          para cumprir tudo —, o
-          <a href={urlFerramenta('treino-para-minha-rotina')}>treino para minha
-          rotina</a> é o caminho. Ele parte da sua disponibilidade real, não da
-          semana ideal, e entrega também a semana mínima viável: o número de
-          sessões que segura a rotina quando o mês aperta.
+          <strong>São gratuitas e não pedem cadastro</strong> porque bloquear resultado atrás de
+          formulário transforma ajuda em isca. O resultado completo aparece na hora, sem e-mail nem
+          telefone. A única informação opcional é a cidade, usada para dizer se o atendimento
+          presencial é viável no seu caso — e dá para pular.
         </p>
         <p>
-          Se o formato você já decidiu e a dúvida é <em>quanto custa</em>, vá
-          direto para a
-          <a href={urlFerramenta('calculadora-preco-personal')}>calculadora de
-          preço</a>. Ela mostra a faixa de referência por sessão e por mês na
-          sua cidade, com a conta aberta — porque o preço muda muito conforme o
-          formato, a frequência e a região, e chegar à conversa sem parâmetro
-          nenhum é o que faz muita gente aceitar o primeiro número que ouve.
+          <strong>O que fica no seu navegador fica só nele.</strong> O Mapa do Treino guarda o que
+          você respondeu — frequência, objetivo, gargalo, formato — no seu próprio aparelho, para a
+          ferramenta seguinte não perguntar de novo. Nada é enviado para servidor, e o botão de apagar
+          está sempre à vista.
         </p>
         <p>
-          As três conversam entre si: ao terminar uma, o resultado sugere a
-          próxima já com o seu contexto, sem perguntar de novo o que você
-          acabou de responder.
-        </p>
-
-        <h2 id="por-que-gratuitas">Por que elas são gratuitas e não pedem cadastro</h2>
-        <p>
-          Porque bloquear resultado atrás de formulário transforma uma ajuda em
-          isca. As duas ferramentas mostram o resultado completo na hora, sem
-          e-mail, sem telefone e sem cadastro. A única informação opcional é a
-          cidade, usada para dizer se o atendimento presencial é viável no seu
-          caso — e dá para pular.
+          <strong>O que elas não fazem:</strong> não prescrevem treino, não fazem avaliação física,
+          não diagnosticam nada e não substituem a orientação individual de um profissional. Quem tem
+          dor, lesão ou alguma condição de saúde deve conversar com um médico ou fisioterapeuta antes
+          de começar a treinar — e levar essa orientação para quem for acompanhar.
         </p>
         <p>
-          O portal é mantido por um profissional que atende presencialmente na
-          região de Alphaville e online no Brasil inteiro. Quando o seu perfil
-          combina com esse trabalho, isso aparece no resultado; quando não
-          combina, a ferramenta diz isso com todas as letras e indica o caminho
-          honesto. Essa é a troca: a ferramenta precisa ser útil mesmo para
-          quem nunca vai contratar nada.
-        </p>
-
-        <h2 id="como-funcionam">Como elas chegam ao resultado</h2>
-        <p>
-          Nenhuma das duas sorteia resposta nem usa inteligência artificial para
-          inventar texto. As duas são determinísticas: as mesmas respostas
-          produzem sempre o mesmo resultado, calculado por regras que estão
-          descritas na própria página de cada ferramenta.
-        </p>
-        <p>
-          Isso vale também para o que elas <em>não</em> afirmam. O diagnóstico
-          não diz que você é de um "tipo" nem promete resultado; a calculadora
-          declara que trabalha com faixa de referência editorial e nunca alega
-          preço médio de mercado, porque não existe coleta de preços praticados
-          por trás. Preferimos entregar um número mais humilde e verdadeiro do
-          que um número redondo e inventado.
-        </p>
-
-        <h2 id="limites">O que as ferramentas não fazem</h2>
-        <p>
-          Elas ajudam a decidir <strong>formato e faixa de investimento</strong>.
-          Não prescrevem treino, não fazem avaliação física, não diagnosticam
-          nada e não substituem a orientação individual de um profissional. Se
-          você tem dor, lesão ou alguma condição de saúde, converse com um
-          médico ou fisioterapeuta antes de começar a treinar — e leve essa
-          orientação para quem for te acompanhar.
-        </p>
-
-        <h2 id="mais">Prefere ler antes de usar</h2>
-        <p>
-          As ferramentas nasceram do conteúdo do portal, e o conteúdo continua
-          lá para quem quiser se aprofundar. Os
-          <a href={rotas.guias}>guias de contratação</a> destrincham critérios,
-          formatos e preços em texto; o diretório de
-          <a href={rotas.cidades}>personal trainer por cidade</a> traz o
-          panorama local de cada região, com academias e espaços de treino
-          verificados.
+          O portal é mantido por um profissional que atende presencialmente na região de Alphaville e
+          online no Brasil inteiro. Quando o seu perfil combina com esse trabalho, isso aparece no
+          resultado; quando não combina, a ferramenta diz isso com todas as letras. Essa é a troca: a
+          ferramenta precisa ser útil mesmo para quem nunca vai contratar nada. Os critérios estão em
+          <a href={rotas.comoAvaliamos}>Como avaliamos</a>.
         </p>
       </article>
     </div>
@@ -333,195 +322,208 @@ const schema = [
       <CtaMontinho variante="destaque" />
     </div>
   </section>
+
   <script>
+    import { iniciarCentral } from '../../scripts/hubFerramentas.client';
     import { iniciarHub } from '../../scripts/hubJornada.client';
+    iniciarCentral();
     iniciarHub();
   </script>
 </Base>
 
 <style>
-  .fer-intro {
-    max-width: 760px;
+  .fh-hero { padding-block-end: var(--sp-5); }
+  .fh-hero h1 { max-width: 20ch; }
+  .fh-lead { max-width: 60ch; }
+
+  /* ------------------------------ Busca ------------------------------ */
+  .fh-busca { margin-top: var(--sp-5); max-width: 720px; }
+  .fh-busca-rotulo { display: block; font-weight: 700; margin-bottom: var(--sp-2); }
+  .fh-busca-linha { display: flex; gap: var(--sp-2); }
+  .fh-busca input[type='search'] {
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0.7rem 1rem;
+    font: inherit;
+    font-size: var(--step-0);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--ink);
+    -webkit-appearance: none;
+    appearance: none;
   }
-  .fer-lead {
-    margin-top: var(--sp-4);
-    font-size: var(--step-1);
+  .fh-busca input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--brand-600); }
+  .fh-busca-btn { min-height: 52px; flex-shrink: 0; }
+  .fh-busca-dica { margin-top: var(--sp-2); font-size: var(--step--1); color: var(--muted); line-height: 1.7; }
+  .fh-exemplo {
+    background: none;
+    border: 0;
+    padding: 0.15rem 0;
+    font: inherit;
+    font-size: inherit;
+    color: var(--brand-600);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+  }
+  .fh-exemplo:hover { color: var(--accent-600); }
+
+  /* ------------------------------ Chips ------------------------------ */
+  .fh-chips {
+    display: flex;
+    gap: var(--sp-2);
+    margin-top: var(--sp-5);
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .fh-chips::-webkit-scrollbar { display: none; }
+  .fh-chip {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    background: #fff;
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 700;
     color: var(--ink-soft);
-    line-height: 1.55;
+    cursor: pointer;
+    white-space: nowrap;
   }
-  .fer-selos {
+  .fh-chip:hover { border-color: var(--brand-600); color: var(--ink); }
+  .fh-chip.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+  .fh-chip:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .fh-chip-n { font-weight: 600; opacity: 0.75; margin-left: 0.15rem; }
+
+  /* ---------------------------- Seções ------------------------------- */
+  .fh-h2 { font-size: var(--step-2); }
+  .fh-secao-cab { max-width: 70ch; margin-bottom: var(--sp-5); }
+  .fh-secao-sub { margin-top: var(--sp-2); color: var(--muted); line-height: 1.6; }
+  .fh-secao-rodape { margin-top: var(--sp-5); font-weight: 700; }
+  .fh-grade { display: grid; gap: var(--sp-4); }
+  @media (min-width: 640px) { .fh-grade { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); } }
+
+  /* ---------------------------- "Mais" ------------------------------- */
+  .fh-mais { margin-top: var(--sp-4); border: 1px dashed var(--line); border-radius: var(--radius); }
+  .fh-mais summary {
+    cursor: pointer;
+    padding: var(--sp-4) var(--sp-5);
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem var(--sp-4);
+    align-items: baseline;
+    min-height: 48px;
+  }
+  .fh-mais summary::-webkit-details-marker { display: none; }
+  .fh-mais summary::before { content: '+'; font-weight: 800; color: var(--accent-600); margin-right: 0.25rem; }
+  .fh-mais[open] summary::before { content: '–'; }
+  .fh-mais summary:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; border-radius: var(--radius); }
+  .fh-mais-rotulo { font-weight: 700; }
+  .fh-mais-lista { font-size: var(--step--1); color: var(--muted); }
+  .fh-grade-mais { padding: 0 var(--sp-5) var(--sp-5); }
+
+  /* ------------------------------ Mapa ------------------------------- */
+  .fh-mapa-box {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    box-shadow: var(--shadow-sm);
+  }
+  .fh-mapa-cab { display: flex; gap: var(--sp-4); align-items: flex-start; }
+  .fh-mapa-ico { flex-shrink: 0; width: 44px; height: 44px; color: var(--accent-600); margin-top: 0.2rem; }
+  .fh-mapa-sub { margin-top: var(--sp-2); color: var(--ink-soft); line-height: 1.6; max-width: 62ch; }
+  .fh-etapas {
     list-style: none;
     padding: 0;
     margin: var(--sp-5) 0 0;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--sp-3) var(--sp-5);
+    gap: 0.35rem 0;
     font-size: var(--step--1);
-    color: var(--muted);
-  }
-  .fer-selos li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .fer-selos span {
-    color: var(--accent);
-    font-weight: 800;
-  }
-
-  /* Cards em coluna única até 900px: o conteúdo de cada um é denso e
-     duas colunas estreitas empilhariam texto demais lado a lado. Acima
-     disso, auto-fit acomoda qualquer quantidade de ferramentas sem deixar
-     linha órfã quando o número é ímpar. */
-  .fer-lista {
-    display: grid;
-    gap: var(--sp-5);
-  }
-  @media (min-width: 900px) {
-    .fer-lista {
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      align-items: start;
-    }
-  }
-  .fer-card {
-    display: flex;
-    flex-direction: column;
-  }
-  .fer-nome {
-    margin-top: var(--sp-3);
-    font-size: var(--step-2);
-    line-height: 1.2;
-  }
-  .fer-nome a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .fer-nome a:hover {
-    color: var(--brand-600);
-  }
-  .fer-pergunta {
-    margin-top: var(--sp-2);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--ink-soft);
+    counter-reset: etapa;
   }
-  .fer-desc {
-    margin-top: var(--sp-3);
-    color: var(--muted);
-    line-height: 1.6;
+  .fh-etapas li { display: inline-flex; align-items: center; counter-increment: etapa; }
+  .fh-etapas li::before {
+    content: counter(etapa);
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--brand-700); color: #fff;
+    font-size: 0.75rem; display: inline-flex; align-items: center; justify-content: center;
+    margin-right: 0.4rem;
   }
-  .fer-paraquem {
-    margin-top: var(--sp-4);
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .fer-entrega {
-    margin-top: var(--sp-4);
-    padding-top: var(--sp-4);
-    border-top: 1px solid var(--line-soft);
-  }
-  .fer-entrega h3 {
-    font-size: var(--step-0);
-    margin-bottom: var(--sp-3);
-  }
-  .fer-naofaz {
-    margin-top: var(--sp-4);
-    font-size: var(--step--1);
-    color: var(--muted);
-    line-height: 1.55;
-  }
-  /* Empurra o botão para a base: com cards de alturas diferentes, as
-     chamadas de ação ficam alinhadas entre si. */
-  .fer-btn {
-    margin-top: auto;
-    align-self: flex-start;
-    margin-block-start: var(--sp-5);
-  }
-  .fer-card--breve {
-    opacity: 0.75;
-  }
+  .fh-etapas li + li::before { margin-left: 0; }
+  .fh-etapas li:not(:last-child)::after { content: '→'; color: var(--muted); font-weight: 400; margin: 0 0.6rem; }
+  .fh-mapa-acoes { margin-top: var(--sp-5); display: flex; flex-wrap: wrap; gap: var(--sp-3) var(--sp-5); align-items: center; }
+  .fh-mapa-micro { font-size: var(--step--1); color: var(--muted); line-height: 1.5; max-width: 48ch; }
+  @media (max-width: 480px) { .fh-mapa-acoes .btn { width: 100%; } }
 
-  .fer-artigo {
-    max-width: var(--container-narrow);
-    margin-inline: auto;
+  /* ----------------------------- Zero ------------------------------- */
+  .fh-zero-titulo { font-weight: 750; font-size: var(--step-1); }
+  .fh-zero-texto { margin: var(--sp-2) 0 var(--sp-5); color: var(--muted); }
+  .fh-zero-acoes { margin-top: var(--sp-5); display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; }
+  .fh-limpar { background: none; border: 0; font: inherit; color: var(--muted); text-decoration: underline; cursor: pointer; min-height: 44px; padding: 0 0.5rem; }
+
+  /* -------------------------- Não encontrou -------------------------- */
+  .fh-nao { max-width: 760px; }
+  .fh-busca-portal { display: flex; gap: var(--sp-2); margin-top: var(--sp-4); max-width: 560px; }
+  .fh-busca-portal input {
+    flex: 1 1 auto; min-width: 0; min-height: 48px; padding: 0.6rem 0.9rem; font: inherit;
+    border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
   }
-  .fer-atualizado {
-    color: var(--muted);
-    font-size: var(--step--1);
-    margin-bottom: var(--sp-5);
-  }
-  .fer-artigo h2 {
-    margin-top: var(--sp-7);
-    font-size: var(--step-2);
-  }
-  .fer-artigo h2:first-of-type {
-    margin-top: 0;
-  }
-  .fer-artigo p {
-    margin-top: var(--sp-4);
-    line-height: 1.7;
-  }
+  .fh-nao-links { list-style: none; padding: 0; margin: var(--sp-4) 0 0; display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-5); font-weight: 700; }
+
+  /* ----------------------------- Artigo ------------------------------ */
+  .fh-artigo { max-width: var(--container-narrow); margin-inline: auto; }
+  .fh-atualizado { color: var(--muted); font-size: var(--step--1); margin-bottom: var(--sp-4); }
+  .fh-artigo h2 { font-size: var(--step-2); }
+  .fh-artigo p { margin-top: var(--sp-4); line-height: 1.7; }
 </style>
 
-<!-- is:global obrigatório: mapa, plano e roteador nascem via JS. Prefixo `hj-`. -->
+<!-- is:global: os cards são clonados pela busca e o roteador/mapa nascem via JS. -->
 <style is:global>
-  .hj-sub {
-    margin-top: var(--sp-3);
-    color: var(--muted);
-    line-height: 1.65;
-    max-width: 68ch;
-  }
-
-  /* ------------------------ Onde você está hoje ------------------------ */
-  .hj-situacoes {
-    list-style: none;
-    padding: 0;
-    margin: var(--sp-5) 0 0;
-    display: grid;
-    gap: var(--sp-3);
-  }
-  @media (min-width: 700px) {
-    .hj-situacoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (min-width: 1080px) {
-    .hj-situacoes { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  .hj-sit {
+  .fh-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    height: 100%;
-    padding: var(--sp-4) var(--sp-5);
-    border: 2px solid var(--line);
-    border-radius: var(--radius);
+    gap: var(--sp-2);
+    padding: var(--sp-5);
     background: #fff;
-    text-decoration: none;
-    color: var(--ink);
-    transition: border-color 0.12s ease, transform 0.12s ease;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
   }
-  .hj-sit:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .hj-sit:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-  .hj-sit-frase { font-size: var(--step-0); font-weight: 700; line-height: 1.35; }
-  .hj-sit-detalhe { font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
-  .hj-sit-destino {
-    margin-top: auto;
-    padding-top: var(--sp-3);
-    font-size: var(--step--1);
-    color: var(--brand-600);
-  }
+  .fh-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--brand-100); }
+  .fh-card:focus-within { border-color: var(--brand-600); }
+  .fh-card-topo { display: flex; align-items: center; gap: var(--sp-3); }
+  .fh-card-ico { width: 36px; height: 36px; flex-shrink: 0; color: var(--accent-600); background: var(--accent-50); border-radius: 10px; padding: 7px; }
+  .fh-card-selos { display: flex; gap: 0.35rem; margin-left: auto; }
+  .fh-card h3 { font-size: var(--step-1); line-height: 1.25; margin-top: var(--sp-2); }
+  .fh-card h3 a { color: inherit; text-decoration: none; }
+  /* O card inteiro é área de clique do link do nome. */
+  .fh-card h3 a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+  .fh-card h3 a:focus-visible { outline: none; }
+  .fh-card:has(h3 a:focus-visible) { outline: 3px solid var(--brand); outline-offset: 2px; }
+  .fh-card-resumo { color: var(--ink-soft); line-height: 1.55; font-size: var(--step--1); }
+  .fh-card-meta { font-size: var(--step--1); color: var(--muted); }
+  .fh-card-acao { margin-top: auto; padding-top: var(--sp-2); font-weight: 750; color: var(--brand-600); font-size: var(--step--1); }
+  .fh-card:hover .fh-card-acao { text-decoration: underline; }
+  .fh-card--destaque { border-top: 4px solid var(--accent); }
 
-  /* ----------------------------- Roteador ------------------------------ */
-  .hj-rot-wrap {
-    margin-top: var(--sp-6);
-    padding-top: var(--sp-5);
-    border-top: 1px solid var(--line-soft);
-    text-align: center;
-  }
-  .hj-rot-chamada { font-weight: 700; margin-bottom: var(--sp-3); }
-  .hj-rot-micro { margin-top: var(--sp-2); font-size: var(--step--1); color: var(--muted); }
+  /* ----------------------------- Roteador ---------------------------- */
   .hj-rot { margin-top: var(--sp-5); }
   .hj-rot-box {
     max-width: 620px;
-    margin-inline: auto;
     text-align: left;
     background: #fff;
     border: 2px solid var(--brand-600);
@@ -529,195 +531,59 @@ const schema = [
     padding: var(--sp-5);
     box-shadow: var(--shadow-lg);
   }
-  .hj-rot-passo {
-    font-size: var(--step--1);
-    font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+  .hj-rot-passo { font-size: var(--step--1); font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
   .hj-rot-pergunta { margin-top: var(--sp-2); font-size: var(--step-1); line-height: 1.25; }
   .hj-rot-opcoes { display: grid; gap: var(--sp-2); margin-top: var(--sp-4); }
   .hj-rot-opcao {
-    text-align: left;
-    padding: 0.85rem 1rem;
-    border: 2px solid var(--line);
-    border-radius: var(--radius);
-    background: #fff;
-    font: inherit;
-    font-weight: 600;
-    color: var(--ink);
-    cursor: pointer;
-    min-height: 52px;
+    text-align: left; padding: 0.85rem 1rem; border: 2px solid var(--line); border-radius: var(--radius);
+    background: #fff; font: inherit; font-weight: 600; color: var(--ink); cursor: pointer; min-height: 52px;
   }
   .hj-rot-opcao:hover { border-color: var(--accent); background: var(--accent-50); }
   .hj-rot-voltar {
-    margin-top: var(--sp-4);
-    background: none;
-    border: 0;
-    font: inherit;
-    font-size: var(--step--1);
-    color: var(--muted);
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0.4rem 0;
-    min-height: 44px;
-    display: block;
+    margin-top: var(--sp-4); background: none; border: 0; font: inherit; font-size: var(--step--1);
+    color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0.4rem 0; min-height: 44px; display: block;
   }
-  .hj-rot-rotulo {
-    font-size: var(--step--1);
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent-600);
-  }
+  .hj-rot-rotulo { font-size: var(--step--1); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-600); }
   .hj-rot-titulo { margin-top: var(--sp-2); font-size: var(--step-2); line-height: 1.2; }
   .hj-rot-etapa { margin-top: var(--sp-2); font-size: var(--step--1); color: var(--muted); font-weight: 600; }
   .hj-rot-porque { margin-top: var(--sp-3); line-height: 1.65; }
   .hj-rot-resultado .btn { margin-top: var(--sp-4); }
 
-  /* -------------------------- Meu Mapa do Treino ----------------------- */
-  .hj-mapa-box {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    padding: var(--sp-6);
-    box-shadow: var(--shadow);
-  }
+  /* -------------------------- Mapa salvo (JS) ------------------------ */
+  #hj-mapa { margin-top: var(--sp-5); }
+  .hj-mapa-box { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: var(--sp-6); box-shadow: var(--shadow); }
   .hj-mapa-titulo { font-size: var(--step-2); }
   .hj-mapa-sub { margin-top: var(--sp-2); color: var(--muted); }
-  .hj-mapa-lista {
-    margin: var(--sp-5) 0 0;
-    display: grid;
-    gap: var(--sp-3);
-  }
-  @media (min-width: 700px) {
-    .hj-mapa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  .hj-mapa-item {
-    border-left: 3px solid var(--accent);
-    padding-left: var(--sp-4);
-  }
-  .hj-mapa-item dt {
-    font-size: var(--step--1);
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 700;
-  }
+  .hj-mapa-lista { margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-3); }
+  @media (min-width: 700px) { .hj-mapa-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .hj-mapa-item { border-left: 3px solid var(--accent); padding-left: var(--sp-4); }
+  .hj-mapa-item dt { font-size: var(--step--1); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
   .hj-mapa-item dd { margin: 0.15rem 0 0; font-weight: 700; font-size: var(--step-0); }
-
-  .hj-mapa-etapas {
-    list-style: none;
-    padding: 0;
-    margin: var(--sp-5) 0 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-2) var(--sp-4);
-  }
+  .hj-mapa-etapas { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); }
   .hj-etapa { display: inline-flex; align-items: center; gap: 0.4rem; font-size: var(--step--1); color: var(--muted); }
   .hj-etapa-marca { font-weight: 800; }
   .hj-etapa--feita { color: var(--ink); font-weight: 700; }
   .hj-etapa--feita .hj-etapa-marca { color: #1f8a54; }
-
-  .hj-continue {
-    margin-top: var(--sp-6);
-    padding: var(--sp-5);
-    border-radius: var(--radius);
-    background: var(--bg-tint);
-    border-left: 4px solid var(--brand-600);
-  }
-  .hj-continue-rotulo {
-    font-size: var(--step--1);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--brand-700);
-  }
+  .hj-continue { margin-top: var(--sp-6); padding: var(--sp-5); border-radius: var(--radius); background: var(--bg-tint); border-left: 4px solid var(--brand-600); }
+  .hj-continue-rotulo { font-size: var(--step--1); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--brand-700); }
   .hj-continue-porque { margin-top: var(--sp-2); line-height: 1.65; }
   .hj-continue .btn { margin-top: var(--sp-4); }
-
-  .hj-plano {
-    margin-top: var(--sp-6);
-    padding-top: var(--sp-5);
-    border-top: 1px solid var(--line);
-  }
+  .hj-plano { margin-top: var(--sp-6); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
   .hj-plano h3 { font-size: var(--step-1); }
   .hj-plano-resumo { margin-top: var(--sp-2); color: var(--muted); line-height: 1.6; }
   .hj-plano-acoes { margin: var(--sp-4) 0 0; padding-left: 1.3rem; display: grid; gap: var(--sp-2); }
   .hj-plano-acoes li { line-height: 1.6; }
-
   .hj-escolha { margin-top: var(--sp-5); }
   .hj-escolha h4 { font-size: var(--step-0); }
   .hj-escolha-grade { display: grid; gap: var(--sp-3); margin-top: var(--sp-3); }
-  @media (min-width: 700px) {
-    .hj-escolha-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  .hj-escolha-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: var(--sp-4);
-    border: 2px solid var(--line);
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--ink);
-  }
+  @media (min-width: 700px) { .hj-escolha-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .hj-escolha-item { display: flex; flex-direction: column; gap: 0.3rem; padding: var(--sp-4); border: 2px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--ink); }
   .hj-escolha-item:hover { border-color: var(--brand); }
   .hj-escolha-item span { font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
   .hj-escolha-item--destaque { border-color: var(--accent); background: var(--accent-50); }
-
-  .hj-mapa-rodape {
-    margin-top: var(--sp-6);
-    padding-top: var(--sp-4);
-    border-top: 1px solid var(--line-soft);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--sp-3);
-    align-items: center;
-    justify-content: space-between;
-  }
+  .hj-mapa-rodape { margin-top: var(--sp-6); padding-top: var(--sp-4); border-top: 1px solid var(--line-soft); display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: center; justify-content: space-between; }
   .hj-mapa-rodape p { font-size: var(--step--1); color: var(--muted); line-height: 1.5; flex: 1 1 320px; margin: 0; }
-  .hj-apagar {
-    border: 1px solid var(--line);
-    background: #fff;
-    border-radius: 999px;
-    padding: 0.4rem 1rem;
-    font: inherit;
-    font-size: var(--step--1);
-    cursor: pointer;
-    min-height: 44px;
-  }
+  .hj-apagar { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 0.4rem 1rem; font: inherit; font-size: var(--step--1); cursor: pointer; min-height: 44px; }
   .hj-apagar:hover { border-color: #b4571f; color: #b4571f; }
   .hj-apagado { color: var(--muted); }
-
-  /* ---------------------------- As 7 etapas ---------------------------- */
-  .hj-etapas-lista { list-style: none; padding: 0; margin: var(--sp-5) 0 0; display: grid; gap: var(--sp-3); }
-  @media (min-width: 760px) {
-    .hj-etapas-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  .hj-etapa-card {
-    display: flex;
-    gap: var(--sp-4);
-    align-items: flex-start;
-    padding: var(--sp-4);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: #fff;
-  }
-  .hj-etapa-num {
-    flex-shrink: 0;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--brand-700);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-  }
-  .hj-etapa-card h3 { font-size: var(--step-0); line-height: 1.35; }
-  .hj-etapa-card h3 a { color: var(--brand-600); }
-  .hj-etapa-pergunta { margin-top: 0.25rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
 </style>

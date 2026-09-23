@@ -9,6 +9,7 @@ import type { APIRoute } from 'astro';
 import { cidades } from '../data/cidades';
 import { artigos } from '../data/artigos';
 import { emCidade } from '../lib/gramatica';
+import { catalogo } from '../data/ferramentas';
 
 export const GET: APIRoute = () => {
   const itens = [
@@ -24,13 +25,13 @@ export const GET: APIRoute = () => {
       u: a.url,
       k: a.titulo,
     })),
-    {
-      t: 'Encontre seu Personal Ideal',
+    ...catalogo.map((f) => ({
+      t: f.nome,
       s: 'Ferramenta',
-      u: '/ferramentas/encontre-seu-personal-ideal/',
-      k: 'teste quiz encontrar personal ideal escolher personal online presencial hibrido acompanhamento',
-    },
-    { t: 'Ferramentas', s: 'Seção', u: '/ferramentas/', k: 'ferramentas testes calculadora' },
+      u: f.url,
+      k: `${f.nome} ${f.nomeCurto} ${f.pergunta} ${f.aliases.join(' ')}`,
+    })),
+    { t: 'Ferramentas e calculadoras', s: 'Seção', u: '/ferramentas/', k: 'ferramentas testes calculadora calculadoras central' },
     { t: 'Encontrar personal por cidade', s: 'Seção', u: '/personal-trainer/', k: 'encontrar personal cidades diretorio' },
     { t: 'Guias de contratação', s: 'Seção', u: '/guias/', k: 'guias contratar personal trainer' },
     { t: 'Musculação', s: 'Seção', u: '/musculacao/', k: 'musculacao treino hipertrofia' },

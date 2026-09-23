@@ -23,6 +23,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
 import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
+import { porCategoria } from '../../data/ferramentas';
 import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
 import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
 import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '../../lib/calorias/bicicleta';
@@ -68,112 +69,37 @@ const EX_HYROX = HYROX.ok ? formataHyrox(HYROX.kcal) : '—';
 const EX_BASQUETE = formataBasquete(basquetePorTempo(60, PESO_PADRAO, 'jogo').kcalMin);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
 
-const ferramentas = [
-  {
-    url: '/calorias/caminhada/',
-    nome: 'Caminhada',
-    calcula: 'Por tempo, distância, passos ou meta de calorias — com ritmo e inclinação.',
-    exemplo: `30 min moderados ≈ ${EX_30} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/corrida/',
-    nome: 'Corrida',
-    calcula: 'Por distância, tempo ou meta, com o seu pace — e a faixa, porque economia de corrida varia.',
-    exemplo: `5 km a 6:00/km ≈ ${EX_5KM} para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/bicicleta/',
-    nome: 'Bicicleta',
-    calcula: 'Na rua por velocidade, na ergométrica por watts — porque são escalas diferentes.',
-    exemplo: `1 hora a ${VELOCIDADE_PADRAO} km/h ≈ ${EX_BIKE} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/natacao/',
-    nome: 'Natação',
-    calcula: 'Por estilo, distância ou tempo de piscina — descontando a borda, que é o erro da categoria.',
-    exemplo: `1 hora de crawl médio ≈ ${EX_NADO} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/escada/',
-    nome: 'Escada',
-    calcula: 'Por andares, degraus ou máquina — a única conta do site que sai da física, e não de tabela.',
-    exemplo: `10 andares ≈ ${EX_ESCADA} kcal líquidas para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/corda/',
-    nome: 'Pular corda',
-    calcula: 'Por tempo, pulos ou séries — e a conta que desmonta a lenda dos 10 minutos.',
-    exemplo: `10 min em ritmo moderado ≈ ${EX_CORDA} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/danca/',
-    nome: 'Dança',
-    calcula: 'Por estilo e por tempo de aula, com a fonte de cada número — inclusive o que ninguém mediu.',
-    exemplo: `45 min de Zumba ≈ ${EX_DANCA} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/yoga-e-pilates/',
-    nome: 'Yoga e pilates',
-    calcula: 'Por estilo — e o modo que compara o número do seu relógio com a medição de verdade.',
-    exemplo: `1 hora de hatha ≈ ${EX_YOGA} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/futebol/',
-    nome: 'Futebol',
-    calcula: 'Pelo tempo em campo, não pelo aluguel da quadra — na pelada, vagas ÷ gente presente.',
-    exemplo: `2 horas de society com 21 pessoas = ${tempoFutebol(PELADA.minutosEmCampo)} em campo ≈ ${formataFutebol(PELADA.kcal)} kcal`,
-  },
-  {
-    url: '/calorias/lutas/',
-    nome: 'Boxe e lutas',
-    calcula: 'Por round, como quem treina conta — saco, sparring, luta e artes marciais, cada número com código.',
-    exemplo: `6 rounds de 3 min no saco ≈ ${EX_LUTA} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/hidroginastica/',
-    nome: 'Hidroginástica',
-    calcula: 'Por aula, semana ou meta — com a aula medida em estudo, que gasta menos que a tabela.',
-    exemplo: `Uma aula de 50 min ≈ ${EX_HIDRO} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/tenis/',
-    nome: 'Tênis',
-    calcula: 'Simples, geral ou duplas — contando a pausa entre pontos, que a medição mostra que já está na tabela.',
-    exemplo: `1 hora de simples ≈ ${EX_TENIS} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/volei/',
-    nome: 'Vôlei',
-    calcula: 'Quadra ou areia, lazer ou competição — quatro linhas do Compêndio, com o código de cada uma.',
-    exemplo: `1 hora: ≈ ${EX_VOLEI_LAZER} kcal no ginásio sem disputa, ≈ ${EX_VOLEI_PRAIA} na areia, para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/crossfit/',
-    nome: 'Crossfit',
-    calcula: 'Pelo WOD, não pela aula inteira — com um WOD medido como régua e o aviso de quando o oxigênio não vê tudo.',
-    exemplo: `Aula de 1 hora com 20 min de WOD ≈ ${EX_CROSSFIT} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/hyrox/',
-    nome: 'Hyrox',
-    calcula: 'Pelo tempo final e pelo pace: 8 km de corrida e 8 estações, cada parte com a sua fonte.',
-    exemplo: `Prova de 1h30 com pace de 6:00 ≈ ${EX_HYROX} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    url: '/calorias/basquete/',
-    nome: 'Basquete',
-    calcula: 'Jogo, treino ou arremesso pela tabela — e o jogo competitivo pela medição feita em quadra, que passou a tabela.',
-    exemplo: `1 hora de jogo ≈ ${EX_BASQUETE} kcal para ${PESO_PADRAO} kg`,
-  },
-  {
-    // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
-    // /calorias/ disputaria a mesma busca com ele.
-    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
-    nome: 'Musculação',
-    calcula: 'Por tipo de treino, com o EPOC no tamanho certo e o gasto do músculo ganho em repouso.',
-    exemplo: `1 hora de treino variado ≈ ${EX_MUSCULACAO} kcal para ${PESO_PADRAO} kg`,
-  },
-];
+/*
+ * Nome, URL e resumo vêm do catálogo central (src/data/ferramentas.ts):
+ * é lá que uma calculadora nova entra. Aqui fica só o exemplo resolvido
+ * pelo motor de cada uma — o que este hub tem e a Central não precisa.
+ */
+const EXEMPLOS: Record<string, string> = {
+  caminhada: `30 min moderados ≈ ${EX_30} kcal para ${PESO_PADRAO} kg`,
+  corrida: `5 km a 6:00/km ≈ ${EX_5KM} para ${PESO_PADRAO} kg`,
+  bicicleta: `1 hora a ${VELOCIDADE_PADRAO} km/h ≈ ${EX_BIKE} kcal para ${PESO_PADRAO} kg`,
+  natacao: `1 hora de crawl médio ≈ ${EX_NADO} kcal para ${PESO_PADRAO} kg`,
+  escada: `10 andares ≈ ${EX_ESCADA} kcal líquidas para ${PESO_PADRAO} kg`,
+  corda: `10 min em ritmo moderado ≈ ${EX_CORDA} kcal para ${PESO_PADRAO} kg`,
+  danca: `45 min de Zumba ≈ ${EX_DANCA} kcal para ${PESO_PADRAO} kg`,
+  'yoga-e-pilates': `1 hora de hatha ≈ ${EX_YOGA} kcal para ${PESO_PADRAO} kg`,
+  futebol: `2 horas de society com 21 pessoas = ${tempoFutebol(PELADA.minutosEmCampo)} em campo ≈ ${formataFutebol(PELADA.kcal)} kcal`,
+  lutas: `6 rounds de 3 min no saco ≈ ${EX_LUTA} kcal para ${PESO_PADRAO} kg`,
+  hidroginastica: `Uma aula de 50 min ≈ ${EX_HIDRO} kcal para ${PESO_PADRAO} kg`,
+  tenis: `1 hora de simples ≈ ${EX_TENIS} kcal para ${PESO_PADRAO} kg`,
+  volei: `1 hora: ≈ ${EX_VOLEI_LAZER} kcal no ginásio sem disputa, ≈ ${EX_VOLEI_PRAIA} na areia, para ${PESO_PADRAO} kg`,
+  crossfit: `Aula de 1 hora com 20 min de WOD ≈ ${EX_CROSSFIT} kcal para ${PESO_PADRAO} kg`,
+  hyrox: `Prova de 1h30 com pace de 6:00 ≈ ${EX_HYROX} kcal para ${PESO_PADRAO} kg`,
+  basquete: `1 hora de jogo ≈ ${EX_BASQUETE} kcal para ${PESO_PADRAO} kg`,
+  musculacao: `1 hora de treino variado ≈ ${EX_MUSCULACAO} kcal para ${PESO_PADRAO} kg`,
+};
+
+const ferramentas = porCategoria('calorias').map((f) => ({
+  url: f.url,
+  nome: f.nomeCurto,
+  calcula: f.resumo,
+  exemplo: EXEMPLOS[f.slug] ?? '',
+}));
 
 /* 47 caracteres. */
 const title = 'Quantas Calorias Cada Atividade Gasta | Calcule';
@@ -263,8 +189,8 @@ const schema = [
             — por que &ldquo;qual gasta mais&rdquo; é a pergunta errada.
           </li>
           <li>
-            <a href="/ferramentas/">Meu Mapa do Treino</a> — as sete ferramentas de decisão sobre
-            treino e acompanhamento. É outro caminho, para outra pergunta.
+            <a href="/ferramentas/">Todas as ferramentas do portal</a> — treino, personal trainer e
+            calorias, com busca por dúvida. É outro caminho, para outra pergunta.
           </li>
         </ul>
       </div>

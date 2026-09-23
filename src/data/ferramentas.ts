@@ -181,3 +181,510 @@ export const urlFerramenta = (slug: string) => `/ferramentas/${slug}/`;
 
 /** Só as publicadas, na ordem do registro. */
 export const ferramentasDisponiveis = ferramentas.filter((f) => f.disponivel);
+
+/* ────────────────────────────────────────────────────────────────────── *
+ * O CATÁLOGO — todas as ferramentas do portal, num lugar só
+ *
+ * O registro acima (`ferramentas`) é o das sete ferramentas da jornada,
+ * e três testes e o rodapé dependem de ele conter só o que mora em
+ * /ferramentas/. O catálogo é a camada de cima: junta essas sete com as
+ * calculadoras de /calorias/ e é o que a Central de Ferramentas, a busca
+ * do menu e o schema leem.
+ *
+ * Publicar uma calculadora nova de calorias = criar a página + uma entrada
+ * em `CALORIAS` abaixo. O hub, a busca, o rodapé de /calorias/ e o schema
+ * acompanham. Nada de editar três páginas à mão.
+ *
+ * A taxonomia é por NECESSIDADE, não por formato ("quiz", "calculadora"):
+ * quem chega quer saber o que a ferramenta resolve, não como ela funciona.
+ * Uma categoria só existe com duas ferramentas ou mais e uma necessidade
+ * própria — categoria vazia para SEO não entra.
+ * ────────────────────────────────────────────────────────────────────── */
+
+export type CategoriaId = 'treino' | 'personal' | 'calorias';
+
+export interface Categoria {
+  id: CategoriaId;
+  /** Nome curto, como aparece no filtro. */
+  nome: string;
+  /** Título da seção (H2). */
+  titulo: string;
+  /** Uma frase: para que serve o grupo. */
+  descricao: string;
+  /** Sub-hub, quando a categoria já tem página própria. */
+  hub?: string;
+  /** Quantas aparecem abertas no hub; o resto fica em "mais". */
+  mostrarNoHub: number;
+}
+
+export const CATEGORIAS: Categoria[] = [
+  {
+    id: 'treino',
+    nome: 'Treino',
+    titulo: 'Organizar e avaliar o treino',
+    descricao:
+      'Para montar a semana que cabe na sua rotina, descobrir por que o treino não engata e conferir se o programa que você segue está bem distribuído.',
+    mostrarNoHub: 6,
+  },
+  {
+    id: 'personal',
+    nome: 'Personal trainer',
+    titulo: 'Escolher, pagar e avaliar um personal',
+    descricao:
+      'Para decidir se vale ter acompanhamento, em que formato, quanto ele costuma custar na sua cidade e se o que você já paga está entregando.',
+    mostrarNoHub: 6,
+  },
+  {
+    id: 'calorias',
+    nome: 'Calorias',
+    titulo: 'Calorias por atividade',
+    descricao:
+      'Estimativas de gasto energético por esporte e atividade física — cada uma com a conta aberta e a fonte de cada número citada.',
+    hub: '/calorias/',
+    mostrarNoHub: 6,
+  },
+];
+
+export const categoria = (id: CategoriaId): Categoria => CATEGORIAS.find((c) => c.id === id)!;
+
+export interface FerramentaCatalogo {
+  slug: string;
+  url: string;
+  nome: string;
+  nomeCurto: string;
+  categoria: CategoriaId;
+  /** Uma linha: o que a pessoa vai descobrir. É o texto do card. */
+  resumo: string;
+  /** A dúvida, como a pessoa a formula. */
+  pergunta: string;
+  /** Rótulo da ação no card: "Calcular preço", nunca "Ver mais". */
+  acao: string;
+  /** Quanto tempo leva: "≈ 1 min", "Resultado na hora". */
+  tempo: string;
+  /** Como as pessoas pedem esta ferramenta, para a busca por intenção. */
+  aliases: string[];
+  tags: string[];
+  /** Slugs de ferramentas que fazem sentido depois desta. */
+  relacionadas: string[];
+  /** Id na jornada (só as sete do Mapa do Treino). */
+  jornada?: string;
+  /** Entra em "Comece por estas". Critério declarado na página. */
+  destaque?: boolean;
+  publicadoEm: string;
+}
+
+/** Metadados de catálogo das sete ferramentas da jornada. */
+const JORNADA: Record<string, Omit<FerramentaCatalogo, 'slug' | 'url' | 'nome' | 'nomeCurto'>> = {
+  'treino-para-minha-rotina': {
+    categoria: 'treino',
+    resumo: 'Descubra qual estrutura de treino cabe nos dias que você realmente tem — e a semana mínima para quando o mês aperta.',
+    pergunta: 'Como devo dividir meu treino com os dias que tenho?',
+    acao: 'Organizar meu treino',
+    tempo: '≈ 1 min',
+    aliases: [
+      'montar minha rotina',
+      'montar treino',
+      'quantos dias treinar',
+      'divisão de treino',
+      'por onde começar',
+      'quero começar a treinar',
+      'estou perdido',
+      'não sei o que fazer',
+      'treino abc',
+      'full body',
+      'semana de treino',
+      'falta tempo',
+    ],
+    tags: ['rotina', 'organizar', 'frequência', 'iniciante', 'planejamento'],
+    relacionadas: ['meu-treino-faz-sentido', 'diagnostico-da-constancia'],
+    jornada: 'rotina',
+    destaque: true,
+    publicadoEm: '2026-08-10',
+  },
+  'diagnostico-da-constancia': {
+    categoria: 'treino',
+    resumo: 'Encontre o gargalo que mais pesa na sua regularidade: frequência, deslocamento, falta de plano B ou carga de decisão.',
+    pergunta: 'Por que não consigo manter uma rotina de treino?',
+    acao: 'Fazer o diagnóstico',
+    tempo: '≈ 1 min',
+    aliases: [
+      'não consigo manter academia',
+      'começo e paro',
+      'desisto da academia',
+      'falta de constância',
+      'falta de disciplina',
+      'motivação para treinar',
+      'não consigo manter a rotina',
+      'largo o treino',
+      'regularidade',
+    ],
+    tags: ['constância', 'aderência', 'hábito', 'regularidade'],
+    relacionadas: ['treino-para-minha-rotina', 'presencial-ou-online'],
+    jornada: 'constancia',
+    publicadoEm: '2026-08-10',
+  },
+  'meu-treino-faz-sentido': {
+    categoria: 'treino',
+    resumo: 'Monte a sua semana e receba uma análise da estrutura: exposição por grupo muscular, prioridade, progressão e se cabe na rotina.',
+    pergunta: 'Meu treino está bem montado?',
+    acao: 'Analisar meu treino',
+    tempo: '≈ 2 min',
+    aliases: [
+      'meu treino está errado',
+      'meu treino está bom',
+      'meu treino está mal montado',
+      'analisar meu treino',
+      'avaliar treino',
+      'auditoria do treino',
+      'volume de treino',
+      'grupo muscular',
+      'divisão está certa',
+      'ficha de treino',
+    ],
+    tags: ['análise', 'estrutura', 'volume', 'progressão', 'desempenho'],
+    relacionadas: ['treino-para-minha-rotina', 'encontre-seu-personal-ideal'],
+    jornada: 'auditoria',
+    publicadoEm: '2026-08-10',
+  },
+  'encontre-seu-personal-ideal': {
+    categoria: 'personal',
+    resumo: 'Nove perguntas cruzam objetivo, experiência e rotina para indicar o tipo de acompanhamento que faz sentido e o que procurar no profissional.',
+    pergunta: 'Preciso de personal? Que tipo combina comigo?',
+    acao: 'Descobrir meu personal ideal',
+    tempo: '≈ 1 min',
+    aliases: [
+      'quero contratar um personal',
+      'preciso de personal',
+      'como escolher personal',
+      'que personal contratar',
+      'tipo de personal',
+      'personal ideal',
+      'teste personal',
+    ],
+    tags: ['escolher', 'contratar', 'acompanhamento', 'diagnóstico'],
+    relacionadas: ['presencial-ou-online', 'calculadora-preco-personal'],
+    jornada: 'personalIdeal',
+    publicadoEm: '2026-07-20',
+  },
+  'presencial-ou-online': {
+    categoria: 'personal',
+    resumo: 'Compare pagar por presença durante o treino com pagar por planejamento a distância — e veja qual encaixa no seu momento.',
+    pergunta: 'Personal presencial ou online: qual combina comigo?',
+    acao: 'Descobrir meu formato',
+    tempo: '≈ 1 min',
+    aliases: [
+      'personal online vale a pena',
+      'personal online ou presencial',
+      'consultoria online',
+      'treino online funciona',
+      'acompanhamento a distância',
+      'contratar personal online',
+      'híbrido',
+    ],
+    tags: ['formato', 'online', 'presencial', 'híbrido', 'decisão'],
+    relacionadas: ['calculadora-preco-personal', 'encontre-seu-personal-ideal'],
+    jornada: 'formato',
+    publicadoEm: '2026-08-10',
+  },
+  'calculadora-preco-personal': {
+    categoria: 'personal',
+    resumo: 'Veja a faixa de referência por sessão e por mês na sua cidade, conforme o formato e a frequência — com a conta aberta.',
+    pergunta: 'Quanto custa um personal trainer na minha cidade?',
+    acao: 'Calcular preço',
+    tempo: 'Resultado na hora',
+    aliases: [
+      'quanto custa um personal',
+      'quanto cobra personal',
+      'preço do personal',
+      'valor do personal',
+      'personal trainer preço',
+      'quanto custa a hora do personal',
+      'quanto custa por mês',
+      'orçamento personal',
+      'tabela de preço',
+      'quanto pagar',
+    ],
+    tags: ['preço', 'custo', 'investimento', 'cidade', 'valor'],
+    relacionadas: ['presencial-ou-online', 'encontre-seu-personal-ideal'],
+    jornada: 'preco',
+    destaque: true,
+    publicadoEm: '2026-07-20',
+  },
+  'personal-score': {
+    categoria: 'personal',
+    resumo: 'Avalie o serviço que você já paga — individualização, progressão, acompanhamento e clareza — e saia com perguntas para a próxima conversa.',
+    pergunta: 'Meu personal está me acompanhando bem?',
+    acao: 'Avaliar meu acompanhamento',
+    tempo: '≈ 2 min',
+    aliases: [
+      'meu personal é bom',
+      'avaliar meu personal',
+      'trocar de personal',
+      'personal não me acompanha',
+      'estou pagando e não vejo resultado',
+      'acompanhamento ruim',
+      'nota do personal',
+    ],
+    tags: ['avaliar', 'qualidade', 'acompanhamento', 'já tenho personal'],
+    relacionadas: ['presencial-ou-online', 'meu-treino-faz-sentido'],
+    jornada: 'score',
+    publicadoEm: '2026-08-20',
+  },
+};
+
+/** As calculadoras de calorias. Uma entrada por atividade, nome curto igual ao da atividade. */
+const CALORIAS: Array<Omit<FerramentaCatalogo, 'categoria' | 'acao' | 'tempo'> & { acao?: string }> = [
+  {
+    slug: 'caminhada',
+    url: '/calorias/caminhada/',
+    nome: 'Calorias da caminhada',
+    nomeCurto: 'Caminhada',
+    resumo: 'Por tempo, distância, passos ou meta de calorias — com ritmo e inclinação.',
+    pergunta: 'Quantas calorias a caminhada gasta?',
+    aliases: ['caminhar', 'andar', 'passos', 'esteira', 'quantos passos', 'caminhada gasta'],
+    tags: ['cardio', 'iniciante', 'passos'],
+    relacionadas: ['corrida', 'escada'],
+    destaque: true,
+    publicadoEm: '2026-09-02',
+  },
+  {
+    slug: 'corrida',
+    url: '/calorias/corrida/',
+    nome: 'Calorias da corrida',
+    nomeCurto: 'Corrida',
+    resumo: 'Por distância, tempo ou meta, com o seu pace — e a faixa, porque economia de corrida varia.',
+    pergunta: 'Quantas calorias a corrida gasta?',
+    aliases: ['correr', 'correndo', 'calorias correndo', 'pace', 'km', '5 km', '10 km', 'maratona', 'trote', 'cooper'],
+    tags: ['cardio', 'pace', 'distância'],
+    relacionadas: ['caminhada', 'hyrox'],
+    publicadoEm: '2026-09-03',
+  },
+  {
+    slug: 'bicicleta',
+    url: '/calorias/bicicleta/',
+    nome: 'Calorias da bicicleta',
+    nomeCurto: 'Bicicleta',
+    resumo: 'Na rua por velocidade, na ergométrica por watts — porque são escalas diferentes.',
+    pergunta: 'Quantas calorias a bicicleta gasta?',
+    aliases: ['pedalar', 'pedal', 'bike', 'ciclismo', 'spinning', 'ergométrica', 'watts'],
+    tags: ['cardio', 'velocidade'],
+    relacionadas: ['corrida', 'caminhada'],
+    publicadoEm: '2026-09-05',
+  },
+  {
+    slug: 'natacao',
+    url: '/calorias/natacao/',
+    nome: 'Calorias da natação',
+    nomeCurto: 'Natação',
+    resumo: 'Por estilo, distância ou tempo de piscina — descontando a borda, que é o erro da categoria.',
+    pergunta: 'Quantas calorias a natação gasta?',
+    aliases: ['nadar', 'nado', 'piscina', 'crawl', 'costas', 'peito', 'borboleta'],
+    tags: ['piscina', 'estilo'],
+    relacionadas: ['hidroginastica', 'corrida'],
+    publicadoEm: '2026-09-06',
+  },
+  {
+    slug: 'escada',
+    url: '/calorias/escada/',
+    nome: 'Calorias de subir escada',
+    nomeCurto: 'Escada',
+    resumo: 'Por andares, degraus ou máquina — a única conta do site que sai da física, e não de tabela.',
+    pergunta: 'Quantas calorias subir escada gasta?',
+    aliases: ['subir escada', 'degraus', 'andares', 'escada do prédio', 'stair', 'stepper'],
+    tags: ['dia a dia', 'física'],
+    relacionadas: ['caminhada', 'corrida'],
+    publicadoEm: '2026-09-07',
+  },
+  {
+    slug: 'corda',
+    url: '/calorias/corda/',
+    nome: 'Calorias de pular corda',
+    nomeCurto: 'Pular corda',
+    resumo: 'Por tempo, pulos ou séries — e a conta que desmonta a lenda dos 10 minutos.',
+    pergunta: 'Quantas calorias pular corda gasta?',
+    aliases: ['pular corda', 'corda', 'pulos', 'double under', 'jump rope'],
+    tags: ['cardio', 'casa'],
+    relacionadas: ['lutas', 'crossfit'],
+    publicadoEm: '2026-09-08',
+  },
+  {
+    slug: 'danca',
+    url: '/calorias/danca/',
+    nome: 'Calorias da dança',
+    nomeCurto: 'Dança',
+    resumo: 'Por estilo e por tempo de aula, com a fonte de cada número — inclusive o que ninguém mediu.',
+    pergunta: 'Quantas calorias a dança gasta?',
+    aliases: ['dançar', 'zumba', 'fit dance', 'dança de salão', 'forró', 'samba', 'ballet', 'aula de dança'],
+    tags: ['aula', 'estilo'],
+    relacionadas: ['yoga-e-pilates', 'hidroginastica'],
+    publicadoEm: '2026-09-10',
+  },
+  {
+    slug: 'yoga-e-pilates',
+    url: '/calorias/yoga-e-pilates/',
+    nome: 'Calorias de yoga e pilates',
+    nomeCurto: 'Yoga e pilates',
+    resumo: 'Por estilo — e o modo que compara o número do seu relógio com a medição de verdade.',
+    pergunta: 'Quantas calorias yoga e pilates gastam?',
+    aliases: ['yoga', 'ioga', 'pilates', 'hatha', 'vinyasa', 'alongamento', 'relógio erra'],
+    tags: ['aula', 'baixo impacto'],
+    relacionadas: ['danca', 'hidroginastica'],
+    publicadoEm: '2026-09-12',
+  },
+  {
+    slug: 'futebol',
+    url: '/calorias/futebol/',
+    nome: 'Calorias do futebol',
+    nomeCurto: 'Futebol',
+    resumo: 'Pelo tempo em campo, não pelo aluguel da quadra — na pelada, vagas ÷ gente presente.',
+    pergunta: 'Quantas calorias gasta jogar futebol?',
+    aliases: ['jogar bola', 'pelada', 'futsal', 'society', 'futebol de campo', 'jogar futebol'],
+    tags: ['esporte', 'coletivo', 'campo'],
+    relacionadas: ['basquete', 'volei'],
+    destaque: true,
+    publicadoEm: '2026-09-14',
+  },
+  {
+    slug: 'lutas',
+    url: '/calorias/lutas/',
+    nome: 'Calorias de boxe e lutas',
+    nomeCurto: 'Boxe e lutas',
+    resumo: 'Por round, como quem treina conta — saco, sparring, luta e artes marciais, cada número com código.',
+    pergunta: 'Quantas calorias gasta boxe, muay thai e jiu-jitsu?',
+    aliases: ['boxe', 'muay thai', 'jiu-jitsu', 'jiu jitsu', 'luta', 'artes marciais', 'mma', 'saco de pancada', 'sparring', 'kickboxing', 'karatê', 'judô'],
+    tags: ['esporte', 'round', 'luta'],
+    relacionadas: ['corda', 'crossfit'],
+    publicadoEm: '2026-09-18',
+  },
+  {
+    slug: 'hidroginastica',
+    url: '/calorias/hidroginastica/',
+    nome: 'Calorias da hidroginástica',
+    nomeCurto: 'Hidroginástica',
+    resumo: 'Por aula, semana ou meta — com a aula medida em estudo, que gasta menos que a tabela.',
+    pergunta: 'Quantas calorias gasta uma aula de hidroginástica?',
+    aliases: ['hidro', 'hidroginástica', 'aula na piscina', 'ginástica na água'],
+    tags: ['aula', 'piscina', 'baixo impacto'],
+    relacionadas: ['natacao', 'yoga-e-pilates'],
+    publicadoEm: '2026-09-19',
+  },
+  {
+    slug: 'tenis',
+    url: '/calorias/tenis/',
+    nome: 'Calorias do tênis',
+    nomeCurto: 'Tênis',
+    resumo: 'Simples, geral ou duplas — contando a pausa entre pontos, que a medição mostra que já está na tabela.',
+    pergunta: 'Quantas calorias gasta jogar tênis?',
+    aliases: ['jogar tênis', 'tenis', 'raquete', 'duplas', 'simples', 'padel'],
+    tags: ['esporte', 'raquete'],
+    relacionadas: ['volei', 'basquete'],
+    publicadoEm: '2026-09-20',
+  },
+  {
+    slug: 'volei',
+    url: '/calorias/volei/',
+    nome: 'Calorias do vôlei',
+    nomeCurto: 'Vôlei',
+    resumo: 'Quadra ou areia, lazer ou competição — quatro linhas do Compêndio, com o código de cada uma.',
+    pergunta: 'Quantas calorias gasta jogar vôlei?',
+    aliases: ['jogar vôlei', 'volei', 'voleibol', 'vôlei de praia', 'areia', 'quadra'],
+    tags: ['esporte', 'coletivo', 'praia'],
+    relacionadas: ['basquete', 'futebol'],
+    publicadoEm: '2026-09-21',
+  },
+  {
+    slug: 'crossfit',
+    url: '/calorias/crossfit/',
+    nome: 'Calorias do crossfit',
+    nomeCurto: 'Crossfit',
+    resumo: 'Pelo WOD, não pela aula inteira — com um WOD medido como régua e o aviso de quando o oxigênio não vê tudo.',
+    pergunta: 'Quantas calorias gasta uma aula de crossfit?',
+    aliases: ['crossfit', 'cross fit', 'wod', 'box', 'aula de crossfit', 'cross training', 'funcional'],
+    tags: ['aula', 'alta intensidade'],
+    relacionadas: ['hyrox', 'corda'],
+    publicadoEm: '2026-09-23',
+  },
+  {
+    slug: 'hyrox',
+    url: '/calorias/hyrox/',
+    nome: 'Calorias do Hyrox',
+    nomeCurto: 'Hyrox',
+    resumo: 'Pelo tempo final e pelo pace: 8 km de corrida e 8 estações, cada parte com a sua fonte.',
+    pergunta: 'Quantas calorias gasta uma prova de Hyrox?',
+    aliases: ['hyrox', 'prova de hyrox', 'skierg', 'sled', 'wall ball', 'corrida e estações'],
+    tags: ['prova', 'alta intensidade'],
+    relacionadas: ['crossfit', 'corrida'],
+    publicadoEm: '2026-09-23',
+  },
+  {
+    slug: 'basquete',
+    url: '/calorias/basquete/',
+    nome: 'Calorias do basquete',
+    nomeCurto: 'Basquete',
+    resumo: 'Jogo, treino ou arremesso pela tabela — e o jogo competitivo pela medição feita em quadra.',
+    pergunta: 'Quantas calorias gasta jogar basquete?',
+    aliases: ['jogar basquete', 'basquete', 'basquetebol', 'arremesso', 'cesta', '3x3'],
+    tags: ['esporte', 'coletivo', 'quadra'],
+    relacionadas: ['volei', 'futebol'],
+    publicadoEm: '2026-09-23',
+  },
+  {
+    // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
+    // /calorias/ disputaria a mesma busca com ele.
+    slug: 'musculacao',
+    url: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
+    nome: 'Calorias da musculação',
+    nomeCurto: 'Musculação',
+    resumo: 'Por tipo de treino, com o EPOC no tamanho certo e o gasto do músculo ganho em repouso.',
+    pergunta: 'Quantas calorias a musculação queima?',
+    aliases: ['musculação', 'academia', 'treino de força', 'levantar peso', 'epoc', 'musculação queima'],
+    tags: ['academia', 'força'],
+    relacionadas: ['corrida', 'caminhada'],
+    destaque: true,
+    publicadoEm: '2026-08-28',
+  },
+];
+
+/** O catálogo inteiro: as sete da jornada e, depois, as calculadoras de calorias. */
+export const catalogo: FerramentaCatalogo[] = [
+  ...ferramentasDisponiveis.map((f) => ({
+    slug: f.slug,
+    url: urlFerramenta(f.slug),
+    nome: f.nome,
+    nomeCurto: f.nomeCurto,
+    ...JORNADA[f.slug],
+  })),
+  ...CALORIAS.map((c) => ({
+    categoria: 'calorias' as const,
+    acao: 'Calcular calorias',
+    tempo: 'Resultado na hora',
+    ...c,
+  })),
+];
+
+export const ferramentaDoCatalogo = (slug: string): FerramentaCatalogo | undefined =>
+  catalogo.find((f) => f.slug === slug);
+
+export const porCategoria = (id: CategoriaId): FerramentaCatalogo[] =>
+  catalogo.filter((f) => f.categoria === id);
+
+/** As de "Comece por estas", na ordem do catálogo. */
+export const destaques = (): FerramentaCatalogo[] => catalogo.filter((f) => f.destaque);
+
+/**
+ * As que ganham o selo "Novo": publicadas há menos de 30 dias E entre as
+ * três mais recentes. Só a janela de 30 dias marcaria 14 dos 17 cards de
+ * calorias — o cluster inteiro é de setembro — e selo em tudo é selo em nada.
+ */
+export const NOVAS_MAXIMO = 3;
+export const novas = (hoje: string): FerramentaCatalogo[] => {
+  const limite = new Date(hoje).getTime();
+  return catalogo
+    .filter((f) => {
+      const ms = limite - new Date(f.publicadoEm).getTime();
+      return Number.isFinite(ms) && ms >= 0 && ms < 30 * 86_400_000;
+    })
+    .sort((a, b) => b.publicadoEm.localeCompare(a.publicadoEm))
+    .slice(0, NOVAS_MAXIMO);
+};
+export const ehNova = (f: FerramentaCatalogo, hoje: string): boolean => novas(hoje).some((n) => n.slug === f.slug);

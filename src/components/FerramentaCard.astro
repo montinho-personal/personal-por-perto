@@ -1,0 +1,44 @@
+---
+/**
+ * O card da Central de Ferramentas: um desenho só para as 24.
+ *
+ * Responde antes do clique às quatro perguntas do card: o que é (nome),
+ * o que vou descobrir (resumo), quanto tempo leva (meta) e o que faço
+ * agora (ação). O nome é o único link — o card inteiro é área de clique
+ * por cima dele —, então cada ferramenta é um Tab e um link, e não três.
+ */
+import { categoria, ehNova, type FerramentaCatalogo } from '../data/ferramentas';
+
+export interface Props {
+  f: FerramentaCatalogo;
+  pos: number;
+  origem: 'destaques' | 'categoria' | 'mais';
+  hoje?: string;
+}
+
+const { f, pos, origem, hoje = new Date().toISOString().slice(0, 10) } = Astro.props;
+const nova = ehNova(f, hoje);
+const icone = `#fh-i-${f.categoria}`;
+---
+
+<article
+  class:list={['fh-card', origem === 'destaques' && 'fh-card--destaque']}
+  data-slug={f.slug}
+  data-cat={f.categoria}
+  data-pos={pos}
+  data-origem={origem}
+>
+  <div class="fh-card-topo">
+    <svg class="fh-card-ico" aria-hidden="true"><use href={icone} /></svg>
+    <span class="fh-card-cat sr-only">{categoria(f.categoria).nome}</span>
+    {nova && (
+      <span class="fh-card-selos">
+        <span class="pill pill-accent">Novo</span>
+      </span>
+    )}
+  </div>
+  <h3><a href={f.url}>{f.nome}</a></h3>
+  <p class="fh-card-resumo">{f.resumo}</p>
+  <p class="fh-card-meta">{f.tempo} · Grátis</p>
+  <span class="fh-card-acao" aria-hidden="true">{f.acao} →</span>
+</article>
