@@ -164,23 +164,12 @@ const EXEMPLOS = ['quanto custa um personal', 'não consigo manter a academia', 
   </section>
 
   <div id="fh-biblioteca">
-    <!-- =========================== DESTAQUES ========================== -->
-    <section class="section-sm fh-secao" id="destaques" data-cat="destaques" aria-labelledby="destaques-h">
-      <div class="container">
-        <div class="fh-secao-cab">
-          <h2 id="destaques-h" class="fh-h2">Comece por estas</h2>
-          <p class="fh-secao-sub">
-            Seleção editorial: as ferramentas que respondem às dúvidas mais buscadas no portal, a começar
-            por preço de personal, a consulta mais frequente do Search Console.
-          </p>
-        </div>
-        <div class="fh-grade">
-          {DESTAQUES.map((f, i) => <Card f={f} pos={i + 1} origem="destaques" />)}
-        </div>
-      </div>
-    </section>
-
     <!-- ========================= MEU MAPA DO TREINO ==================== -->
+    <!-- Primeiro bloco da biblioteca, de propósito: quem não sabe o nome
+         da ferramenta que precisa também não sabe que "categoria" procurar,
+         e é essa pessoa que mais precisa de ajuda logo na chegada. Quem já
+         sabe o que quer já resolveu no campo de busca, no hero, antes de
+         rolar até aqui — o Mapa não atrapalha esse caminho. -->
     <section class="section-sm tint fh-mapa" id="mapa-do-treino" aria-labelledby="mapa-h">
       <div class="container">
         <div class="fh-mapa-box">
@@ -213,6 +202,22 @@ const EXEMPLOS = ['quanto custa um personal', 'não consigo manter a academia', 
           </noscript>
         </div>
         <div id="hj-mapa" hidden></div>
+      </div>
+    </section>
+
+    <!-- =========================== DESTAQUES ========================== -->
+    <section class="section-sm fh-secao" id="destaques" data-cat="destaques" aria-labelledby="destaques-h">
+      <div class="container">
+        <div class="fh-secao-cab">
+          <h2 id="destaques-h" class="fh-h2">Comece por estas</h2>
+          <p class="fh-secao-sub">
+            Seleção editorial: as ferramentas que respondem às dúvidas mais buscadas no portal, a começar
+            por preço de personal, a consulta mais frequente do Search Console.
+          </p>
+        </div>
+        <div class="fh-grade">
+          {DESTAQUES.map((f, i) => <Card f={f} pos={i + 1} origem="destaques" />)}
+        </div>
       </div>
     </section>
 

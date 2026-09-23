@@ -94,8 +94,8 @@ Ordem da página e o motivo de cada bloco:
 
 1. **Hero**: eyebrow, H1, uma frase, **busca** (o elemento mais importante do topo) com exemplos clicáveis tirados das consultas reais do GSC, e **chips** de categoria com a contagem. Reconhecimento em vez de lembrança: a pessoa reconhece a própria dúvida num exemplo.
 2. **Resultados** (só com busca): os cards clonados, na ordem da busca. Zero resultados mostra as cinco de "Comece por estas" e a busca do portal com a consulta já preenchida — e registra `tools_zero_results`.
-3. **Comece por estas** (5): seleção editorial, com o critério escrito na página. A calculadora de preço vem primeiro porque é a maior demanda medida.
-4. **Meu Mapa do Treino** compacto: título, uma frase, a faixa das 7 etapas, o botão do roteador, o mapa salvo (JS, só quando existe).
+3. **Meu Mapa do Treino** compacto, primeiro bloco da biblioteca: título, uma frase, a faixa das 7 etapas, o botão do roteador, o mapa salvo (JS, só quando existe). Decisão de 23/09, a pedido do Renato: quem não sabe o nome da ferramenta que precisa também não sabe que categoria procurar — é essa pessoa que mais precisa de ajuda logo na chegada, e ela não deveria depender de rolar a página até achar o convite. Quem já sabe o que quer resolveu no campo de busca, no hero, e nem chega a ver este bloco.
+4. **Comece por estas** (5): seleção editorial, com o critério escrito na página. A calculadora de preço vem primeiro porque é a maior demanda medida.
 5. **Três seções por categoria**: H2 + uma frase + cards. Calorias mostra 6 e guarda 11 num `<details>` (links no HTML, rastreáveis; abre sozinho ao filtrar) + link para o sub-hub.
 6. **Não encontrou?**: busca do conteúdo do portal + quatro atalhos.
 7. **Como estas ferramentas são feitas**: o editorial antigo, consolidado em cinco parágrafos.
@@ -120,15 +120,15 @@ MOBILE (360–412)                        DESKTOP (≥1024)
 │ [Buscar]             │                │ Ex.: quanto custa · não consigo · calorias…│
 │ Ex.: quanto custa ·… │                │ (Todas 24)(Treino 3)(Personal 4)(Calorias 17)│
 │ (Todas)(Treino)(Pers→│  ← rola        ├────────────────────────────────────────────┤
-├──────────────────────┤                │ Comece por estas   — critério declarado   │
-│ Comece por estas     │                │ [card][card][card]                         │
-│ [card]               │                │ [card][card]                               │
-│ [card] …             │                ├────────────────────────────────────────────┤
 ├──────────────────────┤                │ ◎ Não sabe por onde começar?              │
 │ ◎ Não sabe por onde  │                │   Faça o Meu Mapa do Treino                │
 │   começar?           │                │   ①Entender→②Organizar→…→⑦Evoluir          │
 │ ①→②→③→④→⑤→⑥→⑦       │                │   [Descobrir meu próximo passo →]          │
 │ [Descobrir meu…    ] │                │   (roteador abre aqui; mapa salvo abaixo)  │
+├──────────────────────┤                ├────────────────────────────────────────────┤
+│ Comece por estas     │                │ Comece por estas   — critério declarado   │
+│ [card]               │                │ [card][card][card]                         │
+│ [card] …             │                │ [card][card]                               │
 ├──────────────────────┤                ├────────────────────────────────────────────┤
 │ Organizar e avaliar  │                │ Organizar e avaliar o treino               │
 │ [card][card][card]   │                │ [card][card][card]                         │
