@@ -65,6 +65,7 @@ export const rotas = {
   caloriasCorda: '/calorias/corda/',
   caloriasDanca: '/calorias/danca/',
   caloriasYoga: '/calorias/yoga-e-pilates/',
+  caloriasFutebol: '/calorias/futebol/',
   ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',
   ferramentaPreco: '/ferramentas/calculadora-preco-personal/',
   ferramentaRotina: '/ferramentas/treino-para-minha-rotina/',

@@ -1,0 +1,812 @@
+---
+/**
+ * Quantas calorias gasta jogar futebol — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS OITO
+ *
+ * Aqui o que decide é quanto tempo você esteve DENTRO do jogo. Três páginas
+ * do cluster já descontam tempo parado (a borda da piscina, o intervalo da
+ * corda, o professor da dança), mas em todas a fração é palpite da pessoa.
+ * Na pelada ela é conta: o campo comporta um número fixo de jogadores, e o
+ * tempo de cada um é vagas ÷ gente presente.
+ *
+ * É a resposta para a pergunta que a busca faz errado. "Quantas calorias
+ * gasta 1 hora de futebol" pressupõe uma hora em campo — e quem joga pelada
+ * com time de fora não passa a hora em campo.
+ *
+ * O QUE O FORMATO MUDA
+ *
+ * Futsal, society e campo não ganham MET próprio. Com o mesmo espaço por
+ * jogador, o número de jogadores não mudou a frequência cardíaca (Randers et
+ * al.), e a medição de futsal recreativo fica a 4% do futebol casual do
+ * Compêndio (Beato et al.). O formato muda as vagas, e é por elas que entra
+ * na conta.
+ *
+ * O QUE NÃO ENTRA
+ *
+ * Goleiro, futebol de areia, futevôlei e futebol andando: não conseguimos
+ * conferir um valor medido numa fonte primária. A página diz isso, com a
+ * frase certa — "não conferimos", não "ninguém mediu".
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ESTUDO_FORMATOS,
+  ESTUDO_FUTSAL,
+  FONTES,
+  FORMATOS,
+  LOCAL_PADRAO,
+  MINUTOS_PADRAO,
+  NIVEIS,
+  NOTA_BRUTO,
+  NOTA_ESTIMATIVA,
+  NOTA_FORA,
+  NOTA_FORMATO,
+  NOTA_GOLEIRO,
+  NOTA_MEDIA_EXATA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_MEDICAO,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  PRESENTES_PADRAO,
+  SEM_MEDICAO,
+  dePelada,
+  deTempo,
+  formataKcal,
+  formataPct,
+  formataTempo,
+  metFutebol,
+  nivel,
+  pesoParaKcalPorHora,
+  reproduzFutsal,
+  simulacaoUmQuilo,
+  tabelaPorPeso,
+  tabelaRodizio,
+  vagas,
+} from '../../lib/calorias/futebol';
+
+const path = '/calorias/futebol';
+const atualizadoEm = '2026-09-23';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Futebol', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX_HORA = deTempo(60, PESO_PADRAO, 'casual');
+const EX_HORA_COMP = deTempo(60, PESO_PADRAO, 'competitivo');
+const EX_PELADA = dePelada(LOCAL_PADRAO, PESO_PADRAO, 'society', PRESENTES_PADRAO, 'casual');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'casual');
+
+const TAB_PESO = tabelaPorPeso();
+const TAB_RODIZIO = tabelaRodizio(PESO_PADRAO);
+
+/* A conferência contra a medição de futsal, calculada e não escrita à mão. */
+const FUTSAL = reproduzFutsal();
+
+/* O que circula, e para quem seria verdade. */
+const CIRCULA_MIN = 600;
+const CIRCULA_MAX = 1000;
+const PESO_PARA_MIL = pesoParaKcalPorHora(CIRCULA_MAX, 'competitivo');
+/* Duas horas de pelada "a 600 kcal por hora", como se promete. */
+const PROMESSA_DUAS_HORAS = (CIRCULA_MIN * LOCAL_PADRAO) / 60;
+
+/* O "quem perde sai" mais injusto: um time ganha tudo, com três times. */
+const INJUSTO = { vencedor: LOCAL_PADRAO, outros: LOCAL_PADRAO / 2 };
+
+const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
+/* MET sempre com uma casa, como o Compêndio publica: "7,0", não "7". */
+const met = (v: number) => v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+/* 53 caracteres. */
+const title = 'Quantas Calorias Gasta Jogar Futebol? Pelada e Futsal';
+/* 150 caracteres. */
+const description =
+  'Calcule as calorias do futebol pelo tempo em campo, não pelo aluguel da quadra. Na pelada com time de fora, a conta é vagas em campo ÷ gente presente.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta 1 hora de futebol?',
+    resposta: `Se for uma hora inteira em campo, cerca de ${formataKcal(EX_HORA.kcal)} kcal para ${PESO_PADRAO} kg numa pelada e ${formataKcal(EX_HORA_COMP.kcal)} kcal em jogo competitivo. O detalhe que muda tudo é o "em campo": numa pelada com time de fora, uma hora de quadra não é uma hora de bola. Com ${PRESENTES_PADRAO} pessoas no society, cada um joga ${formataPct(EX_PELADA.fracao)} do tempo.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta uma pelada?',
+    resposta: `Depende de quanto tempo você ficou em campo, e isso sai de uma conta de dividir: vagas em campo ÷ pessoas presentes. Duas horas de society (${vagas('society')} vagas) com ${PRESENTES_PADRAO} pessoas dão ${formataTempo(EX_PELADA.minutosEmCampo)} de futebol para cada um, em média — cerca de ${formataKcal(EX_PELADA.kcal)} kcal para ${PESO_PADRAO} kg. Não os ${formataKcal(PROMESSA_DUAS_HORAS)} ou mais que a faixa de ${CIRCULA_MIN} a ${n(CIRCULA_MAX, 0)} kcal por hora que circula daria para duas horas.`,
+  },
+  {
+    pergunta: 'Futsal gasta mais calorias que futebol de campo?',
+    resposta: `Por minuto jogado, não há diferença que as medições sustentem. Quando o espaço por jogador é o mesmo, jogar 3 contra 3, 5 contra 5 ou 7 contra 7 deu praticamente a mesma frequência cardíaca média em homens destreinados. O que muda de um formato para o outro é quantas pessoas cabem em campo — e, numa pelada, quanto tempo cada uma espera do lado de fora.`,
+  },
+  {
+    pergunta: 'Futebol queima 1.000 calorias por hora?',
+    resposta: `Só a partir de uns ${n(PESO_PARA_MIL, 0)} kg, jogando em ritmo competitivo a hora inteira, sem sair. Para ${PESO_PADRAO} kg, uma hora inteira de jogo competitivo dá ${formataKcal(EX_HORA_COMP.kcal)} kcal, e uma hora de pelada, ${formataKcal(EX_HORA.kcal)}. Faixas como "${CIRCULA_MIN} a ${n(CIRCULA_MAX, 0)} kcal por hora" pressupõem hora cheia em campo — e o topo delas, peso alto e jogo competitivo.`,
+  },
+  {
+    pergunta: 'Goleiro gasta quantas calorias?',
+    resposta:
+      'Não encontramos medição de gasto de goleiro que pudéssemos conferir numa fonte primária, então esta página não dá número para ele. A calculadora é para jogador de linha, e superestima para quem ficou no gol a noite inteira. Na pelada em que todo mundo passa pelo gol, a diferença se dilui.',
+  },
+  {
+    pergunta: 'Jogar futebol emagrece?',
+    resposta: `Aumenta o gasto do dia, e uma pelada semanal de verdade conta. Mas a conta precisa ser feita com o tempo em campo, não com o aluguel da quadra — e nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+  },
+  {
+    pergunta: 'Quanto tempo de futebol para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosEmCampo)} em campo, numa pelada, para ${PESO_PADRAO} kg — e isso é tempo de bola, sem contar o time de fora. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/corrida/',
+    titulo: 'Quantas calorias a corrida gasta?',
+    descricao: 'A outra atividade de correr — contínua, e por isso com uma conta bem mais simples.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/musculacao/mesa-flexora-como-fazer/',
+    titulo: 'Mesa flexora: como fazer',
+    descricao: 'O posterior de coxa, e o que o treino de força faz por quem joga no fim de semana.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/cadeira-adutora-e-abdutora/',
+    titulo: 'Cadeira adutora e abdutora',
+    descricao: 'A virilha de quem joga pelada, e o que o treino de força faz por ela.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX_PELADA.kcal)} kcal de uma pelada entram na conta, e por que ela é a menor peça.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cf-hero">
+    <div class="container cf-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta jogar futebol?</h1>
+      <p class="cf-hero-lead">
+        Uma hora inteira de pelada gasta cerca de <strong>{formataKcal(EX_HORA.kcal)} kcal</strong>{' '}
+        para {PESO_PADRAO} kg. Mas com time de fora ninguém joga a hora inteira:{' '}
+        <strong>2 horas de society com {PRESENTES_PADRAO} pessoas são{' '}
+        {formataTempo(EX_PELADA.minutosEmCampo)} de bola</strong>.
+      </p>
+      <p class="cf-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container cf-layout">
+    <article class="cf-main">
+      <section id="cf-app" class="cf-app" aria-labelledby="cf-app-h">
+        <h2 id="cf-app-h" class="cf-app-h">Calculadora de calorias do futebol</h2>
+
+        <div class="cf-modos" role="tablist" aria-label="Como você quer contar">
+          <button type="button" class="cf-modo is-ativo" data-modo="pelada" role="tab" aria-selected="true">
+            Pelada
+          </button>
+          <button type="button" class="cf-modo" data-modo="campo" role="tab" aria-selected="false" tabindex="-1">
+            Tempo em campo
+          </button>
+          <button type="button" class="cf-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+            Tenho uma meta
+          </button>
+        </div>
+
+        <div class="cf-campos">
+          <div class="cf-campo">
+            <label for="cf-peso">Seu peso (kg)</label>
+            <input id="cf-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <!--
+            Dois níveis, os dois do Compêndio. O formato NÃO fica aqui: ele não
+            muda a intensidade, só as vagas — por isso mora no bloco da pelada.
+          -->
+          <div class="cf-campo">
+            <span class="cf-rotulo">Como foi o jogo</span>
+            <div class="cf-presets" role="group" aria-label="Nível do jogo">
+              {NIVEIS.map((nv) => (
+                <button
+                  type="button"
+                  class:list={['cf-preset', 'cf-nivel', nv.id === 'casual' && 'is-ativo']}
+                  data-nivel={nv.id}
+                  aria-pressed={String(nv.id === 'casual')}
+                >
+                  {nv.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="cf-dica cf-nivel-slot" id="cf-nivel-dica">
+              {met(metFutebol('casual'))} METs — Compêndio, código {nivel('casual').codigo}.{' '}
+              {nivel('casual').comoReconhecer}
+            </p>
+          </div>
+
+          <div class="cf-campo cf-campo-modo">
+            <label for="cf-local">Tempo na quadra (minutos)</label>
+            <!--
+              Sem atalhos aqui, de propósito. A pelada tem dois campos a mais que
+              qualquer outra ferramenta (formato e lotação), e com os atalhos o
+              resultado caía a 1.586px de rolagem no celular. Digitar "120" é
+              trivial; o que não é trivial é a conta de vagas, e ela ficou.
+            -->
+            <input id="cf-local" type="text" inputmode="numeric" autocomplete="off" value={LOCAL_PADRAO} />
+          </div>
+
+          <div class="cf-campo cf-campo-modo" hidden>
+            <label for="cf-minutos">Minutos em campo, jogando de verdade</label>
+            <input id="cf-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="cf-presets">
+              {[20, 30, 45, 60, 90].map((v) => (
+                <button type="button" class="cf-preset" data-alvo="campo" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="cf-campo cf-campo-modo" hidden>
+            <label for="cf-meta">Meta de gasto (kcal)</label>
+            <input id="cf-meta" type="text" inputmode="numeric" autocomplete="off" value="500" />
+            <div class="cf-presets">
+              {[300, 500, 700, 1000].map((v) => (
+                <button type="button" class="cf-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- O cenário da PELADA: o formato define as vagas; a lotação, a espera. -->
+          <div id="cf-bloco-pelada">
+            <div class="cf-campo">
+              <!-- Os botões dizem o formato e o tamanho do time; o grupo tem nome acessível. -->
+              <div class="cf-presets cf-presets-sem-rotulo" role="group" aria-label="Formato do jogo">
+                {FORMATOS.map((f) => (
+                  <button
+                    type="button"
+                    class:list={['cf-preset', 'cf-formato', f.id === 'society' && 'is-ativo']}
+                    data-formato={f.id}
+                    aria-pressed={String(f.id === 'society')}
+                  >
+                    {f.nomeCurto}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div class="cf-campo">
+              <label for="cf-presentes">Pessoas para jogar, com o time de fora</label>
+              <input id="cf-presentes" type="text" inputmode="numeric" autocomplete="off" value={PRESENTES_PADRAO} />
+              <div class="cf-presets">
+                {[2, 3, 4].map((t) => (
+                  <button
+                    type="button"
+                    class="cf-preset cf-times"
+                    data-times={String(t)}
+                    aria-label={`${t} times completos`}
+                  >
+                    {t} times
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="cf-erro" class="cf-erro" role="status" hidden></p>
+
+        <div id="cf-saida" class="cf-saida" role="status" aria-live="polite">
+          <p class="cf-resultado">
+            <span class="cf-numero">≈ {formataKcal(EX_PELADA.kcal)}</span>
+            <span class="cf-unidade">kcal</span>
+          </p>
+          <p class="cf-frase"></p>
+
+          <dl class="cf-detalhes">
+            <div><dt>Tempo em campo</dt><dd class="cf-d-campo">—</dd></div>
+            <div class="cf-linha-fora" hidden><dt>No time de fora</dt><dd class="cf-d-fora">—</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="cf-d-liquido">—</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="cf-d-met">—</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="cf-d-fonte">—</dd></div>
+          </dl>
+
+          <p class="cf-nota cf-nota-media" hidden></p>
+          <p class="cf-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="cf-proximo">
+            <p class="cf-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> na pelada. Ele não diz se o seu corpo
+              aguenta a pelada: arrancada, freada e chute pedem força que o jogo de sábado não treina
+              sozinho. <strong>Força durante a semana é o que deixa o futebol do sábado continuar
+              existindo.</strong>
+            </p>
+            <div class="cf-proximo-acoes">
+              <a class="cf-btn cf-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="cf-btn cf-btn-secundario cf-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="cf-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose cf-conteudo">
+        <h2>Quanto tempo você jogou de verdade</h2>
+        <p>
+          A pergunta &ldquo;quantas calorias gasta uma hora de futebol&rdquo; tem uma premissa
+          escondida: que você passou a hora em campo. Numa pelada com time de fora, não passou. O
+          campo comporta um número fixo de pessoas — {vagas('quadra')} na quadra,{' '}
+          {vagas('society')} no society, {vagas('campo')} no campo —, e o resto espera.
+        </p>
+        <p>
+          Como o campo está sempre cheio, o total de minutos jogados pelo grupo inteiro é vagas ×
+          tempo. Dividido por quem estava lá, dá o tempo de cada um:
+        </p>
+        <p class="cf-formula">{`tempo em campo = tempo no local × vagas ÷ pessoas presentes
+
+society, ${PRESENTES_PADRAO} pessoas, ${formataTempo(LOCAL_PADRAO)} de quadra
+  ${formataTempo(LOCAL_PADRAO)} × ${vagas('society')} ÷ ${PRESENTES_PADRAO} = ${formataTempo(EX_PELADA.minutosEmCampo)} em campo (${formataPct(EX_PELADA.fracao)})
+  ${formataTempo(EX_PELADA.minutosEmCampo)} de pelada, ${PESO_PADRAO} kg ≈ ${formataKcal(EX_PELADA.kcal)} kcal`}</p>
+        <p>
+          A tabela abaixo faz a mesma conta para os três formatos, com o campo cheio, com um time de
+          fora e com dois. Repare que ela depende só do número de times, não do formato: um time de
+          fora é sempre dois terços do tempo em campo, seja na quadra ou no campo.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              {formataTempo(LOCAL_PADRAO)} no local, pelada, {PESO_PADRAO} kg
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Formato</th><th scope="col">Pessoas</th>
+                <th scope="col">Em campo</th><th scope="col">Gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_RODIZIO.map((l) => (
+                <tr>
+                  <th scope="row">{l.formato.nomeCurto}</th>
+                  <td>{l.presentes}</td>
+                  <td>{formataTempo(l.minutosEmCampo)} ({formataPct(l.fracao)})</td>
+                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_FORA}</p>
+
+        <h2>A média é exata, mesmo no &ldquo;quem perde sai&rdquo;</h2>
+        <p>{NOTA_MEDIA_EXATA}</p>
+        <p>
+          O caso extremo mostra por quê. Três times de sete, {formataTempo(LOCAL_PADRAO)} de
+          quadra, e um time ganha todos os jogos. Ele joga{' '}
+          {formataTempo(INJUSTO.vencedor)}; os outros dois se revezam e jogam{' '}
+          {formataTempo(INJUSTO.outros)} cada. A média das 21 pessoas:
+        </p>
+        <p class="cf-formula">{`(7 × ${INJUSTO.vencedor} + 7 × ${INJUSTO.outros} + 7 × ${INJUSTO.outros}) ÷ 21 = ${formataTempo(EX_PELADA.minutosEmCampo)}
+
+exatamente o que a conta de dividir deu`}</p>
+        <p>
+          A regra do rodízio decide <em>quem</em> joga mais, não quanto se joga no total. A
+          calculadora devolve a média e diz isso — se o seu time ganhou a noite inteira, some um
+          pouco; se perdeu tudo, tire.
+        </p>
+
+        <h2>Futsal, society ou campo: o formato muda o tempo, não a intensidade</h2>
+        <p>{NOTA_FORMATO}</p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              {ESTUDO_FORMATOS.participantes} homens destreinados, {ESTUDO_FORMATOS.m2PorJogador} m² por
+              jogador em todos os formatos
+            </caption>
+            <thead>
+              <tr><th scope="col">Formato</th><th scope="col">Frequência cardíaca média</th></tr>
+            </thead>
+            <tbody>
+              {Object.entries(ESTUDO_FORMATOS.fcPct).map(([f, v]) => (
+                <tr>
+                  <th scope="row">{f.replace('v', ' contra ')}</th>
+                  <td>{n(v)}% da máxima</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="cf-ressalva">
+          A condição importa: o espaço por jogador foi o mesmo nos três. Numa quadra apertada ou
+          num campo grande demais para o número de pessoas, a intensidade muda — mas aí quem mexeu
+          foi o espaço, não o formato. Na prática da pelada, cada formato costuma ser jogado no
+          espaço feito para ele, e a calculadora trata os três com o mesmo MET.
+        </p>
+
+        <h2>A conferência: futsal medido contra a tabela</h2>
+        <p>
+          Antes de usar o futebol casual do Compêndio para a quadra, vale checar se ele concorda
+          com quem mediu futsal de verdade. Beato e colegas acompanharam{' '}
+          {ESTUDO_FUTSAL.participantes} homens sedentários, com {n(ESTUDO_FUTSAL.pesoMedio)} kg em
+          média, em partidas recreativas de 5 contra 5 de uma hora: {ESTUDO_FUTSAL.kcalPorPartida}{' '}
+          kcal por partida, a {ESTUDO_FUTSAL.fcPctMaxima}% da frequência cardíaca máxima.
+        </p>
+        <p class="cf-formula">{`${ESTUDO_FUTSAL.kcalPorPartida} ÷ (3,5 × ${n(ESTUDO_FUTSAL.pesoMedio)} ÷ 200) ÷ ${ESTUDO_FUTSAL.minutosDaPartida} = ${n(FUTSAL.metImplicado, 2)} METs
+
+  o Compêndio para futebol casual: ${met(FUTSAL.metDaTabela)} METs
+  diferença: ${n(FUTSAL.erro * 100, 1)}%`}</p>
+        <p>
+          Fecha. E fecha com uma consequência: se a medição de futsal cai tão perto do futebol
+          casual genérico, dar ao futsal um MET próprio seria inventar uma precisão que os dados
+          não têm.
+        </p>
+        <p class="cf-ressalva">
+          Duas notas de leitura. A primeira é de método: Beato e colegas estimaram o gasto pela
+          relação entre frequência cardíaca e consumo de oxigênio, calibrada em laboratório para
+          cada participante. É um método de campo aceito — e é diferente da equação genérica do
+          relógio de pulso que a nossa <a href="/calorias/yoga-e-pilates/">página de yoga</a>{' '}
+          discute. A segunda é de interpretação: a partida tinha uma hora, e o deslocamento foi
+          rastreado em {ESTUDO_FUTSAL.minutosRastreados} minutos dela. Lemos as{' '}
+          {ESTUDO_FUTSAL.kcalPorPartida} kcal como da partida inteira; se fossem só dos{' '}
+          {ESTUDO_FUTSAL.minutosRastreados} minutos, o MET seria {n(FUTSAL.metSeRastreado)} — ainda
+          entre o casual ({met(metFutebol('casual'))}) e o competitivo ({met(metFutebol('competitivo'))}).
+        </p>
+
+        <h2>O que circula: &ldquo;{CIRCULA_MIN} a {n(CIRCULA_MAX, 0)} kcal por hora&rdquo;</h2>
+        <p>
+          É uma faixa que aparece em muitas páginas sobre o assunto, e ela esconde duas premissas
+          de uma vez: que você passou a hora inteira em campo e, no topo, que pesa bastante e joga
+          valendo. Para{' '}
+          {PESO_PADRAO} kg, uma hora inteira de pelada dá {formataKcal(EX_HORA.kcal)} kcal, e uma
+          hora inteira de jogo competitivo, {formataKcal(EX_HORA_COMP.kcal)}.
+        </p>
+        <p>
+          O topo da faixa só fecha a partir de{' '}
+          <strong>{n(PESO_PARA_MIL, 0)} kg, em ritmo competitivo, a hora inteira</strong>, sem
+          sair. E numa pelada de {formataTempo(LOCAL_PADRAO)} com time de fora, o piso da
+          faixa — {formataKcal(PROMESSA_DUAS_HORAS)} kcal para duas horas — vira{' '}
+          {formataKcal(EX_PELADA.kcal)}.
+        </p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora inteira em campo, sem contar o time de fora</caption>
+            <thead>
+              <tr>
+                <th scope="col">Peso</th>
+                <th scope="col">Pelada ({met(metFutebol('casual'))} METs)</th>
+                <th scope="col">Competitivo ({met(metFutebol('competitivo'))} METs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.casual)} kcal</td>
+                  <td>≈ {formataKcal(l.competitivo)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Goleiro, e o que não está na calculadora</h2>
+        <p>{NOTA_GOLEIRO}</p>
+        <ul class="cf-sem-medicao" aria-label="Modalidades sem medição conferida">
+          {SEM_MEDICAO.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>{NOTA_SEM_MEDICAO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>,
+          aplicada só aos minutos em campo. Os dois METs vêm do Compêndio de Atividades Físicas de
+          2024: futebol casual, {met(metFutebol('casual'))} (código {nivel('casual').codigo}), e
+          futebol competitivo, {met(metFutebol('competitivo'))} (código{' '}
+          {nivel('competitivo').codigo}, que era 10,0 na versão de 2011).
+        </p>
+        <p class="cf-formula">{`${formataTempo(EX_PELADA.minutosEmCampo)} de pelada, ${PESO_PADRAO} kg
+  ${met(metFutebol('casual'))} × 3,5 × ${PESO_PADRAO} ÷ 200 = ${n(EX_HORA.kcal / 60, 2)} kcal por minuto
+  ${n(EX_HORA.kcal / 60, 2)} × ${Math.round(EX_PELADA.minutosEmCampo)} = ${n(EX_PELADA.kcal, 0)} kcal`}</p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem duas coisas que seguram a página: que a conta de dividir é a
+          média exata mesmo num rodízio injusto, e que a medição de futsal cai perto da tabela.
+        </p>
+        <p class="cf-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: as duas medições usadas aqui são de homens —
+          sedentários de meia-idade em uma, destreinados na outra. Não conferimos medição de
+          futebol recreativo feminino, e a calculadora aplica os mesmos METs a todo mundo, como faz
+          o Compêndio.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="cf-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do futebol" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraFutebol } from '../../scripts/caloriasFutebol.client';
+    iniciarCalculadoraFutebol();
+  </script>
+  <style>
+    .cf-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cf-hero-inner { max-width: 780px; }
+    .cf-hero h1 { color: #fff; max-width: 22ch; }
+    .cf-hero :global(.eyebrow) { color: #ffb488; }
+    .cf-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .cf-hero-lead strong { color: #fff; }
+    .cf-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .cf-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .cf-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cf-main { min-width: 0; max-width: 760px; }
+
+    .cf-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .cf-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .cf-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+    .cf-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .cf-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .cf-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cf-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cf-campos { display: grid; gap: var(--sp-4); }
+    #cf-bloco-pelada { display: grid; gap: var(--sp-4); }
+    #cf-bloco-pelada[hidden] { display: none; }
+    .cf-campo { margin-bottom: 0; }
+    .cf-campo label,
+    .cf-campo .cf-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .cf-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cf-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cf-dica { margin-top: 0.35rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Altura reservada para a descrição mais longa dos dois níveis: duas
+       linhas, medidas a 360px. Sem ela, trocar de nível empurraria os campos
+       de baixo — o defeito que já corrigimos na caminhada e na natação. */
+    .cf-nivel-slot { min-height: 3.1em; line-height: 1.5; }
+    .cf-sem-medicao {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .cf-sem-medicao li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .cf-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .cf-presets-sem-rotulo { margin-top: 0; }
+    .cf-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cf-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cf-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cf-nivel.is-ativo,
+    .cf-formato.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cf-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .cf-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cf-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .cf-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cf-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .cf-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .cf-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .cf-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .cf-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .cf-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cf-nota-media { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .cf-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .cf-proximo-lead { line-height: 1.6; }
+    .cf-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .cf-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .cf-btn-primario { background: var(--brand-600); color: #fff; }
+    .cf-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .cf-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .cf-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .cf-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cf-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .cf-conteudo { margin-top: var(--sp-7); }
+    .cf-ressalva {
+      border-left: 3px solid var(--line);
+      padding-left: var(--sp-4);
+      color: var(--ink-soft);
+      font-size: var(--step--1);
+    }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .cf-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .cf-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cf-fontes li { margin-bottom: 0.6rem; }
+    .cf-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

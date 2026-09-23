@@ -31,6 +31,7 @@ import { deAndares, formataKcal as formataEscada } from '../../lib/calorias/esca
 import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib/calorias/corda';
 import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
 import { deTempo as yogaPorTempo, formataKcal as formataYoga } from '../../lib/calorias/yoga';
+import { dePelada, formataKcal as formataFutebol, formataTempo as tempoFutebol } from '../../lib/calorias/futebol';
 
 const path = '/calorias';
 const crumbs = [
@@ -47,6 +48,7 @@ const EX_ESCADA = formataEscada(deAndares(10, PESO_PADRAO).kcalSubida);
 const EX_CORDA = formataCorda(cordaPorTempo(10, PESO_PADRAO, 'moderado').kcal);
 const EX_DANCA = formataDanca(dancaPorTempo(45, PESO_PADRAO, 'zumba').kcal);
 const EX_YOGA = formataYoga(yogaPorTempo(60, PESO_PADRAO, 'hatha').kcal);
+const PELADA = dePelada(120, PESO_PADRAO, 'society', 21, 'casual');
 
 const ferramentas = [
   {
@@ -96,6 +98,12 @@ const ferramentas = [
     nome: 'Yoga e pilates',
     calcula: 'Por estilo — e o modo que compara o número do seu relógio com a medição de verdade.',
     exemplo: `1 hora de hatha ≈ ${EX_YOGA} kcal para ${PESO_PADRAO} kg`,
+  },
+  {
+    url: '/calorias/futebol/',
+    nome: 'Futebol',
+    calcula: 'Pelo tempo em campo, não pelo aluguel da quadra — na pelada, vagas ÷ gente presente.',
+    exemplo: `2 horas de society com 21 pessoas = ${tempoFutebol(PELADA.minutosEmCampo)} em campo ≈ ${formataFutebol(PELADA.kcal)} kcal`,
   },
 ];
 
