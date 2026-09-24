@@ -116,6 +116,17 @@ credibilidade do `lastmod` justamente onde ela importa, que é a fila de
 reescritas. Quando o mesmo commit também revisa o texto, aí sim a data sobe
 — pela revisão, não pelo bloco.
 
+**Calculadoras no artigo (desde 24/09/2026).** O bloco aceita as
+calculadoras do catálogo, e a palavra que JÁ está na frase pode virar link
+para a calculadora daquela atividade ("caminhada rápida" →
+`/calorias/caminhada/`) — só em contexto de gasto, nunca com frase nova
+escrita para caber o link, no máximo dois por artigo (a exceção é a
+frase que já enumera atividades comparando gasto, onde cada uma leva a sua). Transformar palavra
+existente em link segue a mesma exceção do bloco: não sobe `atualizadoEm`,
+pelos mesmos dois motivos. O mapa de qual artigo leva o quê, e por quê,
+está em `docs/ferramentas-nos-artigos.md`; `npm run test:ferramentas-inline`
+confere as regras do bloco nos artigos todos.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.
