@@ -1,0 +1,390 @@
+---
+/**
+ * Beach tennis gasta quantas calorias — artigo, não calculadora.
+ *
+ * POR QUE NÃO É CALCULADORA
+ *
+ * Toda calculadora do cluster de calorias parte de um número com fonte:
+ * uma linha do Compêndio ou uma medição que dá para conferir. O beach
+ * tennis não tem nenhum dos dois. O Compêndio não tem linha para ele, e
+ * o único estudo específico que encontramos (Jung et al., 2024) mediu
+ * batimento cardíaco — as calorias saíram de uma estimativa do software
+ * do monitor, não de medição. Fazer calculadora com o valor do tênis ou
+ * do vôlei de praia seria chute com cara de conta.
+ *
+ * O artigo responde a busca com o que existe: a intensidade medida,
+ * simples contra duplas, o número que circula sem fonte localizável e as
+ * referências mais próximas — estas lidas dos motores das calculadoras de
+ * tênis e vôlei, para as páginas nunca se contradizerem.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { deTempo as tenisPorTempo, formataKcal, formataFaixaKcal } from '../../lib/calorias/tenis';
+import { deTempo as voleiPorTempo, metVolei } from '../../lib/calorias/volei';
+
+/* ── As referências mais próximas, lidas dos motores (1 hora, 70 kg) ── */
+const PESO = 70;
+const TENIS_SIMPLES = tenisPorTempo(60, PESO, 'simples');
+const TENIS_DUPLAS = tenisPorTempo(60, PESO, 'duplas');
+const VOLEI_PRAIA = voleiPorTempo(60, PESO, 'praia');
+const n = (v: number) => v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+/* ── O estudo (Jung et al., 2024) ── */
+const ESTUDO = {
+  participantes: 22,
+  jogos: 3,
+  minutosPorJogo: 12,
+  intervalo: 2,
+  sessao: 45,
+  reservaSimples: 76,
+  reservaDuplas: 66,
+  zonaAltaSimples: 39,
+  zonaAltaDuplas: 15,
+  picoSimples: 181,
+  picoDuplas: 171,
+  diferencaKcal: 66,
+} as const;
+
+const relacionados = [
+  {
+    url: '/calorias/tenis/',
+    titulo: 'Quantas calorias gasta jogar tênis?',
+    descricao: 'O parente de quadra, com linha no Compêndio e partida medida.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/volei/',
+    titulo: 'Quantas calorias gasta jogar vôlei?',
+    descricao: 'O outro esporte de areia — e o único com linha própria para ela.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona para emagrecer',
+    descricao: 'Onde o gasto do jogo entra na conta, e por que ele é a menor peça.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/quantas-calorias-gasta-beach-tennis';
+const atualizadoEm = '2026-09-24';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Beach tennis gasta quantas calorias?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta uma hora de beach tennis?',
+    resposta:
+      'Ninguém mediu isso direito ainda. O Compêndio de Atividades Físicas, a tabela de referência para gasto por atividade, não tem linha para beach tennis, e o único estudo específico que encontramos estimou as calorias pelo software do monitor cardíaco, sem medição de oxigênio. O que existe são referências próximas, como o tênis e o vôlei de praia — úteis como ordem de grandeza, não como resposta.',
+  },
+  {
+    pergunta: 'Beach tennis gasta mais em simples ou em duplas?',
+    resposta: `Em simples. No estudo com ${ESTUDO.participantes} jogadoras amadoras, o jogo de simples ficou em torno de ${ESTUDO.reservaSimples}% da reserva de frequência cardíaca, intensidade vigorosa, e o de duplas em torno de ${ESTUDO.reservaDuplas}%, moderada. Em simples, elas passaram ${ESTUDO.zonaAltaSimples}% do tempo na zona mais alta de batimento; em duplas, ${ESTUDO.zonaAltaDuplas}%.`,
+  },
+  {
+    pergunta: 'É verdade que beach tennis queima 586 calorias por hora?',
+    resposta:
+      'Esse número circula atribuído ao Journal of Sports Sciences, mas não conseguimos localizar o estudo — nem autores, nem ano, nem método. Pode ser que exista e não tenhamos achado; mas número sem fonte localizável não entra aqui, e o mesmo vale para as faixas de 500 a 700 kcal que aparecem sem referência.',
+  },
+  {
+    pergunta: 'Beach tennis emagrece?',
+    resposta:
+      'Ele aumenta o gasto do dia, e jogar com frequência conta — principalmente em simples, que é mais intenso. Mas nenhum esporte emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas, e o gasto do exercício costuma ser a menor peça dessa conta.',
+  },
+  {
+    pergunta: 'O relógio acerta as calorias do beach tennis?',
+    resposta:
+      'Ele dá uma estimativa, não uma medição. O relógio converte batimento em caloria com uma equação genérica, e num esporte de piques curtos e pausas, na areia, essa equação pode errar para qualquer lado. Trate o número dele como ordem de grandeza.',
+  },
+];
+
+const title = 'Beach Tennis Gasta Quantas Calorias? O Que se Sabe';
+/* 153 caracteres. */
+const description =
+  'Ninguém mediu direito quantas calorias o beach tennis gasta. Veja o que a pesquisa mostra, o número que circula sem fonte e as referências mais próximas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Beach tennis gasta quantas calorias? O que se sabe — e o número que ninguém mediu</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta é desconfortável: <strong>ninguém mediu direito ainda.</strong>{' '}
+      Não existe linha de beach tennis no Compêndio de Atividades Físicas — a
+      tabela de referência que as calculadoras de calorias usam — e o único
+      estudo específico que encontramos estimou as calorias pelo software do
+      monitor cardíaco, sem medir oxigênio.
+    </p>
+
+    <p class="lead">
+      Por isso esta página não tem calculadora. Ela mostra o que a pesquisa
+      mediu de verdade, por que o número mais repetido na internet não entra
+      aqui e quais são as referências mais próximas — com o aviso de que são
+      só isso.
+    </p>
+
+    <div class="prose">
+      <h2>O que a pesquisa mediu de verdade</h2>
+      <p>
+        Jung e colegas acompanharam {ESTUDO.participantes} mulheres que já
+        tinham jogado torneios amadores, em duas sessões: uma de simples e
+        uma de duplas. Cada sessão teve {ESTUDO.jogos} jogos de{' '}
+        {ESTUDO.minutosPorJogo} minutos, com {ESTUDO.intervalo} minutos de
+        intervalo, e o batimento foi registrado o tempo todo por cinta no
+        peito.
+      </p>
+
+      <p>
+        O resultado mais firme é a <strong>intensidade</strong>, e ele separa
+        bem as duas formas de jogar:
+      </p>
+      <ul>
+        <li>
+          <strong>Simples:</strong> em torno de {ESTUDO.reservaSimples}% da
+          reserva de frequência cardíaca — faixa de atividade vigorosa —, com{' '}
+          {ESTUDO.zonaAltaSimples}% do tempo na zona mais alta de batimento e
+          pico médio de {ESTUDO.picoSimples} batimentos por minuto.
+        </li>
+        <li>
+          <strong>Duplas:</strong> em torno de {ESTUDO.reservaDuplas}% da
+          reserva — atividade moderada —, com {ESTUDO.zonaAltaDuplas}% do tempo
+          na zona mais alta e pico médio de {ESTUDO.picoDuplas}.
+        </li>
+      </ul>
+
+      <p>
+        O estudo também reporta calorias: a sessão de simples gastou cerca
+        de {ESTUDO.diferencaKcal} kcal a mais que a de duplas. Mas esse número
+        foi <strong>estimado pelo software do monitor a partir do
+        batimento</strong>, não medido — e essa diferença importa.
+      </p>
+
+      <h2>Por que "estimado pelo relógio" não é o mesmo que medido</h2>
+      <p>
+        Medir gasto energético de verdade é medir oxigênio: a pessoa joga
+        com um analisador de gases, e cada litro consumido vira caloria. É
+        assim que foram feitas as medições que usamos nas calculadoras de{' '}
+        <a href="/calorias/tenis/">tênis</a> e de{' '}
+        <a href="/calorias/basquete/">basquete</a>.
+      </p>
+
+      <p>
+        O monitor faz outra coisa: converte batimento em caloria com uma
+        equação genérica. Num esporte de piques curtos, pausas e areia, essa
+        equação pode errar para qualquer lado — a nossa página de{' '}
+        <a href="/calorias/yoga-e-pilates/">yoga e pilates</a> mostra o
+        tamanho que esse erro pode ter. Por isso o dado do estudo vale para
+        comparar simples com duplas, e não para dizer quantas calorias uma
+        hora de jogo gasta.
+      </p>
+
+      <h2>O número de 586 kcal que circula por aí</h2>
+      <p>
+        Uma das respostas mais repetidas diz que uma hora de beach tennis
+        intenso queima 586 calorias, e atribui o número ao{' '}
+        <em>Journal of Sports Sciences</em>. Procuramos o estudo e{' '}
+        <strong>não conseguimos localizá-lo</strong> — nem autores, nem ano,
+        nem método. Pode existir e não termos achado; mas número sem fonte
+        localizável não entra numa página que promete conta aberta.
+      </p>
+
+      <p>
+        O mesmo vale para as faixas de "500 a 700 kcal por hora" que aparecem
+        em vários sites sem referência nenhuma. Elas podem até estar no lugar
+        certo. O problema é que ninguém mostra de onde vieram.
+      </p>
+
+      <h2>As referências mais próximas — e por que são só isso</h2>
+      <p>
+        Se você precisa de uma ordem de grandeza, dois esportes com número
+        de fonte conhecida cercam o beach tennis: o tênis, pela raquete e
+        pelo jogo em duplas, e o vôlei de praia, pela areia.
+      </p>
+
+      <div class="tabela-rolavel">
+        <table>
+          <caption>Uma hora de jogo, {PESO} kg — valores das nossas calculadoras</caption>
+          <thead>
+            <tr><th scope="col">Atividade</th><th scope="col">METs</th><th scope="col">Gasto</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="/calorias/tenis/">Tênis simples</a></th>
+              <td>{n(TENIS_SIMPLES.metMin)}</td>
+              <td>≈ {formataKcal(TENIS_SIMPLES.kcalMin)} kcal</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="/calorias/tenis/">Tênis em duplas</a></th>
+              <td>{n(TENIS_DUPLAS.metMin)} a {n(TENIS_DUPLAS.metMax)}</td>
+              <td>≈ {formataFaixaKcal(TENIS_DUPLAS.kcalMin, TENIS_DUPLAS.kcalMax)} kcal</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="/calorias/volei/">Vôlei de praia</a></th>
+              <td>{n(VOLEI_PRAIA.met)}</td>
+              <td>≈ {formataKcal(VOLEI_PRAIA.kcal)} kcal</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Nenhuma dessas linhas é o beach tennis. A quadra é menor que a do
+        tênis, a bola não quica, o jogo acontece quase sempre em duplas e na
+        areia — e não sabemos quanto cada uma dessas diferenças pesa na conta.
+        No vôlei, o único esporte em que o Compêndio separa areia e ginásio, a
+        linha da areia ({n(metVolei('praia'))} METs) é a mais alta das quatro;
+        não dá para afirmar que o mesmo vale para o beach tennis, mas é um
+        indício de que o chão importa.
+      </p>
+
+      <h2>O que isso muda para quem joga para emagrecer</h2>
+      <p>
+        <strong>Simples cansa mais que duplas</strong> — isso a pesquisa
+        mostrou com clareza. Se o objetivo é gastar mais em quadra, jogar
+        simples de vez em quando muda a intensidade de verdade.
+      </p>
+
+      <p>
+        <strong>Mas o gasto do jogo é a menor peça.</strong> Mesmo no melhor
+        cenário, algumas centenas de calorias por partida não decidem um
+        emagrecimento sozinhas; quem decide é o balanço entre o que entra e o
+        que sai ao longo de semanas — o assunto do guia de{' '}
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
+      </p>
+
+      <p>
+        <strong>E o beach tennis não substitui o treino de força.</strong>{' '}
+        Ele é ótimo para condicionamento e para manter o hábito de se
+        mexer, mas não dá ao corpo o estímulo que preserva músculo durante
+        uma dieta. Quem joga três vezes por semana ainda precisa de espaço
+        para a musculação — e de joelho, tornozelo e ombro que aguentem os
+        dois.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Se o beach tennis já ocupa dois ou três dias da sua semana, a dúvida prática é onde a musculação cabe sem transformar o jogo e o treino em cansaço acumulado. A ferramenta monta a estrutura com os dias que sobram de verdade — e uma versão mínima para as semanas de mais jogo."
+        acao="Encaixar a musculação nos dias sem jogo"
+      />
+
+      <h2>Antes de aumentar o volume de jogo</h2>
+      <p>
+        Areia tem impacto menor que quadra dura, mas cobra de outro jeito:
+        tornozelo instável, panturrilha trabalhando a cada passo e ombro
+        repetindo o mesmo gesto acima da cabeça. Quem está voltando depois
+        de muito tempo parado deve conversar com um médico antes, e dor que
+        persiste é assunto para médico ou fisioterapeuta — não para jogar
+        por cima.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="bt-fontes">
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39539956/" target="_blank" rel="noopener noreferrer">Jung N, Carpes L, Domingues L, Abreu R, Mohr M, Ferrari R. Physiological and perceptual demands of singles and doubles beach tennis in women of different competition levels. Frontiers in Physiology, 15:1434636, 2024</a>
+          — {ESTUDO.participantes} jogadoras amadoras, simples e duplas, batimento por cinta no peito; calorias estimadas pelo software do monitor.
+        </li>
+        <li>
+          <a href="https://pacompendium.com/sports/" target="_blank" rel="noopener noreferrer">Herrmann SD, Willis EA, Ainsworth BE, et al. 2024 Adult Compendium of Physical Activities. Journal of Sport and Health Science, 2024</a>
+          — não tem linha para beach tennis; as linhas de tênis e vôlei de praia estão nas nossas calculadoras, com os códigos.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre beach tennis e calorias" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+
+  <script>
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    tabelasRolaveis();
+  </script>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-rolavel caption { caption-side: top; text-align: left; color: var(--muted); padding-bottom: 0.5rem; }
+  .tabela-rolavel th,
+  .tabela-rolavel td {
+    text-align: left;
+    padding: 0.6rem 0.8rem 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+  .tabela-rolavel tbody th { font-weight: 700; }
+  .bt-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+  .bt-fontes li { margin-bottom: 0.6rem; }
+</style>

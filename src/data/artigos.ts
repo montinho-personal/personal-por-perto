@@ -275,6 +275,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo: qual faz sentido?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/alcool-e-emagrecimento/', titulo: 'Álcool e emagrecimento: o que a bebida faz de verdade' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-acelerar-o-metabolismo/', titulo: 'Como acelerar o metabolismo: o que funciona' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/quantas-calorias-gasta-beach-tennis/', titulo: 'Beach tennis gasta quantas calorias? O que se sabe' },
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },
