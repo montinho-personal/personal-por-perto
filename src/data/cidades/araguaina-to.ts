@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com público jovem e universitário, complementada por uma das maiores redes de academias ao ar livre do Norte.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Araguaína Shopping Lago', detalhe: 'no Lago Center Shopping, na Alameda Araguaia' },
+    { nome: 'Bluefit Araguaína', detalhe: 'na Avenida Filadélfia' },
+  ],
+  academiasVerificadasEm: '2026-09-24',
+
   destaquesFitness: [
     'Dezenas de espaços públicos para atividade física (rede de academias ao ar livre).',
     'Eco Parque Cimba como hub completo (pistas, academia e ciclovia).',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araguaína', url: 'https://www.araguaina.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-24',
 };

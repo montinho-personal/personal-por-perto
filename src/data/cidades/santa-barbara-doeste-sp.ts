@@ -80,6 +80,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é dominada por academias de bairro e estúdios próximos a condomínios residenciais, complementada pelos parques municipais com academias ao ar livre de acesso gratuito.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Santa Bárbara d\'Oeste', detalhe: 'na Rua do Ósmio, no Vic Center' },
+    { nome: 'Panobianco Santa Bárbara', detalhe: 'na Rua Xavantes, no Jardim São Francisco' },
+  ],
+  academiasVerificadasEm: '2026-09-24',
+
   destaquesFitness: [
     'Quatro parques municipais bem equipados (Jacarandás, Paineiras, Araçariguama e Ipês), com pistas e academias ao ar livre gratuitas.',
     'Mercado de academias de bairro e de condomínios, adequado a atendimento domiciliar e em estúdio.',
@@ -106,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Bárbara d\'Oeste', url: 'https://www.santabarbara.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/354580' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-24',
 };
