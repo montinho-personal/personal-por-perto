@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 24, `${catalogo.length} ferramentas no catálogo (24)`);
+ok(catalogo.length === 25, `${catalogo.length} ferramentas no catálogo (25)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -50,7 +50,7 @@ for (const c of CATEGORIAS) {
   ok(n >= 2, `${c.nome}: ${n} ferramentas (mínimo 2)`);
 }
 ok(catalogo.every((f) => CATEGORIAS.some((c) => c.id === f.categoria)), 'toda ferramenta tem categoria válida');
-ok(porCategoria('calorias').length === 17, '17 calculadoras de calorias');
+ok(porCategoria('calorias').length === 18, '18 calculadoras de calorias');
 
 console.log('\nJornada preservada');
 const daJornada = catalogo.filter((f) => f.jornada);
@@ -61,8 +61,8 @@ console.log('\nDestaques e novidade');
 const d = destaques();
 ok(d.length >= 4 && d.length <= 6, `${d.length} destaques (4 a 6)`);
 ok(d.some((f) => f.slug === 'calculadora-preco-personal'), 'a calculadora de preço é destaque (maior demanda medida no GSC)');
-ok(ehNova(catalogo.find((f) => f.slug === 'basquete')!, '2026-09-30'), 'basquete é "novo" uma semana depois');
-ok(!ehNova(catalogo.find((f) => f.slug === 'basquete')!, '2026-11-01'), '  e deixa de ser depois de 30 dias');
+ok(ehNova(catalogo.find((f) => f.slug === 'ping-pong')!, '2026-09-30'), 'ping pong, a mais recente, é "novo" uma semana depois');
+ok(!ehNova(catalogo.find((f) => f.slug === 'ping-pong')!, '2026-11-01'), '  e deixa de ser depois de 30 dias');
 ok(novas('2026-09-30').length === NOVAS_MAXIMO, `no máximo ${NOVAS_MAXIMO} com selo "Novo" ao mesmo tempo`);
 ok(!ehNova(catalogo.find((f) => f.slug === 'caminhada')!, '2026-09-30'), '  caminhada (02/09) fica sem selo: há três mais recentes');
 
@@ -81,6 +81,8 @@ const casos: Array<[string, string]> = [
   ['contratar personal online', 'presencial-ou-online'],
   ['calorias correndo', 'corrida'],
   ['quantas calorias gastei no boxe', 'lutas'],
+  ['calorias tênis de mesa', 'ping-pong'],
+  ['quanto gasta jogar ping pong', 'ping-pong'],
   ['muay thai', 'lutas'],
   ['montar minha rotina', 'treino-para-minha-rotina'],
   ['por onde começar', 'treino-para-minha-rotina'],

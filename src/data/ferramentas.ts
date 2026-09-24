@@ -629,6 +629,18 @@ const CALORIAS: Array<Omit<FerramentaCatalogo, 'categoria' | 'acao' | 'tempo'> &
     publicadoEm: '2026-09-23',
   },
   {
+    slug: 'ping-pong',
+    url: '/calorias/ping-pong/',
+    nome: 'Calorias do ping pong',
+    nomeCurto: 'Ping pong',
+    resumo: 'Jogo pela tabela, treino parado ou com deslocamento pela medição — porque no ping pong quem decide são as pernas.',
+    pergunta: 'Quantas calorias gasta jogar ping pong?',
+    aliases: ['ping pong', 'pingue-pongue', 'tênis de mesa', 'tenis de mesa', 'mesa de ping pong', 'jogar ping pong'],
+    tags: ['esporte', 'raquete', 'baixo impacto'],
+    relacionadas: ['tenis', 'caminhada'],
+    publicadoEm: '2026-09-24',
+  },
+  {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
     // /calorias/ disputaria a mesma busca com ele.
     slug: 'musculacao',

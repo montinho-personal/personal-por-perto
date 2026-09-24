@@ -1,0 +1,605 @@
+---
+/**
+ * Quantas calorias gasta jogar ping pong — página e calculadora.
+ *
+ * O RECORTE, DECLARADO CONTRA AS OUTRAS DEZESSETE
+ *
+ * A primeira página do cluster em que a variável que decide não é a
+ * intensidade do golpe, e sim as pernas. O Compêndio tem uma linha só
+ * (4,0 METs). O treino medido parado na mesa fica logo acima dela; o
+ * treino medido com deslocamento passa do dobro. A página mostra as três
+ * linhas, cada uma com a fonte, e diz qual serve para quem.
+ *
+ * URL em "ping-pong" e não "tenis-de-mesa": é como o brasileiro pergunta.
+ * O título carrega os dois nomes.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ESTUDO_TREINO,
+  FONTES,
+  MINUTOS_PADRAO,
+  MODALIDADES,
+  NOTA_BRUTO,
+  NOTA_DESLOCAMENTO,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_PARADO,
+  NOTA_SEGURANCA,
+  NOTA_SEM_CONFERENCIA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  PESO_PADRAO,
+  SEM_CONFERENCIA,
+  deTempo,
+  formataFaixaKcal,
+  formataFaixaMet,
+  formataKcal,
+  formataMet,
+  formataTempo,
+  fraseContexto,
+  modalidade,
+  simulacaoUmQuilo,
+  tabelaContraMedicao,
+  tabelaPorPeso,
+} from '../../lib/calorias/pingpong';
+import { ritmo } from '../../lib/calorias/caminhada';
+
+const path = '/calorias/ping-pong';
+const atualizadoEm = '2026-09-24';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Ping pong', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const EX = Object.fromEntries(MODALIDADES.map((m) => [m.id, deTempo(MINUTOS_PADRAO, PESO_PADRAO, m.id)]));
+const EX_30 = deTempo(30, PESO_PADRAO, 'jogo');
+const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'jogo');
+const TAB_PESO = tabelaPorPeso();
+const C = tabelaContraMedicao();
+/* A caminhada de comparação sai do motor da caminhada, não da mão. */
+const RAPIDA = ritmo('rapido');
+
+const vezes = (v: number) => v.toLocaleString('pt-BR', { maximumFractionDigits: 1 });
+
+/* 53 caracteres. */
+const title = 'Quantas Calorias Gasta Jogar Ping Pong? Tênis de Mesa';
+/* 147 caracteres. */
+const description =
+  'Calcule as calorias do ping pong por jogo ou treino — e veja por que, com deslocamento, o treino medido gastou mais que o dobro do valor da tabela.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta uma hora de ping pong?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(EX.jogo.kcalMin)} kcal num jogo de lazer, pela linha do Compêndio. Em treino com deslocamento, medido em jogadores de competição, de ${formataFaixaKcal(EX.deslocamento.kcalMin, EX.deslocamento.kcalMax)} kcal na mesma hora.`,
+  },
+  {
+    pergunta: 'Ping pong gasta muita caloria?',
+    resposta: `Depende de quanto você se mexe. Parado na mesa, gasta parecido com uma caminhada rápida (${formataMet(RAPIDA.met)} METs a ${RAPIDA.velocidade} km/h): ${formataMet(C.metTabela)} METs na tabela, ${formataMet(C.paradoMin)} a ${formataMet(C.paradoMax)} medidos em treino. Com deslocamento a cada bola, o treino medido chegou a ${formataMet(C.deslocamentoMin)}–${formataMet(C.deslocamentoMax)} METs — faixa de esporte vigoroso.`,
+  },
+  {
+    pergunta: 'Tênis de mesa e ping pong são a mesma coisa?',
+    resposta: 'Sim. "Tênis de mesa" é o nome do esporte oficial; "ping pong" é como a maioria chama no dia a dia. A tabela e o estudo usados aqui medem a mesma atividade.',
+  },
+  {
+    pergunta: 'Quantas calorias gastam 30 minutos de ping pong?',
+    resposta: `Cerca de ${formataKcal(EX_30.kcalMin)} kcal para ${PESO_PADRAO} kg, num jogo de lazer. Se o jogo obriga você a sair do lugar a cada bola, o gasto sobe bastante — use a linha "com deslocamento" da calculadora.`,
+  },
+  {
+    pergunta: 'Jogar ping pong emagrece?',
+    resposta: 'Aumenta o gasto do dia, e jogo frequente conta. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.',
+  },
+  {
+    pergunta: 'Quanto tempo de ping pong para perder 1 kg de gordura?',
+    resposta: `Cerca de ${formataTempo(UM_QUILO.minutosMin)} de jogo de lazer, pela linha da tabela, para ${PESO_PADRAO} kg. Mesmo essa conta é otimista, porque usa a regra dos 7.700 kcal por quilo, que superestima a perda ao longo do tempo.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/calorias/tenis/',
+    titulo: 'Quantas calorias gasta jogar tênis?',
+    descricao: 'A raquete na quadra grande, com a pausa entre pontos que a tabela já inclui.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/caminhada/',
+    titulo: 'Quantas calorias a caminhada gasta?',
+    descricao: 'A referência de quem joga parado na mesa: gasto parecido, por minuto.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/calorias/basquete/',
+    titulo: 'Quantas calorias gasta jogar basquete?',
+    descricao: 'Outro esporte em que a medição passou a tabela.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: `Onde as ${formataKcal(EX.jogo.kcalMin)} kcal de uma hora de jogo entram na conta da semana.`,
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="pp-hero">
+    <div class="container pp-hero-inner">
+      <p class="eyebrow">Calorias por atividade</p>
+      <h1>Quantas calorias gasta jogar ping pong?</h1>
+      <p class="pp-hero-lead">
+        Uma hora de jogo de lazer gasta cerca de <strong>{formataKcal(EX.jogo.kcalMin)} kcal</strong>{' '}
+        para {PESO_PADRAO} kg, pela tabela. Em treino com deslocamento, medido em jogadores de
+        competição, a mesma hora vai a{' '}
+        <strong>{formataFaixaKcal(EX.deslocamento.kcalMin, EX.deslocamento.kcalMax)} kcal</strong>. No ping
+        pong, o que mais pesa na conta são as pernas.
+      </p>
+      <p class="pp-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container pp-layout">
+    <article class="pp-main">
+      <section id="pp-app" class="pp-app" aria-labelledby="pp-app-h">
+        <h2 id="pp-app-h" class="pp-app-h">Calculadora de calorias do ping pong</h2>
+
+        <div class="pp-campos">
+          <div class="pp-campo">
+            <label for="pp-peso">Seu peso (kg)</label>
+            <input id="pp-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+          </div>
+
+          <div class="pp-campo">
+            <span class="pp-rotulo">Como você jogou</span>
+            <div class="pp-presets pp-presets-sem-rotulo" role="group" aria-label="Tipo de jogo">
+              {MODALIDADES.map((m) => (
+                <button
+                  type="button"
+                  class:list={['pp-preset', 'pp-modalidade', m.id === 'jogo' && 'is-ativo']}
+                  data-modalidade={m.id}
+                  aria-pressed={String(m.id === 'jogo')}
+                >
+                  {m.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="pp-dica pp-modalidade-slot" id="pp-modalidade-dica">
+              {formataFaixaMet(modalidade('jogo'))} METs — {modalidade('jogo').fonte}. {modalidade('jogo').comoReconhecer}
+            </p>
+          </div>
+
+          <!-- As abas ficam logo acima dos campos que trocam, como nas lutas. -->
+          <div class="pp-modos" role="tablist" aria-label="Como você quer contar">
+            <button type="button" class="pp-modo is-ativo" data-modo="tempo" role="tab" aria-selected="true">
+              Tempo de jogo
+            </button>
+            <button type="button" class="pp-modo" data-modo="meta" role="tab" aria-selected="false" tabindex="-1">
+              Tenho uma meta
+            </button>
+          </div>
+
+          <div class="pp-campo pp-campo-modo">
+            <label for="pp-minutos">Minutos jogando</label>
+            <input id="pp-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
+            <div class="pp-presets">
+              {[20, 30, 60, 90].map((v) => (
+                <button type="button" class="pp-preset" data-alvo="tempo" data-valor={String(v)}>
+                  {formataTempo(v)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="pp-campo pp-campo-modo" hidden>
+            <label for="pp-meta">Meta de gasto (kcal)</label>
+            <input id="pp-meta" type="text" inputmode="numeric" autocomplete="off" value="300" />
+            <div class="pp-presets">
+              {[100, 200, 300, 500].map((v) => (
+                <button type="button" class="pp-preset" data-alvo="meta" data-valor={String(v)}>
+                  {v.toLocaleString('pt-BR')} kcal
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p id="pp-erro" class="pp-erro" role="status" hidden></p>
+
+        <div id="pp-saida" class="pp-saida" role="status" aria-live="polite">
+          <p class="pp-resultado">
+            <span class="pp-numero">≈ {formataKcal(EX.jogo.kcalMin)}</span>
+            <span class="pp-unidade">kcal</span>
+          </p>
+          <p class="pp-frase">{fraseContexto(PESO_PADRAO, EX.jogo)}</p>
+
+          <dl class="pp-detalhes">
+            <div><dt>Tempo de jogo</dt><dd class="pp-d-tempo">{formataTempo(MINUTOS_PADRAO)}</dd></div>
+            <div><dt>Acréscimo real ao dia</dt><dd class="pp-d-liquido">≈ {formataKcal(EX.jogo.liquidaMin)} kcal</dd></div>
+            <div><dt>Intensidade</dt><dd><span class="pp-d-met">{formataFaixaMet(EX.jogo)}</span> METs</dd></div>
+            <div><dt>De onde vem o número</dt><dd class="pp-d-fonte">{modalidade('jogo').fonte}</dd></div>
+          </dl>
+
+          <p class="pp-nota pp-nota-linha" hidden></p>
+          <p class="pp-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="pp-proximo">
+            <p class="pp-proximo-lead">
+              Esse número responde <em>quanto você gastou</em> na mesa. Ele não diz se o corpo aguenta
+              o jogo: giro de tronco, braço repetindo o mesmo gesto e o deslocamento lateral pedem
+              ombro, lombar e perna que a mesa não treina sozinha. <strong>Força durante a semana é o
+              que deixa o jogo continuar existindo.</strong>
+            </p>
+            <div class="pp-proximo-acoes">
+              <a class="pp-btn pp-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="pp-btn pp-btn-secundario pp-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="pp-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose pp-conteudo">
+        <h2>No ping pong, as pernas decidem</h2>
+        <p>
+          O Compêndio de Atividades Físicas tem uma linha só para tênis de mesa:{' '}
+          {formataMet(C.metTabela)} METs. Sagayama e colegas mediram {ESTUDO_TREINO.participantes}{' '}
+          jogadores universitários de competição em cinco tipos de treino, e a diferença entre eles não
+          estava na força do golpe — estava em sair ou não do lugar.
+        </p>
+        <p class="pp-formula">{`linha do Compêndio (jogo):         ${formataMet(C.metTabela)} METs
+treino parado na mesa, medido:     ${formataMet(C.paradoMin)} a ${formataMet(C.paradoMax)} METs  (${ESTUDO_TREINO.semDeslocamento.treinos} treinos)
+treino com deslocamento, medido:   ${formataMet(C.deslocamentoMin)} a ${formataMet(C.deslocamentoMax)} METs  (${ESTUDO_TREINO.comDeslocamento.treinos} treinos)
+
+com deslocamento: ${vezes(C.vezesMin)} a ${vezes(C.vezesMax)} vezes a linha da tabela`}</p>
+        <p>
+          Parado na mesa, a medição fica logo acima da tabela: a linha do Compêndio serve bem para o
+          jogo de lazer, em que a bola vem para perto. Quando cada bola obriga você a ir de um lado a
+          outro da mesa, o gasto passa do dobro. {NOTA_DESLOCAMENTO}
+        </p>
+
+        <h2>As três linhas da calculadora</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de jogo, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr><th scope="col">Atividade</th><th scope="col">METs</th><th scope="col">Fonte</th><th scope="col">Gasto</th></tr>
+            </thead>
+            <tbody>
+              {MODALIDADES.map((m) => (
+                <tr>
+                  <th scope="row">{m.nome}</th>
+                  <td>{formataFaixaMet(m)}</td>
+                  <td>{m.fonte}</td>
+                  <td>≈ {formataFaixaKcal(EX[m.id].kcalMin, EX[m.id].kcalMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_PARADO}</p>
+
+        <h2>O que não está na calculadora</h2>
+        <ul class="pp-sem-conferencia" aria-label="O que não conseguimos conferir">
+          {SEM_CONFERENCIA.map((s) => <li>{s}</li>)}
+        </ul>
+        <p>{NOTA_SEM_CONFERENCIA}</p>
+
+        <h2>Quanto custa, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Uma hora de jogo</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">Jogo de lazer</th><th scope="col">Treino com deslocamento</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>≈ {formataKcal(l.jogo)} kcal</td>
+                  <td>≈ {formataFaixaKcal(l.deslocamentoMin, l.deslocamentoMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>{NOTA_BRUTO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A base é a equação de METs: <strong>kcal por minuto = MET × 3,5 × peso em kg ÷ 200</strong>.
+          Na linha de jogo, o MET é o do Compêndio de Atividades Físicas de 2024. Nas duas linhas de
+          treino, é o valor medido por Sagayama e colegas; como cada tipo teve mais de um exercício
+          medido, a conta mostra as pontas.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem o código da tabela, as duas faixas e a distância entre a tabela e o
+          treino com deslocamento.
+        </p>
+        <p class="pp-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>{NOTA_ESTIMATIVA}</p>
+        <p>
+          E a limitação de fonte, dita sem rodeio: a medição é de {ESTUDO_TREINO.participantes} jogadores
+          universitários de competição, em treino. Não conferimos medição de jogo de lazer — para ele,
+          a referência é a tabela — nem de partida oficial.
+        </p>
+        <p>{NOTA_SEGURANCA}</p>
+        <p>{NOTA_SEM_PERDA_LOCALIZADA}</p>
+
+        <h2>Referências</h2>
+        <ul class="pp-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre calorias do ping pong" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraPingPong } from '../../scripts/caloriasPingPong.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraPingPong();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .pp-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .pp-hero-inner { max-width: 780px; }
+    .pp-hero h1 { color: #fff; max-width: 22ch; }
+    .pp-hero :global(.eyebrow) { color: #ffb488; }
+    .pp-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .pp-hero-lead strong { color: #fff; }
+    .pp-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .pp-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .pp-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .pp-main { min-width: 0; max-width: 760px; }
+
+    .pp-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .pp-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .pp-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+    .pp-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .pp-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .pp-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .pp-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .pp-campos { display: grid; gap: var(--sp-4); }
+    .pp-campo { margin-bottom: 0; }
+    .pp-campo label,
+    .pp-campo .pp-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .pp-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .pp-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+    .pp-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .pp-modalidade-slot { min-height: 3em; line-height: 1.5; }
+    .pp-sem-conferencia {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: var(--sp-4) 0;
+    }
+    .pp-sem-conferencia li {
+      padding: 0.3rem 0.7rem;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      font-size: var(--step--1);
+      color: var(--muted);
+    }
+
+    .pp-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .pp-presets-sem-rotulo { margin-top: 0; }
+    .pp-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .pp-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .pp-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .pp-modalidade.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .pp-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .pp-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .pp-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .pp-numero {
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .pp-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .pp-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .pp-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .pp-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .pp-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .pp-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .pp-nota-linha { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .pp-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .pp-proximo-lead { line-height: 1.6; }
+    .pp-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .pp-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .pp-btn-primario { background: var(--brand-600); color: #fff; }
+    .pp-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .pp-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .pp-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .pp-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .pp-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .pp-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .pp-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    .pp-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .pp-fontes li { margin-bottom: 0.6rem; }
+    .pp-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
