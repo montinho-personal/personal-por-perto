@@ -19,7 +19,7 @@ branch no mesmo minuto viraria conflito de merge todo dia.
 
 | horário (UTC / BRT) | rotina | fila | o que faz |
 |---|---|---|---|
-| **12:00 / 09:00** | FerramentaInline | `npm run audit:ferramentas` | Insere o convite a uma ferramenta no corpo de 2 artigos, no parágrafo em que a dúvida aparece. |
+| **12:00 / 09:00** | Ferramentas nos artigos | `docs/ferramentas-nos-artigos.md` | Aplica o mapa em 2 artigos: bloco da ferramenta certa (jornada ou calculadora) e link na palavra que já cita a atividade. Desde 24/09 segue o mapa, não mais só o tráfego. |
 | **14:00 / 11:00** | Reescrita de artigos presos | `docs/reescritas.md` | Diagnostica por que 2 artigos com demanda estão além da página 2 e corrige a causa. |
 | **17:00 / 14:00** | Pauta editorial | `docs/pauta-editorial.md` | Escreve 2 artigos novos — depois de checar que o assunto já não está respondido em outro. |
 | **19:00 / 16:00** | Academias, por demanda | `npm run audit:academias` | Verifica na web e preenche `academiasProximas` de 2 cidades, na ordem de impressão no Search Console. |
@@ -38,7 +38,7 @@ rotina só existe para rotina que abre sessão nova, e não é mais o caso.
 
 | fila | itens | ritmo | fecha em |
 |---|---|---|---|
-| FerramentaInline | 56 com tráfego | 2/dia | ~28 dias |
+| Ferramentas nos artigos | 78 no mapa (22 com calculadora) | 2/dia | ~39 dias |
 | Reescritas | 13 | 2/dia | ~7 dias |
 | Pauta editorial | 51 | 2/dia | ~26 dias |
 | Academias (por demanda) | 771 sem academia, ~230 com impressão medida | 2/dia | a fila mais longa do projeto |
