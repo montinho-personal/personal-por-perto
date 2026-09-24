@@ -18,10 +18,21 @@
  * com o CTA automático do fim e responder qual dos dois converte.
  */
 import { FERRAMENTAS, type FerramentaId } from '../lib/jornada';
+import { ferramentaDoCatalogo } from '../data/ferramentas';
 
 export interface Props {
-  /** Qual ferramenta — só uma por artigo. */
-  id: FerramentaId;
+  /**
+   * Qual ferramenta — só uma por artigo. Aceita o id de uma das sete da
+   * jornada (`auditoria`, `rotina`…) ou o slug de uma calculadora do
+   * catálogo central (`caminhada`, `gasto-calorico-diario`…).
+   *
+   * As calculadoras entraram em 24/09/2026: até ali o bloco só oferecia a
+   * jornada, e artigo sobre cardio ou déficit convidava a um diagnóstico de
+   * constância quando a dúvida do parágrafo era "quanto isso gasta?". O
+   * mapa de qual artigo leva qual ferramenta está em
+   * docs/ferramentas-nos-artigos.md.
+   */
+  id: FerramentaId | string;
   /** A frase que liga o parágrafo anterior à ferramenta. Sem ela o bloco vira propaganda. */
   texto: string;
   /** Rótulo do botão; o padrão é o nome da ferramenta. */
@@ -29,11 +40,16 @@ export interface Props {
 }
 
 const { id, texto, acao } = Astro.props;
-const f = FERRAMENTAS[id];
+const daJornada = FERRAMENTAS[id as FerramentaId];
+const doCatalogo = daJornada ? undefined : ferramentaDoCatalogo(id);
+const f = daJornada ?? doCatalogo;
+// Id errado quebra o build, não a página: um convite para lugar nenhum é pior que nenhum.
+if (!f) throw new Error(`FerramentaInline: ferramenta desconhecida "${id}"`);
+const rotulo = doCatalogo?.categoria === 'calorias' ? 'Calculadora gratuita' : 'Ferramenta gratuita';
 ---
 
 <aside class="ferr-inline" data-track="artigo:ferramenta-inline" data-ferramenta={id}>
-  <p class="ferr-rotulo">Ferramenta gratuita</p>
+  <p class="ferr-rotulo">{rotulo}</p>
   <p class="ferr-texto">{texto}</p>
   <a class="ferr-link" href={f.url}>{acao ?? f.nome} <span aria-hidden="true">→</span></a>
 </aside>
