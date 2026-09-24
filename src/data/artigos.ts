@@ -257,6 +257,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/hyrox/', titulo: 'Quantas calorias gasta uma prova de Hyrox?' },
   { categoria: 'Calorias', url: '/calorias/basquete/', titulo: 'Quantas calorias gasta jogar basquete?' },
   { categoria: 'Calorias', url: '/calorias/ping-pong/', titulo: 'Quantas calorias gasta jogar ping pong?' },
+  { categoria: 'Calorias', url: '/calorias/gasto-calorico-diario/', titulo: 'Quantas calorias eu gasto por dia?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },

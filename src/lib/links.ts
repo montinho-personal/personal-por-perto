@@ -74,6 +74,7 @@ export const rotas = {
   caloriasHyrox: '/calorias/hyrox/',
   caloriasBasquete: '/calorias/basquete/',
   caloriasPingPong: '/calorias/ping-pong/',
+  caloriasGastoDiario: '/calorias/gasto-calorico-diario/',
   /** Mora dentro do artigo, e não em /calorias/: ver o docblock da página. */
   caloriasMusculacao: '/emagrecimento/quantas-calorias-queima-a-musculacao/',
   ferramentaMatch: '/ferramentas/encontre-seu-personal-ideal/',

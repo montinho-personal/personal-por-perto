@@ -1,0 +1,622 @@
+---
+/**
+ * Quantas calorias eu gasto por dia — página e calculadora.
+ *
+ * A PÁGINA QUE DÁ LUGAR ÀS OUTRAS DEZOITO
+ *
+ * As calculadoras de atividade respondem "quanto gastei neste treino". Esta
+ * responde o dia inteiro: metabolismo de repouso pela equação de Mifflin-St
+ * Jeor, vezes o estilo de vida da FAO. O resultado é faixa porque as duas
+ * peças são faixa — e a página diz isso antes de o leitor descobrir sozinho.
+ *
+ * O que ela não faz, também dito: não diz quanto comer. Plano alimentar é
+ * com nutricionista.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ALTURA_PADRAO,
+  ESTILOS,
+  FONTES,
+  IDADE_ESTUDO_MAX,
+  IDADE_ESTUDO_MIN,
+  IDADE_PADRAO,
+  NOTA_EXERCICIO,
+  NOTA_FAIXA,
+  NOTA_FORA_DA_FAIXA,
+  NOTA_LIMITES,
+  NOTA_NAO_E_DIETA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_RECALCULAR,
+  PAL_COM_UMA_HORA,
+  PAL_SEM_EXERCICIO,
+  PESO_PADRAO,
+  estilo,
+  formataFaixaKcal,
+  formataEntreKcal,
+  formataFaixaPal,
+  formataKcal,
+  formataPal,
+  fraseContexto,
+  gastoDiario,
+  tabelaPorPeso,
+} from '../../lib/calorias/gastoDiario';
+
+const path = '/calorias/gasto-calorico-diario';
+const atualizadoEm = '2026-09-24';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Calorias por atividade', url: '/calorias/' },
+  { nome: 'Gasto calórico diário', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const SEXO_PADRAO = 'feminino' as const;
+const ESTILO_PADRAO = 'sedentario';
+const EX = gastoDiario(SEXO_PADRAO, PESO_PADRAO, ALTURA_PADRAO, IDADE_PADRAO, ESTILO_PADRAO);
+const EX_H = gastoDiario('masculino', PESO_PADRAO, ALTURA_PADRAO, IDADE_PADRAO, ESTILO_PADRAO);
+const POR_ESTILO = Object.fromEntries(
+  ESTILOS.map((e) => [e.id, gastoDiario(SEXO_PADRAO, PESO_PADRAO, ALTURA_PADRAO, IDADE_PADRAO, e.id)]),
+);
+const TAB_PESO = tabelaPorPeso('ativo');
+const alturaM = (ALTURA_PADRAO / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+const pessoa = `${IDADE_PADRAO} anos, ${PESO_PADRAO} kg e ${alturaM} m`;
+
+/* 56 caracteres. */
+const title = 'Quantas Calorias Eu Gasto por Dia? Gasto Calórico Diário';
+/* 152 caracteres. */
+const description =
+  'Calcule quantas calorias você gasta por dia pelo metabolismo e pelo estilo de vida — em faixa, com as fontes, e com o que a conta não consegue enxergar.';
+
+const faqs = [
+  {
+    pergunta: 'Quantas calorias eu gasto por dia?',
+    resposta: `Depende de peso, altura, idade, sexo e de quanto você se mexe. Para ${pessoa}, com rotina sedentária, a estimativa fica ${formataEntreKcal(EX.gastoMin, EX.gastoMax)} kcal por dia numa mulher e ${formataEntreKcal(EX_H.gastoMin, EX_H.gastoMax)} kcal num homem. A calculadora faz a conta com os seus dados.`,
+  },
+  {
+    pergunta: 'O que é taxa metabólica basal?',
+    resposta: `É a energia que o corpo gasta em repouso só para se manter funcionando: respirar, circular o sangue, manter a temperatura. Na maioria das pessoas é a maior parte do gasto do dia. Para ${pessoa}, a equação usada aqui estima cerca de ${formataKcal(EX.metabolismo)} kcal numa mulher e ${formataKcal(EX_H.metabolismo)} kcal num homem.`,
+  },
+  {
+    pergunta: 'Preciso somar as calorias do treino ao resultado?',
+    resposta: 'Não. O estilo de vida escolhido já inclui o exercício. Se você marcou "ativo" porque treina uma hora por dia, somar o treino por cima conta a mesma hora duas vezes.',
+  },
+  {
+    pergunta: 'Quanto devo comer para emagrecer?',
+    resposta: 'Esta calculadora não responde isso, e de propósito. Emagrecer depende de gastar mais do que se come ao longo de semanas, mas o tamanho certo dessa diferença depende de objetivo, saúde, rotina e preferência. Quem monta o plano alimentar é o nutricionista.',
+  },
+  {
+    pergunta: 'Essa calculadora é precisa?',
+    resposta: 'É uma estimativa. A equação de Mifflin-St Jeor foi a mais precisa entre as comparadas numa revisão sistemática, mas ainda erra mais de 10% em parte das pessoas. Só a calorimetria indireta, um exame que mede a respiração em repouso, mede o metabolismo de verdade.',
+  },
+  {
+    pergunta: 'Qual estilo de vida devo escolher?',
+    resposta: 'Pense no dia típico, não no melhor dia da semana. Trabalho sentado e pouco exercício é sedentário. Trabalho sentado com cerca de uma hora de exercício por dia, ou trabalho de pé com esforço físico, é ativo. Vigoroso é para quem passa boa parte do dia em esforço físico.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'O que fazer com o número do gasto diário — e por que a conta não é tão simples quanto parece.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-acelerar-o-metabolismo/',
+    titulo: 'Dá para acelerar o metabolismo?',
+    descricao: 'O que mexe de verdade na parte de repouso do gasto, e o que é promessa.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Por que o treino de força importa mais quando o gasto passa a ser maior que o consumo.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/calorias/',
+    titulo: 'Quantas calorias cada atividade gasta',
+    descricao: 'Dezoito calculadoras para ver quanto um treino específico pesa dentro do dia.',
+    tipo: 'Calorias',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+
+/* Linhas curtas e sem colunas alinhadas por espaço: a fórmula precisa
+   caber em 320px, e espaço não alinha em fonte proporcional. */
+const formula = `metabolismo de repouso
+(Mifflin-St Jeor):
+10 × peso + 6,25 × altura
+− 5 × idade
+− 161 nas mulheres
+ou + 5 nos homens
+peso em kg, altura em cm,
+idade em anos
+
+gasto do dia =
+metabolismo × nível de atividade
+${ESTILOS.map((e) => `${e.nomeCurto.toLowerCase()}: ${formataFaixaPal(e)}`).join('\n')}`;
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="gd-hero">
+    <div class="container gd-hero-inner">
+      <p class="eyebrow">Calorias</p>
+      <h1>Quantas calorias eu gasto por dia?</h1>
+      <p class="gd-hero-lead">
+        Boa parte do que o corpo gasta vai só para se manter funcionando. A calculadora estima esse
+        gasto de repouso e multiplica pelo seu estilo de vida. Para uma mulher de {pessoa}, com rotina
+        sedentária: <strong>{formataFaixaKcal(EX.gastoMin, EX.gastoMax)} kcal por dia</strong>.
+      </p>
+      <p class="gd-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container gd-layout">
+    <article class="gd-main">
+      <section id="gd-app" class="gd-app" aria-labelledby="gd-app-h">
+        <h2 id="gd-app-h" class="gd-app-h">Calculadora de gasto calórico diário</h2>
+
+        <div class="gd-campos">
+          <div class="gd-campo">
+            <span class="gd-rotulo" id="gd-sexo-rotulo">Sexo</span>
+            <div class="gd-presets gd-presets-sem-rotulo" role="group" aria-labelledby="gd-sexo-rotulo">
+              {[
+                ['feminino', 'Feminino'],
+                ['masculino', 'Masculino'],
+              ].map(([id, nome]) => (
+                <button
+                  type="button"
+                  class:list={['gd-preset', 'gd-sexo', id === SEXO_PADRAO && 'is-ativo']}
+                  data-sexo={id}
+                  aria-pressed={String(id === SEXO_PADRAO)}
+                >
+                  {nome}
+                </button>
+              ))}
+            </div>
+            <p class="gd-dica">A equação tem uma versão para cada sexo biológico; escolha a que corresponde ao seu corpo.</p>
+          </div>
+
+          <div class="gd-medidas">
+            <div class="gd-campo">
+              <label for="gd-idade">Idade (anos)</label>
+              <input id="gd-idade" type="text" inputmode="numeric" autocomplete="off" value={IDADE_PADRAO} />
+            </div>
+            <div class="gd-campo">
+              <label for="gd-peso">Peso (kg)</label>
+              <input id="gd-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+            </div>
+            <div class="gd-campo">
+              <label for="gd-altura">Altura (cm)</label>
+              <input id="gd-altura" type="text" inputmode="decimal" autocomplete="off" value={ALTURA_PADRAO} />
+            </div>
+          </div>
+
+          <div class="gd-campo">
+            <span class="gd-rotulo" id="gd-estilo-rotulo">Seu dia típico</span>
+            <div class="gd-presets gd-presets-sem-rotulo" role="group" aria-labelledby="gd-estilo-rotulo">
+              {ESTILOS.map((e) => (
+                <button
+                  type="button"
+                  class:list={['gd-preset', 'gd-estilo', e.id === ESTILO_PADRAO && 'is-ativo']}
+                  data-estilo={e.id}
+                  aria-pressed={String(e.id === ESTILO_PADRAO)}
+                >
+                  {e.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="gd-dica gd-estilo-slot" id="gd-estilo-dica">
+              {estilo(ESTILO_PADRAO).comoReconhecer} Nível de atividade: {formataFaixaPal(estilo(ESTILO_PADRAO))}.
+            </p>
+          </div>
+        </div>
+
+        <p id="gd-erro" class="gd-erro" role="status" hidden></p>
+
+        <div id="gd-saida" class="gd-saida" role="status" aria-live="polite">
+          <p class="gd-resultado">
+            <span class="gd-numero">{formataFaixaKcal(EX.gastoMin, EX.gastoMax)}</span>
+            <span class="gd-unidade">kcal por dia</span>
+          </p>
+          <p class="gd-frase">{fraseContexto(EX)}</p>
+
+          <dl class="gd-detalhes">
+            <div><dt>Metabolismo de repouso</dt><dd class="gd-d-metabolismo">≈ {formataKcal(EX.metabolismo)} kcal</dd></div>
+            <div><dt>Se a equação errar 10%</dt><dd class="gd-d-erro">{formataFaixaKcal(EX.metabolismoMin, EX.metabolismoMax)} kcal</dd></div>
+            <div><dt>Nível de atividade</dt><dd class="gd-d-pal">{formataFaixaPal(EX)}</dd></div>
+            <div><dt>1 hora de exercício por dia</dt><dd class="gd-d-hora">+ ≈ {formataKcal(EX.umaHoraPorDia)} kcal</dd></div>
+          </dl>
+
+          <p class="gd-nota gd-nota-fora" hidden>{NOTA_FORA_DA_FAIXA}</p>
+          <p class="gd-nota">{NOTA_EXERCICIO}</p>
+
+          <div class="gd-proximo">
+            <p class="gd-proximo-lead">
+              Esse número responde <em>quanto você gasta</em>. Ele não diz quanto comer — isso é com
+              nutricionista — nem como treinar. Se o objetivo é emagrecer, a parte do treino tem uma
+              função clara: <strong>o treino de força é o que ajuda a manter o músculo enquanto o
+              peso cai.</strong>
+            </p>
+            <div class="gd-proximo-acoes">
+              <a class="gd-btn gd-btn-primario" href="/personal-trainer/" data-track="calorias:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="gd-btn gd-btn-secundario gd-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="calorias:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="gd-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose gd-conteudo">
+        <h2>Duas peças, cada uma com a sua fonte</h2>
+        <p>
+          O gasto do dia se divide em duas partes. A primeira é o metabolismo de repouso: o que o corpo
+          gasta parado, só para funcionar. A segunda é tudo o que você faz em cima disso — andar,
+          trabalhar, treinar. A calculadora estima a primeira por uma equação e a segunda pelo estilo
+          de vida.
+        </p>
+        <p class="gd-formula">{formula}</p>
+        <p>
+          A equação é a de Mifflin-St Jeor, feita em 1990 com 498 adultos de {IDADE_ESTUDO_MIN} a{' '}
+          {IDADE_ESTUDO_MAX} anos, com e sem obesidade, que tiveram o gasto de repouso medido por
+          calorimetria. Numa revisão sistemática de 2005, ela foi a que ficou a até 10% do valor medido
+          em mais pessoas, entre as equações comparadas. Os estilos de vida são os do relatório da FAO,
+          da OMS e da Universidade das Nações Unidas sobre necessidade de energia.
+        </p>
+
+        <h2>Os três estilos de vida</h2>
+        <p>
+          A FAO chama de nível de atividade física a razão entre o gasto do dia e o metabolismo. Cada
+          estilo de vida é uma faixa desse número, não um valor só:
+        </p>
+        <ul class="gd-estilos">
+          {ESTILOS.map((e) => (
+            <li>
+              <p class="gd-estilo-nome">
+                {e.nome} <span class="gd-estilo-pal">{formataFaixaPal(e)}</span>
+              </p>
+              <p>{e.comoReconhecer}</p>
+              <p class="gd-estilo-ex">
+                Mulher de {pessoa}: {formataFaixaKcal(POR_ESTILO[e.id].gastoMin, POR_ESTILO[e.id].gastoMax)} kcal por dia.
+              </p>
+            </li>
+          ))}
+        </ul>
+        <p>
+          O próprio relatório dá a régua do exercício: uma pessoa de trabalho sentado que passa a fazer
+          uma hora por dia de exercício moderado a vigoroso sobe de {formataPal(PAL_SEM_EXERCICIO)} para{' '}
+          {formataPal(PAL_COM_UMA_HORA)}. Para a mulher do exemplo, isso são cerca de{' '}
+          {formataKcal(EX.umaHoraPorDia)} kcal a mais por dia.
+        </p>
+
+        <h2>Por que o resultado é uma faixa</h2>
+        <p>{NOTA_FAIXA}</p>
+        <p>
+          Há ainda uma diferença de definição. A FAO mede o nível de atividade sobre o metabolismo
+          basal, medido em condições mais rígidas; a equação estima o metabolismo de repouso. Os dois
+          são próximos, mas não idênticos — mais um motivo para ler o resultado como faixa, e não como
+          número exato.
+        </p>
+
+        <h2>Onde entram as calculadoras de atividade</h2>
+        <p>{NOTA_EXERCICIO}</p>
+        <p>
+          O uso certo é o contrário: com o gasto do dia na mão, a <a href="/calorias/">calculadora de
+          cada atividade</a> mostra quanto um treino específico pesa dentro dele. Um treino parece grande
+          sozinho e fica do tamanho certo ao lado do dia inteiro.
+        </p>
+
+        <h2>Gasto do dia, por peso</h2>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Estilo de vida ativo, {IDADE_PADRAO} anos, {ALTURA_PADRAO} cm</caption>
+            <thead>
+              <tr><th scope="col">Peso</th><th scope="col">Mulher</th><th scope="col">Homem</th></tr>
+            </thead>
+            <tbody>
+              {TAB_PESO.map((l) => (
+                <tr>
+                  <th scope="row">{l.peso} kg</th>
+                  <td>{formataFaixaKcal(l.mulherMin, l.mulherMax)} kcal</td>
+                  <td>{formataFaixaKcal(l.homemMin, l.homemMax)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Cada 10 kg a mais somam 100 kcal ao metabolismo de repouso, antes de multiplicar pelo estilo
+          de vida. Cada 10 anos a mais tiram 50.
+        </p>
+
+        <h2>O que esta conta não faz</h2>
+        <p>
+          {NOTA_NAO_E_DIETA} Para entender o que o número significa na prática, o texto sobre{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">como funciona o déficit calórico</a>{' '}
+          é o próximo passo.
+        </p>
+        <p>{NOTA_RECALCULAR}</p>
+        <p>{NOTA_LIMITES}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          O metabolismo de repouso sai da equação de Mifflin-St Jeor, na versão separada por sexo
+          publicada no artigo original. O gasto do dia é esse metabolismo multiplicado pelas duas pontas
+          do estilo de vida escolhido. A faixa de erro de 10% mostra onde o metabolismo estaria se a
+          equação errasse para baixo ou para cima. O resultado é arredondado na dezena: precisão de
+          unidade seria fingimento.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem as duas versões da equação, as três faixas da FAO e o exemplo de uma
+          hora de exercício.
+        </p>
+        <p class="gd-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Referências</h2>
+        <ul class="gd-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre gasto calórico diário" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraGastoDiario } from '../../scripts/caloriasGastoDiario.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraGastoDiario();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .gd-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .gd-hero-inner { max-width: 780px; }
+    .gd-hero h1 { color: #fff; max-width: 22ch; }
+    .gd-hero :global(.eyebrow) { color: #ffb488; }
+    .gd-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .gd-hero-lead strong { color: #fff; }
+    .gd-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .gd-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .gd-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .gd-main { min-width: 0; max-width: 760px; }
+
+    .gd-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .gd-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .gd-campos { display: grid; gap: var(--sp-4); }
+    /* Três medidas lado a lado; empilham antes de apertar, para o Tab só descer. */
+    .gd-medidas { display: grid; gap: var(--sp-4); grid-template-columns: 1fr; }
+    @media (min-width: 520px) {
+      .gd-medidas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); }
+    }
+    .gd-campo { margin-bottom: 0; }
+    .gd-campo label,
+    .gd-campo .gd-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .gd-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .gd-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+    .gd-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .gd-estilo-slot { min-height: 4.5em; line-height: 1.5; }
+
+    .gd-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .gd-presets-sem-rotulo { margin-top: 0; }
+    .gd-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .gd-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .gd-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .gd-preset.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .gd-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .gd-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .gd-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .gd-numero {
+      font-size: clamp(2rem, 7.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .gd-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .gd-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .gd-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .gd-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .gd-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .gd-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .gd-nota-fora { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .gd-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .gd-proximo-lead { line-height: 1.6; }
+    .gd-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .gd-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .gd-btn-primario { background: var(--brand-600); color: #fff; }
+    .gd-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .gd-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .gd-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .gd-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .gd-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .gd-conteudo { margin-top: var(--sp-7); }
+    .gd-estilos { list-style: none; padding: 0; margin: var(--sp-4) 0; display: grid; gap: var(--sp-3); }
+    .gd-estilos li {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .gd-estilos li p { margin: 0; }
+    .gd-estilos li p + p { margin-top: 0.4rem; }
+    .gd-estilo-nome { font-weight: 700; }
+    .gd-estilo-pal {
+      margin-left: 0.4rem;
+      font-weight: 600;
+      font-size: var(--step--1);
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .gd-estilo-ex { font-size: var(--step--1); color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .gd-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .gd-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .gd-fontes li { margin-bottom: 0.6rem; }
+    .gd-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

@@ -641,6 +641,27 @@ const CALORIAS: Array<Omit<FerramentaCatalogo, 'categoria' | 'acao' | 'tempo'> &
     publicadoEm: '2026-09-24',
   },
   {
+    slug: 'gasto-calorico-diario',
+    url: '/calorias/gasto-calorico-diario/',
+    nome: 'Gasto calórico diário',
+    nomeCurto: 'Gasto do dia',
+    resumo: 'Metabolismo de repouso mais estilo de vida: quanto você gasta num dia inteiro, em faixa e com as fontes.',
+    pergunta: 'Quantas calorias eu gasto por dia?',
+    aliases: [
+      'gasto calórico diário',
+      'gasto calorico',
+      'quantas calorias gasto por dia',
+      'taxa metabólica basal',
+      'tmb',
+      'metabolismo basal',
+      'gasto energético total',
+      'calorias por dia',
+    ],
+    tags: ['metabolismo', 'dia inteiro', 'emagrecimento'],
+    relacionadas: ['caminhada', 'musculacao'],
+    publicadoEm: '2026-09-24',
+  },
+  {
     // Mora dentro do artigo que já respondia a pergunta — uma URL nova em
     // /calorias/ disputaria a mesma busca com ele.
     slug: 'musculacao',

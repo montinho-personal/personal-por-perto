@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 25, `${catalogo.length} ferramentas no catálogo (25)`);
+ok(catalogo.length === 26, `${catalogo.length} ferramentas no catálogo (26)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -50,7 +50,7 @@ for (const c of CATEGORIAS) {
   ok(n >= 2, `${c.nome}: ${n} ferramentas (mínimo 2)`);
 }
 ok(catalogo.every((f) => CATEGORIAS.some((c) => c.id === f.categoria)), 'toda ferramenta tem categoria válida');
-ok(porCategoria('calorias').length === 18, '18 calculadoras de calorias');
+ok(porCategoria('calorias').length === 19, '19 calculadoras de calorias');
 
 console.log('\nJornada preservada');
 const daJornada = catalogo.filter((f) => f.jornada);
@@ -83,6 +83,8 @@ const casos: Array<[string, string]> = [
   ['quantas calorias gastei no boxe', 'lutas'],
   ['calorias tênis de mesa', 'ping-pong'],
   ['quanto gasta jogar ping pong', 'ping-pong'],
+  ['quantas calorias gasto por dia', 'gasto-calorico-diario'],
+  ['taxa metabólica basal', 'gasto-calorico-diario'],
   ['muay thai', 'lutas'],
   ['montar minha rotina', 'treino-para-minha-rotina'],
   ['por onde começar', 'treino-para-minha-rotina'],
