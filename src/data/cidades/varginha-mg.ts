@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é sustentada pela economia logística e industrial, complementada pelo Parque Novo Horizonte e por sua ciclovia.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Varginha', detalhe: 'na Av. Benjamin Constant, no Centro' },
+    { nome: 'Skyfit Varginha', detalhe: 'na Av. Princesa do Sul, no Jardim Andere' },
+  ],
+  academiasVerificadasEm: '2026-09-25',
+
   destaquesFitness: [
     'Parque Novo Horizonte com pista de caminhada e ciclovia integrada.',
     'Clima ameno de altitude, favorável ao treino externo quase o ano todo.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Varginha', url: 'https://www.varginha.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-25',
 };

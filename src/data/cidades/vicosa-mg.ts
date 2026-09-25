@@ -75,6 +75,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias, estúdios e profissionais voltados ao público universitário e aos moradores, complementada pela infraestrutura aberta do campus e das trilhas da UFV.',
 
+  academiasProximas: [{ nome: 'Academia Via Campus', detalhe: 'na Rua José Antônio Rodrigues' }],
+  academiasVerificadasEm: '2026-09-25',
+
   destaquesFitness: [
     'Campus da UFV como grande espaço aberto para caminhada e corrida.',
     'Trilhas da Mata da Biologia e Mata do Paraíso para trail running.',
@@ -101,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Viçosa', url: 'https://www.vicosa.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-25',
 };
