@@ -85,6 +85,7 @@ export const rotas = {
   ferramentaScore: '/ferramentas/personal-score/',
   ferramentaFormato: '/ferramentas/presencial-ou-online/',
   ferramenta1rm: '/ferramentas/calculadora-1rm/',
+  ferramentaProteina: '/ferramentas/calculadora-de-proteina/',
 } as const;
 
 /** Âncoras variadas para uma cidade. `i` escolhe a variação. */

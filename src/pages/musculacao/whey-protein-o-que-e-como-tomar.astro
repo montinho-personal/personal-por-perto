@@ -8,6 +8,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -39,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/whey-protein-o-que-e-como-tomar';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-09-25';
 const capa = '/capas-conteudo/whey-protein-o-que-e-como-tomar.webp';
 const capaAlt =
   'Capa do artigo Whey protein: pote de whey sabor baunilha ao lado de coqueteleira e scoop com o pó, com os selos de construção muscular, recuperação e desempenho — Personal por Perto';
@@ -151,12 +152,13 @@ const schema = [
 
       <h2>Quanto de proteína você precisa (e onde o whey entra)</h2>
       <p>
-        Para quem treina força, a literatura — refletida em posicionamentos de
-        entidades como o
-        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
-        — converge para a faixa de <strong>1,6 a 2,2 g de proteína por quilo
-        de peso corporal por dia</strong>, distribuída em refeições com 20 a
-        40 g cada. Uma pessoa de 70 kg mira algo entre 112 e 155 g diários.
+        Para quem treina força, a maior meta-análise sobre o tema — 49
+        estudos, publicada em 2018 — aponta a faixa de <strong>1,6 a 2,2 g de
+        proteína por quilo de peso corporal por dia</strong>, distribuída em
+        refeições com 20 a 40 g cada. Uma pessoa de 70 kg mira algo entre 112
+        e 155 g diários. Para quem treina em geral, o posicionamento conjunto
+        do <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>
+        fala em 1,2 a 2,0 g/kg.
       </p>
       <p>
         Faça a conta honesta de um dia típico seu. Se faltam 25 a 50 g para a
@@ -165,6 +167,12 @@ const schema = [
         quando a proteína alta é o que
         <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">preserva o músculo no déficit</a>.
       </p>
+
+      <FerramentaInline
+        id="calculadora-de-proteina"
+        texto="A conta honesta tem duas metades: quanto você precisa e quanto já come. A calculadora faz a primeira com o seu peso e a sua situação — ganhar músculo, emagrecer ou passar dos 65 — e divide o total pelas suas refeições."
+        acao="Calcular quanto de proteína eu preciso"
+      />
 
       <h2>Concentrado, isolado ou hidrolisado?</h2>
       <ul>

@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 27, `${catalogo.length} ferramentas no catálogo (27)`);
+ok(catalogo.length === 28, `${catalogo.length} ferramentas no catálogo (28)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -89,6 +89,9 @@ const casos: Array<[string, string]> = [
   ['carga máxima no supino', 'calculadora-1rm'],
   ['tabela de porcentagem do 1rm', 'calculadora-1rm'],
   ['repetição máxima', 'calculadora-1rm'],
+  ['quanto de proteína por dia', 'calculadora-de-proteina'],
+  ['proteína para quem usa mounjaro', 'calculadora-de-proteina'],
+  ['quantas gramas de proteína para hipertrofia', 'calculadora-de-proteina'],
   ['quantas calorias gasto por dia', 'gasto-calorico-diario'],
   ['taxa metabólica basal', 'gasto-calorico-diario'],
   ['muay thai', 'lutas'],
