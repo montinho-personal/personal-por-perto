@@ -36,7 +36,7 @@ for (const s of SECOES) {
     total++;
     const url = `/${s}/${f.replace(/\.astro$/, '')}/`;
     const src = readFileSync(`${dir}/${f}`, 'utf8');
-    const ids = [...src.matchAll(/<FerramentaInline\s+id="([a-zA-Z-]+)"/g)].map((m) => m[1]);
+    const ids = [...src.matchAll(/<FerramentaInline\s+id="([a-zA-Z0-9-]+)"/g)].map((m) => m[1]);
     const usos = (src.match(/<FerramentaInline\b/g) ?? []).length;
 
     if (s === 'humor-fitness') {
@@ -54,7 +54,7 @@ for (const s of SECOES) {
         falha(`${url}: ferramenta desconhecida "${id}"`);
         continue;
       }
-      if (ferramentaDoCatalogo(id)?.categoria === 'calorias') comCalculadora++;
+      if (!FERRAMENTAS[id as FerramentaId]) comCalculadora++;
       if (destino === url) falha(`${url}: o bloco convida para a própria página`);
       const cta = getContextualCTA({ path: url });
       const fim = (cta?.campanha as { destino?: string } | undefined)?.destino;

@@ -1,0 +1,658 @@
+---
+/**
+ * Calculadora de 1RM — página e ferramenta.
+ *
+ * POR QUE ESTA CALCULADORA
+ *
+ * O mapa de ferramentas nos artigos (docs/ferramentas-nos-artigos.md)
+ * mostrou que os 107 artigos de musculação não tinham nenhuma calculadora
+ * que conversasse com eles: falam de carga, séries e repetições o tempo
+ * todo e nunca dizem com que peso trabalhar. Esta responde isso.
+ *
+ * AS INTENÇÕES DE BUSCA QUE A PÁGINA COBRE, cada uma com lugar próprio:
+ *   calculadora de 1RM, calcular 1RM         → a ferramenta, modo "estimar"
+ *   o que é 1RM, repetição máxima, 10RM       → "O que é 1RM"
+ *   fórmula de Brzycki / Epley, como calcular → "As sete fórmulas"
+ *   tabela de porcentagem do 1RM, % do 1RM    → a tabela, na ferramenta e no texto
+ *   carga para hipertrofia / para força       → "Qual carga usar"
+ *   1RM no supino, agachamento, terra, leg    → "1RM por exercício"
+ *   RIR, repetições na reserva, RPE           → "Quando a série não vai até a falha"
+ *   teste de 1RM, é seguro testar             → "Testar ou estimar"
+ *   quanto peso usar na academia              → modo "já sei meu 1RM" e FAQ
+ *
+ * Nenhum número foi escrito à mão: tudo sai do motor em src/lib/forca/umRm.ts.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  CARGA_PADRAO,
+  EXERCICIOS,
+  FONTES,
+  FORMULAS,
+  NOTA_DOR,
+  NOTA_FALHA,
+  NOTA_HIPERTROFIA,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_REPS_ALTAS,
+  NOTA_RESERVA,
+  NOTA_TESTE,
+  REPS_PADRAO,
+  RIR_MAX,
+  cargaPara,
+  estimar,
+  exercicio,
+  formataFaixaKg,
+  formataFaixaPct,
+  formataKg,
+  formataPct,
+  formataReps,
+  fraseEstimativa,
+  tabela,
+} from '../../lib/forca/umRm';
+
+const path = '/ferramentas/calculadora-1rm';
+const atualizadoEm = '2026-09-25';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Calculadora de 1RM', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da ferramenta ── */
+const EXERCICIO_PADRAO = 'supino';
+const EX = estimar(CARGA_PADRAO, REPS_PADRAO, 0, EXERCICIO_PADRAO);
+const TAB_EX = tabela(EX.central);
+const RM_REF = 100;
+const TAB_100 = tabela(RM_REF);
+const linha = (reps: number) => TAB_100.find((l) => l.reps === reps)!;
+const DEZ = linha(10);
+const OITO = linha(8);
+const CINCO = linha(5);
+const DOZE = linha(12);
+const RESERVA = cargaPara(RM_REF, 10, 2);
+const EX_RESERVA = estimar(CARGA_PADRAO, 6, 2);
+const EX_LONGA = estimar(40, 15);
+
+/* 53 caracteres. */
+const title = 'Calculadora de 1RM: Carga Máxima e Peso por Repetição';
+/* 146 caracteres. */
+const description =
+  'Estime seu 1RM pela série que você já faz, sem teste máximo, e veja a carga para 5, 8, 10 ou 12 repetições — com a tabela de % e as sete fórmulas.';
+
+const faqs = [
+  {
+    pergunta: 'Como calcular o meu 1RM sem fazer o teste?',
+    resposta: `Escolha uma carga com que você faz de 3 a 8 repetições até a falha técnica, anote a carga e as repetições e use as fórmulas de estimativa. Com ${formataKg(CARGA_PADRAO)} kg por ${REPS_PADRAO} repetições, por exemplo, as sete fórmulas mais usadas dão entre ${formataKg(EX.min)} e ${formataKg(EX.max)} kg.`,
+  },
+  {
+    pergunta: 'Qual é a fórmula de 1RM mais precisa?',
+    resposta: 'Nenhuma acerta sempre. No estudo que comparou as sete mais usadas contra o teste real, todas acompanharam o 1RM de perto, mas cada uma errou para um lado conforme o exercício — e todas subestimaram o levantamento terra. Por isso a calculadora mostra a faixa das sete, e não uma só.',
+  },
+  {
+    pergunta: 'Quantos por cento do 1RM usar para hipertrofia?',
+    resposta: `Menos do que se imagina importa. Numa meta-análise, cargas leves (até 60% do 1RM) e pesadas deram hipertrofia parecida quando as séries iam perto da falha; a força máxima cresceu mais com carga pesada. Na prática, a faixa de 8 a 12 repetições fica perto de ${formataPct(DOZE.pctCentral)} a ${formataPct(OITO.pctCentral)} do 1RM.`,
+  },
+  {
+    pergunta: 'O que é 10RM?',
+    resposta: `É a maior carga com que você faz 10 repetições, e não 11. Pelas fórmulas, 10RM fica entre ${formataFaixaPct(DEZ.pctMin, DEZ.pctMax)} do 1RM — ${formataPct(DEZ.pctCentral)} no meio delas. A mesma lógica vale para 5RM, 8RM ou 12RM.`,
+  },
+  {
+    pergunta: 'Quanto peso devo usar na academia?',
+    resposta: `O que o seu treino pede de repetições decide. Se o treino é de 10 repetições e o seu 1RM estimado é ${formataKg(RM_REF)} kg, a carga fica perto de ${formataFaixaKg(DEZ.min, DEZ.max)} kg. Se a série terminar antes ou depois do número, ajuste na próxima.`,
+  },
+  {
+    pergunta: 'É perigoso testar o 1RM?',
+    resposta: 'O teste de verdade pede aquecimento progressivo, técnica consolidada e alguém ajudando na barra. Para quem está começando, estimar pela série é o caminho mais sensato e dá um número bom o bastante para montar o treino.',
+  },
+  {
+    pergunta: 'O que é RIR, ou repetições na reserva?',
+    resposta: `É quantas repetições ainda sairiam antes da falha. "3 séries de 10 com 2 na reserva" quer dizer uma carga com que você faria 12. Para ${formataKg(RM_REF)} kg de 1RM, isso é perto de ${formataFaixaKg(RESERVA.min, RESERVA.max)} kg.`,
+  },
+  {
+    pergunta: 'O 1RM de um exercício serve para outro?',
+    resposta: 'Não. O 1RM é de cada exercício: o do leg press não diz nada sobre o do agachamento, e o do supino reto não vale para o inclinado. Estime separadamente os exercícios em que você quer controlar a carga.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/musculacao/quantas-series-e-repeticoes/',
+    titulo: 'Quantas séries e repetições fazer',
+    descricao: 'O número de repetições que o treino pede — a outra metade da conta desta calculadora.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treinar-leve-ou-pesado/',
+    titulo: 'Treinar leve ou pesado?',
+    descricao: 'O que muda entre carga alta e carga baixa, e o mito da "definição" com muitas repetições.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como funciona',
+    descricao: 'Volume, proximidade da falha e progressão — onde a carga entra no crescimento muscular.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/ferramentas/meu-treino-faz-sentido/',
+    titulo: 'Meu treino faz sentido?',
+    descricao: 'Com a carga definida, a pergunta seguinte: a semana inteira está bem distribuída?',
+    tipo: 'Ferramenta',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="rm-hero">
+    <div class="container rm-hero-inner">
+      <p class="eyebrow">Ferramenta de treino</p>
+      <h1>Calculadora de 1RM: quanto é a sua carga máxima?</h1>
+      <p class="rm-hero-lead">
+        Você não precisa testar o máximo para saber o seu 1RM. Com a carga e as repetições de uma série
+        que você já faz, sete fórmulas estimam a faixa — e, com ela, a carga para 5, 8, 10 ou 12
+        repetições. Com {formataKg(CARGA_PADRAO)} kg por {REPS_PADRAO} repetições no supino:{' '}
+        <strong>{formataFaixaKg(EX.min, EX.max)} kg</strong>.
+      </p>
+      <p class="rm-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container rm-layout">
+    <article class="rm-main">
+      <section id="rm-app" class="rm-app" aria-labelledby="rm-app-h">
+        <h2 id="rm-app-h" class="rm-app-h">Calculadora de 1RM e de carga por repetição</h2>
+
+        <!-- As abas ficam logo acima dos campos que trocam. -->
+        <div class="rm-modos" role="tablist" aria-label="O que você quer calcular">
+          <button type="button" class="rm-modo is-ativo" data-modo="estimar" role="tab" aria-selected="true">
+            Estimar meu 1RM
+          </button>
+          <button type="button" class="rm-modo" data-modo="conhecido" role="tab" aria-selected="false" tabindex="-1">
+            Já sei meu 1RM
+          </button>
+        </div>
+
+        <div class="rm-campos">
+          <div class="rm-bloco-modo" data-bloco="estimar">
+            <div class="rm-par">
+              <div class="rm-campo">
+                <label for="rm-carga">Carga da série (kg)</label>
+                <input id="rm-carga" type="text" inputmode="decimal" autocomplete="off" value={CARGA_PADRAO} />
+              </div>
+              <div class="rm-campo">
+                <label for="rm-reps">Repetições feitas</label>
+                <input id="rm-reps" type="text" inputmode="numeric" autocomplete="off" value={REPS_PADRAO} />
+              </div>
+            </div>
+            <div class="rm-campo">
+              <span class="rm-rotulo" id="rm-exercicio-rotulo">Exercício</span>
+              <div class="rm-presets rm-presets-sem-rotulo" role="group" aria-labelledby="rm-exercicio-rotulo">
+                {EXERCICIOS.map((e) => (
+                  <button
+                    type="button"
+                    class:list={['rm-preset', 'rm-exercicio', e.id === EXERCICIO_PADRAO && 'is-ativo']}
+                    data-exercicio={e.id}
+                    aria-pressed={String(e.id === EXERCICIO_PADRAO)}
+                  >
+                    {e.nome}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="rm-bloco-modo" data-bloco="conhecido" hidden>
+            <div class="rm-par">
+              <div class="rm-campo">
+                <label for="rm-um">Seu 1RM (kg)</label>
+                <input id="rm-um" type="text" inputmode="decimal" autocomplete="off" value={RM_REF} />
+              </div>
+              <div class="rm-campo">
+                <label for="rm-alvo">Repetições que o treino pede</label>
+                <input id="rm-alvo" type="text" inputmode="numeric" autocomplete="off" value="10" />
+              </div>
+            </div>
+          </div>
+
+          <div class="rm-campo">
+            <span class="rm-rotulo" id="rm-rir-rotulo">Repetições na reserva</span>
+            <div class="rm-presets rm-presets-sem-rotulo" role="group" aria-labelledby="rm-rir-rotulo">
+              {Array.from({ length: RIR_MAX + 1 }, (_, i) => (
+                <button
+                  type="button"
+                  class:list={['rm-preset', 'rm-rir', i === 0 && 'is-ativo']}
+                  data-rir={String(i)}
+                  aria-pressed={String(i === 0)}
+                >
+                  {i === 0 ? '0 (até a falha)' : String(i)}
+                </button>
+              ))}
+            </div>
+            <p class="rm-dica">Quantas ainda sairiam se você continuasse. Na dúvida, deixe em zero.</p>
+          </div>
+        </div>
+
+        <p id="rm-erro" class="rm-erro" role="status" hidden></p>
+
+        <div id="rm-saida" class="rm-saida" role="status" aria-live="polite">
+          <p class="rm-resultado">
+            <span class="rm-numero">{formataFaixaKg(EX.min, EX.max)}</span>
+            <span class="rm-unidade">kg de 1RM estimado</span>
+          </p>
+          <p class="rm-frase">{fraseEstimativa(EX)}</p>
+
+          <p class="rm-nota rm-nota-exercicio">{exercicio(EXERCICIO_PADRAO).nota}</p>
+          <p class="rm-nota rm-nota-reps" hidden>{NOTA_REPS_ALTAS}</p>
+
+          <div class="tabela-rolavel rm-tabela-app">
+            <table>
+              <caption class="rm-tabela-caption">Carga por número de repetições, para o seu 1RM estimado</caption>
+              <thead>
+                <tr><th scope="col">Repetições</th><th scope="col">% do 1RM</th><th scope="col">Carga</th></tr>
+              </thead>
+              <tbody>
+                {TAB_EX.map((l) => (
+                  <tr data-reps={String(l.reps)}>
+                    <th scope="row">{l.reps}</th>
+                    <td class="rm-t-pct">{formataFaixaPct(l.pctMin, l.pctMax)}</td>
+                    <td class="rm-t-kg">{formataFaixaKg(l.min, l.max)} kg</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="rm-proximo">
+            <p class="rm-proximo-lead">
+              A carga resolve uma série. O resultado vem da semana inteira: quantas séries cada grupo
+              recebe, como a carga sobe de um mês para o outro e se a técnica aguenta o peso novo. A
+              estrutura você confere no{' '}
+              <a href="/ferramentas/meu-treino-faz-sentido/">Meu treino faz sentido?</a> —{' '}
+              <strong>a técnica, só alguém olhando de fora.</strong>
+            </p>
+            <div class="rm-proximo-acoes">
+              <a class="rm-btn rm-btn-primario" href="/personal-trainer/" data-track="ferramenta-1rm:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="rm-btn rm-btn-secundario rm-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="ferramenta-1rm:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="rm-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose rm-conteudo">
+        <h2>O que é 1RM (repetição máxima)</h2>
+        <p>
+          1RM é a maior carga que você levanta uma única vez, com técnica, num exercício. É a régua da
+          força: quando um programa diz "3 séries a 75%", é 75% do seu 1RM. A mesma notação vale para
+          outros números — 10RM é a maior carga com que você faz 10 repetições e não consegue a 11ª.
+        </p>
+        <p>
+          O 1RM é de cada exercício. O do supino reto não serve para o inclinado, e o do leg press não
+          diz nada sobre o do agachamento.
+        </p>
+
+        <h2>Como calcular o 1RM: as sete fórmulas</h2>
+        <p>
+          As fórmulas partem de uma série até a falha e estimam quanto você levantaria uma vez. As sete
+          mais usadas vêm de lugares diferentes: a de Brzycki e a de Mayhew foram publicadas em revista
+          científica; a de Epley saiu da tabela de cargas do preparador Boyd Epley, em 1985; as de
+          Lander, Lombardi, O'Conner e Wathan vêm de manuais e livros de treino. Para a série de{' '}
+          {formataKg(CARGA_PADRAO)} kg por {REPS_PADRAO} repetições:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>{formataKg(CARGA_PADRAO)} kg × {REPS_PADRAO} repetições até a falha</caption>
+            <thead>
+              <tr><th scope="col">Fórmula</th><th scope="col">Como é escrita</th><th scope="col">1RM estimado</th></tr>
+            </thead>
+            <tbody>
+              {FORMULAS.map((f) => (
+                <tr>
+                  <th scope="row">{f.nome}</th>
+                  <td class="rm-escrita">{f.escrita}</td>
+                  <td>{formataKg(EX.porFormula.find((p) => p.id === f.id)!.rm)} kg</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Quando as sete foram comparadas com o 1RM medido de verdade, em universitários sem experiência
+          de treino, todas acompanharam o valor real de perto — mas quase todas erraram na média no
+          supino e no agachamento, e todas subestimaram o levantamento terra. É por isso que a
+          calculadora mostra a faixa das sete e o valor do meio, em vez de escolher uma.
+        </p>
+
+        <h2>Tabela de porcentagem do 1RM</h2>
+        <p>
+          O caminho inverso: com o 1RM, que carga usar para cada número de repetições. Para um 1RM de{' '}
+          {formataKg(RM_REF)} kg, a porcentagem é a própria carga:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Carga para cada número de repetições até a falha, 1RM de {formataKg(RM_REF)} kg</caption>
+            <thead>
+              <tr><th scope="col">Repetições</th><th scope="col">% do 1RM (faixa das sete)</th><th scope="col">No meio</th><th scope="col">Carga</th></tr>
+            </thead>
+            <tbody>
+              {TAB_100.map((l) => (
+                <tr>
+                  <th scope="row">{l.reps}</th>
+                  <td>{formataFaixaPct(l.pctMin, l.pctMax)}</td>
+                  <td>{formataPct(l.pctCentral)}</td>
+                  <td>{formataFaixaKg(l.min, l.max)} kg</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare como a faixa abre com as repetições: em {formataReps(5)}, as fórmulas discordam pouco
+          ({formataFaixaPct(CINCO.pctMin, CINCO.pctMax)}); em 15, discordam muito. {NOTA_REPS_ALTAS}
+        </p>
+
+        <h2>Qual carga usar para hipertrofia e para força</h2>
+        <p>{NOTA_HIPERTROFIA}</p>
+        <p>
+          Em números: a faixa de 8 a 12 repetições, a mais comum em treino de hipertrofia, fica perto de{' '}
+          {formataPct(DOZE.pctCentral)} a {formataPct(OITO.pctCentral)} do 1RM; treinos de força costumam
+          ficar em 5 repetições ou menos, a partir de {formataPct(CINCO.pctCentral)}. Nenhuma das duas
+          faixas é obrigatória — são pontos de partida para escolher a carga, e a série certa é a que
+          termina perto da falha no número de repetições planejado.
+        </p>
+
+        <h2>1RM no supino, agachamento, levantamento terra e leg press</h2>
+        <ul class="rm-exercicios">
+          {EXERCICIOS.filter((e) => e.id !== 'outro').map((e) => (
+            <li><strong>{e.nome}.</strong> {e.nota}</li>
+          ))}
+        </ul>
+        <p>
+          Sexo, idade e nível de treino, na maior meta-análise sobre a relação entre repetições e
+          porcentagem do 1RM, mexeram pouco no resultado. Por isso a calculadora não pede nenhum dos três.
+        </p>
+
+        <h2>Quando a série não vai até a falha: repetições na reserva</h2>
+        <p>
+          A maioria dos treinos não pede falha em toda série. A escala de repetições na reserva (RIR)
+          conta quantas ainda sairiam: "3 séries de 10 com 2 na reserva" é uma carga com que você faria
+          12. Para {formataKg(RM_REF)} kg de 1RM, isso é {formataFaixaKg(RESERVA.min, RESERVA.max)} kg.
+        </p>
+        <p>
+          O mesmo vale para estimar o 1RM: {formataKg(CARGA_PADRAO)} kg por 6 repetições com 2 na reserva
+          contam como 8 até a falha, e dão o mesmo {formataKg(EX_RESERVA.central)} kg no meio das
+          fórmulas. {NOTA_RESERVA}
+        </p>
+
+        <h2>Testar o 1RM ou estimar?</h2>
+        <p>{NOTA_TESTE}</p>
+        <p>{NOTA_FALHA}</p>
+        <p>{NOTA_DOR}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A calculadora aplica as sete fórmulas à sua série — somando as repetições na reserva às feitas
+          — e mostra a menor e a maior estimativa, com o valor do meio em destaque. Uma repetição até a
+          falha já é o 1RM, e não passa pelas fórmulas. No caminho inverso, cada fórmula é invertida para
+          dar a porcentagem do 1RM de cada número de repetições. As cargas são arredondadas ao que existe
+          na academia: meio quilo abaixo de 20 kg, quilo inteiro acima.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora usa,
+          e os testes conferem cada fórmula contra a forma publicada.
+        </p>
+        <p class="rm-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Limitações desta estimativa</h2>
+        <p>
+          A estimativa é tão boa quanto a série que entra nela. Uma série de 15 repetições com{' '}
+          {formataKg(40)} kg dá um 1RM entre {formataKg(EX_LONGA.min)} e {formataKg(EX_LONGA.max)} kg — uma
+          faixa larga demais para decidir carga. As fórmulas foram feitas e testadas principalmente com
+          supino e agachamento, em pessoas jovens; no terra e no leg press elas erram para lados
+          conhecidos, e a página avisa. Técnica, sono e o cansaço do dia mudam a série, e a série muda o
+          número.
+        </p>
+
+        <h2>Referências</h2>
+        <ul class="rm-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre 1RM" />
+
+      <WhatsAppCta tema="hipertrofia" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadora1rm } from '../../scripts/calculadora1rm.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadora1rm();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .rm-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .rm-hero-inner { max-width: 780px; }
+    .rm-hero h1 { color: #fff; max-width: 24ch; }
+    .rm-hero :global(.eyebrow) { color: #ffb488; }
+    .rm-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .rm-hero-lead strong { color: #fff; }
+    .rm-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .rm-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .rm-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .rm-main { min-width: 0; max-width: 760px; }
+
+    .rm-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .rm-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .rm-modos { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+    .rm-modo {
+      flex: 1 1 auto;
+      min-height: 44px;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .rm-modo:hover { border-color: var(--brand-600); color: var(--ink); }
+    .rm-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .rm-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .rm-campos { display: grid; gap: var(--sp-4); }
+    .rm-bloco-modo { display: grid; gap: var(--sp-4); }
+    .rm-bloco-modo[hidden] { display: none; }
+    /* Dois campos lado a lado; empilham antes de apertar, para o Tab só descer. */
+    .rm-par { display: grid; gap: var(--sp-4); grid-template-columns: 1fr; }
+    @media (min-width: 520px) {
+      .rm-par { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+    }
+    .rm-campo label,
+    .rm-campo .rm-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .rm-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .rm-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .rm-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+
+    .rm-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .rm-presets-sem-rotulo { margin-top: 0; }
+    .rm-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .rm-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .rm-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .rm-preset.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .rm-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .rm-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .rm-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .rm-numero {
+      font-size: clamp(2rem, 7.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .rm-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .rm-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+    .rm-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .rm-nota-exercicio,
+    .rm-nota-reps { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+    .rm-tabela-app tr.is-alvo th,
+    .rm-tabela-app tr.is-alvo td { background: var(--accent-50); font-weight: 700; }
+
+    .rm-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .rm-proximo-lead { line-height: 1.6; }
+    .rm-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .rm-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .rm-btn-primario { background: var(--brand-600); color: #fff; }
+    .rm-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .rm-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .rm-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .rm-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .rm-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .rm-conteudo { margin-top: var(--sp-7); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.55rem 0.8rem 0.55rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+    .tabela-rolavel td.rm-escrita { white-space: normal; min-width: 14ch; }
+    .rm-exercicios li { margin-bottom: 0.6rem; }
+    .rm-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .rm-fontes li { margin-bottom: 0.6rem; }
+    .rm-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

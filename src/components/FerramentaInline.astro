@@ -45,7 +45,8 @@ const doCatalogo = daJornada ? undefined : ferramentaDoCatalogo(id);
 const f = daJornada ?? doCatalogo;
 // Id errado quebra o build, não a página: um convite para lugar nenhum é pior que nenhum.
 if (!f) throw new Error(`FerramentaInline: ferramenta desconhecida "${id}"`);
-const rotulo = doCatalogo?.categoria === 'calorias' ? 'Calculadora gratuita' : 'Ferramenta gratuita';
+// Fora da jornada, hoje, só há calculadoras: as de calorias e a de 1RM.
+const rotulo = doCatalogo ? 'Calculadora gratuita' : 'Ferramenta gratuita';
 ---
 
 <aside class="ferr-inline" data-track="artigo:ferramenta-inline" data-ferramenta={id}>

@@ -26,12 +26,13 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | ferramenta | hoje (bloco / link) | na fila | leitura |
 |---|---|---|---|
 | [encontre-seu-personal-ideal](/ferramentas/encontre-seu-personal-ideal/) | 3 / 0 | 6 | ferramenta da jornada |
-| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 31 / 0 | 18 | ferramenta da jornada |
+| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 31 / 0 | 17 | ferramenta da jornada |
 | [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 39 / 0 | 30 | ferramenta da jornada |
 | [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 11 / 0 | 2 | ferramenta da jornada |
 | [presencial-ou-online](/ferramentas/presencial-ou-online/) | 6 / 0 | 1 | ferramenta da jornada |
 | [personal-score](/ferramentas/personal-score/) | 0 / 0 | 1 | ferramenta da jornada |
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 5 / 1 | 1 | ferramenta da jornada |
+| [calculadora-1rm](/ferramentas/calculadora-1rm/) | 1 / 1 | 0 | calculadora de treino; conversa com os artigos de musculação |
 | [caminhada](/calorias/caminhada/) | 0 / 4 | 7 | encaixa onde o texto já fala de passos e cardio |
 | [corrida](/calorias/corrida/) | 0 / 3 | 2 | poucos artigos de corrida no acervo |
 | [bicicleta](/calorias/bicicleta/) | 0 / 3 | 0 | guias de pedalar e trabalho sentado |
@@ -69,6 +70,15 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 - `/emagrecimento/musculacao-ou-cardio-para-emagrecer/` — bloco musculacao + links caminhada, corrida, bicicleta, natacao
 - `/emagrecimento/plato-de-emagrecimento/` — bloco gasto-calorico-diario
 - `/guias/personal-trainer-para-quem-trabalha-sentado/` — bloco gasto-calorico-diario + links caminhada, bicicleta
+
+## Leva 2 — 25/09/2026: a calculadora de 1RM
+
+A calculadora de 1RM nasceu deste mapa: os 107 artigos de musculação não tinham nenhuma calculadora que conversasse com eles. No dia da publicação, entrou nos dois artigos em que o texto já pergunta pela carga máxima:
+
+- `/musculacao/cinto-e-luva-de-treino/` — link calculadora-1rm em "própria carga máxima"; bloco personalIdeal mantido
+- `/musculacao/treino-de-forca/` — bloco calculadora-1rm (regra 1: "80 a 90% da máxima")
+
+Candidatos a reler com ela na mão, sem trocar bloco que já esteja bom: `/musculacao/treinar-leve-ou-pesado/` (leve e pesado são porcentagens do máximo), `/musculacao/progressao-de-carga/` e `/musculacao/quantas-series-e-repeticoes/`. A regra é a mesma do resto do mapa — só onde o texto já fala de carga máxima ou de porcentagem.
 
 Correções encontradas na leitura, feitas no mesmo dia (defeito não espera leva):
 
@@ -170,15 +180,14 @@ Ordem: calculadora com encaixe forte primeiro, depois o resto por impressão no 
 | 68 | `/musculacao/treinar-doente-ou-gripado/` | 0 | inserir | meu-treino-faz-sentido | media | A parte que quase ninguém conecta | — |
 | 69 | `/musculacao/treino-abc-como-montar/` | 0 | inserir | meu-treino-faz-sentido | forte | A lógica do ABC (e a conta de frequência que ninguém faz) | — |
 | 70 | `/musculacao/treino-de-costas/` | 0 | inserir | treino-para-minha-rotina | forte | Volume e frequência | — |
-| 71 | `/musculacao/treino-de-forca/` | 0 | inserir | treino-para-minha-rotina | media | Uma semana de força na prática | — |
-| 72 | `/musculacao/treino-de-gluteos/` | 0 | inserir | treino-para-minha-rotina | forte | A semana que funciona: frequência e volume | — |
-| 73 | `/musculacao/treino-de-ombro/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 74 | `/musculacao/treino-de-panturrilha/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de organização | — |
-| 75 | `/musculacao/treino-de-peito/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 76 | `/musculacao/treino-de-pernas/` | 0 | inserir | treino-para-minha-rotina | forte | Os erros que travam o dia de perna | — |
-| 77 | `/musculacao/treino-de-trapezio/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de encaixe | — |
-| 78 | `/musculacao/triceps-pulley-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Quanto volume de tríceps faz sentido | — |
+| 71 | `/musculacao/treino-de-gluteos/` | 0 | inserir | treino-para-minha-rotina | forte | A semana que funciona: frequência e volume | — |
+| 72 | `/musculacao/treino-de-ombro/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
+| 73 | `/musculacao/treino-de-panturrilha/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de organização | — |
+| 74 | `/musculacao/treino-de-peito/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
+| 75 | `/musculacao/treino-de-pernas/` | 0 | inserir | treino-para-minha-rotina | forte | Os erros que travam o dia de perna | — |
+| 76 | `/musculacao/treino-de-trapezio/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de encaixe | — |
+| 77 | `/musculacao/triceps-pulley-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Quanto volume de tríceps faz sentido | — |
 
-Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 82.
+Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 81.
 
 A análise completa — dúvida de cada artigo, frase literal de cada encaixe e o porquê — está em `docs/ferramentas-nos-artigos.json`.

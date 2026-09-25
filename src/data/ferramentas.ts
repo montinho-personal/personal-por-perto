@@ -678,7 +678,58 @@ const CALORIAS: Array<Omit<FerramentaCatalogo, 'categoria' | 'acao' | 'tempo'> &
   },
 ];
 
-/** O catálogo inteiro: as sete da jornada e, depois, as calculadoras de calorias. */
+/**
+ * Ferramentas de treino fora da jornada do Mapa do Treino. A primeira é a de
+ * 1RM (25/09/2026): o mapa de ferramentas nos artigos mostrou que os 107
+ * artigos de musculação não tinham nenhuma calculadora que conversasse com
+ * eles. Os aliases são as formas como a pergunta chega na busca.
+ */
+const TREINO: FerramentaCatalogo[] = [
+  {
+    slug: 'calculadora-1rm',
+    url: '/ferramentas/calculadora-1rm/',
+    nome: 'Calculadora de 1RM',
+    nomeCurto: 'Calculadora de 1RM',
+    categoria: 'treino',
+    resumo: 'Estime a sua carga máxima pela série que você já faz e veja o peso para 5, 8, 10 ou 12 repetições — com a faixa de sete fórmulas.',
+    pergunta: 'Qual é a minha carga máxima, e que peso usar em cada série?',
+    acao: 'Calcular meu 1RM',
+    tempo: 'Resultado na hora',
+    aliases: [
+      '1rm',
+      '1 rm',
+      'calculadora 1rm',
+      'calcular 1rm',
+      'repetição máxima',
+      'uma repetição máxima',
+      'carga máxima',
+      'teste de carga máxima',
+      'teste de 1rm',
+      'rm',
+      '10rm',
+      'porcentagem do 1rm',
+      'tabela de porcentagem',
+      'quanto peso usar',
+      'que carga usar',
+      'peso para hipertrofia',
+      'carga para hipertrofia',
+      'fórmula de brzycki',
+      'fórmula de epley',
+      'repetições na reserva',
+      'rir',
+      'rpe',
+      '1rm supino',
+      '1rm agachamento',
+      '1rm terra',
+      '1rm leg press',
+    ],
+    tags: ['força', 'carga', 'musculação', 'progressão'],
+    relacionadas: ['meu-treino-faz-sentido', 'treino-para-minha-rotina'],
+    publicadoEm: '2026-09-25',
+  },
+];
+
+/** O catálogo inteiro: as sete da jornada, as de treino e, depois, as calculadoras de calorias. */
 export const catalogo: FerramentaCatalogo[] = [
   ...ferramentasDisponiveis.map((f) => ({
     slug: f.slug,
@@ -687,6 +738,7 @@ export const catalogo: FerramentaCatalogo[] = [
     nomeCurto: f.nomeCurto,
     ...JORNADA[f.slug],
   })),
+  ...TREINO,
   ...CALORIAS.map((c) => ({
     categoria: 'calorias' as const,
     acao: 'Calcular calorias',

@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 26, `${catalogo.length} ferramentas no catálogo (26)`);
+ok(catalogo.length === 27, `${catalogo.length} ferramentas no catálogo (27)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -63,6 +63,7 @@ ok(d.length >= 4 && d.length <= 6, `${d.length} destaques (4 a 6)`);
 ok(d.some((f) => f.slug === 'calculadora-preco-personal'), 'a calculadora de preço é destaque (maior demanda medida no GSC)');
 ok(ehNova(catalogo.find((f) => f.slug === 'ping-pong')!, '2026-09-30'), 'ping pong, a mais recente, é "novo" uma semana depois');
 ok(!ehNova(catalogo.find((f) => f.slug === 'ping-pong')!, '2026-11-01'), '  e deixa de ser depois de 30 dias');
+ok(ehNova(catalogo.find((f) => f.slug === 'calculadora-1rm')!, '2026-09-30'), 'a calculadora de 1RM é "nova" uma semana depois');
 ok(novas('2026-09-30').length === NOVAS_MAXIMO, `no máximo ${NOVAS_MAXIMO} com selo "Novo" ao mesmo tempo`);
 ok(!ehNova(catalogo.find((f) => f.slug === 'caminhada')!, '2026-09-30'), '  caminhada (02/09) fica sem selo: há três mais recentes');
 
@@ -83,6 +84,11 @@ const casos: Array<[string, string]> = [
   ['quantas calorias gastei no boxe', 'lutas'],
   ['calorias tênis de mesa', 'ping-pong'],
   ['quanto gasta jogar ping pong', 'ping-pong'],
+  ['calculadora 1rm', 'calculadora-1rm'],
+  ['quanto peso usar para hipertrofia', 'calculadora-1rm'],
+  ['carga máxima no supino', 'calculadora-1rm'],
+  ['tabela de porcentagem do 1rm', 'calculadora-1rm'],
+  ['repetição máxima', 'calculadora-1rm'],
   ['quantas calorias gasto por dia', 'gasto-calorico-diario'],
   ['taxa metabólica basal', 'gasto-calorico-diario'],
   ['muay thai', 'lutas'],
