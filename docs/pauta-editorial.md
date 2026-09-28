@@ -392,7 +392,7 @@ de fechamento.
 | Respiração no treino | `respiracao-no-treino` | ✅ 2026-09-14 · recorte declarado |
 | Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | ✅ 2026-09-14 · recorte declarado |
 | Academia lotada: como treinar | `academia-lotada-como-treinar` | ✅ 2026-09-22 · recorte declarado |
-| Treinar duas vezes por dia | `treinar-duas-vezes-por-dia` | |
+| Treinar duas vezes por dia | `treinar-duas-vezes-por-dia` | ✅ 2026-09-28 · recorte declarado |
 | Musculação na gravidez | `musculacao-na-gravidez` | |
 | Treino full body: como montar | `treino-full-body-como-montar` | ⚠️ |
 | Drop set: quando usar | `series-drop-set` | ⚠️ |
@@ -542,12 +542,39 @@ funciona, onde ela falha — e fecha com uma frase-regra, sem callout. Cinto tem
 um veredito explícito ao fim de cada seção e fecha com ordem de compra mais
 callout. Nenhum dos dois repete o par de ontem (prosa-princípio + tabela).
 
+### Nota de 28/09/2026 — dois artigos a pedido do Renato, com a fila parada
+
+A rotina da pauta está pausada desde 15/09, esperando a leitura de outubro. Os
+dois abaixo saíram porque o Renato pediu diretamente, e seguem a regra de
+ritmo: um por seção, no mesmo dia.
+
+**`treinar-duas-vezes-por-dia` tem vizinho, e o recorte é limpo.**
+`/musculacao/cardio-e-musculacao-no-mesmo-dia/` já responde "separar cardio e
+força por horas". Este fica com duas sessões DE FORÇA no mesmo dia — dividir o
+treino ou dobrá-lo — e linka o vizinho quando a segunda sessão é de cardio. O
+achado que dá valor próprio ao artigo: dividir o mesmo treino deu mais força
+no agachamento e recuperação mais rápida, mas a mesma massa muscular; e, num
+estudo com 23 mulheres, 22 preferiram a sessão única longa mesmo ela sendo
+percebida como mais dura. Cinco estudos, todos conferidos.
+
+**`esteira-ou-bicicleta` respeita a regra de 20/09.** Fica na comparação de
+máquina para emagrecer; o guia de pedal segue com o que a bike faz pela perna.
+A tabela sai dos motores das calculadoras de caminhada e bicicleta (nenhum
+número escrito à mão) e mostra o ponto que o artigo defende: pelo ajuste, "qual
+gasta mais" depende; pelo mesmo esforço percebido, a esteira ganha (Zeni et al.,
+JAMA 1996; Prieto-González e Yagin, 2024). É também a casa semântica que a
+calculadora de bicicleta não tinha: bloco dela no artigo, links para caminhada
+e corrida na frase que já cita as duas.
+
+**`musculacao-na-gravidez` não foi escrito.** `/guias/personal-trainer-para-gestantes/`
+já existe; precisa de recorte decidido antes, como os ⚠️.
+
 ## Bloco Emagrecimento (12)
 
 | Artigo | slug | status |
 |---|---|---|
 | Caminhada emagrece? | `caminhada-emagrece` | |
-| Esteira ou bicicleta para emagrecer | `esteira-ou-bicicleta` | |
+| Esteira ou bicicleta para emagrecer | `esteira-ou-bicicleta` | ✅ 2026-09-28 · recorte declarado |
 | Emagrecer na menopausa | `emagrecer-na-menopausa` | |
 | Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | |
 | Termogênicos funcionam? | `termogenicos-funcionam` | |

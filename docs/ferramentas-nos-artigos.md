@@ -26,7 +26,7 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | ferramenta | hoje (bloco / link) | na fila | leitura |
 |---|---|---|---|
 | [encontre-seu-personal-ideal](/ferramentas/encontre-seu-personal-ideal/) | 3 / 0 | 6 | ferramenta da jornada |
-| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 31 / 0 | 17 | ferramenta da jornada |
+| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 32 / 0 | 17 | ferramenta da jornada |
 | [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 39 / 0 | 30 | ferramenta da jornada |
 | [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 11 / 0 | 2 | ferramenta da jornada |
 | [presencial-ou-online](/ferramentas/presencial-ou-online/) | 6 / 0 | 1 | ferramenta da jornada |
@@ -34,9 +34,9 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 5 / 1 | 1 | ferramenta da jornada |
 | [calculadora-1rm](/ferramentas/calculadora-1rm/) | 1 / 1 | 0 | calculadora de treino; conversa com os artigos de musculação |
 | [calculadora-de-proteina](/ferramentas/calculadora-de-proteina/) | 1 / 0 | 0 | calculadora de treino; conversa com os artigos de musculação |
-| [caminhada](/calorias/caminhada/) | 0 / 4 | 6 | encaixa onde o texto já fala de passos e cardio |
-| [corrida](/calorias/corrida/) | 0 / 4 | 1 | poucos artigos de corrida no acervo |
-| [bicicleta](/calorias/bicicleta/) | 0 / 3 | 0 | guias de pedalar e trabalho sentado |
+| [caminhada](/calorias/caminhada/) | 0 / 5 | 6 | encaixa onde o texto já fala de passos e cardio |
+| [corrida](/calorias/corrida/) | 0 / 5 | 1 | poucos artigos de corrida no acervo |
+| [bicicleta](/calorias/bicicleta/) | 1 / 3 | 0 | guias de pedalar e trabalho sentado |
 | [natacao](/calorias/natacao/) | 0 / 2 | 0 | só onde o texto já cita natação como aeróbico |
 | [escada](/calorias/escada/) | 0 / 1 | 1 | NEAT e pausas ativas |
 | [corda](/calorias/corda/) | 0 / 0 | 2 | treino em casa e ao ar livre |
