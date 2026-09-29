@@ -17,23 +17,32 @@
  *                                          1,62, com o intervalo indo a 2,20
  *   emagrecer               1,2 a 2,0     posicionamento conjunto de 2016
  *                                          (ACSM, AND, DC) para quem treina
+ *   Mounjaro / Ozempic      1,2 a 1,6     diretriz conjunta de 2025 sobre
+ *                                          nutrição e GLP-1, sobre o PESO
+ *                                          SAUDÁVEL para a altura
  *   65 anos ou mais         1,0 a 1,2     PROT-AGE (2013); 1,2 ou mais para
  *                                          quem treina
  *
- * MOUNJARO E OZEMPIC: SEM PERFIL, DE PROPÓSITO
+ * MOUNJARO E OZEMPIC: PERFIL PRÓPRIO, SOBRE O PESO SAUDÁVEL
  *
- * O cluster de Mounjaro do portal diz, com todas as letras, que a
- * quantidade de proteína de quem usa o remédio é definida por médico e
- * nutricionista, e não indica gramas. A calculadora segue a mesma linha:
- * explica o que as diretrizes priorizam e manda a conta para eles. Trocar
- * isso é decisão editorial, não técnica.
+ * A calculadora saiu, em 25/09, sem perfil de GLP-1. Em 29/09 o Renato
+ * decidiu: calculadora de proteína indica gramas, inclusive para quem usa
+ * o remédio. A faixa é a da diretriz conjunta de 2025 (1,2 a 1,6 g/kg),
+ * que é dada por quilo de peso SAUDÁVEL, não de peso atual — com 110 kg,
+ * a conta pelo peso atual daria o dobro do que a diretriz indica.
+ *
+ * Peso saudável, aqui, é o peso do IMC 25 para a altura (o topo da faixa
+ * saudável, que é a leitura mais generosa). Quem está abaixo disso usa o
+ * próprio peso. A conta fica na página, às claras, e a meta final
+ * continua com o médico e o nutricionista, que conhecem o caso.
  *
  * O QUE ELA NÃO FAZ
  *
- * - Não calcula peso ajustado. As diretrizes de emagrecimento aplicam a
- *   conta sobre um peso entre o de referência para a altura e o atual, e a
- *   fórmula exata não está no texto que conseguimos conferir. Com IMC de 30
- *   ou mais, a página avisa que o número pelo peso total é um teto.
+ * - Não calcula peso ajustado nos outros perfis. As diretrizes de
+ *   emagrecimento aplicam a conta sobre um peso entre o de referência para
+ *   a altura e o atual, e a fórmula exata não está no texto que conseguimos
+ *   conferir. Com IMC de 30 ou mais, a página avisa que o número pelo peso
+ *   total é um teto.
  * - Não vale para doença renal: ali a orientação é o oposto, restringir,
  *   e a conta é com o nefrologista.
  * - Não monta dieta. Plano alimentar é trabalho de nutricionista.
@@ -83,7 +92,7 @@ export const FONTE_GLP1: Fonte = {
     'Mozaffarian D, Agarwal M, Aggarwal M, et al. Nutritional priorities to support GLP-1 therapy for obesity: a joint Advisory from the American College of Lifestyle Medicine, the American Society for Nutrition, the Obesity Medicine Association, and The Obesity Society. 2025',
   url: 'https://pubmed.ncbi.nlm.nih.gov/40445127/',
   resumo:
-    'põe proteína adequada e treino de força entre as prioridades para preservar massa magra durante o tratamento com remédios da classe GLP-1, e calcula a meta de proteína sobre um peso ajustado — não sobre o peso total —, caso a caso, com a equipe de saúde.',
+    'põe proteína adequada e treino de força entre as prioridades para preservar massa magra durante o tratamento com remédios da classe GLP-1, com cerca de 1,2 a 1,6 g de proteína por kg de peso saudável por dia — não de peso atual —, e lembra que o apetite reduzido torna a meta difícil de bater.',
 };
 
 export const FONTE_PROTAGE: Fonte = {
@@ -132,6 +141,8 @@ export interface Perfil {
   gkgMax: number;
   fonte: string;
   nota: string;
+  /** 'saudavel': a conta usa o peso do IMC 25 para a altura quando o atual passa dele. */
+  pesoBase?: 'atual' | 'saudavel';
 }
 
 export const PERFIS: Perfil[] = [
@@ -160,7 +171,17 @@ export const PERFIS: Perfil[] = [
     gkgMin: 1.2,
     gkgMax: 2.0,
     fonte: 'ACSM, AND e DC (2016)',
-    nota: 'No déficit, proteína e treino de força são o que protege o músculo. Pessoas magras e já treinadas, em corte, podem precisar de mais — a diretriz de nutrição esportiva cita até 3,1 g/kg nesse caso específico. Quem usa Mounjaro, Ozempic ou remédio parecido define a meta com o médico e o nutricionista.',
+    nota: 'No déficit, proteína e treino de força são o que protege o músculo. Pessoas magras e já treinadas, em corte, podem precisar de mais — a diretriz de nutrição esportiva cita até 3,1 g/kg nesse caso específico. Quem usa Mounjaro, Ozempic ou remédio parecido tem perfil próprio.',
+  },
+  {
+    id: 'glp1',
+    nome: 'Usa Mounjaro, Ozempic ou remédio parecido',
+    nomeCurto: 'Mounjaro/Ozempic',
+    gkgMin: 1.2,
+    gkgMax: 1.6,
+    fonte: 'diretriz conjunta sobre nutrição e GLP-1 (2025)',
+    pesoBase: 'saudavel',
+    nota: 'Com o apetite reduzido pelo remédio, bater a meta costuma ser a parte difícil — dividir em várias refeições ajuda. Proteína sozinha não segura o músculo: o treino de força é a outra metade. O número fino, para o seu caso, é ajustado com o seu médico e o seu nutricionista.',
   },
   {
     id: 'idoso',
@@ -187,6 +208,8 @@ export const REFEICOES = [3, 4, 5] as const;
 export const REFEICOES_PADRAO = 4;
 /** A partir daqui, a conta por quilo de peso total superestima. */
 export const IMC_PESO_AJUSTADO = 30;
+/** Topo da faixa de IMC saudável: define o peso saudável do perfil de GLP-1. */
+export const IMC_PESO_SAUDAVEL = 25;
 
 export const pesoValido = (p: number | null): p is number =>
   p !== null && Number.isFinite(p) && p >= PESO_MIN && p <= PESO_MAX;
@@ -209,6 +232,9 @@ export function parseAltura(bruto: string): number | null {
 
 export const imc = (pesoKg: number, alturaCm: number): number => pesoKg / (alturaCm / 100) ** 2;
 
+/** O peso do IMC 25 para a altura. */
+export const pesoSaudavel = (alturaCm: number): number => IMC_PESO_SAUDAVEL * (alturaCm / 100) ** 2;
+
 /* ───────────────────────── O cálculo ───────────────────────── */
 
 export interface Resultado {
@@ -223,15 +249,21 @@ export interface Resultado {
   porRefeicaoMin: number;
   porRefeicaoMax: number;
   imc: number;
-  /** IMC de 30 ou mais: o número pelo peso total é teto, não alvo. */
+  /** O peso que entrou na conta: o atual, ou o saudável no perfil de GLP-1. */
+  pesoConta: number;
+  /** A conta usou o peso saudável, não o atual. */
+  usaPesoSaudavel: boolean;
+  /** IMC de 30 ou mais, com a conta pelo peso total: o número é teto, não alvo. */
   pesoTotalSuperestima: boolean;
 }
 
 export function proteina(pesoKg: number, alturaCm: number, idPerfil = 'forca', refeicoes = REFEICOES_PADRAO): Resultado {
   const p = perfil(idPerfil);
   const i = imc(pesoKg, alturaCm);
-  const gramasMin = pesoKg * p.gkgMin;
-  const gramasMax = pesoKg * p.gkgMax;
+  const usaPesoSaudavel = p.pesoBase === 'saudavel' && i > IMC_PESO_SAUDAVEL;
+  const pesoConta = usaPesoSaudavel ? pesoSaudavel(alturaCm) : pesoKg;
+  const gramasMin = pesoConta * p.gkgMin;
+  const gramasMax = pesoConta * p.gkgMax;
   return {
     pesoKg,
     alturaCm,
@@ -244,7 +276,9 @@ export function proteina(pesoKg: number, alturaCm: number, idPerfil = 'forca', r
     porRefeicaoMin: gramasMin / refeicoes,
     porRefeicaoMax: gramasMax / refeicoes,
     imc: i,
-    pesoTotalSuperestima: i >= IMC_PESO_AJUSTADO,
+    pesoConta,
+    usaPesoSaudavel,
+    pesoTotalSuperestima: !usaPesoSaudavel && i >= IMC_PESO_AJUSTADO,
   };
 }
 
@@ -275,17 +309,23 @@ export const formataImc = (i: number): string => i.toLocaleString('pt-BR', { max
 export function fraseContexto(r: Resultado): string {
   const p = perfil(r.idPerfil);
   const g = formataFaixaGramas(r.gramasMin, r.gramasMax);
-  return `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a referência é ${g} g de proteína por dia — ${formataFaixaGkg(r)} g por kg. Fonte: ${p.fonte}.`;
+  const base = r.usaPesoSaudavel
+    ? `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a conta usa ${Math.round(r.pesoConta)} kg — o peso saudável para a sua altura, como a diretriz pede — e a referência é ${g} g de proteína por dia, ${formataFaixaGkg(r)} g por kg.`
+    : `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a referência é ${g} g de proteína por dia — ${formataFaixaGkg(r)} g por kg.`;
+  return `${base} Fonte: ${p.fonte}.`;
 }
 
 /* ───────────────────────── Tabela ───────────────────────── */
 
 export const PESOS_TABELA = [50, 60, 70, 80, 90, 100] as const;
 
+/** Perfis que a tabela por peso mostra: o de GLP-1 depende da altura, não só do peso. */
+export const PERFIS_TABELA = PERFIS.filter((p) => p.pesoBase !== 'saudavel');
+
 export const tabelaPorPeso = () =>
   PESOS_TABELA.map((peso) => ({
     peso,
-    faixas: PERFIS.map((p) => ({ id: p.id, min: peso * p.gkgMin, max: peso * p.gkgMax })),
+    faixas: PERFIS_TABELA.map((p) => ({ id: p.id, min: peso * p.gkgMin, max: peso * p.gkgMax })),
   }));
 
 /* ───────────────────────── Textos fixos ───────────────────────── */

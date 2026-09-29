@@ -735,7 +735,7 @@ const TREINO: FerramentaCatalogo[] = [
     nome: 'Calculadora de proteína',
     nomeCurto: 'Calculadora de proteína',
     categoria: 'treino',
-    resumo: 'Quantos gramas por dia para ganhar músculo, emagrecer ou depois dos 65 — a faixa de cada diretriz, com a fonte e por refeição.',
+    resumo: 'Quantos gramas por dia para ganhar músculo, emagrecer, usando Mounjaro ou depois dos 65 — a faixa de cada diretriz, com a fonte e por refeição.',
     pergunta: 'Quanto de proteína eu preciso comer por dia?',
     acao: 'Calcular minha proteína',
     tempo: 'Resultado na hora',
