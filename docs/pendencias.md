@@ -6,6 +6,68 @@ decidir e o que muda em cada caminho.
 
 ---
 
+## Conferir a estratégia de SEO local — marcado para 30/10/2026
+
+**Aberta em 30/09/2026, a pedido do Renato:** "mês que vem conferimos se
+essa estratégia está dando certo". Estratégia em
+`docs/seo-local-estrategia.md`; o que entrou em cada página em
+`docs/intencoes-locais.md` (seção "Aplicado nas páginas").
+
+**O que precisa chegar antes.** Um export do Search Console com o período
+**01/10 a 29/10/2026** e, na opção "Comparar", **31/08 a 29/09/2026**. O
+export acumulado (desde junho) mistura o antes e o depois e obriga a fazer
+a conta por diferença — com a comparação pronta, a leitura é direta.
+Arquivar em `docs/relatorios/AAAA-MM-DD-gsc-desempenho/`, como sempre.
+
+**O que medir, e a linha de base de cada coisa** (Search Console, acumulado
+até 29/09/2026):
+
+1. **Palhoça** — a busca "consultoria online musculacao palhoca": 250
+   impressões, **0 clique**, posição 7,5. Página: 371 impressões, 2
+   cliques, posição 7,7. Deu certo se o CTR da busca sair de zero sem a
+   posição cair. Se a posição cair, os campos `metaTitulo`/`metaDescricao`
+   saem e o título volta ao gerado.
+2. **As 10 páginas da região** (mudaram juntas em 30/09, lidas como grupo):
+
+   | página | impressões | cliques | posição |
+   |---|---|---|---|
+   | Alphaville | 144 | 4 | 9,7 |
+   | Barueri | 161 | 3 | 10,1 |
+   | Osasco | 56 | 0 | 14,9 |
+   | Santana de Parnaíba | 52 | 3 | 9,0 |
+   | Carapicuíba | 37 | 1 | 8,0 |
+   | Aldeia da Serra | 31 | 1 | 8,5 |
+   | Tamboré | 24 | 2 | 9,2 |
+   | Jandira | 5 | 0 | 6,0 |
+   | Itapevi | 5 | 0 | 9,4 |
+   | Granja Viana | fora do export | — | — |
+
+   Buscas diretas: "personal trainer em barueri" 18 impressões, posição
+   22,7; "personal trainer alphaville" 12 impressões, 2 cliques, posição
+   19,8; "personal trainer em osasco" 7 impressões, posição 34,7.
+   **Grupo de comparação:** as outras cidades de SP, que não mudaram. Deu
+   certo se o CTR do grupo subir mais que o do controle — e, nas buscas
+   de preço ("valor", "por mês" + região), se aparecerem consultas que hoje
+   não aparecem.
+3. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
+   impressões, posição média 11,1. "Personal trainer + cidade": 166
+   consultas, posição 17,9.
+4. **Bairros** — a leitura do piloto é antes, em 09/10
+   (`docs/metadados-bairros.md`, seção 7); aqui só se confirma se a
+   tendência se manteve.
+
+**A ressalva, dita antes para ninguém esquecer:** um mês é pouco para
+posição em busca local. Se as impressões subirem e o CTR não se mexer, a
+leitura é "espere mais", não "não funcionou". O que um mês responde bem é
+CTR à posição constante — que é justamente o que título e descrição movem.
+
+**O que se decide com o resultado.** Se a região e Palhoça responderem,
+acelerar a leva de cidades por prints (seção 5 da estratégia) e levar o
+`metaFoco: 'preco'` às 20 maiores. Se não responderem, voltar à SERP de
+cada uma antes de replicar o padrão.
+
+---
+
 ## Vídeos do canal nas páginas de cidade
 
 **Aberta desde 09/09/2026.**
