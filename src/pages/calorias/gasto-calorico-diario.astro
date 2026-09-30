@@ -11,6 +11,13 @@
  *
  * O que ela não faz, também dito: não diz quanto comer. Plano alimentar é
  * com nutricionista.
+ *
+ * DO GOOGLE, 30/09 (prints do Renato): o autocompletar de "gasto calórico
+ * diário" traz calculadora, homem, mulher, basal, "de uma pessoa", médio e
+ * ideal; as pesquisas relacionadas, "calculadora gasto calórico diário" e
+ * "pessoa sedentária"; "As pessoas também perguntam", 2 mil calorias, 300
+ * calorias, 1.500 calorias e gestante. O título passou a começar por
+ * "Calculadora", e cada pergunta virou FAQ com números do motor.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -51,7 +58,7 @@ import {
 } from '../../lib/calorias/gastoDiario';
 
 const path = '/calorias/gasto-calorico-diario';
-const atualizadoEm = '2026-09-24';
+const atualizadoEm = '2026-09-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -70,12 +77,15 @@ const POR_ESTILO = Object.fromEntries(
 const TAB_PESO = tabelaPorPeso('ativo');
 const alturaM = (ALTURA_PADRAO / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
 const pessoa = `${IDADE_PADRAO} anos, ${PESO_PADRAO} kg e ${alturaM} m`;
+const EX_ATIVA = POR_ESTILO.ativo;
+const EX_H_ATIVO = gastoDiario('masculino', PESO_PADRAO, ALTURA_PADRAO, IDADE_PADRAO, 'ativo');
+const entre = (r: { gastoMin: number; gastoMax: number }) => formataEntreKcal(r.gastoMin, r.gastoMax);
 
-/* 56 caracteres. */
-const title = 'Quantas Calorias Eu Gasto por Dia? Gasto Calórico Diário';
-/* 152 caracteres. */
+/* 60 caracteres. "Calculadora" na frente: segunda sugestão do autocompletar e primeira das pesquisas relacionadas (30/09). */
+const title = 'Calculadora de Gasto Calórico Diário: Quantas Calorias Gasto';
+/* 153 caracteres. */
 const description =
-  'Calcule quantas calorias você gasta por dia pelo metabolismo e pelo estilo de vida — em faixa, com as fontes, e com o que a conta não consegue enxergar.';
+  'Calculadora de gasto calórico diário grátis, para homem e mulher: metabolismo basal vezes estilo de vida, em faixa, com as fontes e o que a conta não vê.';
 
 const faqs = [
   {
@@ -83,8 +93,32 @@ const faqs = [
     resposta: `Depende de peso, altura, idade, sexo e de quanto você se mexe. Para ${pessoa}, com rotina sedentária, a estimativa fica ${formataEntreKcal(EX.gastoMin, EX.gastoMax)} kcal por dia numa mulher e ${formataEntreKcal(EX_H.gastoMin, EX_H.gastoMax)} kcal num homem. A calculadora faz a conta com os seus dados.`,
   },
   {
-    pergunta: 'O que é taxa metabólica basal?',
+    pergunta: 'Qual o gasto calórico diário médio de um homem e de uma mulher?',
+    resposta: `Não existe um número único: ele muda com peso, altura, idade e rotina. Como referência, com ${pessoa}, uma mulher gasta ${entre(EX)} kcal por dia com rotina sedentária e ${entre(EX_ATIVA)} ativa; um homem com as mesmas medidas, ${entre(EX_H)} sedentário e ${entre(EX_H_ATIVO)} ativo.`,
+  },
+  {
+    pergunta: 'O que é gasto calórico basal (taxa metabólica basal)?',
     resposta: `É a energia que o corpo gasta em repouso só para se manter funcionando: respirar, circular o sangue, manter a temperatura. Na maioria das pessoas é a maior parte do gasto do dia. Para ${pessoa}, a equação usada aqui estima cerca de ${formataKcal(EX.metabolismo)} kcal numa mulher e ${formataKcal(EX_H.metabolismo)} kcal num homem.`,
+  },
+  {
+    pergunta: 'É muito gastar 2 mil calorias por dia?',
+    resposta: `Não. É perto do gasto de muita gente — e abaixo dele, em vários casos. Uma mulher de ${pessoa}, mesmo com rotina sedentária, gasta ${entre(EX)} kcal por dia pela estimativa; um homem com as mesmas medidas, ${entre(EX_H)}. Se 2 mil é o seu número, depende das suas medidas e da sua rotina: a calculadora faz a conta.`,
+  },
+  {
+    pergunta: 'É bom queimar 300 calorias por dia com exercício?',
+    resposta: `É um gasto de treino que pesa no dia. Para a mulher do exemplo, uma hora por dia de exercício moderado a vigoroso soma cerca de ${formataKcal(EX.umaHoraPorDia)} kcal. Mas o número do treino não é o objetivo em si: para emagrecer, o que decide é o total das semanas somado à alimentação — e o treino de força é o que ajuda a manter o músculo enquanto o peso cai.`,
+  },
+  {
+    pergunta: 'Dá para emagrecer comendo 1.500 calorias por dia?',
+    resposta: `Depende de quanto você gasta. Emagrece quem come menos do que gasta, ao longo de semanas: para a mulher do exemplo, sedentária, o gasto estimado fica ${entre(EX)} kcal, e 1.500 ficaria abaixo disso. Se esse número é adequado, sustentável e suficiente em nutrientes para você, é decisão com o nutricionista — esta calculadora mostra o gasto, não monta dieta.`,
+  },
+  {
+    pergunta: 'Existe um gasto calórico diário ideal?',
+    resposta: 'Não. O gasto é consequência do corpo e da rotina, não uma meta a bater. O que mais mexe no número é o quanto você se mexe ao longo do dia. O que fazer com ele, em termos de comida, é com o nutricionista.',
+  },
+  {
+    pergunta: 'A calculadora serve para gestante?',
+    resposta: 'Não. A equação não vale para gestação nem amamentação: a necessidade de energia muda ao longo da gravidez, e a conta é com o médico e o nutricionista do pré-natal.',
   },
   {
     pergunta: 'Preciso somar as calorias do treino ao resultado?',
