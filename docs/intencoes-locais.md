@@ -19,6 +19,7 @@ próprio Renato e não contam como demanda.
 | personal trainer barueri | "barueri aldeia da serra", "personal barueri", "personal trainer tamboré" | "barueri sp" veio com relógio. O **site do Montinho** aparece com a página de Alphaville ("Personal Trainer Alphaville \| Montinho"). Pesquisas relacionadas: alphaville, osasco, "personal trainer preço" |
 | personal trainer santana de parnaíba | "instagram", "instagram oficial", "personal santana de parnaíba", "personal trainer santana sp" | **quatro das seis sugestões pedem Instagram**: a pessoa quer ver o perfil do profissional (resultado, antes e depois) antes de chamar. "Santana sp" é ambíguo com o bairro Santana, na Zona Norte de São Paulo |
 | personal trainer jandira | "jandira sp", "jandira instagram", "personal jandira" | Instagram de novo. "Jardins sp" é outro lugar. Aparecem um estúdio local (Power Fit, treinamento funcional), um diretório de academias (Conecta Fitness, com a Smart Fit Jandira Ouro Verde) e um perfil de Instagram |
+| personal trainer carapicuíba | "instagram" (duas variações), "personal carapicuíba" | Instagram pela terceira cidade seguida. Resultado com **nota 5,0 (6 avaliações)** e "1ª aula grátis" no trecho; perfil de Instagram de estúdio (@studio.trfit, "aceitamos TotalPass") |
 
 **"As pessoas também perguntam"** (repetiu em Tamboré e Aldeia da Serra):
 - Quanto custa 1 mês de personal trainer?
@@ -29,6 +30,7 @@ próprio Renato e não contam como demanda.
 - É melhor treinar 3 ou 5 vezes na semana? (Barueri)
 - Qual o valor de 1 hora de personal trainer? (Santana de Parnaíba)
 - Vale a pena pagar um personal trainer? (Santana de Parnaíba — variação de "é vantajoso")
+- Quais são 3 motivos para treinar com um personal trainer? (Carapicuíba)
 
 **Concorrentes vistos:** Superprof (listagem de Barueri), cronoshare.com.br
 ("Personal Trainer em Barueri"), Família Kaizen, iservices.digital
