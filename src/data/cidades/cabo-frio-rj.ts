@@ -89,6 +89,12 @@ export const cidade: Cidade = {
   conclusao:
     'Capital da Região dos Lagos, Cabo Frio tem orla generosa e cultura de praia que favorecem o treino ao ar livre o ano inteiro. Um personal trainer ajuda a aproveitar a Praia do Forte e o Peró com método, ajustando horários e hidratação ao calor do verão.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Cabo Frio', detalhe: 'na Rodovia General Alfredo Bruno, no São Cristóvão' },
+    { nome: 'Ultra Academia Cabo Frio', detalhe: 'na Av. Teixeira e Souza, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-09-30',
+
   vizinhas: ['macae-rj', 'rio-de-janeiro-rj', 'niteroi-rj'],
 
   fontes: [
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cabo Frio', url: 'https://cabofrio.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-30',
 };

@@ -168,6 +168,10 @@ sendo 02/10.
 Arquivos: `2026-09-30-gsc-desempenho/`. Estratégia tirada dele em
 `docs/seo-local-estrategia.md`.
 
+`paginas-por-cidade.json` foi gerado da aba Páginas (URLs com e sem barra
+somadas) para que `audit:academias` e `audit:capas` ordenem a fila pela
+demanda deste relatório, e não mais pela de 01/09.
+
 O export é **acumulado** (o site só tem impressão a partir de 28/06), então
 a comparação com o de 12/09 é feita de dois jeitos: pelo gráfico diário, que
 separa as janelas, e pela diferença página a página entre os dois exports,

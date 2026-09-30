@@ -89,6 +89,12 @@ export const cidade: Cidade = {
   conclusao:
     'Porta de entrada do Delta do Parnaíba, a cidade une orla histórica, praias e uma cena de corrida ativa. Um personal trainer ajuda a aproveitar o Porto das Barcas e a Pedra do Sal com método, ajustando horários e hidratação ao calor litorâneo o ano todo.',
 
+  academiasProximas: [
+    { nome: 'Selfit Parnaíba', detalhe: 'na Av. São Sebastião' },
+    { nome: 'Skyfit Parnaíba', detalhe: 'na Rua Hélio Mourão, no Reis Veloso' },
+  ],
+  academiasVerificadasEm: '2026-09-30',
+
   vizinhas: ['teresina-pi', 'sao-luis-ma', 'fortaleza-ce'],
 
   fontes: [
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Parnaíba', url: 'https://www.parnaiba.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-09-30',
 };
