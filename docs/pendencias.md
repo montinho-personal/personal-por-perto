@@ -63,6 +63,11 @@ até 29/09/2026):
    trainer brasília preço" 19 impressões, posição 18,0; "valor personal
    trainer brasilia" 10 impressões, posição 8,1; "personal trainer aguas
    claras" 24 impressões na página de Águas Claras, posição 9,2.
+   **Goiânia** e **Teresina** também, no mesmo dia. Goiânia: 1.263
+   impressões, 13 cliques, posição 9,0; "personal trainer goiânia valor"
+   19 impressões, 1 clique, posição 6,0. Teresina: 1.216 impressões, 15
+   cliques, posição 9,6; "personal trainer em teresina" 8 impressões, 1
+   clique, posição 12,1.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

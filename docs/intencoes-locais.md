@@ -168,3 +168,30 @@ para o Renato decidir.
 
 **Bairros candidatos no DF:** Asa Norte (já estava no plano), Guará,
 Vicente Pires, Riacho Fundo. Sudoeste e Asa Sul já têm página.
+
+## Goiânia e Teresina — prints e aplicação em 30/09/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer goiânia | "instagram", "valor", "mulher", "bem avaliados", "bluefit goiania", "online goiania", "vaga"; relacionadas: "aparecida de goiânia", "particular", "online goiania" | quanto custa em Goiânia · 1 mês · 3 vezes por semana · é vantajoso pagar | listagem com preço (R$ 60,00) e nota; perfis de Instagram; GetNinjas |
+| personal trainer teresina | "instagram", "mulher", "selfit teresina", um nome próprio, uma notícia ("morre em teresina"); relacionadas: "instagram", "online" | quanto custa em Teresina · valor de 1 hora · é vantajoso pagar · 3 ou 5 vezes na semana | Cronoshare (10/10, 4 avaliações); perfis de Instagram |
+
+**Aplicado:**
+
+- **Goiânia** — valor por mês no título e na descrição; perguntas "1 mês, 3
+  vezes por semana", "como avaliar pelo Instagram" e **"Personal trainer
+  online ou presencial em Goiânia: qual escolher?"** — nova opção gerada
+  (`onlineOuPresencial`), com as faixas da própria página, porque "online
+  goiania" aparece no autocompletar e nas relacionadas e é o produto do
+  Montinho. Aparecida de Goiânia passa ao topo das vizinhas.
+- **Teresina** — valor por mês no título e na descrição; perguntas "1 mês, 3
+  vezes por semana", "como avaliar pelo Instagram" e "É melhor treinar 3 ou
+  5 vezes na semana em Teresina?" — texto próprio, com o calor como fator de
+  recuperação (o de Barueri não foi reaproveitado).
+
+**Não aplicado:** "mulher"; "bluefit" e "selfit" (regra de personal externo
+por rede, sem fonte oficial); "vaga personal trainer goiania" (é emprego,
+outro público); "bem avaliados" (o portal não tem avaliações de
+profissionais — a pergunta de Instagram cobre como avaliar); o nome próprio
+e a notícia de Teresina — notícia de morte não é intenção de contratar, e
+usá-la para atrair clique seria de mau gosto.

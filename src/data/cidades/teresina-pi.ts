@@ -95,7 +95,22 @@ export const cidade: Cidade = {
   conclusao:
     'Polo de saúde e "Cidade Verde", Teresina tem boa estrutura de parques e academias para quem quer treinar — desde que se respeite o calor. Um personal trainer ajuda a montar uma rotina segura, com horários e hidratação ajustados, e a aproveitar ao máximo o Potycabana e os demais espaços da cidade.',
 
+  /*
+   * Prints de 30/09: autocompletar com "instagram", "mulher", "selfit" (rede
+   * de academia), um nome próprio e uma notícia; relacionadas com
+   * "instagram" e "online"; PAA com "quanto custa em Teresina?", "valor de 1
+   * hora", "é vantajoso pagar" e "é melhor treinar 3 ou 5 vezes na semana?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
+    {
+      pergunta: 'É melhor treinar 3 ou 5 vezes na semana em Teresina?',
+      resposta:
+        'Para a maioria das pessoas, três treinos bem feitos por semana já sustentam a evolução; cinco fazem sentido para quem já treina há algum tempo e divide o corpo por grupos musculares. Em Teresina entra um fator a mais: o calor cobra recuperação. Numa cidade quente o ano todo, cinco sessões pedem sono, hidratação e alimentação em dia — sem isso, a quarta e a quinta rendem menos e o cansaço se acumula. O número certo é o que você sustenta por meses: três dias cumpridos valem mais do que cinco abandonados.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Teresina?',
       resposta:
@@ -120,7 +135,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teresina', url: 'https://www.teresina.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-09-30',
   capaArte: {
     src: '/capas-cidade/teresina-pi.webp',
     w: 1200,

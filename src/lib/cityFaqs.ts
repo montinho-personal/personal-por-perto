@@ -137,6 +137,16 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
     });
   }
 
+  if (cfg.onlineOuPresencial) {
+    resto.push({
+      pergunta: `Personal trainer online ou presencial ${emN}: qual escolher?`,
+      resposta:
+        `Depende de quanto você já sabe executar e de quanto a sua rotina muda. ${emNCap}, o online sai de ${faixaBRL(p.onlineMin, p.onlineMax)} por mês, contra ${faixaBRL(p.mensalMin, p.mensalMax)} do pacote presencial com 2 ou 3 sessões por semana — e funciona bem para quem já treina, tem academia por perto e precisa de plano e ajuste, não de alguém ao lado. ` +
+        'O presencial vale mais para quem está começando ou precisa de correção de execução em tempo real; quem sente dor deve passar antes por médico ou fisioterapeuta. Há ainda o caminho do meio: algumas aulas presenciais para aprender a técnica e, depois, o acompanhamento online. ' +
+        'O Montinho Personal, destacado pelo portal, atende online em todo o Brasil.',
+    });
+  }
+
   if (cfg.instagram) {
     resto.push({
       pergunta: `Como avaliar um personal trainer ${emN} pelo Instagram?`,

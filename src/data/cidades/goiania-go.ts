@@ -95,6 +95,16 @@ export const cidade: Cidade = {
   conclusao:
     'Em uma cidade que respira musculação como Goiânia, ter um personal trainer é a forma de transformar essa cultura forte em resultado consistente e seguro. Da preparação para um palco de fisiculturismo ao simples objetivo de viver com mais saúde, o acompanhamento profissional faz a diferença — e a cidade oferece estrutura de sobra para isso.',
 
+  /*
+   * Prints de 30/09: autocompletar com "instagram", "valor", "mulher", "bem
+   * avaliados", "bluefit goiania", "online goiania" e "vaga" (quem procura
+   * emprego); relacionadas com "aparecida de goiânia" e "particular"; PAA
+   * com "quanto custa em Goiânia?", "1 mês", "3 vezes por semana" e "é
+   * vantajoso pagar". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Preciso querer competir para treinar com personal em Goiânia?',
@@ -113,7 +123,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['brasilia-df', 'uberlandia-mg', 'belo-horizonte-mg'],
+  // Aparecida de Goiânia primeiro: está nas pesquisas relacionadas de
+  // "personal trainer goiânia" (prints de 30/09/2026) e é vizinha de fato.
+  vizinhas: ['aparecida-de-goiania-go', 'brasilia-df', 'uberlandia-mg', 'belo-horizonte-mg'],
 
   fontes: [
     { nome: 'IBGE Cidades — Goiânia', url: 'https://cidades.ibge.gov.br/brasil/go/goiania/panorama' },
@@ -129,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Goiânia: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-09-30',
 };

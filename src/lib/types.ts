@@ -150,6 +150,8 @@ export interface Cidade {
     precoMensal?: boolean;
     taxaPersonal?: 'condominio' | 'academia';
     instagram?: boolean;
+    /** "Online ou presencial?" — onde o autocompletar pede "online + cidade". */
+    onlineOuPresencial?: boolean;
     /**
      * Preço comparado entre páginas da mesma região ("quanto custa um
      * personal trainer no DF?"). A pergunta é escrita aqui; as faixas saem
