@@ -20,6 +20,7 @@ próprio Renato e não contam como demanda.
 | personal trainer santana de parnaíba | "instagram", "instagram oficial", "personal santana de parnaíba", "personal trainer santana sp" | **quatro das seis sugestões pedem Instagram**: a pessoa quer ver o perfil do profissional (resultado, antes e depois) antes de chamar. "Santana sp" é ambíguo com o bairro Santana, na Zona Norte de São Paulo |
 | personal trainer jandira | "jandira sp", "jandira instagram", "personal jandira" | Instagram de novo. "Jardins sp" é outro lugar. Aparecem um estúdio local (Power Fit, treinamento funcional), um diretório de academias (Conecta Fitness, com a Smart Fit Jandira Ouro Verde) e um perfil de Instagram |
 | personal trainer carapicuíba | "instagram" (duas variações), "personal carapicuíba" | Instagram pela terceira cidade seguida. Resultado com **nota 5,0 (6 avaliações)** e "1ª aula grátis" no trecho; perfil de Instagram de estúdio (@studio.trfit, "aceitamos TotalPass") |
+| personal trainer granja viana | "cotia granja viana", "**valor**", "**valor mensalidade**", "personal granja viana", "xbody granja viana" | **Primeira região em que o PREÇO aparece no autocompletar** — e sem Instagram. "Xbody" é o treino com eletroestimulação (estúdios de marca). Wellhub lista estúdio de treino personalizado da Granja; perfil de Instagram de personal com endereço na Rua José Félix de Oliveira |
 
 **"As pessoas também perguntam"** (repetiu em Tamboré e Aldeia da Serra):
 - Quanto custa 1 mês de personal trainer?
