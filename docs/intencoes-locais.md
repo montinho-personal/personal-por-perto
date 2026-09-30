@@ -48,6 +48,12 @@ mesmo formato do portal.
 feitos em Alphaville Industrial (Barueri), o que ajuda o site do Montinho
 a aparecer. Quem busca de outra cidade da região pode ver outra ordem.
 
+**Preço local (prints de 30/09, busca "valor personal trainer por mês"):**
+o autocompletar traz "por mês **barueri**", "por mês **alphaville**" e "por
+mês barueri sp" como as três primeiras sugestões. É a confirmação mais
+direta de que a região pesquisa PREÇO junto com o lugar — reforça o item 1
+abaixo para as páginas de Barueri e Alphaville.
+
 ## Leitura provisória (a fechar quando os prints de todas as cidades chegarem)
 
 1. As perguntas de preço são as mesmas em todas as cidades, e as páginas de

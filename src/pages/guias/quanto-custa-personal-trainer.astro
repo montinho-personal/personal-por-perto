@@ -37,7 +37,7 @@ const relacionados = [
 ];
 
 const path = '/guias/quanto-custa-personal-trainer';
-const atualizadoEm = '2026-09-14';
+const atualizadoEm = '2026-09-30';
 const capa = '/capas-conteudo/quanto-custa-personal-trainer.webp';
 const capaAlt =
   'Personal trainer com halter e prancheta ao lado de uma etiqueta de preço, ilustrando o guia sobre quanto custa um personal trainer — Personal por Perto';
@@ -58,6 +58,9 @@ const linhas = [...cidades]
     online: `R$ ${c.precos.onlineMin}–${c.precos.onlineMax}`,
   }));
 
+/* "Quanto custa um personal trainer em São Paulo?" — pesquisa relacionada do Google (30/09). Números da página da cidade. */
+const SP = cidades.find((c) => c.slug === 'sao-paulo-sp')!;
+
 const faqs = [
   {
     pergunta: 'Quanto custa um personal trainer por mês?',
@@ -70,14 +73,23 @@ const faqs = [
       'Depende de você comprar avulso ou em pacote, e a diferença é grande. Comprada avulsa, a hora fica entre R$ 50 e R$ 120 na cidade mediana. Dentro de um pacote de três vezes por semana, a mesma hora do mesmo profissional sai por R$ 20 a R$ 54 — uma diferença de duas a três vezes. Quem pesquisa "valor da hora" e recebe só o primeiro número acaba superestimando bastante o custo de um acompanhamento contínuo.',
   },
   {
-    pergunta: 'Quanto custa treinar 3 vezes por semana com personal?',
+    pergunta: 'Quanto custa um personal trainer 2 ou 3 vezes por semana?',
     resposta:
       'Em reais, quase o mesmo que treinar duas vezes: o pacote mensal presencial fica na faixa de R$ 260 a R$ 700 na cidade mediana, tanto para duas quanto para três sessões semanais. O que muda é o valor por sessão, que cai de R$ 30–80 para R$ 20–54 conforme a frequência sobe. É por isso que aumentar a frequência costuma ser a forma mais barata de aumentar o volume de treino acompanhado.',
   },
   {
-    pergunta: 'Quanto custa um personal dentro da academia?',
+    pergunta: 'Quanto custa um personal trainer particular?',
     resposta:
-      'O valor da sessão segue a faixa da sua cidade, mas a academia acrescenta duas variáveis ao orçamento: a mensalidade, que você pagaria de qualquer forma, e a eventual taxa cobrada de profissional externo, que costuma ser repassada ao aluno. Algumas academias liberam sem custo, outras cobram do profissional, e há as que só permitem quem é da casa — é a primeira pergunta a fazer, antes de escolher o profissional. O guia de personal trainer em academia trata das regras e do que perguntar.',
+      'Personal particular é o atendimento individual — só você e o profissional —, e é esse o preço que as faixas desta página mostram. A sessão em dupla costuma sair mais barata por pessoa, porque o valor se divide; em grupo, mais ainda. O que não muda é a lógica: o pacote mensal sai bem mais barato por sessão do que a aula avulsa.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer em São Paulo?',
+    resposta: `Na capital paulista, a referência do portal é de R$ ${SP.precos.avulsaMin} a R$ ${SP.precos.avulsaMax} pela aula avulsa e de R$ ${SP.precos.mensalMin.toLocaleString('pt-BR')} a R$ ${SP.precos.mensalMax.toLocaleString('pt-BR')} pelo pacote mensal presencial; o acompanhamento online fica entre R$ ${SP.precos.onlineMin} e R$ ${SP.precos.onlineMax} por mês. Bairros de maior renda costumam ficar na parte de cima dessas faixas.`,
+  },
+  {
+    pergunta: 'Quanto custa um personal dentro da academia (Smart Fit, Bluefit, Panobianco, Pratique, Skyfit)?',
+    resposta:
+      'O valor da sessão segue a faixa da sua cidade, mas a academia acrescenta duas variáveis ao orçamento: a mensalidade, que você pagaria de qualquer forma, e a eventual taxa cobrada de profissional externo, que costuma ser repassada ao aluno. Algumas academias liberam sem custo, outras cobram do profissional, e há as que só permitem quem é da casa — é a primeira pergunta a fazer, antes de escolher o profissional. Em rede grande a lógica é a mesma: a regra para personal externo e o valor mudam de unidade para unidade, então vale perguntar na sua. O guia de personal trainer em academia trata das regras e do que perguntar.',
   },
   {
     pergunta: 'Por que o preço do personal varia tanto?',
@@ -96,7 +108,8 @@ const faqs = [
   },
 ];
 
-const title = 'Quanto custa um personal trainer: preços por aula e por mês';
+/* 58 caracteres. "Tabela de preço" e "por mês" são sugestões do Google (30/09). */
+const title = 'Quanto custa um personal trainer? Tabela por aula e por mês';
 const description =
   'Quanto custa um personal trainer: a faixa por aula avulsa, o preço por frequência semanal, por que o pacote sai bem mais barato e as faixas de 985 cidades.';
 
