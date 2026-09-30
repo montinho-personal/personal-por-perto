@@ -14,6 +14,11 @@ comparação futura não dependa de reabrir planilha.
 
 ## O que conferir no PRÓXIMO relatório
 
+**Respondidas no relatório de 30/09/2026** (seção "Desempenho — Search
+Console, 01/06 a 29/09/2026"): a fatia sem barra encolheu, a posição das
+cidades grandes na consulta quase não se moveu e a inversão de CTR persiste.
+A lista do que conferir no próximo relatório está no fim daquela seção.
+
 Três medidas que a análise de `docs/cidades-analise.md` deixou em aberto e
 que só o relatório seguinte responde:
 
@@ -157,6 +162,119 @@ e só tratar como problema se continuar subindo.
 A arquitetura de links e os metadados do piloto entraram em 11/09 — um dia
 antes do fim deste período. Não há nada a ler aqui, e a data marcada continua
 sendo 02/10.
+
+## Desempenho — Search Console, 01/06 a 29/09/2026
+
+Arquivos: `2026-09-30-gsc-desempenho/`. Estratégia tirada dele em
+`docs/seo-local-estrategia.md`.
+
+O export é **acumulado** (o site só tem impressão a partir de 28/06), então
+a comparação com o de 12/09 é feita de dois jeitos: pelo gráfico diário, que
+separa as janelas, e pela diferença página a página entre os dois exports,
+que isola aproximadamente 13/09 a 29/09.
+
+Totais: **846 cliques, 61.309 impressões, CTR 1,38%**.
+
+### Continua crescendo, no mesmo ritmo de antes
+
+| janela | dias | cliques/dia | impressões/dia | CTR | posição |
+|---|---|---|---|---|---|
+| até 31/08 | 65 | 7,1 | 431 | 1,64% | 10,2 |
+| 01/09 a 12/09 | 12 | 12,3 | 1.010 | 1,22% | 8,6 |
+| 13/09 a 28/09 | 16 | **14,8** | **1.283** | 1,15% | 7,9 |
+
+29/09 ficou de fora da última linha: é o dia parcial do export (666
+impressões, 1 clique). A janela 01–12/09 aparece aqui um pouco maior do que
+no relatório de 12/09 (11,1 cliques/dia, 942 impressões/dia) porque o Search
+Console consolida os últimos dias depois — o número novo é o que vale.
+
+Leitura: cliques por dia **+20%** e impressões por dia **+27%** sobre a
+janela anterior. O CTR segue caindo devagar (1,22% → 1,15%) com a posição
+melhorando (8,6 → 7,9) — o mesmo padrão de diluição por páginas novas
+descrito no relatório de 12/09, não piora.
+
+Celular: 690 de 846 cliques (82%), posição 8,2 contra 11,8 no computador.
+
+### Por tipo de página
+
+| tipo | cliques | impressões | CTR | posição | só 13/09–29/09 |
+|---|---|---|---|---|---|
+| cidade | 705 | 37.518 | 1,88% | 8,7 | 186 cl / 10.043 imp (1,85%) |
+| bairro | 35 | 1.132 | 3,09% | 8,6 | 10 cl / 410 imp (2,44%) |
+| estado | 14 | 1.237 | 1,13% | 10,0 | — |
+| artigos, guias, ferramentas | 93 | 21.088 | 0,44% | 10,1 | — |
+
+Cidade continua sendo o motor: 83% dos cliques do site.
+
+### As três perguntas que estavam pendentes — respondidas
+
+**1. URL sem barra final: resolvido.** A fatia caiu de 30,3% para 21,5% no
+acumulado, e dentro da janela nova é de só **~5,5%** (1.199 de 21.617
+impressões). A consolidação está acontecendo; não há nada a fazer.
+
+**2. Posição das cidades grandes NA CONSULTA:** quase parada, ainda na
+página 3.
+
+| consulta | base 01/09 | 30/09 |
+|---|---|---|
+| personal trainer belo horizonte | 26,5 | 25,1 |
+| personal trainer porto alegre | 29,2 | 26,0 |
+| personal trainer salvador | 40,3 | 28,8 |
+| personal trainer curitiba | 42,4 | 40,2 |
+| personal trainer sao paulo | 26,2 | 34,5 |
+
+**3. CTR por faixa de cidade: a inversão persiste — é estrutural.**
+
+| faixa | acumulado | só a janela nova |
+|---|---|---|
+| as 20 maiores | 1,11% | 0,98% |
+| 21ª à 100ª | 2,08% | 2,91% |
+| as outras 565 | 3,47% | 3,07% |
+
+### Consultas locais
+
+227 das 1.000 consultas citam cidade ou bairro, somando **1.919
+impressões** (3% do site). O resto do tráfego das cidades vem de consultas
+que o Search Console anonimiza.
+
+| intenção | consultas | impressões | cliques | posição |
+|---|---|---|---|---|
+| "personal trainer + cidade" | 166 | 1.141 | 27 | **17,9** |
+| preço + cidade | 33 | 409 | 6 | **11,1** |
+| consultoria online + cidade | 1 | 250 | 0 | 7,5 |
+| academia + cidade | 25 | 110 | 0 | 14,2 |
+
+A página de cidade perde a busca transacional (página 2 a 4) e ganha a de
+preço: "quanto custa um personal trainer em florianópolis" 4,9; "em joão
+pessoa" 3,9; "em salvador" 6,7; "goiânia valor" 6,0.
+
+A consulta local de maior impressão do site é, de novo, **"consultoria
+online musculacao palhoca": 250 impressões, posição 7,5, zero clique** —
+a mesma apontada em 07/09 e ainda não tratada até este relatório.
+
+### Bairros: ainda cedo, e o export não mede cobertura
+
+63 páginas de bairro no export, contra 59 em 12/09. **Não usar esse número
+como cobertura:** o export de Páginas tem teto de 1.000 linhas e, desta vez,
+o teto cortou até cidades (665 no export, contra 703). Para cobertura, só o
+relatório de Cobertura serve.
+
+Piloto de 10 bairros × os outros, na janela 13/09–29/09: 128 impressões e 3
+cliques contra 282 e 7. Indistinguíveis. A leitura formal continua marcada
+para **09/10**.
+
+Os bairros das levas de setembro já aparecem: Cidade Nova (BH) com 52
+impressões, Campeche com +29, Menino Deus com 14 e 1 clique, Pampulha com
+11 e 1 clique.
+
+### O que conferir no próximo relatório
+
+1. **Palhoça** — título, descrição e pergunta frequente trocados em 30/09 para
+   a busca de consultoria online. Medir essa consulta: posição e CTR.
+2. **Piloto de bairros** — a leitura de 09/10 (ver
+   `docs/metadados-bairros.md`, seção 7).
+3. **As buscas de preço + cidade** — se a estratégia de `docs/seo-local-estrategia.md`
+   for aplicada, é nelas que o efeito aparece primeiro.
 
 ## Drilldown de cobertura — 13/09/2026
 

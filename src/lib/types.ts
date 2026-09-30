@@ -117,6 +117,17 @@ export interface Cidade {
   faqsExtra?: FAQ[];
 
   /**
+   * Title e description próprios, no lugar dos gerados por `metaCidade.ts`.
+   *
+   * Exceção, não padrão: só entra quando o Search Console mostra que a busca
+   * dominante da página pede outra coisa que o gabarito não anuncia — e o
+   * comentário no arquivo da cidade diz qual busca e com que números.
+   * Os limites são os mesmos do gerador (60 e 160 caracteres).
+   */
+  metaTitulo?: string;
+  metaDescricao?: string;
+
+  /**
    * Arte de capa personalizada. Quando presente, substitui a capa gerada
    * padrão no hero, na imagem Open Graph e no sitemap de imagens. Usada em
    * cidades priorizadas que receberam criativo próprio com cartão-postal local.

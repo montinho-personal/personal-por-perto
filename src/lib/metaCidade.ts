@@ -95,6 +95,7 @@ const SUFIXOS_TITULO = [
 
 /** O título da página de cidade. Nunca passa de TITLE_MAX. */
 export function tituloCidade(cidade: Cidade): string {
+  if (cidade.metaTitulo) return cidade.metaTitulo;
   const base = `Personal Trainer ${emCidade(cidade)} (${cidade.uf})`;
   const cabem = SUFIXOS_TITULO.filter((s) => base.length + 2 + s.length <= TITLE_MAX);
   if (cabem.length === 0) return base;
@@ -124,6 +125,7 @@ function primeiro<T>(lista: T[] | undefined): T | undefined {
  * mais procurado e está impresso na página; o que varia é o segundo fato.
  */
 export function descricaoCidade(cidade: Cidade): string {
+  if (cidade.metaDescricao) return cidade.metaDescricao;
   const emN = emCidade(cidade);
   const preco = faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax);
   const parque = primeiro(cidade.parques)?.nome;

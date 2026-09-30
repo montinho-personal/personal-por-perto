@@ -98,6 +98,25 @@ export const cidade: Cidade = {
   ],
   academiasVerificadasEm: '2026-09-08',
 
+  /*
+   * Busca dominante da página: "consultoria online musculacao palhoca" —
+   * 250 das 371 impressões de 01/06 a 29/09/2026, posição 7,5 e nenhum
+   * clique (relatório em docs/relatorios/2026-09-30-gsc-desempenho/). O
+   * título gerado prometia "quanto custa a aula", que não é o que essa busca
+   * pede. Title com 53 caracteres; description com 152.
+   */
+  metaTitulo: 'Personal Trainer e Consultoria Online em Palhoça (SC)',
+  metaDescricao:
+    'Consultoria online de musculação em Palhoça: de R$ 180 a R$ 450 por mês. O presencial, de R$ 75 a R$ 180 a aula. Onde treinar na cidade e como escolher.',
+
+  faqsExtra: [
+    {
+      pergunta: 'Como funciona a consultoria online de musculação em Palhoça?',
+      resposta:
+        'Você continua treinando onde já treina — numa academia da Pedra Branca ou do Pagani, no condomínio ou em casa — e o profissional monta e acompanha o treino à distância: avaliação inicial, planilha com séries e cargas, vídeo de execução dos exercícios e revisão periódica conforme a evolução. Em Palhoça, a faixa de mercado fica entre R$ 180 e R$ 450 por mês, contra R$ 380 a R$ 1.000 do pacote presencial com duas ou três sessões por semana. O que o online não entrega é a correção ao vivo: quem nunca treinou ganha em começar com algumas aulas presenciais, e quem sente dor deve passar antes por médico ou fisioterapeuta. O Montinho Personal, destacado pelo portal, atende nesse formato em todo o Brasil.',
+    },
+  ],
+
   capaArte: {
     src: '/capas-cidade/palhoca-sc.webp',
     w: 1200,
@@ -110,5 +129,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palhoça', url: 'https://www.palhoca.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-08',
+  atualizadoEm: '2026-09-30',
 };

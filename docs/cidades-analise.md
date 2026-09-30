@@ -193,7 +193,12 @@ medida, e o esforço rende mais em páginas que já recebem impressão.
    *"consultoria online musculacao palhoca"*, **147 impressões e zero
    cliques**, posição 10,6.
 
-Alguém procura, o Google mostra na primeira página, e ninguém entra. Essa é
+Alguém procura, o Google mostra na primeira página, e ninguém entra.
+
+> **Feito em 30/09/2026.** O relatório de 30/09 mostrou a mesma consulta
+> ainda maior (250 impressões, posição 7,5, zero clique). Título,
+> descrição e uma pergunta frequente passaram a responder à busca de
+> consultoria online — ver `docs/seo-local-estrategia.md`, seção 4. Essa é
 uma página para consertar, não uma cidade para criar. E a posição 8,0 é a
 faixa em que título e trecho de destaque de fato decidem — ao contrário da
 posição 26 de Belo Horizonte.
