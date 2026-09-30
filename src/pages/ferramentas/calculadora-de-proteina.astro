@@ -24,6 +24,14 @@
  *   excesso de proteína faz mal, rim         → "Quando não usar esta conta"
  *   whey conta, precisa de whey              → FAQ
  *
+ * DO GOOGLE, 30/09 (prints do Renato): "calculadora de proteína diária"
+ * (1ª sugestão, foi para o título), "por peso", "grátis", e as perguntas
+ * "como calcular a quantidade de proteína", "tenho 75 kg, quanta
+ * proteína", "quantos gramas devo comer por kg" e "170 g por dia é
+ * suficiente" — cada uma virou FAQ com números do motor. As buscas
+ * "quanto de proteína TEM o alimento" ficaram para um artigo próprio
+ * (docs/pauta-editorial.md, nota de 30/09).
+ *
  * Nenhum número foi escrito à mão: tudo sai de src/lib/nutricao/proteina.ts.
  */
 import Base from '../../layouts/Base.astro';
@@ -83,17 +91,49 @@ const gGlp1 = formataFaixaGramas(EX_GLP1.gramasMin, EX_GLP1.gramasMax);
 const EX_GLP1_TREINO = proteina(110, 165, 'glp1treino');
 const gGlp1Treino = formataFaixaGramas(EX_GLP1_TREINO.gramasMin, EX_GLP1_TREINO.gramasMax);
 const pesoSaudavel165 = Math.round(pesoSaudavel(165));
+/* "É suficiente comer 170 gramas de proteína por dia?" — pergunta do Google (30/09). */
+const G170 = 170;
+const QUANDO: Record<string, string> = {
+  saude: 'sem treino regular',
+  forca: 'para ganhar músculo',
+  emagrecer: 'para emagrecer',
+  definicao: 'em dieta de definição de quem já treina',
+  idoso: 'depois dos 65 anos',
+};
+const peso170 = (gkg: number) => Math.round(G170 / gkg);
+/* "Eu tenho 75 kg. Quanta proteína devo comer por dia?" — pergunta do Google (30/09). */
+const P75 = 75;
+const g75 = (id: string) => {
+  const r = proteina(P75, ALTURA_PADRAO, id);
+  return formataFaixaGramas(r.gramasMin, r.gramasMax);
+};
 
-/* 48 caracteres. */
-const title = 'Calculadora de Proteína: Quantos Gramas por Dia?';
-/* 149 caracteres. */
+/* 55 caracteres. "Diária" é a primeira sugestão do Google para "calculadora de proteína" (30/09). */
+const title = 'Calculadora de Proteína Diária: Quantos Gramas por Dia?';
+/* 152 caracteres. */
 const description =
-  'Calcule quantos gramas de proteína por dia para ganhar músculo, emagrecer, usando Mounjaro ou depois dos 65 — com a faixa de cada diretriz e a fonte.';
+  'Calculadora de proteína diária grátis: coloque seu peso e objetivo e veja quantos gramas por dia e por refeição, com a faixa de cada diretriz e a fonte.';
 
 const faqs = [
   {
     pergunta: 'Quantas gramas de proteína eu preciso por dia?',
     resposta: `Depende do peso e do objetivo. Para ${PESO_PADRAO} kg: cerca de ${g('saude')} g sem treino regular, ${g('forca')} g para ganhar músculo com treino de força, ${g('emagrecer')} g emagrecendo, ${g('definicao')} g em dieta de definição de quem já treina, ${g('glp1')} g usando Mounjaro ou Ozempic e ${g('idoso')} g depois dos 65 anos. A calculadora faz a conta com o seu peso.`,
+  },
+  {
+    pergunta: 'Como calcular a quantidade de proteína por dia?',
+    resposta: `Multiplique o seu peso pela faixa de gramas por quilo da sua situação e divida o total pelas refeições do dia. Exemplo: ${PESO_PADRAO} kg treinando para ganhar músculo, na faixa de 1,6 a 2,2 g/kg, dá ${g('forca')} g por dia — em 4 refeições, ${formataFaixaRefeicao(POR.forca.porRefeicaoMin, POR.forca.porRefeicaoMax)} g cada. A calculadora faz essa conta com o seu peso; com obesidade ou usando Mounjaro, ela avisa qual peso usar.`,
+  },
+  {
+    pergunta: 'Eu tenho 75 kg. Quanta proteína devo comer por dia?',
+    resposta: `Com ${P75} kg: ${PERFIS_TABELA.map((p) => `${g75(p.id)} g ${QUANDO[p.id]}`).join(', ')}.`,
+  },
+  {
+    pergunta: 'Quantos gramas de proteína devo comer por kg?',
+    resposta: `Depende da situação: ${PERFIS_TABELA.map((p) => `${formataFaixaGkg(p)} g/kg ${QUANDO[p.id]}`).join(', ')}. Quem usa Mounjaro ou Ozempic faz a conta sobre o peso saudável para a altura, não sobre o peso atual.`,
+  },
+  {
+    pergunta: 'É suficiente comer 170 gramas de proteína por dia?',
+    resposta: `Depende do seu peso. Para quem treina para ganhar músculo (1,6 a 2,2 g/kg), 170 g por dia ficam dentro da faixa para quem pesa entre cerca de ${peso170(2.2)} e ${peso170(1.6)} kg. Abaixo de ${peso170(2.2)} kg, passam do teto dessa faixa — o que só faz sentido em dieta de definição. Para quem não treina, é bem mais do que o necessário: com ${PESO_PADRAO} kg, a referência é ${g('saude')} g. A calculadora acima faz a conta com o seu peso.`,
   },
   {
     pergunta: 'Quanto de proteína por kg para hipertrofia?',
@@ -170,7 +210,7 @@ const schema = [
   <header class="pt-hero">
     <div class="container pt-hero-inner">
       <p class="eyebrow">Ferramenta de treino</p>
-      <h1>Calculadora de proteína: quantos gramas por dia?</h1>
+      <h1>Calculadora de proteína diária: quantos gramas por dia?</h1>
       <p class="pt-hero-lead">
         A quantidade de proteína depende do peso e do que você está fazendo — treinar para ganhar
         músculo, emagrecer, secar em dieta de definição, usar Mounjaro ou Ozempic, ou passar dos 65. Cada situação tem a sua diretriz, e a

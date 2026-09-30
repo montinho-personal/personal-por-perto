@@ -586,6 +586,34 @@ já existe; precisa de recorte decidido antes, como os ⚠️.
 | Emagrecer sem academia | `emagrecer-sem-academia` | |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
 
+### Nota de 30/09/2026 — um artigo que a busca da calculadora de proteína pediu
+
+O Renato mandou os prints do Google para "calculadora de proteína" e
+"quantas gramas de proteína". Metade das sugestões não é sobre a META,
+é sobre a COMIDA: "quantas gramas de proteína tem um ovo / 100 g de
+frango / um filé de frango / um bife / 100 g de carne / um scoop de
+whey", "quantidade de proteína nos alimentos", "calculadora de proteína
+nos alimentos", e a pergunta "como atingir 100 g de proteína por dia?".
+
+Isso não cabe na página da calculadora (que responde "quanto eu
+preciso"), e forçar ali diluiria a página. Vira artigo próprio:
+
+| Artigo | slug | status |
+|---|---|---|
+| Quanto de proteína tem cada alimento (tabela) | `/musculacao/quanto-de-proteina-tem-cada-alimento/` | proposto |
+
+Regras do artigo: números da TACO (UNICAMP), a tabela oficial brasileira,
+conferidos item a item — nada de "média da internet". Por porção de
+verdade (1 ovo, 1 filé, 1 concha), não só por 100 g, porque é assim que
+a pessoa pergunta. Whey: por scoop, com a ressalva de que varia por marca
+e o rótulo manda. Ferramenta no corpo: a calculadora de proteína, no
+parágrafo "quanto isso dá no seu dia". Da calculadora, link de volta na
+seção de refeições.
+
+Fica registrada também, sem data, a outra sugestão do autocompletar:
+"calculadora de proteína carboidrato e gordura" — uma calculadora de
+macros, que é ferramenta nova e passa pela análise de lote antes.
+
 ## Bloco Guias de personal (10)
 
 | Artigo | slug | status |
