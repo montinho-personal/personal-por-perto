@@ -12,9 +12,13 @@
  *   proteína por kg, tabela por peso         → "Quanto de proteína por dia"
  *   proteína para hipertrofia                → perfil e seção "ganhar músculo"
  *   proteína para emagrecer                  → perfil e seção "emagrecer"
+ *   proteína na definição / cutting          → perfil e seção "definição"
  *   proteína com Mounjaro / Ozempic          → perfil e seção própria, com
  *                                              gramas sobre o peso saudável
- *                                              (decisão do Renato, 29/09)
+ *                                              (decisão do Renato, 29/09),
+ *                                              e perfil "Mounjaro + treino" (30/09)
+ *   proteína para quem usa hormônio          → seção própria, sem perfil:
+ *                                              não há diretriz com faixa
  *   proteína para idosos                     → perfil e seção "65 anos ou mais"
  *   proteína por refeição, quanto absorve    → "Por refeição"
  *   excesso de proteína faz mal, rim         → "Quando não usar esta conta"
@@ -59,7 +63,7 @@ import {
 } from '../../lib/nutricao/proteina';
 
 const path = '/ferramentas/calculadora-de-proteina';
-const atualizadoEm = '2026-09-29';
+const atualizadoEm = '2026-09-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -76,6 +80,8 @@ const g = (id: string) => formataFaixaGramas(POR[id].gramasMin, POR[id].gramasMa
 const EX_OBESIDADE = proteina(110, 165, 'emagrecer');
 const EX_GLP1 = proteina(110, 165, 'glp1');
 const gGlp1 = formataFaixaGramas(EX_GLP1.gramasMin, EX_GLP1.gramasMax);
+const EX_GLP1_TREINO = proteina(110, 165, 'glp1treino');
+const gGlp1Treino = formataFaixaGramas(EX_GLP1_TREINO.gramasMin, EX_GLP1_TREINO.gramasMax);
 const pesoSaudavel165 = Math.round(pesoSaudavel(165));
 
 /* 48 caracteres. */
@@ -87,11 +93,11 @@ const description =
 const faqs = [
   {
     pergunta: 'Quantas gramas de proteína eu preciso por dia?',
-    resposta: `Depende do peso e do objetivo. Para ${PESO_PADRAO} kg: cerca de ${g('saude')} g sem treino regular, ${g('forca')} g para ganhar músculo com treino de força, ${g('emagrecer')} g emagrecendo, ${g('glp1')} g usando Mounjaro ou Ozempic e ${g('idoso')} g depois dos 65 anos. A calculadora faz a conta com o seu peso.`,
+    resposta: `Depende do peso e do objetivo. Para ${PESO_PADRAO} kg: cerca de ${g('saude')} g sem treino regular, ${g('forca')} g para ganhar músculo com treino de força, ${g('emagrecer')} g emagrecendo, ${g('definicao')} g em dieta de definição de quem já treina, ${g('glp1')} g usando Mounjaro ou Ozempic e ${g('idoso')} g depois dos 65 anos. A calculadora faz a conta com o seu peso.`,
   },
   {
     pergunta: 'Quanto de proteína por kg para hipertrofia?',
-    resposta: 'De 1,6 a 2,2 g por kg por dia. Na maior meta-análise sobre o tema, o ganho de massa magra com treino de força parou de crescer, em média, perto de 1,6 g/kg; a ponta de 2,2 cobre quem responde acima da média.',
+    resposta: 'De 1,6 a 2,2 g por kg por dia. Na maior meta-análise sobre o tema, o ganho de massa magra com treino de força parou de crescer, em média, perto de 1,6 g/kg; a ponta de 2,2 cobre quem responde acima da média — e é o mesmo valor seguro medido em fisiculturistas experientes. Em dieta de definição, quem já treina e está magro pode precisar de 2,3 a 3,1 g/kg.',
   },
   {
     pergunta: 'Quanto de proteína comer para emagrecer?',
@@ -99,7 +105,11 @@ const faqs = [
   },
   {
     pergunta: 'Quanto de proteína quem usa Mounjaro ou Ozempic deve comer?',
-    resposta: `A diretriz conjunta de 2025 sobre nutrição e remédios da classe GLP-1 indica cerca de 1,2 a 1,6 g por kg por dia — por quilo de peso saudável para a altura, não do peso atual. Com 110 kg e 1,65 m, a conta usa ${pesoSaudavel165} kg e dá ${gGlp1} g por dia. Junto com o treino de força, é o que ajuda a preservar massa magra durante o tratamento; o ajuste fino para o seu caso é com o médico e o nutricionista.`,
+    resposta: `A diretriz conjunta de 2025 sobre nutrição e remédios da classe GLP-1 indica cerca de 1,2 a 1,6 g por kg por dia — por quilo de peso saudável para a altura, não do peso atual. Com 110 kg e 1,65 m, a conta usa ${pesoSaudavel165} kg e dá ${gGlp1} g por dia. Quem já treina força com regularidade pode usar a faixa de quem treina, 1,6 a 2,2 g/kg sobre o mesmo peso saudável: ${gGlp1Treino} g no exemplo. O ajuste fino para o seu caso é com o médico e o nutricionista.`,
+  },
+  {
+    pergunta: 'Quem usa hormônio ou anabolizante precisa de mais proteína?',
+    resposta: 'Não existe diretriz nem estudo que defina uma faixa de proteína para quem usa testosterona ou anabolizante. O hormônio aumenta a retenção de nitrogênio — o corpo aproveita mais a proteína que já recebe —, e nos estudos controlados com testosterona a proteína da dieta foi a mesma para todos os grupos. Quem treina pesado já tem as faixas de força (até 2,2 g/kg) e de definição (até 3,1 g/kg). Reposição hormonal é com o médico: no Brasil, desde 2023, a prescrição de anabolizante para estética, ganho de massa ou desempenho é proibida pelo Conselho Federal de Medicina.',
   },
   {
     pergunta: 'Idoso precisa de mais proteína?',
@@ -163,7 +173,7 @@ const schema = [
       <h1>Calculadora de proteína: quantos gramas por dia?</h1>
       <p class="pt-hero-lead">
         A quantidade de proteína depende do peso e do que você está fazendo — treinar para ganhar
-        músculo, emagrecer, usar Mounjaro ou Ozempic, ou passar dos 65. Cada situação tem a sua diretriz, e a
+        músculo, emagrecer, secar em dieta de definição, usar Mounjaro ou Ozempic, ou passar dos 65. Cada situação tem a sua diretriz, e a
         calculadora usa a faixa de cada uma. Para {PESO_PADRAO} kg treinando força:{' '}
         <strong>{formataFaixaGramas(EX.gramasMin, EX.gramasMax)} g por dia</strong>.
       </p>
@@ -312,7 +322,7 @@ const schema = [
           </table>
         </div>
         <p>
-          Quem usa Mounjaro ou Ozempic não está na tabela porque a conta depende da altura, não só do
+          Os perfis de Mounjaro e Ozempic não estão na tabela porque a conta depende da altura, não só do
           peso: ela usa o peso saudável para a sua altura. A calculadora acima faz essa conta.
         </p>
 
@@ -320,22 +330,37 @@ const schema = [
         <p>
           A meta-análise mais usada sobre o tema reuniu 49 estudos com treino de força e mostrou que o
           ganho de massa magra para de crescer, em média, perto de 1,6 g por kg por dia. A ponta de
-          cima, 2,2, é o limite do intervalo de confiança: cobre quem responde acima da média. Mais do
-          que isso não mostrou ganho extra de músculo. {NOTA_TREINO}
+          cima, 2,2, é o limite do intervalo de confiança: cobre quem responde acima da média. Um estudo
+          com fisiculturistas experientes, que mediu a necessidade por outro método (oxidação de
+          aminoácido), chegou a 1,7 g/kg em média e a 2,2 como ingestão segura — o mesmo teto. Fora da
+          dieta de definição, mais do que isso não mostrou ganho extra de músculo. {NOTA_TREINO}
         </p>
 
         <h2>Proteína para emagrecer</h2>
         <p>
           No déficit calórico, parte do peso perdido pode ser músculo — e proteína somada ao treino de
           força é o que protege a massa magra. A faixa de 1,2 a 2,0 g/kg vem do posicionamento conjunto de
-          nutrição esportiva de 2016, para quem treina. Pessoas magras e
-          já treinadas, em corte, são o caso em que a diretriz de nutrição esportiva cita valores mais
-          altos, até 3,1 g/kg.
+          nutrição esportiva de 2016, para quem treina.
         </p>
         <p>
           O cuidado é com o peso usado na conta. {NOTA_PESO_AJUSTADO} Por exemplo: com 110 kg e 1,65 m
           (IMC {formataImc(EX_OBESIDADE.imc)}), a conta pelo peso total daria{' '}
           {formataFaixaGramas(EX_OBESIDADE.gramasMin, EX_OBESIDADE.gramasMax)} g — um teto, não uma meta.
+        </p>
+
+        <h2>Proteína na definição: quando passa de 2 g por kg</h2>
+        <p>
+          O caso em que a proteína mais sobe é o de quem já treina há tempo, está magro e entra em dieta
+          para secar. Com pouca gordura para queimar e o déficit apertando, o corpo passa a usar mais
+          músculo, e a proteína extra ajuda a segurar. A sociedade internacional de nutrição esportiva
+          diz que, nesse cenário, 2,3 a 3,1 g/kg por dia podem ser necessários; a revisão de Helms e
+          colegas chegou à mesma faixa, por quilo de massa magra, subindo quanto mais magro e mais
+          agressivo o déficit.
+        </p>
+        <p>
+          Para {PESO_PADRAO} kg, dá {g('definicao')} g por dia. Não é a faixa do iniciante nem de quem
+          tem sobrepeso — para esses, o perfil é "Emagrecer". E, como a revisão usou massa magra, pelo
+          peso total o número funciona como teto.
         </p>
 
         <h2>Proteína para quem usa Mounjaro ou Ozempic</h2>
@@ -354,10 +379,36 @@ const schema = [
           nutricionista, que conhecem o contexto clínico.
         </p>
         <p>
+          E para quem usa o remédio e treina força? A diretriz de GLP-1 não traz faixa separada para
+          quem faz musculação; um consenso internacional de 2025 fala em mais de 1,2 g/kg por dia, junto
+          com treino de força estruturado. Por isso o perfil "Mounjaro + treino" usa a faixa de quem
+          treina força, 1,6 a 2,2 g/kg, sobre o mesmo peso saudável: no exemplo de 110 kg e 1,65 m,{' '}
+          <strong>{gGlp1Treino} g por dia</strong>. É uma combinação das duas diretrizes, não um número
+          de estudo feito com o remédio — e a página diz isso para você decidir com o seu médico e o seu
+          nutricionista.
+        </p>
+        <p>
           Com o apetite reduzido pelo remédio, bater a meta costuma ser a parte difícil, e dividir a
           proteína em várias refeições ajuda. O treino que protege o músculo está no guia de{' '}
           <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como evitar perda de massa
           muscular com Mounjaro</a>.
+        </p>
+
+        <h2>Quem usa hormônio precisa de mais proteína?</h2>
+        <p>
+          Não existe diretriz nem estudo que defina uma faixa de proteína para quem usa testosterona ou
+          anabolizante, e por isso a calculadora não tem esse perfil. O que os estudos mostram vai contra
+          o senso comum: o hormônio aumenta a retenção de nitrogênio — o corpo passa a aproveitar mais a
+          proteína que já recebe. Num ensaio controlado com doses crescentes de testosterona, a dieta teve
+          energia e proteína padronizadas, iguais para todos os grupos, e a massa magra subiu conforme a
+          dose. O ganho veio do hormônio e do treino, não de proteína extra.
+        </p>
+        <p>
+          Na prática: quem treina pesado já está coberto pelas faixas de força (até 2,2 g/kg) e de
+          definição (até 3,1 g/kg), use ou não hormônio. Reposição hormonal com indicação — testosterona
+          baixa, menopausa — é conduzida pelo médico, e a proteína segue o seu perfil de treino e idade.
+          No Brasil, desde 2023, o Conselho Federal de Medicina proíbe a prescrição de anabolizante para
+          estética, ganho de massa muscular ou desempenho esportivo.
         </p>
 
         <h2>Proteína depois dos 65 anos</h2>
@@ -386,7 +437,7 @@ const schema = [
         <h2>Como esta conta é feita</h2>
         <p>
           A calculadora multiplica o seu peso pela faixa de gramas por quilo da situação escolhida e
-          divide o resultado pelas refeições. No perfil de Mounjaro e Ozempic, o peso da conta é o
+          divide o resultado pelas refeições. Nos dois perfis de Mounjaro e Ozempic, o peso da conta é o
           saudável para a sua altura — o de IMC 25, o topo da faixa saudável — sempre que o seu passa
           dele. Nos outros perfis, com IMC de {IMC_PESO_AJUSTADO} ou mais, ela avisa que o número pelo
           peso total é um teto: as diretrizes de emagrecimento usam peso ajustado, e a calculadora não

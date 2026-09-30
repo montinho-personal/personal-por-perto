@@ -38,14 +38,20 @@ const ok = (cond: boolean, msg: string) => {
 const perto = (a: number, b: number, tol: number) => Math.abs(a - b) <= tol;
 
 console.log('\nAs faixas, uma por diretriz');
-ok(PERFIS.map((p) => p.id).join(',') === 'saude,forca,emagrecer,glp1,idoso', 'cinco perfis, com o de GLP-1 (decisão de 29/09)');
+ok(PERFIS.map((p) => p.id).join(',') === 'saude,forca,emagrecer,definicao,glp1,glp1treino,idoso', 'sete perfis: definição e Mounjaro + treino entraram em 30/09');
+ok(!PERFIS.some((p) => /horm|anaboliz|testost/i.test(p.id + p.nome)), 'sem perfil de hormônio: não há diretriz que defina a faixa');
 ok(perfil('saude').gkgMin === 0.8 && perfil('saude').gkgMax === 0.8, 'sem treino: 0,8 (RDA)');
 ok(perfil('forca').gkgMin === 1.6 && perfil('forca').gkgMax === 2.2, 'força: 1,6 a 2,2 (Morton 2018: 1,62, IC até 2,20)');
+ok(perfil('forca').fonte.includes('Bandegan'), '  força: com Bandegan (fisiculturistas, seguro em 2,2)');
 ok(perfil('emagrecer').gkgMin === 1.2 && perfil('emagrecer').gkgMax === 2.0, 'emagrecer: 1,2 a 2,0');
+ok(perfil('definicao').gkgMin === 2.3 && perfil('definicao').gkgMax === 3.1, 'definição: 2,3 a 3,1 (ISSN 2017, Helms 2014)');
+ok(perfil('definicao').nota.includes('massa magra') && perfil('definicao').nota.includes('teto'), '  avisa que Helms deu a faixa por massa magra');
+ok(perfil('glp1treino').gkgMin === 1.6 && perfil('glp1treino').gkgMax === 2.2 && perfil('glp1treino').pesoBase === 'saudavel', 'Mounjaro + treino: 1,6 a 2,2 sobre o peso saudável');
+ok(perfil('glp1treino').nota.includes('combinação'), '  diz que é combinação de diretrizes, não estudo com o remédio');
 ok(perfil('idoso').gkgMin === 1.0 && perfil('idoso').gkgMax === 1.2, '65+: 1,0 a 1,2 (PROT-AGE)');
 ok(perfil('glp1').gkgMin === 1.2 && perfil('glp1').gkgMax === 1.6, 'Mounjaro/Ozempic: 1,2 a 1,6 (diretriz conjunta de 2025)');
 ok(perfil('glp1').pesoBase === 'saudavel', '  sobre o peso saudável, não o atual');
-ok(perfil('glp1').nota.includes('médico') && perfil('glp1').nota.includes('treino de força'), '  a nota leva o treino de força e o médico');
+ok(perfil('glp1').nota.includes('médico') && perfil('glp1').nota.includes('Mounjaro + treino'), '  a nota leva o médico e aponta o perfil de quem treina');
 ok(perfil('emagrecer').nota.includes('perfil próprio'), 'o perfil de emagrecer aponta o de GLP-1');
 ok(perfil('xyz').id === 'saude', 'id desconhecido cai no mínimo, nunca no máximo');
 ok(formataFaixaGkg(perfil('saude')) === '0,8' && formataFaixaGkg(perfil('forca')) === '1,6 a 2,2', 'mostradas como "0,8" e "1,6 a 2,2"');
@@ -84,17 +90,21 @@ console.log('\nMounjaro/Ozempic: peso saudável');
   ok(!m.usaPesoSaudavel && m.pesoConta === 60, 'IMC 20,8: usa o próprio peso');
   ok(formataFaixaGramas(m.gramasMin, m.gramasMax) === '70 a 95', '  60 kg: 70 a 95 g');
   ok(!proteina(110, 165, 'emagrecer').usaPesoSaudavel, 'os outros perfis seguem no peso atual');
+  const t = proteina(110, 165, 'glp1treino');
+  ok(t.usaPesoSaudavel && formataFaixaGramas(t.gramasMin, t.gramasMax) === '110 a 150', `Mounjaro + treino, 110 kg e 1,65 m: 110 a 150 g (mostrado "${formataFaixaGramas(t.gramasMin, t.gramasMax)}")`);
+  const d = proteina(80, 180, 'definicao');
+  ok(formataFaixaGramas(d.gramasMin, d.gramasMax) === '185 a 250', `definição, 80 kg: 185 a 250 g (mostrado "${formataFaixaGramas(d.gramasMin, d.gramasMax)}")`);
 }
 
 console.log('\nValidação, tabela e textos');
 ok(pesoValido(70) && !pesoValido(20) && !pesoValido(300), 'peso de 35 a 250');
 ok(parseAltura('1,70') === 170 && parseAltura('165') === 165, 'altura em metro ou centímetro');
 ok(arredondaGramas(112) === 110 && arredondaGramas(154) === 155, 'gramas de 5 em 5');
-ok(tabelaPorPeso().length === 6 && tabelaPorPeso()[0].faixas.length === 4, 'tabela: 6 pesos × 4 perfis');
-ok(!PERFIS_TABELA.some((p) => p.id === 'glp1'), '  sem a coluna de GLP-1: ela depende da altura, não só do peso');
+ok(tabelaPorPeso().length === 6 && tabelaPorPeso()[0].faixas.length === 5, 'tabela: 6 pesos × 5 perfis');
+ok(!PERFIS_TABELA.some((p) => p.id.startsWith('glp1')), '  sem as colunas de GLP-1: dependem da altura, não só do peso');
 ok(NOTA_RIM.includes('nefrologista'), 'doença renal: manda ao nefrologista');
 ok(NOTA_NAO_E_DIETA.includes('nutricionista'), 'dieta: manda ao nutricionista');
-ok(FONTES.length === 8, 'oito referências');
+ok(FONTES.length === 12, 'doze referências');
 
 console.log(falhas ? `\n✗ ${falhas} falha(s)\n` : '\n✓ tudo certo\n');
 process.exit(falhas ? 1 : 0);

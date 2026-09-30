@@ -14,12 +14,19 @@
  *                                          não o ideal para quem treina
  *   treino de força         1,6 a 2,2     Morton et al. (2018): o ganho de
  *                                          massa magra estabiliza em média em
- *                                          1,62, com o intervalo indo a 2,20
+ *                                          1,62, com o intervalo indo a 2,20;
+ *                                          Bandegan et al. (2017), em
+ *                                          fisiculturistas: média 1,7, seguro 2,2
  *   emagrecer               1,2 a 2,0     posicionamento conjunto de 2016
  *                                          (ACSM, AND, DC) para quem treina
+ *   definição (já treina)   2,3 a 3,1     ISSN (2017) e Helms et al. (2014):
+ *                                          magro, treinado e em déficit
  *   Mounjaro / Ozempic      1,2 a 1,6     diretriz conjunta de 2025 sobre
  *                                          nutrição e GLP-1, sobre o PESO
  *                                          SAUDÁVEL para a altura
+ *   Mounjaro + treino       1,6 a 2,2     a faixa de quem treina força, sobre
+ *                                          o mesmo peso saudável (combinação
+ *                                          declarada das duas diretrizes)
  *   65 anos ou mais         1,0 a 1,2     PROT-AGE (2013); 1,2 ou mais para
  *                                          quem treina
  *
@@ -35,6 +42,21 @@
  * saudável, que é a leitura mais generosa). Quem está abaixo disso usa o
  * próprio peso. A conta fica na página, às claras, e a meta final
  * continua com o médico e o nutricionista, que conhecem o caso.
+ *
+ * Em 30/09 o Renato pediu a revisão para quem treina: a diretriz de GLP-1
+ * não tem faixa separada para quem faz musculação (o consenso Delphi de
+ * 2025 fala em "mais de 1,2" com treino de força). O perfil "Mounjaro +
+ * treino" usa a faixa de quem treina força sobre o peso saudável, e a
+ * página diz que é uma combinação, não um número de estudo com o remédio.
+ *
+ * HORMÔNIOS: SEM PERFIL, COM RESPOSTA
+ *
+ * Não existe diretriz nem estudo que defina uma faixa de proteína para
+ * quem usa testosterona ou anabolizante. O que os estudos mostram é o
+ * contrário do senso comum: o hormônio aumenta a retenção de nitrogênio,
+ * e nos ensaios controlados a proteína foi padronizada igual para todos
+ * os grupos. Quem treina pesado já tem os perfis de força e definição
+ * (até 2,2 e até 3,1). A página responde a pergunta numa seção própria.
  *
  * O QUE ELA NÃO FAZ
  *
@@ -72,12 +94,28 @@ export const FONTE_MORTON: Fonte = {
     'reuniu 49 estudos com 1.863 participantes em treino de força. O ganho de massa magra parou de crescer, em média, a partir de 1,62 g/kg por dia — com intervalo de confiança de 1,03 a 2,20.',
 };
 
+export const FONTE_BANDEGAN: Fonte = {
+  rotulo:
+    'Bandegan A, et al. Indicator amino acid-derived estimate of dietary protein requirement for male bodybuilders on a nontraining day. Journal of Nutrition, 2017',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/?term=Bandegan+indicator+amino+acid+bodybuilders+nontraining+day',
+  resumo:
+    'mediu por oxidação de aminoácido a necessidade de fisiculturistas experientes num dia sem treino: média de 1,7 g/kg por dia, com ingestão segura, no limite de 95% de confiança, de 2,2 g/kg.',
+};
+
 export const FONTE_ISSN: Fonte = {
   rotulo:
     'Jäger R, Kerksick CM, Campbell BI, et al. International Society of Sports Nutrition Position Stand: protein and exercise. Journal of the International Society of Sports Nutrition, 14:20, 2017',
   url: 'https://pubmed.ncbi.nlm.nih.gov/28642676/',
   resumo:
-    'considera 1,4 a 2,0 g/kg por dia suficiente para a maioria de quem se exercita, e cita 2,3 a 3,1 g/kg para pessoas magras e treinadas em déficit calórico, quando o objetivo é reter massa magra.',
+    'considera 1,4 a 2,0 g/kg por dia suficiente para a maioria de quem se exercita, e diz que ingestões maiores, de 2,3 a 3,1 g/kg por dia, podem ser necessárias para reter massa magra em quem treina força e está em déficit calórico.',
+};
+
+export const FONTE_HELMS: Fonte = {
+  rotulo:
+    'Helms ER, Zinn C, Rowlands DS, Brown SR. A systematic review of dietary protein during caloric restriction in resistance trained lean athletes: a case for higher intakes. International Journal of Sport Nutrition and Exercise Metabolism, 24(2), 2014',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/24092765/',
+  resumo:
+    'revisou estudos com atletas magros e treinados em restrição calórica e concluiu que a necessidade provável é de 2,3 a 3,1 g por kg de massa magra, subindo quanto mais magro e mais agressivo o déficit.',
 };
 
 export const FONTE_ACSM: Fonte = {
@@ -93,6 +131,14 @@ export const FONTE_GLP1: Fonte = {
   url: 'https://pubmed.ncbi.nlm.nih.gov/40445127/',
   resumo:
     'põe proteína adequada e treino de força entre as prioridades para preservar massa magra durante o tratamento com remédios da classe GLP-1, com cerca de 1,2 a 1,6 g de proteína por kg de peso saudável por dia — não de peso atual —, e lembra que o apetite reduzido torna a meta difícil de bater.',
+};
+
+export const FONTE_DELPHI: Fonte = {
+  rotulo:
+    'Nutritional and lifestyle supportive care recommendations for management of obesity with GLP-1-based therapies: an expert consensus statement using a modified Delphi approach. Obesity Pillars, 2025',
+  url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12768930/',
+  resumo:
+    'painel internacional de médicos, pesquisadores e nutricionistas: para preservar massa magra com esses remédios, proteína acima de 1,2 g/kg por dia, distribuída nas refeições, junto com treino de força estruturado.',
 };
 
 export const FONTE_PROTAGE: Fonte = {
@@ -111,6 +157,14 @@ export const FONTE_REFEICAO: Fonte = {
     'para quem busca ganhar músculo, sugere cerca de 0,4 g/kg por refeição em pelo menos quatro refeições, chegando a 1,6 g/kg no dia; no teto de 2,2 g/kg, isso dá até 0,55 g/kg por refeição.',
 };
 
+export const FONTE_TESTOSTERONA: Fonte = {
+  rotulo:
+    'Bhasin S, et al. Testosterone dose-response relationships in healthy young men. American Journal of Physiology — Endocrinology and Metabolism, 281(6), 2001',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/11701431/',
+  resumo:
+    'deu doses crescentes de testosterona por 20 semanas, com energia e proteína da dieta padronizadas iguais para todos os grupos: a massa magra subiu conforme a dose (7,9 kg na maior). O ganho veio do hormônio, não de proteína extra.',
+};
+
 export const FONTE_RIM: Fonte = {
   rotulo:
     'KDOQI Clinical Practice Guideline for Nutrition in CKD: 2020 Update. American Journal of Kidney Diseases, 2020',
@@ -122,11 +176,15 @@ export const FONTE_RIM: Fonte = {
 export const FONTES: Fonte[] = [
   FONTE_RDA,
   FONTE_MORTON,
+  FONTE_BANDEGAN,
   FONTE_ISSN,
+  FONTE_HELMS,
   FONTE_ACSM,
   FONTE_GLP1,
+  FONTE_DELPHI,
   FONTE_PROTAGE,
   FONTE_REFEICAO,
+  FONTE_TESTOSTERONA,
   FONTE_RIM,
 ];
 
@@ -161,8 +219,8 @@ export const PERFIS: Perfil[] = [
     nomeCurto: 'Ganhar músculo',
     gkgMin: 1.6,
     gkgMax: 2.2,
-    fonte: 'Morton et al. (2018)',
-    nota: 'Na média dos estudos, o ganho de massa magra parou de crescer perto de 1,6 g/kg; a ponta de cima, 2,2, cobre quem responde acima da média. Mais do que isso não mostrou ganho extra de músculo nessa meta-análise.',
+    fonte: 'Morton et al. (2018) e Bandegan et al. (2017)',
+    nota: 'Na média dos estudos, o ganho de massa magra parou de crescer perto de 1,6 g/kg; a ponta de cima, 2,2, cobre quem responde acima da média — e é também o valor seguro medido em fisiculturistas experientes. Em dieta de definição, quem já treina pode precisar de mais: veja o perfil "Definição".',
   },
   {
     id: 'emagrecer',
@@ -171,7 +229,16 @@ export const PERFIS: Perfil[] = [
     gkgMin: 1.2,
     gkgMax: 2.0,
     fonte: 'ACSM, AND e DC (2016)',
-    nota: 'No déficit, proteína e treino de força são o que protege o músculo. Pessoas magras e já treinadas, em corte, podem precisar de mais — a diretriz de nutrição esportiva cita até 3,1 g/kg nesse caso específico. Quem usa Mounjaro, Ozempic ou remédio parecido tem perfil próprio.',
+    nota: 'No déficit, proteína e treino de força são o que protege o músculo. Quem já treina há tempo e está magro, em corte, pode precisar de mais — é o perfil "Definição". Quem usa Mounjaro, Ozempic ou remédio parecido tem perfil próprio.',
+  },
+  {
+    id: 'definicao',
+    nome: 'Definição: já treina, está magro e em dieta',
+    nomeCurto: 'Definição',
+    gkgMin: 2.3,
+    gkgMax: 3.1,
+    fonte: 'ISSN (2017) e Helms et al. (2014)',
+    nota: 'É o caso em que a proteína mais sobe: quanto mais magro e mais agressivo o déficit, mais perto do topo. A revisão de Helms deu a faixa por quilo de massa magra, então, pelo peso total, leia o número como teto. Para iniciante ou para quem tem sobrepeso, o perfil certo é "Emagrecer".',
   },
   {
     id: 'glp1',
@@ -181,7 +248,17 @@ export const PERFIS: Perfil[] = [
     gkgMax: 1.6,
     fonte: 'diretriz conjunta sobre nutrição e GLP-1 (2025)',
     pesoBase: 'saudavel',
-    nota: 'Com o apetite reduzido pelo remédio, bater a meta costuma ser a parte difícil — dividir em várias refeições ajuda. Proteína sozinha não segura o músculo: o treino de força é a outra metade. O número fino, para o seu caso, é ajustado com o seu médico e o seu nutricionista.',
+    nota: 'Com o apetite reduzido pelo remédio, bater a meta costuma ser a parte difícil — dividir em várias refeições ajuda. Proteína sozinha não segura o músculo: o treino de força é a outra metade. Se você já treina força com regularidade, use o perfil "Mounjaro + treino". O número fino é ajustado com o seu médico e o seu nutricionista.',
+  },
+  {
+    id: 'glp1treino',
+    nome: 'Usa Mounjaro ou Ozempic e treina força',
+    nomeCurto: 'Mounjaro + treino',
+    gkgMin: 1.6,
+    gkgMax: 2.2,
+    fonte: 'faixa de quem treina força (Morton, 2018) sobre o peso saudável da diretriz de GLP-1 (2025)',
+    pesoBase: 'saudavel',
+    nota: 'A diretriz de GLP-1 não traz faixa separada para quem faz musculação: o consenso de 2025 fala em mais de 1,2 g/kg, junto com treino de força. Aqui a conta usa a faixa de quem treina força sobre o peso saudável — uma combinação das duas diretrizes, não um número de estudo feito com o remédio. Com o apetite reduzido, é uma meta alta; o ajuste é com o médico e o nutricionista.',
   },
   {
     id: 'idoso',
