@@ -569,6 +569,38 @@ e corrida na frase que já cita as duas.
 **`musculacao-na-gravidez` não foi escrito.** `/guias/personal-trainer-para-gestantes/`
 já existe; precisa de recorte decidido antes, como os ⚠️.
 
+### Nota de 30/09/2026 — "divisão de treino" pede um artigo central, não a ferramenta
+
+Prints do Renato para "divisão de treino": autocompletar com masculino,
+feminino, abc, abcd, abcde, ppl, academia, "3 vezes", "4 dias", "5 dias",
+"5x", "6 vezes", "5 vezes hipertrofia", "superiores feminino"; PAA "Qual a
+divisão certa de treinos?", "Como montar divisão de treino?", "Como
+dividir o treino 5 vezes por semana?", "O que é a divisão do treino ABCD?".
+
+Nenhuma página do portal é dona dessa busca. As vizinhas cobrem pedaços:
+`/musculacao/abc-ou-full-body/` (103 impressões, posição 8,9 no GSC de
+12/09 — a comparação), `/musculacao/treino-abc-como-montar/` (o ABC por
+dentro), `/musculacao/frequencia-de-treino/` (quantas vezes por músculo),
+e as ferramentas `/ferramentas/meu-treino-faz-sentido/` (analisa o treino
+que a pessoa JÁ tem) e `/ferramentas/treino-para-minha-rotina/` (monta a
+semana). Pôr a busca geral numa delas criaria a disputa que acabou de ser
+desfeita entre o guia e a calculadora de preço.
+
+| Artigo | slug | status |
+|---|---|---|
+| Divisão de treino: como dividir por dias da semana | `/musculacao/divisao-de-treino/` | proposto — 01/10 (a cota de 30/09 fechou com proteína nos alimentos e 12-3-30) |
+
+Recorte: o artigo-índice das divisões, organizado pelo NÚMERO DE DIAS
+(2-3 full body, 4 superiores/inferiores, 5 ABCDE ou PPL+, 6 PPL 2x), com
+ABCD, ABCDE e PPL explicados em uma linha cada e o link para o vizinho que
+aprofunda. "Masculino/feminino": a divisão não muda por sexo — muda a
+ênfase (glúteo e posterior costumam pesar mais nos pedidos femininos), e o
+texto diz isso sem estereótipo. Ferramenta no corpo: `treino-para-minha-
+rotina` (monta a semana pelos dias disponíveis); o CTA do fim é a análise
+de treino, então não repete. Fonte de frequência e volume: Schoenfeld
+2016 (frequência) e 2019 (volume igual, frequência não muda a
+hipertrofia), já usados no portal.
+
 ## Bloco Emagrecimento (12)
 
 | Artigo | slug | status |
