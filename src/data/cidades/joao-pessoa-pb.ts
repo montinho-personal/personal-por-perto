@@ -95,7 +95,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais agradáveis e planas do país, João Pessoa é feita para quem gosta de treinar ao ar livre. Um personal trainer ajuda a aproveitar a janela matinal do Cabo Branco e a estrutura da cidade com um plano sob medida — respeitando o calor e o seu objetivo.',
 
+  /*
+   * Prints de 30/09: autocompletar com "mulher", "valor", "quanto custa um
+   * personal trainer em joão pessoa", "valor personal trainer mensal",
+   * "preço", "online", "vagas", dois nomes próprios e uma notícia; PAA com
+   * "quanto custa em João Pessoa?", "1 mês", "3 vezes por semana" e "é
+   * vantajoso pagar". A pergunta de hipertrofia vem do Search Console:
+   * "personal trainer para hipertrofia em joão pessoa", 35 impressões e
+   * nenhum clique até 29/09. Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Como funciona o personal trainer para hipertrofia em João Pessoa?',
+      resposta:
+        'O acompanhamento para ganhar massa se apoia em três coisas: volume de treino suficiente — para quem já treina, algo entre 10 e 20 séries por grupo muscular por semana; para quem está começando, de 5 a 9 já trazem ganho —, progressão de carga registrada treino a treino e proteína adequada, na faixa de 1,6 a 2,2 g por kg de peso por dia. O que o personal acrescenta é ajustar esse volume à sua recuperação, corrigir a execução para o estímulo cair no músculo certo e decidir quando subir a carga. A dieta fina, se houver, é com nutricionista.',
+    },
     {
       pergunta: 'Por que todo mundo treina cedo em João Pessoa?',
       resposta:
@@ -129,5 +146,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em João Pessoa: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-09-30',
 };

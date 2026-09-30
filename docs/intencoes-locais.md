@@ -195,3 +195,33 @@ outro público); "bem avaliados" (o portal não tem avaliações de
 profissionais — a pergunta de Instagram cobre como avaliar); o nome próprio
 e a notícia de Teresina — notícia de morte não é intenção de contratar, e
 usá-la para atrair clique seria de mau gosto.
+
+## Florianópolis e João Pessoa — prints e aplicação em 30/09/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer florianopolis | bairros ("campeche", "centro", "itacorubi", "ingleses"), "mulher", "valor", "vaga"; relacionadas: "são josé sc", "palhoça", "ingleses", "campeche", "pratique" | quanto custa em Florianópolis · 1 mês · 3 vezes por semana · é vantajoso pagar | perfil de Instagram; Doctoralia ("educadores físicos"); diretório com 4,8 (28.678) |
+| personal trainer joão pessoa | "mulher", "valor", "quanto custa um personal trainer em joão pessoa", "valor personal trainer mensal", "preço", "online", "vagas", dois nomes próprios, uma notícia, "personal fralda" (outro assunto) | quanto custa em João Pessoa · 1 mês · 3 vezes por semana · é vantajoso pagar | Superprof (137 profissionais, 5,0 (23)); perfil de Instagram |
+
+**Aplicado:**
+
+- **Florianópolis** — valor por mês no título e na descrição; pergunta "1
+  mês, 3 vezes por semana"; e "Vale procurar personal trainer no próprio
+  bairro em Florianópolis?", porque o autocompletar é quase todo de
+  bairros: a resposta usa o que a página já documenta (Ilha e continente
+  ligados por pontes, trânsito de verão) e aponta as páginas do Campeche,
+  Lagoa, Jurerê e Beira-Mar Norte. **São José e Palhoça passaram a ser
+  linkadas** (estão nas relacionadas; antes, nenhuma das duas).
+- **João Pessoa** — valor por mês no título e na descrição; perguntas "1
+  mês, 3 vezes por semana", "online ou presencial" ("online" no
+  autocompletar) e "Como funciona o personal trainer para hipertrofia em
+  João Pessoa?" — esta pelo Search Console (35 impressões, 0 clique), com
+  os mesmos números dos artigos do portal: 10 a 20 séries por semana para
+  quem já treina, 5 a 9 para iniciante, proteína de 1,6 a 2,2 g/kg.
+
+**Não aplicado:** "mulher", "vaga(s)", nomes próprios, a notícia de João
+Pessoa, "personal fralda", "pratique" (sem fonte oficial da regra de
+personal da rede).
+
+**Bairros candidatos em Florianópolis:** Ingleses, Itacorubi, Centro — sem
+página hoje.

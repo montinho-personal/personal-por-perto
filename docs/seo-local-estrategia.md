@@ -120,7 +120,8 @@ lida sozinha no próximo relatório.
 |---|---|---|
 | 30/09 | Palhoça: título, descrição e FAQ de consultoria online ✅ | 1 |
 | 30/09 | Região presencial: as 10 com prints, a pedido do Renato ✅ (Cotia e Embu quando chegarem os prints) | 10 |
-| 06/10 | Preço + cidade: as 20 maiores, com o título de BH | 20 |
+| 30/09 | Leva 1 por prints: Belo Horizonte, Brasília, Goiânia, Teresina, Florianópolis, João Pessoa ✅ (+ Cotia e Embu) | 8 |
+| a definir | Preço + cidade nas outras cidades grandes, pelas levas 2 e 3 de prints | — |
 | 09/10 | Leitura do piloto de bairros → decide a próxima leva de bairros | — |
 | próximo relatório | medir as quatro frentes (lista no README de relatórios) | — |
 

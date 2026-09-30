@@ -68,6 +68,12 @@ até 29/09/2026):
    19 impressões, 1 clique, posição 6,0. Teresina: 1.216 impressões, 15
    cliques, posição 9,6; "personal trainer em teresina" 8 impressões, 1
    clique, posição 12,1.
+   **Florianópolis** e **João Pessoa** fecham a leva 1, no mesmo dia.
+   Florianópolis: 1.442 impressões, 22 cliques, posição 8,4; "quanto custa
+   um personal trainer em florianópolis" 28 impressões, 1 clique, posição
+   4,9. João Pessoa: 1.633 impressões, 29 cliques, posição 8,1;
+   "personal trainer para hipertrofia em joão pessoa" 35 impressões, 0
+   clique, posição 10,5.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

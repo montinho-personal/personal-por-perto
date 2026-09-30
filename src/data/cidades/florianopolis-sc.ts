@@ -95,7 +95,22 @@ export const cidade: Cidade = {
   conclusao:
     'Em Florianópolis, treinar é quase uma extensão do estilo de vida: praia, corrida, surf e musculação de alto nível convivem na mesma cidade. Um personal trainer ajuda a organizar tudo isso em torno do seu objetivo, aproveitando a Beira-Mar, a Lagoa e a forte cena fitness da capital.',
 
+  /*
+   * Prints de 30/09: autocompletar com bairros ("campeche", "centro",
+   * "itacorubi", "ingleses"), "mulher", "valor" e "vaga"; relacionadas com
+   * "são josé sc", "palhoça", "ingleses", "campeche" e "pratique"; PAA com
+   * "quanto custa em Florianópolis?", "1 mês", "3 vezes por semana" e "é
+   * vantajoso pagar". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Vale procurar personal trainer no próprio bairro em Florianópolis?',
+      resposta:
+        'Vale, e em Floripa mais do que em outras capitais. A cidade se espalha pela Ilha e pelo continente, ligados por pontes, e o trânsito de verão é intenso — o personal que precisa atravessar a cidade chega atrasado, embute o deslocamento no preço ou cancela nos dias piores. Comece pela sua região (norte da Ilha, sul da Ilha, Centro ou continente) e pergunte ao profissional onde ele atende nos outros horários: quem tem a agenda concentrada perto de você segura o horário. O portal tem páginas próprias do Campeche, da Lagoa da Conceição, de Jurerê Internacional e da Beira-Mar Norte.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Florianópolis?',
       resposta:
@@ -113,7 +128,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['balneario-camboriu-sc', 'porto-alegre-rs', 'curitiba-pr'],
+  // São José e Palhoça primeiro: estão nas pesquisas relacionadas de
+  // "personal trainer florianopolis" (prints de 30/09/2026), são vizinhas de
+  // fato e a página não linkava nenhuma das duas.
+  vizinhas: ['sao-jose-sc', 'palhoca-sc', 'balneario-camboriu-sc', 'porto-alegre-rs', 'curitiba-pr'],
 
   fontes: [
     { nome: 'IBGE Cidades — Florianópolis', url: 'https://cidades.ibge.gov.br/brasil/sc/florianopolis/panorama' },
@@ -129,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Florianópolis: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-09-30',
 };
