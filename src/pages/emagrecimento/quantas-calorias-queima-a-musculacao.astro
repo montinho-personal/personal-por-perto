@@ -24,6 +24,13 @@
  *   saiu, porque usava a regra dos 7.700 kcal sem a ressalva de Hall.
  * - A frase sobre relógios ganhou a fonte que a sustenta (Collins et al.).
  * - "A caminhada costuma mover mais calorias que o treino" virou conta.
+ *
+ * DO GOOGLE, 30/09 (prints do Renato): o autocompletar de "calorias da
+ * musculação" traz 1 hora, 30 minutos, moderada, leve e calculadora; as
+ * pesquisas relacionadas pedem 20, 30, 40 e 50 minutos, 2 horas, "depois do
+ * treino", "treino intenso" e "queima mais que cardio". Entraram a tabela
+ * por tempo de treino, FAQs nessas palavras e "Calculadora" no H2 da
+ * ferramenta. URL, título e H1 seguem intocados, pelo motivo acima.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -79,6 +86,13 @@ const KG_PARA_100 = 100 / KCAL_DIA_POR_KG_MUSCULO;
 /* Meia hora de caminhada moderada todo dia, pelo motor da caminhada. */
 const MOD = ritmoCaminhada('moderado');
 const CAMINHADA_SEMANA = caminhadaTempo(30, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal * 7;
+const CAMINHADA_HORA = caminhadaTempo(60, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal;
+
+/* "20, 30, 40, 50 minutos, 1 hora, 2 horas de musculação queima quantas calorias" — pesquisas relacionadas do Google (30/09). */
+const TEMPOS = [20, 30, 40, 50, 60, 120];
+const rotuloTempo = (m: number) => (m === 60 ? '1 hora' : m === 120 ? '2 horas' : `${m} minutos`);
+const POR_TEMPO = TEMPOS.map((m) => ({ m, kcal: TIPOS.map((t) => deSessao(m, PESO_PADRAO, t.id).kcal) }));
+const M30 = POR_TEMPO.find((l) => l.m === 30)!;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
@@ -104,7 +118,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/quantas-calorias-queima-a-musculacao';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-09-30';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -117,7 +131,19 @@ const faqs = [
     resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(H_VARIADO.kcal)} kcal num treino variado de academia, ${formataKcal(H_BASICOS.kcal)} num treino de básicos pesados (agachamento, terra) e ${formataKcal(H_VIGOROSO.kcal)} num treino vigoroso, pelos valores do Compêndio de Atividades Físicas. O que mais muda o número é a escolha dos exercícios: num estudo brasileiro, 5 séries de leg press custaram cerca de ${n(ESTUDO.razaoMassa)} vez o que custaram 5 séries de crucifixo. Relógios costumam superestimar bastante.`,
   },
   {
-    pergunta: 'O que é o efeito EPOC ("afterburn")? Ele é significativo?',
+    pergunta: '30 minutos de musculação queima quantas calorias?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(M30.kcal[0])} kcal num treino variado de academia, ${formataKcal(M30.kcal[1])} num treino de básicos pesados e ${formataKcal(M30.kcal[2])} num treino vigoroso. Com 20, 40 ou 50 minutos, a conta é proporcional ao tempo — a tabela do artigo mostra cada um, e a calculadora faz com o seu peso.`,
+  },
+  {
+    pergunta: 'Musculação leve ou moderada queima quantas calorias?',
+    resposta: `O Compêndio de Atividades Físicas não separa a musculação em "leve" e "moderada": separa pelo tipo de treino. A linha mais baixa é o treino variado de academia, cerca de ${formataKcal(H_VARIADO.kcal)} kcal por hora para ${PESO_PADRAO} kg; a mais alta, o treino vigoroso de fisiculturismo ou powerlifting, cerca de ${formataKcal(H_VIGOROSO.kcal)}. Um treino intenso fica mais perto da segunda.`,
+  },
+  {
+    pergunta: 'Musculação queima mais calorias que cardio?',
+    resposta: `Por hora, em geral não. Uma hora de treino variado de academia gasta cerca de ${formataKcal(H_VARIADO.kcal)} kcal para ${PESO_PADRAO} kg; uma hora de caminhada moderada, cerca de ${formataKcal(CAMINHADA_HORA)} — e a corrida, bem mais. A vantagem da musculação não está no gasto da sessão: está em manter e ganhar músculo, que é o que protege o corpo enquanto o peso cai.`,
+  },
+  {
+    pergunta: 'A musculação queima calorias depois do treino (efeito EPOC)?',
     resposta: `EPOC é o consumo extra de oxigênio pós-exercício: depois do treino, o corpo segue gastando um pouco mais para se recuperar. Ele pode durar bastante — um estudo mediu consumo acima do repouso 38 horas depois de um circuito pesado —, mas duração não é tamanho: nos exemplos que uma revisão de 16 estudos compara, o total somou de cerca de ${EPOC_MIN} a ${EPOC_MAX} kcal. O "metabolismo turbinado por 48 horas" do marketing acerta a duração possível e erra o que importa, que é a quantidade.`,
   },
   {
@@ -189,7 +215,7 @@ const schema = [
     </p>
 
     <section id="cm-app" class="cm-app" aria-labelledby="cm-app-h">
-      <h2 id="cm-app-h" class="cm-app-h">Calcule o gasto do seu treino</h2>
+      <h2 id="cm-app-h" class="cm-app-h">Calculadora de calorias da musculação</h2>
 
       <div class="cm-modos" role="tablist" aria-label="O que você quer calcular">
         <button type="button" class="cm-modo is-ativo" data-modo="sessao" role="tab" aria-selected="true">
@@ -301,6 +327,25 @@ const schema = [
         <strong>{formataKcal(H_VIGOROSO.kcal)}</strong>. Corpos maiores gastam
         mais, na mesma proporção do peso.
       </p>
+      <p>
+        Por tempo de treino, a conta é proporcional. Para {PESO_PADRAO} kg:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Calorias da musculação por tempo de treino, {PESO_PADRAO} kg</caption>
+          <thead>
+            <tr><th scope="col">Tempo</th>{TIPOS.map((t) => <th scope="col">{t.nomeCurto}</th>)}</tr>
+          </thead>
+          <tbody>
+            {POR_TEMPO.map((l) => (
+              <tr>
+                <th scope="row">{rotuloTempo(l.m)}</th>
+                {l.kcal.map((k) => <td>≈ {formataKcal(k)} kcal</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <p>
         O que separa essas linhas não é o relógio: é o tipo de treino e,
         principalmente, a escolha dos exercícios. Um estudo brasileiro de Farinatti e Castinheiras Neto
