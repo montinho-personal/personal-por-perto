@@ -147,6 +147,21 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
     });
   }
 
+  if (cfg.barato) {
+    // "Por sessão sai mais barato" só quando o pacote, nas duas pontas da
+    // faixa, custa menos que 8 aulas avulsas — o mínimo de 2 por semana.
+    const pacoteMaisBarato = p.mensalMax < 8 * p.avulsaMax && p.mensalMin < 8 * p.avulsaMin;
+    resto.push({
+      pergunta: `Como encontrar personal trainer mais barato ${emN}?`,
+      resposta:
+        'Dá para pagar menos sem cair no treino genérico, por quatro caminhos. ' +
+        `Pacote mensal em vez de aula avulsa: ${emN}, a aula avulsa vai de ${faixaBRL(p.avulsaMin, p.avulsaMax)}, e o pacote com 2 ou 3 sessões por semana, de ${faixaBRL(p.mensalMin, p.mensalMax)}${pacoteMaisBarato ? ' — por sessão, sai mais barato' : ''}. ` +
+        'Treino em dupla ou em pequeno grupo, que costuma dividir o valor da hora. ' +
+        `Acompanhamento online, de ${faixaBRL(p.onlineMin, p.onlineMax)} por mês, para quem já sabe executar os exercícios. ` +
+        'E o formato misto: algumas aulas presenciais para aprender a técnica e o resto online. O que não compensa é o preço baixo sem avaliação nem plano — aí é só alguém contando repetições.',
+    });
+  }
+
   if (cfg.instagram) {
     resto.push({
       pergunta: `Como avaliar um personal trainer ${emN} pelo Instagram?`,

@@ -95,7 +95,23 @@ export const cidade: Cidade = {
   conclusao:
     'Entre o patrimônio histórico e uma orla feita para correr, São Luís oferece bons cenários para treinar — da Lagoa da Jansen à Litorânea. Um personal trainer ajuda a montar uma rotina que respeite o calor e a umidade e a aproveitar ao máximo a estrutura da capital maranhense.',
 
+  /*
+   * Prints de 30/09: autocompletar com "em sao luis maranhao" e "ma";
+   * relacionadas com "mulher", "preço", "online" e "Selfit" (rede de
+   * academia); PAA com "1 mês", "3 vezes por semana", "é vantajoso pagar" e
+   * "é melhor treinar 3 ou 5 vezes na semana?". Resultados: GetNinjas (4,9,
+   * 53 avaliações), Cronoshare, Instagram. Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
+    {
+      pergunta: 'É melhor treinar 3 ou 5 vezes na semana em São Luís?',
+      resposta:
+        'Para a maioria das pessoas, três treinos bem feitos por semana sustentam a evolução; cinco servem a quem já treina há algum tempo e divide o corpo por grupos musculares. Em São Luís, o calendário pesa: de dezembro a junho a chuva derruba treino ao ar livre com frequência. Quem treina na orla ou na Lagoa da Jansen ganha em fixar três sessões que acontecem de qualquer jeito — com um plano coberto para os dias de chuva — e tratar a quarta e a quinta como extras dos dias secos. O número certo é o que sobrevive à temporada de chuva.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em São Luís?',
       resposta:
@@ -128,5 +144,5 @@ export const cidade: Cidade = {
       'Treino personalizado em São Luís: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
     vertical: true,
   },
-  atualizadoEm: '2026-07-24',
+  atualizadoEm: '2026-09-30',
 };

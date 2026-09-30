@@ -152,6 +152,8 @@ export interface Cidade {
     instagram?: boolean;
     /** "Online ou presencial?" — onde o autocompletar pede "online + cidade". */
     onlineOuPresencial?: boolean;
+    /** "Como pagar menos?" — onde o autocompletar pede "barato". */
+    barato?: boolean;
     /**
      * Preço comparado entre páginas da mesma região ("quanto custa um
      * personal trainer no DF?"). A pergunta é escrita aqui; as faixas saem

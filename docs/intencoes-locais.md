@@ -225,3 +225,37 @@ personal da rede).
 
 **Bairros candidatos em Florianópolis:** Ingleses, Itacorubi, Centro — sem
 página hoje.
+
+## São Luís e São Paulo — prints e aplicação em 30/09/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer sao luis | "em sao luis maranhao", "ma" (e "barueri"/"bar", efeito da localização de quem buscou); relacionadas: "mulher", "preço", "online", "personal inteligente", "personal fralda", "Selfit" | 1 mês · 3 vezes por semana · é vantajoso pagar · 3 ou 5 vezes na semana | GetNinjas (4,9, 53), Cronoshare, Instagram |
+| personal trainer são paulo | "preço", "zona sul", "zona leste", "zona norte", "pinheiros", "instagram", "sp"; "mulher perto de mim", "perto de mim", "mensal", "barato sp", "particular preço", "valor personal trainer smart fit"; relacionadas: "centro sp", "tabela de preço", "academia com personal incluso sp" | quanto custa em SP · 3 vezes por semana · é vantajoso pagar · quanto custa 1 mês de smart fit | resumo de IA: R$ 90 a R$ 150 por hora presencial, estúdios de alto padrão perto de R$ 2.000/mês; Superprof (5,0, 746) com "R$ 130/h"; **no mapa de empresas, "Montinho Personal Trainer 5,0 (25)"** |
+
+**Aplicado:**
+
+- **São Luís** — valor por mês no título e na descrição; perguntas "1 mês, 3
+  vezes por semana", "online ou presencial" (relacionadas) e "É melhor
+  treinar 3 ou 5 vezes na semana em São Luís?", com texto próprio: a chuva
+  de dezembro a junho, a orla e a Lagoa da Jansen (dados da página).
+- **São Paulo** — valor por mês no título e na descrição; perguntas "1 mês,
+  3 vezes por semana", Instagram e **"Como encontrar personal trainer mais
+  barato em São Paulo?"** — nova opção gerada (`barato`), com as faixas da
+  página: pacote em vez de avulsa, dupla ou pequeno grupo, online e o
+  formato misto.
+
+**Não aplicado:** "mulher", "perto de mim" (a página já é a resposta local),
+"smart fit" / "academia com personal incluso" / "Selfit" (sem fonte oficial
+das regras e preços das redes), "quanto custa 1 mês de smart fit" (é preço
+de academia, não de personal), "personal inteligente" e "personal fralda"
+(outros assuntos).
+
+**Bairros candidatos em São Paulo:** zona leste e zona norte — os 10
+bairros publicados são todos da zona sul e do centro-oeste. Pinheiros e o
+centro já têm página ou vizinhança coberta.
+
+**Observação sobre o Google Meu Negócio:** a ficha "Montinho Personal
+Trainer" (5,0, 25 avaliações) aparece no mapa de empresas da busca
+"personal trainer são paulo" feita a partir de Alphaville. É o ativo local
+mais forte que existe hoje na região — mais que o portal ou o site.

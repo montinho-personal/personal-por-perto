@@ -104,6 +104,18 @@ export const cidade: Cidade = {
   conclusao:
     'São Paulo reúne a maior oferta de personal trainers, academias e espaços de treino do Brasil — o desafio não é encontrar, é escolher bem. Vale definir objetivo, orçamento e logística (perto de casa, do trabalho ou no condomínio) antes de fechar, e usar os guias do portal para comparar formatos. Com parques de referência, a maior malha cicloviária do país e um calendário esportivo que não para, a cidade joga a favor de quem decide treinar com constância.',
 
+  /*
+   * Prints de 30/09: autocompletar com "preço", "zona sul", "zona leste",
+   * "zona norte", "pinheiros", "instagram", "mensal", "barato sp",
+   * "particular preço", "perto de mim", "mulher" e "valor personal trainer
+   * smart fit"; relacionadas com "centro sp", "tabela de preço" e "academia
+   * com personal incluso sp"; PAA com "quanto custa em São Paulo?", "3 vezes
+   * por semana", "é vantajoso pagar" e "quanto custa 1 mês de smart fit?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, barato: true },
+
   faqsExtra: [
     {
       pergunta: 'Em quais regiões de São Paulo o personal costuma atender?',
@@ -143,5 +155,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em São Paulo: acompanhamento profissional perto de você, em toda a capital e regiões.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-09-30',
 };

@@ -74,6 +74,10 @@ até 29/09/2026):
    4,9. João Pessoa: 1.633 impressões, 29 cliques, posição 8,1;
    "personal trainer para hipertrofia em joão pessoa" 35 impressões, 0
    clique, posição 10,5.
+   Leva 2, no mesmo dia: **São Luís** (338 impressões, 5 cliques,
+   posição 6,3) e **São Paulo** (1.084 impressões, 3 cliques, 0,3%,
+   posição 12,4; "personal trainer sao paulo" na posição 34,5; "valor
+   personal trainer sp" 13 impressões, posição 10,6).
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
