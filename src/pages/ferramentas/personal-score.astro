@@ -21,7 +21,7 @@ import { montinho } from '../../data/montinho';
 import { rotas } from '../../lib/links';
 
 const path = '/ferramentas/personal-score';
-const atualizadoEm = '2026-08-29';
+const atualizadoEm = '2026-09-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -29,8 +29,14 @@ const crumbs = [
   { nome: 'Personal Score', url: path },
 ];
 
-/* 55 caracteres. */
-const title = 'Meu Personal Está Me Acompanhando Bem? Faça a Avaliação';
+/*
+ * 57 caracteres. Do Google, 30/09 (prints do Renato): "como saber se o
+ * personal (trainer) é bom", PAA "Como avaliar um personal trainer?" e
+ * "Quais são as características de um bom personal trainer?". O título
+ * usa a pergunta da busca; a FAQ logo abaixo continua dizendo que a
+ * ferramenta avalia a estrutura do acompanhamento, não dá veredito.
+ */
+const title = 'Como Saber se Meu Personal é Bom? Avalie o Acompanhamento';
 /* 143 caracteres. */
 const description =
   'Avalie o acompanhamento que você contratou: individualização, progressão, evolução e clareza. E leve perguntas prontas para o seu profissional.';
@@ -38,6 +44,14 @@ const description =
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
 const faq = [
+  {
+    p: 'Como saber se o meu personal é bom?',
+    r: 'Olhe para duas coisas. A sessão: ele presta atenção em você o tempo todo, corrige a execução, explica o porquê de cada exercício e adapta o que não serve ao seu corpo ou a uma limitação. E o plano: o treino foi montado depois de uma avaliação, existe critério para aumentar carga e dificuldade, a sua evolução é registrada e o plano muda quando a sua rotina muda. A ferramenta desta página mede a segunda parte, que é a mais difícil de enxergar de dentro.',
+  },
+  {
+    p: 'Quais são as características de um bom personal trainer?',
+    r: 'Atenção exclusiva durante a sessão — sem ficar no celular —, individualização (o treino é seu, não uma ficha repetida), progressão com critério, clareza para explicar o que está fazendo e por quê, e escuta: ele ouve o que você sente e ajusta. Experiência com o seu objetivo pesa, e promessa de resultado rápido e garantido é sinal ao contrário.',
+  },
   {
     p: 'Esta ferramenta diz se o meu personal é bom ou ruim?',
     r: 'Não, e essa é uma decisão de projeto, não uma limitação técnica. Ela avalia a estrutura do serviço a partir do que você percebe: se existe individualização, se a progressão está clara, se a sua evolução é acompanhada. Competência técnica, adequação de cada exercício ao seu corpo e conduta profissional não são observáveis a partir de um questionário — e fingir que são seria desonesto.',
@@ -205,7 +219,7 @@ const schema = [
         trata dessa escolha diretamente.
       </p>
 
-      <h2 id="sinais">Sinais de que o acompanhamento está bem estruturado</h2>
+      <h2 id="sinais">Como saber se o personal é bom: sinais de um acompanhamento bem feito</h2>
       <p>
         Alguns indicadores aparecem com frequência em serviços bem organizados,
         independentemente do formato. O treino foi montado depois de alguém
@@ -215,6 +229,12 @@ const schema = [
         esse critério não é "quando der vontade". Cargas ou medidas são
         registradas em algum lugar. Quando a sua rotina muda, o plano muda
         junto.
+      </p>
+      <p>
+        Na sessão presencial, dá para ver mais: um bom profissional presta
+        atenção em você do início ao fim — não no celular —, corrige a execução
+        na hora, explica por que cada exercício está ali e troca o que incomoda
+        o seu corpo em vez de insistir num padrão.
       </p>
       <p>
         Nenhum desses itens sozinho define qualidade, e a ausência de um deles
