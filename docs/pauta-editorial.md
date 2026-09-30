@@ -600,7 +600,7 @@ preciso"), e forçar ali diluiria a página. Vira artigo próprio:
 
 | Artigo | slug | status |
 |---|---|---|
-| Quanto de proteína tem cada alimento (tabela) | `/musculacao/quanto-de-proteina-tem-cada-alimento/` | proposto |
+| Quanto de proteína tem cada alimento (tabela) | `/musculacao/quanto-de-proteina-tem-cada-alimento/` | ✅ 2026-09-30 · a pedido do Renato |
 
 Regras do artigo: números da TACO (UNICAMP), a tabela oficial brasileira,
 conferidos item a item — nada de "média da internet". Por porção de

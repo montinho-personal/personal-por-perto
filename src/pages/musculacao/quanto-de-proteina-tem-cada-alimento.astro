@@ -1,0 +1,412 @@
+---
+/**
+ * Quanto de proteína tem cada alimento — tabela.
+ *
+ * POR QUE ESTE ARTIGO: nos prints do Google que o Renato mandou em 30/09,
+ * metade das sugestões de "quantas gramas de proteína" era sobre a COMIDA
+ * ("tem um ovo", "tem 100 g de frango", "tem um filé de frango", "tem um
+ * bife", "tem um scoop de whey", "quantidade de proteína nos alimentos") e
+ * a pergunta "como atingir 100 g de proteína por dia?". A calculadora de
+ * proteína responde quanto a pessoa precisa; este artigo responde de onde
+ * vem. Os dois se linkam.
+ *
+ * Nenhum número foi escrito à mão: tudo sai de src/lib/nutricao/alimentos.ts,
+ * com valores da TACO conferidos item a item em 30/09/2026.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ALIMENTOS,
+  DIA_EXEMPLO,
+  PATINHO_CRU_G100,
+  alimento,
+  formataG100,
+  formataPorcao,
+  proteinaEm,
+  proteinaPorcao,
+  totalDia,
+  totalRefeicao,
+} from '../../lib/nutricao/alimentos';
+
+const GRUPOS = [
+  { id: 'carnes', nome: 'Carnes e peixes' },
+  { id: 'ovos-laticinios', nome: 'Ovos e laticínios' },
+  { id: 'vegetais', nome: 'Grãos, pães e leguminosas' },
+] as const;
+
+const OVO = alimento('ovo');
+const FRANGO = alimento('frango');
+const PATINHO = alimento('patinho');
+const FEIJAO = alimento('feijao');
+const ARROZ = alimento('arroz');
+const LENTILHA = alimento('lentilha');
+const AVEIA = alimento('aveia');
+const g = (n: number) => formataPorcao(n);
+const umOvo = proteinaEm('ovo', 50);
+const doisOvos = proteinaEm('ovo', 100);
+const fileFrango = proteinaEm('frango', 120);
+const bife = proteinaEm('patinho', 100);
+const TOTAL_DIA = totalDia();
+
+const relacionados = [
+  {
+    url: '/ferramentas/calculadora-de-proteina/',
+    titulo: 'Calculadora de proteína diária',
+    descricao: 'A outra metade da conta: quantos gramas você precisa por dia.',
+    tipo: 'Ferramenta',
+  },
+  {
+    url: '/musculacao/whey-protein-o-que-e-como-tomar/',
+    titulo: 'Whey protein: o que é e como tomar',
+    descricao: 'Quando o suplemento ajuda a fechar a conta — e quando é dispensável.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Onde a proteína entra no déficit, junto com o treino.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/hipertrofia-como-funciona/',
+    titulo: 'Hipertrofia: como o músculo cresce',
+    descricao: 'O que o treino faz e o que a proteína sustenta.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/quanto-de-proteina-tem-cada-alimento';
+const atualizadoEm = '2026-09-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Proteína nos alimentos', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quantas gramas de proteína tem um ovo?',
+    resposta: `O ovo cozido tem ${formataG100(OVO.g100)} g de proteína a cada 100 g, pela tabela oficial brasileira de alimentos. Um ovo de 50 g, sem a casca, tem perto de ${g(umOvo)} g; dois ovos, perto de ${g(doisOvos)} g. Frito ou mexido, a proteína do ovo é a mesma — o que muda é a gordura do preparo.`,
+  },
+  {
+    pergunta: 'Quantas gramas de proteína tem 100 g de frango?',
+    resposta: `O peito de frango sem pele, grelhado, tem ${formataG100(FRANGO.g100)} g de proteína a cada 100 g. Um filé de 120 g, já pronto, tem perto de ${g(fileFrango)} g. O número vale para o frango pronto: cru, o mesmo pedaço pesa mais, porque ainda tem a água que sai no preparo.`,
+  },
+  {
+    pergunta: 'Quantas gramas de proteína tem um bife?',
+    resposta: `Depende do corte e do tamanho. O patinho sem gordura, grelhado, tem ${formataG100(PATINHO.g100)} g de proteína a cada 100 g — um bife de 100 g, pronto, tem perto de ${g(bife)} g. A carne moída de acém cozida tem ${formataG100(alimento('carne-moida').g100)} g a cada 100 g.`,
+  },
+  {
+    pergunta: 'Quantas gramas de proteína tem um scoop de whey?',
+    resposta:
+      'Depende da marca e do tipo — concentrado, isolado ou blend —, e o tamanho do scoop também muda. O número certo está no rótulo: a tabela nutricional mostra quantos gramas de proteína vêm em cada porção. Confira também o tamanho da porção indicada, que nem sempre é um scoop cheio.',
+  },
+  {
+    pergunta: 'Como atingir 100 g de proteína por dia?',
+    resposta: `Somando proteína nas refeições, em vez de concentrar tudo no jantar. Um dia de exemplo, só com alimentos comuns — dois ovos e pão no café, filé de frango com arroz e feijão no almoço, iogurte com aveia no lanche e um bife no jantar — soma perto de ${g(TOTAL_DIA)} g. Não é um plano alimentar: quanto e o que comer é com o nutricionista.`,
+  },
+  {
+    pergunta: 'Feijão tem muita proteína?',
+    resposta: `O feijão carioca cozido tem ${formataG100(FEIJAO.g100)} g de proteína a cada 100 g — bem menos que a carne, porque tem muita água e carboidrato. Ele soma no dia, e a lentilha cozida tem um pouco mais, ${formataG100(LENTILHA.g100)} g. Quem não come carne chega à meta somando fontes ao longo do dia.`,
+  },
+];
+
+/* 52 caracteres. */
+const title = 'Quantas gramas de proteína tem cada alimento? Tabela';
+/* 153 caracteres. */
+const description =
+  'Quantas gramas de proteína têm o ovo, o frango, o bife, o feijão e outros alimentos: tabela oficial por 100 g e por porção, e como chegar a 100 g no dia.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Quantas gramas de proteína tem cada alimento?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Carnes, frango e peixes prontos ficam entre {formataG100(alimento('sardinha').g100)} e{' '}
+      {formataG100(PATINHO.g100)} g de proteína a cada 100 g. O ovo tem{' '}
+      {formataG100(OVO.g100)} g — perto de {g(umOvo)} g por unidade. O feijão,{' '}
+      {formataG100(FEIJAO.g100)} g, e o arroz, {formataG100(ARROZ.g100)} g.
+    </p>
+
+    <p class="lead">
+      Os números abaixo vêm da tabela oficial brasileira de composição de
+      alimentos, a TACO, e mostram o alimento por 100 g e numa porção de
+      verdade — porque ninguém come "100 g de ovo".
+    </p>
+
+    <div class="prose">
+      <h2>Tabela de proteína nos alimentos</h2>
+      <p>
+        A porção de cada linha é um exemplo, com o peso declarado. Se a sua é
+        maior ou menor, a proteína muda na mesma proporção — a balança de
+        cozinha resolve a dúvida.
+      </p>
+
+      <div class="tabela-rolavel">
+        <table class="tab-alimentos">
+          <caption>Gramas de proteína, alimento pronto como descrito</caption>
+          <thead>
+            <tr><th scope="col">Alimento</th><th scope="col">Em 100 g</th><th scope="col">Numa porção</th></tr>
+          </thead>
+          {GRUPOS.map((gr) => (
+            <tbody>
+              <tr class="grupo"><th scope="rowgroup" colspan="3">{gr.nome}</th></tr>
+              {ALIMENTOS.filter((a) => a.grupo === gr.id).map((a) => (
+                <tr>
+                  <th scope="row">{a.nome}</th>
+                  <td>{formataG100(a.g100)} g</td>
+                  <td><strong class="nowrap">≈ {g(proteinaPorcao(a))} g</strong> <span class="porcao">em {a.porcao.rotulo}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+
+      <h2>Quantas gramas de proteína tem um ovo</h2>
+      <p>
+        O ovo cozido tem {formataG100(OVO.g100)} g de proteína a cada 100 g. Um
+        ovo de 50 g, sem a casca, dá perto de {g(umOvo)} g; dois ovos, perto de{' '}
+        {g(doisOvos)} g. O tamanho do ovo muda a conta — ovo maior, mais
+        proteína.
+      </p>
+      <p>
+        Cozido, frito ou mexido, a proteína do ovo é a mesma: o preparo não
+        acrescenta proteína, acrescenta a gordura da frigideira. E a clara não
+        tem toda a proteína do ovo — a gema também tem a sua parte.
+      </p>
+
+      <h2>Frango, bife e carne moída: pesou cru ou pronto?</h2>
+      <p>
+        O peito de frango grelhado tem {formataG100(FRANGO.g100)} g de proteína a
+        cada 100 g, e o patinho grelhado, {formataG100(PATINHO.g100)} g. Um filé
+        de frango de 120 g, pronto, tem perto de {g(fileFrango)} g; um bife de patinho
+        de 100 g, perto de {g(bife)} g.
+      </p>
+      <p>
+        Aqui mora o erro mais comum de quem conta proteína. O mesmo patinho,{' '}
+        <strong>cru</strong>, tem {formataG100(PATINHO_CRU_G100)} g a cada 100 g
+        na mesma tabela. A carne não ganha proteína no fogo: ela perde água, e o
+        que sobra fica mais concentrado. Por isso 100 g de carne crua viram bem
+        menos de 100 g depois de grelhada — com praticamente a mesma proteína.
+        Se você pesa a carne crua, use o número da carne crua; se pesa pronta,
+        o da pronta. Misturar os dois engana a conta em mais de um terço.
+      </p>
+
+      <h2>Quantas gramas de proteína tem um scoop de whey</h2>
+      <p>
+        Não existe um número único. A proteína por dose muda com a marca, com o
+        tipo — concentrado, isolado ou blend — e com o tamanho do scoop que vem
+        na embalagem. O número certo está no rótulo, na linha de proteínas da
+        tabela nutricional, junto com o tamanho da porção a que ele se refere.
+        Para saber quando o whey vale a pena, e quando é dispensável, veja o guia
+        de <a href="/musculacao/whey-protein-o-que-e-como-tomar/">whey protein</a>.
+      </p>
+
+      <h2>Como chegar a 100 g de proteína por dia</h2>
+      <p>
+        Com a tabela na mão, a conta fica concreta. Este é um dia de exemplo,
+        montado só com os alimentos acima — não é dieta, é para mostrar como a
+        proteína se soma:
+      </p>
+
+      <div class="tabela-rolavel">
+        <table>
+          <caption>Um dia de exemplo</caption>
+          <thead>
+            <tr><th scope="col">Refeição</th><th scope="col">O que tem</th><th scope="col">Proteína</th></tr>
+          </thead>
+          <tbody>
+            {DIA_EXEMPLO.map((r) => (
+              <tr>
+                <th scope="row">{r.refeicao}</th>
+                <td>{r.itens.map((i) => i.rotulo).join(', ')}</td>
+                <td>≈ {g(totalRefeicao(r.itens))} g</td>
+              </tr>
+            ))}
+            <tr class="total">
+              <th scope="row">Total</th>
+              <td></td>
+              <td>≈ {g(TOTAL_DIA)} g</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Repare de onde vem o grosso: das duas carnes. O arroz e o feijão somam
+        pouco cada um, e o café da manhã com ovos já garante uma parte que
+        muita gente deixa para o jantar. Espalhar a proteína nas refeições é o
+        que torna a meta alcançável sem uma refeição enorme. Mas 100 g é só um
+        número redondo — a sua meta depende do seu peso e do seu objetivo.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-proteina"
+        texto="A tabela diz quanto cada alimento tem; falta saber quanto você precisa. A calculadora usa o seu peso e o seu objetivo — ganhar músculo, emagrecer, definição, 65+ ou Mounjaro — e mostra a meta do dia e por refeição, com a fonte de cada faixa."
+        acao="Calcular quanta proteína eu preciso"
+      />
+
+      <h2>Proteína vegetal: feijão, lentilha e aveia</h2>
+      <p>
+        Os alimentos vegetais têm menos proteína por 100 g porque, prontos, têm
+        muita água e carboidrato: o feijão carioca cozido tem{' '}
+        {formataG100(FEIJAO.g100)} g, a lentilha cozida,{' '}
+        {formataG100(LENTILHA.g100)} g, e a aveia em flocos, que é seca,{' '}
+        {formataG100(AVEIA.g100)} g. Eles somam no dia, e quem não come carne
+        chega à meta somando fontes ao longo das refeições — com volume maior de
+        comida. Para montar isso sem faltar nada, a conversa é com o
+        nutricionista.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Saber quanto cada alimento tem é o começo. A proteína sustenta o que o
+        treino estimula — sem treino de força, ela não constrói músculo. Montar
+        o treino que dá motivo para a proteína existir, e ajustá-lo ao longo do
+        tempo, é o trabalho de quem acompanha você. A dieta, com os números
+        certos para o seu caso, é com o nutricionista.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://www.nepa.unicamp.br/" target="_blank" rel="noopener noreferrer">NEPA-UNICAMP. Tabela Brasileira de Composição de Alimentos (TACO), 4ª edição revisada e ampliada. Campinas, 2011</a> — itens consultados pelo nome exato da tabela: {ALIMENTOS.map((a) => a.itemTaco).join('; ')}; e Carne, bovina, patinho, sem gordura, cru.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre proteína nos alimentos" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-rolavel {
+    overflow-x: auto;
+    margin: var(--sp-4) 0;
+  }
+  .tabela-rolavel table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-rolavel caption {
+    caption-side: top;
+    text-align: left;
+    color: var(--muted);
+    padding-bottom: 0.5rem;
+  }
+  .tabela-rolavel th,
+  .tabela-rolavel td {
+    text-align: left;
+    padding: 0.55rem 0.8rem 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+  }
+  .tabela-rolavel td:last-child {
+    white-space: nowrap;
+  }
+  .tabela-rolavel thead th {
+    color: var(--muted);
+    font-weight: 600;
+    background: transparent;
+  }
+  .tab-alimentos td:last-child {
+    white-space: normal;
+  }
+  .tab-alimentos td:nth-child(2) {
+    white-space: nowrap;
+  }
+  .nowrap {
+    white-space: nowrap;
+  }
+  .porcao {
+    color: var(--muted);
+  }
+  .tabela-rolavel .grupo th {
+    padding-top: 1rem;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .tabela-rolavel .total th,
+  .tabela-rolavel .total td {
+    font-weight: 700;
+    border-bottom: none;
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
