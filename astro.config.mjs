@@ -1,3 +1,5 @@
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { cidades } from './src/data/cidades';
@@ -18,6 +20,34 @@ const capaArtePorSlug = Object.fromEntries(
 // (Google ignora lastmod quando ele muda em tudo a cada deploy).
 const lastmodCidade = Object.fromEntries(cidades.map((c) => [c.slug, c.atualizadoEm]));
 const lastmodEstado = Object.fromEntries(estados.map((e) => [e.slug, e.atualizadoEm]));
+
+/**
+ * Artigos, guias e ferramentas: cada página declara a própria data de revisão
+ * (`const atualizadoEm = 'YYYY-MM-DD'`), a mesma do "Atualizado em" visível e
+ * do dateModified do schema. Até 30/09/2026 o sitemap só mandava lastmod de
+ * cidade e estado — as ~300 páginas de conteúdo iam sem data nenhuma, e o
+ * Google não tinha como saber pelo sitemap que um artigo foi revisado.
+ * Página sem a declaração literal fica sem lastmod (melhor nenhum que um
+ * inventado).
+ */
+function lastmodDasPaginas(dir = 'src/pages') {
+  const mapa = {};
+  const varre = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const caminho = join(d, e.name);
+      if (e.isDirectory()) varre(caminho);
+      else if (e.name.endsWith('.astro') && !e.name.includes('[')) {
+        const m = readFileSync(caminho, 'utf8').match(/const atualizadoEm = '(\d{4}-\d{2}-\d{2})'/);
+        if (!m) continue;
+        const rota = relative(dir, caminho).replace(/\\/g, '/').replace(/\.astro$/, '').replace(/(^|\/)index$/, '');
+        mapa[`/${rota}/`.replace(/\/+/g, '/')] = m[1];
+      }
+    }
+  };
+  varre(dir);
+  return mapa;
+}
+const lastmodPagina = lastmodDasPaginas();
 
 /** Converte 'YYYY-MM-DD' em Date estável (meio-dia UTC evita virada de fuso). */
 const dataRevisao = (iso) => new Date(`${iso}T12:00:00Z`);
@@ -79,6 +109,11 @@ export default defineConfig({
         const est = me && me[1];
         if (est && lastmodEstado[est]) {
           item.lastmod = dataRevisao(lastmodEstado[est]);
+        }
+        // Artigos, guias e ferramentas: a data declarada na própria página.
+        const rota = new URL(item.url).pathname;
+        if (!item.lastmod && lastmodPagina[rota]) {
+          item.lastmod = dataRevisao(lastmodPagina[rota]);
         }
         return item;
       },
