@@ -20,7 +20,7 @@ import { montinho } from '../../data/montinho';
 import { rotas } from '../../lib/links';
 
 const path = '/ferramentas/diagnostico-da-constancia';
-const atualizadoEm = '2026-08-28';
+const atualizadoEm = '2026-09-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -29,10 +29,22 @@ const crumbs = [
 ];
 
 /* 55 caracteres. */
-const title = 'Por Que Não Consigo Manter o Treino? Faça o Diagnóstico';
+/* 60 caracteres. "Como ter constância na academia" é a busca maior dos prints de 30/09. */
+const title = 'Não Consigo Manter o Treino: Como Ter Constância na Academia';
 /* 146 caracteres. */
+/*
+ * Do Google, 30/09 (prints do Renato): "não consigo manter a
+ * consistência", "como ter motivação para treinar sozinho", "o que tomar
+ * para ter ânimo para malhar", "por que não consigo ter disposição para
+ * fazer exercícios?", "nunca fiz academia como começar". O título já era
+ * a pergunta certa; entraram duas seções e o caminho do iniciante.
+ * Segunda leva de prints: "como ter constância na academia" (e "no
+ * treino", "consistência", "constância e disciplina"), "o que é constância
+ * na academia?", "qual o segredo da constância?" — foram para o título e
+ * para a seção de abertura.
+ */
 const description =
-  'Descubra o que atrapalha sua constância no treino — frequência, deslocamento, plano B ou clareza — e qual ajuste faz mais diferença agora. Grátis.';
+  'Descubra por que você não consegue manter o treino — frequência, deslocamento, plano B ou motivação — e qual ajuste traz consistência agora. Grátis.';
 
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
@@ -114,6 +126,21 @@ const schema = [
     <article class="prose dc-artigo">
       <p class="dc-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
+      <h2 id="o-que-e-constancia">O que é constância na academia — e qual o segredo</h2>
+      <p>
+        Constância é repetir o treino semana após semana, inclusive nas
+        semanas ruins. Não é treinar todo dia nem nunca faltar: é não deixar a
+        falta virar pausa. Quem treina três vezes por semana durante um ano tem
+        muito mais constância do que quem treina seis vezes por um mês e para.
+      </p>
+      <p>
+        O segredo, se existe um, é depender menos de motivação e disciplina e
+        mais de sistema: um número de treinos que cabe na sua pior semana, o
+        treino do dia decidido antes de chegar e uma versão curta para quando
+        tudo aperta. É isso que as seções abaixo detalham — e é o que o
+        diagnóstico mede na sua rotina.
+      </p>
+
       <h2 id="por-que-dificil">Por que é tão difícil manter uma rotina de treino</h2>
       <p>
         A explicação mais comum — falta de disciplina — costuma ser a menos
@@ -141,6 +168,38 @@ const schema = [
         reduzir o atrito para começar, ter o treino já decidido antes de chegar,
         encurtar o deslocamento e ter uma versão mínima da sessão para os dias
         ruins. São ajustes de sistema, não de caráter.
+      </p>
+
+      <h2 id="treinar-sozinho">Como ter motivação para treinar sozinho</h2>
+      <p>
+        Quem treina sozinho perde a coisa que mais segura gente na academia:
+        alguém esperando. Dá para repor parte disso. Marque o horário na agenda
+        como um compromisso com outra pessoa, e não como "se sobrar tempo".
+        Chegue com o treino do dia já decidido — decidir na hora é onde muita
+        sessão morre. E anote o que fez: carga, repetições, minutos. Ver o
+        número subir semana a semana motiva mais do que qualquer frase.
+      </p>
+      <p>
+        Se mesmo assim a falta de alguém esperando for o que derruba a sua
+        semana, isso é um dado, não um defeito: é o sinal de que companhia ou
+        acompanhamento resolvem mais do que força de vontade. O diagnóstico
+        aponta quando é esse o caso.
+      </p>
+
+      <h2 id="disposicao">Por que não tenho disposição para treinar?</h2>
+      <p>
+        Na maioria das vezes, a falta de disposição tem causa concreta: sono
+        curto, treino num horário em que você já chega esgotado, ou um plano
+        tão longo que só de pensar cansa. Mudar o horário ou encurtar a sessão
+        costuma resolver mais do que esperar o ânimo voltar.
+      </p>
+      <p>
+        E o que fazer — ou tomar — para ter ânimo para malhar? Nenhum suplemento compensa
+        noite mal dormida ou um plano que não cabe na semana. A cafeína é o que
+        tem mais evidência para o desempenho no treino — o guia de{' '}
+        <a href="/musculacao/cafeina-pre-treino/">cafeína e pré-treino</a> mostra
+        quanto e quando. Cansaço que não passa com descanso, porém, merece
+        consulta médica antes de qualquer pré-treino.
       </p>
 
       <h2 id="quantos-dias">Quantos dias preciso treinar para criar consistência</h2>
@@ -229,7 +288,10 @@ const schema = [
         <a href={rotas.ferramentaAuditoria}>meu treino faz sentido?</a>. E se
         faltar estrutura e acompanhamento, o
         <a href={rotas.ferramentaMatch}>diagnóstico do personal ideal</a> ajuda
-        a definir que tipo de suporte faz sentido.
+        a definir que tipo de suporte faz sentido. E se você ainda nem
+        começou — nunca fez academia e não sabe por onde ir —, o guia de{' '}
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a> é o primeiro passo.
       </p>
 
       <aside class="dc-disclosure">
