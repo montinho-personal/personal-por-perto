@@ -400,6 +400,7 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
       el('p', 'rt-nota', 'Os dias são uma sugestão de espaçamento. Se a sua semana pedir outros dias, o que importa é manter o intervalo entre as sessões.'),
     );
   }
+  semana.appendChild(botaoImprimir(r));
   raiz.appendChild(semana);
 
   /* --- Semana mínima viável: o bloco antiabandono --- */
@@ -502,6 +503,68 @@ function renderResultado(r: ReturnType<typeof rotinaTreinoEngine>): void {
   } catch {
     /* sem persistência: recurso opcional */
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * Imprimir / salvar em PDF
+ *
+ * "Ficha de treino pdf", "para imprimir", "grátis" e "modelo word"
+ * apareceram nas buscas do Google em 30/09. O resultado já era a ficha;
+ * faltava levar para o papel. A impressão monta uma cópia só com a ficha
+ * (estrutura, semana com coluna "Feito", semana mínima, prioridades,
+ * aviso) — sem botões, links nem a moldura do site — e o "salvar como
+ * PDF" do próprio navegador cuida do arquivo. Nada sai do aparelho.
+ * ------------------------------------------------------------------ */
+
+/** Blocos do resultado que entram no papel; o resto (links, rodapé, próximo passo) fica na tela. */
+const CLASSES_IMPRESSAS = ['rt-cenario', 'rt-res-cabecalho', 'rt-bloco', 'rt-aviso'];
+
+function botaoImprimir(r: ReturnType<typeof rotinaTreinoEngine>): HTMLElement {
+  const b = el('button', 'rt-imprimir', 'Imprimir ou salvar em PDF');
+  b.type = 'button';
+  b.addEventListener('click', () => {
+    ev('routine_tool_print', { recommended_split: r.analytics.recommended_split });
+    imprimir();
+  });
+  return b;
+}
+
+function imprimir(): void {
+  const resultado = app.querySelector('.rt-resultado');
+  if (!resultado) return;
+  document.getElementById('rt-print')?.remove();
+
+  const folha = el('div');
+  folha.id = 'rt-print';
+  folha.appendChild(el('p', 'rt-print-marca', 'Personal por Perto · Treino para Minha Rotina'));
+  folha.appendChild(el('h1', undefined, 'Minha rotina de treino'));
+
+  for (const bloco of Array.from(resultado.children)) {
+    if (!CLASSES_IMPRESSAS.some((c) => bloco.classList.contains(c))) continue;
+    const copia = bloco.cloneNode(true) as HTMLElement;
+    copia.querySelectorAll('button, .rt-imprimir').forEach((n) => n.remove());
+    // A semana vira ficha: uma coluna para marcar o treino feito.
+    copia.querySelectorAll('table.rt-semana tr').forEach((tr) => {
+      const descanso = tr.querySelector('.rt-descanso');
+      tr.appendChild(el('td', 'rt-print-feito', descanso ? '' : '☐'));
+    });
+    copia.querySelectorAll('ol.rt-sequencia li').forEach((li) => li.prepend('☐ '));
+    folha.appendChild(copia);
+  }
+
+  const data = new Date().toLocaleDateString('pt-BR');
+  folha.appendChild(
+    el('p', 'rt-print-rodape', `Montada em ${data} em personalporperto.com.br/ferramentas/treino-para-minha-rotina/`),
+  );
+
+  document.body.appendChild(folha);
+  document.body.classList.add('rt-imprimindo');
+  const limpar = () => {
+    document.body.classList.remove('rt-imprimindo');
+    folha.remove();
+  };
+  window.addEventListener('afterprint', limpar, { once: true });
+  window.print();
 }
 
 /**
