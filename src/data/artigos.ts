@@ -261,6 +261,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/ping-pong/', titulo: 'Quantas calorias gasta jogar ping pong?' },
   { categoria: 'Calorias', url: '/calorias/gasto-calorico-diario/', titulo: 'Quantas calorias eu gasto por dia?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/esteira-ou-bicicleta/', titulo: 'Esteira ou bicicleta para emagrecer: qual gasta mais?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/metodo-12-3-30/', titulo: 'Método 12-3-30 na esteira: funciona? Calorias e como fazer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },

@@ -585,6 +585,7 @@ já existe; precisa de recorte decidido antes, como os ⚠️.
 | Dormir pouco engorda? | `dormir-pouco-engorda` | |
 | Emagrecer sem academia | `emagrecer-sem-academia` | |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
+| Método 12-3-30 na esteira | `metodo-12-3-30` | ✅ 2026-09-30 · a pedido do Renato, pelas buscas |
 
 ### Nota de 30/09/2026 — um artigo que a busca da calculadora de proteína pediu
 

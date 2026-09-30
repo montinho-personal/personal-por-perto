@@ -34,7 +34,7 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 5 / 1 | 1 | ferramenta da jornada |
 | [calculadora-1rm](/ferramentas/calculadora-1rm/) | 1 / 1 | 0 | calculadora de treino; conversa com os artigos de musculação |
 | [calculadora-de-proteina](/ferramentas/calculadora-de-proteina/) | 2 / 0 | 0 | calculadora de treino; conversa com os artigos de musculação |
-| [caminhada](/calorias/caminhada/) | 0 / 5 | 6 | encaixa onde o texto já fala de passos e cardio |
+| [caminhada](/calorias/caminhada/) | 1 / 5 | 6 | encaixa onde o texto já fala de passos e cardio |
 | [corrida](/calorias/corrida/) | 0 / 5 | 1 | poucos artigos de corrida no acervo |
 | [bicicleta](/calorias/bicicleta/) | 1 / 3 | 0 | guias de pedalar e trabalho sentado |
 | [natacao](/calorias/natacao/) | 0 / 2 | 0 | só onde o texto já cita natação como aeróbico |

@@ -1,0 +1,439 @@
+---
+/**
+ * Método 12-3-30 na esteira — a conta honesta.
+ *
+ * POR QUE ESTE ARTIGO: apareceu em "As pessoas também perguntam" nos prints
+ * de "treino pra minha rotina" (30/09), e o Renato mandou em seguida os
+ * prints do próprio termo: "método 12-3-30 na esteira", "funciona",
+ * "calorias", "explicação", "caminhada", "esteira inclinada 12 3 30",
+ * "quanto é 12 de inclinação", "inclinação 3 equivale a que km",
+ * "protocolo 12 5 30", "12 4.8 30", "esteira inclinada queima mais
+ * calorias", "30 min de esteira perde quantas calorias" e as perguntas
+ * "quantos minutos de esteira para perder 1 kg?" e "o que acontece se eu
+ * fizer 30 minutos de esteira todo dia?".
+ *
+ * O PONTO DO ARTIGO: o número que circula ("440 a 480 kcal em 30 minutos
+ * para 70 kg") não bate com a equação de caminhada da ACSM, que dá perto
+ * de 315. E o estudo de 2025 que a imprensa leu como "queima mais gordura
+ * que correr" igualou o gasto total das sessões: o 12-3-30 levou MAIS
+ * tempo para gastar o mesmo, e gastou menos por minuto. Queimou uma
+ * fração maior de gordura, o que não é o mesmo que perder mais gordura.
+ *
+ * Nenhum número de gasto foi escrito à mão: tudo sai do motor da
+ * calculadora de caminhada (Compêndio 2024 + termo vertical da ACSM).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  FONTE_ACSM,
+  FONTE_COMPENDIO,
+  FONTE_HALL,
+  KCAL_POR_KG_GORDURA,
+  NOTA_SEGURANCA,
+  NOTA_SEM_PERDA_LOCALIZADA,
+  arredondaKcal,
+  kcalPorMinuto,
+  metCaminhada,
+} from '../../lib/calorias/caminhada';
+
+/* ── Os números saem do motor da calculadora de caminhada ── */
+const PESO = 70;
+const MIN = 30;
+const MPH_KMH = 1.609344;
+const VEL = Math.round(3 * MPH_KMH * 10) / 10; // 3 mph ≈ 4,8 km/h
+const INCL = 12;
+const sessao = (velocidade: number, inclinacao: number, peso = PESO, minutos = MIN) => {
+  const met = metCaminhada(velocidade, inclinacao);
+  return { met, kcal: arredondaKcal(kcalPorMinuto(met, peso) * minutos), liquida: kcalPorMinuto(met - 1, peso) * minutos };
+};
+const M12330 = sessao(VEL, INCL);
+const PLANO = sessao(VEL, 0);
+const INCL5 = sessao(VEL, 5);
+const INCL8 = sessao(VEL, 8);
+const P1250 = sessao(5, INCL);
+const PESOS = [60, 70, 80, 90, 100].map((p) => ({ p, kcal: sessao(VEL, INCL, p).kcal }));
+const LINHAS = [
+  { rotulo: `${n1(VEL)} km/h, plano`, s: PLANO },
+  { rotulo: `${n1(VEL)} km/h, 5% de inclinação`, s: INCL5 },
+  { rotulo: `${n1(VEL)} km/h, 8% de inclinação`, s: INCL8 },
+  { rotulo: `${n1(VEL)} km/h, 12% — o 12-3-30`, s: M12330 },
+  { rotulo: '5 km/h, 12% — o "12-5-30"', s: P1250 },
+];
+/* Quanto é 12% de inclinação: 12 m de subida a cada 100 m. */
+const GRAUS = (Math.atan(INCL / 100) * 180) / Math.PI;
+/* Pela regra antiga dos 7.700 kcal — com a ressalva de Hall. */
+const SESSOES_1KG = Math.round(KCAL_POR_KG_GORDURA / M12330.liquida);
+const SEMANA_7 = M12330.kcal * 7;
+/* O estudo de 2025 (Wong et al.). */
+const FAT_1233 = 41;
+const FAT_CORRIDA = 33;
+
+function n1(v: number) {
+  return v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+const kc = (v: number) => v.toLocaleString('pt-BR');
+
+const relacionados = [
+  {
+    url: '/emagrecimento/esteira-ou-bicicleta/',
+    titulo: 'Esteira ou bicicleta para emagrecer?',
+    descricao: 'Quanto cada máquina gasta — e por que a inclinação muda a conta da esteira.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
+    titulo: 'Musculação ou cardio para emagrecer?',
+    descricao: 'Onde a esteira entra no plano, e o que ela não substitui.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'Por que o gasto do treino só vale dentro da conta do dia inteiro.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/metodo-12-3-30';
+const atualizadoEm = '2026-09-30';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Método 12-3-30', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é o método 12-3-30?',
+    resposta: `É caminhar na esteira com ${INCL}% de inclinação, a 3 milhas por hora (cerca de ${n1(VEL)} km/h), por ${MIN} minutos seguidos. Foi criado pela influenciadora americana Lauren Giraldo e viralizou nas redes como um cardio puxado, mas sem o impacto da corrida.`,
+  },
+  {
+    pergunta: 'Quantas calorias o método 12-3-30 queima?',
+    resposta: `Para ${PESO} kg, cerca de ${kc(M12330.kcal)} kcal em ${MIN} minutos, pela equação de caminhada da ACSM somada ao Compêndio de Atividades Físicas. O número muda com o peso: perto de ${kc(PESOS[0].kcal)} kcal para 60 kg e ${kc(PESOS[3].kcal)} para 90 kg. Os "440 a 480 kcal" que circulam na internet ficam bem acima da conta.`,
+  },
+  {
+    pergunta: 'O método 12-3-30 funciona?',
+    resposta: `Como treino, sim: é uma caminhada exigente, de cerca de ${n1(M12330.met)} METs — intensidade vigorosa —, sem o impacto da corrida. Como atalho para emagrecer, não existe: um estudo de 2025 igualou o gasto total do 12-3-30 e de uma corrida no ritmo de cada um, e o 12-3-30 levou mais tempo para gastar o mesmo. Emagrecer depende do total das semanas somado à alimentação.`,
+  },
+  {
+    pergunta: 'Quanto é 12% de inclinação na esteira?',
+    resposta: `É subir 12 metros a cada 100 metros andados na horizontal — cerca de ${n1(GRAUS)} graus. É uma ladeira forte: a esteira mostra a inclinação em porcentagem, não em graus, e 12% fica perto do máximo de muitas esteiras de academia.`,
+  },
+  {
+    pergunta: 'No 12-3-30, o 3 é inclinação ou velocidade?',
+    resposta: `Velocidade. O 3 são 3 milhas por hora, a unidade das esteiras americanas — cerca de ${n1(VEL)} km/h. A inclinação é o 12. Por isso a versão brasileira também aparece como "12-4.8-30", e a variação "12-5-30" usa 5 km/h.`,
+  },
+  {
+    pergunta: 'Esteira inclinada queima mais calorias?',
+    resposta: `Bastante. Na mesma velocidade de ${n1(VEL)} km/h, ${MIN} minutos no plano gastam cerca de ${kc(PLANO.kcal)} kcal para ${PESO} kg; com ${INCL}% de inclinação, cerca de ${kc(M12330.kcal)}. A inclinação é o jeito de aumentar o gasto da caminhada sem precisar correr.`,
+  },
+  {
+    pergunta: 'Quantos minutos de esteira para perder 1 kg?',
+    resposta: `Pela regra antiga dos ${kc(KCAL_POR_KG_GORDURA)} kcal por quilo, seriam perto de ${SESSOES_1KG} sessões de 12-3-30 para ${PESO} kg, com a alimentação igual. Mas a regra superestima: conforme o peso cai, o corpo passa a gastar menos, e a perda real fica abaixo da conta. Minutos de esteira não fecham a conta sozinhos — a alimentação pesa mais.`,
+  },
+  {
+    pergunta: 'O que acontece se eu fizer 30 minutos de esteira todo dia?',
+    resposta: `Você soma 210 minutos de atividade por semana, dentro dos 150 a 300 minutos semanais que as recomendações de atividade física para adultos indicam. No 12-3-30, isso daria perto de ${kc(SEMANA_7)} kcal na semana para ${PESO} kg. Para quem está começando, todo dia na inclinação máxima é muito: vale alternar intensidades e reservar dias para o treino de força.`,
+  },
+];
+
+/* 58 caracteres. */
+const title = 'Método 12-3-30 na esteira: funciona? Calorias e como fazer';
+/* 147 caracteres. */
+const description =
+  'O método 12-3-30 na esteira: o que é, quantas calorias queima de verdade, o que o estudo de 2025 mostrou e como começar se a inclinação for demais.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Método 12-3-30 na esteira: funciona?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O 12-3-30 é caminhar na esteira com {INCL}% de inclinação, a 3 milhas
+      por hora — cerca de {n1(VEL)} km/h — por {MIN} minutos. Funciona como
+      treino: é uma subida puxada, sem o impacto da corrida. Para {PESO} kg,
+      gasta perto de <strong>{kc(M12330.kcal)} kcal</strong>, e não os 440 a
+      480 que circulam por aí.
+    </p>
+
+    <p class="lead">
+      E o estudo de 2025 que virou manchete dizendo que ele "queima mais
+      gordura que correr" diz outra coisa quando se lê o método.
+    </p>
+
+    <div class="prose">
+      <h2>O que é o método 12-3-30</h2>
+      <p>
+        Três números, um para cada ajuste da esteira: <strong>12</strong> é a
+        inclinação, em porcentagem; <strong>3</strong> é a velocidade, em
+        milhas por hora, a unidade das esteiras americanas — perto de{' '}
+        {n1(VEL)} km/h; e <strong>30</strong> são os minutos seguidos. O treino
+        foi criado pela influenciadora americana Lauren Giraldo e se espalhou
+        nas redes como um cardio de baixo impacto que cansa como corrida.
+      </p>
+      <p>
+        A confusão mais comum é com o 3: ele não é inclinação, é velocidade.
+        Nas esteiras brasileiras, em km/h, o mesmo treino aparece como
+        "12-4.8-30", e a variação "12-5-30" arredonda para 5 km/h.
+      </p>
+
+      <h2>Quantas calorias o 12-3-30 queima de verdade</h2>
+      <p>
+        A conta da caminhada inclinada é conhecida: a equação de caminhada da
+        ACSM soma ao custo de andar o custo de subir. Com ela, e com os valores
+        de referência do Compêndio de Atividades Físicas — os mesmos que a
+        calculadora de caminhada do portal usa —, {MIN} minutos para {PESO} kg
+        ficam assim:
+      </p>
+
+      <div class="tabela-rolavel">
+        <table>
+          <caption>{MIN} minutos de esteira, {PESO} kg</caption>
+          <thead>
+            <tr><th scope="col">Ajuste</th><th scope="col">METs</th><th scope="col">Gasto</th></tr>
+          </thead>
+          <tbody>
+            {LINHAS.map((l) => (
+              <tr>
+                <th scope="row">{l.rotulo}</th>
+                <td>{n1(l.s.met)}</td>
+                <td>≈ {kc(l.s.kcal)} kcal</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A inclinação faz quase todo o trabalho: na mesma velocidade, ir do
+        plano para {INCL}% leva o gasto de cerca de {kc(PLANO.kcal)} para{' '}
+        {kc(M12330.kcal)} kcal. E o peso muda a conta na mesma proporção — no
+        12-3-30, perto de {PESOS.map((x) => `${kc(x.kcal)} kcal para ${x.p} kg`).join(', ')}.
+      </p>
+      <p>
+        Os "440 a 480 kcal em 30 minutos" que aparecem em sites e vídeos ficam
+        bem acima dessa conta para o mesmo peso — e não encontramos a conta
+        por trás desse número.
+      </p>
+
+      <FerramentaInline
+        id="caminhada"
+        texto="A tabela é para 70 kg na inclinação e na velocidade do método. A calculadora de caminhada faz a mesma conta com o seu peso, a sua velocidade e a inclinação que você usa de verdade — inclusive se o 12% ainda for demais."
+        acao="Calcular o gasto da minha esteira"
+      />
+
+      <h2>O que o estudo de 2025 mostrou (e o que não mostrou)</h2>
+      <p>
+        Em 2025, pesquisadores da Universidade de Nevada, em Las Vegas,
+        colocaram 16 adultos para fazer o 12-3-30 e, em outro dia, uma corrida
+        na esteira no ritmo que cada um escolheu. O detalhe que muda tudo é o
+        desenho: as duas sessões foram <strong>igualadas pelo gasto
+        total</strong>. Cada pessoa gastou a mesma quantidade de energia nas
+        duas.
+      </p>
+      <p>
+        O resultado: para gastar o mesmo, o 12-3-30 levou mais tempo e gastou
+        menos por minuto do que correr. Em compensação, uma fração maior da
+        energia veio de gordura — perto de {FAT_1233}%, contra {FAT_CORRIDA}% na
+        corrida.
+      </p>
+      <p>
+        É daí que saiu a manchete "queima mais gordura que correr". Mas usar
+        uma fração maior de gordura <em>durante</em> o treino não é o mesmo que
+        perder mais gordura <em>no fim do mês</em>: o que decide isso é o
+        balanço do dia inteiro, semanas a fio. {NOTA_SEM_PERDA_LOCALIZADA} O
+        próprio estudo se apresenta como exploratório, com poucas pessoas.
+      </p>
+
+      <h2>Então, o 12-3-30 funciona?</h2>
+      <p>
+        Como treino, sim. Com cerca de {n1(M12330.met)} METs, é exercício de
+        intensidade vigorosa para a maioria das pessoas — o coração trabalha,
+        a perna trabalha, e sem o impacto da corrida. Para quem não gosta de
+        correr, ou não pode, é uma forma honesta de fazer um cardio puxado.
+      </p>
+      <p>
+        Como atalho, não. Ele não gasta mais do que correr no mesmo tempo, e
+        nenhum cardio compensa sozinho o que acontece no prato. O lugar dele é
+        o de qualquer cardio: somar gasto à semana, ao lado do treino de força
+        — que é o que segura o músculo enquanto o peso cai.
+      </p>
+
+      <h2>Como começar se 12% for demais</h2>
+      <p>
+        Para quem está começando, 30 minutos seguidos a {INCL}% costumam ser
+        pesados demais — e a saída mais comum, segurar no corrimão, tira parte
+        do peso das pernas e desfaz o próprio treino. Melhor começar mais
+        baixo e subir aos poucos:
+      </p>
+      <ul>
+        <li>
+          <strong>Semanas iniciais:</strong> {n1(VEL)} km/h com 5% de
+          inclinação — cerca de {kc(INCL5.kcal)} kcal em {MIN} minutos para{' '}
+          {PESO} kg. Se 30 minutos forem muito, comece com 15 ou 20.
+        </li>
+        <li>
+          <strong>Depois:</strong> suba a inclinação de 1 a 2 pontos por vez,
+          passando pelos 8% (perto de {kc(INCL8.kcal)} kcal), antes de mexer no
+          tempo.
+        </li>
+        <li>
+          <strong>Sem as mãos no corrimão.</strong> Se precisar segurar para
+          aguentar, a inclinação está alta demais para hoje.
+        </li>
+      </ul>
+      <p>{NOTA_SEGURANCA}</p>
+
+      <h2>30 minutos de esteira todo dia</h2>
+      <p>
+        Trinta minutos por dia somam 210 por semana — dentro dos 150 a 300
+        minutos semanais de atividade moderada que as recomendações para
+        adultos indicam para a saúde. No 12-3-30, seriam perto de{' '}
+        {kc(SEMANA_7)} kcal na semana para {PESO} kg. Todo dia na inclinação
+        máxima, porém, é muito para quem está começando: vale alternar dias
+        mais leves e mais puxados, e reservar espaço para o treino de força. A
+        comparação com a bicicleta está em{' '}
+        <a href="/emagrecimento/esteira-ou-bicicleta/">esteira ou bicicleta para emagrecer</a>.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        O 12-3-30 é um bom exemplo de treino que viraliza pela promessa e
+        funciona por outro motivo. Saber quando ele cabe na sua semana, com que
+        inclinação começar e como ele convive com a musculação é o trabalho de
+        quem acompanha você de perto.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/39917588/" target="_blank" rel="noopener noreferrer">Wong MWH, Davis DW, Perez OR, Weyers B, Green DM, Garcia AV, Navalta JW. An Exploratory Study Comparing the Metabolic Responses between the 12-3-30 Treadmill Workout and Self-Paced Treadmill Running. International Journal of Exercise Science, 2025</a>
+          — 16 adultos; sessões igualadas pelo gasto total. O 12-3-30 levou mais tempo, gastou menos por minuto e usou uma fração maior de gordura que a corrida.
+        </li>
+        <li>
+          <a href={FONTE_ACSM.url} target="_blank" rel="noopener noreferrer">{FONTE_ACSM.rotulo}</a> — {FONTE_ACSM.resumo}
+        </li>
+        <li>
+          <a href={FONTE_COMPENDIO.url} target="_blank" rel="noopener noreferrer">{FONTE_COMPENDIO.rotulo}</a> — {FONTE_COMPENDIO.resumo}
+        </li>
+        <li>
+          <a href={FONTE_HALL.url} target="_blank" rel="noopener noreferrer">{FONTE_HALL.rotulo}</a> — {FONTE_HALL.resumo}
+        </li>
+        <li>
+          <a href="https://www.who.int/publications/i/item/9789240015128" target="_blank" rel="noopener noreferrer">Organização Mundial da Saúde. WHO guidelines on physical activity and sedentary behaviour, 2020</a>
+          — para adultos, 150 a 300 minutos por semana de atividade aeróbica moderada, ou 75 a 150 de vigorosa, além de fortalecimento muscular em dois ou mais dias.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o método 12-3-30" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-rolavel {
+    overflow-x: auto;
+    margin: var(--sp-4) 0;
+  }
+  .tabela-rolavel table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-rolavel caption {
+    caption-side: top;
+    text-align: left;
+    color: var(--muted);
+    padding-bottom: 0.5rem;
+  }
+  .tabela-rolavel th,
+  .tabela-rolavel td {
+    text-align: left;
+    padding: 0.55rem 0.8rem 0.55rem 0;
+    border-bottom: 1px solid var(--line);
+    font-variant-numeric: tabular-nums;
+  }
+  .tabela-rolavel td:last-child {
+    white-space: nowrap;
+  }
+  .tabela-rolavel thead th {
+    color: var(--muted);
+    font-weight: 600;
+    background: transparent;
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
