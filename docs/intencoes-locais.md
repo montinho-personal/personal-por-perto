@@ -101,3 +101,42 @@ externo varia por rede e unidade, e não há fonte oficial conferida; "xbody"
 **Como medir:** as dez páginas mudaram juntas e são lidas como grupo, contra
 as outras cidades de SP. No próximo relatório: impressões, cliques e a
 posição das buscas "personal trainer + região" e "valor + região".
+
+## Cotia, Embu das Artes e Belo Horizonte — prints e aplicação em 30/09/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer cotia | "cotia granja viana", "academia acqualife personal trainer cotia" (+ fotos, avaliações), "personal em cotia"; relacionadas: granja viana, preço, online | valor médio · 3 vezes por semana · é vantajoso pagar · **qual plano do Gympass tem personal** | listagem com 5,0 (6) e "1ª aula grátis"; Instagram de personal local (5,1 mil seguidores); Site da Granja; cotiafacil.com.br (estúdio na Granja Viana II) |
+| personal trainer embu das artes | nenhuma sugestão própria | valor de 1 hora · é vantajoso pagar · diferença entre personal e educador físico · é permitido cobrar taxa | Superprof (11 profissionais, 5,0 (6)), Treinar.me |
+| personal trainer belo horizonte | "preço", "em bh preço", "mulher", "bh instagram", "smart fit", "bh pratique", "pampulha", "quanto custa um personal trainer na pratique", "particular", "quanto ganha um personal trainer em belo horizonte", duas marcas e um nome próprio; relacionadas: **caiçara bh**, **venda nova**, **contagem** | quanto custa em BH · 1 mês · vale a pena contratar · 3 vezes por semana | Superprof (419 profissionais, 5,0 (124)); Instagram de personal (39 mil seguidores); suasaulasparticulares; fórum com "80/100 por hora" |
+
+**Aplicado:**
+
+- **Cotia** — título e descrição com o valor por mês; pergunta "1 mês, 3 vezes
+  por semana"; e a página **passou a linkar a Granja Viana** (antes não
+  linkava, e o autocompletar junta as duas).
+- **Embu das Artes** — título e descrição com o valor por mês; perguntas "1
+  mês, 3 vezes por semana", "é permitido cobrar taxa" (versão academia) e
+  "diferença entre personal trainer e educador físico" (por função, sem
+  registro; texto próprio, diferente do de Itapevi).
+- **Belo Horizonte** — título passa a ter preço (era a única das 20 maiores
+  sem); perguntas "1 mês, 3 vezes por semana" e "como avaliar pelo
+  Instagram"; **Contagem** entra primeiro nas vizinhas (estava fora, e as
+  vizinhas eram Uberlândia, Rio, Vitória e Brasília).
+
+**Não aplicado, e por quê:**
+
+- **"Qual plano do Gympass tem personal"** — as fontes encontradas divergem e
+  falam dos planos dos EUA (sessões virtuais por app). Sem fonte oficial do
+  Brasil, não entra. Se o Renato conferir no app, vira resposta.
+- **Academia Acqualife (Cotia)** — uma fonte só (página de parceiro do
+  Wellhub, Rua Manaus, 148, Jardim dos Ipês). A regra das academias pede a
+  página oficial ou duas fontes; fica pendente.
+- **"Personal na Pratique / Smart Fit" (BH)** — a regra de personal externo
+  é de cada rede e unidade; sem fonte oficial conferida.
+- **"Personal mulher"** — mesmo motivo de Alphaville e Osasco.
+- **"Quanto ganha um personal trainer em BH"** — é busca de quem quer
+  trabalhar como personal, não contratar; outro público.
+- **Caiçara e Venda Nova** — sinal de demanda de bairro em BH sem página.
+  Candidatos para a próxima leva de bairros de BH, depois da leitura de
+  09/10.

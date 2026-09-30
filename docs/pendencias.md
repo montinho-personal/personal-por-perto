@@ -42,6 +42,9 @@ até 29/09/2026):
    | Itapevi | 5 | 0 | 9,4 |
    | Granja Viana | fora do export | — | — |
 
+   Cotia (33 impressões, 0 clique, posição 6,2) e Embu das Artes (fora do
+   export) entraram no mesmo dia, pelos prints de 30/09.
+
    Buscas diretas: "personal trainer em barueri" 18 impressões, posição
    22,7; "personal trainer alphaville" 12 impressões, 2 cliques, posição
    19,8; "personal trainer em osasco" 7 impressões, posição 34,7.
@@ -49,10 +52,15 @@ até 29/09/2026):
    certo se o CTR do grupo subir mais que o do controle — e, nas buscas
    de preço ("valor", "por mês" + região), se aparecerem consultas que hoje
    não aparecem.
-3. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
+3. **Belo Horizonte** — também mudou em 30/09 (título com preço, pergunta de
+   1 mês, Instagram, link para Contagem). Linha de base: 2.382
+   impressões, 6 cliques (0,3%), posição 10,1; "personal trainer em bh
+   preço" 45 impressões, 0 clique, posição 11,2. É a leitura mais limpa das
+   grandes: mudou só ela entre as 20 de mais impressão.
+4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
-4. **Bairros** — a leitura do piloto é antes, em 09/10
+5. **Bairros** — a leitura do piloto é antes, em 09/10
    (`docs/metadados-bairros.md`, seção 7); aqui só se confirma se a
    tendência se manteve.
 

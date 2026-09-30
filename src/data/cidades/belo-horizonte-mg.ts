@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Belo Horizonte combina clima ameno, uma das melhores estruturas de corrida do país e um mercado fitness completo. Com um personal trainer, fica mais fácil aproveitar a Pampulha, as academias da Savassi e os parques da cidade com método e segurança — e manter o ritmo o ano inteiro.',
 
+  /*
+   * Prints de 30/09: autocompletar com "preço", "em bh preço", "mulher",
+   * "bh instagram", "smart fit", "pratique" e "pampulha"; PAA com "quanto
+   * custa um personal trainer em BH?", "quanto custa 1 mês?", "vale a pena
+   * contratar?" e "3 vezes por semana?". Era a única das 20 cidades de mais
+   * impressão sem preço no título, e a de pior CTR (0,3%) no relatório de
+   * 30/09. Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Belo Horizonte?',
@@ -113,7 +124,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['uberlandia-mg', 'rio-de-janeiro-rj', 'vitoria-es', 'brasilia-df'],
+  // Contagem primeiro: aparece nas pesquisas relacionadas de "personal
+  // trainer belo horizonte" (prints de 30/09/2026) e é vizinha de fato.
+  vizinhas: ['contagem-mg', 'uberlandia-mg', 'rio-de-janeiro-rj', 'vitoria-es', 'brasilia-df'],
 
   fontes: [
     { nome: 'IBGE Cidades — Belo Horizonte', url: 'https://cidades.ibge.gov.br/brasil/mg/belo-horizonte/panorama' },
@@ -129,5 +142,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Belo Horizonte: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-09-30',
 };

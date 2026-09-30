@@ -92,7 +92,22 @@ export const cidade: Cidade = {
   conclusao:
     'Estância turística conhecida pela arte e pelo artesanato, Embu das Artes combina um centro histórico caminhável com o Parque Francisco Rizzo e um calendário ativo de corridas de rua. Para um personal trainer, a cidade oferece um mercado de bairro estável, demanda por treino ao ar livre e espaço para o atendimento personalizado em bairros residenciais tranquilos, a poucos minutos da capital.',
 
+  /*
+   * Prints de 30/09: autocompletar sem sugestões próprias; PAA com "qual o
+   * valor de 1 hora de personal trainer?", "é vantajoso pagar um personal?",
+   * "qual a diferença entre um personal trainer e um educador físico?" e "é
+   * permitido cobrar taxa de personal trainer?". Resultados: Superprof e
+   * Treinar.me. Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'academia' },
+
   faqsExtra: [
+    {
+      pergunta: 'Qual a diferença entre um personal trainer e um educador físico?',
+      resposta:
+        'Na prática, o personal trainer é um educador físico: a formação é a mesma. O que muda é o trabalho. Educador físico é a profissão, e ela aparece na academia — o professor que atende a sala inteira —, na escola e no clube; personal é quem, dentro dessa profissão, atende uma pessoa por vez, com plano próprio, acompanhamento de cada sessão e ajuste conforme a evolução. Por isso o preço é outro: a orientação na sala vem incluída na mensalidade da academia, e a do personal é paga à parte pela exclusividade.',
+    },
     {
       pergunta: 'Onde costuma acontecer o treino com personal em Embu das Artes?',
       resposta:
@@ -132,5 +147,5 @@ export const cidade: Cidade = {
     w: 901,
     h: 1600,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-09-30',
 };

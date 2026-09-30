@@ -95,6 +95,15 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial e de alto padrão na Grande SP, Cotia tem na Granja Viana um mercado premium e o Parque Teresa Maia. Um personal trainer encontra aqui forte demanda por treino personalizado e wellness, num clima ameno de planalto.',
 
+  /*
+   * Prints de 30/09: autocompletar com "cotia granja viana" e "personal em
+   * cotia"; PAA com "qual o valor médio de um personal trainer?", "quanto
+   * custa um personal trainer 3 vezes por semana?" e "é vantajoso pagar um
+   * personal?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
     {
       pergunta: 'O personal atende dentro dos condomínios da Granja Viana?',
@@ -113,7 +122,11 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['sao-paulo-sp', 'osasco-sp'],
+  // Granja Viana primeiro: o autocompletar de "personal trainer cotia" sugere
+  // "cotia granja viana", e as pesquisas relacionadas trazem "personal
+  // trainer granja viana" (prints de 30/09/2026). Até aqui a página de Cotia
+  // não linkava a da Granja.
+  vizinhas: ['granja-viana-sp', 'sao-paulo-sp', 'osasco-sp'],
 
   capaArte: {
     src: '/capas-cidade/cotia-sp.webp',
@@ -135,5 +148,5 @@ export const cidade: Cidade = {
     w: 739,
     h: 1600,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-09-30',
 };
