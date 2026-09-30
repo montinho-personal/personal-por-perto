@@ -160,3 +160,34 @@ Palhoça), não um dado.
 o CTR sair de zero com a posição parada, foi o snippet. Se a posição cair,
 o Google entendeu que a página ficou menos relevante para o resto. Nesse
 caso, os dois campos saem e o título volta ao gerado.
+
+## 5. Fluxo por prints — pedido do Renato em 30/09/2026
+
+O Renato pesquisa no Google e manda os prints (autocompletar, "as pessoas
+também perguntam", pesquisas relacionadas e a primeira página); cada página
+é atualizada com as intenções daquela cidade ou bairro — o mesmo método já
+usado nas ferramentas e na região presencial. Mudança por página, com
+`atualizadoEm` do dia, no ritmo em que os prints chegam.
+
+**Ordem**, pelo ganho de clique possível: impressões × (CTR típico da
+posição − CTR atual), com os dados de 01/06 a 29/09. É uma ordenação, não
+uma previsão — a posição média por página engana (`cidades-analise.md`,
+5.1), então a conta serve para decidir quem vem primeiro, não quanto vai
+render.
+
+| leva | páginas | termo a pesquisar |
+|---|---|---|
+| já com prints | Alphaville, Tamboré, Aldeia da Serra, Barueri, Santana de Parnaíba, Jandira, Carapicuíba, Granja Viana, Itapevi, Osasco | — (aplicar; faltam Cotia e Embu das Artes) |
+| 1 | Belo Horizonte, Brasília, Goiânia, Teresina, Florianópolis, João Pessoa | `personal trainer <cidade>` |
+| 2 | São Luís, São Paulo, Aracaju, Porto Alegre, Recife, Maceió | idem |
+| 3 | Juiz de Fora, Vitória, Manaus, Praia Grande, Joinville, Uberlândia, Natal, Niterói | idem |
+| bairros | Cidade Nova (BH), Jardins (SP), Copacabana, Ipanema, Campeche, Buritis, Moinhos de Vento | `personal trainer <bairro>` |
+
+Os 10 bairros do piloto (Tijuca, Barra da Tijuca, Savassi, Icaraí, Boa
+Viagem, Leblon, Moema, Brooklin, Asa Sul, Gleba Palhano) só entram depois
+da leitura de 09/10 — mexer neles antes estraga a medição.
+
+Nas capitais de CTR mais baixo (BH, São Paulo, Porto Alegre), a busca
+"personal trainer + cidade" está na página 3 e o print não muda isso
+sozinho. O ganho ali vem das perguntas de preço e das variações que o
+autocompletar mostrar — é o que vale olhar com atenção nesses prints.
