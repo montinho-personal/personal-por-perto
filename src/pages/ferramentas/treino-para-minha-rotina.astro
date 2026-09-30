@@ -10,6 +10,14 @@
  * O resultado NUNCA vira URL indexável: vive em memória e sessionStorage.
  * O contexto de cidade das páginas locais chega por fragmento (#c=slug),
  * que o Google não rastreia. Self-canonical, sem variação por parâmetro.
+ *
+ * DO GOOGLE, 30/09 (prints do Renato): "minha rotina de treino semanal",
+ * "na academia", "treinando em casa", "rotina de treino semanal academia",
+ * "tabela de treino academia segunda a sexta", e as perguntas "Como montar
+ * minha rotina de treino?" e "Qual a melhor rotina de treino para mim?".
+ * Entraram no título, na description e em duas seções. "Ficha de treino
+ * pdf / para imprimir" ficou como proposta de recurso (imprimir a semana),
+ * não como texto.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -22,7 +30,7 @@ import { montinho } from '../../data/montinho';
 import { rotas } from '../../lib/links';
 
 const path = '/ferramentas/treino-para-minha-rotina';
-const atualizadoEm = '2026-08-27';
+const atualizadoEm = '2026-09-30';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -30,11 +38,11 @@ const crumbs = [
   { nome: 'Treino para Minha Rotina', url: path },
 ];
 
-/* 52 caracteres. */
-const title = 'Treino para Minha Rotina: Monte Sua Semana de Treino';
+/* 57 caracteres. */
+const title = 'Treino para Minha Rotina: Monte Sua Rotina Semanal Grátis';
 /* 146 caracteres. */
 const description =
-  'Diga quantos dias e quanto tempo você tem e receba uma estrutura de treino que cabe na sua semana, com semana mínima viável para os dias corridos.';
+  'Diga quantos dias e quanto tempo você tem, na academia ou em casa, e receba sua rotina de treino semanal, com semana mínima para os dias corridos.';
 
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
@@ -118,7 +126,7 @@ const schema = [
     <article class="prose rt-artigo">
       <p class="rt-atualizado">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
-      <h2 id="como-montar">Como montar uma rotina de treino</h2>
+      <h2 id="como-montar">Como montar minha rotina de treino</h2>
       <p>
         A maior parte das rotinas de treino falha por um motivo simples: foram
         montadas para a semana que a pessoa gostaria de ter, não para a semana
@@ -180,6 +188,37 @@ const schema = [
         virar. Quem tem rotina instável rende mais seguindo uma sequência.
         Aprofundamos a comparação no guia sobre
         <a href="/musculacao/abc-ou-full-body/">ABC ou Full Body</a>.
+      </p>
+
+      <h2 id="casa-ou-academia">Rotina de treino semanal em casa ou na academia</h2>
+      <p>
+        O lugar muda o que cabe em cada sessão, não a lógica da semana. Na
+        academia completa, a estrutura sai direto. Em casa, a ferramenta
+        pergunta o que você tem — só o peso do corpo, elásticos, halteres,
+        banco, barra com anilhas — porque o plano precisa caber no que existe:
+        só com peso corporal, a progressão vem de mudar ângulo, alavanca e
+        tempo sob tensão; com barra e anilhas, a estrutura funciona
+        praticamente como na academia. Na academia do condomínio, o ajuste
+        maior costuma ser nos exercícios de perna com carga alta.
+      </p>
+      <p>
+        Se a sua semana é previsível, o resultado vem dia a dia, de segunda a
+        domingo, com as sessões espaçadas e os dias de descanso marcados — a
+        tabela da sua semana, pronta para seguir. Se ela muda muito, vem em
+        sequência (1º treino, 2º treino…), para você fazer o próximo quando
+        der, sem sentir que perdeu a semana porque a segunda-feira virou.
+      </p>
+
+      <h2 id="melhor-rotina">Qual a melhor rotina de treino para mim?</h2>
+      <p>
+        A que você cumpre numa semana comum. Uma divisão de cinco dias perde
+        para uma de três se você só consegue ir três vezes, e um treino longo
+        perde para um curto se a hora extra nunca aparece. Por isso a
+        ferramenta não pergunta só o objetivo: pergunta quantos dias você
+        sustenta, quanto tempo cabe, há quanto tempo você treina e o quanto a
+        sua semana muda — e entrega, junto da estrutura principal, a semana
+        mínima para quando tudo aperta e, quando faz sentido, uma segunda
+        opção plausível.
       </p>
 
       <h2 id="semana-que-nao-fecha">O que fazer quando não consigo cumprir a semana</h2>
