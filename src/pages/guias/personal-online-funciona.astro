@@ -14,6 +14,7 @@ import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from
 import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
+import { cidades } from '../../data/cidades';
 
 const relacionados = [
   {
@@ -49,7 +50,7 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-online-funciona';
-const atualizadoEm = '2026-08-26';
+const atualizadoEm = '2026-09-30';
 const capa = '/capas-conteudo/personal-online-funciona.webp';
 const capaAlt =
   'Mulher treinando em casa com halter durante uma videochamada com o personal trainer no tablet, ilustrando o guia sobre personal trainer online — Personal por Perto';
@@ -59,9 +60,24 @@ const crumbs = [
   { nome: 'Personal trainer online funciona?', url: path },
 ];
 
+/* Medianas das faixas das cidades publicadas — o mesmo dado do guia de preço. */
+const mediana = (a: number[]) => [...a].sort((x, y) => x - y)[Math.floor(a.length / 2)];
+const ON_MIN = mediana(cidades.map((c) => c.precos.onlineMin));
+const ON_MAX = mediana(cidades.map((c) => c.precos.onlineMax));
+const PR_MIN = mediana(cidades.map((c) => c.precos.mensalMin));
+const PR_MAX = mediana(cidades.map((c) => c.precos.mensalMax));
+
+/*
+ * DO GOOGLE, 30/09 (prints do Renato): "personal trainer online vale a
+ * pena", "consultoria online personal trainer vale a pena", "valores", "é
+ * bom", e as perguntas "quanto custa um personal online?" e "qual é o
+ * melhor personal online?". Este guia fica com "vale a pena"; a
+ * ferramenta /ferramentas/presencial-ou-online/ fica com "online ou
+ * presencial" — as duas se linkam em vez de disputar.
+ */
 const faqs = [
   {
-    pergunta: 'Personal trainer online funciona mesmo?',
+    pergunta: 'Personal trainer online vale a pena? Funciona mesmo?',
     resposta:
       'Pode funcionar bem, principalmente para quem tem alguma autonomia, disciplina para seguir o plano sem alguém do lado e uma rotina que dificulta horário fixo presencial. Estudos que compararam formatos de treino remoto e presencial mostram que o acompanhamento supervisionado (ao vivo ou com contato próximo) tende a levar vantagem sobre treino totalmente autônomo, mas que a adesão de longo prazo pode ser parecida entre online bem estruturado e presencial, especialmente em quem já está disposto a mudar de hábito.',
   },
@@ -81,15 +97,26 @@ const faqs = [
       'Em um acompanhamento online sério, sim: o profissional costuma enviar vídeos de execução, orientações por escrito e mantém um canal aberto para dúvidas entre os treinos, além de ajustar o plano com base no seu retorno.',
   },
   {
-    pergunta: 'Personal online costuma ser mais barato que presencial?',
+    pergunta: 'Quanto custa um personal trainer online?',
+    resposta: `Na cidade brasileira mediana, o acompanhamento online mensal fica entre R$ ${ON_MIN} e R$ ${ON_MAX}, contra R$ ${PR_MIN} a R$ ${PR_MAX} do pacote presencial — pela mediana das faixas das ${cidades.length} cidades publicadas pelo portal. Sai mais barato porque não há deslocamento e o profissional atende com um método estruturado. As faixas por cidade estão no guia de quanto custa um personal trainer.`,
+  },
+  {
+    pergunta: 'Consultoria online e personal online são a mesma coisa?',
     resposta:
-      'Em geral, sim, porque não há custo de deslocamento e o profissional consegue atender com um método mais estruturado. As faixas de preço por formato estão no guia de quanto custa um personal trainer.',
+      'Os dois nomes são usados para o mesmo serviço, e o nome importa menos do que o conteúdo. A diferença que pesa é outra: uma planilha pronta, entregue e esquecida, ou um acompanhamento de verdade — com avaliação no início, ajuste do plano conforme você responde e canal aberto para dúvidas de execução. Só o segundo costuma valer o que custa.',
+  },
+  {
+    pergunta: 'Qual é o melhor personal trainer online?',
+    resposta:
+      'Não existe um melhor para todo mundo: existe o que avalia você antes de passar o treino, entende o seu objetivo, ajusta o plano com base no seu retorno e responde as dúvidas entre os treinos. Os sinais de um serviço sério — e o que perguntar antes de contratar — estão nas seções deste guia.',
   },
 ];
 
-const title = 'Personal trainer online funciona? O que considerar antes de contratar';
+/* 60 caracteres. "Vale a pena" e "valores" vêm do autocompletar (30/09). */
+const title = 'Personal trainer online vale a pena? Como funciona e valores';
+/* 148 caracteres. */
 const description =
-  'Personal trainer online funciona para quem? Veja para que perfis o online é indicado, quando o presencial ainda leva vantagem, como reconhecer um serviço sério e o que perguntar antes de contratar.';
+  'Personal trainer online vale a pena? Para quem funciona, quando o presencial leva vantagem, quanto custa por mês e como reconhecer um serviço sério.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -104,7 +131,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Formato de treino</p>
-    <h1>Personal trainer online funciona? O que considerar antes de contratar</h1>
+    <h1>Personal trainer online vale a pena? O que considerar antes de contratar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
