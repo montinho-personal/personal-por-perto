@@ -94,7 +94,19 @@ export const cidade: Cidade = {
     onlineMax: 500,
   },
 
+  /*
+   * Prints de 30/09: autocompletar de "valor personal trainer por mês" abrindo com "barueri" e "barueri sp"; pesquisa relacionada "personal trainer preço"; PAA com "é melhor treinar 3 ou 5 vezes na semana?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'academia' },
+
   faqsExtra: [
+    {
+      pergunta: 'É melhor treinar 3 ou 5 vezes na semana?',
+      resposta:
+        'Depende menos do número e mais de quantas semanas seguidas você consegue manter. Para quem está começando ou tem a rotina cheia, três treinos de corpo inteiro por semana já dão estímulo para evoluir e deixam um dia de descanso entre um e outro. Cinco vezes funcionam para quem já treina há algum tempo e divide o corpo por grupos musculares — e aí a recuperação precisa caber no sono e na alimentação. O critério honesto é o que sobrevive a uma semana ruim: um plano de três dias cumprido rende mais do que um de cinco abandonado no segundo mês.',
+    },
     {
       pergunta: 'O personal atende tanto em Alphaville quanto nos bairros centrais de Barueri?',
       resposta:
@@ -132,5 +144,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-09-30',
 };

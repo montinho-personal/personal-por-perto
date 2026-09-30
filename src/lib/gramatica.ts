@@ -21,6 +21,11 @@ const ARTIGO_POR_SLUG: Record<string, ArtigoCidade> = {
   'guaruja-sp': 'o', //        no Guarujá
   'crato-ce': 'o', //          no Crato
   'rio-grande-rs': 'o', //     no Rio Grande
+  // Regiões (não municípios) da base presencial: o uso com artigo é o
+  // corrente na própria região — "no Tamboré", "na Granja Viana".
+  'tambore-sp': 'o', //        no Tamboré
+  'aldeia-da-serra-sp': 'a', // na Aldeia da Serra
+  'granja-viana-sp': 'a', //   na Granja Viana
 };
 
 const EM: Record<ArtigoCidade, string> = { o: 'no', a: 'na', os: 'nos', as: 'nas' };

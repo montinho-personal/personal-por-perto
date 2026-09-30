@@ -96,6 +96,7 @@ const SUFIXOS_TITULO = [
 /** O título da página de cidade. Nunca passa de TITLE_MAX. */
 export function tituloCidade(cidade: Cidade): string {
   if (cidade.metaTitulo) return cidade.metaTitulo;
+  if (cidade.metaFoco === 'preco') return tituloPreco(cidade);
   const base = `Personal Trainer ${emCidade(cidade)} (${cidade.uf})`;
   const cabem = SUFIXOS_TITULO.filter((s) => base.length + 2 + s.length <= TITLE_MAX);
   if (cabem.length === 0) return base;
@@ -126,6 +127,7 @@ function primeiro<T>(lista: T[] | undefined): T | undefined {
  */
 export function descricaoCidade(cidade: Cidade): string {
   if (cidade.metaDescricao) return cidade.metaDescricao;
+  if (cidade.metaFoco === 'preco') return descricaoPreco(cidade);
   const emN = emCidade(cidade);
   const preco = faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax);
   const parque = primeiro(cidade.parques)?.nome;
@@ -195,4 +197,66 @@ export function descricaoCidade(cidade: Cidade): string {
 
   // Último recurso, para cidade de nome muito longo: o mínimo que é verdade.
   return `Personal trainer ${emN}: a aula de ${preco}, onde treinar e como escolher.`;
+}
+
+/*
+ * Foco em preço (`metaFoco: 'preco'`).
+ *
+ * Nas cidades da base presencial, os prints do Google mostraram o preço em
+ * todo lugar: "valor por mês barueri", "osasco valor", "granja viana valor
+ * mensalidade", e o "as pessoas também perguntam" abrindo com "quanto custa
+ * 1 mês de personal trainer?". O gabarito anunciava a aula avulsa e o
+ * parque; estas versões anunciam o mês primeiro, que é o que a busca pede.
+ */
+/**
+ * Teto menor que o do gabarito: com cifrões e números, 150 caracteres já
+ * passam dos ~990 px que o Google mostra no computador (medido pela
+ * auditoria de metadados em 30/09/2026).
+ */
+const DESC_MAX_PRECO = 148;
+
+const SUFIXOS_PRECO = ['valor por mês e por aula', 'valor por mês e aula', 'valor por mês', 'valor'];
+
+function tituloPreco(cidade: Cidade): string {
+  const base = `Personal Trainer ${emCidade(cidade)} (${cidade.uf})`;
+  const s = SUFIXOS_PRECO.find((x) => base.length + 2 + x.length <= TITLE_MAX);
+  return s ? `${base}: ${s}` : base;
+}
+
+function descricaoPreco(cidade: Cidade): string {
+  const emN = emCidade(cidade);
+  const p = cidade.precos;
+  const mes = faixaBRL(p.mensalMin, p.mensalMax);
+  const aula = faixaBRL(p.avulsaMin, p.avulsaMax);
+  const busca = cidade.faqsBusca;
+  // O fecho anuncia a pergunta que só esta página responde, quando há uma.
+  const proprio =
+    busca?.taxaPersonal === 'condominio'
+      ? 'A taxa do condomínio'
+      : busca?.taxaPersonal === 'academia'
+        ? 'A taxa da academia'
+        : busca?.instagram
+          ? 'O que olhar no Instagram'
+          : undefined;
+  const fechos = [
+    proprio && `${proprio}, onde treinar e como escolher.`,
+    proprio && `${proprio} e como escolher.`,
+    'Onde treinar e como escolher.',
+    'Como escolher.',
+  ].filter((x): x is string => Boolean(x));
+  const aberturas = [
+    `Personal trainer ${emN}: de ${mes} por mês, com 2 ou 3 treinos por semana, ou de ${aula} a aula.`,
+    `Personal trainer ${emN}: de ${mes} por mês (2 a 3 treinos semanais) ou de ${aula} a aula.`,
+    `Personal trainer ${emN}: de ${mes} por mês ou de ${aula} a aula.`,
+  ];
+  // O fecho próprio da página vale mais que a frequência por extenso: cada
+  // fecho é tentado com as três aberturas antes de cair para o seguinte. Na
+  // primeira passada só vale a faixa preferida; na segunda, qualquer uma que
+  // não estoure.
+  const todas = fechos.flatMap((f) => aberturas.map((a) => `${a} ${f}`));
+  return (
+    todas.find((c) => c.length <= DESC_MAX_PRECO && c.length >= DESC_MIN) ??
+    todas.find((c) => c.length <= DESC_MAX_PRECO) ??
+    aberturas[2]
+  );
 }

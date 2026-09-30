@@ -128,6 +128,31 @@ export interface Cidade {
   metaDescricao?: string;
 
   /**
+   * Foco do title e da description gerados. `preco` põe o valor por mês e
+   * por aula na frente — é o que o autocompletar e o "as pessoas também
+   * perguntam" pedem nas cidades onde os prints mostraram isso
+   * (docs/intencoes-locais.md). Os números vêm de `precos`, nunca digitados.
+   */
+  metaFoco?: 'preco';
+
+  /**
+   * Perguntas frequentes geradas a partir dos prints de busca. O texto vem
+   * de `cityFaqs.ts` e os números de `precos`; aqui só se liga cada uma.
+   *
+   * - `precoMensal`: "quanto custa 1 mês… 3 vezes por semana", com a conta
+   *   da aula avulsa ao lado.
+   * - `taxaPersonal`: "é permitido cobrar taxa de personal?", na versão de
+   *   condomínio ou de academia.
+   * - `instagram`: como avaliar o profissional pelo perfil — onde o
+   *   autocompletar pediu Instagram.
+   */
+  faqsBusca?: {
+    precoMensal?: boolean;
+    taxaPersonal?: 'condominio' | 'academia';
+    instagram?: boolean;
+  };
+
+  /**
    * Arte de capa personalizada. Quando presente, substitui a capa gerada
    * padrão no hero, na imagem Open Graph e no sitemap de imagens. Usada em
    * cidades priorizadas que receberam criativo próprio com cartão-postal local.

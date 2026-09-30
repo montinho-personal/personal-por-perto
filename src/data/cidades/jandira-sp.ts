@@ -94,6 +94,13 @@ export const cidade: Cidade = {
   conclusao:
     'Jandira é um mercado de personal trainer popular e de proximidade: território pequeno, população grande e forte vocação de bairro. Quem trabalha bem o atendimento próximo ao cliente — em casa, em academias de bairro ou na academia ao ar livre da Praça do Figueirão — e aproveita a integração da Linha 8-Diamante para circular pela região oeste encontra demanda constante e pouca distância entre um atendimento e outro.',
 
+  /*
+   * Prints de 30/09: autocompletar com "jandira instagram"; PAA com preço por mês e por semana.
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Como costuma funcionar o atendimento de personal em Jandira?',
@@ -119,7 +126,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jandira', url: 'https://www.jandira.sp.gov.br/' },
     { nome: 'Atlas Brasil — Jandira (SP)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3525003' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-09-30',
   capaArte: {
     src: '/capas-cidade/jandira-sp.webp',
     w: 1200,

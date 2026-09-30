@@ -119,8 +119,7 @@ lida sozinha no próximo relatório.
 | data | o quê | páginas |
 |---|---|---|
 | 30/09 | Palhoça: título, descrição e FAQ de consultoria online ✅ | 1 |
-| 01/10 | Região presencial, leva 1: Barueri e Alphaville | 2 |
-| 02/10 | Região presencial, leva 2: as outras 9, se a leva 1 sair limpa | 9 |
+| 30/09 | Região presencial: as 10 com prints, a pedido do Renato ✅ (Cotia e Embu quando chegarem os prints) | 10 |
 | 06/10 | Preço + cidade: as 20 maiores, com o título de BH | 20 |
 | 09/10 | Leitura do piloto de bairros → decide a próxima leva de bairros | — |
 | próximo relatório | medir as quatro frentes (lista no README de relatórios) | — |

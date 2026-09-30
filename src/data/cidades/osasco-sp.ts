@@ -93,7 +93,19 @@ export const cidade: Cidade = {
     onlineMax: 400,
   },
 
+  /*
+   * Prints de 30/09: "osasco valor" é a primeira sugestão do autocompletar; aparecem Smart Fit e Bluefit (personal dentro de rede de academia); PAA com "qual é o melhor personal trainer online?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'academia' },
+
   faqsExtra: [
+    {
+      pergunta: 'Qual é o melhor personal trainer online?',
+      resposta:
+        'O que acompanha de verdade, e não o que só entrega uma planilha. Os sinais: avaliação antes do primeiro treino, orientação de execução para cada exercício, um canal para tirar dúvida durante a semana e revisão do plano com data marcada, a partir do que você registra. Desconfie de pacote igual para todo mundo e de promessa de resultado com prazo. O Montinho Personal, destacado pelo portal, atende online em todo o Brasil e presencialmente em Osasco e na região de Alphaville.',
+    },
     {
       pergunta: 'Onde costuma acontecer o treino com personal em Osasco?',
       resposta:
@@ -135,5 +147,5 @@ export const cidade: Cidade = {
     w: 1600,
     h: 1497,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-09-30',
 };

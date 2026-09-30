@@ -90,7 +90,19 @@ export const cidade: Cidade = {
   conclusao:
     'Na Aldeia da Serra, contratar um personal trainer é, na maioria das vezes, levar o treino para dentro de casa ou do condomínio — com a privacidade, a flexibilidade e a exigência de qualidade que o público da região espera. Entre ruas arborizadas, lagos e clima fresco de serra, e com a estrutura esportiva de Alphaville e Tamboré ao lado, o ambiente joga a favor de quem decide treinar com método e acompanhamento.',
 
+  /*
+   * Prints de 30/09: autocompletar "aldeia da serra barueri" (a pessoa não sabe em que cidade fica); PAA com preço por mês, "3 vezes por semana" e taxa de personal.
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+
   faqsExtra: [
+    {
+      pergunta: 'A Aldeia da Serra fica em Barueri ou em Santana de Parnaíba?',
+      resposta:
+        'Nos dois. A Aldeia da Serra é uma região residencial planejada dividida entre os municípios de Barueri e Santana de Parnaíba, vizinha de Alphaville e do Tamboré — por isso o endereço de um residencial pode ser de uma cidade e o do vizinho, da outra. Para o treino com personal, a divisão não muda nada: a Aldeia inteira está dentro da área de atendimento presencial a partir de Alphaville.',
+    },
     {
       pergunta: 'O personal atende dentro dos residenciais da Aldeia da Serra?',
       resposta:
@@ -130,5 +142,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-09-30',
 };

@@ -86,7 +86,19 @@ export const cidade: Cidade = {
   },
   conclusao:
     'Carapicuíba é uma cidade densa, popular e bem conectada por trem ao coração econômico da Grande SP, o que cria uma demanda constante por treino flexível e de bom custo-benefício. Para o personal trainer, a combinação de parques públicos equipados, bairros adensados e clientes que treinam cedo ou no fim do dia abre espaço para atendimento em domicílio, grupos ao ar livre e acompanhamento online.',
+  /*
+   * Prints de 30/09: Instagram em duas sugestões do autocompletar; PAA com "quais são 3 motivos para treinar com um personal trainer?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Quais são 3 motivos para treinar com um personal trainer?',
+      resposta:
+        'Técnica, plano e compromisso. Técnica, porque alguém corrige a execução enquanto ela acontece — é aí que se evita lesão e se aproveita o exercício de verdade. Plano, porque a carga sobe por critério, e não por palpite ou pelo que o vizinho de aparelho está fazendo. E compromisso, porque um horário marcado com outra pessoa é o que segura a rotina nas semanas ruins, que são as que decidem o resultado.',
+    },
     {
       pergunta: 'Dá para treinar com personal nos parques de Carapicuíba?',
       resposta:
@@ -118,7 +130,7 @@ export const cidade: Cidade = {
     w: 1200,
     h: 1200,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-09-30',
   capaArte: {
     src: '/capas-cidade/carapicuiba-sp.webp',
     w: 1200,

@@ -65,3 +65,39 @@ abaixo para as páginas de Barueri e Alphaville.
    demanda real (sugestão sem relógio ou impressão no Search Console).
 4. O site próprio do Montinho e o portal disputam a mesma busca local. Decidir
    qual página é a porta de cada termo antes de reforçar as duas.
+
+## Aplicado nas páginas — 30/09/2026
+
+Pedido do Renato: aplicar os prints nas dez páginas de uma vez (Cotia e Embu
+das Artes ficam para quando os prints chegarem).
+
+| página | title e description | perguntas novas |
+|---|---|---|
+| Alphaville | valor por mês e aula · taxa do condomínio | 1 mês 3x/semana · taxa (condomínio) |
+| Tamboré | valor por mês e por aula · taxa do condomínio | 1 mês 3x/semana · taxa · fica em Barueri ou Santana? · personal ajuda a emagrecer? |
+| Aldeia da Serra | valor por mês · taxa do condomínio | 1 mês 3x/semana · taxa · fica em Barueri ou Santana? |
+| Barueri | valor por mês e por aula · taxa da academia | 1 mês 3x/semana · taxa (academia) · 3 ou 5 vezes na semana? |
+| Santana de Parnaíba | valor por mês · Instagram | 1 mês 3x/semana · como avaliar pelo Instagram |
+| Jandira | valor por mês e por aula · Instagram | 1 mês 3x/semana · Instagram |
+| Carapicuíba | valor por mês e aula · Instagram | 1 mês 3x/semana · Instagram · 3 motivos para treinar com personal |
+| Granja Viana | valor por mês e aula · taxa do condomínio | 1 mês 3x/semana · taxa; a pergunta de preço que duplicava a padrão virou "por que custa mais que no resto de Cotia?" |
+| Itapevi | valor por mês e por aula | 1 mês 3x/semana · diferença entre personal e professor de educação física (por função, sem registro) |
+| Osasco | valor por mês e por aula · taxa da academia | 1 mês 3x/semana · taxa (academia) · melhor personal online |
+
+Os números de preço saem dos dados de cada cidade (`precos`) — nada foi
+digitado. A resposta da taxa foi checada em duas frentes: não há regra
+nacional em vigor, o DF tem lei própria, há projeto no Congresso para
+limitar o valor e a Justiça já decidiu dos dois lados.
+
+Regência corrigida junto: "no Tamboré", "na Aldeia da Serra", "na Granja
+Viana" (o portal escrevia "em").
+
+**Ficou de fora, de propósito:** "personal mulher" (Alphaville, Osasco) — o
+portal não tem profissionais a listar, e responder sem fato seria encher
+página; "personal na Smart Fit / Bluefit" (Osasco) — a regra de personal
+externo varia por rede e unidade, e não há fonte oficial conferida; "xbody"
+(Granja) — é marca de estúdio.
+
+**Como medir:** as dez páginas mudaram juntas e são lidas como grupo, contra
+as outras cidades de SP. No próximo relatório: impressões, cliques e a
+posição das buscas "personal trainer + região" e "valor + região".

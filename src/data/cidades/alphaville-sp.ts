@@ -100,6 +100,13 @@ export const cidade: Cidade = {
   conclusao:
     'Em Alphaville, contratar um personal trainer é, na maioria das vezes, levar o treino para dentro de casa ou do condomínio — com a privacidade, a flexibilidade e a exigência de qualidade que o público da região espera. Com parques bem estruturados, clubes completos e uma comunidade ativa de corrida e ciclismo, o ambiente joga a favor de quem decide treinar com método e acompanhamento. Alphaville é também a base presencial do Montinho Personal, o profissional destacado pelo portal, que atende a região em domicílio e em condomínios além do formato online.',
 
+  /*
+   * Prints de 30/09: autocompletar com "valor personal trainer por mês alphaville"; PAA com "quanto custa 1 mês", "3 vezes por semana" e "é permitido cobrar taxa de personal".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+
   faqsExtra: [
     {
       pergunta: 'O personal trainer atende dentro dos condomínios de Alphaville?',
@@ -139,5 +146,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Alphaville com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-09-30',
 };

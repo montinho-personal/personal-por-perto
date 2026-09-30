@@ -98,6 +98,13 @@ export const cidade: Cidade = {
   conclusao:
     'Treinar com um personal trainer em Santana de Parnaíba pode significar coisas bem diferentes conforme o bairro: do atendimento exclusivo dentro de um condomínio de Alphaville ao treino acessível em uma academia de bairro. Em todos os casos, o que faz diferença é escolher um profissional alinhado ao seu objetivo e à sua rotina — e, com a boa rede de parques e academias da cidade, faltam poucos motivos para não começar.',
 
+  /*
+   * Prints de 30/09: quatro das seis sugestões do autocompletar pedem Instagram ("instagram", "instagram oficial"); PAA com "qual o valor de 1 hora de personal trainer?" e "vale a pena pagar um personal?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal atende em Santana de Parnaíba?',
@@ -132,5 +139,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Santana de Parnaíba com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-09-30',
 };

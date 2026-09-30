@@ -85,7 +85,19 @@ export const cidade: Cidade = {
   },
   conclusao:
     'Itapevi é uma cidade densa, popular e bem conectada por trem ao coração econômico da Grande SP, o que cria demanda constante por treino flexível e de bom custo-benefício. Para o personal trainer, a combinação de parques públicos equipados, bairros adensados e clientes que treinam cedo ou no fim do dia abre espaço para atendimento em domicílio, grupos ao ar livre e acompanhamento online.',
+  /*
+   * Prints de 30/09: autocompletar sem preço nem Instagram; PAA com preço por mês e "qual a diferença entre personal trainer e professor de educação física?".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Qual a diferença entre personal trainer e professor de educação física?',
+      resposta:
+        'A formação é a mesma — os dois são profissionais de educação física —; o que muda é a função. O professor da academia atende a sala inteira: monta a ficha, corrige quem pede ajuda e circula entre muitos alunos ao mesmo tempo. O personal trabalha com uma pessoa por vez: avalia, planeja a progressão, acompanha cada série e ajusta o treino à rotina e às limitações daquele aluno. Dá para combinar os dois: o professor da sala no dia a dia e o personal para montar e revisar o plano.',
+    },
     {
       pergunta: 'Onde dá para treinar com personal em Itapevi sem pagar academia?',
       resposta:
@@ -116,5 +128,5 @@ export const cidade: Cidade = {
     w: 1270,
     h: 1600,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-09-30',
 };

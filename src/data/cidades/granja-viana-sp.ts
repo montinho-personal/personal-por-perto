@@ -116,6 +116,13 @@ export const cidade: Cidade = {
   conclusao:
     'Na Granja Viana, contratar um personal trainer é quase sempre levar o treino para dentro de casa ou do condomínio — com a privacidade e a flexibilidade de agenda que o público da região espera, e sem depender do trânsito da Raposo. A estrutura ajuda: parque com academia ao ar livre, ruas internas seguras para corrida, redes no eixo da rodovia e residenciais com academia própria. A região está dentro do raio de atendimento presencial do Montinho Personal, com base em Alphaville, que também atende no formato online.',
 
+  /*
+   * Prints de 30/09: primeira região em que o preço aparece no autocompletar ("valor", "valor mensalidade"); PAA com preço por mês e taxa de personal.
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+
   faqsExtra: [
     {
       pergunta: 'A Granja Viana fica em Cotia ou em Carapicuíba?',
@@ -128,9 +135,9 @@ export const cidade: Cidade = {
         'Sim, e esse é o formato mais comum da região. O atendimento acontece na academia do próprio residencial, na área de lazer ou dentro de casa. Como a Granja Viana é uma região de condomínios fechados e deslocamento por carro, treinar sem sair de casa costuma ser o que mais economiza tempo — e é o que sustenta a rotina no longo prazo. Vale confirmar com antecedência as regras do condomínio para entrada de profissional externo, que variam bastante de um residencial para outro.',
     },
     {
-      pergunta: 'Quanto custa um personal trainer na Granja Viana?',
+      pergunta: 'Por que o personal na Granja Viana custa mais que no resto de Cotia?',
       resposta:
-        'A faixa da região fica entre R$ 100 e R$ 220 pela aula avulsa e entre R$ 500 e R$ 1.300 pelo pacote mensal com 2 a 3 sessões por semana — acima da média de Cotia como um todo, porque o atendimento em domicílio e em condomínio, dominante aqui, embute o deslocamento do profissional. O acompanhamento online fica entre R$ 200 e R$ 500 mensais. São faixas de referência editorial, não tabela: o valor final depende de frequência, duração e local.',
+        'Porque o formato dominante é outro. A faixa da região fica entre R$ 100 e R$ 220 pela aula avulsa e entre R$ 500 e R$ 1.300 pelo pacote mensal com 2 a 3 sessões por semana — acima da média de Cotia como um todo, porque o atendimento em domicílio e em condomínio, dominante aqui, embute o deslocamento do profissional. O acompanhamento online fica entre R$ 200 e R$ 500 mensais. São faixas de referência editorial, não tabela: o valor final depende de frequência, duração e local.',
     },
     {
       pergunta: 'Dá para treinar ao ar livre na Granja Viana?',
@@ -151,5 +158,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Cotia', url: 'https://cidades.ibge.gov.br/brasil/sp/cotia/panorama' },
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-08-29',
+  atualizadoEm: '2026-09-30',
 };
