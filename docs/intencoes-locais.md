@@ -16,6 +16,7 @@ próprio Renato e não contam como demanda.
 | personal trainer alphaville | "alphaville sp", "mulher alphaville", "ironberg alphaville" (academia), "personal gym alphaville", "personal alphaville", nome de uma concorrente | "mulher" = procura por personal do sexo feminino |
 | personal trainer tamboré | "tamboré alphaville", "tamboré barueri", "tamboré 10" | o **site próprio do Montinho** já aparece ("Personal Trainer no Tamboré \| Montinho Personal Trainer") |
 | personal trainer aldeia da serra | "aldeia da serra barueri" | as outras sugestões eram de outros lugares (São Pedro da Aldeia, Serra Talhada) |
+| personal trainer barueri | "barueri aldeia da serra", "personal barueri", "personal trainer tamboré" | "barueri sp" veio com relógio. O **site do Montinho** aparece com a página de Alphaville ("Personal Trainer Alphaville \| Montinho"). Pesquisas relacionadas: alphaville, osasco, "personal trainer preço" |
 
 **"As pessoas também perguntam"** (repetiu em Tamboré e Aldeia da Serra):
 - Quanto custa 1 mês de personal trainer?
@@ -23,9 +24,17 @@ próprio Renato e não contam como demanda.
 - É vantajoso pagar um personal trainer?
 - É permitido cobrar taxa de personal trainer? (a taxa que academia ou condomínio cobra do personal)
 - Um personal trainer pode me ajudar a emagrecer?
+- É melhor treinar 3 ou 5 vezes na semana? (Barueri)
 
 **Concorrentes vistos:** Superprof (listagem de Barueri), cronoshare.com.br
-("Personal Trainer em Barueri"), Família Kaizen.
+("Personal Trainer em Barueri"), Família Kaizen, iservices.digital
+("Personal Trainer em Barueri SP"), Treinar.me ("Personal Trainers em
+Barueri - Centro"). Quase todos são **diretórios de profissionais** — o
+mesmo formato do portal.
+
+**Os resultados são personalizados pela localização:** os prints foram
+feitos em Alphaville Industrial (Barueri), o que ajuda o site do Montinho
+a aparecer. Quem busca de outra cidade da região pode ver outra ordem.
 
 ## Leitura provisória (a fechar quando os prints de todas as cidades chegarem)
 
