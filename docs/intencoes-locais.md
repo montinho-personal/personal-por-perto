@@ -22,6 +22,7 @@ próprio Renato e não contam como demanda.
 | personal trainer carapicuíba | "instagram" (duas variações), "personal carapicuíba" | Instagram pela terceira cidade seguida. Resultado com **nota 5,0 (6 avaliações)** e "1ª aula grátis" no trecho; perfil de Instagram de estúdio (@studio.trfit, "aceitamos TotalPass") |
 | personal trainer granja viana | "cotia granja viana", "**valor**", "**valor mensalidade**", "personal granja viana", "xbody granja viana" | **Primeira região em que o PREÇO aparece no autocompletar** — e sem Instagram. "Xbody" é o treino com eletroestimulação (estúdios de marca). Wellhub lista estúdio de treino personalizado da Granja; perfil de Instagram de personal com endereço na Rua José Félix de Oliveira |
 | personal trainer itapevi | "itapevi sp", "personal itapevi" | sem Instagram nem preço no autocompletar. Concorrente: pedegas.com ("personal trainer 24 horas em Itapevi"), diretório gerado em massa |
+| personal trainer osasco | "**osasco valor**" (1ª sugestão), "**mulher** osasco", "**bluefit** osasco", "**smart fit** osasco", "personal osasco" | Preço de novo, e em primeiro. **Personal dentro de rede de academia** (Smart Fit, Bluefit) aparece pela primeira vez. Pesquisas relacionadas: "valor personal trainer smart fit", "perto de mim", "online", "preço", "butantã sp". Superprof mostra **preço no resultado** ("R$ 130/h; 1 aula gratuita") com **5,0 (19 avaliações)**; Studio AMPMAX (Centro); FitLocal |
 
 **"As pessoas também perguntam"** (repetiu em Tamboré e Aldeia da Serra):
 - Quanto custa 1 mês de personal trainer?
@@ -34,6 +35,7 @@ próprio Renato e não contam como demanda.
 - Vale a pena pagar um personal trainer? (Santana de Parnaíba — variação de "é vantajoso")
 - Quais são 3 motivos para treinar com um personal trainer? (Carapicuíba)
 - Qual a diferença entre personal trainer e professor de educação física? (Itapevi) — **cuidado:** a regra do portal proíbe citar o conselho da profissão; se virar resposta, fala de função e rotina, nunca de registro
+- Qual é o melhor personal trainer online? (Osasco)
 
 **Concorrentes vistos:** Superprof (listagem de Barueri), cronoshare.com.br
 ("Personal Trainer em Barueri"), Família Kaizen, iservices.digital
