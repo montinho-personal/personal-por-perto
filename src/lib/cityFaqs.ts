@@ -1,6 +1,7 @@
 import type { Cidade, FAQ } from './types';
 import { faixaBRL } from './slug';
 import { emCidade, emCidadeCap, deCidade } from './gramatica';
+import { getCidade } from '../data/cidades';
 
 /**
  * Gera FAQs específicas da cidade no estilo GEO (resposta direta na primeira
@@ -112,6 +113,27 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
       resposta:
         'Não existe hoje uma regra nacional. Cada academia e cada condomínio define se aceita personal de fora e se cobra taxa dele; alguns lugares têm lei própria — o Distrito Federal, por exemplo —, há projeto no Congresso para limitar o valor, e a Justiça já decidiu dos dois jeitos. ' +
         onde,
+    });
+  }
+
+  if (cfg.precoRegiao) {
+    const cidades = cfg.precoRegiao.slugs
+      .map((s) => getCidade(s))
+      .filter((c): c is Cidade => Boolean(c));
+    // Nunca inventa região: slug que não existe quebra o build.
+    if (cidades.length !== cfg.precoRegiao.slugs.length) {
+      throw new Error(`faqsBusca.precoRegiao de ${cidade.slug}: slug desconhecido`);
+    }
+    const aulas = cidades.map((c) => `de ${faixaBRL(c.precos.avulsaMin, c.precos.avulsaMax)} ${emCidade(c)}`);
+    const lista = aulas.length > 1 ? `${aulas.slice(0, -1).join(', ')} e ${aulas[aulas.length - 1]}` : aulas[0];
+    const maisCara = cidades.reduce((a, b) => (b.precos.mensalMax > a.precos.mensalMax ? b : a));
+    const maisBarata = cidades.reduce((a, b) => (b.precos.mensalMin < a.precos.mensalMin ? b : a));
+    resto.push({
+      pergunta: cfg.precoRegiao.pergunta,
+      resposta:
+        `Depende bastante da região. A aula avulsa fica ${lista}. ` +
+        `No pacote mensal com 2 ou 3 sessões por semana, as pontas são ${maisBarata.nome}, de ${faixaBRL(maisBarata.precos.mensalMin, maisBarata.precos.mensalMax)}, e ${maisCara.nome}, de ${faixaBRL(maisCara.precos.mensalMin, maisCara.precos.mensalMax)}. ` +
+        'São valores de mercado para referência; cada região tem página própria no portal, com onde treinar e como escolher.',
     });
   }
 

@@ -95,6 +95,23 @@ export const cidade: Cidade = {
   conclusao:
     'Brasília reúne tudo o que um bom treino pede: clima favorável, parques de sobra e um público que leva a saúde a sério. Com um personal trainer alinhado ao seu objetivo, fica fácil aproveitar a infraestrutura da capital — do Parque da Cidade ao Eixão de domingo — e manter a constância ao longo do ano.',
 
+  /*
+   * Prints de 30/09: autocompletar com "df", "preço", "instagram", "asa
+   * norte", "sudoeste", "asa sul", "mulher", "guará", "águas claras",
+   * "vicente pires" e "riacho fundo 1"; PAA com "quanto custa um personal
+   * trainer no DF?", "1 mês", "3 vezes por semana" e "é vantajoso pagar".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: {
+    precoMensal: true,
+    instagram: true,
+    precoRegiao: {
+      pergunta: 'Quanto custa um personal trainer no DF?',
+      slugs: ['brasilia-df', 'aguas-claras-df', 'taguatinga-df', 'ceilandia-df'],
+    },
+  },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Brasília?',
@@ -113,7 +130,11 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['goiania-go', 'palmas-to', 'belo-horizonte-mg'],
+  // As regiões do DF com página vêm primeiro: "personal trainer aguas
+  // claras" está no autocompletar, nas pesquisas relacionadas e no Search
+  // Console (24 + 15 impressões até 29/09), e a página de Brasília não a
+  // linkava — nem Ceilândia.
+  vizinhas: ['aguas-claras-df', 'taguatinga-df', 'ceilandia-df', 'goiania-go', 'palmas-to', 'belo-horizonte-mg'],
 
   fontes: [
     { nome: 'IBGE Cidades — Brasília/DF', url: 'https://cidades.ibge.gov.br/brasil/df/brasilia/panorama' },
@@ -129,5 +150,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Brasília: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-09-30',
 };

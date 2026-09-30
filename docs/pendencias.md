@@ -57,6 +57,12 @@ até 29/09/2026):
    impressões, 6 cliques (0,3%), posição 10,1; "personal trainer em bh
    preço" 45 impressões, 0 clique, posição 11,2. É a leitura mais limpa das
    grandes: mudou só ela entre as 20 de mais impressão.
+   **Brasília** mudou no mesmo dia (título com preço, perguntas de 1 mês,
+   Instagram e "quanto custa no DF", links para Águas Claras e Ceilândia).
+   Linha de base: 1.304 impressões, 14 cliques, posição 9,9; "personal
+   trainer brasília preço" 19 impressões, posição 18,0; "valor personal
+   trainer brasilia" 10 impressões, posição 8,1; "personal trainer aguas
+   claras" 24 impressões na página de Águas Claras, posição 9,2.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

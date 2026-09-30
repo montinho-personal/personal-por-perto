@@ -140,3 +140,31 @@ posição das buscas "personal trainer + região" e "valor + região".
 - **Caiçara e Venda Nova** — sinal de demanda de bairro em BH sem página.
   Candidatos para a próxima leva de bairros de BH, depois da leitura de
   09/10.
+
+## Brasília — prints e aplicação em 30/09/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer brasilia | "df", "preço", "instagram", "asa norte", "sudoeste", "asa sul", "mulher", "guará", "águas claras", "vicente pires", "riacho fundo 1" | quanto custa no DF · 1 mês · 3 vezes por semana · é vantajoso pagar | resumo de IA do Google: "R$ 50 a R$ 150 por hora/aula" (Superprof); Cronoshare: "R$ 50 a R$ 120 a hora/aula"; perfis de Instagram |
+
+**Aplicado:** título e descrição com valor por mês; perguntas "1 mês, 3
+vezes por semana", "como avaliar pelo Instagram" e **"Quanto custa um
+personal trainer no DF?"** — esta nova, gerada com as faixas das quatro
+páginas do DF que o portal tem (Brasília, Águas Claras, Taguatinga,
+Ceilândia), sem número digitado. **Águas Claras e Ceilândia passaram a ser
+linkadas** pela página de Brasília (antes só Taguatinga era).
+
+**Não aplicado:** "mulher" (mesmo motivo das outras cidades). A pergunta de
+taxa não entrou — não estava no PAA.
+
+**Para decidir — o preço de Brasília está acima do que o Google mostra.** O
+portal diz R$ 90 a R$ 220 a aula; o resumo de IA do Google (citando
+Superprof) diz R$ 50 a R$ 150, e a Cronoshare, R$ 50 a R$ 120. Marketplace
+tende a puxar para baixo (profissionais começando, primeira aula grátis), e
+a página de Brasília fala do Plano Piloto, a região mais cara — então a
+diferença pode ser legítima. Mas quem lê "R$ 90 a R$ 220" logo abaixo de
+"R$ 50 a R$ 150" do Google estranha. Não mexi no número sem fonte; fica
+para o Renato decidir.
+
+**Bairros candidatos no DF:** Asa Norte (já estava no plano), Guará,
+Vicente Pires, Riacho Fundo. Sudoeste e Asa Sul já têm página.
