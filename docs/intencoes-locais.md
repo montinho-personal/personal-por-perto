@@ -17,6 +17,7 @@ próprio Renato e não contam como demanda.
 | personal trainer tamboré | "tamboré alphaville", "tamboré barueri", "tamboré 10" | o **site próprio do Montinho** já aparece ("Personal Trainer no Tamboré \| Montinho Personal Trainer") |
 | personal trainer aldeia da serra | "aldeia da serra barueri" | as outras sugestões eram de outros lugares (São Pedro da Aldeia, Serra Talhada) |
 | personal trainer barueri | "barueri aldeia da serra", "personal barueri", "personal trainer tamboré" | "barueri sp" veio com relógio. O **site do Montinho** aparece com a página de Alphaville ("Personal Trainer Alphaville \| Montinho"). Pesquisas relacionadas: alphaville, osasco, "personal trainer preço" |
+| personal trainer santana de parnaíba | "instagram", "instagram oficial", "personal santana de parnaíba", "personal trainer santana sp" | **quatro das seis sugestões pedem Instagram**: a pessoa quer ver o perfil do profissional (resultado, antes e depois) antes de chamar. "Santana sp" é ambíguo com o bairro Santana, na Zona Norte de São Paulo |
 
 **"As pessoas também perguntam"** (repetiu em Tamboré e Aldeia da Serra):
 - Quanto custa 1 mês de personal trainer?
@@ -25,11 +26,14 @@ próprio Renato e não contam como demanda.
 - É permitido cobrar taxa de personal trainer? (a taxa que academia ou condomínio cobra do personal)
 - Um personal trainer pode me ajudar a emagrecer?
 - É melhor treinar 3 ou 5 vezes na semana? (Barueri)
+- Qual o valor de 1 hora de personal trainer? (Santana de Parnaíba)
+- Vale a pena pagar um personal trainer? (Santana de Parnaíba — variação de "é vantajoso")
 
 **Concorrentes vistos:** Superprof (listagem de Barueri), cronoshare.com.br
 ("Personal Trainer em Barueri"), Família Kaizen, iservices.digital
 ("Personal Trainer em Barueri SP"), Treinar.me ("Personal Trainers em
-Barueri - Centro"). Quase todos são **diretórios de profissionais** — o
+Barueri - Centro"), suasaulasparticulares.com.br ("Personal Trainers em
+Santana de Parnaíba"). Quase todos são **diretórios de profissionais** — o
 mesmo formato do portal.
 
 **Os resultados são personalizados pela localização:** os prints foram
