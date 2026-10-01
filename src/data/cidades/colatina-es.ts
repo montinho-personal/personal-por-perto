@@ -52,6 +52,11 @@ export const cidade: Cidade = {
     'A cultura esportiva de Colatina gira em torno da orla do Rio Doce e da rotina de academias e boxes, com caminhada e corrida ganhando espaço sobretudo nos horários mais frescos do dia. O calor molda os hábitos de treino da cidade.',
   academias:
     'Por ser polo regional, Colatina reúne uma oferta de academias e estúdios que atende também moradores das cidades do entorno, complementada pelo treino domiciliar com personal trainer.',
+  academiasProximas: [
+    { nome: 'Wellness Club Colatina Beira Rio', detalhe: 'na Travessa Bruno Serafini, em Colatina Velha' },
+    { nome: 'Wellness Club São Silvano', detalhe: 'na Rua João Pretti, no São Silvano' },
+  ],
+  academiasVerificadasEm: '2026-10-01',
 
   destaquesFitness: [
     'Orla do Rio Doce como principal espaço para caminhada e corrida.',
@@ -79,5 +84,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Colatina', url: 'https://www.colatina.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-01',
 };

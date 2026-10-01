@@ -64,6 +64,11 @@ export const cidade: Cidade = {
     'A cena esportiva se apoia em academias, grupos de corrida e no uso das praças e áreas ao ar livre da cidade, com o público universitário da UFVJM ajudando a movimentar a procura por atividade física.',
   academias:
     'A oferta acompanha o porte de cidade média polo de região, com academias de musculação, treino funcional e estúdios, complementada por praças e mirantes para atividade ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit Teófilo Otoni', detalhe: 'na Rua Epaminondas Otoni, no Centro' },
+    { nome: 'Wellness Club Teófilo Otoni', detalhe: 'no Teó Shopping, na Av. Alfredo Sá, no Jardim das Acácias' },
+  ],
+  academiasVerificadasEm: '2026-10-01',
 
   destaquesFitness: [
     'Polo regional do Vale do Mucuri, com classe média ligada ao comércio de gemas e ao ensino superior.',
@@ -91,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teófilo Otoni', url: 'https://www.teofilootoni.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-01',
 };
