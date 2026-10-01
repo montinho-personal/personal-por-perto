@@ -574,3 +574,19 @@ a notícia, "academia londrina"/"academia com personal" (outro assunto);
 Instagram e "online" não apareceram como busca.
 
 Gleba Palhano, bairro de Londrina, é do piloto e não foi tocado.
+
+## Belém — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer belém | **"belem pa"**, "mulher", duas sugestões de notícia; relacionadas: "personal em belém", **"online"**, **"ananindeua"**, "preço", "fralda", "tradução" | valor de 1 hora · pode treinar 1 hora da manhã? · é vantajoso pagar · quem treina 3x na semana tem resultado? | mapa com personais e estúdio (4,9 a 5,0; até 82 avaliações); Superprof (143 profissionais); Instagram; Treinar.me; seupersonal ("R$ 100 a R$ 1.174,80 por mês") |
+
+**Aplicado:** valor por mês no título ("(PA)" casa com "belem pa") e na
+descrição; perguntas "1 mês, 3 vezes por semana" e "online ou presencial".
+**Vizinhas:** eram só São Luís e Manaus; entraram, na frente, Ananindeua
+(nas relacionadas), Marituba e Benevides, que fazem divisa, e Barcarena, da
+Região Metropolitana.
+
+**Não aplicado:** "mulher", as notícias, "fralda" e "tradução" (outros
+assuntos); "pode treinar 1 hora da manhã?" (já em Juiz de Fora) e "quem
+treina 3x tem resultado?" (já em Natal) — repetir seria o mesmo texto.

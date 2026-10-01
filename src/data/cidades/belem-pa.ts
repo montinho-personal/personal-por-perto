@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Porta de entrada da Amazônia e cidade em plena transformação, Belém oferece do Parque do Utinga às orlas revitalizadas. Um personal trainer ajuda a montar uma rotina que respeite o calor equatorial e potencialize seus resultados — da corrida ao ar livre à musculação climatizada nos dias mais abafados.',
 
+  /*
+   * Prints de 01/10: autocompletar com "belem pa", "mulher" e duas
+   * sugestões de notícia; relacionadas com "personal em belém", "online",
+   * "ananindeua", "preço", "fralda" e "tradução"; PAA com "valor de 1
+   * hora", "pode treinar 1 hora da manhã?", "é vantajoso pagar" e "quem
+   * treina 3x na semana tem resultado?". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Belém?',
@@ -113,7 +124,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['sao-luis-ma', 'manaus-am'],
+  // As vizinhas eram São Luís e Manaus. Em 01/10/2026 entraram, na frente,
+  // Ananindeua (nas relacionadas da busca), Marituba e Benevides, que fazem
+  // divisa com Belém, e Barcarena, da Região Metropolitana.
+  vizinhas: ['ananindeua-pa', 'marituba-pa', 'benevides-pa', 'barcarena-pa', 'sao-luis-ma', 'manaus-am'],
 
   fontes: [
     { nome: 'IBGE Cidades — Belém', url: 'https://cidades.ibge.gov.br/brasil/pa/belem/panorama' },
@@ -129,5 +143,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Belém: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-25',
+  atualizadoEm: '2026-10-01',
 };

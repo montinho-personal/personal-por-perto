@@ -102,6 +102,7 @@ até 29/09/2026):
    **Curitiba** (616 impressões, 5 cliques; "personal + cidade" na
    posição 40), em 01/10.
    **Londrina** (480 impressões, 11 cliques), em 01/10.
+   **Belém** (359 impressões, 6 cliques), em 01/10.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
