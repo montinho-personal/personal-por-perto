@@ -556,3 +556,21 @@ já têm página e já recebem link da página de Curitiba. A de Santa
 Felicidade tem um defeito antigo de metadado — descrição com 178
 caracteres, acima do limite — que está entre os 82 da linha de base.
 "Centro" fica como candidato.
+
+## Londrina — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer londrina | **"valor"**, "mulher", "bem avaliados", "preço", "vagas", "famoso", "academia com personal trainer", nomes próprios e uma notícia; relacionadas: **"ibiporã"**, **"cambé"**, "valor", "preço", "bem avaliados", "academia londrina" | quanto custa em Londrina · **1 mês** · **3 vezes por semana** · é vantajoso pagar | mapa com personais 5,0 (28 a 30 avaliações); Superprof (5,0, 20); Instagram; site de estúdio; sites de personais |
+
+**Aplicado:** valor por mês no título e na descrição; pergunta "1 mês, 3
+vezes por semana" (duas do PAA pedem isso). **Vizinhas:** eram Maringá,
+Curitiba e Sorocaba; entraram, na frente, Cambé e Ibiporã (nas
+relacionadas), que fazem divisa, e Rolândia, da Região Metropolitana;
+Maringá segue entre as quatro.
+
+**Não aplicado:** "mulher", "vagas", "famoso", "bem avaliados", nomes,
+a notícia, "academia londrina"/"academia com personal" (outro assunto);
+Instagram e "online" não apareceram como busca.
+
+Gleba Palhano, bairro de Londrina, é do piloto e não foi tocado.

@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade jovem, arborizada e apaixonada por corrida, Londrina tem no Lago Igapó o seu coração esportivo. Um personal trainer ajuda a transformar essa estrutura — dos lagos às academias — em um plano de treino consistente, ajustado ao seu objetivo e à sua rotina.',
 
+  /*
+   * Prints de 01/10: autocompletar com "valor", "mulher", "bem avaliados",
+   * "preço", "vagas", "famoso", "academia com personal trainer", nomes
+   * próprios e uma notícia; relacionadas com "ibiporã", "cambé", "valor",
+   * "preço", "bem avaliados" e "academia londrina"; PAA com "quanto custa
+   * em Londrina", "1 mês", "3 vezes por semana" e "é vantajoso pagar".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Londrina?',
@@ -113,14 +124,17 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['maringa-pr', 'curitiba-pr', 'sorocaba-sp'],
+  // As vizinhas eram Maringá, Curitiba e Sorocaba. Em 01/10/2026 entraram,
+  // na frente, Cambé e Ibiporã (nas relacionadas da busca), que fazem
+  // divisa com Londrina, e Rolândia, da Região Metropolitana.
+  vizinhas: ['cambe-pr', 'ibipora-pr', 'rolandia-pr', 'maringa-pr', 'arapongas-pr', 'curitiba-pr', 'sorocaba-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Londrina', url: 'https://cidades.ibge.gov.br/brasil/pr/londrina/panorama' },
     { nome: 'Prefeitura de Londrina', url: 'https://www.londrina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/londrina-pr.webp',
     w: 1200,
