@@ -29,7 +29,7 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 32 / 0 | 17 | ferramenta da jornada |
 | [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 39 / 0 | 30 | ferramenta da jornada |
 | [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 11 / 0 | 2 | ferramenta da jornada |
-| [presencial-ou-online](/ferramentas/presencial-ou-online/) | 6 / 0 | 1 | ferramenta da jornada |
+| [presencial-ou-online](/ferramentas/presencial-ou-online/) | 7 / 0 | 1 | ferramenta da jornada |
 | [personal-score](/ferramentas/personal-score/) | 0 / 0 | 1 | ferramenta da jornada |
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 5 / 1 | 1 | ferramenta da jornada |
 | [calculadora-1rm](/ferramentas/calculadora-1rm/) | 1 / 1 | 0 | calculadora de treino; conversa com os artigos de musculação |
@@ -99,6 +99,7 @@ Correções encontradas na leitura, feitas no mesmo dia (defeito não espera lev
 - 30/09 — `/emagrecimento/quantos-passos-por-dia/` — bloco gasto-calorico-diario depois do parágrafo dos quatro componentes; link musculacao em "Uma sessão de musculação de uma hora" (a calculadora dá 257 kcal para 70 kg em treino variado, confere com os 250 do texto); escada em "subir escada" NÃO entrou — mesma frase do bloco, ficaria carregado, e ali o texto lista NEAT, não compara gasto
 - 01/10 — `/emagrecimento/recomposicao-corporal/` — bloco gasto-calorico-diario depois do parágrafo "perto do equilíbrio energético" (sob o H3 "Déficit moderado ou manutenção calórica") — a calculadora dá a manutenção; a caixa diz que o déficit fino é com o nutricionista
 - 01/10 — `/guias/treinar-ao-ar-livre/` — link caminhada em "vinte minutos de caminhada rápida" ("somam bastante no gasto da semana"); corda em "corda de pular" NÃO entrou — o parágrafo fala da parte aeróbica, não de gasto (regra 2); bloco auditoria mantido
+- 01/10 — `/guias/personal-trainer-conduta-profissional/` — artigo novo, já publicado com o bloco
 
 ## Aguardando revisão de conteúdo
 

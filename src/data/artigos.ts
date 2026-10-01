@@ -127,6 +127,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-a-noite/', titulo: 'Personal trainer para quem trabalha à noite' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-gestantes/', titulo: 'Personal trainer para gestantes: o guia' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-conduta-profissional/', titulo: 'Conduta profissional no treino: limites, sinais e o que fazer' },
 
   // Musculação
   { categoria: 'Musculação', url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino de musculação para iniciantes: como começar' },

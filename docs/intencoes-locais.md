@@ -502,6 +502,8 @@ fora.
 autocompletar e nas relacionadas. Por trás há uma dúvida legítima — como
 reconhecer conduta profissional e se proteger no treino individual —, que
 caberia num guia nacional, não numa página de cidade e nunca citando caso.
+→ Feito em 01/10, aprovado pelo Renato: `/guias/personal-trainer-conduta-profissional/`
+(linkado do guia "Como escolher", na lista de sinais de alerta).
 
 **Bairro candidato em Salvador:** Imbuí (sem página hoje; Salvador já tem
 sete bairros).

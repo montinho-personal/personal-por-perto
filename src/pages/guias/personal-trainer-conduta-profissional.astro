@@ -1,0 +1,330 @@
+---
+/**
+ * Guia de conduta profissional no treino individual.
+ *
+ * Nasceu dos prints de Salvador em 01/10/2026: "assédio" aparece no
+ * autocompletar e nas relacionadas de "personal trainer salvador". Por trás
+ * da busca há uma dúvida legítima — o que é normal numa sessão, onde está o
+ * limite e o que fazer se ele foi cruzado —, e ela é nacional, não de uma
+ * cidade. Nenhum caso é citado aqui, de propósito.
+ *
+ * Tom: sério e prático. Por isso a página não leva o CTA de destaque nem o
+ * vídeo que os outros guias têm.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const fontes = {
+  lei13718: {
+    nome: 'Lei nº 13.718/2018 (importunação sexual, art. 215-A do Código Penal) — Planalto',
+    url: 'https://www.planalto.gov.br/CCIVIL_03/_Ato2015-2018/2018/Lei/L13718.htm',
+  },
+  ligue180: {
+    nome: 'Como funciona a Central de Atendimento à Mulher — Ligue 180 (Agência Gov)',
+    url: 'https://agenciagov.ebc.com.br/noticias/202608/lei-maria-da-penha-como-funciona-a-central-de-atendimento-a-mulher-ligue-180',
+  },
+};
+
+const relacionados = [
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'Os critérios técnicos da escolha — e os sinais de alerta na primeira conversa.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/primeira-aula-com-personal-trainer/',
+    titulo: 'Primeira aula com personal trainer',
+    descricao: 'O que deve acontecer na sessão de estreia, do questionário de saúde aos testes.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, o que combinar antes e quanto custa.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-conduta-profissional';
+const atualizadoEm = '2026-10-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Conduta profissional no treino', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O personal trainer pode tocar no aluno?',
+    resposta:
+      'Pode, quando o toque tem função técnica e você concordou: mostrar onde a escápula deve se mover, alinhar um joelho, dar segurança numa carga pesada. O padrão profissional é avisar antes, dizer onde vai tocar e por quê, tocar só o necessário e por pouco tempo — e aceitar um "prefiro que não" sem mudar o tratamento. Região íntima nunca faz parte de correção de exercício.',
+  },
+  {
+    pergunta: 'O que é considerado assédio no treino?',
+    resposta:
+      'Qualquer investida de cunho sexual que você não quis: toque sem função técnica ou sem permissão, comentário sobre o corpo fora do contexto do objetivo, mensagens insistentes fora do assunto do treino, convites para encontros, pedidos de foto, pressão para treinar em lugar isolado. Não precisa haver toque para ser assédio. Se a situação deixou você desconfortável e não tinha função no treino, ela merece ser levada a sério.',
+  },
+  {
+    pergunta: 'Como denunciar um personal trainer por assédio?',
+    resposta:
+      'Em emergência, ligue 190. Mulheres podem acionar o Ligue 180, gratuito e 24 horas, também pelo WhatsApp (61) 9610-0180, inclusive de forma anônima. O boletim de ocorrência pode ser feito em qualquer delegacia — na Delegacia da Mulher, onde houver — e, em muitos estados, pela delegacia online. Se aconteceu numa academia, informe também a gerência por escrito. Antes de tudo, anote data, hora, local, o que foi dito ou feito e guarde as mensagens.',
+  },
+  {
+    pergunta: 'Posso pedir para treinar sem correção com toque?',
+    resposta:
+      'Pode, e o profissional deve aceitar sem questionar. Quase toda correção tem alternativa: comando verbal, demonstração, espelho, vídeo da sua execução, um elástico ou um bastão como referência. Treinar sem toque não piora o resultado; mudar de atitude depois do seu pedido é que é sinal de alerta.',
+  },
+  {
+    pergunta: 'Foto de evolução é obrigatória?',
+    resposta:
+      'Não. Foto é uma das formas de acompanhar resultado, não a única — carga, medidas e desempenho também mostram evolução. Se você quiser fotos, quem decide a roupa, o enquadramento e onde elas ficam é você; o mais simples é você mesmo tirar e guardar. Pedido insistente de foto, ou de foto com menos roupa do que você usaria na academia, é sinal de alerta.',
+  },
+];
+
+const title = 'Personal trainer e assédio: limites, sinais e o que fazer';
+const description =
+  'Como é a conduta de um bom personal: toque só com aviso e permissão, comentários só sobre o treino, sinais de alerta e onde denunciar se algo acontecer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia essencial</p>
+    <h1>Conduta profissional no treino: limites, sinais de alerta e o que fazer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Treino individual tem proximidade: corrigir uma postura, ajustar uma
+      pegada, às vezes tocar. Essa proximidade é ferramenta de trabalho, e
+      não dá licença para nada além disso. Em resumo: toque só com aviso e
+      permissão, comentários só sobre o treino, conversa profissional dentro
+      e fora da sessão. Se algo passou do limite, você pode parar na hora, e
+      existem canais para pedir ajuda.
+    </p>
+
+    <div class="prose">
+      <h2>Como é a conduta de um bom profissional</h2>
+      <p>
+        O profissional sério trata o seu corpo como objeto de trabalho técnico
+        e trata você como cliente. Na prática, isso aparece em hábitos
+        simples:
+      </p>
+      <ul>
+        <li><strong>Explica antes de corrigir.</strong> Diz o que está errado na execução e o que vai fazer para ajustar.</li>
+        <li><strong>Pergunta antes de tocar.</strong> "Posso pôr a mão no seu ombro para mostrar o movimento?" — e espera a resposta.</li>
+        <li><strong>Tem alternativas ao toque.</strong> Comando verbal, demonstração, espelho, vídeo da sua execução.</li>
+        <li><strong>Fala do corpo em linguagem de treino.</strong> Músculo, articulação, amplitude, carga — não aparência.</li>
+        <li><strong>Mantém a conversa no trabalho.</strong> Mensagens sobre horário, treino e evolução, em horário razoável.</li>
+        <li><strong>Aceita o "não" sem mudar de atitude.</strong> Recusar um toque, uma foto ou um horário não pode custar a qualidade do atendimento.</li>
+      </ul>
+
+      <h2>O toque na correção: quando faz sentido e como deve ser</h2>
+      <p>
+        A correção com toque é legítima e às vezes é o jeito mais rápido de
+        alguém sentir um movimento: tocar a escápula para mostrar onde ela
+        deve se mover, alinhar o joelho num agachamento, apoiar a barra numa
+        série pesada de supino. O que a separa de um abuso é o método.
+      </p>
+      <p>
+        Ela é <strong>anunciada</strong> (você sabe onde e por quê antes de
+        acontecer), <strong>breve</strong> (dura o tempo da correção),
+        <strong>localizada</strong> (só onde o exercício pede, com a mão
+        aberta) e <strong>opcional</strong>. Região íntima nunca faz parte de
+        correção de exercício. Se o toque vem sem aviso, demora mais do que a
+        correção, desliza para outra região ou se repete depois de você
+        recusar, ele deixou de ser técnico.
+      </p>
+
+      <h2>Comentários, mensagens e fotos</h2>
+      <p>
+        <strong>Comentários sobre o corpo</strong> só cabem quando ligados ao
+        objetivo que você trouxe e ditos em linguagem técnica ("o quadril
+        ainda está compensando no fim da descida"). Elogio insistente à
+        aparência, piada de duplo sentido e pergunta sobre a sua vida íntima
+        não fazem parte do serviço.
+      </p>
+      <p>
+        <strong>Mensagens</strong> tratam de treino, horário e evolução.
+        Convite para sair, para beber, para "treinar só os dois" fora do
+        combinado, ou mensagens de madrugada sobre assuntos pessoais, mudam a
+        natureza da relação — e quem paga pelo serviço não deveria ter que
+        administrar isso.
+      </p>
+      <p>
+        <strong>Fotos de evolução</strong> são opcionais. Se você quiser, quem
+        decide roupa, enquadramento e onde as fotos ficam é você; o mais
+        simples é você mesmo tirar e guardar. Ninguém deve fotografar ou
+        filmar você sem autorização, nem para "corrigir a execução".
+      </p>
+
+      <h2>Sinais de alerta</h2>
+      <ul>
+        <li>Toca sem pedir, ou continua tocando depois de você recusar.</li>
+        <li>Comenta sua aparência de um jeito que não tem a ver com o treino.</li>
+        <li>Insiste em mensagens pessoais, convites ou elogios fora da sessão.</li>
+        <li>Pede fotos, ou fotos com menos roupa do que você usaria na academia.</li>
+        <li>Empurra o treino para horários vazios ou lugares isolados sem motivo técnico.</li>
+        <li>Pede segredo ("isso fica entre a gente") ou faz você sentir que exagerou ao reclamar.</li>
+        <li>Muda de atitude, ou piora o atendimento, depois de um "não".</li>
+      </ul>
+      <p>
+        Um sinal isolado pode ser descuido — e vale uma conversa direta. Mais
+        de um, ou um que se repete depois de você deixar claro que não quer,
+        já é padrão.
+      </p>
+
+      <h2>Treino em casa, no condomínio e em horário vazio</h2>
+      <p>
+        O atendimento a domicílio e na academia do prédio é comum e seguro na
+        imensa maioria das vezes, mas tira a plateia natural de uma academia
+        cheia. Algumas combinações deixam todo mundo mais tranquilo: treinar
+        em área comum em vez de dentro do apartamento, ter outra pessoa em
+        casa nas primeiras sessões, combinar por escrito horário, local e o
+        que o serviço inclui. Um bom profissional não se ofende com nenhuma
+        dessas — ele também se protege com elas.
+      </p>
+      <p>
+        E, se uma experiência ruim tirou a vontade de treinar a sós com
+        alguém, isso não precisa encerrar o acompanhamento: academia
+        movimentada, sessão em dupla ou acompanhamento online com correção
+        por vídeo são formatos em que ninguém precisa ficar perto de você.
+      </p>
+
+      <FerramentaInline
+        id="formato"
+        texto="Se a dúvida agora é qual desses formatos cabe na sua rotina — presencial em lugar movimentado, em dupla ou online —, o teste cruza seus dias livres, seu deslocamento e a estrutura que você tem, e aponta o que tende a funcionar."
+        acao="Ver qual formato combina comigo"
+      />
+
+      <h2>Se algo aconteceu: o que fazer</h2>
+      <ol>
+        <li>
+          <strong>Você pode parar na hora.</strong> Encerrar a sessão e ir
+          embora não exige explicação a ninguém.
+        </li>
+        <li>
+          <strong>Registre enquanto está fresco.</strong> Data, hora, local, o
+          que foi dito ou feito, quem estava por perto. Guarde mensagens e
+          áudios — capturas de tela com a data aparecendo.
+        </li>
+        <li>
+          <strong>Procure ajuda.</strong> Em emergência, <strong>190</strong>.
+          Mulheres podem acionar o <strong>Ligue 180</strong>, gratuito e
+          24 horas, também pelo WhatsApp <strong>(61) 9610-0180</strong>; a
+          denúncia pode ser anônima ou feita por outra pessoa. O boletim de
+          ocorrência pode ser registrado em qualquer delegacia — na Delegacia
+          da Mulher, onde houver — e, em muitos estados, pela delegacia
+          online.
+        </li>
+        <li>
+          <strong>Se foi numa academia ou condomínio,</strong> informe a
+          gerência ou a administração por escrito. Isso cria registro e
+          protege outras pessoas que treinam no mesmo lugar.
+        </li>
+        <li>
+          <strong>Se a vítima é criança ou adolescente,</strong> o canal é o
+          <strong>Disque 100</strong> ou o Conselho Tutelar da cidade.
+        </li>
+        <li>
+          <strong>Cuide de você.</strong> Conversar com alguém de confiança e,
+          se precisar, com um psicólogo faz parte da resposta — não é
+          exagero.
+        </li>
+      </ol>
+      <p>
+        Sobre a lei: praticar ato libidinoso contra alguém sem consentimento é
+        crime de <strong>importunação sexual</strong>, incluído no Código
+        Penal pela <a href={fontes.lei13718.url} target="_blank" rel="noopener">Lei
+        nº 13.718/2018</a> (art. 215-A), com pena de 1 a 5 anos de reclusão
+        se o ato não constituir crime mais grave. O crime chamado
+        <strong>assédio sexual</strong> (art. 216-A) tem definição mais
+        estreita, ligada a hierarquia ou ascendência de emprego, cargo ou
+        função — por isso nem tudo o que se chama de assédio no dia a dia se
+        enquadra nele. Quem faz o enquadramento é a polícia e o Ministério
+        Público. A sua parte é registrar e pedir ajuda; este guia não
+        substitui orientação jurídica.
+      </p>
+
+      <h2>Para quem é personal: o padrão que protege os dois lados</h2>
+      <p>
+        Explicar antes, pedir licença, oferecer alternativa ao toque, manter
+        mensagens no assunto do treino e combinar por escrito local e
+        horário não são formalidades: são o que permite ao aluno confiar e
+        ao profissional trabalhar sem situações ambíguas. Quem já faz isso
+        não perde nada — e quem nunca pensou nisso ganha um método.
+      </p>
+
+      <p class="fontes">
+        Fontes: <a href={fontes.lei13718.url} target="_blank" rel="noopener">{fontes.lei13718.nome}</a>;
+        <a href={fontes.ligue180.url} target="_blank" rel="noopener">{fontes.ligue180.nome}</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    margin-top: var(--sp-5);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+</style>
