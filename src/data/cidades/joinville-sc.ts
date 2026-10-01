@@ -95,6 +95,16 @@ export const cidade: Cidade = {
   conclusao:
     'Maior economia de SC e "Cidade das Bicicletas", Joinville é feita para quem gosta de se movimentar. Um personal trainer ajuda a transformar a enorme malha cicloviária, os parques e as academias da cidade em um plano de treino consistente, do iniciante ao avançado.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "preço", "quanto ganha" e
+   * "personal em joinville"; relacionadas com "preço", "online" e "personal
+   * gym"; PAA com "quanto custa em Joinville", "valor de 1 hora", "é
+   * vantajoso pagar" e "3 ou 5 vezes na semana". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Joinville?',
@@ -113,14 +123,17 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['blumenau-sc', 'florianopolis-sc', 'curitiba-pr'],
+  // As vizinhas eram Blumenau, Florianópolis e Curitiba. Em 01/10/2026
+  // entraram, na frente, cidades do norte catarinense: Jaraguá do Sul,
+  // São Francisco do Sul e São Bento do Sul.
+  vizinhas: ['jaragua-do-sul-sc', 'sao-francisco-do-sul-sc', 'sao-bento-do-sul-sc', 'blumenau-sc', 'curitiba-pr', 'florianopolis-sc'],
 
   fontes: [
     { nome: 'IBGE Cidades — Joinville', url: 'https://cidades.ibge.gov.br/brasil/sc/joinville/panorama' },
     { nome: 'Prefeitura de Joinville', url: 'https://www.joinville.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/joinville-sc.webp',
     w: 1200,

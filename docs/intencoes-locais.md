@@ -401,3 +401,31 @@ divisa, na frente.
 **Não aplicado:** "pode treinar 1 hora da manhã?" — a resposta já está em
 Juiz de Fora, e repeti-la seria o mesmo texto em duas cidades; estúdio e
 nome próprio; "academia praia grande" (outro assunto).
+
+## Joinville e Uberlândia — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em joinville | "mulher", **"preço"**, "quanto ganha um personal trainer em joinville", "personal em joinville"; relacionadas: "preço", **"online"**, "personal gym" | quanto custa em Joinville · valor de 1 hora · é vantajoso pagar · 3 ou 5 vezes na semana | Superprof (35 profissionais, 5,0, 9, "presencial ou online"); Instagram de um personal que atende em Bluefit e Force One; Doctoralia (educadores físicos); BeBee |
+| personal trainer em uberlândia | **"valor"**, "mulher", variações sem acento; relacionadas: "mulher", **"online"**, "preço", "nutricionista uberlandia" | quanto custa em Uberlândia · valor de 1 hora · vale a pena pagar · 3 ou 5 vezes na semana | mapa com quatro estúdios e personais (4,9 a 5,0; até 146 avaliações); Instagram; Reddit r/Uberlandia pedindo indicação de personal "que se desloque até a academia do aluno"; vídeo antigo do Globoplay com exercícios em casa |
+
+**Aplicado nas duas:** valor por mês no título e na descrição; perguntas "1
+mês, 3 vezes por semana" e "online ou presencial" ("online" nas
+relacionadas das duas). As quatro perguntas do PAA repetem o padrão das
+outras cidades: preço, hora, "vale a pena" e frequência.
+
+- **Joinville — vizinhas:** eram Blumenau, Florianópolis e Curitiba;
+  entraram, na frente, Jaraguá do Sul, São Francisco do Sul e São Bento do
+  Sul, do norte catarinense.
+- **Uberlândia — vizinhas:** eram BH, Goiânia e Ribeirão Preto; entraram,
+  na frente, Araguari, Uberaba e Ituiutaba, do Triângulo Mineiro.
+
+**Não aplicado:** "mulher"; "quanto ganha" (emprego); "personal gym" e
+"nutricionista" (outros assuntos); "3 ou 5 vezes" e "vale a pena pagar" —
+a página já tem "Vale a pena ter personal trainer em…" e o "3 ou 5" já tem
+três versões próprias; Instagram (veio como resultado, não como busca);
+"exercícios em casa" em Uberlândia (vídeo de 2017, não é pedido da busca).
+A pergunta do Reddit — personal que vai até a academia do aluno — é a
+mesma da taxa de personal em academia; fica anotada, sem aplicar, porque
+apareceu num resultado só e a pergunta da taxa até hoje só entrou onde o
+print pediu.

@@ -95,6 +95,16 @@ export const cidade: Cidade = {
   conclusao:
     'Com o Parque do Sabiá como cartão de visitas e um mercado fitness aquecido pela universidade, Uberlândia é um ótimo lugar para treinar com orientação. Um personal trainer ajuda a aproveitar essa estrutura — da pista de 5 km às academias de bairro — com método, segurança e constância.',
 
+  /*
+   * Prints de 01/10: autocompletar com "valor", "mulher" e as variações sem
+   * acento; relacionadas com "mulher", "online", "preço" e "nutricionista";
+   * PAA com "quanto custa em Uberlândia", "valor de 1 hora", "vale a pena
+   * pagar" e "3 ou 5 vezes na semana"; mapa com quatro estúdios e personais.
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Uberlândia?',
@@ -113,7 +123,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['belo-horizonte-mg', 'goiania-go', 'ribeirao-preto-sp'],
+  // As vizinhas eram BH, Goiânia e Ribeirão Preto. Em 01/10/2026 entraram,
+  // na frente, cidades do Triângulo Mineiro: Araguari, Uberaba e Ituiutaba.
+  vizinhas: ['araguari-mg', 'uberaba-mg', 'ituiutaba-mg', 'belo-horizonte-mg', 'goiania-go', 'ribeirao-preto-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Uberlândia', url: 'https://cidades.ibge.gov.br/brasil/mg/uberlandia/panorama' },
@@ -129,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Uberlândia: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-25',
+  atualizadoEm: '2026-10-01',
 };
