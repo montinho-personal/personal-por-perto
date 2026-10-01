@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Em uma cidade que já é a mais ativa do Brasil, treinar com um personal trainer é potencializar uma cultura que já existe. Da orla de Camburi aos módulos gratuitos do SOE, Vitória oferece estrutura de sobra — e o acompanhamento profissional garante método, segurança e evolução constante.',
 
+  /*
+   * Prints de 01/10: autocompletar com "vitória es", "em vitoria es" e três
+   * outras cidades com o mesmo nome (Vitória da Conquista, Vitória de Santo
+   * Antão, União da Vitória) — o "(ES)" do título é o que separa; relacionadas
+   * com Serra, Cariacica, Vila Velha, "valor mensal", "online" e "preço"; PAA
+   * com "valor de 1 hora", "é vantajoso pagar", "tabela de preços" e "tem
+   * personal pelo Gympass?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Se o SOE é gratuito, ainda vale contratar um personal em Vitória?',
@@ -113,7 +124,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['rio-de-janeiro-rj', 'belo-horizonte-mg', 'niteroi-rj'],
+  // Vila Velha, Serra e Cariacica estão nas pesquisas relacionadas de
+  // "personal trainer vitória" (prints de 01/10/2026) e não eram linkadas.
+  vizinhas: ['vila-velha-es', 'serra-es', 'cariacica-es', 'rio-de-janeiro-rj', 'belo-horizonte-mg', 'niteroi-rj'],
 
   fontes: [
     { nome: 'IBGE Cidades — Vitória', url: 'https://cidades.ibge.gov.br/brasil/es/vitoria/panorama' },
@@ -128,5 +141,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Vitória: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
     vertical: true,
   },
-  atualizadoEm: '2026-07-24',
+  atualizadoEm: '2026-10-01',
 };

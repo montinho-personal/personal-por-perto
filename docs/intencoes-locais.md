@@ -338,3 +338,31 @@ seriam a mesma resposta; Instagram em Maceió (não veio no print).
 
 **Bairros candidatos no Recife:** zona norte. Boa Viagem já tem página (e é
 do piloto: não mexer antes de 09/10).
+
+## Juiz de Fora e Vitória — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em juiz de fora | "mulher", "quanto custa um personal trainer em juiz de fora", **"personal trainer em jf"**, "personal em jf" | quanto custa em Juiz de Fora · valor de 1 hora · **pode treinar 1 hora da manhã?** · é vantajoso pagar | mapa de empresas com três personais 5,0 (18 a 67 avaliações); Superprof (5,0, 18); lista de um site de notícias local; GetNinjas; StarOfService |
+| personal trainer vitória | "vitória es", "em vitoria es" e três cidades homônimas (Vitória da Conquista, Vitória de Santo Antão, União da Vitória); relacionadas: **Serra, Cariacica, Vila Velha**, "valor mensal", "online", "preço" | valor de 1 hora · é vantajoso pagar · tabela de preços · tem personal pelo Gympass? | Superprof (57 profissionais, 5,0, 14); StarOfService; site de estúdio local |
+
+**Aplicado:**
+
+- **Juiz de Fora** — título próprio com a sigla, "Personal Trainer em Juiz
+  de Fora (JF): valor por mês e aula" (o autocompletar busca "em jf");
+  descrição com valor por mês; perguntas "1 mês, 3 vezes por semana" e
+  "Pode treinar à 1 hora da manhã?" (PAA; resposta apoiada em Stutz,
+  Eiholzer e Spengler, *Sports Medicine*, 2019 — exercício à noite não
+  atrapalha o sono da maioria; o cuidado é com treino intenso terminando
+  menos de uma hora antes de deitar).
+- **Vitória** — valor por mês no título e na descrição (o "(ES)" já separa
+  das homônimas); perguntas "1 mês, 3 vezes por semana" e "online ou
+  presencial"; **Vila Velha, Serra e Cariacica** passaram a ser vizinhas
+  (antes: Rio, BH e Niterói).
+
+**Não aplicado:** "mulher"; "tem personal pelo Gympass?" (sem fonte oficial
+do Brasil, mesmo motivo de Cotia); "tabela de preços" — a página já tem a
+tabela e a pergunta de preço padrão; "personal fralda" (outro assunto).
+
+**Vizinhas de Juiz de Fora:** seguem BH, Contagem e Rio — o portal não tem
+página de nenhum município vizinho de Juiz de Fora.

@@ -87,6 +87,9 @@ até 29/09/2026):
    **Recife** e **Maceió** fecham a leva 2, em 01/10. Recife: 488
    impressões, 4 cliques, posição 7,3. Maceió: 268 impressões, 4
    cliques, posição 6,9.
+   Leva 3, em 01/10: **Juiz de Fora** (163 impressões, 0 clique, posição
+   6,8 — o caso mais limpo de CTR a medir) e **Vitória** (166
+   impressões, 1 clique, posição 6,5).
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

@@ -94,7 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com clima de altitude agradável, forte cena de corrida e um grande público universitário, Juiz de Fora é uma cidade convidativa para treinar. Um personal trainer ajuda a aproveitar o Parque Halfeld, a Mata do Krambeck e as academias locais com método e constância.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "quanto custa um personal
+   * trainer em juiz de fora", "personal trainer em jf" e "personal em jf" —
+   * a sigla entra no título; PAA com "quanto custa em Juiz de Fora?", "valor
+   * de 1 hora", "pode treinar 1 hora da manhã?" e "é vantajoso pagar". No
+   * relatório de 30/09: 163 impressões, posição 6,8 e nenhum clique.
+   * Registro completo em docs/intencoes-locais.md. Title com 59 caracteres.
+   */
+  metaTitulo: 'Personal Trainer em Juiz de Fora (JF): valor por mês e aula',
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Pode treinar à 1 hora da manhã?',
+      resposta:
+        'Pode — o horário certo é o que você consegue repetir. Uma revisão de estudos de 2019 sobre exercício à noite concluiu que treinar no fim do dia não atrapalha o sono da maioria das pessoas; o cuidado é com treino intenso terminando menos de uma hora antes de deitar, que em parte das pessoas atrasa o sono. Para quem treina de madrugada por causa do trabalho, o que mais pesa é proteger as horas de sono depois, porque é nelas que o músculo se recupera. Se a madrugada é o único horário livre, um plano montado para ele funciona melhor do que esperar uma janela que não vem.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Juiz de Fora?',
       resposta:
@@ -119,7 +136,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juiz de Fora', url: 'https://www.pjf.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/juiz-de-fora-mg.webp',
     w: 1200,
