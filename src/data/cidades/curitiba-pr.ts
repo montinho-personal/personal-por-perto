@@ -96,6 +96,18 @@ export const cidade: Cidade = {
   conclusao:
     'Curitiba reúne parques com pistas excelentes, mais de 200 km de ciclovias e um mercado fitness completo do Batel ao Barigui. O desafio real é o frio — e é justamente nele que um personal trainer faz diferença, ajustando aquecimento, vestuário e plano indoor para manter a constância o ano inteiro, sem depender da motivação do dia.',
 
+  /*
+   * Prints de 01/10: autocompletar com "valor", "instagram", "mulher",
+   * "centro", "bigorrilho", "smartfit", "bem avaliados", "vagas" e um
+   * estúdio pelo nome; relacionadas com "em curitiba preço", "colombo",
+   * "são josé dos pinhais", "santa felicidade", "feminina", "instagram",
+   * "smartfit" e "valor personal trainer mensal"; PAA com "quanto custa em
+   * Curitiba", "1 mês", "pode treinar 1 hora da manhã?" e "vale a pena
+   * pagar". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Como treinar no frio de Curitiba sem perder constância?',
@@ -114,7 +126,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: [],
+  // Estava vazia. Em 01/10/2026 entraram São José dos Pinhais e Colombo
+  // (nas relacionadas da busca), Pinhais e Araucária — todas fazem divisa
+  // com Curitiba.
+  vizinhas: ['sao-jose-dos-pinhais-pr', 'colombo-pr', 'pinhais-pr', 'araucaria-pr'],
 
   fontes: [
     { nome: 'IBGE Cidades — Curitiba', url: 'https://cidades.ibge.gov.br/brasil/pr/curitiba/panorama' },
@@ -130,5 +145,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Curitiba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-10-01',
 };

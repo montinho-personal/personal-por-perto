@@ -532,3 +532,25 @@ Recreio e Tijuca). Tijuca e Barra são do piloto (leitura em 09/10). Fica
 como candidata, depois do piloto, uma resposta de zona — "personal trainer
 zona sul / zona norte do Rio" —, junto com as zonas já anotadas de São
 Paulo e Porto Alegre.
+
+## Curitiba — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer curitiba | **"valor"**, **"instagram"**, "mulher", "centro", **"bigorrilho"**, "smartfit", "bem avaliados", "vagas", um estúdio pelo nome; relacionadas: "em curitiba preço", **"colombo"**, **"são josé dos pinhais"**, **"santa felicidade"**, "feminina", "instagram", "smartfit", **"valor personal trainer mensal"** | quanto custa em Curitiba · **1 mês** · pode treinar 1 hora da manhã? · vale a pena pagar | mapa de personais; Superprof (5,0, 165); Instagram; suasaulasparticulares; SuperTrainers; FitLocal ("R$ 80 a R$ 160/h") |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "como avaliar pelo Instagram". **Vizinhas:** a lista
+estava **vazia** — a página não linkava nenhuma cidade da região. Entraram
+São José dos Pinhais e Colombo (nas relacionadas), Pinhais e Araucária,
+todas com divisa.
+
+**Não aplicado:** "mulher"/"feminina", "smartfit", "vagas", "bem
+avaliados" (o portal não avalia profissionais), o estúdio; "pode treinar 1
+hora da manhã?" (resposta já está em Juiz de Fora).
+
+**Bairros:** Bigorrilho (autocompletar) e Santa Felicidade (relacionadas)
+já têm página e já recebem link da página de Curitiba. A de Santa
+Felicidade tem um defeito antigo de metadado — descrição com 178
+caracteres, acima do limite — que está entre os 82 da linha de base.
+"Centro" fica como candidato.
