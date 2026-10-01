@@ -95,7 +95,21 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais bonitas do Brasil, Maceió é feita para quem gosta de treinar ao ar livre. Um personal trainer ajuda a transformar os calçadões e a areia em um plano consistente — respeitando o calor e levando você do objetivo à constância.',
 
+  /*
+   * Prints de 01/10: PAA com "valor de 1 hora", "vale a pena pagar",
+   * "quantas horas pode ficar na academia por dia?" e "3 ou 5 vezes na
+   * semana". Resultados: mapa de empresas, Superprof (61 profissionais, 5,0)
+   * e Instagram. Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Quantas horas pode ficar na academia por dia?',
+      resposta:
+        'Não existe um limite fixo, mas raramente faz sentido passar de uma hora e meia. Para musculação, 45 a 75 minutos cobrem o aquecimento e as séries do dia; somando aeróbico ou uma aula, uma hora e meia já é bastante. Mais tempo não é mais resultado: o que constrói músculo é o estímulo bem feito e a recuperação até o treino seguinte — e é ela que fica curta quando a sessão se estica todo dia. Em Maceió, com calor e umidade altos o ano todo, sessão longa também cobra hidratação. Se o tempo na academia cresce porque o treino não tem plano, a solução é organizar, não ficar mais.',
+    },
     {
       pergunta: 'Dá para treinar com personal na praia em Maceió?',
       resposta:
@@ -113,14 +127,16 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['aracaju-se', 'recife-pe', 'salvador-ba'],
+  // As vizinhas eram só capitais do Nordeste; em 01/10/2026 entraram, na
+  // frente, as da região metropolitana que o portal tem.
+  vizinhas: ['rio-largo-al', 'marechal-deodoro-al', 'aracaju-se', 'recife-pe', 'salvador-ba'],
 
   fontes: [
     { nome: 'IBGE Cidades — Maceió', url: 'https://cidades.ibge.gov.br/brasil/al/maceio/panorama' },
     { nome: 'Prefeitura de Maceió', url: 'https://www.maceio.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/maceio-al.webp',
     w: 1200,

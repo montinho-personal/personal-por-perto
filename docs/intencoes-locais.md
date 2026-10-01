@@ -311,3 +311,30 @@ aracaju" e "personal inteligente" (outros assuntos).
 personais avaliados. É o mesmo padrão da busca de SP, onde a ficha do
 Montinho aparece: na busca local, quem tem perfil no Google com avaliação
 ganha a primeira dobra da página.
+
+## Recife e Maceió — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em recife | "mulher", "valor hora", "instagram", "selfit", "boa viagem", "zona norte", "preço", **"para idosos"**, "online"; relacionadas: "quanto custa", **Olinda, Jaboatão dos Guararapes, Paulista**, "selfit", "boa viagem" | quanto custa no Recife · valor de 1 hora · vale a pena pagar · 3 ou 5 vezes na semana | mapa de empresas com personais 5,0 (19 a 38 avaliações); Superprof (5,0, 60) e perfil "R$ 60/h"; Instagram; GetNinjas |
+| personal trainer em maceió | (sem print do autocompletar) | valor de 1 hora · vale a pena pagar · **quantas horas pode ficar na academia por dia?** · 3 ou 5 vezes na semana | mapa de empresas; Superprof (61 profissionais, 5,0, 7); Instagram |
+
+**Aplicado:**
+
+- **Recife** — valor por mês no título e na descrição; perguntas "1 mês, 3
+  vezes por semana" (responde "valor hora"), Instagram, "online ou
+  presencial" e **"Como funciona o personal trainer para idosos no
+  Recife?"** ("para idosos" no autocompletar; resposta com avaliação,
+  liberação médica, equilíbrio e quedas, e o horário que a umidade da
+  cidade pede). **Olinda, Jaboatão, Paulista e Camaragibe** passaram a ser
+  vizinhas (as três primeiras estão nas relacionadas; antes, só capitais).
+- **Maceió** — valor por mês no título e na descrição; pergunta "1 mês, 3
+  vezes por semana" e **"Quantas horas pode ficar na academia por dia?"**
+  (PAA novo). **Rio Largo e Marechal Deodoro** entraram nas vizinhas.
+
+**Não aplicado:** "mulher", "selfit"; "3 ou 5 vezes na semana" nas duas —
+já há três versões próprias no portal, e uma quarta e quinta sem fato local
+seriam a mesma resposta; Instagram em Maceió (não veio no print).
+
+**Bairros candidatos no Recife:** zona norte. Boa Viagem já tem página (e é
+do piloto: não mexer antes de 09/10).

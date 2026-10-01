@@ -95,7 +95,22 @@ export const cidade: Cidade = {
   conclusao:
     'Da orla de Boa Viagem aos parques arborizados, Recife oferece bons cenários para treinar mesmo com o calor. Um personal trainer ajuda a montar uma rotina que respeite o clima e o seu objetivo — seja na corrida à beira-mar, seja na musculação com ar-condicionado nos dias mais abafados.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "valor hora", "instagram",
+   * "selfit", "boa viagem", "zona norte", "preço", "para idosos" e
+   * "online"; relacionadas com Olinda, Jaboatão dos Guararapes e Paulista;
+   * PAA com "quanto custa no Recife?", "valor de 1 hora", "vale a pena" e
+   * "3 ou 5 vezes na semana". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Como funciona o personal trainer para idosos no Recife?',
+      resposta:
+        'Começa por uma avaliação — e, quando há doença crônica, pela liberação do médico. O treino mira o que mais pesa depois dos 60: força nas pernas, equilíbrio e prevenção de quedas, com carga que sobe devagar e exercícios que conversam com a vida diária, como levantar da cadeira e subir degrau. No Recife, com umidade alta e chuva frequente, as manhãs cedo e os espaços cobertos costumam ser o melhor horário. A proteína também sobe depois dos 65, e o ajuste da alimentação é com o nutricionista. O portal tem um guia de personal para a terceira idade.',
+    },
     {
       pergunta: 'Onde o personal costuma atender no Recife?',
       resposta:
@@ -113,7 +128,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['joao-pessoa-pb', 'natal-rn', 'salvador-ba'],
+  // Olinda, Jaboatão e Paulista estão nas pesquisas relacionadas de
+  // "personal trainer em recife" (prints de 01/10/2026); as vizinhas eram
+  // só capitais do Nordeste.
+  vizinhas: ['olinda-pe', 'jaboatao-dos-guararapes-pe', 'paulista-pe', 'camaragibe-pe', 'joao-pessoa-pb', 'natal-rn', 'salvador-ba'],
 
   fontes: [
     { nome: 'IBGE Cidades — Recife', url: 'https://cidades.ibge.gov.br/brasil/pe/recife/panorama' },
@@ -129,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Recife: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
 };
