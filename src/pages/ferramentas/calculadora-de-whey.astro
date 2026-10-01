@@ -1,0 +1,691 @@
+---
+/**
+ * Calculadora de whey — página e ferramenta.
+ *
+ * POR QUE ESTA CALCULADORA (prints do Renato, 01/10/2026)
+ *
+ * "Calculadora de whey" tem duas perguntas por trás, e cada uma tem lugar
+ * próprio na página:
+ *   quanto tomar: por peso, por dia, quantos scoops,
+ *   gramas por kg, 2 scoops, 3x no dia, 4 scoops  → a conta de doses e as
+ *                                                   seções "Como calcular",
+ *                                                   "Quantos scoops"
+ *   para emagrecer, tomando Mounjaro               → "Para emagrecer e com
+ *                                                   Mounjaro" (perfil próprio)
+ *   custo-benefício, whey bom, "gordo"             → a conta de custo e
+ *                                                   "O whey vale o preço?"
+ *   1 dose quantas gramas, como medir 30 g         → "Como medir a dose"
+ *   whey equivale a 3 ovos                         → FAQ, com a TACO
+ *   whey todo dia engorda                          → FAQ
+ *
+ * A calculadora de proteína continua dona de "quantos gramas de proteína
+ * por dia": esta página pega a meta de lá e responde só o que é de whey.
+ * Nenhum número foi escrito à mão: tudo sai de src/lib/nutricao/whey.ts e
+ * do motor de proteína.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  ALTURA_PADRAO,
+  NOTA_NAO_PRESCRICAO,
+  NOTA_PESO_AJUSTADO,
+  NOTA_RIM,
+  PERFIS,
+  PESO_PADRAO,
+  formataFaixaGkg,
+  formataFaixaGramas,
+  perfil,
+  pesoSaudavel,
+} from '../../lib/nutricao/proteina';
+import {
+  CLASSES,
+  DOSES_TETO,
+  DOSE_PO_PADRAO,
+  EXEMPLO_POTE_BARATO,
+  FONTES,
+  JA_COME_PADRAO,
+  NOTA_CALORIAS,
+  NOTA_COMIDA,
+  NOTA_ROTULO,
+  NOTA_SEM_DOSE_POR_KG,
+  OVOS_3_G,
+  POTE_PADRAO,
+  PRECO_PADRAO,
+  PROTEINA_DOSE_PADRAO,
+  custo,
+  diasQueDura,
+  doses,
+  formataDoses,
+  formataFalta,
+  formataInteiro,
+  formataPct,
+  formataReais,
+  fraseCusto,
+  fraseDoses,
+  porRefeicaoGkg,
+} from '../../lib/nutricao/whey';
+
+const path = '/ferramentas/calculadora-de-whey';
+const atualizadoEm = '2026-10-01';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Calculadora de whey', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da ferramenta ── */
+const PERFIL_PADRAO = 'forca';
+const EX = doses(PESO_PADRAO, ALTURA_PADRAO, PERFIL_PADRAO, JA_COME_PADRAO, PROTEINA_DOSE_PADRAO);
+const EX_META = formataFaixaGramas(EX.meta.gramasMin, EX.meta.gramasMax);
+/* Sem comer nada: a conta que mostra por que o whey não substitui a comida. */
+const EX_ZERO = doses(PESO_PADRAO, ALTURA_PADRAO, PERFIL_PADRAO, 0, PROTEINA_DOSE_PADRAO);
+/* Já bate o mínimo: whey opcional. */
+const EX_TOPO = doses(PESO_PADRAO, ALTURA_PADRAO, PERFIL_PADRAO, 120, PROTEINA_DOSE_PADRAO);
+/* Emagrecer, 80 kg, já come 70 g. */
+const EX_EMAGRECER = doses(80, ALTURA_PADRAO, 'emagrecer', 70, PROTEINA_DOSE_PADRAO);
+/* Mounjaro: 110 kg e 1,65 m, já come 50 g — a meta usa o peso saudável. */
+const EX_GLP1 = doses(110, 165, 'glp1', 50, PROTEINA_DOSE_PADRAO);
+const pesoSaudavel165 = Math.round(pesoSaudavel(165));
+const EX_CUSTO = custo(PRECO_PADRAO, POTE_PADRAO, DOSE_PO_PADRAO, PROTEINA_DOSE_PADRAO);
+/* O pote "barato" que custa mais por grama: 50% de proteína. O exemplo é o mesmo do teste. */
+const EX_BARATO = custo(EXEMPLO_POTE_BARATO.preco, POTE_PADRAO, DOSE_PO_PADRAO, EXEMPLO_POTE_BARATO.proteinaDose);
+/* "Pode tomar 2 scoops?" — a sugestão por refeição, para 70 kg. */
+const porRefeicao70 = Math.round(porRefeicaoGkg(PESO_PADRAO));
+const doisScoops = 2 * PROTEINA_DOSE_PADRAO;
+const quatroScoops = 4 * PROTEINA_DOSE_PADRAO;
+const ovos3 = Math.round(OVOS_3_G);
+const faixaDoses = (d: typeof EX) => formataDoses(d.dosesMin, d.dosesMax);
+
+/* 60 caracteres. "Quantas doses" e "custo por grama" são as duas perguntas dos prints (01/10). */
+const title = 'Calculadora de Whey: Quantas Doses por Dia e Custo por Grama';
+/* 147 caracteres. */
+const description =
+  'Calculadora de whey grátis: quantas doses por dia faltam para a sua meta de proteína e quanto custa cada grama de proteína do pote que você compra.';
+
+const faqs = [
+  {
+    pergunta: 'Como calcular a quantidade de whey?',
+    resposta: `Em três passos: a meta de proteína do dia (peso vezes a faixa da sua situação — para ${PESO_PADRAO} kg treinando força, ${EX_META} g), menos o que você já come na comida, dividido pela proteína de uma dose do rótulo. Exemplo: ${EX_META} g de meta, ${JA_COME_PADRAO} g no prato e ${PROTEINA_DOSE_PADRAO} g por dose dão ${faixaDoses(EX)} doses por dia. A calculadora faz essa conta com os seus números.`,
+  },
+  {
+    pergunta: 'Quantas gramas de whey por kg?',
+    resposta: `${NOTA_SEM_DOSE_POR_KG} Para quem treina força, a proteína total é de 1,6 a 2,2 g por kg por dia; para emagrecer, 1,2 a 2,0; usando Mounjaro ou Ozempic, 1,2 a 1,6 sobre o peso saudável. Se o prato já cobre isso, a dose de whey é zero.`,
+  },
+  {
+    pergunta: 'Quantas gramas de whey uma pessoa de 70 kg deve tomar?',
+    resposta: `Depende do que ela já come. Com ${PESO_PADRAO} kg treinando para ganhar músculo, a meta é ${EX_META} g de proteína por dia. Com ${JA_COME_PADRAO} g na comida, faltam ${formataFalta(EX.faltaMin, EX.faltaMax)} g — ${faixaDoses(EX)} doses de ${PROTEINA_DOSE_PADRAO} g. Com 120 g na comida, o mínimo já está batido e o whey vira opcional. Sem comer proteína nenhuma, seriam ${faixaDoses(EX_ZERO)} doses — e aí o problema é o prato, não o pote.`,
+  },
+  {
+    pergunta: 'Quantos scoops de whey tomar por dia?',
+    resposta: `Os que faltam para fechar a sua proteína — em geral, zero, um ou dois. A calculadora faz a conta com a sua meta e o que você já come. Quando a conta passa de ${DOSES_TETO} doses por dia, a leitura certa é que a comida está curta: ${NOTA_COMIDA}`,
+  },
+  {
+    pergunta: 'Pode tomar 2 scoops de whey de uma vez?',
+    resposta: `Pode, mas não é o jeito mais útil. Dois scoops de ${PROTEINA_DOSE_PADRAO} g somam ${doisScoops} g de proteína numa tacada; a sugestão mais usada para quem quer ganhar músculo é de cerca de 0,4 g por kg por refeição — ${porRefeicao70} g para ${PESO_PADRAO} kg. Acima disso, o excedente da refeição não é perdido (vira energia e o total do dia continua contando), mas rende menos para o músculo do que a mesma proteína dividida em duas refeições. Se precisa de duas doses, separe-as.`,
+  },
+  {
+    pergunta: 'Pode tomar whey 3 vezes no dia? E 4 scoops?',
+    resposta: `Whey é comida em pó: o que limita é a proteína e as calorias do dia, não o número de vezes. Para adultos saudáveis, as faixas de proteína desta página são as de diretriz — e a calculadora de proteína explica os limites. O ponto prático é outro: 4 scoops de ${PROTEINA_DOSE_PADRAO} g são ${quatroScoops} g de proteína, quase toda a meta de uma pessoa de ${PESO_PADRAO} kg (${EX_META} g) vinda do pó. ${NOTA_COMIDA} Quem tem doença renal segue a regra do nefrologista.`,
+  },
+  {
+    pergunta: 'Quanto de whey tomar por dia para emagrecer?',
+    resposta: `A faixa de proteína para emagrecer preservando músculo é de 1,2 a 2,0 g por kg por dia, junto com treino de força. O whey entra no que a comida não cobre: com 80 kg e 70 g de proteína no prato, faltam ${formataFalta(EX_EMAGRECER.faltaMin, EX_EMAGRECER.faltaMax)} g — ${faixaDoses(EX_EMAGRECER)} doses. Whey não emagrece por si: ajuda a manter a proteína alta com poucas calorias quando a dieta aperta. ${NOTA_CALORIAS}`,
+  },
+  {
+    pergunta: 'Quanto de whey tomar por dia tomando Mounjaro?',
+    resposta: `A diretriz de 2025 para quem usa remédio da classe GLP-1 indica 1,2 a 1,6 g de proteína por kg de peso saudável para a altura, não do peso atual. Com 110 kg e 1,65 m, a conta usa ${pesoSaudavel165} kg e dá ${formataFaixaGramas(EX_GLP1.meta.gramasMin, EX_GLP1.meta.gramasMax)} g por dia; com 50 g na comida, faltam ${formataFalta(EX_GLP1.faltaMin, EX_GLP1.faltaMax)} g — ${faixaDoses(EX_GLP1)} doses. Com o apetite reduzido, o shake costuma ser a parte fácil de encaixar. O ajuste é com o médico e o nutricionista.`,
+  },
+  {
+    pergunta: 'Tomar whey todo dia engorda?',
+    resposta: `${NOTA_CALORIAS} Uma dose de concentrado tem as calorias de um iogurte; duas doses por dia, todo dia, só engordam se o total do dia passar do seu gasto. Quem está em déficit costuma usar o whey justamente para manter a proteína alta gastando poucas calorias.`,
+  },
+  {
+    pergunta: '1 dose de whey tem quantas gramas?',
+    resposta: `Depende do rótulo: a dose mais comum é de ${DOSE_PO_PADRAO} g de pó, e um concentrado típico entrega perto de ${PROTEINA_DOSE_PADRAO} g de proteína nela (${formataPct(EX_CUSTO.concentracao)}). Isolado passa de 85%; produto com muito carboidrato ou outra proteína fica abaixo de 70%. A conta certa é a do seu pote: gramas da dose e proteína por dose estão na tabela nutricional.`,
+  },
+  {
+    pergunta: 'Como medir 30 g de whey?',
+    resposta: `O scoop que vem no pote é a medida da dose do rótulo — nivelado, não cheio até transbordar. Para conferir, a única medida exata é a balança de cozinha: pese o pó uma vez e veja quanto o seu scoop nivelado pesa. Colher de sopa não serve de medida: o volume do pó muda com a marca e a umidade.`,
+  },
+  {
+    pergunta: 'Quanto de whey equivale a 3 ovos?',
+    resposta: `Três ovos de 50 g têm cerca de ${ovos3} g de proteína pela tabela brasileira de alimentos — um pouco menos que uma dose de ${PROTEINA_DOSE_PADRAO} g. A diferença é o resto: os ovos trazem gordura, ferro e uma refeição; o whey traz proteína e pouca coisa mais. Para fechar a conta, os dois servem; para substituir refeição, só um deles.`,
+  },
+  {
+    pergunta: 'Como saber se o whey é bom (custo-benefício)?',
+    resposta: `Compare o custo por grama de proteína, não o preço do pote. Divida a proteína por dose pelo tamanho da dose para ter a concentração; multiplique as doses do pote pela proteína por dose para ter os gramas de proteína que você está comprando; divida o preço por esse total. Exemplo: um pote de ${formataReais(EX_CUSTO.preco)} com ${formataPct(EX_CUSTO.concentracao)} de proteína sai a ${formataReais(EX_CUSTO.custoPorGrama)} por grama; um de ${formataReais(EX_BARATO.preco)} com ${formataPct(EX_BARATO.concentracao)} sai a ${formataReais(EX_BARATO.custoPorGrama)} — o mais barato custa mais por grama. A calculadora faz essa conta.`,
+  },
+];
+
+const relacionados = [
+  {
+    url: '/ferramentas/calculadora-de-proteina/',
+    titulo: 'Calculadora de proteína',
+    descricao: 'A meta do dia por situação — ganhar músculo, emagrecer, Mounjaro, 65+ — com a diretriz de cada faixa.',
+    tipo: 'Ferramenta',
+  },
+  {
+    url: '/musculacao/quanto-de-proteina-tem-cada-alimento/',
+    titulo: 'Quanto de proteína tem cada alimento',
+    descricao: 'Ovo, frango, carne, feijão: os números da TACO para somar o que você já come.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/whey-protein-o-que-e-como-tomar/',
+    titulo: 'Whey protein: o que é e como tomar',
+    descricao: 'Concentrado, isolado ou hidrolisado, a janela anabólica aposentada e os mitos.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/suplementos-que-nao-funcionam/',
+    titulo: 'Suplementos que não funcionam',
+    descricao: 'O que a evidência sustenta e o que é só marketing — para gastar onde rende.',
+    tipo: 'Musculação',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="wy-hero">
+    <div class="container wy-hero-inner">
+      <p class="eyebrow">Ferramenta de treino</p>
+      <h1>Calculadora de whey: quantas doses por dia e quanto custa cada grama</h1>
+      <p class="wy-hero-lead">
+        Whey é a parte da proteína do dia que a comida não cobriu — por isso a conta começa pela sua
+        meta e pelo que você já come. Para {PESO_PADRAO} kg treinando força, com {JA_COME_PADRAO} g no
+        prato: <strong>{faixaDoses(EX)} doses por dia</strong>. E, pelo rótulo, a calculadora diz se o
+        pote vale o preço: custo por grama de proteína e concentração.
+      </p>
+      <p class="wy-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container wy-layout">
+    <article class="wy-main">
+      <section id="wy-app" class="wy-app" aria-labelledby="wy-app-h">
+        <h2 id="wy-app-h" class="wy-app-h">Calculadora de whey por dia</h2>
+
+        <div class="wy-campos">
+          <fieldset class="wy-grupo">
+            <legend>O seu whey (do rótulo)</legend>
+            <div class="wy-par">
+              <div class="wy-campo">
+                <label for="wy-dose-po">Tamanho da dose (g de pó)</label>
+                <input id="wy-dose-po" type="text" inputmode="decimal" autocomplete="off" value={DOSE_PO_PADRAO} />
+              </div>
+              <div class="wy-campo">
+                <label for="wy-dose-prot">Proteína por dose (g)</label>
+                <input id="wy-dose-prot" type="text" inputmode="decimal" autocomplete="off" value={PROTEINA_DOSE_PADRAO} />
+              </div>
+            </div>
+            <p class="wy-dica">{NOTA_ROTULO}</p>
+          </fieldset>
+
+          <fieldset class="wy-grupo">
+            <legend>Você</legend>
+            <div class="wy-par">
+              <div class="wy-campo">
+                <label for="wy-peso">Peso (kg)</label>
+                <input id="wy-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO_PADRAO} />
+              </div>
+              <div class="wy-campo">
+                <label for="wy-altura">Altura (cm)</label>
+                <input id="wy-altura" type="text" inputmode="decimal" autocomplete="off" value={ALTURA_PADRAO} />
+              </div>
+            </div>
+
+            <div class="wy-campo">
+              <span class="wy-rotulo" id="wy-perfil-rotulo">A sua situação</span>
+              <div class="wy-presets" role="group" aria-labelledby="wy-perfil-rotulo">
+                {PERFIS.map((p) => (
+                  <button
+                    type="button"
+                    class:list={['wy-preset', 'wy-perfil', p.id === PERFIL_PADRAO && 'is-ativo']}
+                    data-perfil={p.id}
+                    aria-pressed={String(p.id === PERFIL_PADRAO)}
+                  >
+                    {p.nomeCurto}
+                  </button>
+                ))}
+              </div>
+              <p class="wy-dica wy-perfil-slot" id="wy-perfil-dica">
+                {perfil(PERFIL_PADRAO).nome}: {formataFaixaGkg(perfil(PERFIL_PADRAO))} g por kg.
+              </p>
+            </div>
+
+            <div class="wy-campo">
+              <label for="wy-come">Proteína que você já come por dia (g)</label>
+              <input id="wy-come" type="text" inputmode="decimal" autocomplete="off" value={JA_COME_PADRAO} />
+              <p class="wy-dica">
+                Some um dia típico: ovo, carne, frango, leite, feijão. A{' '}
+                <a href="/musculacao/quanto-de-proteina-tem-cada-alimento/">tabela de proteína nos alimentos</a>{' '}
+                ajuda a somar.
+              </p>
+            </div>
+          </fieldset>
+        </div>
+
+        <p id="wy-erro-doses" class="wy-erro" role="status" hidden></p>
+
+        <div id="wy-saida-doses" class="wy-saida" role="status" aria-live="polite">
+          <p class="wy-resultado">
+            <span class="wy-numero">{faixaDoses(EX)}</span>
+            <span class="wy-unidade">{EX.dosesMax === 1 ? 'dose de whey por dia' : 'doses de whey por dia'}</span>
+          </p>
+          <p class="wy-frase">{fraseDoses(EX)}</p>
+
+          <dl class="wy-detalhes">
+            <div><dt>Meta do dia</dt><dd class="wy-d-meta">{EX_META} g</dd></div>
+            <div><dt>Já na comida</dt><dd class="wy-d-come">{JA_COME_PADRAO} g</dd></div>
+            <div><dt>Falta</dt><dd class="wy-d-falta">{formataFalta(EX.faltaMin, EX.faltaMax)} g</dd></div>
+          </dl>
+
+          <p class="wy-nota wy-nota-ajustado" hidden>{NOTA_PESO_AJUSTADO}</p>
+          <p class="wy-nota wy-nota-perfil">{perfil(PERFIL_PADRAO).nota}</p>
+          <p class="wy-nota">{NOTA_RIM}</p>
+        </div>
+
+        <h2 class="wy-app-h wy-app-h2">O whey vale o preço? Custo por grama de proteína</h2>
+        <div class="wy-campos">
+          <fieldset class="wy-grupo">
+            <legend>O pote</legend>
+            <div class="wy-par">
+              <div class="wy-campo">
+                <label for="wy-preco">Preço do pote (R$)</label>
+                <input id="wy-preco" type="text" inputmode="decimal" autocomplete="off" value={PRECO_PADRAO} />
+              </div>
+              <div class="wy-campo">
+                <label for="wy-pote">Peso do pote (g)</label>
+                <input id="wy-pote" type="text" inputmode="decimal" autocomplete="off" value={POTE_PADRAO} />
+              </div>
+            </div>
+            <p class="wy-dica">A dose e a proteína por dose são as do rótulo, preenchidas acima.</p>
+          </fieldset>
+        </div>
+
+        <p id="wy-erro-custo" class="wy-erro" role="status" hidden></p>
+
+        <div id="wy-saida-custo" class="wy-saida" role="status" aria-live="polite">
+          <p class="wy-resultado">
+            <span class="wy-numero">{formataReais(EX_CUSTO.custoPorGrama)}</span>
+            <span class="wy-unidade">por grama de proteína</span>
+          </p>
+          <p class="wy-frase">{fraseCusto(EX_CUSTO)}</p>
+
+          <dl class="wy-detalhes">
+            <div><dt>Proteína no pó</dt><dd class="wy-d-conc">{formataPct(EX_CUSTO.concentracao)}</dd></div>
+            <div><dt>Por dose</dt><dd class="wy-d-dose">{formataReais(EX_CUSTO.custoPorDose)}</dd></div>
+            <div><dt>Doses no pote</dt><dd class="wy-d-doses">{formataInteiro(EX_CUSTO.dosesPorPote)}</dd></div>
+            <div><dt>O pote dura</dt><dd class="wy-d-dias">{diasQueDura(EX_CUSTO, Math.max(EX.dosesMin, 1))} dias, a {Math.max(EX.dosesMin, 1)} dose por dia</dd></div>
+          </dl>
+
+          <p class="wy-nota wy-classe">{CLASSES[EX_CUSTO.classe].leitura}</p>
+          <p class="wy-nota">
+            Para comparar dois potes, troque os números e olhe só o custo por grama de proteína: é o
+            único preço que desconta o que não é proteína.
+          </p>
+
+          <div class="wy-proximo">
+            <p class="wy-proximo-lead">
+              O pó fecha a conta da proteína; o que faz a proteína virar músculo é o treino de força bem
+              montado, com carga que progride. <strong>A dieta é com o nutricionista; o treino, com quem
+              acompanha você de perto.</strong>
+            </p>
+            <div class="wy-proximo-acoes">
+              <a class="wy-btn wy-btn-primario" href="/personal-trainer/" data-track="ferramenta-whey:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="wy-btn wy-btn-secundario wy-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="ferramenta-whey:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="wy-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose wy-conteudo">
+        <h2>Como calcular a quantidade de whey</h2>
+        <p>
+          A conta tem três partes, e a maioria das calculadoras pula a do meio. Primeiro, a sua meta de
+          proteína do dia: o peso vezes a faixa da sua situação — para {PESO_PADRAO} kg treinando
+          força, {EX_META} g. Segundo, quanto você já come: ovo no café, frango no almoço, carne no
+          jantar, o feijão de todo dia. Terceiro, a diferença dividida pela proteína de uma dose do seu
+          rótulo. Com {JA_COME_PADRAO} g no prato e {PROTEINA_DOSE_PADRAO} g por dose, faltam{' '}
+          {formataFalta(EX.faltaMin, EX.faltaMax)} g: <strong>{faixaDoses(EX)} doses por dia</strong>.
+        </p>
+        <p>
+          A parte do meio muda tudo. Com 120 g no prato, a mesma pessoa já bate o mínimo da faixa e o
+          whey vira opcional ({faixaDoses(EX_TOPO)} dose para chegar ao topo, se quiser). Sem comer
+          proteína nenhuma, seriam {faixaDoses(EX_ZERO)} doses — um número que a calculadora mostra, mas
+          lê do jeito certo: o problema é o prato, não o pote.
+        </p>
+
+        <h2>Quantas gramas de whey por kg?</h2>
+        <p>
+          {NOTA_SEM_DOSE_POR_KG} As faixas de proteína total são as da{' '}
+          <a href="/ferramentas/calculadora-de-proteina/">calculadora de proteína</a>, e cada uma vem
+          de uma diretriz:
+        </p>
+        <ul class="wy-perfis">
+          {PERFIS.map((p) => (
+            <li>
+              <span class="wy-perfil-nome">{p.nome}</span>
+              <span class="wy-perfil-gkg">{formataFaixaGkg(p)} g/kg</span>
+            </li>
+          ))}
+        </ul>
+        <p>
+          O whey não tem faixa própria porque não precisa: ele cobre o que sobra dessa conta depois da
+          comida. {NOTA_COMIDA}
+        </p>
+
+        <h2>Quantos scoops de whey tomar: 1, 2, 3 ou 4?</h2>
+        <p>
+          Os que faltam — e, na maioria dos casos, isso dá zero, um ou dois por dia. Quando a conta
+          passa de {DOSES_TETO} doses, a calculadora muda a leitura: não é "precisa de mais whey", é
+          "a comida está curta". Um pote resolve a proteína do papel; o que ele não resolve é o resto
+          que a refeição traz junto.
+        </p>
+        <p>
+          "Pode tomar 2 scoops de uma vez?" Pode, mas rende menos. Dois scoops de{' '}
+          {PROTEINA_DOSE_PADRAO} g somam {doisScoops} g numa tacada; a sugestão mais usada para quem
+          quer ganhar músculo é de cerca de 0,4 g por kg por refeição — {porRefeicao70} g para{' '}
+          {PESO_PADRAO} kg. O excedente de uma refeição não é jogado fora (vira energia, e o total do
+          dia continua contando), mas rende menos para o músculo do que a mesma proteína dividida em
+          duas refeições. Se a conta deu duas doses, separe-as.
+        </p>
+        <p>
+          "Pode tomar 3 vezes no dia? E 4 scoops?" O que limita não é o número de vezes, é a proteína e
+          as calorias do dia inteiro. Quatro scoops são {quatroScoops} g — quase toda a meta de uma
+          pessoa de {PESO_PADRAO} kg vinda do pó, o que é possível na conta e pobre na prática. {NOTA_RIM}
+        </p>
+
+        <h2>Whey para emagrecer e whey tomando Mounjaro</h2>
+        <p>
+          Para emagrecer preservando músculo, a faixa é de 1,2 a 2,0 g de proteína por kg, junto com
+          treino de força. O whey não emagrece: ajuda a manter a proteína alta gastando poucas calorias
+          quando a dieta aperta. Com 80 kg e 70 g no prato, faltam{' '}
+          {formataFalta(EX_EMAGRECER.faltaMin, EX_EMAGRECER.faltaMax)} g — {faixaDoses(EX_EMAGRECER)}{' '}
+          doses. {NOTA_CALORIAS}
+        </p>
+        <p>
+          Quem usa Mounjaro, Ozempic ou remédio parecido tem perfil próprio na calculadora, e a conta
+          é diferente: a diretriz de 2025 dá a faixa (1,2 a 1,6 g/kg) por quilo de peso saudável para a
+          altura, não do peso atual. Com 110 kg e 1,65 m, a meta usa {pesoSaudavel165} kg e fica em{' '}
+          {formataFaixaGramas(EX_GLP1.meta.gramasMin, EX_GLP1.meta.gramasMax)} g; com 50 g no prato,
+          faltam {formataFalta(EX_GLP1.faltaMin, EX_GLP1.faltaMax)} g — {faixaDoses(EX_GLP1)} doses. Com
+          o apetite reduzido pelo remédio, o shake costuma ser a parte fácil de encaixar; o treino que
+          protege o músculo está no guia de{' '}
+          <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como evitar perda de massa
+          muscular com Mounjaro</a>. O ajuste fino é com o médico e o nutricionista.
+        </p>
+
+        <h2>O whey vale o preço? Custo por grama e concentração</h2>
+        <p>
+          O preço do pote não diz nada sozinho. O que você compra é proteína, e a conta honesta tem
+          dois números do rótulo: a proteína por dose dividida pelo tamanho da dose dá a concentração
+          (quanto do pó é proteína), e o preço dividido pelos gramas de proteína do pote inteiro dá o
+          custo por grama. Um pote de {formataReais(EX_CUSTO.preco)} com{' '}
+          {formataPct(EX_CUSTO.concentracao)} de proteína sai a{' '}
+          <strong>{formataReais(EX_CUSTO.custoPorGrama)} por grama</strong>; um de{' '}
+          {formataReais(EX_BARATO.preco)} com {formataPct(EX_BARATO.concentracao)} sai a{' '}
+          {formataReais(EX_BARATO.custoPorGrama)}. O mais barato custa mais caro.
+        </p>
+        <p>
+          A concentração também diz o que o pó é. Concentrado comum fica entre 70 e 85%; isolado passa
+          de 85%, custa mais por grama e compensa quando a lactose incomoda ou quando cada caloria
+          conta. Abaixo de 70%, mais de 30% do pó é outra coisa — carboidrato, gordura, outra proteína
+          mais barata —, e a defesa é a lista de ingredientes. A calculadora não acusa ninguém: faz a
+          conta e deixa a leitura com você.
+        </p>
+
+        <h2>Como medir a dose: 1 dose tem quantas gramas?</h2>
+        <p>
+          Depende do rótulo. A dose mais comum é de {DOSE_PO_PADRAO} g de pó, e um concentrado típico
+          entrega perto de {PROTEINA_DOSE_PADRAO} g de proteína nela — mas marcas usam doses de 25 a 40
+          g, e é por isso que a calculadora pede os dois números do seu pote em vez de assumir. O scoop
+          que vem na embalagem é a medida da dose do rótulo, nivelado. Para conferir, a única medida
+          exata é a balança de cozinha: pese uma vez e saiba quanto o seu scoop nivelado carrega.
+          Colher de sopa não serve — o volume do pó muda com a marca e a umidade.
+        </p>
+        <p>
+          E quanto de whey equivale a três ovos? Cerca de {ovos3} g de proteína, pela tabela brasileira
+          de alimentos — um pouco menos que uma dose de {PROTEINA_DOSE_PADRAO} g. Quanto cada alimento
+          tem está na{' '}
+          <a href="/musculacao/quanto-de-proteina-tem-cada-alimento/">tabela de proteína nos alimentos</a>.
+        </p>
+
+        <h2>Quando não usar esta conta</h2>
+        <p>{NOTA_RIM}</p>
+        <p>{NOTA_ROTULO}</p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          A meta de proteína vem do mesmo motor da calculadora de proteína: peso vezes a faixa da
+          situação, com o peso saudável nos perfis de Mounjaro e Ozempic. Desta meta a calculadora
+          subtrai o que você já come e divide o que falta pela proteína de uma dose do rótulo,
+          arredondando para cima — meia dose não existe. Acima de {DOSES_TETO} doses no mínimo da
+          faixa, a leitura muda para "comida curta". O custo por grama é o preço do pote dividido pelos
+          gramas de proteína que ele contém; a concentração, a proteína por dose dividida pelo tamanho
+          da dose.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora usa,
+          e os testes conferem cada conta.
+        </p>
+        <p class="wy-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Referências</h2>
+        <ul class="wy-fontes">
+          {FONTES.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre whey" />
+
+      <WhatsAppCta tema="alimentacao" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraWhey } from '../../scripts/calculadoraWhey.client';
+    iniciarCalculadoraWhey();
+  </script>
+  <style>
+    .wy-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .wy-hero-inner { max-width: 780px; }
+    .wy-hero h1 { color: #fff; max-width: 26ch; }
+    .wy-hero :global(.eyebrow) { color: #ffb488; }
+    .wy-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .wy-hero-lead strong { color: #fff; }
+    .wy-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .wy-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .wy-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .wy-main { min-width: 0; max-width: 760px; }
+
+    .wy-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .wy-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+    .wy-app-h2 { margin-top: var(--sp-6); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+
+    .wy-campos { display: grid; gap: var(--sp-4); }
+    .wy-grupo { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); margin: 0; display: grid; gap: var(--sp-4); }
+    .wy-grupo legend { font-weight: 700; font-size: var(--step--1); padding: 0 0.4rem; color: var(--ink-soft); }
+    /* Dois campos lado a lado; empilham antes de apertar, para o Tab só descer. */
+    .wy-par { display: grid; gap: var(--sp-4); grid-template-columns: 1fr; }
+    @media (min-width: 520px) {
+      .wy-par { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+    }
+    .wy-campo label,
+    .wy-campo .wy-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .wy-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .wy-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .wy-dica { margin: 0; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    .wy-campo .wy-dica { margin-top: 0.5rem; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .wy-perfil-slot { min-height: 1.5em; }
+
+    .wy-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .wy-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .wy-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .wy-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .wy-preset.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .wy-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .wy-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .wy-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .wy-numero {
+      font-size: clamp(2rem, 7.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .wy-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .wy-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .wy-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .wy-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .wy-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .wy-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .wy-nota-ajustado { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+    .wy-classe { color: var(--ink-soft); }
+
+    .wy-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .wy-proximo-lead { line-height: 1.6; }
+    .wy-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .wy-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .wy-btn-primario { background: var(--brand-600); color: #fff; }
+    .wy-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .wy-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .wy-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .wy-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .wy-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .wy-conteudo { margin-top: var(--sp-7); }
+    .wy-perfis { list-style: none; padding: 0; margin: var(--sp-4) 0; display: grid; gap: 0.5rem; }
+    .wy-perfis li { display: flex; justify-content: space-between; gap: var(--sp-3); padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+    .wy-perfil-nome { font-weight: 600; }
+    .wy-perfil-gkg { font-weight: 700; color: var(--brand-600); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .wy-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .wy-fontes li { margin-bottom: 0.6rem; }
+    .wy-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>

@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 28, `${catalogo.length} ferramentas no catálogo (28)`);
+ok(catalogo.length === 29, `${catalogo.length} ferramentas no catálogo (29)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -92,6 +92,10 @@ const casos: Array<[string, string]> = [
   ['quanto de proteína por dia', 'calculadora-de-proteina'],
   ['proteína para quem usa mounjaro', 'calculadora-de-proteina'],
   ['quantas gramas de proteína para hipertrofia', 'calculadora-de-proteina'],
+  ['calculadora de whey', 'calculadora-de-whey'],
+  ['quanto whey tomar por dia', 'calculadora-de-whey'],
+  ['quantos scoops de whey', 'calculadora-de-whey'],
+  ['whey vale a pena custo benefício', 'calculadora-de-whey'],
   ['quantas calorias gasto por dia', 'gasto-calorico-diario'],
   ['taxa metabólica basal', 'gasto-calorico-diario'],
   ['muay thai', 'lutas'],

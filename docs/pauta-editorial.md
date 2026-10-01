@@ -813,6 +813,22 @@ e é uma mudança que toca 985 páginas de uma vez, então ela **não** sobe
 
 ---
 
+## Ferramentas nascidas de prints — 01/10/2026
+
+- ✅ **Calculadora de whey** (`/ferramentas/calculadora-de-whey/`). O Renato
+  perguntou "temos calculadora de whey?" e mandou os prints de "calculadora
+  de whey" e "quanto whey tomar por dia". Duas perguntas por trás: quanto
+  tomar (por peso, por dia, scoops, 2 scoops, 3x, 4 scoops, Mounjaro,
+  emagrecer) e se vale o preço (custo-benefício, "whey bom", "gordo" — o
+  resumo de IA do Google aponta a calculadora de uma marca). A página faz as
+  duas contas: doses = (meta da calculadora de proteína − o que já come) ÷
+  proteína por dose do rótulo; custo por grama e concentração pelo rótulo.
+  Recorte contra a calculadora de proteína: ela fica com "quantos gramas de
+  proteína"; a de whey, com tudo que é "whey" (os apelidos de whey saíram
+  do catálogo dela). O artigo de whey ganhou link na frase "preço por grama
+  de proteína", sem subir a data. Ficou fora: calorias do whey (o rótulo
+  diz) e comparação de marcas.
+
 ## ⚠️ Sobreposição parcial — decidir o recorte antes de escrever
 
 Não são duplicatas, mas sem um recorte claro os dois competem entre si no
