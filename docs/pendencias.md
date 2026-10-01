@@ -82,6 +82,8 @@ até 29/09/2026):
    (0,7%), posição 10,1; "personal trainer porto alegre" 35 impressões,
    posição 26,0; "personal trainer em porto alegre" 20 impressões, 1
    clique, posição 24,9.
+   **Aracaju** mudou em 01/10: 265 impressões, 2 cliques (0,8%), posição
+   6,3.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

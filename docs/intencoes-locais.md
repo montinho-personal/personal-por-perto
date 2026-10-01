@@ -283,3 +283,31 @@ personal da rede).
 **Bairros candidatos em Porto Alegre:** zona sul, zona norte e centro — os
 seis bairros publicados (Moinhos de Vento, Bela Vista, Petrópolis, Três
 Figueiras, Menino Deus, Cidade Baixa) são da região central e nobre.
+
+## Aracaju — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em aracaju | "mulher", "instagram", "quanto custa um personal trainer em aracaju", "personal em aracaju" ("arapiraca" é outra cidade, em AL); relacionadas: "online", "barra dos coqueiros", "academia aracaju", "personal inteligente" | valor de 1 hora · vale a pena pagar · 3 ou 5 vezes na semana · **um personal pode me ajudar a emagrecer?** | **mapa de empresas no topo**, com três personais 5,0 (25 a 49 avaliações), um com foco em dor lombar; Superprof (5,0, 11); StarOfService; perfis de Instagram |
+
+Busca feita em janela anônima, com localização em Santana de Parnaíba.
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana", Instagram, "online ou presencial" (relacionadas) e "Um
+personal trainer pode ajudar a emagrecer em Aracaju?", com texto próprio
+(calor, horários e a orla 24 horas, que a página já documenta).
+
+**Corrigido junto:** as vizinhas eram Salvador e Recife. Entraram Nossa
+Senhora do Socorro e São Cristóvão, da Grande Aracaju, na frente.
+
+**Não aplicado:** "mulher"; "3 ou 5 vezes na semana" — já tem três versões
+próprias (Barueri, Teresina, São Luís), e a quarta, sem um fato local que a
+diferencie, seria a mesma resposta trocando o nome da cidade; "academia
+aracaju" e "personal inteligente" (outros assuntos).
+
+**Bairro candidato:** Barra dos Coqueiros (é município vizinho, sem página).
+
+**Leitura do resultado:** em Aracaju o topo é do **mapa de empresas**, com
+personais avaliados. É o mesmo padrão da busca de SP, onde a ficha do
+Montinho aparece: na busca local, quem tem perfil no Google com avaliação
+ganha a primeira dobra da página.

@@ -94,7 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais bem estruturadas do Nordeste e custo de vida acessível, Aracaju é uma cidade convidativa para treinar ao ar livre. Um personal trainer ajuda a transformar a orla de Atalaia e as ciclovias em um plano de treino consistente, ajustado ao clima quente e ao seu objetivo.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "instagram", "quanto custa
+   * um personal trainer em aracaju" e "personal em aracaju" ("arapiraca" é
+   * outra cidade, em Alagoas); relacionadas com "online", "barra dos
+   * coqueiros", "academia aracaju" e "personal inteligente"; PAA com "valor
+   * de 1 hora", "vale a pena pagar", "3 ou 5 vezes na semana" e "um personal
+   * pode me ajudar a emagrecer?". No mapa, três personais com 5,0 — um deles
+   * com foco em dor lombar. Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Um personal trainer pode ajudar a emagrecer em Aracaju?',
+      resposta:
+        'Pode, pelo lado que é dele: o treino. O personal monta a musculação que segura a massa muscular durante o déficit, ajusta a progressão e garante a regularidade — que em Aracaju costuma passar pelo horário: com calor e umidade o ano todo, o treino ao ar livre rende mais cedo ou no fim da tarde, e a orla aberta 24 horas ajuda quem só tem a noite. A alimentação, que decide o déficit, é com o nutricionista. E desconfie de quem promete um número de quilos por mês: o ritmo depende do corpo, da rotina e da dieta, não só do treino.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Aracaju?',
       resposta:
@@ -112,7 +129,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['salvador-ba', 'recife-pe'],
+  // As vizinhas eram Salvador e Recife. Em 01/10/2026 entraram, na frente,
+  // as da Grande Aracaju que o portal tem.
+  vizinhas: ['nossa-senhora-do-socorro-se', 'sao-cristovao-se', 'salvador-ba', 'recife-pe'],
 
   fontes: [
     { nome: 'IBGE Cidades — Aracaju', url: 'https://cidades.ibge.gov.br/brasil/se/aracaju/panorama' },
@@ -128,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aracaju: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-10-01',
 };
