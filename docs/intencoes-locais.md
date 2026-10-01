@@ -590,3 +590,24 @@ Região Metropolitana.
 **Não aplicado:** "mulher", as notícias, "fralda" e "tradução" (outros
 assuntos); "pode treinar 1 hora da manhã?" (já em Juiz de Fora) e "quem
 treina 3x tem resultado?" (já em Natal) — repetir seria o mesmo texto.
+
+## Fortaleza — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer fortaleza | **"preço"**, "mulher", **"instagram"**, "greenlife", "selfit", "idosos", "vagas", "curso" e uma notícia; relacionadas: **"caucaia"**, "preço", "instagram", "smart fit", "greenlife", **"valor personal trainer mensal"**, "personal training ou trainer" | quanto custa em Fortaleza · **1 mês** · **3 vezes por semana** · é vantajoso pagar | mapa com personais e estúdio (5,0; até 116 avaliações); Superprof ("R$ 120/h"); Instagram; trainerconnect; Reddit r/Fortaleza ("vale a pena pra quem nunca treinou?"); BeBee |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "como avaliar pelo Instagram". **Vizinhas:** eram
+Natal, João Pessoa e Recife; entraram, na frente, Caucaia (nas
+relacionadas), Maracanaú, Eusébio e Aquiraz, todas com divisa.
+
+**Não aplicado:** "mulher", "vagas", "curso" (emprego e formação), redes
+pelo nome (Greenlife, Selfit, Smart Fit — política não verificada), a
+notícia; "idosos" — segunda capital em que aparece (depois do Rio); o
+portal já tem o guia de terceira idade, e a pergunta própria fica no
+Recife. A dúvida do Reddit ("vale a pena para quem nunca treinou?") é
+respondida pelo guia de iniciantes, sem fato local que justifique pergunta
+própria.
+
+Com Fortaleza, a leva 4 está completa.

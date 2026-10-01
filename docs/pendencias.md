@@ -103,6 +103,7 @@ até 29/09/2026):
    posição 40), em 01/10.
    **Londrina** (480 impressões, 11 cliques), em 01/10.
    **Belém** (359 impressões, 6 cliques), em 01/10.
+   **Fortaleza** (325 impressões, 4 cliques), em 01/10 — fecha a leva 4.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

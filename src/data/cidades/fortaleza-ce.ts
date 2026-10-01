@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Com orla estruturada, sol o ano inteiro e uma cultura de praia que valoriza o corpo, Fortaleza é um ótimo lugar para treinar. Um personal trainer ajuda a aproveitar a Beira-Mar e as academias da cidade com método e segurança, respeitando o calor e o seu objetivo.',
 
+  /*
+   * Prints de 01/10: autocompletar com "preço", "mulher", "instagram",
+   * "greenlife", "selfit", "idosos", "vagas", "curso" e uma notícia;
+   * relacionadas com "caucaia", "preço", "instagram", "smart fit",
+   * "greenlife" e "valor personal trainer mensal"; PAA com "quanto custa em
+   * Fortaleza", "1 mês", "3 vezes por semana" e "é vantajoso pagar".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Fortaleza?',
@@ -113,7 +124,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['natal-rn', 'joao-pessoa-pb', 'recife-pe'],
+  // As vizinhas eram Natal, João Pessoa e Recife. Em 01/10/2026 entraram,
+  // na frente, Caucaia (nas relacionadas da busca), Maracanaú, Eusébio e
+  // Aquiraz — todas fazem divisa com Fortaleza.
+  vizinhas: ['caucaia-ce', 'maracanau-ce', 'eusebio-ce', 'aquiraz-ce', 'natal-rn', 'joao-pessoa-pb', 'recife-pe'],
 
   fontes: [
     { nome: 'IBGE Cidades — Fortaleza', url: 'https://cidades.ibge.gov.br/brasil/ce/fortaleza/panorama' },
@@ -129,5 +143,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Fortaleza: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-10-01',
 };
