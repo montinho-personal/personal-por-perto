@@ -479,3 +479,29 @@ escolha do bairro no piloto. A página de Icaraí já recebe link da página de
 Niterói e não foi tocada — é do piloto, leitura em 09/10.
 
 Com Niterói, a leva 3 está completa.
+
+## Salvador — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer salvador | **"preço"**, **"instagram"**, "mulher", "bahia", **"imbui"**, "famoso", "camisa" e duas sugestões ligadas a notícia ("acusado", "assedio"); relacionadas: **"lauro de freitas"**, "preço", "instagram", "smart fit", "particular", **"valor personal trainer mensal"**, "mulher", "assedio" | valor em Salvador · **1 mês** · **3 vezes por semana** · é vantajoso pagar | mapa de personais; Superprof (5,0, 51); três perfis de Instagram; suasaulasparticulares |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" (duas perguntas do PAA e uma relacionada pedem isso) e
+"como avaliar pelo Instagram" (autocompletar e relacionadas). **Vizinhas:**
+eram só Aracaju e Recife; entraram, na frente, Lauro de Freitas (nas
+relacionadas) e Simões Filho, que fazem divisa, e Camaçari, da Região
+Metropolitana.
+
+**Não aplicado:** "mulher", "famoso", "camisa", "particular", "smart fit";
+as sugestões ligadas a notícia não entram em página de cidade. "Online"
+não apareceu como busca, então a pergunta "online ou presencial" ficou de
+fora.
+
+**Achado editorial (para o Renato decidir):** "assédio" aparece no
+autocompletar e nas relacionadas. Por trás há uma dúvida legítima — como
+reconhecer conduta profissional e se proteger no treino individual —, que
+caberia num guia nacional, não numa página de cidade e nunca citando caso.
+
+**Bairro candidato em Salvador:** Imbuí (sem página hoje; Salvador já tem
+sete bairros).

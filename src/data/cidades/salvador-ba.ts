@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Entre a orla, os parques e as academias públicas, Salvador oferece muitas portas de entrada para treinar — do acesso gratuito ao estúdio premium. Um personal trainer ajuda a escolher o melhor caminho para o seu objetivo e a respeitar o clima quente e úmido da capital baiana.',
 
+  /*
+   * Prints de 01/10: autocompletar com "preço", "instagram", "mulher",
+   * "bahia", "imbui", "famoso", "camisa" e duas sugestões de notícia;
+   * relacionadas com "lauro de freitas", "preço", "instagram", "smart fit",
+   * "particular" e "valor personal trainer mensal"; PAA com "valor em
+   * Salvador", "1 mês", "3 vezes por semana" e "é vantajoso pagar".
+   * Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Salvador?',
@@ -113,14 +124,17 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['aracaju-se', 'recife-pe'],
+  // As vizinhas eram só Aracaju e Recife. Em 01/10/2026 entraram, na
+  // frente, Lauro de Freitas (nas relacionadas da busca) e Simões Filho,
+  // que fazem divisa com Salvador, e Camaçari, da Região Metropolitana.
+  vizinhas: ['lauro-de-freitas-ba', 'simoes-filho-ba', 'camacari-ba', 'aracaju-se', 'recife-pe'],
 
   fontes: [
     { nome: 'IBGE Cidades — Salvador', url: 'https://cidades.ibge.gov.br/brasil/ba/salvador/panorama' },
     { nome: 'Prefeitura de Salvador', url: 'https://www.salvador.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/salvador-ba.webp',
     w: 1200,
