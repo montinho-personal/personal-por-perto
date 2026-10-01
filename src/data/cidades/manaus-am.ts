@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Na maior cidade da Amazônia, treinar bem é, antes de tudo, saber lidar com o calor e a umidade — e é aí que um personal trainer faz diferença, ajustando horários, intensidade e hidratação. Com a orla do Rio Negro e boas academias, Manaus oferece estrutura para quem quer evoluir com método.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "valor", "bem avaliados",
+   * "smart fit", nomes próprios e uma notícia; relacionadas com "valor",
+   * "online", "valor personal trainer smart fit" e "quanto ganha" (quem
+   * procura emprego); PAA só de preço — "qual o valor em Manaus?", "1 mês",
+   * "3 vezes por semana" e "é vantajoso pagar". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Manaus?',
@@ -113,7 +124,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['palmas-to', 'brasilia-df'],
+  // As vizinhas eram Palmas e Brasília. Em 01/10/2026 entraram, na frente,
+  // as da Região Metropolitana de Manaus que o portal tem.
+  vizinhas: ['manacapuru-am', 'presidente-figueiredo-am', 'itacoatiara-am', 'novo-airao-am', 'palmas-to', 'brasilia-df'],
 
   fontes: [
     { nome: 'IBGE Cidades — Manaus', url: 'https://cidades.ibge.gov.br/brasil/am/manaus/panorama' },
@@ -129,5 +142,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Manaus: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-23',
+  atualizadoEm: '2026-10-01',
 };

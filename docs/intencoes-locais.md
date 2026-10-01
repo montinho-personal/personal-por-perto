@@ -366,3 +366,19 @@ tabela e a pergunta de preço padrão; "personal fralda" (outro assunto).
 
 **Vizinhas de Juiz de Fora:** seguem BH, Contagem e Rio — o portal não tem
 página de nenhum município vizinho de Juiz de Fora.
+
+## Manaus — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer manaus | "mulher", "valor", "bem avaliados", "smart fit", nomes próprios, "camisa" e uma notícia; relacionadas: "valor", "online", "valor personal trainer smart fit", "quanto ganha" | qual o valor em Manaus · 1 mês · 3 vezes por semana · é vantajoso pagar | perfis de Instagram; site de personal com app a R$ 19,90 |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "online ou presencial" ("online" nas relacionadas). As
+quatro perguntas do PAA são de preço — a página já respondia "quanto
+custa", e agora responde o mês e a frequência. **Vizinhas:** eram Palmas e
+Brasília; entraram Manacapuru, Presidente Figueiredo, Itacoatiara e Novo
+Airão, da Região Metropolitana de Manaus.
+
+**Não aplicado:** "mulher", "smart fit", "quanto ganha" (emprego), nomes,
+"camisa", a notícia; "bem avaliados" — o portal não avalia profissionais.
