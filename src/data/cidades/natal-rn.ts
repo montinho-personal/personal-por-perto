@@ -94,7 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Com sol quase o ano inteiro, orlas estruturadas e a Via Costeira para os treinos mais longos, Natal é um convite à vida ativa. Um personal trainer ajuda a montar uma rotina que respeite o calor e potencialize seus resultados — da corrida em Ponta Negra à musculação nas redes da cidade.',
 
+  /*
+   * Prints de 01/10: o autocompletar abre com "personal trainer em natal
+   * rn" e repete o "rn" em mais três sugestões ("quanto custa", "mulher",
+   * "personal em natal rn"); "pre natal" e "post natal" são buscas de
+   * gestação, não da cidade; relacionadas com "online"; PAA com "quanto
+   * custa em Natal", "valor de 1 hora", "é vantajoso pagar" e "quem treina
+   * 3x na semana tem resultado?". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Quem treina 3 vezes por semana em Natal tem resultado?',
+      resposta:
+        'Tem. Três sessões de musculação permitem trabalhar cada grupo muscular duas vezes por semana — corpo inteiro ou dois treinos alternados —, e essa é a frequência que as revisões apontam como suficiente para ganhar músculo (Schoenfeld e colegas, Sports Medicine, 2016). Quando o volume da semana é o mesmo, treinar mais vezes acrescenta pouco (Schoenfeld, Grgic e Krieger, 2019). O resultado vem de carga que sobe aos poucos, sono e comida, mantidos por meses. Em Natal, os outros dias podem ir para a orla: caminhada no calçadão de Ponta Negra ou pedal na Via Costeira, cedo ou no fim da tarde por causa do sol — em ritmo leve, para ajudar a recuperação em vez de disputar com ela.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Natal?',
       resposta:
@@ -112,7 +129,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['joao-pessoa-pb', 'fortaleza-ce', 'recife-pe'],
+  // As vizinhas eram João Pessoa, Fortaleza e Recife. Em 01/10/2026
+  // entraram, na frente, os municípios que fazem divisa com Natal.
+  vizinhas: ['parnamirim-rn', 'sao-goncalo-do-amarante-rn', 'extremoz-rn', 'macaiba-rn', 'joao-pessoa-pb', 'fortaleza-ce', 'recife-pe'],
 
   fontes: [
     { nome: 'IBGE Cidades — Natal', url: 'https://cidades.ibge.gov.br/brasil/rn/natal/panorama' },
@@ -128,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Natal: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-23',
+  atualizadoEm: '2026-10-01',
 };

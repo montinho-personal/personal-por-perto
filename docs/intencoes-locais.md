@@ -429,3 +429,29 @@ A pergunta do Reddit — personal que vai até a academia do aluno — é a
 mesma da taxa de personal em academia; fica anotada, sem aplicar, porque
 apareceu num resultado só e a pergunta da taxa até hoje só entrou onde o
 print pediu.
+
+## Natal — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em natal | **"natal rn"** (primeira sugestão), "quanto custa um personal trainer em natal rn", "mulher natal rn", "personal em natal rn"; **"pre natal" e "post natal"**; duas sugestões de notícia policial; relacionadas: "quanto custa… natal rn", **"online"**, "mulher natal rn", "personal inteligente" | quanto custa em Natal · valor de 1 hora · é vantajoso pagar · **quem treina 3x na semana tem resultado?** | mapa com personais 5,0 (até 145 avaliações); Superprof (109 profissionais, 5,0, 17); Instagram; GetNinjas (4,9, 53) |
+
+**Aplicado:** valor por mês no título e na descrição — o título sai com
+"(RN)", que é como a cidade é buscada (quatro sugestões com "rn") e o que
+separa a página das buscas de pré-natal; perguntas "1 mês, 3 vezes por
+semana", "online ou presencial" e **"Quem treina 3 vezes por semana em
+Natal tem resultado?"** (PAA novo, diferente do "3 ou 5": a resposta é
+sobre frequência por grupo muscular — Schoenfeld e colegas, *Sports
+Medicine*, 2016; Schoenfeld, Grgic e Krieger, *Journal of Sports Sciences*,
+2019 — e usa Ponta Negra e a Via Costeira, já descritas na página, para os
+dias sem musculação). **Vizinhas:** eram João Pessoa, Fortaleza e Recife;
+entraram, na frente, Parnamirim, São Gonçalo do Amarante, Extremoz e
+Macaíba, que fazem divisa com Natal.
+
+**Não aplicado:** "mulher"; "personal inteligente"; as notícias policiais;
+"vale a pena" (a página já responde).
+
+**Achado para outra página:** "personal trainer pre natal" e "post natal"
+são buscas de gestante. O guia `/guias/personal-trainer-para-gestantes/`
+cobre gestação e pós-parto, mas não usa "pré-natal" nem "pós-natal" no
+título. Pede prints próprios antes de mexer.
