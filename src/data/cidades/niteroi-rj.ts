@@ -95,6 +95,17 @@ export const cidade: Cidade = {
   conclusao:
     'Com altíssima qualidade de vida, orlas estruturadas e uma cultura de bike e praia que poucos lugares têm, Niterói é um ambiente convidativo para treinar. Um personal trainer ajuda a transformar essa estrutura toda em resultado — seja na musculação, na corrida ou nos esportes de mar.',
 
+  /*
+   * Prints de 01/10: autocompletar com "preço", "icarai", "instagram" e
+   * "mulher"; relacionadas com "personal trainer são gonçalo", "online",
+   * "valor personal trainer mensal", "valor personal trainer smart fit",
+   * "academia niteroi" e uma academia pelo nome; PAA com "valor de 1 hora",
+   * "quanto custa uma sessão em Niterói", "é vantajoso pagar" e "tem
+   * personal pelo Gympass?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Niterói?',
@@ -113,7 +124,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['rio-de-janeiro-rj', 'vitoria-es', 'belo-horizonte-mg'],
+  // As vizinhas eram Rio, Vitória e BH. Em 01/10/2026 entraram, na frente,
+  // São Gonçalo e Maricá, que fazem divisa com Niterói (São Gonçalo está
+  // nas relacionadas da busca), e Itaboraí, do Leste Fluminense.
+  vizinhas: ['sao-goncalo-rj', 'marica-rj', 'rio-de-janeiro-rj', 'itaborai-rj', 'vitoria-es', 'belo-horizonte-mg'],
 
   fontes: [
     { nome: 'IBGE Cidades — Niterói', url: 'https://cidades.ibge.gov.br/brasil/rj/niteroi/panorama' },
@@ -129,5 +143,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Niterói: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
 };

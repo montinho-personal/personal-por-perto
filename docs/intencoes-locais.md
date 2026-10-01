@@ -455,3 +455,27 @@ Macaíba, que fazem divisa com Natal.
 são buscas de gestante. O guia `/guias/personal-trainer-para-gestantes/`
 cobre gestação e pós-parto, mas não usa "pré-natal" nem "pós-natal" no
 título. Pede prints próprios antes de mexer.
+
+## Niterói — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer niterói | **"preço"**, **"icarai"**, **"instagram"**, "mulher"; relacionadas: **"personal trainer são gonçalo"**, **"online"**, "valor personal trainer mensal", "valor personal trainer smart fit", "academia niteroi", uma academia pelo nome | valor de 1 hora · quanto custa uma sessão em Niterói · é vantajoso pagar · tem personal pelo Gympass? | dois perfis de Instagram; site de um personal local; BeBee; Achei o Profissional (avulsa R$ 80 a R$ 200, pacote 3x/semana R$ 400 a R$ 1.500); Superprof (96 professores) |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana", "online ou presencial" e "como avaliar pelo Instagram"
+(o Instagram está no autocompletar, não só nos resultados). **Vizinhas:**
+eram Rio, Vitória e BH; entraram, na frente, São Gonçalo (nas
+relacionadas) e Maricá, que fazem divisa, e Itaboraí, do Leste
+Fluminense; o Rio segue entre as quatro.
+
+**Não aplicado:** "mulher"; "tem personal pelo Gympass?" (sem fonte
+oficial, mesmo motivo de Cotia e Vitória); "valor personal trainer smart
+fit" (política da rede não verificada); "academia niteroi" e a academia
+pelo nome (outro assunto).
+
+**Icaraí:** "personal trainer niteroi icarai" no autocompletar confirma a
+escolha do bairro no piloto. A página de Icaraí já recebe link da página de
+Niterói e não foi tocada — é do piloto, leitura em 09/10.
+
+Com Niterói, a leva 3 está completa.

@@ -181,7 +181,12 @@ render.
 | 1 | Belo Horizonte, Brasília, Goiânia, Teresina, Florianópolis, João Pessoa | `personal trainer <cidade>` |
 | 2 | São Luís, São Paulo, Aracaju, Porto Alegre, Recife, Maceió | idem |
 | 3 | Juiz de Fora, Vitória, Manaus, Praia Grande, Joinville, Uberlândia, Natal, Niterói | idem |
+| 4 (proposta) | Salvador, Rio de Janeiro, Curitiba, Londrina, Belém, Fortaleza | idem — as seis de mais impressão ainda sem prints |
 | bairros | Cidade Nova (BH), Jardins (SP), Copacabana, Ipanema, Campeche, Buritis, Moinhos de Vento | `personal trainer <bairro>` |
+
+Situação em 01/10/2026: levas 1, 2 e 3 aplicadas. A 4 foi montada pela
+ordem de impressões no relatório de 30/09, entre as cidades ainda sem
+`metaFoco` nem título próprio.
 
 Os 10 bairros do piloto (Tijuca, Barra da Tijuca, Savassi, Icaraí, Boa
 Viagem, Leblon, Moema, Brooklin, Asa Sul, Gleba Palhano) só entram depois

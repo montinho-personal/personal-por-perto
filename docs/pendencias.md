@@ -95,6 +95,7 @@ até 29/09/2026):
    **Joinville** (404 impressões, 5 cliques) e **Uberlândia** (642
    impressões, 11 cliques), em 01/10.
    **Natal** (266 impressões, 7 cliques), em 01/10.
+   **Niterói** (173 impressões, 3 cliques), em 01/10 — fecha a leva 3.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
