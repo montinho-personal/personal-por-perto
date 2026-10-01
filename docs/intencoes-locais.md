@@ -259,3 +259,27 @@ centro já têm página ou vizinhança coberta.
 Trainer" (5,0, 25 avaliações) aparece no mapa de empresas da busca
 "personal trainer são paulo" feita a partir de Alphaville. É o ativo local
 mais forte que existe hoje na região — mais que o portal ou o site.
+
+## Porto Alegre — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em porto alegre | "mulher", "em casa", "zona sul", "zona norte", "preço", "instagram", "rs"; relacionadas: "quanto custa", "smart fit", "centro" | quanto custa em Porto Alegre · valor de 1 hora · é vantajoso pagar · **uma hora de treino é suficiente?** | Superprof (5,0, 127); perfis de Instagram, um deles de treino para dor crônica |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" (que responde também o "valor de 1 hora"), Instagram,
+**"Como funciona o personal trainer em casa em Porto Alegre?"** ("em casa"
+no autocompletar; resposta com o inverno, que a página já documenta) e
+**"Uma hora de treino é suficiente?"** (PAA novo; mesmos números de volume
+dos artigos do portal).
+
+**Corrigido junto:** as vizinhas eram Florianópolis e Balneário Camboriú.
+Entraram Canoas, Viamão, Alvorada, Gravataí e Cachoeirinha, na frente (a
+página mostra as quatro primeiras).
+
+**Não aplicado:** "mulher", "smart fit" (sem fonte oficial da regra de
+personal da rede).
+
+**Bairros candidatos em Porto Alegre:** zona sul, zona norte e centro — os
+seis bairros publicados (Moinhos de Vento, Bela Vista, Petrópolis, Três
+Figueiras, Menino Deus, Cidade Baixa) são da região central e nobre.

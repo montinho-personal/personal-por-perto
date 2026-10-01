@@ -95,7 +95,27 @@ export const cidade: Cidade = {
   conclusao:
     'Porto Alegre une uma orla revitalizada, parques tradicionais e uma comunidade de corrida histórica. Com um personal trainer, você aproveita melhor essa estrutura — e ganha a constância necessária para treinar bem inclusive nos meses mais frios, quando muita gente desiste.',
 
+  /*
+   * Prints de 01/10: autocompletar com "mulher", "em casa", "zona sul",
+   * "zona norte", "preço", "instagram" e "rs"; relacionadas com "quanto
+   * custa", "smart fit" e "centro"; PAA com "quanto custa em Porto Alegre?",
+   * "valor de 1 hora", "é vantajoso pagar" e "uma hora de treino é
+   * suficiente?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
+    {
+      pergunta: 'Como funciona o personal trainer em casa em Porto Alegre?',
+      resposta:
+        'Funciona com o que a casa ou o condomínio tem — halteres, elásticos, banco, o peso do corpo —, e o personal costuma levar parte do material. O plano é o mesmo da academia, adaptado: a progressão vem de carga, repetições e variações em vez de máquinas. O preço costuma ficar no topo da faixa da cidade, porque embute o deslocamento do profissional; vale perguntar se ele está incluído. Em Porto Alegre, o inverno conta a favor: treinar em casa tira o frio e a chuva da equação nas manhãs de junho a agosto. O guia de personal a domicílio do portal explica como escolher.',
+    },
+    {
+      pergunta: 'Uma hora de treino é suficiente?',
+      resposta:
+        'Para a maioria das pessoas, sim — e às vezes sobra. Numa sessão de musculação de 45 a 60 minutos cabem o aquecimento e as séries de três a cinco exercícios. O que decide o resultado é o volume da semana — algo entre 10 e 20 séries por grupo muscular para quem já treina, e de 5 a 9 já trazem ganho para quem está começando —, repetido por meses. Com personal, a hora rende mais porque não se perde tempo decidindo o próximo exercício. Treino mais longo não é treino melhor: se a qualidade das últimas séries cai, a hora extra vira só cansaço.',
+    },
     {
       pergunta: 'Onde o personal costuma atender em Porto Alegre?',
       resposta:
@@ -113,7 +133,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['florianopolis-sc', 'balneario-camboriu-sc'],
+  // As vizinhas eram Florianópolis e Balneário Camboriú — capitais da
+  // região, não vizinhas. Em 01/10/2026 entraram as da Grande Porto Alegre
+  // que o portal tem, na frente.
+  vizinhas: ['canoas-rs', 'viamao-rs', 'alvorada-rs', 'gravatai-rs', 'cachoeirinha-rs', 'florianopolis-sc', 'balneario-camboriu-sc'],
 
   fontes: [
     { nome: 'IBGE Cidades — Porto Alegre', url: 'https://cidades.ibge.gov.br/brasil/rs/porto-alegre/panorama' },
@@ -129,5 +152,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Porto Alegre: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
 };

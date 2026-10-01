@@ -78,6 +78,10 @@ até 29/09/2026):
    posição 6,3) e **São Paulo** (1.084 impressões, 3 cliques, 0,3%,
    posição 12,4; "personal trainer sao paulo" na posição 34,5; "valor
    personal trainer sp" 13 impressões, posição 10,6).
+   **Porto Alegre** mudou em 01/10: 1.889 impressões, 13 cliques
+   (0,7%), posição 10,1; "personal trainer porto alegre" 35 impressões,
+   posição 26,0; "personal trainer em porto alegre" 20 impressões, 1
+   clique, posição 24,9.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
