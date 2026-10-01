@@ -96,14 +96,34 @@ export const cidade: Cidade = {
   conclusao:
     'Com a maior orla contínua da Baixada e a maior ciclovia à beira-mar do Brasil, Praia Grande é um paraíso para quem treina ao ar livre. Um personal trainer ajuda a transformar esses 22,5 km de calçadão em um plano consistente, do iniciante ao maratonista.',
 
-  vizinhas: ['santos-sp', 'guaruja-sp', 'sao-bernardo-do-campo-sp'],
+  /*
+   * Prints de 01/10: autocompletar com "praia grande sp", "personal trainer
+   * praia", um estúdio e um nome próprio; relacionadas com "perto de mim" e
+   * "academia praia grande"; PAA com "1 mês", "3 vezes por semana", "pode
+   * treinar 1 hora da manhã?" e "é vantajoso pagar". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
+  faqsExtra: [
+    {
+      pergunta: 'Dá para treinar com personal na praia em Praia Grande?',
+      resposta:
+        'Dá, e a cidade é feita para isso: são cerca de 22,5 km de orla, com academias ao ar livre ao longo do calçadão e a ciclovia à beira-mar acompanhando a praia inteira. O personal usa o calçadão para corrida, caminhada e funcional, e as barras da orla para os exercícios de puxar. Na areia, o cuidado é com a transição: correr na areia fofa é bem mais duro e cobra tornozelo e panturrilha — o começo é em trechos curtos na areia dura, perto da água. Com calor e umidade, o melhor horário é cedo ou no fim da tarde. O que a praia não dá é carga progressiva para pernas e costas: para isso, o plano costuma combinar a orla com academia.',
+    },
+  ],
+
+  // As vizinhas eram Santos, Guarujá e São Bernardo do Campo. Em 01/10/2026
+  // entraram, na frente, as que fazem divisa: São Vicente e Mongaguá.
+  vizinhas: ['sao-vicente-sp', 'mongagua-sp', 'santos-sp', 'guaruja-sp', 'sao-bernardo-do-campo-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Praia Grande', url: 'https://cidades.ibge.gov.br/brasil/sp/praia-grande/panorama' },
     { nome: 'Prefeitura de Praia Grande', url: 'https://www.praiagrande.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-10-01',
   capaArte: {
     src: '/capas-cidade/praia-grande-sp.webp',
     w: 1200,

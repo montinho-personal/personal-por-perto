@@ -382,3 +382,22 @@ Airão, da Região Metropolitana de Manaus.
 
 **Não aplicado:** "mulher", "smart fit", "quanto ganha" (emprego), nomes,
 "camisa", a notícia; "bem avaliados" — o portal não avalia profissionais.
+
+## Praia Grande — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer praia grande | "praia grande sp", **"personal trainer praia"**, um estúdio e um nome próprio; relacionadas: "perto de mim", "academia praia grande" | 1 mês · 3 vezes por semana · pode treinar 1 hora da manhã? · é vantajoso pagar | Superprof (5,0, 16) com "em média R$ 80 por hora"; Instagram; GetNinjas; acheiprofissional; StarOfService |
+
+**Aplicado:** valor por mês no título e na descrição (o "(SP)" separa de
+Praia Grande/SC, que também tem página); pergunta "1 mês, 3 vezes por
+semana" e **"Dá para treinar com personal na praia em Praia Grande?"** — a
+página não tinha nenhuma pergunta própria; resposta com os 22,5 km de orla,
+as academias ao ar livre e a ciclovia (dados da página), a transição da
+areia dura para a fofa e o que a praia não substitui. **Vizinhas:** eram
+Santos, Guarujá e São Bernardo; entraram São Vicente e Mongaguá, que fazem
+divisa, na frente.
+
+**Não aplicado:** "pode treinar 1 hora da manhã?" — a resposta já está em
+Juiz de Fora, e repeti-la seria o mesmo texto em duas cidades; estúdio e
+nome próprio; "academia praia grande" (outro assunto).
