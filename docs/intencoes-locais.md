@@ -505,3 +505,30 @@ caberia num guia nacional, não numa página de cidade e nunca citando caso.
 
 **Bairro candidato em Salvador:** Imbuí (sem página hoje; Salvador já tem
 sete bairros).
+
+## Rio de Janeiro — prints e aplicação em 01/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer rio de janeiro | **"zona sul"**, **"zona norte"**, **"instagram"**, **"preço"**, "mulher", "vagas", "studio", **"idosos"**, **"online"**, um nome próprio; relacionadas: "rj preço", "rj zona sul", **"tijuca rj"**, **"duque de caxias"**, "smart fit", "smart fit rj", "particular", **"valor personal trainer mensal"** | valor no Rio · valor de 1 hora · é vantajoso pagar · tem personal pelo Gympass? | mapa com personais 5,0 (59 a 82 avaliações); Superprof (5,0, 324); Treinar.me (Zona Sul); Instagram (Méier); site de estúdio; cronoshare |
+
+**Aplicado:** valor por mês no título ("Personal Trainer no Rio de Janeiro
+(RJ): valor por mês" — o "(RJ)" casa com "personal trainer rj preço" e
+"rj zona sul") e na descrição; perguntas "1 mês, 3 vezes por semana",
+"online ou presencial" e "como avaliar pelo Instagram". **Vizinhas:** eram
+Niterói, Vitória, BH e São Paulo; entraram Duque de Caxias (nas
+relacionadas), São João de Meriti e Nova Iguaçu, que fazem divisa, com
+Niterói em segundo.
+
+**Não aplicado:** "mulher", "vagas" (emprego), "studio", "particular",
+"smart fit" (política da rede não verificada), "tem personal pelo
+Gympass?" (sem fonte oficial), o nome próprio. **"Idosos"** ficou de fora
+nesta página: o Recife já tem a pergunta própria, e uma versão carioca sem
+fato local seria o mesmo texto — se entrar, que seja num guia nacional.
+
+**Zona sul, zona norte e Tijuca:** a página do Rio já linka os oito bairros
+com página (Barra, Botafogo, Copacabana, Flamengo, Ipanema, Leblon,
+Recreio e Tijuca). Tijuca e Barra são do piloto (leitura em 09/10). Fica
+como candidata, depois do piloto, uma resposta de zona — "personal trainer
+zona sul / zona norte do Rio" —, junto com as zonas já anotadas de São
+Paulo e Porto Alegre.

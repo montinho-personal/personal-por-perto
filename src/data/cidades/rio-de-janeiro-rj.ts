@@ -95,6 +95,18 @@ export const cidade: Cidade = {
   conclusao:
     'No Rio de Janeiro, treinar com um personal trainer é unir método à cidade que mais convida a se exercitar ao ar livre. Da orla ao Aterro, da musculação na Zona Sul ao acompanhamento online, a escolha certa é a que cabe na sua rotina e no seu objetivo — e opções, aqui, não faltam.',
 
+  /*
+   * Prints de 01/10: autocompletar com "zona sul", "zona norte",
+   * "instagram", "preço", "mulher", "vagas", "studio", "idosos", "online" e
+   * um nome próprio; relacionadas com "rj preço", "rj zona sul", "tijuca
+   * rj", "duque de caxias", "smart fit", "particular" e "valor personal
+   * trainer mensal"; PAA com "valor no Rio", "valor de 1 hora", "é
+   * vantajoso pagar" e "tem personal pelo Gympass?". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender no Rio de Janeiro?',
@@ -113,7 +125,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['niteroi-rj', 'vitoria-es', 'belo-horizonte-mg', 'sao-paulo-sp'],
+  // As vizinhas eram Niterói, Vitória, BH e São Paulo. Em 01/10/2026
+  // entraram Duque de Caxias (nas relacionadas da busca), São João de
+  // Meriti e Nova Iguaçu, que fazem divisa com o Rio; Niterói segue.
+  vizinhas: ['duque-de-caxias-rj', 'niteroi-rj', 'sao-joao-de-meriti-rj', 'nova-iguacu-rj', 'vitoria-es', 'belo-horizonte-mg', 'sao-paulo-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Rio de Janeiro', url: 'https://cidades.ibge.gov.br/brasil/rj/rio-de-janeiro/panorama' },
@@ -129,5 +144,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Rio de Janeiro: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-10-01',
 };

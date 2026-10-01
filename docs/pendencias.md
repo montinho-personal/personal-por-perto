@@ -98,6 +98,7 @@ até 29/09/2026):
    **Niterói** (173 impressões, 3 cliques), em 01/10 — fecha a leva 3.
    Leva 4, em 01/10: **Salvador** (2.025 impressões, 34 cliques — a
    maior página de cidade ainda sem mexida).
+   **Rio de Janeiro** (823 impressões, 8 cliques), em 01/10.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
