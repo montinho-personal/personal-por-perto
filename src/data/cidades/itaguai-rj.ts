@@ -64,6 +64,11 @@ export const cidade: Cidade = {
     'A cultura esportiva itaguaiense gira em torno da corrida de rua, do futebol e dos treinos ao ar livre na orla da baía de Sepetiba, com grupos de corrida e provas comunitárias movimentando o calendário.',
   academias:
     'A oferta se concentra em academias de bairro, como na região de Coroa Grande, complementada por estúdios de lutas e treinamento funcional e por forte atuação de personais em atendimento domiciliar.',
+  academiasProximas: [
+    { nome: 'Lifefit Itaguaí', detalhe: 'na Av. Prefeito Ismael Cavalcanti' },
+    { nome: 'Academia Itaguaí Up Fit', detalhe: 'na Av. Paulo de Frontin, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-02',
 
   destaquesFitness: [
     'Cidade portuária e naval (Porto de Itaguaí e PROSUB) com classe trabalhadora ligada à indústria.',
@@ -91,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaguaí', url: 'https://itaguai.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/330200' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-02',
 };

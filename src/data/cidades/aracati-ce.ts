@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva de Aracati gira em torno do mar e das dunas: corrida e caminhada na orla, esportes de areia como beach tennis e futevôlei e aventuras nas falésias de Canoa Quebrada. O carnaval, um dos mais animados do estado, e o sol o ano todo reforçam uma rotina ativa ao ar livre.',
   academias:
     'A oferta vai das academias e estúdios da sede a espaços voltados ao público turístico em Canoa Quebrada, com presença marcante de treino funcional e atividades de praia.',
+  academiasProximas: [
+    { nome: 'Academia Gaviões Aracati', detalhe: 'na Rua Coronel Pompeu, no Centro' },
+    { nome: 'Selfit Aracati', detalhe: 'na Rua Coronel Alexandrino' },
+  ],
+  academiasVerificadasEm: '2026-10-02',
 
   destaquesFitness: [
     'Falésias e dunas de Canoa Quebrada: cenário único para treino ao ar livre.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aracati', url: 'https://aracati.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-02',
 };
