@@ -8,6 +8,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import InstagramFollow from '../../components/InstagramFollow.astro';
 import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
 import VideoYouTube from '../../components/VideoYouTube.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
@@ -39,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/musculacao/bulking-e-cutting';
-const atualizadoEm = '2026-08-01';
+const atualizadoEm = '2026-10-02';
 const capa = '/capas-conteudo/bulking-e-cutting.webp';
 const capaAlt =
   'Capa do artigo Bulking e cutting: dois físicos masculinos lado a lado com marmitas de frango e legumes, halteres e fita métrica, contrastando ganho de massa e redução de gordura — Personal por Perto';
@@ -149,17 +150,23 @@ const schema = [
       <ul>
         <li><strong>Superávit:</strong> cerca de 200 a 500 kcal acima da manutenção.</li>
         <li><strong>Meta na balança:</strong> +0,25% a 0,5% do peso corporal por semana (um pouco mais para iniciantes).</li>
-        <li><strong>Proteína:</strong> 1,6 a 2,2 g/kg/dia — as mesmas faixas refletidas em posicionamentos do <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.</li>
+        <li><strong>Proteína:</strong> 1,6 a 2,2 g/kg/dia — a faixa da maior meta-análise sobre o tema, de 2018, para quem treina força; o posicionamento do <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a> fala em 1,2 a 2,0 g/kg para quem treina em geral.</li>
         <li><strong>Treino:</strong> força pesada e progressiva — o superávit sem estímulo é só engorda organizada. A <a href="/musculacao/progressao-de-carga/">progressão de carga</a> é o termômetro da fase: bulking bom é aquele em que os pesos sobem.</li>
         <li><strong>Duração:</strong> 12 a 24 semanas, ou até o ganho de gordura passar do combinado.</li>
       </ul>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Os 200 a 500 kcal são contados a partir da manutenção — e o artigo inteiro depende desse número, que ninguém sabe de cabeça. A calculadora estima o seu gasto do dia pelo peso, altura, idade e rotina; é uma estimativa de partida, que a balança das primeiras semanas confirma ou corrige."
+        acao="Calcular a minha manutenção"
+      />
 
       <h2>Cutting bem feito: definir sem derreter músculo</h2>
       <ul>
         <li><strong>Déficit:</strong> cerca de 300 a 500 kcal — perdendo 0,5% a 1% do peso por semana. Mais agressivo que isso, a conta vem em massa magra.</li>
         <li><strong>Proteína ainda mais importante:</strong> topo da faixa (até ~2,2 g/kg) para proteger o músculo no déficit.</li>
         <li><strong>Treino continua pesado:</strong> reduzir volume um pouco é aceitável; virar "treino leve de definição" é o erro clássico — carga alta é o sinal que segura o músculo, como detalha o guia de <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">preservação de massa magra</a>.</li>
-        <li><strong>Duração:</strong> 8 a 16 semanas típicas; cuttings interminaveis degradam sono, humor e treino — melhor pausar na manutenção e retomar.</li>
+        <li><strong>Duração:</strong> 8 a 16 semanas típicas; cuttings intermináveis degradam sono, humor e treino — melhor pausar na manutenção e retomar.</li>
       </ul>
 
       <h2>Quem precisa dos ciclos — e quem não</h2>
