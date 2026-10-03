@@ -89,6 +89,16 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade média industrial com tradição esportiva, Birigui oferece boa estrutura para treinar — do Parque do Povo às academias de bairro. Um personal trainer ajuda a transformar essa rotina em resultado, com método tanto no estúdio quanto no atendimento domiciliar.',
 
+  /*
+   * Prints de 03/10: autocompletar com "birigui sp", "instagram", "valor",
+   * "valor mensalidade", "para idosos" e "personal trainer em araçatuba";
+   * PAA com "valor de 1 hora", "vale a pena pagar", "quem treina 3x na
+   * semana tem resultado?" e "quanto custa uma academia por mês com
+   * personal?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   vizinhas: ['aracatuba-sp', 'bauru-sp', 'sao-jose-do-rio-preto-sp'],
 
   fontes: [
@@ -96,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Birigui', url: 'https://www.birigui.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-03',
 };

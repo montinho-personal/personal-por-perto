@@ -611,3 +611,22 @@ respondida pelo guia de iniciantes, sem fato local que justifique pergunta
 própria.
 
 Com Fortaleza, a leva 4 está completa.
+
+## Birigui — prints e aplicação em 03/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em birigui | "birigui sp", **"instagram"**, "valor", **"valor mensalidade"**, "para idosos", "personal em birigui", "personal trainer em araçatuba" | valor de 1 hora · vale a pena pagar · quem treina 3x na semana tem resultado? · **quanto custa uma academia por mês com personal?** | Superprof (5,0, 6); seupersonal (5 profissionais) |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" (o autocompletar pede "valor mensalidade") e "como
+avaliar pelo Instagram". **Vizinhas:** Araçatuba já era a primeira —
+nada a mudar.
+
+**Não aplicado:** "quem treina 3x tem resultado?" (já em Natal);
+"para idosos" — terceira cidade em que aparece (Rio, Fortaleza, Birigui),
+fica anotado como candidato a pergunta gerada se continuar; "quanto custa
+uma academia por mês com personal?" — PAA novo, mas a resposta pede o
+preço da mensalidade de academia na cidade, que o portal não tem
+verificado. Fica anotado: se repetir, vira pergunta gerada com preço de
+rede conferido na fonte oficial.
