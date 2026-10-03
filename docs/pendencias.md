@@ -105,6 +105,7 @@ até 29/09/2026):
    **Belém** (359 impressões, 6 cliques), em 01/10.
    **Fortaleza** (325 impressões, 4 cliques), em 01/10 — fecha a leva 4.
    **Birigui** (46 impressões, 0 clique), em 03/10.
+   **Umuarama** (41 impressões, 1 clique), em 03/10.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
@@ -162,3 +163,13 @@ própria até essa conversa acontecer.
 
 **O que não fazer sem essa conversa.** Acrescentar vídeo novo ao catálogo,
 mudar o critério de sorteio, ou levar vídeo para páginas que hoje não têm.
+
+## PAA recorrente sem resposta: "quanto custa uma academia por mês com personal?"
+
+Apareceu em Birigui e Umuarama (prints de 03/10). A resposta honesta soma
+duas contas — mensalidade da academia + personal —, e o portal só tem a
+segunda verificada (campo `precos`). Para virar pergunta gerada
+(`faqsBusca`), falta uma fonte para a primeira: preço de plano das redes
+presentes na cidade, conferido na página oficial e com data. Sem isso,
+não entra. Decidir se vale montar essa base (começando pelas redes que
+mais aparecem em `academiasProximas`: Smart Fit, Bluefit, Selfit).

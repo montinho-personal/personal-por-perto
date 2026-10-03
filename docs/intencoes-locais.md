@@ -630,3 +630,21 @@ uma academia por mês com personal?" — PAA novo, mas a resposta pede o
 preço da mensalidade de academia na cidade, que o portal não tem
 verificado. Fica anotado: se repetir, vira pergunta gerada com preço de
 rede conferido na fonte oficial.
+
+## Umuarama — prints e aplicação em 03/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em umuarama | "umuarama pr", "paraná", **"instagram"**, **"instagram oficial"**, "personal trainer em cianorte", "em maringá", "em ourinhos" | valor de 1 hora · vale a pena pagar · quem treina 3x na semana tem resultado? · **quanto custa uma academia por mês com personal?** | lista do Google com estúdios e academias locais; Treinar.me (perfil de personal); OAB Umuarama (sem relação) |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "como avaliar pelo Instagram" (duas sugestões do
+autocompletar). **Vizinhas:** Cianorte (no autocompletar) entrou na frente
+de Maringá, Cascavel e Londrina. Ourinhos é de São Paulo e não tem relação
+regional com Umuarama — ficou de fora.
+
+**Não aplicado:** "quem treina 3x tem resultado?" (já em Natal).
+"Quanto custa uma academia por mês com personal?" apareceu pela
+**segunda vez** (Birigui e Umuarama, no mesmo dia): passa a ser candidata
+a pergunta gerada, desde que o preço de mensalidade venha de fonte oficial
+da rede — anotado em docs/pendencias.md.

@@ -89,12 +89,24 @@ export const cidade: Cidade = {
   conclusao:
     'Polo universitário e de saúde do Noroeste do Paraná, Umuarama combina terreno plano, áreas verdes bem cuidadas e uma cena de corrida em ascensão — um bom cenário para treinar com constância. Um personal trainer ajuda a aproveitar essa estrutura com método, ajustando o treino ao calor da região e aos objetivos de cada pessoa, da musculação à preparação para as provas de rua.',
 
-  vizinhas: ['maringa-pr', 'cascavel-pr', 'londrina-pr'],
+  /*
+   * Prints de 03/10: autocompletar com "umuarama pr", "paraná",
+   * "instagram", "instagram oficial" e três cidades (Cianorte, Maringá,
+   * Ourinhos); PAA com "valor de 1 hora", "vale a pena pagar", "quem treina
+   * 3x na semana tem resultado?" e "quanto custa uma academia por mês com
+   * personal?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
+  // Em 03/10/2026 Cianorte (no autocompletar, cidade do noroeste
+  // paranaense) entrou na frente de Maringá, Cascavel e Londrina.
+  vizinhas: ['cianorte-pr', 'maringa-pr', 'cascavel-pr', 'londrina-pr'],
 
   fontes: [
     { nome: 'IBGE Cidades — Umuarama', url: 'https://cidades.ibge.gov.br/brasil/pr/umuarama/panorama' },
     { nome: 'Prefeitura de Umuarama', url: 'https://www.umuarama.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4128104' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-03',
 };
