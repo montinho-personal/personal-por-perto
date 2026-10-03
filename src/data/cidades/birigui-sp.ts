@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Birigui tem forte tradição no atletismo, impulsionada pela base do SESI-SP e por bons resultados em competições regionais. Some-se a isso uma cena de corrida de rua em crescimento e parques públicos bem usados, e o resultado é uma população acostumada a atividade física no dia a dia.',
   academias:
     'A oferta reúne academias de bairro e estúdios locais espalhados pela cidade, complementados pelo atendimento domiciliar de personais, formato que combina com a rotina de uma cidade média industrial.',
+  academiasProximas: [
+    { nome: 'Panobianco Birigui', detalhe: 'na Rua Getúlio Vargas, no Patrimônio Silvares' },
+    { nome: 'Skyfit Birigui', detalhe: 'na Av. Euclides Miragaia, no Jardim Primavera' },
+  ],
+  academiasVerificadasEm: '2026-10-03',
 
   destaquesFitness: [
     'Parque do Povo como principal espaço público para caminhada e ciclismo.',

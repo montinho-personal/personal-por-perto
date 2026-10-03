@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva é marcada pela corrida de rua, em crescimento com o circuito estadual, e pelo uso dos bosques e áreas verdes para caminhada e treino. O perfil universitário da cidade ajuda a manter ativa a procura por musculação e atividades funcionais.',
   academias:
     'A oferta reúne academias de musculação, estúdios de funcional e crossfit e profissionais autônomos, atendendo um público jovem, universitário e de famílias da região.',
+  academiasProximas: [
+    { nome: 'Bluefit Umuarama', detalhe: 'no Shopping Palladium, na Av. Paraná' },
+    { nome: 'Academia Impulse Fitness', detalhe: 'na Av. Londrina, na Zona II' },
+  ],
+  academiasVerificadasEm: '2026-10-03',
 
   destaquesFitness: [
     'Bosque Uirapuru, com pista pavimentada e academia ao ar livre, é a principal referência outdoor da cidade.',
