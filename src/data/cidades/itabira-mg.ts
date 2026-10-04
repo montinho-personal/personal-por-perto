@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cidade tem associação de corredores de rua ativa e calendário municipal de provas, com portais locais agregando os eventos esportivos.',
   academias:
     'A oferta reúne academias e estúdios, com renda da mineração acima da média regional, complementada por trilhas urbanas como as do Intelecto e do Pico do Amor.',
+  academiasProximas: [
+    { nome: 'Pratique Fitness Itabira Gabiroba', detalhe: 'na Av. Dr. Pedro Guerra, no Gabiroba' },
+  ],
+  academiasVerificadasEm: '2026-10-04',
 
   destaquesFitness: [
     'Renda da mineração, que sustenta um mercado fitness acima da média regional.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itabira', url: 'https://www.itabira.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-04',
 };

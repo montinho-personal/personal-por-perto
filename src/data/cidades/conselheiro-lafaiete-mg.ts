@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cidade tem uma cena de corrida de rua ativa para o seu porte, com provas locais como a Corrida do Macarrão e a corrida da Associação Médica, além de forte cultura de academia e musculação alimentada pelo público regional do Alto Paraopeba.',
   academias:
     'A oferta reúne academias locais consolidadas como Smart Flex, Center Fitness e Mais Fit, bem distribuídas pelos bairros, com cultura firme de musculação e treino funcional e espaço para atividades ao ar livre nas praças e avenidas do centro.',
+  academiasProximas: [
+    { nome: 'Contorno do Corpo Lafaiete', detalhe: 'na Rua Tavares de Melo, no Centro' },
+    { nome: 'Contorno do Corpo Lafaiete 2', detalhe: 'na Rua Duque de Caxias, na Chapada' },
+  ],
+  academiasVerificadasEm: '2026-10-04',
 
   destaquesFitness: [
     'Academias locais consolidadas (Smart Flex, Center Fitness, Mais Fit) pelos bairros.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Conselheiro Lafaiete', url: 'https://www.atlasbrasil.org.br/perfil/municipio/311830' },
     { nome: 'Prefeitura de Conselheiro Lafaiete', url: 'https://conselheirolafaiete.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-04',
 };
