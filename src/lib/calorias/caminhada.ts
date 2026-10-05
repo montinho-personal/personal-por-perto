@@ -444,9 +444,12 @@ export function fraseContexto(pesoKg: number, r: Resultado): string {
  * vontade de preencher nada.
  */
 export const PESOS_TABELA = [50, 60, 70, 80, 90, 100, 120] as const;
-export const TEMPOS_TABELA = [10, 20, 30, 45, 60, 90] as const;
+/* 40 minutos e 2 horas entraram pelos prints de 05/10/2026; 45 fica, porque o
+   Search Console já trazia "caminhada de 45 minutos". */
+export const TEMPOS_TABELA = [10, 20, 30, 40, 45, 60, 90, 120] as const;
 export const INCLINACOES_TABELA = [0, 3, 6, 9, 12, 15] as const;
-export const DISTANCIAS_TABELA = [1, 2, 3, 5, 10] as const;
+/* 4 e 8 km entraram pelo autocompletar de 05/10/2026. */
+export const DISTANCIAS_TABELA = [1, 2, 3, 4, 5, 8, 10] as const;
 
 export interface LinhaPeso {
   peso: number;

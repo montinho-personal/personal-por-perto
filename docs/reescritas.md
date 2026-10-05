@@ -351,6 +351,25 @@ linhas e faixas diferentes, e a comparação honesta pertence ao hub
 `/calorias/`; fica como candidata. Linha de base: 170 impressões, 1
 clique, posição 5,7.
 
+**Caminhada** (`/calorias/caminhada/`). Autocompletar e relacionadas:
+distância (1, 2, 3, 4, 5, 8, 10 km, "andar 1 km") e tempo (20, 30, 40, 60
+minutos, 1h30, 2 horas). PAA: 30 minutos, "caminhar 2 km por dia ajuda a
+emagrecer?", "qual emagrece mais, academia ou caminhada?", "caminhar por 1
+hora emagrece?". A IA dá 130–200 kcal em 30 minutos e 260–400 em 1 hora
+para 70 kg — um pouco acima da nossa conta no plano (221 a 353 kcal/h do
+passo leve ao rápido; os 400 só no passo muito rápido, 6,5 km/h, ou com
+ladeira). Entraram: título "Quantas Calorias Gasta Caminhar? Por Km, 30 Min
+e 1 Hora" (antes "Quantas Calorias a Caminhada Gasta? Calcule o Seu"), H1
+no fraseado da busca, 4 e 8 km na tabela de distância e 40 minutos e 2
+horas na de tempo (mudança no motor, que alimenta as duas; o teste
+continua passando; 45 minutos fica, porque o GSC já trazia essa busca), a
+faixa por ritmo nas respostas de 30 minutos e 1 hora, e as perguntas 1 km
+(~56 kcal), 2 km por dia, academia × caminhada (pelo motor da musculação:
+por hora, gastam parecido) e "caminhar por 1 hora emagrece?" no lugar de
+"caminhar emagrece?". Saiu do FAQ, sem sair da página, a dos 300 kcal. Fora:
+"andar 1 km de bicicleta", que vai para a página da bicicleta. Linha de
+base: 160 impressões, 0 clique, posição 9,8.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

@@ -17,6 +17,21 @@
  * quem chegou sem vontade de preencher nada. Todos os números abaixo saem
  * do MESMO motor da calculadora — nada é recalculado à mão, então texto e
  * ferramenta nunca divergem.
+ *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * caminhar"): o autocompletar e as relacionadas pedem distância (1, 2, 3, 4,
+ * 5, 8 e 10 km, "andar 1 km") e tempo (20, 30, 40 e 60 minutos, 1h30, 2
+ * horas); o PAA, 30 minutos, "caminhar 2 km por dia ajuda a emagrecer?",
+ * "qual emagrece mais, academia ou caminhada?" e "caminhar por 1 hora
+ * emagrece?"; a IA diz 130 a 200 kcal em 30 minutos e 260 a 400 em 1 hora
+ * para 70 kg — a faixa do ritmo leve ao rápido. Entraram: as distâncias e
+ * os tempos nas tabelas (no motor, para a tabela e o teste andarem juntos),
+ * a faixa por ritmo nas respostas de 30 minutos e 1 hora, e as perguntas
+ * de 1 km, 2 km por dia, academia × caminhada (pelo motor da musculação) e
+ * 1 hora por dia. Saiu do FAQ, sem sair da página, a dos 300 kcal.
+ *
+ * O QUE FICOU DE FORA: "andar 1 km de bicicleta" — é da página da
+ * bicicleta, e vai para lá quando ela passar pelos prints.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -55,9 +70,10 @@ import {
   tabelaPorRitmo,
   tabelaPorTempo,
 } from '../../lib/calorias/caminhada';
+import { deSessao as musculacaoSessao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias/caminhada';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -86,39 +102,60 @@ const TAB_DIST = tabelaPorDistancia(PESO_PADRAO, MOD.velocidade);
 
 const POR_MIN = EX_30.kcal / 30;
 const CUSTO_KM = kcalPorKgPorKm(MOD.velocidade, 0);
+/* As pontas do ritmo, para a faixa que a busca repete (leve a rápido). */
+const LEVE = ritmo('leve');
+const RAPIDO = ritmo('rapido');
+const EX_30_LEVE = deTempo(30, PESO_PADRAO, LEVE.velocidade, 0, LEVE.cadencia);
+const EX_30_RAPIDO = deTempo(30, PESO_PADRAO, RAPIDO.velocidade, 0, RAPIDO.cadencia);
+const EX_60_LEVE = deTempo(60, PESO_PADRAO, LEVE.velocidade, 0, LEVE.cadencia);
+const EX_60_RAPIDO = deTempo(60, PESO_PADRAO, RAPIDO.velocidade, 0, RAPIDO.cadencia);
+const MUITO_RAPIDO = ritmo('muito-rapido');
+const EX_60_MUITO = deTempo(60, PESO_PADRAO, MUITO_RAPIDO.velocidade, 0, MUITO_RAPIDO.cadencia);
+const EX_1KM = deDistancia(1, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const EX_2KM = deDistancia(2, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia);
+const DIAS_SEMANA = 7;
+/* Uma hora de musculação, pelo motor da musculação, para "academia ou caminhada". */
+const MUSC_HORA = musculacaoSessao(60, PESO_PADRAO, 'variado');
+const MUSC_HORA_VIG = musculacaoSessao(60, PESO_PADRAO, 'vigoroso');
+
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 49 caracteres. */
-const title = 'Quantas Calorias a Caminhada Gasta? Calcule o Seu';
-/* 146 caracteres. */
-const description =
-  'Calcule quantas calorias a sua caminhada gastou por tempo, distância ou passos, com o seu peso, o seu ritmo e a inclinação. Grátis e sem cadastro.';
+/* 56 caracteres. */
+const title = 'Quantas Calorias Gasta Caminhar? Por Km, 30 Min e 1 Hora';
+const description = `Caminhar 30 minutos gasta cerca de ${arredondaKcal(EX_30.kcal)} kcal para ${PESO_PADRAO} kg, e 1 km, cerca de ${arredondaKcal(EX_1KM.kcal)}. Calcule por tempo, distância ou passos, com o seu peso, ritmo e inclinação.`;
 
 const faqs = [
   {
     pergunta: 'Quantas calorias 30 minutos de caminhada queimam?',
-    resposta: `Para uma pessoa de ${PESO_PADRAO} kg em ritmo moderado (cerca de 5 km/h, no plano), aproximadamente ${arredondaKcal(EX_30.kcal)} kcal. O peso muda bastante esse número: alguém de 50 kg fica perto de ${TAB_PESO[0].kcal} kcal e alguém de 100 kg, perto de ${TAB_PESO[5].kcal} kcal nos mesmos 30 minutos.`,
+    resposta: `Para uma pessoa de ${PESO_PADRAO} kg em ritmo moderado (cerca de 5 km/h, no plano), aproximadamente ${arredondaKcal(EX_30.kcal)} kcal. O peso muda bastante esse número: alguém de 50 kg fica perto de ${TAB_PESO[0].kcal} kcal e alguém de 100 kg, perto de ${TAB_PESO[5].kcal} kcal nos mesmos 30 minutos. O ritmo também mexe: de ${arredondaKcal(EX_30_LEVE.kcal)} kcal no passo leve (${LEVE.velocidade} km/h) a ${arredondaKcal(EX_30_RAPIDO.kcal)} no rápido (${RAPIDO.velocidade} km/h), para ${PESO_PADRAO} kg.`,
   },
   {
     pergunta: '1 hora de caminhada gasta quantas calorias?',
-    resposta: `Cerca de ${arredondaKcal(EX_60.kcal)} kcal para ${PESO_PADRAO} kg a 5 km/h no plano — em torno de ${formataKm(EX_60.km)}. Com inclinação o número sobe muito: a 4,8 km/h com 12%, meia hora já passa de ${arredondaKcal(EX_12_3_30.kcal)} kcal.`,
+    resposta: `Cerca de ${arredondaKcal(EX_60.kcal)} kcal para ${PESO_PADRAO} kg a 5 km/h no plano — em torno de ${formataKm(EX_60.km)}. Com inclinação o número sobe muito: a 4,8 km/h com 12%, meia hora já passa de ${arredondaKcal(EX_12_3_30.kcal)} kcal. Os "260 a 400 kcal por hora" que circulam ficam um pouco acima da conta no plano, que vai de ${arredondaKcal(EX_60_LEVE.kcal)} kcal a ${LEVE.velocidade} km/h a ${arredondaKcal(EX_60_RAPIDO.kcal)} a ${RAPIDO.velocidade} km/h; os 400 só chegam no passo muito rápido (${MUITO_RAPIDO.velocidade.toLocaleString('pt-BR')} km/h, cerca de ${arredondaKcal(EX_60_MUITO.kcal)} kcal) ou com ladeira.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta andar 1 km?',
+    resposta: `Cerca de ${arredondaKcal(EX_1KM.kcal)} kcal para ${PESO_PADRAO} kg em ritmo moderado, em uns ${formataTempo(EX_1KM.minutos)} — perto de ${n(CUSTO_KM, 2)} kcal por quilo de peso. Correr o mesmo quilômetro custa mais, perto de 1 kcal por quilo: não é só a velocidade, o custo por quilômetro da corrida é maior.`,
   },
   {
     pergunta: '10 mil passos queimam quantas calorias?',
     resposta: `Em ritmo moderado, 10 mil passos levam cerca de ${formataTempo(EX_10MIL.minutos)} e representam aproximadamente ${arredondaKcal(EX_10MIL.kcal)} kcal para quem pesa ${PESO_PADRAO} kg. A conta usa a cadência (cerca de 100 passos por minuto), não o tamanho da passada — que varia com a altura e tornaria o número um chute com cara de exato.`,
   },
   {
-    pergunta: 'Quanto tempo de caminhada para gastar 300 calorias?',
-    resposta: `Para ${PESO_PADRAO} kg em ritmo moderado, cerca de ${formataTempo(EX_300.minutos)} — em torno de ${formataKm(EX_300.km)}. Para 500 kcal, algo perto de ${formataTempo(EX_500.minutos)}. Quanto maior o peso ou o ritmo, menos tempo leva.`,
-  },
-  {
     pergunta: 'Caminhada inclinada gasta mais calorias?',
     resposta: `Gasta, e bastante. A inclinação acrescenta o custo de subir o próprio peso ao custo de andar: a 4,8 km/h, 12% de inclinação somam cerca de ${n(metDaInclinacao(4.8, 12))} METs — o que mais que dobra o gasto em relação ao plano na mesma velocidade. É por isso que o método 12-3-30 rende: não por mágica, por física.`,
   },
   {
-    pergunta: 'Caminhar emagrece?',
-    resposta:
-      'Ajuda, como qualquer atividade que aumenta o gasto do dia, e tem uma vantagem rara: é fácil de repetir. O que ela não faz é resolver sozinha — o resultado depende do balanço energético ao longo de semanas, não de uma caminhada isolada. Meia hora por dia soma algo real no mês, desde que o que acontece nas outras 23 horas e meia não desfaça a conta.',
+    pergunta: 'Caminhar por 1 hora emagrece?',
+    resposta: `Ajuda, como qualquer atividade que aumenta o gasto do dia, e tem uma vantagem rara: é fácil de repetir. Uma hora em ritmo moderado gasta cerca de ${arredondaKcal(EX_60.kcal)} kcal para ${PESO_PADRAO} kg; todo dia, perto de ${arredondaKcal(EX_60.kcal * DIAS_SEMANA).toLocaleString('pt-BR')} kcal na semana. O que ela não faz é resolver sozinha — o resultado depende do balanço energético ao longo de semanas, e o que acontece nas outras 23 horas pode desfazer a conta.`,
+  },
+  {
+    pergunta: 'Caminhar 2 km por dia ajuda a emagrecer?',
+    resposta: `Ajuda pouco sozinho, mas ajuda. Dois quilômetros em ritmo moderado levam uns ${formataTempo(EX_2KM.minutos)} e gastam cerca de ${arredondaKcal(EX_2KM.kcal)} kcal para ${PESO_PADRAO} kg — perto de ${arredondaKcal(EX_2KM.kcal * DIAS_SEMANA)} kcal em sete dias. Pela regra dos ${KCAL_POR_KG_GORDURA.toLocaleString('pt-BR')} kcal por quilo, isso é cerca de ${n((EX_2KM.kcal * DIAS_SEMANA) / KCAL_POR_KG_GORDURA, 2)} kg de gordura por semana, e a regra ainda é otimista. Como começo, é ótimo: é o hábito que depois aguenta distância maior, e a alimentação continua sendo a parte que mais pesa.`,
+  },
+  {
+    pergunta: 'Qual emagrece mais, academia ou caminhada?',
+    resposta: `Por hora, gastam parecido: cerca de ${arredondaKcal(EX_60.kcal)} kcal caminhando a ${MOD.velocidade} km/h, contra ${arredondaKcal(MUSC_HORA.kcal)} a ${arredondaKcal(MUSC_HORA_VIG.kcal)} kcal numa hora de musculação, para ${PESO_PADRAO} kg. A diferença está no que cada um faz pelo resto: a musculação é o que protege o músculo durante o déficit, e a caminhada é a que dá para repetir todo dia sem recuperação. Para emagrecer, os dois juntos rendem mais que qualquer um sozinho — com a alimentação decidindo o resultado.`,
   },
   {
     pergunta: 'Caminhar todo dia perde barriga?',
@@ -191,7 +228,7 @@ const schema = [
   <header class="cc-hero">
     <div class="container cc-hero-inner">
       <p class="eyebrow">Calorias por atividade</p>
-      <h1>Quantas calorias a caminhada gasta?</h1>
+      <h1>Quantas calorias gasta caminhar?</h1>
       <p class="cc-hero-lead">
         Uma pessoa de {PESO_PADRAO} kg caminhando 30 minutos em ritmo moderado gasta
         aproximadamente <strong>{arredondaKcal(EX_30.kcal)} kcal</strong>. O número muda com o seu
@@ -409,7 +446,7 @@ const schema = [
           </table>
         </div>
 
-        <h2>10, 20, 30, 45, 60 e 90 minutos: quantas calorias?</h2>
+        <h2>De 10 minutos a 2 horas: quantas calorias?</h2>
         <p>
           O gasto é proporcional ao tempo — uma hora custa o dobro de meia hora, no mesmo ritmo. A
           tabela é para {PESO_PADRAO} kg em ritmo moderado, e serve para mostrar por que
@@ -433,7 +470,7 @@ const schema = [
           </table>
         </div>
 
-        <h2>Caminhar 5 km ou 10 km gasta quantas calorias?</h2>
+        <h2>Caminhar 1, 3, 5 ou 10 km gasta quantas calorias?</h2>
         <p>
           Para {PESO_PADRAO} kg em ritmo moderado, <strong>5 km</strong> dão cerca de{' '}
           {arredondaKcal(EX_5KM.kcal)} kcal em {formataTempo(EX_5KM.minutos)}, e
