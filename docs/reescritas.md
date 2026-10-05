@@ -370,6 +370,21 @@ por hora, gastam parecido) e "caminhar por 1 hora emagrece?" no lugar de
 "andar 1 km de bicicleta", que vai para a página da bicicleta. Linha de
 base: 160 impressões, 0 clique, posição 9,8.
 
+**Descanso entre séries** (`/musculacao/descanso-entre-series/`, a
+calculadora nova). Prints de 05/10 da busca "descanso entre séries": a
+página já aparece como sugestão de site no autocompletar. Autocompletar:
+hipertrofia, academia, musculação, ganhar massa, flexões, abdominais,
+bíceps. PAA: descanso ideal, "é bom descansar 3 minutos?", "por que
+descansar 30 segundos?". Relacionadas: emagrecer, entre treinos, 24 horas de
+descanso muscular, cada grupo muscular, entre uma repetição e outra. A IA
+diz 1–2 min para hipertrofia e 2–5 para força. Entraram: flexão e abdominal
+na tabela; as perguntas de 3 minutos, 30 segundos, emagrecer e
+flexão/abdominal; a leitura dos "1 a 2 minutos" que circulam (valem para
+isolador, ficam curtos para composto perto da falha); e duas seções curtas
+para as buscas vizinhas — entre treinos (manda para frequência de treino e
+dor muscular) e entre repetições (rest-pause). Linha de base: a URL não
+aparecia no export do GSC de 30/09.
+
 **Futebol** (`/calorias/futebol/`). Autocompletar e relacionadas: tempo (30
 e 40 minutos, 1 e 2 horas), futsal, "por dia", "jogador profissional",
 "qual esporte gasta mais". PAA: 1 hora, "como queimar 1000 calorias em 1

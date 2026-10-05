@@ -24,6 +24,19 @@
  *   "nunca passa de 2 min", que valia só para hipertrofia) foram corrigidas.
  * - Ferramenta: o "como foi?" agora aparece com o descanso já correndo.
  *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "descanso entre séries"):
+ * a página já aparece como sugestão de site no autocompletar. O
+ * autocompletar pede hipertrofia, academia, musculação, ganhar massa,
+ * flexões, abdominais e bíceps; o PAA, "qual o descanso ideal?", "é bom
+ * descansar 3 minutos?", "quanto tempo por cada série?" e "por que
+ * descansar 30 segundos?"; as relacionadas, emagrecer, entre treinos, 24
+ * horas de descanso muscular, cada grupo muscular e "entre uma repetição e
+ * outra". A IA diz 1 a 2 min para hipertrofia e 2 a 5 para força.
+ * Entraram: flexão e abdominal na tabela, as perguntas de 3 minutos, 30
+ * segundos, emagrecer, flexão e abdominal, e duas seções curtas para as
+ * buscas vizinhas (entre treinos; entre uma repetição e outra) — que não
+ * são descanso entre séries e mandam para os artigos certos.
+ *
  * Plano, crítica ao briefing e regras do motor: docs/calculadora-descanso.md.
  */
 import Base from '../../layouts/Base.astro';
@@ -82,11 +95,13 @@ const TABELA_IDS = [
   'puxada',
   'desenvolvimento',
   'hip-thrust',
+  'flexao',
   'rosca-direta',
   'triceps-pulley',
   'elevacao-lateral',
   'extensora',
   'panturrilha',
+  'abdominal',
 ];
 const TABELA = TABELA_IDS.map((id) => ({
   ex: exercicio(id)!,
@@ -106,6 +121,11 @@ const COMPOSTO_HIP = de('hipertrofia', 'supino', '9-12', 'perto');
 const ISOLADOR_HIP = de('hipertrofia', 'rosca-direta', '9-12', 'perto');
 const ISOLADOR_FORCA = de('forca', 'rosca-direta', '1-5', 'perto');
 const FORCA_IGUAL = frase(AGACH_FORCA) === frase(SUPINO_FORCA);
+const SUPINO_FALHA = de('hipertrofia', 'supino', '9-12', 'falha');
+const CURTO = de('resistencia', 'elevacao-lateral', '16-20', 'moderado');
+const FLEXAO = de('hipertrofia', 'flexao', '13-15', 'perto');
+const ABDOMINAL = de('hipertrofia', 'abdominal', '13-15', 'perto');
+const ABDOMINAL_RES = de('resistencia', 'abdominal', '20+', 'moderado');
 
 const fonte = (id: string) => FONTES.find((f) => f.id === id)!;
 
@@ -133,6 +153,18 @@ const faqs = [
     resposta: `Não. Para um composto levado perto da falha, 2 minutos é o começo da faixa: o supino com 6 a 8 repetições fica em ${frase(SUPINO_HIP)}. Em isoladores, para hipertrofia, 2 minutos já é a ponta de cima — a rosca perto da falha fica em ${frase(ROSCA_HIP)}.`,
   },
   {
+    pergunta: 'É bom descansar 3 minutos entre séries?',
+    resposta: `Nos compostos levados perto da falha, sim: 3 minutos está dentro da faixa do supino (${frase(SUPINO_HIP)}) e do agachamento (${frase(AGACH_HIP)}), e num estudo com homens treinados 3 minutos deram mais força e mais espessura na coxa que 1. Em isoladores, para hipertrofia, é mais do que precisa — a rosca perto da falha fica em ${frase(ROSCA_HIP)}.`,
+  },
+  {
+    pergunta: 'Por que descansar 30 segundos entre séries?',
+    resposta: `Porque o objetivo é resistência ou condicionamento, em que chegar à próxima série ainda cansado faz parte do estímulo: a elevação lateral com 16 a 20 repetições fica em ${frase(CURTO)} nesse caso. Para hipertrofia ou força, 30 segundos tende a custar repetições nas séries seguintes.`,
+  },
+  {
+    pergunta: 'Quanto descansar entre séries para emagrecer?',
+    resposta: `O descanso mexe pouco no gasto do treino; quem emagrece é o déficit da semana. Na musculação de quem quer emagrecer, vale a mesma faixa da hipertrofia — ela protege o músculo durante o déficit. Descanso curto, em circuito, faz sentido quando o tempo é pouco: a calculadora mostra a faixa com o objetivo "condicionamento".`,
+  },
+  {
     pergunta: 'Posso descansar 5 minutos entre séries?',
     resposta: `Pode, e em força faz sentido: ${frase(AGACH_FORCA)} é a faixa do agachamento com poucas repetições. Para hipertrofia, a conta desta página para em 4 minutos por escolha nossa: os estudos não veem ganho de músculo acima de cerca de 90 segundos, então descansar ainda mais só deixa o treino mais longo.`,
   },
@@ -147,6 +179,10 @@ const faqs = [
   {
     pergunta: 'Quanto descansar entre séries de bíceps?',
     resposta: `Na rosca, para hipertrofia, ${frase(ROSCA_HIP)} com 9 a 12 repetições perto da falha, e ${frase(ROSCA_FALHA)} se a série vai até a falha. Isoladores recuperam mais rápido que compostos.`,
+  },
+  {
+    pergunta: 'Quanto descansar entre séries de flexão e de abdominal?',
+    resposta: `Na flexão, que usa vários músculos, ${frase(FLEXAO)} com 13 a 15 repetições perto da falha. No abdominal, ${frase(ABDOMINAL)} para hipertrofia; feito como resistência, com mais de 20 repetições, ${frase(ABDOMINAL_RES)}.`,
   },
   {
     pergunta: 'Descansar demais atrapalha a hipertrofia?',
@@ -466,6 +502,11 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
         1 minuto e fez séries extras para igualar o volume cresceu o mesmo que a de 3 minutos (<a
         href={fonte('longo').url} target="_blank" rel="noopener">Longo e colegas, 2022</a>).
       </p>
+      <p>
+        Por isso a resposta que circula — "1 a 2 minutos para hipertrofia" — vale bem para
+        isoladores, e fica curta para os compostos levados perto da falha: no supino, a conta dá
+        {frase(SUPINO_HIP)}; até a falha, {frase(SUPINO_FALHA)}.
+      </p>
       <div class="callout">
         <strong>Na prática:</strong> o descanso não faz o músculo crescer sozinho — ele vale pelas
         repetições que deixa você fazer na próxima série. Por isso a calculadora começa em 1 minuto
@@ -544,6 +585,22 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       <p>
         Mais sobre essas técnicas em <a href="/musculacao/tecnicas-avancadas-de-treino/">técnicas
         avançadas de treino</a>.
+      </p>
+
+      <h2>E entre uma repetição e outra?</h2>
+      <p>
+        Numa série normal, não há pausa entre as repetições. Pausas curtas dentro da série — de 10
+        a 20 segundos — são uma técnica (rest-pause ou cluster), descrita acima, e não substituem o
+        descanso entre séries.
+      </p>
+
+      <h2>Descanso entre séries não é descanso entre treinos</h2>
+      <p>
+        O tempo entre uma série e outra se mede em minutos. Já o tempo para treinar o mesmo músculo
+        de novo — o "descanso muscular" entre treinos — se mede em dias, e depende do volume e da
+        divisão da semana. Essa conta está em <a href="/musculacao/frequencia-de-treino/">frequência
+        de treino</a>; e se a dúvida é treinar ainda dolorido, em <a
+        href="/musculacao/dor-muscular-pos-treino/">dor muscular pós-treino</a>.
       </p>
 
       <h2>Descansar "até estar pronto" funciona?</h2>
