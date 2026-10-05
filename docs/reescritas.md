@@ -209,6 +209,45 @@ O H1 não mudou — "Quanto custa um personal trainer?" é a pergunta literal, e
    as consultas-cabeça se movam, o que mudou foi a composição, não o
    desempenho.
 
+## Nota de 05/10/2026 — prints de "quanto custa um personal trainer" e "valor personal trainer por mês"
+
+O Renato mandou os prints das duas buscas-cabeça de preço. Lidos contra o
+relatório de 30/09, quase tudo já estava respondido pela reescrita de 14/09
+e pelo ajuste de 30/09 no guia de preço: "por mês", "tabela", "2 ou 3 vezes
+por semana", "particular", "em São Paulo" e "dentro da academia (rede)"
+são, todas, perguntas que a página já tem. A calculadora de preço também
+("Valor de Personal Trainer por Mês: Calculadora por Cidade"; seções de
+frequência, aula × mês e presencial × online).
+
+O que os prints trouxeram de novo:
+
+1. **Gaviões** aparece três vezes (autocompletar "na academia gaviões",
+   relacionadas "na gavioes" e "valor personal trainer gavioes"). Entrou
+   na lista de redes da pergunta "Quanto custa um personal dentro da
+   academia". A resposta continua sem preço de rede — política de cada
+   rede não verificada; o texto manda perguntar na unidade.
+2. **"É preciso pagar personal na academia?"** (PAA) puxou o fio para outra
+   página: o guia `personal-trainer-em-academia` recebe "personal de
+   academia" (47 impr, pos 8,5), "academia com personal" (46, 15,9),
+   "personal academia" (61, 11,5), "academia com personal incluso" (≈35
+   somando variações) e "quanto custa um personal de academia" (24, 9,1) —
+   e a página toda tinha 100 impressões, posição 7,6, **nenhum clique**. O
+   título era "Personal trainer em academia: como funciona (2026)".
+   Passou a "Academia com personal incluso? Quanto custa e como funciona";
+   a description antiga (186 caracteres, um dos 82 defeitos da auditoria)
+   foi reescrita com 148; entraram as perguntas "É preciso pagar personal
+   na academia?" e "Existe academia com personal incluso na mensalidade?".
+
+**Não aplicado:** "quanto ganha", "salário na Smart Fit", "CLT" — são
+buscas de quem trabalha como personal, não de quem contrata; "quanto custa
+em Fortaleza/Brasília/SP/RJ" — respondidas pelas páginas de cidade, que já
+estão na tabela por cidade do guia.
+
+**Linha de base para 30/10:** guia de preço 985 impressões, 5 cliques,
+posição média 24,0 (`quanto custa um personal trainer` 284 impr, pos 12,2;
+`personal trainer preço` 76, 37,7 — era 38,7 em 14/09, quase parado);
+guia de academia 100 impressões, 0 clique, posição 7,6.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

@@ -109,6 +109,9 @@ até 29/09/2026):
    Leva 5, em 05/10: **Taguatinga** (321 impressões, 6 cliques; já é o
    primeiro orgânico em "personal trainer taguatinga df" — teste de CTR puro).
    **Blumenau** (287 impressões, 5 cliques), em 05/10.
+   Fora das cidades, em 05/10: **guia de personal em academia** (100
+   impressões, 0 clique, posição 7,6 — título novo, "Academia com personal
+   incluso?") e **guia de preço** (ajuste pequeno; ver docs/reescritas.md).
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.
