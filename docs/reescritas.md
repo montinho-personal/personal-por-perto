@@ -248,6 +248,29 @@ posição média 24,0 (`quanto custa um personal trainer` 284 impr, pos 12,2;
 `personal trainer preço` 76, 37,7 — era 38,7 em 14/09, quase parado);
 guia de academia 100 impressões, 0 clique, posição 7,6.
 
+## Nota de 05/10/2026 — calculadoras de calorias pelos prints, começando pela escada
+
+O GSC de 30/09 mostrou as calculadoras de calorias com o mesmo padrão das
+cidades: posição 6 a 7 e quase nenhum clique (escada 963 impressões, 2
+cliques, posição 6,7; natação 512/1; corda 381/1; lutas 288/2; corrida
+258/0). O Renato mandou os prints das primeiras.
+
+**Escada** (`/calorias/escada/`). A busca conta em **andares** (autocompletar:
+"subir 5, 8, 10, 12, 13 andares de escada") e em **minutos** (relacionadas:
+"5, 10, 15, 20, 25, 30, 40 minutos de escada perde quantas calorias", "1
+hora", "simulador de escada", "velocidade 5"; PAA: "quantas kcal queima 30
+minutos de escada?", "30 minutos de escada equivalem a quantos andares?",
+"o que emagrece mais, caminhar ou subir escada?"). A página já tinha os
+andares (calculadora, tabela e FAQ), mas tempo só no modo "Máquina de
+escada" e num parágrafo. Entraram: título com "Por Andar e Minuto"
+(antes "Quantas Calorias Subir Escada Gasta? Calculadora"), tabela por
+tempo (5 a 60 minutos, dois ritmos, total com repouso — o número
+comparável ao resto da internet, que fala em ~294 kcal por 30 minutos; a
+página dá 252 no ritmo normal e 318 no rápido), e quatro perguntas (30
+minutos, andares em 30 minutos, caminhar × escada, "nível 5" do
+simulador — sem padrão entre marcas, a conta é por degraus por minuto).
+Linha de base: 963 impressões, 2 cliques, posição 6,7.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

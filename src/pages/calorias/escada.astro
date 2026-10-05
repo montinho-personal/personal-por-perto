@@ -70,6 +70,7 @@ import {
   arredondaKcal,
   deAndares,
   deTempo,
+  ritmo,
   eficienciaImplicita,
   formataAndares,
   formataDegraus,
@@ -87,7 +88,7 @@ import {
 import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
 
 const path = '/calorias/escada';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -119,16 +120,56 @@ const MINUTOS_CAMINHADA = EX_10.kcalSubida / kcalCaminhadaPorMin;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 48 caracteres. */
-const title = 'Quantas Calorias Subir Escada Gasta? Calculadora';
-/* 147 caracteres. */
+/*
+ * Por tempo — a forma como a busca pergunta. Prints de 05/10/2026: as
+ * relacionadas de "quantas calorias gasta subir escada" são quase todas de
+ * minutos ("5, 10, 15, 20, 25, 30, 40 minutos de escada perde quantas
+ * calorias", "1 hora", "simulador de escada"), e o PAA traz "quantas kcal
+ * queima 30 minutos de escada?" e "30 minutos de escada equivalem a quantos
+ * andares?". Por tempo, o número comparável com o resto da internet é o
+ * total (líquido + repouso), e ele depende do ritmo — por isso duas colunas.
+ */
+const RIT_NORMAL = ritmo('moderado');
+const RIT_FORTE = ritmo('forte');
+const TEMPOS = [5, 10, 15, 20, 30, 40, 60];
+const TAB_TEMPO = TEMPOS.map((min) => ({
+  min,
+  normal: deTempo(min, PESO_PADRAO, DEGRAUS_POR_ANDAR_PADRAO, ESPELHO_PADRAO, RIT_NORMAL.cadencia),
+  forte: deTempo(min, PESO_PADRAO, DEGRAUS_POR_ANDAR_PADRAO, ESPELHO_PADRAO, RIT_FORTE.cadencia),
+}));
+const T30 = TAB_TEMPO.find((l) => l.min === 30)!;
+const T10 = TAB_TEMPO.find((l) => l.min === 10)!;
+/* Por minuto: escada no ritmo normal contra caminhada moderada. */
+const ESCADA_POR_MIN = T30.normal.kcalBruta / 30;
+const VEZES_CAMINHADA = ESCADA_POR_MIN / kcalCaminhadaPorMin;
+
+/* Até 05/10 era "Quantas Calorias Subir Escada Gasta? Calculadora". A
+ * busca pergunta "quantas calorias gasta subir escada" (autocompletar) e
+ * conta em andares ou em minutos (relacionadas e PAA). */
+const title = 'Quantas Calorias Gasta Subir Escada? Por Andar e Minuto';
 const description =
-  'Calcule as calorias de subir escada por andares, degraus ou tempo. A única conta do site que sai da física — e a resposta honesta sobre o elevador.';
+  'Calorias de subir escada por andares, degraus ou minutos na máquina: 10 andares, 30 minutos, o seu peso — e o que a escada emagrece de verdade.';
 
 const faqs = [
   {
     pergunta: 'Subir 10 andares gasta quantas calorias?',
     resposta: `Cerca de ${formataKcal(EX_10.kcalSubida)} kcal líquidas para ${PESO_PADRAO} kg — são ${EX_10.degraus} degraus e ${formataMetros(EX_10.metros)} de altura. Se você descer a pé também, some 23%: dá cerca de ${formataKcal(EX_10_IDA.kcalLiquida)} kcal. É menos do que a maioria das pessoas imagina, e a página explica por quê.`,
+  },
+  {
+    pergunta: 'Quantas calorias queima 30 minutos de escada?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(T30.normal.kcalBruta)} kcal em ritmo normal (${RIT_NORMAL.cadencia} degraus por minuto) e ${formataKcal(T30.forte.kcalBruta)} kcal em ritmo rápido (${RIT_FORTE.cadencia} por minuto), contando o que o corpo gastaria parado no mesmo tempo. Dez minutos dão ${formataKcal(T10.normal.kcalBruta)} e ${formataKcal(T10.forte.kcalBruta)} kcal. É uma conta de máquina de escada ou de prédio muito alto: meia hora contínua no ritmo normal são cerca de ${formataAndares(Math.round(T30.normal.andares))}.`,
+  },
+  {
+    pergunta: '30 minutos de escada equivalem a quantos andares?',
+    resposta: `Cerca de ${formataAndares(Math.round(T30.normal.andares))} no ritmo normal (${formataDegraus(Math.round(T30.normal.degraus))}, com ${DEGRAUS_POR_ANDAR_PADRAO} degraus por andar) e ${formataAndares(Math.round(T30.forte.andares))} no rápido. Por isso a pergunta quase sempre é sobre a máquina de escada da academia: num prédio, quase ninguém sobe por meia hora seguida.`,
+  },
+  {
+    pergunta: 'O que emagrece mais, caminhar ou subir escada?',
+    resposta: `Por minuto, a escada: no ritmo normal ela gasta cerca de ${n(VEZES_CAMINHADA, 1)} vezes o que a caminhada moderada gasta para a mesma pessoa. Mas emagrecimento é soma de semanas, e a caminhada ganha em volume — quase todo mundo caminha 40 minutos, poucos sobem escada por 40 minutos. O que mais pesa é o déficit calórico; entre as duas, a que você consegue repetir é a que mais rende.`,
+  },
+  {
+    pergunta: 'No simulador de escada, nível 5 gasta quantas calorias?',
+    resposta: `Nível e velocidade não têm padrão entre marcas de máquina — o "5" de uma não é o "5" de outra. O que dá para comparar é quantos degraus você sobe por minuto: muitas máquinas mostram isso, ou os andares, no visor; se não mostrar, conte os degraus durante um minuto. Com esse número, o modo "Máquina de escada" da calculadora acima faz a conta para o seu peso.`,
   },
   {
     pergunta: 'Subir um degrau queima 0,17 caloria?',
@@ -536,6 +577,45 @@ erguer ${PESO_PADRAO} kg em 1 metro
           </table>
         </div>
         <p>{NOTA_DESCIDA}</p>
+
+        <h2>Quanto gasta por tempo: 10, 20, 30 minutos de escada</h2>
+        <p>
+          A busca pergunta muito em minutos, e minuto contínuo de escada quase sempre quer dizer
+          máquina (o simulador de escada da academia) ou prédio muito alto. Por tempo, o número
+          que dá para comparar com o resto da internet é o <strong>total</strong>: o trabalho da
+          subida somado ao que o corpo gastaria parado no mesmo intervalo. E ele depende do ritmo,
+          por isso a tabela traz dois.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>
+              Gasto total para {PESO_PADRAO} kg, degrau de {n(ESPELHO_PADRAO * 100)} cm
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo</th>
+                <th scope="col">Andares no ritmo normal</th>
+                <th scope="col">Normal ({RIT_NORMAL.cadencia} degraus/min)</th>
+                <th scope="col">Rápido ({RIT_FORTE.cadencia} degraus/min)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{formataTempo(l.min)}</th>
+                  <td>≈ {Math.round(l.normal.andares)}</td>
+                  <td>≈ {formataKcal(l.normal.kcalBruta)} kcal</td>
+                  <td>≈ {formataKcal(l.forte.kcalBruta)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          No simulador, o número do painel ("nível 5", "velocidade 8") não tem padrão entre
+          marcas. O que vale é degraus por minuto: use o que o visor mostrar, ou conte durante um
+          minuto, e ponha no modo "Máquina de escada" da calculadora.
+        </p>
 
         <h2>Trocar o elevador pela escada emagrece?</h2>
         <p>
