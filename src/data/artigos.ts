@@ -135,7 +135,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/abc-ou-full-body/', titulo: 'ABC ou Full Body: qual a melhor divisão de treino' },
   { categoria: 'Musculação', url: '/musculacao/quantas-series-e-repeticoes/', titulo: 'Quantas séries e repetições fazer por grupo muscular' },
   { categoria: 'Musculação', url: '/musculacao/progressao-de-carga/', titulo: 'Como progredir de carga na musculação' },
-  { categoria: 'Musculação', url: '/musculacao/descanso-entre-series/', titulo: 'Quanto tempo descansar entre séries' },
+  { categoria: 'Musculação', url: '/musculacao/descanso-entre-series/', titulo: 'Quanto tempo descansar entre séries: calculadora e timer' },
   { categoria: 'Musculação', url: '/musculacao/treinar-ate-a-falha/', titulo: 'Treinar até a falha funciona?' },
   { categoria: 'Musculação', url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/', titulo: 'Cardio e musculação no mesmo dia: como combinar' },
   { categoria: 'Musculação', url: '/musculacao/quanto-tempo-para-ver-resultados/', titulo: 'Quanto tempo demora para ver resultados na musculação?' },

@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 29, `${catalogo.length} ferramentas no catálogo (29)`);
+ok(catalogo.length === 30, `${catalogo.length} ferramentas no catálogo (30)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
