@@ -48,17 +48,17 @@ aponta para ela.
 |---|---|---|
 | Singer et al., 2024, *Front. Sports Act. Living* (meta-análise bayesiana, 9 estudos) | pequeno benefício de descansar **mais de 60 s** para hipertrofia; acima de **~90 s** não detectou diferença apreciável | piso de 60 s na hipertrofia; faixas largas, sem prometer que mais descanso = mais músculo |
 | Schoenfeld et al., 2016, *JSCR* 30(7) | homens treinados, 8–12 RM até a falha: 3 min > 1 min em força (supino e agachamento) e espessura da coxa | compostos levados perto da falha ganham faixa maior |
-| Longo et al., 2022, *JSCR* 36(6) | descanso curto com mais séries para igualar o volume deu a mesma hipertrofia do descanso longo | a tese da página: **descanso serve para proteger o desempenho**, e é por ele que se ajusta |
-| Senna et al., 2016, *JSCR* 30(3) | a 3 RM, crucifixo manteve as repetições com 2 min; supino precisou de 3 min | composto e isolador recebem faixas diferentes |
+| Longo et al., 2022, *JSCR* 36(6) | 28 iniciantes, cadeira extensora, perna contra perna: a de 1 min com séries extras para igualar o volume cresceu o mesmo que a de 3 min | a tese da página: **descanso serve para proteger o desempenho**, e é por ele que se ajusta |
+| Senna et al., 2016, *JSCR* 30(3) | 15 treinados, 5 séries a 3 RM: o voador (crucifixo na máquina) fez mais repetições totais com 2 min do que com 1; o supino só com 3 ou 5 min | composto e isolador recebem faixas diferentes |
 | de Salles et al., 2009, *Sports Med* | com 50–90% de 1RM, 3–5 min mantiveram mais repetições e deram mais força | força em composto pesado: 3–5 min |
 | Grgic et al., 2017, *Eur J Sport Sci* | possível vantagem de descansos longos em treinados; poucos estudos | reforça a cautela: faixa, não número |
-| ensaio de 2024 sobre descanso autosselecionado (PMC11503322) | autosseleção funciona, com muita variação entre pessoas | o ajuste pela série seguinte |
+| Alonso-Aubin et al., 2024, *J Funct Morphol Kinesiol* 9(4) | uma sessão, 13 treinados, agachamento a 80%: autosseleção (~97 s) rendeu o mesmo que 2 min fixos | o ajuste pela série seguinte |
 
 O que **não** está no motor, de propósito:
-- **Nível de experiência.** O briefing pede como "pequeno fator". Não achamos
-  evidência que separe a necessidade de descanso por tempo de treino — o que
-  muda é a carga absoluta, e ela já aparece no esforço da série. Uma pergunta
-  a menos.
+- **Nível de experiência.** O briefing pede como "pequeno fator". Há sinal
+  de que treinados se beneficiam mais de descansos longos (Grgic, 2017), mas
+  o que muda neles é a carga e a proximidade da falha — que a conta já
+  pergunta. Uma pergunta a menos.
 - **%1RM.** Repetições + proximidade da falha já definem a intensidade
   relativa (é exatamente o que a tabela de RIR faz). Pedir %1RM seria pedir a
   mesma coisa duas vezes. A integração com a 1RM vira link nos dois sentidos.
@@ -103,19 +103,35 @@ Degrau de partida pela **demanda do exercício**:
 - localizada (rosca, tríceps, elevação lateral, extensora, flexora…): 1:00
 
 Ajustes, em degraus:
-- repetições: 1–5 sobe 1; 6–12 fica; 13–20 desce 1; mais de 20 desce 2
+- repetições: 1–5 sobe 1; 6–12 fica; 13–20 desce 1; mais de 20 desce 2 —
+  perto da falha, 13–20 fica e mais de 20 desce só 1 (séries longas até a
+  falha cansam pelo fôlego, não só pela carga)
 - esforço: longe da falha desce 2; moderado desce 1; perto fica; falha sobe 1
 - objetivo: força sobe 1; resistência e condicionamento descem 2; hipertrofia fica
 
-Largura da faixa: dois degraus em composto, um em localizado. Pisos e
-tetos: hipertrofia nunca abaixo de 1:00 (Singer, 2024); teto de 5:00.
-O ponto de partida do timer é o degrau do meio.
+Largura da faixa: **dois degraus sempre** (com um, o timer de isolado
+começava no piso). O ponto de partida do timer é o degrau do meio.
 
-Ajuste pela série seguinte: manteve → mantém; "descansei demais" → desce um
-degrau (sem passar do piso); perdeu 1–2 → mantém se a série foi perto da
-falha, sobe um degrau se não foi; perdeu 3+ → sobe dois; reduziu a carga →
-sobe dois e avisa que a comparação muda. Duas subidas seguidas com queda →
-avisa que pode ser fadiga acumulada, não só descanso.
+Pisos e tetos por objetivo:
+- hipertrofia: de 1:00 (Singer, 2024) a 4:00 (escolha da conta: acima de
+  ~90 s a meta-análise já não vê diferença);
+- força: piso de 1:30 em isolador e 2:00 em composto, teto de 5:00 — sem o
+  piso, força longe da falha dava menos descanso que hipertrofia;
+- resistência e condicionamento: piso de 0:45 em exercício pesado.
+
+Só entra no "por que esse descanso?" o fator que mudou a faixa (se o teto
+anula a falha, a explicação não cita a falha).
+
+Ajuste pela série seguinte (`ajustar`), sempre a partir do descanso REAL que
+veio antes da série avaliada, arredondado para a escada:
+- manteve → mantém; sobrou descanso → desce um degrau;
+- perdeu 1–2 → mantém se a série foi perto da falha; sobe um se não foi;
+- perdeu 3+ → sobe dois (um, se a série foi até a falha);
+- baixou a carga → sobe um e avisa que a comparação muda;
+- resistência e condicionamento: perder repetições faz parte; no máximo um
+  degrau acima da faixa;
+- no piso ou no teto, a mensagem diz isso em vez de prometer outro tempo;
+- duas quedas grandes seguidas → avisa que pode ser fadiga acumulada.
 
 ## 5. Timer
 
@@ -124,8 +140,20 @@ avisa que pode ser fadiga acumulada, não só descanso.
   atrasa o relógio.
 - Estado em `sessionStorage`: recarregar a página no meio do descanso volta
   ao timer certo.
-- Wake Lock quando disponível; vibração no fim; som só se a pessoa ligar
-  (o áudio nasce do toque no botão, nunca sozinho).
+- "Fiz a série" já começa o descanso; o "como foi?" aparece embaixo do
+  relógio e ajusta o descanso que está correndo, pela diferença. Trocar de
+  resposta recalcula do estado anterior (não acumula).
+- O descanso de cada série é o tempo que passou de verdade: pausa, +30,
+  −15 e "pular" entram na conta.
+- Wake Lock pedido de novo sempre que a aba volta (o navegador solta
+  sozinho) e depois de recarregar; pedidos velhos são soltos.
+- Vibração no fim; bipe ligado por padrão onde não há vibração (iPhone),
+  com o áudio sempre nascendo de um toque.
+- No fim, o cartão fica laranja e o título da aba diz "Hora da série!".
+- Toques logo depois de trocar de tela (450 ms) são ignorados: um toque
+  duplo não escolhe nada sem querer.
+- Durante o treino, a barra fixa do site, o slide-in e o WhatsApp
+  flutuante somem.
 - Leitor de tela: o número grande não é anunciado; uma região `aria-live`
   avisa 1 minuto, 30 segundos, 10 segundos e o fim.
 - O título da aba mostra o tempo restante.
@@ -142,7 +170,23 @@ Eventos: `rest_calculator_view`, `rest_calculator_start`,
 `rest_effort_selected`, `rest_result_generated`, `rest_timer_started`,
 `rest_timer_completed`, `rest_timer_extended`, `rest_timer_reduced`,
 `rest_next_set_feedback`, `rest_recommendation_adjusted`,
-`rest_tool_shared`, `rest_related_tool_clicked`, `rest_find_personal_clicked`.
+`rest_tool_shared`, `rest_related_tool_clicked`, `rest_find_personal_clicked`,
+`rest_timer_skipped` (pular descanso — sem ele, o funil lia abandono onde
+houve uso) e `rest_recent_used`. Campos digitados mandam um evento quando a
+pessoa para de digitar, não um por tecla.
+
+## 6.1 Auditoria de 05/10/2026
+
+Quatro revisões independentes (fisiologia, código, UX/acessibilidade,
+SEO/conteúdo) acharam: três defeitos de lógica no motor (força abaixo de
+hipertrofia em 10 combinações, timer de isolado no piso, ajuste de
+resistência subindo até 5 min), 23 bugs de estado no cliente (19
+reproduzidos), descrição imprecisa de três estudos e números do texto
+contradizendo a tabela. Tudo corrigido no commit seguinte, com testes de
+regressão em `scripts/test-descanso.ts` (seção "Auditoria de 05/10") e um
+roteiro de navegador repetindo cada bug. Ficou de fora, por decisão:
+schema de autoria (padrão do site inteiro, não desta página) e
+WebApplication.
 
 ## 7. Fases
 

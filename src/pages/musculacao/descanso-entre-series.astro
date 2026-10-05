@@ -11,19 +11,18 @@
  * título novo e a ferramenta no topo não arriscam nada que funcionava, e os
  * 15 links internos que já apontavam para cá passam a levar à ferramenta.
  *
- * O QUE MUDOU NO TEXTO EM 05/10/2026
+ * AUDITORIA DE 05/10/2026 (fisiologia, código, UX e SEO)
  *
- * - "Algo em torno de 1,5 a 3 minutos é uma faixa segura" virou a leitura da
- *   meta-análise de Singer et al. (2024): pequeno ganho acima de 60 s, sem
- *   diferença apreciável detectada acima de ~90 s — e o Longo et al. (2022)
- *   explicando por quê (o descanso vale pelo volume que deixa fazer).
- * - Força ganhou as fontes que sustentam os 3–5 minutos (de Salles et al.,
- *   2009) e a diferença entre composto e isolador (Senna et al., 2016).
- * - "Nível de experiência" saiu da lista de fatores: não achamos estudo que
- *   separe a necessidade de descanso por tempo de treino.
- * - Entraram: tabela por exercício calculada pelo motor, descanso entre
- *   exercícios, técnicas (superset, drop-set, rest-pause), sinais de que
- *   precisa descansar mais e a hora de parar.
+ * - Os estudos passaram a ser descritos pelo que mediram: Senna (2016) foi
+ *   no voador e mediu total de repetições; Longo (2022), em iniciantes na
+ *   extensora, perna contra perna; o de autosseleção (Alonso-Aubin, 2024),
+ *   uma sessão só. O teto de 4 min da hipertrofia é escolha da conta, não
+ *   achado de estudo — o texto agora diz isso.
+ * - A primeira dobra dá a resposta curta em números (do motor), como fazem
+ *   todos os concorrentes da SERP.
+ * - FAQs que repetiam seções saíram; as que contradiziam a tabela (isolador
+ *   "nunca passa de 2 min", que valia só para hipertrofia) foram corrigidas.
+ * - Ferramenta: o "como foi?" agora aparece com o descanso já correndo.
  *
  * Plano, crítica ao briefing e regras do motor: docs/calculadora-descanso.md.
  */
@@ -54,7 +53,7 @@ import {
   calcular,
   exercicio,
   formataFaixa,
-  formataTempoExtenso,
+  formataFaixaFrase,
   type Esforco,
   type FaixaReps,
   type Objetivo,
@@ -69,10 +68,10 @@ const crumbs = [
 ];
 
 /* ── Tudo abaixo sai do mesmo motor da calculadora ── */
+type R = ReturnType<typeof calcular>;
 const de = (objetivo: Objetivo, id: string, reps: FaixaReps, esforco: Esforco) =>
   calcular({ objetivo, demanda: exercicio(id)!.demanda, reps, esforco });
-const faixa = (r: ReturnType<typeof calcular>) => formataFaixa(r);
-const extenso = (r: ReturnType<typeof calcular>) => `${formataTempoExtenso(r.min)} a ${formataTempoExtenso(r.max)}`;
+const frase = (r: R) => formataFaixaFrase(r.min, r.max);
 
 const TABELA_IDS = [
   'agachamento',
@@ -105,60 +104,54 @@ const LATERAL = de('hipertrofia', 'elevacao-lateral', '13-15', 'perto');
 const PESADO_HIP = de('hipertrofia', 'agachamento', '9-12', 'perto');
 const COMPOSTO_HIP = de('hipertrofia', 'supino', '9-12', 'perto');
 const ISOLADOR_HIP = de('hipertrofia', 'rosca-direta', '9-12', 'perto');
+const ISOLADOR_FORCA = de('forca', 'rosca-direta', '1-5', 'perto');
+const FORCA_IGUAL = frase(AGACH_FORCA) === frase(SUPINO_FORCA);
 
 const fonte = (id: string) => FONTES.find((f) => f.id === id)!;
 
 const faqs = [
   {
     pergunta: 'Quanto tempo descansar entre séries?',
-    resposta: `Depende do exercício e de quão perto da falha a série terminou. Para hipertrofia, em séries de 9 a 12 repetições perto da falha, a conta desta página dá ${extenso(PESADO_HIP)} em exercícios pesados como agachamento, ${extenso(COMPOSTO_HIP)} em compostos como supino e remada, e ${extenso(ISOLADOR_HIP)} em isoladores como rosca e tríceps. O que vale é a próxima série sair parecida com a anterior.`,
+    resposta: `Depende do exercício e de quão perto da falha a série terminou. Para hipertrofia, em séries de 9 a 12 repetições perto da falha, a conta desta página dá ${frase(PESADO_HIP)} em exercícios pesados como agachamento, ${frase(COMPOSTO_HIP)} em compostos como supino e remada, e ${frase(ISOLADOR_HIP)} em isoladores como rosca e tríceps. O que vale é a próxima série render como a anterior.`,
   },
   {
     pergunta: 'Quanto descansar entre séries para hipertrofia?',
-    resposta: `Pelo menos 1 minuto. Uma meta-análise de 2024 encontrou um pequeno benefício em descansar mais de 60 segundos, e nenhuma diferença apreciável acima de cerca de 90. Mais tempo ajuda quando deixa fazer mais repetições: em exercícios compostos levados perto da falha, isso costuma pedir de 2 a 3 minutos — ${extenso(SUPINO_HIP)} no supino com 6 a 8 repetições.`,
+    resposta: `De ${frase(ISOLADOR_HIP)} em isoladores e ${frase(COMPOSTO_HIP)} em compostos, mais nos compostos pesados levados perto da falha. Descansar mais de 60 segundos tende a render um pouco mais de músculo; acima de cerca de 90 segundos, os estudos já não veem diferença — o tempo extra vale quando deixa você repetir as repetições.`,
   },
   {
     pergunta: 'Quanto descansar entre séries para força?',
-    resposta: `De 3 a 5 minutos nos exercícios pesados. Com cargas de 50% a 90% do 1RM, descansos desse tamanho mantiveram mais repetições ao longo das séries e deram mais ganho de força máxima. Para séries de 1 a 5 repetições perto da falha, a conta dá ${extenso(AGACH_FORCA)} no agachamento e ${extenso(SUPINO_FORCA)} no supino.`,
+    resposta: FORCA_IGUAL
+      ? `${frase(AGACH_FORCA).replace(/^./, (c) => c.toUpperCase())} nos exercícios pesados, tanto no agachamento quanto no supino, com 1 a 5 repetições perto da falha. Em isoladores, ${frase(ISOLADOR_FORCA)}.`
+      : `${frase(AGACH_FORCA).replace(/^./, (c) => c.toUpperCase())} no agachamento e ${frase(SUPINO_FORCA)} no supino, com 1 a 5 repetições perto da falha. Em isoladores, ${frase(ISOLADOR_FORCA)}.`,
   },
   {
     pergunta: '1 minuto de descanso é suficiente?',
-    resposta: `Para isoladores, costuma ser: a elevação lateral com 13 a 15 repetições fica em ${extenso(LATERAL)}. Em compostos pesados, 1 minuto tende a custar repetições: num estudo com homens treinados, quem descansou 3 minutos ganhou mais força no supino e no agachamento do que quem descansou 1.`,
+    resposta: `Para hipertrofia em isoladores com 8 ou mais repetições, 1 minuto é o começo da faixa: a elevação lateral fica em ${frase(LATERAL)}. Em compostos pesados, 1 minuto tende a custar repetições nas séries seguintes — e com carga alta, até um isolador como o voador rendeu mais com 2 minutos.`,
   },
   {
     pergunta: '2 minutos de descanso é muito?',
-    resposta: `Não. Para um composto levado perto da falha, 2 minutos é o começo da faixa: o supino com 6 a 8 repetições fica em ${extenso(SUPINO_HIP)}. Em isoladores, 2 minutos já é a ponta de cima — a rosca até a falha fica em ${extenso(ROSCA_FALHA)}.`,
+    resposta: `Não. Para um composto levado perto da falha, 2 minutos é o começo da faixa: o supino com 6 a 8 repetições fica em ${frase(SUPINO_HIP)}. Em isoladores, para hipertrofia, 2 minutos já é a ponta de cima — a rosca perto da falha fica em ${frase(ROSCA_HIP)}.`,
   },
   {
     pergunta: 'Posso descansar 5 minutos entre séries?',
-    resposta: `Pode, e em força faz sentido: ${extenso(AGACH_FORCA)} é a faixa do agachamento com poucas repetições. Para hipertrofia, a conta desta página para em 4 minutos, porque acima disso os estudos já não mostram ganho — o músculo não perde nada, só o treino fica mais longo.`,
+    resposta: `Pode, e em força faz sentido: ${frase(AGACH_FORCA)} é a faixa do agachamento com poucas repetições. Para hipertrofia, a conta desta página para em 4 minutos por escolha nossa: os estudos não veem ganho de músculo acima de cerca de 90 segundos, então descansar ainda mais só deixa o treino mais longo.`,
   },
   {
     pergunta: 'Quanto descansar entre séries de supino?',
-    resposta: `Para hipertrofia, com 6 a 8 repetições perto da falha, ${extenso(SUPINO_HIP)}. Para força, com 1 a 5 repetições, ${extenso(SUPINO_FORCA)}. Num estudo com carga de 3 repetições máximas, o supino só manteve as repetições a partir de 3 minutos.`,
+    resposta: `Para hipertrofia, com 6 a 8 repetições perto da falha, ${frase(SUPINO_HIP)}. Para força, com 1 a 5 repetições, ${frase(SUPINO_FORCA)}. Num estudo com carga de 3 repetições máximas, o supino rendeu bem mais repetições com 3 a 5 minutos de descanso do que com 1.`,
   },
   {
     pergunta: 'Quanto descansar entre séries de agachamento?',
-    resposta: `Para hipertrofia, com 6 a 8 repetições perto da falha, ${extenso(AGACH_HIP)} — é o exercício que mais cansa o corpo inteiro. Para força, com 1 a 5 repetições, ${extenso(AGACH_FORCA)}.`,
+    resposta: `Para hipertrofia, com 6 a 8 repetições perto da falha, ${frase(AGACH_HIP)} — é o exercício que mais cansa o corpo inteiro. Para força, com 1 a 5 repetições, ${frase(AGACH_FORCA)}.`,
   },
   {
     pergunta: 'Quanto descansar entre séries de bíceps?',
-    resposta: `Na rosca, com 9 a 12 repetições perto da falha, ${extenso(ROSCA_HIP)}; até a falha, ${extenso(ROSCA_FALHA)}. Isoladores recuperam mais rápido que compostos e raramente pedem mais de 2 minutos.`,
+    resposta: `Na rosca, para hipertrofia, ${frase(ROSCA_HIP)} com 9 a 12 repetições perto da falha, e ${frase(ROSCA_FALHA)} se a série vai até a falha. Isoladores recuperam mais rápido que compostos.`,
   },
   {
     pergunta: 'Descansar demais atrapalha a hipertrofia?',
     resposta:
-      'Pelo que os estudos mostram, não. Num ensaio em que o grupo de descanso curto fez séries extras para igualar o volume do descanso longo, a hipertrofia foi a mesma: o que pesou foi o volume que o descanso permitiu. O custo de descansar muito é o tempo do treino, não o músculo.',
-  },
-  {
-    pergunta: 'Quanto descansar entre um exercício e outro?',
-    resposta:
-      'Não há estudo que separe esse intervalo. Na prática, ele é o tempo de preparar o próximo exercício somado ao descanso que esse próximo exercício pede: entre dois compostos pesados, 2 a 3 minutos; quando o próximo é um isolador, menos.',
-  },
-  {
-    pergunta: 'Posso treinar sem cronômetro?',
-    resposta:
-      'Pode. Descansar até se sentir pronto para repetir a série funciona, com bastante variação entre pessoas. Para quem está começando, cronometrar ajuda a evitar o erro mais comum, que é voltar cedo demais. O timer desta página serve para isso — e você ajusta o tempo pela série seguinte.',
+      'Não há sinal disso. Uma meta-análise de 2024 não viu diferença de hipertrofia entre descansos acima de cerca de 90 segundos. O custo de descansar muito é o tempo do treino, não o músculo.',
   },
 ];
 
@@ -190,9 +183,8 @@ const relacionados = [
 ];
 
 /* 56 caracteres. */
-const title = 'Quanto Tempo Descansar entre Séries? Calculadora e Timer';
-const description =
-  'Calcule quanto descansar entre séries pelo exercício, repetições e esforço — e use o timer no treino, que ajusta o descanso pela próxima série.';
+const title = 'Quanto tempo descansar entre séries? Calculadora e timer';
+const description = `Para hipertrofia, de ${formataFaixaFrase(ISOLADOR_HIP.min, PESADO_HIP.max)} conforme o exercício; para força, ${frase(AGACH_FORCA)}. Calcule seu descanso e use o timer, que se ajusta à série que você fez.`;
 
 const capa = '/capas-conteudo/descanso-entre-series.webp';
 const capaAlt =
@@ -217,13 +209,14 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <p class="lead">
-      Não existe um intervalo certo para todo exercício. Diga o que você está fazendo e a
-      calculadora devolve uma <strong>faixa</strong> — depois, o timer acompanha a sua série e
-      sugere ajustar o tempo pelo que aconteceu nela.
+      <strong>Resposta curta:</strong> para hipertrofia, {frase(ISOLADOR_HIP)} em isoladores,
+      {frase(COMPOSTO_HIP)} em compostos e {frase(PESADO_HIP)} em agachamento, terra e leg press; para
+      força, {frase(AGACH_FORCA)}. Para o seu exercício, responda 4 perguntas — e use o timer no lugar
+      do cronômetro da academia.
     </p>
 
     <section id="ds-app" class="ds-app" aria-labelledby="ds-app-h">
-      <h2 id="ds-app-h" class="ds-app-h" tabindex="-1">Calculadora de descanso entre séries</h2>
+      <h2 id="ds-app-h" class="sr-only" tabindex="-1">Calculadora de descanso entre séries</h2>
 
       <div id="ds-recentes" class="ds-recentes" hidden>
         <p class="ds-recentes-h">Continuar de onde parou</p>
@@ -232,7 +225,7 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       </div>
 
       <div id="ds-perguntas" class="ds-perguntas">
-        <p id="ds-progresso" class="ds-progresso" aria-live="polite">0 de 4 respondidas</p>
+        <p id="ds-progresso" class="ds-progresso">0 de 4 respondidas</p>
 
         <fieldset class="ds-grupo" data-grupo="objetivo">
           <legend class="ds-rotulo"><span class="ds-num" aria-hidden="true">1</span> Qual é o objetivo deste treino?</legend>
@@ -263,15 +256,16 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
             />
             <ul id="ds-sugestoes" class="ds-sugestoes" role="listbox" aria-label="Exercícios encontrados" hidden></ul>
           </div>
-          <div class="ds-opcoes ds-opcoes-chips" data-grupo="atalho" aria-label="Exercícios comuns">
+          <p id="ds-busca-status" class="ds-busca-status" aria-live="polite"></p>
+          <div class="ds-opcoes ds-opcoes-chips" data-grupo="atalho" role="group" aria-label="Exercícios comuns">
             {ATALHOS.map((id) => (
               <button type="button" class="ds-chip" data-valor={id} aria-pressed="false">{exercicio(id)!.nome}</button>
             ))}
           </div>
-          <button type="button" id="ds-nao-encontrei" class="ds-link-btn">Não encontrei meu exercício</button>
+          <button type="button" id="ds-nao-encontrei" class="ds-link-btn" aria-expanded="false" aria-controls="ds-generico">Não encontrei meu exercício</button>
           <div id="ds-generico" class="ds-generico" hidden>
             <p class="ds-dica">Sem problema. Ele é mais parecido com qual destes?</p>
-            <div class="ds-opcoes ds-opcoes-cards" data-grupo="generico">
+            <div class="ds-opcoes ds-opcoes-cards ds-opcoes-1col" data-grupo="generico">
               {TIPOS_GENERICOS.map((t) => (
                 <button type="button" class="ds-card" data-valor={t.id} aria-pressed="false">
                   <span class="ds-card-nome">{t.nome}</span>
@@ -299,7 +293,7 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
             {ESFORCOS.map((e) => (
               <button type="button" class="ds-card" data-valor={e.id} aria-pressed="false">
                 <span class="ds-card-nome">{e.nome}</span>
-                <span class="ds-card-dica">"{e.frase}"</span>
+                <span class="ds-card-dica">{e.frase}</span>
               </button>
             ))}
           </div>
@@ -323,20 +317,20 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
           </p>
         </noscript>
 
-        <div id="ds-resultado" class="ds-resultado" role="status" aria-live="polite" hidden>
+        <div id="ds-resultado" class="ds-resultado" hidden>
           <p class="ds-resultado-rotulo">Descanso sugerido</p>
           <p class="ds-faixa" aria-hidden="true"></p>
           <p class="sr-only ds-faixa-extenso"></p>
           <p class="ds-contexto"></p>
           <p class="ds-inicio"></p>
-          <button type="button" id="ds-iniciar" class="ds-btn ds-btn-primario ds-btn-grande">Iniciar timer</button>
+          <button type="button" id="ds-iniciar" class="ds-btn ds-btn-primario ds-btn-grande">Terminei a 1ª série — iniciar descanso</button>
           <details class="ds-por-que">
-            <summary>Por que esse intervalo?</summary>
+            <summary>Por que esse descanso?</summary>
             <p class="ds-por-que-texto"></p>
             <p class="ds-nota">{NOTA_RELOGIO}</p>
           </details>
           <p class="ds-nota ds-nota-tecnicas" hidden></p>
-          <p class="ds-nota" hidden><a class="ds-artigo" href="#">Como fazer o exercício</a></p>
+          <p class="ds-nota" hidden><a class="ds-artigo">Como fazer o exercício</a></p>
         </div>
       </div>
 
@@ -348,43 +342,42 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
           <p id="ds-tempo" class="ds-tempo" role="timer" aria-live="off">0:00</p>
           <div class="ds-barra-trilho" aria-hidden="true"><div id="ds-barra" class="ds-barra"></div></div>
           <div class="ds-controles">
-            <button type="button" class="ds-btn ds-btn-secundario" data-soma="-15" aria-label="Menos 15 segundos">−15 s</button>
+            <button type="button" class="ds-btn ds-btn-secundario" data-soma="-15">−15 s<span class="sr-only"> (menos 15 segundos)</span></button>
             <button type="button" id="ds-pausar" class="ds-btn ds-btn-secundario">Pausar</button>
-            <button type="button" class="ds-btn ds-btn-secundario" data-soma="30" aria-label="Mais 30 segundos">+30 s</button>
+            <button type="button" class="ds-btn ds-btn-secundario" data-soma="30">+30 s<span class="sr-only"> (mais 30 segundos)</span></button>
           </div>
-          <button type="button" id="ds-pular" class="ds-btn ds-btn-primario ds-btn-grande">Terminar descanso</button>
+          <button type="button" id="ds-pular" class="ds-btn ds-btn-secundario ds-btn-largo">Pular descanso</button>
         </div>
 
         <div id="ds-fim" class="ds-fim" hidden>
-          <p id="ds-fim-h" class="ds-fim-h" tabindex="-1">O intervalo terminou</p>
-          <p class="ds-dica">Hora da próxima série. Ainda ofegante? Pode dar mais um tempo.</p>
+          <h4 id="ds-fim-h" class="ds-fim-h" tabindex="-1">Fim do descanso</h4>
+          <p id="ds-fim-proxima" class="ds-fim-proxima">Hora da próxima série</p>
+          <p class="ds-dica">Ainda ofegante? Pode dar mais um tempo.</p>
           <div class="ds-controles ds-controles-2">
-            <button type="button" id="ds-fiz" class="ds-btn ds-btn-primario ds-btn-grande">Fiz a série</button>
-            <button type="button" class="ds-btn ds-btn-secundario ds-btn-grande" data-soma="30" aria-label="Mais 30 segundos de descanso">+30 s</button>
+            <button type="button" id="ds-fiz" class="ds-btn ds-btn-primario ds-btn-grande">Fiz a série — iniciar descanso</button>
+            <button type="button" class="ds-btn ds-btn-secundario ds-btn-grande" data-soma="30">+30 s<span class="sr-only"> (mais 30 segundos de descanso)</span></button>
           </div>
           <button type="button" class="ds-link-btn" data-encerrar>Terminei este exercício</button>
         </div>
 
         <div id="ds-retorno" class="ds-retorno" hidden>
-          <p id="ds-retorno-h" class="ds-retorno-h" tabindex="-1">Como foi a série, comparada à anterior?</p>
+          <p id="ds-retorno-h" class="ds-retorno-h">Como foi a série, comparada à anterior?</p>
           <div class="ds-opcoes ds-opcoes-lista">
             {FEEDBACKS.map((f) => (
               <button type="button" class="ds-card ds-card-linha" data-feedback={f.id} aria-pressed="false">{f.nome}</button>
             ))}
           </div>
+          <p id="ds-ajuste" class="ds-ajuste" hidden></p>
           <details class="ds-anotar">
             <summary>Anotar repetições e carga (opcional)</summary>
             <div class="ds-anotar-campos">
               <label>Repetições <input id="ds-anota-reps" class="ds-input-curto" type="text" inputmode="numeric" autocomplete="off" /></label>
               <label>Carga (kg) <input id="ds-anota-carga" class="ds-input-curto" type="text" inputmode="decimal" autocomplete="off" /></label>
             </div>
+            <p id="ds-anota-aviso" class="ds-mini" hidden>Repetições: número inteiro de 1 a 100. Carga: até 1000 kg, com vírgula se precisar.</p>
             <p class="ds-mini">Fica só neste aparelho, durante esta visita.</p>
           </details>
-          <p id="ds-ajuste" class="ds-ajuste" role="status" hidden></p>
-          <div id="ds-depois" class="ds-depois" hidden>
-            <button type="button" id="ds-proximo" class="ds-btn ds-btn-primario ds-btn-grande">Iniciar descanso</button>
-            <button type="button" class="ds-link-btn" data-encerrar>Terminei este exercício</button>
-          </div>
+          <button type="button" class="ds-link-btn" data-encerrar>Terminei este exercício</button>
         </div>
 
         <div class="ds-historico-box" hidden>
@@ -393,13 +386,14 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
         </div>
 
         <div class="ds-prefs">
-          <button type="button" id="ds-som" class="ds-chip" aria-pressed="false">Som: desligado</button>
-          <button type="button" id="ds-vibrar" class="ds-chip" aria-pressed="true">Vibrar: ligado</button>
+          <button type="button" id="ds-som" class="ds-chip ds-pref" aria-pressed="false">Bipe no fim</button>
+          <button type="button" id="ds-vibrar" class="ds-chip ds-pref" aria-pressed="true">Vibrar no fim</button>
         </div>
+        <p class="ds-mini ds-tela-aberta">Deixe esta tela aberta: com o celular bloqueado, o aviso do fim pode atrasar.</p>
         <p class="ds-seguranca">{NOTA_SEGURANCA}</p>
       </div>
 
-      <p id="ds-anuncio" class="sr-only" aria-live="assertive"></p>
+      <p id="ds-anuncio" class="sr-only" aria-live="polite"></p>
 
       <div class="ds-compartilha">
         <button type="button" id="ds-compartilhar" class="ds-link-btn">Compartilhar a calculadora</button>
@@ -412,12 +406,13 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     <div class="prose">
       <h2 id="tabela-por-exercicio">Quanto descansar em cada exercício</h2>
       <p>
-        A mesma conta da calculadora, para os exercícios mais comuns. Hipertrofia com 9 a 12
-        repetições perto da falha; força com 1 a 5 repetições perto da falha.
+        A mesma conta da calculadora, para os exercícios mais comuns, com a série terminando perto da
+        falha. Na força, o teto de 5 minutos iguala os compostos; o que muda de verdade é entre
+        composto e isolador.
       </p>
       <div class="tabela-rolavel">
         <table>
-          <caption>Faixa de descanso sugerida por exercício</caption>
+          <caption>Faixa de descanso por exercício: hipertrofia com 9 a 12 repetições, força com 1 a 5</caption>
           <thead>
             <tr><th scope="col">Exercício</th><th scope="col">Hipertrofia</th><th scope="col">Força</th></tr>
           </thead>
@@ -425,16 +420,16 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
             {TABELA.map((l) => (
               <tr>
                 <th scope="row">{l.ex.artigo ? <a href={l.ex.artigo}>{l.ex.nome}</a> : l.ex.nome}</th>
-                <td>{faixa(l.hip)}</td>
-                <td>{faixa(l.forca)}</td>
+                <td>{formataFaixa(l.hip)}</td>
+                <td>{formataFaixa(l.forca)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p>
-        Se a série termina mais longe da falha, o descanso cai; se vai até a falha, sobe. É
-        exatamente isso que a calculadora acima ajusta.
+        Se a série termina mais longe da falha, o descanso cai; se vai até a falha, pode subir. É isso
+        que a calculadora acima ajusta.
       </p>
 
       <figure class="ds-capa">
@@ -459,16 +454,16 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       <p>
         A regra antiga era descansar pouco, de 30 a 60 segundos, pela ideia de que mais estresse
         metabólico daria mais crescimento. A pesquisa enfraqueceu essa lógica. Num estudo com
-        homens treinados, todo o resto igual, quem descansou 3 minutos ganhou mais força no supino
-        e no agachamento e mais espessura na coxa do que quem descansou 1 (<a href={fonte('schoenfeld').url}
-        target="_blank" rel="noopener">Schoenfeld e colegas, 2016</a>).
+        homens treinados, com os mesmos exercícios e séries, quem descansou 3 minutos ganhou mais
+        força no supino e no agachamento e mais espessura na coxa do que quem descansou 1 (<a
+        href={fonte('schoenfeld').url} target="_blank" rel="noopener">Schoenfeld e colegas, 2016</a>).
       </p>
       <p>
-        A meta-análise mais recente sobre o tema encontrou um pequeno benefício em descansar
-        <strong>mais de 60 segundos</strong>, e nenhuma diferença apreciável acima de cerca de
-        90 (<a href={fonte('singer').url} target="_blank" rel="noopener">Singer e colegas, 2024</a>).
-        E um ensaio brasileiro explica o mecanismo: quando o grupo de descanso curto fez séries
-        extras para igualar o volume do descanso longo, a hipertrofia foi a mesma (<a
+        Uma meta-análise de 2024 encontrou um pequeno benefício em descansar <strong>mais de 60
+        segundos</strong>, e nenhuma diferença apreciável acima de cerca de 90 segundos (<a
+        href={fonte('singer').url} target="_blank" rel="noopener">Singer e colegas, 2024</a>). E um
+        estudo com iniciantes na cadeira extensora ajuda a entender por quê: a perna que descansou
+        1 minuto e fez séries extras para igualar o volume cresceu o mesmo que a de 3 minutos (<a
         href={fonte('longo').url} target="_blank" rel="noopener">Longo e colegas, 2022</a>).
       </p>
       <div class="callout">
@@ -480,8 +475,8 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       <h2>Quanto descansar para força</h2>
       <p>
         Para força máxima, a referência é de <strong>3 a 5 minutos</strong> nos exercícios pesados.
-        Uma revisão de 35 estudos viu que, com cargas de 50% a 90% do 1RM, descansos desse tamanho
-        mantiveram mais repetições ao longo das séries e deram mais ganho de força (<a
+        Uma revisão da literatura viu que, com cargas de 50% a 90% do 1RM, descansos desse tamanho
+        permitiram mais repetições ao longo das séries e deram mais ganho de força (<a
         href={fonte('desalles').url} target="_blank" rel="noopener">de Salles e colegas, 2009</a>).
         Se você ainda não sabe a sua carga máxima, a <a href="/ferramentas/calculadora-1rm/"
         data-rest-link="1rm">calculadora de 1RM</a> estima pela série que você já faz.
@@ -489,12 +484,13 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
 
       <h2>Exercícios compostos e isoladores</h2>
       <p>
-        Agachamento, terra, supino e remada usam muita massa muscular e cansam o corpo inteiro;
-        rosca, tríceps e elevação lateral, não. A diferença foi medida: com carga de 3 repetições
-        máximas, o crucifixo manteve as repetições a partir de 2 minutos de descanso, e o supino só
-        a partir de 3 (<a href={fonte('senna').url} target="_blank" rel="noopener">Senna e colegas,
-        2016</a>). Por isso a calculadora pergunta o exercício — e você não precisa saber se ele é
-        composto ou isolador: ela sabe.
+        Agachamento, terra e leg press cansam o corpo inteiro; supino e remada usam vários músculos;
+        rosca, tríceps e elevação lateral, um só. A diferença foi medida: com carga de 3 repetições
+        máximas, o voador (o crucifixo na máquina) já rendeu mais repetições com 2 minutos de descanso
+        do que com 1; no supino, só 3 ou 5 minutos fizeram diferença, e a queda de série para série
+        foi bem menor do que com 1 minuto (<a href={fonte('senna').url} target="_blank"
+        rel="noopener">Senna e colegas, 2016</a>). Por isso a calculadora pergunta o exercício — e você
+        não precisa saber se ele é composto ou isolador: ela sabe.
       </p>
 
       <h2>Descansar pouco para "suar mais" é mito</h2>
@@ -508,7 +504,7 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       <h2>Como saber se você precisa descansar mais</h2>
       <p>{NOTA_RELOGIO}</p>
       <ul>
-        <li>Ainda ofegante a ponto de não conseguir segurar a respiração na primeira repetição.</li>
+        <li>Ainda ofegante, sem conseguir controlar a respiração para começar a série.</li>
         <li>A série seguinte perde muitas repetições com a mesma carga.</li>
         <li>A execução piora: amplitude encurta, o tronco ajuda, a barra sai torta.</li>
       </ul>
@@ -521,9 +517,9 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
       <h2>Quanto descansar entre um exercício e outro</h2>
       <p>
         Não há estudo que separe esse intervalo. Na prática, ele é o tempo de arrumar o próximo
-        exercício somado ao descanso que esse próximo exercício pede: entre dois compostos pesados,
-        2 a 3 minutos; quando o próximo é um isolador, menos. Se o próximo trabalha um músculo que
-        acabou de ser usado, vale ficar na ponta de cima.
+        exercício somado ao descanso que esse próximo exercício pede: antes de um composto pesado,
+        pelo menos {frase(PESADO_HIP)} em hipertrofia; quando o próximo é um isolador,
+        {frase(ISOLADOR_HIP)} já bastam.
       </p>
 
       <h2>Superset, drop-set, rest-pause e circuito</h2>
@@ -552,39 +548,35 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
 
       <h2>Descansar "até estar pronto" funciona?</h2>
       <p>
-        Funciona. Um ensaio de 2024 que comparou intervalos fixos e escolhidos pela própria pessoa
-        (<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11503322/" target="_blank"
-        rel="noopener">disponível aqui</a>) viu que a autosseleção dá resultado, com bastante
-        variação no tempo escolhido. O timer desta página é um meio-termo: começa numa faixa e
-        ajusta pelo que aconteceu na sua série.
+        Para manter a qualidade da série, parece funcionar. Num estudo de uma sessão de agachamento
+        pesado com 13 pessoas treinadas, quem escolheu o próprio descanso (perto de 1 min 37 s, em
+        média) rendeu o mesmo que quem descansou 2 minutos fixos (<a href={fonte('alonso').url}
+        target="_blank" rel="noopener">Alonso-Aubin e colegas, 2024</a>). Para quem está começando,
+        um tempo de referência pode ajudar a não voltar cedo demais — o timer desta página começa
+        numa faixa e ajusta pelo que aconteceu na sua série.
       </p>
 
       <h2 id="como-calculamos">Como a calculadora chega na faixa</h2>
       <p>
         A conta parte do exercício — quanto ele cansa o corpo inteiro — e anda numa escada de
         intervalos práticos: 30 s, 45 s, 1, 1:30, 2, 2:30, 3, 4 e 5 minutos. Poucas repetições
-        (carga alta) sobem um degrau; muitas descem. Série até a falha sobe; longe da falha desce.
-        Força sobe um degrau; resistência e condicionamento descem dois. Hipertrofia fica entre 1 e
-        4 minutos.
+        (carga alta) sobem um degrau; muitas descem, menos quando a série longa vai perto da falha.
+        Série até a falha sobe; longe da falha desce. Força sobe um degrau e nunca fica abaixo de
+        1:30 em isolador e 2 minutos em composto; resistência e condicionamento descem dois.
+        Hipertrofia fica entre 1 e 4 minutos.
       </p>
       <p>
-        O que <strong>não</strong> entra, de propósito: o seu tempo de treino (não achamos estudo
-        que separe o descanso por experiência) e a porcentagem do 1RM (repetições e proximidade da
-        falha já dizem a intensidade). Ninguém validou uma fórmula de segundos para cada exercício;
+        O que <strong>não</strong> entra, de propósito: o seu tempo de treino — há sinal de que
+        treinados se beneficiam mais de descansos longos, mas o que muda neles é a carga e a
+        proximidade da falha, que a conta já pergunta — e a porcentagem do 1RM, que repetições e
+        proximidade da falha já dizem. Ninguém validou uma fórmula de segundos para cada exercício;
         por isso o resultado é faixa, e não número exato. É referência de treino, não avaliação
         médica nem prescrição individual — esse ajuste fino é papel de um <a
         href={rotas.comoEscolher}>personal trainer qualificado</a>.
       </p>
 
-      <h2>Quando parar, e não descansar mais</h2>
+      <h2>Quando parar o treino em vez de descansar mais</h2>
       <p>{NOTA_SEGURANCA}</p>
-
-      <h2>Referências</h2>
-      <ul class="ds-fontes">
-        {FONTES.map((f) => (
-          <li><a href={f.url} target="_blank" rel="noopener">{f.citacao}</a> — {f.achado}</li>
-        ))}
-      </ul>
     </div>
 
     <VideoYouTube
@@ -595,9 +587,18 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
 
     <Faq faqs={faqs} />
 
+    <div class="prose">
+      <h2>Referências</h2>
+      <ul class="ds-fontes">
+        {FONTES.map((f) => (
+          <li><a href={f.url} target="_blank" rel="noopener">{f.citacao}</a> — {f.achado}</li>
+        ))}
+      </ul>
+    </div>
+
     <section class="ds-proximo" aria-labelledby="ds-proximo-h">
-      <h2 id="ds-proximo-h">O descanso é uma parte do treino</h2>
-      <p>Quer conferir se a semana inteira está bem distribuída — volume, frequência e divisão?</p>
+      <h2 id="ds-proximo-h">Próximo passo: confira o treino da semana</h2>
+      <p>O descanso é uma parte do treino. Quer ver se a semana inteira está bem distribuída — volume, frequência e divisão?</p>
       <div class="ds-proximo-acoes">
         <a class="ds-btn ds-btn-primario" href="/ferramentas/meu-treino-faz-sentido/" data-rest-link="meu-treino">Analisar meu treino</a>
         <a class="ds-btn ds-btn-secundario" href="/ferramentas/calculadora-1rm/" data-rest-link="1rm">Calcular minha carga (1RM)</a>
@@ -655,7 +656,7 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
   }
   .lead {
     margin-top: var(--sp-4);
-    font-size: var(--step-1);
+    font-size: var(--step-0, 1rem);
     color: var(--ink-soft);
     line-height: 1.55;
   }
@@ -665,22 +666,22 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
 
   /* ───────── a ferramenta ───────── */
   .ds-app {
+    --ds-linha: #c9ced6;
     margin-top: var(--sp-5);
-    border: 1px solid var(--line);
+    border: 1px solid var(--ds-linha);
     border-radius: var(--radius-lg);
     padding: var(--sp-5) var(--sp-4);
-    background: var(--surface);
+    background: var(--surface, #fff);
     box-shadow: var(--shadow-sm);
+    scroll-margin-top: 72px;
   }
   @media (min-width: 560px) {
     .ds-app { padding: var(--sp-5); }
   }
-  .ds-app-h { font-size: var(--step-1); margin: 0 0 var(--sp-3); }
-  .ds-app-h:focus { outline: none; }
   .ds-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
   .ds-progresso { font-size: var(--step--1); color: var(--muted); margin: 0 0 var(--sp-4); }
 
-  .ds-grupo { border: 0; padding: 0; margin: 0 0 var(--sp-5); min-width: 0; }
+  .ds-grupo { border: 0; padding: 0; margin: 0 0 var(--sp-5); min-width: 0; scroll-margin-top: 80px; }
   .ds-rotulo {
     display: flex;
     align-items: center;
@@ -701,16 +702,22 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     flex: none;
   }
   .ds-opcoes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .ds-opcoes-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  /* Duas colunas desde 320 px: a pergunta inteira cabe numa tela. */
+  .ds-opcoes-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 640px) {
+    .ds-opcoes-cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+  }
+  .ds-opcoes-1col,
   .ds-opcoes-lista { display: grid; grid-template-columns: 1fr; }
   .ds-card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.15rem;
+    min-width: 0;
     min-height: 56px;
-    padding: 0.6rem 0.8rem;
-    border: 1px solid var(--line);
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--ds-linha);
     border-radius: var(--radius);
     background: var(--bg);
     color: var(--ink);
@@ -718,16 +725,17 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     text-align: left;
     cursor: pointer;
   }
-  .ds-card-linha { justify-content: center; font-weight: 600; }
-  .ds-card-nome { font-weight: 700; }
-  .ds-card-dica { font-size: var(--step--1); color: var(--muted); line-height: 1.35; }
-  .ds-card:hover { border-color: var(--brand-600); }
+  .ds-card-linha { flex-direction: row; align-items: center; justify-content: flex-start; font-weight: 600; }
+  .ds-card-nome { font-weight: 700; overflow-wrap: anywhere; hyphens: auto; }
+  .ds-card-dica { font-size: var(--step--1); color: var(--muted); line-height: 1.35; overflow-wrap: anywhere; }
   .ds-card.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
   .ds-card.is-ativo .ds-card-dica { color: #e6e8ec; }
+  .ds-card.is-ativo .ds-card-nome::before,
+  .ds-card-linha.is-ativo::before { content: '✓ '; }
   .ds-chip {
     min-height: 44px;
     padding: 0.4rem 0.9rem;
-    border: 1px solid var(--line);
+    border: 1px solid var(--ds-linha);
     border-radius: 999px;
     background: transparent;
     color: var(--ink-soft);
@@ -735,28 +743,41 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     font-size: var(--step--1);
     cursor: pointer;
   }
-  .ds-chip:hover { border-color: var(--brand-600); color: var(--brand-600); }
   .ds-chip.is-ativo,
   .ds-chip[aria-pressed='true'] { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+  .ds-pref[aria-pressed='true']::before { content: '✓ '; }
+  @media (hover: hover) {
+    .ds-card:hover { border-color: var(--brand-600); }
+    .ds-chip:hover { border-color: var(--brand-600); }
+    .ds-chip:not([aria-pressed='true']):hover { color: var(--brand-600); }
+  }
+  /* Anel duplo: visível sobre o branco e sobre o cinza do resultado. */
   .ds-card:focus-visible,
   .ds-chip:focus-visible,
   .ds-btn:focus-visible,
   .ds-link-btn:focus-visible,
-  .ds-app input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .ds-recente:focus-visible,
+  .ds-app summary:focus-visible,
+  .ds-app input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 5px var(--brand-600);
+  }
 
-  .ds-busca-caixa { position: relative; margin-bottom: 0.6rem; }
+  .ds-busca-caixa { position: relative; margin-bottom: 0.4rem; }
   .ds-app input[type='text'] {
     width: 100%;
     min-height: 48px;
     padding: 0.6rem 0.8rem;
     font: inherit;
     font-size: 1rem;
-    border: 1px solid var(--line);
+    border: 1px solid var(--ds-linha);
     border-radius: var(--radius);
     background: var(--bg);
     color: var(--ink);
   }
   .ds-app .ds-input-curto { max-width: 9rem; }
+  .ds-busca-status { margin: 0 0 0.5rem; font-size: var(--step--1); color: var(--ink-soft); min-height: 0; }
+  .ds-busca-status:empty { display: none; }
   .ds-sugestoes {
     position: absolute;
     z-index: 5;
@@ -766,15 +787,14 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     margin: 0;
     padding: 0.3rem;
     list-style: none;
-    background: var(--surface);
-    border: 1px solid var(--line);
+    background: var(--surface, #fff);
+    border: 1px solid var(--ds-linha);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
   }
   .ds-sugestoes li { padding: 0.65rem 0.7rem; border-radius: 6px; cursor: pointer; }
   .ds-sugestoes li:hover,
   .ds-sugestoes li[aria-selected='true'] { background: var(--accent-50); }
-  .ds-sugestao-vazia { color: var(--muted); font-size: var(--step--1); cursor: default !important; }
 
   .ds-link-btn {
     display: inline-block;
@@ -808,8 +828,8 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     margin-top: var(--sp-2);
     padding: var(--sp-5) var(--sp-4);
     border-radius: var(--radius-lg);
-    background: var(--brand-50, rgba(0, 0, 0, 0.03));
-    border: 1px solid var(--line);
+    background: var(--brand-50, #f3f4f6);
+    border: 1px solid var(--ds-linha);
   }
   .ds-resultado-rotulo { font-size: var(--step--1); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0; }
   .ds-faixa {
@@ -824,7 +844,18 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
   .ds-inicio { margin: var(--sp-3) 0; line-height: 1.55; }
   .ds-por-que { margin-top: var(--sp-4); }
   .ds-por-que summary,
-  .ds-anotar summary { cursor: pointer; font-weight: 700; min-height: 44px; display: flex; align-items: center; }
+  .ds-anotar summary {
+    cursor: pointer;
+    font-weight: 700;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+  .ds-app summary::-webkit-details-marker { display: none; }
+  .ds-app summary::after { content: '+'; margin-left: auto; font-size: 1.3em; line-height: 1; color: var(--ink-soft); }
+  .ds-app details[open] > summary::after { content: '−'; }
   .ds-por-que-texto { line-height: 1.6; }
   .ds-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--ink-soft); line-height: 1.55; border-left: 3px solid var(--accent); padding-left: 0.8rem; }
 
@@ -841,15 +872,24 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     text-decoration: none;
     cursor: pointer;
   }
-  .ds-btn-grande { width: 100%; min-height: 56px; font-size: var(--step-1); }
+  .ds-btn-grande { width: 100%; min-height: 56px; font-size: var(--step-0, 1rem); line-height: 1.3; }
+  .ds-btn-largo { width: 100%; }
   .ds-btn-primario { background: var(--brand-600); color: #fff; border: 1px solid var(--brand-600); }
-  .ds-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
   .ds-btn-secundario { background: transparent; color: var(--brand-600); border: 1px solid var(--brand-600); }
-  .ds-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+  @media (hover: hover) {
+    .ds-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .ds-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+  }
 
-  /* ───────── o timer ───────── */
+  /* ───────── o treino ───────── */
   .ds-app.is-treino { box-shadow: var(--shadow-lg); }
-  .ds-app.is-treino .ds-compartilha { display: none; }
+  .ds-app.is-treino .ds-compartilha,
+  .ds-app.is-treino .ds-recentes { display: none; }
+  /* Durante o descanso, nada do site flutua na zona do polegar. */
+  :global(body:has(#ds-app.is-treino) .wpp-float-regiao),
+  :global(body:has(#ds-app.is-treino) #ppp-sticky),
+  :global(body:has(#ds-app.is-treino) #ppp-slidein) { display: none !important; }
+
   .ds-timer { text-align: center; }
   .ds-timer-ex { margin: 0; font-size: var(--step-1); }
   .ds-timer-ex:focus { outline: none; }
@@ -870,21 +910,37 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
   .ds-controles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-bottom: 0.6rem; }
   .ds-controles-2 { grid-template-columns: 2fr 1fr; }
   .ds-controles .ds-btn { min-height: 56px; padding-inline: 0.4rem; }
-  .ds-fim-h { font-size: var(--step-2); font-weight: 800; margin: var(--sp-4) 0 0.3rem; color: var(--brand-600); }
-  .ds-fim-h:focus,
-  .ds-retorno-h:focus { outline: none; }
-  .ds-retorno { text-align: left; margin-top: var(--sp-4); }
+
+  /* O fim do descanso tem de ser visto de longe, com o celular no banco. */
+  .ds-app.is-fim { background: var(--accent); border-color: var(--accent); }
+  .ds-app.is-fim .ds-timer-ex,
+  .ds-app.is-fim .ds-timer-serie,
+  .ds-app.is-fim .ds-fim-proxima,
+  .ds-app.is-fim .ds-dica,
+  .ds-app.is-fim .ds-mini,
+  .ds-app.is-fim .ds-seguranca,
+  .ds-app.is-fim .ds-historico { color: #1a1205; }
+  .ds-app.is-fim .ds-fim-h { color: #1a1205; }
+  .ds-app.is-fim .ds-btn-secundario,
+  .ds-app.is-fim .ds-chip:not([aria-pressed='true']) { background: #fff; }
+  .ds-app.is-fim .ds-link-btn { color: #1a1205; }
+  .ds-app.is-fim .ds-retorno { background: #fff; color: var(--ink); border-radius: var(--radius); padding: var(--sp-3); }
+  .ds-fim-h { font-size: clamp(2rem, 9vw, 2.8rem); font-weight: 800; margin: var(--sp-4) 0 0.2rem; color: var(--brand-600); }
+  .ds-fim-proxima { font-size: var(--step-1); font-weight: 700; margin: 0 0 0.3rem; }
+  .ds-fim-h:focus { outline: none; }
+  .ds-retorno { text-align: left; margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--ds-linha); }
   .ds-retorno-h { font-weight: 800; margin: 0 0 0.6rem; }
   .ds-anotar { margin-top: var(--sp-3); }
   .ds-anotar-campos { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
   .ds-anotar-campos label { display: grid; gap: 0.3rem; font-size: var(--step--1); font-weight: 600; }
-  .ds-ajuste { margin: var(--sp-4) 0; padding: 0.8rem 0.9rem; border-radius: var(--radius); background: var(--accent-50); line-height: 1.55; }
+  .ds-ajuste { margin: var(--sp-4) 0 0; padding: 0.8rem 0.9rem; border-radius: var(--radius); background: var(--accent-50); line-height: 1.55; scroll-margin-bottom: 90px; }
   .ds-historico-box { text-align: left; margin-top: var(--sp-4); }
   .ds-historico { margin: 0; padding-left: 1.2rem; font-size: var(--step--1); color: var(--ink-soft); }
   .ds-prefs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem; margin-top: var(--sp-4); }
-  .ds-seguranca { margin-top: var(--sp-4); font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+  .ds-tela-aberta { text-align: center; }
+  .ds-seguranca { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
 
-  .ds-recentes { margin-bottom: var(--sp-4); padding: 0.8rem; border: 1px dashed var(--line); border-radius: var(--radius); }
+  .ds-recentes { margin-bottom: var(--sp-4); padding: 0.8rem; border: 1px dashed var(--ds-linha); border-radius: var(--radius); }
   .ds-recentes-h { margin: 0 0 0.4rem; font-weight: 700; font-size: var(--step--1); }
   .ds-recentes-lista { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; list-style: none; }
   .ds-recente {
@@ -899,7 +955,6 @@ const whatsCompartilhar = `https://wa.me/?text=${encodeURIComponent(`Calculadora
     font-weight: 600;
     cursor: pointer;
   }
-  .ds-recente:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
   .ds-compartilha { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); margin-top: var(--sp-3); }
 
   .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }

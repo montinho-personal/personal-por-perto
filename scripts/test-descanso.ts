@@ -18,6 +18,9 @@ import {
   FONTES,
   ajustar,
   buscaExercicios,
+  degrauMaisProximo,
+  formataFaixaFrase,
+  limitesAjuste,
   calcular,
   demandaGenerica,
   esforcoDoRir,
@@ -112,22 +115,22 @@ console.log('\nOs 20 cenários');
     ['B · agachamento, 8 reps, RIR 1', 'hipertrofia', 'agachamento', '6-8', 'perto', '2:30 a 4:00'],
     ['C · força, agachamento, 3 reps', 'forca', 'agachamento', '1-5', 'perto', '3:00 a 5:00'],
     ['D · força, supino, 3 reps', 'forca', 'supino', '1-5', 'perto', '3:00 a 5:00'],
-    ['E · elevação lateral, 15 reps, RIR 2', 'hipertrofia', 'elevacao-lateral', '13-15', 'perto', '1:00 a 1:30'],
-    ['F · rosca, 10 reps, até a falha', 'hipertrofia', 'rosca-direta', '9-12', 'falha', '1:30 a 2:00'],
-    ['G · crucifixo, força, 3 reps', 'forca', 'crucifixo', '1-5', 'perto', '2:00 a 2:30'],
-    ['H · resistência, extensora, 20+', 'resistencia', 'extensora', '20+', 'moderado', '0:30 a 0:45'],
-    ['I · condicionamento, leg press, 15', 'condicionamento', 'leg-press', '13-15', 'perto', '1:00 a 2:00'],
+    ['E · elevação lateral, 15 reps, RIR 2', 'hipertrofia', 'elevacao-lateral', '13-15', 'perto', '1:00 a 2:00'],
+    ['F · rosca, 10 reps, até a falha', 'hipertrofia', 'rosca-direta', '9-12', 'falha', '1:30 a 2:30'],
+    ['G · crucifixo, força, 3 reps', 'forca', 'crucifixo', '1-5', 'perto', '2:00 a 3:00'],
+    ['H · resistência, extensora, 20+', 'resistencia', 'extensora', '20+', 'moderado', '0:30 a 1:00'],
+    ['I · condicionamento, leg press, 15', 'condicionamento', 'leg-press', '13-15', 'perto', '1:30 a 2:30'],
     ['J · terra, 5 reps, RIR 2, hipertrofia', 'hipertrofia', 'terra', '1-5', 'perto', '2:30 a 4:00'],
     ['K · puxada, 10, moderado', 'hipertrofia', 'puxada', '9-12', 'moderado', '1:30 a 2:30'],
     ['L · remada curvada, 8, longe', 'hipertrofia', 'remada-curvada', '6-8', 'longe', '1:00 a 2:00'],
     ['M · leg press, 12, falha', 'hipertrofia', 'leg-press', '9-12', 'falha', '2:30 a 4:00'],
-    ['N · tríceps, 12, perto', 'hipertrofia', 'triceps-pulley', '9-12', 'perto', '1:00 a 1:30'],
-    ['O · panturrilha, 20, falha', 'hipertrofia', 'panturrilha', '16-20', 'falha', '1:00 a 1:30'],
+    ['N · tríceps, 12, perto', 'hipertrofia', 'triceps-pulley', '9-12', 'perto', '1:00 a 2:00'],
+    ['O · panturrilha, 20, falha', 'hipertrofia', 'panturrilha', '16-20', 'falha', '1:30 a 2:30'],
     ['P · hip thrust, 10, perto', 'hipertrofia', 'hip-thrust', '9-12', 'perto', '2:00 a 3:00'],
     ['Q · agachamento, 20 reps, falha', 'hipertrofia', 'agachamento', '16-20', 'falha', '2:30 a 4:00'],
     ['R · desenvolvimento, força, 5', 'forca', 'desenvolvimento', '1-5', 'moderado', '2:30 a 4:00'],
     ['S · barra fixa, 6, falha', 'hipertrofia', 'barra-fixa', '6-8', 'falha', '2:30 a 4:00'],
-    ['T · abdominal, resistência, 20+', 'resistencia', 'abdominal', '20+', 'longe', '0:30 a 0:45'],
+    ['T · abdominal, resistência, 20+', 'resistencia', 'abdominal', '20+', 'longe', '0:30 a 1:00'],
   ];
   for (const [nome, o, id, r, e, esperado] of casos) {
     const res = de(o, id, r, e);
@@ -141,8 +144,11 @@ console.log('\nExplicação');
   const t = explicacao(r, 'O supino reto');
   ok(t.startsWith('O supino reto é um exercício composto'), `começa pelo exercício: "${t.slice(0, 50)}…"`);
   ok(!/\d{3} s/.test(t), 'sem número de segundos inventado no texto');
-  const f = explicacao(de('forca', 'agachamento', '1-5', 'falha'));
+  const f = explicacao(de('forca', 'rosca-direta', '1-5', 'falha'));
   ok(/poucas repetições/i.test(f) && f.includes('falha') && f.includes('força'), 'cita reps, falha e objetivo quando eles mexem na conta');
+  const semEfeito = explicacao(de('hipertrofia', 'agachamento', '6-8', 'falha'));
+  ok(!semEfeito.includes('falha'), 'não cita a falha quando ela não muda a faixa (teto)');
+  ok(formataFaixa(de('hipertrofia', 'agachamento', '6-8', 'falha')) === formataFaixa(de('hipertrofia', 'agachamento', '6-8', 'perto')), '…porque perto e falha dão a mesma faixa ali');
 }
 
 console.log('\nBusca de exercícios');
@@ -220,6 +226,55 @@ console.log('\nAjuste pela série seguinte');
   ok(/fadiga acumulada/.test(ajustar(r, atual, 'perdeu3', 2).mensagem), '…e fala em fadiga acumulada');
   const todas = (['manteve', 'perdeu12', 'perdeu3', 'reduziu', 'sobrou'] as const).map((fb) => ajustar(r, atual, fb).mensagem);
   ok(todas.every((m) => !/porque (você )?descansou pouco|seu descanso perfeito|seu músculo (já )?recuperou/i.test(m)), 'nenhuma mensagem afirma a causa nem promete o descanso perfeito');
+}
+
+
+console.log('\nAuditoria de 05/10: o que não pode voltar');
+{
+  const reps = ['1-5', '6-8', '9-12', '13-15', '16-20', '20+'] as const;
+  const esf = ['longe', 'moderado', 'perto', 'falha'] as const;
+  let ordem = 0;
+  let estreita = 0;
+  let isoladoNoPiso = 0;
+  for (const d of ['alta', 'media', 'localizada'] as const)
+    for (const r of reps)
+      for (const e of esf) {
+        const f = calcular({ objetivo: 'forca', demanda: d, reps: r, esforco: e });
+        const h = calcular({ objetivo: 'hipertrofia', demanda: d, reps: r, esforco: e });
+        const s = calcular({ objetivo: 'resistencia', demanda: d, reps: r, esforco: e });
+        if (!(f.min >= h.min && h.min >= s.min && f.max >= h.max && h.max >= s.max)) ordem++;
+        for (const x of [f, h, s]) if (x.degrauMax - x.degrauMin < 2) estreita++;
+        if (d === 'localizada' && h.inicio <= 60) isoladoNoPiso++;
+      }
+  ok(ordem === 0, 'em todas as 72 combinações: força ≥ hipertrofia ≥ resistência');
+  ok(estreita === 0, 'toda faixa tem dois degraus de largura');
+  ok(isoladoNoPiso === 0, 'o timer de isolado em hipertrofia não começa em 1:00 (o "curto" de Singer)');
+  ok(calcular({ objetivo: 'forca', demanda: 'localizada', reps: '13-15', esforco: 'longe' }).min >= 90, 'força em isolado leve: piso de 1:30');
+  ok(calcular({ objetivo: 'forca', demanda: 'media', reps: '20+', esforco: 'longe' }).min >= 120, 'força em composto: piso de 2:00');
+  ok(calcular({ objetivo: 'resistencia', demanda: 'alta', reps: '20+', esforco: 'longe' }).min >= 45, 'resistência em exercício pesado: piso de 45 s');
+
+  // Resistência: o ajuste não vira descanso longo.
+  const res = calcular({ objetivo: 'resistencia', demanda: 'localizada', reps: '20+', esforco: 'longe' });
+  let d = res.degrauInicio;
+  for (let i = 0; i < 6; i++) d = ajustar(res, d, 'perdeu3', 0).degrau;
+  ok(d <= res.degrauMax + 1, `resistência: seis quedas seguidas param em ${formataTempo(ESCADA[d])}, um degrau acima da faixa`);
+  ok(ajustar(res, res.degrauInicio, 'perdeu12').mudou === 0, 'resistência: perder 1–2 repetições mantém o tempo');
+  ok(limitesAjuste(res).max === res.degrauMax + 1, 'limite do ajuste em resistência = faixa + 1 degrau');
+
+  // Mensagens que não podem mentir.
+  const hip = de('hipertrofia', 'elevacao-lateral', '13-15', 'perto');
+  const noPiso = ajustar(hip, limitesAjuste(hip).min, 'sobrou');
+  ok(noPiso.mudou === 0 && /menor descanso/.test(noPiso.mensagem), 'no piso, "sobrou descanso" não promete um tempo menor');
+  const falha = de('hipertrofia', 'supino', '9-12', 'falha');
+  ok(ajustar(falha, falha.degrauInicio, 'perdeu3').degrau === Math.min(limitesAjuste(falha).max, falha.degrauInicio + 1), 'até a falha, perder 3+ sobe um degrau só');
+  const sup = de('hipertrofia', 'supino', '6-8', 'perto');
+  ok(ajustar(sup, sup.degrauInicio, 'reduziu').degrau === sup.degrauInicio + 1, 'baixar a carga sobe um degrau, não dois');
+
+  ok(esforcoDoRpe(9.5) === 'falha', 'RPE 9,5 conta como falha');
+  ok(degrauMaisProximo(160) === ESCADA.indexOf(150) && degrauMaisProximo(170) === ESCADA.indexOf(180), 'tempo real → degrau mais perto (160 → 2:30; 170 → 3:00)');
+  ok(formataFaixaFrase(120, 180) === '2 a 3 minutos', '"2 a 3 minutos", não "2 minutos a 3 minutos"');
+  ok(formataFaixaFrase(60, 90) === '1 min a 1 min 30 s', '"1 min a 1 min 30 s"');
+  ok(formataFaixaFrase(30, 45) === '30 a 45 segundos', '"30 a 45 segundos"');
 }
 
 console.log('\nAnalytics e fontes');

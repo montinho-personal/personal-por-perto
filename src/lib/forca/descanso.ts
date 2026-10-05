@@ -20,9 +20,9 @@
  *
  * O QUE NÃO ENTRA, DE PROPÓSITO
  *
- * - Tempo de treino da pessoa: não achamos evidência que separe a
- *   necessidade de descanso por experiência; a carga absoluta maior de quem
- *   treina há anos já aparece no esforço da série.
+ * - Tempo de treino da pessoa: há sinal de que treinados se beneficiam
+ *   mais de descansos longos (Grgic et al., 2017), mas o que muda neles é a
+ *   carga e a proximidade da falha — que a conta já pergunta.
  * - %1RM: repetições + proximidade da falha já definem a intensidade
  *   relativa. Seria pedir a mesma informação duas vezes.
  * - Técnicas (superset, drop-set, rest-pause): têm lógica própria e ficam
@@ -63,7 +63,7 @@ export const FONTES: Fonte[] = [
       'Longo AR, Silva-Batista C, Pedroso K, et al. Volume load rather than resting interval influences muscle hypertrophy during high-intensity resistance training. J Strength Cond Res. 2022;36(6):1554-1559.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/35622106/',
     achado:
-      'Descanso curto com séries extras para igualar o volume deu a mesma hipertrofia do descanso longo: o que pesou foi o volume que o descanso permitiu.',
+      'Em iniciantes na cadeira extensora, a perna que descansou 1 minuto e fez séries extras para igualar o volume cresceu o mesmo que a de 3 minutos.',
   },
   {
     id: 'senna',
@@ -71,7 +71,7 @@ export const FONTES: Fonte[] = [
       'Senna GW, Willardson JM, Simão R, et al. Effect of different interset rest intervals on performance of single and multijoint exercises with near-maximal loads. J Strength Cond Res. 2016;30(3):710-716.',
     url: 'https://www.bisp-surf.de/Record/PU201603001186',
     achado:
-      'Com carga de 3 repetições máximas, o crucifixo manteve as repetições a partir de 2 minutos de descanso; o supino precisou de 3.',
+      'Com carga de 3 repetições máximas, o voador (crucifixo na máquina) fez mais repetições no total com 2 minutos de descanso do que com 1; o supino só com 3 ou 5 minutos.',
   },
   {
     id: 'desalles',
@@ -79,7 +79,7 @@ export const FONTES: Fonte[] = [
       'de Salles BF, Simão R, Miranda F, et al. Rest interval between sets in strength training. Sports Med. 2009;39(9):765-777.',
     url: 'https://pubmed.ncbi.nlm.nih.gov/19691365/',
     achado:
-      'Com cargas de 50% a 90% de 1RM, descansos de 3 a 5 minutos mantiveram mais repetições ao longo das séries e deram mais ganho de força máxima.',
+      'Com cargas de 50% a 90% do 1RM, descansos de 3 a 5 minutos permitiram mais repetições ao longo das séries e deram mais ganho de força máxima.',
   },
   {
     id: 'grgic',
@@ -88,6 +88,14 @@ export const FONTES: Fonte[] = [
     url: 'https://doi.org/10.1080/17461391.2017.1340524',
     achado:
       'Possível vantagem de descansos longos para hipertrofia em pessoas treinadas, com a ressalva de que ainda havia poucos estudos comparáveis.',
+  },
+  {
+    id: 'alonso',
+    citacao:
+      'Alonso-Aubin DA, et al. Self-selected versus fixed rest intervals in the back squat. J Funct Morphol Kinesiol. 2024;9(4):200.',
+    url: 'https://doi.org/10.3390/jfmk9040200',
+    achado:
+      'Numa sessão de agachamento com 13 pessoas treinadas, quem escolheu o próprio descanso (perto de 1 min 37 s, em média) rendeu o mesmo que quem descansou 2 minutos fixos.',
   },
 ];
 
@@ -101,9 +109,21 @@ export const DEGRAU_MAX = ESCADA.length - 1;
 export const PISO_HIPERTROFIA = ESCADA.indexOf(60);
 
 /**
- * E nunca acima de 4 minutos: acima de ~90 s a meta-análise já não detecta
- * diferença de hipertrofia, e 5 minutos só se justificam quando o objetivo
- * é a carga máxima (de Salles et al., 2009).
+ * Força quer chegar recuperado à próxima série: nunca abaixo de 1:30 em
+ * exercício localizado e de 2:00 nos compostos (ACSM, 2009, e de Salles et
+ * al., 2009). Sem esse piso, força longe da falha dava menos descanso que
+ * hipertrofia na mesma série (auditoria de 05/10/2026).
+ */
+export const PISO_FORCA_LOCALIZADA = ESCADA.indexOf(90);
+export const PISO_FORCA_COMPOSTO = ESCADA.indexOf(120);
+
+/** Resistência e condicionamento num exercício pesado: nunca abaixo de 45 s, pela técnica. */
+export const PISO_CURTO_PESADO = ESCADA.indexOf(45);
+
+/**
+ * E nunca acima de 4 minutos. É escolha da conta, não achado de estudo: a
+ * meta-análise já não detecta diferença de hipertrofia acima de ~90 s, e o
+ * tempo extra só se justifica quando deixa repetir as repetições.
  */
 export const TETO_HIPERTROFIA = ESCADA.indexOf(240);
 
@@ -119,7 +139,7 @@ export const OBJETIVOS: { id: Objetivo; nome: string; dica: string }[] = [
   { id: 'forca', nome: 'Força', dica: 'Levantar mais peso' },
   { id: 'resistencia', nome: 'Resistência muscular', dica: 'Aguentar mais repetições' },
   { id: 'condicionamento', nome: 'Condicionamento', dica: 'Fôlego, treino mais corrido' },
-  { id: 'naosei', nome: 'Não sei', dica: 'A conta usa hipertrofia' },
+  { id: 'naosei', nome: 'Não sei', dica: 'Uso o padrão de hipertrofia' },
 ];
 
 export const FAIXAS_REPS: { id: FaixaReps; nome: string }[] = [
@@ -132,10 +152,10 @@ export const FAIXAS_REPS: { id: FaixaReps; nome: string }[] = [
 ];
 
 export const ESFORCOS: { id: Esforco; nome: string; frase: string; rir: string }[] = [
-  { id: 'longe', nome: 'Longe da falha', frase: 'Eu conseguiria fazer mais 5 ou mais.', rir: 'RIR 5+' },
-  { id: 'moderado', nome: 'Moderado', frase: 'Conseguiria fazer mais umas 3 ou 4.', rir: 'RIR 3–4' },
-  { id: 'perto', nome: 'Perto da falha', frase: 'Conseguiria fazer só mais 1 ou 2.', rir: 'RIR 1–2' },
-  { id: 'falha', nome: 'Falha ou quase', frase: 'Não sairia mais nenhuma.', rir: 'RIR 0' },
+  { id: 'longe', nome: 'Longe da falha', frase: 'Ainda sairiam 5 ou mais', rir: 'RIR 5+' },
+  { id: 'moderado', nome: 'Moderado', frase: 'Ainda sairiam 3 ou 4', rir: 'RIR 3–4' },
+  { id: 'perto', nome: 'Perto da falha', frase: 'Ainda sairiam 1 ou 2', rir: 'RIR 1–2' },
+  { id: 'falha', nome: 'Falha ou quase', frase: 'Não sairia mais nenhuma', rir: 'RIR 0' },
 ];
 
 /* ───────────────────────── Base de exercícios ───────────────────────── */
@@ -170,7 +190,7 @@ export const EXERCICIOS: Exercicio[] = [
   { id: 'agachamento-smith', nome: 'Agachamento no Smith', aliases: ['smith', 'agachamento smith'], regiao: 'pernas', tipo: 'composto', demanda: 'alta', artigo: m('agachamento-smith-como-fazer') },
   { id: 'hack', nome: 'Agachamento hack', aliases: ['hack', 'hack machine', 'hack squat'], regiao: 'pernas', tipo: 'composto', demanda: 'alta', artigo: m('agachamento-hack-como-fazer') },
   { id: 'leg-press', nome: 'Leg press', aliases: ['leg', 'legpress', 'leg 45', 'leg press 45', 'leg horizontal'], regiao: 'pernas', tipo: 'composto', demanda: 'alta', artigo: m('leg-press-como-fazer') },
-  { id: 'terra', nome: 'Levantamento terra', aliases: ['terra', 'deadlift', 'levantamento terra convencional', 'terra sumo', 'sumo'], regiao: 'costas', tipo: 'composto', demanda: 'alta', artigo: m('levantamento-terra-como-fazer') },
+  { id: 'terra', nome: 'Levantamento terra', aliases: ['terra', 'deadlift', 'levantamento terra convencional', 'terra sumo'], regiao: 'costas', tipo: 'composto', demanda: 'alta', artigo: m('levantamento-terra-como-fazer') },
   { id: 'terra-romeno', nome: 'Levantamento terra romeno', aliases: ['terra romeno', 'rdl', 'romeno'], regiao: 'pernas', tipo: 'composto', demanda: 'media', artigo: m('levantamento-terra-romeno-como-fazer') },
   { id: 'stiff', nome: 'Stiff', aliases: ['stiff com barra', 'stiff halteres'], regiao: 'pernas', tipo: 'composto', demanda: 'media', artigo: m('stiff-como-fazer') },
   { id: 'bom-dia', nome: 'Bom dia', aliases: ['good morning'], regiao: 'pernas', tipo: 'composto', demanda: 'media', artigo: m('bom-dia-como-fazer') },
@@ -304,7 +324,8 @@ export function faixaDasReps(reps: number): FaixaReps | null {
 /** RIR direto (modo avançado) → esforço. */
 export function esforcoDoRir(rir: number): Esforco | null {
   if (!Number.isFinite(rir) || rir < 0 || rir > 10) return null;
-  if (rir < 0.5) return 'falha';
+  // RPE 9,5 = "nenhuma a mais, só subiria a carga": conta como falha.
+  if (rir <= 0.5) return 'falha';
   if (rir <= 2) return 'perto';
   if (rir <= 4) return 'moderado';
   return 'longe';
@@ -324,7 +345,12 @@ const PARTIDA: Record<Demanda, number> = {
   localizada: ESCADA.indexOf(60),
 };
 
-/** Poucas repetições = carga alta: sobe. Muitas: desce. */
+/**
+ * Poucas repetições = carga alta: sobe. Muitas: desce — mas pouco quando a
+ * série longa vai perto da falha, porque aí a fadiga metabólica e o fôlego
+ * pesam tanto quanto a carga (de Salles et al., 2009, viu benefício de
+ * descansos longos já a partir de 50% do 1RM).
+ */
 const AJUSTE_REPS: Record<FaixaReps, number> = {
   '1-5': 1,
   '6-8': 0,
@@ -332,6 +358,14 @@ const AJUSTE_REPS: Record<FaixaReps, number> = {
   '13-15': -1,
   '16-20': -1,
   '20+': -2,
+};
+const AJUSTE_REPS_PERTO: Record<FaixaReps, number> = {
+  '1-5': 1,
+  '6-8': 0,
+  '9-12': 0,
+  '13-15': 0,
+  '16-20': 0,
+  '20+': -1,
 };
 
 /** Perto da falha, a série cansa mais e pede mais tempo para se repetir. */
@@ -380,9 +414,15 @@ export interface Resultado {
   fatores: Fator[];
 }
 
-const largura = (d: Demanda): number => (d === 'localizada' ? 1 : 2);
+/** Dois degraus sempre: com um só, o timer de isolado começava no piso. */
+const LARGURA = 2;
 const ehHipertrofia = (o: Objetivo): boolean => o === 'hipertrofia' || o === 'naosei';
-const piso = (o: Objetivo): number => (ehHipertrofia(o) ? PISO_HIPERTROFIA : 0);
+const ehCurto = (o: Objetivo): boolean => o === 'resistencia' || o === 'condicionamento';
+const piso = (o: Objetivo, d: Demanda): number => {
+  if (ehHipertrofia(o)) return PISO_HIPERTROFIA;
+  if (o === 'forca') return d === 'localizada' ? PISO_FORCA_LOCALIZADA : PISO_FORCA_COMPOSTO;
+  return d === 'alta' ? PISO_CURTO_PESADO : 0;
+};
 const teto = (o: Objetivo): number => (ehHipertrofia(o) ? TETO_HIPERTROFIA : DEGRAU_MAX);
 
 const TEXTO_DEMANDA: Record<Demanda, string> = {
@@ -415,40 +455,71 @@ const TEXTO_OBJETIVO: Record<Objetivo, string> = {
   condicionamento: 'para condicionamento, a recuperação incompleta faz parte do estímulo',
 };
 
-export function calcular(e: Entrada): Resultado {
-  const fatores: Fator[] = [{ id: 'exercicio', degraus: 0, texto: TEXTO_DEMANDA[e.demanda] }];
+type IdAjuste = 'reps' | 'esforco' | 'objetivo';
+
+const pertoDaFalha = (e: Esforco): boolean => e === 'perto' || e === 'falha';
+
+const ajusteReps = (e: Entrada): number =>
+  (pertoDaFalha(e.esforco) ? AJUSTE_REPS_PERTO : AJUSTE_REPS)[e.reps];
+
+/** A conta, com a opção de ignorar um ajuste — para saber se ele mexeu no resultado. */
+function faixa(e: Entrada, sem?: IdAjuste): { min: number; max: number; bruto: number } {
   let d = PARTIDA[e.demanda];
-
-  const add = (id: Fator['id'], degraus: number, texto: string) => {
-    d += degraus;
-    if (degraus !== 0 && texto) fatores.push({ id, degraus, texto });
-  };
-  add('reps', AJUSTE_REPS[e.reps], TEXTO_REPS[e.reps]);
-  add('esforco', AJUSTE_ESFORCO[e.esforco], TEXTO_ESFORCO[e.esforco]);
-  add('objetivo', AJUSTE_OBJETIVO[e.objetivo], TEXTO_OBJETIVO[e.objetivo]);
-
-  const p = piso(e.objetivo);
-  if (d < p) {
-    if (p > 0) fatores.push({ id: 'piso', degraus: p - d, texto: 'para hipertrofia, menos de 1 minuto tende a custar repetições nas séries seguintes' });
-    d = p;
-  }
+  if (sem !== 'reps') d += ajusteReps(e);
+  if (sem !== 'esforco') d += AJUSTE_ESFORCO[e.esforco];
+  if (sem !== 'objetivo') d += AJUSTE_OBJETIVO[e.objetivo];
+  const bruto = d;
+  const p = piso(e.objetivo, e.demanda);
   const t = teto(e.objetivo);
-  d = Math.max(0, Math.min(t, d));
-
-  const w = largura(e.demanda);
-  let max = Math.min(t, d + w);
+  d = Math.max(p, Math.min(t, d));
+  let max = Math.min(t, d + LARGURA);
   // No teto, a faixa desce em vez de encolher: "4:00 a 5:00" vira "3:00 a 5:00".
-  if (max - d < w) d = Math.max(0, max - w);
+  if (max - d < LARGURA) d = Math.max(0, max - LARGURA);
   if (max === d) max = Math.min(t, d + 1);
-  const inicio = d + Math.floor((max - d) / 2);
+  return { min: d, max, bruto };
+}
 
+const TEXTO_PISO: Record<Objetivo, string> = {
+  hipertrofia: 'para hipertrofia, menos de 1 minuto tende a custar repetições nas séries seguintes',
+  naosei: 'para hipertrofia, menos de 1 minuto tende a custar repetições nas séries seguintes',
+  forca: 'para força, vale chegar à próxima série recuperado, mesmo em série leve',
+  resistencia: 'em exercício pesado, um mínimo de descanso protege a técnica',
+  condicionamento: 'em exercício pesado, um mínimo de descanso protege a técnica',
+};
+
+export function calcular(e: Entrada): Resultado {
+  const f = faixa(e);
+  const fatores: Fator[] = [{ id: 'exercicio', degraus: 0, texto: TEXTO_DEMANDA[e.demanda] }];
+
+  // Só entra na explicação o que mudou a faixa: se tirar o ajuste não muda
+  // nada (por causa do piso ou do teto), dizer que ele pesou seria falso.
+  const textos: Record<IdAjuste, string> = {
+    reps: TEXTO_REPS[e.reps],
+    esforco: TEXTO_ESFORCO[e.esforco],
+    objetivo: TEXTO_OBJETIVO[e.objetivo],
+  };
+  const valores: Record<IdAjuste, number> = {
+    reps: ajusteReps(e),
+    esforco: AJUSTE_ESFORCO[e.esforco],
+    objetivo: AJUSTE_OBJETIVO[e.objetivo],
+  };
+  (['reps', 'esforco', 'objetivo'] as IdAjuste[]).forEach((id) => {
+    if (!valores[id] || !textos[id]) return;
+    const sem = faixa(e, id);
+    if (sem.min !== f.min || sem.max !== f.max) fatores.push({ id, degraus: valores[id], texto: textos[id] });
+  });
+  if (f.bruto < piso(e.objetivo, e.demanda)) {
+    fatores.push({ id: 'piso', degraus: piso(e.objetivo, e.demanda) - f.bruto, texto: TEXTO_PISO[e.objetivo] });
+  }
+
+  const inicio = f.min + Math.floor((f.max - f.min) / 2);
   return {
     entrada: e,
-    degrauMin: d,
-    degrauMax: max,
+    degrauMin: f.min,
+    degrauMax: f.max,
     degrauInicio: inicio,
-    min: ESCADA[d],
-    max: ESCADA[max],
+    min: ESCADA[f.min],
+    max: ESCADA[f.max],
     inicio: ESCADA[inicio],
     fatores,
   };
@@ -472,9 +543,9 @@ export type Feedback = 'manteve' | 'perdeu12' | 'perdeu3' | 'reduziu' | 'sobrou'
 export const FEEDBACKS: { id: Feedback; nome: string }[] = [
   { id: 'manteve', nome: 'Mantive carga e repetições' },
   { id: 'perdeu12', nome: 'Perdi 1 ou 2 repetições' },
-  { id: 'perdeu3', nome: 'Perdi 3 ou mais' },
+  { id: 'perdeu3', nome: 'Perdi 3 ou mais repetições' },
   { id: 'reduziu', nome: 'Tive que baixar a carga' },
-  { id: 'sobrou', nome: 'Já estava pronto antes' },
+  { id: 'sobrou', nome: 'Sobrou descanso' },
 ];
 
 export interface Ajuste {
@@ -486,72 +557,103 @@ export interface Ajuste {
 }
 
 /**
+ * Até onde o ajuste pode ir. Em hipertrofia e força, do piso (ou um degrau
+ * abaixo da faixa) ao teto do objetivo. Em resistência e condicionamento, a
+ * recuperação incompleta é o estímulo: no máximo um degrau acima da faixa —
+ * antes, uma sequência de quedas empurrava o descanso até 5 minutos.
+ */
+export function limitesAjuste(r: Resultado): { min: number; max: number } {
+  const o = r.entrada.objetivo;
+  const min = Math.max(piso(o, r.entrada.demanda), r.degrauMin - 1);
+  const max = ehCurto(o) ? Math.min(teto(o), r.degrauMax + 1) : teto(o);
+  return { min, max };
+}
+
+/** O degrau da escada mais perto de um tempo qualquer (o descanso real, com +30 e −15). */
+export function degrauMaisProximo(seg: number): number {
+  let melhor = 0;
+  ESCADA.forEach((v, i) => {
+    if (Math.abs(v - seg) < Math.abs(ESCADA[melhor] - seg)) melhor = i;
+  });
+  return melhor;
+}
+
+const NOMES_CURTO: Partial<Record<Objetivo, string>> = { resistencia: 'resistência', condicionamento: 'condicionamento' };
+
+/**
  * Sugere o próximo descanso a partir do que aconteceu na série.
  *
  * Nunca afirma a causa: queda de repetição também vem de fadiga acumulada,
  * técnica e da própria proximidade da falha. Perto da falha, perder 1 ou 2
- * repetições na série seguinte é esperado mesmo com descanso longo.
+ * repetições na série seguinte é esperado mesmo com descanso longo; até a
+ * falha, perder 2 ou 3 da primeira para a terceira série também.
  *
- * `subidasSeguidas` conta quantas vezes o descanso já subiu em seguida com
- * queda de desempenho: na terceira, o aviso muda para fadiga acumulada.
+ * `quedasSeguidas` conta as quedas grandes seguidas (perdeu 3+ ou baixou a
+ * carga): a partir da terceira, o aviso passa a ser de fadiga acumulada.
  */
-export function ajustar(
-  r: Resultado,
-  degrauAtual: number,
-  fb: Feedback,
-  subidasSeguidas = 0,
-): Ajuste {
-  const minimo = Math.max(piso(r.entrada.objetivo), r.degrauMin - 1);
-  const pertoDaFalha = r.entrada.esforco === 'perto' || r.entrada.esforco === 'falha';
+export function ajustar(r: Resultado, degrauAtual: number, fb: Feedback, quedasSeguidas = 0): Ajuste {
+  const lim = limitesAjuste(r);
+  const curto = NOMES_CURTO[r.entrada.objetivo];
+  const pertoFalha = pertoDaFalha(r.entrada.esforco);
   const vai = (delta: number, msg: string): Ajuste => {
-    const novo = Math.max(minimo, Math.min(teto(r.entrada.objetivo), degrauAtual + delta));
-    const mudou = (Math.sign(novo - degrauAtual) as -1 | 0 | 1);
-    if (delta > 0 && mudou === 0) {
+    const novo = Math.max(lim.min, Math.min(lim.max, degrauAtual + delta));
+    const mudou = Math.sign(novo - degrauAtual) as -1 | 0 | 1;
+    if (delta > 0 && mudou <= 0) {
+      return {
+        degrau: Math.max(novo, Math.min(degrauAtual, lim.max)),
+        segundos: ESCADA[Math.max(novo, Math.min(degrauAtual, lim.max))],
+        mudou: 0,
+        mensagem: curto
+          ? `Este já é o maior descanso que faz sentido para ${curto}: alguma queda de repetições faz parte do treino. Mantenha o tempo.`
+          : 'O descanso já está no máximo que costuma fazer diferença para este objetivo. Se o desempenho segue caindo, pode ser fadiga acumulada do treino, comum nas últimas séries: mantenha o tempo e aceite a queda, ou faça uma série a menos neste exercício.',
+      };
+    }
+    if (delta < 0 && mudou >= 0) {
       return {
         degrau: novo,
         segundos: ESCADA[novo],
-        mudou,
-        mensagem:
-          'O descanso já está no máximo que costuma fazer diferença para este objetivo. Se o desempenho segue caindo, pode ser fadiga acumulada do treino: é comum nas últimas séries. Mantenha o tempo e aceite a queda, ou faça uma série a menos neste exercício.',
+        mudou: 0,
+        mensagem: 'Este já é o menor descanso que a conta sugere para este objetivo. Se sobra tempo, use-o para preparar a próxima série.',
       };
     }
     return { degrau: novo, segundos: ESCADA[novo], mudou, mensagem: msg };
   };
 
-  if (subidasSeguidas >= 2 && (fb === 'perdeu3' || fb === 'reduziu')) {
+  if (quedasSeguidas >= 2 && (fb === 'perdeu3' || fb === 'reduziu')) {
     return vai(
       0,
-      'O descanso já subiu duas vezes e o desempenho seguiu caindo. Pode ser fadiga acumulada do treino, não só do descanso: é comum nas últimas séries. Se quiser, mantenha este tempo e aceite a queda, ou faça uma série a menos neste exercício.',
+      'Foram quedas grandes seguidas. Pode ser fadiga acumulada do treino, não só do descanso: é comum nas últimas séries. Mantenha este tempo e aceite a queda, ou faça uma série a menos neste exercício.',
     );
   }
 
   switch (fb) {
     case 'manteve':
-      return vai(0, 'Você manteve o desempenho. Esse intervalo parece funcionar para este exercício hoje.');
+      return vai(0, 'Você manteve o desempenho. Esse descanso parece funcionar para este exercício hoje.');
     case 'sobrou':
-      return vai(
-        -1,
-        'Se você já estava pronto antes, experimente um descanso um pouco menor e observe se a próxima série sai igual.',
-      );
+      return vai(-1, 'Se sobrou descanso, experimente um tempo um pouco menor e observe se a próxima série sai igual.');
     case 'perdeu12':
-      return pertoDaFalha
-        ? vai(
-            0,
-            'Perto da falha, perder 1 ou 2 repetições na série seguinte é esperado, mesmo com descanso longo. Pode manter o tempo.',
-          )
+      if (curto) return vai(0, `Em ${curto}, perder algumas repetições faz parte do treino. Pode manter o tempo.`);
+      return pertoFalha
+        ? vai(0, 'Perto da falha, perder 1 ou 2 repetições na série seguinte é esperado, mesmo com descanso longo. Pode manter o tempo.')
         : vai(
             1,
             'Como a série não estava perto da falha, a queda pode indicar que um pouco mais de descanso ajudaria — embora outros fatores também influenciem. Experimente o próximo tempo.',
           );
     case 'perdeu3':
-      return vai(
-        2,
-        'A queda foi grande. Ela pode indicar que você se beneficiaria de mais descanso, embora fadiga acumulada e execução também influenciem. Experimente o próximo tempo e observe.',
-      );
+      if (curto) return vai(1, `Em ${curto}, alguma queda é esperada; como foi grande, experimente um pouco mais de descanso.`);
+      return r.entrada.esforco === 'falha'
+        ? vai(
+            1,
+            'Até a falha, perder 2 ou 3 repetições ao longo das séries é comum mesmo com descanso longo. Como a queda foi grande, experimente um pouco mais de tempo e observe.',
+          )
+        : vai(
+            2,
+            'A queda foi grande. Ela pode indicar que você se beneficiaria de mais descanso, embora fadiga acumulada e execução também influenciem. Experimente o próximo tempo e observe.',
+          );
     case 'reduziu':
       return vai(
-        2,
-        'Se você baixou a carga por não aguentar, experimente descansar mais na próxima. Se baixou de propósito, a comparação com a série anterior muda — avalie pela seguinte.',
+        1,
+        'Se você baixou a carga por não aguentar, experimente descansar um pouco mais. Se baixou de propósito, a comparação com a série anterior muda — avalie pela seguinte.',
       );
   }
 }
@@ -578,14 +680,27 @@ export function formataTempoExtenso(seg: number): string {
 
 export const formataFaixa = (r: Resultado): string => `${formataTempo(r.min)} a ${formataTempo(r.max)}`;
 
-export const formataFaixaExtenso = (r: Resultado): string =>
-  `${formataTempoExtenso(r.min)} a ${formataTempoExtenso(r.max)}`;
+/**
+ * A faixa como se fala: "2 a 3 minutos", "30 a 45 segundos", "1 min a 1 min 30 s".
+ * Nunca "2 minutos a 3 minutos".
+ */
+export function formataFaixaFrase(min: number, max: number): string {
+  if (max < 60) return `${min} a ${max} segundos`;
+  if (min % 60 === 0 && max % 60 === 0) return `${min / 60} a ${max / 60} minutos`;
+  const curto = (s: number) => (s < 60 ? `${s} s` : s % 60 === 0 ? `${s / 60} min` : `${Math.floor(s / 60)} min ${s % 60} s`);
+  return `${curto(min)} a ${curto(max)}`;
+}
+
+export const formataFaixaExtenso = (r: Resultado): string => formataFaixaFrase(r.min, r.max);
 
 /** Faixa categórica para o analytics: nunca o número exato. */
 export function faixaAnalytics(r: Resultado): string {
-  if (r.max <= 60) return 'ate_60';
-  if (r.max <= 120) return '60_120';
-  if (r.max <= 180) return '120_180';
+  return faixaAnalyticsSeg(r.max);
+}
+export function faixaAnalyticsSeg(seg: number): string {
+  if (seg <= 60) return 'ate_60';
+  if (seg <= 120) return '60_120';
+  if (seg <= 180) return '120_180';
   return 'acima_180';
 }
 
@@ -595,7 +710,7 @@ export const NOTA_RELOGIO =
   'O relógio é ponto de partida, não regra. Se você ainda está ofegante ou sente que não repetiria a série, descanse mais. Se recuperou e o exercício é leve, não precisa esperar o fim da faixa.';
 
 export const NOTA_SEGURANCA =
-  'Tontura, dor no peito, falta de ar fora do normal ou dor aguda não se resolvem com mais descanso: pare o treino e procure avaliação médica.';
+  'Tontura, dor no peito ou falta de ar fora do normal não se resolvem com mais descanso: pare o treino e procure avaliação médica. Dor aguda numa articulação ou num músculo também pede parar e procurar um médico ou fisioterapeuta.';
 
 export const NOTA_TECNICAS =
   'A conta é para séries convencionais. Superset, drop-set, rest-pause e circuito têm lógica própria de descanso — explicada mais abaixo nesta página.';
