@@ -70,6 +70,11 @@ export const cidade: Cidade = {
     'Itatiba tem uma cena de corrida de rua ativa, com provas como a Night Run e a Eco Run e circuitos de corridas populares ao longo do ano. O Parque Luís Latorre concentra caminhada e corrida no dia a dia, e o relevo de colinas estimula treinos ao ar livre e ciclismo.',
   academias:
     'A oferta reúne academias de musculação, estúdios de treinamento funcional e crossfit, além das academias internas dos grandes condomínios de alto padrão, onde o atendimento domiciliar de personal trainer é especialmente valorizado.',
+  academiasProximas: [
+    { nome: 'Panobianco Itatiba', detalhe: 'na Rua Rui Barbosa, no Centro' },
+    { nome: 'Academia Spazio Fitness', detalhe: 'na Vila Santa Cruz' },
+  ],
+  academiasVerificadasEm: '2026-10-05',
 
   destaquesFitness: [
     'Condomínios de alto padrão (Fazenda Dona Carolina, Reserva Santa Rosa, Terras de Santa Cruz) com forte demanda por atendimento domiciliar.',
@@ -97,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itatiba', url: 'https://www.itatiba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-05',
 };

@@ -68,6 +68,11 @@ export const cidade: Cidade = {
     'Saquarema tem identidade fortemente ligada ao surfe e aos esportes de praia, com um calendário de dezenas de eventos por ano, e a orla concentra a vida ativa da população.',
   academias:
     'A oferta reúne academias e estúdios, com a orla do Boqueirão e a Praia de Itaúna funcionando como academia a céu aberto para corrida e treino funcional.',
+  academiasProximas: [
+    { nome: 'Academia Mitra', detalhe: 'na Rua Professor Souza, em Bacaxá' },
+    { nome: 'Academia Barros', detalhe: 'em Bacaxá' },
+  ],
+  academiasVerificadasEm: '2026-10-05',
 
   destaquesFitness: [
     'Capital Nacional do Surfe — base de surfistas e esportes de praia.',
@@ -95,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Saquarema', url: 'https://www.saquarema.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-05',
 };
