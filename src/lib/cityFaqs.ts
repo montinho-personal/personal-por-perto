@@ -120,6 +120,10 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
     const cidades = cfg.precoRegiao.slugs
       .map((s) => getCidade(s))
       .filter((c): c is Cidade => Boolean(c));
+    // A própria página abre a lista: a mesma pergunta em duas regiões do
+    // mesmo estado não sai com o mesmo texto, e o leitor vê primeiro o
+    // preço de onde está.
+    cidades.sort((a, b) => Number(b.slug === cidade.slug) - Number(a.slug === cidade.slug));
     // Nunca inventa região: slug que não existe quebra o build.
     if (cidades.length !== cfg.precoRegiao.slugs.length) {
       throw new Error(`faqsBusca.precoRegiao de ${cidade.slug}: slug desconhecido`);

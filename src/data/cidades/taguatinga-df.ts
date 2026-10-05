@@ -82,7 +82,27 @@ export const cidade: Cidade = {
   conclusao:
     'Taguatinga reúne uma grande população de classe média, vida de rua intensa e infraestrutura de sobra para treinar: academias de bairro em quase todas as quadras, o Parque Saburo Onoyama com suas trilhas sombreadas e metrô para encurtar distâncias. Com um personal trainer alinhado ao seu objetivo, fica fácil manter a constância — na academia perto de casa, em domicílio ou no parque — mesmo no auge da seca do cerrado.',
 
-  vizinhas: ['brasilia-df', 'ceilandia-df', 'aguas-claras-df'],
+  /*
+   * Prints de 05/10: autocompletar com "df instagram", "taguatinga norte",
+   * "taguatinga sul" e "personal taguatinga"; PAA com "valor de 1 hora",
+   * "quanto custa um personal trainer no DF?", "3 vezes por semana" e
+   * "vale a pena pagar". A página já é o primeiro resultado orgânico
+   * ("preços e como escolher"). Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: {
+    precoMensal: true,
+    instagram: true,
+    precoRegiao: {
+      pergunta: 'Quanto custa um personal trainer no DF?',
+      slugs: ['taguatinga-df', 'brasilia-df', 'aguas-claras-df', 'ceilandia-df'],
+    },
+  },
+
+  // Em 05/10/2026 Ceilândia e Águas Claras, que fazem divisa, passaram
+  // para a frente; Brasília (Plano Piloto) segue entre as três.
+  vizinhas: ['ceilandia-df', 'aguas-claras-df', 'brasilia-df'],
 
   capaArte: {
     src: '/capas-cidade/taguatinga-df.webp',
@@ -105,5 +125,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/wp-content/uploads/2022/05/Taguatinga.pdf',
     },
   ],
-  atualizadoEm: '2026-09-21',
+  atualizadoEm: '2026-10-05',
 };

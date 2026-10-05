@@ -648,3 +648,29 @@ regional com Umuarama — ficou de fora.
 **segunda vez** (Birigui e Umuarama, no mesmo dia): passa a ser candidata
 a pergunta gerada, desde que o preço de mensalidade venha de fonte oficial
 da rede — anotado em docs/pendencias.md.
+
+## Taguatinga — prints e aplicação em 05/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer taguatinga df | **"df instagram"** (duas variações), **"taguatinga norte"**, **"taguatinga sul"**, "personal taguatinga" | valor de 1 hora · **quanto custa um personal trainer no DF?** · **3 vezes por semana** · vale a pena pagar | anúncio; **a página do portal é o primeiro resultado orgânico** ("Personal Trainer em Taguatinga (DF): preços e como escolher") |
+
+**O print mostrou um defeito do portal inteiro:** o trecho do Google era a
+resposta da pergunta "Quanto custa", com "costuma ficar entre R$ 60 a R$
+140" — regência errada, presente nas 988 páginas de cidade. Corrigido no
+modelo no mesmo dia ("costuma custar de R$ 60 a R$ 140"), junto com o
+"Em {cidade}" da seção de preço, que escrevia "Em Rio de Janeiro". Sem
+mexer em `atualizadoEm` em massa.
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana", "como avaliar pelo Instagram" e **"Quanto custa um
+personal trainer no DF?"** — a mesma pergunta gerada de Brasília, agora
+com a própria página abrindo a lista (o gerador passou a pôr a cidade
+atual primeiro, para as duas páginas não saírem com o mesmo texto; a de
+Brasília não mudou). **Vizinhas:** Ceilândia e Águas Claras, que fazem
+divisa, passaram à frente de Brasília.
+
+**Não aplicado:** "valor de 1 hora" e "vale a pena" já respondidos pela
+página. **Bairros candidatos:** Taguatinga Norte e Taguatinga Sul — mas
+são setores de uma região administrativa que já tem página; só valem
+página própria se o relatório mostrar busca separada.
