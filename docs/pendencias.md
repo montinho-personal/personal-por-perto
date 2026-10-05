@@ -108,6 +108,7 @@ até 29/09/2026):
    **Umuarama** (41 impressões, 1 clique), em 03/10.
    Leva 5, em 05/10: **Taguatinga** (321 impressões, 6 cliques; já é o
    primeiro orgânico em "personal trainer taguatinga df" — teste de CTR puro).
+   **Blumenau** (287 impressões, 5 cliques), em 05/10.
 4. **Preço + cidade no site todo** — linha de base: 33 consultas, 409
    impressões, posição média 11,1. "Personal trainer + cidade": 166
    consultas, posição 17,9.

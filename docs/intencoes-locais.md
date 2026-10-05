@@ -674,3 +674,18 @@ divisa, passaram à frente de Brasília.
 página. **Bairros candidatos:** Taguatinga Norte e Taguatinga Sul — mas
 são setores de uma região administrativa que já tem página; só valem
 página própria se o relatório mostrar busca separada.
+
+## Blumenau — prints e aplicação em 05/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer blumenau | "mulher", **"velha central"** (bairro), "personal blumenau", "personal trainer bluefit" | quanto custa em Blumenau · **1 mês** · **3 vezes por semana** · quem treina 3x na semana tem resultado? | consultoria online de Blumenau; StarOfService |
+
+**Aplicado:** valor por mês no título e na descrição; pergunta "1 mês, 3
+vezes por semana" (duas do PAA). **Vizinhas:** eram Joinville,
+Florianópolis e Balneário Camboriú; entraram, na frente, Gaspar, Indaial e
+Pomerode, que fazem divisa.
+
+**Não aplicado:** "mulher"; "bluefit" (política da rede não verificada);
+"quem treina 3x tem resultado?" (já em Natal). **Bairro candidato:** Velha
+Central — já aparece na página como bairro nobre ("Velha"); fica anotado.

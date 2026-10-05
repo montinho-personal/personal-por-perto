@@ -95,6 +95,15 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade de alto IDHM e forte cultura de corrida e ciclismo, Blumenau oferece boa estrutura para treinar — dos parques às academias bem equipadas. Um personal trainer ajuda a aproveitar tudo isso com método, levando em conta o clima úmido e a rotina de quem mora no Vale do Itajaí.',
 
+  /*
+   * Prints de 05/10: autocompletar com "mulher", "velha central" (bairro),
+   * "personal blumenau" e "personal trainer bluefit"; PAA com "quanto custa
+   * em Blumenau", "1 mês", "3 vezes por semana" e "quem treina 3x na semana
+   * tem resultado?". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Blumenau?',
@@ -113,7 +122,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['joinville-sc', 'florianopolis-sc', 'balneario-camboriu-sc'],
+  // As vizinhas eram Joinville, Florianópolis e Balneário Camboriú. Em
+  // 05/10/2026 entraram, na frente, Gaspar, Indaial e Pomerode, que fazem
+  // divisa com Blumenau.
+  vizinhas: ['gaspar-sc', 'indaial-sc', 'pomerode-sc', 'joinville-sc', 'florianopolis-sc', 'balneario-camboriu-sc'],
 
   fontes: [
     { nome: 'IBGE Cidades — Blumenau', url: 'https://cidades.ibge.gov.br/brasil/sc/blumenau/panorama' },
@@ -129,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Blumenau: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-10-05',
 };
