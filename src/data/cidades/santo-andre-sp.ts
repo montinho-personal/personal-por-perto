@@ -90,6 +90,17 @@ export const cidade: Cidade = {
     onlineMax: 420,
   },
 
+  /*
+   * Prints de 05/10: autocompletar com "preço", "sp", "mulher", "smart
+   * fit", "quanto custa um personal trainer em santo andré" e "barata";
+   * relacionadas com "smart fit santo andre", "perto de mim", "online",
+   * "valor personal trainer smart fit" e "academia perto de mim"; PAA com
+   * "quanto custa em Santo André", "valor de 1 hora", "vale a pena pagar" e
+   * "3 vezes por semana". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, barato: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Dá para treinar com personal à noite em Santo André?',
@@ -108,7 +119,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['sao-paulo-sp', 'guarulhos-sp'],
+  // Eram São Paulo e Guarulhos. Em 05/10/2026 entraram, na frente, São
+  // Bernardo do Campo, São Caetano do Sul e Mauá, que fazem divisa com
+  // Santo André; São Paulo segue entre as quatro.
+  vizinhas: ['sao-bernardo-do-campo-sp', 'sao-caetano-do-sul-sp', 'maua-sp', 'sao-paulo-sp', 'guarulhos-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Santo André', url: 'https://cidades.ibge.gov.br/brasil/sp/santo-andre/panorama' },
@@ -123,5 +137,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Santo André: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional no ABC.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-10-05',
 };

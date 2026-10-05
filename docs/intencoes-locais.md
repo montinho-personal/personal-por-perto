@@ -689,3 +689,20 @@ Pomerode, que fazem divisa.
 **Não aplicado:** "mulher"; "bluefit" (política da rede não verificada);
 "quem treina 3x tem resultado?" (já em Natal). **Bairro candidato:** Velha
 Central — já aparece na página como bairro nobre ("Velha"); fica anotado.
+
+## Santo André — prints e aplicação em 05/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer santo andre | **"preço"**, "sp", "mulher", "smart fit", "quanto custa um personal trainer em santo andré", **"barata"**; relacionadas: "smart fit santo andre", "perto de mim", **"online"**, "valor personal trainer smart fit", "Treinarme", "academia perto de mim" | quanto custa em Santo André · valor de 1 hora · vale a pena pagar · **3 vezes por semana** | Instagram; BeBee; Superprof (5,0, 30); Treinar.me |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana", "online ou presencial" e **"Como encontrar personal
+trainer mais barato em Santo André?"** (autocompletar "barata"; a pergunta
+gerada só existia em São Paulo). **Vizinhas:** eram São Paulo e Guarulhos;
+entraram, na frente, São Bernardo do Campo, São Caetano do Sul e Mauá, que
+fazem divisa; São Paulo segue entre as quatro.
+
+**Não aplicado:** "mulher", "smart fit" (política da rede não
+verificada), "perto de mim"/"academia perto de mim" (sem como responder
+pela página).
