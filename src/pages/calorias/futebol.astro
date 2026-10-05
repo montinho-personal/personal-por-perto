@@ -27,6 +27,23 @@
  * Goleiro, futebol de areia, futevôlei e futebol andando: não conseguimos
  * conferir um valor medido numa fonte primária. A página diz isso, com a
  * frase certa — "não conferimos", não "ninguém mediu".
+ *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * jogar futebol"): o autocompletar e as relacionadas pedem tempo (30 e 40
+ * minutos, 1 e 2 horas), futsal, "por dia", "jogador profissional" e "qual
+ * esporte gasta mais"; o PAA, 1 hora, "como queimar 1000 calorias em 1
+ * hora?", "o que equivale a 7.000 calorias?" e "é muito gastar 2 mil
+ * calorias por dia?"; a IA dá 450 a 600 kcal por hora e 250 a 300 em 30
+ * minutos para 70 kg, e um resultado fala em 1.500 kcal por partida de
+ * profissional. Entraram: a tabela por tempo em campo, as perguntas de 30
+ * minutos, 1 hora de futsal (no lugar de "futsal gasta mais que campo?",
+ * com a mesma resposta e o número) e jogador profissional — com a conta da
+ * tabela competitiva e a ressalva de que ela não é de elite.
+ *
+ * O QUE FICOU DE FORA: "qual esporte gasta mais" (segunda vez nos prints,
+ * depois do vôlei — candidata ao hub /calorias/), "2 mil calorias por dia"
+ * (é da calculadora de gasto diário), "7.000 calorias" (a regra do quilo
+ * já está na pergunta de 1 kg) e "por dia" (sem leitura clara).
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -75,7 +92,7 @@ import {
 } from '../../lib/calorias/futebol';
 
 const path = '/calorias/futebol';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -105,15 +122,28 @@ const PROMESSA_DUAS_HORAS = (CIRCULA_MIN * LOCAL_PADRAO) / 60;
 /* O "quem perde sai" mais injusto: um time ganha tudo, com três times. */
 const INJUSTO = { vencedor: LOCAL_PADRAO, outros: LOCAL_PADRAO / 2 };
 
+/* Por tempo em campo: a busca pede 30 e 40 minutos, 1 e 2 horas; 90 é a partida oficial. */
+const TEMPOS = [30, 40, 60, 90, 120];
+const rotuloTempo = (m: number) => (m === 60 ? '1 hora' : m === 90 ? '1h30 (uma partida)' : m === 120 ? '2 horas' : `${m} minutos`);
+const TAB_TEMPO = TEMPOS.map((m) => ({ m, casual: deTempo(m, PESO_PADRAO, 'casual'), comp: deTempo(m, PESO_PADRAO, 'competitivo') }));
+const EX_30 = deTempo(30, PESO_PADRAO, 'casual');
+const EX_30_COMP = deTempo(30, PESO_PADRAO, 'competitivo');
+/* Futsal com time de fora: duas horas de quadra, 15 pessoas (um time de fora). */
+const FUTSAL_PRESENTES = 15;
+const EX_FUTSAL_RODIZIO = dePelada(60, PESO_PADRAO, 'quadra', FUTSAL_PRESENTES, 'casual');
+/* Profissional: 90 minutos na linha competitiva, para dois pesos de atleta. */
+const PRO_70 = deTempo(90, PESO_PADRAO, 'competitivo');
+const PRO_80 = deTempo(90, 80, 'competitivo');
+const CIRCULA_PRO = 1500;
+const PESO_PARA_PRO = (CIRCULA_PRO * 200) / (metFutebol('competitivo') * 3.5 * 90);
+
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 /* MET sempre com uma casa, como o Compêndio publica: "7,0", não "7". */
 const met = (v: number) => v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 /* 53 caracteres. */
-const title = 'Quantas Calorias Gasta Jogar Futebol? Pelada e Futsal';
-/* 150 caracteres. */
-const description =
-  'Calcule as calorias do futebol pelo tempo em campo, não pelo aluguel da quadra. Na pelada com time de fora, a conta é vagas em campo ÷ gente presente.';
+const title = 'Quantas Calorias Gasta Jogar Futebol? 1 Hora e Futsal';
+const description = `Uma hora em campo gasta cerca de ${formataKcal(EX_HORA.kcal)} kcal na pelada e ${formataKcal(EX_HORA_COMP.kcal)} em jogo competitivo, para ${PESO_PADRAO} kg. Com time de fora, calcule pelo tempo que você jogou.`;
 
 const faqs = [
   {
@@ -121,16 +151,24 @@ const faqs = [
     resposta: `Se for uma hora inteira em campo, cerca de ${formataKcal(EX_HORA.kcal)} kcal para ${PESO_PADRAO} kg numa pelada e ${formataKcal(EX_HORA_COMP.kcal)} kcal em jogo competitivo. O detalhe que muda tudo é o "em campo": numa pelada com time de fora, uma hora de quadra não é uma hora de bola. Com ${PRESENTES_PADRAO} pessoas no society, cada um joga ${formataPct(EX_PELADA.fracao)} do tempo.`,
   },
   {
+    pergunta: 'Quantas calorias gasta 30 minutos de futebol?',
+    resposta: `Cerca de ${formataKcal(EX_30.kcal)} kcal em 30 minutos de pelada em campo e ${formataKcal(EX_30_COMP.kcal)} em jogo competitivo, para ${PESO_PADRAO} kg. Quarenta minutos ficam em ${formataKcal(TAB_TEMPO[1].casual.kcal)} e ${formataKcal(TAB_TEMPO[1].comp.kcal)}. São minutos com a bola rolando para você — o tempo esperando do lado de fora não entra.`,
+  },
+  {
     pergunta: 'Quantas calorias gasta uma pelada?',
     resposta: `Depende de quanto tempo você ficou em campo, e isso sai de uma conta de dividir: vagas em campo ÷ pessoas presentes. Duas horas de society (${vagas('society')} vagas) com ${PRESENTES_PADRAO} pessoas dão ${formataTempo(EX_PELADA.minutosEmCampo)} de futebol para cada um, em média — cerca de ${formataKcal(EX_PELADA.kcal)} kcal para ${PESO_PADRAO} kg. Não os ${formataKcal(PROMESSA_DUAS_HORAS)} ou mais que a faixa de ${CIRCULA_MIN} a ${n(CIRCULA_MAX, 0)} kcal por hora que circula daria para duas horas.`,
   },
   {
-    pergunta: 'Futsal gasta mais calorias que futebol de campo?',
-    resposta: `Por minuto jogado, não há diferença que as medições sustentem. Quando o espaço por jogador é o mesmo, jogar 3 contra 3, 5 contra 5 ou 7 contra 7 deu praticamente a mesma frequência cardíaca média em homens destreinados. O que muda de um formato para o outro é quantas pessoas cabem em campo — e, numa pelada, quanto tempo cada uma espera do lado de fora.`,
+    pergunta: 'Quantas calorias gasta 1 hora de futsal?',
+    resposta: `Uma hora inteira em quadra, o mesmo que a pelada: cerca de ${formataKcal(EX_HORA.kcal)} kcal para ${PESO_PADRAO} kg — uma medição de futsal recreativo ficou a ${formataPct(FUTSAL.erro)} da linha de futebol casual. Com um time de fora (${FUTSAL_PRESENTES} pessoas para ${vagas('quadra')} vagas), a hora de quadra vira ${formataTempo(EX_FUTSAL_RODIZIO.minutosEmCampo)} de jogo e cerca de ${formataKcal(EX_FUTSAL_RODIZIO.kcal)} kcal. Por minuto jogado, futsal não gasta mais que campo: com o mesmo espaço por jogador, 3 contra 3, 5 contra 5 ou 7 contra 7 deram praticamente a mesma frequência cardíaca média. O formato muda quantos cabem em campo, e quanto tempo cada um espera fora.`,
   },
   {
     pergunta: 'Futebol queima 1.000 calorias por hora?',
     resposta: `Só a partir de uns ${n(PESO_PARA_MIL, 0)} kg, jogando em ritmo competitivo a hora inteira, sem sair. Para ${PESO_PADRAO} kg, uma hora inteira de jogo competitivo dá ${formataKcal(EX_HORA_COMP.kcal)} kcal, e uma hora de pelada, ${formataKcal(EX_HORA.kcal)}. Faixas como "${CIRCULA_MIN} a ${n(CIRCULA_MAX, 0)} kcal por hora" pressupõem hora cheia em campo — e o topo delas, peso alto e jogo competitivo.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta um jogador de futebol profissional?',
+    resposta: `Pela linha de jogo competitivo do Compêndio, uma partida de 90 minutos daria cerca de ${formataKcal(PRO_70.kcal)} kcal para ${PESO_PADRAO} kg e ${formataKcal(PRO_80.kcal)} para 80 kg. Os ${formataKcal(CIRCULA_PRO)} kcal por partida que circulam pediriam, nessa mesma linha, uns ${n(PESO_PARA_PRO, 0)} kg. Mas essa tabela é de jogo competitivo, não de elite: profissional corre mais e mais forte, e não conferimos uma medição de gasto em partida de profissional — por isso a página não crava número para eles.`,
   },
   {
     pergunta: 'Goleiro gasta quantas calorias?',
@@ -413,6 +451,37 @@ society, ${PRESENTES_PADRAO} pessoas, ${formataTempo(LOCAL_PADRAO)} de quadra
           </table>
         </div>
         <p>{NOTA_FORA}</p>
+
+        <h2>Por tempo em campo: 30 minutos, 1 hora e 2 horas</h2>
+        <p>
+          Para quem já sabe quanto jogou — ou jogou sem time de fora —, a conta é direta. Os valores
+          são para {PESO_PADRAO} kg, com o tempo em campo.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por tempo em campo, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Em campo</th>
+                <th scope="col">Pelada ({met(metFutebol('casual'))} METs)</th>
+                <th scope="col">Competitivo ({met(metFutebol('competitivo'))} METs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{rotuloTempo(l.m)}</th>
+                  <td>≈ {formataKcal(l.casual.kcal)} kcal</td>
+                  <td>≈ {formataKcal(l.comp.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Duas horas de quadra alugada raramente são duas horas desta tabela: com time de fora, use
+          a conta de cima, ou o modo pelada da calculadora.
+        </p>
 
         <h2>A média é exata, mesmo no &ldquo;quem perde sai&rdquo;</h2>
         <p>{NOTA_MEDIA_EXATA}</p>

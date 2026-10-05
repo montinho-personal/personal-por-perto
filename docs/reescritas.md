@@ -370,6 +370,25 @@ por hora, gastam parecido) e "caminhar por 1 hora emagrece?" no lugar de
 "andar 1 km de bicicleta", que vai para a página da bicicleta. Linha de
 base: 160 impressões, 0 clique, posição 9,8.
 
+**Futebol** (`/calorias/futebol/`). Autocompletar e relacionadas: tempo (30
+e 40 minutos, 1 e 2 horas), futsal, "por dia", "jogador profissional",
+"qual esporte gasta mais". PAA: 1 hora, "como queimar 1000 calorias em 1
+hora?", "o que equivale a 7.000 calorias?", "é muito gastar 2 mil calorias
+por dia?". A IA dá 450–600 kcal/h e 250–300 em 30 minutos para 70 kg — a
+nossa conta dá 515 (pelada) e 698 (competitivo) por hora em campo. Entraram:
+título "Quantas Calorias Gasta Jogar Futebol? 1 Hora e Futsal" (antes "…
+Pelada e Futsal"; a versão com os três passava de 60 caracteres),
+descrição com os números, tabela por tempo em campo (30 minutos a 2 horas,
+com a partida de 90), e as perguntas 30 minutos, 1 hora de futsal (no lugar
+de "futsal gasta mais que campo?", que continua respondida dentro dela) e
+jogador profissional (1.050 kcal por partida para 70 kg na linha
+competitiva; os 1.500 que circulam pediriam ~100 kg — com a ressalva de que
+a linha não é de elite e não conferimos medição em profissional). Fora:
+"qual esporte gasta mais" (anotada em `docs/pendencias.md`, segunda vez nos
+prints), "2 mil calorias por dia" (calculadora de gasto diário), "7.000
+calorias" e "por dia". Linha de base: 107 impressões, 0 clique, posição
+6,9.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

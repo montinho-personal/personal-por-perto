@@ -181,3 +181,16 @@ segunda verificada (campo `precos`). Para virar pergunta gerada
 presentes na cidade, conferido na página oficial e com data. Sem isso,
 não entra. Decidir se vale montar essa base (começando pelas redes que
 mais aparecem em `academiasProximas`: Smart Fit, Bluefit, Selfit).
+
+## Busca recorrente sem resposta: "qual esporte gasta mais calorias?"
+
+Apareceu nos prints do vôlei ("os 10 esportes que mais queimam calorias",
+PAA) e do futebol ("qual esporte gasta mais calorias", autocompletar e
+relacionadas), ambos de 05/10. O portal tem as peças — onze calculadoras
+de esporte com motor próprio —, mas não a comparação: cada uma usa linhas
+diferentes do Compêndio, algumas dão faixa, e uma lista honesta precisa
+escolher a linha comparável de cada esporte (jogo de lazer × competitivo)
+e dizer o peso e o tempo. O lugar é o hub `/calorias/`, com a tabela
+calculada pelos motores e um link para cada calculadora. Candidata à
+próxima leva das ferramentas; se aparecer de novo nos prints da
+bicicleta ou da dança, sobe de prioridade.
