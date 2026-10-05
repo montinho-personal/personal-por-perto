@@ -316,6 +316,25 @@ de 3 vezes por semana. Fora: antes e depois, glúteos, "feminino em quanto
 tempo", mente, crianças. Linha de base: 288 impressões, 2 cliques, posição
 7,0.
 
+**Corrida** (`/calorias/corrida/`). A busca é quase toda por distância
+(autocompletar: 1, 2, 3, 4, 5, 6, 7, 10 e 21 km e maratona; relacionadas:
+15 km, "andar 1 km") e, no PAA, por tempo ("1 hora", "10 minutos", "20
+minutos por dia ajuda a emagrecer?") e pela conta inversa ("quantos km para
+queimar 1000 calorias?"). A IA diz "500 a 1.000 kcal por hora" e 73 kcal por
+km para 70 kg — dentro da nossa faixa (70 a 85). Entraram: título "Quantas
+Calorias Gasta Correr? 1 Km, 5 Km, 10 Km e 1 Hora" (antes "Quantas Calorias a
+Corrida Gasta? Calcule por Km"), H1 no fraseado da busca, a tabela por
+distância com as distâncias pedidas (1 a 7, 10, 15, meia e maratona), uma
+tabela por tempo (10, 20, 30 minutos e 1 hora em três ritmos) e as
+perguntas 1 km (com andar 1 km pelo motor da caminhada), 1 hora (674 a 914
+kcal entre 7:00 e 5:00/km; os 1.000 pedem ~13,2 km/h a hora inteira), 10
+minutos, 1.000 kcal (~12,9 km) e 20 minutos por dia. Saíram do FAQ, sem
+sair da página, a dos 500 kcal e a da faixa. De quebra: a resposta de
+"perde barriga?" repetia a frase da lesão duas vezes, e a página da
+musculação arredondava a mesma velocidade dos 1.000 kcal/h para 13,5 —
+agora as duas dizem 13,2. Linha de base: 258 impressões, 0 clique, posição
+6,9.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

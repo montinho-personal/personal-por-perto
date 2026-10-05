@@ -72,7 +72,6 @@ import {
   tipo,
 } from '../../lib/calorias/musculacao';
 import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
-import { metCorrida } from '../../lib/calorias/corrida';
 
 /* ── Números resolvidos no servidor, pelo mesmo motor da calculadora ── */
 const H_VARIADO = deSessao(60, PESO_PADRAO, 'variado');
@@ -101,13 +100,13 @@ const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigit
  * PAA de 05/10/2026: "como queimar 1000 calorias em 1 hora?" e "é possível
  * emagrecer com 1 hora de musculação por dia?". A primeira se responde com
  * a conta inversa: o MET que 1.000 kcal/h exige para o peso padrão, e a
- * velocidade de corrida que entrega esse MET pelo motor da corrida.
+ * velocidade de corrida que entrega esse MET pela equação da ACSM, a mesma
+ * do motor da corrida.
  */
 const MET_1000 = 1000 / 60 / ((3.5 * PESO_PADRAO) / 200);
-function velocidadeParaMet(met: number): number {
-  for (let v = 5; v < 25; v += 0.05) if (metCorrida(v) >= met) return Math.round(v * 2) / 2;
-  return 0;
-}
+/* A equação da ACSM ao contrário (MET → m/min → km/h), sem arredondar para
+   meio km/h: a página da corrida dá a mesma velocidade, e as duas têm de bater. */
+const velocidadeParaMet = (met: number): number => (((met * 3.5 - 3.5) / 0.2) * 60) / 1000;
 const V_1000 = velocidadeParaMet(MET_1000);
 const VEZES_1000 = 1000 / H_VARIADO.kcal;
 

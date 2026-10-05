@@ -16,6 +16,17 @@
  *
  * E o resultado é uma FAIXA, não um número: economia de corrida varia entre
  * pessoas o bastante para que um valor exato seja desonesto.
+ *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * correr"): o autocompletar é quase todo distância — 1, 2, 3, 4, 5, 6, 7,
+ * 10 e 21 km e a maratona; as relacionadas somam 15 km, "andar 1 km" e 20
+ * minutos; o PAA pede 1 hora, 10 minutos, "20 minutos por dia ajuda a
+ * emagrecer?" e "quantos km para queimar 1000 calorias?"; a IA diz "500 a
+ * 1.000 calorias por hora" e 73 kcal por km para 70 kg (dentro da nossa
+ * faixa, 70 a 85). Entraram: a tabela por distância com as distâncias que a
+ * busca pede, uma tabela por tempo em três ritmos e as perguntas no
+ * fraseado da busca. Saíram do FAQ (o texto continua na página) a dos 500
+ * kcal e a da faixa, para o bloco não passar de onze.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -57,7 +68,7 @@ import {
 import { kcalPorKgPorKm as caminhadaPorKm } from '../../lib/calorias/caminhada';
 
 const path = '/calorias/corrida';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -71,7 +82,6 @@ const EX_5KM = deDistancia(5, PESO_PADRAO, PACE);
 const EX_10KM = deDistancia(10, PESO_PADRAO, PACE);
 const EX_1KM = deDistancia(1, PESO_PADRAO, PACE);
 const EX_30MIN = deTempo(30, PESO_PADRAO, PACE);
-const EX_60MIN = deTempo(60, PESO_PADRAO, PACE);
 const EX_500 = deKcal(500, PESO_PADRAO, PACE);
 const EX_SUBIDA = deDistancia(5, PESO_PADRAO, PACE, 5);
 const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, PACE);
@@ -96,15 +106,43 @@ const COMPARA = [
 const CUSTO_CORRIDA = kcalPorKgPorKm(10);
 const CUSTO_CAMINHADA = caminhadaPorKm(5, 0);
 const RAZAO = CUSTO_CORRIDA / CUSTO_CAMINHADA;
+/* As distâncias que o autocompletar pede, de 1 km à maratona. */
+const DISTANCIAS_BUSCA = [1, 2, 3, 4, 5, 6, 7, 10, 15, 21.1, 42.2];
+const nomeDistancia = (km: number) =>
+  km === 21.1 ? 'Meia maratona (21,1 km)' : km === 42.2 ? 'Maratona (42,2 km)' : formataKm(km);
+const TAB_DIST_BUSCA = DISTANCIAS_BUSCA.map((km) => deDistancia(km, PESO_PADRAO, PACE));
+
+/* E o tempo que o PAA pede — 10, 20, 30 minutos e 1 hora —, em três ritmos. */
+const PACES_TEMPO = [7, 6, 5];
+const TEMPOS = [10, 20, 30, 60];
+const rotuloTempo = (m: number) => (m === 60 ? '1 hora' : `${m} minutos`);
+const TAB_TEMPO = TEMPOS.map((m) => ({ m, porPace: PACES_TEMPO.map((p) => deTempo(m, PESO_PADRAO, p)) }));
+const EX_10MIN = deTempo(10, PESO_PADRAO, PACE);
+const EX_20MIN = deTempo(20, PESO_PADRAO, PACE);
+const HORA_POR_PACE = PACES_TEMPO.map((p) => deTempo(60, PESO_PADRAO, p));
+const DIAS_SEMANA = 7;
+const SEMANA_20 = EX_20MIN.kcal * DIAS_SEMANA;
+
+/* "Quantos km para 1.000 kcal", e a velocidade que fecha 1.000 kcal em uma hora
+   (a equação da ACSM ao contrário: MET → m/min → km/h). */
+const EX_1000 = deKcal(1000, PESO_PADRAO, PACE);
+const MET_1000_HORA = 1000 / 60 / ((3.5 * PESO_PADRAO) / 200);
+const V_1000_HORA = (((MET_1000_HORA * 3.5 - 3.5) / 0.2) * 60) / 1000;
+
+/* Andar 1 km, pelo motor da caminhada, a 5 km/h no plano. */
+const ANDAR_1KM = CUSTO_CAMINHADA * PESO_PADRAO;
+
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 48 caracteres. */
-const title = 'Quantas Calorias a Corrida Gasta? Calcule por Km';
-/* 144 caracteres. */
-const description =
-  'Calcule as calorias da sua corrida por distância, tempo ou pace, com o seu peso. Veja por que o custo por quilômetro quase não muda com o ritmo.';
+/* 57 caracteres. */
+const title = 'Quantas Calorias Gasta Correr? 1 Km, 5 Km, 10 Km e 1 Hora';
+const description = `Correr 1 km gasta mais ou menos o seu peso em calorias: 5 km, cerca de ${arredondaKcal(EX_5KM.kcal)} kcal para ${PESO_PADRAO} kg. Calcule por distância, tempo ou pace, de 1 km à maratona.`;
 
 const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta correr 1 km?',
+    resposta: `Cerca de ${arredondaKcal(EX_1KM.kcal)} kcal para ${PESO_PADRAO} kg (${faixaEmTexto(EX_1KM)}, conforme a economia de corrida de cada um) — mais ou menos o seu peso em calorias, que é a regra de bolso desta página. Andar o mesmo quilômetro em ritmo moderado gasta cerca de ${arredondaKcal(ANDAR_1KM)} kcal.`,
+  },
   {
     pergunta: 'Quantas calorias se gasta correndo 5 km?',
     resposta: `Para uma pessoa de ${PESO_PADRAO} kg em ritmo de ${formataPace(PACE)} por quilômetro, algo ${faixaEmTexto(EX_5KM)} — cerca de ${formataTempo(EX_5KM.minutos)} de corrida. O peso é o que mais muda esse número: alguém de 50 kg fica perto de ${TAB_PESO[0].kcal} kcal e alguém de 100 kg, perto de ${TAB_PESO[5].kcal} kcal na mesma distância.`,
@@ -118,33 +156,32 @@ const faqs = [
     resposta: `Por minuto, sim. Por quilômetro, quase não. Entre um pace de 7:00 e um de 4:30, o custo de cada quilômetro varia menos de 4% — você gasta mais por minuto correndo rápido, mas termina antes, e as duas coisas se cancelam. Correr mais rápido gasta mais no total só se você correr a mesma quantidade de TEMPO, não a mesma distância.`,
   },
   {
-    pergunta: '30 minutos de corrida queimam quantas calorias?',
-    resposta: `Para ${PESO_PADRAO} kg a ${formataPace(PACE)} por quilômetro, ${faixaEmTexto(EX_30MIN)} — o que dá cerca de ${formataKm(EX_30MIN.km)}. Uma hora nesse mesmo ritmo fica ${faixaEmTexto(EX_60MIN)}.`,
+    pergunta: 'Quantas kcal gasta em 1 hora de corrida?',
+    resposta: `Depende do ritmo, porque em uma hora quem corre mais rápido vai mais longe. Para ${PESO_PADRAO} kg: a ${formataPace(PACES_TEMPO[0])}/km (${formataKm(HORA_POR_PACE[0].km)}), cerca de ${arredondaKcal(HORA_POR_PACE[0].kcal)} kcal; a ${formataPace(PACES_TEMPO[1])} (${formataKm(HORA_POR_PACE[1].km)}), ${arredondaKcal(HORA_POR_PACE[1].kcal)}; a ${formataPace(PACES_TEMPO[2])} (${formataKm(HORA_POR_PACE[2].km)}), ${arredondaKcal(HORA_POR_PACE[2].kcal)}. Os "500 a 1.000 kcal por hora" que circulam vão de quem pesa menos e trota devagar a quem corre forte: 1.000 kcal em uma hora pedem, para ${PESO_PADRAO} kg, uns ${n(V_1000_HORA)} km/h (pace ${formataPace(60 / V_1000_HORA)}) sustentados a hora inteira.`,
   },
   {
-    pergunta: 'Quanto preciso correr para gastar 500 calorias?',
-    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKm(EX_500.km)} — em torno de ${formataTempo(EX_500.minutos)} a ${formataPace(PACE)} por quilômetro. Quanto maior o peso, menos distância é preciso, porque o custo por quilômetro é proporcional ao peso que você carrega.`,
+    pergunta: 'Quantas calorias gasta 10 minutos correndo?',
+    resposta: `Para ${PESO_PADRAO} kg a ${formataPace(PACE)} por quilômetro, cerca de ${arredondaKcal(EX_10MIN.kcal)} kcal, o que dá ${formataKm(EX_10MIN.km)}. Vinte minutos ficam perto de ${arredondaKcal(EX_20MIN.kcal)} kcal e 30 minutos, ${faixaEmTexto(EX_30MIN)} — cerca de ${formataKm(EX_30MIN.km)}.`,
+  },
+  {
+    pergunta: 'Quantos km correndo para queimar 1000 calorias?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKm(EX_1000.km)} — em torno de ${formataTempo(EX_1000.minutos)} a ${formataPace(PACE)} por quilômetro. Quanto maior o peso, menos distância é preciso, porque o custo por quilômetro é proporcional ao peso que você carrega. É uma distância de treino longo: para quem está começando, não é meta de um dia.`,
   },
   {
     pergunta: 'Corrida ou caminhada: qual gasta mais?',
     resposta: `No mesmo tempo, a corrida gasta bem mais. No mesmo quilômetro, também — correr custa cerca de ${n(RAZAO * 100 - 100, 0)}% a mais por quilômetro do que caminhar em ritmo moderado. O que a caminhada tem a favor é outra coisa: ela é muito mais fácil de repetir todo dia, e o que decide o emagrecimento é o acúmulo de semanas, não o pico de uma sessão.`,
   },
   {
-    pergunta: 'Correr emagrece?',
-    resposta:
-      'Ajuda, aumentando o gasto do dia, e costuma render bem por minuto investido. Mas não resolve sozinha: o resultado depende do balanço energético ao longo de semanas. E há um detalhe que pega muita gente — correr abre o apetite em algumas pessoas mais do que caminhar, e uma corrida de 400 kcal é anulada por um lanche desatento.',
+    pergunta: 'Correr 20 minutos por dia ajuda a emagrecer?',
+    resposta: `Ajuda, aumentando o gasto: ${formataTempo(EX_20MIN.minutos)} a ${formataPace(PACE)} por quilômetro gastam cerca de ${arredondaKcal(EX_20MIN.kcal)} kcal para ${PESO_PADRAO} kg, perto de ${arredondaKcal(SEMANA_20).toLocaleString('pt-BR')} kcal em sete dias. Mas não resolve sozinha: o resultado depende do balanço energético ao longo de semanas, e correr abre o apetite em algumas pessoas — uma corrida de ${arredondaKcal(EX_20MIN.kcal)} kcal é anulada por um lanche desatento. Para quem está começando, correr todo dia cedo demais é atalho para lesão; alternar com caminhada costuma render mais semanas seguidas.`,
   },
   {
     pergunta: 'Correr na subida gasta mais calorias?',
     resposta: `Gasta. A 10 km/h, cada 5% de inclinação somam cerca de ${n(metDaInclinacao(10, 5))} METs. Uma curiosidade da física: na corrida o custo de subir é a METADE do da caminhada por unidade de inclinação, porque a fase aérea aproveita energia elástica que o andar não tem. Correr ${formataKm(5)} a 5% de inclinação sobe de ${formataFaixa(EX_5KM)} para ${formataFaixa(EX_SUBIDA)}.`,
   },
   {
-    pergunta: 'Por que o resultado é uma faixa e não um número exato?',
-    resposta: NOTA_FAIXA,
-  },
-  {
     pergunta: 'Correr todo dia perde barriga?',
-    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} E correr todo dia traz outro risco: volume que cresce rápido demais é a causa mais comum de lesão em quem está começando. ${NOTA_SEGURANCA}`,
+    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} E correr todo dia traz outro risco. ${NOTA_SEGURANCA}`,
   },
 ];
 
@@ -195,7 +232,7 @@ const schema = [
   <header class="cr-hero">
     <div class="container cr-hero-inner">
       <p class="eyebrow">Calorias por atividade</p>
-      <h1>Quantas calorias a corrida gasta?</h1>
+      <h1>Quantas calorias gasta correr?</h1>
       <p class="cr-hero-lead">
         Correr 1 km custa aproximadamente <strong>o seu peso em calorias</strong>. Para
         {PESO_PADRAO} kg, 5 km ficam <strong>{faixaEmTexto(EX_5KM)}</strong> — e o ritmo muda
@@ -420,16 +457,50 @@ const schema = [
               <tr><th scope="col">Distância</th><th scope="col">Tempo</th><th scope="col">Gasto</th></tr>
             </thead>
             <tbody>
-              {TAB_DIST.map((l) => (
+              {TAB_DIST_BUSCA.map((r) => (
                 <tr>
-                  <th scope="row">{l.nome}</th>
-                  <td>{formataTempo(l.minutos)}</td>
-                  <td>≈ {l.kcal.toLocaleString('pt-BR')} kcal</td>
+                  <th scope="row">{nomeDistancia(r.km)}</th>
+                  <td>{formataTempo(r.minutos)}</td>
+                  <td>≈ {arredondaKcal(r.kcal).toLocaleString('pt-BR')} kcal</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        <h2>Calorias por tempo: 10, 20, 30 minutos e 1 hora</h2>
+        <p>
+          Por tempo, o ritmo volta a importar: em 30 minutos, quem corre mais rápido cobre mais
+          quilômetros — e cada quilômetro custa quase o mesmo. A tabela é para {PESO_PADRAO} kg, no
+          plano.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por tempo de corrida, para {PESO_PADRAO} kg, em três ritmos</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo</th>
+                {PACES_TEMPO.map((p) => <th scope="col">{formataPace(p)}/km</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{rotuloTempo(l.m)}</th>
+                  {l.porPace.map((r) => (
+                    <td>≈ {arredondaKcal(r.kcal).toLocaleString('pt-BR')} kcal <small>({formataKm(r.km)})</small></td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          É daí que vêm os &ldquo;500 a 1.000 kcal por hora&rdquo; das respostas prontas: a ponta de
+          baixo é de quem pesa menos e trota devagar; a de cima pede, para {PESO_PADRAO} kg, uns{' '}
+          {n(V_1000_HORA)} km/h sustentados a hora inteira — ritmo de corredor treinado, não de quem
+          está começando.
+        </p>
 
         <h2>Calorias correndo 5 km por peso corporal</h2>
         <p>
