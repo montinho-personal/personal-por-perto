@@ -18,7 +18,7 @@ export function cityFaqs(cidade: Cidade): FAQ[] {
     {
       pergunta: `Quanto custa um personal trainer ${emN}?`,
       resposta:
-        `${emNCap}, a aula avulsa presencial costuma ficar entre ${faixaBRL(
+        `${emNCap}, a aula avulsa presencial costuma custar de ${faixaBRL(
           cidade.precos.avulsaMin,
           cidade.precos.avulsaMax,
         )}, enquanto pacotes mensais com 2 a 3 sessões por semana variam de ${faixaBRL(

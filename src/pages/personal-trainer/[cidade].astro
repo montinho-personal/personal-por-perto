@@ -18,7 +18,7 @@ import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades
 import { bairrosDaCidade as listaDeBairros, rota } from '../../lib/geo';
 import { videoDaPagina } from '../../data/videosMontinho';
 import { cityFaqs } from '../../lib/cityFaqs';
-import { emCidade, deCidade } from '../../lib/gramatica';
+import { emCidade, emCidadeCap, deCidade } from '../../lib/gramatica';
 import { tituloCidade, descricaoCidade } from '../../lib/metaCidade';
 import { rotas, anchorCidade, anchorComoEscolher, anchorQuantoCusta } from '../../lib/links';
 import { fontesExternas } from '../../data/fontesExternas';
@@ -408,7 +408,7 @@ const objetivoDesc: Record<string, string> = {
       <section id="precos">
         <h2>Quanto custa um personal trainer {emN}?</h2>
         <p>
-          Em {n}, uma aula avulsa presencial costuma custar entre
+          {emCidadeCap(cidade)}, uma aula avulsa presencial costuma custar de
           <strong>{faixaBRL(cidade.precos.avulsaMin, cidade.precos.avulsaMax)}</strong>.
           Pacotes mensais saem mais em conta por sessão, e o
           <a href="/guias/personal-online-funciona/">acompanhamento online</a> é,
