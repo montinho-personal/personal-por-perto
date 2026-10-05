@@ -299,6 +299,23 @@ hora inteira para 70 kg). Título mantido. Linha de base: 130 impressões,
 0 clique, posição 10,0. As relacionadas que apontam para outras atividades
 (esteira, prancha, 100 agachamentos) ficaram anotadas, sem página própria.
 
+**Lutas** (`/calorias/lutas/`). As consultas do GSC que trazem a página são
+todas de muay thai ("1 hora de muay thai queima quantas calorias", "aula",
+"treino"), e os prints confirmam: autocompletar com 1 hora, aula de
+iniciante, 40 minutos, por semana e "ou musculação"; PAA com "ajuda a
+emagrecer?", "o que emagrece mais, academia ou muay thai?", "define o
+corpo?" e "3 vezes por semana ajuda?"; a IA diz "600 a 1.000 kcal por
+hora". Entraram: título "Quantas Calorias Gasta o Muay Thai? 1 Hora, Aula e
+Boxe" (antes "Quantas Calorias Gasta Boxe, Muay Thai e Jiu-Jitsu?"), H1 com
+o muay thai na frente, tabela por tempo (20 minutos a 1h30, linhas lenta e
+moderada: 1 hora vai de ~390 a ~757 kcal para 70 kg; os 1.000 só fecham a
+partir de ~92 kg, sem parar a hora toda) e cinco perguntas (1 hora, aula, 3
+vezes por semana, academia × muay thai com o motor da musculação, define o
+corpo — sem prazo prometido). "Treinar luta emagrece?" foi absorvida pela
+de 3 vezes por semana. Fora: antes e depois, glúteos, "feminino em quanto
+tempo", mente, crianças. Linha de base: 288 impressões, 2 cliques, posição
+7,0.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

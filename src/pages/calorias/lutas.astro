@@ -18,6 +18,22 @@
  * circulam atribuídos ao Compêndio de 2024 e que não conseguimos conferir. O
  * Compêndio põe judô, jiu-jitsu, caratê, kickboxing, taekwondo e muay thai
  * como exemplos da MESMA linha de ritmo moderado; é assim que eles entram.
+ *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * muay thai"): o autocompletar pede 1 hora, treino, aula de iniciante, 40
+ * minutos, por dia, por semana e "ou musculação"; as perguntas relacionadas,
+ * se ajuda a emagrecer, se emagrece mais que a academia, se define o corpo e
+ * se 3 vezes por semana bastam; a resposta da IA diz "600 a 1.000 calorias
+ * por hora". E o Search Console já dizia o mesmo: as buscas que trazem esta
+ * página são todas de muay thai (288 impressões, 2 cliques, posição 7,0 até
+ * 30/09). Por isso o muay thai passou para a frente do título e ganhou a
+ * tabela por tempo, com as duas linhas de artes marciais — a faixa honesta
+ * de uma hora vai de uma à outra.
+ *
+ * O QUE FICOU DE FORA: "antes e depois", "aumenta glúteos", "define o corpo
+ * feminino em quanto tempo", benefícios para a mente e para crianças. São
+ * promessas de resultado ou temas de outra página; uma calculadora não tem
+ * como responder com conta.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -29,6 +45,7 @@ import RelatedArticles from '../../components/RelatedArticles.astro';
 import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
 import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
+import { deSessao as musculacaoSessao } from '../../lib/calorias/musculacao';
 import {
   ATIVIDADES,
   DESCANSO_PADRAO,
@@ -67,7 +84,7 @@ import {
 } from '../../lib/calorias/lutas';
 
 const path = '/calorias/lutas';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -96,15 +113,55 @@ const SACO = reproduzSaco();
 const CIRCULA = 1000;
 const PESO_PARA_MIL = pesoParaKcalPorHora(CIRCULA, 'ringue');
 
+/* Muay thai por tempo: as duas linhas de artes marciais, sem intervalo. */
+const TEMPOS_ARTE = [20, 30, 40, 60, 90];
+const rotuloTempo = (m: number) => (m === 60 ? '1 hora' : m === 90 ? '1h30' : `${m} minutos`);
+const TAB_ARTE = TEMPOS_ARTE.map((m) => ({
+  m,
+  leve: deTempo(m, PESO_PADRAO, 'arteLeve'),
+  moderado: deTempo(m, PESO_PADRAO, 'arte'),
+}));
+const HORA_LEVE = deTempo(60, PESO_PADRAO, 'arteLeve');
+const HORA_ARTE = deTempo(60, PESO_PADRAO, 'arte');
+const MT_40 = deTempo(40, PESO_PADRAO, 'arte');
+const MT_40_LEVE = deTempo(40, PESO_PADRAO, 'arteLeve');
+const AULAS_SEMANA = 3;
+const SEMANA_LEVE = HORA_LEVE.kcal * AULAS_SEMANA;
+const SEMANA_ARTE = HORA_ARTE.kcal * AULAS_SEMANA;
+const KCAL_POR_KG = 7700;
+/* Os "600 a 1.000 kcal por hora" da resposta da IA: para quem o topo seria verdade. */
+const PESO_PARA_MIL_ARTE = pesoParaKcalPorHora(CIRCULA, 'arte');
+/* Uma hora de musculação, do mesmo Compêndio, pelo motor da outra calculadora. */
+const MUSC_HORA = musculacaoSessao(60, PESO_PADRAO, 'variado');
+const MUSC_HORA_VIG = musculacaoSessao(60, PESO_PADRAO, 'vigoroso');
+
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 51 caracteres. */
-const title = 'Quantas Calorias Gasta Boxe, Muay Thai e Jiu-Jitsu?';
-/* 152 caracteres. */
-const description =
-  'Calcule as calorias de boxe, muay thai e jiu-jitsu por round, com os números do Compêndio 2024 — e veja por que a hora de luta de 1.000 kcal não existe.';
+/* 55 caracteres. */
+const title = 'Quantas Calorias Gasta o Muay Thai? 1 Hora, Aula e Boxe';
+const description = `Uma hora de muay thai gasta de ${formataKcal(HORA_LEVE.kcal)} a ${formataKcal(HORA_ARTE.kcal)} kcal para ${PESO_PADRAO} kg. Calcule aula, boxe e jiu-jitsu por round — e veja se a luta emagrece mais que a academia.`;
 
 const faqs = [
+  {
+    pergunta: 'Quantas calorias gasta 1 hora de muay thai?',
+    resposta: `Para ${PESO_PADRAO} kg, de cerca de ${formataKcal(HORA_LEVE.kcal)} kcal, no ritmo lento ou de iniciante (${formataMet(atividade('arteLeve').met)} METs), a ${formataKcal(HORA_ARTE.kcal)} kcal, no ritmo moderado (${formataMet(atividade('arte').met)} METs) — e esse topo pede a hora inteira em movimento. Os "600 a 1.000 kcal por hora" que circulam ficam nessa ponta de cima: os 1.000 só fecham a partir de uns ${n(PESO_PARA_MIL_ARTE, 0)} kg, sem parar a hora toda.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta uma aula de muay thai?',
+    resposta: `Uma aula de uma hora não é uma hora de esforço: tem aquecimento, explicação do professor e troca de parceiro. Por isso a conta honesta é com o tempo em movimento. ${formataTempo(MT_40.minutosAtivos)} em ritmo moderado dão cerca de ${formataKcal(MT_40.kcal)} kcal para ${PESO_PADRAO} kg; numa aula de iniciante, com a técnica repetida devagar, os mesmos ${formataTempo(MT_40_LEVE.minutosAtivos)} na linha de ${formataMet(atividade('arteLeve').met)} METs dão cerca de ${formataKcal(MT_40_LEVE.kcal)} kcal.`,
+  },
+  {
+    pergunta: 'Fazer muay thai 3 vezes por semana ajuda a emagrecer?',
+    resposta: `Ajuda, porque aumenta o gasto: ${AULAS_SEMANA} aulas de uma hora somam de ${formataKcal(SEMANA_LEVE)} a ${formataKcal(SEMANA_ARTE)} kcal na semana para ${PESO_PADRAO} kg, conforme o ritmo. Mas nenhum treino emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas, e se a fome depois do treino compensar o gasto, o peso não sai. Pela regra dos ${n(KCAL_POR_KG, 0)} kcal por quilo, essa semana valeria de ${n(SEMANA_LEVE / KCAL_POR_KG, 2)} a ${n(SEMANA_ARTE / KCAL_POR_KG, 2)} kg de gordura — e a própria regra superestima a perda com o tempo.`,
+  },
+  {
+    pergunta: 'O que emagrece mais, academia ou muay thai?',
+    resposta: `Por hora, o muay thai gasta mais: ${formataKcal(HORA_LEVE.kcal)} a ${formataKcal(HORA_ARTE.kcal)} kcal para ${PESO_PADRAO} kg, contra ${formataKcal(MUSC_HORA.kcal)} a ${formataKcal(MUSC_HORA_VIG.kcal)} kcal de uma hora de musculação. Mas emagrecer é perder gordura sem perder músculo, e quem protege o músculo durante o déficit é o treino de força. A pergunta funciona melhor com "e" do que com "ou": os dois somam, e o que mais pesa continua sendo a alimentação.`,
+  },
+  {
+    pergunta: 'O muay thai define o corpo?',
+    resposta: `Definição é pouca gordura cobrindo músculo que já existe. O muay thai ajuda na primeira parte, pelo gasto; na segunda ajuda pouco, porque o que faz o músculo crescer é carga que sobe ao longo das semanas — e isso é musculação. Em quanto tempo aparece depende mais da gordura de partida e da alimentação do que da modalidade; desconfie de prazo prometido.`,
+  },
   {
     pergunta: 'Quantas calorias gasta 1 hora de boxe?',
     resposta: `Depende do que acontece nessa hora. Uma hora inteira de saco em ritmo livre dá cerca de ${formataKcal(EX_HORA_SACO.kcal)} kcal para ${PESO_PADRAO} kg. Numa aula de verdade, parte da hora é explicação, fila e intervalo — por isso a calculadora conta em rounds. ${formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)} no saco, com ${DESCANSO_PADRAO} minuto de intervalo, dão cerca de ${formataKcal(EX_TREINO.kcal)} kcal.`,
@@ -114,20 +171,12 @@ const faqs = [
     resposta: `Só numa hora inteira de luta no ringue, para quem pesa a partir de uns ${n(PESO_PARA_MIL, 0)} kg — e essa hora não existe. A luta amadora tem ${LUTA_AMADORA.rounds} rounds de ${LUTA_AMADORA.duracao} minutos (cerca de ${formataKcal(EX_AMADORA.kcal)} kcal para ${PESO_PADRAO} kg); a profissional mais longa, ${LUTA_PROFISSIONAL.rounds} rounds, ${formataTempo(EX_PRO.minutosAtivos)} de luta (cerca de ${formataKcal(EX_PRO.kcal)} kcal).`,
   },
   {
-    pergunta: 'Quantas calorias gasta uma aula de muay thai?',
-    resposta: `O Compêndio põe o muay thai na linha de artes marciais em ritmo moderado, ${formataMet(atividade('arte').met)} METs. ${formataTempo(EX_MEIA_ARTE.minutosAtivos)} de treino em movimento dão cerca de ${formataKcal(EX_MEIA_ARTE.kcal)} kcal para ${PESO_PADRAO} kg. A conta honesta é com o tempo em movimento: numa aula de uma hora, explicação do professor e troca de parceiro não são ${formataMet(atividade('arte').met)} METs.`,
-  },
-  {
     pergunta: 'Quantas calorias gasta o jiu-jitsu?',
     resposta: `Jiu-jitsu está na mesma linha do Compêndio que o muay thai e o judô: artes marciais em ritmo moderado, ${formataMet(atividade('arte').met)} METs. ${formataRounds(5, 6)} de rola, com 1 minuto entre eles, dão cerca de ${formataKcal(EX_ROLAS.kcal)} kcal para ${PESO_PADRAO} kg. Na parte técnica da aula, com a posição repetida devagar, cabe melhor a linha de ritmo lento, ${formataMet(atividade('arteLeve').met)} METs.`,
   },
   {
     pergunta: 'Quantas calorias gasta bater no saco de pancada?',
     resposta: `No ritmo livre, ${formataMet(atividade('saco').met)} METs: cerca de ${formataKcal(deTempo(DURACAO_PADRAO, PESO_PADRAO, 'saco').kcal)} kcal por round de 3 minutos para ${PESO_PADRAO} kg. Uma medição por calorimetria com 29 adultos jovens batendo no saco por 30 minutos deu ${n(SACO.metMedido, 2)} METs — a ${n(SACO.erro * 100, 0)}% da tabela. Se você contou os golpes e manteve o ritmo, a tabela sobe até ${formataMet(atividade('saco180').met)} METs a 180 golpes por minuto.`,
-  },
-  {
-    pergunta: 'Treinar luta emagrece?',
-    resposta: `Aumenta o gasto do dia, e treino de luta frequente conta. Mas a conta precisa ser feita com o tempo de esforço, não com a duração da aula — e nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
   },
   {
     pergunta: 'Quanto tempo de boxe para perder 1 kg de gordura?',
@@ -176,7 +225,7 @@ const schema = [
   <header class="cl-hero">
     <div class="container cl-hero-inner">
       <p class="eyebrow">Calorias por atividade</p>
-      <h1>Quantas calorias gasta boxe, muay thai ou jiu-jitsu?</h1>
+      <h1>Quantas calorias gasta muay thai, boxe ou jiu-jitsu?</h1>
       <p class="cl-hero-lead">
         Uma luta amadora de boxe, {LUTA_AMADORA.rounds} rounds de {LUTA_AMADORA.duracao} minutos,
         gasta cerca de <strong>{formataKcal(EX_AMADORA.kcal)} kcal</strong> para {PESO_PADRAO} kg. Os
@@ -469,6 +518,44 @@ ${formataRounds(ROUNDS_PADRAO, DURACAO_PADRAO)} no saco, ${DESCANSO_PADRAO} min 
           linha de {formataMet(atividade('arteLeve').met)} METs; rola, luta de treino e sequência no
           ritmo da luta, da de {formataMet(atividade('arte').met)}. Uma aula de uma hora costuma ter as duas
           — e o tempo parado, que não é nenhuma delas.
+        </p>
+
+        <h2>Muay thai por tempo: 30, 40 minutos e 1 hora</h2>
+        <p>
+          Para quem conta o treino de muay thai em minutos, e não em rounds, a tabela abaixo usa as
+          duas linhas de artes marciais com o tempo em movimento — sem aquecimento, explicação ou
+          troca de parceiro.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Muay thai, {PESO_PADRAO} kg, tempo em movimento, gasto bruto</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo</th>
+                <th scope="col">Lento ou iniciante ({formataMet(atividade('arteLeve').met)} METs)</th>
+                <th scope="col">Moderado ({formataMet(atividade('arte').met)} METs)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_ARTE.map((l) => (
+                <tr>
+                  <th scope="row">{rotuloTempo(l.m)}</th>
+                  <td>≈ {formataKcal(l.leve.kcal)} kcal</td>
+                  <td>≈ {formataKcal(l.moderado.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Uma aula de uma hora fica entre as duas colunas, e quase nunca na ponta de cima: só passa
+          perto dos {formataKcal(HORA_ARTE.kcal)} kcal quem fica a hora inteira em movimento. Os
+          &ldquo;600 a {n(CIRCULA, 0)} kcal por hora&rdquo; que aparecem nas respostas prontas moram
+          nessa ponta, e os {n(CIRCULA, 0)} só fecham a partir de uns {n(PESO_PARA_MIL_ARTE, 0)} kg.
+          Para comparar: uma hora de musculação gasta de {formataKcal(MUSC_HORA.kcal)} a{' '}
+          {formataKcal(MUSC_HORA_VIG.kcal)} kcal para o mesmo peso — a conta, e o que ela não mostra,
+          está em{' '}
+          <a href="/emagrecimento/quantas-calorias-queima-a-musculacao/">quantas calorias a musculação queima</a>.
         </p>
 
         <h2>Quanto custa, por peso</h2>
