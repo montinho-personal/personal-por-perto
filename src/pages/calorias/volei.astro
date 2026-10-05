@@ -13,6 +13,21 @@
  * Conferência contra medição em jogo. Não conseguimos conferir números de
  * gasto medido em partida de vôlei, e a página diz isso em vez de
  * pendurar a tabela num estudo que não lemos.
+ *
+ * DO GOOGLE, 05/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * jogar vôlei"): o autocompletar pede feminino, areia, quadra e praia; o
+ * PAA, 1 hora, "é possível emagrecer jogando vôlei?", "qual cansa mais,
+ * vôlei ou futebol?" e "os 10 esportes que mais queimam calorias"; a IA diz
+ * "200 a 600 kcal por hora na quadra e 600 a 900 na areia", e cita 147 kcal
+ * em 30 minutos para 70 kg (a nossa linha geral dá o mesmo). Entraram: a
+ * tabela por tempo, as perguntas de 30 minutos, feminino, vôlei × futebol
+ * (pelo motor do futebol) e emagrecer na forma da busca, e a conta de para
+ * quem os 900 kcal da areia seriam verdade.
+ *
+ * O QUE FICOU DE FORA: o ranking dos "10 esportes que mais queimam". As
+ * calculadoras de esporte usam linhas e faixas diferentes, e uma lista
+ * honesta pede comparação feita com cuidado — o lugar dela é o hub
+ * /calorias/, não uma pergunta desta página.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -41,6 +56,7 @@ import {
   formataKcal,
   formataMet,
   formataTempo,
+  kcalPorMinuto,
   metCaminhadaLeve,
   metVolei,
   modalidade,
@@ -48,9 +64,10 @@ import {
   simulacaoUmQuilo,
   tabelaPorPeso,
 } from '../../lib/calorias/volei';
+import { metFutebol } from '../../lib/calorias/futebol';
 
 const path = '/calorias/volei';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -64,18 +81,43 @@ const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'geral');
 const TAB_PESO = tabelaPorPeso();
 const VEZES = praiaSobreRecreativo();
 
+/* Por tempo: a busca pede 30 minutos e 1 hora; jogo de vôlei costuma ir a 2 horas. */
+const TEMPOS = [30, 60, 90, 120];
+const rotuloTempo = (m: number) => (m === 60 ? '1 hora' : m === 90 ? '1h30' : m === 120 ? '2 horas' : `${m} minutos`);
+const TAB_TEMPO = TEMPOS.map((m) => ({ m, porModalidade: MODALIDADES.map((mod) => deTempo(m, PESO_PADRAO, mod.id)) }));
+const MEIA_HORA = Object.fromEntries(MODALIDADES.map((m) => [m.id, deTempo(30, PESO_PADRAO, m.id)]));
+
+/* Os "600 a 900 kcal por hora na areia" da resposta da IA: o peso que cada ponta pede. */
+const pesoParaKcalHora = (kcalHora: number, id: string) => (kcalHora * 200) / (metVolei(id) * 3.5 * 60);
+const PESO_600_AREIA = pesoParaKcalHora(600, 'praia');
+const PESO_900_AREIA = pesoParaKcalHora(900, 'praia');
+
+/* Feminino: a conta não tem sexo, tem peso. */
+const PESO_JOGADORA = 60;
+const JOGADORA_GERAL = deTempo(60, PESO_JOGADORA, 'geral');
+const JOGADORA_PRAIA = deTempo(60, PESO_JOGADORA, 'praia');
+
+/* Vôlei × futebol, pelo motor do futebol: uma hora de jogo, sem contar o intervalo. */
+const FUT_PELADA = kcalPorMinuto(metFutebol('casual'), PESO_PADRAO) * 60;
+const FUT_COMPETITIVO = kcalPorMinuto(metFutebol('competitivo'), PESO_PADRAO) * 60;
+
+/* Emagrecer: três jogos de uma hora por semana. */
+const JOGOS_SEMANA = 3;
+
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 50 caracteres. */
-const title = 'Quantas Calorias Gasta Jogar Vôlei? Quadra e Praia';
-/* 155 caracteres. */
-const description =
-  'Calcule as calorias do vôlei de quadra e de praia. Na tabela, uma hora na areia gasta quase o triplo do vôlei de lazer no ginásio, que empata com caminhar.';
+/* 58 caracteres. */
+const title = 'Quantas Calorias Gasta Jogar Vôlei? Quadra, Areia e 1 Hora';
+const description = `Uma hora de vôlei gasta de ${formataKcal(EX.recreativo.kcal)} a ${formataKcal(EX.praia.kcal)} kcal para ${PESO_PADRAO} kg: lazer no ginásio, jogo valendo ou areia. Calcule pelo seu peso e veja se o vôlei emagrece.`;
 
 const faqs = [
   {
     pergunta: 'Quantas calorias gasta 1 hora de vôlei?',
-    resposta: `Depende muito de onde e de como. Para ${PESO_PADRAO} kg, cerca de ${formataKcal(EX.recreativo.kcal)} kcal numa hora de vôlei de ginásio sem competição, ${formataKcal(EX.geral.kcal)} pela linha geral, ${formataKcal(EX.competitivo.kcal)} em jogo competitivo e ${formataKcal(EX.praia.kcal)} no vôlei de praia.`,
+    resposta: `Depende muito de onde e de como. Para ${PESO_PADRAO} kg, cerca de ${formataKcal(EX.recreativo.kcal)} kcal numa hora de vôlei de ginásio sem competição, ${formataKcal(EX.geral.kcal)} pela linha geral, ${formataKcal(EX.competitivo.kcal)} em jogo competitivo e ${formataKcal(EX.praia.kcal)} no vôlei de praia. Os "600 a 900 kcal por hora na areia" que circulam pedem, pela tabela, quem pesa de uns ${n(PESO_600_AREIA, 0)} kg (os 600) a uns ${n(PESO_900_AREIA, 0)} kg (os 900), jogando a hora inteira.`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta 30 minutos de vôlei?',
+    resposta: `Para ${PESO_PADRAO} kg, cerca de ${formataKcal(MEIA_HORA.geral.kcal)} kcal pela linha geral do vôlei, ${formataKcal(MEIA_HORA.recreativo.kcal)} no jogo de lazer no ginásio, ${formataKcal(MEIA_HORA.competitivo.kcal)} em jogo competitivo e ${formataKcal(MEIA_HORA.praia.kcal)} na areia.`,
   },
   {
     pergunta: 'Vôlei de praia gasta mais que vôlei de quadra?',
@@ -86,8 +128,16 @@ const faqs = [
     resposta: `Na tabela, sim. Vôlei de ginásio sem competição e caminhada leve têm o mesmo valor, ${formataMet(metCaminhadaLeve())} METs: cerca de ${formataKcal(EX.recreativo.kcal)} kcal por hora para ${PESO_PADRAO} kg. O que faz o vôlei gastar mais é competir ou ir para a areia.`,
   },
   {
-    pergunta: 'Jogar vôlei emagrece?',
-    resposta: `Aumenta o gasto do dia, e uma partida semanal de verdade conta. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas.`,
+    pergunta: 'Vôlei feminino gasta menos calorias?',
+    resposta: `A conta não separa por sexo: o que muda o número é o peso e o tipo de jogo. Uma jogadora de ${PESO_JOGADORA} kg gasta cerca de ${formataKcal(JOGADORA_GERAL.kcal)} kcal numa hora de vôlei pela linha geral e ${formataKcal(JOGADORA_PRAIA.kcal)} na areia. Como as mulheres pesam em média menos, o número absoluto costuma sair menor — o esforço, para quem joga, não.`,
+  },
+  {
+    pergunta: 'Qual cansa mais, vôlei ou futebol?',
+    resposta: `Pela tabela, o futebol. Uma pelada tem ${formataMet(metFutebol('casual'))} METs — cerca de ${formataKcal(FUT_PELADA)} kcal por hora de bola rolando para ${PESO_PADRAO} kg —, contra ${formataMet(metVolei('geral'))} no vôlei pela linha geral (${formataKcal(EX.geral.kcal)}). Só o vôlei de praia, ${formataMet(metVolei('praia'))} METs, passa a pelada. O motivo é o ritmo: no vôlei o rali dura segundos e a bola para entre um ponto e outro; no futebol a corrida é quase contínua. Quanto cansa, para cada um, ainda depende do condicionamento.`,
+  },
+  {
+    pergunta: 'É possível emagrecer jogando vôlei?',
+    resposta: `É possível, porque o jogo aumenta o gasto: ${JOGOS_SEMANA} jogos de uma hora por semana somam cerca de ${formataKcal(EX.geral.kcal * JOGOS_SEMANA)} kcal pela linha geral e ${formataKcal(EX.praia.kcal * JOGOS_SEMANA)} na areia, para ${PESO_PADRAO} kg. Mas nenhum exercício emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas, e a cerveja depois do jogo entra na mesma conta.`,
   },
   {
     pergunta: 'Quanto tempo de vôlei para perder 1 kg de gordura?',
@@ -289,6 +339,38 @@ const schema = [
           </table>
         </div>
         <p>{NOTA_AREIA}</p>
+
+        <h2>Por tempo: 30 minutos, 1 hora e 2 horas</h2>
+        <p>
+          A mesma conta, para quem quer saber de um jogo mais curto ou de uma tarde inteira de
+          quadra. Os valores são para {PESO_PADRAO} kg, com o tempo de jogo — sem contar a espera
+          para entrar na próxima.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Gasto estimado por tempo de jogo, {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tempo</th>
+                {MODALIDADES.map((m) => <th scope="col">{m.nomeCurto}</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_TEMPO.map((l) => (
+                <tr>
+                  <th scope="row">{rotuloTempo(l.m)}</th>
+                  {l.porModalidade.map((r) => <td>≈ {formataKcal(r.kcal)} kcal</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Para comparar com outro esporte de bola: uma hora de pelada gasta cerca de{' '}
+          {formataKcal(FUT_PELADA)} kcal para o mesmo peso, e o jogo competitivo, {formataKcal(FUT_COMPETITIVO)}{' '}
+          — a conta, com o intervalo e o tempo de espera de fora, está na{' '}
+          <a href="/calorias/futebol/">calculadora do futebol</a>.
+        </p>
 
         <h2>O vôlei que empata com caminhar</h2>
         <p>

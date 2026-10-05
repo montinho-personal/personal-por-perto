@@ -335,6 +335,22 @@ musculação arredondava a mesma velocidade dos 1.000 kcal/h para 13,5 —
 agora as duas dizem 13,2. Linha de base: 258 impressões, 0 clique, posição
 6,9.
 
+**Vôlei** (`/calorias/volei/`). Autocompletar: feminino, areia, quadra,
+praia. PAA: 1 hora, "é possível emagrecer jogando vôlei?", "qual cansa
+mais, vôlei ou futebol?", "os 10 esportes que mais queimam calorias". A IA
+diz "200 a 600 kcal/h na quadra, 600 a 900 na areia" e cita 147 kcal em 30
+minutos para 70 kg — o mesmo número da nossa linha geral. Entraram: título
+"Quantas Calorias Gasta Jogar Vôlei? Quadra, Areia e 1 Hora" (antes "…
+Quadra e Praia"), tabela por tempo (30 minutos a 2 horas, quatro linhas),
+a conta de para quem os 600–900 da areia seriam verdade (de ~71 a ~107
+kg), e as perguntas 30 minutos, feminino (a conta não tem sexo, tem peso),
+vôlei × futebol (pelo motor do futebol: pelada 7,0 METs contra 4,0) e
+"é possível emagrecer jogando vôlei?" no lugar de "jogar vôlei emagrece?".
+Fora: o ranking dos "10 esportes que mais queimam" — as calculadoras usam
+linhas e faixas diferentes, e a comparação honesta pertence ao hub
+`/calorias/`; fica como candidata. Linha de base: 170 impressões, 1
+clique, posição 5,7.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:
