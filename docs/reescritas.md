@@ -280,6 +280,15 @@ minutos com 30% de borda: ~227 kcal peito devagar, ~343 crawl médio), "nadar
 1 km é muito?" e "a natação ajuda a perder barriga?" (sem queima
 localizada). Linha de base: 512 impressões, 1 clique, posição 7,2.
 
+**Pular corda** (`/calorias/corda/`). A busca conta em **pulos** (100, 200,
+500, 600, 1.000) e em minutos (3, 5, 10, 15, 20, 30, 1 hora, "por
+minuto"). Entraram: título "Quantas Calorias Gasta Pular Corda? Por Minuto
+e Pulos" (antes "Quantas Calorias Pular Corda Gasta? Calcule Aqui"), tabela
+por número de pulos e as perguntas "por minuto" (~14 kcal para 70 kg; os
+"17 por minuto" que circulam valem para uma pessoa bem mais pesada),
+"30 minutos" (contínuo × sessão real com séries), "1000 pulos" e "perde
+barriga?". Linha de base: 381 impressões, 1 clique, posição 7,0.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

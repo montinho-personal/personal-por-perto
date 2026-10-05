@@ -81,7 +81,7 @@ import {
 import { metCorrida } from '../../lib/calorias/corrida';
 
 const path = '/calorias/corda';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -121,11 +121,24 @@ const INFLACAO_RELOGIO = EX_RELOGIO.kcal / EX_SERIES.kcal;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 48 caracteres. */
-const title = 'Quantas Calorias Pular Corda Gasta? Calcule Aqui';
-/* 148 caracteres. */
+/*
+ * Prints de 05/10/2026: o autocompletar de "quantas calorias gasta pular
+ * corda" pede 10, 15, 20 e 30 minutos, 1 hora, 100 vezes e 500 e 1000
+ * pulos; o PAA, 100 pulos, 1000 pulos, 10 e 30 minutos; as relacionadas,
+ * "por minuto", 100, 200, 500, 600 e 1000 pulos, 3 e 5 minutos e "perde
+ * barriga". A tabela por pulos e as perguntas abaixo saem do mesmo motor.
+ */
+const PULOS_TABELA = [100, 200, 500, 600, 1000];
+const TAB_PULOS = PULOS_TABELA.map((p) => ({ pulos: p, r: dePulos(p, PESO_PADRAO, 'moderado') }));
+const EX_1000 = TAB_PULOS[TAB_PULOS.length - 1].r;
+const EX_30 = deTempo(30, PESO_PADRAO, 'moderado');
+/* Uma sessão de 30 minutos real: 15 séries de 1 minuto, descanso igual entre elas. */
+const EX_30_SERIES = deSeries(15, 60, PESO_PADRAO, 'moderado');
+
+/* Até 05/10 era "Quantas Calorias Pular Corda Gasta? Calcule Aqui". */
+const title = 'Quantas Calorias Gasta Pular Corda? Por Minuto e Pulos';
 const description =
-  'Calcule as calorias de pular corda por tempo, pulos ou séries. E a conta que desmonta a lenda dos 10 minutos de corda valerem 30 minutos de corrida.';
+  'Calorias de pular corda por minuto, por pulos (100, 500, 1.000) ou séries — e a conta que desmonta a lenda dos 10 minutos valerem 30 de corrida.';
 
 const faqs = [
   {
@@ -135,6 +148,23 @@ const faqs = [
   {
     pergunta: '10 minutos de pular corda gastam quantas calorias?',
     resposta: `Cerca de ${formataKcal(EX_10.kcal)} kcal para ${PESO_PADRAO} kg em ritmo moderado — uns ${formataPulos(EX_10.pulos)}. O detalhe que muda tudo: são 10 minutos de corda GIRANDO, sem contar o descanso entre séries. Quem soma o treino inteiro chega a um número bem maior que o real.`,
+  },
+  {
+    pergunta: 'Pular corda queima quantas calorias por minuto?',
+    resposta: `Cerca de ${formataKcal(EX_1.kcal)} kcal por minuto para ${PESO_PADRAO} kg em ritmo moderado (${MOD.cadencia} pulos por minuto). O peso é o que mais mexe: 50 kg ficam perto de ${formataKcal(TAB_PESO[0].kcal10min / 10)} e 100 kg perto de ${formataKcal(TAB_PESO[5].kcal10min / 10)} kcal por minuto. Os "17 calorias por minuto" que circulam valem para uma pessoa bem mais pesada, em ritmo forte.`,
+  },
+  {
+    pergunta: 'Quantas calorias queima 30 minutos de pular corda?',
+    resposta: `Girando a corda os 30 minutos sem parar, cerca de ${formataKcal(EX_30.kcal)} kcal para ${PESO_PADRAO} kg — mas quase ninguém faz isso: meia hora seguida de corda é raro até para quem treina. Uma sessão real de 30 minutos tem séries e descanso; com 15 séries de 1 minuto, a corda em si soma cerca de ${formataKcal(EX_30_SERIES.kcal)} kcal. É esse o número honesto para comparar.`,
+  },
+  {
+    pergunta: 'Quantas calorias se perde com 1000 pulos de corda?',
+    resposta: `Cerca de ${formataKcal(EX_1000.kcal)} kcal para ${PESO_PADRAO} kg, em uns ${formataTempo(EX_1000.minutos)} de corda girando. Para outros números: 100 pulos dão cerca de ${formataKcal(TAB_PULOS[0].r.kcal)} kcal e 500 pulos, ${formataKcal(TAB_PULOS[2].r.kcal)} kcal. Contar pulos é o jeito mais preciso de medir corda, porque não inclui o descanso.`,
+  },
+  {
+    pergunta: 'Pular corda perde barriga?',
+    resposta:
+      'Não diretamente. Não existe queima localizada: pular corda não tira gordura da barriga antes do resto do corpo. O que a corda faz é somar gasto num tempo curto, e a gordura abdominal sai com o déficit calórico mantido por semanas. Pela carga nos tornozelos, joelhos e panturrilhas, quem tem dor ou está acima do peso faz bem em começar com séries curtas — e, havendo dor ou lesão, conversar antes com médico ou fisioterapeuta.',
   },
   {
     pergunta: 'Pular corda mais rápido gasta mais calorias?',
@@ -506,6 +536,25 @@ correr a ${n(V_EQUIV)} km/h   ${n(metCorrida(V_EQUIV), 1)} METs   ← praticamen
                   <th scope="row">{formataTempo(l.minutos)}</th>
                   <td>{l.pulos.toLocaleString('pt-BR')}</td>
                   <td>≈ {formataKcal(l.kcal)} kcal</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Por número de pulos, em ritmo moderado ({MOD.cadencia} pulos/min), para {PESO_PADRAO} kg</caption>
+            <thead>
+              <tr>
+                <th scope="col">Pulos</th><th scope="col">Tempo girando</th><th scope="col">Gasto</th>
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PULOS.map((l) => (
+                <tr>
+                  <th scope="row">{l.pulos.toLocaleString('pt-BR')}</th>
+                  <td>{formataTempo(l.r.minutos)}</td>
+                  <td>≈ {formataKcal(l.r.kcal)} kcal</td>
                 </tr>
               ))}
             </tbody>
