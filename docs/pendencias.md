@@ -110,6 +110,7 @@ até 29/09/2026):
    primeiro orgânico em "personal trainer taguatinga df" — teste de CTR puro).
    **Blumenau** (287 impressões, 5 cliques), em 05/10.
    **Santo André** (252 impressões, 5 cliques), em 05/10.
+   **Campinas** (243 impressões, 4 cliques), em 05/10.
    Fora das cidades, em 05/10: **guia de personal em academia** (100
    impressões, 0 clique, posição 7,6 — título novo, "Academia com personal
    incluso?") e **guia de preço** (ajuste pequeno; ver docs/reescritas.md).

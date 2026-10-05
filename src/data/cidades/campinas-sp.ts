@@ -88,6 +88,18 @@ export const cidade: Cidade = {
   conclusao:
     'Polo de tecnologia com renda alta e cultura de metas, Campinas é um dos melhores mercados do país para treinar com acompanhamento. Da volta da Lagoa do Taquaral aos estúdios do Cambuí e aos condomínios de alto padrão, estrutura não falta — um personal trainer transforma esse cenário em progressão medida, semana a semana, no estilo que o campineiro valoriza.',
 
+  /*
+   * Prints de 05/10: autocompletar com "sp", "preço", "mulher",
+   * "instagram", "bem avaliados" e nomes próprios; relacionadas com
+   * "mulher", "preço", "instagram", "panobianco", "paulínia",
+   * "hortolândia", "valinhos", "sumaré", "perto de mim", "valor personal
+   * trainer mensal" e "quanto custa a hora"; PAA com "valor em Campinas",
+   * "1 mês", "3 vezes por semana" e "é vantajoso pagar". Registro completo
+   * em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Campinas?',
@@ -106,7 +118,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['sao-paulo-sp', 'barueri-sp'],
+  // Eram São Paulo e Barueri — nenhuma da região. Em 05/10/2026 entraram
+  // Valinhos, Sumaré, Paulínia e Hortolândia, que fazem divisa com Campinas
+  // e aparecem nas relacionadas da busca.
+  vizinhas: ['valinhos-sp', 'sumare-sp', 'paulinia-sp', 'hortolandia-sp', 'sao-paulo-sp', 'barueri-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Campinas', url: 'https://cidades.ibge.gov.br/brasil/sp/campinas/panorama' },
@@ -122,5 +137,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Campinas: acompanhamento profissional perto de você, na cidade e na região metropolitana.',
   },
-  atualizadoEm: '2026-07-22',
+  atualizadoEm: '2026-10-05',
 };

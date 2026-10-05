@@ -706,3 +706,17 @@ fazem divisa; São Paulo segue entre as quatro.
 **Não aplicado:** "mulher", "smart fit" (política da rede não
 verificada), "perto de mim"/"academia perto de mim" (sem como responder
 pela página).
+
+## Campinas — prints e aplicação em 05/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer campinas | "sp", **"preço"**, "mulher", **"instagram"**, "bem avaliados", nomes próprios; relacionadas: "mulher", "preço", "instagram", "panobianco", **"paulínia"**, **"hortolândia"**, **"valinhos"**, **"sumaré"**, "perto de mim", **"valor personal trainer mensal"**, "quanto custa a hora" | valor em Campinas · **1 mês** · **3 vezes por semana** · é vantajoso pagar | StarOfService; sites e Instagram de personais locais |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "como avaliar pelo Instagram". **Vizinhas:** eram São
+Paulo e Barueri — nenhuma da região; entraram Valinhos, Sumaré, Paulínia e
+Hortolândia, que fazem divisa e aparecem, as quatro, nas relacionadas.
+
+**Não aplicado:** "mulher", "bem avaliados", nomes, "panobianco" (rede),
+"perto de mim".
