@@ -72,6 +72,7 @@ import {
   tipo,
 } from '../../lib/calorias/musculacao';
 import { deTempo as caminhadaTempo, ritmo as ritmoCaminhada } from '../../lib/calorias/caminhada';
+import { metCorrida } from '../../lib/calorias/corrida';
 
 /* ── Números resolvidos no servidor, pelo mesmo motor da calculadora ── */
 const H_VARIADO = deSessao(60, PESO_PADRAO, 'variado');
@@ -96,6 +97,20 @@ const M30 = POR_TEMPO.find((l) => l.m === 30)!;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
+/*
+ * PAA de 05/10/2026: "como queimar 1000 calorias em 1 hora?" e "é possível
+ * emagrecer com 1 hora de musculação por dia?". A primeira se responde com
+ * a conta inversa: o MET que 1.000 kcal/h exige para o peso padrão, e a
+ * velocidade de corrida que entrega esse MET pelo motor da corrida.
+ */
+const MET_1000 = 1000 / 60 / ((3.5 * PESO_PADRAO) / 200);
+function velocidadeParaMet(met: number): number {
+  for (let v = 5; v < 25; v += 0.05) if (metCorrida(v) >= met) return Math.round(v * 2) / 2;
+  return 0;
+}
+const V_1000 = velocidadeParaMet(MET_1000);
+const VEZES_1000 = 1000 / H_VARIADO.kcal;
+
 const relacionados = [
   {
     url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
@@ -118,7 +133,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/quantas-calorias-queima-a-musculacao';
-const atualizadoEm = '2026-09-30';
+const atualizadoEm = '2026-10-05';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -137,6 +152,14 @@ const faqs = [
   {
     pergunta: 'Musculação leve ou moderada queima quantas calorias?',
     resposta: `O Compêndio de Atividades Físicas não separa a musculação em "leve" e "moderada": separa pelo tipo de treino. A linha mais baixa é o treino variado de academia, cerca de ${formataKcal(H_VARIADO.kcal)} kcal por hora para ${PESO_PADRAO} kg; a mais alta, o treino vigoroso de fisiculturismo ou powerlifting, cerca de ${formataKcal(H_VIGOROSO.kcal)}. Um treino intenso fica mais perto da segunda.`,
+  },
+  {
+    pergunta: 'É possível emagrecer com 1 hora de musculação por dia?',
+    resposta: `É, mas não por causa dessa hora. Uma hora de treino variado gasta cerca de ${formataKcal(H_VARIADO.kcal)} kcal para ${PESO_PADRAO} kg — ajuda, e quem decide o emagrecimento é o déficit calórico mantido por semanas, que se resolve sobretudo na alimentação. O papel da musculação é outro e insubstituível: fazer o peso que sai ser gordura, e não músculo. Treinar todo dia funciona quando a divisão alterna os grupos musculares, para cada um ter tempo de recuperar.`,
+  },
+  {
+    pergunta: 'Como queimar 1000 calorias em 1 hora?',
+    resposta: `Com musculação, não dá: são ${n(VEZES_1000, 1)} vezes o gasto de uma hora de treino variado para ${PESO_PADRAO} kg. Mil calorias numa hora pedem cerca de ${n(MET_1000, 1)} METs sustentados — o equivalente a correr a uns ${n(V_1000, 1)} km/h a hora inteira, ritmo de corredor treinado. Para a maioria das pessoas, a meta não é realista nem necessária: o déficit que emagrece se constrói no somatório da semana, não numa sessão heroica.`,
   },
   {
     pergunta: 'Musculação queima mais calorias que cardio?',

@@ -289,6 +289,16 @@ por número de pulos e as perguntas "por minuto" (~14 kcal para 70 kg; os
 "30 minutos" (contínuo × sessão real com séries), "1000 pulos" e "perde
 barriga?". Linha de base: 381 impressões, 1 clique, posição 7,0.
 
+**Musculação** (`/emagrecimento/quantas-calorias-queima-a-musculacao/`). Já
+tinha passado pelos prints em 30/09 (1 hora, 30 minutos, leve, cardio,
+tabela de 20 minutos a 2 horas) — e a página aparece como sugestão de site
+no próprio autocompletar. Dos prints de 05/10, só dois PAA eram novos:
+"é possível emagrecer com 1 hora de musculação por dia?" e "como queimar
+1000 calorias em 1 hora?" (conta inversa: 13,6 METs, correr a ~13,5 km/h a
+hora inteira para 70 kg). Título mantido. Linha de base: 130 impressões,
+0 clique, posição 10,0. As relacionadas que apontam para outras atividades
+(esteira, prancha, 100 agachamentos) ficaram anotadas, sem página própria.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:
