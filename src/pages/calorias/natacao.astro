@@ -54,6 +54,7 @@ import {
   PESO_PADRAO,
   arredondaKcal,
   banda,
+  cenario,
   dePiscina,
   deDistancia,
   deKcal,
@@ -74,7 +75,7 @@ import {
 import { kcalPorKgPorKm as corridaPorKm, metCorrida } from '../../lib/calorias/corrida';
 
 const path = '/calorias/natacao';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-10-05';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -127,16 +128,46 @@ const CUSTO_NADO_KM = (EX_1000.kcal / EX_1000.metros) * 1000;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 47 caracteres. */
-const title = 'Quantas Calorias a Natação Gasta? Calcule o Seu';
-/* 150 caracteres. */
+/*
+ * Prints de 05/10/2026: o autocompletar de "quantas calorias gasta natação"
+ * traz 1h, 30, 40, 45 e 50 minutos, "aula de natação", "um treino" e "1 km";
+ * o PAA, "30 minutos de natação", "1 hora", "a natação ajuda a perder
+ * barriga?" e "nadar 1 km é muito?"; as relacionadas, 500 m, 1 km, 2 km e
+ * "aula de natação iniciante".
+ */
+const EX_30_PEITO = deTempo(30, PESO_PADRAO, 'peito', 'lazer');
+const EX_30_COSTAS = deTempo(30, PESO_PADRAO, 'costas', 'lazer');
+const EX_30_PISCINA = dePiscina(30, PESO_PADRAO, EST, BANDA, cenario('aula').descanso);
+const AULA_MIN = 50;
+const EX_AULA_INICIANTE = dePiscina(AULA_MIN, PESO_PADRAO, 'peito', 'lazer', cenario('aula').descanso);
+const EX_AULA_CRAWL = dePiscina(AULA_MIN, PESO_PADRAO, EST, BANDA, cenario('aula').descanso);
+
+/* Até 05/10 era "Quantas Calorias a Natação Gasta? Calcule o Seu". */
+const title = 'Quantas Calorias Gasta a Natação? 30 Min, 1 Hora e 1 Km';
 const description =
-  'Calcule as calorias do seu nado por estilo, distância ou tempo de piscina. Veja por que o estilo pesa mais que o ritmo — e o erro do relógio da borda.';
+  'Calorias da natação por estilo, tempo ou distância: 30 minutos, 1 hora de piscina, uma aula, 1 km — e por que crawl, peito e borboleta gastam tão diferente.';
 
 const faqs = [
   {
     pergunta: '1 hora de natação gasta quantas calorias?',
     resposta: `Depende muito mais do estilo do que do tempo. Para ${PESO_PADRAO} kg: cerca de ${arredondaKcal(EX_COSTAS.kcal)} kcal de costas recreativo, ${arredondaKcal(EX_PEITO.kcal)} kcal de peito recreativo, ${arredondaKcal(EX_60.kcal)} kcal de crawl em ritmo médio e cerca de ${arredondaKcal(EX_BORBO.kcal).toLocaleString('pt-BR')} kcal de borboleta. E atenção: esses números valem para uma hora de NADO, não de piscina.`,
+  },
+  {
+    pergunta: 'Quantas calorias em 30 minutos de natação?',
+    resposta: `Para ${PESO_PADRAO} kg nadando os 30 minutos inteiros: cerca de ${arredondaKcal(EX_30_COSTAS.kcal)} kcal de costas recreativo, ${arredondaKcal(EX_30_PEITO.kcal)} kcal de peito recreativo e ${arredondaKcal(EX_30.kcal)} kcal de crawl em ritmo médio. Se os 30 minutos são de piscina, com descanso na borda entre as séries, o crawl cai para cerca de ${arredondaKcal(EX_30_PISCINA.kcal)} kcal — a calculadora acima desconta a borda no modo "Tempo de piscina".`,
+  },
+  {
+    pergunta: 'Quantas calorias gasta uma aula de natação?',
+    resposta: `Numa aula de ${AULA_MIN} minutos, com cerca de ${cenario('aula').descanso}% do tempo na borda ouvindo a orientação e descansando entre as séries, uma pessoa de ${PESO_PADRAO} kg gasta perto de ${arredondaKcal(EX_AULA_INICIANTE.kcal)} kcal nadando peito devagar, como costuma ser a aula de iniciante, e perto de ${arredondaKcal(EX_AULA_CRAWL.kcal)} kcal em crawl em ritmo médio. O tempo de borda é o que mais muda a conta — e é o que quase todo número da internet ignora.`,
+  },
+  {
+    pergunta: 'Nadar 1 km é muito?',
+    resposta: `Depende de onde você está. Em crawl em ritmo médio, 1 km leva cerca de ${formataTempo(EX_1000.minutosNado)} de nado e gasta perto de ${arredondaKcal(EX_1000.kcal)} kcal para ${PESO_PADRAO} kg. Para quem está começando, é muito: aprender a nadar 25 ou 50 metros sem parar já é a primeira meta, e a distância cresce aos poucos. Para quem nada com regularidade, 1 km é uma sessão curta a moderada. O que vale é aumentar o volume semana a semana, sem pular etapas.`,
+  },
+  {
+    pergunta: 'A natação ajuda a perder barriga?',
+    resposta:
+      'Ajuda do jeito que qualquer exercício ajuda: somando gasto ao dia. Não existe queima localizada — nadar não tira gordura da barriga antes do resto do corpo, e nenhum estilo "trabalha" a barriga para esse fim. A gordura abdominal sai com o déficit calórico mantido por semanas, e a natação entra como uma das partes do gasto, com a vantagem de ser de baixo impacto para as articulações. Quem tem dor ou condição de saúde deve conversar antes com médico ou fisioterapeuta.',
   },
   {
     pergunta: 'Por que os números da internet sobre natação são tão diferentes entre si?',

@@ -271,6 +271,15 @@ minutos, andares em 30 minutos, caminhar × escada, "nível 5" do
 simulador — sem padrão entre marcas, a conta é por degraus por minuto).
 Linha de base: 963 impressões, 2 cliques, posição 6,7.
 
+**Natação** (`/calorias/natacao/`). A página já tinha tempo, distância,
+tempo de piscina (com borda descontada) e tabelas; faltavam as perguntas no
+fraseado da busca. Entraram: título "Quantas Calorias Gasta a Natação? 30
+Min, 1 Hora e 1 Km" (antes "Quantas Calorias a Natação Gasta? Calcule o
+Seu") e as perguntas "30 minutos de natação", "aula de natação" (50
+minutos com 30% de borda: ~227 kcal peito devagar, ~343 crawl médio), "nadar
+1 km é muito?" e "a natação ajuda a perder barriga?" (sem queima
+localizada). Linha de base: 512 impressões, 1 clique, posição 7,2.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:
