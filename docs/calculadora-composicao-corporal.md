@@ -244,6 +244,50 @@ de métodos e as decisões de produto.
 - **Um protocolo de cintura por vez**, dito na instrução — a própria
   visão geral de IA mistura dois.
 
+### 3.7 "percentual de gordura ideal" (07/10)
+
+- **Autocompletar:** para mulher · masculino · homem e mulher · **por
+  idade** · feminino por idade · **para mulher de 40 anos** · **mulher 47
+  anos** · **homem 40 anos**.
+- **Outras pessoas pesquisaram:** ideal masculino por idade · tabela
+  masculino · calcular · corporal · tabela de gordura corporal · **20 de
+  gordura corporal mulher** · ideal feminino · tabela feminino · ideal
+  masculino · masculino · ideal feminino por idade · **como diminuir** o
+  percentual de gordura.
+- **As pessoas também perguntam:** Qual o percentual de gordura boa? ·
+  Qual o percentual de gordura ideal por idade? · **28 de gordura corporal
+  é muito?** · **É possível ter 50% de gordura corporal?**
+- **Visão geral de IA** (cita Tua Saúde e Ocean Drop): a tabela da ACE —
+  essencial 2–5%, atletas 6–13%, praticantes 14–17%, aceitável 18–24%,
+  "obesidade" acima de 25% (homens); "saudável 18–24% homens, 25–31%
+  mulheres".
+- **Snippets:** "mulheres com mais de 40 anos, ideal entre 21% e 33%"
+  (padrão de tabela por idade, compatível com Gallagher et al. 2000);
+  saudeemmovimento.com.br, "faixa de percentual de gordura ideal de acordo
+  com sexo e idade".
+
+**O que muda:**
+
+- **Idade é central.** Cinco das variações pedem idade ("por idade", "40
+  anos", "47 anos"). A referência mostrada tem de ser por sexo **e** faixa
+  etária. A ferramenta passa a pedir a **idade em anos** nos modos de
+  gordura (a mesma idade serve às dobras e à referência), em vez de só
+  "faixa etária". Fica no aparelho, como tudo.
+- **Referência científica no lugar da tabela da ACE**: a tabela que a IA do
+  Google mostra é de uma entidade de certificação, sem estudo por trás das
+  faixas, e chama 25% de "obesidade" para qualquer idade. Candidata:
+  Gallagher et al. 2000 (sexo × idade 20–39 / 40–59 / 60–79, derivada de
+  IMC e medida por DEXA). A página explica de onde vem cada tabela — é o
+  diferencial de confiança.
+- **"28% é muito?", "20% mulher", "50% é possível?"** viram respostas que
+  dependem de sexo e idade, com a tabela — e com a faixa de erro do
+  método lembrando que 28% pode ser 25% ou 31%.
+- **"Como diminuir"** recebe link para os artigos de emagrecimento do
+  portal, sem dieta na ferramenta.
+- **Nada de "ideal" como rótulo do resultado**: a busca usa a palavra; a
+  página responde a pergunta e explica por que fala em faixa de
+  referência.
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
