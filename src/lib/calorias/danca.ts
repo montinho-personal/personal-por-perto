@@ -404,7 +404,16 @@ export function fraseContexto(pesoKg: number, r: Resultado): string {
 /* ───────────────────────── Tabelas ───────────────────────── */
 
 export const PESOS_TABELA = [50, 60, 70, 80, 90, 100, 120] as const;
-export const MINUTOS_TABELA = [15, 30, 45, 60, 90] as const;
+/* 2 horas entrou pelos prints de 06/10/2026: "30 minutos", "1 hora" e "2 horas de dança queima quantas calorias" são as três primeiras do autocompletar. */
+export const MINUTOS_TABELA = [15, 30, 45, 60, 90, 120] as const;
+
+/**
+ * Os três estilos da tabela por tempo: o mais leve medido (salão rápido), a
+ * aula coreografada genérica e o mais intenso (Zumba). A busca pergunta
+ * "1 hora de dança" sem dizer qual, e a resposta muda quase o dobro entre
+ * as pontas — então a tabela dá a faixa em vez de escolher um estilo.
+ */
+export const ESTILOS_TABELA_TEMPO = ['salao', 'aerobica', 'zumba'] as const;
 
 export interface LinhaEstilo {
   estilo: Estilo;
@@ -439,6 +448,18 @@ export interface LinhaTempo {
 
 export const tabelaPorTempo = (pesoKg: number, idEstilo = 'aerobica'): LinhaTempo[] =>
   MINUTOS_TABELA.map((minutos) => ({ minutos, kcal: deTempo(minutos, pesoKg, idEstilo).kcal }));
+
+export interface LinhaTempoEstilos {
+  minutos: number;
+  /** Uma entrada por estilo de ESTILOS_TABELA_TEMPO, na mesma ordem. */
+  kcal: number[];
+}
+
+export const tabelaTempoPorEstilo = (pesoKg: number): LinhaTempoEstilos[] =>
+  MINUTOS_TABELA.map((minutos) => ({
+    minutos,
+    kcal: ESTILOS_TABELA_TEMPO.map((id) => deTempo(minutos, pesoKg, id).kcal),
+  }));
 
 /* ───────────────────────── Textos fixos ───────────────────────── */
 

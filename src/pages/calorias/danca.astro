@@ -32,6 +32,24 @@
  * sertanejo ficam de fora — não por serem menos importantes, mas porque
  * não encontramos medição deles que pudéssemos conferir, e preencher a lacuna seria exatamente o que a página
  * critica.
+ *
+ * DO GOOGLE, 06/10/2026 (prints do Renato, busca "quantas calorias gasta
+ * dançar"): o autocompletar abre com 30 minutos, 1 hora e 2 horas de dança e
+ * segue com emagrecimento — barriga, "quantos quilos por semana", "em
+ * quanto tempo", "para emagrecer rápido", "mais que academia"; as
+ * relacionadas somam "qual dança emagrece mais", "quantos quilos" e "dançar
+ * forró emagrece"; o PAA pergunta 30 minutos por dia, 1 hora por dia, 1 hora
+ * dançando e "quanto tempo de dança para perder 1 kg?". A IA diz 200 a 700
+ * kcal por hora, com Zumba 500–700 e salão 290–400 — o nosso motor dá 647 e
+ * 331 para 70 kg, dentro das duas. As outras linhas da IA (hip-hop, FitDance,
+ * salsa, dança do ventre) não entram: a página só lista estilo com medição
+ * conferida. Entraram: título e H1 no fraseado da busca, descrição com a
+ * faixa do motor, a tabela por tempo em três estilos até 2 horas (no motor),
+ * e as perguntas de 1 hora, 30 minutos, qual dança emagrece mais, 30
+ * minutos por dia, 1 kg (com a conta por semana), dança × academia (pelo
+ * motor da musculação) e barriga. Saíram do FAQ, sem sair da página, a do
+ * campo de intensidade e a de salão × Zumba (que virou a de qual emagrece
+ * mais); "dançar emagrece?" virou a de 30 minutos por dia.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -48,6 +66,7 @@ import {
   ESTILOS,
   ESTUDO_ZUMBA,
   FONTES,
+  KCAL_POR_KG_GORDURA,
   MINUTOS_PADRAO,
   NOTA_369,
   NOTA_BRUTO,
@@ -77,11 +96,13 @@ import {
   simulacaoUmQuilo,
   tabelaPorEstilo,
   tabelaPorPeso,
-  tabelaPorTempo,
+  tabelaTempoPorEstilo,
+  ESTILOS_TABELA_TEMPO,
 } from '../../lib/calorias/danca';
+import { deSessao as musculacaoSessao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias/danca';
-const atualizadoEm = '2026-09-23';
+const atualizadoEm = '2026-10-06';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -99,7 +120,24 @@ const UM_QUILO = simulacaoUmQuilo(PESO_PADRAO, 'zumba');
 
 const TAB_ESTILO = tabelaPorEstilo(PESO_PADRAO);
 const TAB_PESO = tabelaPorPeso(45, 'zumba');
-const TAB_TEMPO = tabelaPorTempo(PESO_PADRAO, 'zumba');
+const TAB_TEMPO = tabelaTempoPorEstilo(PESO_PADRAO);
+const ESTILOS_TEMPO = ESTILOS_TABELA_TEMPO.map((id) => estilo(id));
+
+/* As respostas das perguntas da busca (prints de 06/10), todas do motor. */
+const H1 = TAB_TEMPO.find((l) => l.minutos === 60)!;
+const M30 = TAB_TEMPO.find((l) => l.minutos === 30)!;
+const H2 = TAB_TEMPO.find((l) => l.minutos === 120)!;
+const SEMANA = 7;
+/* "Dançar 30 minutos por dia" — a aula coreografada comum, no acréscimo real. */
+const AEROB_30 = deTempo(30, PESO_PADRAO, 'aerobica');
+const AEROB_60 = deTempo(60, PESO_PADRAO, 'aerobica');
+const SEMANA_30 = Math.round((AEROB_30.kcalLiquida * SEMANA) / 100) * 100;
+const SEMANA_60 = Math.round((AEROB_60.kcalLiquida * SEMANA) / 100) * 100;
+const KG_SEMANA_60 = (AEROB_60.kcalLiquida * SEMANA) / KCAL_POR_KG_GORDURA;
+/* Dança × academia: uma hora de musculação pelo motor da musculação. */
+const MUSC_HORA = musculacaoSessao(60, PESO_PADRAO, 'variado');
+const MUSC_HORA_VIG = musculacaoSessao(60, PESO_PADRAO, 'vigoroso');
+const POR_INTENSIDADE = [...ESTILOS].sort((a, b) => b.met - a.met);
 
 /* A conferência do estudo, calculada e não escrita à mão. */
 const ESTUDO = reproduzEstudo();
@@ -109,42 +147,54 @@ const SUBESTIMA_SETE = (metDanca('zumba') - 7) / 7;
 
 const n = (v: number, d = 1) => v.toLocaleString('pt-BR', { maximumFractionDigits: d });
 
-/* 51 caracteres. */
-const title = 'Quantas Calorias a Dança Gasta? Zumba, Salão e Mais';
-/* 143 caracteres. */
-const description =
-  'Calcule as calorias da dança por estilo e por tempo de aula. Com a fonte de cada número — e por que o "Zumba = 7 METs" que circula está errado.';
+/* 53 caracteres. A busca é "quantas calorias gasta dançar"; 30 minutos e 1 hora abrem o autocompletar. */
+const title = 'Quantas Calorias Gasta Dançar? 30 Min, 1 Hora e Zumba';
+const description = `1 hora dançando gasta de ${formataKcal(H1.kcal[0])} kcal (salão) a ${formataKcal(H1.kcal[2])} kcal (Zumba) para ${PESO_PADRAO} kg. Calcule por estilo e tempo — com a fonte de cada número.`;
 
 const faqs = [
   {
-    pergunta: 'Uma hora de Zumba queima quantas calorias?',
-    resposta: `Cerca de ${formataKcal(EX_ZUMBA_60.kcal)} kcal para ${PESO_PADRAO} kg, se a hora inteira for dança. Mas atenção às ${ESTUDO_ZUMBA.kcalPorAula} kcal que você vê publicadas em toda parte: elas vêm de um estudo real cuja aula tinha ${ESTUDO_ZUMBA.minutosDaAula} minutos, com ${ESTUDO_ZUMBA.participantes} mulheres de ${ESTUDO_ZUMBA.idadeMin} a ${ESTUDO_ZUMBA.idadeMax} anos e cerca de ${n(PESO_ESTUDO, 0)} kg. Citar esse número como "uma aula de uma hora" infla em cerca de ${n(INFLACAO_HORA)} vez.`,
+    pergunta: 'Quantas calorias se gasta em 1 hora dançando?',
+    resposta: `Depende do estilo — quase o dobro entre as pontas. Para ${PESO_PADRAO} kg e uma hora de dança efetiva: cerca de ${formataKcal(H1.kcal[0])} kcal em dança de salão rápida, ${formataKcal(H1.kcal[1])} kcal numa aula de dança aeróbica e ${formataKcal(H1.kcal[2])} kcal em Zumba. Duas horas dobram a conta, de ${formataKcal(H2.kcal[0])} a ${formataKcal(H2.kcal[2])} kcal. Se a hora é de aula, desconte o tempo em que o professor ensina o passo — a calculadora tem um modo para isso.`,
   },
   {
-    pergunta: 'Quantos METs tem a Zumba?',
-    resposta: `A medição própria dá ${n(ESTUDO_ZUMBA.met)} METs. O "7 METs" que circula não é de Zumba: é o valor de dança aeróbica geral do Compêndio (código 03015, que na verdade vale ${n(metDanca('aerobica'))}) reaproveitado, porque o Compêndio não tem uma linha para Zumba. Quem publica 7 está subestimando em cerca de ${n(SUBESTIMA_SETE * 100, 0)}%.`,
+    pergunta: '30 minutos de dança queima quantas calorias?',
+    resposta: `Para ${PESO_PADRAO} kg, de ${formataKcal(M30.kcal[0])} kcal (salão rápido) a ${formataKcal(M30.kcal[2])} kcal (Zumba), passando por ${formataKcal(M30.kcal[1])} kcal numa aula de dança aeróbica. São 30 minutos dançando de verdade; numa aula de meia hora, com explicação de passo no meio, o número fica um pouco abaixo.`,
+  },
+  {
+    pergunta: 'Uma hora de Zumba queima quantas calorias?',
+    resposta: `Cerca de ${formataKcal(EX_ZUMBA_60.kcal)} kcal para ${PESO_PADRAO} kg, se a hora inteira for dança. Mas atenção às ${ESTUDO_ZUMBA.kcalPorAula} kcal que você vê publicadas em toda parte: elas vêm de um estudo real cuja aula tinha ${ESTUDO_ZUMBA.minutosDaAula} minutos, com ${ESTUDO_ZUMBA.participantes} mulheres de ${ESTUDO_ZUMBA.idadeMin} a ${ESTUDO_ZUMBA.idadeMax} anos e cerca de ${n(PESO_ESTUDO, 0)} kg. Citar esse número como "uma aula de uma hora" infla em cerca de ${n(INFLACAO_HORA)} vez.`,
   },
   {
     pergunta: 'Quantas calorias gasta uma aula de dança de uma hora?',
     resposta: `Depende de quanto da aula foi dança. Numa aula de ${formataTempo(EX_AULA.minutosAula)} com ${DANCANDO_PADRAO}% do tempo dançando — o resto sendo o professor ensinando o passo — dá cerca de ${formataKcal(EX_AULA.kcal)} kcal para ${PESO_PADRAO} kg em Zumba, contra ${formataKcal(EX_ZUMBA_60.kcal)} kcal se a hora fosse dança contínua. A diferença não é detalhe.`,
   },
   {
-    pergunta: 'Quantas calorias o samba gasta?',
+    pergunta: 'Qual dança emagrece mais?',
+    resposta: `Entre os estilos com medição, a ordem do gasto por minuto, em METs, é: ${POR_INTENSIDADE.map((e) => `${e.nomeCurto} (${n(e.met)})`).join(', ')}. A Zumba gasta quase o dobro da dança de salão rápida no mesmo tempo. Mas para emagrecer o que mais conta é a que você mantém por meses: a dança mais intensa que você larga em três semanas perde para a mais leve que vira hábito.`,
+  },
+  {
+    pergunta: 'Dançar 30 minutos por dia ajuda a emagrecer?',
+    resposta: `Ajuda, mas não resolve sozinho. Para ${PESO_PADRAO} kg, 30 minutos de uma aula de dança aeróbica acrescentam cerca de ${formataKcal(AEROB_30.kcalLiquida)} kcal ao dia — perto de ${SEMANA_30.toLocaleString('pt-BR')} kcal na semana, se for todo dia. Uma hora por dia dobra a conta: cerca de ${formataKcal(AEROB_60.kcalLiquida)} kcal por dia, ${SEMANA_60.toLocaleString('pt-BR')} na semana. É um bom pedaço de um déficit, e a dança tem a vantagem que mais pesa no longo prazo: dá vontade de voltar. Mas o resultado depende do balanço da semana inteira, e o exercício costuma aumentar a fome.`,
+  },
+  {
+    pergunta: 'Quanto tempo de dança para perder 1 kg?',
+    resposta: `No papel, cerca de ${formataTempo(UM_QUILO.minutosDancando)} de Zumba dançada de verdade, para ${PESO_PADRAO} kg — o tempo de gastar as ${KCAL_POR_KG_GORDURA.toLocaleString('pt-BR')} kcal que um quilo de gordura armazena. Uma hora de aula aeróbica por dia, todos os dias, somaria perto de ${n(KG_SEMANA_60, 1)} kg por semana nessa conta. Na prática é menos: o gasto do corpo cai conforme ele emagrece, e o exercício mexe no apetite. A conta dá a ordem de grandeza, não um prazo — quem decide a velocidade é a alimentação.`,
+  },
+  {
+    pergunta: 'Dança emagrece mais que academia?',
+    resposta: `Por hora, uma aula de dança gasta mais que a musculação: para ${PESO_PADRAO} kg, cerca de ${formataKcal(H1.kcal[1])} kcal numa aula aeróbica e ${formataKcal(H1.kcal[2])} kcal em Zumba, contra ${formataKcal(MUSC_HORA.kcal)} a ${formataKcal(MUSC_HORA_VIG.kcal)} kcal numa hora de musculação. Mas as duas fazem coisas diferentes: a musculação é o que protege o músculo durante o déficit, e perder peso sem treino de força costuma levar mais músculo junto. Para emagrecer, as duas juntas rendem mais que qualquer uma sozinha — com a alimentação decidindo o resultado.`,
+  },
+  {
+    pergunta: 'Dançar emagrece a barriga?',
+    resposta: `${NOTA_SEM_PERDA_LOCALIZADA} O que a dança faz é aumentar o gasto total; a gordura da barriga diminui junto com a do resto do corpo quando o balanço da semana fica negativo.`,
+  },
+  {
+    pergunta: 'Samba e forró gastam quantas calorias?',
     resposta: `Não encontramos medição que pudéssemos conferir. Para samba no pé, forró, sertanejo, funk e axé, não achamos medição de gasto energético publicada numa fonte verificável — e os números que circulam para eles não dizem de onde vêm. O que É medido e fica mais perto é a categoria de dança de par em ritmo rápido, que vale ${n(metDanca('salao'))} METs e dá cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal em 45 minutos para ${PESO_PADRAO} kg. Use como aproximação sabendo que é aproximação — a diferença entre nós e o resto da internet não é ter o número, é dizer o que ele é.`,
   },
   {
-    pergunta: 'Dançar emagrece?',
-    resposta:
-      'Ela aumenta o gasto do dia, e para muita gente tem uma vantagem que conta mais que a intensidade: é uma atividade que dá vontade de repetir. A que você mantém por meses vale mais que a mais forte que você larga. Mas nenhum exercício emagrece sozinho — quem decide é o balanço entre o que entra e o que sai ao longo de semanas.',
-  },
-  {
-    pergunta: 'Por que esta calculadora não tem campo de intensidade?',
-    resposta:
-      'Porque em dança você não escolhe a intensidade — a música e a coreografia escolhem. Ninguém faz uma aula de Zumba "em ritmo leve". Nas nossas outras calculadoras o campo de ritmo existe porque a pessoa realmente controla o ritmo; aqui ele seria a promessa de um controle que não existe. O que dá para escolher é a aula, e é isso que o seletor de estilo faz.',
-  },
-  {
-    pergunta: 'Dança de salão gasta menos que Zumba?',
-    resposta: `Bem menos: ${n(metDanca('salao'))} METs contra ${n(metDanca('zumba'))}, quase o dobro de diferença. Em 45 minutos para ${PESO_PADRAO} kg são cerca de ${formataKcal(EX_SALAO_45.kcal)} kcal contra ${formataKcal(EX_ZUMBA_45.kcal)} kcal. E vale a ressalva: o valor do Compêndio é de salão RÁPIDO, dançado de verdade — não do passo básico marcado devagar.`,
+    pergunta: 'Quantos METs tem a Zumba?',
+    resposta: `A medição própria dá ${n(ESTUDO_ZUMBA.met)} METs. O "7 METs" que circula não é de Zumba: é o valor de dança aeróbica geral do Compêndio (código 03015, que na verdade vale ${n(metDanca('aerobica'))}) reaproveitado, porque o Compêndio não tem uma linha para Zumba. Quem publica 7 está subestimando em cerca de ${n(SUBESTIMA_SETE * 100, 0)}%.`,
   },
 ];
 
@@ -189,7 +239,7 @@ const schema = [
   <header class="cd-hero">
     <div class="container cd-hero-inner">
       <p class="eyebrow">Calorias por atividade</p>
-      <h1>Quantas calorias a dança gasta?</h1>
+      <h1>Quantas calorias gasta dançar?</h1>
       <p class="cd-hero-lead">
         Quarenta e cinco minutos de Zumba gastam cerca de{' '}
         <strong>{formataKcal(EX_ZUMBA_45.kcal)} kcal</strong> para {PESO_PADRAO} kg. E aqui vai o
@@ -252,7 +302,7 @@ const schema = [
             <label for="cd-minutos">Tempo dançando de verdade (minutos)</label>
             <input id="cd-minutos" type="text" inputmode="numeric" autocomplete="off" value={MINUTOS_PADRAO} />
             <div class="cd-presets">
-              {[15, 30, 45, 60, 90].map((v) => (
+              {[15, 30, 45, 60, 90, 120].map((v) => (
                 <button type="button" class="cd-preset" data-alvo="dancando" data-valor={String(v)}>
                   {v < 60 ? `${v} min` : `${Math.floor(v / 60)}h${v % 60 ? String(v % 60).padStart(2, '0') : ''}`}
                 </button>
@@ -458,23 +508,36 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
           parado da conta, e aqui nós o contamos como repouso em vez de zerá-lo.
         </p>
 
-        <h2>Quanto custa, por tempo e por peso</h2>
+        <h2>Calorias por tempo: 30 minutos, 1 hora, 2 horas</h2>
+        <p>
+          &ldquo;Uma hora de dança&rdquo; sem dizer qual não tem um número só: entre a dança de
+          salão rápida e a Zumba, o gasto quase dobra. Por isso a tabela dá as duas pontas e a
+          aula coreografada comum no meio — que é também a referência mais próxima para FitDance
+          e outras coreografias em grupo.
+        </p>
         <div class="tabela-rolavel">
           <table>
-            <caption>Zumba ({n(ESTUDO_ZUMBA.met)} METs) por tempo de dança, para {PESO_PADRAO} kg</caption>
+            <caption>Gasto por tempo de dança efetiva, para {PESO_PADRAO} kg</caption>
             <thead>
-              <tr><th scope="col">Tempo dançando</th><th scope="col">Gasto</th></tr>
+              <tr>
+                <th scope="col">Tempo dançando</th>
+                {ESTILOS_TEMPO.map((e) => (
+                  <th scope="col">{e.nomeCurto}<small class="cd-faixa">{n(e.met)} METs</small></th>
+                ))}
+              </tr>
             </thead>
             <tbody>
               {TAB_TEMPO.map((l) => (
                 <tr>
                   <th scope="row">{formataTempo(l.minutos)}</th>
-                  <td>≈ {formataKcal(l.kcal)} kcal</td>
+                  {l.kcal.map((k) => <td>≈ {formataKcal(k)} kcal</td>)}
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        <h3>Por peso corporal</h3>
         <div class="tabela-rolavel">
           <table>
             <caption>45 minutos de Zumba por peso corporal</caption>
@@ -796,5 +859,6 @@ aplicando isso aos ${ESTUDO_ZUMBA.minutosDaAula} min da aula medida
     .cd-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
     .cd-fontes li { margin-bottom: 0.6rem; }
     .cd-revisao { font-size: var(--step--1); color: var(--muted); }
+    .cd-faixa { display: block; font-weight: 400; font-size: 0.85em; white-space: nowrap; }
   </style>
 </Base>

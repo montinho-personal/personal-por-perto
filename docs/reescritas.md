@@ -426,6 +426,31 @@ emagrece?", com 1 hora por dia dentro). Saiu do FAQ, sem sair da página, a
 do vento. "Qual esporte gasta mais" NÃO apareceu nestes prints. Linha de
 base: 101 impressões, 0 clique, posição 7,1.
 
+**Dança** (`/calorias/danca/`, prints de 06/10). Autocompletar de "quantas
+calorias gasta dançar": 30 minutos, 1 hora e 2 horas, e depois só
+emagrecimento — barriga, "quantos quilos por semana", "em quanto tempo",
+"para emagrecer rápido", "mais que academia". Relacionadas: "qual dança
+emagrece mais", "quantos quilos", "dançar forró emagrece" e "pular corda
+queima quantas calorias". PAA: 30 minutos por dia, 1 hora por dia, 1 hora
+dançando, "quanto tempo de dança para perder 1 kg?". A IA dá 200 a 700
+kcal/h, com Zumba 500–700 e salão 290–400 — a nossa conta para 70 kg dá
+647 e 331, dentro das duas. Hip-hop, FitDance, salsa e dança do ventre,
+que a IA também lista, não entraram: a página só tem estilo com medição
+conferida (FitDance fica na referência de aula coreografada, como o texto
+já dizia). Entraram: título "Quantas Calorias Gasta Dançar? 30 Min, 1 Hora
+e Zumba" (antes "Quantas Calorias a Dança Gasta? Zumba, Salão e Mais"), H1
+no fraseado da busca, descrição com a faixa do motor, a tabela por tempo
+em três estilos (salão, aeróbica, Zumba) até 2 horas, no lugar da de Zumba
+só, e as perguntas 1 hora, 30 minutos, qual dança emagrece mais, 30
+minutos por dia (com 1 hora por dia), 1 kg (11h54 de Zumba no papel; ~0,4
+kg/semana com 1 hora de aula por dia, com a ressalva de que na prática é
+menos), dança × academia (pelo motor da musculação: por hora a aula gasta
+mais; a musculação protege o músculo) e barriga. Saíram do FAQ, sem sair
+da página, a do campo de intensidade e a de salão × Zumba; "dançar
+emagrece?" virou a de 30 minutos por dia; a do samba passou a nomear o
+forró. "Qual esporte gasta mais" não apareceu — a terceira busca seguida
+sem ela. Linha de base: 89 impressões, 0 clique, posição 7,4.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

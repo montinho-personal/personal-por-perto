@@ -42,6 +42,7 @@ import {
   tabelaPorEstilo,
   tabelaPorPeso,
   tabelaPorTempo,
+  tabelaTempoPorEstilo,
 } from '../src/lib/calorias/danca';
 
 const falhas: string[] = [];
@@ -203,7 +204,20 @@ console.log('\n[9] Tabelas\n');
   const tp = tabelaPorPeso();
   ok(tp.length === 7 && tp.every((l, i) => i === 0 || l.kcal > tp[i - 1].kcal), 'a tabela por peso cresce');
   const tt = tabelaPorTempo(PESO_PADRAO);
-  ok(tt.length === 5 && tt.every((l, i) => i === 0 || l.kcal > tt[i - 1].kcal), 'a tabela por tempo cresce');
+  ok(tt.length === 6 && tt.every((l, i) => i === 0 || l.kcal > tt[i - 1].kcal), 'a tabela por tempo cresce');
+  ok(tt[tt.length - 1].minutos === 120, 'e chega a 2 horas, que a busca pede (prints de 06/10)');
+
+  /*
+   * Tempo × estilo, à mão para 70 kg e 1 hora: kcal = MET × 3,5 × 70 / 200 × 60
+   * = MET × 73,5. Salão 4,5 → 330,75; aeróbica 7,3 → 536,55; Zumba 8,8 → 646,8.
+   */
+  const tte = tabelaTempoPorEstilo(70);
+  const h1 = tte.find((l) => l.minutos === 60)!;
+  ok(
+    Math.abs(h1.kcal[0] - 330.75) < 0.01 && Math.abs(h1.kcal[1] - 536.55) < 0.01 && Math.abs(h1.kcal[2] - 646.8) < 0.01,
+    `1 hora: salão 330,75, aeróbica 536,55, Zumba 646,8 (deu ${h1.kcal.map((k) => k.toFixed(2)).join(', ')})`,
+  );
+  ok(tte.every((l) => l.kcal[0] < l.kcal[1] && l.kcal[1] < l.kcal[2]), 'em todo tempo, salão < aeróbica < Zumba');
 }
 
 /* ------------------------------------------------------------------ */
