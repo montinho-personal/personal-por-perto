@@ -932,3 +932,24 @@ não mudou: o Search Console de 06/09 a 05/10 deu a ela uma única
 impressão; quem disputa estas buscas é o guia — "quanto custa um personal
 trainer" posição 10,6, "valor de um personal trainer 2 vezes por semana"
 7,7 e 3 vezes 6,0, todas sem clique.
+
+**Presencial ou online** (`/ferramentas/presencial-ou-online/`, prints de
+06/10, busca "personal trainer online ou presencial"). Autocompletar: a
+busca nas duas ordens, "personal online ou presencial", "personal trainer
+online vale a pena", "personal trainer online preço" e "presencial
+barueri/alphaville" (localização de quem printou — Barueri). PAA: "vale a
+pena ter um personal trainer online?", "quanto custa 1 mês de personal
+trainer?", "malhar com personal trainer 2 vezes por semana dá resultado?",
+"vale a pena pagar um personal trainer?". A IA lista no presencial correção
+na hora, motivação, custo mais alto (hora exclusiva e deslocamento) e
+horário fixo — tudo já estava na página. Entraram: título "Personal Trainer
+Online ou Presencial? Descubra Qual Combina" (antes "Personal Online ou
+Presencial? Descubra Qual Combina") e H1 na ordem do autocompletar,
+descrição com "vale a pena" e "preço", as perguntas "personal trainer
+online vale a pena?", "quanto custa um personal trainer online e um
+presencial?" (R$ 120–360 e R$ 260–700, medianas das 988 cidades calculadas
+do dado) e "2 vezes por semana dá resultado?" (sim: é o mínimo da OMS para
+fortalecimento muscular; liga com o híbrido), as faixas na seção do preço e,
+na transparência, os links para Alphaville e Barueri. "Vale a pena pagar um
+personal" fica com o guia de preço. Linha de base: nenhuma impressão em
+buscas com "online" ou "presencial" de 06/09 a 05/10.

@@ -9,6 +9,22 @@
  *
  * Self-canonical. Nenhuma combinação de respostas gera URL própria — não
  * existe ?resultado=online, e o resultado é estado da ferramenta.
+ *
+ * DO GOOGLE, 06/10/2026 (prints do Renato, busca "personal trainer online ou
+ * presencial"): o autocompletar traz a busca nas duas ordens, "personal
+ * online ou presencial", "personal trainer online vale a pena" e "personal
+ * trainer online preço" (e "presencial barueri/alphaville", que é a
+ * localização de quem printou); o PAA pergunta se vale a pena ter personal
+ * online, quanto custa 1 mês, se 2 vezes por semana dá resultado e se vale a
+ * pena pagar um personal; a IA lista no presencial correção na hora,
+ * motivação, custo mais alto e horário fixo — tudo já respondido aqui. No
+ * Search Console de 06/09 a 05/10 a página não apareceu para nenhuma busca
+ * com "online" ou "presencial". Entraram: título e H1 com "personal trainer
+ * online ou presencial" na ordem do autocompletar, descrição com "vale a
+ * pena" e "preço", as perguntas "personal trainer online vale a pena?",
+ * "quanto custa" (medianas das 988 cidades, calculadas do dado) e "2 vezes
+ * por semana dá resultado?", e as faixas de preço na seção do preço. "Vale a
+ * pena pagar um personal" fica com o guia de preço, que já responde.
  */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -19,9 +35,10 @@ import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { montinho } from '../../data/montinho';
 import { rotas } from '../../lib/links';
+import { cidades } from '../../data/cidades';
 
 const path = '/ferramentas/presencial-ou-online';
-const atualizadoEm = '2026-08-29';
+const atualizadoEm = '2026-10-06';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -29,11 +46,27 @@ const crumbs = [
   { nome: 'Presencial ou online', url: path },
 ];
 
-/* 52 caracteres. */
-const title = 'Personal Online ou Presencial? Descubra Qual Combina';
-/* 145 caracteres. */
+/* 60 caracteres. "Personal trainer online ou presencial" é a busca, na ordem do autocompletar. */
+const title = 'Personal Trainer Online ou Presencial? Descubra Qual Combina';
 const description =
-  'Compare personal presencial e acompanhamento online e descubra qual formato combina com sua experiência, rotina e necessidade de suporte. Grátis.';
+  'Personal trainer online ou presencial? Compare preço, correção e rotina, veja quando o online vale a pena e descubra qual formato combina com você.';
+
+/*
+ * Faixas medianas das cidades do portal — as mesmas do guia de preço, mas
+ * calculadas aqui do dado, para a pergunta de preço não poder divergir dele.
+ */
+const mediana = (v: number[]) => {
+  const o = [...v].sort((a, b) => a - b);
+  const m = Math.floor(o.length / 2);
+  return o.length % 2 ? o[m] : (o[m - 1] + o[m]) / 2;
+};
+const faixa = (min: keyof (typeof cidades)[number]['precos'], max: keyof (typeof cidades)[number]['precos']) => ({
+  min: mediana(cidades.map((c) => c.precos[min])),
+  max: mediana(cidades.map((c) => c.precos[max])),
+});
+const ONLINE = faixa('onlineMin', 'onlineMax');
+const PRESENCIAL = faixa('mensalMin', 'mensalMax');
+const brl = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;
 
 const urlCanonica = new URL(path + '/', site.dominio).href;
 
@@ -49,6 +82,18 @@ const faq = [
   {
     p: 'Para quem o online pode funcionar melhor?',
     r: 'Para quem já tem autonomia — entra na academia sabendo o que fazer e executa com segurança — e cuja necessidade principal é planejamento, progressão e ajuste do treino ao longo do tempo. Também para quem tem rotina imprevisível e não consegue sustentar horário fixo, ou para quem não aceita deslocamento. Nesse cenário, pagar pela presença física em todas as sessões costuma não ser o que destrava o resultado.',
+  },
+  {
+    p: 'Personal trainer online vale a pena?',
+    r: 'Vale para quem já tem autonomia na academia — sabe o que fazer e executa com segurança — e precisa de planejamento, progressão e ajuste, mais do que de alguém ao lado em cada série. Também para quem tem rotina imprevisível e não sustenta horário fixo. Vale menos para quem está começando, tem muita dúvida sobre a própria execução ou não se sente à vontade gravando vídeo: aí o presencial, pelo menos no começo, costuma render mais. A ferramenta acima cruza exatamente esses fatores.',
+  },
+  {
+    p: 'Quanto custa um personal trainer online e um presencial?',
+    r: `Na cidade mediana do portal, o acompanhamento online fica entre ${brl(ONLINE.min)} e ${brl(ONLINE.max)} por mês, e o pacote presencial de 2 a 3 vezes por semana, entre ${brl(PRESENCIAL.min)} e ${brl(PRESENCIAL.max)}. A diferença existe porque o presencial vende a hora exclusiva do profissional e o deslocamento; o online vende planejamento e acompanhamento contínuo. São estimativas editoriais por cidade, não pesquisa de preço — a calculadora de preço mostra a faixa da sua.`,
+  },
+  {
+    p: 'Malhar com personal trainer 2 vezes por semana dá resultado?',
+    r: 'Dá, para a maioria das pessoas. Duas sessões semanais de treino de força é o mínimo que a Organização Mundial da Saúde recomenda para fortalecimento muscular, e já bastam para ganhar força e massa, principalmente no começo. O que decide é o que acontece nas duas: progressão de carga, execução segura e constância ao longo de meses. Um caminho comum é combinar duas sessões presenciais com um plano para os outros dias, feitos sozinho — o modelo híbrido.',
   },
   {
     p: 'Personal online consegue corrigir execução?',
@@ -78,7 +123,7 @@ const schema = [
     '@type': 'WebPage',
     '@id': `${urlCanonica}#webpage`,
     url: urlCanonica,
-    name: 'Personal presencial ou online: qual combina comigo?',
+    name: 'Personal trainer online ou presencial: qual combina comigo?',
     description,
     inLanguage: site.idioma,
     dateModified: atualizadoEm,
@@ -121,7 +166,7 @@ const schema = [
   <header class="po-hero">
     <div class="container po-hero-inner">
       <p class="eyebrow">Ferramenta gratuita</p>
-      <h1>Personal presencial ou online: qual combina comigo?</h1>
+      <h1>Personal trainer online ou presencial: qual combina comigo?</h1>
       <p class="po-hero-lead">
         Responda algumas perguntas e descubra qual formato de acompanhamento
         combina mais com a sua experiência, a sua rotina e a sua necessidade
@@ -230,6 +275,14 @@ const schema = [
         estruturado, e existe presencial barato e mal feito.
       </p>
       <p>
+        Em números, na cidade mediana do portal: o acompanhamento online fica
+        entre <strong>{brl(ONLINE.min)} e {brl(ONLINE.max)} por mês</strong>, e
+        o pacote presencial de 2 a 3 vezes por semana, entre
+        <strong>{brl(PRESENCIAL.min)} e {brl(PRESENCIAL.max)}</strong>. O
+        presencial cobra a hora exclusiva do profissional e o deslocamento —
+        é daí que vem a diferença, não de um serviço ser melhor que o outro.
+      </p>
+      <p>
         Há também um risco prático que vale nomear: escolher o online só pelo
         preço, sem ter autonomia para treinar sozinho, costuma sair mais caro
         no fim — porque o serviço simplesmente não é usado. Se o seu ponto de
@@ -326,7 +379,10 @@ const schema = [
           O Personal por Perto é um projeto de conteúdo ligado ao
           <a href={rotas.montinho}>Montinho Personal</a>, que atende
           presencialmente na região de Alphaville e em formato online para
-          todo o Brasil. Uma ferramenta que escolhe entre presencial e online,
+          todo o Brasil — quem está na região encontra as faixas e o
+          atendimento presencial nas páginas de
+          <a href="/personal-trainer/alphaville-sp/">Alphaville</a> e de
+          <a href="/personal-trainer/barueri-sp/">Barueri</a>. Uma ferramenta que escolhe entre presencial e online,
           mantida por quem vende os dois, tem um conflito de interesse óbvio —
           e o jeito honesto de lidar com isso é declarar e testar.
         </p>
