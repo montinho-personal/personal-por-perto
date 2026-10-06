@@ -92,6 +92,28 @@ superstição de SEO, e leva a adiar trabalho bom por medo inventado.
 **Regra de ritmo:** a primeira leva é sempre pequena o suficiente para
 revisar item a item. Só depois de uma leva limpa o volume sobe.
 
+## Antes de criar qualquer coisa: os prints do Google
+
+Ferramenta, página ou artigo novo — e reescrita grande — só ganha título,
+estrutura, conteúdo e FAQs depois dos prints do Google das intenções de
+busca. Pedir ao Renato, no começo da tarefa, a lista de buscas a printar,
+e em cada uma:
+
+- o autocompletar (digitar a busca devagar);
+- "Outras pessoas pesquisaram";
+- "As pessoas também perguntam" (com 2 ou 3 abertas);
+- a visão geral de IA, quando aparecer.
+
+Motivo: nas calculadoras de calorias, de descanso e de pace, os prints
+mudaram tabelas, títulos e FAQs — e revelaram erros que a pesquisa sozinha
+não pegou (o "sub 3" da maratona, o recorde do Sawe). Sem eles, a página
+responde o que a gente acha que as pessoas perguntam, não o que perguntam.
+
+Enquanto os prints não chegam, dá para adiantar o que eles não mudam:
+auditoria do site, pesquisa de método e fontes, motor de cálculo e testes.
+Título, H1, seções, tabelas do texto e FAQs esperam. Os prints recebidos
+ficam registrados no doc da peça (`docs/<peça>.md`), com o que entrou e onde.
+
 ## Todo artigo leva uma ferramenta no corpo do texto
 
 Artigo novo — ou artigo editado — recebe **um** `<FerramentaInline>` no
