@@ -136,6 +136,40 @@ de métodos e as decisões de produto.
 - **"Para ganho de massa magra"**: o histórico é a resposta (acompanhar
   massa livre de gordura e cintura ao longo do tempo).
 
+### 3.4 "calcular IMC" (07/10)
+
+- **Autocompletar:** mulher · grátis · online · homem · na calculadora ·
+  **infantil** · **e peso ideal** · **criança** · adulto · ideal · homem
+  adulto.
+- **Outras pessoas pesquisaram:** grátis · **adolescente** · IMC ideal ·
+  tabela IMC feminino peso ideal · **IMC idoso** calculadora · IMC
+  calculadora google · feminino · masculino · peso ideal · feminino
+  tabela · tabela IMC · infantil.
+- **Visão geral de IA:** fórmula (peso ÷ altura²) e a tabela de adultos da
+  OMS, citando Tua Saúde. Eurofarma no orgânico.
+
+**O que muda:**
+
+- **Nada de página só de IMC.** A busca tem a calculadora do próprio
+  Google ("IMC calculadora google") e sites de saúde com autoridade; o
+  IMC fica como módulo da central, mirando a cauda (IMC e gordura, IMC de
+  quem treina).
+- **Homem × mulher (quatro variações):** para adultos, os cortes da OMS são
+  os mesmos para os dois sexos — é a primeira coisa a dizer, porque a
+  busca pressupõe o contrário. O módulo IMC não pede sexo.
+- **Criança, infantil, adolescente (quatro variações):** o IMC de menores se
+  lê por idade e sexo (curvas da OMS), não pela tabela de adultos. Na
+  Fase 1 a ferramenta calcula o número, **não classifica**, e explica
+  por quê, apontando a caderneta de saúde e o pediatra. As curvas ficam
+  para avaliar depois.
+- **Idoso:** a faixa 60+ usa outros cortes no Brasil (em confirmação na
+  pesquisa de métodos).
+- **"Peso ideal" (quatro variações):** responder com a faixa de peso em que
+  o IMC da OMS fica entre 18,5 e 24,9 **para aquela altura**, dita como
+  faixa de IMC — nunca "seu peso ideal é X".
+- **Tabela de IMC** com as faixas da OMS no texto, com o aviso de que o
+  IMC não distingue gordura de músculo.
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
