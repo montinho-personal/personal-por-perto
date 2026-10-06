@@ -397,9 +397,85 @@ cintura/altura e cintura/quadril em leva própria. IMC "puro" é dominado
 por sites de saúde com autoridade: mirar a cauda ("IMC alto mas tenho
 músculo"). Decisão quando chegarem os prints.
 
-## 4. Métodos
+## 4. Métodos — decisão (07/10)
 
-Em pesquisa (fontes primárias: Hodgdon & Beckett 1984, Exército dos EUA
-2023, Woolcott & Bergman 2018 — RFM, Jackson & Pollock 1978/1980, Siri
-1961, OMS 2008/2011, NICE 2022). Decisão registrada aqui quando a pesquisa
-fechar.
+Pesquisa com fontes primárias por busca (os PDFs ficaram bloqueados pela
+rede; os coeficientes de Marinha, RFM, Jackson & Pollock e Boer foram
+conferidos contra mais de uma reprodução e batem com as publicações).
+
+**Percentual de gordura — três métodos, nunca misturados:**
+
+1. **Principal: RFM (Woolcott & Bergman, *Sci Rep* 2018).**
+   RFM = 64 − 20 × (altura ÷ cintura) + 12 × sexo (0 homem, 1 mulher).
+   - Uma fita só (cintura) + altura: menos erro somado na autoaferição.
+   - Desenvolvido contra DXA no NHANES (12.581 adultos, validação em
+     3.456), multiétnico; validado no México e no Brasil (Corrêa et al.,
+     *Clin Nutr ESPEN* 2021, UFSC: r = 0,90 com DXA, homens jovens).
+   - Cintura no protocolo NHANES: **logo acima da crista ilíaca** (topo do
+     osso do quadril, na lateral).
+   - Limites: atletas (concordância ruim), idosos e mulheres brasileiras
+     com pouca validação.
+2. **Método da Marinha dos EUA (Hodgdon & Beckett, 1984)**, buscado pelo
+   nome. Equação oficial do DoD em polegadas (a calculadora converte cm):
+   homens 86,010·log(abdômen − pescoço) − 70,041·log(altura) + 36,76;
+   mulheres 163,205·log(cintura + quadril − pescoço) − 97,684·log(altura)
+   − 78,387. SEE 3,52 / 3,61 pontos. Protocolo próprio: pescoço logo
+   abaixo do pomo de adão; abdômen no umbigo (homens); cintura natural, a
+   menor (mulheres); quadril na maior protuberância dos glúteos.
+   Critério: pesagem hidrostática em militares jovens; estudos com DXA
+   mostram subestimação (~6 pontos em recrutas, Foulis 2023). O Exército
+   dos EUA trocou por uma fita só (2023) e, em 2026, pela relação
+   cintura/altura < 0,55 — dito na página.
+3. **Dobras cutâneas (Jackson & Pollock 1978; Jackson, Pollock & Ward
+   1980) → Siri 1961**, 3 e 7 dobras, com idade. Para quem tem as medidas
+   de uma avaliação com adipômetro. Validade: homens 18–61, mulheres
+   18–55 (cautela acima de 40, dos próprios autores).
+
+**Fora, com motivo:** fórmula do Exército 2023 (soldados, viés
+proporcional, já abandonada); Deurenberg por IMC (usa só o IMC — não
+acrescenta); média entre métodos (sem base).
+
+**Incerteza mostrada:** número inteiro e faixa provável de ±4 pontos
+(SEE de desenvolvimento ~3,5 com medidor treinado; autoaferição erra
+mais). "Cerca de 2 em cada 3 pessoas ficam dentro da faixa."
+
+**Protocolo de cintura (o ponto mais delicado):** a cintura comum da
+ferramenta é a do **RFM — logo acima da crista ilíaca** (protocolo NHANES,
+o mesmo do NIH para os cortes de 102/88 cm). Ela alimenta RFM, cintura/
+altura e cintura/quadril. O método da Marinha pede as medidas no protocolo
+dele, em campos próprios. A página explica que a OMS mede no ponto médio
+entre a última costela e a crista — a diferença costuma ser de poucos
+centímetros —, e que, para acompanhar a evolução, o que importa é medir
+sempre no mesmo ponto.
+
+**Massa:** massa gorda = peso × %G; massa livre de gordura = peso − massa
+gorda (nunca "músculo"). **Boer (1984)** como alternativa só com peso e
+altura, rotulada "estimativa populacional". **FFMI** = MLG ÷ altura²,
+com a referência confirmada de Schutz et al. 2002 (medianas de 18–34
+anos: 18,9 homens, 15,4 mulheres).
+
+**Referências:**
+- IMC: OMS para adultos (mesmos cortes para os dois sexos); 60+ com
+  Lipschitz 1994 (SISVAN: ≤ 22 / 22–27 / ≥ 27); menores sem
+  classificação (IMC-para-idade da OMS fica para depois).
+- Cintura: OMS/Lean 1995 — 94/102 cm homens, 80/88 cm mulheres (iguais às
+  já publicadas no site; ABESO e Caderno de Atenção Básica 38 adotam os
+  mesmos).
+- Cintura/altura: NICE NG246 — 0,40–0,49 / 0,50–0,59 / ≥ 0,60; não vale
+  na gestação nem com IMC ≥ 35.
+- Cintura/quadril: OMS 2008 — ≥ 0,90 homens, ≥ 0,85 mulheres. A tabela
+  por idade (Bray & Gray 1988) fica de fora: só a linha de 20–29 anos foi
+  vista em fonte, as demais vieram de memória.
+- %G: Gallagher et al. 2000 (*AJCN*), faixa correspondente ao IMC
+  18,5–24,9 por sexo e idade (20–39: 8–19% / 21–33%; 40–59: 11–22% /
+  23–34%; 60–79: 13–25% / 24–36%), com a ressalva de que varia com a
+  ancestralidade. A da ACE é explicada e descartada.
+
+**Não interpretar:** menores de 18 (só números, sem classificação),
+gestação, edema/ascite, amputação, IMC ≥ 35 para a RCE, atletas e
+fisiculturistas (estimativa por circunferência erra). Sempre com a
+ressalva de avaliação profissional.
+
+**Evolução — limiares (heurística declarada, não norma):** cintura muda de
+verdade a partir de ~2 cm (erro típico da fita: 1–2 cm); %G estimado, a
+partir de ~2 pontos entre duas medidas no mesmo protocolo.
