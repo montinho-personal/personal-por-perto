@@ -149,6 +149,23 @@ pelos mesmos dois motivos. O mapa de qual artigo leva o quê, e por quê,
 está em `docs/ferramentas-nos-artigos.md`; `npm run test:ferramentas-inline`
 confere as regras do bloco nos artigos todos.
 
+**Pace e percentual de gordura (desde 06/10/2026).** A mesma exceção do
+link em palavra existente vale para duas calculadoras além das de calorias:
+
+- `/ferramentas/calculadora-de-pace/` — só onde a frase já fala de ritmo,
+  pace, km/h, esteira ou tempo de prova ("pace", "meia maratona em 2 horas");
+- `/ferramentas/calculadora-de-percentual-de-gordura/` — só onde a frase já
+  fala de percentual de gordura, composição corporal, IMC ou medida de
+  cintura.
+
+As travas são as mesmas: a palavra JÁ está na frase, nunca frase nova
+escrita para caber o link, o contexto tem de ser o da calculadora (não
+basta citar a palavra de passagem), e o teto de dois links de calculadora
+por artigo conta o conjunto — calorias, pace e gordura somados. Não sobe
+`atualizadoEm`, pelos mesmos dois motivos do bloco. Como altera texto
+renderizado em muitas páginas, entra pela rotina diária (2 artigos por
+dia, pelo mapa), não em varredura única.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.

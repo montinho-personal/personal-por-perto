@@ -9,7 +9,7 @@ Os 166 artigos (musculação, emagrecimento, guias, Mounjaro e treino) foram lid
 Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 
 - **O bloco `<FerramentaInline>`** — um por artigo, no parágrafo em que a ferramenta responde a dúvida que o texto acabou de levantar. Desde 24/09 aceita as calculadoras, além das sete da jornada.
-- **O link no texto** — a palavra que já está na frase vira link para a calculadora daquela atividade ("caminhada rápida" → calculadora de caminhada). Nunca frase nova escrita para caber o link. É o link com o texto-âncora mais preciso que o site pode dar, e é o que diz ao Google do que a calculadora trata.
+- **O link no texto** — a palavra que já está na frase vira link para a calculadora daquela atividade ("caminhada rápida" → calculadora de caminhada). Nunca frase nova escrita para caber o link. É o link com o texto-âncora mais preciso que o site pode dar, e é o que diz ao Google do que a calculadora trata. Desde 06/10 vale também para a calculadora de pace (frase que já fala de ritmo, pace, km/h, esteira) e a de percentual de gordura (frase que já fala de gordura corporal, composição, IMC, cintura); o teto de dois links de calculadora por artigo conta o conjunto.
 
 ## O que a análise encontrou
 
@@ -57,7 +57,7 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 ## Regras que a fila segue
 
 1. **Um bloco por artigo**, nunca o mesmo destino do CTA do fim, nunca no humor. `npm run test:ferramentas-inline` confere as três coisas nos 166 artigos.
-2. **Calculadora só onde o texto já fala de gasto.** "Aqueça cinco minutos na esteira" num artigo de técnica não é contexto de caloria.
+2. **Calculadora só onde o texto já fala de gasto.** "Aqueça cinco minutos na esteira" num artigo de técnica não é contexto de caloria. Desde 06/10, o link em palavra existente também vale para pace (frase sobre ritmo, km/h, esteira, tempo de prova) e percentual de gordura (frase sobre gordura corporal, composição, IMC, cintura) — mesmo teto de dois por artigo, somando todas as calculadoras.
 3. **Link no texto só na palavra que já existe.** No máximo dois por artigo, salvo quando a própria frase enumera atividades comparando gasto (o parêntese de musculação ou cardio leva as quatro, porque cada uma é a resposta exata).
 4. **Mounjaro e Ozempic:** calculadora só onde o texto mostra o **limite** do gasto. Nunca link que leia como "queime mais" como meta de quem emagrece com remédio. Calculadora de proteína nos artigos de Mounjaro: liberada desde 29/09 (ver Leva 2).
 5. **Troca de bloco existente só com encaixe forte contra fraco.** Trocar perde a série de medição do bloco antigo; "também serviria" não é motivo.
