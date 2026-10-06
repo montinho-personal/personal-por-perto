@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com público jovem da UFSJ, complementada pela Serra do Lenheiro para o trail e o treino outdoor.',
 
+  academiasProximas: [
+    { nome: 'Power Fitness Academia', detalhe: 'na Av. Trinta e Um de Março' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Polo universitário (UFSJ), que garante público jovem e constante.',
     'Meia maratona oficial no calendário anual.',
@@ -87,14 +92,27 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Joia barroca do Campo das Vertentes, São João del-Rei une turismo histórico, a UFSJ e a Serra do Lenheiro. Um personal trainer ajuda a aproveitar o trail e a meia maratona da cidade com método, num clima ameno de altitude.',
+    'Joia barroca do Campo das Vertentes, São João del-Rei — SJDR para quem mora lá — une turismo histórico, a UFSJ e a Serra do Lenheiro. Um personal trainer ajuda a aproveitar o trail e a meia maratona da cidade com método, num clima ameno de altitude.',
 
-  vizinhas: ['belo-horizonte-mg', 'juiz-de-fora-mg'],
+  /*
+   * Prints de 06/10 (só o autocompletar — cidade sem PAA nem relacionadas):
+   * "sao joao del rei" sem acento, "são joão de meriti" (outra cidade, no
+   * RJ, com página própria — o "(MG)" do título separa), "personal sao joao
+   * del rei" e "sjdr", a sigla local, que passou a constar na conclusão.
+   * Sem PAA, entra o padrão das cidades printadas (docs/seo-local-estrategia.md,
+   * seção 5): valor por mês, "1 mês, 3 vezes por semana", Instagram e online.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  // Eram Belo Horizonte e Juiz de Fora. Em 06/10/2026 entrou na frente
+  // Tiradentes, que faz divisa.
+  vizinhas: ['tiradentes-mg', 'belo-horizonte-mg', 'juiz-de-fora-mg'],
 
   fontes: [
     { nome: 'IBGE Cidades — São João del-Rei', url: 'https://cidades.ibge.gov.br/brasil/mg/sao-joao-del-rei/panorama' },
     { nome: 'Prefeitura de São João del-Rei', url: 'https://www.saojoaodelrei.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

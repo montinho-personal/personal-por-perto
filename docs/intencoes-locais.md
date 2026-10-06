@@ -781,3 +781,20 @@ na frente São Vicente, Guarujá e Cubatão, que fazem divisa.
 
 **Não aplicado:** "mulher", "smart fit", nomes, "studio", "perto de mim",
 "preparador físico do Santos" (futebol).
+
+## São João del-Rei — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer são joão del rei | "sao joao del rei" (sem acento), "são joão de meriti" (outra cidade, RJ), "personal sao joao del rei", **"sjdr"** | — (só autocompletar) | — |
+
+**Aplicado:** primeira cidade com o padrão das cidades printadas
+(`docs/seo-local-estrategia.md`, seção 5), porque não houve PAA nem
+relacionadas: valor por mês no título e na descrição — o "(MG)" separa da
+página de São João de Meriti (RJ); perguntas "1 mês, 3 vezes por semana",
+Instagram e online ou presencial; a sigla "SJDR" na conclusão.
+**Vizinhas:** entrou Tiradentes, que faz divisa, na frente de BH e Juiz de
+Fora. **Academias**, no mesmo commit, para a página mudar uma vez só: Power
+Fitness Academia (Wellhub e TotalPass, Av. Trinta e Um de Março, 1840).
+Recusadas por fonte única (só Wellhub): Sportfit, Academia Brothers, Health
+House e Smart Academia Bom Pastor.

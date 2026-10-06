@@ -186,6 +186,18 @@ render.
 | 6 | as 526 páginas ainda com a data de lançamento (29/06), das de mais impressão para as de menos — pedido do Renato em 06/10 | idem |
 | bairros | Cidade Nova (BH), Jardins (SP), Copacabana, Ipanema, Campeche, Buritis, Moinhos de Vento | `personal trainer <bairro>` |
 
+**Padrão para cidade só com autocompletar** (pedido do Renato em 06/10/2026).
+Cidade pequena muitas vezes não mostra PAA nem "Outras pessoas pesquisaram".
+Nesses casos entra o que se repete nas 48 buscas printadas até 06/10:
+preço/valor (~80% das cidades), Instagram (~80%), "vale a pena" (~70% — já
+é pergunta padrão de toda página), online (~45%) e, no PAA, "quanto custa
+em <cidade>", "1 mês" e "3 vezes por semana" em quase toda cidade que tem
+PAA. Em código: `metaFoco: 'preco'` e `faqsBusca: { precoMensal: true,
+instagram: true, onlineOuPresencial: true }`. O autocompletar da própria
+cidade acrescenta o que for local (sigla, bairro, cidade de mesmo nome) e
+pode tirar item do padrão quando apontar o contrário. "Mulher" aparece em
+~65% e continua fora: a página não tem como responder com honestidade.
+
 Situação em 01/10/2026: levas 1 a 4 aplicadas. A 4 e a 5 foram montadas pela
 ordem de impressões no relatório de 30/09, entre as cidades ainda sem
 `metaFoco` nem título próprio.
