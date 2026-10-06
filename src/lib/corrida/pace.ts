@@ -73,12 +73,16 @@ export const PACE_ALERTA_LENTO = 1800;
 /* ───────────────────────── Entrada ───────────────────────── */
 
 /**
- * Número em português ou não: "10,5", "10.5", "10". Rejeita milhar
- * ("1.000"), letras, vazio e negativo.
+ * Número em português ou não: "10,5", "10.5", "10". Rejeita letras, vazio e
+ * negativo. Com `milhar`, o ponto seguido de grupos de três dígitos é
+ * separador de milhar: "1.500" metros são mil e quinhentos, não 1,5 — e é
+ * assim que a própria página escreve. Sem `milhar` (km, km/h), "21.097" segue
+ * sendo 21,097: ninguém digita 21 mil quilômetros.
  */
-export function parseNumero(bruto: string): number | null {
-  const s = bruto.trim().replace(/\s/g, '');
+export function parseNumero(bruto: string, milhar = false): number | null {
+  let s = bruto.trim().replace(/\s/g, '');
   if (!s) return null;
+  if (milhar && /^\d{1,3}(\.\d{3})+(,\d+)?$/.test(s)) s = s.replace(/\./g, '');
   if (!/^\d+([.,]\d+)?$/.test(s)) return null;
   const n = Number(s.replace(',', '.'));
   return Number.isFinite(n) ? n : null;
@@ -96,9 +100,10 @@ export function parseInteiro(bruto: string, max: number): number | null {
 /** Horas, minutos e segundos → segundos. Minutos e segundos até 59, salvo se for o único campo. */
 export function tempoDosCampos(h: string, m: string, s: string): number | null {
   const hh = parseInteiro(h, 99);
-  const so = !h.trim() && !s.trim();
-  const mm = parseInteiro(m, so ? 999 : 59);
   const ss = parseInteiro(s, 59);
+  // "90 min" com horas e segundos vazios ou zerados vale: só os minutos foram digitados.
+  const so = hh === 0 && ss === 0;
+  const mm = parseInteiro(m, so ? 999 : 59);
   if (hh === null || mm === null || ss === null) return null;
   const total = hh * 3600 + mm * 60 + ss;
   return total > 0 && total <= TEMPO_MAX_S ? total : null;
@@ -112,27 +117,6 @@ export function paceDosCampos(m: string, s: string): number | null {
   const total = mm * 60 + ss;
   return total > 0 ? total : null;
 }
-
-/**
- * Tempo digitado num campo só: "27:30", "1:45:00", "27'30", "27m30s",
- * "1h45", "1h45m30s", "45" (minutos). Devolve segundos.
- */
-export function parseTempo(bruto: string): number | null {
-  const s = bruto.trim().toLowerCase().replace(/\s/g, '').replace(/["”]/g, '');
-  if (!s) return null;
-  let m = s.match(/^(\d{1,2}):([0-5]\d):([0-5]\d)$/);
-  if (m) return valida(Number(m[1]) * 3600 + Number(m[2]) * 60 + Number(m[3]));
-  m = s.match(/^(\d{1,3})[:'’]([0-5]\d)$/);
-  if (m) return valida(Number(m[1]) * 60 + Number(m[2]));
-  m = s.match(/^(?:(\d{1,2})h)?(?:(\d{1,3})(?:m|min))?(?:(\d{1,2})s)?$/);
-  if (m && (m[1] || m[2] || m[3])) return valida(Number(m[1] ?? 0) * 3600 + Number(m[2] ?? 0) * 60 + Number(m[3] ?? 0));
-  m = s.match(/^(\d{1,2})h(\d{1,2})$/);
-  if (m) return valida(Number(m[1]) * 3600 + Number(m[2]) * 60);
-  m = s.match(/^\d{1,3}$/);
-  if (m) return valida(Number(s) * 60);
-  return null;
-}
-const valida = (seg: number): number | null => (seg > 0 && seg <= TEMPO_MAX_S ? seg : null);
 
 /** Distância numa unidade → km. */
 export function paraKm(valor: number, unidade: 'km' | 'm' | 'mi'): number {
@@ -158,31 +142,22 @@ export const velocidadeDe = (paceSKm: number): number => 3600 / paceSKm;
 export const paceDaVelocidade = (kmh: number): number => 3600 / kmh;
 export const pacePorMilha = (paceSKm: number): number => paceSKm * KM_POR_MILHA;
 
-export interface Resumo {
-  km: number;
-  segundos: number;
-  pace: number;
-  velocidade: number;
-}
-
-export const resumo = (km: number, segundos: number): Resumo => ({
-  km,
-  segundos,
-  pace: paceDe(km, segundos),
-  velocidade: velocidadeDe(paceDe(km, segundos)),
-});
-
 /**
  * Pace para fechar ABAIXO de uma meta ("sub 3", "sub 2"), em segundos
- * inteiros. Não é o pace arredondado: na maratona em 3 horas o pace exato é
- * 4:15,97, que aparece como 4:16 — e 4:16 cravado termina em 3:00:02. Para o
- * "sub", o segundo inteiro tem de ficar abaixo da meta: 4:15.
+ * inteiros por km. Não é o pace arredondado: na maratona em 3 horas o pace
+ * exato é 4:15,95, que aparece como 4:16 — e 4:16 cravado termina em 3:00:02.
+ *
+ * E vale a regra das provas de rua: o tempo oficial é arredondado para o
+ * segundo de cima (2:52:59,97 é registrado como 2:53:00). Por isso a conta
+ * pede o tempo total até a meta menos um segundo: o maior pace inteiro P com
+ * P × km ≤ meta − 1.
  */
-export const paceParaFicarAbaixo = (km: number, segundos: number): number => Math.ceil(segundos / km - 1e-9) - 1;
+export const paceParaFicarAbaixo = (km: number, segundos: number): number => Math.floor((segundos - 1) / km + 1e-9);
 
 /** Alerta de digitação: não bloqueia, só pede para conferir. */
-export function alerta(paceSKm: number): string | null {
-  if (paceSKm < PACE_ALERTA_RAPIDO)
+export function alerta(paceSKm: number, km?: number): string | null {
+  // Em tiro curto (400 m em 58 s), passar de 2:30/km é normal: o recorde de 5 km só vale de 3 km para cima.
+  if (paceSKm < PACE_ALERTA_RAPIDO && (km === undefined || km >= 3))
     return `Esse ritmo é mais rápido que o recorde mundial de 5 km. Confira a distância e o tempo informados.`;
   if (paceSKm > PACE_ALERTA_LENTO)
     return 'Esse ritmo é mais lento que 2 km/h, abaixo de uma caminhada devagar. Confira a distância e o tempo informados.';
@@ -201,6 +176,11 @@ export interface Parcial {
 }
 
 const rotuloKm = (km: number): string => `${formataKm(km)} km`;
+/** O último trecho leva até três casas: 5,001 km não pode aparecer como "5 km" repetido. */
+const rotuloFinal = (km: number): string =>
+  Math.abs(km - 42.195) < 1e-9 || Math.abs(km - 21.0975) < 1e-9
+    ? rotuloKm(km)
+    : `${km.toLocaleString('pt-BR', { maximumFractionDigits: 3 })} km`;
 
 /** Parcial por quilômetro, com o último trecho fracionário quando houver. */
 export function parciaisPorKm(km: number, paceSKm: number): Parcial[] {
@@ -208,7 +188,8 @@ export function parciaisPorKm(km: number, paceSKm: number): Parcial[] {
   const inteiros = Math.floor(km + 1e-9);
   for (let i = 1; i <= inteiros; i++) out.push({ km: i, rotulo: rotuloKm(i), trecho: paceSKm, acumulado: i * paceSKm });
   const resto = km - inteiros;
-  if (resto > 1e-6) out.push({ km, rotulo: rotuloKm(km), trecho: resto * paceSKm, acumulado: km * paceSKm });
+  // Menos de meio metro de sobra (5,0004 km) não vira linha "5 km · 0:00".
+  if (resto >= 0.0005) out.push({ km, rotulo: rotuloFinal(km), trecho: resto * paceSKm, acumulado: km * paceSKm });
   return out;
 }
 
@@ -221,13 +202,15 @@ export function parciaisChave(km: number, paceSKm: number): Parcial[] {
   const marcos = new Set<number>([1]);
   for (let k = 5; k < km - 1e-9; k += 5) marcos.add(k);
   if (km > 21.0975) marcos.add(21.0975);
+  // Ultramaratona: a passagem da maratona é o ponto que todo mundo quer ver.
+  if (km > 42.195 + 1e-9) marcos.add(42.195);
   marcos.add(km);
   const lista = [...marcos].sort((a, b) => a - b);
   let anterior = 0;
   return lista.map((k) => {
     const p: Parcial = {
       km: k,
-      rotulo: k === 21.0975 ? 'Meia (21,1 km)' : rotuloKm(k),
+      rotulo: k === 21.0975 ? 'Meia (21,1 km)' : k === 42.195 && k !== km ? 'Maratona (42,195 km)' : k === km ? rotuloFinal(k) : rotuloKm(k),
       trecho: (k - anterior) * paceSKm,
       acumulado: k * paceSKm,
     };
@@ -303,10 +286,10 @@ export function tabelaTempos(km: number, deMin: number, ateMin: number, passo = 
   return out;
 }
 
-/** Tabela de pace: tempo para 5, 10, meia e maratona, de 3:30 a 8:00, de 30 em 30 s. */
+/** Tabela de pace: tempo para 5, 10, meia e maratona, de 3:30 a 8:00, de 15 em 15 s. */
 export function tabelaPace(): { pace: number; tempos: number[] }[] {
   const out: { pace: number; tempos: number[] }[] = [];
-  for (let p = 210; p <= 480; p += 30) out.push({ pace: p, tempos: [5, 10, 21.0975, 42.195].map((k) => k * p) });
+  for (let p = 210; p <= 480; p += 15) out.push({ pace: p, tempos: [5, 10, 21.0975, 42.195].map((k) => k * p) });
   return out;
 }
 
@@ -335,6 +318,7 @@ export const formataDiferenca = (seg: number): string => `${seg < 0 ? '−' : ''
 
 /** Por extenso, para frases e leitor de tela: "27 min 30 s", "1 h 45 min", "4 h". */
 export function formataTempoExtenso(seg: number): string {
+  if (!Number.isFinite(seg) || seg < 0) return '—';
   const t = Math.round(seg);
   const h = Math.floor(t / 3600);
   const m = Math.floor((t % 3600) / 60);
@@ -352,7 +336,7 @@ export const formataVelocidade = (kmh: number, casas = 2): string =>
 
 /** Painel de esteira: uma casa. */
 export const formataEsteira = (kmh: number): string =>
-  kmh.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  !Number.isFinite(kmh) ? '—' : kmh.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
 /** Distância: "5", "21,1", "8,4", "42,195" (maratona fica com as três casas). */
 export function formataKm(km: number): string {
@@ -366,8 +350,10 @@ export function formataKm(km: number): string {
 export function categoriaDistancia(km: number): string {
   const perto = (x: number) => Math.abs(km - x) < 0.05;
   if (perto(1)) return '1k';
+  if (perto(3)) return '3k';
   if (perto(5)) return '5k';
   if (perto(10)) return '10k';
+  if (perto(15)) return '15k';
   if (perto(21.0975)) return '21k';
   if (perto(42.195)) return '42k';
   return 'outra';
@@ -375,6 +361,7 @@ export function categoriaDistancia(km: number): string {
 
 /** "5_6" = entre 5 e 6 min/km. Nunca o pace exato. */
 export function faixaPace(paceSKm: number): string {
+  if (!Number.isFinite(paceSKm) || paceSKm <= 0) return 'invalido';
   const m = Math.floor(paceSKm / 60);
   if (m < 3) return 'abaixo_3';
   if (m >= 12) return 'acima_12';

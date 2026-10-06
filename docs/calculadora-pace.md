@@ -82,9 +82,10 @@ valores.
 `pace_splits_viewed`, `pace_treadmill_viewed`, `pace_comparison_used`,
 `pace_shared`, `pace_related_tool_clicked`, `pace_find_personal_clicked`.
 
-Parâmetros só em categoria: `mode`, `distance_category` (1k, 5k, 10k,
-21k, 42k, outra), `pace_bucket` ("5_6" = entre 5 e 6 min/km). Nada de
-tempo exato.
+Parâmetros só em categoria: `mode`, `distance_category` (1k, 3k, 5k, 10k,
+15k, 21k, 42k, outra), `pace_bucket` ("5_6" = entre 5 e 6 min/km). Nada de
+tempo exato. Cálculo aberto por um link compartilhado leva `source=link`
+até a primeira interação, para não inflar a contagem de cálculos.
 
 ## 5. Fases
 
@@ -156,7 +157,72 @@ Decisões:
   numa só; relógio pulando foi para a do Strava; milha saiu, o texto e a
   ferramenta já cobrem).
 
-## 8. Como medir
+## 8. Auditoria de 06/10 (quatro especialistas, em paralelo)
+
+Matemática, código do client, UX/mobile/acessibilidade e SEO/conteúdo.
+Nenhum agente editou arquivo; cada achado foi conferido antes de corrigir.
+
+**O que estava errado e foi corrigido:**
+
+- **Fato desatualizado** (achado por dois especialistas, conferido em
+  várias fontes): a página dizia que só Kipchoge tinha corrido abaixo de 2
+  horas. Em 26/04/2026, na Maratona de Londres, Sabastian Sawe fez 1:59:30
+  em prova oficial — recorde mundial. FAQ reescrita.
+- **"Sub" estourava na meia**: o texto dava o pace arredondado (1h30 = 4:16,
+  que fecha em 1:30:01). Agora os textos usam `paceParaFicarAbaixo`, que
+  também passou a seguir a regra de rua (tempo oficial arredondado para o
+  segundo de cima): sub 2:53 na maratona é 4:05, não 4:06. Conferido por
+  força bruta em 2.786 metas. "4:15,97" era 4:15,95 — agora calculado.
+- **"1.500 metros" lido como 1,5 m**: `parseNumero` aceita milhar quando a
+  unidade é metros. "21.097" km segue decimal.
+- **Client**: `<details>` fechavam a cada tecla (e a página pulava ~900 px);
+  link do cálculo ficava apontando para um cálculo que já tinha saído da
+  tela; "ver todos os km" persistia entre distâncias e gerava eventos
+  falsos; evento saía com o modo errado; mesmo cálculo contado duas vezes;
+  rótulo do "copiar" preso; milhas e metros não voltavam pelo link; 11 km/h
+  virava 11,01; avisos piscando no meio da digitação ("10,", "7" a caminho
+  de "75", alerta de recorde com "2" antes de "27"); compartilhar falhava
+  calado. Teste de regressão no navegador para cada um.
+- **Acessibilidade**: tabelas do resultado não eram alcançáveis pelo
+  teclado a 320 px (WCAG 2.1.1) — agora `role=region tabindex=0`; o foco ia
+  para um campo ao trocar de modo (abria o teclado do celular e escondia o
+  cartão escolhido) — agora fica no botão e o modo é anunciado; campos com
+  erro ganham `aria-invalid`; "+"/"−" dos `<summary>` não são lidos.
+- **Mobile**: o app começava em 822 px a 360 px de largura (1,9 tela);
+  hero enxuto, agora em 448 px. As 15 metas viram faixa rolável. Tabelas
+  lado a lado empilham abaixo de 560 px. Tabela de pace com a 1ª coluna
+  fixa e passos de 15 s. O WhatsApp flutuante some enquanto a calculadora
+  está na tela. Placeholders numéricos saíram (pareciam valores digitados).
+  Botão "Limpar".
+- **Conteúdo**: dor sem ressalva na FAQ de "bom pace" (regra do projeto) e
+  "melhorar sem lesão" (promessa) corrigidos; "nenhum número escrito à mão"
+  era falso (recordes e estudo são digitados) e foi reescrito; afirmações
+  sem fonte ("para muita gente", "meta clássica") viraram o que os prints
+  mostram ("das que mais aparecem nas buscas"); pace 10:00 deixou de ser
+  "fronteira com o trote" (a transição natural fica perto de 7 km/h).
+- **Estrutura**: km/h subiu para logo depois de "Como calcular"; 5 km e 10
+  km ganharam H3 próprios; a tabela de metas saiu (as 15 linhas já estavam
+  nas tabelas por distância e carregavam o erro do "sub"); a seção de
+  natação e bike saiu (as FAQs cobrem). FAQs de 20 para 17, sem
+  duplicar o corpo.
+- **Link de entrada**: dica em `/calorias/hyrox/` sob o campo de pace
+  (convite de ferramenta, `atualizadoEm` não sobe).
+
+**Ficou de fora, com motivo:**
+
+- Contraste de `.related-link`, `#w-*` e `#cookie-aceitar` (3,89:1 e
+  3,11:1): componentes do site inteiro, aparecem igual na 1RM. Correção
+  global separada.
+- `datePublished` e ligação "Revisado por" ↔ `Person` no schema: padrão de
+  `articleSchema` no site todo; infraestrutura, de uma vez, sem tocar datas.
+- Links de texto para cá em `/guias/primeira-corrida-de-rua/` e
+  `/guias/personal-trainer-para-corredores/`: a exceção do CLAUDE.md para
+  link em palavra existente cobre calculadoras de calorias; para a de pace,
+  pela regra atual, subiria `atualizadoEm`. Decisão do Renato.
+- Recolher linhas das tabelas longas: esconderia justamente as linhas que a
+  busca procura ("5 km em 30 min" fica no fim da tabela de 5 km).
+
+## 9. Como medir
 
 Search Console: a URL é nova. Comparar em 30 dias as consultas com "pace",
 "ritmo" e "esteira". GA4: proporção de cálculos por modo (qual intenção

@@ -35,7 +35,6 @@ import {
   parciaisPorKm,
   paraKm,
   parseNumero,
-  parseTempo,
   pista,
   projecao,
   tabelaEsteira,
@@ -103,12 +102,10 @@ console.log('\nArredondamento');
 console.log('\nEntrada brasileira');
 {
   ok(parseNumero('10,5') === 10.5 && parseNumero('10.5') === 10.5 && parseNumero('5') === 5, '"10,5" e "10.5"');
-  ok(parseNumero('1.000') === 10 || parseNumero('1.000') === 1, '"1.000" lido como decimal (1), não como milhar');
+  ok(parseNumero('1.500', true) === 1500 && parseNumero('10.000', true) === 10000 && parseNumero('1.500,5', true) === 1500.5, 'metros: "1.500" é mil e quinhentos');
+  ok(parseNumero('21.097') === 21.097 && parseNumero('1.5', true) === 1.5, 'km: "21.097" segue decimal; "1.5" em metros também');
   ok(parseNumero('') === null && parseNumero('abc') === null && parseNumero('-3') === null, 'vazio, letras e negativo: nada');
-  ok(parseTempo('27:30') === 1650 && parseTempo('1:45:00') === 6300, '"27:30" e "1:45:00"');
-  ok(parseTempo("27'30") === 1650 && parseTempo('27m30s') === 1650, `"27'30" e "27m30s"`);
-  ok(parseTempo('1h45') === 6300 && parseTempo('1h45m30s') === 6330 && parseTempo('45') === 2700, '"1h45", "1h45m30s", "45" (min)');
-  ok(parseTempo('0') === null && parseTempo('1:99') === null && parseTempo('abc') === null, 'tempo zero ou malformado: nada');
+  ok(tempoDosCampos('0', '90', '') === 5400 && tempoDosCampos('', '90', '0') === 5400 && tempoDosCampos('1', '90', '') === null, '"90" min com horas/segundos zerados vale; com 1 h, não');
   ok(tempoDosCampos('', '27', '30') === 1650 && tempoDosCampos('1', '45', '') === 6300, 'campos h/min/s: vazio vale zero');
   ok(tempoDosCampos('', '150', '') === 9000, 'só minutos: aceita 150 min');
   ok(tempoDosCampos('', '75', '10') === null, 'com segundos preenchidos, minutos vão até 59');
@@ -126,6 +123,7 @@ console.log('\nValidação e alertas');
   ok(alerta(paceDe(5, 120)) !== null, '5 km em 2 min: pede para conferir');
   ok(alerta(300) === null && alerta(800) === null, '5:00/km e caminhada de 13:20/km: sem alerta');
   ok(alerta(paceDe(1, 3000)) !== null, '1 km em 50 min: pede para conferir');
+  ok(alerta(paceDe(0.4, 58), 0.4) === null && alerta(paceDe(5, 600), 5) !== null, 'tiro de 400 m em 58 s não alerta; 5 km em 10 min, sim');
   ok(paceValido(paceDe(100, 10 * 3600)), 'ultramaratona de 100 km em 10 h funciona');
 }
 
@@ -197,11 +195,33 @@ console.log('\nMetas "sub": o pace arredondado pode estourar a meta');
   ok(formataPace(paceParaFicarAbaixo(M, 4 * 3600)) === '5:41', 'sub 4 pede 5:41');
   ok(formataPace(paceParaFicarAbaixo(21.0975, 2 * 3600)) === '5:41', 'meia sub 2 pede 5:41');
   ok(formataPace(paceParaFicarAbaixo(5, 25 * 60)) === '4:59', 'sub 25 nos 5 km: 5:00 cravado empata, então 4:59');
+  ok(formataPace(paceParaFicarAbaixo(M, (2 * 60 + 53) * 60)) === '4:05', 'sub 2:53: 4:06 dá 2:52:59,97, registrado 2:53:00 — então 4:05');
+  ok(tempoDe(21.0975, paceParaFicarAbaixo(21.0975, 90 * 60)) <= 90 * 60 - 1, 'meia sub 1h30 fecha pelo menos 1 s abaixo');
+  // Força bruta: o pace sugerido sempre fecha ≤ meta − 1 s, e 1 s a menos de pace já não fecharia.
+  let erradas = 0;
+  for (const dist of [1, 3, 5, 10, 15, 21.0975, 42.195])
+    for (let min = 3; min <= 400; min++) {
+      const meta = min * 60;
+      const ps = paceParaFicarAbaixo(dist, meta);
+      if (ps < 1) continue;
+      if (Math.ceil(ps * dist - 1e-9) >= meta || Math.ceil((ps + 1) * dist - 1e-9) < meta) erradas++;
+    }
+  ok(erradas === 0, `"sub" conferido em ${7 * 398} metas: ${erradas} erradas`);
   ok(formataTempo(tempoDe(M, 330)) === '3:52:04', 'maratona a 5:30 = 3:52:04');
+}
+
+console.log('\nParciais: bordas');
+{
+  const p5 = parciaisPorKm(5.001, 300);
+  ok(p5.length === 6 && p5[5].rotulo === '5,001 km', '5,001 km: última linha "5,001 km", sem "5 km" repetido');
+  ok(parciaisPorKm(5.0004, 300).length === 5, 'sobra de menos de meio metro não vira linha');
+  ok(parciaisChave(50, 360).some((x) => x.rotulo.startsWith('Maratona')), 'ultra de 50 km mostra a passagem da maratona');
 }
 
 console.log('\nAnalytics só em categoria');
 {
+  ok(categoriaDistancia(3) === '3k' && categoriaDistancia(15) === '15k', 'os botões de 3 e 15 km têm categoria própria');
+  ok(faixaPace(NaN) === 'invalido' && formataEsteira(NaN) === '—' && formataTempoExtenso(-30) === '—', 'formatadores protegidos contra NaN e negativo');
   ok(categoriaDistancia(5) === '5k' && categoriaDistancia(21.0975) === '21k' && categoriaDistancia(8.4) === 'outra', 'distância → 5k, 21k, outra');
   ok(faixaPace(330) === '5_6' && faixaPace(150) === 'abaixo_3' && faixaPace(800) === 'acima_12', 'pace → faixa "5_6"');
 }
