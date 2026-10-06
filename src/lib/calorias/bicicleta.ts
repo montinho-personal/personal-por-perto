@@ -485,8 +485,33 @@ export function fraseContexto(pesoKg: number, r: Resultado): string {
 /* ───────────────────────── Tabelas ───────────────────────── */
 
 export const PESOS_TABELA = [50, 60, 70, 80, 90, 100, 120] as const;
-export const TEMPOS_TABELA = [15, 30, 45, 60, 90, 120] as const;
-export const DISTANCIAS_TABELA = [5, 10, 20, 30, 50] as const;
+/*
+ * Tempos e distâncias que a busca pede (prints de 06/10/2026): o
+ * autocompletar e as relacionadas trazem 10, 15, 20 e 30 minutos e 1 hora,
+ * e 1, 5, 10, 15, 20 e 30 km. 45 minutos, 90 minutos, 2 horas e 50 km
+ * ficam — são treino de quem já pedala.
+ */
+export const TEMPOS_TABELA = [10, 15, 20, 30, 45, 60, 90, 120] as const;
+export const DISTANCIAS_TABELA = [1, 5, 10, 15, 20, 30, 50] as const;
+
+/**
+ * Os três ritmos das tabelas por tempo e distância. A busca pergunta "1 hora
+ * de bicicleta" sem dizer a velocidade, e no pedal a resposta muda mais com
+ * ela do que com qualquer outra coisa — por isso a tabela dá as três em vez
+ * de escolher uma. São pontos medidos ou interpolados da tabela do Compêndio:
+ * passeio (abaixo de 16 km/h), treino tranquilo e grupo rápido.
+ */
+export const RITMOS_TABELA = [
+  { velocidade: 14, nome: 'Passeio' },
+  { velocidade: 20, nome: 'Moderado' },
+  { velocidade: 28, nome: 'Forte' },
+] as const;
+
+/** Tempos da ergométrica que a busca pede: 15, 20, 25 e 30 minutos e 1 hora. */
+export const TEMPOS_ERGO_TABELA = [15, 20, 25, 30, 45, 60] as const;
+
+/** Os três esforços da tabela da ergométrica por tempo — quem não tem watts no painel. */
+export const NIVEIS_TABELA_ERGO: NivelId[] = ['leve', 'moderado', 'forte'];
 
 export interface LinhaVelocidade {
   faixa: FaixaVelocidade;
@@ -542,6 +567,32 @@ export const tabelaPorDistancia = (pesoKg: number, velocidade: number): LinhaDis
     const r = deDistancia(km, pesoKg, velocidade);
     return { km, kcal: arredondaKcal(r.kcal), minutos: r.minutos };
   });
+
+export interface LinhaPorRitmo {
+  /** Minutos (tabela por tempo) ou quilômetros (tabela por distância). */
+  valor: number;
+  /** Uma entrada por ritmo de RITMOS_TABELA, na mesma ordem. */
+  kcal: number[];
+}
+
+export const tabelaTempoPorRitmo = (pesoKg: number): LinhaPorRitmo[] =>
+  TEMPOS_TABELA.map((minutos) => ({
+    valor: minutos,
+    kcal: RITMOS_TABELA.map((r) => arredondaKcal(deTempoRua(minutos, pesoKg, r.velocidade).kcal)),
+  }));
+
+export const tabelaDistanciaPorRitmo = (pesoKg: number): LinhaPorRitmo[] =>
+  DISTANCIAS_TABELA.map((km) => ({
+    valor: km,
+    kcal: RITMOS_TABELA.map((r) => arredondaKcal(deDistancia(km, pesoKg, r.velocidade).kcal)),
+  }));
+
+/** Ergométrica por tempo, nos três esforços de NIVEIS_TABELA_ERGO. */
+export const tabelaErgoPorTempo = (pesoKg: number): LinhaPorRitmo[] =>
+  TEMPOS_ERGO_TABELA.map((minutos) => ({
+    valor: minutos,
+    kcal: NIVEIS_TABELA_ERGO.map((id) => arredondaKcal(deErgometrica(minutos, pesoKg, nivel(id).watts).kcal)),
+  }));
 
 export interface LinhaErgo {
   faixa: FaixaPotencia;

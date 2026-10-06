@@ -404,6 +404,28 @@ prints), "2 mil calorias por dia" (calculadora de gasto diário), "7.000
 calorias" e "por dia". Linha de base: 107 impressões, 0 clique, posição
 6,9.
 
+**Bicicleta** (`/calorias/bicicleta/`, prints de 06/10). Autocompletar de
+"quantas calorias gasta andar de bicicleta": 30 minutos, 1 hora, 10
+minutos e 1, 5, 10 e 30 km. Relacionadas: 15, 20 e 25 minutos, 15 e 20
+km, e metade delas na ergométrica (15, 25 e 30 minutos, 1 hora,
+"calculadora de calorias bicicleta ergométrica"). PAA: 30 minutos, 1 hora,
+"é possível emagrecer pedalando 30 minutos por dia?", "pedalar 1 hora por
+dia ajuda a emagrecer?". A IA dá 300 a 700 kcal/h (leve 300–400, moderado
+500–600, intenso 700–900) — a nossa conta para 70 kg a 14, 20 e 28 km/h dá
+294, 563 e 882, as três dentro. Entraram: título "Quantas Calorias Gasta
+Andar de Bicicleta? E na Ergométrica" (antes "Quantas Calorias a Bicicleta
+Gasta? Calcule o Seu") e H1 no fraseado da busca; descrição com o número
+do motor; as tabelas por tempo (10 minutos a 2 horas) e por distância (1 a
+50 km) nos três ritmos, no lugar de uma velocidade só, com os tempos e
+distâncias da busca no motor; tabela da ergométrica por tempo (15 a 60
+minutos) em três esforços; as perguntas 1 km (21 a 31 kcal, contra ~56
+caminhando e ~77 correndo — veio dos prints da caminhada), 10 ou 20 km, 30
+minutos e 1 hora de ergométrica (no lugar da de 45 minutos), e "é possível
+emagrecer pedalando 30 minutos por dia?" (no lugar de "bicicleta
+emagrece?", com 1 hora por dia dentro). Saiu do FAQ, sem sair da página, a
+do vento. "Qual esporte gasta mais" NÃO apareceu nestes prints. Linha de
+base: 101 impressões, 0 clique, posição 7,1.
+
 ## O que a fila 1 produziu, medido em 12/09
 
 Resultado por artigo, somando as duas formas de URL:

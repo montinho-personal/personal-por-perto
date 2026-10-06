@@ -37,11 +37,14 @@ import {
   parseNumero,
   pesoValido,
   simulacaoUmQuilo,
+  tabelaDistanciaPorRitmo,
+  tabelaErgoPorTempo,
   tabelaErgometrica,
   tabelaPorDistancia,
   tabelaPorPeso,
   tabelaPorTempo,
   tabelaPorVelocidade,
+  tabelaTempoPorRitmo,
   velocidadeMedida,
   velocidadeValida,
   wattsValidos,
@@ -274,6 +277,28 @@ console.log('\n[11] Tabelas\n');
   const te = tabelaErgometrica(PESO_PADRAO, 45);
   ok(te.length === FAIXAS_ERGO.length, 'a tabela da ergométrica cobre as 7 potências');
   ok(te.every((l, i) => i === 0 || l.kcal > te[i - 1].kcal), 'mais watts gasta mais');
+
+  /*
+   * Tabelas por ritmo (prints de 06/10). Valores à mão, 70 kg:
+   * 30 min a 14 km/h: 4,0 × 3,5 × 70 / 200 × 30 = 147. A 20 km/h o MET
+   * interpola entre 17,5 (6,8) e 21 (8,0): 6,8 + 2,5/3,5 × 1,2 = 7,657 → 281.
+   * A 28 km/h: 12 × 1,225 × 30 = 441. 1 km a 14 km/h: 4,2857 min → 21.
+   * Ergométrica 30 min: leve 60 W interpola 5,0 + 10/25 × 1,0 = 5,4 → 198;
+   * moderado 100 W, 6,8 → 250; forte 150 W, 10,3 → 379.
+   */
+  const ttr = tabelaTempoPorRitmo(70);
+  const r30 = ttr.find((l) => l.valor === 30)!;
+  ok(r30.kcal.join() === '147,281,441', `30 min nos três ritmos: 147, 281, 441 (deu ${r30.kcal.join(', ')})`);
+  ok(ttr.every((l) => l.kcal[0] < l.kcal[1] && l.kcal[1] < l.kcal[2]), 'no mesmo tempo, ritmo maior gasta mais');
+  ok([10, 20, 30, 60].every((m) => ttr.some((l) => l.valor === m)), 'a tabela por tempo tem 10, 20, 30 e 60 min, que a busca pede');
+  const tdr = tabelaDistanciaPorRitmo(70);
+  ok(tdr[0].valor === 1 && tdr[0].kcal[0] === 21, `1 km a 14 km/h: 21 kcal (deu ${tdr[0].kcal[0]})`);
+  ok([1, 5, 10, 15, 20, 30].every((k) => tdr.some((l) => l.valor === k)), 'a tabela por distância tem 1, 5, 10, 15, 20 e 30 km');
+  ok(tdr.every((l) => l.kcal[2] > l.kcal[0]), 'a mesma distância mais rápida gasta mais (o oposto da corrida)');
+  const ter = tabelaErgoPorTempo(70);
+  const e30 = ter.find((l) => l.valor === 30)!;
+  ok(e30.kcal.join() === '198,250,379', `ergométrica 30 min: 198, 250, 379 (deu ${e30.kcal.join(', ')})`);
+  ok([15, 25, 30, 60].every((m) => ter.some((l) => l.valor === m)), 'a ergométrica por tempo tem 15, 25, 30 e 60 min');
 }
 
 /* ------------------------------------------------------------------ */
