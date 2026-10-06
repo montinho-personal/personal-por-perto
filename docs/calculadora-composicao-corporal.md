@@ -210,6 +210,40 @@ de métodos e as decisões de produto.
 - **"Como medir a cintura (homem)" e "altura da cintura"**: as instruções
   de medição, de novo, como intenção própria.
 
+### 3.6 "relação cintura quadril" (07/10)
+
+- **Autocompletar:** calculadora · tabela · mulher · e risco cardiovascular
+  · homem · o que é · **tabela oms** · **risco moderado**.
+- **Outras pessoas pesquisaram:** **ministério da saúde** · classificação ·
+  risco moderado · ideal · valores de referência · homem · calculadora ·
+  tabela · tabela oms · mulher · fórmula · relação cintura altura.
+- **As pessoas também perguntam:** Qual a relação cintura-quadril ideal? ·
+  Como fazer o cálculo? · Qual a tabela de relação entre cintura e
+  quadril? · **O que significa relação cintura quadril na bioimpedância?**
+- **Visão geral de IA** (cita vitat e Tua Saúde): cintura "na parte mais
+  estreita, logo acima do umbigo **ou** entre a última costela e o osso do
+  quadril" (mistura de protocolos, o erro que o benchmark apontou);
+  quadril na parte mais larga dos glúteos.
+- **Imagens:** tabela por sexo e faixa etária (20–29 a 60–69) com colunas
+  baixo / moderado / alto / muito alto — é de onde vem a busca "risco
+  moderado".
+- **Concorrência:** Associação Brasileira de Lipedema ("Calcular IMC e
+  relação cintura-quadril (grátis)", cortes 0,85 mulheres / 0,90 homens).
+
+**O que muda:**
+
+- **Tabela da OMS** (0,90 / 0,85) como referência principal, com fonte.
+- **Tabela por idade ("risco moderado")**: é muito buscada; só entra se a
+  origem primária for confirmada (suspeita: Bray & Gray 1988, reproduzida
+  por Heyward). Se entrar, como referência populacional, sem cor de
+  semáforo e sem rótulo de diagnóstico.
+- **"Ministério da Saúde"**: verificar o que os documentos brasileiros
+  adotam (em pesquisa).
+- **RCQ na bioimpedância** vira FAQ: é a mesma razão; alguns aparelhos
+  estimam pelo modelo deles; a fita confere.
+- **Um protocolo de cintura por vez**, dito na instrução — a própria
+  visão geral de IA mistura dois.
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
