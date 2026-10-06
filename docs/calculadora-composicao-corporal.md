@@ -64,6 +64,38 @@ de métodos e as decisões de produto.
 - **"Feminino" aparece duas vezes** (calcular e tabela): a página precisa
   de referência de percentual por sexo — só com fonte rastreável.
 
+### 3.2 "percentual de gordura fita métrica" (07/10)
+
+- **Autocompletar:** fita métrica · como medir percentual de gordura **sem**
+  fita métrica · com fita métrica · com fita.
+- **Outras pessoas pesquisaram:** qual o percentual de gordura ideal **por
+  idade** · feminino · tabela feminino · calculadora · **masculino** ·
+  cálculo 7 dobras.
+- **As pessoas também perguntam:** Quanto é 20% de gordura corporal? · Onde
+  medir o percentual de gordura? · Quanto é 1% de gordura? · Quanto é 15% de
+  gordura corporal?
+- **Visão geral de IA:** método da Marinha; fita maleável que não estique;
+  em pé, ombros relaxados, fita justa sem apertar; altura sem sapatos.
+- **Concorrência visível:** snippet com "ideal nos homens entre 6 a 24% e
+  nas mulheres entre 14 a 31%" (são as faixas da ACE, tabela comercial —
+  ver seção 4); fabiotakai.com.br (nutricionista) com calculadora da
+  Marinha.
+
+**O que muda:**
+
+- **"Por idade" pede referência por faixa etária** — e só com fonte
+  científica (candidata: Gallagher et al. 2000, por sexo e idade). Reforça
+  pedir a faixa etária, não só "adulto".
+- **"Quanto é 15% / 20% / 1%" vira bloco próprio**: o que o percentual
+  significa em quilos para o peso da pessoa (no resultado) e na página,
+  com exemplo. É a pergunta de quem acabou de receber o número.
+- **"Onde medir"**: as instruções de medição são intenção de busca, não
+  só ajuda de formulário — merecem seção no texto, com as ilustrações.
+- **"Sem fita métrica"**: responder no texto (barbante + régua, ou o que
+  dá para estimar só com peso e altura, e por que o erro é maior).
+- **"Masculino"** aparece ao lado de "feminino": referência por sexo dos
+  dois lados.
+
 ## 4. Métodos
 
 Em pesquisa (fontes primárias: Hodgdon & Beckett 1984, Exército dos EUA
