@@ -41,6 +41,7 @@ import {
   tabelaEsteira,
   tabelaPace,
   tabelaVelocidades,
+  tabelaTempos,
   tempoDe,
   tempoDosCampos,
   velocidadeDe,
@@ -158,11 +159,28 @@ console.log('\nComparar');
 console.log('\nTabelas e metas');
 {
   const e = tabelaEsteira();
-  ok(e[0].pace === 210 && e[e.length - 1].pace === 540, 'esteira de 3:30 a 9:00/km');
+  ok(e[0].pace === 180 && e[e.length - 1].pace === 540, 'esteira de 3:00 a 9:00/km');
+  ok(e.some((l) => l.pace === 180 && formataEsteira(l.kmh) === '20,0'), 'esteira: pace 3:00 = 20,0 km/h');
   ok(e.some((l) => l.pace === 300 && formataEsteira(l.kmh) === '12,0'), 'esteira: 5:00/km = 12,0');
   ok(e.some((l) => l.pace === 390 && formataEsteira(l.kmh) === '9,2'), 'esteira: 6:30/km = 9,2');
   const v = tabelaVelocidades();
-  ok(v.length === 27 && v.some((l) => l.kmh === 10 && formataPace(l.pace) === '6:00'), 'velocidades de 5 a 18 km/h; 10 km/h = 6:00/km');
+  ok(v.length === 31 && v.some((l) => l.kmh === 10 && formataPace(l.pace) === '6:00'), 'velocidades de 5 a 20 km/h; 10 km/h = 6:00/km');
+  ok(v.some((l) => l.kmh === 14 && formataPace(l.pace) === '4:17'), '14 km/h = 4:17/km');
+  ok(v.some((l) => l.kmh === 12 && formataPace(l.pace) === '5:00'), '12 km/h = 5:00/km');
+  ok(formataVelocidade(velocidadeDe(390)) === '9,23', 'pace 6:30 = 9,23 km/h');
+  const t5 = tabelaTempos(5, 15, 40);
+  ok(t5.length === 26, 'tabela de 5 km: 15 a 40 minutos, minuto a minuto');
+  ok(formataPace(t5.find((l) => l.segundos === 23 * 60)!.pace) === '4:36', '5 km em 23 min = 4:36/km');
+  ok(formataPace(t5.find((l) => l.segundos === 17 * 60)!.pace) === '3:24', '5 km em 17 min = 3:24/km');
+  ok(formataPace(t5.find((l) => l.segundos === 37 * 60)!.pace) === '7:24', '5 km em 37 min = 7:24/km');
+  const t10 = tabelaTempos(10, 40, 90, 5);
+  ok(t10.length === 11 && formataPace(t10.find((l) => l.segundos === 70 * 60)!.pace) === '7:00', '10 km: 40 min a 1h30; 1h10 = 7:00/km');
+  ok(formataPace(t10[t10.length - 1].pace) === '9:00', '10 km em 1 hora e meia = 9:00/km');
+  const t21 = tabelaTempos(21.0975, 80, 180, 5);
+  const p21 = (min: number) => formataPace(t21.find((l) => l.segundos === min * 60)!.pace);
+  ok(p21(90) === '4:16' && p21(105) === '4:59' && p21(110) === '5:13' && p21(120) === '5:41', 'meia: 1h30 4:16, 1h45 4:59, 1h50 5:13, 2h 5:41');
+  const t42 = tabelaTempos(42.195, 180, 360, 15);
+  ok(t42.length === 13 && formataPace(t42.find((l) => l.segundos === 300 * 60)!.pace) === '7:07', 'maratona: 3h a 6h; 5h = 7:07/km');
   const tp = tabelaPace();
   ok(tp.some((l) => l.pace === 300 && formataTempo(l.tempos[0]) === '25:00' && formataTempo(l.tempos[1]) === '50:00'), 'tabela de pace: 5:00 → 25:00 e 50:00');
   ok(METAS.every((m) => distanciaPronta(m.distancia)), 'toda meta aponta para uma distância pronta');

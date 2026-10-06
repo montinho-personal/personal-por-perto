@@ -315,6 +315,8 @@ export function iniciarCalculadoraPace(): void {
   function calcula(): void {
     aviso.hidden = true;
     const unidadeMi = !distId && f.unidade.value === 'mi';
+    // Na natação o ritmo é por 100 m: aparece quando a distância vem em metros.
+    const emMetros = !distId && f.unidade.value === 'm';
     const km = distanciaKm();
     const t = tempoS();
 
@@ -328,7 +330,7 @@ export function iniciarCalculadoraPace(): void {
       const html = `
         <p class="pc-rotulo">${meta ? `Para ${formataKm(km)} km em ${formataTempo(t)}, você precisa manter` : 'Seu pace'}</p>
         <p class="pc-numero">${formataPace(p)} <span>/km</span></p>
-        <dl class="pc-sec">${linha('Velocidade média', `${formataVelocidade(velocidadeDe(p))} km/h`)}${linha('Distância', `${formataKm(km)} km`)}${linha('Tempo', formataTempo(t))}</dl>
+        <dl class="pc-sec">${emMetros ? linha('Por 100 m (natação)', `${formataPace(p / 10)}/100 m`) : ''}${linha('Velocidade média', `${formataVelocidade(velocidadeDe(p))} km/h`)}${linha('Distância', `${formataKm(km)} km`)}${linha('Tempo', formataTempo(t))}</dl>
         ${al ? `<p class="pc-alerta">${al}</p>` : ''}
         ${blocoParciais(km, p)}${blocoExtras(p, unidadeMi)}${acoes(p)}`;
       return mostra(

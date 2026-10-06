@@ -266,17 +266,32 @@ export const REDUCOES = [5, 10, 15, 30] as const;
 
 /* ───────────────────────── Esteira ───────────────────────── */
 
-/** Pace → velocidade da esteira, de 3:30 a 9:00, de 15 em 15 s. */
+/** Pace → velocidade da esteira, de 3:00 a 9:00, de 15 em 15 s (a busca pede "pace 3 em km/h"). */
 export function tabelaEsteira(): { pace: number; kmh: number }[] {
   const out: { pace: number; kmh: number }[] = [];
-  for (let p = 210; p <= 540; p += 15) out.push({ pace: p, kmh: velocidadeDe(p) });
+  for (let p = 180; p <= 540; p += 15) out.push({ pace: p, kmh: velocidadeDe(p) });
   return out;
 }
 
-/** Velocidade da esteira → pace, de 5 a 18 km/h, de meio em meio. */
+/** Velocidade da esteira → pace, de 5 a 20 km/h, de meio em meio. */
 export function tabelaVelocidades(): { kmh: number; pace: number }[] {
   const out: { kmh: number; pace: number }[] = [];
-  for (let v = 5; v <= 18 + 1e-9; v += 0.5) out.push({ kmh: v, pace: paceDaVelocidade(v) });
+  for (let v = 5; v <= 20 + 1e-9; v += 0.5) out.push({ kmh: v, pace: paceDaVelocidade(v) });
+  return out;
+}
+
+/**
+ * Tempo de prova → pace e velocidade, de `passo` em `passo` minutos. A busca
+ * pergunta "5 km em 23 minutos, qual o pace?" para cada minuto de 15 a 40, e
+ * "10 km em 1 hora e 10" para os de 10 km: uma tabela responde todas, sem uma
+ * página por tempo.
+ */
+export function tabelaTempos(km: number, deMin: number, ateMin: number, passo = 1): { segundos: number; pace: number; kmh: number }[] {
+  const out: { segundos: number; pace: number; kmh: number }[] = [];
+  for (let m = deMin; m <= ateMin; m += passo) {
+    const pace = paceDe(km, m * 60);
+    out.push({ segundos: m * 60, pace, kmh: velocidadeDe(pace) });
+  }
   return out;
 }
 

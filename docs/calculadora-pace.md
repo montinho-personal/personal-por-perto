@@ -118,7 +118,37 @@ tempo exato.
   são de componentes do site inteiro (cards de relacionados, botão do
   cookie) e aparecem igual na 1RM.
 
-## 7. Como medir
+## 7. Prints do Google (06/10, mesmo dia da publicação)
+
+O Renato mandou ~20 prints de autocompletar, "Outras pessoas pesquisaram",
+"As pessoas também perguntam" e visão geral de IA. Os grupos que
+apareceram e onde cada um entrou:
+
+| Grupo de busca | Onde entrou |
+|---|---|
+| pace ↔ km/h (tabela, "pace 6 30 em km h", "14 km h pace", "pace 3 em km h", 9/10/12/15 km/h) | título passou a "Calculadora de Pace e Km/h…"; tabelas da esteira ampliadas para 3:00–9:00 e 5–20 km/h; FAQ de conversão com "minutos decimais" e os valores mais buscados |
+| esteira ("quanto é o pace na esteira", "1 km na esteira", "esteira x rua", "velocidade 10", "pace 7") | três FAQs (pace na esteira, 1 km, esteira × rua) e H3 "Pace na esteira x rua"; "vale para qualquer marca" (Movement, Matrix…) |
+| 5 km em X minutos (15 a 37) e "pace ideal 5K", "é bom 22/37 min", "possível 14 min" | tabela de 5 km minuto a minuto (15–40) e três FAQs |
+| 10 km (1 hora, 1h10, 1h30, 40 min; "pace de 10 é bom") | tabela de 10 km (40 min–1h30) e FAQ de 1 hora fundida com "é bom" |
+| meia maratona (1h30, 1h45, 1h50, 2h, sub 2; "possível 21 km em 2h", "4:30 é bom") | tabelas de meia (1h20–3h) e maratona (3h–6h) e duas FAQs; "4:30/7/10 é bom" numa só |
+| natação, bike, Strava, tempo run | linha "por 100 m (natação)" quando a distância é em metros; seção "Pace na natação e na bike"; FAQs de Strava e tempo run |
+
+Decisões:
+
+- **Nenhuma página por tempo** ("pace 5 km 23 min"): uma tabela gerada pelo
+  motor (`tabelaTempos`) responde todos os minutos. A política de
+  conteúdo em escala é o risco; a tabela é a resposta útil.
+- **"Bom ou ruim"** sem tabela de nível (iniciante/intermediário/avançado,
+  como a visão geral de IA mostra): não há fonte boa para essas faixas.
+  A resposta é o pace de cada caso em números e "bom para fases
+  diferentes".
+- **Recordes** só como "abaixo de 13 minutos" (5 km de rua), afirmação que
+  continua verdadeira se o recorde cair.
+- **FAQ em 18**: fundidas em vez de somadas (10 km + "é bom"; 4:30, 7 e 10
+  numa só; relógio pulando foi para a do Strava; milha saiu, o texto e a
+  ferramenta já cobrem).
+
+## 8. Como medir
 
 Search Console: a URL é nova. Comparar em 30 dias as consultas com "pace",
 "ritmo" e "esteira". GA4: proporção de cálculos por modo (qual intenção

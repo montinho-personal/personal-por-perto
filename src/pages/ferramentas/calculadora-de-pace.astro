@@ -51,6 +51,7 @@ import {
   pista,
   tabelaEsteira,
   tabelaPace,
+  tabelaTempos,
   tabelaVelocidades,
   tempoDe,
   velocidadeDe,
@@ -80,6 +81,24 @@ const PISTA_4 = pista(240);
 const CMP_10 = comparar(330, 320);
 const ESTEIRA_6 = velocidadeDe(360);
 const ESTEIRA_530 = velocidadeDe(330);
+const ESTEIRA_7 = velocidadeDe(420);
+const KMH_630 = velocidadeDe(390);
+const P_14 = paceDaVelocidade(14);
+const P_12 = paceDaVelocidade(12);
+const P_8 = paceDaVelocidade(8);
+const P_10_45 = pMeta('10k', 45);
+const P_10_40 = pMeta('10k', 40);
+const P_10_70 = pMeta('10k', 70);
+const P_10_90 = pMeta('10k', 90);
+const P5_20 = pMeta('5k', 20);
+const P5_22 = pMeta('5k', 22);
+const P5_37 = pMeta('5k', 37);
+const P5_14 = pMeta('5k', 14);
+const TAB_5KM = tabelaTempos(5, 15, 40);
+const TAB_10KM = tabelaTempos(10, 40, 90, 5);
+const TAB_MEIA = tabelaTempos(km('21k'), 80, 180, 5);
+const TAB_MARATONA = tabelaTempos(km('42k'), 180, 360, 15);
+const P21 = (min: number) => pMeta('21k', min);
 const P_CAMINHADA = paceDaVelocidade(5);
 const TEMPO_10_A_6 = tempoDe(10, 360);
 
@@ -92,8 +111,8 @@ const TAB_METAS = METAS.map((m) => {
 });
 const DIST_TAB_PACE = ['5 km', '10 km', 'Meia', 'Maratona'];
 
-/* 57 caracteres. */
-const title = 'Calculadora de Pace: Ritmo, Tempo, Distância e Velocidade';
+/* 53 caracteres. */
+const title = 'Calculadora de Pace e Km/h: Corrida, Esteira e Tabela';
 /* 153 caracteres. */
 const description =
   'Calcule seu pace por km, o tempo de prova e o ritmo para a sua meta. Converte pace em km/h para a esteira e mostra as parciais por quilômetro e na pista.';
@@ -104,24 +123,44 @@ const faqs = [
     resposta: `Divida o tempo pela distância. 5 km em 27 minutos e 30 segundos são 1.650 segundos ÷ 5 = 330 segundos por quilômetro, ou seja, ${formataPace(EX_PACE)} por km. Na velocidade, isso é ${formataVelocidade(velocidadeDe(EX_PACE))} km/h.`,
   },
   {
-    pergunta: 'Qual pace para fazer 5 km em 30 minutos?',
-    resposta: `${formataPace(P5_30)} por quilômetro, que é ${formataVelocidade(velocidadeDe(P5_30))} km/h. Para 5 km em 25 minutos, o pace cai para ${formataPace(P5_25)} por km (${formataVelocidade(velocidadeDe(P5_25))} km/h).`,
+    pergunta: 'Qual o pace ideal para 5 km?',
+    resposta: `Não existe um ideal: é o que você sustenta hoje nos 5 km inteiros. Como referência, 5 km em 30 minutos pedem ${formataPace(P5_30)} por km (${formataVelocidade(velocidadeDe(P5_30))} km/h); em 25 minutos, ${formataPace(P5_25)}; em 20 minutos, ${formataPace(P5_20)}. A tabela de 5 km desta página tem todos os tempos de 15 a 40 minutos.`,
   },
   {
-    pergunta: 'Qual pace para correr 10 km em 1 hora?',
-    resposta: `${formataPace(P10_60)} por quilômetro, o mesmo dos 5 km em 30 minutos. Para 10 km em 50 minutos, ${formataPace(P10_50)} por km — ${formataVelocidade(velocidadeDe(P10_50))} km/h na esteira.`,
+    pergunta: 'É bom correr 5 km em 22 minutos? E em 37?',
+    resposta: `Os dois são bons — para pessoas em fases diferentes. 22 minutos é pace ${formataPace(P5_22)}, ritmo de quem já treina com regularidade há algum tempo. 37 minutos é pace ${formataPace(P5_37)}, e completar 5 km correndo nesse ritmo já é uma conquista para quem está começando. O número que importa é o seu de um mês para o outro.`,
   },
   {
-    pergunta: 'Qual pace para fazer a meia maratona em 2 horas? E a maratona em 4 horas?',
-    resposta: `As duas metas pedem o mesmo ritmo: ${formataPace(P21_120)} por quilômetro na meia em 2 horas e ${formataPace(P42_240)} na maratona em 4 horas, porque a maratona tem o dobro da distância e o dobro do tempo. Sustentar o ritmo por 42 km é outra conversa, mas a conta é a mesma.`,
+    pergunta: 'É possível correr 5 km em 14 minutos? E 10 km em 40?',
+    resposta: `5 km em 14 minutos é pace ${formataPace(P5_14)} — ${formataVelocidade(velocidadeDe(P5_14), 1)} km/h —, ritmo de atleta de elite: o recorde mundial de 5 km de rua está abaixo de 13 minutos. 10 km em 40 minutos (${formataPace(P_10_40)} por km) é outra história: é meta de corredor amador bem treinado, que pede treino estruturado e constante.`,
+  },
+  {
+    pergunta: 'Qual o pace para correr 10 km em 1 hora? É um bom tempo?',
+    resposta: `${formataPace(P10_60)} por quilômetro, ou 10 km/h — 30 minutos a cada 5 km. É, sim, um bom tempo: para muita gente, fechar os 10 km na primeira hora é a primeira grande meta. Para 1 hora e 10, o pace é ${formataPace(P_10_70)}; para 1 hora e meia, ${formataPace(P_10_90)}; para 50 minutos, ${formataPace(P10_50)}; para 45, ${formataPace(P_10_45)}.`,
+  },
+  {
+    pergunta: 'Qual o pace para a meia maratona?',
+    resposta: `Depende da meta. Meia em 2 horas pede ${formataPace(P21(120))} por km — para o "sub 2", qualquer coisa mais rápida que isso. Em 1h50, ${formataPace(P21(110))}; em 1h45, ${formataPace(P21(105))}; em 1h30, ${formataPace(P21(90))}. A maratona em 4 horas pede o mesmo ${formataPace(P42_240)} da meia em 2, porque tem o dobro da distância e o dobro do tempo — sustentar o ritmo por 42 km é outra conversa, mas a conta é a mesma.`,
+  },
+  {
+    pergunta: 'É possível correr 21 km em 2 horas?',
+    resposta: `É, e é uma meta clássica de quem corre a primeira meia: pede ${formataPace(P21(120))} por km do começo ao fim, ou 5 km a cada ${formataTempo(tempoDe(5, P21(120)))}. O que torna a meta possível não é o pace em si, é chegar à prova com semanas de treino de distância — quem ainda não corre 10 km com folga costuma precisar de alguns meses de preparação.`,
   },
   {
     pergunta: 'Como converter pace em km/h?',
-    resposta: `Divida 60 pelo pace em minutos — ou 3.600 pelo pace em segundos. Pace 5:00 = 60 ÷ 5 = 12 km/h; pace 6:00 = 10 km/h. No caminho inverso, 60 ÷ km/h dá os minutos por km: 12 km/h = 5 minutos por km.`,
+    resposta: `Divida 60 pelo pace em minutos decimais: os segundos viram fração de minuto (30 s = 0,5). Pace 5:00 = 60 ÷ 5 = 12 km/h; pace 6:30 = 60 ÷ 6,5 = ${formataVelocidade(KMH_630)} km/h. No caminho inverso, 60 ÷ km/h dá os minutos por km: 12 km/h = ${formataPace(P_12)}/km; 14 km/h = ${formataPace(P_14)}/km; 15 km/h = ${formataPace(paceDaVelocidade(15))}/km; 9 km/h = ${formataPace(paceDaVelocidade(9))}/km. A tabela desta página vai de 5 a 20 km/h.`,
   },
   {
-    pergunta: 'Que velocidade colocar na esteira para correr no pace 6:00?',
-    resposta: `${formataEsteira(ESTEIRA_6)} km/h. Para 5:30 por km, ${formataEsteira(ESTEIRA_530)} km/h. Muita gente usa 1% de inclinação para aproximar o esforço da rua, onde existe resistência do ar — o estudo que mediu isso testou ritmos de corrida mais forte, de 5:43 por km para baixo.`,
+    pergunta: 'Quanto é o pace na esteira?',
+    resposta: `A esteira mostra km/h, e o pace é 60 dividido por esse número. Velocidade 10 na esteira = pace ${formataPace(paceDaVelocidade(10))}; 12 = ${formataPace(P_12)}. No caminho inverso: pace 6:00 pede ${formataEsteira(ESTEIRA_6)} km/h, 5:30 pede ${formataEsteira(ESTEIRA_530)} e pace 7 pede ${formataEsteira(ESTEIRA_7)} km/h. Vale para qualquer marca de esteira.`,
+  },
+  {
+    pergunta: 'Quanto tempo é 1 km na esteira?',
+    resposta: `Depende da velocidade: o tempo de 1 km é o próprio pace. A 10 km/h, ${formataPace(paceDaVelocidade(10))}; a 12 km/h, ${formataPace(P_12)}; a 8 km/h, ${formataPace(P_8)}; caminhando a 6 km/h, ${formataPace(paceDaVelocidade(6))}.`,
+  },
+  {
+    pergunta: 'O pace da esteira é igual ao da rua?',
+    resposta: 'Quase. Na esteira não há vento nem resistência do ar, então o mesmo ritmo custa um pouco menos. Um estudo com corredores treinados mediu que 1% de inclinação iguala o gasto da rua plana — em ritmos de 5:43 por km para baixo. Em ritmo mais leve a diferença encolhe, e a inclinação vira opcional.',
   },
   {
     pergunta: 'Quanto tempo leva 400 metros no pace 5:00?',
@@ -132,16 +171,24 @@ const faqs = [
     resposta: `Em 5 km, ${formataTempoExtenso(CMP_10.porDistancia[0].segundos)}; em 10 km, ${formataTempoExtenso(CMP_10.porDistancia[1].segundos)}; na meia maratona, ${formataTempoExtenso(CMP_10.porDistancia[2].segundos)}; na maratona, ${formataTempoExtenso(CMP_10.porDistancia[3].segundos)}. Dez segundos por quilômetro parecem pouco e não são: em quem corre a 5:30, é perto de 3% de ritmo.`,
   },
   {
-    pergunta: 'Qual é um bom pace para iniciante?',
-    resposta: 'Não existe um número certo. No começo, o bom pace é aquele em que você consegue falar frases curtas sem perder o fôlego — para muita gente, isso é bem mais devagar do que imagina, e intercalado com caminhada. O ritmo melhora com a constância; a pressa de melhorar o ritmo é o que costuma machucar.',
+    pergunta: 'Um pace de 4:30 é bom? E o de 7, é muito ruim? E pace 10?',
+    resposta: `Os três são bons — para pessoas em fases diferentes. Pace 4:30 é ${formataVelocidade(velocidadeDe(270), 1)} km/h: 5 km em ${formataTempo(tempoDe(5, 270))} e 10 km em ${formataTempo(tempoDe(10, 270))}, ritmo de amador bem treinado. Pace 7:00 é corrida de verdade: ${formataEsteira(ESTEIRA_7)} km/h, 5 km em ${formataTempo(tempoDe(5, 420))}. Pace 10:00 é ${formataVelocidade(velocidadeDe(600))} km/h, a fronteira entre a caminhada rápida e o trote — um ótimo começo, inclusive alternando trote e caminhada. No começo, o pace certo é aquele em que dá para falar frases curtas; a pressa de baixar o pace é o que costuma machucar.`,
   },
   {
-    pergunta: 'Por que o pace do relógio fica pulando?',
-    resposta: 'Porque o pace "atual" do relógio é calculado sobre poucos segundos de GPS, e o GPS erra alguns metros perto de prédios, árvores e curvas. O pace médio da corrida, que esta calculadora usa, é muito mais estável: é o tempo total dividido pela distância total.',
+    pergunta: 'Dá para calcular o pace da natação?',
+    resposta: `Dá. Na natação o pace é contado por 100 metros: divida o tempo pelo número de centenas. 1.500 metros em 30 minutos são 15 centenas, ou ${formataPace(paceDe(1.5, 1800) / 10)} por 100 m. Na calculadora, escolha "Outra" distância, a unidade em metros, e o pace por 100 m aparece junto do resultado.`,
   },
   {
-    pergunta: 'Como calcular o pace por milha?',
-    resposta: `Multiplique o pace por km por 1,609. Pace 5:00 por km equivale a ${formataPace(pacePorMilha(300))} por milha. Na calculadora, escolha "Outra" distância e a unidade em milhas.`,
+    pergunta: 'E a calculadora de pace para bike?',
+    resposta: `No ciclismo quase ninguém usa pace: a referência é a velocidade em km/h, porque a velocidade da bike varia demais com subida, vento e marcha. Para saber a média de um pedal, use o modo "Meu pace" com a distância e o tempo e leia a linha de km/h — 30 km em 1 hora e 15 minutos dão ${formataVelocidade(velocidadeDe(paceDe(30, 4500)))} km/h.`,
+  },
+  {
+    pergunta: 'O pace desta calculadora é o mesmo do Strava e do relógio?',
+    resposta: 'É o mesmo pace médio: tempo total dividido pela distância total. A diferença costuma vir de duas coisas — a distância que o GPS mediu (que pode errar alguns metros por quilômetro) e as pausas: com a pausa automática ligada, o app conta só o tempo em movimento. Para comparar com uma prova, use o tempo oficial e a distância oficial.',
+  },
+  {
+    pergunta: 'Em que pace fazer o tempo run?',
+    resposta: 'Tempo run é um treino contínuo em ritmo "confortavelmente difícil": dá para manter, mas não para conversar. Na descrição mais usada, fica perto do ritmo que você sustentaria numa prova de cerca de uma hora. Esta calculadora não prescreve esse ritmo — se você sabe o seu tempo numa prova assim, ela dá o pace, e o resto é ajuste de treino com quem acompanha você.',
   },
 ];
 
@@ -362,7 +409,8 @@ const schema = [
         <p>
           O cuidado está nos segundos: 5:30 é cinco minutos e meio, não 5,3 minutos. Por isso a
           calculadora faz tudo em segundos e só arredonda no fim — e 359,6 segundos aparecem como
-          6:00, nunca como "5:60".
+          6:00, nunca como "5:60". Para converter na mão, transforme os segundos em fração de minuto
+          (30 s = 0,5) e divida 60 pelo resultado: 60 ÷ 5,5 = {formataVelocidade(velocidadeDe(330))} km/h.
         </p>
 
         <h2>Tabela de pace: tempo final em 5 km, 10 km, meia e maratona</h2>
@@ -395,25 +443,98 @@ const schema = [
           <table>
             <caption>Pace necessário para cada meta</caption>
             <thead>
-              <tr><th scope="col">Meta</th><th scope="col">Pace (min/km)</th><th scope="col">Velocidade</th></tr>
+              <tr><th scope="col">Meta</th><th scope="col">Pace</th><th scope="col">km/h</th></tr>
             </thead>
             <tbody>
               {TAB_METAS.map((m) => (
                 <tr>
                   <th scope="row">{m.rotulo}</th>
-                  <td>{formataPace(m.pace)}</td>
-                  <td>{formataVelocidade(m.kmh)} km/h</td>
+                  <td>{formataPace(m.pace)}/km</td>
+                  <td>{formataVelocidade(m.kmh, 1)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <h2 id="tabela-esteira">Pace na esteira: tabela de conversão para km/h</h2>
+        <h2>Pace para 5 km: de 15 a 40 minutos</h2>
+        <p>
+          A pergunta "5 km em tantos minutos, qual o pace?" aparece para quase todo tempo possível.
+          A tabela responde minuto a minuto — 5 km em 30 minutos é {formataPace(P5_30)} por km; em 25,{' '}
+          {formataPace(P5_25)}; em 20, {formataPace(P5_20)}.
+        </p>
+        <div class="pc-duas-tabelas">
+          <div class="tabela-rolavel">
+            <table>
+              <caption>5 km: tempo final → pace</caption>
+              <thead><tr><th scope="col">Tempo</th><th scope="col">Pace</th><th scope="col">km/h</th></tr></thead>
+              <tbody>
+                {TAB_5KM.map((l) => (
+                  <tr><th scope="row">{formataTempoExtenso(l.segundos)}</th><td>{formataPace(l.pace)}/km</td><td>{formataVelocidade(l.kmh, 1)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="tabela-rolavel">
+            <table>
+              <caption>10 km: tempo final → pace</caption>
+              <thead><tr><th scope="col">Tempo</th><th scope="col">Pace</th><th scope="col">km/h</th></tr></thead>
+              <tbody>
+                {TAB_10KM.map((l) => (
+                  <tr><th scope="row">{formataTempoExtenso(l.segundos)}</th><td>{formataPace(l.pace)}/km</td><td>{formataVelocidade(l.kmh, 1)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p>
+          Nenhuma linha é "a certa". 5 km em 22 minutos e 5 km em 37 minutos são os dois bons resultados
+          — para pessoas em fases diferentes. 10 km em 1 hora ({formataPace(P10_60)} por km) costuma ser
+          a primeira grande meta de quem começa a correr distâncias maiores; 10 km em 40 minutos já é
+          ritmo de amador bem treinado.
+        </p>
+
+        <h2>Pace para meia maratona e maratona</h2>
+        <p>
+          Na meia, as metas mais buscadas são 2 horas ({formataPace(P21(120))} por km), 1h50
+          ({formataPace(P21(110))}), 1h45 ({formataPace(P21(105))}) e 1h30 ({formataPace(P21(90))}). "Sub
+          2" é terminar abaixo das 2 horas: qualquer ritmo mais rápido que {formataPace(P21(120))}.
+        </p>
+        <div class="pc-duas-tabelas pc-tabelas-tempo">
+          <div class="tabela-rolavel">
+            <table>
+              <caption>Meia maratona (21,1 km): tempo → pace</caption>
+              <thead><tr><th scope="col">Tempo</th><th scope="col">Pace</th><th scope="col">km/h</th></tr></thead>
+              <tbody>
+                {TAB_MEIA.map((l) => (
+                  <tr><th scope="row">{formataTempoExtenso(l.segundos)}</th><td>{formataPace(l.pace)}/km</td><td>{formataVelocidade(l.kmh, 1)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="tabela-rolavel">
+            <table>
+              <caption>Maratona (42,195 km): tempo → pace</caption>
+              <thead><tr><th scope="col">Tempo</th><th scope="col">Pace</th><th scope="col">km/h</th></tr></thead>
+              <tbody>
+                {TAB_MARATONA.map((l) => (
+                  <tr><th scope="row">{formataTempoExtenso(l.segundos)}</th><td>{formataPace(l.pace)}/km</td><td>{formataVelocidade(l.kmh, 1)}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p>
+          Quanto mais longa a prova, mais a meta depende da preparação e menos da conta: a calculadora
+          diz o ritmo, e as semanas de treino dizem se ele se sustenta até o fim.
+        </p>
+
+        <h2 id="tabela-esteira">Tabela de pace para km/h: a conversão da esteira</h2>
         <p>
           A esteira mostra velocidade; o treino costuma vir em pace. A primeira tabela vai do pace
-          para o número do painel, com uma casa decimal, como a maioria das esteiras mostra. A
-          segunda faz o caminho de volta.
+          para o número do painel, com uma casa decimal, como a maioria das esteiras mostra, de 3:00
+          a 9:00 por km. A segunda faz o caminho de volta, de 5 a 20 km/h. A conta é a mesma em
+          qualquer marca: pace = 60 ÷ velocidade.
         </p>
         <div class="pc-duas-tabelas">
           <div class="tabela-rolavel">
@@ -439,6 +560,7 @@ const schema = [
             </table>
           </div>
         </div>
+        <h3>Pace na esteira x rua</h3>
         <p>
           Na esteira não há vento contra nem resistência do ar, e o mesmo ritmo custa um pouco menos.
           Um estudo com corredores treinados mediu que 1% de inclinação iguala o gasto da rua plana —
@@ -451,7 +573,10 @@ const schema = [
           O pace que o relógio mostra durante a corrida é calculado sobre poucos segundos de GPS, e
           o GPS erra alguns metros perto de prédios, árvores, túneis e curvas fechadas — daí os
           pulos de 5:10 para 6:20 sem você ter mudado nada. O pace médio, que esta calculadora usa,
-          é o tempo total dividido pela distância total, e é muito mais estável.
+          é o tempo total dividido pela distância total, e é muito mais estável. É também o número
+          que o Strava e o relógio mostram no fim do treino — e a diferença para a calculadora, quando
+          existe, vem da distância medida pelo GPS ou da pausa automática, que conta só o tempo em
+          movimento.
         </p>
         <p>
           Subida, calor, vento e cansaço também mexem no ritmo de verdade. Por isso o mesmo pace,
@@ -513,6 +638,18 @@ const schema = [
           {formataPace(P_CAMINHADA)} por km; a 6 km/h, de {formataPace(paceDaVelocidade(6))}. Para saber
           quanto essa caminhada gasta, use a{' '}
           <a href="/calorias/caminhada/" data-pace-link="calorias-caminhada">calculadora de calorias da caminhada</a>.
+        </p>
+
+        <h2>Pace na natação e na bike</h2>
+        <p>
+          Na natação, o pace é por 100 metros, não por quilômetro: 1.500 metros em 30 minutos dão{' '}
+          {formataPace(paceDe(1.5, 1800) / 10)} por 100 m. A calculadora faz essa conta quando a
+          distância é informada em metros — escolha "Outra" e a unidade "metros".
+        </p>
+        <p>
+          No ciclismo, a referência é a velocidade média em km/h, e não o pace: subida, vento e
+          marcha fazem o ritmo por quilômetro variar demais para servir de guia. O modo "Meu pace"
+          entrega a velocidade média junto, na linha de km/h.
         </p>
 
         <h2>Como esta conta é feita</h2>
@@ -805,6 +942,10 @@ const schema = [
     .pc-conteudo { margin-top: var(--sp-7); }
     .pc-duas-tabelas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
     .pc-duas-tabelas .tabela-rolavel { margin: 0; }
+    /* Três colunas cada: lado a lado só quando cabe. */
+    @media (max-width: 559px) {
+      .pc-tabelas-tempo { grid-template-columns: minmax(0, 1fr); }
+    }
     .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
     .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
     .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
