@@ -114,8 +114,9 @@ console.log('\nIMC');
   ok(perto(imc(70, 175), 22.857, 0.001), '70 kg, 1,75 m → 22,9');
   ok(perto(imc(80, 175), 26.122, 0.001), '80 kg, 1,75 m → 26,1 (exemplo do briefing)');
   ok(faixaImc(22.9, 30)!.id === 'referencia' && faixaImc(26.1, 30)!.id === 'sobrepeso', 'OMS: 22,9 adequado; 26,1 sobrepeso');
-  ok(faixaImc(24.99, 30)!.id === 'referencia' && faixaImc(25, 30)!.id === 'sobrepeso', 'corte em 25,0 exato');
-  ok(faixaImc(18.49, 30)!.id === 'abaixo' && faixaImc(40, 30)!.id === 'obesidade3', '18,49 abaixo; 40 grau III');
+  ok(faixaImc(24.94, 30)!.id === 'referencia' && faixaImc(25, 30)!.id === 'sobrepeso', 'corte em 25,0 exato');
+  ok(faixaImc(imc(68, 165), 47)!.id === 'sobrepeso' && formataImc(imc(68, 165)) === '25,0', '24,98 aparece como 25,0 e é lido como 25,0 (sem contradição na tela)');
+  ok(faixaImc(18.44, 30)!.id === 'abaixo' && faixaImc(40, 30)!.id === 'obesidade3', '18,4 abaixo; 40 grau III');
   ok(faixaImc(25, 16) === null, 'menor de 18: sem classificação adulta');
   ok(faixaImc(26, 65)!.id === 'referencia' && faixaImc(26, 65)!.fonte === 'idoso', '60+: 26 é adequado pela faixa de idosos (Lipschitz)');
   ok(faixaImc(22, 65)!.id === 'abaixo' && faixaImc(27, 65)!.id === 'sobrepeso', '60+: 22 baixo peso; 27 sobrepeso');
@@ -128,6 +129,7 @@ console.log('\nCintura, cintura/altura e cintura/quadril');
   ok(perto(rce(80, 175), 0.4571, 0.0001) && formataRazao(rce(80, 175)) === '0,46', '80 ÷ 175 = 0,457 → "0,46"');
   ok(cinturaMetadeDaAltura(170) === 85, '"cintura ideal para 1,70 m": metade da altura são 85 cm');
   ok(faixaRce(0.39).id === 'abaixo04' && faixaRce(0.45).id === 'saudavel' && faixaRce(0.5).id === 'aumentada' && faixaRce(0.6).id === 'alta', 'faixas NICE 0,4 / 0,5 / 0,6');
+  ok(faixaRce(0.4996).id === 'aumentada' && faixaRcq(0.8996, 'm').id === 'acima' && faixaCintura(93.96, 'm').id === 'aumentado', 'faixa lida pelo valor exibido (0,50 / 0,90 / 94 cm)');
   ok(perto(rcq(90, 100), 0.9) && faixaRcq(0.9, 'm').id === 'acima' && faixaRcq(0.89, 'm').id === 'abaixo', 'RCQ 0,90: no corte para homens');
   ok(faixaRcq(0.85, 'f').id === 'acima' && faixaRcq(0.84, 'f').id === 'abaixo', 'RCQ 0,85: no corte para mulheres');
   ok(CORTES_CINTURA.m[0] === 94 && CORTES_CINTURA.f[1] === 88, 'cortes da OMS: 94/102 e 80/88 (iguais aos da página de gordura visceral)');
@@ -168,6 +170,7 @@ console.log('\nFormatação e analytics');
   ok(formataPct(17.3) === '17%' && formataFaixaPct(13.3, 21.3) === '13% a 21%', '%G inteiro: nada de "17,3%"');
   ok(formataKg(14.4) === '14,4 kg' && formataImc(26.122) === '26,1', '14,4 kg; IMC 26,1');
   ok(formataDelta(-4, 'cm') === '−4 cm' && formataDelta(-1.5, 'kg') === '−1,5 kg' && formataDelta(2, 'kg') === '+2,0 kg', 'deltas com sinal');
+  ok(formataDelta(-1.5, 'pp') === '−1,5 pontos' && formataDelta(1, 'pp') === '+1,0 ponto', 'pontos percentuais');
   ok(faixaPctAnalytics(18) === '15_20' && faixaPctAnalytics(3) === 'abaixo_5' && faixaPctAnalytics(55) === 'acima_50', 'analytics: blocos de 5, nunca o valor');
 }
 

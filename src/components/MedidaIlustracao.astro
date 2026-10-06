@@ -1,0 +1,62 @@
+---
+/**
+ * Onde passar a fita: silhueta neutra (sem traços de sexo, sem julgamento)
+ * com a linha da fita no ponto do protocolo pedido. Desenho simples de
+ * propósito — é diagrama de posição, não retrato de corpo.
+ *
+ * Pontos:
+ *   pescoco          logo abaixo do pomo de adão (Marinha)
+ *   cintura-crista   logo acima do topo do osso do quadril (RFM / NHANES)
+ *   umbigo           na altura do umbigo (Marinha, homens)
+ *   cintura-natural  na parte mais estreita do tronco (Marinha, mulheres)
+ *   quadril          na parte mais larga dos glúteos
+ */
+export interface Props {
+  ponto: 'pescoco' | 'cintura-crista' | 'umbigo' | 'cintura-natural' | 'quadril';
+  /** Descrição para leitor de tela. */
+  alt: string;
+}
+const { ponto, alt } = Astro.props;
+
+// Altura (y) e meia-largura da linha da fita em cada ponto, no desenho de 120 × 200.
+const LINHAS: Record<Props['ponto'], { y: number; meia: number }> = {
+  pescoco: { y: 40, meia: 10 },
+  'cintura-natural': { y: 98, meia: 25 },
+  umbigo: { y: 108, meia: 27 },
+  'cintura-crista': { y: 116, meia: 30 },
+  quadril: { y: 134, meia: 35 },
+};
+const l = LINHAS[ponto];
+---
+
+<svg class="mi" viewBox="0 0 120 200" role="img" aria-label={alt} focusable="false">
+  <!-- cabeça e pescoço -->
+  <circle cx="60" cy="18" r="13" class="mi-corpo" />
+  <path d="M53 30 L53 44 M67 30 L67 44" class="mi-corpo" />
+  <!-- tronco: ombros, cintura estreita, quadril -->
+  <path
+    d="M53 44 C40 46 26 48 22 56 L20 86 C24 96 34 100 35 104 C33 112 26 120 25 134 C25 144 30 154 32 160
+       M67 44 C80 46 94 48 98 56 L100 86 C96 96 86 100 85 104 C87 112 94 120 95 134 C95 144 90 154 88 160"
+    class="mi-corpo"
+  />
+  <!-- braços -->
+  <path d="M22 56 L14 104 M98 56 L106 104" class="mi-corpo" />
+  <!-- pernas -->
+  <path d="M32 160 L36 196 M88 160 L84 196 M60 150 L58 196 M60 150 L62 196" class="mi-corpo" />
+  <!-- umbigo e topo do osso do quadril, como referência -->
+  <circle cx="60" cy="108" r="1.6" class="mi-marco" />
+  <path d="M30 118 q5 -4 10 0 M80 118 q5 -4 10 0" class="mi-marco-linha" />
+  <!-- a fita -->
+  <line x1={60 - l.meia - 6} y1={l.y} x2={60 + l.meia + 6} y2={l.y} class="mi-fita" />
+  <circle cx={60 - l.meia - 6} cy={l.y} r="2.4" class="mi-fita-ponta" />
+  <circle cx={60 + l.meia + 6} cy={l.y} r="2.4" class="mi-fita-ponta" />
+</svg>
+
+<style>
+  .mi { width: 96px; height: auto; flex: 0 0 auto; }
+  .mi-corpo { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .mi-marco { fill: var(--muted); }
+  .mi-marco-linha { fill: none; stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 2 2; }
+  .mi-fita { stroke: var(--accent); stroke-width: 3.5; stroke-linecap: round; }
+  .mi-fita-ponta { fill: var(--accent); }
+</style>

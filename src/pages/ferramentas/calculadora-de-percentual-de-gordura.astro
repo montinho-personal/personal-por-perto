@@ -1,0 +1,925 @@
+---
+/**
+ * Calculadora de percentual de gordura / composição corporal.
+ *
+ * Plano, crítica do briefing, prints do Google das oito buscas e a decisão
+ * de métodos: docs/calculadora-composicao-corporal.md.
+ *
+ * AS INTENÇÕES QUE A PÁGINA COBRE (dos prints de 07/10), cada uma com lugar:
+ *   calculadora percentual de gordura, fita métrica, por circunferência → a ferramenta (RFM)
+ *   marinha americana                                → método da Marinha, nomeado
+ *   3 dobras, 7 dobras, Pollock                      → método dobras + "Os três métodos"
+ *   percentual ideal (por idade, homem, mulher)      → "Percentual de gordura por idade e sexo"
+ *   quanto é 15% / 20% / 1%, 28% é muito             → "O que é percentual de gordura" e FAQ
+ *   onde medir, como medir a cintura, sem fita       → "Como medir com fita métrica"
+ *   massa magra (calcular, 70 é bom, ideal por idade) → "Massa magra não é músculo"
+ *   calcular IMC (homem/mulher, idoso, criança, peso ideal) → "IMC"
+ *   relação cintura altura / estatura / RCE          → "Cintura/altura"
+ *   relação cintura quadril, tabela OMS, bioimpedância → "Cintura/quadril"
+ *   peso não muda mas cintura diminui, platô         → "Peso parado, cintura diminuindo" + evolução
+ *
+ * Os números de exemplo saem do motor (src/lib/corpo/composicao.ts); as
+ * referências externas (OMS, NICE, Gallagher, Lipschitz) estão escritas com a fonte.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import MedidaIlustracao from '../../components/MedidaIlustracao.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import {
+  FAIXAS_IMC_OMS,
+  FFMI_MEDIANA_JOVEM,
+  GALLAGHER,
+  boer,
+  cinturaMetadeDaAltura,
+  ffmi,
+  formataCm,
+  formataImc,
+  formataKg,
+  formataPct,
+  formataRazao,
+  imc,
+  marinha,
+  massaGorda,
+  massaLivreDeGordura,
+  pesoNaFaixaImc,
+  rce,
+  rfm,
+} from '../../lib/corpo/composicao';
+
+const path = '/ferramentas/calculadora-de-percentual-de-gordura';
+const atualizadoEm = '2026-10-07';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Calculadora de percentual de gordura', url: path },
+];
+
+/* ── Exemplos resolvidos pelo motor ── */
+const EX_RFM = rfm(175, 82, 'm');
+const EX_MG = massaGorda(80, 20);
+const EX_MLG = massaLivreDeGordura(80, 20);
+const EX_15 = massaGorda(70, 15);
+const EX_1 = massaGorda(80, 1);
+const FFMI_175 = ffmi(70, 175);
+const FFMI_185 = ffmi(70, 185);
+const BOER_EX = boer('m', 80, 180);
+const IMC_EX = imc(80, 175);
+const PESO_175 = pesoNaFaixaImc(175);
+const RCE_EX = rce(80, 175);
+const METADE_170 = cinturaMetadeDaAltura(170);
+const CINCO_CM = rfm(175, 95, 'm').pct - rfm(175, 90, 'm').pct;
+const MAR_EX = marinha('m', 180, 90, 40)!;
+
+/* 55 caracteres. */
+const title = 'Calculadora de Percentual de Gordura, Massa Magra e IMC';
+/* 149 caracteres. */
+const description =
+  'Estime seu percentual de gordura com fita métrica ou dobras cutâneas, veja massa magra, IMC e cintura/altura e acompanhe a evolução das suas medidas.';
+
+const faqs = [
+  {
+    pergunta: 'Como calcular o percentual de gordura com fita métrica?',
+    resposta: `Meça a cintura logo acima do osso do quadril e use, com a altura, a equação RFM: 64 − 20 × (altura ÷ cintura), somando 12 para mulheres. Um homem de 1,75 m com 82 cm de cintura fica perto de ${formataPct(EX_RFM.pct)}. É uma estimativa: o erro típico é de cerca de 4 pontos para cima ou para baixo.`,
+  },
+  {
+    pergunta: 'Qual o percentual de gordura ideal por idade?',
+    resposta: 'Não há um número ideal, mas há faixas de referência. Um estudo que mediu a gordura de 1.626 adultos (Gallagher et al., 2000) calculou a faixa que corresponde, em média, ao IMC de 18,5 a 24,9: de 20 a 39 anos, 8% a 19% em homens e 21% a 33% em mulheres; de 40 a 59, 11% a 22% e 23% a 34%; de 60 a 79, 13% a 25% e 24% a 36%.',
+  },
+  {
+    pergunta: '28% de gordura corporal é muito?',
+    resposta: 'Depende do sexo e da idade. Para uma mulher de 30 anos, 28% fica dentro da faixa de referência (21% a 33%); para um homem da mesma idade, fica acima dela (8% a 19%). E, se veio de uma estimativa por fita, lembre que 28% pode ser algo entre 24% e 32%.',
+  },
+  {
+    pergunta: 'Quanto é 20% de gordura corporal?',
+    resposta: `É a parte do peso que é gordura. Em quem pesa 80 kg, 20% são ${formataKg(EX_MG)} de gordura e ${formataKg(EX_MLG)} de massa livre de gordura. Cada 1% de gordura, nesse peso, equivale a ${formataKg(EX_1)}.`,
+  },
+  {
+    pergunta: 'Como calcular massa magra?',
+    resposta: `Subtraia a massa gorda do peso: peso − (peso × percentual de gordura ÷ 100). Com 80 kg e 20% de gordura, são ${formataKg(EX_MLG)}. O nome certo é massa livre de gordura: ela inclui músculos, água, ossos e órgãos — não é tudo músculo.`,
+  },
+  {
+    pergunta: '70 kg de massa magra é bom?',
+    resposta: `Depende da altura. Divida a massa livre de gordura pela altura ao quadrado: com 1,75 m, 70 kg dão ${formataImc(FFMI_175)} kg/m²; com 1,85 m, ${formataImc(FFMI_185)}. Para comparar, a mediana de homens de 18 a 34 anos num estudo suíço foi de ${formataImc(FFMI_MEDIANA_JOVEM.m)} (e de ${formataImc(FFMI_MEDIANA_JOVEM.f)} em mulheres).`,
+  },
+  {
+    pergunta: 'O IMC é diferente para homem e mulher?',
+    resposta: 'Para adultos, não: as faixas da OMS são as mesmas para os dois sexos. Muda para crianças e adolescentes, que usam curvas por idade e sexo, e para pessoas de 60 anos ou mais, para quem o Brasil usa outra tabela (abaixo de 22, de 22 a 27 e acima de 27).',
+  },
+  {
+    pergunta: 'Qual o peso ideal para quem tem 1,75 m?',
+    resposta: `Não existe um peso ideal único. A faixa em que o IMC fica entre 18,5 e 24,9, a de referência da OMS, vai de ${formataKg(PESO_175.min)} a ${formataKg(PESO_175.max)} para 1,75 m. Dentro dela cabem corpos muito diferentes — por isso a cintura e a gordura estimada dizem mais que o peso.`,
+  },
+  {
+    pergunta: 'Qual a cintura ideal para uma mulher de 1,70 m?',
+    resposta: `A referência mais usada é manter a cintura abaixo da metade da altura (relação cintura/altura abaixo de 0,5). Para 1,70 m, metade da altura são ${formataCm(METADE_170)}. Vale para homens e mulheres adultos.`,
+  },
+  {
+    pergunta: 'Qual a relação cintura-quadril ideal?',
+    resposta: 'A OMS usa como corte 0,90 para homens e 0,85 para mulheres: a partir daí, a relação passa a indicar risco metabólico aumentado em estudos populacionais. É um marcador de onde a gordura está, não um diagnóstico.',
+  },
+  {
+    pergunta: 'O que significa relação cintura-quadril na bioimpedância?',
+    resposta: 'É a mesma conta: cintura dividida pelo quadril. Alguns aparelhos medem as circunferências; outros estimam a relação pelo próprio modelo, sem fita. Se quiser conferir, meça com fita — e compare sempre pelo mesmo método.',
+  },
+  {
+    pergunta: 'Quantos quilos equivalem a perder 5 cm de cintura?',
+    resposta: `Não existe conversão fixa entre centímetros e quilos. O que dá para dizer é quanto a estimativa muda: pela equação RFM, numa pessoa de 1,75 m, a cintura passar de 95 para 90 cm reduz a gordura estimada em cerca de ${CINCO_CM.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} pontos percentuais.`,
+  },
+  {
+    pergunta: 'É possível emagrecer e não aparecer na balança?',
+    resposta: 'É. A balança soma gordura, músculo, água e o que está no intestino. Se a cintura diminui enquanto o peso fica parado, a combinação é compatível com mudança na composição corporal — mas só as medidas não dizem quanto foi gordura e quanto foi músculo. Medir a cintura no mesmo ponto, a cada algumas semanas, ajuda a ver a tendência.',
+  },
+  {
+    pergunta: 'Como medir o percentual de gordura sem fita métrica?',
+    resposta: 'Um barbante ou cadarço resolve: passe no ponto da medida, marque com a caneta e meça na trena ou na régua. Sem nenhuma medida, só com peso e altura, existem fórmulas populacionais (como a de Boer, para massa magra), mas elas não usam o seu corpo e erram mais.',
+  },
+  {
+    pergunta: 'É possível ter 50% de gordura corporal?',
+    resposta: 'É, em obesidade grave — exames de imagem já mediram valores acima disso. Nessa faixa, porém, as estimativas por fita perdem precisão, e a avaliação deve ser feita com médico ou nutricionista.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/emagrecimento/gordura-visceral/',
+    titulo: 'Gordura visceral',
+    descricao: 'Por que a gordura da barriga importa mais que o peso, e o que a cintura diz sobre ela.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal',
+    descricao: 'Perder gordura e ganhar músculo ao mesmo tempo: para quem é provável, e quanto tempo leva.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física',
+    descricao: 'Dobras, bioimpedância e medidas: o que uma avaliação completa mede, e de quanto em quanto tempo.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento',
+    descricao: 'Por que o peso estaciona mesmo com a rotina mantida — e o que fazer.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+
+const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
+const textoWhats = encodeURIComponent(
+  `Conhece alguém que vive olhando só para o número da balança? Essa calculadora mostra gordura, cintura e evolução: ${urlCompartilhar}`,
+);
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="cc-hero">
+    <div class="container cc-hero-inner">
+      <p class="eyebrow">Ferramenta de composição corporal</p>
+      <h1>Calculadora de percentual de gordura</h1>
+      <p class="cc-hero-lead">
+        O número da balança conta só uma parte da história. Com uma fita métrica, estime sua gordura
+        corporal, a massa livre de gordura, o IMC e as medidas da cintura — e acompanhe como elas mudam.
+      </p>
+      <p class="cc-micro">Grátis · sem cadastro · suas medidas não saem do seu aparelho</p>
+    </div>
+  </header>
+
+  <div class="container cc-layout">
+    <article class="cc-main">
+      <section id="cc-app" class="cc-app" aria-labelledby="cc-app-h">
+        <h2 id="cc-app-h" class="cc-app-h">O que você quer descobrir?</h2>
+
+        <div id="cc-modos" class="cc-modos" role="group" aria-labelledby="cc-app-h">
+          <button type="button" class="cc-modo is-ativo" data-modo="gordura" aria-pressed="true">
+            <strong>Meu percentual de gordura</strong><span>e a massa magra</span>
+          </button>
+          <button type="button" class="cc-modo" data-modo="imc" aria-pressed="false">
+            <strong>Meu IMC</strong><span>peso e altura</span>
+          </button>
+          <button type="button" class="cc-modo" data-modo="cintura" aria-pressed="false">
+            <strong>Minhas medidas de cintura</strong><span>cintura/altura e cintura/quadril</span>
+          </button>
+          <button type="button" class="cc-modo cc-modo-destaque" data-modo="tudo" aria-pressed="false">
+            <strong>Analisar tudo</strong><span>gordura, massa magra, IMC e cintura juntos</span>
+          </button>
+          <button type="button" class="cc-modo" data-modo="evolucao" aria-pressed="false">
+            <strong>Acompanhar evolução</strong><span>comparar com avaliações salvas</span>
+          </button>
+        </div>
+
+        <div id="cc-form" class="cc-campos">
+          <div class="cc-bloco" data-bloco="metodo">
+            <span class="cc-rotulo-campo" id="cc-metodo-rotulo">Como você vai medir?</span>
+            <div class="cc-chips" role="group" aria-labelledby="cc-metodo-rotulo">
+              <button type="button" class="cc-chip is-ativo" data-metodo="rfm" aria-pressed="true">Fita: só a cintura</button>
+              <button type="button" class="cc-chip" data-metodo="marinha" aria-pressed="false">Fita: método da Marinha</button>
+              <button type="button" class="cc-chip" data-metodo="dobras" aria-pressed="false">Tenho as dobras (adipômetro)</button>
+            </div>
+          </div>
+
+          <div class="cc-bloco" data-bloco="sexo">
+            <span class="cc-rotulo-campo" id="cc-sexo-rotulo">Sexo usado pela fórmula</span>
+            <div class="cc-chips" role="group" aria-labelledby="cc-sexo-rotulo">
+              <button type="button" class="cc-chip" data-sexo="f" aria-pressed="false">Feminino</button>
+              <button type="button" class="cc-chip" data-sexo="m" aria-pressed="false">Masculino</button>
+            </div>
+            <p class="cc-dica">Algumas equações antropométricas usam parâmetros diferentes conforme o sexo usado pela fórmula.</p>
+          </div>
+
+          <div class="cc-grade">
+            <div class="cc-campo" data-bloco="idade">
+              <label for="cc-idade">Idade (anos)</label>
+              <input id="cc-idade" type="text" inputmode="numeric" autocomplete="off" enterkeyhint="next" aria-describedby="cc-idade-confira" />
+              <p id="cc-idade-confira" class="cc-confira" hidden>Confira este valor.</p>
+            </div>
+            <div class="cc-campo" data-bloco="peso">
+              <label for="cc-peso">Peso (kg)</label>
+              <input id="cc-peso" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-peso-confira" />
+              <p id="cc-peso-confira" class="cc-confira" hidden>Confira este valor.</p>
+            </div>
+            <div class="cc-campo" data-bloco="altura">
+              <label for="cc-altura">Altura (cm)</label>
+              <input id="cc-altura" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-altura-confira cc-altura-convertida" />
+              <p id="cc-altura-convertida" class="cc-dica" hidden></p>
+              <p id="cc-altura-confira" class="cc-confira" hidden>Confira este valor.</p>
+            </div>
+          </div>
+
+          <div class="cc-campo cc-medida" data-bloco="cintura">
+            <label for="cc-cintura">Cintura, logo acima do osso do quadril (cm)</label>
+            <input id="cc-cintura" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-cintura-confira" />
+            <p id="cc-cintura-confira" class="cc-confira" hidden>Confira este valor.</p>
+            <details class="cc-ajuda" data-ajuda="cintura">
+              <summary>Como medir a cintura</summary>
+              <div class="cc-ajuda-corpo">
+                <MedidaIlustracao ponto="cintura-crista" alt="Silhueta com a fita na horizontal, logo acima do topo do osso do quadril, dos dois lados." />
+                <p>
+                  Em pé, sem roupa na região. Apalpe o topo do osso do quadril, na lateral do corpo, e passe a
+                  fita <strong>logo acima dele</strong>, paralela ao chão. Leia no fim de uma expiração normal,
+                  sem encolher a barriga e sem apertar a pele.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="cc-campo cc-medida" data-bloco="quadril">
+            <label for="cc-quadril">Quadril, na parte mais larga dos glúteos (cm) <span id="cc-quadril-opcional" class="cc-opcional">— opcional</span></label>
+            <input id="cc-quadril" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-quadril-confira" />
+            <p id="cc-quadril-confira" class="cc-confira" hidden>Confira este valor.</p>
+            <details class="cc-ajuda" data-ajuda="quadril">
+              <summary>Como medir o quadril</summary>
+              <div class="cc-ajuda-corpo">
+                <MedidaIlustracao ponto="quadril" alt="Silhueta com a fita na horizontal, na parte mais larga dos glúteos." />
+                <p>
+                  Pés juntos. Passe a fita na <strong>parte mais larga dos glúteos</strong>, paralela ao chão.
+                  Olhe de lado no espelho para achar o ponto mais saliente.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="cc-bloco" data-bloco="marinha">
+            <div class="cc-campo cc-medida">
+              <label for="cc-mar-cintura" id="cc-mar-cintura-rotulo">Abdômen, na altura do umbigo (cm)</label>
+              <input id="cc-mar-cintura" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-mar-cintura-confira" />
+              <p id="cc-mar-cintura-confira" class="cc-confira" hidden>Confira este valor.</p>
+              <details class="cc-ajuda" data-ajuda="cintura-marinha">
+                <summary>Como medir no método da Marinha</summary>
+                <div class="cc-ajuda-corpo" data-mar-sexo="m">
+                  <MedidaIlustracao ponto="umbigo" alt="Silhueta com a fita na horizontal, na altura do umbigo." />
+                  <p>Para a fórmula masculina, o abdômen é medido <strong>na altura do umbigo</strong>, fita paralela ao chão, no fim de uma expiração normal.</p>
+                </div>
+                <div class="cc-ajuda-corpo" data-mar-sexo="f" hidden>
+                  <MedidaIlustracao ponto="cintura-natural" alt="Silhueta com a fita na horizontal, na parte mais estreita do tronco." />
+                  <p>Para a fórmula feminina, a cintura é a <strong>natural: a parte mais estreita do tronco</strong>, em geral entre o umbigo e o fim do esterno.</p>
+                </div>
+              </details>
+            </div>
+            <div class="cc-campo cc-medida">
+              <label for="cc-pescoco">Pescoço, logo abaixo do pomo de adão (cm)</label>
+              <input id="cc-pescoco" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-pescoco-confira" />
+              <p id="cc-pescoco-confira" class="cc-confira" hidden>Confira este valor.</p>
+              <details class="cc-ajuda" data-ajuda="pescoco">
+                <summary>Como medir o pescoço</summary>
+                <div class="cc-ajuda-corpo">
+                  <MedidaIlustracao ponto="pescoco" alt="Silhueta com a fita em volta do pescoço, logo abaixo do pomo de adão." />
+                  <p>Olhando para a frente, ombros relaxados. Passe a fita <strong>logo abaixo do pomo de adão</strong> (a laringe), levemente inclinada para a frente e para baixo. Peça ajuda se puder: é a medida mais difícil de fazer sozinho.</p>
+                </div>
+              </details>
+            </div>
+          </div>
+
+          <div class="cc-bloco" data-bloco="dobras">
+            <span class="cc-rotulo-campo" id="cc-ndobras-rotulo">Quantas dobras foram medidas?</span>
+            <div class="cc-chips" role="group" aria-labelledby="cc-ndobras-rotulo">
+              <button type="button" class="cc-chip is-ativo" data-ndobras="3" aria-pressed="true">3 dobras</button>
+              <button type="button" class="cc-chip" data-ndobras="7" aria-pressed="false">7 dobras (Pollock)</button>
+            </div>
+            <p id="cc-dobras-sexo" class="cc-dica">Escolha o sexo usado pela fórmula: as dobras da equação de 3 mudam com ele.</p>
+            <div class="cc-grade">
+              {
+                (['peitoral', 'axilar', 'triceps', 'subescapular', 'abdominal', 'suprailiaca', 'coxa'] as const).map((id) => (
+                  <div class="cc-campo" data-dobra={id}>
+                    <label for={`cc-dob-${id}`}>
+                      {{ peitoral: 'Peitoral', axilar: 'Axilar média', triceps: 'Tríceps', subescapular: 'Subescapular', abdominal: 'Abdominal', suprailiaca: 'Suprailíaca', coxa: 'Coxa' }[id]} (mm)
+                    </label>
+                    <input id={`cc-dob-${id}`} type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby={`cc-dob-${id}-confira`} />
+                    <p id={`cc-dob-${id}-confira`} class="cc-confira" hidden>Confira este valor.</p>
+                  </div>
+                ))
+              }
+            </div>
+            <p class="cc-dica">Use as medidas da sua avaliação física com adipômetro. Onde fica cada dobra está explicado mais abaixo, em "Os três métodos".</p>
+          </div>
+
+          <p class="cc-aviso-uso">
+            As fórmulas valem para adultos. Não servem para gestantes, nem para quem tem inchaço (edema), amputação
+            ou outra condição que mude as medidas.
+          </p>
+        </div>
+
+        <p id="cc-anuncio" class="sr-only" aria-live="polite"></p>
+
+        <div id="cc-resultado" class="cc-resultado" role="region" aria-label="Resultado">
+          <noscript><p class="cc-vazio">A calculadora precisa de JavaScript. As tabelas abaixo trazem as referências prontas.</p></noscript>
+        </div>
+
+        <div id="cc-evolucao" class="cc-resultado" role="region" aria-label="Evolução" hidden></div>
+
+        <div id="cc-retorno" class="cc-retorno" hidden></div>
+
+        <div class="cc-proximo">
+          <p>
+            Quer organizar um treino que caiba na sua semana?{' '}
+            <a href="/ferramentas/treino-para-minha-rotina/" data-cc-link="rotina">Montar minha rotina</a>. Se você já treina e quer
+            conferir a estrutura, use o <a href="/ferramentas/meu-treino-faz-sentido/" data-cc-link="meu-treino">Meu treino faz sentido?</a>
+          </p>
+        </div>
+
+        <div class="cc-compartilha">
+          <p class="cc-compartilha-h">Conhece alguém que vive olhando só para o número da balança?</p>
+          <button type="button" id="cc-compartilhar" class="cc-link-btn">Compartilhar a ferramenta</button>
+          <a id="cc-whats" class="cc-link-btn" href={`https://wa.me/?text=${textoWhats}`} target="_blank" rel="noopener">Enviar no WhatsApp</a>
+          <p class="cc-dica">Compartilha só a ferramenta. Suas medidas e seus resultados não vão junto.</p>
+        </div>
+      </section>
+
+      <div class="prose cc-conteudo">
+        <h2>O que é percentual de gordura</h2>
+        <p>
+          É a parte do seu peso que é gordura. Quem pesa 80 kg e tem 20% de gordura carrega{' '}
+          {formataKg(EX_MG)} de gordura; os outros {formataKg(EX_MLG)} são massa livre de gordura. Em quem pesa
+          70 kg, 15% são {formataKg(EX_15)}; e cada 1% de gordura, em 80 kg, vale {formataKg(EX_1)}.
+        </p>
+        <p>
+          Peso e composição corporal não são a mesma coisa. Duas pessoas com o mesmo peso podem ter
+          composições muito diferentes — e perder peso não significa, automaticamente, perder gordura.
+          Por isso a calculadora mostra vários indicadores juntos, cada um contando uma parte.
+        </p>
+
+        <h2>Como medir com fita métrica</h2>
+        <p>
+          A maior parte do erro dessas estimativas vem da medida, não da conta. O básico vale para todas:
+        </p>
+        <ul>
+          <li>fita que não estica (a de costura serve), justa na pele, sem apertar e sem folga;</li>
+          <li>fita paralela ao chão, conferida no espelho;</li>
+          <li>em pé, relaxado, lendo no fim de uma expiração normal — sem encolher a barriga;</li>
+          <li>meça duas vezes; se der mais de 1 cm de diferença, meça a terceira e fique com a média;</li>
+          <li>para acompanhar, meça sempre no mesmo ponto, com a mesma fita, em condições parecidas.</li>
+        </ul>
+        <div class="cc-onde">
+          <figure>
+            <MedidaIlustracao ponto="cintura-crista" alt="Fita logo acima do topo do osso do quadril." />
+            <figcaption><strong>Cintura</strong> (desta calculadora): logo acima do topo do osso do quadril, na lateral.</figcaption>
+          </figure>
+          <figure>
+            <MedidaIlustracao ponto="quadril" alt="Fita na parte mais larga dos glúteos." />
+            <figcaption><strong>Quadril</strong>: na parte mais larga dos glúteos.</figcaption>
+          </figure>
+          <figure>
+            <MedidaIlustracao ponto="pescoco" alt="Fita logo abaixo do pomo de adão." />
+            <figcaption><strong>Pescoço</strong> (só no método da Marinha): logo abaixo do pomo de adão.</figcaption>
+          </figure>
+        </div>
+        <p>
+          Existe mais de um ponto de cintura, e cada fórmula foi feita com o seu. A desta calculadora é a do
+          protocolo do NHANES, o grande levantamento de saúde dos Estados Unidos: logo acima do osso do
+          quadril. A OMS mede no ponto médio entre a última costela e esse osso; o método da Marinha, no
+          umbigo (homens) ou na parte mais estreita (mulheres). A diferença costuma ser de poucos
+          centímetros — o importante é não misturar os pontos de uma avaliação para a outra.
+        </p>
+        <p>
+          <strong>Sem fita métrica?</strong> Um barbante ou cadarço resolve: passe no ponto, marque com
+          caneta e meça na trena. Só com peso e altura dá para estimar a massa magra pela fórmula de
+          Boer — {formataKg(BOER_EX)} para um homem de 80 kg e 1,80 m —, mas ela é populacional: não usa
+          o seu corpo, e erra mais.
+        </p>
+
+        <h2>Os três métodos desta calculadora</h2>
+        <h3>Fita, só a cintura: RFM</h3>
+        <p>
+          O método principal é o RFM (<em>relative fat mass</em>, Woolcott e Bergman, 2018):
+          64 − 20 × (altura ÷ cintura), somando 12 para mulheres. Ele foi criado e testado contra exame de
+          DEXA em mais de 15 mil adultos do levantamento americano NHANES, de várias origens, e foi
+          validado também em brasileiros. A vantagem para quem mede em casa é pedir uma fita só: cada
+          medida a mais soma erro. Um homem de 1,75 m com 82 cm de cintura fica perto de{' '}
+          {formataPct(EX_RFM.pct)}.
+        </p>
+        <h3>Fita: método da Marinha americana</h3>
+        <p>
+          O método da Marinha dos EUA (Hodgdon e Beckett, 1984) usa altura, pescoço e abdômen nos homens,
+          e altura, pescoço, cintura e quadril nas mulheres. A calculadora aplica a equação oficial, em
+          polegadas, convertendo os centímetros: 180 cm de altura, 90 cm de abdômen e 40 cm de pescoço dão{' '}
+          {formataPct(MAR_EX.pct)}. O método é o mais conhecido, mas foi feito com militares jovens, e
+          estudos que o compararam com o DEXA encontraram estimativas mais baixas que o exame. O próprio
+          Exército americano trocou essa fórmula por uma medida só de abdômen em 2023 e, em 2026, pela
+          relação cintura/altura.
+        </p>
+        <h3>Dobras cutâneas: 3 ou 7 dobras de Jackson e Pollock</h3>
+        <p>
+          Se você fez uma avaliação com adipômetro, pode usar as dobras. As equações de Jackson e Pollock
+          (1978, homens) e de Jackson, Pollock e Ward (1980, mulheres) transformam a soma das dobras e a
+          idade em densidade corporal, e a equação de Siri (1961) converte a densidade em percentual.
+          Foram feitas com adultos de 18 a 61 anos (homens) e de 18 a 55 (mulheres).
+        </p>
+        <ul>
+          <li><strong>3 dobras, homens:</strong> peitoral, abdominal e coxa. <strong>3 dobras, mulheres:</strong> tríceps, suprailíaca e coxa.</li>
+          <li><strong>7 dobras (para os dois):</strong> peitoral, axilar média, tríceps, subescapular, abdominal, suprailíaca e coxa.</li>
+          <li>Medidas do lado direito, em pé: peitoral na diagonal, entre a axila e o mamilo; axilar média na vertical, na linha da axila, na altura do fim do esterno; tríceps na vertical, atrás do braço, no meio entre ombro e cotovelo; subescapular na diagonal, logo abaixo da ponta da escápula; abdominal na vertical, a 2 cm do umbigo; suprailíaca na diagonal, logo acima do osso do quadril; coxa na vertical, na frente, no meio entre a virilha e o joelho.</li>
+        </ul>
+        <p>
+          Os três métodos nunca são misturados nem somados: cada estimativa aparece com o nome do método que
+          a gerou. Se dois métodos discordam muito, o mais provável é erro de medida.
+        </p>
+
+        <h2>Percentual de gordura por idade e sexo</h2>
+        <p>
+          Não existe um percentual ideal. Existem faixas de referência — e a mais bem fundamentada é a de
+          Gallagher e colegas (2000), que mediram a gordura de 1.626 adultos e calcularam o percentual que
+          corresponde, em média, ao IMC de 18,5 a 24,9 em cada idade:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Faixa de gordura correspondente ao IMC de referência (Gallagher et al., 2000)</caption>
+            <thead><tr><th scope="col">Idade</th><th scope="col">Homens</th><th scope="col">Mulheres</th></tr></thead>
+            <tbody>
+              {GALLAGHER.map((g) => (
+                <tr><th scope="row">{g.de} a {g.ate} anos</th><td>{g.m[0]}% a {g.m[1]}%</td><td>{g.f[0]}% a {g.f[1]}%</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A faixa sobe com a idade e é mais alta nas mulheres, que têm mais gordura essencial. Ela também
+          varia com a ancestralidade: para o mesmo IMC, pessoas de origem asiática tendem a ter mais gordura.
+          Por isso "28% é muito?" não tem resposta única — para uma mulher de 30 anos, está dentro da faixa;
+          para um homem da mesma idade, acima.
+        </p>
+        <p>
+          A tabela que mais circula, com faixas como "atletas, 6% a 13%" e "obesidade acima de 25%", vem de
+          uma entidade de certificação de profissionais, não de um estudo, e usa o mesmo corte para
+          qualquer idade. Esta página não a usa. E nenhuma faixa é meta: quanto menor não é melhor, e
+          percentuais muito baixos têm custo para a saúde.
+        </p>
+
+        <h2>Massa magra não é músculo</h2>
+        <p>
+          A massa livre de gordura — chamada de massa magra — é tudo o que não é gordura: músculos, água,
+          ossos, órgãos e outros tecidos. Dizer "você tem 64 kg de músculo" a partir dela é errado. A fita
+          também não mede músculo; estimar massa muscular em quilos pede outros métodos e outras medidas.
+        </p>
+        <p>
+          Os quilos de massa livre de gordura só fazem sentido junto com a altura. Por isso a calculadora
+          mostra também o índice de massa livre de gordura (massa livre ÷ altura²): 70 kg dão{' '}
+          {formataImc(FFMI_175)} kg/m² em quem tem 1,75 m e {formataImc(FFMI_185)} em quem tem 1,85 m. Num
+          estudo com mais de 5 mil adultos suíços, a mediana de 18 a 34 anos foi de{' '}
+          {formataImc(FFMI_MEDIANA_JOVEM.m)} nos homens e {formataImc(FFMI_MEDIANA_JOVEM.f)} nas mulheres.
+        </p>
+        <p>
+          E 1 kg de gordura pesa o mesmo que 1 kg de massa magra — mas ocupa mais espaço: cerca de 1,1 litro,
+          contra 0,9 litro. É por isso que a cintura pode diminuir sem a balança mudar.
+        </p>
+
+        <h2>IMC: como calcular e o que ele não mostra</h2>
+        <p>
+          O IMC é o peso dividido pela altura ao quadrado: 80 kg e 1,75 m dão {formataImc(IMC_EX)}. Para
+          adultos, as faixas da OMS são as mesmas para homens e mulheres:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Faixas de IMC para adultos (OMS)</caption>
+            <thead><tr><th scope="col">IMC</th><th scope="col">Classificação da OMS</th></tr></thead>
+            <tbody>
+              {FAIXAS_IMC_OMS.map((x) => <tr><th scope="row">{x.faixa}</th><td>{x.rotulo}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Para pessoas de 60 anos ou mais, o Brasil usa outra tabela: até 22, baixo peso; acima de 22 e
+          abaixo de 27, adequado; 27 ou mais, sobrepeso. Para crianças e adolescentes, o IMC se lê em curvas
+          por idade e sexo, com o pediatra — a tabela de adultos não serve.
+        </p>
+        <p>
+          O IMC é útil para olhar populações, mas não distingue gordura de músculo nem mostra onde a gordura
+          está. Uma pessoa musculosa pode ter IMC acima de 25 com pouca gordura. E "peso ideal" não existe
+          como número único: para 1,75 m, a faixa de IMC de referência vai de {formataKg(PESO_175.min)} a{' '}
+          {formataKg(PESO_175.max)}.
+        </p>
+
+        <h2>Relação cintura/altura (RCE)</h2>
+        <p>
+          Também chamada de relação cintura-estatura (RCE) ou cintura-altura (RCA): a cintura dividida pela
+          altura, na mesma unidade. 80 cm de cintura e 175 cm de altura dão {formataRazao(RCE_EX)}. A regra
+          prática é manter a cintura abaixo da metade da altura — para 1,70 m, {formataCm(METADE_170)}.
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Relação cintura/altura em adultos (diretriz NICE, Reino Unido)</caption>
+            <thead><tr><th scope="col">Cintura/altura</th><th scope="col">Faixa</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">0,40 a 0,49</th><td>saudável</td></tr>
+              <tr><th scope="row">0,50 a 0,59</th><td>adiposidade central aumentada</td></tr>
+              <tr><th scope="row">0,60 ou mais</th><td>adiposidade central alta</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A faixa vale para homens e mulheres adultos, de qualquer origem, inclusive pessoas musculosas.
+          Não vale na gestação, e a diretriz a indica para quem tem IMC abaixo de 35. Na circunferência da
+          cintura sozinha, os cortes da OMS são 94 e 102 cm para homens e 80 e 88 cm para mulheres —
+          marcadores de distribuição de gordura usados em avaliações populacionais, não um diagnóstico. Mais
+          sobre isso em <a href="/emagrecimento/gordura-visceral/">gordura visceral</a>.
+        </p>
+
+        <h2>Relação cintura/quadril (RCQ)</h2>
+        <p>
+          A cintura dividida pelo quadril. A OMS usa como corte 0,90 para homens e 0,85 para mulheres: a
+          partir daí, a relação se associa a risco metabólico aumentado em estudos populacionais. Como a
+          cintura/altura, ela olha para onde a gordura está, e não para quanto há. Bioimpedâncias também
+          mostram a RCQ — às vezes medida, às vezes estimada pelo modelo do aparelho.
+        </p>
+
+        <h2>Peso parado, cintura diminuindo: o que isso diz</h2>
+        <p>
+          É a pergunta de quem acha que entrou em platô. A balança soma tudo — gordura, músculo, água, o que
+          está no intestino —, e ela oscila de um dia para o outro. Se o peso fica parado enquanto a cintura
+          diminui além do erro da fita, a combinação é compatível com mudança na composição corporal. Mas
+          só as medidas não dizem quanto foi gordura e quanto foi músculo — quem afirma "você está trocando
+          gordura por músculo" com base nisso está afirmando mais do que os números mostram.
+        </p>
+        <p>
+          Também não existe conversão fixa de centímetros em quilos. O que dá para mostrar é quanto a
+          estimativa muda: pelo RFM, numa pessoa de 1,75 m, a cintura de 95 para 90 cm reduz a gordura
+          estimada em cerca de {CINCO_CM.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} pontos.
+        </p>
+        <p>
+          Por isso a calculadora guarda avaliações neste aparelho e compara a última com a anterior,
+          dizendo quando a diferença cabe no erro de medida (cerca de 1 a 2 cm na cintura). Medir a cada
+          algumas semanas, sempre no mesmo ponto, vale mais que medir todo dia. Se o peso estacionou,{' '}
+          <a href="/emagrecimento/plato-de-emagrecimento/">platô de emagrecimento</a> explica as causas, e{' '}
+          <a href="/emagrecimento/recomposicao-corporal/">recomposição corporal</a> mostra para quem ela é
+          mais provável.
+        </p>
+
+        <h2>Outros métodos: bioimpedância, DEXA, dobras e pesagem hidrostática</h2>
+        <ul>
+          <li><strong>DEXA</strong> (densitometria): o exame de referência mais usado em pesquisa, mas também tem erro e varia entre aparelhos.</li>
+          <li><strong>Pesagem hidrostática</strong>: foi o padrão por décadas — o método da Marinha foi feito com ela. É pouco disponível.</li>
+          <li><strong>Dobras cutâneas</strong>: boas nas mãos de quem tem prática; dependem muito do avaliador.</li>
+          <li><strong>Bioimpedância</strong>: prática, mas muda com hidratação, refeição, exercício recente, horário e o próprio aparelho. Serve para acompanhar se feita sempre nas mesmas condições.</li>
+          <li><strong>Fita métrica</strong>: a mais acessível e a mais fácil de repetir. Erra mais em atletas e nos extremos.</li>
+        </ul>
+        <p>
+          Nenhum é perfeito, e eles não são equivalentes: compare cada um com ele mesmo. A{' '}
+          <a href="/guias/avaliacao-fisica/">avaliação física</a> explica quando vale cada um.
+        </p>
+
+        <h2>Quando esta calculadora não serve</h2>
+        <p>
+          As equações foram feitas com adultos. Não valem para menores de 18 anos (a calculadora mostra os
+          números, sem classificação), na gestação, com inchaço (edema), amputação ou condições que mudem as
+          medidas. Em atletas e fisiculturistas, a estimativa por fita erra mais. Qualquer dor, mudança de
+          peso sem explicação ou dúvida sobre a sua saúde é assunto para o médico ou o nutricionista.
+        </p>
+
+        <h2>Como calculamos</h2>
+        <ul>
+          <li><strong>RFM</strong> = 64 − 20 × (altura ÷ cintura) + 12 × sexo (0 homem, 1 mulher). Woolcott e Bergman, <em>Scientific Reports</em>, 2018.</li>
+          <li><strong>Marinha</strong>, homens: 86,010 × log(abdômen − pescoço) − 70,041 × log(altura) + 36,76; mulheres: 163,205 × log(cintura + quadril − pescoço) − 97,684 × log(altura) − 78,387, em polegadas. Hodgdon e Beckett, 1984.</li>
+          <li><strong>Dobras</strong>: densidade de Jackson e Pollock (1978) e Jackson, Pollock e Ward (1980); percentual de Siri (1961), 495 ÷ densidade − 450.</li>
+          <li><strong>Massa gorda</strong> = peso × percentual; <strong>massa livre de gordura</strong> = peso − massa gorda.</li>
+          <li><strong>IMC</strong> = peso ÷ altura²; <strong>cintura/altura</strong> e <strong>cintura/quadril</strong>, divisões na mesma unidade.</li>
+        </ul>
+        <p>
+          O percentual aparece como número inteiro, com uma faixa provável de 4 pontos para cada lado: é o
+          tamanho típico do erro dessas equações, mesmo com quem mede bem. A conta acontece no seu
+          navegador; nada do que você digita é enviado, e as avaliações salvas ficam só neste aparelho.
+        </p>
+        <p class="cc-revisao">
+          Os resultados são estimativas educacionais e não substituem avaliação individual feita por
+          profissional qualificado. Revisado em {formatDateLong(atualizadoEm)} por{' '}
+          <a href="/montinho-personal/">Montinho</a>, personal trainer.
+        </p>
+
+        <div class="cc-proximo cc-proximo-texto">
+          <h2>Próximo passo</h2>
+          <p>
+            Medir é a parte fácil; o que muda as medidas é a rotina de treino, semana após semana. Se quiser
+            acompanhamento de perto, com avaliação feita por profissional:
+          </p>
+          <a class="cc-btn cc-btn-primario" href="/personal-trainer/" data-cc-link="personal" data-track="ferramenta-composicao:cta-local">
+            Encontrar personal na minha cidade
+          </a>
+        </div>
+
+        <h2>Referências</h2>
+        <ul class="cc-fontes">
+          <li><a href="https://www.nature.com/articles/s41598-018-29362-1" target="_blank" rel="noopener noreferrer">Woolcott OO, Bergman RN. Relative fat mass (RFM) as a new estimator of whole-body fat percentage. Scientific Reports, 2018</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/33487268/" target="_blank" rel="noopener noreferrer">Corrêa CR et al. Clinical Nutrition ESPEN, 2021;41:225–233</a> — validação do RFM contra DEXA em homens adultos jovens brasileiros.</li>
+          <li><a href="https://apps.dtic.mil/sti/pdfs/ADA143890.pdf" target="_blank" rel="noopener noreferrer">Hodgdon JA, Beckett MB. Prediction of percent body fat for U.S. Navy men from body circumferences and height. Naval Health Research Center, 1984</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/14748950/" target="_blank" rel="noopener noreferrer">Jackson AS, Pollock ML. Generalized equations for predicting body density of men. British Journal of Nutrition, 1978</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/7402053/" target="_blank" rel="noopener noreferrer">Jackson AS, Pollock ML, Ward A. Generalized equations for predicting body density of women. Medicine & Science in Sports & Exercise, 1980</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/10966886/" target="_blank" rel="noopener noreferrer">Gallagher D et al. Healthy percentage body fat ranges: an approach for developing guidelines based on body mass index. American Journal of Clinical Nutrition, 2000</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/12080449/" target="_blank" rel="noopener noreferrer">Schutz Y, Kyle UU, Pichard C. Fat-free mass index and fat mass index percentiles in Caucasians aged 18–98 y. International Journal of Obesity, 2002</a></li>
+          <li><a href="https://www.who.int/publications/i/item/9789241501491" target="_blank" rel="noopener noreferrer">Organização Mundial da Saúde. Waist circumference and waist–hip ratio: report of a WHO expert consultation, 2008</a></li>
+          <li><a href="https://www.nice.org.uk/guidance/ng246" target="_blank" rel="noopener noreferrer">NICE. Overweight and obesity management (NG246)</a> — faixas de cintura/altura.</li>
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre percentual de gordura" />
+
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraComposicao } from '../../scripts/calculadoraComposicao.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraComposicao();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .cc-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .cc-hero-inner { max-width: 780px; }
+    .cc-hero h1 { color: #fff; max-width: 24ch; }
+    .cc-hero :global(.eyebrow) { color: #ffb488; }
+    .cc-hero-lead { margin-top: var(--sp-4); font-size: var(--step-1); line-height: 1.55; color: #d9dde3; max-width: 62ch; }
+    .cc-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+    @media (max-width: 640px) {
+      .cc-hero { padding-block: var(--sp-5); }
+      .cc-hero h1 { font-size: clamp(1.5rem, 7vw, 1.9rem); }
+      .cc-hero-lead { font-size: var(--step-0); margin-top: var(--sp-3); }
+      .cc-micro { display: none; }
+    }
+
+    .cc-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--sp-6); padding-block: var(--sp-7); }
+    @media (min-width: 980px) {
+      .cc-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .cc-main { min-width: 0; max-width: 760px; }
+
+    .cc-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface, #fff);
+      box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 420px) {
+      .cc-app { padding: var(--sp-4); }
+    }
+    .cc-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    #cc-modos { scroll-margin-top: 120px; }
+    .cc-modos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2); }
+    @media (min-width: 640px) {
+      .cc-modos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .cc-modo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+      min-height: 64px;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .cc-modo strong { font-size: var(--step--1); line-height: 1.25; }
+    .cc-modo span { font-size: 0.8rem; color: var(--muted); line-height: 1.3; }
+    .cc-modo:hover { border-color: var(--brand-600); }
+    /* "Analisar tudo" entrega mais: ganha destaque sem gritar. */
+    .cc-modo-destaque { border: 2px solid var(--accent); }
+    .cc-modo.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+    .cc-modo.is-ativo span { color: #e3e8f0; }
+    .cc-modo:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cc-campos { display: grid; gap: var(--sp-4); margin-top: var(--sp-5); }
+    .cc-campos[hidden] { display: none; }
+    [data-bloco][hidden], [data-dobra][hidden], [data-mar-sexo][hidden] { display: none !important; }
+    .cc-bloco { display: grid; gap: var(--sp-3); }
+    .cc-grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+    @media (min-width: 560px) {
+      .cc-grade { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .cc-rotulo-campo { display: block; font-weight: 700; font-size: var(--step--1); }
+    .cc-campo label { display: block; font-weight: 700; font-size: var(--step--1); margin-bottom: 0.35rem; }
+    .cc-opcional { font-weight: 400; color: var(--muted); }
+    .cc-campo input {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.55rem 0.7rem;
+      font: inherit;
+      font-size: var(--step-1);
+      font-variant-numeric: tabular-nums;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .cc-medida input { max-width: 200px; }
+    .cc-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+    .cc-campo input[aria-invalid='true'] { border-color: #b3261e; }
+    .cc-confira { margin-top: 0.3rem; font-size: var(--step--1); color: #8c1d18; }
+    .cc-dica { font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    .cc-aviso-uso { font-size: var(--step--1); color: var(--muted); border-top: 1px dashed var(--line); padding-top: var(--sp-3); }
+
+    .cc-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .cc-chip {
+      min-height: 44px;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .cc-chip:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .cc-chip:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-chip.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .cc-ajuda { margin-top: 0.5rem; }
+    .cc-ajuda summary {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      color: var(--brand-600);
+      font-weight: 600;
+      font-size: var(--step--1);
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .cc-ajuda summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-ajuda-corpo { display: flex; gap: var(--sp-3); align-items: flex-start; padding: var(--sp-3); background: var(--bg); border-radius: var(--radius); font-size: var(--step--1); line-height: 1.55; }
+    .cc-ajuda-corpo p { margin: 0; }
+
+    .cc-resultado { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .cc-resultado[hidden] { display: none; }
+    .cc-resultado :global(.cc-vazio) { color: var(--muted); font-size: var(--step--1); }
+    .cc-resultado :global(.cc-titulo-res) { font-weight: 800; font-size: var(--step-1); margin-bottom: var(--sp-3); }
+    .cc-resultado :global(.cc-rotulo) { font-size: var(--step--1); color: var(--ink-soft); font-weight: 600; }
+    .cc-resultado :global(.cc-numero) {
+      font-size: clamp(2.4rem, 10vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .cc-resultado :global(.cc-faixa) { margin-top: 0.2rem; }
+    .cc-resultado :global(.cc-nota) { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .cc-resultado :global(.cc-ref) { margin-top: var(--sp-3); padding: 0.7rem 0.9rem; border-left: 3px solid var(--line); background: var(--bg); font-size: var(--step--1); line-height: 1.55; }
+    .cc-resultado :global(.cc-sec) { margin: var(--sp-3) 0 0; display: grid; gap: 0.4rem; }
+    .cc-resultado :global(.cc-linha) { display: flex; justify-content: space-between; gap: var(--sp-3); border-bottom: 1px dashed var(--line); padding-bottom: 0.4rem; }
+    .cc-resultado :global(.cc-linha dt) { color: var(--ink-soft); font-size: var(--step--1); }
+    .cc-resultado :global(.cc-linha dd) { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; }
+    .cc-resultado :global(.cc-linha-nota) { display: block; font-weight: 400; font-size: 0.8rem; color: var(--muted); }
+    .cc-resultado :global(.cc-indicadores) { display: grid; gap: var(--sp-3); margin-top: var(--sp-4); }
+    @media (min-width: 560px) {
+      .cc-resultado :global(.cc-indicadores) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .cc-resultado :global(.cc-indicador),
+    .cc-resultado :global(.cc-boer) { padding: 0.8rem 0.9rem; border: 1px solid var(--line); border-radius: var(--radius); margin-top: var(--sp-3); }
+    .cc-resultado :global(.cc-indicadores .cc-indicador) { margin-top: 0; }
+    .cc-resultado :global(.cc-ind-rotulo) { font-size: var(--step--1); font-weight: 700; color: var(--ink-soft); }
+    .cc-resultado :global(.cc-ind-valor) { font-size: var(--step-2); font-weight: 800; font-variant-numeric: tabular-nums; }
+    .cc-resultado :global(.cc-ind-valor span) { font-size: var(--step--1); font-weight: 600; color: var(--muted); }
+    .cc-resultado :global(.cc-ind-nota) { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.5; margin-top: 0.3rem; }
+    .cc-resultado :global(.cc-cruzada) { margin-top: var(--sp-4); padding: 0.8rem 0.9rem; border-left: 3px solid var(--accent); background: var(--accent-50); line-height: 1.55; }
+    .cc-resultado :global(.cc-salvar) { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--line); }
+    .cc-resultado :global(.cc-privacidade) { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); }
+    .cc-resultado :global(.cc-salvo) { margin-top: 0.5rem; font-weight: 600; }
+    .cc-resultado :global(.cc-tabela) { overflow-x: auto; margin-top: var(--sp-3); }
+    .cc-resultado :global(.cc-tabela:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-resultado :global(.cc-tabela table) { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .cc-resultado :global(.cc-tabela caption) { caption-side: top; text-align: left; color: var(--muted); padding-bottom: 0.4rem; }
+    .cc-resultado :global(.cc-tabela th),
+    .cc-resultado :global(.cc-tabela td) { text-align: left; padding: 0.45rem 0.7rem 0.45rem 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .cc-resultado :global(.cc-tabela thead th) { color: var(--muted); font-weight: 600; background: transparent; }
+    .cc-resultado :global(.cc-metodo) { color: var(--muted); font-size: 0.8rem; }
+
+    .cc-btn,
+    .cc-resultado :global(.cc-btn) {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--radius);
+      font: inherit;
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+      cursor: pointer;
+      border: 0;
+    }
+    .cc-btn-primario,
+    .cc-resultado :global(.cc-btn-primario) { background: var(--brand-600); color: #fff; }
+    .cc-btn-primario:hover { background: var(--brand-700); color: #fff; text-decoration: none; }
+    .cc-btn:focus-visible,
+    .cc-resultado :global(.cc-btn:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .cc-link-btn,
+    .cc-app :global(.cc-link-btn) {
+      min-height: 44px;
+      padding: 0.3rem 0;
+      background: none;
+      border: 0;
+      color: var(--brand-600);
+      font: inherit;
+      font-size: var(--step--1);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .cc-link-btn:focus-visible,
+    .cc-app :global(.cc-link-btn:focus-visible) { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    .cc-retorno { margin-top: var(--sp-4); padding: 0.8rem 0.9rem; border: 1px solid var(--line); border-radius: var(--radius); font-size: var(--step--1); }
+    .cc-retorno[hidden] { display: none; }
+    .cc-proximo { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--line); font-size: var(--step--1); line-height: 1.6; }
+    .cc-compartilha { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem var(--sp-4); margin-top: var(--sp-4); padding-top: var(--sp-3); border-top: 1px solid var(--line); }
+    .cc-compartilha-h { width: 100%; font-weight: 700; font-size: var(--step--1); }
+    .cc-compartilha .cc-link-btn { display: inline-flex; align-items: center; }
+    .cc-compartilha .cc-dica { width: 100%; }
+
+    .cc-conteudo { margin-top: var(--sp-7); }
+    .cc-onde { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); margin: var(--sp-4) 0; }
+    @media (max-width: 480px) {
+      .cc-onde { grid-template-columns: minmax(0, 1fr); }
+      .cc-onde figure { flex-direction: row; text-align: left; }
+    }
+    .cc-onde figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; font-size: var(--step--1); }
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption { caption-side: top; text-align: left; color: var(--muted); font-size: var(--step--1); padding-bottom: 0.5rem; }
+    .tabela-rolavel th,
+    .tabela-rolavel td { text-align: left; padding: 0.5rem 0.7rem 0.5rem 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; white-space: nowrap; }
+    .cc-proximo-texto { padding: var(--sp-5); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface, #fff); }
+    .cc-proximo-texto h2 { margin-top: 0; }
+    .cc-proximo-texto .cc-btn { margin-top: var(--sp-3); }
+    .cc-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .cc-fontes li { margin-bottom: 0.6rem; }
+    .cc-revisao { font-size: var(--step--1); color: var(--muted); }
+    /* O WhatsApp flutuante cobre os números à direita enquanto a calculadora está na tela. */
+    @media (max-width: 760px) {
+      :global(body.cc-app-visivel .wpp-float-regiao) { display: none; }
+    }
+  </style>
+</Base>

@@ -479,3 +479,52 @@ ressalva de avaliação profissional.
 **Evolução — limiares (heurística declarada, não norma):** cintura muda de
 verdade a partir de ~2 cm (erro típico da fita: 1–2 cm); %G estimado, a
 partir de ~2 pontos entre duas medidas no mesmo protocolo.
+
+## 6. Implementação (07/10)
+
+- **Página:** `/ferramentas/calculadora-de-percentual-de-gordura/` — title
+  "Calculadora de Percentual de Gordura, Massa Magra e IMC" (55); H1
+  "Calculadora de percentual de gordura"; ferramenta antes do texto.
+- **Motor:** `src/lib/corpo/composicao.ts`; testes em
+  `scripts/test-composicao.ts` (`npm run test:composicao`).
+- **Interface:** `src/scripts/calculadoraComposicao.client.ts`. Cinco modos
+  (gordura · IMC · cintura · analisar tudo · evolução); no modo gordura, três
+  métodos (fita/RFM · Marinha · dobras 3 ou 7). Cada modo mostra só os
+  campos de que precisa. Ilustração SVG neutra por medida
+  (`src/components/MedidaIlustracao.astro`).
+- **Classificação pelo valor exibido:** IMC com uma casa, razões com duas,
+  cintura com uma — 24,98 aparece como 25,0 e é lido como 25,0. Achado
+  no teste de tela, que mostrava "25,0 na faixa 18,5 a 24,9".
+- **Histórico:** `localStorage` (`ppp-composicao-v1`), uma avaliação por
+  dia (medir de novo no mesmo dia substitui), até 60; apagar uma ou
+  todas; "Última avaliação: há N dias"; comparação entre as duas últimas
+  com "dentro/além do erro de medida" e leitura que nunca afirma
+  recomposição. Sem armazenamento (aba anônima), avisa que não salvou.
+- **Privacidade:** nenhuma medida na URL nem no dataLayer. Eventos:
+  `body_comp_view` (has_history), `_start`, `_mode_selected`,
+  `_method_selected`, `_measure_help_opened` (field),
+  `_result_generated` / `_full_analysis_generated` (mode, method),
+  `_history_saved` e `_comparison_viewed` (contagem em faixa),
+  `_shared`, `_related_tool_clicked`, `_find_personal_clicked`.
+- **Catálogo:** entrada `percentual-de-gordura` (32 ferramentas), com os
+  aliases dos prints.
+- **QA (navegador):** os cinco modos e os três métodos; 1,75 → "Entendemos
+  175 cm"; peso 900 → "Confira este valor"; menor de 18 sem estimativa nem
+  classificação; 60+ com a tabela de idosos; salvar, retorno e evolução
+  (−4 cm além do erro, peso −0,3 kg dentro do erro, leitura honesta);
+  larguras 320–1280 sem rolagem lateral; axe sem violação da página nos
+  modos gordura, tudo e evolução.
+
+**Pendências:**
+
+- **Links de entrada pelo texto.** Os artigos vizinhos (gordura visceral,
+  recomposição, avaliação física, platô, como perder barriga) já têm o seu
+  `FerramentaInline`, e a regra é um por artigo. Link em palavra existente,
+  pela exceção atual do CLAUDE.md, só vale para calculadoras de calorias;
+  para esta, subiria `atualizadoEm`. Mesma decisão pendente da
+  calculadora de pace — do Renato.
+- **Fase 2:** gráfico simples de cintura ao longo do tempo; comparar
+  avaliações escolhidas (hoje é a última com a anterior).
+- **Fase 3:** IMC-para-idade da OMS (curvas LMS) para menores; exportar
+  avaliações.
+- **Imagem OG:** a padrão do site, como as outras calculadoras.

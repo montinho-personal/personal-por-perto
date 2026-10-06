@@ -179,6 +179,8 @@ export const boer = (sexo: Sexo, pesoKg: number, alturaCm: number): number =>
 /* ───────────────────────── IMC ───────────────────────── */
 
 export const imc = (pesoKg: number, alturaCm: number): number => pesoKg / (alturaCm / 100) ** 2;
+/** O IMC como aparece na tela (uma casa): é ele que se compara com os cortes. */
+export const imcExibido = (v: number): number => Math.round(v * 10) / 10;
 
 export interface Faixa {
   /** Identificador estável (analytics e testes). */
@@ -212,6 +214,8 @@ export const FAIXAS_IMC_IDOSO: { ate: number; id: string; rotulo: string; faixa:
  */
 export function faixaImc(valor: number, idade: number | null): (Faixa & { fonte: 'oms' | 'idoso' }) | null {
   if (idade !== null && idade < 18) return null;
+  // A tabela se lê com uma casa: 24,98 aparece como 25,0 e é classificado como 25,0.
+  valor = imcExibido(valor);
   const idoso = idade !== null && idade >= 60;
   const tabela = idoso ? FAIXAS_IMC_IDOSO : FAIXAS_IMC_OMS;
   const f = tabela.find((x) => valor < x.ate)!;
@@ -235,6 +239,7 @@ export const cinturaMetadeDaAltura = (alturaCm: number): number => alturaCm / 2;
 
 /** NICE NG246: 0,40–0,49 saudável; 0,50–0,59 aumentada; 0,60 ou mais, alta. */
 export function faixaRce(valor: number): Faixa {
+  valor = Math.round(valor * 100) / 100; // lida com as duas casas que aparecem
   if (valor < 0.4) return { id: 'abaixo04', rotulo: 'abaixo da faixa descrita pela diretriz', faixa: 'abaixo de 0,40' };
   if (valor < 0.5) return { id: 'saudavel', rotulo: 'faixa saudável', faixa: '0,40 a 0,49' };
   if (valor < 0.6) return { id: 'aumentada', rotulo: 'adiposidade central aumentada', faixa: '0,50 a 0,59' };
@@ -245,6 +250,7 @@ export function faixaRce(valor: number): Faixa {
 export const CORTES_CINTURA: Record<Sexo, [number, number]> = { m: [94, 102], f: [80, 88] };
 
 export function faixaCintura(cinturaCm: number, sexo: Sexo): Faixa {
+  cinturaCm = Math.round(cinturaCm * 10) / 10; // como aparece na tela
   const [a, b] = CORTES_CINTURA[sexo];
   if (cinturaCm < a) return { id: 'abaixo', rotulo: 'abaixo do primeiro corte', faixa: `abaixo de ${a} cm` };
   if (cinturaCm < b) return { id: 'aumentado', rotulo: 'risco aumentado', faixa: `${a} a ${b - 1} cm` };
@@ -258,6 +264,7 @@ export const rcq = (cinturaCm: number, quadrilCm: number): number => cinturaCm /
 export const CORTE_RCQ: Record<Sexo, number> = { m: 0.9, f: 0.85 };
 
 export function faixaRcq(valor: number, sexo: Sexo): Faixa {
+  valor = Math.round(valor * 100) / 100; // como aparece na tela
   const c = CORTE_RCQ[sexo];
   const fmt = c.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
   return valor < c
@@ -414,5 +421,6 @@ export function formataDelta(v: number, unidade: 'kg' | 'cm' | 'pp'): string {
   const casas = unidade === 'cm' ? (Number.isInteger(Math.round(v * 10) / 10) ? 0 : 1) : 1;
   const abs = num(Math.abs(v), casas);
   const sinal = v > 0.0001 ? '+' : v < -0.0001 ? '−' : '';
-  return `${sinal}${abs}${unidade === 'pp' ? ' ponto' + (Math.abs(v) >= 2 || Math.abs(v) < 1 ? 's' : '') : ` ${unidade}`}`;
+  if (unidade === 'pp') return `${sinal}${abs} ${abs === '1,0' ? 'ponto' : 'pontos'}`;
+  return `${sinal}${abs} ${unidade}`;
 }
