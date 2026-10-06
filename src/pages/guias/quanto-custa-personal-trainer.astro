@@ -15,6 +15,7 @@ import { formatDateLong } from '../../lib/slug';
 import { cidades } from '../../data/cidades';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
+import { SEMANAS_POR_MES } from '../../data/precos';
 const relacionados = [
   {
     url: rotas.comoEscolher,
@@ -37,7 +38,7 @@ const relacionados = [
 ];
 
 const path = '/guias/quanto-custa-personal-trainer';
-const atualizadoEm = '2026-10-05';
+const atualizadoEm = '2026-10-06';
 const capa = '/capas-conteudo/quanto-custa-personal-trainer.webp';
 const capaAlt =
   'Personal trainer com halter e prancheta ao lado de uma etiqueta de preço, ilustrando o guia sobre quanto custa um personal trainer — Personal por Perto';
@@ -61,6 +62,22 @@ const linhas = [...cidades]
 /* "Quanto custa um personal trainer em São Paulo?" — pesquisa relacionada do Google (30/09). Números da página da cidade. */
 const SP = cidades.find((c) => c.slug === 'sao-paulo-sp')!;
 
+/*
+ * Prints de 06/10/2026 ("quanto custa um personal trainer por mês", a terceira
+ * leva da mesma busca): o autocompletar trouxe "por semana", "por dia", "por
+ * hora" e "em média"; o PAA, "quanto tempo dura uma aula de personal
+ * trainer?" e "vale a pena pagar um personal trainer?"; a IA, "R$ 640 a
+ * R$ 1.800 por mês" — que é R$ 80–150 a aula vezes 8 ou 12 aulas. Entraram a
+ * pergunta por semana (o pacote mensal mediano dividido pelas semanas do
+ * mês), a de duração, a de "vale a pena pagar" no lugar da de "pagar mais
+ * por um experiente" (que ficou dentro dela) e a quarta causa da seção dos
+ * números que não batem. "Quanto ganha um personal CLT" fica fora: é busca
+ * de emprego, não de contratação.
+ */
+const MENSAL_MEDIANO = { min: 260, max: 700 };
+const semanal = (v: number) => Math.round(v / SEMANAS_POR_MES / 10) * 10;
+const POR_SEMANA = { min: semanal(MENSAL_MEDIANO.min), max: semanal(MENSAL_MEDIANO.max) };
+
 const faqs = [
   {
     pergunta: 'Quanto custa um personal trainer por mês?',
@@ -76,6 +93,15 @@ const faqs = [
     pergunta: 'Quanto custa um personal trainer 2 ou 3 vezes por semana?',
     resposta:
       'Em reais, quase o mesmo que treinar duas vezes: o pacote mensal presencial fica na faixa de R$ 260 a R$ 700 na cidade mediana, tanto para duas quanto para três sessões semanais. O que muda é o valor por sessão, que cai de R$ 30–80 para R$ 20–54 conforme a frequência sobe. É por isso que aumentar a frequência costuma ser a forma mais barata de aumentar o volume de treino acompanhado.',
+  },
+  {
+    pergunta: 'Quanto custa um personal trainer por semana?',
+    resposta: `Dentro de um pacote mensal de 2 a 3 sessões semanais, a semana sai por cerca de R$ ${POR_SEMANA.min} a R$ ${POR_SEMANA.max} na cidade mediana — é o pacote de R$ ${MENSAL_MEDIANO.min} a R$ ${MENSAL_MEDIANO.max} dividido pelas 4,33 semanas do mês. Pouca gente contrata por semana: o formato que existe é o pacote mensal ou a aula avulsa, e quem paga aula por aula paga bem mais por sessão. "Por dia" de treino, na prática, é o valor da sessão — veja a pergunta sobre a hora-aula.`,
+  },
+  {
+    pergunta: 'Quanto tempo dura uma aula de personal trainer?',
+    resposta:
+      'Em geral, cerca de uma hora — de 50 a 60 minutos, com aquecimento, treino principal e o fechamento. Há profissionais que trabalham com sessões de 30 a 45 minutos, mais densas, para quem tem pouco tempo. Ao comparar preço, pergunte a duração antes de qualquer outra coisa: duas propostas com o mesmo valor por sessão, uma de 30 e outra de 60 minutos, não estão vendendo a mesma coisa. As faixas deste guia não separam os dois formatos.',
   },
   {
     pergunta: 'Quanto custa um personal trainer particular?',
@@ -102,9 +128,9 @@ const faqs = [
       'Em geral, sim. Como não há deslocamento e o profissional consegue atender mais alunos com método estruturado, o acompanhamento online costuma custar menos que o presencial, mantendo a personalização do treino.',
   },
   {
-    pergunta: 'Vale a pena pagar mais por um personal experiente?',
+    pergunta: 'Vale a pena pagar um personal trainer?',
     resposta:
-      'Costuma valer, especialmente para objetivos específicos como emagrecimento, reabilitação ou performance. Experiência se traduz em melhor avaliação, progressão mais segura e menos tentativa e erro — o que acelera resultados e reduz risco de lesão.',
+      'Vale mais para quem está começando, para quem tem uma limitação ou dor que pede cuidado — sempre com a liberação de médico ou fisioterapeuta — e para quem já tentou treinar sozinho e não manteve a rotina. Para quem já treina com constância e técnica, o acompanhamento online costuma bastar, por bem menos. E pagar mais por um profissional experiente costuma compensar em objetivos específicos: experiência se traduz em avaliação melhor, progressão mais segura e menos tentativa e erro. O guia "Vale a pena contratar um personal trainer?" trata a decisão com calma.',
   },
 ];
 
@@ -268,7 +294,7 @@ const schema = [
       <h2>Por que os números que você acha na internet não batem</h2>
       <p>
         Quem pesquisa preço de personal encontra valores que variam de R$ 30 a
-        R$ 300 pela mesma coisa, e desiste de comparar. A dispersão tem três
+        R$ 300 pela mesma coisa, e desiste de comparar. A dispersão tem quatro
         causas concretas, e reconhecê-las resolve metade da confusão.
       </p>
 
@@ -295,6 +321,18 @@ const schema = [
         duas sessões e meia em Alphaville. Sem a unidade e sem a cidade, o
         número não significa nada — e é por isso que este guia publica os dois
         recortes e a tabela por cidade logo abaixo.
+      </p>
+
+      <p>
+        <strong>4. A conta da aula avulsa vezes o número de aulas.</strong>
+        Tabelas que circulam — inclusive em resumos automáticos de busca —
+        chegam a R$ 640 a R$ 1.800 por mês multiplicando uma aula de R$ 80 a
+        R$ 150 por 8 ou 12 aulas. A conta tem dois problemas: usa o preço
+        avulso, quando quem fecha pacote paga bem menos por sessão, e usa valor
+        de capital como se fosse o do país inteiro. Mesmo em São Paulo, a
+        referência do portal para o pacote mensal presencial é de
+        R$ {SP.precos.mensalMin.toLocaleString('pt-BR')} a
+        R$ {SP.precos.mensalMax.toLocaleString('pt-BR')}.
       </p>
 
       <FerramentaInline

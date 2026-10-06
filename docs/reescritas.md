@@ -912,3 +912,23 @@ primeira página: ali, título e trecho de destaque decidem.
 posição 16,9 no snapshot agregado, mas o export bruto mostrava 26,7 para a
 versão sem barra final. É o maior ativo do portal e merece reescrita
 manual, com atenção, não em lote.
+
+**Prints de 06/10/2026, terceira leva de "quanto custa um personal trainer
+por mês"** (as anteriores: 30/09 e 05/10). Novo em relação às outras:
+autocompletar com "por semana", "por dia", "por hora" e "em média"; PAA
+com "quanto tempo dura uma aula de personal trainer?" e "vale a pena pagar
+um personal trainer?"; a IA dizendo "R$ 640 a R$ 1.800 por mês" (2× por
+semana, 8 aulas: 640–1.200; 3×, 12 aulas: 960–1.800; online 150–400) — a
+conta é R$ 80–150 a aula vezes o número de aulas, preço avulso de capital
+aplicado ao país. Entraram no guia: as perguntas "por semana" (R$ 60 a
+R$ 160, o pacote mediano ÷ 4,33, calculado na página) e "quanto tempo dura
+uma aula", "vale a pena pagar um personal trainer?" no lugar de "vale a
+pena pagar mais por um experiente?" (que ficou dentro dela, com a
+ressalva de médico ou fisioterapeuta para quem tem dor), e a quarta causa
+da seção "Por que os números que você acha na internet não batem", com a
+referência de São Paulo (R$ 400 a R$ 1.200 o pacote) contra os R$ 640 a
+R$ 1.800. Fora: "quanto ganha um personal CLT" (emprego). A calculadora
+não mudou: o Search Console de 06/09 a 05/10 deu a ela uma única
+impressão; quem disputa estas buscas é o guia — "quanto custa um personal
+trainer" posição 10,6, "valor de um personal trainer 2 vezes por semana"
+7,7 e 3 vezes 6,0, todas sem clique.
