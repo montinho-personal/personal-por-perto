@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com grande público universitário (UFLA), complementada pelo campus e pelo Parque Ecológico Quedas do Rio Bonito.',
 
+  academiasProximas: [
+    { nome: 'Up Fitness Lavras', detalhe: 'na Rua Kenedy dos Santos' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Maior IDHM dos polos universitários do sul de Minas (0,782).',
     'Campus da UFLA como "parque urbano" para corrida e ciclismo nos fins de semana.',
@@ -89,6 +94,19 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade universitária do sul de Minas, Lavras une a UFLA, clima de altitude e relevo desafiador. Um personal trainer ajuda a aproveitar o campus e as trilhas com método, num cenário ideal para treino de resistência o ano todo.',
 
+  /*
+   * Prints de 06/10: autocompletar com "mg", "personal lavras mg" e
+   * "personal lavras"; PAA com "qual é o valor de um personal trainer por
+   * mês?", "3 vezes por semana", "vale a pena pagar um personal trainer?" e
+   * "vale a pena ter um personal trainer online?" — o padrão das cidades
+   * printadas (docs/seo-local-estrategia.md, seção 5), confirmado pelo PAA.
+   * O "Outras pessoas pesquisaram" enviado era de outra busca e foi
+   * descartado. As vizinhas de divisa (Ijaci, Ribeirão Vermelho, Perdões,
+   * Nepomuceno) não têm página no portal; ficam as duas de antes.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   vizinhas: ['varginha-mg', 'pocos-de-caldas-mg'],
 
   fontes: [
@@ -96,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Lavras', url: 'https://www.lavras.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

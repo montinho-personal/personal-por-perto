@@ -814,3 +814,18 @@ Itapema (TotalPass e o guia de academias do myside: Rua 262, nº 52, Meia
 Praia) e Academia Porto.Fit, só o nome (existência nas duas fontes; o
 endereço, Rua 304, 940, só no TotalPass). Recusada por fonte única: Level
 Up Academia (só Wellhub).
+
+## Lavras — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer lavras | "mg", "personal lavras mg", "personal lavras" (o "Outras pessoas pesquisaram" enviado era de outra busca e foi descartado) | **qual é o valor de um personal trainer por mês** · **3 vezes por semana** · vale a pena pagar · **vale a pena ter um personal trainer online** | pedegas.com (treino domiciliar), Facebook de personal local |
+
+**Aplicado:** o padrão das cidades printadas, desta vez confirmado pelo
+PAA — valor por mês no título e na descrição, perguntas "1 mês, 3 vezes
+por semana", Instagram e online ou presencial. **Vizinhas:** as de divisa
+não têm página no portal; ficam Varginha e Poços de Caldas. **Academias**,
+no mesmo commit: Up Fitness Lavras (Wellhub e TotalPass, Rua Kenedy dos
+Santos, 20; o bairro só no Wellhub). Recusadas por fonte única: Saúde Fit
+(só o Wellhub confirma o endereço de Lavras), Vortex Fitness Club, Studio
+Personal Otávio Costa e Move Lavras (só TotalPass).
