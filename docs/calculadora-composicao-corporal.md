@@ -96,6 +96,47 @@ de métodos e as decisões de produto.
 - **"Masculino"** aparece ao lado de "feminino": referência por sexo dos
   dois lados.
 
+## 5. Benchmark (07/10)
+
+Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
+foi visto está marcado como não verificado). Ferramentas: Omni (PT), Calculator.net,
+MiniWebTool BR, Tua Saúde, MD Saúde, Drauzio, ABESO, Ministério da Saúde,
+NHS, NIH, ValorFinal, CalculaCentro, Vitat, GetFitCraft.
+
+**Lacunas que viram diferencial:**
+
+1. **Histórico e comparação na web**: nenhuma calculadora brasileira tem.
+2. **"A mudança é real ou erro de medida?"**: ninguém responde. Mudança
+   de 1 ponto no %G está dentro do erro do método; cintura em cm é mais
+   confiável. Selo de "mudança acima do erro" só quando passar do limiar.
+3. **Protocolo de cintura explícito**: a Marinha mede no umbigo (homem) e
+   no ponto mais estreito (mulher); OMS no ponto médio costela–crista;
+   NIH/NHANES acima da crista ilíaca. Os concorrentes misturam (Vitat:
+   "umbigo **ou** entre costela e crista") ou usam uma cintura só para
+   tudo sem dizer.
+4. **A mudança de 2023 do Exército dos EUA** (teste de uma circunferência,
+   porque o antigo classificava mal cerca de 1/3) — ninguém cita.
+5. **Massa magra por fórmula populacional (Boer, James, Hume) × massa
+   livre de gordura da pessoa** — os concorrentes chamam as duas de
+   "massa magra".
+6. **Leitura cruzada** (IMC alto + cintura/altura baixa → provavelmente
+   massa muscular) — ninguém faz.
+7. **Duas leituras por medida e média** — o protocolo pede, ninguém faz.
+8. **Quem não deve usar** (menor, gestante, idoso) — só a ABESO separa
+   criança.
+
+**Erros a evitar** (vistos na concorrência): decimais no %G ("18,73%");
+rótulo "obeso"/"atleta" pela fita; meta de "gordura ideal"; fórmula em
+polegadas aplicada a cm; "medidas ideais 102/88" (são cortes de risco);
+RCQ ligada a "asma ou Alzheimer"; vermelho/verde de julgamento.
+
+**Arquitetura (pendente dos prints de IMC e cintura):** os concorrentes
+têm uma URL por indicador, e o benchmark sugere a central cobrindo
+%G/fita/dobras/massa magra (mesma intenção) e, depois, páginas enxutas de
+cintura/altura e cintura/quadril em leva própria. IMC "puro" é dominado
+por sites de saúde com autoridade: mirar a cauda ("IMC alto mas tenho
+músculo"). Decisão quando chegarem os prints.
+
 ## 4. Métodos
 
 Em pesquisa (fontes primárias: Hodgdon & Beckett 1984, Exército dos EUA
