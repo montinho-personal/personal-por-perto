@@ -94,11 +94,23 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade-parque e referência em mobilidade ativa, Sorocaba é feita para quem gosta de se movimentar. Um personal trainer ajuda a transformar as ciclovias e os parques da cidade em um plano de treino consistente — da corrida no Parque das Águas à musculação com método.',
 
+  /*
+   * Prints de 06/10: autocompletar com "instagram", "consultoria online",
+   * "sp", "valor", "vagas", "mulher", "studio", "eden" (bairro), "smart fit"
+   * e "personal training"; relacionadas com "smart fit sorocaba",
+   * "instagram", "votorantim", "mulher", "perto de mim", "preço", "online" e
+   * um nome próprio; PAA com "quanto custa em Sorocaba", "1 mês", "3 vezes
+   * por semana" e "2 vezes por semana dá resultado". Registro completo em
+   * docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Sorocaba?',
       resposta:
-        'A cidade-parque oferece um circuito completo: o Parque Campolim, com três pistas de distâncias diferentes (1,5 km, 1,9 km e 2,6 km), o Parque das Águas — aberto 24 horas, palco das corridas da cidade — e o ETA-Éden, arborizado. Nas academias, a Smart Fit cobre do Campolim ao Vergueiro, e o atendimento em casa é comum no Campolim e no Jardim Europa. Os cerca de 128 km de ciclovias separadas do trânsito ainda fazem da bike uma opção real de treino.',
+        'A cidade-parque oferece um circuito completo: o Parque Campolim, com três pistas de distâncias diferentes (1,5 km, 1,9 km e 2,6 km), o Parque das Águas — aberto 24 horas, palco das corridas da cidade — e o ETA-Éden, arborizado, na região do Éden. Nas academias, a Smart Fit cobre do Campolim ao Vergueiro, e o atendimento em casa é comum no Campolim e no Jardim Europa. Os cerca de 128 km de ciclovias separadas do trânsito ainda fazem da bike uma opção real de treino.',
     },
     {
       pergunta: 'O que o Parque das Águas aberto 24 horas muda na rotina de treino?',
@@ -112,7 +124,10 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['campinas-sp', 'sao-paulo-sp', 'ribeirao-preto-sp'],
+  // Era Campinas, São Paulo e Ribeirão Preto — nenhuma da região. Em
+  // 06/10/2026 entraram Votorantim, que faz divisa e aparece nas
+  // relacionadas da busca, e Itu, da região metropolitana de Sorocaba.
+  vizinhas: ['votorantim-sp', 'itu-sp', 'campinas-sp', 'sao-paulo-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Sorocaba', url: 'https://cidades.ibge.gov.br/brasil/sp/sorocaba/panorama' },
@@ -128,5 +143,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Sorocaba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-10-06',
 };

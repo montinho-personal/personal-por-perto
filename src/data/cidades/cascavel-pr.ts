@@ -101,8 +101,19 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cascavel', url: 'https://www.cascavel.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-10-06',
 
+  /*
+   * Prints de 06/10: autocompletar com "pr", "ce" (Cascavel do Ceará, que
+   * tem página própria — o título com a UF separa as duas), "personal
+   * cascavel pr" e "personal cascavel"; PAA com "quanto custa em Cascavel",
+   * "1 mês", "3 vezes por semana" e "qual é o melhor treino para perder
+   * peso?"; trecho de destaque com a aula de R$ 60 a R$ 120 (Cronoshare). A
+   * nossa faixa é estimativa editorial e não muda por causa dele. Registro
+   * completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
 
   faqsExtra: [
     {

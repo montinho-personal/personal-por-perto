@@ -720,3 +720,47 @@ Hortolândia, que fazem divisa e aparecem, as quatro, nas relacionadas.
 
 **Não aplicado:** "mulher", "bem avaliados", nomes, "panobianco" (rede),
 "perto de mim".
+
+## Sorocaba — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer sorocaba | **"instagram"**, **"consultoria online"**, "sp", **"valor"**, "vagas", "mulher", "studio", "eden" (bairro), "smart fit", "personal training"; relacionadas: "smart fit sorocaba", "instagram", **"votorantim"**, "mulher", "perto de mim", **"preço"**, **"online"**, nome próprio | **quanto custa em Sorocaba** · **1 mês** · **3 vezes por semana** · 2 vezes por semana dá resultado | Superprof, Cronoshare, BeBee; site de personal local |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana", "online ou presencial" e "como avaliar pelo Instagram";
+o ETA-Éden ganhou "na região do Éden" na pergunta de onde treinar.
+**Vizinhas:** eram Campinas, São Paulo e Ribeirão Preto; entraram na frente
+Votorantim (divisa, nas relacionadas) e Itu (região metropolitana).
+
+**Não aplicado:** "mulher", "smart fit" (política da rede não verificada),
+"vagas" (emprego), "studio", nomes, "perto de mim". "2 vezes por semana dá
+resultado" é pergunta genérica: respondida em 06/10 na ferramenta
+Presencial ou Online, não em cada cidade.
+
+## Bauru — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer bauru | "mulher", "personal bauru", "bady bassitt" (perto de Rio Preto — personalização, busca feita de Barueri); relacionadas: "mulher", **"personal trainer online"**, "pilates bauru" | **quanto custa em Bauru** · **1 mês** · **3 vezes por semana** · é vantajoso pagar | StarOfService, Superprof; Instagram de personal local |
+
+**Aplicado:** valor por mês no título e na descrição; perguntas "1 mês, 3
+vezes por semana" e "online ou presencial". **Vizinhas:** eram Sorocaba,
+Ribeirão Preto e São José do Rio Preto; entrou na frente Pederneiras, que
+faz divisa (não veio dos prints — as relacionadas não citam cidade vizinha).
+
+**Não aplicado:** "mulher", "bady bassitt", "pilates" (outra atividade).
+
+## Cascavel (PR) — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer cascavel | **"pr"**, **"ce"**, "personal cascavel pr", "personal cascavel" | **quanto custa em Cascavel** · **1 mês** · **3 vezes por semana** · qual é o melhor treino para perder peso | Cronoshare (aula de R$ 60 a R$ 120), Instagram e site de personais locais |
+
+**Aplicado:** valor por mês no título e na descrição — o título sai com
+"(PR)", o que separa a página da de Cascavel (CE), que existe e é outra;
+pergunta "1 mês, 3 vezes por semana".
+
+**Não aplicado:** "melhor treino para perder peso" (genérica, é dos
+artigos de emagrecimento); a faixa do Cronoshare não altera a nossa, que é
+estimativa editorial com método declarado.

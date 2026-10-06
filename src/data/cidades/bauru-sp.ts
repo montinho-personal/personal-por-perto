@@ -94,14 +94,27 @@ export const cidade: Cidade = {
   conclusao:
     'Polo regional de saúde e educação, Bauru tem boa estrutura pública e privada para treinar — do Parque Vitória Régia às dezenas de academias ao ar livre. Um personal trainer ajuda a aproveitar tudo isso com método, da musculação à preparação para as corridas locais.',
 
-  vizinhas: ['sorocaba-sp', 'ribeirao-preto-sp', 'sao-jose-do-rio-preto-sp'],
+  /*
+   * Prints de 06/10: autocompletar curto — "mulher", "personal bauru" e
+   * "bady bassitt" (município perto de São José do Rio Preto, não de Bauru;
+   * a busca foi feita de Barueri e o resultado é personalizado);
+   * relacionadas com "mulher", "personal trainer online" e "pilates bauru";
+   * PAA com "quanto custa em Bauru", "1 mês", "3 vezes por semana" e "é
+   * vantajoso pagar". Registro completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
+  // Eram Sorocaba, Ribeirão Preto e São José do Rio Preto — nenhuma da
+  // região. Em 06/10/2026 entrou na frente Pederneiras, que faz divisa.
+  vizinhas: ['pederneiras-sp', 'sorocaba-sp', 'ribeirao-preto-sp', 'sao-jose-do-rio-preto-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Bauru', url: 'https://cidades.ibge.gov.br/brasil/sp/bauru/panorama' },
     { nome: 'Prefeitura de Bauru', url: 'https://www.bauru.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-10-06',
   capaArte: {
     src: '/capas-cidade/bauru-sp.webp',
     w: 1200,
