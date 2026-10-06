@@ -971,7 +971,7 @@ const TREINO: FerramentaCatalogo[] = [
     ],
     tags: ['composição corporal', 'emagrecimento', 'medidas', 'imc'],
     relacionadas: ['treino-para-minha-rotina', 'meu-treino-faz-sentido'],
-    publicadoEm: '2026-10-07',
+    publicadoEm: '2026-10-06',
   },
 ];
 

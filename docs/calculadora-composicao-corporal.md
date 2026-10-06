@@ -42,7 +42,7 @@ de métodos e as decisões de produto.
 
 ## 3. Prints do Google
 
-### 3.1 "calculadora percentual de gordura" (07/10)
+### 3.1 "calculadora percentual de gordura" (06/10)
 
 - **Autocompletar:** 7 dobras · corporal · por circunferência · dobras
   cutâneas · marinha americana · 3 dobras · pollock 7 dobras · com fita
@@ -64,7 +64,7 @@ de métodos e as decisões de produto.
 - **"Feminino" aparece duas vezes** (calcular e tabela): a página precisa
   de referência de percentual por sexo — só com fonte rastreável.
 
-### 3.2 "percentual de gordura fita métrica" (07/10)
+### 3.2 "percentual de gordura fita métrica" (06/10)
 
 - **Autocompletar:** fita métrica · como medir percentual de gordura **sem**
   fita métrica · com fita métrica · com fita.
@@ -96,7 +96,7 @@ de métodos e as decisões de produto.
 - **"Masculino"** aparece ao lado de "feminino": referência por sexo dos
   dois lados.
 
-### 3.3 "calculadora massa magra" (07/10)
+### 3.3 "calculadora massa magra" (06/10)
 
 - **Autocompletar:** e gorda · corporal magra · online · imc massa magra ·
   percentual de massa magra · para ganho de massa magra. (Também "glp 1",
@@ -136,7 +136,7 @@ de métodos e as decisões de produto.
 - **"Para ganho de massa magra"**: o histórico é a resposta (acompanhar
   massa livre de gordura e cintura ao longo do tempo).
 
-### 3.4 "calcular IMC" (07/10)
+### 3.4 "calcular IMC" (06/10)
 
 - **Autocompletar:** mulher · grátis · online · homem · na calculadora ·
   **infantil** · **e peso ideal** · **criança** · adulto · ideal · homem
@@ -170,7 +170,7 @@ de métodos e as decisões de produto.
 - **Tabela de IMC** com as faixas da OMS no texto, com o aviso de que o
   IMC não distingue gordura de músculo.
 
-### 3.5 "relação cintura altura" (07/10)
+### 3.5 "relação cintura altura" (06/10)
 
 - **Autocompletar:** calculadora · tabela · mulher · **rca** · fórmula ·
   ideal · normal · obesidade · rcq relação cintura altura · **como medir**.
@@ -210,7 +210,7 @@ de métodos e as decisões de produto.
 - **"Como medir a cintura (homem)" e "altura da cintura"**: as instruções
   de medição, de novo, como intenção própria.
 
-### 3.6 "relação cintura quadril" (07/10)
+### 3.6 "relação cintura quadril" (06/10)
 
 - **Autocompletar:** calculadora · tabela · mulher · e risco cardiovascular
   · homem · o que é · **tabela oms** · **risco moderado**.
@@ -244,7 +244,7 @@ de métodos e as decisões de produto.
 - **Um protocolo de cintura por vez**, dito na instrução — a própria
   visão geral de IA mistura dois.
 
-### 3.7 "percentual de gordura ideal" (07/10)
+### 3.7 "percentual de gordura ideal" (06/10)
 
 - **Autocompletar:** para mulher · masculino · homem e mulher · **por
   idade** · feminino por idade · **para mulher de 40 anos** · **mulher 47
@@ -288,7 +288,7 @@ de métodos e as decisões de produto.
   página responde a pergunta e explica por que fala em faixa de
   referência.
 
-### 3.8 "peso não muda mas cintura diminui" (07/10)
+### 3.8 "peso não muda mas cintura diminui" (06/10)
 
 - **Autocompletar:** ruído de letra de música ("frases", "música", "meme",
   "letra") · cintura muito magra · peso na cintura — e, no modo de IA, o
@@ -337,7 +337,7 @@ de métodos e as decisões de produto.
   calórico diário; quando esta ferramenta existir, reavaliar — para
   "por que a balança engana na recomposição", ela responde melhor.
 
-### 3.9 Síntese dos prints (oito buscas, 07/10)
+### 3.9 Síntese dos prints (oito buscas, 06/10)
 
 1. **Dobras cutâneas** é intenção forte e o briefing não previa → modo
    próprio (Jackson & Pollock 3 e 7, Siri).
@@ -356,7 +356,7 @@ de métodos e as decisões de produto.
    honesta, contra a concorrência que afirma recomposição.
 8. **IMC** é dominado por Google e saúde → módulo, não página própria.
 
-## 5. Benchmark (07/10)
+## 5. Benchmark (06/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
 foi visto está marcado como não verificado). Ferramentas: Omni (PT), Calculator.net,
@@ -397,7 +397,7 @@ cintura/altura e cintura/quadril em leva própria. IMC "puro" é dominado
 por sites de saúde com autoridade: mirar a cauda ("IMC alto mas tenho
 músculo"). Decisão quando chegarem os prints.
 
-## 4. Métodos — decisão (07/10)
+## 4. Métodos — decisão (06/10)
 
 Pesquisa com fontes primárias por busca (os PDFs ficaram bloqueados pela
 rede; os coeficientes de Marinha, RFM, Jackson & Pollock e Boer foram
@@ -480,7 +480,7 @@ ressalva de avaliação profissional.
 verdade a partir de ~2 cm (erro típico da fita: 1–2 cm); %G estimado, a
 partir de ~2 pontos entre duas medidas no mesmo protocolo.
 
-## 6. Implementação (07/10)
+## 6. Implementação (06/10)
 
 - **Página:** `/ferramentas/calculadora-de-percentual-de-gordura/` — title
   "Calculadora de Percentual de Gordura, Massa Magra e IMC" (55); H1

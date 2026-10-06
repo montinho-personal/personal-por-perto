@@ -5,7 +5,7 @@
  * Plano, crítica do briefing, prints do Google das oito buscas e a decisão
  * de métodos: docs/calculadora-composicao-corporal.md.
  *
- * AS INTENÇÕES QUE A PÁGINA COBRE (dos prints de 07/10), cada uma com lugar:
+ * AS INTENÇÕES QUE A PÁGINA COBRE (dos prints de 06/10), cada uma com lugar:
  *   calculadora percentual de gordura, fita métrica, por circunferência → a ferramenta (RFM)
  *   marinha americana                                → método da Marinha, nomeado
  *   3 dobras, 7 dobras, Pollock                      → método dobras + "Os três métodos"
@@ -53,7 +53,7 @@ import {
 } from '../../lib/corpo/composicao';
 
 const path = '/ferramentas/calculadora-de-percentual-de-gordura';
-const atualizadoEm = '2026-10-07';
+const atualizadoEm = '2026-10-06';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -250,12 +250,12 @@ const textoWhats = encodeURIComponent(
               <p id="cc-idade-confira" class="cc-confira" hidden>Confira este valor.</p>
             </div>
             <div class="cc-campo" data-bloco="peso">
-              <label for="cc-peso">Peso (kg)</label>
+              <label for="cc-peso">Peso (kg) <span id="cc-peso-opcional" class="cc-opcional" hidden>— opcional</span></label>
               <input id="cc-peso" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-peso-confira" />
               <p id="cc-peso-confira" class="cc-confira" hidden>Confira este valor.</p>
             </div>
             <div class="cc-campo" data-bloco="altura">
-              <label for="cc-altura">Altura (cm)</label>
+              <label for="cc-altura">Altura (cm) <span id="cc-altura-opcional" class="cc-opcional" hidden>— opcional</span></label>
               <input id="cc-altura" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" aria-describedby="cc-altura-confira cc-altura-convertida" />
               <p id="cc-altura-convertida" class="cc-dica" hidden></p>
               <p id="cc-altura-confira" class="cc-confira" hidden>Confira este valor.</p>
@@ -346,7 +346,7 @@ const textoWhats = encodeURIComponent(
                 ))
               }
             </div>
-            <p class="cc-dica">Use as medidas da sua avaliação física com adipômetro. Onde fica cada dobra está explicado mais abaixo, em "Os três métodos".</p>
+            <p class="cc-dica">Use as medidas da sua avaliação física com adipômetro. A equação usa só as dobras, a idade e o sexo; peso e altura são opcionais — com eles, aparecem a massa gorda, a massa livre de gordura e o índice de massa livre de gordura. Onde fica cada dobra está explicado mais abaixo, em "Os três métodos".</p>
           </div>
 
           <p class="cc-aviso-uso">
@@ -458,7 +458,8 @@ const textoWhats = encodeURIComponent(
           Se você fez uma avaliação com adipômetro, pode usar as dobras. As equações de Jackson e Pollock
           (1978, homens) e de Jackson, Pollock e Ward (1980, mulheres) transformam a soma das dobras e a
           idade em densidade corporal, e a equação de Siri (1961) converte a densidade em percentual.
-          Foram feitas com adultos de 18 a 61 anos (homens) e de 18 a 55 (mulheres).
+          Foram feitas com adultos de 18 a 61 anos (homens) e de 18 a 55 (mulheres). A conta usa só a soma
+          das dobras, a idade e o sexo — peso e altura não entram; servem para traduzir o percentual em quilos.
         </p>
         <ul>
           <li><strong>3 dobras, homens:</strong> peitoral, abdominal e coxa. <strong>3 dobras, mulheres:</strong> tríceps, suprailíaca e coxa.</li>

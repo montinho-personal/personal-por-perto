@@ -209,7 +209,8 @@ export function iniciarCalculadoraComposicao(): void {
     if (modo !== 'imc') b.add('sexo');
     b.add('idade');
     if (modo === 'gordura' || modo === 'imc' || modo === 'tudo') b.add('peso');
-    if (modo !== 'gordura' || metodo !== 'dobras') b.add('altura');
+    // Nas dobras, a altura não entra na conta, mas dá o índice de massa livre de gordura: fica, opcional.
+    b.add('altura');
     if (modo === 'gordura') b.add('metodo');
     const usaRfm = modo === 'tudo' || modo === 'cintura' || (modo === 'gordura' && metodo === 'rfm');
     if (usaRfm) b.add('cintura');
@@ -223,6 +224,10 @@ export function iniciarCalculadoraComposicao(): void {
     const vis = blocosVisiveis();
     $$<HTMLElement>('[data-bloco]', app).forEach((el) => (el.hidden = !vis.has(el.dataset.bloco!)));
     $<HTMLElement>('#cc-form', app)!.hidden = modo === 'evolucao';
+    // Nas dobras, peso e altura são opcionais: a equação usa só as dobras, a idade e o sexo.
+    const dobrasModo = modo === 'gordura' && metodo === 'dobras';
+    $<HTMLElement>('#cc-peso-opcional', app)!.hidden = !dobrasModo;
+    $<HTMLElement>('#cc-altura-opcional', app)!.hidden = !dobrasModo;
     // Quadril: obrigatório só para a Marinha (mulheres); opcional nos outros modos.
     $<HTMLElement>('#cc-quadril-opcional', app)!.hidden = modo === 'gordura';
     // Rótulo da cintura da Marinha muda com o sexo: protocolos diferentes.
