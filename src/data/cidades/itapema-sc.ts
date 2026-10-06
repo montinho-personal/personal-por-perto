@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios premium, com público de luxo e turistas, e tem no calçadão de Meia Praia a melhor estrutura pública de treino.',
 
+  academiasProximas: [
+    { nome: 'Academia Wave Itapema', detalhe: 'na Rua 262, em Meia Praia' },
+    { nome: 'Academia Porto.Fit' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Orla e calçadão de Meia Praia: melhor estrutura pública de treino (pista, academia ao ar livre e ciclovia).',
     'Público de luxo e turistas, que elevam a demanda por personal e estúdios premium.',
@@ -88,12 +94,24 @@ export const cidade: Cidade = {
   conclusao:
     'Líder nacional em valorização imobiliária e destino de praia entre Balneário Camboriú e Floripa, Itapema tem público de alto padrão e a orla de Meia Praia como academia a céu aberto. Um personal trainer encontra aqui forte demanda premium, do treino na areia ao atendimento em torres de luxo.',
 
-  vizinhas: ['balneario-camboriu-sc', 'itajai-sc'],
+  /*
+   * Prints de 06/10 (só o autocompletar, no computador e com a região em
+   * Itapema): "personal trainer itapema sc" e "personal itapema". Sem PAA
+   * nem relacionadas, entra o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5): valor por mês, "1 mês, 3 vezes
+   * por semana", Instagram e online ou presencial.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  // Eram Balneário Camboriú e Itajaí. Em 06/10/2026 entraram Porto Belo e
+  // Camboriú, que fazem divisa; Itajaí sai para caberem as da divisa.
+  vizinhas: ['balneario-camboriu-sc', 'porto-belo-sc', 'camboriu-sc', 'tijucas-sc'],
 
   fontes: [
     { nome: 'IBGE Cidades — Itapema', url: 'https://cidades.ibge.gov.br/brasil/sc/itapema/panorama' },
     { nome: 'Prefeitura de Itapema', url: 'https://www.itapema.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

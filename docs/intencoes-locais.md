@@ -798,3 +798,19 @@ Fora. **Academias**, no mesmo commit, para a página mudar uma vez só: Power
 Fitness Academia (Wellhub e TotalPass, Av. Trinta e Um de Março, 1840).
 Recusadas por fonte única (só Wellhub): Sportfit, Academia Brothers, Health
 House e Smart Academia Bom Pastor.
+
+## Itapema — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer itapema | "sc", "personal itapema" (computador, região em Itapema) | — (só autocompletar) | anúncio do próprio Montinho (consultoria online) no topo |
+
+**Aplicado:** o padrão das cidades printadas (`docs/seo-local-estrategia.md`,
+seção 5) — valor por mês no título e na descrição, perguntas "1 mês, 3
+vezes por semana", Instagram e online ou presencial. **Vizinhas:** Porto
+Belo, Camboriú e Tijucas, que fazem divisa, entram ao lado de Balneário
+Camboriú; Itajaí sai. **Academias**, no mesmo commit: Academia Wave
+Itapema (TotalPass e o guia de academias do myside: Rua 262, nº 52, Meia
+Praia) e Academia Porto.Fit, só o nome (existência nas duas fontes; o
+endereço, Rua 304, 940, só no TotalPass). Recusada por fonte única: Level
+Up Academia (só Wellhub).
