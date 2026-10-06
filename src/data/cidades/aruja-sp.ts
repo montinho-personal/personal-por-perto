@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de musculação e treino funcional distribuídas pelos bairros centrais e pelos loteamentos residenciais, além de estúdios e do atendimento de personal trainers dentro dos condomínios de alto padrão, onde o treino próximo de casa é bastante valorizado.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia Arujá', detalhe: 'na Av. Renova dos Santos, no Jardim Vitória' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Conhecida como "Cidade Natureza", com parques ecológicos e áreas verdes para treino ao ar livre.',
     'Clima ameno de altitude (cerca de 755 m), favorável à corrida e à atividade externa boa parte do ano.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Arujá', url: 'https://www.prefeituradearuja.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

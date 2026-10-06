@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta combina academias de bairro e estúdios em Camboriú com fácil acesso às academias de alto padrão de Balneário Camboriú, a poucos minutos pela BR-101. O atendimento domiciliar e em condomínios cresce junto com os novos empreendimentos residenciais.',
 
+  academiasProximas: [
+    { nome: 'Academia Wave Camboriú', detalhe: 'na Rua Siqueira Campos, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Conurbação com Balneário Camboriú, polo de musculação e estética do Sul do país, a poucos minutos pela BR-101.',
     'Crescimento populacional acelerado (mais de 65% entre 2010 e 2022), com bairros residenciais em expansão.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Camboriú', url: 'https://camboriu.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };
