@@ -170,6 +170,46 @@ de métodos e as decisões de produto.
 - **Tabela de IMC** com as faixas da OMS no texto, com o aviso de que o
   IMC não distingue gordura de músculo.
 
+### 3.5 "relação cintura altura" (07/10)
+
+- **Autocompletar:** calculadora · tabela · mulher · **rca** · fórmula ·
+  ideal · normal · obesidade · rcq relação cintura altura · **como medir**.
+- **Outras pessoas pesquisaram:** tabela · calculadora · cintura quadril ·
+  **estatura** classificação · estatura **oms** · estatura valores de
+  referência · cintura quadril tabela · relação cintura estatura **rce** ·
+  altura da cintura como medir · cintura quadril calculadora · medida
+  ideal cintura e quadril feminino · como medir a cintura homem.
+- **As pessoas também perguntam:** Qual é a relação cintura-quadril ideal? ·
+  Qual é a tabela de cintura e estatura? · Qual é a fórmula para calcular
+  a relação cintura-estatura? · **Qual a cintura ideal para uma mulher
+  com 1,70 m de altura?**
+- **Visão geral de IA** (cita Omni e medesportepapers): cintura no **ponto
+  médio entre a última costela e o osso do quadril**; abaixo de 0,5 risco
+  baixo, "a cintura menor que a metade da altura"; 0,5–0,59, aumento.
+- **Concorrência:** averdadesobreopeso.pt (Portugal, "RCA" ligada a
+  risco cardiovascular); artigo do NIH/PMC sobre RCE como triagem em
+  crianças e adolescentes ("menos dependente da idade").
+
+**O que muda:**
+
+- **Três nomes para a mesma conta:** relação cintura-altura (RCA),
+  relação cintura-estatura (RCE, o termo acadêmico e da OMS nas buscas) e
+  "cintura/altura". O texto usa os três.
+- **"Cintura ideal para 1,70 m"** vira número no resultado: "para a sua
+  altura, a cintura que dá 0,5 é X cm" (metade da altura). Responde a
+  busca sem chamar nada de ideal.
+- **Tabela da RCE** (faixas com fonte — NICE 2022 em confirmação) e a
+  fórmula, no texto.
+- **Protocolo de cintura da visão geral de IA é o da OMS/NICE** (ponto
+  médio costela–crista). Decisão de protocolo único × por método
+  depende da escolha do método de gordura (seção 4): é o ponto mais
+  delicado do projeto.
+- **RCE em menores:** a fonte que aparece (PMC) usa a RCE justamente em
+  crianças; verificar se o corte 0,5 vale para menores antes de mostrar
+  algo a quem marcar "menos de 18".
+- **"Como medir a cintura (homem)" e "altura da cintura"**: as instruções
+  de medição, de novo, como intenção própria.
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
