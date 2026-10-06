@@ -371,3 +371,14 @@ três rodando, a comparação a fazer é: `clique_elemento` com
 
 A decisão é do Renato: remover apaga a continuidade com o histórico dos
 eventos antigos.
+
+## Cliques para o Montinho — GA4, 29/06 a 06/10/2026
+
+Arquivo: `2026-10-06-ga4-cliques/auditoria.md` (puxado pelo Supermetrics).
+
+| métrica | valor |
+|---|---|
+| GA4 ÷ cliques do Google (set) | 36% — o GA4 vê ~4 em 10 visitas |
+| WhatsApp — pessoas de fora vistas pelo GA4 | ~19 (23 cliques; 17 internos excluídos) |
+| Site do Montinho — pessoas de fora (união dos dois GA4) | ~18 |
+| Último clique para o site do Montinho | 28/09 |
