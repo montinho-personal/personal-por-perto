@@ -96,6 +96,46 @@ de métodos e as decisões de produto.
 - **"Masculino"** aparece ao lado de "feminino": referência por sexo dos
   dois lados.
 
+### 3.3 "calculadora massa magra" (07/10)
+
+- **Autocompletar:** e gorda · corporal magra · online · imc massa magra ·
+  percentual de massa magra · para ganho de massa magra. (Também "glp 1",
+  mas vinda do histórico do Renato — não é sugestão geral; ainda assim
+  conversa com o cluster Mounjaro do site.)
+- **Outras pessoas pesquisaram:** calcular massa magra e gordura ·
+  aplicativo para calcular massa magra · calculadora de massa corporal ·
+  massa magra ideal **por idade** · calculadora de **massa gorda** · como
+  calcular **massa muscular em kg**.
+- **As pessoas também perguntam:** Como calcular o de massa magra? · Quanto
+  pesam 1 kg de massa magra e 1 kg de gordura? · Sou homem, tenho 1,75 m.
+  Qual o meu peso ideal? · **70 de massa magra é bom?**
+- **Visão geral de IA:** duas formas — pelo percentual de gordura (peso −
+  peso × %G) ou pela fórmula de Boer, só com peso, altura e sexo.
+- **Concorrência:** medesportepapers.com.br ("Calculadora Jackson &
+  Pollock — 7 Dobras | % Gordura (Siri)", com massa gorda e magra e o
+  conselho de 2–3 medidas por dobra); Softonic.
+
+**O que muda:**
+
+- **Massa livre de gordura sem fita**: quem busca "massa magra" muitas
+  vezes só tem peso e altura. A fórmula de Boer entra como alternativa
+  **rotulada** ("estimativa populacional: não usa as suas medidas"),
+  nunca misturada com a da fita.
+- **"70 de massa magra é bom?" e "ideal por idade"**: quilos de massa
+  livre de gordura não dizem nada sem a altura. Candidato: índice de massa
+  livre de gordura (FFMI = MLG ÷ altura²), com referências por sexo e
+  idade se houver fonte (Schutz et al. 2002). Em pesquisa.
+- **"Massa muscular em kg"**: explicar por que massa livre de gordura não
+  é músculo, e que a fita não mede músculo.
+- **"1 kg de massa magra × 1 kg de gordura"**: mesmo peso, volume
+  diferente (densidades do modelo de dois compartimentos) — FAQ.
+- **"Peso ideal para 1,75 m"**: o briefing proíbe "peso ideal", e com
+  razão. Resposta: a faixa de peso em que o IMC fica entre 18,5 e 24,9
+  (OMS) para aquela altura, dita como faixa de IMC, com o lembrete de que
+  cintura e composição contam o que o peso não conta.
+- **"Para ganho de massa magra"**: o histórico é a resposta (acompanhar
+  massa livre de gordura e cintura ao longo do tempo).
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
