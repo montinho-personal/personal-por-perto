@@ -69,6 +69,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios, com a orla e suas praias funcionando como academia a céu aberto e a sazonalidade do verão elevando a demanda.',
 
+  academiasProximas: [
+    { nome: 'Academia Caraguá Training', detalhe: 'na Av. Prisciliana de Castilho' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Orla com cerca de 13 km de ciclovia e calçadão: estrutura outdoor de primeira.',
     'Treino na areia (Martim de Sá, Centro) como diferencial de personal trainers.',
@@ -86,14 +91,35 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Maior cidade do litoral norte paulista, Caraguatatuba tem orla extensa com ciclovia e uma cena de corrida forte. Um personal trainer ajuda a aproveitar a praia como academia a céu aberto, ajustando horários e hidratação ao calor úmido do litoral.',
+    'Maior cidade do litoral norte paulista, Caraguatatuba — Caraguá para quem é de lá — tem orla extensa com ciclovia e uma cena de corrida forte. Um personal trainer ajuda a aproveitar a praia como academia a céu aberto, ajustando horários e hidratação ao calor úmido do litoral.',
 
-  vizinhas: ['sao-jose-dos-campos-sp', 'taubate-sp'],
+  /*
+   * Prints de 06/10: autocompletar com "caragua" (o apelido, que passou a
+   * constar na conclusão), "personal caraguatatuba" e "personal caragua";
+   * PAA com "quanto custa 1 mês", "3 vezes por semana", "vale a pena pagar"
+   * e "um personal trainer pode me ajudar a emagrecer?" — o padrão das
+   * cidades printadas (docs/seo-local-estrategia.md, seção 5), mais a de
+   * emagrecer, que já tinha aparecido em Tamboré.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  faqsExtra: [
+    {
+      pergunta: 'Um personal trainer pode me ajudar a emagrecer em Caraguatatuba?',
+      resposta:
+        'Pode, na parte que cabe a ele: o treino. O personal monta a musculação que segura a massa muscular enquanto o peso cai, dosa o cardio — a orla e a ciclovia de Caraguá servem bem para isso — e mantém a constância nas semanas em que o calor e a rotina atrapalham. O que decide o déficit é a alimentação, trabalho de nutricionista. E desconfie de promessa de quilos por mês: o ritmo depende do corpo, da dieta e da rotina, não só do treino.',
+    },
+  ],
+
+  // Eram São José dos Campos e Taubaté. Em 06/10/2026 entraram na frente
+  // São Sebastião e Ubatuba, que fazem divisa, e Ilhabela, do litoral norte.
+  vizinhas: ['sao-sebastiao-sp', 'ubatuba-sp', 'ilhabela-sp', 'sao-jose-dos-campos-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Caraguatatuba', url: 'https://cidades.ibge.gov.br/brasil/sp/caraguatatuba/panorama' },
     { nome: 'Prefeitura de Caraguatatuba', url: 'https://www.caraguatatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

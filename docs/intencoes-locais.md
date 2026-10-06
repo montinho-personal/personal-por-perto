@@ -829,3 +829,19 @@ no mesmo commit: Up Fitness Lavras (Wellhub e TotalPass, Rua Kenedy dos
 Santos, 20; o bairro só no Wellhub). Recusadas por fonte única: Saúde Fit
 (só o Wellhub confirma o endereço de Lavras), Vortex Fitness Club, Studio
 Personal Otávio Costa e Move Lavras (só TotalPass).
+
+## Caraguatatuba — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer caraguatatuba | **"caragua"** (apelido), "personal caraguatatuba", "personal caragua" | **quanto custa 1 mês** · **3 vezes por semana** · vale a pena pagar · **um personal trainer pode me ajudar a emagrecer?** | anúncio do Montinho (consultoria online) no topo; Achei o Profissional, pedegas, StarOfService |
+
+**Aplicado:** o padrão das cidades printadas — valor por mês no título e na
+descrição, perguntas "1 mês, 3 vezes por semana", Instagram e online ou
+presencial —, a pergunta de emagrecer escrita para a cidade (treino, orla
+para o cardio, alimentação com nutricionista, sem promessa de quilos) e o
+apelido "Caraguá" na conclusão. **Vizinhas:** São Sebastião, Ubatuba e
+Ilhabela entram na frente de São José dos Campos. **Academias**, no mesmo
+commit: Academia Caraguá Training (TotalPass e Wellhub, Av. Prisciliana de
+Castilho, 692). Recusadas por fonte única (só Wellhub): Level Academia,
+Lokal Fitness, Summer Fitness, Bem Estar Perequê e Rangel Trainer.
