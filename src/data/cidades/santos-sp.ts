@@ -94,6 +94,18 @@ export const cidade: Cidade = {
   conclusao:
     'Com uma das orlas mais icônicas do Brasil e clima de praia o ano todo, Santos é feita para quem gosta de treinar ao ar livre. Um personal trainer ajuda a transformar os 7 km da orla e as academias da cidade em um plano consistente, ajustado ao seu objetivo.',
 
+  /*
+   * Prints de 06/10: autocompletar com "sp", "dumont" (Santos Dumont/MG, que
+   * tem página própria — o "(SP)" do título separa as duas), "mulher", um
+   * nome próprio, "smart fit", "para idosos em santos" e "personal santos
+   * sp"; relacionadas com "perto de mim", "mulher", "online", "preço" e
+   * "studio"; PAA com "quanto custa em Santos", "1 mês", "3 vezes por
+   * semana" e "quem é o preparador físico do Santos?" (o clube). Registro
+   * completo em docs/intencoes-locais.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   faqsExtra: [
     {
       pergunta: 'Onde o personal costuma atender em Santos?',
@@ -110,16 +122,25 @@ export const cidade: Cidade = {
       resposta:
         'Há. O Montinho Personal, destacado pelo portal, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas, além da vivência prática de mais de 20 anos de musculação. Para Santos, o formato é o acompanhamento online: treino adaptado à estrutura disponível (academia, condomínio, casa ou orla), vídeos de execução e ajustes contínuos. O trabalho é progressivo e sem promessa de cura — quadros clínicos pedem também médico ou fisioterapeuta.',
     },
+    {
+      // "personal trainer para idosos em santos" — autocompletar de 06/10/2026.
+      pergunta: 'Existe personal trainer para idosos em Santos?',
+      resposta:
+        'Existe, e é um dos públicos em que o acompanhamento mais faz diferença. O treino de quem tem mais de 60 anos prioriza força de pernas, equilíbrio e a capacidade de levantar, subir degrau e carregar peso no dia a dia — o que reduz o risco de queda. A orla plana de Santos ajuda: a caminhada no calçadão e as academias ao ar livre da praia servem de complemento ao treino de força. Antes de começar, a avaliação médica é o primeiro passo, principalmente para quem tem pressão alta, diabetes, osteoporose ou dor articular. Para quem tem risco de queda ou insegurança para se movimentar, o presencial costuma ser o formato mais indicado no início.',
+    },
   ],
 
-  vizinhas: ['sao-paulo-sp', 'sao-bernardo-do-campo-sp', 'santo-andre-sp'],
+  // Eram São Paulo, São Bernardo do Campo e Santo André — nenhuma da
+  // Baixada. Em 06/10/2026 entraram na frente São Vicente, Guarujá e
+  // Cubatão, que fazem divisa (não veio dos prints, que não citam vizinha).
+  vizinhas: ['sao-vicente-sp', 'guaruja-sp', 'cubatao-sp', 'sao-paulo-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Santos', url: 'https://cidades.ibge.gov.br/brasil/sp/santos/panorama' },
     { nome: 'Prefeitura de Santos', url: 'https://www.santos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-06',
   capaArte: {
     src: '/capas-cidade/santos-sp.webp',
     w: 1200,

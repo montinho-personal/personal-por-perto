@@ -764,3 +764,20 @@ pergunta "1 mês, 3 vezes por semana".
 **Não aplicado:** "melhor treino para perder peso" (genérica, é dos
 artigos de emagrecimento); a faixa do Cronoshare não altera a nossa, que é
 estimativa editorial com método declarado.
+
+## Santos — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer santos | "sp", "dumont" (Santos Dumont/MG), "mulher", nome próprio, "smart fit", **"para idosos em santos"**, "personal santos sp"; relacionadas: "perto de mim", "mulher", **"online"**, **"preço"**, "studio" | **quanto custa em Santos** · **1 mês** · **3 vezes por semana** · quem é o preparador físico do Santos (o clube) | Superprof ("a partir de R$ 77/h"), Cronoshare; Instagram de personais locais |
+
+**Aplicado:** valor por mês no título e na descrição — o "(SP)" separa a
+página da de Santos Dumont (MG), que existe e é outra; perguntas "1 mês, 3
+vezes por semana", "online ou presencial" e **"Existe personal trainer para
+idosos em Santos?"** (força de pernas e equilíbrio contra queda, orla como
+complemento, avaliação médica antes, presencial para quem tem risco de
+queda). **Vizinhas:** eram São Paulo, São Bernardo e Santo André; entraram
+na frente São Vicente, Guarujá e Cubatão, que fazem divisa.
+
+**Não aplicado:** "mulher", "smart fit", nomes, "studio", "perto de mim",
+"preparador físico do Santos" (futebol).

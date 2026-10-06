@@ -182,7 +182,7 @@ render.
 | 2 | São Luís, São Paulo, Aracaju, Porto Alegre, Recife, Maceió | idem |
 | 3 | Juiz de Fora, Vitória, Manaus, Praia Grande, Joinville, Uberlândia, Natal, Niterói | idem |
 | 4 | Salvador, Rio de Janeiro, Curitiba, Londrina, Belém, Fortaleza | idem — aplicada em 01/10 |
-| 5 | Taguatinga, Blumenau, Santo André, Campinas, Sorocaba, Bauru, Cascavel, Santos | idem — as quatro primeiras em 05/10, Sorocaba, Bauru e Cascavel em 06/10; falta Santos |
+| 5 | Taguatinga, Blumenau, Santo André, Campinas, Sorocaba, Bauru, Cascavel, Santos | idem — as quatro primeiras em 05/10, as outras quatro em 06/10 ✅ |
 | 6 | as 526 páginas ainda com a data de lançamento (29/06), das de mais impressão para as de menos — pedido do Renato em 06/10 | idem |
 | bairros | Cidade Nova (BH), Jardins (SP), Copacabana, Ipanema, Campeche, Buritis, Moinhos de Vento | `personal trainer <bairro>` |
 
