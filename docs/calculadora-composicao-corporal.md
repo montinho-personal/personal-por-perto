@@ -288,6 +288,74 @@ de métodos e as decisões de produto.
   página responde a pergunta e explica por que fala em faixa de
   referência.
 
+### 3.8 "peso não muda mas cintura diminui" (07/10)
+
+- **Autocompletar:** ruído de letra de música ("frases", "música", "meme",
+  "letra") · cintura muito magra · peso na cintura — e, no modo de IA, o
+  cluster **efeito platô**: cardápio para sair do efeito platô · como sair
+  do efeito platô **com Mounjaro** · dia do lixo · **peso estagnado com
+  Mounjaro** · quanto tempo dura o efeito platô · no jejum intermitente ·
+  efeito platô na perda de peso · **peso estagnado hipertrofia**.
+- **Outras pessoas pesquisaram:** efeito platô na perda de peso · peso
+  estagnado hipertrofia · peso estagnado o que fazer · como sair do efeito
+  platô da **tirzepatida** · efeito platô Mounjaro · efeito platô
+  medicamento.
+- **As pessoas também perguntam:** **Quantos quilos equivalem a perder 5 cm
+  de cintura?** · **É possível emagrecer e não aparecer na balança?** ·
+  Qual é o hormônio que impede de emagrecer? · **Quais são os sinais de
+  que você está emagrecendo?**
+- **Visão geral de IA** (Doctoralia, Instagram): recomposição corporal;
+  músculo é mais denso que gordura; a cintura diminui e as roupas folgam
+  mesmo com a balança parada; a balança mede tudo junto.
+- **Concorrência:** snippet de médica afirmando "se o peso não mudou mas a
+  cintura diminuiu, você não está em platô, **está trocando gordura por
+  músculo**" — exatamente a afirmação que o briefing proíbe (item 35) e
+  que as medidas sozinhas não sustentam. Vídeo "1 kg de gordura não é
+  igual a 1 kg de músculo".
+
+**O que muda:**
+
+- **A intenção real é "platô"**: quem busca isso acha que parou de
+  emagrecer. O módulo de evolução é a resposta — e a mensagem precisa ser
+  a honesta: "a combinação é compatível com mudança de composição, mas as
+  medidas sozinhas não dizem quanto foi gordura e quanto foi músculo". É
+  o diferencial de confiança contra o snippet que afirma demais.
+- **"Quantos quilos são 5 cm de cintura?"**: não existe conversão fixa —
+  dizer isso. Se o método principal usar cintura e altura (RFM), dá para
+  mostrar, com a própria fórmula, quanto 5 cm mudam a **estimativa** para
+  uma altura de exemplo, deixando claro que é estimativa.
+- **"Emagrecer sem aparecer na balança" e "sinais de que está
+  emagrecendo"**: FAQ e texto (cintura, roupas, medidas com protocolo
+  constante), com a ferramenta de evolução como forma de acompanhar.
+- **Cluster Mounjaro/tirzepatida**: o portal tem uma seção inteira sobre
+  isso. Links de contexto para `/emagrecimento/plato-de-emagrecimento/` e
+  para a seção Mounjaro, sem conselho sobre medicamento.
+- **"Hormônio que impede de emagrecer"**: fora do escopo da ferramenta
+  (assunto médico) — não entra.
+- **Mapa de ferramentas nos artigos**: `/emagrecimento/recomposicao-corporal/`
+  e `/emagrecimento/plato-de-emagrecimento/` estão na fila com o gasto
+  calórico diário; quando esta ferramenta existir, reavaliar — para
+  "por que a balança engana na recomposição", ela responde melhor.
+
+### 3.9 Síntese dos prints (oito buscas, 07/10)
+
+1. **Dobras cutâneas** é intenção forte e o briefing não previa → modo
+   próprio (Jackson & Pollock 3 e 7, Siri).
+2. **Marinha americana** é buscada pelo nome → método nomeado, com o
+   protocolo dele.
+3. **Idade** atravessa quase tudo ("por idade", "40 anos", "idoso",
+   "infantil") → idade em anos nos modos que interpretam.
+4. **Tabelas** são pedidas em todas as buscas (gordura, IMC, RCE, RCQ) →
+   cada tabela com fonte; a da ACE e a de RCQ por idade só com origem
+   checada.
+5. **"Ideal"** aparece em todas → a página responde e explica por que fala
+   em faixa de referência; o resultado nunca diz "ideal".
+6. **Protocolo de cintura** é misturado pela própria IA do Google → um ponto
+   por vez, dito na instrução.
+7. **Platô** é a intenção atrás do acompanhamento → evolução com mensagem
+   honesta, contra a concorrência que afirma recomposição.
+8. **IMC** é dominado por Google e saúde → módulo, não página própria.
+
 ## 5. Benchmark (07/10)
 
 Feito por busca (as páginas em si foram bloqueadas pela rede; o que não
