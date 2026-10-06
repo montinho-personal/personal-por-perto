@@ -42,6 +42,7 @@ import {
   tabelaPace,
   tabelaVelocidades,
   tabelaTempos,
+  paceParaFicarAbaixo,
   tempoDe,
   tempoDosCampos,
   velocidadeDe,
@@ -185,6 +186,18 @@ console.log('\nTabelas e metas');
   ok(tp.some((l) => l.pace === 300 && formataTempo(l.tempos[0]) === '25:00' && formataTempo(l.tempos[1]) === '50:00'), 'tabela de pace: 5:00 → 25:00 e 50:00');
   ok(METAS.every((m) => distanciaPronta(m.distancia)), 'toda meta aponta para uma distância pronta');
   ok(DISTANCIAS.some((d) => d.km === 21.0975) && DISTANCIAS.some((d) => d.km === 42.195), 'meia e maratona com as distâncias oficiais');
+}
+
+console.log('\nMetas "sub": o pace arredondado pode estourar a meta');
+{
+  const M = 42.195;
+  ok(formataPace(paceDe(M, 3 * 3600)) === '4:16' && tempoDe(M, 256) > 3 * 3600, 'maratona sub 3: 4:16 cravado passa de 3 horas');
+  ok(formataPace(paceParaFicarAbaixo(M, 3 * 3600)) === '4:15' && tempoDe(M, 255) < 3 * 3600, '  por isso o sub 3 pede 4:15');
+  ok(formataPace(paceParaFicarAbaixo(M, 3.5 * 3600)) === '4:58' && tempoDe(M, 299) > 3.5 * 3600, 'sub 3:30 pede 4:58 (4:59 estoura)');
+  ok(formataPace(paceParaFicarAbaixo(M, 4 * 3600)) === '5:41', 'sub 4 pede 5:41');
+  ok(formataPace(paceParaFicarAbaixo(21.0975, 2 * 3600)) === '5:41', 'meia sub 2 pede 5:41');
+  ok(formataPace(paceParaFicarAbaixo(5, 25 * 60)) === '4:59', 'sub 25 nos 5 km: 5:00 cravado empata, então 4:59');
+  ok(formataTempo(tempoDe(M, 330)) === '3:52:04', 'maratona a 5:30 = 3:52:04');
 }
 
 console.log('\nAnalytics só em categoria');

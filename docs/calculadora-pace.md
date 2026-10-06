@@ -131,10 +131,18 @@ apareceram e onde cada um entrou:
 | 5 km em X minutos (15 a 37) e "pace ideal 5K", "é bom 22/37 min", "possível 14 min" | tabela de 5 km minuto a minuto (15–40) e três FAQs |
 | 10 km (1 hora, 1h10, 1h30, 40 min; "pace de 10 é bom") | tabela de 10 km (40 min–1h30) e FAQ de 1 hora fundida com "é bom" |
 | meia maratona (1h30, 1h45, 1h50, 2h, sub 2; "possível 21 km em 2h", "4:30 é bom") | tabelas de meia (1h20–3h) e maratona (3h–6h) e duas FAQs; "4:30/7/10 é bom" numa só |
+| maratona (sub 4, sub 3:30, sub 3, 3h30, 2 horas, "pace 5:30", "pace de um maratonista") | FAQs de sub 4/3:30/3 e de elite/42 km em 2 horas; parágrafo sobre o arredondamento; linha "para fechar abaixo" no modo meta (prints da noite de 06/10) |
 | natação, bike, Strava, tempo run | linha "por 100 m (natação)" quando a distância é em metros; seção "Pace na natação e na bike"; FAQs de Strava e tempo run |
 
 Decisões:
 
+- **"Sub" usa outro pace** (`paceParaFicarAbaixo`): a maratona em 3 horas dá
+  4:15,97/km, que aparece como 4:16 — e 4:16 cravado termina em 3:00:02.
+  Sub 3:30 tem o mesmo problema (4:59 estoura; o certo é 4:58). Os resumos
+  de IA e os concorrentes mostram o pace arredondado; a calculadora mostra
+  os dois no modo meta.
+- **Provas específicas** (Londres, Boston, São Silvestre) e "recorde" não
+  ganharam seção: são intenções de notícia, não de cálculo.
 - **Nenhuma página por tempo** ("pace 5 km 23 min"): uma tabela gerada pelo
   motor (`tabelaTempos`) responde todos os minutos. A política de
   conteúdo em escala é o risco; a tabela é a resposta útil.
@@ -144,7 +152,7 @@ Decisões:
   diferentes".
 - **Recordes** só como "abaixo de 13 minutos" (5 km de rua), afirmação que
   continua verdadeira se o recorde cair.
-- **FAQ em 18**: fundidas em vez de somadas (10 km + "é bom"; 4:30, 7 e 10
+- **FAQ em 20**: fundidas em vez de somadas (10 km + "é bom"; 4:30, 7 e 10
   numa só; relógio pulando foi para a do Strava; milha saiu, o texto e a
   ferramenta já cobrem).
 

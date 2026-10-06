@@ -172,6 +172,14 @@ export const resumo = (km: number, segundos: number): Resumo => ({
   velocidade: velocidadeDe(paceDe(km, segundos)),
 });
 
+/**
+ * Pace para fechar ABAIXO de uma meta ("sub 3", "sub 2"), em segundos
+ * inteiros. Não é o pace arredondado: na maratona em 3 horas o pace exato é
+ * 4:15,97, que aparece como 4:16 — e 4:16 cravado termina em 3:00:02. Para o
+ * "sub", o segundo inteiro tem de ficar abaixo da meta: 4:15.
+ */
+export const paceParaFicarAbaixo = (km: number, segundos: number): number => Math.ceil(segundos / km - 1e-9) - 1;
+
 /** Alerta de digitação: não bloqueia, só pede para conferir. */
 export function alerta(paceSKm: number): string | null {
   if (paceSKm < PACE_ALERTA_RAPIDO)

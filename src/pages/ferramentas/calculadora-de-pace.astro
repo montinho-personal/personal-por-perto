@@ -47,6 +47,7 @@ import {
   formataVelocidade,
   paceDaVelocidade,
   paceDe,
+  paceParaFicarAbaixo,
   pacePorMilha,
   pista,
   tabelaEsteira,
@@ -99,6 +100,8 @@ const TAB_10KM = tabelaTempos(10, 40, 90, 5);
 const TAB_MEIA = tabelaTempos(km('21k'), 80, 180, 5);
 const TAB_MARATONA = tabelaTempos(km('42k'), 180, 360, 15);
 const P21 = (min: number) => pMeta('21k', min);
+const SUB = (id: string, min: number) => paceParaFicarAbaixo(km(id), min * 60);
+const P42_120 = pMeta('42k', 120);
 const P_CAMINHADA = paceDaVelocidade(5);
 const TEMPO_10_A_6 = tempoDe(10, 360);
 
@@ -145,6 +148,14 @@ const faqs = [
   {
     pergunta: 'É possível correr 21 km em 2 horas?',
     resposta: `É, e é uma meta clássica de quem corre a primeira meia: pede ${formataPace(P21(120))} por km do começo ao fim, ou 5 km a cada ${formataTempo(tempoDe(5, P21(120)))}. O que torna a meta possível não é o pace em si, é chegar à prova com semanas de treino de distância — quem ainda não corre 10 km com folga costuma precisar de alguns meses de preparação.`,
+  },
+  {
+    pergunta: 'Qual o pace para a maratona sub 4, sub 3:30 e sub 3?',
+    resposta: `Sub 4: ${formataPace(SUB('42k', 240))} por km. Sub 3:30: ${formataPace(SUB('42k', 210))}. Sub 3: ${formataPace(SUB('42k', 180))}. Repare que o sub 3 não é 4:16, que é o que a divisão arredondada mostra: 4:16 cravado nos 42,195 km termina em ${formataTempo(tempoDe(km('42k'), 256))}, dois segundos acima. E o relógio quase sempre mede mais que a distância oficial, porque ninguém corre a linha ideal das curvas — vale ter folga. A 5:30 por km, a maratona sai em ${formataTempo(tempoDe(km('42k'), 330))}.`,
+  },
+  {
+    pergunta: 'Qual é o pace de um maratonista de elite? Dá para correr 42 km em 2 horas?',
+    resposta: `42 km em 2 horas pedem ${formataPace(P42_120)} por km — ${formataVelocidade(velocidadeDe(P42_120), 1)} km/h por duas horas seguidas. É o limite do esporte: os melhores maratonistas do mundo correm perto de 2:50 a 3:00 por km, e a única vez que alguém fechou a distância abaixo de 2 horas (Eliud Kipchoge, 1:59:40, em 2019) foi num evento montado para isso, que não vale como recorde.`,
   },
   {
     pergunta: 'Como converter pace em km/h?',
@@ -524,6 +535,14 @@ const schema = [
             </table>
           </div>
         </div>
+        <p>
+          Na maratona, as metas que mais aparecem são sub 4 ({formataPace(SUB('42k', 240))} por km), sub
+          3:30 ({formataPace(SUB('42k', 210))}) e sub 3 ({formataPace(SUB('42k', 180))}). Para "sub", o
+          pace certo não é o arredondado: a maratona em 3 horas dá 4:15,97 por km, que aparece como
+          4:16 — e 4:16 cravado termina em {formataTempo(tempoDe(km('42k'), 256))}. Por isso a
+          calculadora, no modo meta, mostra também o pace para fechar abaixo do tempo. Some a isso a
+          distância a mais que o GPS quase sempre mede numa prova de rua, e a folga deixa de ser opcional.
+        </p>
         <p>
           Quanto mais longa a prova, mais a meta depende da preparação e menos da conta: a calculadora
           diz o ritmo, e as semanas de treino dizem se ele se sustenta até o fim.
