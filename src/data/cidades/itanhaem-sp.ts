@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, estúdios e espaços de treino funcional, complementados pelos calçadões e equipamentos da orla, que funcionam como uma grande extensão de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Motion Fit Academia', detalhe: 'na Av. Condessa de Vimieiros, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-06',
+
   destaquesFitness: [
     'Cerca de 26 km de praias no litoral sul paulista, com a Serra do Mar preservada ao fundo.',
     'Calçadão e ciclovia do Praião ao longo de boa parte de seus 11,5 km de orla.',
@@ -89,12 +94,26 @@ export const cidade: Cidade = {
   conclusao:
     'Com cerca de 26 km de praias tranquilas, orla plana e clima litorâneo, Itanhaém é um cenário convidativo para treinar ao ar livre durante todo o ano. Um personal trainer ajuda a transformar o calçadão do Praião e as praias da cidade em um plano consistente, do iniciante a quem busca encarar a meia maratona.',
 
-  vizinhas: ['praia-grande-sp', 'sao-vicente-sp', 'santos-sp'],
+  /*
+   * Prints de 06/10: autocompletar com "itanhaem" sem acento e "personal
+   * itanhaém"; PAA com "qual o valor de 1 hora de personal trainer?", "3
+   * vezes por semana", "vale a pena pagar" e "2 vezes por semana dá
+   * resultado?" — o padrão das cidades printadas (docs/seo-local-estrategia.md,
+   * seção 5). A de 2 vezes por semana é genérica e está respondida na
+   * ferramenta Presencial ou Online.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  // Eram Praia Grande, São Vicente e Santos. Em 06/10/2026 entraram na
+  // frente Mongaguá e Peruíbe, que fazem divisa (Mongaguá aparece nos
+  // resultados da busca); São Vicente sai.
+  vizinhas: ['mongagua-sp', 'peruibe-sp', 'praia-grande-sp', 'santos-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Itanhaém', url: 'https://cidades.ibge.gov.br/brasil/sp/itanhaem/panorama' },
     { nome: 'Prefeitura de Itanhaém', url: 'https://www.itanhaem.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-06',
 };

@@ -845,3 +845,17 @@ Ilhabela entram na frente de São José dos Campos. **Academias**, no mesmo
 commit: Academia Caraguá Training (TotalPass e Wellhub, Av. Prisciliana de
 Castilho, 692). Recusadas por fonte única (só Wellhub): Level Academia,
 Lokal Fitness, Summer Fitness, Bem Estar Perequê e Rangel Trainer.
+
+## Itanhaém — prints e aplicação em 06/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer itanhaém | "itanhaem" (sem acento), "personal itanhaém" | **qual o valor de 1 hora** · **3 vezes por semana** · vale a pena pagar · 2 vezes por semana dá resultado | anúncio do Montinho no topo; Wellhub, StarOfService (Mongaguá), pedegas |
+
+**Aplicado:** o padrão das cidades printadas — valor por mês e por aula no
+título e na descrição, perguntas "1 mês, 3 vezes por semana", Instagram e
+online ou presencial. **Vizinhas:** Mongaguá e Peruíbe, que fazem divisa,
+entram na frente; São Vicente sai. **Academias**, no mesmo commit: Motion
+Fit Academia (TotalPass e Wellhub, Av. Condessa de Vimieiros, 307,
+Centro). Recusadas por fonte única: Science Fitness e Studio Soul Fitness
+(só TotalPass); Academia Activa, Adrenalina e Pratk (só Wellhub).
