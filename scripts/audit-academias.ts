@@ -225,7 +225,15 @@ const rotuloOrdem = temGsc
   ? 'ordenadas por impressão no Search Console'
   : 'ordenadas por população (SEM DADO de GSC — arquive um relatório)';
 console.log(`\nPRIORIDADE — cidades sem nenhuma academia citada, ${rotuloOrdem}`);
+/*
+ * Cidade já verificada sem resultado (academiasVerificadasEm sem
+ * academiasProximas) sai da fila: não achar fonte em município pequeno é
+ * resultado, e sem este filtro ela voltava no dia seguinte — o loop que a
+ * data existe para evitar. Revisitar é decisão à parte.
+ */
+const verificadas = new Set(cidades.filter((c) => c.academiasVerificadasEm).map((c) => c.slug));
 const prioridade = [...semAcademia]
+  .filter((c) => !verificadas.has(c.slug))
   .sort((a, b) => impr(b.slug) - impr(a.slug) || b.pop - a.pop)
   .slice(0, 20);
 console.log('    IMPR  CLI   POPULAÇÃO  CIDADE');

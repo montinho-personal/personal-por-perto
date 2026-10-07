@@ -61,6 +61,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias em Irecê é formada por estúdios e centros de musculação, ginástica, funcional e modalidades como yoga e pilates, concentrados principalmente no bairro Centro, atendendo tanto a população local quanto o público que vem de outros municípios da região em busca de serviços.',
 
+  academiasProximas: [
+    { nome: 'RA1 Treinamento e Bem Estar', detalhe: 'na Rua Belo Horizonte' },
+    { nome: 'Irecê Fitness' },
+  ],
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Capital Baiana do Feijão e polo comercial de um território com cerca de 20 municípios do Centro-Norte baiano.',
     'Clima semiárido quente e seco, que exige planejamento de horário e hidratação no treino ao ar livre.',
@@ -87,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Irecê', url: 'https://irece.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-10-07',
 };

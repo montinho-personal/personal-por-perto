@@ -65,6 +65,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias inclui redes de musculação, estúdios de treino funcional e personal trainers, concentrados sobretudo no Centro e em bairros adjacentes, refletindo o papel da cidade como referência de serviços para a microrregião do extremo oeste catarinense.',
 
+  // Verificado em 07/10/2026: Academia Lokal (R. Santos Dumont, 745) e
+  // Academia Vital Pro (R. XV de Novembro, 232) só aparecem no Wellhub — fonte
+  // única. Nenhuma entra até ter segunda fonte. Sem mudança visível na página,
+  // o atualizadoEm não sobe (CLAUDE.md: data só com revisão real).
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Cidade polo de cerca de 20 municípios do extremo oeste catarinense, com IDHM muito alto (0,801).',
     'Hospital Regional Terezinha Gaio Basso e campus da Unoesc reforçam a estrutura de saúde e educação, incluindo centro esportivo universitário.',
