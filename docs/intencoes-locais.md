@@ -914,3 +914,18 @@ e Complexo Vitality (só TotalPass); MoveFit, L2 e Good Gym (só Wellhub).
 Top Gym IV (Wellhub e TotalPass, Av. Marechal Eurico Gaspar Dutra, 323).
 Fora: Studio Personal Fitness Silvana Guedes (só Facebook) e Top Fitness
 Academia (TotalPass, R. Eurico Gaspar Dutra, 1070, sem cidade na fonte).
+
+## Valinhos — prints e aplicação em 07/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer valinhos | nome de estúdio local (e "avaliações sobre"), "personal valinhos", "personal pet valinhos" | **valor de 1 hora** · **por mês** · é vantajoso pagar · 2 vezes por semana dá resultado | anúncio do Montinho no topo; Gurupass (estúdio), site de academia local, GetNinjas |
+
+**Aplicado:** o padrão das cidades printadas. **Vizinhas:** Itatiba, que faz
+divisa, entra ao lado de Campinas e Vinhedo. **Academias**, no mesmo commit:
+Skyfit Academia Valinhos (Wellhub e TotalPass, Av. Independência, 2083; o
+bairro só no Wellhub). Recusados: BE Academia (o próprio Wellhub dá dois
+números diferentes, 4667 e 4533, e o site não apareceu), 40+ Academia,
+Target e Academia Tozi (só TotalPass), Smart Fit (só um blog cita a unidade
+no Shopping Valinhos), Loud Fit e Panobianco "Carrefour Valinhos" (o
+endereço nas fontes é de Campinas).

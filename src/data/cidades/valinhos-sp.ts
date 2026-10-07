@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é premium — academias, estúdios e personal training —, complementada por uma rede de sete academias ao ar livre distribuídas pela cidade.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia Valinhos', detalhe: 'na Av. Independência' },
+  ],
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Público premium e condomínios de alto padrão, que favorecem personal training particular e domiciliar.',
     'Calendário ativo de corridas de rua gratuitas e solidárias.',
@@ -89,12 +94,23 @@ export const cidade: Cidade = {
   conclusao:
     'Uma das cidades de maior IDHM e renda da RM de Campinas, Valinhos tem público premium e ótima estrutura para treino. Um personal trainer encontra aqui forte demanda por atendimento personalizado e domiciliar, num clima de altitude favorável.',
 
-  vizinhas: ['campinas-sp', 'vinhedo-sp'],
+  /*
+   * Prints de 07/10: autocompletar com nome de estúdio local, "personal
+   * valinhos" e "personal pet valinhos" (outro assunto); PAA com "valor de
+   * 1 hora", "por mês", "é vantajoso pagar" e "2 vezes por semana dá
+   * resultado?" — o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5).
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  // Eram Campinas e Vinhedo. Em 07/10/2026 entrou Itatiba, que também faz divisa.
+  vizinhas: ['campinas-sp', 'vinhedo-sp', 'itatiba-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Valinhos', url: 'https://cidades.ibge.gov.br/brasil/sp/valinhos/panorama' },
     { nome: 'Prefeitura de Valinhos', url: 'https://www.valinhos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-07',
 };
