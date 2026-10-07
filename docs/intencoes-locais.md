@@ -888,3 +888,18 @@ resultado" (genérica) e a recomendação da IA sobre registro profissional
 próprio da cidade. **Academias:** nenhuma entrou; Brasfort Academia e
 Academia PowerFitness só aparecem no Wellhub. `academiasVerificadasEm`
 registrado para a cidade não voltar à fila.
+
+## Eusébio — prints e aplicação em 07/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer eusébio | "eusebio" sem acento, "personal eusebio" (e Eunápolis, Búzios — outras cidades); relacionadas: **"preço popular"**, **"valor social"**, "valor hora", "em casa", "academia com personal", "superprof", nome próprio, **"quanto custa por mês"** | **valor de 1 hora** · 2 vezes por semana dá resultado · **por mês** · é vantajoso pagar | — |
+
+**Aplicado:** o padrão das cidades printadas e, pelo "preço popular" e
+"valor social", a pergunta "Como encontrar personal trainer mais barato em
+Eusébio?" (`faqsBusca.barato`, que até aqui só existia em São Paulo e Santo
+André). **Vizinhas:** Aquiraz e Itaitinga, que fazem divisa, entram; Caucaia
+sai. **Academias**, no mesmo commit: LaFit Academia (TotalPass e Wellhub,
+Rua São Cristóvão, 51; o bairro diverge entre as fontes e ficou de fora).
+Recusadas por fonte única: Smart Fit Shopping Eusébio, DoctorFit, Primelife
+e Complexo Vitality (só TotalPass); MoveFit, L2 e Good Gym (só Wellhub).

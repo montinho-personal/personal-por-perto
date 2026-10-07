@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta inclui redes nacionais como a Smart Fit no eixo da CE-040, além de estúdios boutique, academias de condomínio e espaços de treino funcional voltados ao público de maior renda da cidade.',
 
+  academiasProximas: [
+    { nome: 'LaFit Academia', detalhe: 'na Rua São Cristóvão' },
+  ],
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Condomínios de alto padrão (Cidade Alpha/Alphaville) com forte demanda por atendimento domiciliar.',
     'Um dos maiores PIBs per capita do Ceará, com público fitness exigente.',
@@ -89,12 +94,26 @@ export const cidade: Cidade = {
   conclusao:
     'Com renda elevada, condomínios de alto padrão e calor o ano inteiro, Eusébio é um terreno fértil para o trabalho de personal trainer, especialmente no atendimento domiciliar e em espaços de lazer dos próprios condomínios. Um acompanhamento profissional ajuda a treinar com método e segurança, respeitando o clima quente litorâneo e o seu objetivo.',
 
-  vizinhas: ['fortaleza-ce', 'caucaia-ce', 'maracanau-ce'],
+  /*
+   * Prints de 07/10: autocompletar com "eusebio" sem acento e "personal
+   * eusebio"; PAA com "valor de 1 hora", "2 vezes por semana dá
+   * resultado?", "por mês" e "é vantajoso pagar"; relacionadas com
+   * "preço popular", "valor social", "valor hora", "em casa", "academia com
+   * personal" e "quanto custa por mês". Entra o padrão das cidades
+   * printadas (docs/seo-local-estrategia.md, seção 5) e, pelo "preço
+   * popular" e "valor social", a pergunta de como pagar menos.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true, barato: true },
+
+  // Eram Fortaleza, Caucaia e Maracanaú. Em 07/10/2026 entraram Aquiraz e
+  // Itaitinga, que fazem divisa; Caucaia sai.
+  vizinhas: ['fortaleza-ce', 'aquiraz-ce', 'itaitinga-ce', 'maracanau-ce'],
 
   fontes: [
     { nome: 'IBGE Cidades — Eusébio', url: 'https://cidades.ibge.gov.br/brasil/ce/eusebio/panorama' },
     { nome: 'Prefeitura de Eusébio', url: 'https://www.eusebio.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-07',
 };
