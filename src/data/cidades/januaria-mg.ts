@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada sobretudo por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média e polo regional do interior.',
 
+  academiasProximas: [
+    { nome: 'Top Gym IV', detalhe: 'na Av. Eurico Gaspar Dutra' },
+  ],
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Cidade às margens do rio São Francisco, com orla usada para caminhada e corrida.',
     'Praia de Minas: praia fluvial sazonal (jul–out) com arena esportiva e academia ao ar livre.',
@@ -89,6 +94,14 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade quente do Norte de Minas e às margens do velho Chico, Januária pede um treino adaptado ao clima semiárido e que aproveite a orla e a praia fluvial na temporada. Um personal trainer ajuda a organizar a rotina respeitando o calor, escolhendo os melhores horários e mantendo a constância ao longo do ano.',
 
+  /*
+   * Prints de 07/10 (só resultados e PAA): PAA com "qual o valor de 1 hora",
+   * "quanto custa por mês", "vale a pena pagar" e uma de Manaus (ruído) — o
+   * padrão das cidades printadas (docs/seo-local-estrategia.md, seção 5).
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   vizinhas: ['montes-claros-mg', 'pirapora-mg'],
 
   fontes: [
@@ -96,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Januária', url: 'https://www.januaria.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-07',
 };

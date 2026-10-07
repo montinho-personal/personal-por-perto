@@ -903,3 +903,14 @@ sai. **Academias**, no mesmo commit: LaFit Academia (TotalPass e Wellhub,
 Rua São Cristóvão, 51; o bairro diverge entre as fontes e ficou de fora).
 Recusadas por fonte única: Smart Fit Shopping Eusébio, DoctorFit, Primelife
 e Complexo Vitality (só TotalPass); MoveFit, L2 e Good Gym (só Wellhub).
+
+## Januária — prints e aplicação em 07/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer januária | — (só resultados e PAA) | **valor de 1 hora** · **quanto custa por mês** · valor em Manaus (ruído) · vale a pena pagar | pedegas, Wellhub (Top Gym IV), ClassiJANU, Facebook de estúdio local |
+
+**Aplicado:** o padrão das cidades printadas. **Academias**, no mesmo commit:
+Top Gym IV (Wellhub e TotalPass, Av. Marechal Eurico Gaspar Dutra, 323).
+Fora: Studio Personal Fitness Silvana Guedes (só Facebook) e Top Fitness
+Academia (TotalPass, R. Eurico Gaspar Dutra, 1070, sem cidade na fonte).
