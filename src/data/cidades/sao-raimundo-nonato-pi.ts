@@ -70,6 +70,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada principalmente por academias locais de musculação e treino funcional, concentradas no centro e nos bairros residenciais, com porte compatível com uma cidade pequena do interior do Piauí.',
 
+  // Verificado em 07/10/2026: Brasfort Academia e Academia PowerFitness só
+  // aparecem no Wellhub (fonte única) — nenhuma entra até ter segunda fonte.
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Porta de entrada do Parque Nacional Serra da Capivara, patrimônio mundial da UNESCO.',
     'Alto do Cruzeiro como mirante e ponto de subidas e treino ao ar livre.',
@@ -89,6 +93,16 @@ export const cidade: Cidade = {
   conclusao:
     'Cercada pelo semiárido e pela história milenar da Serra da Capivara, São Raimundo Nonato pede um treino adaptado ao calor e ao ar seco, que aproveite as subidas do Alto do Cruzeiro e as trilhas do entorno. Um personal trainer ajuda a organizar a rotina respeitando o clima, definindo os melhores horários e mantendo a constância ao longo da longa estação seca.',
 
+  /*
+   * Prints de 07/10: o autocompletar completou "nonato" como nome próprio
+   * ("nonato sp", "instagram", "telefone", "cnpj") e o painel lateral era o
+   * Perfil da Empresa do Montinho (busca feita logada, de Barueri) — sem
+   * sinal da cidade. Entra só o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5).
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   vizinhas: ['picos-pi', 'floriano-pi'],
 
   fontes: [
@@ -96,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Raimundo Nonato', url: 'https://www.saoraimundononato.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-07',
 };

@@ -877,3 +877,14 @@ Wellhub), Academia Profitness (só TotalPass).
 **Não aplicado:** nomes de estúdios e profissionais, "quem treina 3x tem
 resultado" (genérica) e a recomendação da IA sobre registro profissional
 (regra do portal).
+
+## São Raimundo Nonato — prints e aplicação em 07/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer são raimundo nonato | completou "nonato" como nome próprio ("sp", "instagram", "telefone", "cnpj") | — | Perfil da Empresa do Montinho no painel (busca logada); Superprof |
+
+**Aplicado:** só o padrão das cidades printadas — o print não trouxe sinal
+próprio da cidade. **Academias:** nenhuma entrou; Brasfort Academia e
+Academia PowerFitness só aparecem no Wellhub. `academiasVerificadasEm`
+registrado para a cidade não voltar à fila.
