@@ -859,3 +859,21 @@ entram na frente; São Vicente sai. **Academias**, no mesmo commit: Motion
 Fit Academia (TotalPass e Wellhub, Av. Condessa de Vimieiros, 307,
 Centro). Recusadas por fonte única: Science Fitness e Studio Soul Fitness
 (só TotalPass); Academia Activa, Adrenalina e Pratk (só Wellhub).
+
+## São José do Rio Pardo — prints e aplicação em 07/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer são josé do rio pardo | nome de estúdio local; "são josé do rio **preto**" em três sugestões (outra cidade) | **qual o valor de 1 hora** · **3 vezes por semana** · vale a pena pagar · quem treina 3x na semana tem resultado? | visão de IA com estúdios locais; TotalPass, Superprof, pedegas |
+
+**Aplicado:** o padrão das cidades printadas — valor por mês e por aula no
+título e na descrição, perguntas "1 mês, 3 vezes por semana", Instagram e
+online ou presencial. **Academias**, no mesmo commit: Skyfit Academia SJ Rio
+Pardo (Wellhub e TotalPass, Rua Vicente Agliussi, 20). Recusados por fonte
+única: Ciclo Personal Trainer (só TotalPass), Studio Namastê (só a visão de
+IA, que não é fonte), MA Academia, Corpus, Atletic Comp e Nutrigym (só
+Wellhub), Academia Profitness (só TotalPass).
+
+**Não aplicado:** nomes de estúdios e profissionais, "quem treina 3x tem
+resultado" (genérica) e a recomendação da IA sobre registro profissional
+(regra do portal).

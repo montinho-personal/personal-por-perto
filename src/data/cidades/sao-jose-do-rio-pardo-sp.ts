@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias de musculação e treino funcional, estúdios menores e profissionais autônomos, distribuídos pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média do interior paulista.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia SJ Rio Pardo', detalhe: 'na Rua Vicente Agliussi' },
+  ],
+  academiasVerificadasEm: '2026-10-07',
+
   destaquesFitness: [
     'Cidade da memória de Euclides da Cunha, com a Casa de Zinco e a orla do rio Pardo como cenário para atividade ao ar livre.',
     'Ilha São Pedro, parque urbano arborizado acessado por ponte pênsil, usado para passeio e caminhada.',
@@ -84,6 +89,20 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade tranquila do nordeste paulista, marcada pela história de Euclides da Cunha e pelo rio Pardo, São José do Rio Pardo oferece praças, ilha urbana e clima de altitude que convidam ao treino ao ar livre. Um personal trainer ajuda a organizar a rotina, aproveitar esses espaços e manter a constância ao longo das estações.',
 
+  /*
+   * Prints de 07/10: autocompletar com o nome de um estúdio local e três
+   * sugestões de São José do Rio PRETO, que é outra cidade (tem página
+   * própria; o nome no título separa as duas); PAA com "qual o valor de 1
+   * hora", "3 vezes por semana", "vale a pena pagar" e "quem treina 3x na
+   * semana tem resultado?" — o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5). A IA cita estúdios locais e
+   * recomenda conferir registro profissional; nada disso entra.
+   */
+  metaFoco: 'preco',
+  // O título gerado cortava em "(SP): valor" — o nome da cidade é longo. 56 caracteres.
+  metaTitulo: 'Personal Trainer em São José do Rio Pardo: Valor por Mês',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   vizinhas: ['sao-joao-da-boa-vista-sp', 'mococa-sp'],
 
   fontes: [
@@ -91,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Pardo', url: 'https://saojosedoriopardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-07',
 };
