@@ -19,7 +19,7 @@ export const cidade: Cidade = {
     'Em apenas cerca de 65 km², Osasco concentra um dos maiores PIBs do país e abriga a sede do Banco Bradesco, na Cidade de Deus — um dos maiores polos financeiros e de serviços do Brasil. A cidade reúne ainda nomes como Mercado Livre, iFood e FedEx, o que cria uma grande população de trabalhadores e um público corporativo natural para treinos antes e depois do expediente.',
 
   mercado:
-    'O mercado de personal trainer em Osasco combina dois públicos fortes. O corporativo — concentrado na Cidade de Deus e nos polos de serviços — procura treino encaixado antes ou depois do expediente, com foco em condicionamento, emagrecimento e alívio das dores posturais do escritório. O residencial se espalha por uma cidade compacta, onde os deslocamentos curtos favorecem o atendimento em domicílio e os parques públicos bem equipados (Chico Mendes, Dionísio Álvarez Mateos) servem de cenário para treino funcional ao ar livre. A vizinhança com Alphaville coloca Osasco no raio de atendimento presencial do Montinho Personal, o profissional destacado pelo portal, conforme agenda e local — com o online cobrindo qualquer rotina.',
+    'O mercado de personal trainer em Osasco combina dois públicos fortes. O corporativo — concentrado na Cidade de Deus e nos polos de serviços — procura treino encaixado antes ou depois do expediente, com foco em condicionamento, emagrecimento e alívio das dores posturais do escritório. O residencial se espalha por uma cidade compacta, onde os deslocamentos curtos favorecem o atendimento em domicílio e os parques públicos (Chico Mendes, Dionísio Álvarez Mateos) servem de cenário para treino funcional ao ar livre. A vizinhança com Alphaville coloca Osasco no raio de atendimento presencial do Montinho Personal, o profissional destacado pelo portal, conforme agenda e local — com o online cobrindo qualquer rotina.',
 
   bairrosNobres: ['Jardim das Flores', 'Vila Yara', 'Bela Vista', 'City Bussocaba'],
   bairrosPopulares: ['Rochdale', 'Km 18', 'Presidente Altino', 'Jardim Veloso'],
@@ -28,7 +28,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Chico Mendes',
       descricao:
-        'O maior parque da cidade, com cerca de 114 mil m². Tem academia ao ar livre gratuita, pistas de caminhada, quadras e trilhas leves — um espaço completo para treino funcional, mobilidade e alongamento. Abre das 6h às 18h.',
+        'O maior parque da cidade, com cerca de 114 mil m² na City Bussocaba: trilhas, quadras cobertas, horta comunitária e playground — espaço para caminhada, treino funcional e mobilidade.',
     },
     {
       nome: 'Parque Ecológico Dionísio Álvarez Mateos',
@@ -58,28 +58,24 @@ export const cidade: Cidade = {
       descricao:
         'A corrida de rua mais tradicional da cidade, com provas de 4 km e 8 km e largada em frente à Prefeitura, na Avenida Lázaro de Mello Brandão. Reúne corredores de toda a região metropolitana.',
     },
-    {
-      nome: 'Aulas públicas da SEREL',
-      descricao:
-        'A Secretaria de Esporte, Recreação e Lazer oferece aulas gratuitas nos parques — de caminhada orientada e ginástica funcional a pilates, yoga e tai chi —, geralmente no início da manhã.',
-    },
   ],
   culturaEsportiva:
     'Osasco é referência nacional no vôlei feminino: o clube da cidade, com sede no Ginásio José Liberatti, soma Superligas, títulos sul-americanos e o Mundial de Clubes de 2012. Essa cultura esportiva forte se estende ao dia a dia, com parques movimentados e ciclofaixa de lazer consolidada.',
   academias:
-    'A cidade combina academias de shopping e de bairro — com forte presença de redes como a Smart Fit, em várias unidades — às academias ao ar livre municipais e às aulas gratuitas nos parques, o que favorece tanto o treino indoor quanto o outdoor.',
+    'A cidade combina academias de shopping e de bairro — com forte presença de redes como a Smart Fit, em várias unidades — aos aparelhos de ginástica ao ar livre dos parques municipais, o que favorece tanto o treino indoor quanto o outdoor.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'várias unidades, como a do KM 18 (Vila Yara) e a da Av. Getúlio Vargas' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. dos Autonomistas (Vila Yara), no Centro, no KM 18, na Vila Quitaúna e no Jardim Jaguaribe' },
     { nome: 'Bluefit', detalhe: 'unidades no Centro, no KM 18 e no Novo Osasco' },
     {
       nome: 'Academias ao ar livre municipais',
-      detalhe: 'gratuitas, nos parques Chico Mendes e Dionísio Álvarez Mateos, com aulas públicas da SEREL',
+      detalhe: 'gratuitas, como os aparelhos do Parque Ecológico Dionísio Álvarez Mateos (Parque da FITO), no Jardim das Flores',
     },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Cidade compacta (~65 km²) com deslocamentos curtos — ótimo para atendimento em domicílio e condomínios.',
-    'Forte oferta pública e gratuita: parques com academia ao ar livre e aulas da SEREL.',
+    'Oferta pública e gratuita: parques com trilhas, quadras e aparelhos de ginástica ao ar livre.',
     'Ciclofaixa de lazer dominical com empréstimo de bicicletas.',
     'Excelente conexão ferroviária com São Paulo (linhas 8 e 9).',
   ],
@@ -95,12 +91,26 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: "osasco valor" é a primeira sugestão do autocompletar; aparecem Smart Fit e Bluefit (personal dentro de rede de academia); PAA com "qual é o melhor personal trainer online?".
+   * Pesquisa de palavras-chave de 08/10: "personal trainer em osasco" e
+   * "personal trainer osasco", 170 buscas/mês cada — o maior volume da região.
+   * Autocompletar repete Smart Fit, Bluefit, "mulher" e "valor"; PAA com
+   * "pode treinar 1 hora da manhã?"; "online" nos prompts das duas IAs.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'academia' },
+  faqsBusca: { precoMensal: true, taxaPersonal: 'academia', onlineOuPresencial: true },
 
   faqsExtra: [
+    {
+      pergunta: 'Dá para treinar com personal na Smart Fit ou na Bluefit de Osasco?',
+      resposta:
+        'Na Smart Fit, dá: a rede aceita personal particular credenciado na unidade, ele só atende quem é aluno matriculado e o preço é combinado com o profissional, por fora da mensalidade — o app da rede lista os personais de cada unidade. Osasco tem unidades na Av. dos Autonomistas, no Centro, no KM 18, na Vila Quitaúna e no Jardim Jaguaribe. Na Bluefit, que tem unidades no Centro, no KM 18 e no Novo Osasco, a regra é da rede: confirme na recepção antes de fechar.',
+    },
+    {
+      pergunta: 'É melhor treinar de manhã ou à noite? Pode treinar de madrugada?',
+      resposta:
+        'O melhor horário é o que você consegue manter sem roubar sono. Força e desempenho tendem a ser um pouco maiores no fim da tarde, mas a diferença é pequena perto da constância. Treinar de madrugada pode, desde que as horas de sono não sejam cortadas — dormir pouco atrapalha a recuperação mais do que o relógio. Em Osasco, quem trabalha no eixo corporativo costuma encaixar o treino antes do expediente ou no fim do dia.',
+    },
     {
       pergunta: 'Qual é o melhor personal trainer online?',
       resposta:
@@ -109,12 +119,12 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde costuma acontecer o treino com personal em Osasco?',
       resposta:
-        'Nos três ambientes: em casa ou no condomínio (a cidade é compacta e o deslocamento do profissional é rápido), em academias — incluindo as várias unidades de redes como a Smart Fit — e ao ar livre, nos parques com estrutura gratuita, como o Chico Mendes e o Dionísio Álvarez Mateos. O formato ideal depende da rotina: quem trabalha no eixo corporativo costuma preferir treino perto do trabalho ou em casa, cedo ou no fim do dia.',
+        'Nos três ambientes: em casa ou no condomínio (a cidade é compacta e o deslocamento do profissional é rápido), em academias — incluindo as várias unidades de redes como a Smart Fit — e ao ar livre, nos parques públicos, como o Chico Mendes e o Dionísio Álvarez Mateos. O formato ideal depende da rotina: quem trabalha no eixo corporativo costuma preferir treino perto do trabalho ou em casa, cedo ou no fim do dia.',
     },
     {
       pergunta: 'Quais objetivos são mais comuns entre quem contrata personal em Osasco?',
       resposta:
-        'O público corporativo busca principalmente emagrecimento, condicionamento físico e correção de dores e postura ligadas ao trabalho sentado. Nos bairros residenciais, aparecem com força saúde geral, ganho de força e acompanhamento para começar do zero com segurança — perfil comum em quem aproveita as aulas públicas dos parques e quer evoluir com orientação individual.',
+        'O público corporativo busca principalmente emagrecimento, condicionamento físico e correção de dores e postura ligadas ao trabalho sentado. Nos bairros residenciais, aparecem com força saúde geral, ganho de força e acompanhamento para começar do zero com segurança — perfil comum em quem já caminha ou treina nos parques e quer evoluir com orientação individual.',
     },
     {
       pergunta: 'Há atendimento em Osasco para quem tem dores ou limitações no treino?',
@@ -123,7 +133,9 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['barueri-sp', 'sao-paulo-sp', 'guarulhos-sp'],
+  // Era Barueri, São Paulo e Guarulhos — Guarulhos não faz divisa com Osasco.
+  // Em 08/10/2026 entrou Carapicuíba, que faz.
+  vizinhas: ['barueri-sp', 'carapicuiba-sp', 'sao-paulo-sp'],
 
   fontes: [
     { nome: 'IBGE Cidades — Osasco', url: 'https://cidades.ibge.gov.br/brasil/sp/osasco/panorama' },
@@ -147,5 +159,5 @@ export const cidade: Cidade = {
     w: 1600,
     h: 1497,
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

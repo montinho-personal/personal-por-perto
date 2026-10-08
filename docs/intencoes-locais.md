@@ -1101,3 +1101,38 @@ pela regra do portal), 2x por semana (`duasVezes`) e online × presencial.
 **Não entrou:** diária da Ironberg (preço que não temos fonte), "instrutor
 precisa ser formado?" (resposta passa por registro profissional, que o
 portal não cita).
+
+## Osasco — pesquisa de palavras-chave em 08/10/2026
+
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-osasco/`.
+
+**Volume:** "personal trainer em osasco" **170**/mês e "personal trainer
+osasco" **170** — o maior volume da região (Barueri 110, Alphaville 90). No
+Search Console, a página está na posição ~35.
+
+- **Autocompletar:** bluefit osasco, smart fit osasco, mulher (duas
+  variações), valor, osasco sp — repete os prints de 30/09.
+- **PAA:** atividades de um personal, "3 ou 5 vezes", **"pode treinar 1 hora
+  da manhã?" / "é melhor treinar de manhã ou à noite?"** (aparece também nos
+  PAA de Alphaville, Tamboré e Aldeia), coach × personal; o resto é intenção
+  de profissional (salário, formação) ou de saúde fora do escopo da página.
+- **ChatGPT e Gemini:** preço por hora, planos acessíveis, online, perda de
+  peso, idosos, "como funciona personal em academias de Osasco", treino em
+  casa, aula experimental, orçamento.
+
+**Aplicado em 08/10:** FAQ "Dá para treinar com personal na Smart Fit ou na
+Bluefit de Osasco?" (regra oficial da Smart Fit + unidades conferidas no
+site; Bluefit: regra da rede, confirmar na recepção); FAQ "É melhor treinar
+de manhã ou à noite? Pode treinar de madrugada?"; online × presencial.
+Vizinhas: sai Guarulhos (não faz divisa), entra Carapicuíba.
+
+**Correções de fato achadas no caminho:** a Smart Fit "da Av. Getúlio
+Vargas" não existe na lista oficial de Osasco; "aulas públicas da SEREL nos
+parques" e "academia ao ar livre" no Chico Mendes não têm fonte — saíram do
+texto (a SEREL existe, mas os registros encontrados são de 2019–2020 e não
+falam de parques). O Dionísio Álvarez Mateos tem aparelhos de ginástica
+(guia QuintoAndar).
+
+**Não entrou:** "personal mulher" (terceira cidade em que aparece; o
+portal não tem profissional a indicar), idosos e reabilitação (a página já
+fala de dores com ressalva), salário e formação (intenção de profissional).

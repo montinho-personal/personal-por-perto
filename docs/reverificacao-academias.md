@@ -127,3 +127,16 @@ A Aldeia da Serra fica com 2 academias; completar é tarefa à parte.
 
 **Acumulado do dia (levas 1–4, 7 cidades):** 7 entradas removidas por
 falta de qualquer fonte, 9 detalhes corrigidos.
+
+### 08/10/2026 — leva 5 (Osasco, página editada pela pesquisa de palavras-chave)
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "KM 18 (Vila Yara) e Av. Getúlio Vargas" estava errado — não há unidade na Getúlio Vargas, e KM 18 e Vila Yara são unidades diferentes. Detalhe reescrito com as 5 localizações oficiais | smartfit.com.br/academias/sp/osasco (Av. dos Autonomistas 896 e 1400, R. Dona Primitiva Vianco 400, R. Prof. José Azevedo Minhoto 324 – KM 18, R. Luiz Henrique de Oliveira 46 – Quitaúna, Av. Flora 1555 – Jd. Jaguaribe) |
+| Bluefit | confirmada | bluefit.com.br/unidade/osasco (Centro), /km-18, /novo-osasco |
+| Academias ao ar livre municipais | genérica; detalhe corrigido — saem "Chico Mendes" e "aulas públicas da SEREL" (sem fonte); fica o Dionísio Álvarez Mateos | guia QuintoAndar (aparelhos de ginástica ao ar livre) |
+
+Também no texto da página: a descrição do Parque Chico Mendes perdeu
+"academia ao ar livre gratuita" e o horário (sem fonte; ficam área, trilhas,
+quadras cobertas e horta — Metrô/EIA e boletim da Prefeitura), e saiu o item
+"Aulas públicas da SEREL".
