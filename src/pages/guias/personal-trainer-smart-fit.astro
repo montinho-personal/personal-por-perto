@@ -1,0 +1,323 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { cidades } from '../../data/cidades';
+
+/*
+ * Artigo criado em 08/10/2026 a partir dos prints e da pesquisa de
+ * palavras-chave de "personal trainer smart fit" (390 buscas/mês; "valor
+ * personal trainer smart fit", outras 390; "plano personal trainer smart
+ * fit", 170). Antes dele, o Google mostrava uma página de cidade qualquer
+ * para essas buscas. Registro em docs/artigo-personal-trainer-smart-fit.md.
+ *
+ * Toda regra da rede citada aqui está em fonte da própria Smart Fit (links
+ * abaixo). O que a rede não publica — preço do personal, valor do Smart Fit
+ * Coach, taxa da unidade — o texto diz que não publica, em vez de estimar.
+ */
+
+const SF_OPCOES = 'https://www.smartfit.com.br/news/academia/personal-trainer-smart-fit/';
+const SF_CONTRATO = 'https://smartfit.com.br/contratos/formulario-previo-personal';
+const SF_PRECO = 'https://www.smartfit.com.br/news/fitness/quanto-custa-um-personal-trainer/';
+
+/* Faixas medianas das cidades do portal, calculadas no build. */
+const mediana = (v: number[]) => {
+  const o = [...v].sort((a, b) => a - b);
+  const m = Math.floor(o.length / 2);
+  return o.length % 2 ? o[m] : (o[m - 1] + o[m]) / 2;
+};
+type CampoPreco = keyof (typeof cidades)[number]['precos'];
+const faixa = (min: CampoPreco, max: CampoPreco) => ({
+  min: mediana(cidades.map((c) => c.precos[min])),
+  max: mediana(cidades.map((c) => c.precos[max])),
+});
+const AVULSA = faixa('avulsaMin', 'avulsaMax');
+const MENSAL = faixa('mensalMin', 'mensalMax');
+const ONLINE = faixa('onlineMin', 'onlineMax');
+const brl = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-em-academia/',
+    titulo: 'Personal trainer em academia: como funciona',
+    descricao: 'As mesmas perguntas para qualquer rede: a academia aceita? quanto custa? quando compensa?',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/coach-de-academia/',
+    titulo: 'Coach de academia: o que é e a diferença para o personal',
+    descricao: 'Professor de salão, coach online e personal: quem planeja o treino e quem vê você executar.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'Faixas por formato e o que muda o preço de uma cidade para outra.',
+    tipo: 'Guia',
+  },
+  {
+    url: rotas.comoEscolher,
+    titulo: 'Como escolher um personal trainer',
+    descricao: 'O que perguntar antes de fechar, dentro ou fora de uma rede.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-smart-fit';
+const publicadoEm = '2026-10-08';
+const atualizadoEm = '2026-10-08';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer na Smart Fit', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual o valor de um personal trainer na Smart Fit?',
+    resposta: `A Smart Fit não tabela o preço do personal: pelo contrato da rede, o valor é ajustado entre o profissional e o aluno. Como referência, na cidade mediana do portal a aula avulsa presencial vai de ${brl(AVULSA.min)} a ${brl(AVULSA.max)}, e o pacote de 2 a 3 vezes por semana, de ${brl(MENSAL.min)} a ${brl(MENSAL.max)} por mês — por fora da mensalidade da academia. São estimativas editoriais por cidade, não pesquisa de preço.`,
+  },
+  {
+    pergunta: 'Tem como contratar personal na Smart Fit?',
+    resposta:
+      'Tem. A rede permite treinar com personal trainer particular, desde que ele seja credenciado na unidade e siga as regras dela. No aplicativo da Smart Fit, a opção "Personal", no alto da tela, mostra os profissionais cadastrados na última unidade selecionada — dá para trocar a unidade e ver outras. Antes de fechar, confirme na recepção como funciona o acesso do profissional.',
+  },
+  {
+    pergunta: 'A Smart Fit tem personal grátis?',
+    resposta:
+      'Não no sentido de alguém só para você. O que está incluído na mensalidade é o professor de salão: ele monta a ficha inicial, explica os aparelhos e tira dúvida, mas atende vários alunos ao mesmo tempo e não acompanha a sua sessão inteira. Acompanhamento individual é contratado à parte — com um personal credenciado ou pelo Smart Fit Coach, a consultoria online da rede.',
+  },
+  {
+    pergunta: 'Existe plano de personal trainer na Smart Fit?',
+    resposta:
+      'Não há um plano de academia com personal presencial incluído. O que a rede vende como acompanhamento individual é o Smart Fit Coach, uma consultoria online: você conversa por vídeo com um professor, recebe o plano no aplicativo e tira dúvidas com o profissional. A própria Smart Fit diz que o valor varia conforme a unidade e o pacote, e que o serviço está aberto também a quem não é aluno.',
+  },
+  {
+    pergunta: 'Como dar personal na Smart Fit?',
+    resposta:
+      'O profissional assina com a unidade um contrato de uso das instalações (o "Contrato Personal"), que autoriza dar aulas individuais de musculação e ginástica só para alunos matriculados nas unidades Smart Fit. Quem trabalhou na rede tem regras de carência para assinar esse contrato. Os detalhes de credenciamento são tratados na unidade.',
+  },
+];
+
+const title = 'Personal Trainer na Smart Fit: Pode Levar? Quanto Custa?';
+const description =
+  'Personal trainer na Smart Fit: se pode levar o seu, como achar profissional pelo app, quanto custa, se existe plano e o que é o Smart Fit Coach.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Personal em rede de academia</p>
+    <h1>Personal trainer na Smart Fit: pode levar o seu e quanto custa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Pode. A Smart Fit permite treinar com personal trainer particular, desde
+      que ele seja <strong>credenciado na unidade</strong> e siga as regras
+      dela — e só atende quem é aluno matriculado. O preço não é da rede: é
+      <strong>combinado entre você e o profissional</strong>, por fora da
+      mensalidade. O que vem incluído é o professor de salão, que atende todo
+      mundo ao mesmo tempo. Para acompanhamento a distância, a rede vende o
+      Smart Fit Coach.
+    </p>
+
+    <div class="prose">
+      <h2>A Smart Fit tem personal trainer?</h2>
+      <p>
+        Tem três formas de acompanhamento, e só uma delas é um personal ao
+        seu lado. A própria rede descreve assim, no texto{' '}
+        <a href={SF_OPCOES} target="_blank" rel="noopener">"Smart Fit tem personal
+        trainer? Conheça as opções"</a>:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Opção</th><th>Como funciona</th><th>Quanto custa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Professor de salão</td><td>Monta a ficha inicial, explica aparelhos, tira dúvida — atende vários alunos ao mesmo tempo</td><td>Incluído na mensalidade</td></tr>
+            <tr><td>Personal particular</td><td>Profissional credenciado na unidade, ao seu lado a sessão inteira</td><td>Combinado com o profissional, à parte</td></tr>
+            <tr><td>Smart Fit Coach</td><td>Consultoria online: conversa por vídeo e plano no app</td><td>Varia por unidade e pacote, segundo a rede</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Por isso a pergunta "a Smart Fit tem personal grátis?" tem resposta
+        curta: o que é grátis é o professor de salão, e ele não acompanha a
+        sua sessão do começo ao fim. A diferença entre os três papéis está
+        no guia de <a href="/guias/coach-de-academia/">coach de academia</a>.
+      </p>
+
+      <h2>Posso levar o meu personal para a Smart Fit?</h2>
+      <p>
+        Pode, se ele se credenciar. O documento público da rede chama isso de{' '}
+        <a href={SF_CONTRATO} target="_blank" rel="noopener">"Contrato de uso de
+        instalações para exploração de atividade profissional
+        especializada"</a> — o "Contrato Personal". Três pontos dele valem
+        para quem vai contratar:
+      </p>
+      <ul>
+        <li>o personal assina com a unidade, e o contrato vale para as unidades e modalidades nele especificadas;</li>
+        <li>ele só pode dar aula para <strong>alunos matriculados</strong> na Smart Fit — você continua pagando a sua mensalidade;</li>
+        <li>o valor das aulas é <strong>ajustado entre o profissional e o aluno</strong>; a rede não tabela.</li>
+      </ul>
+      <p>
+        A rede recomenda confirmar o procedimento na recepção antes de fechar,
+        porque as regras podem envolver credenciamento, autorização da
+        liderança da unidade e condições específicas. Se o personal que você
+        quer ainda não é credenciado, pergunte a ele se pretende se
+        credenciar — e se algum custo disso entra no preço da aula.
+      </p>
+
+      <h2>Como achar personal pelo aplicativo</h2>
+      <p>
+        O aplicativo da Smart Fit lista os personais cadastrados por unidade:
+      </p>
+      <ol>
+        <li>abra o app e toque em <strong>"Personal"</strong>, no alto da tela;</li>
+        <li>veja os profissionais da última unidade selecionada;</li>
+        <li>troque a unidade para ver os de outras.</li>
+      </ol>
+      <p>
+        A lista mostra quem pode atender ali; quem escolhe é você. Antes de
+        fechar, as perguntas do guia de{' '}
+        <a href={rotas.comoEscolher}>como escolher um personal trainer</a>{' '}
+        separam o profissional que planeja do que só acompanha.
+      </p>
+
+      <h2>Quanto custa personal trainer na Smart Fit</h2>
+      <p>
+        Como o preço é combinado com o profissional, não existe "o valor do
+        personal da Smart Fit". Num texto da própria rede, um personal da
+        região central de São Paulo{' '}
+        <a href={SF_PRECO} target="_blank" rel="noopener">fala em cerca de R$ 80
+        a hora-aula</a> onde trabalha — e lembra que o valor muda de bairro
+        para bairro. Para ter uma referência, as faixas da cidade mediana do
+        portal:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Formato</th><th>Faixa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Aula avulsa presencial</td><td>{brl(AVULSA.min)} a {brl(AVULSA.max)}</td></tr>
+            <tr><td>Pacote, 2 a 3 vezes por semana</td><td>{brl(MENSAL.min)} a {brl(MENSAL.max)} por mês</td></tr>
+            <tr><td>Acompanhamento online</td><td>{brl(ONLINE.min)} a {brl(ONLINE.max)} por mês</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">
+        Estimativas editoriais calculadas das faixas das cidades do portal, não
+        pesquisa de preço. No presencial, some a mensalidade da academia: o
+        personal da Smart Fit atende quem já é aluno.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-preco-personal"
+        texto="A mediana nacional esconde muita diferença: a hora do personal muda de uma cidade para outra — e, como o depoimento da própria Smart Fit lembra, de um bairro para outro. A calculadora mostra a faixa da sua cidade, com a conta aberta."
+        acao="Ver o preço na minha cidade"
+      />
+
+      <h2>Smart Fit Coach vale a pena?</h2>
+      <p>
+        Depende do que você precisa. O Smart Fit Coach é consultoria online:
+        segundo a rede, você agenda uma conversa por vídeo com um professor,
+        recebe o plano no aplicativo, que é ajustado conforme o progresso — e o serviço está
+        aberto também a quem não é aluno. A rede o apresenta como opção para
+        quem quer treino direcionado{' '}
+        <a href={SF_OPCOES} target="_blank" rel="noopener">"sem depender de um
+        personal presencial em todos os horários"</a>.
+      </p>
+      <p>
+        Costuma valer para quem já executa bem os exercícios e precisa de
+        plano e ajuste. Para quem está começando, voltando de lesão ou travado
+        na evolução, falta o que só o presencial dá: alguém olhando a execução
+        em tempo real. Quem sente dor deve passar antes por médico ou
+        fisioterapeuta, em qualquer formato.
+      </p>
+
+      <h2>Smart Fit em Alphaville e Barueri</h2>
+      <p>
+        Na região de Alphaville, a Smart Fit tem unidades na Alameda Araguaia;
+        em Barueri, no Centro, na Av. Zélia e no Parque Shopping Barueri —
+        endereços conferidos no site da rede. As páginas de{' '}
+        <a href="/personal-trainer/alphaville-sp/">Alphaville</a> e de{' '}
+        <a href="/personal-trainer/barueri-sp/">Barueri</a> listam essas e as
+        outras academias conferidas da região, com as faixas de preço locais.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>
