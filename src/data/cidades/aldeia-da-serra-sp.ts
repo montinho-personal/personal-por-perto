@@ -91,12 +91,20 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: autocompletar "aldeia da serra barueri" (a pessoa não sabe em que cidade fica); PAA com preço por mês, "3 vezes por semana" e taxa de personal.
+   * Pesquisa de palavras-chave de 08/10 (PAA e ChatGPT): "2x por semana" e
+   * "diferença entre instrutor de academia e personal" no PAA; "online" no
+   * ChatGPT.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'condominio', onlineOuPresencial: true },
 
   faqsExtra: [
+    {
+      pergunta: 'Qual a diferença entre o instrutor da academia e o personal trainer?',
+      resposta:
+        'O instrutor é funcionário da academia e atende o salão inteiro: monta a ficha de quem chega, tira dúvida e corrige quem pede, dividindo a atenção entre dezenas de alunos ao mesmo tempo. O personal é contratado por você e fica com você a sessão toda — planeja o treino a partir de uma avaliação, corrige cada série, ajusta a carga e muda o plano quando a evolução para. Na Aldeia da Serra, onde boa parte dos treinos acontece na academia do condomínio, que não tem instrutor, o personal costuma ser o único olho profissional no treino.',
+    },
     {
       pergunta: 'A Aldeia da Serra fica em Barueri ou em Santana de Parnaíba?',
       resposta:

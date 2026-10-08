@@ -1077,3 +1077,27 @@ e The One, também do texto corrido.
 **Não entrou:** aula experimental (depende da política de cada
 profissional), hipertrofia e reabilitação (a página já fala de dores com
 ressalva de médico/fisioterapeuta).
+
+## Aldeia da Serra — pesquisa de palavras-chave em 08/10/2026
+
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-aldeia-da-serra/`.
+Sem aba do Google.
+
+- **PAA:** 1h de personal, **2x por semana**, "3 ou 5 vezes", e um bloco
+  novo: **"Qual a diferença entre instrutor de academia e personal
+  trainer?"** (com "o que o instrutor faz", "precisa ser formado"). Veio
+  também um bloco da Ironberg (diária, maior academia do mundo, dono) —
+  intenção de academia.
+- **ChatGPT:** o padrão das outras páginas (preço, domicílio,
+  emagrecimento, funcional, hipertrofia, idosos, reabilitação, online).
+- **Gemini:** prompts genéricos e em português de Portugal ("na minha
+  zona", "contactar", "na serra") — a ferramenta não reconheceu o lugar.
+  Descartados como sinal local.
+
+**Aplicado em 08/10:** FAQ "Qual a diferença entre o instrutor da academia
+e o personal trainer?" (fala de função e rotina, sem registro profissional,
+pela regra do portal), 2x por semana (`duasVezes`) e online × presencial.
+
+**Não entrou:** diária da Ironberg (preço que não temos fonte), "instrutor
+precisa ser formado?" (resposta passa por registro profissional, que o
+portal não cita).
