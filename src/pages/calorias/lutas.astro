@@ -84,7 +84,7 @@ import {
 } from '../../lib/calorias/lutas';
 
 const path = '/calorias/lutas';
-const atualizadoEm = '2026-10-05';
+const atualizadoEm = '2026-10-08';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -147,11 +147,11 @@ const faqs = [
     resposta: `Para ${PESO_PADRAO} kg, de cerca de ${formataKcal(HORA_LEVE.kcal)} kcal, no ritmo lento ou de iniciante (${formataMet(atividade('arteLeve').met)} METs), a ${formataKcal(HORA_ARTE.kcal)} kcal, no ritmo moderado (${formataMet(atividade('arte').met)} METs) — e esse topo pede a hora inteira em movimento. Os "600 a 1.000 kcal por hora" que circulam ficam nessa ponta de cima: os 1.000 só fecham a partir de uns ${n(PESO_PARA_MIL_ARTE, 0)} kg, sem parar a hora toda.`,
   },
   {
-    pergunta: 'Quantas calorias gasta uma aula de muay thai?',
+    pergunta: 'Quantas calorias gasta um treino ou uma aula de muay thai?',
     resposta: `Uma aula de uma hora não é uma hora de esforço: tem aquecimento, explicação do professor e troca de parceiro. Por isso a conta honesta é com o tempo em movimento. ${formataTempo(MT_40.minutosAtivos)} em ritmo moderado dão cerca de ${formataKcal(MT_40.kcal)} kcal para ${PESO_PADRAO} kg; numa aula de iniciante, com a técnica repetida devagar, os mesmos ${formataTempo(MT_40_LEVE.minutosAtivos)} na linha de ${formataMet(atividade('arteLeve').met)} METs dão cerca de ${formataKcal(MT_40_LEVE.kcal)} kcal.`,
   },
   {
-    pergunta: 'Fazer muay thai 3 vezes por semana ajuda a emagrecer?',
+    pergunta: 'Fazer muay thai 3 vezes por semana emagrece? Quantos quilos por semana?',
     resposta: `Ajuda, porque aumenta o gasto: ${AULAS_SEMANA} aulas de uma hora somam de ${formataKcal(SEMANA_LEVE)} a ${formataKcal(SEMANA_ARTE)} kcal na semana para ${PESO_PADRAO} kg, conforme o ritmo. Mas nenhum treino emagrece sozinho: quem decide é o balanço entre o que entra e o que sai ao longo de semanas, e se a fome depois do treino compensar o gasto, o peso não sai. Pela regra dos ${n(KCAL_POR_KG, 0)} kcal por quilo, essa semana valeria de ${n(SEMANA_LEVE / KCAL_POR_KG, 2)} a ${n(SEMANA_ARTE / KCAL_POR_KG, 2)} kg de gordura — e a própria regra superestima a perda com o tempo.`,
   },
   {
@@ -161,6 +161,20 @@ const faqs = [
   {
     pergunta: 'O muay thai define o corpo?',
     resposta: `Definição é pouca gordura cobrindo músculo que já existe. O muay thai ajuda na primeira parte, pelo gasto; na segunda ajuda pouco, porque o que faz o músculo crescer é carga que sobe ao longo das semanas — e isso é musculação. Em quanto tempo aparece depende mais da gordura de partida e da alimentação do que da modalidade; desconfie de prazo prometido.`,
+  },
+  {
+    pergunta: 'Qual a luta que mais emagrece?',
+    resposta: `Por minuto, a diferença entre as lutas é menor do que parece. O Compêndio de Atividades Físicas põe muay thai, jiu-jitsu e judô na mesma linha — ${formataMet(atividade('arteLeve').met)} METs no ritmo lento e ${formataMet(atividade('arte').met)} no moderado —, e o boxe vai de ${formataMet(atividade('saco').met)} METs no saco em ritmo livre a ${formataMet(atividade('ringue').met)} na luta de verdade. O que separa uma aula de outra é a intensidade e quanto da hora você passa em movimento, não o nome da modalidade. A luta que mais emagrece é a que você consegue fazer três vezes por semana durante meses — com a alimentação acompanhando.`,
+  },
+  {
+    pergunta: 'O muay thai ajuda a perder barriga ou afinar a cintura?',
+    resposta:
+      'Ajuda como qualquer atividade que gasta energia: a gordura sai do corpo todo, na ordem que a genética decide, e não da região que mais trabalha. Os giros de quadril e os chutes não "queimam" a barriga em particular. O que afina a cintura é perder gordura no geral — gasto somado a alimentação ajustada, ao longo de semanas. Quem tem dor nas costas ou no quadril deve passar antes por médico ou fisioterapeuta.',
+  },
+  {
+    pergunta: 'O muay thai aumenta o glúteo?',
+    resposta:
+      'Pouco. Chute, base e deslocamento usam muito o glúteo, o que ajuda a manter e a firmar, mas músculo cresce com carga que aumenta ao longo das semanas — agachamento, elevação pélvica, avanço com peso. Quem quer glúteo maior e faz muay thai ganha mais somando duas sessões de musculação por semana do que trocando uma pela outra.',
   },
   {
     pergunta: 'Quantas calorias gasta 1 hora de boxe?',

@@ -978,3 +978,27 @@ domicílio" 10. O resto do autocompletar é espanhol e italiano
   (resposta passa pela regulamentação — o artigo de coach já cobre o que
   o portal diz); "vale a pena o Smart Fit Coach?" vai para o artigo da
   Smart Fit; cartão de crédito e apps não são assunto do guia.
+
+## Lutas (`/calorias/lutas/`) — prints e pesquisa de muay thai, 08/10/2026
+
+A página já tinha sido reescrita em 05/10 a partir das consultas do GSC —
+e os prints de hoje mostram que acertou: 1 hora, aula, 3 vezes por semana,
+academia × muay thai, define o corpo, 40 minutos e os "600 a 1.000 kcal"
+da visão geral de IA (a página já explica para quem o topo seria verdade)
+estavam todos respondidos. GSC 28 dias: 772 impressões, 4 cliques,
+posição 7,2. Planilhas em `docs/pesquisas/2026-10-08-calorias-muay-thai/`.
+
+Volume: "quantas calorias gasta um treino de muay thai" **40**/mês, "em um
+treino" 30, "no muay thai" 20, "1 hora" 10 — a busca diz **treino**, não só
+aula.
+
+**Entrou:** a FAQ de aula passa a dizer "treino ou aula"; a de 3 vezes por
+semana ganha "quantos quilos por semana?" (das outras pesquisas — a conta já
+estava na resposta); três FAQs novas do PAA e das outras pesquisas: "Qual a
+luta que mais emagrece?" (METs do Compêndio: muay thai, jiu-jitsu e judô na
+mesma linha), "ajuda a perder barriga ou afinar a cintura?" (sem queima
+localizada, com ressalva de dor) e "aumenta o glúteo?".
+
+**Fora:** desvantagens/malefícios, benefícios para crianças e para a mente,
+regras e "10 leis" do muay thai, "antes e depois" (intenção de imagem) —
+nada disso é pergunta de gasto calórico. Título mantido.
