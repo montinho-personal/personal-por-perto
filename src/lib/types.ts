@@ -148,6 +148,12 @@ export interface Cidade {
    */
   faqsBusca?: {
     precoMensal?: boolean;
+    /**
+     * "Quanto custa um personal 2x por semana?" e "malhar com personal 2
+     * vezes por semana dá resultado?" — PAA de Alphaville e Barueri em
+     * 08/10/2026. Entra logo depois de `precoMensal`.
+     */
+    duasVezes?: boolean;
     taxaPersonal?: 'condominio' | 'academia';
     instagram?: boolean;
     /** "Online ou presencial?" — onde o autocompletar pede "online + cidade". */

@@ -59,3 +59,32 @@ Skyfit continua recusando acesso (502 do próprio site).
 
 Saldo da leva: 8 entradas → 6 mantidas, 2 removidas, 2 detalhes corrigidos.
 As duas remoções em BH são o tipo de erro que motivou a reverificação.
+
+### 08/10/2026 — leva 2 (fora da rotina: páginas editadas pela pesquisa de palavras-chave)
+
+**Alphaville/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Ironberg Alphaville | confirmada; sai o bairro "Alphaville Empresarial" (o Wellhub dá Jardim Santa Cecília) | ironberg.com.br/alphaville + TotalPass + Wellhub (Estrada Aldeinha, 181) |
+| NitroGym Tamboré | confirmada | Mercado&Consumo (inauguração, jul/2026, ~3 mil m²) + TotalPass (Av. Piracema, 669) |
+| Arena 18 | confirmada | arena18.com.br + Wellhub (R. Mário Quintana, 144) |
+| Bodytech Iguatemi Alphaville | confirmada; sai "cerca de 1.000 m² no piso lazer" (nenhuma fonte) | lista de academias da Bodytech + Wellhub (Al. Rio Negro, 111) |
+| Academia 24h Premium | confirmada; saem "Alphaville Centro" e "funcionamento 24 horas" (o Wellhub mostra 5h–23h e bairro Alphaville Industrial) | Wellhub + TotalPass (Al. Grajaú, 525) |
+| Academia Gaviões 24h Alphaville | confirmada; nome completo da unidade e rua | Wellhub (Av. Juruá, 253, aberta 24h) + vaga de emprego no Jooble (mesmo número) |
+| Smart Fit | confirmada; "unidades em Alphaville e no entorno" vira "unidades na Alameda Araguaia" | smartfit.com.br (Shopping Flamingo, Sodimac Alphaville, Carrefour Hiper Tamboré) |
+| Alphaville Tênis Clube | confirmado; detalhe vago trocado por rua e torneio | ITF (sede do W35 Barueri 2026) + guia Buser (Al. Paris, 555) |
+| Estúdios boutique e boxes de CrossFit | genérica, não verificável — fica como descrição | — |
+
+**Barueri/SP** — tudo confirmado, lista sem mudança (a página mudou pelas FAQs).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Ironberg, NitroGym, Arena 18 | confirmadas | as mesmas de Alphaville |
+| Smart Fit (Centro, Av. Zélia, Parque Shopping Barueri) | confirmada | smartfit.com.br (Av. 26 de Março, 701; Av. Zélia, 1250; R. Gen. Pedro Rodrigues da Silva, 400) |
+| Bluefit (Bethaville e Tamboré) | confirmada | bluefit.com.br/unidade/barueri (Av. Trindade, 344) e /tambore (Av. Tucunaré, 1498) |
+| Academias de condomínio · Praças do Parque Linear | genéricas | — |
+
+Saldo da leva: 16 entradas → 0 removidas, 6 detalhes corrigidos, 3
+genéricas mantidas como descrição. Padrão que se repete: o nome existe, o
+**detalhe** é que foi escrito sem fonte ("24 horas", metragem, bairro).

@@ -70,16 +70,17 @@ export const cidade: Cidade = {
   academias:
     'A oferta inclui academias como a 24 Horas Premium e a Gaviões, a Bodytech no Iguatemi Alphaville, unidades de Smart Fit e CrossFit, além de muitos estúdios boutique e do Alphaville Tênis Clube. Ainda assim, grande parte da demanda é atendida dentro dos próprios condomínios, por personais que treinam o aluno em casa.',
   academiasProximas: [
-    { nome: 'Ironberg Alphaville', detalhe: 'centro de treinamento de grande porte na Estrada Aldeinha, no Alphaville Empresarial, com foco em musculação de alta performance' },
+    { nome: 'Ironberg Alphaville', detalhe: 'centro de treinamento de grande porte na Estrada Aldeinha, com foco em musculação de alta performance' },
     { nome: 'NitroGym Tamboré', detalhe: 'unidade de cerca de 3 mil m² no Shopping Tamboré, com musculação, avaliação física e sauna' },
     { nome: 'Arena 18', detalhe: 'na Rua Mário Quintana: esportes de areia (beach tennis, vôlei e futevôlei) somados a musculação e treino funcional' },
-    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'cerca de 1.000 m² no piso lazer do shopping Iguatemi, na Al. Rio Negro' },
-    { nome: 'Academia 24h Premium', detalhe: 'na Alameda Grajaú, no Alphaville Centro, com funcionamento 24 horas e grade ampla de aulas' },
-    { nome: 'Academia Gaviões Alphaville', detalhe: 'unidade da rede paulista no Alphaville Industrial, com funcionamento 24 horas' },
-    { nome: 'Smart Fit', detalhe: 'rede de baixo custo com unidades em Alphaville e no entorno' },
-    { nome: 'Alphaville Tênis Clube', detalhe: 'clube tradicional com estrutura esportiva completa' },
+    { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'no shopping Iguatemi Alphaville, na Al. Rio Negro' },
+    { nome: 'Academia 24h Premium', detalhe: 'na Alameda Grajaú, com grade ampla de aulas' },
+    { nome: 'Academia Gaviões 24h Alphaville', detalhe: 'unidade da rede paulista na Av. Juruá, aberta 24 horas' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Alameda Araguaia, no Alphaville Industrial' },
+    { nome: 'Alphaville Tênis Clube', detalhe: 'clube de tênis na Alameda Paris, sede do torneio internacional feminino W35 Barueri' },
     { nome: 'Estúdios boutique e boxes de CrossFit', detalhe: 'espalhados pelo centro comercial e arredores' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Demanda de alto padrão por personal em condomínio e atendimento domiciliar.',
@@ -102,10 +103,13 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: autocompletar com "valor personal trainer por mês alphaville"; PAA com "quanto custa 1 mês", "3 vezes por semana" e "é permitido cobrar taxa de personal".
+   * Pesquisa de palavras-chave de 08/10 (Google, PAA, ChatGPT e Gemini): "2x
+   * por semana" em três perguntas do PAA, "online" e "emagrecimento" nos
+   * prompts das IAs, "ironberg" no autocompletar.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'condominio', onlineOuPresencial: true },
 
   faqsExtra: [
     {
@@ -116,12 +120,17 @@ export const cidade: Cidade = {
     {
       pergunta: 'Em quais academias de Alphaville dá para treinar com acompanhamento de personal?',
       resposta:
-        'Além das academias dos próprios condomínios, a região tem unidades como a 24 Horas Premium, a Gaviões, a Bodytech do Iguatemi Alphaville, Smart Fit, boxes de CrossFit e diversos estúdios boutique. Cada academia tem a própria política para personal externo, então vale confirmar as condições de acesso antes de fechar — ou optar pelo treino na estrutura do condomínio, que elimina essa etapa.',
+        'Além das academias dos próprios condomínios, a região tem a Ironberg, na Estrada Aldeinha, a NitroGym do Shopping Tamboré, a 24h Premium, a Gaviões, a Bodytech do Iguatemi Alphaville, unidades da Smart Fit, boxes de CrossFit e diversos estúdios boutique. Cada academia tem a própria política para personal externo, então vale confirmar as condições de acesso antes de fechar — ou optar pelo treino na estrutura do condomínio, que elimina essa etapa.',
     },
     {
       pergunta: 'Existe personal em Alphaville para quem tem dores ou limitações?',
       resposta:
         'Sim. O Montinho Personal, destacado pelo portal na região, tem cursos voltados ao treinamento de pessoas com dores e limitações musculoesqueléticas e já vivenciou dores comuns da musculação na própria trajetória — o que ajuda a compreender as dificuldades de quem treina com desconforto. O treino é individualizado e progressivo, com foco em segurança; casos clínicos devem sempre ser acompanhados também por médico ou fisioterapeuta, e treino não substitui tratamento.',
+    },
+    {
+      pergunta: 'Como encontrar personal trainer para emagrecer em Alphaville?',
+      resposta:
+        'Procure quem começa por uma avaliação — peso, medidas, rotina e histórico de lesões — e monta o plano em cima dela: musculação para preservar músculo, movimento nos outros dias e metas que caibam na semana real, sem promessa de prazo. Alimentação é trabalho de nutricionista, e um bom personal trabalha junto, não no lugar. Em Alphaville, o Montinho Personal, destacado pelo portal, tem o emagrecimento como especialidade: perdeu mais de 40 kg na própria trajetória e atende presencialmente na região, além do online.',
     },
     {
       pergunta: 'Qual é a área de atendimento presencial a partir de Alphaville?',
@@ -146,5 +155,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Alphaville com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

@@ -77,6 +77,7 @@ export const cidade: Cidade = {
     { nome: 'Academias de condomínio', detalhe: 'estrutura própria nos residenciais de Alphaville, Tamboré e Aldeia da Serra' },
     { nome: 'Praças de ginástica do Parque Linear', detalhe: 'gratuitas e abertas 24 horas, às margens do Tietê' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Um dos maiores PIBs per capita do estado e público executivo de alta renda.',
@@ -99,7 +100,9 @@ export const cidade: Cidade = {
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'academia' },
+  // 08/10: "2x por semana" no PAA e "online" nos prompts das IAs (pesquisa de
+  // palavras-chave — docs/intencoes-locais.md).
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'academia', onlineOuPresencial: true },
 
   faqsExtra: [
     {
@@ -144,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

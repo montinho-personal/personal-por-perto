@@ -63,6 +63,7 @@ export function cityFaqs(cidade: Cidade): FAQ[] {
   // frequência) ou no fim da lista padrão (taxa e Instagram).
   const busca = faqsDaBusca(cidade);
   if (busca.precoMensal) base.splice(1, 0, busca.precoMensal);
+  if (busca.duasVezes) base.splice(busca.precoMensal ? 2 : 1, 0, busca.duasVezes);
   base.push(...busca.resto);
 
   return [...base, ...(cidade.faqsExtra ?? [])];
@@ -76,7 +77,7 @@ export function cityFaqs(cidade: Cidade): FAQ[] {
  * permitido cobrar taxa" — porque é assim que a pessoa pergunta. Os números
  * saem de `precos`: nenhum valor é digitado aqui.
  */
-function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
+function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; duasVezes?: FAQ; resto: FAQ[] } {
   const cfg = cidade.faqsBusca;
   const resto: FAQ[] = [];
   if (!cfg) return { resto };
@@ -100,6 +101,20 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
         (pacoteMaisBarato ? ', e é por isso que o pacote costuma sair mais barato por aula. ' : '. ') +
         `A aula costuma durar de 50 minutos a 1 hora. No acompanhamento online, sem o profissional ao lado, a faixa é de ${faixaBRL(p.onlineMin, p.onlineMax)} por mês. ` +
         'São valores de mercado para referência: o preço final depende da experiência do profissional, do local e da frequência.',
+    };
+  }
+
+  let duasVezes: FAQ | undefined;
+  if (cfg.duasVezes) {
+    // Duas vezes por semana = 8 ou 9 sessões no mês.
+    const somaMin = 8 * p.avulsaMin;
+    const somaMax = 9 * p.avulsaMax;
+    duasVezes = {
+      pergunta: `Quanto custa um personal trainer 2 vezes por semana ${emN}? Dá resultado?`,
+      resposta:
+        `Duas vezes por semana são 8 ou 9 sessões no mês. Pagando aula avulsa, de ${faixaBRL(p.avulsaMin, p.avulsaMax)} cada, a conta iria de ${faixaBRL(somaMin, somaMax)}; ${emN}, o pacote mensal com 2 ou 3 sessões por semana vai de ${faixaBRL(p.mensalMin, p.mensalMax)}, e com duas fica mais perto da base da faixa. ` +
+        'E dá resultado: a Organização Mundial da Saúde recomenda fortalecimento muscular em pelo menos dois dias por semana, então dois treinos bem feitos já cumprem a parte de força. ' +
+        'Para emagrecer, o que soma é o que acontece nos outros dias — caminhada, bicicleta, alimentação. São valores de mercado para referência.',
     };
   }
 
@@ -175,5 +190,5 @@ function faqsDaBusca(cidade: Cidade): { precoMensal?: FAQ; resto: FAQ[] } {
     });
   }
 
-  return { precoMensal, resto };
+  return { precoMensal, duasVezes, resto };
 }

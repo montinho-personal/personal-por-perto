@@ -960,3 +960,69 @@ Av. Independência, 1810; bairro divergente, ficou só a rua). Recusados:
 metrô Santa Cruz) e "Number One Gym Santa Cruz" (bairro Santa Cruz, Rio de
 Janeiro) — armadilha de nome; Forma Fitness (só TotalPass), Lounge Fitness,
 Health Studio, Kohr e Saúde e Movimento (só Wellhub).
+
+## Alphaville e Barueri — pesquisa de palavras-chave em 08/10/2026
+
+Fonte nova: exports de ferramenta de palavras-chave que o Renato mandou
+(Google com volume, PAA expandido, prompts de ChatGPT e Gemini, Instagram).
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-alphaville-barueri/`
+(os exports "motores de busca" e "modelos de IA" são recortes do "todas as
+categorias" e não foram duplicados).
+
+**Volume mensal (Google, Brasil):**
+
+| termo | volume | CPC US$ |
+|---|---|---|
+| personal trainer em barueri | **110** | 0,56 |
+| personal trainer alphaville | 90 | 0,32 |
+| personal trainer em alphaville | 30 | 0,57 |
+| personal trainer alphaville sp | 10 | 0,74 |
+
+É o primeiro dado de volume da região: Barueri busca mais que Alphaville.
+Os títulos das duas páginas já começam por "Personal Trainer em…".
+
+**Autocompletar de Alphaville** repete os prints de 30/09: "mulher",
+"ironberg" e nome de uma concorrente — sem volume medido.
+
+**PAA** (o que é novo em relação a 30/09):
+- **2x por semana**: "quanto custa um personal 2x por semana" aparece três
+  vezes no de Alphaville e uma no de Barueri; "malhar com personal 2 vezes
+  por semana dá resultado?" e "treinar 2 vezes por semana emagrece?".
+- Quanto custa 1h · vale a pena / é vantajoso · 3 vezes por semana ·
+  quanto tempo dura uma aula · quantas vezes por semana treinar com personal.
+- Barueri: "3 ou 5 vezes na semana" (de novo), coach × personal, bio de
+  Instagram de personal, salário de personal (intenção de profissional, não
+  de cliente).
+
+**ChatGPT e Gemini** (prompts gerados para "personal trainer alphaville/
+barueri"): preço médio por hora, emagrecimento, domicílio, online,
+musculação para iniciantes, funcional, idosos, reabilitação, ao ar livre,
+pequenos grupos, "academias com personal". No ChatGPT, o prompt "personal
+trainer em Alphaville com avaliações positivas" cita **o Montinho entre
+cinco nomes, com sentimento 100% positivo**.
+
+**Instagram:** hashtags `#personaltraineralphavilledompedro` e
+`#personaltraineralphavillegraciosa` são de OUTROS Alphavilles (Dom Pedro em
+Campinas, Graciosa em Goiânia) — não são demanda da região.
+
+**Aplicado em 08/10:**
+
+| página | entrou | por quê |
+|---|---|---|
+| Alphaville e Barueri | FAQ "Quanto custa um personal trainer 2 vezes por semana? Dá resultado?" (nova opção `faqsBusca.duasVezes`, números de `precos`, recomendação da OMS de força em 2+ dias por semana) | a pergunta mais repetida do PAA que nenhuma FAQ respondia nas palavras dela |
+| Alphaville e Barueri | FAQ "online ou presencial" (`onlineOuPresencial`) | "online" nos prompts das duas IAs, nas duas cidades |
+| Alphaville | FAQ "Como encontrar personal trainer para emagrecer em Alphaville?" | emagrecimento nos prompts das duas IAs; é a especialidade do Montinho |
+| Alphaville | Ironberg e NitroGym na FAQ de academias | "personal trainer ironberg alphaville" no autocompletar |
+| Alphaville e Barueri | academias reverificadas (ver `docs/reverificacao-academias.md`) | página editada + busca por academia |
+
+**Não entrou, e por quê:**
+- "Personal trainer mulher" (segunda vez em Alphaville): o portal não tem
+  profissional mulher para indicar na região, e responder sem ter o que
+  oferecer seria texto vazio. Fica registrado como demanda.
+- Política da Ironberg para personal de fora: nenhuma fonte acessível
+  confirma; a FAQ continua dizendo que cada academia tem a sua regra.
+- Coach × personal, bio de Instagram, salário: intenção de quem é ou quer
+  ser profissional, não de quem contrata.
+- Idosos, reabilitação, pequenos grupos: as páginas já falam de dores e
+  limitações com ressalva de médico/fisioterapeuta; idosos e grupos ficam
+  para quando houver fato a dizer sobre a oferta da região.
