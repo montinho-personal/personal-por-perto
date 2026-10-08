@@ -15,6 +15,21 @@ import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
 import { fontesExternas } from '../../data/fontesExternas';
+import { cidadesPresencial, basePresencial } from '../../data/atendimentoPresencial';
+import { getCidade } from '../../data/cidades';
+
+/*
+ * Região onde o portal tem atendimento a domicílio de verdade — lida da
+ * fonte única (atendimentoPresencial.ts), nunca digitada aqui. Entrou em
+ * 08/10/2026: "domicílio" apareceu nos prompts de ChatGPT e Gemini das cinco
+ * pesquisas da região (Alphaville, Barueri, Tamboré, Santana de Parnaíba,
+ * Aldeia da Serra), e nenhuma página de cidade levava a este guia.
+ */
+const regiaoDomicilio = cidadesPresencial.map((s) => {
+  const c = getCidade(s);
+  if (!c) throw new Error(`atendimentoPresencial: slug desconhecido ${s}`);
+  return { nome: c.nome, url: `/personal-trainer/${c.slug}/` };
+});
 
 const acsm = fontesExternas.acsm;
 
@@ -40,7 +55,7 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-trainer-a-domicilio';
-const atualizadoEm = '2026-08-12';
+const atualizadoEm = '2026-10-08';
 const capa = '/capas-conteudo/personal-trainer-a-domicilio.webp';
 const capaAlt =
   'Personal trainer acompanhando aluna em agachamento na sala de casa, com os destaques praticidade, segurança e resultado — Personal por Perto';
@@ -242,6 +257,22 @@ const schema = [
         </li>
       </ul>
 
+      <h2>Personal a domicílio em Alphaville, Barueri e região</h2>
+      <p>
+        O Montinho Personal, destacado pelo portal, tem base em {basePresencial}
+        e atende em casa e na academia do condomínio nestas cidades e regiões
+        — cada página mostra a faixa de preço local, as academias conferidas
+        e como funciona o atendimento nos residenciais:
+      </p>
+      <ul class="regiao-domicilio">
+        {regiaoDomicilio.map((r) => <li><a href={r.url}>{r.nome}</a></li>)}
+      </ul>
+      <p>
+        Fora dessa região, o caminho é procurar um profissional da sua cidade
+        com os critérios acima — ou o acompanhamento online, que não depende
+        de distância.
+      </p>
+
       <h2>Domicílio, academia ou online: como decidir</h2>
       <p>
         Os três formatos resolvem problemas diferentes. A academia oferece o
@@ -315,6 +346,10 @@ const schema = [
     font-size: var(--step-1);
     color: var(--ink-soft);
     line-height: 1.55;
+  }
+  .regiao-domicilio {
+    columns: 2;
+    column-gap: var(--sp-5);
   }
   .article-page .prose {
     margin-top: var(--sp-5);
