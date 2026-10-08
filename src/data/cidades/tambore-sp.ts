@@ -68,14 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva de Tamboré gira em torno dos condomínios — muitos com academia, piscina e quadras — e da estrutura ao ar livre do Parque Ecológico. Com o polo empresarial ao lado, cresce também a busca por bem-estar corporativo, do treino na hora do almoço às parcerias de academia para funcionários.',
   academias:
-    'Além das academias dos próprios condomínios, a região conta com unidades como a Academia Tamboré e estúdios e centros de treino no Centro Empresarial Tamboré. A maior parte da demanda, porém, é atendida por personais que treinam o aluno dentro do condomínio.',
+    'Além das academias dos próprios condomínios, a região conta com a NitroGym do Shopping Tamboré, a Bluefit da Av. Tucunaré e estúdios e centros de treino no Centro Empresarial Tamboré. A maior parte da demanda, porém, é atendida por personais que treinam o aluno dentro do condomínio.',
   academiasProximas: [
     { nome: 'NitroGym Tamboré', detalhe: 'no Shopping Tamboré, na Av. Piracema: cerca de 3 mil m² com musculação, avaliação física e sauna' },
-    { nome: 'Academia Tamboré', detalhe: 'referência da própria região' },
     { nome: 'Bluefit Tamboré', detalhe: 'unidade da rede na Av. Tucunaré' },
     { nome: 'Estúdios do Centro Empresarial Tamboré', detalhe: 'opções de treino junto ao polo corporativo' },
     { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium no shopping vizinho, a poucos minutos' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Endereços de altíssimo padrão com forte procura por personal em condomínio.',
@@ -98,10 +98,13 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: autocompletar "tamboré alphaville" e "tamboré barueri" (a pessoa não sabe em que cidade fica); PAA com preço por mês, taxa de personal e "um personal pode me ajudar a emagrecer?".
+   * Pesquisa de palavras-chave de 08/10 (PAA, ChatGPT e Gemini): "2x por
+   * semana" no PAA; "online", "emagrecimento" e "treino em casa" nos
+   * prompts das duas IAs.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'condominio', onlineOuPresencial: true },
 
   faqsExtra: [
     {
@@ -112,7 +115,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Um personal trainer pode ajudar a emagrecer?',
       resposta:
-        'Pode, pelo lado que é dele: o treino. O personal monta a musculação que preserva a massa muscular durante o déficit — é ela que evita que o emagrecimento leve músculo junto —, ajusta a progressão e segura a constância nas semanas em que a vontade some. A alimentação, que decide o déficit, é trabalho de nutricionista. E desconfie de quem promete um número de quilos por mês: o ritmo depende do corpo, da rotina e da dieta, não só do treino.',
+        'Pode, pelo lado que é dele: o treino. O personal monta a musculação que preserva a massa muscular durante o déficit — é ela que evita que o emagrecimento leve músculo junto —, ajusta a progressão e segura a constância nas semanas em que a vontade some. A alimentação, que decide o déficit, é trabalho de nutricionista. E desconfie de quem promete um número de quilos por mês: o ritmo depende do corpo, da rotina e da dieta, não só do treino. O Montinho Personal, destacado pelo portal e com atendimento presencial no Tamboré, tem o emagrecimento como especialidade — perdeu mais de 40 kg na própria trajetória.',
     },
     {
       pergunta: 'O atendimento de personal no Tamboré acontece dentro dos residenciais?',
@@ -147,5 +150,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Tamboré com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

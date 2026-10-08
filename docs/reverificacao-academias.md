@@ -88,3 +88,15 @@ As duas remoções em BH são o tipo de erro que motivou a reverificação.
 Saldo da leva: 16 entradas → 0 removidas, 6 detalhes corrigidos, 3
 genéricas mantidas como descrição. Padrão que se repete: o nome existe, o
 **detalhe** é que foi escrito sem fonte ("24 horas", metragem, bairro).
+
+### 08/10/2026 — leva 3 (Tamboré, página editada pela pesquisa de palavras-chave)
+
+| entrada | resultado | fonte |
+|---|---|---|
+| NitroGym Tamboré | confirmada | ver leva 2 (Av. Piracema, 669) |
+| Academia Tamboré | **removida** — nenhuma fonte; a busca só traz imóveis do bairro | — |
+| Bluefit Tamboré | confirmada | bluefit.com.br/unidade/tambore (Av. Tucunaré, 1498) |
+| Estúdios do Centro Empresarial Tamboré | genérica | — |
+| Bodytech Iguatemi Alphaville | confirmada | ver leva 2 (Al. Rio Negro, 111) |
+
+Saldo: 5 entradas → 1 removida, 1 genérica, 3 mantidas.

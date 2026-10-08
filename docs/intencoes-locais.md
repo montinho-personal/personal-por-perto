@@ -1026,3 +1026,29 @@ Campinas, Graciosa em Goiânia) — não são demanda da região.
 - Idosos, reabilitação, pequenos grupos: as páginas já falam de dores e
   limitações com ressalva de médico/fisioterapeuta; idosos e grupos ficam
   para quando houver fato a dizer sobre a oferta da região.
+
+## Tamboré — pesquisa de palavras-chave em 08/10/2026
+
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-tambore/` (o export
+"modelos de IA" é recorte do "todas as categorias"). **Sem aba do Google**:
+a ferramenta não trouxe autocompletar nem volume para "personal trainer
+tamboré" — sinal de volume baixo, coerente com os prints de 30/09.
+
+- **PAA:** o mesmo bloco de Alphaville (1h, 2x por semana, vale a pena,
+  3 vezes por semana, quanto dura a aula) e perguntas de Smart Fit (preço
+  da mensalidade, diária) — intenção de academia, não de personal.
+- **ChatGPT e Gemini:** emagrecimento/perda de peso, treino em casa e
+  domicílio, online, iniciantes, funcional, hipertrofia, reabilitação,
+  avaliação física, "academias com personal incluído". **O Montinho NÃO é
+  citado no Tamboré**: o ChatGPT nomeia dois concorrentes locais e o Gemini
+  nomeia redes de academia, GetNinjas e o conselho da profissão. Em
+  Alphaville ele é citado; no Tamboré, não — e é a página com a capa dele.
+
+**Aplicado em 08/10:** FAQ de 2x por semana (`duasVezes`), online ×
+presencial (`onlineOuPresencial`), e a FAQ de emagrecimento existente ganha
+a especialidade do Montinho. Academias reverificadas: sai "Academia Tamboré"
+(nenhuma fonte; a busca só traz imóveis).
+
+**Não entrou:** hipertrofia, grupo, horários flexíveis — sem fato próprio a
+dizer além do que a página já cobre; Smart Fit (mensalidade, diária) é
+outra intenção.
