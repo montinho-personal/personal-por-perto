@@ -22,7 +22,7 @@ export const cidade: Cidade = {
     'Santana de Parnaíba é uma cidade de contrastes marcantes. De um lado, abriga parte dos complexos planejados de Alphaville e Tamboré, com condomínios de alto padrão, polo empresarial e uma das maiores rendas médias da Grande São Paulo; de outro, preserva o maior conjunto arquitetônico colonial do estado — mais de 200 casarões dos séculos XVII a XIX tombados no Centro Histórico. Fundada em 1580 e elevada a vila em 1625, é conhecida como o "berço dos bandeirantes". A economia é puxada por serviços e comércio, com indústria concentrada nos bairros Fazendinha e Tamboré.',
 
   mercado:
-    'O mercado de personal trainers em Santana de Parnaíba reflete esse contraste. Nos condomínios fechados de Alphaville e Tamboré, a procura é por atendimento exclusivo dentro de casa ou na estrutura do próprio condomínio, com forte presença de estúdios boutique e profissionais especializados. Nos bairros residenciais como Fazendinha, Cidade São Pedro e Colinas da Anhanguera, o foco é custo-benefício, proximidade e treino em academias de bairro. Some-se a isso uma cena fitness madura, com unidades de redes como Bodytech (no Iguatemi Alphaville), Smart Fit, Allp Fit e CrossFit, e o resultado é uma das demandas mais sofisticadas da região oeste.',
+    'O mercado de personal trainers em Santana de Parnaíba reflete esse contraste. Nos condomínios fechados de Alphaville e Tamboré, a procura é por atendimento exclusivo dentro de casa ou na estrutura do próprio condomínio, com forte presença de estúdios boutique e profissionais especializados. Nos bairros residenciais como Fazendinha, Cidade São Pedro e Colinas da Anhanguera, o foco é custo-benefício, proximidade e treino em academias de bairro. Some-se a isso uma cena fitness madura, com unidades de redes como Bodytech (no Iguatemi Alphaville) e Smart Fit, boxes de CrossFit, e o resultado é uma das demandas mais sofisticadas da região oeste.',
 
   bairrosNobres: ['Alphaville', 'Tamboré', 'Colinas da Anhanguera', 'Suru'],
   bairrosPopulares: ['Fazendinha', 'Cidade São Pedro', 'Jardim Isaura', 'Jardim Itapuã'],
@@ -70,14 +70,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Com IDHM muito alto (0,814) e uma rede de cerca de dez parques municipais, Santana de Parnaíba tem uma cultura esportiva acessível e em crescimento. As corridas de rua gratuitas atraem público de toda a região, e o Centro Histórico vira cenário para caminhadas e turismo ativo nos fins de semana.',
   academias:
-    'A oferta de academias é robusta, concentrada principalmente na região de Alphaville: Bodytech no Iguatemi Alphaville, Smart Fit, Allp Fit e unidades de CrossFit, além de muitos estúdios integrados a plataformas como o Wellhub. Nos bairros residenciais, predominam academias de bairro com bom custo-benefício.',
+    'A oferta de academias é robusta, concentrada principalmente na região de Alphaville: Bodytech no Iguatemi Alphaville, Smart Fit e unidades de CrossFit, além de muitos estúdios integrados a plataformas como o Wellhub. Nos bairros residenciais, predominam academias de bairro com bom custo-benefício.',
   academiasProximas: [
     { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'academia premium no shopping da região' },
-    { nome: 'Smart Fit', detalhe: 'rede de baixo custo com unidades na região de Alphaville' },
-    { nome: 'Allp Fit', detalhe: 'rede em expansão com presença na cidade' },
-    { nome: 'The One Aldeia da Serra', detalhe: 'academia na parte parnaibana da Aldeia da Serra' },
+    { nome: 'Smart Fit', detalhe: 'sem unidade na cidade; as mais próximas ficam na Alameda Araguaia, no Alphaville de Barueri' },
     { nome: 'Boxes de CrossFit e estúdios', detalhe: 'muitos integrados a plataformas como o Wellhub' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'IDHM muito alto (0,814) e uma das maiores rendas médias da Grande São Paulo.',
@@ -100,12 +99,25 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: quatro das seis sugestões do autocompletar pedem Instagram ("instagram", "instagram oficial"); PAA com "qual o valor de 1 hora de personal trainer?" e "vale a pena pagar um personal?".
+   * Pesquisa de palavras-chave de 08/10 (PAA, ChatGPT e Gemini): "quantas
+   * vezes por semana treinar com personal" e "3 ou 5 vezes" no PAA; "online"
+   * e "o que perguntar a um personal" nos prompts do Gemini.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, instagram: true },
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
 
   faqsExtra: [
+    {
+      pergunta: 'Quantas vezes por semana treinar com personal?',
+      resposta:
+        'Duas ou três sessões com o personal costumam bastar, e o restante da semana pode ser feito sozinho com o plano que ele deixa. As sessões acompanhadas servem para o que precisa de olho de fora — aprender a técnica, ajustar carga, corrigir execução —; os outros dias rendem bem sem ele, desde que o treino esteja escrito. Quem treina 3 vezes já tem resultado; 4 ou 5 vezes fazem sentido para quem quer mais volume e consegue recuperar, com sono e alimentação dando conta. Começar com menos dias e cumprir vale mais do que planejar cinco e parar no segundo mês.',
+    },
+    {
+      pergunta: 'O que perguntar a um personal trainer antes de contratar?',
+      resposta:
+        'Cinco perguntas separam o profissional cuidadoso do resto: se ele faz avaliação antes de montar o treino, e o que mede; como ajusta o plano quando você não evolui ou sente dor; se já acompanhou alguém com o seu objetivo e o seu ponto de partida; onde o treino acontece e se o seu condomínio ou academia cobra taxa dele; e como funcionam falta, reposição e cancelamento. Em Santana de Parnaíba, onde boa parte do atendimento é em condomínio, a pergunta da taxa evita surpresa na primeira semana.',
+    },
     {
       pergunta: 'Onde o personal atende em Santana de Parnaíba?',
       resposta:
@@ -139,5 +151,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Santana de Parnaíba com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

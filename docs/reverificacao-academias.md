@@ -100,3 +100,30 @@ genéricas mantidas como descrição. Padrão que se repete: o nome existe, o
 | Bodytech Iguatemi Alphaville | confirmada | ver leva 2 (Al. Rio Negro, 111) |
 
 Saldo: 5 entradas → 1 removida, 1 genérica, 3 mantidas.
+
+### 08/10/2026 — leva 4 (Santana de Parnaíba e Aldeia da Serra)
+
+**Santana de Parnaíba/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech Iguatemi Alphaville | confirmada | ver leva 2 |
+| Smart Fit | confirmada como rede, mas **sem unidade na cidade**: a busca de unidades do site oficial para Santana de Parnaíba devolve só Barueri, Cajamar, Itapevi e Jandira. Detalhe reescrito | smartfit.com.br/academias/sp/santana-de-parnaiba |
+| Allp Fit | **removida** — nenhuma fonte de unidade na cidade; também sai do texto corrido (`mercado` e `academias`) | — |
+| The One Aldeia da Serra | **removida** — nenhuma fonte | — |
+| Boxes de CrossFit e estúdios | genérica | — |
+
+**Aldeia da Serra/SP** — página mudou (a The One estava aqui também).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Scelta Academia | confirmada | Instagram e Facebook da unidade (Av. dos Pássaros, 451) + Wellhub/TotalPass da rede |
+| The One Aldeia da Serra | **removida** — nenhuma fonte para "Av. da Barra" nem para o nome | — |
+| Área Fitness | confirmada (grafia corrigida, com acento) | Instagram da academia (Av. dos Patos, 35) |
+| Studio Fight Aldeia | **removida** — nenhuma fonte; existe um "Pro Fight Studio" na Aldeia, mas é outro nome e a Parte B não troca entrada por candidata nova | — |
+
+Saldo: 9 entradas → 4 removidas, 1 detalhe reescrito, 1 genérica.
+A Aldeia da Serra fica com 2 academias; completar é tarefa à parte.
+
+**Acumulado do dia (levas 1–4, 7 cidades):** 7 entradas removidas por
+falta de qualquer fonte, 9 detalhes corrigidos.

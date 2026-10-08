@@ -66,10 +66,9 @@ export const cidade: Cidade = {
     'A região conta com academias e estúdios em seus centros comerciais e nos próprios condomínios, e tem na proximidade com Alphaville e Tamboré acesso a redes maiores, estúdios boutique e clubes. Ainda assim, grande parte da demanda é atendida dentro dos condomínios, por personais que treinam o aluno em casa ou na academia do residencial.',
   academiasProximas: [
     { nome: 'Scelta Academia', detalhe: 'na Av. dos Pássaros, uma das mais completas da Aldeia' },
-    { nome: 'The One Aldeia da Serra', detalhe: 'na Av. da Barra, no trecho parnaibano da região' },
-    { nome: 'Area Fitness', detalhe: 'academia local na Av. dos Patos' },
-    { nome: 'Studio Fight Aldeia', detalhe: 'artes marciais para crianças e adultos' },
+    { nome: 'Área Fitness', detalhe: 'academia local na Av. dos Patos' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Demanda de alto padrão por personal em condomínio e atendimento domiciliar.',
@@ -142,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

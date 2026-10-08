@@ -1052,3 +1052,28 @@ a especialidade do Montinho. Academias reverificadas: sai "Academia Tamboré"
 **Não entrou:** hipertrofia, grupo, horários flexíveis — sem fato próprio a
 dizer além do que a página já cobre; Smart Fit (mensalidade, diária) é
 outra intenção.
+
+## Santana de Parnaíba — pesquisa de palavras-chave em 08/10/2026
+
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-santana-de-parnaiba/`.
+Sem aba do Google (sem volume nem autocompletar medidos), como no Tamboré.
+
+- **PAA:** "3 ou 5 vezes na semana" (com seis variações), "quantas vezes
+  por semana treinar com personal", "quanto custa 1 mês", "3 vezes por
+  semana", "vale a pena", "3 motivos para treinar com personal". Veio
+  também um bloco de Teresina — o PAA mistura cidades.
+- **ChatGPT e Gemini:** recomendações e avaliações, preço médio,
+  emagrecimento, funcional, iniciantes, domicílio, online, hipertrofia,
+  reabilitação, "o que perguntar a um personal", aula experimental.
+  Nenhuma marca citada.
+
+**Aplicado em 08/10:** FAQ "Quantas vezes por semana treinar com
+personal?" (escrita para esta página — a de "3 ou 5 vezes" de Barueri não
+foi copiada); FAQ "O que perguntar a um personal trainer antes de
+contratar?" (prompt do Gemini; cinco perguntas, incluindo a taxa do
+condomínio); online × presencial. Academias reverificadas — saem Allp Fit
+e The One, também do texto corrido.
+
+**Não entrou:** aula experimental (depende da política de cada
+profissional), hipertrofia e reabilitação (a página já fala de dores com
+ressalva de médico/fisioterapeuta).
