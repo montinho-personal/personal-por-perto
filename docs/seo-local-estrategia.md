@@ -210,3 +210,67 @@ Nas capitais de CTR mais baixo (BH, São Paulo, Porto Alegre), a busca
 "personal trainer + cidade" está na página 3 e o print não muda isso
 sozinho. O ganho ali vem das perguntas de preço e das variações que o
 autocompletar mostrar — é o que vale olhar com atenção nesses prints.
+
+## Artigos novos candidatos — análise de 08/10/2026
+
+Pergunta do Renato: das intenções já recebidas (prints de 30/09 e de
+cidades, pesquisas de palavras-chave de 08/10 de Alphaville, Barueri,
+Tamboré, Santana de Parnaíba e Aldeia da Serra), o que vira artigo novo
+sem canibalizar?
+
+**Critério de canibalização usado:** a intenção não pode já ter dono no
+portal. As 27 páginas de `/guias/` cobrem quase todo o genérico (quanto
+custa, vale a pena, quantas vezes por semana, academia, condomínio,
+domicílio, emagrecimento, iniciantes, terceira idade, mulheres,
+hipertrofia, primeira aula, avaliação física). E toda busca "personal
+trainer em <lugar>" tem dono: a página da cidade. Artigo local novo com a
+mesma intenção competiria com ela.
+
+**O sinal mais forte de lacuna:** consulta em que o Google mostra uma
+página de cidade *qualquer*, trocando de cidade a cada impressão — é ele
+procurando uma página que responda e não achando (Search Console, 90 dias,
+via Supermetrics):
+
+| consulta | onde o Google mostrou | posição |
+|---|---|---|
+| coach de academia | 10 páginas de cidade diferentes (Florianópolis, Blumenau, Salvador, Sobral…) | 7–36 |
+| coach personal · personal coach · instrutores de academia | Florianópolis, João Pessoa, Porto Alegre, Sobral | 8–12 |
+| valor personal trainer smart fit · quanto custa personal na smart fit · personal smart fit · aula avulsa na smart fit | Juiz de Fora, BH, Brasília, Salvador | 8–90 |
+| taxa que personal paga para academia | Maceió (pela FAQ de taxa) | 6 |
+| ironberg curitiba · ironberg plano piloto · ironberg campo grande | hub e páginas de estado | 24–41 |
+
+**Candidatos, em ordem:**
+
+1. **Coach, instrutor e personal trainer: qual a diferença?** — PAA de
+   Barueri ("diferença entre coach e personal") e de Aldeia da Serra
+   ("instrutor de academia × personal", com quatro variações) + a lacuna
+   acima. O guia `personal-trainer-em-academia` tem uma seção ("Personal não
+   é professor de sala") que passa a linkar o artigo. Cuidado: fala de
+   função, nunca de registro profissional.
+2. **Taxa de personal trainer: academia e condomínio podem cobrar?** — PAA
+   em cinco páginas da região; a FAQ das cidades já cita a lei do DF, o
+   projeto no Congresso e decisões judiciais dos dois lados. O artigo
+   aprofunda e as FAQs das cidades linkam para ele. Liga com Alphaville
+   (condomínios). Exige fonte primária para cada lei citada.
+3. **Personal trainer na Smart Fit: pode levar o seu? Quanto custa?** —
+   intenção nacional (Osasco trouxe "valor personal trainer smart fit"
+   nas relacionadas; o PAA do Tamboré, perguntas de Smart Fit). Só sai se
+   a regra da rede estiver numa fonte oficial (site ou central de ajuda
+   da Smart Fit); sem isso, não se escreve.
+4. **Local — Personal trainer na Ironberg Alphaville** — "personal trainer
+   ironberg alphaville" no autocompletar de 30/09 e de 08/10; Ironberg
+   Alphaville é a unidade-sede da rede, a 2 minutos da base do Montinho.
+   Mesmo bloqueio do 3: só com a regra para personal externo confirmada
+   na fonte oficial.
+
+**O que NÃO vira artigo, e por quê:**
+- "Personal trainer em condomínio em Alphaville", "personal a domicílio
+  em Barueri", preço por mês em qualquer cidade da região: já têm dono
+  (página da cidade + guia); um artigo novo dividiria o sinal.
+- Páginas por residencial (Alphaville 1–12, Tamboré 1–11): as sugestões
+  vieram com relógio (histórico do próprio Renato), sem demanda medida.
+- "Personal trainer mulher": não há profissional para indicar.
+
+**Regras que valem antes de escrever (CLAUDE.md):** prints do Google de
+cada intenção antes de título, H1, seções e FAQs; artigo novo entra em
+leva pequena (um por vez, o 1 primeiro), com um `<FerramentaInline>`.
