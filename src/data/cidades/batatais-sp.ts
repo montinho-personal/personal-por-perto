@@ -65,6 +65,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro como Mourão, Arena Fitness, Olympus e Acad Corpus, com musculação, treino funcional e, em alguns casos, modalidades como pilates e lutas, complementadas por personal trainers em atendimento particular.',
 
+  academiasProximas: [
+    { nome: 'Academia Biofisic Batatais', detalhe: 'na Av. Quatorze de Março' },
+    { nome: 'Academia Gym Aleixo', detalhe: 'na Rua Tomaz Alberto Watley, na Vila Cruzeiro' },
+  ],
+  academiasVerificadasEm: '2026-10-08',
+
   destaquesFitness: [
     'Estância Turística com altitude de 862 metros, o que ameniza o calor em relação às cidades mais baixas da região canavieira.',
     'Lago Artificial Ophélia Borges Silva Alves e Bosque Municipal Dr. Alberto Gaspar Gomes, com pistas de caminhada, corrida e academia ao ar livre.',
@@ -91,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Batatais', url: 'https://www.batatais.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3505906' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-10-08',
 };

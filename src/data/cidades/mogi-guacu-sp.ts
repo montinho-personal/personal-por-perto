@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, estúdios e algumas redes maiores, com presença de planos corporativos voltados aos trabalhadores da indústria, complementada pelo treino ao ar livre nas áreas verdes do Centro.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Mogi Guaçu', detalhe: 'na Av. Mogi Mirim, no Centro' },
+    { nome: 'Skyfit Academia Mogi Guaçu', detalhe: 'na Av. Júlio Xavier da Silva, no Parque Cidade Nova' },
+    { nome: 'Skyfit Academia Mogi Guaçu Mall', detalhe: 'no Mogi Guaçu Mall, Av. Padre Jaime, na Vila Ricci' },
+    { nome: 'Academia Xprime', detalhe: 'na Av. Júlio Xavier da Silva, no Parque Cidade Nova' },
+  ],
+  academiasVerificadasEm: '2026-10-08',
+
   destaquesFitness: [
     'Parque dos Ingás, às margens do Rio Mogi Guaçu, com pista de caminhada iluminada e trilhas.',
     'Trilhas na Estação Experimental para corrida em meio à mata.',
@@ -96,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mogi Guaçu', url: 'https://www.mogiguacu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-08',
 };
