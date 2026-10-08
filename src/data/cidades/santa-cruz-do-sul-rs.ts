@@ -53,6 +53,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios no Centro e nos bairros mais estruturados, além de profissionais que atendem em domicílio. O Parque da Oktoberfest e o Parque da Gruta funcionam como grandes espaços públicos para treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: '26fit Santa Cruz do Sul', detalhe: 'na Rua São José, no bairro Goiás' },
+    { nome: 'TL Fitness', detalhe: 'na Av. Independência' },
+  ],
+  academiasVerificadasEm: '2026-10-08',
+
   destaquesFitness: [
     'Parque da Oktoberfest: 14 hectares na região central para caminhada e corrida.',
     'Parque da Gruta: trilhas e mata nativa para atividades ao ar livre.',
@@ -72,12 +78,24 @@ export const cidade: Cidade = {
   conclusao:
     'Capital nacional do tabaco e principal cidade do Vale do Rio Pardo, Santa Cruz do Sul une a herança da colonização alemã a um mercado fitness consolidado, entre academias no centro e atendimento domiciliar. Com o Parque da Oktoberfest e o Parque da Gruta como cenários ao ar livre, um personal trainer ajuda a manter a constância o ano todo, ajustando o treino ao frio do inverno gaúcho.',
 
-  vizinhas: ['porto-alegre-rs', 'santa-maria-rs'],
+  /*
+   * Prints de 08/10: só autocompletar — "personal trainer em santa cruz do
+   * sul", nome de um profissional local, "personal em santa cruz do sul" e
+   * "santa cruz do rio pardo" (outra cidade, SP, que tem página própria).
+   * Sem PAA, entra o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5).
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
+  // Eram Porto Alegre e Santa Maria. Em 08/10/2026 entraram Venâncio Aires e
+  // Vera Cruz, que fazem divisa e são o entorno real do Vale do Rio Pardo.
+  vizinhas: ['venancio-aires-rs', 'vera-cruz-rs', 'porto-alegre-rs', 'santa-maria-rs'],
 
   fontes: [
     { nome: 'IBGE Cidades — Santa Cruz do Sul', url: 'https://cidades.ibge.gov.br/brasil/rs/santa-cruz-do-sul/panorama' },
     { nome: 'Prefeitura de Santa Cruz do Sul', url: 'https://www.santacruz.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-08',
 };

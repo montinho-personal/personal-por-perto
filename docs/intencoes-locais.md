@@ -929,3 +929,34 @@ números diferentes, 4667 e 4533, e o site não apareceu), 40+ Academia,
 Target e Academia Tozi (só TotalPass), Smart Fit (só um blog cita a unidade
 no Shopping Valinhos), Loud Fit e Panobianco "Carrefour Valinhos" (o
 endereço nas fontes é de Campinas).
+
+## Bebedouro — prints e aplicação em 08/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em bebedouro | "personal trainer em bebedouro", "personal bebedouro", "personal trainer em barretos" | — (só autocompletar) | anúncio do Montinho no topo; perfil de personal local, Superprof, LinkedIn |
+
+**Aplicado:** o padrão das cidades printadas. Barretos, que aparece no
+autocompletar, já estava entre as vizinhas. **Academias**, no mesmo commit:
+Skyfit Academia Bebedouro (Wellhub e TotalPass, R. Campos Sales, 670 – Centro)
+e Elite Fitness (Wellhub e TotalPass, R. Alfredo Ellis, 68 – Centro).
+Recusados: Panobianco Bebedouro (só Wellhub; a busca no site oficial não
+trouxe a unidade), Academia W2, Academia Ativa, Alpha Fitness e Studio Lavita
+(fonte única cada).
+
+## Santa Cruz do Sul — prints e aplicação em 08/10/2026
+
+| termo | autocompletar / relacionadas | PAA | resultados |
+|---|---|---|---|
+| personal trainer em santa cruz do sul | nome de profissional local, "personal em santa cruz do sul", "personal trainer em santa cruz do rio pardo" (outra cidade, SP) | — (só autocompletar) | — |
+
+**Aplicado:** o padrão das cidades printadas. **Vizinhas:** Venâncio Aires e
+Vera Cruz, que fazem divisa, entram antes de Porto Alegre e Santa Maria.
+**Academias**, no mesmo commit: 26fit Santa Cruz do Sul (TotalPass e página
+oficial da rede, R. São José, 1232 – Goiás; o Wellhub dá bairro Bom Jesus, e
+valeu o bairro das duas fontes concordantes) e TL Fitness (Wellhub e TotalPass,
+Av. Independência, 1810; bairro divergente, ficou só a rua). Recusados:
+"Smart Fit Santa Cruz" (é a unidade da Vila Mariana, em São Paulo, perto do
+metrô Santa Cruz) e "Number One Gym Santa Cruz" (bairro Santa Cruz, Rio de
+Janeiro) — armadilha de nome; Forma Fitness (só TotalPass), Lounge Fitness,
+Health Studio, Kohr e Saúde e Movimento (só Wellhub).

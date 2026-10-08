@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de bairro, estúdios e personal trainers, complementada por espaços públicos como o Parque do Centenário, o Parque Sinésio Junqueira Franco e a pista de atletismo municipal para treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia Bebedouro', detalhe: 'na Rua Campos Sales, no Centro' },
+    { nome: 'Elite Fitness', detalhe: 'na Rua Alfredo Ellis, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-08',
+
   destaquesFitness: [
     'Parque do Centenário e a Região do Lago como principal espaço público para caminhada e corrida.',
     'Parque Sinésio Junqueira Franco e a pista de atletismo municipal ampliando as opções ao ar livre.',
@@ -89,6 +95,15 @@ export const cidade: Cidade = {
   conclusao:
     'Polo da citricultura no norte paulista, Bebedouro combina tradição agro, áreas verdes e a tranquilidade de uma cidade média da região de Ribeirão Preto. Um personal trainer ajuda a aproveitar espaços como o Parque do Centenário e a Região do Lago com método, ajustando os horários ao calor do verão.',
 
+  /*
+   * Prints de 08/10: só autocompletar — "personal trainer em bebedouro",
+   * "personal bebedouro" e "personal trainer em barretos" (vizinha que já
+   * estava na lista). Sem PAA, entra o padrão das cidades printadas
+   * (docs/seo-local-estrategia.md, seção 5).
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, instagram: true, onlineOuPresencial: true },
+
   vizinhas: ['ribeirao-preto-sp', 'barretos-sp', 'jaboticabal-sp'],
 
   fontes: [
@@ -96,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bebedouro', url: 'https://www.bebedouro.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3506102' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-08',
 };
