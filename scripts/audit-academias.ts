@@ -255,6 +255,23 @@ if (temGsc) {
     '  impressão zero aqui significa "não passou do piso", não "ninguém buscou".',
   );
 }
+/*
+ * Reverificação (desde 08/10/2026): as academias que vieram da importação
+ * inicial do repositório nunca passaram pelo critério do CLAUDE.md. Cidade
+ * com academia citada e sem `academiasVerificadasEm` está nesta fila; ao
+ * conferir, a data entra e ela sai. Método em docs/reverificacao-academias.md.
+ */
+const naoReverificadas = cidades
+  .filter((c) => (c.academiasProximas?.length ?? 0) > 0 && !c.academiasVerificadasEm)
+  .sort((a, b) => impr(b.slug) - impr(a.slug));
+console.log(`\nREVERIFICAÇÃO — cidades com academias nunca conferidas pelo critério atual`);
+console.log(linha(naoReverificadas.length, 'cidades na fila'));
+for (const c of naoReverificadas.slice(0, 10)) {
+  console.log(
+    `  ${String(impr(c.slug)).padStart(6)} impr  ${String(c.academiasProximas?.length ?? 0).padStart(2)} acad.  ${c.nome}/${c.uf}  (${c.slug})`,
+  );
+}
+
 if (detalhado) {
   console.log(`\nTODAS AS ${semAcademia.length} CIDADES SEM ACADEMIA CITADA`);
   for (const c of [...semAcademia].sort((a, b) => impr(b.slug) - impr(a.slug) || b.pop - a.pop)) {

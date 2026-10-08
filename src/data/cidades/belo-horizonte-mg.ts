@@ -71,10 +71,9 @@ export const cidade: Cidade = {
     'A alta densidade de unidades da Smart Fit e a presença da Bodytech no segmento premium garantem oferta para todos os perfis, complementadas por boxes de CrossFit e estúdios de funcional, yoga e pilates espalhados pela cidade.',
   academiasProximas: [
     { nome: 'Bodytech', detalhe: 'unidades premium na Savassi, no Belvedere e no Ponteio' },
-    { nome: 'Smart Fit', detalhe: 'dezenas de unidades — Savassi (R. Fernandes Tourinho), Centro, Gutierrez e shoppings' },
-    { nome: 'Cia Athletica', detalhe: 'unidade no Belvedere, com atendimento a toda a família' },
-    { nome: 'Academia ao ar livre do Parque Municipal', detalhe: 'gratuita, no coração do Centro' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Savassi (R. Fernandes Tourinho, 195), no Centro (Av. Amazonas), no Gutierrez e no Shopping Cidade' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Lagoa da Pampulha: 18 km contínuos para corrida e ciclismo, o hub a céu aberto da cidade.',
@@ -142,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Belo Horizonte: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };

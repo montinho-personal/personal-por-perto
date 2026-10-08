@@ -71,10 +71,11 @@ export const cidade: Cidade = {
     'A oferta reúne redes como a Smart Fit, academias de bairro e a rede pública de academias ao ar livre (Academia Salvador), além de estúdios de funcional e crossfit nos bairros nobres como Barra e Pituba.',
   academiasProximas: [
     { nome: 'Rede Alpha Fitness', detalhe: 'rede premium baiana — Pituba, Shopping Barra, Paralela e outras unidades' },
-    { nome: 'Bodytech', detalhe: 'na Av. Tancredo Neves, Caminho das Árvores' },
+    { nome: 'Bodytech', detalhe: 'no Shopping da Bahia, Av. Tancredo Neves — Caminho das Árvores' },
     { nome: 'Smart Fit', detalhe: 'unidades na Pituba e em vários bairros da cidade' },
     { nome: 'Academia Salvador', detalhe: 'rede pública gratuita, com polo no Dique do Tororó' },
   ],
+  academiasVerificadasEm: '2026-10-08',
 
   destaquesFitness: [
     'Academias públicas ao ar livre (programa Academia Salvador) em expansão.',
@@ -134,7 +135,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salvador', url: 'https://www.salvador.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-10-08',
   capaArte: {
     src: '/capas-cidade/salvador-ba.webp',
     w: 1200,
