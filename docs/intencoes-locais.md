@@ -1136,3 +1136,22 @@ falam de parques). O Dionísio Álvarez Mateos tem aparelhos de ginástica
 **Não entrou:** "personal mulher" (terceira cidade em que aparece; o
 portal não tem profissional a indicar), idosos e reabilitação (a página já
 fala de dores com ressalva), salário e formação (intenção de profissional).
+
+## Granja Viana — pesquisa de palavras-chave em 08/10/2026
+
+Originais em `docs/pesquisas/2026-10-08-palavras-chave-granja-viana/`.
+Volume: "personal trainer granja viana" **20**/mês. Autocompletar só com
+variações de lugar ("cotia granja viana", "na granja viana") — o "valor" e
+"valor mensalidade" dos prints de 30/09 não voltaram aqui.
+
+- **PAA:** 1 mês, 3 vezes por semana, vale a pena, **2x por semana**,
+  "3 ou 5 vezes", e um bloco de Smart Fit (**"como funciona o personal
+  trainer na Smart Fit?"**, mensalidade, ir 2x no dia).
+- **ChatGPT e Gemini:** preço, treino em casa, **online e presencial**,
+  pacotes, emagrecimento, funcional, idosos, reabilitação, força, corrida.
+
+**Aplicado em 08/10:** FAQ "Como funciona o personal trainer na Smart Fit da
+Granja Viana?" (regra oficial da rede + as três unidades da região, já
+conferidas em 29/08), 2x por semana (`duasVezes`) e online × presencial.
+Academias não foram reverificadas: já tinham `academiasVerificadasEm`
+(29/08), pelo critério atual.

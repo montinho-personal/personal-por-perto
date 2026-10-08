@@ -118,12 +118,20 @@ export const cidade: Cidade = {
 
   /*
    * Prints de 30/09: primeira região em que o preço aparece no autocompletar ("valor", "valor mensalidade"); PAA com preço por mês e taxa de personal.
+   * Pesquisa de palavras-chave de 08/10 (20 buscas/mês): PAA com "2x por
+   * semana" e "como funciona o personal trainer na Smart Fit?"; "online e
+   * presencial" e "em casa" nos prompts das duas IAs.
    * Registro completo em docs/intencoes-locais.md.
    */
   metaFoco: 'preco',
-  faqsBusca: { precoMensal: true, taxaPersonal: 'condominio' },
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'condominio', onlineOuPresencial: true },
 
   faqsExtra: [
+    {
+      pergunta: 'Como funciona o personal trainer na Smart Fit da Granja Viana?',
+      resposta:
+        'A Smart Fit aceita personal particular, desde que ele seja credenciado na unidade; o profissional só atende quem é aluno matriculado, e o preço das aulas é combinado entre vocês, por fora da mensalidade. O aplicativo da rede lista os personais cadastrados em cada unidade. Na região são três: Km 21 e Km 25 da Raposo Tavares, em Cotia, e São Camilo, com endereço em Carapicuíba — o credenciamento é por unidade, então confirme na recepção daquela em que você treina.',
+    },
     {
       pergunta: 'A Granja Viana fica em Cotia ou em Carapicuíba?',
       resposta:
@@ -158,5 +166,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Cotia', url: 'https://cidades.ibge.gov.br/brasil/sp/cotia/panorama' },
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-08',
 };
