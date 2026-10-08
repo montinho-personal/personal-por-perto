@@ -953,3 +953,28 @@ fortalecimento muscular; liga com o híbrido), as faixas na seção do preço e,
 na transparência, os links para Alphaville e Barueri. "Vale a pena pagar um
 personal" fica com o guia de preço. Linha de base: nenhuma impressão em
 buscas com "online" ou "presencial" de 06/09 a 05/10.
+
+## Personal trainer a domicílio (`/guias/personal-trainer-a-domicilio/`) — 08/10/2026
+
+Pesquisa de palavras-chave do Renato (originais em
+`docs/pesquisas/2026-10-08-personal-a-domicilio/`). Volume: "personal
+trainer a domicílio" 50/mês (e 50 no YouTube), "valores" 10, "em
+domicílio" 10. O resto do autocompletar é espanhol e italiano
+(domicilio = em casa nos dois) — ruído. Search Console: 56 impressões em
+90 dias, posição 7,4, consultas anônimas.
+
+- **Região de atendimento** (mais cedo, 254e774): seção com as 11 páginas
+  da área presencial, lida de `atendimentoPresencial.ts`.
+- **Título** 73 → 52 caracteres, com "valores" do autocompletar:
+  "Personal Trainer a Domicílio: Como Funciona e Valores". Description
+  estava com 180 caracteres (acima do limite) → 150.
+- **Preço calculado do dado**: o parágrafo tinha números digitados ("R$ 80
+  a R$ 150 em uma cidade média"); agora usa a mediana das cidades, São
+  Paulo (prompt do ChatGPT: "quanto custa em São Paulo?") e Alphaville.
+- **FAQs novas, nas palavras do PAA**: "Quanto custa a hora de um personal
+  trainer a domicílio?" e "Dá para definir o corpo e ganhar massa
+  muscular treinando em casa?".
+- **Fora**: "personal × educador físico" e "quem pode ser personal"
+  (resposta passa pela regulamentação — o artigo de coach já cobre o que
+  o portal diz); "vale a pena o Smart Fit Coach?" vai para o artigo da
+  Smart Fit; cartão de crédito e apps não são assunto do guia.
