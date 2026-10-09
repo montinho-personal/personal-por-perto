@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de musculação no centro e nos bairros de classe média, complementada pelos espaços a céu aberto da Serra de Santana, dos mirantes e das praças do centro histórico.',
 
+  academiasProximas: [
+    { nome: 'Vale Fitness', detalhe: 'na Av. Antônio Carlos Magalhães' },
+  ],
+  academiasVerificadasEm: '2026-10-09',
+
   destaquesFitness: [
     'Serra de Santana e mirantes como academia a céu aberto, ótimos para treino de subida.',
     'Clima semiárido amenizado pela altitude, com noites mais frescas que favorecem o treino.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Senhor do Bonfim', url: 'https://senhordobonfim.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-09',
 };

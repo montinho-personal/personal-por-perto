@@ -34,7 +34,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Sólon de Lucena (Lagoa)',
       descricao:
-        'No Centro, ao redor da lagoa, tem pista de corrida e caminhada plana, ciclovia, pista de skate e academias ao ar livre.',
+        'No Centro, ao redor da lagoa, tem pista de corrida e caminhada plana, ciclovia, pista de skate e aparelhos de ginástica — em fevereiro de 2026, parte deles estava danificada.',
     },
     {
       nome: 'Largo da Gameleira (Manaíra/Tambaú)',
@@ -70,11 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne redes, academias de bairro e estúdios boutique nos bairros nobres (Manaíra, Cabo Branco e Altiplano), bem complementada pela orla como espaço de treino ao ar livre.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Manaíra Shopping, na Av. João Câncio, no Geisel e na Epitácio' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Manaíra Shopping, na Rua João Câncio, na Av. Epitácio Pessoa (Torre), em Cabo Branco e no Cuiá' },
     { nome: 'Selfit', detalhe: 'unidades no Mag Shopping (Manaíra), no Tambauzinho e em Mangabeira' },
     { nome: 'Estúdios boutique', detalhe: 'concentrados em Manaíra, Cabo Branco e Altiplano' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, na orla e no Parque Sólon de Lucena' },
+    { nome: 'Academias ao ar livre', detalhe: 'gratuita, na orla de Cabo Branco, com orientação de profissionais da prefeitura' },
   ],
+  academiasVerificadasEm: '2026-10-09',
 
   destaquesFitness: [
     'Orla plana e contínua, ideal para corrida, ciclismo e treino funcional.',
@@ -146,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em João Pessoa: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-09',
 };

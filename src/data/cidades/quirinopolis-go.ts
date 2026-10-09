@@ -70,6 +70,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação e estúdios de treino funcional, distribuídos pelo Centro e pelos setores residenciais, com porte compatível com uma cidade média do interior goiano em crescimento.',
 
+  academiasVerificadasEm: '2026-10-09',
+
   destaquesFitness: [
     'Lago do Sol Poente como principal espaço urbano de caminhada, corrida e eventos esportivos.',
     'Orla do Lago de São Simão (Lago Dourado) para lazer, veraneio e esportes náuticos.',

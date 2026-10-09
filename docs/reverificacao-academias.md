@@ -140,3 +140,29 @@ Também no texto da página: a descrição do Parque Chico Mendes perdeu
 "academia ao ar livre gratuita" e o horário (sem fonte; ficam área, trilhas,
 quadras cobertas e horta — Metrô/EIA e boletim da Prefeitura), e saiu o item
 "Aulas públicas da SEREL".
+
+### 09/10/2026 — leva 6 (rotina, Parte B: Porto Alegre e João Pessoa)
+
+**Porto Alegre/RS** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech (Iguatemi Porto Alegre) | confirmada | página da unidade no site da Bodytech + Wellhub (Av. João Wallig, 1800) |
+| Smart Fit | confirmada; detalhe ganha bairros conferidos | smartfit.com.br/academias/rs/porto-alegre (R. Sete de Setembro 709 – Centro, Av. Getúlio Vargas 1644 – Menino Deus, R. Anita Garibaldi 600 – Mont Serrat e outras 4) |
+| Moinhos Fitness | confirmada; sai "maior rede local da região metropolitana" (é autodescrição da rede) | moinhosfitness.com.br + Wellhub (Azenha, Borges, Ipiranga, República e outras) |
+| Academias ao ar livre dos parques (Redenção e Marinha do Brasil) | **removida** — nenhuma fonte; os guias do Marinha falam de quadras e pistas, não de academia. Sai também do destaque "parques com academias ao ar livre" | — |
+
+**João Pessoa/PB** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "no Geisel" não está na lista oficial e "Av. João Câncio" é rua — detalhe reescrito com as 5 unidades oficiais | smartfit.com.br/academias/pb/joao-pessoa |
+| Selfit | confirmada (Mag Shopping, Tambauzinho/Epitácio Pessoa, Mangabeira Shopping) | página de João Pessoa no site da Selfit |
+| Estúdios boutique | genérica | — |
+| Academias ao ar livre | confirmada só na orla de Cabo Branco (inaugurada em ago/2023, com orientação da Sejer); sai o Parque Sólon de Lucena | A União + Jornal da Paraíba |
+
+Também no texto de João Pessoa: a descrição do Parque Sólon de Lucena
+trocou "academias ao ar livre" por "aparelhos de ginástica — em fevereiro
+de 2026, parte deles estava danificada" (reportagem de fev/2026).
+
+Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 1 genérica.

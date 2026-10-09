@@ -71,14 +71,14 @@ export const cidade: Cidade = {
     'A oferta reúne grandes redes de musculação, boxes de CrossFit e treinamento funcional e estúdios de alto padrão, bem distribuídos pelos bairros nobres e centrais.',
   academiasProximas: [
     { nome: 'Bodytech', detalhe: 'unidade premium no Iguatemi Porto Alegre' },
-    { nome: 'Smart Fit', detalhe: 'unidades no Centro e em vários bairros da cidade' },
-    { nome: 'Moinhos Fitness', detalhe: 'maior rede local da região metropolitana, com várias unidades' },
-    { nome: 'Academias ao ar livre dos parques', detalhe: 'gratuitas, na Redenção e no Marinha do Brasil' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro, no Menino Deus, no Mont Serrat e em outros bairros' },
+    { nome: 'Moinhos Fitness', detalhe: 'rede gaúcha com unidades em vários bairros, como Azenha, Menino Deus, Ipiranga e Centro' },
   ],
+  academiasVerificadasEm: '2026-10-09',
 
   destaquesFitness: [
     'Orla do Guaíba revitalizada: pistas planas e seguras à beira-rio.',
-    'Grandes parques urbanos (Redenção e Marinha do Brasil) com academias ao ar livre.',
+    'Grandes parques urbanos (Redenção e Marinha do Brasil) com quadras, pistas e espaço para treino ao ar livre.',
     'Maratona Internacional de Porto Alegre, a mais antiga do Brasil.',
     'Público de alta renda e escolaridade, com cena diversificada de musculação e funcional.',
   ],
@@ -152,5 +152,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Porto Alegre: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-10-09',
 };
