@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias cresce com o boom imobiliário, complementada pelas Vilas do Esporte e pela orla equipada de Itaipuaçu.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Maricá', detalhe: 'na Rua Vereador Luiz Antonio da Cunha, no Centro' },
+    { nome: 'Smart Fit Rede Economia Itaipuaçu', detalhe: 'na Rua das Orquídeas, no Barroco (Itaipuaçu)' },
+  ],
+  academiasVerificadasEm: '2026-10-10',
+
   destaquesFitness: [
     'Orla de Itaipuaçu com pista de atletismo dedicada e academia ao ar livre.',
     'Vilas do Esporte sendo implantadas por distrito.',
@@ -95,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maricá', url: 'https://www.marica.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-10',
 };

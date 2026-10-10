@@ -71,10 +71,11 @@ export const cidade: Cidade = {
     'A oferta é completa: grandes redes (Smart Fit, Bodytech, Bio Ritmo) e estúdios boutique de alto custo concentrados no Plano Piloto, no Lago Sul e em Águas Claras, com forte presença também de crossfit, funcional e pilates.',
   academiasProximas: [
     { nome: 'Bodytech', detalhe: 'cinco unidades — Asa Sul, Asa Norte, Sudoeste, Lago Sul (Setor de Clubes) e Lago Norte' },
-    { nome: 'Smart Fit', detalhe: 'unidades no Plano Piloto e nas principais regiões administrativas' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Asa Sul, na Asa Norte, no Sudoeste e no Setor Comercial Norte' },
     { nome: 'Estúdios boutique', detalhe: 'concentrados no Plano Piloto, no Lago Sul e em Águas Claras' },
-    { nome: 'Circuitos do Parque da Cidade', detalhe: 'gratuitos, com percursos medidos de 4, 6 e 10 km' },
+    { nome: 'Circuitos do Parque da Cidade', detalhe: 'gratuitos, com percursos internos iluminados de 2 e 4 km e o anel de cerca de 10 km' },
   ],
+  academiasVerificadasEm: '2026-10-10',
 
   destaquesFitness: [
     'Parque da Cidade: o maior parque urbano da América do Sul, com circuitos medidos.',
@@ -150,5 +151,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Brasília: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-10',
 };

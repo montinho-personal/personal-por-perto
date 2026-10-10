@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é dominada por academias de bairro distribuídas pelos setores residenciais, complementadas por estúdios menores e por personal trainers que atendem em casa ou online, formato útil para quem se desloca diariamente até Brasília.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'unidades no Parque Esplanada III e nas Chácaras Saia Velha' },
+    { nome: 'Bluefit Valparaíso', detalhe: 'na Quadra 14, no Parque Rio Branco' },
+  ],
+  academiasVerificadasEm: '2026-10-10',
+
   destaquesFitness: [
     'Cidade grande e em crescimento acelerado, com demanda fitness em expansão.',
     'Corrida da Independência e outras provas no calendário da prefeitura.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Valparaíso de Goiás', url: 'https://valparaisodegoias.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-10',
 };

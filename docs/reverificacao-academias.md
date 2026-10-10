@@ -166,3 +166,25 @@ trocou "academias ao ar livre" por "aparelhos de ginástica — em fevereiro
 de 2026, parte deles estava danificada" (reportagem de fev/2026).
 
 Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 1 genérica.
+
+### 10/10/2026 — leva 7 (rotina, Parte B: Florianópolis e Brasília)
+
+**Florianópolis/SC** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Ironberg Floripa | confirmada; detalhe ganha a rua | ironberg.com.br/floripa (R. Antônio Costa, 10 – Itacorubi) + TotalPass |
+| Smart Fit | confirmada; "no Estreito" não está na lista oficial — detalhe com as 5 unidades da cidade | smartfit.com.br/academias/sc/florianopolis (Centro, Agronômica, Saco Grande, Coqueiros, Jardim Atlântico) |
+| Estúdios e clubes premium | genérica | — |
+| Academias ao ar livre da Beira-Mar Norte | **removida** — nenhuma fonte; academia ao ar livre só aparece no projeto da futura marina. Sai também da descrição do parque e do destaque | — |
+
+**Brasília/DF** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech (5 unidades) | confirmada | Wellhub (Asa Sul, Asa Norte, Sudoeste, Lago Sul – Setor de Clubes) + página oficial da unidade Lago Norte – Iguatemi + Metrópoles (Lago Sul) |
+| Smart Fit | confirmada; "e nas principais regiões administrativas" não verificado na busca de unidades — detalhe com os setores conferidos | smartfit.com.br/academias/df/brasilia |
+| Estúdios boutique | genérica | — |
+| Circuitos do Parque da Cidade | confirmada em parte: os percursos de 2 e 4 km (iluminação nova) e o de ~10 km têm fonte; o de 6 km não | Jornal de Brasília (fev/2024 e nov/2024) |
+
+Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 2 genéricas.

@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Avenida Beira-Mar Norte',
       descricao:
-        'Cerca de 10 km de orla com calçadão plano e asfaltado, ciclovia ao lado e academias ao ar livre gratuitas — o principal point de corrida e caminhada da cidade.',
+        'Cerca de 10 km de orla com calçadão plano e asfaltado, ciclovia ao lado — o principal point de corrida e caminhada da cidade.',
     },
     {
       nome: 'Lagoa da Conceição',
@@ -70,15 +70,15 @@ export const cidade: Cidade = {
   academias:
     'Além do Ironberg Floripa, referência nacional, a cidade tem unidades de Smart Fit e diversos estúdios e clubes premium, com forte oferta de funcional e treino voltado a surfistas e corredores.',
   academiasProximas: [
-    { nome: 'Ironberg Floripa', detalhe: 'no Itacorubi, referência nacional em musculação' },
-    { nome: 'Smart Fit', detalhe: 'unidades no Centro, no Estreito e em outros pontos da Ilha' },
+    { nome: 'Ironberg Floripa', detalhe: 'centro de treinamento de musculação na Rua Antônio Costa, no Itacorubi' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro, na Agronômica, no Saco Grande e, no continente, em Coqueiros e no Jardim Atlântico' },
     { nome: 'Estúdios e clubes premium', detalhe: 'em Jurerê Internacional e na Lagoa da Conceição' },
-    { nome: 'Academias ao ar livre da Beira-Mar Norte', detalhe: 'gratuitas, ao longo do calçadão' },
   ],
+  academiasVerificadasEm: '2026-10-10',
 
   destaquesFitness: [
     'Maior IDHM entre as capitais do Brasil (0,847), com altíssima qualidade de vida.',
-    'Beira-Mar Norte: corredor de cerca de 10 km com academias ao ar livre gratuitas.',
+    'Beira-Mar Norte: corredor de cerca de 10 km de calçadão plano para corrida e caminhada.',
     'Sede do Ironberg Floripa, referência nacional em musculação e alto rendimento.',
     'Cultura de surf e praia que sustenta forte demanda por treino funcional.',
   ],
@@ -147,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Florianópolis: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-10',
 };
