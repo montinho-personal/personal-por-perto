@@ -75,6 +75,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios de musculação cresce junto com a cidade, atendendo tanto o público universitário quanto os moradores das áreas centrais e de melhor renda, e é complementada pelos parques e pelas pistas públicas.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Max Francisco Beltrão', detalhe: 'na Rua Guaporé, no Presidente Kennedy' },
+  ],
+  academiasVerificadasEm: '2026-10-11',
+
   destaquesFitness: [
     'Parque do Lago: pista de caminhada e corrida e o principal point de treino ao ar livre.',
     'Cena de corrida de rua ativa, com provas recorrentes de cooperativas e instituições.',
@@ -101,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Francisco Beltrão', url: 'https://franciscobeltrao.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4108403' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-11',
 };

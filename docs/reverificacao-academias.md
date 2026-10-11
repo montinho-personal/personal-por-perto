@@ -188,3 +188,25 @@ Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 1 genérica.
 | Circuitos do Parque da Cidade | confirmada em parte: os percursos de 2 e 4 km (iluminação nova) e o de ~10 km têm fonte; o de 6 km não | Jornal de Brasília (fev/2024 e nov/2024) |
 
 Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 2 genéricas.
+
+### 11/10/2026 — leva 8 (rotina, Parte B: Goiânia e Teresina)
+
+**Goiânia/GO** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit e Bluefit | confirmadas; sai "algumas com funcionamento 24h" (sem fonte), também do texto da FAQ; detalhe com bairros conferidos | smartfit.com.br/academias/go/goiania (Setor Bueno, Setor Oeste, Jardim Goiás e outras) + bluefit.com.br (Av. 85, Praça do Sol, Alto da Glória e outras) |
+| Bodytech | confirmada; detalhe ganha a rua | bodytech.com.br/academia/marista (Rua 147, 75) + Wellhub |
+| Academias de fisiculturismo e alto rendimento | genérica | — |
+| Estações de ginástica dos parques | confirmada só no Vaca Brava (vários guias); o Flamboyant tem uma fonte só e sai da entrada. O destaque "parques com academia ao ar livre (Flamboyant, Bosque dos Buritis)" passa a citar só o Vaca Brava | QuintoAndar, Mais Goiás |
+
+**Teresina/PI** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada | smartfit.com.br/academias/pi/teresina (Fátima, Noivos e outras) |
+| Selfit | confirmada; "rede de baixo custo com presença na capital" vira unidades conferidas | selfitacademias.com.br (Frei Serafim, Homero Castelo Branco – Jóquei, Riverside Shopping e outras 6) |
+| Academias locais | genérica | — |
+| Estrutura dos parques (Potycabana, Cidadania) | confirmada como estrutura (pistas e quadras); a "academia ao ar livre" do Potycabana, citada na FAQ, não tem fonte e sai | guias e estudo acadêmico sobre o Parque da Cidadania |
+
+Saldo: 8 entradas → 0 removidas, 5 detalhes corrigidos, 2 genéricas.

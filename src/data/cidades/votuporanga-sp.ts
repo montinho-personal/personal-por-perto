@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é boa para o porte do município, concentrada nas avenidas centrais e nos bairros de maior renda, e bem complementada pelos espaços ao ar livre da Cidade Pacífica e do Parque da Cultura.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit Votuporanga', detalhe: 'na Rua das Américas, no Jardim Bela Vista' },
+    { nome: 'Skyfit Academia Votuporanga', detalhe: 'na Av. Emílio Arroio Hernandes, no Pozzobon' },
+  ],
+  academiasVerificadasEm: '2026-10-11',
+
   destaquesFitness: [
     'Um dos maiores polos moveleiros do estado, com classe média de bom poder aquisitivo.',
     'Cidade Pacífica e Parque da Cultura como espaços centrais de treino ao ar livre.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Votuporanga', url: 'https://www.votuporanga.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-11',
 };

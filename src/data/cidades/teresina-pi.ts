@@ -71,10 +71,11 @@ export const cidade: Cidade = {
     'A oferta reúne redes nacionais (Smart Fit, Selfit) e academias locais, complementadas pela estrutura dos parques Potycabana e da Cidadania — e impulsionada pelo grande ecossistema de saúde da cidade.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'várias unidades pela cidade' },
-    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na capital' },
+    { nome: 'Selfit', detalhe: 'unidades na Av. Frei Serafim, no Jóquei e no Riverside Shopping, entre outras' },
     { nome: 'Academias locais', detalhe: 'boa cobertura no Jóquei, em Fátima e no Centro' },
     { nome: 'Estrutura dos parques', detalhe: 'gratuita, no Potycabana e no Parque da Cidadania' },
   ],
+  academiasVerificadasEm: '2026-10-11',
 
   destaquesFitness: [
     'Polo de saúde do Meio-Norte, que favorece o nicho de personal e reabilitação.',
@@ -114,7 +115,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Teresina?',
       resposta:
-        'Os pontos fortes são o Parque Potycabana — o complexo esportivo às margens do Poti, com pistas, quadras e academia ao ar livre —, o Parque da Cidadania na Frei Serafim, as academias de rede e locais do Jóquei e de Fátima e o atendimento em casa, valorizado nos meses mais quentes. Um diferencial da cidade: como maior polo de saúde do Meio-Norte, Teresina tem um ecossistema médico que facilita o trabalho conjunto entre personal, médico e fisioterapeuta.',
+        'Os pontos fortes são o Parque Potycabana — o complexo esportivo às margens do Poti, com pistas e quadras —, o Parque da Cidadania na Frei Serafim, as academias de rede e locais do Jóquei e de Fátima e o atendimento em casa, valorizado nos meses mais quentes. Um diferencial da cidade: como maior polo de saúde do Meio-Norte, Teresina tem um ecossistema médico que facilita o trabalho conjunto entre personal, médico e fisioterapeuta.',
     },
     {
       pergunta: 'Como treinar no calor de Teresina, uma das capitais mais quentes do país?',
@@ -135,7 +136,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teresina', url: 'https://www.teresina.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-11',
   capaArte: {
     src: '/capas-cidade/teresina-pi.webp',
     w: 1200,
