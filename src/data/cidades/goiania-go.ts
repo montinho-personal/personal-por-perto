@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital planejada e polo logístico do Centro-Oeste, Goiânia tem economia puxada pelo agronegócio (Goiás tem um dos maiores PIBs agropecuários do país), pela indústria farmacêutica e por comércio e serviços. É reconhecida pela boa relação entre custo de vida e infraestrutura de metrópole e por uma generosa área verde por habitante — cenário ideal para quem leva o treino a sério.',
 
   mercado:
-    'Goiânia é uma referência nacional em musculação e fisiculturismo. A cidade abriga uma federação forte (ligada à IFBB), organiza o Campeonato Goiano e já sediou etapas internacionais de alto nível, incluindo competições profissionais que atraem mais de uma centena de atletas de todo o país. No dia a dia, redes como Smart Fit e Blue Fit (algumas 24h) e estúdios de alto padrão no Setor Bueno e no Marista convivem com uma cultura "raiz" de musculação que define a identidade fitness da cidade.',
+    'Goiânia é uma referência nacional em musculação e fisiculturismo. A cidade abriga uma federação forte (ligada à IFBB), organiza o Campeonato Goiano e já sediou etapas internacionais de alto nível, incluindo competições profissionais que atraem mais de uma centena de atletas de todo o país. No dia a dia, redes como Smart Fit e Blue Fit e estúdios de alto padrão no Setor Bueno e no Marista convivem com uma cultura "raiz" de musculação que define a identidade fitness da cidade.',
 
   bairrosNobres: ['Setor Marista', 'Setor Bueno', 'Jardim Goiás', 'Setor Oeste'],
   bairrosPopulares: ['Campinas', 'Setor Norte Ferroviário', 'Vila Nova', 'Setor Central'],
@@ -115,7 +115,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Goiânia?',
       resposta:
-        'O eixo Setor Bueno–Marista–Jardim Goiás concentra academias de rede, estúdios de alto padrão e as academias "raiz" de musculação. Ao ar livre, o Vaca Brava e o Flamboyant têm pista de cooper e estação de ginástica gratuitas e são points consolidados de treino funcional. O atendimento em casa e em condomínio cresce nos edifícios do Jardim Goiás e do Setor Oeste — e o horário 24h de algumas redes resolve a agenda de quem trabalha em turnos.',
+        'O eixo Setor Bueno–Marista–Jardim Goiás concentra academias de rede, estúdios de alto padrão e as academias "raiz" de musculação. Ao ar livre, o Vaca Brava tem pista de cooper e estação de ginástica gratuitas e é point consolidado de treino funcional. O atendimento em casa e em condomínio cresce nos edifícios do Jardim Goiás e do Setor Oeste.',
     },
     {
       pergunta: 'Há acompanhamento em Goiânia para quem sente dores ou tem limitações?',
