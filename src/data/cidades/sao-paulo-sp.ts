@@ -76,9 +76,9 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'São Paulo tem a cultura de corrida de rua mais forte do Brasil e um público fitness exigente. A combinação de grandes parques, ampla malha cicloviária e calendário esportivo lotado cria um ambiente em que treinar faz parte da identidade da cidade.',
   academias:
-    'É o mercado fitness mais maduro do país: berço da Smart Fit (fundada na capital em 2001, hoje a maior rede da América Latina), com forte presença em bairros, shoppings e estações de metrô. No segmento boutique, a Bodytech é referência, e a oferta de CrossFit e treino funcional é vasta.',
+    'É o mercado fitness mais maduro do país: a Smart Fit, rede com mais de 2 mil academias pela América Latina, tem unidades espalhadas pelos bairros da capital. No segmento boutique, a Bodytech é referência, e a oferta de CrossFit e treino funcional é vasta.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'fundada na capital em 2001, hoje a maior rede da América Latina, presente em praticamente todos os bairros' },
+    { nome: 'Smart Fit', detalhe: 'unidades em bairros de todas as regiões, como Bela Vista, Pinheiros, Moema e Tatuapé' },
     { nome: 'Bio Ritmo', detalhe: 'marca premium do grupo Smart Fit, com unidades em bairros como Itaim Bibi, Campo Belo e Morumbi' },
     { nome: 'Bodytech', detalhe: 'referência no segmento boutique, com superunidades que somam piscina e lutas' },
     { nome: 'Companhia Athletica', detalhe: 'rede de alto padrão, com unidades como Morumbi, Itaim e Anália Franco' },
@@ -155,5 +155,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em São Paulo: acompanhamento profissional perto de você, em toda a capital e regiões.',
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-12',
 };

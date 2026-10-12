@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios locais, complementados pelas rotas rurais, praças e pelo Zoo Pomerode, que ampliam as opções de treino ao ar livre e caminhada.',
 
+  academiasProximas: [
+    { nome: 'Academia A2', detalhe: 'na Rua Luiz Abry, no Centro' },
+    { nome: 'Academia Movimento', detalhe: 'na Av. 21 de Janeiro, no Centro' },
+    { nome: 'Academia Olympia', detalhe: 'na Rua Ernesto Volkmann, no Testo Rega' },
+    { nome: 'Oficina do Corpo', detalhe: 'na Rua Presidente Costa e Silva' },
+  ],
+  academiasVerificadasEm: '2026-10-12',
+
   destaquesFitness: [
     'Tradição esportiva acima da média para o porte, com destaque histórico em ginástica.',
     'Rotas rurais (Rota do Enxaimel e outras) ideais para corrida e ciclismo.',
@@ -96,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pomerode', url: 'https://www.pomerode.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-12',
 };

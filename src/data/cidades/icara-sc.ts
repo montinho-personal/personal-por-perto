@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios na área urbana, complementados pelas praças do Centro e pela orla das praias do Luz e da Esplanada, e reforçados pela vizinhança com o polo de Criciúma.',
 
+  academiasProximas: [
+    { nome: 'Ideal Shape Academia', detalhe: 'na Rua Coronel Marcos Rovaris, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-12',
+
   destaquesFitness: [
     'Cidade de IDHM alto, com público que valoriza saúde e bem-estar.',
     'Litoral com praias do Luz e da Esplanada para treino à beira-mar.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Içara', url: 'https://www.icara.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-12',
 };

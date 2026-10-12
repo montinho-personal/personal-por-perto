@@ -210,3 +210,35 @@ Saldo: 8 entradas → 1 removida, 4 detalhes corrigidos, 2 genéricas.
 | Estrutura dos parques (Potycabana, Cidadania) | confirmada como estrutura (pistas e quadras); a "academia ao ar livre" do Potycabana, citada na FAQ, não tem fonte e sai | guias e estudo acadêmico sobre o Parque da Cidadania |
 
 Saldo: 8 entradas → 0 removidas, 5 detalhes corrigidos, 2 genéricas.
+
+### 12/10/2026 — leva 9 (rotina, Parte B: São Paulo e Rio de Janeiro) — PARCIAL
+
+Leva incompleta, e por isso as duas cidades **continuam na fila** (sem
+`academiasVerificadasEm`). Os sites oficiais de Bodytech, Bio Ritmo e Cia
+Athletica, os blogs dessas redes, o prefeitura.rio e o Catraca Livre estão
+bloqueados na rede do ambiente. Para essas marcas sobra só o Wellhub, que é
+fonte única. Remover marca conhecida por falta de acesso não deixa a página
+mais certa, então o que não deu para fechar fica pendente. Foi corrigido só
+o que a fonte oficial aberta (smartfit.com.br) permitiu.
+
+**São Paulo/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada. Sai "fundada na capital em 2001, hoje a maior rede da América Latina, presente em praticamente todos os bairros", que não tem fonte (o próprio site fala em "mais de 2.000 academias pela América Latina"). Entram bairros conferidos. A mesma frase sai do texto `mercado`, junto com "estações de metrô" | smartfit.com.br/academias/sp/sao-paulo/{moema,pinheiros,tatuape} (Moema, Pinheiros, Tatuapé, Bela Vista e outros) |
+| Bio Ritmo (Itaim Bibi, Campo Belo, Morumbi) | pendente. TotalPass confirma Campo Belo (R. Barão de Jaceguai, 1409) e Morumbi (Av. Giovanni Gronchi, 4415). Itaim só aparece no site oficial, que está bloqueado | totalpass.com |
+| Bodytech | pendente: só Wellhub (Pátio Paulista, Pinheiros Eldorado, Itaim, JK e outras) | wellhub.com |
+| Companhia Athletica (Morumbi, Itaim, Anália Franco) | pendente. O Wellhub dá Anália Franco e MorumbiShopping; Itaim não apareceu em nenhuma fonte e é o primeiro candidato a sair | wellhub.com |
+| Estúdios boutique e boxes de CrossFit | genérica | — |
+
+**Rio de Janeiro/RJ** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada. "Dezenas de unidades em todas as zonas" vira bairros conferidos | smartfit.com.br/academias/rj/rio-de-janeiro/{copacabana,tijuca,barra-da-tijuca} (7 em Copacabana, 6 na Barra, 4 na Tijuca, Centro) |
+| Bio Ritmo | confirmada por TotalPass (Copacabana, Av. N. Sra. de Copacabana, 748; Cine Leblon, Av. Ataulfo de Paiva, 391; Pepê, Av. do Pepê, 1360). Falta a segunda fonte para fechar o detalhe "em expansão na Zona Sul" | totalpass.com |
+| Bodytech | pendente: só Wellhub (Copacabana 801 e 446, Leblon Ataulfo 467, Shopping Leblon) | wellhub.com |
+| Academias ao ar livre da orla | pendente, sem fonte aberta. Se continuar assim na próxima tentativa, sai, como em BH, POA e Floripa | — |
+
+Para fechar: liberar bodytech.com.br, bioritmo.com.br, ciaathletica.com.br
+e prefeitura.rio, ou pedir print ao Renato.

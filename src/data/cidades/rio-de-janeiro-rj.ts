@@ -72,7 +72,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Bodytech', detalhe: 'rede premium com várias unidades em Copacabana, Ipanema, Leblon e Barra da Tijuca' },
     { nome: 'Bio Ritmo', detalhe: 'rede premium do grupo Smart Fit, em expansão na Zona Sul' },
-    { nome: 'Smart Fit', detalhe: 'dezenas de unidades em todas as zonas da cidade' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro, em Copacabana, na Tijuca e na Barra da Tijuca, entre outros bairros' },
     { nome: 'Academias ao ar livre da orla', detalhe: 'gratuitas, ao longo de Copacabana, Ipanema e Leblon' },
   ],
 
@@ -144,5 +144,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Rio de Janeiro: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-10-12',
 };
