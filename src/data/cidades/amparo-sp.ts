@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias de musculação e treino funcional e estúdios distribuídos pelo centro e pelos bairros residenciais, em porte compatível com uma cidade média do interior paulista integrada à Região Metropolitana de Campinas.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia Amparo', detalhe: 'na Rua Manoel Heitor, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-13',
+
   destaquesFitness: [
     'Primeira estância hidromineral de São Paulo e porta de entrada do Circuito das Águas Paulista.',
     'Clima ameno de altitude (cerca de 674 m), favorável ao treino ao ar livre na maior parte do ano.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância de Amparo', url: 'https://www.amparo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-13',
 };

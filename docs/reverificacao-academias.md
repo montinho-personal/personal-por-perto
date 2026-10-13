@@ -242,3 +242,29 @@ o que a fonte oficial aberta (smartfit.com.br) permitiu.
 
 Para fechar: liberar bodytech.com.br, bioritmo.com.br, ciaathletica.com.br
 e prefeitura.rio, ou pedir print ao Renato.
+
+### 13/10/2026 — leva 10 (rotina, Parte B: São Paulo e Rio de Janeiro, fechamento da leva 9)
+
+Com a rede liberada, as fontes oficiais que faltavam abriram e as duas
+cidades saem da fila. Smart Fit já tinha sido corrigida na leva 9.
+
+**São Paulo/SP**
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada (leva 9) | smartfit.com.br |
+| Bio Ritmo (Itaim Bibi, Campo Belo, Morumbi) | confirmada sem mudança; "marca do grupo Smart Fit" confere (o site é operado pelo Grupo Smart Fit) | bioritmo.com.br/unidades (Itaim, Campo Belo, Morumbi) + TotalPass |
+| Bodytech | confirmada; sai "referência no segmento boutique, com superunidades que somam piscina e lutas", que não tem fonte; entram unidades conferidas | Wellhub (Pátio Paulista, R. Treze de Maio, 1947; Pinheiros, Av. Rebouças, 3970; Itaim, R. Leopoldo Couto de Magalhães Jr., 500; Complexo JK, Av. Pres. Juscelino Kubitschek, 2041) + páginas de unidade em bodytech.com.br indexadas com os mesmos nomes (o site é SPA e não entrega o endereço ao curl — mesmo critério de Goiânia) |
+| Companhia Athletica | confirmada; **sai "Itaim"**: a página oficial lista MorumbiShopping, Shopping Anália Franco e Kansas, e nenhuma fonte mostrou unidade no Itaim | ciaathletica.com.br + Wellhub (Av. Roque Petroni Jr., 1089; Shopping Anália Franco, Av. Regente Feijó) |
+| Estúdios boutique e boxes de CrossFit | genérica | — |
+
+**Rio de Janeiro/RJ**
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada (leva 9) | smartfit.com.br |
+| Bodytech | confirmada; "Ipanema" e "Barra da Tijuca" saem do detalhe (só em resumo de busca); ficam Copacabana e Leblon, também no texto `mercado` | Wellhub (Copacabana 801 e 446; Leblon Ataulfo 467; Shopping Leblon) + páginas de unidade indexadas em bodytech.com.br |
+| Bio Ritmo | confirmada; "em expansão na Zona Sul" vira unidades conferidas | bioritmo.com.br/unidades (Copacabana, Cine Leblon, Pepê, Shopping Metropolitano Barra) + TotalPass |
+| Academias ao ar livre da orla | confirmada como equipamento público; "ao longo de Copacabana, Ipanema e Leblon" vira o que a prefeitura diz | prefeitura.rio (20/12/2022): parceria Prefeitura–MUDE "instalou academias ao ar livre, de aço inox, pelas orlas e nas principais praças da cidade" |
+
+Saldo: 9 entradas → 0 removidas, 1 bairro removido (Cia Athletica Itaim), 5 detalhes corrigidos, 1 genérica.

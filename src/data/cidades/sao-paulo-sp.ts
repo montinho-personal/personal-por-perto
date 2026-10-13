@@ -80,10 +80,11 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades em bairros de todas as regiões, como Bela Vista, Pinheiros, Moema e Tatuapé' },
     { nome: 'Bio Ritmo', detalhe: 'marca premium do grupo Smart Fit, com unidades em bairros como Itaim Bibi, Campo Belo e Morumbi' },
-    { nome: 'Bodytech', detalhe: 'referência no segmento boutique, com superunidades que somam piscina e lutas' },
-    { nome: 'Companhia Athletica', detalhe: 'rede de alto padrão, com unidades como Morumbi, Itaim e Anália Franco' },
+    { nome: 'Bodytech', detalhe: 'unidades como as do Shopping Pátio Paulista, de Pinheiros, do Itaim Bibi e do Complexo JK' },
+    { nome: 'Companhia Athletica', detalhe: 'rede com unidades no MorumbiShopping e no Shopping Anália Franco' },
     { nome: 'Estúdios boutique e boxes de CrossFit', detalhe: 'oferta vasta, espalhada por todas as regiões da cidade' },
   ],
+  academiasVerificadasEm: '2026-10-13',
 
   destaquesFitness: [
     'Maior malha cicloviária do Brasil (731 km).',
@@ -155,5 +156,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em São Paulo: acompanhamento profissional perto de você, em toda a capital e regiões.',
   },
-  atualizadoEm: '2026-10-12',
+  atualizadoEm: '2026-10-13',
 };

@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é premium, com estúdios boutique e personal training, complementada pelas represas e por cerca de 23 academias ao ar livre espalhadas pela cidade.',
 
+  academiasProximas: [
+    { nome: 'RK Academia', detalhe: 'na Rua Felício Rossi, no Residencial Aquário' },
+    { nome: 'Skyfit Academia Vinhedo', detalhe: 'na Av. Independência' },
+  ],
+  academiasVerificadasEm: '2026-10-13',
+
   destaquesFitness: [
     'Público premium e clima ameno — nicho de personal de alto padrão.',
     'Represas João Gasparini como hub natural de treino outdoor.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vinhedo', url: 'https://www.vinhedo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-13',
 };

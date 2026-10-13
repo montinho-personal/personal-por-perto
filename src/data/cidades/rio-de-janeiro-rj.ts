@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Segunda maior cidade e segunda maior economia do Brasil, o Rio de Janeiro concentra sedes do setor de petróleo e gás (com a Petrobras à frente), serviços, finanças, mídia e o maior polo de turismo do país. Mais do que isso, é uma cidade que vive ao ar livre: a relação dos cariocas com a praia, a corrida e o esporte faz do treino parte da identidade local.',
 
   mercado:
-    'O mercado fitness do Rio é maduro e disputado. A Bodytech mantém operações tradicionais na Zona Sul — Copacabana, Ipanema e Leblon —, enquanto Smart Fit e a premium Bio Ritmo seguem em expansão. Some-se a isso a cultura de corpo e praia, com academias ao ar livre na orla e esportes de areia em alta, e o resultado é uma das maiores demandas por personal trainer do país, do treino de musculação ao preparo para provas de rua.',
+    'O mercado fitness do Rio é maduro e disputado. A Bodytech tem unidades em Copacabana e no Leblon, e a Smart Fit e a premium Bio Ritmo também estão na Zona Sul. Some-se a isso a cultura de corpo e praia, com academias ao ar livre na orla e esportes de areia em alta, e o resultado é uma das maiores demandas por personal trainer do país, do treino de musculação ao preparo para provas de rua.',
 
   bairrosNobres: ['Leblon', 'Ipanema', 'Lagoa', 'Barra da Tijuca', 'Botafogo'],
   bairrosPopulares: ['Madureira', 'Campo Grande', 'Bangu', 'Realengo'],
@@ -70,11 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta vai das academias premium da Zona Sul (Bodytech, Bio Ritmo) às unidades de Smart Fit espalhadas por toda a cidade, além de estúdios de treino funcional, crossfit e os tradicionais points de areia para esportes de praia.',
   academiasProximas: [
-    { nome: 'Bodytech', detalhe: 'rede premium com várias unidades em Copacabana, Ipanema, Leblon e Barra da Tijuca' },
-    { nome: 'Bio Ritmo', detalhe: 'rede premium do grupo Smart Fit, em expansão na Zona Sul' },
+    { nome: 'Bodytech', detalhe: 'unidades em Copacabana e no Leblon, entre outras' },
+    { nome: 'Bio Ritmo', detalhe: 'rede premium do grupo Smart Fit, com unidades em Copacabana, no Leblon e na Barra da Tijuca' },
     { nome: 'Smart Fit', detalhe: 'unidades no Centro, em Copacabana, na Tijuca e na Barra da Tijuca, entre outros bairros' },
-    { nome: 'Academias ao ar livre da orla', detalhe: 'gratuitas, ao longo de Copacabana, Ipanema e Leblon' },
+    { nome: 'Academias ao ar livre da orla', detalhe: 'gratuitas, instaladas pela prefeitura nas orlas e nas principais praças' },
   ],
+  academiasVerificadasEm: '2026-10-13',
 
   destaquesFitness: [
     'Aterro do Flamengo e orlas com pista fechada para carros aos domingos.',
@@ -144,5 +145,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Rio de Janeiro: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-12',
+  atualizadoEm: '2026-10-13',
 };
