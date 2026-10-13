@@ -27,18 +27,31 @@ const ultimaVerificacao = '13/10/2026';
 const SITE_OFICIAL = 'https://maratonadecuritiba.com.br/';
 const INSCRICAO = 'https://www.ticketsports.com.br/e/maratona-de-curitiba-santander-2026-86884';
 const RESULTADOS = 'https://www.chiptiming.com.br/';
+const REGULAMENTO =
+  'https://storagefileta.blob.core.windows.net/ticketagora/arquivos/evento/86884/96bd2ae84b2848af9665c2c15721e39f639270721352025193.pdf';
 
-/** A cronometragem fecha 6 horas depois da largada (FAQ oficial). */
-const LIMITE_MIN = 6 * 60;
-const paceLimite = (km: number) => {
-  const s = Math.floor((LIMITE_MIN / km) * 60);
+/** Limite de conclusão por distância, em minutos (regulamento, item 1). */
+const LIMITES: { dist: string; km: number; min: number; rotulo: string }[] = [
+  { dist: '42 km', km: 42.195, min: 360, rotulo: '6h' },
+  { dist: '21 km', km: 21.097, min: 180, rotulo: '3h' },
+  { dist: '10 km', km: 10, min: 90, rotulo: '1h30' },
+  { dist: '5 km', km: 5, min: 60, rotulo: '1h' },
+];
+/** Ritmo médio que cabe no limite, arredondado para baixo (lado seguro). */
+const paceLimite = (km: number, min: number) => {
+  const s = Math.floor((min / km) * 60);
   return `${Math.floor(s / 60)}min${String(s % 60).padStart(2, '0')}s`;
 };
-const PACE_42 = paceLimite(42.195);
+const PACE_42 = paceLimite(42.195, 360);
+
+const brl = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;
+/** Premiação bruta da maratona (regulamento, item 8.1), 1º ao 5º. */
+const PREMIO_42_GERAL = [110000, 66000, 38000, 19000, 12000];
+const PREMIO_42_BRASILEIROS = [15000, 8000, 5000, 3000, 2000];
 
 const IDADES: [string, string][] = [
   ['5 km', '14 anos'],
-  ['10 km', '16 anos (o site traz 18 anos em outra resposta — confira no regulamento)'],
+  ['10 km', '18 anos'],
   ['21 km', '18 anos'],
   ['42 km', '20 anos'],
 ];
@@ -67,6 +80,8 @@ const relacionados = [
 const path = '/guias/maratona-de-curitiba-2026';
 const publicadoEm = '2026-10-13';
 const atualizadoEm = '2026-10-13';
+/* 13/10, mesma data: o regulamento abriu depois da publicação e trouxe
+   premiação, horários da Expo e limites por distância. */
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -97,7 +112,7 @@ const faqs = [
   {
     pergunta: 'Onde retirar o kit da Maratona de Curitiba 2026?',
     resposta:
-      'Na Expo Maratona, no Museu Oscar Niemeyer (MON), nos dias 12, 13 e 14 de novembro, com horário agendado na inscrição. É preciso levar documento com foto, o termo de responsabilidade impresso e assinado e o comprovante de inscrição. Não há entrega de kit no dia da prova.',
+      'Na Expo Maratona, no Museu Oscar Niemeyer (MON), na Rua Marechal Hermes, 999, Centro Cívico: quinta (12/11) das 10h às 20h, sexta (13/11) das 9h às 20h e sábado (14/11) das 9h às 16h, no horário agendado na inscrição. É preciso levar documento com foto, o termo de responsabilidade impresso e assinado e o comprovante de inscrição. Não há entrega de kit no dia da prova.',
   },
   {
     pergunta: 'Qual o percurso e a altimetria da Maratona de Curitiba 2026?',
@@ -107,11 +122,11 @@ const faqs = [
   {
     pergunta: 'Qual a premiação da Maratona de Curitiba 2026?',
     resposta:
-      'Pelo site oficial, há premiação em dinheiro para a elite e para atletas com deficiência inscritos no CPB, troféus para os primeiros de cada categoria e medalha para todos que terminam dentro do tempo. Não há dinheiro para faixa etária. Os valores estão no regulamento, que ainda não conferimos — por isso não os publicamos.',
+      `Pelo regulamento, os cinco primeiros dos 42 km, no masculino e no feminino, recebem de ${brl(PREMIO_42_GERAL[4])} a ${brl(PREMIO_42_GERAL[0])} (valor bruto, com desconto de IR). Os cinco melhores brasileiros dos 42 km ganham ainda de ${brl(PREMIO_42_BRASILEIROS[4])} a ${brl(PREMIO_42_BRASILEIROS[0])}, cumulativo com a geral. A meia maratona e as categorias de cadeirantes e deficientes visuais (inscritos no CPB) também têm premiação em dinheiro, com valores menores. Faixa etária recebe troféu, não dinheiro.`,
   },
   {
     pergunta: 'Qual o tempo limite da Maratona de Curitiba?',
-    resposta: `A cronometragem é encerrada 6 horas depois da largada, segundo o site oficial; quem chega depois disso fica sem tempo computado. Nos 42 km, isso pede um ritmo médio abaixo de ${PACE_42} por km.`,
+    resposta: `Pelo regulamento: 6h nos 42 km, 3h nos 21 km, 1h30 nos 10 km e 1h nos 5 km, contados no relógio. Depois disso o trânsito é liberado e o atleta fica sem tempo computado. Nos 42 km, o limite pede um ritmo médio abaixo de ${PACE_42} por km.`,
   },
   {
     pergunta: 'Onde ver o resultado da Maratona de Curitiba 2026?',
@@ -122,7 +137,7 @@ const faqs = [
 
 const title = 'Maratona de Curitiba 2026: Data, Inscrição, Kit e Horário';
 const description =
-  'Maratona de Curitiba 2026 em 15/11: largada no Centro Cívico, inscrição até 31/10, kit no MON de 12 a 14/11, idade mínima, tempo limite e como treinar.';
+  'Maratona de Curitiba 2026 em 15/11: largada no Centro Cívico, inscrição até 31/10, kit no MON, premiação, idade mínima, tempo limite e como treinar.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -160,15 +175,16 @@ const schema = [
             <tr><th scope="row">Horário</th><td>Ondas "em breve" no site oficial; a plataforma de inscrição registra início às 5h</td></tr>
             <tr><th scope="row">Distâncias</th><td>5 km, 10 km, 21,097 km e 42,195 km</td></tr>
             <tr><th scope="row">Inscrição</th><td>Só pela Ticket Sports, até 31/10/2026 às 23h59 ou até o limite de atletas</td></tr>
-            <tr><th scope="row">Kit</th><td>Expo Maratona no Museu Oscar Niemeyer (MON), 12 a 14/11, com horário agendado</td></tr>
-            <tr><th scope="row">Tempo limite</th><td>Cronometragem encerrada 6 horas após a largada</td></tr>
+            <tr><th scope="row">Kit</th><td>Expo Maratona no Museu Oscar Niemeyer (MON): 12/11 das 10h às 20h, 13/11 das 9h às 20h, 14/11 das 9h às 16h, com horário agendado</td></tr>
+            <tr><th scope="row">Tempo limite</th><td>42 km em 6h · 21 km em 3h · 10 km em 1h30 · 5 km em 1h</td></tr>
+            <tr><th scope="row">Premiação (42 km)</th><td>{brl(PREMIO_42_GERAL[0])} ao 1º lugar masculino e feminino; bônus de até {brl(PREMIO_42_BRASILEIROS[0])} aos melhores brasileiros</td></tr>
             <tr><th scope="row">Percurso e altimetria</th><td>"Em breve" no site oficial</td></tr>
             <tr><th scope="row">Resultados</th><td>Em até 48 horas no site da Chip Timing</td></tr>
           </tbody>
         </table>
       </div>
       <p class="small">
-        Fontes: site oficial da prova e plataforma oficial de inscrição,
+        Fontes: site oficial, regulamento e plataforma oficial de inscrição,
         conferidos em {ultimaVerificacao}.
       </p>
 
@@ -223,8 +239,17 @@ const schema = [
       <h2>Retirada do kit</h2>
       <p>
         A Expo Maratona acontece no <strong>Museu Oscar Niemeyer (MON)</strong>,
-        de <strong>12 a 14 de novembro</strong>, com horário de retirada
-        agendado na inscrição. Leve:
+        na Rua Marechal Hermes, 999, Centro Cívico, com horário de retirada
+        agendado na inscrição:
+      </p>
+      <ul>
+        <li><strong>Quinta, 12/11:</strong> das 10h às 20h;</li>
+        <li><strong>Sexta, 13/11:</strong> das 9h às 20h;</li>
+        <li><strong>Sábado, 14/11:</strong> das 9h às 16h.</li>
+      </ul>
+      <p>
+        Mudança de data ou horário agendado vai até 15/10, conforme
+        disponibilidade. Leve:
       </p>
       <ul>
         <li>documento com foto;</li>
@@ -238,7 +263,12 @@ const schema = [
       </p>
 
       <h2>Idade mínima por distância</h2>
-      <p>Idade completada até 31/12/2026, pelo site oficial:</p>
+      <p>
+        Idade completada até 31/12/2026, pelo regulamento, que segue a Norma
+        12 da CBAt. Uma das respostas do site oficial cita 16 anos para os
+        10 km, mas o regulamento põe os 10 km na faixa de 10 a 30 km, que
+        exige 18:
+      </p>
       <div class="table-wrap">
         <table>
           <thead><tr><th scope="col">Distância</th><th scope="col">Idade mínima</th></tr></thead>
@@ -259,10 +289,23 @@ const schema = [
 
       <h2>Tempo limite</h2>
       <p>
-        A cronometragem é encerrada <strong>6 horas depois da largada</strong>;
-        quem termina depois disso fica sem tempo computado. Nos 42 km, isso
-        significa manter um ritmo médio abaixo de {PACE_42} por quilômetro —
-        com margem para as paradas de hidratação.
+        O regulamento fixa um limite de conclusão para cada distância,
+        contado no relógio. Depois dele, o trânsito é liberado, a organização
+        pede que o atleta entre no carro de apoio ou deixe a via, e o tempo
+        não é computado. Os pontos de corte ao longo do percurso ainda estão
+        "em breve".
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Distância</th><th scope="col">Limite</th><th scope="col">Ritmo médio que cabe nele</th></tr></thead>
+          <tbody>
+            {LIMITES.map((l) => <tr><td>{l.dist}</td><td>{l.rotulo}</td><td>abaixo de {paceLimite(l.km, l.min)}/km</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O ritmo é a conta do limite dividido pela distância, sem margem para
+        paradas — na prova, deixe folga.
       </p>
 
       <FerramentaInline
@@ -273,12 +316,24 @@ const schema = [
 
       <h2>Premiação</h2>
       <p>
-        Pelo site oficial, a premiação em dinheiro é para a elite e para
-        atletas com deficiência inscritos no CPB. Os primeiros de cada
-        categoria recebem troféu no pódio, no dia do evento, e todos que
-        terminam dentro do tempo ganham medalha. Não há premiação em dinheiro
-        por faixa etária. Os valores estão no regulamento, que ainda não
-        conferimos — por isso não estão aqui.
+        Valores brutos do regulamento, dos quais é descontado o imposto de
+        renda. Nos 42 km, a classificação geral vale pelo tempo bruto:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Colocação (masc. e fem.)</th><th scope="col">42 km geral</th><th scope="col">Melhores brasileiros</th></tr></thead>
+          <tbody>
+            {PREMIO_42_GERAL.map((v, i) => <tr><td>{i + 1}º</td><td>{brl(v)}</td><td>{brl(PREMIO_42_BRASILEIROS[i])}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A premiação dos melhores brasileiros soma-se à geral. A meia maratona
+        e as categorias de cadeirantes e deficientes visuais (inscritos no
+        CPB) também pagam prêmio em dinheiro, com valores menores. Faixa
+        etária recebe troféu no pódio, não dinheiro, e só quem comparece ao
+        pódio com documento recebe. Todos que terminam dentro do tempo ganham
+        medalha.
       </p>
 
       <h2>Não confunda com a Meia Maratona Internacional de Curitiba</h2>
@@ -342,6 +397,12 @@ const schema = [
           ondas, distâncias, kits e Experiência VIP, prazo e regras da
           inscrição, Expo e retirada do kit, idades, hidratação, tempo de
           cronometragem, premiação e resultados.
+        </li>
+        <li>
+          <a href={REGULAMENTO} target="_blank" rel="noopener">Regulamento
+          oficial 2026 (PDF)</a>: limites de conclusão por distância,
+          horários da Expo, idades pela Norma 12 da CBAt e valores da
+          premiação.
         </li>
         <li>
           <a href={INSCRICAO} target="_blank" rel="noopener">Ticket Sports —
