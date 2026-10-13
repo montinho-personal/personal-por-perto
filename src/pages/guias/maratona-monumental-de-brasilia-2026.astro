@@ -1,0 +1,476 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+/*
+ * Cobertura de evento (modelo: artigo + varreduras até a prova + resultado
+ * no dia). Registro de fatos, fontes e pendências em
+ * docs/eventos/maratona-monumental-de-brasilia-2026.md — só entra aqui o
+ * que está "Confirmado" lá. Estrutura e FAQ pelos prints de busca de
+ * 13/10/2026. "Última verificação" e atualizadoEm só sobem com fato novo.
+ */
+
+/** Data de conferência das fontes, no formato DD/MM/AAAA. */
+const ultimaVerificacao = '13/10/2026';
+
+const SITE_OFICIAL = 'https://maratonamonumentalbsb.com.br/';
+const REGULAMENTO =
+  'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/09/v7-REGULAMENTO-MARATONA-MONUMENTAL-2026.pdf';
+const INSCRICAO = 'https://www.ticketsports.com.br/e/MARATONA%20MONUMENTAL%20DE%20BRAS%C3%8DLIA%202026-74828';
+const RESULTADOS = 'https://maratonamonumentalbsb.com.br/resultados/';
+const MARATONA_BRASILIA_2025 =
+  'https://www.correiobraziliense.com.br/esportes/2025/04/7117635-renilson-silva-conquista-titulo-dos-42km-na-maratona-brasilia.html';
+
+/** Limite de conclusão por distância, em minutos, contado da largada (regulamento). */
+const LIMITES: { dist: string; km: number; min: number; rotulo: string }[] = [
+  { dist: '42 km', km: 42.195, min: 390, rotulo: '6h30' },
+  { dist: '21 km', km: 21.097, min: 195, rotulo: '3h15' },
+  { dist: '10 km', km: 10, min: 90, rotulo: '1h30' },
+  { dist: '5 km', km: 5, min: 60, rotulo: '1h' },
+];
+/** Ritmo médio que cabe no limite, arredondado para baixo (lado seguro). */
+const paceLimite = (km: number, min: number) => {
+  const s = Math.floor((min / km) * 60);
+  return `${Math.floor(s / 60)}min${String(s % 60).padStart(2, '0')}s`;
+};
+const PACE_42 = paceLimite(42.195, 390);
+
+/** 3º lote (21/08 a 31/10/2026), mais taxa de conveniência — regulamento. */
+const LOTE3: [string, string, string][] = [
+  ['5 ou 10 km', 'R$ 139,90', 'R$ 179,90'],
+  ['21 km', 'R$ 179,90', 'R$ 219,90'],
+  ['42 km', 'R$ 199,90', 'R$ 239,90'],
+];
+
+const PELOTOES: [string, string][] = [
+  ['Verde', 'abaixo de 4:00/km'],
+  ['Amarelo', '4:00 a 4:30/km'],
+  ['Azul', '4:30 a 5:00/km'],
+  ['Branco', '5:00 a 5:30/km'],
+  ['Vermelho', '5:30 a 6:00/km'],
+  ['Preto', '6:00 a 6:30/km'],
+  ['Roxo', 'acima de 6:30/km'],
+];
+
+const relacionados = [
+  {
+    url: '/ferramentas/calculadora-de-pace/',
+    titulo: 'Calculadora de pace',
+    descricao: 'Ritmo por km, tempo de prova e velocidade para 5, 10, 21 e 42 km.',
+    tipo: 'Calculadora',
+  },
+  {
+    url: '/guias/maratona-de-curitiba-2026/',
+    titulo: 'Maratona de Curitiba 2026',
+    descricao: 'A outra grande maratona de novembro: data, inscrição, kit e tempo limite.',
+    tipo: 'Eventos',
+  },
+  {
+    url: '/personal-trainer/brasilia-df/',
+    titulo: 'Personal trainer em Brasília',
+    descricao: 'Preços, formatos e onde treinar no Distrito Federal.',
+    tipo: 'Cidade',
+  },
+];
+
+const path = '/guias/maratona-monumental-de-brasilia-2026';
+const publicadoEm = '2026-10-13';
+const atualizadoEm = '2026-10-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Maratona Monumental de Brasília 2026', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quando vai ser a Maratona Monumental de Brasília 2026?',
+    resposta:
+      'Nos dias 21 e 22 de novembro de 2026. No sábado (21/11), às 17h, largam os 5 e os 10 km; no domingo (22/11), a maratona larga às 5h e a meia maratona às 6h. É a 7ª edição, segundo a organização.',
+  },
+  {
+    pergunta: 'Qual é o trajeto da Maratona Monumental de Brasília?',
+    resposta:
+      'Largada e chegada são na Esplanada dos Ministérios, ao lado dos blocos A e B. O percurso detalhado ainda não foi publicado: pelo regulamento, a liberação depende do governo local e o mapa sai assim que for aprovado. A organização descreve o trajeto como plano, com baixo ganho de elevação, passando pelos cartões-postais da capital.',
+  },
+  {
+    pergunta: 'Quanto custa a inscrição da Maratona Monumental de Brasília 2026?',
+    resposta:
+      'No 3º lote, que vai até 31/10/2026, o Kit Participação (sem camiseta) custa R$ 139,90 nos 5 ou 10 km, R$ 179,90 na meia e R$ 199,90 na maratona; o Kit Básico, com camiseta, custa R$ 179,90, R$ 219,90 e R$ 239,90. Em todos há taxa de conveniência da Ticket Sports. Há modalidades com desconto para atletas com 60 anos ou mais e para pessoas com deficiência.',
+  },
+  {
+    pergunta: 'Tem cupom de desconto para a Maratona Monumental de Brasília 2026?',
+    resposta:
+      'O regulamento não fala em cupom. Os descontos previstos são as modalidades para atletas com 60 anos ou mais e para pessoas com deficiência, e valores diferenciados para assessorias, grupos e equipes com pelo menos 10 atletas, inscritos pela Ticket Sports com login próprio. Desconfie de cupom vendido fora da plataforma oficial.',
+  },
+  {
+    pergunta: 'Até quando vão as inscrições?',
+    resposta: 'Até 31/10/2026 ou até atingir o número limite de atletas, pela Ticket Sports, segundo o regulamento.',
+  },
+  {
+    pergunta: 'Onde retirar o kit da Maratona Monumental de Brasília?',
+    resposta:
+      'No Pátio Brasil Shopping (SCS Quadra 7, Bloco A, Asa Sul): 19 e 20/11 das 9h às 19h e 21/11 das 9h às 14h. Quem chega de outro estado ou país pode pedir, até 23h59 de 17/11, horário estendido das 14h às 19h no dia 21. Atletas dos 5 e 10 km retiram no máximo até as 17h do dia 21. Não há entrega depois disso.',
+  },
+  {
+    pergunta: 'Qual o tempo limite da Maratona Monumental de Brasília?',
+    resposta: `Pelo regulamento: 6h30 na maratona, 3h15 na meia, 1h30 nos 10 km e 1h nos 5 km, contados da largada. Na maratona há pontos de corte no km 14 (2h20) e no km 25,3 (4h). Para caber nas 6h30, o ritmo médio precisa ficar abaixo de ${PACE_42} por km.`,
+  },
+  {
+    pergunta: 'A Maratona Monumental é a mesma Maratona Brasília?',
+    resposta:
+      'Não. A Maratona Monumental de Brasília é em novembro, organizada pela MMB Eventos Esportivos. A Maratona Brasília é outra prova, promovida pelo Correio Braziliense em abril, no aniversário da cidade. As duas largam na Esplanada, o que ajuda a confundir.',
+  },
+  {
+    pergunta: 'Qual a premiação da Maratona Monumental de Brasília 2026?',
+    resposta:
+      'O regulamento prevê troféu e dinheiro para os cinco primeiros, no masculino e no feminino, da maratona, da meia, dos 10 e dos 5 km; troféu para os cinco primeiros PcD; e troféu para os três primeiros de cada faixa etária. O valor total ainda está "a definir". Os 42 primeiros da maratona e os 21 primeiros da meia, em cada sexo, ganham medalhas especiais TOP 42 e TOP 21.',
+  },
+  {
+    pergunta: 'Onde ver o resultado da Maratona Monumental de Brasília?',
+    resposta:
+      'Na página de resultados do site oficial, que reúne os links das edições anteriores. Esta página publica os vencedores de 2026 depois da prova, com a fonte.',
+  },
+];
+
+const title = 'Maratona Monumental de Brasília 2026: Data, Percurso e Kit';
+const description =
+  'Maratona Monumental de Brasília 2026 em 21 e 22/11 na Esplanada: horários de largada, valores do 3º lote, kit no Pátio Brasil, tempo limite e preparo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Eventos</p>
+    <h1>Maratona Monumental de Brasília 2026: data, percurso, inscrição e kit</h1>
+    <p class="updated">
+      Última verificação: {ultimaVerificacao} · Atualizado em {formatDateLong(atualizadoEm)}
+    </p>
+
+    <p class="lead">
+      A Maratona Monumental de Brasília 2026 acontece em <strong>21 e 22 de
+      novembro</strong>, com largada e chegada na Esplanada dos Ministérios:
+      5 e 10 km no sábado à tarde, meia e maratona no domingo de madrugada.
+      Abaixo, horários, valores do lote atual, retirada do kit e tempo limite
+      — tudo tirado do regulamento oficial — e o que ainda falta sair.
+    </p>
+
+    <div class="prose">
+      <h2>Resumo da Maratona Monumental de Brasília 2026</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">Datas</th><td>Sábado, 21/11 (5 e 10 km) e domingo, 22/11 (21 e 42 km)</td></tr>
+            <tr><th scope="row">Largadas</th><td>5 e 10 km às 17h · 42 km às 5h · 21 km às 6h</td></tr>
+            <tr><th scope="row">Local</th><td>Esplanada dos Ministérios, largada e chegada</td></tr>
+            <tr><th scope="row">Edição</th><td>7ª</td></tr>
+            <tr><th scope="row">Inscrição</th><td>Pela Ticket Sports, até 31/10/2026 ou até o limite de atletas</td></tr>
+            <tr><th scope="row">Valor (3º lote)</th><td>A partir de R$ 139,90 (5 ou 10 km, sem camiseta) até R$ 239,90 (42 km com camiseta), mais taxa</td></tr>
+            <tr><th scope="row">Kit</th><td>Pátio Brasil Shopping, de 19 a 21/11</td></tr>
+            <tr><th scope="row">Tempo limite</th><td>42 km em 6h30 · 21 km em 3h15 · 10 km em 1h30 · 5 km em 1h</td></tr>
+            <tr><th scope="row">Percurso</th><td>Mapa ainda não publicado (depende de liberação do governo local)</td></tr>
+            <tr><th scope="row">Premiação</th><td>Dinheiro para os 5 primeiros de cada distância; valor total "a definir"</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">
+        Fontes: site oficial, regulamento 2026 e plataforma oficial de
+        inscrição, conferidos em {ultimaVerificacao}.
+      </p>
+
+      <h2>Não confunda: Maratona Monumental × Maratona Brasília</h2>
+      <p>
+        Brasília tem duas maratonas na Esplanada, e a busca mistura as duas.
+        A <strong>Maratona Brasília</strong>, promovida pelo Correio
+        Braziliense, é em abril, no aniversário da cidade. A <strong>Maratona
+        Monumental de Brasília</strong>, deste guia, é em novembro, realizada
+        pelo Instituto Meninos do Pôr do Sol e organizada pela MMB Eventos
+        Esportivos. A Monumental tem chancela da World Athletics e da AIMS e
+        faz parte do circuito Mega Finisher, de provas da América do Sul.
+      </p>
+
+      <h2>Datas e horários de largada</h2>
+      <p>
+        A largada é em pelotões, com poucos minutos entre eles. Pessoas com
+        deficiência saem primeiro, depois elite e pelotão VIP/Black, e então
+        o público geral, dividido pelo pace escolhido na inscrição.
+      </p>
+      <ul>
+        <li><strong>Sábado, 21/11 — 5 e 10 km:</strong> PcD às 17h; elite, VIP/Black e geral às 17h03.</li>
+        <li><strong>Domingo, 22/11 — 42 km:</strong> PcD às 5h; elite e VIP/Black às 5h03; pelotões de 5h05 a 5h20.</li>
+        <li><strong>Domingo, 22/11 — 21 km:</strong> PcD às 6h; elite e VIP/Black às 6h03; pelotões de 6h05 a 6h20.</li>
+      </ul>
+      <div class="table-wrap">
+        <table>
+          <caption>Pelotões da maratona e da meia, pelo pace informado na inscrição</caption>
+          <thead><tr><th scope="col">Pelotão</th><th scope="col">Pace</th></tr></thead>
+          <tbody>
+            {PELOTOES.map(([p, r]) => <tr><td>{p}</td><td>{r}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A Esplanada recebe a largada de todas as distâncias ao lado dos
+        blocos A e B, onde ficam o Ministério dos Direitos Humanos e o do Meio
+        Ambiente; a chegada também é na Esplanada. Segundo a organização, a
+        edição de 2025 reuniu mais de 12 mil atletas.
+      </p>
+
+      <h2>Percurso e altimetria</h2>
+      <p>
+        O mapa ainda não foi publicado. O regulamento explica que a liberação
+        do percurso é do governo local e que ele será divulgado assim que
+        aprovado. A organização descreve os trajetos como planos e de baixo
+        ganho de elevação, passando pelo Eixo Monumental — quando o mapa e a
+        altimetria saírem, entram aqui.
+      </p>
+      <p>
+        Já está definido o apoio: na maratona, 16 pontos de água (do km 2,6
+        ao 39,5), 3 de isotônico e 3 de frutas, além de esponjas e banheiros;
+        na meia, 8 pontos de água, com isotônico e frutas no km 14,9.
+      </p>
+
+      <h2>Inscrição e valores</h2>
+      <p>
+        As inscrições vão <strong>até 31/10/2026</strong> ou até atingir o
+        limite de atletas, pela Ticket Sports. Valores do 3º lote, em vigor
+        desde 21/08, mais a taxa de conveniência da plataforma:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Distância</th><th scope="col">Kit Participação (sem camiseta)</th><th scope="col">Kit Básico (com camiseta)</th></tr></thead>
+          <tbody>
+            {LOTE3.map(([d, p, b]) => <tr><td>{d}</td><td>{p}</td><td>{b}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <ul>
+        <li>
+          <strong>Desafio Monumental:</strong> correr 5 ou 10 km no sábado e
+          21 ou 42 km no domingo, com medalha extra. No 3º lote, de R$ 279,90 a
+          R$ 299,90 no Kit Participação e de R$ 319,90 a R$ 339,90 no Kit
+          Básico.
+        </li>
+        <li>
+          <strong>Descontos:</strong> há modalidades próprias para atletas com
+          60 anos ou mais (kit retirado pessoalmente, com documento) e para
+          pessoas com deficiência.
+        </li>
+        <li>
+          <strong>Grupos:</strong> assessorias, grupos e equipes com pelo
+          menos 10 atletas têm valores diferenciados, com inscrição pela Ticket
+          Sports. O regulamento não fala em cupom de desconto.
+        </li>
+        <li>
+          <strong>Opcionais:</strong> camiseta finisher (21 e 42 km) por
+          R$ 69,90 e gravação da medalha por R$ 39,90.
+        </li>
+      </ul>
+      <p>
+        O regulamento prevê também um Kit Black, mas ele não aparecia entre
+        as opções da plataforma na nossa última verificação.
+      </p>
+
+      <h2>Retirada do kit</h2>
+      <p>
+        A Expo Monumental e a entrega dos kits são no <strong>Pátio Brasil
+        Shopping</strong> (SCS Quadra 7, Bloco A, Asa Sul):
+      </p>
+      <ul>
+        <li><strong>19 e 20/11:</strong> das 9h às 19h;</li>
+        <li><strong>21/11:</strong> das 9h às 14h.</li>
+      </ul>
+      <p>
+        Quem está em trânsito de outro estado ou país pode pedir, pelo
+        formulário do regulamento, até 23h59 de 17/11, o horário estendido
+        das 14h às 19h do dia 21. Atletas dos 5 e 10 km retiram no máximo até
+        as 17h do dia 21. Fora desses horários não há entrega; depois da
+        prova, de 24 a 26/11, é possível pedir o envio pelos Correios, com
+        taxa.
+      </p>
+
+      <h2>Idade mínima</h2>
+      <p>
+        Idade completada até 31/12/2026, pelo regulamento: 14 anos nos 5 km,
+        16 anos nos 10 km, 18 anos na meia maratona e 20 anos na maratona.
+      </p>
+
+      <h2>Tempo limite e pontos de corte</h2>
+      <p>
+        Os limites contam a partir da largada de cada distância. Na maratona,
+        há dois pontos de corte, medidos a partir da largada do último
+        pelotão (Roxo): passar pelo km 14 até 2h20 e pelo km 25,3 até 4h. Na
+        meia, o corte é no km 14, também até 2h20. Quem passa do corte é
+        convidado a seguir no veículo da organização. A cronometragem fecha
+        às 12h do domingo.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Distância</th><th scope="col">Limite</th><th scope="col">Ritmo médio que cabe nele</th></tr></thead>
+          <tbody>
+            {LIMITES.map((l) => <tr><td>{l.dist}</td><td>{l.rotulo}</td><td>abaixo de {paceLimite(l.km, l.min)}/km</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+
+      <FerramentaInline
+        id="calculadora-de-pace"
+        texto="Antes de escolher o pelotão na inscrição, vale saber qual pace o seu tempo-alvo exige e se ele passa folgado pelos cortes do km 14 e do km 25,3. A calculadora converte tempo em pace e pace em tempo nas quatro distâncias — ela não sabe como você está treinado, então o número é ponto de partida, não promessa."
+        acao="Calcular o pace do meu tempo-alvo"
+      />
+
+      <h2>Premiação</h2>
+      <p>
+        O regulamento prevê troféu e prêmio em dinheiro para os cinco
+        primeiros do masculino e do feminino na maratona, na meia, nos 10 e
+        nos 5 km; troféu para os cinco primeiros PcD de cada distância; e
+        troféu para os três primeiros de cada faixa etária. O valor total
+        ainda está <strong>"a definir"</strong>. Na maratona e na meia, os 42 e
+        os 21 primeiros de cada sexo pelo tempo líquido ganham as medalhas
+        TOP 42 e TOP 21. Todos que terminam dentro do tempo recebem medalha.
+      </p>
+
+      <h2>Resultados</h2>
+      <p>
+        O site oficial mantém uma página de resultados com as edições
+        anteriores. Pelo cronograma do regulamento, o resultado geral da meia
+        sai às 7h30 e o da maratona às 8h do domingo. Os vencedores de 2026
+        entram aqui depois da prova, somente com fonte oficial.
+      </p>
+
+      <h2>Como treinar para a Maratona Monumental</h2>
+      <p>
+        Com cerca de cinco semanas até a prova, a base está construída. O que
+        ainda faz diferença:
+      </p>
+      <ul>
+        <li>
+          <strong>Treine no horário da largada.</strong> Maratona às 5h e
+          meia às 6h pedem acordar de madrugada; alguns treinos longos nesse
+          horário acostumam o corpo a comer e correr cedo. Para os 5 e 10 km,
+          às 17h, vale o contrário: treinar à tarde.
+        </li>
+        <li>
+          <strong>Último longão com folga.</strong> O treino mais longo costuma
+          ficar duas a três semanas antes da prova; depois, o volume desce.
+        </li>
+        <li>
+          <strong>Escolha o pelotão com honestidade.</strong> Largar num
+          pelotão mais rápido do que o seu pace real é o jeito mais comum de
+          quebrar no fim.
+        </li>
+        <li>
+          <strong>Teste tudo antes.</strong> Tênis, gel, hidratação e café da
+          manhã do dia já precisam ter passado por um treino longo.
+        </li>
+      </ul>
+      <p>
+        Para montar a preparação com alguém do seu lado, veja <a
+        href="/personal-trainer/brasilia-df/">como encontrar personal trainer
+        em Brasília</a>. Dor que aparece no treino é assunto de médico ou
+        fisioterapeuta antes de seguir.
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li>
+          <a href={SITE_OFICIAL} target="_blank" rel="noopener">Maratona
+          Monumental de Brasília — site oficial</a>: datas, distâncias por
+          dia, edição, chancelas, público de 2025 e descrição dos percursos.
+        </li>
+        <li>
+          <a href={REGULAMENTO} target="_blank" rel="noopener">Regulamento
+          oficial 2026 (PDF, versão 7)</a>: horários e pelotões, local de
+          largada e chegada, idades, prazo e valores de inscrição, retirada
+          do kit, premiação, limites, pontos de corte e hidratação.
+        </li>
+        <li>
+          <a href={INSCRICAO} target="_blank" rel="noopener">Ticket Sports —
+          plataforma oficial de inscrição</a>: kits disponíveis na venda.
+        </li>
+        <li>
+          <a href={RESULTADOS} target="_blank" rel="noopener">Resultados das
+          edições anteriores</a>, no site oficial.
+        </li>
+        <li>
+          <a href={MARATONA_BRASILIA_2025} target="_blank" rel="noopener">Correio
+          Braziliense, promotor da Maratona Brasília</a>: a prova de abril,
+          no aniversário da capital (edição de 21/04/2025).
+        </li>
+        <li>Todas conferidas em {ultimaVerificacao}.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a Maratona Monumental de Brasília 2026" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>
