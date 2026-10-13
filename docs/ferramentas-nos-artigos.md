@@ -28,18 +28,18 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [encontre-seu-personal-ideal](/ferramentas/encontre-seu-personal-ideal/) | 4 / 0 | 3 | ferramenta da jornada |
 | [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 35 / 0 | 12 | ferramenta da jornada |
 | [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 41 / 1 | 26 | ferramenta da jornada |
-| [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 11 / 0 | 2 | ferramenta da jornada |
+| [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 12 / 0 | 1 | ferramenta da jornada |
 | [presencial-ou-online](/ferramentas/presencial-ou-online/) | 9 / 0 | 0 | ferramenta da jornada |
 | [personal-score](/ferramentas/personal-score/) | 1 / 0 | 0 | ferramenta da jornada |
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 7 / 1 | 0 | ferramenta da jornada |
 | [calculadora-1rm](/ferramentas/calculadora-1rm/) | 1 / 2 | 0 | calculadora de treino; conversa com os artigos de musculação |
 | [calculadora-de-proteina](/ferramentas/calculadora-de-proteina/) | 2 / 0 | 0 | calculadora de treino; conversa com os artigos de musculação |
-| [caminhada](/calorias/caminhada/) | 1 / 9 | 1 | encaixa onde o texto já fala de passos e cardio |
+| [caminhada](/calorias/caminhada/) | 1 / 9 | 0 | encaixa onde o texto já fala de passos e cardio |
 | [corrida](/calorias/corrida/) | 0 / 6 | 0 | poucos artigos de corrida no acervo |
 | [bicicleta](/calorias/bicicleta/) | 1 / 3 | 0 | guias de pedalar e trabalho sentado |
 | [natacao](/calorias/natacao/) | 0 / 2 | 0 | só onde o texto já cita natação como aeróbico |
 | [escada](/calorias/escada/) | 0 / 1 | 0 | NEAT e pausas ativas |
-| [corda](/calorias/corda/) | 0 / 0 | 1 | treino em casa e ao ar livre |
+| [corda](/calorias/corda/) | 0 / 0 | 0 | treino em casa e ao ar livre |
 | [danca](/calorias/danca/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [yoga-e-pilates](/calorias/yoga-e-pilates/) | 0 / 1 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [futebol](/calorias/futebol/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
@@ -48,10 +48,10 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [tenis](/calorias/tenis/) | 0 / 1 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [volei](/calorias/volei/) | 0 / 1 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [crossfit](/calorias/crossfit/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
-| [hyrox](/calorias/hyrox/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
+| [hyrox](/calorias/hyrox/) | 1 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [basquete](/calorias/basquete/) | 0 / 1 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [ping-pong](/calorias/ping-pong/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
-| [gasto-calorico-diario](/calorias/gasto-calorico-diario/) | 10 / 4 | 1 | a mais demandada pelo texto dos artigos de emagrecimento |
+| [gasto-calorico-diario](/calorias/gasto-calorico-diario/) | 11 / 4 | 0 | a mais demandada pelo texto dos artigos de emagrecimento |
 | [musculacao](/emagrecimento/quantas-calorias-queima-a-musculacao/) | 3 / 3 | 0 | mora num artigo; entra onde o texto compara gasto de treino |
 
 ## Regras que a fila segue
@@ -125,6 +125,8 @@ Correções encontradas na leitura, feitas no mesmo dia (defeito não espera lev
 - 05/10 — `/musculacao/treinar-ate-a-falha/` — bloco descanso-entre-series (1º lote da calculadora nova, 05/10); substituiu a sugestão anterior do mapa, que era media — esta responde a dúvida do parágrafo; atualizadoEm não sobe (exceção do bloco)
 - 12/10 — `/musculacao/treinar-leve-ou-pesado/` — bloco musculacao depois do parágrafo do mito ("…não com faixa de repetição"). Link gasto-calorico-diario em "déficit calórico" NÃO entrou: ficaria no mesmo parágrafo do bloco, dois convites colados — a ressalva que o próprio mapa previa. O texto da caixa diz que a calculadora não separa faixa de repetição (o Compêndio não separa).
 - 12/10 — `/musculacao/treino-de-abdomen-avancado/` — bloco treino-para-minha-rotina depois de "No encaixe da semana…". Link gasto-calorico-diario em "déficit calórico" NÃO entrou: a frase está só na FAQ, e a FAQ também alimenta o texto do schema FAQPage — mesmo critério de 03/10 (suplementos-que-nao-funcionam), em que a FAQ ficou sem link.
+- 13/10 — `/musculacao/treino-de-abdomen/` — bloco gasto-calorico-diario depois de "…quem revela é a cozinha e a consistência" (seção A conta que ninguém quer ouvir).
+- 13/10 — `/musculacao/treino-em-casa-para-iniciantes/` — bloco diagnostico-da-constancia antes do H2 "Quando faz sentido ter acompanhamento" (a frase está dentro da lista de erros). Links corda e caminhada NÃO entraram: a frase está só na FAQ, que também vira o texto do schema FAQPage — mesmo critério de 03/10 e 12/10.
 - 01/10 — `/guias/personal-trainer-conduta-profissional/` — artigo novo, já publicado com o bloco
 
 ## Aguardando revisão de conteúdo
@@ -152,50 +154,48 @@ Ordem: calculadora com encaixe forte primeiro, depois o resto por impressão no 
 
 | # | artigo | IMPR | bloco | ferramenta | força | seção | links no texto |
 |---|---|---|---|---|---|---|---|
-| 1 | `/musculacao/treino-de-abdomen/` | 0 | inserir | gasto-calorico-diario | media | A conta que ninguém quer ouvir | — |
-| 2 | `/musculacao/treino-em-casa-para-iniciantes/` | 0 | inserir | diagnostico-da-constancia | forte | Os erros que derrubam iniciantes em casa | corda ← "pular corda"; caminhada ← "caminhadas" |
-| 3 | `/musculacao/levantamento-terra-romeno-como-fazer/` | 3 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
-| 4 | `/musculacao/remada-cavalinho-como-fazer/` | 3 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
-| 5 | `/musculacao/aquecimento-antes-do-treino/` | 2 | inserir | treino-para-minha-rotina | media | Do segundo exercício em diante | — |
-| 6 | `/musculacao/maquina-ou-peso-livre/` | 2 | inserir | encontre-seu-personal-ideal | media | Como combinar na prática | — |
-| 7 | `/musculacao/prancha-abdominal-como-fazer/` | 2 | inserir | meu-treino-faz-sentido | media | Séries e encaixe no treino | — |
-| 8 | `/musculacao/sono-e-ganho-de-massa/` | 2 | inserir | meu-treino-faz-sentido | media | Sono como variável de treino | — |
-| 9 | `/musculacao/alongamento-antes-do-treino/` | 0 | inserir | encontre-seu-personal-ideal | media | Como fica na prática, por perfil | — |
-| 10 | `/musculacao/cadeira-extensora-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que a extensora treina | — |
-| 11 | `/musculacao/cadeira-flexora-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | Onde ela entra na semana | — |
-| 12 | `/musculacao/cafeina-pre-treino/` | 0 | inserir | meu-treino-faz-sentido | media | O que ela não faz | — |
-| 13 | `/musculacao/coice-de-gluteo-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | O lugar dele no treino | — |
-| 14 | `/musculacao/creatina-o-que-e-como-tomar/` | 0 | inserir | meu-treino-faz-sentido | media | Para quem a creatina faz mais diferença | — |
-| 15 | `/musculacao/crucifixo-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
-| 16 | `/musculacao/desenvolvimento-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 17 | `/musculacao/destreino/` | 0 | inserir | treino-para-minha-rotina | forte | O seguro barato: a dose mínima de manutenção | — |
-| 18 | `/musculacao/elevacao-pelvica-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que o exercício faz | — |
-| 19 | `/musculacao/frequencia-de-treino/` | 0 | inserir | meu-treino-faz-sentido | forte | Quando vale ter alguém olhando | — |
-| 20 | `/musculacao/melhor-horario-para-treinar/` | 0 | inserir | diagnostico-da-constancia | forte | Como escolher o seu horário | — |
-| 21 | `/musculacao/musculacao-depois-dos-40/` | 0 | inserir | treino-para-minha-rotina | forte | Voltando depois de anos parado: o protocolo anti-lesão | — |
-| 22 | `/musculacao/musculacao-e-ansiedade/` | 0 | inserir | treino-para-minha-rotina | forte | Como montar a rotina anti-ansiedade | — |
-| 23 | `/musculacao/musculacao-feminina-mitos/` | 0 | inserir | encontre-seu-personal-ideal | forte | Mito 7: "Academia de musculação não é lugar de mulher" | — |
-| 24 | `/musculacao/musculacao-na-menopausa/` | 0 | inserir | treino-para-minha-rotina | forte | O treino desta fase, na prática | — |
-| 25 | `/musculacao/pegada-e-antebraco/` | 0 | inserir | meu-treino-faz-sentido | media | Quem precisa de trabalho direto | — |
-| 26 | `/musculacao/puxada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 27 | `/musculacao/quanto-tempo-para-ver-resultados/` | 0 | inserir | meu-treino-faz-sentido | forte | O que atrasa | — |
-| 28 | `/musculacao/remada-curvada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 29 | `/musculacao/rosca-concentrada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Onde ela entra no programa | — |
-| 30 | `/musculacao/rosca-direta-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como progredir | — |
-| 31 | `/musculacao/supino-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Volume, séries e progressão | — |
-| 32 | `/musculacao/treinar-com-dor-lombar/` | 0 | inserir | meu-treino-faz-sentido | media | Como ajustar o treino quando a lombar reclama | — |
-| 33 | `/musculacao/treinar-com-dor-no-joelho/` | 0 | inserir | meu-treino-faz-sentido | media | Primeiro: de onde veio essa dor? | — |
-| 34 | `/musculacao/treinar-com-dor-no-ombro/` | 0 | inserir | meu-treino-faz-sentido | forte | Os desequilíbrios que mais geram dor | — |
-| 35 | `/musculacao/treinar-doente-ou-gripado/` | 0 | inserir | meu-treino-faz-sentido | media | A parte que quase ninguém conecta | — |
-| 36 | `/musculacao/treino-abc-como-montar/` | 0 | inserir | meu-treino-faz-sentido | forte | A lógica do ABC (e a conta de frequência que ninguém faz) | — |
-| 37 | `/musculacao/treino-de-costas/` | 0 | inserir | treino-para-minha-rotina | forte | Volume e frequência | — |
-| 38 | `/musculacao/treino-de-gluteos/` | 0 | inserir | treino-para-minha-rotina | forte | A semana que funciona: frequência e volume | — |
-| 39 | `/musculacao/treino-de-ombro/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 40 | `/musculacao/treino-de-panturrilha/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de organização | — |
-| 41 | `/musculacao/treino-de-peito/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 42 | `/musculacao/treino-de-pernas/` | 0 | inserir | treino-para-minha-rotina | forte | Os erros que travam o dia de perna | — |
-| 43 | `/musculacao/treino-de-trapezio/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de encaixe | — |
-| 44 | `/musculacao/triceps-pulley-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Quanto volume de tríceps faz sentido | — |
+| 1 | `/musculacao/levantamento-terra-romeno-como-fazer/` | 3 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
+| 2 | `/musculacao/remada-cavalinho-como-fazer/` | 3 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
+| 3 | `/musculacao/aquecimento-antes-do-treino/` | 2 | inserir | treino-para-minha-rotina | media | Do segundo exercício em diante | — |
+| 4 | `/musculacao/maquina-ou-peso-livre/` | 2 | inserir | encontre-seu-personal-ideal | media | Como combinar na prática | — |
+| 5 | `/musculacao/prancha-abdominal-como-fazer/` | 2 | inserir | meu-treino-faz-sentido | media | Séries e encaixe no treino | — |
+| 6 | `/musculacao/sono-e-ganho-de-massa/` | 2 | inserir | meu-treino-faz-sentido | media | Sono como variável de treino | — |
+| 7 | `/musculacao/alongamento-antes-do-treino/` | 0 | inserir | encontre-seu-personal-ideal | media | Como fica na prática, por perfil | — |
+| 8 | `/musculacao/cadeira-extensora-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que a extensora treina | — |
+| 9 | `/musculacao/cadeira-flexora-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | Onde ela entra na semana | — |
+| 10 | `/musculacao/cafeina-pre-treino/` | 0 | inserir | meu-treino-faz-sentido | media | O que ela não faz | — |
+| 11 | `/musculacao/coice-de-gluteo-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | O lugar dele no treino | — |
+| 12 | `/musculacao/creatina-o-que-e-como-tomar/` | 0 | inserir | meu-treino-faz-sentido | media | Para quem a creatina faz mais diferença | — |
+| 13 | `/musculacao/crucifixo-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
+| 14 | `/musculacao/desenvolvimento-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
+| 15 | `/musculacao/destreino/` | 0 | inserir | treino-para-minha-rotina | forte | O seguro barato: a dose mínima de manutenção | — |
+| 16 | `/musculacao/elevacao-pelvica-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que o exercício faz | — |
+| 17 | `/musculacao/frequencia-de-treino/` | 0 | inserir | meu-treino-faz-sentido | forte | Quando vale ter alguém olhando | — |
+| 18 | `/musculacao/melhor-horario-para-treinar/` | 0 | inserir | diagnostico-da-constancia | forte | Como escolher o seu horário | — |
+| 19 | `/musculacao/musculacao-depois-dos-40/` | 0 | inserir | treino-para-minha-rotina | forte | Voltando depois de anos parado: o protocolo anti-lesão | — |
+| 20 | `/musculacao/musculacao-e-ansiedade/` | 0 | inserir | treino-para-minha-rotina | forte | Como montar a rotina anti-ansiedade | — |
+| 21 | `/musculacao/musculacao-feminina-mitos/` | 0 | inserir | encontre-seu-personal-ideal | forte | Mito 7: "Academia de musculação não é lugar de mulher" | — |
+| 22 | `/musculacao/musculacao-na-menopausa/` | 0 | inserir | treino-para-minha-rotina | forte | O treino desta fase, na prática | — |
+| 23 | `/musculacao/pegada-e-antebraco/` | 0 | inserir | meu-treino-faz-sentido | media | Quem precisa de trabalho direto | — |
+| 24 | `/musculacao/puxada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
+| 25 | `/musculacao/quanto-tempo-para-ver-resultados/` | 0 | inserir | meu-treino-faz-sentido | forte | O que atrasa | — |
+| 26 | `/musculacao/remada-curvada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
+| 27 | `/musculacao/rosca-concentrada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Onde ela entra no programa | — |
+| 28 | `/musculacao/rosca-direta-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como progredir | — |
+| 29 | `/musculacao/supino-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Volume, séries e progressão | — |
+| 30 | `/musculacao/treinar-com-dor-lombar/` | 0 | inserir | meu-treino-faz-sentido | media | Como ajustar o treino quando a lombar reclama | — |
+| 31 | `/musculacao/treinar-com-dor-no-joelho/` | 0 | inserir | meu-treino-faz-sentido | media | Primeiro: de onde veio essa dor? | — |
+| 32 | `/musculacao/treinar-com-dor-no-ombro/` | 0 | inserir | meu-treino-faz-sentido | forte | Os desequilíbrios que mais geram dor | — |
+| 33 | `/musculacao/treinar-doente-ou-gripado/` | 0 | inserir | meu-treino-faz-sentido | media | A parte que quase ninguém conecta | — |
+| 34 | `/musculacao/treino-abc-como-montar/` | 0 | inserir | meu-treino-faz-sentido | forte | A lógica do ABC (e a conta de frequência que ninguém faz) | — |
+| 35 | `/musculacao/treino-de-costas/` | 0 | inserir | treino-para-minha-rotina | forte | Volume e frequência | — |
+| 36 | `/musculacao/treino-de-gluteos/` | 0 | inserir | treino-para-minha-rotina | forte | A semana que funciona: frequência e volume | — |
+| 37 | `/musculacao/treino-de-ombro/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
+| 38 | `/musculacao/treino-de-panturrilha/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de organização | — |
+| 39 | `/musculacao/treino-de-peito/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
+| 40 | `/musculacao/treino-de-pernas/` | 0 | inserir | treino-para-minha-rotina | forte | Os erros que travam o dia de perna | — |
+| 41 | `/musculacao/treino-de-trapezio/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de encaixe | — |
+| 42 | `/musculacao/triceps-pulley-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Quanto volume de tríceps faz sentido | — |
 
 Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 81.
 
