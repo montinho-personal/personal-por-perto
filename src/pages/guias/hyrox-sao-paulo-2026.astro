@@ -1,0 +1,324 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+/*
+ * Cobertura de evento (modelo: artigo + varreduras até a prova + resultado
+ * no dia). Registro de fatos, fontes e pendências em
+ * docs/eventos/hyrox-sao-paulo-2026.md — só entra aqui o que está
+ * "Confirmado" lá. As rotinas de varredura e de resultado atualizam esta
+ * página; "Última verificação" e atualizadoEm só sobem com fato novo.
+ */
+
+/** Data de conferência das fontes, no formato DD/MM/AAAA. */
+const ultimaVerificacao = '12/10/2026';
+const PENDENTE = 'Ainda não confirmado em fonte oficial';
+
+const HYROX_OFICIAL = 'https://hyrox.com/';
+
+const relacionados = [
+  {
+    url: '/calorias/hyrox/',
+    titulo: 'Quantas calorias gasta uma prova de Hyrox?',
+    descricao: 'O gasto da prova pelo seu tempo final e pelo pace, com a conta aberta.',
+    tipo: 'Calculadora',
+  },
+  {
+    url: '/guias/personal-trainer-para-corredores/',
+    titulo: 'Personal trainer para corredores',
+    descricao: 'O que o acompanhamento muda para quem treina corrida — inclusive a força.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'Preços, formatos e onde treinar na capital.',
+    tipo: 'Cidade',
+  },
+];
+
+const path = '/guias/hyrox-sao-paulo-2026';
+const publicadoEm = '2026-10-12';
+const atualizadoEm = '2026-10-12';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'HYROX São Paulo 2026', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quando é o HYROX São Paulo 2026?',
+    resposta:
+      'Nos dias 17 e 18 de outubro de 2026, sábado e domingo, segundo a página oficial do evento no site do HYROX. É a terceira edição da prova em São Paulo.',
+  },
+  {
+    pergunta: 'Onde vai ser o HYROX São Paulo 2026?',
+    resposta:
+      'A página oficial do evento, na parte que conferimos, não traz o local. Assim que ele estiver confirmado em fonte oficial, entra aqui com endereço e acesso.',
+  },
+  {
+    pergunta: 'Qual o horário do HYROX São Paulo?',
+    resposta:
+      'O cronograma por dia e por divisão ainda não foi confirmado em fonte oficial. No HYROX, cada atleta ou equipe larga numa onda com horário próprio, informado na inscrição — por isso o horário que vale para você é o da sua onda, não o de abertura do evento.',
+  },
+  {
+    pergunta: 'Quanto custa a inscrição do HYROX São Paulo 2026?',
+    resposta:
+      'O valor ainda não foi confirmado em fonte oficial. A venda é feita pelo botão "Buy tickets" da página oficial do evento, onde aparecem os preços por divisão e se há vagas.',
+  },
+  {
+    pergunta: 'Precisa de ingresso para assistir ao HYROX?',
+    resposta:
+      'Ainda não confirmamos em fonte oficial se a entrada de público é gratuita ou paga em São Paulo 2026. Não confunda: "ingresso" para competir é a inscrição do atleta; para assistir, a regra é outra e sai na página do evento.',
+  },
+  {
+    pergunta: 'Vai ter transmissão ao vivo do HYROX São Paulo?',
+    resposta:
+      'Até a última verificação, nenhuma fonte oficial confirmou transmissão desta etapa. Se for anunciada, ela entra aqui.',
+  },
+  {
+    pergunta: 'Onde ver os resultados do HYROX São Paulo 2026?',
+    resposta:
+      'Os tempos oficiais saem no sistema de resultados do HYROX, ligado à página do evento. Esta página publica os vencedores depois da prova, com a fonte.',
+  },
+];
+
+const title = 'Hyrox São Paulo 2026: Data, Local, Horários e Ingresso';
+const description =
+  'Hyrox São Paulo 2026 em 17 e 18 de outubro: o que já está confirmado sobre local, horários, inscrição e ingresso, as divisões e como se preparar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Eventos</p>
+    <h1>HYROX São Paulo 2026: data, local, horários e ingresso</h1>
+    <p class="updated">
+      Última verificação: {ultimaVerificacao} · Atualizado em {formatDateLong(atualizadoEm)}
+    </p>
+
+    <p class="lead">
+      O HYROX São Paulo 2026 acontece em <strong>17 e 18 de outubro</strong>,
+      e é a terceira vez que a prova vem à cidade. Dá para competir sozinho,
+      em dupla ou em revezamento. Abaixo, o que já está confirmado em fonte
+      oficial, o que ainda não está — dito com todas as letras — e como
+      chegar à largada preparado.
+    </p>
+
+    <div class="prose">
+      <h2>Resumo do HYROX São Paulo 2026</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">Data</th><td>17 e 18 de outubro de 2026 (sábado e domingo)</td></tr>
+            <tr><th scope="row">Edição</th><td>Terceira em São Paulo</td></tr>
+            <tr><th scope="row">Formatos</th><td>Individual, dupla (Doubles) e revezamento (Relay)</td></tr>
+            <tr><th scope="row">Local e endereço</th><td>{PENDENTE}</td></tr>
+            <tr><th scope="row">Horários e ondas</th><td>{PENDENTE}</td></tr>
+            <tr><th scope="row">Inscrição (atleta)</th><td>Pelo "Buy tickets" da página oficial; valor: {PENDENTE.toLowerCase()}</td></tr>
+            <tr><th scope="row">Ingresso (público)</th><td>{PENDENTE}</td></tr>
+            <tr><th scope="row">Transmissão</th><td>{PENDENTE}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">
+        Fonte de cada linha confirmada: página oficial do evento no site do
+        HYROX. Os itens pendentes entram aqui assim que saírem em fonte
+        oficial — nada vem de resumo de busca.
+      </p>
+
+      <h2>Data e local</h2>
+      <p>
+        A página oficial anuncia o evento para <strong>17 de outubro a 18 de
+        outubro de 2026</strong>, com a chamada "São Paulo, chegou a sua vez" e
+        a informação de que o HYROX "retorna a SP pela terceira vez".
+      </p>
+      <p>
+        O local não aparece no trecho da página que conferimos, e por isso não
+        o escrevemos aqui ainda. Ele entra nesta página, com endereço e
+        acesso, assim que estiver confirmado em fonte oficial.
+      </p>
+
+      <h2>Horários e ondas de largada</h2>
+      <p>
+        No HYROX não existe uma largada única: atletas e equipes saem em
+        ondas ao longo do dia, cada uma com horário próprio. O cronograma
+        desta etapa — que divisão corre em qual dia e a que horas — ainda não
+        foi confirmado em fonte oficial. Para quem vai competir, o horário que
+        importa é o da própria onda, que vem na inscrição; vale chegar com
+        folga para o credenciamento e o aquecimento.
+      </p>
+
+      <h2>Inscrição para competir × ingresso para assistir</h2>
+      <p>
+        As buscas por "ingresso" e "valor" do HYROX misturam duas coisas
+        diferentes. A <strong>inscrição</strong> é o que o atleta paga para
+        correr, e varia por formato (individual, dupla, revezamento). O
+        <strong>ingresso de público</strong> é a regra para quem vai só
+        assistir. Na página oficial, as duas coisas passam pelo botão "Buy
+        tickets". Os valores e a regra de entrada do público desta etapa
+        ainda não foram confirmados em fonte oficial, e não vamos repetir
+        números que circulam sem ela.
+      </p>
+
+      <h2>Divisões: individual, dupla e revezamento</h2>
+      <p>
+        A página do evento convida a "encarar o desafio sozinho ou montar seu
+        time em duplas ou revezamento", para estreantes e veteranos:
+      </p>
+      <ul>
+        <li><strong>Individual:</strong> você faz a prova inteira.</li>
+        <li><strong>Dupla (Doubles):</strong> os dois correm juntos e dividem o trabalho das estações.</li>
+        <li><strong>Revezamento (Relay):</strong> a equipe reparte a prova entre os integrantes.</li>
+      </ul>
+      <p>
+        Cada formato ainda se divide em categorias (como Open e Pro, que
+        mudam as cargas). As regras e os pesos de cada uma estão no
+        regulamento oficial do HYROX — confira a sua antes de treinar com a
+        carga da prova.
+      </p>
+
+      <h2>Como é a prova</h2>
+      <p>
+        O formato do HYROX é o mesmo em qualquer cidade: oito corridas de
+        1 km, cada uma seguida de uma estação de exercício funcional, sempre
+        na mesma ordem. Isso faz da prova um teste de corrida sob fadiga — o
+        segundo quilômetro depois do sled não se parece com o primeiro.
+      </p>
+      <p>
+        Por ser sempre igual, dá para estimar o esforço a partir do seu tempo
+        e do seu ritmo de corrida.
+      </p>
+
+      <FerramentaInline
+        id="hyrox"
+        texto="Se você já tem um tempo de prova em mente, dá para ver quanto dele é corrida e quanto é estação. A calculadora separa as duas partes pelo seu pace e estima o gasto de cada uma — é estimativa com a conta aberta, não medição, e não diz qual será o seu tempo."
+        acao="Calcular o gasto da minha prova de HYROX"
+      />
+
+      <h2>Resultados</h2>
+      <p>
+        Os vencedores e tempos do HYROX São Paulo 2026 entram aqui depois da
+        prova, somente com fonte oficial.
+      </p>
+
+      <h2>Como se preparar para o HYROX</h2>
+      <p>
+        A esta altura, com a prova a poucos dias, o treino pesado já ficou
+        para trás. O que ainda faz diferença:
+      </p>
+      <ul>
+        <li>
+          <strong>Diminua o volume, mantenha o ritmo.</strong> Nos últimos
+          dias, sessões curtas com alguns trechos no pace de prova mantêm o
+          corpo afiado sem chegar cansado à largada.
+        </li>
+        <li>
+          <strong>Nada novo no dia.</strong> Tênis, luva, alimentação e
+          suplemento que você não testou em treino ficam para depois da prova.
+        </li>
+        <li>
+          <strong>Combine o plano com a dupla ou a equipe.</strong> Quem faz
+          qual parte das estações e em que ritmo vocês correm se decide
+          antes, não na Roxzone.
+        </li>
+        <li>
+          <strong>Largue mais devagar do que dá vontade.</strong> O primeiro
+          quilômetro sem fadiga engana; o preço aparece nas estações do fim.
+        </li>
+      </ul>
+      <p>
+        Para a próxima edição, a preparação começa meses antes: corrida
+        regular, força para as estações de empurrar e carregar, e treinos que
+        juntam as duas coisas, porque é a transição que a prova cobra. Um
+        personal ajuda a montar essa progressão e a corrigir a técnica das
+        estações — em São Paulo, veja <a href="/personal-trainer/sao-paulo-sp/">como
+        encontrar personal trainer na capital</a>. Dor que aparece no treino
+        para a prova é assunto de médico ou fisioterapeuta antes de seguir.
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li>
+          <a href={HYROX_OFICIAL} target="_blank" rel="noopener">HYROX — página
+          oficial do evento HYROX São Paulo</a>: datas (17 e 18/10/2026),
+          terceira edição em São Paulo e formatos individual, dupla e
+          revezamento. Conferida em {ultimaVerificacao}.
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o HYROX São Paulo 2026" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

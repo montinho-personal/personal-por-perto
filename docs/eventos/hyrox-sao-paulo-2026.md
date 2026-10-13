@@ -4,7 +4,16 @@ Informado pelo Renato: 17 e 18/10/2026, Distrito Anhembi.
 
 ## Confirmado
 
-Nada ainda — em 12/10 nenhuma fonte oficial nem de imprensa abriu nesta rede.
+Fonte: página oficial do evento no hyrox.com, por print do Renato em 12/10/2026
+(`prints/hyrox-sao-paulo-2026/2026-10-12-hyrox-oficial-1.jpg` e `-2.jpg`).
+A URL exata aparece cortada no print ("hyrox.com/event/…") — pedir.
+
+- **Data:** "17. Oct. 2026 – 18. Oct. 2026" (sábado e domingo).
+- **Edição:** "O HYROX retorna a SP pela terceira vez".
+- **Formatos:** "encare o desafio sozinho ou monte seu time em duplas ou revezamento" / "go solo or take on HYROX as a team in Doubles or Relay".
+- **Inscrição:** botões "BUY TICKETS HERE" e "EVENT INFORMATION" na página (conteúdo ainda não visto).
+
+Ainda NÃO confirmado: local/endereço (Anhembi só em pista e visão geral de IA), horários, preços, público, transmissão.
 
 ## Bloqueado (pedir print)
 
@@ -27,7 +36,7 @@ Nada ainda — em 12/10 nenhuma fonte oficial nem de imprensa abriu nesta rede.
 
 ## Prints de busca
 
-Recebidos em 13/10, busca `hyrox são paulo 2026`. Arquivos em `prints/hyrox-sao-paulo-2026/`.
+Recebidos em 12/10 (23h, horário de Brasília), busca `hyrox são paulo 2026`. Arquivos em `prints/hyrox-sao-paulo-2026/`.
 
 - **Autocompletar:** data, ingresso, local, outubro, "sao paulo 2026" (sem acento), resultados, inscrição, ao vivo.
 - **Outras pessoas pesquisaram:** outubro 2026, data, horario, ingresso, local, valor.
@@ -52,4 +61,4 @@ Título: **HYROX São Paulo 2026: data, local, horários e ingresso** (cobre dat
 
 ## Artigo
 
-Não publicado. Ligações previstas: `/calorias/hyrox/`, `/personal-trainer/sao-paulo-sp/`.
+Publicado em 12/10/2026: `/guias/hyrox-sao-paulo-2026/` (`src/pages/guias/hyrox-sao-paulo-2026.astro`). Seção "Guias" porque é a que os testes de artigo cobrem; a URL `/eventos/…` prevista antes foi descartada. Ligações previstas: `/calorias/hyrox/`, `/personal-trainer/sao-paulo-sp/`.

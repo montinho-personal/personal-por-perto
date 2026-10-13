@@ -118,6 +118,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-em-academia/', titulo: 'Personal trainer em academia: como funciona' },
   { categoria: 'Guias', url: '/guias/coach-de-academia/', titulo: 'Coach de academia: o que é e a diferença para o personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-smart-fit/', titulo: 'Personal trainer na Smart Fit: pode levar o seu e quanto custa' },
+  { categoria: 'Guias', url: '/guias/hyrox-sao-paulo-2026/', titulo: 'HYROX São Paulo 2026: data, local, horários e ingresso' },
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },

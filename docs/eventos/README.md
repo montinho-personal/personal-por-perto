@@ -17,13 +17,15 @@ plataforma de inscrição) ou dois veículos independentes. Print de resumo de
 busca e visão geral por IA não são fonte. Dado divergente: só a parte que
 bate. Nunca inventar horário, preço, premiação, percurso, vencedor ou tempo.
 
+Artigos ficam em `src/pages/guias/<evento>.astro` (URL `/guias/<evento>/`).
+
 Ordem de publicação (regra de ritmo do CLAUDE.md, páginas novas uma de cada
 vez): HYROX SP → Maratona de Curitiba → Maratona Monumental de Brasília →
 São Silvestre. As datas das provas já espalham naturalmente.
 
 | evento | data | registro | artigo |
 |---|---|---|---|
-| HYROX São Paulo 2026 | 17–18/10 (a confirmar) | [hyrox-sao-paulo-2026.md](hyrox-sao-paulo-2026.md) | aguardando prints |
+| HYROX São Paulo 2026 | 17–18/10 (confirmado) | [hyrox-sao-paulo-2026.md](hyrox-sao-paulo-2026.md) | /guias/hyrox-sao-paulo-2026/ |
 | Maratona de Curitiba 2026 | 15/11 (a confirmar) | [maratona-de-curitiba-2026.md](maratona-de-curitiba-2026.md) | aguardando prints |
 | Maratona Monumental de Brasília 2026 | 21–22/11 (a confirmar) | [maratona-monumental-de-brasilia-2026.md](maratona-monumental-de-brasilia-2026.md) | aguardando prints |
 | 101ª São Silvestre | 31/12 (a confirmar) | [sao-silvestre-2026.md](sao-silvestre-2026.md) | aguardando prints |
