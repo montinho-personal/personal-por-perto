@@ -4,18 +4,28 @@ Informado pelo Renato: 17 e 18/10/2026, Distrito Anhembi.
 
 ## Confirmado
 
-Fonte: página oficial do evento no hyrox.com, por print do Renato em 12/10/2026
-(`prints/hyrox-sao-paulo-2026/2026-10-12-hyrox-oficial-1.jpg` e `-2.jpg`).
-URL: https://hyrox.com/event/hyrox-sao-paulo-2/ (informada pelo Renato).
+Rede liberada em 13/10/2026; páginas abertas direto (curl) nesse dia.
 
-- **Data:** "17. Oct. 2026 – 18. Oct. 2026" (sábado e domingo).
-- **Edição:** "O HYROX retorna a SP pela terceira vez".
-- **Formatos:** "encare o desafio sozinho ou monte seu time em duplas ou revezamento" / "go solo or take on HYROX as a team in Doubles or Relay".
-- **Inscrição:** botões "BUY TICKETS HERE" e "EVENT INFORMATION" na página (conteúdo ainda não visto).
+**Página oficial do evento** — https://hyrox.com/event/hyrox-sao-paulo-2/
+- Data: "17. Oct. 2026 – 18. Oct. 2026"; "O HYROX retorna a SP pela terceira vez"; formatos sozinho, duplas, revezamento.
+- Local: "Av. Olavo Fontoura, 1209 - Santana, São Paulo - SP, 02001-900".
+- Cronograma "*Provisional, subject to change": sábado 8:00–10:00 Men & Adaptive Men; 10:30–11:40 Doubles Men; 12:10–12:30 Doubles Women Pro; 12:40–12:50 Women Pro; 13:20–14:20 Doubles Women; 14:30–15:20 Women & Adaptive Women; 15:50–17:30 Doubles Mixed; 18:00–18:30 Doubles Men Pro; 18:40–19:30 Men Pro; 20:00 Men's Relay; 20:1o–20:20 Mixed Relay (sic, "1o" = 10); 20:30 Women's Relay. Domingo 8:00–9:10 Men & Adaptive Men; 9:40–10:20 Doubles Men; 10:50–11:20 Doubles Women; 11:30–11:40 Women; 12:10–13:10 Doubles Mixed.
+- Credenciamento no local abre 90 min antes da primeira onda de cada divisão. Horário individual "approx. 3 days out"; "start time changes are not permitted".
+- Credenciamento antecipado: 16/10 (sexta), 10h–19h, PUMA Morumbi Shopping, só para quem compete no sábado. No dia: sábado 6h30–20h30; domingo 6h30 até a última onda; só no dia em que compete; documento obrigatório; não pode retirar por outra pessoa.
+- Cerimônias: sábado 14h30 (Pro femininas), 21h15 (Pro masculinas), 22h15 (revezamentos); domingo 10h50 a 15h00.
+- Pacote do atleta: patch de finisher, tempo no leaderboard durante a prova, parciais, cerimônia por faixa etária, vagas para o Mundial em algumas faixas.
+- Transmissão: não mencionada.
 
-Ainda NÃO confirmado: local/endereço (Anhembi só em pista e visão geral de IA), horários, preços, público, transmissão.
+**Plataforma oficial de inscrição (HYROX Brasil)** — https://brazil.hyrox.com/event/hyrox-so-paulo-season-26-27-aj4v8a
+- Individual (Men, Women, Pro, Adaptive): R$ 649. Duplas: R$ 599 por atleta. Revezamento: R$ 399 por integrante.
+- Espectador: R$ 54/dia; meia R$ 27; menor de 12 grátis com ingresso; "Menores de 16 anos devem estar acompanhados por um adulto portador de ingresso de espectador".
+- Algumas categorias de sábado (Adaptive, Doubles Mixed) aparecem com `active:false` no dado — NÃO publicado como "esgotado" (o dado não diz por quê).
 
-## Bloqueado (pedir print)
+**Distrito Anhembi** — https://distritoanhembi.com.br/en/events/hyrox-sao-paulo-2026-2/
+- Venue "Expo 1 and 2"; edição anterior "over 4,000 athletes"; formato "8 km run interspersed with 8 functional workout stations"; "no time limits and no qualifiers"; Relay "teams of 4"; divisões adaptadas para PcD; "Spots are limited and expected to sell out quickly".
+- Divergência menor: o bloco "Event Information" diz "October 17th, 2026"; o cabeçalho da mesma página diz "Oct 17 - 18 2026". Vale 17–18 (organizador).
+
+## Bloqueado (pedir print) — resolvido em 13/10, rede liberada
 
 - https://hyrox.com/event/hyrox-sao-paulo/ e https://hyrox.com/event/hyrox-sao-paulo-2/ (pode ser a página de 2026)
 - https://hyrox.com/find-my-race/ e o rulebook atual (pesos por divisão, idade mínima, penalidades)

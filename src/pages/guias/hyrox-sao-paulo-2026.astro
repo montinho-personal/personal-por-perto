@@ -22,10 +22,34 @@ import { site } from '../../data/site';
  */
 
 /** Data de conferência das fontes, no formato DD/MM/AAAA. */
-const ultimaVerificacao = '12/10/2026';
-const PENDENTE = 'Ainda não confirmado em fonte oficial';
+const ultimaVerificacao = '13/10/2026';
 
 const HYROX_OFICIAL = 'https://hyrox.com/event/hyrox-sao-paulo-2/';
+const INGRESSOS = 'https://brazil.hyrox.com/event/hyrox-so-paulo-season-26-27-aj4v8a';
+const ANHEMBI = 'https://distritoanhembi.com.br/en/events/hyrox-sao-paulo-2026-2/';
+
+/** Cronograma provisório da página oficial (sujeito a mudança). */
+const SABADO: [string, string][] = [
+  ['8h às 10h', 'Individual masculino e Adaptive masculino'],
+  ['10h30 às 11h40', 'Duplas masculinas'],
+  ['12h10 às 12h30', 'Duplas femininas Pro'],
+  ['12h40 às 12h50', 'Individual feminino Pro'],
+  ['13h20 às 14h20', 'Duplas femininas'],
+  ['14h30 às 15h20', 'Individual feminino e Adaptive feminino'],
+  ['15h50 às 17h30', 'Duplas mistas'],
+  ['18h às 18h30', 'Duplas masculinas Pro'],
+  ['18h40 às 19h30', 'Individual masculino Pro'],
+  ['20h', 'Revezamento masculino'],
+  ['20h10 às 20h20', 'Revezamento misto'],
+  ['20h30', 'Revezamento feminino'],
+];
+const DOMINGO: [string, string][] = [
+  ['8h às 9h10', 'Individual masculino e Adaptive masculino'],
+  ['9h40 às 10h20', 'Duplas masculinas'],
+  ['10h50 às 11h20', 'Duplas femininas'],
+  ['11h30 às 11h40', 'Individual feminino'],
+  ['12h10 às 13h10', 'Duplas mistas'],
+];
 
 const relacionados = [
   {
@@ -50,7 +74,7 @@ const relacionados = [
 
 const path = '/guias/hyrox-sao-paulo-2026';
 const publicadoEm = '2026-10-12';
-const atualizadoEm = '2026-10-12';
+const atualizadoEm = '2026-10-13';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -61,43 +85,48 @@ const faqs = [
   {
     pergunta: 'Quando é o HYROX São Paulo 2026?',
     resposta:
-      'Nos dias 17 e 18 de outubro de 2026, sábado e domingo, segundo a página oficial do evento no site do HYROX. É a terceira edição da prova em São Paulo.',
+      'Nos dias 17 e 18 de outubro de 2026, sábado e domingo, segundo a página oficial do evento. É a terceira edição da prova em São Paulo. O sábado concentra a maior parte das divisões, incluindo as Pro e os revezamentos; o domingo tem individual, duplas e duplas mistas pela manhã.',
   },
   {
     pergunta: 'Onde vai ser o HYROX São Paulo 2026?',
     resposta:
-      'A página oficial do evento, na parte que conferimos, não traz o local. Assim que ele estiver confirmado em fonte oficial, entra aqui com endereço e acesso.',
+      'No Distrito Anhembi, nos pavilhões Expo 1 e 2, na Av. Olavo Fontoura, 1209 – Santana, São Paulo. O endereço está na página oficial do evento e na página do próprio Anhembi.',
   },
   {
-    pergunta: 'Qual o horário do HYROX São Paulo?',
+    pergunta: 'Qual o horário do HYROX São Paulo 2026?',
     resposta:
-      'O cronograma por dia e por divisão ainda não foi confirmado em fonte oficial. No HYROX, cada atleta ou equipe larga numa onda com horário próprio, informado na inscrição — por isso o horário que vale para você é o da sua onda, não o de abertura do evento.',
+      'Pelo cronograma provisório da página oficial, as largadas vão das 8h às 20h30 no sábado e das 8h às 13h10 no domingo, com cada divisão numa faixa de horário. O horário individual de cada atleta sai cerca de três dias antes da prova, e a organização avisa que não é permitido trocar de horário.',
   },
   {
     pergunta: 'Quanto custa a inscrição do HYROX São Paulo 2026?',
     resposta:
-      'O valor ainda não foi confirmado em fonte oficial. A venda é feita pelo botão "Buy tickets" da página oficial do evento, onde aparecem os preços por divisão e se há vagas.',
+      'Na plataforma oficial de inscrição, conferida em 13/10/2026: R$ 649 no individual (Open, Pro e Adaptive), R$ 599 por atleta nas duplas e R$ 399 por integrante no revezamento. O preço pode mudar e a disponibilidade varia por categoria — confira a sua na plataforma antes de contar com a vaga.',
   },
   {
-    pergunta: 'Precisa de ingresso para assistir ao HYROX?',
+    pergunta: 'Quanto custa o ingresso para assistir ao HYROX?',
     resposta:
-      'Ainda não confirmamos em fonte oficial se a entrada de público é gratuita ou paga em São Paulo 2026. Não confunda: "ingresso" para competir é a inscrição do atleta; para assistir, a regra é outra e sai na página do evento.',
+      'R$ 54 por dia, com meia-entrada a R$ 27, na plataforma oficial. Crianças menores de 12 anos não pagam, mas precisam de ingresso, e menores de 16 anos devem estar acompanhados de um adulto com ingresso de espectador.',
+  },
+  {
+    pergunta: 'Onde é a retirada do kit do HYROX São Paulo?',
+    resposta:
+      'Quem compete no sábado pode fazer o credenciamento antecipado na sexta, 16/10, das 10h às 19h, na loja PUMA do Morumbi Shopping. No fim de semana, o credenciamento é no local: sábado das 6h30 às 20h30 e domingo das 6h30 até a última onda, sempre só no dia em que você compete. É obrigatório levar documento, e não é permitido retirar por outra pessoa.',
   },
   {
     pergunta: 'Vai ter transmissão ao vivo do HYROX São Paulo?',
     resposta:
-      'Até a última verificação, nenhuma fonte oficial confirmou transmissão desta etapa. Se for anunciada, ela entra aqui.',
+      'Até a última verificação, a página oficial não anuncia transmissão desta etapa. Os tempos, porém, aparecem no placar ao vivo durante a prova, segundo a organização. Se uma transmissão for anunciada, ela entra aqui.',
   },
   {
     pergunta: 'Onde ver os resultados do HYROX São Paulo 2026?',
     resposta:
-      'Os tempos oficiais saem no sistema de resultados do HYROX, ligado à página do evento. Esta página publica os vencedores depois da prova, com a fonte.',
+      'Os tempos oficiais saem no sistema de resultados do HYROX, com as parciais de cada estação. Esta página publica os vencedores depois da prova, com a fonte.',
   },
 ];
 
 const title = 'Hyrox São Paulo 2026: Data, Local, Horários e Ingresso';
 const description =
-  'Hyrox São Paulo 2026 em 17 e 18 de outubro: o que já está confirmado sobre local, horários, inscrição e ingresso, as divisões e como se preparar.';
+  'Hyrox São Paulo 2026 em 17 e 18/10 no Distrito Anhembi: horários por divisão, valor da inscrição, ingresso para assistir, retirada do kit e preparo.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -119,10 +148,11 @@ const schema = [
 
     <p class="lead">
       O HYROX São Paulo 2026 acontece em <strong>17 e 18 de outubro</strong>,
-      e é a terceira vez que a prova vem à cidade. Dá para competir sozinho,
-      em dupla ou em revezamento. Abaixo, o que já está confirmado em fonte
-      oficial, o que ainda não está — dito com todas as letras — e como
-      chegar à largada preparado.
+      no <strong>Distrito Anhembi</strong>, e é a terceira vez que a prova vem
+      à cidade. Dá para competir sozinho, em dupla ou em revezamento. Abaixo,
+      os horários de cada divisão, quanto custa competir e assistir, onde
+      retirar o kit e como chegar à largada preparado — tudo conferido nas
+      fontes oficiais.
     </p>
 
     <div class="prose">
@@ -131,78 +161,123 @@ const schema = [
         <table>
           <tbody>
             <tr><th scope="row">Data</th><td>17 e 18 de outubro de 2026 (sábado e domingo)</td></tr>
+            <tr><th scope="row">Local</th><td>Distrito Anhembi, pavilhões Expo 1 e 2 — Av. Olavo Fontoura, 1209, Santana, São Paulo</td></tr>
             <tr><th scope="row">Edição</th><td>Terceira em São Paulo</td></tr>
-            <tr><th scope="row">Formatos</th><td>Individual, dupla (Doubles) e revezamento (Relay)</td></tr>
-            <tr><th scope="row">Local e endereço</th><td>{PENDENTE}</td></tr>
-            <tr><th scope="row">Horários e ondas</th><td>{PENDENTE}</td></tr>
-            <tr><th scope="row">Inscrição (atleta)</th><td>Pelo "Buy tickets" da página oficial; valor: {PENDENTE.toLowerCase()}</td></tr>
-            <tr><th scope="row">Ingresso (público)</th><td>{PENDENTE}</td></tr>
-            <tr><th scope="row">Transmissão</th><td>{PENDENTE}</td></tr>
+            <tr><th scope="row">Formatos</th><td>Individual (Open, Pro e Adaptive), duplas e revezamento de 4</td></tr>
+            <tr><th scope="row">Horários</th><td>Sábado das 8h às 20h30; domingo das 8h às 13h10 (cronograma provisório)</td></tr>
+            <tr><th scope="row">Inscrição</th><td>R$ 649 individual · R$ 599 por atleta na dupla · R$ 399 por integrante no revezamento</td></tr>
+            <tr><th scope="row">Ingresso (público)</th><td>R$ 54 por dia · meia R$ 27 · menores de 12 anos não pagam, mas precisam de ingresso</td></tr>
+            <tr><th scope="row">Retirada do kit</th><td>Sexta, 16/10, das 10h às 19h, na PUMA do Morumbi Shopping (só para quem compete no sábado), ou no local, no dia da sua prova</td></tr>
+            <tr><th scope="row">Transmissão</th><td>Não anunciada pela organização até a última verificação</td></tr>
           </tbody>
         </table>
       </div>
       <p class="small">
-        Fonte de cada linha confirmada: página oficial do evento no site do
-        HYROX. Os itens pendentes entram aqui assim que saírem em fonte
-        oficial — nada vem de resumo de busca.
+        Fontes: página oficial do evento, plataforma oficial de inscrição e
+        página do Distrito Anhembi, conferidas em {ultimaVerificacao}. Preços e
+        horários podem mudar até a prova.
       </p>
 
       <h2>Data e local</h2>
       <p>
-        A página oficial anuncia o evento para <strong>17 de outubro a 18 de
-        outubro de 2026</strong>, com a chamada "São Paulo, chegou a sua vez" e
-        a informação de que o HYROX "retorna a SP pela terceira vez".
-      </p>
-      <p>
-        O local não aparece no trecho da página que conferimos, e por isso não
-        o escrevemos aqui ainda. Ele entra nesta página, com endereço e
-        acesso, assim que estiver confirmado em fonte oficial.
+        A página oficial anuncia o evento para <strong>17 e 18 de outubro de
+        2026</strong> e diz que o HYROX "retorna a SP pela terceira vez". A
+        prova é no <strong>Distrito Anhembi</strong>, na Av. Olavo Fontoura,
+        1209, em Santana, Zona Norte de São Paulo, nos pavilhões Expo 1 e 2.
+        Segundo o Anhembi, a edição anterior reuniu mais de 4 mil atletas.
       </p>
 
-      <h2>Horários e ondas de largada</h2>
+      <h2>Horários de largada por divisão</h2>
       <p>
-        No HYROX não existe uma largada única: atletas e equipes saem em
-        ondas ao longo do dia, cada uma com horário próprio. O cronograma
-        desta etapa — que divisão corre em qual dia e a que horas — ainda não
-        foi confirmado em fonte oficial. Para quem vai competir, o horário que
-        importa é o da própria onda, que vem na inscrição; vale chegar com
-        folga para o credenciamento e o aquecimento.
+        No HYROX não existe largada única: cada divisão sai em ondas dentro
+        de uma faixa de horário. O cronograma abaixo é o da página oficial,
+        marcado como <strong>provisório e sujeito a mudança</strong>. O horário
+        individual de cada atleta é publicado cerca de três dias antes da
+        prova, e a organização avisa que não é permitido trocar de horário.
       </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Sábado, 17 de outubro</caption>
+          <thead><tr><th scope="col">Horário</th><th scope="col">Divisão</th></tr></thead>
+          <tbody>
+            {SABADO.map(([h, d]) => <tr><td>{h}</td><td>{d}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Domingo, 18 de outubro</caption>
+          <thead><tr><th scope="col">Horário</th><th scope="col">Divisão</th></tr></thead>
+          <tbody>
+            {DOMINGO.map(([h, d]) => <tr><td>{h}</td><td>{d}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O credenciamento no local abre, para cada divisão, 90 minutos antes da
+        primeira onda dela. As divisões Pro e os revezamentos correm só no
+        sábado.
+      </p>
+
+      <h2>Retirada do kit e credenciamento</h2>
+      <ul>
+        <li>
+          <strong>Antecipado:</strong> sexta, 16/10, das 10h às 19h, na loja
+          PUMA do Morumbi Shopping — exclusivo para quem compete no sábado.
+        </li>
+        <li>
+          <strong>No dia:</strong> sábado das 6h30 às 20h30; domingo das 6h30
+          até a última onda. Só dá para se credenciar no dia em que você
+          compete.
+        </li>
+        <li>
+          <strong>Nos dois casos:</strong> documento de identidade é obrigatório, e
+          não é permitido retirar o kit por outra pessoa.
+        </li>
+      </ul>
 
       <h2>Inscrição para competir × ingresso para assistir</h2>
       <p>
-        As buscas por "ingresso" e "valor" do HYROX misturam duas coisas
-        diferentes. A <strong>inscrição</strong> é o que o atleta paga para
-        correr, e varia por formato (individual, dupla, revezamento). O
-        <strong>ingresso de público</strong> é a regra para quem vai só
-        assistir. Na página oficial, as duas coisas passam pelo botão "Buy
-        tickets". Os valores e a regra de entrada do público desta etapa
-        ainda não foram confirmados em fonte oficial, e não vamos repetir
-        números que circulam sem ela.
+        As buscas por "ingresso" e "valor" do HYROX misturam duas coisas. Os
+        valores abaixo são os da plataforma oficial de inscrição, conferidos
+        em {ultimaVerificacao}:
+      </p>
+      <ul>
+        <li>
+          <strong>Inscrição individual</strong> (Open, Pro e Adaptive): R$ 649.
+        </li>
+        <li><strong>Duplas:</strong> R$ 599 por atleta.</li>
+        <li><strong>Revezamento:</strong> R$ 399 por integrante.</li>
+        <li>
+          <strong>Ingresso de público:</strong> R$ 54 por dia, com meia-entrada
+          a R$ 27. Menores de 12 anos não pagam, mas precisam de ingresso;
+          menores de 16 anos entram acompanhados de um adulto com ingresso.
+        </li>
+      </ul>
+      <p>
+        A disponibilidade muda por categoria e por dia — o Anhembi avisa que
+        as vagas são limitadas e tendem a acabar rápido. Antes de contar com
+        a vaga, confira a sua categoria na plataforma.
       </p>
 
       <h2>Divisões: individual, dupla e revezamento</h2>
-      <p>
-        A página do evento convida a "encarar o desafio sozinho ou montar seu
-        time em duplas ou revezamento", para estreantes e veteranos:
-      </p>
       <ul>
-        <li><strong>Individual:</strong> você faz a prova inteira.</li>
-        <li><strong>Dupla (Doubles):</strong> os dois correm juntos e dividem o trabalho das estações.</li>
-        <li><strong>Revezamento (Relay):</strong> a equipe reparte a prova entre os integrantes.</li>
+        <li><strong>Individual:</strong> você faz a prova inteira. Há Open, Pro (cargas maiores) e Adaptive, para atletas com deficiência.</li>
+        <li><strong>Dupla:</strong> os dois correm juntos e dividem o trabalho das estações — masculina, feminina, mista e Pro.</li>
+        <li><strong>Revezamento:</strong> equipes de quatro completam a prova juntas — masculino, feminino e misto.</li>
       </ul>
       <p>
-        Cada formato ainda se divide em categorias (como Open e Pro, que
-        mudam as cargas). As regras e os pesos de cada uma estão no
-        regulamento oficial do HYROX — confira a sua antes de treinar com a
-        carga da prova.
+        As regras e os pesos de cada categoria estão no regulamento oficial do
+        HYROX — confira o da sua antes de treinar com a carga da prova.
+        Segundo o Anhembi, a prova não tem tempo limite nem exige
+        classificação prévia.
       </p>
 
       <h2>Como é a prova</h2>
       <p>
-        O formato do HYROX é o mesmo em qualquer cidade: oito corridas de
-        1 km, cada uma seguida de uma estação de exercício funcional, sempre
-        na mesma ordem. Isso faz da prova um teste de corrida sob fadiga — o
+        O formato do HYROX é o mesmo em qualquer cidade: 8 km de corrida
+        divididos em oito trechos de 1 km, cada um seguido de uma estação de
+        exercício funcional, sempre na mesma ordem. Isso faz da prova um teste de corrida sob fadiga — o
         segundo quilômetro depois do sled não se parece com o primeiro.
       </p>
       <p>
@@ -216,10 +291,17 @@ const schema = [
         acao="Calcular o gasto da minha prova de HYROX"
       />
 
-      <h2>Resultados</h2>
+      <h2>Onde assistir e resultados</h2>
       <p>
-        Os vencedores e tempos do HYROX São Paulo 2026 entram aqui depois da
-        prova, somente com fonte oficial.
+        Para ver ao vivo, o caminho é o próprio Anhembi, com ingresso de
+        público. Até a última verificação, a organização não anunciou
+        transmissão. Os tempos
+        aparecem no placar enquanto a prova acontece, e cada atleta recebe o
+        tempo final com as parciais de cada estação.
+      </p>
+      <p>
+        Os vencedores do HYROX São Paulo 2026 entram aqui depois da prova,
+        somente com fonte oficial.
       </p>
 
       <h2>Como se preparar para o HYROX</h2>
@@ -261,10 +343,21 @@ const schema = [
       <ul class="small">
         <li>
           <a href={HYROX_OFICIAL} target="_blank" rel="noopener">HYROX — página
-          oficial do evento HYROX São Paulo</a>: datas (17 e 18/10/2026),
-          terceira edição em São Paulo e formatos individual, dupla e
-          revezamento. Conferida em {ultimaVerificacao}.
+          oficial do evento HYROX São Paulo</a>: datas, terceira edição,
+          endereço, cronograma provisório, credenciamento, cerimônias e o que
+          vem no pacote do atleta.
         </li>
+        <li>
+          <a href={INGRESSOS} target="_blank" rel="noopener">HYROX Brasil —
+          plataforma oficial de inscrição</a>: valores de inscrição por
+          formato e de ingresso de público, e as regras de idade do público.
+        </li>
+        <li>
+          <a href={ANHEMBI} target="_blank" rel="noopener">Distrito Anhembi —
+          página do evento</a>: pavilhões Expo 1 e 2, público da edição
+          anterior, formato da prova e ausência de tempo limite.
+        </li>
+        <li>Todas conferidas em {ultimaVerificacao}.</li>
       </ul>
     </div>
 
