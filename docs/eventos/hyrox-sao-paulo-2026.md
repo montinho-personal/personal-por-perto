@@ -6,7 +6,7 @@ Informado pelo Renato: 17 e 18/10/2026, Distrito Anhembi.
 
 Fonte: página oficial do evento no hyrox.com, por print do Renato em 12/10/2026
 (`prints/hyrox-sao-paulo-2026/2026-10-12-hyrox-oficial-1.jpg` e `-2.jpg`).
-A URL exata aparece cortada no print ("hyrox.com/event/…") — pedir.
+URL: https://hyrox.com/event/hyrox-sao-paulo-2/ (informada pelo Renato).
 
 - **Data:** "17. Oct. 2026 – 18. Oct. 2026" (sábado e domingo).
 - **Edição:** "O HYROX retorna a SP pela terceira vez".
