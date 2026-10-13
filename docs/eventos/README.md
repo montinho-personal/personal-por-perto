@@ -28,7 +28,7 @@ São Silvestre. As datas das provas já espalham naturalmente.
 | HYROX São Paulo 2026 | 17–18/10 (confirmado) | [hyrox-sao-paulo-2026.md](hyrox-sao-paulo-2026.md) | /guias/hyrox-sao-paulo-2026/ |
 | Maratona de Curitiba 2026 | 15/11 (confirmado) | [maratona-de-curitiba-2026.md](maratona-de-curitiba-2026.md) | /guias/maratona-de-curitiba-2026/ |
 | Maratona Monumental de Brasília 2026 | 21–22/11 (confirmado) | [maratona-monumental-de-brasilia-2026.md](maratona-monumental-de-brasilia-2026.md) | /guias/maratona-monumental-de-brasilia-2026/ |
-| 101ª São Silvestre | 31/12 (a confirmar) | [sao-silvestre-2026.md](sao-silvestre-2026.md) | aguardando prints |
+| 101ª São Silvestre | 31/12 (confirmado) | [sao-silvestre-2026.md](sao-silvestre-2026.md) | /guias/sao-silvestre-2026/ |
 
 ## Rotinas (horário de Brasília)
 

@@ -121,6 +121,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/hyrox-sao-paulo-2026/', titulo: 'HYROX São Paulo 2026: data, local, horários e ingresso' },
   { categoria: 'Guias', url: '/guias/maratona-de-curitiba-2026/', titulo: 'Maratona de Curitiba 2026: data, inscrição, kit e horário' },
   { categoria: 'Guias', url: '/guias/maratona-monumental-de-brasilia-2026/', titulo: 'Maratona Monumental de Brasília 2026: data, percurso, inscrição e kit' },
+  { categoria: 'Guias', url: '/guias/sao-silvestre-2026/', titulo: 'São Silvestre 2026: data, inscrição, percurso e horário' },
   { categoria: 'Guias', url: '/guias/vale-a-pena-contratar-personal-trainer/', titulo: 'Vale a pena contratar um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-a-domicilio/', titulo: 'Personal trainer a domicílio: como funciona e quanto custa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-em-condominio/', titulo: 'Personal trainer em condomínio: como funciona e quanto custa' },

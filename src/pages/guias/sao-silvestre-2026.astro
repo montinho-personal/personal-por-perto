@@ -1,0 +1,444 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+/*
+ * Cobertura de evento (modelo: artigo + varreduras até a prova + resultado
+ * no dia). Registro de fatos, fontes e pendências em
+ * docs/eventos/sao-silvestre-2026.md — só entra aqui o que está
+ * "Confirmado" lá. Estrutura e FAQ pelos prints e exports de busca de
+ * 13/10/2026. saosilvestre.com.br e a Ticket Sports recusam o acesso
+ * automatizado (403 do próprio site): os preços vêm do print da plataforma
+ * oficial enviado pelo Renato; vagas e regulamento 2026 seguem pendentes.
+ * Dado de 2025 sempre rotulado.
+ */
+
+/** Data de conferência das fontes, no formato DD/MM/AAAA. */
+const ultimaVerificacao = '13/10/2026';
+
+const SITE_OFICIAL = 'https://www.saosilvestre.com.br/';
+const GAZETA_2026 =
+  'https://www.gazetaesportiva.com/sao-silvestre-conteudo/primeira-sao-silvestre-do-proximo-seculo-abre-inscricoes-nesta-terca-feira/';
+const PREFEITURA_CET_2025 =
+  'https://prefeitura.sp.gov.br/w/cet-monta-opera%C3%A7%C3%A3o-especial-de-tr%C3%A2nsito-para-s%C3%A3o-silvestre-1';
+const PREFEITURA_RESULTADO_2025 =
+  'https://prefeitura.sp.gov.br/w/s%C3%A3o-silvestre-100-anos-prefeito-premia-vencedores-na-edi%C3%A7%C3%A3o-hist%C3%B3rica-com-brasileiros-no-p%C3%B3dio';
+
+/** Largadas de 2025, pela CET — referência até sair o regulamento de 2026. */
+const LARGADAS_2025: [string, string][] = [
+  ['7h25', 'Cadeirantes'],
+  ['7h40', 'Elite feminina'],
+  ['8h05', 'Elite masculina e pelotão geral'],
+];
+
+/** Percurso de 2025, na ordem da CET. */
+const PERCURSO_2025 = [
+  'Av. Paulista',
+  'Túnel José Roberto Fanganiello Melhem',
+  'Av. Dr. Arnaldo',
+  'Pacaembu (Praça Charles Miller e Av. Pacaembu)',
+  'Av. Dr. Abrahão Ribeiro e Av. Marquês de São Vicente',
+  'Av. Rudge e Viaduto Orlando Murgel',
+  'Av. Rio Branco, Av. Ipiranga e Av. São João',
+  'Largo do Arouche, Praça da República e Largo do Paissandu',
+  'Rua Xavier de Toledo e Rua da Consolação',
+  'Viadutos Nove de Julho e Jacareí, Rua Maria Paula',
+  'Av. Brigadeiro Luís Antônio',
+  'Av. Paulista (chegada)',
+];
+
+/** Tempo de prova em 15 km para alguns ritmos — conta, não estimativa de ninguém. */
+const KM = 15;
+const tempo15 = (paceMin: number) => {
+  const total = Math.round(paceMin * KM);
+  return `${Math.floor(total / 60)}h${String(total % 60).padStart(2, '0')}`;
+};
+const RITMOS = [5, 6, 7, 8].map((p) => ({ pace: `${p}:00/km`, tempo: tempo15(p) }));
+
+/** Lote 1 na plataforma oficial (print do Renato, 13/10/2026, 15h01). */
+const KITS: [string, string, string][] = [
+  ['Kit Básico — até 59 anos', 'Pelotão geral', 'R$ 335,90'],
+  ['Kit Básico — 60 anos ou mais', 'Pelotão geral', 'R$ 167,95'],
+  ['Kit Intermediário — acima de 18 anos', 'Pelotão geral', 'R$ 459,90'],
+  ['Kit Premium — acima de 18 anos', 'Pelotão Premium', 'R$ 1.039,90'],
+];
+
+const relacionados = [
+  {
+    url: '/ferramentas/calculadora-de-pace/',
+    titulo: 'Calculadora de pace',
+    descricao: 'Ritmo por km, tempo de prova e velocidade para qualquer distância.',
+    tipo: 'Calculadora',
+  },
+  {
+    url: '/guias/primeira-corrida-de-rua/',
+    titulo: 'Primeira corrida de rua',
+    descricao: 'Como escolher a prova, treinar e chegar bem à primeira linha de chegada.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'Preços, formatos e onde treinar na capital.',
+    tipo: 'Cidade',
+  },
+];
+
+const path = '/guias/sao-silvestre-2026';
+const publicadoEm = '2026-10-13';
+const atualizadoEm = '2026-10-13';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'São Silvestre 2026', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quando é a São Silvestre 2026?',
+    resposta:
+      'Na quinta-feira, 31 de dezembro de 2026, em São Paulo. É a 101ª edição da Corrida Internacional de São Silvestre, a primeira depois do centenário, segundo a Gazeta Esportiva, veículo da Fundação Cásper Líbero, que realiza a prova.',
+  },
+  {
+    pergunta: 'Quantos km tem a São Silvestre?',
+    resposta:
+      '15 km, com largada na Avenida Paulista, perto do número 2084, e chegada em frente ao edifício da Fundação Cásper Líbero, na Avenida Paulista, 900.',
+  },
+  {
+    pergunta: 'Quando abrem as inscrições da São Silvestre 2026?',
+    resposta:
+      'As inscrições abriram em 30 de setembro de 2026, pela Ticket Sports by Ingresse, a nova plataforma oficial, com acesso pelo site saosilvestre.com.br. Inscrição em outro site não vale.',
+  },
+  {
+    pergunta: 'Quanto custa a inscrição da São Silvestre 2026?',
+    resposta:
+      'No Lote 1 da plataforma oficial, conferido em 13/10/2026: Kit Básico R$ 335,90 (R$ 167,95 para 60 anos ou mais), Kit Intermediário R$ 459,90 e Kit Premium R$ 1.039,90, este com largada no pelotão Premium. O preço muda de lote para lote; confira na Ticket Sports antes de pagar.',
+  },
+  {
+    pergunta: 'Qual o horário da São Silvestre 2026?',
+    resposta:
+      'A plataforma oficial de inscrição marca o início da prova às 7h25 de 31/12/2026. O horário de cada pelotão sai no regulamento de 2026, ainda não conferido. Como referência, em 2025 a CET divulgou: cadeirantes às 7h25, elite feminina às 7h40 e elite masculina com o pelotão geral às 8h05.',
+  },
+  {
+    pergunta: 'Qual o percurso da São Silvestre 2026?',
+    resposta:
+      'O mapa de 2026 ainda não foi conferido. Em 2025, pela CET, o trajeto saiu da Paulista, desceu pelo Túnel Fanganiello Melhem e pela Av. Dr. Arnaldo até o Pacaembu, seguiu pela Marquês de São Vicente e pela Rudge até o Centro e voltou à Paulista pela Av. Brigadeiro Luís Antônio.',
+  },
+  {
+    pergunta: 'Quanto tempo dura a corrida de São Silvestre?',
+    resposta: `Depende do seu ritmo: em 15 km, quem corre a 6:00 por km leva cerca de ${tempo15(6)}; a 7:00 por km, cerca de ${tempo15(7)}. O tempo limite oficial de 2026 sai no regulamento, que ainda não conferimos.`,
+  },
+  {
+    pergunta: 'Quem ganhou a São Silvestre 2025?',
+    resposta:
+      'Na 100ª edição, em 31/12/2025, a Prefeitura de São Paulo registrou a vitória da tanzaniana Sicilia Panga no feminino e do etíope Muse Chizachew no masculino, com os brasileiros Fábio Jesus e Núbia Oliveira em terceiro. A grafia dos nomes varia entre veículos; a de 2026 entra aqui depois da prova, com a fonte.',
+  },
+];
+
+const title = 'São Silvestre 2026: Data, Inscrição, Percurso e Horário';
+const description =
+  'São Silvestre 2026 em 31/12 na Paulista: 101ª edição, 15 km, valor dos kits, inscrição pela Ticket Sports, percurso, horário e como treinar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Eventos</p>
+    <h1>São Silvestre 2026: data, inscrição, percurso e horário</h1>
+    <p class="updated">
+      Última verificação: {ultimaVerificacao} · Atualizado em {formatDateLong(atualizadoEm)}
+    </p>
+
+    <p class="lead">
+      A 101ª Corrida Internacional de São Silvestre é na <strong>quinta-feira,
+      31 de dezembro de 2026</strong>: 15 km com largada e chegada na Avenida
+      Paulista. As inscrições abriram em 30 de setembro. Abaixo, o que está
+      confirmado para 2026, o que ainda vale como referência de 2025 — sempre
+      dito qual é qual — e como chegar bem aos 15 km.
+    </p>
+
+    <div class="prose">
+      <h2>Resumo da São Silvestre 2026</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">Data</th><td>Quinta-feira, 31 de dezembro de 2026</td></tr>
+            <tr><th scope="row">Edição</th><td>101ª, a primeira depois do centenário</td></tr>
+            <tr><th scope="row">Distância</th><td>15 km</td></tr>
+            <tr><th scope="row">Largada e chegada</th><td>Av. Paulista: largada perto do nº 2084; chegada no nº 900, em frente à Fundação Cásper Líbero</td></tr>
+            <tr><th scope="row">Inscrição</th><td>Abertas desde 30/09/2026, só pela Ticket Sports by Ingresse, a partir do site oficial</td></tr>
+            <tr><th scope="row">Valor (Lote 1)</th><td>Kit Básico R$ 335,90 (60+: R$ 167,95) · Intermediário R$ 459,90 · Premium R$ 1.039,90</td></tr>
+            <tr><th scope="row">Vagas</th><td>Total não conferido; à venda em {ultimaVerificacao}</td></tr>
+            <tr><th scope="row">Horários</th><td>A plataforma marca o início às 7h25; ondas de 2026 não conferidas (em 2025: 7h25, 7h40 e 8h05)</td></tr>
+            <tr><th scope="row">Realização</th><td>Fundação Cásper Líbero, com organização técnica da Vega Sports</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">
+        Fontes: Gazeta Esportiva (veículo da Fundação Cásper Líbero),
+        plataforma oficial de inscrição e Prefeitura de São Paulo, conferidas
+        em {ultimaVerificacao}.
+      </p>
+
+      <h2>Data e local</h2>
+      <p>
+        A prova é no dia <strong>31 de dezembro de 2026</strong>. O percurso
+        oficial tem 15 km pelas ruas da capital, com largada na Avenida
+        Paulista, perto do número 2084, e chegada em frente ao edifício da
+        Fundação Cásper Líbero, na Paulista, 900. Criada em 1925 pelo
+        jornalista Cásper Líbero, a corrida recebeu em 2022 o título de
+        Patrimônio Mundial do Atletismo, da World Athletics. Em 2025, teve
+        corredores de cerca de 40 países e de mais de 1.900 cidades
+        brasileiras, segundo a organização.
+      </p>
+
+      <h2>Inscrição</h2>
+      <p>
+        As inscrições da 101ª edição abriram em <strong>30 de setembro de
+        2026</strong>, numa plataforma nova: a <strong>Ticket Sports by
+        Ingresse</strong>, acessada pelo site oficial, saosilvestre.com.br.
+        Antes da abertura, houve um pré-cadastro para adiantar o preenchimento
+        dos dados. Inscrição feita em outro site não é reconhecida.
+      </p>
+      <p>
+        Valores do <strong>Lote 1</strong> na plataforma oficial, conferidos
+        em {ultimaVerificacao}, quando as inscrições ainda estavam à venda:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Kit</th><th scope="col">Largada</th><th scope="col">Valor</th></tr></thead>
+          <tbody>
+            {KITS.map(([k, l, v]) => <tr><td>{k}</td><td>{l}</td><td>{v}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O preço muda de lote para lote, e o total de vagas de 2026 ainda não
+        foi conferido em fonte oficial. Para ter ideia da procura: a edição de
+        2025 teve mais de 55 mil inscritos, 47% mulheres, segundo a Prefeitura,
+        e as inscrições esgotaram rápido.
+      </p>
+
+      <h2>Horário de largada</h2>
+      <p>
+        A plataforma oficial marca o início da prova às <strong>7h25</strong>
+        do dia 31. O horário de cada pelotão em 2026 sai no regulamento, que
+        ainda não conferimos. Até lá, a referência é 2025, quando a CET
+        divulgou estes horários:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Largadas da São Silvestre 2025 (CET)</caption>
+          <thead><tr><th scope="col">Horário</th><th scope="col">Pelotão</th></tr></thead>
+          <tbody>
+            {LARGADAS_2025.map(([h, p]) => <tr><td>{h}</td><td>{p}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Em 2025, a Paulista foi interditada desde as 20h do dia 30, e as vias
+        do percurso a partir da madrugada do dia 31. Quando a CET divulgar o
+        esquema de 2026, ele entra aqui.
+      </p>
+
+      <h2>Percurso</h2>
+      <p>
+        O mapa de 2026 ainda não foi conferido. O de 2025, pela ordem da CET,
+        foi este:
+      </p>
+      <ol>
+        {PERCURSO_2025.map((p) => <li>{p}</li>)}
+      </ol>
+      <p>
+        O site oficial já mostra os <strong>serviços no percurso</strong> de
+        2026 (informações sujeitas a alteração até a prova). A hidratação fica
+        no km 3 (Av. Pacaembu), no km 5,8 (Av. Rudge), no km 8 (Av. Ipiranga),
+        no km 10,4 (Praça da República), no km 13 (Av. Brigadeiro) e na
+        chegada (Av. Paulista, 900). Há banheiros na largada, no km 7 e na
+        chegada, e equipe médica ao longo de todo o trajeto.
+      </p>
+      <p>
+        O trecho que todo corredor conhece é o final: a Brigadeiro Luís
+        Antônio de volta à Paulista, nos últimos quilômetros, quando as pernas
+        já têm 13 km.
+      </p>
+
+      <h2>Quanto tempo leva para correr 15 km</h2>
+      <p>
+        Uma das perguntas mais buscadas é quanto tempo dura a prova. Depende
+        do ritmo — a conta é o pace vezes 15:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Ritmo médio</th><th scope="col">Tempo nos 15 km</th></tr></thead>
+          <tbody>
+            {RITMOS.map((r) => <tr><td>{r.pace}</td><td>{r.tempo}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+
+      <FerramentaInline
+        id="calculadora-de-pace"
+        texto="Para o seu caso, a conta é com o seu ritmo, não com os da tabela. A calculadora converte pace em tempo de prova e o contrário para qualquer distância, inclusive os 15 km — ela não sabe como você está treinado nem desconta a subida final, então o resultado é ponto de partida."
+        acao="Calcular o meu tempo nos 15 km"
+      />
+
+      <h2>Resultado da São Silvestre 2025</h2>
+      <p>
+        Na 100ª edição, em 31/12/2025, a Prefeitura de São Paulo registrou a
+        vitória da tanzaniana <strong>Sicilia Panga</strong> no feminino e do
+        etíope <strong>Muse Chizachew</strong> no masculino. Os brasileiros
+        Fábio Jesus e Núbia Oliveira terminaram em terceiro lugar. A grafia
+        dos nomes estrangeiros varia entre veículos; e os tempos não estão
+        aqui porque os números divergem entre as fontes que conferimos. Os
+        vencedores de 2026 entram nesta página depois da prova, somente com
+        fonte oficial.
+      </p>
+
+      <h2>Como treinar para os 15 km da São Silvestre</h2>
+      <p>
+        Faltam cerca de onze semanas — tempo de verdade para quem já corre 5
+        ou 10 km chegar bem aos 15. O que mais pesa:
+      </p>
+      <ul>
+        <li>
+          <strong>Aumente o longão aos poucos.</strong> Um treino longo por
+          semana, crescendo devagar, até passar dos 12 km algumas semanas
+          antes da prova.
+        </li>
+        <li>
+          <strong>Treine subida.</strong> O fim da prova sobe para a Paulista;
+          subidas no treino — e força de pernas e glúteos na academia — fazem
+          diferença justamente ali.
+        </li>
+        <li>
+          <strong>Treine de manhã, no calor.</strong> A largada é cedo, no
+          verão paulistano. Alguns treinos no mesmo horário ajudam a acertar
+          hidratação e café da manhã.
+        </li>
+        <li>
+          <strong>Largue no seu ritmo.</strong> Com dezenas de milhares de
+          pessoas na Paulista, é fácil sair rápido demais e pagar na
+          Brigadeiro.
+        </li>
+      </ul>
+      <p>
+        Se é a sua primeira prova longa, o guia de <a
+        href="/guias/primeira-corrida-de-rua/">primeira corrida de rua</a>
+        ajuda no básico. Para treinar com alguém do seu lado, veja <a
+        href="/personal-trainer/sao-paulo-sp/">como encontrar personal trainer
+        em São Paulo</a>. Dor que aparece no treino é assunto de médico ou
+        fisioterapeuta antes de seguir.
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li>
+          <a href={GAZETA_2026} target="_blank" rel="noopener">Gazeta
+          Esportiva (Fundação Cásper Líbero), 30/09/2026</a>: 101ª edição,
+          data, abertura das inscrições e plataforma, pré-cadastro, realização
+          e organização técnica, local de largada e chegada, distância e
+          dados de 2025.
+        </li>
+        <li>
+          Site oficial, seção "Serviços no percurso" (conferida por print em
+          {ultimaVerificacao}): pontos de hidratação, banheiros e serviço
+          médico de 2026.
+        </li>
+        <li>
+          Ticket Sports by Ingresse, plataforma oficial de inscrição
+          (conferida por print em {ultimaVerificacao}): valores do Lote 1 por
+          kit e horário de início, 7h25.
+        </li>
+        <li>
+          <a href={PREFEITURA_CET_2025} target="_blank" rel="noopener">Prefeitura
+          de São Paulo / CET, 30/12/2025</a>: horários de largada, percurso e
+          bloqueios de 2025.
+        </li>
+        <li>
+          <a href={PREFEITURA_RESULTADO_2025} target="_blank" rel="noopener">Prefeitura
+          de São Paulo, 31/12/2025</a>: vencedores e número de inscritos da
+          100ª edição.
+        </li>
+        <li>
+          <a href={SITE_OFICIAL} target="_blank" rel="noopener">Site oficial
+          da São Silvestre</a>, onde ficam inscrição e regulamento (não
+          conferido por nós até a última verificação).
+        </li>
+        <li>Conferidas em {ultimaVerificacao}.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre a São Silvestre 2026" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

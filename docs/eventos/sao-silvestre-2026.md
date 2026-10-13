@@ -2,6 +2,13 @@
 
 Informado pelo Renato: 31/12/2026, 15 km, largada e chegada na Av. Paulista.
 
+## Confirmado para 2026
+
+- **Gazeta Esportiva (veículo da Fundação Cásper Líbero, realizadora), 30/09/2026** — https://www.gazetaesportiva.com/sao-silvestre-conteudo/primeira-sao-silvestre-do-proximo-seculo-abre-inscricoes-nesta-terca-feira/ : 101ª edição, 31/12, inscrições abertas (30/09) pela Ticket Sports by Ingresse, pré-cadastro, realização Fundação Cásper Líbero e organização técnica Vega Sports, 15 km, largada na Paulista perto do 2084 e chegada na Paulista, 900; 2025 com ~40 países e 1.900+ cidades; Patrimônio Mundial do Atletismo (World Athletics, 2022).
+- **Ticket Sports (print do Renato, 13/10/2026 15h01)**: "quinta, 07h25 — 31 de dezembro de 2026"; Lote 1: Kit Básico até 59 anos R$ 335,90; 60+ R$ 167,95; Kit Intermediário (acima de 18) R$ 459,90; Kit Premium (acima de 18, pelotão Premium) R$ 1.039,90; à venda nesse momento.
+- **saosilvestre.com.br, "Serviços no percurso" (print do Renato, 13/10)**: hidratação km 3 (Pacaembu), 5,8 (Rudge), 8 (Ipiranga), 10,4 (República), 13 (Brigadeiro) e chegada (Paulista, 900); banheiros na largada, km 7 e chegada; equipe médica em todo o trajeto. "Informações sujeitas a alterações".
+- Pendente: total de vagas 2026 (55 mil só em resumo/snippet), regulamento 2026 (ondas, tempo limite, idade), retirada do kit 2026, premiação, transmissão.
+
 ## Confirmado (fonte oficial — Prefeitura de SP / CET; tudo sobre 2025)
 
 - **2025 foi a 100ª edição** ("chega, em 2025, à sua 100ª edição" / "Criada em 1925") → 2026 é a 101ª por conta; nenhuma página oficial aberta diz "101ª". https://prefeitura.sp.gov.br/w/s%C3%A3o-silvestre-2025-100-edi%C3%A7%C3%B5es-correndo-junto-com-a-hist%C3%B3ria-de-s%C3%A3o-paulo
@@ -34,8 +41,12 @@ Informado pelo Renato: 31/12/2026, 15 km, largada e chegada na Av. Paulista.
 
 ## Prints de busca
 
-Aguardando (pedido em 12/10).
+Recebidos em 13/10 (`prints/sao-silvestre-2026/`): autocompletar, visão geral de IA (não é fonte), PAA, "Outras pessoas pesquisaram", exports de buscadores, PAA e modelos de IA.
+
+- Volumes: são silvestre 2026 1,0 mil; inscrição são silvestre 2026 480; são silvestre 2026 inscrição 260; corrida (de) são silvestre 2026 260; quem ganhou 50; premiação 50; quando abre as inscrições 40; camiseta 30; inscrição valor 30; quantos km 20.
+- PAA: quando abrem as inscrições; quanto custa; quando é; valor do kit; quanto tempo dura; percurso; resultados/ganhadores; valor do 1º lugar; tempo máximo.
+- Decisões: tabela de kits; tabela "quanto tempo leva 15 km" + calculadora de pace (PAA "quanto tempo dura"); horários e percurso de 2025 rotulados; vencedores de 2025 sem tempos (divergem); premiação e tempo máximo aguardam o regulamento. Muitas buscas são de São Silvestres de Portugal (Lisboa, Porto, Trofa) — ignoradas.
 
 ## Artigo
 
-Não publicado. Ligações previstas: calculadora de pace, `/calorias/corrida/`, `/personal-trainer/sao-paulo-sp/`, `/guias/primeira-corrida-de-rua/`.
+Publicado em 13/10/2026: `/guias/sao-silvestre-2026/` (`src/pages/guias/sao-silvestre-2026.astro`).
