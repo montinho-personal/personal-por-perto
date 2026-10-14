@@ -51,7 +51,7 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 | [hyrox](/calorias/hyrox/) | 1 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [basquete](/calorias/basquete/) | 0 / 1 | 0 | sem artigo sobre o assunto — depende de pauta |
 | [ping-pong](/calorias/ping-pong/) | 0 / 0 | 0 | sem artigo sobre o assunto — depende de pauta |
-| [gasto-calorico-diario](/calorias/gasto-calorico-diario/) | 11 / 4 | 0 | a mais demandada pelo texto dos artigos de emagrecimento |
+| [gasto-calorico-diario](/calorias/gasto-calorico-diario/) | 10 / 4 | 0 | a mais demandada pelo texto dos artigos de emagrecimento |
 | [musculacao](/emagrecimento/quantas-calorias-queima-a-musculacao/) | 3 / 3 | 0 | mora num artigo; entra onde o texto compara gasto de treino |
 
 ## Regras que a fila segue
@@ -102,7 +102,7 @@ Correções encontradas na leitura, feitas no mesmo dia (defeito não espera lev
 - 06/10 — `/emagrecimento/como-comecar-a-treinar-acima-do-peso/` — bloco rotina depois do parágrafo das "duas frentes" (caminhada + força adaptada, 2 a 3x por semana) — a caixa lembra que a avaliação médica, quando indicada, vem antes; link caminhada em "caminhada" NÃO entrou — a frase fala de como começar, não de gasto (regra 2), e o parágrafo seguinte já tem a calculadora de natação. Candidato a reavaliar: a seção "A balança não é a única métrica" conversa com a calculadora de percentual de gordura (evolução de medidas) — fica registrado, sem trocar
 - 30/09 — `/emagrecimento/como-emagrecer-fazendo-musculacao/` — bloco musculacao depois do parágrafo do EPOC ("uma pequena fração do gasto calórico da própria sessão") — a calculadora dá a sessão e mostra o EPOC só como faixa medida, sem somá-lo
 - 03/10 — `/emagrecimento/como-perder-barriga/` — link caminhada em "passos diários" ("Cardio e passos diários: ampliam o gasto") — a calculadora aceita passos; bloco rotina mantido
-- 30/09 — `/emagrecimento/quantos-passos-por-dia/` — bloco gasto-calorico-diario depois do parágrafo dos quatro componentes; link musculacao em "Uma sessão de musculação de uma hora" (a calculadora dá 257 kcal para 70 kg em treino variado, confere com os 250 do texto); escada em "subir escada" NÃO entrou — mesma frase do bloco, ficaria carregado, e ali o texto lista NEAT, não compara gasto
+- 14/10 — `/emagrecimento/quantos-passos-por-dia/` — bloco trocado (gasto-calorico-diario → calculadora-de-passos), movido para o parágrafo "Monitorar passos", a pedido do Renato em 14/10; links do texto mantidos
 - 01/10 — `/emagrecimento/recomposicao-corporal/` — bloco gasto-calorico-diario depois do parágrafo "perto do equilíbrio energético" (sob o H3 "Déficit moderado ou manutenção calórica") — a calculadora dá a manutenção; a caixa diz que o déficit fino é com o nutricionista
 - 06/10 — `/emagrecimento/refeicao-livre/` — bloco gasto-calorico-diario depois do parágrafo do dia do lixo ("acima da manutenção"), antes do vídeo — a caixa diz que a calculadora não calcula a refeição nem o déficit da semana; link musculacao em "massa muscular eleva o gasto diário" (o modo Músculo ganho mostra o tamanho real, ~13 kcal/kg/dia — qualifica a frase)
 - 07/10 — `/mounjaro-e-treino/ozempic-e-treino/` — Bloco NÃO trocado: o de preço fica no fim de "Onde o personal trainer entra", onde o leitor está pensando em contratar — encaixe médio, não fraco, e trocar perderia a série de medição (regra 5). meu-treino-faz-sentido segue como alternativa. O texto do bloco dizia que a calculadora "usa faixas reais, não chute"; a calculadora declara estimativa editorial, e a frase virou "mostra a faixa de referência da cidade, com a conta aberta — é estimativa, não pesquisa de preço".
@@ -196,37 +196,3 @@ Ordem: calculadora com encaixe forte primeiro, depois o resto por impressão no 
 Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 81.
 
 A análise completa — dúvida de cada artigo, frase literal de cada encaixe e o porquê — está em `docs/ferramentas-nos-artigos.json`.
-
-## Varredura final — 14/10/2026
-
-A pedido do Renato, a fila inteira (40) foi analisada e aplicada de uma vez,
-em vez de 2 por dia. Justificativa pela regra de lote do CLAUDE.md: a
-mecânica já tinha passado por 45 artigos em levas limpas desde 24/09, não
-mexe em `atualizadoEm` e cada bloco é medido por página
-(`data-ferramenta`), então a atribuição por artigo se mantém.
-
-- 33 inseridos, 3 trocados (coice de glúteo e cadeira flexora tinham bloco
-  fraco; dor no joelho trocou a ferramenta proposta), 4 recusados
-  (crucifixo, rosca concentrada, dor lombar, panturrilha — motivos no .json).
-- **Correção de honestidade em 27 blocos antigos:** a "Meu treino faz
-  sentido?" trabalha com a frequência declarada por grupo (em quantos dias
-  cada um aparece), prioridade, progressão/registro, grupos em dias
-  seguidos, superiores × inferiores e exercícios × tempo de sessão. Ela
-  **não soma séries nem volume** e não sabe os exercícios
-  (`src/lib/auditoriaTreino.ts`). Os textos que diziam "soma as séries" ou
-  "separa o volume por função" foram reescritos, e 11 rótulos de botão
-  ("Somar o volume real…") também.
-- **Ids padronizados:** 49 blocos usavam o slug do catálogo
-  (`meu-treino-faz-sentido`, `treino-para-minha-rotina`…) em vez do id da
-  jornada (`auditoria`, `rotina`…). Isso partia a medição no GA4 em dois
-  nomes para a mesma ferramenta e inflava a contagem de "calculadoras" do
-  teste (75 → 26 reais). Agora todos usam o id da jornada.
-- Erros de texto corrigidos durante a leitura (atualizadoEm subiu): treino
-  de pernas (10–20 séries era "para o conjunto"; é por grupo), treino de
-  glúteos (link dizia 8–12 semanas; o artigo citado diz 6–12), treino de
-  costas (a sessão-exemplo repetida 2× estourava a faixa), cadeira
-  extensora (reto femoral também flexiona o quadril), treino ABC (6 → 6 a 7
-  exercícios por sessão).
-
-Ficam sem bloco, de propósito: gestantes, descanso entre séries (a página é
-a ferramenta) e os 4 recusados.
