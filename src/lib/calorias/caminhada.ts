@@ -33,8 +33,12 @@
  *
  * OS PASSOS viram TEMPO pela cadência, nunca distância pela passada.
  * Passada varia com altura e com ritmo; assumir 75 cm para todo mundo daria
- * um número com cara de exato e miolo de chute. Cadência tem referência:
- * cerca de 100 passos/min é a fronteira do moderado em adultos.
+ * um número com cara de exato e miolo de chute. A cadência de cada ritmo é
+ * a MEDIDA naquela velocidade no estudo CADENCE-Adults (esteira, 21 a 85
+ * anos). Até 14/10/2026 a tabela usava 100 passos/min a 5 km/h — o limiar
+ * de intensidade moderada, não a cadência de quem anda a 5 km/h (que é
+ * ~115). Isso implicava passo de 83 cm e superestimava o tempo e o gasto
+ * de quem informava passos.
  *
  * O ERRO QUE ESTA PÁGINA EXISTE PARA NÃO COMETER
  *
@@ -85,7 +89,7 @@ export const FONTE_TUDOR_LOCKE: Fonte = {
   rotuloCurto: 'Tudor-Locke et al. (2018)',
   url: 'https://pubmed.ncbi.nlm.nih.gov/29858465/',
   resumo:
-    'mostra que cerca de 100 passos por minuto correspondem a intensidade moderada em adultos, e cerca de 130 por minuto a intensidade vigorosa — é o que permite converter passos em tempo sem depender do tamanho da passada.',
+    'mostra que cerca de 100 passos por minuto correspondem a intensidade moderada em adultos, e cerca de 130 por minuto a intensidade vigorosa. É um limiar de intensidade, não a cadência de uma velocidade: quem anda a 5 km/h costuma passar dos 110.',
 };
 
 export const FONTE_HALL: Fonte = {
@@ -97,7 +101,16 @@ export const FONTE_HALL: Fonte = {
     'demonstra que a regra dos 7.700 kcal por quilo superestima a perda ao longo do tempo: o gasto do corpo cai conforme ele emagrece, e a resposta não é linear.',
 };
 
-export const FONTES: Fonte[] = [FONTE_COMPENDIO, FONTE_ACSM, FONTE_TUDOR_LOCKE, FONTE_HALL];
+export const FONTE_CADENCE: Fonte = {
+  rotulo:
+    'Tudor-Locke C, Aguiar EJ, Han H, et al. Walking cadence (steps/min) and intensity in 21–40 year olds: CADENCE-adults. IJBNPA, 2019 — e as continuações em 41–60 (2020) e 61–85 anos (2021)',
+  rotuloCurto: 'estudo CADENCE-Adults',
+  url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6337834/',
+  resumo:
+    'mediu, em esteira, a cadência de 254 adultos de 21 a 85 anos em cada velocidade: cerca de 106 passos por minuto a 4 km/h, 114 a 4,8 km/h, 121 a 5,6 km/h e 129 a 6,4 km/h — praticamente iguais nas três faixas de idade.',
+};
+
+export const FONTES: Fonte[] = [FONTE_COMPENDIO, FONTE_ACSM, FONTE_CADENCE, FONTE_TUDOR_LOCKE, FONTE_HALL];
 
 /** Energia armazenada em 1 kg de gordura corporal. Entra só como simulação. */
 export const KCAL_POR_KG_GORDURA = 7700;
@@ -124,7 +137,8 @@ export interface Ritmo {
 /**
  * As quatro faixas do Compêndio 2024 para caminhada em superfície plana e
  * firme. A velocidade típica é o centro da faixa, arredondado para o número
- * que uma esteira mostra. A cadência segue Tudor-Locke.
+ * que uma esteira mostra. A cadência é a medida nessa velocidade no
+ * CADENCE-Adults (interpolada entre as linhas de 0,5 mph da tabela).
  */
 export const RITMOS: Ritmo[] = [
   {
@@ -133,7 +147,7 @@ export const RITMOS: Ritmo[] = [
     velocidade: 4,
     faixa: 'cerca de 4 km/h',
     met: 3.0,
-    cadencia: 85,
+    cadencia: 106,
     comoReconhecer: 'Passeio. Dá para conversar sem nenhum esforço.',
   },
   {
@@ -142,7 +156,7 @@ export const RITMOS: Ritmo[] = [
     velocidade: 5,
     faixa: '4,5 a 5,5 km/h',
     met: 3.8,
-    cadencia: 100,
+    cadencia: 115,
     comoReconhecer: 'Passo de quem vai a algum lugar. Dá para falar, mas não cantar. É o ritmo mais comum.',
   },
   {
@@ -151,7 +165,7 @@ export const RITMOS: Ritmo[] = [
     velocidade: 6,
     faixa: '5,6 a 6,3 km/h',
     met: 4.8,
-    cadencia: 115,
+    cadencia: 125,
     comoReconhecer: 'Passo apressado, de quem está atrasado. Só frases curtas.',
   },
   {

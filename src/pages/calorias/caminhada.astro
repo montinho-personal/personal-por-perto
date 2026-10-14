@@ -73,7 +73,7 @@ import {
 import { deSessao as musculacaoSessao } from '../../lib/calorias/musculacao';
 
 const path = '/calorias/caminhada';
-const atualizadoEm = '2026-10-05';
+const atualizadoEm = '2026-10-14';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -139,7 +139,7 @@ const faqs = [
   },
   {
     pergunta: '10 mil passos queimam quantas calorias?',
-    resposta: `Em ritmo moderado, 10 mil passos levam cerca de ${formataTempo(EX_10MIL.minutos)} e representam aproximadamente ${arredondaKcal(EX_10MIL.kcal)} kcal para quem pesa ${PESO_PADRAO} kg. A conta usa a cadência (cerca de 100 passos por minuto), não o tamanho da passada — que varia com a altura e tornaria o número um chute com cara de exato.`,
+    resposta: `Em ritmo moderado, 10 mil passos levam cerca de ${formataTempo(EX_10MIL.minutos)} e representam aproximadamente ${arredondaKcal(EX_10MIL.kcal)} kcal para quem pesa ${PESO_PADRAO} kg. A conta usa a cadência medida em quem anda nesse ritmo (cerca de ${MOD.cadencia} passos por minuto), não o tamanho da passada — que varia com a altura e tornaria o número um chute com cara de exato.`,
   },
   {
     pergunta: 'Caminhada inclinada gasta mais calorias?',
@@ -565,7 +565,7 @@ const schema = [
 
         <h2>10 mil passos gastam quantas calorias?</h2>
         <p>
-          Em ritmo moderado, cerca de 100 passos por minuto, 10 mil passos são{' '}
+          Em ritmo moderado, cerca de {MOD.cadencia} passos por minuto, 10 mil passos são{' '}
           <strong>{formataTempo(EX_10MIL.minutos)}</strong> de caminhada e algo em torno de{' '}
           <strong>{arredondaKcal(EX_10MIL.kcal)} kcal</strong> para {PESO_PADRAO} kg — se fossem
           todos seguidos e no mesmo passo. Na vida real eles se espalham pelo dia, boa parte em ritmo

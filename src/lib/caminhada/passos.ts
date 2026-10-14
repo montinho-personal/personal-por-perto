@@ -24,27 +24,93 @@
  * Nada é arredondado antes do fim. Quem arredonda é a exibição, e ela
  * arredonda ao grão que a estimativa sustenta: "~7,3 km", nunca "7,318 km".
  *
- * O QUE AINDA ESTÁ PENDENTE (14/10/2026)
+ * DE ONDE VEM O COMPRIMENTO DO PASSO
  *
- * O comprimento padrão do passo e a razão passo/altura. A regra que circula
- * em todas as calculadoras (0,413 × altura para mulheres e 0,415 para
- * homens) não tem estudo de origem rastreável, e os dados de esteira
- * indicam que o RITMO muda o passo mais do que a altura. Enquanto as fontes
- * primárias não forem lidas, as constantes abaixo ficam marcadas como
- * pendentes e a página não vai ao ar. Ver docs/calculadora-de-passos.md.
+ * Da tabela de esteira do estudo CADENCE-Adults, nas três faixas etárias
+ * (21–40, 41–60 e 61–85 anos; 254 adultos, altura média 169,5 cm): para cada
+ * velocidade, a cadência média medida. Passo = velocidade ÷ cadência. A
+ * mesma pessoa encurta o passo devagar e alonga rápido — de ~55 cm a
+ * 3,2 km/h até ~83 cm a 6,4 km/h —, e por isso o passo aqui depende do
+ * RITMO, não só da altura. A regra 0,413/0,415 × altura que circula nas
+ * calculadoras não tem estudo de origem rastreável; ela coincide com o que
+ * esta tabela dá a ~4,8 km/h, e só ali.
+ *
+ * A altura entra escalando o passo da amostra (passo × altura ÷ 169,5).
+ * Isso é suposição de proporcionalidade, declarada como tal. A faixa de
+ * incerteza (±10%) vem da dispersão da cadência à mesma velocidade no
+ * estudo (desvio-padrão ~5–6%; ±10% cobre cerca de 95% dos participantes).
+ * O jeito preciso continua sendo medir: distância conhecida ÷ passos.
  */
 
 import { metNoPlano, kcalPorMinuto } from '../calorias/caminhada';
 
+/* ───────────────────────── Fontes ───────────────────────── */
+
+export interface Fonte {
+  rotulo: string;
+  rotuloCurto: string;
+  url: string;
+}
+
+export const FONTE_CADENCE: Fonte = {
+  rotulo:
+    'Tudor-Locke C, Aguiar EJ, Han H, et al. Walking cadence (steps/min) and intensity in 21–40 year olds: CADENCE-adults. IJBNPA, 2019 — e as continuações em 41–60 (2020) e 61–85 anos (2021)',
+  rotuloCurto: 'estudo CADENCE-Adults (2019–2021)',
+  url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6337834/',
+};
+
 /* ───────────────────────── Constantes de método ───────────────────────── */
 
 /**
- * PENDENTE DE FONTE. Razão entre o comprimento do passo e a altura em
- * caminhada no ritmo habitual. O valor provisório só existe para o motor
- * rodar nos testes; nenhum texto público pode citá-lo antes da verificação.
+ * Cadência média medida por velocidade de esteira, ponderada pelo número de
+ * participantes das três faixas etárias do CADENCE-Adults (Tabela 2 de cada
+ * artigo). Abaixo de 2 mph a marcha em esteira deixa de ser caminhada
+ * normal; acima de 4 mph a amostra rareia (muitos já corriam).
  */
-export const RAZAO_PASSO_ALTURA_PENDENTE = 0.41;
-export const FONTE_PASSO_VERIFICADA = false;
+export const TABELA_CADENCE: ReadonlyArray<{ kmh: number; cadencia: number }> = [
+  { kmh: 2.0 * 1.609344, cadencia: 97.0 },
+  { kmh: 2.5 * 1.609344, cadencia: 105.9 },
+  { kmh: 3.0 * 1.609344, cadencia: 113.8 },
+  { kmh: 3.5 * 1.609344, cadencia: 120.9 },
+  { kmh: 4.0 * 1.609344, cadencia: 129.0 },
+];
+
+/** Altura média ponderada das três amostras (170,7 · 171,0 · 167,3 cm). */
+export const ALTURA_REFERENCIA_CM = 169.5;
+
+/** ±10%: ~2 desvios-padrão da cadência à mesma velocidade no estudo. */
+export const INCERTEZA_PASSO = 0.1;
+
+/** Passo da amostra (cm) numa linha da tabela. */
+const passoDaLinha = (l: { kmh: number; cadencia: number }) => (l.kmh * 100000) / 60 / l.cadencia;
+
+/**
+ * O passo médio da amostra para uma cadência qualquer, interpolado entre as
+ * linhas medidas e travado nas pontas (esticar a reta inventaria dado).
+ */
+export function passoDaAmostra(cadencia: number): number {
+  const t = TABELA_CADENCE;
+  if (cadencia <= t[0].cadencia) return passoDaLinha(t[0]);
+  const ult = t[t.length - 1];
+  if (cadencia >= ult.cadencia) return passoDaLinha(ult);
+  for (let i = 0; i < t.length - 1; i++) {
+    const a = t[i];
+    const b = t[i + 1];
+    if (cadencia >= a.cadencia && cadencia <= b.cadencia) {
+      const f = (cadencia - a.cadencia) / (b.cadencia - a.cadencia);
+      return passoDaLinha(a) + f * (passoDaLinha(b) - passoDaLinha(a));
+    }
+  }
+  return passoDaLinha(ult);
+}
+
+/**
+ * Os ritmos são OS MESMOS da calculadora de caminhada (velocidade do
+ * Compêndio, cadência medida no CADENCE-Adults): "moderado" tem de querer
+ * dizer a mesma coisa nas duas páginas, ou elas se contradizem.
+ */
+export { RITMOS, RITMO_PADRAO, ritmo } from '../calorias/caminhada';
+export type { RitmoId, Ritmo } from '../calorias/caminhada';
 
 /* ───────────────────────── Limites ───────────────────────── */
 
@@ -147,9 +213,15 @@ export function passoDaMedida(metros: number, passosContados: number): number | 
   return (metros * 100) / passosContados;
 }
 
-/** O passo estimado pela altura. Razão PENDENTE de fonte — ver cabeçalho. */
-export const passoDaAltura = (alturaCm: number, razao = RAZAO_PASSO_ALTURA_PENDENTE): number =>
-  alturaCm * razao;
+/**
+ * O passo estimado: o da amostra nesta cadência, escalado pela altura
+ * quando a pessoa informa (proporcionalidade declarada no cabeçalho).
+ */
+export const passoEstimado = (cadencia: number, alturaCm?: number | null): number =>
+  passoDaAmostra(cadencia) * (alturaCm ? alturaCm / ALTURA_REFERENCIA_CM : 1);
+
+/** Razão passo/altura implícita, para a página mostrar a conta aberta. */
+export const razaoPassoAltura = (cadencia: number): number => passoDaAmostra(cadencia) / ALTURA_REFERENCIA_CM;
 
 /* ───────────────────────── As contas ───────────────────────── */
 
@@ -225,14 +297,14 @@ export interface Kcal {
  * caminhada, para as duas páginas nunca discordarem por método).
  *
  * `incerteza` é a variação relativa do passo usada para a faixa (0,1 =
- * ±10%). O valor padrão também está PENDENTE de fonte.
+ * ±10%, ver INCERTEZA_PASSO).
  */
 export function kcalDePassos(
   passos: number,
   pesoKg: number,
   passoCm: number,
   cadencia: number,
-  incerteza = 0.1,
+  incerteza = INCERTEZA_PASSO,
 ): Kcal {
   const minutos = minutosDePassos(passos, cadencia);
   const conta = (cm: number) => {

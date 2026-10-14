@@ -7,8 +7,8 @@
  * número negativo, as calorias que saem do MET e não de "kcal por passo",
  * e o arredondamento que nunca finge precisão.
  *
- * Os testes passam o comprimento do passo explicitamente: a razão padrão
- * pela altura ainda está pendente de fonte e não pode ser "travada" aqui.
+ * O modelo do passo (tabela de esteira do CADENCE-Adults) tem bloco próprio;
+ * as contas puras recebem o passo explicitamente.
  *
  * Uso: npm run test:passos
  */
@@ -44,6 +44,13 @@ import {
   cadenciaValida,
   pesoValido,
   alturaValida,
+  passoDaAmostra,
+  passoEstimado,
+  razaoPassoAltura,
+  RITMOS,
+  ritmo,
+  TABELA_CADENCE,
+  ALTURA_REFERENCIA_CM,
 } from '../src/lib/caminhada/passos';
 import { kcalPorMinuto, metNoPlano } from '../src/lib/calorias/caminhada';
 
@@ -56,6 +63,25 @@ const ok = (cond: boolean, msg: string) => {
   }
 };
 const perto = (a: number, b: number, tol = 1e-9) => Math.abs(a - b) <= tol;
+
+console.log('\nO passo vem da tabela de esteira (CADENCE-Adults)');
+{
+  const linhas = TABELA_CADENCE.map((l) => Math.round((l.kmh * 100000) / 60 / l.cadencia));
+  ok(linhas.join(',') === '55,63,71,78,83', `passo medido por velocidade: ${linhas.join(', ')} cm`);
+  ok(Math.abs(razaoPassoAltura(113.8) - 0.417) < 0.001, 'a ~4,8 km/h a razão passo/altura dá 0,417 — onde a regra 0,415 coincide');
+  ok(razaoPassoAltura(97) < 0.33 && razaoPassoAltura(129) > 0.49, 'devagar ~0,33; rápido ~0,49: o ritmo pesa mais que a altura');
+  ok(perto(passoDaAmostra(50), passoDaAmostra(97)) && perto(passoDaAmostra(170), passoDaAmostra(129)), 'fora da tabela trava nas pontas, sem esticar a reta');
+  const meio = passoDaAmostra((105.9 + 113.8) / 2);
+  ok(meio > passoDaAmostra(105.9) && meio < passoDaAmostra(113.8), 'entre duas linhas, interpola');
+  ok(perto(passoEstimado(114, ALTURA_REFERENCIA_CM), passoEstimado(114)), 'altura igual à da amostra = passo da amostra');
+  ok(perto(passoEstimado(114, 2 * ALTURA_REFERENCIA_CM), 2 * passoEstimado(114)), 'altura entra proporcional');
+  ok(RITMOS.every((r, i) => i === 0 || r.cadencia > RITMOS[i - 1].cadencia), 'ritmos em ordem de cadência');
+  ok(ritmo('moderado').cadencia === 115 && Math.round(passoEstimado(115)) === 72, 'moderado (o mesmo da caminhada): 115 passos/min, passo ~72 cm');
+  const v = (passoEstimado(ritmo('moderado').cadencia) * ritmo('moderado').cadencia * 60) / 100000;
+  ok(Math.abs(v - ritmo('moderado').velocidade) < 0.1, `passo × cadência devolve a velocidade do ritmo (${v.toFixed(2)} km/h ≈ 5)`);
+  ok(formataKm(kmDePassos(10000, passoEstimado(114))) === '7,1 km', '10 mil passos, sem altura, moderado: ~7,1 km');
+  ok(formataKm(kmDePassos(10000, passoEstimado(114, 160))) === '6,7 km' && formataKm(kmDePassos(10000, passoEstimado(114, 185))) === '7,7 km', '…com 1,60 m ~6,7 km; com 1,85 m ~7,7 km');
+}
 
 console.log('\nAs três contas');
 {
