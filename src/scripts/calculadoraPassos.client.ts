@@ -435,6 +435,21 @@ export function iniciarCalculadoraPassos(): void {
     return { html, chave: cm.toFixed(1), nome: 'steps_stride_measured' };
   }
 
+  /** O passo estimado aparece no próprio campo: ninguém precisa medir para ter um número. */
+  function atualizaPassoEstimado(): void {
+    const al = num(f.altura);
+    const est = passoEstimado(cadencia(), alturaValida(al) ? al : null);
+    f.passo.placeholder = String(Math.round(est));
+    const dica = $<HTMLElement>('#ps-passo-dica', app);
+    if (!dica) return;
+    const r = ritmo(ritmoId).nome.toLowerCase();
+    dica.textContent = passoValido(num(f.passo))
+      ? 'Usando o passo que você informou. Apague o campo para voltar à estimativa pela altura.'
+      : alturaValida(al)
+        ? `Não precisa medir: pela sua altura (${(al / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 })} m) e pelo ritmo ${r}, o seu passo estimado é de ${Math.round(est)} cm. Só preencha se você mediu.`
+        : `Não precisa medir: sem altura, a conta usa o passo médio de ${Math.round(est)} cm do ritmo ${r}. Com a sua altura, ela estima o seu.`;
+  }
+
   /* ───────── tabelas da página, personalizadas ───────── */
 
   function atualizaTabelas(): void {
@@ -472,6 +487,7 @@ export function iniciarCalculadoraPassos(): void {
     aviso.hidden = av.length === 0;
     aviso.textContent = av.join(' ');
     atualizaTabelas();
+    atualizaPassoEstimado();
     atualizaFragmento();
     if (r.chave && r.nome && comecou && ultimo[modo] !== r.chave) {
       window.clearTimeout(atrasoEvento);

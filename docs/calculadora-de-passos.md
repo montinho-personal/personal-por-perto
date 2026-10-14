@@ -172,8 +172,20 @@ esteira a cada 0,5 mph): 21–40 anos (PMC6337834, n=76, altura média
 - **Altura:** escala o passo da amostra (× altura ÷ 169,5). É suposição de
   proporcionalidade, e a página diz isso. Coerente com o dado (desvio-padrão
   da altura ~5,4%, da cadência à mesma velocidade ~5–6%), não provado por ele.
-- **Sexo:** não entra. O próprio estudo testou sexo e comprimento de perna
-  no modelo e nenhum dos dois mudou a predição (RMSE 0,68 → 0,69).
+- **Sexo:** não entra. **Correção de 14/10:** a versão anterior desta linha
+  (e da página) dizia que o CADENCE testou sexo e perna "e nenhum mudou a
+  predição" — esse teste era da relação cadência → intensidade (RMSE 0,68 →
+  0,69), não do tamanho do passo. A evidência certa: Lordall et al. 2024
+  (Front Sports Act Living, PMC10978594, 42 adultos jovens, texto completo):
+  passada ÷ altura sem diferença estatística entre os sexos em nenhuma
+  velocidade; na velocidade preferida no chão, homens 1,31 m/s a 52
+  passadas/min (1,79 m) e mulheres 1,29 m/s a 55 (1,70 m) → passada ÷
+  altura 0,845 × 0,828, ~2%. Os autores citam estudos dos dois lados (a
+  diferença some ou persiste depois de normalizar pela altura). Fica dentro
+  da margem de ±10%; a fórmula 0,415/0,413 separa os sexos por 0,5%.
+- **Passo estimado no campo (14/10, pedido do Renato):** ninguém mede o
+  passo; o campo "Seu passo" mostra a estimativa pela altura e ritmo como
+  número cinza, e a dica diz o valor em cm.
 - **Faixa de incerteza:** ±10% no passo ≈ 2 desvios-padrão da cadência à
   mesma velocidade.
 - **Sem altura:** passo da amostra no ritmo escolhido (moderado ≈ 72 cm →
@@ -286,7 +298,7 @@ dia são bons?".
 **Diferencial frente à visão geral de IA e à Omni:** os dois repetem 0,76 m
 (homens) / 0,67 m (mulheres) e 0,415/0,413 × altura sem fonte. A página dá o
 passo medido por ritmo (CADENCE-Adults), mostra onde o 0,415 coincide, não
-pergunta o sexo (o estudo testou e não mudou nada) e dá faixa.
+pergunta o sexo (para a mesma altura, a diferença entre os sexos fica perto de 2%, dentro da margem) e dá faixa.
 
 ### Decisões de construção
 

@@ -156,6 +156,10 @@ const faqs = [
     resposta: `Muda, e o ritmo também. Pela mesma conta desta página, 10 mil passos em ritmo moderado dão cerca de ${formataKm(TAB_ALT[1].km10mil)} para quem mede 1,60 m e ${formataKm(TAB_ALT[3].km10mil)} para quem mede 1,80 m. A mesma pessoa encurta o passo devagar e alonga rápido — por isso a calculadora pergunta o ritmo, além da altura.`,
   },
   {
+    pergunta: 'O passo do homem e da mulher é diferente?',
+    resposta: `Na média, sim, porque os homens costumam ser mais altos. Mas, para a mesma altura, a diferença é pequena: num estudo com adultos jovens, a passada dividida pela altura não teve diferença estatística entre homens e mulheres, e a diferença que outros estudos encontram fica perto de 2% — dentro da margem de ±${INC}% da calculadora. Por isso a conta usa a sua altura e o seu ritmo, e não o sexo.`,
+  },
+  {
     pergunta: 'Por que o km do meu celular é diferente do desta calculadora?',
     resposta: 'O celular e o relógio também estimam o tamanho do seu passo — pela altura do cadastro, pelo GPS ou pelos dois — e cada marca faz isso de um jeito. Além disso, a própria contagem de passos tem erro: em revisões de estudos, relógios e pulseiras erraram de −9% a +12% na média. Para a conta mais precisa, meça o seu passo numa distância conhecida e use o modo "Medir meu passo".',
   },
@@ -322,11 +326,11 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
                 <input id="ps-peso" type="text" inputmode="decimal" autocomplete="off" placeholder="para calorias" />
               </div>
               <div class="ps-campo">
-                <label for="ps-passo">Meu passo (cm)</label>
-                <input id="ps-passo" type="text" inputmode="decimal" autocomplete="off" placeholder="se você mediu" />
+                <label for="ps-passo">Seu passo (cm)</label>
+                <input id="ps-passo" type="text" inputmode="decimal" autocomplete="off" placeholder="72" aria-describedby="ps-passo-dica" />
               </div>
             </div>
-            <p class="ps-dica">O passo medido vale mais que a altura: se você preencher os dois, a conta usa o passo.</p>
+            <p id="ps-passo-dica" class="ps-dica">Não precisa medir: a calculadora já estima o seu passo (o número cinza no campo) pela altura e pelo ritmo. Só preencha se você mediu.</p>
             <div id="ps-resumo" class="ps-resumo" hidden>
               <p id="ps-resumo-txt"></p>
               <a href="#ps-resultado" class="ps-link-btn" id="ps-resumo-ver">Ver o resultado completo</a>
@@ -555,6 +559,17 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
           da calculadora.
         </p>
 
+        <h3>Homem e mulher têm passo diferente?</h3>
+        <p>
+          Na média, sim — mas quase toda a diferença vem da altura. Num estudo com 42 adultos jovens
+          (homens com 1,79 m e mulheres com 1,70 m de altura média), as mulheres deram mais passos por
+          minuto, e o tamanho da passada dividido pela altura não teve diferença estatística entre os
+          sexos em nenhuma velocidade. Outros estudos acham uma diferença pequena que sobra depois de
+          descontar a altura; nos dados desse estudo, ela fica perto de 2%, bem dentro da margem de ±{INC}%
+          da calculadora. A própria fórmula que circula (0,415 para homens, 0,413 para mulheres) separa os
+          sexos por meio por cento. Por isso a calculadora usa a altura e o ritmo, e não pergunta o sexo.
+        </p>
+
         <h2 id="celular">Por que o celular mostra outro km?</h2>
         <p>
           O iPhone, o Android e os relógios também estimam o tamanho do passo — pela altura do cadastro, pelo
@@ -575,8 +590,7 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
           de 254 adultos de 21 a 85 anos em cada velocidade. Velocidade dividida por passos por minuto dá o
           passo médio: cerca de 63 cm a 4 km/h, 71 cm a 4,8 km/h e 83 cm a 6,4 km/h, praticamente igual nas
           três faixas de idade. Com a altura informada, a calculadora ajusta esse passo na proporção da
-          altura média do estudo (1,70 m) — uma suposição, declarada como tal. O estudo testou sexo e
-          comprimento da perna e nenhum dos dois mudou o resultado, por isso a calculadora não pergunta o sexo.
+          altura média do estudo (1,70 m) — uma suposição, declarada como tal.
         </p>
         <p>
           A fórmula que circula na maioria das calculadoras — passo = 0,415 × altura para homens e 0,413 para
@@ -616,6 +630,10 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
           <li>
             <a href={FONTE_CADENCE.url} target="_blank" rel="noopener noreferrer">{FONTE_CADENCE.rotulo}</a>{' '}
             — passos por minuto medidos em cada velocidade de esteira; é a base do tamanho do passo e do tempo.
+          </li>
+          <li>
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10978594/" target="_blank" rel="noopener noreferrer">Lordall J, Oates AR, Lanovaz JL, et al. Spatiotemporal walking performance in different settings: effects of walking speed and sex. Frontiers in Sports and Active Living, 2024</a>{' '}
+            — homens e mulheres: passada proporcional à altura, sem diferença estatística entre os sexos.
           </li>
           <li>
             <a href="https://pubmed.ncbi.nlm.nih.gov/40713949/" target="_blank" rel="noopener noreferrer">Ding D, et al. Daily steps and health outcomes in adults: a systematic review and dose-response meta-analysis. Lancet Public Health, 2025</a>{' '}
