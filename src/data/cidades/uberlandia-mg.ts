@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Maior cidade do Triângulo Mineiro e apelidada de "Capital da Logística", Uberlândia é um polo de agronegócio, indústria e distribuição. Abriga gigantes como a Cargill e o atacadista Martins, com um dos maiores centros de distribuição da América Latina, no entroncamento de importantes rodovias federais. Cidade universitária (UFU), tem renda e poder de compra acima da média do interior mineiro e um público jovem que aquece o mercado fitness.',
 
   mercado:
-    'A cultura de academia em Uberlândia é forte: grandes redes (Smart Fit, Selfit) convivem com centenas de academias de bairro e estúdios de treino funcional e personalizado. O público universitário da UFU, somado a uma renda acima da média do interior, sustenta uma demanda alta e constante por musculação e acompanhamento profissional.',
+    'A cultura de academia em Uberlândia é forte: a Smart Fit, com quatro unidades, convive com academias de bairro e estúdios de treino funcional e personalizado. O público universitário da UFU, somado a uma renda acima da média do interior, sustenta uma demanda alta e constante por musculação e acompanhamento profissional.',
 
   bairrosNobres: ['Morada da Colina', 'Jardim Karaíba', 'Tabajaras', 'Santa Mônica'],
   bairrosPopulares: ['Luizote de Freitas', 'Tocantins', 'Shopping Park', 'Jardim Canaã'],
@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque do Sabiá',
       descricao:
-        'Com cerca de 1,8 milhão de m² no bairro Tibery, tem pista asfaltada de 5.100 m, trilhas de terra, cerca de 11 academias ao ar livre (uma acessível para PcD), estádio e piscinas. É o principal point de corrida da cidade, com milhares de visitantes por dia.',
+        'Com cerca de 1,8 milhão de m² no bairro Tibery, tem pista asfaltada de 5.100 m, trilhas de terra, academias ao ar livre, estádio e piscinas. É o principal point de corrida da cidade, com milhares de visitantes por dia.',
     },
     {
       nome: 'Parque Municipal da Gávea',
@@ -68,17 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Uberlândia tem forte tradição de corrida de rua e ciclismo, com comunidades ativas como a "Pedala Uberlândia", e um público fitness aquecido pela universidade. O Parque do Sabiá é o epicentro do treino ao ar livre na cidade.',
   academias:
-    'A oferta vai das grandes redes (Smart Fit, Selfit) às muitas academias de bairro e estúdios de funcional e personal, atendendo desde o estudante até o público premium da zona sul.',
+    'A oferta vai da Smart Fit às academias de bairro e estúdios de funcional e personal espalhados pela cidade.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Centro e na Av. Rondon Pacheco' },
-    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na cidade' },
-    { nome: 'Academias de bairro e estúdios', detalhe: 'centenas de opções, do estudante ao público premium da zona sul' },
-    { nome: 'Academias ao ar livre do Parque do Sabiá', detalhe: 'cerca de 11 estações gratuitas, uma delas acessível' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: uma na Rua Cruzeiro dos Peixotos, duas na Av. Rondon Pacheco (Vila Saraiva e Tibery) e uma na Av. Floriano Peixoto, no Custódio Pereira' },
+    { nome: 'Academias de bairro e estúdios', detalhe: 'academias independentes e estúdios de treino funcional e de personal pelos bairros' },
+    { nome: 'Academias ao ar livre do Parque do Sabiá', detalhe: 'gratuitas, ao longo do parque' },
   ],
 
   destaquesFitness: [
     'Pista de 5,1 km do Parque do Sabiá: o melhor ativo gratuito para corrida e assessorias.',
-    'Cerca de 11 academias ao ar livre no Sabiá, além de estações na Gávea e no Uberabinha.',
+    'Academias ao ar livre gratuitas no Parque do Sabiá e no Parque Linear do Rio Uberabinha.',
     'Público universitário (UFU) e renda acima da média sustentam um mercado premium de personal.',
     'Calendário consolidado de corridas, gerando demanda recorrente por preparação de corredores.',
   ],
@@ -109,7 +108,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Uberlândia?',
       resposta:
-        'O Parque do Sabiá é o epicentro: pista asfaltada de 5,1 km, trilhas de terra e cerca de 11 academias ao ar livre fazem dele o melhor ativo gratuito de treino do Triângulo Mineiro. Nas academias, Smart Fit e Selfit cobrem o dia a dia, e os estúdios premium atendem a zona sul (Morada da Colina, Jardim Karaíba). O atendimento em casa e em condomínio cresce nos bairros de alto padrão, e a Gávea e o Parque Linear do Uberabinha completam as opções públicas.',
+        'O Parque do Sabiá é o epicentro: pista asfaltada de 5,1 km, trilhas de terra e academias ao ar livre fazem dele o melhor ativo gratuito de treino do Triângulo Mineiro. Nas academias, a Smart Fit e as academias de bairro cobrem o dia a dia, e os estúdios de personal completam a oferta. O atendimento em casa e em condomínio cresce nos bairros de alto padrão, e o Parque Linear do Uberabinha, com academia ao ar livre, e a pista de caminhada da Gávea completam as opções públicas.',
     },
     {
       pergunta: 'Dá para treinar bem em Uberlândia com orçamento de estudante?',
@@ -141,5 +140,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Uberlândia: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-14',
+  atualizadoEm: '2026-10-14',
 };

@@ -93,5 +93,6 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2919553' },
     { nome: 'Prefeitura de Luís Eduardo Magalhães', url: 'https://www.luiseduardomagalhaes.ba.gov.br/' },
   ],
+  academiasVerificadasEm: '2026-10-14',
   atualizadoEm: '2026-07-03',
 };

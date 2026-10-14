@@ -21,7 +21,7 @@ export const cidade: Cidade = {
     'Capital do Paraná e maior cidade do Sul do Brasil, Curitiba tem economia diversificada, com forte setor de serviços, polo industrial (a Cidade Industrial de Curitiba abriga montadoras como Volvo, Renault/Nissan e Audi) e setores de tecnologia e finanças. É uma cidade de alto IDH (0,823) e referência mundial em planejamento urbano — características que se traduzem em um público atento à qualidade de vida e à prática regular de exercícios.',
 
   mercado:
-    'O mercado de personal trainer de Curitiba é um dos mais maduros do Sul: alto IDH, renda elevada nos eixos Batel–Água Verde–Ecoville e uma população que já incorporou os parques à rotina de treino. As redes cobrem todos os perfis — Smart Fit em dezenas de unidades, Bodytech no segmento premium do Batel — e a cidade tem densidade incomum de estúdios de personal e treino funcional, formato que o curitibano abraçou. O diferencial local é o clima: o frio de junho a agosto derruba a frequência de quem treina sozinho, e é exatamente aí que o acompanhamento profissional se paga, mantendo constância com aquecimento ajustado, treino indoor nos dias de geada e as pistas do Barigui no restante do ano.',
+    'O mercado de personal trainer de Curitiba é um dos mais maduros do Sul: alto IDH, renda elevada nos eixos Batel–Água Verde–Ecoville e uma população que já incorporou os parques à rotina de treino. As redes cobrem perfis diferentes — a Smart Fit em várias unidades, a Bodytech no Shopping Crystal, no Batel — e a cidade tem muitos estúdios de personal e treino funcional. O diferencial local é o clima: o frio de junho a agosto derruba a frequência de quem treina sozinho, e é exatamente aí que o acompanhamento profissional se paga, mantendo constância com aquecimento ajustado, treino indoor nos dias de geada e as pistas do Barigui no restante do ano.',
 
   bairrosNobres: ['Batel', 'Água Verde', 'Bigorrilho', 'Cabral', 'Ecoville', 'Champagnat'],
   bairrosPopulares: ['Cajuru', 'Boqueirão', 'Portão', 'Santa Felicidade', 'Sítio Cercado'],
@@ -30,7 +30,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Barigui',
       descricao:
-        'O maior parque da cidade, com cerca de 1,4 milhão de m². Tem pista de corrida de 5,4 km e pista de caminhada de 3,3 km, ambas em terreno plano, além de pista de ciclismo e equipamentos de ginástica. É o principal ponto de treino ao ar livre de Curitiba.',
+        'O maior parque da cidade, com cerca de 1,4 milhão de m². Tem percurso de 5,2 km, predominantemente plano, volta ao lago de cerca de 3,3 km, pista de ciclismo e academia ao ar livre. É o principal ponto de treino ao ar livre de Curitiba.',
     },
     {
       nome: 'Parque Tingui',
@@ -73,12 +73,12 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades no Batel (Av. Silva Jardim), Água Verde, Champagnat e Shopping Curitiba' },
     { nome: 'Bodytech', detalhe: 'unidade premium no Shopping Crystal, no Batel' },
-    { nome: 'Estúdios de personal e funcional', detalhe: 'alta densidade no eixo Batel–Água Verde–Ecoville' },
-    { nome: 'Equipamentos do Parque Barigui', detalhe: 'gratuitos, junto às pistas de corrida e caminhada' },
+    { nome: 'Estúdios de personal e funcional', detalhe: 'estúdios de personal e de treino funcional em vários bairros' },
+    { nome: 'Equipamentos do Parque Barigui', detalhe: 'academia ao ar livre gratuita, com aparelhos que usam o peso do corpo' },
   ],
 
   destaquesFitness: [
-    'Parque Barigui: pista de corrida plana de 5,4 km, a principal da cidade.',
+    'Parque Barigui: percurso de 5,2 km, predominantemente plano, o principal da cidade.',
     'Mais de 200 km de ciclovias e tradição de mobilidade ativa.',
     'Clima frio que exige ajuste de aquecimento e vestuário — onde um bom personal faz diferença.',
     'Alto IDH (0,823) e calendário de corridas intenso, com a Maratona de Curitiba.',
@@ -117,7 +117,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Curitiba?',
       resposta:
-        'Os pontos fortes são as academias do eixo Batel–Água Verde–Ecoville — do baixo custo ao premium —, os estúdios de personal, formato muito difundido na cidade, o atendimento em casa e nos condomínios do Ecoville e do Champagnat, e os parques: o Barigui, com pistas planas de 5,4 km e 3,3 km, é o preferido para sessões de corrida e funcional. A Rede Integrada de Transporte facilita chegar aos treinos pelos eixos estruturais.',
+        'Os pontos fortes são as academias do eixo Batel–Água Verde–Ecoville — do baixo custo ao premium —, os estúdios de personal, formato muito difundido na cidade, o atendimento em casa e nos condomínios do Ecoville e do Champagnat, e os parques: o Barigui, com percurso de 5,2 km e volta ao lago de cerca de 3,3 km, é o preferido para sessões de corrida e funcional. A Rede Integrada de Transporte facilita chegar aos treinos pelos eixos estruturais.',
     },
     {
       pergunta: 'Há acompanhamento em Curitiba para quem sente dores ou tem limitações?',
@@ -145,5 +145,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Curitiba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-14',
+  atualizadoEm: '2026-10-14',
 };

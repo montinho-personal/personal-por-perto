@@ -65,6 +65,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta é dominada por academias de bairro e estúdios, adequadas ao perfil médio-popular da cidade, e complementada pelo atendimento de personal trainers em domicílio e condomínios.',
 
+  academiasProximas: [{ nome: 'Skyfit', detalhe: 'na Rua 7, no Jardim Primavera' }],
+  academiasVerificadasEm: '2026-10-14',
+
   destaquesFitness: [
     'Cidade da Região Metropolitana de Goiânia, conurbada à capital pela GO-060.',
     'Tradição de caminhada na Rodovia dos Romeiros (cerca de 18 km na Romaria).',
@@ -91,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Goiás Turismo — Santuário Basílica do Divino Pai Eterno', url: 'https://www.goiasturismo.go.gov.br/pt/atracoes/santuario-basilica-do-divino-pai-eterno' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-14',
 };

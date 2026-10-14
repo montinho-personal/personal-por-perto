@@ -268,3 +268,34 @@ cidades saem da fila. Smart Fit já tinha sido corrigida na leva 9.
 | Academias ao ar livre da orla | confirmada como equipamento público; "ao longo de Copacabana, Ipanema e Leblon" vira o que a prefeitura diz | prefeitura.rio (20/12/2022): parceria Prefeitura–MUDE "instalou academias ao ar livre, de aço inox, pelas orlas e nas principais praças da cidade" |
 
 Saldo: 9 entradas → 0 removidas, 1 bairro removido (Cia Athletica Itaim), 5 detalhes corrigidos, 1 genérica.
+
+### 14/10/2026 — leva 11 (rotina, Parte B: Uberlândia e Curitiba)
+
+Prefeituras de Uberlândia e Curitiba devolvem 403 (Akamai) ao acesso direto;
+o que vem delas foi lido no índice de busca das URLs oficiais e usado só
+para equipamento público e números de parque, nunca para nome de empresa.
+
+**Uberlândia/MG** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "Centro e Av. Rondon Pacheco" vira as quatro unidades abertas | smartfit.com.br/academias/{uberlandia-centro (R. Cruzeiro dos Peixotos, 343), uberlandia (Av. Rondon Pacheco, 920, Vila Saraiva), bahamas-rondon-pacheco (Av. Rondon Pacheco, 4800, Tibery), custodio-pereira (Av. Floriano Peixoto, 4680)} |
+| Selfit | **removida**: a lista oficial completa (250 unidades) tem uma só em MG, em Belo Horizonte; sai também do `mercado` e do `ondeTreinar` | selfitacademias.com.br/unidades/listar |
+| Academias de bairro e estúdios | genérica; sai "centenas" e "público premium da zona sul", sem fonte | — |
+| Academias ao ar livre do Parque do Sabiá | confirmada como equipamento público; sai "cerca de 11, uma acessível" (número só no índice de busca); a "Gávea" sai da frase das estações (a prefeitura só fala em pista de caminhada) | uberlandia.mg.gov.br (índice de busca): academias no Sabiá; troca de aparelhos no Parque Linear do Uberabinha (08/12/2020) |
+
+**Curitiba/PR** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada sem mudança no detalhe; "dezenas de unidades" no `mercado` vira "várias unidades" | smartfit.com.br/academias/{batel (Av. Silva Jardim, 2522), agua-verde (Av. República Argentina, 900), champagnat, shopping-curitiba} |
+| Bodytech (Shopping Crystal, Batel) | confirmada; mesmo critério de Goiânia e SP (Wellhub lido + página oficial indexada, site SPA) | Wellhub (R. Comendador Araújo, 731, Batel) + bodytech.com.br/shopping-crystal no índice |
+| Estúdios de personal e funcional | genérica; sai "alta densidade" | — |
+| Equipamentos do Parque Barigui | confirmada; "junto às pistas" vira o que a prefeitura descreve | curitiba.pr.gov.br (índice de busca): academia ao ar livre com aparelhos de peso do corpo |
+
+Também corrigido no mesmo arquivo: "pista de 5,4 km" → percurso de 5,2 km,
+predominantemente plano, e volta ao lago de ~3,3 km (prefeitura: 5,2 km e
+3,28 km). "Mais de 200 km de ciclovias" confere (manchete da prefeitura).
+
+Saldo: 8 entradas → 1 removida (Selfit Uberlândia), 4 detalhes corrigidos,
+3 genéricas/públicas ajustadas.
