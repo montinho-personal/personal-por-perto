@@ -111,6 +111,51 @@ nova, ou a fila é simplesmente arbitrária. O que dá para fazer é registrar e
 conferir: se os seis forem rastreados nas próximas semanas sem nada mudar, a
 hipótese cai e a resposta era só tempo.
 
+### 14/10/2026 — a leitura dos 24, com ~30 dias
+
+Fonte: Search Console via Supermetrics, últimos 30 dias até 13/10, por URL
+(sem pedir export ao Renato; mesmo dado). Os 24 = 7 de Mounjaro (02 e
+04/09) + 17 de execução e técnica (04 a 14/09).
+
+**1. Quantos aparecem? Os 24.** Inclusive os seis de Mounjaro publicados
+no mesmo dia, que em 13/09 ainda estavam "detectada, mas não indexada".
+
+**2. Em que posição? Página 1 quase toda.** Posição média entre 5 e 11 em 23
+dos 24; a exceção é rosca inversa (18). Ninguém pior que 20.
+
+| bloco | artigos | impressões | cliques | mediana por artigo |
+|---|---|---|---|---|
+| Mounjaro | 7 | 1.192 | 3 | 11 |
+| Execução e técnica | 17 | 1.689 | 4 | 56 |
+
+Mounjaro: dois fortes (cãibras 616, fraqueza nas pernas 517) e cinco quase
+parados (6 a 23 impressões) — os cinco são justamente da leva de seis
+publicados juntos em 02/09, que indexou atrasada. Execução: distribuição
+mais uniforme; os melhores são agachamento no Smith (333), leg press 45 ou
+horizontal (266), cadeira flexora (205) e coice de glúteo (190).
+
+**3. Mounjaro × execução?** Por artigo, execução descobre melhor (mediana 56
+× 11); Mounjaro concentra em poucos temas. Não é motivo para parar um bloco:
+é motivo para não repetir leva grande no mesmo dia.
+
+**O que o dado NÃO responde e acende alerta:** clique. 7 cliques em 2.881
+impressões (0,24%) com posição média ~8 é muito abaixo do esperado para a
+página 1. Hipóteses a investigar antes de culpar o volume: posição média
+inflada por consultas muito longas/raras, aparição dentro de recursos (PAA,
+visão geral de IA) que não geram clique, ou título e descrição que não
+convencem. O próximo passo de qualidade é olhar consulta × página desses 24,
+não escrever mais rápido.
+
+**Decisão proposta:** a leitura sustenta reativar a pauta a 2 por dia, com a
+regra de ritmo (nunca leva grande no mesmo dia e na mesma seção). Reativação
+do gatilho aguardando o ok do Renato.
+
+**Reescritas (critério 10+ impressões e posição pior que 20):** fila nova de
+4 — `/guias/como-escolher-personal-trainer/` (45 imp., pos. 27,6),
+`/emagrecimento/comer-fora-e-dieta/` (29; 41,3), `/musculacao/agachamento-como-fazer/`
+(16; 23,7), `/musculacao/rosca-direta-como-fazer/` (12; 21,9). Fila pequena:
+dá para retomar a rotina de reescritas em ritmo baixo.
+
 ### O que libera
 
 Um export de Desempenho por volta de **09 a 15/10**, quando o mais novo dos
