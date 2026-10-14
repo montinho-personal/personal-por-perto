@@ -29,7 +29,7 @@ const paginaDe = (url: string): string => {
 };
 
 console.log('\nIntegridade do catálogo');
-ok(catalogo.length === 32, `${catalogo.length} ferramentas no catálogo (32)`);
+ok(catalogo.length === 33, `${catalogo.length} ferramentas no catálogo (33)`);
 ok(new Set(catalogo.map((f) => f.slug)).size === catalogo.length, 'slugs únicos');
 ok(new Set(catalogo.map((f) => f.url)).size === catalogo.length, 'URLs únicas');
 ok(catalogo.every((f) => f.url.startsWith('/') && f.url.endsWith('/')), 'toda URL com barra inicial e final');
@@ -71,6 +71,9 @@ console.log('\nBusca por intenção — as personas');
 const idx = indexar(catalogo);
 const primeiro = (q: string) => buscar(q, idx)[0]?.ferramenta.slug;
 const entreOsTres = (q: string, slug: string) => buscar(q, idx).slice(0, 3).some((r) => r.ferramenta.slug === slug);
+ok(primeiro('10 mil passos em km') === 'calculadora-de-passos', '"10 mil passos em km" leva à calculadora de passos');
+ok(primeiro('quantos passos tem 1 km') === 'calculadora-de-passos', '"quantos passos tem 1 km" também');
+ok(entreOsTres('calorias caminhada', 'caminhada'), '"calorias caminhada" segue na calorias da caminhada');
 const casos: Array<[string, string]> = [
   ['quanto custa um personal na minha cidade', 'calculadora-preco-personal'],
   ['quanto cobra personal', 'calculadora-preco-personal'],

@@ -51,6 +51,15 @@ import {
   ritmo,
   TABELA_CADENCE,
   ALTURA_REFERENCIA_CM,
+  faixaKm,
+  faixaPassos,
+  formataFaixaKm,
+  formataFaixaPassos,
+  tabelaMinutos,
+  tabelaAlturas,
+  tabelaPesos,
+  faixaEvento,
+  faixaEventoKm,
 } from '../src/lib/caminhada/passos';
 import { kcalPorMinuto, metNoPlano } from '../src/lib/calorias/caminhada';
 
@@ -104,11 +113,23 @@ console.log('\nTabelas do briefing (10.000 passos)');
 {
   const t = tabelaTempo(10000);
   ok(t.map((l) => Math.round(l.minutos)).join(',') === '125,100,83', '80/100/120 passos/min → 125, 100 e 83 min');
-  ok(tabelaPassosKm(74).length === 10 && formataKm(tabelaPassosKm(74)[6].km) === '7,4 km', 'tabela passos→km: 10 linhas, 10.000 → 7,4 km a 74 cm');
-  ok(tabelaKmPassos(75).map((l) => l.passos).join(',') === '1350,2650,4000,6650,13300', `km→passos a 75 cm: ${tabelaKmPassos(75).map((l) => l.passos).join(', ')}`);
+  ok(tabelaPassosKm(74).length === 15 && formataKm(tabelaPassosKm(74).find((l) => l.passos === 10000)!.km) === '7,4 km', 'tabela passos→km: 15 linhas, 10.000 → 7,4 km a 74 cm');
+  ok(tabelaKmPassos(75).map((l) => l.passos).join(',') === '1350,2650,4000,6650,8000,10700,13300', `km→passos a 75 cm: ${tabelaKmPassos(75).map((l) => l.passos).join(', ')}`);
   ok(tabelaMetas(70, 100).length === 5 && tabelaMetas(70, 100)[0].passos === 5000, 'comparação de metas: 5, 7, 8, 10 e 12 mil');
   const f = faixaPassosPorKm(60, 80);
   ok(f.min === 1250 && f.max === 1650, `1 km com passo de 60 a 80 cm: ${f.min} a ${f.max} passos`);
+}
+
+{
+  const f = faixaKm(10000, 72);
+  ok(formataFaixaKm(f.min, f.max) === '6,5 a 7,9 km', `10 mil passos a 72 cm ±10%: ${formataFaixaKm(f.min, f.max)}`);
+  const fp = faixaPassos(1, 72);
+  ok(fp.min < fp.max && formataFaixaPassos(fp.min, fp.max).endsWith('passos'), `1 km a 72 cm ±10%: ${formataFaixaPassos(fp.min, fp.max)}`);
+  ok(tabelaMinutos(72, 115).find((l) => l.minutos === 30)!.passos === 3450, '30 min a 115 passos/min = 3.450 passos');
+  ok(tabelaAlturas(115).every((l, i, a) => i === 0 || l.km10mil > a[i - 1].km10mil), 'mais alto, mais km nos mesmos 10 mil passos');
+  ok(tabelaPesos(10000, 72, 115).every((l, i, a) => i === 0 || l.kcal > a[i - 1].kcal), 'mais peso, mais kcal');
+  ok(faixaEvento(4999) === '<5k' && faixaEvento(5000) === '5-7.5k' && faixaEvento(10000) === '10-12.5k' && faixaEvento(30000) === '>=12.5k', 'eventos levam faixa de Tudor-Locke, nunca o número');
+  ok(faixaEventoKm(1) === '<2' && faixaEventoKm(7.2) === '5-10', 'distância também vai em faixa');
 }
 
 console.log('\nMeta e "quanto falta"');

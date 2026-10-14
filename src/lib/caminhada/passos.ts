@@ -406,8 +406,13 @@ export const formataPct = (fracao: number): string => `${Math.floor(Math.max(0, 
 
 /* ───────────────────────── Tabelas ───────────────────────── */
 
-export const PASSOS_TABELA = [1000, 2000, 3000, 5000, 7000, 8000, 10000, 12000, 15000, 20000] as const;
-export const KM_TABELA = [1, 2, 3, 5, 10] as const;
+/* As contagens e distâncias que aparecem nas buscas (prints e exportações de 14/10/2026). */
+export const PASSOS_TABELA = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 12000, 13000, 15000, 20000, 30000] as const;
+export const KM_TABELA = [1, 2, 3, 5, 6, 8, 10] as const;
+/* "30 minutos de caminhada equivalem a quantos passos?", 15, 20, 40, 1 hora, 2 horas. */
+export const MINUTOS_TABELA = [10, 15, 20, 30, 40, 60, 120] as const;
+export const ALTURAS_TABELA = [150, 160, 170, 180, 190] as const;
+export const PESOS_TABELA = [50, 60, 70, 80, 90, 100, 120] as const;
 export const CADENCIAS_TABELA = [80, 100, 120] as const;
 export const METAS_COMPARADAS = [5000, 7000, 8000, 10000, 12000] as const;
 
@@ -416,6 +421,68 @@ export const tabelaPassosKm = (passoCm: number) =>
 
 export const tabelaKmPassos = (passoCm: number) =>
   KM_TABELA.map((km) => ({ km, passos: arredondaPassos(passosDeKm(km, passoCm)) }));
+
+export const tabelaMinutos = (passoCm: number, cadencia: number) =>
+  MINUTOS_TABELA.map((minutos) => {
+    const passos = passosEmMinutos(minutos, cadencia);
+    return { minutos, passos: arredondaPassos(passos), km: kmDePassos(passos, passoCm) };
+  });
+
+export const tabelaAlturas = (cadencia: number) =>
+  ALTURAS_TABELA.map((altura) => {
+    const cm = passoEstimado(cadencia, altura);
+    return { altura, passoCm: cm, passosPorKm: arredondaPassos(passosDeKm(1, cm)), km10mil: kmDePassos(10000, cm) };
+  });
+
+export const tabelaPesos = (passos: number, passoCm: number, cadencia: number) =>
+  PESOS_TABELA.map((peso) => ({ peso, ...kcalDePassos(passos, peso, passoCm, cadencia) }));
+
+/** Faixa de distância para o mesmo número de passos, pela incerteza do passo. */
+export const faixaKm = (passos: number, passoCm: number, incerteza = INCERTEZA_PASSO) => ({
+  min: kmDePassos(passos, passoCm * (1 - incerteza)),
+  max: kmDePassos(passos, passoCm * (1 + incerteza)),
+});
+
+/** Faixa de passos para a mesma distância. */
+export const faixaPassos = (km: number, passoCm: number, incerteza = INCERTEZA_PASSO) => ({
+  min: arredondaPassos(passosDeKm(km, passoCm * (1 + incerteza))),
+  max: arredondaPassos(passosDeKm(km, passoCm * (1 - incerteza))),
+});
+
+/**
+ * Faixa de km num formato só: "6,5 a 7,9 km". Depois de "entre", passe
+ * `'e'`: "entre 6,5 e 7,9 km".
+ */
+export function formataFaixaKm(min: number, max: number, sep: 'a' | 'e' = 'a'): string {
+  const a = formataKm(min);
+  const b = formataKm(max);
+  if (a === b) return a;
+  const ma = a.endsWith(' km') && b.endsWith(' km');
+  return ma ? `${a.replace(' km', '')} ${sep} ${b}` : `${a} ${sep} ${b}`;
+}
+
+/** Faixa de passos: "1.250 a 1.550 passos" (ou "entre 1.250 e 1.550 passos", com `'e'`). */
+export const formataFaixaPassos = (min: number, max: number, sep: 'a' | 'e' = 'a'): string =>
+  min === max ? `${formataPassos(min)} passos` : `${formataPassos(min)} ${sep} ${formataPassos(max)} passos`;
+
+/** Faixas de passos/dia usadas nos eventos — as de Tudor-Locke & Bassett. Nunca o número exato. */
+export function faixaEvento(passos: number): string {
+  if (passos < 5000) return '<5k';
+  if (passos < 7500) return '5-7.5k';
+  if (passos < 10000) return '7.5-10k';
+  if (passos < 12500) return '10-12.5k';
+  return '>=12.5k';
+}
+
+export function faixaEventoKm(km: number): string {
+  if (km < 2) return '<2';
+  if (km < 5) return '2-5';
+  if (km < 10) return '5-10';
+  return '>=10';
+}
+
+/** Energia de 1 kg de gordura — entra só como simulação, com o aviso de Hall (2011). */
+export const KCAL_POR_KG_GORDURA = 7700;
 
 export const tabelaTempo = (passos: number) =>
   CADENCIAS_TABELA.map((cadencia) => ({ cadencia, minutos: minutosDePassos(passos, cadencia) }));

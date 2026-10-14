@@ -4,7 +4,10 @@ Briefing de 14/10/2026 ("Calculadora de passos completa"). Registro do que a
 auditoria achou, do que mudou em relação ao briefing, do que já está
 verificado e do que ainda espera fonte ou print.
 
-**Estado em 14/10/2026 (fim do dia):** motor e testes prontos
+**Estado em 14/10/2026 (noite): página no ar** em
+`/ferramentas/calculadora-de-passos/`, montada depois dos prints (seção 11).
+
+**Estado anterior, 14/10/2026 (fim do dia):** motor e testes prontos
 (`src/lib/caminhada/passos.ts`, `npm run test:passos`), com o modelo do passo
 fechado em fonte primária lida no texto completo (CADENCE-Adults, seção 5).
 A página NÃO foi criada: título, H1, seções, tabelas do texto e FAQs esperam
@@ -253,3 +256,74 @@ Registrar aqui, ao chegarem, o que entrou e onde.
   opcional.
 - **Fase 3:** integrações (Health Connect / HealthKit) só com app nativo ou
   API oficial e consentimento — fora do navegador.
+
+## 11. Prints recebidos (14/10/2026) e o que entrou
+
+Renato mandou prints de 5 buscas + exportações (autocompletar/volume e
+"As pessoas também perguntam"), arquivadas em
+`docs/pesquisas/2026-10-14-calculadora-de-passos/`. Não vieram (podem
+refinar depois): "quantas calorias 10 mil passos", "calorias por passos",
+"quantos passos por dia", "5 mil passos por dia é bom", "meta de passos",
+"tamanho da passada pela altura", "quantos passos para perder 1 kg",
+"quanto tempo para dar 10 mil passos", "quantos passos em 30 minutos". As
+PAA das 5 buscas cobrem boa parte dessas intenções.
+
+| busca | o que mostrou | onde entrou |
+|---|---|---|
+| calculadora de passos (210/mês) | autocompletar: em km, calorias, por dia, iphone, samsung, para metros, para emagrecer; SERP: Omni, Regivia, "atividade maker" (CNC, outra intenção) | ferramenta; H2 do celular; "outras pessoas": 1000, 5 mil, 10 mil, 20 mil, 30 mil passos em km → tabela |
+| 10 mil passos em km (1,9 mil/mês) | IA: "6,5 a 8 km", passada média 0,76/0,67 m, "75 a 90 min"; PAA: 1 km de caminhada, tempo 10 mil, calorias 10 mil, perder 1 kg; outras: 7, 8, 12, 13, 15, 20 mil | title, H1, lead e H2 de 10 mil; tabela por ritmo; tabela passos→km com 4, 6, 9, 13 e 30 mil; FAQ |
+| quantos passos tem 1 km | IA: "1.300 a 1.500 passos", 0,415/0,413 × altura; PAA: 40 min de caminhada, 15 min em km, perder peso com 10 mil | H2 de 1 km com tabela por altura; "como calculamos" explica onde o 0,415 bate; tabela por minutos (10–120) |
+| quantos passos são 5 km | Bing: "10 mil passos são quantos km" 720/mês, 8 mil 50, 6/7/15 mil 20; 2 km e 10 km em passos | tabela km→passos (1, 2, 3, 5, 6, 8, 10); FAQ de 5 km |
+| passos para km | autocompletar: converter, iphone, contagem, "como mudar passos para km no iphone", quilometragem; IA: fórmula passos × passo ÷ 1.000 | modo "passos em km"; H2 do celular |
+
+PAA recorrentes que viraram FAQ: quanto tempo 10 mil passos; quantas
+calorias 10 mil passos; quantos passos para perder 1 kg (sem número mágico:
+conta teórica + Richardson 2008 + Hall 2011); passos em 30/40 min e 1 hora;
+"é bom dar 5000 passos?"; "quantos passos para sair do sedentarismo?"
+(classificação de Tudor-Locke, dita como classificação); "3000 passos por
+dia são bons?".
+
+**Diferencial frente à visão geral de IA e à Omni:** os dois repetem 0,76 m
+(homens) / 0,67 m (mulheres) e 0,415/0,413 × altura sem fonte. A página dá o
+passo medido por ritmo (CADENCE-Adults), mostra onde o 0,415 coincide, não
+pergunta o sexo (o estudo testou e não mudou nada) e dá faixa.
+
+### Decisões de construção
+
+- **Title (60):** "Calculadora de Passos: 10 Mil Passos em Km, Tempo e
+  Calorias" — "10 mil passos em km" tem 9× o volume de "calculadora de
+  passos". **H1:** "Calculadora de passos: quantos km são os seus passos?".
+- **Ordem do app:** resultado logo depois do número; "Quer deixar a
+  estimativa mais precisa?" (ritmo, altura, peso, passo) vem DEPOIS do
+  resultado — personalização progressiva, nunca 8 campos antes.
+- **Modos:** Passos em km · Km em passos · Quanto falta? · Medir meu passo.
+  "Usar este passo" leva o passo medido para as outras contas.
+- **Tabelas da página** ficam no HTML (passo médio, moderado) e se
+  recalculam com o passo/ritmo da pessoa, com aviso "ajustadas para você".
+- **Histórico:** "Salvar meu dia" no localStorage (60 dias), últimos 7,
+  média de 7 dias e comparação com a semana anterior só com ≥3 dias em
+  cada. Botão de apagar. Sem storage, tudo funciona e um aviso explica.
+- **Next best action, um por contexto:** com peso → calorias da caminhada;
+  sem peso → Treino para Minha Rotina; km → pace; CTA comercial só no
+  "Próximo passo", depois do conteúdo.
+- **Eventos (GA4):** steps_tool_view, steps_tool_start, steps_mode_selected,
+  steps_to_km_calculated, km_to_steps_calculated, steps_calories_calculated,
+  steps_goal_calculated, steps_stride_measured, steps_stride_used,
+  steps_history_saved, steps_return_visit, steps_personalize_opened,
+  steps_shared, steps_related_tool_clicked, steps_find_personal_clicked.
+  Parâmetros só em faixa (steps_bucket de Tudor-Locke, distance_bucket,
+  goal_bucket) e booleanos (has_height, has_weight, has_stride). **Falta
+  validar no DebugView** — conferido só no dataLayer local.
+- **Fragmento:** `#m=passos&p=10000`, `#m=km&k=5`, `#m=meta&g=10000`; só
+  depois de interação ou vindo de link. Nada pessoal no endereço.
+- **Schema:** BreadcrumbList + Article + FAQPage + Person (padrão do pace).
+- **Links:** calorias da caminhada → passos (frase revisada no mesmo dia da
+  correção de cadência). Catálogo/hub/busca por intenção: entrada nova;
+  "quantos passos" saiu dos aliases da caminhada. **Artigo "quantos passos
+  por dia" NÃO recebeu link:** já tem o seu único FerramentaInline (gasto
+  diário) e a exceção de link em palavra existente não cobre esta
+  calculadora — decisão pendente com o Renato.
+- **QA:** axe 0 violações no app (2 globais do site: contraste dos cards
+  relacionados e rótulo da marca, pré-existentes); 320–1280 px sem rolagem
+  lateral; sem JS as 6 tabelas ficam no HTML; localStorage bloqueado sem
+  erro; nenhum erro de console.
