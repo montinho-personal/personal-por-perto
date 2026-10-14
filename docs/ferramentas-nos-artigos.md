@@ -25,10 +25,10 @@ Duas formas de colocar uma ferramenta num artigo, com papéis diferentes:
 
 | ferramenta | hoje (bloco / link) | na fila | leitura |
 |---|---|---|---|
-| [encontre-seu-personal-ideal](/ferramentas/encontre-seu-personal-ideal/) | 4 / 0 | 3 | ferramenta da jornada |
-| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 35 / 0 | 12 | ferramenta da jornada |
-| [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 43 / 1 | 24 | ferramenta da jornada |
-| [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 12 / 0 | 1 | ferramenta da jornada |
+| [encontre-seu-personal-ideal](/ferramentas/encontre-seu-personal-ideal/) | 8 / 0 | 0 | ferramenta da jornada |
+| [treino-para-minha-rotina](/ferramentas/treino-para-minha-rotina/) | 44 / 0 | 0 | ferramenta da jornada |
+| [meu-treino-faz-sentido](/ferramentas/meu-treino-faz-sentido/) | 63 / 1 | 0 | ferramenta da jornada |
+| [diagnostico-da-constancia](/ferramentas/diagnostico-da-constancia/) | 13 / 0 | 0 | ferramenta da jornada |
 | [presencial-ou-online](/ferramentas/presencial-ou-online/) | 9 / 0 | 0 | ferramenta da jornada |
 | [personal-score](/ferramentas/personal-score/) | 1 / 0 | 0 | ferramenta da jornada |
 | [calculadora-preco-personal](/ferramentas/calculadora-preco-personal/) | 7 / 1 | 0 | ferramenta da jornada |
@@ -117,18 +117,54 @@ Correções encontradas na leitura, feitas no mesmo dia (defeito não espera lev
 - 10/10 — `/guias/vale-a-pena-contratar-personal-trainer/` — bloco encontre-seu-personal-ideal logo após o callout das 4 perguntas, em "Como decidir em 4 perguntas"
 - 11/10 — `/musculacao/afundo-como-fazer/` — bloco meu-treino-faz-sentido após o parágrafo das 3 a 4 séries por perna, em "Séries, repetições e progressão"
 - 11/10 — `/musculacao/agachamento-como-fazer/` — bloco meu-treino-faz-sentido após o parágrafo da régua de 10 a 20 séries semanais, em "Quanto agachar por semana"
+- 14/10 — `/musculacao/alongamento-antes-do-treino/` — varredura de 14/10 (inserir): bloco encontre-seu-personal-ideal — O parágrafo termina perguntando quem ajusta o plano ao corpo de cada perfil; o teste responde que tipo de acompanhamento procurar. O CTA do fim é o guia de como escolher, não o teste, então não repete destino.
+- 14/10 — `/musculacao/aquecimento-antes-do-treino/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O parágrafo responde à queixa de falta de tempo; a ferramenta trabalha justamente o tempo por sessão e os dias reais. Encaixe médio (ela não monta aquecimento), por isso o texto deixa claro o limite.
 - 02/10 — `/musculacao/bulking-e-cutting/` — bloco gasto-calorico-diario depois da lista do bulking ("200 a 500 kcal acima da manutenção"); texto corrigido: a faixa 1,6–2,2 g/kg era atribuída ao ACSM (é da meta-análise de 2018; o ACSM fala em 1,2–2,0), e "interminaveis" ganhou acento (atualizadoEm subiu)
+- 14/10 — `/musculacao/cadeira-extensora-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — A frase deixa a pergunta 'meu treino tem os dois isoladores?', que é exposição por grupo (quadríceps e posterior). CTA do fim é encontre-seu-personal-ideal, sem conflito.
+- 14/10 — `/musculacao/cadeira-flexora-como-fazer/` — varredura de 14/10 (trocar): bloco meu-treino-faz-sentido — O parágrafo termina em 'não percebe até medir', e a análise mede exatamente quantos dias quadríceps e posterior aparecem. O bloco atual (rotina) fala de falta de dias, que não é a dúvida do parágrafo: encaixe forte contra fraco. O novo bloco substitui o atual no mesmo lugar (logo após este </p>).
+- 14/10 — `/musculacao/cafeina-pre-treino/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — A última frase do artigo deixa a dúvida 'o meu treino já funciona?', que é exatamente o que a análise responde; o parágrafo anterior ainda cita 'treino sem progressão de carga'. Encaixe médio, mas é o único ponto do texto em que uma ferramenta responde algo levantado.
+- 14/10 — `/musculacao/coice-de-gluteo-como-fazer/` — varredura de 14/10 (trocar): bloco meu-treino-faz-sentido — O artigo JÁ tem bloco (id="rotina", após a seção de execução) que promete que o organizador distribui elevação pélvica, agachamento e dobradiça nos dias — a ferramenta de rotina não escolhe exercício, então o bloco atual promete mais do que entrega e está fora do ponto da dúvida. A proposta cai na frase literal da hierarquia (prioridade/exposição por grupo): forte contra fraco. Remover o bloco antigo no mesmo commit.
+- 14/10 — `/musculacao/creatina-o-que-e-como-tomar/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O parágrafo condiciona a creatina a 'treino progressivo' e fecha dizendo que quem organiza o básico é o plano de treino; a ferramenta responde a parte de treino. Média porque proteína e sono ficam de fora, e o texto do bloco diz isso.
 - 05/10 — `/musculacao/descanso-entre-series/` — a página virou a calculadora de descanso + timer (a ferramenta mora no artigo, no topo); "Meu treino faz sentido?" entrou como próximo passo no bloco depois do FAQ, junto com a 1RM — não como FerramentaInline, porque a página já é a ferramenta
+- 14/10 — `/musculacao/desenvolvimento-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O parágrafo pede para olhar o empurrar da semana inteira antes de decidir quantas sessões de desenvolvimento fazer; a análise mostra a exposição declarada de peito/ombro/tríceps e o aviso de sinergistas em dias seguidos. O texto é honesto sobre o limite: o motor conta exposição declarada, não séries nem exercícios (ver comentário em src/lib/auditoriaTreino.ts).
+- 14/10 — `/musculacao/destreino/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — A seção é a dose mínima de manutenção, e a ferramenta tem exatamente a semana mínima viável para fases apertadas. Sem colisão com o CTA do fim (constância).
+- 14/10 — `/musculacao/elevacao-pelvica-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — A frase manda conferir se o programa tem os dois padrões; a ferramenta mostra a exposição semanal do grupo e a progressão. Ela não separa padrão de movimento, por isso o texto fala em séries e não promete apontar o padrão que falta.
+- 14/10 — `/musculacao/frequencia-de-treino/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O artigo inteiro é sobre frequência por grupo, e a análise conta justamente a frequência declarada e tem o achado de superiores dominando. Ressalva: ela não calcula volume (séries), então o texto do bloco fala em dias, não em 'conta de volume'.
 - 14/10 — `/musculacao/levantamento-terra-romeno-como-fazer/` — bloco meu-treino-faz-sentido depois do parágrafo de séries ("…casando com a mesa flexora…"); a caixa diz que a análise não separa as funções do posterior nem avalia a dobradiça.
+- 14/10 — `/musculacao/maquina-ou-peso-livre/` — varredura de 14/10 (inserir): bloco encontre-seu-personal-ideal — A frase termina em 'é trabalho de um bom personal trainer', levantando 'que tipo de acompanhamento serve para mim?'. A análise seria o encaixe mais natural, mas é o destino do CTA do fim.
+- 14/10 — `/musculacao/melhor-horario-para-treinar/` — varredura de 14/10 (inserir): bloco diagnostico-da-constancia — O teste do horário termina em "faltas se acumulando?", que é a pergunta do diagnóstico. O texto mantém a hipótese do artigo (a janela) e mostra que a ferramenta checa os outros gargalos.
+- 14/10 — `/musculacao/musculacao-depois-dos-40/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O protocolo prescreve uma estrutura (2 a 3 sessões de corpo inteiro) e a dúvida seguinte é encaixá-la na semana. A frase está numa lista; o bloco entra no fim da seção, depois do parágrafo de liberação médica, que fica antes dele. CTA do fim é meu-treino-faz-sentido, sem conflito.
+- 14/10 — `/musculacao/musculacao-e-ansiedade/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — A seção pede 2 a 3 sessões que aconteçam e uma versão mínima para dias ruins, que é o que a ferramenta de rotina devolve. O bloco repete a ressalva do artigo de que treino não substitui tratamento.
+- 14/10 — `/musculacao/musculacao-feminina-mitos/` — varredura de 14/10 (inserir): bloco encontre-seu-personal-ideal — A frase nomeia o acompanhamento individual como saída para a barreira de entrada; o teste responde que tipo de acompanhamento procurar. Destino diferente do CTA do fim (análise de treino).
+- 14/10 — `/musculacao/musculacao-na-menopausa/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O parágrafo prescreve 2 a 4 sessões semanais e a dúvida natural é como distribuir os padrões nos dias disponíveis — o que a ferramenta resolve. A ressalva médica acompanha o tom do artigo.
+- 14/10 — `/musculacao/pegada-e-antebraco/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Mantida a ferramenta do mapa (média): a premissa 'puxadas pesadas duas vezes por semana' é exposição de costas, que a análise mostra. Movi o bloco para o fim da seção, depois dos três sinais, para não partir o raciocínio entre 'nem todo mundo' e os critérios; o texto diz que antebraço não é grupo da ferramenta.
+- 14/10 — `/musculacao/prancha-abdominal-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — A análise tem o grupo 'Abdômen / core' e conta em quantos dias ele aparece, o que responde ao 'duas a quatro vezes por semana'. Média: não responde ao 'no fim do treino' nem à execução, e o texto diz isso.
 - 05/10 — `/musculacao/progressao-de-carga/` — bloco descanso-entre-series (1º lote da calculadora nova, 05/10); substituiu a sugestão anterior do mapa, que era media — esta responde a dúvida do parágrafo; atualizadoEm não sobe (exceção do bloco)
+- 14/10 — `/musculacao/puxada-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O parágrafo dá a frequência ('uma a duas vezes por semana') e o par vertical/horizontal; a análise confere a frequência e o equilíbrio entre grupos. O bloco diz explicitamente que ela não enxerga a escolha de exercício.
+- 14/10 — `/musculacao/quanto-tempo-para-ver-resultados/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — A frase-âncora está numa <ul>, então o bloco fecha a lista "O que atrasa", antes do H2 seguinte. Progressão e volume por grupo são exatamente o que a análise olha.
 - 14/10 — `/musculacao/remada-cavalinho-como-fazer/` — bloco meu-treino-faz-sentido depois do parágrafo de séries ("…reveza com a curvada entre fases…"); a caixa diz que a análise não vê exercício nem fase.
+- 14/10 — `/musculacao/remada-curvada-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Frequência e volume semanal de costas são exatamente o que a análise mostra. Bloco depois da frase de frequência, não depois do parágrafo de ordem (terra antes da remada), que a ferramenta não vê.
+- 14/10 — `/musculacao/rosca-direta-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O parágrafo fala de registro e progressão, e a análise tem o achado literal 'Sem registro, a progressão fica no achismo'. CTA do fim é o teste do personal, sem conflito.
+- 14/10 — `/musculacao/sono-e-ganho-de-massa/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Único trecho em que o artigo passa do sono para o plano (volume e progressão). Encaixe médio, assumido no próprio texto: a ferramenta não enxerga sono.
+- 14/10 — `/musculacao/supino-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O parágrafo dá a faixa semanal de séries para peitoral e o leitor quer saber se está nela; a análise soma exposição por grupo e olha progressão.
 - 03/10 — `/musculacao/suplementos-que-nao-funcionam/` — link gasto-calorico-diario em "gasto energético" (seção dos termogênicos, no corpo do texto — a FAQ igual ficou sem link); bloco constancia mantido
 - 05/10 — `/musculacao/tecnicas-avancadas-de-treino/` — bloco descanso-entre-series (1º lote da calculadora nova, 05/10); substituiu a sugestão anterior do mapa, que era media — esta responde a dúvida do parágrafo; atualizadoEm não sobe (exceção do bloco)
 - 05/10 — `/musculacao/treinar-ate-a-falha/` — bloco descanso-entre-series (1º lote da calculadora nova, 05/10); substituiu a sugestão anterior do mapa, que era media — esta responde a dúvida do parágrafo; atualizadoEm não sobe (exceção do bloco)
+- 14/10 — `/musculacao/treinar-com-dor-no-joelho/` — varredura de 14/10 (trocar): bloco encontre-seu-personal-ideal — Recusei meu-treino-faz-sentido no ponto da 'dor de dose': a análise lê uma semana só e não vê aumento de volume ou carga, então não responde a dúvida e pode ser lida como liberação. Troquei para o teste do personal no parágrafo 'Para encontrar alguém com esse perfil', que já pede o profissional; o teste tem pergunta de limitação e acrescenta a ressalva de médico/fisioterapeuta (src/lib/personalMatch.ts). O CTA do fim é o guia de como escolher, destino diferente. Observação: a decisão é 'trocar' de ferramenta do mapa, não de bloco existente — o artigo não tem bloco.
+- 14/10 — `/musculacao/treinar-com-dor-no-ombro/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Artigo de dor, mas o próprio texto leva a uma conta de estrutura (puxar × empurrar), que é o que a análise faz; o bloco diz explicitamente que não avalia dor e manda ao médico/fisio. Frase-âncora em <ul>: bloco antes do H2 seguinte.
+- 14/10 — `/musculacao/treinar-doente-ou-gripado/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Artigo de doença: aceito porque o próprio texto converte a dúvida em 'meu volume e minha recuperação estão equilibrados?', e o bloco diz que a ferramenta não avalia saúde e manda o caso ao médico. O bloco vai depois do parágrafo que nega que treino previna gripe, para não sugerir o contrário. CTA do fim é o guia de como escolher personal, sem conflito.
 - 12/10 — `/musculacao/treinar-leve-ou-pesado/` — bloco musculacao depois do parágrafo do mito ("…não com faixa de repetição"). Link gasto-calorico-diario em "déficit calórico" NÃO entrou: ficaria no mesmo parágrafo do bloco, dois convites colados — a ressalva que o próprio mapa previa. O texto da caixa diz que a calculadora não separa faixa de repetição (o Compêndio não separa).
+- 14/10 — `/musculacao/treino-abc-como-montar/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — O H2 promete 'a conta de frequência que ninguém faz' e a análise faz exatamente essa conta, com achado próprio para grupos que aparecem uma vez só na semana. Encaixe forte.
 - 12/10 — `/musculacao/treino-de-abdomen-avancado/` — bloco treino-para-minha-rotina depois de "No encaixe da semana…". Link gasto-calorico-diario em "déficit calórico" NÃO entrou: a frase está só na FAQ, e a FAQ também alimenta o texto do schema FAQPage — mesmo critério de 03/10 (suplementos-que-nao-funcionam), em que a FAQ ficou sem link.
 - 13/10 — `/musculacao/treino-de-abdomen/` — bloco gasto-calorico-diario depois de "…quem revela é a cozinha e a consistência" (seção A conta que ninguém quer ouvir).
+- 14/10 — `/musculacao/treino-de-costas/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O parágrafo recomenda duas sessões semanais; a pergunta seguinte é como encaixá-las nos dias reais, que é o que a ferramenta de rotina responde. A análise é o CTA do fim.
+- 14/10 — `/musculacao/treino-de-gluteos/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O parágrafo propõe um arranjo A/B em 2 a 3 sessões; a ferramenta leva esse arranjo para os dias disponíveis. Texto deixa claro que ela não escolhe exercício.
+- 14/10 — `/musculacao/treino-de-ombro/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — A dúvida de distribuição entre porções é da meu-treino-faz-sentido, que já é o CTA do fim; sobra a de frequência, que depende da divisão que cabe na semana. Encaixe médio, como o mapa diz.
+- 14/10 — `/musculacao/treino-de-peito/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O parágrafo pede duas sessões semanais e cita frequência; a ferramenta de rotina responde em que estrutura elas cabem. As dúvidas de volume indireto seriam da análise, que é o CTA do fim. Encaixe médio.
+- 14/10 — `/musculacao/treino-de-pernas/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — O erro descrito é de distribuição, e a correção (duas sessões) depende dos dias disponíveis, que é o que a ferramenta resolve.
+- 14/10 — `/musculacao/treino-de-trapezio/` — varredura de 14/10 (inserir): bloco treino-para-minha-rotina — Mesma ferramenta do mapa, mas movi o ponto para 'Volume, frequência e progressão', onde o texto diz 'encaixadas no dia de costas ou de ombro' — é ali que a pergunta 'eu tenho esse dia?' nasce, e a ferramenta de rotina responde. Continua encaixe médio; a distribuição entre porções é da meu-treino-faz-sentido, que é o CTA do fim.
 - 13/10 — `/musculacao/treino-em-casa-para-iniciantes/` — bloco diagnostico-da-constancia antes do H2 "Quando faz sentido ter acompanhamento" (a frase está dentro da lista de erros). Links corda e caminhada NÃO entraram: a frase está só na FAQ, que também vira o texto do schema FAQPage — mesmo critério de 03/10 e 12/10.
+- 14/10 — `/musculacao/triceps-pulley-como-fazer/` — varredura de 14/10 (inserir): bloco meu-treino-faz-sentido — Aceito, mas rebaixado de forte para média: a análise não soma o volume indireto (o motor diz que não infere que supino trabalha tríceps). O que ela tem é o achado de sinergistas de empurrar em dias seguidos, que conversa com o parágrafo, e o texto se limita a isso.
 - 01/10 — `/guias/personal-trainer-conduta-profissional/` — artigo novo, já publicado com o bloco
 
 ## Aguardando revisão de conteúdo
@@ -156,47 +192,41 @@ Ordem: calculadora com encaixe forte primeiro, depois o resto por impressão no 
 
 | # | artigo | IMPR | bloco | ferramenta | força | seção | links no texto |
 |---|---|---|---|---|---|---|---|
-| 1 | `/musculacao/aquecimento-antes-do-treino/` | 2 | inserir | treino-para-minha-rotina | media | Do segundo exercício em diante | — |
-| 2 | `/musculacao/maquina-ou-peso-livre/` | 2 | inserir | encontre-seu-personal-ideal | media | Como combinar na prática | — |
-| 3 | `/musculacao/prancha-abdominal-como-fazer/` | 2 | inserir | meu-treino-faz-sentido | media | Séries e encaixe no treino | — |
-| 4 | `/musculacao/sono-e-ganho-de-massa/` | 2 | inserir | meu-treino-faz-sentido | media | Sono como variável de treino | — |
-| 5 | `/musculacao/alongamento-antes-do-treino/` | 0 | inserir | encontre-seu-personal-ideal | media | Como fica na prática, por perfil | — |
-| 6 | `/musculacao/cadeira-extensora-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que a extensora treina | — |
-| 7 | `/musculacao/cadeira-flexora-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | Onde ela entra na semana | — |
-| 8 | `/musculacao/cafeina-pre-treino/` | 0 | inserir | meu-treino-faz-sentido | media | O que ela não faz | — |
-| 9 | `/musculacao/coice-de-gluteo-como-fazer/` | 0 | trocar | meu-treino-faz-sentido | forte | O lugar dele no treino | — |
-| 10 | `/musculacao/creatina-o-que-e-como-tomar/` | 0 | inserir | meu-treino-faz-sentido | media | Para quem a creatina faz mais diferença | — |
-| 11 | `/musculacao/crucifixo-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Séries, repetições e onde encaixar | — |
-| 12 | `/musculacao/desenvolvimento-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 13 | `/musculacao/destreino/` | 0 | inserir | treino-para-minha-rotina | forte | O seguro barato: a dose mínima de manutenção | — |
-| 14 | `/musculacao/elevacao-pelvica-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | O que o exercício faz | — |
-| 15 | `/musculacao/frequencia-de-treino/` | 0 | inserir | meu-treino-faz-sentido | forte | Quando vale ter alguém olhando | — |
-| 16 | `/musculacao/melhor-horario-para-treinar/` | 0 | inserir | diagnostico-da-constancia | forte | Como escolher o seu horário | — |
-| 17 | `/musculacao/musculacao-depois-dos-40/` | 0 | inserir | treino-para-minha-rotina | forte | Voltando depois de anos parado: o protocolo anti-lesão | — |
-| 18 | `/musculacao/musculacao-e-ansiedade/` | 0 | inserir | treino-para-minha-rotina | forte | Como montar a rotina anti-ansiedade | — |
-| 19 | `/musculacao/musculacao-feminina-mitos/` | 0 | inserir | encontre-seu-personal-ideal | forte | Mito 7: "Academia de musculação não é lugar de mulher" | — |
-| 20 | `/musculacao/musculacao-na-menopausa/` | 0 | inserir | treino-para-minha-rotina | forte | O treino desta fase, na prática | — |
-| 21 | `/musculacao/pegada-e-antebraco/` | 0 | inserir | meu-treino-faz-sentido | media | Quem precisa de trabalho direto | — |
-| 22 | `/musculacao/puxada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 23 | `/musculacao/quanto-tempo-para-ver-resultados/` | 0 | inserir | meu-treino-faz-sentido | forte | O que atrasa | — |
-| 24 | `/musculacao/remada-curvada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como programar na semana | — |
-| 25 | `/musculacao/rosca-concentrada-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | media | Onde ela entra no programa | — |
-| 26 | `/musculacao/rosca-direta-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Como progredir | — |
-| 27 | `/musculacao/supino-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Volume, séries e progressão | — |
-| 28 | `/musculacao/treinar-com-dor-lombar/` | 0 | inserir | meu-treino-faz-sentido | media | Como ajustar o treino quando a lombar reclama | — |
-| 29 | `/musculacao/treinar-com-dor-no-joelho/` | 0 | inserir | meu-treino-faz-sentido | media | Primeiro: de onde veio essa dor? | — |
-| 30 | `/musculacao/treinar-com-dor-no-ombro/` | 0 | inserir | meu-treino-faz-sentido | forte | Os desequilíbrios que mais geram dor | — |
-| 31 | `/musculacao/treinar-doente-ou-gripado/` | 0 | inserir | meu-treino-faz-sentido | media | A parte que quase ninguém conecta | — |
-| 32 | `/musculacao/treino-abc-como-montar/` | 0 | inserir | meu-treino-faz-sentido | forte | A lógica do ABC (e a conta de frequência que ninguém faz) | — |
-| 33 | `/musculacao/treino-de-costas/` | 0 | inserir | treino-para-minha-rotina | forte | Volume e frequência | — |
-| 34 | `/musculacao/treino-de-gluteos/` | 0 | inserir | treino-para-minha-rotina | forte | A semana que funciona: frequência e volume | — |
-| 35 | `/musculacao/treino-de-ombro/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 36 | `/musculacao/treino-de-panturrilha/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de organização | — |
-| 37 | `/musculacao/treino-de-peito/` | 0 | inserir | treino-para-minha-rotina | media | Volume, frequência e progressão | — |
-| 38 | `/musculacao/treino-de-pernas/` | 0 | inserir | treino-para-minha-rotina | forte | Os erros que travam o dia de perna | — |
-| 39 | `/musculacao/treino-de-trapezio/` | 0 | inserir | treino-para-minha-rotina | media | Um exemplo de encaixe | — |
-| 40 | `/musculacao/triceps-pulley-como-fazer/` | 0 | inserir | meu-treino-faz-sentido | forte | Quanto volume de tríceps faz sentido | — |
 
 Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 81.
 
 A análise completa — dúvida de cada artigo, frase literal de cada encaixe e o porquê — está em `docs/ferramentas-nos-artigos.json`.
+
+## Varredura final — 14/10/2026
+
+A pedido do Renato, a fila inteira (40) foi analisada e aplicada de uma vez,
+em vez de 2 por dia. Justificativa pela regra de lote do CLAUDE.md: a
+mecânica já tinha passado por 45 artigos em levas limpas desde 24/09, não
+mexe em `atualizadoEm` e cada bloco é medido por página
+(`data-ferramenta`), então a atribuição por artigo se mantém.
+
+- 33 inseridos, 3 trocados (coice de glúteo e cadeira flexora tinham bloco
+  fraco; dor no joelho trocou a ferramenta proposta), 4 recusados
+  (crucifixo, rosca concentrada, dor lombar, panturrilha — motivos no .json).
+- **Correção de honestidade em 27 blocos antigos:** a "Meu treino faz
+  sentido?" trabalha com a frequência declarada por grupo (em quantos dias
+  cada um aparece), prioridade, progressão/registro, grupos em dias
+  seguidos, superiores × inferiores e exercícios × tempo de sessão. Ela
+  **não soma séries nem volume** e não sabe os exercícios
+  (`src/lib/auditoriaTreino.ts`). Os textos que diziam "soma as séries" ou
+  "separa o volume por função" foram reescritos, e 11 rótulos de botão
+  ("Somar o volume real…") também.
+- **Ids padronizados:** 49 blocos usavam o slug do catálogo
+  (`meu-treino-faz-sentido`, `treino-para-minha-rotina`…) em vez do id da
+  jornada (`auditoria`, `rotina`…). Isso partia a medição no GA4 em dois
+  nomes para a mesma ferramenta e inflava a contagem de "calculadoras" do
+  teste (75 → 26 reais). Agora todos usam o id da jornada.
+- Erros de texto corrigidos durante a leitura (atualizadoEm subiu): treino
+  de pernas (10–20 séries era "para o conjunto"; é por grupo), treino de
+  glúteos (link dizia 8–12 semanas; o artigo citado diz 6–12), treino de
+  costas (a sessão-exemplo repetida 2× estourava a faixa), cadeira
+  extensora (reto femoral também flexiona o quadril), treino ABC (6 → 6 a 7
+  exercícios por sessão).
+
+Ficam sem bloco, de propósito: gestantes, descanso entre séries (a página é
+a ferramenta) e os 4 recusados.
