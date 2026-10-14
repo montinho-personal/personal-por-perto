@@ -250,7 +250,7 @@ export function iniciarCalculadoraPassos(): void {
   }
 
   /** As linhas de calorias (dentro do <dl>) e, sem peso, o convite (fora dele). */
-  function blocoKcal(passos: number, pa: PassoAtual): { linhas: string; convite: string } {
+  function blocoKcal(passos: number, pa: PassoAtual): { linhas: string; convite: string; destaque?: string } {
     const peso = pesoKg();
     if (peso === null) {
       return {
@@ -259,7 +259,12 @@ export function iniciarCalculadoraPassos(): void {
       };
     }
     const k = kcalDePassos(passos, peso, pa.cm, cadencia());
-    return { linhas: linha('Gasto estimado', formataFaixaKcal(k.min, k.max)) + linha('Acréscimo ao dia', `~${arredondaKcal(k.liquida)} kcal`), convite: '' };
+    // As calorias sobem para junto do número principal: quem informou o peso veio por elas.
+    return {
+      linhas: linha('Acréscimo ao dia', `~${arredondaKcal(k.liquida)} kcal`),
+      convite: '',
+      destaque: `<p class="ps-kcal">Gasto estimado: <strong>${formataFaixaKcal(k.min, k.max)}</strong> <span>para ${Math.round(peso)} kg</span></p>`,
+    };
   }
 
   function tabelaMetas(pa: PassoAtual): string {
@@ -276,7 +281,15 @@ export function iniciarCalculadoraPassos(): void {
 
   /* ───────── os modos ───────── */
 
-  function rPassos(): { html: string; chave: string | null; nome?: string; extra?: Record<string, string | boolean> } {
+  type R = { html: string; chave: string | null; nome?: string; extra?: Record<string, string | boolean>; resumo?: string };
+  const kcalCurto = (passos: number, pa: PassoAtual): string => {
+    const peso = pesoKg();
+    if (peso === null) return '';
+    const k = kcalDePassos(passos, peso, pa.cm, cadencia());
+    return ` · ${formataFaixaKcal(k.min, k.max)}`;
+  };
+
+  function rPassos(): R {
     const p = parsePassos(f.passos.value);
     if (!passosValidos(p)) {
       return { html: `<p class="ps-vazio">${f.passos.value.trim() ? 'Digite um número de passos entre 1 e 100.000.' : DICAS.passos}</p>`, chave: null };
@@ -290,7 +303,7 @@ export function iniciarCalculadoraPassos(): void {
     const html =
       `<p class="ps-rotulo">${formataPassos(p)} passos são aproximadamente</p>` +
       `<p class="ps-numero">${formataKm(km).replace(/ (km|m)$/, ' <span>$1</span>')}</p>` +
-      `<p class="ps-faixa">${faixa}</p>` +
+      `<p class="ps-faixa">${faixa}</p>${kc.destaque ?? ''}` +
       `<dl class="ps-sec">${linha('Tempo caminhando', `~${formataTempo(min)}`)}${linha('Passos por minuto', `~${cadencia()}`)}${kc.linhas}</dl>${kc.convite}` +
       `<p class="ps-significa">Para você, ${formataPassos(p)} passos representam cerca de ${formataKm(km)} e ${formataTempo(min)} de caminhada contínua. ${esc(textoPasso(pa))}</p>` +
       tabelaMetas(pa) +
@@ -301,12 +314,13 @@ export function iniciarCalculadoraPassos(): void {
     return {
       html,
       chave: `${p}|${pa.cm.toFixed(1)}|${ritmoId}|${pesoKg() ?? ''}`,
+      resumo: `${formataPassos(p)} passos ≈ ${formataKm(km)} · ~${formataTempo(min)}${kcalCurto(p, pa)}`,
       nome: pesoKg() !== null ? 'steps_calories_calculated' : 'steps_to_km_calculated',
       extra: { steps_bucket: faixaEvento(p), distance_bucket: faixaEventoKm(km) },
     };
   }
 
-  function rKm(): ReturnType<typeof rPassos> {
+  function rKm(): R {
     const k = num(f.km);
     if (!kmValidos(k)) {
       return { html: `<p class="ps-vazio">${f.km.value.trim() ? 'Digite uma distância entre 0,1 e 100 km.' : DICAS.km}</p>`, chave: null };
@@ -321,7 +335,7 @@ export function iniciarCalculadoraPassos(): void {
     const html =
       `<p class="ps-rotulo">${esc(kTxt)} são aproximadamente</p>` +
       `<p class="ps-numero">${formataPassos(arredondaPassos(p))} <span>passos</span></p>` +
-      `<p class="ps-faixa">${faixa}</p>` +
+      `<p class="ps-faixa">${faixa}</p>${kc.destaque ?? ''}` +
       `<dl class="ps-sec">${linha('Tempo caminhando', `~${formataTempo(min)}`)}${linha('Passos por minuto', `~${cadencia()}`)}${kc.linhas}</dl>${kc.convite}` +
       `<p class="ps-significa">${esc(textoPasso(pa))}</p>` +
       `<p class="ps-convite">Vai correr essa distância ou quer o ritmo por km? A <a href="/ferramentas/calculadora-de-pace/" data-ps-link="pace">calculadora de pace</a> faz essa conta.</p>` +
@@ -329,6 +343,7 @@ export function iniciarCalculadoraPassos(): void {
     return {
       html,
       chave: `${k}|${pa.cm.toFixed(1)}|${ritmoId}|${pesoKg() ?? ''}`,
+      resumo: `${kTxt} ≈ ${formataPassos(arredondaPassos(p))} passos · ~${formataTempo(min)}${kcalCurto(p, pa)}`,
       nome: 'km_to_steps_calculated',
       extra: { distance_bucket: faixaEventoKm(k), steps_bucket: faixaEvento(p) },
     };
@@ -355,7 +370,7 @@ export function iniciarCalculadoraPassos(): void {
     return `<div class="ps-hist"><h3>Seus dias</h3><ol>${lista}</ol>${resumo}<button type="button" class="ps-link-btn" data-acao="apagar-historico">Apagar o histórico deste aparelho</button></div>`;
   }
 
-  function rMeta(): ReturnType<typeof rPassos> {
+  function rMeta(): R {
     const meta = parsePassos(f.meta.value);
     const feitos = parsePassos(f.feitos.value);
     const hist = rHistorico();
@@ -390,11 +405,14 @@ export function iniciarCalculadoraPassos(): void {
       `<div class="ps-acoes"><button type="button" class="ps-btn ps-btn-sec" data-acao="salvar-dia"${salvo ? ' disabled' : ''}>${salvo ? 'Dia salvo neste aparelho' : 'Salvar meu dia'}</button></div>` +
       `<p class="ps-nota">O histórico fica só neste aparelho, sem cadastro. Volte amanhã para ver quanto falta.</p>` +
       hist;
-    return { html, chave: `${meta}|${feitos}|${pa.cm.toFixed(1)}|${ritmoId}`, nome: 'steps_goal_calculated', extra: { goal_bucket: faixaEvento(meta), steps_bucket: faixaEvento(feitos) } };
+    const resumo = q.concluida
+      ? `Meta batida: ${formataPassos(feitos)} passos · ~${formataKm(kmDePassos(feitos, pa.cm))}`
+      : `Faltam ${formataPassos(q.faltam)} passos · ${formataKm(q.km)} · ~${formataTempo(q.minutos)}`;
+    return { html, resumo, chave: `${meta}|${feitos}|${pa.cm.toFixed(1)}|${ritmoId}`, nome: 'steps_goal_calculated', extra: { goal_bucket: faixaEvento(meta), steps_bucket: faixaEvento(feitos) } };
   }
 
   let passoMedido: number | null = null;
-  function rMedir(): ReturnType<typeof rPassos> {
+  function rMedir(): R {
     const m = parseDecimal(semSeparadorFinal(f.medM.value.replace(/\.(?=\d{3}\b)/g, '')));
     const p = parsePassos(f.medP.value);
     passoMedido = null;
@@ -445,6 +463,11 @@ export function iniciarCalculadoraPassos(): void {
   function calcula(): void {
     const r = modo === 'passos' ? rPassos() : modo === 'km' ? rKm() : modo === 'meta' ? rMeta() : rMedir();
     saida.innerHTML = r.html;
+    const resumo = $<HTMLElement>('#ps-resumo', app);
+    if (resumo) {
+      resumo.hidden = !r.resumo;
+      $<HTMLElement>('#ps-resumo-txt', app)!.textContent = r.resumo ?? '';
+    }
     const av = avisos();
     aviso.hidden = av.length === 0;
     aviso.textContent = av.join(' ');

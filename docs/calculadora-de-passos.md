@@ -293,9 +293,13 @@ pergunta o sexo (o estudo testou e não mudou nada) e dá faixa.
 - **Title (60):** "Calculadora de Passos: 10 Mil Passos em Km, Tempo e
   Calorias" — "10 mil passos em km" tem 9× o volume de "calculadora de
   passos". **H1:** "Calculadora de passos: quantos km são os seus passos?".
-- **Ordem do app:** resultado logo depois do número; "Quer deixar a
-  estimativa mais precisa?" (ritmo, altura, peso, passo) vem DEPOIS do
-  resultado — personalização progressiva, nunca 8 campos antes.
+- **Ordem do app (revista em 14/10, feedback do Renato):** o bloco
+  "Deixar mais preciso e calcular calorias" (ritmo, altura, peso, passo)
+  fica fechado, entre o campo e o resultado; aberto, ele termina numa barra
+  fixa com o resumo ao vivo ("10 km ≈ 13.600 passos · ~1h59 · ~710–910
+  kcal"), porque com o bloco embaixo do resultado quem digitava o peso não
+  via a conta mudar sem subir a página. As calorias, quando há peso, sobem
+  para junto do número principal.
 - **Modos:** Passos em km · Km em passos · Quanto falta? · Medir meu passo.
   "Usar este passo" leva o passo medido para as outras contas.
 - **Tabelas da página** ficam no HTML (passo médio, moderado) e se

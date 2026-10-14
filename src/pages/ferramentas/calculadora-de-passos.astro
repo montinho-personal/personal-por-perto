@@ -298,17 +298,8 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
 
         </div>
 
-        <p id="ps-aviso" class="ps-aviso" role="status" hidden></p>
-        <p id="ps-anuncio" class="sr-only" aria-live="polite"></p>
-
-        <div id="ps-resultado" class="ps-resultado" role="region" aria-label="Resultado">
-          <noscript>
-            <p class="ps-vazio">A calculadora precisa de JavaScript. As tabelas abaixo trazem as contas mais comuns já prontas.</p>
-          </noscript>
-        </div>
-
         <details id="ps-preciso" class="ps-preciso">
-          <summary>Quer deixar a estimativa mais precisa? <span class="ps-opcional">altura, ritmo, peso — tudo opcional</span></summary>
+          <summary>Deixar mais preciso e calcular calorias <span class="ps-opcional">altura, ritmo, peso — tudo opcional</span></summary>
           <div class="ps-preciso-corpo">
             <div class="ps-bloco">
               <span class="ps-rotulo-campo" id="ps-ritmo-rotulo">Em que ritmo você anda?</span>
@@ -336,8 +327,21 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
               </div>
             </div>
             <p class="ps-dica">O passo medido vale mais que a altura: se você preencher os dois, a conta usa o passo.</p>
+            <div id="ps-resumo" class="ps-resumo" hidden>
+              <p id="ps-resumo-txt"></p>
+              <a href="#ps-resultado" class="ps-link-btn" id="ps-resumo-ver">Ver o resultado completo</a>
+            </div>
           </div>
         </details>
+        <p id="ps-aviso" class="ps-aviso" role="status" hidden></p>
+        <p id="ps-anuncio" class="sr-only" aria-live="polite"></p>
+
+        <div id="ps-resultado" class="ps-resultado" role="region" aria-label="Resultado">
+          <noscript>
+            <p class="ps-vazio">A calculadora precisa de JavaScript. As tabelas abaixo trazem as contas mais comuns já prontas.</p>
+          </noscript>
+        </div>
+
         <div class="ps-compartilha">
           <button type="button" id="ps-compartilhar" class="ps-link-btn">Compartilhar a calculadora</button>
           <a
@@ -792,8 +796,14 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
     .ps-preciso summary::after { content: '+' / ''; margin-left: auto; font-size: 1.2rem; color: var(--brand-600); }
     .ps-preciso[open] summary::after { content: '−' / ''; }
     .ps-preciso summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    /* O resumo vive junto dos campos: quem digita o peso vê a conta mudar sem rolar até o resultado. */
+    .ps-resumo { position: sticky; bottom: 0; z-index: 2; margin: 0 -0.9rem; padding: 0.7rem 0.9rem; background: var(--brand-600); color: #fff; border-radius: 0 0 var(--radius) var(--radius); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.2rem var(--sp-3); }
+    .ps-resumo[hidden] { display: none; }
+    .ps-resumo p { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; font-size: var(--step-0); }
+    .ps-resumo .ps-link-btn { color: #fff; min-height: 32px; }
     .ps-opcional { font-weight: 400; color: var(--muted); font-size: 0.8rem; }
     .ps-preciso-corpo { display: grid; gap: var(--sp-4); padding-bottom: var(--sp-4); }
+    .ps-preciso-corpo:has(.ps-resumo:not([hidden])) { padding-bottom: 0; }
     @media (max-width: 760px) {
       :global(body.ps-app-visivel .wpp-float-regiao) { display: none; }
     }
@@ -818,6 +828,9 @@ const urlCompartilhar = new URL(`${path}/`, site.dominio).href;
       font-variant-numeric: tabular-nums;
     }
     .ps-resultado :global(.ps-numero span) { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .ps-resultado :global(.ps-kcal) { margin-top: var(--sp-3); font-size: var(--step-0); }
+    .ps-resultado :global(.ps-kcal strong) { font-size: var(--step-1); color: var(--ink); font-variant-numeric: tabular-nums; }
+    .ps-resultado :global(.ps-kcal span) { color: var(--muted); font-size: var(--step--1); }
     .ps-resultado :global(.ps-faixa) { margin-top: 0.3rem; font-size: var(--step--1); color: var(--ink-soft); }
     .ps-resultado :global(.ps-sec) { margin: var(--sp-4) 0 0; display: grid; gap: 0.3rem; }
     .ps-resultado :global(.ps-linha) { display: flex; justify-content: space-between; gap: var(--sp-3); border-bottom: 1px dashed var(--line); padding-bottom: 0.3rem; }
