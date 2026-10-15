@@ -299,3 +299,29 @@ predominantemente plano, e volta ao lago de ~3,3 km (prefeitura: 5,2 km e
 
 Saldo: 8 entradas → 1 removida (Selfit Uberlândia), 4 detalhes corrigidos,
 3 genéricas/públicas ajustadas.
+
+### 15/10/2026 — leva 12 (rotina, Parte B: Recife e Londrina)
+
+**Recife/PE** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech | confirmada; "no Shopping Recife" vira "unidade Shopping Recife, na Av. Fernando Simões Barbosa" — o endereço é o Wecom Center, ao lado, e nenhuma fonte põe a unidade dentro do shopping | Wellhub (Av. Fernando Simões Barbosa, 266, Boa Viagem, Recife-PE) + nome da unidade em páginas oficiais da Bodytech indexadas (site SPA, mesmo critério de SP e Curitiba) |
+| Smart Fit | confirmada; bairros conferidos acrescentados | smartfit.com.br/academias/{torre (R. José Bonifácio, 1315), shopping-recife (R. Padre Carapuceiro, 777), aflitos (Av. Cons. Rosa e Silva, 1832), madalena}, todas `opened:true` |
+| Estúdios de funcional e crossfit | genérica; sai "concentrados" e "Casa Forte" (nenhum box achado lá) | Wellhub/Gympass: boxes em Boa Viagem |
+| Parque da Jaqueira | confirmada como equipamento público; sai "arborizadas" e "trilhas" do texto | Prefeitura do Recife, apresentação de parques (PDF, 2023): 71.552 m², pista de cooper e ciclovia |
+
+Também no arquivo: `academias` e FAQ sem "Casa Forte/Espinheiro" para estúdios.
+
+**Londrina/PR** — página mudou. Fica com 2 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "pontos centrais" vira as três unidades abertas (Av. Celso Garcia está em pré-inauguração e não entra) | smartfit.com.br/academias/{aurora-shopping, quintino, londrina-av-maringa}, `opened:true` |
+| Academias locais bem avaliadas | **removida**: não nomeia academia e "bem avaliadas"/"forte oferta" não têm fonte | — |
+| Boxes de crossfit e estúdios de funcional | **removida**: "cena aquecida pelo público universitário" sem fonte | — |
+| Academia ao ar livre do Lago Igapó | confirmada; sai "revitalizada" (a notícia achada fala em revitalização futura) | blog.londrina.pr.gov.br (Prefeitura, 2010): academias instaladas no Lago Igapó II |
+
+Também no arquivo: `mercado`, descrição do Igapó, `academias` e FAQ sem "bem avaliadas", "crossfit aquecido" e "revitalizada".
+
+Saldo: 8 entradas → 2 removidas (genéricas de Londrina), 5 detalhes corrigidos, 1 confirmada sem mudança no nome.

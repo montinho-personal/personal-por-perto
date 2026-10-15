@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o porte do município e concentra-se na sede e nos núcleos de praia, complementada pelo treino na orla e pelo atendimento domiciliar, formato bastante procurado pela rotina de trabalho da cidade industrial.',
 
+  academiasProximas: [
+    { nome: 'Academia Corpus', detalhe: 'no bairro Bela Vista' },
+    { nome: 'Fit Center Academia', detalhe: 'na Rua Ignácio B. de Amorim, no bairro Vila Rica' },
+    { nome: 'Vox Academia', detalhe: 'no bairro Bela Vista' },
+  ],
+
   destaquesFitness: [
     'Orla de Coqueiral com calçadão para caminhada, corrida e esportes de areia.',
     'Praia de Santa Cruz, no encontro do rio Piraquê-açú com o mar, para treino ao ar livre.',
@@ -96,5 +102,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Aracruz', url: 'https://www.aracruz.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-15',
+  atualizadoEm: '2026-10-15',
 };

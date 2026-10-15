@@ -65,6 +65,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios espalhados pelos bairros e pelo centro, complementada pelo Bosque Municipal e pelas áreas verdes da cidade como espaços de treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'na Av. Nove de Julho, no Centro' },
+    { nome: 'Panobianco', detalhe: 'na Rua Ângelo Bertoncine, no Centro' },
+    { nome: 'Skyfit', detalhe: 'na Av. Valter Antônio Fontana' },
+  ],
+
   destaquesFitness: [
     'Bosque Municipal de Assis: área verde gratuita para caminhada e treino ao ar livre.',
     'Floresta Estadual de Assis: remanescente de cerrado para contato com a natureza e educação ambiental.',
@@ -91,5 +97,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Assis', url: 'https://www.assis.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-15',
+  atualizadoEm: '2026-10-15',
 };

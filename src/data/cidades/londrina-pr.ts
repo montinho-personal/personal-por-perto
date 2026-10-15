@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Maior cidade do Norte do Paraná, Londrina nasceu da cultura do café e migrou para uma economia de serviços, comércio, saúde e educação, mantendo forte presença do agronegócio na região. É o principal polo universitário e médico do norte paranaense, com a UEL à frente, o que sustenta um público jovem e ativo.',
 
   mercado:
-    'Cidade universitária, Londrina tem cultura forte de musculação e corrida. Redes como a Smart Fit e academias locais bem avaliadas convivem com estúdios de crossfit e funcional, com ampla cobertura de plataformas de benefícios — e o Lago Igapó como grande ponto de treino ao ar livre.',
+    'Cidade universitária, Londrina tem cultura forte de musculação e corrida. A Smart Fit tem três unidades na cidade, ao lado de academias de bairro e estúdios — e o Lago Igapó é o grande ponto de treino ao ar livre.',
 
   bairrosNobres: ['Gleba Palhano', 'Bela Suíça', 'Terra Bonita', 'Jardim Higienópolis'],
   bairrosPopulares: ['Jardim São Paulo', 'Jardim Inglaterra', 'Vivi Xavier', 'Cinco Conjuntos'],
@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Lago Igapó',
       descricao:
-        'O cartão-postal de Londrina: conjunto de lagos com mais de 4.500 m de extensão, entorno com pista de caminhada, academia ao ar livre revitalizada e quadras. É o "ginásio a céu aberto" da cidade, com trilha de corrida em torno de 6 km no Igapó 1.',
+        'O cartão-postal de Londrina: conjunto de lagos com mais de 4.500 m de extensão, entorno com pista de caminhada, academia ao ar livre e quadras. É o "ginásio a céu aberto" da cidade, com trilha de corrida em torno de 6 km no Igapó 1.',
     },
     {
       nome: 'Zerão (Área de Lazer Luigi Borghesi)',
@@ -68,12 +68,10 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Londrina tem tradição forte em corrida de rua, com um calendário oficial repleto de provas pedestres e ciclísticas ao longo do ano, e em ciclismo de estrada. O Lago Igapó é o epicentro do treino ao ar livre da cidade.',
   academias:
-    'A oferta reúne a Smart Fit e academias locais bem avaliadas, além de estúdios de crossfit e treino funcional, com forte cobertura de plataformas de benefícios e um público universitário numeroso.',
+    'A oferta reúne a Smart Fit, com unidades no Aurora Shopping, no Centro e na Av. Maringá, além de academias de bairro e estúdios.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades em pontos centrais da cidade' },
-    { nome: 'Academias locais bem avaliadas', detalhe: 'forte oferta na Gleba Palhano e no Centro' },
-    { nome: 'Boxes de crossfit e estúdios de funcional', detalhe: 'cena aquecida pelo público universitário' },
-    { nome: 'Academia ao ar livre do Lago Igapó', detalhe: 'gratuita, revitalizada, no cartão-postal da cidade' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Aurora Shopping (Gleba Palhano), no Centro (Open Mall Quintino) e na Av. Maringá' },
+    { nome: 'Academia ao ar livre do Lago Igapó', detalhe: 'pública e gratuita, às margens do Lago Igapó' },
   ],
 
   destaquesFitness: [
@@ -110,7 +108,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Londrina?',
       resposta:
-        'O Lago Igapó é o "ginásio a céu aberto" da cidade — pista de caminhada, academia ao ar livre e a volta de cerca de 6 km no Igapó 1 —, com a Gleba Palhano, colada ao lago, concentrando os prédios onde o atendimento em condomínio mais cresce. O Zerão soma a pista oval de 1.050 m e o Parque Arthur Thomas, as trilhas na mata. Nas academias, a Smart Fit e as locais bem avaliadas cobrem a cidade, com boxes de crossfit aquecidos pelo público universitário.',
+        'O Lago Igapó é o "ginásio a céu aberto" da cidade — pista de caminhada, academia ao ar livre e a volta de cerca de 6 km no Igapó 1 —, com a Gleba Palhano, colada ao lago, concentrando os prédios onde o atendimento em condomínio mais cresce. O Zerão soma a pista oval de 1.050 m e o Parque Arthur Thomas, as trilhas na mata. Nas academias, a Smart Fit tem três unidades — Aurora Shopping, Centro e Av. Maringá — ao lado das academias de bairro.',
     },
     {
       pergunta: 'Como usar o Zerão e o Igapó para evoluir na corrida em Londrina?',
@@ -134,7 +132,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Londrina', url: 'https://www.londrina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-15',
+  atualizadoEm: '2026-10-15',
   capaArte: {
     src: '/capas-cidade/londrina-pr.webp',
     w: 1200,

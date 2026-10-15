@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Pernambuco e uma das maiores cidades do Nordeste, Recife tem economia de serviços, comércio e saúde, com destaque para o Porto Digital — um dos maiores parques tecnológicos do país, que reúne centenas de empresas e milhares de profissionais de tecnologia. Cortada por rios e pontes, a "Veneza Brasileira" tem na orla de Boa Viagem o seu grande corredor de atividade física.',
 
   mercado:
-    'O mercado fitness recifense é movido pela forte cultura de orla — Boa Viagem concentra corrida e ciclismo — e pela presença de redes como Smart Fit (Torre, Shopping Recife) e Bodytech (Shopping Recife, em Boa Viagem). O apelo de estética e praia, típico do litoral nordestino, somado ao público de classe média do polo tecnológico, sustenta uma demanda consistente por personal trainers.',
+    'O mercado fitness recifense é movido pela forte cultura de orla — Boa Viagem concentra corrida e ciclismo — e pela presença de redes como Smart Fit (Torre, Shopping Recife) e Bodytech (unidade Shopping Recife, em Boa Viagem). O apelo de estética e praia, típico do litoral nordestino, somado ao público de classe média do polo tecnológico, sustenta uma demanda consistente por personal trainers.',
 
   bairrosNobres: ['Boa Viagem', 'Casa Forte', 'Jaqueira', 'Espinheiro'],
   bairrosPopulares: ['Casa Amarela', 'Afogados', 'Ibura', 'Várzea'],
@@ -34,7 +34,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque da Jaqueira',
       descricao:
-        'Cerca de 7 hectares de área verde com pista, ciclovia e trilhas — um clássico para corrida e treino arborizado, fugindo do sol mais forte.',
+        'Cerca de 7 hectares de parque público com pista de cooper e ciclovia — um clássico para corrida e treino ao ar livre.',
     },
     {
       nome: 'Parque Dona Lindu (Boa Viagem)',
@@ -68,12 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Recife une tradição de futebol e cultura local (do frevo ao Recife Antigo) a uma cena de corrida de rua consolidada, com a Corrida das Pontes como símbolo, e a uma forte cultura de orla em Boa Viagem.',
   academias:
-    'A oferta reúne redes como Smart Fit e Bodytech, bem instaladas em shoppings e bairros nobres, além de estúdios de funcional e crossfit que atendem o público de Boa Viagem, Casa Forte e do entorno do Porto Digital.',
+    'A oferta reúne redes como a Smart Fit, com unidades em vários bairros, e a Bodytech, em Boa Viagem, além de estúdios de funcional e boxes de crossfit em Boa Viagem e outros bairros.',
   academiasProximas: [
-    { nome: 'Bodytech', detalhe: 'no Shopping Recife, em Boa Viagem' },
-    { nome: 'Smart Fit', detalhe: 'unidades na Torre, no Shopping Recife e em outros bairros' },
-    { nome: 'Estúdios de funcional e crossfit', detalhe: 'concentrados em Boa Viagem e Casa Forte' },
-    { nome: 'Estrutura pública do Parque da Jaqueira', detalhe: 'pista e ciclovia gratuitas e arborizadas' },
+    { nome: 'Bodytech', detalhe: 'unidade Shopping Recife, na Av. Fernando Simões Barbosa, em Boa Viagem' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Torre, no Shopping Recife, nos Aflitos, na Madalena e em outros bairros' },
+    { nome: 'Estúdios de funcional e crossfit', detalhe: 'presentes em Boa Viagem e em outros bairros' },
+    { nome: 'Estrutura pública do Parque da Jaqueira', detalhe: 'pista de cooper e ciclovia em parque público de cerca de 7 hectares' },
   ],
 
   destaquesFitness: [
@@ -114,7 +114,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender no Recife?',
       resposta:
-        'Os polos são: a orla de Boa Viagem, com seus 7 km de calçadão e a ciclovia, para treinos de corrida e funcional; as academias e estúdios de Boa Viagem, Casa Forte e Espinheiro; o atendimento em casa e em condomínio, forte nos prédios da orla; e um nicho crescente de treino corporativo ligado ao Porto Digital, com sessões antes ou depois do expediente. O Parque da Jaqueira é a alternativa arborizada para fugir do sol forte.',
+        'Os polos são: a orla de Boa Viagem, com seus 7 km de calçadão e a ciclovia, para treinos de corrida e funcional; as academias e estúdios de Boa Viagem e de outros bairros; o atendimento em casa e em condomínio, forte nos prédios da orla; e um nicho crescente de treino corporativo ligado ao Porto Digital, com sessões antes ou depois do expediente. O Parque da Jaqueira é a alternativa arborizada para fugir do sol forte.',
     },
     {
       pergunta: 'Como manter o treino na estação chuvosa do Recife?',
@@ -147,5 +147,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Recife: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-15',
+  atualizadoEm: '2026-10-15',
 };
