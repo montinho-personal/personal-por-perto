@@ -74,7 +74,38 @@ function hash(texto: string): number {
  *    vizinhança a preservar.
  */
 export function videoDaPagina(chave: string): VideoMontinho {
+  if (VIDEO_FIXO_POR_PAGINA[chave]) return VIDEO_FIXO_POR_PAGINA[chave];
   const posicao = (cidadesPresencial as readonly string[]).indexOf(chave);
   const indice = posicao >= 0 ? posicao : hash(chave);
   return VIDEOS_MONTINHO[indice % VIDEOS_MONTINHO.length];
 }
+
+/**
+ * Shorts do canal colocados À MÃO em artigos, no parágrafo que respondem.
+ * Ficam FORA do rodízio das páginas de cidade: entrar em VIDEOS_MONTINHO
+ * mudaria o vídeo das 11 cidades de uma vez. Registro para não repetir o
+ * mesmo vídeo em dois artigos.
+ */
+export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string }> = [
+  { id: 'Mck7dwGz0as', tema: 'o aparelho está ocupado? como substituir o exercício', short: true, artigo: '/musculacao/academia-lotada-como-treinar/' },
+  { id: 'ul6Xi60zPeY', tema: 'usa Mounjaro? menos é mais, nada de treino gigante', short: true, artigo: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro/' },
+  { id: '9X968Kqa2-Y', tema: 'a balança mente? mesmo peso, outro corpo', short: true, artigo: '/emagrecimento/como-emagrecer-fazendo-musculacao/' },
+  { id: 'RvapDDClRXY', tema: 'qual o melhor exercício para ganhar músculo?', short: true, artigo: '/musculacao/maquina-ou-peso-livre/' },
+  { id: 'xb1sP6z01-s', tema: 'não sentiu o músculo? calma', short: true, artigo: '/musculacao/dor-muscular-pos-treino/' },
+  { id: '7rN1Xwhp09g', tema: 'só um pedacinho: quanto as beliscadas atrapalham', short: true, artigo: '/emagrecimento/comer-fora-e-dieta/' },
+];
+
+/**
+ * Vídeos que NÃO entram: G9WBAB3KUPM ("Existe mesmo o melhor exercício para
+ * hipertrofia?") é a mesma gravação de RvapDDClRXY — usar os dois seria
+ * repetir o vídeo no portal.
+ */
+
+/**
+ * Vídeo escolhido pelo Montinho para uma página específica, por cima do
+ * rodízio. Alphaville (15/10/2026): "Meu maior conselho para quem quer
+ * emagrecer", a pedido do próprio Montinho.
+ */
+export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
+  'alphaville-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
+};
