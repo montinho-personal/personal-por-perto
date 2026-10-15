@@ -97,6 +97,17 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
 ];
 
 /**
+ * 15/10/2026, a pedido do Montinho (opção 2): onde um Short dele responde
+ * ao assunto, ele SUBSTITUI o vídeo de referência de outro canal.
+ *   recomposicao-corporal → 9X968Kqa2-Y · plato-de-emagrecimento → nEhysMtPPVw
+ *   como-evitar-perda-de-massa-muscular → ul6Xi60zPeY · ozempic-e-treino → 0uzpCxIJkBg
+ *   treino-abc-como-montar → yqPAYRVTe0E · hipertrofia-como-funciona → RvapDDClRXY
+ *   vale-a-pena-contratar-personal-trainer → yndKE1GrnUQ · como-perder-barriga → Dg8Sbv6_V8w
+ *   alcool-e-emagrecimento → 7rN1Xwhp09g
+ * Os outros 87 artigos seguem com o vídeo de referência até haver Short do tema.
+ */
+
+/**
  * Vídeos que NÃO entram: G9WBAB3KUPM ("Existe mesmo o melhor exercício para
  * hipertrofia?") é a mesma gravação de RvapDDClRXY — usar os dois seria
  * repetir o vídeo no portal.
