@@ -92,6 +92,7 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
   { id: '9X968Kqa2-Y', tema: 'a balança mente? mesmo peso, outro corpo', short: true, artigo: '/emagrecimento/como-emagrecer-fazendo-musculacao/' },
   { id: 'RvapDDClRXY', tema: 'qual o melhor exercício para ganhar músculo?', short: true, artigo: '/musculacao/maquina-ou-peso-livre/' },
   { id: 'xb1sP6z01-s', tema: 'não sentiu o músculo? calma', short: true, artigo: '/musculacao/dor-muscular-pos-treino/' },
+  { id: 'izMrrSoJGBw', tema: 'raiva e sangue no olho: disciplina', short: true, artigo: '/guias/como-nao-desistir-do-treino/' },
   { id: '7rN1Xwhp09g', tema: 'só um pedacinho: quanto as beliscadas atrapalham', short: true, artigo: '/emagrecimento/comer-fora-e-dieta/' },
 ];
 
