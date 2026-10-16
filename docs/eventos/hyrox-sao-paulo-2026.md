@@ -25,6 +25,15 @@ Rede liberada em 13/10/2026; páginas abertas direto (curl) nesse dia.
 - Venue "Expo 1 and 2"; edição anterior "over 4,000 athletes"; formato "8 km run interspersed with 8 functional workout stations"; "no time limits and no qualifiers"; Relay "teams of 4"; divisões adaptadas para PcD; "Spots are limited and expected to sell out quickly".
 - Divergência menor: o bloco "Event Information" diz "October 17th, 2026"; o cabeçalho da mesma página diz "Oct 17 - 18 2026". Vale 17–18 (organizador).
 
+**Varredura de 16/10/2026** (página oficial do evento, aberta com curl):
+- Link "Start List" na página → https://startlist.hyrox.com/ (o host não abre neste ambiente; o artigo só diz que a lista existe e onde fica).
+- Mapa oficial do local (PDF): https://hyrox.com/wp-content/uploads/2026/10/2627-FINAL_HYROX_SaoPaulo_VenueMap_PRINT_2215x1864mm.pdf
+- "If you wish to enter the hall before your official check-in window, please go via the Spectators Desk and show your ticket & ID."
+- "Relay Briefing: 7:00 PM – Relay Transition Area (Warm-up zone)"; instruções de voltas ("Laps to run") por trecho.
+- Cerimônias detalhadas: sábado 14:30 Doubles Women Pro e Women Pro; 21:05 Adaptive Women; 21:15 Doubles Men Pro e Men Pro; 22:15 revezamentos. Domingo 10:50 Adaptive Men; 11:00 Men; 12:00 Doubles Men; 13:00 Doubles Women e Women; 15:00 Doubles Mixed.
+- Cronograma de largadas, credenciamento e preços: sem mudança. Transmissão: ainda não mencionada.
+- Artigo atualizado: lista de largada, mapa, balcão de espectadores, briefing do revezamento; Última verificação 16/10.
+
 ## Bloqueado (pedir print) — resolvido em 13/10, rede liberada
 
 - https://hyrox.com/event/hyrox-sao-paulo/ e https://hyrox.com/event/hyrox-sao-paulo-2/ (pode ser a página de 2026)
