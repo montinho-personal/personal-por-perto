@@ -151,5 +151,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Santana de Parnaíba com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-10-16',
 };

@@ -115,9 +115,14 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
 
 /**
  * Vídeo escolhido pelo Montinho para uma página específica, por cima do
- * rodízio. Alphaville (15/10/2026): "Meu maior conselho para quem quer
+ * rodízio. Alphaville (15/10/2026); Aldeia da Serra, Barueri e Santana de
+ * Parnaíba (16/10/2026): "Meu maior conselho para quem quer
  * emagrecer", a pedido do próprio Montinho.
  */
 export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
   'alphaville-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
+  // 16/10/2026, também a pedido do Montinho:
+  'aldeia-da-serra-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
+  'barueri-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
+  'santana-de-parnaiba-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
 };

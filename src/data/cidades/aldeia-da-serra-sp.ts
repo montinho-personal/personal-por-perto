@@ -149,5 +149,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
   },
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-10-16',
 };
