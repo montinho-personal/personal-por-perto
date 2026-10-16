@@ -1,4 +1,5 @@
 ---
+import { cidadesPresencial } from '../../data/atendimentoPresencial';
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Toc from '../../components/Toc.astro';
@@ -68,6 +69,11 @@ const ehSantana = cidade.slug === 'santana-de-parnaiba-sp';
 const ehBarueri = cidade.slug === 'barueri-sp';
 const ehAldeia = cidade.slug === 'aldeia-da-serra-sp';
 const ehTambore = cidade.slug === 'tambore-sp';
+// As outras cidades com atendimento presencial não têm seção própria de
+// fotos; recebem só o vídeo do Montinho (16/10/2026, a pedido dele).
+const ehPresencialSemSecao =
+  (cidadesPresencial as readonly string[]).includes(cidade.slug) &&
+  !['alphaville-sp', 'santana-de-parnaiba-sp', 'barueri-sp', 'aldeia-da-serra-sp', 'tambore-sp'].includes(cidade.slug);
 const fotoTransformacao = '/montinho/personal-trainer-alphaville.webp';
 const altTransformacao =
   'Antes e depois do Montinho Personal, personal trainer em Alphaville: da adolescência com sobrepeso ao físico definido após mais de 20 anos de musculação';
@@ -764,6 +770,28 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
+
+      {
+        ehPresencialSemSecao && (
+          <section id="video-do-personal">
+            <figure class="video-short">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoMontinho.id}`}
+                title={`Vídeo do Montinho Personal, personal trainer que atende ${n} e região`}
+                width="340"
+                height="604"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+              <figcaption>
+                No vídeo: o maior conselho do Montinho Personal, que atende {n} e
+                região, para quem quer emagrecer.
+              </figcaption>
+            </figure>
+          </section>
+        )
+      }
 
       <section id="onde-treinar">
         <h2>Onde treinar {emN}: academia, condomínio e ar livre</h2>

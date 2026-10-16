@@ -130,7 +130,7 @@ export const cidade: Cidade = {
     w: 1200,
     h: 1200,
   },
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-16',
   capaArte: {
     src: '/capas-cidade/carapicuiba-sp.webp',
     w: 1200,

@@ -126,7 +126,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jandira', url: 'https://www.jandira.sp.gov.br/' },
     { nome: 'Atlas Brasil — Jandira (SP)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3525003' },
   ],
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-16',
   capaArte: {
     src: '/capas-cidade/jandira-sp.webp',
     w: 1200,
