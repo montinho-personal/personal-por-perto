@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Maior cidade de Santa Catarina e a maior economia do estado, Joinville é o maior polo industrial catarinense — metalmecânico, plástico, têxtil e tecnologia —, o que lhe rendeu o apelido de "Manchester Catarinense". Com IDHM muito alto e relevo plano de planície costeira, é também conhecida como a "Cidade das Bicicletas" e a "Cidade da Dança".',
 
   mercado:
-    'O mercado fitness é aquecido pela maior economia do estado, com forte presença de redes nacionais (Smart Fit em vários bairros, Bluefit, Pratique) e academias locais. A cultura de musculação é consolidada, e o relevo plano somado à enorme malha cicloviária favorece corrida e ciclismo de longa distância.',
+    'O mercado fitness é aquecido pela maior economia do estado, com redes nacionais (Smart Fit em quatro unidades e Bluefit) e academias locais. A cultura de musculação é consolidada, e o relevo plano somado à enorme malha cicloviária favorece corrida e ciclismo de longa distância.',
 
   bairrosNobres: ['América', 'Atiradores', 'Saguaçu', 'Anita Garibaldi'],
   bairrosPopulares: ['Aventureiro', 'Paranaguamirim', 'Comasa', 'Itinga'],
@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Morro da Boa Vista (Zoobotânico)',
       descricao:
-        'Tem pista de caminhada, academia ao ar livre e trilhas na mata, com mirante — um dos principais espaços de treino ao ar livre da cidade.',
+        'Tem Academia da Melhor Idade e trilha ecológica na mata, com visitação gratuita — um dos principais espaços de treino ao ar livre da cidade.',
     },
     {
       nome: 'Complexo Expoville',
@@ -68,12 +68,11 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Joinville é uma cidade ativa, com tradição em ciclismo urbano e um calendário consistente de corridas. É também a "capital da dança", sede do maior festival de dança do mundo — uma cultura corporal que se estende ao cuidado com o físico.',
   academias:
-    'A oferta reúne forte presença de redes nacionais (Smart Fit, Bluefit, Pratique) e academias locais, complementadas pela estrutura gratuita dos parques e praças.',
+    'A oferta reúne redes nacionais (Smart Fit e Bluefit) e academias locais, complementadas pela estrutura gratuita dos parques e praças.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades em vários bairros da cidade' },
-    { nome: 'Bluefit e Pratique', detalhe: 'redes de baixo custo com presença consolidada' },
-    { nome: 'Academias locais', detalhe: 'forte oferta no América, nos Atiradores e no Saguaçu' },
-    { nome: 'Estrutura pública', detalhe: 'gratuita, no Morro da Boa Vista, na Expoville e nas praças' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Saguaçu, no Aventureiro e no Bucarein (uma delas no Shopping Estação)' },
+    { nome: 'Bluefit', detalhe: 'unidade na Rua Iririú, no bairro Iririú' },
+    { nome: 'Estrutura pública', detalhe: 'gratuita: Academia da Melhor Idade e trilha no Zoobotânico, além de academias da melhor idade em praças' },
   ],
 
   destaquesFitness: [
@@ -109,7 +108,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Joinville?',
       resposta:
-        'O Parque Morro da Boa Vista (pista, academia ao ar livre e trilhas com mirante) e o complexo da Expoville são os principais palcos públicos, e as praças com equipamentos gratuitos espalham o treino pelos bairros. Nas academias, Smart Fit, Bluefit e Pratique cobrem a cidade, com academias locais fortes no América e nos Atiradores. O atendimento em casa é comum nos bairros de maior renda — e o relevo plano torna qualquer deslocamento rápido.',
+        'O Parque Morro da Boa Vista (Academia da Melhor Idade e trilha ecológica) e o complexo da Expoville são os principais palcos públicos, e as praças com equipamentos gratuitos espalham o treino pelos bairros. Nas academias, a Smart Fit tem quatro unidades e a Bluefit uma, no Iririú, ao lado das academias de bairro. O atendimento em casa é comum nos bairros de maior renda — e o relevo plano torna qualquer deslocamento rápido.',
     },
     {
       pergunta: 'Pedalar para o trabalho em Joinville conta como treino?',
@@ -133,7 +132,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Joinville', url: 'https://www.joinville.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-16',
+  atualizadoEm: '2026-10-16',
   capaArte: {
     src: '/capas-cidade/joinville-sc.webp',
     w: 1200,

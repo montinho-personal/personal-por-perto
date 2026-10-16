@@ -325,3 +325,29 @@ Também no arquivo: `academias` e FAQ sem "Casa Forte/Espinheiro" para estúdios
 Também no arquivo: `mercado`, descrição do Igapó, `academias` e FAQ sem "bem avaliadas", "crossfit aquecido" e "revitalizada".
 
 Saldo: 8 entradas → 2 removidas (genéricas de Londrina), 5 detalhes corrigidos, 1 confirmada sem mudança no nome.
+
+### 16/10/2026 — leva 13 (rotina, Parte B: Joinville e Belém)
+
+**Joinville/SC** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "vários bairros" vira as 4 unidades abertas | smartfit.com.br/academias/{saguacu (R. João Pessoa, 276), aventureiro (R. Tuiuti, 2295), bucarein (R. São Paulo, 910), shopping-estacao-joinville (Av. Getúlio Vargas, 1446)}, `opened:true` |
+| Bluefit e Pratique | vira **só Bluefit**; **Pratique sai** (só Wellhub; site oficial bloqueado) e sai "presença consolidada" | bluefit.com.br/unidade/joinville (R. Iririú, 1531, Iririú) + Wellhub |
+| Academias locais ("forte oferta no América…") | **removida**: sem nome e sem fonte | — |
+| Estrutura pública | confirmada; Expoville sai da lista; vira Academia da Melhor Idade e trilha no Zoobotânico (visitação gratuita) e academias da melhor idade em praças | joinville.sc.gov.br/servicos/visitar-parque-zoobotanico/; PDFs da Prefeitura no índice de busca (praças) |
+
+Também no arquivo: Pratique sai do `mercado`, `academias` e FAQ; "pista de caminhada… mirante" do Morro da Boa Vista vira o que a Prefeitura descreve.
+
+**Belém/PA** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech | confirmada; sai "premium"; vira "unidade Nazaré, na Av. Governador José Malcher" | Wellhub (Av. Gov. José Malcher, 66040-281, Belém-PA) + blog oficial da Bodytech citando a unidade Nazaré, em Belém (índice de busca; site SPA, mesmo critério de SP, Curitiba e Recife) |
+| Smart Fit | confirmada; vira as unidades oficiais (9 abertas em Belém) | smartfit.com.br/academias/{patio-belem, boulevard, bosque-mall-belem, shopping-castanheira, humaita, dr-freitas, mangueirao, maguari, mario-covas} |
+| Academias locais ("boa cobertura…") | **removida**: sem nome e sem fonte | — |
+| Parque do Utinga | confirmada sem mudança | ideflorbio.pa.gov.br: pista de ~4 km, faixas para pedestres e ciclistas; entrada gratuita |
+
+Também no arquivo: "nos bairros nobres" e "Smart Fit… no Umarizal" corrigidos (as unidades ficam em Batista Campos, Reduto e outros bairros).
+
+Saldo: 8 entradas → 2 removidas (genéricas), Pratique retirada da entrada conjunta, 5 detalhes corrigidos, 1 confirmada sem mudança.

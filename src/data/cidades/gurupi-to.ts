@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o porte de polo regional da cidade, atendendo tanto o público universitário da UFT e da UnirG quanto a classe ligada ao agronegócio. Os parques e as vias planas complementam essa estrutura com espaço para treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Academia Performance', detalhe: 'na Av. Lenival Corrêa Ferreira, no Alto da Boa Vista' },
+    { nome: 'Academia Universitária', detalhe: 'na Av. Paraná, no Setor Central' },
+  ],
+
   destaquesFitness: [
     'Terceira maior cidade do Tocantins e polo regional de serviços do sul do estado.',
     'Forte público universitário (UFT e UnirG) sustentando demanda por treino e bem-estar.',
@@ -91,5 +96,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Gurupi', url: 'https://gurupi.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-16',
+  atualizadoEm: '2026-10-16',
 };

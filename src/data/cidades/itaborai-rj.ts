@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta privada (redes e academias locais) é complementada por uma rede pública gratuita de Academias da Saúde com pista e quadra em vários bairros.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'na Rua Pedro Azeredo, no Centro' },
+    { nome: 'Skyfit', detalhe: 'no Shopping Itaboraí Plaza, na BR-101, em Três Pontes' },
+    { nome: 'Academia Golden Shape', detalhe: 'na Av. Carlos Lacerda, no Areal' },
+  ],
+
   destaquesFitness: [
     'Crescimento econômico e populacional (efeito Polo GasLub), abrindo novo mercado de alunos.',
     'Rede pública gratuita de Academias da Saúde com pista e quadra em vários bairros.',
@@ -96,5 +102,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaboraí', url: 'https://www.itaborai.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-16',
+  atualizadoEm: '2026-10-16',
 };

@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital do Pará e principal porta de entrada da Amazônia, Belém tem forte vocação portuária e comercial (açaí, castanha, pescado e cacau) e é o polo de serviços e logística do Norte. Sediou a COP30 em 2025, o que impulsionou obras de infraestrutura e mobilidade — e colocou a cidade em evidência mundial.',
 
   mercado:
-    'O mercado fitness é consolidado, com grandes redes (Smart Fit em vários shoppings e a Bodytech em Nazaré) e academias locais. A cultura de treino ao ar livre é forte nas orlas e parques, ainda que condicionada ao calor e à umidade equatoriais.',
+    'O mercado fitness é consolidado, com grandes redes (Smart Fit em nove unidades, quatro delas em shoppings, e a Bodytech em Nazaré) e academias locais. A cultura de treino ao ar livre é forte nas orlas e parques, ainda que condicionada ao calor e à umidade equatoriais.',
 
   bairrosNobres: ['Nazaré', 'Batista Campos', 'Umarizal', 'Reduto'],
   bairrosPopulares: ['Guamá', 'Terra Firme', 'Jurunas', 'Sacramenta'],
@@ -68,17 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Belém tem forte tradição de corrida de rua, muito ligada ao Círio de Nazaré, além do futebol regional (a rivalidade Remo x Paysandu) e de um público crescente de corrida e ciclismo nas orlas. A vida ativa acontece, sobretudo, nos horários mais frescos do dia.',
   academias:
-    'A oferta reúne grandes redes (Smart Fit, Bodytech) nos bairros nobres e academias locais, complementadas pela estrutura ao ar livre do Parque do Utinga e das orlas.',
+    'A oferta reúne grandes redes (Smart Fit, com unidades em vários bairros, e Bodytech, em Nazaré) e academias locais, complementadas pela estrutura ao ar livre do Parque do Utinga e das orlas.',
   academiasProximas: [
-    { nome: 'Bodytech', detalhe: 'unidade premium em Nazaré' },
-    { nome: 'Smart Fit', detalhe: 'unidades em shoppings e bairros da cidade' },
-    { nome: 'Academias locais', detalhe: 'boa cobertura no Umarizal, em Batista Campos e no Reduto' },
+    { nome: 'Bodytech', detalhe: 'unidade Nazaré, na Av. Governador José Malcher' },
+    { nome: 'Smart Fit', detalhe: 'unidades nos shoppings Pátio Belém, Boulevard, Bosque Mall e Castanheira, além da Pedreira e da Augusto Montenegro' },
     { nome: 'Estrutura do Parque do Utinga', detalhe: 'pista de cerca de 4 km, gratuita, para corrida e bike' },
   ],
 
   destaquesFitness: [
     'Parque do Utinga como principal hub de corrida e ciclismo (pista de cerca de 4 km).',
-    'Redes consagradas (Smart Fit, Bodytech) nos bairros nobres.',
+    'Redes nacionais: Smart Fit em nove unidades e Bodytech em Nazaré.',
     'Malha cicloviária ampla (cerca de 163 km), entre as maiores do Brasil.',
     'Treino ao ar livre o ano todo, condicionado ao calor e à umidade equatoriais.',
   ],
@@ -110,7 +109,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Belém?',
       resposta:
-        'Os polos são claros: o Parque do Utinga — com pista de cerca de 4 km e faixas separadas para corrida e bike —, as orlas revitalizadas (Portal da Amazônia, Estação das Docas), as academias dos bairros nobres (Bodytech em Nazaré, Smart Fit e academias locais no Umarizal e em Batista Campos) e o atendimento em casa e em condomínio, comum nos edifícios do Umarizal e do Reduto. A malha cicloviária de cerca de 163 km ainda abre espaço para treinos de bike orientados.',
+        'Os polos são claros: o Parque do Utinga — com pista de cerca de 4 km e faixas separadas para corrida e bike —, as orlas revitalizadas (Portal da Amazônia, Estação das Docas), as academias dos bairros nobres (Bodytech em Nazaré, Smart Fit em Batista Campos e no Reduto) e o atendimento em casa e em condomínio, comum nos edifícios do Umarizal e do Reduto. A malha cicloviária de cerca de 163 km ainda abre espaço para treinos de bike orientados.',
     },
     {
       pergunta: 'Como manter a rotina de treino com a chuva diária de Belém?',
@@ -143,5 +142,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Belém: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-16',
+  atualizadoEm: '2026-10-16',
 };
