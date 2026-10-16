@@ -34,6 +34,8 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
 **Ticket Sports** — https://www.ticketsports.com.br/e/maratona-de-curitiba-santander-2026-86884
 - JSON-LD: startDate 2026-11-15T05:00; local Praça Nossa Senhora da Salete; organizador AMAZING RUNS; availability InStock. Preços carregam por script — não lidos.
 
+**Varredura de 16/10/2026:** o site oficial devolveu 403 (bloqueio do próprio site) — não contornado; pedir print ao Renato se precisar. O PDF do regulamento no blob da Ticket Sports é o mesmo arquivo (md5 igual ao arquivado). Sem fato novo de fonte acessível; artigo não mexido.
+
 ## Bloqueado (pedir print) — quase tudo resolvido em 13/10; falta o PDF do regulamento (Azure blob) e a Prefeitura (403)
 
 - https://www.maratonadecuritiba.com.br/ (home, regulamento, kit, percurso, premiação)

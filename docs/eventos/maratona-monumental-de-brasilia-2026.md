@@ -28,6 +28,11 @@ Rede liberada em 13/10/2026. O site recusava com 406 o agente "Mozilla/5.0" curt
 
 **Correio Braziliense** (promotor da Maratona Brasília) — matéria de 2025: a Maratona Brasília é "promovida pelo Correio Braziliense", no aniversário da capital, 21/4. Sustenta a seção "Não confunda".
 
+**Varredura de 16/10/2026** (site aberto com cabeçalho de navegador):
+- Página Percursos agora traz os mapas em PDF: https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/05/Percurso-{5km,10km,21km,42km}-MaratonaMonumental2026.pdf (arquivos em imagem; o texto do PDF não extrai, então o artigo só linka, sem descrever o trajeto).
+- Horários, kit, preços e premiação ("a definir"): sem mudança. A home ainda linka o regulamento v6; a página de documentos tem o v7 (o artigo segue no v7).
+- Artigo atualizado: percurso "publicado" com os 4 links; Última verificação 16/10.
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)

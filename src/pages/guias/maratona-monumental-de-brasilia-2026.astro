@@ -22,13 +22,20 @@ import { site } from '../../data/site';
  */
 
 /** Data de conferência das fontes, no formato DD/MM/AAAA. */
-const ultimaVerificacao = '13/10/2026';
+const ultimaVerificacao = '16/10/2026';
 
 const SITE_OFICIAL = 'https://maratonamonumentalbsb.com.br/';
 const REGULAMENTO =
   'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/09/v7-REGULAMENTO-MARATONA-MONUMENTAL-2026.pdf';
 const INSCRICAO = 'https://www.ticketsports.com.br/e/MARATONA%20MONUMENTAL%20DE%20BRAS%C3%8DLIA%202026-74828';
 const RESULTADOS = 'https://maratonamonumentalbsb.com.br/resultados/';
+const PERCURSOS = 'https://maratonamonumentalbsb.com.br/percursos/';
+const MAPAS: Array<[string, string]> = [
+  ['42 km', 'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/05/Percurso-42km-MaratonaMonumental2026.pdf'],
+  ['21 km', 'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/05/Percurso-21km-MaratonaMonumental2026.pdf'],
+  ['10 km', 'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/05/Percurso-10km-MaratonaMonumental2026.pdf'],
+  ['5 km', 'https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/05/Percurso-5km-MaratonaMonumental2026.pdf'],
+];
 const MARATONA_BRASILIA_2025 =
   'https://www.correiobraziliense.com.br/esportes/2025/04/7117635-renilson-silva-conquista-titulo-dos-42km-na-maratona-brasilia.html';
 
@@ -86,7 +93,7 @@ const relacionados = [
 
 const path = '/guias/maratona-monumental-de-brasilia-2026';
 const publicadoEm = '2026-10-13';
-const atualizadoEm = '2026-10-13';
+const atualizadoEm = '2026-10-16';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -102,7 +109,7 @@ const faqs = [
   {
     pergunta: 'Qual é o trajeto da Maratona Monumental de Brasília?',
     resposta:
-      'Largada e chegada são na Esplanada dos Ministérios, ao lado dos blocos A e B. O percurso detalhado ainda não foi publicado: pelo regulamento, a liberação depende do governo local e o mapa sai assim que for aprovado. A organização descreve o trajeto como plano, com baixo ganho de elevação, passando pelos cartões-postais da capital.',
+      'Largada e chegada são na Esplanada dos Ministérios, ao lado dos blocos A e B. Os mapas dos quatro percursos (5, 10, 21 e 42 km) já estão publicados, em PDF, na página Percursos do site oficial. A organização descreve o trajeto como plano, com baixo ganho de elevação, passando pelos cartões-postais da capital.',
   },
   {
     pergunta: 'Quanto custa a inscrição da Maratona Monumental de Brasília 2026?',
@@ -187,7 +194,7 @@ const schema = [
             <tr><th scope="row">Valor (3º lote)</th><td>A partir de R$ 139,90 (5 ou 10 km, sem camiseta) até R$ 239,90 (42 km com camiseta), mais taxa</td></tr>
             <tr><th scope="row">Kit</th><td>Pátio Brasil Shopping, de 19 a 21/11</td></tr>
             <tr><th scope="row">Tempo limite</th><td>42 km em 6h30 · 21 km em 3h15 · 10 km em 1h30 · 5 km em 1h</td></tr>
-            <tr><th scope="row">Percurso</th><td>Mapa ainda não publicado (depende de liberação do governo local)</td></tr>
+            <tr><th scope="row">Percurso</th><td>Mapas de 5, 10, 21 e 42 km publicados no site oficial (PDF)</td></tr>
             <tr><th scope="row">Premiação</th><td>Dinheiro para os 5 primeiros de cada distância; valor total "a definir"</td></tr>
           </tbody>
         </table>
@@ -237,11 +244,12 @@ const schema = [
 
       <h2>Percurso e altimetria</h2>
       <p>
-        O mapa ainda não foi publicado. O regulamento explica que a liberação
-        do percurso é do governo local e que ele será divulgado assim que
-        aprovado. A organização descreve os trajetos como planos e de baixo
-        ganho de elevação, passando pelo Eixo Monumental — quando o mapa e a
-        altimetria saírem, entram aqui.
+        Os mapas dos quatro percursos estão publicados na
+        <a href={PERCURSOS} target="_blank" rel="noopener">página Percursos</a>
+        do site oficial, em PDF:
+        {MAPAS.map(([d, u], i) => <>{i > 0 && (i === MAPAS.length - 1 ? ' e ' : ', ')}<a href={u} target="_blank" rel="noopener">{d}</a></>)}.
+        A organização descreve os trajetos como planos e de baixo ganho de
+        elevação, passando pelo Eixo Monumental.
       </p>
       <p>
         Já está definido o apoio: na maratona, 16 pontos de água (do km 2,6
@@ -395,7 +403,7 @@ const schema = [
         <li>
           <a href={SITE_OFICIAL} target="_blank" rel="noopener">Maratona
           Monumental de Brasília — site oficial</a>: datas, distâncias por
-          dia, edição, chancelas, público de 2025 e descrição dos percursos.
+          dia, edição, chancelas, público de 2025, descrição e mapas dos percursos (PDF).
         </li>
         <li>
           <a href={REGULAMENTO} target="_blank" rel="noopener">Regulamento
