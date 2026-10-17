@@ -69,6 +69,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta inclui academias e estúdios premium, com público de alta renda, complementada pelo Parque Leopoldo Moritz e pelas praças com academia ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Life Up Academia', detalhe: 'na Av. Dom Joaquim, no Jardim Maluche' },
+    { nome: 'Force One', detalhe: 'na Martin Luther, no Centro' },
+    { nome: 'Atmosfera Academia', detalhe: 'na Rua Padre Antônio Eising, no Paquetá' },
+  ],
+
   destaquesFitness: [
     'Público de alta renda, favorável a estúdios e personal premium.',
     'Parque Leopoldo Moritz como espaço central de lazer e ar livre.',
@@ -95,5 +101,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Brusque', url: 'https://www.brusque.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-17',
+  atualizadoEm: '2026-10-17',
 };

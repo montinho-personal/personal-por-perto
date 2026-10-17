@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Maior cidade e centro econômico do Ceará, Fortaleza é forte em comércio, serviços e turismo, com um polo industrial regional (têxtil, calçados, alimentos) e um setor de tecnologia em crescimento. O bairro Aldeota concentra o núcleo financeiro e empresarial. Com sol o ano inteiro e uma das maiores orlas urbanas do Nordeste, a cidade tem uma cultura de praia e estética que move a rotina de exercícios.',
 
   mercado:
-    'O mercado fitness de Fortaleza é aquecido pela forte cultura de praia, estética e musculação. A Smart Fit tem várias unidades (Iracema, North Shopping) e a Bodytech está no Iguatemi Bosque, com cerca de 2.000 m² e até quadra de beach tennis. A orla movimenta treino funcional, corrida e esportes de areia — um ambiente natural para o trabalho de personal trainers.',
+    'O mercado fitness de Fortaleza é aquecido pela forte cultura de praia, estética e musculação. A Smart Fit tem mais de 20 unidades (Meireles, Aldeota, North Shopping) e a Bodytech está no Iguatemi Bosque. A orla movimenta treino funcional, corrida e esportes de areia — um ambiente natural para o trabalho de personal trainers.',
 
   bairrosNobres: ['Meireles', 'Aldeota', 'Mucuripe', 'Dionísio Torres'],
   bairrosPopulares: ['Bom Jardim', 'Granja Portugal', 'Mondubim', 'Barra do Ceará'],
@@ -68,11 +68,10 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura de praia é o coração do esporte em Fortaleza: corrida na orla, beach tennis, futevôlei e vôlei de praia convivem com uma forte valorização da musculação e da estética. Sol o ano todo torna o treino ao ar livre parte natural da rotina.',
   academias:
-    'A oferta vai das redes nacionais bem instaladas em shoppings (Smart Fit, Bodytech) a inúmeros estúdios e academias de bairro, com forte presença de treino funcional e esportes de areia.',
+    'A oferta vai das redes nacionais (Smart Fit, Bodytech) às academias de bairro, com a orla movimentando treino funcional e esportes de areia.',
   academiasProximas: [
-    { nome: 'Bodytech', detalhe: 'no Iguatemi Bosque, com cerca de 2.000 m² e quadra de beach tennis' },
-    { nome: 'Smart Fit', detalhe: 'unidades na Praia de Iracema, no North Shopping e em vários bairros' },
-    { nome: 'Estúdios de funcional', detalhe: 'concentrados no Meireles e na Aldeota' },
+    { nome: 'Bodytech', detalhe: 'no Iguatemi Bosque, na Av. Washington Soares' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Meireles, na Aldeota, no North Shopping e em vários bairros' },
     { nome: 'Academia ao ar livre da Beira-Mar', detalhe: 'gratuita, no calçadão da orla' },
   ],
 
@@ -80,7 +79,7 @@ export const cidade: Cidade = {
     'Avenida Beira-Mar requalificada: o "ginásio a céu aberto" da cidade.',
     'Sol o ano todo favorece o treino ao ar livre (com cuidado térmico).',
     'Beach tennis e futevôlei em alta nas areias da orla.',
-    'Redes nacionais (Smart Fit, Bodytech) bem instaladas, com boa estrutura.',
+    'Redes nacionais: Smart Fit em mais de 20 unidades e Bodytech no Iguatemi Bosque.',
   ],
 
   precos: {
@@ -110,7 +109,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Fortaleza?',
       resposta:
-        'Os cenários principais são: a Avenida Beira-Mar — o "ginásio a céu aberto" da cidade, com calçadão, academia pública e quadras de areia —, as academias de rede e estúdios do eixo Meireles–Aldeota, e o atendimento em casa ou na academia do condomínio, comum nos prédios da orla e do Mucuripe. O Parque do Cocó completa as opções para quem prefere correr e treinar em meio ao verde, longe do sol direto.',
+        'Os cenários principais são: a Avenida Beira-Mar — o "ginásio a céu aberto" da cidade, com calçadão, academia pública e quadras de areia —, as academias de rede do eixo Meireles–Aldeota, e o atendimento em casa ou na academia do condomínio, comum nos prédios da orla e do Mucuripe. O Parque do Cocó completa as opções para quem prefere correr e treinar em meio ao verde, longe do sol direto.',
     },
     {
       pergunta: 'Qual o melhor horário para treinar em Fortaleza?',
@@ -143,5 +142,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Fortaleza: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-17',
+  atualizadoEm: '2026-10-17',
 };

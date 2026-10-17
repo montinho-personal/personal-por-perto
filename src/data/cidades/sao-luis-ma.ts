@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital do Maranhão e cidade histórica com Centro Histórico tombado pela Unesco, São Luís tem o maior PIB do estado e é um forte polo portuário-industrial, com o complexo do Itaqui, o Terminal de Ponta da Madeira e o porto da Alumar. A economia combina indústria do alumínio, logística portuária, serviços e turismo — e a orla concentra boa parte da vida ativa da cidade.',
 
   mercado:
-    'O mercado fitness é consolidado, com a Smart Fit em várias unidades (Calhau, Cohama, Renascença, Turu), a Bodytech no Shopping da Ilha, academias locais fortes e boxes de crossfit. A cultura de treino ao ar livre é intensa na Lagoa da Jansen e na Avenida Litorânea.',
+    'O mercado fitness é consolidado, com a Smart Fit em várias unidades (Calhau, Cohama, Jardim Renascença, Turu), a Bodytech no Shopping da Ilha e academias de bairro. A cultura de treino ao ar livre é intensa na Lagoa da Jansen e na Avenida Litorânea.',
 
   bairrosNobres: ['Renascença', 'Calhau', "Ponta d'Areia", 'São Francisco'],
   bairrosPopulares: ['Cohab', 'Cohama', 'Turu', 'Coroadinho'],
@@ -68,18 +68,17 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'São Luís tem forte tradição de corrida de rua e de treino na orla, com um calendário ativo (Sesc, circuitos nacionais). O futebol e os esportes de praia também são marcantes, e a Lagoa da Jansen é o coração esportivo da cidade.',
   academias:
-    'A oferta reúne redes (Smart Fit, Bodytech) e academias locais fortes, além de uma cena de crossfit e funcional em crescimento, com a orla e a Lagoa da Jansen como grandes extensões ao ar livre.',
+    'A oferta reúne redes (Smart Fit, com dez unidades, e Bodytech) e academias de bairro, com a orla e a Lagoa da Jansen como grandes extensões ao ar livre.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Calhau, na Cohama, no Renascença e no Turu' },
-    { nome: 'Bodytech', detalhe: 'no Shopping da Ilha' },
-    { nome: 'Boxes de crossfit e academias locais', detalhe: 'cena forte no Renascença e no Calhau' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, na Lagoa da Jansen e no Parque do Bom Menino' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Calhau, na Cohama, no Jardim Renascença e no Turu' },
+    { nome: 'Bodytech', detalhe: 'no Shopping da Ilha, na Cohama' },
+    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Parque Ecológico da Lagoa da Jansen' },
   ],
 
   destaquesFitness: [
     'Lagoa da Jansen como hub de treino ao ar livre, com ciclovia de cerca de 4 km.',
     'Avenida Litorânea com cerca de 6 km planos, ideal para volume de corrida.',
-    'Redes consolidadas (Smart Fit, Bodytech) e cena de crossfit e funcional.',
+    'Redes nacionais: Smart Fit em dez unidades e Bodytech no Shopping da Ilha.',
     'Calendário de corridas de rua em expansão.',
   ],
 
@@ -115,7 +114,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em São Luís?',
       resposta:
-        'O coração é o eixo Lagoa da Jansen–Avenida Litorânea: a lagoa concentra o treino funcional e a corrida no anel de cerca de 4 km, e a Litorânea oferece 6 km planos à beira-mar. Nas academias, a oferta vai da Bodytech do Shopping da Ilha às Smart Fit do Calhau, Cohama, Renascença e Turu, com boxes de crossfit completando a cena. O atendimento em casa e em condomínio é comum no Renascença, no Calhau e na Ponta d\'Areia.',
+        'O coração é o eixo Lagoa da Jansen–Avenida Litorânea: a lagoa concentra o treino funcional e a corrida no anel de cerca de 4 km, e a Litorânea oferece 6 km planos à beira-mar. Nas academias, a oferta vai da Bodytech do Shopping da Ilha às Smart Fit do Calhau, Cohama, Jardim Renascença e Turu. O atendimento em casa e em condomínio é comum no Renascença, no Calhau e na Ponta d\'Areia.',
     },
     {
       pergunta: 'Treinar à noite funciona em São Luís?',
@@ -144,5 +143,6 @@ export const cidade: Cidade = {
       'Treino personalizado em São Luís: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
     vertical: true,
   },
-  atualizadoEm: '2026-09-30',
+  academiasVerificadasEm: '2026-10-17',
+  atualizadoEm: '2026-10-17',
 };

@@ -351,3 +351,29 @@ Também no arquivo: Pratique sai do `mercado`, `academias` e FAQ; "pista de cami
 Também no arquivo: "nos bairros nobres" e "Smart Fit… no Umarizal" corrigidos (as unidades ficam em Batista Campos, Reduto e outros bairros).
 
 Saldo: 8 entradas → 2 removidas (genéricas), Pratique retirada da entrada conjunta, 5 detalhes corrigidos, 1 confirmada sem mudança.
+
+### 17/10/2026 — leva 14 (rotina, Parte B: São Luís e Fortaleza)
+
+**São Luís/MA** — página mudou. Fica com 3 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; "Renascença" vira "Jardim Renascença", como na página da unidade | smartfit.com.br/academias/{holandeses, holandeses-barramar (Calhau), cohama, manhattan-center-iii (Jardim Renascença), turu, rio-anil-shopping (Turu)}, `opened:true`; 10 unidades abertas na cidade (Maiobão e Mall Lumier ficam em Ribamar e Paço do Lumiar) |
+| Bodytech | confirmada; ganha o bairro (Cohama) | Wellhub (Av. Daniel de la Touche, 987, Cohama, 65074-115) + nome da unidade no blog oficial (blog.bodytech.com.br), mesmo critério de SP, Curitiba, Recife e Belém. Ressalva: um trecho de busca de admin.bodytech.com.br trazia "UNIDADE FECHADA - SPP SLUIS"; a página não abre aqui, nenhuma notícia fala em fechamento e Wellhub e Reclame Aqui seguem tratando a unidade como ativa. Rechecar na próxima rodada. |
+| Boxes de crossfit e academias locais | **removida**: sem nome e sem fonte para "cena forte no Renascença e no Calhau" | — |
+| Academias ao ar livre | corrigida; fica só a Lagoa da Jansen | Governo do MA (www3.ma.gov.br/agenciadenoticias/?p=285591, 7 estações) + O Imparcial (06/2026). Parque do Bom Menino sai: só uma matéria de 2020 |
+
+Também no arquivo: "academias locais fortes", "boxes de crossfit" e "cena de crossfit e funcional" saem de `mercado`, `academias`, `destaquesFitness` e FAQ. Pendência anotada: o card do Parque do Bom Menino em `ondeTreinar` ainda cita "academia ao ar livre"; fica para a revisão do conteúdo, fora do escopo da lista.
+
+**Fortaleza/CE** — página mudou. Fica com 3 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech | confirmada; sai "cerca de 2.000 m² e quadra de beach tennis" (só notas do Portal IN anteriores à inauguração, e uma coluna antiga citava 1.500 m²); vira "na Av. Washington Soares" | Wellhub (Av. Washington Soares, 85, Edson Queiroz) + Portal IN (inauguração no Iguatemi Bosque) |
+| Smart Fit | corrigida; "Praia de Iracema" sai (a unidade "Iracema" fica no Meireles, R. Carlos Vasconcelos, 284); vira Meireles, Aldeota, North Shopping e vários bairros | smartfit.com.br/academias/{iracema, meireles, barbosa-de-freitas, santos-dumont, north-shopping…}, `opened:true`; 26 unidades abertas na cidade |
+| Estúdios de funcional | **removida**: sem nome e sem fonte | — |
+| Academia ao ar livre da Beira-Mar | confirmada sem mudança | fortaleza.ce.gov.br (ampliação, 07/2025) + O Povo (abertura, 10/2024) |
+
+Também no arquivo: "Iracema", "2.000 m²", "inúmeros estúdios" e "estúdios do eixo Meireles–Aldeota" corrigidos em `mercado`, `academias`, `destaquesFitness` e FAQ.
+
+Saldo: 8 entradas → 2 removidas (genéricas), 4 corrigidas, 2 confirmadas sem mudança.

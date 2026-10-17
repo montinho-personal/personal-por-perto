@@ -65,6 +65,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é robusta para o porte da cidade, concentrada no Centro e na Cidade Nova, complementada pelo atendimento domiciliar e pelas margens do rio Muriaé para treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'na Av. Presidente Dutra, na Cidade Nova' },
+    { nome: 'Mutante Academia', detalhe: 'na Av. João Bedim, na Cidade Nova' },
+    { nome: 'Cemedfit', detalhe: 'na Rua Dez de Maio, no Centro' },
+    { nome: 'PhysioFit Academia', detalhe: 'na Rua Tiradentes, no Centro' },
+  ],
+
   destaquesFitness: [
     'Polo regional do Noroeste Fluminense, com público de toda a microrregião.',
     'Centro universitário e de saúde que amplia o público jovem e fitness.',
@@ -91,5 +98,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaperuna', url: 'https://www.itaperuna.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-17',
+  atualizadoEm: '2026-10-17',
 };
