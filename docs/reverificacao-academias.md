@@ -377,3 +377,29 @@ Também no arquivo: "academias locais fortes", "boxes de crossfit" e "cena de cr
 Também no arquivo: "Iracema", "2.000 m²", "inúmeros estúdios" e "estúdios do eixo Meireles–Aldeota" corrigidos em `mercado`, `academias`, `destaquesFitness` e FAQ.
 
 Saldo: 8 entradas → 2 removidas (genéricas), 4 corrigidas, 2 confirmadas sem mudança.
+
+### 18/10/2026 — leva 15 (rotina, Parte B: Blumenau e Maceió)
+
+**Blumenau/SC** — página mudou. Fica com 3 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bodytech | corrigida: não fica na Avenida Brasil, e sim no Shopping Neumarkt (R. 7 de Setembro, 1213, Centro); sai "premium" (é posicionamento da rede, não da unidade) | bodytech.com.br/academia/shopping-neumarkt (índice de busca; site SPA) + Wellhub com endereço — mesmo critério de SP, Curitiba, Recife, Belém e São Luís |
+| Smart Fit | corrigida: "unidades" vira a única unidade aberta | smartfit.com.br/academias/blumenau (Via Expressa Paul Fritz Kuehnrich, 1600, Itoupava Norte), `opened:true`; varredura do sitemap da rede: é a única com cidade Blumenau/SC |
+| Academias locais tradicionais | **removida**: sem nome e sem fonte | — |
+| Parque Ramiro Ruediger | corrigida: não fica "no centro" (R. Alberto Stein, bairro Velha, ao lado da Vila Germânica); sai "academia ao ar livre" (sem fonte viva) e "gratuitas" (só blog de turismo); fica pista, ciclovia e quadras | NSC Total (parque de 40 mil m² com pista, ciclovia, quadras, skate) + trechos de páginas da Prefeitura no índice |
+
+Também no arquivo: card do parque em `ondeTreinar` (sai "700 m", "lago" e "academia ao ar livre"), `mercado`, `academias`, `destaquesFitness` e FAQ.
+
+**Maceió/AL** — página mudou. Fica com 3 entradas. UF conferida em todas as fontes (não é Macaé/RJ).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada sem mudança | smartfit.com.br/academias/ponta-verde (R. Prof. Sandoval Arroxelas, 360) e mais 7 unidades abertas na cidade |
+| Selfit | confirmada sem mudança | selfitacademias.com.br/academias/alagoas/maceio/{selfit-ponta-verde, mangabeiras, parque-shopping-maceio} |
+| Estúdios da orla | **removida**: sem nome e sem fonte | — |
+| Estrutura pública dos calçadões | corrigida: "quadras gratuitas de Pajuçara a Jatiúca" não se sustenta (só a Arena Pajuçara); vira ciclovia, academias ao ar livre gratuitas (com inscrição) e Faixa Verde | maceio.al.gov.br (nota de 15/09/2026 sobre a orla; página "Academias do Povo" da Semesp; Faixa Verde de 2,5 km) |
+
+Também no arquivo: "academias e estúdios nos bairros nobres" e "quadras gratuitas" corrigidos em `mercado`, `academias` e FAQ. Pendência anotada: o card da orla de Pajuçara em `ondeTreinar` cita "quadras poliesportivas"; fica para a revisão de conteúdo.
+
+Saldo: 8 entradas → 2 removidas (genéricas), 4 corrigidas, 2 confirmadas sem mudança.

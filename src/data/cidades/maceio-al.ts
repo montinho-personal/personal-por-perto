@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Alagoas e um dos principais destinos turísticos do Nordeste, Maceió tem economia puxada por turismo, serviços, comércio e setor público. As praias urbanas de águas cristalinas — como as piscinas naturais de Pajuçara — são o grande ativo da cidade, e a orla urbanizada virou o palco natural da vida ativa dos maceioenses.',
 
   mercado:
-    'A forte cultura de praia e estética do litoral nordestino faz da orla de Maceió uma verdadeira "academia a céu aberto": corrida, caminhada, ciclismo e treino funcional acontecem o dia inteiro à beira-mar. Nas zonas nobres da orla há boa oferta de academias e estúdios, e o personal na areia é parte da paisagem.',
+    'A forte cultura de praia e estética do litoral nordestino faz da orla de Maceió uma verdadeira "academia a céu aberto": corrida, caminhada, ciclismo e treino funcional acontecem o dia inteiro à beira-mar. Na orla e em Mangabeiras ficam unidades da Smart Fit e da Selfit, e o personal na areia é parte da paisagem.',
 
   bairrosNobres: ['Ponta Verde', 'Jatiúca', 'Pajuçara', 'Mangabeiras'],
   bairrosPopulares: ['Benedito Bentes', 'Cidade Universitária', 'Jacintinho', 'Clima Bom'],
@@ -68,12 +68,11 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Maceió tem cultura de corrida de rua ativa e forte adesão às atividades de praia. A orla é o centro da vida fitness e do lazer da cidade, reunindo iniciantes e atletas em qualquer dia da semana.',
   academias:
-    'A oferta de academias e estúdios se concentra nos bairros nobres da orla (Ponta Verde, Jatiúca, Pajuçara), complementada pela enorme "academia ao ar livre" que são os calçadões à beira-mar.',
+    'A oferta de academias de rede se concentra na Ponta Verde, em Mangabeiras e na Cidade Universitária, complementada pela enorme "academia ao ar livre" que são os calçadões à beira-mar.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidade na Ponta Verde e outras pela cidade' },
     { nome: 'Selfit', detalhe: 'unidades na Ponta Verde, em Mangabeiras e no Parque Shopping' },
-    { nome: 'Estúdios da orla', detalhe: 'funcional e musculação em Jatiúca e Ponta Verde' },
-    { nome: 'Estrutura pública dos calçadões', detalhe: 'pistas e quadras gratuitas de Pajuçara a Jatiúca' },
+    { nome: 'Estrutura pública da orla', detalhe: 'ciclovia e academias ao ar livre gratuitas (com inscrição) de Pajuçara a Jatiúca, e a Faixa Verde para corrida' },
   ],
 
   destaquesFitness: [
@@ -118,7 +117,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Maceió?',
       resposta:
-        'O corredor da orla concentra quase tudo: os calçadões de Pajuçara, Ponta Verde e Jatiúca — com ciclovia, pistas e quadras gratuitas —, as academias e estúdios desses mesmos bairros e o atendimento em casa e em condomínio nos edifícios da beira-mar e de Mangabeiras. Fora da orla, as academias de bairro cobrem regiões como Benedito Bentes e Cidade Universitária com preços mais acessíveis.',
+        'O corredor da orla concentra quase tudo: os calçadões de Pajuçara, Ponta Verde e Jatiúca — com ciclovia, Faixa Verde e academias ao ar livre gratuitas —, as academias de rede da Ponta Verde e de Mangabeiras e o atendimento em casa e em condomínio nos edifícios da beira-mar e de Mangabeiras. Fora da orla, as academias de bairro cobrem regiões como Benedito Bentes e Cidade Universitária com preços mais acessíveis.',
     },
     {
       pergunta: 'Há acompanhamento em Maceió para quem sente dores ou tem limitações?',
@@ -136,7 +135,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maceió', url: 'https://www.maceio.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-18',
+  atualizadoEm: '2026-10-18',
   capaArte: {
     src: '/capas-cidade/maceio-al.webp',
     w: 1200,

@@ -96,5 +96,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaitinga', url: 'https://www.itaitinga.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
+  academiasVerificadasEm: '2026-10-18',
   atualizadoEm: '2026-06-29',
 };

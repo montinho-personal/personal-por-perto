@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de musculação, estúdios de funcional e crossfit e personais que atendem em academias e a domicílio, atendendo um público regional que vai de estudantes a trabalhadores do setor agroindustrial.',
 
+  academiasProximas: [
+    { nome: 'Prix Academia', detalhe: 'na Av. Irmãos Pereira, no Centro' },
+    { nome: 'Academia Evolução Fitness', detalhe: 'na Av. Jorge Walter, no Centro' },
+  ],
+
   destaquesFitness: [
     'Parque Estadual do Lago Azul, com trilhas e circuitos para corrida, caminhada e ciclismo em meio à mata.',
     'Ciclovia às margens da Usina Mourão, no caminho do Lago Azul.',
@@ -96,5 +101,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campo Mourão', url: 'https://www.campomourao.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-18',
+  atualizadoEm: '2026-10-18',
 };
