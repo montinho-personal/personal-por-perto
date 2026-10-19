@@ -91,3 +91,5 @@ Sem resultado confirmado; artigo não mexido.
 - Nenhum veículo de imprensa com vencedores e tempos até agora.
 
 Pedido ao Renato: print da página de resultados oficial (hyroxresults.com), com Pro masculino e feminino, e Doubles e Relay se houver. Nova checagem de imprensa em 3 horas.
+
+Atualização 19/10, 12h UTC: o Renato liberou `hyroxresults.com` e `results.hyrox.com` na rede do ambiente. A conexão passa, mas `hyroxresults.com` redireciona para `results.hyrox.com`, que responde **403 do Cloudflare** (proteção anti-robô do próprio site). Não foi contornado. Caminho: print do Renato.
