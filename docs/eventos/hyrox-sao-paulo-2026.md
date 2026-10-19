@@ -93,3 +93,23 @@ Sem resultado confirmado; artigo não mexido.
 Pedido ao Renato: print da página de resultados oficial (hyroxresults.com), com Pro masculino e feminino, e Doubles e Relay se houver. Nova checagem de imprensa em 3 horas.
 
 Atualização 19/10, 12h UTC: o Renato liberou `hyroxresults.com` e `results.hyrox.com` na rede do ambiente. A conexão passa, mas `hyroxresults.com` redireciona para `results.hyrox.com`, que responde **403 do Cloudflare** (proteção anti-robô do próprio site). Não foi contornado. Caminho: print do Renato.
+
+## Resultado — publicado em 19/10/2026
+
+Fontes (duas, independentes, com os mesmos nomes e tempos):
+- **HYRESULT** — https://www.hyresult.com/event/s9-2026-sao-paulo (rankings `…-hyrox-pro-men` e `…-hyrox-pro-women`), base que organiza os resultados oficiais por divisão. Grafia completa: "Bruno Henrique Silva Carvalho", "Manuela Garcia Caparros".
+- **Hora do Burpee** — https://horadoburpee.com.br/uncategorized/hyrox-sp-abre-o-calendario-26-27-confira-os-resultados/ (19/10/2026, Guilherme Cosenza).
+
+O Renato apontou o caminho: o artigo do outro site (montinhopersonal.com.br/blog/resultado-hyrox-sao-paulo-2026) cita essas duas fontes; os dados foram conferidos direto nelas, não copiados de lá.
+
+| fato | HYRESULT | Hora do Burpee | publicado |
+|---|---|---|---|
+| Pro masculino 1º: Bruno Henrique Carvalho, 58:41 | sim | sim | sim |
+| Pro masculino 2º e 3º: Aldo Lozano, João Almeida | sim (59:45 e 59:49) | nomes (pódio 30-34, que coincide com o geral) | só os nomes |
+| recorde brasileiro anterior 1:00:10 | — | sim | sim (atribuído ao próprio atleta) |
+| Pro feminino 1ª: Manuela Garcia (Espanha), 1:07:37 | sim | sim ("a espanhola") | sim |
+| melhor brasileira: Bruna Berbel, 1:10:23 | sim (2ª geral) | sim | sim |
+| Pro feminino 3ª geral: Camila Siller, 1:11:31 | sim | só como campeã 30-34 | não (pódio geral sem 2ª fonte) |
+| Doubles, Relay, Open, Adaptive | sim | não (remete a outro link) | não — uma fonte só |
+
+Título passou a "Hyrox São Paulo 2026: Resultado, Vencedores, Data e Local". Doubles e Relay podem entrar se surgir segunda fonte.

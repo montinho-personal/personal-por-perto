@@ -118,7 +118,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-em-academia/', titulo: 'Personal trainer em academia: como funciona' },
   { categoria: 'Guias', url: '/guias/coach-de-academia/', titulo: 'Coach de academia: o que é e a diferença para o personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-smart-fit/', titulo: 'Personal trainer na Smart Fit: pode levar o seu e quanto custa' },
-  { categoria: 'Guias', url: '/guias/hyrox-sao-paulo-2026/', titulo: 'HYROX São Paulo 2026: data, local, horários e ingresso' },
+  { categoria: 'Guias', url: '/guias/hyrox-sao-paulo-2026/', titulo: 'HYROX São Paulo 2026: resultado, vencedores, data e local' },
   { categoria: 'Guias', url: '/guias/maratona-de-curitiba-2026/', titulo: 'Maratona de Curitiba 2026: data, inscrição, kit e horário' },
   { categoria: 'Guias', url: '/guias/maratona-monumental-de-brasilia-2026/', titulo: 'Maratona Monumental de Brasília 2026: data, percurso, inscrição e kit' },
   { categoria: 'Guias', url: '/guias/sao-silvestre-2026/', titulo: 'São Silvestre 2026: data, inscrição, percurso e horário' },

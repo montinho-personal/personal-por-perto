@@ -22,11 +22,14 @@ import { site } from '../../data/site';
  */
 
 /** Data de conferência das fontes, no formato DD/MM/AAAA. */
-const ultimaVerificacao = '16/10/2026';
+const ultimaVerificacao = '19/10/2026';
 
 const HYROX_OFICIAL = 'https://hyrox.com/event/hyrox-sao-paulo-2/';
 const INGRESSOS = 'https://brazil.hyrox.com/event/hyrox-so-paulo-season-26-27-aj4v8a';
 const ANHEMBI = 'https://distritoanhembi.com.br/en/events/hyrox-sao-paulo-2026-2/';
+const HYRESULT = 'https://www.hyresult.com/event/s9-2026-sao-paulo';
+const HORA_DO_BURPEE =
+  'https://horadoburpee.com.br/uncategorized/hyrox-sp-abre-o-calendario-26-27-confira-os-resultados/';
 
 /** Cronograma provisório da página oficial (sujeito a mudança). */
 const SABADO: [string, string][] = [
@@ -74,7 +77,7 @@ const relacionados = [
 
 const path = '/guias/hyrox-sao-paulo-2026';
 const publicadoEm = '2026-10-12';
-const atualizadoEm = '2026-10-16';
+const atualizadoEm = '2026-10-19';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -118,15 +121,20 @@ const faqs = [
       'Até a última verificação, a página oficial não anuncia transmissão desta etapa. Os tempos, porém, aparecem no placar ao vivo durante a prova, segundo a organização. Se uma transmissão for anunciada, ela entra aqui.',
   },
   {
+    pergunta: 'Quem ganhou o HYROX São Paulo 2026?',
+    resposta:
+      'Na categoria Pro individual, Bruno Henrique Carvalho venceu o masculino em 58:41 e a espanhola Manuela Garcia venceu o feminino em 1:07:37. A melhor brasileira no Pro feminino foi Bruna Berbel, com 1:10:23.',
+  },
+  {
     pergunta: 'Onde ver os resultados do HYROX São Paulo 2026?',
     resposta:
-      'Os tempos oficiais saem no sistema de resultados do HYROX, com as parciais de cada estação. Esta página publica os vencedores depois da prova, com a fonte.',
+      'Os tempos oficiais saem no sistema de resultados do HYROX, com as parciais de cada estação. A classificação completa de cada divisão também está no HYRESULT, que organiza os resultados oficiais por categoria e faixa etária.',
   },
 ];
 
-const title = 'Hyrox São Paulo 2026: Data, Local, Horários e Ingresso';
+const title = 'Hyrox São Paulo 2026: Resultado, Vencedores, Data e Local';
 const description =
-  'Hyrox São Paulo 2026 em 17 e 18/10 no Distrito Anhembi: horários por divisão, valor da inscrição, ingresso para assistir, retirada do kit e preparo.';
+  'Resultado do Hyrox São Paulo 2026: Bruno Henrique Carvalho venceu o Pro em 58:41 e Manuela Garcia em 1:07:37. Data, local, horários e divisões da prova.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -141,18 +149,19 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Eventos</p>
-    <h1>HYROX São Paulo 2026: data, local, horários e ingresso</h1>
+    <h1>HYROX São Paulo 2026: resultado, vencedores, data e local</h1>
     <p class="updated">
       Última verificação: {ultimaVerificacao} · Atualizado em {formatDateLong(atualizadoEm)}
     </p>
 
     <p class="lead">
-      O HYROX São Paulo 2026 acontece em <strong>17 e 18 de outubro</strong>,
-      no <strong>Distrito Anhembi</strong>, e é a terceira vez que a prova vem
-      à cidade. Dá para competir sozinho, em dupla ou em revezamento. Abaixo,
-      os horários de cada divisão, quanto custa competir e assistir, onde
-      retirar o kit e como chegar à largada preparado — tudo conferido nas
-      fontes oficiais.
+      O HYROX São Paulo 2026 aconteceu em <strong>17 e 18 de outubro</strong>,
+      no <strong>Distrito Anhembi</strong>, e foi a terceira vez que a prova
+      veio à cidade. No Pro individual, <strong>Bruno Henrique Carvalho</strong>
+      venceu em <strong>58:41</strong> e a espanhola <strong>Manuela
+      Garcia</strong> em <strong>1:07:37</strong> — o resultado está logo
+      abaixo, com as fontes. Mais adiante ficam o registro de como foi a
+      prova: horários de cada divisão, valores, kit e formato.
     </p>
 
     <div class="prose">
@@ -296,6 +305,32 @@ const schema = [
         acao="Calcular o gasto da minha prova de HYROX"
       />
 
+      <h2>Resultado do HYROX São Paulo 2026</h2>
+      <p>
+        Na categoria <strong>Pro</strong>, a de carga mais pesada, o
+        brasileiro <strong>Bruno Henrique Carvalho</strong> venceu o masculino
+        em <strong>58:41</strong>, baixando o próprio recorde de brasileiro
+        mais rápido, que era de 1:00:10. Aldo Lozano e João Almeida completaram
+        o pódio. No feminino, a espanhola <strong>Manuela Garcia</strong>
+        venceu com <strong>1:07:37</strong>, e a melhor brasileira foi
+        <strong>Bruna Berbel</strong>, com <strong>1:10:23</strong>.
+      </p>
+      <table>
+        <caption>Pro individual — HYROX São Paulo 2026</caption>
+        <thead>
+          <tr><th scope="col">Categoria</th><th scope="col">Atleta</th><th scope="col">Tempo</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Pro masculino — 1º</th><td>Bruno Henrique Carvalho</td><td>58:41</td></tr>
+          <tr><th scope="row">Pro feminino — 1ª</th><td>Manuela Garcia (Espanha)</td><td>1:07:37</td></tr>
+          <tr><th scope="row">Pro feminino — melhor brasileira</th><td>Bruna Berbel</td><td>1:10:23</td></tr>
+        </tbody>
+      </table>
+      <p class="small">
+        Fontes: classificação do HYRESULT e reportagem do Hora do Burpee
+        (19/10/2026), que trazem os mesmos nomes e tempos.
+      </p>
+
       <h2>Onde assistir e resultados</h2>
       <p>
         Para ver ao vivo, o caminho é o próprio Anhembi, com ingresso de
@@ -305,14 +340,13 @@ const schema = [
         tempo final com as parciais de cada estação.
       </p>
       <p>
-        Os vencedores do HYROX São Paulo 2026 entram aqui depois da prova,
-        somente com fonte oficial.
+        A classificação completa de cada divisão, com as parciais de corrida e
+        de estação, está no <a href={HYRESULT} target="_blank" rel="noopener">HYRESULT</a>.
       </p>
 
       <h2>Como se preparar para o HYROX</h2>
       <p>
-        A esta altura, com a prova a poucos dias, o treino pesado já ficou
-        para trás. O que ainda faz diferença:
+        Na semana da prova, o treino pesado já ficou para trás. O que ainda faz diferença:
       </p>
       <ul>
         <li>
@@ -362,6 +396,18 @@ const schema = [
           <a href={ANHEMBI} target="_blank" rel="noopener">Distrito Anhembi —
           página do evento</a>: pavilhões Expo 1 e 2, público da edição
           anterior, formato da prova e ausência de tempo limite.
+        </li>
+        <li>
+          <a href={HYRESULT} target="_blank" rel="noopener">HYRESULT — HYROX
+          São Paulo 2026</a>: classificação por divisão (Pro masculino e
+          feminino), com tempos e grafia completa dos nomes.
+        </li>
+        <li>
+          <a href={HORA_DO_BURPEE} target="_blank" rel="noopener">Hora do
+          Burpee — “HYROX SP abre o calendário 26/27, confira os
+          resultados”</a> (19/10/2026): vencedores do Pro, tempos de Bruno
+          Henrique Carvalho, Manuela Garcia e Bruna Berbel, e o recorde
+          brasileiro anterior.
         </li>
         <li>Todas conferidas em {ultimaVerificacao}.</li>
       </ul>
