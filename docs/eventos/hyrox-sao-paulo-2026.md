@@ -81,3 +81,13 @@ Título: **HYROX São Paulo 2026: data, local, horários e ingresso** (cobre dat
 ## Artigo
 
 Publicado em 12/10/2026: `/guias/hyrox-sao-paulo-2026/` (`src/pages/guias/hyrox-sao-paulo-2026.astro`). Seção "Guias" porque é a que os testes de artigo cobrem; a URL `/eventos/…` prevista antes foi descartada. Ligações previstas: `/calorias/hyrox/`, `/personal-trainer/sao-paulo-sp/`.
+
+## Checagem do resultado (18/10 22h UTC e 19/10 9h UTC)
+
+Sem resultado confirmado; artigo não mexido.
+
+- A página oficial do evento (hyrox.com/event/hyrox-sao-paulo/) aponta para `hyroxresults.com`. Esse domínio e `results.hyrox.com` estão **bloqueados no ambiente** (o proxy recusa a conexão); não foram contornados.
+- Agregadores (TrainRox, hyresult, Rox Lyfe) ainda não listam os atletas da edição de outubro ("coming soon"). Os pódios que aparecem nas buscas são da **edição de abril/2026** e não podem ser usados para outubro.
+- Nenhum veículo de imprensa com vencedores e tempos até agora.
+
+Pedido ao Renato: print da página de resultados oficial (hyroxresults.com), com Pro masculino e feminino, e Doubles e Relay se houver. Nova checagem de imprensa em 3 horas.
