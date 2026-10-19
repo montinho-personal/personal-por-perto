@@ -56,6 +56,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o perfil litorâneo e de alto padrão, com forte presença de estruturas dentro dos condomínios fechados da Riviera, complementadas pela enorme academia ao ar livre que são as praias, ciclovias e calçadões do município.',
 
+  academiasProximas: [
+    { nome: 'Academia Base BTG', detalhe: 'na Av. Anchieta, no Centro' },
+    { nome: 'Impactus Fitness', detalhe: 'na Av. Dezenove de Maio, no Jardim Albatroz' },
+    { nome: 'Academia Multiação', detalhe: 'na Av. Deputado Emílio Justo, em Boracéia' },
+  ],
+
   destaquesFitness: [
     'Riviera de São Lourenço: bairro planejado com 6 km de ciclovias e calçadas largas.',
     'Cerca de 5,5 km de orla na Praia de São Lourenço para corrida e caminhada.',
@@ -82,5 +88,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bertioga', url: 'https://www.bertioga.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-19',
+  atualizadoEm: '2026-10-19',
 };

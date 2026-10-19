@@ -99,5 +99,6 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'HERSO/HURSO — Secretaria de Estado da Saúde de Goiás', url: 'https://goias.gov.br/saude/herso/' },
   ],
+  academiasVerificadasEm: '2026-10-19',
   atualizadoEm: '2026-07-04',
 };
