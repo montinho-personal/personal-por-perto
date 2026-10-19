@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital do Rio Grande do Norte, a "Cidade do Sol", Natal tem economia movida principalmente pelo turismo — um dos maiores pesos relativos entre as capitais — além de comércio, indústria têxtil e de moda praia e construção civil. Com praias urbanas, dunas e sol quase o ano inteiro, é uma cidade naturalmente voltada à vida ao ar livre.',
 
   mercado:
-    'O mercado fitness natalense é aquecido pela cultura de praia, moda praia e estética, com verão o ano todo. Há forte presença da Smart Fit (Lagoa Nova, Cidade Satélite, Alecrim, Esperança, Partage Norte) e dezenas de academias pela cidade, o que reduz a barreira de entrada para a musculação e amplia a procura por personal trainers.',
+    'O mercado fitness natalense é aquecido pela cultura de praia, moda praia e estética, com verão o ano todo. Há forte presença da Smart Fit, com doze unidades abertas (Lagoa Nova, Tirol, Capim Macio, Alecrim e outros bairros), além das academias de bairro, o que reduz a barreira de entrada para a musculação e amplia a procura por personal trainers.',
 
   bairrosNobres: ['Tirol', 'Petrópolis', 'Capim Macio', 'Candelária'],
   bairrosPopulares: ['Alecrim', 'Cidade da Esperança', 'Igapó', 'Felipe Camarão'],
@@ -68,11 +68,9 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Natal tem forte cultura de corrida de rua e de esportes de praia — futebol de areia, beach tennis, surfe e vôlei. O clima ensolarado e as orlas favorecem o treino ao ar livre praticamente o ano inteiro.',
   academias:
-    'A ampla presença da Smart Fit, somada a dezenas de academias de bairro e estúdios de funcional, dá boa cobertura à cidade, com a Via Costeira e Ponta Negra como extensões naturais ao ar livre.',
+    'A ampla presença da Smart Fit, somada às academias de bairro, dá boa cobertura à cidade, com a Via Costeira e Ponta Negra como extensões naturais ao ar livre.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades em Lagoa Nova, Cidade Satélite, Alecrim, Esperança e Partage Norte' },
-    { nome: 'Academias de bairro e estúdios de funcional', detalhe: 'dezenas de opções por toda a cidade' },
-    { nome: 'Academia ao ar livre de Ponta Negra', detalhe: 'gratuita, no calçadão da orla' },
+    { nome: 'Smart Fit', detalhe: 'unidades em Lagoa Nova, Cidade Satélite, Alecrim, Nossa Senhora de Nazaré e no Partage Norte Shopping, entre outras' },
   ],
 
   destaquesFitness: [
@@ -147,5 +145,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Natal: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-19',
+  atualizadoEm: '2026-10-19',
 };

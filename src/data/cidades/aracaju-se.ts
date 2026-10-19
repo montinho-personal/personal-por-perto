@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Sergipe e cidade litorânea plana, Aracaju tem economia ligada a turismo, administração pública, comércio e serviços. Está entre as capitais com menor custo de vida do Brasil, o que se reflete em boa qualidade de vida e em uma demanda crescente por imóveis e serviços de alto padrão. A orla planejada é um dos seus maiores cartões-postais e o coração da vida ativa da cidade.',
 
   mercado:
-    'O mercado fitness de Aracaju é puxado pela forte cultura de praia e estética: a orla concentra corrida, calistenia e treino funcional, e há boa penetração de redes como a Smart Fit (Jardins, Siqueira Campos, Santa Maria, Shopping Praia Sul). O clima quente o ano todo e a orla bem estruturada favorecem o trabalho de personal trainers ao ar livre.',
+    'O mercado fitness de Aracaju é puxado pela forte cultura de praia e estética: a orla concentra corrida, calistenia e treino funcional, e há boa penetração de redes como a Smart Fit, com dez unidades abertas (Jardins, Siqueira Campos, Farolândia, Shopping Praia Sul e outros bairros). O clima quente o ano todo e a orla bem estruturada favorecem o trabalho de personal trainers ao ar livre.',
 
   bairrosNobres: ['Jardins', '13 de Julho', 'Aruana', 'Atalaia'],
   bairrosPopulares: ['Jabotiana', 'Luzia', 'Siqueira Campos', 'Santos Dumont'],
@@ -68,15 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Aracaju tem forte cultura de corrida de rua e de atividades ao ar livre na orla. O clima e a estética de praia sustentam a prática de caminhada, ciclismo, calistenia e treino funcional ao longo de todo o ano.',
   academias:
-    'Além das unidades da Smart Fit espalhadas pela cidade, há academias de bairro e estúdios de funcional, com a orla funcionando como uma grande extensão ao ar livre dessas estruturas.',
+    'Além das unidades da Smart Fit espalhadas pela cidade, há academias de bairro, com a orla funcionando como uma grande extensão ao ar livre dessas estruturas.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades nos Jardins, em Siqueira Campos, em Santa Maria e no Shopping Praia Sul' },
-    { nome: 'Estúdios de funcional e academias de bairro', detalhe: 'concentrados nos Jardins e na 13 de Julho' },
-    { nome: 'Academias ao ar livre da Orla de Atalaia', detalhe: 'gratuitas e abertas 24 horas' },
+    { nome: 'Smart Fit', detalhe: 'unidades nos Jardins, em Siqueira Campos, no Marivan (Santa Maria) e no Shopping Praia Sul, entre outras' },
+    { nome: 'Academias ao ar livre da Orla de Atalaia', detalhe: 'ao longo dos 6 km da orla' },
   ],
 
   destaquesFitness: [
-    'Cerca de 6 km de orla com academias ao ar livre e equipamentos gratuitos, abertos 24h.',
+    'Cerca de 6 km de orla com academias ao ar livre ao longo do calçadão.',
     'Cerca de 88 km de ciclovias, uma das maiores malhas do Nordeste.',
     'Calendário forte de corridas (Corrida Cidade de Aracaju e Maratona).',
     'Redes consolidadas e cultura de praia que aquecem a demanda por personal trainer.',
@@ -115,7 +114,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Aracaju?',
       resposta:
-        'A orla comanda: os 6 km de Atalaia — com academias ao ar livre, quadras e calçadão abertos 24 horas — e o trecho novo da Aruana concentram corrida, calistenia e funcional; o calçadão da 13 de Julho, à beira do rio, é o preferido para caminhada. Nas academias, a Smart Fit cobre bem a cidade, e os estúdios se concentram nos Jardins. O atendimento em casa e em condomínio é forte nos Jardins, na 13 de Julho e na Atalaia.',
+        'A orla comanda: os 6 km de Atalaia — com academias ao ar livre, quadras e calçadão abertos 24 horas — e o trecho novo da Aruana concentram corrida, calistenia e funcional; o calçadão da 13 de Julho, à beira do rio, é o preferido para caminhada. Nas academias, a Smart Fit cobre bem a cidade, com dez unidades abertas. O atendimento em casa e em condomínio é forte nos Jardins, na 13 de Julho e na Atalaia.',
     },
     {
       pergunta: 'A orla 24 horas muda a rotina de treino em Aracaju?',
@@ -147,5 +146,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aracaju: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-19',
+  atualizadoEm: '2026-10-19',
 };

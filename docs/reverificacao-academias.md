@@ -403,3 +403,27 @@ Também no arquivo: card do parque em `ondeTreinar` (sai "700 m", "lago" e "acad
 Também no arquivo: "academias e estúdios nos bairros nobres" e "quadras gratuitas" corrigidos em `mercado`, `academias` e FAQ. Pendência anotada: o card da orla de Pajuçara em `ondeTreinar` cita "quadras poliesportivas"; fica para a revisão de conteúdo.
 
 Saldo: 8 entradas → 2 removidas (genéricas), 4 corrigidas, 2 confirmadas sem mudança.
+
+### 19/10/2026 — leva 16 (rotina, Parte B: Natal e Aracaju)
+
+**Natal/RN** — página mudou. **Fica com 1 entrada** (completar é tarefa à parte).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | corrigida: "Esperança" é o nome da unidade, não o bairro (Av. Capitão-Mor Gouveia, 1361, Nossa Senhora de Nazaré); vira "Lagoa Nova, Cidade Satélite, Alecrim, Nossa Senhora de Nazaré e Partage Norte Shopping, entre outras" | smartfit.com.br/academias/{lagoa-nova, cidade-satelite, alecrim, esperanca, partage-norte-shopping-natal…}, `opened:true`; 12 unidades abertas em Natal (pajucara-natal e av-nevaldo-rocha em pré-venda, fora; as de Parnamirim e São Gonçalo do Amarante, fora) |
+| Academias de bairro e estúdios de funcional | **removida**: sem nome; "dezenas de opções" sem fonte | — |
+| Academia ao ar livre de Ponta Negra | **removida**: nenhuma fonte aberta confirma academia no calçadão (só trechos de busca sobre projeto de requalificação e equipamentos na comunidade da Lagoinha); natal.rn.gov.br deu 503, Agora RN e Tribuna do Norte bloqueados aqui | — |
+
+Também no arquivo: "Esperança" e "dezenas de academias/estúdios" corrigidos em `mercado` e `academias`.
+
+**Aracaju/SE** — página mudou. Fica com 2 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; precisão: a unidade "Santa Maria" fica no Marivan; o Shopping Praia Sul existe (Av. Melício Machado, Aruana) | smartfit.com.br/academias/{jardins, siqueira-campos, aracaju-santa-maria, shopping-praia-sul…}, `opened:true`; 10 unidades abertas em Aracaju (goncalo-rolemberg-leite em pré-venda, fora; a de N. Sra. do Socorro, fora) |
+| Estúdios de funcional e academias de bairro | **removida**: sem nome; "concentrados nos Jardins e na 13 de Julho" sem fonte | — |
+| Academias ao ar livre da Orla de Atalaia | corrigida: sai "gratuitas e abertas 24 horas" (sem fonte); vira "ao longo dos 6 km da orla" | Prefeitura de Aracaju, "Orlas de Aracaju encantam turistas…" (aracaju.se.gov.br/noticias/99991/, lida pela API pública do portal): 6 km, academias ao ar livre ao longo da orla |
+
+Também no arquivo: `mercado`, `academias`, `destaquesFitness` e FAQ (estúdios nos Jardins). **Pendência anotada:** o card da Orla de Atalaia em `ondeTreinar`, o calçadão da 13 de Julho e a FAQ "A orla 24 horas muda a rotina…" afirmam "aberta 24 horas" e "equipamentos gratuitos", sem fonte encontrada; ficam para a revisão de conteúdo, fora do escopo da lista.
+
+Saldo: 6 entradas → 3 removidas (2 genéricas, 1 sem fonte), 2 corrigidas, 1 confirmada sem mudança.
