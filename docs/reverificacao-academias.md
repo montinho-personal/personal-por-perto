@@ -427,3 +427,27 @@ Também no arquivo: "Esperança" e "dezenas de academias/estúdios" corrigidos e
 Também no arquivo: `mercado`, `academias`, `destaquesFitness` e FAQ (estúdios nos Jardins). **Pendência anotada:** o card da Orla de Atalaia em `ondeTreinar`, o calçadão da 13 de Julho e a FAQ "A orla 24 horas muda a rotina…" afirmam "aberta 24 horas" e "equipamentos gratuitos", sem fonte encontrada; ficam para a revisão de conteúdo, fora do escopo da lista.
 
 Saldo: 6 entradas → 3 removidas (2 genéricas, 1 sem fonte), 2 corrigidas, 1 confirmada sem mudança.
+
+### 20/10/2026 — leva 17 (rotina, Parte B: Santo André e Campinas)
+
+**Santo André/SP** — página mudou. Fica com 3 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | confirmada; as seis unidades existem, abertas, em Santo André ("Lar ABC Shopping" é o nome real); vira "…entre outras" (há 10 abertas) | smartfit.com.br/academias/{grand-plaza, lar-abc-shopping, campestre, principe-de-gales, parque-das-nacoes, pirelli}, `opened:true`; também senador-flaquer, vila-luzita, parque-oratorio, palmares |
+| BodyMind | corrigida: fica **só o nome**; saem "tradicional" e "uma das maiores piscinas do estado" (nenhuma fonte; nenhuma listagem cita piscina) | Wellhub (2 unidades em Santo André) + TotalPass (Santo André); nenhum endereço bate entre as duas, por isso sem `detalhe`; site oficial não resolve |
+| Academias ao ar livre municipais | corrigida: Celso Daniel sai (página oficial lista a estrutura do parque sem equipamento de ginástica); "gratuitas" sai (não está na página) | Prefeitura de Santo André, "Parques de Santo André" (web.santoandre.sp.gov.br/portal/agenda/0/4/14783): Parque Central "praças com equipamento e ginástica"; Parque Regional da Criança "equipamentos para ginástica" |
+
+Também no arquivo: `academias` (sem a "concentração" nos bairros nobres, que não tinha fonte).
+
+**Campinas/SP** — página mudou. **Fica com 1 entrada** (completar é tarefa à parte).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | corrigida: não há unidade "Cambuí"; a "Cambuí II" fica no **Centro** (R. Quatorze de Dezembro, 483); Campinas Shopping e Chácara Primavera confirmadas | smartfit.com.br/academias/{cambui-ii, campinas-shopping, chacara-primavera}, `opened:true` |
+| Estúdios de funcional e personal | **removida**: sem nome; "concentrados no Cambuí e no Taquaral" sem fonte | — |
+| Academias ao ar livre (Lagoa do Taquaral) | **removida por ora**: a notícia da Prefeitura (campinas.sp.gov.br/noticias/113842, "quatro academias ao ar livre… e uma de musculação, perto do portão 1") aparece no índice de busca, mas a página é carregada por script e o texto não vem no HTML; jornais locais bloqueados aqui. **Pendência:** pedir print da notícia ao Renato e reincluir | — |
+
+Também no arquivo: "estúdios do Cambuí/Taquaral" sai de `mercado`, `academias`, `destaquesFitness`, conclusão e FAQ.
+
+Saldo: 6 entradas → 2 removidas (1 genérica, 1 sem fonte aberta), 3 corrigidas, 1 confirmada.

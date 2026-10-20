@@ -67,11 +67,11 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Com IDH muito alto (0,815) e uma rede de 11 parques públicos com infraestrutura esportiva gratuita, Santo André tem uma cultura de atividade física acessível e bem distribuída pela cidade. A proximidade da Vila de Paranapiacaba e da Serra do Mar ainda abre espaço para trilhas e atividades outdoor.',
   academias:
-    'A oferta de academias e estúdios é robusta para o porte da cidade, concentrada principalmente nos bairros de maior renda (Jardim, Vila Assunção e Centro), e bem complementada pelas academias ao ar livre dos parques municipais.',
+    'A oferta de academias é ampla para o porte da cidade, com a Smart Fit em dez unidades e academias locais como a BodyMind, complementada pelos equipamentos de ginástica dos parques municipais.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'várias unidades — Grand Plaza, Lar ABC Shopping, Campestre, Príncipe de Gales, Parque das Nações e Pirelli' },
-    { nome: 'BodyMind', detalhe: 'academia tradicional da cidade, com uma das maiores piscinas do estado' },
-    { nome: 'Academias ao ar livre municipais', detalhe: 'gratuitas, nos parques Central, Celso Daniel e Regional da Criança' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Grand Plaza, no Lar ABC Shopping, no Campestre, na Príncipe de Gales, no Parque das Nações e na Pirelli, entre outras' },
+    { nome: 'BodyMind' },
+    { nome: 'Equipamentos de ginástica nos parques', detalhe: 'no Parque Central e no Parque Regional da Criança' },
   ],
 
   destaquesFitness: [
@@ -137,5 +137,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Santo André: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional no ABC.',
   },
-  atualizadoEm: '2026-10-05',
+  academiasVerificadasEm: '2026-10-20',
+  atualizadoEm: '2026-10-20',
 };

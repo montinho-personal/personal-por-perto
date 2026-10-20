@@ -58,6 +58,13 @@ export const cidade: Cidade = {
   academias:
     'Há academias de rede e estúdios de bairro, complementados pela ampla oferta da conurbada Sorocaba, a poucos minutos. Os parques e praças funcionam como extensão natural para o treino ao ar livre.',
 
+  academiasProximas: [
+    { nome: 'Academia Movimento', detalhe: 'na Rua Miguel Dias, no Centro' },
+    { nome: 'Panobianco', detalhe: 'na Av. São João, no Jardim Icatu' },
+    { nome: 'Camps Academia', detalhe: 'na Av. Izabel Ferreira Coelho' },
+    { nome: 'Work Fit Academia', detalhe: 'na Rua Gregório Rolim de Oliveira, no Jardim Serrano' },
+  ],
+
   destaquesFitness: [
     'Cidade média conurbada a Sorocaba, na Região Metropolitana de Sorocaba, com oferta fitness integrada.',
     'Espaços naturais para treino: Serra de São Francisco, Cachoeira da Chave e Parque Ecológico do Matão.',
@@ -84,5 +91,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Votorantim', url: 'https://www.votorantim.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-20',
+  atualizadoEm: '2026-10-20',
 };

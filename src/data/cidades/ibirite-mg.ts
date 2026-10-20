@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada sobretudo por academias de musculação e treino funcional espalhadas pelos bairros, de porte compatível com uma cidade metropolitana populosa, atendendo quem prefere treinar perto de casa em vez de na capital.',
 
+  academiasProximas: [
+    { nome: 'Mega Up Fitness', detalhe: 'na Rua Tabajara, no Lago Azul' },
+    { nome: 'Academia MR Fitness', detalhe: 'na Av. São Paulo' },
+    { nome: "Academia Dragon's", detalhe: 'no Novo Horizonte' },
+  ],
+
   destaquesFitness: [
     'Parte do Parque Estadual da Serra do Rola-Moça, com trilhas e campos de altitude para atividade ao ar livre.',
     'Clima tropical de altitude, que favorece o treino ao ar livre boa parte do ano.',
@@ -96,5 +102,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ibirité', url: 'https://www.ibirite.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-20',
+  atualizadoEm: '2026-10-20',
 };

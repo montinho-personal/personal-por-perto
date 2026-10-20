@@ -62,18 +62,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Cidade universitária e de tecnologia, Campinas tem um público acostumado a metas e dados — o que se reflete em uma comunidade de corrida e ciclismo organizada em torno da Lagoa do Taquaral. Treinar com acompanhamento e medir evolução faz parte da cultura local.',
   academias:
-    'O mercado de academias e estúdios é relevante, com presença de grandes redes e de estúdios de treino funcional e personalizado, especialmente nos bairros de maior renda como Cambuí e Taquaral.',
+    'O mercado de academias é relevante, com a Smart Fit em várias unidades — do Centro aos shoppings — e academias de bairro.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Cambuí, no Campinas Shopping e na Chácara Primavera' },
-    { nome: 'Estúdios de funcional e personal', detalhe: 'concentrados no Cambuí e no Taquaral' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, na orla da Lagoa do Taquaral' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Centro (Cambuí II), no Campinas Shopping e na Chácara Primavera, entre outras' },
   ],
 
   destaquesFitness: [
     'Lagoa do Taquaral como grande polo de corrida, ciclismo e caminhada.',
     'Público de alta escolaridade e renda, ligado à Unicamp e ao setor de tecnologia.',
     'Clima de altitude favorável ao treino ao ar livre boa parte do ano.',
-    'Bairros como Cambuí e Taquaral com forte oferta de estúdios e treino funcional.',
   ],
 
   precos: {
@@ -86,7 +83,7 @@ export const cidade: Cidade = {
   },
 
   conclusao:
-    'Polo de tecnologia com renda alta e cultura de metas, Campinas é um dos melhores mercados do país para treinar com acompanhamento. Da volta da Lagoa do Taquaral aos estúdios do Cambuí e aos condomínios de alto padrão, estrutura não falta — um personal trainer transforma esse cenário em progressão medida, semana a semana, no estilo que o campineiro valoriza.',
+    'Polo de tecnologia com renda alta e cultura de metas, Campinas é um dos melhores mercados do país para treinar com acompanhamento. Da volta da Lagoa do Taquaral às academias e aos condomínios de alto padrão, estrutura não falta — um personal trainer transforma esse cenário em progressão medida, semana a semana, no estilo que o campineiro valoriza.',
 
   /*
    * Prints de 05/10: autocompletar com "sp", "preço", "mulher",
@@ -104,7 +101,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Campinas?',
       resposta:
-        'A Lagoa do Taquaral é o epicentro: pista de cooper, ciclovia e a volta de cerca de 6 km concentram o treino ao ar livre da cidade. Nas academias, a Smart Fit cobre do Cambuí aos shoppings, e os estúdios de funcional se adensam no Cambuí e no Taquaral. O atendimento em casa e em condomínio é forte em Nova Campinas, no Gramado e no Alphaville Campinas — condomínios com estrutura própria de treino, no mesmo modelo da região de Alphaville da capital.',
+        'A Lagoa do Taquaral é o epicentro: pista de cooper, ciclovia e a volta de cerca de 6 km concentram o treino ao ar livre da cidade. Nas academias, a Smart Fit tem unidades do Centro aos shoppings. O atendimento em casa e em condomínio é forte em Nova Campinas, no Gramado e no Alphaville Campinas — condomínios com estrutura própria de treino, no mesmo modelo da região de Alphaville da capital.',
     },
     {
       pergunta: 'O público de tecnologia de Campinas treina diferente?',
@@ -137,5 +134,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Campinas: acompanhamento profissional perto de você, na cidade e na região metropolitana.',
   },
-  atualizadoEm: '2026-10-05',
+  academiasVerificadasEm: '2026-10-20',
+  atualizadoEm: '2026-10-20',
 };
