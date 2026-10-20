@@ -1,0 +1,505 @@
+---
+/**
+ * Musculação na gravidez — o recorte.
+ *
+ * O vizinho `/guias/personal-trainer-para-gestantes/` fica com a decisão de
+ * contratar acompanhamento. Este artigo é dono da pergunta informativa que
+ * os prints de 20/10/2026 mostraram: pode? o que evitar na academia? quais
+ * exercícios (agachamento, leg 45, elevação pélvica, perna)? primeiro
+ * trimestre e até quantos meses? com peso? ganha massa? gêmeos? pilates ou
+ * musculação? Prints e decisões em docs/musculacao-na-gravidez.md.
+ *
+ * Fontes conferidas em 20/10/2026 (texto lido no Europe PMC): OMS 2020
+ * (Bull et al., PMC7719906, tabela de gestantes), Davenport et al. 2019
+ * (aborto espontâneo), Mottola et al. 2019 (posição supina), Prevett et al.
+ * 2023 e 2025 (treino de força), Perales et al. 2016, O'Connor et al. 2011.
+ * Diretriz canadense 2019 e ACOG 804 não abriram aqui; os pontos delas vêm
+ * de revisões que as reproduzem (Jung et al. 2024, PMC11396605; Rudin et
+ * al. 2021, PMC8524738) e estão atribuídos assim no texto.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-para-gestantes/',
+    titulo: 'Personal trainer para gestantes',
+    descricao: 'Quando vale ter alguém olhando o treino da gestação, e como esse acompanhamento funciona.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/musculacao/respiracao-no-treino/',
+    titulo: 'Respiração no treino',
+    descricao: 'Como respirar durante a série sem prender o ar — o ajuste que a gestação pede.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/agachamento-como-fazer/',
+    titulo: 'Agachamento: como fazer',
+    descricao: 'A técnica de base, antes das adaptações de base e amplitude.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/guias/personal-trainer-para-mulheres/',
+    titulo: 'Personal trainer para mulheres',
+    descricao: 'O treino feminino antes, durante e depois da gestação.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/musculacao/musculacao-na-gravidez';
+const atualizadoEm = '2026-10-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Musculação na gravidez', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Grávida pode fazer musculação?',
+    resposta:
+      'Na gestação sem contraindicação, pode e é recomendado. A Organização Mundial da Saúde orienta que toda gestante sem contraindicação faça pelo menos 150 minutos semanais de atividade aeróbica moderada e inclua exercícios de fortalecimento muscular. A condição é a liberação do obstetra, que conhece a sua gestação e diz o que vale para o seu caso.',
+  },
+  {
+    pergunta: 'Pode malhar nos 3 primeiros meses de gravidez?',
+    resposta:
+      'Pode, com liberação médica. Uma revisão de 46 estudos não encontrou aumento do risco de aborto espontâneo entre gestantes que se exercitavam — com a ressalva de que a qualidade da evidência é baixa. No primeiro trimestre, quem já treinava costuma manter a rotina com ajustes ao enjoo e ao cansaço; quem não treinava começa leve.',
+  },
+  {
+    pergunta: 'Grávida pode fazer academia até quantos meses?',
+    resposta:
+      'Não existe mês de corte. A recomendação da OMS é de atividade física regular ao longo de toda a gestação, e o treino segue enquanto a gestação estiver bem e o obstetra mantiver a liberação. O que muda com os meses são os exercícios: menos tempo deitada de costas, mais apoio e menos amplitude conforme a barriga cresce.',
+  },
+  {
+    pergunta: 'Estou grávida, posso fazer agachamento?',
+    resposta:
+      'Pode. Nenhuma das diretrizes coloca o agachamento entre os exercícios a evitar. O que se ajusta é a forma: base mais aberta conforme a barriga cresce, amplitude que não pressione o abdome contra as coxas, apoio (Smith, cadeira atrás, segurar em algo) quando o equilíbrio muda, e carga em que você respira durante a série sem prender o ar.',
+  },
+  {
+    pergunta: 'Pode fazer leg 45 na gravidez?',
+    resposta:
+      'Em geral, sim, com dois ajustes práticos: amplitude menor, para os joelhos não chegarem perto da barriga, e encosto mais alto se a máquina permitir, para você não ficar quase deitada. Se aparecer tontura, náusea ou mal-estar na posição, troque por agachamento com apoio ou cadeira extensora.',
+  },
+  {
+    pergunta: 'Grávida pode fazer elevação pélvica?',
+    resposta:
+      'No início da gestação, sim. A versão no chão deixa você de costas, e a OMS recomenda evitar atividades nessa posição depois do primeiro trimestre; a versão com barra apoia a carga sobre o quadril, cada vez mais perto da barriga. A partir do segundo trimestre, glúteo se treina bem em pé ou de quatro apoios: coice na polia, abdução em pé, agachamento e passada com apoio.',
+  },
+  {
+    pergunta: 'Grávida pode treinar com peso?',
+    resposta:
+      'Pode. As diretrizes recomendam fortalecimento muscular na gestação, e a revisão mais recente sobre treino de força em grávidas associou a prática a menos hipertensão e diabetes gestacional. Os estudos usaram, na maioria, cargas leves a moderadas. Carga máxima e prender o ar sob esforço ficam para depois do parto.',
+  },
+  {
+    pergunta: 'É possível ganhar massa muscular estando grávida?',
+    resposta:
+      'Força, sim: num estudo com gestantes que treinaram duas vezes por semana por 12 semanas, a carga do leg press subiu 36%. Ganho de massa muscular, nenhum estudo mediu de forma direta. E não é o objetivo da fase: o alvo é manter o corpo forte para a gestação, o parto e a volta depois dele.',
+  },
+  {
+    pergunta: 'Grávida de gêmeos pode fazer musculação?',
+    resposta:
+      'Depende de liberação individual. Pela diretriz canadense de 2019, gestação de gêmeos depois da 28ª semana é contraindicação relativa (o exercício pode existir, com avaliação caso a caso) e gestação de trigêmeos ou mais é contraindicação absoluta para atividade além da do dia a dia. Quem decide é o obstetra.',
+  },
+  {
+    pergunta: 'Pilates ou musculação na gravidez?',
+    resposta:
+      'Os dois contam como fortalecimento muscular, e nenhum estudo comparou um contra o outro na gestação. A OMS recomenda variedade. O pilates de solo tem muitos exercícios deitada, que precisam de adaptação depois do primeiro trimestre; a musculação permite controlar a carga com precisão. O melhor é o que você consegue fazer com regularidade e com alguém que saiba adaptar.',
+  },
+  {
+    pergunta: 'Uma mulher grávida pode correr 5 km?',
+    resposta:
+      'Quem já corria antes da gestação, em geral, pode continuar. A OMS diz que mulheres habituadas a atividade vigorosa antes da gravidez podem manter essas atividades na gestação. Quem não corria não deve começar agora por uma meta de distância: caminhada cumpre o mesmo papel com menos risco de queda. Em qualquer caso, com liberação do obstetra.',
+  },
+];
+
+/* 54 caracteres. */
+const title = 'Musculação na gravidez: o que pode e até quantos meses';
+/* 135 caracteres. */
+const description =
+  'Musculação na gravidez: o que as diretrizes dizem sobre peso, agachamento, leg 45, elevação pélvica, primeiro trimestre e quando parar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Musculação na gravidez: o que pode, o que evitar e até quando</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: na gestação sem contraindicação, musculação pode, e
+      é recomendada. A Organização Mundial da Saúde inclui o fortalecimento
+      muscular na recomendação para gestantes desde 2020.
+    </p>
+
+    <p class="lead">
+      O que muda são os detalhes que geram as dúvidas de verdade: quais
+      exercícios saem, quais só se adaptam, quanto peso, até quando. Tudo
+      isso com uma condição que vem antes de qualquer treino — a liberação
+      do obstetra.
+    </p>
+
+    <div class="prose">
+      <h2>Pode fazer musculação grávida?</h2>
+      <p>
+        Pode. A recomendação da OMS para gestantes sem contraindicação é
+        fazer atividade física regular ao longo de toda a gravidez, somar
+        pelo menos <strong>150 minutos por semana de atividade aeróbica
+        moderada</strong> e <strong>incluir exercícios de fortalecimento
+        muscular</strong>. Alongamento leve pode completar.
+      </p>
+
+      <p>
+        Os benefícios listados pela OMS são concretos: menor risco de
+        pré-eclâmpsia, hipertensão gestacional, diabetes gestacional, ganho
+        de peso excessivo, complicações no parto e depressão pós-parto, sem
+        aumento do risco de natimorto, de complicações no recém-nascido ou
+        de efeito sobre o peso ao nascer. A revisão mais recente sobre treino de
+        força na gestação, com 50 estudos, encontrou o mesmo padrão: menos
+        hipertensão e diabetes gestacional entre as que treinavam.
+      </p>
+
+      <p>
+        A condição é a liberação do <strong>obstetra</strong>. Há
+        situações em que o exercício precisa ser limitado ou suspenso —
+        sangramento persistente, placenta prévia, pré-eclâmpsia, risco de
+        parto prematuro, entre outras —, e só quem acompanha a sua
+        gestação sabe se alguma delas se aplica.
+      </p>
+
+      <p>
+        Para encaixar os 150 minutos, caminhada é a forma mais simples de
+        somar a parte aeróbica ao longo da semana, nos dias sem musculação
+        ou depois dela.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-passos"
+        texto="Se a parte aeróbica da sua semana vai ser caminhada, dá para transformar a meta em passos e quilômetros. A calculadora converte um no outro pela sua altura e mostra quanto da meta uma caminhada já cobre — é estimativa, e o ritmo certo continua sendo aquele em que você consegue conversar."
+        acao="Converter minha caminhada em passos"
+      />
+
+      <h2>Primeiro trimestre: pode malhar nos 3 primeiros meses?</h2>
+      <p>
+        Esta é a dúvida mais comum, e vem do medo de aborto espontâneo. Uma
+        revisão de 46 estudos, publicada em 2019, não encontrou aumento
+        desse risco entre gestantes que se exercitavam. Os próprios autores
+        avisam que a qualidade da evidência é baixa — mas ela aponta na
+        mesma direção das diretrizes, que não fazem exceção para o início
+        da gravidez.
+      </p>
+
+      <p>
+        Na prática, o primeiro trimestre pesa mais pelo enjoo e pelo
+        cansaço do que pelo treino em si. Num levantamento de 2026 com 359
+        mulheres que faziam musculação no primeiro trimestre, cansaço e
+        náusea mexeram na rotina de 77% delas, e a frequência caiu, em
+        média, de quase cinco para quatro treinos por semana. Os autores
+        concluíram que continuar treinando foi bem tolerado por quem já
+        treinava antes de engravidar. <strong>Quem não treinava</strong>{' '}
+        pode começar, com carga leve, poucos exercícios e supervisão.
+      </p>
+
+      <h2>Até quantos meses dá para treinar</h2>
+      <p>
+        Não existe mês de corte. A OMS fala em atividade regular ao longo de
+        toda a gestação, e o treino segue enquanto a gestação estiver bem e
+        o obstetra mantiver a liberação.
+      </p>
+
+      <p>
+        O que muda com os meses é o cardápio de exercícios. A partir do
+        segundo trimestre, a barriga desloca o centro de gravidade, o
+        equilíbrio fica menos confiável e algumas posições ficam
+        desconfortáveis. O treino vai ganhando apoio, máquinas e amplitudes
+        menores.
+      </p>
+
+      <h2>O que evitar na academia</h2>
+      <p>
+        A lista é mais curta do que os vídeos de "exercícios proibidos"
+        sugerem, e quase toda ela vem de três princípios.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Ficar deitada de costas depois do primeiro
+          trimestre.</strong> A OMS recomenda evitar atividades em decúbito
+          dorsal a partir daí. Numa revisão sobre o tema, o fluxo de sangue
+          no útero caiu 13% quando as gestantes passaram a se exercitar de
+          costas. A diretriz canadense é mais flexível — pede para mudar de
+          posição se aparecer tontura, náusea ou mal-estar — porque os
+          estudos ainda são poucos e de baixa qualidade. Na academia, isso tira de cena o supino reto no
+          banco, a elevação pélvica no chão e os abdominais deitada.
+        </li>
+        <li>
+          <strong>Prender o ar sob esforço.</strong> A manobra de Valsalva,
+          comum em séries pesadas, sai da rotina. A carga certa é aquela em
+          que você consegue{' '}
+          <a href="/musculacao/respiracao-no-treino/">respirar durante a
+          série</a>.
+        </li>
+        <li>
+          <strong>Risco de queda ou de impacto na barriga.</strong> Esportes
+          de contato, exercícios de equilíbrio instável e movimentos
+          explosivos com risco de cair ficam para depois.
+        </li>
+        <li>
+          <strong>Calor.</strong> Treinar em ambiente muito quente e úmido é
+          desaconselhado; hidratação vale para todo o treino.
+        </li>
+      </ul>
+
+      <p>
+        Duas afirmações comuns na internet não aparecem nas diretrizes. A
+        primeira é que a prancha "causa diástase": não encontramos estudo
+        que mostre isso. O que muda é o conforto e a pressão sobre o
+        abdome, e a prancha inclinada, com as mãos num banco, costuma
+        resolver os dois. A segunda é que elevação pélvica é proibida — o
+        problema é a posição deitada, não o exercício, como mostra a seção
+        abaixo.
+      </p>
+
+      <h2>O que pode: os exercícios das dúvidas mais comuns</h2>
+      <p>
+        <strong>Agachamento.</strong> Pode, e é um dos mais úteis para a
+        gestação. Ajuste a base, que vai abrindo conforme a barriga cresce;
+        a amplitude, para o abdome não ser pressionado contra as coxas; e o
+        apoio — Smith, cadeira atrás ou segurar em algo — quando o
+        equilíbrio muda. A técnica de base está no guia de{' '}
+        <a href="/musculacao/agachamento-como-fazer/">como fazer
+        agachamento</a>.
+      </p>
+
+      <p>
+        <strong>Leg press 45.</strong> Em geral, pode, com amplitude menor,
+        para os joelhos não chegarem perto da barriga, e encosto mais alto
+        se a máquina permitir. Se a posição reclinada der tontura ou
+        mal-estar, troque por agachamento com apoio ou cadeira extensora.
+      </p>
+
+      <p>
+        <strong>Elevação pélvica.</strong> No primeiro trimestre, sem
+        problema. Depois, a versão no chão deixa você de costas, e a
+        versão com barra apoia a carga sobre o quadril, cada vez mais perto
+        da barriga. Glúteo se treina bem de outras formas: coice na polia,
+        abdução em pé, agachamento e passada com apoio. Para quem segue com
+        o exercício no começo da gestação, a execução está no guia de{' '}
+        <a href="/musculacao/elevacao-pelvica-como-fazer/">elevação
+        pélvica</a>.
+      </p>
+
+      <p>
+        <strong>Treino de perna em geral.</strong> Pode. Cadeira extensora,
+        cadeira flexora sentada, abdução e adução na máquina e panturrilha
+        em pé são simples de adaptar. A mesa flexora, deitada de bruços,
+        deixa de ser viável quando a barriga cresce.
+      </p>
+
+      <p>
+        <strong>Costas, ombros e braços.</strong> Puxada, remada sentada ou
+        com apoio no peito, desenvolvimento sentado e exercícios de braço
+        seguem com poucas mudanças. Supino troca de posição: inclinado ou
+        na máquina sentada no lugar do reto.
+      </p>
+
+      <p>
+        <strong>Assoalho pélvico.</strong> A OMS recomenda exercícios de
+        assoalho pélvico, que podem ser feitos todos os dias, para reduzir
+        o risco de incontinência urinária.
+      </p>
+
+      <h2>Com peso? Quanto peso?</h2>
+      <p>
+        Com peso, sim. A revisão de 2025 reuniu 50 estudos e 45 ensaios
+        clínicos de treino de força em gestantes; quase todos usaram cargas
+        leves a moderadas. Num levantamento com 679 mulheres que levantaram
+        80% ou mais da carga máxima durante a gestação, a maioria não
+        relatou complicações — mas é um questionário, não um experimento, e
+        não serve de autorização para carga máxima.
+      </p>
+
+      <p>
+        A régua prática: séries que terminam com folga, respiração solta
+        durante o movimento e nenhuma tentativa de recorde. Quem já treinava
+        pesado costuma manter boa parte da carga no começo e reduzir ao
+        longo dos meses; quem começa agora parte de cargas leves.
+      </p>
+
+      <h2>Dá para ganhar massa muscular grávida?</h2>
+      <p>
+        Força, sim. Num estudo com 32 gestantes que treinaram duas vezes por
+        semana por 12 semanas, a carga subiu 36% no leg press e 56% na
+        cadeira extensora, sem nenhuma lesão. Ganho de massa muscular,
+        porém, nenhum estudo mediu de forma direta na gestação.
+      </p>
+
+      <p>
+        E não é o objetivo da fase. O ganho de peso da gestação é esperado,
+        e o treino serve para atravessá-la com o corpo forte: menos dor nas
+        costas, mais disposição, melhor preparo para o parto e uma volta
+        mais fácil depois dele. Hipertrofia e definição voltam a ser meta no
+        pós-parto, com a liberação médica.
+      </p>
+
+      <h2>Gêmeos, pilates e outras situações</h2>
+      <p>
+        <strong>Gêmeos.</strong> A diretriz canadense de 2019 trata gestação
+        de gêmeos depois da 28ª semana como contraindicação relativa — o
+        exercício pode existir, com avaliação caso a caso — e trigêmeos ou
+        mais como contraindicação absoluta para atividade além da do dia a
+        dia. Aqui, mais do que em qualquer outro caso, quem decide é o
+        obstetra.
+      </p>
+
+      <p>
+        <strong>Pilates ou musculação.</strong> Os dois contam como
+        fortalecimento, e nenhum estudo comparou um contra o outro na
+        gestação. O pilates de solo tem muitos exercícios deitada de costas
+        ou de bruços, que precisam de adaptação a partir do segundo
+        trimestre; a musculação dá controle fino da carga. A OMS recomenda
+        variedade — escolha o que você consegue manter.
+      </p>
+
+      <h2>Sinais para parar na hora</h2>
+      <p>
+        Pare o treino e procure o obstetra se aparecer: sangramento vaginal,
+        perda de líquido, contrações regulares e dolorosas, dor no peito,
+        dor abdominal, dor ou inchaço na panturrilha, falta de ar antes do
+        esforço, tontura ou dor de cabeça. Essa lista vem das orientações do
+        Colégio Americano de Obstetras e Ginecologistas e vale para qualquer
+        modalidade.
+      </p>
+
+      <p>
+        Dor nas costas, no quadril ou na pelve que não passa com o ajuste do
+        exercício também merece avaliação de médico ou fisioterapeuta antes
+        de seguir.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        O treino da gestação muda a cada trimestre, às vezes a cada semana,
+        e quase toda dúvida deste artigo é sobre adaptar: qual variação, que
+        amplitude, quanto peso hoje. Um profissional de Educação Física
+        acostumado com gestantes faz essas trocas em tempo real e trabalha
+        dentro do que o obstetra liberou. O guia de{' '}
+        <a href="/guias/personal-trainer-para-gestantes/">personal trainer
+        para gestantes</a> mostra como esse acompanhamento funciona. Em
+        Alphaville e na região, o atendimento presencial do Montinho é
+        descrito na página de{' '}
+        <a href="/personal-trainer/barueri-sp/">personal trainer em
+        Barueri</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 54(24):1451-1462, 2020</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/30337346/" target="_blank" rel="noopener noreferrer">Davenport MH, Kathol AJ, Mottola MF, et al. Prenatal exercise is not associated with fetal mortality: a systematic review and meta-analysis. British Journal of Sports Medicine, 53(2):108-115, 2019</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1136/bjsports-2018-099919" target="_blank" rel="noopener noreferrer">Mottola MF, Nagpal TS, Bgeginski R, et al. Is supine exercise associated with adverse maternal and fetal outcomes? A systematic review. British Journal of Sports Medicine, 53(2):82-89, 2019</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1136/bjsports-2024-109123" target="_blank" rel="noopener noreferrer">Prevett C, Gingerich J, Sivak A, Davenport MH. Resistance training in pregnancy: systematic review and meta-analysis of pregnancy, delivery, fetal and pelvic floor outcomes and call to action. British Journal of Sports Medicine, 59(16):1173-1182, 2025</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1007/s00192-022-05393-1" target="_blank" rel="noopener noreferrer">Prevett C, Kimber ML, Forner L, de Vivo M, Davenport MH. Impact of heavy resistance training on pregnancy and postpartum health outcomes. International Urogynecology Journal, 34(2):405-411, 2023</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1249/mss.0000000000003956" target="_blank" rel="noopener noreferrer">Prevett C, Davenport MH. High-load resistance training in the first trimester, a retrospective survey: implications for exercise professionals and obstetrical providers. Medicine &amp; Science in Sports &amp; Exercise, 58(6):1236-1245, 2026</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4203346/" target="_blank" rel="noopener noreferrer">O'Connor PJ, Poudevigne MS, Cress ME, et al. Safety and efficacy of supervised strength training adopted in pregnancy. Journal of Physical Activity and Health, 8(3):309-320, 2011</a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1016/j.earlhumdev.2016.01.004" target="_blank" rel="noopener noreferrer">Perales M, Santos-Lozano A, Ruiz JR, et al. Benefits of aerobic or resistance training during pregnancy on maternal health and perinatal outcomes: a systematic review. Early Human Development, 94:43-48, 2016</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11396605/" target="_blank" rel="noopener noreferrer">Jung AR, Seo Y, Lee J, Hwang JG, Yun S, Lee DT. Recent findings on exercise therapy for blood glucose management in patients with gestational diabetes. Journal of Clinical Medicine, 13(17):5004, 2024 — tabelas 2 e 3, que reproduzem as contraindicações da diretriz canadense (SOGC/CSEP) e os sinais de alerta do parecer 804 do Colégio Americano de Obstetras e Ginecologistas</a>
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre musculação na gravidez" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

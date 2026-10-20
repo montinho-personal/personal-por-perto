@@ -438,7 +438,7 @@ de fechamento.
 | Cinto, luva e strap: quando usar | `cinto-e-luva-de-treino` | ✅ 2026-09-14 · recorte declarado |
 | Academia lotada: como treinar | `academia-lotada-como-treinar` | ✅ 2026-09-22 · recorte declarado |
 | Treinar duas vezes por dia | `treinar-duas-vezes-por-dia` | ✅ 2026-09-28 · recorte declarado |
-| Musculação na gravidez | `musculacao-na-gravidez` | |
+| Musculação na gravidez | `musculacao-na-gravidez` | ✅ 2026-10-20 · prints do Renato · recorte em `docs/musculacao-na-gravidez.md` |
 | Treino full body: como montar | `treino-full-body-como-montar` | ⚠️ |
 | Drop set: quando usar | `series-drop-set` | ⚠️ |
 | Treinar em jejum | `treino-em-jejum` | ⚠️ |

@@ -245,6 +245,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/pullover-como-fazer/', titulo: 'Pullover: como fazer e o que ele treina' },
   { categoria: 'Musculação', url: '/musculacao/remada-cavalinho-como-fazer/', titulo: 'Remada cavalinho: como fazer e os erros' },
   { categoria: 'Musculação', url: '/musculacao/musculacao-na-menopausa/', titulo: 'Musculação na menopausa: por onde começar' },
+  { categoria: 'Musculação', url: '/musculacao/musculacao-na-gravidez/', titulo: 'Musculação na gravidez: o que pode e até quantos meses' },
 
   // Emagrecimento
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação' },
