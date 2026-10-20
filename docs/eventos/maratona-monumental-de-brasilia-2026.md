@@ -33,6 +33,8 @@ Rede liberada em 13/10/2026. O site recusava com 406 o agente "Mozilla/5.0" curt
 - Horários, kit, preços e premiação ("a definir"): sem mudança. A home ainda linka o regulamento v6; a página de documentos tem o v7 (o artigo segue no v7).
 - Artigo atualizado: percurso "publicado" com os 4 links; Última verificação 16/10.
 
+**Varredura de 20/10/2026:** sem fato novo. Regulamento segue v7 (página Regulamento); a home ainda linka o v6; premiação total segue "a definir".
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)
