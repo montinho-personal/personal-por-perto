@@ -38,6 +38,7 @@ Informado pelo Renato: 31/12/2026, 15 km, largada e chegada na Av. Paulista.
 | esgotou? | "10 mil registros em 30 minutos" — não diz esgotou |
 | regulamento 2026 | não encontrado (tempo limite, ondas, idade mínima) — lembrete em 16/11 |
 | premiação, kit 2026, transmissão 2026 | nada confirmado |
+| regulamento 2026 (pista de 20/10) | resumo de busca diz que saosilvestre.com.br/regulamento/ já reproduz o regulamento da **101ª edição**, com quadro de premiação da Elite A "até 12/12/2026", e há um PDF em seguro.saosilvestre.com.br/pdf/regulamento_completo.pdf. Site (403) e static.saosilvestre.com.br (recusado pelo proxy) inacessíveis aqui → **pedir print/PDF ao Renato**. Não usar até ler a fonte. |
 
 ## Prints de busca
 
