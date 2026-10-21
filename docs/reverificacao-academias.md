@@ -451,3 +451,24 @@ Também no arquivo: `academias` (sem a "concentração" nos bairros nobres, que 
 Também no arquivo: "estúdios do Cambuí/Taquaral" sai de `mercado`, `academias`, `destaquesFitness`, conclusão e FAQ.
 
 Saldo: 6 entradas → 2 removidas (1 genérica, 1 sem fonte aberta), 3 corrigidas, 1 confirmada.
+
+### 21/10/2026 — leva 18 (rotina, Parte B: Sorocaba e Cascavel)
+
+**Sorocaba/SP** — página mudou. Fica com 2 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | corrigida: "em shoppings" vira "no Shopping Cidade Sorocaba, entre outras" (8 unidades abertas na cidade) | smartfit.com.br/academias (unidades de Sorocaba), `opened:true` |
+| Academias locais e estúdios de funcional | **removida**: sem nome | — |
+| Estrutura dos parques | corrigida: sai "(24h)" — o "24 horas" oficial é da base da GCM dentro do Parque das Águas, não do horário do parque; sai o ETA-Éden (não está na página oficial de parques; a única fonte primária é jornal bloqueado aqui); "gratuita" vira "pública" | Prefeitura de Sorocaba, meioambiente.sorocaba.sp.gov.br/gestaoambiental/parques/ (Campolim: pistas de 1.500, 1.900 e 2.600 m; Parque das Águas: pista de caminhada, ciclovia, quadra, campos); noticias.sorocaba.sp.gov.br/prefeitura-inaugura-base-comunitaria-da-gcm-no-parque-das-aguas/ |
+
+Também no arquivo: `mercado` ("shoppings"), `academias`, `destaquesFitness`, o card do Parque das Águas em `ondeTreinar` (saem "162 mil m²", skate, areia e "24 horas", sem fonte aberta), o card do ETA-Éden (removido), a FAQ "Onde o personal costuma atender" e a FAQ "O que o Parque das Águas aberto 24 horas muda…" (removida — a premissa não se sustenta).
+
+**Cascavel/PR** — confirmada sem mudança (só `academiasVerificadasEm`; `atualizadoEm` não sobe).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Cascavel | confirmada: Rua Paraná, 1677, Centro; única unidade da cidade | smartfit.com.br/academias/cascavel, `opened:true` |
+| Bluefit Cascavel | confirmada: Av. Barão do Rio Branco, 817, São Cristóvão | bluefit.com.br/academia/cascavel (meta description) + Wellhub (mesmo endereço) |
+
+Saldo: 5 entradas → 2 removidas, 1 corrigida, 2 confirmadas.

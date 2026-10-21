@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'Há forte vocação para turismo esportivo, com provas de corrida que unem esporte, gastronomia e hospitalidade, além de corridas de montanha na Serra Gaúcha.',
   academias:
     'A oferta reúne academias e estúdios, com hotelaria de luxo favorecendo personal training e wellness, e o Lago Joaquina Rita Bier como principal espaço público de corrida.',
+  academiasProximas: [
+    { nome: 'Ks Fit Academia', detalhe: 'na Rua Daniel José Arend, no Casagrande' },
+    { nome: 'Fitflex Energy Academia', detalhe: 'na Rua Prefeito Nelson Dinnebier' },
+  ],
 
   destaquesFitness: [
     'Treino indoor como prioridade no inverno rigoroso de serra.',
@@ -96,5 +100,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Gramado', url: 'https://www.gramado.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-21',
+  atualizadoEm: '2026-10-21',
 };

@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A orla do Lago Guaíba concentra a vida esportiva ao ar livre da cidade, com grupos de corrida e caminhada ativos. Guaíba é reconhecida na história gaúcha pela ligação com a Revolução Farroupilha, e a beira do lago — palco de momentos da política do Rio Grande do Sul no século XX — hoje é o principal espaço de lazer ativo da população.',
   academias:
     'A oferta reúne academias de bairro, estúdios e redes, complementadas pela estrutura ao ar livre da orla revitalizada, com calçadão e ciclovia à beira do Lago Guaíba.',
+  academiasProximas: [
+    { nome: '26 Fit', detalhe: 'na Rua Vinte de Setembro, no Centro' },
+    { nome: 'SuperForce', detalhe: 'na Av. Castelo Branco, no Coronel Nassuca' },
+  ],
 
   destaquesFitness: [
     'Orla do Lago Guaíba: calçadão e ciclovia revitalizados para corrida, caminhada e pedal.',
@@ -96,5 +100,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Guaíba', url: 'https://www.guaiba.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  academiasVerificadasEm: '2026-10-21',
+  atualizadoEm: '2026-10-21',
 };

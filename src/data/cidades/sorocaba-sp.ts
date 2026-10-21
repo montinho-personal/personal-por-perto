@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Altamente industrializada, Sorocaba é apelidada de "Manchester Paulista" e tem um dos maiores PIBs do interior de São Paulo, com forte presença de metalurgia, autopeças, setor químico, máquinas e eletrônicos. Reconhecida nacional e internacionalmente por suas políticas de mobilidade ativa, é uma verdadeira cidade-parque, com ampla malha de ciclovias e parques que convidam ao treino ao ar livre.',
 
   mercado:
-    'O mercado fitness é consolidado, com a Smart Fit presente em vários bairros (Campolim, Avenida Ipanema, Jardim Vergueiro, shoppings) e uma cultura de atividade física elevada. A cidade é referência em mobilidade ativa — ciclismo, corrida e caminhada nos parques fazem parte do cotidiano —, o que sustenta uma boa demanda por personal trainers.',
+    'O mercado fitness é consolidado, com a Smart Fit presente em vários bairros (Campolim, Avenida Ipanema, Jardim Vergueiro, Shopping Cidade Sorocaba) e uma cultura de atividade física elevada. A cidade é referência em mobilidade ativa — ciclismo, corrida e caminhada nos parques fazem parte do cotidiano —, o que sustenta uma boa demanda por personal trainers.',
 
   bairrosNobres: ['Campolim', 'Jardim Europa', 'Parque Campolim', 'Jardim Vergueiro'],
   bairrosPopulares: ['Vila Nova Sorocaba', 'Parque São Bento', 'Jardim Santa Cecília', 'Vitória Régia'],
@@ -34,12 +34,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque das Águas',
       descricao:
-        'Com cerca de 162 mil m², tem pista de caminhada, ciclovia, pista de skate e quadra de areia, e é aberto 24 horas — o principal palco das corridas de rua da cidade.',
-    },
-    {
-      nome: 'Parque da ETA-Éden',
-      descricao:
-        'Tem academia ao ar livre, pista de caminhada e deque sobre o manancial, em ambiente arborizado.',
+        'Na Av. Dom Aguirre, tem pista de caminhada, ciclovia, quadra e campos de futebol, e uma base comunitária da Guarda Civil Municipal — o principal palco das corridas de rua da cidade.',
     },
   ],
   ciclovias:
@@ -68,16 +63,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Sorocaba tem forte tradição esportiva e é uma das cidades mais ciclísticas do Brasil. Corrida de rua e ciclismo são muito populares, sustentados pela ampla malha de ciclovias e pela rede de parques, com um calendário recorrente de provas.',
   academias:
-    'A presença da Smart Fit em vários bairros, somada a academias locais e estúdios de funcional, dá boa cobertura à cidade, que tem nos parques uma extensão natural para o treino ao ar livre.',
+    'A presença da Smart Fit em vários bairros, com oito unidades abertas, dá boa cobertura à cidade, que tem nos parques uma extensão natural para o treino ao ar livre.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Campolim, na Av. Ipanema, no Jardim Vergueiro e em shoppings' },
-    { nome: 'Academias locais e estúdios de funcional', detalhe: 'boa cobertura pelos bairros' },
-    { nome: 'Estrutura dos parques', detalhe: 'gratuita — Campolim, Parque das Águas (24h) e ETA-Éden' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Campolim, na Av. Ipanema, no Jardim Vergueiro e no Shopping Cidade Sorocaba, entre outras' },
+    { nome: 'Estrutura dos parques', detalhe: 'pública — Parque Campolim (pistas de 1,5 a 2,6 km) e Parque das Águas (pista de caminhada e ciclovia)' },
   ],
 
   destaquesFitness: [
     'Uma das maiores redes de ciclovias do Brasil (cerca de 128 km) e bike sharing público.',
-    'Cidade-parque: Campolim (três pistas), Parque das Águas (24h) e ETA-Éden.',
+    'Cidade-parque: Campolim (três pistas) e Parque das Águas (pista de caminhada e ciclovia).',
     'Calendário forte de corridas (Meia Maratona São Vicente e Speed Run).',
     'Mercado de academias maduro (Smart Fit) e renda que sustenta o personal training.',
   ],
@@ -110,12 +104,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Sorocaba?',
       resposta:
-        'A cidade-parque oferece um circuito completo: o Parque Campolim, com três pistas de distâncias diferentes (1,5 km, 1,9 km e 2,6 km), o Parque das Águas — aberto 24 horas, palco das corridas da cidade — e o ETA-Éden, arborizado, na região do Éden. Nas academias, a Smart Fit cobre do Campolim ao Vergueiro, e o atendimento em casa é comum no Campolim e no Jardim Europa. Os cerca de 128 km de ciclovias separadas do trânsito ainda fazem da bike uma opção real de treino.',
-    },
-    {
-      pergunta: 'O que o Parque das Águas aberto 24 horas muda na rotina de treino?',
-      resposta:
-        'Muda o principal obstáculo de quem trabalha em turnos na indústria sorocabana: o horário. Com o parque aberto e iluminado a qualquer hora, quem sai da fábrica às 22h ou entra às 6h consegue manter treino ao ar livre constante — algo raro no interior. O personal aproveita essa flexibilidade para montar agendas fora do padrão comercial, e as três pistas do Campolim complementam com opções de distância para os treinos diurnos de corrida e caminhada.',
+        'A cidade-parque oferece um circuito completo: o Parque Campolim, com três pistas de distâncias diferentes (1,5 km, 1,9 km e 2,6 km), e o Parque das Águas, com pista de caminhada e ciclovia, palco das corridas da cidade. Nas academias, a Smart Fit cobre do Campolim ao Vergueiro, e o atendimento em casa é comum no Campolim e no Jardim Europa. Os cerca de 128 km de ciclovias separadas do trânsito ainda fazem da bike uma opção real de treino.',
     },
     {
       pergunta: 'Há acompanhamento em Sorocaba para quem sente dores ou tem limitações?',
@@ -143,5 +132,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Sorocaba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-06',
+  academiasVerificadasEm: '2026-10-21',
+  atualizadoEm: '2026-10-21',
 };

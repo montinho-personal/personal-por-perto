@@ -101,6 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cascavel', url: 'https://www.cascavel.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
+  academiasVerificadasEm: '2026-10-21',
   atualizadoEm: '2026-10-06',
 
   /*
