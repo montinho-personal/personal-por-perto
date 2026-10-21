@@ -113,6 +113,12 @@ BH se mover, sabemos qual mudança mexeu.
 | 4 | 21/10/2026 | Brasília, João Pessoa, Salvador | Asa Norte, Tambaú, Imbuí — pedido do Renato; as três cidades com mais impressões em 28 dias (João Pessoa 1.149, Salvador 901, Brasília 724) e poucos bairros. Publicados antes dos prints de busca; título, H1 e FAQs a revisar quando chegarem |
 | 5 | 21/10/2026 | Goiânia, Teresina, Uberlândia | Setor Oeste, Dirceu, Centro — pedido do Renato; próximas três cidades por impressões e poucos bairros (Teresina 582 / 2 bairros, Goiânia 475 / 3, Uberlândia 367 / 2). Escolha por contraste de zona e perfil. Publicados antes dos prints |
 
+**Leva 5 — prints de 21/10 (14h41)**, em `docs/pesquisas/2026-10-21-bairros-leva-5/prints/`:
+- *academia setor oeste goiânia*: Ultra, Smart Fit, Bluefit, Panobianco; "academia de musculação". **Aplicado:** Ultra e Panobianco citadas pelo nome, com a fonte (TotalPass, endereço no Setor Oeste; Wellhub deu 404 e não conta como segunda fonte — por isso sem endereço); FAQ "Quais academias ficam no Setor Oeste?"; título e descrição com academias. Bluefit (Praça do Sol) fora: só Wellhub e página oficial com botão de inauguração.
+- *academia dirceu teresina*: Simplifit (Dirceu, Noé Mendes, Kennedy), "dirceu 2" (Selfit Dirceu II), telefone, cnpj, zonas sul e leste; PAA de personal: 1 hora, quanto custa em Teresina, **3 vezes por semana**, **onde encontrar personal em Teresina**; visão geral de IA com mensalidades de academia (não é fonte; preço de academia fica fora). **Aplicado:** FAQs de 3x/semana e onde encontrar; Simplifit Dirceu pelo nome (site oficial indexado, não abre aqui; endereço fora); título e descrição com academias.
+- Ainda faltam os prints de *personal trainer setor oeste* e do Centro de Uberlândia.
+
+
 **Asa Norte — prints recebidos em 21/10 (8h)**, em `docs/pesquisas/2026-10-21-bairros-leva-4/prints/`:
 - *personal trainer asa norte*: autocompletar com "brasilia asa norte", "studio personal trainer", um CT pelo nome, "personal asa norte"; PAA só de preço — 1 mês, valor médio, quanto custa em Brasília, 2 vezes por semana; resultados com Wellhub (academias com personal no plano), perfil de personal "Plano Piloto, Asa Sul e Asa Norte" e estúdio de funcional na CLN; outras: plano personal Smart Fit preço, academia com personal, preço popular, valor hora, quanto custa por mês.
 - *academia asa norte*: barata, Smart Fit, Evolve, Bluefit, Ultra, World Gym, "706", "dentro de 800 m"; melhores academias.
