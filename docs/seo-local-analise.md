@@ -116,7 +116,8 @@ BH se mover, sabemos qual mudança mexeu.
 **Leva 5 — prints de 21/10 (14h41)**, em `docs/pesquisas/2026-10-21-bairros-leva-5/prints/`:
 - *academia setor oeste goiânia*: Ultra, Smart Fit, Bluefit, Panobianco; "academia de musculação". **Aplicado:** Ultra e Panobianco citadas pelo nome, com a fonte (TotalPass, endereço no Setor Oeste; Wellhub deu 404 e não conta como segunda fonte — por isso sem endereço); FAQ "Quais academias ficam no Setor Oeste?"; título e descrição com academias. Bluefit (Praça do Sol) fora: só Wellhub e página oficial com botão de inauguração.
 - *academia dirceu teresina*: Simplifit (Dirceu, Noé Mendes, Kennedy), "dirceu 2" (Selfit Dirceu II), telefone, cnpj, zonas sul e leste; PAA de personal: 1 hora, quanto custa em Teresina, **3 vezes por semana**, **onde encontrar personal em Teresina**; visão geral de IA com mensalidades de academia (não é fonte; preço de academia fica fora). **Aplicado:** FAQs de 3x/semana e onde encontrar; Simplifit Dirceu pelo nome (site oficial indexado, não abre aqui; endereço fora); título e descrição com academias.
-- Ainda faltam os prints de *personal trainer setor oeste* e do Centro de Uberlândia.
+- *personal trainer setor oeste goiânia*: segundo o Renato (21/10), a busca **não mostra autocompletar, nem "Outras pessoas pesquisaram", nem PAA** — sinal de demanda baixa para personal com o nome do bairro. A página fica como está; a intenção que existe ali é de academia, já aplicada. Leitura no próximo relatório: se o Setor Oeste não receber impressão de "personal", a próxima leva de Goiânia não deve repetir bairro central.
+- Ainda faltam os prints do Centro de Uberlândia.
 
 
 **Asa Norte — prints recebidos em 21/10 (8h)**, em `docs/pesquisas/2026-10-21-bairros-leva-4/prints/`:
