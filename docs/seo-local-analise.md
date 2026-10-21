@@ -112,6 +112,11 @@ BH se mover, sabemos qual mudança mexeu.
 | 3 | 11/09/2026 | Salvador | Barra, Brotas |
 | 4 | 21/10/2026 | Brasília, João Pessoa, Salvador | Asa Norte, Tambaú, Imbuí — pedido do Renato; as três cidades com mais impressões em 28 dias (João Pessoa 1.149, Salvador 901, Brasília 724) e poucos bairros. Publicados antes dos prints de busca; título, H1 e FAQs a revisar quando chegarem |
 
+**Asa Norte — prints recebidos em 21/10 (8h)**, em `docs/pesquisas/2026-10-21-bairros-leva-4/prints/`:
+- *personal trainer asa norte*: autocompletar com "brasilia asa norte", "studio personal trainer", um CT pelo nome, "personal asa norte"; PAA só de preço — 1 mês, valor médio, quanto custa em Brasília, 2 vezes por semana; resultados com Wellhub (academias com personal no plano), perfil de personal "Plano Piloto, Asa Sul e Asa Norte" e estúdio de funcional na CLN; outras: plano personal Smart Fit preço, academia com personal, preço popular, valor hora, quanto custa por mês.
+- *academia asa norte*: barata, Smart Fit, Evolve, Bluefit, Ultra, World Gym, "706", "dentro de 800 m"; melhores academias.
+- **Aplicado:** título e H1 com "preço"; descrição com "1 mês" e "2 vezes por semana"; FAQs novas de 1 mês, 2 vezes por semana, valor da hora e academia barata/gratuita (academias comunitárias, PDAD); seção de preço com a conta de 2x/semana, preço popular, calculadora de preço e links para personal na Smart Fit e em academia; estúdio citado entre os formatos; Bluefit citada só pelo nome (páginas oficiais "Asa Norte" sem endereço legível e com botão de inauguração). Ultra (só Wellhub aberto; site oficial bloqueado), Evolve e World Gym ficaram de fora por falta de fonte. Nomes de CT e de profissionais dos resultados não entram.
+
 **Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
 — Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
 mesmo cluster nobre centro-norte, e dois deles usam a mesma forma
