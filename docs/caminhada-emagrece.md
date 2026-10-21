@@ -40,6 +40,69 @@ déficit alimentar, a compensação come o resultado). "30 minutos são
 quantos km" entra como conversão simples pela velocidade. "Melhor
 horário" pede resposta curta: o que vale é o horário que se mantém.
 
-### Pendentes
+### 21/10 — "caminhada emagrece a barriga" (5 imagens)
 
-- "caminhada emagrece a barriga"
+| tela | o que mostrou |
+|---|---|
+| autocompletar (11) | perder barriga · 15 dias · em 7 dias · 30 dias |
+| visão geral de IA (12) | "ajuda, mas só acelerada e com déficit"; "não queima gordura localizada"; 30 a 50 min queimam 200 a 500 kcal; "reduz o cortisol". **Não é fonte.** O cortisol não entrou (sem estudo lido que sustente a ligação caminhada → cortisol → barriga) |
+| PAA (13) | Quanto tempo devo caminhar para perder a barriga? · Caminhar tira pochete? · Quantos dias a caminhada começa a fazer efeito? · 20 minutos por dia são suficientes? |
+| Outras pessoas (14, 15) | caminhada todos os dias engrossa as pernas · caminhar todos os dias emagrece · 1 hora quantos quilos · define o corpo · 3 km · benefícios para o corpo feminino; 21 dias para perder barriga · 1 kg · 30 min quantos quilos · tabela · 20 benefícios · caminhada em casa para perder barriga |
+
+## O recorte
+
+- `/calorias/caminhada/` é dona de "quantas calorias gasta". Este artigo é
+  dono de "emagrece? quanto, em quilos e em tempo". A tabela usa o mesmo
+  motor (`lib/calorias/caminhada.ts`), pelo gasto **líquido**, e o bloco
+  de ferramenta manda para a calculadora.
+- `/emagrecimento/como-perder-barriga/` e `/gordura-visceral/` ficam com o
+  aprofundamento da barriga; aqui só a resposta e o link.
+- `/emagrecimento/quantos-passos-por-dia/` fica com a meta em passos.
+
+## Onde cada intenção entrou
+
+| intenção | onde |
+|---|---|
+| emagrece mesmo / ou não | H2 1 + FAQ (Murphy 2007, ACSM 2009) |
+| quantos minutos por dia / 20 min / 30 min | H2 2 + FAQ (OMS 150–300; ACSM >250) |
+| quantos quilos por mês/semana (30 min, 1 h, 3 km, 5 km, 2 h) | H2 3 com tabela por peso + FAQs |
+| quanto tempo para 1 kg, 10 kg, 5 kg | H2 4 + FAQ |
+| 1 kg por dia, 5 kg em 1 semana | H2 5 + FAQ |
+| barriga, pochete, 7/15/21/30 dias | H2 6 + FAQ (Vispute 2011, Verheggen 2016) |
+| quando começa a queimar gordura / quantos dias faz efeito | H2 7 + FAQ (Romijn 1993) |
+| mais que corrida | H2 8 + FAQ (Williams 2013) |
+| na esteira, inclinação, ritmo, 30 min são quantos km, melhor horário | H2 9 + FAQs |
+| só com caminhada | H2 3 + FAQ (Thomas 2012) |
+
+**Não entraram:** "engrossa as pernas" e "define o corpo" (sem fonte lida
+que responda; ficam para revisão), "caminhada em casa" (vídeo; outra
+intenção), "20 benefícios" (lista genérica, fora do recorte de
+emagrecimento), cortisol (ver acima), "primeiros resultados em 2 a 4
+semanas" (visão geral de IA, sem fonte).
+
+## Fontes (resumos lidos no Europe PMC em 21/10/2026)
+
+- OMS 2020 (PMC7719906): 150–300 min/semana moderados.
+- Donnelly et al. 2009, ACSM (PMID 19127177): 150–250 min/semana = perda
+  modesta; >250 = clinicamente relevante; 150–250 melhora com restrição
+  moderada.
+- Murphy et al. 2007 (PMID 17275896): 24 ECRs; caminhada reduz peso, IMC
+  e % de gordura em sedentários. O texto completo não abriu; nenhum
+  número de efeito foi citado.
+- Thomas et al. 2012 (PMC3771367): perda menor que a prevista por dose
+  baixa e aumento da ingestão.
+- Hall et al. 2011 (PMID 21872751): 7.700 kcal/kg superestima no tempo.
+- Verheggen et al. 2016 (PMID 27213481): 117 estudos; sem perda de peso,
+  exercício −6,1% de gordura visceral, dieta −1,1%.
+- Vispute et al. 2011 (PMID 21804427): 6 semanas de abdominal, sem
+  redução de gordura abdominal.
+- Romijn et al. 1993 (PMID 8214047): lipólise periférica máxima na menor
+  intensidade.
+- Williams 2013 (PMC4067491): 15.237 caminhantes e 32.216 corredores, 6,2
+  anos; corrida mais associada a perda de peso.
+- Compêndio 2024: METs da caminhada (via `lib/calorias/caminhada.ts`).
+
+Observação: Brobakken et al. 2023 (PMC10680576) encontrou pequena redução
+localizada de gordura do tronco com exercício abdominal de resistência
+aeróbia em 16 homens. Não muda a resposta para a caminhada; registrado
+para a revisão de `como-perder-barriga`.

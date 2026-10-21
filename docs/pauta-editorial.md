@@ -650,7 +650,7 @@ hipertrofia), já usados no portal.
 
 | Artigo | slug | status |
 |---|---|---|
-| Caminhada emagrece? | `caminhada-emagrece` | |
+| Caminhada emagrece? | `caminhada-emagrece` | ✅ 2026-10-21 · prints do Renato · recorte em `docs/caminhada-emagrece.md` |
 | Esteira ou bicicleta para emagrecer | `esteira-ou-bicicleta` | ✅ 2026-09-28 · recorte declarado |
 | Emagrecer na menopausa | `emagrecer-na-menopausa` | |
 | Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | |

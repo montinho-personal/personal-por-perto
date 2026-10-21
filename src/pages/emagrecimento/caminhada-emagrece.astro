@@ -1,0 +1,526 @@
+---
+/**
+ * Caminhada emagrece? — o recorte.
+ *
+ * `/calorias/caminhada/` é dona da pergunta "quantas calorias gasta". Este
+ * artigo é dono do que os prints de 21/10/2026 mostraram: emagrece mesmo?
+ * quantos minutos por dia? quantos quilos por semana e por mês (30 min,
+ * 1 hora, 3 km, 5 km)? quanto tempo para 1 kg e 10 kg? 5 kg em 1 semana?
+ * só com caminhada? barriga (7, 15, 21, 30 dias)? quando começa a queimar
+ * gordura? mais que corrida? Prints e decisões em docs/caminhada-emagrece.md.
+ *
+ * Os números saem do mesmo motor da calculadora (lib/calorias/caminhada),
+ * pelo gasto LÍQUIDO — o que a caminhada acrescenta ao dia, já descontado o
+ * repouso —, porque é esse que entra num déficit.
+ *
+ * Fontes conferidas em 21/10/2026 (resumos no Europe PMC): OMS 2020; ACSM
+ * (Donnelly et al. 2009); Murphy et al. 2007; Thomas et al. 2012; Hall et
+ * al. 2011; Verheggen et al. 2016; Vispute et al. 2011; Romijn et al. 1993;
+ * Williams 2013; Compêndio de Atividades Físicas 2024.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { deTempo, deDistancia, ritmo, KCAL_POR_KG_GORDURA } from '../../lib/calorias/caminhada';
+
+/* ── A conta: 5 km/h no plano, gasto líquido, 30 dias por mês ── */
+const MOD = ritmo('moderado');
+const RAP = ritmo('rapido');
+const liq = (min: number, peso: number, v = MOD.velocidade) =>
+  deTempo(min, peso, v, 0, v === MOD.velocidade ? MOD.cadencia : RAP.cadencia).kcalLiquida;
+const liqKm = (km: number, peso: number) => deDistancia(km, peso, MOD.velocidade, 0, MOD.cadencia).kcalLiquida;
+const kgMes = (kcalDia: number) => (kcalDia * 30) / KCAL_POR_KG_GORDURA;
+const kg = (v: number) => v.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const horas = (v: number) => Math.round(v).toLocaleString('pt-BR');
+
+const PESOS = [60, 70, 80, 100];
+const ROTINAS = [
+  { nome: '30 min por dia', kcal: (p: number) => liq(30, p) },
+  { nome: '3 km por dia', kcal: (p: number) => liqKm(3, p) },
+  { nome: '1 hora (5 km) por dia', kcal: (p: number) => liq(60, p) },
+  { nome: '2 horas por dia', kcal: (p: number) => liq(120, p) },
+];
+const TABELA = ROTINAS.map((r) => ({ nome: r.nome, kgs: PESOS.map((p) => kg(kgMes(r.kcal(p)))) }));
+
+const L30 = Math.round(liq(30, 70));
+const L60 = Math.round(liq(60, 70));
+const MES30 = kg(kgMes(liq(30, 70)));
+const MES60 = kg(kgMes(liq(60, 70)));
+const H1KG = horas(KCAL_POR_KG_GORDURA / liq(60, 70));
+const H1KG_RAP = horas(KCAL_POR_KG_GORDURA / liq(60, 70, RAP.velocidade));
+const H10KG = horas((10 * KCAL_POR_KG_GORDURA) / liq(60, 70));
+const H5KG = horas((5 * KCAL_POR_KG_GORDURA) / liq(60, 70));
+
+const relacionados = [
+  {
+    url: '/emagrecimento/quantos-passos-por-dia/',
+    titulo: 'Quantos passos por dia para emagrecer?',
+    descricao: 'A meta em passos, a partir do seu ponto de partida — e o NEAT que cai sem você perceber.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-perder-barriga/',
+    titulo: 'Como perder barriga',
+    descricao: 'Por que abdominal não queima a barriga e o que funciona de verdade.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/metodo-12-3-30/',
+    titulo: 'Método 12-3-30 na esteira',
+    descricao: 'A caminhada inclinada: quanto gasta a mais e como começar.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'A conta que decide o emagrecimento, com ou sem caminhada.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/caminhada-emagrece';
+const atualizadoEm = '2026-10-21';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Caminhada emagrece?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Caminhada emagrece mesmo?',
+    resposta:
+      'Emagrece. Uma meta-análise de 24 ensaios clínicos com adultos sedentários encontrou redução de peso, de IMC e de percentual de gordura em quem passou a caminhar com regularidade. Mas o efeito sozinho é modesto: o corpo compensa parte do gasto, e o resultado grande vem quando a caminhada se soma a um ajuste moderado na alimentação.',
+  },
+  {
+    pergunta: 'Quantos minutos de caminhada por dia para perder peso?',
+    resposta:
+      'Para a saúde, a OMS recomenda de 150 a 300 minutos por semana de atividade moderada — de 20 a 40 minutos por dia. Para perder peso, o Colégio Americano de Medicina do Esporte aponta que de 150 a 250 minutos semanais dão perda modesta, e que a perda clinicamente relevante aparece acima de 250 minutos, algo como 40 minutos ou mais por dia, todos os dias.',
+  },
+  {
+    pergunta: 'Caminhar 30 minutos por dia emagrece quantos quilos?',
+    resposta: `Na conta teórica, para uma pessoa de 70 kg a 5 km/h, cerca de ${MES30} kg de gordura por mês: são aproximadamente ${L30} kcal que a caminhada acrescenta ao dia. Na prática, costuma ser menos, porque o corpo compensa parte do gasto. O que muda o resultado é somar a caminhada a um ajuste na alimentação.`,
+  },
+  {
+    pergunta: 'Caminhar 1 hora por dia emagrece quantos quilos?',
+    resposta: `Para 70 kg a 5 km/h, a conta teórica dá perto de ${MES60} kg de gordura por mês — cerca de ${L60} kcal a mais por dia. Quem pesa mais gasta mais na mesma hora: para 100 kg, o teórico passa de 1 kg por mês. Os estudos mostram perdas reais menores que as previstas, sobretudo quando a alimentação não muda.`,
+  },
+  {
+    pergunta: 'Quanto tempo de caminhada para perder 1 kg?',
+    resposta: `Somando tudo, cerca de ${H1KG} horas de caminhada a 5 km/h para uma pessoa de 70 kg, se nada mais mudasse no dia — ou ${H1KG_RAP} horas em passo rápido. Em uma hora por dia, mais de um mês. Com um ajuste na alimentação ao mesmo tempo, o prazo encurta bastante.`,
+  },
+  {
+    pergunta: 'É possível perder 5 kg em 1 semana caminhando?',
+    resposta: `De gordura, não. Cinco quilos de gordura guardam cerca de 38 mil kcal; para 70 kg, isso daria mais de ${H5KG} horas de caminhada em sete dias. Quando a balança cai muito em poucos dias, é sobretudo água e conteúdo do intestino, que voltam com a mesma rapidez.`,
+  },
+  {
+    pergunta: 'É possível emagrecer só com caminhada?',
+    resposta:
+      'É possível, mas devagar. Uma revisão de estudos concluiu que quem faz exercício perde menos peso do que a conta prevê principalmente porque a dose de exercício é baixa e porque a pessoa passa a comer mais. Sem ajuste no prato, a caminhada tende a manter o peso mais do que a reduzir.',
+  },
+  {
+    pergunta: 'Caminhada emagrece a barriga?',
+    resposta:
+      'Ajuda, mas não de forma localizada: nenhum exercício escolhe de onde o corpo tira gordura. O que a caminhada faz bem é reduzir a gordura visceral, a de dentro do abdome: numa meta-análise, o exercício reduziu essa gordura em cerca de 6% mesmo sem perda de peso. Em 7, 15 ou 21 dias, a mudança na barriga ainda é pequena; ela aparece em meses.',
+  },
+  {
+    pergunta: 'Quanto tempo de caminhada o corpo começa a queimar gordura?',
+    resposta:
+      'Desde o começo. A ideia de que a gordura só entra depois de 20 ou 30 minutos é mito: a gordura é combustível o tempo todo, inclusive em repouso, e num estudo com marcadores a liberação de gordura dos estoques foi máxima justamente na intensidade mais baixa testada. O que decide se você perde gordura não é o minuto da caminhada, e sim o balanço de energia do dia e da semana.',
+  },
+  {
+    pergunta: 'Caminhada emagrece mais que corrida?',
+    resposta:
+      'Por minuto, não: correr gasta mais. Num estudo com mais de 47 mil pessoas acompanhadas por seis anos, a corrida se associou a mais perda de peso que a caminhada para o mesmo aumento de atividade. A caminhada compensa por ser fácil de repetir todo dia, com pouco impacto — e o melhor exercício para emagrecer é o que você mantém.',
+  },
+  {
+    pergunta: '30 minutos de caminhada são quantos km?',
+    resposta:
+      'Cerca de 2,5 km em ritmo moderado (5 km/h). No passo leve, de passeio, perto de 2 km; no passo rápido, perto de 3 km.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para caminhar para emagrecer?',
+    resposta:
+      'O horário que você consegue repetir. Para emagrecer, o que pesa é o total da semana, e a constância decide esse total. Manhã, almoço ou noite: escolha o horário que a sua rotina protege.',
+  },
+];
+
+/* 57 caracteres. */
+const title = 'Caminhada emagrece? Quanto tempo e quantos quilos por mês';
+/* 142 caracteres. */
+const description =
+  'Caminhada emagrece, mas quanto? Minutos por dia, quilos por mês com 30 min, 1 hora ou 5 km, tempo para 1 kg, barriga e o que dizem os estudos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Caminhada emagrece? Quanto tempo leva e quantos quilos dá</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: emagrece. Caminhar aumenta o gasto de energia do
+      dia, e os estudos com quem passou a caminhar mostram queda de peso e de
+      gordura.
+    </p>
+
+    <p class="lead">
+      O que quase ninguém conta é o tamanho: sozinha, a caminhada emagrece
+      menos do que a conta promete, e bem menos do que os "5 kg em uma
+      semana" sugerem. Abaixo, os números honestos — minutos, quilos e
+      prazos.
+    </p>
+
+    <div class="prose">
+      <h2>Caminhada emagrece mesmo?</h2>
+      <p>
+        Sim. Uma meta-análise de 24 ensaios clínicos com adultos sedentários
+        encontrou, em quem passou a fazer caminhada regular em passo rápido,
+        redução de <strong>peso, IMC e percentual de gordura</strong>, além
+        de melhora do condicionamento e da pressão arterial.
+      </p>
+
+      <p>
+        O tamanho do efeito é o ponto. O posicionamento do Colégio Americano
+        de Medicina do Esporte sobre atividade física e emagrecimento resume
+        assim: de 150 a 250 minutos semanais de atividade moderada previnem o
+        ganho de peso, mas <strong>dão só perda modesta</strong>; a perda
+        clinicamente relevante aparece acima de 250 minutos por semana. E a
+        mesma faixa de 150 a 250 minutos melhora o resultado quando vem
+        junto de uma restrição moderada na alimentação.
+      </p>
+
+      <h2>Quanto tempo de caminhada por dia para emagrecer</h2>
+      <p>
+        Duas réguas ajudam. A da saúde, da Organização Mundial da Saúde, é
+        de <strong>150 a 300 minutos por semana</strong> de atividade
+        moderada — de 20 a 40 minutos por dia. A do emagrecimento, do
+        Colégio Americano de Medicina do Esporte, pede <strong>mais de 250
+        minutos por semana</strong> para perda relevante: algo como 40
+        minutos ou mais, todos os dias, ou uma hora em cinco dias da semana.
+      </p>
+
+      <p>
+        Quem está parado não precisa começar por aí. Começar com 10 a 15
+        minutos e somar alguns minutos por semana é o caminho que se
+        sustenta — e o que se sustenta é o que emagrece.
+      </p>
+
+      <h2>Quantos quilos a caminhada emagrece por mês</h2>
+      <p>
+        A conta parte do gasto <strong>líquido</strong> da caminhada: o que
+        ela acrescenta ao dia, descontado o que você gastaria parado no mesmo
+        tempo. Para uma pessoa de 70 kg a 5 km/h, no plano, meia hora soma
+        cerca de {L30} kcal, e uma hora, cerca de {L60} kcal. Dividindo pela
+        energia de um quilo de gordura (cerca de 7.700 kcal), o resultado,
+        em 30 dias de caminhada, é este:
+      </p>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>Perda teórica de gordura em um mês de caminhada diária a 5 km/h, por peso — limite de cima, sem compensação</caption>
+          <thead>
+            <tr>
+              <th scope="col">Caminhada</th>
+              {PESOS.map((p) => <th scope="col">{p} kg</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {TABELA.map((l) => (
+              <tr>
+                <th scope="row">{l.nome}</th>
+                {l.kgs.map((v) => <td>≈ {v} kg</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Leia a tabela como teto, não como promessa. A regra dos 7.700 kcal
+        por quilo superestima a perda ao longo do tempo, porque o corpo gasta
+        menos conforme emagrece. E uma revisão de estudos que mediram tudo
+        com cuidado concluiu que quem faz exercício perde menos do que a
+        conta prevê por dois motivos principais: a dose de exercício costuma
+        ser baixa e <strong>a pessoa passa a comer mais</strong>, muitas
+        vezes sem perceber.
+      </p>
+
+      <p>
+        Por isso os dois números que mais aparecem na busca — "caminhar 30
+        minutos por dia emagrece quantos quilos" e "1 hora por dia" — têm a
+        mesma resposta de fundo: menos de 1 kg por mês só com caminhada, para
+        a maioria das pessoas, e bem mais quando ela se soma a um ajuste no
+        prato.
+      </p>
+
+      <FerramentaInline
+        id="caminhada"
+        texto="A tabela usa quatro pesos e um ritmo. A calculadora faz a conta com o seu peso, a sua velocidade e a inclinação que você usa — e mostra quanto da caminhada é acréscimo real ao seu dia. É estimativa, mas é a sua."
+        acao="Calcular o gasto da minha caminhada"
+      />
+
+      <h2>Quanto tempo de caminhada para perder 1 kg (e 10 kg)</h2>
+      <p>
+        Para 70 kg a 5 km/h, a energia de um quilo de gordura equivale a
+        cerca de <strong>{H1KG} horas</strong> de caminhada no total — ou
+        {H1KG_RAP} horas em passo rápido. Em uma hora por dia, mais de um
+        mês. Dez quilos, só com caminhada, passariam de {H10KG} horas: quase
+        um ano de uma hora diária.
+      </p>
+
+      <p>
+        Esse é o argumento mais forte para não depender só dela. Um déficit
+        moderado na alimentação, somado à caminhada, encurta esse prazo de
+        forma que nenhuma quantidade razoável de caminhada consegue sozinha —
+        o artigo sobre{' '}
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> mostra como montar essa conta.
+      </p>
+
+      <h2>1 kg por dia, 5 kg em uma semana: dá?</h2>
+      <p>
+        De gordura, não. Cinco quilos de gordura guardam cerca de 38 mil
+        kcal; para uma pessoa de 70 kg, seriam mais de {H5KG} horas de
+        caminhada em sete dias. Quando a balança cai muito em poucos dias, o
+        que saiu é sobretudo água e conteúdo do intestino — e volta com a
+        mesma rapidez.
+      </p>
+
+      <h2>Caminhada emagrece a barriga?</h2>
+      <p>
+        Ajuda, mas não do jeito que a busca imagina. Nenhum exercício escolhe
+        de onde o corpo tira gordura: num ensaio clínico, seis semanas de
+        abdominais, cinco vezes por semana, não reduziram a gordura nem a
+        circunferência da barriga. Com a caminhada é igual — ela aumenta o
+        gasto do dia, e a ordem em que a gordura sai é decidida por genética
+        e hormônio.
+      </p>
+
+      <p>
+        Há, porém, uma notícia boa e pouco conhecida. Uma meta-análise de 117
+        estudos mostrou que o exercício reduz a <strong>gordura
+        visceral</strong> — a que fica dentro do abdome, em volta dos órgãos,
+        e mais pesa na saúde — <strong>mesmo sem perda de peso</strong>:
+        cerca de 6%, contra quase nada da dieta sozinha nessa situação. A
+        balança pode parar e a barriga de dentro continuar diminuindo. O
+        artigo sobre{' '}
+        <a href="/emagrecimento/gordura-visceral/">gordura visceral</a>{' '}
+        explica a diferença entre as duas camadas.
+      </p>
+
+      <p>
+        Quanto aos prazos que aparecem na busca — 7, 15, 21 ou 30 dias para
+        perder barriga caminhando —, a resposta honesta é que a mudança
+        visível aparece em meses, não em dias. O guia de{' '}
+        <a href="/emagrecimento/como-perder-barriga/">como perder
+        barriga</a> reúne o que funciona e o que só é vendido.
+      </p>
+
+      <h2>Quando a caminhada começa a fazer efeito</h2>
+      <p>
+        <strong>Quando o corpo começa a queimar gordura?</strong> Desde o
+        começo. A ideia de que a gordura só entra depois de 20 ou 30 minutos
+        é mito: a gordura é combustível o tempo todo, inclusive em repouso, e
+        num estudo com marcadores a liberação de gordura dos estoques foi
+        máxima justamente na intensidade mais baixa testada. O que decide
+        se você termina o mês com menos gordura não é o minuto da caminhada,
+        e sim o balanço de energia do dia e da semana. Dez minutos três vezes
+        ao dia contam.
+      </p>
+
+      <p>
+        <strong>Em quantos dias aparece resultado?</strong> O fôlego e a
+        disposição costumam melhorar nas primeiras semanas. Na balança e na
+        fita métrica, o resultado é mais lento e depende do prato; a tabela
+        acima dá a ordem de grandeza.
+      </p>
+
+      <h2>Caminhada ou corrida: qual emagrece mais?</h2>
+      <p>
+        Por minuto, correr gasta mais. Num estudo que acompanhou mais de 47
+        mil corredores e caminhantes por cerca de seis anos, a corrida se
+        associou a mais perda de peso que a caminhada para o mesmo aumento
+        de atividade. A caminhada tem outras vantagens: é fácil de repetir
+        todo dia, tem pouco impacto e serve para quem está começando ou acima
+        do peso. Para emagrecer, o melhor exercício é o que você consegue
+        manter.
+      </p>
+
+      <h2>Como fazer a caminhada render mais</h2>
+      <ul>
+        <li>
+          <strong>Ritmo.</strong> O passo que conta é o de quem vai a algum
+          lugar: dá para falar, mas não para cantar. A 5 km/h, isso dá cerca
+          de 2,5 km em 30 minutos; no passo rápido, perto de 3 km.
+        </li>
+        <li>
+          <strong>Subida.</strong> Ladeira ou esteira inclinada aumenta muito
+          o gasto na mesma velocidade — é a lógica do{' '}
+          <a href="/emagrecimento/metodo-12-3-30/">método 12-3-30</a>.
+        </li>
+        <li>
+          <strong>Constância antes de volume.</strong> Uma caminhada diária
+          de 30 minutos vence duas de duas horas que não se repetem. O
+          melhor horário é o que a sua rotina protege.
+        </li>
+        <li>
+          <strong>Musculação junto.</strong> A caminhada soma gasto; a
+          musculação protege o músculo durante o déficit. O artigo{' '}
+          <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação
+          ou cardio para emagrecer</a> mostra por que os dois juntos rendem
+          mais.
+        </li>
+      </ul>
+
+      <p>
+        Se você sente dor no joelho, no quadril ou na lombar ao caminhar,
+        tem alguma condição cardiovascular ou está voltando depois de muito
+        tempo parado, comece com menos tempo e sem inclinação — e converse
+        antes com o seu médico ou fisioterapeuta.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Caminhar não precisa de professor. O que trava o resultado é o
+        resto: quanto aumentar, quando incluir subida, como encaixar a
+        musculação e, principalmente, como não devolver no prato o que a
+        caminhada gastou. Um profissional de Educação Física monta essa
+        semana com você e ajusta pelo que acontece de verdade, não pelo que
+        a tabela prevê.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 54(24):1451-1462, 2020</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 41(2):459-471, 2009</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/17275896/" target="_blank" rel="noopener noreferrer">Murphy MH, Nevill AM, Murtagh EM, Holder RL. The effect of walking on fitness, fatness and resting blood pressure: a meta-analysis of randomised, controlled trials. Preventive Medicine, 44(5):377-385, 2007</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3771367/" target="_blank" rel="noopener noreferrer">Thomas DM, Bouchard C, Church T, et al. Why do individuals not lose more weight from an exercise intervention at a defined dose? An energy balance analysis. Obesity Reviews, 13(10):835-847, 2012</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/21872751/" target="_blank" rel="noopener noreferrer">Hall KD, Sacks G, Chandramohan D, et al. Quantification of the effect of energy imbalance on bodyweight. The Lancet, 378(9793):826-837, 2011</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/27213481/" target="_blank" rel="noopener noreferrer">Verheggen RJ, Maessen MF, Green DJ, et al. A systematic review and meta-analysis on the effects of exercise training versus hypocaloric diet: distinct effects on body weight and visceral adipose tissue. Obesity Reviews, 17(8):664-690, 2016</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/21804427/" target="_blank" rel="noopener noreferrer">Vispute SS, Smith JD, LeCheminant JD, Hurley KS. The effect of abdominal exercise on abdominal fat. Journal of Strength and Conditioning Research, 25(9):2559-2564, 2011</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/8214047/" target="_blank" rel="noopener noreferrer">Romijn JA, Coyle EF, Sidossis LS, et al. Regulation of endogenous fat and carbohydrate metabolism in relation to exercise intensity and duration. American Journal of Physiology, 265(3):E380-E391, 1993</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4067491/" target="_blank" rel="noopener noreferrer">Williams PT. Greater weight loss from running than walking during a 6.2-yr prospective follow-up. Medicine &amp; Science in Sports &amp; Exercise, 45(4):706-713, 2013</a>
+        </li>
+        <li>
+          <a href="https://pacompendium.com/walking/" target="_blank" rel="noopener noreferrer">Herrmann SD, Willis EA, Ainsworth BE, et al. 2024 Adult Compendium of Physical Activities. Journal of Sport and Health Science, 2024 — valores de MET da caminhada usados na tabela</a>
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre caminhada e emagrecimento" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+    white-space: nowrap;
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
