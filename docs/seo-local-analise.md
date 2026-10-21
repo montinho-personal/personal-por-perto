@@ -117,6 +117,11 @@ BH se mover, sabemos qual mudança mexeu.
 - *academia asa norte*: barata, Smart Fit, Evolve, Bluefit, Ultra, World Gym, "706", "dentro de 800 m"; melhores academias.
 - **Aplicado:** título e H1 com "preço"; descrição com "1 mês" e "2 vezes por semana"; FAQs novas de 1 mês, 2 vezes por semana, valor da hora e academia barata/gratuita (academias comunitárias, PDAD); seção de preço com a conta de 2x/semana, preço popular, calculadora de preço e links para personal na Smart Fit e em academia; estúdio citado entre os formatos; Bluefit citada só pelo nome (páginas oficiais "Asa Norte" sem endereço legível e com botão de inauguração). Ultra (só Wellhub aberto; site oficial bloqueado), Evolve e World Gym ficaram de fora por falta de fonte. Nomes de CT e de profissionais dos resultados não entram.
 
+**Tambaú — prints recebidos em 21/10 (8h34)**, mesma pasta (`tambau-0*.webp`):
+- *personal trainer tambaú joão pessoa*: o autocompletar cai na cidade (instagram, "em joão pessoa pb"); PAA de preço — valor de 1 hora, quanto custa em João Pessoa, **3 vezes por semana**, melhor academia em João Pessoa.
+- *academia tambaú joão pessoa*: Loop Fit (as unidades no Instagram são PH, Cruz das Armas, Jd. Aeroporto e **Tambiá** — não Tambaú; fora), Smart Fit Tambaú, **Bluefit Tambaú** (orla, horário, telefone, fotos), Bluefit mensalidade; PAA de academia mais cara/melhor/1 mês/Gaviões (preço de academia fica fora, regra da estratégia).
+- **Aplicado:** título e H1 com preço e academias; descrição com valor da hora e 3x/semana; FAQs de 1 hora e 3 vezes por semana; FAQ "Quais academias ficam em Tambaú?"; Bluefit Tambaú Orla na Av. Almirante Tamandaré, confirmada no site da rede (meta da página da unidade) e no Wellhub, mesmo endereço; calculadora de preço na seção de valores. Move Trainer (só Wellhub) e nomes de profissionais fora.
+
 **Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
 — Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
 mesmo cluster nobre centro-norte, e dois deles usam a mesma forma
