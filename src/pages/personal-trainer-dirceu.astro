@@ -1,0 +1,278 @@
+---
+/**
+ * Dirceu (Teresina) — leva 5 de bairros, 21/10/2026, a pedido do Renato,
+ * antes dos prints de busca. Escolhido por contraste: Fátima e Jóquei são
+ * da zona leste, verticalizados e de renda alta; o Grande Dirceu é a zona
+ * sudeste dos conjuntos habitacionais. O nome é o que se busca (o Governo
+ * do Piauí e a Selfit usam "Dirceu"); no IBGE não há bairro com esse nome,
+ * por isso a página não cita população.
+ *
+ * Fontes conferidas em 21/10/2026: Governo do Piauí (pi.gov.br — Centro
+ * Esportivo Almeidão, Rua Gibraltar, 48, bairro Dirceu: quadras de areia,
+ * campo, pista de atletismo e ATI, cerca de 300 frequentadores por dia,
+ * revitalizado em 2024; centro esportivo em obra na Av. Joaquim Nelson;
+ * Estação Itararé do metrô, tarifa zero; blitz do B-R-O-Bró no Dirceu);
+ * Selfit (Dirceu e Dirceu II, páginas oficiais); INMET, normais 1991–2020
+ * da estação Teresina.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/teresina-pi/',
+    titulo: 'Personal trainer em Teresina',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/treinar-no-calor-e-no-frio/',
+    titulo: 'Treinar no calor, no frio e na chuva',
+    descricao: 'Como ajustar horário, intensidade e hidratação ao calor do B-R-O-Bró.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer-fatima-teresina/',
+    titulo: 'Personal trainer no Fátima',
+    descricao: 'O outro lado da cidade, na zona leste.',
+    tipo: 'Bairro',
+  },
+];
+
+const path = '/personal-trainer-dirceu';
+const atualizadoEm = '2026-10-21';
+const crumbs = crumbsBairro('personal-trainer-dirceu');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Dirceu?',
+    resposta:
+      'A referência de Teresina vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$ 880 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 160 e R$ 410 por mês. O formato — no Almeidão, na academia ou em casa — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Teresina?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 65 a R$ 150 em Teresina. É a forma mais cara por sessão: no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Dirceu?',
+    resposta:
+      'No Centro Esportivo Almeidão, do Governo do Piauí, na Rua Gibraltar: tem pista de atletismo, campo de futebol, duas quadras de areia e academia ao ar livre, e recebe em média 300 pessoas por dia para corrida, caminhada e esportes. Na Avenida Joaquim Nelson, um centro esportivo comunitário com pista de caminhada está em obra.',
+  },
+  {
+    pergunta: 'Tem academia de rede no Dirceu?',
+    resposta:
+      'A Selfit tem duas unidades com o nome do bairro, segundo o site da rede: a Dirceu, na Rua Joaquim Nelson, no Parque Ideal, e a Dirceu II, na Avenida Deputado Paulo Ferraz, no Beira Rio — as duas abertas de segunda a sexta das 5h às 23h. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar em Teresina?',
+    resposta:
+      'Cedo ou à noite. Pelas normais do INMET, a máxima média de Teresina passa de 35 °C de agosto a dezembro e chega a 37,4 °C em outubro, no auge do B-R-O-Bró. Nesses meses, treino ao ar livre só no começo da manhã ou depois do pôr do sol, com hidratação reforçada; no resto do dia, academia com ar-condicionado ou casa.',
+  },
+];
+
+const title = 'Personal Trainer no Dirceu (Teresina): preço e onde treinar';
+const description =
+  'Personal trainer no Dirceu, zona sudeste de Teresina: quanto custa por hora e por mês, o Almeidão, as academias Selfit do bairro e como treinar no calor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Teresina</p>
+    <h1>Personal trainer no Dirceu: preço, Almeidão e treino no calor</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Grande Dirceu é a zona sudeste de Teresina: os conjuntos Dirceu I e
+      II e os bairros em volta, ligados pela Avenida Joaquim Nelson e pela
+      linha do metrô. É a outra Teresina em relação ao Fátima e ao Jóquei,
+      da zona leste.
+    </p>
+
+    <p class="lead">
+      Para quem treina, o bairro tem um trunfo público — o Centro Esportivo
+      Almeidão — e um adversário que é de toda a cidade: o calor. Este
+      guia mostra como um <strong>personal trainer</strong> trabalha com os
+      dois, e quanto isso custa.
+    </p>
+
+    <div class="prose">
+      <h2>O Almeidão: pista de atletismo no bairro</h2>
+      <p>
+        O Centro Esportivo Almeidão, do Governo do Piauí, fica na Rua
+        Gibraltar, no Dirceu. Tem pista de atletismo, campo de futebol,
+        duas quadras de areia e academia ao ar livre, e recebe em média 300
+        pessoas por dia, de segunda a sexta, para corrida, caminhada,
+        futevôlei e vôlei. Foi revitalizado em 2024.
+      </p>
+
+      <p>
+        Para o treino com personal, é o melhor espaço público da região: a
+        pista dá distância medida para os treinos de corrida, a academia ao
+        ar livre resolve parte da força, e a areia serve para o funcional.
+        Na Avenida Joaquim Nelson, um centro esportivo comunitário com pista
+        de caminhada e quadras está em obra — quando abrir, amplia as
+        opções.
+      </p>
+
+      <h2>O calor manda no relógio</h2>
+      <p>
+        Pelas normais do INMET (1991–2020), a máxima média de Teresina fica
+        acima de 35 °C de agosto a dezembro e chega a 37,4 °C em outubro. É
+        o B-R-O-Bró, e a Defesa Civil do Piauí já fez a blitz de orientação
+        sobre o calor no próprio Dirceu.
+      </p>
+
+      <p>
+        Na prática, o treino ao ar livre acontece no começo da manhã ou
+        depois do pôr do sol, com água por perto e intensidade ajustada ao
+        dia. No meio do dia, academia com ar-condicionado ou treino em casa.
+        O guia de{' '}
+        <a href="/guias/treinar-no-calor-e-no-frio/">treino no calor</a>{' '}
+        mostra os sinais de que é hora de parar.
+      </p>
+
+      <h2>Academias de rede no Grande Dirceu</h2>
+      <p>
+        A Selfit tem duas unidades com o nome do bairro, segundo o site da
+        rede: a <strong>Dirceu</strong>, na Rua Joaquim Nelson, no Parque
+        Ideal, e a <strong>Dirceu II</strong>, na Avenida Deputado Paulo
+        Ferraz, no Beira Rio — as duas abertas de segunda a sexta das 5h às
+        23h, o que ajuda a fugir do calor. Antes de combinar o treino com um
+        personal na academia, confirme a regra da unidade para profissional
+        externo.
+      </p>
+
+      <p>
+        A Estação Itararé do metrô, entre o Itararé e o Dirceu II, tem
+        tarifa zero, segundo o Governo do Piauí — uma forma de chegar à
+        academia ou ao trabalho sem depender de carro.
+      </p>
+
+      <h2>Quanto custa personal trainer no Dirceu</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/teresina-pi/">personal trainer em
+        Teresina</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a
+        R$ 880 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 160 e R$ 410 por mês.
+      </p>
+
+      <p>
+        A aula avulsa é a forma mais cara por sessão e serve melhor para uma
+        avaliação. Para fazer a conta com o seu formato e a sua frequência,
+        use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em dupla, usar o Almeidão nas sessões
+        ao ar livre e combinar sessões acompanhadas com outras feitas
+        sozinho são os jeitos mais simples de fazer o acompanhamento caber
+        no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Dirceu" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Dirceu, pergunte também como ele lida com o calor: em que
+        horário marca as sessões ao ar livre, como ajusta a intensidade nos
+        meses do B-R-O-Bró e qual é o plano B coberto.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Dirceu" />
+
+    <ContextualCta path={path} localidade="no Dirceu" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-dirceu"
+    guias={[
+      { url: '/guias/treinar-no-calor-e-no-frio/', texto: 'como ajustar o treino ao calor' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

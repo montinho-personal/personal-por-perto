@@ -111,6 +111,7 @@ BH se mover, sabemos qual mudança mexeu.
 | 2 | 11/09/2026 | Porto Alegre | Menino Deus, Cidade Baixa |
 | 3 | 11/09/2026 | Salvador | Barra, Brotas |
 | 4 | 21/10/2026 | Brasília, João Pessoa, Salvador | Asa Norte, Tambaú, Imbuí — pedido do Renato; as três cidades com mais impressões em 28 dias (João Pessoa 1.149, Salvador 901, Brasília 724) e poucos bairros. Publicados antes dos prints de busca; título, H1 e FAQs a revisar quando chegarem |
+| 5 | 21/10/2026 | Goiânia, Teresina, Uberlândia | Setor Oeste, Dirceu, Centro — pedido do Renato; próximas três cidades por impressões e poucos bairros (Teresina 582 / 2 bairros, Goiânia 475 / 3, Uberlândia 367 / 2). Escolha por contraste de zona e perfil. Publicados antes dos prints |
 
 **Asa Norte — prints recebidos em 21/10 (8h)**, em `docs/pesquisas/2026-10-21-bairros-leva-4/prints/`:
 - *personal trainer asa norte*: autocompletar com "brasilia asa norte", "studio personal trainer", um CT pelo nome, "personal asa norte"; PAA só de preço — 1 mês, valor médio, quanto custa em Brasília, 2 vezes por semana; resultados com Wellhub (academias com personal no plano), perfil de personal "Plano Piloto, Asa Sul e Asa Norte" e estúdio de funcional na CLN; outras: plano personal Smart Fit preço, academia com personal, preço popular, valor hora, quanto custa por mês.
