@@ -122,6 +122,11 @@ BH se mover, sabemos qual mudança mexeu.
 - *academia tambaú joão pessoa*: Loop Fit (as unidades no Instagram são PH, Cruz das Armas, Jd. Aeroporto e **Tambiá** — não Tambaú; fora), Smart Fit Tambaú, **Bluefit Tambaú** (orla, horário, telefone, fotos), Bluefit mensalidade; PAA de academia mais cara/melhor/1 mês/Gaviões (preço de academia fica fora, regra da estratégia).
 - **Aplicado:** título e H1 com preço e academias; descrição com valor da hora e 3x/semana; FAQs de 1 hora e 3 vezes por semana; FAQ "Quais academias ficam em Tambaú?"; Bluefit Tambaú Orla na Av. Almirante Tamandaré, confirmada no site da rede (meta da página da unidade) e no Wellhub, mesmo endereço; calculadora de preço na seção de valores. Move Trainer (só Wellhub) e nomes de profissionais fora.
 
+**Imbuí — prints recebidos em 21/10 (8h38)**, mesma pasta (`imbui-0*.webp`):
+- *personal trainer imbuí*: "salvador imbui", **"imbuí barueri", "imbuí sp", "imbuí sp barueri"**, instagram. Há quem procure um Imbuí em Barueri — a página passou a dizer que é o de Salvador (BA); se existir esse Imbuí na região presencial, é candidato a página própria (pergunta feita ao Renato em 21/10). PAA: 1h de personal, 3 vezes por semana, vale a pena, quanto cobra por aluno.
+- *academia imbuí salvador*: **prefeitura de salvador**, **gratuita**, valor, preço, mensalidade, cnpj, telefone; Smart Fit Imbuí / Jorge Amado / "imbui 2" / telefone / horário; Academia Monumental Imbuí (sem fonte, fora).
+- **Aplicado:** título e H1 com preço e academias; descrição com valor da hora e 3x/semana; FAQs de 1 hora, 3 vezes por semana e vale a pena; FAQ da academia da Prefeitura reescrita (Academia Salvador + academia de saúde do parque; "gratuita" NÃO entrou — a fonte não diz); lead diz "Imbuí de Salvador, na Bahia"; calculadora de preço e guia "vale a pena" na seção de valores. Mensalidade de academia fica fora (regra da estratégia).
+
 **Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
 — Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
 mesmo cluster nobre centro-norte, e dois deles usam a mesma forma
