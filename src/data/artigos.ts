@@ -102,6 +102,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-chacara-cachoeira/', titulo: 'Personal trainer na Chácara Cachoeira (Campo Grande)' },
   { categoria: 'Bairros', url: '/personal-trainer-fatima-teresina/', titulo: 'Personal trainer no Fátima (Teresina)' },
   { categoria: 'Bairros', url: '/personal-trainer-atalaia/', titulo: 'Personal trainer na Atalaia (Aracaju)' },
+  { categoria: 'Bairros', url: '/personal-trainer-asa-norte/', titulo: 'Personal trainer na Asa Norte (Brasília)' },
   { categoria: 'Bairros', url: '/personal-trainer-asa-sul/', titulo: 'Personal trainer na Asa Sul (Brasília)' },
   { categoria: 'Bairros', url: '/personal-trainer-jardim-das-flores/', titulo: 'Personal trainer no Jardim das Flores (Osasco)' },
   { categoria: 'Bairros', url: '/personal-trainer-vila-galvao/', titulo: 'Personal trainer na Vila Galvão (Guarulhos)' },

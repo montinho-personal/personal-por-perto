@@ -1,0 +1,292 @@
+---
+/**
+ * Asa Norte (Brasília) — publicado em 21/10/2026, a pedido do Renato, antes
+ * dos prints de busca (título, H1 e FAQs serão revistos quando chegarem).
+ * "asa norte" apareceu no autocompletar de "personal trainer brasilia" nos
+ * prints de 30/09, e a estratégia de SEO local já a apontava como próxima.
+ *
+ * Fontes conferidas em 21/10/2026: Codeplan, PDAD 2021 — Asa Norte (118.450
+ * moradores, idade média 39,7 anos; 93,7% dos domicílios com academia
+ * comunitária perto; 96,2% com ciclovia); Arquivo Público do DF (Asa Norte
+ * construída a partir de 1966, pela SQN 312); IBRAM (Parque Olhos d'Água,
+ * entrequadras 413/414 Norte, horários); Decreto 15.900/1994 e IN 15/2022
+ * (nascentes; sem bicicleta e sem animais no parque); Lei 4.757/2012 e
+ * Decreto 46.226/2024 (Eixão do Lazer, 6h às 18h); Decreto 45.002/2023
+ * (Parque Burle Marx); Smart Fit (406, 305, 712 e 515 Norte, abertas).
+ * Ficaram de fora, por só aparecerem em resumo de busca: extensão da pista
+ * do Olhos d'Água, Centro Olímpico da UnB e o Deck Norte.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/brasilia-df/',
+    titulo: 'Personal trainer em Brasília',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-asa-sul/',
+    titulo: 'Personal trainer na Asa Sul',
+    descricao: 'A outra asa do Plano Piloto, com o Parque da Cidade na porta.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-para-quem-trabalha-sentado/',
+    titulo: 'Personal trainer para quem trabalha sentado',
+    descricao: 'Leitura obrigatória na capital das reuniões e dos gabinetes.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-asa-norte';
+const atualizadoEm = '2026-10-21';
+const crumbs = crumbsBairro('personal-trainer-asa-norte');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Asa Norte?',
+    resposta:
+      'A referência de Brasília vai de R$ 90 a R$ 220 pela aula avulsa e de R$ 450 a R$ 1.300 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 200 e R$ 520 por mês. Dentro dessa faixa, o formato — na quadra, no prédio, em casa ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Asa Norte?',
+    resposta:
+      'Nas próprias superquadras, que têm área verde e, na maioria das vezes, academia comunitária por perto — 93,7% dos domicílios da Asa Norte disseram ter uma, segundo a pesquisa distrital de 2021. Para caminhar e correr, o Parque Olhos d\'Água, entre as quadras 413 e 414 Norte, e, aos domingos e feriados, o Eixão do Lazer.',
+  },
+  {
+    pergunta: 'Qual o horário do Parque Olhos d\'Água?',
+    resposta:
+      'Segundo o Instituto Brasília Ambiental, o parque abre todos os dias: o portão principal das 5h30 às 20h e os portões laterais das 6h às 18h. Bicicleta e animais domésticos não entram, pelo plano de manejo — é um parque de caminhada e de nascentes.',
+  },
+  {
+    pergunta: 'Quando o Eixão fecha para o lazer?',
+    resposta:
+      'Aos domingos e feriados, das 6h às 18h, o Eixo Rodoviário fica liberado para caminhada, corrida, bicicleta e outros veículos não motorizados, pela lei do Eixão do Lazer. É o dia do treino longo de quem mora nas asas.',
+  },
+  {
+    pergunta: 'Tem Smart Fit na Asa Norte?',
+    resposta:
+      'Tem várias unidades abertas, segundo o site da rede — entre elas as da 406, da 305, da 712 e da 515 Norte. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+];
+
+const title = 'Personal Trainer na Asa Norte: quadra, parque e preços';
+const description =
+  'Personal trainer na Asa Norte, em Brasília: treinar na superquadra, no Parque Olhos d\'Água e no Eixão, as academias do bairro e quanto custa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Brasília</p>
+    <h1>Personal trainer na Asa Norte: a asa que tem nascente no meio das quadras</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Asa Norte é a metade mais nova do Plano Piloto: começou a ser
+      construída em 1966, pela SQN 312, a cinco quilômetros do centro.
+      Hoje tem cerca de 118 mil moradores, segundo a pesquisa distrital
+      de 2021, com idade média de 39,7 anos.
+    </p>
+
+    <p class="lead">
+      Para quem treina, ela herdou o desenho das superquadras — verde,
+      quadra esportiva e academia comunitária a poucos passos — e somou um
+      parque de nascentes entre as quadras. Este guia percorre o bairro do
+      ponto de vista de quem procura um <strong>personal trainer</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>A superquadra como ponto de partida</h2>
+      <p>
+        Na pesquisa distrital de 2021, 93,7% dos domicílios da Asa Norte
+        disseram ter academia comunitária perto de casa, e 96,2% ciclovia
+        ou ciclofaixa. É a mesma lógica da Asa Sul: o espaço livre veio
+        antes dos prédios, e o treino ao ar livre não exige deslocamento.
+      </p>
+
+      <p>
+        O formato mais natural aqui é o personal na própria quadra:
+        funcional no gramado, força com o que a academia comunitária
+        oferece e a sombra dos blocos sobre pilotis como plano B para o
+        sol forte. Os pilotis também resolvem o dia de chuva.
+      </p>
+
+      <h2>Olhos d'Água: o parque das nascentes</h2>
+      <p>
+        Entre as quadras 413 e 414 Norte fica o Parque Ecológico Olhos
+        d'Água, criado em 1994 para preservar as nascentes da área — ali
+        está a Lagoa do Sapo, abastecida por nascentes e córregos. O
+        portão principal abre todos os dias das 5h30 às 20h, e os laterais
+        das 6h às 18h, segundo o Instituto Brasília Ambiental.
+      </p>
+
+      <p>
+        É um parque de caminhada, não de pedal: o plano de manejo proíbe
+        bicicleta e animais domésticos lá dentro. Para o treino com
+        personal, funciona como a caminhada de aquecimento, o volume
+        aeróbico leve e a sessão de mobilidade num lugar mais silencioso
+        que o eixo.
+      </p>
+
+      <h2>O Eixão do Lazer e o verde que está por vir</h2>
+      <p>
+        Aos domingos e feriados, das 6h às 18h, o Eixo Rodoviário fica
+        liberado para caminhada, corrida e bicicleta, pela lei do Eixão do
+        Lazer. Para quem mora na Asa Norte, é o dia do treino longo: o
+        plano do eixo dá ritmo constante, e as quadras de um lado e de
+        outro ficam a poucos passos.
+      </p>
+
+      <p>
+        Mais adiante, o Parque Ecológico Burle Marx, criado por decreto em
+        2023 com cerca de 259 hectares para formar um cinturão verde na
+        Asa Norte, prevê pistas de caminhada e ciclovia. Até a estrutura
+        sair do papel, o treino segue nas quadras, no Olhos d'Água e no
+        Eixão.
+      </p>
+
+      <h2>Academias de rede no bairro</h2>
+      <p>
+        A Smart Fit tem várias unidades abertas na Asa Norte, segundo o
+        site da rede — entre elas as da <strong>406 Norte</strong>, da
+        <strong>305 Norte</strong>, da <strong>712 Norte</strong> e da
+        <strong>515 Norte</strong>. O arranjo comum é força na academia
+        durante a semana e volume ao ar livre no fim de semana. Antes de
+        combinar o treino com um personal na academia, confirme a regra da
+        unidade para profissional externo.
+      </p>
+
+      <h2>O clima do cerrado</h2>
+      <p>
+        Brasília tem uma estação chuvosa e uma seca bem marcadas, e na seca
+        a umidade despenca. O treino ao ar livre rende mais cedo ou no fim
+        da tarde, com hidratação reforçada — no ar seco, a desidratação
+        chega sem aviso. Nos dias de sol forte, a sombra das quadras e dos
+        pilotis vale estrutura.
+      </p>
+
+      <h2>Quanto custa personal trainer na Asa Norte</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/brasilia-df/">personal trainer em
+        Brasília</a>, vai de R$ 90 a R$ 220 pela aula avulsa e de R$ 450 a
+        R$ 1.300 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 200 e R$ 520 por mês.
+      </p>
+
+      <p>
+        Treinar em dupla na quadra e combinar sessões acompanhadas com
+        outras feitas sozinho — no Olhos d'Água ou no Eixão — são os jeitos
+        mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="na Asa Norte" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Na Asa Norte, pergunte também como ele usa o bairro: monta treino
+        na quadra, com o que a academia comunitária oferece, ou só trabalha
+        dentro de academia? Quem conhece o Plano Piloto treina com o
+        desenho da cidade a favor.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Asa Norte" />
+
+    <ContextualCta path={path} localidade="na Asa Norte" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-asa-norte"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'como montar treino de verdade em quadra, parque e academia comunitária' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

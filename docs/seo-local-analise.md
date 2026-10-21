@@ -110,6 +110,7 @@ BH se mover, sabemos qual mudança mexeu.
 | 1 | 09/09/2026 | Belo Horizonte | Barreiro, Belvedere, Cidade Nova, Pampulha |
 | 2 | 11/09/2026 | Porto Alegre | Menino Deus, Cidade Baixa |
 | 3 | 11/09/2026 | Salvador | Barra, Brotas |
+| 4 | 21/10/2026 | Brasília, João Pessoa, Salvador | Asa Norte, Tambaú, Imbuí — pedido do Renato; as três cidades com mais impressões em 28 dias (João Pessoa 1.149, Salvador 901, Brasília 724) e poucos bairros. Publicados antes dos prints de busca; título, H1 e FAQs a revisar quando chegarem |
 
 **Porto Alegre repetia o vício de BH.** Os quatro bairros que já existiam
 — Moinhos de Vento, Bela Vista, Petrópolis e Três Figueiras — são todos do
