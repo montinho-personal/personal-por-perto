@@ -1,0 +1,283 @@
+---
+/**
+ * Setor Oeste (Goiânia) — leva 5 de bairros, 21/10/2026, a pedido do Renato,
+ * antes dos prints de busca (título, H1 e FAQs serão revistos quando
+ * chegarem). Escolhido por contraste: Jardim Goiás, Bueno e Marista são da
+ * Região Sul; o Setor Oeste é da Região Central, com os dois parques
+ * históricos da cidade.
+ *
+ * Fontes conferidas em 21/10/2026: Prefeitura de Goiânia (parques e bosques;
+ * AMMA — Lago das Rosas, 315.000 m², e Bosque dos Buritis, 124.800 m², com
+ * pista e estação de ginástica; Goiânia Tur — Praça Tamandaré, Feira da
+ * Lua, Praça do Sol com academia ao ar livre; revitalização do Lago das
+ * Rosas, 18/05/2026; horário do Bosque, 26/09/2025; iluminação, 27/05/2026);
+ * Smart Fit (Setor Oeste, aberta). Sem população do bairro (o IBGE não
+ * publica bairros de Goiânia no Censo 2022) e sem números de clima (o
+ * portal do INMET não abriu aqui).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/goiania-go/',
+    titulo: 'Personal trainer em Goiânia',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-setor-bueno/',
+    titulo: 'Personal trainer no Setor Bueno',
+    descricao: 'O vizinho da Região Sul, com o Parque Vaca Brava.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre',
+    descricao: 'Como transformar parque, praça e estação de ginástica em treino que progride.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-setor-oeste';
+const atualizadoEm = '2026-10-21';
+const crumbs = crumbsBairro('personal-trainer-setor-oeste');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Setor Oeste?',
+    resposta:
+      'A referência de Goiânia vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 170 e R$ 430 por mês. O formato — parque, academia, prédio ou casa — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Goiânia?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 160 em Goiânia. É a forma mais cara por sessão: no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Setor Oeste?',
+    resposta:
+      'Nos dois parques históricos da cidade, que ficam na divisa com o Setor Central: o Lago das Rosas, o parque mais antigo de Goiânia, com pista de caminhada, estação de ginástica e quadras, e o Bosque dos Buritis, com pista interna e externa e estação de ginástica. A Praça do Sol também tem academia ao ar livre.',
+  },
+  {
+    pergunta: 'Qual o horário do Bosque dos Buritis?',
+    resposta:
+      'Segundo a Prefeitura, desde setembro de 2025 o Bosque dos Buritis abre a partir das 6h30 e fecha às 22h. Em 2026 ganhou iluminação nova, com 240 lâmpadas trocadas por luminárias de LED, o que ajuda quem treina no fim do dia.',
+  },
+  {
+    pergunta: 'Tem Smart Fit no Setor Oeste?',
+    resposta:
+      'Tem uma unidade aberta, segundo o site da rede: a Setor Oeste, na Avenida República do Líbano, dentro do República Street Mall. No Setor Sul, vizinho, a rede tem outra. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+];
+
+const title = 'Personal Trainer no Setor Oeste (Goiânia): preço e parques';
+const description =
+  'Personal trainer no Setor Oeste, Goiânia: quanto custa por hora e por mês, o Lago das Rosas e o Bosque dos Buritis, a Praça do Sol e a Smart Fit do bairro.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Goiânia</p>
+    <h1>Personal trainer no Setor Oeste: preço e treino entre os dois parques históricos</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Setor Oeste fica na Região Central de Goiânia e divide com o Setor
+      Central os dois parques mais antigos da cidade: o Lago das Rosas,
+      construído nos anos 1940, e o Bosque dos Buritis, que já estava no
+      plano original de Goiânia, de 1938.
+    </p>
+
+    <p class="lead">
+      Este guia percorre o bairro do ponto de vista de quem procura um
+      <strong>personal trainer</strong>: quanto custa o acompanhamento, onde
+      dá para treinar ao ar livre e o que as academias da região oferecem.
+    </p>
+
+    <div class="prose">
+      <h2>Lago das Rosas: o parque mais antigo, em obra</h2>
+      <p>
+        Na esquina da Alameda das Rosas com a Avenida Anhanguera, o Lago das
+        Rosas tem 315 mil m², com pista de caminhada, estação de ginástica e
+        quadras poliesportivas, segundo a Agência Municipal do Meio
+        Ambiente. É também onde fica o Zoológico.
+      </p>
+
+      <p>
+        Em maio de 2026, a Prefeitura lançou uma obra de revitalização do
+        parque, que prevê a reforma da pista de caminhada, duas novas
+        estações de ginástica e três academias ao ar livre, com a primeira
+        etapa prevista até o fim de 2026 e o parque aberto durante a obra.
+        Enquanto ela anda, vale escolher o trecho da pista em melhor estado
+        para os treinos de corrida.
+      </p>
+
+      <h2>Bosque dos Buritis: pista dentro e fora</h2>
+      <p>
+        O Bosque dos Buritis tem cerca de 125 mil m², pista de caminhada
+        interna e externa e estação de ginástica, segundo a Prefeitura.
+        Desde setembro de 2025, abre a partir das 6h30 e fecha às 22h, e em
+        2026 ganhou iluminação nova, com 240 lâmpadas trocadas por LED — o
+        que faz do fim do dia um horário bom para treinar.
+      </p>
+
+      <p>
+        Para o treino com personal, a combinação dos dois parques resolve a
+        semana: caminhada e corrida na pista, força com o que as estações de
+        ginástica oferecem e mobilidade na sombra do bosque.
+      </p>
+
+      <h2>As praças do bairro</h2>
+      <p>
+        A Praça Tamandaré, na Avenida Assis Chateaubriand, é o ponto de
+        encontro tradicional do Setor Oeste e recebe a Feira da Lua aos
+        sábados. A Praça do Sol, onde acontece a Feira do Sol, tem academia
+        ao ar livre e parque infantil. Em dia de feira, o treino ao ar livre
+        vai para outro horário ou para os parques.
+      </p>
+
+      <h2>Academias de rede no bairro</h2>
+      <p>
+        A Smart Fit tem uma unidade aberta no bairro, segundo o site da
+        rede: a <strong>Setor Oeste</strong>, na Avenida República do Líbano,
+        dentro do República Street Mall. No Setor Sul, vizinho, a rede tem
+        outra. Antes de combinar o treino com um personal na academia,
+        confirme a regra da unidade para profissional externo.
+      </p>
+
+      <h2>O tempo seco do meio do ano</h2>
+      <p>
+        Goiânia tem uma estação seca bem marcada no meio do ano, quando a
+        chuva quase some e a umidade do ar cai. Nesses meses, o treino ao ar
+        livre rende mais cedo ou no fim da tarde, com hidratação reforçada.
+        Na estação das chuvas, o plano B coberto — academia, prédio ou casa —
+        precisa estar combinado.
+      </p>
+
+      <h2>Quanto custa personal trainer no Setor Oeste</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/goiania-go/">personal trainer em
+        Goiânia</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 170 e R$ 430 por mês.
+      </p>
+
+      <p>
+        A aula avulsa é a forma mais cara por sessão e serve melhor para uma
+        avaliação. Para fazer a conta com o seu formato e a sua frequência,
+        use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em dupla e combinar sessões
+        acompanhadas com outras feitas sozinho, nos parques, são os jeitos
+        mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Setor Oeste" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Setor Oeste, pergunte também como ele usa os parques: em que
+        horário, com quais equipamentos e com qual plano para os meses
+        secos. Quem conhece o bairro programa o treino em volta disso.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Setor Oeste" />
+
+    <ContextualCta path={path} localidade="no Setor Oeste" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-setor-oeste"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'como montar treino de verdade em parque e estação de ginástica' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

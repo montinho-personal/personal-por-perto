@@ -223,6 +223,7 @@ export const bairros: Bairro[] = [
   },
   { slug: 'personal-trainer-setor-bueno', nome: 'Setor Bueno', locucao: 'no Setor Bueno', cidade: 'goiania-go' },
   { slug: 'personal-trainer-setor-marista', nome: 'Setor Marista', locucao: 'no Setor Marista', cidade: 'goiania-go' },
+  { slug: 'personal-trainer-setor-oeste', nome: 'Setor Oeste', locucao: 'no Setor Oeste', cidade: 'goiania-go' },
   { slug: 'personal-trainer-sion', nome: 'Sion', locucao: 'no Sion', cidade: 'belo-horizonte-mg', zona: 'Centro-Sul',
     descricao: 'Bairro-jardim debruçado na Serra do Curral, com as rampas das Mangabeiras como estímulo.',
   },

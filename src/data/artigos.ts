@@ -86,6 +86,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-coco-fortaleza/', titulo: 'Personal trainer no Cocó (Fortaleza)' },
   { categoria: 'Bairros', url: '/personal-trainer-petropolis-porto-alegre/', titulo: 'Personal trainer no Petrópolis (Porto Alegre)' },
   { categoria: 'Bairros', url: '/personal-trainer-setor-bueno/', titulo: 'Personal trainer no Setor Bueno (Goiânia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-setor-oeste/', titulo: 'Personal trainer no Setor Oeste (Goiânia)' },
   { categoria: 'Bairros', url: '/personal-trainer-pinheiros/', titulo: 'Personal trainer em Pinheiros (São Paulo)' },
   { categoria: 'Bairros', url: '/personal-trainer-lagoa-nova/', titulo: 'Personal trainer na Lagoa Nova (Natal)' },
   { categoria: 'Bairros', url: '/personal-trainer-vieiralves/', titulo: 'Personal trainer no Vieiralves (Manaus)' },
