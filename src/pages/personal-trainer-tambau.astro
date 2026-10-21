@@ -1,0 +1,285 @@
+---
+/**
+ * Tambaú (João Pessoa) — publicado em 21/10/2026, a pedido do Renato, antes
+ * dos prints de busca (título, H1 e FAQs serão revistos quando chegarem).
+ * João Pessoa é a cidade com mais impressões do portal; os quatro bairros
+ * publicados (Manaíra, Cabo Branco, Altiplano, Miramar) não incluíam o
+ * trecho mais turístico da orla.
+ *
+ * Fontes conferidas em 21/10/2026: PBTur (Feirinha, Mercado de Artesanato,
+ * passeios a Picãozinho; Busto de Tamandaré na divisa com Cabo Branco), A
+ * União (Hotel Tambaú fechado desde 2020; regras da orla; academia ao ar
+ * livre de Cabo Branco, 2023), Sudema (Picãozinho, APA de Naufrágio
+ * Queimado), INMET (normais 1991–2020), Smart Fit (unidade "Tambaú", com
+ * endereço em Cabo Branco). Os sites da Prefeitura recusaram o acesso; a
+ * população do bairro (atlas municipal) não abriu e ficou de fora.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/joao-pessoa-pb/',
+    titulo: 'Personal trainer em João Pessoa',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-cabo-branco/',
+    titulo: 'Personal trainer em Cabo Branco',
+    descricao: 'O vizinho do outro lado do Busto de Tamandaré, rumo à falésia.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/personal-trainer-manaira/',
+    titulo: 'Personal trainer em Manaíra',
+    descricao: 'O bairro residencial vizinho, com as academias de rede da orla norte.',
+    tipo: 'Bairro',
+  },
+];
+
+const path = '/personal-trainer-tambau';
+const atualizadoEm = '2026-10-21';
+const crumbs = crumbsBairro('personal-trainer-tambau');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Tambaú?',
+    resposta:
+      'A referência de João Pessoa vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$ 880 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 160 e R$ 410 por mês. O formato — orla, academia, prédio ou casa — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Dá para treinar na orla de Tambaú?',
+    resposta:
+      'Dá, e é o que a maioria faz: calçadão para caminhar e correr, ciclovia e areia para o funcional. A regra municipal proíbe ambulantes na ciclovia, nos largos e nas praças da orla, e o aluguel de mesas e guarda-sóis só começa às 5h — o começo da manhã é o horário mais livre. A orla fica cheia de turistas na alta temporada e em dias de passeio a Picãozinho, o que pede escolher bem o trecho.',
+  },
+  {
+    pergunta: 'Tem academia ao ar livre perto de Tambaú?',
+    resposta:
+      'A primeira academia ao ar livre da orla de João Pessoa fica em Cabo Branco, logo depois do Busto de Tamandaré, que marca a divisa com Tambaú. Foi inaugurada em 2023, tem 200 m², é gratuita, com cadastro por QR code, e funcionava com professores da Prefeitura de manhã cedo e no fim da tarde. Confira os horários atuais antes de ir, porque podem ter mudado.',
+  },
+  {
+    pergunta: 'Tem Smart Fit em Tambaú?',
+    resposta:
+      'A Smart Fit tem uma unidade chamada "Tambaú", mas o endereço oficial dela é na Avenida Monsenhor Odilon Coutinho, em Cabo Branco. Em Manaíra, o bairro do outro lado, a rede tem outras unidades. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar ao ar livre em João Pessoa?',
+    resposta:
+      'Cedo. Pelas normais climatológicas do INMET, a máxima média em João Pessoa passa dos 28 °C mesmo em julho e chega perto dos 31 °C em abril. O treino ao ar livre rende mais até o meio da manhã ou no fim da tarde, com hidratação reforçada; no meio do dia, academia ou ambiente coberto.',
+  },
+];
+
+const title = 'Personal Trainer em Tambaú (João Pessoa): orla e preços';
+const description =
+  'Personal trainer em Tambaú, João Pessoa: treinar na orla entre a Feirinha e o Busto de Tamandaré, academia ao ar livre, academias próximas e preços.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de João Pessoa</p>
+    <h1>Personal trainer em Tambaú: treinar no trecho mais movimentado da orla</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Tambaú é o cartão-postal da orla de João Pessoa: a Feirinha de
+      Artesanato, o Mercado de Artesanato, o prédio do antigo Hotel Tambaú
+      e a saída dos barcos para as piscinas naturais de Picãozinho ficam
+      todos ali.
+    </p>
+
+    <p class="lead">
+      Para quem treina, isso tem dois lados: calçadão, ciclovia e areia na
+      porta, e um movimento de turistas que muda conforme o dia e a
+      estação. Este guia mostra como usar o bairro a favor do treino com um
+      <strong>personal trainer</strong>, e quanto isso custa.
+    </p>
+
+    <div class="prose">
+      <h2>A orla como academia — e as regras dela</h2>
+      <p>
+        O calçadão, a ciclovia e a faixa de areia de Tambaú formam o espaço
+        de treino mais óbvio do bairro: caminhada e corrida no calçadão,
+        tiros na ciclovia nos horários vazios, funcional e mobilidade na
+        areia.
+      </p>
+
+      <p>
+        A Prefeitura regula o uso da orla: ambulantes não podem circular na
+        ciclovia, nos largos e nas praças, e o aluguel de mesas e
+        guarda-sóis na areia só pode acontecer das 5h às 17h. Na prática, o
+        começo da manhã é quando a orla está mais livre para treinar — e é
+        também o horário mais fresco do dia.
+      </p>
+
+      <h2>Turismo: o fator que muda o treino</h2>
+      <p>
+        A Feirinha, o Mercado de Artesanato e os passeios de catamarã para
+        Picãozinho — piscinas naturais que fazem parte da APA de Naufrágio
+        Queimado, visitadas na maré baixa — trazem para Tambaú um movimento
+        que os bairros vizinhos não têm. Em dia de maré boa e na alta
+        temporada, o trecho em frente à Feirinha tende a encher.
+      </p>
+
+      <p>
+        O ajuste é simples: o treino na orla vai para o começo da manhã ou
+        para os trechos mais calmos, e os dias de feriado e de festa — como
+        a de Iemanjá, em 8 de dezembro, no Busto de Tamandaré — entram no
+        calendário como dia de academia.
+      </p>
+
+      <h2>Academia ao ar livre e academias por perto</h2>
+      <p>
+        O Busto de Tamandaré marca a divisa entre Tambaú e Cabo Branco, e
+        logo depois dele fica a <strong>primeira academia ao ar livre da
+        orla</strong> da cidade, inaugurada pela Prefeitura em 2023: 200 m²,
+        uso gratuito com cadastro por QR code e professores em parte do dia.
+        Os horários podem ter mudado desde a inauguração; vale conferir
+        antes.
+      </p>
+
+      <p>
+        Entre as academias de rede, a Smart Fit tem uma unidade chamada
+        "Tambaú", mas o endereço oficial dela fica em Cabo Branco, na
+        Avenida Monsenhor Odilon Coutinho. Em Manaíra, do outro lado, a
+        rede tem outras unidades. Antes de combinar o treino com um personal
+        na academia, confirme a regra da unidade para profissional externo.
+      </p>
+
+      <h2>Calor o ano todo: o relógio manda</h2>
+      <p>
+        Pelas normais climatológicas do INMET (1991–2020), a máxima média
+        de João Pessoa é de 28,7 °C em julho, o mês mais ameno, e de
+        30,8 °C em abril. A cidade tem o ponto mais oriental das Américas,
+        a Ponta do Seixas, e o dia começa cedo para quem treina na orla.
+      </p>
+
+      <p>
+        Na prática: força e intensidade no começo da manhã ou no fim da
+        tarde, água por perto, e o meio do dia reservado para a academia.
+        Julho também é mês de chuva forte — a normal do INMET passa de
+        280 mm —, e o plano B coberto precisa estar combinado.
+      </p>
+
+      <h2>Quanto custa personal trainer em Tambaú</h2>
+      <p>
+        A referência da cidade, publicada no guia de
+        <a href="/personal-trainer/joao-pessoa-pb/">personal trainer em
+        João Pessoa</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320
+        a R$ 880 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 160 e R$ 410 por mês.
+      </p>
+
+      <p>
+        Treinar em dupla e combinar sessões acompanhadas com outras feitas sozinho
+        no calçadão são os jeitos mais simples de fazer o acompanhamento
+        caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="em Tambaú" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Em Tambaú, pergunte também como ele usa a orla: em que horário, em
+        que trecho e com qual plano para os dias de calor forte ou de orla
+        cheia. Quem conhece o bairro programa o treino em volta disso.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Tambaú" />
+
+    <ContextualCta path={path} localidade="em Tambaú" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-tambau"
+    guias={[
+      { url: '/guias/treinar-no-calor-e-no-frio/', texto: 'como ajustar o treino ao calor e à chuva' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

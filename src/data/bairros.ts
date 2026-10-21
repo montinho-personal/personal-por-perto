@@ -1,5 +1,5 @@
 /**
- * Os 101 bairros que têm página própria.
+ * Os bairros que têm página própria.
  *
  * Fonte única: cada entrada carrega o slug, o nome do bairro, a locução já
  * flexionada ("no Batel", "na Aldeota", "nos Jardins" — em português a
@@ -146,6 +146,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-icarai', nome: 'Icaraí', locucao: 'em Icaraí', cidade: 'niteroi-rj', zona: 'Zona Sul', prioridade: 1,
     descricao: 'A orla de Icaraí de frente para o Pão de Açúcar — o cartão-postal onde Niterói treina.',
   },
+  { slug: 'personal-trainer-imbui', nome: 'Imbuí', locucao: 'no Imbuí', cidade: 'salvador-ba' },
   { slug: 'personal-trainer-ipanema', nome: 'Ipanema', locucao: 'em Ipanema', cidade: 'rio-de-janeiro-rj', zona: 'Zona Sul',
     descricao: 'Entre a orla e a Lagoa Rodrigo de Freitas, com o circuito de treino ao ar livre mais disputado da Zona Sul.',
   },
@@ -225,6 +226,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-sudoeste', nome: 'Sudoeste', locucao: 'no Sudoeste', cidade: 'brasilia-df', zona: 'Plano Piloto',
     descricao: 'Setor planejado a oeste do Eixo, compacto e caminhável, com o Parque da Cidade ao lado.',
   },
+  { slug: 'personal-trainer-tambau', nome: 'Tambaú', locucao: 'em Tambaú', cidade: 'joao-pessoa-pb' },
   { slug: 'personal-trainer-taquaral', nome: 'Taquaral', locucao: 'no Taquaral', cidade: 'campinas-sp',
     descricao: 'O bairro da Lagoa: 630 mil m² de parque na porta, e a pergunta de o que ainda falta no treino.',
     relacionados: [{ slug: 'personal-trainer-cambui', motivo: 'o outro bairro de Campinas que usa a Lagoa — lá ela é complemento, aqui é ponto de partida' }],

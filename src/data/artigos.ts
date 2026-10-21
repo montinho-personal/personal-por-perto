@@ -74,6 +74,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-jardim-aquarius/', titulo: 'Personal trainer no Jardim Aquarius (São José dos Campos)' },
   { categoria: 'Bairros', url: '/personal-trainer-vila-madalena/', titulo: 'Personal trainer na Vila Madalena (São Paulo)' },
   { categoria: 'Bairros', url: '/personal-trainer-manaira/', titulo: 'Personal trainer em Manaíra (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-tambau/', titulo: 'Personal trainer em Tambaú (João Pessoa)' },
+  { categoria: 'Bairros', url: '/personal-trainer-imbui/', titulo: 'Personal trainer no Imbuí (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-lagoa-da-conceicao/', titulo: 'Personal trainer na Lagoa da Conceição (Florianópolis)' },
   { categoria: 'Bairros', url: '/personal-trainer-rio-vermelho/', titulo: 'Personal trainer no Rio Vermelho (Salvador)' },
   { categoria: 'Bairros', url: '/personal-trainer-lourdes/', titulo: 'Personal trainer no Lourdes (Belo Horizonte)' },
