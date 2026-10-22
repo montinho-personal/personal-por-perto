@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Principal centro regional do centro-oeste paulista, Bauru tem economia voltada a comércio e serviços que atendem dezenas de municípios. É forte em saúde — com a Faculdade de Odontologia da USP-Bauru, referência internacional — e em educação (USP e UNESP), além de indústrias tradicionais. O perfil de polo de saúde e universidades cria um público atento ao bem-estar.',
 
   mercado:
-    'O mercado fitness é consolidado, com redes nacionais (Smart Fit em várias unidades, Bluefit) e academias locais, além de cobertura de plataformas de benefícios. A cidade tem mais de 40 academias ao ar livre espalhadas pelos bairros e uma cena de corrida de rua bem aquecida.',
+    'O mercado fitness é consolidado, com redes nacionais (duas unidades da Smart Fit, Bluefit) e academias locais, além de cobertura de plataformas de benefícios. A cidade tem mais de 40 academias ao ar livre espalhadas pelos bairros e uma cena de corrida de rua bem aquecida.',
 
   bairrosNobres: ['Jardim Estoril', 'Jardim Infante Dom Henrique', 'Vila Aviação', 'Jardim Europa'],
   bairrosPopulares: ['Vila Universitária', 'Mary Dota', 'Bela Vista', 'Vila Falcão'],
@@ -114,7 +114,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bauru', url: 'https://www.bauru.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-06',
+  academiasVerificadasEm: '2026-10-22',
+  atualizadoEm: '2026-10-22',
   capaArte: {
     src: '/capas-cidade/bauru-sp.webp',
     w: 1200,

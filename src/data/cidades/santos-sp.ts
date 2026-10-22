@@ -37,9 +37,9 @@ export const cidade: Cidade = {
         'Parque construído sobre o mar, na Ponta da Praia, é área de lazer e treino com vista privilegiada para a baía.',
     },
     {
-      nome: 'Academias ao ar livre da praia',
+      nome: 'Estações de ginástica da orla',
       descricao:
-        'Equipamentos de ginástica e quadras poliesportivas distribuídos ao longo de todo o calçadão da praia, de acesso livre.',
+        'Estações de ginástica espalhadas pela faixa de areia, segundo a Prefeitura, e as aulas do programa Ginástica na Praia nos postos 2, 5 e 6 e no Novo Quebra-Mar, com inscrição.',
     },
   ],
   ciclovias:
@@ -68,11 +68,10 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Santos tem uma cultura de praia muito forte — corrida, ciclismo e esportes de areia e aquáticos acontecem o tempo todo na orla — e tradição no futebol, com o Santos FC. A vida ativa é parte da identidade santista.',
   academias:
-    'A oferta de academias é grande nos bairros da orla (Gonzaga, Boqueirão, Embaré, Ponta da Praia), e os Jardins da Orla funcionam como uma enorme extensão ao ar livre dessas estruturas.',
+    'A Smart Fit tem cinco unidades na cidade, três delas na Av. Ana Costa, e os Jardins da Orla funcionam como uma enorme extensão ao ar livre para o treino.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na Av. Ana Costa (Gonzaga) e no Embaré' },
-    { nome: 'Academias e estúdios da orla', detalhe: 'forte oferta no Gonzaga, no Boqueirão e na Ponta da Praia' },
-    { nome: 'Academias ao ar livre da praia', detalhe: 'gratuitas, ao longo dos 7 km do calçadão' },
+    { nome: 'Smart Fit', detalhe: 'cinco unidades: três na Av. Ana Costa (Gonzaga e Vila Matias), uma no Embaré e a Emissário, no José Menino' },
+    { nome: 'Estações de ginástica da orla', detalhe: 'equipamentos públicos na faixa de areia, além das aulas da Ginástica na Praia nos postos 2, 5 e 6' },
   ],
 
   destaquesFitness: [
@@ -110,7 +109,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Santos?',
       resposta:
-        'A orla comanda: os cerca de 7 km de calçadão — com os famosos jardins, ciclovia, quadras e academias ao ar livre — são a pista de treino de toda a cidade. Nas academias, a faixa Gonzaga–Boqueirão–Ponta da Praia concentra a oferta, com a Smart Fit na Ana Costa e no Embaré. O atendimento em casa e em condomínio é comum nos prédios de frente para o mar, e a cidade plana torna qualquer deslocamento rápido — a pé ou de bike.',
+        'A orla comanda: os cerca de 7 km de orla — com os famosos jardins, ciclovia e estações de ginástica na faixa de areia — são a pista de treino de toda a cidade. Nas academias, a Smart Fit tem cinco unidades: três na Ana Costa, uma no Embaré e uma no José Menino. O atendimento em casa e em condomínio é comum nos prédios de frente para o mar, e a cidade plana torna qualquer deslocamento rápido — a pé ou de bike.',
     },
     {
       pergunta: 'Como transformar os 7 km da orla de Santos em plano de treino?',
@@ -140,7 +139,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santos', url: 'https://www.santos.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-06',
+  academiasVerificadasEm: '2026-10-22',
+  atualizadoEm: '2026-10-22',
   capaArte: {
     src: '/capas-cidade/santos-sp.webp',
     w: 1200,

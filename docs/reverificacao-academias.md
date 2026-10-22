@@ -472,3 +472,26 @@ Também no arquivo: `mercado` ("shoppings"), `academias`, `destaquesFitness`, o 
 | Bluefit Cascavel | confirmada: Av. Barão do Rio Branco, 817, São Cristóvão | bluefit.com.br/academia/cascavel (meta description) + Wellhub (mesmo endereço) |
 
 Saldo: 5 entradas → 2 removidas, 1 corrigida, 2 confirmadas.
+
+### 22/10/2026 — leva 19 (rotina, Parte B: Bauru e Santos)
+
+**Bauru/SP** — lista confirmada; texto corrido corrigido ("várias unidades" → "duas unidades"), por isso a data sobe.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Getúlio Vargas I | confirmada: Av. Getúlio Vargas, 25-16, Vila Aviação | smartfit.com.br/academias/av-getulio-vargas-i, `opened:true` |
+| Smart Fit Getúlio Vargas II | confirmada: Av. Getúlio Vargas, 8-15, Jardim Aeroporto | smartfit.com.br/academias/av-getulio-vargas-ii, `opened:true` |
+
+Pendência anotada: Bluefit e "mais de 40 academias ao ar livre" no texto corrido não foram conferidas (fora do escopo da lista).
+
+**Santos/SP** — página mudou. Fica com 2 entradas.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit | corrigida: são cinco unidades, todas abertas — Ana Costa 1 e II (Gonzaga), Assaí Ana Costa (Vila Matias), Embaré (Av. Almirante Cóchrane) e Emissário (Av. Presidente Wilson, José Menino) | smartfit.com.br/academias/sp/santos e páginas das unidades |
+| Academias e estúdios da orla | **removida**: sem nome; "forte oferta no Gonzaga, Boqueirão e Ponta da Praia" sem fonte | — |
+| Academias ao ar livre da praia | corrigida para "Estações de ginástica da orla": ficam na faixa de areia (não no calçadão); saem "gratuitas" e "7 km do calçadão" (a Prefeitura fala em 7 km de orla, e "gratuitas" não aparece para a orla); entram as aulas da Ginástica na Praia (postos 2, 5 e 6) | santos.sp.gov.br: notícias da estação de calistenia no canal 3 (2017), dos postos de ginástica, do jardim da orla e "Conheça Santos" |
+
+Também no arquivo: card da orla em `ondeTreinar`, `academias` (sem a "oferta grande" nos bairros) e FAQ "Onde o personal costuma atender" ("7 km de calçadão" → "de orla"; Smart Fit com as cinco unidades).
+
+Saldo: 5 entradas → 1 removida, 2 corrigidas, 2 confirmadas.
