@@ -136,7 +136,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teresina', url: 'https://www.teresina.pi.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-11',
+  atualizadoEm: '2026-10-22',
   capaArte: {
     src: '/capas-cidade/teresina-pi.webp',
     w: 1200,

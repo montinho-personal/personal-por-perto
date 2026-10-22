@@ -156,5 +156,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em São Paulo: acompanhamento profissional perto de você, em toda a capital e regiões.',
   },
-  atualizadoEm: '2026-10-13',
+  atualizadoEm: '2026-10-22',
 };

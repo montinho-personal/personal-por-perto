@@ -134,3 +134,20 @@ export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
   'cotia-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
   'granja-viana-sp': { id: 'Dg8Sbv6_V8w', tema: 'meu maior conselho para quem quer emagrecer', short: true },
 };
+
+/**
+ * O Short do app (DPAQDPVffCg) na parte do online das páginas de cidade.
+ * Entra em levas, pela regra de lote do projeto: cada leva sobe a data das
+ * suas cidades (mudança visível), e o ritmo deixa ler o efeito depois.
+ *   22/10/2026 — região presencial (pedido do Renato): Barueri, Alphaville,
+ *     Santana de Parnaíba, Aldeia da Serra.
+ *   22/10/2026 — leva 1: as 10 cidades com mais impressões em 28 dias no GSC.
+ */
+export const VIDEO_APP_ID = 'DPAQDPVffCg';
+export const CIDADES_COM_VIDEO_APP = new Set<string>([
+  // região presencial
+  'barueri-sp', 'alphaville-sp', 'santana-de-parnaiba-sp', 'aldeia-da-serra-sp',
+  // leva 1 — 22/10/2026
+  'joao-pessoa-pb', 'salvador-ba', 'brasilia-df', 'porto-alegre-rs', 'teresina-pi',
+  'sao-paulo-sp', 'goiania-go', 'rio-de-janeiro-rj', 'florianopolis-sc', 'uberlandia-mg',
+]);

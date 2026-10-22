@@ -17,7 +17,7 @@ import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { bairrosDaCidade as listaDeBairros, rota } from '../../lib/geo';
-import { videoDaPagina } from '../../data/videosMontinho';
+import { videoDaPagina, VIDEO_APP_ID, CIDADES_COM_VIDEO_APP } from '../../data/videosMontinho';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, emCidadeCap, deCidade } from '../../lib/gramatica';
 import { tituloCidade, descricaoCidade } from '../../lib/metaCidade';
@@ -476,19 +476,27 @@ const objetivoDesc: Record<string, string> = {
       />
 
       {
-        /* 22/10/2026, a pedido do Renato: nas quatro páginas da região
-           presencial, o Short do app (DPAQDPVffCg) entra na parte do
-           online; o vídeo de apresentação segue em "Conheça o personal". */
-        (ehBarueri || ehAlphaville || ehSantana || ehAldeia) && (
+        /* O Short do app na parte do online, em levas (lista e datas em
+           data/videosMontinho.ts). Na região presencial o texto fala do
+           complemento às sessões; fora dela, o online é o formato. */
+        CIDADES_COM_VIDEO_APP.has(cidade.slug) && (
           <section id="app-do-montinho">
-            <p>
-              No acompanhamento online do Montinho Personal, o treino fica num
-              aplicativo próprio: o aluno vê o treino do dia e a semana planejada
-              no celular, mesmo nos dias sem sessão presencial.
-            </p>
+            {ehBarueri || ehAlphaville || ehSantana || ehAldeia ? (
+              <p>
+                No acompanhamento online do Montinho Personal, o treino fica num
+                aplicativo próprio: o aluno vê o treino do dia e a semana planejada
+                no celular, mesmo nos dias sem sessão presencial.
+              </p>
+            ) : (
+              <p>
+                {emCidadeCap(cidade)}, o Montinho Personal, destacado pelo portal,
+                atende no formato online, e o treino fica num aplicativo próprio:
+                o aluno vê o treino do dia e a semana planejada no celular.
+              </p>
+            )}
             <figure class="video-short">
               <iframe
-                src="https://www.youtube-nocookie.com/embed/DPAQDPVffCg"
+                src={`https://www.youtube-nocookie.com/embed/${VIDEO_APP_ID}`}
                 title="O app do Montinho: seu treino na palma da mão"
                 width="340"
                 height="604"
