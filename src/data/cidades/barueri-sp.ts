@@ -147,5 +147,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-16',
+  atualizadoEm: '2026-10-22',
 };
