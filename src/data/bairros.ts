@@ -242,6 +242,7 @@ export const bairros: Bairro[] = [
     descricao: 'O bairro da Lagoa: 630 mil m² de parque na porta, e a pergunta de o que ainda falta no treino.',
     relacionados: [{ slug: 'personal-trainer-cambui', motivo: 'o outro bairro de Campinas que usa a Lagoa — lá ela é complemento, aqui é ponto de partida' }],
   },
+  { slug: 'personal-trainer-tatuape', nome: 'Tatuapé', locucao: 'no Tatuapé', cidade: 'sao-paulo-sp', zona: 'Zona Leste' },
   { slug: 'personal-trainer-tijuca', nome: 'Tijuca', locucao: 'na Tijuca', cidade: 'rio-de-janeiro-rj', zona: 'Zona Norte', prioridade: 1,
     descricao: 'O maior bairro residencial da Zona Norte, no pé do Maciço da Tijuca — e o que mais confunde quem procura a Barra.',
     relacionados: [{ slug: 'personal-trainer-barra-da-tijuca', motivo: 'o bairro de nome parecido, do outro lado da cidade — a comparação que evita confusão' }],

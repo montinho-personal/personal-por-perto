@@ -1,0 +1,286 @@
+---
+/**
+ * Tatuapé (São Paulo) — leva 8 de bairros, 22/10/2026, a pedido do Renato,
+ * antes dos prints. Escolha pelo GSC de 22/10: "personal trainer sao paulo"
+ * parada na posição 34 e os 10 bairros de SP todos no Centro-Oeste e na Zona
+ * Sul — o Tatuapé é o primeiro da Zona Leste.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923, distrito
+ * Tatuapé: 98.601 moradores, 54º de 96; tabela 9922: 2,42 moradores por
+ * domicílio, contra 2,65 da cidade); Smart Fit Avenida Celso Garcia
+ * (oficial, Tatuapé; a unidade chamada "Tatuapé" a rede registra na Vila
+ * Gomes Cardim); Bio Ritmo Tatuapé (oficial); BlueFit Anália Franco
+ * (oficial + Wellhub); Redfit Tatuapé (TotalPass + Wellhub); Prefeitura de
+ * SP (Parque do Piqueri e Parque do Tatuapé; CERET, citado pelo endereço da
+ * página oficial, que dá dois bairros); Metrô SP (Estação Tatuapé); INMET,
+ * normais 1991–2020 do Mirante de Santana. Fora: linhas da CPTM (site
+ * bloqueado), Panobianco Anália Franco (Vila Regente Feijó), Motion Fit.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/sao-paulo-sp/',
+    titulo: 'Personal trainer em São Paulo',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-vila-mariana/',
+    titulo: 'Personal trainer na Vila Mariana',
+    descricao: 'As perguntas de quem mora na Zona Sul, perto do Ibirapuera.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre',
+    descricao: 'Parque, praça e academia pública: como progredir sem carga.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-tatuape';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-tatuape');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Tatuapé?',
+    resposta:
+      'A referência de São Paulo vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$ 1.200 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 200 e R$ 500 por mês. O formato — em casa, no prédio, no parque ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em São Paulo?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 80 a R$ 200 em São Paulo. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no Tatuapé?',
+    resposta:
+      'Pelas páginas oficiais das redes, a Smart Fit Avenida Celso Garcia, a Bio Ritmo Tatuapé, na Rua Monte Serrat, e a BlueFit Anália Franco, na Rua Apucarana. Pelo TotalPass e pelo Wellhub, a Redfit Tatuapé, também na Rua Apucarana. A unidade que a Smart Fit chama de Tatuapé, na Rua Emílio Mallet, a rede registra na Vila Gomes Cardim. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Tatuapé?',
+    resposta:
+      'No Parque do Piqueri, na Rua Tuiuti, com pista de cooper, quadras e aparelhos de ginástica, aberto das 6h às 18h, segundo a Prefeitura. O Parque do Tatuapé, na Rua São Felipe, tem pista de caminhada e equipamentos de ginástica. E o CERET, com pista de atletismo de 400 metros e academias ao ar livre, funciona até as 22h nos dias úteis.',
+  },
+  {
+    pergunta: 'Dá para ir treinar de metrô no Tatuapé?',
+    resposta:
+      'Dá. A Estação Tatuapé, da Linha 3-Vermelha, funciona das 4h40 à meia-noite e tem integração com a CPTM, segundo o Metrô. O Parque do Piqueri indica a estação como acesso de metrô.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em São Paulo?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no prédio, no parque ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em São Paulo, de R$ 200 a R$ 500 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville.',
+  },
+];
+
+const title = 'Personal Trainer no Tatuapé (SP): preço, academias e parques';
+const description =
+  'Personal trainer no Tatuapé, Zona Leste de São Paulo: preço por aula e por mês, as academias do bairro, o Piqueri, o CERET e o metrô.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de São Paulo</p>
+    <h1>Personal trainer no Tatuapé: parques, academias de rede e o metrô</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Tatuapé tem quase 100 mil moradores, segundo o Censo de 2022, e reúne,
+      na Zona Leste de São Paulo, três espaços públicos com pista e
+      equipamentos de ginástica, academias de rede e uma estação de metrô.
+    </p>
+
+    <p class="lead">
+      Os domicílios têm, em média, 2,42 moradores — menos que os 2,65 da
+      cidade. Para quem procura um <strong>personal trainer</strong> no
+      Tatuapé, a pergunta não é se há onde treinar, e sim qual combinação de
+      lugares cabe na sua semana.
+    </p>
+
+    <div class="prose">
+      <h2>Os parques: ao ar livre, de graça</h2>
+
+      <h3>Parque do Piqueri</h3>
+      <p>
+        Na Rua Tuiuti, com quase 100 mil m², pista de cooper, quadras
+        poliesportivas e aparelhos de ginástica. Abre todos os dias das 6h às
+        18h, segundo a Prefeitura, e tem a Estação Tatuapé do metrô como
+        acesso. É o lugar para corrida leve, circuito e treino funcional com o
+        personal.
+      </p>
+
+      <h3>Parque do Tatuapé</h3>
+      <p>
+        Menor, na Rua São Felipe, com pista de caminhada e equipamentos de
+        ginástica, das 6h às 18h. Funciona bem para quem mora perto e quer
+        encaixar uma sessão curta.
+      </p>
+
+      <h3>CERET</h3>
+      <p>
+        O Centro Esportivo, Recreativo e Educativo do Trabalhador, na Rua
+        Canuto de Abreu, tem pista de atletismo de 400 metros, pista de
+        caminhada e corrida e cinco academias ao ar livre, segundo a
+        Prefeitura. A vantagem é o horário: abre até as 22h nos dias úteis e
+        até as 20h nos fins de semana — o que permite treinar depois do
+        trabalho, coisa que os parques que fecham às 18h não permitem.
+      </p>
+
+      <p>
+        Para montar treino de força com o que o parque oferece, o guia de{' '}
+        <a href="/guias/treinar-ao-ar-livre/">treinar ao ar livre</a> mostra
+        como progredir sem carga.
+      </p>
+
+      <h2>As academias do bairro</h2>
+      <p>
+        Pelas páginas oficiais das redes, ficam no Tatuapé a <strong>Smart Fit
+        Avenida Celso Garcia</strong>, a <strong>Bio Ritmo Tatuapé</strong>, na
+        Rua Monte Serrat, e a <strong>BlueFit Anália Franco</strong>, na Rua
+        Apucarana. Pelo TotalPass e pelo Wellhub, a <strong>Redfit
+        Tatuapé</strong>, também na Apucarana.
+      </p>
+
+      <p>
+        Um detalhe que confunde: a unidade que a Smart Fit chama de "Tatuapé",
+        na Rua Emílio Mallet, a própria rede registra na Vila Gomes Cardim. Antes de combinar o
+        treino com um personal na academia, confirme a regra da unidade para
+        profissional externo.
+      </p>
+
+      <h2>O clima de São Paulo no plano</h2>
+      <p>
+        Pelas normais do INMET (1991–2020) da estação do Mirante de Santana, a
+        média anual é de 20,4 °C. Fevereiro é o mês mais quente (23,5 °C) e
+        julho o mais frio (17,2 °C). Janeiro é o mais chuvoso, com quase 300
+        mm, e agosto o mais seco. No verão, o treino no parque vai para a
+        manhã; nas tardes de chuva, a academia ou a casa entram no lugar.
+      </p>
+
+      <h2>Quanto custa personal trainer no Tatuapé</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/sao-paulo-sp/">personal trainer em São
+        Paulo</a>, vai de R$ 80 a R$ 200 pela aula avulsa e de R$ 400 a R$
+        1.200 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 200 e R$ 500 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar no parque tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Tatuapé" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Tatuapé, pergunte também como ele divide a semana entre parque e
+        academia, e o que faz com o treino quando o parque já fechou.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Tatuapé" />
+
+    <ContextualCta path={path} localidade="no Tatuapé" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-tatuape"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'o treino no parque, sem carga' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
