@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A vida ativa em São Marcos gira em torno da Praça Dante Marcucci, do Morro do Calvário e de corridas de rua ligadas ao calendário religioso e institucional da cidade, num ambiente marcado pela tradição italiana, pelo trabalho rural e industrial e pelo clima frio de altitude da Serra Gaúcha.',
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional concentradas no Centro, complementada por academias ao ar livre instaladas pela prefeitura em bairros como Colina Sorriso e Industrial, ampliando o acesso ao treino fora da área central.',
+  academiasProximas: [
+    { nome: 'Academia Saúde em Harmonia', detalhe: 'na Rua Monsenhor Henrique Compagnoni, no Centro' },
+    { nome: 'Olímpia Academia' },
+  ],
 
   destaquesFitness: [
     'Colonização italiana desde 1885, com forte tradição de agroindústria metalmecânica e moveleira.',
@@ -96,5 +100,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Marcos', url: 'https://www.saomarcos.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  academiasVerificadasEm: '2026-10-22',
+  atualizadoEm: '2026-10-22',
 };

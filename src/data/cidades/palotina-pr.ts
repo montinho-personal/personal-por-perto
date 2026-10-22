@@ -69,6 +69,9 @@ export const cidade: Cidade = {
     'A cultura esportiva é impulsionada pela Associação de Corredores de Rua de Palotina (CORPA), que leva atletas locais a provas na região, e por eventos próprios como a corrida com a Polícia Militar, além do uso do Lago Municipal e da Praça Amadeo Piovesan para caminhada, corrida e ginástica ao ar livre.',
   academias:
     'A oferta reúne academias locais de musculação e funcional, como a Duo Fitness, boxes de crossfit e estúdios de personal trainer, complementados pela academia popular do Lago Municipal e pelos equipamentos de ginástica da Praça Amadeo Piovesan.',
+  academiasProximas: [
+    { nome: 'Duo Fitness', detalhe: 'na Avenida Presidente Kennedy, no Centro' },
+  ],
 
   destaquesFitness: [
     'Sede da C.Vale, a segunda maior cooperativa agropecuária do Brasil — economia forte e renda estável ligada ao agronegócio.',
@@ -96,5 +99,6 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palotina', url: 'https://palotina.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  academiasVerificadasEm: '2026-10-22',
+  atualizadoEm: '2026-10-22',
 };
