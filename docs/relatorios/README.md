@@ -163,6 +163,104 @@ A arquitetura de links e os metadados do piloto entraram em 11/09 — um dia
 antes do fim deste período. Não há nada a ler aqui, e a data marcada continua
 sendo 02/10.
 
+## Desempenho — Search Console, 28/06 a 22/10/2026
+
+Arquivos: `2026-10-22-gsc-desempenho/` (export original e
+`paginas-por-cidade.json` regenerado desta aba Páginas — `audit:academias` e
+`audit:capas` passam a ordenar as filas por este relatório).
+
+Export **acumulado**, como o de 30/09. Comparação pelo gráfico diário e pela
+diferença página a página entre os dois exports (≈ 30/09 a 22/10). O teto de
+1.000 linhas da aba Páginas cortou mais cidades desta vez (623 contra 665),
+então a diferença por página **subestima** as cidades; o gráfico é a medida
+confiável.
+
+Totais: **1.154 cliques, 105.190 impressões, CTR 1,10%** (eram 846 / 61.309 /
+1,38% em 30/09).
+
+### Impressões quase dobraram; cliques voltaram a crescer depois de um vale
+
+| janela | dias | cliques/dia | impressões/dia | CTR | posição |
+|---|---|---|---|---|---|
+| até 31/08 | 65 | 7,1 | 431 | 1,64% | 10,2 |
+| 01/09 a 12/09 | 12 | 12,3 | 1.010 | 1,22% | 8,6 |
+| 13/09 a 28/09 | 16 | 14,9 | 1.284 | 1,16% | 7,9 |
+| 29/09 a 12/10 | 14 | **10,9** | 1.726 | 0,63% | 8,1 |
+| 13/10 a 21/10 | 9 | **17,3** | **2.218** | 0,78% | 7,8 |
+
+22/10 ficou de fora (dia parcial: 415 impressões, 0 clique).
+
+Leitura: impressões por dia **+73%** sobre a janela de 13–28/09; cliques por
+dia caíram 27% na primeira metade de outubro e voltaram acima do patamar
+anterior na segunda (**+16%**). O CTR despencou para 0,6–0,8% porque o
+crescimento veio de páginas de baixo CTR, não porque as cidades pioraram:
+na diferença entre exports, **31.425 das ~44 mil impressões novas são de
+artigos, guias e calculadoras (CTR 0,34%)**. O guia da HYROX São Paulo
+(3.119 impressões, 44 cliques) é a página com mais cliques do acumulado — e
+é de evento, sazonal.
+
+Celular: 935 de 1.154 cliques (81%), posição 8,0 contra 11,1 no computador —
+estável.
+
+### Por tipo de página (≈ 30/09 a 22/10, diferença entre exports)
+
+| tipo | cliques | impressões | CTR |
+|---|---|---|---|
+| cidade | 180 | 11.811 | 1,52% |
+| bairro | 17 | 432 | **3,94%** |
+| estado | 3 | 499 | 0,60% |
+| artigos, guias, ferramentas | 108 | 31.425 | 0,34% |
+
+Bairro segue com o melhor CTR do site e pouca impressão. Tijuca (165 imp,
+6 cl), Barra da Tijuca (152), Cidade Nova/BH (102) e Buritis (49, 3 cl)
+lideram o acumulado. As levas de 21 e 22/10 ainda não aparecem.
+
+### As medidas recorrentes
+
+**URL sem barra:** 12,8% do acumulado (13.451 de 104.744), contra 21,5% em
+30/09 — segue encolhendo. Exceção a vigiar: `/mounjaro-e-treino/fraqueza-para-treinar`
+sem barra ainda soma 3.239 impressões no acumulado, quase o mesmo que a
+versão com barra.
+
+**Posição das cidades grandes NA CONSULTA:**
+
+| consulta | 01/09 | 30/09 | 22/10 |
+|---|---|---|---|
+| personal trainer belo horizonte | 26,5 | 25,1 | 25,1 |
+| personal trainer porto alegre | 29,2 | 26,0 | **22,0** |
+| personal trainer salvador | 40,3 | 28,8 | **21,4** |
+| personal trainer curitiba | 42,4 | 40,2 | 39,3 |
+| personal trainer sao paulo | 26,2 | 34,5 | 34,5 |
+
+Salvador e Porto Alegre — as duas cidades que mais receberam bairros —
+subiram; as outras, paradas. É correlação, não prova, mas é a primeira vez
+que a posição na consulta se move de verdade.
+
+**CTR por faixa de cidade — a inversão continua:** as 20 maiores 1,10%;
+21ª à 100ª 1,99%; as outras 503 3,46%.
+
+### Palhoça: a troca de 30/09 não converteu
+
+"consultoria online musculacao palhoca": 276 impressões no acumulado (eram
+250), posição 7,3 (era 7,5), **zero clique**. Em três semanas, só 26
+impressões novas e nenhum clique depois da troca de título, descrição e FAQ.
+A consulta perdeu volume; não vale mais mexer nela.
+
+### O que mudou desde 30/09, em uma linha
+
+O site cresceu em impressão por calculadoras e artigos (corda, escada,
+passos, natação, Mounjaro) e por um evento (HYROX); as cidades seguem
+trazendo a maioria dos cliques; bairros convertem melhor que tudo, mas ainda
+são pequenos; e duas cidades grandes começaram a subir na consulta principal.
+
+### O que conferir no próximo relatório
+
+1. **Salvador e Porto Alegre** — se a subida na consulta se mantém.
+2. **Bairros das levas 4 a 7** (21–22/10) — impressão própria e CTR.
+3. **`fraqueza-para-treinar` sem barra** — se a versão sem barra some.
+4. **HYROX** — a queda depois do evento, para não ler sazonalidade como
+   tendência.
+
 ## Desempenho — Search Console, 01/06 a 29/09/2026
 
 Arquivos: `2026-09-30-gsc-desempenho/`. Estratégia tirada dele em
