@@ -147,6 +147,7 @@ export const VIDEO_APP_ID = 'DPAQDPVffCg';
 export const CIDADES_COM_VIDEO_APP = new Set<string>([
   // região presencial
   'barueri-sp', 'alphaville-sp', 'santana-de-parnaiba-sp', 'aldeia-da-serra-sp',
+  'tambore-sp', // 22/10/2026, pedido do Renato
   // leva 1 — 22/10/2026
   'joao-pessoa-pb', 'salvador-ba', 'brasilia-df', 'porto-alegre-rs', 'teresina-pi',
   'sao-paulo-sp', 'goiania-go', 'rio-de-janeiro-rj', 'florianopolis-sc', 'uberlandia-mg',

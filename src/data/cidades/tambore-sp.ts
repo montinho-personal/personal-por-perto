@@ -150,5 +150,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Tamboré com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-10-22',
 };
