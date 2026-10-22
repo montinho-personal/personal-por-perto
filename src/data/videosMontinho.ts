@@ -47,6 +47,8 @@ export const VIDEOS_MONTINHO: VideoMontinho[] = [
   { id: 'DiH1OzIR6Yk', tema: 'proteger o objetivo: constância acima de motivação', short: true },
   // 22/10/2026: publicado nesse dia; usado nas páginas de consultoria online.
   { id: 'DPAQDPVffCg', tema: 'o app do Montinho: o treino na palma da mão', short: true },
+  // 22/10/2026: TMB e TDEE no app; na calculadora de gasto diário, em como acelerar o metabolismo e em emagrecer depois dos 40.
+  { id: 'iGStCDRk0Zg', tema: 'quantas calorias você gasta por dia: TMB e TDEE', short: true },
 ];
 
 /**
