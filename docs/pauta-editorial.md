@@ -653,7 +653,7 @@ hipertrofia), já usados no portal.
 | Caminhada emagrece? | `caminhada-emagrece` | ✅ 2026-10-21 · prints do Renato · recorte em `docs/caminhada-emagrece.md` |
 | Esteira ou bicicleta para emagrecer | `esteira-ou-bicicleta` | ✅ 2026-09-28 · recorte declarado |
 | Emagrecer na menopausa | `emagrecer-na-menopausa` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/emagrecer-na-menopausa.md` |
-| Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | |
+| Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | ✅ 2026-10-22 · prints do Renato (sem autocompletar nem IA) · recorte em `docs/emagrecer-depois-dos-40.md` |
 | Termogênicos funcionam? | `termogenicos-funcionam` | |
 | Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | |
 | Fome emocional | `fome-emocional` | |
