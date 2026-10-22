@@ -1,0 +1,276 @@
+---
+/**
+ * Taguatinga Sul (Taguatinga/DF) — leva 7 de bairros, 22/10/2026, a pedido
+ * do Renato, antes dos prints de busca. Escolha pelo relatório do GSC de
+ * 22/10: Taguatinga tinha 198 impressões em 28 dias e nenhum bairro, e a
+ * consulta "academias em taguatinga sul" já aparece no export.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923, nível
+ * subdistrito: Taguatinga = 193.367 moradores; não há dado só para
+ * Taguatinga Sul); Smart Fit Taguatinga Sul – CSB 09 (página oficial,
+ * aberta; TotalPass com o mesmo endereço); Bluefit Taguatinga Sul (página
+ * oficial: CSD 6; Wellhub na mesma quadra); Ultra Taguatinga Sul (TotalPass
+ * e Wellhub só concordam na QSF — entra sem endereço); Brasília Ambiental
+ * (Parque Ecológico Saburo Onoyama na RA de Taguatinga, com piscina);
+ * INMET, normais 1991–2020 da estação de Brasília. Sites do GDF (IPEDF,
+ * administração regional, metrô) não abriram aqui; PDAD, estações e
+ * Pistão Sul ficaram de fora.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/taguatinga-df/',
+    titulo: 'Personal trainer em Taguatinga',
+    descricao: 'O guia da região: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer/aguas-claras-df/',
+    titulo: 'Personal trainer em Águas Claras',
+    descricao: 'A vizinha vertical, com academia em quase todo condomínio.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, com equipamento portátil.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-taguatinga-sul';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-taguatinga-sul');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer em Taguatinga Sul?',
+    resposta:
+      'A referência de Taguatinga vai de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a R$ 820 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 140 e R$ 400 por mês. O formato — em casa, no prédio ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Taguatinga?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 60 a R$ 140 em Taguatinga. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam em Taguatinga Sul?',
+    resposta:
+      'A Smart Fit Taguatinga Sul fica na quadra CSB 9, segundo a página oficial da rede. A Bluefit Taguatinga Sul fica na CSD 6, também pela página oficial. A Ultra tem unidade em Taguatinga Sul, na QSF, segundo o TotalPass e o Wellhub. Horário e telefone estão nas páginas de cada uma. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre em Taguatinga?',
+    resposta:
+      'O Parque Ecológico Saburo Onoyama, na região administrativa de Taguatinga, é o principal espaço público de lazer da cidade e tem piscina, segundo o Brasília Ambiental. Para treino ao ar livre no DF, o horário pesa tanto quanto o lugar: na seca, cedo ou no fim da tarde.',
+  },
+  {
+    pergunta: 'Qual a melhor época para treinar ao ar livre no DF?',
+    resposta:
+      'Pelas normais do INMET (1991–2020) da estação de Brasília, de junho a agosto quase não chove, e agosto tem a menor umidade do ano, cerca de 43%. Setembro e outubro são os meses mais quentes. De novembro a março chove muito. Na seca, treine cedo, hidrate-se mais e prefira sessões mais curtas ao meio-dia.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Taguatinga?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no prédio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Taguatinga, de R$ 140 a R$ 400 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville, em São Paulo.',
+  },
+];
+
+const title = 'Personal Trainer em Taguatinga Sul: preço e academias';
+const description =
+  'Personal trainer em Taguatinga Sul (DF): preço por aula, por mês e online, as academias da Smart Fit, Bluefit e Ultra no Sul e o treino na seca.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Taguatinga</p>
+    <h1>Personal trainer em Taguatinga Sul: academia na quadra e treino na seca</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Taguatinga tem quase 200 mil moradores, segundo o Censo de 2022 — mais
+      que muitas capitais. O Sul é a parte da cidade organizada em quadras
+      como CSB, CSD e QSF, e é nelas que estão as academias de rede da região.
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer</strong> em Taguatinga
+      Sul, a pergunta prática é onde o treino acontece — em casa, na academia
+      da quadra ou ao ar livre — e como encaixar isso no clima do DF. É o que
+      este guia responde.
+    </p>
+
+    <div class="prose">
+      <h2>As academias de Taguatinga Sul</h2>
+      <p>
+        Três redes têm unidade no Sul. A <strong>Smart Fit Taguatinga
+        Sul</strong> fica na quadra CSB 9, segundo a página oficial da rede. A
+        <strong> Bluefit Taguatinga Sul</strong> fica na CSD 6, também pela
+        página oficial. E a <strong>Ultra</strong> tem unidade em Taguatinga
+        Sul, na QSF, segundo o TotalPass e o Wellhub.
+      </p>
+
+      <p>
+        Cuidado com os nomes: a Smart Fit "Atacadão Taguatinga Sul" fica, pelo
+        endereço oficial, no Areal, em Águas Claras — não no Sul. Antes de
+        combinar o treino com um personal na academia, confirme a regra da
+        unidade para profissional externo.
+      </p>
+
+      <h2>Treinar em casa</h2>
+      <p>
+        Quem não quer depender da academia tem no treino em casa o formato que
+        mais economiza tempo: com halteres, elástico e colchonete, cabe um
+        treino completo de força numa sala ou varanda, e o profissional leva o
+        que faltar. O guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> mostra como funciona. O arranjo comum é duas sessões em
+        casa e uma na academia, para os exercícios que pedem barra e máquina.
+      </p>
+
+      <h2>O parque e o clima do DF</h2>
+      <p>
+        O Parque Ecológico Saburo Onoyama, na região administrativa de
+        Taguatinga, é o grande espaço público de lazer da cidade e tem
+        piscina, segundo o Brasília Ambiental.
+      </p>
+
+      <p>
+        O clima decide o horário. Pelas normais do INMET (1991–2020) da
+        estação de Brasília, a média anual é de 21,4 °C. De junho a agosto
+        quase não chove, e agosto tem a menor umidade do ano, em torno de 43%.
+        Setembro e outubro são os meses mais quentes, com máximas médias perto
+        de 29 °C. De novembro a março chove muito.
+      </p>
+
+      <p>
+        Na prática: na seca, treino ao ar livre cedo ou no fim da tarde, mais
+        água e intensidade ajustada; nas chuvas, o plano B em casa ou na
+        academia já pronto.
+      </p>
+
+      <h2>Quanto custa personal trainer em Taguatinga Sul</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/taguatinga-df/">personal trainer em
+        Taguatinga</a>, vai de R$ 60 a R$ 140 pela aula avulsa e de R$ 300 a R$
+        820 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 140 e R$ 400 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em casa tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="em Taguatinga Sul" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Em Taguatinga Sul, pergunte também em qual academia ele atende — e se a
+        unidade aceita profissional externo — e como ele ajusta o treino na
+        seca.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em Taguatinga Sul" />
+
+    <ContextualCta path={path} localidade="em Taguatinga Sul" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-taguatinga-sul"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
