@@ -187,6 +187,7 @@ export const bairros: Bairro[] = [
     descricao: 'Vizinho residencial da Savassi, de ruas arborizadas e casarões — treino em casa e no prédio.',
   },
   { slug: 'personal-trainer-manaira', nome: 'Manaíra', locucao: 'em Manaíra', cidade: 'joao-pessoa-pb' },
+  { slug: 'personal-trainer-marco-belem', nome: 'Marco', locucao: 'no Marco', cidade: 'belem-pa' },
   { slug: 'personal-trainer-meireles', nome: 'Meireles', locucao: 'no Meireles', cidade: 'fortaleza-ce' },
   { slug: 'personal-trainer-menino-deus', nome: 'Menino Deus', locucao: 'no Menino Deus', cidade: 'porto-alegre-rs' },
   { slug: 'personal-trainer-miramar', nome: 'Miramar', locucao: 'no Miramar', cidade: 'joao-pessoa-pb' },

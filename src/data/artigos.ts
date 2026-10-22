@@ -99,6 +99,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-cabo-branco/', titulo: 'Personal trainer no Cabo Branco (João Pessoa)' },
   { categoria: 'Bairros', url: '/personal-trainer-bigorrilho/', titulo: 'Personal trainer no Bigorrilho (Curitiba)' },
   { categoria: 'Bairros', url: '/personal-trainer-santa-monica/', titulo: 'Personal trainer no Santa Mônica (Uberlândia)' },
+  { categoria: 'Bairros', url: '/personal-trainer-marco-belem/', titulo: 'Personal trainer no Marco, em Belém' },
   { categoria: 'Bairros', url: '/personal-trainer-america-joinville/', titulo: 'Personal trainer no América, em Joinville' },
   { categoria: 'Bairros', url: '/personal-trainer-centro-londrina/', titulo: 'Personal trainer no Centro de Londrina' },
   { categoria: 'Bairros', url: '/personal-trainer-centro-uberlandia/', titulo: 'Personal trainer no Centro de Uberlândia' },

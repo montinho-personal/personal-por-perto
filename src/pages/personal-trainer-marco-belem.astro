@@ -1,0 +1,286 @@
+---
+/**
+ * Marco (Belém) — leva 6 de bairros, 22/10/2026, a pedido do Renato,
+ * antes dos prints de busca. Escolhido por contraste com Batista Campos,
+ * Nazaré e Umarizal (centrais e nobres): bairro grande, de classe média,
+ * com o triplo da população de Nazaré.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923: 59.847
+ * moradores, 4º de 71 bairros; tabela 9922: 2,92 moradores por domicílio,
+ * contra 3,08 da cidade); Smart Fit Bosque Mall Belém (página oficial,
+ * aberta, Av. Almirante Barroso, Marco); FitBel, Fitzem e EVO Centro de
+ * Treinamento (TotalPass + Wellhub, Marco); Ideflor-bio (Parque Estadual
+ * do Utinga, no Curió-Utinga: horário, entrada, trilhas); INMET, normais
+ * 1991–2020 da estação 82191. Fora: Bosque Rodrigues Alves no Marco (uma
+ * fonte só aberta; sites da Prefeitura bloqueados aqui), Hangar, Praça
+ * Brasil, academias com fonte única ou endereço divergente.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/belem-pa/',
+    titulo: 'Personal trainer em Belém',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-umarizal/',
+    titulo: 'Personal trainer no Umarizal',
+    descricao: 'O guia por perfil de quem mora no bairro mais vertical de Belém.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/personal-trainer-nazare-belem/',
+    titulo: 'Personal trainer em Nazaré',
+    descricao: 'Treinar à sombra das mangueiras, num dos bairros centrais de Belém.',
+    tipo: 'Bairro',
+  },
+];
+
+const path = '/personal-trainer-marco-belem';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-marco-belem');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Marco, em Belém?',
+    resposta:
+      'A referência de Belém vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 170 e R$ 430 por mês. O formato — em casa, no prédio ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Belém?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 160 em Belém. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no Marco?',
+    resposta:
+      'A Smart Fit Bosque Mall Belém, na Avenida Almirante Barroso, segundo a página oficial da rede — é a única das oito unidades da rede em Belém que fica no Marco. Pelo TotalPass e pelo Wellhub, o bairro tem também a FitBel Academia (Travessa Mauriti), a Fitzem Academia (Travessa Vileta) e o EVO Centro de Treinamento (Travessa Curuzu). Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar ao ar livre em Belém?',
+    resposta:
+      'Cedo. Pelas normais do INMET (1991–2020), a máxima média passa de 32 °C e a umidade média do ano é de 84%. De janeiro a abril chove em 25 ou 26 dias por mês; agosto e setembro são os meses mais secos. Treino ao ar livre logo de manhã, hidratação reforçada e um plano B coberto para a chuva da tarde.',
+  },
+  {
+    pergunta: 'Dá para treinar no Parque do Utinga?',
+    resposta:
+      'Dá. O Parque Estadual do Utinga fica no Curió-Utinga, pela Avenida João Paulo II, e abre todos os dias, menos às terças, das 6h às 17h, com entrada gratuita, segundo o Ideflor-bio. As trilhas do Pataúa, do Yuna e da Capivara são de baixa dificuldade, e as duas últimas também podem ser feitas de bicicleta. Entre novembro e abril, o órgão recomenda não fazer as trilhas sem acompanhamento, por causa das chuvas.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Belém?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no prédio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Belém, de R$ 170 a R$ 430 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville, em São Paulo.',
+  },
+];
+
+const title = 'Personal Trainer no Marco, Belém: preço e academias';
+const description =
+  'Personal trainer no Marco, em Belém: preço por aula, por mês e online, as academias do bairro, o Parque do Utinga e o horário certo no calor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Belém</p>
+    <h1>Personal trainer no Marco, em Belém: treino num dos bairros mais populosos da cidade</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Marco tem quase 60 mil moradores, segundo o Censo de 2022 — o
+      quarto bairro mais populoso de Belém, com mais que o triplo da
+      população de Nazaré. São cerca de 20 mil domicílios, com 2,92
+      moradores em média, perto da média da cidade.
+    </p>
+
+    <p class="lead">
+      Um bairro grande, de famílias, cortado pela Almirante Barroso. É o
+      cenário de quem procura um <strong>personal trainer</strong> no
+      Marco, e o que muda em relação aos bairros centrais é a escala: mais
+      gente, mais opções de academia de bairro e o calor de Belém pesando
+      no horário.
+    </p>
+
+    <div class="prose">
+      <h2>Onde treinar: a rede e as academias de bairro</h2>
+      <p>
+        A <strong>Smart Fit Bosque Mall Belém</strong>, na Avenida Almirante
+        Barroso, é a única das oito unidades da rede em Belém que fica no
+        Marco, segundo a página oficial — com funcionamento das 5h às 23h nos
+        dias úteis. Para quem mora do outro lado do bairro, as academias
+        independentes cobrem as travessas: pelo TotalPass e pelo Wellhub, a
+        <strong> FitBel Academia</strong> fica na Travessa Mauriti, a
+        <strong> Fitzem Academia</strong> na Travessa Vileta e o <strong>EVO
+        Centro de Treinamento</strong> na Travessa Curuzu.
+      </p>
+
+      <p>
+        Num bairro desse tamanho, a academia mais perto de casa costuma ser a
+        que se mantém. Antes de combinar o treino com um personal na
+        academia, confirme a regra da unidade para profissional externo.
+      </p>
+
+      <h2>Treinar em casa no Marco</h2>
+      <p>
+        Para quem não quer depender do trânsito da Almirante Barroso, o
+        treino em casa resolve: com halteres, elástico e colchonete, cabe um
+        treino completo de força numa sala ou varanda, e o profissional leva
+        o que faltar. O guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> mostra como funciona. Com o calor de Belém, o treino em
+        casa ainda tem uma vantagem: dá para escolher o cômodo mais fresco e
+        o horário certo.
+      </p>
+
+      <h2>O calor e a chuva no plano</h2>
+      <p>
+        Pelas normais do INMET (1991–2020) da estação de Belém, a temperatura
+        média é de 26,8 °C, a máxima média passa de 32 °C e a umidade média
+        do ano fica em 84%. Chove muito: 3.308 mm por ano, com março como o
+        mês mais chuvoso e setembro como o menos. De janeiro a abril, são 25
+        ou 26 dias de chuva por mês.
+      </p>
+
+      <p>
+        Na prática: treino ao ar livre logo cedo, hidratação reforçada, pausas
+        mais longas entre as séries nos dias mais úmidos e um plano B coberto
+        para a chuva — em casa ou na academia.
+      </p>
+
+      <h2>O Parque do Utinga para o fim de semana</h2>
+      <p>
+        Para trilha e pedal, o destino é o Parque Estadual do Utinga, no
+        Curió-Utinga, pela Avenida João Paulo II — a mesma avenida que passa
+        pelo Marco. Segundo o Ideflor-bio, o parque abre todos os dias, menos
+        às terças, das 6h às 17h, com entrada gratuita. As trilhas do Pataúa,
+        do Yuna e da Capivara são de baixa dificuldade, e as duas últimas
+        também podem ser feitas de bicicleta. Entre novembro e abril, o
+        órgão recomenda não fazê-las sem acompanhamento, por causa das
+        chuvas.
+      </p>
+
+      <h2>Quanto custa personal trainer no Marco</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/belem-pa/">personal trainer em Belém</a>,
+        vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo
+        pacote mensal, com 2 a 3 sessões semanais. O acompanhamento online
+        fica entre R$ 170 e R$ 430 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em casa tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Marco" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Marco, pergunte também como ele ajusta o treino ao calor — horário,
+        intensidade e hidratação — e o que acontece com a sessão quando
+        chove.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Marco, em Belém" />
+
+    <ContextualCta path={path} localidade="no Marco" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-marco-belem"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
