@@ -1,0 +1,271 @@
+---
+/**
+ * América (Joinville) — leva 6 de bairros, 22/10/2026, a pedido do Renato,
+ * antes dos prints de busca. Primeiro bairro de Joinville no portal: a
+ * cidade tinha 305 impressões em 28 dias e nenhum bairro.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923: 12.360
+ * moradores, 22º de 43 bairros; tabela 9922: 2,43 moradores por domicílio,
+ * contra 2,76 da cidade); Prefeitura de Joinville — "Joinville Bairro a
+ * Bairro" 2026 (área, associação de moradores, origem do nome) e 2017
+ * (1,63 km do Centro, Lei 1.526/1977), Inventário de espaços públicos de
+ * lazer 2013 e Guia Turístico 2016 (Parque das Águas Raul Guenther);
+ * Personal Gym & Life Style e Living Fitness América (TotalPass + Wellhub,
+ * mesmo bairro); Smart Fit Saguaçu (página oficial, aberta). Não há normal
+ * climatológica do INMET para Joinville, por isso a página não traz
+ * números de clima. Fora por fonte única ou bairro divergente: PhD Sports
+ * "América" (Wellhub diz Glória), Upper Fit, Summit Fitness.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/joinville-sc/',
+    titulo: 'Personal trainer em Joinville',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, com equipamento portátil.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/quanto-custa-personal-trainer/',
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'O que se paga por sessão e por pacote, e o que muda o valor.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-america-joinville';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-america-joinville');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no América, em Joinville?',
+    resposta:
+      'A referência de Joinville vai de R$ 80 a R$ 180 pela aula avulsa e de R$ 400 a R$ 1.050 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 180 e R$ 460 por mês. O formato — em casa, no condomínio ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Joinville?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 80 a R$ 180 em Joinville. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no bairro América?',
+    resposta:
+      'Pelo TotalPass e pelo Wellhub, a Personal Gym & Life Style, na Rua Lages, e a Living Fitness, na Rua Edgar Schneider, dentro do América Futebol Clube. Perto do bairro, a Smart Fit Saguaçu fica na Rua João Pessoa, no Saguaçu, segundo a página oficial da rede. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal em casa no América?',
+    resposta:
+      'Dá, e é um bairro que favorece o formato: a ocupação é antiga e residencial, com uma zona de casas que dá nome à associação de moradores. Garagem, varanda ou quintal comportam um treino completo de força com halteres, elástico e colchonete, e o profissional leva o que faltar. Para carga alta, a academia entra uma ou duas vezes por semana.',
+  },
+  {
+    pergunta: 'Onde passear e se movimentar ao ar livre no América?',
+    resposta:
+      'O Parque das Águas Raul Guenther, na Rua XV de Novembro, ao lado da Cidadela Cultural Antarctica, é um espaço de passeio e lazer com lago e parque infantil, segundo a Prefeitura. Serve para caminhada leve e para quem treina com a família por perto.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Joinville?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no condomínio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Joinville, de R$ 180 a R$ 460 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville, em São Paulo.',
+  },
+];
+
+const title = 'Personal Trainer no América, Joinville: preço e academias';
+const description =
+  'Personal trainer no bairro América, em Joinville: preço por aula, por mês e online, treino em casa, as academias do bairro e o Parque das Águas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Joinville</p>
+    <h1>Personal trainer no América, em Joinville: treino num bairro de casas perto do Centro</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O América fica a menos de 2 km do Centro de Joinville e tem pouco mais
+      de 12 mil moradores, segundo o Censo de 2022. É bairro de ocupação
+      antiga — até a mudança do América Futebol Clube, a região era chamada
+      de Centro — e de perfil residencial: a associação de moradores leva
+      no nome "Zona Residencial Exclusiva Unifamiliar".
+    </p>
+
+    <p class="lead">
+      Casas, domicílios com menos gente que a média da cidade (2,43
+      moradores por domicílio, contra 2,76) e o Centro logo ao lado. É o cenário de quem
+      procura um <strong>personal trainer</strong> no América.
+    </p>
+
+    <div class="prose">
+      <h2>O que o bairro de casas muda no treino</h2>
+      <p>
+        <strong>O treino cabe em casa.</strong> Garagem, varanda ou quintal
+        comportam um treino completo de força com halteres, elástico e
+        colchonete, e o profissional leva o que faltar. Sem elevador e sem
+        regra de condomínio, a montagem é mais simples do que em
+        apartamento. O guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> mostra como funciona.
+      </p>
+
+      <p>
+        <strong>A academia completa a semana.</strong> Para carga alta e
+        máquinas, o arranjo comum é duas sessões em casa e uma na academia.
+        No próprio bairro, pelo TotalPass e pelo Wellhub, ficam a
+        <strong> Personal Gym &amp; Life Style</strong>, na Rua Lages, e a
+        <strong> Living Fitness</strong>, na Rua Edgar Schneider, dentro do
+        América Futebol Clube. Logo ao lado, no Saguaçu, a <strong>Smart Fit
+        Saguaçu</strong> fica na Rua João Pessoa, segundo a página oficial da
+        rede. Antes de combinar o treino com personal na academia, confirme a
+        regra da unidade para profissional externo.
+      </p>
+
+      <p>
+        <strong>O parque fica no caminho.</strong> O Parque das Águas Raul
+        Guenther, na Rua XV de Novembro, ao lado da Cidadela Cultural
+        Antarctica, é um espaço de passeio e lazer com lago e parque
+        infantil, segundo a Prefeitura. Funciona para caminhada leve e para
+        quem quer se movimentar com a família por perto.
+      </p>
+
+      <h2>Um bairro de cultura</h2>
+      <p>
+        O América concentra boa parte da vida cultural de Joinville: o
+        Centreventos Cau Hansen, a Escola do Teatro Bolshoi no Brasil, a
+        Cidadela Cultural Antarctica e o Museu de Arte de Joinville ficam no
+        bairro, segundo a Prefeitura. Para quem mora aqui, o deslocamento a
+        pé para trabalho, escola e lazer é curto — e somar caminhada ao longo
+        da semana conta para o condicionamento tanto quanto a sessão com o
+        personal.
+      </p>
+
+      <h2>Quanto custa personal trainer no América</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/joinville-sc/">personal trainer em
+        Joinville</a>, vai de R$ 80 a R$ 180 pela aula avulsa e de R$ 400 a
+        R$ 1.050 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 180 e R$ 460 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em casa tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no América" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Para o treino em casa, pergunte também que equipamento ele leva, como
+        progride a carga sem academia e em que dia da semana a academia
+        entra no plano.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no América, em Joinville" />
+
+    <ContextualCta path={path} localidade="no América" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-america-joinville"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

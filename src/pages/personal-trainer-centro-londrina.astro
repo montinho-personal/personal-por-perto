@@ -1,0 +1,282 @@
+---
+/**
+ * Centro (Londrina) — leva 6 de bairros, 22/10/2026, a pedido do Renato,
+ * antes dos prints de busca. Escolhido por contraste com a Gleba Palhano
+ * (zona oeste, verticalização recente): o centro tradicional, segundo
+ * bairro mais populoso da cidade.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923: 29.918
+ * moradores no bairro que o IBGE chama de "Centro Histórico", 2º de 55;
+ * tabela 9922: 2,06 moradores por domicílio, contra 2,64 da cidade);
+ * Smart Fit Quintino (página oficial, aberta, no Open Mall Quintino); MC2
+ * Fitness, My Move e Arizona Cross (TotalPass + Wellhub, mesmo endereço no
+ * Centro); Prefeitura de Londrina (Bosque Central revitalizado em 2022,
+ * academia ao ar livre na lista da FEL 2024; Calçadão inaugurado em
+ * 10/12/1977); INMET, normais 1981–2010 da estação 83766 (a série
+ * 1991–2020 vem incompleta para Londrina). Fora por fonte única ou
+ * divergência: Skyfit Hugo Cabral, Panobianco Centro, My Move Quatro,
+ * vizinhança com o Lago Igapó, Zerão.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/londrina-pr/',
+    titulo: 'Personal trainer em Londrina',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-gleba-palhano/',
+    titulo: 'Personal trainer na Gleba Palhano',
+    descricao: 'O bairro que verticalizou em dez anos, com academia em quase todo condomínio.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, inclusive em apartamento pequeno.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-centro-londrina';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-centro-londrina');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Centro de Londrina?',
+    resposta:
+      'A referência de Londrina vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 170 e R$ 430 por mês. O que mais mexe no valor é o formato — em casa, no prédio ou na academia — e o deslocamento do profissional.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Londrina?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 160 em Londrina. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no Centro de Londrina?',
+    resposta:
+      'A Smart Fit Quintino, na Rua Quintino Bocaiúva, dentro do Open Mall Quintino, segundo a página oficial da rede. Pelo TotalPass e pelo Wellhub, também ficam no Centro a MC2 Fitness (Rua Mato Grosso), a My Move (Rua Prof. João Cândido) e a Arizona Cross (Rua Fernando de Noronha). Horário e telefone estão nas páginas de cada uma. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre no Centro de Londrina?',
+    resposta:
+      'No Bosque Central Marechal Cândido Rondon, ao lado da Catedral. A Prefeitura entregou a revitalização em 2022, com trajetos de caminhada, academia ao ar livre e quadra esportiva. É o espaço para treino leve e funcional perto de casa; corrida longa pede outro destino.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal em apartamento pequeno?',
+    resposta:
+      'Dá. Com um par de halteres, elástico e um colchonete, cabe um treino completo de força em poucos metros quadrados, e o profissional leva o que faltar. No Centro, onde os domicílios têm em média 2 moradores, esse formato é comum. O que o espaço pequeno limita é a carga alta; para ela, a academia entra uma ou duas vezes por semana.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Londrina?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no prédio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Londrina, de R$ 170 a R$ 430 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville, em São Paulo.',
+  },
+];
+
+const title = 'Personal Trainer no Centro de Londrina: preço e academias';
+const description =
+  'Personal trainer no Centro de Londrina: preço por aula, por mês e online, as academias do Centro, o Bosque Central e o treino em apartamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Londrina</p>
+    <h1>Personal trainer no Centro de Londrina: treino entre o Calçadão e o Bosque</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Centro é o segundo bairro mais populoso de Londrina: quase 30 mil
+      moradores no Censo de 2022, atrás só dos Cinco Conjuntos. E é um dos
+      que têm menos gente por casa — 2,06 moradores por domicílio, contra
+      2,64 na média da cidade.
+    </p>
+
+    <p class="lead">
+      Muita gente, em casas pequenas, a poucas quadras do trabalho. É esse o
+      cenário de quem procura um <strong>personal trainer</strong> no
+      Centro, e é para ele que este guia foi escrito.
+    </p>
+
+    <div class="prose">
+      <h2>Três lugares para o treino acontecer</h2>
+
+      <h3>1. Em casa</h3>
+      <p>
+        Com um par de halteres, elástico e um colchonete, cabe um treino
+        completo de força em poucos metros quadrados, e o profissional leva o
+        que faltar. Para quem mora sozinho ou a dois num apartamento do
+        Centro, é o formato que mais economiza tempo. O guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> mostra como funciona.
+      </p>
+
+      <h3>2. Na academia</h3>
+      <p>
+        A <strong>Smart Fit Quintino</strong> fica na Rua Quintino Bocaiúva,
+        dentro do Open Mall Quintino, segundo a página oficial da rede. Pelo
+        TotalPass e pelo Wellhub, o Centro tem também a <strong>MC2
+        Fitness</strong> (Rua Mato Grosso), a <strong>My Move</strong> (Rua
+        Prof. João Cândido) e a <strong>Arizona Cross</strong> (Rua Fernando
+        de Noronha). Antes de combinar o treino com um personal na academia,
+        confirme a regra da unidade para profissional externo.
+      </p>
+
+      <h3>3. No Bosque Central</h3>
+      <p>
+        O Bosque Central Marechal Cândido Rondon, ao lado da Catedral, é a
+        principal área verde do Centro. A Prefeitura entregou a revitalização
+        em janeiro de 2022, com trajetos de caminhada, academia ao ar livre,
+        quadra esportiva e circuito pet. Serve bem para caminhada, mobilidade
+        e treino funcional com peso do corpo; para corrida longa, o plano
+        precisa de outro destino.
+      </p>
+
+      <h2>O Calçadão no caminho</h2>
+      <p>
+        O Calçadão da Avenida Paraná, projetado por Jaime Lerner e inaugurado
+        em 10 de dezembro de 1977, no aniversário de 43 anos da cidade, é
+        chamado pela Prefeitura de segundo calçadão do Brasil. Para quem mora
+        e trabalha no Centro, é o trajeto a pé do dia a dia — e somar
+        caminhada ao longo da semana conta para o condicionamento tanto
+        quanto a sessão com o personal.
+      </p>
+
+      <h2>O clima ao longo do ano</h2>
+      <p>
+        Pelas normais do INMET (1981–2010) da estação de Londrina, a média
+        anual é de 21,6 °C. Julho é o mês mais frio, com média de 17,2 °C, e
+        agosto o mais seco. Janeiro é o mais quente e o mais chuvoso, com
+        mais de 240 mm. No verão, treino ao ar livre cedo ou no fim da tarde
+        e um plano B em casa para os dias de chuva; no inverno, as manhãs
+        frias pedem aquecimento mais longo.
+      </p>
+
+      <h2>Quanto custa personal trainer no Centro</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/londrina-pr/">personal trainer em
+        Londrina</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a
+        R$ 950 pelo pacote mensal, com 2 a 3 sessões semanais. O
+        acompanhamento online fica entre R$ 170 e R$ 430 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em casa tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Centro" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Centro, pergunte também como ele divide a semana entre casa,
+        academia e Bosque, e como progride a carga quando o treino é no
+        apartamento.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Centro de Londrina" />
+
+    <ContextualCta path={path} localidade="no Centro" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-centro-londrina"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
