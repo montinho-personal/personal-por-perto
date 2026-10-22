@@ -1,0 +1,398 @@
+---
+/**
+ * Emagrecer na menopausa — o recorte.
+ *
+ * `/musculacao/musculacao-na-menopausa/` é dona do treino de força da fase.
+ * Este artigo é dono do que os prints de 22/10/2026 mostraram: é possível?
+ * é normal emagrecer? é mais difícil, por quê? como fazer, com ou sem
+ * reposição hormonal? barriga? dieta, remédio, chá, suplemento? 50 anos?
+ * exercícios? Prints e decisões em docs/emagrecer-na-menopausa.md.
+ *
+ * Fontes conferidas em 22/10/2026 (resumos no Europe PMC): Greendale et al.
+ * 2019 (SWAN, composição corporal na transição); Lovejoy et al. 2008
+ * (gordura visceral e gasto de energia); Pontzer et al. 2021 (gasto ao
+ * longo da vida); Irwin et al. 2003 (exercício em pós-menopausa); Donnelly
+ * et al. 2009 (ACSM); Verheggen et al. 2016 (gordura visceral).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/musculacao-na-menopausa/',
+    titulo: 'Musculação na menopausa',
+    descricao: 'O treino de força da fase: por onde começar e o que as evidências mostram.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/gordura-visceral/',
+    titulo: 'Gordura visceral',
+    descricao: 'A gordura de dentro do abdome, a que mais pesa na saúde — e como ela sai.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/caminhada-emagrece/',
+    titulo: 'Caminhada emagrece?',
+    descricao: 'Quanto tempo, quantos quilos por mês e o que dizem os estudos.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/guias/personal-trainer-para-mulheres/',
+    titulo: 'Personal trainer para mulheres',
+    descricao: 'O treino feminino em cada fase, inclusive na menopausa.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/emagrecimento/emagrecer-na-menopausa';
+const atualizadoEm = '2026-10-22';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Emagrecer na menopausa', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'É possível emagrecer na menopausa?',
+    resposta:
+      'É. A menopausa muda a composição do corpo — mais gordura, menos músculo —, mas não impede a perda de gordura. Num ensaio clínico com mulheres de 50 a 75 anos na pós-menopausa, um ano de exercício moderado, sobretudo caminhada, reduziu peso, gordura total e gordura da barriga, e quem se exercitou mais perdeu mais.',
+  },
+  {
+    pergunta: 'É normal emagrecer na menopausa?',
+    resposta:
+      'Perder peso sem esforço, sem mudar alimentação nem atividade, não é o esperado da menopausa — o mais comum é o contrário, ganho de gordura. Emagrecimento sem explicação, em qualquer idade, merece consulta médica.',
+  },
+  {
+    pergunta: 'Por que é mais difícil emagrecer na menopausa?',
+    resposta:
+      'Três coisas acontecem juntas. Na transição, o ritmo de ganho de gordura dobra e a massa muscular começa a cair. O gasto de energia durante o sono cai mais nas mulheres que entram na menopausa do que nas que não entraram, e a queima de gordura também. E a atividade física costuma diminuir nos anos anteriores. Nada disso impede o emagrecimento, mas muda a estratégia.',
+  },
+  {
+    pergunta: 'O que é bom para perder peso na menopausa?',
+    resposta:
+      'O que funciona é o mesmo de outras fases, com mais peso para o músculo: um déficit calórico moderado, musculação para segurar a massa muscular que a fase tende a levar, atividade aeróbica regular — caminhada conta — e proteína suficiente. A diferença está na paciência e em medir mais do que a balança.',
+  },
+  {
+    pergunta: 'Como emagrecer na menopausa sem reposição hormonal?',
+    resposta:
+      'Pelo mesmo caminho de quem faz reposição: alimentação em déficit moderado, musculação e atividade aeróbica. Os estudos de exercício em pós-menopausa mostram perda de gordura sem depender de hormônio. A reposição é decisão médica, tomada pelos sintomas e pelo histórico de cada mulher, não pelo peso.',
+  },
+  {
+    pergunta: 'Reposição hormonal emagrece?',
+    resposta:
+      'Não é tratamento de emagrecimento. Há estudos observacionais em que mulheres em reposição tinham distribuição de gordura mais parecida com a de antes da menopausa, mas isso não faz da reposição um método para perder peso. Quem indica, e avalia riscos e benefícios, é o ginecologista.',
+  },
+  {
+    pergunta: 'Como emagrecer na menopausa e perder barriga?',
+    resposta:
+      'Perdendo gordura do corpo todo — nenhum exercício tira gordura só da barriga. A boa notícia é que o exercício reduz a gordura visceral, a de dentro do abdome, que é justamente a que aumenta na menopausa: numa meta-análise, cerca de 6% mesmo sem perda de peso.',
+  },
+  {
+    pergunta: 'O que tomar para diminuir a barriga na menopausa?',
+    resposta:
+      'Não encontramos estudo que mostre chá, remédio natural ou suplemento reduzindo de forma relevante a gordura da barriga. Medicamentos para obesidade existem e têm estudos, mas são indicação médica, com avaliação individual. O que tem evidência sem receita é déficit calórico, musculação e atividade aeróbica.',
+  },
+  {
+    pergunta: 'Como emagrecer aos 50 anos?',
+    resposta:
+      'O metabolismo, corrigido pelo tamanho do corpo, fica estável dos 20 aos 60 anos. O que muda aos 50 é a composição — menos músculo — e, para as mulheres, a menopausa. Por isso a musculação vira prioridade, ao lado de um déficit moderado e de atividade aeróbica regular.',
+  },
+  {
+    pergunta: 'Quais os melhores exercícios para emagrecer na menopausa?',
+    resposta:
+      'A combinação: atividade aeróbica, que soma gasto e reduz gordura, e musculação, que segura a massa muscular. No estudo com mulheres na pós-menopausa, a caminhada foi a atividade mais praticada, com média de cerca de três horas por semana. A recomendação geral para emagrecer passa de 250 minutos semanais de atividade moderada.',
+  },
+  {
+    pergunta: 'Existe dieta para emagrecer na menopausa?',
+    resposta:
+      'Não existe uma dieta específica da menopausa com evidência de funcionar melhor que as outras. O que emagrece é o déficit calórico, e na menopausa vale caprichar na proteína para proteger o músculo. Um cardápio feito para você, por nutricionista, rende mais que um PDF genérico.',
+  },
+];
+
+/* 58 caracteres. */
+const title = 'Emagrecer na menopausa: é possível? Por que é mais difícil';
+/* 145 caracteres. */
+const description =
+  'Emagrecer na menopausa é possível, mas o corpo muda: mais gordura na barriga, menos músculo. Estudos, reposição, exercícios e o que não funciona.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Emagrecer na menopausa: por que fica mais difícil e o que funciona</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: é possível emagrecer na menopausa. Fica mais
+      difícil, e não é impressão — o corpo muda de composição nessa fase,
+      com mais gordura, sobretudo na barriga, e menos músculo.
+    </p>
+
+    <p class="lead">
+      Entender o que muda é o que permite ajustar a estratégia. Abaixo, o
+      que os estudos mostram sobre a transição, o que funciona, o que
+      reposição hormonal tem a ver com isso e o que é só promessa.
+    </p>
+
+    <div class="prose">
+      <h2>É possível emagrecer na menopausa?</h2>
+      <p>
+        É. Num ensaio clínico com 173 mulheres sedentárias e acima do peso,
+        de 50 a 75 anos, já na pós-menopausa, um ano de exercício moderado —
+        cerca de três horas por semana, com a caminhada como atividade mais
+        comum — reduziu peso, percentual de gordura e gordura da barriga em
+        comparação com um grupo que só fazia alongamento. E houve
+        dose-resposta: <strong>quem se exercitou mais perdeu mais
+        gordura</strong>.
+      </p>
+
+      <p>
+        Os números desse estudo também ensinam o tamanho do efeito: em um
+        ano, só com exercício, a diferença de peso foi de 1,4 kg. Exercício
+        sozinho emagrece pouco em qualquer fase; o resultado maior vem quando
+        ele se soma a um ajuste na alimentação.
+      </p>
+
+      <h2>Por que emagrecer na menopausa é mais difícil</h2>
+      <p>
+        <strong>A composição muda, mesmo quando o peso não muda.</strong> O
+        maior estudo sobre o tema, que acompanhou mulheres ao longo de anos
+        com exame de composição corporal, mostrou que, no início da
+        transição, <strong>o ritmo de ganho de gordura dobra e a massa
+        muscular começa a cair</strong>. Isso segue até cerca de dois anos
+        depois da última menstruação e depois estabiliza. O curioso: o peso
+        na balança não acelerou — gordura entrando e músculo saindo se
+        compensam no número.
+      </p>
+
+      <p>
+        <strong>A gordura muda de lugar.</strong> Outro estudo, com
+        tomografia, viu todas as mulheres de meia-idade ganharem gordura
+        embaixo da pele com o passar dos anos, mas só as que entraram na
+        menopausa ganharam <strong>gordura visceral</strong>, a de dentro do
+        abdome. É a "barriga da menopausa".
+      </p>
+
+      <p>
+        <strong>O gasto cai um pouco, e o movimento cai antes.</strong> No
+        mesmo estudo, o gasto de energia durante o sono caiu mais nas
+        mulheres que entraram na menopausa (cerca de 8%) do que nas que
+        seguiam menstruando (cerca de 5%), e a queima de gordura caiu 32%.
+        A atividade física diminuiu já nos dois anos anteriores à
+        menopausa. Ao mesmo tempo, um levantamento com milhares de pessoas
+        mostrou que o metabolismo, corrigido pelo tamanho e pela massa
+        magra, fica estável dos 20 aos 60 anos. A leitura conjunta: o que
+        mais pesa é o músculo que se perde e o movimento que diminui — e as
+        duas coisas dá para mudar.
+      </p>
+
+      <FerramentaInline
+        id="percentual-de-gordura"
+        texto="Se a balança está parada mas as roupas apertam, é exatamente o que os estudos da menopausa descrevem: gordura sobe, músculo desce, peso igual. A calculadora estima o seu percentual de gordura com fita métrica — refeita a cada mês, mostra o que a balança esconde."
+        acao="Calcular meu percentual de gordura"
+      />
+
+      <h2>O que funciona para emagrecer na menopausa</h2>
+      <ul>
+        <li>
+          <strong>Déficit calórico moderado.</strong> É o que decide se há
+          perda de gordura, em qualquer fase. O artigo sobre{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+          calórico</a> mostra como montar a conta. Cortes muito agressivos
+          levam junto o músculo que a fase já tende a tirar.
+        </li>
+        <li>
+          <strong>Musculação.</strong> É a resposta direta à perda de massa
+          muscular da transição, e o posicionamento do Colégio Americano de
+          Medicina do Esporte aponta que treino de força pode aumentar a massa
+          magra e a perda de gordura, mesmo sem acelerar a perda de peso. O
+          artigo{' '}
+          <a href="/musculacao/musculacao-na-menopausa/">musculação na
+          menopausa</a> mostra por onde começar, inclusive para quem nunca
+          treinou.
+        </li>
+        <li>
+          <strong>Atividade aeróbica regular.</strong> Para emagrecer, a
+          recomendação passa de 250 minutos semanais de atividade moderada.
+          Caminhada conta, e foi a mais usada no estudo com mulheres na
+          pós-menopausa — o artigo{' '}
+          <a href="/emagrecimento/caminhada-emagrece/">caminhada
+          emagrece?</a> mostra quanto ela rende.
+        </li>
+        <li>
+          <strong>Proteína suficiente.</strong> Ajuda a preservar músculo
+          durante o déficit. A quantidade depende do peso, da idade e do
+          treino, e com doença renal ou outra condição o ajuste é do médico
+          ou do nutricionista.
+        </li>
+        <li>
+          <strong>Medir além da balança.</strong> Cintura, fotos e roupas
+          contam a história que o peso esconde nessa fase.
+        </li>
+      </ul>
+
+      <h2>Com ou sem reposição hormonal</h2>
+      <p>
+        Dá para emagrecer sem reposição: os estudos de exercício em
+        pós-menopausa mostram perda de gordura sem depender de hormônio. E a
+        reposição não é tratamento de emagrecimento. Há estudos
+        observacionais em que mulheres em reposição tinham distribuição de
+        gordura mais parecida com a de antes da menopausa, mas a decisão de
+        fazer ou não é do <strong>ginecologista</strong>, pelos sintomas,
+        pelo histórico e pelos riscos de cada mulher — não pelo peso.
+      </p>
+
+      <h2>Como perder a barriga na menopausa</h2>
+      <p>
+        Perdendo gordura do corpo todo. Nenhum exercício tira gordura só da
+        barriga, e o guia de{' '}
+        <a href="/emagrecimento/como-perder-barriga/">como perder
+        barriga</a> mostra o que os estudos de abdominal encontraram. A
+        notícia boa é específica da menopausa: a gordura que aumenta nessa
+        fase é a visceral, e é justamente a que mais responde ao exercício.
+        Numa meta-análise de 117 estudos, o exercício reduziu a gordura
+        visceral em cerca de 6% mesmo sem perda de peso. O artigo sobre{' '}
+        <a href="/emagrecimento/gordura-visceral/">gordura visceral</a>{' '}
+        explica a diferença entre as duas camadas.
+      </p>
+
+      <h2>Remédio, chá e suplemento</h2>
+      <p>
+        As buscas por "remédio natural", "chá" e "suplemento para emagrecer
+        na menopausa" estão entre as mais comuns. Não encontramos estudo que
+        mostre algum deles reduzindo gordura de forma relevante. Os
+        medicamentos para obesidade são outra conversa: existem, têm estudos
+        e são indicação médica, com avaliação de cada caso. Tomar por conta
+        própria não é opção.
+      </p>
+
+      <p>
+        O mesmo vale para "desinflamar o corpo para emagrecer": a expressão
+        virou rótulo de produto. O que reduz a gordura, inclusive a visceral,
+        segue sendo alimentação em déficit e exercício.
+      </p>
+
+      <h2>E se o peso estiver caindo sem esforço?</h2>
+      <p>
+        Não é o esperado da menopausa — o comum é o contrário. Perda de peso
+        sem mudança de alimentação ou de atividade, em qualquer idade,
+        merece consulta médica.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Na menopausa, o treino precisa fazer duas coisas ao mesmo tempo:
+        somar gasto e segurar músculo. Um profissional de Educação Física
+        monta essa semana, ajusta carga e volume ao que o corpo tolera e
+        respeita dores e limitações — que, quando aparecem, pedem também
+        avaliação de médico ou fisioterapeuta. O guia de{' '}
+        <a href="/guias/personal-trainer-para-mulheres/">personal trainer
+        para mulheres</a> mostra como esse acompanhamento funciona.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6483504/" target="_blank" rel="noopener noreferrer">Greendale GA, Sternfeld B, Huang M, et al. Changes in body composition and weight during the menopause transition. JCI Insight, 4(5):e124865, 2019</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2748330/" target="_blank" rel="noopener noreferrer">Lovejoy JC, Champagne CM, de Jonge L, Xie H, Smith SR. Increased visceral fat and decreased energy expenditure during the menopausal transition. International Journal of Obesity, 32(6):949-958, 2008</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8370708/" target="_blank" rel="noopener noreferrer">Pontzer H, Yamada Y, Sagayama H, et al. Daily energy expenditure through the human life course. Science, 373(6556):808-812, 2021</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/12525233/" target="_blank" rel="noopener noreferrer">Irwin ML, Yasui Y, Ulrich CM, et al. Effect of exercise on total and intra-abdominal body fat in postmenopausal women: a randomized controlled trial. JAMA, 289(3):323-330, 2003</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 41(2):459-471, 2009</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/27213481/" target="_blank" rel="noopener noreferrer">Verheggen RJ, Maessen MF, Green DJ, et al. A systematic review and meta-analysis on the effects of exercise training versus hypocaloric diet: distinct effects on body weight and visceral adipose tissue. Obesity Reviews, 17(8):664-690, 2016</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/16835076/" target="_blank" rel="noopener noreferrer">Genazzani AR, Gambacciani M. Effect of climacteric transition and hormone replacement therapy on body weight and body fat distribution. Gynecological Endocrinology, 22(3):145-150, 2006 — estudo observacional</a>
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre emagrecer na menopausa" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
