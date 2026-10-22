@@ -214,6 +214,7 @@ export const bairros: Bairro[] = [
   { slug: 'personal-trainer-ponta-da-praia', nome: 'Ponta da Praia', locucao: 'na Ponta da Praia', cidade: 'santos-sp' },
   { slug: 'personal-trainer-ponta-negra', nome: 'Ponta Negra', locucao: 'na Ponta Negra', cidade: 'manaus-am' },
   { slug: 'personal-trainer-ponta-verde', nome: 'Ponta Verde', locucao: 'na Ponta Verde', cidade: 'maceio-al' },
+  { slug: 'personal-trainer-portao', nome: 'Portão', locucao: 'no Portão', cidade: 'curitiba-pr' },
   { slug: 'personal-trainer-praia-do-canto', nome: 'Praia do Canto', locucao: 'na Praia do Canto', cidade: 'vitoria-es' },
   { slug: 'personal-trainer-recreio-dos-bandeirantes', nome: 'Recreio dos Bandeirantes', locucao: 'no Recreio dos Bandeirantes', cidade: 'rio-de-janeiro-rj', zona: 'Zona Oeste', prioridade: 2,
     descricao: 'Cinco quilômetros de praia contínua, condomínios de prédio baixo com academia própria e o começo da ciclovia que segue pela orla carioca.',

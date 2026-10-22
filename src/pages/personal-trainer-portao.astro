@@ -1,0 +1,269 @@
+---
+/**
+ * Portão (Curitiba) — leva 8 de bairros, 22/10/2026, a pedido do Renato,
+ * antes dos prints. Escolha pelo GSC de 22/10: "personal trainer curitiba"
+ * parada na posição 39, a pior das cidades grandes; os 6 bairros de
+ * Curitiba (Água Verde, Batel, Bigorrilho, Cabral, Ecoville, Santa
+ * Felicidade) são do eixo nobre. O Portão é bairro grande, de classe média.
+ *
+ * Fontes conferidas em 22/10/2026: IBGE, Censo 2022 (tabela 9923: 49.180
+ * moradores, 11º de 75 bairros, quase o mesmo tamanho do Água Verde;
+ * tabela 9922: 2,37 moradores por domicílio, contra 2,58 da cidade); Smart
+ * Fit Portão (página oficial, aberta; TotalPass com o mesmo endereço); Seven
+ * 7 Play, Xperience Sports Center, Arbo CrossFit, Fit Studio Portão e AMV
+ * Funcional & Pilates (TotalPass + Wellhub, mesmo endereço). Fora: Bluefit
+ * Palladium e Bluefit "Portão" (abertura não confirmada; a "Portão" a rede
+ * registra no Água Verde), Shopping Palladium (site bloqueado), parques,
+ * terminal e clima (sites da Prefeitura, URBS, IPPUC e INMET bloqueados
+ * aqui), academias com fonte única ou endereço divergente.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/curitiba-pr/',
+    titulo: 'Personal trainer em Curitiba',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-agua-verde/',
+    titulo: 'Personal trainer no Água Verde',
+    descricao: 'O vizinho do mesmo tamanho: qual formato compensa no bairro.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, inclusive em apartamento pequeno.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-portao';
+const atualizadoEm = '2026-10-22';
+const crumbs = crumbsBairro('personal-trainer-portao');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Portão, em Curitiba?',
+    resposta:
+      'A referência de Curitiba vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 180 e R$ 450 por mês. O formato — em casa, no prédio ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Curitiba?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 160 em Curitiba. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no Portão?',
+    resposta:
+      'A Smart Fit Portão, na Rua Eduardo Carlos Pereira, segundo a página oficial da rede — a única unidade da rede com endereço no bairro. Pelo TotalPass e pelo Wellhub, o Portão tem também academias e estúdios como a Seven 7 Play (Rua Carlos Dietzsch), o Xperience Sports Center (Rua Eng. Heitor Soares Gomes), o Arbo CrossFit (Rua Eng. Arthur Bettes) e o Fit Studio Portão (Rua João Bettega). Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Academia grande ou estúdio: qual combina com treino com personal?',
+    resposta:
+      'Depende do que você quer da sessão. Na academia grande, o personal usa mais máquinas e carga, mas divide o espaço no horário de pico. No estúdio, o ambiente é menor e mais controlado, e muitos já trabalham com treino acompanhado. No Portão há os dois formatos; o que decide é o horário em que você treina e a regra de cada lugar para profissional externo.',
+  },
+  {
+    pergunta: 'Dá para treinar com personal em apartamento pequeno?',
+    resposta:
+      'Dá. Com um par de halteres, elástico e um colchonete, cabe um treino completo de força em poucos metros quadrados, e o profissional leva o que faltar. No Portão, onde os domicílios têm em média 2,37 moradores — abaixo da média de Curitiba —, esse formato é comum. Para carga alta, a academia entra uma ou duas vezes por semana.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Curitiba?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no prédio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Curitiba, de R$ 180 a R$ 450 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville, em São Paulo.',
+  },
+];
+
+const title = 'Personal Trainer no Portão (Curitiba): preço e academias';
+const description =
+  'Personal trainer no Portão, em Curitiba: preço por aula, por mês e online, a Smart Fit Portão, os estúdios e boxes do bairro e o treino em apartamento.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Curitiba</p>
+    <h1>Personal trainer no Portão: academia de rede, estúdio ou em casa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Portão tem cerca de 49 mil moradores, segundo o Censo de 2022 — o 11º
+      bairro mais populoso de Curitiba, praticamente do tamanho do Água Verde.
+      Os domicílios têm, em média, 2,37 moradores, abaixo dos 2,58 da cidade.
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer</strong> no Portão, a
+      escolha é de formato: a academia de rede, um dos estúdios e boxes
+      do bairro, ou o treino em casa. Este guia mostra o que cada um oferece e
+      quanto custa.
+    </p>
+
+    <div class="prose">
+      <h2>Academia de rede</h2>
+      <p>
+        A <strong>Smart Fit Portão</strong> fica na Rua Eduardo Carlos
+        Pereira, segundo a página oficial da rede — é a única das unidades da
+        rede em Curitiba com endereço no bairro. Para o treino com personal, a
+        academia grande oferece máquinas e carga; o custo é dividir o espaço no
+        horário de pico. Antes de combinar, confirme a regra da unidade para
+        profissional externo.
+      </p>
+
+      <h2>Estúdios, boxes e treino funcional</h2>
+      <p>
+        O Portão tem vários espaços menores. Pelo TotalPass e
+        pelo Wellhub, com o mesmo endereço nas duas plataformas, ficam no
+        bairro a <strong>Seven 7 Play</strong>, na Rua Carlos Dietzsch, o
+        <strong> Xperience Sports Center</strong>, na Rua Eng. Heitor Soares
+        Gomes, o <strong>Arbo CrossFit</strong>, na Rua Eng. Arthur Bettes, o
+        <strong> Fit Studio Portão</strong>, na Rua João Bettega, e o
+        <strong> AMV Funcional &amp; Pilates</strong>, na Rua José Júlio
+        Biscaia.
+      </p>
+
+      <p>
+        Estúdio e box têm ambiente mais controlado e, muitas vezes, já
+        trabalham com treino acompanhado — o que pode substituir o personal
+        externo ou complementar o trabalho dele. Vale perguntar ao estúdio como
+        funciona a turma e ao personal se ele atende no espaço.
+      </p>
+
+      <h2>Treinar em casa</h2>
+      <p>
+        Com halteres, elástico e colchonete, cabe um treino completo de força
+        numa sala ou varanda, e o profissional leva o que faltar. Para casas
+        com poucos moradores — o perfil médio do bairro —, é o formato que mais
+        economiza tempo. O guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a> mostra como funciona. O arranjo comum é duas sessões em
+        casa e uma na academia, para os exercícios que pedem barra e máquina.
+      </p>
+
+      <h2>Quanto custa personal trainer no Portão</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/curitiba-pr/">personal trainer em
+        Curitiba</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$
+        950 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 180 e R$ 450 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar em casa tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Portão" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Portão, pergunte também em qual espaço ele atende — academia de
+        rede, estúdio ou casa — e como progride a carga quando o treino é no
+        apartamento.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Portão" />
+
+    <ContextualCta path={path} localidade="no Portão" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-portao"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
