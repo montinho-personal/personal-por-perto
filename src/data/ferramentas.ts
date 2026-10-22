@@ -972,6 +972,44 @@ const TREINO: FerramentaCatalogo[] = [
     publicadoEm: '2026-10-14',
   },
   {
+    // Prints do Google de 22/10/2026 ("calculadora de emagrecimento"): o
+    // autocompletar pede "tempo de emagrecimento"; as perguntas, "como fazer
+    // o cálculo para perder peso", "5 kg em 1 mês" e "500 calorias por dia".
+    // A de gasto diário fica dona de "quanto eu gasto"; esta, de "quanto
+    // tempo até a meta". Registro em docs/calculadora-de-emagrecimento.md.
+    slug: 'calculadora-de-emagrecimento',
+    url: '/ferramentas/calculadora-de-emagrecimento/',
+    nome: 'Calculadora de emagrecimento',
+    nomeCurto: 'Tempo até a meta',
+    categoria: 'treino',
+    resumo: 'Em quanto tempo você chega ao peso da meta, com o gasto caindo junto com o peso e a constância de verdade — e a conta simples ao lado.',
+    pergunta: 'Em quanto tempo eu chego ao meu peso?',
+    acao: 'Simular o meu prazo',
+    tempo: 'Resultado na hora',
+    aliases: [
+      'calculadora de emagrecimento',
+      'calculadora de emagrecimento gratuita',
+      'calculadora de tempo de emagrecimento',
+      'quanto tempo para emagrecer',
+      'em quanto tempo vou emagrecer',
+      'quanto tempo para perder 10 kg',
+      'quanto tempo para perder 5 kg',
+      'como fazer o cálculo para perder peso',
+      'calcular perda de peso',
+      'perder 5 kg em 1 mês',
+      'perder 7 kg em 2 meses',
+      'déficit de 500 calorias por dia',
+      'calculadora de déficit calórico',
+      'déficit calórico calcular',
+      'simulador de emagrecimento',
+      'meta de peso',
+      'parei de emagrecer',
+    ],
+    tags: ['emagrecimento', 'déficit calórico', 'meta', 'prazo'],
+    relacionadas: ['gasto-calorico-diario', 'percentual-de-gordura'],
+    publicadoEm: '2026-10-22',
+  },
+  {
     slug: 'percentual-de-gordura',
     url: '/ferramentas/calculadora-de-percentual-de-gordura/',
     nome: 'Calculadora de percentual de gordura',

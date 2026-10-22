@@ -1,0 +1,782 @@
+---
+/**
+ * Calculadora de emagrecimento — quanto tempo até a meta.
+ *
+ * A PERGUNTA
+ * "Em quanto tempo eu chego ao meu peso?" A conta que quase toda
+ * calculadora faz é a linear — quilos × 7.700 ÷ déficit — e ela promete
+ * demais: o gasto do dia cai junto com o peso. Esta simula dia a dia com o
+ * gasto recalculado (motor em lib/corpo/emagrecimento.ts) e mostra a conta
+ * simples ao lado, para a diferença ficar visível.
+ *
+ * DO GOOGLE, 22/10 (prints do Renato, em
+ * docs/pesquisas/2026-10-22-perder-10-kg/prints/, 10 a 13): o autocompletar
+ * de "calculadora de emagrecimento" traz gratuito, basal, tempo de
+ * emagrecimento, de calorias e para dieta; "As pessoas também perguntam",
+ * como fazer o cálculo para perder peso, 5 kg em 1 mês, 7 kg em 2 meses e
+ * 500 calorias por dia; as pesquisas relacionadas, calculadora de déficit
+ * calórico e tabela de calorias por peso. Cada uma virou seção ou FAQ, com
+ * os números saindo do motor. Registro em docs/calculadora-de-emagrecimento.md.
+ *
+ * O que ela não faz, também dito: não monta dieta. Plano alimentar é com
+ * nutricionista.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import WhatsAppCta from '../../components/WhatsAppCta.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { FONTES } from '../../lib/calorias/gastoDiario';
+import {
+  CONSTANCIAS,
+  DEFICITS,
+  ESTILOS,
+  KCAL_POR_KG,
+  NOTA_ABAIXO_METABOLISMO,
+  NOTA_BAIXO_PESO,
+  NOTA_ESTIMATIVA,
+  NOTA_NAO_PRESCRICAO,
+  curvaResumida,
+  deficit,
+  estilo,
+  formataKcal,
+  formataKg,
+  formataPct,
+  formataPrazo,
+  frasePlano,
+  simula,
+} from '../../lib/corpo/emagrecimento';
+
+const path = '/ferramentas/calculadora-de-emagrecimento';
+const atualizadoEm = '2026-10-22';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Ferramentas', url: '/ferramentas/' },
+  { nome: 'Calculadora de emagrecimento', url: path },
+];
+
+/* ── Exemplos resolvidos no servidor, pelo mesmo motor da calculadora ── */
+const SEXO = 'feminino' as const;
+const IDADE = 35;
+const PESO = 80;
+const ALTURA = 165;
+const META = 70;
+const ESTILO = 'sedentario';
+const DEFICIT = 'moderado';
+const CONSTANCIA = 0.9;
+
+const plano = (meta: number, idDeficit = DEFICIT, constancia = CONSTANCIA) =>
+  simula(SEXO, PESO, ALTURA, IDADE, ESTILO, meta, idDeficit, constancia);
+
+const EX = plano(META);
+const EX_CURVA = curvaResumida(EX.curva);
+const alturaM = (ALTURA / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+const pessoa = `${IDADE} anos, ${PESO} kg e ${alturaM} m`;
+
+/** Prazo por quilos a perder × tamanho do déficit, para a mulher do exemplo. */
+const QUILOS = [5, 10, 15, 20];
+const TAB_PRAZO = QUILOS.map((kg) => ({ kg, planos: DEFICITS.map((d) => plano(PESO - kg, d.id)) }));
+const prazoOuNao = (p: ReturnType<typeof plano>) =>
+  p.chega ? formataPrazo(p.dias as number) : `perto de ${formataKg(p.pesoEquilibrio)} kg`;
+
+/** Constância: a mesma meta, o mesmo déficit, dias diferentes de plano cumprido. */
+const TAB_CONSTANCIA = CONSTANCIAS.map((c) => ({ c, p: plano(META, DEFICIT, c) }));
+
+/** O que um mês de cada déficit tira, com o plano cumprido todos os dias. */
+const UM_MES = DEFICITS.map((d) => {
+  const p = plano(PESO - 30, d.id, 1);
+  return { d, mes1: PESO - p.curva[1].pesoKg, mes2: PESO - p.curva[2].pesoKg, consumo: p.consumo };
+});
+const firme = UM_MES[UM_MES.length - 1];
+const moderado = UM_MES.find((u) => u.d.id === 'moderado')!;
+/** Déficit diário que a conta simples pediria para 5 kg em 30 dias e 7 kg em 60. */
+const pede5em1 = (5 * KCAL_POR_KG) / 30;
+const pede7em2 = (7 * KCAL_POR_KG) / 60;
+const EX_LEVE_20 = plano(PESO - 20, 'leve');
+const FIRME_60 = plano(META, 'firme', 0.6);
+
+/* 57 caracteres. "Calculadora de emagrecimento" é a busca; "tempo" vem do autocompletar (22/10). */
+const title = 'Calculadora de Emagrecimento: Quanto Tempo Até a Sua Meta';
+/* 143 caracteres. */
+const description =
+  'Calculadora de emagrecimento grátis: informe peso, meta e rotina e veja em quanto tempo chega lá, com o gasto do corpo caindo junto com o peso.';
+
+const faqs = [
+  {
+    pergunta: 'Como fazer o cálculo para perder peso?',
+    resposta: `A conta simples multiplica os quilos por cerca de ${KCAL_POR_KG.toLocaleString('pt-BR')} kcal e divide pelo déficit do dia. Para 10 kg com déficit de 500 kcal, dá ${formataPrazo((10 * KCAL_POR_KG) / 500)}. Ela erra para menos, porque o gasto cai junto com o peso: com o gasto recalculado e o plano cumprido em ${formataPct(CONSTANCIA)} dos dias, a mulher do exemplo (${pessoa}) leva ${formataPrazo(EX.dias as number)}. A calculadora faz essa segunda conta com os seus dados.`,
+  },
+  {
+    pergunta: 'Quanto emagrece com déficit de 500 calorias por dia?',
+    resposta: `No começo, perto de ${formataKg((500 * 7) / KCAL_POR_KG)} kg por semana pela regra das ${KCAL_POR_KG.toLocaleString('pt-BR')} kcal, com o plano cumprido todos os dias. Para a mulher do exemplo, isso dá cerca de ${formataKg(moderado.mes1)} kg no primeiro mês e ${formataKg(moderado.mes2)} kg em dois — e o ritmo vai caindo, porque o corpo mais leve gasta menos. Na primeira semana a balança costuma cair mais, mas é água, não gordura.`,
+  },
+  {
+    pergunta: 'Dá para perder 5 kg em 1 mês?',
+    resposta: `Em gordura, para a maioria das pessoas, não. Pela conta simples, 5 kg em 30 dias pedem um déficit de cerca de ${formataKcal(pede5em1)} kcal por dia. Com o déficit firme da calculadora (${firme.d.kcal} kcal) cumprido todos os dias, a mulher do exemplo perde perto de ${formataKg(firme.mes1)} kg no primeiro mês. A balança pode mostrar mais nas primeiras semanas, mas boa parte é água. Corte maior que isso é com acompanhamento de nutricionista e médico.`,
+  },
+  {
+    pergunta: 'Dá para perder 7 kg em 2 meses?',
+    resposta: `Pela conta simples, 7 kg em 60 dias pedem cerca de ${formataKcal(pede7em2)} kcal de déficit por dia. Com o déficit firme da calculadora (${firme.d.kcal} kcal), cumprido todos os dias, a mulher do exemplo chega perto de ${formataKg(firme.mes2)} kg em dois meses; com o moderado, ${formataKg(moderado.mes2)} kg. Para quem pesa mais, o número sobe; para quem pesa menos, desce.`,
+  },
+  {
+    pergunta: 'Quanto tempo para perder 10 kg?',
+    resposta: `Para a mulher do exemplo, com rotina sedentária, déficit de 500 kcal e o plano cumprido em ${formataPct(CONSTANCIA)} dos dias: ${formataPrazo(EX.dias as number)}. Com déficit leve, ${formataPrazo(TAB_PRAZO[1].planos[0].dias as number)}; com o firme, ${formataPrazo(TAB_PRAZO[1].planos[2].dias as number)}. O artigo sobre quanto tempo para perder 10 kg explica cada parte dessa conta.`,
+  },
+  {
+    pergunta: 'Qual é o déficit calórico ideal?',
+    resposta: 'Não existe um número que sirva para todo mundo. O tamanho do corte depende do seu gasto, da sua saúde, da sua rotina e de quanto tempo você consegue manter o plano. A calculadora mostra o efeito de três tamanhos no prazo; quem define o seu é o nutricionista.',
+  },
+  {
+    pergunta: 'Por que esta calculadora dá um prazo maior que outras?',
+    resposta: 'Porque a maioria faz a conta linear: divide os quilos pelo déficit como se o gasto do corpo ficasse parado. Ele não fica — quem pesa menos gasta menos. Esta calculadora recalcula o gasto a cada dia com o peso novo, e ainda considera os dias em que o plano não acontece. O prazo fica maior porque fica mais perto do real.',
+  },
+  {
+    pergunta: 'Por que eu parei de emagrecer comendo o mesmo?',
+    resposta: `Porque o déficit encolhe sozinho. Se você come a mesma quantidade enquanto o peso cai, o gasto vai descendo até encontrar o consumo, e o peso estabiliza. Na conta da mulher do exemplo, mantendo um déficit leve fixo de ${deficit('leve').kcal} kcal, o peso para perto de ${formataKg(EX_LEVE_20.pesoEquilibrio)} kg. É por isso que o plano precisa ser refeito no caminho.`,
+  },
+  {
+    pergunta: 'A calculadora usa o metabolismo basal?',
+    resposta: 'Usa. O ponto de partida é o metabolismo de repouso pela equação de Mifflin-St Jeor, multiplicado pelo estilo de vida — a mesma conta da calculadora de gasto calórico diário. A diferença é que aqui ela é refeita a cada dia, com o peso novo.',
+  },
+  {
+    pergunta: 'Preciso somar as calorias do treino?',
+    resposta: 'Não. O estilo de vida escolhido já inclui o exercício. Se você marcou "ativo" porque treina uma hora por dia, somar o treino por cima conta a mesma hora duas vezes.',
+  },
+  {
+    pergunta: 'A calculadora de emagrecimento é gratuita?',
+    resposta: 'É, sem cadastro. A conta acontece no seu navegador: peso, altura, idade e meta não são enviados para lugar nenhum.',
+  },
+  {
+    pergunta: 'Serve para gestante?',
+    resposta: 'Não. A equação não vale para gestação nem amamentação, e emagrecer nessas fases é decisão com o médico e o nutricionista do pré-natal.',
+  },
+];
+
+const relacionados = [
+  {
+    url: '/emagrecimento/quanto-tempo-para-perder-10kg/',
+    titulo: 'Quanto tempo para perder 10 kg?',
+    descricao: 'A conta real e o prazo, com o que os estudos mostram sobre ir rápido ou devagar.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como funciona',
+    descricao: 'O que é o déficit, por que ele encolhe no caminho e como o treino entra nisso.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/calorias/gasto-calorico-diario/',
+    titulo: 'Calculadora de gasto calórico diário',
+    descricao: 'Quanto você gasta num dia inteiro, em faixa e com as fontes — o ponto de partida desta conta.',
+    tipo: 'Calorias',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Por que o treino de força importa mais quando o gasto passa a ser maior que o consumo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const FONTE_KREITZMAN = {
+  rotulo:
+    'Kreitzman SN, Coxon AY, Szaz KF. Glycogen storage: illusions of easy weight loss, excessive weight regain, and distortions in estimates of body composition. American Journal of Clinical Nutrition, 56(1 Suppl):292S-293S, 1992',
+  url: 'https://pubmed.ncbi.nlm.nih.gov/1615908/',
+  resumo:
+    'o glicogênio é guardado com 3 a 4 partes de água; por isso a balança cai rápido no começo de uma dieta e volta rápido depois, sem que isso seja gordura.',
+};
+const REFERENCIAS = [...FONTES, FONTE_KREITZMAN];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+
+/* Linhas curtas: a fórmula precisa caber em 320px. */
+const formula = `conta simples:
+quilos × ${KCAL_POR_KG.toLocaleString('pt-BR')} ÷ déficit do dia
+
+esta calculadora, dia a dia:
+gasto do dia = metabolismo de
+repouso (com o peso de hoje)
+× nível de atividade
+déficit do dia = (gasto − consumo)
+× constância
+peso de amanhã = peso de hoje
+− déficit ÷ ${KCAL_POR_KG.toLocaleString('pt-BR')}`;
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+
+  <header class="em-hero">
+    <div class="container em-hero-inner">
+      <p class="eyebrow">Ferramenta</p>
+      <h1>Calculadora de emagrecimento: em quanto tempo você chega ao seu peso</h1>
+      <p class="em-hero-lead">
+        Informe o peso de hoje, a meta e a sua rotina. A conta simula dia a dia, com o gasto do corpo
+        caindo junto com o peso. Para uma mulher de {pessoa}, sedentária, indo para {META} kg com
+        déficit de {deficit(DEFICIT).kcal} kcal: <strong>{formataPrazo(EX.dias as number)}</strong> —
+        a conta simples diria {formataPrazo(EX.diasLinear)}.
+      </p>
+      <p class="em-micro">Grátis · sem cadastro · a conta acontece no seu navegador</p>
+    </div>
+  </header>
+
+  <div class="container em-layout">
+    <article class="em-main">
+      <section id="em-app" class="em-app" aria-labelledby="em-app-h">
+        <h2 id="em-app-h" class="em-app-h">Simule o seu prazo</h2>
+
+        <div class="em-campos">
+          <div class="em-campo">
+            <span class="em-rotulo" id="em-sexo-rotulo">Sexo</span>
+            <div class="em-presets" role="group" aria-labelledby="em-sexo-rotulo">
+              {[
+                ['feminino', 'Feminino'],
+                ['masculino', 'Masculino'],
+              ].map(([id, nome]) => (
+                <button
+                  type="button"
+                  class:list={['em-preset', 'em-sexo', id === SEXO && 'is-ativo']}
+                  data-sexo={id}
+                  aria-pressed={String(id === SEXO)}
+                >
+                  {nome}
+                </button>
+              ))}
+            </div>
+            <p class="em-dica">A equação do metabolismo tem uma versão para cada sexo biológico.</p>
+          </div>
+
+          <div class="em-medidas">
+            <div class="em-campo">
+              <label for="em-idade">Idade (anos)</label>
+              <input id="em-idade" type="text" inputmode="numeric" autocomplete="off" value={IDADE} />
+            </div>
+            <div class="em-campo">
+              <label for="em-altura">Altura (cm)</label>
+              <input id="em-altura" type="text" inputmode="decimal" autocomplete="off" value={ALTURA} />
+            </div>
+            <div class="em-campo">
+              <label for="em-peso">Peso hoje (kg)</label>
+              <input id="em-peso" type="text" inputmode="decimal" autocomplete="off" value={PESO} />
+            </div>
+            <div class="em-campo">
+              <label for="em-meta">Meta (kg)</label>
+              <input id="em-meta" type="text" inputmode="decimal" autocomplete="off" value={META} />
+            </div>
+          </div>
+
+          <div class="em-campo">
+            <span class="em-rotulo" id="em-estilo-rotulo">Seu dia típico</span>
+            <div class="em-presets" role="group" aria-labelledby="em-estilo-rotulo">
+              {ESTILOS.map((e) => (
+                <button
+                  type="button"
+                  class:list={['em-preset', 'em-estilo', e.id === ESTILO && 'is-ativo']}
+                  data-estilo={e.id}
+                  aria-pressed={String(e.id === ESTILO)}
+                >
+                  {e.nomeCurto}
+                </button>
+              ))}
+            </div>
+            <p class="em-dica em-slot-estilo" id="em-estilo-dica">{estilo(ESTILO).comoReconhecer}</p>
+          </div>
+
+          <div class="em-campo">
+            <span class="em-rotulo" id="em-deficit-rotulo">Tamanho do corte por dia</span>
+            <div class="em-presets" role="group" aria-labelledby="em-deficit-rotulo">
+              {DEFICITS.map((d) => (
+                <button
+                  type="button"
+                  class:list={['em-preset', 'em-deficit', d.id === DEFICIT && 'is-ativo']}
+                  data-deficit={d.id}
+                  aria-pressed={String(d.id === DEFICIT)}
+                >
+                  {d.nome} · {d.kcal} kcal
+                </button>
+              ))}
+            </div>
+            <p class="em-dica em-slot-deficit" id="em-deficit-dica">{deficit(DEFICIT).leitura}</p>
+          </div>
+
+          <div class="em-campo">
+            <span class="em-rotulo" id="em-constancia-rotulo">Em quantos dias o plano acontece de verdade</span>
+            <div class="em-presets" role="group" aria-labelledby="em-constancia-rotulo">
+              {CONSTANCIAS.map((c) => (
+                <button
+                  type="button"
+                  class:list={['em-preset', 'em-constancia', c === CONSTANCIA && 'is-ativo']}
+                  data-constancia={String(c)}
+                  aria-pressed={String(c === CONSTANCIA)}
+                >
+                  {formataPct(c)}
+                </button>
+              ))}
+            </div>
+            <p class="em-dica">
+              Fim de semana, festa, viagem: nos dias fora do plano, a conta assume que você come o que gasta.
+              Quase ninguém cumpre 100%.
+            </p>
+          </div>
+        </div>
+
+        <p id="em-erro" class="em-erro" role="status" hidden></p>
+
+        <div id="em-saida" class="em-saida" role="status" aria-live="polite">
+          <p class="em-resultado">
+            <span class="em-numero">{formataPrazo(EX.dias as number)}</span>
+            <span class="em-unidade">até {formataKg(META)} kg</span>
+          </p>
+          <p class="em-quando"></p>
+          <p class="em-frase">{frasePlano(EX)}</p>
+
+          <dl class="em-detalhes">
+            <div><dt>Gasto do dia hoje</dt><dd class="em-d-gasto">≈ {formataKcal(EX.gastoInicial)} kcal</dd></div>
+            <div><dt>Consumo do plano</dt><dd class="em-d-consumo">≈ {formataKcal(EX.consumo)} kcal</dd></div>
+            <div><dt>Ritmo da 1ª semana</dt><dd class="em-d-ritmo">≈ {formataKg(EX.kgSemanaInicio)} kg</dd></div>
+            <div><dt>Na conta simples</dt><dd class="em-d-linear">{formataPrazo(EX.diasLinear)}</dd></div>
+          </dl>
+
+          <div class="tabela-rolavel em-curva">
+            <table>
+              <caption>O peso no fim de cada mês</caption>
+              <thead>
+                <tr><th scope="col">Quando</th><th scope="col">Peso</th><th scope="col">Desde o início</th></tr>
+              </thead>
+              <tbody>
+                {EX_CURVA.map((c) => (
+                  <tr>
+                    <th scope="row">{Number.isInteger(c.mes) ? `Mês ${c.mes}` : 'Meta'}</th>
+                    <td>{formataKg(c.pesoKg)} kg</td>
+                    <td>−{formataKg(PESO - c.pesoKg)} kg</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p class="em-nota em-alerta em-nota-abaixo" hidden={!EX.consumoAbaixoDoMetabolismo}>{NOTA_ABAIXO_METABOLISMO}</p>
+          <p class="em-nota em-alerta em-nota-baixo" hidden={!EX.metaBaixoPeso}>{NOTA_BAIXO_PESO}</p>
+          <p class="em-nota">{NOTA_ESTIMATIVA}</p>
+
+          <div class="em-proximo">
+            <p class="em-proximo-lead">
+              O prazo depende de comer menos do que gasta — e isso é com nutricionista. O que o treino
+              faz é outra coisa: <strong>o treino de força ajuda a manter o músculo enquanto o peso cai</strong>,
+              para que o que sai seja gordura.
+            </p>
+            <div class="em-proximo-acoes">
+              <a class="em-btn em-btn-primario" href="/personal-trainer/" data-track="emagrecimento:cta-local">
+                Encontrar personal na minha cidade
+              </a>
+              <a
+                class="em-btn em-btn-secundario em-whats"
+                href="https://wa.me/"
+                target="_blank"
+                rel="noopener"
+                data-track="emagrecimento:cta-whatsapp"
+              >
+                Falar com o Montinho sobre acompanhamento online
+              </a>
+            </div>
+            <p class="em-proximo-nota">
+              O Personal por Perto é um portal editorial. O diretório de cidades é gratuito; o
+              Montinho Personal é o profissional que assina o conteúdo do portal e atende online
+              para todo o Brasil.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="prose em-conteudo">
+        <h2>Como fazer o cálculo para perder peso</h2>
+        <p>
+          A conta que circula por aí é uma divisão: cada quilo de peso perdido equivale a cerca de{' '}
+          {KCAL_POR_KG.toLocaleString('pt-BR')} kcal, então os quilos vezes {KCAL_POR_KG.toLocaleString('pt-BR')},
+          divididos pelo déficit do dia, dão os dias. Para 10 kg com 500 kcal por dia, são{' '}
+          {formataPrazo((10 * KCAL_POR_KG) / 500)}.
+        </p>
+        <p>
+          O problema é que ela trata o gasto do corpo como se fosse fixo. Não é: quem pesa menos gasta
+          menos para viver e para se mexer. Um estudo publicado na <em>The Lancet</em> em 2011 modelou essa
+          adaptação e mostrou que a regra das {KCAL_POR_KG.toLocaleString('pt-BR')} kcal superestima a perda
+          ao longo do tempo. Esta calculadora refaz o gasto a cada dia:
+        </p>
+        <p class="em-formula">{formula}</p>
+        <p>
+          Para a mulher do exemplo, a diferença é de {formataPrazo(EX.diasLinear)} na conta simples para{' '}
+          {formataPrazo(EX.dias as number)} na simulação. E a simulação ainda é otimista, porque não modela
+          todas as adaptações do corpo.
+        </p>
+        <p>
+          No vídeo abaixo, o Montinho Personal mostra a mesma simulação no app dos alunos — e como
+          constância e movimento no dia encurtam o prazo.
+        </p>
+        <VideoYouTube
+          id="2NkNKAhku9A"
+          titulo="Quanto tempo pra emagrecer 10 kg? Simule"
+          legenda="No vídeo: o Montinho Personal simula no app o prazo para emagrecer 10 kg, e como mais passos e mais constância encurtam a meta."
+          short
+        />
+
+        <h2>Tabela: quanto tempo para perder 5, 10, 15 e 20 kg</h2>
+        <p>
+          A mesma mulher, com rotina sedentária e o plano cumprido em {formataPct(CONSTANCIA)} dos dias, com
+          cada um dos três tamanhos de corte:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Mulher de {pessoa}, sedentária</caption>
+            <thead>
+              <tr>
+                <th scope="col">Perder</th>
+                {DEFICITS.map((d) => <th scope="col">{d.kcal} kcal/dia</th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {TAB_PRAZO.map((l) => (
+                <tr>
+                  <th scope="row">{l.kg} kg</th>
+                  {l.planos.map((p) => <td>{p.chega ? formataPrazo(p.dias as number) : 'não chega'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Repare que o prazo cresce mais rápido que os quilos: com o corte moderado, 10 kg levam{' '}
+          {formataPrazo(TAB_PRAZO[1].planos[1].dias as number)} e 20 kg,{' '}
+          {formataPrazo(TAB_PRAZO[3].planos[1].dias as number)}. E o corte pequeno pode nem chegar: com{' '}
+          {deficit('leve').kcal} kcal fixas, o peso estabiliza {prazoOuNao(EX_LEVE_20)}, antes dos 20 kg.
+          Isso não é defeito da conta — é o que acontece quando o consumo fica parado enquanto o gasto
+          desce.
+        </p>
+
+        <h2>A constância pesa tanto quanto o tamanho do corte</h2>
+        <p>
+          Nos dias fora do plano, a calculadora assume que você come o que gasta — nem déficit, nem
+          sobra. Com a mesma meta de {META} kg e o mesmo déficit de {deficit(DEFICIT).kcal} kcal:
+        </p>
+        <div class="tabela-rolavel">
+          <table>
+            <caption>Plano cumprido em… (mulher de {pessoa}, de {PESO} para {META} kg)</caption>
+            <thead>
+              <tr><th scope="col">Dias de plano</th><th scope="col">Prazo</th></tr>
+            </thead>
+            <tbody>
+              {TAB_CONSTANCIA.map(({ c, p }) => (
+                <tr>
+                  <th scope="row">{formataPct(c)}</th>
+                  <td>{p.chega ? formataPrazo(p.dias as number) : 'não chega'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          O que move o prazo é o déficit médio da semana, não o do melhor dia. Pela conta, um corte de{' '}
+          {deficit('firme').kcal} kcal cumprido em 60% dos dias leva {formataPrazo(FIRME_60.dias as number)};
+          um de {deficit(DEFICIT).kcal} kcal cumprido em 90%, {formataPrazo(EX.dias as number)} — praticamente
+          o mesmo, com um plano mais leve de manter. E o fim de semana com exagero pesa mais do que a
+          conta assume: ali o dia não fica em zero, fica em sobra.
+        </p>
+
+        <h2>5 kg em 1 mês, 7 kg em 2 meses: o que a conta diz</h2>
+        <p>
+          Para tirar 5 kg de gordura em 30 dias, a conta simples pede um déficit de cerca de{' '}
+          {formataKcal(pede5em1)} kcal por dia — para a mulher do exemplo, que gasta perto de{' '}
+          {formataKcal(EX.gastoInicial)} kcal, isso deixaria pouco para comer. Com o corte firme da
+          calculadora ({firme.d.kcal} kcal) cumprido todos os dias, ela perde perto de{' '}
+          {formataKg(firme.mes1)} kg no primeiro mês e {formataKg(firme.mes2)} kg em dois.
+        </p>
+        <p>
+          Por que tanta gente relata 5 kg no primeiro mês, então? Porque a balança mede tudo, não só
+          gordura. O glicogênio, a reserva de carboidrato dos músculos e do fígado, é guardado com três a
+          quatro partes de água; quando a alimentação muda, ele cai e leva essa água junto. A balança
+          desce rápido no começo — e volta rápido quando a dieta acaba.
+        </p>
+
+        <h2>Por que o peso para de cair</h2>
+        <p>
+          Se o consumo fica igual enquanto o peso desce, o gasto encontra o consumo em algum ponto e o
+          peso estabiliza. Na calculadora, isso aparece como "não chega": a meta está abaixo do ponto em
+          que o déficit acaba. Para seguir, o plano precisa ser refeito com o peso novo — a{' '}
+          <a href="/calorias/gasto-calorico-diario/">calculadora de gasto calórico diário</a> mostra o
+          gasto de hoje, e o texto sobre{' '}
+          <a href="/emagrecimento/deficit-calorico-como-funciona/">como funciona o déficit calórico</a>{' '}
+          explica o resto.
+        </p>
+
+        <h2>Onde o treino entra</h2>
+        <p>
+          O tamanho do déficit é a alimentação. O treino não muda tanto o prazo — o estilo de vida
+          ativo sobe o gasto, mas a conta já leva isso em conta. O que ele muda é a qualidade do que se
+          perde: com treino de força, o corpo tem motivo para guardar o músculo, e uma parte maior do
+          peso que sai é gordura. O texto sobre{' '}
+          <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">como preservar massa
+          muscular emagrecendo</a> aprofunda isso.
+        </p>
+        <p>
+          Se você tem alguma dor, lesão ou condição de saúde, converse com o médico ou o
+          fisioterapeuta antes de aumentar o treino.
+        </p>
+
+        <h2>O que esta conta não faz</h2>
+        <p>
+          {NOTA_ESTIMATIVA} O ponto de partida é uma equação de metabolismo que pode errar mais de 10%
+          para cima ou para baixo, e o estilo de vida é o meio de uma faixa. Ela também não diz quanto
+          comer: o consumo que aparece no resultado é só o gasto menos o corte escolhido, não um plano
+          alimentar.
+        </p>
+        <p>{NOTA_ABAIXO_METABOLISMO}</p>
+        <p>
+          Também não vale para gestação, amamentação, menores de 18 anos nem para quem usa medicamento
+          para emagrecer — nesses casos, a conta é com o médico.
+        </p>
+
+        <h2>Como esta conta é feita</h2>
+        <p>
+          O metabolismo de repouso sai da equação de Mifflin-St Jeor, e o estilo de vida multiplica esse
+          número pelo meio da faixa de nível de atividade da FAO — a mesma base da calculadora de gasto
+          diário. O consumo do plano é esse gasto inicial menos o corte escolhido, e fica fixo. A cada
+          dia simulado, o gasto é refeito com o peso do dia; o déficit é a diferença, multiplicada pela
+          constância; e cada {KCAL_POR_KG.toLocaleString('pt-BR')} kcal acumuladas tiram 1 kg. A
+          simulação para em três anos.
+        </p>
+        <p>
+          Nenhum número desta página foi escrito à mão. Todos saem do mesmo motor que a calculadora
+          usa, e os testes conferem que o prazo simulado é sempre maior que o da conta simples, que a
+          constância alonga o prazo e que uma meta abaixo do ponto de equilíbrio não ganha prazo
+          inventado.
+        </p>
+        <p class="em-revisao">
+          Revisado em {formatDateLong(atualizadoEm)} por <a href="/montinho-personal/">Montinho</a>,
+          personal trainer. {NOTA_NAO_PRESCRICAO}
+        </p>
+
+        <h2>Referências</h2>
+        <ul class="em-fontes">
+          {REFERENCIAS.map((f) => (
+            <li>
+              <a href={f.url} target="_blank" rel="noopener noreferrer">{f.rotulo}</a> — {f.resumo}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Faq faqs={faqs} titulo="Perguntas frequentes sobre a calculadora de emagrecimento" />
+
+      <WhatsAppCta tema="emagrecimento" />
+      <AutorMontinho />
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <script>
+    import { iniciarCalculadoraEmagrecimento } from '../../scripts/calculadoraEmagrecimento.client';
+    import { tabelasRolaveis } from '../../scripts/tabelasRolaveis';
+    iniciarCalculadoraEmagrecimento();
+    tabelasRolaveis();
+  </script>
+  <style>
+    .em-hero {
+      background: linear-gradient(160deg, var(--brand-700), var(--brand-800));
+      color: #eceef2;
+      padding-block: var(--sp-7);
+      border-bottom: 4px solid var(--accent);
+    }
+    .em-hero-inner { max-width: 780px; }
+    .em-hero h1 { color: #fff; max-width: 24ch; }
+    .em-hero :global(.eyebrow) { color: #ffb488; }
+    .em-hero-lead {
+      margin-top: var(--sp-4);
+      font-size: var(--step-1);
+      line-height: 1.55;
+      color: #d9dde3;
+      max-width: 62ch;
+    }
+    .em-hero-lead strong { color: #fff; }
+    .em-micro { margin-top: var(--sp-3); font-size: var(--step--1); color: #aab0ba; }
+
+    .em-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--sp-6);
+      padding-block: var(--sp-7);
+    }
+    @media (min-width: 980px) {
+      .em-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-7); }
+    }
+    .em-main { min-width: 0; max-width: 760px; }
+
+    .em-app {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-5);
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+    .em-app-h { font-size: var(--step-1); margin-bottom: var(--sp-4); }
+
+    .em-campos { display: grid; gap: var(--sp-4); }
+    /* Quatro medidas: duas por linha no celular, quatro na tela larga. */
+    .em-medidas { display: grid; gap: var(--sp-3); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (min-width: 620px) {
+      .em-medidas { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .em-campo label,
+    .em-campo .em-rotulo {
+      display: block;
+      font-weight: 700;
+      font-size: var(--step--1);
+      margin-bottom: 0.4rem;
+    }
+    .em-campo input[type='text'] {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.6rem 0.8rem;
+      font: inherit;
+      font-size: var(--step-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      color: var(--ink);
+    }
+    .em-campo input:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; }
+
+    .em-dica { margin-top: 0.5rem; font-size: var(--step--1); color: var(--muted); line-height: 1.5; }
+    /* Primeira pintura; o reservaAltura corrige para a largura real. */
+    .em-slot-estilo { min-height: 4.5em; }
+    .em-slot-deficit { min-height: 3em; }
+
+    .em-presets { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .em-preset {
+      min-height: 40px;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink-soft);
+      font: inherit;
+      font-size: var(--step--1);
+      cursor: pointer;
+    }
+    .em-preset:hover { border-color: var(--brand-600); color: var(--brand-600); }
+    .em-preset:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .em-preset.is-ativo { background: var(--brand-600); border-color: var(--brand-600); color: #fff; }
+
+    .em-erro {
+      margin-top: var(--sp-4);
+      padding: 0.7rem 0.9rem;
+      border-left: 3px solid #c0392b;
+      background: rgba(192, 57, 43, 0.08);
+      font-size: var(--step--1);
+    }
+
+    .em-saida { margin-top: var(--sp-5); border-top: 1px solid var(--line); padding-top: var(--sp-5); }
+    .em-resultado { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+    .em-numero {
+      font-size: clamp(1.8rem, 7vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--brand-600);
+      font-variant-numeric: tabular-nums;
+    }
+    .em-unidade { font-size: var(--step-1); font-weight: 700; color: var(--ink-soft); }
+    .em-quando { margin-top: 0.4rem; color: var(--ink-soft); font-weight: 600; }
+    .em-quando:empty { display: none; }
+    .em-frase { margin-top: var(--sp-3); color: var(--ink-soft); line-height: 1.55; }
+
+    .em-detalhes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: var(--sp-3);
+      margin-top: var(--sp-4);
+      padding: var(--sp-4);
+      border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .em-detalhes dt { font-size: var(--step--1); color: var(--muted); }
+    .em-detalhes dd { margin: 0.15rem 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .em-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); line-height: 1.55; }
+    .em-alerta { border-left: 3px solid var(--accent); padding-left: 0.8rem; color: var(--ink-soft); }
+
+    .em-proximo { margin-top: var(--sp-5); padding-top: var(--sp-5); border-top: 1px solid var(--line); }
+    .em-proximo-lead { line-height: 1.6; }
+    .em-proximo-acoes { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-top: var(--sp-4); }
+    .em-btn {
+      flex: 1 1 240px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: var(--step--1);
+      text-decoration: none;
+    }
+    .em-btn-primario { background: var(--brand-600); color: #fff; }
+    .em-btn-primario:hover { background: var(--brand-700); text-decoration: none; }
+    .em-btn-secundario { border: 1px solid var(--brand-600); color: var(--brand-600); background: transparent; }
+    .em-btn-secundario:hover { background: rgba(0, 0, 0, 0.04); text-decoration: none; }
+    .em-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .em-proximo-nota { margin-top: var(--sp-3); font-size: var(--step--1); color: var(--muted); }
+
+    .em-conteudo { margin-top: var(--sp-7); }
+
+    .tabela-rolavel { overflow-x: auto; margin: var(--sp-4) 0; }
+    .tabela-rolavel:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .tabela-rolavel table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+    .tabela-rolavel caption {
+      caption-side: top;
+      text-align: left;
+      color: var(--muted);
+      font-size: var(--step--1);
+      padding-bottom: 0.5rem;
+    }
+    .tabela-rolavel th,
+    .tabela-rolavel td {
+      text-align: left;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px solid var(--line);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    /* O global pinta o thead de azul-escuro com texto branco; aqui o desenho
+       é o cabeçalho discreto, então o fundo sai junto com a cor. */
+    .tabela-rolavel thead th { color: var(--muted); font-weight: 600; background: transparent; }
+    .tabela-rolavel tbody th { font-weight: 700; }
+
+    .em-formula {
+      padding: var(--sp-4);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      font-size: var(--step--1);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .em-fontes { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.6; }
+    .em-fontes li { margin-bottom: 0.6rem; }
+    .em-revisao { font-size: var(--step--1); color: var(--muted); }
+  </style>
+</Base>
