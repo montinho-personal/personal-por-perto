@@ -49,6 +49,8 @@ export const VIDEOS_MONTINHO: VideoMontinho[] = [
   { id: 'DPAQDPVffCg', tema: 'o app do Montinho: o treino na palma da mão', short: true },
   // 22/10/2026: TMB e TDEE no app; na calculadora de gasto diário, em como acelerar o metabolismo, em emagrecer depois dos 40 e em déficit calórico.
   { id: 'iGStCDRk0Zg', tema: 'quantas calorias você gasta por dia: TMB e TDEE', short: true },
+  // 22/10/2026: cardápio sugerido no app; em dieta flexível, no trecho de quem prefere cardápio fixo.
+  { id: 'FjvYaKx05x0', tema: 'monte seu cardápio grátis em 3 passos', short: true },
 ];
 
 /**
