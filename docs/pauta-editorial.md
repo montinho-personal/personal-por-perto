@@ -655,7 +655,7 @@ hipertrofia), já usados no portal.
 | Emagrecer na menopausa | `emagrecer-na-menopausa` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/emagrecer-na-menopausa.md` |
 | Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | ✅ 2026-10-22 · prints do Renato (sem autocompletar nem IA) · recorte em `docs/emagrecer-depois-dos-40.md` |
 | Termogênicos funcionam? | `termogenicos-funcionam` | |
-| Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | |
+| Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/quanto-tempo-para-perder-10kg.md` |
 | Fome emocional | `fome-emocional` | |
 | Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | |
 | Proteína e saciedade | `proteina-e-saciedade` | |

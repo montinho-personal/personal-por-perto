@@ -51,6 +51,8 @@ export const VIDEOS_MONTINHO: VideoMontinho[] = [
   { id: 'iGStCDRk0Zg', tema: 'quantas calorias você gasta por dia: TMB e TDEE', short: true },
   // 22/10/2026: cardápio sugerido no app (sugestão, não substitui nutricionista); em dieta flexível, déficit calórico, emagrecer na menopausa e emagrecer depois dos 40.
   { id: 'FjvYaKx05x0', tema: 'monte seu cardápio grátis em 3 passos', short: true },
+  // 22/10/2026: simulador de prazo no app; em quanto tempo para perder 10 kg.
+  { id: '2NkNKAhku9A', tema: 'quanto tempo pra emagrecer 10 kg: simule', short: true },
 ];
 
 /**

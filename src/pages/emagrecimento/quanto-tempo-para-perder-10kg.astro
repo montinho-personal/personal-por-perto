@@ -1,0 +1,424 @@
+---
+/**
+ * Quanto tempo para perder 10 kg — o recorte.
+ *
+ * Dono da pergunta de PRAZO: quanto tempo leva, 1 mês / 2 / 3 meses / 15
+ * dias, 7 kg em 1 semana, de gordura, com Mounjaro/Ozempic/tirzepatida,
+ * com jejum, na academia, sem comer, o que comer. `deficit-calorico-como-
+ * funciona` fica com a conta do déficit; `caminhada-emagrece` com o prazo só
+ * caminhando; o cluster /mounjaro-e-treino/ com o treino de quem usa o
+ * remédio. Prints de 22/10/2026 em docs/quanto-tempo-para-perder-10kg.md.
+ *
+ * Fontes conferidas em 22/10/2026 (resumos no Europe PMC): Hall et al. 2011;
+ * Kreitzman et al. 1992; Purcell et al. 2014; Wilding et al. 2021 (STEP 1);
+ * Jastreboff et al. 2022 (SURMOUNT-1); Donnelly et al. 2009 (ACSM); Willis
+ * et al. 2012.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como calcular',
+    descricao: 'A conta do gasto e do corte, passo a passo, com exemplo.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/caminhada-emagrece/',
+    titulo: 'Caminhada emagrece?',
+    descricao: 'Quantos quilos por mês só caminhando — e por que a alimentação decide.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento',
+    descricao: 'Por que a balança trava no meio do caminho e o que fazer.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/mounjaro-e-treino/mounjaro-e-musculacao/',
+    titulo: 'Quem usa Mounjaro pode fazer musculação?',
+    descricao: 'O treino que protege o músculo enquanto o remédio tira o apetite.',
+    tipo: 'Mounjaro e Treino',
+  },
+];
+
+const path = '/emagrecimento/quanto-tempo-para-perder-10kg';
+const atualizadoEm = '2026-10-22';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Quanto tempo para perder 10 kg', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto tempo leva para perder 10 kg?',
+    resposta:
+      'No ritmo de meio quilo a um quilo por semana, de 10 a 20 semanas — de dois meses e meio a cinco meses. Na prática costuma demorar mais, porque o corpo gasta menos conforme emagrece e a semana real tem feriado, viagem e semana ruim. Quem começa com mais peso tende a perder mais rápido no início.',
+  },
+  {
+    pergunta: 'É possível perder 10 kg em 1 mês?',
+    resposta:
+      'De gordura, não. Dez quilos de gordura guardam cerca de 77 mil kcal; em 30 dias, seria um déficit de mais de 2.500 kcal por dia, mais do que muita gente gasta no dia inteiro. Quando a balança mostra perdas assim, boa parte é água e glicogênio, que voltam rápido.',
+  },
+  {
+    pergunta: 'É possível eliminar 10 kg em 2 meses?',
+    resposta:
+      'É o limite de cima do que se considera razoável: dá cerca de 1,2 kg por semana. Para quem tem bastante peso a perder, com acompanhamento, pode acontecer — sobretudo porque as primeiras semanas incluem água. Para a maioria, 3 a 5 meses é um prazo mais realista para 10 kg.',
+  },
+  {
+    pergunta: 'É possível perder 5 kg em 1 mês?',
+    resposta:
+      'Na balança, para muita gente, sim — porque o primeiro mês inclui água e glicogênio. Em gordura, 5 kg em 30 dias pediriam um déficit de cerca de 1.280 kcal por dia, um ritmo agressivo para a maioria das pessoas. Quem tem mais peso a perder chega mais perto disso; quem tem pouco, raramente.',
+  },
+  {
+    pergunta: 'Como fazer o cálculo para perder peso?',
+    resposta:
+      'Em três passos: estime quanto você gasta por dia (metabolismo de repouso mais a sua rotina), escolha um déficit que dê para manter — algo entre 500 e 800 kcal por dia para a maioria — e divida a energia do peso que quer perder (cerca de 7.700 kcal por quilo) por esse déficit. O resultado é um teto: o corpo gasta menos conforme emagrece, e o prazo real costuma ser maior.',
+  },
+  {
+    pergunta: 'É possível emagrecer 7 kg em 1 semana?',
+    resposta:
+      'De gordura, não. Sete quilos de gordura somam cerca de 54 mil kcal — um déficit de mais de 7.700 kcal por dia. O que some rápido na primeira semana de dieta é sobretudo água: o glicogênio, a reserva de carboidrato, é guardado com três a quatro partes de água, e sai junto quando a dieta começa.',
+  },
+  {
+    pergunta: 'Quanto tempo para perder 10 kg de gordura?',
+    resposta:
+      'Mais do que para perder 10 kg na balança. A balança soma gordura, água, glicogênio e músculo; as primeiras semanas tiram bastante água. Para 10 kg de gordura, conte com o ritmo de meio a um quilo por semana e com musculação para não perder músculo junto.',
+  },
+  {
+    pergunta: 'Quanto tempo para perder 10 kg com Mounjaro?',
+    resposta:
+      'Não há um prazo fixo, e a dose é ajustada aos poucos pelo médico. No estudo principal da tirzepatida, com pessoas que pesavam em média cerca de 105 kg, a perda média ao fim de 72 semanas foi de 15% a 21% do peso, conforme a dose — bem mais que 10 kg, mas ao longo de mais de um ano e incluindo 20 semanas de aumento gradual da dose. É remédio com receita e acompanhamento médico.',
+  },
+  {
+    pergunta: 'Quanto tempo para perder 10 kg com Ozempic?',
+    resposta:
+      'No estudo principal da semaglutida na dose para obesidade, a perda média foi de 15,3 kg em 68 semanas, contra 2,6 kg no grupo placebo, com mudança de estilo de vida nos dois grupos. O ritmo varia muito de pessoa para pessoa, e a indicação e a dose são decisões médicas.',
+  },
+  {
+    pergunta: 'Quanto tempo para perder 10 kg na academia?',
+    resposta:
+      'Só com treino, bem mais que com treino e alimentação juntos. Pelo Colégio Americano de Medicina do Esporte, até 250 minutos semanais de atividade moderada dão perda modesta; a perda grande vem quando o exercício se soma a um ajuste na alimentação. A musculação entra para proteger o músculo, não para acelerar a balança.',
+  },
+  {
+    pergunta: 'Perder 10 kg devagar evita o efeito sanfona?',
+    resposta:
+      'Não necessariamente. Num ensaio clínico que comparou perder peso em 12 semanas ou em 36 semanas, a recuperação do peso três anos depois foi parecida nos dois grupos — e mais gente atingiu a meta no grupo rápido. O que sustenta o resultado é o que vem depois: treino, hábito e acompanhamento.',
+  },
+  {
+    pergunta: 'O que devo comer para emagrecer 10 kg?',
+    resposta:
+      'O que cabe num déficit que você consegue manter, com proteína suficiente para proteger o músculo. Não existe alimento que emagreça sozinho. Um cardápio sugerido ajuda a começar; o ajuste para a sua rotina e a sua saúde é trabalho de nutricionista.',
+  },
+  {
+    pergunta: 'Ficar sem comer acelera a perda de 10 kg?',
+    resposta:
+      'Não é estratégia de emagrecimento. Passar dias sem comer derruba a balança com água e glicogênio, que voltam logo, e cobra em fome, fraqueza e músculo. Jejum prolongado, se for o caso, só com acompanhamento médico. O jejum intermitente é outra coisa: funciona se ajudar você a comer menos no total.',
+  },
+];
+
+/* 54 caracteres. */
+const title = 'Quanto tempo para perder 10 kg? A conta real e o prazo';
+/* 138 caracteres. */
+const description =
+  'Quanto tempo para perder 10 kg: a conta pelo déficit, se dá em 1 ou 2 meses, com Mounjaro ou Ozempic, na academia e o que encurta o prazo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Quanto tempo para perder 10 kg: a conta, o ritmo saudável e o que muda o prazo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: no ritmo de meio quilo a um quilo por semana, de 10 a
+      20 semanas — algo entre dois meses e meio e cinco meses. Na vida real
+      costuma levar mais, e não por falta de força de vontade: o corpo gasta
+      menos conforme emagrece, e a semana real não é a semana do plano.
+    </p>
+
+    <p class="lead">
+      Abaixo, de onde sai esse número, por que "10 kg em 1 mês" não é gordura,
+      o que muda com remédio e com academia, e o que de fato encurta o prazo.
+    </p>
+
+    <div class="prose">
+      <h2>A conta: de onde sai o prazo</h2>
+      <p>
+        Um quilo de gordura guarda, em média, cerca de 7.700 kcal. Dez quilos,
+        cerca de <strong>77 mil kcal</strong>. O prazo é essa energia dividida
+        pelo déficit do dia:
+      </p>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>Prazo teórico para perder 10 kg, pelo déficit diário — limite de cima, sem a adaptação do corpo</caption>
+          <thead>
+            <tr><th scope="col">Déficit por dia</th><th scope="col">Ritmo</th><th scope="col">Prazo para 10 kg</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">≈ 550 kcal</th><td>≈ 0,5 kg por semana</td><td>≈ 20 semanas (5 meses)</td></tr>
+            <tr><th scope="row">≈ 825 kcal</th><td>≈ 0,75 kg por semana</td><td>≈ 13 semanas (3 meses)</td></tr>
+            <tr><th scope="row">≈ 1.100 kcal</th><td>≈ 1 kg por semana</td><td>≈ 10 semanas (2,5 meses)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Leia a tabela como teto. A regra dos 7.700 kcal por quilo superestima
+        a perda ao longo do tempo: conforme o peso cai, o corpo gasta menos, e
+        o mesmo déficit rende cada vez menos. É por isso que a balança desacelera
+        no meio do caminho — o{' '}
+        <a href="/emagrecimento/plato-de-emagrecimento/">platô</a> — e que
+        prazos reais costumam passar dos teóricos.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="A tabela parte do déficit, e o déficit parte do quanto você gasta. A calculadora estima o seu gasto do dia pela idade, peso, altura e rotina — é desse número que sai quanto cortar sem passar fome."
+        acao="Calcular quanto eu gasto por dia"
+      />
+
+      <h2>Simule o seu prazo</h2>
+      <p>
+        O prazo muda muito com dois botões que pouca gente mexe: a constância
+        — em quantos dias da semana o plano acontece de verdade — e o movimento
+        do dia. No vídeo, o Montinho Personal simula isso no app: com treino
+        três vezes por semana, 4.000 passos e 75% de constância, a meta passa
+        de um ano; subindo para 7.500 passos e 90% de constância, cai para
+        cerca de sete meses.
+      </p>
+
+      <VideoYouTube
+        id="2NkNKAhku9A"
+        titulo="Quanto tempo pra emagrecer 10 kg? Simule"
+        legenda="No vídeo: o Montinho Personal simula no app o prazo para emagrecer 10 kg, e como mais passos e mais constância encurtam a meta."
+        short
+      />
+
+      <h2>10 kg em 1 mês, em 15 dias, 7 kg em 1 semana: dá?</h2>
+      <p>
+        <strong>De gordura, não.</strong> Perder 10 kg de gordura em 30 dias
+        pediria um déficit de mais de 2.500 kcal por dia — mais do que muita
+        gente gasta no dia inteiro. Sete quilos em uma semana pediriam mais de
+        7.700 kcal por dia.
+      </p>
+
+      <p>
+        Quando a balança mostra quedas assim, o que saiu é sobretudo água. O
+        glicogênio, a reserva de carboidrato do corpo, é guardado nos músculos
+        e no fígado com três a quatro partes de água, e é usado logo no começo
+        de uma dieta. Por isso a primeira semana anima tanto — e por isso o
+        peso volta tão rápido quando a dieta acaba.
+      </p>
+
+      <h2>Perder rápido ou devagar?</h2>
+      <p>
+        A ideia de que quem perde rápido recupera tudo não se confirmou num
+        ensaio clínico com 200 adultos com obesidade. Um grupo buscou perder
+        15% do peso em 12 semanas; o outro, em 36. Mais gente atingiu a meta no
+        grupo rápido (81% contra 50%), e três anos depois a recuperação foi
+        parecida nos dois — cerca de 71% do peso perdido.
+      </p>
+
+      <p>
+        A lição não é "faça o mais rápido possível": dietas muito restritas
+        pedem acompanhamento médico, e no grupo rápido houve um caso de
+        inflamação da vesícula. A lição é que o prazo importa menos que o que
+        vem depois. Treino, hábito e acompanhamento decidem se os 10 kg ficam
+        fora.
+      </p>
+
+      <h2>Com Mounjaro, Ozempic ou tirzepatida</h2>
+      <p>
+        Os remédios mudam a escala, mas não tiram o prazo da conversa. No
+        estudo principal da semaglutida (Ozempic e Wegovy) na dose para
+        obesidade, a perda média foi de 15,3 kg em 68 semanas, contra 2,6 kg
+        com placebo. No da tirzepatida (Mounjaro), com pessoas que pesavam em
+        média cerca de 105 kg, a perda média em 72 semanas foi de 15% a 21% do
+        peso, conforme a dose — com 20 semanas de aumento gradual da dose no
+        começo.
+      </p>
+
+      <p>
+        Em quanto tempo cada pessoa chega aos 10 kg varia muito, e indicação e
+        dose são decisões médicas. O que cabe ao treino é proteger o músculo
+        enquanto o peso cai — o tema do guia{' '}
+        <a href="/mounjaro-e-treino/mounjaro-e-musculacao/">quem usa Mounjaro
+        pode fazer musculação?</a>
+      </p>
+
+      <h2>Na academia: o que o treino faz pelo prazo</h2>
+      <p>
+        Só com exercício, o prazo é longo: pelo posicionamento do Colégio
+        Americano de Medicina do Esporte, até 250 minutos semanais de atividade
+        moderada dão perda modesta, e a perda grande aparece quando o exercício
+        se soma a um ajuste na alimentação. Num ensaio de oito meses, o treino
+        aeróbico foi o que mais tirou peso e gordura, e a musculação a que
+        aumentou a massa magra.
+      </p>
+
+      <p>
+        Na prática: a alimentação decide o ritmo, o aeróbico e os passos ajudam
+        a criar o déficit, e a musculação garante que os 10 kg sejam,
+        sobretudo, gordura. Quem só caminha encontra a conta detalhada no
+        artigo{' '}
+        <a href="/emagrecimento/caminhada-emagrece/">caminhada emagrece?</a>
+      </p>
+
+      <h2>O que comer — e o que não fazer</h2>
+      <p>
+        Não existe alimento que emagreça sozinho. O que funciona é o que cabe
+        num <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> que você consegue manter, com proteína suficiente para
+        proteger o músculo. O{' '}
+        <a href="/emagrecimento/jejum-intermitente-funciona/">jejum
+        intermitente</a> serve se ajudar você a comer menos no total.
+      </p>
+
+      <p>
+        Ficar dias sem comer não é atalho: derruba a balança com água, que
+        volta, e cobra em fome, fraqueza e músculo. Um cardápio sugerido ajuda
+        a começar; o ajuste para a sua rotina e a sua saúde é trabalho de
+        nutricionista — e quem tem alguma condição de saúde deve passar antes
+        pelo médico.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Dez quilos são meses de constância, e é na constância que a maioria
+        trava. Um profissional de Educação Física monta o treino que cabe na
+        sua semana, ajusta quando a balança para e mantém o plano de pé nas
+        semanas ruins — que são as que decidem o prazo. Dores ou limitações
+        pedem também avaliação de médico ou fisioterapeuta.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/21872751/" target="_blank" rel="noopener noreferrer">Hall KD, Sacks G, Chandramohan D, et al. Quantification of the effect of energy imbalance on bodyweight. The Lancet, 378(9793):826-837, 2011</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/1615908/" target="_blank" rel="noopener noreferrer">Kreitzman SN, Coxon AY, Szaz KF. Glycogen storage: illusions of easy weight loss, excessive weight regain, and distortions in estimates of body composition. American Journal of Clinical Nutrition, 56(1 Suppl):292S-293S, 1992</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/25459211/" target="_blank" rel="noopener noreferrer">Purcell K, Sumithran P, Prendergast LA, et al. The effect of rate of weight loss on long-term weight management: a randomised controlled trial. The Lancet Diabetes &amp; Endocrinology, 2(12):954-962, 2014</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33567185/" target="_blank" rel="noopener noreferrer">Wilding JPH, Batterham RL, Calanna S, et al. Once-weekly semaglutide in adults with overweight or obesity. New England Journal of Medicine, 384(11):989-1002, 2021</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/35658024/" target="_blank" rel="noopener noreferrer">Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide once weekly for the treatment of obesity. New England Journal of Medicine, 387(3):205-216, 2022</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 41(2):459-471, 2009</a>
+        </li>
+        <li>
+          <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3544497/" target="_blank" rel="noopener noreferrer">Willis LH, Slentz CA, Bateman LA, et al. Effects of aerobic and/or resistance training on body mass and fat mass in overweight or obese adults. Journal of Applied Physiology, 113(12):1831-1837, 2012</a>
+        </li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre quanto tempo para perder 10 kg" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
