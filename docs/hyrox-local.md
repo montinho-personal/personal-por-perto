@@ -84,3 +84,32 @@ elas entram na página da cidade com o selo.
 Impressões e posição das 11 URLs, e se "hyrox + cidade" aparece nas
 consultas. Página sem nenhuma impressão em 60 dias: avaliar fundir na
 página da cidade.
+
+### Link da página de cidade para a de Hyrox (decidido em 23/10)
+
+As 11 páginas de cidade ainda não linkam a página de Hyrox delas. O link
+entra **junto com a próxima revisão real de cada cidade** — nunca numa
+varredura das 11, que subiria o `atualizadoEm` de todas no mesmo dia por
+causa de um link só. Quem revisar `src/data/cidades/<cidade>.ts` da região
+presencial: acrescentar o link para `/guias/hyrox-<cidade>/` no mesmo
+commit e riscar a cidade abaixo.
+
+Faltam: Alphaville · Tamboré · Aldeia da Serra · Barueri · Santana de
+Parnaíba · Jandira · Itapevi · Carapicuíba · Osasco · Cotia · Granja Viana
+
+## Prints recebidos (23/10, Renato)
+
+Arquivos em `docs/pesquisas/2026-10-23-hyrox/prints/` (01 a 10).
+
+| busca / tela | o que mostrou | onde entrou |
+|---|---|---|
+| hyrox alphaville — autocompletar (03) | valor · são paulo · abc · perto de mim · em sp | título e H1 "aulas, onde treinar e quanto custa"; FAQ da mensalidade com a inscrição |
+| hyrox alphaville — visão geral de IA (01) | Obox Training Club, "Alameda Pau Brasil, 48, Loja 16/17, AlphaSítio Mall"; "centro oficial"; Wellhub e TotalPass. **Não é fonte** | levou à TotalPass: página oficial da TotalPass confirma o Obox (mesmo telefone do Wellhub) → **duas fontes** para a academia. Endereço **diverge** (TotalPass: Alameda Pau Brasil, 48; Wellhub: Av. dos Parques) → a página fica só com "AlphaSítio Mall". "Centro oficial" não entra: afiliação só com o buscador oficial |
+| hyrox alphaville — resultados (04) | Instagram do Obox: "1º Hyrox Training Club de Alphaville", Wellhub e TotalPass; PAA: mensalidade do Hyrox · aulas em Alphaville · qual academia tem Hyrox · onde acontece em SP | três FAQs novas em Alphaville; "onde acontece" já respondido na seção do caminho até a prova |
+| hyrox alphaville — outras pessoas (02, 05) | hyrox barueri · crossfit barueri · hyrox são paulo · hyrox brasil site oficial · hyrox brasil 2027 · prova completa · login hyrox brasil | FAQ comum CrossFit × Hyrox; "2027" não entra (data da próxima etapa só em agregador) |
+| hyrox santana de parnaíba — autocompletar (06) | **inscrição · resultado** · são paulo · perto de mim · sp | leitura: confusão com o bairro de **Santana** (zona norte de SP), onde fica o Anhembi. Título "onde é a prova", FAQ "tem prova em Santana de Parnaíba?" e o aviso do nome no caminho até a prova (conferido: nenhuma prova de Hyrox no município) |
+| treino hyrox — IA (07) | 8 km + 8 estações, sequência fixa. **Não é fonte** — bate com a tabela que já estava na página | — |
+| treino hyrox — PAA (08) | como é o treino · quais são os 8 exercícios · diferença CrossFit × Hyrox · qual a sequência | FAQ comum "quais são os 8 exercícios, e em que sequência"; FAQ CrossFit × Hyrox |
+| treino hyrox — outras (09, 10) | em casa · wod · iniciante · exemplo · na academia · perto de mim · treino completo · onde treinar · oficial · planilha · o que é | FAQ comum "dá para treinar em casa?"; frase para iniciante na preparação. Planilha/exemplo de treino **não** entram: treino é prescrição individual |
+
+Falta: "hyrox barueri" (o Renato pode mandar) e o buscador oficial.

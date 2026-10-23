@@ -49,8 +49,18 @@ const citaHybox = textoLocal.includes('HYBOX');
 const faqs = [
   ...c.faqs,
   {
-    pergunta: 'Como é a prova de Hyrox?',
-    resposta: `São ${KM_CORRIDA} corridas de 1 km, cada uma seguida de uma estação de força, sempre na mesma ordem: ${ESTACOES.map((e) => `${e.nome.toLowerCase()} (${e.volume})`).join(', ')}. Dá para competir sozinho, em dupla ou em revezamento de quatro.`,
+    pergunta: 'Quais são os 8 exercícios do Hyrox, e em que sequência?',
+    resposta: `São ${KM_CORRIDA} corridas de 1 km, cada uma seguida de uma estação de força, sempre nesta ordem: ${ESTACOES.map((e) => `${e.nome.toLowerCase()} (${e.volume})`).join(', ')}. Dá para competir sozinho, em dupla ou em revezamento de quatro.`,
+  },
+  {
+    pergunta: 'Qual a diferença entre CrossFit e Hyrox?',
+    resposta:
+      'O Hyrox é uma prova com formato fixo: a mesma sequência de corrida e estações em qualquer lugar do mundo, o que permite comparar tempos e treinar para ela. O CrossFit é um método de treino em que os exercícios do dia variam. Quem vem do CrossFit costuma chegar ao Hyrox com a parte de força adiantada, e o que mais pede atenção é a corrida — são 8 km no total.',
+  },
+  {
+    pergunta: 'Dá para treinar Hyrox em casa?',
+    resposta:
+      'Parte dele. Corrida, burpee broad jump, afundo e exercícios com o peso do corpo cabem em casa ou na rua; wall ball e carregamento pedem pouco equipamento. Trenó, SkiErg e remo precisam de academia que tenha os aparelhos, pelo menos algumas vezes antes da prova.',
   },
   {
     pergunta: 'Precisa de índice ou classificatória para correr o Hyrox?',
@@ -153,14 +163,17 @@ const schema = [
         </ul>
         <p>
           Quanto de cada um, e em que ordem, depende de onde você está hoje e de quanto tempo falta para
-          a prova. Se você tem alguma dor, lesão ou condição de saúde, converse com o médico ou o
+          a prova. Para quem está começando, costuma render mais construir primeiro a base de corrida e
+          de força, separadas, e só depois juntar as duas no mesmo treino. Se você tem alguma dor, lesão ou condição de saúde, converse com o médico ou o
           fisioterapeuta antes de aumentar o volume de treino.
         </p>
 
         <h2>{c.nome} até a prova de São Paulo</h2>
         <p>{c.ateAProva}</p>
         <p>
-          Data, horários, inscrição e resultado da última etapa estão no guia do{' '}
+          A prova é paga por inscrição, não por mensalidade: na etapa de outubro de 2026, R$ 649 no
+          individual, R$ 599 por atleta na dupla e R$ 399 por integrante no revezamento. Data, horários e
+          resultado da última etapa estão no guia do{' '}
           <a href="/guias/hyrox-sao-paulo-2026/">Hyrox São Paulo 2026</a>.
         </p>
 

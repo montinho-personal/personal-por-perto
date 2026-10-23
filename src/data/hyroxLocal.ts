@@ -48,7 +48,7 @@ export interface HyroxCidade {
 }
 
 const OBOX =
-  'O Obox, no AlphaSítio Mall, na região do Tamboré (Santana de Parnaíba), lista Hyrox entre as aulas na página dele no Wellhub, ao lado de crosstraining, full body e yoga, com reserva obrigatória.';
+  'O Obox Training Club, no AlphaSítio Mall, na região do Tamboré (Santana de Parnaíba), aparece como parceiro do Wellhub e da TotalPass, e a página dele no Wellhub lista Hyrox entre as aulas, ao lado de crosstraining, full body e yoga, com reserva obrigatória.';
 
 const HYBOX =
   'O HYBOX, na Vila Monte Serrat, em Cotia, tem Hyrox, treino híbrido e treino funcional entre as atividades da página dele no Wellhub.';
@@ -59,10 +59,10 @@ export const HYROX_CIDADES: HyroxCidade[] = [
     nome: 'Alphaville',
     locucao: 'em Alphaville',
     cidade: 'alphaville-sp',
-    title: 'Hyrox em Alphaville: Onde Treinar e Como Se Preparar',
+    title: 'Hyrox em Alphaville: Aulas, Onde Treinar e Quanto Custa',
     description:
-      'Hyrox em Alphaville: onde treinar a corrida no Parque Ecológico, onde fazer a parte de força, como chegar à prova de São Paulo e como montar a preparação.',
-    h1: 'Hyrox em Alphaville: onde treinar e como se preparar',
+      'Hyrox em Alphaville: onde fazer aulas, onde treinar a corrida no Parque Ecológico e a força, quanto custa treinar e se inscrever, e como chegar à prova.',
+    h1: 'Hyrox em Alphaville: aulas, onde treinar e quanto custa',
     lead:
       'Alphaville já tem lugar com Hyrox na grade, pista de corrida no Parque Ecológico e condomínios com academia própria. Falta juntar as peças: a prova mistura 8 km de corrida com 8 estações de força, e o treino precisa das duas.',
     corrida: [
@@ -77,9 +77,19 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       'A etapa de São Paulo acontece no Distrito Anhembi, na zona norte da capital. De Alphaville, o caminho é quase sempre de carro, pela Castello Branco: o bairro não tem estação de trem própria, e a mais próxima é a Barueri, da Linha 8-Diamante da CPTM.',
     faqs: [
       {
-        pergunta: 'Onde treinar Hyrox em Alphaville?',
+        pergunta: 'Onde encontrar aulas de Hyrox em Alphaville?',
         resposta:
-          'Na região do Tamboré, o Obox lista Hyrox entre as aulas na página dele no Wellhub. Fora dele, a preparação junta duas coisas que Alphaville já tem: pista para correr, no Parque Ecológico, e academia com musculação e espaço funcional, como o Ironberg e a NitroGym Tamboré.',
+          'No AlphaSítio Mall, na região do Tamboré, o Obox Training Club lista Hyrox entre as aulas na página dele no Wellhub, com reserva obrigatória. Fora das aulas, a preparação junta duas coisas que Alphaville já tem: pista para correr, no Parque Ecológico, e academia com musculação e espaço funcional, como o Ironberg e a NitroGym Tamboré.',
+      },
+      {
+        pergunta: 'Quanto custa a mensalidade do Hyrox?',
+        resposta:
+          'O Hyrox não tem mensalidade própria: é uma prova. O que tem mensalidade é a academia onde você treina, e o valor muda de lugar para lugar — o Obox, por exemplo, aparece no Wellhub e na TotalPass, então quem tem um desses benefícios pode checar no aplicativo se o plano dá acesso. O que tem preço fixo é a inscrição: na etapa de São Paulo de outubro de 2026, R$ 649 no individual, R$ 599 por atleta na dupla e R$ 399 por integrante no revezamento.',
+      },
+      {
+        pergunta: 'Qual academia tem Hyrox perto de Alphaville?',
+        resposta:
+          'A que encontramos com Hyrox na grade é o Obox Training Club, no AlphaSítio Mall. A academia se apresenta como Hyrox Training Club; a lista oficial de academias afiliadas fica no buscador da própria Hyrox, que vale conferir antes de escolher.',
       },
       {
         pergunta: 'Dá para treinar Hyrox na academia do condomínio?',
@@ -219,10 +229,10 @@ export const HYROX_CIDADES: HyroxCidade[] = [
     nome: 'Santana de Parnaíba',
     locucao: 'em Santana de Parnaíba',
     cidade: 'santana-de-parnaiba-sp',
-    title: 'Hyrox em Santana de Parnaíba: Onde Treinar e Se Preparar',
+    title: 'Hyrox em Santana de Parnaíba: Onde Treinar e Onde É a Prova',
     description:
-      'Hyrox em Santana de Parnaíba: o lugar da cidade com Hyrox na grade, parques e corridas de rua para treinar e o caminho até a prova de SP.',
-    h1: 'Hyrox em Santana de Parnaíba: onde treinar e se preparar',
+      'Hyrox em Santana de Parnaíba: onde treinar na cidade e onde é a prova — a etapa paulista é no bairro de Santana, em São Paulo, não no município.',
+    h1: 'Hyrox em Santana de Parnaíba: onde treinar e onde é a prova',
     lead:
       'Um dos lugares da região com Hyrox na grade fica em Santana de Parnaíba: o Obox, no AlphaSítio Mall. A cidade soma a ele parques novos com pista de caminhada e um calendário de corridas de rua gratuitas.',
     corrida: [
@@ -234,12 +244,17 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       'Para a força fora dele, a cidade não tem Smart Fit; as unidades mais próximas ficam na Alameda Araguaia, no lado de Barueri de Alphaville. Há boxes de crossfit e estúdios na cidade, muitos no Wellhub, e as academias dos condomínios de Alphaville e Tamboré.',
     ],
     ateAProva:
-      'A etapa de São Paulo é no Distrito Anhembi, na zona norte da capital. Santana de Parnaíba não tem estação de trem: o acesso é de carro, pela Castello Branco (saída 26) ou pela Anhanguera (saída 29), seguindo pela Estrada dos Romeiros.',
+      'Atenção ao nome: a etapa de São Paulo é no Distrito Anhembi, na Av. Olavo Fontoura, 1209, no bairro de Santana, zona norte da capital — não em Santana de Parnaíba. Daqui até lá, Santana de Parnaíba não tem estação de trem: o acesso é de carro, pela Castello Branco (saída 26) ou pela Anhanguera (saída 29), seguindo pela Estrada dos Romeiros.',
     faqs: [
       {
         pergunta: 'Onde treinar Hyrox em Santana de Parnaíba?',
         resposta:
           'O Obox, no AlphaSítio Mall, na região do Tamboré, lista Hyrox entre as aulas na página dele no Wellhub, com reserva obrigatória. Confirme com a academia horários e planos aceitos antes de ir.',
+      },
+      {
+        pergunta: 'Tem prova de Hyrox em Santana de Parnaíba?',
+        resposta:
+          'Não encontramos prova de Hyrox no município. A etapa paulista acontece no Distrito Anhembi, no bairro de Santana, na zona norte de São Paulo — o nome parecido confunde. Inscrição, horários e o resultado da etapa de outubro de 2026 estão no guia do Hyrox São Paulo 2026.',
       },
       {
         pergunta: 'As corridas de rua de Santana de Parnaíba ajudam no Hyrox?',
