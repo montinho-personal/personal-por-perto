@@ -38,6 +38,8 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
 
 **Varredura de 20/10/2026:** o site oficial voltou a abrir. O FAQ agora traz **"Horário de largada: 5h00"** (antes "EM BREVE"), o mesmo das 5h do JSON-LD da Ticket Sports. O horário de cada onda depois da primeira segue sem detalhe; percursos seguem "em Breve"; PDF do regulamento sem mudança (md5 97749585…). Artigo atualizado: horário na FAQ, tabela-resumo e seção de largada; Última verificação 20/10.
 
+**Varredura de 23/10/2026:** o site oficial não abriu (conexão recusada no ambiente) — não contornado. Ticket Sports: JSON-LD igual (5h, Praça N. Sra. da Salete, InStock). PDF do regulamento: md5 igual (97749585…). Sem fato novo; artigo não mexido.
+
 ## Bloqueado (pedir print) — quase tudo resolvido em 13/10; falta o PDF do regulamento (Azure blob) e a Prefeitura (403)
 
 - https://www.maratonadecuritiba.com.br/ (home, regulamento, kit, percurso, premiação)
