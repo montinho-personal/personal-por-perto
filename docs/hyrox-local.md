@@ -99,7 +99,7 @@ Parnaíba · Jandira · Itapevi · Carapicuíba · Osasco · Cotia · Granja Via
 
 ## Prints recebidos (23/10, Renato)
 
-Arquivos em `docs/pesquisas/2026-10-23-hyrox/prints/` (01 a 10).
+Arquivos em `docs/pesquisas/2026-10-23-hyrox/prints/` (01 a 13).
 
 | busca / tela | o que mostrou | onde entrou |
 |---|---|---|
@@ -111,7 +111,6 @@ Arquivos em `docs/pesquisas/2026-10-23-hyrox/prints/` (01 a 10).
 | treino hyrox — IA (07) | 8 km + 8 estações, sequência fixa. **Não é fonte** — bate com a tabela que já estava na página | — |
 | treino hyrox — PAA (08) | como é o treino · quais são os 8 exercícios · diferença CrossFit × Hyrox · qual a sequência | FAQ comum "quais são os 8 exercícios, e em que sequência"; FAQ CrossFit × Hyrox |
 | treino hyrox — outras (09, 10) | em casa · wod · iniciante · exemplo · na academia · perto de mim · treino completo · onde treinar · oficial · planilha · o que é | FAQ comum "dá para treinar em casa?"; frase para iniciante na preparação. Planilha/exemplo de treino **não** entram: treino é prescrição individual |
-
 | hyrox barueri — autocompletar (11) | sp · resultados · inscrição · são paulo · bh · perto de mim | título "onde treinar, inscrição e onde é a prova"; FAQ "tem prova em Barueri? inscrição e resultado" (nenhuma etapa oficial no município; aponta o Anhembi e o guia) |
 | hyrox barueri — PAA (12) | quanto custa o Hyrox · qual academia tem Hyrox · onde acontece em SP · o que é e como funciona | FAQ "qual academia tem Hyrox em Barueri"; custo pela inscrição (seção comum) |
 | hyrox barueri — resultados e outras (12, 13) | Facebook da CrossFit Barueri: "simulado oficial HYROX BRASIL", "Hyrox todo domingo 9h". **Resumo de busca não é fonte**; outras: crossfit barueri · hyrox em alphaville · hyrox são paulo | CrossFit Barueri conferida em **duas fontes** (Wellhub e TotalPass: Av. Juruá, 307, Alphaville Industrial; mesmo telefone) → entra como box de CrossFit em Barueri e Alphaville. **Hyrox não entra**: nenhuma das duas lista, e o site da academia está bloqueado aqui → pedir print ao Renato (site ou post da academia sobre o Hyrox) |
