@@ -1,0 +1,320 @@
+---
+/**
+ * Hyrox vs CrossFit — diferenças, corpo e qual escolher.
+ *
+ * Prints de "hyrox vs crossfit" (23/10/2026) e dados do AnswerThePublic em
+ * docs/hyrox-vs-crossfit.md. O site oficial do CrossFit está bloqueado no
+ * ambiente: a descrição do método vem de revisões científicas que o
+ * descrevem. Nenhum estudo compara o corpo de quem faz um e outro; a página
+ * diz isso em vez de inventar um vencedor.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const publicadoEm = '2026-10-23';
+const atualizadoEm = '2026-10-23';
+const path = '/guias/hyrox-vs-crossfit';
+
+const HYROX_PROVA = 'https://hyrox.com/the-fitness-race/';
+const BRANDT = 'https://pubmed.ncbi.nlm.nih.gov/40230601/';
+const CHITTENDEN = 'https://pubmed.ncbi.nlm.nih.gov/42780891/';
+const MARTINHO = 'https://pubmed.ncbi.nlm.nih.gov/39300545/';
+const CLAUDINO = 'https://pubmed.ncbi.nlm.nih.gov/29484512/';
+const BLANCO = 'https://pubmed.ncbi.nlm.nih.gov/40347830/';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Hyrox vs CrossFit', url: path },
+];
+
+const COMPARA: [string, string, string][] = [
+  ['O que é', 'Uma prova com formato fixo', 'Um método de treino'],
+  ['Formato', '8 × (1 km de corrida + 1 estação), sempre igual', 'Treinos do dia (WODs) que mudam constantemente'],
+  ['O que mais pesa', 'Fôlego: corrida e ritmo constante', 'Variedade: força, técnica, ginástica e condicionamento'],
+  ['Técnica exigida', 'Moderada a baixa nos movimentos', 'Alta no levantamento olímpico e na ginástica'],
+  ['Comparar evolução', 'Fácil: a prova é sempre a mesma', 'Menos direto: o treino muda'],
+  ['Onde se treina', 'Academias afiliadas, boxes e academias comuns', 'Boxes de CrossFit'],
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual a diferença entre Hyrox e CrossFit?',
+    resposta:
+      'O Hyrox é uma prova padronizada: 8 corridas de 1 km, cada uma seguida de uma estação, sempre na mesma ordem. O CrossFit é um método de treino em que os exercícios mudam a cada dia e misturam levantamento de peso, ginástica e condicionamento. No Hyrox, a corrida pesa muito; no CrossFit, a técnica e a variedade.',
+  },
+  {
+    pergunta: 'O que é Hyrox no CrossFit?',
+    resposta:
+      'É a aula ou o treino no formato da prova dentro de um box de CrossFit: blocos de corrida intercalados com estações como trenó, remo e wall ball. A Hyrox também tem um programa oficial de academias afiliadas, os Hyrox Training Clubs.',
+  },
+  {
+    pergunta: 'O Hyrox é cardio?',
+    resposta:
+      'Em boa parte, sim. No primeiro estudo sobre o Hyrox, a maior parte da prova foi feita em intensidade alta e muito alta, a corrida ocupou cerca de 60% do tempo, e quem terminou mais rápido tinha mais capacidade aeróbica e mais volume de treino de resistência. Mas há força no meio: trenó, carregamento e afundo com carga.',
+  },
+  {
+    pergunta: 'O Hyrox define o corpo?',
+    resposta:
+      'Nenhum estudo comparou o corpo de quem faz Hyrox com o de quem faz CrossFit. O que define o corpo é perder gordura — o que depende do balanço entre o que se come e o que se gasta — e manter ou ganhar músculo, o que pede treino de força. O Hyrox ajuda no gasto e tem força nas estações; para ganhar mais músculo, quem compete costuma somar musculação.',
+  },
+  {
+    pergunta: 'O Hyrox ajuda a emagrecer?',
+    resposta:
+      'Ajuda a gastar energia, e o treino é intenso. Mas emagrecer depende do total da semana, somado à alimentação. Num conjunto de estudos com o CrossFit em pessoas com sobrepeso, a perda de peso foi parecida com a de outros tipos de exercício — o que vale a pena esperar também de qualquer treino intenso. A alimentação é com o nutricionista.',
+  },
+  {
+    pergunta: 'Quais são as 3 modalidades do CrossFit?',
+    resposta:
+      'O CrossFit combina levantamento de peso (incluindo o olímpico), ginástica (exercícios com o peso do corpo, como barra e parada de mão) e condicionamento metabólico (corrida, remo, bicicleta). É essa mistura que o torna mais técnico que o Hyrox.',
+  },
+  {
+    pergunta: 'O que é um treino de Hyrox?',
+    resposta:
+      'É o treino que prepara para a prova: corrida, força para as estações e sessões que juntam os dois, para o corpo aprender a voltar a correr com a perna cansada. Muitas vezes acontece numa aula com blocos de corrida e estações.',
+  },
+  {
+    pergunta: 'Hyrox ou CrossFit: qual é melhor?',
+    resposta:
+      'Depende do que você gosta e do que quer. Se você gosta de correr, quer um objetivo de prova claro e prefere movimentos simples, o Hyrox encaixa. Se gosta de variedade e de aprender movimentos técnicos, como o levantamento olímpico e a ginástica, o CrossFit. Dá também para combinar os dois.',
+  },
+  {
+    pergunta: 'Quem faz CrossFit consegue fazer Hyrox?',
+    resposta:
+      'Consegue, e costuma chegar com a parte de força adiantada. O que mais pede atenção é a corrida: são 8 km no total, e no estudo com atletas amadores a corrida levou mais tempo que todas as estações somadas.',
+  },
+  {
+    pergunta: 'Qual machuca mais, Hyrox ou CrossFit?',
+    resposta:
+      'Não dá para comparar de forma justa: os estudos usam métodos diferentes. No Hyrox, um acompanhamento de 12 semanas com 89 atletas encontrou mais lesões por sobrecarga, sobretudo no joelho e na perna — coerente com o volume de corrida. Em qualquer um dos dois, se você tem dor ou lesão, procure o médico ou o fisioterapeuta.',
+  },
+];
+
+const title = 'Hyrox vs CrossFit: Diferenças, Corpo e Qual Escolher';
+const description =
+  'Hyrox vs CrossFit: um é prova padronizada, o outro é método de treino. As diferenças, se o Hyrox é cardio, se define o corpo e qual escolher, com estudos.';
+
+const relacionados = [
+  {
+    url: '/guias/o-que-e-hyrox/',
+    titulo: 'O que é Hyrox',
+    descricao: 'Como funciona a prova, as 8 estações, os pesos de cada categoria e quanto custa.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/calorias/hyrox/',
+    titulo: 'Quantas calorias gasta uma prova de Hyrox?',
+    descricao: 'O gasto da prova pelo seu tempo e pelo pace, corrida e estações separadas.',
+    tipo: 'Calculadora',
+  },
+  {
+    url: '/guias/hyrox-sao-paulo-2026/',
+    titulo: 'Hyrox São Paulo 2026',
+    descricao: 'Resultado, data, local e divisões da etapa de outubro.',
+    tipo: 'Guia',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Hyrox</p>
+    <h1>Hyrox vs CrossFit: as diferenças, o corpo e qual escolher</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A diferença principal cabe numa frase: <strong>o Hyrox é uma prova; o CrossFit é um método de
+      treino</strong>. O Hyrox é sempre igual — 8 corridas de 1 km com uma estação depois de cada uma —
+      e cobra sobretudo fôlego. O CrossFit muda o treino todo dia e cobra mais técnica, com
+      levantamento de peso e ginástica.
+    </p>
+
+    <div class="prose">
+      <h2>As diferenças, lado a lado</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Hyrox</th><th scope="col">CrossFit</th></tr>
+          </thead>
+          <tbody>
+            {COMPARA.map(([item, hyrox, crossfit]) => (
+              <tr><th scope="row">{item}</th><td>{hyrox}</td><td>{crossfit}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Formato: uma prova fixa contra treinos que mudam</h2>
+      <p>
+        No Hyrox, a sequência é a mesma em qualquer etapa do mundo: 1 km de corrida e uma estação, oito
+        vezes — SkiErg, empurrar e puxar o trenó, burpee com salto, remo, carregamento de peso, afundo
+        com saco de areia e wall ball. Como a prova não muda, dá para comparar o seu tempo de uma etapa
+        para outra. A explicação completa está em <a href="/guias/o-que-e-hyrox/">o que é Hyrox</a>.
+      </p>
+      <p>
+        O CrossFit é um método de treino: o treino do dia, o WOD, muda constantemente e mistura três
+        coisas — levantamento de peso, ginástica e condicionamento. Há competições de CrossFit, mas o dia a
+        dia do método é o treino variado, não uma prova fixa.
+      </p>
+
+      <h2>O que cada um cobra do corpo</h2>
+      <p>
+        O primeiro estudo científico sobre o Hyrox concluiu que ele é um treino funcional de alta
+        intensidade com ênfase na resistência, e com exigência de moderada a baixa de força máxima,
+        coordenação e mobilidade, quando comparado a outras modalidades do tipo — o CrossFit entre
+        elas. Na simulação feita pelos pesquisadores, a corrida levou mais tempo que todas as estações
+        somadas.
+      </p>
+      <p>
+        No CrossFit, a exigência depende do treino do dia. Uma revisão de 68 estudos mostrou que as
+        respostas do corpo mudam de um treino para outro, e que a recuperação depois de um desafio de
+        CrossFit leva de 48 a 72 horas. A mistura de levantamento olímpico e ginástica é o que torna a
+        curva de aprendizado mais longa.
+      </p>
+
+      <h2>O Hyrox é cardio?</h2>
+      <p>
+        Em boa parte, sim. No estudo com atletas amadores, a maior parte da prova foi feita em
+        intensidade alta e muito alta de frequência cardíaca, e quem terminou mais rápido tinha mais
+        capacidade aeróbica e mais volume de treino de resistência. As estações com mais carga — o trenó
+        — foram as mais rápidas de completar; o pico de esforço apareceu nas wall balls, no fim. É cardio
+        com força no meio.
+      </p>
+
+      <FerramentaInline
+        id="crossfit"
+        texto="Se a dúvida é qual dos dois gasta mais energia, a resposta depende da duração e da intensidade do que você faz. A calculadora de crossfit estima o gasto do WOD — a parte intensa da aula, não a aula inteira — e dá para comparar com o de uma prova de Hyrox."
+        acao="Calcular o gasto do meu WOD"
+      />
+
+      <h2>Corpo: o Hyrox define? E o CrossFit?</h2>
+      <p>
+        Nenhum estudo comparou o corpo de quem faz Hyrox com o de quem faz CrossFit — as comparações de
+        "physique" que circulam são impressão, não dado. O que define o corpo é perder gordura, o que
+        depende do balanço entre o que se come e o que se gasta, e manter ou ganhar músculo, o que pede
+        treino de força.
+      </p>
+      <p>
+        O que existe de dado vai nessa direção: no estudo do Hyrox, quem tinha menos gordura corporal
+        terminou mais rápido — uma associação, não prova de que a prova emagrece. E numa revisão de
+        estudos com o CrossFit em pessoas com sobrepeso ou obesidade, o peso caiu, mas de forma
+        parecida com a de outros tipos de exercício. Nenhum dos dois é atalho: o resultado vem da soma
+        de treino, alimentação e constância. A alimentação é com o nutricionista.
+      </p>
+
+      <h2>Lesão: o que se sabe</h2>
+      <p>
+        No Hyrox, um acompanhamento de 12 semanas com 89 atletas encontrou problemas de saúde comuns,
+        a maioria por sobrecarga, com o joelho e a perna à frente — coerente com o volume de corrida. No
+        CrossFit, a literatura é maior, mas os estudos usam métodos diferentes, o que impede dizer qual
+        dos dois machuca mais. Nos dois casos, progressão de carga e de volume conta mais que a
+        modalidade. Se você tem dor ou lesão, converse com o médico ou o fisioterapeuta antes de começar.
+      </p>
+
+      <h2>Hyrox ou CrossFit: qual escolher</h2>
+      <ul>
+        <li>
+          <strong>Hyrox</strong>, se você gosta de correr, quer uma meta de prova clara e prefere
+          movimentos simples, em que a evolução aparece no cronômetro.
+        </li>
+        <li>
+          <strong>CrossFit</strong>, se você gosta de variedade e de aprender movimentos técnicos, como o
+          levantamento olímpico e a ginástica.
+        </li>
+        <li>
+          <strong>Os dois</strong>: dá para treinar CrossFit e correr o Hyrox. Quem vem do box costuma
+          chegar com a força em dia; o que mais pede atenção é a corrida.
+        </li>
+      </ul>
+      <p>
+        Em qualquer um, o treino de força bem feito é o que segura o resto. Na região de Alphaville e
+        Barueri, as páginas de <a href="/guias/hyrox-alphaville/">Hyrox em Alphaville</a> e{' '}
+        <a href="/guias/hyrox-barueri/">Hyrox em Barueri</a> mostram onde treinar.
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li><a href={HYROX_PROVA} target="_blank" rel="noopener">Hyrox — The Fitness Race</a>: formato da prova e categorias.</li>
+        <li><a href={BRANDT} target="_blank" rel="noopener">Brandt et al., 2025, Frontiers in Physiology</a>: primeiro estudo sobre o Hyrox; intensidade, tempo de corrida e estações, determinantes do desempenho e comparação com outras modalidades de treino funcional de alta intensidade.</li>
+        <li><a href={CHITTENDEN} target="_blank" rel="noopener">Chittenden et al., 2026, Frontiers in Sports and Active Living</a>: problemas de saúde em 89 atletas de Hyrox por 12 semanas.</li>
+        <li><a href={MARTINHO} target="_blank" rel="noopener">Martinho et al., 2024, BMC Sports Science, Medicine and Rehabilitation</a>: revisão de 68 estudos sobre as exigências do CrossFit (levantamento de peso, ginástica e condicionamento) e a recuperação.</li>
+        <li><a href={CLAUDINO} target="_blank" rel="noopener">Claudino et al., 2018, Sports Medicine – Open</a>: revisão sistemática do CrossFit e a escassez de estudos de alta qualidade.</li>
+        <li><a href={BLANCO} target="_blank" rel="noopener">Blanco-Martínez et al., 2025, Semergen</a>: ensaios do CrossFit em adultos com sobrepeso ou obesidade.</li>
+        <li>Conferidas em 23/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre Hyrox e CrossFit" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

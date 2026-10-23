@@ -1,0 +1,381 @@
+---
+/**
+ * O que é Hyrox — o artigo-pilar da família Hyrox do portal.
+ *
+ * Liga o guia do evento de São Paulo, a calculadora de calorias, o
+ * comparativo com o CrossFit e as 11 páginas da região presencial.
+ * Prints de "o que é hyrox" (23/10/2026) e dados do AnswerThePublic em
+ * docs/o-que-e-hyrox.md. Fatos da prova só da página oficial; números de
+ * tempo e de participação, dos estudos citados. Pesos por categoria ficam
+ * de fora até o regulamento oficial abrir no ambiente.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { ESTACOES, KM_CORRIDA } from '../../lib/calorias/hyrox';
+import { HYROX_CIDADES } from '../../data/hyroxLocal';
+
+const publicadoEm = '2026-10-23';
+const atualizadoEm = '2026-10-23';
+const path = '/guias/o-que-e-hyrox';
+
+const HYROX_PROVA = 'https://hyrox.com/the-fitness-race/';
+const HYROX_HISTORIA = 'https://hyrox.com/the-history/';
+const HYROX_SP = 'https://hyrox.com/event/hyrox-sao-paulo-2/';
+const INGRESSOS_SP = 'https://brazil.hyrox.com/event/hyrox-so-paulo-season-26-27-aj4v8a';
+const BRANDT = 'https://pubmed.ncbi.nlm.nih.gov/40230601/';
+const HYSCIENCE = 'https://pubmed.ncbi.nlm.nih.gov/42697540/';
+const PARTICIPACAO = 'https://pubmed.ncbi.nlm.nih.gov/41380137/';
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'O que é Hyrox', url: path },
+];
+
+/** Página oficial "The Fitness Race", conferida em 23/10/2026. Trenó com o peso dele incluído. */
+const PESOS_COLUNAS = ['Open feminino', 'Open masculino', 'Pro feminino', 'Pro masculino'];
+const PESOS: string[][] = [
+  ['Sled push (2 × 25 m)', '102 kg', '152 kg', '152 kg', '202 kg'],
+  ['Sled pull (2 × 25 m)', '78 kg', '103 kg', '103 kg', '153 kg'],
+  ['Farmers carry (200 m)', '2 × 16 kg', '2 × 24 kg', '2 × 24 kg', '2 × 32 kg'],
+  ['Sandbag lunges (100 m)', '10 kg', '20 kg', '20 kg', '30 kg'],
+  ['Wall balls (100)', '4 kg', '6 kg', '6 kg', '9 kg'],
+];
+
+const listaEstacoes = ESTACOES.map((e) => `${e.nome.toLowerCase()} (${e.volume})`).join(', ');
+
+const faqs = [
+  {
+    pergunta: 'O que é Hyrox?',
+    resposta: `É uma prova de fitness, a que a organização chama de "fitness racing": ${KM_CORRIDA} corridas de 1 km, cada uma seguida de uma estação de exercício funcional, sempre na mesma ordem, em pavilhão fechado. O formato é igual em todas as etapas do mundo, o que permite comparar tempos.`,
+  },
+  {
+    pergunta: 'O que significa Hyrox em português?',
+    resposta:
+      'Hyrox é o nome da marca, e a página oficial não explica a origem dele. O que ela traduz é o tipo de prova: "fitness racing", algo como corrida de fitness — uma corrida com estações de exercício no meio.',
+  },
+  {
+    pergunta: 'Qual é o objetivo do Hyrox?',
+    resposta:
+      'Completar as 8 corridas e as 8 estações no menor tempo que você conseguir. Não há tempo limite nem classificatória para participar, e a organização informa que mais de 98% dos atletas terminam a prova.',
+  },
+  {
+    pergunta: 'Quais são os 8 exercícios do Hyrox?',
+    resposta: `Nesta ordem, cada um depois de 1 km de corrida: ${listaEstacoes}.`,
+  },
+  {
+    pergunta: 'Quais são os pesos do Hyrox?',
+    resposta:
+      'No Open feminino: trenó de 102 kg no sled push e 78 kg no sled pull, kettlebells de 2 × 16 kg, saco de areia de 10 kg e wall ball de 4 kg. O Open masculino e o Pro feminino usam 152 e 103 kg no trenó, 2 × 24 kg, 20 kg e 6 kg. O Pro masculino, 202 e 153 kg, 2 × 32 kg, 30 kg e 9 kg. O peso do trenó já inclui o próprio trenó.',
+  },
+  {
+    pergunta: 'Quanto custa o Hyrox?',
+    resposta:
+      'Na etapa de São Paulo de outubro de 2026, a inscrição custou R$ 649 no individual, R$ 599 por atleta na dupla e R$ 399 por integrante no revezamento. Para assistir, R$ 54 por dia. O treino em si não tem preço da Hyrox: é a mensalidade da academia onde você treina.',
+  },
+  {
+    pergunta: 'Quanto tempo dura uma prova de Hyrox?',
+    resposta:
+      'Depende muito do nível. Num estudo com 11 atletas amadores numa simulação da categoria Open individual, o tempo mediano foi de 86,5 minutos; num grupo de 24 atletas da categoria Pro masculina, numa etapa oficial, perto de 70 minutos. Como não há tempo limite, quem está começando pode levar mais.',
+  },
+  {
+    pergunta: 'O que é Hyrox na academia?',
+    resposta:
+      'É o treino no formato da prova: corrida intercalada com as estações. A Hyrox tem um programa oficial de academias afiliadas, os Hyrox Training Clubs, e há academias e boxes de CrossFit que oferecem aula nesse formato mesmo sem a afiliação.',
+  },
+  {
+    pergunta: 'Qual a diferença entre Hyrox e CrossFit?',
+    resposta:
+      'O Hyrox é uma prova com formato fixo, em que a corrida pesa muito. O CrossFit é um método de treino com exercícios que mudam a cada dia, incluindo levantamento olímpico e ginástica, que pedem mais técnica. O comparativo completo está no artigo Hyrox vs CrossFit.',
+  },
+  {
+    pergunta: 'Onde nasceu o Hyrox?',
+    resposta:
+      'Na Alemanha: a primeira prova foi em Hamburgo, em 2017, segundo a página oficial de história da organização. Em São Paulo, a etapa de outubro de 2026 foi a terceira da cidade.',
+  },
+  {
+    pergunta: 'Iniciante pode fazer Hyrox?',
+    resposta:
+      'Pode: não há classificatória, e a categoria Open existe para quem quer completar a prova, com cargas menores que a Pro. Dá também para dividir o esforço em dupla ou em revezamento de quatro. Se você tem alguma condição de saúde, dor ou lesão, converse antes com o médico ou o fisioterapeuta.',
+  },
+];
+
+const title = 'O Que É Hyrox: Como Funciona, Estações, Pesos e Preço';
+const description =
+  'O que é Hyrox: 8 corridas de 1 km com 8 estações, os pesos de cada categoria, quanto tempo dura, quanto custa no Brasil e como é o Hyrox na academia.';
+
+const relacionados = [
+  {
+    url: '/guias/hyrox-vs-crossfit/',
+    titulo: 'Hyrox vs CrossFit',
+    descricao: 'As diferenças de formato, de treino e de corpo, e como escolher entre os dois.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/hyrox-sao-paulo-2026/',
+    titulo: 'Hyrox São Paulo 2026',
+    descricao: 'Resultado, data, local, horários e divisões da etapa de outubro.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/calorias/hyrox/',
+    titulo: 'Quantas calorias gasta uma prova de Hyrox?',
+    descricao: 'O gasto da prova pelo seu tempo e pelo pace, corrida e estações separadas.',
+    tipo: 'Calculadora',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Hyrox</p>
+    <h1>O que é Hyrox: como funciona a prova, as estações, os pesos e quanto custa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Hyrox é uma prova de fitness em que você corre <strong>8 vezes 1 km</strong> e, depois de cada
+      quilômetro, faz uma <strong>estação de exercício</strong> — empurrar trenó, remar, wall ball. A
+      ordem é sempre a mesma, em qualquer etapa do mundo, e não há tempo limite nem classificatória:
+      qualquer pessoa pode se inscrever.
+    </p>
+
+    <div class="prose">
+      <h2>Hyrox em resumo</h2>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th scope="row">O que é</th><td>Prova de "fitness racing": corrida com estações de exercício funcional</td></tr>
+            <tr><th scope="row">Formato</th><td>{KM_CORRIDA} × (1 km de corrida + 1 estação), em pavilhão fechado</td></tr>
+            <tr><th scope="row">Categorias</th><td>Open e Pro (individual), duplas, revezamento de 4 e divisões adaptadas</td></tr>
+            <tr><th scope="row">Quem pode</th><td>Qualquer pessoa: sem tempo limite e sem classificatória</td></tr>
+            <tr><th scope="row">Onde surgiu</th><td>Hamburgo, Alemanha, em 2017</td></tr>
+            <tr><th scope="row">No Brasil</th><td>São Paulo recebeu a terceira etapa em outubro de 2026, no Distrito Anhembi</td></tr>
+            <tr><th scope="row">Inscrição (SP 2026)</th><td>R$ 649 individual · R$ 599 por atleta na dupla · R$ 399 no revezamento</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Hyrox em português: o que significa</h2>
+      <p>
+        Hyrox é o nome da marca — a página oficial não conta de onde ele vem. O que ela explica é o tipo
+        de prova: <em>fitness racing</em>, algo como "corrida de fitness". É uma corrida, com largada,
+        chegada e cronômetro, em que no meio do caminho há estações de exercício. Por isso tanta gente
+        chega ao Hyrox vindo da corrida de rua ou do CrossFit.
+      </p>
+
+      <h2>Como funciona a prova</h2>
+      <p>
+        Segundo a organização, cada atleta corre 1 km e faz uma estação, e repete isso oito vezes. As
+        provas acontecem em grandes pavilhões de exposição, com o público acompanhando da largada à
+        chegada. Entre a pista de corrida e as estações fica a <strong>Roxzone</strong>, a área de
+        transição: num estudo feito numa etapa oficial em Madri, os pesquisadores somaram 8,7 km de
+        deslocamento contando corrida e Roxzone.
+      </p>
+
+      <h2>As 8 estações do Hyrox, na ordem</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">#</th><th scope="col">Estação</th><th scope="col">Volume</th></tr>
+          </thead>
+          <tbody>
+            {ESTACOES.map((e, i) => (
+              <tr><td>{i + 1}</td><th scope="row">{e.nome}</th><td>{e.volume}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O trenó (sled) é empurrado e depois puxado; o SkiErg imita a remada do esqui; o burpee broad
+        jump é o burpee com salto à frente; o farmers carry é andar carregando um peso em cada mão; o
+        sandbag lunge é o afundo com saco de areia nos ombros; e a prova termina nas wall balls,
+        arremessando a bola num alvo na parede.
+      </p>
+
+      <FerramentaInline
+        id="hyrox"
+        texto="Com a ordem das estações na mão, a pergunta seguinte costuma ser quanto da prova é corrida e quanto é estação. A calculadora separa as duas pelo seu tempo final e pelo seu pace, e estima o gasto de cada parte."
+        acao="Calcular o gasto da minha prova de Hyrox"
+      />
+
+      <h2>Categorias: Open, Pro, duplas e revezamento</h2>
+      <ul>
+        <li><strong>Open</strong> — a prova padrão, individual, pensada como desafio para completar.</li>
+        <li><strong>Pro</strong> — individual, para quem já tem experiência: as cargas são mais pesadas.</li>
+        <li><strong>Duplas</strong> — os dois correm juntos todos os quilômetros e dividem o trabalho de cada estação como quiserem.</li>
+        <li><strong>Revezamento</strong> — equipe de quatro: cada integrante faz duas vezes 1 km de corrida seguido de uma estação.</li>
+        <li><strong>Adaptadas</strong> — divisões para atletas com deficiência.</li>
+      </ul>
+
+      <h2>Os pesos do Hyrox por categoria</h2>
+      <p>
+        SkiErg, burpee broad jump e remo não têm carga. Nas outras cinco estações, o peso muda com a
+        categoria e o sexo — e o Open masculino usa as mesmas cargas do Pro feminino:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Cargas da página oficial da prova (o trenó inclui o próprio peso)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Estação</th>
+              {PESOS_COLUNAS.map((c) => <th scope="col">{c}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {PESOS.map(([estacao, ...valores]) => (
+              <tr><th scope="row">{estacao}</th>{valores.map((v) => <td>{v}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Nas duplas, as cargas seguem o Open de cada sexo; na dupla mista, as do Open masculino. O
+        regulamento de cada divisão (rulebook) detalha as regras de execução e as penalidades.
+      </p>
+
+      <h2>Qual é o objetivo do Hyrox</h2>
+      <p>
+        Terminar as oito voltas no menor tempo que você conseguir. A organização afirma que mais de 98%
+        dos atletas completam a prova — justamente porque não há corte de tempo. Para a maioria das
+        pessoas, o adversário é o próprio tempo da prova anterior, e o formato fixo é o que permite
+        essa comparação.
+      </p>
+
+      <h2>Quanto tempo dura uma prova de Hyrox</h2>
+      <p>
+        Depende do nível. No primeiro estudo científico sobre o Hyrox, 11 atletas amadores fizeram uma
+        simulação da categoria Open individual: o tempo mediano foi de <strong>86,5 minutos</strong>, dos
+        quais cerca de 51 de corrida e 33 nas estações. Um grupo de 24 atletas da categoria Pro
+        masculina, numa etapa oficial, levou perto de <strong>70 minutos</strong>. São grupos pequenos:
+        servem para dar a ordem de grandeza, não para dizer qual será o seu tempo.
+      </p>
+      <p>
+        O mesmo estudo com amadores mostrou que quem termina mais rápido tende a ter mais capacidade
+        aeróbica e mais volume de treino de resistência — e que a maior parte da prova é feita em
+        intensidade alta. O Hyrox é, antes de tudo, uma prova de fôlego.
+      </p>
+
+      <h2>Hyrox no Brasil</h2>
+      <p>
+        A etapa de São Paulo de outubro de 2026, no Distrito Anhembi, foi a terceira da cidade. Data,
+        horários, valores e o resultado estão no{' '}
+        <a href="/guias/hyrox-sao-paulo-2026/">guia do Hyrox São Paulo 2026</a>. A inscrição da etapa de
+        São Paulo foi feita pela plataforma oficial da Hyrox Brasil.
+      </p>
+      <p>
+        O crescimento não é só daqui: um levantamento com os resultados oficiais contou mais de 278 mil
+        participantes em 145 provas, em 22 países, da criação até a temporada 2023/2024.
+      </p>
+
+      <h2>Hyrox na academia e no CrossFit</h2>
+      <p>
+        Fora da prova, "Hyrox" virou também o nome de um tipo de aula: corrida intercalada com as
+        estações. A Hyrox tem um programa oficial de academias afiliadas, os Hyrox Training Clubs, e
+        há academias e boxes de CrossFit que dão aulas nesse formato. Como os dois se parecem, a
+        dúvida mais comum é a diferença entre eles — está no{' '}
+        <a href="/guias/hyrox-vs-crossfit/">comparativo Hyrox vs CrossFit</a>.
+      </p>
+      <p>Na região de Alphaville e Barueri, as páginas de cada cidade dizem onde treinar:</p>
+      <ul class="cidades">
+        {HYROX_CIDADES.map((c) => (
+          <li><a href={`/guias/hyrox-${c.slug}/`}>Hyrox {c.locucao}</a></li>
+        ))}
+      </ul>
+
+      <h2>Iniciante pode fazer Hyrox?</h2>
+      <p>
+        Pode. A categoria Open, as duplas e o revezamento existem para isso, e não há classificatória.
+        O que costuma pegar quem está começando é a corrida com a perna já cansada das estações — por
+        isso a preparação junta corrida, força e treinos com os dois. Se você tem alguma dor, lesão ou
+        condição de saúde, converse com o médico ou o fisioterapeuta antes de começar.
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li><a href={HYROX_PROVA} target="_blank" rel="noopener">Hyrox — The Fitness Race</a>: formato (1 km + 1 estação, oito vezes), provas em pavilhão, as categorias Open, Pro, duplas e revezamento e as cargas de cada uma.</li>
+        <li><a href={HYROX_HISTORIA} target="_blank" rel="noopener">Hyrox — The History</a>: lançamento em Hamburgo em 2017, mais de 98% de conclusão, sem tempo limite nem classificatória.</li>
+        <li><a href={HYROX_SP} target="_blank" rel="noopener">Hyrox São Paulo</a> e <a href={INGRESSOS_SP} target="_blank" rel="noopener">plataforma da Hyrox Brasil</a>: terceira etapa na cidade e valores de 2026.</li>
+        <li><a href={BRANDT} target="_blank" rel="noopener">Brandt et al., 2025, Frontiers in Physiology</a>: 11 atletas amadores, simulação Open, tempos e intensidade.</li>
+        <li><a href={HYSCIENCE} target="_blank" rel="noopener">Gutiérrez-Hellín et al., 2026, IJSPP</a>: 24 atletas Pro masculino na etapa de Madri 2025, corrida e Roxzone.</li>
+        <li><a href={PARTICIPACAO} target="_blank" rel="noopener">Fernández-Navarrete et al., 2026, Research Quarterly for Exercise and Sport</a>: 278.063 participantes em 145 provas e 22 países.</li>
+        <li>Conferidas em 23/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre o Hyrox" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+  .cidades {
+    columns: 2;
+  }
+</style>

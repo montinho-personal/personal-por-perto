@@ -115,6 +115,11 @@ personal) × o que dá para afirmar com fonte.
 - Relógio (Garmin/Amazfit): exige manual oficial de cada marca; baixo
   volume.
 
+## Andamento
+
+- 23/10: leva 1 publicada — `/guias/o-que-e-hyrox/` (com a tabela oficial de
+  pesos, que estava na página da prova) e `/guias/hyrox-vs-crossfit/`.
+
 ## Ritmo
 
 Cria páginas novas → dividir. Leva 1: Hyrox × CrossFit e o pilar "O que é
