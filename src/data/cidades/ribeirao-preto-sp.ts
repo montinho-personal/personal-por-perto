@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Conhecida como a Capital Nacional do Agronegócio, Ribeirão Preto tem uma economia robusta, com forte cadeia sucroalcooleira na região, um grande polo de saúde (com a Faculdade de Medicina e o HC da USP e dezenas de hospitais) e setores de educação e tecnologia. O alto poder aquisitivo, concentrado na Zona Sul, cria um terreno fértil para serviços premium — incluindo o personal training.',
 
   mercado:
-    'A cultura de academia e de vida ao ar livre é forte em Ribeirão Preto. Redes como Smart Fit (Subsetor Sul, Ribeirânia, shoppings) e Bluefit (Jardim Califórnia, Santa Cruz) estão bem distribuídas, e o público de classe média-alta, somado ao clima quente, impulsiona tanto a musculação indoor quanto o treino ao ar livre nos parques.',
+    'A cultura de academia e de vida ao ar livre é forte em Ribeirão Preto. Redes como Smart Fit (quatro unidades, duas delas em shoppings) e Bluefit (Av. Maurílio Biagi e Nova Aliança) estão presentes, e o público de classe média-alta, somado ao clima quente, impulsiona tanto a musculação indoor quanto o treino ao ar livre nos parques.',
 
   bairrosNobres: ['Jardim Botânico', 'Bosque das Juritis', 'Vila do Golf', "Jardim Olhos d'Água"],
   bairrosPopulares: ['Quintino Facci', 'Jardim Aeroporto', 'Ipiranga', 'Adelino Simioni'],
@@ -68,13 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Ribeirão Preto tem tradição no futebol (com o Botafogo-SP e a Arena Eurobike) e é uma cidade muito ativa em corrida de rua, ciclismo e treino em parques. O calor faz parte do desafio — e do charme — de treinar na região.',
   academias:
-    'A presença de redes como Smart Fit e Bluefit garante boa cobertura, complementada por estúdios de funcional e personal voltados ao público de alto poder aquisitivo da Zona Sul.',
+    'Smart Fit e Bluefit cobrem a musculação em diferentes regiões da cidade, e o Parque Maurílio Biagi tem academia ao ar livre gratuita, com aparelhos adaptados.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Subsetor Sul, na Ribeirânia e nos shoppings' },
-    { nome: 'Bluefit', detalhe: 'unidades no Jardim Califórnia e no Santa Cruz' },
-    { nome: 'Estúdios premium da Zona Sul', detalhe: 'funcional e personal para o público de alto padrão' },
-    { nome: 'Academias ao ar livre dos parques', detalhe: 'gratuitas, no Maurílio Biagi e no Curupira' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: Shopping Santa Úrsula, Mall Dom Pedro I, Trio (Av. Presidente Vargas) e Neo (Jardim Palma Travassos)' },
+    { nome: 'Bluefit', detalhe: 'unidades na Av. Maurílio Biagi e no Nova Aliança' },
+    { nome: 'Academia ao ar livre do Parque Maurílio Biagi', detalhe: 'gratuita, com aparelhos adaptados para pessoas com deficiência desde 2022' },
   ],
+  academiasVerificadasEm: '2026-10-23',
 
   destaquesFitness: [
     'Público de alto poder aquisitivo na Zona Sul — nicho premium para personal e assessorias.',
@@ -129,5 +129,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Ribeirão Preto: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-24',
+  atualizadoEm: '2026-10-23',
 };

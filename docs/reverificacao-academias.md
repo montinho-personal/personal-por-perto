@@ -495,3 +495,25 @@ Pendência anotada: Bluefit e "mais de 40 academias ao ar livre" no texto corrid
 Também no arquivo: card da orla em `ondeTreinar`, `academias` (sem a "oferta grande" nos bairros) e FAQ "Onde o personal costuma atender" ("7 km de calçadão" → "de orla"; Smart Fit com as cinco unidades).
 
 Saldo: 5 entradas → 1 removida, 2 corrigidas, 2 confirmadas.
+
+### 23/10/2026 — leva 20
+
+**Manaus/AM** (411 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit (mais de dez unidades — Amazonas Shopping, Cidade Nova, Ponta Negra, Flores) | confirmada sem mudança: 12 unidades abertas em Manaus (CEP 690xx), entre elas as quatro citadas | smartfit.com.br/academias/amazonas-shopping (Av. Djalma Batista, 482), /cidade-nova-1, /ponta-negra, /flores-1 e listagem /academias/am/manaus; São Jorge está `opened:false` e não conta |
+| Academias locais de bairro | **removida** — genérica, sem nome a conferir | — |
+| Academia ao ar livre do Parque Rio Negro | **removida** — só trechos de busca (Cenarium 2021, guias); nenhuma página abriu no ambiente, e o portal do governo do AM deu 503. A menção a "academia ao ar livre" saiu também da descrição do parque | — |
+| Estrutura do Ponte dos Bilhares | confirmada como academia ao ar livre; nome e detalhe corrigidos. "Pista de 1,42 km" e "reformado em 2023" **não confirmados** — saíram também da descrição do parque, que passa a citar a ciclofaixa de cerca de 1,4 km | Prefeitura de Manaus: reinauguração com "academia ao ar livre – a maior da cidade com 14 equipamentos"; quadras reformadas (2019); ciclofaixa de 1,4 km (2015) |
+
+**Ribeirão Preto/SP** (251 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit ("Subsetor Sul, Ribeirânia e shoppings") | confirmada; detalhe corrigido — são quatro unidades, nenhuma na Ribeirânia ou no Subsetor Sul | smartfit.com.br/academias/shopping-santa-ursula (R. São José, 933, Centro), /mall-dom-pedro-i (Av. Dom Pedro I, 1550), /trio (Av. Presidente Vargas, 1265), /neo (Av. Maria de Jesus Condeixa, 600), todas `opened:true`, CEP 140xx |
+| Bluefit ("Jardim Califórnia e Santa Cruz") | confirmada; detalhe corrigido | bluefit.com.br/academia/biagi (Av. Maurílio Biagi, 1450, Santa Cruz do José Jacques) e /nova-alianca (Av. Dr. José Cezário Monteiro da Silva Filho, 385, Nova Aliança); Wellhub lista as duas como parceiras (abertas). O botão "Avise-me na inauguração" é do template do site |
+| Estúdios premium da Zona Sul | **removida** — genérica; o texto do campo `academias` deixou de citá-los | — |
+| Academias ao ar livre dos parques (Maurílio Biagi e Curupira) | confirmada só no Maurílio Biagi; Curupira **sem fonte** | Prefeitura de Ribeirão Preto: academia ao ar livre no Parque Maurílio Biagi (2012) e aparelhos adaptados instalados pelo Programa Cidade Acessível (20/09/2022) |
+
+Saldo da leva: 8 entradas → 5 mantidas, 3 removidas, 4 detalhes corrigidos.

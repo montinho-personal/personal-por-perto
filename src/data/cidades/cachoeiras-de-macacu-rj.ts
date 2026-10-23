@@ -69,6 +69,7 @@ export const cidade: Cidade = {
     'A cultura esportiva local gira em torno da natureza: trilhas, montanhismo, rapel e esportes de aventura, além de ciclismo de estrada pelos distritos e corrida de rua no Centro e em Papucaia.',
   academias:
     'A oferta combina academias de bairro no Centro, em Japuíba e em Papucaia com o condicionamento voltado a trilhas e esportes ao ar livre, atendendo um público que valoriza o contato com a natureza.',
+  academiasVerificadasEm: '2026-10-23',
 
   destaquesFitness: [
     'Reserva Ecológica de Guapiaçu (REGUA), com trilhas de Mata Atlântica e a Cascata da REGUA.',

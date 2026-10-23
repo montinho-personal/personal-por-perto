@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva combina a corrida de rua, com provas ligadas à identidade cafeeira da cidade, ao uso das praças centrais para caminhada e às academias dos bairros. O relevo montanhoso da Zona da Mata e a proximidade da Serra do Caparaó estimulam atividades ao ar livre e contato com a natureza.',
   academias:
     'A oferta é formada principalmente por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média que é polo regional de serviços.',
+  academiasProximas: [
+    { nome: 'Smart Fit', detalhe: 'na Praça Cordovil Pinto Coelho, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-23',
 
   destaquesFitness: [
     'Polo do café de montanha da Zona da Mata, no coração das Matas de Minas.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Manhuaçu', url: 'https://www.manhuacu.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-23',
 };

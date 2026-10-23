@@ -29,12 +29,12 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Rio Negro (orla)',
       descricao:
-        'Orla com pista de caminhada e corrida de mais de 1.700 m, quatro mirantes e academia ao ar livre, com vista para o Rio Negro — um dos points mais bonitos para treinar na cidade.',
+        'Orla com pista de caminhada e corrida de mais de 1.700 m e quatro mirantes, com vista para o Rio Negro — um dos points mais bonitos para treinar na cidade.',
     },
     {
       nome: 'Parque Ponte dos Bilhares',
       descricao:
-        'Reformado em 2023, tem pista de cerca de 1,42 km, academias ao ar livre e quadras poliesportivas.',
+        'Tem academia ao ar livre, quadras poliesportivas e ciclofaixa de cerca de 1,4 km.',
     },
     {
       nome: 'Passeio do Mindú',
@@ -71,10 +71,9 @@ export const cidade: Cidade = {
     'A boa presença da Smart Fit e de academias locais dá cobertura à cidade, com a orla e os parques funcionando como extensões ao ar livre — especialmente nos horários mais frescos do dia.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'mais de dez unidades — Amazonas Shopping, Cidade Nova, Ponta Negra e Flores' },
-    { nome: 'Academias locais de bairro', detalhe: 'ampla cobertura nos bairros residenciais' },
-    { nome: 'Academia ao ar livre do Parque Rio Negro', detalhe: 'gratuita, na orla, com vista para o rio' },
-    { nome: 'Estrutura do Ponte dos Bilhares', detalhe: 'pista de 1,42 km, academias ao ar livre e quadras' },
+    { nome: 'Academia ao ar livre do Parque Ponte dos Bilhares', detalhe: 'gratuita, com quadras poliesportivas e ciclofaixa no parque' },
   ],
+  academiasVerificadasEm: '2026-10-23',
 
   destaquesFitness: [
     'Orla e Ponta Negra como hub de corrida, caminhada e eventos, com vista para o Rio Negro.',
@@ -142,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Manaus: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-10-23',
 };
