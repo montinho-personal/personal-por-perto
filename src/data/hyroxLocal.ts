@@ -72,6 +72,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
     estacoes: [
       OBOX,
       'Para a força que a prova cobra — empurrar e puxar o trenó, carregar peso, afundo com saco de areia, wall ball —, serve qualquer lugar com musculação e espaço para treino funcional. Na região, o Ironberg, na Estrada Aldeinha, e a NitroGym Tamboré são academias de grande porte; a academia do condomínio também resolve boa parte, com adaptação.',
+      'No Alphaville Industrial, a CrossFit Barueri, na Av. Juruá, 307, é box de CrossFit parceiro do Wellhub e da TotalPass — bom para força e condicionamento; treino específico de Hyrox, confirme com a academia.',
     ],
     ateAProva:
       'A etapa de São Paulo acontece no Distrito Anhembi, na zona norte da capital. De Alphaville, o caminho é quase sempre de carro, pela Castello Branco: o bairro não tem estação de trem própria, e a mais próxima é a Barueri, da Linha 8-Diamante da CPTM.',
@@ -189,27 +190,33 @@ export const HYROX_CIDADES: HyroxCidade[] = [
     nome: 'Barueri',
     locucao: 'em Barueri',
     cidade: 'barueri-sp',
-    title: 'Hyrox em Barueri: Onde Treinar, Correr e Como Chegar à Prova',
+    title: 'Hyrox em Barueri: Onde Treinar, Inscrição e Onde É a Prova',
     description:
-      'Hyrox em Barueri: o Parque Linear aberto 24 horas para correr, as academias para a força e o trem da Linha 8 até a prova de Hyrox em São Paulo.',
-    h1: 'Hyrox em Barueri: onde treinar, correr e como chegar à prova',
+      'Hyrox em Barueri: onde treinar a corrida e a força na cidade, quanto custa a inscrição e onde é a prova — no Anhembi, com trem da Linha 8 até a capital.',
+    h1: 'Hyrox em Barueri: onde treinar, inscrição e onde é a prova',
     lead:
-      'Barueri tem o que a preparação para o Hyrox mais pede: lugar para correr a qualquer hora, academias espalhadas pela cidade e trem direto para a capital. Lugar com Hyrox na grade, dentro do município, não encontramos — o que achamos fica na região do Tamboré.',
+      'Barueri tem o que a preparação para o Hyrox mais pede: lugar para correr a qualquer hora, box de CrossFit e academias para a força e trem direto para a capital. Etapa oficial do Hyrox, a cidade não tem: a prova paulista é no Anhembi, na zona norte de São Paulo.',
     corrida: [
       'O Parque Linear, nas margens do Tietê, no Jardim dos Camargos, tem pista de caminhada, ciclovia e fica aberto 24 horas — raro, e útil para quem só consegue treinar cedo ou tarde. O Parque Municipal Dom José, com cerca de 95 mil m², tem pista de caminhada e abre das 6h às 21h de segunda a sábado.',
       'A cidade tem calendário de corrida próprio: a Corrida São Silveira, da Prefeitura, com 8 km e 4 km e inscrição gratuita. Os 8 km dela são a mesma distância de corrida do Hyrox — sem as estações no meio.',
     ],
     estacoes: [
-      'Para a força, Barueri tem unidades da Smart Fit e, em Alphaville, academias de grande porte como o Ironberg, na Estrada Aldeinha. No Parque Linear há praças de ginástica ao ar livre.',
+      'A CrossFit Barueri, box de CrossFit na Av. Juruá, 307, no Alphaville Industrial, aparece como parceira do Wellhub e da TotalPass. Box de CrossFit costuma ser um bom lugar para a parte de força e condicionamento da prova; se ele tem treino específico de Hyrox, confirme direto com a academia.',
+      'Para a musculação, Barueri tem unidades da Smart Fit e, em Alphaville, academias de grande porte como o Ironberg, na Estrada Aldeinha. No Parque Linear há praças de ginástica ao ar livre.',
       OBOX,
     ],
     ateAProva:
       'A etapa de São Paulo acontece no Distrito Anhembi, na zona norte da capital. Barueri tem quatro estações da Linha 8-Diamante da CPTM, operada pela ViaMobilidade, o que permite ir até a capital de trem. Quem vai de carro usa a Castello Branco.',
     faqs: [
       {
-        pergunta: 'Onde treinar Hyrox em Barueri?',
+        pergunta: 'Qual academia tem Hyrox em Barueri?',
         resposta:
-          'Dentro do município, não encontramos lugar com Hyrox na grade. O que achamos na região é o Obox, no AlphaSítio Mall, na região do Tamboré, que lista Hyrox entre as aulas no Wellhub. Em Barueri, a corrida se treina no Parque Linear ou no Parque Dom José, e a força em qualquer academia com musculação e espaço funcional.',
+          'Em Barueri, a CrossFit Barueri, no Alphaville Industrial, é box de CrossFit parceiro do Wellhub e da TotalPass; o que ele oferece de Hyrox, confirme com a academia. Com Hyrox listado entre as aulas, o que encontramos na região é o Obox, no AlphaSítio Mall, na região do Tamboré. A corrida se treina no Parque Linear ou no Parque Dom José.',
+      },
+      {
+        pergunta: 'Tem prova de Hyrox em Barueri? Onde ver inscrição e resultado?',
+        resposta:
+          'Não encontramos etapa oficial do Hyrox em Barueri. A etapa paulista acontece no Distrito Anhembi, na zona norte de São Paulo; a inscrição da etapa de outubro de 2026 custou R$ 649 no individual. Data, horários e o resultado estão no guia do Hyrox São Paulo 2026.',
       },
       {
         pergunta: 'A Corrida São Silveira serve de treino para o Hyrox?',

@@ -45,6 +45,7 @@ const HYBOX_URL = 'https://wellhub.com/pt-br/search/partners/hybox/';
 const textoLocal = [...c.corrida, ...c.estacoes].join(' ');
 const citaObox = textoLocal.includes('Obox');
 const citaHybox = textoLocal.includes('HYBOX');
+const citaCrossfitBarueri = textoLocal.includes('CrossFit Barueri');
 
 const faqs = [
   ...c.faqs,
@@ -139,7 +140,7 @@ const schema = [
         <h2>Onde treinar a força e as estações {c.locucao}</h2>
         {c.estacoes.map((t) => <p>{t}</p>)}
         {
-          (citaObox || citaHybox) && (
+          (citaObox || citaHybox || citaCrossfitBarueri) && (
             <p class="small">
               Aulas, horários e planos aceitos mudam: confirme com a academia antes de ir. A lista de
               academias afiliadas oficialmente à Hyrox fica no buscador da própria Hyrox.
@@ -210,8 +211,17 @@ const schema = [
           {
             citaObox && (
               <li>
-                <a href={OBOX_URL} target="_blank" rel="noopener noreferrer">Obox no Wellhub</a> — aulas da
-                academia, conferidas em 23/10/2026.
+                <a href={OBOX_URL} target="_blank" rel="noopener noreferrer">Obox no Wellhub</a> (aulas) e{' '}
+                <a href="https://totalpass.com/br/academias/obox-training-club-74058863-93c1-4f40-8383-736778c221c5/" target="_blank" rel="noopener noreferrer">na TotalPass</a>, conferidos em 23/10/2026.
+              </li>
+            )
+          }
+          {
+            citaCrossfitBarueri && (
+              <li>
+                <a href="https://wellhub.com/pt-br/search/partners/crossfit-barueri" target="_blank" rel="noopener noreferrer">CrossFit Barueri no Wellhub</a>{' '}
+                e <a href="https://totalpass.com/br/academias/crossfit-barueri/" target="_blank" rel="noopener noreferrer">na TotalPass</a>
+                — mesmo endereço nas duas, conferido em 23/10/2026.
               </li>
             )
           }
