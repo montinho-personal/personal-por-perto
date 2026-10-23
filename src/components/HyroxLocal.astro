@@ -1,0 +1,229 @@
+---
+/**
+ * Página "Hyrox em <cidade>" da região presencial.
+ *
+ * O texto local (abertura, onde correr, onde treinar força, caminho até a
+ * prova e as perguntas da cidade) vem de src/data/hyroxLocal.ts, escrito
+ * para cada cidade. Aqui fica só o que é igual por natureza: o formato da
+ * prova e como a preparação se organiza. O bloco de ferramenta entra pelo
+ * slot "ferramenta", com o id literal na página — é assim que o teste dos
+ * blocos lê o id.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import Faq from './Faq.astro';
+import Sidebar from './Sidebar.astro';
+import RelatedArticles from './RelatedArticles.astro';
+import InstagramFollow from './InstagramFollow.astro';
+import AutorMontinho from './AutorMontinho.astro';
+import ContextualCta from './ContextualCta.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { ESTACOES, KM_CORRIDA } from '../lib/calorias/hyrox';
+import { HYROX_CIDADES, hyroxCidade } from '../data/hyroxLocal';
+
+interface Props {
+  slug: string;
+  publicadoEm: string;
+  atualizadoEm: string;
+}
+
+const { slug, publicadoEm, atualizadoEm } = Astro.props;
+const c = hyroxCidade(slug);
+const path = `/guias/hyrox-${c.slug}`;
+const urlCidade = `/personal-trainer/${c.cidade}/`;
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: `Hyrox ${c.locucao}`, url: path },
+];
+
+const OBOX_URL = 'https://wellhub.com/pt-br/search/partners/obox-jacarei/';
+const HYBOX_URL = 'https://wellhub.com/pt-br/search/partners/hybox/';
+const textoLocal = [...c.corrida, ...c.estacoes].join(' ');
+const citaObox = textoLocal.includes('Obox');
+const citaHybox = textoLocal.includes('HYBOX');
+
+const faqs = [
+  ...c.faqs,
+  {
+    pergunta: 'Como é a prova de Hyrox?',
+    resposta: `São ${KM_CORRIDA} corridas de 1 km, cada uma seguida de uma estação de força, sempre na mesma ordem: ${ESTACOES.map((e) => `${e.nome.toLowerCase()} (${e.volume})`).join(', ')}. Dá para competir sozinho, em dupla ou em revezamento de quatro.`,
+  },
+  {
+    pergunta: 'Precisa de índice ou classificatória para correr o Hyrox?',
+    resposta:
+      'Não. Segundo o Distrito Anhembi, que recebe a etapa de São Paulo, a prova não tem tempo limite nem classificatória: qualquer pessoa pode se inscrever. As vagas, porém, costumam acabar rápido.',
+  },
+];
+
+const vizinhas = c.vizinhas.map((v) => HYROX_CIDADES.find((x) => x.slug === v)!).filter(Boolean);
+
+const relacionados = [
+  {
+    url: '/guias/hyrox-sao-paulo-2026/',
+    titulo: 'Hyrox São Paulo 2026',
+    descricao: 'Resultado, data, local, horários e divisões da etapa de outubro no Distrito Anhembi.',
+    tipo: 'Guias',
+  },
+  {
+    url: '/calorias/hyrox/',
+    titulo: 'Quantas calorias gasta uma prova de Hyrox?',
+    descricao: 'A conta separa a corrida e as estações pelo seu tempo e pace.',
+    tipo: 'Calorias',
+  },
+  {
+    url: urlCidade,
+    titulo: `Personal trainer ${c.locucao}`,
+    descricao: 'Preços, onde treinar e como funciona o atendimento na cidade.',
+    tipo: 'Cidades',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: c.title, descricao: c.description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={c.title} description={c.description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+      <p class="eyebrow">Hyrox na região</p>
+      <h1>{c.h1}</h1>
+      <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+      <p class="lead">{c.lead}</p>
+
+      <div class="prose">
+        <h2>Como é a prova</h2>
+        <p>
+          O Hyrox alterna corrida e força: são {KM_CORRIDA} corridas de 1 km, e cada uma termina numa
+          estação, sempre na mesma ordem. Dá para competir sozinho, em dupla ou em revezamento de
+          quatro, e a prova não tem tempo limite nem classificatória.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <caption>As 8 estações, na ordem da prova</caption>
+            <thead>
+              <tr><th scope="col">#</th><th scope="col">Estação</th><th scope="col">Volume</th></tr>
+            </thead>
+            <tbody>
+              {ESTACOES.map((e, i) => (
+                <tr><td>{i + 1}</td><th scope="row">{e.nome}</th><td>{e.volume}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <slot name="ferramenta" />
+
+        <h2>Onde treinar a corrida {c.locucao}</h2>
+        {c.corrida.map((t) => <p>{t}</p>)}
+
+        <h2>Onde treinar a força e as estações {c.locucao}</h2>
+        {c.estacoes.map((t) => <p>{t}</p>)}
+        {
+          (citaObox || citaHybox) && (
+            <p class="small">
+              Aulas, horários e planos aceitos mudam: confirme com a academia antes de ir. A lista de
+              academias afiliadas oficialmente à Hyrox fica no buscador da própria Hyrox.
+            </p>
+          )
+        }
+
+        <h2>Como organizar a preparação</h2>
+        <p>
+          Metade da prova é corrida e metade é força, e o que mais pesa é a passagem de uma para a
+          outra: correr com a perna cansada do trenó ou dos afundos é diferente de correr descansado.
+          Por isso a preparação costuma ter três tipos de treino na semana:
+        </p>
+        <ul>
+          <li><strong>Corrida</strong>, para a base e para o ritmo que você quer manter nos {KM_CORRIDA} km.</li>
+          <li><strong>Força</strong>, para empurrar, puxar, carregar e agachar com carga sem perder a técnica.</li>
+          <li>
+            <strong>Os dois juntos</strong>: blocos de corrida seguidos de uma estação, que ensinam o
+            corpo a voltar a correr depois do esforço.
+          </li>
+        </ul>
+        <p>
+          Quanto de cada um, e em que ordem, depende de onde você está hoje e de quanto tempo falta para
+          a prova. Se você tem alguma dor, lesão ou condição de saúde, converse com o médico ou o
+          fisioterapeuta antes de aumentar o volume de treino.
+        </p>
+
+        <h2>{c.nome} até a prova de São Paulo</h2>
+        <p>{c.ateAProva}</p>
+        <p>
+          Data, horários, inscrição e resultado da última etapa estão no guia do{' '}
+          <a href="/guias/hyrox-sao-paulo-2026/">Hyrox São Paulo 2026</a>.
+        </p>
+
+        <h2>Personal para o Hyrox {c.locucao}</h2>
+        <p>
+          O Montinho Personal atende presencialmente {c.locucao} e na região — em casa, no condomínio ou
+          na academia — e acompanha online quem prefere. Preços e formatos de atendimento na cidade
+          estão na página de <a href={urlCidade}>personal trainer {c.locucao}</a>.
+        </p>
+
+        {
+          vizinhas.length > 0 && (
+            <>
+              <h2>Hyrox em outras cidades da região</h2>
+              <ul>
+                {vizinhas.map((v) => (
+                  <li><a href={`/guias/hyrox-${v.slug}/`}>Hyrox {v.locucao}</a></li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+
+        <h2>Fontes</h2>
+        <ul class="small">
+          <li>
+            <a href="https://hyrox.com/event/hyrox-sao-paulo-2/" target="_blank" rel="noopener noreferrer">Página oficial do Hyrox São Paulo</a>
+            — data, local e formatos da etapa de 2026.
+          </li>
+          <li>
+            <a href="https://distritoanhembi.com.br/en/events/hyrox-sao-paulo-2026-2/" target="_blank" rel="noopener noreferrer">Distrito Anhembi</a>
+            — formato de 8 km de corrida com 8 estações, sem tempo limite e sem classificatória.
+          </li>
+          {
+            citaObox && (
+              <li>
+                <a href={OBOX_URL} target="_blank" rel="noopener noreferrer">Obox no Wellhub</a> — aulas da
+                academia, conferidas em 23/10/2026.
+              </li>
+            )
+          }
+          {
+            citaHybox && (
+              <li>
+                <a href={HYBOX_URL} target="_blank" rel="noopener noreferrer">HYBOX no Wellhub</a> — atividades
+                e endereço, conferidos em 23/10/2026.
+              </li>
+            )
+          }
+          <li>Parques, corridas, academias e transporte: a página de personal trainer {c.locucao}, com as fontes de cada item.</li>
+        </ul>
+        <p class="small">Publicado em {formatDateLong(publicadoEm)}.</p>
+      </div>
+
+      <Faq faqs={faqs} titulo={`Perguntas frequentes sobre Hyrox ${c.locucao}`} />
+
+      <ContextualCta path={path} assunto={c.title} />
+      <InstagramFollow tema="geral" />
+      <AutorMontinho />
+
+      <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+</Base>

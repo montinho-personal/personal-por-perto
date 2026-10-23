@@ -55,3 +55,32 @@ abertas), "Outras pessoas pesquisaram" e visão geral de IA.
 - treino hyrox (sem cidade, para a intenção geral)
 - buscador oficial da Hyrox (hyrox.com/gym-partners), pesquisando cada
   cidade da região
+
+## Publicadas em 23/10/2026 — as 11, antes dos prints
+
+O Renato pediu as 11 de uma vez ("pode criar de todas essas... e daí vou
+te mandando os print depois"). A regra de levas foi pesada contra o pedido
+explícito; o que segura o risco de conteúdo em escala é a variedade:
+
+- O texto local de cada cidade (abertura, onde correr, onde treinar força,
+  caminho até a prova, 3 FAQs e a frase do bloco de ferramenta) é escrito
+  à mão em `src/data/hyroxLocal.ts`, com fatos das páginas de cidade.
+- O comum (formato da prova, como organizar a preparação, 2 FAQs) mora em
+  `src/components/HyroxLocal.astro`.
+- URLs: `/guias/hyrox-<cidade>/`, registradas em `src/data/artigos.ts`
+  (Guias) e ligadas entre si pelo bloco "outras cidades da região".
+- Obox e HYBOX citados só como "a página no Wellhub lista Hyrox", sem
+  selo de Training Club e sem endereço além do que o Wellhub mostra.
+- Nenhuma página de cidade foi alterada (sem bump de `atualizadoEm`).
+
+### Quando os prints chegarem
+
+Título, H1 e FAQs de cada página são revistos pelos prints; o que mudar
+fica registrado aqui. Se o buscador oficial confirmar academias afiliadas,
+elas entram na página da cidade com o selo.
+
+### Para ler no próximo relatório do GSC
+
+Impressões e posição das 11 URLs, e se "hyrox + cidade" aparece nas
+consultas. Página sem nenhuma impressão em 60 dias: avaliar fundir na
+página da cidade.
