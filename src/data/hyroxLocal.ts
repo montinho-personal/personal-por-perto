@@ -100,7 +100,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Alphaville?',
         resposta:
-          'O Montinho Personal atende presencialmente em Alphaville, em casa, no condomínio ou na academia. A preparação para a prova entra no treino como qualquer outro objetivo: corrida, força e as estações organizadas na semana que você tem.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Alphaville, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['tambore', 'barueri', 'santana-de-parnaiba', 'aldeia-da-serra'],
@@ -180,7 +180,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox na Aldeia da Serra?',
         resposta:
-          'O Montinho Personal atende presencialmente na Aldeia da Serra, no condomínio ou em casa. A preparação para a prova entra no treino como objetivo, com corrida, força e as estações na semana.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente na Aldeia da Serra, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['alphaville', 'santana-de-parnaiba', 'barueri'],
@@ -271,7 +271,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Santana de Parnaíba?',
         resposta:
-          'O Montinho Personal atende presencialmente em Santana de Parnaíba, em casa, no condomínio ou na academia, e organiza a preparação para a prova dentro do treino.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Santana de Parnaíba, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['tambore', 'alphaville', 'aldeia-da-serra', 'barueri'],
@@ -310,7 +310,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Jandira?',
         resposta:
-          'O Montinho Personal atende presencialmente em Jandira e na região. A preparação para a prova entra no treino, aproveitando o que você tem perto de casa.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Jandira, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['itapevi', 'barueri', 'carapicuiba'],
@@ -350,7 +350,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Itapevi?',
         resposta:
-          'O Montinho Personal atende presencialmente em Itapevi e região, em casa ou no condomínio, e encaixa a preparação para a prova no treino.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Itapevi, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['jandira', 'barueri', 'carapicuiba'],
@@ -390,7 +390,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Carapicuíba?',
         resposta:
-          'O Montinho Personal atende presencialmente em Carapicuíba e região, e organiza a preparação para a prova dentro da sua semana.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Carapicuíba, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['osasco', 'granja-viana', 'cotia', 'barueri'],
@@ -430,7 +430,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Osasco?',
         resposta:
-          'O Montinho Personal atende presencialmente em Osasco e região, e encaixa a preparação para a prova no seu treino.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Osasco, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['carapicuiba', 'barueri', 'cotia'],
@@ -470,7 +470,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox em Cotia?',
         resposta:
-          'O Montinho Personal atende presencialmente em Cotia e região, e organiza a preparação para a prova dentro do treino.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente em Cotia, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['granja-viana', 'carapicuiba', 'osasco'],
@@ -510,7 +510,7 @@ export const HYROX_CIDADES: HyroxCidade[] = [
       {
         pergunta: 'Tem personal para Hyrox na Granja Viana?',
         resposta:
-          'O Montinho Personal atende presencialmente na Granja Viana, em casa ou no condomínio, e encaixa a preparação para a prova no treino.',
+          'Tem. O Montinho Personal prepara alunos para o Hyrox e atende presencialmente na Granja Viana, em casa, no condomínio ou na academia — e online, para quem prefere. O treino junta corrida, força para as estações e sessões que combinam as duas coisas, encaixado na semana que você tem.',
       },
     ],
     vizinhas: ['cotia', 'carapicuiba', 'osasco'],

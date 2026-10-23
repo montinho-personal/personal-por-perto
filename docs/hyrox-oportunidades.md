@@ -125,3 +125,14 @@ personal) × o que dá para afirmar com fonte.
 Cria páginas novas → dividir. Leva 1: Hyrox × CrossFit e o pilar "O que é
 Hyrox" (os dois se linkam e sustentam todo o resto). Leva 2: treino + a
 calculadora de tempo. Leva 3: estações/pesos, conforme o rulebook.
+
+## Decisões do Renato (23/10/2026)
+
+- **O Montinho prepara alunos para o Hyrox** (confirmado na conversa). As 11
+  páginas locais, o pilar e o comparativo ganharam a seção/FAQ "personal para
+  o Hyrox" com chamada direta (`data-track="hyrox:cta-whatsapp"`), presencial
+  na região e online. Nada além disso é afirmado: sem promessa de tempo ou
+  resultado.
+- **Tênis:** só o artigo "o que a prova exige do tênis", sem ranking de
+  modelos (nenhum foi testado). Antes de título e FAQs, prints de **"tênis
+  para hyrox"** (autocompletar, PAA, outras pessoas, visão geral de IA).
