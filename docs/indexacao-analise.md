@@ -198,3 +198,55 @@ duplicação e reclassificar — e isso leva semanas, não dias. O que se pode
 afirmar é o que foi medido: as 985 páginas deixaram de repetir a mesma frase
 e passaram a anunciar um fato próprio cada uma. Se isso é suficiente para o
 classificador, só o próximo relatório diz.
+
+## Tamboré e Santana de Parnaíba — checagem de 24/10/2026
+
+Pedido do Renato: validar no GSC as URLs de Tamboré e Santana de Parnaíba e
+comparar os sitemaps com a base de 23/10.
+
+**Ao vivo (curl, 24/10):** `/personal-trainer/tambore-sp` e
+`/personal-trainer/santana-de-parnaiba-sp` (sem barra) → 308 para a versão
+com barra; versão com barra 200, canonical para ela mesma, sem noindex;
+domínio sem www → 308 para www. As duas páginas de Hyrox
+(`/guias/hyrox-tambore/`, `/guias/hyrox-santana-de-parnaiba/`) respondem 200
+com canonical próprio. Internamente, 9 páginas linkam Tamboré e 10 linkam
+Santana (Alphaville: 12) — não é falta de link.
+
+**GSC, desempenho por semana ISO (Supermetrics, 27/07 a 23/10):**
+
+| semana | Santana (sem barra) | Tamboré (sem barra) |
+|---|---|---|
+| 31 | 10 impr., pos. 22,6 | 5 impr., 1 clique, pos. 8,8 |
+| 32 | — | 1 impr., 1 clique |
+| 33 | 2 impr., pos. 6 | 2 impr., pos. 8,5 |
+| 34 | — | 1 impr., pos. 3 |
+| 35 | 3 impr., pos. 2,3 | 4 impr., pos. 5,3 |
+| 36 | 17 impr., 1 clique, pos. 3,9 | 3 impr., pos. 1 |
+| 37 | 8 impr., 1 clique, pos. 8,4 | 1 impr., pos. 11 |
+| 38 | — | — |
+| 39 | 1 impr., pos. 9 | 3 impr., pos. 5,3 |
+| 40–43 | **0 (nenhuma versão)** | **0 (nenhuma versão)** |
+
+Comparação: Alphaville, Barueri e Aldeia da Serra já aparecem **com barra**
+desde a semana 38 e seguem com impressões nas semanas 40–43 (Alphaville 15 /
+48 / 40 / 25). Tamboré e Santana **nunca apareceram com barra**: depois da
+troca para a barra final, o GSC não registra impressão nenhuma delas. Leitura
+provável: o Google ainda não indexou (ou não escolheu como canonical) a
+versão com barra dessas duas. **Confirmar com a Inspeção de URL** — a API do
+Supermetrics não expõe inspeção (canonical escolhido pelo Google, status de
+indexação); pedido print ao Renato.
+
+**Sitemaps (24/10):**
+
+- Ao vivo: `sitemap-index.xml` → `sitemap-0.xml` com **1.377 URLs**, todas
+  com barra. É idêntico, URL por URL e lastmod por lastmod, ao gerado pelo
+  build de 23/10 (19h18, último commit do dia) — diferença zero.
+- GSC (relatório de sitemaps): `sitemap-index.xml` enviado em 07/10, lido
+  pela última vez em 22/10, **1.377 URLs enviadas**, 0 erro. O campo
+  "indexadas" vem 0 pela API (o Google deixou de preencher; não é dado).
+- GSC também tem um **`sitemap.xml` enviado em 07/10 que dá 404** (1 erro):
+  esse endereço não existe no site. Remover no GSC (ação do Renato).
+- Tamboré e Santana estão no sitemap com lastmod 22/10; as duas de Hyrox
+  estão, mas **sem lastmod** — as 12 páginas de `/guias/` geradas por
+  componente (11 locais de Hyrox + 1) não passam a data ao sitemap. Ajuste
+  de infraestrutura, sem tocar `atualizadoEm`.
