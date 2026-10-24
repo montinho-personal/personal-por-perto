@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Cidade de Limeira',
       descricao:
-        'Complexo de cerca de 98,6 mil m² com pista de caminhada e corrida de aproximadamente 1.000 m, academia ao ar livre, trilha ecológica, lago, quadras e ginásio.',
+        'Complexo de cerca de 98,6 mil m² com pista de caminhada e corrida de aproximadamente 1.000 m e ginásio.',
     },
     {
       nome: 'Parque Limeirão',
@@ -72,12 +72,12 @@ export const cidade: Cidade = {
 
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades na Av. Campinas e na Av. Comendador Agostinho Prada' },
-    { nome: 'Skyfit', detalhe: 'unidade junto ao Covabra' },
-    { nome: 'Equipamentos do Parque Cidade de Limeira', detalhe: 'estrutura pública gratuita para treino ao ar livre' },
+    { nome: 'Skyfit', detalhe: 'unidade junto ao Covabra, na Av. Maria Thereza Silveira de Barros Camargo' },
   ],
+  academiasVerificadasEm: '2026-10-24',
 
   destaquesFitness: [
-    'Três parques municipais bem equipados (pista + academia ao ar livre), de acesso gratuito.',
+    'Três parques municipais com pista de caminhada, de acesso gratuito.',
     'Mercado de academias maduro, com redes nacionais e boxes de crossfit.',
     'Calendário recorrente de corridas de rua (Meia Maratona da Inclusão, TF Experience, SESI).',
     'Inverno seco e ameno favorável ao treino ao ar livre.',
@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Limeira', url: 'https://www.limeira.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-10-24',
 };

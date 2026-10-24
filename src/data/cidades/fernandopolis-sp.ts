@@ -69,6 +69,7 @@ export const cidade: Cidade = {
     'Fernandópolis tem cultura esportiva ativa para o seu porte, apoiada na Represa Beira Rio e em espaços públicos arborizados que favorecem corrida, caminhada e ciclismo. O ritmo de cidade média do interior e a presença de público universitário incentivam uma rotina mais ativa ao ar livre.',
   academias:
     'A oferta de academias e estúdios é boa para o porte do município, concentrada nas avenidas centrais e nos bairros de maior renda, e bem complementada pelos espaços ao ar livre da Represa Beira Rio e das áreas verdes da cidade.',
+  academiasVerificadasEm: '2026-10-24',
 
   destaquesFitness: [
     'Polo regional de comércio, serviços, saúde e ensino superior no noroeste paulista.',

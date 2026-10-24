@@ -517,3 +517,23 @@ Saldo: 5 entradas → 1 removida, 2 corrigidas, 2 confirmadas.
 | Academias ao ar livre dos parques (Maurílio Biagi e Curupira) | confirmada só no Maurílio Biagi; Curupira **sem fonte** | Prefeitura de Ribeirão Preto: academia ao ar livre no Parque Maurílio Biagi (2012) e aparelhos adaptados instalados pelo Programa Cidade Acessível (20/09/2022) |
 
 Saldo da leva: 8 entradas → 5 mantidas, 3 removidas, 4 detalhes corrigidos.
+
+### 24/10/2026 — leva 21
+
+**Limeira/SP** (235 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit (Av. Campinas e Av. Comendador Agostinho Prada) | confirmada sem mudança | smartfit.com.br/academias/limeira (Av. Campinas, 50, Vila Cidade Jardim, 13480-280) e /limeira-ii-av-comendador-agostinho-prada (Av. Comendador Agostinho Prada, 3100), ambas `opened:true` |
+| Skyfit (junto ao Covabra) | confirmada; detalhe ganha a avenida, sem número (Wellhub diz 1360, TotalPass 1525) | Wellhub skyfit-academia-limeira-covabra e TotalPass skyfit-academia-limeira-covabra: Av. Maria Thereza Silveira de Barros Camargo, CEP 13484-270 |
+| Equipamentos do Parque Cidade de Limeira | **removida** — as páginas oficiais da Prefeitura dão 403; a academia ao ar livre aparece só em trechos de busca. A menção saiu também da descrição do parque (junto com trilha, lago e quadras, sem fonte oficial) e o destaque deixou de dizer que os três parques têm academia | — |
+
+**Maringá/PR** (234 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit (Av. Tuiuti, Novo Centro e Angeloni) | confirmada; detalhe corrigido — a do Angeloni fica no Novo Centro (contada duas vezes) e faltava a do Condor | smartfit.com.br/academias/angeloni-maringa (Av. Advogado Horácio Raccanello Filho, 5120, Novo Centro), /maringa-av-tuiuti, /condor-maringa-av-kakogawa, todas `opened:true`, CEP 870xx |
+| Academias e estúdios locais | **removida** — genérica; "dezenas de academias" saiu também do texto | — |
+| Academia ao ar livre do Parque do Ingá | **removida** — a página de turismo da Prefeitura dá 503; a ATI aparece só em trecho de busca e em diretórios. A menção saiu da descrição do parque, do destaque e da FAQ | — |
+
+Saldo da leva: 6 entradas → 3 mantidas, 3 removidas, 2 detalhes corrigidos. **Maringá ficou com 1 entrada** e Limeira com 2 — completar vira tarefa à parte (Parte A não cobre cidades já com academia). Se o Renato mandar print das páginas das prefeituras (Parque Cidade e Parque do Ingá), as duas academias ao ar livre voltam.

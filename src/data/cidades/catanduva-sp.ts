@@ -69,6 +69,13 @@ export const cidade: Cidade = {
     'Cidade do interior com tradição em corrida de rua e forte oferta de academias, com o esporte de base articulado pela Secretaria Municipal de Esportes em ginásios e complexos públicos.',
   academias:
     'A oferta reúne academias e estúdios que atendem o público da microrregião, complementada por complexos esportivos municipais públicos.',
+  academiasProximas: [
+    { nome: 'Skyfit', detalhe: 'na Av. Engenheiro José Nelson Machado, 280' },
+    { nome: 'Steel Gym Academia', detalhe: 'na Av. Engenheiro José Nelson Machado, 2320' },
+    { nome: 'Academia Aquatic Center', detalhe: 'na Rua Ourinhos, no Jardim Soto' },
+    { nome: 'Academia Blackout', detalhe: 'na Rua Elisiário, na Vila Celso Mauad' },
+  ],
+  academiasVerificadasEm: '2026-10-24',
 
   destaquesFitness: [
     'Polo regional de saúde (Fundação Padre Albino), que reforça a cultura de cuidado e bem-estar.',
@@ -96,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Catanduva', url: 'https://www.catanduva.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-24',
 };

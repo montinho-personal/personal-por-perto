@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Terceira cidade mais populosa do Paraná, Maringá tem um dos maiores PIBs do interior do Brasil, impulsionado por serviços, comércio, agronegócio, educação e saúde, com tecnologia e indústria leve em alta. Cidade planejada e frequentemente citada como uma das mais arborizadas do país, é reconhecida nacionalmente pela organização urbana e pela qualidade de vida.',
 
   mercado:
-    'O mercado fitness é maduro, com dezenas de academias de musculação, estúdios de crossfit e funcional e nomes locais conhecidos, além de redes e ampla cobertura de plataformas de benefícios. A cultura de musculação e funcional é forte, ligada ao perfil jovem e universitário da cidade.',
+    'O mercado fitness é maduro, com academias de musculação, estúdios de crossfit e funcional, além de redes e ampla cobertura de plataformas de benefícios. A cultura de musculação e funcional é forte, ligada ao perfil jovem e universitário da cidade.',
 
   bairrosNobres: ['Zona 02', 'Zona 05', 'Jardim Aclimação', 'Vila Bosque'],
   bairrosPopulares: ['Zona 07', 'Jardim Alvorada', 'Jardim Oriental', 'Jardim Guaporé'],
@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque do Ingá',
       descricao:
-        'Reserva florestal de cerca de 47 hectares, com pista de caminhada de aproximadamente 3 km no entorno, academia ao ar livre, playground e estação de saúde — o principal circuito de corrida e caminhada da cidade.',
+        'Reserva florestal de cerca de 47 hectares, com pista de caminhada de aproximadamente 3 km no entorno, playground e estação de saúde — o principal circuito de corrida e caminhada da cidade.',
     },
     {
       nome: 'Parque do Japão',
@@ -68,15 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Maringá tem forte cultura de ciclismo urbano (uso de bike bem acima da média nacional) e uma cena de corrida de rua em ascensão, com a entrada no circuito nacional de maratonas. Os parques arborizados ajudam a fazer da atividade física um hábito.',
   academias:
-    'A oferta reúne dezenas de academias de musculação, estúdios de crossfit e funcional e nomes locais conhecidos, além de redes nacionais, atendendo um público jovem e exigente.',
+    'A oferta reúne academias de musculação, estúdios de crossfit e funcional e redes nacionais, como a Smart Fit, atendendo um público jovem e exigente.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na Av. Tuiuti, no Novo Centro e no Angeloni' },
-    { nome: 'Academias e estúdios locais', detalhe: 'dezenas de opções de musculação, crossfit e funcional' },
-    { nome: 'Academia ao ar livre do Parque do Ingá', detalhe: 'gratuita, junto à pista de 3 km' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Angeloni (Novo Centro), na Av. Tuiuti e no Condor da Av. Kakogawa' },
   ],
+  academiasVerificadasEm: '2026-10-24',
 
   destaquesFitness: [
-    'Pista de cerca de 3 km no Parque do Ingá, com academia ao ar livre — referência outdoor.',
+    'Pista de cerca de 3 km no Parque do Ingá — referência outdoor.',
     'Entrada no circuito nacional de maratonas, que aquece a demanda por assessorias.',
     'Cerca de 45 km de ciclovias e alta cultura de bicicleta.',
     'Uma das cidades mais arborizadas do país, com clima e infraestrutura ideais para treino externo.',
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Maringá?',
       resposta:
-        'O Parque do Ingá — com pista de cerca de 3 km e academia ao ar livre — é o circuito consagrado, e as praças arborizadas espalham o treino pelos bairros. Nas academias, a Smart Fit cobre a Av. Tuiuti e o Novo Centro, e a cena local de crossfit e funcional é das mais densas do interior do Sul. O atendimento em casa e em condomínio é comum nas Zonas 02 e 05 e no Jardim Aclimação — e as avenidas largas da cidade planejada tornam qualquer deslocamento rápido.',
+        'O Parque do Ingá — com pista de cerca de 3 km — é o circuito consagrado, e as praças arborizadas espalham o treino pelos bairros. Nas academias, a Smart Fit tem unidades no Angeloni, na Av. Tuiuti e na Av. Kakogawa, e a cena local de crossfit e funcional é das mais densas do interior do Sul. O atendimento em casa e em condomínio é comum nas Zonas 02 e 05 e no Jardim Aclimação — e as avenidas largas da cidade planejada tornam qualquer deslocamento rápido.',
     },
     {
       pergunta: 'Por que Maringá é uma das cidades mais fáceis do Brasil para manter constância no treino?',
@@ -119,7 +118,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maringá', url: 'https://www.maringa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-24',
   capaArte: {
     src: '/capas-cidade/maringa-pr.webp',
     w: 1200,
