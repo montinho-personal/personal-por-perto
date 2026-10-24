@@ -204,3 +204,4 @@ Artigos já resolvidos (bloco bom e nenhum link a acrescentar): 81.
 A análise completa — dúvida de cada artigo, frase literal de cada encaixe e o porquê — está em `docs/ferramentas-nos-artigos.json`.
 - 23/10 — `/guias/o-que-e-hyrox/` — artigo novo: bloco hyrox depois da tabela das estações — "quanto da prova é corrida?"
 - 23/10 — `/guias/hyrox-vs-crossfit/` — artigo novo: bloco crossfit depois de "o Hyrox é cardio?" — "qual gasta mais?"
+- 24/10 — `/guias/treino-hyrox/` — artigo novo: bloco calculadora-de-pace depois de "o que mais decide o seu tempo" — "qual ritmo a minha meta exige?"

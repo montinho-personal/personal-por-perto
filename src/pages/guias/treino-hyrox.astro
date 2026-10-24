@@ -1,0 +1,367 @@
+---
+/**
+ * Treino de Hyrox — leva 2 da família Hyrox (docs/hyrox-oportunidades.md).
+ *
+ * Prints de "treino hyrox" (23/10/2026, docs/pesquisas/2026-10-23-hyrox/
+ * prints/07 a 10) e AnswerThePublic de "hyrox" e "hyrox em" em
+ * docs/treino-hyrox.md. Sem planilha pronta: treino é prescrição
+ * individual. O que o texto afirma sobre o Hyrox vem dos estudos citados;
+ * o resto é a lógica de organizar a semana, dita como tal.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { whatsappUrl } from '../../lib/links';
+import { HYROX_CIDADES } from '../../data/hyroxLocal';
+
+const publicadoEm = '2026-10-24';
+const atualizadoEm = '2026-10-24';
+const path = '/guias/treino-hyrox';
+
+const BRANDT = 'https://pubmed.ncbi.nlm.nih.gov/40230601/';
+const HYSCIENCE = 'https://pubmed.ncbi.nlm.nih.gov/42697540/';
+const CHITTENDEN = 'https://pubmed.ncbi.nlm.nih.gov/42780891/';
+const HUIBERTS = 'https://pubmed.ncbi.nlm.nih.gov/37847373/';
+const LUNDBERG = 'https://pubmed.ncbi.nlm.nih.gov/35476184/';
+const BOSQUET = 'https://pubmed.ncbi.nlm.nih.gov/17762369/';
+const OMS = 'https://pubmed.ncbi.nlm.nih.gov/33239350/';
+const HYROX_PROVA = 'https://hyrox.com/the-fitness-race/';
+
+const whatsHyrox = whatsappUrl(
+  'Oi, Montinho! Vim pelo artigo de treino de Hyrox do Personal por Perto e queria saber sobre a preparação para a prova.',
+);
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Treino de Hyrox', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Como é o treino de Hyrox?',
+    resposta:
+      'Junta três coisas: corrida, para aguentar os 8 km da prova; força, para as estações com carga, como o trenó, o carregamento e o afundo com saco de areia; e treinos que combinam as duas, em que você corre logo depois de uma estação. É esse terceiro tipo que mais diferencia o treino de Hyrox de um treino comum.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana treinar para o Hyrox?',
+    resposta:
+      'Não há estudo que defina um número para o Hyrox. Como referência mínima de saúde, a OMS recomenda de 150 a 300 minutos de atividade aeróbica moderada por semana e treino de força em pelo menos dois dias. A preparação para a prova costuma passar disso, mas a frequência certa depende do seu nível, do tempo até a prova e de quantos dias você realmente tem.',
+  },
+  {
+    pergunta: 'Quem faz Hyrox precisa fazer musculação?',
+    resposta:
+      'Precisa de força, e a musculação é o jeito mais direto de construí-la. No Open masculino, por exemplo, o trenó pesa 152 kg para empurrar e 103 kg para puxar, e o carregamento é com duas kettlebells de 24 kg. Mesmo que o fôlego pese mais no tempo final, quem chega fraco nas estações perde tempo e chega mais cansado à corrida seguinte.',
+  },
+  {
+    pergunta: 'Correr atrapalha o ganho de força?',
+    resposta:
+      'Um pouco, e menos do que se costuma dizer. Numa revisão de 59 estudos, treinar força e resistência juntos reduziu de leve o ganho de força nas pernas em homens, mas não em mulheres. Outra revisão viu esse efeito mais quando o aeróbico era corrida do que bicicleta. Na prática, separar a corrida forte e o treino de perna pesado em dias ou turnos diferentes, quando dá, ajuda.',
+  },
+  {
+    pergunta: 'Como começar a treinar para o Hyrox sendo iniciante?',
+    resposta:
+      'Construindo a base separada antes de juntar: corrida contínua e leve, força com boa técnica nos movimentos das estações, e só depois os treinos combinados. O volume sobe aos poucos — no único acompanhamento de atletas de Hyrox publicado, a maioria das lesões foi por sobrecarga, com o joelho à frente. Se você tem dor ou lesão, converse antes com o médico ou o fisioterapeuta.',
+  },
+  {
+    pergunta: 'Dá para treinar Hyrox em casa?',
+    resposta:
+      'Parte dele. Corrida na rua, burpee broad jump, afundo e exercícios com o peso do corpo cabem em casa; wall ball e carregamento pedem pouco equipamento — uma bola, um par de pesos. Trenó, SkiErg e remo precisam de uma academia que tenha os aparelhos, pelo menos algumas vezes antes da prova.',
+  },
+  {
+    pergunta: 'Tem planilha de treino de Hyrox pronta?',
+    resposta:
+      'Aqui não, de propósito. Uma planilha genérica ignora o seu nível de corrida, a sua força, as lesões que você já teve e os dias que você tem — justamente o que decide se o treino funciona ou machuca. O artigo mostra como a semana se organiza; o número de séries, cargas e quilômetros é prescrição individual.',
+  },
+  {
+    pergunta: 'O que mais influencia o tempo no Hyrox?',
+    resposta:
+      'O fôlego. No primeiro estudo sobre o Hyrox, quem terminou mais rápido tinha mais capacidade aeróbica e mais volume de treino de resistência, e a corrida levou mais tempo que todas as estações somadas. Num grupo da categoria Pro, a velocidade de corrida caiu do primeiro ao último quilômetro, e quem segurava melhor o ritmo terminava antes.',
+  },
+  {
+    pergunta: 'O que fazer nas semanas antes da prova?',
+    resposta:
+      'Diminuir o volume e manter a intensidade. Numa meta-análise com atletas de competição, o melhor resultado veio de um período de cerca de duas semanas com o volume de treino reduzido entre 41% e 60%. Nada novo na semana da prova: tênis, luva e alimentação testados antes.',
+  },
+  {
+    pergunta: 'O que é um treino WOD de Hyrox?',
+    resposta:
+      'WOD é o "treino do dia" do CrossFit. Nas academias, "WOD de Hyrox" costuma ser uma sessão no formato da prova: blocos de corrida intercalados com estações. Serve para treinar a transição, mas não substitui a base de corrida e de força que vem antes dela.',
+  },
+];
+
+const title = 'Treino de Hyrox: Como Treinar, Iniciante, em Casa e Academia';
+const description =
+  'Treino de Hyrox: corrida, força e treinos combinados, quantas vezes por semana, se precisa de musculação, como começar e o que dá para treinar em casa.';
+
+const relacionados = [
+  {
+    url: '/guias/o-que-e-hyrox/',
+    titulo: 'O que é Hyrox',
+    descricao: 'As 8 estações, os pesos de cada categoria, quanto tempo dura e quanto custa.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/hyrox-vs-crossfit/',
+    titulo: 'Hyrox vs CrossFit',
+    descricao: 'As diferenças de formato, de treino e de corpo, e como escolher.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/calorias/hyrox/',
+    titulo: 'Quantas calorias gasta uma prova de Hyrox?',
+    descricao: 'O gasto da prova pelo seu tempo e pace, corrida e estações separadas.',
+    tipo: 'Calculadora',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Hyrox</p>
+    <h1>Treino de Hyrox: como treinar, para iniciante, em casa e na academia</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O treino de Hyrox junta <strong>corrida</strong>, <strong>força</strong> e
+      <strong>treinos que combinam as duas</strong> — porque a prova é exatamente isso: 8 vezes 1 km
+      de corrida, com uma estação de exercício depois de cada quilômetro. O que mais pesa no tempo
+      final, segundo os estudos, é o fôlego; o que mais pega quem está começando é voltar a correr
+      com a perna cansada.
+    </p>
+
+    <div class="prose">
+      <h2>Como é o treino de Hyrox</h2>
+      <p>Uma semana de preparação costuma ter três tipos de sessão:</p>
+      <ul>
+        <li>
+          <strong>Corrida</strong> — a base aeróbica para os 8 km e o ritmo que você quer manter. Na
+          prova, a corrida ocupa a maior parte do tempo.
+        </li>
+        <li>
+          <strong>Força</strong> — empurrar e puxar o trenó, carregar peso, agachar e fazer afundo com
+          carga, arremessar a wall ball. É o que impede as estações de virarem o gargalo.
+        </li>
+        <li>
+          <strong>Treinos combinados</strong> — um bloco de corrida logo depois de uma estação, ou o
+          contrário. Ensinam o corpo a correr com a perna já pesada, que é a sensação da prova.
+        </li>
+      </ul>
+      <p>
+        Quanto de cada um, e em que ordem, depende de onde você está hoje e de quanto tempo falta.
+        Quem vem da corrida costuma precisar de mais força; quem vem da musculação ou do CrossFit,
+        de mais corrida. As 8 estações, na ordem, e os pesos de cada categoria estão em{' '}
+        <a href="/guias/o-que-e-hyrox/">o que é Hyrox</a>.
+      </p>
+
+      <h2>O que mais decide o seu tempo</h2>
+      <p>
+        No primeiro estudo científico sobre o Hyrox, com atletas amadores numa simulação da prova,
+        quem terminou mais rápido tinha mais capacidade aeróbica, mais volume de treino de resistência
+        e menos gordura corporal. A corrida levou mais tempo que todas as estações somadas, e o pico de
+        esforço apareceu nas wall balls, a última estação.
+      </p>
+      <p>
+        Num grupo de atletas da categoria Pro, numa etapa oficial, a velocidade de corrida caiu do
+        primeiro ao último quilômetro, e ficou ainda mais baixa na Roxzone, a área de transição. Os
+        pesquisadores concluíram que sustentar um ritmo relativo mais alto é o que encurta o tempo de
+        corrida. Traduzindo para o treino: fôlego e resistência ao cansaço pesam mais que força
+        máxima — mas sem força suficiente para as estações, o fôlego não chega a ser usado.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-pace"
+        texto="Se o seu objetivo é um tempo de prova, comece pelo ritmo de corrida que ele exige. A calculadora converte tempo em pace e pace em tempo — dá para ver quanto cada quilômetro precisa levar para caber na meta, antes de somar as estações."
+        acao="Calcular o pace da minha meta"
+      />
+
+      <h2>Quantas vezes por semana treinar para o Hyrox</h2>
+      <p>
+        Não existe estudo que defina um número para o Hyrox. Como piso, a recomendação da OMS para
+        adultos é de 150 a 300 minutos de atividade aeróbica moderada por semana, mais treino de força
+        em pelo menos dois dias. A preparação para uma prova costuma passar disso — mas a frequência
+        certa é a que você consegue manter sem se machucar, encaixada nos dias que você realmente tem.
+        Uma rotina mantida por meses rende mais que uma semana cheia seguida de uma vazia.
+      </p>
+
+      <h2>Quem faz Hyrox precisa fazer musculação?</h2>
+      <p>
+        Precisa de força — e a musculação é o caminho mais direto. As cargas da prova não são leves:
+        no Open masculino, o trenó pesa 152 kg para empurrar e 103 kg para puxar, o carregamento é com
+        duas kettlebells de 24 kg e o afundo é com saco de areia de 20 kg; no Open feminino, 102 kg, 78
+        kg, 2 × 16 kg e 10 kg. Quem chega fraco a essas estações perde tempo nelas e chega mais cansado
+        à corrida seguinte.
+      </p>
+      <p>
+        E correr não anula a musculação. Numa revisão de 59 estudos, treinar força e resistência
+        juntos reduziu de leve o ganho de força nas pernas em homens, mas não em mulheres. Outra
+        revisão encontrou esse efeito sobretudo quando o aeróbico era corrida, e não bicicleta. Na
+        prática: quando der, deixe a corrida forte e o treino de perna pesado em dias ou turnos
+        diferentes.
+      </p>
+
+      <h2>Treino de Hyrox para iniciante</h2>
+      <p>
+        O caminho mais seguro é construir a base separada antes de juntar: corrida contínua e leve,
+        força com técnica nos movimentos das estações e, só depois, os treinos combinados. O volume sobe
+        aos poucos. No único acompanhamento de atletas de Hyrox publicado até aqui — 89 pessoas por 12
+        semanas —, a maioria das lesões foi por sobrecarga, com o joelho e a perna à frente, e ter tido
+        uma lesão antes apareceu como possível sinal de risco.
+      </p>
+      <p>
+        Dá para fazer a primeira prova em dupla ou no revezamento, dividindo o esforço. Se você tem
+        alguma dor, lesão ou condição de saúde, converse com o médico ou o fisioterapeuta antes de
+        aumentar o treino.
+      </p>
+
+      <h2>Treino de Hyrox em casa e na academia</h2>
+      <p>
+        Em casa ou na rua cabem a corrida, o burpee broad jump, o afundo e os exercícios com o peso do
+        corpo. Com pouco equipamento — uma bola de wall ball, um par de pesos — entram o arremesso e o
+        carregamento. Trenó, SkiErg e remo pedem academia — e nem toda academia tem os três, então
+        vale confirmar antes de se matricular. Vale fazer essas estações com o aparelho de verdade algumas vezes antes da prova, porque
+        a técnica muda o tempo.
+      </p>
+      <p>
+        A Hyrox tem um programa de academias afiliadas, os Hyrox Training Clubs, e há academias e boxes
+        com aula no formato da prova. Na região de Alphaville e Barueri, as páginas de cada cidade dizem
+        onde treinar:
+      </p>
+      <ul class="cidades">
+        {HYROX_CIDADES.map((c) => (
+          <li><a href={`/guias/hyrox-${c.slug}/`}>Hyrox {c.locucao}</a></li>
+        ))}
+      </ul>
+
+      <h2>Por que não tem planilha pronta aqui</h2>
+      <p>
+        "Planilha de treino Hyrox" e "exemplo de treino" estão entre as buscas mais comuns. Uma planilha
+        genérica, porém, ignora o seu nível de corrida, a sua força, as lesões que você já teve e os
+        dias que você tem — e é isso que decide se o treino funciona ou machuca. O que este artigo mostra
+        é como a semana se organiza; o número de séries, as cargas e os quilômetros são prescrição
+        individual.
+      </p>
+
+      <h2>As semanas antes da prova</h2>
+      <p>
+        Numa meta-análise com atletas de competição, o melhor resultado veio de um período de cerca de
+        duas semanas em que o volume de treino caiu entre 41% e 60%, mantendo a intensidade. Na semana
+        da prova, nada novo: tênis, luva, alimentação e suplemento só se já foram testados em treino.
+        Data, local e horários da etapa de São Paulo estão no{' '}
+        <a href="/guias/hyrox-sao-paulo-2026/">guia do Hyrox São Paulo 2026</a>.
+      </p>
+
+      <h2>Treino para o Hyrox com o Montinho</h2>
+      <p>
+        O Montinho Personal, que assina o conteúdo do portal, prepara alunos para o Hyrox: presencial
+        na região de Alphaville e Barueri, e online para todo o Brasil. O treino junta corrida, força
+        para as estações e sessões que combinam as duas coisas, montado na semana que você tem e no
+        tempo que falta até a prova.
+      </p>
+      <p>
+        <a class="hx-cta" href={whatsHyrox} target="_blank" rel="noopener" data-track="hyrox:cta-whatsapp">
+          Falar com o Montinho sobre treino para o Hyrox
+        </a>
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li><a href={BRANDT} target="_blank" rel="noopener">Brandt et al., 2025, Frontiers in Physiology</a>: simulação da prova com atletas amadores; tempos, intensidade e o que se associou a terminar mais rápido.</li>
+        <li><a href={HYSCIENCE} target="_blank" rel="noopener">Gutiérrez-Hellín et al., 2026, IJSPP</a>: ritmo de corrida em 24 atletas Pro masculino numa etapa oficial.</li>
+        <li><a href={CHITTENDEN} target="_blank" rel="noopener">Chittenden et al., 2026, Frontiers in Sports and Active Living</a>: problemas de saúde e lesões em 89 atletas de Hyrox por 12 semanas.</li>
+        <li><a href={HUIBERTS} target="_blank" rel="noopener">Huiberts et al., 2024, Sports Medicine</a>: treino concorrente de força e resistência, 59 estudos, diferenças por sexo.</li>
+        <li><a href={LUNDBERG} target="_blank" rel="noopener">Lundberg et al., 2022, Sports Medicine</a>: treino concorrente e hipertrofia das fibras; efeito maior com corrida.</li>
+        <li><a href={BOSQUET} target="_blank" rel="noopener">Bosquet et al., 2007, Medicine &amp; Science in Sports &amp; Exercise</a>: meta-análise do período de redução de treino antes da competição.</li>
+        <li><a href={OMS} target="_blank" rel="noopener">Bull et al., 2020, British Journal of Sports Medicine</a>: diretrizes da OMS de atividade física.</li>
+        <li><a href={HYROX_PROVA} target="_blank" rel="noopener">Hyrox — The Fitness Race</a>: formato e cargas de cada categoria.</li>
+        <li>Conferidas em 24/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre treino de Hyrox" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+  .cidades {
+    columns: 2;
+  }
+  .hx-cta {
+    display: inline-block;
+    padding: 0.7rem 1.1rem;
+    border-radius: var(--radius);
+    background: var(--brand-600);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .hx-cta:hover { background: var(--brand-700); text-decoration: none; }
+  .hx-cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>

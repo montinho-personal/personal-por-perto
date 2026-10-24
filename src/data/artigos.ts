@@ -132,6 +132,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/coach-de-academia/', titulo: 'Coach de academia: o que é e a diferença para o personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-smart-fit/', titulo: 'Personal trainer na Smart Fit: pode levar o seu e quanto custa' },
   { categoria: 'Guias', url: '/guias/o-que-e-hyrox/', titulo: 'O que é Hyrox: como funciona a prova, as estações, os pesos e quanto custa' },
+  { categoria: 'Guias', url: '/guias/treino-hyrox/', titulo: 'Treino de Hyrox: como treinar, para iniciante, em casa e na academia' },
   { categoria: 'Guias', url: '/guias/hyrox-vs-crossfit/', titulo: 'Hyrox vs CrossFit: as diferenças, o corpo e qual escolher' },
   { categoria: 'Guias', url: '/guias/hyrox-sao-paulo-2026/', titulo: 'HYROX São Paulo 2026: resultado, vencedores, data e local' },
   { categoria: 'Guias', url: '/guias/hyrox-alphaville/', titulo: 'Hyrox em Alphaville: onde treinar e como se preparar' },

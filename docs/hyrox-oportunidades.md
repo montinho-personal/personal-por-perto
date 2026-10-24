@@ -120,6 +120,9 @@ personal) × o que dá para afirmar com fonte.
 - 23/10: leva 1 publicada — `/guias/o-que-e-hyrox/` (com a tabela oficial de
   pesos, que estava na página da prova) e `/guias/hyrox-vs-crossfit/`.
 
+- 24/10: leva 2 começou — `/guias/treino-hyrox/`. Falta a calculadora de
+  tempo de prova (prints de "tempo hyrox").
+
 ## Ritmo
 
 Cria páginas novas → dividir. Leva 1: Hyrox × CrossFit e o pilar "O que é
