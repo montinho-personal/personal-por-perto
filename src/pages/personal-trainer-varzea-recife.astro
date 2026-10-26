@@ -1,0 +1,310 @@
+---
+/**
+ * Várzea (Recife) — leva 9 de bairros, 26/10/2026, a pedido do Renato
+ * ("criar próximos 2 de SEO local"), antes dos prints. Escolha pelo GSC de
+ * 28 dias: Recife 202 impressões e 3 bairros (Boa Viagem, Graças, Casa
+ * Forte — Zona Sul e Zona Norte nobre); a Várzea, fora desse eixo, é o 2º
+ * bairro mais populoso da cidade. Zona/RPA não confirmada em fonte oficial
+ * (site da Prefeitura bloqueado) — por isso sem `zona` em bairros.ts.
+ *
+ * Fontes conferidas em 26/10/2026: IBGE, Censo 2022 (tabela 9923, bairro
+ * Várzea: 70.946 moradores, 2º de Recife, atrás de Boa Viagem; tabela 9922:
+ * 2,66 moradores por domicílio, contra 2,70 da cidade; Cidade Universitária
+ * é bairro à parte); Selfit Várzea (oficial, Av. Afonso Olindense, 377, com
+ * horários); Skyfit Várzea (TotalPass + Wellhub, Av. Barão de Bonito, 406 —
+ * CEPs divergem, por isso sem CEP); INMET, normais 1991–2020 da estação
+ * Recife (Curado). Fora: RPA, Academia Recife, praças e parques, metrô
+ * (sites da Prefeitura e da UFPE bloqueados aqui; só imprensa).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/recife-pe/',
+    titulo: 'Personal trainer no Recife',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-boa-viagem/',
+    titulo: 'Personal trainer em Boa Viagem',
+    descricao: 'O único bairro do Recife mais populoso que a Várzea, com a orla inteira.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/personal-trainer-a-domicilio/',
+    titulo: 'Personal trainer a domicílio',
+    descricao: 'Como funciona o treino em casa, com pouco equipamento.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-varzea-recife';
+const atualizadoEm = '2026-10-26';
+const crumbs = crumbsBairro('personal-trainer-varzea-recife');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Várzea?',
+    resposta:
+      'A referência do Recife vai de R$ 70 a R$ 170 pela aula avulsa e de R$ 360 a R$ 980 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 180 e R$ 450 por mês. O formato — em casa, no condomínio ou na academia — e o deslocamento do profissional até o bairro são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer no Recife?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 170 no Recife. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam na Várzea?',
+    resposta:
+      'Pela página oficial da rede, a Selfit Várzea, na Avenida Afonso Olindense, 377, aberta das 5h às 23h nos dias úteis. Pelo TotalPass e pelo Wellhub, a Skyfit Várzea, na Avenida Barão de Bonito, 406. Na página oficial da Smart Fit não encontramos unidade no bairro. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'A UFPE fica na Várzea?',
+    resposta:
+      'Não pelo IBGE: o campus fica no bairro Cidade Universitária, que o Censo conta separado da Várzea, com cerca de 1.800 moradores.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para treinar ao ar livre na Várzea?',
+    resposta:
+      'Cedo ou no fim da tarde. Pelas normais do INMET da estação do Recife, a máxima média passa de 29 °C no ano e chega a 31 °C em fevereiro. De abril a julho chove mais de 260 mm por mês — junho passa de 390 mm —, e é quando um plano B coberto, em casa ou na academia, faz diferença.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora no Recife?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no condomínio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: no Recife, de R$ 180 a R$ 450 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville.',
+  },
+];
+
+const title = 'Personal Trainer na Várzea (Recife): preço e academias';
+const description =
+  'Personal trainer na Várzea, o 2º bairro mais populoso do Recife: preço por aula e por mês, as academias do bairro, o horário para treinar e o treino em casa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros do Recife</p>
+    <h1>Personal trainer na Várzea: academias, calendário de chuva e treino em casa</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Várzea tem quase 71 mil moradores, segundo o Censo de 2022 — é o
+      segundo bairro mais populoso do Recife, atrás só de Boa Viagem. São
+      cerca de 26,5 mil domicílios, com 2,66 moradores em média, quase o
+      mesmo número da cidade.
+    </p>
+
+    <p class="lead">
+      É um bairro grande e residencial, e o treino de quem mora nele costuma
+      se dividir entre três lugares: a academia, a casa e a rua. Para quem
+      procura um <strong>personal trainer</strong> na Várzea, a pergunta é
+      qual desses três sustenta a sua semana — inclusive na época de chuva.
+    </p>
+
+    <div class="prose">
+      <h2>As academias do bairro</h2>
+      <p>
+        Pela página oficial da rede, a <strong>Selfit Várzea</strong> fica na
+        Avenida Afonso Olindense, 377, e abre das 5h às 23h de segunda a
+        sexta, das 8h às 18h aos sábados e feriados e das 8h às 14h aos
+        domingos. A janela longa dos dias úteis é o que permite encaixar o
+        treino antes ou depois do trabalho.
+      </p>
+      <p>
+        Pelo TotalPass e pelo Wellhub, a <strong>Skyfit Várzea</strong> fica
+        na Avenida Barão de Bonito, 406. Na lista oficial de unidades da Smart
+        Fit não encontramos nenhuma na Várzea; a rede tem unidades em outros
+        bairros do Recife, como a Madalena. Antes de combinar o treino com um
+        personal na academia, confirme a regra da unidade para profissional
+        externo.
+      </p>
+
+      <h2>A UFPE não fica na Várzea</h2>
+      <p>
+        Pelo IBGE, o campus da Universidade Federal de Pernambuco está no
+        bairro Cidade Universitária, contado à parte no Censo, com cerca de
+        1.800 moradores. Vale saber na hora de combinar onde o treino
+        acontece: "na Várzea" e "na UFPE" são endereços diferentes, e o
+        deslocamento do profissional entra no preço.
+      </p>
+
+      <h2>Treino em casa: o formato que o bairro favorece</h2>
+      <p>
+        Num bairro com dezenas de milhares de casas e apartamentos, o
+        atendimento em casa ou no condomínio resolve o que a academia não
+        resolve: tempo de deslocamento e horário. Com pouco equipamento — um
+        par de halteres, elásticos, um banco — dá para fazer um programa de
+        força completo, e o profissional leva o que falta. Como funciona,
+        passo a passo, está no guia de{' '}
+        <a href="/guias/personal-trainer-a-domicilio/">personal trainer a
+        domicílio</a>.
+      </p>
+
+      <h2>O calendário da chuva e do calor</h2>
+      <p>
+        Pelas normais do INMET (1991–2020) da estação do Recife, no Curado, a
+        média anual é de 26 °C, com máxima média de 29,7 °C — fevereiro é o mês
+        mais quente, com máximas de 31 °C. Chove mais de 2.100 mm por ano, e a
+        chuva se concentra entre abril e julho: junho passa de 390 mm.
+        Novembro é o mês mais seco, com menos de 40 mm.
+      </p>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>Recife, normais do INMET 1991–2020 (estação Curado)</caption>
+          <thead>
+            <tr><th scope="col">Período</th><th scope="col">O que acontece</th><th scope="col">No plano de treino</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Abril a julho</th><td>De 260 a 390 mm de chuva por mês</td><td>Plano B coberto: casa, condomínio ou academia</td></tr>
+            <tr><th scope="row">Outubro a dezembro</th><td>Os meses mais secos, de 39 a 62 mm</td><td>A melhor época para treinar ao ar livre</td></tr>
+            <tr><th scope="row">Ano todo</th><td>Máxima média perto de 30 °C</td><td>Treino na rua cedo ou no fim da tarde, com água</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Quanto custa personal trainer na Várzea</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/recife-pe/">personal trainer no
+        Recife</a>, vai de R$ 70 a R$ 170 pela aula avulsa e de R$ 360 a R$
+        980 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 180 e R$ 450 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Na Várzea, pergunte se o deslocamento está
+        embutido no valor: num bairro grande, a distância até a sua casa muda
+        o preço — e a pontualidade.
+      </p>
+
+      <ContextualCta path={path} localidade="na Várzea" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Na Várzea, pergunte também o que acontece com a sessão nos meses de
+        chuva: o profissional que já tem o plano coberto pronto não perde
+        a semana quando junho chega.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Várzea" />
+
+    <ContextualCta path={path} localidade="na Várzea" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-varzea-recife"
+    guias={[
+      { url: '/guias/personal-trainer-a-domicilio/', texto: 'o atendimento em casa, com equipamento portátil' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+  }
+</style>
