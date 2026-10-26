@@ -1,0 +1,296 @@
+---
+/**
+ * Cidade Nova (Manaus) — leva 9 de bairros, 26/10/2026, a pedido do Renato
+ * ("criar próximos 2 de SEO local"), antes dos prints. Escolha pelo GSC de
+ * 28 dias: Manaus 311 impressões e 3 bairros (Adrianópolis, Vieiralves,
+ * Ponta Negra — todos no eixo nobre); a Cidade Nova é a primeira da Zona
+ * Norte. Slug com a cidade porque /personal-trainer-cidade-nova-bh/ existe.
+ *
+ * Fontes conferidas em 26/10/2026: IBGE, Censo 2022 (tabela 9923, bairro
+ * Cidade Nova: 124.935 moradores, 2º de 63, atrás de Jorge Teixeira; tabela
+ * 9922: 3,26 moradores por domicílio, contra 3,27 da cidade; "Nova Cidade"
+ * é outro bairro); Prefeitura de Manaus (zona Norte; Arena Pingo; academia
+ * ao ar livre da Vila da Barra, de 2016; Terminal de Integração 3; Parque do
+ * Mindu no Parque 10); Smart Fit "Cidade Nova" (oficial, endereço na Colônia
+ * Santo Antônio — dito assim); INMET, normais 1991–2020, estação Manaus.
+ * Fora: Bluefit Noel Nutels (sem confirmação de que abriu), academias só no
+ * TotalPass, Parque Nascentes do Mindu (Prefeitura diverge no bairro).
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/manaus-am/',
+    titulo: 'Personal trainer em Manaus',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-adrianopolis/',
+    titulo: 'Personal trainer em Adrianópolis',
+    descricao: 'Outro bairro de Manaus com página própria, do outro lado da cidade.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre',
+    descricao: 'Parque, praça e academia pública: como progredir sem carga.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-cidade-nova-manaus';
+const atualizadoEm = '2026-10-26';
+const crumbs = crumbsBairro('personal-trainer-cidade-nova-manaus');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer na Cidade Nova?',
+    resposta:
+      'A referência de Manaus vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$ 950 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 170 e R$ 430 por mês. O formato — em casa, no condomínio ou na academia — e o deslocamento do profissional até a Zona Norte são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Manaus?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 70 a R$ 160 em Manaus. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'A Smart Fit Cidade Nova fica na Cidade Nova?',
+    resposta:
+      'Pelo endereço oficial, não: a unidade que a Smart Fit chama de Cidade Nova fica na Avenida Francisco Queiroz, 188, e a rede registra o bairro como Colônia Santo Antônio. Ela abre das 5h às 23h de segunda a sexta. Se for treinar lá com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Onde treinar ao ar livre na Cidade Nova?',
+    resposta:
+      'Segundo a Prefeitura, o bairro tem a Arena Pingo, campo de futebol e vôlei na Travessa Coremas, no Núcleo 23, reaberta depois de reforma em 2024, e uma academia ao ar livre no conjunto Vila da Barra, inaugurada em 2016 com sete aparelhos — vale conferir no local como ela está hoje. O Parque do Mindu fica no Parque 10, na Zona Centro-Sul.',
+  },
+  {
+    pergunta: 'Cidade Nova e Nova Cidade são o mesmo bairro?',
+    resposta:
+      'Não. Pelo Censo de 2022, são dois bairros diferentes de Manaus: a Cidade Nova, com cerca de 125 mil moradores, e a Nova Cidade, com cerca de 73 mil. Na hora de combinar o treino com um profissional, confirme qual dos dois é o seu.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Manaus?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no condomínio ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Manaus, de R$ 170 a R$ 430 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville.',
+  },
+];
+
+const title = 'Personal Trainer na Cidade Nova (Manaus): preço e academia';
+const description =
+  'Personal trainer na Cidade Nova, Zona Norte de Manaus: preço por aula e por mês, a Smart Fit que leva o nome do bairro, onde treinar ao ar livre e o calor.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Manaus</p>
+    <h1>Personal trainer na Cidade Nova: onde treinar na Zona Norte de Manaus</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Cidade Nova tem quase 125 mil moradores, segundo o Censo de 2022 — é
+      o segundo bairro mais populoso de Manaus, entre 63, atrás só do Jorge
+      Teixeira. Fica na Zona Norte e tem cerca de 38 mil domicílios, com 3,26
+      moradores em média, praticamente a média da cidade.
+    </p>
+
+    <p class="lead">
+      É uma cidade dentro da cidade, e com uma armadilha de nome: a academia
+      que leva "Cidade Nova" no nome não fica, pelo endereço oficial, no
+      bairro. Para quem procura um <strong>personal trainer</strong> na
+      Cidade Nova, a pergunta é onde o treino acontece de fato — e como ele
+      convive com o calor.
+    </p>
+
+    <div class="prose">
+      <h2>A academia que leva o nome do bairro</h2>
+      <p>
+        A Smart Fit chama uma das unidades de Manaus de <strong>Cidade
+        Nova</strong>, mas o endereço oficial é Avenida Francisco Queiroz,
+        188, no bairro Colônia Santo Antônio. Ela abre das 5h às 23h de
+        segunda a sexta, das 8h às 17h aos sábados e feriados e das 8h às 14h
+        aos domingos. Na mesma avenida, a rede tem a unidade do Shopping
+        Cidade Manoa, também registrada na Colônia Santo Antônio.
+      </p>
+      <p>
+        Não confirmamos em duas fontes nenhuma academia de rede com endereço
+        dentro da Cidade Nova — há academias de bairro listadas em aplicativos
+        de benefício, mas cada uma em uma fonte só. Antes de combinar o treino
+        com um personal na academia, confirme a regra da unidade para
+        profissional externo.
+      </p>
+
+      <h2>Ao ar livre: o que a Prefeitura registra no bairro</h2>
+
+      <h3>Arena Pingo</h3>
+      <p>
+        Campo de futebol e vôlei na Travessa Coremas, no Núcleo 23, reaberto
+        pela Prefeitura depois de reforma em 2024. Serve para treino de
+        corrida curta, mudança de direção e circuito com o peso do corpo.
+      </p>
+
+      <h3>Academia ao ar livre da Vila da Barra</h3>
+      <p>
+        No conjunto Vila da Barra, inaugurada em 2016 com sete aparelhos — a
+        18ª da cidade, segundo a Prefeitura. É informação de quando abriu;
+        vale conferir no local como ela está hoje antes de montar o treino
+        em cima dela.
+      </p>
+
+      <h3>O Parque do Mindu fica no Parque 10</h3>
+      <p>
+        O Parque Municipal do Mindu fica no Parque 10 de
+        Novembro, na Zona Centro-Sul, assim como o Passeio do Mindu, de
+        caminhada e corrida. Para quem mora na Cidade Nova, é deslocamento —
+        e o guia de <a href="/guias/treinar-ao-ar-livre/">treinar ao ar
+        livre</a> mostra como progredir sem carga perto de casa.
+      </p>
+
+      <h2>Cidade Nova não é Nova Cidade</h2>
+      <p>
+        Pelo Censo, são dois bairros diferentes de Manaus: a Cidade Nova, com
+        cerca de 125 mil moradores, e a Nova Cidade, com cerca de 73 mil. Na
+        hora de passar o endereço para o profissional, a troca de palavras
+        muda o bairro — e o tempo de deslocamento.
+      </p>
+
+      <h2>O calor de Manaus no plano</h2>
+      <p>
+        Pelas normais do INMET (1991–2020) da estação de Manaus, a média anual
+        é de 27,4 °C. Setembro é o mês mais quente, com 28,6 °C de média, e o
+        trimestre de janeiro a março o menos quente, com 26,6 °C. Chove mais de
+        2.300 mm por ano: abril é o mês mais chuvoso, com 331 mm, e agosto o
+        mais seco, com 56 mm.
+      </p>
+      <p>
+        Na prática, não há época fresca para compensar: o treino na rua vai
+        para o começo da manhã ou o fim da tarde o ano todo, com água à mão, e
+        a casa ou a academia com ar-condicionado entram no lugar nos dias de
+        chuva forte.
+      </p>
+
+      <h2>Quanto custa personal trainer na Cidade Nova</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/manaus-am/">personal trainer em
+        Manaus</a>, vai de R$ 70 a R$ 160 pela aula avulsa e de R$ 350 a R$
+        950 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 170 e R$ 430 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Num bairro deste tamanho, pergunte se o
+        deslocamento está no valor: a distância até a sua casa muda o preço
+        — e a pontualidade.
+      </p>
+
+      <ContextualCta path={path} localidade="na Cidade Nova" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        Na Cidade Nova, pergunte também como ele ajusta intensidade e
+        hidratação ao calor, e onde o treino acontece quando a chuva de abril
+        fecha o campo.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer na Cidade Nova" />
+
+    <ContextualCta path={path} localidade="na Cidade Nova" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-cidade-nova-manaus"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'o treino no parque, sem carga' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>
