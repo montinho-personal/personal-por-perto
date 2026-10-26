@@ -1,0 +1,306 @@
+---
+/**
+ * Farol (Maceió) — leva 10 de bairros, 26/10/2026, a pedido do Renato
+ * ("pode criar próximos 2 de SEO local"), antes dos prints. Escolha pelo GSC
+ * de 28 dias: Maceió 101 impressões e 2 bairros (Ponta Verde e Jatiúca, a
+ * orla nobre). Benedito Bentes foi pesado e descartado: muito mais populoso,
+ * mas nenhuma academia com duas fontes.
+ *
+ * Fontes conferidas em 26/10/2026: IBGE, Censo 2022 (tabela 9923, bairro
+ * Farol: 17.789 moradores, 18º de 49; tabela 9922: 2,78 moradores por
+ * domicílio, contra 2,84 da cidade); Smart Fit Palato (oficial, Av.
+ * Fernandes Lima, 548 – Farol); Smart Fit "Sam's Club Farol" registrada pela
+ * rede na Gruta de Lourdes — dito assim; Prefeitura de Maceió (Parque do
+ * Centenário, no Farol, reinaugurado em 2024; Rua Aberta estendida ao parque
+ * em 31/05/2026 — datado); INMET, normais 1991–2020, estação Maceió (sem
+ * média anual na planilha: não citada). Fora: zona ("parte alta" sem fonte
+ * para o Farol), outras academias (uma fonte só), VLT.
+ */
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Faq from '../components/Faq.astro';
+import VideoYouTube from '../components/VideoYouTube.astro';
+import CtaMontinho from '../components/CtaMontinho.astro';
+import Sidebar from '../components/Sidebar.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import InstagramFollow from '../components/InstagramFollow.astro';
+import AutorMontinho from '../components/AutorMontinho.astro';
+import ContextualCta from '../components/ContextualCta.astro';
+import BairroLocal from '../components/BairroLocal.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../lib/schema';
+import { formatDateLong } from '../lib/slug';
+import { site } from '../data/site';
+import { crumbsBairro } from '../lib/geo';
+import { rotas } from '../lib/links';
+
+const relacionados = [
+  {
+    url: '/personal-trainer/maceio-al/',
+    titulo: 'Personal trainer em Maceió',
+    descricao: 'O guia da cidade: preços, formatos de atendimento e onde treinar.',
+    tipo: 'Cidade',
+  },
+  {
+    url: '/personal-trainer-ponta-verde/',
+    titulo: 'Personal trainer na Ponta Verde',
+    descricao: 'O bairro da orla, com o treino na beira-mar.',
+    tipo: 'Bairro',
+  },
+  {
+    url: '/guias/treinar-ao-ar-livre/',
+    titulo: 'Treinar ao ar livre',
+    descricao: 'Parque, praça e academia pública: como progredir sem carga.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/personal-trainer-farol';
+const atualizadoEm = '2026-10-26';
+const crumbs = crumbsBairro('personal-trainer-farol');
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa um personal trainer no Farol?',
+    resposta:
+      'A referência de Maceió vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$ 880 pelo pacote mensal, com 2 a 3 sessões por semana. O acompanhamento online fica entre R$ 160 e R$ 410 por mês. O formato — no parque, em casa ou na academia — e o deslocamento do profissional são o que mais mexe no valor.',
+  },
+  {
+    pergunta: 'Quanto custa 1 hora de personal trainer em Maceió?',
+    resposta:
+      'A aula avulsa, que costuma durar cerca de uma hora, vai de R$ 65 a R$ 150 em Maceió. É a forma mais cara por sessão; no pacote mensal, o valor por aula cai. A avulsa serve melhor para uma avaliação ou para conhecer o profissional antes de fechar o mês.',
+  },
+  {
+    pergunta: 'Quais academias ficam no Farol?',
+    resposta:
+      'Pela página oficial da rede, a Smart Fit Palato, na Avenida Fernandes Lima, 548, junto ao Mercado Palato. Atenção ao nome: a unidade "Sam\'s Club Farol", também na Fernandes Lima, a própria Smart Fit registra no bairro Gruta de Lourdes. Se for treinar na academia com personal, confirme antes a regra da unidade para profissional externo.',
+  },
+  {
+    pergunta: 'Dá para treinar no Parque do Centenário?',
+    resposta:
+      'Dá. Segundo a Prefeitura, o parque fica no Farol, foi reinaugurado em 2024, tem mais de 17 mil metros quadrados e academia ao ar livre. A página não informa horário oficial de funcionamento.',
+  },
+  {
+    pergunta: 'Qual a época mais chuvosa para treinar em Maceió?',
+    resposta:
+      'O meio do ano. Pelas normais do INMET da estação de Maceió, junho é o mês mais chuvoso, com 323 mm, e dezembro o mais seco, com 37 mm. A máxima média passa de 31 °C em março, o mês mais quente — o treino na rua vai para o começo da manhã ou o fim da tarde.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem mora em Maceió?',
+    resposta:
+      'Funciona bem quando o treino já tem onde acontecer — em casa, no condomínio, no parque ou numa academia perto. No online, o profissional monta e ajusta o programa à distância e acompanha pela execução que você grava, e o valor fica abaixo do presencial: em Maceió, de R$ 160 a R$ 410 por mês. É o formato em que o Montinho Personal atende fora da região de Alphaville.',
+  },
+];
+
+const title = 'Personal Trainer no Farol (Maceió): preço, academia e parque';
+const description =
+  'Personal trainer no Farol, em Maceió: preço por aula e por mês, a academia do bairro, o Parque do Centenário, a Rua Aberta de domingo e a época de chuva.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Bairros de Maceió</p>
+    <h1>Personal trainer no Farol: o Parque do Centenário, a academia e a Fernandes Lima</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Farol tem quase 18 mil moradores, segundo o Censo de 2022, em cerca
+      de 6,4 mil domicílios — 2,78 moradores em média, perto dos 2,84 de
+      Maceió. Os outros dois bairros de Maceió com página no portal são da
+      orla; no Farol, o treino ao ar livre é o do parque.
+    </p>
+
+    <p class="lead">
+      Para quem procura um <strong>personal trainer</strong> no Farol, o
+      bairro oferece um parque grande, requalificado, e academia de rede na
+      avenida principal. A pergunta é como combinar os dois na sua semana.
+    </p>
+
+    <div class="prose">
+      <h2>O Parque do Centenário</h2>
+      <p>
+        Segundo a Prefeitura, o parque fica no Farol, foi reinaugurado em 2024
+        e tem mais de 17 mil metros quadrados, com academia ao ar livre. A
+        página oficial não traz horário de funcionamento.
+      </p>
+      <p>
+        Para o treino, é espaço de sobra para caminhada, corrida leve, circuito
+        e exercícios com o peso do corpo — e os aparelhos ao ar livre ajudam
+        quem está começando. O que o parque não dá é carga progressiva; o guia
+        de <a href="/guias/treinar-ao-ar-livre/">treinar ao ar livre</a>
+        mostra como contornar isso.
+      </p>
+
+      <h3>A Rua Aberta de domingo</h3>
+      <p>
+        Em maio de 2026, a Prefeitura anunciou a extensão da Rua Aberta até o
+        Parque do Centenário, a partir de 31 de maio: aos domingos, das 8h às
+        18h, na Avenida Moreira e Silva, no sentido Farol–Centro. É informação
+        do anúncio; vale confirmar se segue valendo antes de marcar o treino
+        longo do domingo em cima dela.
+      </p>
+
+      <h2>A academia do bairro</h2>
+      <p>
+        Pela página oficial da rede, a <strong>Smart Fit Palato</strong> fica
+        na Avenida Fernandes Lima, 548, no Farol, com o Mercado Palato como
+        referência.
+      </p>
+      <p>
+        Um cuidado com o nome: a unidade <strong>"Sam's Club Farol"</strong>,
+        também na Fernandes Lima, a própria Smart Fit registra no bairro Gruta
+        de Lourdes. Para quem mora no Farol, as duas podem servir — mas, ao
+        combinar o treino com um personal, vale saber em qual das duas ele vai
+        estar, e confirmar a regra da unidade para profissional externo.
+      </p>
+
+      <h2>O calendário de Maceió</h2>
+      <p>
+        Pelas normais do INMET (1991–2020) da estação de Maceió, março é o mês
+        mais quente, com máxima média de 31,5 °C, e julho o menos quente, com
+        média de 23,8 °C. Chove cerca de 1.800 mm por ano, concentrados no
+        meio do ano.
+      </p>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>Maceió, normais do INMET 1991–2020</caption>
+          <thead>
+            <tr><th scope="col">Período</th><th scope="col">O que acontece</th><th scope="col">No plano de treino</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Junho</th><td>323 mm, o mês mais chuvoso</td><td>Academia ou casa como plano principal</td></tr>
+            <tr><th scope="row">Dezembro</th><td>37 mm, o mês mais seco</td><td>A melhor época para o parque</td></tr>
+            <tr><th scope="row">Março</th><td>Máxima média de 31,5 °C</td><td>Parque cedo ou no fim da tarde, com água</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Quanto custa personal trainer no Farol</h2>
+      <p>
+        A referência da cidade, publicada no guia de{' '}
+        <a href="/personal-trainer/maceio-al/">personal trainer em
+        Maceió</a>, vai de R$ 65 a R$ 150 pela aula avulsa e de R$ 320 a R$
+        880 pelo pacote mensal, com 2 a 3 sessões semanais. O acompanhamento
+        online fica entre R$ 160 e R$ 410 por mês.
+      </p>
+
+      <p>
+        Para fazer a conta com o seu formato e a sua frequência, use a{' '}
+        <a href="/ferramentas/calculadora-preco-personal/">calculadora de
+        preço de personal</a>. Treinar no parque tira o custo da academia da
+        conta; combinar sessões acompanhadas com outras feitas sozinho é o
+        jeito mais simples de fazer o acompanhamento caber no orçamento.
+      </p>
+
+      <ContextualCta path={path} localidade="no Farol" assunto={title} posicao="meio" />
+
+      <h2>Como escolher o profissional</h2>
+      <p>
+        Valem os critérios do guia <a href={rotas.comoEscolher}>como
+        escolher um personal trainer</a>: avaliação na primeira semana,
+        plano explicado com clareza, experiência com o seu objetivo e
+        nenhuma promessa de resultado rápido. Dor ou limitação passa por
+        médico ou fisioterapeuta antes do programa.
+      </p>
+
+      <p>
+        No Farol, pergunte também como ele divide a semana entre o parque e a
+        academia, e o que entra no lugar do parque em junho.
+      </p>
+    </div>
+
+    <VideoYouTube
+      id="Dg8Sbv6_V8w"
+      titulo="Montinho Personal: meu maior conselho para quem quer emagrecer"
+      legenda="No vídeo: o maior conselho do Montinho Personal para quem quer emagrecer."
+      short
+    />
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer no Farol" />
+
+    <ContextualCta path={path} localidade="no Farol" assunto={title} posicao="fim" />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <BairroLocal
+    slug="personal-trainer-farol"
+    guias={[
+      { url: '/guias/treinar-ao-ar-livre/', texto: 'o treino no parque, sem carga' },
+      { url: '/guias/quanto-custa-personal-trainer/', texto: 'o que se paga por sessão e por pacote' },
+    ]}
+  />
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" path={path} />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+  }
+</style>
