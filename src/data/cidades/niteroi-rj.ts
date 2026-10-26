@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Na margem leste da Baía de Guanabara, Niterói tem o maior IDHM do estado do Rio de Janeiro (0,837) e um dos mais altos do Brasil. A economia combina serviços, administração pública, royalties e a indústria de petróleo e gás, além da tradicional indústria naval e da presença da UFF. O resultado é uma cidade de alta renda e qualidade de vida, com público exigente em saúde e bem-estar.',
 
   mercado:
-    'O mercado fitness de Niterói é forte e diversificado, com boa oferta de academias (Smart Fit, Best Fitness e redes locais em Icaraí e na Região Oceânica). A cidade soma a isso uma cultura intensa de praia e esportes aquáticos — do mar calmo da baía às ondas de Itacoatiara e Itaipu —, o que aquece a procura por treino funcional, preparo para corrida e acompanhamento personalizado.',
+    'O mercado fitness de Niterói é forte e diversificado, com boa oferta de academias (a Smart Fit tem cinco unidades na cidade, três delas em Icaraí). A cidade soma a isso uma cultura intensa de praia e esportes aquáticos — do mar calmo da baía às ondas de Itacoatiara e Itaipu —, o que aquece a procura por treino funcional, preparo para corrida e acompanhamento personalizado.',
 
   bairrosNobres: ['Icaraí', 'Camboinhas', 'São Francisco', 'Charitas'],
   bairrosPopulares: ['Fonseca', 'Santa Rosa', 'Engenho do Mato', 'Jurujuba'],
@@ -39,7 +39,7 @@ export const cidade: Cidade = {
     {
       nome: 'Orla de Itacoatiara e Região Oceânica',
       descricao:
-        'Conta com ciclofaixa e faixa exclusiva para corrida e caminhada, além de academias ao ar livre em parques como o Horto do Fonseca — base da cultura de surf e esportes de mar de Niterói.',
+        'Conta com ciclofaixa e faixa exclusiva para corrida e caminhada — é a base da cultura de surf e esportes de mar de Niterói.',
     },
   ],
   ciclovias:
@@ -68,13 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Niterói é uma das cidades mais ciclísticas do Brasil, com recordes de uso de ciclovia e bike sharing, e tem forte cultura praiana — surf e esportes de mar na Região Oceânica, caminhada e corrida nas orlas e parques. O alto IDHM se traduz em boa infraestrutura para quem quer treinar.',
   academias:
-    'A oferta reúne redes como Smart Fit e Best Fitness e academias locais concentradas em Icaraí e na Região Oceânica, além de estúdios de treino funcional e crossfit que atendem o público de alta renda da cidade.',
+    'A Smart Fit tem cinco unidades na cidade — três em Icaraí, uma no Ingá e uma no Fonseca —, e o Horto do Fonseca tem academias ao ar livre gratuitas.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades em Icaraí (Trade Center) e em outros bairros' },
-    { nome: 'Best Fitness e academias locais', detalhe: 'boa oferta em Icaraí e na Região Oceânica' },
-    { nome: 'Estúdios de funcional e crossfit', detalhe: 'atendem o público de alta renda da cidade' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Horto do Fonseca e nas orlas' },
+    { nome: 'Academias ao ar livre do Horto do Fonseca', detalhe: 'duas, gratuitas, uma delas para a terceira idade (Alameda São Boaventura, 770)' },
   ],
+  academiasVerificadasEm: '2026-10-26',
 
   destaquesFitness: [
     'Maior IDHM do estado do Rio (0,837), com infraestrutura de parques e academias.',

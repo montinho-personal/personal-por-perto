@@ -537,3 +537,25 @@ Saldo da leva: 8 entradas → 5 mantidas, 3 removidas, 4 detalhes corrigidos.
 | Academia ao ar livre do Parque do Ingá | **removida** — a página de turismo da Prefeitura dá 503; a ATI aparece só em trecho de busca e em diretórios. A menção saiu da descrição do parque, do destaque e da FAQ | — |
 
 Saldo da leva: 6 entradas → 3 mantidas, 3 removidas, 2 detalhes corrigidos. **Maringá ficou com 1 entrada** e Limeira com 2 — completar vira tarefa à parte (Parte A não cobre cidades já com academia). Se o Renato mandar print das páginas das prefeituras (Parque Cidade e Parque do Ingá), as duas academias ao ar livre voltam.
+
+### 26/10/2026 — leva 22
+
+**Niterói/RJ** (232 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit (Icaraí, Trade Center, e outros bairros) | confirmada sem mudança na lista; texto corrido passa a citar as 5 unidades | smartfit.com.br/academias/moreira-cesar (R. Cel. Moreira César, 26, Icaraí, "dentro do Trade Center Icaraí"), /joao-pessoa, /mariz-e-barros (Icaraí), /inga, /fonseca — todas `opened:true`, CEP 240xx |
+| Best Fitness e academias locais | **removida** — nenhuma Best Fitness em Niterói; parte genérica. Saiu também do texto do mercado e do campo `academias` | — |
+| Estúdios de funcional e crossfit | **removida** — genérica | — |
+| Academias ao ar livre (Horto do Fonseca e orlas) | confirmada só no Horto do Fonseca; detalhe corrigido. "Nas orlas" saiu (única fonte oficial é uma nota de 2015 sobre um aparelho na Boa Viagem); a menção na descrição da orla também saiu | niteroi.rj.gov.br/parques e seconser.niteroi.rj.gov.br: "duas academias (uma delas para a terceira idade)", Alameda São Boaventura, 770 |
+
+**Cuiabá/MT** (226 impr.) — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit (Goiabeiras, Jardim das Américas, CPA, Av. Rubens de Mendonça) | confirmada sem mudança | smartfit.com.br/academias/goiabeiras, /jardim-das-americas, /cpa-ii, /rubens-de-mendonca — `opened:true`, CEP 780xx (a do Várzea Grande Shopping é de Várzea Grande) |
+| Selfit | confirmada; detalhe ganha o número de unidades | sitemap oficial de selfitacademias.com.br: 8 unidades em Cuiabá (Cristo Rei e Hiper Center são de Várzea Grande) |
+| Programa Movimente-se | **removida** — nenhuma fonte oficial pública (Prefeitura, governo do MT, UFMT); os trechos de busca apontam para um programa da Unimed Cuiabá, cuja página não abriu. Saiu também do texto do mercado, do campo `academias` e dos destaques | — |
+| Academias ao ar livre do Mãe Bonifácia | confirmada; detalhe ganha o horário do parque | Câmara de Cuiabá ("cinco postos com equipamentos de ginástica") + SECOM-MT/Detran ("academia ao ar livre", aberto todos os dias das 6h às 18h) |
+
+Saldo da leva: 8 entradas → 5 mantidas, 3 removidas, 3 detalhes corrigidos.

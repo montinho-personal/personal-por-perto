@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Mato Grosso, Cuiabá é um dos principais polos do agronegócio do Centro-Oeste, com economia girando em torno de grãos (soja e milho), pecuária, comércio e serviços. Forma região metropolitana conurbada com Várzea Grande e recebe grande fluxo de pessoas ligadas ao agro, o que dá dinamismo ao comércio e aos serviços, incluindo o setor fitness.',
 
   mercado:
-    'A cidade tem boa oferta de academias (redes e nomes locais) e uma cultura de treino ativa apesar do calor, impulsionada por programas públicos gratuitos como o "Movimente-se", oferecidos em parques e na UFMT. Musculação e treino funcional são bastante populares.',
+    'A cidade tem boa oferta de academias (redes e nomes locais) e uma cultura de treino ativa apesar do calor, com o Parque Mãe Bonifácia como ponto de encontro. Musculação e treino funcional são bastante populares.',
 
   bairrosNobres: ['Goiabeiras', 'Jardim das Américas', 'Santa Marta', 'Bosque da Saúde'],
   bairrosPopulares: ['Quilombo', 'Araés', 'CPA', 'Nova Esperança'],
@@ -68,17 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Mesmo com o calor extremo, Cuiabá tem uma cultura de corrida forte, com provas tradicionais de grande porte. Programas públicos gratuitos incentivam a atividade física matinal nos parques, ampliando o acesso ao treino.',
   academias:
-    'A oferta de academias acompanha o porte da capital, com redes e nomes locais, complementada pelas aulas gratuitas do programa "Movimente-se" em parques e na universidade.',
+    'A oferta de academias acompanha o porte da capital, com redes como Smart Fit e Selfit e nomes locais, complementada pela academia ao ar livre do Parque Mãe Bonifácia.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades em Goiabeiras, no Jardim das Américas, no CPA e na Av. Rubens de Mendonça' },
-    { nome: 'Selfit', detalhe: 'rede de baixo custo com presença na capital' },
-    { nome: 'Programa Movimente-se', detalhe: 'aulas públicas gratuitas em parques e na UFMT' },
-    { nome: 'Academias ao ar livre do Mãe Bonifácia', detalhe: 'cinco postos gratuitos em meio às trilhas' },
+    { nome: 'Selfit', detalhe: 'rede de baixo custo, com oito unidades na capital' },
+    { nome: 'Academias ao ar livre do Mãe Bonifácia', detalhe: 'cinco postos gratuitos em meio às trilhas; parque aberto das 6h às 18h' },
   ],
+  academiasVerificadasEm: '2026-10-26',
 
   destaquesFitness: [
     'Parque Mãe Bonifácia: hub de corrida com mais de 5 km de trilhas e academia ao ar livre.',
-    'Programa público "Movimente-se" com aulas gratuitas em parques e na UFMT.',
     'Calor extremo concentra os treinos no início da manhã e à noite.',
     'Corrida de Reis, uma das maiores provas do Centro-Oeste (mais de 20 mil inscritos).',
   ],
@@ -120,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cuiabá', url: 'https://www.cuiaba.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-26',
   capaArte: {
     src: '/capas-cidade/cuiaba-mt.webp',
     w: 1200,
