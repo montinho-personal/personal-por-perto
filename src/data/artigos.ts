@@ -103,6 +103,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-tatuape/', titulo: 'Personal trainer no Tatuapé, em São Paulo' },
   { categoria: 'Bairros', url: '/personal-trainer-varzea-recife/', titulo: 'Personal trainer na Várzea, no Recife' },
   { categoria: 'Bairros', url: '/personal-trainer-cidade-nova-manaus/', titulo: 'Personal trainer na Cidade Nova, em Manaus' },
+  { categoria: 'Bairros', url: '/personal-trainer-messejana/', titulo: 'Personal trainer na Messejana, em Fortaleza' },
   { categoria: 'Bairros', url: '/personal-trainer-estreito/', titulo: 'Personal trainer no Estreito, em Florianópolis' },
   { categoria: 'Bairros', url: '/personal-trainer-taguatinga-sul/', titulo: 'Personal trainer em Taguatinga Sul' },
   { categoria: 'Bairros', url: '/personal-trainer-marco-belem/', titulo: 'Personal trainer no Marco, em Belém' },
