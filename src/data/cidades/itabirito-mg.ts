@@ -79,6 +79,11 @@ export const cidade: Cidade = {
     'A cultura esportiva local combina corridas de rua no Centro, como a meia-maratona municipal e etapas de circuitos regionais, com o crescente interesse por trilhas e corrida de montanha nas serras e cachoeiras do entorno, aproveitando a paisagem do Quadrilátero Ferrífero.',
   academias:
     'A oferta é formada por academias de bairro e estúdios de treino funcional concentrados no Centro e em bairros próximos, com porte compatível com uma cidade média do interior mineiro.',
+  academiasProximas: [
+    { nome: 'EmForma Academia — Unidade Vila', detalhe: 'na Rua Capitão Antônio Marques' },
+    { nome: 'Studio Duofit', detalhe: 'na Av. dos Inconfidentes, no Agostinho Rodrigues' },
+  ],
+  academiasVerificadasEm: '2026-10-26',
 
   destaquesFitness: [
     'Cidade do Quadrilátero Ferrífero, entre Belo Horizonte e Ouro Preto, com economia movida pela mineração de ferro.',
@@ -106,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itabirito', url: 'https://itabirito.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3203700' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-26',
 };

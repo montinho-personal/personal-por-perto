@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'As corridas de rua têm forte apelo comunitário e de saúde pública, e a cidade-polo da Serra Catarinense concentra eventos regionais.',
   academias:
     'A oferta reúne academias indoor e estúdios de musculação, com base de clientes regional ampla, complementada pelo Parque Jonas Ramos.',
+  academiasProximas: [
+    { nome: 'Hawk CT', detalhe: 'na Av. Brasil, no São Cristóvão' },
+  ],
+  academiasVerificadasEm: '2026-10-26',
 
   destaquesFitness: [
     'Treino indoor essencial no inverno serrano (geada, sincelo e neve ocasional).',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Lages', url: 'https://www.lages.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-26',
 };
