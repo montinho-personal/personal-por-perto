@@ -654,7 +654,7 @@ hipertrofia), já usados no portal.
 | Esteira ou bicicleta para emagrecer | `esteira-ou-bicicleta` | ✅ 2026-09-28 · recorte declarado |
 | Emagrecer na menopausa | `emagrecer-na-menopausa` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/emagrecer-na-menopausa.md` |
 | Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | ✅ 2026-10-22 · prints do Renato (sem autocompletar nem IA) · recorte em `docs/emagrecer-depois-dos-40.md` |
-| Termogênicos funcionam? | `termogenicos-funcionam` | 🔎 2026-10-26 · fontes em `docs/termogenicos-funcionam.md` · esperando prints |
+| Termogênicos funcionam? | `termogenicos-funcionam` | ✅ 2026-10-26 · publicado antes dos prints (pedido do Renato) · `docs/termogenicos-funcionam.md` |
 | Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/quanto-tempo-para-perder-10kg.md` |
 | Fome emocional | `fome-emocional` | |
 | Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | |

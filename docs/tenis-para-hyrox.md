@@ -5,7 +5,9 @@ Leva 3 do Hyrox (`docs/hyrox-oportunidades.md`, tema "tênis, roupa, mochila",
 Decisão de 23/10: só "o que a prova exige do tênis", **sem ranking de
 modelos** (nenhum foi testado).
 
-**Estado: fontes levantadas; título, H1, seções e FAQs esperam os prints.**
+**Estado: publicado em 26/10/2026 ANTES dos prints**, a pedido do Renato
+("pode colocar no ar e depois eu te mando tudo"). Quando os prints chegarem,
+revisar título, H1, seções e FAQs e registrar aqui o que mudou.
 
 ## Prints pedidos (26/10)
 

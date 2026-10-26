@@ -1,0 +1,461 @@
+---
+/**
+ * Termogênicos funcionam? — dono da pergunta do termogênico em si: se
+ * emagrece, quanto, o que tem dentro, riscos e o que a ANVISA diz.
+ * `suplementos-que-nao-funcionam` resume e linka para cá; `cafeina-pre-
+ * treino` fica com dose e horário para desempenho; `como-acelerar-o-
+ * metabolismo` com as alavancas que de fato mexem no gasto.
+ *
+ * Publicado em 26/10/2026 a pedido do Renato ANTES dos prints ("pode colocar
+ * no ar e depois eu te mando tudo"). Título, H1 e FAQs serão revistos pelos
+ * prints de "termogênico funciona", "termogênico emagrece" e "melhor
+ * termogênico" — registro em docs/termogenicos-funcionam.md.
+ *
+ * Fontes conferidas em 26/10/2026 (resumos no Europe PMC e gov.br/anvisa).
+ * Limites de cafeína da EFSA 2015 NÃO entram: site bloqueado aqui, sem
+ * segunda fonte oficial aberta.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/suplementos-que-nao-funcionam/',
+    titulo: 'Suplementos que não funcionam',
+    descricao: 'BCAA, glutamina, termogênicos e a lista curta do que tem evidência.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/como-acelerar-o-metabolismo/',
+    titulo: 'Como acelerar o metabolismo',
+    descricao: 'Massa muscular, NEAT e proteína: o que de fato mexe no gasto.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/cafeina-pre-treino/',
+    titulo: 'Cafeína no pré-treino',
+    descricao: 'Dose, horário e o que a cafeína faz pelo desempenho.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como calcular',
+    descricao: 'A conta do gasto e do corte, passo a passo, com exemplo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/termogenicos-funcionam';
+const atualizadoEm = '2026-10-26';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Termogênicos funcionam?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Termogênico funciona?',
+    resposta:
+      'Funciona pouco, e quase sempre por causa da cafeína. Num estudo clássico, 100 mg de cafeína a cada duas horas, ao longo de 12 horas, somaram cerca de 150 kcal ao gasto do dia em pessoas magras e 79 kcal em pessoas que já tinham tido obesidade. Os outros ingredientes comuns — chá verde, pimenta, sinefrina — têm efeito menor, incerto ou sem dado de emagrecimento.',
+  },
+  {
+    pergunta: 'Termogênico emagrece sozinho?',
+    resposta:
+      'Não. O efeito medido vai de dezenas a pouco mais de cem calorias por dia. Numa revisão de 21 estudos com suplementos "queimadores de gordura", o benefício foi limitado e menor que o do exercício ou da dieta com exercício. Quem emagrece tomando termogênico emagrece pelo déficit calórico que fez junto.',
+  },
+  {
+    pergunta: 'Chá verde emagrece?',
+    resposta:
+      'Muito pouco. Na revisão Cochrane sobre preparações de chá verde, a diferença de peso nos estudos feitos fora do Japão foi de 0,04 kg, sem importância clínica. Outra meta-análise encontrou cerca de 1,3 kg em média, mas quase nada em quem já consome bastante cafeína. O chá em infusão é em geral seguro; o extrato concentrado em cápsula é outra conversa.',
+  },
+  {
+    pergunta: 'Termogênico faz mal?',
+    resposta:
+      'Pode fazer, dependendo da fórmula e de quem toma. Extrato de chá verde em dose alta (800 mg de EGCG por dia ou mais, em suplemento) elevou marcadores de lesão no fígado, segundo a autoridade europeia de segurança alimentar. Fórmulas com muitos estimulantes somam cafeína de várias fontes. Quem tem pressão alta, arritmia, ansiedade, problema de tireoide, está grávida, amamentando ou toma remédio deve falar com o médico antes.',
+  },
+  {
+    pergunta: 'A ANVISA permite chamar suplemento de termogênico?',
+    resposta:
+      'Não como alegação livre. Para a ANVISA, "termogênico" é um termo genérico que não é regulamentado; só poderia aparecer no rótulo se a propriedade fosse comprovada e incluída na lista oficial de alegações. O mesmo vale para "queima de gordura" e "fat burner". Rótulo que promete emagrecimento está, no mínimo, fora da regra.',
+  },
+  {
+    pergunta: 'Qual o melhor termogênico?',
+    resposta:
+      'Não existe um que emagreça de forma relevante, então a pergunta útil é como evitar o pior. Prefira produto regularizado, com a quantidade de cafeína por dose escrita no rótulo, sem fórmula "proprietária" que esconde quanto tem de cada coisa, e desconfie de promessa de emagrecimento. Em agosto de 2026, a ANVISA proibiu um suplemento que tinha sibutramina, fluoxetina e furosemida sem declarar.',
+  },
+  {
+    pergunta: 'Cafeína pura funciona igual ao termogênico?',
+    resposta:
+      'Para o que a maioria dos termogênicos faz, sim: a cafeína é o ingrediente que explica quase todo o efeito, e café ou cafeína isolada custam uma fração do preço. O que ela faz bem é melhorar o desempenho no treino, com dose e horário certos. O que não faz é criar o déficit calórico por você.',
+  },
+  {
+    pergunta: 'Pimenta acelera o metabolismo?',
+    resposta:
+      'Um pouco. Numa meta-análise de 20 ensaios, a capsaicina e compostos parecidos aumentaram o gasto em cerca de 50 kcal por dia. Os autores dizem que isso poderia pesar ao longo de um ou dois anos, e que a pimenta "não é bala mágica".',
+  },
+  {
+    pergunta: 'Posso tomar termogênico antes do treino?',
+    resposta:
+      'Se o seu médico liberou, a parte que ajuda o treino é a cafeína, e ela funciona tomada cerca de uma hora antes. Não some com café, pré-treino e termogênico no mesmo dia sem saber o total de cafeína. Grávidas, lactantes e crianças não devem usar suplemento com cafeína — o aviso é obrigatório no rótulo.',
+  },
+];
+
+/* 56 caracteres. */
+const title = 'Termogênicos funcionam? O que a ciência e a ANVISA dizem';
+/* 151 caracteres. */
+const description =
+  'Termogênico emagrece? Quanto a cafeína, o chá verde e a pimenta mudam no gasto, os riscos, o que diz a ANVISA e o que olhar no rótulo antes de comprar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Termogênicos funcionam? Quanto emagrecem, os riscos e o que diz a ANVISA</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: funcionam pouco, e quase todo o efeito vem da
+      cafeína. O aumento de gasto medido nos estudos vai de cerca de 50 a 150
+      kcal por dia, conforme o ingrediente e a dose. Não é zero, mas é pequeno demais para emagrecer sem déficit
+      calórico.
+    </p>
+
+    <p class="lead">
+      Abaixo, ingrediente por ingrediente, o que os estudos mediram, o que
+      pode fazer mal, por que a ANVISA não reconhece a palavra "termogênico"
+      e o que olhar no rótulo.
+    </p>
+
+    <div class="prose">
+      <h2>O que é um termogênico</h2>
+      <p>
+        "Termogênico" é o nome comercial de suplementos que prometem aumentar
+        a produção de calor do corpo — e, com ela, o gasto de energia. Por
+        dentro, a maioria é uma combinação de estimulantes e extratos
+        vegetais: cafeína quase sempre, e muitas vezes chá verde, pimenta,
+        laranja-amarga (sinefrina), guaraná ou outras fontes de cafeína.
+      </p>
+      <p>
+        O nome promete mais do que entrega. Numa revisão sobre esses
+        "queimadores de gordura", só a cafeína e o chá verde tinham dados
+        mostrando algum efeito no uso de gordura pelo corpo; para os outros
+        ingredientes, faltava evidência — e a lista de produtos crescia mais
+        rápido que a ciência.
+      </p>
+
+      <h2>O que cada ingrediente faz, segundo os estudos</h2>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>Efeito medido dos ingredientes mais comuns dos termogênicos</caption>
+          <thead>
+            <tr><th scope="col">Ingrediente</th><th scope="col">O que os estudos mediram</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Cafeína</th><td>≈ 150 kcal a mais por dia em magros e 79 kcal em pós-obesos, com 100 mg a cada 2 horas por 12 horas</td></tr>
+            <tr><th scope="row">Chá verde (catequinas)</th><td>De 0,04 kg (revisão Cochrane, fora do Japão) a ≈ 1,3 kg em média (outra meta-análise)</td></tr>
+            <tr><th scope="row">Pimenta (capsaicina)</th><td>≈ 50 kcal a mais por dia</td></tr>
+            <tr><th scope="row">Laranja-amarga (sinefrina)</th><td>Sem dado confirmado de perda de peso</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        <strong>Cafeína.</strong> É o ingrediente com o efeito mais claro. Num
+        estudo clássico, uma dose de 100 mg subiu o metabolismo de repouso em
+        3% a 4% por cerca de duas horas e meia. Repetida a cada duas horas ao
+        longo de 12 horas, somou de 8% a 11% ao gasto do dia — e nada à noite.
+        No saldo, cerca de 150 kcal por dia em pessoas magras e 79 kcal em
+        pessoas que já tinham tido obesidade. Uma meta-análise de 13 ensaios
+        concluiu que a cafeína "pode favorecer" a perda de peso, com resultados
+        muito diferentes entre os estudos.
+      </p>
+      <p>
+        <strong>Chá verde.</strong> Na revisão Cochrane, nos estudos feitos
+        fora do Japão a diferença de peso foi de 0,04 kg — sem importância
+        clínica — e não houve efeito em manter o peso perdido. Outra
+        meta-análise chegou a cerca de 1,3 kg em média, mas só 0,27 kg em quem
+        já consumia mais de 300 mg de cafeína por dia, que é o caso de muita
+        gente que toma café.
+      </p>
+      <p>
+        <strong>Pimenta.</strong> Numa meta-análise de 20 ensaios, a capsaicina
+        e compostos parecidos aumentaram o gasto em cerca de 50 kcal por dia.
+        Os autores escrevem que isso poderia pesar ao longo de um ou dois anos
+        e que não é "bala mágica".
+      </p>
+      <p>
+        <strong>Sinefrina.</strong> Os estudos em doses comuns não encontraram
+        efeito no coração ou na pressão, mas quase toda essa evidência vem do
+        mesmo grupo de pesquisadores — e não encontramos dado confirmado de que
+        ela faça perder peso.
+      </p>
+
+      <h2>Termogênico emagrece?</h2>
+      <p>
+        Sozinho, não de forma que a balança mostre. Numa revisão de 21 estudos
+        com suplementos de emagrecimento, de pelo menos oito semanas, o
+        benefício foi limitado e menor que o do exercício ou da dieta com
+        exercício.
+      </p>
+      <p>
+        A conta explica por quê. Um déficit que emagrece de forma perceptível
+        fica em centenas de calorias por dia; o termogênico, no melhor cenário,
+        mexe em dezenas, e boa parte das pessoas já toma café. O que define o
+        resultado é a diferença entre o que você come e o que você gasta — e
+        o maior pedaço do gasto é o metabolismo de repouso e o movimento do dia.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Para ver o tamanho dessas 50 a 150 kcal, compare com o seu gasto do dia inteiro. A calculadora estima quanto você gasta por dia pela sua idade, peso, altura e rotina — é dali que sai o déficit que emagrece."
+        acao="Calcular o meu gasto diário"
+      />
+
+      <p>
+        Se a ideia é acelerar o metabolismo, as alavancas que funcionam são
+        outras — massa muscular, movimento fora do treino e proteína —, como
+        mostra o guia{' '}
+        <a href="/emagrecimento/como-acelerar-o-metabolismo/">como acelerar o
+        metabolismo</a>.
+      </p>
+
+      <h2>Termogênico faz mal?</h2>
+      <p>
+        Pode fazer, e o risco depende da fórmula e de quem toma:
+      </p>
+      <ul>
+        <li>
+          <strong>Extrato de chá verde em dose alta.</strong> A autoridade
+          europeia de segurança alimentar (EFSA) concluiu que 800 mg ou mais de
+          EGCG por dia, em suplemento, elevaram marcadores de lesão no fígado.
+          O chá em infusão é considerado em geral seguro.
+        </li>
+        <li>
+          <strong>Cafeína somada.</strong> Fórmulas com café, guaraná, chá e
+          cafeína isolada juntam estimulante de várias fontes — e quem toma
+          café e pré-treino no mesmo dia soma mais. Insônia, ansiedade,
+          palpitação e pressão alta são os efeitos mais conhecidos.
+        </li>
+        <li>
+          <strong>Produto irregular.</strong> O DMAA, estimulante já vendido em
+          termogênicos, é de uso proibido no Brasil. E, em agosto de 2026, a
+          ANVISA proibiu um suplemento em que a análise encontrou sibutramina,
+          fluoxetina e furosemida sem constar no rótulo.
+        </li>
+      </ul>
+      <p>
+        Quem tem pressão alta, arritmia, ansiedade, problema de tireoide ou de
+        fígado, usa remédio de uso contínuo, está grávida ou amamentando deve
+        conversar com o médico antes de tomar qualquer termogênico. O próprio
+        rótulo de suplemento com cafeína tem de avisar que não deve ser
+        consumido por gestantes, lactantes e crianças.
+      </p>
+
+      <h2>O que diz a ANVISA</h2>
+      <p>
+        No documento oficial de perguntas e respostas sobre suplementos, a
+        ANVISA diz que "termogênico" é um termo genérico, que não é
+        regulamentado na legislação de alimentos. Ele só poderia aparecer no
+        rótulo se a propriedade fosse comprovada e incluída na lista oficial
+        de alegações permitidas. O mesmo vale para "queima de gordura" e "fat
+        burner".
+      </p>
+      <p>
+        Na prática: um rótulo que promete emagrecer, secar ou queimar gordura
+        está fora da regra. Suplemento alimentar não pode sugerir finalidade de
+        remédio.
+      </p>
+
+      <h2>Se mesmo assim for comprar: o que olhar no rótulo</h2>
+      <ul>
+        <li>
+          <strong>Quantidade de cafeína por dose, escrita.</strong> Fórmula
+          "proprietária", que lista ingredientes sem dizer quanto tem de cada
+          um, não deixa você saber o que está tomando.
+        </li>
+        <li>
+          <strong>Promessa de emagrecimento.</strong> É sinal de produto fora da
+          regra — e de que o resto do rótulo também pode não ser confiável.
+        </li>
+        <li>
+          <strong>Produto regularizado e loja conhecida.</strong> Suplemento
+          adulterado com remédio, como o proibido pela ANVISA em 2026, não
+          avisa no rótulo.
+        </li>
+        <li>
+          <strong>O total do dia.</strong> Some o café, o pré-treino e o
+          termogênico antes de decidir a dose.
+        </li>
+      </ul>
+      <p>
+        A parte que ajuda o treino é a cafeína, e para isso café ou cafeína
+        isolada fazem o mesmo por uma fração do preço — a dose e o horário
+        estão no guia sobre{' '}
+        <a href="/musculacao/cafeina-pre-treino/">cafeína no pré-treino</a>.
+        Outros suplementos com pouca evidência estão em{' '}
+        <a href="/musculacao/suplementos-que-nao-funcionam/">suplementos que
+        não funcionam</a>.
+      </p>
+
+      <h2>O que funciona no lugar do termogênico</h2>
+      <p>
+        Um <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a> que você consiga manter, proteína suficiente, musculação
+        para que o peso perdido seja gordura e não músculo, e mais movimento
+        no dia. Nada disso vem em cápsula, e é por isso que funciona. O ajuste
+        da alimentação e de qualquer suplemento à sua saúde é trabalho de
+        nutricionista; quem tem alguma condição de saúde deve passar antes pelo
+        médico.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        O termogênico costuma aparecer quando o resultado demora. Um
+        profissional de Educação Física ajuda justamente aí: monta o treino que
+        cabe na sua semana, acompanha o que está travando e mantém o plano de
+        pé nas semanas ruins — que são as que decidem o resultado.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/2912010/" target="_blank" rel="noopener noreferrer">Dulloo AG, Geissler CA, Horton T, et al. Normal caffeine consumption: influence on thermogenesis and daily energy expenditure in lean and postobese human volunteers. American Journal of Clinical Nutrition, 1989</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/30335479/" target="_blank" rel="noopener noreferrer">Tabrizi R, Saneei P, Lankarani KB, et al. The effects of caffeine intake on weight loss: a systematic review and dose-response meta-analysis of randomized controlled trials. Critical Reviews in Food Science and Nutrition, 2019</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/23235664/" target="_blank" rel="noopener noreferrer">Jurgens TM, Whelan AM, Killian L, et al. Green tea for weight loss and weight maintenance in overweight or obese adults. Cochrane Database of Systematic Reviews, 2012</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/19597519/" target="_blank" rel="noopener noreferrer">Hursel R, Viechtbauer W, Westerterp-Plantenga MS. The effects of green tea on weight loss and weight maintenance: a meta-analysis. International Journal of Obesity, 2009</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/22634197/" target="_blank" rel="noopener noreferrer">Whiting S, Derbyshire E, Tiwari BK. Capsaicinoids and capsinoids. A potential role for weight management? A systematic review of the evidence. Appetite, 2012</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/28752649/" target="_blank" rel="noopener noreferrer">Stohs SJ. Safety, efficacy, and mechanistic studies regarding Citrus aurantium (bitter orange) extract and p-synephrine. Phytotherapy Research, 2017</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/21951331/" target="_blank" rel="noopener noreferrer">Jeukendrup AE, Randell R. Fat burners: nutrition supplements that increase fat metabolism. Obesity Reviews, 2011</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33427571/" target="_blank" rel="noopener noreferrer">Clark JE, Welch S. Comparing effectiveness of fat burners and thermogenic supplements to diet and exercise for weight loss and cardiometabolic health: systematic review and meta-analysis. Nutrition and Health, 2021</a>
+        </li>
+        <li>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/32625874/" target="_blank" rel="noopener noreferrer">EFSA Panel on Food Additives and Nutrient Sources added to Food. Scientific opinion on the safety of green tea catechins. EFSA Journal, 2018</a>
+        </li>
+        <li>
+          <a href="https://www.gov.br/anvisa/pt-br/centraisdeconteudo/publicacoes/alimentos/perguntas-e-respostas-arquivos/suplementos-alimentares.pdf/@@download/file" target="_blank" rel="noopener noreferrer">ANVISA. Perguntas e Respostas — Suplementos Alimentares, 9ª edição, 2025</a>
+        </li>
+        <li>
+          <a href="https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/controlados/RDC9992025.pdf/@@display-file/file" target="_blank" rel="noopener noreferrer">ANVISA. RDC nº 999/2025 — atualização das listas de substâncias controladas (DMAA na lista de uso proscrito)</a>
+        </li>
+        <li>
+          <a href="https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2026/anvisa-proibe-suplementos-irregulares-e-medicamento-falsificado" target="_blank" rel="noopener noreferrer">ANVISA. Anvisa proíbe suplementos irregulares e medicamento falsificado, 17/08/2026</a>
+        </li>
+        <li>Conferidas em 26/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre termogênicos" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

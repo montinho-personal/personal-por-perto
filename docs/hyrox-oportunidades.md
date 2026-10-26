@@ -123,8 +123,8 @@ personal) × o que dá para afirmar com fonte.
 - 24/10: leva 2 começou — `/guias/treino-hyrox/`. Falta a calculadora de
   tempo de prova (prints de "tempo hyrox").
 
-- 26/10: tênis para Hyrox — fontes levantadas em `docs/tenis-para-hyrox.md`;
-  texto espera os prints de "tênis para hyrox".
+- 26/10: leva 3 começou — `/guias/tenis-para-hyrox/`, publicado antes dos
+  prints a pedido do Renato (`docs/tenis-para-hyrox.md`).
 
 ## Ritmo
 

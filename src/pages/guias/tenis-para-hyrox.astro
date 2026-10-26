@@ -1,0 +1,407 @@
+---
+/**
+ * Tênis para Hyrox — leva 3 da família Hyrox (docs/hyrox-oportunidades.md).
+ *
+ * Decisão do Renato (23/10/2026): só "o que a prova exige do tênis", SEM
+ * ranking de modelos — nenhum foi testado. A busca "melhor tênis" recebe o
+ * critério, não um produto.
+ *
+ * Publicado em 26/10/2026 ANTES dos prints ("pode colocar no ar e depois eu
+ * te mando tudo"). Título, H1 e FAQs serão revistos pelos prints de "tênis
+ * para hyrox", "tênis hyrox" e "melhor tênis para hyrox" — registro em
+ * docs/tenis-para-hyrox.md. Regras de calçado do rulebook e o papel da PUMA
+ * NÃO entram: o PDF oficial e as notícias estão bloqueados aqui.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { whatsappUrl } from '../../lib/links';
+
+const publicadoEm = '2026-10-26';
+const atualizadoEm = '2026-10-26';
+const path = '/guias/tenis-para-hyrox';
+
+const HYROX_PROVA = 'https://hyrox.com/the-fitness-race/';
+const NIGG = 'https://pubmed.ncbi.nlm.nih.gov/26221015/';
+const MALISOUX_2020 = 'https://pubmed.ncbi.nlm.nih.gov/31877062/';
+const HOOGKAMER = 'https://pubmed.ncbi.nlm.nih.gov/29143929/';
+const KETTNER = 'https://pubmed.ncbi.nlm.nih.gov/40059889/';
+const SATO = 'https://pubmed.ncbi.nlm.nih.gov/22201687/';
+const PANGAN = 'https://pubmed.ncbi.nlm.nih.gov/33844006/';
+const GUAIGUA = 'https://pubmed.ncbi.nlm.nih.gov/42451524/';
+const CHAMBON = 'https://pubmed.ncbi.nlm.nih.gov/24576090/';
+const ESCAMILLA = 'https://pubmed.ncbi.nlm.nih.gov/32151033/';
+const MALISOUX_2015 = 'https://pubmed.ncbi.nlm.nih.gov/24286345/';
+const CHITTENDEN = 'https://pubmed.ncbi.nlm.nih.gov/42780891/';
+
+const whatsHyrox = whatsappUrl(
+  'Oi, Montinho! Vim pelo artigo de tênis para Hyrox do Personal por Perto e queria saber sobre a preparação para a prova.',
+);
+
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Tênis para Hyrox', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Qual o melhor tênis para Hyrox?',
+    resposta:
+      'Não existe um modelo certo para todo mundo, e este guia não faz ranking porque nenhum foi testado aqui. O melhor tênis para você é o que junta quatro coisas: aderência para empurrar e puxar o trenó, base estável para o afundo e o carregamento, amortecimento suficiente para 8 km de corrida e conforto que você já confirmou no treino.',
+  },
+  {
+    pergunta: 'Precisa de tênis específico para Hyrox?',
+    resposta:
+      'Não. A prova é 8 vezes 1 km de corrida com uma estação depois de cada quilômetro, e um bom tênis de corrida ou de treino resolve para a maioria das pessoas. A única recomendação de calçado na página oficial da prova é usar um tênis com aderência para o sled push.',
+  },
+  {
+    pergunta: 'Posso correr o Hyrox com tênis de corrida comum?',
+    resposta:
+      'Pode, e muita gente faz isso. O cuidado é com o solado: tênis muito alto e macio ajuda na corrida, mas tende a deixar o pé menos estável no afundo com saco de areia, no carregamento e no trenó. Faça um treino com as estações usando o mesmo tênis antes de decidir.',
+  },
+  {
+    pergunta: 'Tênis com placa de carbono serve para Hyrox?',
+    resposta:
+      'Para a parte da corrida, a tecnologia funciona: num estudo, um protótipo com placa e espuma nova reduziu em cerca de 4% o gasto de energia de corredores de alto nível. Mas esse estudo foi em corrida em linha reta, e os tênis desse tipo costumam ter o solado alto. Num estudo em esteira, o solado de 50 mm deixou o quadril menos estável que o de 27 mm. Não há estudo do Hyrox nem de exercício com carga com esses tênis.',
+  },
+  {
+    pergunta: 'Tênis duro ou macio para Hyrox?',
+    resposta:
+      'Para a corrida, extremos não ajudam. Num ensaio com 848 corredores, o tênis mais duro teve mais lesões que o mais macio, sobretudo entre os corredores mais leves. Para as estações, o que pesa é estabilidade e aderência. Um meio-termo que você já usou em treino costuma ser a escolha mais segura.',
+  },
+  {
+    pergunta: 'Posso estrear tênis novo no dia da prova?',
+    resposta:
+      'Não é uma boa ideia. Uma revisão sobre calçado e lesões aponta o conforto que você sente como um bom critério de escolha, e isso só se confirma usando. Treine com o tênis da prova — corrida e estações — algumas vezes antes. O guia de treino de Hyrox vale a mesma regra para luva, roupa e alimentação: nada novo no dia.',
+  },
+  {
+    pergunta: 'Quando trocar o tênis?',
+    resposta:
+      'Não há um número oficial de quilômetros. O que os estudos mostram é que o amortecimento muda com o uso: num teste que simulou 660 km, o calcanhar do tênis ficou mais duro; em outro, a pressão no meio do pé subiu de cerca de 388 para 590 kPa entre o tênis novo e o tênis com 700 km. Se o tênis já está duro ou deformado, ou se apareceu desconforto novo, é hora de trocar.',
+  },
+  {
+    pergunta: 'Ter dois tênis e alternar ajuda?',
+    resposta:
+      'Num acompanhamento de 264 corredores por 22 semanas, quem alternava mais de um par de tênis teve menos lesões. Para quem treina para o Hyrox, isso pode significar um tênis para os treinos longos de corrida e outro para os dias de força e estações.',
+  },
+  {
+    pergunta: 'Tênis de musculação ou de cross training serve para o Hyrox?',
+    resposta:
+      'Para as estações, ajuda: são tênis mais baixos e firmes, que dão base no afundo e no trenó. Em estudos de agachamento, o tipo de calçado mudou o ângulo do pé e a inclinação do tronco. O ponto fraco é a corrida: 8 km com um tênis muito firme pesam mais nas pernas. O tênis de treino misto fica entre os dois — e é o que vale testar primeiro se você não quer trocar de par no meio da preparação.',
+  },
+];
+
+const title = 'Tênis para Hyrox: O Que a Prova Exige e Como Escolher';
+const description =
+  'Tênis para Hyrox: o que a corrida, o trenó, o afundo e o wall ball pedem do calçado, se vale placa de carbono, tênis duro ou macio e quando trocar.';
+
+const relacionados = [
+  {
+    url: '/guias/treino-hyrox/',
+    titulo: 'Treino de Hyrox',
+    descricao: 'Corrida, força e treinos combinados: como a semana se organiza.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/o-que-e-hyrox/',
+    titulo: 'O que é Hyrox',
+    descricao: 'As 8 estações, os pesos de cada categoria, quanto tempo dura e quanto custa.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/hyrox-vs-crossfit/',
+    titulo: 'Hyrox vs CrossFit',
+    descricao: 'As diferenças de formato, de treino e de corpo, e como escolher.',
+    tipo: 'Guia',
+  },
+];
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Hyrox</p>
+    <h1>Tênis para Hyrox: o que a prova exige do tênis e como escolher o seu</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O Hyrox pede um tênis que faça duas coisas que puxam para lados
+      opostos: <strong>correr 8 km</strong> com conforto e <strong>dar base
+      firme</strong> para empurrar trenó, fazer afundo com carga e carregar
+      peso. Não existe um modelo certo para todo mundo — e este guia não faz
+      ranking, porque nenhum tênis foi testado aqui. O que ele faz é mostrar o
+      que cada parte da prova exige, para você escolher o seu.
+    </p>
+
+    <div class="prose">
+      <h2>O que a prova pede do tênis</h2>
+      <p>
+        A prova é 8 vezes 1 km de corrida, com uma estação depois de cada
+        quilômetro, num pavilhão fechado. Cada estação cobra uma coisa
+        diferente do calçado:
+      </p>
+
+      <div class="tabela-wrap">
+        <table>
+          <caption>As 8 estações do Hyrox e o que cada uma pede do tênis</caption>
+          <thead>
+            <tr><th scope="col">Estação</th><th scope="col">O que pede do tênis</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Corrida (8 × 1 km)</th><td>Amortecimento e conforto para o volume</td></tr>
+            <tr><th scope="row">SkiErg (1.000 m)</th><td>Base estável em pé, pouca exigência</td></tr>
+            <tr><th scope="row">Sled push (50 m)</th><td>Aderência para empurrar sem o pé escorregar</td></tr>
+            <tr><th scope="row">Sled pull (50 m)</th><td>Aderência e base para puxar recuando</td></tr>
+            <tr><th scope="row">Burpee broad jump (80 m)</th><td>Firmeza para saltar e aterrissar várias vezes</td></tr>
+            <tr><th scope="row">Remo (1.000 m)</th><td>Pouca exigência — o pé fica preso na pedaleira</td></tr>
+            <tr><th scope="row">Farmers carry (200 m)</th><td>Estabilidade andando com peso nas mãos</td></tr>
+            <tr><th scope="row">Sandbag lunges (100 m)</th><td>Estabilidade de um pé só, com carga</td></tr>
+            <tr><th scope="row">Wall balls (100 repetições)</th><td>Base para agachar e empurrar a bola</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        A única recomendação de calçado na página oficial da prova está no sled
+        push: testar a estação pelo menos uma vez antes e investir num tênis
+        com aderência. As cargas de cada categoria estão em{' '}
+        <a href="/guias/o-que-e-hyrox/">o que é Hyrox</a>.
+      </p>
+
+      <h2>A corrida: amortecimento e conforto</h2>
+      <p>
+        A corrida ocupa a maior parte do tempo da prova, e é o que mais pesa no
+        resultado. Para escolher o tênis dessa parte, uma das ideias mais
+        aceitas hoje é usar o conforto como filtro: numa revisão de 2015, os
+        autores concluíram que a força de impacto e a pronação não preveem
+        lesão de forma conclusiva, e propuseram que o corredor escolha pelo
+        conforto que sente — o tênis confortável tende a respeitar o movimento
+        natural de cada um.
+      </p>
+      <p>
+        O amortecimento também conta. Num ensaio com 848 corredores amadores
+        acompanhados por seis meses, quem correu com o tênis mais duro teve mais
+        lesões que quem correu com o mais macio — o efeito apareceu sobretudo
+        nos corredores mais leves, e não ficou claro nos mais pesados.
+      </p>
+
+      <FerramentaInline
+        id="hyrox"
+        texto="Quanto da prova é corrida e quanto é estação muda a prioridade do tênis. A calculadora de calorias do Hyrox separa a corrida das estações pelo seu tempo e pace — dá para ver onde vai a maior parte do esforço."
+        acao="Ver corrida e estações separadas"
+      />
+
+      <h2>As estações: aderência e base firme</h2>
+      <p>
+        No trenó, o pé precisa empurrar o chão sem escorregar: é aí que a
+        aderência da sola aparece. No afundo com saco de areia, no carregamento
+        com kettlebells e no wall ball, o que conta é a base — um solado que não
+        afunde nem incline quando a carga desce.
+      </p>
+      <p>
+        O tipo de calçado muda o movimento. Em estudos de agachamento, tênis de
+        levantamento de peso mudaram o ângulo do pé e deixaram o tronco mais em
+        pé do que tênis de corrida. Num estudo pequeno, com oito pessoas, o
+        calçado mexeu mais na estabilidade do agachamento de uma perna só — o
+        movimento mais parecido com o afundo — do que no agachamento com as duas
+        pernas. É um indício, não uma regra, mas aponta para onde o tênis muito
+        macio cobra mais caro.
+      </p>
+
+      <h2>Placa de carbono e solado alto: vale para o Hyrox?</h2>
+      <p>
+        Para correr, a tecnologia funciona. Num estudo com 18 corredores de alto
+        nível, um protótipo com placa de carbono e espuma nova reduziu em cerca
+        de 4% o gasto de energia na corrida, em comparação com tênis de prova
+        tradicionais.
+      </p>
+      <p>
+        O problema é o resto da prova. Esses tênis costumam ter o solado alto, e
+        num estudo em esteira o solado de 50 mm deixou o quadril menos estável
+        que o de 27 mm. Isso foi medido em corrida em linha reta; não há estudo
+        com trenó, afundo ou carregamento usando esses tênis. Quem pensa em usar
+        um na prova deveria antes testá-lo num treino com as estações.
+      </p>
+
+      <h2>Tênis de corrida, de treino ou de musculação?</h2>
+      <ul>
+        <li>
+          <strong>Tênis de corrida</strong> — melhor para os 8 km, mais frágil
+          nas estações quando é muito alto e macio.
+        </li>
+        <li>
+          <strong>Tênis de musculação ou de cross training</strong> — melhor
+          base para trenó, afundo e wall ball, mais duro para correr 8 km.
+        </li>
+        <li>
+          <strong>Tênis de treino misto</strong> — o meio-termo entre os dois. Vale conferir se o amortecimento dá conta do seu
+          volume de corrida.
+        </li>
+      </ul>
+      <p>
+        Quem vem da corrida tende a sentir falta de base nas estações; quem vem
+        da musculação ou do CrossFit, de amortecimento na corrida. A comparação
+        entre as duas modalidades está em{' '}
+        <a href="/guias/hyrox-vs-crossfit/">Hyrox vs CrossFit</a>.
+      </p>
+
+      <h2>Teste antes da prova e saiba quando trocar</h2>
+      <p>
+        Tênis da prova é tênis de treino. Use o par escolhido em sessões que
+        juntem corrida e estações antes do dia — o conforto que serve de
+        critério só se confirma usando. Na semana da prova, nada novo, como diz
+        o <a href="/guias/treino-hyrox/">guia de treino de Hyrox</a>.
+      </p>
+      <p>
+        O tênis também envelhece. Num teste que simulou 660 km de uso, o
+        calcanhar ficou mais duro e absorveu menos impacto; num acompanhamento
+        de corredores, a pressão no meio do pé subiu de cerca de 388 para 590
+        kPa entre o tênis novo e o tênis com 700 km. Não há número oficial de
+        quilômetros para trocar: tênis duro, deformado ou que passou a
+        incomodar é sinal de que chegou a hora. E alternar pares ajuda — num
+        estudo com 264 corredores, quem usava mais de um tênis teve menos
+        lesões.
+      </p>
+      <p>
+        Dor que aparece ou piora com o treino não se resolve só trocando de
+        tênis. No acompanhamento de atletas de Hyrox publicado até aqui, a
+        maioria das lesões foi por sobrecarga, com o joelho à frente. Se a dor
+        persistir, procure um médico ou fisioterapeuta.
+      </p>
+
+      <h2>Preparação para o Hyrox com o Montinho</h2>
+      <p>
+        O Montinho Personal, que assina o conteúdo do portal, prepara alunos
+        para o Hyrox: presencial na região de Alphaville e Barueri, e online
+        para todo o Brasil. O treino junta corrida, força para as estações e
+        sessões que combinam as duas — e é nele que você testa o tênis, a luva
+        e o ritmo antes da prova.
+      </p>
+      <p>
+        <a class="hx-cta" href={whatsHyrox} target="_blank" rel="noopener" data-track="hyrox:cta-whatsapp">
+          Falar com o Montinho sobre treino para o Hyrox
+        </a>
+      </p>
+
+      <h2>Fontes</h2>
+      <ul class="small">
+        <li><a href={HYROX_PROVA} target="_blank" rel="noopener">Hyrox — The Fitness Race</a>: formato, estações, distâncias e a recomendação de tênis com aderência no sled push.</li>
+        <li><a href={NIGG} target="_blank" rel="noopener">Nigg et al., 2015, British Journal of Sports Medicine</a>: tênis e lesões de corrida; o conforto como filtro.</li>
+        <li><a href={MALISOUX_2020} target="_blank" rel="noopener">Malisoux et al., 2020, American Journal of Sports Medicine</a>: amortecimento e risco de lesão em 848 corredores.</li>
+        <li><a href={HOOGKAMER} target="_blank" rel="noopener">Hoogkamer et al., 2018, Sports Medicine</a>: gasto energético da corrida com tênis de prova.</li>
+        <li><a href={KETTNER} target="_blank" rel="noopener">Kettner et al., 2025, Frontiers in Bioengineering and Biotechnology</a>: altura do solado e estabilidade na corrida.</li>
+        <li><a href={SATO} target="_blank" rel="noopener">Sato et al., 2012, Journal of Strength and Conditioning Research</a>: tênis de levantamento × de corrida no agachamento.</li>
+        <li><a href={PANGAN} target="_blank" rel="noopener">Pangan e Leineweber, 2021, Journal of Biomechanical Engineering</a>: revisão sobre calçado e agachamento.</li>
+        <li><a href={GUAIGUA} target="_blank" rel="noopener">Guaigua-Moyolema et al., 2026, Sensors</a>: calçado e estabilidade no agachamento de uma e de duas pernas.</li>
+        <li><a href={CHAMBON} target="_blank" rel="noopener">Chambon et al., 2014, Journal of Sports Sciences</a>: envelhecimento do tênis de corrida.</li>
+        <li><a href={ESCAMILLA} target="_blank" rel="noopener">Escamilla-Martínez et al., 2020, IJERPH</a>: pressão plantar com o desgaste do tênis.</li>
+        <li><a href={MALISOUX_2015} target="_blank" rel="noopener">Malisoux et al., 2015, Scandinavian Journal of Medicine &amp; Science in Sports</a>: alternar tênis e risco de lesão.</li>
+        <li><a href={CHITTENDEN} target="_blank" rel="noopener">Chittenden et al., 2026, Frontiers in Sports and Active Living</a>: lesões em 89 atletas de Hyrox por 12 semanas.</li>
+        <li>Conferidas em 26/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre tênis para Hyrox" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+  .tabela-wrap {
+    overflow-x: auto;
+    margin-block: var(--sp-4);
+  }
+  .tabela-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+  }
+  .tabela-wrap caption {
+    text-align: left;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-2);
+  }
+  .tabela-wrap th,
+  .tabela-wrap td {
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line, #ddd);
+    text-align: left;
+  }
+  .hx-cta {
+    display: inline-block;
+    padding: 0.7rem 1.1rem;
+    border-radius: var(--radius);
+    background: var(--brand-600);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .hx-cta:hover { background: var(--brand-700); text-decoration: none; }
+  .hx-cta:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>

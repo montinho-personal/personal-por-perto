@@ -205,3 +205,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 23/10 — `/guias/o-que-e-hyrox/` — artigo novo: bloco hyrox depois da tabela das estações — "quanto da prova é corrida?"
 - 23/10 — `/guias/hyrox-vs-crossfit/` — artigo novo: bloco crossfit depois de "o Hyrox é cardio?" — "qual gasta mais?"
 - 24/10 — `/guias/treino-hyrox/` — artigo novo: bloco calculadora-de-pace depois de "o que mais decide o seu tempo" — "qual ritmo a minha meta exige?"
+- 26/10 — `/emagrecimento/termogenicos-funcionam/` — artigo novo: bloco gasto-calorico-diario depois de "termogênico emagrece?" — "o tamanho dessas 50 a 150 kcal perto do meu gasto do dia"
+- 26/10 — `/guias/tenis-para-hyrox/` — artigo novo: bloco hyrox depois da corrida — "quanto da prova é corrida e quanto é estação?"
