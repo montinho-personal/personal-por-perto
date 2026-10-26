@@ -215,3 +215,21 @@ três caminhos possíveis, e nenhum deles é "melhorar o título":
   página já ganha.
 
 A escolha entre os três é decisão do Renato, não do relatório.
+
+## 26/10/2026 — duas cidades novas a pedido do Renato
+
+A lista da seção 2 estava incompleta: cruzando a tabela 4709 do SIDRA
+(Censo 2022, agora acessível) com `src/data/cidades/`, faltavam 23
+municípios acima de 60 mil habitantes — os maiores, Moju/PA (84 mil),
+Canaã dos Carajás/PA (77 mil), Biguaçu/SC (76,8 mil), Cruzeiro/SP (75
+mil), Santo Antônio do Descoberto/GO e Goianira/GO (72 mil). Nenhum deles
+aparece nas consultas do GSC de 90 dias.
+
+Critério da escolha, já que não há demanda medida: vizinhança de capital
+que rende no GSC. Entraram **Goianira/GO** (Grande Goiânia; Goiânia com
+517 impressões em 28 dias) e **Biguaçu/SC** (Núcleo Metropolitano da
+Grande Florianópolis; Florianópolis com 387). Fatos só de IBGE,
+Prefeitura, ALESC, INMET e academias em duas fontes; sem capa, sem
+corridas e sem classificação de bairros (nada disso tinha fonte). Ler as
+duas no próximo relatório: se ficarem sem impressão em 60 dias, a aposta de
+vizinhança não se sustenta e a fila volta para a demanda medida.
