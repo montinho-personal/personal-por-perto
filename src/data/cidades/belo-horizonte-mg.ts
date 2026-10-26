@@ -141,5 +141,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Belo Horizonte: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-10-26',
 };

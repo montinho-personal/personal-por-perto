@@ -130,5 +130,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mossoró', url: 'https://www.prefeiturademossoro.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-10-26',
 };

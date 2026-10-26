@@ -133,5 +133,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Sorocaba: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
   academiasVerificadasEm: '2026-10-21',
-  atualizadoEm: '2026-10-21',
+  atualizadoEm: '2026-10-26',
 };

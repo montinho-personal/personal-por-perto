@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Boa Vista', url: 'https://www.boavista.rr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-10-26',
   capaArte: {
     src: '/capas-cidade/boa-vista-rr.webp',
     w: 1200,

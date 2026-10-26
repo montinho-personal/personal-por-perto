@@ -106,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio das Ostras', url: 'https://www.riodasostras.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-14',
+  atualizadoEm: '2026-10-26',
 };

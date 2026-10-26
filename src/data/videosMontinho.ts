@@ -157,4 +157,9 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   // leva 1 — 22/10/2026
   'joao-pessoa-pb', 'salvador-ba', 'brasilia-df', 'porto-alegre-rs', 'teresina-pi',
   'sao-paulo-sp', 'goiania-go', 'rio-de-janeiro-rj', 'florianopolis-sc', 'uberlandia-mg',
+  // leva 2 — 26/10/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 1 conferida no ar)
+  'curitiba-pr', 'belem-pa', 'joinville-sc', 'manaus-am', 'londrina-pr',
+  'belo-horizonte-mg', 'recife-pe', 'taguatinga-df', 'fortaleza-ce', 'maceio-al',
+  'bauru-sp', 'mossoro-rn', 'sorocaba-sp', 'cabo-frio-rj', 'niteroi-rj',
+  'sobral-ce', 'rio-das-ostras-rj', 'juiz-de-fora-mg', 'aracaju-se', 'boa-vista-rr',
 ]);

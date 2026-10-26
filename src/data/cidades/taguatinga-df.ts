@@ -125,5 +125,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/wp-content/uploads/2022/05/Taguatinga.pdf',
     },
   ],
-  atualizadoEm: '2026-10-05',
+  atualizadoEm: '2026-10-26',
 };
