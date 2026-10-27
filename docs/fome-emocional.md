@@ -25,3 +25,27 @@ emocional" e "comer por ansiedade".
 Sem promessa de cura; ansiedade, compulsão e sofrimento → psicólogo,
 psiquiatra ou médico. Nutricionista para o plano alimentar. Sem "teste"
 que pareça diagnóstico.
+
+## AnswerThePublic de "fome emocional" (27/10/2026)
+
+Arquivos em `docs/pesquisas/2026-10-27-fome-emocional/answerthepublic/`.
+198 sugestões no Google, ~2,4 mil buscas/mês somadas (estimativa da
+ferramenta) — tema pequeno, intenção clara.
+
+| termo | volume/mês | onde entra |
+|---|---|---|
+| fome emocional | 1.000 | busca principal |
+| o que é fome emocional | 170 | abertura e H2 |
+| como tratar · como controlar · como lidar · como vencer · o que fazer | ~400 somados | H2 "como controlar", com o que tem estudo (atenção plena, TCC) |
+| sintomas | ~130 | H2 sinais / FAQ |
+| **exercício mental para fome emocional** | 90 | a pausa antes de comer, como técnica de atenção plena — só com fonte |
+| fome física × emocional (várias grafias) | ~260 somados | H2 com tabela |
+| **remédio / medicamento** | 80 | FAQ: não há remédio para "fome emocional"; compulsão é tratamento médico |
+| psicologia · psicanálise · scielo · artigo · pdf · livro | ~150 | FAQ "quem trata": psicólogo; sem indicar livro |
+| teste | 20 | FAQ: existem questionários validados em pesquisa; não substituem avaliação |
+| a noite · em crianças · tem cura · cid · compulsão | 0 (mas aparecem) | FAQ "tem cura?" e "é compulsão?"; crianças fora (outro público) |
+
+PAA: "quais são os 3 tipos de fome?" → "o que é fome hedônica?"; "o que
+significa comer emocional?"; "como saber se estou com fome?". Prompts de
+IA: diferença entre fome física e emocional, sintomas, estratégias "sem
+comer", mindfulness, TCC, apps, livros, profissionais especializados.
