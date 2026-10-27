@@ -20,6 +20,19 @@ Arquivos em `docs/pesquisas/2026-10-27-dormir-pouco-engorda/prints/` (01 a 03).
 | visão geral de IA (02) | 7 a 9 horas; menos de 6 h: grelina ↑, leptina ↓, cortisol ↑ "favorece gordura abdominal", menos gasto, menos controle de impulso — citando clínica. **Não é fonte** | grelina/leptina e cortisol entram pelos estudos (Spiegel, Leproult); "gordura abdominal" e "metabolismo mais lento" não (Al Khatib: gasto não mudou) |
 | PAA (03) | **é normal ter 5 horas de sono?** · **quantas calorias se perde em 7 horas de sono?** · **é verdade que dormir bem emagrece?** · **é normal perder 1 kg dormindo?** | FAQ para cada; calorias do sono pela conta do metabolismo de repouso (calculadora de gasto diário); 1 kg dormindo = água, não gordura |
 
+## Prints recebidos — "falta de sono aumenta a fome" (27/10, 08h22–08h23)
+
+Arquivos 04 a 08 na mesma pasta. O 08 é um "outras pessoas pesquisaram" sem
+a busca visível (provavelmente de "dormir pouco engorda").
+
+| tela | o que mostrou | onde entra |
+|---|---|---|
+| autocompletar (04) | fome no brasil (outra intenção) · **fome ou não** | a busca é pergunta de sim/não: abertura responde direto |
+| visão geral de IA (05) | "sim, dormir pouco aumenta a fome e o apetite": grelina ↑, leptina ↓, cortisol ↑, desejo por açúcar — citando plano de saúde e Instagram. **Não é fonte** | tudo isso tem estudo (Spiegel 2004, Leproult 1997, Al Khatib 2017): entra pelas fontes |
+| PAA (06) | **dormir 4 horas por dia é pouco?** · qual fruta faz dormir rápido? · **dormir fora de hora engorda?** · por que acordo às 3 da manhã e não durmo mais? | FAQs de 4 h e "fora de hora" (cronotipo: associação, não causa); fruta e acordar às 3 h fora (sem fonte / outro tema, com médico se persistir) |
+| outras (07) | **dormir pouco engorda ou emagrece** · fome e sono excessivo · remédio para síndrome da fome noturna · fome de madrugada o que comer · **dormir pouco emagrece** · fome de madrugada gravidez; resultado da EMS: "ainda não foi comprovado se é a falta de sono que leva à obesidade ou vice-versa" | título com "engorda ou emagrece"; seção "causa ou consequência?" (Cappuccio: associação; Tasali/Markwald: experimento); fome noturna/remédio → médico |
+| outras (08) | **dormir emagrece quantos quilos** · **dormir com fome emagrece** · **dormir de dia engorda** · fome de madrugada o que fazer / diabetes · muito sono e muita fome gravidez | FAQs de "quantos quilos" (água, não gordura), "dormir com fome", "dormir de dia" (trabalho em turno: só com fonte); diabetes/gravidez → médico |
+
 ## Fontes (resumos no Europe PMC, 27/10/2026)
 
 - Al Khatib et al. 2017, Eur J Clin Nutr (PMID 27804960): meta-análise, 11
