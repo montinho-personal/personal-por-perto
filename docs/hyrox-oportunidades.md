@@ -126,6 +126,9 @@ personal) × o que dá para afirmar com fonte.
 - 26/10: leva 3 começou — `/guias/tenis-para-hyrox/`, publicado antes dos
   prints a pedido do Renato (`docs/tenis-para-hyrox.md`).
 
+- 27/10: leva 2 fechada — `/ferramentas/calculadora-de-tempo-hyrox/`, com
+  os prints e o AnswerThePublic de "tempo hyrox" (`docs/calculadora-de-tempo-hyrox.md`).
+
 ## AnswerThePublic de "tempo hyrox" (27/10/2026)
 
 Três exportações do Renato em `docs/pesquisas/2026-10-27-tempo-hyrox/answerthepublic/`

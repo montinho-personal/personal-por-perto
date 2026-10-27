@@ -206,4 +206,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 23/10 — `/guias/hyrox-vs-crossfit/` — artigo novo: bloco crossfit depois de "o Hyrox é cardio?" — "qual gasta mais?"
 - 24/10 — `/guias/treino-hyrox/` — artigo novo: bloco calculadora-de-pace depois de "o que mais decide o seu tempo" — "qual ritmo a minha meta exige?"
 - 26/10 — `/emagrecimento/termogenicos-funcionam/` — artigo novo: bloco gasto-calorico-diario depois de "termogênico emagrece?" — "o tamanho dessas 50 a 150 kcal perto do meu gasto do dia"
+- 27/10 — `/guias/treino-hyrox/` — bloco trocado de calculadora-de-pace para calculadora-de-tempo-hyrox, publicada no mesmo dia: o parágrafo pergunta "qual ritmo a minha meta exige?", e a nova responde já descontando as estações. Sem bump de `atualizadoEm` (exceção do bloco)
 - 26/10 — `/guias/tenis-para-hyrox/` — artigo novo: bloco hyrox depois da corrida — "quanto da prova é corrida e quanto é estação?"
