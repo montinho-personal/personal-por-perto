@@ -93,3 +93,28 @@ visão geral de IA.
   estimulante proibido), não um produto.
 - Ferramenta no corpo: candidata `calculadora-de-emagrecimento` ou o gasto
   calórico diário, no trecho que compara as ~50–150 kcal/dia com o déficit.
+
+## AnswerThePublic de "termogênico" (27/10/2026)
+
+Três exportações do Renato em `docs/pesquisas/2026-10-27-termogenico/answerthepublic/`
+(Google/Bing em CSV, PAA, prompts de ChatGPT e Gemini). 1.709 sugestões no
+Google, ~368 mil buscas/mês somadas (estimativa da ferramenta).
+
+| tema | volume/mês | o que mudou na página |
+|---|---|---|
+| o que é / para que serve (8,1 mil + 8,1 mil + 5,4 mil + 5,4 mil…) | o maior bloco depois do termo puro (90,5 mil) | título, H1 e H2 com "para que serve"; parágrafo e FAQ "Para que serve o termogênico?" |
+| emagrece / para emagrecer (14,8 mil, 12,1 mil, 9,9 mil, 9,9 mil) | ~65 mil no tema | já respondido; mantido |
+| natural / café / chá / alimentos (5,4 mil café, 3,6 mil chá, 3,6 mil natural, 2,9 mil alimentos) | ~32 mil | H2 novo "Termogênico natural: café, chá e pimenta", com as mesmas fontes |
+| sem cafeína (2,9 mil); Gemini: "sem cafeína para quem tem sensibilidade" | | H3 e FAQ "Termogênico sem cafeína funciona?" (Jeukendrup & Randell) |
+| pré-treino termogênico (1,9 mil + 1,6 mil + 1,3 mil) | | FAQ "Termogênico e pré-treino são a mesma coisa?" |
+| efeitos colaterais (1,9 mil + 1,3 mil + 1 mil); PAA pressão alta, arritmia | ~9 mil | FAQ "Quem tem pressão alta pode tomar?", sempre com médico |
+| PAA "o que acontece se tomar e não malhar?" | | FAQ nova (Clark & Welch) |
+| marcas (Growth 12,1 mil, Black Skull, Max Titanium, Kimera, abelhinha…) | ~47 mil | **não entra**: sem ranking nem marca (regra do artigo) |
+| "melhor termogênico" (3,6 mil + 2,4 mil…) | ~27 mil | mantido o critério de rótulo, sem produto |
+| creme termogênico (1,9 mil), "de nescau", "diabo verde" | | fora: sem fonte / outra intenção |
+| Gemini: "precisa de receita?" | | fora por ora: falta fonte oficial aberta |
+
+`atualizadoEm` → 2026-10-27 (revisão real de título, H1, seção e FAQs).
+**Ainda faltam os prints do Google** ("termogênico funciona", "termogênico
+emagrece", "melhor termogênico"); quando chegarem, conferir se o título novo
+segue o autocompletar.
