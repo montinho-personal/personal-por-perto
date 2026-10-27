@@ -162,6 +162,23 @@ não como resposta a demanda medida: entra pelo encaixe com a família (pace,
 calorias do Hyrox), não pelo volume. Relógio reaparece (PAA e IA) — segue
 fora por exigir manual de cada marca.
 
+### Prints de "tempo hyrox" (27/10/2026, 06h51, Renato)
+
+Arquivos em `docs/pesquisas/2026-10-27-tempo-hyrox/prints/` (01 a 04).
+
+| tela | o que mostrou | leitura |
+|---|---|---|
+| autocompletar (01) | são paulo · ayala 30th · gym · training club · dupla · pro · open | tempo por **categoria** (dupla, Pro, Open) e por **etapa** (São Paulo) — a calculadora precisa de seletor de categoria |
+| visão geral de IA (02) | "tempo médio" 1h30–2h para recreativos, <1h15 treinados, elite ~57 min (H) e 1h03 (M), recorde de duplas 53:56 — citando getfitcraft e hyroxbrazil. **Não é fonte** | nenhum desses números entra sem resultado oficial; mostra que a pergunta é "qual é um tempo bom" |
+| resultados e PAA (03) | **um concorrente já tem "Calculadora de Tempo do Hyrox: Pace, Estações e Roxzone"** (publicada há 4 dias); PAA: quanto tempo é o Hyrox? · qual o melhor tempo do Hyrox? · **o pace 7 é ruim?** · qual o recorde de tempo do Hyrox? | o Google já serve a intenção com uma calculadora — confirma o formato. "Pace 7 é ruim?" liga direto à calculadora de pace e a esta |
+| outras pessoas (04) | hyrox brasil · o que é hyrox na academia · hyrox vs crossfit · prova completa · como funciona · prova oficial | quase tudo já respondido pelo pilar e pelo comparativo |
+
+**Decisão a tomar com o Renato:** a calculadora entra (formato confirmado
+pelo resultado do concorrente), com meta de tempo → pace por km e tempo
+por estação, seletor de categoria (Open, Pro, dupla) e FAQs de "quanto
+tempo dura", "pace 7 é ruim?" e "qual é um bom tempo" — esta última só com
+resultado oficial ou estudo (Brandt 2025, Gutiérrez-Hellín 2026).
+
 ## Ritmo
 
 Cria páginas novas → dividir. Leva 1: Hyrox × CrossFit e o pilar "O que é
