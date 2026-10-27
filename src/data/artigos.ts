@@ -135,6 +135,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-em-academia/', titulo: 'Personal trainer em academia: como funciona' },
   { categoria: 'Guias', url: '/guias/coach-de-academia/', titulo: 'Coach de academia: o que é e a diferença para o personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-smart-fit/', titulo: 'Personal trainer na Smart Fit: pode levar o seu e quanto custa' },
+  { categoria: 'Guias', url: '/guias/six-alphaville/', titulo: 'Six Alphaville: quanto custa e para quem a conta fecha' },
   { categoria: 'Guias', url: '/guias/o-que-e-hyrox/', titulo: 'O que é Hyrox: como funciona a prova, as estações, os pesos e quanto custa' },
   { categoria: 'Guias', url: '/guias/treino-hyrox/', titulo: 'Treino de Hyrox: como treinar, para iniciante, em casa e na academia' },
   { categoria: 'Guias', url: '/guias/tenis-para-hyrox/', titulo: 'Tênis para Hyrox: o que a prova exige do tênis e como escolher' },

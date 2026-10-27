@@ -1,0 +1,366 @@
+---
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+import { cidades } from '../../data/cidades';
+
+/*
+ * Artigo criado em 27/10/2026 a partir dos prints de "six alphaville"
+ * (autocompletar, PAA, "outras pessoas pesquisaram") e do Answer the Public
+ * da mesma busca. Registro em docs/six-alphaville.md.
+ *
+ * Fonte única dos fatos: entrevista do fundador à revista VERO (06/08/2026),
+ * lida pelos prints do Renato porque vero.com.br não abre no ambiente. Tudo o
+ * que vem dela é atribuído ao fundador no texto. O endereço exato não entra:
+ * só o Instagram oficial o traz, e ele não abre aqui.
+ *
+ * O site do Montinho já tem um artigo sobre a Six (endereço, inauguração,
+ * donos). Este responde outra pergunta, a da conta: a mensalidade
+ * "all inclusive" contra academia + personal, com as faixas de Alphaville.
+ */
+
+const VERO = 'https://vero.com.br/';
+const INSTAGRAM = 'https://www.instagram.com/six.spalphaville/';
+
+const SIX_MIN = 2500;
+const SIX_MAX = 3000;
+const ACADEMIA_TRADICIONAL = 600; // valor citado pelo fundador à VERO
+const PERSONAL_CITADO = 1500; // idem
+
+const alphaville = cidades.find((c) => c.slug === 'alphaville-sp')!;
+const PERSONAL = { min: alphaville.precos.mensalMin, max: alphaville.precos.mensalMax };
+const SOMA = { min: ACADEMIA_TRADICIONAL + PERSONAL.min, max: ACADEMIA_TRADICIONAL + PERSONAL.max };
+const brl = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`;
+
+const relacionados = [
+  {
+    url: '/guias/personal-trainer-em-academia/',
+    titulo: 'Personal trainer em academia: como funciona',
+    descricao: 'Se a academia aceita profissional de fora e as três parcelas do custo.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/coach-de-academia/',
+    titulo: 'Coach de academia: o que é e a diferença para o personal',
+    descricao: 'Professor de salão, coach e personal: quem fica ao seu lado a sessão inteira.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/personal-trainer/alphaville-sp/',
+    titulo: 'Personal trainer em Alphaville',
+    descricao: 'Academias conferidas da região e as faixas de preço locais.',
+    tipo: 'Cidade',
+  },
+  {
+    url: rotas.quantoCusta,
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'Faixas por formato e o que muda o preço de uma cidade para outra.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/six-alphaville';
+const publicadoEm = '2026-10-27';
+const atualizadoEm = '2026-10-27';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Six Alphaville', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quanto custa a mensalidade da Six Alphaville?',
+    resposta: `Entre ${brl(SIX_MIN)} e ${brl(SIX_MAX)} por mês, segundo o fundador Eilson Studart Filho em entrevista à revista VERO, publicada em agosto de 2026. O valor inclui os serviços do modelo all inclusive, como manobrista, sauna, crioterapia, lanches e salão de beleza. Não encontramos tabela de planos publicada: confirme o valor com a academia antes de assinar.`,
+  },
+  {
+    pergunta: 'Onde vai ser a academia Six em Alphaville?',
+    resposta:
+      'No 23º andar de um edifício em Alphaville, com vista 360° para a região e mais de 1.800 m², segundo a entrevista do fundador à VERO. O endereço com número está no Instagram oficial da unidade, @six.spalphaville.',
+  },
+  {
+    pergunta: 'Quando abre a Six Alphaville?',
+    resposta:
+      'Em agosto de 2026, a VERO informou a inauguração prevista para o fim de outubro de 2026. Confira no Instagram oficial, @six.spalphaville, se a unidade já está funcionando e em que horário.',
+  },
+  {
+    pergunta: 'Quem é o dono da Six?',
+    resposta:
+      'A Six foi criada pelo empresário e arquiteto Eilson Studart Filho. Na entrevista à VERO, ele conta que a ideia nasceu de uma necessidade pessoal: estava acima do peso, tinha hérnia de disco e, nas academias tradicionais que frequentava, sentia falta de outro tipo de ambiente.',
+  },
+  {
+    pergunta: 'Qual a academia mais cara de Alphaville?',
+    resposta: `Não dá para cravar um ranking, porque a maioria das academias da região não publica preço. O que dá para dizer é que a faixa divulgada pela Six, de ${brl(SIX_MIN)} a ${brl(SIX_MAX)}, fica muito acima de uma academia comum: o próprio fundador usa ${brl(ACADEMIA_TRADICIONAL)} como referência de mensalidade tradicional.`,
+  },
+  {
+    pergunta: 'A mensalidade da Six inclui personal trainer?',
+    resposta:
+      'O fundador fala em "professores em tempo integral" incluídos na mensalidade. A entrevista não diz se algum deles acompanha a sua sessão inteira, como um personal, ou se circula pelo salão atendendo todos. Pergunte na visita, porque é isso que decide se a conta da Six substitui ou não a de um personal.',
+  },
+];
+
+const title = 'Six Alphaville: Mensalidade, O Que Inclui e Se Vale a Pena';
+const description =
+  'Six Alphaville: a mensalidade de R$ 2.500 a R$ 3.000, o que o all inclusive cobre e a conta contra academia mais personal em Alphaville.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, publicadoEm, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Academias em Alphaville</p>
+    <h1>Six Alphaville: quanto custa e para quem a conta fecha</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A Six Alphaville é uma academia, não um condomínio. Ela ocupa o 23º
+      andar de um edifício da região e cobra, segundo o fundador,
+      <strong>de {brl(SIX_MIN)} a {brl(SIX_MAX)} por mês</strong>. O valor
+      cobre serviços que outras academias cobram à parte, ou nem oferecem:
+      manobrista, sauna, crioterapia, lanches e até salão de beleza. A
+      pergunta que importa é se essa conta fecha para você. Isso depende de
+      quanto você já gasta com academia e personal, e de quanto vai usar do
+      que está incluído.
+    </p>
+
+    <p class="small">
+      Os números da academia vêm da entrevista do fundador, Eilson Studart
+      Filho, à <a href={VERO} target="_blank" rel="noopener">revista VERO</a>,
+      publicada em 6 de agosto de 2026, quando a inauguração estava prevista
+      para o fim de outubro. Preço e serviços podem mudar: confirme com a
+      academia antes de assinar.
+    </p>
+
+    <div class="prose">
+      <h2>Quanto custa a Six Alphaville</h2>
+      <p>
+        Na entrevista, o fundador põe a mensalidade entre {brl(SIX_MIN)} e{' '}
+        {brl(SIX_MAX)}. Ele também explica de onde vem o número: a pessoa
+        já paga cerca de {brl(ACADEMIA_TRADICIONAL)} numa academia
+        tradicional, mais uns {brl(PERSONAL_CITADO)} de personal trainer,
+        mais o que gasta com alimentação durante a semana. Somando tudo, a
+        Six seria a versão "tudo num lugar só" dessa conta.
+      </p>
+      <p>
+        Não encontramos tabela de planos publicada, nem valor de diária para
+        a unidade de Alphaville. Na visita, peça o valor do plano que você
+        vai assinar, com a fidelidade, por escrito.
+      </p>
+
+      <h2>O que a mensalidade inclui</h2>
+      <p>
+        A Six se apresenta como academia <em>all inclusive</em>. Segundo o
+        fundador, o aluno chega e encontra pronto:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Área</th><th>O que está incluído, segundo o fundador</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Chegada</td><td>Manobrista e concierge</td></tr>
+            <tr><td>Treino</td><td>Professores em tempo integral e equipamentos da linha Luxury da Technogym</td></tr>
+            <tr><td>Recuperação</td><td>Sauna, crioterapia e área de recovery</td></tr>
+            <tr><td>Comida</td><td>Pré e pós-treino, frutas, snacks e café da manhã nos fins de semana</td></tr>
+            <tr><td>Conforto</td><td>Toalhas, produtos de higiene e DJ nos horários de maior movimento</td></tr>
+            <tr><td>Estética</td><td>Salão de beleza com escova, babyliss e esmaltação</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O ambiente segue a mesma linha: madeira, pedra natural, paisagismo e
+        espelhos d'água, num projeto que o fundador compara a hotéis de praia.
+        A unidade tem mais de 1.800 m², vista 360° e investimento de R$ 20
+        milhões, segundo a VERO. Ele diz que só a limpeza terá mais de 20
+        funcionários.
+      </p>
+
+      <h2>A conta do fundador, refeita com os preços de Alphaville</h2>
+      <p>
+        O argumento da Six é comparar a mensalidade com a soma de academia e
+        personal. Dá para refazer essa soma com as faixas que o portal usa
+        para Alphaville, mantendo a academia tradicional no valor que o
+        próprio fundador citou:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Parcela</th><th>Por mês</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Academia tradicional (valor citado pelo fundador)</td><td>{brl(ACADEMIA_TRADICIONAL)}</td></tr>
+            <tr><td>Personal 2 a 3 vezes por semana em Alphaville (faixa do portal)</td><td>{brl(PERSONAL.min)} a {brl(PERSONAL.max)}</td></tr>
+            <tr><td><strong>Soma</strong></td><td><strong>{brl(SOMA.min)} a {brl(SOMA.max)}</strong></td></tr>
+            <tr><td>Six Alphaville (valor citado pelo fundador)</td><td>{brl(SIX_MIN)} a {brl(SIX_MAX)}</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">
+        A faixa do personal é estimativa editorial do portal para Alphaville,
+        não pesquisa de preço. A alimentação ficou de fora porque varia
+        demais de pessoa para pessoa.
+      </p>
+      <p>
+        Mesmo no topo da faixa de personal, a soma fica abaixo do piso da
+        Six: a diferença vai de {brl(SIX_MIN - SOMA.max)} a{' '}
+        {brl(SIX_MAX - SOMA.min)} por mês. Quem paga essa diferença está
+        comprando o resto do pacote: recuperação, comida, estacionamento,
+        salão e o ambiente. Para quem vai usar tudo isso, a conta pode fechar.
+        Para quem só faz musculação, não fecha.
+      </p>
+
+      <FerramentaInline
+        id="preco"
+        texto="A soma acima usa a faixa de Alphaville. Se você mora em outro lugar, ou quer ver quanto muda de 2 para 3 sessões por semana, a calculadora abre a conta do personal na sua cidade, com o cálculo das semanas do mês."
+        acao="Ver o preço do personal na minha cidade"
+      />
+
+      <h2>Professor em tempo integral não é personal</h2>
+      <p>
+        É aqui que a comparação do fundador merece cuidado. Ele fala em
+        "professores em tempo integral" incluídos na mensalidade, mas a
+        entrevista não diz como eles trabalham. Há duas possibilidades bem
+        diferentes:
+      </p>
+      <ul>
+        <li>
+          <strong>Professor de salão.</strong> Circula pela academia,
+          monta a ficha, corrige quando vê e atende vários alunos ao mesmo
+          tempo. É o modelo da maioria das academias. A diferença para um
+          personal está no guia de{' '}
+          <a href="/guias/coach-de-academia/">coach de academia</a>.
+        </li>
+        <li>
+          <strong>Acompanhamento individual.</strong> Alguém fica ao seu
+          lado na sessão inteira, controla a carga e anota a evolução. Isso é
+          o que um personal entrega.
+        </li>
+      </ul>
+      <p>
+        Se for o primeiro caso, a Six não substitui o personal da conta do
+        fundador. Ele continua sendo uma despesa à parte. Se for o segundo,
+        a comparação faz mais sentido. Pergunte isso antes de qualquer outra
+        coisa. Pergunte também se a academia aceita personal de fora, e com
+        que regra. O{' '}
+        <a href="/guias/personal-trainer-em-academia/">guia de personal em
+        academia</a> mostra os quatro modelos que existem: liberado, com
+        taxa, só credenciados ou proibido.
+      </p>
+
+      <h2>Para quem a Six faz sentido</h2>
+      <p>
+        O fundador conta que, na Six, os alunos ficam mais de três horas na
+        academia e vão, em média, cinco vezes por semana. Esse é o perfil
+        para o qual o pacote foi desenhado: quem trata a academia como
+        lugar de convivência, usa sauna e recovery e resolve ali o café e o
+        cabelo.
+      </p>
+      <p>
+        Para quem treina três vezes por semana, uma hora por vez, e vai
+        embora, o mesmo dinheiro rende mais de outro jeito. Uma academia
+        comum mais um personal sai mais barato e põe alguém do seu lado em
+        toda sessão. O que faz o resultado aparecer é progressão de carga,
+        técnica e constância por meses. Ambiente bonito ajuda a ir, mas não
+        substitui um plano.
+      </p>
+      <p>
+        O próprio fundador conta que criou a Six depois de ficar acima do
+        peso e ter hérnia de disco. Se você tem dor ou lesão na coluna,
+        passe antes por um médico ou fisioterapeuta, seja qual for a
+        academia.
+      </p>
+
+      <h2>O que perguntar na visita</h2>
+      <ol>
+        <li>O professor acompanha a minha sessão inteira ou atende o salão todo?</li>
+        <li>Posso levar o meu personal? Há taxa ou credenciamento?</li>
+        <li>O que, exatamente, está incluído, e o que é cobrado à parte?</li>
+        <li>Qual é a fidelidade, e como funciona o cancelamento?</li>
+        <li>Como fica o salão no horário em que eu vou treinar?</li>
+      </ol>
+
+      <h2>Onde fica</h2>
+      <p>
+        A unidade fica no 23º andar de um edifício em Alphaville, com vista
+        360° para a região. O endereço com número e o horário de
+        funcionamento estão no{' '}
+        <a href={INSTAGRAM} target="_blank" rel="noopener">Instagram oficial,
+        @six.spalphaville</a>. As outras academias conferidas da região, com
+        endereço, estão na página de{' '}
+        <a href="/personal-trainer/alphaville-sp/">personal trainer em
+        Alphaville</a>.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .small {
+    font-size: var(--step--1);
+  }
+</style>

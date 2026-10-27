@@ -208,5 +208,6 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 26/10 — `/emagrecimento/termogenicos-funcionam/` — artigo novo: bloco gasto-calorico-diario depois de "termogênico emagrece?" — "o tamanho dessas 50 a 150 kcal perto do meu gasto do dia"
 - 27/10 — `/emagrecimento/dormir-pouco-engorda/` — artigo novo: bloco gasto-calorico-diario em "quantas calorias se gasta dormindo" — "quanto o meu corpo gasta parado?"
 - 27/10 — `/emagrecimento/fome-emocional/` — artigo novo: bloco constancia depois de "como controlar" — "é isso que derruba o meu plano nas semanas difíceis?"
+- 27/10 — `/guias/six-alphaville/` — artigo novo: bloco preco no fim da conta "academia + personal × Six" — "e quanto custa o personal na minha cidade?"
 - 27/10 — `/guias/treino-hyrox/` — bloco trocado de calculadora-de-pace para calculadora-de-tempo-hyrox, publicada no mesmo dia: o parágrafo pergunta "qual ritmo a minha meta exige?", e a nova responde já descontando as estações. Sem bump de `atualizadoEm` (exceção do bloco)
 - 26/10 — `/guias/tenis-para-hyrox/` — artigo novo: bloco hyrox depois da corrida — "quanto da prova é corrida e quanto é estação?"
