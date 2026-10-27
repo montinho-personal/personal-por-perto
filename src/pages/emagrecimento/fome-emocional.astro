@@ -1,0 +1,374 @@
+---
+/**
+ * Fome emocional — o que é, como perceber, se é compulsão e como
+ * controlar. Dona também de "comer por ansiedade" (mesma intenção, outra
+ * porta de entrada).
+ *
+ * Prints do Google de 27/10/2026 ("fome emocional" e "comer por
+ * ansiedade") e AnswerThePublic das duas buscas em
+ * docs/pesquisas/2026-10-27-fome-emocional/; leitura em
+ * docs/fome-emocional.md.
+ *
+ * Fontes conferidas em 27/10/2026 (resumos no Europe PMC). Fora, por falta
+ * de fonte aberta: a tabela "fome física × emocional" que circula em blogs
+ * (o texto usa as perguntas que os estudos sustentam), o Guia Alimentar
+ * (PDF inacessível aqui), o status do remédio da compulsão na ANVISA.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/termogenicos-funcionam/',
+    titulo: 'Termogênico: para que serve e se emagrece',
+    descricao: 'O que os estudos mediram, os riscos e o que diz a ANVISA.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/plato-de-emagrecimento/',
+    titulo: 'Platô de emagrecimento',
+    descricao: 'Por que a balança trava no meio do caminho e o que fazer.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-manter-o-peso-perdido/',
+    titulo: 'Como manter o peso perdido',
+    descricao: 'O que sustenta o resultado depois da dieta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/fome-emocional';
+const atualizadoEm = '2026-10-27';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Fome emocional', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é fome emocional?',
+    resposta:
+      'É comer em resposta a emoções — ansiedade, estresse, tristeza, tédio — e não à fome do corpo. Na pesquisa, o nome é "comer emocional", e ele é medido por questionários validados. Não é um diagnóstico médico: é um jeito de comer que muita gente tem em algum grau.',
+  },
+  {
+    pergunta: 'Fome emocional existe?',
+    resposta:
+      'Existe como comportamento estudado há décadas. Pesquisadores descrevem pelo menos cinco formas de as emoções mexerem com a alimentação, e numa delas a pessoa come para regular o que sente. As emoções também podem fazer comer menos — por isso há quem perca o apetite com ansiedade.',
+  },
+  {
+    pergunta: 'Quais são os sintomas da fome emocional?',
+    resposta:
+      'Os sinais mais citados nos estudos são comer sem fome física, comer depois de uma emoção difícil e ter vontade de alimentos específicos, quase sempre doces ou calóricos. Não é diagnóstico: se vem com perda de controle, sofrimento ou episódios frequentes de comer muito, procure um médico ou psicólogo.',
+  },
+  {
+    pergunta: 'Fome emocional é compulsão alimentar?',
+    resposta:
+      'Não. Compulsão alimentar é um transtorno com critérios definidos: episódios de comer muita comida com sensação de perda de controle, pelo menos uma vez por semana durante três meses, com sofrimento marcado. A fome emocional pode existir sem nada disso. Se você se reconhece nos episódios com perda de controle, a avaliação é com médico ou psicólogo.',
+  },
+  {
+    pergunta: 'Como controlar a fome emocional?',
+    resposta:
+      'O que tem mais evidência é aprender a lidar com a emoção sem passar pela comida. Numa revisão de 14 estudos, a meditação de atenção plena reduziu o comer emocional e a compulsão; para a compulsão diagnosticada, a terapia cognitivo-comportamental é o tratamento com resultado mais consistente. A restrição forte aparece entre os fatores ligados ao comer emocional, e os pesquisadores recomendam focar na regulação das emoções, não no corte de calorias.',
+  },
+  {
+    pergunta: 'Por que a ansiedade faz comer?',
+    resposta:
+      'O estresse mexe no cortisol e nos circuitos de recompensa do cérebro, e a comida muito calórica alivia por um momento — é o modelo mais aceito, ainda em estudo em humanos. Mas o efeito não é igual para todos: numa pesquisa com 212 estudantes, 38% disseram comer mais sob estresse e 42% disseram comer menos.',
+  },
+  {
+    pergunta: 'Tem remédio para fome emocional?',
+    resposta:
+      'Para a fome emocional em si, não. O que existe é tratamento para o transtorno de compulsão alimentar, quando ele é diagnosticado: nos Estados Unidos, um remédio foi aprovado para isso em 2015. Indicação, escolha e receita são do médico psiquiatra — não tome nada por conta própria.',
+  },
+  {
+    pergunta: 'Quais são os 3 tipos de fome?',
+    resposta:
+      'Não há uma divisão em três que seja padrão na ciência. A separação mais usada é em duas: a fome homeostática, do corpo que precisa de energia, e a fome hedônica, de comer pelo prazer da comida mesmo sem necessidade de calorias. A fome emocional conversa com a segunda.',
+  },
+  {
+    pergunta: 'Existe teste de fome emocional?',
+    resposta:
+      'Existem questionários validados usados em pesquisa, como o DEBQ, que mede comer emocional, externo e restritivo, e o TFEQ, que tem versão validada no Brasil. Eles servem para estudo e avaliação profissional, não como autodiagnóstico — quem interpreta é o psicólogo ou o nutricionista.',
+  },
+  {
+    pergunta: 'E quando a ansiedade tira a fome?',
+    resposta:
+      'Acontece: as emoções podem fazer comer menos, e em situações de estresse há quem perca o apetite. Se a falta de fome dura dias, vem com perda de peso sem querer ou atrapalha a rotina, procure um médico.',
+  },
+];
+
+/* 50 caracteres. "o que é", "sintomas" e "como controlar" vêm do autocompletar (27/10). */
+const title = 'Fome Emocional: O Que É, Sintomas e Como Controlar';
+/* 145 caracteres. */
+const description =
+  'Fome emocional: o que é, como perceber, se é compulsão alimentar, por que a ansiedade faz comer e o que os estudos mostram que ajuda a controlar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Fome emocional: o que é, como perceber e como controlar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Fome emocional é comer por causa do que se sente — ansiedade, estresse,
+      tristeza, tédio — e não porque o corpo precisa de comida. Ela existe, é
+      estudada há décadas e pode ajudar a explicar por que tanta gente
+      recupera o peso depois da dieta.
+    </p>
+
+    <p class="lead">
+      Abaixo, como perceber, a diferença para a compulsão alimentar, por que a
+      ansiedade faz comer e o que os estudos mostram que ajuda — e quando
+      procurar ajuda profissional.
+    </p>
+
+    <div class="prose">
+      <h2>O que é fome emocional</h2>
+      <p>
+        Na pesquisa, o nome é "comer emocional". Uma revisão clássica descreve
+        cinco formas de as emoções mexerem com a alimentação: elas mudam a
+        escolha da comida, podem tirar o apetite, atrapalham o controle de quem
+        está de dieta, levam a comer para aliviar o que se sente e acompanham o
+        humor do momento. A fome emocional é sobretudo a quarta: a comida como
+        regulador de emoção.
+      </p>
+      <p>
+        Uma revisão mais recente aponta o comer emocional como um dos fatores
+        que explicam por que tanta gente recupera o peso depois de emagrecer —
+        e como um elo entre depressão e obesidade. Não é falta de força de
+        vontade, e também não é diagnóstico médico: é um jeito de comer que
+        aparece em graus diferentes em pessoas diferentes.
+      </p>
+
+      <h2>Como perceber: fome do corpo ou fome emocional?</h2>
+      <p>
+        A ciência separa dois tipos de fome: a <strong>homeostática</strong>,
+        do corpo que precisa de energia, e a <strong>hedônica</strong>, de
+        comer pelo prazer da comida mesmo sem necessidade de calorias. A fome
+        emocional se parece mais com a segunda. Três perguntas ajudam a
+        perceber de qual se trata:
+      </p>
+      <ul>
+        <li>
+          <strong>O corpo está pedindo comida?</strong> Faz tempo que você
+          comeu, há sinais físicos de fome — ou a vontade apareceu do nada?
+        </li>
+        <li>
+          <strong>O que veio antes?</strong> Uma discussão, um prazo, uma noite
+          mal dormida, um momento de tédio?
+        </li>
+        <li>
+          <strong>O que você quer comer?</strong> Qualquer coisa que sacie — ou
+          um alimento específico, quase sempre doce ou muito calórico?
+        </li>
+      </ul>
+      <p>
+        Não é um teste, e não substitui avaliação. Existem questionários
+        validados para medir o comer emocional — o DEBQ e o TFEQ, este com
+        versão validada no Brasil —, mas eles são usados em pesquisa e por
+        profissionais, não como autodiagnóstico.
+      </p>
+
+      <h2>Fome emocional é compulsão alimentar?</h2>
+      <p>
+        Não. O transtorno de compulsão alimentar tem critérios definidos:
+        episódios de comer muita comida com sensação de perda de controle,
+        <strong>pelo menos uma vez por semana durante três meses</strong>, com
+        sofrimento marcado e sem vômito ou outra compensação. Nos episódios
+        aparecem sinais como comer muito mais rápido que o normal, comer até
+        passar mal, comer grandes quantidades sem fome física, comer sozinho
+        por vergonha e sentir culpa ou nojo depois.
+      </p>
+      <p>
+        É o transtorno alimentar mais comum: em pesquisas da Organização
+        Mundial da Saúde em 14 países, cerca de 1,4% dos adultos tiveram
+        compulsão alimentar em algum momento da vida. A fome emocional pode
+        existir sem nada disso. Se você se reconhece nos episódios com perda de
+        controle, a avaliação é com médico ou psicólogo — e o tratamento
+        existe.
+      </p>
+
+      <h2>Por que a ansiedade faz comer</h2>
+      <p>
+        O modelo mais aceito liga o estresse ao cortisol e aos circuitos de
+        recompensa do cérebro: a comida muito calórica alivia por um momento.
+        Os próprios pesquisadores dizem que, em
+        humanos, esses mecanismos ainda estão sendo esclarecidos.
+      </p>
+      <p>
+        E o efeito não é igual para todo mundo. Numa pesquisa com 212
+        estudantes, 73% disseram beliscar mais quando estão estressados, mas,
+        na quantidade total, 38% relataram comer mais e 42% comer menos — e
+        quem fazia dieta tendia a comer mais. É por isso que há quem procure
+        "como parar de comer por ansiedade" e quem procure "não consigo comer
+        por ansiedade".
+      </p>
+      <p>
+        O sono entra na conta: numa meta-análise, dormir pouco aumentou o
+        consumo em cerca de 385 kcal por dia, sem mudar o gasto. Noite mal
+        dormida e dia estressante somam.
+      </p>
+
+      <h2>Como controlar a fome emocional</h2>
+      <p>
+        O que tem mais evidência é aprender a lidar com a emoção sem passar
+        pela comida:
+      </p>
+      <ul>
+        <li>
+          <strong>Atenção plena (mindfulness).</strong> Numa revisão de 14
+          estudos, a meditação de atenção plena reduziu o comer emocional e a
+          compulsão. Em outra, com 21 trabalhos, 18 relataram melhora no
+          comportamento alimentar. O "exercício mental" que muita gente
+          procura vai nessa linha: perceber a vontade, nomear o que está
+          sentindo e esperar antes de decidir comer.
+        </li>
+        <li>
+          <strong>Terapia.</strong> Para a compulsão diagnosticada, a terapia
+          cognitivo-comportamental é o tratamento com resultado mais
+          consistente — inclusive em formatos de autoajuda guiada pela
+          internet. Para a fome emocional, o caminho é o psicólogo.
+        </li>
+        <li>
+          <strong>Não apertar demais a dieta.</strong> Os pesquisadores do comer
+          emocional recomendam focar na regulação das emoções, e não em dietas
+          muito restritas: a restrição forte aparece entre os fatores
+          associados a esse jeito de comer.
+        </li>
+        <li>
+          <strong>Exercício.</strong> A evidência é menor, mas existe: num
+          ensaio com 108 mulheres com obesidade, mais exercício se associou a
+          menos comer emocional, pelo efeito no humor e na autorregulação.
+        </li>
+      </ul>
+
+      <FerramentaInline
+        id="constancia"
+        texto="Se a fome emocional é o que derruba o seu plano nas semanas difíceis, vale entender o padrão. O diagnóstico da constância mostra em que ponto a sua rotina costuma quebrar — e o que dá para ajustar antes que ela quebre."
+        acao="Fazer o diagnóstico da constância"
+      />
+
+      <h2>Tem remédio para fome emocional?</h2>
+      <p>
+        Para a fome emocional em si, não. O que existe é tratamento para o
+        transtorno de compulsão alimentar, quando ele é diagnosticado: nos
+        Estados Unidos, um remédio foi aprovado para isso em 2015, e no ensaio
+        principal metade das pessoas na dose mais alta parou de ter episódios
+        por quatro semanas, contra 21% no placebo. Indicação, escolha e receita
+        são do médico psiquiatra. Não encontramos evidência de que suplemento, chá ou "termogênico
+        natural" trate ansiedade ou compulsão.
+      </p>
+
+      <h2>Quem procurar</h2>
+      <p>
+        Psicólogo para a relação com a comida e com as emoções; nutricionista
+        para um plano alimentar que não seja restritivo demais; médico ou
+        psiquiatra se houver episódios de perda de controle, sintomas de
+        ansiedade ou depressão, ou perda de apetite que dura dias. O treino
+        entra como aliado do humor e da rotina — um profissional de Educação
+        Física ajuda a manter o plano de pé justamente nas semanas difíceis.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17707947/" target="_blank" rel="noopener noreferrer">Macht M. How emotions affect eating: a five-way model. Appetite, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/29696418/" target="_blank" rel="noopener noreferrer">van Strien T. Causes of emotional eating and matched treatment of obesity. Current Diabetes Reports, 2018</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17531274/" target="_blank" rel="noopener noreferrer">Lowe MR, Butryn ML. Hedonic hunger: a new dimension of appetite? Physiology &amp; Behavior, 2007</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27075404/" target="_blank" rel="noopener noreferrer">Barrada JR, van Strien T, Cebolla A. Internal structure and measurement invariance of the Dutch Eating Behavior Questionnaire (DEBQ) in a (nearly) representative Dutch community sample. European Eating Disorders Review, 2016</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26860610/" target="_blank" rel="noopener noreferrer">de Medeiros ACQ, Yamamoto ME, Pedrosa LFC, Hutz CS. The Brazilian version of the three-factor eating questionnaire-R21: psychometric evaluation and scoring pattern. Eating and Weight Disorders, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/31869164/" target="_blank" rel="noopener noreferrer">Mars JA, Iqbal A, Rehman A. Binge Eating Disorder. StatPearls (NCBI Bookshelf), 2024</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23290497/" target="_blank" rel="noopener noreferrer">Kessler RC, et al. The prevalence and correlates of binge eating disorder in the World Health Organization World Mental Health Surveys. Biological Psychiatry, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17543357/" target="_blank" rel="noopener noreferrer">Adam TC, Epel ES. Stress, eating and the reward system. Physiology &amp; Behavior, 2007</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10357442/" target="_blank" rel="noopener noreferrer">Oliver G, Wardle J. Perceived effects of stress on food choice. Physiology &amp; Behavior, 1999</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27804960/" target="_blank" rel="noopener noreferrer">Al Khatib HK, et al. The effects of partial sleep deprivation on energy balance: a systematic review and meta-analysis. European Journal of Clinical Nutrition, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24854804/" target="_blank" rel="noopener noreferrer">Katterman SN, et al. Mindfulness meditation as an intervention for binge eating, emotional eating, and weight loss: a systematic review. Eating Behaviors, 2014</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24636206/" target="_blank" rel="noopener noreferrer">O'Reilly GA, et al. Mindfulness-based interventions for obesity-related eating behaviours: a literature review. Obesity Reviews, 2014</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/40955703/" target="_blank" rel="noopener noreferrer">Hilbert A, Schmidt R. Psychological and medical treatments for binge-eating disorder: state-of-the-art. Current Opinion in Psychiatry, 2025</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26184339/" target="_blank" rel="noopener noreferrer">Annesi JJ, Mareno N. Indirect effects of exercise on emotional eating through psychological predictors of weight loss in women. Appetite, 2015</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25587645/" target="_blank" rel="noopener noreferrer">McElroy SL, et al. Efficacy and safety of lisdexamfetamine for treatment of adults with moderate to severe binge-eating disorder: a randomized clinical trial. JAMA Psychiatry, 2015</a></li>
+        <li>Conferidas em 27/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre fome emocional" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

@@ -656,7 +656,7 @@ hipertrofia), já usados no portal.
 | Emagrecer depois dos 40 | `emagrecer-depois-dos-40` | ✅ 2026-10-22 · prints do Renato (sem autocompletar nem IA) · recorte em `docs/emagrecer-depois-dos-40.md` |
 | Termogênicos funcionam? | `termogenicos-funcionam` | ✅ 2026-10-26 · publicado antes dos prints (pedido do Renato) · `docs/termogenicos-funcionam.md` |
 | Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/quanto-tempo-para-perder-10kg.md` |
-| Fome emocional | `fome-emocional` | |
+| Fome emocional | `fome-emocional` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/fome-emocional.md` |
 | Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | |
 | Proteína e saciedade | `proteina-e-saciedade` | |
 | Dormir pouco engorda? | `dormir-pouco-engorda` | |

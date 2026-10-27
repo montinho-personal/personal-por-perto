@@ -300,6 +300,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/basquete/', titulo: 'Quantas calorias gasta jogar basquete?' },
   { categoria: 'Calorias', url: '/calorias/ping-pong/', titulo: 'Quantas calorias gasta jogar ping pong?' },
   { categoria: 'Calorias', url: '/calorias/gasto-calorico-diario/', titulo: 'Quantas calorias eu gasto por dia?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/fome-emocional/', titulo: 'Fome emocional: o que é, como perceber e como controlar' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/termogenicos-funcionam/', titulo: 'Termogênicos funcionam? O que a ciência e a ANVISA dizem' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quanto-tempo-para-perder-10kg/', titulo: 'Quanto tempo para perder 10 kg? A conta real e o prazo' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/emagrecer-depois-dos-40/', titulo: 'Emagrecer depois dos 40: por que fica difícil e o que fazer' },
