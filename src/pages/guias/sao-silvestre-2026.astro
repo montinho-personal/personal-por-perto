@@ -20,14 +20,16 @@ import { site } from '../../data/site';
  * "Confirmado" lá. Estrutura e FAQ pelos prints e exports de busca de
  * 13/10/2026. saosilvestre.com.br e a Ticket Sports recusam o acesso
  * automatizado (403 do próprio site): os preços vêm do print da plataforma
- * oficial enviado pelo Renato; vagas e regulamento 2026 seguem pendentes.
+ * oficial enviado pelo Renato, e o regulamento 2026 (versão de 25/09/2026)
+ * do PDF que ele enviou em 27/10 (arquivado em docs/eventos/fontes/).
  * Dado de 2025 sempre rotulado.
  */
 
 /** Data de conferência das fontes, no formato DD/MM/AAAA. */
-const ultimaVerificacao = '13/10/2026';
+const ultimaVerificacao = '27/10/2026';
 
 const SITE_OFICIAL = 'https://www.saosilvestre.com.br/';
+const REGULAMENTO = 'https://www.saosilvestre.com.br/regulamento/';
 const GAZETA_2026 =
   'https://www.gazetaesportiva.com/sao-silvestre-conteudo/primeira-sao-silvestre-do-proximo-seculo-abre-inscricoes-nesta-terca-feira/';
 const PREFEITURA_CET_2025 =
@@ -35,11 +37,19 @@ const PREFEITURA_CET_2025 =
 const PREFEITURA_RESULTADO_2025 =
   'https://prefeitura.sp.gov.br/w/s%C3%A3o-silvestre-100-anos-prefeito-premia-vencedores-na-edi%C3%A7%C3%A3o-hist%C3%B3rica-com-brasileiros-no-p%C3%B3dio';
 
-/** Largadas de 2025, pela CET — referência até sair o regulamento de 2026. */
-const LARGADAS_2025: [string, string][] = [
-  ['7h25', 'Cadeirantes'],
-  ['7h40', 'Elite feminina'],
-  ['8h05', 'Elite masculina e pelotão geral'],
+/** Largadas de 2026, pelo regulamento (item 2.1). */
+const LARGADAS_2026: [string, string][] = [
+  ['7h25', 'Pessoas com deficiência — cadeirantes'],
+  ['7h40', 'Elite A/B feminina'],
+  ['8h05', 'Elite A/B masculina'],
+  ['8h06', 'Pessoas com deficiência — demais modalidades'],
+  ['8h07', 'Pelotão Premium (feminino e masculino)'],
+  ['8h08', 'Pelotão Geral, em ondas pelo pace da inscrição'],
+];
+
+/** Tempos de corte do regulamento (item 21): horário-limite de passagem em cada km. */
+const CORTES: [string, string][] = [
+  ['km 1', '10h04'], ['km 5', '10h52'], ['km 10', '11h52'], ['km 15 (chegada)', '12h50'],
 ];
 
 /** Percurso de 2025, na ordem da CET. */
@@ -97,7 +107,7 @@ const relacionados = [
 
 const path = '/guias/sao-silvestre-2026';
 const publicadoEm = '2026-10-13';
-const atualizadoEm = '2026-10-13';
+const atualizadoEm = '2026-10-27';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -113,12 +123,12 @@ const faqs = [
   {
     pergunta: 'Quantos km tem a São Silvestre?',
     resposta:
-      '15 km, com largada na Avenida Paulista, perto do número 2084, e chegada em frente ao edifício da Fundação Cásper Líbero, na Avenida Paulista, 900.',
+      '15 km, com largada na Avenida Paulista, entre as ruas Frei Caneca e Augusta, e chegada na Paulista, altura do número 900, em frente ao Edifício Cásper Líbero, segundo o regulamento de 2026.',
   },
   {
     pergunta: 'Quando abrem as inscrições da São Silvestre 2026?',
     resposta:
-      'As inscrições abriram em 30 de setembro de 2026, pela Ticket Sports by Ingresse, a nova plataforma oficial, com acesso pelo site saosilvestre.com.br. Inscrição em outro site não vale.',
+      'Já estão abertas, desde o fim de setembro, pela Ticket Sports by Ingresse, com acesso pelo site saosilvestre.com.br. Pelo regulamento, vão até 27 de novembro de 2026 ou até acabarem as vagas, o que vier primeiro. Inscrição em outro site não vale.',
   },
   {
     pergunta: 'Quanto custa a inscrição da São Silvestre 2026?',
@@ -128,16 +138,36 @@ const faqs = [
   {
     pergunta: 'Qual o horário da São Silvestre 2026?',
     resposta:
-      'A plataforma oficial de inscrição marca o início da prova às 7h25 de 31/12/2026. O horário de cada pelotão sai no regulamento de 2026, ainda não conferido. Como referência, em 2025 a CET divulgou: cadeirantes às 7h25, elite feminina às 7h40 e elite masculina com o pelotão geral às 8h05.',
+      'Pelo regulamento de 2026: cadeirantes às 7h25, elite feminina às 7h40, elite masculina às 8h05, demais pessoas com deficiência às 8h06, pelotão Premium às 8h07 e pelotão geral a partir das 8h08, em ondas pelo pace escolhido na inscrição. A última largada programada é às 9h30, e a organização pede chegar 45 minutos antes.',
   },
   {
     pergunta: 'Qual o percurso da São Silvestre 2026?',
     resposta:
-      'O mapa de 2026 ainda não foi conferido. Em 2025, pela CET, o trajeto saiu da Paulista, desceu pelo Túnel Fanganiello Melhem e pela Av. Dr. Arnaldo até o Pacaembu, seguiu pela Marquês de São Vicente e pela Rudge até o Centro e voltou à Paulista pela Av. Brigadeiro Luís Antônio.',
+      'O regulamento diz que o percurso de 2026 será divulgado pelo site oficial, pelas redes da prova e por e-mail aos inscritos. Em 2025, pela CET, o trajeto saiu da Paulista, desceu pelo Túnel Fanganiello Melhem e pela Av. Dr. Arnaldo até o Pacaembu, seguiu pela Marquês de São Vicente e pela Rudge até o Centro e voltou à Paulista pela Av. Brigadeiro Luís Antônio.',
   },
   {
     pergunta: 'Quanto tempo dura a corrida de São Silvestre?',
-    resposta: `Depende do seu ritmo: em 15 km, quem corre a 6:00 por km leva cerca de ${tempo15(6)}; a 7:00 por km, cerca de ${tempo15(7)}. O tempo limite oficial de 2026 sai no regulamento, que ainda não conferimos.`,
+    resposta: `Depende do seu ritmo: em 15 km, quem corre a 6:00 por km leva cerca de ${tempo15(6)}; a 7:00 por km, cerca de ${tempo15(7)}. O tempo máximo oficial é de 3 horas, contadas a partir das 9h50: a prova fecha às 12h50 para todo mundo, com cortes de horário em cada quilômetro.`,
+  },
+  {
+    pergunta: 'Qual o tempo máximo da São Silvestre 2026?',
+    resposta:
+      'Três horas, contadas a partir das 9h50, 20 minutos depois da última largada: a prova fecha às 12h50 para todos, qualquer que seja o pelotão. Há horário de corte em cada quilômetro — o km 5 fecha às 10h52 e o km 10 às 11h52 —, para liberar o trânsito. Às 9h50 o pórtico de largada é fechado.',
+  },
+  {
+    pergunta: 'Qual a idade mínima para correr a São Silvestre?',
+    resposta:
+      '18 anos completos até 31 de dezembro de 2026 — ou seja, nascidos até 2008, seguindo a regra da Confederação Brasileira de Atletismo para provas de 15 km. Menores de 18 anos não participam, sob nenhuma hipótese.',
+  },
+  {
+    pergunta: 'Onde retirar o kit da São Silvestre 2026?',
+    resposta:
+      'Na Expo São Silvestre, no Pavilhão Ciccillo Matarazzo (prédio da Bienal), no Parque Ibirapuera: de 26 a 29 de dezembro das 9h às 20h, e no dia 30 das 9h às 18h. Não há entrega de kit no dia da prova nem depois. Leve documento com foto e o protocolo de inscrição; terceiros retiram com o documento deles e cópia do documento do atleta.',
+  },
+  {
+    pergunta: 'Qual a premiação da São Silvestre 2026?',
+    resposta:
+      'Prêmio em dinheiro e troféu só para a categoria Elite A: troféus para os cinco primeiros do masculino e do feminino, e o quadro de valores será anunciado até 12 de dezembro de 2026. Os três primeiros cadeirantes recebem troféu ou medalha especial. Todos que terminam recebem medalha de participação; não há premiação por faixa etária.',
   },
   {
     pergunta: 'Quem ganhou a São Silvestre 2025?',
@@ -148,7 +178,7 @@ const faqs = [
 
 const title = 'São Silvestre 2026: Data, Inscrição, Percurso e Horário';
 const description =
-  'São Silvestre 2026 em 31/12 na Paulista: 101ª edição, 15 km, valor dos kits, inscrição pela Ticket Sports, percurso, horário e como treinar.';
+  'São Silvestre 2026 em 31/12 na Paulista: 15 km, horário de cada largada, tempo máximo, valor dos kits, inscrição até 27/11, retirada do kit e premiação.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -171,8 +201,8 @@ const schema = [
     <p class="lead">
       A 101ª Corrida Internacional de São Silvestre é na <strong>quinta-feira,
       31 de dezembro de 2026</strong>: 15 km com largada e chegada na Avenida
-      Paulista. As inscrições abriram em 30 de setembro. Abaixo, o que está
-      confirmado para 2026, o que ainda vale como referência de 2025 — sempre
+      Paulista. As inscrições vão até 27 de novembro ou até acabarem as vagas.
+      Abaixo, o que está confirmado para 2026 — agora com o regulamento —, o que ainda vale como referência de 2025 — sempre
       dito qual é qual — e como chegar bem aos 15 km.
     </p>
 
@@ -184,18 +214,22 @@ const schema = [
             <tr><th scope="row">Data</th><td>Quinta-feira, 31 de dezembro de 2026</td></tr>
             <tr><th scope="row">Edição</th><td>101ª, a primeira depois do centenário</td></tr>
             <tr><th scope="row">Distância</th><td>15 km</td></tr>
-            <tr><th scope="row">Largada e chegada</th><td>Av. Paulista: largada perto do nº 2084; chegada no nº 900, em frente à Fundação Cásper Líbero</td></tr>
-            <tr><th scope="row">Inscrição</th><td>Abertas desde 30/09/2026, só pela Ticket Sports by Ingresse, a partir do site oficial</td></tr>
+            <tr><th scope="row">Largada e chegada</th><td>Av. Paulista: largada entre as ruas Frei Caneca e Augusta; chegada na altura do nº 900, em frente ao Edifício Cásper Líbero</td></tr>
+            <tr><th scope="row">Inscrição</th><td>Abertas, só pela Ticket Sports by Ingresse, a partir do site oficial, até 27/11/2026 ou até esgotar</td></tr>
+            <tr><th scope="row">Idade mínima</th><td>18 anos completos até 31/12/2026</td></tr>
             <tr><th scope="row">Valor (Lote 1)</th><td>Kit Básico R$ 335,90 (60+: R$ 167,95) · Intermediário R$ 459,90 · Premium R$ 1.039,90</td></tr>
             <tr><th scope="row">Vagas</th><td>Total não conferido; à venda em {ultimaVerificacao}</td></tr>
-            <tr><th scope="row">Horários</th><td>A plataforma marca o início às 7h25; ondas de 2026 não conferidas (em 2025: 7h25, 7h40 e 8h05)</td></tr>
+            <tr><th scope="row">Largadas</th><td>7h25 cadeirantes · 7h40 elite feminina · 8h05 elite masculina · 8h06 demais PCD · 8h07 Premium · 8h08 geral, em ondas</td></tr>
+            <tr><th scope="row">Tempo máximo</th><td>3 horas a partir das 9h50; a prova fecha às 12h50, com cortes por km</td></tr>
+            <tr><th scope="row">Kit</th><td>Expo São Silvestre, Bienal do Ibirapuera, 26 a 30/12; não há entrega no dia</td></tr>
             <tr><th scope="row">Realização</th><td>Fundação Cásper Líbero, com organização técnica da Vega Sports</td></tr>
           </tbody>
         </table>
       </div>
       <p class="small">
-        Fontes: Gazeta Esportiva (veículo da Fundação Cásper Líbero),
-        plataforma oficial de inscrição e Prefeitura de São Paulo, conferidas
+        Fontes: regulamento oficial de 2026, Gazeta Esportiva (veículo da
+        Fundação Cásper Líbero), plataforma oficial de inscrição e Prefeitura
+        de São Paulo, conferidas
         em {ultimaVerificacao}.
       </p>
 
@@ -203,8 +237,8 @@ const schema = [
       <p>
         A prova é no dia <strong>31 de dezembro de 2026</strong>. O percurso
         oficial tem 15 km pelas ruas da capital, com largada na Avenida
-        Paulista, perto do número 2084, e chegada em frente ao edifício da
-        Fundação Cásper Líbero, na Paulista, 900. Criada em 1925 pelo
+        Paulista, entre as ruas Frei Caneca e Augusta, e chegada na Paulista,
+        altura do número 900, em frente ao Edifício Cásper Líbero. Criada em 1925 pelo
         jornalista Cásper Líbero, a corrida recebeu em 2022 o título de
         Patrimônio Mundial do Atletismo, da World Athletics. Em 2025, teve
         corredores de cerca de 40 países e de mais de 1.900 cidades
@@ -213,11 +247,21 @@ const schema = [
 
       <h2>Inscrição</h2>
       <p>
-        As inscrições da 101ª edição abriram em <strong>30 de setembro de
-        2026</strong>, numa plataforma nova: a <strong>Ticket Sports by
-        Ingresse</strong>, acessada pelo site oficial, saosilvestre.com.br.
-        Antes da abertura, houve um pré-cadastro para adiantar o preenchimento
-        dos dados. Inscrição feita em outro site não é reconhecida.
+        As inscrições da 101ª edição abriram no fim de setembro, numa
+        plataforma nova: a <strong>Ticket Sports by Ingresse</strong>, acessada
+        pelo site oficial, saosilvestre.com.br. Pelo regulamento, vão até
+        <strong>27 de novembro de 2026</strong> ou até acabarem as vagas, o que
+        vier primeiro. Inscrição feita em outro site não é reconhecida.
+      </p>
+      <p>
+        Regras que valem saber antes de pagar, todas do regulamento: cada CPF
+        faz até 3 inscrições; o pace escolhido na inscrição define a onda de
+        largada e não muda depois; o tamanho da camiseta também não troca. Dá
+        para pedir cancelamento com reembolso em até 7 dias depois da compra.
+        A troca de titular só é feita no dia da retirada do kit, com taxa de
+        R$ 100. Quem tem 60 anos ou mais paga metade do Kit Geral, e há 200
+        vagas de cortesia para pessoas com deficiência, com validação de
+        documentos.
       </p>
       <p>
         Valores do <strong>Lote 1</strong> na plataforma oficial, conferidos
@@ -240,20 +284,57 @@ const schema = [
 
       <h2>Horário de largada</h2>
       <p>
-        A plataforma oficial marca o início da prova às <strong>7h25</strong>
-        do dia 31. O horário de cada pelotão em 2026 sai no regulamento, que
-        ainda não conferimos. Até lá, a referência é 2025, quando a CET
-        divulgou estes horários:
+        Pelo regulamento de 2026, as largadas são estas. O pelotão geral sai em
+        ondas, conforme o pace informado na inscrição, e o horário de cada onda
+        será enviado por e-mail e publicado no site oficial. A organização pede
+        chegar com pelo menos <strong>45 minutos de antecedência</strong>, e
+        quem larga depois do horário pode ser desclassificado.
       </p>
       <div class="table-wrap">
         <table>
-          <caption>Largadas da São Silvestre 2025 (CET)</caption>
+          <caption>Largadas da São Silvestre 2026 (regulamento)</caption>
           <thead><tr><th scope="col">Horário</th><th scope="col">Pelotão</th></tr></thead>
           <tbody>
-            {LARGADAS_2025.map(([h, p]) => <tr><td>{h}</td><td>{p}</td></tr>)}
+            {LARGADAS_2026.map(([h, p]) => <tr><td>{h}</td><td>{p}</td></tr>)}
           </tbody>
         </table>
       </div>
+
+      <h2>Tempo máximo e horários de corte</h2>
+      <p>
+        O tempo máximo é de <strong>3 horas</strong>, contadas a partir das
+        9h50 — 20 minutos depois da última largada programada, às 9h30. A
+        prova fecha às <strong>12h50 para todo mundo</strong>, qualquer que
+        seja o pelotão; às 9h50, o pórtico de largada é fechado. Para liberar
+        as ruas, há horário de corte em cada quilômetro, e a organização avisa
+        que será rigorosa:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <caption>Alguns horários de corte (regulamento, item 21)</caption>
+          <thead><tr><th scope="col">Ponto</th><th scope="col">Passar até</th></tr></thead>
+          <tbody>
+            {CORTES.map(([k, h]) => <tr><td>{k}</td><td>{h}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Na prática, quem larga numa das últimas ondas tem menos folga que
+        quem larga cedo — vale olhar o seu horário de onda quando ele chegar
+        por e-mail.
+      </p>
+
+      <h2>Retirada do kit</h2>
+      <p>
+        A entrega é na <strong>Expo São Silvestre</strong>, no Pavilhão
+        Ciccillo Matarazzo, prédio da Fundação Bienal, no Parque Ibirapuera:
+        de 26 a 29 de dezembro, das 9h às 20h, e no dia 30, das 9h às 18h.
+        Não há entrega no dia da prova nem depois — quem não retira o kit não
+        corre. Leve documento original com foto e o protocolo de inscrição
+        recebido por e-mail. Para retirar no lugar de outra pessoa, leve o seu
+        documento e uma cópia do documento do atleta, que pode ser foto no
+        celular.
+      </p>
       <p>
         Em 2025, a Paulista foi interditada desde as 20h do dia 30, e as vias
         do percurso a partir da madrugada do dia 31. Quando a CET divulgar o
@@ -262,8 +343,9 @@ const schema = [
 
       <h2>Percurso</h2>
       <p>
-        O mapa de 2026 ainda não foi conferido. O de 2025, pela ordem da CET,
-        foi este:
+        Pelo regulamento, o percurso de 2026 será divulgado no site oficial,
+        nas redes da prova e por e-mail aos inscritos. O de 2025, pela ordem da
+        CET, foi este:
       </p>
       <ol>
         {PERCURSO_2025.map((p) => <li>{p}</li>)}
@@ -302,6 +384,23 @@ const schema = [
         acao="Calcular o meu tempo nos 15 km"
       />
 
+      <h2>Premiação e idade mínima</h2>
+      <p>
+        Prêmio em dinheiro e troféu são <strong>só para a categoria Elite
+        A</strong>: troféus para os cinco primeiros do masculino e do feminino,
+        e o quadro de valores será anunciado até 12 de dezembro de 2026. Quem
+        larga em outro pelotão e chega entre os cinco primeiros no tempo geral
+        não entra nessa classificação. Os três primeiros cadeirantes recebem
+        troféu ou medalha especial. Para o restante, a prova é participativa:
+        medalha para todos que terminam e resultado por faixa etária no site,
+        sem pódio.
+      </p>
+      <p>
+        A idade mínima é de <strong>18 anos completos até 31 de dezembro de
+        2026</strong> — nascidos até 2008 —, pela regra da Confederação
+        Brasileira de Atletismo para provas de 15 km.
+      </p>
+
       <h2>Resultado da São Silvestre 2025</h2>
       <p>
         Na 100ª edição, em 31/12/2025, a Prefeitura de São Paulo registrou a
@@ -316,7 +415,7 @@ const schema = [
 
       <h2>Como treinar para os 15 km da São Silvestre</h2>
       <p>
-        Faltam cerca de onze semanas — tempo de verdade para quem já corre 5
+        Faltam cerca de nove semanas — tempo de verdade para quem já corre 5
         ou 10 km chegar bem aos 15. O que mais pesa:
       </p>
       <ul>
@@ -360,6 +459,13 @@ const schema = [
           dados de 2025.
         </li>
         <li>
+          <a href={REGULAMENTO} target="_blank" rel="noopener">Regulamento
+          oficial da 101ª Corrida Internacional de São Silvestre</a> (versão de
+          25/09/2026, lido no PDF enviado pelo Renato em 27/10/2026): largadas,
+          inscrição e prazos, idade mínima, kits, entrega do kit, premiação,
+          percurso e tempo máximo com cortes por km.
+        </li>
+        <li>
           Site oficial, seção "Serviços no percurso" (conferida por print em
           {ultimaVerificacao}): pontos de hidratação, banheiros e serviço
           médico de 2026.
@@ -381,8 +487,7 @@ const schema = [
         </li>
         <li>
           <a href={SITE_OFICIAL} target="_blank" rel="noopener">Site oficial
-          da São Silvestre</a>, onde ficam inscrição e regulamento (não
-          conferido por nós até a última verificação).
+          da São Silvestre</a>, onde ficam inscrição e regulamento.
         </li>
         <li>Conferidas em {ultimaVerificacao}.</li>
       </ul>

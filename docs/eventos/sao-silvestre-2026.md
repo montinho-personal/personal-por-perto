@@ -24,6 +24,48 @@ Informado pelo Renato: 31/12/2026, 15 km, largada e chegada na Av. Paulista.
 - Grafia: Prefeitura "Sicilia Panga" / "Muse Chizachew"; imprensa "Sisilia Panga" / "Muse Gizachew" → usar a do resultado oficial.
 - Tempo do campeão 2025: 44min28s × 1h08min38s em veículos diferentes → não publicar tempo sem o resultado oficial.
 
+## Regulamento 2026 — recebido do Renato em 27/10/2026
+
+PDF "Regulamento — 101ª Corrida Internacional de São Silvestre", cabeçalho
+de 25/09/2026, 32 páginas, arquivado em
+`fontes/sao-silvestre-2026/regulamento-2026-02-10.pdf` (nome do arquivo
+enviado: regulamento-02-10-2026). Fonte oficial (o site segue 403 aqui).
+
+- Data e local: 31/12/2026; largada na Paulista entre Frei Caneca e Augusta;
+  chegada na Paulista, altura do nº 900, Edifício Cásper Líbero; 15 km.
+  Propriedade da FCL, organização Vega Sports.
+- Largadas: 07h25 PCD cadeirantes · 07h40 Elite A/B feminina · 08h05 Elite
+  A/B masculina · 08h06 PCD demais · 08h07 Premium · 08h08 Geral (ondas pelo
+  pace da inscrição; horários das ondas por e-mail/site). Chegar 45 min
+  antes; quem larga atrasado pode ser desclassificado. Última largada
+  programada 09h30 (item 21).
+- Inscrições: abertas "no dia 28 de setembro" e até **27/11/2026** ou até
+  esgotar. **Divergência**: a Gazeta Esportiva deu 30/09 → o artigo diz
+  "fim de setembro". Até 3 inscrições por CPF; pace e camiseta sem troca;
+  reembolso em 7 dias (sac@ticketsports.com.br); troca de titular só na
+  retirada, R$ 100; 60+ paga 50% do Kit Geral; 200 cortesias PCD (TEA
+  incluído), depois 50%.
+- Kits: Geral, Intermediário, Premium (a plataforma chama o Geral de
+  "Básico").
+- Idade mínima: 18 anos completos até 31/12/2026 (nascidos até 2008), CBAt.
+- Kit: Expo São Silvestre, Pavilhão Ciccillo Matarazzo (Bienal), Ibirapuera;
+  26–29/12 9h–20h, 30/12 9h–18h; nada no dia nem depois; documento + protocolo;
+  terceiros com documento próprio + cópia do do atleta.
+- Premiação: dinheiro e troféu só Elite A (troféu top 5 M/F); quadro de
+  valores **até 12/12/2026**; CAD top 3 troféu ou medalha especial; faixa
+  etária só resultado, sem pódio; medalha para todos que concluem.
+- Elite A: índices (M: maratona 2h20, meia 1h07, 15 km 48 min, 10 km 31 min;
+  F: 2h50, 1h20, 1h00, 37min30), 30 vagas cada; Elite B 50 vagas cada;
+  currículos até 07/12.
+- Percurso: "será divulgado" (site, redes, e-mail). Ruas preferencialmente
+  fechadas; órgãos de trânsito definem trechos compartilhados.
+- Tempo máximo: 3h a partir das 09h50 → fecha às 12h50; pórtico fecha 09h50;
+  cortes por km de 10h04 (km 1) a 12h50 (km 15), de 12 em 12 min.
+
+Artigo atualizado em 27/10: tabela-resumo, largadas 2026, seções novas de
+tempo máximo/cortes, retirada do kit, premiação e idade mínima, regras de
+inscrição, 5 FAQs novas/reescritas, Fontes; Última verificação 27/10.
+
 ## Bloqueado (pedir print)
 
 - https://www.saosilvestre.com.br/ (403) — regulamento 2026, inscrição, kit, premiação, altimetria, resultado oficial 2025
@@ -36,7 +78,7 @@ Informado pelo Renato: 31/12/2026, 15 km, largada e chegada na Av. Paulista.
 |---|---|
 | inscrição 2026 | aberta em 30/09/2026 na Ticket Sports; R$ 335,90; 60+ R$ 167,95; até 3 inscrições por CPF; 200 vagas PCD gratuitas |
 | esgotou? | "10 mil registros em 30 minutos" — não diz esgotou |
-| regulamento 2026 | não encontrado (tempo limite, ondas, idade mínima) — lembrete em 16/11 |
+| regulamento 2026 | **recebido em 27/10** (ver acima) |
 | premiação, kit 2026, transmissão 2026 | nada confirmado |
 | regulamento 2026 (pista de 20/10) | resumo de busca diz que saosilvestre.com.br/regulamento/ já reproduz o regulamento da **101ª edição**, com quadro de premiação da Elite A "até 12/12/2026", e há um PDF em seguro.saosilvestre.com.br/pdf/regulamento_completo.pdf. Site (403) e static.saosilvestre.com.br (recusado pelo proxy) inacessíveis aqui → **pedir print/PDF ao Renato**. Não usar até ler a fonte. |
 
