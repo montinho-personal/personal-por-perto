@@ -126,6 +126,42 @@ personal) × o que dá para afirmar com fonte.
 - 26/10: leva 3 começou — `/guias/tenis-para-hyrox/`, publicado antes dos
   prints a pedido do Renato (`docs/tenis-para-hyrox.md`).
 
+## AnswerThePublic de "tempo hyrox" (27/10/2026)
+
+Três exportações do Renato em `docs/pesquisas/2026-10-27-tempo-hyrox/answerthepublic/`
+(Google e Bing, PAA, prompts de ChatGPT e Gemini).
+
+**O que veio.** 159 sugestões no Google, mas cerca de dois terços são em
+italiano ("tempo" = tempo, em italiano: *tempo medio hyrox coppia*, *miglior
+tempo hyrox rimini*) e um bloco é "tempo run" (treino em inglês) ou nome de
+tênis (*Cloud X Tempo*, *Hyperion Tempo*, *Kiprun Kipstorm Tempo*). Volume
+quase nulo: só cinco termos com 10/mês, um deles em português — **melhor
+tempo hyrox**. O Bing só trouxe italiano.
+
+**O que é intenção real em português**, por grupo:
+
+| grupo | termos | onde responde |
+|---|---|---|
+| quanto dura | quanto tempo dura hyrox · hyrox quanto tempo · hyrox tempo de prova · tempo prova hyrox · tempo médio (de um) hyrox · tempo médio prova | pilar `/guias/o-que-e-hyrox/` (já tem "quanto tempo dura") |
+| referência de tempo | melhor tempo hyrox (10) · melhor tempo hyrox brasil · tempo recorde · tempo mínimo / máximo · tempo elite | só com resultado oficial — sem fonte aberta aqui |
+| por categoria | tempo hyrox dupla · misto · pro · open · tempo hyrox são paulo | idem |
+| por estação | tempo médio wall ball · burpees · skierg · remo | a calculadora (tempo por estação) |
+| tempo limite | tempo máximo hyrox | regra do rulebook — PDF bloqueado aqui |
+
+PAA: quase nada sobre tempo de prova — vem "o que é um treino de Hyrox",
+"For Time" do CrossFit, "45 minutos de treino são suficientes?" e **"qual o
+melhor relógio para Hyrox?" / "o que é HYROX no Amazfit?"**. Prompts de IA:
+equipamento e relógio para medir tempo, plano de treino para melhorar o
+tempo, tênis, ritmo por estação, tempo médio, treinador online.
+
+**Leitura.** A busca por "tempo" de Hyrox no Brasil é pequena e se divide
+entre "quanto dura" (o pilar já responde) e "qual é um bom tempo" (que pede
+resultado oficial com fonte). A calculadora continua fazendo sentido como
+ferramenta — "qual pace e qual tempo por estação a minha meta pede" —, mas
+não como resposta a demanda medida: entra pelo encaixe com a família (pace,
+calorias do Hyrox), não pelo volume. Relógio reaparece (PAA e IA) — segue
+fora por exigir manual de cada marca.
+
 ## Ritmo
 
 Cria páginas novas → dividir. Leva 1: Hyrox × CrossFit e o pilar "O que é
