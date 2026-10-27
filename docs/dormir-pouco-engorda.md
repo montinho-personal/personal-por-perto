@@ -10,6 +10,16 @@ Google: dormir pouco engorda · dormir ajuda a emagrecer · quantas horas de
 sono para emagrecer · falta de sono aumenta a fome. AnswerThePublic: dormir
 pouco · sono e emagrecimento.
 
+## Prints recebidos — "quantas horas de sono para emagrecer" (27/10, 08h22)
+
+Arquivos em `docs/pesquisas/2026-10-27-dormir-pouco-engorda/prints/` (01 a 03).
+
+| tela | o que mostrou | onde entra |
+|---|---|---|
+| autocompletar (01) | horas de sono para emagrecer · **calculadora** · para perder peso · **para engordar** · quanto tempo de sono para emagrecer | H2 "quantas horas"; "calculadora" → sem ferramenta de sono, o bloco do artigo pode ser a calculadora de emagrecimento; "para engordar" → FAQ (dormir muito engorda?) só com fonte |
+| visão geral de IA (02) | 7 a 9 horas; menos de 6 h: grelina ↑, leptina ↓, cortisol ↑ "favorece gordura abdominal", menos gasto, menos controle de impulso — citando clínica. **Não é fonte** | grelina/leptina e cortisol entram pelos estudos (Spiegel, Leproult); "gordura abdominal" e "metabolismo mais lento" não (Al Khatib: gasto não mudou) |
+| PAA (03) | **é normal ter 5 horas de sono?** · **quantas calorias se perde em 7 horas de sono?** · **é verdade que dormir bem emagrece?** · **é normal perder 1 kg dormindo?** | FAQ para cada; calorias do sono pela conta do metabolismo de repouso (calculadora de gasto diário); 1 kg dormindo = água, não gordura |
+
 ## Fontes (resumos no Europe PMC, 27/10/2026)
 
 - Al Khatib et al. 2017, Eur J Clin Nutr (PMID 27804960): meta-análise, 11
