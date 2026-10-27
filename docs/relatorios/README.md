@@ -163,6 +163,48 @@ A arquitetura de links e os metadados do piloto entraram em 11/09 — um dia
 antes do fim deste período. Não há nada a ler aqui, e a data marcada continua
 sendo 02/10.
 
+## Desempenho — Search Console, 28/06 a 27/10/2026 — e o balanço das alterações
+
+Arquivos: `2026-10-27-gsc-desempenho/` (export acumulado do Renato). Os
+cortes por página e por consulta, antes × depois de cada alteração, foram
+puxados pelo Supermetrics (GSC), em janelas da mesma página, e comparados
+**por dia** (as janelas têm tamanhos diferentes). Os dois últimos dias
+(25–26/10) ainda podem subir no GSC.
+
+Totais: **1.241 cliques, 115.476 impressões, CTR 1,07%** (eram 1.154 /
+105.190 / 1,10% em 22/10). Janela nova, 22 a 26/10: **15,8 cliques/dia,
+2.023 impressões/dia**, CTR 0,78%, posição 7,9 — no mesmo patamar da
+janela 13–21/10 (17,3 / 2.218): o pico da HYROX passou e o site segurou.
+
+### Balanço das alterações anotadas para medir (dias até 27/10)
+
+| alteração | data | dias | antes → depois (por dia ou posição) | leitura |
+|---|---|---|---|---|
+| **Quanto custa personal trainer** (tratamento manual + prints) | 14/09 e 05/10 | 43 e 22 | "personal trainer preço" **63,5 → 14,3**; "quanto custa um personal trainer" **40,8 → 10,8**; "… por mês" 46 → **8,1** (170 impr.); página 0,8 → **0,8 cliques/dia**, 15 → **146 impr./dia** | **melhorou muito** — a melhor alteração do período; ainda converte pouco (CTR 0,6%) |
+| Fila 1 de reescritas (13 artigos de musculação/emagrecimento) | 03 a 11/09 | 46–54 | as impressões em posição 40–80 **sumiram na semana 35 (fim de agosto), antes das reescritas**; o que ficou subiu para posição 7–10 (elevação frontal 23,5 → 8,4; encolhimento 24,8 → 7,5; tríceps testa 25,7 → 9,1) | **inconclusivo**: a queda de volume não é das reescritas; as que ficaram rankeiam melhor, mas com 1–2 impr./dia |
+| Pullover | 13/09 | 44 | 1,5 → 0,1 impr./dia (mesmo padrão: posição 18,9 → 6,5) | inconclusivo |
+| 10 páginas da região (Alphaville, Tamboré, Barueri…) por prints | 30/09 | 27 | 7 → **14 impr./dia**; 0,14 → 0,16 cliques/dia | impressão **dobrou**; clique igual; Tamboré/Santana seguem com o problema de indexação (`docs/indexacao-analise.md`) |
+| ~50 cidades com prints (capitais e médias) | 30/09 a 08/10 | 19–27 | **4,5 → 4,5 cliques/dia**; 416 → 397 impr./dia | **seguraram**; as cidades **sem** alteração caíram de 6,1 → 3,3 cliques/dia no mesmo período — vantagem relativa clara, sem prova de causa |
+| Palhoça (consultoria online) | 30/09 | 27 | zero clique, consulta perdeu volume (já lido em 22/10) | **não funcionou** — encerrado |
+| Calculadoras de calorias pelos prints (escada, natação, corda, musculação, corrida, vôlei, caminhada, futebol, bicicleta, dança) | 05 e 06/10 | 21–22 | grupo /calorias/: 8 → 2 cliques/semana; impressões estáveis (~3 mil/semana); posição 7,0 → 7,7. Por página: **corda 20 → 143 impr./dia**, vôlei 6 → 33, bicicleta 6 → 36; escada 61 → 33, natação 38 → 14 | **misto**: corda, vôlei e bicicleta subiram muito; escada, natação, corrida e lutas caíram na semana 42 e voltaram só em parte na 43 — cedo para fechar |
+| Lutas (muay thai) | 08/10 | 19 | 22 → 4 impr./dia; 4 → 0 cliques | **piorou** — vigiar; a queda veio com a do grupo na semana 42 |
+| Personal trainer a domicílio | 08/10 | 19 | 1,4 → 1,3 impr./dia; posição 6,8 → 6,4 | estável |
+
+**O que não dá para medir aqui:** o bloco de ferramenta nos artigos
+(desde 02/09) e os links em palavra (24/09 e 06/10) — o efeito é clique
+para a ferramenta, que é GA4 (`artigo:ferramenta-inline`), não Search
+Console. As páginas novas de 20 a 27/10 (artigos, Hyrox, bairros, cidades)
+não têm "antes".
+
+### O que conferir no próximo relatório
+
+1. **Grupo /calorias/** — se escada, natação, corrida e lutas voltam ao
+   patamar de setembro; se não voltarem, rever o título novo de cada uma.
+2. **Quanto custa** — se a posição boa vira clique (CTR ainda 0,6%).
+3. **Cidades com prints × sem** — se a diferença de 30/09–08/10 se mantém.
+4. Os da lista de 22/10 seguem valendo (Salvador e Porto Alegre, bairros,
+   `fraqueza-para-treinar`, queda pós-HYROX).
+
 ## Desempenho — Search Console, 28/06 a 22/10/2026
 
 Arquivos: `2026-10-22-gsc-desempenho/` (export original e
