@@ -559,3 +559,29 @@ Saldo da leva: 6 entradas → 3 mantidas, 3 removidas, 2 detalhes corrigidos. **
 | Academias ao ar livre do Mãe Bonifácia | confirmada; detalhe ganha o horário do parque | Câmara de Cuiabá ("cinco postos com equipamentos de ginástica") + SECOM-MT/Detran ("academia ao ar livre", aberto todos os dias das 6h às 18h) |
 
 Saldo da leva: 8 entradas → 5 mantidas, 3 removidas, 3 detalhes corrigidos.
+
+### 27/10/2026 — leva 23 (rotina, Parte B: Juiz de Fora e São José do Rio Preto)
+
+**Juiz de Fora/MG** — Smart Fit: listagem oficial da cidade (smartfit.com.br/academias/mg/juiz-de-fora) com 4 unidades abertas, todas `"opened":true`.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "avenidas Rio Branco e Independência e em bairros" | **corrigida**: quatro unidades — Independência (Av. Barão do Rio Branco, 2805, Centro), Avenida Rio Branco (Av. Barão do Rio Branco, 1658, Centro), São Pedro (Av. Pres. Costa e Silva, 1933) e Moinho (Av. Pres. Juscelino Kubitscheck, 900, Industrial). Nenhuma fica na Av. Independência: a unidade "Independência" é na Rio Branco | páginas oficiais das unidades |
+| Academias locais | **removida**: não é nome de academia | — |
+| Espaços da UFJF e Mata do Krambeck | **removida**: nenhuma fonte oficial aberta diz que campus e trilhas são abertos ao treino (ufjf.br 403 aqui; nada na Prefeitura) | — |
+
+Texto: `mercado`, `academias`, destaque e FAQ "onde o personal atende" ajustados para as quatro unidades; o destaque "Mata do Krambeck e campus da UFJF para treino ao ar livre" saiu. **Fica para revisão à parte**: Krambeck e campus seguem citados em `parques`, na conclusão e na FAQ — fora do escopo da Parte B (não são academias), mas sem fonte oficial conferida.
+
+**São José do Rio Preto/SP** — Smart Fit: listagem oficial (3 unidades, `"opened":true`); Selfit: página oficial e sitemap.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Centro | mantida; detalhe → "na Rua Coronel Spinola de Castro, no Centro" | /academias/centro-3 |
+| Smart Fit Avenida JK | mantida; detalhe → "na Avenida Juscelino Kubitschek, no Jardim Maracanã" | /academias/avenida-jk |
+| Smart Fit Shopping Cidade Norte | **corrigida**: "zona norte" não está na fonte → Av. Alfredo Antonio de Oliveira, Jardim Planalto | /academias/shopping-cidade-norte |
+| Selfit Rio Preto | **corrigida**: nome oficial da unidade é Glicério, R. General Glicério, Centro; spinning e lutas não constam da página | selfitacademias.com.br/academias/sao-paulo/sao-jose-do-rio-preto/general-glicerio |
+| Allp Fit Rio Preto | **removida**: sites da rede bloqueados aqui, ausente do TotalPass, nenhuma outra fonte com endereço — vale reconferir de outra rede | — |
+
+Texto `academias` reescrito (a oferta "concentrada na zona sul" não bate com as unidades conferidas).
+
+Saldo da leva: 8 entradas → 5 mantidas (3 com detalhe corrigido, 2 com detalhe reescrito pelo endereço oficial) e 3 removidas (2 em Juiz de Fora, 1 em Rio Preto); Juiz de Fora fica com 1 entrada (Smart Fit, 4 unidades) — completar vira tarefa à parte.

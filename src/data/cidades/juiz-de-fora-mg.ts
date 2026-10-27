@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Principal polo econômico da Zona da Mata mineira, Juiz de Fora tem indústria diversificada, forte setor de serviços (telecomunicações, comércio e saúde) e destaque em educação, ancorado na UFJF. A cidade vem se reposicionando como centro regional de serviços, e o grande público universitário dá energia ao mercado fitness.',
 
   mercado:
-    'O mercado é maduro, com múltiplas unidades da Smart Fit (avenidas Rio Branco, Independência e bairros) e redes e academias locais consolidadas. A cultura de musculação é forte, reforçada pelo público da UFJF, e o Parque Halfeld funciona como ponto de encontro de corredores no centro.',
+    'O mercado é maduro, com quatro unidades da Smart Fit (duas na Avenida Barão do Rio Branco, no Centro, e outras no São Pedro e no Industrial). A cultura de musculação é forte, reforçada pelo público da UFJF, e o Parque Halfeld funciona como ponto de encontro de corredores no centro.',
 
   bairrosNobres: ['Alto dos Passos', 'Granbery', 'Cascatinha', 'Bom Pastor'],
   bairrosPopulares: ['Benfica', 'Santa Luzia', 'Retiro', 'Vila Ideal'],
@@ -68,18 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Juiz de Fora tem forte tradição em corrida de rua, com o Parque Halfeld e a Avenida Rio Branco como cenários icônicos de largadas, e é uma cidade universitária com grande público jovem e ativo via UFJF.',
   academias:
-    'A oferta reúne várias unidades da Smart Fit e academias locais bem distribuídas pelos bairros, com cultura consolidada de musculação e bom espaço para treino ao ar livre na Mata do Krambeck e no campus.',
+    'A Smart Fit tem quatro unidades na cidade: duas na Avenida Barão do Rio Branco, no Centro — uma delas chamada Independência —, uma no São Pedro e uma no Industrial.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades nas avenidas Rio Branco e Independência e em bairros' },
-    { nome: 'Academias locais', detalhe: 'bem distribuídas, com cultura consolidada de musculação' },
-    { nome: 'Espaços da UFJF e Mata do Krambeck', detalhe: 'campus e trilhas abertos ao treino ao ar livre' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: duas na Avenida Barão do Rio Branco, no Centro, uma no São Pedro e uma no Industrial' },
   ],
+  academiasVerificadasEm: '2026-10-27',
 
   destaquesFitness: [
-    'Várias unidades da Smart Fit e redes locais bem distribuídas.',
+    'Quatro unidades da Smart Fit, duas delas na Avenida Rio Branco, no Centro.',
     'Meia Maratona de Juiz de Fora, evento de corrida consolidado.',
     'Parque Halfeld como hub de corrida no centro da cidade.',
-    'Mata do Krambeck e campus da UFJF para treino ao ar livre.',
   ],
 
   precos: {
@@ -115,7 +113,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Juiz de Fora?',
       resposta:
-        'O eixo da Avenida Rio Branco com o Parque Halfeld é o coração — ali largam as corridas da cidade e se concentram as unidades da Smart Fit e academias locais. O campus da UFJF funciona como pista informal de corrida e bike dos moradores, e a Mata do Krambeck oferece trilhas em plena Mata Atlântica urbana. O atendimento em casa é comum no Alto dos Passos, no Granbery e no Bom Pastor, bairros de rua íngreme onde a subida já é parte do aquecimento.',
+        'O eixo da Avenida Rio Branco com o Parque Halfeld é o coração — ali largam as corridas da cidade e ficam duas das quatro unidades da Smart Fit. O campus da UFJF funciona como pista informal de corrida e bike dos moradores, e a Mata do Krambeck oferece trilhas em plena Mata Atlântica urbana. O atendimento em casa é comum no Alto dos Passos, no Granbery e no Bom Pastor, bairros de rua íngreme onde a subida já é parte do aquecimento.',
     },
     {
       pergunta: 'A altitude de 1.100 m de Juiz de Fora interfere no treino?',
@@ -136,7 +134,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Juiz de Fora', url: 'https://www.pjf.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-26',
+  atualizadoEm: '2026-10-27',
   capaArte: {
     src: '/capas-cidade/juiz-de-fora-mg.webp',
     w: 1200,

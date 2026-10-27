@@ -68,15 +68,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Rio Preto tem forte agenda de corrida de rua, com várias etapas de circuitos nacionais, e é reconhecida pela qualidade de vida e pela arborização (quase todas as vias têm árvores). O polo de saúde reforça uma cultura de cuidado com o corpo.',
   academias:
-    'A oferta de academias e estúdios é boa para o porte da cidade, concentrada principalmente nos bairros de maior renda da zona sul, e bem complementada pelos espaços ao ar livre da Represa Municipal.',
+    'A Smart Fit tem três unidades na cidade — no Centro, na Avenida JK e no Shopping Cidade Norte — e a Selfit uma, no Centro; os espaços ao ar livre da Represa Municipal complementam a oferta.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Centro', detalhe: 'uma das três unidades da rede na cidade' },
-    { nome: 'Smart Fit Avenida JK', detalhe: 'unidade da rede na Avenida Juscelino Kubitschek' },
-    { nome: 'Smart Fit Shopping Cidade Norte', detalhe: 'unidade dentro do shopping, na zona norte' },
-    { nome: 'Selfit Rio Preto', detalhe: 'rede com musculação, ginástica, spinning, lutas e dança' },
-    { nome: 'Allp Fit Rio Preto', detalhe: 'unidade da rede em expansão na cidade' },
+    { nome: 'Smart Fit Centro', detalhe: 'na Rua Coronel Spinola de Castro, no Centro' },
+    { nome: 'Smart Fit Avenida JK', detalhe: 'na Avenida Juscelino Kubitschek, no Jardim Maracanã' },
+    { nome: 'Smart Fit Shopping Cidade Norte', detalhe: 'no shopping, na Avenida Alfredo Antonio de Oliveira, no Jardim Planalto' },
+    { nome: 'Selfit Glicério', detalhe: 'na Rua General Glicério, no Centro' },
   ],
+  academiasVerificadasEm: '2026-10-27',
 
   destaquesFitness: [
     'Polo de saúde (FAMERP e Hospital de Base) com ecossistema favorável ao bem-estar.',
@@ -104,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Preto', url: 'https://www.riopreto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-10-27',
   capaArte: {
     src: '/capas-cidade/sao-jose-do-rio-preto-sp.webp',
     w: 1200,
