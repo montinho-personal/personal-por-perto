@@ -91,10 +91,18 @@ export const cidade: Cidade = {
 
   vizinhas: ['campo-grande-ms', 'aquidauana-ms'],
 
+  /* TotalPass + Wellhub, Sidrolândia/MS (27/10/2026); TopFit só com a rua, número e bairro divergem. */
+  academiasProximas: [
+    { nome: 'Arena Gym', detalhe: 'na Avenida Antero Lemes da Silva, no Centro' },
+    { nome: 'Raça Gym', detalhe: 'na Rua Pernambuco, no Centro' },
+    { nome: 'Academia TopFit', detalhe: 'na Rua Espírito Santo' },
+  ],
+  academiasVerificadasEm: '2026-10-27',
+
   fontes: [
     { nome: 'IBGE Cidades — Sidrolândia', url: 'https://cidades.ibge.gov.br/brasil/ms/sidrolandia/panorama' },
     { nome: 'Prefeitura de Sidrolândia', url: 'https://www.sidrolandia.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-27',
 };

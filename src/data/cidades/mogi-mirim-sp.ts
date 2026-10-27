@@ -86,10 +86,21 @@ export const cidade: Cidade = {
 
   vizinhas: ['mogi-guacu-sp', 'campinas-sp', 'limeira-sp'],
 
+  /* TotalPass + Wellhub, mesmo endereço e CEP de Mogi Mirim/SP (27/10/2026). */
+  academiasProximas: [
+    { nome: 'Skyfit Academia', detalhe: 'na Rua Chico Venâncio, no Centro' },
+    { nome: 'Loud Fit', detalhe: 'na Rua Padre Roque, no Centro' },
+    { nome: 'Box Brazil Fitness', detalhe: 'na Rua Padre Roque, no Centro' },
+    { nome: 'Smart Company Academia', detalhe: 'na Avenida 22 de Outubro, no Jardim Santa Helena' },
+    { nome: 'Coliseu Academia', detalhe: 'na Rua Santa Cruz, no bairro Santa Cruz' },
+    { nome: 'CrossFit Marduk', detalhe: 'na Avenida Pedro Botesi, no Jardim Scomparim' },
+  ],
+  academiasVerificadasEm: '2026-10-27',
+
   fontes: [
     { nome: 'IBGE Cidades — Mogi Mirim', url: 'https://cidades.ibge.gov.br/brasil/sp/mogi-mirim/panorama' },
     { nome: 'Prefeitura de Mogi Mirim', url: 'https://www.mogimirim.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-27',
 };
