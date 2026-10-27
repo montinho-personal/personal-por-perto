@@ -43,15 +43,20 @@ origem (acima do peso, hérnia de disco).
 
 **Ficou de fora, por falta de fonte que abrisse aqui:**
 
-- endereço com número (Av. Copacabana, 325, no artigo do Montinho): só o
-  Instagram oficial traz, e instagram.com não abre. O texto manda para o
-  @six.spalphaville. **Pedir print da bio** para incluir;
-- cofundadores, outras unidades (Brasília, Itaim, Vila Nova Conceição,
+- outros sócios além dos dois abaixo, outras unidades (Brasília, Itaim, Vila Nova Conceição,
   Belvedere) e preços de outras unidades: Forbes, IstoÉ Dinheiro, Mercado &
   Consumo, Seu Dinheiro e Money Times aparecem na busca, mas todos dão 403
   no proxy. Resumo de busca não é fonte;
 - "academia mais alta do Brasil": só apareceu como título truncado numa
   busca de imagens (print 05).
+
+**Print da bio do Instagram oficial (27/10, print 12)** — entrou no mesmo
+dia: endereço "Av. Copacabana, 325 - Empresarial 18 do Forte - Alphaville,
+Barueri, Brazil 06472001" (confere a cidade: lado de Barueri) e o post
+"Dr. Leandro Vaz, Médico Nutrólogo e Cofundador SIX Wowness Club". A bio diz
+"Academia 6 estrelas. A primeira e única do Brasil" — slogan da marca, não
+entra como fato. O print **não** mostra que a unidade já abriu (sem horário,
+sem "inaugurado"), então a Six continua fora de `academiasProximas`.
 
 ## Prints e Answer the Public (27/10)
 
@@ -76,9 +81,9 @@ O que entrou e onde:
 | busca/pergunta | onde |
 |---|---|
 | mensalidade / valor | título, lead, H2 "Quanto custa", FAQ 1 |
-| onde vai ser / endereço | H2 "Onde fica", FAQ 2 (sem número, ver acima) |
+| onde vai ser / endereço | H2 "Onde fica", FAQ 2 (bio do Instagram, print 12) |
 | quando abre | nota de fonte, FAQ 3 |
-| quem é o dono | FAQ 4 (só o fundador, que a VERO confirma) |
+| quem é o dono | FAQ 4 (fundador pela VERO, cofundador pelo Instagram) |
 | academia mais cara de Alphaville | FAQ 5 (sem ranking: as outras não publicam preço) |
 | condomínio × academia (IA) | primeira frase do lead |
 
@@ -98,8 +103,9 @@ fonte aberta), fotos (o portal não usa foto de terceiros).
 **Fica para depois, por regra:**
 
 - `academiasProximas` de Alphaville: unidade "em breve" não entra até abrir
-  (CLAUDE.md). Quando o Renato mandar print do Instagram com a academia
-  funcionando e o endereço, a Six entra na lista, com link para este guia.
+  (CLAUDE.md). Endereço já confirmado (print 12); falta só a prova de que
+  abriu (post/story de inauguração ou horário de funcionamento). Aí a Six
+  entra na lista, com link para este guia.
 - O guia de academias e o top 10 do site do Montinho ainda não citam a Six.
   É outro repositório, fora do alcance desta sessão.
 
