@@ -2,7 +2,7 @@
 
 Item da pauta de emagrecimento. Pedido do Renato em 27/10/2026.
 
-**Estado: fontes levantadas; título, H1 e FAQs esperam os prints.**
+**Estado: publicado em 27/10/2026** com os prints (01 a 08) e o AnswerThePublic. Falta só o print de "dormir ajuda a emagrecer" e o da recomendação de horas (CDC/AASM).
 
 ## Prints e AnswerThePublic pedidos (27/10)
 
@@ -32,6 +32,32 @@ a busca visível (provavelmente de "dormir pouco engorda").
 | PAA (06) | **dormir 4 horas por dia é pouco?** · qual fruta faz dormir rápido? · **dormir fora de hora engorda?** · por que acordo às 3 da manhã e não durmo mais? | FAQs de 4 h e "fora de hora" (cronotipo: associação, não causa); fruta e acordar às 3 h fora (sem fonte / outro tema, com médico se persistir) |
 | outras (07) | **dormir pouco engorda ou emagrece** · fome e sono excessivo · remédio para síndrome da fome noturna · fome de madrugada o que comer · **dormir pouco emagrece** · fome de madrugada gravidez; resultado da EMS: "ainda não foi comprovado se é a falta de sono que leva à obesidade ou vice-versa" | título com "engorda ou emagrece"; seção "causa ou consequência?" (Cappuccio: associação; Tasali/Markwald: experimento); fome noturna/remédio → médico |
 | outras (08) | **dormir emagrece quantos quilos** · **dormir com fome emagrece** · **dormir de dia engorda** · fome de madrugada o que fazer / diabetes · muito sono e muita fome gravidez | FAQs de "quantos quilos" (água, não gordura), "dormir com fome", "dormir de dia" (trabalho em turno: só com fonte); diabetes/gravidez → médico |
+
+## AnswerThePublic (27/10/2026)
+
+Arquivos em `answerthepublic-dormir-pouco/` e
+`answerthepublic-sono-e-emagrecimento/`, na pasta de pesquisas.
+
+**"dormir pouco"** — 354 sugestões, ~5,9 mil/mês. O maior bloco é saúde,
+não peso: faz mal (720), dor de cabeça (~520), pressão (~270), tontura
+(~300), o que acontece se dormir pouco todos os dias (210), gravidez (170),
+imunidade, envelhece, cortisol (40), glicose (30), testosterona (40). Peso:
+**dormir pouco engorda (320), emagrece (210), engorda ou emagrece (170)**.
+PAA: 4 horas faz mal? · 7 horas de sono são boas? · sonolência de dia é
+alerta? · melhor dormir 2 horas ou nada? Prompts de IA: colchão, suplemento,
+apps, TCC para insônia, medicina do sono.
+
+**"sono e emagrecimento"** — 20 sugestões, ~210/mês (140 o termo puro).
+PAA: **dormir queima calorias? / quantas kcal se perde dormindo?** · vilão
+do emagrecimento · fruta que faz dormir · primeiro sinal de que está
+emagrecendo.
+
+**Onde entra:** título "engorda ou emagrece"; H2 "dormir pouco faz mal?"
+curto, só com o que tem fonte (cortisol; apneia), e o resto (dor de cabeça,
+pressão, tontura, gravidez) → médico, sem afirmar; FAQ "quantas calorias se
+gasta dormindo" pela calculadora de gasto diário (bloco do artigo); FAQ de
+4 horas pelo estudo do cortisol (4 h de sono). Fora: colchão, suplemento,
+fruta, chá (sem fonte / outra intenção).
 
 ## Fontes (resumos no Europe PMC, 27/10/2026)
 

@@ -659,7 +659,7 @@ hipertrofia), já usados no portal.
 | Fome emocional | `fome-emocional` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/fome-emocional.md` |
 | Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | |
 | Proteína e saciedade | `proteina-e-saciedade` | |
-| Dormir pouco engorda? | `dormir-pouco-engorda` | |
+| Dormir pouco engorda? | `dormir-pouco-engorda` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/dormir-pouco-engorda.md` |
 | Emagrecer sem academia | `emagrecer-sem-academia` | |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
 | Método 12-3-30 na esteira | `metodo-12-3-30` | ✅ 2026-09-30 · a pedido do Renato, pelas buscas |

@@ -1,0 +1,358 @@
+---
+/**
+ * Dormir pouco engorda? — o sono e o peso: fome, quanto se come, o que se
+ * perde na dieta, causa ou consequência, e quanto se gasta dormindo.
+ *
+ * Prints do Google de 27/10/2026 ("quantas horas de sono para emagrecer",
+ * "falta de sono aumenta a fome") e AnswerThePublic de "dormir pouco" e
+ * "sono e emagrecimento" em docs/pesquisas/2026-10-27-dormir-pouco-engorda/;
+ * leitura em docs/dormir-pouco-engorda.md.
+ *
+ * Fontes conferidas em 27/10/2026 (resumos no Europe PMC). Fora, por falta
+ * de fonte aberta: o número de horas recomendado para adultos (consenso da
+ * AASM e CDC bloqueados aqui — pedido print ao Renato), que dormir tarde
+ * ou de dia, por si, engorde, e os efeitos de saúde fora do peso (dor de
+ * cabeça, pressão, tontura), que ficam com o médico.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/emagrecimento/fome-emocional/',
+    titulo: 'Fome emocional',
+    descricao: 'O que é, como perceber e o que os estudos mostram que ajuda.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Por que o treino de força importa mais durante a dieta.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/deficit-calorico-como-funciona/',
+    titulo: 'Déficit calórico: como calcular',
+    descricao: 'A conta do gasto e do corte, passo a passo, com exemplo.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/dormir-pouco-engorda';
+const atualizadoEm = '2026-10-27';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Dormir pouco engorda?', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Dormir pouco engorda?',
+    resposta:
+      'Pode engordar, sim, porque faz comer mais. Numa meta-análise de estudos em que as pessoas dormiram menos que o habitual, elas comeram em média 385 kcal a mais por dia, sem gastar mais. Num estudo em laboratório, cinco noites de sono insuficiente levaram a ganho de 0,8 kg, com o comer extra concentrado depois do jantar.',
+  },
+  {
+    pergunta: 'Dormir pouco emagrece?',
+    resposta:
+      'Não. Mesmo quando a balança desce por um dia, o efeito dos estudos vai na direção contrária: mais fome, mais calorias e, durante a dieta, menos gordura perdida. Num ensaio, quem fez dieta dormindo 5,5 horas perdeu 0,6 kg de gordura, contra 1,4 kg de quem dormiu 8,5 horas.',
+  },
+  {
+    pergunta: 'Dormir bem ajuda a emagrecer?',
+    resposta:
+      'Ajuda a comer menos. Num ensaio clínico com 80 adultos com sobrepeso que dormiam menos de 6,5 horas, orientar o sono aumentou o tempo dormindo em cerca de 1,2 hora por noite e reduziu o consumo em 270 kcal por dia, na vida real. Sozinho, não emagrece: o déficit calórico continua sendo a conta que decide.',
+  },
+  {
+    pergunta: 'Falta de sono aumenta a fome?',
+    resposta:
+      'Aumenta. Em homens jovens com duas noites de sono curto, o hormônio que dá saciedade (leptina) caiu 18%, o que estimula a fome (grelina) subiu 28%, a fome subiu 24% e o apetite por alimentos calóricos e ricos em carboidrato, de 33% a 45%.',
+  },
+  {
+    pergunta: 'Quantas calorias se gasta dormindo?',
+    resposta:
+      'Perto do metabolismo de repouso: dormindo, o corpo gasta mais ou menos o que gasta parado acordado, hora a hora. O número depende do seu peso, altura, idade e sexo — a calculadora de gasto calórico diário faz essa conta. Dormir mais não aumenta o gasto de forma relevante; o que muda é quanto se come.',
+  },
+  {
+    pergunta: 'É normal perder 1 kg dormindo?',
+    resposta:
+      'Na balança da manhã, pode acontecer, mas não é gordura: é sobretudo água e o que estava no intestino, que voltam ao longo do dia. Um quilo de gordura guarda cerca de 7.700 kcal — muito mais do que o corpo gasta numa noite inteira.',
+  },
+  {
+    pergunta: 'Dormir 4 horas por dia é pouco?',
+    resposta:
+      'Para o corpo, sim. Num estudo, dormir só das 4h às 8h por uma noite subiu o cortisol do fim da tarde seguinte em 37%. Se dormir pouco é a sua rotina — e não só uma noite ruim —, vale conversar com um médico.',
+  },
+  {
+    pergunta: 'Dormir tarde ou fora de hora engorda?',
+    resposta:
+      'Os estudos mostram associação, não causa. Numa revisão de 43 estudos, quem tem o relógio biológico mais noturno teve hábitos alimentares piores em quase todos, mas mais obesidade em só cerca de metade. O que pesa mais, pelos experimentos, é quanto se dorme e quanto se come depois.',
+  },
+  {
+    pergunta: 'Dormir pouco é causa ou consequência do peso?',
+    resposta:
+      'Os dois caminhos existem. Nos estudos de observação, dormir pouco anda junto com obesidade, mas os próprios autores dizem que não dá para saber quem causa quem. Nos experimentos, dormir menos fez comer mais, e dormir mais fez comer menos. E no sentido contrário, ganhar peso piora a apneia do sono, que atrapalha o sono.',
+  },
+  {
+    pergunta: 'Ronco e cansaço de dia têm a ver com o peso?',
+    resposta:
+      'Podem ter. Num acompanhamento de quatro anos, ganhar 10% do peso aumentou em cerca de 32% o índice de apneia do sono, e perder 10% o reduziu em cerca de 26%. Ronco alto, pausas na respiração e sono durante o dia pedem avaliação médica: o diagnóstico de apneia é feito com exame do sono, não com questionário.',
+  },
+];
+
+/* 58 caracteres. "engorda ou emagrece" vem das pesquisas relacionadas (27/10). */
+const title = 'Dormir Pouco Engorda ou Emagrece? O Que os Estudos Mostram';
+/* 153 caracteres. */
+const description =
+  'Dormir pouco engorda? A fome que aumenta, as 385 kcal a mais por dia, o que muda na dieta, quantas calorias se gasta dormindo e quando procurar o médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Dormir pouco engorda ou emagrece? O que acontece com a fome e o peso</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A resposta curta: dormir pouco pode engordar — não porque o corpo gaste
+      menos, mas porque faz comer mais. Nos experimentos, quem dormiu menos
+      que o habitual comeu, em média, 385 kcal a mais por dia. E quem passou
+      a dormir mais comeu 270 kcal a menos.
+    </p>
+
+    <p class="lead">
+      Abaixo, o que muda na fome, o que acontece com quem está de dieta, se é
+      causa ou consequência, quanto se gasta dormindo e quando o sono ruim é
+      assunto de médico.
+    </p>
+
+    <div class="prose">
+      <h2>O que a falta de sono faz com a fome</h2>
+      <p>
+        Num estudo clássico, homens jovens passaram duas noites com sono curto
+        e duas com sono longo. Com pouco sono, a leptina — o hormônio que
+        sinaliza saciedade — caiu 18%, a grelina — que estimula a fome — subiu
+        28%, a fome subiu 24% e o apetite por alimentos calóricos e ricos em
+        carboidrato subiu de 33% a 45%.
+      </p>
+      <p>
+        E a fome vira comida no prato. Numa meta-análise de 11 estudos em que
+        as pessoas dormiram menos que o habitual, elas comeram em média
+        <strong>385 kcal a mais por dia</strong>, com mais gordura e menos
+        proteína — e o gasto de energia não mudou. Num estudo em laboratório,
+        cinco noites de sono insuficiente levaram a ganho de 0,8 kg, com o comer
+        extra concentrado depois do jantar.
+      </p>
+
+      <h2>Dormir mais faz comer menos</h2>
+      <p>
+        O caminho contrário também foi testado. Num ensaio clínico com 80
+        adultos com sobrepeso que dormiam menos de 6,5 horas por noite, a
+        orientação para dormir mais aumentou o sono em cerca de 1,2 hora e
+        reduziu o consumo em <strong>270 kcal por dia</strong> — na vida real,
+        fora do laboratório. Quanto mais a pessoa passou a dormir, menos comeu.
+      </p>
+      <p>
+        O sono não substitui o déficit calórico: ele ajuda a fazer o déficit
+        acontecer, porque a fome fica mais fácil de administrar.
+      </p>
+
+      <h2>Na dieta, dormir pouco tira músculo</h2>
+      <p>
+        Esse é o ponto que mais importa para quem está emagrecendo. Num ensaio,
+        adultos com sobrepeso fizeram a mesma dieta por 14 dias, uma vez
+        dormindo 8,5 horas e outra 5,5 horas. Com pouco sono, perderam
+        <strong>0,6 kg de gordura em vez de 1,4 kg</strong> — e 2,4 kg de massa
+        magra em vez de 1,5 kg. A balança desceu parecido; o que saiu foi
+        diferente. E a fome foi maior.
+      </p>
+      <p>
+        Uma revisão de 2026, com 30 estudos, chegou a uma conclusão parecida: a
+        restrição de sono pode reduzir a perda de gordura durante a dieta. Junto
+        com o treino de força, o sono é o que ajuda a fazer o peso perdido ser
+        gordura — o tema do guia{' '}
+        <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">como
+        preservar massa muscular emagrecendo</a>.
+      </p>
+
+      <h2>Quantas calorias se gasta dormindo</h2>
+      <p>
+        Dormindo, o corpo gasta perto do que gasta em repouso acordado — o
+        metabolismo de repouso, que depende de peso, altura, idade e sexo.
+        Dormir mais não aumenta o gasto de forma relevante: nos estudos, o que
+        mudou com o sono foi quanto as pessoas comeram, não quanto gastaram.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Quer saber quanto o seu corpo gasta parado, dormindo inclusive — e no dia inteiro? A calculadora estima o seu metabolismo de repouso e o gasto do dia pela sua idade, peso, altura e rotina."
+        acao="Calcular o meu gasto diário"
+      />
+
+      <p>
+        E o quilo a menos na balança de manhã não é gordura: é sobretudo água e
+        o conteúdo do intestino, que voltam ao longo do dia. Um quilo de
+        gordura guarda cerca de 7.700 kcal — muito mais do que se gasta numa
+        noite inteira.
+      </p>
+
+      <h2>Causa ou consequência?</h2>
+      <p>
+        Nos estudos de observação, dormir pouco anda junto com obesidade: numa
+        meta-análise com mais de 630 mil pessoas, quem dormia pouco tinha mais
+        chance de obesidade — 55% a mais em adultos e 89% a mais em crianças.
+        Os próprios autores avisam que esse tipo de dado não diz quem causa
+        quem.
+      </p>
+      <p>
+        Os experimentos ajudam a separar: dormir menos fez comer mais, dormir
+        mais fez comer menos. E o caminho também vai no outro sentido — ganhar
+        peso piora a apneia do sono, que fragmenta o sono. Num acompanhamento de
+        quatro anos, ganhar 10% do peso aumentou em cerca de 32% o índice de
+        apneia; perder 10% o reduziu em cerca de 26%.
+      </p>
+      <p>
+        Sobre dormir tarde: quem tem o relógio biológico mais noturno teve
+        hábitos alimentares piores em quase todos os estudos de uma revisão,
+        mas mais obesidade em só cerca de metade deles. É associação, não
+        prova de que o horário, sozinho, engorde.
+      </p>
+
+      <h2>Dormir pouco faz mal? Quando procurar o médico</h2>
+      <p>
+        Além da fome, a privação de sono mexe no cortisol: num estudo, dormir
+        só das 4h às 8h por uma noite subiu o cortisol do fim da tarde seguinte
+        em 37%. Dor de cabeça, tontura, pressão alta e outros sintomas que
+        aparecem com noites ruins têm muitas causas possíveis — não dá para
+        atribuí-los ao sono sem avaliação.
+      </p>
+      <p>
+        Procure um médico se o sono curto é rotina e não escolha, se você ronca
+        alto, se alguém já viu você parar de respirar dormindo ou se sente sono
+        durante o dia. O diagnóstico de apneia é feito com exame do sono, não
+        com questionário. Insônia também tem tratamento.
+      </p>
+
+      <h2>O que fazer, na prática</h2>
+      <ul>
+        <li>
+          <strong>Trate o sono como parte do plano</strong>, não como sobra do
+          dia: no ensaio da extensão do sono, o que funcionou foi reservar mais
+          tempo na cama.
+        </li>
+        <li>
+          <strong>Atenção ao fim da noite</strong>, que é onde o comer extra se
+          concentra quando o sono é curto.
+        </li>
+        <li>
+          <strong>Proteja o músculo na dieta</strong> com treino de força e
+          sono suficiente — os dois juntos fazem o peso perdido ser gordura.
+        </li>
+        <li>
+          <strong>Ronco, pausas e sono de dia</strong> são assunto de médico.
+        </li>
+      </ul>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Treino, alimentação e sono se puxam: a noite mal dormida derruba o
+        treino do dia seguinte e aumenta a fome, e o treino regular ajuda a
+        rotina a ter hora. Um profissional de Educação Física monta o treino
+        que cabe na sua semana real — inclusive nas semanas de sono ruim.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15583226/" target="_blank" rel="noopener noreferrer">Spiegel K, Tasali E, Penev P, Van Cauter E. Brief communication: sleep curtailment in healthy young men is associated with decreased leptin levels, elevated ghrelin levels, and increased hunger and appetite. Annals of Internal Medicine, 2004</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27804960/" target="_blank" rel="noopener noreferrer">Al Khatib HK, Harding SV, Darzi J, Pot GK. The effects of partial sleep deprivation on energy balance: a systematic review and meta-analysis. European Journal of Clinical Nutrition, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23479616/" target="_blank" rel="noopener noreferrer">Markwald RR, et al. Impact of insufficient sleep on total daily energy expenditure, food intake, and weight gain. PNAS, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35129580/" target="_blank" rel="noopener noreferrer">Tasali E, Wroblewski K, Kahn E, Kilkus J, Schoeller DA. Effect of sleep extension on objectively assessed energy intake among adults with overweight in real-life settings. JAMA Internal Medicine, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20921542/" target="_blank" rel="noopener noreferrer">Nedeltcheva AV, Kilkus JM, Imperial J, Schoeller DA, Penev PD. Insufficient sleep undermines dietary efforts to reduce adiposity. Annals of Internal Medicine, 2010</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/42478101/" target="_blank" rel="noopener noreferrer">Duan L, Berryhill J, Dai N, Sica G, Chaput JP. Sleep and its impact on the success of weight loss interventions in adults with excess weight: a systematic review. Obesity Reviews, 2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18517032/" target="_blank" rel="noopener noreferrer">Cappuccio FP, et al. Meta-analysis of short sleep duration and obesity in children and adults. Sleep, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35771674/" target="_blank" rel="noopener noreferrer">Teixeira GP, et al. Role of chronotype in dietary intake, meal timing, and obesity: a systematic review. Nutrition Reviews, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/9415946/" target="_blank" rel="noopener noreferrer">Leproult R, Copinschi G, Buxton O, Van Cauter E. Sleep loss results in an elevation of cortisol levels the next evening. Sleep, 1997</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/11122588/" target="_blank" rel="noopener noreferrer">Peppard PE, et al. Longitudinal study of moderate weight change and sleep-disordered breathing. JAMA, 2000</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28162150/" target="_blank" rel="noopener noreferrer">Kapur VK, et al. Clinical practice guideline for diagnostic testing for adult obstructive sleep apnea: an American Academy of Sleep Medicine clinical practice guideline. Journal of Clinical Sleep Medicine, 2017</a></li>
+        <li>Conferidas em 27/10/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre sono e peso" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
