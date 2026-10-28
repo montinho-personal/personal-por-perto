@@ -128,3 +128,16 @@ O Renato confirmou em 28/10 que a unidade já está funcionando. Com isso:
 `AcademiaProxima` não tem campo de link, então a lista não aponta para o
 guia. O caminho até ele é pelo índice de guias e pelos dois guias de
 academia.
+
+## 28/10 — WhatsApp comercial (prints 13 a 15)
+
+O perfil de WhatsApp Business "Six Alphaville - Comercial" (+55 11
+94025-9427) traz o mesmo endereço da bio, horário de **segunda a domingo,
+das 8h às 18h**, e "empresa cadastrada desde maio de 2026". Entrou no H2,
+renomeado para "Onde fica e como falar com a Six", e numa FAQ nova, "Qual o
+WhatsApp da Six Alphaville?".
+
+O perfil é do **comercial**. Por isso o horário entra como horário de
+atendimento, não como horário de treino da academia. Também saiu do texto a
+frase "o horário de funcionamento está no Instagram": a bio não mostra
+horário, então ela não tinha fonte.
