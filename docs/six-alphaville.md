@@ -103,9 +103,7 @@ fonte aberta), fotos (o portal não usa foto de terceiros).
 **Fica para depois, por regra:**
 
 - `academiasProximas` de Alphaville: unidade "em breve" não entra até abrir
-  (CLAUDE.md). Endereço já confirmado (print 12); falta só a prova de que
-  abriu (post/story de inauguração ou horário de funcionamento). Aí a Six
-  entra na lista, com link para este guia.
+  (CLAUDE.md). Endereço já confirmado (print 12).
 - O guia de academias e o top 10 do site do Montinho ainda não citam a Six.
   É outro repositório, fora do alcance desta sessão.
 
@@ -113,3 +111,20 @@ fonte aberta), fotos (o portal não usa foto de terceiros).
 
 `preco` (calculadora de preço do personal), no fim da seção da conta. A
 soma usa a faixa de Alphaville, e a calculadora abre a da cidade do leitor.
+
+## 28/10 — abertura confirmada
+
+O Renato confirmou em 28/10 que a unidade já está funcionando. Com isso:
+
+- o guia trocou a FAQ "Quando abre" por "A Six Alphaville já abriu?" e a
+  nota de fonte diz que a unidade funciona desde o fim de outubro.
+  `atualizadoEm` foi para 2026-10-28;
+- a Six entrou em `academiasProximas` de **Alphaville** e de **Barueri**
+  (o endereço fica do lado de Barueri; a página de Barueri já lista
+  academias de Alphaville). `atualizadoEm` das duas foi para 2026-10-28.
+  `academiasVerificadasEm` não mudou, porque só uma entrada foi conferida e
+  não a lista inteira.
+
+`AcademiaProxima` não tem campo de link, então a lista não aponta para o
+guia. O caminho até ele é pelo índice de guias e pelos dois guias de
+academia.

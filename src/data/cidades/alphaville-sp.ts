@@ -73,6 +73,7 @@ export const cidade: Cidade = {
     { nome: 'Ironberg Alphaville', detalhe: 'centro de treinamento de grande porte na Estrada Aldeinha, com foco em musculação de alta performance' },
     { nome: 'NitroGym Tamboré', detalhe: 'unidade de cerca de 3 mil m² no Shopping Tamboré, com musculação, avaliação física e sauna' },
     { nome: 'Arena 18', detalhe: 'na Rua Mário Quintana: esportes de areia (beach tennis, vôlei e futevôlei) somados a musculação e treino funcional' },
+    { nome: 'Six Alphaville', detalhe: 'academia all inclusive no 23º andar do Empresarial 18 do Forte, na Av. Copacabana, 325' },
     { nome: 'Bodytech Iguatemi Alphaville', detalhe: 'no shopping Iguatemi Alphaville, na Al. Rio Negro' },
     { nome: 'Academia 24h Premium', detalhe: 'na Alameda Grajaú, com grade ampla de aulas' },
     { nome: 'Academia Gaviões 24h Alphaville', detalhe: 'unidade da rede paulista na Av. Juruá, aberta 24 horas' },
@@ -155,5 +156,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Alphaville com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-22',
+  atualizadoEm: '2026-10-28',
 };
