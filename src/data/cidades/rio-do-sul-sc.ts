@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva rio-sulense combina o uso da orla do Itajaí-Açu para caminhada e corrida com uma cena ativa de academias, funcional e crossfit, alimentada pelo público universitário da UNIDAVI. As trilhas e subidas do entorno acrescentam opção para quem gosta de treino ao ar livre em terreno acidentado.',
   academias:
     'A oferta reúne redes e academias locais consolidadas, estúdios de pilates, boxes de crossfit e espaços de treino funcional, complementados pela orla do rio e pelas trilhas do entorno para atividades ao ar livre.',
+  academiasProximas: [
+    { nome: 'VO2 Gym', detalhe: 'na Rua Angelo Tomio, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-10-29',
 
   destaquesFitness: [
     'Polo regional do Alto Vale, com a maior oferta de academias e estúdios da região.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio do Sul', url: 'https://www.riodosul.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-29',
 };

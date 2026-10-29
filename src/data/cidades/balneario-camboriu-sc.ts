@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Conhecida como a "Capital dos arranha-céus", Balneário Camboriú é uma das economias mais dinâmicas do Vale do Itajaí, forte em serviços, turismo de alto padrão e construção civil supervalorizada — oito dos dez maiores prédios do Brasil estão na cidade, que tem o metro quadrado mais caro do país. Com IDHM muito alto (0,845) e PIB per capita bem acima da média nacional, reúne um público de altíssimo poder aquisitivo.',
 
   mercado:
-    'Balneário Camboriú é um verdadeiro epicentro nacional de musculação premium e estética. A cidade tem densidade altíssima de academias de alto padrão — como a Wave, no Barra Sul, uma das maiores do Sul do país, além de redes premium e academias voltadas ao fisiculturismo. A cultura do corpo, ligada ao turismo e à alta renda, é uma das mais intensas do Brasil, o que sustenta forte demanda por personal trainers especializados.',
+    'Balneário Camboriú é um verdadeiro epicentro nacional de musculação premium e estética. A cidade tem academias de alto padrão, como a Wave, que tem unidade na Barra Sul. A cultura do corpo, ligada ao turismo e à alta renda, é uma das mais intensas do Brasil, o que sustenta forte demanda por personal trainers especializados.',
 
   bairrosNobres: ['Barra Sul', 'Centro (Av. Atlântica)', 'Pioneiros', 'Estados'],
   bairrosPopulares: ['Nova Esperança', 'São Judas Tadeu', 'Vila Real', 'Municípios'],
@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Orla da Praia Central (Av. Atlântica)',
       descricao:
-        'Calçadão com pista de caminhada e corrida e ciclovia ao longo de cerca de 6 km, da Barra Sul à Barra Norte. A reurbanização recente transformou a orla em um grande parque linear, com pista de corrida, academias públicas e decks.',
+        'Calçadão com pista de caminhada e corrida e ciclovia ao longo de cerca de 6 km, da Barra Sul à Barra Norte. A reurbanização recente transformou a orla em um grande parque linear, com pista de corrida e decks.',
     },
     {
       nome: 'Barra Sul',
@@ -68,17 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Poucas cidades brasileiras têm uma cultura fitness e de estética tão intensa quanto Balneário Camboriú — é referência nacional em musculação e culto ao corpo. A orla concentra grande circulação de praticantes de corrida, ciclismo, beach tennis e vôlei de praia o ano todo.',
   academias:
-    'A oferta de academias premium está acima da média nacional, com nomes como a Wave (Barra Sul), academias voltadas ao fisiculturismo e estúdios de alto padrão, atendendo um público disposto a investir em personal training e estética.',
+    'A oferta inclui academias de alto padrão como a Wave, com unidade na Barra Sul, além das academias dos próprios prédios, atendendo um público disposto a investir em personal training e estética.',
   academiasProximas: [
-    { nome: 'Wave', detalhe: 'no Barra Sul, uma das maiores academias do Sul do país' },
-    { nome: 'Academias premium e de fisiculturismo', detalhe: 'densidade acima da média nacional' },
-    { nome: 'Estúdios de alto padrão', detalhe: 'personal, funcional e estética pelos bairros centrais' },
-    { nome: 'Academias públicas da orla', detalhe: 'gratuitas, no parque linear da Praia Central' },
+    { nome: 'Academia Wave', detalhe: 'unidade Barra Sul, na Rua 3300' },
   ],
 
   destaquesFitness: [
-    'Concentração de academias premium acima da média nacional (incluindo uma das maiores do Sul).',
-    'Orla de cerca de 6 km com pista de corrida, ciclovia e academias públicas no parque linear.',
+    'Academias de alto padrão, como a Wave, e estrutura de treino nos próprios prédios.',
+    'Orla de cerca de 6 km com pista de corrida e ciclovia no parque linear.',
     'IDHM muito alto (0,845) e PIB per capita elevado — público de alto poder aquisitivo.',
     'Referência nacional em musculação e estética, com calendário esportivo consolidado.',
   ],
@@ -99,7 +96,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Balneário Camboriú?',
       resposta:
-        'A cidade vertical treina em três andares: nas academias premium — da Wave, no Barra Sul, aos estúdios de alto padrão —, nas academias dos próprios prédios, já que os arranha-céus novos nascem com estrutura completa (o que torna o atendimento em condomínio fortíssimo), e na orla reurbanizada da Praia Central, um parque linear de 6 km com pista de corrida e academias públicas. A Interpraias completa como rota cênica de corrida e bike.',
+        'A cidade vertical treina em três andares: nas academias de alto padrão, como a Wave da Barra Sul, nas academias dos próprios prédios, já que os arranha-céus novos nascem com estrutura completa (o que torna o atendimento em condomínio fortíssimo), e na orla reurbanizada da Praia Central, um parque linear de 6 km com pista de corrida. A Interpraias completa como rota cênica de corrida e bike.',
     },
     {
       pergunta: 'Treinar na "capital da estética" intimida quem está começando?',
@@ -129,5 +126,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Balneário Camboriú: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  academiasVerificadasEm: '2026-10-29',
+  atualizadoEm: '2026-10-29',
 };

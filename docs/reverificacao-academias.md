@@ -585,3 +585,27 @@ Texto: `mercado`, `academias`, destaque e FAQ "onde o personal atende" ajustados
 Texto `academias` reescrito (a oferta "concentrada na zona sul" não bate com as unidades conferidas).
 
 Saldo da leva: 8 entradas → 5 mantidas (3 com detalhe corrigido, 2 com detalhe reescrito pelo endereço oficial) e 3 removidas (2 em Juiz de Fora, 1 em Rio Preto); Juiz de Fora fica com 1 entrada (Smart Fit, 4 unidades) — completar vira tarefa à parte.
+
+### 29/10/2026 — leva 24 (rotina, Parte B: Vitória e Balneário Camboriú)
+
+**Vitória/ES** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — Praia do Canto, Reta da Penha e Jardim Camburi | confirmada sem mudança | páginas oficiais `opened:true`: /praia-do-canto e /praia-do-canto-i (R. Joaquim Lírio, 455), /reta-da-penha (Reta da Penha, 2150, Barro Vermelho), /jardim-camburi (R. Carlos Gomes Lucas, 100), todas com CEP 290xx |
+| Boxes de CrossFit e estúdios | **removida**: genérica. Também saiu de `resumo`, do campo `academias` e da FAQ "onde treinar", que citava boxes em Jardim da Penha | — |
+| Módulos do SOE | confirmada; o detalhe ganha o número de módulos | Carta de Serviços da Prefeitura ("15 módulos do SOE, localizados na orla, nas praças, nos parques") e a página da Semus |
+| Academias Populares | confirmada; o detalhe ganha o número de unidades e os bairros | página da Semesp (aulas gratuitas de musculação, 9 unidades: Itararé, Santo Antônio, Tabuazeiro, Ilha de Santa Maria, Resistência, Santa Martha, São Pedro…) e a Carta de Serviços |
+
+**Balneário Camboriú/SC** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Wave — "no Barra Sul, uma das maiores academias do Sul do país" | **corrigida**: "Academia Wave, unidade Barra Sul, na Rua 3300". "Uma das maiores do Sul" saiu, porque só um guia (myside) diz isso | Wellhub "Academia Wave - Barra Sul" (R. 3300, 330, CEP 88330-272) + guia myside.com.br (Rua 3300, Barra Sul) |
+| Academias premium e de fisiculturismo | **removida**: genérica ("densidade acima da média nacional" sem fonte) | — |
+| Estúdios de alto padrão | **removida**: genérica | — |
+| Academias públicas da orla | **removida**: as notas da Prefeitura sobre estações na orla são de 2015, e a orla da Praia Central está em reurbanização (notícia de 2026). Não há fonte atual de que os equipamentos estejam lá | — |
+
+Texto: `resumo`, `academias`, os dois destaques, a descrição da orla e a FAQ "onde treinar" ajustados. Saíram "densidade altíssima", "uma das maiores do Sul" e "academias públicas". BC fica com 1 entrada; completar vira tarefa à parte. Fica de fora do escopo: a Smart Fit oficial na 3ª Avenida, esquina com a R. 3.122 (Parte B não acrescenta), que pode entrar na tarefa de completar.
+
+Saldo da leva: 8 entradas → 4 mantidas (2 com detalhe ampliado, 1 corrigida) e 4 removidas. 126 cidades seguem na fila de reverificação.

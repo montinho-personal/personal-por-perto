@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital do Espírito Santo e cidade-ilha, Vitória tem a maior economia do estado, baseada em serviços, comércio e logística portuária — abriga o Complexo Portuário de Tubarão, um dos principais corredores de exportação de minério do país. Mais do que os números, a cidade se destaca por uma marca rara: é a capital brasileira com maior prática de atividade física no tempo livre.',
 
   mercado:
-    'Vitória é a capital nº 1 do Brasil em atividade física, segundo o Vigitel do Ministério da Saúde: cerca de 53,3% dos moradores praticam ao menos 150 minutos por semana. A cidade tem política pública pioneira — o Serviço de Orientação ao Exercício (SOE), criado em 1990, que oferece educação física gratuita na orla e nas praças e inspirou o Programa Academia da Saúde nacional. A isso somam-se redes como a Smart Fit, boxes de CrossFit e a rede de Academias Populares — uma cultura de treino a céu aberto que é marca local.',
+    'Vitória é a capital nº 1 do Brasil em atividade física, segundo o Vigitel do Ministério da Saúde: cerca de 53,3% dos moradores praticam ao menos 150 minutos por semana. A cidade tem política pública pioneira — o Serviço de Orientação ao Exercício (SOE), criado em 1990, que oferece educação física gratuita na orla e nas praças e inspirou o Programa Academia da Saúde nacional. A isso somam-se redes como a Smart Fit e a rede de Academias Populares — uma cultura de treino a céu aberto que é marca local.',
 
   bairrosNobres: ['Praia do Canto', 'Barro Vermelho', 'Jardim da Penha', 'Mata da Praia'],
   bairrosPopulares: ['São Pedro', 'Itararé', 'Maruípe', 'Jardim Camburi'],
@@ -68,12 +68,11 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Vitória tem uma vocação rara para o esporte ao ar livre, sustentada pelo clima, pelo relevo plano do litoral e por políticas públicas pioneiras (SOE e Academias Populares gratuitas). Corrida, caminhada, ciclismo e esportes de areia fazem parte da rotina — não à toa é a capital mais ativa do país.',
   academias:
-    'A oferta combina redes como a Smart Fit (Praia do Canto, Reta da Penha, Jardim Camburi) e boxes de CrossFit nos bairros nobres com a rede pública de Academias Populares e os módulos do SOE na orla — acesso ao treino para todos os perfis.',
+    'A oferta combina redes como a Smart Fit (Praia do Canto, Reta da Penha, Jardim Camburi) com a rede pública de Academias Populares e os módulos do SOE na orla — acesso ao treino para todos os perfis.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades na Praia do Canto, na Reta da Penha e em Jardim Camburi' },
-    { nome: 'Boxes de CrossFit e estúdios', detalhe: 'concentrados na Praia do Canto e em Jardim da Penha' },
-    { nome: 'Módulos do SOE', detalhe: 'orientação gratuita de educação física na orla e nas praças' },
-    { nome: 'Academias Populares', detalhe: 'rede pública gratuita espalhada pelos bairros' },
+    { nome: 'Módulos do SOE', detalhe: '15 módulos gratuitos da Prefeitura na orla, em praças e parques, com profissionais de Educação Física' },
+    { nome: 'Academias Populares', detalhe: 'nove unidades da Prefeitura com aulas gratuitas de musculação, em bairros como Itararé, Santo Antônio e Tabuazeiro' },
   ],
 
   destaquesFitness: [
@@ -115,7 +114,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Vitória?',
       resposta:
-        'Na capital mais ativa do país, os points são: a orla de Camburi e a Curva da Jurema para corrida e funcional à beira-mar, as academias e boxes da Praia do Canto e de Jardim da Penha, o Parque Pedra da Cebola — aberto das 5h às 22h — e o atendimento em casa e em condomínio nos bairros nobres. O relevo plano da orla e o clima com pouca chuva tornam o treino ao ar livre viável praticamente o ano todo.',
+        'Na capital mais ativa do país, os points são: a orla de Camburi e a Curva da Jurema para corrida e funcional à beira-mar, as academias da Praia do Canto, o Parque Pedra da Cebola — aberto das 5h às 22h — e o atendimento em casa e em condomínio nos bairros nobres. O relevo plano da orla e o clima com pouca chuva tornam o treino ao ar livre viável praticamente o ano todo.',
     },
     {
       pergunta: 'Há acompanhamento em Vitória para quem sente dores ou tem limitações?',
@@ -141,5 +140,6 @@ export const cidade: Cidade = {
       'Treino personalizado em Vitória: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
     vertical: true,
   },
-  atualizadoEm: '2026-10-01',
+  academiasVerificadasEm: '2026-10-29',
+  atualizadoEm: '2026-10-29',
 };

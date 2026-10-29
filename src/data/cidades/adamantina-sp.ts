@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva de Adamantina mistura o uso dos parques e praças para caminhada e corrida, provas de rua com forte apelo comunitário e solidário, e o estímulo à atividade física ligado à vocação da cidade como polo de saúde e educação da Nova Alta Paulista.',
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional distribuídas pelo centro e pelos bairros residenciais, com porte compatível com uma cidade média e universitária do interior paulista.',
+  academiasProximas: [
+    { nome: 'Espaço Vip', detalhe: 'na Rua Sebastião Rombaldi' },
+  ],
+  academiasVerificadasEm: '2026-10-29',
 
   destaquesFitness: [
     'Polo regional de serviços, saúde e educação da Nova Alta Paulista, com a FAI entre as instituições de referência.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Adamantina', url: 'https://www.adamantina.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-29',
 };
