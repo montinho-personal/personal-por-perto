@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A corrida de rua ganhou espaço em Brumado, com provas que reúnem participantes nos percursos de 5 km e 10 km pelo centro. O futebol e as modalidades de quadra também têm público fiel, sustentando a cultura esportiva da cidade.',
   academias:
     'A oferta de academias acompanha a economia movida pela mineração e pelo comércio regional, além do crescimento da classe média ligada aos serviços e à saúde.',
+  academiasProximas: [
+    { nome: 'Axé Fit', detalhe: 'na Avenida Centenário' },
+    { nome: 'Life Club Brumado', detalhe: 'na Praça Abias Azevedo, no bairro Hospital' },
+    { nome: 'Império Fit Academia', detalhe: 'na Rua Afonso Pires de Souza, no Santa Teresa' },
+  ],
+  academiasVerificadasEm: '2026-10-29',
 
   destaquesFitness: [
     'Maior produtor de magnesita do Brasil, com economia movida pela mineração.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Brumado', url: 'https://www.brumado.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-29',
 };

@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Roraima e a cidade mais ao norte do país, Boa Vista é uma capital planejada, com traçado urbano radial — avenidas que partem do centro cívico em formato de leque. A economia se baseia em comércio, serviços e administração pública, com peso crescente do agronegócio no entorno. É um centro urbano organizado, com boa oferta de espaços públicos para atividade física.',
 
   mercado:
-    'O mercado fitness conta com redes nacionais (Smart Fit no Roraima Garden Shopping) e centros de treino locais, além de academias de bairro. A prefeitura mantém o programa gratuito "Academia Aberta" em praças, e o calor favorece a cultura de treino ao ar livre nos parques e na orla.',
+    'O mercado fitness tem a Smart Fit, com três unidades na cidade (no Roraima Garden Shopping, na Avenida João Alencar e na Avenida Princesa Isabel), e o calor favorece a cultura de treino ao ar livre nos parques e na orla.',
 
   bairrosNobres: ['Caçari', 'Paraviana', 'Mecejana', 'Centro'],
   bairrosPopulares: ['Aparecida', '13 de Setembro', 'Dos Estados', 'Senador Hélio Campos'],
@@ -29,17 +29,12 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Anauá',
       descricao:
-        'O principal parque urbano da cidade, com pistas de caminhada e corrida, áreas verdes, lago e quadras; aberto diariamente das 6h30 às 22h, com entrada gratuita.',
+        'O principal parque urbano da cidade, com pistas de caminhada e corrida, áreas verdes, lago e quadras, e entrada gratuita. Confira o horário antes de ir, porque os portões mudam ao longo do dia.',
     },
     {
       nome: 'Orla Taumanan (Parque do Rio Branco)',
       descricao:
         'Complexo às margens do Rio Branco com calçadões, ciclovia, mirante, quadras e praia — um cartão-postal usado para caminhada e corrida.',
-    },
-    {
-      nome: 'Programa Academia Aberta',
-      descricao:
-        'Rede de polos em praças e espaços públicos com aulas gratuitas de ginástica, alongamento e dança, ampliando o acesso ao exercício pela cidade.',
     },
   ],
   ciclovias:
@@ -68,19 +63,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Boa Vista tem forte adesão à corrida de rua e ao ciclismo, favorecido pela maior malha de ciclovias do Norte. Programas públicos gratuitos em praças ampliam a base de praticantes e tornam o exercício acessível.',
   academias:
-    'A oferta reúne a Smart Fit e centros de treino locais, academias de bairro e o programa público "Academia Aberta", cobrindo musculação e treino funcional em diferentes perfis.',
+    'A Smart Fit tem três unidades na cidade, conferidas no site da rede: no Roraima Garden Shopping, no Caçari; na Avenida João Alencar, no Cauamé; e na Avenida Princesa Isabel, no Jardim Floresta.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'no Roraima Garden Shopping' },
-    { nome: 'Centros de treino locais e academias de bairro', detalhe: 'musculação e funcional em vários perfis' },
-    { nome: 'Programa Academia Aberta', detalhe: 'aulas públicas gratuitas em praças da cidade' },
-    { nome: 'Estrutura do Parque Anauá', detalhe: 'pistas e quadras gratuitas, das 6h30 às 22h' },
+    { nome: 'Smart Fit', detalhe: 'três unidades: no Roraima Garden Shopping (Caçari), na Av. João Alencar (Cauamé) e na Av. Princesa Isabel (Jardim Floresta)' },
   ],
 
   destaquesFitness: [
     'Maior rede de ciclovias do Norte — cidade amigável ao deslocamento ativo.',
     'Parque Anauá como hub de corrida, caminhada e treino funcional.',
-    'Programa gratuito "Academia Aberta" em diversos polos.',
-    'Smart Fit e centros de treino locais cobrindo musculação e funcional.',
+    'Smart Fit com três unidades: Caçari, Cauamé e Jardim Floresta.',
   ],
 
   precos: {
@@ -99,12 +90,12 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Boa Vista?',
       resposta:
-        'O Parque Anauá — aberto das 6h30 às 22h, com pistas, lago e quadras — e a Orla Taumanan, às margens do Rio Branco, são os grandes palcos do treino ao ar livre. Nas academias, a Smart Fit do Roraima Garden e os centros de treino locais cobrem musculação e funcional, e o atendimento em casa é comum no Caçari, no Paraviana e na Mecejana. O traçado radial e a maior malha de ciclovias do Norte facilitam chegar a qualquer cenário.',
+        'O Parque Anauá, com pistas, lago e quadras, e a Orla Taumanan, às margens do Rio Branco, são os grandes palcos do treino ao ar livre. Nas academias, a Smart Fit tem unidades no Roraima Garden Shopping, na Avenida João Alencar e na Avenida Princesa Isabel, e o atendimento em casa é comum no Caçari, no Paraviana e na Mecejana. O traçado radial e a maior malha de ciclovias do Norte facilitam chegar a qualquer cenário.',
     },
     {
-      pergunta: 'Se o Academia Aberta é gratuito, quando faz sentido contratar personal em Boa Vista?',
+      pergunta: 'Se dá para treinar de graça nos parques, quando faz sentido contratar personal em Boa Vista?',
       resposta:
-        'Os dois se complementam. O programa da prefeitura é uma excelente porta de entrada — aulas coletivas gratuitas de ginástica e alongamento nas praças, ótimas para sair do sedentarismo. O personal entra quando o objetivo pede individualização: plano progressivo desenhado para você, correção de execução, periodização para emagrecimento ou hipertrofia e constância cobrada semana a semana. Muita gente combina: a aula coletiva como atividade extra e as sessões individuais como motor do resultado.',
+        'Os dois se complementam. Caminhar e correr no Parque Anauá ou na Orla Taumanan é uma ótima porta de entrada para sair do sedentarismo. O personal entra quando o objetivo pede individualização: plano progressivo desenhado para você, correção de execução, periodização para emagrecimento ou hipertrofia e constância cobrada semana a semana. Muita gente combina: o parque como atividade extra e as sessões individuais como motor do resultado.',
     },
     {
       pergunta: 'Há acompanhamento em Boa Vista para quem sente dores ou tem limitações?',
@@ -120,7 +111,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Boa Vista', url: 'https://www.boavista.rr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-26',
+  academiasVerificadasEm: '2026-10-29',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/boa-vista-rr.webp',
     w: 1200,

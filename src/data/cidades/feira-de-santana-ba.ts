@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Segunda cidade mais populosa da Bahia, Feira de Santana é o maior entroncamento rodoviário do Norte/Nordeste, o que sustenta um forte setor de comércio, serviços e logística. Tem parque industrial relevante (o Centro Industrial do Subaé) e é um polo regional de saúde, educação e atacado para todo o interior baiano.',
 
   mercado:
-    'A cidade tem boa densidade de academias — redes presentes na Bahia e estúdios de bairro nos centros de classe média (Santa Mônica, Kalilândia, Centro) — e uma cultura crescente de corrida de rua, treino funcional e academias ao ar livre em praças e parques. Como polo regional, atende também a demanda de cidades vizinhas.',
+    'A cidade tem a Smart Fit, com unidades em Capuchinhos e na Cidade Nova, e uma cultura crescente de corrida de rua, treino funcional e academias ao ar livre em praças e parques. Como polo regional, atende também a demanda de cidades vizinhas.',
 
   bairrosNobres: ['Santa Mônica', 'SIM', 'Muchila', 'Capuchinhos'],
   bairrosPopulares: ['Cidade Nova', 'Tomba', 'Sobradinho', 'George Américo'],
@@ -68,16 +68,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Feira de Santana tem forte tradição no futebol (com o Estádio Joia da Princesa) e uma cena ativa de corrida de rua e ciclismo, com uso intenso dos parques e das academias ao ar livre — um polo esportivo para o interior baiano.',
   academias:
-    'A oferta de academias e estúdios é ampla para o porte da cidade e atende também a região, concentrada nos bairros de classe média, e bem complementada pelas academias da saúde gratuitas dos parques.',
+    'A Smart Fit tem duas unidades abertas, conferidas no site da rede: na Rua Frei Aureliano Grottamari, em Capuchinhos, e na Avenida Fraga Maia, na Cidade Nova; as do SIM e da Mangabeira ainda não abriram. No setor público, a Prefeitura mantém a academia da saúde gratuita do Parque da Lagoa e 17 academias ao ar livre na zona urbana e na rural.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no SIM, na Mangabeira e na Cidade Nova' },
-    { nome: 'Academias e estúdios de bairro', detalhe: 'concentrados em Santa Mônica, na Kalilândia e no Centro' },
-    { nome: 'Academias da saúde dos parques', detalhe: 'gratuitas, no Parque da Lagoa e no Anel de Lagoas' },
+    { nome: 'Smart Fit', detalhe: 'unidades em Capuchinhos (Rua Frei Aureliano Grottamari) e na Cidade Nova (Av. Fraga Maia)' },
+    { nome: 'Academia da Saúde do Parque da Lagoa', detalhe: 'gratuita, na Avenida José Falcão; o parque fecha às segundas' },
   ],
 
   destaquesFitness: [
-    'Polo regional com ampla oferta de academias e estúdios para o interior da Bahia.',
-    'Parques com academias da saúde gratuitas (Parque da Lagoa, Anel de Lagoas).',
+    'Polo regional do interior da Bahia, com Smart Fit em Capuchinhos e na Cidade Nova.',
+    'Academia da saúde gratuita no Parque da Lagoa e 17 academias ao ar livre na cidade.',
     'Calendário consolidado de corridas de rua (Meia Maratona, Night Run).',
     'Clima quente que exige planejamento de horário e hidratação no treino ao ar livre.',
   ],
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Feira de Santana?',
       resposta:
-        'O Parque da Lagoa — com pista de cooper, ciclovia, academia da saúde gratuita e vigilância da Guarda Municipal — é o espaço público mais completo, com o Anel de Lagoas somando 2,3 km de pista e o tradicional Parque da Cidade. Nas academias, a Smart Fit cobre o SIM, a Mangabeira e a Cidade Nova, e os estúdios se concentram em Santa Mônica e na Kalilândia. O atendimento em casa cresce nos condomínios do SIM e do Santa Mônica.',
+        'O Parque da Lagoa — com pista de cooper, ciclovia, academia da saúde gratuita e vigilância da Guarda Municipal — é o espaço público mais completo, com o Anel de Lagoas somando 2,3 km de pista e o tradicional Parque da Cidade. Nas academias, a Smart Fit tem unidades em Capuchinhos e na Cidade Nova. O atendimento em casa cresce nos condomínios do SIM e do Santa Mônica.',
     },
     {
       pergunta: 'Moro em cidade vizinha a Feira de Santana — vale treinar lá?',
@@ -119,7 +118,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Feira de Santana', url: 'https://www.feiradesantana.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  academiasVerificadasEm: '2026-10-29',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/feira-de-santana-ba.webp',
     w: 1200,

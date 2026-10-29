@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A cultura esportiva combina o uso das praças e das vias centrais para caminhada e corrida, o pedal pelas estradas vicinais e a forte influência de Sorocaba, vizinha referência em mobilidade ativa e provas de rua. Eventos como a Corrida do Trabalhador reforçam o hábito de correr no município.',
   academias:
     'A oferta é formada principalmente por academias de bairro e espaços de treino funcional, complementados pela ampla rede da conurbação sorocabana, a poucos minutos de carro. As praças e o entorno natural funcionam como extensão para o treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'Academia Plenna Forma', detalhe: 'na Rua Narciso Soares, em Terras de São João' },
+    { nome: 'R Fit Academia', detalhe: 'na Rua Arlindo de Oliveira' },
+    { nome: 'Skyfit Salto de Pirapora', detalhe: 'na Avenida Pedro Pires de Mello' },
+  ],
+  academiasVerificadasEm: '2026-10-29',
 
   destaquesFitness: [
     'Cidade da Região Metropolitana de Sorocaba, com oferta fitness integrada ao polo sorocabano, a cerca de 25 km.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salto de Pirapora', url: 'https://www.saltodepirapora.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-29',
 };

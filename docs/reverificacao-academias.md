@@ -609,3 +609,24 @@ Saldo da leva: 8 entradas → 5 mantidas (3 com detalhe corrigido, 2 com detalhe
 Texto: `resumo`, `academias`, os dois destaques, a descrição da orla e a FAQ "onde treinar" ajustados. Saíram "densidade altíssima", "uma das maiores do Sul" e "academias públicas". BC fica com 1 entrada; completar vira tarefa à parte. Fica de fora do escopo: a Smart Fit oficial na 3ª Avenida, esquina com a R. 3.122 (Parte B não acrescenta), que pode entrar na tarefa de completar.
 
 Saldo da leva: 8 entradas → 4 mantidas (2 com detalhe ampliado, 1 corrigida) e 4 removidas. 126 cidades seguem na fila de reverificação.
+
+### 29/10/2026 (tarde) — leva 25 (rotina, Parte B: Boa Vista e Feira de Santana)
+
+**Boa Vista/RR** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "no Roraima Garden Shopping" | confirmada; o detalhe ganha as outras duas unidades | páginas oficiais `opened:true`: /ville-roy (Av. Ville Roy, 1544, dentro do Roraima Garden Shopping, Caçari), /joao-alencar (Av. João Alencar, 2181, Cauamé), /av-princesa-isabel (Av. Princesa Isabel, 1498, Jardim Floresta) |
+| Centros de treino locais e academias de bairro | **removida**: genérica | — |
+| Programa Academia Aberta | **removida**: a Prefeitura (boavista.rr.gov.br), a Folha BV e o Portal Amazônia não abrem aqui, e resumo de busca não é fonte. Saiu também de `parques`, do texto do mercado, do campo `academias`, do destaque e da FAQ (que foi reescrita sem o programa). Volta com print | — |
+| Estrutura do Parque Anauá — "das 6h30 às 22h" | **removida**: o parque não é academia, e o horário publicado não tem fonte (a busca aponta 6h–20h numa nota sem data do governo de RR, que não abre aqui). O horário também saiu de `parques` e da FAQ | — |
+
+**Feira de Santana/BA** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades no SIM, na Mangabeira e na Cidade Nova" | **corrigida**: as do SIM e da Mangabeira são unidades Atakarejo com `opened:false` (não abriram); abertas: Frei Aureliano (R. Frei Aureliano Grottamari, 679, Capuchinhos) e Fraga Maia (Av. Francisco Fraga Maia, 4727, Cidade Nova) | listagem oficial smartfit.com.br/academias/ba/feira-de-santana |
+| Academias e estúdios de bairro | **removida**: genérica; "Santa Mônica, Kalilândia" saíram também de `resumo` e da FAQ | — |
+| Academias da saúde dos parques — "no Parque da Lagoa e no Anel de Lagoas" | **corrigida**: confirmada só no Parque da Lagoa (Av. José Falcão, gratuita; o parque abre de terça a domingo, das 5h às 20h). Nenhuma fonte cita academia da saúde no Anel de Lagoas. O texto ganha as 17 academias ao ar livre da Prefeitura | Prefeitura de Feira de Santana, notícias de 25/10/2024 e 02/12/2024 |
+
+Saldo da leva: 7 entradas → 3 mantidas (todas com detalhe corrigido ou ampliado) e 4 removidas. As duas cidades ficam com poucas entradas (Boa Vista 1, Feira 2), e completar vira tarefa à parte. 124 cidades seguem na fila.
