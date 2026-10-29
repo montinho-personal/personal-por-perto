@@ -233,3 +233,33 @@ Prefeitura, ALESC, INMET e academias em duas fontes; sem capa, sem
 corridas e sem classificação de bairros (nada disso tinha fonte). Ler as
 duas no próximo relatório: se ficarem sem impressão em 60 dias, a aposta de
 vizinhança não se sustenta e a fila volta para a demanda medida.
+
+## 29/10/2026 — mais duas cidades, a pedido do Renato
+
+Mesmo critério de 26/10, na ordem da lista de 23:
+
+- **Santo Antônio do Descoberto/GO** (72 mil, Entorno do DF). Vizinha de
+  Brasília, que rende no GSC. Fatos do IBGE, da Prefeitura (história,
+  BR-060, 61 km do aeroporto, Corrida do Trabalhador) e do INMET (estação
+  Brasília). 4 academias com o mesmo endereço no Wellhub e no TotalPass.
+  Sem IDHM, porque o Atlas Brasil está bloqueado e a Prefeitura não
+  publica o índice.
+- **Cruzeiro/SP** (75 mil, Vale do Paraíba). Entrou no lugar de
+  **Iranduba/AM**, que seria a escolha pela vizinhança de Manaus: a
+  Prefeitura e o Governo do AM não abrem no ambiente, e o TotalPass não
+  tem academia no município, então a página sairia rasa. Cruzeiro tem
+  Prefeitura acessível e fica entre Lorena e Guaratinguetá, que já têm
+  página. Fatos do IBGE, da Prefeitura e do INMET (estação Resende/RJ).
+  4 academias em duas fontes. "Serra da Mantiqueira" ficou de fora do
+  texto: a página da Prefeitura cita a Serra da Bocaina e o Pico dos
+  Marins sem nomear a Mantiqueira.
+
+Variedade: as duas não repetem padrão. Uma é cidade-dormitório do DF; a
+outra é cidade média com história ferroviária e serra. Nenhuma tem capa,
+classificação de bairros ou faixa de preço própria (a de Santo Antônio é
+a de Águas Lindas; a de Cruzeiro, a de Lorena).
+
+**Ressalva:** a aposta de vizinhança de 26/10 (Goianira e Biguaçu) ainda
+não foi medida. Ela precisa de 60 dias, a contar de 26/10. Estas duas
+entram na mesma leitura. Se as quatro ficarem sem impressão, parar de
+criar cidades por tamanho e voltar à demanda medida.

@@ -1020,10 +1020,14 @@ import { cidade as simaoDias } from './simao-dias-se';
 import { cidade as saoJoaquimDaBarra } from './sao-joaquim-da-barra-sp';
 import { cidade as goianira } from './goianira-go';
 import { cidade as biguacu } from './biguacu-sc';
+import { cidade as santoAntonioDoDescoberto } from './santo-antonio-do-descoberto-go';
+import { cidade as cruzeiroSp } from './cruzeiro-sp';
 
 export const cidades: Cidade[] = [
   // Bloco 47 (26/10/2026: municípios acima de 60 mil sem página, vizinhos de capitais fortes no GSC)
   goianira, biguacu,
+  // Bloco 47 (29/10/2026: mesmo critério; Iranduba/AM trocada por Cruzeiro/SP por falta de fonte aberta)
+  santoAntonioDoDescoberto, cruzeiroSp,
   // Bloco 46 (norte/interior de Goiás, Portal da Amazônia MT, litoral sul da Bahia, sul do Piauí, ES serrano)
   santiago, novoGama, itapaci, porangatu, guarantaDoNorte, confresa,
   valeDeSaoDomingos, euclidesDaCunha, uruacu, silvania, anicuns,
