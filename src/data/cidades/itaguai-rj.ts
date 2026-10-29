@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaguaí', url: 'https://itaguai.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/330200' },
   ],
-  atualizadoEm: '2026-10-02',
+  atualizadoEm: '2026-10-29',
 };

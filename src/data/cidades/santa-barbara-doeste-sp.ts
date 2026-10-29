@@ -112,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Bárbara d\'Oeste', url: 'https://www.santabarbara.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/354580' },
   ],
-  atualizadoEm: '2026-09-24',
+  atualizadoEm: '2026-10-29',
 };

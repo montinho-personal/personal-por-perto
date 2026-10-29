@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Indaiatuba', url: 'https://www.indaiatuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-10-29',
 };

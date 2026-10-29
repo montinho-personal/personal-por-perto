@@ -138,5 +138,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Santo André: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional no ABC.',
   },
   academiasVerificadasEm: '2026-10-20',
-  atualizadoEm: '2026-10-20',
+  atualizadoEm: '2026-10-29',
 };

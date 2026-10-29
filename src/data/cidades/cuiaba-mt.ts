@@ -119,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cuiabá', url: 'https://www.cuiaba.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-26',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/cuiaba-mt.webp',
     w: 1200,

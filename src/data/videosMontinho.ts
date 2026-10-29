@@ -148,6 +148,7 @@ export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
  *   22/10/2026 — região presencial (pedido do Renato): Barueri, Alphaville,
  *     Santana de Parnaíba, Aldeia da Serra.
  *   22/10/2026 — leva 1: as 10 cidades com mais impressões em 28 dias no GSC.
+ *   26/10/2026 — leva 2: as 20 seguintes. 29/10/2026 — leva 3: mais 20.
  */
 export const VIDEO_APP_ID = 'DPAQDPVffCg';
 export const CIDADES_COM_VIDEO_APP = new Set<string>([
@@ -162,4 +163,9 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'belo-horizonte-mg', 'recife-pe', 'taguatinga-df', 'fortaleza-ce', 'maceio-al',
   'bauru-sp', 'mossoro-rn', 'sorocaba-sp', 'cabo-frio-rj', 'niteroi-rj',
   'sobral-ce', 'rio-das-ostras-rj', 'juiz-de-fora-mg', 'aracaju-se', 'boa-vista-rr',
+  // leva 3 — 29/10/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 2 conferida no ar)
+  'santo-andre-sp', 'palhoca-sc', 'sao-jose-do-rio-preto-sp', 'cuiaba-mt', 'sao-luis-ma',
+  'itaguai-rj', 'santa-barbara-doeste-sp', 'ribeirao-preto-sp', 'camacari-ba', 'granja-viana-sp',
+  'piracicaba-sp', 'jau-sp', 'aguas-claras-df', 'limeira-sp', 'jundiai-sp',
+  'maringa-pr', 'porto-velho-ro', 'toledo-pr', 'indaiatuba-sp', 'vitoria-es',
 ]);

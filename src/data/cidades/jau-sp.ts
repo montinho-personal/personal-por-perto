@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Jaú', url: 'https://www.jau.sp.gov.br/sobre-jahu' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-15',
+  atualizadoEm: '2026-10-29',
 };

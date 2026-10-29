@@ -104,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jundiaí', url: 'https://www.jundiai.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/jundiai-sp.webp',
     w: 1200,

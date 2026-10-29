@@ -116,5 +116,5 @@ export const cidade: Cidade = {
       url: 'https://www.codeplan.df.gov.br/',
     },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-10-29',
 };

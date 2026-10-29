@@ -144,5 +144,5 @@ export const cidade: Cidade = {
     vertical: true,
   },
   academiasVerificadasEm: '2026-10-17',
-  atualizadoEm: '2026-10-17',
+  atualizadoEm: '2026-10-29',
 };

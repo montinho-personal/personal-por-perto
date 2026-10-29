@@ -166,5 +166,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Cotia', url: 'https://cidades.ibge.gov.br/brasil/sp/cotia/panorama' },
     { nome: 'Prefeitura de Carapicuíba', url: 'https://www.carapicuiba.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-10-16',
+  atualizadoEm: '2026-10-29',
 };

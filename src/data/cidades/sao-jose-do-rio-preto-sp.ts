@@ -104,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Preto', url: 'https://www.riopreto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-27',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/sao-jose-do-rio-preto-sp.webp',
     w: 1200,

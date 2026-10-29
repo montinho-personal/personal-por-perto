@@ -119,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Porto Velho', url: 'https://www.portovelho.ro.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/porto-velho-ro.webp',
     w: 1200,

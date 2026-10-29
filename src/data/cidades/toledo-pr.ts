@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Toledo', url: 'https://www.toledo.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-02',
+  atualizadoEm: '2026-10-29',
 };

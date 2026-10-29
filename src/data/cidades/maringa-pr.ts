@@ -118,7 +118,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maringá', url: 'https://www.maringa.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-24',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/maringa-pr.webp',
     w: 1200,

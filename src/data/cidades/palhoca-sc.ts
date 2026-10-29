@@ -129,5 +129,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palhoça', url: 'https://www.palhoca.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-30',
+  atualizadoEm: '2026-10-29',
 };

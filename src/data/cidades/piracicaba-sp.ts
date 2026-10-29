@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Piracicaba', url: 'https://www.piracicaba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-10-29',
   capaArte: {
     src: '/capas-cidade/piracicaba-sp.webp',
     w: 1200,
