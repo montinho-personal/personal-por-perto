@@ -657,8 +657,8 @@ hipertrofia), já usados no portal.
 | Termogênicos funcionam? | `termogenicos-funcionam` | ✅ 2026-10-26 · publicado antes dos prints (pedido do Renato) · `docs/termogenicos-funcionam.md` |
 | Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/quanto-tempo-para-perder-10kg.md` |
 | Fome emocional | `fome-emocional` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/fome-emocional.md` |
-| Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | |
-| Proteína e saciedade | `proteina-e-saciedade` | |
+| Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | ⏳ em preparo desde 29/10 · aguarda prints · recorte e fontes em `docs/bioimpedancia-como-ler.md` |
+| Proteína e saciedade | `proteina-e-saciedade` | ⏳ em preparo desde 29/10 · aguarda prints · recorte e fontes em `docs/proteina-e-saciedade.md` |
 | Dormir pouco engorda? | `dormir-pouco-engorda` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/dormir-pouco-engorda.md` |
 | Emagrecer sem academia | `emagrecer-sem-academia` | |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
