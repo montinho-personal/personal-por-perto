@@ -129,5 +129,7 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Ribeirão Preto: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
+  // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
+  metaFoco: 'preco',
   atualizadoEm: '2026-10-29',
 };

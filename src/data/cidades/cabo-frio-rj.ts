@@ -102,5 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cabo Frio', url: 'https://cabofrio.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
+  // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
+  metaFoco: 'preco',
   atualizadoEm: '2026-10-26',
 };
