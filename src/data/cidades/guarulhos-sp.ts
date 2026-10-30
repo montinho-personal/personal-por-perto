@@ -28,7 +28,7 @@ export const cidade: Cidade = {
     {
       nome: 'Bosque Maia (Parque Municipal)',
       descricao:
-        'O maior parque da cidade, com cerca de 170 mil m². Tem pista de 3 km para corrida e caminhada (piso de concreto, plano), trilhas na mata, quadras poliesportivas, pista de skate, academia ao ar livre e lago. Aos domingos, a Avenida Paulo Faccini, no entorno, recebe ciclofaixa de lazer.',
+        'O maior parque da cidade, com cerca de 170 mil m². Tem pista de 3 km para corrida e caminhada (piso de concreto, plano), trilhas na mata, quadras poliesportivas, pista de skate e lago. Aos domingos, a Avenida Paulo Faccini, no entorno, recebe ciclofaixa de lazer.',
     },
     {
       nome: 'Lago dos Patos',
@@ -62,15 +62,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Cidade grande e de perfil predominantemente residencial, Guarulhos concentra boa parte da prática esportiva pública no Bosque Maia, que funciona como o grande ponto de encontro de quem treina ao ar livre. A demanda por personal trainers cresce junto com a população e a busca por qualidade de vida.',
   academias:
-    'A oferta de academias acompanha o tamanho da cidade, com redes populares espalhadas pelos bairros e estúdios de treino funcional surgindo nas regiões de maior renda, como o Distrito Maia.',
+    'Entre as redes, a Smart Fit tem unidades na Av. Guarulhos (Ponte Grande), na Rua Brás Cubas (unidade Bosque Maia, na Vila Lanzara), na Vila Galvão, na Transguarulhense e nos shoppings Pátio Guarulhos e Internacional; a Bluefit tem unidades em Gopouva e na Vila Galvão. Endereços conferidos nos sites das redes.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades como a da Av. Guarulhos (Ponte Grande) e a da Av. Paulo Faccini, em frente ao Bosque Maia' },
-    { nome: 'Bluefit', detalhe: 'várias unidades — Centro, Gopouva, Vila Galvão, Jardim Cocaia e Pimentas' },
-    { nome: 'Academia ao ar livre do Bosque Maia', detalhe: 'gratuita, junto à pista de 3 km do maior parque da cidade' },
+    { nome: 'Smart Fit', detalhe: 'unidades na Av. Guarulhos (Ponte Grande), na Rua Brás Cubas (Bosque Maia), na Vila Galvão e nos shoppings Pátio Guarulhos e Internacional' },
+    { nome: 'Bluefit', detalhe: 'unidades em Gopouva (Rua Dr. José Maurício de Oliveira) e na Vila Galvão (Av. Dr. Timóteo Penteado)' },
   ],
 
   destaquesFitness: [
-    'Bosque Maia: pista plana de 3 km, academia ao ar livre e ciclofaixa de lazer aos domingos.',
+    'Bosque Maia: pista plana de 3 km e ciclofaixa de lazer aos domingos.',
     'Segunda maior população do estado — mercado em expansão para personal trainers.',
     'Conexão ferroviária inédita via aeroporto (Linha 13-Jade da CPTM).',
     'Contraste social que abre espaço para atendimento em diferentes faixas de preço.',
@@ -89,7 +88,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde costuma acontecer o treino com personal em Guarulhos?',
       resposta:
-        'O Bosque Maia é o grande ponto de encontro: pista plana de 3 km, academia ao ar livre e ciclofaixa aos domingos — ideal para treino funcional e corrida orientada. Fora dele, o treino se divide entre as academias de rede espalhadas pelos bairros e o atendimento em casa ou no condomínio, forte na região do Distrito Maia e da Vila Galvão. Como o trânsito das rodovias pesa, a regra prática é escolher um formato que não dependa de atravessar a cidade.',
+        'O Bosque Maia é o grande ponto de encontro: pista plana de 3 km e ciclofaixa aos domingos — ideal para treino funcional e corrida orientada. Fora dele, o treino se divide entre as academias de rede espalhadas pelos bairros e o atendimento em casa ou no condomínio, forte na região do Distrito Maia e da Vila Galvão. Como o trânsito das rodovias pesa, a regra prática é escolher um formato que não dependa de atravessar a cidade.',
     },
     {
       pergunta: 'Existe treino para quem trabalha em turnos no aeroporto e na logística?',
@@ -118,5 +117,6 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Guarulhos: mais saúde, energia e qualidade de vida, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-22',
+  academiasVerificadasEm: '2026-10-30',
+  atualizadoEm: '2026-10-30',
 };

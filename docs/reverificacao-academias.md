@@ -630,3 +630,23 @@ Saldo da leva: 8 entradas → 4 mantidas (2 com detalhe ampliado, 1 corrigida) e
 | Academias da saúde dos parques — "no Parque da Lagoa e no Anel de Lagoas" | **corrigida**: confirmada só no Parque da Lagoa (Av. José Falcão, gratuita; o parque abre de terça a domingo, das 5h às 20h). Nenhuma fonte cita academia da saúde no Anel de Lagoas. O texto ganha as 17 academias ao ar livre da Prefeitura | Prefeitura de Feira de Santana, notícias de 25/10/2024 e 02/12/2024 |
 
 Saldo da leva: 7 entradas → 3 mantidas (todas com detalhe corrigido ou ampliado) e 4 removidas. As duas cidades ficam com poucas entradas (Boa Vista 1, Feira 2), e completar vira tarefa à parte. 124 cidades seguem na fila.
+
+### 30/10/2026 — leva 26 (rotina, Parte B: Porto Velho e Guarulhos)
+
+**Porto Velho/RO** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "Porto Velho Shopping, Av. Rio Madeira e Av. Jatuarana" | **corrigida**: são quatro unidades, e "Porto Velho Shopping" e "Av. Rio Madeira" são a mesma (Av. Rio Madeira, 3288). As outras são: Rua Jatuarana, 6283 (Lagoa; a unidade se chama "Av. Jatuarana", mas o endereço é rua), Rua Equador, 945 (Nova Porto Velho) e Av. Eng. Anysio da Rocha Compasso, 4854 (Flodoaldo Pontes Pinto) | páginas oficiais, todas `opened:true` |
+| Academias locais | **removida**: genérica | — |
+| Estrutura do Parque da Cidade — "pista, ciclovia, das 5h às 22h" | **corrigida** para "Academias ao ar livre do Parque da Cidade": Av. Calama, ao lado do Porto Velho Shopping, pista de caminhada de 1,2 km, das 5h às 22h. A ciclovia saiu da entrada e da FAQ, porque nenhuma fonte a cita no parque | Prefeitura de Porto Velho: notícia de 28/03/2023 (academias ao ar livre, pista de 1,2 km, Av. Calama) e nota de 2026 (volta ao horário das 5h às 22h) |
+
+**Guarulhos/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "Av. Guarulhos e Av. Paulo Faccini, em frente ao Bosque Maia" | **corrigida**: a unidade Bosque Maia fica na Rua Brás Cubas, 36, Vila Lanzara, não na Paulo Faccini. Abertas: Av. Guarulhos (Ponte Grande), Bosque Maia, Vila Galvão, Transguarulhense, Shopping Pátio Guarulhos e Internacional Shopping. Cocaia e Av. Dr. Timóteo Penteado ainda não abriram | páginas oficiais (`opened`) |
+| Bluefit — "Centro, Gopouva, Vila Galvão, Jardim Cocaia e Pimentas" | **corrigida**: o site da rede lista só duas em Guarulhos, Emílio Ribas (R. Dr. José Maurício de Oliveira, 24, Gopouva) e Vila Galvão (Av. Dr. Timóteo Penteado, 2856) | sitemap e páginas oficiais da Bluefit (o botão "Avise-me na inauguração" aparece em todas as 237 páginas: é do modelo, não indica pré-venda) |
+| Academia ao ar livre do Bosque Maia | **removida**: os sites da Prefeitura (guarulhos.sp.gov.br, turismo e GruCultura) não abrem aqui, e resumo de busca não é fonte. Saiu também da descrição do parque, de um destaque e da FAQ. Volta com print | — |
+
+Texto `academias` reescrito nas duas cidades com os endereços das redes. Saldo da leva: 6 entradas → 4 mantidas (todas corrigidas) e 2 removidas. 122 cidades seguem na fila.

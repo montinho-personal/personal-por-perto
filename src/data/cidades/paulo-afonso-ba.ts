@@ -69,6 +69,14 @@ export const cidade: Cidade = {
     'A cultura esportiva de Paulo Afonso é marcada pelo turismo de aventura no rio São Francisco, com canoagem, trilhas e esportes radicais nos cânions, somados a provas de corrida de rua que crescem no calendário regional.',
   academias:
     'A oferta de academias se concentra no Centro e nos bairros de classe média, atendendo o público ligado à Chesf, ao comércio e aos serviços, com ambiente climatizado valorizado diante do calor do semiárido.',
+  academiasProximas: [
+    { nome: 'Skyfit Paulo Afonso', detalhe: 'na Avenida Apolônio Sales, no Centro' },
+    { nome: 'Academia Performance', detalhe: 'na Rua Alonso Maciel Ferreira, no Centro' },
+    { nome: 'Academia Espaço Fitness', detalhe: 'na Rua Padre Lourenço, no Tancredo Neves II' },
+    { nome: 'Arena Fitness', detalhe: 'na Delmiro Gouveia, no Tancredo Neves II' },
+    { nome: 'Academia M2 Fitness', detalhe: 'na Rua Marechal Rondon' },
+  ],
+  academiasVerificadasEm: '2026-10-30',
 
   destaquesFitness: [
     'Turismo de aventura no rio São Francisco, com cânions, trilhas e esportes radicais.',
@@ -96,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Paulo Afonso', url: 'https://pauloafonso.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-30',
 };

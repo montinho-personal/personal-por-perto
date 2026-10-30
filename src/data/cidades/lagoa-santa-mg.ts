@@ -69,6 +69,12 @@ export const cidade: Cidade = {
     'A cultura esportiva de Lagoa Santa gira em torno da lagoa e da natureza: a orla concentra caminhada, corrida e treino funcional, e o calendário de corridas de rua tem etapas recorrentes na cidade. O turismo de aventura no Parque do Sumidouro — trilhas e ecoturismo — complementa um estilo de vida ativo e ao ar livre.',
   academias:
     'A oferta inclui redes e academias de bairro, estúdios de pilates e funcional, somados às áreas de lazer dos condomínios e ao treino na orla da Lagoa Central — combinação que abre espaço para o atendimento personalizado presencial e domiciliar.',
+  academiasProximas: [
+    { nome: 'Smart Fit Lagoa Santa', detalhe: 'na Avenida Acadêmico Nilo Figueiredo, no Doutor Lund' },
+    { nome: 'Academia Moove', detalhe: 'na Avenida Carlos Orleans Guimarães, no Joá' },
+    { nome: 'Academia Uni Fit', detalhe: 'na Avenida Prefeito João Daher, na Lundcéia' },
+  ],
+  academiasVerificadasEm: '2026-10-30',
 
   destaquesFitness: [
     'Orla da Lagoa Central como principal ponto de treino ao ar livre da cidade.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Lagoa Santa', url: 'https://www.lagoasanta.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-30',
 };

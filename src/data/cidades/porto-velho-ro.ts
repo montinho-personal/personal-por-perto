@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Rondônia e maior cidade do estado, Porto Velho é um polo de transporte, comércio e energia às margens do Rio Madeira. Ganhou peso econômico com as hidrelétricas de Santo Antônio e Jirau e tem forte presença do agronegócio regional, com um histórico ligado à ferrovia Madeira-Mamoré e à mineração.',
 
   mercado:
-    'O mercado de musculação é aquecido nos shoppings e nas zonas sul e leste em expansão, com várias unidades da Smart Fit (Porto Velho Shopping, Av. Rio Madeira, Av. Jatuarana) e academias locais. O calor favorece também o treino ao ar livre nos parques e na orla, nos horários mais amenos.',
+    'O mercado de musculação tem a Smart Fit com quatro unidades na cidade: no Porto Velho Shopping, na Rua Jatuarana, na Nova Porto Velho e no Flodoaldo Pontes Pinto. O calor favorece também o treino ao ar livre nos parques e na orla, nos horários mais amenos.',
 
   bairrosNobres: ['São João Bosco', 'Olaria', 'Embratel', 'Rio Madeira'],
   bairrosPopulares: ['Caiari', 'Areal', 'Cidade Nova', 'Cuniã'],
@@ -68,17 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Porto Velho tem um calendário de corridas de rua consolidado, com provas institucionais e etapas de circuitos nacionais. A orla do Madeira e o Parque da Cidade são os principais palcos do esporte ao ar livre.',
   academias:
-    'A oferta reúne várias unidades da Smart Fit e academias locais, concentradas nos shoppings e nas zonas de maior renda, complementadas pela estrutura do Parque da Cidade.',
+    'A Smart Fit tem quatro unidades conferidas no site da rede: no Porto Velho Shopping, na Av. Rio Madeira; na Rua Jatuarana, no bairro Lagoa; na Rua Equador, na Nova Porto Velho; e na Av. Engenheiro Anysio da Rocha Compasso, no Flodoaldo Pontes Pinto. No setor público, o Parque da Cidade tem academias ao ar livre e pista de caminhada de 1,2 km.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Porto Velho Shopping, na Av. Rio Madeira e na Av. Jatuarana' },
-    { nome: 'Academias locais', detalhe: 'concentradas nas zonas sul e leste em expansão' },
-    { nome: 'Estrutura do Parque da Cidade', detalhe: 'pista, ciclovia e área de lazer, das 5h às 22h' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: Porto Velho Shopping (Av. Rio Madeira), Rua Jatuarana (Lagoa), Nova Porto Velho e Flodoaldo Pontes Pinto' },
+    { nome: 'Academias ao ar livre do Parque da Cidade', detalhe: 'na Av. Calama, ao lado do Porto Velho Shopping, com pista de caminhada de 1,2 km; aberto das 5h às 22h' },
   ],
 
   destaquesFitness: [
     'Parque da Cidade como hub de corrida e ciclismo urbano.',
     'Orla do Rio Madeira para caminhada com vista.',
-    'Smart Fit com múltiplas unidades, além de academias locais.',
+    'Smart Fit com quatro unidades e academias ao ar livre no Parque da Cidade.',
     'Calendário ativo de corridas de rua (prefeitura e circuitos nacionais).',
   ],
 
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Porto Velho?',
       resposta:
-        'Os pontos principais são o Parque da Cidade — aberto das 5h às 22h, com pista e ciclovia —, o Espaço Alternativo na orla do Madeira, as unidades da Smart Fit (Porto Velho Shopping, Rio Madeira e Jatuarana) e as academias locais das zonas sul e leste. O atendimento em casa e em condomínio cresce nos bairros de maior renda, como São João Bosco e Rio Madeira, onde os novos residenciais costumam ter espaço de treino próprio.',
+        'Os pontos principais são o Parque da Cidade — aberto das 5h às 22h, com pista de caminhada de 1,2 km e academias ao ar livre —, o Espaço Alternativo na orla do Madeira e as quatro unidades da Smart Fit (Porto Velho Shopping, Jatuarana, Nova Porto Velho e Flodoaldo Pontes Pinto). O atendimento em casa e em condomínio cresce nos bairros de maior renda, como São João Bosco e Rio Madeira, onde os novos residenciais costumam ter espaço de treino próprio.',
     },
     {
       pergunta: 'O que muda no treino entre a estação chuvosa e a seca de Porto Velho?',
@@ -121,7 +120,8 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  academiasVerificadasEm: '2026-10-30',
+  atualizadoEm: '2026-10-30',
   capaArte: {
     src: '/capas-cidade/porto-velho-ro.webp',
     w: 1200,
