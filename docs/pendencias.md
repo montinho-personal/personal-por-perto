@@ -8,6 +8,43 @@ decidir e o que muda em cada caminho.
 
 ## Conferir a estratégia de SEO local — marcado para 30/10/2026
 
+> **Conferida em 30/10/2026** (dados em `docs/relatorios/2026-10-30-gsc-seo-local/`,
+> puxados pelo Supermetrics; janela 01/10–29/10 × 31/08–29/09).
+>
+> 1. **Palhoça — não respondeu.** "consultoria online musculacao palhoca"
+>    foi de 103 para 38 impressões, e a posição melhorou de 7,3 para 4,9,
+>    mas segue com **zero clique**. A página caiu de 156 para 77
+>    impressões. A regra era manter se a posição não caísse, e ela não
+>    caiu; então os campos ficam, mas o título não resolveu o clique.
+>    Próximo passo: print da SERP dessa busca, para ver o que aparece
+>    acima e ao lado.
+> 2. **Região presencial — misto.** As 12 páginas foram de 250 para 380
+>    impressões (+52%), mas com posições piores (Alphaville 6,2 → 12,9;
+>    Aldeia da Serra 7,3 → 21,4; Barueri 8,1 → 12,7) e CTR de 2,4% para
+>    1,3%. Leitura: as páginas passaram a aparecer em mais buscas, só que
+>    mais abaixo. Aparece "personal trainer alphaville" (21 impressões,
+>    posição 10,4, 1 clique); "personal trainer em barueri" segue na
+>    posição 16. Pela regra, isto é "espere mais", não "não funcionou".
+>    A região também ganhou demanda por fora das páginas de cidade (hyrox
+>    + cidade, Six Alphaville), mas isso foi para os guias.
+> 3. **Cidades grandes — CTR estável enquanto o controle caiu.** As
+>    alteradas, juntas, mantiveram o CTR (1,09% → 1,07%) com −8% de
+>    impressões; o controle caiu de 2,54% para 2,26%, com −31%.
+>    Destaques: São Paulo foi de 1 para 7 cliques, Goiânia de 5 para 11 e
+>    Porto Alegre de 7 para 12. **Belo Horizonte foi de 1.129 para 287
+>    impressões**, mas quase tudo era a busca genérica "personal trainer"
+>    (439 → 4, com 1 clique). Não é perda local; "personal trainer bh"
+>    piorou de 27 para 34.
+> 4. **Preço + cidade — respondeu.** As consultas de preço do site todo
+>    foram de 966 para 2.086 impressões e de 9 para 17 cliques, com a
+>    posição de 11,6 para 10,1. É o melhor sinal da conferência.
+>
+> **Decisão proposta ao Renato:** levar o `metaFoco: 'preco'` às 20
+> maiores, porque o sinal de preço é claro. Segurar a replicação do padrão
+> regional até a próxima leitura (fim de novembro), com os prints de
+> Palhoça e de "personal trainer barueri/alphaville" antes de mexer de
+> novo.
+
 **Aberta em 30/09/2026, a pedido do Renato:** "mês que vem conferimos se
 essa estratégia está dando certo". Estratégia em
 `docs/seo-local-estrategia.md`; o que entrou em cada página em

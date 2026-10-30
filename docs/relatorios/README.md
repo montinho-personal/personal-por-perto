@@ -522,3 +522,26 @@ Arquivo: `2026-10-06-ga4-cliques/auditoria.md` (puxado pelo Supermetrics).
 | WhatsApp — pessoas de fora vistas pelo GA4 | ~19 (23 cliques; 17 internos excluídos) |
 | Site do Montinho — pessoas de fora (união dos dois GA4) | ~18 |
 | Último clique para o site do Montinho | 28/09 |
+
+## Conferência da estratégia de SEO local — 30/10/2026
+
+Arquivo: `2026-10-30-gsc-seo-local/`. Os dados vêm direto do Search
+Console pelo Supermetrics, comparando 01/10–29/10 com 31/08–29/09 (29 × 30
+dias).
+
+| grupo | impressões (antes → depois) | cliques | CTR |
+|---|---|---|---|
+| todas as páginas `/personal-trainer/` | 19.875 → 16.497 | 327 → 240 | 1,65% → 1,45% |
+| as ~45 cidades alteradas | 12.235 → 11.198 | 133 → 120 | 1,09% → 1,07% |
+| controle (as outras cidades) | 7.640 → 5.299 | 194 → 120 | 2,54% → 2,26% |
+| região presencial (12 páginas) | 250 → 380 | 6 → 5 | 2,40% → 1,32% |
+| Palhoça | 156 → 77 | 1 → 0 | 0,64% → 0% |
+| consultas de preço (site todo) | 966 → 2.086 | 9 → 17 | posição 11,6 → 10,1 |
+
+**O que mudou em relação ao relatório anterior (27/10):** pela primeira vez
+há janela limpa, mês contra mês. O site inteiro perdeu impressões de
+cidade (−17%). As cidades alteradas perderam bem menos (−8%) que o
+controle (−31%) e mantiveram o CTR, enquanto o do controle caiu.
+**O sinal mais claro é o das consultas de preço: as impressões mais que
+dobraram e a posição melhorou 1,5 ponto.** Detalhes e decisões em
+`docs/pendencias.md`.
