@@ -39,6 +39,27 @@ decidir e o que muda em cada caminho.
 >    foram de 966 para 2.086 impressões e de 9 para 17 cliques, com a
 >    posição de 11,6 para 10,1. É o melhor sinal da conferência.
 >
+> **Prints recebidos em 30/10** (`docs/pesquisas/2026-10-30-seo-local-prints/`):
+>
+> - **Palhoça — o zero clique tem explicação.** A busca "consultoria
+>   online musculacao palhoca" abre com visão geral de IA, que responde
+>   "custa, em média, entre R$ 180 e R$ 450 por mês". É exatamente a faixa
+>   online da nossa página (`onlineMin` 180, `onlineMax` 450), e a IA
+>   cita o Personal por Perto como fonte ("ver estimativas e guias locais
+>   no Personal por Perto"). O portal ganhou como fonte e perdeu o clique
+>   para a resposta pronta. Mexer no título não resolve isso. A página fica
+>   como está.
+> - **Barueri.** Autocompletar: "personal trainer barueri sp", "personal
+>   barueri", "personal trainer barato sp". PAA: quanto custa 1 mês, 2
+>   vezes por semana, é vantajoso pagar, quanto cobra por hora. Acima do
+>   portal: o site de um personal local, o Superprof e o de um
+>   nutricionista-personal. "Outras pessoas pesquisaram": alphaville,
+>   osasco, preço. A página já responde mês, 2 vezes e vale a pena; **falta
+>   "por hora" e "mais barato"**.
+> - **Alphaville.** Autocompletar: "personal trainer alphaville sp",
+>   "mulher", "ironberg" e um nome de profissional. Os três "residencial"
+>   no topo são histórico do próprio Renato, não sugestão.
+
 > **Decisão proposta ao Renato:** levar o `metaFoco: 'preco'` às 20
 > maiores, porque o sinal de preço é claro. Segurar a replicação do padrão
 > regional até a próxima leitura (fim de novembro), com os prints de
