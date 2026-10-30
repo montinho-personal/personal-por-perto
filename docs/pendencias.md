@@ -56,6 +56,9 @@ decidir e o que muda em cada caminho.
 >   nutricionista-personal. "Outras pessoas pesquisaram": alphaville,
 >   osasco, preço. A página já responde mês, 2 vezes e vale a pena; **falta
 >   "por hora" e "mais barato"**.
+> - **Aplicado em 30/10, a pedido do Renato:** Barueri ganhou as FAQs
+>   "por hora" e "mais barato". Na leitura de novembro, separar as
+>   semanas antes e depois de 30/10 nessa página.
 > - **Alphaville.** Autocompletar: "personal trainer alphaville sp",
 >   "mulher", "ironberg" e um nome de profissional. Os três "residencial"
 >   no topo são histórico do próprio Renato, não sugestão.
