@@ -103,9 +103,20 @@ export const cidade: Cidade = {
   metaFoco: 'preco',
   // 08/10: "2x por semana" no PAA e "online" nos prompts das IAs (pesquisa de
   // palavras-chave — docs/intencoes-locais.md).
-  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'academia', onlineOuPresencial: true },
+  /*
+   * Prints de 30/10/2026 ("personal trainer barueri"): o PAA pede "quanto um
+   * personal trainer cobra por hora?" e o autocompletar traz "personal trainer
+   * barato sp". As duas respostas entraram aqui (FAQ de barato e FAQ da hora).
+   * Registro em docs/pendencias.md (conferência de SEO local).
+   */
+  faqsBusca: { precoMensal: true, duasVezes: true, taxaPersonal: 'academia', onlineOuPresencial: true, barato: true },
 
   faqsExtra: [
+    {
+      pergunta: 'Quanto um personal trainer cobra por hora em Barueri?',
+      resposta:
+        'Na aula avulsa, que costuma ser de uma hora, a referência em Barueri vai de R$ 90 a R$ 220. No pacote mensal, a mesma hora sai mais barata: de R$ 450 a R$ 1.300 por mês, com 2 ou 3 treinos por semana, dá algo entre R$ 35 e R$ 150 por sessão, conforme a frequência e o profissional. Em Alphaville e Tamboré, o atendimento no condomínio ou em casa costuma ficar na parte de cima da faixa, porque inclui o deslocamento. São estimativas editoriais do portal, não tabela de preço: confirme o valor com o profissional antes de fechar.',
+    },
     {
       pergunta: 'É melhor treinar 3 ou 5 vezes na semana?',
       resposta:
@@ -148,5 +159,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-28',
+  atualizadoEm: '2026-10-30',
 };
