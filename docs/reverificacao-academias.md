@@ -650,3 +650,24 @@ Saldo da leva: 7 entradas → 3 mantidas (todas com detalhe corrigido ou ampliad
 | Academia ao ar livre do Bosque Maia | **removida**: os sites da Prefeitura (guarulhos.sp.gov.br, turismo e GruCultura) não abrem aqui, e resumo de busca não é fonte. Saiu também da descrição do parque, de um destaque e da FAQ. Volta com print | — |
 
 Texto `academias` reescrito nas duas cidades com os endereços das redes. Saldo da leva: 6 entradas → 4 mantidas (todas corrigidas) e 2 removidas. 122 cidades seguem na fila.
+
+### 31/10/2026 — leva 27 (rotina, Parte B: Indaiatuba e Contagem)
+
+**Indaiatuba/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Indaiatuba — "Rua das Primaveras, no Parque Mall" | confirmada sem mudança | /academias/indaiatuba (`opened:true`, Rua das Primaveras, 1050, Jardim Pompéia; a página cita o Parque Mall). As unidades Paulistão e Império têm `opened:false` e não entram |
+| Bluefit Indaiatuba Centro — "Praça Leonor de Barros Camargo" | confirmada sem mudança | página oficial da Bluefit (Praça Leonor de Barros Camargo, 111, Centro) |
+| Panobianco Indaiatuba — "R. Augusto de Oliveira Camargo, Centro" | **corrigida** para só o nome, "Panobianco": a rede está na cidade por duas fontes independentes (Wellhub: Centro e Morada do Sol; TotalPass: Jardim Hubert), mas cada endereço tem uma fonte só. panobianco.com.br é uma página antiga parada, e academiapanobianco.com.br não abre aqui | Wellhub + TotalPass |
+| Panobianco Morada do Sol — "R. Seraphin Gilberto Candello" | **removida** como entrada separada (fundida na de cima); o endereço tem uma fonte só | — |
+
+**Contagem/MG** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Contagem — "Big Shopping, Av. João César de Oliveira, Eldorado" | confirmada; o detalhe ganha a segunda unidade, a do Itaú Power Shopping (Av. General David Sarnoff, 5160, Cidade Industrial) | páginas oficiais `opened:true` |
+| Pratique Fitness Eldorado — "Rua Mário Vital; maior rede da RMBH" | **removida**: só o Wellhub/Gympass lista (R. Mário Vital, 168, como "Pratique Oiapoque Contagem"), e o site da rede não abre aqui. "Maior rede da região" não tinha fonte | — |
+| Pratique Fitness Novo Eldorado | **removida**: mesma situação (Wellhub: Av. Dr. Cincinato Cajado Braga, 375) | — |
+
+Texto: em Contagem, `resumo`, `academias` e o destaque passaram a citar as duas unidades da Smart Fit, em vez de "redes concentradas no Eldorado". Contagem fica com 1 entrada; a Pratique volta com print do site da rede ou com uma segunda fonte. Saldo da leva: 7 entradas → 4 mantidas (2 corrigidas ou ampliadas) e 3 removidas ou fundidas. 120 cidades seguem na fila.

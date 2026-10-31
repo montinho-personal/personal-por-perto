@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Terceiro município mais populoso de Minas Gerais e parte da Região Metropolitana de Belo Horizonte, Contagem é um dos principais polos industriais e logísticos do estado, com a histórica Cidade Industrial e forte presença de indústria, atacado e centros de distribuição. A vizinhança da capital e a tradição operária moldam o perfil da cidade e de seu público.',
 
   mercado:
-    'A oferta de academias é boa, com redes como a Smart Fit (na região do Eldorado) e redes locais. Um destaque é o programa público "Contagem Ativa", que reúne milhares de alunos em cerca de 70 núcleos com funcional, caminhada, dança e pilates — sinal de uma cultura ativa de exercício comunitário que convive com a musculação tradicional.',
+    'A oferta de academias é boa, com a Smart Fit no Big Shopping, no Eldorado, e no Itaú Power Shopping, na Cidade Industrial. Um destaque é o programa público "Contagem Ativa", que reúne milhares de alunos em cerca de 70 núcleos com funcional, caminhada, dança e pilates — sinal de uma cultura ativa de exercício comunitário que convive com a musculação tradicional.',
 
   bairrosNobres: ['Eldorado', 'Cidade Jardim', 'Braúnas', 'Jardim Riacho das Pedras'],
   bairrosPopulares: ['Bairro Industrial', 'Jardim Industrial', 'Nacional', 'Bandeirantes'],
@@ -68,16 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Cidade operária, Contagem tem tradição de esporte comunitário e boa participação popular em corridas de rua. Os programas públicos de atividade física descentralizados por bairro fortalecem a adesão e democratizam o acesso ao treino.',
   academias:
-    'A oferta reúne redes como a Smart Fit (concentradas no polo comercial do Eldorado) e academias locais, complementadas pelos núcleos do programa "Contagem Ativa" e pelas áreas de treino dos parques.',
+    'A Smart Fit tem duas unidades conferidas no site da rede: no Big Shopping, na Av. João César de Oliveira, no Eldorado, e no Itaú Power Shopping, na Av. General David Sarnoff, na Cidade Industrial. A oferta é complementada pelos núcleos do programa "Contagem Ativa" e pelas áreas de treino dos parques.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Contagem', detalhe: 'no Big Shopping, na Av. João César de Oliveira, no Eldorado' },
-    { nome: 'Pratique Fitness Eldorado', detalhe: 'na Rua Mário Vital: unidade da maior rede da região metropolitana de BH' },
-    { nome: 'Pratique Fitness Novo Eldorado', detalhe: 'segunda unidade da rede, atendendo o Novo Eldorado' },
+    { nome: 'Smart Fit', detalhe: 'unidades no Big Shopping (Av. João César de Oliveira, Eldorado) e no Itaú Power Shopping (Cidade Industrial)' },
   ],
 
   destaquesFitness: [
-    'Redes como a Smart Fit concentradas no Eldorado, principal polo comercial.',
+    'Smart Fit no Big Shopping, no Eldorado, e no Itaú Power Shopping, na Cidade Industrial.',
     'Programa público "Contagem Ativa" com cerca de 70 núcleos e milhares de alunos.',
     'Ciclovia de cerca de 7 km na Avenida Firmo de Matos.',
     'Parques (Giannetti, Gentil Diniz) com áreas para caminhada e treino.',
@@ -102,7 +100,8 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Contagem', url: 'https://portal.contagem.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  academiasVerificadasEm: '2026-10-31',
+  atualizadoEm: '2026-10-31',
   capaArte: {
     src: '/capas-cidade/contagem-mg.webp',
     w: 1200,

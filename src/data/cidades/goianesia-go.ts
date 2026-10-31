@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva combina o futebol e os esportes coletivos dos ginásios municipais com a corrida de rua e a caminhada nas praças, atividades acessíveis que crescem entre os goianesienses.',
   academias:
     'A oferta é formada principalmente por academias locais, sustentadas pela renda do agronegócio e das usinas, e complementada pelas academias ao ar livre instaladas em praças e setores da cidade.',
+  academiasProximas: [
+    { nome: 'Physico Academia', detalhe: 'no Setor Sul' },
+  ],
+  academiasVerificadasEm: '2026-10-31',
 
   destaquesFitness: [
     'Polo sucroalcooleiro e agropecuário, com renda agroindustrial que sustenta o mercado fitness.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Goianésia', url: 'https://goianesia.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-31',
 };

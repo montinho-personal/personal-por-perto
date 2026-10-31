@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva de Vacaria é fortemente marcada pela tradição campeira: o Rodeio Crioulo Internacional, uma das maiores manifestações da tradição gaúcha, é o grande símbolo da cidade. Ao lado disso, crescem a musculação e as atividades ao ar livre, impulsionadas pela paisagem de campos e pelo clima de serra.',
   academias:
     'A rede reúne academias de musculação, estúdios e espaços de treino funcional, com a procura aumentando no inverno, quando o frio intenso torna o treino indoor a opção mais confortável.',
+  academiasProximas: [
+    { nome: 'Soul Fitness Academia', detalhe: 'na Rua Farroupilha, no bairro Cristina' },
+  ],
+  academiasVerificadasEm: '2026-10-31',
 
   destaquesFitness: [
     'Parque Linear da Ferrovia e Parque do Aeroporto: principais espaços públicos para caminhada e corrida.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vacaria', url: 'https://www.vacaria.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-10-31',
 };

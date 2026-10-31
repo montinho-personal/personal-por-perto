@@ -73,8 +73,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Indaiatuba', detalhe: 'na Rua das Primaveras, no Parque Mall' },
     { nome: 'Bluefit Indaiatuba Centro', detalhe: 'na Praça Leonor de Barros Camargo' },
-    { nome: 'Panobianco Indaiatuba', detalhe: 'na Rua Augusto de Oliveira Camargo, no Centro' },
-    { nome: 'Panobianco Morada do Sol', detalhe: 'na Rua Seraphin Gilberto Candello, no Jardim Morada do Sol' },
+    { nome: 'Panobianco' },
   ],
 
   destaquesFitness: [
@@ -129,5 +128,6 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  academiasVerificadasEm: '2026-10-31',
+  atualizadoEm: '2026-10-31',
 };
