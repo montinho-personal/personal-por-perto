@@ -302,6 +302,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Calorias', url: '/calorias/ping-pong/', titulo: 'Quantas calorias gasta jogar ping pong?' },
   { categoria: 'Calorias', url: '/calorias/gasto-calorico-diario/', titulo: 'Quantas calorias eu gasto por dia?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/dormir-pouco-engorda/', titulo: 'Dormir pouco engorda ou emagrece? O que acontece com a fome e o peso' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/bioimpedancia/', titulo: 'Bioimpedância: o que é, como se preparar e como ler o resultado' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/proteina-e-saciedade/', titulo: 'Proteína dá saciedade? O que os estudos mostram e como usar na dieta' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/fome-emocional/', titulo: 'Fome emocional: o que é, como perceber e como controlar' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/termogenicos-funcionam/', titulo: 'Termogênicos funcionam? O que a ciência e a ANVISA dizem' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quanto-tempo-para-perder-10kg/', titulo: 'Quanto tempo para perder 10 kg? A conta real e o prazo' },

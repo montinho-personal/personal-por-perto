@@ -4,9 +4,9 @@ Próximo item da pauta de emagrecimento (`docs/pauta-editorial.md`). Pedido do
 Renato em 29/10/2026 ("pode criar próximos 2 de conteúdo, segundo nossa
 estratégia").
 
-**Estado: em preparo, aguardando os prints.** Título, H1, seções e FAQs
-esperam os prints do Google (regra do CLAUDE.md). O que já foi adiantado
-está abaixo.
+**Estado: publicado em 01/11/2026 em `/emagrecimento/bioimpedancia/`**,
+depois dos prints do Renato. O slug saiu mais curto que o da pauta porque a
+busca é sobre o exame inteiro, não só a leitura.
 
 ## Prints pedidos (29/10)
 
@@ -83,3 +83,51 @@ estimativa. Decidir com o texto pronto.
   ângulo de fase baixo pedem médico, não ajuste de treino.
 - Ciclo menstrual entra como fator de variação (Dehghan 2008), sem
   número inventado.
+
+## Prints recebidos (01/11) e o que entrou
+
+`docs/pesquisas/2026-11-01-bioimpedancia/` (busca "bioimpedância"; as quatro
+buscas pedidas em 29/10 não vieram, a principal cobriu o essencial).
+
+- **Autocompletar:** valor, onde fazer, perto de mim, barueri, alphaville,
+  o que é, balança, tem que ser em jejum.
+- **PAA:** o que é e para que serve · qual o valor do exame · qual o
+  preparo · qual o valor normal.
+- **Outras pessoas pesquisaram:** brasília, balança, corporal, drogasil,
+  inbody, onde fazer, preparo, exame valor, exame, smart fit, para que
+  serve, agendar.
+- **Visão geral de IA:** "exame rápido, indolor e não invasivo" e "calcula
+  com precisão" — o artigo corrige a segunda parte (estima; erro
+  individual pode ser grande).
+- **SERP:** farmácias (Drogaria São Paulo vendendo o exame, Drogasil com
+  guia), Einstein.
+
+**Mudança de recorte por causa dos prints:** a busca é sobre o EXAME. O
+artigo cobre o que é, se precisa de jejum, preparo, quem fala antes com o
+médico, a tabela campo a campo, valor normal (Gallagher) e acompanhamento.
+
+| busca / pergunta | onde |
+|---|---|
+| o que é / para que serve | H2 "O que a bioimpedância mede de verdade", FAQ 1 |
+| tem que ser em jejum / preparo | H2 do preparo, FAQs 2 e 3 |
+| valor normal | H2 "Qual é o valor normal?", FAQ 4 |
+| balança | H2 "Balança de casa ou aparelho de mãos e pés?", FAQ 5 |
+| (laudo) visceral, idade metabólica | tabela + FAQs 6 e 7 |
+
+**Ficou de fora:** preço do exame (só print, e os sites de farmácia não
+abrem aqui), lista de onde fazer ou "bioimpedância barueri/alphaville"
+(sem fonte para listar lugares), inbody e smart fit (marca e serviço sem
+fonte aberta).
+
+**Fonte nova e principal:** Prado CM et al. 2026, AJCN (PMID 41864542),
+guia de padrões endossado por especialistas, lido no texto completo
+(PMC13197919): equações dependem do aparelho e da população, o erro
+individual pode ser grande, a repetição é alta em condições padronizadas,
+a comida baixa a impedância por 2–4 h, são ≥5 min de estabilização na
+posição, a pele quente subestima a gordura, "visceral fat rating" e
+"metabolic age" são índices do fabricante que não medem a VAT, o ângulo
+de fase só com padronização e referência, e há a ressalva do marca-passo.
+
+**Ligações:** `/guias/avaliacao-fisica/` ganhou um parágrafo no H2
+"Bioimpedância: como interpretar sem se iludir", apontando para o artigo
+(atualizadoEm 2026-11-01). FerramentaInline: `percentual-de-gordura`.

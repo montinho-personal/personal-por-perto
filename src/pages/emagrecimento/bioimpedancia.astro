@@ -1,0 +1,343 @@
+---
+/**
+ * Bioimpedância — o que é, preparo (inclusive jejum), quem não deve fazer e
+ * como ler cada campo do resultado.
+ *
+ * Prints do Google de 01/11/2026 ("bioimpedância": autocompletar, visão
+ * geral de IA, PAA e duas listas de "outras pessoas pesquisaram") em
+ * docs/pesquisas/2026-11-01-bioimpedancia/; leitura em
+ * docs/bioimpedancia-como-ler.md. A busca é sobre o EXAME (o que é, preparo,
+ * jejum, valor, onde fazer), não só sobre o laudo — por isso o recorte
+ * cresceu além do "como ler" da pauta.
+ *
+ * Recorte com /guias/avaliacao-fisica/: o guia fica com a escolha do método
+ * (dobras × bioimpedância) e a frequência de reavaliação; aqui, o exame e a
+ * leitura do resultado.
+ *
+ * Fontes conferidas em 01/11/2026 (Europe PMC; Prado et al. 2026 lido no
+ * texto completo). Fora, por falta de fonte aberta: preço do exame (o print
+ * mostra uma farmácia, mas print não é fonte e os sites não abrem aqui),
+ * lista de lugares para fazer, número de horas de jejum exigido (o guia de
+ * 2026 pede condições iguais, não um jejum fixo) e faixa "normal" de
+ * gordura visceral ou de ângulo de fase para quem treina.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/guias/avaliacao-fisica/',
+    titulo: 'Avaliação física: dobras ou bioimpedância',
+    descricao: 'Qual método escolher e de quanto em quanto tempo refazer.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/emagrecimento/gordura-visceral/',
+    titulo: 'Gordura visceral',
+    descricao: 'O que é, como se mede de verdade e o que reduz.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
+    titulo: 'Como preservar massa muscular emagrecendo',
+    descricao: 'Por que o treino de força importa mais durante a dieta.',
+    tipo: 'Emagrecimento',
+  },
+];
+
+const path = '/emagrecimento/bioimpedancia';
+const atualizadoEm = '2026-11-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Bioimpedância', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'O que é o exame de bioimpedância e para que serve?',
+    resposta:
+      'É um exame rápido em que uma corrente elétrica fraca passa pelo corpo. O aparelho mede a resistência que o corpo oferece e, com uma fórmula, estima a gordura, a massa magra e a água. Serve para acompanhar a composição corporal ao longo do tempo. O ponto que pouca gente sabe: ele não mede a gordura diretamente, ele estima — e o erro para uma pessoa só pode ser grande.',
+  },
+  {
+    pergunta: 'Bioimpedância tem que ser em jejum?',
+    resposta:
+      'Não existe um jejum fixo exigido pelo guia de padrões de 2026: o que ele pede é repetir as mesmas condições a cada medição, inclusive o estado de jejum. Comer abaixa a impedância medida por 2 a 4 horas, segundo o mesmo guia. Na prática: meça sempre antes de comer, ou sempre no mesmo intervalo depois da refeição. Se o profissional ou o laboratório pedir um preparo específico, siga o dele.',
+  },
+  {
+    pergunta: 'Qual o preparo para o exame de bioimpedância?',
+    resposta:
+      'O que mais pesa é a repetição: mesmo horário, mesmo aparelho, mesma condição de comida e de água, sem treino logo antes e com alguns minutos parado na posição do exame. Mudar de posição desloca a água do corpo, e o guia de 2026 pede pelo menos 5 minutos de estabilização. Temperatura da pele e do ambiente também mexem no resultado.',
+  },
+  {
+    pergunta: 'Qual é o valor normal da bioimpedância?',
+    resposta:
+      'Não há um "normal" do exame em si: cada número tem a sua referência. Para o percentual de gordura, um estudo com 1.626 adultos (Gallagher, 2000) achou, de 20 a 39 anos, 8% a 19% em homens e 21% a 33% em mulheres. Lembre que o número da bioimpedância já é uma estimativa — compare o seu resultado com você mesmo, nas mesmas condições.',
+  },
+  {
+    pergunta: 'Balança de bioimpedância é confiável?',
+    resposta:
+      'Para acompanhar tendência, pode ajudar; para cravar um número, não. Num estudo com 106 adultos, as balanças de pé com pé erraram o percentual de gordura, para uma pessoa só, em até 14,5 pontos para menos ou 8,6 para mais, em comparação com exames de referência. O aparelho que mede pelas mãos e pelos pés errou bem menos.',
+  },
+  {
+    pergunta: 'A gordura visceral da bioimpedância é confiável?',
+    resposta:
+      'Não como medida da gordura dentro do abdômen. O guia de padrões de 2026 diz que o "nível de gordura visceral" e a "idade metabólica" de alguns aparelhos são índices do fabricante: servem para engajar, mas não medem a gordura visceral nem se comparam a exames de imagem.',
+  },
+  {
+    pergunta: 'O que é a idade metabólica da bioimpedância?',
+    resposta:
+      'É um índice criado pelo fabricante do aparelho, não uma medida com definição científica. O guia de padrões de 2026 pede que ele não seja interpretado como medida do corpo. Use os números que o exame estima (gordura, massa magra, água) e compare sempre com você mesmo.',
+  },
+  {
+    pergunta: 'Quem tem marca-passo pode fazer bioimpedância?',
+    resposta:
+      'Converse antes com o seu médico. O guia de 2026 diz que o método pode não ser usado em quem tem marca-passo ou desfibrilador implantado, conforme a regra local, e que nos Estados Unidos nenhum aparelho de bioimpedância foi liberado para esse uso, embora estudos recentes indiquem que ele é seguro.',
+  },
+  {
+    pergunta: 'A bioimpedância mede massa muscular?',
+    resposta:
+      'Estima. O aparelho mede a passagem da corrente, que depende sobretudo da água do corpo, e calcula a massa magra e a muscular por fórmula. Por isso perder ou ganhar água, numa dieta ou num dia quente, mexe no número de "músculo" sem que o músculo tenha mudado.',
+  },
+];
+
+/* 57 caracteres. "jejum" e "preparo" vêm do autocompletar e do PAA (01/11). */
+const title = 'Bioimpedância: O Que É, Preparo, Jejum e Como Ler o Exame';
+/* 145 caracteres. */
+const description =
+  'Bioimpedância: o que o exame mede, se precisa de jejum, o preparo, o valor normal e como ler gordura, músculo, água, visceral e idade metabólica.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Bioimpedância: o que é, como se preparar e como ler o resultado</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A bioimpedância é um exame rápido que passa uma corrente elétrica fraca
+      pelo corpo e, a partir dela, <strong>estima</strong> a gordura, a massa
+      magra e a água. A palavra que importa é essa: estima. Repetida sempre
+      nas mesmas condições, mostra bem para onde você está indo. Usada uma
+      vez, para cravar um número, pode errar bastante.
+    </p>
+
+    <p class="lead">
+      Abaixo, o que o exame mede de verdade, se precisa de jejum, como se
+      preparar, quem deve falar antes com o médico e o que significa cada
+      linha do resultado.
+    </p>
+
+    <div class="prose">
+      <h2>O que a bioimpedância mede de verdade</h2>
+      <p>
+        O aparelho mede a resistência do corpo à corrente. Essa resistência
+        depende sobretudo da água e de como ela se distribui. A gordura, a
+        massa magra e o músculo do laudo saem de <strong>fórmulas</strong>
+        que transformam essa medida em estimativa, usando também idade, sexo,
+        peso e altura.
+      </p>
+      <p>
+        O guia internacional de padrões de 2026, assinado por especialistas
+        de vários países, resume o que isso significa: a precisão depende do
+        aparelho, do programa e de quanto você se parece com as pessoas em
+        que a fórmula foi criada, e <strong>o erro para uma pessoa só pode ser
+        grande</strong>. Em compensação, a medida se repete muito bem quando
+        as condições são as mesmas — e é aí que ela é útil.
+      </p>
+
+      <h2>Balança de casa ou aparelho de mãos e pés?</h2>
+      <p>
+        Faz diferença. A balança em que você só pisa mede a corrente de um pé
+        ao outro, ou seja, a parte de baixo do corpo, e estima o resto. Num
+        estudo com 106 adultos comparados com ressonância e densitometria,
+        as balanças de pé com pé erraram o percentual de gordura, para uma
+        pessoa só, em até <strong>14,5 pontos para menos ou 8,6 para
+        mais</strong>. O aparelho que mede pelas mãos e pelos pés ficou entre
+        6,6 para menos e 4,6 para mais, e os autores recomendam esse tipo para
+        uso individual.
+      </p>
+
+      <h2>Bioimpedância precisa de jejum? O preparo</h2>
+      <p>
+        O guia de 2026 não fixa um número de horas de jejum. O que ele pede é
+        <strong>repetir as mesmas condições</strong> a cada exame: horário,
+        posição, hidratação, jejum e ambiente. Os detalhes que mais mexem no
+        resultado:
+      </p>
+      <ul>
+        <li><strong>Comida:</strong> a impedância cai depois de comer, e o efeito pode durar de 2 a 4 horas.</li>
+        <li><strong>Posição:</strong> mudar de pé para deitado desloca a água do corpo; são pelo menos 5 minutos parado antes de medir.</li>
+        <li><strong>Temperatura:</strong> pele mais quente baixa a impedância e faz o aparelho subestimar a gordura.</li>
+        <li><strong>Treino, café e remédios:</strong> o guia pede que sejam controlados e registrados antes de cada medição, porque alteram o resultado.</li>
+        <li><strong>Ciclo menstrual:</strong> é um dos fatores que alteram o resultado, por isso vale medir na mesma fase.</li>
+      </ul>
+      <p>
+        Um estudo de 2026 com 98 adultos ajuda a não exagerar: 600 mL de
+        água ou 300 g de banana não mudaram de forma relevante o percentual
+        de gordura nem a água corporal em 90 minutos, naquele aparelho.
+        Não é para medir depois do almoço, mas também não é motivo para
+        pânico com um copo d'água.
+      </p>
+
+      <h2>Quem deve falar antes com o médico</h2>
+      <p>
+        Quem tem <strong>marca-passo ou desfibrilador implantado</strong>. O
+        guia de 2026 diz que o método pode não ser usado nesses casos,
+        conforme a regra local, e que nos Estados Unidos nenhum aparelho foi
+        liberado para esse uso, embora estudos recentes não tenham mostrado
+        problema. Implante de silicone nos seios também altera a estimativa
+        de gordura. E inchaço, retenção de líquido ou doença que mexa na água
+        do corpo tiram a precisão do exame: aí, a leitura é do médico.
+      </p>
+
+      <h2>Como ler o resultado, campo a campo</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Campo</th><th>O que é</th><th>Como usar</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Percentual de gordura</td><td>Estimativa por fórmula</td><td>Compare com você mesmo, no mesmo aparelho e nas mesmas condições</td></tr>
+            <tr><td>Massa magra e massa muscular</td><td>Estimativas que dependem da água do corpo</td><td>Desconfie de "perdi músculo" depois de um dia de calor ou de dieta restrita</td></tr>
+            <tr><td>Água corporal</td><td>Estimativa da água do corpo, base de todas as outras</td><td>Muda com comida, bebida, calor e treino: é o que mais oscila</td></tr>
+            <tr><td>Gordura visceral (nível)</td><td>Índice do fabricante</td><td>Não mede a gordura dentro do abdômen; a cintura diz mais</td></tr>
+            <tr><td>Idade metabólica</td><td>Índice do fabricante</td><td>Serve para engajar, não para tirar conclusão</td></tr>
+            <tr><td>Taxa metabólica basal</td><td>Cálculo a partir das estimativas</td><td>Trate como referência, não como medida</td></tr>
+            <tr><td>Ângulo de fase</td><td>Medida bruta do aparelho</td><td>Só tem leitura com condições padronizadas e valores de referência</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Sobre os dois índices do meio da tabela, o guia de 2026 é direto: o
+        "nível de gordura visceral" e a "idade metabólica" que alguns
+        aparelhos mostram não devem ser lidos como medida da gordura visceral
+        nem comparados a exames de imagem. Se a dúvida é gordura abdominal,
+        o artigo sobre <a href="/emagrecimento/gordura-visceral/">gordura
+        visceral</a> mostra como ela se mede de verdade.
+      </p>
+
+      <h2>Qual é o valor normal?</h2>
+      <p>
+        Não existe um "normal" do exame: existe referência para cada número.
+        Para o percentual de gordura, a referência mais citada é a de um
+        estudo com 1.626 adultos (Gallagher, 2000), que achou a faixa
+        correspondente ao IMC saudável: de 20 a 39 anos, de 8% a 19% em
+        homens e de 21% a 33% em mulheres, com faixas um pouco maiores com a
+        idade.
+      </p>
+
+      <FerramentaInline
+        id="percentual-de-gordura"
+        texto="Quer conferir o número da bioimpedância por outro caminho? A calculadora estima o percentual de gordura pela fita métrica ou pelas dobras, mostra a faixa de referência para a sua idade e guarda as avaliações para comparar."
+        acao="Estimar meu percentual de gordura"
+      />
+
+      <h2>Como usar a bioimpedância para acompanhar a evolução</h2>
+      <ul>
+        <li><strong>Mesmo aparelho, sempre.</strong> As fórmulas são de cada fabricante, e até uma atualização do programa pode mudar a estimativa.</li>
+        <li><strong>Mesmas condições:</strong> horário, comida, água, treino e fase do ciclo.</li>
+        <li><strong>Olhe a direção, não o decimal.</strong> Junte o exame com a fita na cintura, as fotos e a carga do treino.</li>
+        <li><strong>Não troque de método no meio do caminho.</strong> Dobras e bioimpedância dão números que não conversam — a escolha entre os dois está no guia de <a href="/guias/avaliacao-fisica/">avaliação física</a>.</li>
+      </ul>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        O exame diz onde você está; o que muda o número é o que acontece entre
+        uma medição e outra. Um profissional de Educação Física monta o treino
+        de força que preserva a massa magra no emagrecimento e lê a
+        bioimpedância junto com a cintura e a evolução da carga, não sozinha.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/41864542/" target="_blank" rel="noopener noreferrer">Prado CM, Gonzalez MC, Norman K, et al. Methodological standards for body composition assessment — an expert-endorsed guide for research and clinical applications: bioimpedance, dual-energy X-ray absorptiometry, computerized tomography, and ultrasound methods. The American Journal of Clinical Nutrition, 2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15380917/" target="_blank" rel="noopener noreferrer">Kyle UG, et al. Bioelectrical impedance analysis — part I: review of principles and methods. Clinical Nutrition, 2004</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15556267/" target="_blank" rel="noopener noreferrer">Kyle UG, et al. Bioelectrical impedance analysis — part II: utilization in clinical practice. Clinical Nutrition, 2004</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18778488/" target="_blank" rel="noopener noreferrer">Dehghan M, Merchant AT. Is bioelectrical impedance accurate for use in large epidemiological studies? Nutrition Journal, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20054195/" target="_blank" rel="noopener noreferrer">Bosy-Westphal A, et al. Accuracy of bioelectrical impedance consumer devices for measurement of body composition in comparison to whole body magnetic resonance imaging and dual X-ray absorptiometry. Obesity Facts, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/42909869/" target="_blank" rel="noopener noreferrer">Čermáková E, et al. Short-term changes in segmental multi-frequency bioelectrical impedance measurements following water and banana intake. International Journal of Medical Sciences, 2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10966886/" target="_blank" rel="noopener noreferrer">Gallagher D, et al. Healthy percentage body fat ranges: an approach for developing guidelines based on body mass index. The American Journal of Clinical Nutrition, 2000</a></li>
+        <li>Conferidas em 01/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre bioimpedância" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

@@ -3,8 +3,8 @@
 Próximo item da pauta de emagrecimento (`docs/pauta-editorial.md`). Pedido do
 Renato em 29/10/2026.
 
-**Estado: em preparo, aguardando os prints.** Título, H1, seções e FAQs
-esperam os prints do Google.
+**Estado: publicado em 01/11/2026 em `/emagrecimento/proteina-e-saciedade/`**,
+depois dos prints do Renato.
 
 ## Prints pedidos (29/10)
 
@@ -72,3 +72,32 @@ aos 25–30 g por refeição: "quanto isso dá no meu dia?".
   nutricionista.
 - Sem "a proteína emagrece": o que a literatura sustenta é saciedade
   modesta e ajuda na adesão. É essa a frase do texto.
+
+## Prints recebidos (01/11) e o que entrou
+
+`docs/pesquisas/2026-11-01-proteina-e-saciedade/` (busca "proteína dá
+saciedade").
+
+- **Visão geral de IA:** "a proteína é o macronutriente mais eficaz para
+  promover a saciedade"; grelina, GLP-1, colecistocinina; digestão lenta;
+  "efeito térmico de 20% a 30%". O texto usa o que os resumos sustentam
+  (5–15% do gasto do dia para dieta mista, maior com mais proteína) e não
+  repete o "20–30%".
+- **PAA:** qual proteína dá mais saciedade? · o que tira a fome rápido? ·
+  a proteína mata fome? · o que sacia mais, carboidrato ou proteína?
+- **Outras pessoas pesquisaram:** proteína alimentos, whey protein,
+  carboidratos.
+- **SERP:** PMC (estudo de proteína e frequência alimentar), O Globo
+  (26/02/2026), Droga Raia.
+
+| pergunta | onde |
+|---|---|
+| a proteína mata fome? | H2 de abertura, FAQ 1 |
+| o que sacia mais, carboidrato ou proteína? | H2 próprio, FAQ 2 |
+| qual proteína dá mais saciedade? | H2 próprio, FAQ 3 (sem tipo campeão; quantidade) |
+| o que tira a fome rápido? | FAQ 4, com link para fome emocional |
+| whey protein | H2 "Whey protein tira a fome?", FAQ 5 (Ben-Harchache 2021) |
+
+**Fontes novas além das de 29/10:** Westerterp 2004 (PMID 15507147),
+Ben-Harchache 2021 (PMID 33037427) e Lonnie 2018 (PMID 29547523).
+FerramentaInline: `calculadora-de-proteina`.

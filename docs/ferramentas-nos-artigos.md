@@ -211,3 +211,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 27/10 — `/guias/six-alphaville/` — artigo novo: bloco preco no fim da conta "academia + personal × Six" — "e quanto custa o personal na minha cidade?"
 - 27/10 — `/guias/treino-hyrox/` — bloco trocado de calculadora-de-pace para calculadora-de-tempo-hyrox, publicada no mesmo dia: o parágrafo pergunta "qual ritmo a minha meta exige?", e a nova responde já descontando as estações. Sem bump de `atualizadoEm` (exceção do bloco)
 - 26/10 — `/guias/tenis-para-hyrox/` — artigo novo: bloco hyrox depois da corrida — "quanto da prova é corrida e quanto é estação?"
+- 01/11 — `/emagrecimento/bioimpedancia/` — artigo novo: bloco percentual-de-gordura em "qual é o valor normal" — "quero conferir o número por outro caminho"
+- 01/11 — `/emagrecimento/proteina-e-saciedade/` — artigo novo: bloco calculadora-de-proteina em "quanta proteína por refeição" — "quanto isso dá no meu dia?"

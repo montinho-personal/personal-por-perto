@@ -657,10 +657,10 @@ hipertrofia), já usados no portal.
 | Termogênicos funcionam? | `termogenicos-funcionam` | ✅ 2026-10-26 · publicado antes dos prints (pedido do Renato) · `docs/termogenicos-funcionam.md` |
 | Quanto tempo para perder 10 kg | `quanto-tempo-para-perder-10kg` | ✅ 2026-10-22 · prints do Renato · recorte em `docs/quanto-tempo-para-perder-10kg.md` |
 | Fome emocional | `fome-emocional` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/fome-emocional.md` |
-| Bioimpedância: como ler o resultado | `bioimpedancia-como-ler` | ⏳ em preparo desde 29/10 · aguarda prints · recorte e fontes em `docs/bioimpedancia-como-ler.md` |
-| Proteína e saciedade | `proteina-e-saciedade` | ⏳ em preparo desde 29/10 · aguarda prints · recorte e fontes em `docs/proteina-e-saciedade.md` |
+| Bioimpedância: como ler o resultado | `bioimpedancia` | ✅ 2026-11-01 · prints do Renato · `docs/bioimpedancia-como-ler.md` |
+| Proteína e saciedade | `proteina-e-saciedade` | ✅ 2026-11-01 · prints do Renato · `docs/proteina-e-saciedade.md` |
 | Dormir pouco engorda? | `dormir-pouco-engorda` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/dormir-pouco-engorda.md` |
-| Emagrecer sem academia | `emagrecer-sem-academia` | |
+| Emagrecer sem academia | `emagrecer-sem-academia` | ⏳ próxima dupla · prints recebidos em 01/11 (`docs/pesquisas/2026-11-01-emagrecer-sem-academia/`) |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
 | Método 12-3-30 na esteira | `metodo-12-3-30` | ✅ 2026-09-30 · a pedido do Renato, pelas buscas |
 
@@ -701,7 +701,7 @@ macros, que é ferramenta nova e passa pela análise de lote antes.
 | Personal trainer para pessoas com deficiência | `personal-trainer-para-pcd` | |
 | Personal trainer para autistas | `personal-trainer-para-autistas` | |
 | Personal trainer para quem viaja a trabalho | `personal-trainer-para-quem-viaja` | |
-| Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | |
+| Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | ⏳ próxima dupla · prints recebidos em 01/11 (`docs/pesquisas/2026-11-01-personal-trainer-em-dupla/`) |
 | Personal trainer e nutricionista juntos | `personal-trainer-e-nutricionista` | |
 | Como trocar de personal trainer | `trocar-de-personal-trainer` | |
 | Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | |

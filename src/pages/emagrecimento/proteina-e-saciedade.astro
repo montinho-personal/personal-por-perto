@@ -1,0 +1,313 @@
+---
+/**
+ * Proteína e saciedade — se a proteína mata a fome, quanto disso a ciência
+ * sustenta, o que sacia mais e como montar a refeição.
+ *
+ * Prints do Google de 01/11/2026 ("proteína dá saciedade": visão geral de
+ * IA, resultados, PAA e "outras pessoas pesquisaram") em
+ * docs/pesquisas/2026-11-01-proteina-e-saciedade/; leitura em
+ * docs/proteina-e-saciedade.md.
+ *
+ * Recorte: a calculadora de proteína responde QUANTO por dia; a tabela de
+ * alimentos responde O QUE TEM em cada comida; o artigo de whey cuida do
+ * suplemento. Aqui: se e quanto a proteína segura a fome.
+ *
+ * Fontes conferidas em 01/11/2026 (resumos no Europe PMC). Fora: o "20% a
+ * 30%" de gasto na digestão que a visão geral de IA cita (os resumos
+ * conferidos falam em 5% a 15% do gasto do dia para a dieta mista, maior com
+ * mais proteína); um "tipo de proteína campeão" de saciedade (as revisões
+ * conferidas falam de quantidade, não de tipo); e qualquer promessa de que
+ * proteína emagrece sozinha.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/quanto-de-proteina-tem-cada-alimento/',
+    titulo: 'Quanto de proteína tem cada alimento',
+    descricao: 'Tabela por porção de verdade, pela TACO.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/emagrecimento/fome-emocional/',
+    titulo: 'Fome emocional',
+    descricao: 'Quando a fome que volta rápido não é do estômago.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/musculacao/whey-protein-o-que-e-como-tomar/',
+    titulo: 'Whey protein: o que é e como tomar',
+    descricao: 'Quando o suplemento ajuda e quando é só conveniência.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/emagrecimento/proteina-e-saciedade';
+const atualizadoEm = '2026-11-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Proteína e saciedade', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'A proteína mata a fome?',
+    resposta:
+      'Ajuda, mas menos do que se promete. Numa meta-análise, refeições com mais proteína deixaram as pessoas mais cheias nas horas seguintes. Uma revisão de 2015, porém, viu que nos testes de curto prazo isso não fez comer menos na refeição seguinte. O efeito existe e é modesto: vale como aliado, não como solução.',
+  },
+  {
+    pergunta: 'O que sacia mais, carboidrato ou proteína?',
+    resposta:
+      'A proteína. As revisões conferidas descrevem a proteína como o macronutriente que mais dá saciedade, à frente do carboidrato e da gordura. Na prática, isso não quer dizer cortar o carboidrato: quer dizer garantir uma boa porção de proteína em cada refeição.',
+  },
+  {
+    pergunta: 'Qual proteína dá mais saciedade?',
+    resposta:
+      'As revisões que conferimos não apontam um tipo campeão. O que elas sustentam é a quantidade: uma revisão de 2015 fala em pelo menos 25 a 30 g de proteína por refeição. Carne, frango, peixe, ovo, laticínios e leguminosas servem; escolha os que cabem na sua rotina.',
+  },
+  {
+    pergunta: 'O que tira a fome rápido?',
+    resposta:
+      'Comida de verdade com proteína costuma segurar mais do que um lanche rápido de doce ou salgadinho. Se a fome volta logo depois de comer, ou aparece com tédio, cansaço ou ansiedade, pode não ser fome do estômago — o artigo sobre fome emocional ajuda a separar uma da outra.',
+  },
+  {
+    pergunta: 'Whey protein tira a fome?',
+    resposta:
+      'Pouco, e com uma pegadinha. Numa meta-análise com adultos acima de 60 anos, o suplemento de proteína fez comer um pouco menos na refeição seguinte — mas, somando as calorias do próprio suplemento, o total do dia ficou maior. O whey é prático para completar a proteína do dia; não é um inibidor de fome.',
+  },
+  {
+    pergunta: 'Quanta proteína por refeição para ter saciedade?',
+    resposta:
+      'Uma revisão de 2015 propõe de 1,2 a 1,6 g de proteína por quilo de peso por dia, com pelo menos 25 a 30 g por refeição. A calculadora de proteína do portal faz a conta do total diário para o seu peso e objetivo.',
+  },
+  {
+    pergunta: 'Proteína emagrece?',
+    resposta:
+      'Sozinha, não. O que emagrece é o déficit calórico. A proteína ajuda a chegar lá com menos fome e a preservar a massa magra durante a dieta. Nos estudos longos, o benefício apareceu em quem seguiu a dieta: quem não seguiu não teve melhora.',
+  },
+];
+
+/* 54 caracteres. "mata a fome" e "carboidrato ou proteína" vêm do PAA (01/11). */
+const title = 'Proteína Dá Saciedade? O Que Sacia Mais e Quanto Comer';
+/* 144 caracteres. */
+const description =
+  'Proteína dá saciedade, mas quanto? O que os estudos mostram, se sacia mais que carboidrato, se whey tira a fome e quanto comer em cada refeição.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Proteína dá saciedade? O que os estudos mostram e como usar na dieta</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Dá, e é o macronutriente que mais sacia. Mas o efeito é
+      <strong>modesto</strong>: refeições com mais proteína deixam mais cheio
+      nas horas seguintes, e nos testes de curto prazo isso nem sempre faz
+      comer menos depois. A proteína é uma boa aliada da dieta, não um
+      inibidor de fome.
+    </p>
+
+    <p class="lead">
+      Abaixo, o que a pesquisa sustenta, o que sacia mais, se o whey tira a
+      fome e quanto colocar em cada refeição.
+    </p>
+
+    <div class="prose">
+      <h2>A proteína mata a fome?</h2>
+      <p>
+        Uma meta-análise de 2016 juntou os estudos que deram uma refeição
+        com mais ou menos proteína e mediram a sensação de plenitude nas
+        horas seguintes. Resultado: com mais proteína, as pessoas se sentiram
+        <strong>mais cheias</strong>. Os próprios autores avisam que isso foi
+        medido em condições muito controladas, e que não dá para transformar
+        direto em "vai comer menos" ou "vai emagrecer".
+      </p>
+      <p>
+        Uma revisão de 2015 vai na mesma linha: a proteína dá um <strong>efeito modesto de
+        saciedade</strong>, com mais plenitude e hormônios de saciedade mais
+        altos, mas os testes de curto prazo não mostram efeito na quantidade
+        comida na refeição seguinte.
+      </p>
+
+      <h2>Por que a proteína sacia</h2>
+      <p>
+        Três coisas contribuem, segundo as revisões: os hormônios da
+        saciedade sobem mais depois de uma refeição com proteína; o corpo
+        gasta mais energia para digerir e processar a proteína do que o
+        carboidrato e a gordura; e esse gasto extra está ligado à sensação de
+        saciedade. Uma revisão de 2004 calcula que digerir uma dieta mista
+        consome de 5% a 15% da energia do dia, e que o número sobe quando a
+        dieta tem mais proteína.
+      </p>
+
+      <h2>O que sacia mais: carboidrato ou proteína?</h2>
+      <p>
+        A proteína. As revisões descrevem a proteína como o macronutriente
+        que mais dá saciedade, à frente do carboidrato e da gordura. Num
+        estudo com 19 pessoas, quando a proteína da dieta subiu de 15% para
+        30%, mantendo o carboidrato igual, a saciedade aumentou muito; na fase
+        em que podiam comer à vontade, por 12 semanas, comeram 441 kcal a
+        menos por dia e perderam 4,9 kg. É um estudo pequeno, que mostra a
+        direção do efeito — não é uma promessa de resultado.
+      </p>
+
+      <h2>Qual proteína dá mais saciedade?</h2>
+      <p>
+        As revisões que conferimos não apontam um tipo campeão. O que elas
+        sustentam é a <strong>quantidade</strong> por refeição. Carne, frango,
+        peixe, ovo, iogurte, queijo e leguminosas cumprem o papel; a melhor
+        é a que você consegue comer todo dia. Quanto tem em cada porção está
+        na tabela de <a href="/musculacao/quanto-de-proteina-tem-cada-alimento/">proteína
+        dos alimentos</a>.
+      </p>
+
+      <h2>Whey protein tira a fome?</h2>
+      <p>
+        Pouco, e com uma pegadinha. Uma meta-análise de 2021, com adultos
+        acima de 60 anos, viu que o suplemento de proteína fez comer cerca de
+        40 kcal a menos na refeição seguinte. Mas, somando as calorias do
+        próprio suplemento, o total ficou <strong>cerca de 155 kcal
+        maior</strong>. Nos estudos mais longos, o consumo do dia ficou igual.
+        O whey é prático para completar a proteína; não é um atalho para
+        comer menos. O resto sobre o suplemento está no artigo de
+        <a href="/musculacao/whey-protein-o-que-e-como-tomar/">whey protein</a>.
+      </p>
+
+      <h2>Quanta proteína por refeição</h2>
+      <p>
+        A revisão de 2015 propõe de <strong>1,2 a 1,6 g de proteína por quilo
+        por dia</strong>, com pelo menos <strong>25 a 30 g por refeição</strong>,
+        para quem quer ajudar o apetite e o controle de peso. Na prática, é
+        distribuir a proteína nas refeições principais em vez de concentrar
+        tudo no jantar.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-proteina"
+        texto="25 a 30 g por refeição é a referência; o total do dia depende do seu peso e do seu objetivo. A calculadora faz essa conta e mostra quanto colocar em cada refeição."
+        acao="Calcular minha proteína do dia"
+      />
+
+      <h2>Proteína emagrece?</h2>
+      <p>
+        Sozinha, não. Quem emagrece é o <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>. A proteína ajuda a chegar lá com menos fome e a
+        preservar a massa magra durante a dieta. A revisão de 2015 mostra um
+        detalhe que importa: nos estudos longos, o benefício apareceu em quem
+        seguiu a dieta, e quem não seguiu não teve melhora. A proteína só
+        funciona se o plano for possível de manter.
+      </p>
+
+      <h2>Quem deve conversar antes com médico ou nutricionista</h2>
+      <p>
+        Uma revisão de 2009 cita pessoas com <strong>obesidade, síndrome
+        metabólica e diabetes tipo 2</strong> como grupos mais sensíveis ao
+        excesso de proteína. Quem tem doença nos rins ou usa remédio para
+        emagrecer da família do GLP-1 também deve ajustar a dieta com
+        acompanhamento. Nesses casos, a quantidade é decisão do médico ou do
+        nutricionista.
+      </p>
+
+      <h2>Onde um acompanhamento ajuda</h2>
+      <p>
+        Proteína sem treino de força preserva menos músculo. Um profissional
+        de Educação Física monta o treino que, junto com a proteína,
+        protege a massa magra no emagrecimento — e ajusta o plano quando a
+        fome aperta.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25926512/" target="_blank" rel="noopener noreferrer">Leidy HJ, Clifton PM, Astrup A, et al. The role of protein in weight loss and maintenance. The American Journal of Clinical Nutrition, 2015</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26947338/" target="_blank" rel="noopener noreferrer">Dhillon J, Craig BA, Leidy HJ, et al. The effects of increased protein intake on fullness: a meta-analysis and its limitations. Journal of the Academy of Nutrition and Dietetics, 2016</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/16002798/" target="_blank" rel="noopener noreferrer">Weigle DS, et al. A high-protein diet induces sustained reductions in appetite, ad libitum caloric intake, and body weight despite compensatory changes in diurnal plasma leptin and ghrelin concentrations. The American Journal of Clinical Nutrition, 2005</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19400750/" target="_blank" rel="noopener noreferrer">Westerterp-Plantenga MS, et al. Dietary protein, weight loss, and weight maintenance. Annual Review of Nutrition, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15507147/" target="_blank" rel="noopener noreferrer">Westerterp KR. Diet induced thermogenesis. Nutrition &amp; Metabolism, 2004</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/33037427/" target="_blank" rel="noopener noreferrer">Ben-Harchache S, Roche HM, Corish CA, Horner KM. The impact of protein supplementation on appetite and energy intake in healthy older adults: a systematic review with meta-analysis. Advances in Nutrition, 2021</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/29547523/" target="_blank" rel="noopener noreferrer">Lonnie M, et al. Protein for life: review of optimal protein intake, sustainable dietary sources and the effect on appetite in ageing adults. Nutrients, 2018</a></li>
+        <li>Conferidas em 01/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre proteína e saciedade" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
