@@ -70,9 +70,10 @@ export const cidade: Cidade = {
     'A oferta de academias é grande para o porte da cidade, concentrada em Cidade Nova e Coqueiro, complementada pela orla com calistenia e pelos parques municipais.',
 
   academiasProximas: [
-    { nome: 'LA Fit Ananindeua', detalhe: 'na Av. Zacarias de Assunção, no Centro: musculação, cross training e lutas' },
-    { nome: 'Power Trainer Academia', detalhe: 'também na Av. Zacarias de Assunção, com musculação e aulas coletivas' },
+    { nome: 'LA Fit Ananindeua', detalhe: 'na Av. Zacarias de Assunção, no Centro: musculação, cross training e muay thai' },
+    { nome: 'Power Trainer Academia', detalhe: 'também na Av. Zacarias de Assunção, no Centro, perto da Prefeitura' },
   ],
+  academiasVerificadasEm: '2026-11-01',
 
   destaquesFitness: [
     'Área de calistenia ao ar livre na nova Orla do Maguari.',
@@ -100,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ananindeua', url: 'https://www.ananindeua.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-01',
   capaArte: {
     src: '/capas-cidade/ananindeua-pa.webp',
     w: 1200,

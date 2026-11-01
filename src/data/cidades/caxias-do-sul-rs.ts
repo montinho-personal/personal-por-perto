@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Getúlio Vargas (dos Macaquinhos)',
       descricao:
-        'Central e seguro, tem pista com marcações de distância, academia ao ar livre (inclusive equipamentos adaptados) e quadras — o melhor espaço público para corrida e caminhada da cidade.',
+        'Central e seguro, tem pista com marcações de distância e quadras — o melhor espaço público para corrida e caminhada da cidade.',
     },
     {
       nome: 'Parque Cinquentenário',
@@ -68,15 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Caxias do Sul tem forte tradição em corrida de rua, com clube de corredores ativo, e em musculação. O Juventude, no futebol, é um símbolo esportivo da cidade, e a comunidade de corrida cresce a cada ano.',
   academias:
-    'A oferta reúne redes nacionais (Smart Fit) e estúdios locais, com a musculação ganhando ainda mais força no inverno, quando o treino indoor é a opção mais confortável.',
+    'A oferta reúne a Smart Fit, com uma unidade na Rua Vinte de Setembro, no bairro Lurdes, e academias e estúdios locais, com a musculação ganhando ainda mais força no inverno, quando o treino indoor é a opção mais confortável.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na cidade' },
-    { nome: 'Estúdios e academias locais', detalhe: 'boa oferta no São Pelegrino, na Exposição e no Centro' },
-    { nome: 'Academia ao ar livre dos Macaquinhos', detalhe: 'gratuita, com equipamentos adaptados para PcD' },
+    { nome: 'Smart Fit Caxias do Sul', detalhe: 'na Rua Vinte de Setembro, no bairro Lurdes' },
   ],
+  academiasVerificadasEm: '2026-11-01',
 
   destaquesFitness: [
-    'Parque dos Macaquinhos: melhor espaço público para corrida, com pista marcada e academia ao ar livre gratuita.',
+    'Parque dos Macaquinhos: melhor espaço público para corrida, com pista marcada.',
     'Calendário de corridas consolidado (Meia Maratona com milhares de inscritos).',
     'Boa malha de academias (redes nacionais e estúdios locais).',
     'Clima de serra: ótimo para correr boa parte do ano, com cuidado redobrado com a geada no inverno.',
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Caxias do Sul?',
       resposta:
-        'O Parque Getúlio Vargas — os Macaquinhos — é o coração público: central, seguro, com pista de distâncias marcadas e academia ao ar livre que inclui equipamentos adaptados. O Cinquentenário complementa com circuito pavimentado. Nas academias, a Smart Fit e os estúdios locais cobrem do São Pelegrino ao Centro, e o atendimento em casa é valorizado nos meses frios, quando sair para treinar às 6h da manhã em plena geada é pedir demais de qualquer motivação.',
+        'O Parque Getúlio Vargas — os Macaquinhos — é o coração público: central, seguro, com pista de distâncias marcadas. O Cinquentenário complementa com circuito pavimentado. Nas academias, há a Smart Fit, no bairro Lurdes, e academias e estúdios locais, e o atendimento em casa é valorizado nos meses frios, quando sair para treinar às 6h da manhã em plena geada é pedir demais de qualquer motivação.',
     },
     {
       pergunta: 'Como manter o treino no inverno de geadas da Serra Gaúcha?',
@@ -128,5 +127,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Caxias do Sul: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-07-27',
+  atualizadoEm: '2026-11-01',
 };

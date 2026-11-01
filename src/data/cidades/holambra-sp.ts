@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva se apoia no clima ameno e na paisagem florida: caminhadas e corridas pelas alamedas e estradas entre os campos, pedal pelas vicinais e provas de rua que exploram os pontos turísticos. A herança holandesa e a vocação para o turismo dão às atividades ao ar livre um cenário particular.',
   academias:
-    'A oferta é formada por academias locais de musculação e treino funcional e por estúdios menores, distribuídos pela área urbana, com porte compatível com o de um município pequeno do interior paulista.',
+    'A oferta é formada por academias locais de musculação e treino funcional e por estúdios menores, distribuídos pela área urbana, com porte compatível com o de um município pequeno do interior paulista — entre elas a Império Fitness, na Rua Hermans, no bairro Imigrantes.',
+
+  academiasProximas: [
+    { nome: 'Império Fitness', detalhe: 'na Rua Hermans, no bairro Imigrantes' },
+  ],
+  academiasVerificadasEm: '2026-11-01',
 
   destaquesFitness: [
     'Capital Nacional das Flores, com campos de cultivo e alamedas que servem de cenário para caminhada, corrida e pedal.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Holambra', url: 'https://www.holambra.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-01',
 };

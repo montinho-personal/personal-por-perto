@@ -69,7 +69,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A vocação natural de Castelo impulsiona o trail run, o montanhismo e o cicloturismo, em torno do Forno Grande. A tradicional festa de Corpus Christi e a herança italiana também movimentam o calendário e o turismo, reforçando a procura por atividades ao ar livre.',
   academias:
-    'A oferta reúne academias e estúdios locais voltados à musculação e ao condicionamento, complementada pelas trilhas do Forno Grande e pela orla do rio Castelo para o treino ao ar livre.',
+    'A oferta reúne academias e estúdios locais voltados à musculação e ao condicionamento, como a Body Sport, na Avenida Nossa Senhora da Penha, e a CoreFit Treinamento & Performance. Para o treino ao ar livre, há as trilhas do Forno Grande e a orla do rio Castelo.',
+
+  academiasProximas: [
+    { nome: 'Body Sport Academia', detalhe: 'na Avenida Nossa Senhora da Penha' },
+    { nome: 'CoreFit Treinamento & Performance' },
+  ],
+  academiasVerificadasEm: '2026-11-01',
 
   destaquesFitness: [
     'Parque Estadual do Forno Grande — trilhas ecológicas, cachoeiras e mirantes para treino em natureza.',
@@ -97,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Castelo', url: 'https://castelo.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-01',
 };

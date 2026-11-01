@@ -671,3 +671,24 @@ Texto `academias` reescrito nas duas cidades com os endereços das redes. Saldo 
 | Pratique Fitness Novo Eldorado | **removida**: mesma situação (Wellhub: Av. Dr. Cincinato Cajado Braga, 375) | — |
 
 Texto: em Contagem, `resumo`, `academias` e o destaque passaram a citar as duas unidades da Smart Fit, em vez de "redes concentradas no Eldorado". Contagem fica com 1 entrada; a Pratique volta com print do site da rede ou com uma segunda fonte. Saldo da leva: 7 entradas → 4 mantidas (2 corrigidas ou ampliadas) e 3 removidas ou fundidas. 120 cidades seguem na fila.
+
+### 01/11/2026 — leva 28 (rotina, Parte B: Ananindeua e Caxias do Sul)
+
+**Ananindeua/PA** — página mudou (detalhes).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| LA Fit Ananindeua — "Av. Zacarias de Assunção, Centro: musculação, cross training e lutas" | confirmada; "lutas" virou "muay thai", que é o que a fonte lista | Wellhub ("LaFit Academia", Av. Zacarias de Assunção, 304, Centro) + TotalPass (mesmo endereço; modalidades musculação, cross training, muay thai) |
+| Power Trainer Academia — "Av. Zacarias de Assunção, com musculação e aulas coletivas" | confirmada; o detalhe passou a ser "no Centro, perto da Prefeitura" (as duas fontes dão o nº 16 e a referência da Prefeitura; as modalidades divergem entre elas e saíram) | Wellhub + TotalPass |
+
+A Smart Fit não tem unidade no município (o localizador oficial do PA só lista Belém). O texto `academias` ainda fala em "concentrada em Cidade Nova e Coqueiro" sem fonte; fica anotado para a próxima revisão da página, porque está fora do escopo da lista.
+
+**Caxias do Sul/RS** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades na cidade" | **corrigida**: é uma unidade só, na Rua Vinte de Setembro, 1788, Lurdes | página oficial (`opened:true`) |
+| Estúdios e academias locais — "São Pelegrino, Exposição e Centro" | **removida**: genérica, sem fonte para os bairros | — |
+| Academia ao ar livre dos Macaquinhos — "gratuita, adaptada para PcD" | **removida**: o portal da Prefeitura responde 503 aqui, e a busca só mostra guias de turismo e uma página da Prefeitura sobre a academia para PcD do programa Academia Popular, que não diz em que parque ela fica. Saiu também da descrição do parque, de um destaque e de uma FAQ. Volta com print | — |
+
+Texto: `academias` e a FAQ de onde treinar passaram a citar a unidade da Smart Fit no Lurdes. Caxias fica com 1 entrada. Saldo da leva: 5 entradas → 3 mantidas (2 com detalhe corrigido, 1 corrigida de várias para uma unidade) e 2 removidas. 118 cidades seguem na fila.
