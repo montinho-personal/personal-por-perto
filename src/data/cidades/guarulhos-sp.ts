@@ -118,5 +118,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Guarulhos: mais saúde, energia e qualidade de vida, com acompanhamento profissional na cidade e região.',
   },
   academiasVerificadasEm: '2026-10-30',
-  atualizadoEm: '2026-10-30',
+  atualizadoEm: '2026-11-01',
 };

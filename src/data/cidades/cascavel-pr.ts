@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   academiasVerificadasEm: '2026-10-21',
-  atualizadoEm: '2026-10-06',
+  atualizadoEm: '2026-11-01',
 
   /*
    * Prints de 06/10: autocompletar com "pr", "ce" (Cascavel do Ceará, que

@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Conselheiro Lafaiete', url: 'https://www.atlasbrasil.org.br/perfil/municipio/311830' },
     { nome: 'Prefeitura de Conselheiro Lafaiete', url: 'https://conselheirolafaiete.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-10-04',
+  atualizadoEm: '2026-11-01',
 };

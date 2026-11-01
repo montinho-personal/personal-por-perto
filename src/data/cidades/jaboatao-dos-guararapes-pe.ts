@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jaboatão dos Guararapes', url: 'https://www.jaboatao.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-01',
   capaArte: {
     src: '/capas-cidade/jaboatao-dos-guararapes-pe.webp',
     w: 1200,

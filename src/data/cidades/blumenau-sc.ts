@@ -141,5 +141,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Blumenau: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
   academiasVerificadasEm: '2026-10-18',
-  atualizadoEm: '2026-10-18',
+  atualizadoEm: '2026-11-01',
 };

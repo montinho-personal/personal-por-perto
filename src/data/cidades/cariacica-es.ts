@@ -105,7 +105,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cariacica', url: 'https://www.cariacica.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-01',
 
 
   faqsExtra: [

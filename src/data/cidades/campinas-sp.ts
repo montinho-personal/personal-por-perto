@@ -135,5 +135,5 @@ export const cidade: Cidade = {
       'Treino personalizado em Campinas: acompanhamento profissional perto de você, na cidade e na região metropolitana.',
   },
   academiasVerificadasEm: '2026-10-20',
-  atualizadoEm: '2026-10-20',
+  atualizadoEm: '2026-11-01',
 };
