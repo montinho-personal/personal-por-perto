@@ -1,0 +1,392 @@
+---
+/**
+ * Personal trainer em dupla — como funciona, como fazer a conta do preço por
+ * pessoa e quando a dupla funciona (ou não).
+ *
+ * Prints do Google de 01/11/2026 ("personal trainer em dupla" e "personal
+ * trainer para 2 pessoas valor": autocompletar, visão geral de IA,
+ * resultados, PAA e "outras pessoas pesquisaram") em
+ * docs/pesquisas/2026-11-01-personal-trainer-em-dupla/; leitura em
+ * docs/personal-trainer-em-dupla.md.
+ *
+ * PREÇO — por que não há "faixa da dupla" aqui: a visão geral de IA cita R$ 50
+ * a R$ 120 por pessoa e "acréscimo de 25% a 35%", vindos de marketplaces. Print
+ * e resumo de IA não são fonte, e o portal não coleta preço de dupla. O
+ * artigo mostra a CONTA (quanto cada um paga para cada acréscimo sobre a
+ * sessão individual) e aplica nas faixas de referência editorial do portal
+ * para Barueri e Alphaville, as duas cidades que o autocompletar trouxe,
+ * lidas no build de src/data/cidades/. Ver o aviso de procedência em
+ * src/data/precos.ts.
+ *
+ * Fontes conferidas em 01/11/2026 (resumos no Europe PMC). Nenhum estudo
+ * conferido testou personal em dupla; os dois citados testam treinar
+ * acompanhado e são apresentados assim.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { cidades } from '../../data/cidades';
+
+const barueri = cidades.find((c) => c.slug === 'barueri-sp')!;
+const alphaville = cidades.find((c) => c.slug === 'alphaville-sp')!;
+
+const brl = (v: number) =>
+  `R$ ${v.toLocaleString('pt-BR', { minimumFractionDigits: Number.isInteger(v) ? 0 : 2, maximumFractionDigits: 2 })}`;
+/** Quanto cada um paga, por sessão, se a dupla custar `acrescimo` a mais que a individual. */
+const porPessoa = (individual: number, acrescimo: number) => Math.round((individual * (1 + acrescimo)) / 2 * 100) / 100;
+
+/* Acréscimos ilustrativos sobre a sessão individual — conta, não preço de mercado. */
+const ACRESCIMOS = [0, 0.25, 0.5, 1];
+const ACRESCIMO_EXEMPLO = 0.5;
+
+const exemplo = [barueri, alphaville].map((c) => ({
+  nome: c.nome,
+  url: `/personal-trainer/${c.slug}/`,
+  min: c.precos.avulsaMin,
+  max: c.precos.avulsaMax,
+  pMin: porPessoa(c.precos.avulsaMin, ACRESCIMO_EXEMPLO),
+  pMax: porPessoa(c.precos.avulsaMax, ACRESCIMO_EXEMPLO),
+}));
+
+const relacionados = [
+  {
+    url: '/guias/quanto-custa-personal-trainer/',
+    titulo: 'Quanto custa um personal trainer',
+    descricao: 'As faixas por cidade, a avulsa e o pacote mensal.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/quantas-vezes-por-semana-personal-trainer/',
+    titulo: 'Quantas vezes por semana com personal',
+    descricao: '2 ou 3 sessões: o que muda no resultado e no preço.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/guias/como-nao-desistir-do-treino/',
+    titulo: 'Como não desistir do treino',
+    descricao: 'O que a pesquisa diz sobre manter a frequência.',
+    tipo: 'Guia',
+  },
+];
+
+const path = '/guias/personal-trainer-em-dupla';
+const atualizadoEm = '2026-11-01';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer em dupla', url: path },
+];
+
+const [bar, alp] = exemplo;
+
+const faqs = [
+  {
+    pergunta: 'Como funciona o personal trainer em dupla?',
+    resposta:
+      'Duas pessoas treinam juntas, na mesma sessão, com o mesmo profissional. O treino pode ser parecido ou diferente para cada uma — o personal acompanha as duas, alternando a atenção entre as séries. O valor da sessão é combinado para a dupla e dividido entre os dois.',
+  },
+  {
+    pergunta: 'Quanto custa personal trainer para 2 pessoas?',
+    resposta:
+      'Não existe tabela única: cada profissional define o valor da dupla, em geral acima da sessão individual e abaixo de duas sessões individuais. A conta que importa é quanto cada um paga. Se a dupla custar 50% a mais que a sessão individual, cada um paga 75% do preço individual; se custar o dobro, não há economia nenhuma.',
+  },
+  {
+    pergunta: 'Qual o valor do personal em dupla por pessoa?',
+    resposta:
+      'É o valor da sessão da dupla dividido por dois. Para saber se compensa, compare com o que você pagaria sozinho: a economia por pessoa é tanto maior quanto menor for o acréscimo que o profissional cobra pela segunda pessoa.',
+  },
+  {
+    pergunta: 'Quanto custa personal em dupla por mês, 2 vezes por semana?',
+    resposta:
+      'Duas sessões por semana dão cerca de 9 sessões no mês (2 × 4,33 semanas). Multiplique o valor da sessão da dupla por 9 e divida por dois para ter o custo de cada um. Pacote mensal costuma sair mais barato por sessão que a aula avulsa — vale perguntar o preço dos dois.',
+  },
+  {
+    pergunta: 'Vale a pena treinar em dupla com personal?',
+    resposta:
+      'Vale quando os dois têm objetivos parecidos, agendas que batem e nenhuma limitação que peça atenção exclusiva. Treinar acompanhado ajuda a manter a frequência: num estudo, quem entrou num programa de emagrecimento com amigos completou e manteve mais o resultado. Não vale quando um dos dois precisa de correção constante ou de um treino muito diferente.',
+  },
+  {
+    pergunta: 'O que acontece se um da dupla faltar?',
+    resposta:
+      'Depende do que foi combinado, e é por isso que precisa ser combinado antes. As regras mais comuns são: a sessão acontece e o valor da dupla se mantém; a sessão vira individual com outro preço; ou é remarcada. Deixe por escrito quem paga o quê em cada caso.',
+  },
+  {
+    pergunta: 'Casal com objetivos diferentes pode treinar junto?',
+    resposta:
+      'Pode, se a diferença couber na mesma sessão — um foca em força, outro em emagrecimento, e o profissional ajusta cargas e exercícios para cada um. Fica difícil quando um tem dor ou limitação que pede adaptação o tempo todo: aí, o caso deve passar antes por médico ou fisioterapeuta, e a sessão individual pode ser melhor.',
+  },
+  {
+    pergunta: 'Quanto custa personal em dupla em Barueri e Alphaville?',
+    resposta: `O portal não publica preço de dupla. A referência editorial da sessão individual é de ${brl(bar.min)} a ${brl(bar.max)} em Barueri e de ${brl(alp.min)} a ${brl(alp.max)} em Alphaville. Se o profissional cobrar 50% a mais pela dupla, cada um pagaria de ${brl(bar.pMin)} a ${brl(bar.pMax)} em Barueri e de ${brl(alp.pMin)} a ${brl(alp.pMax)} em Alphaville, por sessão.`,
+  },
+];
+
+/* 55 caracteres. "em dupla" e "para 2 pessoas valor" vêm do autocompletar (01/11). */
+const title = 'Personal Trainer em Dupla: Como Funciona e Quanto Custa';
+/* 141 caracteres. */
+const description =
+  'Personal trainer para 2 pessoas: como funciona, a conta do valor por pessoa e por mês, quando a dupla compensa e o que combinar se um faltar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal trainer em dupla: como funciona, quanto custa e quando vale</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      No personal em dupla, duas pessoas treinam juntas com o mesmo
+      profissional, e o valor da sessão é dividido entre as duas. Sai mais
+      barato por pessoa do que o individual — <strong>quanto</strong> mais
+      barato depende de uma conta simples, que quase ninguém mostra.
+    </p>
+
+    <p class="lead">
+      Abaixo, como funciona, como calcular o preço por pessoa e por mês,
+      quando a dupla funciona bem e o que combinar antes para ela não
+      terminar em desconforto.
+    </p>
+
+    <div class="prose">
+      <h2>Como funciona</h2>
+      <p>
+        É uma sessão só, no mesmo horário e no mesmo lugar — academia,
+        condomínio, casa ou parque —, com um profissional para dois alunos. O
+        treino pode ser igual ou diferente para cada um: o personal monta os
+        dois planos, alterna a atenção entre as séries e corrige a execução
+        dos dois. A dupla mais comum é casal, amigos ou familiares, mas pode
+        ser qualquer par com horário em comum.
+      </p>
+      <p>
+        A diferença para o individual é a <strong>atenção dividida</strong>.
+        Para a maioria dos treinos isso funciona, porque enquanto um faz a
+        série o outro descansa. Para quem está aprendendo um movimento
+        difícil, ou tem alguma limitação, a atenção exclusiva faz falta.
+      </p>
+
+      <h2>Quanto custa: a conta do valor por pessoa</h2>
+      <p>
+        Não existe tabela de preço de dupla. Cada profissional define o valor,
+        em geral acima da sessão individual e abaixo de duas sessões
+        individuais. O portal não coleta preço de dupla, então não vamos
+        inventar uma faixa. O que dá para mostrar com segurança é a conta:
+        quanto cada um paga, dependendo de quanto a dupla custa a mais que a
+        sessão individual.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>A dupla custa, sobre a sessão individual…</th><th>Cada um paga</th><th>Economia de cada um</th></tr>
+          </thead>
+          <tbody>
+            {ACRESCIMOS.map((a) => (
+              <tr>
+                <td>{a === 0 ? 'o mesmo valor' : a === 1 ? 'o dobro' : `${Math.round(a * 100)}% a mais`}</td>
+                <td>{`${Math.round(((1 + a) / 2) * 1000) / 10}% do preço individual`.replace('.', ',')}</td>
+                <td>{a === 1 ? 'nenhuma' : `${Math.round((1 - (1 + a) / 2) * 1000) / 10}%`.replace('.', ',')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A regra que sai da tabela: a dupla só compensa enquanto o valor dela
+        for <strong>menor que duas sessões individuais</strong>. Antes de
+        fechar, peça os dois preços — o da sessão individual e o da dupla — e
+        faça a divisão.
+      </p>
+
+      <h2>Exemplo com Barueri e Alphaville</h2>
+      <p>
+        Para dar ordem de grandeza: as faixas abaixo são a
+        <strong>referência editorial</strong> do portal para a sessão
+        individual avulsa (não é pesquisa de preço), com um acréscimo de 50%
+        para a dupla, escolhido só para o exemplo.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Cidade</th><th>Sessão individual (referência)</th><th>Cada um, na dupla (+50%)</th></tr>
+          </thead>
+          <tbody>
+            {exemplo.map((c) => (
+              <tr>
+                <td><a href={c.url}>{c.nome}</a></td>
+                <td>{brl(c.min)} a {brl(c.max)}</td>
+                <td>{brl(c.pMin)} a {brl(c.pMax)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Por mês, a conta é a mesma com mais um passo: duas sessões por semana
+        dão cerca de <strong>9 sessões</strong> (2 × 4,33 semanas). Multiplique
+        o valor da sessão da dupla por 9 e divida por dois. Pacote mensal
+        costuma sair mais barato por sessão que a avulsa; o guia de
+        <a href="/guias/quanto-custa-personal-trainer/">quanto custa um
+        personal trainer</a> explica essa diferença, e o de
+        <a href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
+        vezes por semana</a> ajuda a escolher a frequência.
+      </p>
+
+      <FerramentaInline
+        id="preco"
+        texto="A tabela usa Barueri e Alphaville. Para a sua cidade, a calculadora mostra a referência do individual por sessão e por mês, com 2 ou 3 sessões por semana — é o número que você divide na conta da dupla."
+        acao="Ver o preço do personal na minha cidade"
+      />
+
+      <h2>A vantagem que não é só o preço</h2>
+      <p>
+        Ter alguém esperando por você no horário ajuda a não faltar. Nenhum
+        estudo que conferimos testou o personal em dupla em si, mas dois
+        mostram o efeito de treinar acompanhado:
+      </p>
+      <ul>
+        <li>
+          Num programa de emagrecimento de 1999, com 166 pessoas, quem entrou
+          com amigos ou familiares e recebeu estratégias de apoio teve
+          <strong>95% de conclusão</strong>, contra 76% de quem entrou
+          sozinho no programa padrão. E 66% mantiveram todo o peso perdido
+          entre o 4º e o 10º mês, contra 24%.
+        </li>
+        <li>
+          Num estudo de 2012 com bicicleta ergométrica, quem pedalou com um
+          parceiro virtual, num formato em que o resultado da dupla dependia
+          de quem parasse primeiro, pedalou em média cerca de 22 minutos,
+          contra cerca de 11 de quem pedalou sozinho.
+        </li>
+      </ul>
+      <p>
+        São formatos diferentes do personal em dupla, e por isso valem como
+        indicação, não como prova. O ponto em comum é o compromisso com outra
+        pessoa — o mesmo que o guia de
+        <a href="/guias/como-nao-desistir-do-treino/">como não desistir do
+        treino</a> trata.
+      </p>
+
+      <h2>Quando a dupla funciona — e quando não</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Funciona bem</th><th>Costuma dar problema</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Objetivos parecidos (os dois querem força, ou os dois querem emagrecer)</td><td>Objetivos muito diferentes, que não cabem na mesma sessão</td></tr>
+            <tr><td>Níveis parecidos, ou diferença que se resolve ajustando a carga</td><td>Um iniciante que precisa aprender cada movimento e um avançado com treino pesado</td></tr>
+            <tr><td>Agendas que batem toda semana</td><td>Horários que mudam e viram remarcação constante</td></tr>
+            <tr><td>Os dois sem dor ou limitação</td><td>Dor, lesão ou limitação que pede adaptação o tempo todo</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        No último caso, o ponto de partida é médico ou fisioterapeuta. Com a
+        liberação, a sessão individual costuma ser a melhor escolha até o
+        quadro estar sob controle.
+      </p>
+
+      <h2>O que combinar antes de começar</h2>
+      <ul>
+        <li><strong>O preço:</strong> o valor da sessão da dupla, o do pacote e quanto fica para cada um.</li>
+        <li><strong>A falta de um:</strong> se a sessão acontece e com que preço, se vira individual ou se é remarcada.</li>
+        <li><strong>A avaliação:</strong> cada um com a sua, para o treino partir do ponto de cada um.</li>
+        <li><strong>O plano:</strong> se o treino vai ser igual para os dois ou separado por objetivo.</li>
+        <li><strong>O local:</strong> casa, <a href="/guias/personal-trainer-em-condominio/">condomínio</a> ou <a href="/guias/personal-trainer-em-academia/">academia</a> — na academia, confirme antes as regras para personal de fora.</li>
+        <li><strong>A saída:</strong> o que acontece com o pacote se um dos dois parar.</li>
+      </ul>
+
+      <h2>Dupla ou grupo?</h2>
+      <p>
+        Em grupo, o valor se divide por mais gente e fica ainda mais barato
+        por pessoa, mas a atenção também se divide mais. A dupla é o meio-termo:
+        boa parte da atenção do individual, por uma fração do preço. Para quem
+        quer o acompanhamento mais próximo possível, o individual continua
+        sendo a referência.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10028217/" target="_blank" rel="noopener noreferrer">Wing RR, Jeffery RW. Benefits of recruiting participants with friends and increasing social support for weight loss and maintenance. Journal of Consulting and Clinical Psychology, 1999</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/22576339/" target="_blank" rel="noopener noreferrer">Irwin BC, Scorniaenchi J, Kerr NL, Eisenmann JC, Feltz DL. Aerobic exercise is promoted when individual performance affects the group: a test of the Köhler motivation gain effect. Annals of Behavioral Medicine, 2012</a></li>
+        <li>Conferidas em 01/11/2026. As faixas de preço são a referência editorial do portal, não pesquisa de campo.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer em dupla" />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

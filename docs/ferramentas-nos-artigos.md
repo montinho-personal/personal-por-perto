@@ -213,3 +213,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 26/10 — `/guias/tenis-para-hyrox/` — artigo novo: bloco hyrox depois da corrida — "quanto da prova é corrida e quanto é estação?"
 - 01/11 — `/emagrecimento/bioimpedancia/` — artigo novo: bloco percentual-de-gordura em "qual é o valor normal" — "quero conferir o número por outro caminho"
 - 01/11 — `/emagrecimento/proteina-e-saciedade/` — artigo novo: bloco calculadora-de-proteina em "quanta proteína por refeição" — "quanto isso dá no meu dia?"
+- 01/11 — `/emagrecimento/emagrecer-sem-academia/` — artigo novo: bloco calculadora-de-emagrecimento em "quanto tempo leva" — "em quanto tempo eu chego lá?"
+- 01/11 — `/guias/personal-trainer-em-dupla/` — artigo novo: bloco preco depois do exemplo de Barueri e Alphaville — "e na minha cidade, quanto dá a conta?"

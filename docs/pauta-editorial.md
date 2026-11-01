@@ -660,7 +660,7 @@ hipertrofia), já usados no portal.
 | Bioimpedância: como ler o resultado | `bioimpedancia` | ✅ 2026-11-01 · prints do Renato · `docs/bioimpedancia-como-ler.md` |
 | Proteína e saciedade | `proteina-e-saciedade` | ✅ 2026-11-01 · prints do Renato · `docs/proteina-e-saciedade.md` |
 | Dormir pouco engorda? | `dormir-pouco-engorda` | ✅ 2026-10-27 · prints e AnswerThePublic do Renato · `docs/dormir-pouco-engorda.md` |
-| Emagrecer sem academia | `emagrecer-sem-academia` | ⏳ próxima dupla · prints recebidos em 01/11 (`docs/pesquisas/2026-11-01-emagrecer-sem-academia/`) |
+| Emagrecer sem academia | `emagrecer-sem-academia` | ✅ 2026-11-01 · prints do Renato · `docs/emagrecer-sem-academia.md` |
 | Efeito sanfona: por que acontece | `efeito-sanfona` | ⚠️ |
 | Método 12-3-30 na esteira | `metodo-12-3-30` | ✅ 2026-09-30 · a pedido do Renato, pelas buscas |
 
@@ -701,7 +701,7 @@ macros, que é ferramenta nova e passa pela análise de lote antes.
 | Personal trainer para pessoas com deficiência | `personal-trainer-para-pcd` | |
 | Personal trainer para autistas | `personal-trainer-para-autistas` | |
 | Personal trainer para quem viaja a trabalho | `personal-trainer-para-quem-viaja` | |
-| Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | ⏳ próxima dupla · prints recebidos em 01/11 (`docs/pesquisas/2026-11-01-personal-trainer-em-dupla/`) |
+| Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | ✅ 2026-11-01 · prints do Renato · `docs/personal-trainer-em-dupla.md` |
 | Personal trainer e nutricionista juntos | `personal-trainer-e-nutricionista` | |
 | Como trocar de personal trainer | `trocar-de-personal-trainer` | |
 | Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | |
