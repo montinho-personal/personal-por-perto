@@ -77,8 +77,9 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Alto de São Manoel', detalhe: 'na Av. Presidente Dutra' },
     { nome: 'Smart Fit Centro Mossoró', detalhe: 'na Rua Juvenal Lamartine, no Centro' },
-    { nome: 'Selfit Mossoró', detalhe: 'na Av. João da Escóssia, na Nova Betânia' },
+    { nome: 'Selfit Mossoró', detalhe: 'no Estação Shopping, na Av. Alberto Maranhão, no Centro' },
   ],
+  academiasVerificadasEm: '2026-11-02',
 
   destaquesFitness: [
     'Parque Ecológico Maurício de Oliveira como principal espaço público gratuito de treino.',
@@ -132,5 +133,5 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-26',
+  atualizadoEm: '2026-11-02',
 };

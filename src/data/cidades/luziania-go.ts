@@ -68,7 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva mistura a tradição religiosa e histórica — com a Corrida de Santa Luzia ligada ao aniversário da cidade — e a rotina de academias de bairro e treinos de rua. A proximidade com Brasília aproxima os praticantes locais do calendário de provas da capital.',
   academias:
-    'A oferta é formada sobretudo por academias de bairro no centro e no Jardim Ingá, complementada por estúdios menores, atendimento domiciliar e equipamentos públicos de ginástica nas praças.',
+    'A oferta é formada sobretudo por academias de bairro no centro e no Jardim Ingá — como a Academia Maromba, na Rua Anápolis —, além da Skyfit, e complementada por estúdios menores, atendimento domiciliar e equipamentos públicos de ginástica nas praças.',
+
+  academiasProximas: [
+    { nome: 'Academia Maromba Jardim Ingá', detalhe: 'na Rua Anápolis, no Jardim Ingá' },
+    { nome: 'Skyfit Academia Luziânia' },
+  ],
+  academiasVerificadasEm: '2026-11-02',
 
   destaquesFitness: [
     'Cidade grande do Entorno do DF, com espaço amplo para personal domiciliar e em condomínios.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Luziânia', url: 'https://www.luziania.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-02',
 };

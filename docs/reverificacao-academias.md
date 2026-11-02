@@ -692,3 +692,26 @@ A Smart Fit não tem unidade no município (o localizador oficial do PA só list
 | Academia ao ar livre dos Macaquinhos — "gratuita, adaptada para PcD" | **removida**: o portal da Prefeitura responde 503 aqui, e a busca só mostra guias de turismo e uma página da Prefeitura sobre a academia para PcD do programa Academia Popular, que não diz em que parque ela fica. Saiu também da descrição do parque, de um destaque e de uma FAQ. Volta com print | — |
 
 Texto: `academias` e a FAQ de onde treinar passaram a citar a unidade da Smart Fit no Lurdes. Caxias fica com 1 entrada. Saldo da leva: 5 entradas → 3 mantidas (2 com detalhe corrigido, 1 corrigida de várias para uma unidade) e 2 removidas. 118 cidades seguem na fila.
+
+### 02/11/2026 — leva 29 (rotina, Parte B: Campo Grande e Mossoró)
+
+**Campo Grande/MS** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Ironberg — "centro de treinamento premium da marca na cidade" | **removida**: o site da rede não abre aqui, o Wellhub não lista unidade em Campo Grande, e a busca não acha endereço. Saiu também do `mercado`, de `academias`, de um destaque e de uma FAQ | — |
+| Smart Fit e Allp Fit — "redes nacionais com várias unidades" | **corrigida** para "Smart Fit", com cinco unidades abertas: Rua Brilhante (Vila Bandeirante), Av. Júlio de Castilho (Vila Sobrinho), Jardim dos Estados (Av. Mato Grosso, Centro), Itanhangá Park (R. Joaquim Murtinho, Centro) e Av. Fábio Zahran (Jardim Paulista). A Allp Fit saiu: o site da rede não abre aqui, o Wellhub lista unidades em SP, MG, PR e RS e nenhuma em MS, e as notícias encontradas falam de expansão em Minas | páginas oficiais da Smart Fit (`opened:true`) |
+| Academias locais consolidadas | **removida**: genérica | — |
+| Equipamentos dos parques — "gratuitos, no Parque das Nações Indígenas e no Sóter" | **removida**: as páginas do Governo do MS conferidas citam pista, ciclovia e quadra no Nações Indígenas, mas nenhuma confirma academia ao ar livre hoje (a mais direta é um pedido de vereador para instalar uma). O Sóter não teve fonte. O destaque "academia ao ar livre" virou "pista para caminhada e corrida" | Imasul e Fundesporte (pista e ciclovia) |
+
+Campo Grande fica com 1 entrada (a Smart Fit, com as cinco unidades). A Ironberg e a Allp Fit voltam com print do site de cada rede.
+
+**Mossoró/RN** — página mudou (1 detalhe).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Alto de São Manoel — "Av. Presidente Dutra" | confirmada sem mudança | página oficial (`opened:true`) |
+| Smart Fit Centro Mossoró — "Rua Juvenal Lamartine, Centro" | confirmada sem mudança | página oficial (`opened:true`) |
+| Selfit Mossoró — "Av. João da Escóssia, Nova Betânia" | **corrigida**: a Selfit fica no Estação Shopping, Av. Alberto Maranhão, 4089, Centro. Na Rua João da Escóssia, 1102, Nova Betânia, quem está é a unidade "Mossoró" da Smart Fit (fora da lista: a Parte B não acrescenta academias) | página oficial da Selfit |
+
+Saldo da leva: 7 entradas → 4 mantidas (2 corrigidas) e 3 removidas. 116 cidades seguem na fila.

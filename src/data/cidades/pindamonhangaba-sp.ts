@@ -63,7 +63,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva combina o uso intenso das pistas do Bosque da Princesa e do Parque da Cidade com calendário de corridas de rua e de trilha, refletindo o gosto local por atividade ao ar livre no Vale do Paraíba.',
   academias:
-    'A oferta reúne academias de bairro, redes, estúdios de treinamento funcional e boxes de crossfit, complementada por parques públicos gratuitos com pistas de caminhada e corrida e academias ao ar livre.',
+    'A oferta reúne redes — a Smart Fit, na Vila Verde, e a SkyFit, no Maria Áurea —, academias de bairro como a Tayoba, no Crispim, estúdios de treinamento funcional e boxes de crossfit, complementada por parques públicos gratuitos com pistas de caminhada e corrida e academias ao ar livre.',
+
+  academiasProximas: [
+    { nome: 'Smart Fit Pinda', detalhe: 'na Rua Guilherme de Souza Silva, na Vila Verde' },
+    { nome: 'SkyFit Academia Pindamonhangaba', detalhe: 'na Rua Doutor Fontes Júnior, no Maria Áurea' },
+    { nome: 'Academia Tayoba', detalhe: 'na Av. Monsenhor João José de Azevedo, no Crispim' },
+  ],
+  academiasVerificadasEm: '2026-11-02',
 
   destaquesFitness: [
     'Bosque da Princesa, às margens do Rio Paraíba do Sul, com pista de caminhada e corrida e academia ao ar livre.',
@@ -91,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pindamonhangaba', url: 'https://www.pindamonhangaba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-02',
 };

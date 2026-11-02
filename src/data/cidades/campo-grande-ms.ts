@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital de Mato Grosso do Sul, Campo Grande é um forte polo do agronegócio (ligado à pecuária de corte) e do setor de serviços, além de importante centro universitário. Conhecida como "Cidade Morena", é planejada, muito arborizada e tem boa qualidade de vida, o que atrai migração de outros estados e sustenta uma população jovem e ativa.',
 
   mercado:
-    'O mercado fitness está em expansão, com redes nacionais (Smart Fit, Allp Fit) e marcas premium de musculação — a Ironberg, referência nacional, abriu centro de treinamento na cidade —, além de academias locais consolidadas. A cultura de musculação e de treino premium é forte, impulsionada pelo público universitário.',
+    'O mercado fitness reúne redes nacionais, como a Smart Fit, com cinco unidades na cidade, e academias locais. A cultura de musculação e de treino premium é forte, impulsionada pelo público universitário.',
 
   bairrosNobres: ['Cidade Jardim', 'Jardim dos Estados', 'Chácara Cachoeira', 'Carandá Bosque'],
   bairrosPopulares: ['Vila Bandeirante', 'Aero Rancho', 'Coophavila', 'Vila Vilas Boas'],
@@ -68,18 +68,16 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Campo Grande tem cultura ativa de corrida e ciclismo, favorecida pelas ciclovias e pelos grandes parques, e uma cena de musculação e treino funcional em alta, puxada por um público jovem e universitário.',
   academias:
-    'A oferta reúne redes nacionais (Smart Fit, Allp Fit), a chegada de marcas premium como a Ironberg e academias locais consolidadas, com boa cobertura de plataformas de benefícios.',
+    'A Smart Fit tem cinco unidades na cidade: Rua Brilhante (Vila Bandeirante), Av. Júlio de Castilho (Vila Sobrinho), Jardim dos Estados e Itanhangá Park (ambas no Centro) e Av. Fábio Zahran (Jardim Paulista). Completam a oferta as academias locais e de bairro.',
   academiasProximas: [
-    { nome: 'Ironberg', detalhe: 'centro de treinamento premium da marca na cidade' },
-    { nome: 'Smart Fit e Allp Fit', detalhe: 'redes nacionais com várias unidades' },
-    { nome: 'Academias locais consolidadas', detalhe: 'boa cobertura nos bairros e via plataformas de benefícios' },
-    { nome: 'Equipamentos dos parques', detalhe: 'gratuitos, no Parque das Nações Indígenas e no Sóter' },
+    { nome: 'Smart Fit', detalhe: 'cinco unidades, do Centro à Vila Bandeirante, Vila Sobrinho e Jardim Paulista' },
   ],
+  academiasVerificadasEm: '2026-11-02',
 
   destaquesFitness: [
-    'Rede premium de musculação (Ironberg) escolheu a cidade pela demanda crescente.',
+    'Smart Fit com cinco unidades, do Centro ao Jardim Paulista.',
     'Forte malha cicloviária (cerca de 90 km), uma das melhores entre as capitais.',
-    'Grandes parques urbanos com academia ao ar livre e pista de cooper.',
+    'Grandes parques urbanos com pista para caminhada e corrida.',
     'Altitude de cerca de 430 m, que ameniza o calor frente ao restante do estado.',
   ],
 
@@ -99,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Campo Grande?',
       resposta:
-        'A cidade dá três frentes fortes: os grandes parques — o das Nações Indígenas, um dos maiores parques urbanos do país, e o Sóter, com pista de cooper e quadras —, as academias, do custo-benefício das redes ao treino premium do centro de treinamento da Ironberg, e o atendimento em casa nos bairros arborizados como Cidade Jardim e Carandá Bosque. Os cerca de 90 km de ciclovias ainda sustentam treinos de bike orientados pela Afonso Pena.',
+        'A cidade dá três frentes fortes: os grandes parques — o das Nações Indígenas, um dos maiores parques urbanos do país, e o Sóter, com pista de cooper e quadras —, as academias, com as cinco unidades da Smart Fit e as academias de bairro, e o atendimento em casa nos bairros arborizados como Cidade Jardim e Carandá Bosque. Os cerca de 90 km de ciclovias ainda sustentam treinos de bike orientados pela Afonso Pena.',
     },
     {
       pergunta: 'Como treinar na seca do inverno de Campo Grande?',
@@ -129,5 +127,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Campo Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-02',
 };
