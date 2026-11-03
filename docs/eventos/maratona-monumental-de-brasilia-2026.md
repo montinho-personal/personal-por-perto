@@ -37,6 +37,8 @@ Rede liberada em 13/10/2026. O site recusava com 406 o agente "Mozilla/5.0" curt
 
 **Varredura de 23/10/2026:** a página Regulamento passou a linkar a **v8** (https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/10/v8-REGULAMENTO-MARATONA-MONUMENTAL-2026.pdf; arquivada em `fontes/.../regulamento-v8-2026.pdf`). Diff de texto contra a v7: a única mudança de conteúdo é uma cláusula nova (repetida no item "ee"): quem disputa pódio ou premiação, em qualquer distância, é **desclassificado** por ajuda externa, apoio de pessoas não autorizadas ou equipamento eletrônico; recurso em até 30 min após a decisão do delegado técnico da CBAt ou da FAtDF, com taxa de **R$ 500**. Premiação total segue "a definir"; horários, kit e preços sem mudança. A home ainda linka o v6. Artigo atualizado: regulamento v8 nas fontes, a regra nova na seção de premiação, "quatro semanas" na seção de treino; Última verificação 23/10.
 
+**Varredura de 03/11/2026:** o regulamento continua na v8 (md5 igual ao arquivado), e a página de documentos tem os mesmos arquivos. Na Ticket Sports (evento 74828), o JSON-LD marca `availability` **`SoldOut`** (startDate 2026-11-22T05:00). Com o prazo do regulamento (31/10), as **inscrições estão encerradas**; o artigo não diz "esgotou". A busca trouxe o kit no Pátio Brasil, que já estava no artigo. Também houve divergência de agregadores sobre 17h ou 18h para os 5 e 10 km, mas o artigo segue o regulamento. Artigo atualizado: FAQs de valor e de prazo, tabela-resumo e seção de inscrição; Última verificação 03/11.
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)

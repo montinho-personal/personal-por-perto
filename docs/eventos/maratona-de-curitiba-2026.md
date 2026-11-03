@@ -40,6 +40,8 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
 
 **Varredura de 23/10/2026:** o site oficial não abriu (conexão recusada no ambiente) — não contornado. Ticket Sports: JSON-LD igual (5h, Praça N. Sra. da Salete, InStock). PDF do regulamento: md5 igual (97749585…). Sem fato novo; artigo não mexido.
 
+**Varredura de 03/11/2026:** o site oficial não abriu (conexão recusada), e não foi contornado. Na Ticket Sports, o JSON-LD da página da prova passou de `InStock` para **`SoldOut`** (startDate 2026-11-15T05:00 e status EventScheduled, iguais aos de antes). Junto com o prazo do regulamento (23h59 de 31/10), isso indica **inscrições encerradas**. O artigo diz "encerradas", não "esgotadas": nenhuma fonte diz se o limite de 16 mil foi atingido. O PDF do regulamento tem o mesmo md5 (97749585…). Artigo atualizado: FAQ de inscrição, tabela-resumo e seção "Inscrição e valor"; Última verificação 03/11.
+
 ## Bloqueado (pedir print) — quase tudo resolvido em 13/10; falta o PDF do regulamento (Azure blob) e a Prefeitura (403)
 
 - https://www.maratonadecuritiba.com.br/ (home, regulamento, kit, percurso, premiação)
