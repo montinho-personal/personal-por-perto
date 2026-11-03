@@ -715,3 +715,14 @@ Campo Grande fica com 1 entrada (a Smart Fit, com as cinco unidades). A Ironberg
 | Selfit Mossoró — "Av. João da Escóssia, Nova Betânia" | **corrigida**: a Selfit fica no Estação Shopping, Av. Alberto Maranhão, 4089, Centro. Na Rua João da Escóssia, 1102, Nova Betânia, quem está é a unidade "Mossoró" da Smart Fit (fora da lista: a Parte B não acrescenta academias) | página oficial da Selfit |
 
 Saldo da leva: 7 entradas → 4 mantidas (2 corrigidas) e 3 removidas. 116 cidades seguem na fila.
+
+**03/11 — Ironberg Campo Grande, de volta como "em breve".** O Renato mandou
+um print (`docs/pesquisas/2026-11-03-ironberg-campo-grande/`): a visão geral de IA
+descreve a unidade como "futura", "em desenvolvimento", e cita o YouTube da
+Ironberg e o perfil @ironberg_campo_grande no Instagram. A pedido dele, a
+rede voltou ao texto `academias` como unidade anunciada, que deve abrir em
+breve, sem data nem endereço. **Não voltou para `academiasProximas`**: pelo
+CLAUDE.md, unidade "em breve" só entra na lista quando abrir. Quando
+inaugurar, a entrada sobe com o endereço. Para firmar a fonte, falta um
+print do perfil do Instagram ou do vídeo da rede, porque resumo de IA não é
+fonte.

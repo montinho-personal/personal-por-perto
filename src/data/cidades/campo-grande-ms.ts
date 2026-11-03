@@ -68,7 +68,7 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Campo Grande tem cultura ativa de corrida e ciclismo, favorecida pelas ciclovias e pelos grandes parques, e uma cena de musculação e treino funcional em alta, puxada por um público jovem e universitário.',
   academias:
-    'A Smart Fit tem cinco unidades na cidade: Rua Brilhante (Vila Bandeirante), Av. Júlio de Castilho (Vila Sobrinho), Jardim dos Estados e Itanhangá Park (ambas no Centro) e Av. Fábio Zahran (Jardim Paulista). Completam a oferta as academias locais e de bairro.',
+    'A Smart Fit tem cinco unidades na cidade: Rua Brilhante (Vila Bandeirante), Av. Júlio de Castilho (Vila Sobrinho), Jardim dos Estados e Itanhangá Park (ambas no Centro) e Av. Fábio Zahran (Jardim Paulista). Completam a oferta as academias locais e de bairro. A Ironberg, rede de musculação de alto rendimento, anunciou uma unidade em Campo Grande, que deve abrir em breve; ainda não há data de inauguração nem endereço divulgados.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'cinco unidades, do Centro à Vila Bandeirante, Vila Sobrinho e Jardim Paulista' },
   ],
@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Campo Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-11-02',
+  atualizadoEm: '2026-11-03',
 };
