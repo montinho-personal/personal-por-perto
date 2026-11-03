@@ -70,10 +70,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o crescimento da cidade, mas o grande trunfo de Palmas é a estrutura pública ao ar livre — parques com pistas de até 5 km e academias gratuitas à beira do lago, que ampliam muito o acesso ao treino.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Centro e na Av. Teotônio Segurado Sul' },
-    { nome: 'Academias e estúdios locais', detalhe: 'oferta crescente nas quadras do Plano Diretor' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Parque Cesamar e nas praias do Lago' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: Palmas Centro (104 Norte), duas na Av. Teotônio Segurado, no Plano Diretor Sul, e Taquaralto' },
   ],
+  academiasVerificadasEm: '2026-11-03',
 
   destaquesFitness: [
     'Capital nº 1 do Brasil em mulheres fisicamente ativas (Vigitel: cerca de 49,6%).',
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Palmas?',
       resposta:
-        'O Parque Cesamar, com pista de cerca de 5 km, e a orla do Lago — da Praia da Graciosa às Arnos — são os palcos naturais do treino ao ar livre, com academias públicas gratuitas espalhadas. Nas academias, a Smart Fit cobre o Centro e a Teotônio Segurado, e estúdios locais crescem nas quadras do Plano Diretor. O atendimento em casa também é comum: a cidade plana e de traçado em grade torna o deslocamento do profissional rápido entre as quadras.',
+        'O Parque Cesamar, com pista de cerca de 5 km, e a orla do Lago — da Praia da Graciosa às Arnos — são os palcos naturais do treino ao ar livre, com academias públicas gratuitas espalhadas. Nas academias, a Smart Fit tem unidades na 104 Norte, na Av. Teotônio Segurado e em Taquaralto, além das academias e estúdios de bairro. O atendimento em casa também é comum: a cidade plana e de traçado em grade torna o deslocamento do profissional rápido entre as quadras.',
     },
     {
       pergunta: 'Por que Palmas é a capital nº 1 do Brasil em mulheres ativas?',
@@ -128,5 +127,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Palmas: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-03',
 };

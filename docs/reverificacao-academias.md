@@ -726,3 +726,28 @@ CLAUDE.md, unidade "em breve" só entra na lista quando abrir. Quando
 inaugurar, a entrada sobe com o endereço. Para firmar a fonte, falta um
 print do perfil do Instagram ou do vídeo da rede, porque resumo de IA não é
 fonte.
+
+### 03/11/2026 — leva 30 (rotina, Parte B: Praia Grande e Palmas)
+
+**Praia Grande/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Pres. Costa e Silva — "Av. Presidente Costa e Silva, Boqueirão" | confirmada sem mudança | página oficial (nº 808, `opened:true`) |
+| Smart Fit Litoral Plaza — "no Litoral Plaza Shopping" | **removida**: não aparece no localizador oficial de Praia Grande nem tem página de unidade. Só aparece na lista de unidades de regulamentos de promoção de jan. a mai./2026 (Av. Ayrton Senna da Silva, 1511), o que não confirma que siga aberta | — |
+| Smart Fit Ocian — "no bairro Ocian" | **corrigida**: Av. Presidente Kennedy, 6791, Cidade Ocian | página oficial (`opened:true`) |
+| Smart Fit Atacadão Praia Grande — "junto ao Atacadão" | **corrigida**: Av. Presidente Kennedy, 1876, Guilhermina | página oficial (`opened:true`) |
+
+Texto: saiu a Bluefit de `mercado` e `academias`, porque o sitemap da Bluefit não tem unidade em Praia Grande. A unidade Aviação da Smart Fit ainda está com `opened:false` e não entra.
+
+**Palmas/TO** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades no Centro e na Av. Teotônio Segurado Sul" | **corrigida**: são quatro unidades abertas, Palmas Centro (104 Norte, Av. LO 2), Teotônio Segurado Sul e Palmas Sul (as duas na Av. Teotônio Segurado, Plano Diretor Sul) e Taquaralto (Jardim Aureny II). A 110 Norte ainda tem `opened:false` | páginas oficiais |
+| Academias e estúdios locais | **removida**: genérica | — |
+| Academias ao ar livre — "Parque Cesamar e praias do Lago" | **removida da lista**: o portal da Prefeitura de Palmas responde 403 aqui, e o de turismo não abre. A busca mostra notícias da Prefeitura sobre a academia ao ar livre do Cesamar, mas resumo de busca não é fonte. Volta com print | — |
+
+Ficam para a próxima revisão da página, fora do escopo da lista: as descrições dos parques (Cesamar e praias) e o texto `academias` ainda falam em academia ao ar livre, e a "pista de cerca de 5 km" do Cesamar não foi conferida (a busca fala em 2.820 m). A Bluefit tem duas unidades em Palmas no sitemap (Centro e Sul), mas a Parte B não acrescenta academias.
+
+Saldo da leva: 7 entradas → 4 mantidas (3 corrigidas) e 3 removidas. 114 cidades seguem na fila.

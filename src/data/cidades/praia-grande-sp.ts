@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Cidade litorânea com a maior orla contínua de praia da Baixada Santista (cerca de 22,5 km), Praia Grande foi a que mais cresceu na região e, em 2022, passou a ter mais moradores permanentes do que casas de veraneio. A economia se baseia em turismo, serviços e construção civil, e a orla é o centro absoluto da vida ativa da cidade.',
 
   mercado:
-    'A cultura de orla é forte — corrida, caminhada e ciclismo no calçadão o ano todo —, com a Smart Fit em várias unidades, a Bluefit, boxes de crossfit e academias locais. A combinação de praia extensa e boa oferta de academias faz da cidade um ótimo cenário para personal trainers.',
+    'A cultura de orla é forte — corrida, caminhada e ciclismo no calçadão o ano todo —, com a Smart Fit em várias unidades, boxes de crossfit e academias locais. A combinação de praia extensa e boa oferta de academias faz da cidade um ótimo cenário para personal trainers.',
 
   bairrosNobres: ['Canto do Forte', 'Boqueirão', 'Guilhermina', 'Aviação'],
   bairrosPopulares: ['Vila Sônia', 'Quietude', 'Vila Tupi', 'Melvi'],
@@ -68,14 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Praia Grande se consolidou como anfitriã de corridas de rua, com forte cultura de ciclismo, corrida, caminhada e surfe na orla. A vida esportiva gira em torno dos 22,5 km de praia.',
   academias:
-    'A oferta reúne a Smart Fit (várias unidades), a Bluefit, boxes de crossfit e academias locais, com a orla e suas academias ao ar livre funcionando como uma enorme extensão de treino.',
+    'A oferta reúne a Smart Fit (três unidades abertas: Boqueirão, Guilhermina e Cidade Ocian), boxes de crossfit e academias locais, com a orla e suas academias ao ar livre funcionando como uma enorme extensão de treino.',
 
   academiasProximas: [
     { nome: 'Smart Fit Pres. Costa e Silva', detalhe: 'na Av. Presidente Costa e Silva, no Boqueirão' },
-    { nome: 'Smart Fit Litoral Plaza', detalhe: 'no Litoral Plaza Shopping' },
-    { nome: 'Smart Fit Ocian', detalhe: 'no bairro Ocian' },
-    { nome: 'Smart Fit Atacadão Praia Grande', detalhe: 'junto ao Atacadão' },
+    { nome: 'Smart Fit Ocian', detalhe: 'na Av. Presidente Kennedy, na Cidade Ocian' },
+    { nome: 'Smart Fit Atacadão Praia Grande', detalhe: 'na Av. Presidente Kennedy, na Guilhermina' },
   ],
+  academiasVerificadasEm: '2026-11-03',
 
   destaquesFitness: [
     'Maior ciclovia à beira-mar do país (cerca de 22,5 km).',
@@ -123,7 +123,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Praia Grande', url: 'https://www.praiagrande.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-11-03',
   capaArte: {
     src: '/capas-cidade/praia-grande-sp.webp',
     w: 1200,

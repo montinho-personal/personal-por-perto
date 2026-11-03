@@ -63,7 +63,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura local mistura o esporte com a forte tradição gaúcha: a cidade é berço da Califórnia da Canção Nativa e tem CTGs ativos, cavalgadas e rodeios que mantêm viva a lida campeira. Esse perfil ativo, somado às corridas de rua, sustenta o interesse por treino e condicionamento.',
   academias:
-    'A oferta reúne academias e estúdios no centro e nos bairros residenciais, atendendo o público da maior cidade da Fronteira Oeste, com a orla do Rio Uruguai como principal espaço de treino ao ar livre.',
+    'A oferta reúne academias e estúdios no centro e nos bairros residenciais — entre eles a Skyfit, na Avenida Marechal Setembrino de Carvalho —, atendendo o público da maior cidade da Fronteira Oeste, com a orla do Rio Uruguai como principal espaço de treino ao ar livre.',
+
+  academiasProximas: [
+    { nome: 'Skyfit Uruguaiana', detalhe: 'na Avenida Marechal Setembrino de Carvalho' },
+  ],
+  academiasVerificadasEm: '2026-11-03',
 
   destaquesFitness: [
     'Orla do Rio Uruguai: caminhada e corrida com vista para a fronteira.',
@@ -91,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Uruguaiana', url: 'https://www.uruguaiana.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/432240' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-03',
 };

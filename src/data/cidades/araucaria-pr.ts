@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'O calendário de corridas de rua é centrado no Parque Cachoeira, com circuitos patrocinados (Petrobras) e provas ligadas às indústrias locais.',
   academias:
-    'A oferta reúne academias e estúdios, com público de renda elevada e demanda corporativa, complementada pelo Parque Cachoeira e pela proximidade de Curitiba.',
+    'A oferta reúne academias e estúdios — como a Academia Lift, na Rua Minas Gerais, na Costeira —, com público de renda elevada e demanda corporativa, complementada pelo Parque Cachoeira e pela proximidade de Curitiba.',
+
+  academiasProximas: [
+    { nome: 'Academia Lift', detalhe: 'na Rua Minas Gerais, na Costeira' },
+  ],
+  academiasVerificadasEm: '2026-11-03',
 
   destaquesFitness: [
     'Um dos maiores PIBs per capita do Paraná — público com renda elevada.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araucária', url: 'https://www.araucaria.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-03',
 };
