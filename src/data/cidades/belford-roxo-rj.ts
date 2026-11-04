@@ -101,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belford Roxo', url: 'https://prefeituradebelfordroxo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM (Belford Roxo)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300456' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-04',
   capaArte: {
     src: '/capas-cidade/belford-roxo-rj.webp',
     w: 1200,

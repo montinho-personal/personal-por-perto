@@ -140,7 +140,7 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   academiasVerificadasEm: '2026-10-22',
-  atualizadoEm: '2026-10-22',
+  atualizadoEm: '2026-11-04',
   capaArte: {
     src: '/capas-cidade/santos-sp.webp',
     w: 1200,

@@ -173,4 +173,9 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'feira-de-santana-ba', 'pocos-de-caldas-mg', 'blumenau-sc', 'campo-grande-ms', 'cariacica-es',
   'guarulhos-sp', 'jaboatao-dos-guararapes-pe', 'conselheiro-lafaiete-mg', 'palmas-to', 'criciuma-sc',
   'porto-nacional-to', 'ipatinga-mg', 'uberaba-mg', 'balneario-camboriu-sc', 'castanhal-pa',
+  // leva 5 — 04/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 4 conferida no ar)
+  'franca-sp', 'santos-sp', 'aparecida-de-goiania-go', 'mogi-das-cruzes-sp', 'sao-leopoldo-rs',
+  'nova-iguacu-rj', 'rio-claro-sp', 'guarapari-es', 'belford-roxo-rj', 'araraquara-sp',
+  'praia-grande-sp', 'sao-thome-das-letras-mg', 'vicosa-mg', 'atibaia-sp', 'jaragua-do-sul-sc',
+  'vitoria-da-conquista-ba', 'braganca-paulista-sp', 'camboriu-sc', 'marilia-sp', 'taubate-sp',
 ]);

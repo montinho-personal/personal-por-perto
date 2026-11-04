@@ -98,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de São Thomé das Letras', url: 'https://saotomedasletras.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-04',
 };

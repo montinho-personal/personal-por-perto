@@ -101,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aparecida de Goiânia', url: 'https://www.aparecida.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-04',
   capaArte: {
     src: '/capas-cidade/aparecida-de-goiania-go.webp',
     w: 1200,
