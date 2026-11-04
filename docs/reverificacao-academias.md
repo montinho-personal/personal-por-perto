@@ -751,3 +751,25 @@ Texto: saiu a Bluefit de `mercado` e `academias`, porque o sitemap da Bluefit n�
 Ficam para a próxima revisão da página, fora do escopo da lista: as descrições dos parques (Cesamar e praias) e o texto `academias` ainda falam em academia ao ar livre, e a "pista de cerca de 5 km" do Cesamar não foi conferida (a busca fala em 2.820 m). A Bluefit tem duas unidades em Palmas no sitemap (Centro e Sul), mas a Parte B não acrescenta academias.
 
 Saldo da leva: 7 entradas → 4 mantidas (3 corrigidas) e 3 removidas. 114 cidades seguem na fila.
+
+### 04/11/2026 — leva 31 (rotina, Parte B: Jundiaí e Santa Maria)
+
+**Jundiaí/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Jardim Liberdade — "Av. Antônio Frederico Ozanan" | **corrigida** para o nome que a rede usa, "Maxi Shopping": Av. Antônio Frederico Ozanan, 6000, Jardim Liberdade | página oficial (`opened:true`) |
+| Smart Fit Jundiaí Shopping — "dentro do shopping" | **corrigida** com o endereço: Av. Nove de Julho, 3333, Anhangabaú | página oficial (`opened:true`) |
+| Bluefit Centro — "Rua XV de Novembro, Centro" | confirmada; o nome passou ao da rede, "XV de Novembro" (nº 1000, loja 34) | página oficial da Bluefit |
+| Bluefit Anhangabaú — "Av. Nove de Julho" | confirmada; o nome passou ao da rede, "Av. 9 de Julho" (nº 3600, 2º andar) | página oficial da Bluefit |
+| Bluefit Ponte de Campinas — "Av. União dos Ferroviários" | **removida**: o sitemap da Bluefit tem só as duas unidades acima em Jundiaí, e os caminhos prováveis da página dão 404 | — |
+
+A Smart Fit tem outras seis unidades abertas na cidade (Pão de Açúcar Centro, Leroy, R. Dr. Ramiro, Av. Antônio Pincinato, Av. Imigrantes Italianos e CECAP), mas a Parte B não acrescenta academias.
+
+**Santa Maria/RS** — página não mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Santa Maria — "Shopping Praça Nova, Urlândia" | confirmada sem mudança | página oficial (`opened:true`) |
+
+`atualizadoEm` de Santa Maria não subiu, porque nada visível mudou. Saldo da leva: 6 entradas → 5 mantidas (2 corrigidas e 2 renomeadas) e 1 removida. 112 cidades seguem na fila.

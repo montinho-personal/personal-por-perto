@@ -71,12 +71,12 @@ export const cidade: Cidade = {
     'A oferta reúne redes nacionais (Smart Fit) e estúdios de funcional e crossfit, atendendo um público de alta renda que valoriza tanto a musculação quanto o treino ao ar livre.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Jardim Liberdade', detalhe: 'na Av. Antônio Frederico Ozanan' },
-    { nome: 'Smart Fit Jundiaí Shopping', detalhe: 'unidade da rede dentro do shopping' },
-    { nome: 'Bluefit Centro', detalhe: 'na Rua XV de Novembro, no Centro' },
-    { nome: 'Bluefit Anhangabaú', detalhe: 'na Av. Nove de Julho' },
-    { nome: 'Bluefit Ponte de Campinas', detalhe: 'na Av. União dos Ferroviários' },
+    { nome: 'Smart Fit Maxi Shopping', detalhe: 'na Av. Antônio Frederico Ozanan, no Jardim Liberdade' },
+    { nome: 'Smart Fit Jundiaí Shopping', detalhe: 'na Av. Nove de Julho, no Anhangabaú' },
+    { nome: 'Bluefit XV de Novembro', detalhe: 'na Rua XV de Novembro, no Centro' },
+    { nome: 'Bluefit Av. 9 de Julho', detalhe: 'na Av. Nove de Julho, no Anhangabaú' },
   ],
+  academiasVerificadasEm: '2026-11-04',
 
   destaquesFitness: [
     'Parque da Cidade com pistas de cooper de 2,1 km, academia ao ar livre e ciclovia iluminada.',
@@ -106,7 +106,7 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-04',
   capaArte: {
     src: '/capas-cidade/jundiai-sp.webp',
     w: 1200,

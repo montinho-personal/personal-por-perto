@@ -68,7 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A presença universitária da UAST/UFRPE e os grupos de corrida locais sustentam uma cultura esportiva crescente, voltada à corrida de rua, à musculação e ao treino funcional, mesmo diante do clima desafiador do sertão.',
   academias:
-    'A oferta reúne academias de musculação e funcional no Centro e nos bairros, estúdios de personal e espaços de treino voltados ao público universitário, complementados pelas praças e pela orla para atividades ao ar livre.',
+    'A oferta reúne academias de musculação e funcional no Centro e nos bairros — como a Selfit, na Av. Adriano Duque de Godoy Sousa, e a CR Fitness, no São Cristóvão —, estúdios de personal e espaços de treino voltados ao público universitário, complementados pelas praças e pela orla para atividades ao ar livre.',
+
+  academiasProximas: [
+    { nome: 'Selfit Serra Talhada', detalhe: 'na Av. Adriano Duque de Godoy Sousa, na Nossa Senhora da Penha' },
+    { nome: 'CR Fitness', detalhe: 'na Av. Miguel Nunes de Souza, no São Cristóvão' },
+  ],
+  academiasVerificadasEm: '2026-11-04',
 
   destaquesFitness: [
     'Polo regional do Sertão do Pajeú, com mercado fitness aquecido pela população universitária da UAST/UFRPE.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Serra Talhada', url: 'https://www.serratalhada.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/261390' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-04',
 };

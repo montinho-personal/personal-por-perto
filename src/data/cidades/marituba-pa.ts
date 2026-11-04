@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva de Marituba é jovem e em formação, ancorada em corridas de rua municipais com viés de inclusão social e na integração ao circuito esportivo da Região Metropolitana de Belém.',
   academias:
-    'A oferta de academias acompanha o crescimento da cidade e se concentra ao longo da BR-316 e no Centro, complementada pelas praças revitalizadas e pelos espaços públicos dos bairros.',
+    'A oferta de academias acompanha o crescimento da cidade e se concentra ao longo da BR-316 e no Centro — a Skyfit é uma das redes presentes —, complementada pelas praças revitalizadas e pelos espaços públicos dos bairros.',
+
+  academiasProximas: [
+    { nome: 'Skyfit Academia Marituba' },
+  ],
+  academiasVerificadasEm: '2026-11-04',
 
   destaquesFitness: [
     'Praças revitalizadas, como a do bairro Almir Gabriel, para caminhada e treino ao ar livre.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Marituba', url: 'https://marituba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-04',
 };

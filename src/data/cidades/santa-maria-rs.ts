@@ -73,6 +73,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Santa Maria', detalhe: 'no Shopping Praça Nova, na Urlândia' },
   ],
+  academiasVerificadasEm: '2026-11-04',
 
   destaquesFitness: [
     'Parque Itaimbé: pista de caminhada central aberta 24 horas.',
