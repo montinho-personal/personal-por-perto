@@ -74,6 +74,7 @@ export const cidade: Cidade = {
     { nome: 'Smart Fit Extra Taubaté', detalhe: 'na Av. Juscelino Kubitschek, no Jardim Eulália' },
     { nome: 'Smart Fit Tauste Taubaté', detalhe: 'na Rua Domingos Rodrigues do Prado, na Vila Edmundo' },
   ],
+  academiasVerificadasEm: '2026-11-05',
 
   destaquesFitness: [
     'Parques públicos gratuitos com pistas de caminhada e corrida (Itaim, Jardim das Nações).',

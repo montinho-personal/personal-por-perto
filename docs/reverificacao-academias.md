@@ -773,3 +773,22 @@ A Smart Fit tem outras seis unidades abertas na cidade (Pão de Açúcar Centro,
 | Smart Fit Santa Maria — "Shopping Praça Nova, Urlândia" | confirmada sem mudança | página oficial (`opened:true`) |
 
 `atualizadoEm` de Santa Maria não subiu, porque nada visível mudou. Saldo da leva: 6 entradas → 5 mantidas (2 corrigidas e 2 renomeadas) e 1 removida. 112 cidades seguem na fila.
+
+### 05/11/2026 — leva 32 (rotina, Parte B: Taubaté e Cariacica)
+
+**Taubaté/SP** — página não mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Taubaté — "Av. Itália, Jardim das Nações" | confirmada sem mudança | página oficial (nº 850, `opened:true`) |
+| Smart Fit Extra Taubaté — "Av. Juscelino Kubitschek, Jardim Eulália" | confirmada sem mudança | página oficial (nº 637, `opened:true`) |
+| Smart Fit Tauste Taubaté — "Rua Domingos Rodrigues do Prado, Vila Edmundo" | confirmada sem mudança | página oficial (nº 739, `opened:true`) |
+
+**Cariacica/ES** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Cariacica — "Av. Expedito Garcia, Campo Grande" | confirmada sem mudança | página oficial (nº 281, `opened:true`) |
+| Point Fitness — "Av. Getúlio Vargas, Campo Grande" | **removida**: a página do Wellhub tem "campo-grande-cariacica" no endereço, mas o endereço da academia é R. Groelândia, 75, Campo Limpo Paulista/SP. O "Ponto Fitness" do TotalPass na Av. Getúlio Vargas fica em São Lourenço/MG. Nenhuma fonte põe a academia em Cariacica | — |
+
+Cariacica fica com 1 entrada. As menções à academia ao ar livre da orla e dos complexos (descrições dos parques) não foram conferidas e ficam para a revisão da página. Saldo da leva: 5 entradas → 4 mantidas e 1 removida. Taubaté foi o primeiro dia limpo da contagem dos 5.

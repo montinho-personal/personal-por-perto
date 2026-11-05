@@ -76,8 +76,8 @@ export const cidade: Cidade = {
 
   academiasProximas: [
     { nome: 'Smart Fit Cariacica', detalhe: 'na Av. Expedito Garcia, em Campo Grande' },
-    { nome: 'Point Fitness', detalhe: 'na Av. Getúlio Vargas, também em Campo Grande' },
   ],
+  academiasVerificadasEm: '2026-11-05',
 
   destaquesFitness: [
     'Orla revitalizada com academia ao ar livre, um hub natural para o personal.',
@@ -105,7 +105,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cariacica', url: 'https://www.cariacica.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-05',
 
 
   faqsExtra: [

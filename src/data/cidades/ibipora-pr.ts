@@ -58,7 +58,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cultura esportiva local gira em torno da musculação, do treino funcional e da corrida de rua, com a Prova Pedestre Cidade de Ibiporã como evento de destaque. A proximidade com Londrina amplia o calendário disponível aos corredores ibiporaenses.',
   academias:
-    'A oferta reúne academias de musculação e estúdios de treino funcional no centro e nos bairros, com cobertura de plataformas de benefícios e a alternativa, a poucos quilômetros, da rede mais ampla de Londrina.',
+    'A oferta reúne academias de musculação e estúdios de treino funcional no centro e nos bairros — como a VS Gold, na Av. Paraná, e a Cross Experience, no Jardim Beltrão —, com cobertura de plataformas de benefícios e a alternativa, a poucos quilômetros, da rede mais ampla de Londrina.',
+
+  academiasProximas: [
+    { nome: 'VS Gold Ibiporã', detalhe: 'na Av. Paraná' },
+    { nome: 'Cross Experience Ibiporã', detalhe: 'na Av. Santos Dumont, no Jardim Beltrão' },
+  ],
+  academiasVerificadasEm: '2026-11-05',
 
   destaquesFitness: [
     'Lago Dom Pedro Zilli com pista de caminhada e corrida, ciclovia e academia ao ar livre.',
@@ -86,5 +92,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ibiporã', url: 'https://www.ibipora.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-05',
 };

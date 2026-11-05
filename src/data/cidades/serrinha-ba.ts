@@ -68,7 +68,14 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cidade tem forte tradição no futebol amador e de campo e uma cena de corrida de rua em ascensão, impulsionada por provas comemorativas e pelo público universitário da UNEB. O treino funcional e as academias de bairro completam o cenário esportivo local.',
   academias:
-    'A oferta de academias e estúdios é compatível com uma cidade média do interior baiano, concentrada no Centro, na Cidade Nova e na Rodoviária, atendendo também moradores das cidades vizinhas do Sisal que buscam serviços em Serrinha.',
+    'A oferta de academias e estúdios é compatível com uma cidade média do interior baiano — com a Smart Fit, na Av. Dr. Lauro Mota, e boxes de cross training no bairro Ginásio —, atendendo também moradores das cidades vizinhas do Sisal que buscam serviços em Serrinha.',
+
+  academiasProximas: [
+    { nome: 'Smart Fit Serrinha', detalhe: 'na Av. Dr. Lauro Mota, no Ginásio' },
+    { nome: 'Arena Cross Serrinha', detalhe: 'na Av. Antônio Carlos Magalhães, no Ginásio' },
+    { nome: 'Serrinha Cross', detalhe: 'na Rua Lauro Mota, no Ginásio' },
+  ],
+  academiasVerificadasEm: '2026-11-05',
 
   destaquesFitness: [
     'Polo do Território do Sisal, com oferta de academias e estúdios para toda a região.',
@@ -96,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Serrinha', url: 'https://www.serrinha.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2930501' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-05',
 };
