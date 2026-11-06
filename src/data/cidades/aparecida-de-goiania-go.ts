@@ -74,6 +74,7 @@ export const cidade: Cidade = {
     { nome: 'Smart Fit Av. Rio Verde', detalhe: 'no Setor dos Afonsos, na Avenida Rio Verde' },
     { nome: 'Smart Fit Buriti Shopping', detalhe: 'unidade da rede dentro do Buriti Shopping' },
   ],
+  academiasVerificadasEm: '2026-11-06',
 
   destaquesFitness: [
     'Boa rede de parques com pista e academia ao ar livre.',

@@ -792,3 +792,24 @@ A Smart Fit tem outras seis unidades abertas na cidade (Pão de Açúcar Centro,
 | Point Fitness — "Av. Getúlio Vargas, Campo Grande" | **removida**: a página do Wellhub tem "campo-grande-cariacica" no endereço, mas o endereço da academia é R. Groelândia, 75, Campo Limpo Paulista/SP. O "Ponto Fitness" do TotalPass na Av. Getúlio Vargas fica em São Lourenço/MG. Nenhuma fonte põe a academia em Cariacica | — |
 
 Cariacica fica com 1 entrada. As menções à academia ao ar livre da orla e dos complexos (descrições dos parques) não foram conferidas e ficam para a revisão da página. Saldo da leva: 5 entradas → 4 mantidas e 1 removida. Taubaté foi o primeiro dia limpo da contagem dos 5.
+
+### 06/11/2026 — leva 33 (rotina, Parte B: São José dos Campos e Aparecida de Goiânia)
+
+**São José dos Campos/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "Jardim Satélite, Aquarius e Center Vale" | confirmada; o detalhe ganhou a quarta unidade aberta, Parque Industrial (R. José Cobra) | páginas oficiais (`opened:true`) |
+| Estúdios de funcional e crossfit — "Aquarius e Jardim Esplanada" | **removida**: genérica | — |
+| Estrutura dos parques — "Parque da Cidade, Santos Dumont e Vicentina Aranha" | **corrigida** para "Equipamentos de ginástica do Parque Santos Dumont", com pista de caminhada, na Vila Adyana. As páginas oficiais do Parque da Cidade e do Vicentina Aranha não citam equipamento de treino; a do Vicentina remete a outro site | páginas de parques da Prefeitura de SJC |
+
+O texto corrido (parques e FAQ) segue citando os três parques como lugar de treino ao ar livre, o que as páginas sustentam em termos gerais (caminhada e exercício). A Bluefit tem duas unidades no sitemap (São José dos Campos e SJC Morumbi), mas a Parte B não acrescenta.
+
+**Aparecida de Goiânia/GO** — página não mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Av. Rio Verde — "Setor dos Afonsos" | confirmada sem mudança | página oficial (`opened:true`) |
+| Smart Fit Buriti Shopping | confirmada sem mudança (Av. Rio Verde, Vila São Tomaz) | página oficial (`opened:true`) |
+
+Saldo da leva: 5 entradas → 4 mantidas (1 ampliada e 1 corrigida) e 1 removida. 108 cidades seguem na fila.

@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A "cidade das águas" tem forte vínculo com esportes ao ar livre ligados à Lagoa Juparanã (remo, SUP e caiaque) e uma cena de corrida de rua organizada.',
   academias:
-    'A oferta reúne academias e estúdios, com a Linha Verde e a Lagoa Juparanã funcionando como espaços naturais de treino.',
+    'A oferta reúne academias e estúdios — entre eles a Smart Fit, na Av. Prefeito Samuel Batista Cruz —, com a Linha Verde e a Lagoa Juparanã funcionando como espaços naturais de treino.',
+
+  academiasProximas: [
+    { nome: 'Smart Fit Linhares', detalhe: 'na Av. Prefeito Samuel Batista Cruz, no bairro Shell' },
+  ],
+  academiasVerificadasEm: '2026-11-06',
 
   destaquesFitness: [
     'Linha Verde com pista sinalizada (marcos de 100 m até 2,2 km) — referência para corredores.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Linhares', url: 'https://www.linhares.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-06',
 };

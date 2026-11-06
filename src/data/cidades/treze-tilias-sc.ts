@@ -65,6 +65,7 @@ export const cidade: Cidade = {
   academias:
     'A oferta é pequena e concentrada na área central, com academias locais de musculação, como a Academia Treze Tílias e a Academia Corpo Ativo, compatível com o porte de um município de menos de 9 mil habitantes.',
 
+  academiasVerificadasEm: '2026-11-06',
   destaquesFitness: [
     'Única colônia de imigração austríaca do Brasil, com IDHM alto (0,795) e PIB per capita bem acima da média catarinense.',
     'Altitude de cerca de 796 m no Meio-Oeste catarinense, com invernos frios e geadas que exigem adaptação no treino.',

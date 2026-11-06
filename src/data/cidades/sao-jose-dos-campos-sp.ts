@@ -70,10 +70,10 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne várias unidades de redes nacionais (Smart Fit) e estúdios de funcional e crossfit, com boa cobertura de plataformas de benefícios, atendendo o público qualificado dos bairros de alta renda.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Jardim Satélite, no Aquarius e no Center Vale' },
-    { nome: 'Estúdios de funcional e crossfit', detalhe: 'concentrados no Aquarius e no Jardim Esplanada' },
-    { nome: 'Estrutura dos parques', detalhe: 'gratuita, no Parque da Cidade, no Santos Dumont e no Vicentina Aranha' },
+    { nome: 'Smart Fit', detalhe: 'quatro unidades: Jardim Satélite, Aquarius, Center Vale e Parque Industrial' },
+    { nome: 'Equipamentos de ginástica do Parque Santos Dumont', detalhe: 'gratuitos, com pista de caminhada, na Vila Adyana' },
   ],
+  academiasVerificadasEm: '2026-11-06',
 
   destaquesFitness: [
     'Múltiplas unidades de redes nacionais e ampla cobertura de planos corporativos.',
@@ -119,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Campos', url: 'https://www.sjc.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-11-06',
   capaArte: {
     src: '/capas-cidade/sao-jose-dos-campos-sp.webp',
     w: 1200,
