@@ -101,6 +101,11 @@ export const cidade: Cidade = {
 
   faqsExtra: [
     {
+      pergunta: 'Tem Smart Fit na Aldeia da Serra?',
+      resposta:
+        'Não. Pelo localizador oficial da rede, não há unidade da Smart Fit na Aldeia da Serra. A mais próxima é a do Parque Shopping Barueri, na Rua General de Divisão Pedro Rodrigues da Silva, no bairro Nova Aldeinha, em Barueri. Dentro da Aldeia, as opções são as academias locais, como a Scelta e a Área Fitness, e as academias dos próprios residenciais.',
+    },
+    {
       pergunta: 'Qual a diferença entre o instrutor da academia e o personal trainer?',
       resposta:
         'O instrutor é funcionário da academia e atende o salão inteiro: monta a ficha de quem chega, tira dúvida e corrige quem pede, dividindo a atenção entre dezenas de alunos ao mesmo tempo. O personal é contratado por você e fica com você a sessão toda — planeja o treino a partir de uma avaliação, corrige cada série, ajusta a carga e muda o plano quando a evolução para. Na Aldeia da Serra, onde boa parte dos treinos acontece na academia do condomínio, que não tem instrutor, o personal costuma ser o único olho profissional no treino.',
@@ -149,5 +154,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
   },
-  atualizadoEm: '2026-10-22',
+  atualizadoEm: '2026-11-06',
 };

@@ -31,3 +31,8 @@ Conferido em 04/11:
   A mais próxima é a do Parque Shopping Barueri, no bairro Nova Aldeinha, o
   que pode explicar o "smart fit aldeia da serra" e o "no shopping".
 - **The One**: não há fonte com endereço. Não entra.
+
+**06/11:** com o ok do Renato, entrou a FAQ "Tem Smart Fit na Aldeia da
+Serra?". A unidade do Parque Shopping Barueri tem `opened:true` na página
+oficial (R. Gen. de Divisão Pedro Rodrigues da Silva, 400, Nova Aldeinha).
+atualizadoEm 2026-11-06.
