@@ -178,4 +178,9 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'nova-iguacu-rj', 'rio-claro-sp', 'guarapari-es', 'belford-roxo-rj', 'araraquara-sp',
   'praia-grande-sp', 'sao-thome-das-letras-mg', 'vicosa-mg', 'atibaia-sp', 'jaragua-do-sul-sc',
   'vitoria-da-conquista-ba', 'braganca-paulista-sp', 'camboriu-sc', 'marilia-sp', 'taubate-sp',
+  // leva 6 — 07/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 5 conferida no ar)
+  'sumare-sp', 'arapongas-pr', 'muriae-mg', 'formosa-go', 'barreiras-ba',
+  'varzea-grande-mt', 'araruama-rj', 'cachoeiras-de-macacu-rj', 'divinopolis-mg', 'dourados-ms',
+  'foz-do-iguacu-pr', 'ibirite-mg', 'ilheus-ba', 'januaria-mg', 'pinhais-pr',
+  'canoas-rs', 'ceilandia-df', 'monte-alto-sp', 'redencao-pa', 'serra-es',
 ]);

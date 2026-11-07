@@ -97,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cachoeiras de Macacu', url: 'https://www.prefeituracachoeiras.com/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300803' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-07',
 };

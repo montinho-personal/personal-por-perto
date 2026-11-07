@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Foz do Iguaçu', url: 'https://www.fozdoiguacu.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-07',
 
   capaArte: {
     src: '/capas-cidade/foz-do-iguacu-pr.webp',

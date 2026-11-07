@@ -110,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Metrô-DF — Companhia do Metropolitano do DF', url: 'https://metro.df.gov.br/' },
     { nome: 'Codeplan — PDAD Ceilândia', url: 'https://www.codeplan.df.gov.br/pdad-ceilandia-2/' },
   ],
-  atualizadoEm: '2026-09-21',
+  atualizadoEm: '2026-11-07',
 };

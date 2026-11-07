@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Serra', url: 'https://www.serra.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-07',
   capaArte: {
     src: '/capas-cidade/serra-es.webp',
     w: 1200,

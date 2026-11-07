@@ -83,5 +83,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Pinhais', url: 'https://cidades.ibge.gov.br/brasil/pr/pinhais/panorama' },
     { nome: 'Prefeitura de Pinhais', url: 'https://pinhais.atende.net/cidadao/pagina/caracteristicas-do-municipio' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
-  ], atualizadoEm: '2026-09-17',
+  ], atualizadoEm: '2026-11-07',
 };

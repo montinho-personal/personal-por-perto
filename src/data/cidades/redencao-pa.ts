@@ -114,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Redenção', url: 'https://redencao.pa.gov.br/' },
     { nome: 'Agência Pará — Usina da Paz Redenção', url: 'https://agenciapara.com.br/pagina/2545/usina-da-paz-redencao' },
   ],
-  atualizadoEm: '2026-09-09',
+  atualizadoEm: '2026-11-07',
 };

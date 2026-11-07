@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Monte Alto', url: 'https://montealto.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-07',
 };
