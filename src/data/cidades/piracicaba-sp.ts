@@ -71,10 +71,11 @@ export const cidade: Cidade = {
     'A oferta reúne a Smart Fit, consolidada como referência local, e academias e estúdios de bairro, com a orla funcionando como grande espaço de treino ao ar livre.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Shopping Piracicaba', detalhe: 'na Avenida Limeira, na Vila Areão' },
-    { nome: 'Smart Fit Av. 31 de Março', detalhe: 'na Paulicéia' },
-    { nome: 'Smart Fit Vila Rezende', detalhe: 'terceira unidade da rede na cidade' },
+    { nome: 'Smart Fit Shopping Piracicaba', detalhe: 'na Avenida Limeira, no Areão' },
+    { nome: 'Smart Fit Av. 31 de Março', detalhe: 'na Av. Trinta e Um de Março, na Paulicéia' },
+    { nome: 'Smart Fit Vila Rezende', detalhe: 'também na Avenida Limeira, no Areão' },
   ],
+  academiasVerificadasEm: '2026-11-08',
 
   destaquesFitness: [
     'Orla do Rio Piracicaba (Rua do Porto e Engenho Central) como principal corredor de treino.',
@@ -104,7 +105,7 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-08',
   capaArte: {
     src: '/capas-cidade/piracicaba-sp.webp',
     w: 1200,

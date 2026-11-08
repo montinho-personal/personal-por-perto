@@ -63,7 +63,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Além da forte tradição musical, Tatuí cultiva uma cultura esportiva de bairro, com futebol, corrida de rua e atividades em praças e no parque ecológico. O calendário do município inclui a corrida de aniversário, que ajuda a movimentar a comunidade de corredores.',
   academias:
-    'A cidade conta com academias de bairro, estúdios de treinamento funcional e personal trainers que atuam em domicílio e condomínios, oferecendo boa cobertura para quem busca acompanhamento individualizado.',
+    'A cidade conta com academias de bairro — várias na Av. Dr. Sales Gomes, no Centro —, estúdios de treinamento funcional e personal trainers que atuam em domicílio e condomínios, oferecendo boa cobertura para quem busca acompanhamento individualizado.',
+
+  academiasProximas: [
+    { nome: 'Academia Go Fit', detalhe: 'na Av. Dr. Sales Gomes, no Centro' },
+    { nome: 'Alpha Kai Tatuí', detalhe: 'na Av. Dr. Sales Gomes, no Centro' },
+    { nome: 'My Box Tatuí', detalhe: 'box de cross training na Av. Dr. Sales Gomes, no Centro' },
+    { nome: 'Mamut Crosstraining', detalhe: 'na Rua Gilberto Mendes, nos Jardins de Tatuí' },
+  ],
+  academiasVerificadasEm: '2026-11-08',
 
   destaquesFitness: [
     'Parque Ecológico Municipal Maria Tuca (mais de 253 mil m²) com pista, lago e prainha.',
@@ -91,5 +99,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Tatuí', url: 'https://portal.tatui.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-08',
 };

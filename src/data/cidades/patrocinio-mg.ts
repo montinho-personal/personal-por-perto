@@ -58,7 +58,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cidade tem cultura ativa de caminhada e corrida de rua nas avenidas centrais, impulsionada também pela presença universitária e pelo clima de altitude, favorável à prática ao ar livre boa parte do ano.',
   academias:
-    'A oferta reúne academias de bairro, estúdios e espaços de treinamento funcional, complementados pela estrutura pública das pistas de caminhada e praças do Centro.',
+    'A oferta reúne academias de bairro — como a FitClub, no Morada Nova, e a Body Fitness, na Av. Dom José André Coimbra —, estúdios e espaços de treinamento funcional, complementados pela estrutura pública das pistas de caminhada e praças do Centro.',
+
+  academiasProximas: [
+    { nome: 'FitClub Academia', detalhe: 'na Alameda Caviúnas, no Morada Nova' },
+    { nome: 'Body Fitness', detalhe: 'na Av. Dom José André Coimbra' },
+  ],
+  academiasVerificadasEm: '2026-11-08',
 
   destaquesFitness: [
     'Pista de caminhada nas avenidas centrais como principal corredor público de treino.',
@@ -86,5 +92,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Patrocínio', url: 'https://www.pmp.patrocinio.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-08',
 };

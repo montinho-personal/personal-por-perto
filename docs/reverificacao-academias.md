@@ -813,3 +813,26 @@ O texto corrido (parques e FAQ) segue citando os três parques como lugar de tre
 | Smart Fit Buriti Shopping | confirmada sem mudança (Av. Rio Verde, Vila São Tomaz) | página oficial (`opened:true`) |
 
 Saldo da leva: 5 entradas → 4 mantidas (1 ampliada e 1 corrigida) e 1 removida. 108 cidades seguem na fila.
+
+### 08/11/2026 — leva 34 (rotina, Parte B: Piracicaba e Nova Iguaçu)
+
+**Piracicaba/SP** — página mudou (detalhes).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Shopping Piracicaba — "Avenida Limeira, Vila Areão" | confirmada; o bairro corrigido para "Areão" (nº 722) | página oficial (`opened:true`) |
+| Smart Fit Av. 31 de Março — "na Paulicéia" | confirmada; o detalhe ganhou a rua (nº 1533) | página oficial (`opened:true`) |
+| Smart Fit Vila Rezende — "terceira unidade da rede na cidade" | **corrigida**: apesar do nome, a unidade fica na Av. Limeira, 300, no Areão | página oficial (`opened:true`) |
+
+A Bluefit tem duas unidades no sitemap (Piracicaba e Piracicaba Vila Rezende), mas a Parte B não acrescenta.
+
+**Nova Iguaçu/RJ** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Nova Iguaçu Centro — "Rua Arcelino Pereira Neves, Centro" | **removida como duplicata**: a rede não tem unidade com esse nome, e esse endereço (nº 351) é o da unidade Via Light | página oficial |
+| Smart Fit Via Light — "junto ao shopping Via Light" | **corrigida**: Rua Arcelino Pereira Neves, Centro ("junto ao shopping" não tinha fonte) | página oficial (`opened:true`) |
+| Smart Fit Alto da Posse — "Av. Henrique Duque Estrada Meyer" | confirmada sem mudança | página oficial (`opened:true`) |
+| Smart Fit Rancho Novo — "Rua Deputado Darcílio Ayres Raunhetti" | confirmada sem mudança (a rede chama a unidade de "Rancho Novo Supermercado Royal") | página oficial (`opened:true`) |
+
+A rede tem outras cinco unidades abertas na cidade (Dom Walmor, Roberto Silveira, Abílio Távora, Mário Guimarães e Cidade da Moda), mas a Parte B não acrescenta. Saldo da leva: 7 entradas → 6 mantidas (3 corrigidas e 2 ampliadas) e 1 removida como duplicata. 106 cidades seguem na fila.
