@@ -72,8 +72,8 @@ export const cidade: Cidade = {
 
   academiasProximas: [
     { nome: 'Smart Fit Canoas', detalhe: 'na Av. Farroupilha, no Marechal Rondon' },
-    { nome: 'Smart Fit ParkShopping Canoas', detalhe: 'dentro do ParkShopping Canoas' },
   ],
+  academiasVerificadasEm: '2026-11-09',
 
   destaquesFitness: [
     'Parque Getúlio Vargas: pista de atletismo e academia ao ar livre de referência.',
@@ -101,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Canoas', url: 'https://www.canoas.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-09',
 
 
   faqsExtra: [

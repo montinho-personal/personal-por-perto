@@ -68,7 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Há forte investimento público em infraestrutura de lazer (dezenas de academias ao ar livre e pistas em todos os setores) e um calendário de corridas de rua, com a cidade integrando o circuito de MT.',
   academias:
-    'A oferta reúne redes, boxes de crossfit e academias, com público jovem de alta renda do agro, complementada por uma das maiores estruturas públicas de pistas e academias ao ar livre do estado.',
+    'A oferta reúne redes — como a Smart Fit, na Av. Primavera —, boxes de crossfit e academias, com público jovem de alta renda do agro, complementada por uma das maiores estruturas públicas de pistas e academias ao ar livre do estado.',
+
+  academiasProximas: [
+    { nome: 'Smart Fit Primavera do Leste', detalhe: 'na Av. Primavera, no Primavera II' },
+    { nome: 'Academia Malhafitness', detalhe: 'na Av. Florianópolis, no São Cristóvão' },
+  ],
+  academiasVerificadasEm: '2026-11-09',
 
   destaquesFitness: [
     'Altíssima renda per capita do agro (soja, algodão e milho) e público jovem.',
@@ -96,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Primavera do Leste', url: 'https://www.primaveradoleste.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-09',
 };

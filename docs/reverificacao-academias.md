@@ -836,3 +836,24 @@ A Bluefit tem duas unidades no sitemap (Piracicaba e Piracicaba Vila Rezende), m
 | Smart Fit Rancho Novo — "Rua Deputado Darcílio Ayres Raunhetti" | confirmada sem mudança (a rede chama a unidade de "Rancho Novo Supermercado Royal") | página oficial (`opened:true`) |
 
 A rede tem outras cinco unidades abertas na cidade (Dom Walmor, Roberto Silveira, Abílio Távora, Mário Guimarães e Cidade da Moda), mas a Parte B não acrescenta. Saldo da leva: 7 entradas → 6 mantidas (3 corrigidas e 2 ampliadas) e 1 removida como duplicata. 106 cidades seguem na fila.
+
+### 09/11/2026 — leva 35 (rotina, Parte B: Canoas e Montes Claros)
+
+**Canoas/RS** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Canoas — "Av. Farroupilha, Marechal Rondon" | confirmada sem mudança | página oficial (nº 4545, `opened:true`) |
+| Smart Fit ParkShopping Canoas — "dentro do ParkShopping Canoas" | **removida**: o localizador oficial de Canoas lista só "Canoas" e "Av. Boqueirão", e os caminhos prováveis da página de unidade não existem | — |
+
+A unidade Av. Boqueirão (Estância Velha) está aberta, mas a Parte B não acrescenta.
+
+**Montes Claros/MG** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Montes Claros — "Av. Donato Quintino, junto ao Montes Claros Shopping" | **corrigida**: Av. Donato Quintino, 90, Cidade Nova. "Junto ao shopping" não tinha fonte | página oficial (`opened:true`) |
+| Sport Fitness — "Av. Deputado Plínio Ribeiro" | **removida**: só o Wellhub tem o endereço (nº 1333, Monte Carmelo); o TotalPass não tem página da unidade | — |
+| Full Fit Academia — "Rua Pedra Azul, Antônio Pimenta" | **removida**: só o TotalPass tem ("FullFit Academia", nº 28); o Wellhub não tem. Volta com uma segunda fonte | — |
+
+Montes Claros fica com 1 entrada. Saldo da leva: 5 entradas → 2 mantidas (1 corrigida) e 3 removidas. 104 cidades seguem na fila.

@@ -71,10 +71,9 @@ export const cidade: Cidade = {
     'A oferta acompanha o porte da cidade e a classe média consolidada, com academias, crossfit e estúdios, complementada pela rede de parques municipais (Milton Prates, Sagarana e Guimarães Rosa).',
 
   academiasProximas: [
-    { nome: 'Smart Fit Montes Claros', detalhe: 'na Av. Donato Quintino, junto ao Montes Claros Shopping' },
-    { nome: 'Sport Fitness', detalhe: 'na Av. Deputado Plínio Ribeiro: musculação, lutas e aulas' },
-    { nome: 'Full Fit Academia', detalhe: 'academia local na Rua Pedra Azul, no Antônio Pimenta' },
+    { nome: 'Smart Fit Montes Claros', detalhe: 'na Av. Donato Quintino, no Cidade Nova' },
   ],
+  academiasVerificadasEm: '2026-11-09',
 
   destaquesFitness: [
     'População grande (mais de 400 mil) e classe média ativa — base sólida de clientes.',
@@ -102,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Montes Claros', url: 'https://www.montesclaros.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-09',
   capaArte: {
     src: '/capas-cidade/montes-claros-mg.webp',
     w: 1200,

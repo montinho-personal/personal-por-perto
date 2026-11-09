@@ -68,7 +68,12 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'A cidade tem cultura esportiva forte para seu tamanho, com tradição em jogos regionais, futebol e corrida de rua. Os espaços públicos de esporte de bairro, como o Parque do Povo, democratizam o acesso à atividade física, enquanto o perfil industrial e de renda mais alta sustenta procura por treino orientado.',
   academias:
-    'A oferta reúne academias locais e estúdios de musculação e funcional, com planos corporativos viabilizados pelas grandes indústrias da cidade. É um mercado de cidade média, com menos redes nacionais que Bauru, mas demanda constante.',
+    'A oferta reúne academias locais e estúdios de musculação e funcional — como a Gaviões 24h, na Av. Nove de Julho —, com planos corporativos viabilizados pelas grandes indústrias da cidade. É um mercado de cidade média, com menos redes nacionais que Bauru, mas demanda constante.',
+
+  academiasProximas: [
+    { nome: 'Academia Gaviões 24h', detalhe: 'na Av. Nove de Julho' },
+  ],
+  academiasVerificadasEm: '2026-11-09',
 
   destaquesFitness: [
     'Polo de papel e celulose (Lwart) e agroindústria da cana (Zilor) sustentando público com hábitos de bem-estar.',
@@ -99,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Lençóis Paulista', url: 'https://www.lencoispaulista.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-09',
 };
