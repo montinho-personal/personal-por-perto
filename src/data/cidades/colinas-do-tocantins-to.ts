@@ -65,6 +65,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o porte de uma cidade média do Norte, concentrada no Centro e nos setores mais movimentados. O treino ao ar livre nas praças complementa essa estrutura e amplia o acesso à atividade física.',
 
+  academiasVerificadasEm: '2026-11-10',
+
   destaquesFitness: [
     'Corridas de rua organizadas pela prefeitura, como a Corrida de Aniversário (7 km) e a Sou + Fit.',
     'Praça 7 de Setembro como principal ponto de concentração esportiva da cidade.',

@@ -57,10 +57,10 @@ export const cidade: Cidade = {
     'A oferta é densa para o tamanho da região: redes e estúdios boutique concentrados na Avenida das Araucárias e nas quadras centrais, somados às academias internas dos condomínios verticais, que ampliam o espaço de atuação do personal trainer.',
 
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'seis unidades espalhadas pelo bairro, das Pitangueiras às Castanheiras' },
-    { nome: 'Estúdios e boxes verticais', detalhe: 'funcional, cross e pilates na densidade dos eixos comerciais' },
-    { nome: 'Parque Ecológico de Águas Claras', detalhe: 'pista de corrida e estrutura pública gratuita' },
+    { nome: 'Smart Fit', detalhe: 'sete unidades no bairro, entre elas as do Manhattan Shopping, do DF Plaza Shopping e da Av. das Castanheiras' },
+    { nome: 'Parque Ecológico de Águas Claras', detalhe: 'gratuito, com trilha pavimentada de 700 m ao redor da lagoa' },
   ],
+  academiasVerificadasEm: '2026-11-10',
 
   destaquesFitness: [
     'Bairro vertical e adensado: muitos prédios com academia própria, ideal para atendimento no condomínio.',
@@ -86,7 +86,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Águas Claras?',
       resposta:
-        'O bairro mais vertical do DF tem treino em três camadas: o Parque Ecológico — pulmão local com pista de corrida —, a densidade rara de academias (só de Smart Fit são seis unidades, mais estúdios e boxes nos eixos comerciais) e as academias dos próprios condomínios, onde o personal atende sem o aluno sair do prédio: o formato que mais cresce entre executivos e famílias do bairro.',
+        'O bairro mais vertical do DF tem treino em três camadas: o Parque Ecológico — pulmão local com pista de corrida —, a densidade rara de academias (só de Smart Fit são sete unidades, mais estúdios e boxes nos eixos comerciais) e as academias dos próprios condomínios, onde o personal atende sem o aluno sair do prédio: o formato que mais cresce entre executivos e famílias do bairro.',
     },
     {
       pergunta: 'Como treinar na seca de Águas Claras?',
@@ -118,5 +118,5 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-10',
 };

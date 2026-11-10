@@ -71,11 +71,12 @@ export const cidade: Cidade = {
     'A oferta reúne grandes redes, boxes de crossfit e estúdios, com cobertura de planos corporativos, complementada pela estrutura pública do Parque das Acácias.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Uberaba', detalhe: 'na Av. Santos Dumont' },
+    { nome: 'Smart Fit Uberaba', detalhe: 'na Av. Santos Dumont, no bairro Santos Dumont' },
     { nome: 'Smart Fit Mata do Ipê', detalhe: 'na Av. Guilherme Ferreira, no São Benedito' },
     { nome: 'Smart Fit Av. N. S. do Desterro', detalhe: 'no Jardim Esplanada' },
-    { nome: 'Smart Fit Shopping Uberaba', detalhe: 'no Uberaba Shopping' },
+    { nome: 'Smart Fit Shopping Uberaba', detalhe: 'na Av. Santa Beatriz da Silva, no São Benedito' },
   ],
+  academiasVerificadasEm: '2026-11-10',
 
   destaquesFitness: [
     'Parque das Acácias como principal hub público de treino.',
@@ -103,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Uberaba', url: 'https://www.uberaba.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-10',
 
   capaArte: {
     src: '/capas-cidade/uberaba-mg.webp',

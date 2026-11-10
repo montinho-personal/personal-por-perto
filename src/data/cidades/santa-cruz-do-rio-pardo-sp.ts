@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva mistura o calendário de provas de corrida de rua, o uso das praças e do entorno do rio Pardo para caminhada e os Jogos Santa-cruzenses no mês de aniversário da cidade, em uma rotina típica do interior paulista.',
   academias:
     'A oferta é composta principalmente por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média do interior.',
+  academiasProximas: [
+    { nome: 'Onefit Academia', detalhe: 'na Av. Carlos Rios' },
+  ],
+  academiasVerificadasEm: '2026-11-10',
 
   destaquesFitness: [
     'Maior beneficiadora de arroz do estado de São Paulo, sede de um polo cerealista no Médio Paranapanema.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Cruz do Rio Pardo', url: 'https://www.santacruzdoriopardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-10',
 };

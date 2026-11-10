@@ -857,3 +857,25 @@ A unidade Av. Boqueirão (Estância Velha) está aberta, mas a Parte B não acre
 | Full Fit Academia — "Rua Pedra Azul, Antônio Pimenta" | **removida**: só o TotalPass tem ("FullFit Academia", nº 28); o Wellhub não tem. Volta com uma segunda fonte | — |
 
 Montes Claros fica com 1 entrada. Saldo da leva: 5 entradas → 2 mantidas (1 corrigida) e 3 removidas. 104 cidades seguem na fila.
+
+### 10/11/2026 — leva 36 (rotina, Parte B: Águas Claras e Uberaba)
+
+**Águas Claras/DF** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "seis unidades, das Pitangueiras às Castanheiras" | **corrigida**: são sete unidades abertas no bairro (CEP 719xx no localizador, que lista o DF como "Brasília"), entre elas Manhattan Shopping, DF Plaza Shopping e Av. das Castanheiras. A FAQ que dizia "seis" também foi corrigida | página oficial (`opened:true`) |
+| Estúdios e boxes verticais | **removida**: entrada genérica, sem nome de academia nem fonte | — |
+| Parque Ecológico de Águas Claras — "pista de corrida" | **corrigida**: gratuito, com trilha pavimentada de 700 m ao redor da lagoa | ibram.df.gov.br |
+
+O destaque "circuito de cerca de 6,5 km" segue sem fonte. Fica fora do escopo da leva, que cuida só de academias, mas é candidato à próxima revisão do texto.
+
+**Uberaba/MG** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Uberaba — "Av. Santos Dumont" | confirmada, com o bairro (Santos Dumont) acrescentado | página oficial (`opened:true`) |
+| Smart Fit Shopping Uberaba — "no Uberaba Shopping" | **corrigida**: Av. Santa Beatriz da Silva, São Benedito ("no shopping" não tinha fonte) | página oficial (`opened:true`) |
+| demais 2 unidades Smart Fit | confirmadas sem mudança | página oficial (`opened:true`) |
+
+Saldo da leva: 7 entradas → 6 mantidas (3 corrigidas) e 1 removida. 102 cidades seguem na fila.
