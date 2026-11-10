@@ -696,13 +696,13 @@ macros, que é ferramenta nova e passa pela análise de lote antes.
 
 | Artigo | slug | status |
 |---|---|---|
-| Personal trainer para diabéticos | `personal-trainer-para-diabeticos` | ⏳ em preparo desde 09/11 · aguarda prints · `docs/personal-trainer-para-diabeticos.md` |
+| Personal trainer para diabéticos | `personal-trainer-para-diabeticos` | ✅ 2026-11-10 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-para-diabeticos.md` |
 | Personal trainer no pós-parto | `personal-trainer-pos-parto` | |
 | Personal trainer para pessoas com deficiência | `personal-trainer-para-pcd` | |
 | Personal trainer para autistas | `personal-trainer-para-autistas` | |
 | Personal trainer para quem viaja a trabalho | `personal-trainer-para-quem-viaja` | |
 | Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | ✅ 2026-11-01 · prints do Renato · `docs/personal-trainer-em-dupla.md` |
-| Personal trainer e nutricionista juntos | `personal-trainer-e-nutricionista` | ⏳ em preparo desde 09/11 · aguarda prints · `docs/personal-trainer-e-nutricionista.md` |
+| Personal trainer e nutricionista juntos | `personal-trainer-e-nutricionista` | ✅ 2026-11-10 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-e-nutricionista.md` |
 | Como trocar de personal trainer | `trocar-de-personal-trainer` | |
 | Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | |
 | Personal trainer para obesidade | `personal-trainer-para-obesidade` | ⚠️ |

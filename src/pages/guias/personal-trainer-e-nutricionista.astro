@@ -1,0 +1,250 @@
+---
+/**
+ * Personal trainer e nutricionista juntos — quem faz o quê, se o personal
+ * pode passar dieta e como os dois conversam.
+ *
+ * Publicado em 10/11/2026 ANTES dos prints do Google, a pedido do Renato.
+ * Revisar título, H1, seções e FAQs quando os prints chegarem; registro em
+ * docs/personal-trainer-e-nutricionista.md.
+ *
+ * Fontes: Lei 8.234/1991, arts. 3º e 4º (texto da Câmara, codteor 665690);
+ * Donnelly 2009 (ACSM) e Aragon 2026 (ISSN), já usados em
+ * /emagrecimento/emagrecer-sem-academia/. Regra do CLAUDE.md: nenhuma
+ * menção a conselho de Educação Física.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/emagrecimento/proteina-e-saciedade/', titulo: 'Proteína dá saciedade?', descricao: 'O que os estudos mostram e quanto comer por refeição.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/emagrecer-sem-academia/', titulo: 'Como emagrecer sem academia', descricao: 'Comida, movimento e treino em casa.', tipo: 'Emagrecimento' },
+  { url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento', descricao: 'Como escolher e o que esperar.', tipo: 'Guia' },
+];
+
+const path = '/guias/personal-trainer-e-nutricionista';
+const atualizadoEm = '2026-11-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer e nutricionista', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre personal trainer e nutricionista';
+const faqs = [
+  {
+    pergunta: 'Personal trainer pode passar dieta?',
+    resposta:
+      'Não. Pela Lei 8.234/1991, que regulamenta a profissão de nutricionista, a assistência e a educação nutricional a pessoas sadias ou doentes e a prescrição de dietas para enfermos são atividades privativas do nutricionista. O personal pode falar de hábitos gerais e de como a alimentação se liga ao treino, mas o plano alimentar é do nutricionista.',
+  },
+  {
+    pergunta: 'Personal pode indicar suplemento?',
+    resposta:
+      'A Lei 8.234/1991 atribui ao nutricionista a prescrição de suplementos nutricionais, mas esse item não está entre as atividades privativas. Na prática, a dose e a necessidade do suplemento devem passar pelo nutricionista ou pelo médico, principalmente para quem tem alguma doença ou usa remédio.',
+  },
+  {
+    pergunta: 'O que é melhor: nutricionista ou personal trainer?',
+    resposta:
+      'Depende do que falta. Para a balança, a comida pesa mais: no posicionamento do American College of Sports Medicine, o exercício sozinho dá perda de peso modesta. Para manter o peso perdido e preservar músculo, o treino pesa mais. Quem pode ter os dois tende a ter o melhor dos dois mundos; quem precisa escolher, escolhe pelo ponto mais fraco da própria rotina.',
+  },
+  {
+    pergunta: 'Preciso de nutricionista para ganhar massa muscular?',
+    resposta:
+      'Não é obrigatório, mas ajuda. Ganhar massa depende de treino de força bem feito e de proteína suficiente no dia. A calculadora de proteína do portal dá a referência; o nutricionista ajusta para a sua rotina, o seu gosto e a sua saúde.',
+  },
+  {
+    pergunta: 'Como o personal e o nutricionista trabalham juntos?',
+    resposta:
+      'Cada um no seu campo, conversando. O nutricionista define o plano alimentar; o personal define o treino e conta como está o desempenho, o cansaço e a evolução. Com a sua autorização, os dois trocam informação — por exemplo, se o treino ficou mais intenso e a fome subiu, ou se a dieta ficou restrita demais para o volume de treino.',
+  },
+];
+
+/* 57 caracteres. */
+const title = 'Personal Trainer e Nutricionista: Quem Faz o Quê e Juntos';
+/* 152 caracteres. */
+const description =
+  'Personal trainer pode passar dieta? O que diz a lei, o que cada profissional faz, quando vale ter os dois e como eles trabalham juntos no seu resultado.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal trainer e nutricionista: quem faz o quê e como trabalham juntos</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O personal cuida do treino; o nutricionista, da alimentação. Os dois
+      campos se encontram o tempo todo — proteína, fome, energia para treinar
+      —, mas a linha entre eles está na lei: <strong>dieta é com o
+      nutricionista</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>Personal trainer pode passar dieta?</h2>
+      <p>
+        Não. A <strong>Lei 8.234/1991</strong>, que regulamenta a profissão
+        de nutricionista, lista no art. 3º as atividades privativas dele.
+        Entre elas estão a assistência e a educação nutricional a pessoas
+        sadias ou doentes e a prescrição, o planejamento e a avaliação de
+        dietas para enfermos.
+      </p>
+      <p>
+        O personal pode — e deve — falar de hábitos gerais: comer proteína
+        nas refeições, não treinar em jejum longo se isso derruba o
+        desempenho, beber água. O que ele não faz é montar cardápio, calcular
+        dieta ou prescrever plano alimentar.
+      </p>
+      <h3>E o suplemento?</h3>
+      <p>
+        O art. 4º da mesma lei atribui ao nutricionista a prescrição de
+        suplementos nutricionais, mas fora da lista de atividades
+        privativas. Mesmo assim, dose e necessidade devem passar pelo
+        nutricionista ou pelo médico, ainda mais para quem tem doença ou usa
+        remédio.
+      </p>
+
+      <h2>O que cada um faz</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Personal trainer</th><th>Nutricionista</th></tr></thead>
+          <tbody>
+            <tr><td>Avaliação física e do movimento</td><td>Avaliação nutricional</td></tr>
+            <tr><td>Monta e progride o treino</td><td>Monta o plano alimentar</td></tr>
+            <tr><td>Corrige a execução e controla a intensidade</td><td>Ajusta calorias, proteína e horários das refeições</td></tr>
+            <tr><td>Acompanha força, resistência e medidas</td><td>Acompanha hábitos, exames ligados à alimentação e composição corporal</td></tr>
+            <tr><td>Fala de hábitos gerais</td><td>Prescreve dieta e orienta suplemento</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Qual pesa mais no resultado?</h2>
+      <p>
+        Para a balança, a comida. O posicionamento do American College of
+        Sports Medicine diz que de 150 a 250 minutos de atividade moderada por
+        semana dão perda de peso modesta, e que o exercício melhora o
+        resultado quando vem junto com uma restrição moderada da dieta. Para
+        o que fica, o treino: o posicionamento de 2026 da Sociedade
+        Internacional de Nutrição Esportiva chama o treino de força e a
+        proteína suficiente de indispensáveis para não perder massa magra na
+        dieta.
+      </p>
+      <p>
+        Por isso a pergunta "nutricionista ou personal?" costuma ter resposta
+        dupla. Quem precisa escolher um só deve escolher pelo ponto mais
+        fraco da própria rotina — a comida que desanda ou o treino que não
+        acontece.
+      </p>
+
+      <h2>Onde os dois se encontram</h2>
+      <p>
+        A proteína é o melhor exemplo. O total do dia depende do peso, do
+        objetivo e do treino; o nutricionista transforma esse número em
+        comida de verdade. O artigo sobre <a href="/emagrecimento/proteina-e-saciedade/">proteína
+        e saciedade</a> mostra por que ela ajuda na dieta.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-proteina"
+        texto="A meta de proteína é o ponto em que treino e dieta se encontram. A calculadora dá a referência do dia para o seu peso e objetivo — o número que você leva para a conversa com o nutricionista."
+        acao="Calcular minha proteína"
+      />
+
+      <h2>Como os dois conversam</h2>
+      <ul>
+        <li><strong>Com a sua autorização</strong>, os dois trocam informação sobre o que interessa ao outro.</li>
+        <li>O personal conta se o desempenho caiu, se o cansaço aumentou ou se o volume de treino mudou.</li>
+        <li>O nutricionista conta se o plano ficou mais restrito ou se mudou o horário das refeições.</li>
+        <li>Quem tem doença — diabetes, pressão alta, doença nos rins — inclui o médico na conversa.</li>
+      </ul>
+      <p>
+        Para quem tem diabetes, o guia de <a href="/guias/personal-trainer-para-diabeticos/">personal
+        trainer para diabéticos</a> mostra como fica a divisão com o médico.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://www.camara.leg.br/proposicoesWeb/prop_mostrarintegra?codteor=665690" target="_blank" rel="noopener noreferrer">Lei nº 8.234, de 17 de setembro de 1991 — regulamenta a profissão de nutricionista (arts. 3º e 4º; texto anexado pela Câmara dos Deputados)</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/42867412/" target="_blank" rel="noopener noreferrer">Aragon AA, Campbell BI, Schoenfeld BJ, et al. International Society of Sports Nutrition position stand: diets for body weight reduction. Journal of the International Society of Sports Nutrition, 2026</a></li>
+        <li>Conferidas em 10/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

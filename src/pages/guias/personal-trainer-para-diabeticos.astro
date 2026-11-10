@@ -1,0 +1,271 @@
+---
+/**
+ * Personal trainer para diabéticos — o que o treino faz pela glicemia, o
+ * que o personal ajusta e o que é decisão do médico.
+ *
+ * Publicado em 10/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode publicar e depois te mando print de todos"). Quando os prints
+ * chegarem, título, H1, seções e FAQs são revistos contra eles; registro em
+ * docs/personal-trainer-para-diabeticos.md.
+ *
+ * Fontes conferidas em 09–10/11/2026: Colberg 2010 (ACSM/ADA, texto
+ * completo) e Umpierre 2011 (JAMA, resumo). Fora: metas de glicemia antes do
+ * treino (dependem do remédio e são do médico), qualquer promessa de "curar"
+ * ou "reverter" diabetes.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/musculacao/treino-de-forca/', titulo: 'Treino de força', descricao: 'O que é, por que importa e como começar.', tipo: 'Musculação' },
+  { url: '/emagrecimento/caminhada-emagrece/', titulo: 'Caminhada emagrece?', descricao: 'Quanto a caminhada rende de verdade.', tipo: 'Emagrecimento' },
+  { url: '/guias/personal-trainer-e-nutricionista/', titulo: 'Personal trainer e nutricionista juntos', descricao: 'Quem faz o quê, e como os dois conversam.', tipo: 'Guia' },
+];
+
+const path = '/guias/personal-trainer-para-diabeticos';
+const atualizadoEm = '2026-11-10';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para diabéticos', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre personal trainer para diabéticos';
+const faqs = [
+  {
+    pergunta: 'Diabético pode fazer academia?',
+    resposta:
+      'Pode, e deve. O posicionamento conjunto do American College of Sports Medicine e da American Diabetes Association diz que o exercício regular melhora o controle da glicemia no diabetes tipo 2. Antes de começar um treino novo e mais intenso, a recomendação é passar por avaliação médica, que olha glicemia, remédios e complicações.',
+  },
+  {
+    pergunta: 'Qual o melhor exercício para diabético?',
+    resposta:
+      'A combinação de aeróbico e treino de força. O mesmo posicionamento recomenda pelo menos 150 minutos por semana de aeróbico moderado a vigoroso, sem passar mais de dois dias seguidos sem treinar, e treino de força de duas a três vezes por semana. Numa meta-análise de 2011, os dois tipos de treino supervisionado baixaram a hemoglobina glicada.',
+  },
+  {
+    pergunta: 'Exercício baixa a glicose?',
+    resposta:
+      'Baixa, na maioria das vezes. O músculo em contração capta glicose por um caminho que não depende da insulina. Exercício muito intenso pode subir a glicemia por pouco tempo. Quanto e quando ela cai depende do remédio — por isso quem usa insulina deve combinar com o médico como medir e ajustar.',
+  },
+  {
+    pergunta: 'Quem usa insulina pode treinar?',
+    resposta:
+      'Pode, com mais cuidado. O risco de hipoglicemia no exercício é baixo sem insulina e sem remédios que aumentam a secreção dela, segundo o posicionamento de 2010; com eles, o risco existe. O médico define como medir a glicemia e o que fazer com o remédio e a comida nos dias de treino. O personal segue esse plano e para a sessão diante de sinais de hipoglicemia.',
+  },
+  {
+    pergunta: 'O que o personal faz no treino de quem tem diabetes?',
+    resposta:
+      'Monta e progride o treino de força e o aeróbico, controla a intensidade, observa os pés e os sinais de hipoglicemia e mantém a frequência — que é onde muita gente falha. Não muda remédio, não define meta de glicemia e não prescreve dieta: isso é do médico e do nutricionista.',
+  },
+  {
+    pergunta: 'Diabético com problema nos pés pode treinar?',
+    resposta:
+      'Quem tem neuropatia periférica sem ferida aberta pode fazer exercício moderado com apoio nos pés, segundo o posicionamento de 2010, com inspeção diária dos pés e calçado adequado. Ferida ou úlcera é caso do médico antes de qualquer treino.',
+  },
+  {
+    pergunta: 'Exercício cura diabetes?',
+    resposta:
+      'Não. O exercício ajuda a controlar a glicemia e, em pessoas com alto risco, programas de atividade física com perda de peso reduziram o risco de desenvolver diabetes tipo 2 em até 58%. Quem já tem o diagnóstico segue com o acompanhamento médico.',
+  },
+];
+
+/* 60 caracteres. */
+const title = 'Personal Trainer para Diabéticos: Como Treinar com Segurança';
+/* 153 caracteres. */
+const description =
+  'Diabético pode fazer academia? O que o treino faz pela glicemia, quanto treinar, os cuidados com insulina, pés e olhos, e o que o personal faz e não faz.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal trainer para diabéticos: como treinar com segurança</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Treinar faz parte do tratamento do diabetes: o exercício regular
+      melhora o controle da glicemia. Um personal ajuda a fazer isso com
+      constância e segurança — e trabalha junto com o médico, que é quem
+      decide remédio, metas e liberação.
+    </p>
+
+    <div class="prose">
+      <h2>O que o exercício faz pela glicemia</h2>
+      <p>
+        O posicionamento conjunto do American College of Sports Medicine e da
+        American Diabetes Association, de 2010, resume o que a pesquisa
+        mostra: no diabetes tipo 2, a atividade física regular
+        <strong>melhora o controle da glicemia</strong>, e ainda os lipídios,
+        a pressão e a qualidade de vida. O músculo em contração capta glicose
+        por um caminho que não depende da insulina.
+      </p>
+      <p>
+        Uma meta-análise de 2011, com 47 estudos e mais de 8 mil pessoas com
+        diabetes tipo 2, mediu o efeito na hemoglobina glicada (o exame que
+        mostra a média da glicemia dos últimos meses). O treino estruturado
+        baixou o índice em <strong>0,67 ponto percentual</strong> em relação
+        a quem não treinou. Aeróbico e força, cada um, também baixaram.
+      </p>
+
+      <h2>Quanto treinar</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>O quê</th><th>Quanto</th><th>Observação</th></tr></thead>
+          <tbody>
+            <tr><td>Aeróbico (caminhada, bike, natação)</td><td>Pelo menos 150 min por semana, em 3 dias ou mais</td><td>Não passar mais de 2 dias seguidos sem treinar</td></tr>
+            <tr><td>Treino de força</td><td>2 a 3 vezes por semana</td><td>Moderado a vigoroso, com progressão</td></tr>
+            <tr><td>Movimento do dia a dia</td><td>Todo dia</td><td>Andar mais e ficar menos tempo sentado</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        É a recomendação do posicionamento de 2010, que também aponta
+        benefício extra em combinar aeróbico e força. O ponto de partida de
+        cada um, porém, é definido com o médico.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-passos"
+        texto="O movimento fora do treino também conta. A calculadora mostra quantos passos você já dá e quanto falta para a sua meta do dia."
+        acao="Calcular meus passos"
+      />
+
+      <h2>Os cuidados que mudam o treino</h2>
+      <h3>Insulina e hipoglicemia</h3>
+      <p>
+        O risco de hipoglicemia no exercício é <strong>baixo sem insulina e
+        sem remédios que aumentam a secreção dela</strong>, segundo o
+        posicionamento de 2010. Para quem usa esses remédios, o risco existe,
+        e o plano de medir a glicemia e ajustar remédio e comida nos dias de
+        treino é do médico. Exercício muito intenso também pode subir a
+        glicemia por pouco tempo.
+      </p>
+      <h3>Pés</h3>
+      <p>
+        Com neuropatia periférica e sem ferida, o exercício moderado com
+        apoio nos pés é permitido, com inspeção diária dos pés e calçado
+        adequado. Ferida aberta vai primeiro para o médico.
+      </p>
+      <h3>Olhos, coração e nervos</h3>
+      <p>
+        Quem tem retinopatia proliferativa sem controle deve evitar esforço
+        que aumente muito a pressão nos olhos, como cargas muito pesadas. Com
+        neuropatia autonômica, que afeta o controle do coração, a orientação
+        é passar por avaliação médica antes de começar.
+      </p>
+
+      <h2>O que o personal faz — e o que não faz</h2>
+      <ul>
+        <li><strong>Faz:</strong> monta e progride a força e o aeróbico, controla a intensidade, observa os sinais de hipoglicemia, confere os pés e sustenta a frequência.</li>
+        <li><strong>Não faz:</strong> mudar remédio ou insulina, definir meta de glicemia, interpretar exame ou prescrever dieta. Isso é do médico e do <a href="/guias/personal-trainer-e-nutricionista/">nutricionista</a>.</li>
+      </ul>
+      <p>
+        Um bom profissional pergunta antes do primeiro treino: que remédio
+        você usa, se já teve hipoglicemia, se tem alguma complicação e se o
+        médico liberou. Se ele não pergunta, desconfie.
+      </p>
+
+      <h2>Prevenção: quem ainda não tem diabetes</h2>
+      <p>
+        Em pessoas com alto risco, programas que combinaram atividade física e
+        perda de peso modesta reduziram o risco de desenvolver diabetes tipo 2
+        em até <strong>58%</strong>, segundo o posicionamento de 2010. Para
+        quem está com a glicemia no limite, o treino é uma das ferramentas
+        mais fortes que existem.
+      </p>
+
+      <h2>Antes de começar</h2>
+      <p>
+        Este guia não substitui o acompanhamento médico. Antes de um programa
+        de treino novo, converse com o médico que trata o seu diabetes. Dor,
+        tontura, falta de ar ou sinais de hipoglicemia durante o exercício são
+        motivo para parar e procurar atendimento.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21115758/" target="_blank" rel="noopener noreferrer">Colberg SR, Sigal RJ, Fernhall B, et al. Exercise and type 2 diabetes: the American College of Sports Medicine and the American Diabetes Association: joint position statement. Diabetes Care, 2010</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21540423/" target="_blank" rel="noopener noreferrer">Umpierre D, Ribeiro PA, Kramer CK, et al. Physical activity advice only or structured exercise training and association with HbA1c levels in type 2 diabetes: a systematic review and meta-analysis. JAMA, 2011</a></li>
+        <li>Conferidas em 10/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

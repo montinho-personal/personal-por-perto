@@ -2,7 +2,7 @@
 
 Item do bloco de guias da pauta. Pedido do Renato em 09/11/2026.
 
-**Estado: em preparo, aguardando os prints.**
+**Estado: publicado em 10/11/2026 em `/guias/personal-trainer-e-nutricionista/`, ANTES dos prints**, a pedido do Renato ("pode publicar e depois te mando print de todos"). Quando os prints chegarem, título, H1, seções e FAQs são revistos contra eles e o resultado fica registrado aqui.
 
 ## Prints pedidos ao Renato (09/11)
 

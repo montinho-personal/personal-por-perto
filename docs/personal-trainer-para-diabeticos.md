@@ -3,7 +3,7 @@
 Item do bloco de guias da pauta. Pedido do Renato em 09/11/2026 ("criar
 próximos 2 artigos").
 
-**Estado: em preparo, aguardando os prints.** Pela regra dos prints do
+**Estado: publicado em 10/11/2026 em `/guias/personal-trainer-para-diabeticos/`, ANTES dos prints**, a pedido do Renato ("pode publicar e depois te mando print de todos"). Quando os prints chegarem, título, H1, seções e FAQs são revistos contra eles e o resultado fica registrado aqui. Pela regra dos prints do
 CLAUDE.md, título, H1, seções e FAQs esperam por eles. Abaixo está o que já foi
 adiantado: as fontes e o método.
 

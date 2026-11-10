@@ -215,3 +215,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 01/11 — `/emagrecimento/proteina-e-saciedade/` — artigo novo: bloco calculadora-de-proteina em "quanta proteína por refeição" — "quanto isso dá no meu dia?"
 - 01/11 — `/emagrecimento/emagrecer-sem-academia/` — artigo novo: bloco calculadora-de-emagrecimento em "quanto tempo leva" — "em quanto tempo eu chego lá?"
 - 01/11 — `/guias/personal-trainer-em-dupla/` — artigo novo: bloco preco depois do exemplo de Barueri e Alphaville — "e na minha cidade, quanto dá a conta?"
+- 10/11 — `/guias/personal-trainer-para-diabeticos/` — artigo novo: bloco calculadora-de-passos depois de "quanto treinar" — "e o movimento fora do treino?"
+- 10/11 — `/guias/personal-trainer-e-nutricionista/` — artigo novo: bloco calculadora-de-proteina em "onde os dois se encontram" — "qual é a minha meta de proteína?"

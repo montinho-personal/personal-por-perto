@@ -128,6 +128,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-online-funciona/', titulo: 'Personal trainer online funciona?' },
   { categoria: 'Guias', url: '/guias/quantas-vezes-por-semana-personal-trainer/', titulo: 'Quantas vezes por semana treinar com personal trainer' },
   { categoria: 'Guias', url: '/guias/personal-trainer-em-dupla/', titulo: 'Personal trainer em dupla: como funciona, quanto custa e quando vale' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-diabeticos/', titulo: 'Personal trainer para diabéticos: como treinar com segurança' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-e-nutricionista/', titulo: 'Personal trainer e nutricionista: quem faz o quê e como trabalham juntos' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-iniciantes/', titulo: 'Personal trainer para iniciantes: vale a pena contratar?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },
