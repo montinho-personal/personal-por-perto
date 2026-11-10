@@ -101,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ananindeua', url: 'https://www.ananindeua.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-10',
   capaArte: {
     src: '/capas-cidade/ananindeua-pa.webp',
     w: 1200,

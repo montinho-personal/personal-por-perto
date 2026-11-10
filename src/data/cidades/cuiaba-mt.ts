@@ -121,7 +121,7 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-10',
   capaArte: {
     src: '/capas-cidade/cuiaba-mt.webp',
     w: 1200,

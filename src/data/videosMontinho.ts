@@ -188,4 +188,7 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'votuporanga-sp', 'anapolis-go', 'cachoeiro-de-itapemirim-es', 'campos-do-jordao-sp', 'santa-ines-ma',
   'capao-da-canoa-rs', 'itapetininga-sp', 'arapiraca-al', 'botucatu-sp', 'caraguatatuba-sp',
   'conde-pb', 'bebedouro-sp', 'itanhaem-sp', 'mafra-sc', 'ponta-grossa-pr',
+  // 10/11/2026: fora da fila de impressões, junto com o piloto do modelo enxuto
+  // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
+  'natal-rn', 'contagem-mg', 'ananindeua-pa',
 ]);

@@ -18,6 +18,7 @@ import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { bairrosDaCidade as listaDeBairros, rota } from '../../lib/geo';
 import { videoDaPagina, VIDEO_APP_ID, CIDADES_COM_VIDEO_APP } from '../../data/videosMontinho';
+import { CIDADES_MODELO_ENXUTO } from '../../data/modeloCidade';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, emCidadeCap, deCidade } from '../../lib/gramatica';
 import { tituloCidade, descricaoCidade } from '../../lib/metaCidade';
@@ -129,7 +130,10 @@ const conclusaoTexto =
  */
 const bairrosDaCidade = listaDeBairros(cidade.slug);
 
-const toc = [
+const enxuto = CIDADES_MODELO_ENXUTO.has(cidade.slug);
+const SECOES_FORA_DO_ENXUTO = new Set(['objetivos', 'beneficios', 'avaliar']);
+
+const tocCompleto = [
   { id: 'panorama', label: `Panorama ${deN}` },
   { id: 'mercado', label: 'Mercado de personais' },
   { id: 'como-escolher', label: 'Como escolher' },
@@ -141,6 +145,7 @@ const toc = [
   { id: 'perguntas-frequentes', label: 'Perguntas frequentes' },
   { id: 'conclusao', label: 'Conclusão' },
 ];
+const toc = enxuto ? tocCompleto.filter((t) => !SECOES_FORA_DO_ENXUTO.has(t.id)) : tocCompleto;
 
 const tiposTreino = [
   'Treino para emagrecimento',
@@ -164,7 +169,7 @@ const schema = [
     atualizadoEm: cidade.atualizadoEm,
   }),
   servicoCidadeSchema(cidade),
-  itemListSchema(`Tipos de treino com personal trainer ${emN}`, tiposTreino, url),
+  ...(enxuto ? [] : [itemListSchema(`Tipos de treino com personal trainer ${emN}`, tiposTreino, url)]),
   faqSchema(faqs),
   personMontinhoSchema(),
 ];
@@ -376,40 +381,63 @@ const objetivoDesc: Record<string, string> = {
         }
       </section>
 
+      {enxuto ? (
       <section id="como-escolher">
         <h2>Como escolher um personal trainer {emN}</h2>
         <p>
-          Escolher um bom profissional é menos sobre preço e mais sobre adequação ao
-          seu objetivo. Antes de fechar, considere estes pontos:
-        </p>
-        <ul class="check-list">
-          <li>
-            <strong>Registro profissional ativo:</strong> é o que garante que o
-            profissional pode prescrever treino legalmente — peça o número e confirme a
-            habilitação.
-          </li>
-          <li><strong>Experiência com o seu objetivo:</strong> emagrecimento, hipertrofia, reabilitação e performance pedem abordagens diferentes.</li>
-          <li><strong>Avaliação inicial:</strong> um bom personal avalia antes de prescrever — não entrega treino genérico.</li>
-          <li><strong>Logística:</strong> {emN}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
-          <li><strong>Método e acompanhamento:</strong> como ele mede evolução, reavalia e ajusta o plano ao longo do tempo.</li>
-        </ul>
-        <p>
-          Esses critérios valem para qualquer cidade — o guia
-          <a href={rotas.comoEscolher}>{anchorComoEscolher(0)}</a> detalha cada um deles
-          com exemplos e sinais de alerta. A seção <a href="#avaliar">Como avaliar um
-          profissional</a> logo abaixo traz o passo a passo prático. E, se a sua
-          prioridade é constância sem depender de deslocamento, vale olhar o
-          <a href="#objetivos">treino por objetivo</a> e o formato online.
+          Os critérios de escolha — registro profissional ativo, avaliação antes
+          do primeiro treino, experiência com o seu objetivo e um método para
+          medir a evolução — valem em qualquer lugar e estão detalhados no guia
+          <a href={rotas.comoEscolher}>{anchorComoEscolher(0)}</a>. {emCidadeCap(cidade)}, o
+          que mais pesa é a logística: distância, trânsito e horário decidem se o
+          melhor é um personal que vá até você, a academia do bairro ou o
+          <a href={`${rotas.ferramentaFormato}#c=${cidade.slug}`}>acompanhamento online</a>.
         </p>
         <p>
-          Ainda em dúvida entre pagar por presença durante o treino ou por
-          planejamento a distância?
-          <a href={`${rotas.ferramentaFormato}#c=${cidade.slug}`}
-            >Presencial ou online: qual faz mais sentido para você?</a
-          > — a ferramenta cruza autonomia, necessidade de supervisão e rotina, e
-          o resultado não muda em função da cidade.
+          Para cada objetivo há um guia próprio:
+          <a href="/guias/personal-trainer-para-emagrecimento/">emagrecimento</a>,
+          <a href="/guias/personal-trainer-para-hipertrofia/">hipertrofia</a>,
+          <a href="/guias/personal-trainer-para-iniciantes/">iniciantes</a>,
+          <a href="/guias/personal-trainer-para-mulheres/">mulheres</a> e
+          <a href="/guias/personal-trainer-para-terceira-idade/">terceira idade</a>.
         </p>
       </section>
+      ) : (
+      <section id="como-escolher">
+          <h2>Como escolher um personal trainer {emN}</h2>
+          <p>
+            Escolher um bom profissional é menos sobre preço e mais sobre adequação ao
+            seu objetivo. Antes de fechar, considere estes pontos:
+          </p>
+          <ul class="check-list">
+            <li>
+              <strong>Registro profissional ativo:</strong> é o que garante que o
+              profissional pode prescrever treino legalmente — peça o número e confirme a
+              habilitação.
+            </li>
+            <li><strong>Experiência com o seu objetivo:</strong> emagrecimento, hipertrofia, reabilitação e performance pedem abordagens diferentes.</li>
+            <li><strong>Avaliação inicial:</strong> um bom personal avalia antes de prescrever — não entrega treino genérico.</li>
+            <li><strong>Logística:</strong> {emN}, pese a distância e o trânsito; às vezes o online resolve melhor a sua rotina.</li>
+            <li><strong>Método e acompanhamento:</strong> como ele mede evolução, reavalia e ajusta o plano ao longo do tempo.</li>
+          </ul>
+          <p>
+            Esses critérios valem para qualquer cidade — o guia
+            <a href={rotas.comoEscolher}>{anchorComoEscolher(0)}</a> detalha cada um deles
+            com exemplos e sinais de alerta. A seção <a href="#avaliar">Como avaliar um
+            profissional</a> logo abaixo traz o passo a passo prático. E, se a sua
+            prioridade é constância sem depender de deslocamento, vale olhar o
+            <a href="#objetivos">treino por objetivo</a> e o formato online.
+          </p>
+          <p>
+            Ainda em dúvida entre pagar por presença durante o treino ou por
+            planejamento a distância?
+            <a href={`${rotas.ferramentaFormato}#c=${cidade.slug}`}
+              >Presencial ou online: qual faz mais sentido para você?</a
+            > — a ferramenta cruza autonomia, necessidade de supervisão e rotina, e
+            o resultado não muda em função da cidade.
+          </p>
+        </section>
+      )}
 
       <section id="precos">
         <h2>Quanto custa um personal trainer {emN}?</h2>
@@ -448,10 +476,18 @@ const objetivoDesc: Record<string, string> = {
             </tbody>
           </table>
         </div>
+        {enxuto ? (
+          <p class="muted small">
+            Faixas de referência editorial do portal, estimadas pelo perfil da
+            cidade — não são pesquisa de preço. O valor real depende da
+            experiência do profissional, do bairro, da estrutura usada e da frequência.
+          </p>
+        ) : (
         <p class="muted small">
-          Valores médios de mercado, apenas para referência. Podem variar conforme a
-          experiência do profissional, o bairro, a estrutura usada e a frequência.
-        </p>
+            Valores médios de mercado, apenas para referência. Podem variar conforme a
+            experiência do profissional, o bairro, a estrutura usada e a frequência.
+          </p>
+        )}
         <p>
           Para comparar os formatos com calma e entender o que faz o preço subir ou
           cair, veja o guia <a href={rotas.quantoCusta}>{anchorQuantoCusta(1)}</a>, com
@@ -833,10 +869,12 @@ const objetivoDesc: Record<string, string> = {
 
       <section id="onde-treinar">
         <h2>Onde treinar {emN}: academia, condomínio e ar livre</h2>
-        <p>
-          A cidade oferece diferentes cenários de treino, e o personal certo sabe
-          aproveitar cada um deles.
-        </p>
+        {!enxuto && (
+          <p>
+            A cidade oferece diferentes cenários de treino, e o personal certo sabe
+            aproveitar cada um deles.
+          </p>
+        )}
         <h3>Treino em academia</h3>
         {paragrafos(cidade.academias ?? `${n} tem boa oferta de academias e estúdios, com opções para diferentes orçamentos e objetivos.`).map((t) => <p>{t}</p>)}
         {
@@ -908,6 +946,8 @@ const objetivoDesc: Record<string, string> = {
         posicao="meio"
       />
 
+      {!enxuto && (
+      <>
       <section id="objetivos">
         <h2>Treino por objetivo {emN}</h2>
         <p>
@@ -988,6 +1028,8 @@ const objetivoDesc: Record<string, string> = {
           <a href={rotas.comoEscolher}>{anchorComoEscolher(3)}</a> reúne tudo em um só lugar.
         </p>
       </section>
+      </>
+      )}
 
       <Faq faqs={faqs} titulo={`Perguntas frequentes sobre personal trainer ${emN}`} />
 
