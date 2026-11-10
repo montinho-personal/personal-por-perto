@@ -123,5 +123,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Gravataí', url: 'https://www.gravatai.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-10',
 };

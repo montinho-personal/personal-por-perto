@@ -183,4 +183,9 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'varzea-grande-mt', 'araruama-rj', 'cachoeiras-de-macacu-rj', 'divinopolis-mg', 'dourados-ms',
   'foz-do-iguacu-pr', 'ibirite-mg', 'ilheus-ba', 'januaria-mg', 'pinhais-pr',
   'canoas-rs', 'ceilandia-df', 'monte-alto-sp', 'redencao-pa', 'serra-es',
+  // leva 7 — 10/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 6 conferida no ar)
+  'marituba-pa', 'ji-parana-ro', 'gravatai-rs', 'sete-lagoas-mg', 'amparo-sp',
+  'votuporanga-sp', 'anapolis-go', 'cachoeiro-de-itapemirim-es', 'campos-do-jordao-sp', 'santa-ines-ma',
+  'capao-da-canoa-rs', 'itapetininga-sp', 'arapiraca-al', 'botucatu-sp', 'caraguatatuba-sp',
+  'conde-pb', 'bebedouro-sp', 'itanhaem-sp', 'mafra-sc', 'ponta-grossa-pr',
 ]);
