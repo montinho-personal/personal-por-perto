@@ -39,6 +39,15 @@ Rede liberada em 13/10/2026. O site recusava com 406 o agente "Mozilla/5.0" curt
 
 **Varredura de 03/11/2026:** o regulamento continua na v8 (md5 igual ao arquivado), e a página de documentos tem os mesmos arquivos. Na Ticket Sports (evento 74828), o JSON-LD marca `availability` **`SoldOut`** (startDate 2026-11-22T05:00). Com o prazo do regulamento (31/10), as **inscrições estão encerradas**; o artigo não diz "esgotou". A busca trouxe o kit no Pátio Brasil, que já estava no artigo. Também houve divergência de agregadores sobre 17h ou 18h para os 5 e 10 km, mas o artigo segue o regulamento. Artigo atualizado: FAQs de valor e de prazo, tabela-resumo e seção de inscrição; Última verificação 03/11.
 
+**Varredura de 10/11/2026:** a página Regulamento passou a linkar a **v9**, "com premiação" (https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/11/V9-REGULAMENTO-MARATONA-MONUMENTAL-2026-COM-PREMIACAO.pdf; arquivada em `fontes/.../regulamento-v9-2026.pdf`). O diff de texto contra a v8 mostra só formatação, a tabela do IRRF de 2026 no lugar da de 2025 e o quadro de premiação:
+- **Total: R$ 94.000.**
+- Maratona, masc. e fem.: R$ 12.000, R$ 5.000, R$ 3.000, R$ 2.000 e R$ 1.500 (1º a 5º).
+- Meia, masc. e fem.: R$ 5.000, R$ 3.000, R$ 2.000, R$ 1.500 e R$ 1.000.
+- 10 km e 5 km, masc. e fem.: R$ 2.000, R$ 1.500, R$ 1.000, R$ 600 e R$ 400.
+- PcD: troféu para os 5 primeiros de cada distância. Valores brutos, com desconto de IR. Elite e os top 5 do geral ficam fora da faixa etária e das medalhas TOP 42 e TOP 21.
+
+Horários, kit e local não mudaram. Artigo atualizado: FAQ de premiação, tabela-resumo, seção Premiação (com o quadro), link do regulamento (v9) e Fontes; Última verificação 10/11.
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)
