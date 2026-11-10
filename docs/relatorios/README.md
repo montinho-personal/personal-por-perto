@@ -545,3 +545,18 @@ controle (−31%) e mantiveram o CTR, enquanto o do controle caiu.
 **O sinal mais claro é o das consultas de preço: as impressões mais que
 dobraram e a posição melhorou 1,5 ponto.** Detalhes e decisões em
 `docs/pendencias.md`.
+
+## 2026-11-10 — GSC indexação (cobertura)
+
+Pasta: `2026-11-10-gsc-cobertura/` (3 prints + drilldown "Rastreada, mas não indexada").
+
+| indicador | 13/09/2026 | 10/11/2026 |
+|---|---|---|
+| Rastreada, mas não indexada | 75 | **449** (422 cidades) |
+| Detectada, mas não indexada | — | 18 (validação aprovada) |
+| Canônica alternativa adequada | — | 137 |
+| Página com redirecionamento | — | 134 |
+| Cópia, canônica diferente | — | 8 |
+| 404 | — | 1 |
+
+O que mudou: a não indexação das páginas de cidade saltou de dezenas para 422 de 993. A análise está em `2026-11-10-gsc-cobertura/LEIA.md`.
