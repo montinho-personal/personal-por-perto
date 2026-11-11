@@ -68,13 +68,13 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Cidade ativa, com o Lago Municipal como hub de corrida e caminhada e boa qualidade de vida que estimula a prática esportiva.',
   academias:
-    'A oferta reúne grandes redes e academias locais, com renda alta do agronegócio, complementada pelo Lago Municipal e pelas praças com academia ao ar livre.',
+    'A oferta reúne a Bluefit e academias locais, com renda alta do agronegócio, complementada pelo Lago Municipal e pelas praças com academia ao ar livre.',
 
   academiasProximas: [
-    { nome: 'Bluefit', detalhe: 'unidade em Toledo' },
-    { nome: 'AquaFit', detalhe: 'rede local com três unidades, incluindo natação e hidroginástica' },
-    { nome: 'Estrutura do Lago Municipal', detalhe: 'pista do Parque Diva Paim Barth, gratuita' },
+    { nome: 'Bluefit Toledo', detalhe: 'na Av. Maripá, no Jardim La Salle' },
+    { nome: 'Lago Municipal', detalhe: 'pista de caminhada e ciclovia no Parque Ecológico Diva Paim Barth, público' },
   ],
+  academiasVerificadasEm: '2026-11-11',
 
   destaquesFitness: [
     'Lago Municipal como ponto central de treino ao ar livre (pista emborrachada e academia ao ar livre).',
@@ -99,7 +99,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Toledo?',
       resposta:
-        'O Lago Municipal — Parque Ecológico Diva Paim Barth — é o coração do treino ao ar livre, com pista movimentada de manhã e no fim de tarde. Completam o mapa as academias (Bluefit, as três unidades da rede local AquaFit e as consolidadas de bairro), as praças com academia ao ar livre e o atendimento em casa. A Meia Maratona de Toledo dá o alvo do calendário para quem corre orientado.',
+        'O Lago Municipal — Parque Ecológico Diva Paim Barth — é o coração do treino ao ar livre, com pista movimentada de manhã e no fim de tarde. Completam o mapa as academias (a Bluefit e as consolidadas de bairro), as praças com academia ao ar livre e o atendimento em casa. A Meia Maratona de Toledo dá o alvo do calendário para quem corre orientado.',
     },
     {
       pergunta: 'Dá para se preparar para a Meia Maratona de Toledo com personal?',
@@ -129,5 +129,5 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-11',
 };

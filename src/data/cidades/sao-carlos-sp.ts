@@ -74,6 +74,7 @@ export const cidade: Cidade = {
     { nome: 'Smart Fit São Carlos', detalhe: 'na Av. Francisco Pereira Lopes, no Jardim Bandeirantes' },
     { nome: 'Bluefit São Carlos', detalhe: 'na Av. Comendador Alfredo Mafei, no Jardim São Carlos' },
   ],
+  academiasVerificadasEm: '2026-11-11',
 
   destaquesFitness: [
     'Clima ameno de altitude que favorece o treino ao ar livre o ano todo.',

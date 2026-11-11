@@ -64,6 +64,10 @@ export const cidade: Cidade = {
     'A herança alemã se traduz em vida associativa forte — sociedades, ginásios e festas comunitárias — e o esporte acompanha: corrida, pedal na serra e academias movimentadas o ano todo.',
   academias:
     'A oferta reúne academias de musculação e personal trainers no centro e nos bairros industriais, complementada pela estrutura do Parque Romeo Benício Wolf e pelas rotas de serra da região.',
+  academiasProximas: [
+    { nome: 'Box Dois Irmãos', detalhe: 'no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-11',
 
   destaquesFitness: [
     'Parque Municipal Romeo Benício Wolf, com cascatas e ciclovia a 1 km do centro.',
@@ -91,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Dois Irmãos', url: 'https://doisirmaos.atende.net/' },
     { nome: 'Rota Romântica', url: 'https://rotaromantica.com.br/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-11',
 };

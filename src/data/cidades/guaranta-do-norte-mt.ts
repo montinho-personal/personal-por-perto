@@ -55,6 +55,10 @@ export const cidade: Cidade = {
     'A vida esportiva local gira em torno da Praça da Cultura, palco de eventos, feiras e da programação de aniversário do município, e do lazer ligado aos rios da região — pesca esportiva, remo e passeios de barco no Braço Norte e no Braço Sul, que também atraem turismo de aventura para a cidade.',
   academias:
     'A oferta de academias e estúdios é modesta e concentrada no Centro, compatível com uma cidade-polo de porte médio do norte de Mato Grosso, complementada pelo trabalho de personal trainers que atendem em domicílio e em espaços ao ar livre.',
+  academiasProximas: [
+    { nome: 'Elite Academia', detalhe: 'na Av. Angelim, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-11',
 
   destaquesFitness: [
     'Nasceu do garimpo de ouro nos rios Peixoto de Azevedo e Teles Pires e hoje é polo agropecuário do "Portal da Amazônia", às margens da BR-163.',
@@ -83,5 +87,5 @@ export const cidade: Cidade = {
     { nome: 'Câmara Municipal de Guarantã do Norte — Geografia', url: 'https://www.camaraguarantadonorte.mt.gov.br/Cidade/Geografia/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/5104104' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-11',
 };

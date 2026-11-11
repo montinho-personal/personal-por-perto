@@ -879,3 +879,22 @@ O destaque "circuito de cerca de 6,5 km" segue sem fonte. Fica fora do escopo da
 | demais 2 unidades Smart Fit | confirmadas sem mudança | página oficial (`opened:true`) |
 
 Saldo da leva: 7 entradas → 6 mantidas (3 corrigidas) e 1 removida. 102 cidades seguem na fila.
+
+### 11/11/2026 — leva 37 (rotina, Parte B: São Carlos e Toledo)
+
+**São Carlos/SP** — tudo confirmado; a página não mudou (só `academiasVerificadasEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit São Carlos — "Av. Francisco Pereira Lopes, Jardim Bandeirantes" | confirmada sem mudança (nº 1701) | página oficial (`opened:true`) |
+| Bluefit São Carlos — "Av. Comendador Alfredo Mafei, Jardim São Carlos" | confirmada sem mudança (nº 260). A página oficial traz um CEP errado (20930-390, que é do RJ); o Wellhub dá o mesmo endereço com CEP 13560-649, de São Carlos/SP | página oficial + Wellhub |
+
+**Toledo/PR** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Bluefit — "unidade em Toledo" | **corrigida**: Av. Maripá, Jardim La Salle (nº 7000, CEP 85902-060) | página oficial |
+| AquaFit — "rede local com três unidades" | **removida**: nenhuma fonte acha AquaFit em Toledo (Wellhub, TotalPass e busca aberta só acham "Liana AquaFit", que fica em Paranaguá e Matinhos). Saiu também da FAQ "Onde o personal costuma atender" | — |
+| Estrutura do Lago Municipal — "pista do Parque Diva Paim Barth, gratuita" | **corrigida**: renomeada para "Lago Municipal", com pista de caminhada e ciclovia em parque público | Revista Oeste + Correio Braziliense |
+
+O texto `academias` dizia "grandes redes". A Smart Fit não tem unidade em Toledo, então o texto passou a dizer "a Bluefit e academias locais". Saldo da leva: 5 entradas → 4 mantidas (2 corrigidas) e 1 removida. 100 cidades seguem na fila.
