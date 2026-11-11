@@ -1,0 +1,265 @@
+---
+/**
+ * Personal trainer para pessoas com deficiência — o que as diretrizes
+ * dizem, cadeirantes e lesão medular, ajustes por tipo de deficiência e
+ * como escolher o profissional.
+ *
+ * Publicado em 11/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode criar"). Quando os prints chegarem, título, H1, seções e FAQs são
+ * revistos contra eles; registro em docs/personal-trainer-para-pcd.md.
+ *
+ * Fontes conferidas em 11/11/2026: OMS 2020 (Bull et al., texto completo) e
+ * Martin Ginis et al. 2018 (Spinal Cord, resumo). Fora: autismo (tem peça
+ * própria na pauta) e qualquer promessa de reabilitação.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade', descricao: 'Como escolher e o que o treino muda depois dos 60.', tipo: 'Guia' },
+  { url: '/musculacao/treino-de-forca/', titulo: 'Treino de força', descricao: 'O que é, por que importa e como começar.', tipo: 'Musculação' },
+  { url: '/guias/personal-online-funciona/', titulo: 'Personal online funciona?', descricao: 'Quando o acompanhamento a distância dá certo.', tipo: 'Guia' },
+];
+
+const path = '/guias/personal-trainer-para-pcd';
+const atualizadoEm = '2026-11-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para PcD', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treino para pessoas com deficiência';
+const faqs = [
+  {
+    pergunta: 'Pessoa com deficiência pode fazer academia?',
+    resposta:
+      'Pode. As diretrizes da Organização Mundial da Saúde, de 2020, dizem que não há riscos importantes na atividade física de pessoas com deficiência quando ela é adequada à saúde e à função física de cada um. A recomendação é a mesma dos outros adultos: 150 a 300 minutos de aeróbico moderado por semana e força em 2 dias ou mais.',
+  },
+  {
+    pergunta: 'Cadeirante pode fazer musculação?',
+    resposta:
+      'Pode. A diretriz internacional para adultos com lesão medular, de 2018, recomenda 3 séries de exercícios de força para cada grupo muscular que funciona, 2 vezes por semana, e 20 minutos de aeróbico moderado a vigoroso 2 vezes por semana. O médico ou o fisioterapeuta ajuda a definir os ajustes pelo nível da lesão.',
+  },
+  {
+    pergunta: 'Pessoa com deficiência precisa de liberação médica para treinar?',
+    resposta:
+      'A OMS diz que geralmente não é necessária para quem começa devagar e não tem contraindicação. Quem tem uma condição de saúde, dor ou dúvida sobre o que pode fazer deve conversar antes com o médico ou o fisioterapeuta.',
+  },
+  {
+    pergunta: 'Qual exercício aeróbico o cadeirante pode fazer?',
+    resposta:
+      'Ergômetro de braço (a bicicleta para as mãos), tocar a cadeira em ritmo forte, natação e esportes adaptados como basquete em cadeira de rodas. O que conta é a intensidade moderada a vigorosa, em que respirar fica mais difícil.',
+  },
+  {
+    pergunta: 'Como escolher personal trainer para PcD?',
+    resposta:
+      'Pergunte se ele já atendeu alguém com a mesma deficiência e o que adaptou, se o local é acessível, como vai se comunicar com você e se conversa com seu médico ou fisioterapeuta. Experiência com a sua condição pesa mais que certificado.',
+  },
+  {
+    pergunta: 'Quanto exercício a pessoa com deficiência deve fazer por semana?',
+    resposta:
+      'Pela OMS, o mesmo que os outros adultos: 150 a 300 minutos de aeróbico moderado ou 75 a 150 de vigoroso, mais força em 2 dias ou mais. Quem ainda não chega lá começa com pouco e aumenta aos poucos.',
+  },
+];
+
+/* 55 caracteres. */
+const title = 'Personal Trainer para PcD: Como Treinar com Deficiência';
+/* 149 caracteres. */
+const description =
+  'Pessoa com deficiência pode fazer academia? O que a OMS recomenda, treino para cadeirantes, ajustes por deficiência e como escolher o personal certo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal trainer para pessoas com deficiência: como treinar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Pessoa com deficiência pode e deve treinar: as diretrizes de atividade
+      física recomendam a ela o mesmo que a qualquer adulto. O que muda é a
+      adaptação — e é aí que um personal com experiência faz diferença.
+    </p>
+
+    <div class="prose">
+      <h2>O que as diretrizes dizem</h2>
+      <p>
+        As diretrizes de atividade física da Organização Mundial da Saúde, de
+        2020, trazem pela primeira vez recomendações para pessoas com
+        deficiência. E a recomendação é a mesma dos outros adultos:
+      </p>
+      <ul>
+        <li><strong>150 a 300 minutos por semana</strong> de aeróbico moderado, ou 75 a 150 de vigoroso;</li>
+        <li><strong>fortalecimento muscular</strong> em 2 ou mais dias da semana;</li>
+        <li>menos tempo parado, sentado ou deitado.</li>
+      </ul>
+      <p>
+        A OMS diz também que <strong>não há riscos importantes</strong> na
+        atividade física de pessoas com deficiência quando ela é adequada ao
+        nível de atividade, à saúde e à função física de cada um. Quem ainda
+        não chega à meta deve começar com pouco e aumentar aos poucos: um pouco
+        de atividade já é melhor que nenhuma.
+      </p>
+
+      <h2>Cadeirantes e lesão medular</h2>
+      <p>
+        Para adultos com lesão medular há uma diretriz internacional própria,
+        publicada em 2018 na revista Spinal Cord. Ela recomenda:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Objetivo</th><th>Aeróbico</th><th>Força</th></tr></thead>
+          <tbody>
+            <tr><td>Condicionamento e força</td><td>20 min, moderado a vigoroso, 2x por semana</td><td>3 séries para cada grupo muscular que funciona, 2x por semana</td></tr>
+            <tr><td>Saúde cardiometabólica</td><td>30 min, moderado a vigoroso, 3x por semana</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O aeróbico pode ser feito com ergômetro de braço, cadeira de rodas em
+        ritmo forte ou esportes adaptados. Quais músculos entram na força e
+        como depende do nível da lesão, e isso é combinado com o médico ou o
+        fisioterapeuta.
+      </p>
+
+      <h2>Cada deficiência pede um ajuste diferente</h2>
+      <p>
+        "Pessoa com deficiência" cobre realidades muito diferentes. A OMS
+        revisou estudos de lesão medular, esclerose múltipla, deficiência
+        intelectual, Parkinson e AVC, entre outras condições. Na prática, o
+        personal ajusta:
+      </p>
+      <ul>
+        <li><strong>Deficiência física:</strong> a escolha de aparelhos e exercícios, as transferências da cadeira, o equilíbrio e a segurança nas pegas.</li>
+        <li><strong>Deficiência visual:</strong> a explicação por voz e por toque, a organização do espaço e trajetos sempre iguais na academia.</li>
+        <li><strong>Deficiência auditiva:</strong> a comunicação, com demonstração, escrita ou Libras, e sinais combinados para começar e parar.</li>
+        <li><strong>Deficiência intelectual:</strong> instruções curtas, rotina previsível e progressão com mais repetição do mesmo exercício.</li>
+      </ul>
+
+      <FerramentaInline
+        id="formato"
+        texto="Quando chegar à academia é parte do problema — acessibilidade, deslocamento, transporte —, vale comparar o presencial com o online e o atendimento em casa. A ferramenta faz essa comparação para a sua rotina."
+        acao="Ver se presencial ou online combina comigo"
+      />
+
+      <h2>Como escolher o personal</h2>
+      <p>
+        Experiência com a sua condição pesa mais que qualquer certificado.
+        Pergunte antes de fechar:
+      </p>
+      <ul>
+        <li>Já atendeu alguém com a mesma deficiência? O que adaptou?</li>
+        <li>O local do treino é acessível — entrada, banheiro, vestiário e espaço entre os aparelhos?</li>
+        <li>Como ele vai se comunicar com você durante o treino?</li>
+        <li>Ele conversa com seu médico ou fisioterapeuta quando precisa?</li>
+      </ul>
+      <p>
+        Um bom profissional pergunta mais do que fala na primeira conversa. Se
+        ele promete o mesmo treino de todo mundo "com algumas adaptações", sem
+        saber da sua condição, desconfie.
+      </p>
+
+      <h2>O que o personal faz — e o que não faz</h2>
+      <ul>
+        <li><strong>Faz:</strong> adapta exercícios, cargas e comunicação, progride o treino e mantém a frequência.</li>
+        <li><strong>Não faz:</strong> diagnosticar, tratar dor ou lesão, nem substituir a reabilitação. Isso é do médico e do fisioterapeuta.</li>
+      </ul>
+
+      <h2>Antes de começar</h2>
+      <p>
+        Segundo a OMS, a liberação médica antes do exercício geralmente não é
+        necessária para quem começa devagar e não tem contraindicação. Mas
+        quem tem uma condição de saúde, dor, alteração de pressão ou dúvida
+        sobre o que pode fazer deve conversar antes com o médico ou o
+        fisioterapeuta. Dor, tontura ou mal-estar durante o treino são motivo
+        para parar.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/29070812/" target="_blank" rel="noopener noreferrer">Martin Ginis KA, van der Scheer JW, Latimer-Cheung AE, et al. Evidence-based scientific exercise guidelines for adults with spinal cord injury: an update and a new guideline. Spinal Cord, 2018</a></li>
+        <li>Conferidas em 11/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

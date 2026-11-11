@@ -131,6 +131,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-para-diabeticos/', titulo: 'Personal trainer para diabéticos: como treinar com segurança' },
   { categoria: 'Guias', url: '/guias/personal-trainer-e-nutricionista/', titulo: 'Personal trainer e nutricionista: quem faz o quê e como trabalham juntos' },
   { categoria: 'Guias', url: '/guias/personal-trainer-pos-parto/', titulo: 'Treino no pós-parto: quando e como voltar com personal' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-pcd/', titulo: 'Personal trainer para pessoas com deficiência: como treinar' },
+  { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-viaja/', titulo: 'Treino para quem viaja a trabalho: hotel, pouco tempo e personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-iniciantes/', titulo: 'Personal trainer para iniciantes: vale a pena contratar?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },

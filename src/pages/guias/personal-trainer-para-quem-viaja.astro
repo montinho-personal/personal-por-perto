@@ -1,0 +1,255 @@
+---
+/**
+ * Personal trainer para quem viaja a trabalho — quanto se perde, o treino de
+ * hotel, a academia do hotel e o formato híbrido.
+ *
+ * Publicado em 11/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode criar"). Quando os prints chegarem, título, H1, seções e FAQs são
+ * revistos contra eles; registro em docs/personal-trainer-para-quem-viaja.md.
+ *
+ * Fontes conferidas em 11/11/2026: Spiering et al. 2021 (J Strength Cond Res,
+ * resumo) e OMS 2020 (Bull et al., texto completo). Fora: jet lag e sono
+ * (sem fonte lida aqui).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/guias/personal-online-funciona/', titulo: 'Personal online funciona?', descricao: 'Quando o acompanhamento a distância dá certo.', tipo: 'Guia' },
+  { url: '/musculacao/treino-em-casa-para-iniciantes/', titulo: 'Treino em casa para iniciantes', descricao: 'O treino sem aparelhos, com progressão.', tipo: 'Musculação' },
+  { url: '/musculacao/divisao-de-treino/', titulo: 'Divisão de treino', descricao: 'A divisão certa para os dias que você tem.', tipo: 'Musculação' },
+];
+
+const path = '/guias/personal-trainer-para-quem-viaja';
+const atualizadoEm = '2026-11-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer para quem viaja', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treinar viajando a trabalho';
+const faqs = [
+  {
+    pergunta: 'Quanto tempo sem treinar eu perco massa muscular?',
+    resposta:
+      'Menos do que parece, se você não parar de vez. Uma revisão de 2021 mostrou que força e massa muscular se mantiveram por até 32 semanas com 1 sessão de força por semana e 1 série por exercício, desde que a carga continuasse pesada. Em pessoas mais velhas, pode ser preciso 2 sessões por semana.',
+  },
+  {
+    pergunta: 'Como treinar no quarto do hotel?',
+    resposta:
+      'Com o peso do corpo: agachamento, flexão, afundo, remada com toalha ou mochila, ponte de glúteo e prancha, em circuito de 3 ou 4 voltas. Para manter a intensidade sem carga, cada série vai até perto da falha, e dá para dificultar com pés elevados, uma perna só ou a mochila carregada.',
+  },
+  {
+    pergunta: 'Vale a pena treinar só 20 minutos?',
+    resposta:
+      'Vale. Para manter a forma em semanas corridas, a intensidade importa mais que o tempo. Na revisão de 2021, sessões aeróbicas de 13 a 26 minutos, 2 vezes por semana, mantiveram a resistência por até 15 semanas quando a intensidade foi mantida.',
+  },
+  {
+    pergunta: 'Personal trainer online funciona para quem viaja?',
+    resposta:
+      'Costuma funcionar bem. O personal monta a versão de casa e a de viagem, ajusta pelo celular quando a agenda muda e retoma o presencial na volta. Muita gente usa o formato híbrido: presencial na cidade, online fora dela.',
+  },
+  {
+    pergunta: 'Devo treinar mais na volta para compensar?',
+    resposta:
+      'Não. Dobrar o treino depois da viagem só soma cansaço. Com o mínimo mantido na viagem, há pouco a recuperar: basta retomar a semana normal.',
+  },
+];
+
+/* 51 caracteres. */
+const title = 'Treino para Quem Viaja a Trabalho: Hotel e Personal';
+/* 152 caracteres. */
+const description =
+  'Como treinar viajando a trabalho: quanto se perde numa semana fora, o treino de 20 minutos no quarto do hotel e como o personal ajusta o plano à agenda.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Treino para quem viaja a trabalho: hotel, pouco tempo e personal</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Quem viaja a trabalho raramente perde o treino por falta de vontade. Perde
+      porque a semana de viagem não cabe no plano de casa. A boa notícia: para
+      manter o que você conquistou, basta muito menos treino — desde que ele
+      continue intenso.
+    </p>
+
+    <div class="prose">
+      <h2>Quanto se perde numa semana fora</h2>
+      <p>
+        Menos do que parece. Uma revisão de 2021 no Journal of Strength and
+        Conditioning Research reuniu o que se sabe sobre a dose mínima de
+        treino para não perder o que foi conquistado. Em adultos em geral:
+      </p>
+      <ul>
+        <li><strong>Força e massa muscular</strong> se mantiveram por até 32 semanas com apenas <strong>1 sessão de força por semana e 1 série por exercício</strong>, desde que a carga continuasse pesada.</li>
+        <li><strong>Resistência aeróbica</strong> se manteve por até 15 semanas com <strong>2 sessões por semana</strong>, de 13 a 26 minutos, desde que a intensidade continuasse alta.</li>
+      </ul>
+      <p>
+        A conclusão da revisão é que a variável mais importante é a
+        <strong>intensidade</strong>. Em semana de viagem, cortar o número de
+        treinos e o volume é aceitável. O que não pode cair é o esforço de cada
+        série. Em pessoas mais velhas, manter o músculo pode pedir 2 sessões
+        por semana com 2 ou 3 séries.
+      </p>
+
+      <h2>O treino de 20 minutos no quarto do hotel</h2>
+      <p>
+        Sem academia, o peso do corpo resolve. Um circuito simples, feito 3 ou 4
+        vezes com pouco descanso:
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Exercício</th><th>Como deixar mais difícil</th></tr></thead>
+          <tbody>
+            <tr><td>Agachamento</td><td>Mais lento na descida, ou búlgaro com o pé de trás na cama</td></tr>
+            <tr><td>Flexão de braço</td><td>Pés elevados na cama ou na cadeira</td></tr>
+            <tr><td>Afundo alternado</td><td>Com a mochila nas costas</td></tr>
+            <tr><td>Remada com a toalha na porta ou mochila</td><td>Mais carga na mochila</td></tr>
+            <tr><td>Ponte de glúteo</td><td>Uma perna só</td></tr>
+            <tr><td>Prancha</td><td>Mais tempo ou braço estendido à frente</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Para manter a intensidade sem carga, cada série vai até perto da
+        falha: as últimas repetições precisam ser difíceis. Quem está começando
+        encontra a progressão completa em
+        <a href="/musculacao/treino-em-casa-para-iniciantes/">treino em casa
+        para iniciantes</a>.
+      </p>
+
+      <h2>Academia do hotel, cidade a pé e o resto do dia</h2>
+      <p>
+        Se o hotel tem academia, mesmo pequena, um treino de corpo inteiro com
+        halteres cobre a semana: um exercício de pernas, um de empurrar, um de
+        puxar, em séries pesadas. E caminhar entre compromissos conta: a
+        Organização Mundial da Saúde recomenda 150 a 300 minutos por semana de
+        atividade aeróbica moderada, e qualquer caminhada em ritmo firme entra
+        nessa conta.
+      </p>
+
+      <FerramentaInline
+        id="formato"
+        texto="Quem viaja toda semana costuma ficar entre o personal presencial, que não acompanha a agenda, e o online, que ninguém sabe se funciona. A ferramenta compara os dois para a sua rotina."
+        acao="Ver se presencial ou online combina comigo"
+      />
+
+      <h2>Onde o personal entra</h2>
+      <p>
+        Para quem viaja a trabalho, o personal não precisa estar junto em todo
+        treino. Ele monta duas versões da semana — a de casa e a de viagem — e
+        ajusta a de viagem quando a agenda muda. Muitos combinam sessões
+        presenciais na cidade e acompanhamento online fora dela. Como esse
+        formato funciona está em
+        <a href="/guias/personal-online-funciona/">personal online
+        funciona?</a>.
+      </p>
+      <ul>
+        <li><strong>Antes da viagem:</strong> o treino de hotel e o de academia de hotel prontos, com cargas e progressões.</li>
+        <li><strong>Durante:</strong> check-in por mensagem, ajuste quando o dia sai do plano.</li>
+        <li><strong>Na volta:</strong> retomada da semana normal, sem compensar com treino dobrado.</li>
+      </ul>
+
+      <h2>Os erros mais comuns</h2>
+      <ul>
+        <li><strong>Tudo ou nada.</strong> Sem a hora inteira de academia, não treina nada. Vinte minutos com intensidade mantêm o que você conquistou.</li>
+        <li><strong>Compensar na volta.</strong> Dobrar o treino depois da viagem soma cansaço e não recupera nada: com o mínimo mantido, quase nada foi perdido.</li>
+        <li><strong>Treinar leve demais.</strong> Manter o hábito com séries fáceis não mantém a força. O que preserva é o esforço.</li>
+      </ul>
+      <p>
+        Se você tem alguma dor ou lesão, ou uma condição de saúde, ajuste o
+        treino de viagem com o médico ou o fisioterapeuta antes de aumentar a
+        intensidade sozinho.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/33629972/" target="_blank" rel="noopener noreferrer">Spiering BA, Mujika I, Sharp MA, Foulis SA. Maintaining physical performance: the minimal dose of exercise needed to preserve endurance and strength over time. Journal of Strength and Conditioning Research, 2021</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li>Conferidas em 11/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
