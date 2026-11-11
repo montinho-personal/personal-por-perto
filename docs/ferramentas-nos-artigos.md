@@ -217,3 +217,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 01/11 — `/guias/personal-trainer-em-dupla/` — artigo novo: bloco preco depois do exemplo de Barueri e Alphaville — "e na minha cidade, quanto dá a conta?"
 - 10/11 — `/guias/personal-trainer-para-diabeticos/` — artigo novo: bloco calculadora-de-passos depois de "quanto treinar" — "e o movimento fora do treino?"
 - 10/11 — `/guias/personal-trainer-e-nutricionista/` — artigo novo: bloco calculadora-de-proteina em "onde os dois se encontram" — "qual é a minha meta de proteína?"
+- 11/11 — `/musculacao/divisao-de-treino/` — artigo novo: bloco rotina depois da semana de 5 dias — "esses cinco dias existem na minha semana?"
+- 11/11 — `/guias/personal-trainer-pos-parto/` — artigo novo: bloco constancia em "o tempo é o maior obstáculo" — "qual é a semana mínima que cabe com o bebê?"

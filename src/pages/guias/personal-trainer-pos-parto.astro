@@ -1,0 +1,310 @@
+---
+/**
+ * Personal trainer no pós-parto — quando voltar, por onde começar, assoalho
+ * pélvico, diástase, amamentação e o que é do médico.
+ *
+ * Publicado em 11/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode criar os dois próximos artigos", seguindo o combinado de publicar e
+ * receber os prints depois). Quando os prints chegarem, título, H1, seções e
+ * FAQs são revistos contra eles; registro em docs/personal-trainer-pos-parto.md.
+ *
+ * Recorte contra os vizinhos: `personal-trainer-para-gestantes` tem um H2
+ * de um parágrafo sobre o pós-parto; `musculacao-na-gravidez` é a gestação.
+ * Esta página é a volta depois do parto.
+ *
+ * Fontes conferidas em 11/11/2026: OMS 2020 (Bull et al., texto completo),
+ * Beamish et al. 2025 (BJSM, resumo) e Dewey et al. 1994 (NEJM, resumo).
+ * Fora: prazos em semanas para voltar (variam e são do médico), qualquer
+ * promessa de "secar a barriga".
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/guias/personal-trainer-para-gestantes/', titulo: 'Personal trainer para gestantes', descricao: 'O treino durante a gravidez, trimestre a trimestre.', tipo: 'Guia' },
+  { url: '/musculacao/musculacao-na-gravidez/', titulo: 'Musculação na gravidez', descricao: 'O que pode, o que muda e o que a pesquisa diz.', tipo: 'Musculação' },
+  { url: '/musculacao/voltar-a-treinar-depois-de-parar/', titulo: 'Voltar a treinar depois de parar', descricao: 'Como recomeçar sem se machucar.', tipo: 'Musculação' },
+];
+
+const path = '/guias/personal-trainer-pos-parto';
+const atualizadoEm = '2026-11-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal trainer no pós-parto', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treino no pós-parto';
+const faqs = [
+  {
+    pergunta: 'Quando posso voltar a treinar depois do parto?',
+    resposta:
+      'Quando o médico liberar. O prazo varia com o tipo de parto, com como foi a recuperação e com o que você fazia antes. Caminhadas leves e exercícios de assoalho pélvico costumam vir antes da musculação. A Organização Mundial da Saúde recomenda começar com pouco e aumentar aos poucos a frequência, a intensidade e a duração.',
+  },
+  {
+    pergunta: 'Posso fazer musculação amamentando?',
+    resposta:
+      'Pode. A OMS recomenda aeróbico e fortalecimento muscular também no pós-parto. Amamentar não impede o treino, e os estudos não mostram queda do leite com exercício. Quem ainda não foi liberada pelo médico espera a liberação, amamentando ou não.',
+  },
+  {
+    pergunta: 'Exercício diminui o leite materno?',
+    resposta:
+      'Não nos estudos. Num ensaio clínico publicado no New England Journal of Medicine, mulheres que amamentavam fizeram aeróbico 45 minutos por dia, 5 dias por semana, por 12 semanas, a partir de 6 a 8 semanas do parto. O volume e a composição do leite e o ganho de peso dos bebês ficaram iguais aos do grupo que não treinou.',
+  },
+  {
+    pergunta: 'Posso fazer abdominal no pós-parto?',
+    resposta:
+      'Com orientação, sim. Uma revisão de 2025 encontrou evidência de baixa certeza de que o treino abdominal no pós-parto reduz a distância entre os músculos do abdômen da diástase. Quem tem diástase, perda de urina ou sensação de peso na região íntima deve ser avaliada por um fisioterapeuta pélvico antes de escolher os exercícios.',
+  },
+  {
+    pergunta: 'E depois da cesárea?',
+    resposta:
+      'A cesárea é uma cirurgia no abdômen, e a liberação costuma vir depois do que no parto normal. O médico avalia a cicatriz e diz quando começar. Depois disso, a volta segue a mesma lógica: caminhada, assoalho pélvico, core e só então cargas maiores.',
+  },
+  {
+    pergunta: 'Treinar ajuda a perder a barriga do pós-parto?',
+    resposta:
+      'Ajuda no condicionamento e na força, mas não faz milagre sozinho. No ensaio de 1994, as mães que treinaram comeram mais para compensar o gasto e não perderam mais peso que as outras. A perda de peso depende do treino junto com a alimentação, que se ajusta com nutricionista, principalmente para quem amamenta.',
+  },
+];
+
+/* 51 caracteres. */
+const title = 'Treino Pós-Parto com Personal: Quando e Como Voltar';
+/* 152 caracteres. */
+const description =
+  'Quando voltar a treinar depois do parto, por onde começar, assoalho pélvico, diástase, amamentação e cesárea, e o que o personal faz junto com o médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Treino no pós-parto: quando e como voltar com personal</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Depois do parto, o treino volta, mas em ordem: primeiro a liberação do
+      médico, depois caminhada e assoalho pélvico, e só então as cargas. Um
+      personal ajuda a fazer essa rampa com paciência e a encaixar o treino
+      numa rotina que agora gira em torno do bebê.
+    </p>
+
+    <div class="prose">
+      <h2>Quando voltar</h2>
+      <p>
+        Quem decide é o médico. O prazo depende do tipo de parto, de como foi
+        a recuperação e do que você fazia antes de engravidar. A cesárea, por
+        ser uma cirurgia no abdômen, costuma pedir mais tempo.
+      </p>
+      <p>
+        As diretrizes de atividade física da Organização Mundial da Saúde, de
+        2020, trazem pela primeira vez recomendações para o pós-parto. Sem
+        contraindicação, a mulher deve:
+      </p>
+      <ul>
+        <li>fazer atividade física regular depois do parto;</li>
+        <li>chegar a pelo menos <strong>150 minutos por semana</strong> de aeróbico moderado;</li>
+        <li>combinar aeróbico e fortalecimento muscular;</li>
+        <li>passar menos tempo sentada ou deitada parada.</li>
+      </ul>
+      <p>
+        Quem ainda não chega a isso deve começar com pouco e aumentar aos
+        poucos. E quem já fazia atividade vigorosa antes da gravidez pode continuar
+        com ela no pós-parto, segundo a OMS, no ritmo que o corpo e o médico
+        permitirem.
+      </p>
+
+      <h2>A ordem da volta</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Etapa</th><th>O quê</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>1. Liberação</td><td>Consulta com o médico</td><td>Confere a recuperação do parto</td></tr>
+            <tr><td>2. Base</td><td>Caminhada e exercícios de assoalho pélvico</td><td>Reativa o corpo sem impacto</td></tr>
+            <tr><td>3. Core e força leve</td><td>Respiração, core profundo, força com carga baixa</td><td>Prepara abdômen e pelve para carga</td></tr>
+            <tr><td>4. Progressão</td><td>Musculação com cargas crescentes</td><td>Volta da força e do condicionamento</td></tr>
+            <tr><td>5. Impacto</td><td>Corrida, saltos, aulas intensas</td><td>Só sem perda de urina nem sensação de peso na pelve</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Não há prazo fixo para passar de uma etapa à outra. O sinal para
+        avançar é fazer a etapa atual sem dor, sem perda de urina e sem
+        sensação de peso na região íntima.
+      </p>
+
+      <h2>Assoalho pélvico: o treino que vem primeiro</h2>
+      <p>
+        Os músculos do assoalho pélvico sustentam bexiga, útero e intestino e
+        passam por muito na gestação e no parto. A OMS diz que o treino desses
+        músculos pode ser feito <strong>todos os dias</strong> para reduzir o
+        risco de perda de urina.
+      </p>
+      <p>
+        Uma revisão sistemática de 2025, com 65 estudos e mais de 21 mil
+        mulheres no primeiro ano depois do parto, mostrou que o treino do
+        assoalho pélvico <strong>reduziu em 37% a chance de incontinência
+        urinária</strong> e também reduziu a de prolapso. O ideal é aprender
+        os exercícios com um fisioterapeuta pélvico, que confere se você está
+        contraindo do jeito certo.
+      </p>
+
+      <h2>Diástase abdominal</h2>
+      <p>
+        Na gestação, os dois lados do músculo reto do abdômen se afastam para
+        dar espaço ao bebê. Quando essa distância continua grande depois do
+        parto, chama-se diástase. A mesma revisão de 2025 encontrou evidência
+        de <strong>baixa certeza</strong> de que o treino abdominal no
+        pós-parto diminui essa distância.
+      </p>
+      <p>
+        Ou seja: o exercício parece ajudar, mas a pesquisa ainda é fraca para
+        dizer qual exercício é melhor. Quem tem diástase deve ser avaliada por
+        um fisioterapeuta, que mede o afastamento e indica o que fazer. O
+        personal segue essa orientação e escolhe os exercícios de abdômen e as
+        cargas de acordo com ela.
+      </p>
+
+      <h2>Amamentação e treino</h2>
+      <p>
+        Treinar não diminui o leite, segundo os estudos. Num ensaio clínico
+        publicado em 1994 no New England Journal of Medicine, mães que
+        amamentavam fizeram aeróbico 45 minutos por dia, 5 dias por semana,
+        durante 12 semanas, começando entre 6 e 8 semanas depois do parto.
+        Comparadas às que não treinaram, tiveram <strong>o mesmo volume e a
+        mesma composição do leite</strong>, e os bebês ganharam peso igual.
+        A capacidade aeróbica delas (o VO2 máximo) subiu 25%.
+      </p>
+      <p>
+        O mesmo estudo traz um dado honesto: as mães que treinaram comeram
+        mais para compensar o gasto e <strong>não perderam mais peso</strong>.
+        Treinar sozinho não "seca a barriga". Quem quer perder peso
+        amamentando precisa ajustar a alimentação com um nutricionista, sem
+        cortes que atrapalhem a produção de leite.
+      </p>
+
+      <h2>O tempo é o maior obstáculo</h2>
+      <p>
+        No pós-parto, o problema raramente é saber o que fazer. É achar a
+        hora. Sono picado, mamadas e visitas ao pediatra desmontam qualquer
+        agenda de cinco treinos. Por isso a semana mínima, aquela que você
+        consegue cumprir na pior semana, vale mais que a semana ideal.
+      </p>
+
+      <FerramentaInline
+        id="constancia"
+        texto="Se o treino começa e some toda semana, o diagnóstico compara a semana que você planeja com a que acontece de verdade e monta uma semana mínima que cabe na rotina com o bebê."
+        acao="Achar a minha semana mínima"
+      />
+
+      <h2>O que o personal faz — e o que não faz</h2>
+      <ul>
+        <li><strong>Faz:</strong> monta a rampa de volta, escolhe e progride os exercícios, controla a carga, observa sinais de alerta e adapta o treino aos horários e ao cansaço de cada semana.</li>
+        <li><strong>Não faz:</strong> liberar o treino, avaliar a cicatriz, diagnosticar diástase ou disfunção do assoalho pélvico, nem prescrever dieta. Isso é do médico, do fisioterapeuta pélvico e do nutricionista.</li>
+      </ul>
+      <p>
+        Um bom profissional pergunta antes do primeiro treino: tipo de parto,
+        quando foi, se o médico liberou, se você está amamentando e se tem
+        perda de urina ou dor. As mesmas regras da gestação, na volta, estão no
+        guia do <a href="/guias/personal-trainer-para-gestantes/">personal
+        trainer para gestantes</a>.
+      </p>
+
+      <h2>Quando parar e procurar o médico</h2>
+      <p>
+        Este guia não substitui o acompanhamento médico. Pare o treino e
+        procure o médico se houver sangramento que aumenta, dor na pelve, no
+        abdômen ou na cicatriz, perda de urina que piora, sensação de peso na
+        região íntima, falta de ar ou tontura. Tristeza persistente, ansiedade
+        ou desânimo também são motivo de conversa com o médico: a OMS lista a
+        redução do risco de depressão pós-parto entre os benefícios da
+        atividade física, mas o exercício não substitui o tratamento.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39694630/" target="_blank" rel="noopener noreferrer">Beamish NF, Davenport MH, Ali MU, et al. Impact of postpartum exercise on pelvic floor disorders and diastasis recti abdominis: a systematic review and meta-analysis. British Journal of Sports Medicine, 2025</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/8289849/" target="_blank" rel="noopener noreferrer">Dewey KG, Lovelady CA, Nommsen-Rivers LA, McCrory MA, Lönnerdal B. A randomized study of the effects of aerobic exercise by lactating women on breast-milk volume and composition. New England Journal of Medicine, 1994</a></li>
+        <li>Conferidas em 11/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

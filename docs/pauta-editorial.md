@@ -633,7 +633,7 @@ desfeita entre o guia e a calculadora de preço.
 
 | Artigo | slug | status |
 |---|---|---|
-| Divisão de treino: como dividir por dias da semana | `/musculacao/divisao-de-treino/` | proposto — 01/10 (a cota de 30/09 fechou com proteína nos alimentos e 12-3-30) |
+| Divisão de treino: como dividir por dias da semana | `/musculacao/divisao-de-treino/` | ✅ 2026-11-11 · prints do Renato de 30/09 · `docs/divisao-de-treino.md` |
 
 Recorte: o artigo-índice das divisões, organizado pelo NÚMERO DE DIAS
 (2-3 full body, 4 superiores/inferiores, 5 ABCDE ou PPL+, 6 PPL 2x), com
@@ -697,7 +697,7 @@ macros, que é ferramenta nova e passa pela análise de lote antes.
 | Artigo | slug | status |
 |---|---|---|
 | Personal trainer para diabéticos | `personal-trainer-para-diabeticos` | ✅ 2026-11-10 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-para-diabeticos.md` |
-| Personal trainer no pós-parto | `personal-trainer-pos-parto` | |
+| Personal trainer no pós-parto | `personal-trainer-pos-parto` | ✅ 2026-11-11 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-pos-parto.md` |
 | Personal trainer para pessoas com deficiência | `personal-trainer-para-pcd` | |
 | Personal trainer para autistas | `personal-trainer-para-autistas` | |
 | Personal trainer para quem viaja a trabalho | `personal-trainer-para-quem-viaja` | |

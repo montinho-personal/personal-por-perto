@@ -1,0 +1,371 @@
+---
+/**
+ * Divisão de treino — o artigo-índice das divisões, organizado pelo NÚMERO
+ * DE DIAS que a pessoa treina (2-3, 4, 5, 6).
+ *
+ * Proposto em 30/09/2026 na pauta (nota "divisão de treino pede um artigo
+ * central, não a ferramenta"), com os prints do Renato daquele dia:
+ * autocompletar com masculino, feminino, abc, abcd, abcde, ppl, "3 vezes",
+ * "4 dias", "5 dias", "6 vezes", "superiores feminino"; PAA "Qual a divisão
+ * certa de treinos?", "Como montar divisão de treino?", "Como dividir o
+ * treino 5 vezes por semana?", "O que é a divisão do treino ABCD?".
+ * Publicado em 11/11/2026; registro em docs/divisao-de-treino.md.
+ *
+ * Recorte contra os vizinhos: `abc-ou-full-body` compara os dois formatos,
+ * `treino-abc-como-montar` mostra o ABC por dentro, `treino-push-pull-legs`
+ * e `frequencia-de-treino` aprofundam o seu pedaço. Esta página escolhe a
+ * divisão pelos dias e manda para o vizinho que aprofunda.
+ *
+ * Fontes conferidas em 11/11/2026: Schoenfeld, Ogborn e Krieger 2016 (Sports
+ * Med) e Schoenfeld, Grgic e Krieger 2019 (J Sports Sci), pelos resumos.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  {
+    url: '/musculacao/abc-ou-full-body/',
+    titulo: 'ABC ou full body: qual divisão escolher',
+    descricao: 'A comparação detalhada entre os dois formatos mais comuns.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-abc-como-montar/',
+    titulo: 'Treino ABC: como montar o seu',
+    descricao: 'O ABC por dentro, com exemplo completo de A, B e C.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/treino-push-pull-legs/',
+    titulo: 'Treino push pull legs',
+    descricao: 'O que entra em cada dia e por que ele brilha com seis dias.',
+    tipo: 'Musculação',
+  },
+  {
+    url: '/musculacao/frequencia-de-treino/',
+    titulo: 'Frequência de treino',
+    descricao: 'Quantas vezes por semana cada músculo precisa ser treinado.',
+    tipo: 'Musculação',
+  },
+];
+
+const path = '/musculacao/divisao-de-treino';
+const atualizadoEm = '2026-11-11';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Divisão de treino', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre divisão de treino';
+const faqs = [
+  {
+    pergunta: 'Qual é a divisão de treino certa?',
+    resposta:
+      'A que cabe nos dias que você treina de verdade e treina cada músculo cerca de duas vezes por semana. Com 2 ou 3 dias, full body. Com 4, superiores e inferiores. Com 5, ABCDE ou um misto de superiores/inferiores com push pull legs. Com 6, push pull legs duas vezes. Uma divisão perfeita no papel que você não cumpre perde para uma simples que você cumpre.',
+  },
+  {
+    pergunta: 'Como montar uma divisão de treino?',
+    resposta:
+      'Em três passos. Primeiro, conte quantos dias você consegue treinar em uma semana comum, não na melhor semana. Segundo, escolha a divisão que esses dias comportam. Terceiro, distribua o volume semanal de séries por músculo entre as sessões, sem pôr no dia seguinte o músculo que trabalhou como auxiliar na véspera, como tríceps depois do peito.',
+  },
+  {
+    pergunta: 'Como dividir o treino 5 vezes por semana?',
+    resposta:
+      'Há dois caminhos. O ABCDE dá um dia para cada região (por exemplo peito, costas, ombros, braços e pernas) e treina cada músculo uma vez por semana, com muito volume na sessão. O misto de superiores e inferiores com push pull legs treina cada músculo perto de duas vezes por semana. Para hipertrofia, o segundo costuma aproveitar melhor os cinco dias.',
+  },
+  {
+    pergunta: 'O que é a divisão de treino ABCD?',
+    resposta:
+      'É uma divisão em quatro sessões, uma para cada grupo de músculos, feitas em quatro dias da semana. Um exemplo comum: A peito e tríceps, B costas e bíceps, C pernas, D ombros. Cada músculo é treinado uma vez por semana. Quem tem quatro dias também pode usar superiores e inferiores, que treina cada músculo duas vezes.',
+  },
+  {
+    pergunta: 'A divisão de treino feminina é diferente da masculina?',
+    resposta:
+      'Não. Os princípios são os mesmos para homens e mulheres: volume, progressão e frequência por músculo. O que muda é a ênfase que cada pessoa quer. Muitas mulheres pedem mais glúteo e posterior de coxa, e isso se resolve pondo mais séries desses músculos na mesma divisão, não trocando de divisão.',
+  },
+  {
+    pergunta: 'Treinar cada músculo uma vez por semana funciona?',
+    resposta:
+      'Funciona, mas tende a render um pouco menos. Uma meta-análise de 2016 encontrou mais hipertrofia treinando cada músculo duas vezes por semana do que uma. Outra, de 2019, mostrou que com o mesmo volume semanal a diferença some. Na prática, duas sessões por semana facilitam fazer o volume sem sessões longas demais.',
+  },
+];
+
+/* 50 caracteres. */
+const title = 'Divisão de Treino: Como Dividir por Dias da Semana';
+/* 150 caracteres. */
+const description =
+  'Qual divisão de treino escolher para 2, 3, 4, 5 ou 6 dias: full body, superiores e inferiores, ABC, ABCD, ABCDE e push pull legs, com a semana pronta.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Divisão de treino: como dividir pelos dias da semana</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A divisão de treino é o calendário da musculação: ela diz que músculo
+      você treina em cada dia. A melhor não é a mais famosa nem a do atleta
+      que você segue. É a que <strong>cabe nos dias que você treina de
+      verdade</strong> e faz cada músculo trabalhar mais ou menos
+      <strong>duas vezes por semana</strong>.
+    </p>
+
+    <div class="prose">
+      <h2>A regra que vale para todas: duas vezes por músculo</h2>
+      <p>
+        Duas meta-análises respondem à pergunta de quantas vezes treinar cada
+        músculo. A de 2016, com dez estudos, achou mais hipertrofia quando o
+        músculo é treinado <strong>duas vezes por semana</strong> do que uma.
+        A de 2019, com 25 estudos, mostrou que, <strong>com o mesmo volume
+        semanal de séries</strong>, a frequência quase não muda o resultado.
+      </p>
+      <p>
+        As duas juntas dizem o que importa: o que faz o músculo crescer é o
+        volume da semana. A divisão só distribui esse volume. Treinar cada
+        músculo duas vezes ajuda porque divide as séries em sessões mais
+        curtas e mais bem feitas. O número de séries por músculo está em
+        <a href="/musculacao/quantas-series-e-repeticoes/">quantas séries e
+        repetições fazer</a>.
+      </p>
+
+      <h2>A divisão certa para cada número de dias</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Dias por semana</th><th>Divisão</th><th>Vezes por músculo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2 ou 3</td><td>Full body (corpo inteiro em cada treino)</td><td>2 a 3</td></tr>
+            <tr><td>3</td><td>ABC</td><td>1</td></tr>
+            <tr><td>4</td><td>Superiores e inferiores (AB 2x)</td><td>2</td></tr>
+            <tr><td>4</td><td>ABCD</td><td>1</td></tr>
+            <tr><td>5</td><td>Superiores, inferiores + push pull legs</td><td>perto de 2</td></tr>
+            <tr><td>5</td><td>ABCDE</td><td>1</td></tr>
+            <tr><td>6</td><td>Push pull legs 2x</td><td>2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Repare na última coluna. Para o mesmo número de dias quase sempre há
+        uma opção que treina cada músculo uma vez e outra que treina duas.
+        Nenhuma é proibida, mas a de duas costuma aproveitar melhor os dias.
+      </p>
+
+      <h2>2 ou 3 dias: full body</h2>
+      <p>
+        Com poucos dias, treinar o corpo inteiro em cada sessão é o único
+        jeito de chegar a duas ou três vezes por músculo. Cada treino tem um
+        ou dois exercícios para pernas, um empurrar, um puxar e algum
+        complemento. É também o melhor ponto de partida para quem está
+        começando, como mostra o
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a>.
+      </p>
+      <p>
+        O ABC de três dias é a alternativa mais comum na academia. Ele treina
+        cada músculo uma vez por semana, com mais volume em cada sessão. A
+        comparação completa está em
+        <a href="/musculacao/abc-ou-full-body/">ABC ou full body</a>.
+      </p>
+
+      <h2>4 dias: superiores e inferiores</h2>
+      <p>
+        Dois treinos de parte de cima e dois de pernas, alternados. Cada
+        músculo trabalha duas vezes por semana e o calendário se repete igual
+        toda semana.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dia</th><th>Treino</th></tr></thead>
+          <tbody>
+            <tr><td>Segunda</td><td>Superiores (peito, costas, ombros, braços)</td></tr>
+            <tr><td>Terça</td><td>Inferiores (quadríceps, posterior, glúteo, panturrilha)</td></tr>
+            <tr><td>Quarta</td><td>Descanso</td></tr>
+            <tr><td>Quinta</td><td>Superiores</td></tr>
+            <tr><td>Sexta</td><td>Inferiores</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        O <strong>ABCD</strong> é a outra forma de usar quatro dias: uma sessão
+        para cada grupo, por exemplo A peito e tríceps, B costas e bíceps,
+        C pernas e D ombros. Cada músculo treina uma vez por semana. Funciona,
+        principalmente para quem gosta de sessões focadas, mas exige mais
+        séries por sessão para chegar ao mesmo volume.
+      </p>
+
+      <h2>5 dias: ABCDE ou o misto</h2>
+      <p>
+        O <strong>ABCDE</strong> dá um dia para cada região: peito, costas,
+        ombros, braços e pernas. É a divisão clássica de fisiculturismo e
+        treina cada músculo uma vez por semana. O problema mais comum é o dia
+        de pernas: um dia só para quadríceps, posterior, glúteo e panturrilha
+        fica longo, e é o primeiro a ser pulado.
+      </p>
+      <p>
+        O <strong>misto</strong> usa os cinco dias para chegar perto de duas
+        vezes por músculo: superiores e inferiores no começo da semana, e um
+        push pull legs no fim.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dia</th><th>Treino</th></tr></thead>
+          <tbody>
+            <tr><td>Segunda</td><td>Superiores</td></tr>
+            <tr><td>Terça</td><td>Inferiores</td></tr>
+            <tr><td>Quarta</td><td>Descanso</td></tr>
+            <tr><td>Quinta</td><td>Push (peito, ombros, tríceps)</td></tr>
+            <tr><td>Sexta</td><td>Pull (costas, bíceps, posterior de ombro)</td></tr>
+            <tr><td>Sábado</td><td>Legs (pernas)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <FerramentaInline
+        id="rotina"
+        texto="A tabela só funciona se os cinco dias existirem na sua semana. Se você não sabe se são cinco, quatro ou três, a ferramenta parte dos dias e do tempo que você tem de verdade e devolve a divisão que cabe."
+        acao="Ver a divisão que cabe na minha semana"
+      />
+
+      <h2>6 dias: push pull legs duas vezes</h2>
+      <p>
+        Com seis dias, o push pull legs fecha duas voltas na semana e treina
+        cada músculo duas vezes. É provavelmente a melhor divisão para quem
+        tem esse tempo. O que entra em cada dia e os erros de quem copia a
+        versão de seis dias estão em
+        <a href="/musculacao/treino-push-pull-legs/">treino push pull
+        legs</a>.
+      </p>
+      <p>
+        Seis dias seguidos cobram recuperação. Se a semana começa completa e
+        termina com o segundo treino de pernas pulado toda vez, cinco dias bem
+        feitos rendem mais.
+      </p>
+
+      <h2>Divisão feminina e masculina: o que muda</h2>
+      <p>
+        A divisão não muda pelo sexo. Volume, progressão e frequência
+        funcionam do mesmo jeito em homens e mulheres. O que muda é a ênfase
+        que cada pessoa pede. É comum mulheres quererem mais glúteo e
+        posterior de coxa. Nesse caso a divisão continua a mesma e esses
+        músculos ganham mais séries ou um terceiro estímulo na semana. Um
+        treino de "superiores feminino" não precisa ser mais leve nem diferente
+        do masculino. Os exercícios e cargas são escolhidos pelo nível de cada
+        pessoa. Os mitos sobre isso estão em
+        <a href="/musculacao/musculacao-feminina-mitos/">musculação
+        feminina</a>.
+      </p>
+
+      <h2>Os três erros de montar a divisão</h2>
+      <ul>
+        <li>
+          <strong>Escolher pela melhor semana.</strong> Quem monta cinco dias e
+          treina três fica com músculos que não são treinados. Conte os dias
+          de uma semana comum.
+        </li>
+        <li>
+          <strong>Treinar o auxiliar na véspera do principal.</strong> Tríceps
+          num dia e peito no seguinte, ou bíceps antes de costas, faz você
+          chegar cansado ao exercício principal.
+        </li>
+        <li>
+          <strong>Trocar de divisão toda hora.</strong> A divisão é só o
+          calendário. Trocar não substitui progredir carga e séries, que é o
+          que faz o resultado aparecer.
+        </li>
+      </ul>
+      <p>
+        Se você sente dor durante algum treino, ou tem lesão ou alguma limitação, ajuste a
+        divisão com um médico ou fisioterapeuta antes de aumentar dias e
+        volume.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27102172/" target="_blank" rel="noopener noreferrer">Schoenfeld BJ, Ogborn D, Krieger JW. Effects of resistance training frequency on measures of muscle hypertrophy: a systematic review and meta-analysis. Sports Medicine, 2016</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/30558493/" target="_blank" rel="noopener noreferrer">Schoenfeld BJ, Grgic J, Krieger J. How many times per week should a muscle be trained to maximize muscle hypertrophy? A systematic review and meta-analysis of studies examining the effects of resistance training frequency. Journal of Sports Sciences, 2019</a></li>
+        <li>Conferidas em 11/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="musculacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
