@@ -70,6 +70,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é pequena, concentrada no centro da cidade e voltada principalmente a musculação; parte do condicionamento físico de moradores e guias de turismo acontece de forma informal, aproveitando as trilhas e o relevo da Serra do Sincorá.',
 
+  academiasVerificadasEm: '2026-11-12',
+
   destaquesFitness: [
     'Concentra 52% do território do Parque Nacional da Chapada Diamantina, com trilhas na Serra do Sincorá.',
     'Altitude de 983 m garante clima ameno, favorável ao treino ao ar livre durante boa parte do ano.',

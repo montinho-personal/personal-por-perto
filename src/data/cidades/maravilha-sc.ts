@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva mistura o uso das praças e parques para caminhada e corrida, provas de rua que reúnem a comunidade e a tradição de clubes e eventos ligados à colonização e à vida no interior, com forte apelo às áreas verdes da cidade.',
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional, distribuídas pelo centro e pelos bairros residenciais, em porte compatível com um polo de serviços do interior catarinense.',
+  academiasProximas: [
+    { nome: 'Centro de Treinamento Mamuscles', detalhe: 'na Av. Sul Brasil, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-12',
 
   destaquesFitness: [
     'Polo regional do Extremo-Oeste catarinense, sede da Amerios, com serviços que atendem toda a microrregião.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Maravilha', url: 'https://maravilha.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-12',
 };

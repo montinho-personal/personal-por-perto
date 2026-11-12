@@ -75,6 +75,7 @@ export const cidade: Cidade = {
     { nome: 'Smart Fit Condor Nova Rússia', detalhe: 'na Av. João Manoel dos Santos Ribas, na Nova Rússia' },
     { nome: 'Bluefit Ponta Grossa', detalhe: 'na Rua Ermelino de Leão, junto ao Shopping Palladium' },
   ],
+  academiasVerificadasEm: '2026-11-12',
 
   destaquesFitness: [
     'Rede de parques com pistas e academias ao ar livre (Manoel Ribas, Olarias, Parque Linear).',

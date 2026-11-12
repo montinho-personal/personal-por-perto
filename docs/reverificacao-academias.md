@@ -898,3 +898,25 @@ Saldo da leva: 7 entradas → 6 mantidas (3 corrigidas) e 1 removida. 102 cidade
 | Estrutura do Lago Municipal — "pista do Parque Diva Paim Barth, gratuita" | **corrigida**: renomeada para "Lago Municipal", com pista de caminhada e ciclovia em parque público | Revista Oeste + Correio Braziliense |
 
 O texto `academias` dizia "grandes redes". A Smart Fit não tem unidade em Toledo, então o texto passou a dizer "a Bluefit e academias locais". Saldo da leva: 5 entradas → 4 mantidas (2 corrigidas) e 1 removida. 100 cidades seguem na fila.
+
+### 12/11/2026 — leva 38 (rotina, Parte B: Vitória da Conquista e Ponta Grossa)
+
+**Vitória da Conquista/BA** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Ativa Fitness Candeias — "Av. Eratóstenes Menezes: cerca de 2.700 m² com musculação, ginástica e natação" | **corrigida**: Av. Erathóstenes Menezes, Candeias (nº 611), com musculação e natação. "2.700 m²" e "ginástica" não têm fonte | Wellhub + TotalPass |
+| Ativa Fitness Recreio — "segunda unidade da rede local, na Av. Siqueira Campos" | **removida**: o Wellhub e o TotalPass só têm a unidade Candeias, e a busca aberta não acha unidade no Recreio | — |
+| Smart Fit Vitória da Conquista — "Avenida Olívia Flores, em Candeias" | confirmada sem mudança (nº 1265) | página oficial (`opened:true`) |
+
+A Smart Fit Bairro Brasil (Av. Brumado) aparece no localizador com `opened:false` e a Bluefit da cidade (Rua Alice Ferraz Rodrigues) está no sitemap, mas a Parte B não acrescenta.
+
+**Ponta Grossa/PR** — tudo confirmado; a página não mudou (só `academiasVerificadasEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Ponta Grossa — "Rua Jacob Holzmann, nas Olarias" | confirmada (a rede grafa "Jacobe Holzman", nº 333) | página oficial (`opened:true`) |
+| Smart Fit Condor Nova Rússia — "Av. João Manoel dos Santos Ribas" | confirmada sem mudança (nº 555) | página oficial (`opened:true`) |
+| Bluefit Ponta Grossa — "Rua Ermelino de Leão, junto ao Shopping Palladium" | confirmada: Rua Ermelino de Leão, 703, Olarias, que é o endereço do Shopping Palladium segundo a Agência Estadual de Notícias do Paraná (Poupatempo no shopping) | página oficial + aen.pr.gov.br |
+
+Saldo da leva: 6 entradas → 5 mantidas (1 corrigida) e 1 removida. 98 cidades seguem na fila.
