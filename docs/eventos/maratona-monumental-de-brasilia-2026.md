@@ -48,6 +48,12 @@ Rede liberada em 13/10/2026. O site recusava com 406 o agente "Mozilla/5.0" curt
 
 Horários, kit e local não mudaram. Artigo atualizado: FAQ de premiação, tabela-resumo, seção Premiação (com o quadro), link do regulamento (v9) e Fontes; Última verificação 10/11.
 
+**Varredura de 13/11/2026:** sem fato novo.
+- O regulamento continua na v9 (md5 igual ao arquivado).
+- A Ticket Sports mostra `SoldOut`, com startDate 2026-11-22T05:00.
+- O site oficial abriu sem novidade de largada, kit ou trânsito.
+- Não há anúncio do Detran-DF para 2026 nos resultados de busca.
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)

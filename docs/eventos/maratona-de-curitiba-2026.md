@@ -42,37 +42,7 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
 
 **Varredura de 03/11/2026:** o site oficial não abriu (conexão recusada), e não foi contornado. Na Ticket Sports, o JSON-LD da página da prova passou de `InStock` para **`SoldOut`** (startDate 2026-11-15T05:00 e status EventScheduled, iguais aos de antes). Junto com o prazo do regulamento (23h59 de 31/10), isso indica **inscrições encerradas**. O artigo diz "encerradas", não "esgotadas": nenhuma fonte diz se o limite de 16 mil foi atingido. O PDF do regulamento tem o mesmo md5 (97749585…). Artigo atualizado: FAQ de inscrição, tabela-resumo e seção "Inscrição e valor"; Última verificação 03/11.
 
-## Bloqueado (pedir print) — quase tudo resolvido em 13/10; falta o PDF do regulamento (Azure blob) e a Prefeitura (403)
-
-- https://www.maratonadecuritiba.com.br/ (home, regulamento, kit, percurso, premiação)
-- https://www.curitiba.pr.gov.br/noticias/maratona-de-curitiba-esta-com-inscricoes-abertas-e-espera-publico-internacional/84225 (403 do servidor)
-- PDF na Atletis associado à prova: https://cdn.atletis.com.br/event-terms/e77/20a/9ca/1203-J90T.pdf
-- Imprensa: Bem Paraná, Banda B, Tribuna, Gazeta do Povo, ge/g1
-
-## Pendente — pistas sem fonte (não usar no artigo)
-
-| item | pista | conflito |
-|---|---|---|
-| data | 15/11/2026 | — |
-| distâncias | 5, 10, 21 e 42 km | — |
-| organizador | Global Vita Sports + Associação Amazing Runs | — |
-| inscrição | venda geral desde 17/06 (pré-venda VIP 15–16/06); 1º lote "a partir de R$ 119"; limite 16 mil; ~10 mil inscritos em 23/07 | esgotou? |
-| expo/kit | Expo no Museu Oscar Niemeyer, 12 a 14/11 | horários; se é a retirada |
-| premiação | "mais de R$ 604 mil", R$ 110 mil aos vencedores dos 42 km | pode ser de 2025 |
-| edição | "7ª" | numeração antiga fala em 13ª/14ª — não usar número |
-| 2025 | 23/11/2025, 16,2 mil inscritos, World Athletics Gold Label | vencedores não encontrados |
-| largada, percurso, tempo limite, idade mínima, trânsito, transmissão | nada | — |
-
-Atenção: não confundir com a Maratona Internacional do Paraná (Guaratuba) nem com a Meia de Curitiba.
-
-## Prints de busca
-
-Recebidos em 13/10 (`prints/maratona-de-curitiba-2026/`): autocompletar, visão geral de IA (não é fonte), PAA, "Outras pessoas pesquisaram", e os exports de PAA, modelos de IA e buscadores.
-
-- Autocompletar/Outras pessoas: inscrições, data, premiação, percurso, altimetria, valor, regulamento, santander, largada, horário, resultado, trajeto, novembro.
-- Volumes (export): maratona de curitiba 2026 1,6 mil; **meia maratona de curitiba 2026 1,3 mil** (outra prova, de junho — virou seção "Não confunda"); maratona internacional de curitiba 2026 210; inscrições 110; data 50; percurso 30; valor 20.
-- PAA: valor; datas das maratonas 2026; valor do premiamento; corrida das Estações (fora do escopo). Export: tempos de 21/42 km, tempo limite → seção de tempo limite + calculadora de pace.
-
-## Artigo
-
-Publicado em 13/10/2026: `/guias/maratona-de-curitiba-2026/` (`src/pages/guias/maratona-de-curitiba-2026.astro`).
+**Varredura de 13/11/2026:**
+- **Site oficial** (abriu): a home e o menu mostram **"ESGOTADO"**. O FAQ continua com "Horário de largada: 5h00" e a mesma ordem de ondas. Os percursos seguem "em Breve", com links para o Google My Maps que não abrem aqui.
+- **Artigo atualizado:** "encerradas" virou "esgotadas, segundo o site oficial" no FAQ de inscrição, na tabela-resumo e na seção "Inscrição e valor". Última verificação passou para 13/11.
+- **Trânsito 2026:** só um veículo (Paraná Shop, bloqueado aqui) fala em 19 interdições desde as 22h de sexta (13) e cita a Av. Cândido de Abreu. A Prefeitura devolve 403. Com fonte única, não entra no artigo; pedir print da notícia da Prefeitura ao Renato se ele quiser incluir.
