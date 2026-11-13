@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'Araxá tem adesão crescente à corrida de rua e bom uso das áreas verdes do Barreiro e do Centro, somando-se à cultura de bem-estar associada às águas termais.',
   academias:
     'A oferta reúne academias de bairro, estúdios e atendimento personalizado, complementada pelas amplas áreas verdes do Barreiro para treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit Araxá', detalhe: 'na Av. Imbiara, no Centro' },
+    { nome: 'Bluefit Araxá', detalhe: 'na Rua Domingos Di Mambro, na Vila Silvéria' },
+  ],
+  academiasVerificadasEm: '2026-11-13',
 
   destaquesFitness: [
     'Parque do Barreiro como principal espaço público para caminhada e treino ao ar livre.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araxá', url: 'https://www.araxa.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-13',
 };

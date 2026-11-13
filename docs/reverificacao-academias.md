@@ -920,3 +920,25 @@ A Smart Fit Bairro Brasil (Av. Brumado) aparece no localizador com `opened:false
 | Bluefit Ponta Grossa — "Rua Ermelino de Leão, junto ao Shopping Palladium" | confirmada: Rua Ermelino de Leão, 703, Olarias, que é o endereço do Shopping Palladium segundo a Agência Estadual de Notícias do Paraná (Poupatempo no shopping) | página oficial + aen.pr.gov.br |
 
 Saldo da leva: 6 entradas → 5 mantidas (1 corrigida) e 1 removida. 98 cidades seguem na fila.
+
+### 13/11/2026 — leva 39 (rotina, Parte B: Vila Velha e Americana)
+
+**Vila Velha/ES** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades na Praia da Costa (duas), no Centro e em Itapuã" | **corrigida**: são cinco unidades abertas (Shopping Vila Velha, Centro, Praia da Costa, Santos Dumont e Praia de Itaparica). A "Praia da Costa II", que fica em Itapuã, aparece no localizador com `opened:false` e não conta | página oficial |
+| Estúdios e boxes da orla | **removida**: entrada genérica, sem nome de academia nem fonte | — |
+| Estrutura pública da orla — "calçadão contínuo de Praia da Costa a Itaparica, gratuito" | **corrigida**: "Orla da Praia da Costa, calçadão urbanizado, público". A continuidade até Itaparica não tem fonte | es.gov.br (orla da Praia da Costa já urbanizada) |
+
+A FAQ "Onde o personal costuma atender" também foi corrigida: as Smart Fit são "da Praia da Costa, de Itaparica e do Centro", não de Itapuã, e saíram os "estúdios do eixo beira-mar".
+
+**Americana/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Americana — "na Av. Brasil" | confirmada sem mudança (nº 1955, Jardim São Paulo) | página oficial (`opened:true`) |
+| Panobianco Americana — "Av. Campos Sales, Jardim Girassol" | **detalhe removido**: o nome existe no Wellhub ("Americana I") e no TotalPass ("Panobianco Academia - Americana"), mas só o Wellhub dá o endereço (nº 1070). O site oficial não responde daqui. Fica só o nome | Wellhub + TotalPass (nome) |
+| Panobianco Zanaga | confirmada só com o nome, como já estava: Wellhub (Av. Cecília Meireles, 150, Antonio Zanaga) e página no TotalPass | Wellhub + TotalPass (nome) |
+
+Saldo da leva: 6 entradas → 5 mantidas (2 corrigidas e 1 reduzida ao nome) e 1 removida. 96 cidades seguem na fila.

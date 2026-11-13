@@ -64,6 +64,11 @@ export const cidade: Cidade = {
     'A tradição de colonização italiana e alemã se reflete em festas e eventos comunitários, e a cidade mantém uma cena ativa de corrida de rua e trail, com provas que partem do Parque de Exposições. O esporte amador tem boa adesão, sustentado por clubes e associações locais.',
   academias:
     'A oferta combina academias de bairro e estúdios no centro, complementada por espaços públicos como o Parque de Exposições e as margens do Rio do Peixe para treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'CrossFit Concórdia', detalhe: 'na Rua Anita Garibaldi, no Vista Alegre' },
+    { nome: 'BodYoung Concórdia', detalhe: 'no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-13',
 
   destaquesFitness: [
     'Cerca de 82 mil habitantes e IDHM muito alto — base sólida para serviços de bem-estar.',
@@ -91,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — Concórdia', url: 'https://www.atlasbrasil.org.br/perfil/municipio/420430' },
     { nome: 'Embrapa Suínos e Aves', url: 'https://www.embrapa.br/suinos-e-aves' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-13',
 };

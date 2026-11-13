@@ -71,10 +71,10 @@ export const cidade: Cidade = {
     'A oferta de academias é ampla nos bairros litorâneos, complementada pelas academias ao ar livre dos calçadões da Praia da Costa e de Itaparica.',
 
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na Praia da Costa (duas), no Centro e em Itapuã' },
-    { nome: 'Estúdios e boxes da orla', detalhe: 'funcional e cross entre Praia da Costa e Itaparica' },
-    { nome: 'Estrutura pública da orla', detalhe: 'calçadão contínuo de Praia da Costa a Itaparica, gratuito' },
+    { nome: 'Smart Fit', detalhe: 'cinco unidades na cidade, entre elas Praia da Costa, Praia de Itaparica, Centro e Shopping Vila Velha' },
+    { nome: 'Orla da Praia da Costa', detalhe: 'calçadão urbanizado, público' },
   ],
+  academiasVerificadasEm: '2026-11-13',
 
   destaquesFitness: [
     'Orla da Praia da Costa com academias ao ar livre e ciclovia de cerca de 5 km.',
@@ -99,7 +99,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Vila Velha?',
       resposta:
-        'O corredor da orla concentra quase tudo: o calçadão da Praia da Costa a Itaparica para corrida e funcional, as Smart Fit da Praia da Costa, Centro e Itapuã, os estúdios do eixo beira-mar e o atendimento em condomínio nos prédios da orla — o formato que mais cresce. O Morro do Moreno é o extra local: subida clássica para treino de resistência com vista para a Terceira Ponte e o Convento da Penha.',
+        'O corredor da orla concentra quase tudo: o calçadão da Praia da Costa a Itaparica para corrida e funcional, as Smart Fit da Praia da Costa, de Itaparica e do Centro e o atendimento em condomínio nos prédios da orla — o formato que mais cresce. O Morro do Moreno é o extra local: subida clássica para treino de resistência com vista para a Terceira Ponte e o Convento da Penha.',
     },
     {
       pergunta: 'Dá para treinar para as Dez Milhas Garoto com personal em Vila Velha?',
@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Vila Velha', url: 'https://www.vilavelha.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-29',
+  atualizadoEm: '2026-11-13',
   capaArte: {
     src: '/capas-cidade/vila-velha-es.webp',
     w: 1200,
