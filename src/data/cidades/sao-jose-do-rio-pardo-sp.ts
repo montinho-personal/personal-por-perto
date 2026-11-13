@@ -110,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José do Rio Pardo', url: 'https://saojosedoriopardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-07',
+  atualizadoEm: '2026-11-13',
 };

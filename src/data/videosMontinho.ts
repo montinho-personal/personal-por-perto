@@ -188,6 +188,11 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'votuporanga-sp', 'anapolis-go', 'cachoeiro-de-itapemirim-es', 'campos-do-jordao-sp', 'santa-ines-ma',
   'capao-da-canoa-rs', 'itapetininga-sp', 'arapiraca-al', 'botucatu-sp', 'caraguatatuba-sp',
   'conde-pb', 'bebedouro-sp', 'itanhaem-sp', 'mafra-sc', 'ponta-grossa-pr',
+  // leva 8 — 13/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 7 conferida no ar)
+  'sao-jose-dos-campos-sp', 'boituva-sp', 'itabirito-mg', 'santa-maria-rs', 'bage-rs',
+  'arcos-mg', 'flores-da-cunha-rs', 'pederneiras-sp', 'santarem-pa', 'brumado-ba',
+  'erechim-rs', 'itaperuna-rj', 'sao-miguel-do-gostoso-rn', 'sao-pedro-sp', 'tiangua-ce',
+  'araguaina-to', 'campo-mourao-pr', 'mariana-mg', 'presidente-prudente-sp', 'sao-jose-do-rio-pardo-sp',
   // 10/11/2026: fora da fila de impressões, junto com o piloto do modelo enxuto
   // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
   'natal-rn', 'contagem-mg', 'ananindeua-pa',

@@ -119,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José dos Campos', url: 'https://www.sjc.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-06',
+  atualizadoEm: '2026-11-13',
   capaArte: {
     src: '/capas-cidade/sao-jose-dos-campos-sp.webp',
     w: 1200,

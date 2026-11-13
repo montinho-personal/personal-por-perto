@@ -111,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itabirito', url: 'https://itabirito.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3203700' },
   ],
-  atualizadoEm: '2026-10-26',
+  atualizadoEm: '2026-11-13',
 };

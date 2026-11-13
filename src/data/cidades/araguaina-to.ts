@@ -102,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araguaína', url: 'https://www.araguaina.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-24',
+  atualizadoEm: '2026-11-13',
 };
