@@ -70,8 +70,9 @@ export const cidade: Cidade = {
     'A oferta de academias acompanha a renda industrial e o litoral de alto padrão; muitos condomínios têm estrutura própria de treino, e a procura por personal trainers é puxada pelo público de maior poder aquisitivo de Guarajuba e Busca Vida.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Camaçari', detalhe: 'no Boulevard Shopping, na BA-535' },
+    { nome: 'Smart Fit Camaçari', detalhe: 'na Via Parafuso (BA-535), no bairro Industrial' },
   ],
+  academiasVerificadasEm: '2026-11-14',
 
   destaquesFitness: [
     'Litoral de alto padrão (Guarajuba, Busca Vida) com público para atendimento personalizado.',
@@ -101,7 +102,7 @@ export const cidade: Cidade = {
   ],
   // Foco em preço no título e na descrição: leva de 30/10/2026 (conferência de SEO local).
   metaFoco: 'preco',
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-14',
 
   capaArte: {
     src: '/capas-cidade/camacari-ba.webp',

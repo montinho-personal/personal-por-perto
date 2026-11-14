@@ -68,6 +68,10 @@ export const cidade: Cidade = {
     'Há forte identidade ligada ao surfe e aos esportes aquáticos e de praia, com Maresias como referência nacional, e calendário ativo de etapas de surfe, travessias e corridas.',
   academias:
     'A oferta reúne academias e estúdios, com mais de 100 km de orla funcionando como academia a céu aberto e a sazonalidade do verão elevando a demanda.',
+  academiasProximas: [
+    { nome: 'Academia Bem Estar', detalhe: 'na Av. Prof. José Machado Rosa' },
+  ],
+  academiasVerificadasEm: '2026-11-14',
 
   destaquesFitness: [
     'Maresias como polo de surfe de nível internacional (etapa mundial).',
@@ -95,5 +99,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Sebastião', url: 'https://www.saosebastiao.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-14',
 };

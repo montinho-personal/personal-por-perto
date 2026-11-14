@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva se apoia em iniciativas da prefeitura e na proximidade com Fortaleza, que amplia o acesso a corridas de rua e eventos da Grande Fortaleza para os atletas locais.',
   academias:
     'A oferta reúne academias e estúdios concentrados no Centro e ao longo da BR-116, complementada pelas praças, pelas avenidas urbanas e pelo entorno do açude Gameleira.',
+  academiasProximas: [
+    { nome: 'Selfit Horizonte', detalhe: 'na Rua Manoel Conrado de Sousa, no Zumbi' },
+  ],
+  academiasVerificadasEm: '2026-11-14',
 
   destaquesFitness: [
     'Polo industrial em forte crescimento, com demanda fitness puxada pela população operária e pelos novos loteamentos.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Horizonte', url: 'https://www.horizonte.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-14',
 };

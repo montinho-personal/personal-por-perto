@@ -942,3 +942,23 @@ A FAQ "Onde o personal costuma atender" também foi corrigida: as Smart Fit são
 | Panobianco Zanaga | confirmada só com o nome, como já estava: Wellhub (Av. Cecília Meireles, 150, Antonio Zanaga) e página no TotalPass | Wellhub + TotalPass (nome) |
 
 Saldo da leva: 6 entradas → 5 mantidas (2 corrigidas e 1 reduzida ao nome) e 1 removida. 96 cidades seguem na fila.
+
+### 14/11/2026 — leva 40 (rotina, Parte B: Mogi das Cruzes e Camaçari)
+
+**Mogi das Cruzes/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades na Vila Mogilar, no Centro Cívico e no Alto Ipiranga" | confirmada sem mudança: Max Muffato (Vila Mogilar), Av. Vereador Narciso (Centro Cívico) e Av. Fernando Costa (Alto Ipiranga) | página oficial (`opened:true`) |
+| Boxes de crossfit — "vários boxes espalhados pela cidade" | **removida**: entrada genérica, sem nome de box nem fonte | — |
+| Academias ao ar livre — "nos parques Centenário da Imigração Japonesa e Leon Feffer" | **corrigida**: só a do Parque Centenário tem fonte (a prefeitura cita a Academia da Terceira Idade do parque). Nada sustenta academia no Leon Feffer | turismo.mogidascruzes.sp.gov.br + folder municipal |
+
+O destaque "academia ao ar livre (Centenário, Leon Feffer)" passou a citar só o Centenário.
+
+**Camaçari/BA** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Camaçari — "no Boulevard Shopping, na BA-535" | **corrigida**: Rodovia BA-535, Via Parafuso, bairro Industrial. "Boulevard Shopping" não aparece na página da unidade nem em outra fonte | página oficial (`opened:true`) |
+
+Camaçari continua com 1 entrada. Saldo da leva: 4 entradas → 3 mantidas (2 corrigidas) e 1 removida. 94 cidades seguem na fila.

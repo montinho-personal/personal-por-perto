@@ -71,12 +71,12 @@ export const cidade: Cidade = {
     'A oferta reúne boxes de crossfit, academias tradicionais e estúdios, complementada por parques amplos e bem equipados com academia ao ar livre.',
   academiasProximas: [
     { nome: 'Smart Fit', detalhe: 'unidades na Vila Mogilar, no Centro Cívico e no Alto Ipiranga' },
-    { nome: 'Boxes de crossfit', detalhe: 'cena consolidada, com vários boxes espalhados pela cidade' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, nos parques Centenário da Imigração Japonesa e Leon Feffer' },
+    { nome: 'Academia da Terceira Idade do Parque Centenário', detalhe: 'gratuita, no Parque Centenário da Imigração Japonesa' },
   ],
+  academiasVerificadasEm: '2026-11-14',
 
   destaquesFitness: [
-    'Parques amplos e bem equipados com academia ao ar livre (Centenário, Leon Feffer).',
+    'Parques amplos e bem equipados com academia ao ar livre (Centenário).',
     'Calendário recorrente de corridas de rua.',
     'Cena de crossfit consolidada com vários boxes.',
     'Clima de altitude ameno, ótimo para treino outdoor o ano todo.',
@@ -119,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Mogi das Cruzes', url: 'https://www.mogidascruzes.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-14',
   capaArte: {
     src: '/capas-cidade/mogi-das-cruzes-sp.webp',
     w: 1200,
