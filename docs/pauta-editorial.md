@@ -156,6 +156,96 @@ do gatilho aguardando o ok do Renato.
 (16; 23,7), `/musculacao/rosca-direta-como-fazer/` (12; 21,9). Fila pequena:
 dá para retomar a rotina de reescritas em ritmo baixo.
 
+### 14/11/2026 — releitura dos 24 e das reescritas, com 30 dias
+
+Fonte: Search Console via Supermetrics (GW, por página, últimos 30 dias até
+13/11). Mesma régua de 14/10.
+
+**Os 24 cresceram em impressão, não em clique.**
+
+| bloco | impressões 14/10 → 14/11 | cliques 14/10 → 14/11 |
+|---|---|---|
+| Mounjaro (7) | 1.192 → 2.694 | 3 → 9 |
+| Execução e técnica (17) | 1.689 → 2.240 | 4 → 3 |
+| **Total** | **2.881 → 4.934 (+71%)** | **7 → 12 (0,24%)** |
+
+- A taxa de clique ficou igual: 0,24% nas duas leituras, com posição média
+  entre 6 e 9.
+- A impressão está concentrada: cãibras 1.912 (8 cliques), leg press 45 ou
+  horizontal 1.153 (2), Smith 466 (0), fraqueza nas pernas 526 (1).
+- Os outros 20 somam menos de 900.
+- O padrão "página 1 sem clique" não é exclusivo dos 24. Aparece também nas
+  calculadoras:
+
+| página | impressões | cliques |
+|---|---|---|
+| calculadora de passos | 13.942 | 5 |
+| calorias/corda | 3.833 | 5 |
+| calorias/escada | 3.195 | 2 |
+| calorias/caminhada | 2.083 | 2 |
+
+  Isso aponta para resultado respondido na própria SERP (visão geral de IA,
+  PAA) ou para título que não convida. Não aponta para falta de artigo.
+
+**A fila de reescrita** (artigo com 10+ impressões e posição pior que 20):
+
+| artigo | impressões | posição |
+|---|---|---|
+| `/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/` | 147 | 34,6 |
+| `/emagrecimento/comer-fora-e-dieta/` | 54 | 28,1 |
+| `/guias/como-escolher-personal-trainer/` | 46 | 28,2 |
+| `/emagrecimento/plato-de-emagrecimento/` | 31 | 31,4 |
+| `/musculacao/hipertrofia-como-funciona/` | 63 | 56,6 |
+
+- A de Mounjaro é a novidade: entrou na fila e vem primeiro.
+- `hipertrofia-como-funciona` segue fora, pelo mesmo motivo de 09/09
+  (canibalização + teto).
+- `agachamento-como-fazer` e `rosca-direta-como-fazer` saíram da fila: caíram
+  para 3 impressões.
+
+**Os reescritos de setembro.**
+
+- Os que subiram para a página 1:
+
+| artigo | posição base → 14/11 |
+|---|---|
+| `quanto-custa-personal-trainer` | 25,8 → **10,2** (5.002 impr., 21 cliques) |
+| `triceps-testa` | 25,7 → 9,1 |
+| `encolhimento` | 24,8 → 6,9 |
+| `treino-de-posterior-de-coxa` | 39,2 → 8,9 |
+| `elevacao-frontal` | 20,3 → 8,1 |
+| `rosca-martelo` | 20,4 → 5,1 |
+| `pullover` | 21,1 → 9,0 |
+| `avaliacao-fisica` | 78,2 → 7,7 |
+
+- **O alerta:** quatro reescritos sumiram, com zero impressão em 30 dias:
+  - `treino-para-iniciantes` (tinha 100);
+  - `gordura-visceral` (57);
+  - `levantamento-terra-como-fazer` (39);
+  - `deficit-calorico-como-funciona` (12).
+- Mais dois ficaram com uma impressão cada: `jejum-intermitente-funciona` e
+  `como-perder-barriga`.
+- `treino-para-iniciantes` e `como-perder-barriga` estão no drilldown
+  "Rastreada, mas não indexada" de 10/11 (`docs/relatorios/2026-11-10-gsc-cobertura/`).
+  É o mesmo fenômeno das cidades, agora em artigo.
+
+**Recomendação (aguarda o Renato; nenhum gatilho reativado):**
+
+1. **Pauta: manter o gatilho pausado.** Os artigos novos já saem a pedido,
+   2 por vez e com prints, e esse fluxo está funcionando. O gargalo medido
+   não é volume, é clique e indexação.
+2. **Reescritas: reativar em ritmo baixo, 1 a cada 2 dias**, começando por
+   `como-evitar-perda-de-massa-muscular`. Antes de qualquer nova reescrita,
+   diagnosticar os 4 reescritos que sumiram: inspeção de URL no GSC (print)
+   e conferência de canonical e conteúdo duplicado contra os vizinhos.
+3. **Nova frente, de maior retorno: título e descrição das páginas de
+   impressão alta e clique quase zero**:
+   - calculadora de passos, corda, escada e caminhada;
+   - cãibras e leg press.
+   - Primeiro: olhar consulta × página no GSC.
+   - Depois: testar título e descrição em levas de 2, medindo em 3 semanas.
+     A atribuição é limpa porque nada mais muda nessas páginas.
+
 ### O que libera
 
 Um export de Desempenho por volta de **09 a 15/10**, quando o mais novo dos
