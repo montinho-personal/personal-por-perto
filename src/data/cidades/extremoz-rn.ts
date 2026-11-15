@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva de Extremoz gira em torno do mar e das dunas: caminhada e corrida na orla de Genipabu e Pitangui, esportes de areia, banho e lazer nas lagoas, e o fluxo de turistas e metropolitanos que usam o litoral como espaço de atividade física durante todo o ano.',
   academias:
     'A oferta é formada sobretudo por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros em expansão, complementada pela proximidade com a estrutura fitness de Natal.',
+  academiasProximas: [
+    { nome: 'Movimentus Academy', detalhe: 'na Rua Pedro Vasconcelos' },
+  ],
+  academiasVerificadasEm: '2026-11-15',
 
   destaquesFitness: [
     'Praias de Genipabu e Pitangui, com dunas e orla que servem de cenário para corrida, caminhada e esportes de areia.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Extremoz', url: 'https://extremoz.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-15',
 };

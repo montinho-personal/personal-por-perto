@@ -60,6 +60,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias e estúdios locais, distribuídos pelo Centro e pelos bairros de maior renda, complementados pelo uso intenso da orla e das praças para treino ao ar livre.',
 
+  academiasVerificadasEm: '2026-11-15',
+
   destaquesFitness: [
     'Segundo polo regional do Piauí, com comércio, saúde e universidades (UESPI e IFPI).',
     'Orla do rio Parnaíba como principal espaço de caminhada e corrida.',

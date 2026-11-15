@@ -73,8 +73,8 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Marília', detalhe: 'na Av. Tiradentes, no Fragata' },
     { nome: 'Bluefit Marília', detalhe: 'na Av. Tancredo Neves, no Centro' },
-    { nome: 'Panobianco Nova Marília', detalhe: 'na Av. João Ramalho, no Parque São Jorge' },
   ],
+  academiasVerificadasEm: '2026-11-15',
 
   destaquesFitness: [
     'Bosque Municipal Rangel Pietraroia: pista asfaltada e academia ao ar livre gratuita.',
@@ -109,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Marília', url: 'https://www.marilia.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-15',
 };

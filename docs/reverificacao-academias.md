@@ -962,3 +962,25 @@ O destaque "academia ao ar livre (Centenário, Leon Feffer)" passou a citar só 
 | Smart Fit Camaçari — "no Boulevard Shopping, na BA-535" | **corrigida**: Rodovia BA-535, Via Parafuso, bairro Industrial. "Boulevard Shopping" não aparece na página da unidade nem em outra fonte | página oficial (`opened:true`) |
 
 Camaçari continua com 1 entrada. Saldo da leva: 4 entradas → 3 mantidas (2 corrigidas) e 1 removida. 94 cidades seguem na fila.
+
+### 15/11/2026 — leva 41 (rotina, Parte B: Marília e Franca)
+
+**Marília/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Marília — "Av. Tiradentes, no Fragata" | confirmada sem mudança (nº 1048) | página oficial (`opened:true`) |
+| Bluefit Marília — "Av. Tancredo Neves, no Centro" | confirmada (a rede grafa "Av. Tancredo de Almeida Neves", nº 270) | página oficial |
+| Panobianco Nova Marília — "Av. João Ramalho, Parque São Jorge" | **removida**: nenhuma fonte acha essa unidade. A única Panobianco de Marília no Wellhub é a do Somenzari (Rua Castro Alves, 875), e o site da rede não responde daqui | — |
+
+**Franca/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Franca — "Av. Dr. Ismael Alonso y Alonso, Jardim Veneza" | confirmada sem mudança | página oficial (`opened:true`) |
+| Smart Fit Franca II — "Rua São Paulo, Vila Aparecida" | confirmada sem mudança | página oficial (`opened:true`) |
+| Panobianco Estação — "Rua Frei Germano, na Estação" | **removida**: só o Wellhub sustenta a unidade (Av. Frei Germano, 2290). A página "Panobianco Estação" do TotalPass não diz a cidade, e o site da rede não responde | — |
+| Bluefit Franca — "Av. Alonso y Alonso, no Centro" | confirmada (nº 1231) | página oficial |
+| Bluefit Franca Estação — "Av. Rio Branco, na Estação" | confirmada (nº 620) | página oficial |
+
+A Selfit tem unidade em Franca e no Marília Shopping (sitemap oficial), mas a Parte B não acrescenta. Saldo da leva: 8 entradas → 6 mantidas e 2 removidas. 92 cidades seguem na fila.

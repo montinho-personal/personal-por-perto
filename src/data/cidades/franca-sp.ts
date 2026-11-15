@@ -78,10 +78,10 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Franca', detalhe: 'na Av. Dr. Ismael Alonso y Alonso, no Jardim Veneza' },
     { nome: 'Smart Fit Franca II', detalhe: 'na Rua São Paulo, na Vila Aparecida' },
-    { nome: 'Panobianco Estação', detalhe: 'na Rua Frei Germano, na Estação' },
     { nome: 'Bluefit Franca', detalhe: 'na Av. Alonso y Alonso, no Centro' },
     { nome: 'Bluefit Franca Estação', detalhe: 'na Av. Rio Branco, na Estação' },
   ],
+  academiasVerificadasEm: '2026-11-15',
 
   destaquesFitness: [
     'Capital do basquete brasileiro (Sesi Franca) — cultura esportiva forte.',
@@ -109,7 +109,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Franca', url: 'https://www.franca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-15',
 
 
   faqsExtra: [
