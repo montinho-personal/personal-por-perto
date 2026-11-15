@@ -221,3 +221,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 11/11 — `/guias/personal-trainer-pos-parto/` — artigo novo: bloco constancia em "o tempo é o maior obstáculo" — "qual é a semana mínima que cabe com o bebê?"
 - 11/11 — `/guias/personal-trainer-para-pcd/` — artigo novo: bloco formato depois dos ajustes por deficiência — "chegar à academia é parte do problema: presencial, online ou em casa?" (personalIdeal é o CTA do fim dos guias, o teste barra a repetição)
 - 11/11 — `/guias/personal-trainer-para-quem-viaja/` — artigo novo: bloco formato depois de "academia do hotel" — "presencial ou online, para quem não para na cidade?"
+- 15/11 — `/guias/trocar-de-personal-trainer/` — artigo novo: bloco score depois dos sinais — "o problema é o profissional ou a fase?"
+- 15/11 — `/guias/quanto-tempo-manter-personal/` — artigo novo: bloco constancia depois dos critérios de autonomia — "o que derruba a minha rotina sem horário marcado?"

@@ -1,0 +1,225 @@
+---
+/**
+ * Como trocar de personal trainer — os sinais, a conversa antes, como
+ * encerrar e como escolher o próximo.
+ *
+ * Publicado em 15/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode criar próximos artigos"). Quando os prints chegarem, título, H1,
+ * seções e FAQs são revistos contra eles; registro em
+ * docs/trocar-de-personal-trainer.md.
+ *
+ * Peça de prática profissional: sem número, sem estudo, sem promessa. Sem
+ * citar lei de consumidor ou de dados (não lida aqui).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher personal trainer', descricao: 'O roteiro de perguntas antes de contratar.', tipo: 'Guia' },
+  { url: '/guias/personal-trainer-conduta-profissional/', titulo: 'Conduta do personal trainer', descricao: 'O que esperar de um bom profissional.', tipo: 'Guia' },
+  { url: '/guias/quanto-tempo-manter-personal/', titulo: 'Por quanto tempo manter um personal', descricao: 'Quando dá para seguir sozinho.', tipo: 'Guia' },
+];
+
+const path = '/guias/trocar-de-personal-trainer';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Como trocar de personal trainer', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre trocar de personal trainer';
+const faqs = [
+  {
+    pergunta: 'Quando trocar de personal trainer?',
+    resposta:
+      'Quando o padrão se repete: o treino não muda há meses, ninguém mede sua evolução, a atenção na sessão é pouca, seu objetivo mudou e o treino não, ou há faltas e atrasos frequentes. Falta de respeito é motivo suficiente sozinho. Na maioria dos outros casos, vale conversar antes.',
+  },
+  {
+    pergunta: 'Como dizer ao personal que vou parar?',
+    resposta:
+      'De forma direta e com antecedência, por escrito, seguindo o aviso prévio do contrato. Não é preciso justificar em detalhes. Agradeça, combine o que acontece com aulas já pagas e peça seu histórico de avaliações e cargas.',
+  },
+  {
+    pergunta: 'Posso pedir minhas avaliações físicas ao personal?',
+    resposta:
+      'Sim, peça. Avaliações, medidas, fotos e a planilha de cargas são o seu histórico e ajudam o próximo profissional a continuar de onde você parou.',
+  },
+  {
+    pergunta: 'É errado trocar de personal?',
+    resposta:
+      'Não. O personal é um serviço, e a relação só faz sentido se o treino avança. Conversar antes e encerrar com respeito é o caminho certo, mas trocar não é ingratidão.',
+  },
+  {
+    pergunta: 'O que procurar no novo personal?',
+    resposta:
+      'Use o que deu errado como critério: se faltou progressão, pergunte como ele registra cargas e reavalia; se faltou atenção, combine como vão ser as sessões. Experiência com o seu objetivo e boa comunicação pesam muito.',
+  },
+];
+
+/* 55 caracteres. */
+const title = 'Como Trocar de Personal Trainer: Sinais e Como Encerrar';
+/* 150 caracteres. */
+const description =
+  'Quando trocar de personal trainer: os sinais de que o treino parou, a conversa antes de decidir, como encerrar sem desgaste e como escolher o próximo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Como trocar de personal trainer: os sinais e como encerrar</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Trocar de personal é normal: o serviço só faz sentido se o treino
+      avança. O que separa uma troca bem feita de uma impulsiva é olhar o
+      padrão, conversar antes e sair levando o seu histórico.
+    </p>
+
+    <div class="prose">
+      <h2>Os sinais de que é hora de trocar</h2>
+      <p>
+        Nenhum profissional acerta tudo, e um mês ruim não é motivo para
+        trocar. O que pesa é o padrão. Estes são os sinais que se repetem:
+      </p>
+      <ul>
+        <li><strong>O treino não muda há meses.</strong> Mesma ficha, mesmas cargas, sem plano de progressão.</li>
+        <li><strong>Ninguém mede nada.</strong> Sem reavaliação, sem registro de cargas, sem comparar onde você estava e onde está.</li>
+        <li><strong>A atenção está no celular.</strong> A sessão é sua, e a correção de execução é o que você está pagando.</li>
+        <li><strong>Seu objetivo mudou e o treino não.</strong> Emagrecer, ganhar força, correr uma prova ou voltar de lesão pedem treinos diferentes.</li>
+        <li><strong>Dor que ele ignora.</strong> Dor recorrente durante o treino merece ajuste — e, se persistir, avaliação de médico ou fisioterapeuta, não insistência.</li>
+        <li><strong>Atrasos, faltas e remarcações</strong> frequentes da parte dele.</li>
+        <li><strong>Falta de respeito</strong> ou qualquer comentário que constranja. Isso é motivo suficiente sozinho.</li>
+      </ul>
+      <p>
+        O que esperar de um profissional — pontualidade, sigilo, limites — está
+        em <a href="/guias/personal-trainer-conduta-profissional/">conduta do
+        personal trainer</a>.
+      </p>
+
+      <FerramentaInline
+        id="score"
+        texto="Se você ainda não sabe se o problema é o profissional ou a fase, o Personal Score avalia o acompanhamento que você paga — individualização, progressão, registro da evolução — comparado ao que o seu modelo de atendimento se propõe a entregar."
+        acao="Avaliar meu acompanhamento"
+      />
+
+      <h2>Antes de trocar: uma conversa</h2>
+      <p>
+        Muitas vezes o problema tem conserto. Diga o que não está funcionando
+        de forma concreta: "faz três meses que a carga do agachamento não
+        muda", "quero focar em corrida a partir de agora". Um bom profissional
+        responde com um plano. Se a resposta for desculpa ou nada mudar em
+        algumas semanas, a decisão fica mais fácil — e mais justa.
+      </p>
+
+      <h2>Como encerrar sem desgaste</h2>
+      <ol>
+        <li><strong>Leia o contrato.</strong> Veja aviso prévio, pacotes pagos e o que acontece com aulas que sobraram.</li>
+        <li><strong>Avise com antecedência</strong> e por escrito, mesmo que tenha conversado pessoalmente.</li>
+        <li><strong>Peça seu histórico:</strong> avaliações físicas, fotos, medidas e a planilha com as cargas. É o que permite ao próximo profissional continuar de onde você parou.</li>
+        <li><strong>Agradeça e saia.</strong> Não é preciso justificar em detalhes.</li>
+      </ol>
+
+      <h2>Como escolher o próximo</h2>
+      <p>
+        Use o que deu errado como critério. Se faltava progressão, pergunte
+        como ele registra as cargas e de quanto em quanto tempo reavalia. Se
+        faltava atenção, combine como vão ser as sessões. O roteiro completo
+        está em <a href="/guias/como-escolher-personal-trainer/">como escolher
+        personal trainer</a>, e o que acontece no começo, em
+        <a href="/guias/primeira-aula-com-personal-trainer/">primeira aula com
+        personal</a>.
+      </p>
+      <p>
+        Na transição, não pare de treinar: siga a última planilha até começar
+        com o novo profissional. Recomeçar é mais fácil quando o hábito não
+        quebrou.
+      </p>
+
+      <h2>Trocar não é falha</h2>
+      <p>
+        O personal é um serviço, e a relação só funciona se o treino avança.
+        Trocar quando ele não avança — depois de conversar — é cuidar do seu
+        resultado, não ingratidão.
+      </p>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

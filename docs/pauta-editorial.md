@@ -793,8 +793,8 @@ macros, que é ferramenta nova e passa pela análise de lote antes.
 | Personal trainer para quem viaja a trabalho | `personal-trainer-para-quem-viaja` | ✅ 2026-11-11 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-para-quem-viaja.md` |
 | Personal trainer em dupla ou grupo | `personal-trainer-em-dupla` | ✅ 2026-11-01 · prints do Renato · `docs/personal-trainer-em-dupla.md` |
 | Personal trainer e nutricionista juntos | `personal-trainer-e-nutricionista` | ✅ 2026-11-10 · publicado antes dos prints (pedido do Renato) · `docs/personal-trainer-e-nutricionista.md` |
-| Como trocar de personal trainer | `trocar-de-personal-trainer` | |
-| Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | |
+| Como trocar de personal trainer | `trocar-de-personal-trainer` | ✅ 2026-11-15 · publicado antes dos prints (pedido do Renato) · `docs/trocar-de-personal-trainer.md` |
+| Por quanto tempo manter um personal | `quanto-tempo-manter-personal` | ✅ 2026-11-15 · publicado antes dos prints (pedido do Renato) · `docs/quanto-tempo-manter-personal.md` |
 | Personal trainer para obesidade | `personal-trainer-para-obesidade` | ⚠️ |
 
 ## Bloco Local (7) — aberto em 18/09/2026

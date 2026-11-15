@@ -1,0 +1,243 @@
+---
+/**
+ * Por quanto tempo manter um personal trainer — o que a pesquisa diz sobre
+ * supervisão, as fases, os critérios para seguir sozinho e o meio-termo.
+ *
+ * Publicado em 15/11/2026 ANTES dos prints do Google, a pedido do Renato
+ * ("pode criar próximos artigos"). Quando os prints chegarem, título, H1,
+ * seções e FAQs são revistos contra eles; registro em
+ * docs/quanto-tempo-manter-personal.md.
+ *
+ * Fontes conferidas em 15/11/2026 (resumos): Mazzetti 2000 (MSSE), Ratamess
+ * 2008 e Dias 2017 (JSCR), Lacroix 2017 (Sports Med). Sem prazo em meses
+ * (nenhuma fonte dá).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const relacionados = [
+  { url: '/guias/quantas-vezes-por-semana-personal-trainer/', titulo: 'Quantas vezes por semana treinar com personal', descricao: 'A frequência certa para cada objetivo e orçamento.', tipo: 'Guia' },
+  { url: '/guias/personal-online-funciona/', titulo: 'Personal online funciona?', descricao: 'Quando o acompanhamento a distância dá certo.', tipo: 'Guia' },
+  { url: '/guias/trocar-de-personal-trainer/', titulo: 'Como trocar de personal trainer', descricao: 'Os sinais e como encerrar sem desgaste.', tipo: 'Guia' },
+];
+
+const path = '/guias/quanto-tempo-manter-personal';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Por quanto tempo manter um personal', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre quanto tempo manter um personal';
+const faqs = [
+  {
+    pergunta: 'Por quanto tempo devo ter personal trainer?',
+    resposta:
+      'Não há prazo fixo. O critério é saber treinar sozinho: executar os exercícios sem correção, progredir a carga, treinar no esforço certo e manter a frequência sem alguém marcando horário. Quem começa do zero costuma precisar de mais tempo na fase de aprender a técnica.',
+  },
+  {
+    pergunta: 'Treinar com personal dá mais resultado?',
+    resposta:
+      'Os estudos indicam que sim, principalmente pela intensidade. Num estudo de 2000, o grupo supervisionado usou cargas maiores e ganhou mais força em 12 semanas. Em 2008, quem treinava com personal escolhia cerca de 51% da carga máxima, contra cerca de 42% de quem treinava sozinho.',
+  },
+  {
+    pergunta: 'Posso diminuir as sessões em vez de parar?',
+    resposta:
+      'Pode, e costuma ser a melhor transição. Uma meta-análise de 2017 em pessoas acima de 65 anos mostrou que a vantagem da supervisão era menor quando o programa feito em casa incluía algumas sessões supervisionadas. Uma sessão por semana, revisões mensais ou acompanhamento online são opções.',
+  },
+  {
+    pergunta: 'Quando vale manter o personal por mais tempo?',
+    resposta:
+      'Com objetivo com prazo, na volta de lesão ou condição de saúde (junto com médico ou fisioterapeuta), em treinos de técnica complexa ou carga alta, e quando o compromisso com o personal é o que garante a sua constância.',
+  },
+  {
+    pergunta: 'Como saber se estou pronto para treinar sozinho?',
+    resposta:
+      'Teste por algumas semanas com o plano na mão: se você mantém a frequência, registra as cargas, progride e executa sem dor nem dúvida, está pronto. Se a frequência cai, o problema é constância, não técnica.',
+  },
+];
+
+/* 44 caracteres. */
+const title = 'Por Quanto Tempo Manter um Personal Trainer?';
+/* 147 caracteres. */
+const description =
+  'Por quanto tempo ter personal trainer: o que os estudos dizem sobre treinar com supervisão, os sinais de que dá para seguir sozinho e o meio-termo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Por quanto tempo manter um personal trainer?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Não existe prazo certo para ter personal. Existe um critério: saber
+      treinar sozinho com a mesma qualidade. A pesquisa mostra o que costuma
+      se perder sem supervisão — e por que diminuir as sessões costuma ser
+      melhor que parar de vez.
+    </p>
+
+    <div class="prose">
+      <h2>O que a pesquisa diz sobre treinar com supervisão</h2>
+      <p>
+        Três estudos ajudam a responder por que manter — e o que se perde ao
+        sair:
+      </p>
+      <ul>
+        <li><strong>Mais carga com supervisão.</strong> Num estudo de 2000, homens já treinados fizeram o mesmo programa de 12 semanas, com ou sem personal. O grupo supervisionado usou cargas maiores e terminou com mais força no agachamento e no supino.</li>
+        <li><strong>Sozinho, a gente escolhe leve.</strong> Em 2008, mulheres que treinavam com personal escolhiam por conta própria cerca de 51% da carga máxima; as que treinavam sozinhas, cerca de 42%. Um estudo de 2017, com homens e mulheres, achou o mesmo padrão.</li>
+        <li><strong>Em pessoas acima de 65 anos</strong>, uma meta-análise de 2017 achou mais ganho de força e de equilíbrio nos programas supervisionados do que nos feitos em casa sem supervisão.</li>
+      </ul>
+      <p>
+        O mesmo trabalho de 2017 traz o dado mais útil para a decisão: a
+        vantagem da supervisão foi <strong>menor quando o programa sem
+        supervisão incluía algumas sessões supervisionadas</strong>. Ou seja,
+        o meio-termo — menos sessões, mas não zero — preserva parte do ganho.
+      </p>
+
+      <h2>As fases, e o que cada uma pede</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fase</th><th>O que você aprende</th><th>Acompanhamento</th></tr></thead>
+          <tbody>
+            <tr><td>Começo</td><td>Execução dos exercícios básicos, como escolher a carga, o ritmo da semana</td><td>Frequente: é onde a técnica se forma</td></tr>
+            <tr><td>Consolidação</td><td>Progredir carga, perceber o próprio esforço, ajustar o treino na semana ruim</td><td>Pode diminuir de sessões por semana</td></tr>
+            <tr><td>Autonomia</td><td>Treinar sozinho com um plano, registrar, saber quando trocar</td><td>Revisões periódicas, ou online</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Não há prazo fixo: depende de onde você começou, do objetivo e de
+        quantas vezes treina. O que importa é ter os critérios abaixo.
+      </p>
+
+      <h2>Você está pronto para seguir sozinho quando…</h2>
+      <ul>
+        <li>executa os exercícios principais sem precisar de correção;</li>
+        <li>sabe quando e quanto aumentar a carga — e registra;</li>
+        <li>treina perto do esforço certo, sem escolher sempre a carga confortável;</li>
+        <li>mantém a frequência por semanas seguidas sem alguém marcando horário;</li>
+        <li>sabe adaptar o treino quando a semana aperta.</li>
+      </ul>
+      <p>
+        Se o quarto item é o que falta, o problema não é técnica, é
+        constância — e é aí que muita gente para quando sai do personal.
+      </p>
+
+      <FerramentaInline
+        id="constancia"
+        texto="Antes de decidir parar, vale saber o que derruba a sua rotina quando ninguém marca horário. O diagnóstico compara a semana que você planeja com a que acontece e aponta o gargalo."
+        acao="Descobrir o meu gargalo de constância"
+      />
+
+      <h2>Motivos para manter por mais tempo</h2>
+      <ul>
+        <li><strong>Objetivo com prazo</strong>: uma prova, um concurso com teste físico, uma cirurgia agendada.</li>
+        <li><strong>Volta de lesão ou condição de saúde</strong>, sempre junto com médico ou fisioterapeuta.</li>
+        <li><strong>Treino com carga alta ou técnica complexa</strong>, como levantamentos olímpicos.</li>
+        <li><strong>Constância</strong>: se o compromisso com outra pessoa é o que faz você treinar, ele tem valor por si só.</li>
+      </ul>
+
+      <h2>O meio-termo: reduzir em vez de parar</h2>
+      <p>
+        Entre três vezes por semana e nenhuma há muitas opções: uma sessão
+        semanal com os outros treinos sozinho, revisões mensais, ou
+        acompanhamento online com planilha e correção por vídeo. Pela
+        meta-análise de 2017, manter algumas sessões supervisionadas preserva
+        parte da vantagem. As opções de frequência estão em
+        <a href="/guias/quantas-vezes-por-semana-personal-trainer/">quantas
+        vezes por semana treinar com personal</a>, e o formato a distância,
+        em <a href="/guias/personal-online-funciona/">personal online
+        funciona?</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener noreferrer">Mazzetti SA, Kraemer WJ, Volek JS, et al. The influence of direct supervision of resistance training on strength performance. Medicine &amp; Science in Sports &amp; Exercise, 2000</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18296962/" target="_blank" rel="noopener noreferrer">Ratamess NA, Faigenbaum AD, Hoffman JR, Kang J. Self-selected resistance training intensity in healthy women: the influence of a personal trainer. Journal of Strength and Conditioning Research, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27676273/" target="_blank" rel="noopener noreferrer">Dias MRC, Simão RF, Saavedra FJF, Ratamess NA. Influence of a personal trainer on self-selected loading during resistance exercise. Journal of Strength and Conditioning Research, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28573401/" target="_blank" rel="noopener noreferrer">Lacroix A, Hortobágyi T, Beurskens R, Granacher U. Effects of supervised vs. unsupervised training programs on balance and muscle strength in older adults: a systematic review and meta-analysis. Sports Medicine, 2017</a></li>
+        <li>Conferidas em 15/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

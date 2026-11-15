@@ -133,6 +133,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/personal-trainer-pos-parto/', titulo: 'Treino no pós-parto: quando e como voltar com personal' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-pcd/', titulo: 'Personal trainer para pessoas com deficiência: como treinar' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-viaja/', titulo: 'Treino para quem viaja a trabalho: hotel, pouco tempo e personal' },
+  { categoria: 'Guias', url: '/guias/trocar-de-personal-trainer/', titulo: 'Como trocar de personal trainer: os sinais e como encerrar' },
+  { categoria: 'Guias', url: '/guias/quanto-tempo-manter-personal/', titulo: 'Por quanto tempo manter um personal trainer?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-iniciantes/', titulo: 'Personal trainer para iniciantes: vale a pena contratar?' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-emagrecimento/', titulo: 'Personal trainer para emagrecimento: como escolher' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para terceira idade: como escolher' },
