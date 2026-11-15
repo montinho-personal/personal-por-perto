@@ -68,6 +68,16 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
 - Pedido ao Renato: print de uma das reportagens ou do resultado oficial.
   Checagem reagendada para 3 h depois.
 
+**Checagem de resultado, 15/11/2026 às 18h (UTC):** ainda nada publicado.
+- A pista é a mesma (Aziz Ait, 2h13min24s), só em resumos de busca.
+- Vencedora feminina ainda não aparece.
+- **Abrem aqui:** Gazeta do Povo (página de 2016, com a lista de campeões
+  históricos), Banda B (prévia de 2025 e editoria sem resultado) e ge.
+  Nenhuma traz o resultado de 2026.
+- **Não abrem:** chiptiming, World Athletics, CBAt, Tribuna e Contra-Relógio
+  (conexão recusada), Prefeitura (403).
+- Reagendado para 3 h depois. Os resultados oficiais saem em até 48 h.
+
 ## Pendente — pistas sem fonte (não usar no artigo)
 
 | item | pista | conflito |
