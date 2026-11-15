@@ -78,6 +78,37 @@ Rede liberada em 13/10/2026; páginas abertas direto nesse dia.
   (conexão recusada), Prefeitura (403).
 - Reagendado para 3 h depois. Os resultados oficiais saem em até 48 h.
 
+**Checagem de resultado, 15/11/2026 às 21h (UTC), a 3ª:** ainda não publicado. Falta a segunda fonte aberta.
+
+**Fonte aberta e lida:** Banda B, "Maratona de Curitiba consagra campeões dos
+42 km, 21 km, 10 km e 5 km; veja quem venceu", publicada em 15/11/2026 às
+12h56 (https://www.bandab.com.br/esporte/corridas/campeoes-maratona-curitiba-2026-resultados/).
+Ela tem uma fala do co-CEO da Global Vita Sports, a organizadora.
+- 16.375 participantes.
+- 42 km: Aziz Ait (Marrocos), 2h13min24s; Ana Catarina Amancio de Oliveira
+  (Brasil), 2h45min34s.
+- 21 km: Jonathan Akankwasa (Uganda), 1h07min42s; Vivian Jeftanui
+  Kiplagati (Quênia), 1h15min42s.
+- 10 km: Leonardo Oliveira Soares, 33min19s; Isadora Martello Chiesorin,
+  37min32s.
+- 5 km: Vitor Bueno de Oliveira, 16min18s; Djanine Fernanda Siqueira dos
+  Santos, 18min57s.
+
+**Não abrem aqui** (o mesmo resultado aparece nelas só em resumo de busca):
+- Prefeitura de Curitiba, notícia 85935 (403). Seria a fonte oficial.
+- Bem Paraná (403).
+- BandNews FM Curitiba e Nosso Dia (conexão recusada).
+- Chip Timing e World Athletics.
+
+**Pista sem confirmação:** a CBAt lista "Aziz Ait Ourkia" (Marrocos) entre
+os atletas estrangeiros. Pode ser o nome completo do campeão, mas não está
+confirmado.
+
+**Próximos passos:**
+- Pedido ao Renato: print da notícia da Prefeitura, que vale como fonte
+  oficial, ou o ok para publicar só com a Banda B.
+- Uma última checagem agendada para 17/11 às 13h UTC.
+
 ## Pendente — pistas sem fonte (não usar no artigo)
 
 | item | pista | conflito |
