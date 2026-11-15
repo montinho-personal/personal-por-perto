@@ -102,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Varginha', url: 'https://www.varginha.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-25',
+  atualizadoEm: '2026-11-15',
 };

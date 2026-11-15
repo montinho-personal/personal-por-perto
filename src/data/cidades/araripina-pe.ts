@@ -114,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araripina', url: 'https://araripina.pe.gov.br/' },
     { nome: 'Sindusgesso — APL do Gesso', url: 'https://sindusgesso.org.br/apl-do-gesso/' },
   ],
-  atualizadoEm: '2026-09-09',
+  atualizadoEm: '2026-11-15',
 };

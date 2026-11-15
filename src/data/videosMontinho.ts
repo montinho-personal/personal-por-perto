@@ -202,3 +202,46 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
   'natal-rn', 'contagem-mg', 'ananindeua-pa',
 ]);
+
+/**
+ * Vídeos do canal escolhidos pelo Montinho para as cidades SEM vídeo
+ * (15/11/2026, a pedido do Renato: "só nas 829 cidades", 50 por dia).
+ *
+ * Cada cidade da lista recebe UM destes seis, pela posição dela na lista:
+ * posição 0 → vídeo 0, 1 → 1 … 6 → 0 de novo. Como as levas entram em ordem
+ * de impressões no GSC, cidades vizinhas no ranking nunca repetem o vídeo, e
+ * acrescentar uma leva no fim não muda o vídeo de quem já entrou.
+ *
+ * As 11 cidades da região presencial (vídeo fixo) e as que já tinham o
+ * vídeo do app ficam FORA desta lista — o escopo são as que não tinham
+ * vídeo nenhum.
+ */
+export const VIDEOS_CANAL_CIDADES: Array<VideoMontinho & { titulo: string }> = [
+  { id: 'Dg8Sbv6_V8w', titulo: 'Meu maior conselho para quem quer emagrecer', tema: 'meu maior conselho para quem quer emagrecer', short: true },
+  { id: 'yqPAYRVTe0E', titulo: 'Não existe o treino perfeito', tema: 'não existe o treino perfeito', short: true },
+  { id: 'izMrrSoJGBw', titulo: 'Raiva e sangue no olho', tema: 'raiva e sangue no olho: disciplina', short: true },
+  { id: 'DiH1OzIR6Yk', titulo: 'É impossível isso dar errado', tema: 'constância acima de motivação', short: true },
+  { id: 'yndKE1GrnUQ', titulo: 'Toda pessoa com shape tem uma coisa em comum', tema: 'o que toda pessoa com shape tem em comum', short: true },
+  { id: 'CgPDOWBXh8k', titulo: 'Eu pesava 40 kg a mais e achava que ia ser pra sempre', tema: 'a história do Montinho: 40 kg a mais', short: true },
+];
+
+/** Cidades que recebem um vídeo do canal, em levas (comentário = data). Só acrescentar no fim. */
+export const CIDADES_VIDEO_CANAL: string[] = [
+  // leva 1 — 15/11/2026: as 50 cidades sem vídeo com mais impressões em 28 dias no GSC
+  'rolandia-pr', 'assis-sp', 'caxias-ma', 'lapa-pr', 'amargosa-ba',
+  'cambui-mg', 'cangucu-rs', 'mangaratiba-rj', 'surubim-pe', 'varginha-mg',
+  'estancia-se', 'fernandopolis-sp', 'irece-ba', 'mineiros-go', 'sao-carlos-sp',
+  'sapucaia-do-sul-rs', 'urubici-sc', 'volta-redonda-rj', 'votorantim-sp', 'araripina-pe',
+  'carmo-de-minas-mg', 'juazeiro-do-norte-ce', 'paraiso-do-tocantins-to', 'tobias-barreto-se', 'trairi-ce',
+  'brusque-sc', 'caxambu-mg', 'guarabira-pb', 'itupeva-sp', 'navirai-ms',
+  'parintins-am', 'parnaiba-pi', 'sao-caetano-do-sul-sp', 'teixeira-de-freitas-ba', 'umuarama-pr',
+  'valinhos-sp', 'viamao-rs', 'caxias-do-sul-rs', 'itacoatiara-am', 'juina-mt',
+  'marechal-deodoro-al', 'paranavai-pr', 'primavera-do-leste-mt', 'rio-branco-ac', 'salto-sp',
+  'santa-luzia-mg', 'sidrolandia-ms', 'areia-pb', 'boa-esperanca-mg', 'capanema-pa',
+];
+
+/** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */
+export function videoCanalDaCidade(slug: string): (VideoMontinho & { titulo: string }) | undefined {
+  const i = CIDADES_VIDEO_CANAL.indexOf(slug);
+  return i >= 0 ? VIDEOS_CANAL_CIDADES[i % VIDEOS_CANAL_CIDADES.length] : undefined;
+}

@@ -104,5 +104,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sidrolândia', url: 'https://www.sidrolandia.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-27',
+  atualizadoEm: '2026-11-15',
 };

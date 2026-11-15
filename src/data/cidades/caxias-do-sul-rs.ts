@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Caxias do Sul: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-15',
 };

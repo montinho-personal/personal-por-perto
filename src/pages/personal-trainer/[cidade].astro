@@ -20,7 +20,7 @@ import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
 import { cidades, relacionadas, vizinhasDe, getCidade } from '../../data/cidades';
 import { bairrosDaCidade as listaDeBairros, rota } from '../../lib/geo';
-import { videoDaPagina, VIDEO_APP_ID, CIDADES_COM_VIDEO_APP } from '../../data/videosMontinho';
+import { videoDaPagina, VIDEO_APP_ID, CIDADES_COM_VIDEO_APP, videoCanalDaCidade } from '../../data/videosMontinho';
 import { CIDADES_MODELO_ENXUTO } from '../../data/modeloCidade';
 import { cityFaqs } from '../../lib/cityFaqs';
 import { emCidade, emCidadeCap, deCidade } from '../../lib/gramatica';
@@ -54,6 +54,8 @@ const path = `/personal-trainer/${cidade.slug}`;
 // Vídeo do canal do Montinho para esta página: estável por cidade, variado
 // entre cidades. Antes, quatro das cinco páginas com vídeo repetiam a mesma peça.
 const videoMontinho = videoDaPagina(cidade.slug);
+// Vídeo do canal nas cidades que não tinham vídeo nenhum (levas de 50/dia).
+const videoCanal = videoCanalDaCidade(cidade.slug);
 
 // Mapa Fitness: a seção interativa só existe onde há dado suficiente.
 const mapa = resumoMapaFitness(cidade);
@@ -853,6 +855,29 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
+
+      {
+        videoCanal && (
+          <section id="video-do-montinho">
+            <figure class="video-short">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoCanal.id}`}
+                title={`${videoCanal.titulo} — vídeo do Montinho Personal`}
+                width="340"
+                height="604"
+                loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              />
+              <figcaption>
+                No vídeo: “{videoCanal.titulo}”, do canal do Montinho Personal,
+                profissional destacado pelo portal, que atende {n} no formato
+                online.
+              </figcaption>
+            </figure>
+          </section>
+        )
+      }
 
       {
         vitrinePagina && vitrine && (

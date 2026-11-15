@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Irecê', url: 'https://irece.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-07',
+  atualizadoEm: '2026-11-15',
 };
