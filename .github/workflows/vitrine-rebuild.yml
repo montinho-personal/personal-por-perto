@@ -1,0 +1,82 @@
+# Vitrine de transformações: republica o site quando o feed do Montinho muda.
+#
+# O portal é estático: o feed (montinhopersonal.com.br/api/vitrine?origem=ppp)
+# só é lido no build. Este workflow confere o feed a cada hora e, SÓ SE ELE
+# MUDOU desde o último deploy disparado aqui, chama o Deploy Hook da Vercel.
+# Sem mudança, não há build — nada de 24 deploys por dia à toa.
+#
+# Como sabe que mudou: o hash do feed vira a chave de um cache do Actions.
+# Chave encontrada = esse conteúdo já foi publicado. Chave nova = publica e
+# grava a chave.
+#
+# Configuração (uma vez):
+#   1. Vercel → projeto → Settings → Git → Deploy Hooks: criar um hook para
+#      a branch de produção.
+#   2. GitHub → Settings → Secrets and variables → Actions: secret
+#      VERCEL_DEPLOY_HOOK_VITRINE com a URL do hook.
+# Sem o secret, o workflow só avisa e não publica nada.
+# Detalhes em docs/vitrine-transformacoes.md.
+name: Vitrine — rebuild quando o feed muda
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vitrine-rebuild
+  cancel-in-progress: false
+
+jobs:
+  conferir-feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ler o feed e calcular o hash
+        id: feed
+        run: |
+          set -euo pipefail
+          mkdir -p vitrine-estado
+          if ! curl -fsS --max-time 30 'https://www.montinhopersonal.com.br/api/vitrine?origem=ppp' -o feed.json; then
+            echo "Feed indisponível agora; nada a fazer (o site mantém o último build)."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          hash=$(sha256sum feed.json | cut -c1-16)
+          echo "$hash" > vitrine-estado/hash
+          echo "hash=$hash" >> "$GITHUB_OUTPUT"
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Esse conteúdo já foi publicado?
+        if: steps.feed.outputs.ok == 'true'
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: vitrine-estado
+          key: vitrine-feed-${{ steps.feed.outputs.hash }}
+
+      - name: Chamar o Deploy Hook da Vercel
+        if: steps.feed.outputs.ok == 'true' && steps.cache.outputs.cache-hit != 'true'
+        id: deploy
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_VITRINE }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HOOK:-}" ]; then
+            echo "::warning::Secret VERCEL_DEPLOY_HOOK_VITRINE não configurado; o feed mudou mas nada foi publicado."
+            echo "publicou=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          curl -fsS -X POST --max-time 30 "$HOOK" > /dev/null
+          echo "Feed mudou (hash ${{ steps.feed.outputs.hash }}): deploy disparado."
+          echo "publicou=true" >> "$GITHUB_OUTPUT"
+
+      - name: Registrar o hash publicado
+        if: steps.deploy.outputs.publicou == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: vitrine-estado
+          key: vitrine-feed-${{ steps.feed.outputs.hash }}

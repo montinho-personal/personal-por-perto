@@ -24,7 +24,12 @@ Alphaville e região.
 | `/personal-trainer/barueri-sp/` | Personal Trainer em Barueri (SP): valor por mês e por aula | ✅ |
 | `/personal-trainer/santana-de-parnaiba-sp/` | Personal Trainer em Santana de Parnaíba (SP): valor por mês | ✅ |
 | `/personal-trainer/aldeia-da-serra-sp/` | Personal Trainer na Aldeia da Serra (SP): valor por mês | ✅ |
-| Granja Viana, Cotia, Carapicuíba, Osasco, Jandira, Itapevi | — | ⏸ fronteira, aguardando o Renato |
+| `/personal-trainer/granja-viana-sp/` | Personal Trainer na Granja Viana (SP): valor por mês e aula | ✅ fronteira, ok do Renato em 15/11 |
+| `/personal-trainer/cotia-sp/` | Personal Trainer em Cotia (SP): valor por mês e por aula | ✅ fronteira |
+| `/personal-trainer/carapicuiba-sp/` | Personal Trainer em Carapicuíba (SP): valor por mês e aula | ✅ fronteira |
+| `/personal-trainer/osasco-sp/` | Personal Trainer em Osasco (SP): valor por mês e por aula | ✅ fronteira |
+| `/personal-trainer/jandira-sp/` | Personal Trainer em Jandira (SP): valor por mês e por aula | ✅ fronteira |
+| `/personal-trainer/itapevi-sp/` | Personal Trainer em Itapevi (SP): valor por mês e por aula | ✅ fronteira |
 | `/guias/hyrox-*` e `/guias/six-alphaville/` da região | — | ✖ são guias de Hyrox e de uma academia, não páginas de SEO local |
 
 O site não tem páginas de variação de serviço por localidade (feminino,
@@ -57,16 +62,18 @@ vira duas coisas:
 
 1. **Hoje:** o feed é lido em todo build. Todo deploy (cada push na branch
    de produção) já traz os alunos atuais.
-2. **Proposta:** rebuild agendado, para aluno novo aparecer sem depender de
-   commit. Precisa de três coisas:
-   - um Deploy Hook no projeto da Vercel (Settings → Git → Deploy Hooks);
-   - a URL do hook como secret no GitHub;
-   - um workflow agendado que chama o hook a cada hora (ou um gatilho no
-     próprio site do Montinho quando ele publica aluno novo, o que é mais
-     barato).
-
-   Fica aguardando o ok do Renato, porque envolve credencial e
-   configuração da Vercel.
+2. **Rebuild quando o feed muda** (aprovado pelo Renato em 15/11):
+   `.github/workflows/vitrine-rebuild.yml`.
+   - A cada hora, o workflow lê o feed e calcula o hash.
+   - Só chama o Deploy Hook da Vercel se aquele conteúdo ainda não foi
+     publicado. O hash vira a chave de um cache do Actions.
+   - Com o feed igual, não há build.
+   - Ressalva: o cache do Actions expira depois de 7 dias sem uso, e aí sai
+     um rebuild a mais por semana mesmo sem mudança (inofensivo).
+   - Falta configurar, uma vez: criar o Deploy Hook na Vercel (Settings →
+     Git → Deploy Hooks, branch de produção) e gravar a URL no secret
+     `VERCEL_DEPLOY_HOOK_VITRINE` do GitHub. Sem o secret, o workflow só
+     avisa e não publica.
 
 A alternativa seria pôr o adaptador `@astrojs/vercel` com ISR. Foi
 descartada: mudaria a saída do build do site inteiro (1.400 páginas) para
@@ -138,3 +145,16 @@ site do Montinho.
 - **`tsc`:** nenhum erro nos arquivos novos. Os 15 erros que aparecem são
   antigos, de outros scripts.
 - **audit:canonical:** limpo. **audit:metadados:** no baseline de 79.
+
+## 15/11/2026 — correção no Tamboré (fora da vitrine)
+
+O "Conheça o personal" do Tamboré dizia que o Montinho atende "em
+academias da região". Pela regra do atendimento confirmado, virou "em
+casa ou na academia do condomínio; em outras academias, dependendo das
+regras do local para personal externo e de combinação prévia". É revisão
+real de texto, então o `atualizadoEm` do Tamboré subiu para 2026-11-15. As
+outras quatro seções "Conheça o personal" não tinham a afirmação.
+
+Na fronteira, a vitrine fica logo antes do vídeo do Montinho, porque essas
+páginas não têm "Conheça o personal". O `atualizadoEm` delas não subiu,
+pelo mesmo motivo das cinco primeiras.
