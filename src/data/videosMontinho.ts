@@ -107,6 +107,8 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
   { id: 'EwvRdG917fY', tema: 'app de treino para academia: o app do Montinho', short: true, artigo: '/guias/personal-online-ou-aplicativo/' },
   { id: 'pxstc1eDnJU', tema: 'emagreci 40 kg sem parar de beber cerveja', short: true, artigo: '/emagrecimento/faco-academia-e-nao-emagreco/' },
   { id: 'XCSizVFG3d0', tema: 'como montar uma dieta em 4 passos', short: true, artigo: '/emagrecimento/faco-academia-e-nao-emagreco/' },
+  { id: 'CgPDOWBXh8k', tema: 'eu pesava 40 kg a mais e achava que ia ser pra sempre', short: true, artigo: '/emagrecimento/emagrecer-treinando-3-vezes-por-semana/' },
+  { id: 'BoXag2fY0u0', tema: 'como montar seu treino de musculação em 5 passos', short: true, artigo: '/musculacao/treino-sem-resultado/' },
 ];
 
 /**

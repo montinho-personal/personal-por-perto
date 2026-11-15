@@ -999,8 +999,8 @@ guia de personal online, para não canibalizar.
 |---|---|---|
 | Personal online ou aplicativo de treino | `/guias/personal-online-ou-aplicativo/` | ✅ 2026-11-15 · antes dos prints · `docs/personal-online-ou-aplicativo.md` |
 | Faço academia e não emagreço | `/emagrecimento/faco-academia-e-nao-emagreco/` | ✅ 2026-11-15 · antes dos prints · `docs/faco-academia-e-nao-emagreco.md` |
-| Emagrecer treinando 3 vezes por semana | — | fila |
-| Treino há 6 meses sem resultado | — | fila |
+| Emagrecer treinando 3 vezes por semana | `/emagrecimento/emagrecer-treinando-3-vezes-por-semana/` | ✅ 2026-11-15 · antes dos prints · `docs/emagrecer-treinando-3-vezes-por-semana.md` |
+| Treino há 6 meses sem resultado | `/musculacao/treino-sem-resultado/` | ✅ 2026-11-15 · antes dos prints · `docs/treino-sem-resultado.md` |
 | Como sair da estagnação | — | fila |
 | Treinar sozinho na academia dá resultado? | — | fila |
 | Ficha da academia / treino pronto da internet | — | fila |

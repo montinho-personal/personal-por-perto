@@ -1,0 +1,264 @@
+---
+/**
+ * É possível emagrecer treinando 3 vezes por semana? — o que três treinos
+ * cobrem, a semana montada, por que a musculação vem antes do cardio e o
+ * que faz os três dias funcionarem.
+ *
+ * Publicado em 15/11/2026, a pedido do Renato ("pode criar os próximos dois
+ * artigos"), ANTES dos prints. Registro em docs/emagrecer-treinando-3-vezes-por-semana.md.
+ *
+ * Vídeo do canal: CgPDOWBXh8k. Instagram: parágrafo + InstagramFollow.
+ * Fontes (15/11/2026): OMS 2020 (texto completo), Donnelly 2009, Thomas 2012.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/emagrecimento/faco-academia-e-nao-emagreco/', titulo: 'Faço academia e não emagreço', descricao: 'Os motivos que travam a balança e o que fazer.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação', descricao: 'O papel do treino de força no emagrecimento.', tipo: 'Emagrecimento' },
+  { url: '/musculacao/divisao-de-treino/', titulo: 'Divisão de treino', descricao: 'A divisão certa para os dias que você tem.', tipo: 'Musculação' },
+];
+
+const path = '/emagrecimento/emagrecer-treinando-3-vezes-por-semana';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Emagrecer treinando 3 vezes por semana', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre emagrecer treinando 3 vezes por semana';
+const faqs = [
+  {
+    pergunta: 'Dá para emagrecer treinando 3 vezes por semana?',
+    resposta:
+      'Dá, desde que a semana tenha déficit calórico. Três sessões de uma hora, com musculação e cardio, chegam a cerca de 180 minutos, dentro da faixa de 150 a 300 minutos que a OMS recomenda. O que decide a perda de peso é a alimentação somada ao movimento da semana inteira.',
+  },
+  {
+    pergunta: 'Musculação 3 vezes por semana emagrece?',
+    resposta:
+      'Ajuda, e preserva o músculo enquanto você perde gordura. Sozinha, sem ajuste na alimentação, a perda de peso costuma ser modesta: o American College of Sports Medicine fala em perda modesta entre 150 e 250 minutos de atividade por semana.',
+  },
+  {
+    pergunta: 'Qual o melhor treino para emagrecer 3 vezes por semana?',
+    resposta:
+      'Corpo inteiro em cada sessão, com um bloco curto de cardio no fim, em dias alternados. Assim cada músculo treina três vezes na semana e sobra um dia de descanso entre as sessões.',
+  },
+  {
+    pergunta: 'Quanto tempo deve durar cada treino?',
+    resposta:
+      'Cerca de uma hora cobre bem musculação e cardio. Mais importante que o tempo é a progressão: subir carga ou repetições ao longo das semanas.',
+  },
+  {
+    pergunta: 'O que fazer nos dias sem treino?',
+    resposta:
+      'Caminhar e se movimentar. Os passos dos outros quatro dias somam gasto sem cansar para o treino seguinte.',
+  },
+];
+
+/* 47 caracteres. */
+const title = 'Dá Para Emagrecer Treinando 3 Vezes por Semana?';
+/* 154 caracteres. */
+const description =
+  'É possível emagrecer treinando só 3 vezes por semana? O que três treinos cobrem, a semana montada, o papel da musculação e o que faz o resultado aparecer.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>É possível emagrecer treinando só 3 vezes por semana?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Dá — e para muita gente, três treinos que acontecem de verdade rendem
+      mais que cinco que ficam no plano. Mas os três dias só emagrecem se a
+      semana inteira ajudar.
+    </p>
+
+    <div class="prose">
+      <h2>A resposta curta: sim, se a conta da semana fechar</h2>
+      <p>
+        Quem emagrece é o déficit calórico — gastar mais do que se come ao
+        longo das semanas. O treino ajuda nessa conta e decide o que você
+        perde: gordura ou músculo. Três sessões bem usadas cobrem o que as
+        diretrizes pedem; o resto se resolve fora da academia.
+      </p>
+
+      <h2>O que três treinos cobrem</h2>
+      <p>
+        As diretrizes da Organização Mundial da Saúde, de 2020, recomendam a
+        adultos <strong>150 a 300 minutos por semana</strong> de atividade
+        aeróbica moderada, ou 75 a 150 minutos de vigorosa, e
+        <strong>fortalecimento muscular em 2 dias ou mais</strong>. Três
+        sessões de uma hora, com musculação e um bloco de cardio, chegam perto
+        de 180 minutos — dentro da faixa.
+      </p>
+      <p>
+        Para a balança, porém, o American College of Sports Medicine é
+        direto: entre 150 e 250 minutos por semana, o exercício sozinho traz
+        perda de peso <strong>modesta</strong>. As perdas maiores aparecem com
+        mais atividade ou quando o treino vem junto com ajuste na
+        alimentação. E uma revisão de 2012 mostrou por que o treino emagrece
+        menos do que as contas preveem: o gasto é menor do que parece e a
+        ingestão costuma subir junto.
+      </p>
+
+      <h2>Como montar a semana de três dias</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dia</th><th>Treino</th><th>Por quê</th></tr></thead>
+          <tbody>
+            <tr><td>Segunda</td><td>Corpo inteiro + 15–20 min de cardio</td><td>Cada músculo trabalha 3 vezes na semana</td></tr>
+            <tr><td>Quarta</td><td>Corpo inteiro (outros exercícios) + cardio</td><td>Varia o estímulo sem perder frequência</td></tr>
+            <tr><td>Sexta</td><td>Corpo inteiro + cardio</td><td>Fecha a semana com um dia de descanso entre as sessões</td></tr>
+            <tr><td>Outros dias</td><td>Caminhada e mais passos</td><td>Soma gasto sem cansar para o treino</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Com três dias, o corpo inteiro em cada sessão é o formato que mais
+        aproveita o tempo: cada músculo treina três vezes por semana. Por que
+        isso importa, e as outras divisões, está em
+        <a href="/musculacao/divisao-de-treino/">divisão de treino</a>.
+      </p>
+
+      <h2>A musculação não é opcional</h2>
+      <p>
+        Em déficit, o corpo tende a perder músculo junto com a gordura. O
+        treino de força é o sinal para preservar o músculo — e é por isso
+        que, com só três dias, ele vem antes do cardio, não depois. Mais sobre
+        isso em <a href="/emagrecimento/como-preservar-massa-muscular-emagrecendo/">como
+        preservar massa muscular emagrecendo</a>.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-emagrecimento"
+        texto="Com a semana montada, a pergunta seguinte é o prazo. A calculadora estima em quanto tempo você chega ao peso que quer, com um déficit realista."
+        acao="Calcular o meu prazo"
+      />
+
+      <h2>O que faz os três dias funcionarem</h2>
+      <ul>
+        <li><strong>A alimentação.</strong> É onde o déficit se decide. Um nutricionista ajusta a dieta ao seu caso.</li>
+        <li><strong>O movimento dos outros quatro dias.</strong> Caminhar e subir escadas contam no gasto da semana.</li>
+        <li><strong>A progressão.</strong> Subir carga ou repetições ao longo das semanas, em vez de repetir o mesmo treino.</li>
+        <li><strong>A constância.</strong> Três dias por meses rendem mais que cinco dias por três semanas.</li>
+      </ul>
+      <p>
+        O Montinho, autor deste guia, conta no vídeo abaixo como foi a própria
+        virada — ele pesava 40 kg a mais e achava que ia ser para sempre:
+      </p>
+
+      <VideoYouTube
+        id="CgPDOWBXh8k"
+        titulo="Eu pesava 40 kg a mais e achava que ia ser pra sempre — Montinho Personal"
+        legenda="Do canal do Montinho Personal: a história de quem já esteve 40 kg acima do peso."
+        short
+      />
+
+      <p class="ig-autor">
+        Ele divide treinos e estratégias para quem treina poucas vezes por semana no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Quando três dias não bastam</h2>
+      <p>
+        Se depois de 4 a 6 semanas a cintura e o peso médio não se moveram,
+        não acrescente dias antes de olhar o prato. Se o peso não cai mesmo
+        com a alimentação ajustada, converse com um médico: tireoide,
+        medicamentos e outras condições podem interferir. O passo a passo
+        está em <a href="/emagrecimento/faco-academia-e-nao-emagreco/">faço
+        academia e não emagreço</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/22681398/" target="_blank" rel="noopener noreferrer">Thomas DM, Bouchard C, Church T, et al. Why do individuals not lose more weight from an exercise intervention at a defined dose? An energy balance analysis. Obesity Reviews, 2012</a></li>
+        <li>Conferidas em 15/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

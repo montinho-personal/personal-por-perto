@@ -1,0 +1,265 @@
+---
+/**
+ * Treino há 6 meses e não vejo resultados — medir certo, as cinco causas
+ * (progressão, volume, esforço, alimentação, sono/frequência) e como refazer.
+ *
+ * Publicado em 15/11/2026, a pedido do Renato ("pode criar os próximos dois
+ * artigos"), ANTES dos prints. Registro em docs/treino-sem-resultado.md.
+ *
+ * Vídeo do canal: BoXag2fY0u0. Instagram: parágrafo + InstagramFollow.
+ * Fontes (15/11/2026, resumos): Schoenfeld 2017 (volume), Morton 2018
+ * (proteína).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/musculacao/progressao-de-carga/', titulo: 'Progressão de carga', descricao: 'Como fazer o treino evoluir semana a semana.', tipo: 'Musculação' },
+  { url: '/musculacao/quanto-tempo-para-ver-resultados/', titulo: 'Quanto tempo para ver resultados', descricao: 'O que esperar em cada fase.', tipo: 'Musculação' },
+  { url: '/musculacao/quantas-series-e-repeticoes/', titulo: 'Quantas séries e repetições', descricao: 'O volume certo para cada objetivo.', tipo: 'Musculação' },
+];
+
+const path = '/musculacao/treino-sem-resultado';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treino sem resultado', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treinar e não ver resultado';
+const faqs = [
+  {
+    pergunta: 'Por que treino há meses e não vejo resultado?',
+    resposta:
+      'As causas mais comuns são cinco: o treino não progride, o volume semanal por músculo é baixo, as séries terminam longe do esforço, a alimentação não sustenta o objetivo e o sono ou a frequência falham. Antes de mudar tudo, confira cargas, medidas e fotos — o espelho é a régua mais lenta.',
+  },
+  {
+    pergunta: 'Quantas séries por músculo para ver resultado?',
+    resposta:
+      'Uma meta-análise de 2017 mostrou mais hipertrofia com mais séries semanais, com tendência de resultado melhor a partir de 10 séries por semana para cada grupo muscular.',
+  },
+  {
+    pergunta: 'Como saber se meu treino está funcionando?',
+    resposta:
+      'Registre as cargas e confira se elas sobem ao longo das semanas, meça braço, cintura e coxa no mesmo ponto e tire fotos mensais na mesma luz. Se nenhum dos três muda em dois ou três meses, o treino precisa de ajuste.',
+  },
+  {
+    pergunta: 'Quanta proteína preciso para ganhar massa?',
+    resposta:
+      'Numa meta-análise de 2018 com 49 estudos, os ganhos de massa magra pararam de aumentar acima de cerca de 1,6 g de proteína por kg de peso por dia. A dieta individual é com o nutricionista.',
+  },
+  {
+    pergunta: 'Devo trocar de treino quando não vejo resultado?',
+    resposta:
+      'Antes de trocar exercícios, confira se o treino progride, se o volume por músculo é suficiente e se as séries terminam perto do esforço. Trocar a ficha sem resolver isso costuma repetir o problema.',
+  },
+];
+
+/* 49 caracteres. */
+const title = 'Treino Há 6 Meses e Não Vejo Resultados: Por Quê?';
+/* 147 caracteres. */
+const description =
+  'Treino há meses e não vejo resultado: como medir certo e as cinco causas que travam a musculação — progressão, volume, esforço, alimentação e sono.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treino há 6 meses e não vejo resultados: por quê?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Seis meses de academia sem mudança visível desanimam qualquer um. Quase
+      sempre a causa é uma de cinco, e dá para descobrir qual — começando por
+      conferir se o resultado realmente não veio.
+    </p>
+
+    <div class="prose">
+      <h2>Primeiro: você está medindo o resultado certo?</h2>
+      <p>
+        Seis meses sem mudança no espelho nem sempre é seis meses sem
+        resultado. O espelho é a régua mais lenta. Antes de mudar tudo,
+        confira três registros:
+      </p>
+      <ul>
+        <li><strong>As cargas:</strong> você levanta mais do que no primeiro mês nos exercícios principais?</li>
+        <li><strong>As medidas:</strong> braço, cintura e coxa, sempre no mesmo ponto e na mesma hora.</li>
+        <li><strong>As fotos:</strong> mesma luz, mesmo lugar, a cada mês.</li>
+      </ul>
+      <p>
+        Se nenhum dos três mudou, o problema existe — e quase sempre está numa
+        destas cinco causas.
+      </p>
+
+      <h2>1. O treino não progride</h2>
+      <p>
+        Repetir as mesmas cargas e repetições por meses mantém, não constrói.
+        O músculo responde a um estímulo que aumenta: mais carga, mais
+        repetições com a mesma carga ou mais séries. Sem registro, é difícil
+        saber se isso está acontecendo. O método está em
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+      </p>
+
+      <h2>2. O volume é baixo para o músculo que você quer</h2>
+      <p>
+        Uma meta-análise de 2017 encontrou uma relação de dose e resposta: mais
+        séries semanais por músculo, mais hipertrofia, com tendência de
+        resultado melhor a partir de <strong>10 séries por semana</strong> para
+        cada grupo. Muitas fichas dão 3 séries de um exercício por músculo,
+        uma vez por semana. As faixas por objetivo estão em
+        <a href="/musculacao/quantas-series-e-repeticoes/">quantas séries e
+        repetições</a>.
+      </p>
+
+      <h2>3. As séries terminam longe do esforço</h2>
+      <p>
+        Fazer 12 repetições com uma carga que aguentaria 20 conta como série na
+        ficha, mas estimula pouco. As séries de trabalho precisam terminar
+        perto do limite — sem precisar chegar à falha em todas. O detalhe está
+        em <a href="/musculacao/treinar-ate-a-falha/">treinar até a falha</a>.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-1rm"
+        texto="Para progredir e treinar perto do esforço com número, e não no olho, a calculadora estima a sua carga máxima a partir de uma série e mostra a carga para cada faixa de repetições."
+        acao="Calcular as minhas cargas"
+      />
+
+      <h2>4. A comida não sustenta o objetivo</h2>
+      <p>
+        Para ganhar músculo, a proteína importa. Uma meta-análise de 2018 com 49
+        estudos mostrou que suplementar proteína aumentou os ganhos de força e
+        de massa magra no treino de força — e que, acima de cerca de
+        <strong>1,6 g de proteína por kg de peso por dia</strong>, não houve
+        ganho extra. Quem quer emagrecer e ganhar músculo ao mesmo tempo tem
+        outro desafio, explicado em
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a>. A dieta de cada um é com o nutricionista.
+      </p>
+
+      <h2>5. Sono e frequência</h2>
+      <p>
+        Dormir pouco e faltar com frequência derrubam o resultado sem
+        aparecer na ficha. Três treinos que acontecem toda semana rendem mais
+        que cinco no papel.
+      </p>
+
+      <h2>Como refazer o treino</h2>
+      <p>
+        Se o diagnóstico apontou o treino, o Montinho, autor deste guia,
+        resume no vídeo abaixo como montar um treino de musculação em cinco
+        passos:
+      </p>
+
+      <VideoYouTube
+        id="BoXag2fY0u0"
+        titulo="Como montar seu treino de musculação em 5 passos — Montinho Personal"
+        legenda="Do canal do Montinho Personal: os cinco passos para montar o treino de musculação."
+        short
+      />
+
+      <p class="ig-autor">
+        Ele publica correções de execução e ajustes de treino como esses no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Quando procurar ajuda</h2>
+      <p>
+        Se depois de ajustar progressão, volume, esforço e alimentação o
+        resultado continua parado por mais dois ou três meses, vale ter alguém
+        olhando o treino de perto. Dor durante os exercícios é sempre motivo
+        para conversar com um médico ou fisioterapeuta antes de aumentar a
+        carga.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27433992/" target="_blank" rel="noopener noreferrer">Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and increases in muscle mass: a systematic review and meta-analysis. Journal of Sports Sciences, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28698222/" target="_blank" rel="noopener noreferrer">Morton RW, Murphy KT, McKellar SR, et al. A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults. British Journal of Sports Medicine, 2018</a></li>
+        <li>Conferidas em 15/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

@@ -225,3 +225,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 15/11 — `/guias/quanto-tempo-manter-personal/` — artigo novo: bloco constancia depois dos critérios de autonomia — "o que derruba a minha rotina sem horário marcado?"
 - 15/11 — `/guias/personal-online-ou-aplicativo/` — artigo novo: bloco auditoria depois de "quando vale ter uma pessoa" — "o treino do app que eu já faço faz sentido?"
 - 15/11 — `/emagrecimento/faco-academia-e-nao-emagreco/` — artigo novo: bloco gasto-calorico-diario depois do motivo principal — "qual é o meu ponto de partida?"
+- 15/11 — `/emagrecimento/emagrecer-treinando-3-vezes-por-semana/` — artigo novo: bloco calculadora-de-emagrecimento depois da musculação — "em quanto tempo eu chego lá com 3 dias?"
+- 15/11 — `/musculacao/treino-sem-resultado/` — artigo novo: bloco calculadora-1rm depois das três causas de treino — "qual carga usar para progredir e treinar perto do esforço?" (auditoria é o CTA do fim de musculação; o teste barra a repetição)
