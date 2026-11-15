@@ -12,6 +12,9 @@ import AutorMontinho from '../../components/AutorMontinho.astro';
 import ContextualCta from '../../components/ContextualCta.astro';
 import FerramentaCta from '../../components/FerramentaCta.astro';
 import MapaFitness from '../../components/MapaFitness.astro';
+import VitrineTransformacoes from '../../components/VitrineTransformacoes.astro';
+import { carregarVitrine } from '../../lib/vitrine';
+import { VITRINE_PAGINAS } from '../../data/vitrineTransformacoes';
 import { resumoMapaFitness } from '../../lib/fitnessPlaces';
 import { whatsappUrl } from '../../lib/links';
 import { paragrafos } from '../../lib/texto';
@@ -75,6 +78,11 @@ const ehTambore = cidade.slug === 'tambore-sp';
 const ehPresencialSemSecao =
   (cidadesPresencial as readonly string[]).includes(cidade.slug) &&
   !['alphaville-sp', 'santana-de-parnaiba-sp', 'barueri-sp', 'aldeia-da-serra-sp', 'tambore-sp'].includes(cidade.slug);
+// Vitrine de transformações (alunos do Montinho, lidos do feed dele no
+// build): só nas páginas de data/vitrineTransformacoes.ts. Feed fora do ar
+// ou vazio → null → a seção não renderiza.
+const vitrinePagina = VITRINE_PAGINAS[cidade.slug];
+const vitrine = vitrinePagina ? await carregarVitrine() : null;
 const fotoTransformacao = '/montinho/personal-trainer-alphaville.webp';
 const altTransformacao =
   'Antes e depois do Montinho Personal, personal trainer em Alphaville: da adolescência com sobrepeso ao físico definido após mais de 20 anos de musculação';
@@ -844,6 +852,17 @@ const objetivoDesc: Record<string, string> = {
         )
       }
 
+
+      {
+        vitrinePagina && vitrine && (
+          <VitrineTransformacoes
+            vitrine={vitrine}
+            intro={vitrinePagina.intro}
+            destaque={vitrinePagina.destaque}
+            pagina={`${path}/`}
+          />
+        )
+      }
 
       {
         ehPresencialSemSecao && (

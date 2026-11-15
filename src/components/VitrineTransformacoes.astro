@@ -1,0 +1,250 @@
+---
+/**
+ * Vitrine de transformações — antes e depois reais de alunos do Montinho
+ * Personal, lidos do feed do site dele (lib/vitrine.ts).
+ *
+ * Só aparece nas páginas listadas em data/vitrineTransformacoes.ts. O portal
+ * é um diretório: o eyebrow e o H2 deixam claro que os resultados são de
+ * alunos do Montinho — não "do diretório", de outros profissionais nem um
+ * ranking independente.
+ *
+ * Todo texto sobre os alunos vem do feed. O único texto próprio da página é
+ * a introdução (prop `intro`), que fala do bairro, nunca dos alunos.
+ */
+import type { Vitrine } from '../lib/vitrine';
+import ComparadorAntesDepois from './ComparadorAntesDepois.astro';
+
+export interface Props {
+  vitrine: Vitrine;
+  intro: string;
+  /** Posição da transformação em destaque; dá a volta se o feed for menor. */
+  destaque: number;
+  /** Caminho da página, enviado como `pagina` nos eventos do GA4. */
+  pagina: string;
+}
+
+const { vitrine, intro, destaque, pagina } = Astro.props;
+const lista = vitrine.transformacoes;
+const iDestaque = ((destaque % lista.length) + lista.length) % lista.length;
+const principal = lista[iDestaque];
+const outras = lista.filter((_, i) => i !== iDestaque);
+---
+
+<section id="vitrine-transformacoes" class="vit" data-vitrine data-pagina={pagina} aria-labelledby="vit-h">
+  <p class="eyebrow vit-eyebrow">Resultados de alunos do personal Montinho</p>
+  <h2 id="vit-h">Resultados reais. Transformações de verdade.</h2>
+  <p class="vit-intro">{intro}</p>
+
+  <article class="vit-destaque">
+    <ComparadorAntesDepois t={principal} variante="destaque" />
+    <div class="vit-destaque-txt">
+      <h3 class="vit-nome">{principal.nome}</h3>
+      <p class="vit-meta">{principal.idade} · {principal.modalidade}</p>
+      <dl class="vit-dados">
+        <div>
+          <dt>Resultado</dt>
+          <dd>{principal.resultado}</dd>
+        </div>
+        {principal.acompanhamento && (
+          <div>
+            <dt>Acompanhamento</dt>
+            <dd>{principal.acompanhamento}</dd>
+          </div>
+        )}
+      </dl>
+      <p class="vit-historia">{principal.historia}</p>
+      <blockquote class="vit-depoimento">
+        <p>{principal.depoimento}</p>
+      </blockquote>
+    </div>
+  </article>
+
+  {outras.length > 0 && (
+    <>
+      <h3 class="vit-outras-tit">Outras transformações</h3>
+      <ul class="vit-cards">
+        {outras.map((t) => (
+          <li class="vit-card">
+            <ComparadorAntesDepois t={t} variante="card" />
+            <h4 class="vit-card-nome">{t.nome}</h4>
+            <p class="vit-card-meta">
+              <strong>{t.resultado}</strong> · {t.idade}
+            </p>
+            <p class="vit-card-historia">{t.historia}</p>
+            <blockquote class="vit-depoimento vit-depoimento--card">
+              <p>{t.depoimento}</p>
+            </blockquote>
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+
+  <div class="vit-fecho">
+    <aside class="vit-nsc">
+      <h3 class="vit-nsc-tit">{vitrine.naoSeCompare.titulo}</h3>
+      <p>{vitrine.naoSeCompare.texto}</p>
+    </aside>
+    <div class="vit-cta" data-track="vitrine:cta">
+      <a
+        class="btn btn-primary vit-btn"
+        href={vitrine.links.cta}
+        target="_blank"
+        rel="noopener"
+        data-vitrine-cta
+      >
+        Quero começar minha transformação
+      </a>
+      <p class="vit-aviso">{vitrine.aviso}</p>
+      <a class="vit-todas" href={vitrine.links.todas} target="_blank" rel="noopener" data-vitrine-todas>
+        Ver todas as transformações <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { iniciarVitrine } from '../scripts/vitrine.client';
+  iniciarVitrine();
+</script>
+
+<style>
+  .vit {
+    margin-block: var(--sp-7);
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--line);
+  }
+  .vit-eyebrow {
+    margin-bottom: var(--sp-2);
+  }
+  .vit h2 {
+    margin-top: 0;
+  }
+  .vit-intro {
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+  .vit-destaque {
+    display: grid;
+    gap: var(--sp-5);
+    margin-top: var(--sp-5);
+    align-items: start;
+  }
+  @media (min-width: 760px) {
+    .vit-destaque {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+  }
+  .vit-nome {
+    margin: 0;
+  }
+  .vit-meta {
+    margin-top: var(--sp-1);
+    color: var(--muted);
+  }
+  .vit-dados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3) var(--sp-5);
+    margin: var(--sp-3) 0;
+  }
+  .vit-dados dt {
+    font-size: var(--step--1);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .vit-dados dd {
+    margin: 0;
+    font-size: var(--step-2);
+    font-weight: 700;
+    color: var(--brand-700);
+  }
+  .vit-depoimento {
+    margin: var(--sp-4) 0 0;
+    padding: var(--sp-3) var(--sp-4);
+    border-left: 4px solid var(--accent);
+    background: var(--accent-50);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+  }
+  .vit-depoimento p {
+    margin: 0;
+  }
+  .vit-outras-tit {
+    margin-top: var(--sp-7);
+  }
+  .vit-cards {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-4) 0 0;
+    display: grid;
+    gap: var(--sp-6);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  }
+  .vit-card {
+    margin: 0;
+    min-width: 0;
+  }
+  .vit-card-nome {
+    margin: var(--sp-3) 0 0;
+  }
+  .vit-card-meta {
+    margin-top: var(--sp-1);
+    color: var(--muted);
+  }
+  .vit-card-meta strong {
+    color: var(--brand-700);
+  }
+  .vit-card-historia {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+  }
+  .vit-depoimento--card {
+    font-size: var(--step--1);
+  }
+  .vit-fecho {
+    display: grid;
+    gap: var(--sp-5);
+    margin-top: var(--sp-7);
+    align-items: center;
+  }
+  @media (min-width: 760px) {
+    .vit-fecho {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    }
+  }
+  .vit-nsc {
+    padding: var(--sp-5);
+    border-radius: var(--radius-lg);
+    background: var(--bg-tint);
+  }
+  .vit-nsc-tit {
+    margin-top: 0;
+  }
+  .vit-nsc p {
+    margin-bottom: 0;
+  }
+  .vit-cta {
+    text-align: center;
+  }
+  .vit-btn {
+    text-decoration: none;
+    width: 100%;
+    max-width: 380px;
+    justify-content: center;
+  }
+  .vit-aviso {
+    margin-top: var(--sp-2);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+  .vit-todas {
+    display: inline-block;
+    margin-top: var(--sp-3);
+    font-weight: 600;
+  }
+</style>
