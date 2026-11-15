@@ -1,0 +1,272 @@
+---
+/**
+ * Faço academia e não emagreço — o motivo principal (gasto x compensação),
+ * os outros motivos, o que fazer na ordem.
+ *
+ * Publicado em 15/11/2026, a pedido do Renato ("pode começar"), ANTES dos
+ * prints. Revisão contra os prints registrada em
+ * docs/faco-academia-e-nao-emagreco.md.
+ *
+ * Vídeos: dois Shorts do canal do Montinho (pxstc1eDnJU, XCSizVFG3d0),
+ * registrados em data/videosMontinho.ts. Instagram: link profissional no
+ * fim + InstagramFollow.
+ *
+ * Fontes (resumos, 15/11/2026): Thomas 2012 (Obes Rev), Donnelly 2009
+ * (ACSM). Sem número de perda por semana além do que o texto qualifica.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento', descricao: 'Quando o peso para depois de meses caindo.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/como-emagrecer-fazendo-musculacao/', titulo: 'Como emagrecer fazendo musculação', descricao: 'O papel do treino de força no emagrecimento.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico', descricao: 'Como funciona a conta que decide o emagrecimento.', tipo: 'Emagrecimento' },
+];
+
+const path = '/emagrecimento/faco-academia-e-nao-emagreco';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Faço academia e não emagreço', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treinar e não emagrecer';
+const faqs = [
+  {
+    pergunta: 'Por que faço academia e não emagreço?',
+    resposta:
+      'O motivo mais comum é que o treino gasta menos do que parece e costuma vir junto com um aumento no que se come. Uma revisão de 2012 chegou a essa conclusão. Outros motivos: ganho de músculo e água mascarando a perda de gordura na balança, pouco movimento no resto do dia, fins de semana que zeram o déficit, treino sem progressão e sono ruim.',
+  },
+  {
+    pergunta: 'Só musculação emagrece?',
+    resposta:
+      'Ajuda, mas sozinha costuma emagrecer pouco. Segundo o American College of Sports Medicine, entre 150 e 250 minutos de atividade por semana trazem perda de peso modesta; perdas maiores vêm com mais atividade ou com ajuste na alimentação. A musculação é o que preserva o músculo enquanto o déficit tira a gordura.',
+  },
+  {
+    pergunta: 'Treino há 2 meses e não emagreci. É normal?',
+    resposta:
+      'Pode ser. Confira se a cintura e as fotos mudaram, porque a balança pode esconder a perda de gordura quando há ganho de músculo e água. Se nada mudou em 3 a 4 semanas de medição, olhe primeiro a alimentação.',
+  },
+  {
+    pergunta: 'A balança não desce mas as roupas estão mais folgadas. Estou emagrecendo?',
+    resposta:
+      'Provavelmente sim. Roupas mais folgadas e cintura menor costumam indicar perda de gordura, mesmo com o peso parado. Compare fotos e medidas, não só o peso.',
+  },
+  {
+    pergunta: 'Quando procurar um médico?',
+    resposta:
+      'Se você mantém déficit e treino por semanas e nada muda, ou se o peso sobe sem explicação, converse com um médico. Tireoide, medicamentos e outras condições podem interferir no peso, e o nutricionista ajusta a alimentação.',
+  },
+];
+
+/* 58 caracteres. */
+const title = 'Faço Academia e Não Emagreço: O Que Pode Estar Acontecendo';
+/* 153 caracteres. */
+const description =
+  'Faço academia e não emagreço: por que o treino emagrece menos do que parece, os motivos que travam a balança e o que fazer, na ordem, segundo os estudos.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Faço academia e não emagreço: o que pode estar acontecendo</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Você treina, se esforça e a balança não sai do lugar. Não é falta de
+      força de vontade: na maioria das vezes, é uma conta que não fecha — e
+      ela se decide mais fora da academia do que dentro.
+    </p>
+
+    <div class="prose">
+      <h2>O motivo mais comum: o treino gasta menos do que parece</h2>
+      <p>
+        Uma revisão de 2012 tentou explicar por que os programas de exercício
+        emagrecem menos do que as contas preveem. A conclusão: a principal
+        razão é que <strong>o gasto do treino é menor do que se imagina</strong>,
+        e ele costuma vir junto com <strong>um aumento no que se come</strong>
+        — a fome sobe, a recompensa depois do treino aparece, e a diferença se
+        fecha sem ninguém perceber.
+      </p>
+      <p>
+        O posicionamento do American College of Sports Medicine vai na mesma
+        linha: entre 150 e 250 minutos por semana de atividade moderada, o
+        exercício sozinho traz perda de peso <strong>modesta</strong>. Perdas
+        maiores aparecem acima de 250 minutos por semana, ou quando o treino
+        vem junto com ajuste na alimentação. Treinar é essencial para a saúde
+        e para manter músculo — mas quem emagrece é o déficit calórico, e ele
+        se decide principalmente no prato.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="O primeiro passo é saber o seu ponto de partida: a calculadora estima quanto você gasta por dia, contando o treino, para você enxergar o tamanho real do déficit."
+        acao="Calcular meu gasto diário"
+      />
+
+      <h2>Os outros motivos, um por um</h2>
+      <h3>1. Você está perdendo gordura, mas a balança não mostra</h3>
+      <p>
+        Quem começa musculação pode ganhar um pouco de músculo enquanto perde
+        gordura, e a água do corpo faz o peso oscilar de um dia para o outro.
+        A balança fica parada, mas a cintura e as fotos mudam. Por isso a balança sozinha é uma régua ruim:
+        meça a cintura, tire fotos no mesmo lugar e compare a cada 3 ou 4
+        semanas.
+      </p>
+      <h3>2. O resto do dia ficou parado</h3>
+      <p>
+        Uma hora de academia não compensa um dia inteiro sentado. Os passos do
+        dia a dia contam no gasto total, e muita gente anda menos nos dias de
+        treino sem perceber.
+      </p>
+      <h3>3. A comida do fim de semana desfaz a semana</h3>
+      <p>
+        Cinco dias certinhos e dois dias livres podem zerar o déficit da semana.
+        Não é preciso cortar o que você gosta — é preciso que a conta da semana
+        feche.
+      </p>
+      <VideoYouTube
+        id="pxstc1eDnJU"
+        titulo="Eu emagreci 40 kg sem parar de beber cerveja — Montinho Personal"
+        legenda="Do canal do Montinho Personal: como ele emagreceu 40 kg sem cortar a cerveja — a conta da semana pesa mais que a proibição."
+        short
+      />
+      <h3>4. O treino não progride</h3>
+      <p>
+        Repetir as mesmas cargas por meses mantém, mas não constrói. Para
+        preservar e ganhar músculo enquanto emagrece, o treino precisa de
+        progressão — mais carga, mais repetições ou mais séries ao longo do
+        tempo. Como fazer isso está em
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+      </p>
+      <h3>5. Sono e estresse</h3>
+      <p>
+        Dormir pouco aumenta a fome e atrapalha o controle do que se come. O
+        que os estudos mostram está em
+        <a href="/emagrecimento/dormir-pouco-engorda/">dormir pouco engorda?</a>.
+      </p>
+      <h3>6. Pouco tempo de teste</h3>
+      <p>
+        Duas semanas é pouco para julgar. Com déficit moderado, a perda de
+        gordura é de poucas centenas de gramas por semana, e a água do corpo
+        oscila mais que isso de um dia para o outro. Se o peso parou depois de
+        meses caindo, o assunto é outro: veja
+        <a href="/emagrecimento/plato-de-emagrecimento/">platô de
+        emagrecimento</a>.
+      </p>
+
+      <h2>O que fazer, na ordem</h2>
+      <ol>
+        <li><strong>Meça direito</strong> por 3 a 4 semanas: peso médio da semana, cintura e fotos.</li>
+        <li><strong>Olhe o prato antes do treino.</strong> Anote o que come por alguns dias — a diferença costuma aparecer ali.</li>
+        <li><strong>Aumente o movimento fora da academia</strong>, como caminhadas curtas e mais passos.</li>
+        <li><strong>Garanta que o treino progride</strong>, para o que você perder ser gordura, não músculo.</li>
+        <li><strong>Procure ajuda</strong> se nada mudar: o nutricionista ajusta a alimentação, e o médico investiga se há algo além — tireoide, medicamentos ou outras condições podem interferir no peso.</li>
+      </ol>
+      <p>
+        Uma forma prática de começar a organizar a alimentação, sem substituir
+        o nutricionista, é a que o Montinho mostra neste vídeo:
+      </p>
+      <VideoYouTube
+        id="XCSizVFG3d0"
+        titulo="Como montar uma dieta em 4 passos — Montinho Personal"
+        legenda="Do canal do Montinho Personal: um ponto de partida para organizar a alimentação. Não substitui o acompanhamento de um nutricionista."
+        short
+      />
+
+      <p class="ig-autor">
+        O Montinho, que emagreceu mais de 40 kg e hoje acompanha alunos com o mesmo objetivo, publica estratégias como essas no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/22681398/" target="_blank" rel="noopener noreferrer">Thomas DM, Bouchard C, Church T, et al. Why do individuals not lose more weight from an exercise intervention at a defined dose? An energy balance analysis. Obesity Reviews, 2012</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19127177/" target="_blank" rel="noopener noreferrer">Donnelly JE, Blair SN, Jakicic JM, et al. American College of Sports Medicine Position Stand. Appropriate physical activity intervention strategies for weight loss and prevention of weight regain for adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li>Conferidas em 15/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

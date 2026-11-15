@@ -102,6 +102,11 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
   { id: 'xb1sP6z01-s', tema: 'não sentiu o músculo? calma', short: true, artigo: '/musculacao/dor-muscular-pos-treino/' },
   { id: 'izMrrSoJGBw', tema: 'raiva e sangue no olho: disciplina', short: true, artigo: '/guias/como-nao-desistir-do-treino/' },
   { id: '7rN1Xwhp09g', tema: 'só um pedacinho: quanto as beliscadas atrapalham', short: true, artigo: '/emagrecimento/comer-fora-e-dieta/' },
+  // 15/11/2026, Shorts novos do canal (out–nov/2026), dois por artigo, a pedido do Renato:
+  { id: 'L5w4DBU2la8', tema: 'como filmar o exercício para o personal corrigir a execução', short: true, artigo: '/guias/personal-online-ou-aplicativo/' },
+  { id: 'EwvRdG917fY', tema: 'app de treino para academia: o app do Montinho', short: true, artigo: '/guias/personal-online-ou-aplicativo/' },
+  { id: 'pxstc1eDnJU', tema: 'emagreci 40 kg sem parar de beber cerveja', short: true, artigo: '/emagrecimento/faco-academia-e-nao-emagreco/' },
+  { id: 'XCSizVFG3d0', tema: 'como montar uma dieta em 4 passos', short: true, artigo: '/emagrecimento/faco-academia-e-nao-emagreco/' },
 ];
 
 /**

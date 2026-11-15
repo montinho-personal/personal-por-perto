@@ -1,0 +1,284 @@
+---
+/**
+ * Personal online ou aplicativo de treino — a diferença, o que a pesquisa
+ * diz, quando cada um basta, a correção por vídeo e o personal que usa app.
+ *
+ * Publicado em 15/11/2026, a pedido do Renato ("pode começar"), ANTES dos
+ * prints. Revisão contra os prints registrada em
+ * docs/personal-online-ou-aplicativo.md.
+ *
+ * Vídeos: dois Shorts do canal do Montinho (L5w4DBU2la8, EwvRdG917fY),
+ * registrados em data/videosMontinho.ts. Instagram: link profissional no
+ * parágrafo dos vídeos + InstagramFollow.
+ *
+ * Fontes (resumos, 15/11/2026): Romeo 2019 (JMIR), Mazzetti 2000, Ratamess
+ * 2008.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/guias/personal-online-funciona/', titulo: 'Personal trainer online funciona?', descricao: 'Como funciona e como escolher o profissional.', tipo: 'Guia' },
+  { url: '/guias/quanto-tempo-manter-personal/', titulo: 'Por quanto tempo manter um personal', descricao: 'O que os estudos dizem sobre supervisão.', tipo: 'Guia' },
+  { url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino para iniciantes', descricao: 'Por onde começar na musculação.', tipo: 'Musculação' },
+];
+
+const path = '/guias/personal-online-ou-aplicativo';
+const atualizadoEm = '2026-11-15';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Personal online ou aplicativo', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre personal online e aplicativo de treino';
+const faqs = [
+  {
+    pergunta: 'Aplicativo de treino vale a pena?',
+    resposta:
+      'Vale para quem já domina a execução, mantém a frequência sozinho e não tem dor nem condição de saúde que peça adaptação. Uma meta-análise de 2019 achou um efeito pequeno e não significativo dos apps sobre a atividade física, maior nos primeiros 3 meses.',
+  },
+  {
+    pergunta: 'Qual a diferença entre personal online e aplicativo de treino?',
+    resposta:
+      'O aplicativo entrega um treino pronto ou gerado por regras. O personal online monta o treino a partir de você, confere a execução por vídeo, ajusta o plano pelo que aconteceu na semana e percebe quando você some. Muitos personais online usam um app para entregar o treino.',
+  },
+  {
+    pergunta: 'O personal online consegue corrigir minha execução?',
+    resposta:
+      'Consegue, por vídeo: você filma a série e ele devolve a correção. Não é igual a ter alguém ao lado, mas resolve a maior parte dos erros quando o vídeo mostra o movimento inteiro.',
+  },
+  {
+    pergunta: 'Preciso enviar vídeos para o personal online?',
+    resposta:
+      'No começo, sim — é a forma de ele ver a sua execução. Com o tempo, os vídeos ficam para exercícios novos, cargas maiores ou quando algo incomoda.',
+  },
+  {
+    pergunta: 'Personal online ou app para iniciante?',
+    resposta:
+      'Para quem está começando, uma pessoa conferindo a execução costuma fazer mais diferença. O app funciona melhor para quem já domina os exercícios básicos.',
+  },
+];
+
+/* 55 caracteres. */
+const title = 'Personal Online ou Aplicativo de Treino: Qual é Melhor?';
+/* 152 caracteres. */
+const description =
+  'Personal online ou aplicativo de treino: a diferença real, o que os estudos dizem sobre apps, quando cada um basta e como funciona a correção por vídeo.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guia</p>
+    <h1>Personal online ou aplicativo de treino: qual é melhor?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Aplicativo de treino custa menos e está sempre no bolso. Personal
+      online custa mais e tem uma pessoa do outro lado. A escolha depende
+      menos do treino em si e mais de uma pergunta: você precisa de alguém
+      conferindo?
+    </p>
+
+    <div class="prose">
+      <h2>A diferença em uma frase</h2>
+      <p>
+        O aplicativo entrega um <strong>treino</strong>. O personal online
+        entrega um <strong>acompanhamento</strong>: alguém que monta o plano a
+        partir de você, confere se ele está funcionando e muda o que precisa
+        ser mudado. Muitos personais online usam um app para entregar o treino
+        — então a pergunta real não é "app ou pessoa", é se existe alguém do
+        outro lado.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>Aplicativo de treino</th><th>Personal online</th></tr></thead>
+          <tbody>
+            <tr><td>Treino</td><td>Pronto ou gerado por algoritmo</td><td>Montado para você, com avaliação</td></tr>
+            <tr><td>Ajuste</td><td>Automático, pelas regras do app</td><td>Feito por uma pessoa, pelo que aconteceu na semana</td></tr>
+            <tr><td>Execução</td><td>Vídeos de demonstração</td><td>Correção do <em>seu</em> movimento, por vídeo</td></tr>
+            <tr><td>Dor, lesão, rotina que muda</td><td>Você decide sozinho</td><td>O profissional adapta (dor sempre com médico ou fisioterapeuta)</td></tr>
+            <tr><td>Cobrança e constância</td><td>Notificações</td><td>Alguém que percebe quando você some</td></tr>
+            <tr><td>Custo</td><td>Menor</td><td>Maior</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>O que a pesquisa diz sobre os aplicativos</h2>
+      <p>
+        Uma meta-análise de 2019 reuniu os estudos controlados que testaram
+        aplicativos para aumentar a atividade física de adultos. Os apps
+        aumentaram em média cerca de <strong>480 passos por dia</strong>, mas a
+        diferença não foi estatisticamente significativa. Os autores viram
+        efeito melhor nos primeiros 3 meses do que depois — o app ajuda a
+        começar, e tem mais dificuldade de sustentar.
+      </p>
+      <p>
+        Do lado da supervisão, os estudos com personal mostram outra coisa:
+        quem treina acompanhado escolhe cargas mais altas e ganha mais força do
+        que quem segue o mesmo programa sozinho. Esses estudos foram feitos com
+        personal presencial; o online fica no meio do caminho — tem o plano e o
+        ajuste, mas não tem a correção ao vivo. O detalhe dos estudos está em
+        <a href="/guias/quanto-tempo-manter-personal/">por quanto tempo manter
+        um personal</a>.
+      </p>
+
+      <h2>Quando o aplicativo basta</h2>
+      <ul>
+        <li>Você já treina há algum tempo e domina a execução dos exercícios básicos.</li>
+        <li>Seu objetivo é manter a forma, sem meta com prazo.</li>
+        <li>Você não tem dor, lesão nem condição de saúde que peça adaptação.</li>
+        <li>Você mantém a frequência sozinho, sem precisar de cobrança.</li>
+      </ul>
+
+      <h2>Quando vale ter uma pessoa do outro lado</h2>
+      <ul>
+        <li>Você está começando e ainda não sabe se está executando certo.</li>
+        <li>Já seguiu planilhas e parou no meio — mais de uma vez.</li>
+        <li>Tem um objetivo concreto, como emagrecer, ganhar massa ou se preparar para uma prova.</li>
+        <li>Tem dor, limitação ou uma rotina que muda toda semana.</li>
+      </ul>
+
+      <FerramentaInline
+        id="auditoria"
+        texto="Se você já usa um app ou uma planilha, dá para conferir se o treino faz sentido antes de decidir: a análise olha a frequência de cada músculo, o volume e a estrutura da sua semana."
+        acao="Analisar o treino que eu já faço"
+      />
+
+      <h2>A correção de execução a distância</h2>
+      <p>
+        É a principal dúvida sobre o online — e a resposta é vídeo. O aluno
+        filma a série e o personal devolve a correção. Não é igual a ter alguém
+        ao lado, mas resolve a maior parte dos erros, desde que o vídeo mostre
+        o movimento inteiro. No vídeo abaixo, o Montinho mostra como gravar:
+      </p>
+
+      <VideoYouTube
+        id="L5w4DBU2la8"
+        titulo="Como filmar seu exercício para o personal corrigir a execução — Montinho Personal"
+        legenda="Do canal do Montinho Personal: como filmar o exercício para a correção a distância, sem tripé."
+        short
+      />
+
+      <h2>Personal online que usa aplicativo</h2>
+      <p>
+        Na prática, os dois se misturam: o personal monta e ajusta o treino, e
+        o aplicativo é onde o aluno vê a semana, registra as cargas e manda os
+        vídeos. É assim no acompanhamento do Montinho Personal, autor deste
+        guia — o treino fica no app próprio dele:
+      </p>
+
+      <VideoYouTube
+        id="EwvRdG917fY"
+        titulo="App de treino para academia — Montinho Personal"
+        legenda="Do canal do Montinho Personal: como é o app em que os alunos dele recebem e registram o treino."
+        short
+      />
+
+      <p class="ig-autor">
+        Outras dicas de execução e de treino que o Montinho grava para os alunos estão no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Como decidir</h2>
+      <p>
+        Comece pelo que você já tentou. Se o app funcionou e você só quer
+        variar, fique nele. Se a planilha parou na terceira semana, ou se você
+        não sabe se está evoluindo, o que falta não é um treino melhor: é
+        alguém conferindo. Os critérios para escolher esse profissional estão
+        em <a href="/guias/personal-online-funciona/">personal trainer online
+        funciona?</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/30888321/" target="_blank" rel="noopener noreferrer">Romeo A, Edney S, Plotnikoff R, et al. Can smartphone apps increase physical activity? Systematic review and meta-analysis. Journal of Medical Internet Research, 2019</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener noreferrer">Mazzetti SA, Kraemer WJ, Volek JS, et al. The influence of direct supervision of resistance training on strength performance. Medicine &amp; Science in Sports &amp; Exercise, 2000</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18296962/" target="_blank" rel="noopener noreferrer">Ratamess NA, Faigenbaum AD, Hoffman JR, Kang J. Self-selected resistance training intensity in healthy women: the influence of a personal trainer. Journal of Strength and Conditioning Research, 2008</a></li>
+        <li>Conferidas em 15/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

@@ -223,3 +223,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 11/11 — `/guias/personal-trainer-para-quem-viaja/` — artigo novo: bloco formato depois de "academia do hotel" — "presencial ou online, para quem não para na cidade?"
 - 15/11 — `/guias/trocar-de-personal-trainer/` — artigo novo: bloco score depois dos sinais — "o problema é o profissional ou a fase?"
 - 15/11 — `/guias/quanto-tempo-manter-personal/` — artigo novo: bloco constancia depois dos critérios de autonomia — "o que derruba a minha rotina sem horário marcado?"
+- 15/11 — `/guias/personal-online-ou-aplicativo/` — artigo novo: bloco auditoria depois de "quando vale ter uma pessoa" — "o treino do app que eu já faço faz sentido?"
+- 15/11 — `/emagrecimento/faco-academia-e-nao-emagreco/` — artigo novo: bloco gasto-calorico-diario depois do motivo principal — "qual é o meu ponto de partida?"

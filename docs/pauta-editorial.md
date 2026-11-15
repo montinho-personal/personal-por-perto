@@ -983,3 +983,27 @@ Google e nenhum ganha:
 Remada serrote (= remada unilateral) · Good morning (= bom dia) · Tríceps na
 corda (= tríceps pulley) · Abdução de quadril na polia (= cadeira abdutora) ·
 Musculação para adolescentes (≈ guia de adolescentes).
+
+## Lista de 40 temas do Renato — 15/11/2026
+
+Cruzamento com o site feito em 15/11:
+- 9 temas já têm artigo próprio;
+- 18 são respondidos dentro de outra página;
+- 13 não existem.
+
+Recomendação: 9 artigos novos (com duas fusões, 31+39 e 27+29). Os
+parciais viram FAQ ou seção nas páginas que já existem, principalmente no
+guia de personal online, para não canibalizar.
+
+| artigo | slug | status |
+|---|---|---|
+| Personal online ou aplicativo de treino | `/guias/personal-online-ou-aplicativo/` | ✅ 2026-11-15 · antes dos prints · `docs/personal-online-ou-aplicativo.md` |
+| Faço academia e não emagreço | `/emagrecimento/faco-academia-e-nao-emagreco/` | ✅ 2026-11-15 · antes dos prints · `docs/faco-academia-e-nao-emagreco.md` |
+| Emagrecer treinando 3 vezes por semana | — | fila |
+| Treino há 6 meses sem resultado | — | fila |
+| Como sair da estagnação | — | fila |
+| Treinar sozinho na academia dá resultado? | — | fila |
+| Ficha da academia / treino pronto da internet | — | fila |
+| Quando trocar o treino | — | fila |
+| Acompanhar a evolução / treino pelo aplicativo | — | fila |
+
