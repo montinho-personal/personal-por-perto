@@ -170,7 +170,7 @@ serp '{"engine":"google_autocomplete","q":"BUSCA","hl":"pt-br","gl":"br"}'
 serp '{"engine":"google_ai_overview","page_token":"TOKEN"}'
 ```
 
-**Cota:** uma conta só para todos os sites do Renato, em plano pago desde 16/11/2026
+**Cota:** uma conta só para todos os sites do Renato, em plano pago desde 16/11/2026 (1.000 buscas por mês)
 (o limite do mês aparece no painel do SerpApi; se a API disser que acabou, parar e
 avisar). Cada busca gasta 2 (página + autocompletar), 3 com a visão de IA em duas
 etapas. Buscar só o que a peça precisa (em geral 3 buscas), nunca em massa, e não

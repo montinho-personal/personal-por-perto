@@ -22,7 +22,7 @@ serp '{"engine":"google_ai_overview","page_token":"TOKEN"}'   # só quando a IA 
 
 Se der erro de chave, use a ferramenta request_credential para o host mcp.serpapi.com (tipo bearer) e me peça para colar a chave no formulário; nunca peça a chave na conversa. Print meu só se o SerpApi falhar.
 
-**2. Cota compartilhada.** A conta do SerpApi é uma só para todos os meus sites: 250 buscas por mês. Cada busca gasta 2 (página + autocompletar), 3 com a visão de IA em duas etapas. Este site usa no máximo [N, ex.: 60] por mês. Não repita busca do mesmo dia e nunca busque em massa. Se faltar cota, pare e me avise; não escreva sem pesquisa.
+**2. Cota compartilhada.** A conta do SerpApi é uma só para todos os meus sites: 1.000 buscas por mês. Cada busca gasta 2 (página + autocompletar), 3 com a visão de IA em duas etapas. Este site usa no máximo [N, ex.: 60] por mês. Não repita busca do mesmo dia e nunca busque em massa. Se faltar cota, pare e me avise; não escreva sem pesquisa.
 
 **3. Evidência.** Guarde um JSON enxuto de cada busca (busca, data, aparelho, local, autocompletar, perguntas, outras pesquisas, texto e fontes da IA, orgânicos com posição, título e endereço; sem page_token nem links do serpapi.com) em `docs/pesquisas/` e, no doc da peça (`docs/<peça>.md`), uma tabela dizendo onde cada intenção entrou no texto ou por que ficou de fora.
 
