@@ -39,3 +39,10 @@ Arquivos em `docs/pesquisas/2026-10-22-perder-10-kg/prints/`.
 O "0,5 a 1 kg por semana" aparece como ritmo de referência e é a base da
 tabela; a fonte primária (CDC) não abriu aqui (proxy recusou cdc.gov).
 O texto não atribui o número a nenhuma instituição.
+
+## Para a próxima revisão (16/11/2026)
+
+PAA "Como perder 10 kg em um ano?" e "É possível emagrecer 10 kg até
+dezembro?" (buscas de fim de ano, `docs/pesquisas/2026-11-16-fim-de-ano/`).
+Cabem aqui como FAQ: a primeira é um prazo folgado (menos de 1 kg por mês),
+a segunda pede a conta de quantas semanas faltam.

@@ -1035,3 +1035,16 @@ termogênico, dietas de choque e jejum, "10 alimentos mais saudáveis".
 
 Cada candidato, ao virar artigo, começa pelas buscas no SerpApi como
 qualquer peça nova.
+
+### Buscas que ficaram de fora em "Como não engordar nas festas de fim de ano" (16/11)
+
+- **Vale um artigo:** nenhuma nova.
+- **Cabe em página existente:** "como perder 10 kg em um ano" e "emagrecer
+  10 kg até dezembro" → `quanto-tempo-para-perder-10kg` (anotado no doc);
+  "como não engordar nas férias" → seção de viagem de `comer-fora-e-dieta`
+  (anotado no doc).
+- **Não recomendo:** "o que servir na festa" e "cardápio do Ano-Novo"
+  (cardápio é com o nutricionista); "o que não comer na virada"
+  (superstição, fora do tema); "como perder 3 kg rapidinho" (dieta de
+  choque); "quantos quilos engordar na gravidez" (obstetrícia, fora do
+  tema); "2 litros de água" (só a visão de IA, sem busca real).

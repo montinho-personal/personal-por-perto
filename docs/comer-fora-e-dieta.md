@@ -28,3 +28,9 @@ JSON em `docs/pesquisas/2026-11-16-comer-fora-e-dieta/1.json` a `3.json`
 
 Mantidos: capa, vídeo 7rN1Xwhp09g, FerramentaInline `gasto-calorico-diario`,
 seções de viagem, volta e ocasiões recorrentes. `atualizadoEm` 2026-11-16.
+
+## Para a próxima revisão (16/11/2026)
+
+AC "como não engordar nas férias" (busca "como não engordar nas festas de
+fim de ano"). Cabe na seção "Viagem: mude o objetivo, não o esforço": vale
+citar férias no H2 ou numa FAQ, em vez de artigo próprio.
