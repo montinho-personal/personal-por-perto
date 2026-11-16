@@ -176,6 +176,14 @@ avisar). Cada busca gasta 2 (página + autocompletar), 3 com a visão de IA em d
 etapas. Buscar só o que a peça precisa (em geral 3 buscas), nunca em massa, e não
 repetir busca já feita no mesmo dia.
 
+**Orçamento do mês (1.000 pesquisas, todos os sites somados; conta de 16/11/2026):**
+rotina diária do Direito de Verdade (2 revisões, 2 buscas cada) cerca de 300; rotinas
+do Personal por Perto (artigos e cidades, 2 + 2 por dia) cerca de 360; rotina do Site do
+Montinho cerca de 120 a 150; rotina do Crédito por Perto (1 revisão por dia) cerca de 60
+a 90; rotinas mensais cerca de 30. Total: 870 a 930, com pouca sobra para pedidos
+avulsos. Rotina nova, ou maior, só depois de refazer esta conta com o Renato; passou de
+850 no mês, só pesquisar o que ele pedir.
+
 **Evidência:** guardar no doc da peça, no lugar dos prints, um JSON enxuto de cada
 busca (busca, data, autocompletar, perguntas, outras pesquisas, texto e fontes da
 visão de IA, orgânicos com posição, título e endereço), sem `page_token` nem links
