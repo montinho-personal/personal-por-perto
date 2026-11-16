@@ -131,6 +131,28 @@ que o artigo já dizia desde 13/10.
 "resultado". Os itens de uma fonte só esperam a segunda (ou o resultado
 oficial da Chip Timing) na checagem de 17/11.
 
+### 16/11/2026, 8h — fonte oficial: Prefeitura de Curitiba (print do Renato)
+
+Prints em `prints/maratona-de-curitiba-2026/2026-11-16-prefeitura-curitiba-resultado-{1..9}.webp`.
+Notícia "Maratona de Curitiba reuniu milhares de corredores neste domingo;
+prefeito participou da prova de 5 km", 15/11/2026, 11h31 (a 85935, que dava
+403 aqui). Fonte oficial: vale sozinha.
+
+Entrou no artigo: a tabela de vencedores das quatro distâncias, o recorde
+(2h13min24s contra os 2h15min13s de Ederson Vilela em 2025) e "mais de 16 mil
+corredores".
+
+Divergências e o que se fez:
+- 10 km feminino: Prefeitura 37min31s × Banda B 37min32s. Vale o oficial.
+- 42 km feminino: Prefeitura "Ana Catarina Amancio" × Banda B "Ana Catarina
+  Amancio de Oliveira". Vale o nome da Prefeitura.
+- Nacionalidade: só a do Aziz Ait (marroquino) está na Prefeitura. As outras
+  vêm só da Banda B e não entraram.
+- 55% de fora de Curitiba: a Prefeitura dá o número para a edição de 2025, e
+  a CBN para 2026. Conflito, não entrou.
+
+A checagem agendada para 17/11 foi cancelada: não sobrou item pendente.
+
 ## Pendente — pistas sem fonte (não usar no artigo)
 
 | item | pista | conflito |
