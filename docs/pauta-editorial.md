@@ -1001,8 +1001,8 @@ guia de personal online, para não canibalizar.
 | Faço academia e não emagreço | `/emagrecimento/faco-academia-e-nao-emagreco/` | ✅ 2026-11-15 · antes dos prints · `docs/faco-academia-e-nao-emagreco.md` |
 | Emagrecer treinando 3 vezes por semana | `/emagrecimento/emagrecer-treinando-3-vezes-por-semana/` | ✅ 2026-11-15 · antes dos prints · `docs/emagrecer-treinando-3-vezes-por-semana.md` |
 | Treino há 6 meses sem resultado | `/musculacao/treino-sem-resultado/` | ✅ 2026-11-15 · antes dos prints · `docs/treino-sem-resultado.md` |
-| Como sair da estagnação | — | fila |
-| Treinar sozinho na academia dá resultado? | — | fila |
+| Como sair da estagnação | — | **em espera (16/11):** prints mostram intenção de vida/emocional; só "de peso" e "muscular" são fitness — ver `docs/treinar-sozinho-na-academia.md` |
+| Treinar sozinho na academia dá resultado? | `/musculacao/treinar-sozinho-na-academia/` | ✅ 2026-11-16 · depois dos prints · `docs/treinar-sozinho-na-academia.md` |
 | Ficha da academia / treino pronto da internet | — | fila |
 | Quando trocar o treino | — | fila |
 | Acompanhar a evolução / treino pelo aplicativo | — | fila |

@@ -1,0 +1,336 @@
+---
+/**
+ * Treinar sozinho na academia dá resultado? — o que a pesquisa diz, como
+ * começar sendo iniciante, aplicativo, frequência, vergonha e casa × academia.
+ *
+ * Da lista de 40 temas do Renato (15/11/2026). Escrito DEPOIS dos prints de
+ * "treinar sozinho na academia" (16/11/2026): o autocompletar, o PAA e a
+ * visão geral de IA definiram título, seções e FAQs. Registro em
+ * docs/treinar-sozinho-na-academia.md.
+ *
+ * Recorte: /guias/quanto-tempo-manter-personal/ responde "sozinho ou com
+ * personal?" e "quando estou pronto"; aqui é o COMO treinar sozinho.
+ *
+ * Vídeo do canal: yqPAYRVTe0E. Instagram: parágrafo + InstagramFollow.
+ * Fontes (16/11/2026, resumos): Mazzetti 2000, Ratamess 2008, Dias 2017,
+ * OMS 2020.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino para iniciantes', descricao: 'A primeira ficha, exercício por exercício.', tipo: 'Musculação' },
+  { url: '/musculacao/divisao-de-treino/', titulo: 'Divisão de treino', descricao: 'Como dividir os músculos pelos dias da semana.', tipo: 'Musculação' },
+  { url: '/guias/quanto-tempo-manter-personal/', titulo: 'Por quanto tempo manter um personal', descricao: 'Os sinais de que dá para seguir sozinho.', tipo: 'Guia' },
+];
+
+const path = '/musculacao/treinar-sozinho-na-academia';
+const atualizadoEm = '2026-11-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Treinar sozinho na academia', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treinar sozinho na academia';
+const faqs = [
+  {
+    pergunta: 'Treinar sozinho na academia dá resultado?',
+    resposta:
+      'Dá, desde que você vá com um plano, registre as cargas e treine perto do esforço. O ponto fraco de quem treina sozinho, segundo os estudos, é escolher carga leve demais: em 2008, mulheres que treinavam sem personal escolhiam cerca de 42% da carga máxima, contra 51% de quem treinava com.',
+  },
+  {
+    pergunta: 'Como treinar sozinho na academia sendo iniciante?',
+    resposta:
+      'Leve a ficha pronta antes de sair de casa, comece pelas máquinas, aprenda a execução com carga leve, anote carga e repetições de cada exercício e peça ajuda ao instrutor do salão quando tiver dúvida. Aumente a carga aos poucos, sem sacrificar a técnica.',
+  },
+  {
+    pergunta: 'Qual aplicativo usar para treinar sozinho na academia?',
+    resposta:
+      'O que importa é o que o aplicativo faz, não a marca: guardar a ficha, registrar carga e repetições de cada série e mostrar a sua evolução. Vídeo de execução ajuda a lembrar o movimento, mas nenhum aplicativo vê você treinando nem corrige a postura.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana é ideal fazer academia?',
+    resposta:
+      'A Organização Mundial da Saúde recomenda fortalecimento muscular em 2 dias ou mais por semana, além de 150 a 300 minutos de atividade moderada. Para quem treina sozinho, três vezes por semana costuma ser o ponto em que a rotina cabe e o treino progride.',
+  },
+  {
+    pergunta: 'Como perder a vergonha de ir na academia sozinha?',
+    resposta:
+      'Vá nos horários mais vazios nas primeiras semanas, leve o treino no celular para não ficar procurando o que fazer, comece pelas máquinas e peça ao instrutor para mostrar o ajuste de cada uma. A sensação de estar sendo observado costuma passar quando a rotina fica conhecida.',
+  },
+  {
+    pergunta: 'O que é melhor: treinar em casa ou na academia?',
+    resposta:
+      'O melhor é o lugar onde você vai treinar toda semana. A academia tem mais carga e mais variedade para progredir; em casa, sobra praticidade. Dá para ganhar força nos dois, desde que o treino fique mais difícil com o tempo.',
+  },
+];
+
+/* 54 caracteres. */
+const title = 'Treinar Sozinho na Academia Dá Resultado? Como Começar';
+/* 151 caracteres. */
+const description =
+  'Treinar sozinho na academia dá resultado? Como começar sendo iniciante, o erro de escolher carga leve, aplicativo, quantas vezes por semana e vergonha.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Treinar sozinho na academia dá resultado? Como começar sendo iniciante</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Dá — com um plano. Quem treina sozinho e progride costuma fazer as mesmas
+      coisas: chega com o treino pronto, anota as cargas e não foge do esforço.
+      É nesse último ponto que a maioria escorrega.
+    </p>
+
+    <div class="prose">
+      <h2>Treinar sozinho dá resultado?</h2>
+      <p>
+        Dá, e muita gente evolui assim. A pesquisa mostra onde mora o risco:
+        sem ninguém do lado, a tendência é treinar mais leve do que deveria.
+      </p>
+      <ul>
+        <li><strong>Sozinho, a carga cai.</strong> Num estudo de 2008, mulheres que treinavam com personal escolhiam por conta própria cerca de 51% da carga máxima; as que treinavam sozinhas, cerca de 42%. Um estudo de 2017, com homens e mulheres, achou o mesmo padrão.</li>
+        <li><strong>A diferença aparece na força.</strong> Num estudo de 2000, homens já treinados fizeram o mesmo programa de 12 semanas, com ou sem supervisão. O grupo supervisionado usou cargas maiores e terminou mais forte no agachamento e no supino.</li>
+      </ul>
+      <p>
+        Ou seja: o problema não é estar sozinho, é escolher carga de conforto.
+        Os passos abaixo existem para compensar isso. Se a dúvida é se você já
+        está pronto para dispensar o acompanhamento, o guia
+        <a href="/guias/quanto-tempo-manter-personal/">por quanto tempo manter
+        um personal</a> traz os sinais.
+      </p>
+
+      <h2>Como treinar sozinho na academia sendo iniciante</h2>
+
+      <h3>1. Chegue com o treino pronto</h3>
+      <p>
+        Decida antes de sair de casa quais exercícios, quantas séries e em que
+        dia. Tenha um plano B para o aparelho ocupado — o leg press no lugar do
+        agachamento, a polia no lugar do halter. Quem chega sem plano passeia
+        pela academia e repete o que viu alguém fazer. Para dividir os músculos
+        pelos dias, veja <a href="/musculacao/divisao-de-treino/">divisão de
+        treino</a>; para a primeira ficha, <a href="/musculacao/treino-para-iniciantes/">treino
+        para iniciantes</a>.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Se o que falta é justamente o plano, a ferramenta monta um treino a partir dos dias e do tempo que você tem na semana — para chegar à academia já sabendo o que fazer."
+        acao="Montar o treino para a minha rotina"
+      />
+
+      <h3>2. Comece pelas máquinas</h3>
+      <p>
+        As máquinas guiam o trajeto do movimento, o que deixa o começo mais
+        seguro enquanto você aprende a técnica. Os pesos livres entram depois,
+        quando a execução estiver firme. A comparação completa está em
+        <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso livre</a>.
+      </p>
+
+      <h3>3. Técnica primeiro, carga depois</h3>
+      <p>
+        Nas primeiras semanas, use carga leve para aprender o movimento inteiro,
+        na amplitude certa. Aqueça antes, com séries leves do primeiro
+        exercício — o passo a passo está em
+        <a href="/musculacao/aquecimento-antes-do-treino/">aquecimento antes do
+        treino</a>.
+      </p>
+
+      <h3>4. Anote carga e repetições de tudo</h3>
+      <p>
+        Sem registro, você não sabe se está evoluindo nem quando subir o peso.
+        Um caderno ou o bloco de notas do celular resolvem: exercício, carga,
+        repetições de cada série. O método para fazer o treino avançar está em
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+      </p>
+
+      <h3>5. Não pare longe do esforço</h3>
+      <p>
+        Este é o passo que os estudos apontam como o ponto fraco de quem treina
+        sozinho. As séries de trabalho precisam terminar perto do limite: se
+        você fez 12 repetições e ainda faria mais 6 ou 8, a carga está leve.
+        Não é preciso ir à falha em todas — o detalhe está em
+        <a href="/musculacao/treinar-ate-a-falha/">treinar até a falha</a>.
+      </p>
+
+      <h3>6. Use o instrutor do salão</h3>
+      <p>
+        Ajuste de banco, altura do apoio, posição dos pés: o instrutor da
+        academia está ali para isso. Pedir ajuda no começo evita aprender o
+        movimento errado e repetir o erro por meses.
+      </p>
+
+      <h2>Como aprender a treinar sozinho</h2>
+      <p>
+        Não espere o treino perfeito para começar. O que dá resultado é um
+        treino simples, repetido toda semana e com a carga subindo aos poucos.
+        O Montinho, autor deste guia, fala disso neste vídeo:
+      </p>
+
+      <VideoYouTube
+        id="yqPAYRVTe0E"
+        titulo="Não existe o treino perfeito — Montinho Personal"
+        legenda="Do canal do Montinho Personal: por que o treino que você mantém vale mais que o treino perfeito."
+        short
+      />
+
+      <p class="ig-autor">
+        Ele publica dicas de execução e de organização do treino no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Aplicativo para treinar sozinho na academia</h2>
+      <p>
+        Um aplicativo ajuda quem treina sozinho em três coisas: guardar a
+        ficha, registrar carga e repetições de cada série e mostrar a evolução
+        ao longo das semanas. Vídeo de execução é um bom lembrete do movimento.
+      </p>
+      <p>
+        O limite é que nenhum aplicativo vê você treinando: ele não percebe a
+        lombar arredondando no terra nem o joelho entrando no agachamento. A
+        diferença entre um app e um acompanhamento está em
+        <a href="/guias/personal-online-ou-aplicativo/">personal online ou
+        aplicativo</a>.
+      </p>
+
+      <h2>Quantas vezes por semana treinar</h2>
+      <p>
+        As diretrizes da Organização Mundial da Saúde, de 2020, recomendam
+        fortalecimento muscular em <strong>2 dias ou mais por semana</strong>,
+        além de 150 a 300 minutos de atividade moderada. Para quem está
+        começando sozinho, três treinos por semana costumam caber na rotina e
+        deixam tempo de recuperação entre um e outro. Mais importante que o
+        número é ele se repetir toda semana.
+      </p>
+
+      <h2>Vergonha de ir à academia sozinho ou sozinha</h2>
+      <p>
+        É comum, principalmente nas primeiras semanas. O que mais ajuda:
+      </p>
+      <ul>
+        <li><strong>Horários mais vazios</strong> no começo, para usar os aparelhos sem pressa e sem fila.</li>
+        <li><strong>O treino no celular</strong>, para não ficar parado procurando o que fazer.</li>
+        <li><strong>As máquinas primeiro</strong>, que pedem menos coordenação enquanto você ganha confiança.</li>
+        <li><strong>Uma conversa com o instrutor</strong> para ver o ajuste de cada aparelho uma vez.</li>
+      </ul>
+      <p>
+        A sensação de estar sendo observado costuma passar quando a academia
+        vira um lugar conhecido. Quem quer apoio para não desistir nessa fase
+        encontra mais em <a href="/guias/como-nao-desistir-do-treino/">como
+        não desistir do treino</a>.
+      </p>
+
+      <h2>Treinar em casa ou na academia?</h2>
+      <p>
+        O melhor lugar é aquele onde você vai treinar toda semana. A academia
+        tem mais carga e mais variedade, o que facilita progredir; em casa,
+        sobra praticidade. Dá para ganhar força nos dois, desde que o treino
+        fique mais difícil com o tempo — veja
+        <a href="/musculacao/treino-em-casa-para-iniciantes/">treino em casa
+        para iniciantes</a>.
+      </p>
+
+      <h2>Quando vale ter ajuda</h2>
+      <p>
+        Se depois de dois ou três meses as cargas não sobem, as medidas não
+        mudam e você não sabe o que ajustar, o diagnóstico está em
+        <a href="/musculacao/treino-sem-resultado/">treino sem resultado</a>.
+        Dor durante os exercícios é sempre motivo para conversar com um médico
+        ou fisioterapeuta antes de continuar.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18296962/" target="_blank" rel="noopener noreferrer">Ratamess NA, Faigenbaum AD, Hoffman JR, Kang J. Self-selected resistance training intensity in healthy women: the influence of a personal trainer. Journal of Strength and Conditioning Research, 2008</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27676273/" target="_blank" rel="noopener noreferrer">Dias MRC, Simão RF, Saavedra FJF, Ratamess NA. Influence of a personal trainer on self-selected loading during resistance exercise. Journal of Strength and Conditioning Research, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener noreferrer">Mazzetti SA, Kraemer WJ, Volek JS, et al. The influence of direct supervision of resistance training on strength performance. Medicine &amp; Science in Sports &amp; Exercise, 2000</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li>Conferidas em 16/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
