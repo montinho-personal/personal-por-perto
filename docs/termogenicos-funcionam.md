@@ -118,3 +118,31 @@ Google, ~368 mil buscas/mês somadas (estimativa da ferramenta).
 **Ainda faltam os prints do Google** ("termogênico funciona", "termogênico
 emagrece", "melhor termogênico"); quando chegarem, conferir se o título novo
 segue o autocompletar.
+
+## Prints recebidos em 16/11/2026
+
+Em `docs/pesquisas/2026-11-16-termogenicos/prints/`: "termogênico
+funciona" (autocompletar, PAA fechada, 2× "Outras pessoas pesquisaram"; sem
+visão geral de IA) e "termogênico emagrece" (autocompletar, PAA, 2× "Outras
+pessoas pesquisaram", visão geral de IA) e "melhor termogênico"
+(autocompletar, PAA, "produtos relacionados", 2× "Outras pessoas
+pesquisaram", visão geral de IA). Os três recebidos.
+
+| sinal | onde entrou |
+|---|---|
+| autocompletar "funciona mesmo / de verdade / ou não" | title ("Termogênico Funciona? Quantos Quilos Emagrece e Riscos", 54 car., cabe nos 600 px) e H1 ("Termogênico funciona mesmo?") |
+| "emagrece quantos quilos por mês", "em quanto tempo", PAA "Quantos quilos se perde" | H3 novo "Em quanto tempo o termogênico emagrece, e quantos quilos por mês" (conta: 150 kcal × 30 = 4.500 kcal ÷ 7.700 ≈ 0,6 kg, teto) + FAQ + title + description |
+| PAA "Quanto tempo começa a fazer efeito?" | FAQ nova (Dulloo 1989: +3–4% por ~150 min) |
+| PAA "Posso tomar 2 termogênicos por dia?" | FAQ nova (sem número de limite: EFSA 2015 segue sem fonte aberta) |
+| PAA "O que acontece se tomar todos os dias?" | FAQ nova (não acumula efeito; acumula estimulante; EFSA 2018 EGCG) |
+| "qual termogênico emagrece mais rápido", PAA "qual é melhor para emagrecer" | FAQ "Qual o melhor termogênico?" ganhou "nem um que emagreça mais rápido" |
+| PAA "tomar e não treinar", autocompletar "emagrece sem treinar" | já coberto (FAQ "O que acontece se tomar termogênico e não malhar?") |
+| para que serve, natural, efeitos colaterais, faz mal, sem cafeína | já cobertos por seções e FAQs |
+| "melhor para queima de gordura (abdominal)", PAA "qual é bom para queimar gordura" | FAQ nova "Termogênico queima gordura abdominal?" + parágrafo com link para `/emagrecimento/como-perder-barriga/` |
+| "para mulher", "para homem", "importado", "do mundo", "2026", "do mercado" | FAQ "Qual o melhor termogênico?" (não há um melhor por sexo nem importado que funcione mais); ranking de marca não entra |
+| PAA "É verdade que emagrece?", "melhor 2026" | já cobertos |
+| "growth", "valor", "em pó", "como tomar" | fora: marca, preço e formato não são o recorte do artigo |
+| IA de "melhor termogênico": lista de marcas e preços | não entra: o artigo não ranqueia produto |
+| IA: "200 a 400 mg de cafeína por dia (CNN)", "o corpo se adapta" | não entram: visão geral de IA não é fonte, e o limite da EFSA não está aberto aqui |
+
+Revisão real de conteúdo → `atualizadoEm` 2026-11-16.

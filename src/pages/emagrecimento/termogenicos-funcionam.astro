@@ -57,7 +57,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/termogenicos-funcionam';
-const atualizadoEm = '2026-10-27';
+const atualizadoEm = '2026-11-16';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -74,6 +74,31 @@ const faqs = [
     pergunta: 'Termogênico funciona?',
     resposta:
       'Funciona pouco, e quase sempre por causa da cafeína. Num estudo clássico, 100 mg de cafeína a cada duas horas, ao longo de 12 horas, somaram cerca de 150 kcal ao gasto do dia em pessoas magras e 79 kcal em pessoas que já tinham tido obesidade. Os outros ingredientes comuns — chá verde, pimenta, sinefrina — têm efeito menor, incerto ou sem dado de emagrecimento.',
+  },
+  {
+    pergunta: 'Termogênico emagrece quantos quilos por mês?',
+    resposta:
+      'Menos de um quilo, no melhor cenário. O maior efeito medido, cerca de 150 kcal a mais por dia com cafeína a cada duas horas, soma 4.500 kcal em 30 dias, e um quilo de gordura guarda cerca de 7.700 kcal. O que emagrece de verdade é o déficit calórico feito junto.',
+  },
+  {
+    pergunta: 'Quanto tempo o termogênico demora para fazer efeito?',
+    resposta:
+      'O efeito da cafeína no gasto começa no mesmo dia e passa em poucas horas: num estudo clássico, 100 mg subiram o metabolismo de repouso em 3% a 4% por cerca de duas horas e meia. Na balança, o efeito não se acumula assim: no melhor cenário medido, não chega a um quilo por mês.',
+  },
+  {
+    pergunta: 'O que acontece se tomar termogênico todos os dias?',
+    resposta:
+      'Na balança, pouco: cada dose age por algumas horas e o efeito não se acumula de um dia para o outro. O que se acumula são os estimulantes — e, nas fórmulas com extrato de chá verde concentrado, o risco para o fígado, que a autoridade europeia de segurança alimentar viu a partir de 800 mg de EGCG por dia. Uso diário pede conversa com o médico, ainda mais com pressão alta, arritmia, ansiedade ou remédio de uso contínuo.',
+  },
+  {
+    pergunta: 'Termogênico queima gordura abdominal?',
+    resposta:
+      'Não de forma localizada. Nenhum termogênico escolhe de onde sai a gordura: o pouco que ele soma ao gasto entra na conta do corpo inteiro, e a barriga diminui junto com o resto quando há déficit calórico. A "queima localizada" foi testada em estudos com exercício e não se confirmou — com cápsula, menos ainda.',
+  },
+  {
+    pergunta: 'Posso tomar 2 termogênicos por dia?',
+    resposta:
+      'Não sem orientação do médico. Dobrar a dose dobra sobretudo os estimulantes, a cafeína à frente, e o efeito medido no emagrecimento já é pequeno na dose normal. Some a cafeína de tudo o que você toma no dia — rótulos, café e pré-treino — e leve essa conta ao médico, principalmente se tiver pressão alta, arritmia ou ansiedade.',
   },
   {
     pergunta: 'Termogênico emagrece sozinho?',
@@ -98,7 +123,7 @@ const faqs = [
   {
     pergunta: 'Qual o melhor termogênico?',
     resposta:
-      'Não existe um que emagreça de forma relevante, então a pergunta útil é como evitar o pior. Prefira produto regularizado, com a quantidade de cafeína por dose escrita no rótulo, sem fórmula "proprietária" que esconde quanto tem de cada coisa, e desconfie de promessa de emagrecimento. Em agosto de 2026, a ANVISA proibiu um suplemento que tinha sibutramina, fluoxetina e furosemida sem declarar.',
+      'Não existe um que emagreça de forma relevante — nem um que emagreça mais rápido, um "para mulher" ou um importado que funcione melhor —, então a pergunta útil é como evitar o pior. Prefira produto regularizado, com a quantidade de cafeína por dose escrita no rótulo, sem fórmula "proprietária" que esconde quanto tem de cada coisa, e desconfie de promessa de emagrecimento. Em agosto de 2026, a ANVISA proibiu um suplemento que tinha sibutramina, fluoxetina e furosemida sem declarar.',
   },
   {
     pergunta: 'Cafeína pura funciona igual ao termogênico?',
@@ -137,11 +162,11 @@ const faqs = [
   },
 ];
 
-/* 56 caracteres. */
-const title = 'Termogênico: Para Que Serve, Se Emagrece e o Que Faz Mal';
-/* 154 caracteres. */
+/* 54 caracteres. Prints de 16/11: "termogênico funciona mesmo" e "termogênico emagrece quantos quilos por mês" (autocompletar). */
+const title = 'Termogênico Funciona? Quantos Quilos Emagrece e Riscos';
+/* 145 caracteres. */
 const description =
-  'Termogênico: o que é, para que serve e se emagrece. Quanto café, chá verde e pimenta mudam no gasto, efeitos colaterais, sem cafeína e o que diz a ANVISA.';
+  'Termogênico funciona mesmo? Quantos quilos emagrece por mês, quando faz efeito, se queima gordura da barriga, efeitos colaterais e qual escolher.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -156,7 +181,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
-    <h1>Termogênico: o que é, para que serve e se emagrece de verdade</h1>
+    <h1>Termogênico funciona mesmo? O que é, para que serve e se emagrece</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <p class="lead">
@@ -285,6 +310,29 @@ const schema = [
         texto="Para ver o tamanho dessas 50 a 150 kcal, compare com o seu gasto do dia inteiro. A calculadora estima quanto você gasta por dia pela sua idade, peso, altura e rotina — é dali que sai o déficit que emagrece."
         acao="Calcular o meu gasto diário"
       />
+
+      <h3>Em quanto tempo o termogênico emagrece, e quantos quilos por mês</h3>
+      <p>
+        O efeito no gasto aparece no mesmo dia e passa em poucas horas. No
+        estudo clássico, uma dose de 100 mg de cafeína subiu o metabolismo de
+        repouso em 3% a 4% por cerca de duas horas e meia. Ele não se acumula
+        de um dia para o outro.
+      </p>
+      <p>
+        Na conta do mês, o melhor cenário medido — cerca de 150 kcal a mais
+        por dia, com cafeína a cada duas horas durante 12 horas — soma 4.500
+        kcal em 30 dias. Um quilo de gordura guarda cerca de 7.700 kcal: nem
+        esse esquema, que pouca gente seguiria, chega a um quilo por mês. Daria
+        pouco mais de meio quilo, e só se o resto da alimentação ficar igual.
+        Promessa de "X quilos por mês" com termogênico não tem base nos
+        estudos.
+      </p>
+      <p>
+        Também não existe termogênico para gordura abdominal. O pouco que ele
+        soma ao gasto entra na conta do corpo inteiro, e a barriga diminui
+        junto com o resto, como explica o guia{' '}
+        <a href="/emagrecimento/como-perder-barriga/">como perder barriga</a>.
+      </p>
 
       <p>
         Se a ideia é acelerar o metabolismo, as alavancas que funcionam são
