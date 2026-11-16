@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias acompanha o crescimento da cidade média, concentrada no Centro e nos bairros em expansão. O treino ao ar livre em praças, no Parque Ecológico e em pistas públicas complementa a estrutura privada e amplia o acesso à atividade física.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia' },
+  ],
+  academiasVerificadasEm: '2026-11-16',
+
   destaquesFitness: [
     'Referência esportiva crescente no interior do Tocantins, com ginásios, quadras de areia e pistas movimentadas.',
     'Parque Ecológico de Paraíso como principal espaço de trilha e caminhada em meio ao Cerrado.',
@@ -94,5 +99,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Paraíso do Tocantins', url: 'https://paraiso.to.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-16',
 };

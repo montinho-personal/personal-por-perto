@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias e estúdios é adequada para uma cidade média do interior baiano e atende também moradores da região, concentrada no Centro e nos bairros de classe média, complementada pelas academias da saúde gratuitas nas praças.',
 
+  academiasProximas: [
+    { nome: 'Academia Cruz Fitness' },
+    { nome: 'Academia Master Point', detalhe: 'na Rua H' },
+    { nome: 'Academia Vital Energy', detalhe: 'na Avenida Alberto Passos' },
+  ],
+  academiasVerificadasEm: '2026-11-16',
+
   destaquesFitness: [
     'Sede da UFRB e da Embrapa Mandioca e Fruticultura, com público acadêmico que aquece a demanda por treino e personal.',
     'Capital Baiana do Forró, com um dos maiores São João do Brasil e forte cultura de festas e movimento.',
@@ -96,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cruz das Almas', url: 'https://www.cruzdasalmas.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2909802' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-16',
 };

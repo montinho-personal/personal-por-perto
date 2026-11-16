@@ -73,8 +73,9 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Duque de Caxias 2', detalhe: 'na Rua José de Alvarenga, no Centro' },
     { nome: 'Smart Fit Caxias Shopping', detalhe: 'na Rodovia Washington Luiz, dentro do Caxias Shopping' },
-    { nome: 'Smart Fit Jardim Vinte e Cinco de Agosto', detalhe: 'na Rua Professor José de Souza, atendendo o bairro' },
+    { nome: 'Smart Fit Duque de Caxias', detalhe: 'na Rua Professor José de Souza, no Jardim Vinte e Cinco de Agosto' },
   ],
+  academiasVerificadasEm: '2026-11-16',
 
   destaquesFitness: [
     'Parque Natural da Taquara: trilhas e cachoeiras para treino na natureza.',
@@ -102,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Duque de Caxias', url: 'https://duquedecaxias.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-16',
   capaArte: {
     src: '/capas-cidade/duque-de-caxias-rj.webp',
     w: 1200,

@@ -73,8 +73,9 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Jaboatão', detalhe: 'na Av. Ayrton Senna da Silva, em Piedade' },
     { nome: 'Smart Fit Shopping Guararapes', detalhe: 'na Av. General Barreto de Menezes, dentro do shopping' },
-    { nome: 'Starfit Academia', detalhe: 'academia local em Piedade, com musculação e aulas, atendendo também Candeias' },
+    { nome: 'Starfit Academia', detalhe: 'na Rua São Sebastião, em Piedade' },
   ],
+  academiasVerificadasEm: '2026-11-16',
 
   destaquesFitness: [
     'Corredor ao ar livre contínuo: cerca de 8 km de ciclovia e 4,5 km de praia em Piedade.',
@@ -102,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Jaboatão dos Guararapes', url: 'https://www.jaboatao.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-16',
   capaArte: {
     src: '/capas-cidade/jaboatao-dos-guararapes-pe.webp',
     w: 1200,

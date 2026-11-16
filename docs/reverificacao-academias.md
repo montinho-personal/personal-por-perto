@@ -984,3 +984,23 @@ Camaçari continua com 1 entrada. Saldo da leva: 4 entradas → 3 mantidas (2 co
 | Bluefit Franca Estação — "Av. Rio Branco, na Estação" | confirmada (nº 620) | página oficial |
 
 A Selfit tem unidade em Franca e no Marília Shopping (sitemap oficial), mas a Parte B não acrescenta. Saldo da leva: 8 entradas → 6 mantidas e 2 removidas. 92 cidades seguem na fila.
+
+### 16/11/2026 — leva 42 (rotina, Parte B: Duque de Caxias e Jaboatão dos Guararapes)
+
+**Duque de Caxias/RJ** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Duque de Caxias 2 — "Rua José de Alvarenga, no Centro" | confirmada sem mudança (nº 95) | página oficial (`opened:true`) |
+| Smart Fit Caxias Shopping — "Rodovia Washington Luiz, dentro do Caxias Shopping" | confirmada (nº 2895, Parque Duque) | página oficial (`opened:true`) |
+| Smart Fit Jardim Vinte e Cinco de Agosto — "Rua Professor José de Souza, atendendo o bairro" | **corrigida**: a rede chama a unidade de "Duque de Caxias" (R. Professor José de Souza, 1216, Jardim Vinte e Cinco de Agosto). Nome e detalhe passaram a seguir a página | página oficial (`opened:true`) |
+
+**Jaboatão dos Guararapes/PE** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Jaboatão — "Av. Ayrton Senna da Silva, em Piedade" | confirmada sem mudança (nº 242) | página oficial (`opened:true`) |
+| Smart Fit Shopping Guararapes — "Av. General Barreto de Menezes, dentro do shopping" | confirmada (nº 800, Piedade) | página oficial (`opened:true`) |
+| Starfit Academia — "academia local em Piedade, com musculação e aulas, atendendo também Candeias" | **corrigida**: Wellhub e TotalPass dão o mesmo endereço (Rua São Sebastião, 800, Piedade). "Atendendo também Candeias" não tem fonte e saiu | Wellhub + TotalPass |
+
+O texto corrido cita "Smart Fit, Starfit, Skyfit": a Skyfit Candeias (Rua do Jangadeiro, 844, Candeias, Jaboatão/PE) está no TotalPass e no Wellhub, então a menção fica. Saldo da leva: 6 entradas → 6 mantidas (2 corrigidas), nenhuma removida. 90 cidades seguem na fila.
