@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/guias/como-escolher-personal-trainer';
-const atualizadoEm = '2026-10-07';
+const atualizadoEm = '2026-11-16';
 const capa = '/capas-conteudo/como-escolher-personal-trainer.webp';
 const capaAlt =
   'Prancheta com checklist, lupa e um personal trainer, ilustrando o guia de como escolher um personal trainer — Personal por Perto';
@@ -67,6 +67,21 @@ const faqs = [
       'Pergunte sobre formação e especialização, experiência com o seu objetivo, como funciona a avaliação inicial, com que frequência o treino é reavaliado, qual o formato (presencial ou online) e quais resultados ele costuma entregar para perfis parecidos com o seu.',
   },
   {
+    pergunta: 'Como saber se o meu personal trainer é bom?',
+    resposta:
+      'Observe a sessão: ele presta atenção em você o tempo todo, sem ficar no celular, corrige a execução, explica para que serve cada exercício e ajusta a carga conforme você evolui. Também deve registrar a sua evolução e reavaliar o treino de tempos em tempos. Se nada disso acontece, converse; se não mudar, vale trocar.',
+  },
+  {
+    pergunta: 'Vale a pena pagar um personal trainer?',
+    resposta:
+      'Para muita gente, sim, principalmente no começo. Estudos mostram que, sozinhas, as pessoas tendem a escolher cargas mais leves do que com um personal: num estudo de 2008, mulheres que treinavam sem personal usavam cerca de 42% da carga máxima, contra 51% de quem treinava com. Quanto tempo manter depende de quando você aprende a treinar sozinho.',
+  },
+  {
+    pergunta: 'Como perguntar a um personal quanto ele cobra?',
+    resposta:
+      'Pergunte direto, já na primeira conversa, o valor por mês e o que está incluído: quantas sessões por semana, se há avaliação, se o treino é ajustado e se há suporte entre as sessões. Comparar só o preço por aula esconde essas diferenças.',
+  },
+  {
     pergunta: 'Personal online é tão bom quanto presencial?',
     resposta:
       'Para muitos objetivos, sim. O acompanhamento online funciona bem para quem tem disciplina e quer flexibilidade, com treino personalizado e ajustes a distância. O presencial leva vantagem na correção de execução em tempo real e em casos que exigem supervisão próxima.',
@@ -83,9 +98,10 @@ const faqs = [
   },
 ];
 
-const title = 'Como escolher um personal trainer: guia completo (2026)';
+/* 51 caracteres. Reescrita de 16/11/2026 pelas buscas do SerpApi. */
+const title = 'Como Escolher Personal Trainer e Saber Se Ele É Bom';
 const description =
-  'Aprenda a escolher um personal trainer com segurança: registro profissional, especialização, avaliação inicial, método, preço, presencial x online e sinais de alerta.';
+  'Como escolher um personal trainer: registro, avaliação, aula experimental, preço e as perguntas certas — e como saber se o seu personal é bom de verdade.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -100,7 +116,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Guia essencial</p>
-    <h1>Como escolher um personal trainer</h1>
+    <h1>Como escolher um personal trainer (e saber se ele é bom)</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
@@ -201,7 +217,11 @@ const schema = [
 
       <p>
         <strong>Academia:</strong> equipamento completo e ambiente
-        pronto, com o custo do deslocamento.
+        pronto, com o custo do deslocamento. Cada rede tem regras próprias
+        para personal de fora — veja <a href="/guias/personal-trainer-em-academia/">personal
+        trainer na academia</a> e, no caso da Smart Fit,
+        <a href="/guias/personal-trainer-smart-fit/">personal trainer na Smart
+        Fit</a>.
         <strong>Condomínio:</strong> a academia do prédio elimina o
         trajeto e resolve dias de chuva — as regras de acesso e o que a
         estrutura entrega estão no guia de
@@ -230,15 +250,25 @@ const schema = [
         acao="Descobrir se presencial ou online é o meu caso"
       />
 
-      <h2>7. Avalie preço com contexto</h2>
+      <h2>7. Faça uma aula experimental</h2>
       <p>
-        Preço importa, mas barato que não gera adesão sai caro. Compare formatos e
+        Antes de fechar pacote, peça uma aula para conhecer o trabalho. Repare
+        se o profissional explica bem, corrige a execução, chega no horário e
+        presta atenção em você — e se você se sentiu à vontade. Afinidade pesa
+        tanto quanto técnica para quem quer treinar por meses.
+      </p>
+
+      <h2>8. Avalie preço com contexto</h2>
+      <p>
+        Pergunte o valor por mês e o que está incluído: sessões por semana,
+        avaliação, ajustes do treino e suporte entre as sessões. Preço importa,
+        mas barato que não gera adesão sai caro. Compare formatos e
         veja as faixas de referência no guia <a href={rotas.quantoCusta}>quanto custa um personal
         trainer</a>. O que cada cidade pratica está nos
         <a href={rotas.cidades}>guias locais por cidade</a>.
       </p>
 
-      <h2>8. Procure provas de resultado</h2>
+      <h2>9. Procure provas de resultado</h2>
       <p>
         Depoimentos, casos de antes e depois reais e indicações de pessoas com objetivo
         parecido com o seu valem mais que promessas. Desconfie de garantias milagrosas
@@ -268,6 +298,25 @@ const schema = [
         depois.
       </p>
 
+      <h2>Como saber se o seu personal é bom (depois de contratar)</h2>
+      <p>
+        A escolha não termina na contratação. Nas primeiras semanas, observe:
+      </p>
+      <ul>
+        <li><strong>Atenção em você</strong> durante toda a sessão, sem celular nem conversa paralela.</li>
+        <li><strong>Correção da execução</strong>, com explicação do porquê, e não só a contagem das repetições.</li>
+        <li><strong>Carga que evolui.</strong> Sem ninguém do lado, a gente tende a escolher leve; num estudo de 2008, quem treinava com personal escolhia cerca de 51% da carga máxima, contra 42% de quem treinava sozinho. Se o seu treino não fica mais difícil com o tempo, algo está faltando.</li>
+        <li><strong>Registro e reavaliação</strong>: cargas, medidas e uma nova avaliação de tempos em tempos.</li>
+        <li><strong>Treino adaptado</strong> às suas limitações e à sua rotina, não uma ficha padrão.</li>
+      </ul>
+      <p>
+        Se algo disso falta, converse primeiro. Se não mudar, o guia
+        <a href="/guias/trocar-de-personal-trainer/">como trocar de personal
+        trainer</a> ajuda a fazer a troca sem desgaste. E se a dúvida é se vale
+        manter alguém, veja <a href="/guias/vale-a-pena-contratar-personal-trainer/">vale
+        a pena contratar personal trainer?</a>.
+      </p>
+
       <h2>Sinais de alerta</h2>
       <ul>
         <li>Não apresenta registro profissional.</li>
@@ -284,6 +333,12 @@ const schema = [
         <a href="/guias/personal-trainer-conduta-profissional/">conduta
         profissional no treino</a>.
       </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18296962/" target="_blank" rel="noopener noreferrer">Ratamess NA, Faigenbaum AD, Hoffman JR, Kang J. Self-selected resistance training intensity in healthy women: the influence of a personal trainer. Journal of Strength and Conditioning Research, 2008</a></li>
+        <li>Conferida em 16/11/2026.</li>
+      </ul>
     </div>
 
     <VideoYouTube
@@ -324,6 +379,11 @@ const schema = [
       grid-template-columns: minmax(0, 1fr) 300px;
       gap: var(--sp-7);
     }
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
   .article-page {
     min-width: 0;

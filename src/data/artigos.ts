@@ -123,7 +123,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Bairros', url: '/personal-trainer-cidade-maia/', titulo: 'Personal trainer na Cidade Maia (Guarulhos)' },
 
   // Guias
-  { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer' },
+  { categoria: 'Guias', url: '/guias/como-escolher-personal-trainer/', titulo: 'Como escolher um personal trainer (e saber se ele é bom)' },
   { categoria: 'Guias', url: '/guias/quanto-custa-personal-trainer/', titulo: 'Quanto custa um personal trainer' },
   { categoria: 'Guias', url: '/guias/personal-online-funciona/', titulo: 'Personal trainer online funciona?' },
   { categoria: 'Guias', url: '/guias/personal-online-ou-aplicativo/', titulo: 'Personal online ou aplicativo de treino: qual é melhor?' },

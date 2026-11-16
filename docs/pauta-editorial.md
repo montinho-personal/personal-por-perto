@@ -193,7 +193,7 @@ Fonte: Search Console via Supermetrics (GW, por página, últimos 30 dias até
 |---|---|---|
 | `/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/` | 147 | 34,6 | ✅ reescrito 16/11 (SerpApi) · `docs/como-evitar-perda-de-massa-muscular.md` |
 | `/emagrecimento/comer-fora-e-dieta/` | 54 | 28,1 | ✅ reescrito 16/11 (SerpApi) · `docs/comer-fora-e-dieta.md` |
-| `/guias/como-escolher-personal-trainer/` | 46 | 28,2 |
+| `/guias/como-escolher-personal-trainer/` | 46 | 28,2 | ✅ reescrito 16/11 (SerpApi) · `docs/como-escolher-personal-trainer.md` |
 | `/emagrecimento/plato-de-emagrecimento/` | 31 | 31,4 |
 | `/musculacao/hipertrofia-como-funciona/` | 63 | 56,6 |
 
@@ -1069,3 +1069,12 @@ Nenhum artigo novo. Não recomendados: mortalidade, dumping, lado negativo,
 recuperação e cuidados cirúrgicos (médico); alimentação pós-operatória
 (equipe de nutrição); prazos de perda de peso (prognóstico médico).
 Detalhes em `docs/treino-depois-da-bariatrica.md`.
+
+### Buscas que ficaram de fora em "Como escolher personal trainer" (16/11)
+
+- **Vale um artigo (candidato nº 8, baixa prioridade):** princípios do
+  treinamento (PAA "Quais são os 7 princípios básicos do treinamento?").
+- **Cabe em página existente:** "como saber se estou treinando
+  corretamente" → treino-sem-resultado (anotado).
+- **Não recomendo:** salário e carreira de personal (público errado),
+  "como elogiar o personal", Wellhub (marca).

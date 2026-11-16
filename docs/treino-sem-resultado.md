@@ -34,3 +34,5 @@ Da lista de 40 temas do Renato (item 17, com o 18 como FAQ). Pedido em
 "peso estagnado hipertrofia" apareceu duas vezes em 16/11 (outras
 pesquisas de "estagnação de peso" e AC de "peso estagnado com
 tirzepatida"). Cabe uma FAQ sobre peso parado em quem quer ganhar massa.
+- PAA "Como saber se estou treinando corretamente?" (busca "como saber se
+  o personal trainer é bom", 16/11): reforçar a seção de medir o resultado.
