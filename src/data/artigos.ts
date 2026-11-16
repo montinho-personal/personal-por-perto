@@ -340,7 +340,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-manter-o-peso-perdido/', titulo: 'Como manter o peso perdido depois da dieta' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/gordura-visceral/', titulo: 'Gordura visceral: o que é e como reduzir' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/dieta-flexivel/', titulo: 'Dieta flexível: o que é e como funciona na prática' },
-  { categoria: 'Emagrecimento', url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta: o guia prático' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta: restaurante, self-service e fim de semana' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/agua-e-emagrecimento/', titulo: 'Água e emagrecimento: o que ela faz de verdade' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo: qual faz sentido?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/alcool-e-emagrecimento/', titulo: 'Álcool e emagrecimento: o que a bebida faz de verdade' },
