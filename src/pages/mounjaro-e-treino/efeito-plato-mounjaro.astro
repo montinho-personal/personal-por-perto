@@ -1,0 +1,262 @@
+---
+/**
+ * Efeito platô com Mounjaro — por que o peso para de cair com tirzepatida,
+ * como saber se é platô, o que é do médico e o que é do treino e da rotina.
+ *
+ * Criado em 16/11/2026, candidato nº 1 da lista de buscas descartadas
+ * (pauta, 16/11). Pesquisa no SerpApi (celular, São Paulo) antes do texto.
+ * Registro em docs/efeito-plato-mounjaro.md.
+ *
+ * Recorte: /emagrecimento/plato-de-emagrecimento/ é o platô em geral;
+ * /mounjaro-e-treino/parei-o-mounjaro/ é o fim do tratamento. Aqui é o
+ * platô DURANTE o uso. Dose é sempre do médico.
+ *
+ * Fontes (16/11/2026, resumos): Jastreboff 2022 (SURMOUNT-1, NEJM),
+ * Aronne 2024 (SURMOUNT-4, JAMA).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento', descricao: 'Por que o peso estaciona, com ou sem remédio.', tipo: 'Emagrecimento' },
+  { url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/', titulo: 'Como não perder massa muscular tomando Mounjaro', descricao: 'Treino de força e proteína durante o tratamento.', tipo: 'Mounjaro e Treino' },
+  { url: '/mounjaro-e-treino/parei-o-mounjaro/', titulo: 'Parei o Mounjaro', descricao: 'Como manter o peso quando o tratamento acaba.', tipo: 'Mounjaro e Treino' },
+];
+
+const path = '/mounjaro-e-treino/efeito-plato-mounjaro';
+const atualizadoEm = '2026-11-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Mounjaro e Treino', url: '/mounjaro-e-treino/' },
+  { nome: 'Efeito platô com Mounjaro', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre o efeito platô com Mounjaro';
+const faqs = [
+  {
+    pergunta: 'O que é o efeito platô com Mounjaro?',
+    resposta:
+      'É quando o peso para de cair por algumas semanas mesmo com o uso do Mounjaro (tirzepatida), a alimentação e o treino mantidos. É comum em qualquer emagrecimento grande e, na maioria das vezes, não quer dizer que o remédio parou de funcionar.',
+  },
+  {
+    pergunta: 'Por que parei de perder peso com Mounjaro?',
+    resposta:
+      'Com menos peso, o corpo gasta menos energia por dia, e o déficit que existia no começo fica menor. Somam-se calorias que passam despercebidas, menos movimento no dia a dia e, às vezes, a fase da dose. Avaliar a dose é com o médico; o resto dá para revisar na rotina.',
+  },
+  {
+    pergunta: 'O que fazer quando o peso estaciona tomando tirzepatida?',
+    resposta:
+      'Confira primeiro se é platô: pese-se no mesmo horário e olhe a tendência de várias semanas, junto com as medidas. Se for, leve o registro ao médico, que avalia a dose, e revise do seu lado o treino de força, os passos do dia, a proteína e o sono. Não corte a comida de forma drástica.',
+  },
+  {
+    pergunta: 'Devo aumentar a dose do Mounjaro por conta própria?',
+    resposta:
+      'Não. A dose é sempre decisão do médico que prescreveu. Subir por conta própria aumenta o risco de efeitos colaterais e não resolve o que estiver acontecendo na rotina.',
+  },
+  {
+    pergunta: 'Se parar de tomar Mounjaro, engorda?',
+    resposta:
+      'No estudo SURMOUNT-4, quem trocou a tirzepatida por placebo depois de 36 semanas recuperou em média 14% do peso no ano seguinte, enquanto quem continuou perdeu mais 5,5%. Por isso, platô não é motivo para parar por conta própria: qualquer mudança no tratamento é com o médico.',
+  },
+];
+
+/* 57 caracteres. */
+const title = 'Efeito Platô com Mounjaro: Parei de Perder Peso, E Agora?';
+/* 150 caracteres. */
+const description =
+  'Parou de perder peso tomando Mounjaro? Por que o efeito platô acontece, como saber se é platô mesmo e o que fazer no treino e na rotina, com o médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Mounjaro e Treino</p>
+    <h1>Efeito platô com Mounjaro: parei de perder peso, e agora?</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O peso caiu bem nos primeiros meses e, de repente, travou. É uma das
+      fases mais comuns do tratamento com Mounjaro (tirzepatida) — e quase
+      nunca quer dizer que o remédio parou de funcionar.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício e rotina, produzido por profissional de educação física — não é orientação médica. Não inicie, interrompa nem ajuste a dose de nenhum medicamento por conta própria: decisões sobre o tratamento com Mounjaro (tirzepatida) são do seu médico.</div>
+
+    <div class="prose">
+      <h2>Por que o peso para de cair</h2>
+      <p>
+        Emagrecer muda a conta. Um corpo mais leve gasta menos energia para
+        existir e para se mexer, então o déficit que existia no começo vai
+        ficando menor a cada quilo perdido — até sumir. Isso acontece em
+        qualquer emagrecimento grande, com ou sem remédio, como explica o guia
+        de <a href="/emagrecimento/plato-de-emagrecimento/">platô de
+        emagrecimento</a>.
+      </p>
+      <p>
+        Com o Mounjaro, outros três fatores costumam entrar:
+      </p>
+      <ul>
+        <li><strong>Calorias que passam despercebidas.</strong> O prato é menor, mas pode estar mais calórico — doce, bebida, beliscada.</li>
+        <li><strong>Menos movimento no dia.</strong> Com menos energia, a pessoa anda menos sem perceber.</li>
+        <li><strong>A fase da dose.</strong> O tratamento costuma começar em dose baixa e subir aos poucos; no estudo SURMOUNT-1, a perda em 72 semanas foi de 15% com 5 mg e de cerca de 20% com 10 e 15 mg. Dose é decisão do médico.</li>
+      </ul>
+
+      <h2>Primeiro: é platô mesmo?</h2>
+      <p>
+        A balança oscila de um dia para o outro com água, sal e o que está no
+        intestino. Antes de concluir que travou:
+      </p>
+      <ul>
+        <li>Pese-se <strong>no mesmo horário</strong>, de preferência de manhã, e olhe a tendência de várias semanas, não o número de um dia.</li>
+        <li><strong>Meça a cintura</strong>: ela pode diminuir com o peso parado.</li>
+        <li>Se você começou a musculação agora, a balança pode andar mais devagar enquanto as medidas mudam.</li>
+      </ul>
+
+      <h2>O que é com o médico</h2>
+      <p>
+        Avaliar a dose, os exames e a continuidade do tratamento. Leve o seu
+        registro de peso e medidas das últimas semanas para a consulta.
+      </p>
+      <p>
+        E não pare por conta própria por causa do platô. No estudo SURMOUNT-4,
+        depois de 36 semanas de tratamento, quem trocou a tirzepatida por
+        placebo <strong>recuperou em média 14% do peso</strong> no ano
+        seguinte; quem continuou <strong>perdeu mais 5,5%</strong>. O que vem
+        depois do fim do tratamento está em
+        <a href="/mounjaro-e-treino/parei-o-mounjaro/">parei o Mounjaro</a>.
+      </p>
+
+      <h2>O que é com você: treino e rotina</h2>
+
+      <h3>Recalcule o tamanho do seu dia</h3>
+      <p>
+        Se você perdeu muitos quilos, o gasto de hoje é menor do que o do
+        começo do tratamento. A comida que dava déficit com 100 kg pode empatar
+        com 85 kg.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Refaça a conta com o peso de hoje: a calculadora estima quanto você gasta por dia pela idade, peso, altura e rotina. Faça a conta também com o peso do começo do tratamento e compare."
+        acao="Calcular o meu gasto com o peso atual"
+      />
+
+      <h3>Treino de força, para não perder o que sustenta o gasto</h3>
+      <p>
+        O músculo é parte do que mantém o gasto do dia. Treino de força
+        regular ajuda a preservar a massa magra durante o tratamento — o
+        passo a passo está em <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como
+        não perder massa muscular tomando Mounjaro</a>, e o ajuste de
+        intensidade em <a href="/mounjaro-e-treino/treino-para-quem-usa-mounjaro/">treino
+        para quem usa Mounjaro</a>.
+      </p>
+
+      <h3>Volte a se mexer fora do treino</h3>
+      <p>
+        Passos, escadas, tarefas em pé: é o movimento que mais cai quando a
+        energia está baixa, e o mais fácil de recuperar sem cansar o treino.
+      </p>
+
+      <h3>Proteína e sono</h3>
+      <p>
+        Proteína em todas as refeições ajuda a segurar a massa magra e a fome;
+        a quantidade é com o nutricionista. Noites curtas atrapalham o controle
+        do apetite — veja <a href="/emagrecimento/dormir-pouco-engorda/">dormir
+        pouco engorda?</a>.
+      </p>
+
+      <h2>O que não fazer</h2>
+      <ul>
+        <li><strong>Cortar a comida de forma drástica.</strong> Com o apetite já baixo, comer ainda menos costuma custar músculo e termina em exagero.</li>
+        <li><strong>Mexer na dose sozinho</strong>, para cima ou para baixo.</li>
+        <li><strong>Parar o tratamento</strong> sem falar com o médico.</li>
+        <li><strong>Trocar o treino de força por horas de cardio.</strong> Caminhada ajuda, mas não substitui a musculação.</li>
+      </ul>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35658024/" target="_blank" rel="noopener noreferrer">Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide Once Weekly for the Treatment of Obesity (SURMOUNT-1). New England Journal of Medicine, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38078870/" target="_blank" rel="noopener noreferrer">Aronne LJ, Sattar N, Horn DB, et al. Continued Treatment With Tirzepatide for Maintenance of Weight Reduction in Adults With Obesity: The SURMOUNT-4 Randomized Clinical Trial. JAMA, 2024</a></li>
+        <li>Conferidas em 16/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

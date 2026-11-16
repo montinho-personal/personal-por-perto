@@ -1019,7 +1019,7 @@ medido, porque página que não existe não tem dado no GSC.
 
 | # | artigo candidato | sinais | onde já toca no site | nota |
 |---|---|---|---|---|
-| 1 | Efeito platô com Mounjaro: parei de perder peso, e agora? | 7 variações em "outras pesquisas" (peso estagnado com mounjaro/tirzepatida, parei de perder peso com mounjaro, como sair do platô com mounjaro) | 1 FAQ em platô de emagrecimento | `/mounjaro-e-treino/`; dose é com o médico |
+| 1 | ✅ **publicado 16/11** — Efeito platô com Mounjaro: parei de perder peso, e agora? | 7 variações em "outras pesquisas" (peso estagnado com mounjaro/tirzepatida, parei de perder peso com mounjaro, como sair do platô com mounjaro) | 1 FAQ em platô de emagrecimento | `/mounjaro-e-treino/`; dose é com o médico |
 | 2 | Sarcopenia: o que é e o que o treino faz por ela | PAA "O que fazer para reverter a sarcopenia?" (estagnação muscular); IA de Mounjaro | citada de passagem em musculação depois dos 40 e Mounjaro e idosos | ressalva de médico obrigatória |
 | 3 | Por que o peso varia tanto de um dia para o outro | PAA "É normal pesar 2 kg a mais no fim do dia?", "perder 1 kg em 1 dia?", "engordar 4 kg em 1 mês?" | 1 FAQ em platô; parágrafos em dormir pouco engorda e refeição livre | pede fonte para os números |
 | 4 | ✅ **publicado 16/11** — Como não engordar nas festas de fim de ano | AC "dieta no fim de ano", "dieta no final de ano" | comer fora, refeição livre, álcool | sazonal: publicar até o início de dezembro |
@@ -1048,3 +1048,17 @@ qualquer peça nova.
   (superstição, fora do tema); "como perder 3 kg rapidinho" (dieta de
   choque); "quantos quilos engordar na gravidez" (obstetrícia, fora do
   tema); "2 litros de água" (só a visão de IA, sem busca real).
+
+### Buscas que ficaram de fora em "Efeito platô com Mounjaro" (16/11)
+
+- **Vale um artigo (novo candidato nº 7):** treino e platô depois da
+  bariátrica — PAA "Por que parei de emagrecer após a cirurgia bariátrica?"
+  e "efeito platô pós-bariátrica" (outras pesquisas). O site não tem nada
+  sobre bariátrica.
+- **Cabe em página existente** (anotado no doc de cada uma): parei o
+  Mounjaro (SURMOUNT-4), Ozempic e treino (platô com Ozempic), platô de
+  emagrecimento (estagnado com dieta e musculação), treino sem resultado
+  (peso estagnado na hipertrofia).
+- **Não recomendo:** doses, tabelas e prazos do remédio, efeitos
+  colaterais, queda de cabelo, "antes e depois", famosos, cardápio, fome com
+  Mounjaro (detalhes em `docs/efeito-plato-mounjaro.md`).

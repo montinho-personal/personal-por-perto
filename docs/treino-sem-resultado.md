@@ -28,3 +28,9 @@ Da lista de 40 temas do Renato (item 17, com o 18 como FAQ). Pedido em
   passos").
 - **Instagram:** parágrafo + `InstagramFollow` hipertrofia.
 - **Ferramenta:** `calculadora-1rm`. A `auditoria` é o CTA do fim da musculação, e o teste barra a repetição.
+
+## Para a próxima revisão (16/11/2026)
+
+"peso estagnado hipertrofia" apareceu duas vezes em 16/11 (outras
+pesquisas de "estagnação de peso" e AC de "peso estagnado com
+tirzepatida"). Cabe uma FAQ sobre peso parado em quem quer ganhar massa.
