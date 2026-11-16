@@ -31,7 +31,7 @@ etapas). Não houve secundária: a principal veio completa.
 
 `atualizadoEm` 2026-11-16 (FAQ e linha de tabela novas). Capa: já tem.
 
-## Título e descrição — PROPOSTA (aguarda aprovação do Renato)
+## Título e descrição — ✅ APROVADO pelo Renato em 16/11/2026 e aplicado
 
 | | texto |
 |---|---|
@@ -40,3 +40,5 @@ etapas). Não houve secundária: a principal veio completa.
 | **ATUAL description** | Quanto custa um personal trainer: a faixa por aula avulsa, o preço por frequência semanal, por que o pacote sai bem mais barato e as faixas de 985 cidades. |
 | **PROPOSTA description** | Valor de personal trainer por mês: quanto custa 2 ou 3 vezes por semana, a aula avulsa, o online e a faixa de preço de cada uma das 985 cidades. (144) |
 | **MOTIVO** | As três consultas com mais impressões são "valor … 2 vezes por semana", "3 vezes por semana" e "valor … mensal" (375 impressões, posição 7–10, zero clique). A visão de IA responde a faixa genérica; um título com a frequência semanal e "valor" casa com o que a página tem e a IA não dá. |
+
+Medir: CTR das consultas "valor … 2/3 vezes por semana" e "valor … mensal" em 28 dias a partir de 16/11/2026 (nada mais mudou no title da página nesse período).

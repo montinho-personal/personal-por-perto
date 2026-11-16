@@ -33,8 +33,8 @@ ficaram de fora em três grupos, cada uma com o motivo:
 ## Rotina diária de revisão
 
 Uma tarefa agendada nesta sessão, todo dia às **9h10** (horário de São
-Paulo; o montinhopersonal roda às 15h41). **N = 1 artigo por dia** enquanto a
-cota do SerpApi não comportar 2 (ver "Cota").
+Paulo; o montinhopersonal roda às 15h41). **N = 2 artigos por dia** — o
+Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota").
 
 - **Ordem:** primeiro a parte 4 da pauta (revisões pendentes); depois, os
   artigos com impressões no Search Console e CTR baixo ou posição entre 5 e
@@ -74,8 +74,9 @@ cota do SerpApi não comportar 2 (ver "Cota").
 Uma conta para todos os sites do Renato: 250 buscas por mês (plano grátis).
 O montinhopersonal usa ~120 a 150. Este site, com a rotina de artigos:
 ~3 créditos por artigo → **1 por dia ≈ 90/mês; 2 por dia ≈ 180/mês**. A
-rotina de cidades (`docs/revisao-cidades.md`, ~180/mês) não cabe junto e
-está pausada desde 16/11/2026 até o Renato decidir.
+rotina de cidades (`docs/revisao-cidades.md`, ~180/mês) também roda. Somadas,
+passam do plano grátis: o Renato decidiu (16/11) seguir assim e ser avisado
+quando a cota acabar — aí as rotinas param e avisam.
 
 ## Capas
 

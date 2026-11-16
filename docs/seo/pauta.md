@@ -61,7 +61,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 
 | publicado | página | título | nota |
 |---|---|---|---|
-| ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aguarda aprovação |
+| ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aprovado e aplicado em 16/11 |
 | 2026-07-07 | `/emagrecimento/como-emagrecer-fazendo-musculacao/` | Como emagrecer fazendo musculação |  |
 | 2026-07-07 | `/emagrecimento/como-preservar-massa-muscular-emagrecendo/` | Como preservar massa muscular durante o emagrecimento |  |
 | 2026-07-07 | `/emagrecimento/deficit-calorico-como-funciona/` | Déficit calórico: como funciona para emagrecer | reescrito pelo GSC em 09/2026, sem SERP |
