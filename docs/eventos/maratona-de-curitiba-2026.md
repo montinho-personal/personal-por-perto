@@ -109,6 +109,28 @@ confirmado.
   oficial, ou o ok para publicar só com a Banda B.
 - Uma última checagem agendada para 17/11 às 13h UTC.
 
+### 16/11/2026 — segunda fonte: CBN Curitiba (print do Renato)
+
+Prints em `prints/maratona-de-curitiba-2026/2026-11-16-cbn-curitiba-resultado-{1,2}.webp`.
+Matéria "Maratona de Curitiba reúne 16 mil atletas e termina com recorde de
+tempo do vencedor", domingo 15/11/2026, 11h07.
+
+| fato | Banda B | CBN | no artigo? |
+|---|---|---|---|
+| 42 km masc.: Aziz Ait (Marrocos), 2h13min24s | ✅ | ✅ | ✅ |
+| cerca de 16 mil atletas | ✅ (16.375) | ✅ ("16 mil") | ✅ ("cerca de 16 mil") |
+| recorde da prova; anterior de Ederson Vilela, 2h15min13s | — | ✅ | ✖ uma fonte |
+| 55% de fora de Curitiba; atletas de 20+ países | — | ✅ | ✖ uma fonte |
+| 42 km fem. e pódios de 21, 10 e 5 km | ✅ | — | ✖ uma fonte |
+
+A largada citada pela CBN (5h, Praça Nossa Senhora de Salete) bate com o
+que o artigo já dizia desde 13/10.
+
+**Artigo atualizado em 16/11:** seção "Resultado da Maratona de Curitiba
+2026", linha da tabela, FAQ nova "Quem venceu", title e description com
+"resultado". Os itens de uma fonte só esperam a segunda (ou o resultado
+oficial da Chip Timing) na checagem de 17/11.
+
 ## Pendente — pistas sem fonte (não usar no artigo)
 
 | item | pista | conflito |

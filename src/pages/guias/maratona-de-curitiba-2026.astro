@@ -22,7 +22,7 @@ import { site } from '../../data/site';
  */
 
 /** Data de conferência das fontes, no formato DD/MM/AAAA. */
-const ultimaVerificacao = '13/11/2026';
+const ultimaVerificacao = '16/11/2026';
 
 const SITE_OFICIAL = 'https://maratonadecuritiba.com.br/';
 const INSCRICAO = 'https://www.ticketsports.com.br/e/maratona-de-curitiba-santander-2026-86884';
@@ -79,7 +79,7 @@ const relacionados = [
 
 const path = '/guias/maratona-de-curitiba-2026';
 const publicadoEm = '2026-10-13';
-const atualizadoEm = '2026-11-13';
+const atualizadoEm = '2026-11-16';
 /* 13/10, mesma data: o regulamento abriu depois da publicação e trouxe
    premiação, horários da Expo e limites por distância. */
 const crumbs = [
@@ -131,13 +131,18 @@ const faqs = [
   {
     pergunta: 'Onde ver o resultado da Maratona de Curitiba 2026?',
     resposta:
-      'Os resultados saem em até 48 horas no site da Chip Timing, que faz a cronometragem, segundo a organização. Esta página publica os vencedores depois da prova, com a fonte.',
+      'A classificação completa sai no site da Chip Timing, que faz a cronometragem, segundo a organização. Esta página publica os vencedores à medida que eles são confirmados em duas fontes.',
+  },
+  {
+    pergunta: 'Quem venceu a Maratona de Curitiba 2026?',
+    resposta:
+      'Nos 42 km, o campeão foi o marroquino Aziz Ait, com 2h13min24s, na prova de 15 de novembro de 2026, segundo a Banda B e a CBN Curitiba. Os demais vencedores entram nesta página quando estiverem confirmados.',
   },
 ];
 
-const title = 'Maratona de Curitiba 2026: Data, Inscrição, Kit e Horário';
+const title = 'Maratona de Curitiba 2026: Resultado e Vencedor dos 42 km';
 const description =
-  'Maratona de Curitiba 2026 em 15/11: largada no Centro Cívico, inscrição até 31/10, kit no MON, premiação, idade mínima, tempo limite e como treinar.';
+  'Resultado da Maratona de Curitiba 2026: o marroquino Aziz Ait venceu os 42 km em 2h13min24s. Veja também data, largada, premiação e tempo limite.';
 
 const schema = [
   breadcrumbSchema(crumbs),
@@ -179,7 +184,8 @@ const schema = [
             <tr><th scope="row">Tempo limite</th><td>42 km em 6h · 21 km em 3h · 10 km em 1h30 · 5 km em 1h</td></tr>
             <tr><th scope="row">Premiação (42 km)</th><td>{brl(PREMIO_42_GERAL[0])} ao 1º lugar masculino e feminino; bônus de até {brl(PREMIO_42_BRASILEIROS[0])} aos melhores brasileiros</td></tr>
             <tr><th scope="row">Percurso e altimetria</th><td>"Em breve" no site oficial</td></tr>
-            <tr><th scope="row">Resultados</th><td>Em até 48 horas no site da Chip Timing</td></tr>
+            <tr><th scope="row">Vencedor dos 42 km</th><td>Aziz Ait (Marrocos), 2h13min24s</td></tr>
+            <tr><th scope="row">Resultados completos</th><td>No site da Chip Timing, segundo a organização</td></tr>
           </tbody>
         </table>
       </div>
@@ -347,12 +353,18 @@ const schema = [
         outra corrida, com data e organização próprias.
       </p>
 
-      <h2>Resultados</h2>
+      <h2>Resultado da Maratona de Curitiba 2026</h2>
       <p>
-        A organização publica os resultados em até 48 horas no site da Chip
-        Timing, e as fotos oficiais no site da Foco Radical. Os vencedores da
-        Maratona de Curitiba 2026 entram aqui depois da prova, somente com
-        fonte oficial.
+        A prova foi disputada no domingo, 15 de novembro de 2026, com cerca de
+        16 mil atletas nas quatro distâncias. Nos <strong>42 km</strong>, o
+        campeão foi o marroquino <strong>Aziz Ait</strong>, com
+        <strong>2h13min24s</strong>, segundo a Banda B e a CBN Curitiba.
+      </p>
+      <p>
+        Os vencedores do feminino e das outras distâncias entram aqui quando
+        estiverem confirmados em duas fontes independentes ou no resultado
+        oficial. A organização publica a classificação completa no site da
+        Chip Timing, e as fotos oficiais no site da Foco Radical.
       </p>
 
       <h2>Como treinar para a Maratona de Curitiba</h2>
@@ -415,6 +427,16 @@ const schema = [
         <li>
           <a href={RESULTADOS} target="_blank" rel="noopener">Chip Timing</a>:
           onde saem os resultados, segundo a organização.
+        </li>
+        <li>
+          <a href="https://www.bandab.com.br/esporte/corridas/campeoes-maratona-curitiba-2026-resultados/" target="_blank" rel="noopener">Banda B
+          — "Maratona de Curitiba consagra campeões dos 42 km, 21 km, 10 km e
+          5 km"</a>, 15/11/2026: vencedor dos 42 km e tempo.
+        </li>
+        <li>
+          CBN Curitiba — "Maratona de Curitiba reúne 16 mil atletas e termina
+          com recorde de tempo do vencedor", 15/11/2026: vencedor dos 42 km e
+          tempo.
         </li>
         <li>Todas conferidas em {ultimaVerificacao}.</li>
       </ul>
