@@ -49,3 +49,7 @@ apareceu cortado no print 01.
 
 `gasto-calorico-diario`, depois do parágrafo do Pontzer. Ver
 `docs/ferramentas-nos-artigos.md`.
+
+## Para a próxima revisão (16/11/2026)
+
+"Qual a idade mais difícil de perder peso?" (buscas de "efeito platô", `docs/pesquisas/2026-11-16-efeito-plato/`). Cabe como FAQ ou parágrafo nesta página.

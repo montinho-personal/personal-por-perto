@@ -194,7 +194,7 @@ Fonte: Search Console via Supermetrics (GW, por página, últimos 30 dias até
 | `/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/` | 147 | 34,6 | ✅ reescrito 16/11 (SerpApi) · `docs/como-evitar-perda-de-massa-muscular.md` |
 | `/emagrecimento/comer-fora-e-dieta/` | 54 | 28,1 | ✅ reescrito 16/11 (SerpApi) · `docs/comer-fora-e-dieta.md` |
 | `/guias/como-escolher-personal-trainer/` | 46 | 28,2 | ✅ reescrito 16/11 (SerpApi) · `docs/como-escolher-personal-trainer.md` |
-| `/emagrecimento/plato-de-emagrecimento/` | 31 | 31,4 |
+| `/emagrecimento/plato-de-emagrecimento/` | 31 | 31,4 | ✅ reescrito 16/11 (SerpApi) · `docs/plato-de-emagrecimento.md` |
 | `/musculacao/hipertrofia-como-funciona/` | 63 | 56,6 |
 
 - A de Mounjaro é a novidade: entrou na fila e vem primeiro.
@@ -1078,3 +1078,11 @@ Detalhes em `docs/treino-depois-da-bariatrica.md`.
   corretamente" → treino-sem-resultado (anotado).
 - **Não recomendo:** salário e carreira de personal (público errado),
   "como elogiar o personal", Wellhub (marca).
+
+### Buscas que ficaram de fora em "Efeito platô no emagrecimento" (16/11)
+
+Nenhum artigo novo. Quatro notas em páginas existentes (jejum intermitente,
+metabolismo, déficit calórico, emagrecer depois dos 40). Não recomendados:
+outros sentidos de "platô" (farmacologia, cardíaco, aprendizado), "tg"
+manipulada, dieta cetogênica, cardápio e dietas de choque. Detalhes em
+`docs/plato-de-emagrecimento.md`.

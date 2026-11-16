@@ -41,7 +41,7 @@ const atualizadoEm = '2026-11-16';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
-  { nome: 'Platô de emagrecimento: por que acontece e o que fazer', url: path },
+  { nome: 'Efeito platô no emagrecimento', url: path },
 ];
 
 const faqs = [
@@ -59,6 +59,11 @@ const faqs = [
     pergunta: 'Como sair da estagnação de peso?',
     resposta:
       'Comece revendo, sem julgamento, se a alimentação e o treino continuam como antes. Se continuam, ajuste o déficit aos poucos em vez de cortar muito de uma vez, mexa-se mais fora do treino e dê algumas semanas para o ajuste aparecer na balança. Cortes drásticos costumam piorar o quadro.',
+  },
+  {
+    pergunta: 'Como saber se estou no efeito platô?',
+    resposta:
+      'Pese-se sempre no mesmo horário e olhe a tendência de várias semanas, não o número de um dia. Se o peso não muda, mas a cintura e as roupas diminuem — ou se você começou a musculação e as cargas sobem —, pode ser recomposição corporal, não platô.',
   },
   {
     pergunta: 'Cortar ainda mais calorias resolve o platô?',
@@ -92,9 +97,10 @@ const faqs = [
   },
 ];
 
-const title = 'Platô de emagrecimento: por que acontece e o que fazer';
+/* 50 caracteres. Reescrita de 16/11/2026 pelas buscas do SerpApi. */
+const title = 'Efeito Platô no Emagrecimento: O Que É e Como Sair';
 const description =
-  'Entenda por que o emagrecimento estaciona mesmo mantendo a rotina — adaptação metabólica, subestimação calórica e queda do NEAT — e o que fazer diante de um platô sem recorrer a cortes drásticos.';
+  'O que é o efeito platô, por que o peso para de cair, quanto tempo dura, como saber se é platô mesmo e como sair sem cortar comida de forma drástica.';
 
 const capa = '/capas-conteudo/plato-de-emagrecimento.webp';
 const capaAlt =
@@ -113,7 +119,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
-    <h1>Platô de emagrecimento: por que acontece e o que fazer</h1>
+    <h1>Efeito platô no emagrecimento: o que é, quanto dura e como sair</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
@@ -130,7 +136,9 @@ const schema = [
     </figure>
 
     <p class="lead">
-      Platô é a fase em que o peso para de cair mesmo com treino e alimentação
+      O nome vem do francês <em>plateau</em>, planalto: no gráfico do peso, é
+      o trecho em que a linha para de descer e fica reta. Platô é a fase em
+      que o peso para de cair mesmo com treino e alimentação
       mantidos praticamente iguais aos que vinham funcionando até ali. Não é
       sinal de que algo deu "errado" — é uma resposta esperada do corpo ao
       próprio processo de perder peso. Entender por que isso acontece ajuda a
@@ -157,6 +165,14 @@ const schema = [
           Esse é um dos motivos pelos quais um
           <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit calórico</a>
           que funcionava bem no início tende a perder força com o tempo.
+        </li>
+        <li>
+          <strong>Mais fome:</strong> perder peso muda os hormônios do
+          apetite. Num estudo publicado no New England Journal of Medicine, a
+          leptina (que sinaliza saciedade) caiu, a grelina (que estimula a
+          fome) subiu e a fome relatada aumentou — e, um ano depois, essas
+          mudanças ainda estavam lá. A fome maior empurra a pessoa a comer um
+          pouco mais sem perceber.
         </li>
         <li>
           <strong>Subestimação da ingestão calórica ao longo do tempo:</strong>
@@ -188,6 +204,26 @@ const schema = [
         texto="O primeiro item da lista é conta, e dá para refazê-la: o gasto do dia calculado com o peso de quando você começou não vale mais para o peso de hoje. A calculadora estima esse gasto com os seus números atuais, em faixa — a termogênese adaptativa ela não enxerga, então o gasto real pode ficar abaixo do que ela mostra."
         acao="Refazer a conta do meu gasto com o peso de hoje"
       />
+
+      <h2>Como saber se é platô mesmo</h2>
+      <p>
+        A balança oscila de um dia para o outro, então um número parado por
+        alguns dias não diz nada. Antes de concluir que travou:
+      </p>
+      <ul>
+        <li>Pese-se <strong>sempre no mesmo horário</strong>, de preferência de manhã, e olhe a tendência de várias semanas.</li>
+        <li><strong>Meça a cintura</strong> e confira se as roupas mudaram: as medidas podem cair com o peso parado.</li>
+        <li><strong>Se você começou a musculação há pouco</strong>, peso parado com medidas e cargas melhorando pode ser recomposição — perda de gordura com ganho de músculo —, não platô. Veja <a href="/emagrecimento/recomposicao-corporal/">recomposição corporal</a>.</li>
+      </ul>
+
+      <h2>Quanto tempo dura o efeito platô</h2>
+      <p>
+        Não existe prazo fixo. O platô dura enquanto a conta continuar
+        empatada: o que se come igual ao que se gasta. Ele acaba quando algo
+        muda essa conta — um ajuste na comida, mais movimento no dia — ou
+        quando o corpo chega a um peso que se mantém com a rotina atual. Por
+        isso, esperar sem mudar nada raramente resolve.
+      </p>
 
       <h2>O que fazer diante de um platô</h2>
       <p>
@@ -224,9 +260,11 @@ const schema = [
           a literatura sobre restrição calórica intermitente descreve
           períodos planejados em que a pessoa retorna temporariamente a um
           nível de ingestão próximo da manutenção antes de seguir com o
-          emagrecimento. Estudos sugerem que essa pausa pode ajudar na adesão
-          e, possivelmente, atenuar parte da adaptação metabólica — embora os
-          resultados entre pesquisas ainda sejam mistos. É uma estratégia que
+          emagrecimento. No estudo MATADOR, homens com obesidade que
+          alternaram 2 semanas de dieta com 2 semanas de manutenção perderam
+          mais peso (14,1 kg contra 9,1 kg) que os de dieta contínua — com a
+          ressalva de que o programa intermitente durou quase o dobro do
+          tempo. Os resultados entre pesquisas ainda são mistos. É uma estratégia que
           faz mais sentido quando planejada com acompanhamento profissional,
           não decidida de forma aleatória.
         </li>
@@ -255,6 +293,16 @@ const schema = [
         processo — não os extremos.
       </p>
 
+      <h2>Platô com remédio, depois da bariátrica e no treino</h2>
+      <p>
+        O mecanismo é parecido, mas cada caso tem detalhes próprios. Com
+        Mounjaro ou tirzepatida, veja <a href="/mounjaro-e-treino/efeito-plato-mounjaro/">efeito
+        platô com Mounjaro</a>; depois da cirurgia, <a href="/emagrecimento/treino-depois-da-bariatrica/">treino
+        depois da bariátrica</a>. E quando quem trava não é a balança, mas a
+        carga na academia, o assunto é <a href="/musculacao/progressao-de-carga/">progressão
+        de carga</a>.
+      </p>
+
       <div class="callout">
         <strong>Quando procurar avaliação profissional:</strong> platôs
         prolongados que não respondem a ajustes razoáveis na rotina merecem
@@ -264,6 +312,13 @@ const schema = [
         macronutrientes ou dieta específica, procure um
         <a href={rotas.montinho}>profissional qualificado</a>.
       </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/22029981/" target="_blank" rel="noopener noreferrer">Sumithran P, Prendergast LA, Delbridge E, et al. Long-term persistence of hormonal adaptations to weight loss. New England Journal of Medicine, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28925405/" target="_blank" rel="noopener noreferrer">Byrne NM, Sainsbury A, King NA, et al. Intermittent energy restriction improves weight loss efficiency in obese men: the MATADOR study. International Journal of Obesity, 2018</a></li>
+        <li>Conferidas em 16/11/2026.</li>
+      </ul>
     </div>
 
     <VideoYouTube
@@ -304,6 +359,11 @@ const schema = [
       grid-template-columns: minmax(0, 1fr) 300px;
       gap: var(--sp-7);
     }
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
   .article-page {
     min-width: 0;

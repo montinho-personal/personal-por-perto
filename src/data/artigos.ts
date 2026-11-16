@@ -327,7 +327,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/metodo-12-3-30/', titulo: 'Método 12-3-30 na esteira: funciona? Calorias e como fazer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/deficit-calorico-como-funciona/', titulo: 'Déficit calórico: como funciona para emagrecer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular durante o emagrecimento' },
-  { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Efeito platô no emagrecimento: o que é, quanto dura e como sair' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/faco-academia-e-nao-emagreco/', titulo: 'Faço academia e não emagreço: o que pode estar acontecendo' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/emagrecer-treinando-3-vezes-por-semana/', titulo: 'É possível emagrecer treinando só 3 vezes por semana?' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/', titulo: 'Como não engordar nas festas de fim de ano' },
