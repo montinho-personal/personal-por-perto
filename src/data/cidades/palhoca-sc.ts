@@ -109,6 +109,14 @@ export const cidade: Cidade = {
   metaDescricao:
     'Consultoria online de musculação em Palhoça: de R$ 180 a R$ 450 por mês. O presencial, de R$ 75 a R$ 180 a aula. Onde treinar na cidade e como escolher.',
 
+  /*
+   * Revisão de 16/11/2026 (SerpApi, celular, Palhoça): a página já é o 2º
+   * orgânico em "personal trainer palhoça" e recebe clique com o título de
+   * consultoria online — título mantido. Entra só a pergunta de preço do
+   * PAA ("Qual o valor que cobra um personal trainer?").
+   */
+  faqsBusca: { precoMensal: true },
+
   faqsExtra: [
     {
       pergunta: 'Como funciona a consultoria online de musculação em Palhoça?',
@@ -129,5 +137,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palhoça', url: 'https://www.palhoca.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-16',
 };

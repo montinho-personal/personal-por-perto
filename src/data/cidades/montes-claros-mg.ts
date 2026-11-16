@@ -94,14 +94,25 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do norte de Minas, Montes Claros tem boa rede de parques e uma cena de corrida intensa. Um personal trainer ajuda a aproveitar o Parque Milton Prates e a ecopista do Sagarana com método, ajustando horários e hidratação ao clima quente da região.',
 
-  vizinhas: ['belo-horizonte-mg', 'uberlandia-mg', 'contagem-mg'],
+  /*
+   * Revisão de 16/11/2026 (SerpApi, celular, Montes Claros): as três
+   * perguntas do "As pessoas também perguntam" são de preço ("quanto custa
+   * em Montes Claros?", "1 mês", "valor médio"). Registro em
+   * docs/revisao-cidades.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
+  // Eram BH, Uberlândia e Contagem — a 400 km ou mais. Entram na frente as
+  // cidades do Norte de Minas que o portal tem; BH fica como capital.
+  vizinhas: ['janauba-mg', 'januaria-mg', 'pirapora-mg', 'belo-horizonte-mg'],
 
   fontes: [
     { nome: 'IBGE Cidades — Montes Claros', url: 'https://cidades.ibge.gov.br/brasil/mg/montes-claros/panorama' },
     { nome: 'Prefeitura de Montes Claros', url: 'https://www.montesclaros.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-09',
+  atualizadoEm: '2026-11-16',
   capaArte: {
     src: '/capas-cidade/montes-claros-mg.webp',
     w: 1200,

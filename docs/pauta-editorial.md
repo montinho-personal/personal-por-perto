@@ -1086,3 +1086,15 @@ metabolismo, déficit calórico, emagrecer depois dos 40). Não recomendados:
 outros sentidos de "platô" (farmacologia, cardíaco, aprendizado), "tg"
 manipulada, dieta cetogênica, cardápio e dietas de choque. Detalhes em
 `docs/plato-de-emagrecimento.md`.
+
+### Buscas que ficaram de fora na revisão de cidades (16/11: Montes Claros e Palhoça)
+
+- **Vale um artigo (candidato nº 9, baixa prioridade):** o que fazer (e
+  evitar) depois do treino — PAA "O que não se deve fazer depois do treino?"
+  (Palhoça). Conferir antes contra os artigos de recuperação e dor
+  muscular para não repetir.
+- **Cabe em página existente:** "Pode treinar 1 hora da manhã?" →
+  personal-trainer-para-quem-trabalha-a-noite (anotado).
+- **Não recomendo:** "personal mulher", nomes de studios e profissionais
+  locais, "personal mais famosa do Brasil", "nome correto de personal",
+  salário. Detalhes em `docs/revisao-cidades.md`.
