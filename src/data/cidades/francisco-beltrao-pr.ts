@@ -106,5 +106,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Francisco Beltrão', url: 'https://franciscobeltrao.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4108403' },
   ],
-  atualizadoEm: '2026-10-11',
+  atualizadoEm: '2026-11-16',
 };

@@ -240,6 +240,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'valinhos-sp', 'viamao-rs', 'caxias-do-sul-rs', 'itacoatiara-am', 'juina-mt',
   'marechal-deodoro-al', 'paranavai-pr', 'primavera-do-leste-mt', 'rio-branco-ac', 'salto-sp',
   'santa-luzia-mg', 'sidrolandia-ms', 'areia-pb', 'boa-esperanca-mg', 'capanema-pa',
+  // leva 2 — 16/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 1 conferida no ar)
+  'itaborai-rj', 'currais-novos-rn', 'francisco-beltrao-pr', 'guaiba-rs', 'gurupi-to',
+  'ibipora-pr', 'jaboticabal-sp', 'mairipora-sp', 'passo-fundo-rs', 'patrocinio-mg',
+  'sao-jose-sc', 'tres-lagoas-ms', 'tupa-sp', 'araguari-mg', 'bayeux-pb',
+  'betim-mg', 'cabo-de-santo-agostinho-pe', 'campo-bom-rs', 'campo-largo-pr', 'floriano-pi',
+  'gramado-rs', 'guabiruba-sc', 'guaranta-do-norte-mt', 'lages-sc', 'marica-rj',
+  'nova-mutum-mt', 'paranagua-pr', 'sao-cristovao-se', 'sao-miguel-do-oeste-sc', 'veranopolis-rs',
+  'aracruz-es', 'baependi-mg', 'barretos-sp', 'beberibe-ce', 'biguacu-sc',
+  'bom-jesus-pi', 'catanduva-sp', 'coruripe-al', 'gaspar-sc', 'guanambi-ba',
+  'itaqui-rs', 'lauro-de-freitas-ba', 'linhares-es', 'luziania-go', 'mage-rj',
+  'mogi-guacu-sp', 'nova-venecia-es', 'oeiras-pi', 'penapolis-sp', 'rio-do-sul-sc',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

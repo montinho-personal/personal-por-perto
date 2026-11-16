@@ -128,5 +128,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São José', url: 'https://www.saojose.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-16',
 };

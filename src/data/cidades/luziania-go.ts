@@ -102,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Luziânia', url: 'https://www.luziania.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-02',
+  atualizadoEm: '2026-11-16',
 };

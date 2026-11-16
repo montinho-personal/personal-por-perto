@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Itaqui', url: 'https://cidades.ibge.gov.br/brasil/rs/itaqui/panorama' },
     { nome: 'Prefeitura de Itaqui', url: 'https://www.itaqui.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-16',
 };

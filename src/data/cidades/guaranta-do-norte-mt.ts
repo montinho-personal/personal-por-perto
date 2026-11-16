@@ -87,5 +87,5 @@ export const cidade: Cidade = {
     { nome: 'Câmara Municipal de Guarantã do Norte — Geografia', url: 'https://www.camaraguarantadonorte.mt.gov.br/Cidade/Geografia/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/5104104' },
   ],
-  atualizadoEm: '2026-11-11',
+  atualizadoEm: '2026-11-16',
 };

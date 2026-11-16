@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Linhares', url: 'https://www.linhares.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-06',
+  atualizadoEm: '2026-11-16',
 };

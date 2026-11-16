@@ -111,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Cristóvão', url: 'https://www.saocristovao.se.gov.br/' },
     { nome: 'IPHAN — Praça São Francisco', url: 'http://portal.iphan.gov.br/pagina/detalhes/43' },
   ],
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-11-16',
 };

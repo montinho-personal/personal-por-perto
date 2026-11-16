@@ -103,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Catanduva', url: 'https://www.catanduva.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-24',
+  atualizadoEm: '2026-11-16',
 };

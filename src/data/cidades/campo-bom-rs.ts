@@ -110,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Campo Bom', url: 'https://cidades.ibge.gov.br/brasil/rs/campo-bom/panorama' },
     { nome: 'Prefeitura de Campo Bom', url: 'https://www.campobom.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-16',
 };

@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM (Bom Jesus)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/220190' },
     { nome: 'Prefeitura de Bom Jesus', url: 'https://www.bomjesus.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-16',
 };
