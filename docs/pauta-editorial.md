@@ -191,7 +191,7 @@ Fonte: Search Console via Supermetrics (GW, por página, últimos 30 dias até
 
 | artigo | impressões | posição |
 |---|---|---|
-| `/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/` | 147 | 34,6 |
+| `/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/` | 147 | 34,6 | ✅ reescrito 16/11 (SerpApi) · `docs/como-evitar-perda-de-massa-muscular.md` |
 | `/emagrecimento/comer-fora-e-dieta/` | 54 | 28,1 |
 | `/guias/como-escolher-personal-trainer/` | 46 | 28,2 |
 | `/emagrecimento/plato-de-emagrecimento/` | 31 | 31,4 |

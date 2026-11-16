@@ -349,7 +349,7 @@ export const artigos: Artigo[] = [
 
   // Mounjaro e Treino
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/mounjaro-e-musculacao/', titulo: 'Quem usa Mounjaro pode fazer musculação?' },
-  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/', titulo: 'Como evitar perda de massa muscular usando Mounjaro' },
+  { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/', titulo: 'Como não perder massa muscular tomando Mounjaro' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/treino-para-quem-usa-mounjaro/', titulo: 'Treino para quem usa Mounjaro: como adaptar' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/fraqueza-para-treinar/', titulo: 'Mounjaro dá fraqueza para treinar? O que fazer' },
   { categoria: 'Mounjaro e Treino', url: '/mounjaro-e-treino/quanto-tempo-dura-a-fraqueza/', titulo: 'Quanto tempo dura a fraqueza do Mounjaro?' },
