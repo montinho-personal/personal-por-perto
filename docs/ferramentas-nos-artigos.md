@@ -230,3 +230,4 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 16/11 — `/musculacao/treinar-sozinho-na-academia/` — artigo novo: bloco rotina no passo "Chegue com o treino pronto" — "o que falta é o plano" (auditoria é o CTA do fim de musculação)
 - 16/11 — `/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/` — artigo novo: bloco caminhada depois do ensaio do BMJ — "quanto exercício gasta essa comida?" (a intervenção do estudo mostrava comida em minutos de exercício)
 - 16/11 — `/mounjaro-e-treino/efeito-plato-mounjaro/` — artigo novo: bloco gasto-calorico-diario em "Recalcule o tamanho do seu dia" — "com menos peso, quanto eu gasto agora?"
+- 16/11 — `/emagrecimento/treino-depois-da-bariatrica/` — artigo novo: bloco rotina em "Como começar" — "liberado para treinar: como fica a semana?"

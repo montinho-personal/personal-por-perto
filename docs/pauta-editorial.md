@@ -1051,7 +1051,7 @@ qualquer peça nova.
 
 ### Buscas que ficaram de fora em "Efeito platô com Mounjaro" (16/11)
 
-- **Vale um artigo (novo candidato nº 7):** treino e platô depois da
+- **Vale um artigo (novo candidato nº 7, ✅ publicado 16/11 em `/emagrecimento/treino-depois-da-bariatrica/`):** treino e platô depois da
   bariátrica — PAA "Por que parei de emagrecer após a cirurgia bariátrica?"
   e "efeito platô pós-bariátrica" (outras pesquisas). O site não tem nada
   sobre bariátrica.
@@ -1062,3 +1062,10 @@ qualquer peça nova.
 - **Não recomendo:** doses, tabelas e prazos do remédio, efeitos
   colaterais, queda de cabelo, "antes e depois", famosos, cardápio, fome com
   Mounjaro (detalhes em `docs/efeito-plato-mounjaro.md`).
+
+### Buscas que ficaram de fora em "Treino depois da bariátrica" (16/11)
+
+Nenhum artigo novo. Não recomendados: mortalidade, dumping, lado negativo,
+recuperação e cuidados cirúrgicos (médico); alimentação pós-operatória
+(equipe de nutrição); prazos de perda de peso (prognóstico médico).
+Detalhes em `docs/treino-depois-da-bariatrica.md`.

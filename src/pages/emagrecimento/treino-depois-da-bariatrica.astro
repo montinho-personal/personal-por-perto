@@ -1,0 +1,252 @@
+---
+/**
+ * Treino depois da bariátrica — quando voltar (com o cirurgião), por que a
+ * musculação importa, como começar, o platô e a flacidez.
+ *
+ * Criado em 16/11/2026, candidato nº 7 da lista de buscas descartadas
+ * (pauta, 16/11: PAA "Por que parei de emagrecer após a bariátrica?" e
+ * "efeito platô pós-bariátrica"). Pesquisa no SerpApi (celular, São Paulo)
+ * antes do texto. Registro em docs/treino-depois-da-bariatrica.md.
+ *
+ * Prazos de liberação NÃO entram: dependem da técnica e da recuperação, e a
+ * página da SBCBM não abre deste ambiente. Quem libera é o cirurgião.
+ *
+ * Fontes (16/11/2026, resumos): Busk-Cirera 2026 (Diabetes Obes Metab),
+ * Abbasi 2026 (Obesity Surgery).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/emagrecimento/como-comecar-a-treinar-acima-do-peso/', titulo: 'Como começar a treinar acima do peso', descricao: 'Os primeiros passos, sem impacto e sem pressa.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento', descricao: 'Por que o peso estaciona e o que fazer.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/', titulo: 'Como preservar massa muscular emagrecendo', descricao: 'Os princípios do treino em déficit.', tipo: 'Emagrecimento' },
+];
+
+const path = '/emagrecimento/treino-depois-da-bariatrica';
+const atualizadoEm = '2026-11-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Treino depois da bariátrica', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treino depois da bariátrica';
+const faqs = [
+  {
+    pergunta: 'Quanto tempo depois da bariátrica posso treinar?',
+    resposta:
+      'Depende da técnica, da cicatrização e da sua recuperação, e quem libera é o cirurgião. Em geral, a caminhada leve vem primeiro, depois os exercícios de força leves e, por último, abdominal e exercícios de impacto. Não volte à academia por conta própria antes da consulta de retorno.',
+  },
+  {
+    pergunta: 'Quando posso fazer abdominal depois da bariátrica?',
+    resposta:
+      'Abdominal e esforço forte de tronco costumam ser dos últimos exercícios liberados, por causa da cicatrização da parede abdominal. A data é do cirurgião; pergunte especificamente sobre eles na consulta de retorno.',
+  },
+  {
+    pergunta: 'Qual o melhor exercício para quem fez bariátrica?',
+    resposta:
+      'A combinação de musculação com exercício aeróbico. Numa meta-análise de 2026 com 33 estudos, os programas combinados foram os que mais preservaram massa magra, e o treino de força foi o que mais aumentou a força. A caminhada sozinha é um bom começo, mas não protege o músculo como a musculação.',
+  },
+  {
+    pergunta: 'Como ganhar massa muscular após a bariátrica?',
+    resposta:
+      'Com musculação regular e progressiva, começando leve, e com a proteína definida pela equipe de nutrição. Nos primeiros meses, o objetivo realista é perder o mínimo de músculo; ganhar massa fica mais possível quando a alimentação se estabiliza.',
+  },
+  {
+    pergunta: 'Por que parei de emagrecer depois da bariátrica?',
+    resposta:
+      'Com menos peso, o corpo gasta menos, e com o tempo o estômago aceita mais comida e beliscos voltam. A perda de músculo também reduz o gasto. Leve a questão à equipe que acompanha a cirurgia e revise do seu lado o treino de força, o movimento do dia e os beliscos.',
+  },
+  {
+    pergunta: 'Como acabar com a flacidez pós-bariátrica?',
+    resposta:
+      'A musculação melhora o tônus e o volume dos músculos, o que muda o contorno do corpo. Mas o treino não remove excesso de pele; quando ele existe, a avaliação é com o cirurgião plástico.',
+  },
+];
+
+/* 57 caracteres. */
+const title = 'Treino Depois da Bariátrica: Quando Voltar e Como Treinar';
+/* 147 caracteres. */
+const description =
+  'Quando voltar a treinar depois da bariátrica, por que a musculação protege o músculo, como começar, o que fazer se parar de emagrecer e a flacidez.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Treino depois da bariátrica: quando voltar, musculação e platô</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A cirurgia faz o peso cair rápido — e leva junto uma parte grande de
+      massa magra. O treino é o que mais ajuda a proteger o músculo nessa fase,
+      e é ele que pesa quando o emagrecimento começa a desacelerar.
+    </p>
+
+    <div class="callout"><strong>Aviso importante:</strong> este é um conteúdo educativo sobre exercício, produzido por profissional de educação física — não substitui a orientação da equipe que fez a sua cirurgia. Quando e como voltar a treinar é decisão do cirurgião; alimentação e suplementação são com a equipe de nutrição.</div>
+
+    <div class="prose">
+      <h2>Quando posso voltar a treinar?</h2>
+      <p>
+        Não existe uma data única: ela depende da técnica usada, da
+        cicatrização e de como está a sua recuperação. Quem libera é o
+        cirurgião, na consulta de retorno. A ordem costuma ser parecida:
+      </p>
+      <ul>
+        <li><strong>Caminhada leve</strong> vem primeiro, em geral bem cedo, para circulação e recuperação.</li>
+        <li><strong>Força leve</strong>, de preferência em máquinas, depois da liberação.</li>
+        <li><strong>Abdominal, esforço forte de tronco e impacto</strong> por último, por causa da parede abdominal.</li>
+      </ul>
+      <p>
+        Leve para a consulta perguntas específicas: quando posso fazer
+        musculação, quando posso carregar peso, quando posso fazer abdominal.
+      </p>
+
+      <h2>Por que a musculação importa tanto depois da cirurgia</h2>
+      <p>
+        Numa meta-análise de 2026 que comparou formas de emagrecer, cerca de
+        <strong>34% do peso perdido com a cirurgia bariátrica foi massa livre
+        de gordura</strong> — contra 7,7% em quem fez dieta com exercício.
+        Massa livre de gordura não é só músculo, mas o músculo está nessa
+        conta.
+      </p>
+      <p>
+        Outra meta-análise do mesmo ano, com 33 estudos de exercício depois da
+        bariátrica, mostrou que treinar faz diferença: os programas
+        <strong>combinados (força e aeróbico) preservaram mais massa
+        magra</strong>, e o treino de força foi o que mais aumentou a força.
+        Os autores recomendam começar cedo — com a liberação da equipe —, com
+        supervisão, e manter por pelo menos seis meses.
+      </p>
+
+      <h2>Como começar</h2>
+      <ul>
+        <li><strong>Máquinas primeiro</strong>, com carga leve: guiam o movimento enquanto você recupera força e confiança — veja <a href="/musculacao/maquina-ou-peso-livre/">máquina ou peso livre</a>.</li>
+        <li><strong>Aumente aos poucos</strong>, anotando carga e repetições, como em <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.</li>
+        <li><strong>Respeite a energia baixa</strong> dos primeiros meses, quando se come pouco: nesses dias, treino mais leve é melhor do que nenhum.</li>
+        <li><strong>Pare e avise a equipe</strong> se sentir dor abdominal, tontura forte ou falta de ar.</li>
+      </ul>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Depois da liberação, o difícil é transformar o 'pode treinar' em uma semana de verdade. A ferramenta monta um treino a partir dos dias e do tempo que você tem — leve para o cirurgião ou para o profissional que vai acompanhar você."
+        acao="Montar o treino para a minha rotina"
+      />
+
+      <p>
+        Para quem ainda tem bastante peso a perder, o guia
+        <a href="/emagrecimento/como-comecar-a-treinar-acima-do-peso/">como
+        começar a treinar acima do peso</a> traz exercícios sem impacto.
+      </p>
+
+      <h2>Parei de emagrecer depois da bariátrica</h2>
+      <p>
+        A perda de peso desacelera com o tempo, e isso é esperado. Com menos
+        peso, o corpo gasta menos; com os meses, o estômago aceita mais comida
+        e os beliscos e as bebidas calóricas podem voltar. A perda de músculo
+        também reduz o gasto do dia.
+      </p>
+      <p>
+        O primeiro passo é levar a questão à equipe que acompanha a cirurgia,
+        que avalia exames e alimentação. Do seu lado: musculação regular,
+        movimento fora do treino e atenção aos beliscos. O que vale para
+        qualquer platô está em <a href="/emagrecimento/plato-de-emagrecimento/">platô
+        de emagrecimento</a>.
+      </p>
+
+      <h2>E a flacidez?</h2>
+      <p>
+        A musculação melhora o volume e o tônus dos músculos, o que muda o
+        contorno do corpo. Mas o treino não remove excesso de pele; quando ele
+        existe, a avaliação é com o cirurgião plástico.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/42324178/" target="_blank" rel="noopener noreferrer">Busk-Cirera L, Carlsen IØ, Madsen LB, et al. Effects of Incretin-Based Therapies, Diet and Exercise Interventions, and Bariatric Surgery on Fat-Free Mass in Adults With Overweight or Obesity: A Systematic Review and Meta-Analysis. Diabetes, Obesity and Metabolism, 2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/42113435/" target="_blank" rel="noopener noreferrer">Abbasi M, Elyasinia F, Jahromi A, et al. Enhancing Sarcopenia-Related Outcomes After Bariatric Surgery: A Systematic Review and Meta-Analysis of Exercise Interventions. Obesity Surgery, 2026</a></li>
+        <li>Conferidas em 16/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
