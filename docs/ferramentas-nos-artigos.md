@@ -228,3 +228,4 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 15/11 — `/emagrecimento/emagrecer-treinando-3-vezes-por-semana/` — artigo novo: bloco calculadora-de-emagrecimento depois da musculação — "em quanto tempo eu chego lá com 3 dias?"
 - 15/11 — `/musculacao/treino-sem-resultado/` — artigo novo: bloco calculadora-1rm depois das três causas de treino — "qual carga usar para progredir e treinar perto do esforço?" (auditoria é o CTA do fim de musculação; o teste barra a repetição)
 - 16/11 — `/musculacao/treinar-sozinho-na-academia/` — artigo novo: bloco rotina no passo "Chegue com o treino pronto" — "o que falta é o plano" (auditoria é o CTA do fim de musculação)
+- 16/11 — `/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/` — artigo novo: bloco caminhada depois do ensaio do BMJ — "quanto exercício gasta essa comida?" (a intervenção do estudo mostrava comida em minutos de exercício)

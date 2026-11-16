@@ -1,0 +1,251 @@
+---
+/**
+ * Como não engordar nas festas de fim de ano — quanto se ganha de verdade,
+ * o que funcionou num ensaio clínico, a ceia, a sequência de dezembro e a
+ * volta à rotina.
+ *
+ * Criado em 16/11/2026 a partir das buscas descartadas da reescrita de
+ * "comer fora e dieta" (AC "dieta no fim de ano"). Pesquisa no SerpApi
+ * (celular, São Paulo) antes do texto. Registro em
+ * docs/como-nao-engordar-nas-festas-de-fim-de-ano.md.
+ *
+ * Fontes (16/11/2026, resumos): Yanovski 2000 (NEJM), Mason 2018 (BMJ).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import VideoYouTube from '../../components/VideoYouTube.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta', descricao: 'Restaurante, self-service e fim de semana.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/alcool-e-emagrecimento/', titulo: 'Álcool e emagrecimento', descricao: 'O que a bebida faz com o resultado.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/refeicao-livre/', titulo: 'Refeição livre e dia do lixo', descricao: 'Qual faz sentido, e como encaixar.', tipo: 'Emagrecimento' },
+];
+
+const path = '/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano';
+const atualizadoEm = '2026-11-16';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Como não engordar nas festas de fim de ano', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre engordar no fim de ano';
+const faqs = [
+  {
+    pergunta: 'Quantos quilos se engorda nas festas de fim de ano?',
+    resposta:
+      'Menos do que se diz. Num estudo publicado no New England Journal of Medicine, adultos ganharam em média 0,37 kg entre meados de novembro e o começo de janeiro. O problema é que esse peso não foi embora nos meses seguintes, e ano após ano ele se soma.',
+  },
+  {
+    pergunta: 'Uma ceia de Natal engorda quanto?',
+    resposta:
+      'Bem menos do que a balança mostra no dia seguinte. Um quilo de gordura guarda cerca de 7.700 kcal, então mesmo uma noite com 1.500 kcal a mais corresponde a uns 200 g. O resto do número é água, sal e comida ainda no intestino, que somem com a rotina normal.',
+  },
+  {
+    pergunta: 'O que fazer para não engordar tanto no fim de ano?',
+    resposta:
+      'Num ensaio clínico de 2018, quem se pesou pelo menos duas vezes por semana durante as festas, anotou o peso e recebeu orientações não engordou, enquanto o grupo de comparação ganhou 0,37 kg. Some a isso não chegar à ceia com fome, montar o prato começando pela salada e pela proteína, cuidar da bebida e manter o treino nos dias sem festa.',
+  },
+  {
+    pergunta: 'Preciso fazer dieta detox depois das festas?',
+    resposta:
+      'Não. O inchaço do dia seguinte vai embora com a volta à rotina: comida de sempre, água e treino. Jejum longo ou dieta muito restrita para compensar costuma terminar em novo exagero.',
+  },
+  {
+    pergunta: 'Como voltar à dieta depois do Ano-Novo?',
+    resposta:
+      'No primeiro dia útil, retome exatamente o que fazia antes das festas, sem compensação: os mesmos horários, a mesma comida e o treino. Espere uma ou duas semanas antes de julgar o resultado pela balança.',
+  },
+];
+
+/* 58 caracteres. */
+const title = 'Como Não Engordar nas Festas de Fim de Ano: O Que Funciona';
+/* 144 caracteres. */
+const description =
+  'Quanto se engorda de verdade no Natal e no Ano-Novo, o hábito que evitou o ganho num estudo, como montar o prato da ceia e como voltar à rotina.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Como não engordar nas festas de fim de ano</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O fim de ano engorda menos do que se diz — e mais do que parece. O ganho
+      médio é pequeno, mas costuma não ir embora depois. A boa notícia é que um
+      hábito simples, testado num ensaio clínico, foi suficiente para evitar.
+    </p>
+
+    <div class="prose">
+      <h2>Quanto se engorda no fim de ano, de verdade</h2>
+      <p>
+        Num estudo publicado no New England Journal of Medicine, 195 adultos
+        foram pesados antes, durante e depois das festas. Entre meados de
+        novembro e o começo de janeiro, o ganho médio foi de
+        <strong>0,37 kg</strong> — longe dos "2 ou 3 quilos" que se costuma
+        repetir.
+      </p>
+      <p>
+        O detalhe que importa veio depois: esse peso <strong>não foi embora</strong>
+        na primavera nem no verão seguintes. Somado ano após ano, é uma das
+        explicações para o peso que sobe devagar na vida adulta.
+      </p>
+      <p>
+        E a balança do dia seguinte exagera. Um quilo de gordura guarda cerca
+        de 7.700 kcal; mesmo uma noite com 1.500 kcal a mais corresponde a uns
+        200 g. O resto do que aparece é água, sal e comida ainda no intestino.
+        O risco não é a ceia, é dezembro inteiro.
+      </p>
+
+      <h2>O hábito que funcionou num estudo: subir na balança</h2>
+      <p>
+        Num ensaio clínico publicado no BMJ em 2018, 272 adultos foram
+        sorteados em dois grupos antes do Natal. Um recebeu só um folheto sobre
+        vida saudável. O outro foi orientado a <strong>se pesar pelo menos
+        duas vezes por semana</strong> e anotar o peso, recebeu dicas para as
+        festas e viu quanto exercício seria preciso para gastar as calorias de
+        comidas e bebidas típicas.
+      </p>
+      <p>
+        Resultado: o grupo da balança terminou as festas praticamente com o
+        mesmo peso (<strong>−0,13 kg</strong> em média); o do folheto ganhou
+        <strong>0,37 kg</strong>. A diferença é pequena por pessoa, mas é
+        justamente o ganho que, segundo o estudo do NEJM, fica para sempre.
+      </p>
+
+      <FerramentaInline
+        id="caminhada"
+        texto="O estudo mostrava a conta em minutos de exercício, e não em calorias. Faça o mesmo: a calculadora mostra quanto tempo de caminhada gasta as calorias que você quiser — é uma boa régua para decidir se a segunda fatia vale a pena."
+        acao="Calcular em minutos de caminhada"
+      />
+
+      <h2>Na ceia</h2>
+      <ul>
+        <li><strong>Não chegue com fome.</strong> Passar o dia sem comer para "guardar espaço" costuma terminar em exagero. Faça as refeições normais e um lanche leve antes de sair.</li>
+        <li><strong>Monte o prato começando pela salada e pela proteína</strong> — peru, frango, peixe ou lombo — e sirva porções pequenas dos pratos típicos de que você gosta, em vez de repetir.</li>
+        <li><strong>Cuidado com a beliscada.</strong> O que se come em pé, perto da mesa ou enquanto ajuda na cozinha não entra na conta de ninguém, mas entra na sua.</li>
+        <li><strong>Bebida é a maior armadilha.</strong> Alterne cada copo com água. O porquê está em <a href="/emagrecimento/alcool-e-emagrecimento/">álcool e emagrecimento</a>.</li>
+      </ul>
+
+      <p>
+        O Montinho, autor deste guia, mostra no vídeo quanto o "só um
+        pedacinho" pesa no fim da noite:
+      </p>
+
+      <VideoYouTube
+        id="7rN1Xwhp09g"
+        titulo="Montinho: só um pedacinho — quanto as beliscadas atrapalham"
+        legenda="Do canal do Montinho Personal: quanto o “só um pedacinho” pesa na conta da noite."
+        short
+      />
+
+      <h2>Entre o Natal e o Ano-Novo</h2>
+      <p>
+        É aqui que o peso se acumula: confraternização, amigo secreto, sobra da
+        ceia, férias. Três âncoras seguram a semana:
+      </p>
+      <ul>
+        <li><strong>Dia sem festa é dia normal.</strong> A sobra da ceia não precisa virar almoço e jantar por três dias.</li>
+        <li><strong>Mantenha o treino, mesmo mais curto.</strong> Com a academia fechada ou em viagem, um treino em casa resolve — veja <a href="/musculacao/treino-em-casa-para-iniciantes/">treino em casa para iniciantes</a>.</li>
+        <li><strong>Continue subindo na balança</strong>, como no estudo: o número serve de lembrete, não de castigo.</li>
+      </ul>
+
+      <h2>Depois das festas</h2>
+      <p>
+        Não precisa de dieta detox nem de jejum para compensar — isso costuma
+        abrir um novo ciclo de exagero. No primeiro dia útil, retome exatamente
+        o que fazia antes. Para planejar as exceções sem culpa durante o ano,
+        veja <a href="/emagrecimento/refeicao-livre/">refeição livre e dia do
+        lixo</a> e <a href="/emagrecimento/comer-fora-e-dieta/">comer fora sem
+        sair da dieta</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/10727591/" target="_blank" rel="noopener noreferrer">Yanovski JA, Yanovski SZ, Sovik KN, et al. A prospective study of holiday weight gain. New England Journal of Medicine, 2000</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/30530821/" target="_blank" rel="noopener noreferrer">Mason F, Farley A, Pallan M, et al. Effectiveness of a brief behavioural intervention to prevent weight gain over the Christmas holiday period: randomised controlled trial. BMJ, 2018</a></li>
+        <li>Conferidas em 16/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="alimentacao" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

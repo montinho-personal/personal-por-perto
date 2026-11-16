@@ -330,6 +330,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Emagrecimento', url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Platô de emagrecimento: por que acontece e o que fazer' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/faco-academia-e-nao-emagreco/', titulo: 'Faço academia e não emagreço: o que pode estar acontecendo' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/emagrecer-treinando-3-vezes-por-semana/', titulo: 'É possível emagrecer treinando só 3 vezes por semana?' },
+  { categoria: 'Emagrecimento', url: '/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/', titulo: 'Como não engordar nas festas de fim de ano' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/como-comecar-a-treinar-acima-do-peso/', titulo: 'Como começar a treinar estando acima do peso' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/recomposicao-corporal/', titulo: 'Recomposição corporal: perder gordura e ganhar músculo ao mesmo tempo' },
   { categoria: 'Emagrecimento', url: '/emagrecimento/quantas-calorias-queima-a-musculacao/', titulo: 'Quantas calorias a musculação queima? A conta honesta' },
