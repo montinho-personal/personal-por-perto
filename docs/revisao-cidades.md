@@ -1,5 +1,7 @@
 # Revisão das páginas de cidade (SEO local)
 
+**Pausada em 16/11/2026 (noite)**: a cota do SerpApi não comporta esta rotina junto com a de artigos (`AGENTS.md`, "Cota"). Volta quando o Renato decidir.
+
 Rotina pedida pelo Renato em 16/11/2026: **2 cidades por dia**, pela ordem de
 impressões no Search Console, com pesquisa no SerpApi no lugar dos prints.
 Continua o trabalho de `docs/intencoes-locais.md` (prints de 30/09 a
