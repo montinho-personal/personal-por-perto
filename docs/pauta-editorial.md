@@ -1007,3 +1007,31 @@ guia de personal online, para não canibalizar.
 | Quando trocar o treino | — | fila |
 | Acompanhar a evolução / treino pelo aplicativo | — | fila |
 
+
+## Candidatos vindos das buscas descartadas — 16/11/2026
+
+Das buscas que ficaram de fora (✖ "outra intenção") nas peças de 16/11
+(treinar sozinho, estagnação, Mounjaro e massa muscular, comer fora),
+conferidas contra o site. Entram só os assuntos que o site não cobre e que
+cabem na linha dele (treino, emagrecimento, personal). Demanda: só o sinal
+de ter aparecido no autocompletar, PAA ou "outras pesquisas" — sem volume
+medido, porque página que não existe não tem dado no GSC.
+
+| # | artigo candidato | sinais | onde já toca no site | nota |
+|---|---|---|---|---|
+| 1 | Efeito platô com Mounjaro: parei de perder peso, e agora? | 7 variações em "outras pesquisas" (peso estagnado com mounjaro/tirzepatida, parei de perder peso com mounjaro, como sair do platô com mounjaro) | 1 FAQ em platô de emagrecimento | `/mounjaro-e-treino/`; dose é com o médico |
+| 2 | Sarcopenia: o que é e o que o treino faz por ela | PAA "O que fazer para reverter a sarcopenia?" (estagnação muscular); IA de Mounjaro | citada de passagem em musculação depois dos 40 e Mounjaro e idosos | ressalva de médico obrigatória |
+| 3 | Por que o peso varia tanto de um dia para o outro | PAA "É normal pesar 2 kg a mais no fim do dia?", "perder 1 kg em 1 dia?", "engordar 4 kg em 1 mês?" | 1 FAQ em platô; parágrafos em dormir pouco engorda e refeição livre | pede fonte para os números |
+| 4 | Como não engordar nas festas de fim de ano | AC "dieta no fim de ano", "dieta no final de ano" | comer fora, refeição livre, álcool | sazonal: publicar até o início de dezembro |
+| 5 | Cansaço depois do treino: quando é normal | PAA "É normal ficar muito cansado depois do treino?" | só nas páginas de Mounjaro (fraqueza) | ressalva de médico |
+| 6 | Treinar no dia da aplicação do Mounjaro | "Pode aplicar mounjaro e ir treinar" | 1 FAQ nova em como evitar perda de massa muscular | pode virar só seção em treino para quem usa Mounjaro |
+| — | Lanche da tarde / jantar para emagrecer | outras pesquisas (comer fora) | proteína e saciedade | **não recomendado**: é cardápio, que o site deixa com o nutricionista |
+| — | Sticking point na musculação | outras pesquisas (estagnação) | progressão de carga | **baixa prioridade**: termo de nicho |
+
+Descartados de vez (não cabem na linha do site): restaurante perto de mim,
+frases de treino, futebol, Mounjaro no braço (aplicação é bula e médico),
+cardápio para Mounjaro, preço e nomes de remédios novos, marcas de
+termogênico, dietas de choque e jejum, "10 alimentos mais saudáveis".
+
+Cada candidato, ao virar artigo, começa pelas buscas no SerpApi como
+qualquer peça nova.
