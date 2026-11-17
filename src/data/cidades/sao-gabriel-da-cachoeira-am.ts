@@ -66,6 +66,7 @@ export const cidade: Cidade = {
     'O futebol é paixão em cada comunidade, e o remo de canoa é habilidade cotidiana. Os pelotões de fronteira mantêm cultura de treinamento físico constante, e a expedição ao Yaripo criou uma geração de guias indígenas com preparo de montanhista.',
   academias:
     'A oferta é simples e concentrada no centro, com academias de musculação de estrutura básica. O treino a domicílio e o funcional ao ar livre — na Praia Grande, na seca — completam o quadro.',
+  academiasVerificadasEm: '2026-11-17',
 
   destaquesFitness: [
     'Base da expedição ao Pico da Neblina, o teto do Brasil com 2.995 m.',

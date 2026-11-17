@@ -71,9 +71,10 @@ export const cidade: Cidade = {
     'A oferta reúne academias de bairro e redes, com demanda puxada pelo público universitário, complementada pelos três parques com academia ao ar livre.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Dourados' },
+    { nome: 'Smart Fit Dourados', detalhe: 'na Av. Joaquim Teixeira Alves, no Centro' },
     { nome: 'Bluefit Dourados', detalhe: 'na Av. Marcelino Pires, no Jardim Caramuru' },
   ],
+  academiasVerificadasEm: '2026-11-17',
 
   destaquesFitness: [
     'Três parques com academia ao ar livre e pistas (Ipês, Antenor Martins e Lagoa Maior).',
@@ -109,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Dourados', url: 'https://www.dourados.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-17',
 };

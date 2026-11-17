@@ -75,6 +75,7 @@ export const cidade: Cidade = {
     { nome: 'Smart Fit Max Atacadista JK', detalhe: 'na Av. Juscelino Kubitschek, no América' },
     { nome: 'Smart Fit República Argentina', detalhe: 'na Av. República Argentina, no Jardim São Paulo' },
   ],
+  academiasVerificadasEm: '2026-11-17',
 
   destaquesFitness: [
     'Cenários únicos para treino ao ar livre: Parque Nacional, lago de Itaipu e orlas.',

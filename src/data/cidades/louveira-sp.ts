@@ -65,6 +65,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias de musculação e estúdios de funcional, cross e treino personalizado, atendendo um público que valoriza acompanhamento de qualidade — um terreno fértil para o personal trainer.',
 
+  academiasProximas: [
+    { nome: 'Skyfit Academia Louveira', detalhe: 'na Av. José Niero' },
+    { nome: 'Fort Academia', detalhe: 'na Rua João Verardo, no Jardim Vista Alegre' },
+    { nome: 'Circuit Academia', detalhe: 'na Rua Antônio Bonesso' },
+  ],
+  academiasVerificadasEm: '2026-11-17',
+
   destaquesFitness: [
     'Um dos maiores PIB per capita do Brasil, com público de alta renda e renda disponível para serviços de saúde e bem-estar.',
     'Parque Francisco Bossi com pista de caminhada, ciclovia e academia ao ar livre.',
@@ -91,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Louveira', url: 'https://www.louveira.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-17',
 };

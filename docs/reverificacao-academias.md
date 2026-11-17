@@ -1004,3 +1004,24 @@ A Selfit tem unidade em Franca e no Marília Shopping (sitemap oficial), mas a P
 | Starfit Academia — "academia local em Piedade, com musculação e aulas, atendendo também Candeias" | **corrigida**: Wellhub e TotalPass dão o mesmo endereço (Rua São Sebastião, 800, Piedade). "Atendendo também Candeias" não tem fonte e saiu | Wellhub + TotalPass |
 
 O texto corrido cita "Smart Fit, Starfit, Skyfit": a Skyfit Candeias (Rua do Jangadeiro, 844, Candeias, Jaboatão/PE) está no TotalPass e no Wellhub, então a menção fica. Saldo da leva: 6 entradas → 6 mantidas (2 corrigidas), nenhuma removida. 90 cidades seguem na fila.
+
+### 17/11/2026 — leva 43 (rotina, Parte B: Foz do Iguaçu e Dourados)
+
+**Foz do Iguaçu/PR** — tudo confirmado, página sem mudança (só `academiasVerificadasEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Foz do Iguaçu — "Av. Costa e Silva, no Jardim Polo Centro" | confirmada sem mudança (nº 185) | página oficial (`opened:true`) |
+| Smart Fit Max Atacadista JK — "Av. Juscelino Kubitschek, no América" | confirmada sem mudança (nº 2404) | página oficial (`opened:true`) |
+| Smart Fit República Argentina — "Av. República Argentina, no Jardim São Paulo" | confirmada sem mudança (nº 5044, Jardim São Paulo I) | página oficial (`opened:true`) |
+
+O texto corrido cita "Smart Fit, Bluefit": a Bluefit Foz do Iguaçu tem página oficial "Inaugurada" (Av. Juscelino Kubitschek, 64, Centro, CEP 85864-000), então a menção fica.
+
+**Dourados/MS** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Dourados (sem detalhe) | confirmada; **detalhe acrescentado** da página: "na Av. Joaquim Teixeira Alves, no Centro" (nº 1555) | página oficial (`opened:true`) |
+| Bluefit Dourados — "Av. Marcelino Pires, no Jardim Caramuru" | confirmada sem mudança (nº 4130, loja 34, CEP 79830-000) | página oficial da Bluefit |
+
+Saldo da leva: 5 entradas → 5 mantidas (1 com detalhe acrescentado), nenhuma removida. 88 cidades seguem na fila.
