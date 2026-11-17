@@ -54,6 +54,8 @@ Horários, kit e local não mudaram. Artigo atualizado: FAQ de premiação, tabe
 - O site oficial abriu sem novidade de largada, kit ou trânsito.
 - Não há anúncio do Detran-DF para 2026 nos resultados de busca.
 
+**Varredura de 17/11/2026:** a página Percursos passou a linkar mapas novos, de novembro: https://maratonamonumentalbsb.com.br/wp-content/uploads/2026/11/MAPA-Percurso{05km,10km,21km,42km}-2026.pdf (25 a 47 MB cada; os de maio continuam no ar, mas saíram da página). O texto extraído dos PDFs mostra a legenda: largada, chegada, pontos de hidratação, isotônico, alimentação, banheiro, posto médico e ponto de corte, além do perfil de altimetria (eixo de 1.003 a 1.081 m; o artigo não cita números de altitude, porque são marcas de eixo e não dados). O regulamento continua na v9 (md5 igual ao arquivado). A home não trouxe novidade de kit, largada, transmissão ou trânsito; a Agência Brasília não trouxe matéria da prova. Artigo atualizado: links dos 4 mapas, seção Percurso, FAQ do percurso, tabela-resumo e Fontes; Última verificação 17/11.
+
 ## Bloqueado (pedir print) — resolvido em 13/10
 
 - https://www.maratonamonumentalbsb.com.br/ (home, regulamento, inscrição, kit, percurso, premiação)
