@@ -235,3 +235,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 17/11 — `/musculacao/ficha-de-treino/` — artigo novo: bloco calculadora-1rm no passo "Deixe espaço para anotar a carga" — "que carga escrever na primeira semana?"
 - 17/11 — `/musculacao/sarcopenia/` — artigo novo: bloco calculadora-de-proteina depois das metas do PROT-AGE — "quanto 1,0 a 1,2 g por quilo dá no meu prato?"
 - 17/11 — `/emagrecimento/peso-varia-de-um-dia-para-o-outro/` — artigo novo: bloco gasto-calorico-diario depois da conta dos 2 kg — "quantos dias de comida seriam 15 mil kcal?"
+- 17/11 — `/musculacao/cansaco-depois-do-treino/` — artigo novo: bloco rotina na causa "Treino acima da recuperação" — "como fica a semana com descanso?"
+- 17/11 — `/emagrecimento/sinais-de-que-esta-emagrecendo/` — artigo novo: bloco percentual-de-gordura depois da cintura — "com a fita na mão, quanto é gordura?"

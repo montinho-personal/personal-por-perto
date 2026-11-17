@@ -1,0 +1,329 @@
+---
+/**
+ * Cansaço depois do treino — quando é normal, por que acontece, as causas
+ * do cansaço excessivo, sono pós-treino, overtraining, como diminuir e
+ * quando procurar o médico.
+ *
+ * Item 5 da pauta (docs/seo/pauta.md), pedido do Renato em 17/11/2026.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 17/11/2026):
+ * "cansaço depois do treino" e "é normal ficar cansado depois do treino".
+ * Registro em docs/cansaco-depois-do-treino.md; JSON em
+ * docs/pesquisas/2026-11-17-cansaco-depois-do-treino/.
+ *
+ * Recorte: dor-muscular-pos-treino = a dor dos dias seguintes (DOMS);
+ * aqui = o cansaço e a fadiga. O site não tinha página de overtraining.
+ * Saúde: sinais de alarme mandam para o médico; sem diagnóstico.
+ * Fontes (17/11/2026, resumos): Meeusen 2013 (ECSS/ACSM), ACSM 2007
+ * (hidratação), ISSN 2017 (proteína), Nedeltcheva 2010 (sono e dieta).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/musculacao/dor-muscular-pos-treino/', titulo: 'Dor muscular pós-treino', descricao: 'A dor dos dias seguintes: o que é e quando preocupa.', tipo: 'Musculação' },
+  { url: '/musculacao/sono-e-ganho-de-massa/', titulo: 'Sono e ganho de massa', descricao: 'Por que a recuperação acontece dormindo.', tipo: 'Musculação' },
+  { url: '/musculacao/frequencia-de-treino/', titulo: 'Frequência de treino', descricao: 'Quantas vezes por semana treinar cada músculo.', tipo: 'Musculação' },
+];
+
+const path = '/musculacao/cansaco-depois-do-treino';
+const atualizadoEm = '2026-11-17';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Cansaço depois do treino', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre cansaço depois do treino';
+const faqs = [
+  {
+    pergunta: 'É normal ficar muito cansado depois do treino?',
+    resposta:
+      'Depois de um treino puxado, é normal sentir cansaço e algum sono por algumas horas. Não é normal o cansaço que dura o dia todo, que se acumula de um dia para o outro ou que vem com queda de desempenho, sono ruim e irritação. Aí o motivo costuma ser comer pouco, dormir pouco ou treinar acima da recuperação, e vale ajustar a rotina e conversar com o médico se não melhorar.',
+  },
+  {
+    pergunta: 'É bom dormir depois do treino?',
+    resposta:
+      'Pode ser, se der sono e couber na rotina: um cochilo curto não atrapalha a recuperação. O mais importante é a noite de sono, porque é dormindo que o corpo se recupera do treino. Se o cochilo à tarde está tirando o sono da noite, é melhor evitar.',
+  },
+  {
+    pergunta: 'Dormir depois do treino engorda?',
+    resposta:
+      'Não. O que muda o peso é o saldo de calorias do dia, não a hora em que você dorme. Um estudo de 2010 mostrou o contrário do mito: na dieta, quem dormiu pouco perdeu menos gordura e mais massa magra do que quem dormiu bem.',
+  },
+  {
+    pergunta: 'O que é bom para repor energia depois do treino?',
+    resposta:
+      'Uma refeição com carboidrato e proteína, e água. O carboidrato repõe a energia guardada no músculo; a proteína, junto com o treino, estimula a recuperação do músculo. Arroz e feijão com carne, pão com ovo ou iogurte com fruta resolvem; não precisa de suplemento.',
+  },
+  {
+    pergunta: 'Quais são os sintomas de overtraining?',
+    resposta:
+      'Cansaço que não passa com descanso, queda de desempenho por semanas, alterações de humor e sono ruim. O consenso europeu e americano de 2013 diz que o diagnóstico é difícil e passa por excluir outras causas, como doença, comer pouco e falta de ferro, por isso o caminho é o médico.',
+  },
+  {
+    pergunta: 'Overtraining dá febre?',
+    resposta:
+      'Febre não é sintoma esperado de treino. Se você está com febre, a causa provável é uma infecção ou outra doença: pare de treinar e procure o médico.',
+  },
+  {
+    pergunta: 'Como diminuir o cansaço pós-treino?',
+    resposta:
+      'Coma carboidrato e proteína depois do treino, beba água, durma bem e deixe dias de descanso na semana. Suba carga e volume aos poucos: quem dobra o treino de uma semana para a outra costuma pagar com cansaço.',
+  },
+];
+
+/* 59 caracteres. */
+const title = 'Cansaço Depois do Treino: Quando É Normal e Quando Preocupa';
+/* 146 caracteres. */
+const description =
+  'Cansaço depois do treino é normal? Por que acontece, causas do cansaço excessivo, sono pós-treino, sintomas de overtraining e quando ir ao médico.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Cansaço depois do treino: é normal? Causas, sono e overtraining</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Ficar cansado depois de um treino puxado é normal, e o cansaço deve
+      passar em algumas horas, com comida, água e uma boa noite de sono. O
+      que não é normal é o cansaço que dura o dia todo, que se acumula de um
+      dia para o outro ou que vem com queda de desempenho. Esse tem causa — e
+      quase sempre dá para corrigir.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o treino cansa</h2>
+      <p>
+        O treino gasta a energia guardada no músculo, cria pequenas
+        agressões que o corpo precisa reparar e faz você perder água no suor.
+        A sensação de cansaço é o corpo pedindo para recuperar. É essa
+        recuperação, aliás, que faz você ficar mais forte: o treino é o
+        estímulo, o descanso é quando a adaptação acontece.
+      </p>
+      <p>
+        A água pesa mais do que parece. O posicionamento de 2007 do American
+        College of Sports Medicine sobre hidratação recomenda evitar perder
+        mais de 2% do peso do corpo em água durante o exercício, porque, a
+        partir daí, o desempenho cai. Uma pessoa de 70 kg que sai do treino
+        1,5 kg mais leve já passou desse ponto.
+      </p>
+
+      <h2>Quando o cansaço é normal</h2>
+      <ul>
+        <li>Vem depois de um treino mais difícil que o habitual.</li>
+        <li>Passa em algumas horas, com comida, água e descanso.</li>
+        <li>No treino seguinte, você rende igual ou melhor.</li>
+      </ul>
+      <p>
+        No começo, ou na volta depois de uma pausa, o cansaço é maior — o
+        corpo ainda não está acostumado. Ele diminui com as semanas.
+      </p>
+
+      <h2>Causas do cansaço excessivo depois do treino</h2>
+
+      <h3>1. Comer pouco</h3>
+      <p>
+        É a causa mais comum, principalmente em quem está fazendo dieta. Pouca
+        energia no dia, pouco carboidrato ou pouca proteína deixam o corpo sem
+        material para recuperar. O consenso de 2013 sobre overtraining, do
+        European College of Sport Science e do American College of Sports
+        Medicine, lista justamente a dieta com déficit de energia e a falta de
+        carboidrato ou de proteína entre as causas que precisam ser
+        descartadas.
+      </p>
+
+      <h3>2. Pouca água</h3>
+      <p>
+        Sair do treino sem repor o que suou deixa você mais cansado e pode dar
+        dor de cabeça e tontura. Uma forma simples de ter ideia: pese-se antes
+        e depois do treino; a diferença é, quase toda, água.
+      </p>
+
+      <h3>3. Dormir pouco</h3>
+      <p>
+        O corpo se recupera dormindo. Noites curtas acumulam cansaço que o
+        treino só deixa mais evidente. E o sono pesa até no resultado da
+        dieta: num estudo de 2010, as mesmas pessoas, fazendo a mesma dieta,
+        perderam menos gordura e mais massa magra nas semanas em que dormiram
+        5h30 do que quando dormiram 8h30.
+      </p>
+
+      <h3>4. Treino acima da recuperação</h3>
+      <p>
+        Volume ou intensidade que sobem rápido demais, poucos dias de
+        descanso, o mesmo músculo treinado pesado todos os dias. O corpo não
+        dá conta de recuperar, e o cansaço vira acumulado.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Se o problema é a semana sem respiro, a ferramenta monta o treino com os dias que você tem — com descanso no lugar certo, em vez de treino pesado todo dia."
+        acao="Montar uma semana de treino com descanso"
+      />
+
+      <h3>5. Alguma outra causa de saúde</h3>
+      <p>
+        Falta de ferro, infecções e outras condições de saúde também
+        cansam — e o treino só deixa isso mais visível. Se o
+        cansaço não melhora com comida, sono e descanso, é hora do médico.
+      </p>
+
+      <h2>Sono depois do treino: é bom dormir? Engorda?</h2>
+      <p>
+        Sentir sono depois de um treino puxado é comum, principalmente quando
+        a noite anterior foi curta. Um cochilo curto não atrapalha a
+        recuperação; o que importa mais é a noite. Se o cochilo da tarde
+        rouba o sono da noite, melhor evitar.
+      </p>
+      <p>
+        Dormir depois do treino não engorda: o que muda o peso é o saldo de
+        calorias do dia, não a hora em que você dorme. Mais sobre sono e
+        recuperação em <a href="/musculacao/sono-e-ganho-de-massa/">sono e
+        ganho de massa</a>.
+      </p>
+
+      <h2>Overtraining: sintomas e o que fazer</h2>
+      <p>
+        O consenso de 2013 descreve três estágios de quem treina mais do que
+        recupera:
+      </p>
+      <ul>
+        <li><strong>Sobrecarga funcional</strong> — o desempenho cai por alguns dias e depois melhora com o descanso. Faz parte do treino.</li>
+        <li><strong>Sobrecarga não funcional</strong> — o desempenho cai por mais tempo, e o descanso demora a resolver.</li>
+        <li><strong>Síndrome do overtraining</strong> — a queda dura muito, com cansaço, alterações de humor e outros sintomas.</li>
+      </ul>
+      <p>
+        Os sinais mais comuns são cansaço que não passa com descanso, queda de
+        desempenho por semanas, irritação e sono ruim. O próprio consenso avisa que nenhum exame isolado dá o
+        diagnóstico: ele passa por excluir outras causas, como doença, comer
+        pouco e falta de ferro. Febre não é sintoma de treino — é sinal de
+        infecção ou outra doença, e pede médico.
+      </p>
+      <p>
+        O que fazer: reduzir volume e intensidade, ganhar dias de descanso,
+        comer e dormir o suficiente, e procurar o médico se os sintomas
+        continuarem.
+      </p>
+
+      <h2>Como diminuir o cansaço pós-treino</h2>
+      <ul>
+        <li><strong>Coma depois do treino:</strong> carboidrato para repor a energia e proteína para o músculo. A Sociedade Internacional de Nutrição Esportiva aponta que treino e proteína, juntos, estimulam a recuperação do músculo.</li>
+        <li><strong>Beba água</strong> antes, durante e depois, principalmente no calor.</li>
+        <li><strong>Durma bem</strong> e com horário regular.</li>
+        <li><strong>Deixe dias de descanso</strong> e não treine o mesmo músculo pesado em dias seguidos. A divisão pela semana está em <a href="/musculacao/frequencia-de-treino/">frequência de treino</a>.</li>
+        <li><strong>Suba carga e volume aos poucos</strong> — veja <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.</li>
+      </ul>
+      <p class="ig-autor">
+        O Montinho, autor deste guia, fala de treino e recuperação no
+        Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Quando procurar o médico</h2>
+      <p>Pare o treino e procure atendimento se houver:</p>
+      <ul>
+        <li>Dor ou aperto no peito, falta de ar fora do normal ou palpitação.</li>
+        <li>Tontura forte, desmaio ou quase desmaio.</li>
+        <li>Febre.</li>
+        <li>Urina escura com dor muscular muito forte depois de um treino pesado.</li>
+        <li>Cansaço que não melhora com descanso, comida e sono por semanas, ou que vem com perda de peso sem motivo.</li>
+      </ul>
+      <p>
+        Para a dor muscular dos dias seguintes ao treino, que é outra coisa,
+        veja <a href="/musculacao/dor-muscular-pos-treino/">dor muscular
+        pós-treino</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23247672/" target="_blank" rel="noopener noreferrer">Meeusen R, Duclos M, Foster C, et al. Prevention, diagnosis, and treatment of the overtraining syndrome: joint consensus statement of the European College of Sport Science and the American College of Sports Medicine. Medicine &amp; Science in Sports &amp; Exercise, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17277604/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine; Sawka MN, Burke LM, Eichner ER, et al. Exercise and fluid replacement. Medicine &amp; Science in Sports &amp; Exercise, 2007</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28642676/" target="_blank" rel="noopener noreferrer">Jäger R, Kerksick CM, Campbell BI, et al. International Society of Sports Nutrition position stand: protein and exercise. Journal of the International Society of Sports Nutrition, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20921542/" target="_blank" rel="noopener noreferrer">Nedeltcheva AV, Kilkus JM, Imperial J, et al. Insufficient sleep undermines dietary efforts to reduce adiposity. Annals of Internal Medicine, 2010</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

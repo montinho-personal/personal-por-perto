@@ -21,8 +21,8 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 2 | ~~Ficha da academia / treino pronto da internet funciona?~~ → `ficha-de-treino` (a pesquisa trocou o foco para a ficha e o modelo em PDF), 17/11 | lista de 40 temas | — | nada com "ficha" ou "treino pronto" |
 | 3 | ~~Sarcopenia: o que é e o que o treino faz por ela~~ → `sarcopenia`, 17/11 | PAA "O que fazer para reverter a sarcopenia?" | — | só citada em musculação depois dos 40 e Mounjaro e idosos |
 | 4 | ~~Por que o peso varia tanto de um dia para o outro~~ → `peso-varia-de-um-dia-para-o-outro`, 17/11 | PAA "pesar 2 kg a mais no fim do dia", "perder 1 kg em 1 dia", "engordar 4 kg em 1 mês" | — | só FAQs em platô e parágrafos em dormir pouco engorda / refeição livre |
-| 5 | Cansaço depois do treino: quando é normal | PAA "É normal ficar muito cansado depois do treino?" | — | só nas páginas de fraqueza com Mounjaro |
-| 6 | Primeiros sinais de que você está emagrecendo (além da balança) | PAA "Quais são os primeiros sinais de emagrecimento no corpo?" (busca de 17/11, `docs/peso-varia-de-um-dia-para-o-outro.md`) | — | nada com "sinais de emagrecimento"; ⚠️ conferir contra `recomposicao-corporal` |
+| 5 | ~~Cansaço depois do treino: quando é normal~~ → `cansaco-depois-do-treino`, 17/11 | PAA "É normal ficar muito cansado depois do treino?" | — | só nas páginas de fraqueza com Mounjaro |
+| 6 | ~~Primeiros sinais de que você está emagrecendo (além da balança)~~ → `sinais-de-que-esta-emagrecendo`, 17/11 | PAA "Quais são os primeiros sinais de emagrecimento no corpo?" (busca de 17/11, `docs/peso-varia-de-um-dia-para-o-outro.md`) | — | nada com "sinais de emagrecimento"; ⚠️ conferir contra `recomposicao-corporal` |
 | 7 | Princípios do treinamento | PAA "Quais são os 7 princípios básicos do treinamento?" (baixa prioridade) | — | nada; liga em progressão de carga |
 | 8 | O que fazer (e evitar) depois do treino | PAA "O que não se deve fazer depois do treino?" (Palhoça; baixa) | — | **conferir contra** `dor-muscular-pos-treino` antes de escrever |
 | 9 | Treinar na praia: o que a areia muda | lista de guias de cidade (09/2026) | — | ⚠️ recorte de `treinar-ao-ar-livre` |
@@ -54,6 +54,8 @@ Publicados em 16/11 (riscados): ~~Efeito platô com Mounjaro~~ → `efeito-plato
 | Colágeno para massa muscular (visão de IA de sarcopenia) | FAQ em `/musculacao/suplementos-que-nao-funcionam/`, se houver fonte | busca de 17/11 (`docs/sarcopenia.md`) |
 | "Treino de musculação para emagrecer feminino" | FAQ em `/musculacao/musculacao-feminina-mitos/` | busca de 17/11 (`docs/como-emagrecer-fazendo-musculacao.md`) |
 | "Perder barriga sem perder massa muscular" | FAQ em `/emagrecimento/como-perder-barriga/` | busca de 17/11 (`docs/como-preservar-massa-muscular-emagrecendo.md`) |
+| "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
+| "Como funciona o processo de emagrecimento" | FAQ em `/emagrecimento/deficit-calorico-como-funciona/` | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
 ## 3. Materiais para baixar
@@ -296,3 +298,5 @@ improvisada.
 - `/musculacao/ficha-de-treino/` — Ficha de treino de academia: o que é, como montar e modelo para imprimir (publicado em 2026-11-17)
 - `/musculacao/sarcopenia/` — Sarcopenia: o que é, sintomas, tratamento e o que o treino faz por ela (publicado em 2026-11-17)
 - `/emagrecimento/peso-varia-de-um-dia-para-o-outro/` — Por que o peso varia tanto de um dia para o outro (e ao longo do dia) (publicado em 2026-11-17)
+- `/musculacao/cansaco-depois-do-treino/` — Cansaço depois do treino: é normal? Causas, sono e overtraining (publicado em 2026-11-17)
+- `/emagrecimento/sinais-de-que-esta-emagrecendo/` — Sinais de que você está emagrecendo: os primeiros, além da balança (publicado em 2026-11-17)
