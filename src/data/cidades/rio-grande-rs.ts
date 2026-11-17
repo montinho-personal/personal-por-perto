@@ -107,5 +107,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Grande', url: 'https://www.riogrande.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-11-17',
 };

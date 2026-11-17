@@ -100,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'HERSO/HURSO — Secretaria de Estado da Saúde de Goiás', url: 'https://goias.gov.br/saude/herso/' },
   ],
   academiasVerificadasEm: '2026-10-19',
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-17',
 };

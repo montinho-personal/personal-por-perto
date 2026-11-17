@@ -113,5 +113,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Garopaba', url: 'https://www.garopaba.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-20',
+  atualizadoEm: '2026-11-17',
 };

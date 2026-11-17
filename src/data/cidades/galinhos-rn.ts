@@ -84,5 +84,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura Municipal de Galinhos', url: 'https://www.galinhos.rn.gov.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-17',
 };

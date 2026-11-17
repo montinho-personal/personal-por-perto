@@ -82,5 +82,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Ibiá/MG', url: 'https://www.ibia.mg.gov.br/' },
     { nome: 'Infosanbas — Perfil municipal de Ibiá', url: 'https://infosanbas.org.br/municipio/ibia-mg/' },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-17',
 };

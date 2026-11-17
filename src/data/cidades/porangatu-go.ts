@@ -83,5 +83,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Goiás Turismo — Porangatu', url: 'https://www.goiasturismo.go.gov.br/pt/destinos/porangatu' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-17',
 };

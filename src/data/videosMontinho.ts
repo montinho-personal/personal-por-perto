@@ -250,7 +250,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'aracruz-es', 'baependi-mg', 'barretos-sp', 'beberibe-ce', 'biguacu-sc',
   'bom-jesus-pi', 'catanduva-sp', 'coruripe-al', 'gaspar-sc', 'guanambi-ba',
   'itaqui-rs', 'lauro-de-freitas-ba', 'linhares-es', 'luziania-go', 'mage-rj',
-  'mogi-guacu-sp', 'nova-venecia-es', 'oeiras-pi', 'penapolis-sp', 'rio-do-sul-sc',
+  'mogi-guacu-sp', 'nova-venecia-es', 'oeiras-pi', 'penapolis-sp', 'rio-do-sul-sc',  // leva 3 — 17/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 2 conferida no ar)
+  'itajuba-mg', 'rio-grande-rs', 'araucaria-pr', 'confins-mg', 'diadema-sp',
+  'pocone-mt', 'saquarema-rj', 'sarandi-pr', 'serrinha-ba', 'tubarao-sc',
+  'almirante-tamandare-pr', 'altamira-pa', 'assis-chateaubriand-pr', 'bom-jardim-da-serra-sc', 'braco-do-norte-sc',
+  'ceara-mirim-rn', 'congonhal-mg', 'corumba-ms', 'curvelo-mg', 'encantado-rs',
+  'fraiburgo-sc', 'frutal-mg', 'galinhos-rn', 'garopaba-sc', 'ibia-mg',
+  'itapemirim-es', 'itapeva-sp', 'itaporanga-d-ajuda-se', 'jacarei-sp', 'jequie-ba',
+  'joao-pinheiro-mg', 'marechal-candido-rondon-pr', 'matozinhos-mg', 'nossa-senhora-do-socorro-se', 'ouro-branco-mg',
+  'palmeira-dos-indios-al', 'paragominas-pa', 'paranaiba-ms', 'paulista-pe', 'pesqueira-pe',
+  'petrolina-pe', 'planaltina-go', 'poa-sp', 'porangatu-go', 'ribeirao-pires-sp',
+  'rondonopolis-mt', 'santa-helena-de-goias-go', 'santa-teresa-es', 'sao-miguel-dos-campos-al', 'sao-sebastiao-sp',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Altamira', url: 'https://altamira.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-17',
   capaArte: {
     src: '/capas-cidade/altamira-pa.webp',
     w: 1200,

@@ -103,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Serrinha', url: 'https://www.serrinha.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2930501' },
   ],
-  atualizadoEm: '2026-11-05',
+  atualizadoEm: '2026-11-17',
 };

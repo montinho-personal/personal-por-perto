@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Encantado', url: 'https://encantado.rs.gov.br/' },
     { nome: 'Cristo Protetor de Encantado', url: 'https://cristoencantado.com.br/' },
   ],
-  atualizadoEm: '2026-08-03',
+  atualizadoEm: '2026-11-17',
 };

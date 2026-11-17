@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araucária', url: 'https://www.araucaria.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-03',
+  atualizadoEm: '2026-11-17',
 };

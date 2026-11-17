@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3145901' },
     { nome: 'IEF — Parque Estadual Serra do Ouro Branco', url: 'https://www.ief.mg.gov.br/w/parque-estadual-serra-do-ouro-branco' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-17',
 };

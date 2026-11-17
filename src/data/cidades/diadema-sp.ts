@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Diadema', url: 'https://www.diadema.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-11-17',
   capaArte: {
     src: '/capas-cidade/diadema-sp.webp',
     w: 1200,
