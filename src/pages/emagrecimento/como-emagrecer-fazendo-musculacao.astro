@@ -1,4 +1,22 @@
 ---
+/**
+ * Como emagrecer fazendo musculação — se emagrece, o que a pesquisa mede,
+ * os seis passos, EPOC, sem cardio, em quanto tempo, barriga e "engorda?".
+ *
+ * Publicado em 07/07/2026 sem pesquisa do Google; revisado em 17/11/2026
+ * pela rotina diária (pauta, parte 4), depois do SerpApi (celular, São
+ * Paulo): "como emagrecer fazendo musculação" e "musculação emagrece".
+ * Registro em docs/como-emagrecer-fazendo-musculacao.md; JSON em
+ * docs/pesquisas/2026-11-17-como-emagrecer-fazendo-musculacao/.
+ *
+ * Título e descrição: só proposta no doc (AGENTS.md), não trocados.
+ * Recorte: musculacao-ou-cardio-para-emagrecer = a comparação; recomposicao-
+ * corporal = perder gordura e ganhar músculo; como-preservar-massa-muscular-
+ * emagrecendo = não perder músculo. Aqui é o COMO, para quem escolheu a
+ * musculação.
+ * Fontes (17/11/2026, resumos): Wewege 2022, Willis 2012, Westcott 2012,
+ * LaForgia 2006, ISSN 2017 (Jäger), OMS 2020.
+ */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
@@ -14,46 +32,36 @@ import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from
 import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
-import { fontesExternas } from '../../data/fontesExternas';
-
-const acsm = fontesExternas.acsm;
-const oms = fontesExternas.oms;
 
 const relacionados = [
   {
     url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
     titulo: 'Musculação ou cardio: o que emagrece mais?',
-    descricao: 'Entenda como os dois tipos de treino se comparam e por que a combinação costuma ser a aposta mais consistente.',
+    descricao: 'A comparação completa entre os dois e por que a combinação costuma render mais.',
     tipo: 'Emagrecimento',
   },
   {
-    url: '/emagrecimento/como-preservar-massa-muscular-emagrecendo/',
-    titulo: 'Como preservar massa muscular emagrecendo',
-    descricao: 'Estratégias de treino para não perder músculo junto com a gordura durante um processo de emagrecimento.',
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal',
+    descricao: 'Perder gordura e ganhar músculo ao mesmo tempo, e por que a balança engana.',
     tipo: 'Emagrecimento',
   },
   {
     url: '/emagrecimento/deficit-calorico-como-funciona/',
     titulo: 'Déficit calórico: como funciona',
-    descricao: 'O conceito por trás do emagrecimento e por que o ajuste fino é trabalho de um nutricionista.',
+    descricao: 'A conta que decide o emagrecimento, com ou sem musculação.',
     tipo: 'Emagrecimento',
-  },
-  {
-    url: '/musculacao/hipertrofia-como-funciona/',
-    titulo: 'Hipertrofia: como funciona o crescimento muscular',
-    descricao: 'Os princípios que fazem o músculo crescer — a base para entender por que a musculação sustenta o emagrecimento no longo prazo.',
-    tipo: 'Musculação',
   },
   {
     url: rotas.comoEscolher,
     titulo: 'Como escolher um personal trainer',
-    descricao: 'Ajustar treino e progressão ao seu objetivo de emagrecimento é trabalho de um profissional qualificado.',
+    descricao: 'Para montar o treino e a progressão com quem acompanha de perto.',
     tipo: 'Guia',
   },
 ];
 
 const path = '/emagrecimento/como-emagrecer-fazendo-musculacao';
-const atualizadoEm = '2026-10-15';
+const atualizadoEm = '2026-11-17';
 const capa = '/capas-conteudo/como-emagrecer-fazendo-musculacao.webp';
 const capaAlt =
   'Mulher em treino de força com halteres na academia e gráfico de progresso, ilustrando o guia de como emagrecer fazendo musculação — Personal por Perto';
@@ -65,29 +73,39 @@ const crumbs = [
 
 const faqs = [
   {
-    pergunta: 'Só musculação já é suficiente para emagrecer?',
+    pergunta: 'É possível emagrecer só fazendo musculação?',
     resposta:
-      'Sozinha, geralmente não. O treino de musculação cria o estímulo (gasto calórico e preservação de massa magra), mas o emagrecimento depende do balanço entre o que você gasta e o que você consome ao longo do tempo. Sem um contexto alimentar adequado, é difícil manter o déficit calórico necessário só com o treino. O ajuste alimentar ideal para o seu caso é trabalho de um nutricionista.',
+      'É, desde que a alimentação fique em déficit calórico. Sem mudar a alimentação, a musculação sozinha tira pouca gordura: numa meta-análise de 2022, com 54 estudos, o treino reduziu em média 0,55 kg de gordura e 1,46 ponto do percentual de gordura em relação a quem não treinou. Com déficit, ela faz o peso perdido ser mais gordura e menos músculo.',
   },
   {
-    pergunta: 'Musculação emagrece mais rápido que cardio?',
+    pergunta: 'Quanto tempo de musculação para perder peso?',
     resposta:
-      'Não necessariamente "mais rápido". Cardio costuma gastar mais calorias na própria sessão, enquanto a musculação contribui de forma mais indireta, sustentando a massa magra e o gasto energético ao longo do dia. Comparamos os dois em detalhe no artigo sobre musculação ou cardio para emagrecer.',
+      'Depende do déficit, não só do treino. Um quilo de gordura guarda cerca de 7.700 kcal: com um déficit de 500 kcal por dia, a conta dá perto de 2 kg por mês. A força sobe nas primeiras semanas; com o déficit mantido, as medidas costumam mudar antes da balança.',
   },
   {
-    pergunta: 'O que é o "efeito pós-exercício" (EPOC) e ele realmente ajuda a emagrecer?',
+    pergunta: 'Quantos kg dá para perder em 1 mês de academia?',
     resposta:
-      'EPOC (excess post-exercise oxygen consumption) é o consumo extra de oxigênio — e, por consequência, de energia — que o corpo mantém depois do treino, enquanto se recupera. Estudos costumam apontar esse efeito como relativamente modesto no dia a dia, algo como uma fração do gasto calórico da própria sessão, um pouco maior em treinos de intensidade mais alta. Ele existe e conta, mas não deve ser visto como o principal motivo pelo qual a musculação ajuda no emagrecimento — o papel mais consistente é a preservação da massa magra.',
+      'Em gordura, o que o déficit permitir: 500 kcal por dia somam 15 mil kcal no mês, perto de 2 kg. A balança pode mostrar mais no começo, por água, ou menos, se você ganhar músculo. Mais que isso por mês, de forma sustentada, quase sempre pede acompanhamento de nutricionista e médico.',
   },
   {
-    pergunta: 'Quantas vezes por semana preciso treinar para emagrecer com musculação?',
+    pergunta: 'Musculação emagrece mais que cardio?',
     resposta:
-      'Não existe um número universal. O que a literatura costuma reforçar é que frequência e consistência ao longo de meses pesam mais do que "queimar muito" em uma única sessão. Um plano que você consegue manter de forma regular tende a trazer resultado mais consistente do que treinos esporádicos e muito intensos. A frequência ideal para o seu caso depende de rotina, nível de condicionamento e objetivo, e deve ser definida com um profissional de educação física.',
+      'Na balança, não. Num estudo de oito meses com 119 adultos sedentários, o grupo do aeróbico perdeu mais peso e mais gordura que o da musculação; o da musculação ganhou massa magra. A combinação dos dois junta as duas coisas. A comparação completa está no artigo musculação ou cardio para emagrecer.',
   },
   {
-    pergunta: 'Preciso fazer dieta restritiva para emagrecer treinando musculação?',
+    pergunta: 'Musculação emagrece a barriga?',
     resposta:
-      'Não. O conceito central é o déficit calórico (gastar mais energia do que se consome ao longo do tempo), mas isso não significa dieta restritiva ou cortes drásticos. A forma como esse déficit é construído — quais alimentos, em que quantidade, em quantas refeições — é uma decisão individual que depende de avaliação nutricional, não de um número genérico repetido na internet.',
+      'Ajuda, mas não no lugar que você treina. Não existe perda de gordura localizada: abdominal não seca a barriga sozinho. A meta-análise de 2022 mostrou que a musculação reduz a gordura visceral, a de dentro do abdome, quando o treino é do corpo inteiro.',
+  },
+  {
+    pergunta: 'Musculação engorda?',
+    resposta:
+      'Não engorda de gordura. No começo, a balança pode ficar parada ou subir um pouco porque você ganha músculo e água no músculo, enquanto perde gordura. Por isso, além do peso, acompanhe a cintura, as fotos e a roupa.',
+  },
+  {
+    pergunta: 'É verdade que a musculação queima calorias por 72 horas depois do treino?',
+    resposta:
+      'É exagero. O gasto extra depois do treino, chamado EPOC, existe, mas é pequeno: uma revisão de 2006 calculou que ele representa de 6% a 15% do gasto do próprio exercício. Ajuda, mas não é ele que emagrece.',
   },
 ];
 
@@ -108,7 +126,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
-    <h1>Como emagrecer fazendo musculação</h1>
+    <h1>Como emagrecer fazendo musculação: funciona, em quanto tempo e como treinar</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
@@ -125,92 +143,85 @@ const schema = [
     </figure>
 
     <p class="lead">
-      Musculação não é "só" um treino de força — ela também é uma
-      ferramenta relevante para emagrecimento, só que por um caminho
-      diferente do cardio. Em vez de depender apenas do gasto calórico
-      durante a sessão, o efeito da musculação vem principalmente de
-      sustentar a massa magra e o metabolismo ao longo do tempo. Isso
-      não substitui o contexto alimentar: treino é o estímulo, e o
-      resultado depende do conjunto.
-    </p>
-
-    <p class="lead">
-      Veja como cada peça se encaixa.
+      Musculação emagrece, sim — tira gordura mesmo de quem não muda a
+      alimentação, só que pouco. O que derruba o peso é o déficit calórico.
+      O papel da musculação é fazer o peso que sai ser gordura, e não
+      músculo. Os dois juntos são o caminho.
     </p>
 
     <div class="prose">
-      <h2>Emagrecimento não é só "queimar calorias" durante o treino</h2>
+      <h2>Musculação emagrece? O que a pesquisa mostra</h2>
+      <ul>
+        <li><strong>Tira gordura, mesmo sem dieta.</strong> Uma meta-análise de 2022, com 54 estudos em adultos saudáveis, comparou quem fez musculação de corpo inteiro por pelo menos 4 semanas com quem não treinou. O treino reduziu em média 1,46 ponto do percentual de gordura, 0,55 kg de gordura e a gordura visceral, a de dentro do abdome.</li>
+        <li><strong>Na balança, perde para o aeróbico.</strong> Num estudo de oito meses com 119 adultos sedentários com sobrepeso, quem fez aeróbico perdeu mais peso e mais gordura do que quem fez musculação. O grupo da musculação, por outro lado, ganhou massa magra.</li>
+        <li><strong>Ganha músculo e gasta mais em repouso.</strong> Uma revisão de 2012 reuniu resultados de 10 semanas de treino de força: em média, 1,4 kg a mais de massa magra, 1,8 kg a menos de gordura e um gasto em repouso 7% maior.</li>
+      </ul>
       <p>
-        É comum pensar em emagrecimento como uma equação simples: quanto mais
-        calorias uma atividade "queima" na hora, melhor ela seria para
-        emagrecer. Essa lógica favorece o cardio, que de fato costuma ter um
-        gasto calórico mais alto por sessão. Mas o emagrecimento sustentável
-        depende do balanço energético ao longo de semanas e meses, não do
-        resultado de um único treino — e é aí que a musculação entra de um
-        jeito menos óbvio, mas relevante.
+        Resumo: a musculação muda o corpo mais do que o número da balança. Se
+        a dúvida é qual dos dois escolher, a comparação completa está em
+        <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação
+        ou cardio para emagrecer</a>.
       </p>
 
-      <h2>O que acontece depois do treino: o efeito EPOC</h2>
+      <h2>Como emagrecer fazendo musculação: 6 passos</h2>
+
+      <h3>1. Treine o corpo inteiro, 2 a 4 vezes por semana</h3>
       <p>
-        Depois de qualquer exercício, o corpo continua consumindo mais
-        oxigênio (e energia) do que em repouso, enquanto se recupera —
-        fenômeno chamado de EPOC (excess post-exercise oxygen
-        consumption, ou "efeito pós-exercício"). A literatura costuma
-        apontar esse efeito como relativamente modesto no total do
-        dia, algo em torno de uma pequena fração do gasto calórico da
-        própria sessão, tendendo a ser maior quanto mais intenso for o
-        treino.
+        Os estudos que mostraram perda de gordura usaram treino de corpo
+        inteiro. Priorize os exercícios que movem muitos músculos de uma vez —
+        agachamento, leg press, remada, supino, levantamento terra — e
+        complete com os isolados. A Organização Mundial da Saúde recomenda
+        fortalecimento muscular em 2 dias ou mais por semana. Como dividir os
+        dias está em <a href="/musculacao/divisao-de-treino/">divisão de
+        treino</a>.
+      </p>
+
+      <h3>2. Suba a carga com o tempo</h3>
+      <p>
+        O músculo só se mantém, numa fase de déficit, se continuar sendo
+        desafiado. Treino leve demais não protege a massa magra. Anote as
+        cargas e suba quando ficar fácil — o método está em
+        <a href="/musculacao/progressao-de-carga/">progressão de carga</a>.
+      </p>
+
+      <h3>3. Coma menos do que gasta</h3>
+      <p>
+        É a parte que decide o emagrecimento. Nenhum treino compensa uma
+        alimentação acima do que você gasta. A conta, e por que ela não
+        precisa de dieta radical, está em
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>. O ajuste da alimentação para o seu caso é trabalho de
+        um nutricionista.
       </p>
 
       <FerramentaInline
         id="musculacao"
-        texto="O gasto da própria sessão, que serve de régua para o EPOC, dá para estimar com o seu peso. A calculadora faz essa conta pelo tempo e pelo tipo de treino; o EPOC ela não soma, porque ele não se calcula pelo tempo — mostra só o que os estudos mediram, sem cravar um valor."
+        texto="Para colocar o treino nessa conta, a calculadora estima quanto a sua sessão de musculação gasta, pelo seu peso, pelo tempo e pelo tipo de treino."
         acao="Calcular quanto a minha sessão de musculação gasta"
       />
 
+      <h3>4. Capriche na proteína</h3>
       <p>
-        Estudos indicam que treinos de força com exercícios
-        multiarticulares e treinos intervalados de alta intensidade
-        tendem a gerar um EPOC um pouco maior do que exercícios
-        aeróbicos contínuos de intensidade moderada. É um efeito real,
-        mas vale o hedging: ele complementa o gasto calórico total,
-        não é o principal motivo pelo qual a musculação ajuda no
-        emagrecimento a longo prazo.
+        A Sociedade Internacional de Nutrição Esportiva recomenda, para quem
+        treina, de 1,4 a 2,0 g de proteína por quilo de peso por dia — e
+        aponta que, em fases de déficit, pessoas já treinadas podem precisar
+        de mais para manter a massa magra. Proteína suficiente também ajuda a
+        segurar a fome. Quem tem doença renal precisa da orientação do médico.
       </p>
 
-      <h2>Massa magra: o papel mais consistente da musculação</h2>
+      <h3>5. Some movimento fora da academia</h3>
       <p>
-        O ponto mais sustentado pela pesquisa é outro: quando o
-        objetivo é emagrecer, um dos maiores riscos é perder massa
-        magra (músculo) junto com a gordura — o que tende a reduzir o
-        metabolismo basal e dificultar a manutenção do peso perdido no
-        futuro.
+        Caminhada, bicicleta e passos ao longo do dia aumentam o gasto sem
+        atrapalhar a recuperação. Não é obrigatório fazer cardio, mas ele
+        facilita o déficit. Se o tempo é curto, a musculação vem primeiro;
+        caminhar entra quando der.
       </p>
 
+      <h3>6. Meça mais que o peso</h3>
       <p>
-        Revisões que comparam dieta isolada com dieta associada a
-        treino de força costumam mostrar que incluir musculação
-        durante um período de restrição calórica ajuda a preservar (ou
-        até aumentar) a massa magra, em comparação com fazer apenas
-        dieta. Ou seja: a musculação não necessariamente acelera a
-        perda de peso na balança, mas tende a melhorar a composição do
-        que é perdido — mais gordura, menos músculo.
-      </p>
-
-      <h2>Recomposição corporal: perder gordura e ganhar músculo ao mesmo tempo</h2>
-      <p>
-        Para pessoas com mais gordura corporal para perder e pouco
-        tempo de treino de força no histórico, é relativamente comum
-        observar "recomposição corporal": perda de gordura e ganho de
-        massa magra acontecendo em paralelo, mesmo sem uma mudança
-        dramática no peso da balança.
-      </p>
-
-      <p>
-        É por isso que, em processos de emagrecimento, medidas como
-        circunferência, percentual de gordura ou simplesmente como a
-        roupa está vestindo costumam contar uma história mais completa
-        do que o número isolado da balança.
+        Como a musculação pode trocar gordura por músculo, a balança às vezes
+        demora a cair. Cintura, fotos, roupa e a força no treino contam a
+        história completa. O Montinho, autor deste guia, mostra isso no vídeo:
       </p>
 
       <VideoYouTube
@@ -220,56 +231,65 @@ const schema = [
         short
       />
 
-      <h2>Musculação sozinha não emagrece sem contexto alimentar</h2>
+      <h2>O efeito pós-treino (EPOC) emagrece?</h2>
       <p>
-        Aqui vale ser direto: nenhuma quantidade de treino compensa,
-        de forma sistemática, um padrão alimentar que mantém a pessoa
-        em superávit calórico constante. O conceito de <a
-        href="/emagrecimento/deficit-calorico-como-funciona/"><strong>déficit
-        calórico</strong></a> — gastar mais energia do que se consome
-        ao longo do tempo — segue sendo a base do emagrecimento, com
-        ou sem musculação.
+        Pouco. Depois do treino, o corpo continua gastando um pouco mais
+        enquanto se recupera — é o EPOC. Uma revisão de 2006 mostrou que esse
+        gasto extra representa de <strong>6% a 15%</strong> do gasto do
+        próprio exercício, e que os relatos antigos de efeitos muito longos
+        não se confirmaram nos estudos mais recentes. Os "72 horas queimando
+        gordura" que circulam por aí são exagero.
       </p>
 
+      <h2>Dá para emagrecer sem cardio, só com musculação?</h2>
       <p>
-        Este artigo não prescreve número de calorias, macros ou dieta:
-        isso depende de fatores individuais (peso, composição
-        corporal, rotina, histórico de saúde) e é trabalho de um
-        nutricionista. O papel da musculação aqui é sustentar esse
-        processo — pela preservação de massa magra e, indiretamente,
-        pelo gasto calórico — não substituí-lo.
+        Dá, se a alimentação estiver em déficit. O estudo de oito meses
+        mostrou que, sem mexer na dieta, a musculação sozinha tirou menos
+        peso que o aeróbico — mas, com o déficit feito pela alimentação, a
+        musculação é o que protege o músculo. Para quem não gosta de esteira,
+        a musculação com alimentação ajustada e passos no dia a dia funciona.
       </p>
 
-      <h2>Frequência e consistência importam mais que uma sessão "puxada"</h2>
+      <h2>Em quanto tempo a musculação emagrece</h2>
       <p>
-        Um erro comum é buscar o treino "que mais queima calorias"
-        numa sessão isolada. Na prática, o que costuma diferenciar
-        quem emagrece de forma sustentável é a consistência: treinar
-        com regularidade ao longo de meses, dentro de uma frequência
-        que a pessoa consegue manter na rotina real, tende a produzir
-        resultado mais confiável do que treinos esporádicos, ainda que
-        intensos.
+        O ritmo é do déficit, não do treino. Um quilo de gordura guarda cerca
+        de 7.700 kcal: com um déficit de 500 kcal por dia, são 15 mil kcal no
+        mês, perto de <strong>2 kg</strong>. Na prática:
+      </p>
+      <ul>
+        <li><strong>Primeiras semanas:</strong> a força sobe rápido; a balança pode até parar, porque o músculo guarda mais água.</li>
+        <li><strong>Com o déficit mantido:</strong> as medidas e a roupa costumam mostrar a diferença antes da balança.</li>
+        <li><strong>Prazo de uma meta:</strong> a simulação está em <a href="/emagrecimento/quanto-tempo-para-perder-10kg/">quanto tempo para perder 10 kg</a>.</li>
+      </ul>
+
+      <h2>Musculação emagrece a barriga?</h2>
+      <p>
+        Ajuda, mas não onde você treina. Não existe perda de gordura
+        localizada: abdominal não seca a barriga sozinho. A meta-análise de
+        2022 mostrou queda da gordura visceral com treino do corpo inteiro. O
+        caminho completo está em
+        <a href="/emagrecimento/como-perder-barriga/">como perder barriga</a>.
       </p>
 
+      <h2>Musculação engorda?</h2>
       <p>
-        Diretrizes de atividade física para a saúde, como as
-        publicadas pela <a href={oms.url} target="_blank"
-        rel="noopener">{oms.nome}</a>, reforçam justamente esse ponto:
-        regularidade ao longo do tempo, e não intensidade pontual, é o
-        que sustenta benefícios de saúde e de composição corporal.
+        Não engorda de gordura. O que pode acontecer no começo é a balança
+        parar ou subir um pouco, porque você ganha músculo e água no músculo
+        enquanto perde gordura. Esse é o caso da
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a>, e é bom sinal.
       </p>
-      <div class="callout">
-        <strong>Resumindo:</strong> musculação ajuda no emagrecimento
-        principalmente por preservar massa magra e sustentar o metabolismo
-        no longo prazo, com uma contribuição adicional (mas modesta) do
-        gasto calórico pós-treino. Ela funciona melhor associada a um
-        contexto alimentar adequado — ajustado por um nutricionista — e a
-        um plano de treino estruturado, algo que um
-        <a href="/guias/personal-trainer-para-emagrecimento/">personal trainer com
-        experiência real em emagrecimento</a> ajuda
-        a montar seguindo diretrizes reconhecidas como as da
-        <a href={acsm.url} target="_blank" rel="noopener">{acsm.nome}</a>.
-      </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/34536199/" target="_blank" rel="noopener noreferrer">Wewege MA, Desai I, Honey C, et al. The effect of resistance training in healthy adults on body fat percentage, fat mass and visceral fat: a systematic review and meta-analysis. Sports Medicine, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23019316/" target="_blank" rel="noopener noreferrer">Willis LH, Slentz CA, Bateman LA, et al. Effects of aerobic and/or resistance training on body mass and fat mass in overweight or obese adults. Journal of Applied Physiology, 2012</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/22777332/" target="_blank" rel="noopener noreferrer">Westcott WL. Resistance training is medicine: effects of strength training on health. Current Sports Medicine Reports, 2012</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17101527/" target="_blank" rel="noopener noreferrer">LaForgia J, Withers RT, Gore CJ. Effects of exercise intensity and duration on the excess post-exercise oxygen consumption. Journal of Sports Sciences, 2006</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28642676/" target="_blank" rel="noopener noreferrer">Jäger R, Kerksick CM, Campbell BI, et al. International Society of Sports Nutrition position stand: protein and exercise. Journal of the International Society of Sports Nutrition, 2017</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} />
@@ -321,5 +341,13 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
   }
 </style>

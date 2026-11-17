@@ -52,6 +52,7 @@ Publicados em 16/11 (riscados): ~~Efeito platô com Mounjaro~~ → `efeito-plato
 | "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
 | "O que trava o emagrecimento?"; linkar as FAQs de "2 kg" para `peso-varia-de-um-dia-para-o-outro` | FAQ em `/emagrecimento/plato-de-emagrecimento/` | busca de 17/11 (`docs/peso-varia-de-um-dia-para-o-outro.md`) |
 | Colágeno para massa muscular (visão de IA de sarcopenia) | FAQ em `/musculacao/suplementos-que-nao-funcionam/`, se houver fonte | busca de 17/11 (`docs/sarcopenia.md`) |
+| "Treino de musculação para emagrecer feminino" | FAQ em `/musculacao/musculacao-feminina-mitos/` | busca de 17/11 (`docs/como-emagrecer-fazendo-musculacao.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
 ## 3. Materiais para baixar
@@ -68,7 +69,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | publicado | página | título | nota |
 |---|---|---|---|
 | ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aprovado e aplicado em 16/11 |
-| 2026-07-07 | `/emagrecimento/como-emagrecer-fazendo-musculacao/` | Como emagrecer fazendo musculação |  |
+| ~~2026-07-07~~ | ~~`/emagrecimento/como-emagrecer-fazendo-musculacao/`~~ | ~~Como emagrecer fazendo musculação~~ | ✅ revisado 17/11/2026 (`como-emagrecer-fazendo-musculacao`); título e descrição em proposta |
 | 2026-07-07 | `/emagrecimento/como-preservar-massa-muscular-emagrecendo/` | Como preservar massa muscular durante o emagrecimento |  |
 | 2026-07-07 | `/emagrecimento/deficit-calorico-como-funciona/` | Déficit calórico: como funciona para emagrecer | reescrito pelo GSC em 09/2026, sem SERP |
 | 2026-07-07 | `/emagrecimento/musculacao-ou-cardio-para-emagrecer/` | Musculação ou cardio: o que emagrece mais? |  |
