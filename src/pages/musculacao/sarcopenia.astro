@@ -1,0 +1,325 @@
+---
+/**
+ * Sarcopenia — o que é, sintomas, diagnóstico, se dá para reverter, como o treino de
+ * força e a proteína tratam, vitamina D, Mounjaro e sarcopenia em jovens.
+ *
+ * Item 3 da pauta (docs/seo/pauta.md), pedido do Renato em 17/11/2026.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 17/11/2026):
+ * "sarcopenia" e "como reverter a sarcopenia". Registro em
+ * docs/sarcopenia.md; JSON em docs/pesquisas/2026-11-17-sarcopenia/.
+ *
+ * Recorte: musculacao-depois-dos-40 e personal-trainer-para-terceira-idade
+ * citam a sarcopenia de passagem; mounjaro-e-idosos trata do remédio. Aqui
+ * é a condição: o que é, como se diagnostica e o que trata.
+ *
+ * Saúde: diagnóstico é do médico; o texto não promete resultado e manda dor,
+ * queda e doença renal para o médico. A palavra "cura" é proibida no
+ * site (audit:metadados): a busca "sarcopenia tem cura" é respondida como
+ * "dá para reverter?". Sem vídeo (nenhum Short do tema).
+ * Fontes (17/11/2026): EWGSOP2 2019 (resumo; pontos de corte da força de
+ * preensão conferidos em dois estudos independentes que os citam), ICFSR
+ * 2018, PROT-AGE 2013, Fiatarone 1994, Peterson 2010, Anker 2016.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/musculacao/musculacao-depois-dos-40/', titulo: 'Musculação depois dos 40', descricao: 'O que muda no treino e como começar a reserva muscular.', tipo: 'Musculação' },
+  { url: '/guias/personal-trainer-para-terceira-idade/', titulo: 'Personal trainer para a terceira idade', descricao: 'Como é o treino acompanhado para idosos.', tipo: 'Guia' },
+  { url: '/mounjaro-e-treino/mounjaro-e-idosos/', titulo: 'Mounjaro e idosos', descricao: 'Por que o treino vira o centro do plano.', tipo: 'Mounjaro' },
+];
+
+const path = '/musculacao/sarcopenia';
+const atualizadoEm = '2026-11-17';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Sarcopenia', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre sarcopenia';
+const faqs = [
+  {
+    pergunta: 'O que é sarcopenia?',
+    resposta:
+      'É a perda de força e de massa muscular que faz o músculo falhar nas tarefas do dia a dia. O consenso europeu de 2019 a trata como uma doença do músculo: é mais comum em idosos, mas pode aparecer antes.',
+  },
+  {
+    pergunta: 'Dá para reverter a sarcopenia?',
+    resposta:
+      'Dá para tratar e recuperar boa parte da força, em qualquer idade. O tratamento com mais evidência é o treino de força: num estudo clássico, idosos com média de 87 anos mais que dobraram a força muscular em 10 semanas. O diagnóstico e o acompanhamento são do médico.',
+  },
+  {
+    pergunta: 'Como reverter a sarcopenia em idosos?',
+    resposta:
+      'Com treino de força progressivo, de 2 a 3 vezes por semana, e proteína suficiente na alimentação, com liberação e acompanhamento do médico. As diretrizes internacionais de 2018 recomendam o treino de força como a base do tratamento.',
+  },
+  {
+    pergunta: 'Qual a vitamina para evitar sarcopenia?',
+    resposta:
+      'Nenhuma vitamina previne a sarcopenia sozinha. As diretrizes internacionais de 2018 não recomendam suplementar vitamina D para tratar a sarcopenia, por falta de evidência. Se houver deficiência, quem decide a reposição é o médico, pelo exame de sangue.',
+  },
+  {
+    pergunta: 'Qual é o pior hábito que causa sarcopenia?',
+    resposta:
+      'Ficar parado. Sem estímulo, o músculo perde força, e isso pesa mais com a idade. Comer pouca proteína, ficar acamado por doença ou internação e emagrecer rápido sem treinar são os outros aceleradores.',
+  },
+  {
+    pergunta: 'O que comer para combater a sarcopenia?',
+    resposta:
+      'Proteína suficiente ao longo do dia: o grupo europeu PROT-AGE recomenda a pessoas acima de 65 anos de 1,0 a 1,2 g por quilo de peso por dia, e 1,2 g ou mais para quem treina. Quem tem doença renal grave é exceção e precisa da orientação do médico.',
+  },
+  {
+    pergunta: 'Existe sarcopenia em jovens?',
+    resposta:
+      'Existe. O consenso europeu de 2019 diz que a sarcopenia é mais comum na velhice, mas pode aparecer antes. Nesses casos, o médico investiga a causa, como uma doença, um período longo de cama ou a falta de atividade.',
+  },
+];
+
+/* 55 caracteres. */
+const title = 'Sarcopenia: O Que É, Sintomas, Diagnóstico e Tratamento';
+/* 147 caracteres. */
+const description =
+  'Sarcopenia: o que é, sintomas, como é o diagnóstico e como reverter a perda de força com treino de força e proteína, segundo as diretrizes médicas.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Sarcopenia: o que é, sintomas, tratamento e o que o treino faz por ela</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Sarcopenia é a perda de força e de massa muscular que faz o músculo
+      falhar nas tarefas do dia a dia, como levantar da cadeira ou subir uma
+      escada. É mais comum em idosos, mas pode começar antes. E tem
+      tratamento: o treino de força é a base dele, em qualquer idade.
+    </p>
+
+    <div class="prose">
+      <h2>O que é sarcopenia</h2>
+      <p>
+        O nome vem do grego: <em>sarx</em> (carne) e <em>penia</em> (falta).
+        O consenso europeu sobre sarcopenia, revisado em 2019, define a
+        condição como uma <strong>doença do músculo</strong>: um conjunto de
+        mudanças que se acumulam ao longo da vida e deixam o músculo fraco
+        demais para a rotina. É comum em idosos, mas pode aparecer mais cedo.
+      </p>
+      <p>
+        O ponto central, desde 2019, é a <strong>força</strong>, não o
+        tamanho do músculo. A pessoa pode até ter um braço de aparência
+        normal e já não conseguir abrir um pote ou carregar as compras.
+      </p>
+
+      <h3>Sarcopenia é uma doença? E o CID?</h3>
+      <p>
+        Sim, o consenso europeu a trata como doença. Nos Estados Unidos, ela
+        ganhou código próprio em 2016, o M62.84, na versão americana da
+        CID-10. Qual código usar no laudo é decisão do médico.
+      </p>
+
+      <h2>Sintomas e sinais da sarcopenia</h2>
+      <p>Os sinais costumam aparecer no dia a dia, devagar:</p>
+      <ul>
+        <li>Fraqueza para tarefas simples: abrir potes, carregar sacolas, segurar o corrimão.</li>
+        <li>Dificuldade para levantar da cadeira sem apoiar as mãos.</li>
+        <li>Cansaço ao subir escadas.</li>
+        <li>Caminhar mais devagar do que antes.</li>
+        <li>Desequilíbrio e quedas.</li>
+      </ul>
+      <p>
+        O sinal mais comum é a fraqueza. Se houver dor, ela precisa ser
+        investigada pelo médico, porque pode ter outra causa.
+      </p>
+
+      <h2>Como é feito o diagnóstico</h2>
+      <p>
+        O diagnóstico é do médico — em geral geriatra, mas também clínico,
+        endocrinologista ou ortopedista. O consenso europeu de 2019 organiza
+        a investigação em três etapas:
+      </p>
+      <ul>
+        <li><strong>Força</strong> — é o primeiro passo. O teste mais usado é a força de preensão da mão, medida com um aparelho (dinamômetro). Abaixo de 27 kg nos homens e de 16 kg nas mulheres, a sarcopenia é considerada provável. Outra opção é cronometrar quanto tempo a pessoa leva para levantar e sentar da cadeira algumas vezes seguidas.</li>
+        <li><strong>Quantidade de músculo</strong> — confirma o diagnóstico, por exames como a densitometria de corpo inteiro ou a <a href="/emagrecimento/bioimpedancia/">bioimpedância</a>.</li>
+        <li><strong>Desempenho</strong> — a velocidade da caminhada e outros testes mostram a gravidade.</li>
+      </ul>
+      <p>
+        Para triagem, as diretrizes internacionais de 2018 sugerem o
+        questionário SARC-F, de cinco perguntas sobre força, caminhada,
+        levantar da cadeira, subir escada e quedas, ou a medida da velocidade
+        da caminhada.
+      </p>
+
+      <h2>O que causa e o que acelera a sarcopenia</h2>
+      <ul>
+        <li><strong>Idade</strong> — com o tempo, o músculo responde menos ao estímulo.</li>
+        <li><strong>Ficar parado</strong> — é o acelerador que mais depende de você. No estudo de 1994 citado abaixo, os idosos que não treinaram praticamente não ganharam força em 10 semanas e passaram a caminhar um pouco mais devagar.</li>
+        <li><strong>Pouca proteína</strong> — o idoso precisa de mais proteína do que o adulto jovem para manter o músculo.</li>
+        <li><strong>Doença e internação</strong> — dias de cama tiram força rápido.</li>
+        <li><strong>Emagrecer rápido sem treinar</strong> — parte do peso perdido é músculo. Com remédios como o Mounjaro, isso pede atenção especial: veja <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como não perder massa muscular tomando Mounjaro</a>.</li>
+      </ul>
+
+      <h2>Dá para reverter a sarcopenia?</h2>
+      <p>
+        Dá para tratar e recuperar boa parte da força perdida, mesmo em idade
+        avançada. As diretrizes internacionais de 2018 fazem uma recomendação
+        forte do <strong>treino de força</strong> como tratamento
+        da sarcopenia, e sugerem proteína suficiente na alimentação. Os
+        números mostram por quê:
+      </p>
+      <ul>
+        <li><strong>Aos 87 anos, a força mais que dobrou.</strong> Num estudo publicado em 1994 no New England Journal of Medicine, 100 moradores de casas de repouso, com média de 87 anos, fizeram 10 semanas de treino de força progressivo. A força muscular subiu 113% em quem treinou, contra 3% em quem não treinou, e a velocidade da caminhada melhorou 11,8%.</li>
+        <li><strong>Em média, um quarto a um terço mais forte.</strong> Uma meta-análise de 2010, com 47 estudos e pessoas acima de 50 anos, achou ganhos de 24% a 33% de força nos exercícios testados. Quanto mais intenso o treino, maior o ganho.</li>
+      </ul>
+      <p>
+        O mesmo estudo de 1994 mostrou o outro lado: o suplemento nutricional
+        dado sem treino não melhorou a força. A alimentação ajuda; quem trata
+        é o treino.
+      </p>
+
+      <h2>Como deve ser o treino para sarcopenia</h2>
+      <ul>
+        <li><strong>Treino de força, de 2 a 3 vezes por semana</strong>, com máquinas, pesos, elásticos ou o próprio corpo.</li>
+        <li><strong>Carga que sobe aos poucos.</strong> O que trata a sarcopenia é o músculo ser desafiado: quando o exercício fica fácil, a carga sobe.</li>
+        <li><strong>Movimentos do dia a dia</strong> — sentar e levantar, subir degrau, carregar peso — além de exercícios de equilíbrio, que ajudam a evitar quedas.</li>
+        <li><strong>Liberação médica antes de começar</strong> e acompanhamento no início, para ajustar a execução e a carga com segurança.</li>
+      </ul>
+      <p>
+        Como funciona o treino acompanhado para idosos está em
+        <a href="/guias/personal-trainer-para-terceira-idade/">personal trainer
+        para a terceira idade</a>. Para quem ainda está nos 40 ou 50 anos e
+        quer construir reserva muscular, o caminho está em
+        <a href="/musculacao/musculacao-depois-dos-40/">musculação depois dos
+        40</a>.
+      </p>
+      <p class="ig-autor">
+        O Montinho, autor deste guia, publica dicas de treino de força para
+        todas as idades no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Alimentação: quanta proteína</h2>
+      <p>
+        O grupo europeu PROT-AGE recomenda a pessoas acima de 65 anos
+        <strong>de 1,0 a 1,2 g de proteína por quilo de peso por dia</strong>;
+        1,2 g ou mais para quem treina; e de 1,2 a 1,5 g para a maioria das
+        pessoas com doença crônica ou aguda. A exceção é quem tem doença renal
+        grave e não faz diálise, que pode precisar limitar a proteína — por
+        isso a conta final é do médico ou do nutricionista.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-de-proteina"
+        texto="Quanto 1,0 a 1,2 g por quilo dá no seu prato? A calculadora transforma o seu peso em gramas de proteína por dia e por refeição."
+        acao="Calcular a minha proteína do dia"
+      />
+
+      <h3>E a vitamina D?</h3>
+      <p>
+        As diretrizes de 2018 não recomendam suplementar vitamina D para
+        tratar a sarcopenia: a evidência não é suficiente. Se o exame mostrar
+        deficiência, a reposição é decisão do médico.
+      </p>
+
+      <h2>Sarcopenia em jovens</h2>
+      <p>
+        Existe. O consenso de 2019 diz que a sarcopenia é mais comum na
+        velhice, mas pode aparecer antes. Nesses casos, o médico investiga o
+        que está por trás — uma doença, um período longo de cama, a
+        alimentação, a falta de atividade — e o treino de força entra no
+        tratamento como no idoso.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/30312372/" target="_blank" rel="noopener noreferrer">Cruz-Jentoft AJ, Bahat G, Bauer J, et al. Sarcopenia: revised European consensus on definition and diagnosis (EWGSOP2). Age and Ageing, 2019</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/30498820/" target="_blank" rel="noopener noreferrer">Dent E, Morley JE, Cruz-Jentoft AJ, et al. International Clinical Practice Guidelines for Sarcopenia (ICFSR): screening, diagnosis and management. The Journal of Nutrition, Health &amp; Aging, 2018</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23867520/" target="_blank" rel="noopener noreferrer">Bauer J, Biolo G, Cederholm T, et al. Evidence-based recommendations for optimal dietary protein intake in older people: a position paper from the PROT-AGE Study Group. JAMDA, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/8190152/" target="_blank" rel="noopener noreferrer">Fiatarone MA, O'Neill EF, Ryan ND, et al. Exercise training and nutritional supplementation for physical frailty in very elderly people. New England Journal of Medicine, 1994</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20385254/" target="_blank" rel="noopener noreferrer">Peterson MD, Rhea MR, Sen A, Gordon PM. Resistance exercise for muscular strength in older adults: a meta-analysis. Ageing Research Reviews, 2010</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/27891296/" target="_blank" rel="noopener noreferrer">Anker SD, Morley JE, von Haehling S. Welcome to the ICD-10 code for sarcopenia. Journal of Cachexia, Sarcopenia and Muscle, 2016</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

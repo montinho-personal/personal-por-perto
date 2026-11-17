@@ -1,0 +1,321 @@
+---
+/**
+ * Por que o peso varia tanto de um dia para o outro — e ao longo do dia:
+ * água, comida, carboidrato e glicogênio, ciclo menstrual, fim de semana;
+ * a conta dos 2 kg; melhor horário para se pesar; pesar todo dia; balanças
+ * diferentes; quando a variação pede médico.
+ *
+ * Item 4 da pauta (docs/seo/pauta.md), pedido do Renato em 17/11/2026.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 17/11/2026):
+ * "por que o peso varia tanto de um dia para o outro" e "pesar 2 kg a mais
+ * no fim do dia". Registro em docs/peso-varia-de-um-dia-para-o-outro.md;
+ * JSON em docs/pesquisas/2026-11-17-peso-varia/.
+ *
+ * Recorte: plato-de-emagrecimento = o peso parou por semanas; aqui = o
+ * sobe e desce de horas e dias. As FAQs de platô ("2 kg no fim do dia")
+ * passam a linkar para cá.
+ *
+ * Sem número de "quanto o peso varia por dia": nenhuma fonte confiável
+ * achada; o texto explica o mecanismo e faz a conta da gordura.
+ * Sem vídeo: o Short da balança (nEhysMtPPVw) já está em dois artigos.
+ * Fontes (17/11/2026, resumos): Fernández-Elías 2015, Olsson & Saltin 1970,
+ * White 2011, Orsama 2014, Steinberg 2015.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/emagrecimento/plato-de-emagrecimento/', titulo: 'Efeito platô', descricao: 'Quando o peso para por semanas, e como sair.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/bioimpedancia/', titulo: 'Bioimpedância', descricao: 'O que o exame mede e por que ele também oscila.', tipo: 'Emagrecimento' },
+  { url: '/emagrecimento/comer-fora-e-dieta/', titulo: 'Comer fora sem sair da dieta', descricao: 'Restaurante e fim de semana sem perder a semana.', tipo: 'Emagrecimento' },
+];
+
+const path = '/emagrecimento/peso-varia-de-um-dia-para-o-outro';
+const atualizadoEm = '2026-11-17';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Emagrecimento', url: '/emagrecimento/' },
+  { nome: 'Por que o peso varia', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre a variação do peso';
+const faqs = [
+  {
+    pergunta: 'É normal engordar 2 kg de um dia para o outro?',
+    resposta:
+      'Na balança, acontece; em gordura, não. Um quilo de gordura guarda cerca de 7.700 kcal, então 2 kg de gordura exigiriam uns 15 mil kcal a mais do que você gasta, num só dia. O que sobe de um dia para o outro é sobretudo água e comida que ainda está no intestino, e isso volta em poucos dias.',
+  },
+  {
+    pergunta: 'Por que o peso varia ao longo do dia?',
+    resposta:
+      'Porque a balança pesa tudo: a água que você bebe, a comida no estômago e no intestino, a urina e até a roupa. Um litro de água pesa um quilo. À noite, depois de comer e beber o dia inteiro, o número costuma ser maior do que de manhã.',
+  },
+  {
+    pergunta: 'Qual o melhor horário para se pesar?',
+    resposta:
+      'De manhã, ao acordar, depois de ir ao banheiro e antes de comer ou beber, com pouca ou nenhuma roupa e sempre na mesma balança. O horário certo é o que você consegue repetir: o que importa é comparar pesagens feitas nas mesmas condições.',
+  },
+  {
+    pergunta: 'É melhor se pesar todos os dias?',
+    resposta:
+      'Para quem está emagrecendo, pode ajudar, desde que você olhe a tendência e não o número de um dia. Num estudo de 2015, quem se pesou todos os dias por seis meses perdeu em média 6,1 kg a mais do que quem se pesou quase todos os dias. Se a balança diária gera ansiedade, pesar uma vez por semana, nas mesmas condições, também funciona.',
+  },
+  {
+    pergunta: 'Por que cada balança dá um peso diferente?',
+    resposta:
+      'Porque cada aparelho tem a sua calibragem, e o piso também interfere: tapete, piso irregular ou a balança mudada de lugar alteram a leitura. Por isso, compare sempre na mesma balança, no mesmo lugar.',
+  },
+  {
+    pergunta: 'É possível perder 2 kg em 3 dias?',
+    resposta:
+      'Na balança, sim, e quase tudo é água e conteúdo do intestino, sobretudo quando se corta carboidrato: cada grama de glicogênio do músculo fica guardado com cerca de 3 g de água. Gordura não sai nesse ritmo, e o peso volta quando a alimentação volta ao normal.',
+  },
+  {
+    pergunta: 'Por que o peso sobe antes da menstruação?',
+    resposta:
+      'Muitas mulheres retêm líquido no fim do ciclo. Num estudo que acompanhou 62 mulheres por um ano, a sensação de retenção chegou ao máximo no primeiro dia da menstruação. Para comparar o peso, vale olhar o mesmo momento do ciclo de um mês para o outro.',
+  },
+];
+
+/* 50 caracteres. */
+const title = 'Por Que o Peso Varia Tanto de Um Dia Para o Outro?';
+/* 152 caracteres. */
+const description =
+  'Por que o peso varia de um dia para o outro e ao longo do dia, se é normal subir 2 kg, qual o melhor horário para se pesar e quando a variação preocupa.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Emagrecimento</p>
+    <h1>Por que o peso varia tanto de um dia para o outro (e ao longo do dia)</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Porque a balança pesa tudo: água, comida que ainda está no intestino,
+      urina e roupa — não só gordura. Por isso o número sobe à noite e cai de
+      manhã, e pode pular um ou dois quilos depois de um fim de semana sem
+      que você tenha ganhado gordura nenhuma.
+    </p>
+
+    <div class="prose">
+      <h2>Por que o peso varia ao longo do dia</h2>
+      <p>
+        Tudo o que entra no corpo pesa até sair. Um litro de água pesa um
+        quilo; um prato de almoço com a bebida pode pesar mais de meio quilo.
+        Ao longo do dia você come e bebe, e só parte disso sai em urina, suor
+        e no banheiro. Por isso o peso da noite costuma ser maior que o da
+        manhã — e a pesagem de manhã, em jejum, é a mais estável.
+      </p>
+
+      <h2>Por que o peso varia de um dia para o outro</h2>
+
+      <h3>1. Água e carboidrato</h3>
+      <p>
+        O músculo guarda carboidrato na forma de glicogênio, e cada grama de
+        glicogênio fica armazenado com <strong>cerca de 3 g de água</strong>,
+        segundo estudos com biópsia muscular de 1970 e de 2015. Um dia de
+        muito pão, massa ou doce enche esse estoque, e a balança sobe junto.
+        Um dia de pouco carboidrato esvazia o estoque, e a balança cai — o que
+        faz dietas muito restritas parecerem milagrosas na primeira semana.
+      </p>
+
+      <h3>2. Comida no intestino</h3>
+      <p>
+        Uma refeição grande, ou rica em fibras, fica horas no sistema
+        digestivo antes de sair. Intestino preso também soma peso na balança,
+        sem relação com gordura.
+      </p>
+
+      <h3>3. O fim de semana</h3>
+      <p>
+        É o padrão mais comum. Num estudo de 2014, com 80 adultos que se
+        pesavam todo dia, o peso era mais alto no domingo e na segunda,
+        caía ao longo da semana e voltava a subir a partir do sábado. Quem
+        compensava durante a semana era justamente quem emagrecia ou mantinha
+        o peso. Os autores concluíram que essa oscilação deve ser vista como
+        normal, e não como ganho de peso.
+      </p>
+
+      <h3>4. O ciclo menstrual</h3>
+      <p>
+        Muitas mulheres retêm líquido no fim do ciclo. Num estudo que
+        acompanhou 62 mulheres por um ano, a retenção relatada chegou ao
+        máximo no primeiro dia da menstruação e foi menor na metade da fase
+        anterior à ovulação. Para comparar o peso, vale olhar o mesmo momento
+        do ciclo de um mês para o outro.
+      </p>
+
+      <h2>É normal engordar 2 kg de um dia para o outro?</h2>
+      <p>
+        Na balança, acontece. Em gordura, não dá. Um quilo de gordura guarda
+        cerca de <strong>7.700 kcal</strong>. Para ganhar 2 kg de gordura em
+        um dia, seria preciso comer uns <strong>15 mil kcal a mais</strong> do
+        que você gasta — o equivalente a vários dias inteiros de comida, de
+        uma vez. O que a balança mostra no dia seguinte a uma festa é água,
+        carboidrato guardado e comida no intestino, e isso costuma sair em
+        poucos dias de rotina normal.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Para ver o tamanho dessa conta no seu caso, a calculadora mostra quanto você gasta por dia — e quantos dias de comida 15 mil kcal a mais representariam."
+        acao="Calcular o meu gasto por dia"
+      />
+
+      <p>
+        O mesmo vale para o lado contrário: perder 2 kg em 3 dias é, quase
+        todo, água e intestino. A gordura sai devagar, no ritmo do
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
+      </p>
+
+      <h2>Qual o melhor horário para se pesar</h2>
+      <ul>
+        <li><strong>De manhã, ao acordar</strong>, depois de ir ao banheiro.</li>
+        <li><strong>Antes de comer ou beber</strong> qualquer coisa.</li>
+        <li><strong>Com pouca ou nenhuma roupa</strong>, sempre parecida.</li>
+        <li><strong>Na mesma balança, no mesmo lugar</strong>, em piso firme e plano.</li>
+      </ul>
+      <p>
+        O detalhe que mais importa não é o horário em si, e sim repetir as
+        mesmas condições. Pesagem de manhã comparada com pesagem da noite não
+        diz nada.
+      </p>
+
+      <h2>Pesar todo dia ou uma vez por semana?</h2>
+      <p>
+        Os dois funcionam, desde que você leia a tendência. Num estudo de
+        2015, quem se pesou todos os dias durante seis meses perdeu em média
+        <strong>6,1 kg a mais</strong> do que quem se pesou quase todos os
+        dias, e adotou mais hábitos de controle de peso. O segredo de quem
+        pesa todo dia é olhar a <strong>média da semana</strong>, não o número
+        isolado: se a média desta semana está abaixo da anterior, você está
+        emagrecendo, mesmo com dias de alta no meio.
+      </p>
+      <p>
+        Se a balança diária gera ansiedade, pesar uma vez por semana, no
+        mesmo dia e nas mesmas condições, resolve. E vale somar outras
+        medidas: a cintura, as fotos, a roupa e a força no treino. Quem treina
+        musculação pode perder gordura sem mudar muito o peso, como explica
+        <a href="/emagrecimento/recomposicao-corporal/">recomposição
+        corporal</a>.
+      </p>
+
+      <h2>Por que cada balança dá um peso diferente</h2>
+      <p>
+        Cada aparelho tem a sua calibragem. Tapete, piso irregular ou a
+        balança mudada de lugar também alteram a leitura. A balança da
+        farmácia, a da academia e a de casa raramente concordam — escolha uma
+        e compare sempre nela.
+      </p>
+
+      <h2>Quando a variação de peso preocupa</h2>
+      <p>
+        A oscilação de um ou dois quilos que vai e volta é normal. Procure o
+        médico se o peso sobe rápido e <strong>não volta</strong>, se vier com
+        inchaço nas pernas, nos pés ou no rosto, falta de ar ou urina em menor
+        quantidade, ou se você perde peso sem estar tentando.
+      </p>
+      <p>
+        Se o problema é o contrário — o peso parou de cair há semanas —, o
+        assunto é outro: veja <a href="/emagrecimento/plato-de-emagrecimento/">efeito
+        platô</a>.
+      </p>
+      <p class="ig-autor">
+        O Montinho, autor deste guia, fala de balança, medidas e
+        emagrecimento no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25911631/" target="_blank" rel="noopener noreferrer">Fernández-Elías VE, Ortega JF, Nelson RK, Mora-Rodriguez R. Relationship between muscle water and glycogen recovery after prolonged exercise in the heat in humans. European Journal of Applied Physiology, 2015</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/5475323/" target="_blank" rel="noopener noreferrer">Olsson KE, Saltin B. Variation in total body water with muscle glycogen changes in man. Acta Physiologica Scandinavica, 1970</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24504358/" target="_blank" rel="noopener noreferrer">Orsama AL, Mattila E, Ermes M, et al. Weight rhythms: weight increases during weekends and decreases during weekdays. Obesity Facts, 2014</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21845193/" target="_blank" rel="noopener noreferrer">White CP, Hitchcock CL, Vigna YM, Prior JC. Fluid retention over the menstrual cycle: 1-year data from the Prospective Ovulation Cohort. Obstetrics and Gynecology International, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/25683820/" target="_blank" rel="noopener noreferrer">Steinberg DM, Bennett GG, Askew S, Tate DF. Weighing every day matters: daily weighing improves weight loss and adoption of weight control behaviors. Journal of the Academy of Nutrition and Dietetics, 2015</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="emagrecimento" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

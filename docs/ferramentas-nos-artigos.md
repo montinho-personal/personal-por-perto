@@ -233,3 +233,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 16/11 — `/emagrecimento/treino-depois-da-bariatrica/` — artigo novo: bloco rotina em "Como começar" — "liberado para treinar: como fica a semana?"
 - 17/11 — `/musculacao/quando-trocar-o-treino/` — artigo novo: bloco rotina no sinal "A sua semana mudou" — "a agenda mudou: como fica a divisão?" (auditoria é o CTA do fim de musculação)
 - 17/11 — `/musculacao/ficha-de-treino/` — artigo novo: bloco calculadora-1rm no passo "Deixe espaço para anotar a carga" — "que carga escrever na primeira semana?"
+- 17/11 — `/musculacao/sarcopenia/` — artigo novo: bloco calculadora-de-proteina depois das metas do PROT-AGE — "quanto 1,0 a 1,2 g por quilo dá no meu prato?"
+- 17/11 — `/emagrecimento/peso-varia-de-um-dia-para-o-outro/` — artigo novo: bloco gasto-calorico-diario depois da conta dos 2 kg — "quantos dias de comida seriam 15 mil kcal?"
