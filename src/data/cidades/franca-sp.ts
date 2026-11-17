@@ -102,6 +102,16 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do calçado e potência do basquete, Franca tem altitude favorável e forte cultura esportiva. Um personal trainer ajuda a aproveitar o Jardim Zoobotânico e o Parque dos Trabalhadores com método, tirando partido do clima seco de altitude.',
 
+  /*
+   * Revisão de 17/11/2026 (SerpApi, celular, Franca): a pergunta de preço
+   * abre o "As pessoas também perguntam" ("Quanto é o valor de um personal
+   * trainer?") e o GSC traz "valor personal trainer" e "valor… 3 vezes por
+   * semana". A página não recebeu clique em 28 dias. Registro em
+   * docs/revisao-cidades.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
   vizinhas: ['ribeirao-preto-sp', 'batatais-sp'],
 
   fontes: [
@@ -109,7 +119,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Franca', url: 'https://www.franca.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-17',
 
 
   faqsExtra: [

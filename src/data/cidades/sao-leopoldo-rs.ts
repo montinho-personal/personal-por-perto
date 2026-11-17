@@ -95,6 +95,16 @@ export const cidade: Cidade = {
   conclusao:
     'Berço da imigração alemã e polo universitário do Vale do Sinos, São Leopoldo une a Unisinos, o Tecnosinos e boa estrutura de parques. Um personal trainer encontra aqui um público jovem e qualificado, equilibrando o outdoor com o indoor do inverno gaúcho.',
 
+  /*
+   * Revisão de 17/11/2026 (SerpApi, celular, São Leopoldo): três das quatro
+   * perguntas do "As pessoas também perguntam" são de preço ("1 mês",
+   * "valor médio", "2 vezes por semana"), e o GSC traz "quanto custa" e
+   * "valor de um personal trainer". Sem clique em 28 dias. Registro em
+   * docs/revisao-cidades.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
   vizinhas: ['novo-hamburgo-rs', 'canoas-rs', 'porto-alegre-rs'],
 
   capaArte: {
@@ -109,5 +119,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Leopoldo', url: 'https://www.saoleopoldo.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-17',
 };
