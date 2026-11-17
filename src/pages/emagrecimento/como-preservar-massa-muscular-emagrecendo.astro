@@ -1,4 +1,22 @@
 ---
+/**
+ * Como preservar massa muscular emagrecendo — quanto músculo se perde,
+ * treino de força, proteína, ritmo do déficit, sono, o que tomar, sem
+ * treinar, como saber se está perdendo músculo e "emagreci e perdi músculo".
+ *
+ * Publicado em 07/07/2026 sem pesquisa do Google; revisado em 17/11/2026
+ * pela rotina diária (pauta, parte 4), depois do SerpApi (celular, São
+ * Paulo): "como não perder massa muscular emagrecendo" + autocompletar de
+ * "como preservar massa muscular". Registro em
+ * docs/como-preservar-massa-muscular-emagrecendo.md.
+ *
+ * Título e descrição: só proposta no doc (AGENTS.md), não trocados.
+ * Recorte: /mounjaro-e-treino/como-evitar-perda-de-massa-muscular/ = com
+ * remédio (linkado); como-emagrecer-fazendo-musculacao = o como do treino;
+ * recomposicao-corporal = ganhar músculo perdendo gordura.
+ * Fontes (17/11/2026, resumos): Weinheimer 2010, Garthe 2011, Longland
+ * 2016, Nedeltcheva 2010, ISSN 2017 (Jäger).
+ */
 import Base from '../../layouts/Base.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Faq from '../../components/Faq.astro';
@@ -14,46 +32,36 @@ import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from
 import { formatDateLong } from '../../lib/slug';
 import { site } from '../../data/site';
 import { rotas } from '../../lib/links';
-import { fontesExternas } from '../../data/fontesExternas';
-
-const nsca = fontesExternas.nsca;
-const sbme = fontesExternas.sbme;
 
 const relacionados = [
   {
-    url: '/emagrecimento/deficit-calorico-como-funciona/',
-    titulo: 'Déficit calórico: como funciona para emagrecer',
-    descricao: 'Entenda o conceito por trás do emagrecimento e por que um déficit agressivo demais tende a custar massa muscular.',
-    tipo: 'Emagrecimento',
-  },
-  {
-    url: '/emagrecimento/musculacao-ou-cardio-para-emagrecer/',
-    titulo: 'Musculação ou cardio para emagrecer: o que priorizar',
-    descricao: 'Veja por que o treino de força tem papel específico na preservação de massa magra durante a perda de peso.',
-    tipo: 'Emagrecimento',
-  },
-  {
     url: '/emagrecimento/como-emagrecer-fazendo-musculacao/',
     titulo: 'Como emagrecer fazendo musculação',
-    descricao: 'Um guia prático de como estruturar o treino de força com foco em emagrecimento sem abrir mão do músculo.',
+    descricao: 'Os seis passos para emagrecer treinando força.',
     tipo: 'Emagrecimento',
   },
   {
-    url: rotas.musculacao,
-    titulo: 'Musculação: guias completos',
-    descricao: 'Princípios de treino de força que também sustentam a preservação muscular durante o emagrecimento.',
-    tipo: 'Musculação',
+    url: '/emagrecimento/recomposicao-corporal/',
+    titulo: 'Recomposição corporal',
+    descricao: 'Quando dá para perder gordura e ganhar músculo ao mesmo tempo.',
+    tipo: 'Emagrecimento',
+  },
+  {
+    url: '/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/',
+    titulo: 'Como não perder massa muscular tomando Mounjaro',
+    descricao: 'O mesmo cuidado, para quem emagrece com remédio.',
+    tipo: 'Mounjaro',
   },
   {
     url: rotas.comoEscolher,
     titulo: 'Como escolher um personal trainer',
-    descricao: 'Ajustar treino e déficit calórico ao seu caso, sem perder músculo pelo caminho, é trabalho de um profissional qualificado.',
+    descricao: 'Para ajustar treino e carga sem perder músculo pelo caminho.',
     tipo: 'Guia',
   },
 ];
 
 const path = '/emagrecimento/como-preservar-massa-muscular-emagrecendo';
-const atualizadoEm = '2026-08-25';
+const atualizadoEm = '2026-11-17';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Emagrecimento', url: '/emagrecimento/' },
@@ -62,29 +70,39 @@ const crumbs = [
 
 const faqs = [
   {
-    pergunta: 'Emagrecer sempre significa perder um pouco de massa muscular também?',
+    pergunta: 'Emagreci muito e perdi massa muscular. Isso é normal?',
     resposta:
-      'Existe uma tendência natural de perder alguma massa magra junto com a gordura durante um déficit calórico, porque o corpo não "escolhe" queimar só gordura. Mas essa perda não é fixa nem inevitável em grande proporção: pesquisas mostram que, com treino de força e proteína adequada, é possível emagrecer preservando a maior parte da massa muscular, e em alguns casos até ganhar um pouco de músculo mesmo em déficit.',
+      'Uma parte, sim: o corpo não queima só gordura. Mas quanto se perde depende do que você fez. Numa revisão de 52 estudos com adultos acima dos 50 anos, 81% dos grupos que só fizeram dieta perderam 15% ou mais do peso em massa magra, contra 39% dos grupos que somaram exercício. Para recuperar, o caminho é treino de força com carga que sobe e proteína suficiente.',
   },
   {
-    pergunta: 'Só fazer cardio é suficiente para não perder músculo emagrecendo?',
+    pergunta: 'O que comer para emagrecer e não perder massa muscular?',
     resposta:
-      'Não costuma ser. Cardio ajuda a aumentar o gasto calórico, mas é o treino de força que sinaliza ao corpo que a massa muscular precisa ser mantida. Revisões sobre o tema apontam que combinar treino de força com déficit calórico preserva ou até aumenta a massa magra, enquanto déficits sem treino de força tendem a mostrar queda de massa magra junto com a perda de peso.',
+      'Proteína em todas as refeições — carnes, ovos, peixe, frango, laticínios, leguminosas — e um déficit moderado, sem cortes radicais. A Sociedade Internacional de Nutrição Esportiva recomenda, para quem treina, de 1,4 a 2,0 g de proteína por quilo por dia. O plano para o seu caso é do nutricionista.',
   },
   {
-    pergunta: 'Quanto de proteína preciso comer para não perder massa muscular emagrecendo?',
+    pergunta: 'O que é bom tomar para não perder massa muscular?',
     resposta:
-      'A literatura de nutrição esportiva costuma indicar que, durante um déficit calórico, uma ingestão de proteína mais alta do que a usada fora de dieta tende a ajudar a preservar massa magra, especialmente em quem treina força. O número exato varia com peso, composição corporal, nível de treino e outros fatores — por isso não existe uma quantidade fechada que sirva para todo mundo, e o ideal é ajustar isso com um nutricionista.',
+      'Nenhum suplemento substitui o treino de força. O whey protein é só uma forma prática de bater a meta de proteína quando a comida não chega lá. A creatina tem evidência de ajudar o ganho de força e massa junto com a musculação. Remédio para isso não existe; quem decide suplemento no seu caso é o nutricionista ou o médico.',
   },
   {
-    pergunta: 'Como sei se estou perdendo massa magra e não só gordura?',
+    pergunta: 'Como preservar a massa muscular sem treinar?',
     resposta:
-      'Sinais de alerta incluem perda de força nos treinos (cargas que antes eram fáceis ficando difíceis), sensação constante de fraqueza ou fadiga, perda de peso muito rápida (bem acima do que costuma ser considerado sustentável) e, quando há acesso a métodos de avaliação corporal, queda desproporcional de massa magra em relação à gordura. Na dúvida, vale reavaliar o déficit e a ingestão de proteína com acompanhamento profissional.',
+      'Dá para reduzir a perda, não para evitá-la. Proteína suficiente e um déficit moderado ajudam, mas o que sinaliza ao corpo que o músculo é necessário é o treino de força. Se academia não cabe, treino em casa com o peso do corpo ou elástico, duas vezes por semana, já muda o quadro.',
   },
   {
-    pergunta: 'Emagrecer rápido é sempre ruim para a massa muscular?',
+    pergunta: 'Como saber se estou perdendo gordura ou massa muscular?',
     resposta:
-      'Não é uma regra absoluta, mas déficits muito agressivos aumentam o risco de perda de massa magra, porque o corpo tende a "economizar" energia de formas que incluem reduzir tecido muscular. Um ritmo de emagrecimento mais moderado, combinado com treino de força e proteína adequada, tende a preservar melhor o músculo — o ritmo ideal para cada pessoa depende de avaliação individual.',
+      'Olhe a força no treino: se as cargas caem semana após semana, é sinal de alerta. Se a força se mantém ou sobe e a cintura diminui, você está perdendo gordura. A bioimpedância e a densitometria de corpo inteiro medem a composição, desde que feitas sempre nas mesmas condições.',
+  },
+  {
+    pergunta: 'Emagrecer rápido faz perder mais músculo?',
+    resposta:
+      'Tende a fazer. Num estudo com atletas que treinavam força quatro vezes por semana, quem perdeu 0,7% do peso por semana ganhou massa magra; quem perdeu 1,4% por semana não ganhou. Ritmo mais lento protege mais o músculo.',
+  },
+  {
+    pergunta: 'Dormir pouco faz perder músculo na dieta?',
+    resposta:
+      'Faz. Num estudo de 2010, as mesmas pessoas fizeram dieta por duas semanas dormindo 8h30 e, em outra fase, 5h30. Com sono curto, perderam 55% menos gordura e 60% mais massa magra.',
   },
 ];
 
@@ -109,7 +127,7 @@ const schema = [
   <div class="container guide-layout">
     <article class="article-page">
     <p class="eyebrow">Emagrecimento</p>
-    <h1>Como preservar massa muscular durante o emagrecimento</h1>
+    <h1>Como emagrecer sem perder massa muscular: treino, proteína e ritmo</h1>
     <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
 
     <figure style="margin: 0 0 var(--sp-5)">
@@ -126,70 +144,37 @@ const schema = [
     </figure>
 
     <p class="lead">
-      Emagrecer sem cuidado pode levar embora não só gordura, mas também
-      massa muscular — e isso muda o resultado final: o peso desce na
-      balança, mas o corpo fica mais "flácido" e o metabolismo tende a
-      desacelerar. A boa notícia é que essa perda de massa magra não é
-      inevitável em grande proporção.
-    </p>
-
-    <p class="lead">
-      Ela depende principalmente de três fatores que estão sob seu
-      controle, com orientação adequada: manter o treino de força,
-      cuidar da ingestão de proteína e não exagerar na intensidade do
-      déficit calórico.
+      Para emagrecer sem perder músculo, junte quatro coisas: treino de
+      força com carga que sobe, proteína suficiente, um déficit moderado e
+      sono. Sem elas, uma parte grande do peso que sai é músculo — e isso
+      deixa o corpo mais fraco e facilita recuperar o peso depois.
     </p>
 
     <div class="prose">
-      <h2>Por que emagrecer pode custar massa muscular, e não só gordura</h2>
+      <h2>Quanto músculo se perde quando se emagrece</h2>
       <p>
-        Quando o corpo recebe menos energia do que gasta, ele precisa
-        buscar essa diferença em algum lugar — e a fonte não é só o
-        tecido adiposo. Sem os estímulos certos, uma parte relevante
-        do peso perdido pode vir de massa magra (músculo, glicogênio
-        muscular e água associada a ele).
+        O corpo não escolhe queimar só gordura. Quanto do peso perdido vem de
+        massa magra depende do que você faz durante a dieta. Uma revisão de
+        2010, com 52 estudos em adultos acima dos 50 anos com sobrepeso,
+        mostrou a diferença:
+      </p>
+      <ul>
+        <li><strong>Só dieta:</strong> 81% dos grupos perderam 15% ou mais do peso em massa magra.</li>
+        <li><strong>Dieta com exercício</strong> (a maioria aeróbico): 39% dos grupos.</li>
+      </ul>
+      <p>
+        Ou seja: o exercício reduz muito a perda de músculo. E o tipo de
+        exercício que mais protege é o de força.
       </p>
 
+      <h2>1. Treino de força, com carga que sobe</h2>
       <p>
-        Estudos sobre composição corporal durante a perda de peso
-        mostram que essa proporção varia bastante conforme o contexto,
-        mas que déficits mal conduzidos — sem treino de força e sem
-        proteína suficiente — tendem a aumentar a fatia de massa magra
-        na perda total de peso.
-      </p>
-
-      <p>
-        Preservar músculo durante o emagrecimento não é só uma questão
-        estética: massa muscular sustenta o metabolismo, a força
-        funcional e a qualidade do resultado a longo prazo.
-      </p>
-
-      <h2>O papel do treino de força (não só cardio)</h2>
-      <p>
-        Um erro comum é achar que emagrecimento pede só exercício
-        aeróbico. Cardio contribui para o gasto calórico, mas é o
-        treino de força que dá ao corpo um motivo para manter a massa
-        muscular mesmo com menos energia disponível — é o estímulo de
-        tensão mecânica que "avisa" o organismo que aquele tecido
-        continua sendo necessário.
-      </p>
-
-      <p>
-        Revisões sistemáticas comparando diferentes estratégias de
-        exercício durante déficit calórico costumam apontar que a
-        combinação de treino de força com déficit calórico preserva, e
-        em alguns casos até aumenta, a massa magra — enquanto déficits
-        sem treino de força tendem a mostrar perda de massa magra
-        proporcionalmente maior.
-      </p>
-
-      <p>
-        Isso reforça por que, mesmo com o objetivo de emagrecer,
-        manter (ou começar) um treino de musculação estruturado tende
-        a fazer diferença no resultado final, como discutimos também
-        no guia sobre <a
-        href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação
-        ou cardio para emagrecer</a>.
+        É o sinal mais forte para o corpo manter o músculo com menos comida.
+        Treine o corpo inteiro de 2 a 4 vezes por semana e tente manter, ou
+        subir, as cargas durante a dieta. Treino leve demais não dá esse
+        sinal. Cardio ajuda no gasto, mas não substitui a musculação. O passo
+        a passo está em <a href="/emagrecimento/como-emagrecer-fazendo-musculacao/">como
+        emagrecer fazendo musculação</a>.
       </p>
 
       <FerramentaInline
@@ -198,95 +183,93 @@ const schema = [
         acao="Montar o meu treino de força para a semana"
       />
 
-      <h2>Proteína: por que a quantidade costuma importar mais em déficit</h2>
+      <h2>2. Proteína suficiente, em todas as refeições</h2>
       <p>
-        Durante um déficit calórico, o corpo tem menos energia
-        disponível de forma geral, o que torna o "material de
-        construção" muscular ainda mais relevante.
+        A Sociedade Internacional de Nutrição Esportiva recomenda, para quem
+        treina, <strong>de 1,4 a 2,0 g de proteína por quilo de peso por
+        dia</strong>, divididos ao longo do dia, e aponta que pessoas já
+        treinadas podem precisar de mais em fases de déficit. Um estudo de
+        2016 testou isso: jovens em déficit forte e treino intenso, comendo
+        2,4 g por quilo, ganharam 1,2 kg de massa magra e perderam mais
+        gordura; com 1,2 g por quilo, a massa magra quase não mudou.
+      </p>
+      <p>
+        Boas fontes: carnes, frango, peixe, ovos, laticínios e leguminosas. O
+        ajuste para o seu caso é do nutricionista; quem tem doença renal
+        precisa da orientação do médico.
       </p>
 
+      <h2>3. Déficit moderado, sem pressa</h2>
       <p>
-        A literatura de nutrição esportiva — incluindo posicionamentos
-        como o da International Society of Sports Nutrition — costuma
-        indicar que, em déficit calórico, uma faixa de ingestão de
-        proteína mais alta do que a recomendada fora de dieta tende a
-        ajudar a preservar massa magra, principalmente em quem treina
-        força regularmente.
+        Quanto mais rápido o peso cai, maior a chance de levar músculo junto.
+        Num estudo de 2011 com atletas que treinavam força quatro vezes por
+        semana, quem perdeu <strong>0,7% do peso por semana</strong> ganhou
+        2,1% de massa magra; quem perdeu 1,4% por semana não ganhou nada. Os
+        dois grupos chegaram a perder o mesmo peso — os mais lentos só
+        levaram mais tempo. A conta do déficit está em
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
       </p>
 
+      <h2>4. Durma o suficiente</h2>
       <p>
-        Não existe, porém, um número fechado que sirva para todo
-        mundo: a quantidade ideal depende do seu peso, composição
-        corporal, nível de treino e outros fatores individuais, e
-        ajustar isso é trabalho de um nutricionista.
+        O sono pesa mais do que parece. Num estudo de 2010, as mesmas pessoas
+        fizeram duas semanas de dieta dormindo 8h30 e, em outra fase, 5h30.
+        Com o sono curto, perderam <strong>55% menos gordura e 60% mais massa
+        magra</strong>, e sentiram mais fome. Mais sobre isso em
+        <a href="/emagrecimento/dormir-pouco-engorda/">dormir pouco
+        engorda</a>.
       </p>
 
-      <h2>Por que um déficit calórico agressivo demais tende a sair caro</h2>
+      <h2>O que tomar para não perder massa muscular</h2>
       <p>
-        Cortar calorias de forma muito agressiva costuma parecer um
-        atalho para resultados mais rápidos, mas tende a jogar contra
-        a preservação muscular. Com pouquíssima energia disponível, o
-        corpo tem menos margem para manter tecido metabolicamente
-        "caro" como o músculo, e a tendência é que uma fatia maior do
-        peso perdido venha de massa magra.
+        Nenhum suplemento faz o trabalho do treino. O whey protein é só uma
+        forma prática de bater a meta de proteína. A
+        <a href="/musculacao/creatina-o-que-e-como-tomar/">creatina</a> tem
+        evidência de ajudar força e massa junto com a musculação. Para quem
+        emagrece com remédio, como o Mounjaro, o cuidado é maior — veja
+        <a href="/mounjaro-e-treino/como-evitar-perda-de-massa-muscular/">como
+        não perder massa muscular tomando Mounjaro</a>.
       </p>
 
+      <h2>Dá para preservar a massa muscular sem treinar?</h2>
       <p>
-        Déficits muito agressivos também costumam ser mais difíceis de
-        sustentar por tempo suficiente, o que favorece o efeito
-        sanfona. Um ritmo mais moderado de perda de peso, combinado
-        com treino de força e proteína adequada, tende a ser mais
-        sustentável e a preservar melhor o músculo — falamos mais
-        sobre esse equilíbrio no guia sobre <a
-        href="/emagrecimento/deficit-calorico-como-funciona/">déficit
-        calórico: como funciona para emagrecer</a>.
+        Dá para perder menos, não para não perder. Proteína e déficit
+        moderado ajudam, mas é o treino de força que diz ao corpo que o
+        músculo continua sendo usado. Se a academia não cabe, duas sessões
+        por semana em casa, com o peso do corpo ou elástico, já fazem
+        diferença — veja <a href="/musculacao/treino-em-casa-para-iniciantes/">treino
+        em casa para iniciantes</a>.
       </p>
 
-      <h2>Sinais de que a perda de massa magra pode estar acontecendo</h2>
-      <p>
-        Alguns sinais valem atenção durante o processo de emagrecimento:
-      </p>
+      <h2>Como saber se você está perdendo gordura ou músculo</h2>
       <ul>
-        <li>
-          <strong>Perda de força nos treinos:</strong> cargas que antes eram
-          tranquilas passam a ficar difíceis, sem relação com um dia ruim
-          isolado.
-        </li>
-        <li>
-          <strong>Fadiga constante:</strong> cansaço persistente, mesmo fora
-          do treino, pode indicar déficit calórico severo demais.
-        </li>
-        <li>
-          <strong>Perda de peso muito rápida:</strong> quedas acentuadas na
-          balança em pouco tempo tendem a vir acompanhadas de mais perda de
-          massa magra proporcional.
-        </li>
-        <li>
-          <strong>Mudança na composição corporal sem o resultado esperado:</strong>
-          quando há acesso a métodos de avaliação de composição corporal, uma
-          queda desproporcional de massa magra em relação à gordura é sinal
-          de que algo no processo precisa de ajuste.
-        </li>
+        <li><strong>A força no treino.</strong> Cargas caindo semana após semana são o sinal de alerta mais claro. Força mantida ou subindo é bom sinal.</li>
+        <li><strong>A cintura e a roupa.</strong> Se a cintura diminui e a força se mantém, o que sai é gordura.</li>
+        <li><strong>Ritmo da balança.</strong> Queda muito rápida por semanas seguidas é sinal de déficit agressivo demais.</li>
+        <li><strong>Exame de composição.</strong> A <a href="/emagrecimento/bioimpedancia/">bioimpedância</a> e a densitometria de corpo inteiro medem gordura e massa magra; compare sempre exames feitos nas mesmas condições.</li>
       </ul>
-      <div class="callout">
-        <strong>Resumindo:</strong> preservar massa muscular durante o
-        emagrecimento depende de manter o treino de força, cuidar da
-        ingestão de proteína e evitar déficits calóricos agressivos demais.
-        Ajustar essas três variáveis ao seu caso — treino com um
-        <a href={rotas.comoEscolher}>personal trainer qualificado</a> e
-        alimentação com um nutricionista — é o que torna o processo
-        sustentável, seguindo princípios reconhecidos por entidades como a
-        <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>
-        e a
-        <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
-      </div>
-    </div>
+      <p>
+        Cansaço que não passa, tontura ou queda de força rápida pedem
+        conversa com o médico.
+      </p>
 
-    <VideoYouTube
-      id="XKpOzk57dW0"
-      titulo="Paulo Muzy: perda de gordura com manutenção da massa muscular"
-      legenda="No vídeo: Paulo Muzy explica até onde cortar calorias sem sacrificar músculo."
-    />
+      <VideoYouTube
+        id="XKpOzk57dW0"
+        titulo="Paulo Muzy: perda de gordura com manutenção da massa muscular"
+        legenda="No vídeo: Paulo Muzy explica até onde cortar calorias sem sacrificar músculo."
+      />
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20591106/" target="_blank" rel="noopener noreferrer">Weinheimer EM, Sands LP, Campbell WW. A systematic review of the separate and combined effects of energy restriction and exercise on fat-free mass in middle-aged and older adults. Nutrition Reviews, 2010</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28642676/" target="_blank" rel="noopener noreferrer">Jäger R, Kerksick CM, Campbell BI, et al. International Society of Sports Nutrition position stand: protein and exercise. Journal of the International Society of Sports Nutrition, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26817506/" target="_blank" rel="noopener noreferrer">Longland TM, Oikawa SY, Mitchell CJ, et al. Higher compared with lower dietary protein during an energy deficit combined with intense exercise promotes greater lean mass gain and fat mass loss. American Journal of Clinical Nutrition, 2016</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21558571/" target="_blank" rel="noopener noreferrer">Garthe I, Raastad T, Refsnes PE, et al. Effect of two different weight-loss rates on body composition and strength and power-related performance in elite athletes. International Journal of Sport Nutrition and Exercise Metabolism, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20921542/" target="_blank" rel="noopener noreferrer">Nedeltcheva AV, Kilkus JM, Imperial J, et al. Insufficient sleep undermines dietary efforts to reduce adiposity. Annals of Internal Medicine, 2010</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
 
     <Faq faqs={faqs} />
 
@@ -337,5 +320,13 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
   }
 </style>
