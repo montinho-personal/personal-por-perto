@@ -247,6 +247,8 @@ export const artigos: Artigo[] = [
   { categoria: 'Musculação', url: '/musculacao/coice-de-gluteo-como-fazer/', titulo: 'Coice de glúteo: como fazer e por que a amplitude engana' },
   { categoria: 'Musculação', url: '/musculacao/divisao-de-treino/', titulo: 'Divisão de treino: como dividir pelos dias da semana' },
   { categoria: 'Musculação', url: '/musculacao/treino-sem-resultado/', titulo: 'Treino há 6 meses e não vejo resultados: por quê?' },
+  { categoria: 'Musculação', url: '/musculacao/quando-trocar-o-treino/', titulo: 'Quando trocar o treino: de quanto em quanto tempo e os sinais de estagnação' },
+  { categoria: 'Musculação', url: '/musculacao/ficha-de-treino/', titulo: 'Ficha de treino de academia: o que é, como montar e modelo para imprimir' },
   { categoria: 'Musculação', url: '/musculacao/treinar-sozinho-na-academia/', titulo: 'Treinar sozinho na academia dá resultado? Como começar sendo iniciante' },
   { categoria: 'Musculação', url: '/musculacao/treino-push-pull-legs/', titulo: 'Treino push pull legs: como montar e em quantos dias' },
   { categoria: 'Musculação', url: '/musculacao/leg-press-45-ou-horizontal/', titulo: 'Leg press 45° ou horizontal: o que realmente muda' },

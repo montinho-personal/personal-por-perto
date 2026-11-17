@@ -202,6 +202,15 @@ for (const [rota, arquivo] of mapaRotas) {
     if (!interno(a.href)) continue;
     const destino = rotaDe(a.href);
 
+    // Arquivo estático (PDF, imagem): vale se o arquivo existir no dist.
+    // Desde 17/11/2026 (ficha de treino em PDF em /materiais/).
+    if (/\.[a-z0-9]{2,5}$/i.test(destino)) {
+      if (!existsSync(join(DIST, decodeURIComponent(destino)))) {
+        add(true, 'link-quebrado', rota, `${a.href} (âncora: "${a.texto.slice(0, 40)}")`);
+      }
+      continue;
+    }
+
     // Link quebrado: aponta para rota que não existe no dist.
     if (!todasRotas.has(destino)) {
       add(true, 'link-quebrado', rota, `${a.href} (âncora: "${a.texto.slice(0, 40)}")`);

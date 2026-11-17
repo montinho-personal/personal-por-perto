@@ -231,3 +231,5 @@ A análise completa — dúvida de cada artigo, frase literal de cada encaixe e 
 - 16/11 — `/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/` — artigo novo: bloco caminhada depois do ensaio do BMJ — "quanto exercício gasta essa comida?" (a intervenção do estudo mostrava comida em minutos de exercício)
 - 16/11 — `/mounjaro-e-treino/efeito-plato-mounjaro/` — artigo novo: bloco gasto-calorico-diario em "Recalcule o tamanho do seu dia" — "com menos peso, quanto eu gasto agora?"
 - 16/11 — `/emagrecimento/treino-depois-da-bariatrica/` — artigo novo: bloco rotina em "Como começar" — "liberado para treinar: como fica a semana?"
+- 17/11 — `/musculacao/quando-trocar-o-treino/` — artigo novo: bloco rotina no sinal "A sua semana mudou" — "a agenda mudou: como fica a divisão?" (auditoria é o CTA do fim de musculação)
+- 17/11 — `/musculacao/ficha-de-treino/` — artigo novo: bloco calculadora-1rm no passo "Deixe espaço para anotar a carga" — "que carga escrever na primeira semana?"

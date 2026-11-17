@@ -17,8 +17,8 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 
 | # | artigo | buscas que pedem | volume (Ads) | conferência no acervo |
 |---|---|---|---|---|
-| 1 | Quando trocar o treino (com sinais de estagnação) | lista de 40 temas; SERP de "estagnação muscular" traz "Quando trocar o treino? Sinais de estagnação" (Netshoes) | — | nada com "trocar/mudar o treino" |
-| 2 | Ficha da academia / treino pronto da internet funciona? | lista de 40 temas | — | nada com "ficha" ou "treino pronto" |
+| 1 | ~~Quando trocar o treino (com sinais de estagnação)~~ → `quando-trocar-o-treino`, 17/11 | lista de 40 temas; SERP de "estagnação muscular" traz "Quando trocar o treino? Sinais de estagnação" (Netshoes) | — | nada com "trocar/mudar o treino" |
+| 2 | ~~Ficha da academia / treino pronto da internet funciona?~~ → `ficha-de-treino` (a pesquisa trocou o foco para a ficha e o modelo em PDF), 17/11 | lista de 40 temas | — | nada com "ficha" ou "treino pronto" |
 | 3 | Sarcopenia: o que é e o que o treino faz por ela | PAA "O que fazer para reverter a sarcopenia?" | — | só citada em musculação depois dos 40 e Mounjaro e idosos |
 | 4 | Por que o peso varia tanto de um dia para o outro | PAA "pesar 2 kg a mais no fim do dia", "perder 1 kg em 1 dia", "engordar 4 kg em 1 mês" | — | só FAQs em platô e parágrafos em dormir pouco engorda / refeição livre |
 | 5 | Cansaço depois do treino: quando é normal | PAA "É normal ficar muito cansado depois do treino?" | — | só nas páginas de fraqueza com Mounjaro |
@@ -46,11 +46,14 @@ Publicados em 16/11 (riscados): ~~Efeito platô com Mounjaro~~ → `efeito-plato
 | "Qual a idade mais difícil de perder peso?" | `/emagrecimento/emagrecer-depois-dos-40/` | `docs/emagrecer-depois-dos-40.md` |
 | Platô no jejum intermitente | `/emagrecimento/jejum-intermitente-funciona/` | `docs/jejum-intermitente-funciona.md` |
 | "Pode treinar 1 hora da manhã?" | FAQ em `/guias/personal-trainer-para-quem-trabalha-a-noite/` | `docs/personal-trainer-para-quem-trabalha-a-noite.md` |
+| "Quais são os sinais de que o treino foi bom?" | seção ou FAQ em `/musculacao/dor-muscular-pos-treino/` | busca de 17/11 (`docs/quando-trocar-o-treino.md`) |
+| "Quanto tempo de treino em casa dá resultado?" | FAQ em `/musculacao/treino-em-casa-para-iniciantes/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
+| "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
 ## 3. Materiais para baixar
 
-Nenhum anotado até 16/11/2026.
+- ~~Ficha de treino em branco (PDF, A4, A/B/C, 6 semanas)~~ → `/materiais/ficha-de-treino-em-branco.pdf`, publicada com `ficha-de-treino` em 17/11/2026.
 
 ## 4. Revisões pendentes (publicados sem pesquisa do Google, na ordem de publicação)
 
@@ -284,3 +287,5 @@ improvisada.
 - `/emagrecimento/treino-depois-da-bariatrica/` — Treino depois da bariátrica: quando voltar, musculação e platô (publicado em 2026-11-16)
 - `/mounjaro-e-treino/efeito-plato-mounjaro/` — Efeito platô com Mounjaro: parei de perder peso, e agora? (publicado em 2026-11-16)
 - `/musculacao/treinar-sozinho-na-academia/` — Treinar sozinho na academia dá resultado? Como começar sendo iniciante (publicado em 2026-11-16)
+- `/musculacao/quando-trocar-o-treino/` — Quando trocar o treino: de quanto em quanto tempo e os sinais de estagnação (publicado em 2026-11-17)
+- `/musculacao/ficha-de-treino/` — Ficha de treino de academia: o que é, como montar e modelo para imprimir (publicado em 2026-11-17)

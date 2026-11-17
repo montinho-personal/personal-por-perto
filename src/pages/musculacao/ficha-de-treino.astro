@@ -1,0 +1,364 @@
+---
+/**
+ * Ficha de treino de academia — o que é, como ler (3x12, faixa, descanso,
+ * carga), como montar em cinco passos, modelo em branco para imprimir (PDF),
+ * feminina × masculina, treino pronto e aplicativo.
+ *
+ * Item 2 da pauta (docs/seo/pauta.md: "Ficha da academia / treino pronto da
+ * internet funciona?"), pedido do Renato em 17/11/2026. A pesquisa no
+ * SerpApi (celular, São Paulo, 17/11/2026) mudou o recorte: "treino pronto
+ * funciona" quase não tem busca; "ficha de treino" tem, e o autocompletar e
+ * as outras pesquisas pedem modelo, PDF, "para imprimir" e "em branco". Por
+ * isso a peça é a ficha, com o modelo para baixar, e o "treino pronto
+ * funciona?" virou uma seção. Registro em docs/ficha-de-treino.md.
+ *
+ * Recorte: /musculacao/treino-para-iniciantes/ e /musculacao/treino-abc-como-montar/
+ * têm os EXERCÍCIOS; /musculacao/divisao-de-treino/ tem a divisão pelos
+ * dias; /musculacao/quando-trocar-o-treino/ responde quanto tempo ficar com
+ * a ficha. Aqui é o documento: ler, montar, anotar.
+ *
+ * Material: /materiais/ficha-de-treino-em-branco.pdf (A4, A/B/C, 6 semanas),
+ * gerado em 17/11/2026.
+ * Sem vídeo: o Short do tema (BoXag2fY0u0) já está em treino-sem-resultado.
+ * Fontes (17/11/2026, resumos): ACSM 2009, Ratamess 2008, OMS 2020.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const pdf = '/materiais/ficha-de-treino-em-branco.pdf';
+const relacionados = [
+  { url: '/musculacao/quando-trocar-o-treino/', titulo: 'Quando trocar o treino', descricao: 'Quanto tempo ficar com a ficha e os sinais de estagnação.', tipo: 'Musculação' },
+  { url: '/musculacao/treino-para-iniciantes/', titulo: 'Treino para iniciantes', descricao: 'A primeira ficha, exercício por exercício.', tipo: 'Musculação' },
+  { url: '/musculacao/divisao-de-treino/', titulo: 'Divisão de treino', descricao: 'Como dividir os músculos pelos dias da semana.', tipo: 'Musculação' },
+];
+
+const path = '/musculacao/ficha-de-treino';
+const atualizadoEm = '2026-11-17';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Ficha de treino', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre ficha de treino';
+const faqs = [
+  {
+    pergunta: 'O que é ficha de treino?',
+    resposta:
+      'É o documento que organiza o seu treino na academia: quais exercícios fazer, em que ordem, quantas séries e repetições, quanto descansar e qual carga usar. Uma boa ficha também tem espaço para anotar a carga de cada semana, que é o que mostra se você está evoluindo.',
+  },
+  {
+    pergunta: 'Como montar uma ficha de treino de academia?',
+    resposta:
+      'Defina quantos dias por semana você treina, escolha a divisão que cabe nesses dias, coloque os exercícios multiarticulares antes dos isolados, use de 8 a 12 repetições se estiver começando e deixe uma coluna para anotar a carga. Descanse de 1 a 2 minutos entre as séries.',
+  },
+  {
+    pergunta: 'O que significa 3x12 na ficha de treino?',
+    resposta:
+      'Três séries de 12 repetições. Quando a ficha traz uma faixa, como 3x10-12, você escolhe uma carga com a qual consiga fazer entre 10 e 12 repetições; quando passar de 12 com boa execução, é hora de subir a carga.',
+  },
+  {
+    pergunta: 'Quanto tempo devo ficar com uma ficha de treino?',
+    resposta:
+      'Enquanto ela estiver dando resultado. Revisar a cada 4 a 8 semanas é um bom ritmo, e revisar não é trocar tudo: se a carga ou as repetições ainda sobem, a ficha está funcionando.',
+  },
+  {
+    pergunta: 'Ficha de treino feminina é diferente da masculina?',
+    resposta:
+      'Não pelos princípios: séries, repetições, descanso e progressão valem igual para os dois. O que muda é o objetivo e a preferência de cada pessoa, como dar mais volume para glúteos e pernas ou para costas e ombros.',
+  },
+  {
+    pergunta: 'Treino pronto da internet funciona?',
+    resposta:
+      'Funciona como ponto de partida, se couber nos seus dias, tiver progressão de carga e você anotar o que faz. O limite é que ele não conhece você: não sabe do seu histórico, das suas dores nem do tempo que você tem.',
+  },
+  {
+    pergunta: 'Qual o melhor aplicativo para ficha de treino?',
+    resposta:
+      'O que guarda a ficha, registra carga e repetições de cada série e mostra a evolução ao longo das semanas. A marca importa menos do que isso. Papel também funciona: o modelo em PDF desta página tem seis semanas de anotação.',
+  },
+];
+
+/* 51 caracteres. */
+const title = 'Ficha de Treino: Como Montar e Modelo para Imprimir';
+/* 137 caracteres. */
+const description =
+  'Ficha de treino de academia: o que é, como ler 3x12, como montar em 5 passos e um modelo em branco em PDF para imprimir e anotar a carga.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Ficha de treino de academia: o que é, como montar e modelo para imprimir</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      A ficha de treino é o documento que organiza o seu treino: quais
+      exercícios fazer, em que ordem, quantas séries e repetições, quanto
+      descansar e qual carga usar. A parte que mais gente esquece é a mais
+      importante: o espaço para anotar a carga de cada semana.
+    </p>
+
+    <p class="baixar">
+      <a href={pdf} download data-track="artigo:baixar-ficha">Baixar a ficha de treino em branco (PDF, A4)</a>
+      <span>Treinos A, B e C, com seis semanas para anotar a carga.</span>
+    </p>
+
+    <div class="prose">
+      <h2>O que tem numa ficha de treino</h2>
+      <p>Toda ficha, da academia ou do personal, tem as mesmas colunas:</p>
+      <ul>
+        <li><strong>Exercício</strong> — na ordem em que devem ser feitos.</li>
+        <li><strong>Séries e repetições</strong> — quantas vezes você repete o bloco e quantas vezes faz o movimento em cada um.</li>
+        <li><strong>Descanso</strong> — o intervalo entre uma série e outra.</li>
+        <li><strong>Carga</strong> — o peso usado. É a coluna que mostra a sua evolução, por isso precisa ser preenchida toda semana.</li>
+      </ul>
+      <p>
+        Se a ficha tem várias letras (A, B, C), cada letra é um treino
+        diferente, feito em dias diferentes. Como os músculos são divididos
+        entre as letras está em <a href="/musculacao/divisao-de-treino/">divisão
+        de treino</a>.
+      </p>
+
+      <h2>Como ler a ficha: 3x12, faixa de repetições e descanso</h2>
+      <ul>
+        <li><strong>3x12</strong> — três séries de 12 repetições.</li>
+        <li><strong>3x10-12</strong> — três séries, e a carga certa é a que permite fazer entre 10 e 12 repetições. Passou de 12 com boa execução, sobe o peso.</li>
+        <li><strong>4x12-10-8-6</strong> — quatro séries com repetições caindo; a carga sobe a cada série.</li>
+        <li><strong>Descanso 60s ou 1'30</strong> — o intervalo entre as séries, em segundos ou minutos.</li>
+      </ul>
+      <p>
+        A dúvida sobre quantas séries e repetições usar para cada objetivo
+        tem um guia próprio: <a href="/musculacao/quantas-series-e-repeticoes/">quantas
+        séries e repetições</a>.
+      </p>
+
+      <h2>Como montar uma ficha de treino em 5 passos</h2>
+
+      <h3>1. Quantos dias você treina de verdade</h3>
+      <p>
+        Comece pela agenda, não pelo treino ideal. A Organização Mundial da
+        Saúde recomenda fortalecimento muscular em 2 dias ou mais por semana;
+        o posicionamento de 2009 do American College of Sports Medicine
+        sugere ao iniciante de 2 a 3 dias.
+      </p>
+
+      <h3>2. Escolha a divisão que cabe nesses dias</h3>
+      <p>
+        Com 2 ou 3 dias, o corpo inteiro em cada treino costuma funcionar
+        melhor; com mais dias, dá para dividir. As opções para cada número de
+        dias estão em <a href="/musculacao/divisao-de-treino/">divisão de
+        treino</a>, e um exemplo completo de A, B e C está em
+        <a href="/musculacao/treino-abc-como-montar/">treino ABC</a>.
+      </p>
+
+      <h3>3. Coloque os exercícios na ordem certa</h3>
+      <p>
+        O posicionamento de 2009 recomenda os grupos musculares grandes antes
+        dos pequenos e os exercícios multiarticulares (agachamento, supino,
+        remada) antes dos isolados (rosca, extensora). Assim, a carga mais
+        pesada do dia cai no exercício em que você está mais descansado.
+      </p>
+
+      <h3>4. Séries, repetições e descanso</h3>
+      <p>
+        Para quem está começando, o mesmo documento recomenda cargas que
+        permitam de 8 a 12 repetições. Para ganhar massa muscular, descanso
+        de 1 a 2 minutos entre as séries. O descanso para cada objetivo está
+        em <a href="/musculacao/descanso-entre-series/">descanso entre
+        séries</a>.
+      </p>
+
+      <h3>5. Deixe espaço para anotar a carga</h3>
+      <p>
+        Uma ficha sem coluna de carga é uma lista de exercícios. Anote a
+        carga e as repetições da última série de cada exercício, toda
+        semana. A regra do posicionamento de 2009: quando você fizer uma ou
+        duas repetições a mais do que o planejado, suba a carga de 2% a 10%.
+        O método completo está em <a href="/musculacao/progressao-de-carga/">progressão
+        de carga</a>.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-1rm"
+        texto="Não sabe que carga escrever na primeira semana? A calculadora estima a sua carga máxima a partir de uma série e mostra o peso para cada faixa de repetições da ficha."
+        acao="Calcular a carga para a minha ficha"
+      />
+
+      <h2>Modelo de ficha de treino para imprimir</h2>
+      <p>
+        O modelo em branco tem três treinos (A, B e C), seis linhas de
+        exercício em cada um e seis semanas para anotar a carga — o tempo de
+        uma revisão. Tem também os campos de objetivo, de dias por semana e de
+        quando revisar.
+      </p>
+      <p>
+        <a href={pdf} download data-track="artigo:baixar-ficha">Baixar a ficha de treino em branco (PDF)</a>
+      </p>
+      <p>Para preencher:</p>
+      <ul>
+        <li>Na coluna <strong>Sem 1</strong>, escreva a carga e as repetições da última série — por exemplo, <em>20 kg × 12</em>.</li>
+        <li>Na semana seguinte, compare: subiu a carga ou as repetições? Então está funcionando.</li>
+        <li>Se a mesma linha se repetir por três semanas ou mais, é sinal de revisar o exercício.</li>
+      </ul>
+      <p>
+        Se a dúvida é quanto tempo ficar com a mesma ficha, os sinais estão
+        em <a href="/musculacao/quando-trocar-o-treino/">quando trocar o
+        treino</a>.
+      </p>
+
+      <h2>Ficha de treino feminina e masculina: o que muda</h2>
+      <p>
+        Os princípios não mudam: séries, repetições, descanso e progressão
+        de carga valem igual para os dois. O que muda é o objetivo e a
+        preferência de cada pessoa — mais volume para glúteos e pernas, para
+        costas e ombros, ou para o corpo todo por igual. Os mitos sobre
+        o treino feminino estão em
+        <a href="/musculacao/musculacao-feminina-mitos/">musculação feminina:
+        mitos</a>.
+      </p>
+
+      <h2>A ficha da academia ou um treino pronto da internet funciona?</h2>
+      <p>
+        Funciona como ponto de partida, com três condições: caber nos seus
+        dias, ter progressão de carga e você anotar o que faz. A ficha
+        entregue pelo professor de sala costuma ser genérica — ela não sabe do
+        seu histórico, das suas dores nem do seu tempo. A diferença entre
+        uma ficha copiada e um programa montado para você está em
+        <a href="/musculacao/treino-abc-como-montar/">treino ABC</a>.
+      </p>
+      <p>
+        O ponto em que mais gente escorrega com a ficha pronta é a carga. Num
+        estudo de 2008, mulheres que treinavam sozinhas escolhiam por conta
+        própria cerca de 42% da carga máxima; as que treinavam com personal,
+        cerca de 51%. A ficha diz o que fazer; o esforço quem coloca é você.
+        Mais sobre isso em
+        <a href="/musculacao/treinar-sozinho-na-academia/">treinar sozinho na
+        academia</a>.
+      </p>
+
+      <h2>Ficha no papel ou no aplicativo?</h2>
+      <p>
+        Tanto faz, desde que ela registre a carga de cada série e mostre a
+        evolução ao longo das semanas. O aplicativo tem a vantagem de estar
+        sempre no celular; o papel, de não depender de bateria nem de
+        assinatura. A diferença entre um aplicativo e um acompanhamento está
+        em <a href="/guias/personal-online-ou-aplicativo/">personal online ou
+        aplicativo</a>.
+      </p>
+      <p class="ig-autor">
+        O Montinho, autor deste guia, publica dicas de organização do treino
+        no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+      <p>
+        Dor na articulação durante um exercício da ficha é motivo para trocar
+        o exercício e conversar com um médico ou fisioterapeuta antes de
+        continuar.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/18296962/" target="_blank" rel="noopener noreferrer">Ratamess NA, Faigenbaum AD, Hoffman JR, Kang J. Self-selected resistance training intensity in healthy women: the influence of a personal trainer. Journal of Strength and Conditioning Research, 2008</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/" target="_blank" rel="noopener noreferrer">Bull FC, Al-Ansari SS, Biddle S, et al. World Health Organization 2020 guidelines on physical activity and sedentary behaviour. British Journal of Sports Medicine, 2020</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .baixar {
+    margin-top: var(--sp-4);
+    padding: var(--sp-3) var(--sp-4);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .baixar a {
+    font-weight: 700;
+  }
+  .baixar span {
+    display: block;
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: 0.25rem;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

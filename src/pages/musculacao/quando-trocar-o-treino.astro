@@ -1,0 +1,329 @@
+---
+/**
+ * Quando trocar o treino — de quanto em quanto tempo, os sinais de
+ * estagnação, quando não trocar e o que mudar sem jogar a ficha fora.
+ *
+ * Item 1 da pauta (docs/seo/pauta.md), pedido do Renato em 17/11/2026.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 17/11/2026):
+ * "quando trocar o treino" e "de quanto em quanto tempo trocar o treino".
+ * O autocompletar, o PAA e a visão de IA definiram título, seções e FAQs.
+ * Registro em docs/quando-trocar-o-treino.md; JSON em
+ * docs/pesquisas/2026-11-17-quando-trocar-o-treino/.
+ *
+ * Recorte: /musculacao/progressao-de-carga/ é o COMO progredir (e tem a
+ * seção de platô); /musculacao/treino-sem-resultado/ é o diagnóstico de quem
+ * não evolui há meses. Aqui é a decisão de TROCAR a ficha.
+ *
+ * Sem vídeo: o canal não tem Short do tema que ainda não esteja em outro
+ * artigo (VIDEOS_MONTINHO_EM_ARTIGOS proíbe repetir).
+ * Fontes (17/11/2026, resumos): Fonseca 2014, Baz-Valle 2019, Kassiano 2022
+ * (revisão sistemática), Kassiano 2025, ACSM 2009.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { montinho } from '../../data/montinho';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+const ig = montinho.instagram;
+const relacionados = [
+  { url: '/musculacao/progressao-de-carga/', titulo: 'Progressão de carga', descricao: 'Como fazer o treino avançar sem trocar a ficha.', tipo: 'Musculação' },
+  { url: '/musculacao/ficha-de-treino/', titulo: 'Ficha de treino', descricao: 'Como ler, como montar e um modelo para imprimir.', tipo: 'Musculação' },
+  { url: '/musculacao/treino-sem-resultado/', titulo: 'Treino sem resultado', descricao: 'O diagnóstico de quem não evolui há meses.', tipo: 'Musculação' },
+];
+
+const path = '/musculacao/quando-trocar-o-treino';
+const atualizadoEm = '2026-11-17';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Quando trocar o treino', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre trocar o treino';
+const faqs = [
+  {
+    pergunta: 'Quando devo mudar meu treino?',
+    resposta:
+      'Quando ele parar de progredir: carga e repetições travadas por três semanas ou mais, mesmo dormindo e comendo bem. Também vale trocar quando o objetivo muda, quando os dias da semana mudam, quando um exercício passa a doer ou quando a vontade de treinar some. Se você ainda sobe carga ou repetições, mantenha.',
+  },
+  {
+    pergunta: 'Quanto tempo devo ficar com uma ficha de treino?',
+    resposta:
+      'Enquanto ela estiver dando resultado. Na prática, revisar a ficha a cada 4 a 8 semanas é um bom ritmo, e revisar não é trocar tudo: muitas vezes basta ajustar carga, repetições ou um exercício. Quem está começando costuma progredir na mesma ficha por mais tempo.',
+  },
+  {
+    pergunta: 'Precisa trocar o treino todo mês?',
+    resposta:
+      'Não. Trocar todo mês por hábito, sem olhar o registro, pode tirar você de um treino que ainda estava funcionando. O mês é um bom momento para revisar a ficha; a troca depende do que o registro mostra.',
+  },
+  {
+    pergunta: 'Trocar o treino toda semana atrapalha?',
+    resposta:
+      'Atrapalha. Mudar tudo o tempo todo impede comparar uma semana com a outra, e sem comparação não dá para saber se a carga subiu. Uma revisão de estudos de 2022 concluiu que variar de forma planejada pode ajudar, mas a variação excessiva e aleatória pode prejudicar os ganhos.',
+  },
+  {
+    pergunta: 'Existe confusão muscular?',
+    resposta:
+      'Não do jeito que se fala. O músculo não cresce porque foi surpreendido, e sim porque recebe um estímulo que fica mais difícil com o tempo, a sobrecarga progressiva. Em estudos com treino fixo e treino variado, os dois grupos ganharam massa muscular de forma parecida.',
+  },
+  {
+    pergunta: 'É possível ver resultados com 1 mês de academia?',
+    resposta:
+      'Dá para sentir: em um mês, quem começa costuma subir a carga com rapidez, porque o corpo aprende o movimento. A mudança no espelho leva mais tempo. Por isso, não troque a ficha no primeiro mês só porque o corpo ainda não mudou. Os prazos estão no guia de quanto tempo para ver resultados.',
+  },
+];
+
+/* 56 caracteres. */
+const title = 'Quando Trocar o Treino da Academia? Tempo Certo e Sinais';
+/* 154 caracteres. */
+const description =
+  'De quanto em quanto tempo trocar o treino da academia, os sinais de estagnação, quando não trocar e o que mudar na ficha sem jogar fora o que já funciona.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Quando trocar o treino: de quanto em quanto tempo e os sinais de estagnação</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      Troque o treino quando ele parar de progredir, não quando o calendário
+      mandar. Um bom ritmo é revisar a ficha a cada 4 a 8 semanas — e revisar
+      não é trocar tudo. Enquanto a carga ou as repetições sobem, o treino
+      está funcionando e vale manter.
+    </p>
+
+    <div class="prose">
+      <h2>De quanto em quanto tempo trocar o treino</h2>
+      <p>
+        Não existe prazo fixo que sirva para todo mundo. O que existe é um
+        critério: o treino precisa ficar um pouco mais difícil com o tempo.
+        Se ele ainda fica, não há por que trocar. Se parou de ficar, é hora de
+        mexer.
+      </p>
+      <p>
+        Na prática, marcar uma revisão a cada 4 a 8 semanas ajuda a não
+        esquecer de olhar o registro. Nessa revisão, três coisas podem
+        acontecer:
+      </p>
+      <ul>
+        <li><strong>Manter</strong> — a carga ou as repetições subiram desde a última revisão.</li>
+        <li><strong>Ajustar</strong> — um exercício travou ou incomoda; troca-se só ele, ou a faixa de repetições.</li>
+        <li><strong>Trocar a ficha</strong> — quase tudo travou, o objetivo mudou ou a semana mudou.</li>
+      </ul>
+      <p>
+        A regra clássica para saber se está progredindo vem do
+        posicionamento de 2009 do American College of Sports Medicine:
+        quando você faz uma ou duas repetições a mais do que o planejado, é
+        hora de aumentar a carga, de 2% a 10%. Quem segue essa regra percebe
+        com clareza o dia em que ela deixa de funcionar.
+      </p>
+
+      <h2>O que a pesquisa diz sobre variar o treino</h2>
+      <p>
+        A dúvida "manter ou variar" já foi testada. O resumo dos estudos é que
+        variar com plano não atrapalha, e trocar tudo sem critério pode
+        atrapalhar:
+      </p>
+      <ul>
+        <li><strong>Treino fixo e treino variado deram resultados parecidos.</strong> Num estudo de 2025, 70 mulheres treinaram pernas por 10 semanas: um grupo repetia sempre o leg press 45° e o stiff; o outro alternava os exercícios ao longo da semana. A espessura muscular e a força subiram de forma parecida nos dois grupos.</li>
+        <li><strong>Variar os exercícios ajudou a força.</strong> Num estudo de 2014, de 12 semanas, o grupo que manteve a mesma intensidade mas variou os exercícios de perna teve o maior ganho de força no agachamento, e cresceu em todas as porções do quadríceps.</li>
+        <li><strong>Variar ajudou a vontade de treinar.</strong> Num estudo de 2019, com homens já treinados, o grupo que tinha os exercícios sorteados a cada sessão ganhou músculo e força como o grupo de treino fixo, e ainda melhorou a motivação para treinar. No grupo fixo, a motivação não melhorou.</li>
+        <li><strong>O excesso é o problema.</strong> Uma revisão sistemática de 2022, que reuniu 8 estudos, concluiu que alguma variação planejada pode favorecer a força e o crescimento de regiões do músculo, mas a variação excessiva e aleatória pode comprometer os ganhos.</li>
+      </ul>
+      <p>
+        Ou seja: a troca é uma ferramenta, não uma obrigação. Use quando
+        houver motivo.
+      </p>
+
+      <h2>Sinais de que está na hora de trocar o treino</h2>
+
+      <h3>1. A carga e as repetições travaram</h3>
+      <p>
+        É o sinal mais claro de estagnação. Se você faz a mesma carga e as
+        mesmas repetições há três semanas ou mais, nos principais exercícios,
+        o treino parou de pedir adaptação. Antes de culpar a ficha, confira o
+        básico: sono, alimentação e se as séries estão terminando perto do
+        esforço. A seção de <a href="/musculacao/progressao-de-carga/">platô
+        em progressão de carga</a> mostra como saber se é estagnação mesmo.
+      </p>
+
+      <h3>2. O objetivo mudou</h3>
+      <p>
+        Uma ficha montada para aprender os movimentos não é a mesma de quem
+        quer ganhar força ou emagrecer. Saiu da fase de iniciante, decidiu
+        correr uma prova ou começou uma fase de perda de peso: o treino
+        precisa acompanhar.
+      </p>
+
+      <h3>3. A sua semana mudou</h3>
+      <p>
+        Um treino de cinco dias não funciona para quem passou a ter três.
+        Quando os dias ou o tempo disponível mudam, a divisão dos músculos
+        pela semana precisa mudar junto — senão um grupo muscular fica
+        esquecido.
+      </p>
+
+      <FerramentaInline
+        id="rotina"
+        texto="Se o que mudou foi a agenda, a ferramenta monta a nova divisão a partir dos dias e do tempo que você tem agora — para a ficha caber na semana real."
+        acao="Montar o treino para a minha nova rotina"
+      />
+
+      <h3>4. Um exercício começou a doer</h3>
+      <p>
+        Dor na articulação durante um exercício é motivo para trocá-lo por
+        outro que trabalhe o mesmo músculo sem incomodar — e para conversar
+        com um médico ou fisioterapeuta se a dor continuar. Não confunda com
+        a dor muscular de um ou dois dias depois do treino, que é outra
+        coisa: veja <a href="/musculacao/dor-muscular-pos-treino/">dor
+        muscular pós-treino</a>.
+      </p>
+
+      <h3>5. A vontade de treinar sumiu</h3>
+      <p>
+        Tédio conta. Se a ficha virou um peso e você está faltando por causa
+        dela, trocar alguns exercícios pode devolver a vontade — foi o que o
+        estudo de 2019 viu. Treino que você faz vale mais do que treino
+        perfeito que você evita.
+      </p>
+
+      <h2>Quando não trocar o treino</h2>
+      <ul>
+        <li><strong>Quando você ainda está progredindo.</strong> Se a carga ou as repetições sobem a cada semana ou quinzena, a ficha está fazendo o trabalho dela.</li>
+        <li><strong>Para "confundir o músculo".</strong> O músculo cresce com estímulo que fica mais difícil com o tempo, não com surpresa.</li>
+        <li><strong>Porque o corpo ainda não mudou no espelho.</strong> A força sobe antes da aparência. Trocar a ficha no primeiro mês por isso só zera o registro.</li>
+        <li><strong>Toda semana.</strong> Sem repetir os exercícios, não dá para comparar uma semana com a outra e saber se você evoluiu.</li>
+      </ul>
+
+      <h2>Trocar não é jogar a ficha fora</h2>
+      <p>
+        Na maioria das revisões, a troca é pequena. As mudanças mais comuns,
+        da menor para a maior:
+      </p>
+      <ul>
+        <li><strong>Mudar a faixa de repetições</strong> — de 10 a 12 para 6 a 8 com mais carga, por exemplo. A comparação está em <a href="/musculacao/quantas-series-e-repeticoes/">quantas séries e repetições</a>.</li>
+        <li><strong>Trocar um exercício por um parecido</strong> — o supino reto pelo inclinado, o leg press pelo agachamento hack. O músculo é o mesmo, o ângulo muda.</li>
+        <li><strong>Somar uma série</strong> nos músculos que ficaram para trás.</li>
+        <li><strong>Mudar a divisão</strong> — só quando a semana ou o objetivo mudaram. As opções estão em <a href="/musculacao/divisao-de-treino/">divisão de treino</a>.</li>
+      </ul>
+      <p>
+        Mantenha os exercícios principais por mais tempo: é neles que dá para
+        medir a evolução com clareza.
+      </p>
+
+      <h2>Quanto tempo ficar com a ficha sendo iniciante</h2>
+      <p>
+        Quem está começando costuma progredir rápido na mesma ficha, porque
+        boa parte do ganho inicial vem de aprender o movimento. Por isso, a
+        primeira ficha costuma durar mais: enquanto a carga sobe toda semana,
+        não há motivo para trocar. O posicionamento de 2009 recomenda ao
+        iniciante cargas de 8 a 12 repetições, 2 a 3 vezes por semana. A
+        primeira ficha, exercício por exercício, está em
+        <a href="/musculacao/treino-para-iniciantes/">treino para
+        iniciantes</a>.
+      </p>
+      <p class="ig-autor">
+        O Montinho, autor deste guia, publica dicas de organização do treino
+        no Instagram
+        <a href={ig.url} target="_blank" rel="noopener" data-ig>{ig.handle}</a>.
+      </p>
+
+      <h2>Se o treino não evolui há meses</h2>
+      <p>
+        Se a troca de ficha não resolveu e as cargas e medidas estão paradas
+        há dois ou três meses, o problema pode estar fora da ficha — no
+        volume, no esforço, na alimentação ou no sono. O diagnóstico completo
+        está em <a href="/musculacao/treino-sem-resultado/">treino sem
+        resultado</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39388663/" target="_blank" rel="noopener noreferrer">Kassiano W, Costa B, Kunevaliki G, et al. Muscle hypertrophy and strength adaptations to systematically varying resistance exercises. Research Quarterly for Exercise and Sport, 2025</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24832974/" target="_blank" rel="noopener noreferrer">Fonseca RM, Roschel H, Tricoli V, et al. Changes in exercises are more effective than in loading schemes to improve muscle strength. Journal of Strength and Conditioning Research, 2014</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/31881066/" target="_blank" rel="noopener noreferrer">Baz-Valle E, Schoenfeld BJ, Torres-Unda J, et al. The effects of exercise variation in muscle thickness, maximal strength and motivation in resistance trained men. PLoS One, 2019</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35438660/" target="_blank" rel="noopener noreferrer">Kassiano W, Nunes JP, Costa B, et al. Does varying resistance exercises promote superior muscle hypertrophy and strength gains? A systematic review. Journal of Strength and Conditioning Research, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li>Conferidas em 17/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>
