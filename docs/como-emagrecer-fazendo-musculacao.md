@@ -51,7 +51,7 @@ Ferramenta no corpo: a de antes (`musculacao`, calorias da sessão), com a
 frase reescrita para o passo do déficit. Vídeo 9X968Kqa2-Y mantido. H1
 novo, a partir das buscas; data de atualização 17/11 (revisão real).
 
-## Título e descrição — PROPOSTA (aguarda o Renato)
+## Título e descrição — APROVADO pelo Renato em 17/11/2026 e aplicado
 
 - **ATUAL título:** "Como emagrecer fazendo musculação" (33 caracteres)
 - **PROPOSTA:** "Como Emagrecer Fazendo Musculação: Funciona e Em Quanto Tempo" (60)

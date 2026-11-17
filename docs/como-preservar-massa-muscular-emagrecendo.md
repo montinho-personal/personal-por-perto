@@ -46,7 +46,7 @@ Ferramenta no corpo: a de antes (`rotina`), agora no H2 do treino de
 força. Vídeo XKpOzk57dW0 mantido. Saíram os links genéricos para NSCA e
 SBME (sem afirmação a sustentar). Data de atualização 17/11 (revisão real).
 
-## Título e descrição — PROPOSTA (aguarda o Renato)
+## Título e descrição — APROVADO pelo Renato em 17/11/2026 e aplicado
 
 - **ATUAL título:** "Como preservar massa muscular durante o emagrecimento" (53)
 - **PROPOSTA:** "Como Emagrecer Sem Perder Massa Muscular: 4 Cuidados" (52)

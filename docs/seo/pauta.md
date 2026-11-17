@@ -70,8 +70,8 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | publicado | página | título | nota |
 |---|---|---|---|
 | ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aprovado e aplicado em 16/11 |
-| ~~2026-07-07~~ | ~~`/emagrecimento/como-emagrecer-fazendo-musculacao/`~~ | ~~Como emagrecer fazendo musculação~~ | ✅ revisado 17/11/2026 (`como-emagrecer-fazendo-musculacao`); título e descrição em proposta |
-| ~~2026-07-07~~ | ~~`/emagrecimento/como-preservar-massa-muscular-emagrecendo/`~~ | ~~Como preservar massa muscular durante o emagrecimento~~ | ✅ revisado 17/11/2026 (`como-preservar-massa-muscular-emagrecendo`); título e descrição em proposta |
+| ~~2026-07-07~~ | ~~`/emagrecimento/como-emagrecer-fazendo-musculacao/`~~ | ~~Como emagrecer fazendo musculação~~ | ✅ revisado 17/11/2026 (`como-emagrecer-fazendo-musculacao`); título e descrição aprovados e aplicados em 17/11 |
+| ~~2026-07-07~~ | ~~`/emagrecimento/como-preservar-massa-muscular-emagrecendo/`~~ | ~~Como preservar massa muscular durante o emagrecimento~~ | ✅ revisado 17/11/2026 (`como-preservar-massa-muscular-emagrecendo`); título e descrição aprovados e aplicados em 17/11 |
 | 2026-07-07 | `/emagrecimento/deficit-calorico-como-funciona/` | Déficit calórico: como funciona para emagrecer | reescrito pelo GSC em 09/2026, sem SERP |
 | 2026-07-07 | `/emagrecimento/musculacao-ou-cardio-para-emagrecer/` | Musculação ou cardio: o que emagrece mais? |  |
 | 2026-07-07 | `/guias/personal-online-funciona/` | Personal trainer online funciona? |  |
