@@ -72,11 +72,13 @@ Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota"
 ## Cota do SerpApi
 
 Uma conta para todos os sites do Renato: **1.000 buscas por mês** desde
-16/11/2026 (o Renato subiu o plano). Uso previsto: montinhopersonal ~120 a
-150; este site, rotina de artigos (2 por dia, ~3 créditos cada) ~180 e
-rotina de cidades (`docs/revisao-cidades.md`, 2 por dia) ~180 — cerca de
-500 no total, com folga para artigos novos e para os outros sites. Se a
-cota acabar, as rotinas param e avisam.
+16/11/2026 (o Renato subiu o plano). O orçamento valendo é o do `CLAUDE.md`
+("Orçamento do mês", 17/11/2026): este site fica com cerca de 360 (artigos e
+cidades, 2 + 2 por dia), mais o monitor mensal de visão de IA (dia 16). A
+soma de todos os sites passa de 1.000 **de propósito** (decisão do Renato).
+Por isso: quando o SerpApi disser que a cota acabou, parar a tarefa na hora,
+não pesquisar às cegas nem pedir print, e avisar o Renato nesta conversa —
+ele decide se aumenta o plano ou espera renovar.
 
 ## Capas
 
