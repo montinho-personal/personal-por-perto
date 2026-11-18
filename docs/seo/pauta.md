@@ -44,8 +44,8 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~Peso parado na hipertrofia; "como saber se estou treinando corretamente"~~ | ~~FAQs em `/musculacao/treino-sem-resultado/`~~ — feito em 18/11 (2 FAQs + parágrafo, Slater 2019) | `docs/treino-sem-resultado.md` |
 | ~~"Como perder 10 kg em um ano", "10 kg até dezembro"~~ | ~~FAQs em `/emagrecimento/quanto-tempo-para-perder-10kg/`~~ — feito em 18/11 (2 FAQs com a conta) | `docs/quanto-tempo-para-perder-10kg.md` |
 | ~~"Como não engordar nas férias"~~ | ~~seção de viagem de `/emagrecimento/comer-fora-e-dieta/`~~ — feito em 18/11 (H2 "Viagem e férias", parágrafo e FAQ, Cooper 2016) | `docs/comer-fora-e-dieta.md` |
-| "O que desacelera o metabolismo?" | `/emagrecimento/como-acelerar-o-metabolismo/` | `docs/como-acelerar-o-metabolismo.md` |
-| "É bom perder 250 calorias por dia?" | `/emagrecimento/deficit-calorico-como-funciona/` | `docs/deficit-calorico-como-funciona.md` |
+| ~~"O que desacelera o metabolismo?"~~ | ~~`/emagrecimento/como-acelerar-o-metabolismo/`~~ — feito em 18/11 (FAQ + parágrafo da idade, Pontzer 2021, Westcott 2012) | `docs/como-acelerar-o-metabolismo.md` |
+| ~~"É bom perder 250 calorias por dia?"~~ | ~~`/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 (FAQ + parágrafo, Hall 2011, Garthe 2011) | `docs/deficit-calorico-como-funciona.md` |
 | "Qual a idade mais difícil de perder peso?" | `/emagrecimento/emagrecer-depois-dos-40/` | `docs/emagrecer-depois-dos-40.md` |
 | Platô no jejum intermitente | `/emagrecimento/jejum-intermitente-funciona/` | `docs/jejum-intermitente-funciona.md` |
 | "Pode treinar 1 hora da manhã?" | FAQ em `/guias/personal-trainer-para-quem-trabalha-a-noite/` | `docs/personal-trainer-para-quem-trabalha-a-noite.md` |

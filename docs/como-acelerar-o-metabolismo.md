@@ -1,5 +1,5 @@
-# Notas: como-acelerar-o-metabolismo (`/emagrecimento/como-acelerar-o-metabolismo/`)
 
-## Para a próxima revisão (16/11/2026)
 
-"O que desacelera o metabolismo?" (buscas de "efeito platô", `docs/pesquisas/2026-11-16-efeito-plato/`). Cabe como FAQ ou parágrafo nesta página.
+## Aplicado em 18/11/2026 (parte 2 da pauta)
+
+FAQ "O que desacelera o metabolismo?" e parágrafo sobre idade em "E quando o metabolismo desacelera de verdade?", com Pontzer 2021 (Science, PMID 34385400: gasto ajustado estável dos 20 aos 60, cai depois) e Westcott 2012 (PMID 22777332: inativos perdem 3% a 8% de músculo por década). Referências criadas. atualizadoEm 18/11.

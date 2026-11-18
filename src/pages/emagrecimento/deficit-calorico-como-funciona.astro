@@ -53,7 +53,7 @@ const relacionados = [
 ];
 
 const path = '/emagrecimento/deficit-calorico-como-funciona';
-const atualizadoEm = '2026-10-22';
+const atualizadoEm = '2026-11-18';
 const capa = '/capas-conteudo/deficit-calorico-como-funciona.webp';
 const capaAlt =
   'Infográfico de balanço de energia (gasto maior que consumo) com fita métrica na cintura, ilustrando o guia sobre como funciona o déficit calórico — Personal por Perto';
@@ -73,6 +73,11 @@ const faqs = [
     pergunta: 'Qual o número certo de calorias para o meu déficit?',
     resposta:
       'A estimativa se faz em três passos: calcular a taxa metabólica basal pela equação de Mifflin-St Jeor — (10 × peso em kg) + (6,25 × altura em cm) − (5 × idade) + 5 para homens ou − 161 para mulheres —, multiplicar pelo fator de atividade (cerca de 1,2 sedentário, 1,375 leve, 1,55 moderado, 1,725 intenso) e cortar de 10% a 25% desse total. O que essa conta não captura é a composição corporal, porque ela usa só o peso, nem quanto você se mexe fora do treino. Por isso o número é ponto de partida a ser ajustado pelo que a balança e a fita métrica mostrarem nas semanas seguintes, com acompanhamento de nutricionista para o ajuste alimentar.',
+  },
+  {
+    pergunta: 'É bom perder 250 calorias por dia?',
+    resposta:
+      'É um déficit pequeno e fácil de manter: pela conta dos 7.700 kcal por quilo de gordura, perto de 1 kg por mês no começo. O ritmo cai com o tempo, porque o corpo mais leve gasta menos — um modelo de 2011, publicado na Lancet, mostrou que o peso responde devagar a uma mudança na alimentação. Para quem tem pouco a perder ou quer preservar músculo, é uma boa escolha; para metas maiores, o tamanho do déficit se ajusta com o nutricionista.',
   },
   {
     pergunta: 'Déficit calórico agressivo emagrece mais rápido, então é melhor?',
@@ -295,6 +300,16 @@ const schema = [
       </p>
 
       <p>
+        E déficits pequenos, como 250 kcal por dia? Pela conta dos 7.700
+        kcal por quilo de gordura, eles rendem perto de 1 kg por mês no
+        começo, e menos depois: um modelo de 2011, publicado na Lancet,
+        mostrou que o peso responde devagar a uma mudança na alimentação,
+        porque o corpo mais leve passa a gastar menos. Ritmo lento também
+        protege o músculo — num estudo de 2011 com atletas, quem perdeu
+        0,7% do peso por semana ganhou massa magra, e quem perdeu 1,4% não.
+      </p>
+
+      <p>
         Isso não significa que déficits maiores sejam sempre errados
         em qualquer contexto, mas sim que o tamanho ideal do déficit é
         uma decisão que deve ser calibrada com acompanhamento
@@ -368,6 +383,13 @@ const schema = [
         entidades como a
         <a href={sbme.url} target="_blank" rel="noopener">{sbme.nome}</a>.
       </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21872751/" target="_blank" rel="noopener noreferrer">Hall KD, Sacks G, Chandramohan D, et al. Quantification of the effect of energy imbalance on bodyweight. Lancet, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21558571/" target="_blank" rel="noopener noreferrer">Garthe I, Raastad T, Refsnes PE, et al. Effect of two different weight-loss rates on body composition and strength and power-related performance in elite athletes. International Journal of Sport Nutrition and Exercise Metabolism, 2011</a></li>
+        <li>Conferidas em 18/11/2026.</li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} />
@@ -419,5 +441,10 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
 </style>
