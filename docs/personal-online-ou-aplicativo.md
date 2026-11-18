@@ -40,3 +40,7 @@ e correção de execução) viraram FAQs aqui.
   bloco `InstagramFollow`. O link usa a URL limpa de `data/montinho.ts`,
   sem o parâmetro de rastreio do link compartilhado.
 - **Ferramenta no corpo:** `auditoria`.
+
+## Aplicado em 18/11/2026 (parte 2 da pauta)
+
+Seção "Como acompanhar a evolução no aplicativo": o que registrar e a regra de progressão do ACSM 2009 (PMID 19204579), com links para ficha-de-treino e quando-trocar-o-treino. Curta de propósito: o "aplicativo para treinar sozinho" já está em treinar-sozinho-na-academia. atualizadoEm 18/11.

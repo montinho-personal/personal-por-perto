@@ -38,10 +38,10 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | tema / busca | onde entra | origem |
 |---|---|---|
 | ~~Treinar no dia da aplicação do Mounjaro ("pode aplicar mounjaro e ir treinar")~~ | ~~seção em `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/`~~ — feito em 18/11 (seção + FAQ, SURMOUNT-1; Renato liberou sem a bula) | busca de 16/11 |
-| Acompanhar a evolução / registrar treino no app | seção em `/guias/personal-online-ou-aplicativo/` | lista de 40 temas (conferido: canibalizaria) |
+| ~~Acompanhar a evolução / registrar treino no app~~ | ~~seção em `/guias/personal-online-ou-aplicativo/`~~ — feito em 18/11 (seção curta com ACSM 2009, linkando ficha e quando trocar) | lista de 40 temas (conferido: canibalizaria) |
 | ~~SURMOUNT-4 (se parar, engorda?), "efeito rebote mounjaro"~~ | ~~`/mounjaro-e-treino/parei-o-mounjaro/`~~ — feito em 18/11 (seção de dados + 2 FAQs) | `docs/parei-o-mounjaro.md` |
 | ~~Platô com Ozempic~~ | ~~FAQ em `/mounjaro-e-treino/ozempic-e-treino/`~~ — feito em 18/11 (seção + FAQ, STEP 1) | `docs/ozempic-e-treino.md` |
-| Peso parado na hipertrofia; "como saber se estou treinando corretamente" | FAQs em `/musculacao/treino-sem-resultado/` | `docs/treino-sem-resultado.md` |
+| ~~Peso parado na hipertrofia; "como saber se estou treinando corretamente"~~ | ~~FAQs em `/musculacao/treino-sem-resultado/`~~ — feito em 18/11 (2 FAQs + parágrafo, Slater 2019) | `docs/treino-sem-resultado.md` |
 | "Como perder 10 kg em um ano", "10 kg até dezembro" | FAQs em `/emagrecimento/quanto-tempo-para-perder-10kg/` | `docs/quanto-tempo-para-perder-10kg.md` |
 | "Como não engordar nas férias" | seção de viagem de `/emagrecimento/comer-fora-e-dieta/` | `docs/comer-fora-e-dieta.md` |
 | "O que desacelera o metabolismo?" | `/emagrecimento/como-acelerar-o-metabolismo/` | `docs/como-acelerar-o-metabolismo.md` |
