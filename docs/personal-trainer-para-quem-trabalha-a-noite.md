@@ -1,5 +1,5 @@
-# Notas: Personal trainer para quem trabalha à noite (`/guias/personal-trainer-para-quem-trabalha-a-noite/`)
 
-## Para a próxima revisão (16/11/2026)
 
-PAA "Pode treinar 1 hora da manhã?" (busca "personal trainer montes claros", 16/11). Cabe como FAQ: treino de madrugada para quem trabalha em turno.
+## Aplicado em 18/11/2026 (parte 2 da pauta)
+
+FAQ "Pode treinar 1 hora da manhã?" com Stutz 2019 (Sports Med, PMID 30374942: treino à noite não atrapalha o sono; treino vigoroso terminando ≤1 h antes de deitar pode atrapalhar). Referências criadas. atualizadoEm 18/11.

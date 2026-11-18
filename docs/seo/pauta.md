@@ -46,9 +46,9 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~"Como não engordar nas férias"~~ | ~~seção de viagem de `/emagrecimento/comer-fora-e-dieta/`~~ — feito em 18/11 (H2 "Viagem e férias", parágrafo e FAQ, Cooper 2016) | `docs/comer-fora-e-dieta.md` |
 | ~~"O que desacelera o metabolismo?"~~ | ~~`/emagrecimento/como-acelerar-o-metabolismo/`~~ — feito em 18/11 (FAQ + parágrafo da idade, Pontzer 2021, Westcott 2012) | `docs/como-acelerar-o-metabolismo.md` |
 | ~~"É bom perder 250 calorias por dia?"~~ | ~~`/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 (FAQ + parágrafo, Hall 2011, Garthe 2011) | `docs/deficit-calorico-como-funciona.md` |
-| "Qual a idade mais difícil de perder peso?" | `/emagrecimento/emagrecer-depois-dos-40/` | `docs/emagrecer-depois-dos-40.md` |
-| Platô no jejum intermitente | `/emagrecimento/jejum-intermitente-funciona/` | `docs/jejum-intermitente-funciona.md` |
-| "Pode treinar 1 hora da manhã?" | FAQ em `/guias/personal-trainer-para-quem-trabalha-a-noite/` | `docs/personal-trainer-para-quem-trabalha-a-noite.md` |
+| ~~"Qual a idade mais difícil de perder peso?"~~ | ~~`/emagrecimento/emagrecer-depois-dos-40/`~~ — já respondida: a página tem a FAQ desde a reescrita de 22/10 (conferido em 18/11, nada a mudar) | `docs/emagrecer-depois-dos-40.md` |
+| ~~Platô no jejum intermitente~~ | ~~`/emagrecimento/jejum-intermitente-funciona/`~~ — feito em 18/11 (H2 + FAQ, TREAT 2020) | `docs/jejum-intermitente-funciona.md` |
+| ~~"Pode treinar 1 hora da manhã?"~~ | ~~FAQ em `/guias/personal-trainer-para-quem-trabalha-a-noite/`~~ — feito em 18/11 (FAQ, Stutz 2019) | `docs/personal-trainer-para-quem-trabalha-a-noite.md` |
 | "Quais são os sinais de que o treino foi bom?" | seção ou FAQ em `/musculacao/dor-muscular-pos-treino/` | busca de 17/11 (`docs/quando-trocar-o-treino.md`) |
 | "Quanto tempo de treino em casa dá resultado?" | FAQ em `/musculacao/treino-em-casa-para-iniciantes/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
 | "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
