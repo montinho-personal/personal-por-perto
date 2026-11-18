@@ -46,7 +46,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/treino-para-quem-usa-mounjaro';
-const atualizadoEm = '2026-10-15';
+const atualizadoEm = '2026-11-18';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
@@ -63,6 +63,11 @@ const faqs = [
     pergunta: 'Quantas vezes por semana devo fazer musculação usando Mounjaro?',
     resposta:
       'Não existe número único que sirva para todo mundo. Diretrizes gerais de atividade física, como as da Organização Mundial da Saúde, costumam citar atividades de fortalecimento muscular em pelo menos 2 dias por semana como piso para adultos, e revisões sobre exercício durante tratamentos com medicamentos da mesma classe frequentemente mencionam frequências na faixa de 2 a 3 sessões semanais de treino de força. O ideal é definir a frequência com um profissional de educação física, considerando sua disposição em cada fase.',
+  },
+  {
+    pergunta: 'Posso aplicar o Mounjaro e ir treinar no mesmo dia?',
+    resposta:
+      'Se você estiver se sentindo bem, pode. A aplicação é semanal e não pede repouso. O que os estudos mostram é que os efeitos colaterais mais comuns são gastrointestinais, como enjoo, quase sempre leves a moderados e concentrados nas semanas de aumento de dose. Nesses dias, um treino mais leve costuma funcionar melhor. Se você tem diabetes ou usa outros remédios, combine com o médico o horário da aplicação e do treino.',
   },
   {
     pergunta: 'Devo parar de treinar nos períodos em que sinto enjoo ou mal-estar?',
@@ -241,6 +246,22 @@ const schema = [
         short
       />
 
+      <h2>Pode aplicar o Mounjaro e ir treinar?</h2>
+      <p>
+        Se você estiver se sentindo bem, pode. A aplicação é semanal e não
+        pede repouso depois. O cuidado é outro: no estudo SURMOUNT-1,
+        publicado em 2022 no New England Journal of Medicine, os efeitos
+        colaterais mais comuns da tirzepatida foram gastrointestinais, quase
+        sempre leves a moderados, e apareceram principalmente nas semanas de
+        aumento de dose.
+      </p>
+      <ul>
+        <li><strong>Dia da aplicação, sem sintomas:</strong> treino normal.</li>
+        <li><strong>Semanas de aumento de dose:</strong> prefira sessões mais curtas e leves nos dias seguintes à aplicação, até saber como o corpo reage.</li>
+        <li><strong>Com enjoo:</strong> veja o que ajustar em <a href="/mounjaro-e-treino/nausea-e-treino/">náusea e treino</a>.</li>
+        <li><strong>Diabetes ou outros remédios:</strong> o horário da aplicação e do treino se combina com o médico.</li>
+      </ul>
+
       <h2>Hidratação e alimentação pré-treino: alinhe com quem cuida disso</h2>
       <p>
         Com o apetite reduzido, é comum chegar ao treino tendo comido
@@ -302,6 +323,11 @@ const schema = [
         intensidade. Tudo que for sintoma ou decisão sobre o medicamento é
         conversa com o médico prescritor.
       </div>
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35658024/" target="_blank" rel="noopener noreferrer">Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1). New England Journal of Medicine, 2022</a></li>
+        <li>Conferida em 18/11/2026.</li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} />
@@ -353,5 +379,10 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
 </style>

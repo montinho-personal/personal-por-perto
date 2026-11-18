@@ -37,7 +37,7 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 
 | tema / busca | onde entra | origem |
 |---|---|---|
-| Treinar no dia da aplicação do Mounjaro ("pode aplicar mounjaro e ir treinar") | seção em `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/` | busca de 16/11 |
+| ~~Treinar no dia da aplicação do Mounjaro ("pode aplicar mounjaro e ir treinar")~~ | ~~seção em `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/`~~ — feito em 18/11 (seção + FAQ, SURMOUNT-1; Renato liberou sem a bula) | busca de 16/11 |
 | Acompanhar a evolução / registrar treino no app | seção em `/guias/personal-online-ou-aplicativo/` | lista de 40 temas (conferido: canibalizaria) |
 | ~~SURMOUNT-4 (se parar, engorda?), "efeito rebote mounjaro"~~ | ~~`/mounjaro-e-treino/parei-o-mounjaro/`~~ — feito em 18/11 (seção de dados + 2 FAQs) | `docs/parei-o-mounjaro.md` |
 | ~~Platô com Ozempic~~ | ~~FAQ em `/mounjaro-e-treino/ozempic-e-treino/`~~ — feito em 18/11 (seção + FAQ, STEP 1) | `docs/ozempic-e-treino.md` |
