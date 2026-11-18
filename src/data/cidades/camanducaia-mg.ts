@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Camanducaia', url: 'https://www.camanducaia.mg.gov.br/' },
     { nome: 'Portal de Monte Verde', url: 'https://monteverde.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-18',
 };

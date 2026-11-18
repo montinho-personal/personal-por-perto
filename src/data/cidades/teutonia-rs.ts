@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teutônia', url: 'https://teutonia.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/432145' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-18',
 };

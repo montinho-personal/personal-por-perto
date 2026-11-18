@@ -121,5 +121,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santo Antônio do Descoberto — Corrida do Trabalhador 2026', url: 'https://santoantoniododescoberto.go.gov.br/inscricao-da-corrida-do-trabalhador-2026/' },
     { nome: 'INMET — Normais Climatológicas 1991–2020', url: 'https://portal.inmet.gov.br/normais' },
   ],
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-18',
 };

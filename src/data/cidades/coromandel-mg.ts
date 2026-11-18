@@ -102,5 +102,5 @@ export const cidade: Cidade = {
       url: 'https://correiodeminas.com.br/2025/10/11/cidade-mineira-abriga-os-tres-maiores-diamantes-do-brasil-tem-pib-acima-de-belo-horizonte-e-virou-referencia-mundial-na-mineracao/',
     },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-18',
 };

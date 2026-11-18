@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Balneário Piçarras', url: 'https://balneariopicarras.atende.net/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4212809' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-18',
 };

@@ -30,5 +30,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades e Estados — Jaguariúna (SP)', url: 'https://www.ibge.gov.br/cidades-e-estados/sp/jaguariuna.html' },
     { nome: 'Prefeitura de Jaguariúna — Turismo (Parques)', url: 'https://municipio.jaguariuna.sp.gov.br/turismo/locais/5/parque-dos-lagos.html' },
     { nome: 'Prefeitura de Jaguariúna — Jaguariúna Rodeo Festival', url: 'https://municipio.jaguariuna.sp.gov.br/turismo/atrativos/18/jaguariuna-rodeo-festival.html' },
-  ], atualizadoEm: '2026-06-29',
+  ], atualizadoEm: '2026-11-18',
 };

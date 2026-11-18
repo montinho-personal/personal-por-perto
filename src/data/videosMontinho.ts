@@ -261,6 +261,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'palmeira-dos-indios-al', 'paragominas-pa', 'paranaiba-ms', 'paulista-pe', 'pesqueira-pe',
   'petrolina-pe', 'planaltina-go', 'poa-sp', 'porangatu-go', 'ribeirao-pires-sp',
   'rondonopolis-mt', 'santa-helena-de-goias-go', 'santa-teresa-es', 'sao-miguel-dos-campos-al', 'sao-sebastiao-sp',
+  // leva 4 — 18/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 3 conferida no ar)
+  'alagoinhas-ba', 'alvorada-rs', 'araras-sp', 'teutonia-rs', 'brejo-santo-ce',
+  'goianesia-go', 'itajai-sc', 'santo-antonio-do-descoberto-go', 'sao-simao-go', 'sapezal-mt',
+  'taquaritinga-sp', 'tres-coroas-rs', 'tucurui-pa', 'valparaiso-de-goias-go', 'viana-es',
+  'altos-pi', 'balneario-picarras-sc', 'barbacena-mg', 'bombinhas-sc', 'camanducaia-mg',
+  'caninde-de-sao-francisco-se', 'castelo-es', 'cornelio-procopio-pr', 'coromandel-mg', 'corrente-pi',
+  'cruzeiro-sp', 'domingos-martins-es', 'formiga-mg', 'hortolandia-sp', 'ijui-rs',
+  'jaguarao-rs', 'jaguariuna-sp', 'jaragua-go', 'lins-sp', 'macapa-ap',
+  'marataizes-es', 'miracema-do-tocantins-to', 'nova-lima-mg', 'olinda-pe', 'paraiba-do-sul-rj',
+  'pirassununga-sp', 'ponta-pora-ms', 'presidente-dutra-ma', 'santa-cruz-do-sul-rs', 'santa-izabel-do-para-pa',
+  'santa-rita-pb', 'santana-do-livramento-rs', 'sao-joao-de-meriti-rj', 'sao-marcos-rs', 'simao-dias-se',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

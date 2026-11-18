@@ -100,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Goianésia', url: 'https://goianesia.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-31',
+  atualizadoEm: '2026-11-18',
 };

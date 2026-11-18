@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São João de Meriti', url: 'https://www.meriti.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-18',
   capaArte: {
     src: '/capas-cidade/sao-joao-de-meriti-rj.webp',
     w: 1200,

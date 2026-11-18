@@ -120,7 +120,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Macapá', url: 'https://macapa.ap.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-30',
+  atualizadoEm: '2026-11-18',
   capaArte: {
     src: '/capas-cidade/macapa-ap.webp',
     w: 1200,

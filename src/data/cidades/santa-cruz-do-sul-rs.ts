@@ -97,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Cruz do Sul', url: 'https://www.santacruz.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-11-18',
 };

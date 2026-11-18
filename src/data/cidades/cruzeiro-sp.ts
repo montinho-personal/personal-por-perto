@@ -133,5 +133,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cruzeiro — Ciclovia do Parque Linear', url: 'https://www.cruzeiro.sp.gov.br/prefeitura-de-cruzeiro-inicia-obras-da-ciclovia-do-parque-linear-do-centro/' },
     { nome: 'INMET — Normais Climatológicas 1991–2020', url: 'https://portal.inmet.gov.br/normais' },
   ],
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-18',
 };

@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Três Coroas', url: 'https://www.trescoroas.rs.gov.br/' },
     { nome: 'Visite Três Coroas', url: 'https://www.visitetrescoroas.com.br/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-18',
 };

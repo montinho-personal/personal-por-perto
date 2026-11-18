@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Canindé de São Francisco', url: 'https://www.caninde.se.gov.br/' },
     { nome: 'Sergipe Trade Tour — Canindé', url: 'https://www.sergipetradetour.com.br/cidade/14' },
   ],
-  atualizadoEm: '2026-08-18',
+  atualizadoEm: '2026-11-18',
 };

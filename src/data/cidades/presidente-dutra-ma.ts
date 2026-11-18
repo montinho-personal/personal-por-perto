@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Presidente Dutra', url: 'https://cidades.ibge.gov.br/brasil/ma/presidente-dutra/panorama' },
     { nome: 'Prefeitura de Presidente Dutra', url: 'https://presidentedutra.ma.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-18',
 };

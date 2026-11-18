@@ -126,5 +126,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itajaí', url: 'https://www.itajai.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-11-18',
 };

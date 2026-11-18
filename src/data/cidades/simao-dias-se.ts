@@ -111,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Simão Dias', url: 'https://simaodias.se.gov.br/' },
     { nome: 'Emdagro — Informações Básicas Municipais', url: 'https://emdagro.se.gov.br/' },
   ],
-  atualizadoEm: '2026-09-11',
+  atualizadoEm: '2026-11-18',
 };

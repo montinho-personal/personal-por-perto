@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Altos', url: 'https://cidades.ibge.gov.br/brasil/pi/altos/panorama' },
     { nome: 'Prefeitura de Altos', url: 'https://altos.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-18',
 };
