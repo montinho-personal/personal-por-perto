@@ -70,10 +70,9 @@ export const cidade: Cidade = {
     'A oferta é ampla, com redes nacionais, estúdios e boxes de crossfit, com um polo premium na Praia Brava, complementada pela orla do Saco da Fazenda e pela rede cicloviária.',
 
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidade no Centro, na Travessa Edmundo Heusi' },
-    { nome: 'Academias e estúdios da Praia Brava e Fazenda', detalhe: 'musculação, cross e funcional no eixo mais valorizado' },
-    { nome: 'Estrutura pública da Beira-Rio', detalhe: 'academia ao ar livre e quadra no Saco da Fazenda' },
+    { nome: 'Smart Fit Itajaí', detalhe: 'na Travessa Edmundo Heusi, no Centro' },
   ],
+  academiasVerificadasEm: '2026-11-18',
 
   destaquesFitness: [
     'Orla Beira-Rio / Saco da Fazenda: corredor natural para corrida, caminhada e funcional.',
@@ -98,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Itajaí?',
       resposta:
-        'O eixo Beira-Rio–Saco da Fazenda é o point do treino ao ar livre, com academia pública e quadra junto à orla. Completam o mapa a Smart Fit do Centro e os estúdios da Praia Brava e da Fazenda — onde se concentram cross e funcional —, o novo Parque Ecológico e Náutico junto à marina e o atendimento em casa e em condomínio, forte na Praia Brava. A Meia Maratona de Itajaí é o alvo clássico de quem treina corrida orientada.',
+        'O eixo Beira-Rio–Saco da Fazenda é o ponto clássico do treino ao ar livre, para caminhada, corrida e funcional. Completam o mapa a Smart Fit do Centro, os estúdios de bairro e o atendimento em casa e em condomínio, forte na Praia Brava. A Meia Maratona de Itajaí é o alvo clássico de quem treina corrida orientada.',
     },
     {
       pergunta: 'Dá para se preparar para a Meia Maratona de Itajaí com personal?',

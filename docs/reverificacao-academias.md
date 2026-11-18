@@ -1025,3 +1025,25 @@ O texto corrido cita "Smart Fit, Bluefit": a Bluefit Foz do Iguaçu tem página 
 | Bluefit Dourados — "Av. Marcelino Pires, no Jardim Caramuru" | confirmada sem mudança (nº 4130, loja 34, CEP 79830-000) | página oficial da Bluefit |
 
 Saldo da leva: 5 entradas → 5 mantidas (1 com detalhe acrescentado), nenhuma removida. 88 cidades seguem na fila.
+
+### 18/11/2026 — leva 44 (rotina, Parte B: Araraquara e Itajaí)
+
+**Araraquara/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Av. Trinta e Seis — "Av. Padre Francisco Salles Culturato, no Centro" | confirmada sem mudança (nº 924) | página oficial (`opened:true`) |
+| Smart Fit Maurício Galli (sem detalhe) | confirmada; **detalhe acrescentado** da página: "na Rua Maurício Galli, na Vila Sedenho" (nº 555) | página oficial (`opened:true`) |
+| Bluefit Vila Sedenho — "Rua Maurício Galli, na Vila Sedenho" | confirmada sem mudança (nº 564, CEP 14806-155) | página oficial da Bluefit |
+
+**Itajaí/SC** — página mudou; a cidade fica com 1 entrada.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidade no Centro, na Travessa Edmundo Heusi" | confirmada; nome passou a "Smart Fit Itajaí", como a rede chama (nº 49, Centro) | página oficial (`opened:true`) |
+| "Academias e estúdios da Praia Brava e Fazenda" | **removida**: não é academia com nome; "eixo mais valorizado" sem fonte | — |
+| "Estrutura pública da Beira-Rio" (academia ao ar livre e quadra no Saco da Fazenda) | **removida**: nenhuma fonte oficial confirma o equipamento; o Parque Ecológico e Náutico, que terá academias ao ar livre, estava em fase final de obras (NSC Total) | — |
+
+A FAQ "Onde o personal costuma atender em Itajaí?" foi reescrita para não citar "academia pública" nem o parque em obras. **Pendência fora do escopo:** a lista de parques ainda descreve a Beira-Rio "com academia ao ar livre e quadra" e o Parque Ecológico e Náutico como "novo espaço"; conferir na próxima revisão da cidade. Completar a lista de Itajaí vira tarefa à parte.
+
+Saldo da leva: 6 entradas → 4 mantidas (2 com nome ou detalhe corrigido), 2 removidas. 86 cidades seguem na fila.

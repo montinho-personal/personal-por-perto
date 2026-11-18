@@ -61,6 +61,7 @@ export const cidade: Cidade = {
     'Caminhar em duna faz parte da vida: guias e moradores cruzam o campo de areia diariamente, e a travessia dos Lençóis é rito local. Futebol de areia, banho de lagoa e a lida da pesca completam a rotina ativa da vila.',
   academias:
     'A oferta formal é praticamente inexistente — o treino de força acontece em casa, nas pousadas e em espaços improvisados, com o acompanhamento online cobrindo a lacuna para quem quer método.',
+  academiasVerificadasEm: '2026-11-18',
 
   destaquesFitness: [
     'Mais da metade do Parque Nacional dos Lençóis Maranhenses no município.',

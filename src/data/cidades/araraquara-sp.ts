@@ -72,9 +72,10 @@ export const cidade: Cidade = {
 
   academiasProximas: [
     { nome: 'Smart Fit Av. Trinta e Seis', detalhe: 'na Av. Padre Francisco Salles Culturato, no Centro' },
-    { nome: 'Smart Fit Maurício Galli' },
+    { nome: 'Smart Fit Maurício Galli', detalhe: 'na Rua Maurício Galli, na Vila Sedenho' },
     { nome: 'Bluefit Vila Sedenho', detalhe: 'na Rua Maurício Galli, na Vila Sedenho' },
   ],
+  academiasVerificadasEm: '2026-11-18',
 
   destaquesFitness: [
     'Alto número de dias ensolarados, favorável ao treino ao ar livre (com cuidado no calor do verão).',
@@ -102,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araraquara', url: 'https://www.araraquara.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-18',
 };

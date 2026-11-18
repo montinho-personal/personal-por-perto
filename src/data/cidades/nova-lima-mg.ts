@@ -70,6 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta é premium — estúdios e personal training —, complementada por condomínios de luxo com clubes e áreas verdes e por uma cena forte de trail e MTB.',
 
+  academiasProximas: [
+    { nome: 'Dinâmica Vila da Serra', detalhe: 'na Alameda do Ingá, no Vale do Sereno' },
+    { nome: 'Canadá Sport Center', detalhe: 'na Rua Ontário, no Jardim Canadá' },
+    { nome: 'Cyclus', detalhe: 'na Av. Henrique Othero, no Centro' },
+    { nome: 'Impacto Fitness OSW', detalhe: 'na Rua Roni Garzon Gomes, no Oswaldo Barbosa Pena II' },
+  ],
+  academiasVerificadasEm: '2026-11-18',
+
   destaquesFitness: [
     'Maior IDHM e renda de Minas — público premium para personal e estúdios.',
     'Capital regional de trail run e mountain bike (CIMTB, Desafio Brou).',
