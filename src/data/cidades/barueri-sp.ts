@@ -87,12 +87,15 @@ export const cidade: Cidade = {
     'Calendário consolidado de corridas (São Silveira e Summer Run Alphaville).',
   ],
 
+  // Faixas informadas pelo Renato (personal da região) em 18/11/2026: aula
+  // de R$ 40 a 250 nos pacotes; o mês de 2 a 3 vezes por semana é essa aula
+  // × 11 sessões (SESSOES_MES_PACOTE). Online: mínimo de R$ 110 por mês.
   precos: {
-    avulsaMin: 90,
-    avulsaMax: 220,
-    mensalMin: 450,
-    mensalMax: 1300,
-    onlineMin: 200,
+    avulsaMin: 40,
+    avulsaMax: 250,
+    mensalMin: 440,
+    mensalMax: 2750,
+    onlineMin: 110,
     onlineMax: 500,
   },
 
@@ -159,5 +162,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Barueri com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-10-30',
+  atualizadoEm: '2026-11-18',
 };

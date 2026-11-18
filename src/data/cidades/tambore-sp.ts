@@ -84,12 +84,15 @@ export const cidade: Cidade = {
     'Reserva Biológica de Mata Atlântica como diferencial ambiental da região.',
   ],
 
+  // Faixas informadas pelo Renato (personal da região) em 18/11/2026: aula
+  // de R$ 50 a 300 nos pacotes; o mês de 2 a 3 vezes por semana é essa aula
+  // × 11 sessões (SESSOES_MES_PACOTE). Online: mínimo de R$ 110 por mês.
   precos: {
-    avulsaMin: 100,
-    avulsaMax: 250,
-    mensalMin: 500,
-    mensalMax: 1450,
-    onlineMin: 210,
+    avulsaMin: 50,
+    avulsaMax: 300,
+    mensalMin: 550,
+    mensalMax: 3300,
+    onlineMin: 110,
     onlineMax: 540,
   },
 
@@ -150,5 +153,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado no Tamboré com o Montinho Personal: acompanhamento próximo, exclusivo e feito para o seu objetivo.',
   },
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-18',
 };

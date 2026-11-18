@@ -77,12 +77,15 @@ export const cidade: Cidade = {
     'Proximidade com Alphaville e Tamboré para clubes, estúdios e provas de rua.',
   ],
 
+  // Faixas informadas pelo Renato (personal da região) em 18/11/2026: aula
+  // de R$ 50 a 300 nos pacotes; o mês de 2 a 3 vezes por semana é essa aula
+  // × 11 sessões (SESSOES_MES_PACOTE). Online: mínimo de R$ 110 por mês.
   precos: {
-    avulsaMin: 100,
-    avulsaMax: 250,
-    mensalMin: 500,
-    mensalMax: 1500,
-    onlineMin: 220,
+    avulsaMin: 50,
+    avulsaMax: 300,
+    mensalMin: 550,
+    mensalMax: 3300,
+    onlineMin: 110,
     onlineMax: 550,
   },
 
@@ -154,5 +157,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Aldeia da Serra com o Montinho Personal: um plano feito para o seu corpo e a sua rotina, com acompanhamento próximo na região.',
   },
-  atualizadoEm: '2026-11-06',
+  atualizadoEm: '2026-11-18',
 };
