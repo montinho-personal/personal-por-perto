@@ -57,7 +57,7 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | "Treino de musculação para emagrecer feminino" | FAQ em `/musculacao/musculacao-feminina-mitos/` | busca de 17/11 (`docs/como-emagrecer-fazendo-musculacao.md`) |
 | "Perder barriga sem perder massa muscular" | FAQ em `/emagrecimento/como-perder-barriga/` | busca de 17/11 (`docs/como-preservar-massa-muscular-emagrecendo.md`) |
 | "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
-| "Como funciona o processo de emagrecimento" | FAQ em `/emagrecimento/deficit-calorico-como-funciona/` | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
+| ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
 ## 3. Materiais para baixar
@@ -76,7 +76,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aprovado e aplicado em 16/11 |
 | ~~2026-07-07~~ | ~~`/emagrecimento/como-emagrecer-fazendo-musculacao/`~~ | ~~Como emagrecer fazendo musculação~~ | ✅ revisado 17/11/2026 (`como-emagrecer-fazendo-musculacao`); título e descrição aprovados e aplicados em 17/11 |
 | ~~2026-07-07~~ | ~~`/emagrecimento/como-preservar-massa-muscular-emagrecendo/`~~ | ~~Como preservar massa muscular durante o emagrecimento~~ | ✅ revisado 17/11/2026 (`como-preservar-massa-muscular-emagrecendo`); título e descrição aprovados e aplicados em 17/11 |
-| 2026-07-07 | `/emagrecimento/deficit-calorico-como-funciona/` | Déficit calórico: como funciona para emagrecer | reescrito pelo GSC em 09/2026, sem SERP |
+| ~~2026-07-07~~ | ~~`/emagrecimento/deficit-calorico-como-funciona/`~~ | ~~Déficit calórico: como funciona para emagrecer~~ | ✅ revisado 18/11/2026 (`deficit-calorico-como-funciona`); título e descrição em proposta |
 | 2026-07-07 | `/emagrecimento/musculacao-ou-cardio-para-emagrecer/` | Musculação ou cardio: o que emagrece mais? |  |
 | 2026-07-07 | `/guias/personal-online-funciona/` | Personal trainer online funciona? |  |
 | 2026-07-07 | `/guias/personal-trainer-para-emagrecimento/` | Personal trainer para emagrecimento: como escolher |  |
