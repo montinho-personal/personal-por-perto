@@ -109,6 +109,10 @@ export const VIDEOS_MONTINHO_EM_ARTIGOS: Array<VideoMontinho & { artigo: string 
   { id: 'XCSizVFG3d0', tema: 'como montar uma dieta em 4 passos', short: true, artigo: '/emagrecimento/faco-academia-e-nao-emagreco/' },
   { id: 'CgPDOWBXh8k', tema: 'eu pesava 40 kg a mais e achava que ia ser pra sempre', short: true, artigo: '/emagrecimento/emagrecer-treinando-3-vezes-por-semana/' },
   { id: 'BoXag2fY0u0', tema: 'como montar seu treino de musculação em 5 passos', short: true, artigo: '/musculacao/treino-sem-resultado/' },
+  // 18/11/2026, a pedido do Renato: o mesmo Short em todos os artigos de Hyrox
+  // (5 guias + as 11 páginas locais, via HyroxLocal.astro) — exceção à regra de
+  // não repetir, porque o vídeo responde ao formato da prova, comum a todos.
+  { id: 'A-sB4wESQBY', tema: 'Hyrox em 1 minuto: a parte mais longa da prova', short: true, artigo: '/guias/o-que-e-hyrox/' },
 ];
 
 /**
