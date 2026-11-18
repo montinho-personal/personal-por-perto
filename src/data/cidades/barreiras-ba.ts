@@ -89,12 +89,23 @@ export const cidade: Cidade = {
   conclusao:
     'Capital do agro do oeste baiano, Barreiras une renda em expansão e o Parque às margens do Rio Grande. Um personal trainer ajuda a aproveitar esse cenário com método, com atenção à hidratação no clima seco do planalto.',
 
-  vizinhas: ['salvador-ba', 'vitoria-da-conquista-ba'],
+  /*
+   * Revisão de 18/11/2026 (SerpApi, celular, Barreiras): a primeira pergunta
+   * do "As pessoas também perguntam" é "Quanto custa um personal 2 vezes por
+   * semana?". Sem clique em 28 dias. Registro em docs/revisao-cidades.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
+  // Eram Salvador e Vitória da Conquista, a 600 km ou mais. Entram as
+  // cidades do oeste baiano que o portal tem — Luís Eduardo Magalhães e São
+  // Desidério, que fazem divisa com Barreiras —; Salvador fica como capital.
+  vizinhas: ['luis-eduardo-magalhaes-ba', 'sao-desiderio-ba', 'salvador-ba'],
 
   fontes: [
     { nome: 'IBGE Cidades — Barreiras', url: 'https://cidades.ibge.gov.br/brasil/ba/barreiras/panorama' },
     { nome: 'Prefeitura de Barreiras', url: 'https://www.barreiras.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-18',
 };

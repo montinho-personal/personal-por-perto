@@ -89,6 +89,15 @@ export const cidade: Cidade = {
   conclusao:
     'Principal cidade turística do Espírito Santo e "Cidade Saúde", Guarapari tem mais de 50 praias e a orla do Morro como academia a céu aberto. Um personal trainer ajuda a aproveitar a orla e as provas litorâneas com método, ajustando horários e hidratação ao calor do verão.',
 
+  /*
+   * Revisão de 18/11/2026 (SerpApi, celular, Guarapari): o "As pessoas
+   * também perguntam" traz "Quanto custa por mês um personal trainer?" e
+   * "Qual é o melhor personal trainer online?". Sem clique em 28 dias.
+   * Registro em docs/revisao-cidades.md.
+   */
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
   vizinhas: ['vila-velha-es', 'vitoria-es', 'cariacica-es'],
 
   fontes: [
@@ -96,5 +105,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Guarapari', url: 'https://www.guarapari.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-18',
 };
