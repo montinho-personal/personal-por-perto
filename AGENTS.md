@@ -52,6 +52,12 @@ Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota"
 - **Evidência:** JSON enxuto de cada busca em `docs/pesquisas/` (sem
   `page_token` nem links do serpapi.com) e o registro do que mudou no doc da
   peça (`docs/<slug>.md`).
+- **Itens da parte 2 da pauta (desde 18/11/2026):** além das 2 revisões,
+  aplicar **2 itens** da parte 2 ("viram seção ou FAQ de um artigo
+  existente"), na ordem da tabela: seção ou FAQ com fonte na página
+  indicada, `atualizadoEm` da página sobe (mudança real), riscar a linha
+  com a data e anotar no doc da página. Sem SerpApi (a busca já foi
+  feita). Item sem fonte acessível fica, com o motivo anotado.
 - **Título e descrição: só proposta**, no formato ATUAL / PROPOSTA / MOTIVO,
   no doc da peça e na resposta. Nunca trocar sem o Renato aprovar.
 - **Publicar:** `npm run build`, `audit:canonical`, `audit:links`,

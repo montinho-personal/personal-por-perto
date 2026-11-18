@@ -43,7 +43,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/parei-o-mounjaro';
-const atualizadoEm = '2026-09-08';
+const atualizadoEm = '2026-11-18';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: rotas.mounjaro },
@@ -54,7 +54,12 @@ const faqs = [
   {
     pergunta: 'É verdade que o peso volta depois que se para o medicamento?',
     resposta:
-      'Estudos de extensão com medicamentos dessa classe descrevem recuperação significativa do peso após a interrupção, e é honesto dizer isso em vez de prometer o contrário. Mas "descrito em média" não é destino individual: a média inclui quem parou o tratamento e voltou exatamente à rotina que levou ao ponto de partida. O que muda a conta é o que fica de pé depois — massa muscular preservada, hábito de treino estabelecido, alimentação sustentável. Nada disso é garantia, e as decisões sobre interromper ou manter o tratamento são do médico.',
+      'Em média, volta boa parte. No estudo SURMOUNT-4, publicado em 2024 no JAMA, quem trocou a tirzepatida por placebo depois de 36 semanas recuperou 14% do peso no ano seguinte, enquanto quem continuou perdeu mais 5,5%. Mas "descrito em média" não é destino individual: a média inclui quem parou o tratamento e voltou exatamente à rotina que levou ao ponto de partida. O que muda a conta é o que fica de pé depois — massa muscular preservada, hábito de treino estabelecido, alimentação sustentável. Nada disso é garantia, e as decisões sobre interromper ou manter o tratamento são do médico.',
+  },
+  {
+    pergunta: 'Quando parar de tomar Mounjaro?',
+    resposta:
+      'Essa decisão é do médico, nunca por conta própria. O que o treino pode fazer é preparar a transição: chegar ao fim do tratamento com treino de força em dia, proteína suficiente e uma rotina de alimentação que se sustente sem o remédio.',
   },
   {
     pergunta: 'Por que a fome volta com tanta força?',
@@ -117,10 +122,21 @@ const schema = [
     <div class="prose">
       <h2>O que os dados dizem, sem suavizar</h2>
       <p>
-        Estudos de extensão com medicamentos dessa classe descrevem
-        recuperação significativa do peso perdido após a interrupção do
-        tratamento. Não faz sentido esconder isso de quem está prestes a
-        parar — e também não faz sentido apresentar como sentença.
+        O estudo que respondeu "se parar, engorda?" foi o SURMOUNT-4,
+        publicado em 2024 no JAMA. Todos os 670 participantes usaram
+        tirzepatida por 36 semanas e perderam, em média, 20,9% do peso.
+        Depois, metade continuou com o remédio e metade passou para placebo,
+        por mais 52 semanas:
+      </p>
+      <ul>
+        <li><strong>Quem parou</strong> recuperou, em média, 14% do peso no ano seguinte. Só 16,6% mantiveram pelo menos 80% do que tinham perdido.</li>
+        <li><strong>Quem continuou</strong> perdeu mais 5,5%, e 89,5% mantiveram pelo menos 80% da perda.</li>
+      </ul>
+      <p>
+        É o chamado efeito rebote, e não faz sentido esconder isso de quem
+        está prestes a parar — nem apresentar como sentença. No mesmo
+        estudo, mesmo o grupo que parou terminou, em média, 9,9% abaixo do
+        peso inicial. Quando e como parar é decisão do médico.
       </p>
 
       <p>
@@ -286,6 +302,11 @@ const schema = [
         definido, registrar cargas, tratar variação como dado — com médico e
         nutricionista ainda na conversa.
       </div>
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38078870/" target="_blank" rel="noopener noreferrer">Aronne LJ, Sattar N, Horn DB, et al. Continued treatment with tirzepatide for maintenance of weight reduction in adults with obesity: the SURMOUNT-4 randomized clinical trial. JAMA, 2024</a></li>
+        <li>Conferida em 18/11/2026.</li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} />
@@ -337,5 +358,10 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
 </style>
