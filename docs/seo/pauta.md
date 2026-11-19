@@ -54,8 +54,8 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`). ⏸ 19/11/2026: fica — nenhuma fonte define a variante (só o 12-3-30 de Lauren Giraldo); sem fonte, sem FAQ |
 | ~~"O que trava o emagrecimento?"; linkar as FAQs de "2 kg" para `peso-varia-de-um-dia-para-o-outro`~~ | ~~FAQ em `/emagrecimento/plato-de-emagrecimento/`~~ | ✅ 19/11/2026: FAQ nova (causas já com fonte na página, Sumithran 2011) e link no item "retenção" do corpo (FAQ do site não leva link: o schema copiaria o HTML) |
 | ~~Colágeno para massa muscular (visão de IA de sarcopenia)~~ | ~~FAQ em `/musculacao/suplementos-que-nao-funcionam/`~~ | ✅ 19/11/2026: parágrafo em "Os outros suspeitos" + FAQ, com Zdzieblik 2015 e Oikawa 2018 |
-| "Treino de musculação para emagrecer feminino" | FAQ em `/musculacao/musculacao-feminina-mitos/` | busca de 17/11 (`docs/como-emagrecer-fazendo-musculacao.md`) |
-| "Perder barriga sem perder massa muscular" | FAQ em `/emagrecimento/como-perder-barriga/` | busca de 17/11 (`docs/como-preservar-massa-muscular-emagrecendo.md`) |
+| ~~"Treino de musculação para emagrecer feminino"~~ | ~~FAQ em `/musculacao/musculacao-feminina-mitos/`~~ | ✅ 19/11/2026: FAQ + parágrafo no Mito 2, com Roberts 2020 (meta-análise de diferenças entre sexos) |
+| ~~"Perder barriga sem perder massa muscular"~~ | ~~FAQ em `/emagrecimento/como-perder-barriga/`~~ | ✅ 19/11/2026: FAQ com Wewege 2022 e Longland 2016 + link para `como-preservar-massa-muscular-emagrecendo` |
 | "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
