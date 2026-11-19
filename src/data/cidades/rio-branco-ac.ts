@@ -20,7 +20,7 @@ export const cidade: Cidade = {
     'Capital do Acre, Rio Branco é o principal centro político, administrativo e de serviços do estado, com economia dominada pelo setor de serviços e forte peso da administração pública, além de comércio. No extremo oeste da Amazônia, é cortada pelo Rio Acre e tem na mobilidade ativa um traço marcante: é apontada como a capital que mais investe por habitante em ciclovias.',
 
   mercado:
-    'Há uma cultura forte de atividade física ao ar livre — corrida e ciclismo — apoiada por uma das maiores malhas cicloviárias per capita do país, além de academias de bairro e redes nos shoppings. O Parque do Tucumã é o grande ponto de treino coletivo da cidade.',
+    'Há uma cultura forte de atividade física ao ar livre — corrida e ciclismo — apoiada por uma das maiores malhas cicloviárias per capita do país. O Parque do Tucumã é o grande ponto de treino coletivo da cidade.',
 
   bairrosNobres: ['Bosque', 'Jardim Europa', 'Floresta', 'Aviário'],
   bairrosPopulares: ['Cidade do Povo', 'Belo Jardim', 'Vila Acre', 'Cidade Nova'],
@@ -68,12 +68,11 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'As corridas de rua estão em forte ascensão em Rio Branco, descritas como fenômeno popular e inclusivo, e o ciclismo urbano é fortemente incentivado pela rede de ciclovias. O Parque do Tucumã é o principal espaço de treino coletivo.',
   academias:
-    'A oferta reúne academias de bairro e redes nos shoppings, complementadas pela forte infraestrutura ao ar livre — ciclovias, Parque do Tucumã e Horto Florestal.',
+    'A oferta reúne academias de bairro e as unidades da Smart Fit, complementadas pela forte infraestrutura ao ar livre — ciclovias, Parque do Tucumã e Horto Florestal.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'com unidade na cidade (Village)' },
-    { nome: 'Academias de bairro e redes nos shoppings', detalhe: 'boa cobertura no Bosque e no Centro' },
-    { nome: 'Estrutura pública', detalhe: 'gratuita, no Parque do Tucumã e no Horto Florestal' },
+    { nome: 'Smart Fit', detalhe: 'com seis unidades na cidade, entre elas a do Village' },
   ],
+  academiasVerificadasEm: '2026-11-19',
 
   destaquesFitness: [
     'Uma das maiores malhas cicloviárias per capita do Brasil (cerca de 178 km).',
@@ -119,7 +118,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Rio Branco', url: 'https://www.riobranco.ac.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-19',
 
   capaArte: {
     src: '/capas-cidade/rio-branco-ac.webp',

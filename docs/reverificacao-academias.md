@@ -1047,3 +1047,26 @@ Saldo da leva: 5 entradas → 5 mantidas (1 com detalhe acrescentado), nenhuma r
 A FAQ "Onde o personal costuma atender em Itajaí?" foi reescrita para não citar "academia pública" nem o parque em obras. **Pendência fora do escopo:** a lista de parques ainda descreve a Beira-Rio "com academia ao ar livre e quadra" e o Parque Ecológico e Náutico como "novo espaço"; conferir na próxima revisão da cidade. Completar a lista de Itajaí vira tarefa à parte.
 
 Saldo da leva: 6 entradas → 4 mantidas (2 com nome ou detalhe corrigido), 2 removidas. 86 cidades seguem na fila.
+
+### 19/11/2026 — leva 45 (rotina, Parte B: Rio Branco e Serra)
+
+**Rio Branco/AC** — página mudou; a cidade fica com 1 entrada.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "com unidade na cidade (Village)" | confirmada; **detalhe corrigido**: a rede tem seis unidades abertas na cidade (Santa Inês, Isaura Parente, Floresta, Village, Via Verde, Conjunto Mariana) → "com seis unidades na cidade, entre elas a do Village" | página oficial (`/academias/ac/rio-branco`, `opened:true` nas seis) |
+| "Academias de bairro e redes nos shoppings" — "boa cobertura no Bosque e no Centro" | **removida**: não é academia com nome; "boa cobertura" sem fonte | — |
+| "Estrutura pública" — "gratuita, no Parque do Tucumã e no Horto Florestal" | **removida**: nenhuma fonte confirma academia ao ar livre no Parque do Tucumã | — |
+
+Texto corrido ajustado: o `mercado` deixou de citar "redes nos shoppings" e o `academias` passou a citar as unidades da Smart Fit. **Pendência fora do escopo:** a lista de parques descreve o Horto Florestal com "academia ao ar livre"; conferir na próxima revisão da cidade.
+
+**Serra/ES** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Laranjeiras — "na Av. BNH, no Parque Residencial Laranjeiras" | **nome e detalhe corrigidos**: a única unidade da rede na Serra é a Shopping Aldeia da Serra, no Civit II (R. Um A, 572, CEP 29165-610); nenhuma na Av. BNH | página oficial (`/academias/es/serra`, `opened:true`); TotalPass lista "Smart Fit Laranjeiras" também no Civit II |
+| Ph.D Sports Laranjeiras — "também na Av. BNH" | **removida**: só o Wellhub (Av. BNH, 57); site oficial da rede bloqueado no ambiente e nenhuma segunda fonte | — |
+| Engenharia do Corpo — "no Shopping Montserrat, na Colina de Laranjeiras" | confirmada sem mudança (Av. Eldes Scherrer Souza, 2162) | Wellhub + ABRASCE (abertura no Shopping Montserrat, 2022) |
+| Prime Academias Laranjeiras — "unidade local na Primeira Avenida" | confirmada; detalhe completado: "na Primeira Avenida, no Parque Residencial Laranjeiras" (nº 231) | Wellhub + TotalPass, mesmo endereço |
+
+Saldo da leva: 7 entradas → 4 mantidas (3 com nome ou detalhe corrigido), 3 removidas. 84 cidades seguem na fila.

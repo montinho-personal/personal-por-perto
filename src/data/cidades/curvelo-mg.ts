@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'Como cidade-polo da região central, Curvelo tem uma cena de corrida de rua e atividade física ao ar livre em crescimento, com provas locais e grupos que usam as praças e vias centrais para treinar — um ambiente favorável a treinadores e assessorias de corrida.',
   academias:
     'A oferta acompanha o porte de cidade média mineira, com academias de musculação, estúdios de treino funcional e espaços de ginástica, complementados pelo uso de praças e áreas verdes do Centro para atividade física ao ar livre.',
+  academiasProximas: [
+    { nome: 'Limit Fitness', detalhe: 'na Avenida Othon Bezerra de Melo, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-19',
 
   destaquesFitness: [
     'Cidade-polo da região central de Minas, com comércio e serviços que atendem aos municípios vizinhos.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Curvelo', url: 'https://curvelo.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-17',
+  atualizadoEm: '2026-11-19',
 };

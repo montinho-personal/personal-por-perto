@@ -69,6 +69,10 @@ export const cidade: Cidade = {
     'A cultura esportiva é marcada pelo uso dos parques municipais e por grupos de caminhada e corrida, em uma cidade ligada à indústria de papel e celulose que valoriza a atividade física ao ar livre.',
   academias:
     'A oferta reúne academias locais e estúdios, complementados pelos parques com pistas e academias ao ar livre, com destaque para o Parque da Cidade.',
+  academiasProximas: [
+    { nome: 'Hardy Premium', detalhe: 'na Rua Rio Iguaçu' },
+  ],
+  academiasVerificadasEm: '2026-11-19',
 
   destaquesFitness: [
     'Parque da Cidade, no Centro, com pistas de corrida, academia ao ar livre e quadras.',
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Telêmaco Borba', url: 'https://www.telemacoborba.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4127106' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-19',
 };

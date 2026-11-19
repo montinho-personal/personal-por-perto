@@ -70,11 +70,11 @@ export const cidade: Cidade = {
     'A oferta de academias acompanha o porte e o crescimento do município, complementada pelas academias ao ar livre dos parques e das orlas revitalizadas, como a de Jacaraípe.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Laranjeiras', detalhe: 'na Av. BNH, no Parque Residencial Laranjeiras' },
-    { nome: 'Ph.D Sports Laranjeiras', detalhe: 'também na Av. BNH: musculação, funcional e aulas coletivas' },
+    { nome: 'Smart Fit Shopping Aldeia da Serra', detalhe: 'no Civit II' },
     { nome: 'Engenharia do Corpo', detalhe: 'no Shopping Montserrat, na Colina de Laranjeiras' },
-    { nome: 'Prime Academias Laranjeiras', detalhe: 'unidade local na Primeira Avenida' },
+    { nome: 'Prime Academias Laranjeiras', detalhe: 'na Primeira Avenida, no Parque Residencial Laranjeiras' },
   ],
+  academiasVerificadasEm: '2026-11-19',
 
   destaquesFitness: [
     'Parque da Cidade com pista de skate, calistenia, academias e ciclovia.',
@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Serra', url: 'https://www.serra.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-19',
   capaArte: {
     src: '/capas-cidade/serra-es.webp',
     w: 1200,
