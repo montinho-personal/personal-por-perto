@@ -51,9 +51,9 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~"Pode treinar 1 hora da manhã?"~~ | ~~FAQ em `/guias/personal-trainer-para-quem-trabalha-a-noite/`~~ — feito em 18/11 (FAQ, Stutz 2019) | `docs/personal-trainer-para-quem-trabalha-a-noite.md` |
 | ~~"Quais são os sinais de que o treino foi bom?"~~ | ~~seção ou FAQ em `/musculacao/dor-muscular-pos-treino/`~~ — feito em 18/11 (FAQ) | busca de 17/11 (`docs/quando-trocar-o-treino.md`) |
 | ~~"Quanto tempo de treino em casa dá resultado?"~~ | ~~FAQ em `/musculacao/treino-em-casa-para-iniciantes/`~~ — feito em 18/11 (FAQ, Calatayud 2015) | busca de 17/11 (`docs/ficha-de-treino.md`) |
-| "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`) |
-| "O que trava o emagrecimento?"; linkar as FAQs de "2 kg" para `peso-varia-de-um-dia-para-o-outro` | FAQ em `/emagrecimento/plato-de-emagrecimento/` | busca de 17/11 (`docs/peso-varia-de-um-dia-para-o-outro.md`) |
-| Colágeno para massa muscular (visão de IA de sarcopenia) | FAQ em `/musculacao/suplementos-que-nao-funcionam/`, se houver fonte | busca de 17/11 (`docs/sarcopenia.md`) |
+| "O que é o método 12-3-3-30?" | FAQ em `/emagrecimento/metodo-12-3-30/` | busca de 17/11 (`docs/ficha-de-treino.md`). ⏸ 19/11/2026: fica — nenhuma fonte define a variante (só o 12-3-30 de Lauren Giraldo); sem fonte, sem FAQ |
+| ~~"O que trava o emagrecimento?"; linkar as FAQs de "2 kg" para `peso-varia-de-um-dia-para-o-outro`~~ | ~~FAQ em `/emagrecimento/plato-de-emagrecimento/`~~ | ✅ 19/11/2026: FAQ nova (causas já com fonte na página, Sumithran 2011) e link no item "retenção" do corpo (FAQ do site não leva link: o schema copiaria o HTML) |
+| ~~Colágeno para massa muscular (visão de IA de sarcopenia)~~ | ~~FAQ em `/musculacao/suplementos-que-nao-funcionam/`~~ | ✅ 19/11/2026: parágrafo em "Os outros suspeitos" + FAQ, com Zdzieblik 2015 e Oikawa 2018 |
 | "Treino de musculação para emagrecer feminino" | FAQ em `/musculacao/musculacao-feminina-mitos/` | busca de 17/11 (`docs/como-emagrecer-fazendo-musculacao.md`) |
 | "Perder barriga sem perder massa muscular" | FAQ em `/emagrecimento/como-perder-barriga/` | busca de 17/11 (`docs/como-preservar-massa-muscular-emagrecendo.md`) |
 | "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |

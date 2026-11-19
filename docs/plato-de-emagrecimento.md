@@ -46,3 +46,14 @@ efeito platô.
   médico; "na dieta cetogênica" e "cardápio para sair do platô" —
   dieta específica, nutricionista; "eliminar 10 kg em 1 mês", "quantos kg
   perde 3 dias sem comer" — dieta de choque.
+
+## Parte 2 da pauta — 19/11/2026
+
+- FAQ "O que trava o emagrecimento?" (PAA da busca de 17/11 de
+  `peso-varia-de-um-dia-para-o-outro`): resume as causas da seção "Por que
+  o emagrecimento estaciona", que já têm fonte (Sumithran 2011 para fome e
+  hormônios), com ressalva de médico.
+- Link para `peso-varia-de-um-dia-para-o-outro` no item "Retenção de
+  líquidos" do corpo, no lugar de link dentro da FAQ dos 2 kg (nenhuma FAQ
+  do site leva link; o schema FAQPage copiaria o HTML cru).
+- atualizadoEm 2026-11-19.
