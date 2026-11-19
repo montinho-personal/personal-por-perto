@@ -114,5 +114,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Horizontina', url: 'https://www.horizontina.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-19',
 };

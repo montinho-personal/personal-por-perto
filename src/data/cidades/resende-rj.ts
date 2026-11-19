@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Resende', url: 'https://www.resende.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-17',
+  atualizadoEm: '2026-11-19',
 };

@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Barra de São Miguel', url: 'https://www.barradesaomiguel.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-19',
 };

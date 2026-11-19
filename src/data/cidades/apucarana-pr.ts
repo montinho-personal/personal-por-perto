@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Apucarana', url: 'https://www.apucarana.pr.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-19',
   capaArte: {
     src: '/capas-cidade/apucarana-pr.webp',
     w: 1200,

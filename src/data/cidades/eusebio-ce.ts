@@ -115,5 +115,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Eusébio', url: 'https://www.eusebio.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-07',
+  atualizadoEm: '2026-11-19',
 };

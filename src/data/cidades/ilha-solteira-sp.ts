@@ -84,5 +84,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM (Ilha Solteira)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/352044' },
     { nome: 'Prefeitura da Estância Turística de Ilha Solteira', url: 'https://ilhasolteira.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-19',
 };

@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — José de Freitas', url: 'https://cidades.ibge.gov.br/brasil/pi/jose-de-freitas/panorama' },
     { nome: 'Prefeitura de José de Freitas', url: 'https://josedefreitas.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-19',
 };

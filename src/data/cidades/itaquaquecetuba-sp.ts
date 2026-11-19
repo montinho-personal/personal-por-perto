@@ -122,7 +122,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaquaquecetuba', url: 'https://www.itaquaquecetuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3523107' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-11-19',
 
   capaArte: {
     src: '/capas-cidade/itaquaquecetuba-sp.webp',

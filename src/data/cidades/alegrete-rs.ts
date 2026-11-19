@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Alegrete', url: 'https://cidades.ibge.gov.br/brasil/rs/alegrete/panorama' },
     { nome: 'Prefeitura de Alegrete', url: 'https://www.alegrete.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-19',
 };

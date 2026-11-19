@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Teófilo Otoni', url: 'https://www.teofilootoni.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-01',
+  atualizadoEm: '2026-11-19',
 };

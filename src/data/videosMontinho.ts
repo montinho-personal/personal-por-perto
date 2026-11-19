@@ -276,6 +276,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'marataizes-es', 'miracema-do-tocantins-to', 'nova-lima-mg', 'olinda-pe', 'paraiba-do-sul-rj',
   'pirassununga-sp', 'ponta-pora-ms', 'presidente-dutra-ma', 'santa-cruz-do-sul-rs', 'santa-izabel-do-para-pa',
   'santa-rita-pb', 'santana-do-livramento-rs', 'sao-joao-de-meriti-rj', 'sao-marcos-rs', 'simao-dias-se',
+  // leva 5 — 19/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 4 conferida no ar)
+  'coxim-ms', 'resende-rj', 'lencois-paulista-sp', 'teofilo-otoni-mg', 'uruacu-go',
+  'valenca-ba', 'vassouras-rj', 'abreu-e-lima-pe', 'alegrete-rs', 'apucarana-pr',
+  'aracati-ce', 'aracatuba-sp', 'artur-nogueira-sp', 'barra-de-sao-miguel-al', 'belo-jardim-pe',
+  'bom-despacho-mg', 'cabrobo-pe', 'campina-grande-pb', 'cascavel-ce', 'chapadinha-ma',
+  'colinas-do-tocantins-to', 'congonhas-mg', 'cunha-sp', 'delmiro-gouveia-al', 'eldorado-do-sul-rs',
+  'eusebio-ce', 'ferraz-de-vasconcelos-sp', 'formosa-do-rio-preto-ba', 'governador-valadares-mg', 'holambra-sp',
+  'horizonte-ce', 'horizontina-rs', 'icapui-ce', 'icara-sc', 'iguatu-ce',
+  'ilha-solteira-sp', 'itabuna-ba', 'itapecerica-da-serra-sp', 'itapema-sc', 'itaquaquecetuba-sp',
+  'jijoca-de-jericoacoara-ce', 'jose-de-freitas-pi', 'juazeiro-ba', 'lagoa-santa-mg', 'laguna-sc',
+  'luis-correia-pi', 'macae-rj', 'maues-am', 'navegantes-sc', 'patos-de-minas-mg',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */
