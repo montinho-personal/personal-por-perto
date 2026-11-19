@@ -94,12 +94,12 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade jovem e em rápido crescimento da Região Metropolitana de Belém, Marituba ganha aos poucos praças, academias e eventos esportivos. Um personal trainer ajuda o morador a treinar com método nesse contexto em estruturação, aproveitando os espaços públicos e respeitando o calor equatorial.',
 
-  vizinhas: ['belem-pa', 'ananindeua-pa', 'castanhal-pa'],
+  vizinhas: ['belem-pa', 'ananindeua-pa', 'benevides-pa'],
 
   fontes: [
     { nome: 'IBGE Cidades — Marituba', url: 'https://cidades.ibge.gov.br/brasil/pa/marituba/panorama' },
     { nome: 'Prefeitura de Marituba', url: 'https://marituba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-10',
+  atualizadoEm: '2026-11-19',
 };

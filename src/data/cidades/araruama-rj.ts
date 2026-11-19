@@ -94,7 +94,10 @@ export const cidade: Cidade = {
   conclusao:
     'Às margens da maior lagoa hipersalina do mundo, Araruama tem na Orla Oscar Niemeyer uma das melhores estruturas de treino ao ar livre da Região dos Lagos. Um personal trainer ajuda a aproveitá-la com método, ajustando horários e hidratação ao sol forte da região.',
 
-  vizinhas: ['cabo-frio-rj', 'saquarema-rj', 'marica-rj'],
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
+  vizinhas: ['cabo-frio-rj', 'saquarema-rj', 'sao-pedro-da-aldeia-rj'],
 
   capaArte: {
     src: '/capas-cidade/araruama-rj.webp',
@@ -108,5 +111,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araruama', url: 'https://www.araruama.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-19',
 };
