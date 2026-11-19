@@ -160,6 +160,7 @@ export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
  *     Santana de Parnaíba, Aldeia da Serra.
  *   22/10/2026 — leva 1: as 10 cidades com mais impressões em 28 dias no GSC.
  *   26/10/2026 — leva 2: as 20 seguintes. 29/10/2026 — leva 3: mais 20. 01/11/2026 — leva 4: mais 20.
+ *   19/11/2026 — leva 9: mais 20, já com vídeo do canal (vídeo duplo liberado pelo Renato).
  */
 export const VIDEO_APP_ID = 'DPAQDPVffCg';
 export const CIDADES_COM_VIDEO_APP = new Set<string>([
@@ -204,6 +205,12 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'arcos-mg', 'flores-da-cunha-rs', 'pederneiras-sp', 'santarem-pa', 'brumado-ba',
   'erechim-rs', 'itaperuna-rj', 'sao-miguel-do-gostoso-rn', 'sao-pedro-sp', 'tiangua-ce',
   'araguaina-to', 'campo-mourao-pr', 'mariana-mg', 'presidente-prudente-sp', 'sao-jose-do-rio-pardo-sp',
+  // leva 9 — 19/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 8 conferida no ar).
+  // Vídeo duplo app + canal liberado pelo Renato em 19/11: os dois são do canal dele.
+  'juazeiro-do-norte-ce', 'itajuba-mg', 'itaborai-rj', 'itacoatiara-am', 'urubici-sc',
+  'cangucu-rs', 'surubim-pe', 'caxias-ma', 'lapa-pr', 'mineiros-go',
+  'sao-carlos-sp', 'cambui-mg', 'mangaratiba-rj', 'parnaiba-pi', 'alagoinhas-ba',
+  'assis-sp', 'brusque-sc', 'caxambu-mg', 'cotia-sp', 'estancia-se',
   // 10/11/2026: fora da fila de impressões, junto com o piloto do modelo enxuto
   // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
   'natal-rn', 'contagem-mg', 'ananindeua-pa',
