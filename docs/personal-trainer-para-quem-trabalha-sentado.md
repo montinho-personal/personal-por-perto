@@ -30,7 +30,13 @@ a 60". Cita Drauzio Varella, BBC, Tua Saúde, Nav Dasa, Jornal da USP.
 | AC "treino para gamer" → "pre treino para gamers", "treino gamer ps5/switch", "fps" | ✖ fora: suplemento ou treino de jogo (mira), não de corpo |
 | IA "2 a 5 minutos a cada 30 a 60" | ✖ fora: IA não é fonte; entrou o número do estudo (5 min a cada 30) |
 
-Título e descrição mantidos (página de serviço; a revisão só acrescenta).
+Título — APROVADO pelo Renato em 20/11/2026 ("pode seguir") e aplicado:
+- ATUAL: "Personal trainer para quem trabalha sentado" (43, abaixo de 45)
+- PROPOSTA enviada: "Personal Trainer para Quem Trabalha Sentado: Faz Mal? O Que Fazer"
+  (65 — passava do limite de 60; erro meu na proposta)
+- APLICADO: "Personal Trainer para Quem Trabalha Sentado: Faz Mal?" (53), a mesma
+  proposta sem o final, para caber no limite.
+- MOTIVO: traz a busca "ficar muito tempo sentado faz mal". Descrição mantida.
 Referências novas: Ekelund 2016, Henson 2020, Bull 2020 (OMS).
 atualizadoEm 20/11 (revisão real).
 
