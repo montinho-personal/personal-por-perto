@@ -28,6 +28,20 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 9 | Treinar na praia: o que a areia muda | lista de guias de cidade (09/2026) | — | ⚠️ recorte de `treinar-ao-ar-livre` |
 | 10 | Academia de bairro ou rede grande | idem | — | ⚠️ conferir contra `personal-trainer-em-academia` |
 | 11 | Mudei de cidade: como retomar o treino | idem | — | ⚠️ sem demanda medida; por último ou não entra |
+| 12 | Jogar videogame gasta calorias? (gancho do GTA 6) | publicado lá em 20/11 (`jogar-videogame-gasta-calorias`); METs do Compêndio 2024 | — | nada com "videogame"; entra em `calorias/` e liga em gasto calórico diário. Texto do zero, sem copiar o de lá |
+| 13 | Prancha lateral: como fazer | exercício sem página nos dois sites | 27.100 (Planejador, pauta do Montinho) | só `prancha-abdominal-como-fazer`; liga nela |
+| 14 | Abdominal bicicleta: como fazer | idem | 18.100 (idem) | só `treino-de-abdomen` |
+| 15 | Tríceps no banco: como fazer | idem | 18.100 (idem) | nada; liga em `treino-de-bracos` |
+| 16 | Rosca 21: como fazer | idem | 14.800 (idem) | nada; liga em `rosca-direta-como-fazer` |
+| 17 | Tríceps coice: como fazer | idem | 14.800 (idem) | "coice" só no de glúteo |
+| 18 | Farmer walk (caminhada do fazendeiro) | idem; é estação do HYROX | 9.900 (idem) | nada; liga em `treino-hyrox` e `pegada-e-antebraco` |
+| 19 | Roda abdominal: como fazer | idem | 4.400 (idem) | nada |
+| 20 | Barra australiana (remada invertida) | idem | 4.400 (idem) | nada; liga em `barra-fixa-como-fazer` |
+| 21 | Step up (subida no banco) | idem | 2.900 (idem) | nada |
+| 22 | Nordic curl | idem | 2.400 (idem) | nada; liga em `treino-de-posterior-de-coxa` |
+| 23 | Aula experimental em academia é obrigatória? O que diz a lei | PAA e autocompletar "aula experimental academia lei" (busca do Montinho, 18/11) | — | nada; só com fonte legal (lei ou Procon) |
+| 24 | Gympass (Wellhub) ou TotalPass: qual sai mais barato | PAA de "day use academia barueri" (busca do Montinho, 18/11) | — | nada; preços só das tabelas oficiais |
+| 25 | Fome depois do treino: por que acontece | PAA de "continua queimando calorias depois do treino" (busca do Montinho, 16/11) | 20 (idem) | nada; explicar sem prescrever dieta |
 
 Gancho do lançamento do GTA 6 (19/11/2026), pedido do Renato em 20/11 ("pode fazer os 3"): ~~Memes do GTA 6 para quem treina~~ → `memes-gta-6`, 20/11; ~~GTA 6 tem academia?~~ → `gta-6-tem-academia`, 20/11; ~~ficar muito tempo sentado faz mal~~ → virou revisão de `personal-trainer-para-quem-trabalha-sentado` (página nova canibalizaria), 20/11.
 
@@ -59,6 +73,13 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~"Treino de musculação para emagrecer feminino"~~ | ~~FAQ em `/musculacao/musculacao-feminina-mitos/`~~ | ✅ 19/11/2026: FAQ + parágrafo no Mito 2, com Roberts 2020 (meta-análise de diferenças entre sexos) |
 | ~~"Perder barriga sem perder massa muscular"~~ | ~~FAQ em `/emagrecimento/como-perder-barriga/`~~ | ✅ 19/11/2026: FAQ com Wewege 2022 e Longland 2016 + link para `como-preservar-massa-muscular-emagrecendo` |
 | "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
+| Ponte de glúteo (no chão, sem banco) | seção em `/musculacao/elevacao-pelvica-como-fazer/` | pauta do Montinho, 12.100/mês (20/11) |
+| Levantamento terra sumô | seção em `/musculacao/levantamento-terra-como-fazer/` | pauta do Montinho, 18.100/mês (20/11) |
+| Rosca de punho | seção em `/musculacao/pegada-e-antebraco/` | pauta do Montinho, 5.400/mês (20/11) |
+| Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11) |
+| Kickboxing: quantas calorias gasta | seção em `/calorias/lutas/` | pauta do Montinho, 110/mês (20/11) |
+| Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11) |
+| Esportes que mais queimam calorias | seção no hub `/calorias/` (comparando as páginas que já existem) | pauta do Montinho, 210/mês (20/11) |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
