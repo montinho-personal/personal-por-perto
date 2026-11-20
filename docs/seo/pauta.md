@@ -73,6 +73,7 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~"Treino de musculação para emagrecer feminino"~~ | ~~FAQ em `/musculacao/musculacao-feminina-mitos/`~~ | ✅ 19/11/2026: FAQ + parágrafo no Mito 2, com Roberts 2020 (meta-análise de diferenças entre sexos) |
 | ~~"Perder barriga sem perder massa muscular"~~ | ~~FAQ em `/emagrecimento/como-perder-barriga/`~~ | ✅ 19/11/2026: FAQ com Wewege 2022 e Longland 2016 + link para `como-preservar-massa-muscular-emagrecendo` |
 | "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
+| "É possível ganhar 1 kg de músculo em 1 mês?" | FAQ em `/musculacao/quanto-tempo-para-ver-resultados/` | busca de 20/11 (`docs/quantas-vezes-por-semana-personal-trainer.md`) |
 | Ponte de glúteo (no chão, sem banco) | seção em `/musculacao/elevacao-pelvica-como-fazer/` | pauta do Montinho, 12.100/mês (20/11) |
 | Levantamento terra sumô | seção em `/musculacao/levantamento-terra-como-fazer/` | pauta do Montinho, 18.100/mês (20/11) |
 | Rosca de punho | seção em `/musculacao/pegada-e-antebraco/` | pauta do Montinho, 5.400/mês (20/11) |
@@ -104,7 +105,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/guias/personal-online-funciona/`~~ | ~~Personal trainer online funciona?~~ | ✅ revisado 19/11/2026 (`personal-online-funciona`); título mantido |
 | ~~2026-07-07~~ | ~~`/guias/personal-trainer-para-emagrecimento/`~~ | ~~Personal trainer para emagrecimento: como escolher~~ | ✅ revisado 19/11/2026 (`personal-trainer-para-emagrecimento`); título em proposta |
 | ~~2026-07-07~~ | ~~`/guias/personal-trainer-para-iniciantes/`~~ | ~~Personal trainer para iniciantes: vale a pena contratar?~~ | ✅ revisado 20/11/2026 (`personal-trainer-para-iniciantes`); título em proposta |
-| 2026-07-07 | `/guias/quantas-vezes-por-semana-personal-trainer/` | Quantas vezes por semana treinar com personal trainer |  |
+| ~~2026-07-07~~ | ~~`/guias/quantas-vezes-por-semana-personal-trainer/`~~ | ~~Quantas vezes por semana treinar com personal trainer~~ | ✅ revisado 20/11/2026 (`quantas-vezes-por-semana-personal-trainer`); descrição em proposta |
 | 2026-07-07 | `/musculacao/abc-ou-full-body/` | ABC ou Full Body: qual a melhor divisão de treino |  |
 | 2026-07-07 | `/musculacao/hipertrofia-como-funciona/` | Hipertrofia: como funciona o crescimento muscular |  |
 | 2026-07-07 | `/musculacao/progressao-de-carga/` | Como progredir de carga na musculação |  |
