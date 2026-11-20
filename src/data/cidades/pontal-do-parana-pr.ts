@@ -95,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pontal do Paraná', url: 'https://www.pontaldoparana.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-20',
 };

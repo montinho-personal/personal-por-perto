@@ -94,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Goiás Turismo — Santuário Basílica do Divino Pai Eterno', url: 'https://www.goiasturismo.go.gov.br/pt/atracoes/santuario-basilica-do-divino-pai-eterno' },
   ],
-  atualizadoEm: '2026-10-14',
+  atualizadoEm: '2026-11-20',
 };

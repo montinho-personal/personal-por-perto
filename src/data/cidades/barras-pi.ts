@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura Municipal de Barras', url: 'https://www.barras.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-20',
 };

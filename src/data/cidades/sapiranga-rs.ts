@@ -109,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sapiranga', url: 'https://www.sapiranga.rs.gov.br/' },
     { nome: 'Turismo RS — Morro Ferrabraz', url: 'https://www.turismo.rs.gov.br/turismo/atrativo/visualizar/4109' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-20',
 };

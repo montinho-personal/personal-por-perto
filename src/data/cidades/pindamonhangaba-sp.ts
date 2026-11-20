@@ -98,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pindamonhangaba', url: 'https://www.pindamonhangaba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-02',
+  atualizadoEm: '2026-11-20',
 };

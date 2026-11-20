@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alcântara', url: 'https://alcantara.ma.gov.br/' },
     { nome: 'IPHAN — Alcântara', url: 'http://portal.iphan.gov.br/pagina/detalhes/121' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-11-20',
 };

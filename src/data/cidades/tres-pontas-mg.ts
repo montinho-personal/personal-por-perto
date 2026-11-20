@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/316940' },
     { nome: 'Câmara Municipal de Três Pontas — Dados do Município', url: 'https://www.camaratrespontas.mg.gov.br/a-camara/dados-do-municipio-de-tres-pontas' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-20',
 };

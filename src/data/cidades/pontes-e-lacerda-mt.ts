@@ -99,5 +99,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pontes e Lacerda', url: 'https://www.ponteselacerda.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/5106752' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-20',
 };

@@ -94,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional do Pico da Neblina', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/amazonia/lista-de-ucs/parna-do-pico-da-neblina' },
     { nome: 'Portal Amazônia — São Gabriel da Cachoeira', url: 'https://portalamazonia.com/amazonia-de-a-a-z/sao-gabriel-da-cachoeira/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-11-20',
 };

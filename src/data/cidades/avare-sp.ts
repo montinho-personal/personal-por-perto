@@ -103,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Avaré', url: 'https://www.avare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3504503' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-20',
   capaArte: {
     src: '/capas-cidade/avare-sp.webp',
     w: 1200,

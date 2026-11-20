@@ -103,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Alfenas', url: 'https://www.alfenas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-20',
   capaArte: {
     src: '/capas-cidade/alfenas-mg.webp',
     w: 1200,

@@ -294,6 +294,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'ilha-solteira-sp', 'itabuna-ba', 'itapecerica-da-serra-sp', 'itapema-sc', 'itaquaquecetuba-sp',
   'jijoca-de-jericoacoara-ce', 'jose-de-freitas-pi', 'juazeiro-ba', 'lagoa-santa-mg', 'laguna-sc',
   'luis-correia-pi', 'macae-rj', 'maues-am', 'navegantes-sc', 'patos-de-minas-mg',
+  // leva 6 — 20/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 5 conferida no ar)
+  'cruz-das-almas-ba', 'salgueiro-pe', 'taboao-da-serra-sp', 'pau-dos-ferros-rn', 'picos-pi',
+  'pindamonhangaba-sp', 'pitangui-mg', 'piuma-es', 'pontal-do-parana-pr', 'pontes-e-lacerda-mt',
+  'porto-seguro-ba', 'quissama-rj', 'ribeirao-das-neves-mg', 'santana-do-ipanema-al', 'santo-antonio-de-padua-rj',
+  'sao-gabriel-da-cachoeira-am', 'sao-joao-da-barra-rj', 'sao-luiz-gonzaga-rs', 'sapiranga-rs', 'sinop-mt',
+  'tocantinopolis-to', 'tramandai-rs', 'tres-pontas-mg', 'trindade-go', 'urucui-pi',
+  'vargem-grande-do-sul-sp', 'vespasiano-mg', 'agua-boa-mt', 'aguas-de-lindoia-sp', 'alcantara-ma',
+  'alfenas-mg', 'anchieta-es', 'angra-dos-reis-rj', 'anicuns-go', 'aquidauana-ms',
+  'araxa-mg', 'arroio-grande-rs', 'avare-sp', 'barbalha-ce', 'barcarena-pa',
+  'barra-do-corda-ma', 'barra-velha-sc', 'barras-pi', 'bento-goncalves-rs', 'brotas-sp',
+  'cabedelo-pb', 'cacapava-sp', 'cachoeirinha-rs', 'cajuru-sp', 'caldas-novas-go',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */
