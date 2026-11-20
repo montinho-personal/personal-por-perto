@@ -28,7 +28,7 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 9 | Treinar na praia: o que a areia muda | lista de guias de cidade (09/2026) | — | ⚠️ recorte de `treinar-ao-ar-livre` |
 | 10 | Academia de bairro ou rede grande | idem | — | ⚠️ conferir contra `personal-trainer-em-academia` |
 | 11 | Mudei de cidade: como retomar o treino | idem | — | ⚠️ sem demanda medida; por último ou não entra |
-| 12 | Jogar videogame gasta calorias? (gancho do GTA 6) | publicado lá em 20/11 (`jogar-videogame-gasta-calorias`); METs do Compêndio 2024 | — | nada com "videogame"; entra em `calorias/` e liga em gasto calórico diário. Texto do zero, sem copiar o de lá |
+| 12 | Jogar videogame gasta calorias? (gancho do GTA 6) | publicado lá em 20/11 (`jogar-videogame-gasta-calorias`); METs do Compêndio 2024 | — | ⚠️ conferir contra `guias/gta-6-tem-academia` (publicado em 20/11 por outra sessão), que cita videogame; se lá já responde quanto gasta, vira seção dele. Senão entra em `calorias/`. Texto do zero, sem copiar o de lá |
 | 13 | Prancha lateral: como fazer | exercício sem página nos dois sites | 27.100 (Planejador, pauta do Montinho) | só `prancha-abdominal-como-fazer`; liga nela |
 | 14 | Abdominal bicicleta: como fazer | idem | 18.100 (idem) | só `treino-de-abdomen` |
 | 15 | Tríceps no banco: como fazer | idem | 18.100 (idem) | nada; liga em `treino-de-bracos` |
