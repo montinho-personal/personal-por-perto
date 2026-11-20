@@ -103,7 +103,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/emagrecimento/musculacao-ou-cardio-para-emagrecer/`~~ | ~~Musculação ou cardio: o que emagrece mais?~~ | ✅ revisado 18/11/2026 (`musculacao-ou-cardio-para-emagrecer`); título e descrição em proposta |
 | ~~2026-07-07~~ | ~~`/guias/personal-online-funciona/`~~ | ~~Personal trainer online funciona?~~ | ✅ revisado 19/11/2026 (`personal-online-funciona`); título mantido |
 | ~~2026-07-07~~ | ~~`/guias/personal-trainer-para-emagrecimento/`~~ | ~~Personal trainer para emagrecimento: como escolher~~ | ✅ revisado 19/11/2026 (`personal-trainer-para-emagrecimento`); título em proposta |
-| 2026-07-07 | `/guias/personal-trainer-para-iniciantes/` | Personal trainer para iniciantes: vale a pena contratar? |  |
+| ~~2026-07-07~~ | ~~`/guias/personal-trainer-para-iniciantes/`~~ | ~~Personal trainer para iniciantes: vale a pena contratar?~~ | ✅ revisado 20/11/2026 (`personal-trainer-para-iniciantes`); título em proposta |
 | 2026-07-07 | `/guias/quantas-vezes-por-semana-personal-trainer/` | Quantas vezes por semana treinar com personal trainer |  |
 | 2026-07-07 | `/musculacao/abc-ou-full-body/` | ABC ou Full Body: qual a melhor divisão de treino |  |
 | 2026-07-07 | `/musculacao/hipertrofia-como-funciona/` | Hipertrofia: como funciona o crescimento muscular |  |
