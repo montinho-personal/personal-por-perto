@@ -1,0 +1,248 @@
+---
+/**
+ * GTA 6 tem academia? — o que a Rockstar confirmou sobre academia, comida e
+ * sono mudando o corpo de Jason e Lucia, e quanto disso vale na vida real.
+ *
+ * Pedido do Renato em 20/11/2026 ("pode fazer os 3"), um dia depois do
+ * lançamento do jogo (19/11/2026). Escrito DEPOIS da pesquisa no SerpApi
+ * (celular, São Paulo, 20/11/2026): "gta 6 vai ter academia" + autocompletar
+ * de "gta 6 academia". Registro em docs/gta-6-tem-academia.md; JSON em
+ * docs/pesquisas/2026-11-20-gta-6/.
+ *
+ * Fontes do jogo (dois veículos independentes, ambos citando Rob Nelson,
+ * codiretor da Rockstar North, e a entrevista à revista Dazed): Woo! Magazine
+ * e Rolling Stone Brasil, publicadas no Terra (26 a 30/08/2026).
+ * Fontes da vida real: Nedeltcheva 2010 (sono), Henson 2020 (pausas),
+ * ACSM 2009 (progressão).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/humor-fitness/memes-gta-6/', titulo: 'Memes do GTA 6 para quem treina', descricao: 'O lado engraçado do lançamento, visto da academia.', tipo: 'Humor' },
+  { url: '/musculacao/quanto-tempo-para-ver-resultados/', titulo: 'Quanto tempo para ver resultados', descricao: 'O prazo real do músculo fora do videogame.', tipo: 'Musculação' },
+  { url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Para quem passa o dia sentado', descricao: 'O que horas de cadeira fazem com o corpo, e as pausas que ajudam.', tipo: 'Guia' },
+];
+
+const path = '/guias/gta-6-tem-academia';
+const atualizadoEm = '2026-11-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'GTA 6 tem academia?', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre a academia do GTA 6';
+const faqs = [
+  {
+    pergunta: 'GTA 6 tem academia?',
+    resposta:
+      'Tem. A Rockstar confirmou que Jason e Lucia podem treinar nas academias do jogo e que o exercício muda o corpo dos dois, numa ideia que lembra o GTA San Andreas. Força e condicionamento também sobem com corrida e luta.',
+  },
+  {
+    pergunta: 'No GTA 6, comer muito engorda o personagem?',
+    resposta:
+      'Sim. Segundo o codiretor da Rockstar North, comer em excesso aumenta a gordura corporal do personagem. As mudanças respeitam o físico original de Jason e Lucia: o corpo responde aos poucos, sem virar outro personagem.',
+  },
+  {
+    pergunta: 'Dormir pouco muda o personagem no GTA 6?',
+    resposta:
+      'Muda. A Rockstar disse à revista Dazed que a aparência dos protagonistas depende da alimentação, do exercício e do sono, e que passar dias sem dormir ou na farra também deixa marcas. Na vida real o sono pesa do mesmo jeito: dormir pouco atrapalha a perda de gordura.',
+  },
+  {
+    pergunta: 'Quando o GTA 6 foi lançado e onde se passa?',
+    resposta:
+      'Foi lançado em 19 de novembro de 2026, para PlayStation 5 e Xbox Series X|S. O jogo se passa em Vice City, a versão do jogo para Miami.',
+  },
+  {
+    pergunta: 'Ganhar músculo no GTA 6 é igual à vida real?',
+    resposta:
+      'Não no tempo. No jogo, algumas sessões já aparecem no corpo. Na vida real o ganho de massa leva semanas para começar a aparecer e meses para ficar evidente, e depende de carga que sobe aos poucos, comida suficiente e sono.',
+  },
+];
+
+const title = 'GTA 6 tem academia? Como o treino muda Jason e Lucia';
+const description =
+  'Sim: no GTA 6, academia, comida e sono mudam o corpo de Jason e Lucia. Veja o que a Rockstar confirmou e o que vale fora do videogame.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>GTA 6 tem academia? O que o treino faz no jogo e na vida real</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+    <p class="lead">
+      Tem. No GTA 6, lançado em 19 de novembro de 2026, Jason e Lucia podem
+      treinar nas academias do jogo, e o corpo dos dois muda com o que você
+      faz: exercício ganha músculo, comida demais vira gordura e noites sem
+      dormir deixam marca. A Rockstar confirmou a mecânica antes do
+      lançamento. Abaixo, o que ela disse e quanto disso funciona igual
+      fora da tela.
+    </p>
+
+    <div class="prose">
+      <h2>O que a Rockstar confirmou sobre a academia do GTA 6</h2>
+      <p>
+        Quem confirmou foi Rob Nelson, codiretor da Rockstar North, numa
+        demonstração do jogo e numa entrevista à revista britânica Dazed.
+        Pelo que ele contou:
+      </p>
+      <ul>
+        <li><strong>Academia muda o visual:</strong> treinar nas academias do jogo tem efeito no corpo dos protagonistas, numa ideia que já existia no GTA San Andreas.</li>
+        <li><strong>Força e condicionamento sobem</strong> com exercício, corrida e luta.</li>
+        <li><strong>Comida conta:</strong> comer em excesso aumenta a gordura corporal do personagem. A demonstração mostrou atributos de calorias, músculos, gordura corporal e força.</li>
+        <li><strong>Sono também:</strong> a aparência depende de alimentação, exercício e sono, e passar dias sem dormir ou na farra afeta Jason e Lucia.</li>
+        <li><strong>Tem limite:</strong> as mudanças respeitam o físico de cada um. O corpo responde aos poucos às escolhas do jogador, sem fugir do desenho original dos personagens.</li>
+      </ul>
+
+      <h2>No jogo × na vida real</h2>
+      <p>
+        A Rockstar acertou na lista: treino, comida e sono são mesmo os três
+        botões que mudam um corpo. O que o videogame encurta é o tempo.
+      </p>
+
+      <h3>Músculo: semanas, não sessões</h3>
+      <p>
+        No jogo, algumas idas à academia já aparecem no personagem. Fora
+        dele, o ganho de massa leva semanas para começar e meses para ficar
+        visível no espelho, e só continua se a carga subir aos poucos, o
+        princípio que as recomendações do American College of Sports
+        Medicine chamam de progressão. O prazo realista, com estudos, está em
+        <a href="/musculacao/quanto-tempo-para-ver-resultados/">quanto tempo
+        para ver resultados</a>.
+      </p>
+
+      <h3>Comida: a conta é a mesma</h3>
+      <p>
+        "Comer demais engorda o personagem" é o déficit e o superávit
+        calórico em versão de videogame. Na vida real, cerca de 7.700 kcal
+        acumuladas equivalem a 1 kg de gordura, para mais ou para menos, e a
+        balança do dia a dia oscila com água e comida no intestino, o que o
+        jogo não simula.
+      </p>
+
+      <FerramentaInline
+        id="gasto-calorico-diario"
+        texto="Jason e Lucia têm a barra de calorias na tela; você não. A calculadora estima quanto o seu corpo gasta por dia, em faixa, para você saber de onde parte a conta."
+        acao="Calcular o meu gasto calórico diário"
+      />
+
+      <h3>Sono: aqui o jogo está certo</h3>
+      <p>
+        A Rockstar fez o sono pesar, e a ciência concorda. Num estudo com
+        adultos em dieta, quem dormiu 5,5 horas por noite perdeu menos
+        gordura e mais massa magra do que quem dormiu 8,5 horas, comendo a
+        mesma coisa. O cansaço de quem treina e dorme mal está em
+        <a href="/musculacao/cansaco-depois-do-treino/">cansaço depois do
+        treino</a>.
+      </p>
+
+      <h2>O treino que o personagem faz por você</h2>
+      <p>
+        A ironia da semana de lançamento: o personagem malha enquanto quem
+        joga passa horas sentado. Para quem vai encarar uma maratona de
+        jogo, uma pausa curta faz diferença. Em quatro estudos somados,
+        levantar e se mexer de leve por 5 minutos a cada 30 minutos sentado
+        reduziu a glicose e a insulina depois das refeições. Ficar só em pé
+        não teve o mesmo efeito. O que horas de cadeira fazem com o corpo,
+        e como compensar, está no guia
+        <a href="/guias/personal-trainer-para-quem-trabalha-sentado/">para
+        quem passa o dia sentado</a>.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o GTA 6 tem academia, e o corpo de Jason
+        e Lucia muda com treino, comida e sono, como o seu. A diferença é o
+        relógio: o que o jogo mostra em uma tarde, a vida real entrega em
+        meses de constância.
+      </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://www.terra.com.br/parceiros/woo-magazine/gta-vi-tera-academia-e-comida-capaz-de-mudar-corpo-de-jason-e-lucia,7ea35e885a5584ec276d12f5dad9ec6eo25ti50k.html" target="_blank" rel="noopener noreferrer">Woo! Magazine (no Terra). GTA VI terá academia e comida capaz de mudar corpo de Jason e Lucia, 27/08/2026</a></li>
+        <li><a href="https://www.terra.com.br/gameon/gta-6-tera-mundo-mais-realista-e-reativo-do-que-antes,ed89e97b9103b1e0f88f11ff94114e7bnp5i4ssx.html" target="_blank" rel="noopener noreferrer">Rolling Stone Brasil (no Terra). GTA 6 terá "mundo mais realista e reativo do que antes", 30/08/2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/20921542/" target="_blank" rel="noopener noreferrer">Nedeltcheva AV, Kilkus JM, Imperial J, et al. Insufficient sleep undermines dietary efforts to reduce adiposity. Annals of Internal Medicine, 2010</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/31895295/" target="_blank" rel="noopener noreferrer">Henson J, Edwardson CL, Celis-Morales CA, et al. Predictors of the acute postprandial response to breaking up prolonged sitting. Medicine &amp; Science in Sports &amp; Exercise, 2020</a></li>
+        <li>Conferidas em 20/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+</style>

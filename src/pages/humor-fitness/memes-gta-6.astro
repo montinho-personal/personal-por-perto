@@ -1,0 +1,194 @@
+---
+/**
+ * Memes do GTA 6 para quem treina — o lançamento do jogo (19/11/2026) visto
+ * da academia. Humor: sem @montinho_personal e sem CTA de consultoria no
+ * corpo (regra do CLAUDE.md); sem convite de ferramenta (regra do humor).
+ *
+ * Pedido do Renato em 20/11/2026 ("pode fazer os 3"). Escrito DEPOIS da
+ * pesquisa no SerpApi (celular, São Paulo, 20/11/2026): "memes gta 6" +
+ * autocompletar. Registro em docs/memes-gta-6.md; JSON em
+ * docs/pesquisas/2026-11-20-gta-6/. Piadas próprias; o único fato é a data
+ * de lançamento (Terra/Woo! Magazine e Rolling Stone Brasil).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import { breadcrumbSchema, articleSchema, faqSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { rotas } from '../../lib/links';
+
+const relacionados = [
+  {
+    url: '/guias/gta-6-tem-academia/',
+    titulo: 'GTA 6 tem academia? O que o treino faz no jogo e na vida real',
+    descricao: 'A versão séria da piada: o que a Rockstar confirmou e quanto disso vale fora da tela.',
+    tipo: 'Guia',
+  },
+  {
+    url: '/humor-fitness/meme-de-leg-day/',
+    titulo: 'Meme de leg day: por que o treino de perna rende tanta piada',
+    descricao: 'O dia de perna que todo mundo adia, agora com uma desculpa nova.',
+    tipo: 'Humor',
+  },
+  {
+    url: '/humor-fitness/memes-de-academia/',
+    titulo: 'Memes de academia: os melhores para mandar no grupo de treino',
+    descricao: 'Os clássicos que não precisam de lançamento para render.',
+    tipo: 'Humor',
+  },
+];
+
+const path = '/humor-fitness/memes-gta-6';
+const atualizadoEm = '2026-11-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Humor fitness', url: rotas.humor },
+  { nome: 'Memes do GTA 6 para quem treina', url: path },
+];
+
+const faqs = [
+  {
+    pergunta: 'Quais são os memes do GTA 6 mais repetidos?',
+    resposta:
+      'Os do dia do lançamento: a desculpa para faltar ao trabalho, a biblioteca de jogos abandonada de uma hora para outra e a sessão que começa à meia-noite e termina de manhã. Para quem treina, entram o leg day remarcado e a ironia do personagem que vai à academia enquanto o jogador não sai do sofá.',
+  },
+  {
+    pergunta: 'O personagem do GTA 6 malha mesmo?',
+    resposta:
+      'Malha. Jason e Lucia podem treinar nas academias do jogo, e o corpo deles muda com exercício, comida e sono. O que a Rockstar confirmou, e o que vale na vida real, está no nosso guia sobre a academia do GTA 6.',
+  },
+  {
+    pergunta: 'Dá para jogar GTA 6 e não largar o treino?',
+    resposta:
+      'Dá, e o meme ajuda a lembrar. Treino marcado na agenda antes da sessão de jogo, pausa para levantar de tempos em tempos e o leg day no dia combinado, não "depois de zerar".',
+  },
+];
+
+const title = 'Memes do GTA 6 para quem treina: o jogo × a academia';
+const description =
+  'Os memes do lançamento do GTA 6 vistos da academia: o leg day trocado pelo console, o personagem que malha por você e a lombar da maratona.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container article-solo">
+    <article class="article-page">
+    <p class="eyebrow">Humor fitness</p>
+    <h1>Memes do GTA 6 para quem treina: o jogo × a academia</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+
+    <p class="lead">
+      O GTA 6 saiu em 19 de novembro de 2026, e a academia sentiu. O grupo
+      do treino que antes mandava foto de pré-treino agora manda print de
+      Vice City. Estes são os memes do lançamento que mais conversam com
+      quem treina, e o que cada um tem de verdade por trás.
+    </p>
+
+    <div class="prose">
+      <h2>"Leg day remarcado: volto depois de zerar"</h2>
+      <p>
+        O treino de perna sempre foi o primeiro a ser adiado, e agora ganhou
+        a melhor desculpa da década. O meme da pessoa que "só vai jogar uma
+        missão" e reaparece na academia três semanas depois é o leg day
+        clássico com trilha sonora nova. A história completa do dia mais
+        evitado da semana está no
+        <a href="/humor-fitness/meme-de-leg-day/">meme de leg day</a>.
+      </p>
+
+      <h2>O personagem vai à academia, você não</h2>
+      <p>
+        A ironia mais compartilhada: no GTA 6, Jason e Lucia podem treinar e
+        ganhar músculo, enquanto quem segura o controle está há seis horas
+        na mesma posição. É o primeiro shape terceirizado da história. A
+        versão séria, com o que a Rockstar confirmou e quanto tempo o mesmo
+        resultado leva fora da tela, está no guia
+        <a href="/guias/gta-6-tem-academia/">GTA 6 tem academia?</a>
+      </p>
+
+      <h2>A pizza da maratona também conta</h2>
+      <p>
+        No jogo, comer demais engorda o personagem. Fora dele, a pizza da
+        madrugada de lançamento obedece à mesma regra, só que sem barra de
+        calorias na tela. O meme do "foi o Jason que comeu" não convence
+        a balança; o que convence está explicado em
+        <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>.
+      </p>
+
+      <h2>A lombar depois de 14 horas de Vice City</h2>
+      <p>
+        Todo lançamento grande tem o meme da pessoa que se levanta do sofá
+        depois da maratona e descobre que o corpo travou na posição de
+        jogo. Aqui o humor tem fundo real: horas sem levantar cobram da
+        circulação, da lombar e do quadril. O que ajuda, sem largar o jogo,
+        está no guia
+        <a href="/guias/personal-trainer-para-quem-trabalha-sentado/">para
+        quem passa o dia sentado</a>.
+      </p>
+
+      <h2>Projeto verão × projeto zerar</h2>
+      <p>
+        Novembro é o mês do projeto verão, e este ano ele bateu de frente
+        com o lançamento. O resultado é o meme do calendário dividido ao
+        meio: metade "cutting", metade "só mais uma missão". Spoiler: o
+        verão chega antes do fim da história principal.
+      </p>
+
+      <h2>"Fui à academia" (no jogo)</h2>
+      <p>
+        O check-in mais honesto da semana: a pessoa jura que treinou todos
+        os dias, e treinou, só que com o personagem. É o tipo de piada que
+        funciona porque todo mundo já trocou um treino por alguma coisa.
+        Para quem quer voltar à rotina sem drama, o guia de
+        <a href="/guias/como-nao-desistir-do-treino/">como não desistir do
+        treino</a> ajuda.
+      </p>
+
+      <div class="callout">
+        <strong>Entre uma missão e outra:</strong> meme é entretenimento, não
+        orientação. Para montar o treino que o personagem não faz por você,
+        os <a href={rotas.guias}>guias do portal</a> e um bom profissional
+        continuam sendo o caminho.
+      </div>
+    </div>
+
+    <Faq faqs={faqs} />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+  </div>
+</Base>
+
+<style>
+  .article-solo {
+    padding-block: var(--sp-7);
+    display: grid;
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+</style>

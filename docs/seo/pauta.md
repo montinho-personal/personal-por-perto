@@ -29,6 +29,8 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 10 | Academia de bairro ou rede grande | idem | — | ⚠️ conferir contra `personal-trainer-em-academia` |
 | 11 | Mudei de cidade: como retomar o treino | idem | — | ⚠️ sem demanda medida; por último ou não entra |
 
+Gancho do lançamento do GTA 6 (19/11/2026), pedido do Renato em 20/11 ("pode fazer os 3"): ~~Memes do GTA 6 para quem treina~~ → `memes-gta-6`, 20/11; ~~GTA 6 tem academia?~~ → `gta-6-tem-academia`, 20/11; ~~ficar muito tempo sentado faz mal~~ → virou revisão de `personal-trainer-para-quem-trabalha-sentado` (página nova canibalizaria), 20/11.
+
 Publicados em 16/11 (riscados): ~~Efeito platô com Mounjaro~~ → `efeito-plato-mounjaro`; ~~Como não engordar nas festas de fim de ano~~ → `como-nao-engordar-nas-festas-de-fim-de-ano`; ~~Treino depois da bariátrica~~ → `treino-depois-da-bariatrica`; ~~Treinar sozinho na academia~~ → `treinar-sozinho-na-academia`.
 
 ## 2. Viram seção ou FAQ de um artigo existente
@@ -302,3 +304,5 @@ improvisada.
 - `/emagrecimento/peso-varia-de-um-dia-para-o-outro/` — Por que o peso varia tanto de um dia para o outro (e ao longo do dia) (publicado em 2026-11-17)
 - `/musculacao/cansaco-depois-do-treino/` — Cansaço depois do treino: é normal? Causas, sono e overtraining (publicado em 2026-11-17)
 - `/emagrecimento/sinais-de-que-esta-emagrecendo/` — Sinais de que você está emagrecendo: os primeiros, além da balança (publicado em 2026-11-17)
+- `/guias/gta-6-tem-academia/` — GTA 6 tem academia? (publicado em 2026-11-20)
+- `/humor-fitness/memes-gta-6/` — Memes do GTA 6 para quem treina (publicado em 2026-11-20)

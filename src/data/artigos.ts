@@ -172,6 +172,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/primeira-aula-com-personal-trainer/', titulo: 'Primeira aula com personal trainer: o que esperar' },
   { categoria: 'Guias', url: '/guias/como-nao-desistir-do-treino/', titulo: 'Como não desistir do treino: o guia da constância' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Personal trainer para quem trabalha sentado' },
+  { categoria: 'Guias', url: '/guias/gta-6-tem-academia/', titulo: 'GTA 6 tem academia? O que o treino faz no jogo e na vida real' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-a-noite/', titulo: 'Personal trainer para quem trabalha à noite' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-gestantes/', titulo: 'Personal trainer para gestantes: o guia' },
@@ -377,4 +378,5 @@ export const artigos: Artigo[] = [
   { categoria: 'Humor fitness', url: '/humor-fitness/frases-de-academia-engracadas/', titulo: 'Frases de academia engraçadas para legenda e status' },
   { categoria: 'Humor fitness', url: '/humor-fitness/memes-de-dieta/', titulo: 'Memes de dieta: rindo para não chorar no cutting' },
   { categoria: 'Humor fitness', url: '/humor-fitness/meme-de-leg-day/', titulo: 'Meme de leg day: por que o treino de perna rende tanta piada' },
+  { categoria: 'Humor fitness', url: '/humor-fitness/memes-gta-6/', titulo: 'Memes do GTA 6 para quem treina: o jogo × a academia' },
 ];
