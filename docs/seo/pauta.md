@@ -72,9 +72,9 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~Colágeno para massa muscular (visão de IA de sarcopenia)~~ | ~~FAQ em `/musculacao/suplementos-que-nao-funcionam/`~~ | ✅ 19/11/2026: parágrafo em "Os outros suspeitos" + FAQ, com Zdzieblik 2015 e Oikawa 2018 |
 | ~~"Treino de musculação para emagrecer feminino"~~ | ~~FAQ em `/musculacao/musculacao-feminina-mitos/`~~ | ✅ 19/11/2026: FAQ + parágrafo no Mito 2, com Roberts 2020 (meta-análise de diferenças entre sexos) |
 | ~~"Perder barriga sem perder massa muscular"~~ | ~~FAQ em `/emagrecimento/como-perder-barriga/`~~ | ✅ 19/11/2026: FAQ com Wewege 2022 e Longland 2016 + link para `como-preservar-massa-muscular-emagrecendo` |
-| "Cansaço nas pernas depois do treino" | FAQ em `/musculacao/treino-de-pernas/` | busca de 17/11 (`docs/cansaco-depois-do-treino.md`) |
+| ~~"Cansaço nas pernas depois do treino"~~ | ~~FAQ em `/musculacao/treino-de-pernas/`~~ | ✅ 20/11/2026: FAQ curta que linka cansaço e dor muscular (fontes nas duas páginas), com ressalva médica |
 | "É possível ganhar 1 kg de músculo em 1 mês?" | FAQ em `/musculacao/quanto-tempo-para-ver-resultados/` | busca de 20/11 (`docs/quantas-vezes-por-semana-personal-trainer.md`) |
-| Ponte de glúteo (no chão, sem banco) | seção em `/musculacao/elevacao-pelvica-como-fazer/` | pauta do Montinho, 12.100/mês (20/11) |
+| ~~Ponte de glúteo (no chão, sem banco)~~ | ~~seção em `/musculacao/elevacao-pelvica-como-fazer/`~~ | ✅ 20/11/2026: H2 com o passo a passo + FAQ da diferença; Neto 2020 (ativação do glúteo) |
 | Levantamento terra sumô | seção em `/musculacao/levantamento-terra-como-fazer/` | pauta do Montinho, 18.100/mês (20/11) |
 | Rosca de punho | seção em `/musculacao/pegada-e-antebraco/` | pauta do Montinho, 5.400/mês (20/11) |
 | Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11) |
