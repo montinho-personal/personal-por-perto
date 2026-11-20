@@ -1,0 +1,277 @@
+---
+/**
+ * Treino na areia — o que a areia muda (gasto, impacto, especificidade),
+ * correr na areia ou no asfalto, exercícios, areia fofa ou batida, massa
+ * muscular e cuidados com sol e progressão.
+ *
+ * Item 9 da pauta (docs/seo/pauta.md, "Treinar na praia"), pedido do Renato
+ * em 20/11/2026. Google Trends (BR, 5 anos): pico em dezembro e janeiro.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 20/11/2026):
+ * "treino na areia" + autocompletar de "treino na areia" e "treino na praia".
+ * Registro em docs/treino-na-areia.md; JSON em
+ * docs/pesquisas/2026-11-20-treino-na-areia/.
+ *
+ * Recorte: treinar-ao-ar-livre = progredir sem carga em praça e parque;
+ * treinar-no-calor-e-no-frio = clima. Aqui = a superfície de areia.
+ * Fontes (20/11/2026, resumos): Lejeune 1998 (energia), Brown 2017 (dano
+ * muscular), Binnie 2013 (especificidade), ACSM 2009 (progressão).
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/guias/treinar-ao-ar-livre/', titulo: 'Treinar ao ar livre', descricao: 'Como progredir quando não dá para somar peso.', tipo: 'Guia' },
+  { url: '/guias/treinar-no-calor-e-no-frio/', titulo: 'Treinar no calor, no frio e na chuva', descricao: 'O que o sol e a umidade cobram do treino.', tipo: 'Guia' },
+  { url: '/emagrecimento/quantas-calorias-gasta-beach-tennis/', titulo: 'Quantas calorias gasta o beach tennis', descricao: 'O esporte de areia que mais cresce, em números.', tipo: 'Emagrecimento' },
+];
+
+const path = '/guias/treino-na-areia';
+const atualizadoEm = '2026-11-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Treino na areia', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treino na areia';
+const faqs = [
+  {
+    pergunta: 'Quais exercícios posso fazer na areia?',
+    resposta:
+      'Quase todo exercício com o peso do corpo: caminhada e corrida curtas, tiros, agachamento, afundo, saltos, flexão, prancha e burpee. Montados em circuito, com pausas curtas, viram um treino completo. Comece com pouco volume, porque a areia cansa mais rápido do que parece.',
+  },
+  {
+    pergunta: 'O que emagrece mais, correr na areia ou no asfalto?',
+    resposta:
+      'Na mesma velocidade, correr na areia gasta cerca de 1,6 vez mais energia do que em piso firme. Mas na areia a gente corre mais devagar e por menos tempo, então o que decide o gasto do treino é quanto tempo você aguenta. Para emagrecer, a alimentação continua sendo o principal.',
+  },
+  {
+    pergunta: 'Treino na areia é bom para o joelho?',
+    resposta:
+      'A areia amortece o impacto: num estudo com atletas, correr na areia na mesma intensidade deixou menos sinal de dano muscular do que na grama. Isso não quer dizer que trate dor no joelho. Quem tem dor ou lesão deve ouvir o médico ou o fisioterapeuta antes, porque a areia instável também exige mais do tornozelo e do joelho.',
+  },
+  {
+    pergunta: 'Dá para ganhar massa muscular treinando na areia?',
+    resposta:
+      'Dá para começar, mas não para continuar só com ela. A areia é ótima para condicionamento, só que o músculo cresce quando a carga sobe aos poucos, e o peso do corpo chega a um teto. Para hipertrofia, a areia complementa a musculação; não a substitui.',
+  },
+  {
+    pergunta: 'É melhor treinar na areia fofa ou na batida?',
+    resposta:
+      'Depende do objetivo e do nível. A areia fofa cobra mais esforço e mais estabilidade, e serve bem para tiros curtos e exercícios funcionais. A areia batida, perto da água, fica mais parecida com chão firme e é o melhor começo para quem vai correr.',
+  },
+];
+
+const title = 'Treino na Areia: O Que Muda, Exercícios e Quanto Gasta';
+const description =
+  'Treino na areia gasta mais energia e pesa menos nas articulações. Veja o que dizem os estudos, os exercícios, areia fofa ou batida e os cuidados com o sol.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Treino na areia: o que muda no corpo, exercícios e cuidados</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+    <p class="lead">
+      Treinar na areia gasta mais energia e pesa menos nas articulações do
+      que treinar em chão firme. Na mesma velocidade, caminhar na areia
+      custa de 2,1 a 2,7 vezes mais energia, e correr, 1,6 vez. Em troca, a
+      areia amortece o impacto e cansa mais rápido do que parece, então o
+      começo pede pouco volume. Abaixo, o que dizem os estudos, os
+      exercícios e os cuidados com o sol.
+    </p>
+
+    <div class="prose">
+      <h2>O que a areia muda no treino</h2>
+      <ul>
+        <li>
+          <strong>Gasta mais energia.</strong> Num estudo clássico, caminhar
+          na areia exigiu de 2,1 a 2,7 vezes mais energia do que em piso
+          firme na mesma velocidade, e correr, 1,6 vez. Parte da força vai
+          para deslocar a areia, e os músculos e tendões trabalham com menos
+          eficiência.
+        </li>
+        <li>
+          <strong>Pesa menos no músculo.</strong> Num estudo com atletas,
+          a mesma sessão de corrida intervalada, na mesma frequência
+          cardíaca, deixou menos marcador de dano muscular na areia do que
+          na grama, com o mesmo esforço percebido.
+        </li>
+        <li>
+          <strong>Treina para a areia.</strong> Atletas que fizeram oito
+          semanas de pré-temporada na areia melhoraram o tiro de 20 metros
+          na areia e na grama; quem treinou só na grama melhorou na grama.
+          O corpo fica melhor naquilo que pratica.
+        </li>
+      </ul>
+
+      <h2>Correr na areia ou no asfalto: o que emagrece mais?</h2>
+      <p>
+        Na mesma velocidade, a areia gasta mais, cerca de 1,6 vez. Na
+        prática, porém, ninguém corre na areia fofa no ritmo do asfalto: a
+        velocidade cai e o treino dura menos. O que define o gasto da sessão
+        é o tempo que você sustenta. E, para emagrecer, quem decide é a
+        alimentação em <a href="/emagrecimento/deficit-calorico-como-funciona/">déficit
+        calórico</a>; a corrida soma.
+      </p>
+
+      <FerramentaInline
+        id="corrida"
+        texto="A calculadora estima o gasto da corrida pelo seu peso, ritmo e tempo, em chão firme. Na areia fofa, na mesma velocidade, o estudo mediu cerca de 1,6 vez esse valor."
+        acao="Calcular o gasto da minha corrida"
+      />
+
+      <h2>Quais exercícios fazer na areia</h2>
+      <p>
+        Quase tudo o que se faz com o peso do corpo funciona, e a areia
+        acrescenta instabilidade. Um circuito simples para começar, em
+        3 voltas, com 1 minuto de pausa entre elas:
+      </p>
+      <div class="tabela-wrap">
+      <table>
+        <thead>
+          <tr><th>exercício</th><th>quanto</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>caminhada rápida ou trote na areia batida</td><td>3 a 5 minutos (aquecimento, só na 1ª volta)</td></tr>
+          <tr><td>agachamento</td><td>12 a 15 repetições</td></tr>
+          <tr><td>afundo alternado</td><td>10 por perna</td></tr>
+          <tr><td>flexão (apoio no joelho, se precisar)</td><td>8 a 12 repetições</td></tr>
+          <tr><td>prancha</td><td>20 a 40 segundos</td></tr>
+          <tr><td>tiro curto na areia fofa</td><td>20 metros, andando de volta</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>
+        Bola, elástico e cones entram para variar. Saltos e burpees, só
+        depois de algumas semanas, quando o tornozelo já se acostumou à
+        areia.
+      </p>
+
+      <h2>Areia fofa ou areia batida?</h2>
+      <p>
+        A areia fofa e seca é a que mais cobra: mais esforço, mais equilíbrio
+        e mais trabalho de pé e tornozelo. A batida, perto da água, fica mais
+        perto do chão firme. Para correr, comece na batida; deixe a fofa para
+        tiros curtos e exercícios funcionais.
+      </p>
+
+      <h2>Dá para ganhar massa muscular na areia?</h2>
+      <p>
+        No começo, sim, como em qualquer treino novo. Depois, o músculo só
+        continua crescendo se a carga subir aos poucos, o que as
+        recomendações do American College of Sports Medicine chamam de
+        progressão. Com o peso do corpo isso chega a um teto, o mesmo
+        problema da praça e do parque, explicado em
+        <a href="/guias/treinar-ao-ar-livre/">treinar ao ar livre</a>. Para
+        hipertrofia, a areia é complemento da musculação.
+      </p>
+
+      <h2>Cuidados: sol, pés e progressão</h2>
+      <ul>
+        <li><strong>Horário e água:</strong> cedo ou no fim da tarde, com água por perto. O que o calor cobra do treino está em <a href="/guias/treinar-no-calor-e-no-frio/">treinar no calor</a>.</li>
+        <li><strong>Pouco volume no início:</strong> uma ou duas sessões curtas por semana nas primeiras semanas, subindo aos poucos. A areia dá sensação de leveza e cansa de repente.</li>
+        <li><strong>Pés:</strong> descalço exige mais de pé e tornozelo; na areia quente ou com conchas, tênis leve.</li>
+        <li><strong>Dor:</strong> dor no tornozelo, no joelho ou na lombar que não passa pede médico ou fisioterapeuta antes de continuar.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> a areia gasta mais energia, pesa menos no
+        músculo e cansa rápido. Comece na areia batida, com pouco volume e
+        fora do sol forte, e use a areia como parte do treino, não como o
+        treino inteiro, se o objetivo for ganhar músculo.
+      </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/9622579/" target="_blank" rel="noopener noreferrer">Lejeune TM, Willems PA, Heglund NC. Mechanics and energetics of human locomotion on sand. Journal of Experimental Biology, 1998</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/28402191/" target="_blank" rel="noopener noreferrer">Brown H, Dawson B, Binnie MJ, et al. Sand training: exercise-induced muscle damage and inflammatory responses to matched-intensity exercise. European Journal of Sport Science, 2017</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23478471/" target="_blank" rel="noopener noreferrer">Binnie MJ, Peeling P, Pinnington H, et al. Effect of surface-specific training on 20-m sprint performance on sand and grass surfaces. Journal of Strength and Conditioning Research, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li>Conferidas em 20/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+  .tabela-wrap { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-wrap th, .tabela-wrap td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; }
+</style>

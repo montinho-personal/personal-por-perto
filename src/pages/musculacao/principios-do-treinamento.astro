@@ -1,0 +1,293 @@
+---
+/**
+ * Princípios do treinamento — os princípios que aparecem nas listas de 5 a 8
+ * itens (individualidade, adaptação, sobrecarga progressiva, especificidade,
+ * continuidade/reversibilidade, variabilidade e volume × intensidade), cada
+ * um com o que a pesquisa mostra e como aparece na musculação.
+ *
+ * Item 7 da pauta (docs/seo/pauta.md), pedido do Renato em 20/11/2026.
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 20/11/2026):
+ * "princípios do treinamento" + autocompletar + visão de IA (2 etapas).
+ * Registro em docs/principios-do-treinamento.md; JSON em
+ * docs/pesquisas/2026-11-20-principios-do-treinamento/.
+ *
+ * Recorte: progressao-de-carga = como aplicar a sobrecarga (linkada, não
+ * repetida); quando-trocar-o-treino = variação na prática (linkada).
+ * Fontes (20/11/2026, resumos): ACSM 2009, Hubal 2005, Mujika & Padilla
+ * 2001, Bickel 2011, Binnie 2013.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/musculacao/progressao-de-carga/', titulo: 'Progressão de carga', descricao: 'A sobrecarga progressiva aplicada série a série.', tipo: 'Musculação' },
+  { url: '/musculacao/quando-trocar-o-treino/', titulo: 'Quando trocar o treino', descricao: 'A variação na prática, com os sinais de estagnação.', tipo: 'Musculação' },
+  { url: '/musculacao/ficha-de-treino/', titulo: 'Ficha de treino', descricao: 'Onde os princípios viram série, repetição e carga.', tipo: 'Musculação' },
+];
+
+const path = '/musculacao/principios-do-treinamento';
+const atualizadoEm = '2026-11-20';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Musculação', url: '/musculacao/' },
+  { nome: 'Princípios do treinamento', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre os princípios do treinamento';
+const faqs = [
+  {
+    pergunta: 'Quais são os 7 princípios do treinamento físico?',
+    resposta:
+      'Na lista mais comum: individualidade biológica, adaptação, sobrecarga progressiva, especificidade, continuidade, reversibilidade e variabilidade. Alguns autores somam a interdependência entre volume e intensidade e chegam a oito.',
+  },
+  {
+    pergunta: 'Por que uns falam em 5, outros em 6 e outros em 8 princípios?',
+    resposta:
+      'Porque cada autor agrupa de um jeito. Continuidade e reversibilidade às vezes viram um princípio só; adaptação às vezes fica fora, por estar por trás de todos. O conteúdo é o mesmo: o treino precisa ser do tamanho da pessoa, crescer aos poucos, ser parecido com o objetivo e não parar.',
+  },
+  {
+    pergunta: 'Qual é o princípio mais importante do treinamento?',
+    resposta:
+      'Para a musculação, a sobrecarga progressiva: sem aumentar o estímulo aos poucos, o corpo se acostuma e para de evoluir. As recomendações do American College of Sports Medicine põem a sobrecarga progressiva ao lado da especificidade e da variação como a base de qualquer programa.',
+  },
+  {
+    pergunta: 'O que é o princípio da reversibilidade?',
+    resposta:
+      'É perder o que se ganhou quando o treino para. A força cai devagar e costuma se manter por até umas quatro semanas sem treino; o condicionamento aeróbico recém-conquistado cai mais rápido. Treinar menos, mas sem parar, segura boa parte dos ganhos.',
+  },
+  {
+    pergunta: 'O que é individualidade biológica no treino?',
+    resposta:
+      'É o fato de cada pessoa responder diferente ao mesmo treino. Num estudo com 585 pessoas e o mesmo programa de 12 semanas, o ganho de força foi de zero a mais de 250%. Por isso o treino de outra pessoa raramente serve igual para você.',
+  },
+];
+
+const title = 'Princípios do Treinamento: Os 7 Explicados com Exemplos';
+const description =
+  'Os princípios do treinamento físico (individualidade, sobrecarga, especificidade, reversibilidade e mais), com estudos e como aplicar na musculação.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Musculação</p>
+    <h1>Princípios do treinamento: os 7 explicados, com exemplos</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+    <p class="lead">
+      Os princípios do treinamento são as regras que fazem um treino gerar
+      resultado: individualidade biológica, adaptação, sobrecarga
+      progressiva, especificidade, continuidade, reversibilidade e
+      variabilidade. Alguns autores somam um oitavo, a relação entre volume
+      e intensidade. Abaixo, cada um em uma frase, o que a pesquisa mostra e
+      como ele aparece na sua ficha de musculação.
+    </p>
+
+    <div class="prose">
+      <h2>Os princípios em uma tabela</h2>
+      <div class="tabela-wrap">
+        <table>
+          <thead><tr><th>princípio</th><th>em uma frase</th><th>na musculação</th></tr></thead>
+          <tbody>
+            <tr><td>Individualidade biológica</td><td>cada pessoa responde diferente ao mesmo treino</td><td>a ficha é feita para você, não copiada</td></tr>
+            <tr><td>Adaptação</td><td>o corpo se ajusta ao esforço que recebe</td><td>o treino que cansava hoje fica fácil em semanas</td></tr>
+            <tr><td>Sobrecarga progressiva</td><td>o estímulo precisa crescer aos poucos</td><td>mais carga, repetição ou série ao longo do tempo</td></tr>
+            <tr><td>Especificidade</td><td>o corpo melhora naquilo que pratica</td><td>força pede carga alta; resistência, mais repetições</td></tr>
+            <tr><td>Continuidade</td><td>o resultado vem da regularidade</td><td>semanas seguidas valem mais que treinos heroicos</td></tr>
+            <tr><td>Reversibilidade</td><td>parar faz perder o que se ganhou</td><td>férias curtas não apagam a força; meses parados, sim</td></tr>
+            <tr><td>Variabilidade</td><td>mudar o estímulo evita platôs</td><td>trocar exercício, faixa de repetição ou método no momento certo</td></tr>
+            <tr><td>Volume × intensidade</td><td>quando um sobe, o outro costuma descer</td><td>semana pesada com menos séries; semana leve com mais</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>1. Individualidade biológica</h2>
+      <p>
+        O mesmo treino dá resultados muito diferentes em pessoas
+        diferentes. Num estudo com 585 homens e mulheres que fizeram o mesmo
+        programa de musculação para o braço por 12 semanas, o ganho de força
+        foi de zero a mais de 250%, e o aumento do músculo, de quase nada a
+        59%. Genética, idade, sono, alimentação e histórico explicam parte
+        disso. Na prática, a ficha do amigo é um ponto de partida, não uma
+        receita.
+      </p>
+
+      <h2>2. Adaptação</h2>
+      <p>
+        O corpo responde ao esforço ficando mais capaz de fazer aquele
+        esforço: o músculo fica mais forte, o coração mais eficiente. É o
+        princípio por trás de todos os outros, e o motivo de o treino que
+        cansava muito no primeiro mês ficar fácil depois.
+      </p>
+
+      <h2>3. Sobrecarga progressiva</h2>
+      <p>
+        Se o corpo se adapta, o estímulo precisa crescer para a evolução
+        continuar: mais carga, mais repetições, mais séries ou menos
+        descanso, um de cada vez. As recomendações do American College of
+        Sports Medicine põem a sobrecarga progressiva como base de qualquer
+        programa de força, ao lado da especificidade e da variação. O passo a
+        passo está em <a href="/musculacao/progressao-de-carga/">progressão
+        de carga</a>.
+      </p>
+
+      <FerramentaInline
+        id="calculadora-1rm"
+        texto="Para subir a carga com critério, ajuda saber de onde você parte. A calculadora estima a sua carga máxima a partir de uma série que você já faz e o peso para 5, 8, 10 ou 12 repetições."
+        acao="Calcular a minha carga máxima (1RM)"
+      />
+
+      <h2>4. Especificidade</h2>
+      <p>
+        O corpo melhora naquilo que treina. Um exemplo de estudo: atletas
+        que fizeram oito semanas de preparação na areia melhoraram o tiro de
+        20 metros na areia e na grama, e quem treinou só na grama melhorou só
+        na grama. Na musculação, quem quer força treina com carga alta e
+        poucas repetições; quem quer resistência muscular, com mais
+        repetições.
+      </p>
+
+      <h2>5 e 6. Continuidade e reversibilidade</h2>
+      <p>
+        São as duas faces da mesma regra: o resultado vem da regularidade, e
+        some quando o treino para. A boa notícia é que a força cai devagar:
+        uma revisão sobre destreinamento mostrou que ela costuma se manter
+        por até umas quatro semanas sem treino. O condicionamento aeróbico
+        recém-conquistado cai mais rápido.
+      </p>
+      <p>
+        E não é tudo ou nada. Num estudo, depois de 16 semanas de
+        musculação, jovens que passaram a treinar com um terço do volume por
+        32 semanas mantiveram o músculo ganho; nos idosos, a mesma redução
+        não bastou. Na fase de pouco tempo, treinar menos é muito melhor do
+        que parar.
+      </p>
+
+      <h2>7. Variabilidade</h2>
+      <p>
+        Mudar o estímulo de tempos em tempos (exercício, faixa de
+        repetições, método) ajuda a evitar platôs e o desgaste de repetir o
+        mesmo padrão. Mudar demais atrapalha a progressão; o ponto certo está
+        em <a href="/musculacao/quando-trocar-o-treino/">quando trocar o
+        treino</a>.
+      </p>
+
+      <h2>8. Volume × intensidade</h2>
+      <p>
+        Volume é a quantidade de trabalho (séries e repetições); intensidade
+        é o quanto cada série pesa. Os dois não sobem juntos por muito tempo:
+        fases mais pesadas costumam ter menos séries, e fases com mais
+        séries, cargas menores. É assim que o treino cresce sem a fadiga
+        passar da recuperação.
+      </p>
+
+      <h2>Os princípios do treinamento de força</h2>
+      <p>
+        Na musculação, os princípios viram decisões da ficha: a carga sobe
+        quando as repetições ficam fáceis (sobrecarga), a faixa de
+        repetições segue o objetivo (especificidade), o programa é revisto a
+        cada algumas semanas (variabilidade) e a frequência semanal é
+        mantida mesmo nas fases difíceis (continuidade). A
+        <a href="/musculacao/ficha-de-treino/">ficha de treino</a> mostra
+        onde cada um entra.
+      </p>
+
+      <div class="callout">
+        <strong>Resumindo:</strong> o treino precisa ser do seu tamanho,
+        crescer aos poucos, parecer com o seu objetivo, mudar quando parar de
+        funcionar e, acima de tudo, não parar.
+      </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15947721/" target="_blank" rel="noopener noreferrer">Hubal MJ, Gordish-Dressman H, Thompson PD, et al. Variability in muscle size and strength gain after unilateral resistance training. Medicine &amp; Science in Sports &amp; Exercise, 2005</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/11474330/" target="_blank" rel="noopener noreferrer">Mujika I, Padilla S. Muscular characteristics of detraining in humans. Medicine &amp; Science in Sports &amp; Exercise, 2001</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/11252068/" target="_blank" rel="noopener noreferrer">Mujika I, Padilla S. Cardiorespiratory and metabolic characteristics of detraining in humans. Medicine &amp; Science in Sports &amp; Exercise, 2001</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21131862/" target="_blank" rel="noopener noreferrer">Bickel CS, Cross JM, Bamman MM. Exercise dosing to retain resistance training adaptations in young and older adults. Medicine &amp; Science in Sports &amp; Exercise, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23478471/" target="_blank" rel="noopener noreferrer">Binnie MJ, Peeling P, Pinnington H, et al. Effect of surface-specific training on 20-m sprint performance on sand and grass surfaces. Journal of Strength and Conditioning Research, 2013</a></li>
+        <li>Conferidas em 20/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="hipertrofia" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+  .tabela-wrap { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-wrap th, .tabela-wrap td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; }
+</style>

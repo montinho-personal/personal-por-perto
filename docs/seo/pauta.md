@@ -23,9 +23,9 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 4 | ~~Por que o peso varia tanto de um dia para o outro~~ → `peso-varia-de-um-dia-para-o-outro`, 17/11 | PAA "pesar 2 kg a mais no fim do dia", "perder 1 kg em 1 dia", "engordar 4 kg em 1 mês" | — | só FAQs em platô e parágrafos em dormir pouco engorda / refeição livre |
 | 5 | ~~Cansaço depois do treino: quando é normal~~ → `cansaco-depois-do-treino`, 17/11 | PAA "É normal ficar muito cansado depois do treino?" | — | só nas páginas de fraqueza com Mounjaro |
 | 6 | ~~Primeiros sinais de que você está emagrecendo (além da balança)~~ → `sinais-de-que-esta-emagrecendo`, 17/11 | PAA "Quais são os primeiros sinais de emagrecimento no corpo?" (busca de 17/11, `docs/peso-varia-de-um-dia-para-o-outro.md`) | — | nada com "sinais de emagrecimento"; ⚠️ conferir contra `recomposicao-corporal` |
-| 7 | Princípios do treinamento | PAA "Quais são os 7 princípios básicos do treinamento?" (baixa prioridade) | — | nada; liga em progressão de carga |
+| 7 | ~~Princípios do treinamento~~ → `principios-do-treinamento`, 20/11 | PAA "Quais são os 7 princípios básicos do treinamento?" (baixa prioridade) | — | nada; liga em progressão de carga |
 | 8 | O que fazer (e evitar) depois do treino | PAA "O que não se deve fazer depois do treino?" (Palhoça; baixa) | — | **conferir contra** `dor-muscular-pos-treino` antes de escrever |
-| 9 | Treinar na praia: o que a areia muda | lista de guias de cidade (09/2026) | — | ⚠️ recorte de `treinar-ao-ar-livre` |
+| 9 | ~~Treinar na praia: o que a areia muda~~ → `treino-na-areia` (a pesquisa trocou "praia" por "areia"), 20/11 | lista de guias de cidade (09/2026); Trends: pico dez–jan | — | recorte de `treinar-ao-ar-livre` conferido |
 | 10 | Academia de bairro ou rede grande | idem | — | ⚠️ conferir contra `personal-trainer-em-academia` |
 | 11 | Mudei de cidade: como retomar o treino | idem | — | ⚠️ sem demanda medida; por último ou não entra |
 | 12 | Jogar videogame gasta calorias? (gancho do GTA 6) | publicado lá em 20/11 (`jogar-videogame-gasta-calorias`); METs do Compêndio 2024 | — | ⚠️ conferir contra `guias/gta-6-tem-academia` (publicado em 20/11 por outra sessão), que cita videogame; se lá já responde quanto gasta, vira seção dele. Senão entra em `calorias/`. Texto do zero, sem copiar o de lá |
@@ -327,3 +327,5 @@ improvisada.
 - `/emagrecimento/sinais-de-que-esta-emagrecendo/` — Sinais de que você está emagrecendo: os primeiros, além da balança (publicado em 2026-11-17)
 - `/guias/gta-6-tem-academia/` — GTA 6 tem academia? (publicado em 2026-11-20)
 - `/humor-fitness/memes-gta-6/` — Memes do GTA 6 para quem treina (publicado em 2026-11-20)
+- `/guias/treino-na-areia/` — Treino na areia (publicado em 2026-11-20)
+- `/musculacao/principios-do-treinamento/` — Princípios do treinamento (publicado em 2026-11-20)
