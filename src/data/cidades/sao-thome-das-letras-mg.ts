@@ -91,6 +91,9 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade pequena, alta e cercada por formações de quartzito, São Thomé das Letras tem nas trilhas, cachoeiras e mirantes o principal cenário para quem quer treinar ao ar livre, num clima mais frio do que o habitual em Minas Gerais. Como o mercado local de academias é bastante restrito, um personal trainer que trabalhe com caminhada, trekking e treino adaptável ao terreno rural tende a ser o caminho mais prático para manter a constância na cidade.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
   vizinhas: ['tres-coracoes-mg', 'varginha-mg', 'carmo-de-minas-mg'],
 
   fontes: [
@@ -98,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de São Thomé das Letras', url: 'https://saotomedasletras.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-20',
 };

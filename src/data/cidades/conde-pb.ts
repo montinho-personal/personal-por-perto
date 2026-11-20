@@ -85,6 +85,8 @@ export const cidade: Cidade = {
   conclusao:
     'Com falésias coloridas e praias como Coqueirinho, Tabatinga e Tambaba, Conde oferece um cenário natural raro para treinar ao ar livre no litoral sul da Paraíba. Um personal trainer ajuda a aproveitar a areia e as trilhas entre as falésias, respeitando o calor e a sazonalidade turística que marcam a rotina esportiva da região.',
 
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
   vizinhas: ['joao-pessoa-pb', 'cabedelo-pb', 'santa-rita-pb'],
 
   fontes: [
@@ -92,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Conde', url: 'https://conde.pb.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-10',
+  atualizadoEm: '2026-11-20',
 };
