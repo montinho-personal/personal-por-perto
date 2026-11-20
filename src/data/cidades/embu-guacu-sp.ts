@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva une a prática urbana de caminhada e corrida no Centro ao uso das estradas rurais e do entorno da represa para pedal e atividades ao ar livre, num cenário marcado pela Mata Atlântica e pela vida de cidade-dormitório, com muita gente treinando cedo ou nos fins de semana.',
   academias:
     'A oferta é formada por academias de bairro de musculação e treino funcional, concentradas no Centro e nas áreas residenciais mais adensadas, com porte compatível com um município de perfil interiorano dentro da metrópole.',
+  academiasProximas: [
+    { nome: 'Smart Fit Embu-Guaçu', detalhe: 'na Rodovia José Simões Louro Júnior, no Jardim Val Flor' },
+    { nome: 'Flash Academia', detalhe: 'na Rua Maria das Dores Delfim, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-20',
 
   destaquesFitness: [
     'Território 100% em Área de Proteção aos Mananciais, no cinturão verde da Grande São Paulo, com clima ameno de altitude.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Embu-Guaçu', url: 'https://www.embuguacu.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-20',
 };

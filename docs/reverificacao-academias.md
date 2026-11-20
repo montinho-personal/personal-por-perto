@@ -1070,3 +1070,24 @@ Texto corrido ajustado: o `mercado` deixou de citar "redes nos shoppings" e o `a
 | Prime Academias Laranjeiras — "unidade local na Primeira Avenida" | confirmada; detalhe completado: "na Primeira Avenida, no Parque Residencial Laranjeiras" (nº 231) | Wellhub + TotalPass, mesmo endereço |
 
 Saldo da leva: 7 entradas → 4 mantidas (3 com nome ou detalhe corrigido), 3 removidas. 84 cidades seguem na fila.
+
+### 20/11/2026 — leva 46 (rotina, Parte B: São Caetano do Sul e Anápolis)
+
+**São Caetano do Sul/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades Santa Paula, Fundação e Assaí SCS (Av. Goiás)" | confirmada; **detalhe corrigido** para os nomes da rede: "Santa Paula, Carrefour Fundação e Assaí SCS – Av. Goiás" | página oficial (`/academias/sp/sao-caetano-do-sul`, `opened:true` nas três) |
+| Bluefit São Caetano — "na Rua Alegre, bairro Barcelona" | confirmada sem mudança (nº 1289, loja 34, CEP 09551-070) | página oficial da Bluefit |
+| Skyfit — "unidade no Centro, na Av. Conde Francisco Matarazzo" | nome confirmado; **detalhe retirado**: TotalPass dá Av. Conde Francisco Matarazzo, 43, **Fundação**; Wellhub diz **Centro** e não traz a rua. Bairro diverge e a rua tem fonte única → só o nome | TotalPass + Wellhub (nome) |
+| Pistas cobertas do Espaço Verde Chico Mendes — "cooper gratuito mesmo em dia de chuva" | confirmada; detalhe reescrito para o que as fontes dizem: "pista de cooper coberta e descoberta, em parque público" | São Paulo para Crianças + QuintoAndar (guias), mesma informação |
+
+**Anápolis/GO** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Anápolis — "na Rua 1060, no Cidade Jardim" | **detalhe corrigido**: a unidade fica na **Av. Brasil Norte**, 1080, Cidade Jardim (não na Rua 1060) | página oficial (`/academias/go/anapolis`, `opened:true`) |
+| Bluefit Jundiaí — "na Av. Pinheiro Chagas, no bairro Jundiaí" | confirmada; **nome corrigido** para "Bluefit Anápolis", como a rede chama a unidade (nº 584, loja 34) | página oficial da Bluefit (`/academia/anapolis`) |
+| Bluefit Av. Universitária — "no Parque dos Eucaliptos" | confirmada sem mudança (nº 1335) | página oficial da Bluefit |
+
+Saldo da leva: 7 entradas → 7 mantidas (5 com nome ou detalhe corrigido), nenhuma removida. 82 cidades seguem na fila.

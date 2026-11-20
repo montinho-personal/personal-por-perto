@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva é marcada pelo desafio do relevo: ladeiras e trilhas atraem praticantes de corrida de montanha, trekking e treino de força, enquanto a UFOP mantém um grande público jovem e ativo, com repúblicas e vida estudantil intensa.',
   academias:
     'A oferta reúne academias de bairro e estúdios, complementados por forte demanda de atendimento domiciliar e ao ar livre, adaptado às ladeiras. O público da UFOP sustenta a procura por musculação e treino funcional.',
+  academiasProximas: [
+    { nome: 'Power Fitness', detalhe: 'na Praça Prefeito Amadeu Barbosa, na Barra' },
+    { nome: 'Academia Equilibrium', detalhe: 'na Rua dos Eucaliptos, na Bauxita' },
+  ],
+  academiasVerificadasEm: '2026-11-20',
 
   destaquesFitness: [
     'Relevo de ladeiras e trilhas, ideal para treino de força e corrida de montanha.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Ouro Preto', url: 'https://www.ouropreto.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-20',
 };

@@ -70,11 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é premium — academias de alto padrão e estúdios boutique —, complementada por unidades de rede bem distribuídas e por parques com pistas de cooper cobertas que permitem treinar em qualquer clima.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades Santa Paula, Fundação e Assaí SCS (Av. Goiás)' },
+    { nome: 'Smart Fit', detalhe: 'unidades Santa Paula, Carrefour Fundação e Assaí SCS – Av. Goiás' },
     { nome: 'Bluefit São Caetano', detalhe: 'na Rua Alegre, bairro Barcelona' },
-    { nome: 'Skyfit', detalhe: 'unidade no Centro, na Av. Conde Francisco Matarazzo' },
-    { nome: 'Pistas cobertas do Espaço Verde Chico Mendes', detalhe: 'cooper gratuito mesmo em dia de chuva' },
+    { nome: 'Skyfit' },
+    { nome: 'Pistas cobertas do Espaço Verde Chico Mendes', detalhe: 'pista de cooper coberta e descoberta, em parque público' },
   ],
+  academiasVerificadasEm: '2026-11-20',
 
   destaquesFitness: [
     'Maior IDHM e renda per capita do Brasil — público premium para personal.',
@@ -127,5 +128,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Caetano do Sul', url: 'https://www.saocaetanodosul.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-20',
 };

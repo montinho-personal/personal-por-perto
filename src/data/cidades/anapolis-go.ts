@@ -71,10 +71,11 @@ export const cidade: Cidade = {
     'A oferta reúne redes e academias locais, sustentadas pela renda industrial e farmacêutica da cidade, e é complementada pela moderna academia ao ar livre do Parque Ipiranga.',
 
   academiasProximas: [
-    { nome: 'Smart Fit Anápolis', detalhe: 'na Rua 1060, no Cidade Jardim' },
-    { nome: 'Bluefit Jundiaí', detalhe: 'na Av. Pinheiro Chagas, no bairro Jundiaí' },
+    { nome: 'Smart Fit Anápolis', detalhe: 'na Av. Brasil Norte, no Cidade Jardim' },
+    { nome: 'Bluefit Anápolis', detalhe: 'na Av. Pinheiro Chagas, no bairro Jundiaí' },
     { nome: 'Bluefit Av. Universitária', detalhe: 'no Parque dos Eucaliptos' },
   ],
+  academiasVerificadasEm: '2026-11-20',
 
   destaquesFitness: [
     'Renda industrial e farmacêutica, com público de bom poder de compra.',
@@ -102,7 +103,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Anápolis', url: 'https://www.anapolis.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-10',
+  atualizadoEm: '2026-11-20',
   capaArte: {
     src: '/capas-cidade/anapolis-go.webp',
     w: 1200,
