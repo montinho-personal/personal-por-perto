@@ -69,10 +69,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é pequena e concentrada em Pipa, com estúdios e espaços de musculação, funcional e modalidades como yoga e pilates voltados tanto a moradores quanto a turistas que buscam manter a rotina de treino durante a estada.',
 
-  academiasProximas: [
-    { nome: 'Estúdios e espaços de treino de Pipa', detalhe: 'funcional e treino ao ar livre voltados a moradores e turistas' },
-    { nome: 'Trilhas e praias como estrutura natural', detalhe: 'falésias, Madeiro e Lagoa de Guaraíras para treino outdoor' },
-  ],
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-21',
 
   destaquesFitness: [
     'Trilhas sobre as falésias de Pipa, como a que liga Cacimbinhas à Praia do Madeiro, usadas para caminhada e treino ao ar livre.',
@@ -118,5 +116,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas do Desenvolvimento Humano no Brasil — Tibau do Sul', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/tibau-do-sul_rn' },
     { nome: 'Prefeitura Municipal de Tibau do Sul — Turismo e Lazer', url: 'https://tibaudosul.rn.gov.br/o-municipio/turismo-e-lazer/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-21',
 };

@@ -69,6 +69,11 @@ export const cidade: Cidade = {
     'A cultura esportiva local combina o uso das praças do Centro para caminhada, o aproveitamento das margens do Tietê e da represa de Jupiá para pesca e lazer, e a organização de provas de rua e etapas de atletismo que aproximam Andradina de sua vizinhança regional.',
   academias:
     'A oferta reúne academias de musculação e estúdios de treino funcional distribuídos entre o Centro e bairros como Jardim Alvorada e Stella Maris, em número compatível com uma cidade média do interior paulista.',
+  academiasProximas: [
+    { nome: 'Savana Fitness', detalhe: 'na Rua Ceará, no Centro' },
+    { nome: 'Exclusiva Fitness', detalhe: 'na Rua Barão do Rio Branco' },
+  ],
+  academiasVerificadasEm: '2026-11-21',
 
   destaquesFitness: [
     'Cidade às margens do rio Tietê, próxima à foz no rio Paraná e ao Complexo de Jupiá, com paisagem de represa.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Andradina', url: 'https://www.andradina.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-21',
 };

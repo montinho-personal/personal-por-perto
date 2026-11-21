@@ -59,6 +59,10 @@ export const cidade: Cidade = {
     'A cultura esportiva local combina o Circuito Itamaraju Run, mantido por uma academia da cidade, com o ecoturismo de aventura do Monte Pescoço — escalada, rapel e trilhas que atraem visitantes de outras regiões do Brasil — e o uso das margens do rio Jucuruçu para caminhada e lazer ao ar livre.',
   academias:
     'A oferta de academias é a mais robusta entre as cidades do extremo sul baiano fora do eixo Teixeira de Freitas–Porto Seguro, concentrada no Centro e nos bairros Liberdade e Posto Serral, com estabelecimentos que também organizam eventos esportivos próprios.',
+  academiasProximas: [
+    { nome: 'Galão Fit', detalhe: 'na Avenida Brasil' },
+  ],
+  academiasVerificadasEm: '2026-11-21',
 
   destaquesFitness: [
     'Maior produtor de cacau do Território Extremo Sul da Bahia, responsável por 66,5% da safra regional.',
@@ -86,5 +90,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura Municipal de Itamaraju — Conheça Itamaraju', url: 'https://www.itamaraju.ba.gov.br/detalhe-da-materia/info/conheca-itamaraju/6513' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-21',
 };

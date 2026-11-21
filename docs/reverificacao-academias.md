@@ -1091,3 +1091,23 @@ Saldo da leva: 7 entradas → 4 mantidas (3 com nome ou detalhe corrigido), 3 re
 | Bluefit Av. Universitária — "no Parque dos Eucaliptos" | confirmada sem mudança (nº 1335) | página oficial da Bluefit |
 
 Saldo da leva: 7 entradas → 7 mantidas (5 com nome ou detalhe corrigido), nenhuma removida. 82 cidades seguem na fila.
+
+### 21/11/2026 — leva 47 (rotina, Parte B: Tibau do Sul e Várzea Grande)
+
+**Tibau do Sul/RN** — página mudou; a cidade fica **sem entradas**.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| "Estúdios e espaços de treino de Pipa" — "funcional e treino ao ar livre voltados a moradores e turistas" | **removida**: não é academia com nome | — |
+| "Trilhas e praias como estrutura natural" — "falésias, Madeiro e Lagoa de Guaraíras" | **removida**: não é academia; o treino ao ar livre já está nos parques e nas FAQs da página | — |
+
+Sem Smart Fit em Tibau do Sul (página oficial da rede vazia). Completar a lista com academias de Pipa vira tarefa à parte.
+
+**Várzea Grande/MT** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Várzea Grande Shopping — "na Av. Presidente Arthur Bernardes" | confirmada; **detalhe corrigido**: é **Rua** Presidente Arthur Bernardes, no Jardim Aeroporto | página oficial (`/academias/mt/varzea-grande`, `opened:true`) |
+| Bluefit Várzea Grande — "na Av. Filinto Müller" | confirmada; detalhe completado: "na Av. Senador Filinto Müller, no Centro Norte" (nº 986) | página oficial da Bluefit |
+
+Saldo da leva: 4 entradas → 2 mantidas (as 2 com detalhe corrigido), 2 removidas. 80 cidades seguem na fila.
