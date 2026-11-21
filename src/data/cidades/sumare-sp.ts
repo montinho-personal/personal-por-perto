@@ -99,6 +99,9 @@ export const cidade: Cidade = {
   conclusao:
     'Polo industrial da RM de Campinas, Sumaré tem mercado fitness acessível e bons espaços verdes. Um personal trainer ajuda a aproveitar o Horto e o Parque da Floresta com método, com a estrutura de Campinas logo ao lado.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true, onlineOuPresencial: true },
+
   vizinhas: ['campinas-sp', 'hortolandia-sp', 'americana-sp', 'nova-odessa-sp'],
 
   faqsExtra: [
@@ -130,5 +133,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Sumaré', url: 'https://www.sumare.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-07',
+  atualizadoEm: '2026-11-21',
 };

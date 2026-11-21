@@ -94,6 +94,8 @@ export const cidade: Cidade = {
   conclusao:
     'Estância turística entre Sorocaba e Campinas, Itu une turismo histórico, condomínios de alto padrão e cicloturismo. Um personal trainer encontra aqui forte demanda por atendimento em condomínio, com ciclovias e parques para o treino ao ar livre.',
 
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
   vizinhas: ['sorocaba-sp', 'campinas-sp'],
 
   capaArte: {
@@ -108,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itu', url: 'https://www.itu.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-21',
 };
