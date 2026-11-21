@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — Concórdia', url: 'https://www.atlasbrasil.org.br/perfil/municipio/420430' },
     { nome: 'Embrapa Suínos e Aves', url: 'https://www.embrapa.br/suinos-e-aves' },
   ],
-  atualizadoEm: '2026-11-13',
+  atualizadoEm: '2026-11-21',
 };

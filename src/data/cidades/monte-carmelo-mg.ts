@@ -87,5 +87,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Monte Carmelo/MG', url: 'https://www.montecarmelo.mg.gov.br/' },
     { nome: 'UFU — Campus Monte Carmelo', url: 'https://ufu.br/campi/campus-monte-carmelo' },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-21',
 };

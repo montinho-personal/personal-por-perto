@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaúna', url: 'https://www.itauna.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3133808' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-21',
 };

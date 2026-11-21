@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Esperantina', url: 'https://cidades.ibge.gov.br/brasil/pi/esperantina/panorama' },
     { nome: 'Prefeitura de Esperantina', url: 'https://esperantina.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-21',
 };

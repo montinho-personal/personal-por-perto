@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'UFSM — Campus Palmeira das Missões', url: 'https://www.ufsm.br/unidades-universitarias/palmeira-das-missoes' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-21',
 };

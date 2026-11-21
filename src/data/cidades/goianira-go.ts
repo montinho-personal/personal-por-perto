@@ -115,5 +115,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Goianira — História', url: 'https://goianira.go.gov.br/historia/' },
     { nome: 'INMET — Normais Climatológicas 1991–2020', url: 'https://portal.inmet.gov.br/normais' },
   ],
-  atualizadoEm: '2026-10-26',
+  atualizadoEm: '2026-11-21',
 };

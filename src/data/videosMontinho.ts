@@ -305,6 +305,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'araxa-mg', 'arroio-grande-rs', 'avare-sp', 'barbalha-ce', 'barcarena-pa',
   'barra-do-corda-ma', 'barra-velha-sc', 'barras-pi', 'bento-goncalves-rs', 'brotas-sp',
   'cabedelo-pb', 'cacapava-sp', 'cachoeirinha-rs', 'cajuru-sp', 'caldas-novas-go',
+  // leva 7 — 21/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 6 conferida no ar)
+  'sao-vicente-sp', 'camaqua-rs', 'cambe-pr', 'cameta-pa', 'campo-maior-pi',
+  'campo-verde-mt', 'caruaru-pe', 'casimiro-de-abreu-rj', 'ceres-go', 'coari-am',
+  'codo-ma', 'colinas-do-sul-go', 'concordia-sc', 'curitibanos-sc', 'eloi-mendes-mg',
+  'escada-pe', 'esperantina-pi', 'estrela-rs', 'eunapolis-ba', 'extremoz-rn',
+  'formoso-do-araguaia-to', 'girau-do-ponciano-al', 'goianira-go', 'guaira-sp', 'igarape-mg',
+  'inhumas-go', 'itabaiana-se', 'itaituba-pa', 'itauna-mg', 'iturama-mg',
+  'jacarezinho-pr', 'jaru-ro', 'joao-monlevade-mg', 'lagarto-se', 'lavras-mg',
+  'lucas-do-rio-verde-mt', 'luis-eduardo-magalhaes-ba', 'manacapuru-am', 'maracaju-ms', 'maranguape-ce',
+  'marau-rs', 'matao-sp', 'mesquita-rj', 'monte-carmelo-mg', 'montenegro-rs',
+  'nilopolis-rj', 'novo-gama-go', 'ouricuri-pe', 'palmeira-das-missoes-rs', 'palmeira-pr',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

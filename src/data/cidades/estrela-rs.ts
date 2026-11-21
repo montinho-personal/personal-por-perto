@@ -95,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Estrela', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430780' },
     { nome: 'Prefeitura de Estrela', url: 'https://estrela.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-21',
 };

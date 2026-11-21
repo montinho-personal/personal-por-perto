@@ -89,5 +89,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Jornal Opção Entorno — 31 anos de emancipação', url: 'https://entorno.jornalopcao.com.br/politica/novo-gama-celebra-31-anos-de-emancipacao-com-olhar-voltado-para-o-futuro-32954/' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-21',
 };

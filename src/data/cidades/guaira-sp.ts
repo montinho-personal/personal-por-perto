@@ -80,5 +80,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Guaíra/SP', url: 'https://www.guaira.sp.gov.br/' },
     { nome: 'Caravela — Economia de Guaíra/SP', url: 'https://www.caravela.info/en/regional/gua%C3%ADra---sp' },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-21',
 };

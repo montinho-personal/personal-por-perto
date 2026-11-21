@@ -100,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Extremoz', url: 'https://extremoz.rn.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-21',
 };

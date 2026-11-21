@@ -97,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Visit Veadeiros — Colinas do Sul', url: 'https://visitveadeiros.com.br/colinas-do-sul/' },
     { nome: 'ICMBio — Parque Nacional da Chapada dos Veadeiros', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/cerrado/lista-de-ucs/parna-da-chapada-dos-veadeiros' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-21',
 };

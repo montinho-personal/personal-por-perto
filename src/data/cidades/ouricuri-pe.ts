@@ -109,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Ouricuri', url: 'https://cidades.ibge.gov.br/brasil/pe/ouricuri/panorama' },
     { nome: 'Prefeitura de Ouricuri', url: 'https://www.ouricuri.pe.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-21',
 };

@@ -94,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Luís Eduardo Magalhães', url: 'https://www.luiseduardomagalhaes.ba.gov.br/' },
   ],
   academiasVerificadasEm: '2026-10-14',
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-21',
 };

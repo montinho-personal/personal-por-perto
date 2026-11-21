@@ -104,7 +104,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Caruaru', url: 'https://www.caruaru.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-21',
   capaArte: {
     src: '/capas-cidade/caruaru-pe.webp',
     w: 1200,
