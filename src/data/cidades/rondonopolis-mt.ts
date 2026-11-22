@@ -73,6 +73,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Rondonópolis', detalhe: 'na Av. Lions Internacional, no Residencial Sagrada Família' },
   ],
+  academiasVerificadasEm: '2026-11-22',
 
   destaquesFitness: [
     'Calendário robusto de corridas de rua (Trabalhador, Justiça e Cidadania, Circuito Sesc).',

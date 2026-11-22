@@ -72,6 +72,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Atacadão Gravataí', detalhe: 'na Av. Dorival Cândido Luz de Oliveira, na Cohab C' },
   ],
+  academiasVerificadasEm: '2026-11-22',
 
   destaquesFitness: [
     'Praça Xangai e orla do Rio Gravataí: academias ao ar livre e pistas de caminhada de bairro.',

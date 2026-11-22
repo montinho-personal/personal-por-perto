@@ -1111,3 +1111,19 @@ Sem Smart Fit em Tibau do Sul (página oficial da rede vazia). Completar a lista
 | Bluefit Várzea Grande — "na Av. Filinto Müller" | confirmada; detalhe completado: "na Av. Senador Filinto Müller, no Centro Norte" (nº 986) | página oficial da Bluefit |
 
 Saldo da leva: 4 entradas → 2 mantidas (as 2 com detalhe corrigido), 2 removidas. 80 cidades seguem na fila.
+
+### 22/11/2026 — leva 48 (rotina, Parte B: Rondonópolis e Gravataí)
+
+**Rondonópolis/MT** — página sem mudança (não sobe `atualizadoEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Rondonópolis — "na Av. Lions Internacional, no Residencial Sagrada Família" | confirmada sem mudança (nº 1950, CEP 78735-330) | página oficial (`/academias/mt/rondonopolis`, `opened:true`) |
+
+**Gravataí/RS** — página sem mudança (não sobe `atualizadoEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Atacadão Gravataí — "na Av. Dorival Cândido Luz de Oliveira, na Cohab C" | confirmada sem mudança (nº 2660, CEP 94030-000) | página oficial (`/academias/rs/gravatai`, `opened:true`) |
+
+Saldo da leva: 2 entradas → 2 mantidas, nenhuma corrigida ou removida. As duas cidades seguem com 1 entrada só; completar a lista vira tarefa à parte. 78 cidades seguem na fila.

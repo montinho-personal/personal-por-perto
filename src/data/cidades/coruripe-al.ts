@@ -65,6 +65,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada principalmente por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros residenciais, com porte compatível com uma cidade média do litoral nordestino.',
 
+  academiasProximas: [
+    { nome: 'Academia Movement', detalhe: 'na Rua Antônio L. dos Santos, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-22',
+
   destaquesFitness: [
     'Praia do Pontal do Coruripe e seu calçadão como espaço de caminhada e corrida ao ar livre.',
     'Clima tropical litorâneo e quente, que exige planejamento de horário e hidratação no treino.',
@@ -91,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Coruripe', url: 'https://site.coruripe.al.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-16',
+  atualizadoEm: '2026-11-22',
 };

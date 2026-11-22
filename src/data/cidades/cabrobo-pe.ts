@@ -59,6 +59,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta de estrutura para treino é pequena e concentrada em academias locais de musculação e funcional na sede do município, compatível com o porte de uma cidade pequena do sertão pernambucano.',
 
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-22',
+
   destaquesFitness: [
     'Vale do São Francisco irrigado: agricultura de cebola, arroz, melancia, melão e tomate estrutura a rotina de trabalho físico de boa parte da população.',
     'Rio São Francisco e a Ilha da Assunção, território do povo indígena Truká, marcam a paisagem, a cultura e o lazer à beira-rio da cidade.',
