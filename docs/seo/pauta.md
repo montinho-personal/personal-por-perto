@@ -108,7 +108,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/guias/quantas-vezes-por-semana-personal-trainer/`~~ | ~~Quantas vezes por semana treinar com personal trainer~~ | ✅ revisado 20/11/2026 (`quantas-vezes-por-semana-personal-trainer`); descrição em proposta |
 | ~~2026-07-07~~ | ~~`/musculacao/abc-ou-full-body/`~~ | ~~ABC ou Full Body: qual a melhor divisão de treino~~ | ✅ revisado 21/11/2026 (`abc-ou-full-body`); título mantido |
 | ~~2026-07-07~~ | ~~`/musculacao/hipertrofia-como-funciona/`~~ | ~~Hipertrofia: como funciona o crescimento muscular~~ | ✅ revisado 21/11/2026 (`hipertrofia-como-funciona`); título mantido |
-| 2026-07-07 | `/musculacao/progressao-de-carga/` | Como progredir de carga na musculação |  |
+| ~~2026-07-07~~ | ~~`/musculacao/progressao-de-carga/`~~ | ~~Como progredir de carga na musculação~~ | ✅ revisado 22/11/2026 (`progressao-de-carga`); título em proposta |
 | 2026-07-07 | `/musculacao/quantas-series-e-repeticoes/` | Quantas séries e repetições fazer por grupo muscular |  |
 | 2026-07-07 | `/musculacao/treino-para-iniciantes/` | Treino de musculação para iniciantes: como começar | reescrito pelo GSC em 09/2026, sem SERP |
 | 2026-07-08 | `/mounjaro-e-treino/fraqueza-para-treinar/` | Mounjaro dá fraqueza para treinar? O que fazer |  |
