@@ -160,7 +160,7 @@ export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
  *     Santana de Parnaíba, Aldeia da Serra.
  *   22/10/2026 — leva 1: as 10 cidades com mais impressões em 28 dias no GSC.
  *   26/10/2026 — leva 2: as 20 seguintes. 29/10/2026 — leva 3: mais 20. 01/11/2026 — leva 4: mais 20.
- *   19/11/2026 — leva 9: mais 20, já com vídeo do canal (vídeo duplo liberado pelo Renato).
+ *   19/11/2026 — leva 9: mais 20, já com vídeo do canal (vídeo duplo liberado pelo Renato). 22/11/2026 — leva 10: mais 20.
  */
 export const VIDEO_APP_ID = 'DPAQDPVffCg';
 export const CIDADES_COM_VIDEO_APP = new Set<string>([
@@ -211,6 +211,11 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'cangucu-rs', 'surubim-pe', 'caxias-ma', 'lapa-pr', 'mineiros-go',
   'sao-carlos-sp', 'cambui-mg', 'mangaratiba-rj', 'parnaiba-pi', 'alagoinhas-ba',
   'assis-sp', 'brusque-sc', 'caxambu-mg', 'cotia-sp', 'estancia-se',
+  // leva 10 — 22/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 9 conferida no ar)
+  'aracatuba-sp', 'alvorada-rs', 'santa-luzia-mg', 'volta-redonda-rj', 'fraiburgo-sc',
+  'marica-rj', 'patrocinio-mg', 'irece-ba', 'rolandia-pr', 'sapucaia-do-sul-rs',
+  'valinhos-sp', 'carmo-de-minas-mg', 'guabiruba-sc', 'rio-grande-rs', 'sao-jose-sc',
+  'tobias-barreto-se', 'trairi-ce', 'guarabira-pb', 'itupeva-sp', 'marechal-deodoro-al',
   // 10/11/2026: fora da fila de impressões, junto com o piloto do modelo enxuto
   // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
   'natal-rn', 'contagem-mg', 'ananindeua-pa',

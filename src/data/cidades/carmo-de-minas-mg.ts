@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Carmo de Minas', url: 'https://www.carmodeminas.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-22',
 };

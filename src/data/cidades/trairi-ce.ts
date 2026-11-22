@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura Municipal de Trairi', url: 'https://www.trairi.ce.gov.br/omunicipio.php' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-22',
 };
