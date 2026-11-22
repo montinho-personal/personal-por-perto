@@ -76,10 +76,10 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~"É possível ganhar 1 kg de músculo em 1 mês?"~~ | ~~FAQ em `/musculacao/quanto-tempo-para-ver-resultados/`~~ | ✅ 21/11/2026: FAQ + parágrafo, Westcott 2012 (1,4 kg de massa magra em ~10 semanas) |
 | ~~Ponte de glúteo (no chão, sem banco)~~ | ~~seção em `/musculacao/elevacao-pelvica-como-fazer/`~~ | ✅ 20/11/2026: H2 com o passo a passo + FAQ da diferença; Neto 2020 (ativação do glúteo) |
 | ~~Levantamento terra sumô~~ | ~~seção em `/musculacao/levantamento-terra-como-fazer/`~~ | ✅ 21/11/2026: H2 com passo a passo + FAQ; Escamilla 2000 (biomecânica) e 2002 (EMG) |
-| Rosca de punho | seção em `/musculacao/pegada-e-antebraco/` | pauta do Montinho, 5.400/mês (20/11) |
-| Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11) |
-| Kickboxing: quantas calorias gasta | seção em `/calorias/lutas/` | pauta do Montinho, 110/mês (20/11) |
-| Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11) |
+| Rosca de punho | seção em `/musculacao/pegada-e-antebraco/` | pauta do Montinho, 5.400/mês (20/11). ⏸ 22/11/2026: fica — nenhum estudo sobre o exercício encontrado no Europe PMC; sem fonte, sem seção |
+| Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11). ⏸ 22/11/2026: fica — os estudos achados no Europe PMC são do afundo frontal (badminton, squash), não do lateral; sem fonte, sem seção |
+| ~~Kickboxing: quantas calorias gasta~~ | ~~seção em `/calorias/lutas/`~~ | ✅ 22/11/2026: FAQ com a linha de artes marciais do Compêndio (já usada na página); o valor próprio de kickboxing segue fora, sem conferência |
+| Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11). ⏸ 22/11/2026: fica — NHS e Mayo Clinic bloqueados no ambiente; sem fonte oficial, sem FAQ |
 | Esportes que mais queimam calorias | seção no hub `/calorias/` (comparando as páginas que já existem) | pauta do Montinho, 210/mês (20/11) |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
