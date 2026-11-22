@@ -94,6 +94,10 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade histórica de serra, com clima ameno e forte vocação turística no Circuito das Águas, Amparo reúne condições favoráveis para o treino ao ar livre ao longo do ano. Um personal trainer ajuda a montar uma rotina que aproveite o clima e o relevo, escolha os melhores horários entre verão chuvoso e inverno frio e mantenha a constância dentro e fora dos períodos de maior movimento turístico.',
 
+  metaFoco: 'preco',
+  faqsBusca: { duasVezes: true, onlineOuPresencial: true },
+
+
   vizinhas: ['jaguariuna-sp', 'braganca-paulista-sp', 'mogi-mirim-sp'],
 
   fontes: [
@@ -101,5 +105,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância de Amparo', url: 'https://www.amparo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-10',
+  atualizadoEm: '2026-11-22',
 };

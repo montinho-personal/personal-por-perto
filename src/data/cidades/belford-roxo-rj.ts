@@ -94,6 +94,10 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade grande e popular da Baixada Fluminense, com parque industrial relevante e cultura de futebol enraizada, Belford Roxo tem um mercado fitness voltado a academias de bairro e ao atendimento domiciliar. Um personal trainer ajuda a estruturar o treino com método e custo acessível, respeitando o clima quente e a rotina de quem se desloca para o Rio.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
+
   vizinhas: ['nova-iguacu-rj', 'duque-de-caxias-rj', 'sao-joao-de-meriti-rj'],
 
   fontes: [
@@ -101,7 +105,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Belford Roxo', url: 'https://prefeituradebelfordroxo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM (Belford Roxo)', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300456' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-22',
   capaArte: {
     src: '/capas-cidade/belford-roxo-rj.webp',
     w: 1200,
