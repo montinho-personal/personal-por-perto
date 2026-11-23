@@ -70,6 +70,12 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional e alguns estúdios, distribuídas pela área central e pelos bairros residenciais, com porte compatível com um município pequeno da Região Metropolitana de Curitiba.',
 
+  academiasProximas: [
+    { nome: 'Iron Gym Fitness Quatro Barras', detalhe: 'na Av. Dom Pedro II, no Centro' },
+    { nome: 'Blessfit', detalhe: 'na Rua Alberto Santos Dumont' },
+  ],
+  academiasVerificadasEm: '2026-11-23',
+
   destaquesFitness: [
     'Pé da Serra do Mar, com o Morro do Anhangava como referência de escalada e montanhismo do Paraná.',
     'Caminho do Itupava, antigo caminho colonial de cerca de 16 km e mil metros de desnível, procurado por trekkers e corredores.',

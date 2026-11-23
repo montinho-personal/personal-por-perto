@@ -1127,3 +1127,23 @@ Saldo da leva: 4 entradas → 2 mantidas (as 2 com detalhe corrigido), 2 removid
 | Smart Fit Atacadão Gravataí — "na Av. Dorival Cândido Luz de Oliveira, na Cohab C" | confirmada sem mudança (nº 2660, CEP 94030-000) | página oficial (`/academias/rs/gravatai`, `opened:true`) |
 
 Saldo da leva: 2 entradas → 2 mantidas, nenhuma corrigida ou removida. As duas cidades seguem com 1 entrada só; completar a lista vira tarefa à parte. 78 cidades seguem na fila.
+
+### 23/11/2026 — leva 49 (rotina, Parte B: Volta Redonda e Guarujá)
+
+**Volta Redonda/RJ** — página sem mudança (não sobe `atualizadoEm`).
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Volta Redonda — "na Av. Amaral Peixoto, no Centro" | confirmada sem mudança (nº 555, CEP 27253-223) | página oficial (`/academias/rj/volta-redonda`, `opened:true`) |
+
+**Guarujá/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit Pão de Açúcar Enseada — "na Av. Dom Pedro I, no Jardim Tejereba" | confirmada sem mudança (nº 195) | página oficial (`/academias/sp/guaruja`, `opened:true`) |
+| Smart Fit Vicente de Carvalho — "na Rua Cristóvão Gil Lopes, em Vicente de Carvalho" | confirmada sem mudança (nº 195) | página oficial |
+| Smart Fit Pitangueiras — "no bairro de Pitangueiras" | confirmada; **detalhe corrigido**: a unidade fica na **Av. Puglisi, 40, no Centro** (a rede usa "Pitangueiras" só no nome) | página oficial |
+
+Os calçadões de Pitangueiras citados no texto corrido falam da praia, não da academia: nada a ajustar.
+
+Saldo da leva: 4 entradas → 4 mantidas (1 com detalhe corrigido), nenhuma removida. 76 cidades seguem na fila.

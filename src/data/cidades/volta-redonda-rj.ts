@@ -78,6 +78,7 @@ export const cidade: Cidade = {
   academiasProximas: [
     { nome: 'Smart Fit Volta Redonda', detalhe: 'na Av. Amaral Peixoto, no Centro' },
   ],
+  academiasVerificadasEm: '2026-11-23',
 
   destaquesFitness: [
     'Orla Beira-Rio com cerca de 7 km, ciclovia e academia ao ar livre.',

@@ -74,6 +74,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional, como a Body Fit, concentradas nas áreas mais estruturadas do município; a procura acompanha o crescimento imobiliário e turístico da cidade, com reforço sazonal no verão.',
 
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-23',
+
   destaquesFitness: [
     'Orla contínua de cerca de 13 km de praia, um dos maiores trechos de areia sem interrupção do litoral catarinense.',
     'Tradição de surfe consolidada pelo campeonato Ascas Surf é Saúde, um dos mais antigos do sul de SC.',
