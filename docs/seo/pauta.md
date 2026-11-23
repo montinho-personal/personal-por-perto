@@ -113,7 +113,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/musculacao/progressao-de-carga/`~~ | ~~Como progredir de carga na musculação~~ | ✅ revisado 22/11/2026 (`progressao-de-carga`); título em proposta |
 | ~~2026-07-07~~ | ~~`/musculacao/quantas-series-e-repeticoes/`~~ | ~~Quantas séries e repetições fazer por grupo muscular~~ | ✅ revisado 22/11/2026 (`quantas-series-e-repeticoes`); título em proposta |
 | ~~2026-07-07~~ | ~~`/musculacao/treino-para-iniciantes/`~~ | ~~Treino de musculação para iniciantes: como começar~~ | ✅ revisado em 23/11/2026 (`treino-para-iniciantes`): H2 feminino × masculino (Roberts 2020), H2 casa × academia, 3 FAQs; título em proposta |
-| 2026-07-08 | `/mounjaro-e-treino/fraqueza-para-treinar/` | Mounjaro dá fraqueza para treinar? O que fazer |  |
+| ~~2026-07-08~~ | ~~`/mounjaro-e-treino/fraqueza-para-treinar/`~~ | ~~Mounjaro dá fraqueza para treinar? O que fazer~~ | ✅ revisado em 23/11/2026 (`fraqueza-para-treinar`): FAQs de tontura e duração (SURMOUNT-1), referências; descrição em proposta |
 | 2026-07-08 | `/mounjaro-e-treino/mounjaro-e-musculacao/` | Quem usa Mounjaro pode fazer musculação? |  |
 | 2026-07-08 | `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/` | Treino para quem usa Mounjaro: como adaptar |  |
 | 2026-07-10 | `/emagrecimento/como-comecar-a-treinar-acima-do-peso/` | Como começar a treinar estando acima do peso |  |
