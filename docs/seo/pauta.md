@@ -42,6 +42,7 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 23 | Aula experimental em academia é obrigatória? O que diz a lei | PAA e autocompletar "aula experimental academia lei" (busca do Montinho, 18/11) | — | nada; só com fonte legal (lei ou Procon) |
 | 24 | Gympass (Wellhub) ou TotalPass: qual sai mais barato | PAA de "day use academia barueri" (busca do Montinho, 18/11) | — | nada; preços só das tabelas oficiais |
 | 25 | Fome depois do treino: por que acontece | PAA de "continua queimando calorias depois do treino" (busca do Montinho, 16/11) | 20 (idem) | nada; explicar sem prescrever dieta |
+| 26 | Calistenia para iniciantes | AC "treino para iniciantes calistenia" (busca de 23/11, `docs/treino-para-iniciantes.md`) | — | nada com "calistenia"; liga em `treino-em-casa-para-iniciantes` e `barra-fixa-como-fazer` |
 
 Gancho do lançamento do GTA 6 (19/11/2026), pedido do Renato em 20/11 ("pode fazer os 3"): ~~Memes do GTA 6 para quem treina~~ → `memes-gta-6`, 20/11; ~~GTA 6 tem academia?~~ → `gta-6-tem-academia`, 20/11; ~~ficar muito tempo sentado faz mal~~ → virou revisão de `personal-trainer-para-quem-trabalha-sentado` (página nova canibalizaria), 20/11.
 
@@ -81,6 +82,7 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | ~~Kickboxing: quantas calorias gasta~~ | ~~seção em `/calorias/lutas/`~~ | ✅ 22/11/2026: FAQ com a linha de artes marciais do Compêndio (já usada na página); o valor próprio de kickboxing segue fora, sem conferência |
 | Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11). ⏸ 22/11/2026: fica — NHS e Mayo Clinic bloqueados no ambiente; sem fonte oficial, sem FAQ |
 | Esportes que mais queimam calorias | seção no hub `/calorias/` (comparando as páginas que já existem) | pauta do Montinho, 210/mês (20/11) |
+| "Qual horário o músculo cresce?" | FAQ em `/musculacao/hipertrofia-como-funciona/` (só com estudo: síntese proteica e sono) | busca de 23/11 (`docs/treino-para-iniciantes.md`) |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 
@@ -110,7 +112,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/musculacao/hipertrofia-como-funciona/`~~ | ~~Hipertrofia: como funciona o crescimento muscular~~ | ✅ revisado 21/11/2026 (`hipertrofia-como-funciona`); título mantido |
 | ~~2026-07-07~~ | ~~`/musculacao/progressao-de-carga/`~~ | ~~Como progredir de carga na musculação~~ | ✅ revisado 22/11/2026 (`progressao-de-carga`); título em proposta |
 | ~~2026-07-07~~ | ~~`/musculacao/quantas-series-e-repeticoes/`~~ | ~~Quantas séries e repetições fazer por grupo muscular~~ | ✅ revisado 22/11/2026 (`quantas-series-e-repeticoes`); título em proposta |
-| 2026-07-07 | `/musculacao/treino-para-iniciantes/` | Treino de musculação para iniciantes: como começar | reescrito pelo GSC em 09/2026, sem SERP |
+| ~~2026-07-07~~ | ~~`/musculacao/treino-para-iniciantes/`~~ | ~~Treino de musculação para iniciantes: como começar~~ | ✅ revisado em 23/11/2026 (`treino-para-iniciantes`): H2 feminino × masculino (Roberts 2020), H2 casa × academia, 3 FAQs; título em proposta |
 | 2026-07-08 | `/mounjaro-e-treino/fraqueza-para-treinar/` | Mounjaro dá fraqueza para treinar? O que fazer |  |
 | 2026-07-08 | `/mounjaro-e-treino/mounjaro-e-musculacao/` | Quem usa Mounjaro pode fazer musculação? |  |
 | 2026-07-08 | `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/` | Treino para quem usa Mounjaro: como adaptar |  |
