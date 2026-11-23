@@ -81,8 +81,8 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11). ⏸ 22/11/2026: fica — os estudos achados no Europe PMC são do afundo frontal (badminton, squash), não do lateral; sem fonte, sem seção |
 | ~~Kickboxing: quantas calorias gasta~~ | ~~seção em `/calorias/lutas/`~~ | ✅ 22/11/2026: FAQ com a linha de artes marciais do Compêndio (já usada na página); o valor próprio de kickboxing segue fora, sem conferência |
 | Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11). ⏸ 22/11/2026: fica — NHS e Mayo Clinic bloqueados no ambiente; sem fonte oficial, sem FAQ |
-| Esportes que mais queimam calorias | seção no hub `/calorias/` (comparando as páginas que já existem) | pauta do Montinho, 210/mês (20/11) |
-| "Qual horário o músculo cresce?" | FAQ em `/musculacao/hipertrofia-como-funciona/` (só com estudo: síntese proteica e sono) | busca de 23/11 (`docs/treino-para-iniciantes.md`) |
+| ~~Esportes que mais queimam calorias~~ | ~~seção no hub `/calorias/`~~ | ✅ 23/11/2026: H2 com tabela de 16 atividades calculada pelas próprias calculadoras (1 h, 70 kg; METs do Compêndio 2024) |
+| ~~"Qual horário o músculo cresce?"~~ | ~~FAQ em `/musculacao/hipertrofia-como-funciona/`~~ | ✅ 23/11/2026: FAQ + frase no H2 de recuperação, MacDougall 1995 e Lamon 2021 |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
 | ~~Peso estagnado com dieta e musculação (recomposição)~~ | ~~`plato-de-emagrecimento`~~ — feito em 16/11 | |
 

@@ -44,3 +44,12 @@ Mantidos (título com 48 caracteres, já é a busca).
 
 - **Vale um artigo:** nenhuma.
 - **Não recomendo:** livros/autores, "injetável", "no coração", "doença" (fora do tema ou médico).
+
+## 23/11/2026 — item da pauta (parte 2): "Qual horário o músculo cresce?"
+
+PAA da busca "treino para iniciantes" (23/11, `docs/treino-para-iniciantes.md`).
+Entrou uma FAQ nova e uma frase no H2 "Descanso e recuperação": não há horário;
+o músculo cresce na recuperação (síntese de proteína +50% em 4 h, mais que o
+dobro em 24 h, perto do normal em 36 h — MacDougall 1995) e o sono pesa (uma
+noite sem dormir reduziu a síntese em 18% — Lamon 2021). As duas referências
+entraram na lista. atualizadoEm 23/11.

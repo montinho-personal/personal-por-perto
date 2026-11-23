@@ -25,15 +25,15 @@ import { breadcrumbSchema, itemListSchema } from '../../lib/schema';
 import { site } from '../../data/site';
 import { porCategoria } from '../../data/ferramentas';
 import { PESO_PADRAO, arredondaKcal, deTempo, ritmo } from '../../lib/calorias/caminhada';
-import { deDistancia, formataFaixa } from '../../lib/calorias/corrida';
+import { deDistancia, deTempo as deTempoCorrida, formataFaixa } from '../../lib/calorias/corrida';
 import { deTempoRua, arredondaKcal as arredondaBike, VELOCIDADE_PADRAO } from '../../lib/calorias/bicicleta';
 import { deTempo as nadoPorTempo, arredondaKcal as arredondaNado } from '../../lib/calorias/natacao';
 import { deAndares, formataKcal as formataEscada } from '../../lib/calorias/escada';
 import { deTempo as cordaPorTempo, formataKcal as formataCorda } from '../../lib/calorias/corda';
 import { deTempo as dancaPorTempo, formataKcal as formataDanca } from '../../lib/calorias/danca';
 import { deTempo as yogaPorTempo, formataKcal as formataYoga } from '../../lib/calorias/yoga';
-import { dePelada, formataKcal as formataFutebol, formataTempo as tempoFutebol } from '../../lib/calorias/futebol';
-import { deRounds as lutaPorRounds, formataKcal as formataLuta } from '../../lib/calorias/lutas';
+import { dePelada, deTempo as futebolPorTempo, formataKcal as formataFutebol, formataTempo as tempoFutebol } from '../../lib/calorias/futebol';
+import { deRounds as lutaPorRounds, deTempo as lutaPorTempo, formataKcal as formataLuta } from '../../lib/calorias/lutas';
 import { deAula as hidroPorAula, formataKcal as formataHidro } from '../../lib/calorias/hidroginastica';
 import { deTempo as tenisPorTempo, formataKcal as formataTenis } from '../../lib/calorias/tenis';
 import { deTempo as voleiPorTempo, formataKcal as formataVolei } from '../../lib/calorias/volei';
@@ -73,6 +73,34 @@ const EX_PINGPONG = formataPingPong(pingPongPorTempo(60, PESO_PADRAO, 'jogo').kc
 const GASTO = gastoDiario('feminino', PESO_PADRAO, 170, 30, 'sedentario');
 const EX_GASTO = formataGastoDiario(GASTO.gastoMin, GASTO.gastoMax);
 const EX_MUSCULACAO = formataMusculacao(musculacaoSessao(60, PESO_PADRAO, 'variado').kcal);
+
+/*
+ * "Esportes que mais queimam calorias" (pauta, parte 2; pauta do Montinho,
+ * 210/mês). A comparação sai do motor de cada calculadora — mesma hora,
+ * mesmo peso, a intensidade que a própria página usa como padrão — para o
+ * ranking nunca divergir do número que a pessoa vê ao clicar.
+ */
+const UMA_HORA = 60;
+const RANKING = [
+  { nome: 'Pular corda', intensidade: 'ritmo moderado, sem parar', url: '/calorias/corda/', kcal: cordaPorTempo(UMA_HORA, PESO_PADRAO, 'moderado').kcal },
+  { nome: 'Corrida', intensidade: '10 km/h (pace 6:00/km)', url: '/calorias/corrida/', kcal: deTempoCorrida(UMA_HORA, PESO_PADRAO, 6).kcal },
+  { nome: 'Zumba', intensidade: 'aula, dançando o tempo todo', url: '/calorias/danca/', kcal: dancaPorTempo(UMA_HORA, PESO_PADRAO, 'zumba').kcal },
+  { nome: 'Natação', intensidade: 'crawl em ritmo médio', url: '/calorias/natacao/', kcal: nadoPorTempo(UMA_HORA, PESO_PADRAO, 'crawl', 'medio').kcal },
+  { nome: 'Tênis', intensidade: 'jogo de simples', url: '/calorias/tenis/', kcal: tenisPorTempo(UMA_HORA, PESO_PADRAO, 'simples').kcalMin },
+  { nome: 'Basquete', intensidade: 'jogo', url: '/calorias/basquete/', kcal: basquetePorTempo(UMA_HORA, PESO_PADRAO, 'jogo').kcalMin },
+  { nome: 'Bicicleta', intensidade: `rua a ${VELOCIDADE_PADRAO} km/h`, url: '/calorias/bicicleta/', kcal: deTempoRua(UMA_HORA, PESO_PADRAO, VELOCIDADE_PADRAO).kcal },
+  { nome: 'Futebol', intensidade: '1 hora em campo, sem disputa', url: '/calorias/futebol/', kcal: futebolPorTempo(UMA_HORA, PESO_PADRAO, 'casual').kcal },
+  { nome: 'Vôlei de praia', intensidade: 'jogo na areia', url: '/calorias/volei/', kcal: voleiPorTempo(UMA_HORA, PESO_PADRAO, 'praia').kcal },
+  { nome: 'CrossFit', intensidade: 'aula de 1 hora com 20 min de WOD', url: '/calorias/crossfit/', kcal: crossfitPorAula(UMA_HORA, 20, PESO_PADRAO).kcal },
+  { nome: 'Saco de pancada', intensidade: 'treino leve e contínuo', url: '/calorias/lutas/', kcal: lutaPorTempo(UMA_HORA, PESO_PADRAO, 'saco').kcal },
+  { nome: 'Hidroginástica', intensidade: 'aula', url: '/calorias/hidroginastica/', kcal: hidroPorAula(UMA_HORA, PESO_PADRAO, 'medida').kcal },
+  { nome: 'Caminhada', intensidade: 'ritmo moderado (5 km/h)', url: '/calorias/caminhada/', kcal: deTempo(UMA_HORA, PESO_PADRAO, MOD.velocidade, 0, MOD.cadencia).kcal },
+  { nome: 'Pingue-pongue', intensidade: 'jogo de lazer', url: '/calorias/ping-pong/', kcal: pingPongPorTempo(UMA_HORA, PESO_PADRAO, 'jogo').kcalMin },
+  { nome: 'Musculação', intensidade: 'treino variado, com descanso entre séries', url: '/calorias/musculacao/', kcal: musculacaoSessao(UMA_HORA, PESO_PADRAO, 'variado').kcal },
+  { nome: 'Yoga', intensidade: 'hatha', url: '/calorias/yoga-e-pilates/', kcal: yogaPorTempo(UMA_HORA, PESO_PADRAO, 'hatha').kcal },
+]
+  .map((r) => ({ ...r, kcal: Math.round(r.kcal / 10) * 10 }))
+  .sort((a, b) => b.kcal - a.kcal);
 
 /*
  * Nome, URL e resumo vêm do catálogo central (src/data/ferramentas.ts):
@@ -160,6 +188,42 @@ const schema = [
       </div>
 
       <div class="cal-nota">
+        <h2>Quais esportes queimam mais calorias</h2>
+        <p>
+          Comparando 1 hora de cada atividade para uma pessoa de {PESO_PADRAO} kg, na intensidade
+          que cada calculadora usa como padrão, as que mais gastam são as que mantêm o corpo
+          inteiro em movimento sem pausa — pular corda e correr lideram. O que tem pausa embutida
+          desce na lista: a aula de CrossFit inteira (com aquecimento e técnica, não só o WOD), o
+          pingue-pongue de lazer e a musculação, com descanso entre as séries.
+        </p>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr><th>Atividade</th><th>Intensidade usada</th><th>kcal em 1 hora ({PESO_PADRAO} kg)</th></tr>
+            </thead>
+            <tbody>
+              {RANKING.map((r) => (
+                <tr>
+                  <td><a href={r.url}>{r.nome}</a></td>
+                  <td>{r.intensidade}</td>
+                  <td>≈ {r.kcal.toLocaleString('pt-BR')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Os valores saem do mesmo cálculo de cada página — o MET da atividade (do Compêndio de
+          Atividades Físicas de 2024 ou do estudo que a calculadora cita) vezes o peso e o tempo —
+          e mudam bastante com a intensidade: correr mais rápido, jogar uma partida disputada ou
+          diminuir o descanso sobe o número. Quanto vale o <em>seu</em> treino está na calculadora
+          de cada atividade. E gastar mais por hora não faz de uma atividade a melhor para
+          emagrecer — por quê está em <a href="/emagrecimento/musculacao-ou-cardio-para-emagrecer/">musculação
+          ou cardio para emagrecer</a>.
+        </p>
+      </div>
+
+      <div class="cal-nota">
         <h2>Como estas calculadoras são feitas</h2>
         <p>
           Cada atividade ganha a sua, e cada uma pede entradas diferentes porque as pessoas sabem
@@ -225,6 +289,9 @@ const schema = [
   }
   .cal-link { font-weight: 700; color: var(--brand-600); margin-top: auto; }
   .cal-nota { margin-top: var(--sp-7); }
+  .tabela-wrap { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-wrap th, .tabela-wrap td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; }
   .cal-nota h2,
   .cal-relacionado h2 { font-size: var(--step-2); margin-bottom: var(--sp-3); }
   .cal-nota p { margin-bottom: var(--sp-3); line-height: 1.6; }
