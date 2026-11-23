@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Buíque — Parque Nacional do Catimbau', url: 'https://buique.pe.gov.br/parque-nacional-do-catimbau/' },
     { nome: 'ICMBio — Parque Nacional do Catimbau', url: 'https://www.gov.br/icmbio/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-11-23',
 };

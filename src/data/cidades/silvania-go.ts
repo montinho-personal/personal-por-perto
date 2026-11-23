@@ -92,5 +92,5 @@ export const cidade: Cidade = {
     { nome: 'Governo Municipal de Silvânia', url: 'https://silvania.go.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-23',
 };

@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Penalva', url: 'https://www.penalva.ma.gov.br/' },
     { nome: 'APA da Baixada Maranhense', url: 'https://www.gov.br/icmbio/pt-br' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-11-23',
 };

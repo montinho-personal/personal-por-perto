@@ -94,5 +94,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Agência Minas Gerais — Complexo EuroChem em Serra do Salitre', url: 'https://www.agenciaminas.mg.gov.br/noticia/com-apoio-do-governo-de-minas-fabrica-de-fertilizantes-em-serra-do-salitre-vai-gerar-1-2-mil-empregos-e-reduzir-dependencia-de-importacoes' },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-23',
 };

@@ -60,5 +60,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Colombo — Dados Gerais', url: 'https://prefeitura.colombo.pr.gov.br/dados-gerais-colombo/' },
     { nome: 'Turismo Colombo — Rota do Vinho e da História', url: 'https://turismo.colombo.pr.gov.br/colombo-rota-do-vinho-e-da-historia/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-23',
 };

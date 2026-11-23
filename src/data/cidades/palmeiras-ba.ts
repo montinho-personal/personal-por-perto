@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palmeiras', url: 'https://www.palmeiras.ba.gov.br/' },
     { nome: 'ICMBio — Parque Nacional da Chapada Diamantina', url: 'https://www.gov.br/icmbio/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-11-23',
 };

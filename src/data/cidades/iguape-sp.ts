@@ -80,5 +80,5 @@ export const cidade: Cidade = {
     { nome: 'Turismo Paulista — Iguape', url: 'https://www.turismopaulista.tur.br/iguape' },
     { nome: 'Score Cidades — Iguape/SP', url: 'https://scorecidades.com.br/cidade/sp-iguape/' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-23',
 };

@@ -321,6 +321,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'lucas-do-rio-verde-mt', 'luis-eduardo-magalhaes-ba', 'manacapuru-am', 'maracaju-ms', 'maranguape-ce',
   'marau-rs', 'matao-sp', 'mesquita-rj', 'monte-carmelo-mg', 'montenegro-rs',
   'nilopolis-rj', 'novo-gama-go', 'ouricuri-pe', 'palmeira-das-missoes-rs', 'palmeira-pr',
+  // leva 8 — 23/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 7 conferida no ar)
+  'patos-pb', 'iguape-sp', 'nobres-mt', 'sao-gabriel-rs', 'pelotas-rs',
+  'prado-ba', 'registro-sp', 'sao-borja-rs', 'sao-joaquim-da-barra-sp', 'sao-jose-dos-pinhais-pr',
+  'sao-mateus-es', 'tres-coracoes-mg', 'buique-pe', 'candelaria-rs', 'colombo-pr',
+  'frederico-westphalen-rs', 'itumbiara-go', 'pacajus-ce', 'palmeiras-ba', 'para-de-minas-mg',
+  'paracambi-rj', 'parnamirim-rn', 'penalva-ma', 'piedade-sp', 'piracuruca-pi',
+  'piraju-sp', 'pirenopolis-go', 'piripiri-pi', 'prudentopolis-pr', 'quatro-barras-pr',
+  'querencia-mt', 'rio-branco-do-sul-pr', 'salto-de-pirapora-sp', 'santa-cruz-do-capibaribe-pe', 'santa-cruz-do-rio-pardo-sp',
+  'santa-maria-de-jetiba-es', 'santana-ap', 'santo-angelo-rs', 'santo-antonio-da-patrulha-rs', 'santos-dumont-mg',
+  'sao-jose-de-ribamar-ma', 'sao-lourenco-do-sul-rs', 'sao-pedro-da-aldeia-rj', 'seropedica-rj', 'serra-do-salitre-mg',
+  'serra-talhada-pe', 'serro-mg', 'silvania-go', 'tailandia-pa', 'taquara-rs',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

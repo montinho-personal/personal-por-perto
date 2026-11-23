@@ -100,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Santa Cruz do Rio Pardo', url: 'https://www.santacruzdoriopardo.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-10',
+  atualizadoEm: '2026-11-23',
 };

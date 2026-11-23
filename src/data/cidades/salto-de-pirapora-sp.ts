@@ -102,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Salto de Pirapora', url: 'https://www.saltodepirapora.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-10-29',
+  atualizadoEm: '2026-11-23',
 };

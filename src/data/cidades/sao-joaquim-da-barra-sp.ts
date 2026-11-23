@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'ABAG/RP — perfil econômico de São Joaquim da Barra', url: 'https://www.abagrp.org.br/sao-joaquim-da-barra' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-22',
+  atualizadoEm: '2026-11-23',
 };

@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Estância Turística de Piraju', url: 'https://www.estanciadepiraju.sp.gov.br/' },
     { nome: 'Turismo SP — Piraju', url: 'https://plataforma.turismo.sp.gov.br/conheca-o-municipio-turistico-de-piraju' },
   ],
-  atualizadoEm: '2026-08-18',
+  atualizadoEm: '2026-11-23',
 };

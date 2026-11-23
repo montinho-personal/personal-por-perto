@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — São Lourenço do Sul', url: 'https://cidades.ibge.gov.br/brasil/rs/sao-lourenco-do-sul/panorama' },
     { nome: 'Prefeitura de São Lourenço do Sul', url: 'https://www.saolourencodosul.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-23',
 };

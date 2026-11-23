@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional de Sete Cidades', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/caatinga/lista-de-ucs/parna-de-sete-cidades' },
     { nome: 'Prefeitura de Piracuruca', url: 'https://www.piracuruca.pi.gov.br/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-11-23',
 };

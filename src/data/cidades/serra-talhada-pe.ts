@@ -102,5 +102,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Serra Talhada', url: 'https://www.serratalhada.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/261390' },
   ],
-  atualizadoEm: '2026-11-04',
+  atualizadoEm: '2026-11-23',
 };
