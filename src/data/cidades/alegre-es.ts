@@ -95,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'UFES — Campus de Alegre, história', url: 'https://alegre.ufes.br/historia' },
     { nome: 'Incaper — Perfil municipal de Alegre', url: 'https://incaper.es.gov.br/media/incaper/proater/municipios/Alegre.pdf' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-24',
 };

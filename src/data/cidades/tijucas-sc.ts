@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Tijucas', url: 'https://www.tijucas.sc.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/4218004' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-24',
 };

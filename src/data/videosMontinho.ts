@@ -332,6 +332,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'santa-maria-de-jetiba-es', 'santana-ap', 'santo-angelo-rs', 'santo-antonio-da-patrulha-rs', 'santos-dumont-mg',
   'sao-jose-de-ribamar-ma', 'sao-lourenco-do-sul-rs', 'sao-pedro-da-aldeia-rj', 'seropedica-rj', 'serra-do-salitre-mg',
   'serra-talhada-pe', 'serro-mg', 'silvania-go', 'tailandia-pa', 'taquara-rs',
+  // leva 9 — 24/11/2026: as 50 seguintes sem vídeo por impressões em 28 dias no GSC (leva 8 conferida no ar)
+  'rio-bonito-rj', 'tijucas-sc', 'videira-sc', 'alto-caparao-mg', 'bacabal-ma',
+  'campo-limpo-paulista-sp', 'jatai-go', 'louveira-sp', 'sao-bento-do-sul-sc', 'tefe-am',
+  'teresopolis-rj', 'tibagi-pr', 'timbauba-pe', 'tiradentes-mg', 'torres-rs',
+  'tres-passos-rs', 'tutoia-ma', 'ubirata-pr', 'uniao-dos-palmares-al', 'vinhedo-sp',
+  'xanxere-sc', 'xapuri-ac', 'xique-xique-ba', 'abaetetuba-pa', 'acailandia-ma',
+  'acarau-ce', 'acu-rn', 'adamantina-sp', 'afonso-claudio-es', 'aguas-lindas-de-goias-go',
+  'aiuruoca-mg', 'alcobaca-ba', 'alegre-es', 'alem-paraiba-mg', 'alta-floresta-mt',
+  'alto-paraiso-de-goias-go', 'americana-sp', 'amontada-ce', 'analandia-sp', 'andradina-sp',
+  'apiai-sp', 'apiuna-sc', 'apodi-rn', 'aquiraz-ce', 'ararangua-sc',
+  'arcoverde-pe', 'areia-branca-rn', 'areias-sp', 'ariquemes-ro', 'arraial-do-cabo-rj',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

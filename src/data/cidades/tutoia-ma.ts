@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Tutóia', url: 'https://tutoia.ma.gov.br/' },
     { nome: 'ICMBio — APA Delta do Parnaíba', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/marinho/lista-de-ucs/apa-delta-do-parnaiba' },
   ],
-  atualizadoEm: '2026-08-16',
+  atualizadoEm: '2026-11-24',
 };

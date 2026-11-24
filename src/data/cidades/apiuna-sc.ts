@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Portal do Turismo de Apiúna', url: 'https://turismo.apiuna.sc.gov.br/' },
     { nome: 'Prefeitura de Apiúna', url: 'https://www.apiuna.sc.gov.br/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-11-24',
 };

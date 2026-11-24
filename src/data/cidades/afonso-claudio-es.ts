@@ -83,5 +83,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Incaper — Perfil municipal de Afonso Cláudio', url: 'https://incaper.es.gov.br/media/incaper/proater/municipios/Afonso_claudio.pdf' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-24',
 };

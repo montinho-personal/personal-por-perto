@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Aiuruoca', url: 'https://www.aiuruoca.mg.gov.br/' },
     { nome: 'IEF — Parque Estadual da Serra do Papagaio', url: 'http://www.ief.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-24',
 };

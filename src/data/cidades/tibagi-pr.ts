@@ -90,5 +90,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Tibagi', url: 'https://www.tibagi.pr.gov.br/' },
     { nome: 'Instituto Água e Terra — Parque Estadual do Guartelá', url: 'https://www.iat.pr.gov.br/' },
   ],
-  atualizadoEm: '2026-08-11',
+  atualizadoEm: '2026-11-24',
 };

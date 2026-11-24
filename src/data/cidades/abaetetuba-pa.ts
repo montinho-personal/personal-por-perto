@@ -120,5 +120,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Abaetetuba', url: 'https://abaetetuba.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-24',
 };

@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional do Caparaó', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/mata-atlantica/lista-de-ucs/parna-do-caparao' },
     { nome: 'Prefeitura de Alto Caparaó', url: 'https://altocaparao.mg.gov.br/' },
   ],
-  atualizadoEm: '2026-08-24',
+  atualizadoEm: '2026-11-24',
 };

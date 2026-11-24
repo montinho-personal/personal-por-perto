@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3300258' },
     { nome: 'Prefeitura de Arraial do Cabo', url: 'https://www.arraial.rj.gov.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-24',
 };

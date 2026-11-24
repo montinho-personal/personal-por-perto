@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Três Passos', url: 'https://trespassos-rs.com.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-24',
 };

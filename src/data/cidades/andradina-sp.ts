@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Andradina', url: 'https://www.andradina.sp.gov.br/' },
   ],
-  atualizadoEm: '2026-11-21',
+  atualizadoEm: '2026-11-24',
 };

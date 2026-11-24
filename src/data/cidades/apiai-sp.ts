@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Apiaí', url: 'https://apiai.sp.gov.br/' },
     { nome: 'Fundação Florestal — PETAR', url: 'https://www.infraestruturameioambiente.sp.gov.br/fundacaoflorestal/pagina-inicial/parques-estaduais/parque-estadual-turistico-do-alto-ribeira/' },
   ],
-  atualizadoEm: '2026-08-13',
+  atualizadoEm: '2026-11-24',
 };

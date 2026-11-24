@@ -89,5 +89,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Tefé', url: 'https://www.tefe.am.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-24',
 };

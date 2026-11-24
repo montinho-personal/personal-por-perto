@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Arcoverde', url: 'https://www.arcoverde.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-24',
   capaArte: {
     src: '/capas-cidade/arcoverde-pe.webp',
     w: 1200,

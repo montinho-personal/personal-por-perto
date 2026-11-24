@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Bacabal', url: 'https://www.bacabal.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/210120' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-24',
 };

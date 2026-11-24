@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Açailândia', url: 'https://www.acailandia.ma.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2100055' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-24',
 };

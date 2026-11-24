@@ -98,5 +98,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Xique-Xique', url: 'https://xiquexique.ba.gov.br/' },
     { nome: 'Inema — APA Lagoa de Itaparica', url: 'http://www.inema.ba.gov.br/gestao-2/unidades-de-conservacao/apa/apa-lagoa-de-itaparica/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-11-24',
 };

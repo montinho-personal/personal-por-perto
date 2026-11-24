@@ -101,7 +101,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Acaraú', url: 'https://www.acarau.ce.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-27',
+  atualizadoEm: '2026-11-24',
   capaArte: {
     src: '/capas-cidade/acarau-ce.webp',
     w: 1200,
