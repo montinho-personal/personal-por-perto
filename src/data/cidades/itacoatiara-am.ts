@@ -63,10 +63,8 @@ export const cidade: Cidade = {
   academias:
     'A cobertura é dada por academias locais de bairro e por estúdios menores, complementados por personal trainers que atendem em casa e em condomínios. A orla, as praias e os espaços públicos funcionam como extensão ao ar livre nos horários mais frescos.',
 
-  academiasProximas: [
-    { nome: 'Estrutura pública da Orla', detalhe: 'espaço de caminhada e treino com vista para o Amazonas' },
-    { nome: 'Academias locais', detalhe: 'musculação no Centro e bairros próximos' },
-  ],
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-24',
 
   destaquesFitness: [
     'Orla do Rio Amazonas como principal ponto de caminhada e corrida leve, ao amanhecer e ao entardecer.',
@@ -112,5 +110,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itacoatiara', url: 'https://itacoatiara.am.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-19',
+  atualizadoEm: '2026-11-24',
 };

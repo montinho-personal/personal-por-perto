@@ -70,6 +70,11 @@ export const cidade: Cidade = {
   academias:
     'A oferta combina academias e estúdios sustentados pela renda industrial do município, com destaque para os equipamentos públicos de ginástica instalados em praças de bairros.',
 
+  academiasProximas: [
+    { nome: 'Academia Lipoqueima', detalhe: 'na Rua Major Manoel Antônio, no Centro' },
+  ],
+  academiasVerificadasEm: '2026-11-24',
+
   destaquesFitness: [
     'Circuito Conheça Pará de Minas Correndo percorrendo vários bairros.',
     'Academias ao ar livre em praças como apoio à prática popular.',
@@ -96,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Pará de Minas', url: 'https://portal-novo.parademinas.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-23',
+  atualizadoEm: '2026-11-24',
 };

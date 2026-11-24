@@ -29,7 +29,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque Teresa Maia',
       descricao:
-        'Na Granja Viana, com cerca de 23 mil m²: academia ao ar livre, trilha, playground, lago e nascente, iluminado e com horário estendido.',
+        'Na Granja Viana, com cerca de 23 mil m²: trilha, playground, lago e nascente, iluminado e com horário estendido.',
     },
     {
       nome: 'Parque Cemucam',
@@ -70,15 +70,14 @@ export const cidade: Cidade = {
   academias:
     'A oferta combina um nicho premium na Granja Viana (estúdios e condomínios de alto padrão) com academias de bairro no restante da cidade, e parques como o Teresa Maia para o outdoor.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na Granja Viana (km 21 e km 25 da Raposo) e na Vila Monte Serrat' },
-    { nome: 'Bluefit Granja Viana', detalhe: 'duas unidades no bairro, na Av. São Camilo e na Estrada da Aldeia' },
-    { nome: 'Estúdios boutique da Granja Viana', detalhe: 'treino personalizado e pequenos grupos no polo premium' },
-    { nome: 'Academia ao ar livre do Parque Teresa Maia', detalhe: 'gratuita, na Granja Viana' },
+    { nome: 'Smart Fit', detalhe: 'unidades Cotia, na Vila Monte Serrat, e Granja Viana Km 25, no Jardim Passargada' },
+    { nome: 'Bluefit Granja Viana', detalhe: 'na Av. São Camilo, na Granja Viana' },
   ],
+  academiasVerificadasEm: '2026-11-24',
 
   destaquesFitness: [
     'Granja Viana como nicho premium para personal trainers (estúdios e condomínios de alto padrão).',
-    'Parque Teresa Maia com academia ao ar livre e trilha — ponto forte de treino outdoor.',
+    'Parque Teresa Maia, com trilha — ponto forte de treino outdoor.',
     'Calendário de corridas de rua consolidado (Track&Field, CEDIT Run).',
     'Clima ameno de planalto, favorável à atividade outdoor o ano todo.',
   ],
@@ -148,5 +147,5 @@ export const cidade: Cidade = {
     w: 739,
     h: 1600,
   },
-  atualizadoEm: '2026-11-19',
+  atualizadoEm: '2026-11-24',
 };

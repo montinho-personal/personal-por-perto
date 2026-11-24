@@ -1147,3 +1147,27 @@ Saldo da leva: 2 entradas → 2 mantidas, nenhuma corrigida ou removida. As duas
 Os calçadões de Pitangueiras citados no texto corrido falam da praia, não da academia: nada a ajustar.
 
 Saldo da leva: 4 entradas → 4 mantidas (1 com detalhe corrigido), nenhuma removida. 76 cidades seguem na fila.
+
+### 24/11/2026 — leva 50 (rotina, Parte B: Itacoatiara e Cotia)
+
+**Itacoatiara/AM** — página mudou; a cidade fica **sem entradas**.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| "Estrutura pública da Orla" — "espaço de caminhada e treino com vista para o Amazonas" | **removida**: não é academia com nome; a orla já está nos parques e destaques da página | — |
+| "Academias locais" — "musculação no Centro e bairros próximos" | **removida**: não é academia com nome | — |
+
+Sem Smart Fit em Itacoatiara (página oficial da rede vazia). Completar a lista vira tarefa à parte.
+
+**Cotia/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades na Granja Viana (km 21 e km 25 da Raposo) e na Vila Monte Serrat" | confirmada; **detalhe corrigido**: em Cotia a rede tem duas unidades, **Cotia** (Av. Nossa Senhora de Fátima, 833, Vila Monte Serrat) e **Granja Viana Km 25** (Rua Mesopotâmia, 109, Jardim Passargada). Não existe "km 21"; a Granja Viana – São Camilo fica em **Carapicuíba** | página oficial (`/academias/sp/cotia`, `opened:true`) |
+| Bluefit Granja Viana — "duas unidades no bairro, na Av. São Camilo e na Estrada da Aldeia" | confirmada; **detalhe corrigido**: uma unidade só, na **Av. São Camilo, 1066**, Granja Viana; nenhuma na Estrada da Aldeia | página oficial da Bluefit (`/academia/granja-viana`) |
+| "Estúdios boutique da Granja Viana" | **removida**: não é academia com nome | — |
+| "Academia ao ar livre do Parque Teresa Maia" — "gratuita" | **removida**: nenhuma fonte confirma o equipamento no parque | busca sem resultado |
+
+Texto corrido ajustado: a descrição do Parque Teresa Maia e o destaque deixaram de citar a academia ao ar livre.
+
+Saldo da leva: 6 entradas → 2 mantidas (as 2 com detalhe corrigido), 4 removidas. 74 cidades seguem na fila.

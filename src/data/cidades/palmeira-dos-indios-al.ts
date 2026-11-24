@@ -70,6 +70,13 @@ export const cidade: Cidade = {
   academias:
     'A oferta reúne academias e estúdios no centro e nos bairros, complementada pelas áreas de lazer e pelo relevo serrano, que favorece treinos com subida.',
 
+  academiasProximas: [
+    { nome: "Academia Agyt's", detalhe: 'na Rua Getúlio Vargas, no São Cristóvão' },
+    { nome: 'Barcelona Fitness', detalhe: 'na Av. Sebastião Ramos' },
+    { nome: 'D2 Arena Fitness', detalhe: 'na Av. Vieira de Brito' },
+  ],
+  academiasVerificadasEm: '2026-11-24',
+
   destaquesFitness: [
     'Clima ameno de altitude, mais fresco que o do litoral alagoano.',
     'Cristo do Goití e serras como cenário para caminhadas e treinos com subida.',
@@ -96,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palmeira dos Índios', url: 'https://palmeiradosindios.al.gov.br/a-cidade/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-17',
+  atualizadoEm: '2026-11-24',
 };
