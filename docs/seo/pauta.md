@@ -116,7 +116,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/musculacao/treino-para-iniciantes/`~~ | ~~Treino de musculação para iniciantes: como começar~~ | ✅ revisado em 23/11/2026 (`treino-para-iniciantes`): H2 feminino × masculino (Roberts 2020), H2 casa × academia, 3 FAQs; título em proposta |
 | ~~2026-07-08~~ | ~~`/mounjaro-e-treino/fraqueza-para-treinar/`~~ | ~~Mounjaro dá fraqueza para treinar? O que fazer~~ | ✅ revisado em 23/11/2026 (`fraqueza-para-treinar`): FAQs de tontura e duração (SURMOUNT-1), referências; descrição em proposta |
 | ~~2026-07-08~~ | ~~`/mounjaro-e-treino/mounjaro-e-musculacao/`~~ | ~~Quem usa Mounjaro pode fazer musculação?~~ | ✅ revisado em 24/11/2026 (`mounjaro-e-musculacao`): 2 FAQs (massa magra, cardio × musculação), referências; título e descrição em proposta |
-| 2026-07-08 | `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/` | Treino para quem usa Mounjaro: como adaptar |  |
+| ~~2026-07-08~~ | ~~`/mounjaro-e-treino/treino-para-quem-usa-mounjaro/`~~ | ~~Treino para quem usa Mounjaro: como adaptar~~ | ✅ revisado em 24/11/2026 (`treino-para-quem-usa-mounjaro`): H2 treino em casa (Calatayud 2015), FAQs academia e pré-treino; descrição em proposta |
 | 2026-07-10 | `/emagrecimento/como-comecar-a-treinar-acima-do-peso/` | Como começar a treinar estando acima do peso |  |
 | 2026-07-10 | `/guias/personal-trainer-para-terceira-idade/` | Personal trainer para terceira idade: como escolher |  |
 | 2026-07-10 | `/musculacao/cardio-e-musculacao-no-mesmo-dia/` | Cardio e musculação no mesmo dia: como combinar |  |
