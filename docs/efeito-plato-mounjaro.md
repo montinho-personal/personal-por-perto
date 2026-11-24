@@ -45,3 +45,13 @@ peso atual). Fontes: Jastreboff 2022 (SURMOUNT-1), Aronne 2024 (SURMOUNT-4).
   fora do tema; "o que comer tomando Mounjaro" — nutricionista (e já é FAQ
   em como-evitar-perda-de-massa-muscular); "por que sinto fome tomando
   Mounjaro" — sem fonte de treino, é do médico.
+
+## 24/11/2026 — item da pauta (parte 2): "Quantos quilos se perde em 1 mês com Mounjaro?"
+
+PAA da busca "mounjaro e musculação" (24/11, `docs/mounjaro-e-musculacao.md`);
+o mesmo tema aparece nas outras pesquisas de "treino para quem usa mounjaro"
+("5mg emagrece quantos quilos em 1 mês"). Entrou uma FAQ com o resumo do
+SURMOUNT-1 (Jastreboff 2022, já na lista): 72 semanas, −15,0% (5 mg), −19,5%
+(10 mg), −20,9% (15 mg), −3,1% placebo; peso inicial médio 104,8 kg → cerca de
+16 a 22 kg no período. Sem número por mês (o estudo não mede assim) e sem
+promessa. atualizadoEm 24/11.
