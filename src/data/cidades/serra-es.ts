@@ -95,6 +95,10 @@ export const cidade: Cidade = {
   conclusao:
     'Entre o dinamismo do polo industrial e os 23 km de litoral, a Serra oferece bons cenários para treinar — do Parque da Cidade à orla de Jacaraípe. Um personal trainer ajuda a encaixar o treino na rotina de trabalho e a aproveitar a estrutura da cidade com método e segurança.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true, onlineOuPresencial: true },
+
+
   vizinhas: ['vitoria-es', 'vila-velha-es'],
 
   fontes: [
@@ -102,7 +106,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura da Serra', url: 'https://www.serra.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-19',
+  atualizadoEm: '2026-11-24',
   capaArte: {
     src: '/capas-cidade/serra-es.webp',
     w: 1200,

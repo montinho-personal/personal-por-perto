@@ -95,14 +95,19 @@ export const cidade: Cidade = {
   conclusao:
     'Polo do sudoeste baiano com clima de altitude agradável, Vitória da Conquista é convidativa para treinar ao ar livre. Um personal trainer ajuda a aproveitar o parque da Lagoa das Bateias e a boa temperatura da cidade com um plano sob medida.',
 
-  vizinhas: ['salvador-ba', 'feira-de-santana-ba', 'camacari-ba'],
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
+
+  vizinhas: ['itapetinga-ba', 'brumado-ba', 'jequie-ba'],
 
   fontes: [
     { nome: 'IBGE Cidades — Vitória da Conquista', url: 'https://cidades.ibge.gov.br/brasil/ba/vitoria-da-conquista/panorama' },
     { nome: 'Prefeitura de Vitória da Conquista', url: 'https://www.pmvc.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
+    { nome: 'IBGE — Regiões geográficas (2017): região intermediária de Vitória da Conquista', url: 'https://servicodados.ibge.gov.br/api/v1/localidades/regioes-intermediarias/2904/municipios' },
   ],
-  atualizadoEm: '2026-11-12',
+  atualizadoEm: '2026-11-24',
   capaArte: {
     src: '/capas-cidade/vitoria-da-conquista-ba.webp',
     w: 1200,
