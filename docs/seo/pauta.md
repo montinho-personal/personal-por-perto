@@ -81,6 +81,7 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 | Afundo lateral | seção em `/musculacao/afundo-como-fazer/` | pauta do Montinho, 2.400/mês (20/11). ⏸ 22/11/2026: fica — os estudos achados no Europe PMC são do afundo frontal (badminton, squash), não do lateral; sem fonte, sem seção |
 | ~~Kickboxing: quantas calorias gasta~~ | ~~seção em `/calorias/lutas/`~~ | ✅ 22/11/2026: FAQ com a linha de artes marciais do Compêndio (já usada na página); o valor próprio de kickboxing segue fora, sem conferência |
 | Pode treinar com dor de cabeça? | FAQ em `/musculacao/treinar-doente-ou-gripado/` (só com fonte oficial) | pauta do Montinho, 70/mês (20/11). ⏸ 22/11/2026: fica — NHS e Mayo Clinic bloqueados no ambiente; sem fonte oficial, sem FAQ |
+| "Quantos quilos se perde em 1 mês com Mounjaro?" | FAQ em `/mounjaro-e-treino/efeito-plato-mounjaro/` (só com o dado do SURMOUNT-1, sem número por mês) | busca de 24/11 (`docs/mounjaro-e-musculacao.md`) |
 | ~~Esportes que mais queimam calorias~~ | ~~seção no hub `/calorias/`~~ | ✅ 23/11/2026: H2 com tabela de 16 atividades calculada pelas próprias calculadoras (1 h, 70 kg; METs do Compêndio 2024) |
 | ~~"Qual horário o músculo cresce?"~~ | ~~FAQ em `/musculacao/hipertrofia-como-funciona/`~~ | ✅ 23/11/2026: FAQ + frase no H2 de recuperação, MacDougall 1995 e Lamon 2021 |
 | ~~"Como funciona o processo de emagrecimento"~~ | ~~FAQ em `/emagrecimento/deficit-calorico-como-funciona/`~~ — feito em 18/11 na revisão da página | busca de 17/11 (`docs/sinais-de-que-esta-emagrecendo.md`) |
@@ -114,7 +115,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | ~~2026-07-07~~ | ~~`/musculacao/quantas-series-e-repeticoes/`~~ | ~~Quantas séries e repetições fazer por grupo muscular~~ | ✅ revisado 22/11/2026 (`quantas-series-e-repeticoes`); título em proposta |
 | ~~2026-07-07~~ | ~~`/musculacao/treino-para-iniciantes/`~~ | ~~Treino de musculação para iniciantes: como começar~~ | ✅ revisado em 23/11/2026 (`treino-para-iniciantes`): H2 feminino × masculino (Roberts 2020), H2 casa × academia, 3 FAQs; título em proposta |
 | ~~2026-07-08~~ | ~~`/mounjaro-e-treino/fraqueza-para-treinar/`~~ | ~~Mounjaro dá fraqueza para treinar? O que fazer~~ | ✅ revisado em 23/11/2026 (`fraqueza-para-treinar`): FAQs de tontura e duração (SURMOUNT-1), referências; descrição em proposta |
-| 2026-07-08 | `/mounjaro-e-treino/mounjaro-e-musculacao/` | Quem usa Mounjaro pode fazer musculação? |  |
+| ~~2026-07-08~~ | ~~`/mounjaro-e-treino/mounjaro-e-musculacao/`~~ | ~~Quem usa Mounjaro pode fazer musculação?~~ | ✅ revisado em 24/11/2026 (`mounjaro-e-musculacao`): 2 FAQs (massa magra, cardio × musculação), referências; título e descrição em proposta |
 | 2026-07-08 | `/mounjaro-e-treino/treino-para-quem-usa-mounjaro/` | Treino para quem usa Mounjaro: como adaptar |  |
 | 2026-07-10 | `/emagrecimento/como-comecar-a-treinar-acima-do-peso/` | Como começar a treinar estando acima do peso |  |
 | 2026-07-10 | `/guias/personal-trainer-para-terceira-idade/` | Personal trainer para terceira idade: como escolher |  |

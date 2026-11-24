@@ -8,3 +8,4 @@ rotinas diárias anotam quando veem o site citado por acaso.
 |---|---|---|---|
 | 20/11/2026 | "personal trainer conde pb" (João Pessoa, celular) | **sim, 1ª fonte** | `/personal-trainer/conde-pb/` ("Personal Trainer em Conde (PB): quanto custa e onde treinar"); a resposta abre com preço por aula e exemplo de 2 treinos por semana |
 | 23/11/2026 | "mounjaro fraqueza" (São Paulo, celular) | **sim**, entre 12 fontes (7 são Instagram) | `/mounjaro-e-treino/fraqueza-para-treinar/`; a página não está nos 9 orgânicos. A resposta é lista de causas, o que ajuda e quando procurar o médico |
+| 24/11/2026 | "mounjaro e musculação" (São Paulo, celular) | **sim**, última de 9 fontes | `/mounjaro-e-treino/mounjaro-e-musculacao/`; a página não está nos 8 orgânicos (Instagram domina). Resposta em listas: por que combinar e cuidados práticos |

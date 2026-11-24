@@ -47,7 +47,7 @@ const relacionados = [
 ];
 
 const path = '/mounjaro-e-treino/mounjaro-e-musculacao';
-const atualizadoEm = '2026-10-15';
+const atualizadoEm = '2026-11-24';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Mounjaro e Treino', url: '/mounjaro-e-treino/' },
@@ -79,6 +79,16 @@ const faqs = [
     pergunta: 'Posso começar pesado para acelerar os resultados?',
     resposta:
       'Não é o caminho recomendado. Começar com intensidade progressiva e priorizar a técnica antes da carga reduz o risco de lesão e torna o processo sustentável, ainda mais numa fase de menor ingestão calórica. Este conteúdo não promete um número na balança nem um resultado garantido: o ritmo adequado para você depende da avaliação do médico e do acompanhamento de um profissional de educação física.',
+  },
+  {
+    pergunta: 'Como não perder massa muscular usando Mounjaro?',
+    resposta:
+      'Não dá para garantir perda zero: no estudo de composição corporal do SURMOUNT-1, cerca de um quarto do peso perdido com tirzepatida foi massa magra. As duas medidas com melhor suporte são treino de força regular e proteína suficiente, ajustada com o médico ou o nutricionista. O passo a passo, com os números do estudo, está no guia como evitar perda de massa muscular usando Mounjaro.',
+  },
+  {
+    pergunta: 'Cardio ou musculação: o que fazer usando Mounjaro?',
+    resposta:
+      'Os dois cabem, mas com papéis diferentes. A musculação é a prioridade, porque é o estímulo que ajuda a segurar a massa magra enquanto o peso cai; o cardio entra como complemento para o condicionamento e o gasto do dia. Como encaixar o cardio sem atrapalhar a recuperação está no guia cardio para quem usa Mounjaro.',
   },
 ];
 
@@ -280,6 +290,12 @@ const schema = [
         <a href={nsca.url} target="_blank" rel="noopener">{nsca.nome}</a>.
         Decisões sobre o medicamento são sempre do seu médico.
       </div>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35658024/" target="_blank" rel="noopener noreferrer">Jastreboff AM, Aronne LJ, Ahmad NN, et al. Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1). New England Journal of Medicine, 2022</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39996356/" target="_blank" rel="noopener noreferrer">Look M, Dunn JP, Kushner RF, et al. Body composition changes during weight reduction with tirzepatide in the SURMOUNT-1 study of adults with obesity or overweight. Diabetes, Obesity and Metabolism, 2025</a></li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} />
@@ -331,5 +347,13 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
   }
 </style>
