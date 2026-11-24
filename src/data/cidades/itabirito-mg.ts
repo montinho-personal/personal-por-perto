@@ -104,6 +104,10 @@ export const cidade: Cidade = {
   conclusao:
     'Cercada por serras, cachoeiras e pela paisagem ferruginosa do Quadrilátero Ferrífero, Itabirito reúne condições naturais favoráveis ao treino ao ar livre, mas a rotina de trabalho na mineração e os deslocamentos pela BR-356 até Belo Horizonte pedem flexibilidade de horário. Um personal trainer ajuda a encaixar o treino na agenda de quem trabalha em turnos ou viaja diariamente, mantendo constância ao longo do ano.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
+
   vizinhas: ['ouro-preto-mg', 'belo-horizonte-mg'],
 
   fontes: [
@@ -111,5 +115,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itabirito', url: 'https://itabirito.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3203700' },
   ],
-  atualizadoEm: '2026-11-13',
+  atualizadoEm: '2026-11-24',
 };

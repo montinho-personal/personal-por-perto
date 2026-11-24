@@ -89,6 +89,10 @@ export const cidade: Cidade = {
   conclusao:
     'Cidade Modelo da Grande Belém, Castanhal une polo universitário e um circuito de corrida ativo. Um personal trainer ajuda a aproveitar o Parque das Águas e as praças centrais com método, ajustando o treino ao calor e à umidade amazônicos.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, duasVezes: true },
+
+
   vizinhas: ['belem-pa', 'ananindeua-pa'],
 
   fontes: [
@@ -96,5 +100,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Castanhal', url: 'https://www.castanhal.pa.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-01',
+  atualizadoEm: '2026-11-24',
 };
