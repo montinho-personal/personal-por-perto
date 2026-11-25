@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cachoeira do Sul', url: 'https://www.cachoeiradosul.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-25',
 };

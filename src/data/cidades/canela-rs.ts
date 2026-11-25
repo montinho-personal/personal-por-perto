@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Canela', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430440' },
     { nome: 'Prefeitura de Canela', url: 'https://canela.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-25',
 };

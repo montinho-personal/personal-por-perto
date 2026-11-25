@@ -97,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Sebrae Minas — marca território do café de Campos Altos', url: 'https://mg.agenciasebrae.com.br/economia-e-politica/campos-altos-e-a-proxima-regiao-produtora-de-cafe-em-minas-gerais-a-lancar-marca-territorio/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-19',
+  atualizadoEm: '2026-11-25',
 };

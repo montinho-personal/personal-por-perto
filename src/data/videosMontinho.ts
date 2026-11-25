@@ -343,6 +343,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'alto-paraiso-de-goias-go', 'americana-sp', 'amontada-ce', 'analandia-sp', 'andradina-sp',
   'apiai-sp', 'apiuna-sc', 'apodi-rn', 'aquiraz-ce', 'ararangua-sc',
   'arcoverde-pe', 'areia-branca-rn', 'areias-sp', 'ariquemes-ro', 'arraial-do-cabo-rj',
+  // leva 10 — 25/11/2026: as 50 seguintes sem vídeo (2 com impressão em 28 dias no GSC; as demais em ordem alfabética; leva 9 conferida no ar)
+  'carmo-do-paranaiba-mg', 'passa-quatro-mg', 'arroio-do-meio-rs', 'aruja-sp', 'baia-formosa-rn',
+  'balneario-rincao-sc', 'balsas-ma', 'bananal-sp', 'barcelos-am', 'barra-do-garcas-mt',
+  'barra-do-pirai-rj', 'barra-mansa-rj', 'barreirinhas-ma', 'batatais-sp', 'benevides-pa',
+  'bertioga-sp', 'bezerros-pe', 'bom-jesus-da-lapa-ba', 'bonito-ms', 'borda-da-mata-mg',
+  'braganca-pa', 'brasileia-ac', 'breves-pa', 'brumadinho-mg', 'buzios-rj',
+  'cacador-sc', 'cacapava-do-sul-rs', 'caceres-mt', 'cachoeira-ba', 'cachoeira-do-sul-rs',
+  'cacoal-ro', 'caete-mg', 'caico-rn', 'caieiras-sp', 'cairu-ba',
+  'cajamar-sp', 'cajazeiras-pb', 'camacan-ba', 'camaragibe-pe', 'cambara-do-sul-rs',
+  'camocim-ce', 'campina-grande-do-sul-pr', 'campo-belo-mg', 'campos-altos-mg', 'campos-dos-goytacazes-rj',
+  'campos-novos-sc', 'cananeia-sp', 'canarana-mt', 'candeias-ba', 'canela-rs',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

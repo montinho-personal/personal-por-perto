@@ -88,5 +88,5 @@ export const cidade: Cidade = {
       url: 'https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/conjuntos-urbanos-tombados-cidades-historicas/nordeste/cachoeira-ba',
     },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-25',
 };

@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Minas 300 Anos — Turismo religioso em Caeté', url: 'https://www.minas300anos.mg.gov.br/noticias-e-artigos/caete-se-destaca-como-importante-local-para-o-turismo-religioso/' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-25',
 };

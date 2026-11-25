@@ -95,5 +95,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Arroio do Meio', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430100' },
     { nome: 'Prefeitura de Arroio do Meio', url: 'https://arroiodomeio.rs.gov.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-25',
 };

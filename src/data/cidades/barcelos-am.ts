@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional do Jaú', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/amazonia/lista-de-ucs/parna-do-jau' },
     { nome: 'Portal Amazônia — Barcelos', url: 'https://portalamazonia.com/amazonia-de-a-a-z/barcelos/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-11-25',
 };

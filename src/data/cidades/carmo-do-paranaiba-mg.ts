@@ -92,5 +92,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura Municipal de Carmo do Paranaíba/MG', url: 'https://carmodoparanaiba.mg.gov.br/' },
     { nome: 'Rota do Café Cerrado Mineiro — Carmo do Paranaíba', url: 'https://www.rotadocafecerradomg.com.br/carmodoparanaiba' },
   ],
-  atualizadoEm: '2026-07-04',
+  atualizadoEm: '2026-11-25',
 };

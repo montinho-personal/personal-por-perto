@@ -99,7 +99,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Campos', url: 'https://www.campos.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-25',
   capaArte: {
     src: '/capas-cidade/campos-dos-goytacazes-rj.webp',
     w: 1200,

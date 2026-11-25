@@ -90,5 +90,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas do Desenvolvimento Humano no Brasil — Baía Formosa', url: 'https://atlasbrasil.org.br/2013/pt/perfil_m/baia-formosa_rn' },
     { nome: 'Prefeitura Municipal de Baía Formosa — Turismo', url: 'https://baiaformosa.rn.gov.br/turismo/fazer' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-25',
 };

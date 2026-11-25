@@ -127,5 +127,5 @@ export const cidade: Cidade = {
     w: 901,
     h: 1600,
   },
-  atualizadoEm: '2026-08-25',
+  atualizadoEm: '2026-11-25',
 };

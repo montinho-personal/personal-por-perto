@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cananéia', url: 'https://cananeia.sp.gov.br/' },
     { nome: 'Fundação Florestal — Parque Estadual da Ilha do Cardoso', url: 'https://www.infraestruturameioambiente.sp.gov.br/fundacaoflorestal/pagina-inicial/parques-estaduais/parque-estadual-da-ilha-do-cardoso/' },
   ],
-  atualizadoEm: '2026-08-12',
+  atualizadoEm: '2026-11-25',
 };

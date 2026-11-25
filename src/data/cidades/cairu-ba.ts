@@ -85,5 +85,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'INEMA — APA das Ilhas de Tinharé e Boipeba', url: 'https://www.inema.ba.gov.br/gestao-2/unidades-de-conservacao/apa/apa-ilhas-do-tinhare-e-boipeba/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-25',
 };

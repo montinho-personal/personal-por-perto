@@ -97,5 +97,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Batatais', url: 'https://www.batatais.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3505906' },
   ],
-  atualizadoEm: '2026-10-08',
+  atualizadoEm: '2026-11-25',
 };

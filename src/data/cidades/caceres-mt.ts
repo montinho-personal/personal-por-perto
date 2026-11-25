@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cáceres', url: 'https://www.caceres.mt.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/330250' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-25',
 };

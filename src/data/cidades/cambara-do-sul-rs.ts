@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Cambará do Sul', url: 'https://www.atlasbrasil.org.br/perfil/municipio/430360' },
     { nome: 'ICMBio — Parque Nacional de Aparados da Serra', url: 'https://www.gov.br/icmbio/pt-br/assuntos/biodiversidade/unidade-de-conservacao/unidades-de-biomas/mata-atlantica/lista-de-ucs/parna-de-aparados-da-serra' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-25',
 };
