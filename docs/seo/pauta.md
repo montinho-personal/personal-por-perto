@@ -45,7 +45,8 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 26 | Calistenia para iniciantes | AC "treino para iniciantes calistenia" (busca de 23/11, `docs/treino-para-iniciantes.md`) | — | nada com "calistenia"; liga em `treino-em-casa-para-iniciantes` e `barra-fixa-como-fazer` |
 | 27 | ~~Treino ao ar livre no calor~~ → virou **revisão** de `/guias/treinar-no-calor-e-no-frio/` (a página já existia; artigo novo canibalizaria), 25/11/2026 | pauta do Montinho (26/02/2027) | — | `docs/treinar-no-calor-e-no-frio.md` |
 | 28 | ~~Carnaval sem largar o treino~~ → `treino-no-carnaval`, 25/11/2026 | pauta do Montinho (22/01/2027) | — | recorte conferido contra `voltar-a-treinar-depois-de-parar` |
-| 29 | **Treino de força para ciclistas** | pauta do Montinho (09/03/2027), idem | — | espelho de `personal-trainer-para-corredores`; ⚠️ não repetir `pedalar-como-treino` (bike como treino de quem não é ciclista) |
+| 29 | ~~Treino de força para ciclistas~~ → `musculacao-para-ciclistas`, 25/11/2026 | pauta do Montinho (09/03/2027) | — | recorte conferido contra `pedalar-como-treino` |
+| 30 | Zonas de treino (Z1 a Z5): o que são e como usar | PAA "O que é Z1, Z2, Z3, Z4, Z5 ciclismo?" (busca de 25/11, `docs/musculacao-para-ciclistas.md`); baixa | — | nada sobre zonas; serve corrida e bike; só com fonte (ACSM) |
 
 Gancho do lançamento do GTA 6 (19/11/2026), pedido do Renato em 20/11 ("pode fazer os 3"): ~~Memes do GTA 6 para quem treina~~ → `memes-gta-6`, 20/11; ~~GTA 6 tem academia?~~ → `gta-6-tem-academia`, 20/11; ~~ficar muito tempo sentado faz mal~~ → virou revisão de `personal-trainer-para-quem-trabalha-sentado` (página nova canibalizaria), 20/11.
 
@@ -340,3 +341,4 @@ improvisada.
 - `/guias/treino-na-areia/` — Treino na areia (publicado em 2026-11-20)
 - `/musculacao/principios-do-treinamento/` — Princípios do treinamento (publicado em 2026-11-20)
 - `/guias/treino-no-carnaval/` — Treino no Carnaval (publicado em 2026-11-25)
+- `/guias/musculacao-para-ciclistas/` — Musculação para ciclistas (publicado em 2026-11-25)

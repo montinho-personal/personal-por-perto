@@ -1,0 +1,275 @@
+---
+/**
+ * Musculação para ciclistas — o que a força faz pelo pedal (meta-análise de
+ * 2026), o osso que o pedal não fortalece, os exercícios, quantas vezes por
+ * semana e como encaixar com a bike.
+ *
+ * Item 29 da pauta (docs/seo/pauta.md), da pauta do Montinho ("Treino para
+ * ciclistas: força que ajuda no pedal", 09/03/2027), liberado pelo Renato em
+ * 25/11/2026 ("Pode fazer tudo", "Pode continuar").
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 25/11/2026):
+ * "treino de força para ciclistas" (página e visão de IA) + autocompletar de
+ * "musculação para ciclistas". Registro em docs/musculacao-para-ciclistas.md;
+ * JSON em docs/pesquisas/2026-11-25-musculacao-para-ciclistas/.
+ *
+ * Recorte: pedalar-como-treino = a bike como treino de quem não é ciclista;
+ * personal-trainer-para-corredores = o espelho para quem corre;
+ * cardio-e-musculacao-no-mesmo-dia = ordem dos treinos. Aqui = o ciclista que
+ * quer pedalar melhor e proteger o corpo.
+ * Fontes (25/11/2026, resumos): Llanos-Lagos 2026 (meta-análise), Olmedillas
+ * 2012 (revisão, osso), Mathis 2013 (osso e musculação), Bickel 2011
+ * (manutenção), ACSM 2009.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+
+const relacionados = [
+  { url: '/guias/pedalar-como-treino/', titulo: 'Pedalar como treino', descricao: 'O que a bike faz, e o que não faz, pela perna.', tipo: 'Guia' },
+  { url: '/guias/personal-trainer-para-corredores/', titulo: 'Personal trainer para corredores', descricao: 'A mesma lógica para quem corre.', tipo: 'Guia' },
+  { url: '/musculacao/cardio-e-musculacao-no-mesmo-dia/', titulo: 'Cardio e musculação no mesmo dia', descricao: 'Em que ordem treinar quando os dois caem juntos.', tipo: 'Musculação' },
+];
+
+const path = '/guias/musculacao-para-ciclistas';
+const atualizadoEm = '2026-11-25';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Musculação para ciclistas', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre musculação para ciclistas';
+const faqs = [
+  {
+    pergunta: 'Musculação ajuda no ciclismo?',
+    resposta:
+      'Ajuda. Uma meta-análise de 2026, com 17 estudos, mostrou que treino de força pesado, de 1 a 3 vezes por semana, melhorou o desempenho de ciclistas (tempo até a exaustão e contrarrelógio) e a eficiência da pedalada, sem mexer no VO2 máximo. Os próprios autores dizem que a certeza da evidência ainda é baixa.',
+  },
+  {
+    pergunta: 'Quais os melhores exercícios de musculação para ciclistas?',
+    resposta:
+      'Os que trabalham as pernas e o quadril com carga: agachamento, leg press, stiff ou levantamento terra romeno, afundo búlgaro e elevação pélvica. Some remada e prancha para o tronco, que passa horas na mesma posição em cima da bike.',
+  },
+  {
+    pergunta: 'Quantas vezes por semana o ciclista deve fazer musculação?',
+    resposta:
+      'Nos estudos que melhoraram o desempenho, de 1 a 3 sessões por semana. Nas semanas de prova dá para reduzir: num estudo, cortar o treino de força a um terço do volume manteve, em adultos jovens, a massa muscular ganha.',
+  },
+  {
+    pergunta: 'Pedalar fortalece os ossos?',
+    resposta:
+      'Pouco. Uma revisão com 31 estudos concluiu que o ciclismo de estrada não traz benefício importante para o osso, e ciclistas que treinam com regularidade aparecem com densidade óssea baixa em regiões como a coluna lombar. Num estudo com ciclistas, mais minutos de musculação por semana andaram junto com osso mais denso. Quem tem histórico de fratura ou osteopenia deve conversar com o médico.',
+  },
+  {
+    pergunta: 'Musculação deixa o ciclista pesado?',
+    resposta:
+      'Não é o que os estudos mostram. Na meta-análise de 2026, o peso dos participantes não mudou o efeito do treino de força, que melhorou o desempenho sem piorar o VO2 máximo. Ganhar massa muscular depende de volume de treino e de comida, que o ciclista controla.',
+  },
+];
+
+const title = 'Musculação para Ciclistas: a Força Que Ajuda no Pedal';
+const description =
+  'Musculação para ciclistas: o que a força faz pelo pedal segundo os estudos, o osso que a bike não fortalece, os exercícios e quantas vezes treinar.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Musculação para ciclistas: o treino de força que ajuda no pedal</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+    <p class="lead">
+      Musculação ajuda o ciclista de duas formas. Na bike: uma meta-análise de
+      2026, com 17 estudos, mostrou que treino de força pesado, de 1 a 3 vezes
+      por semana, melhorou o desempenho e a eficiência da pedalada. Fora dela:
+      o ciclismo de estrada fortalece pouco o osso, e a musculação cobre essa
+      falta. O treino gira em torno de pernas e quadril com carga, mais tronco.
+    </p>
+
+    <div class="prose">
+      <h2>O que a força faz pelo pedal</h2>
+      <p>
+        A meta-análise de 2026 juntou 17 estudos com ciclistas de resistência
+        que fizeram treino de força pesado (80% ou mais da carga máxima) por 5 a
+        25 semanas, de 1 a 3 vezes por semana, comparados com quem só pedalou
+        (Llanos-Lagos e colegas, 2026). O grupo da musculação melhorou o tempo
+        até a exaustão e o contrarrelógio, a eficiência da pedalada e a potência
+        em esforços curtos. O VO2 máximo não mudou — a força não substitui o
+        treino aeróbico, ela soma.
+      </p>
+      <p>
+        Os autores fazem uma ressalva honesta: a certeza da evidência ainda é
+        baixa, e não dá para cravar o melhor jeito de montar o treino. O que os
+        estudos sustentam é a direção — ciclista que faz musculação pedala
+        melhor, não pior.
+      </p>
+
+      <h2>O osso: o motivo que quase ninguém cita</h2>
+      <p>
+        Pedalar é ótimo para o coração e quase não carrega peso nos ossos. Uma
+        revisão com 31 estudos concluiu que o ciclismo de estrada não traz
+        benefício importante para o osso, e ciclistas adultos que treinam com
+        regularidade aparecem com densidade óssea baixa em regiões como a coluna
+        lombar (Olmedillas e colegas, 2012). Os autores apontam como causa as
+        horas sentado na bike, com o peso apoiado no selim.
+      </p>
+      <p>
+        Num estudo com 35 ciclistas competitivos, mais minutos de musculação por
+        semana andaram junto com osso mais denso na coluna e no quadril (Mathis e
+        colegas, 2013). É uma associação, não prova de causa, mas aponta no
+        mesmo sentido. Quem tem histórico de fratura, osteopenia ou dúvida sobre
+        a saúde dos ossos deve conversar com o médico.
+      </p>
+
+      <h2>Os exercícios que mais ajudam</h2>
+      <ul>
+        <li>
+          <strong>Agachamento e leg press:</strong> a base para empurrar o
+          pedal. Veja <a href="/musculacao/agachamento-como-fazer/">agachamento</a>
+          e <a href="/musculacao/leg-press-como-fazer/">leg press</a>.
+        </li>
+        <li>
+          <strong>Stiff ou levantamento terra romeno:</strong> a parte de trás da
+          coxa e o glúteo, que o pedal usa menos que o quadríceps. Veja <a
+          href="/musculacao/stiff-como-fazer/">stiff</a>.
+        </li>
+        <li>
+          <strong>Afundo búlgaro:</strong> uma perna de cada vez, que mostra (e
+          corrige) diferença de força entre os lados. Veja <a
+          href="/musculacao/agachamento-bulgaro-como-fazer/">agachamento
+          búlgaro</a>.
+        </li>
+        <li>
+          <strong>Elevação pélvica:</strong> o glúteo, que estende o quadril.
+          Veja <a href="/musculacao/elevacao-pelvica-como-fazer/">elevação
+          pélvica</a>.
+        </li>
+        <li>
+          <strong>Remada e prancha:</strong> o tronco, que passa horas inclinado
+          sobre o guidão. Veja <a href="/musculacao/remada-curvada-como-fazer/">remada
+          curvada</a> e <a href="/musculacao/prancha-abdominal-como-fazer/">prancha</a>.
+        </li>
+      </ul>
+
+      <h2>Quantas vezes por semana e como encaixar com o pedal</h2>
+      <p>
+        Nos estudos da meta-análise, a musculação entrou de 1 a 3 vezes por
+        semana, com carga alta e poucas repetições. Quem nunca treinou força não
+        começa por aí: as diretrizes do American College of Sports Medicine
+        indicam começar com cargas moderadas, de 8 a 12 repetições, e subir aos
+        poucos, depois de aprender a técnica.
+      </p>
+      <p>
+        Nas semanas de prova ou de volume alto na bike, dá para reduzir sem
+        perder o que foi construído: num estudo, reduzir o treino de força a um
+        terço — e até a um nono — do volume manteve, em adultos jovens, a massa
+        muscular ganha em 16 semanas (Bickel e colegas, 2011). Se a
+        musculação e um treino forte de bike caem no mesmo dia, comece pelo que
+        é prioridade naquela fase ou separe os dois por algumas horas — a lógica
+        está em <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">cardio e
+        musculação no mesmo dia</a>.
+      </p>
+      <p>
+        E se a pergunta é quanto o pedal da semana gasta — para quem também
+        quer acertar o peso de prova —, a conta depende da velocidade e do
+        tempo, não da distância.
+      </p>
+
+      <FerramentaInline
+        id="bicicleta"
+        texto="A calculadora de bicicleta faz a conta pelo que o ciclista sabe — velocidade média e tempo, na rua ou no rolo — e mostra a fonte de cada número."
+        acao="Calcular o gasto do meu pedal"
+      />
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/40632222/" target="_blank" rel="noopener noreferrer">Llanos-Lagos C, Ramirez-Campillo R, Sáez de Villarreal E. Heavy strength training effects on physiological determinants of endurance cyclist performance: a systematic review with meta-analysis. European Journal of Applied Physiology, 2026</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23256921/" target="_blank" rel="noopener noreferrer">Olmedillas H, González-Agüero A, Moreno LA, et al. Cycling and bone health: a systematic review. BMC Medicine, 2012</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26464885/" target="_blank" rel="noopener noreferrer">Mathis SL, Farley RS, Fuller DK, et al. The relationship between cortisol and bone mineral density in competitive male cyclists. Journal of Sports Medicine, 2013</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/21131862/" target="_blank" rel="noopener noreferrer">Bickel CS, Cross JM, Bamman MM. Exercise dosing to retain resistance training adaptations in young and older adults. Medicine &amp; Science in Sports &amp; Exercise, 2011</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19204579/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine. Progression models in resistance training for healthy adults. Medicine &amp; Science in Sports &amp; Exercise, 2009</a></li>
+        <li>Conferidas em 25/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+  .tabela-wrap { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-wrap th, .tabela-wrap td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; }
+</style>
