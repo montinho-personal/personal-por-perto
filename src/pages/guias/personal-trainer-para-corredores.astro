@@ -40,7 +40,7 @@ const relacionados = [
 ];
 
 const path = '/guias/personal-trainer-para-corredores';
-const atualizadoEm = '2026-09-22';
+const atualizadoEm = '2026-11-25';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Guias', url: '/guias/' },
@@ -77,6 +77,16 @@ const faqs = [
     pergunta: 'Correr todo dia é ruim?',
     resposta:
       'Não é ruim por si só, mas exige que o volume total e a progressão sejam bem controlados — a maioria das lesões de corrida vem de aumentar carga rápido demais, não de correr com frequência. Ter pelo menos um dia sem impacto por semana ajuda na recuperação. Dor que persiste, piora durante a corrida ou muda o seu jeito de pisar precisa de avaliação de médico ou fisioterapeuta, não de mais quilômetros.',
+  },
+  {
+    pergunta: 'Corrida e musculação no mesmo dia atrapalha?',
+    resposta:
+      'Para força máxima e massa muscular, não: uma meta-análise com 43 estudos não achou prejuízo em combinar os dois. A força explosiva cai um pouco mais quando corrida e musculação entram na mesma sessão do que quando ficam separadas por pelo menos 3 horas. Dias alternados ou horários diferentes são o melhor arranjo.',
+  },
+  {
+    pergunta: 'Dá para ganhar massa muscular só correndo?',
+    resposta:
+      'Não de forma consistente. Massa muscular vem de carga que desafia o músculo e sobe aos poucos, e a corrida não oferece isso. A boa notícia é que correr não atrapalha quem faz musculação: na meta-análise de 2022, o ganho de massa muscular foi o mesmo com ou sem o treino aeróbico junto.',
   },
 ];
 
@@ -137,6 +147,10 @@ const schema = [
         mais direto: um sistema neuromuscular mais forte gasta menos
         energia para manter o mesmo ritmo. Na prática, o mesmo <a
         href="/ferramentas/calculadora-de-pace/">pace</a> passa a custar menos.
+        Uma revisão de 24 estudos com corredores de meia e longa distância
+        encontrou economia de corrida de 2% a 8% melhor com musculação, além
+        de melhora no contrarrelógio de 1,5 a 10 km, sem piorar a composição
+        corporal (Blagrove e colegas, 2018).
       </p>
 
       <p>
@@ -264,6 +278,23 @@ const schema = [
         acao="Encaixar a musculação nos dias que a corrida deixa livres"
       />
 
+      <h2>Corrida e musculação: dias alternados ou no mesmo dia?</h2>
+      <p>
+        Os dois funcionam. Uma meta-análise com 43 estudos mostrou que somar
+        treino aeróbico à musculação não atrapalha o ganho de força máxima nem
+        o de massa muscular (Schumann e colegas, 2022). O que sofre é a força
+        explosiva, e sofre mais quando os dois entram na mesma sessão do que
+        quando ficam separados por pelo menos 3 horas.
+      </p>
+      <p>
+        Na prática: em dias alternados, ótimo; no mesmo dia, de preferência em
+        horários diferentes, com o treino-chave de corrida longe da perna
+        pesada. Se tiver de ser na mesma sessão, comece pelo que é prioridade
+        naquela fase — a ordem, passo a passo, está em <a
+        href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">cardio e
+        musculação no mesmo dia</a>.
+      </p>
+
       <h2>Dor de corredor: o que a força resolve e o que não resolve</h2>
       <p>
         A maioria das queixas de corrida é de sobrecarga: tecido exposto
@@ -330,6 +361,13 @@ const schema = [
         pergunta o seu calendário de provas antes de montar qualquer
         coisa.
       </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/29249083/" target="_blank" rel="noopener noreferrer">Blagrove RC, Howatson G, Hayes PR. Effects of strength training on the physiological determinants of middle- and long-distance running performance: a systematic review. Sports Medicine, 2018</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/34757594/" target="_blank" rel="noopener noreferrer">Schumann M, Feuerbacher JF, Sünkeler M, et al. Compatibility of concurrent aerobic and strength training for skeletal muscle size and function: an updated systematic review and meta-analysis. Sports Medicine, 2022</a></li>
+        <li>Conferidas em 25/11/2026.</li>
+      </ul>
     </div>
 
     <Faq faqs={faqs} titulo="Perguntas frequentes sobre personal trainer para corredores" />
@@ -381,5 +419,13 @@ const schema = [
   }
   .article-page .prose {
     margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
   }
 </style>

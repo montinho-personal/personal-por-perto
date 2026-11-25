@@ -47,6 +47,7 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 28 | ~~Carnaval sem largar o treino~~ → `treino-no-carnaval`, 25/11/2026 | pauta do Montinho (22/01/2027) | — | recorte conferido contra `voltar-a-treinar-depois-de-parar` |
 | 29 | ~~Treino de força para ciclistas~~ → `musculacao-para-ciclistas`, 25/11/2026 | pauta do Montinho (09/03/2027) | — | recorte conferido contra `pedalar-como-treino` |
 | 30 | Zonas de treino (Z1 a Z5): o que são e como usar | PAA "O que é Z1, Z2, Z3, Z4, Z5 ciclismo?" (busca de 25/11, `docs/musculacao-para-ciclistas.md`); baixa | — | nada sobre zonas; serve corrida e bike; só com fonte (ACSM) |
+| 31 | Treino híbrido: corrida e força na mesma semana | outras pesquisas de "corrida e musculação" (25/11, `docs/personal-trainer-para-corredores.md`); baixa | — | ⚠️ conferir contra `personal-trainer-para-corredores` e `treino-hyrox`; pode virar só seção |
 
 Gancho do lançamento do GTA 6 (19/11/2026), pedido do Renato em 20/11 ("pode fazer os 3"): ~~Memes do GTA 6 para quem treina~~ → `memes-gta-6`, 20/11; ~~GTA 6 tem academia?~~ → `gta-6-tem-academia`, 20/11; ~~ficar muito tempo sentado faz mal~~ → virou revisão de `personal-trainer-para-quem-trabalha-sentado` (página nova canibalizaria), 20/11.
 
@@ -107,7 +108,7 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 
 | publicado | página | título | nota |
 |---|---|---|---|
-| 2026-08-05 | `/guias/personal-trainer-para-corredores/` | Personal trainer para corredores: o guia completo | corrida de rua + musculação na semana, ordem dos treinos (pauta do Montinho, 25/11; não criar artigo novo) |
+| ~~2026-08-05~~ | ~~`/guias/personal-trainer-para-corredores/`~~ | ~~Personal trainer para corredores: o guia completo~~ | ✅ revisado em 25/11/2026 (`personal-trainer-para-corredores`): H2 dias alternados × mesmo dia (Schumann 2022), Blagrove 2018, 2 FAQs, referências; título em proposta |
 | 2026-07-18 | `/musculacao/treinar-com-dor-no-joelho/` | Dor no joelho: dá para treinar? O que ajustar na musculação | incluir agachamento e afundo depois da liberação (pauta do Montinho, 25/11) |
 | 2026-07-18 | `/guias/personal-trainer-a-domicilio/` | Personal trainer a domicílio: como funciona e quanto custa | seção "privacidade e rotina da família" (pauta do Montinho, 25/11) |
 | 2026-07-18 | `/musculacao/quanto-tempo-de-treino-por-dia/` | Quanto tempo de treino por dia é suficiente? | seção ou FAQ "treino de 45 minutos" dividido (pauta do Montinho, 25/11) |
