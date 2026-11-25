@@ -160,7 +160,7 @@ export const VIDEO_FIXO_POR_PAGINA: Record<string, VideoMontinho> = {
  *     Santana de Parnaíba, Aldeia da Serra.
  *   22/10/2026 — leva 1: as 10 cidades com mais impressões em 28 dias no GSC.
  *   26/10/2026 — leva 2: as 20 seguintes. 29/10/2026 — leva 3: mais 20. 01/11/2026 — leva 4: mais 20.
- *   19/11/2026 — leva 9: mais 20, já com vídeo do canal (vídeo duplo liberado pelo Renato). 22/11/2026 — leva 10: mais 20.
+ *   19/11/2026 — leva 9: mais 20, já com vídeo do canal (vídeo duplo liberado pelo Renato). 22/11/2026 — leva 10: mais 20. 25/11/2026 — leva 11: mais 20.
  */
 export const VIDEO_APP_ID = 'DPAQDPVffCg';
 export const CIDADES_COM_VIDEO_APP = new Set<string>([
@@ -216,6 +216,11 @@ export const CIDADES_COM_VIDEO_APP = new Set<string>([
   'marica-rj', 'patrocinio-mg', 'irece-ba', 'rolandia-pr', 'sapucaia-do-sul-rs',
   'valinhos-sp', 'carmo-de-minas-mg', 'guabiruba-sc', 'rio-grande-rs', 'sao-jose-sc',
   'tobias-barreto-se', 'trairi-ce', 'guarabira-pb', 'itupeva-sp', 'marechal-deodoro-al',
+  // leva 11 — 25/11/2026: as 20 seguintes por impressões em 28 dias no GSC (leva 10 conferida no ar)
+  'araucaria-pr', 'betim-mg', 'pelotas-rs', 'cruz-das-almas-ba', 'patos-pb',
+  'araras-sp', 'currais-novos-rn', 'paraiso-do-tocantins-to', 'paranavai-pr', 'passo-fundo-rs',
+  'paulo-afonso-ba', 'araxa-mg', 'corumba-ms', 'lagoa-santa-mg', 'nova-mutum-mt',
+  'palmeira-dos-indios-al', 'santa-cruz-do-sul-rs', 'vassouras-rj', 'viamao-rs', 'votorantim-sp',
   // 10/11/2026: fora da fila de impressões, junto com o piloto do modelo enxuto
   // (data/modeloCidade.ts). Caíram do índice com impressão no 3º trimestre.
   'natal-rn', 'contagem-mg', 'ananindeua-pa',

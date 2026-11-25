@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Viamão', url: 'https://www.viamao.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3203700' },
   ],
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-25',
 };

@@ -109,5 +109,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Passo Fundo', url: 'https://www.pmpf.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-16',
+  atualizadoEm: '2026-11-25',
 };

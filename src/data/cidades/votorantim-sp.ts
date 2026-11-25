@@ -92,5 +92,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
   academiasVerificadasEm: '2026-10-20',
-  atualizadoEm: '2026-11-15',
+  atualizadoEm: '2026-11-25',
 };

@@ -101,5 +101,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Araxá', url: 'https://www.araxa.mg.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-20',
+  atualizadoEm: '2026-11-25',
 };

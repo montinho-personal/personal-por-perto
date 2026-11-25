@@ -103,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cruz das Almas', url: 'https://www.cruzdasalmas.ba.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/2909802' },
   ],
-  atualizadoEm: '2026-11-20',
+  atualizadoEm: '2026-11-25',
 };

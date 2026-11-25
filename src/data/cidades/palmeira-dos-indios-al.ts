@@ -103,5 +103,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Palmeira dos Índios', url: 'https://palmeiradosindios.al.gov.br/a-cidade/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-24',
+  atualizadoEm: '2026-11-25',
 };
