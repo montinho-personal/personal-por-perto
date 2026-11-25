@@ -111,12 +111,17 @@ export const cidade: Cidade = {
     },
   ],
 
-  vizinhas: ['cuiaba-mt', 'goiania-go', 'brasilia-df'],
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true, onlineOuPresencial: true },
+
+
+  vizinhas: ['sidrolandia-ms', 'sao-gabriel-do-oeste-ms', 'coxim-ms'],
 
   fontes: [
     { nome: 'IBGE Cidades — Campo Grande', url: 'https://cidades.ibge.gov.br/brasil/ms/campo-grande/panorama' },
     { nome: 'Prefeitura de Campo Grande', url: 'https://www.campogrande.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
+    { nome: 'IBGE — Regiões geográficas (2017): região intermediária de Campo Grande', url: 'https://servicodados.ibge.gov.br/api/v1/localidades/regioes-intermediarias/5001/municipios' },
   ],
   capaArte: {
     src: '/capas-cidade/campo-grande-ms.webp',
@@ -127,5 +132,5 @@ export const cidade: Cidade = {
     legenda:
       'Treino personalizado em Campo Grande: um plano feito para o seu corpo e a sua rotina, com acompanhamento profissional na cidade e região.',
   },
-  atualizadoEm: '2026-11-03',
+  atualizadoEm: '2026-11-25',
 };

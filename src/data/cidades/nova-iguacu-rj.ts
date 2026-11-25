@@ -96,6 +96,10 @@ export const cidade: Cidade = {
   conclusao:
     'Maior cidade da Baixada Fluminense, Nova Iguaçu combina a Mata Atlântica do Mendanha com a estrutura urbana da Via Light. Um personal trainer ajuda a aproveitar trilhas, parques e academias com método, respeitando o clima quente e a rotina de quem se desloca para a capital.',
 
+  metaFoco: 'preco',
+  faqsBusca: { precoMensal: true },
+
+
   vizinhas: ['rio-de-janeiro-rj', 'duque-de-caxias-rj', 'sao-goncalo-rj'],
 
   fontes: [
@@ -103,7 +107,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Nova Iguaçu', url: 'https://www.novaiguacu.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-08',
+  atualizadoEm: '2026-11-25',
   capaArte: {
     src: '/capas-cidade/nova-iguacu-rj.webp',
     w: 1200,
