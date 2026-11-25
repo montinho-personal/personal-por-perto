@@ -70,6 +70,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta é formada por academias locais de musculação e treino funcional, distribuídas pelo Centro e pelos bairros próximos à orla, com porte compatível com uma cidade litorânea média e movimento que oscila entre alta e baixa temporada.',
 
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-25',
+
   destaquesFitness: [
     'Cerca de 27 km de praias e orla requalificada como espaço de caminhada e corrida.',
     'Baía de Guaratuba, segunda maior do estado, palco de esportes aquáticos e contato com a natureza.',

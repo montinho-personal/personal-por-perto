@@ -1171,3 +1171,27 @@ Sem Smart Fit em Itacoatiara (página oficial da rede vazia). Completar a lista 
 Texto corrido ajustado: a descrição do Parque Teresa Maia e o destaque deixaram de citar a academia ao ar livre.
 
 Saldo da leva: 6 entradas → 2 mantidas (as 2 com detalhe corrigido), 4 removidas. 74 cidades seguem na fila.
+
+### 25/11/2026 — leva 51 (rotina, Parte B: Carapicuíba e Macapá)
+
+**Carapicuíba/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades no Centro (Av. Governador Mário Covas), na Vila Dirce e no Parque Santa Teresa" | confirmada; **detalhe corrigido**: a rede lista em Carapicuíba as unidades **Centro** (Av. Governador Mário Covas, 282, Jardim Pignatary), **Parque Santa Teresa** (Rua Eduardo Augusto Mesquita, 1147) e **Granja Viana – São Camilo** (Av. São Camilo, 1081, Chácara São João). Não há unidade "Vila Dirce" | página oficial (`/academias/sp/carapicuiba` e `/academias/granja-viana-sao-camilo`, `opened:true`) |
+| "Academias ao ar livre municipais" — "nos parques dos Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto" | **removida**: as páginas da prefeitura abrem só uma tela intermediária no ambiente; resumo de busca não é fonte | — |
+
+Texto corrido ajustado: as descrições dos três parques, a programação da Secretaria, o mercado, o destaque e a FAQ deixaram de afirmar academia ou equipamento de ginástica nos parques.
+
+**Macapá/AP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "com presença na cidade" | confirmada; **nome e detalhe corrigidos**: Smart Fit Macapá, na Rua Leopoldo Machado, 2334, bairro Central | página oficial (`/academias/ap/macapa`, `opened:true`) |
+| "Academias locais" — "nos bairros da Zona Sul, do Trem e do Buritizal" | **removida**: não é academia com nome | — |
+| "Academias ao ar livre" — "no Parque do Jandiá e na Praça Isaac Zagury" | **removida**: só um veículo (Portal Amazônia) cita os equipamentos; o critério pede fonte oficial ou dois veículos | busca |
+| "Calçadão da Beira-Rio" | **removida**: não é academia; a orla já está nos parques e destaques da página | — |
+
+Texto corrido ajustado: Parque do Jandiá, mercado, destaque e FAQ deixaram de citar academia ao ar livre.
+
+Saldo da leva: 6 entradas → 2 mantidas (as 2 com detalhe corrigido), 4 removidas. As duas cidades ficam com 1 entrada (só a Smart Fit); completar vira tarefa à parte. 72 cidades seguem na fila.

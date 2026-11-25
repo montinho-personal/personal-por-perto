@@ -26,17 +26,17 @@ export const cidade: Cidade = {
     {
       nome: 'Parque dos Paturis',
       descricao:
-        'O maior parque público da cidade, à beira de um grande lago, na Vila Municipal. Conta com pista de caminhada, ciclovia, campo de grama sintética, playground e equipamentos de ginástica ao ar livre — um espaço completo para treino funcional, corrida e mobilidade. Abre diariamente, das 6h às 18h.',
+        'O maior parque público da cidade, à beira de um grande lago, na Vila Municipal. Conta com pista de caminhada, ciclovia, campo de grama sintética, playground — um espaço completo para treino funcional, corrida e mobilidade. Abre diariamente, das 6h às 18h.',
     },
     {
       nome: 'Parque Estadual Gabriel Chucre',
       descricao:
-        'Conhecido como Parque da Lagoa, ocupa cerca de 134 mil m² em uma antiga cava de extração de areia recuperada, inaugurada em 2012. Tem ciclovia de 1,2 km, trilhas de caminhada, equipamentos de ginástica, quadras poliesportivas, quadra de tênis e pista de skate, sendo a maior área verde para treino ao ar livre da cidade.',
+        'Conhecido como Parque da Lagoa, ocupa cerca de 134 mil m² em uma antiga cava de extração de areia recuperada, inaugurada em 2012. Tem ciclovia de 1,2 km, trilhas de caminhada, quadras poliesportivas, quadra de tênis e pista de skate, sendo a maior área verde para treino ao ar livre da cidade.',
     },
     {
       nome: 'Parque Planalto',
       descricao:
-        'Na Vila Planalto, reúne campo de grama sintética, pista de caminhada, academia ao ar livre, playground e pista de skate. É uma boa opção de bairro para treino funcional e caminhada orientada. Funciona das 6h às 18h.',
+        'Na Vila Planalto, reúne campo de grama sintética, pista de caminhada, playground e pista de skate. É uma boa opção de bairro para treino funcional e caminhada orientada. Funciona das 6h às 18h.',
     },
   ],
   ciclovias:
@@ -56,23 +56,20 @@ export const cidade: Cidade = {
     {
       nome: 'Atividades da Secretaria de Esporte e Lazer',
       descricao:
-        'A Prefeitura mantém programação esportiva e de lazer nos parques e equipamentos públicos, com caminhadas orientadas e uso das academias ao ar livre — um ponto de partida acessível para quem quer começar a treinar.',
+        'A Prefeitura mantém programação esportiva e de lazer nos parques e equipamentos públicos, com caminhadas orientadas — um ponto de partida acessível para quem quer começar a treinar.',
     },
   ],
   culturaEsportiva:
     'Carapicuíba tem forte tradição de esporte comunitário, com campos de várzea, quadras de bairro e arenas como a da Cidade Ariston movimentando o futebol amador. A cidade também guarda a Aldeia de Carapicuíba, sítio histórico jesuítico tombado em 1941, cujo entorno e o Parque da Aldeia servem de cenário para caminhadas, corridas e eventos esportivos populares.',
   academias:
-    'A oferta combina academias de bairro e redes de baixo custo, como a Smart Fit, com as academias ao ar livre gratuitas dos parques municipais. Esse mix atende tanto quem prefere o treino indoor quanto quem busca alternativas de custo zero ao ar livre, reforçando a vocação popular da cidade.',
+    'A oferta combina academias de bairro e redes de baixo custo, como a Smart Fit, com os parques municipais para o treino ao ar livre. Esse mix atende tanto quem prefere o treino indoor quanto quem busca alternativas de custo zero ao ar livre, reforçando a vocação popular da cidade.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades no Centro (Av. Governador Mário Covas), na Vila Dirce e no Parque Santa Teresa' },
-    {
-      nome: 'Academias ao ar livre municipais',
-      detalhe: 'gratuitas, nos parques dos Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto',
-    },
+    { nome: 'Smart Fit', detalhe: 'unidades Centro (na Av. Governador Mário Covas), Parque Santa Teresa e Granja Viana – São Camilo (na Av. São Camilo)' },
   ],
+  academiasVerificadasEm: '2026-11-25',
   destaquesFitness: [
     'Cidade muito populosa e compacta (~34 km²) — base ampla de clientes e deslocamentos curtos para atendimento em domicílio.',
-    'Parques com academia ao ar livre gratuita: Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto.',
+    'Parques para treino ao ar livre: Paturis, Gabriel Chucre (Parque da Lagoa) e Planalto.',
     'Eixo ferroviário forte: estação Carapicuíba na Linha 8-Diamante da CPTM, conectando a Osasco e à capital.',
     'Faixa de preços mais acessível que a das vizinhas de renda alta, favorecendo pacotes mensais e treino online.',
   ],
@@ -102,7 +99,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Dá para treinar com personal nos parques de Carapicuíba?',
       resposta:
-        'Dá, e é um dos formatos que melhor combinam com a cidade: o Parque dos Paturis, o Gabriel Chucre (Parque da Lagoa) e o Planalto têm pista, equipamentos de ginástica e espaço para treino funcional com material portátil. Para quem quer reduzir custo, treinar em dupla ou em pequeno grupo no parque é uma alternativa comum ao atendimento individual em casa.',
+        'Dá, e é um dos formatos que melhor combinam com a cidade: o Parque dos Paturis, o Gabriel Chucre (Parque da Lagoa) e o Planalto têm pista e espaço para treino funcional com material portátil. Para quem quer reduzir custo, treinar em dupla ou em pequeno grupo no parque é uma alternativa comum ao atendimento individual em casa.',
     },
     {
       pergunta: 'Qual o melhor horário de treino para quem trabalha fora de Carapicuíba?',
@@ -130,7 +127,7 @@ export const cidade: Cidade = {
     w: 1200,
     h: 1200,
   },
-  atualizadoEm: '2026-10-16',
+  atualizadoEm: '2026-11-25',
   capaArte: {
     src: '/capas-cidade/carapicuiba-sp.webp',
     w: 1200,

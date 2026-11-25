@@ -56,6 +56,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias de musculação e treino funcional é a mais consistente entre os municípios do norte de Goiás, concentrada no Setor Central, refletindo o papel de Porangatu como referência regional de comércio e serviços na BR-153.',
 
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-25',
+
   destaquesFitness: [
     'Maior cidade do norte de Goiás e entroncamento histórico da rodovia Belém-Brasília (BR-153), pavimentada em 1958.',
     'Um dos maiores rebanhos bovinos do estado, com mais de 470 mil cabeças, ao lado de lavouras de grãos.',

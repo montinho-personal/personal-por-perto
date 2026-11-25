@@ -39,7 +39,7 @@ export const cidade: Cidade = {
     {
       nome: 'Parque do Jandiá',
       descricao:
-        'Complexo de lazer e esporte com mirante, quadras, academia ao ar livre e acesso ao rio — um dos espaços públicos mais completos para treino.',
+        'Complexo de lazer e esporte com mirante, quadras e acesso ao rio — um dos espaços públicos mais completos para treino.',
     },
   ],
   ciclovias:
@@ -68,19 +68,17 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Macapá tem um calendário ativo de corridas de rua com forte identidade cultural (Marabaixo, açaí, aquathlon ribeirinho). A orla do Rio Amazonas é o principal palco do esporte ao ar livre na cidade.',
   academias:
-    'A oferta reúne a Smart Fit e academias locais, complementada por parques com academia ao ar livre (Jandiá, Praça Isaac Zagury) e pela orla do Amazonas.',
+    'A oferta reúne a Smart Fit e academias locais, complementada pelos parques e pela orla do Amazonas.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'com presença na cidade' },
-    { nome: 'Academias locais', detalhe: 'cobertura nos bairros da Zona Sul, do Trem e do Buritizal' },
-    { nome: 'Academias ao ar livre', detalhe: 'gratuitas, no Parque do Jandiá e na Praça Isaac Zagury' },
-    { nome: 'Calçadão da Beira-Rio', detalhe: 'o grande espaço público de treino da orla do Amazonas' },
+    { nome: 'Smart Fit Macapá', detalhe: 'na Rua Leopoldo Machado, no bairro Central' },
   ],
+  academiasVerificadasEm: '2026-11-25',
 
   destaquesFitness: [
     'Orla e Beira-Rio do Amazonas como principal espaço de corrida, caminhada e bike.',
     'Marco Zero — treinar "com um pé em cada hemisfério" é um apelo único.',
     'Calendário de corridas com identidade cultural (Marabaixo, Açaí Run).',
-    'Smart Fit, academias locais e parques com academia ao ar livre.',
+    'Smart Fit, academias locais e parques para treinar ao ar livre.',
   ],
 
   precos: {
@@ -99,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Onde o personal costuma atender em Macapá?',
       resposta:
-        'A orla do Amazonas comanda: o Complexo Beira-Rio concentra corrida, caminhada e bike com a brisa do rio como aliada, o Parque do Forte soma trilhas arborizadas em volta da Fortaleza de São José e o Parque do Jandiá tem quadras e academia ao ar livre. Nas academias, a Smart Fit e as locais cobrem os bairros centrais, e o atendimento em casa é comum na Zona Sul e no Buritizal. Detalhe único: dá para treinar no Marco Zero com um pé em cada hemisfério.',
+        'A orla do Amazonas comanda: o Complexo Beira-Rio concentra corrida, caminhada e bike com a brisa do rio como aliada, o Parque do Forte soma trilhas arborizadas em volta da Fortaleza de São José e o Parque do Jandiá tem quadras. Nas academias, a Smart Fit e as locais cobrem os bairros centrais, e o atendimento em casa é comum na Zona Sul e no Buritizal. Detalhe único: dá para treinar no Marco Zero com um pé em cada hemisfério.',
     },
     {
       pergunta: 'Como o clima equatorial de Macapá molda a rotina de treino?',
@@ -120,7 +118,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Macapá', url: 'https://macapa.ap.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-18',
+  atualizadoEm: '2026-11-25',
   capaArte: {
     src: '/capas-cidade/macapa-ap.webp',
     w: 1200,
