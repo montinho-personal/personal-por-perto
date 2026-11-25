@@ -97,6 +97,8 @@ Desde 18/11/2026 (pedido do Renato), a rotina diária aplica **2 itens desta lis
 
 ## 4. Revisões pendentes (publicados sem pesquisa do Google, na ordem de publicação)
 
+**Prioridade (25/11/2026):** as 6 primeiras linhas da tabela foram puxadas para o topo a pedido do Renato ("Pode fazer tudo"): são as atualizações da pauta do Montinho; a nota de cada uma diz o que entra.
+
 Sem SERP = nem prints do Renato nem SerpApi. Ficam fora as páginas de
 cidade e bairro (rotina própria, `docs/revisao-cidades.md`) e as
 calculadoras de `/calorias/`. Revisar = pesquisa no SerpApi + reescrita pelas
@@ -104,6 +106,12 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 
 | publicado | página | título | nota |
 |---|---|---|---|
+| 2026-08-05 | `/guias/personal-trainer-para-corredores/` | Personal trainer para corredores: o guia completo | corrida de rua + musculação na semana, ordem dos treinos (pauta do Montinho, 25/11; não criar artigo novo) |
+| 2026-07-18 | `/musculacao/treinar-com-dor-no-joelho/` | Dor no joelho: dá para treinar? O que ajustar na musculação | incluir agachamento e afundo depois da liberação (pauta do Montinho, 25/11) |
+| 2026-07-18 | `/guias/personal-trainer-a-domicilio/` | Personal trainer a domicílio: como funciona e quanto custa | seção "privacidade e rotina da família" (pauta do Montinho, 25/11) |
+| 2026-07-18 | `/musculacao/quanto-tempo-de-treino-por-dia/` | Quanto tempo de treino por dia é suficiente? | seção ou FAQ "treino de 45 minutos" dividido (pauta do Montinho, 25/11) |
+| 2026-08-11 | `/guias/personal-trainer-para-quem-trabalha-sentado/` | Personal trainer para quem trabalha sentado | ajuste de cadeira, mesa e tela no home office, só com fonte oficial de ergonomia (pauta do Montinho, 25/11) |
+| 2026-08-06 | `/guias/personal-trainer-para-adolescentes/` | Personal trainer para adolescentes: o guia | conversa com a família e liberação médica (pauta do Montinho, 25/11; o recorte de Alphaville fica no site do Montinho) |
 | ~~2026-06-28~~ | ~~`/guias/quanto-custa-personal-trainer/`~~ | ~~Quanto custa um personal trainer~~ | ✅ revisado 16/11/2026 (`quanto-custa-personal-trainer`); título aprovado e aplicado em 16/11 |
 | ~~2026-07-07~~ | ~~`/emagrecimento/como-emagrecer-fazendo-musculacao/`~~ | ~~Como emagrecer fazendo musculação~~ | ✅ revisado 17/11/2026 (`como-emagrecer-fazendo-musculacao`); título e descrição aprovados e aplicados em 17/11 |
 | ~~2026-07-07~~ | ~~`/emagrecimento/como-preservar-massa-muscular-emagrecendo/`~~ | ~~Como preservar massa muscular durante o emagrecimento~~ | ✅ revisado 17/11/2026 (`como-preservar-massa-muscular-emagrecendo`); título e descrição aprovados e aplicados em 17/11 |
@@ -136,12 +144,9 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | 2026-07-15 | `/humor-fitness/memes-de-academia/` | Memes de academia: os melhores para mandar no grupo de treino |  |
 | 2026-07-15 | `/humor-fitness/memes-de-dieta/` | Memes de dieta: rindo para não chorar no cutting |  |
 | 2026-07-15 | `/humor-fitness/perfis-de-memes-fitness/` | Perfis de memes fitness para seguir no Instagram |  |
-| 2026-07-18 | `/guias/personal-trainer-a-domicilio/` | Personal trainer a domicílio: como funciona e quanto custa | seção "privacidade e rotina da família" (pauta do Montinho, 25/11) |
 | 2026-07-18 | `/musculacao/creatina-o-que-e-como-tomar/` | Creatina: o que é, para que serve e como tomar |  |
 | 2026-07-18 | `/musculacao/musculacao-depois-dos-40/` | Musculação depois dos 40: o que muda e como treinar |  |
-| 2026-07-18 | `/musculacao/quanto-tempo-de-treino-por-dia/` | Quanto tempo de treino por dia é suficiente? | seção ou FAQ "treino de 45 minutos" dividido (pauta do Montinho, 25/11) |
 | 2026-07-18 | `/musculacao/treinar-com-dor-lombar/` | Dor lombar e musculação: como treinar com segurança |  |
-| 2026-07-18 | `/musculacao/treinar-com-dor-no-joelho/` | Dor no joelho: dá para treinar? O que ajustar na musculação | incluir agachamento e afundo depois da liberação (pauta do Montinho, 25/11) |
 | 2026-07-18 | `/musculacao/treinar-com-dor-no-ombro/` | Dor no ombro: dá para treinar? O que ajustar na musculação |  |
 | 2026-07-18 | `/musculacao/treino-em-casa-para-iniciantes/` | Treino em casa para iniciantes: como começar sem equipamentos |  |
 | 2026-07-21 | `/emagrecimento/quantas-calorias-queima-a-musculacao/` | Quantas calorias a musculação queima? A conta honesta |  |
@@ -161,7 +166,6 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | 2026-08-05 | `/emagrecimento/quantos-passos-por-dia/` | Quantos passos por dia para emagrecer? |  |
 | 2026-08-05 | `/guias/avaliacao-fisica/` | Avaliação física: o que é, o que mede e por que importa | reescrito pelo GSC em 09/2026, sem SERP |
 | 2026-08-05 | `/guias/personal-trainer-em-condominio/` | Personal trainer em condomínio: como funciona e quanto custa |  |
-| 2026-08-05 | `/guias/personal-trainer-para-corredores/` | Personal trainer para corredores: o guia completo | corrida de rua + musculação na semana, ordem dos treinos (pauta do Montinho, 25/11; não criar artigo novo) |
 | 2026-08-05 | `/guias/personal-trainer-para-mulheres/` | Personal trainer para mulheres: o guia completo |  |
 | 2026-08-05 | `/mounjaro-e-treino/ozempic-e-treino/` | Ozempic e treino: como adaptar a musculação |  |
 | 2026-08-05 | `/musculacao/agachamento-como-fazer/` | Agachamento: como fazer, variações e erros comuns |  |
@@ -172,7 +176,6 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | 2026-08-05 | `/musculacao/treino-de-bracos/` | Treino de braços: bíceps e tríceps que funciona |  |
 | 2026-08-05 | `/musculacao/treino-de-costas/` | Treino de costas: como montar o seu (e os erros) |  |
 | 2026-08-06 | `/emagrecimento/gordura-visceral/` | Gordura visceral: o que é e como reduzir | reescrito pelo GSC em 09/2026, sem SERP |
-| 2026-08-06 | `/guias/personal-trainer-para-adolescentes/` | Personal trainer para adolescentes: o guia | conversa com a família e liberação médica (pauta do Montinho, 25/11; o recorte de Alphaville fica no site do Montinho) |
 | 2026-08-06 | `/musculacao/aquecimento-antes-do-treino/` | Aquecimento antes do treino: como fazer certo |  |
 | 2026-08-06 | `/musculacao/treino-de-ombro/` | Treino de ombro: como montar o seu (e os erros) |  |
 | 2026-08-06 | `/musculacao/treino-de-pernas/` | Treino de pernas: como montar o seu (e os erros) |  |
@@ -187,7 +190,6 @@ regras do `AGENTS.md`; título e descrição só como proposta.
 | 2026-08-10 | `/musculacao/treino-de-panturrilha/` | Treino de panturrilha: como fazer crescer |  |
 | 2026-08-11 | `/emagrecimento/agua-e-emagrecimento/` | Água e emagrecimento: o que ela faz de verdade |  |
 | 2026-08-11 | `/emagrecimento/refeicao-livre/` | Refeição livre e dia do lixo: qual faz sentido? |  |
-| 2026-08-11 | `/guias/personal-trainer-para-quem-trabalha-sentado/` | Personal trainer para quem trabalha sentado | ajuste de cadeira, mesa e tela no home office, só com fonte oficial de ergonomia (pauta do Montinho, 25/11) |
 | 2026-08-11 | `/musculacao/elevacao-pelvica-como-fazer/` | Elevação pélvica: como fazer e os erros comuns |  |
 | 2026-08-11 | `/musculacao/pegada-e-antebraco/` | Pegada e antebraço: como treinar o elo mais fraco |  |
 | 2026-08-11 | `/musculacao/treino-de-abdomen-avancado/` | Treino de abdômen avançado: carga, alavanca e progressão |  |
