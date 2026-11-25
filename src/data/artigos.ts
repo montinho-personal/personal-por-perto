@@ -173,6 +173,7 @@ export const artigos: Artigo[] = [
   { categoria: 'Guias', url: '/guias/como-nao-desistir-do-treino/', titulo: 'Como não desistir do treino: o guia da constância' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-sentado/', titulo: 'Personal trainer para quem trabalha sentado' },
   { categoria: 'Guias', url: '/guias/treino-na-areia/', titulo: 'Treino na areia: o que muda no corpo, exercícios e cuidados' },
+  { categoria: 'Guias', url: '/guias/treino-no-carnaval/', titulo: 'Treino no Carnaval: antes, durante e como voltar sem sofrer' },
   { categoria: 'Guias', url: '/guias/gta-6-tem-academia/', titulo: 'GTA 6 tem academia? O que o treino faz no jogo e na vida real' },
   { categoria: 'Guias', url: '/guias/avaliacao-fisica/', titulo: 'Avaliação física: o que é, o que mede e por que importa' },
   { categoria: 'Guias', url: '/guias/personal-trainer-para-quem-trabalha-a-noite/', titulo: 'Personal trainer para quem trabalha à noite' },

@@ -1,0 +1,289 @@
+---
+/**
+ * Treino no Carnaval — o que a folia faz com o treino (pausa curta, sono,
+ * álcool), como se preparar antes, a versão mínima durante, se pular bloco
+ * conta como treino e a volta na semana seguinte.
+ *
+ * Item 28 da pauta (docs/seo/pauta.md), da pauta do Montinho (22/01/2027),
+ * liberado pelo Renato em 25/11/2026 ("Pode seguir", "Pode fazer tudo").
+ * Escrito DEPOIS da pesquisa no SerpApi (celular, São Paulo, 25/11/2026):
+ * "treino no carnaval" (página, autocompletar, visão de IA) + autocompletar
+ * de "academia carnaval" + Google Trends (pico em fevereiro). Registro em
+ * docs/treino-no-carnaval.md; JSON em docs/pesquisas/2026-11-25-treino-no-carnaval/.
+ *
+ * Recorte: voltar-a-treinar-depois-de-parar = volta depois de semanas ou
+ * meses; como-nao-engordar-nas-festas-de-fim-de-ano = comida nas festas;
+ * treinar-no-calor-e-no-frio = clima. Aqui = o feriado curto.
+ * Fontes (25/11/2026, resumos): Mujika e Padilla 2001 (destreino), Lamon
+ * 2021 (sono), Parr 2014 (álcool), ACSM/Sawka 2007 (hidratação), Secretaria
+ * Municipal da Saúde de SP 2023 (calor). O gasto de dançar sai do motor da
+ * calculadora de dança (lib/calorias/danca), com a mesma ressalva dela.
+ */
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Faq from '../../components/Faq.astro';
+import CtaMontinho from '../../components/CtaMontinho.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+import InstagramFollow from '../../components/InstagramFollow.astro';
+import AutorMontinho from '../../components/AutorMontinho.astro';
+import ContextualCta from '../../components/ContextualCta.astro';
+import FerramentaInline from '../../components/FerramentaInline.astro';
+import { breadcrumbSchema, articleSchema, faqSchema, personMontinhoSchema } from '../../lib/schema';
+import { formatDateLong } from '../../lib/slug';
+import { site } from '../../data/site';
+import { deTempo as dancaPorTempo, formataKcal, PESO_PADRAO } from '../../lib/calorias/danca';
+
+/* Dança de par em ritmo rápido (4,5 METs): a referência mais próxima de
+ * samba e axé que a calculadora aceita, e ela diz que é aproximação. */
+const KCAL_HORA_DANCA = formataKcal(dancaPorTempo(60, PESO_PADRAO, 'salao').kcal);
+
+const relacionados = [
+  { url: '/musculacao/voltar-a-treinar-depois-de-parar/', titulo: 'Voltar a treinar depois de parar', descricao: 'Quando a pausa passou de semanas.', tipo: 'Musculação' },
+  { url: '/emagrecimento/como-nao-engordar-nas-festas-de-fim-de-ano/', titulo: 'Como não engordar nas festas de fim de ano', descricao: 'O outro feriado que mexe com a rotina.', tipo: 'Emagrecimento' },
+  { url: '/guias/treinar-no-calor-e-no-frio/', titulo: 'Treinar no calor e no frio', descricao: 'Horário, água e sinais de alerta no verão.', tipo: 'Guia' },
+];
+
+const path = '/guias/treino-no-carnaval';
+const atualizadoEm = '2026-11-25';
+const crumbs = [
+  { nome: 'Início', url: '/' },
+  { nome: 'Guias', url: '/guias/' },
+  { nome: 'Treino no Carnaval', url: path },
+];
+
+const tituloFaq = 'Perguntas frequentes sobre treino no Carnaval';
+const faqs = [
+  {
+    pergunta: 'Ficar o Carnaval sem treinar faz perder massa muscular?',
+    resposta:
+      'Não. Uma revisão clássica sobre destreino mostrou que a força costuma se manter por até 4 semanas sem treino. Cinco dias de folia não desfazem meses de academia. O que pesa nesses dias é dormir pouco e beber muito, que atrapalham a recuperação, não a pausa em si.',
+  },
+  {
+    pergunta: 'Pular Carnaval conta como treino?',
+    resposta: `Conta como atividade física, não como treino de força. Não existe medição publicada do gasto de samba ou axé; a referência mais próxima é a dança de par em ritmo rápido, que dá cerca de ${KCAL_HORA_DANCA} kcal por hora para ${PESO_PADRAO} kg. Horas de bloco gastam energia e cansam as pernas, mas não substituem a musculação.`,
+  },
+  {
+    pergunta: 'Posso treinar de ressaca no Carnaval?',
+    resposta:
+      'Não é o dia para treino pesado. Álcool em grande quantidade depois do exercício reduziu a síntese de proteína muscular em um estudo, e a noite mal dormida derruba a recuperação. Se tiver vontade de se mexer, prefira uma caminhada leve com água por perto. Tontura, enjoo ou mal-estar são motivo para não treinar.',
+  },
+  {
+    pergunta: 'Como voltar a treinar depois do Carnaval?',
+    resposta:
+      'Volte na semana seguinte com as cargas um pouco abaixo do normal na primeira sessão e retome o plano sem tentar compensar os dias parados. Como a força se mantém nesse prazo, o ritmo costuma voltar rápido. Treino dobrado para descontar só aumenta o cansaço.',
+  },
+  {
+    pergunta: 'Dá para treinar durante os dias de Carnaval?',
+    resposta:
+      'Dá, numa versão curta. De 15 a 20 minutos de agachamento, flexão, remada com elástico e prancha, cedo, antes do bloco, mantêm o hábito sem roubar energia da folia. No dia em que dormiu pouco, trocar o treino por caminhada leve é uma decisão melhor.',
+  },
+];
+
+const title = 'Treino no Carnaval: Antes, Durante e Como Voltar Depois';
+const description =
+  'Treino no Carnaval: o que a folia faz com o treino, como preparar o corpo antes, a versão curta nos dias de bloco e a volta na semana seguinte.';
+
+const schema = [
+  breadcrumbSchema(crumbs),
+  articleSchema({ titulo: title, descricao: description, url: new URL(path, site.dominio).href, atualizadoEm }),
+  faqSchema(faqs),
+  personMontinhoSchema(),
+];
+---
+
+<Base title={title} description={description} path={path} ogType="article" schema={schema}>
+  <Breadcrumbs crumbs={crumbs} />
+  <div class="container guide-layout">
+    <article class="article-page">
+    <p class="eyebrow">Guias</p>
+    <h1>Treino no Carnaval: antes, durante e como voltar sem sofrer</h1>
+    <p class="updated">Atualizado em {formatDateLong(atualizadoEm)}</p>
+    <p class="lead">
+      Dá para curtir o Carnaval sem perder o que você ganhou na academia. A
+      força costuma se manter por até 4 semanas sem treino, então cinco dias
+      de folia não desfazem meses de musculação. O que atrapalha de verdade é
+      dormir pouco e beber muito. O plano tem três partes: preparar o corpo
+      antes, manter uma versão curta durante e voltar por baixo na semana
+      seguinte.
+    </p>
+
+    <div class="prose">
+      <h2>Quanto o Carnaval atrapalha o treino, de verdade</h2>
+      <p>
+        Menos do que parece, pela pausa, e mais do que parece, pelo resto. Uma
+        revisão clássica sobre destreino mostrou que a força costuma se manter
+        por até 4 semanas sem treino (Mujika e Padilla, 2001). Uma semana
+        parada não apaga a musculação.
+      </p>
+      <ul>
+        <li>
+          <strong>O sono.</strong> Uma única noite sem dormir reduziu em 18% a
+          síntese de proteína muscular no dia seguinte (Lamon e colegas, 2021).
+          Noites seguidas de bloco somam essa conta.
+        </li>
+        <li>
+          <strong>O álcool.</strong> Num estudo, beber muito depois do treino
+          reduziu a síntese de proteína muscular em 24% mesmo com proteína junto,
+          e em 37% sem ela (Parr e colegas, 2014). A dose do estudo era alta,
+          perto de 12 doses, mas é o retrato de um dia de folia.
+        </li>
+        <li>
+          <strong>O calor e a água.</strong> Horas de bloco no sol, suando e
+          bebendo álcool, são a receita da desidratação.
+        </li>
+      </ul>
+
+      <h2>Antes da folia: preparar o corpo para horas em pé</h2>
+      <p>
+        Nas duas ou três semanas antes do Carnaval, o treino pode mirar o que
+        a festa vai cobrar: pernas, fôlego e coluna. Mantenha a musculação com
+        foco nos exercícios de perna (agachamento, afundo, leg press) e de
+        tronco (remada, prancha), e mantenha algum cardio de intensidade
+        moderada na semana, como caminhada rápida, bicicleta ou
+        corrida leve. Se a sua base é pouca, não é a hora de dobrar o volume:
+        quem começa a treinar duas semanas antes da festa chega mais cansado,
+        não mais preparado.
+      </p>
+      <p>
+        O <a href="/musculacao/treino-de-pernas/">treino de pernas</a> é o que
+        mais conversa com o Carnaval, porque é a perna que segura horas em pé,
+        pulando e andando entre os blocos.
+      </p>
+
+      <h2>Durante: a versão mínima do treino</h2>
+      <p>
+        Nos dias de festa, a meta não é progredir; é não perder o hábito. Uma
+        sessão de 15 a 20 minutos, cedo, antes do bloco, resolve: agachamento,
+        flexão de braço (inclinada, se precisar), remada com elástico ou
+        mochila, ponte de glúteo e prancha, em duas ou três voltas. Em casa ou
+        no hotel, sem equipamento — o passo a passo está em <a
+        href="/musculacao/treino-em-casa-para-iniciantes/">treino em casa para
+        iniciantes</a>.
+      </p>
+      <p>
+        No dia seguinte a uma noite longa, troque o treino por uma caminhada
+        leve ou por alongamento. Treinar pesado com pouco sono e álcool no
+        corpo é pedir uma sessão ruim e uma recuperação pior.
+      </p>
+
+      <h2>Pular bloco conta como treino?</h2>
+      <p>
+        Conta como atividade física, não como treino de força. Não existe
+        medição publicada do gasto de samba, axé ou frevo; a referência mais
+        próxima é a dança de par em ritmo rápido do Compêndio de Atividades
+        Físicas, que dá cerca de {KCAL_HORA_DANCA} kcal por hora para uma pessoa
+        de {PESO_PADRAO} kg. Horas de bloco gastam energia e cansam as pernas,
+        mas não substituem a musculação.
+      </p>
+
+      <FerramentaInline
+        id="danca"
+        texto="Quer o número do seu bloco, com o seu peso e as horas de folia? A calculadora de dança faz a conta e diz com todas as letras quando o valor é aproximação — que é o caso do samba."
+        acao="Calcular quanto eu gasto dançando"
+      />
+
+      <h2>Calor, água e álcool nos dias de bloco</h2>
+      <p>
+        O Carnaval cai no auge do verão. A Secretaria Municipal da Saúde de São
+        Paulo orienta, para quem faz atividade física no calor, roupas leves e
+        claras, filtro solar, água antes, durante e depois e atenção a sinais
+        como dor de cabeça, vômito, tontura e confusão mental. O American
+        College of Sports Medicine recomenda não perder mais de 2% do peso do
+        corpo em água durante o esforço. Alternar a bebida alcoólica com água
+        e comer ao longo do dia ajudam a chegar inteiro ao fim da festa.
+      </p>
+      <p>
+        Horário, roupa e os sinais que pedem parar estão em <a
+        href="/guias/treinar-no-calor-e-no-frio/">treinar no calor e no
+        frio</a>.
+      </p>
+
+      <h2>A volta: a semana depois do Carnaval</h2>
+      <p>
+        Na Quarta-feira de Cinzas ou no dia seguinte, volte ao plano normal com
+        as cargas um pouco abaixo na primeira sessão. Não tente compensar os
+        dias parados com treino dobrado: isso só soma cansaço numa semana em
+        que o sono ainda está atrasado. Como a força se mantém, o ritmo costuma voltar rápido.
+      </p>
+      <p>
+        Se o Carnaval emendou com férias e a pausa passou de algumas semanas, o
+        caminho é outro, com volta gradual: está em <a
+        href="/musculacao/voltar-a-treinar-depois-de-parar/">voltar a treinar
+        depois de parar</a>.
+      </p>
+
+      <h2>Referências</h2>
+      <ul class="fontes">
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/11474330/" target="_blank" rel="noopener noreferrer">Mujika I, Padilla S. Muscular characteristics of detraining in humans. Medicine &amp; Science in Sports &amp; Exercise, 2001</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/33400856/" target="_blank" rel="noopener noreferrer">Lamon S, Morabito A, Arentson-Lantz E, et al. The effect of acute sleep deprivation on skeletal muscle protein synthesis and the hormonal environment. Physiological Reports, 2021</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24533082/" target="_blank" rel="noopener noreferrer">Parr EB, Camera DM, Areta JL, et al. Alcohol ingestion impairs maximal post-exercise rates of myofibrillar protein synthesis following a single bout of concurrent training. PLoS One, 2014</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/17277604/" target="_blank" rel="noopener noreferrer">American College of Sports Medicine; Sawka MN, Burke LM, Eichner ER, et al. Exercise and fluid replacement. Medicine &amp; Science in Sports &amp; Exercise, 2007</a></li>
+        <li><a href="https://prefeitura.sp.gov.br/web/saude/w/noticias/359784" target="_blank" rel="noopener noreferrer">Secretaria Municipal da Saúde de São Paulo. Praticar exercícios no calor requer cuidados especiais, 2023</a></li>
+        <li>Conferidas em 25/11/2026.</li>
+      </ul>
+    </div>
+
+    <Faq faqs={faqs} titulo={tituloFaq} />
+
+    <ContextualCta path={path} assunto={title} />
+    <InstagramFollow tema="geral" />
+    <AutorMontinho />
+
+    <RelatedArticles itens={relacionados} />
+    </article>
+
+    <Sidebar />
+  </div>
+
+  <section class="section-sm">
+    <div class="container">
+      <CtaMontinho variante="destaque" />
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .guide-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-6);
+    padding-block: var(--sp-7);
+  }
+  @media (min-width: 980px) {
+    .guide-layout {
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: var(--sp-7);
+    }
+  }
+  .article-page {
+    min-width: 0;
+    max-width: 760px;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: var(--step--1);
+    margin-top: var(--sp-2);
+  }
+  .lead {
+    margin-top: var(--sp-4);
+    font-size: var(--step-1);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .article-page .prose {
+    margin-top: var(--sp-5);
+  }
+  .fontes {
+    font-size: var(--step--1);
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .fontes li {
+    margin-bottom: 0.6rem;
+  }
+  .tabela-wrap { overflow-x: auto; margin: var(--sp-4) 0; }
+  .tabela-wrap table { width: 100%; border-collapse: collapse; font-size: var(--step--1); }
+  .tabela-wrap th, .tabela-wrap td { border-bottom: 1px solid var(--line); padding: 0.5rem; text-align: left; }
+</style>
