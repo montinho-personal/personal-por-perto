@@ -43,7 +43,7 @@ fica "—" até haver número. O sinal de demanda é onde a busca apareceu
 | 24 | Gympass (Wellhub) ou TotalPass: qual sai mais barato | PAA de "day use academia barueri" (busca do Montinho, 18/11) | — | nada; preços só das tabelas oficiais |
 | 25 | Fome depois do treino: por que acontece | PAA de "continua queimando calorias depois do treino" (busca do Montinho, 16/11) | 20 (idem) | nada; explicar sem prescrever dieta |
 | 26 | Calistenia para iniciantes | AC "treino para iniciantes calistenia" (busca de 23/11, `docs/treino-para-iniciantes.md`) | — | nada com "calistenia"; liga em `treino-em-casa-para-iniciantes` e `barra-fixa-como-fazer` |
-| 27 | **Treino ao ar livre no calor: horários e cuidados** (prioridade: verão) | pauta do Montinho (26/02/2027), conferida em 25/11/2026; "pode seguir" do Renato | — | só menções em `treinar-ao-ar-livre` e `treino-na-areia`; sinais de alerta só com fonte oficial e ressalva médica |
+| 27 | ~~Treino ao ar livre no calor~~ → virou **revisão** de `/guias/treinar-no-calor-e-no-frio/` (a página já existia; artigo novo canibalizaria), 25/11/2026 | pauta do Montinho (26/02/2027) | — | `docs/treinar-no-calor-e-no-frio.md` |
 | 28 | **Carnaval sem largar o treino** (publicar até o fim de janeiro) | pauta do Montinho (22/01/2027), idem | — | par de `como-nao-engordar-nas-festas-de-fim-de-ano`; ⚠️ conferir contra `voltar-a-treinar-depois-de-parar` (recorte: feriado curto) |
 | 29 | **Treino de força para ciclistas** | pauta do Montinho (09/03/2027), idem | — | espelho de `personal-trainer-para-corredores`; ⚠️ não repetir `pedalar-como-treino` (bike como treino de quem não é ciclista) |
 
