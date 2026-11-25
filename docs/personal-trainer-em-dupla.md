@@ -67,3 +67,14 @@ Nenhum dos dois testa personal em dupla, e o texto diz isso.
   aponta para o guia. `atualizadoEm` foi para 2026-11-01.
 - Índice de guias e `artigos.ts`.
 - FerramentaInline: `preco`, depois do exemplo de Barueri e Alphaville.
+
+## 25/11/2026 — item da pauta (parte 2): funcional em dupla ao ar livre
+
+Tema da pauta do Montinho ("Funcional em dupla ao ar livre", 19/03/2027),
+conferido em 25/11 e liberado pelo Renato: virou FAQ, não artigo (canibalizaria
+esta página e `treinar-ao-ar-livre`). Entrou a FAQ "Dá para fazer treino
+funcional em dupla ao ar livre?": formato (praça, parque, condomínio), exercícios
+em parceria, níveis diferentes na mesma estação, o limite de carga do ar livre e
+o cuidado com calor. Sem fato novo que peça fonte; o efeito de treinar
+acompanhado já está sustentado na página (Wing e Jeffery 1999; Irwin 2012).
+atualizadoEm 25/11.
