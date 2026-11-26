@@ -62,10 +62,11 @@ Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota"
   no doc da peça e na resposta. Nunca trocar sem o Renato aprovar.
 - **Publicar:** `npm run build`, `audit:canonical`, `audit:links`,
   `audit:metadados` (comparar com a contagem de falhas que já existia) e
-  `test:ferramentas-inline`; commit e push **direto na branch de
+  `test:ferramentas-inline` e `test:navegador` (desktop e celular; regra
+  "Verificação no navegador" do `CLAUDE.md`, 25/11/2026); commit e push **direto na branch de
   desenvolvimento** (neste repositório não se abre PR — regra da sessão); se
   rejeitado, `git pull --rebase` e push, nunca force. Conferir no ar depois do
-  deploy.
+  deploy com `npm run test:navegador -- --base https://www.personalporperto.com.br <páginas>`.
 - **Resposta ao Renato**, em português e curta: os links; as intenções
   separadas por tipo (autocompletar, "As pessoas também perguntam", "Outras
   pessoas pesquisaram", visão de IA com o que diz e quem cita, e quem

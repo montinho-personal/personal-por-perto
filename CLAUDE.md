@@ -276,6 +276,37 @@ por artigo conta o conjunto — calorias, pace e gordura somados. Não sobe
 renderizado em muitas páginas, entra pela rotina diária (2 artigos por
 dia, pelo mapa), não em varredura única.
 
+## Verificação no navegador depois de TODA ação no site (regra do Renato, 25/11/2026)
+
+Toda mudança no site — artigo, revisão, cidade, academia, vídeo, ferramenta,
+CSS, componente, rotina diária — só é dada como pronta depois deste ciclo, no
+mesmo trabalho, antes de avisar o Renato:
+
+1. **Abrir no navegador.** `npm run build` e `npm run test:navegador`: abre as
+   páginas alteradas no último commit (mais uma amostra fixa: home, hubs de
+   calorias e ferramentas, uma calculadora, uma cidade, guias) no Chromium.
+   Em lote grande (levas de 50 cidades), ele testa uma amostra das alteradas.
+2. **Testar botões e funcionalidades.** O teste clica nos botões visíveis
+   (abas, seletores, menu, FAQ), muda os campos das calculadoras e confere
+   que nada quebra; todo link interno da página precisa existir.
+3. **Verificar a versão mobile.** Cada página roda também em tela de celular
+   (390×844, toque): sem rolagem lateral, sem imagem quebrada, com `<h1>`.
+4. **Testes automatizados.** Além do teste de navegador, os de sempre:
+   `audit:canonical`, `audit:links`, `audit:metadados` (comparando com a
+   base de falhas), `test:ferramentas-inline` e o `test:<calculadora>` de
+   qualquer calculadora mexida.
+5. **Identificar e corrigir.** Qualquer ✗ é corrigido antes do commit —
+   erro de JavaScript, console, recurso 404, rolagem lateral no celular, link
+   para página inexistente. Defeito que não é desta mudança e não dá para
+   corrigir agora vai anotado na resposta, com a página e o erro.
+6. **Repetir depois da correção.** Build e `test:navegador` de novo até sair
+   "✓ tudo certo". Depois do push e do deploy, rodar contra o site no ar:
+   `npm run test:navegador -- --base https://www.personalporperto.com.br <páginas>`.
+
+Na resposta ao Renato, uma linha diz o que foi testado (quantas páginas,
+desktop e celular) e o resultado. Terceiros (YouTube, Google, Analytics) são
+bloqueados no teste de propósito: ele mede o site, não a rede deles.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.
