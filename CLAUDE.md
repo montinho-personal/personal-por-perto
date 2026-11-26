@@ -180,9 +180,11 @@ repetir busca já feita no mesmo dia.
 rotinas diárias: Direito de Verdade (2 revisões, 2 buscas cada) cerca de 300; Personal por
 Perto (artigos e cidades, 2 + 2 por dia) cerca de 360; Site do Montinho cerca de 120 a 150;
 Crédito por Perto (1 por dia) cerca de 60 a 90; Onde Treinar Alphaville (1 por dia) cerca
-de 150 a 180. Rotinas mensais (dia 16): visão de IA com ideias de artigo nos 5 sites, mapa
-do Montinho e alertas de regra do Direito e do Crédito, cerca de 150. Total: 1.140 a 1.230,
-**acima da cota**, por decisão do Renato (16/11/2026: "segue tudo para todos"). Por isso:
+de 150 a 180; site de missões de GTA 6 (Radar diário, no máximo 3 chamadas por dia, desde
+26/11/2026) cerca de 90. Rotinas mensais (dia 16): visão de IA com ideias de artigo nos 6
+sites (o de GTA entrou em 26/11/2026, até 24 chamadas), mapa do Montinho e alertas de regra
+do Direito e do Crédito, cerca de 175. Total: 1.255 a 1.345, **acima da cota**, por decisão
+do Renato (16/11/2026: "segue tudo para todos"; 26/11/2026: GTA incluído). Por isso:
 quando o SerpApi disser que a cota acabou, parar a tarefa na hora, não pesquisar às cegas
 nem pedir print, e avisar o Renato na conversa do site: ele decide se aumenta o plano ou
 espera a renovação para continuar. Rotina nova ou maior continua sendo pedido dele.
