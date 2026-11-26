@@ -176,15 +176,16 @@ avisar). Cada busca gasta 2 (página + autocompletar), 3 com a visão de IA em d
 etapas. Buscar só o que a peça precisa (em geral 3 buscas), nunca em massa, e não
 repetir busca já feita no mesmo dia.
 
-**Orçamento do mês (1.000 pesquisas, todos os sites somados; conta de 16/11/2026):**
-rotinas diárias: Direito de Verdade (2 revisões, 2 buscas cada) cerca de 300; Personal por
-Perto (artigos e cidades, 2 + 2 por dia) cerca de 360; Site do Montinho cerca de 120 a 150;
-Crédito por Perto (1 por dia) cerca de 60 a 90; Onde Treinar Alphaville (1 por dia) cerca
-de 150 a 180; site de missões de GTA 6 (Radar diário, no máximo 3 chamadas por dia, desde
-26/11/2026) cerca de 90. Rotinas mensais (dia 16): visão de IA com ideias de artigo nos 6
-sites (o de GTA entrou em 26/11/2026, até 24 chamadas), mapa do Montinho e alertas de regra
-do Direito e do Crédito, cerca de 175. Total: 1.255 a 1.345, **acima da cota**, por decisão
-do Renato (16/11/2026: "segue tudo para todos"; 26/11/2026: GTA incluído). Por isso:
+**Orçamento do mês (1.000 pesquisas, todos os sites somados; revisto em 26/11/2026):**
+em 26/11/2026 o Renato reduziu as revisões diárias de **2 para 1 por dia em todos os
+sites**, para a soma caber na cota. Rotinas diárias: Direito de Verdade (1 revisão, 2
+buscas) cerca de 150; Personal por Perto (1 artigo + 1 cidade) cerca de 180; Site do
+Montinho (1 artigo) cerca de 60 a 75; Crédito por Perto (1 página) cerca de 60 a 90; Guia
+Fitness Alphaville (1 artigo) cerca de 75 a 90; Tower EPI's (1 artigo, até 2 buscas) cerca
+de 60 a 90; site de missões de GTA 6 (Radar, no máximo 3 chamadas por dia) cerca de 90.
+Rotinas mensais (dia 16): visão de IA com ideias de artigo nos 7 sites, mapa do Montinho e
+da Tower e alertas de regra do Direito e do Crédito, cerca de 205. Total: cerca de 880 a
+970, **dentro da cota**. Mesmo assim:
 quando o SerpApi disser que a cota acabou, parar a tarefa na hora, não pesquisar às cegas
 nem pedir print, e avisar o Renato na conversa do site: ele decide se aumenta o plano ou
 espera a renovação para continuar. Rotina nova ou maior continua sendo pedido dele.

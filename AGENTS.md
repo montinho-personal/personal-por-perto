@@ -33,8 +33,8 @@ ficaram de fora em três grupos, cada uma com o motivo:
 ## Rotina diária de revisão
 
 Uma tarefa agendada nesta sessão, todo dia às **9h10** (horário de São
-Paulo; o montinhopersonal roda às 15h41). **N = 2 artigos por dia** — o
-Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota").
+Paulo; o montinhopersonal roda às 15h41). **N = 1 artigo por dia** desde 26/11/2026
+(eram 2; o Renato reduziu para a soma dos sites caber na cota, ver "Cota").
 
 - **Ordem:** primeiro a parte 4 da pauta (revisões pendentes); depois, os
   artigos com impressões no Search Console e CTR baixo ou posição entre 5 e
@@ -80,10 +80,10 @@ Renato liberou o uso dos créditos em 16/11 e decide quando acabarem (ver "Cota"
 
 Uma conta para todos os sites do Renato: **1.000 buscas por mês** desde
 16/11/2026 (o Renato subiu o plano). O orçamento valendo é o do `CLAUDE.md`
-("Orçamento do mês", 16/11/2026): este site fica com cerca de 360 (artigos e
-cidades, 2 + 2 por dia), mais o monitor mensal de visão de IA (dia 16). A
-soma de todos os sites passa de 1.000 **de propósito** (decisão do Renato).
-Por isso: quando o SerpApi disser que a cota acabou, parar a tarefa na hora,
+("Orçamento do mês", 16/11/2026): este site fica com cerca de 180 (artigos e
+cidades, 1 + 1 por dia desde 26/11/2026), mais o monitor mensal de visão de IA
+(dia 16). Com as revisões de todos os sites em 1 por dia, a soma fica dentro
+da cota (cerca de 880 a 970). Mesmo assim: quando o SerpApi disser que a cota acabou, parar a tarefa na hora,
 não pesquisar às cegas nem pedir print, e avisar o Renato nesta conversa —
 ele decide se aumenta o plano ou espera renovar.
 

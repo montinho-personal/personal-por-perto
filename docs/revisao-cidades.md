@@ -2,7 +2,7 @@
 
 **Reativada em 16/11/2026**: o Renato liberou os créditos do SerpApi e decide quando acabarem.
 
-Rotina pedida pelo Renato em 16/11/2026: **2 cidades por dia**, pela ordem de
+Rotina pedida pelo Renato em 16/11/2026: **1 cidade por dia** desde 26/11/2026 (eram 2; reduzida para caber na cota do SerpApi), pela ordem de
 impressões no Search Console, com pesquisa no SerpApi no lugar dos prints.
 Continua o trabalho de `docs/intencoes-locais.md` (prints de 30/09 a
 08/10/2026, 80 cidades).
