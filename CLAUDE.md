@@ -307,6 +307,16 @@ Na resposta ao Renato, uma linha diz o que foi testado (quantas páginas,
 desktop e celular) e o resultado. Terceiros (YouTube, Google, Analytics) são
 bloqueados no teste de propósito: ele mede o site, não a rede deles.
 
+## Auditoria diária das ferramentas (regra do Renato, 26/11/2026)
+
+Duas ferramentas por dia passam pela auditoria completa de
+`docs/auditoria-ferramentas.md`: três passadas de especialista (QA no
+navegador com casos de borda; conta refeita do zero por um agente
+independente, a partir da fórmula e da fonte, sem ver o código; experiência
+no celular), correção no mesmo dia, caso novo no teste para cada defeito e
+repetição dos testes. Conta errada é prioridade absoluta. Dúvida de método
+que a fonte não resolve não se decide sozinho: vai ao Renato com as opções.
+
 ## Outras regras editoriais fixas
 
 - Nunca mencionar CREF/CONFEF em nenhum conteúdo.
