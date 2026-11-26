@@ -979,6 +979,14 @@ domicílio" 10. O resto do autocompletar é espanhol e italiano
   o portal diz); "vale a pena o Smart Fit Coach?" vai para o artigo da
   Smart Fit; cartão de crédito e apps não são assunto do guia.
 
+**26/11/2026 — seção de privacidade** (tema da pauta do Montinho, "Treino em
+casa com privacidade", liberado pelo Renato em 25/11): H2 "Privacidade e a
+rotina da casa" (onde treinar, quem está em casa, fotos e vídeos só com
+autorização, portaria e condomínio) e FAQ "Personal em casa tem mais
+privacidade que academia?". Sem pesquisa nova: a página já tinha a de 08/10 e
+o SerpApi respondeu "Rate limit exceeded" em 26/11. Sem fato que peça fonte
+(são combinados práticos). atualizadoEm 26/11.
+
 ## Lutas (`/calorias/lutas/`) — prints e pesquisa de muay thai, 08/10/2026
 
 A página já tinha sido reescrita em 05/10 a partir das consultas do GSC —
