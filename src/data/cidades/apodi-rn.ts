@@ -69,6 +69,8 @@ export const cidade: Cidade = {
     'A cultura esportiva combina o uso de praças e vias urbanas para caminhada e corrida com a presença da natureza da Chapada do Apodi, da Lagoa do Apodi e do entorno do rio — tudo condicionado pelo calor e pela forte insolação do semiárido.',
   academias:
     'A oferta é formada sobretudo por academias locais de musculação e treino funcional, distribuídas pelo centro e pelos bairros residenciais, com porte compatível com uma cidade média do interior.',
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-26',
 
   destaquesFitness: [
     'Chapada do Apodi e Lajedo de Soledade como cenário natural para trilhas, pedal e corrida ao ar livre.',

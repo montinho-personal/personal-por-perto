@@ -70,10 +70,9 @@ export const cidade: Cidade = {
   academias:
     'A oferta é dominada por academias de bairro de preço acessível, concentradas no Centro e nas avenidas principais, complementadas por unidades de rede de baixo custo, estúdios menores e pelo atendimento domiciliar.',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidade no Shopping Pateo Itaquá' },
-    { nome: 'Skyfit Itaquá', detalhe: 'unidade da rede de baixo custo na cidade' },
-    { nome: 'Allp Fit', detalhe: 'unidade no Monte Belo' },
+    { nome: 'Smart Fit', detalhe: 'duas unidades: no Shopping Pateo Itaquá (Avenida Ítalo Adami, 1809, Vila Zeferina) e no KM 35 Center Mall (Estrada Alberto Hinoto, 3135, Jardim dos Ipês)' },
   ],
+  academiasVerificadasEm: '2026-11-26',
 
   destaquesFitness: [
     'Parque Ecológico Mário do Canto, com pista de caminhada e corrida.',
@@ -122,7 +121,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Itaquaquecetuba', url: 'https://www.itaquaquecetuba.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/3523107' },
   ],
-  atualizadoEm: '2026-11-19',
+  atualizadoEm: '2026-11-26',
 
   capaArte: {
     src: '/capas-cidade/itaquaquecetuba-sp.webp',

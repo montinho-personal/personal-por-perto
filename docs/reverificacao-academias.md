@@ -1195,3 +1195,26 @@ Texto corrido ajustado: as descrições dos três parques, a programação da Se
 Texto corrido ajustado: Parque do Jandiá, mercado, destaque e FAQ deixaram de citar academia ao ar livre.
 
 Saldo da leva: 6 entradas → 2 mantidas (as 2 com detalhe corrigido), 4 removidas. As duas cidades ficam com 1 entrada (só a Smart Fit); completar vira tarefa à parte. 72 cidades seguem na fila.
+
+### 26/11/2026 — leva 52 (rotina, Parte B: Itaquaquecetuba e Anchieta)
+
+**Itaquaquecetuba/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidade no Shopping Pateo Itaquá" | confirmada; **detalhe corrigido**: são duas unidades na cidade, **Shopping Pateo Itaquá** (Av. Ítalo Adami, 1809, Vila Zeferina) e **KM 35 Center Mall** (Estrada Alberto Hinoto, 3135, Jardim dos Ipês) | página oficial (`/academias/sp/itaquaquecetuba`, as duas com `opened:true`) |
+| Skyfit Itaquá — "unidade da rede de baixo custo na cidade" | **removida**: fonte única. Só o TotalPass lista a unidade (Rod. João Afonso de Souza Castellano, 705, Vila Monte Belo); a página do Wellhub com "skyfit" no endereço abre como "Academia Power Physic", em outro bairro. O site da rede segue recusando acesso | TotalPass (uma fonte só) |
+| Allp Fit — "unidade no Monte Belo" | **removida**: nenhuma fonte mostra Allp Fit em Itaquaquecetuba; a rede aparece em Poá, Suzano, Ferraz e Itaim Paulista. O site da rede não abre no ambiente | busca sem resultado |
+
+O texto corrido não cita Skyfit nem Allp Fit pelo nome; nada a ajustar.
+
+**Anchieta/ES** — página mudou; a cidade fica **sem entradas**.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| "Estrutura pública das orlas" — "calçadões de Iriri, Ubu e Castelhanos para treino ao ar livre" | **removida**: não é academia com nome; as praias já estão nos parques e destaques da página | — |
+| "Academias locais" — "musculação no Centro e em Iriri" | **removida**: não é academia com nome | — |
+
+Sem Smart Fit em Anchieta (página oficial da rede vazia). O texto corrido fala de academias no Centro e em Iriri sem citar nomes, e há listagens nos dois lugares (Wellhub e TotalPass); fica como está. Completar a lista vira tarefa à parte.
+
+Saldo da leva: 5 entradas → 1 mantida (com detalhe corrigido), 4 removidas. Itaquaquecetuba fica com 1 entrada e Anchieta com nenhuma. 70 cidades seguem na fila.

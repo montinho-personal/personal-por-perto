@@ -45,6 +45,11 @@ export const cidade: Cidade = {
     'A vida esportiva gira em torno do Parcão da Paz e dos equipamentos de bairro, com forte presença da caminhada, da corrida e dos esportes coletivos comunitários.',
   academias:
     'A oferta reúne academias de bairro e redes acessíveis, complementadas pelo Parcão da Paz, com pista de caminhada e quadras, e pelas áreas verdes municipais para o treino ao ar livre.',
+  academiasProximas: [
+    { nome: 'Smart Fit Shopping do Vale', detalhe: 'na Avenida General Flores da Cunha, 4001, na Vila Bom Princípio' },
+    { nome: '26 Fit Cachoeirinha', detalhe: 'na Rua Artur Emílio Ozzio, 185, na COHAB' },
+  ],
+  academiasVerificadasEm: '2026-11-26',
   destaquesFitness: [
     'Parcão da Paz: principal espaço público para caminhada, corrida e esportes coletivos.',
     'Parque Natural Municipal Tancredo Neves: trilhas e mata para treino ao ar livre.',
@@ -60,5 +65,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cachoeirinha', url: 'https://www.cachoeirinha.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-20',
+  atualizadoEm: '2026-11-26',
 };

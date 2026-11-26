@@ -65,10 +65,8 @@ export const cidade: Cidade = {
   academias:
     'A oferta de academias é modesta e concentrada no Centro, com estúdios e espaços de musculação, treino funcional e modalidades como zumba e pilates atendendo a demanda local.',
 
-  academiasProximas: [
-    { nome: 'Estrutura pública das orlas', detalhe: 'calçadões de Iriri, Ubu e Castelhanos para treino ao ar livre' },
-    { nome: 'Academias locais', detalhe: 'musculação no Centro e em Iriri' },
-  ],
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-26',
 
   destaquesFitness: [
     'Berço do turismo religioso do padre José de Anchieta, com o Santuário Nacional e seu museu.',
@@ -114,5 +112,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Anchieta', url: 'https://www.anchieta.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-20',
+  atualizadoEm: '2026-11-26',
 };
