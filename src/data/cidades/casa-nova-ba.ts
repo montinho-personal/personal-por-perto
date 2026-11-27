@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'IBGE Cidades — Casa Nova', url: 'https://cidades.ibge.gov.br/brasil/ba/casa-nova/panorama' },
     { nome: 'Prefeitura de Casa Nova', url: 'https://www.casanova.ba.gov.br/' },
   ],
-  atualizadoEm: '2026-07-28',
+  atualizadoEm: '2026-11-27',
 };

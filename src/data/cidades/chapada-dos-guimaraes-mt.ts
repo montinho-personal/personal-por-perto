@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Chapada dos Guimarães', url: 'https://www.chapadadosguimaraes.mt.gov.br/' },
     { nome: 'ICMBio — Parque Nacional', url: 'https://www.icmbio.gov.br/parnaguimaraes/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-27',
 };

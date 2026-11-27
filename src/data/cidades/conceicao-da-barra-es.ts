@@ -85,5 +85,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Conceição da Barra', url: 'https://conceicaodabarra.es.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-27',
 };

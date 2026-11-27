@@ -88,5 +88,5 @@ export const cidade: Cidade = {
     { nome: 'Câmara Municipal de Confresa — Economia', url: 'https://confresa.mt.leg.br/o-municipio/economia-de-confresa' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/perfil/municipio/5103353' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-27',
 };

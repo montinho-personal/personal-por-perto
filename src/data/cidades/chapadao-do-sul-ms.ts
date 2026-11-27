@@ -93,5 +93,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Chapadão do Sul', url: 'https://www.chapadaodosul.ms.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-27',
 };

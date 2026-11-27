@@ -85,5 +85,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'Prefeitura de Correntina — Pontos Turísticos', url: 'https://www.correntina.ba.gov.br/secretarias/turismo/pontos-turisticos/' },
   ],
-  atualizadoEm: '2026-07-03',
+  atualizadoEm: '2026-11-27',
 };

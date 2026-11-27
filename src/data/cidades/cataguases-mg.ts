@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM Cataguases', url: 'https://www.atlasbrasil.org.br/perfil/municipio/311530' },
     { nome: 'IPHAN — Cataguases (patrimônio modernista)', url: 'https://portal.iphan.gov.br/pagina/detalhes/1289' },
   ],
-  atualizadoEm: '2026-06-29',
+  atualizadoEm: '2026-11-27',
 };

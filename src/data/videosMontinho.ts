@@ -359,6 +359,17 @@ export const CIDADES_VIDEO_CANAL: string[] = [
   'cajamar-sp', 'cajazeiras-pb', 'camacan-ba', 'camaragibe-pe', 'cambara-do-sul-rs',
   'camocim-ce', 'campina-grande-do-sul-pr', 'campo-belo-mg', 'campos-altos-mg', 'campos-dos-goytacazes-rj',
   'campos-novos-sc', 'cananeia-sp', 'canarana-mt', 'candeias-ba', 'canela-rs',
+  // leva 11 — 27/11/2026: as 50 seguintes sem vídeo (4 com impressão em 28 dias no GSC; as demais em ordem alfabética; leva 10 conferida no ar)
+  'caucaia-ce', 'itacare-ba', 'guajara-mirim-ro', 'igarassu-pe', 'caninde-ce',
+  'capela-se', 'capitolio-mg', 'capivari-sp', 'caracarai-rr', 'caratinga-mg',
+  'caravelas-ba', 'carazinho-rs', 'carmo-do-cajuru-mg', 'carolina-ma', 'carpina-pe',
+  'carrancas-mg', 'casa-nova-ba', 'castro-pr', 'cataguases-mg', 'catalao-go',
+  'catole-do-rocha-pb', 'cavalcante-go', 'cerquilho-sp', 'cerro-largo-rs', 'chapada-dos-guimaraes-mt',
+  'chapadao-do-sul-ms', 'chapeco-sc', 'charqueadas-rs', 'cianorte-pr', 'cidade-ocidental-go',
+  'cidreira-rs', 'colatina-es', 'colider-mt', 'conceicao-da-barra-es', 'conceicao-do-mato-dentro-mg',
+  'confresa-mt', 'cordeiro-rj', 'coronel-fabriciano-mg', 'correntina-ba', 'corumba-de-goias-go',
+  'cosmopolis-sp', 'costa-rica-ms', 'crateus-ce', 'crato-ce', 'cravinhos-sp',
+  'cristalina-go', 'cristina-mg', 'cruz-alta-rs', 'cruzeiro-do-sul-ac', 'cubatao-sp',
 ];
 
 /** O vídeo do canal de uma cidade, ou undefined se ela não está nas levas. */

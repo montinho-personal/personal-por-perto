@@ -91,5 +91,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cavalcante', url: 'https://cavalcante.go.gov.br/' },
     { nome: 'Observatório Terras Quilombolas — Kalunga', url: 'https://cpisp.org.br/kalunga/' },
   ],
-  atualizadoEm: '2026-08-04',
+  atualizadoEm: '2026-11-27',
 };

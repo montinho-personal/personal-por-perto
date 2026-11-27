@@ -96,5 +96,5 @@ export const cidade: Cidade = {
     { nome: 'ICMBio — Parque Nacional da Chapada das Mesas', url: 'https://www.gov.br/icmbio/' },
     { nome: 'Prefeitura de Carolina', url: 'https://www.carolina.ma.gov.br/' },
   ],
-  atualizadoEm: '2026-08-05',
+  atualizadoEm: '2026-11-27',
 };

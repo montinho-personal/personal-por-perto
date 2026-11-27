@@ -85,5 +85,5 @@ export const cidade: Cidade = {
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
     { nome: 'ICMBio — Reserva Extrativista de Cassurubá', url: 'https://www.gov.br/icmbio/pt-br' },
   ],
-  atualizadoEm: '2026-07-05',
+  atualizadoEm: '2026-11-27',
 };

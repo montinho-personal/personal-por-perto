@@ -108,5 +108,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Carpina', url: 'https://www.carpina.pe.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-09-19',
+  atualizadoEm: '2026-11-27',
 };

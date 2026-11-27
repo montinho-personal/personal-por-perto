@@ -90,5 +90,5 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Cidreira', url: 'https://www.cidreira.rs.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-07-02',
+  atualizadoEm: '2026-11-27',
 };
