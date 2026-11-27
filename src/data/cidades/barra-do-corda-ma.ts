@@ -64,6 +64,8 @@ export const cidade: Cidade = {
     'A cultura de movimento em Barra do Corda combina o futebol e as caminhadas em praças e na beira dos rios com a forte tradição cultural do município, marcada pela Festa do Divino Espírito Santo e pela presença viva dos povos indígenas Guajajara e Canela. Essa vivência de corpo, ritmo e festa convive com o interesse crescente por academias e treino orientado, próprio de uma cidade que cresce como referência regional.',
   academias:
     'A oferta é formada principalmente por academias de bairro e estúdios menores, complementada pelo atendimento domiciliar, atendendo uma demanda em crescimento num polo de comércio regional de perfil popular.',
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-27',
 
   destaquesFitness: [
     'Cidade no centro geográfico do Maranhão, no encontro dos rios Corda e Mearim.',

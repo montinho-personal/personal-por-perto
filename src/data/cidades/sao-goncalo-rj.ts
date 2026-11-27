@@ -71,10 +71,10 @@ export const cidade: Cidade = {
     'A oferta privada se concentra em Alcântara e no Centro, complementada pela ampla rede pública de academias ao ar livre e pelo Parque RJ Nosso Sonho.',
 
   academiasProximas: [
-    { nome: 'Smart Fit São Gonçalo Centro', detalhe: 'unidade da rede no Centro, com área ampla de musculação' },
-    { nome: 'Smart Fit Jardim Alcântara', detalhe: 'segunda unidade da rede, atendendo a região de Alcântara' },
-    { nome: 'Total Gym', detalhe: 'academia local com endereços no Centro e em Alcântara' },
+    { nome: 'Smart Fit São Gonçalo Centro', detalhe: 'na Av. Presidente Kennedy, 311, no Centro' },
+    { nome: 'Smart Fit Jardim Alcântara', detalhe: 'na Rua Capitão Juvenal Figueiredo, 482, no bairro Almerinda' },
   ],
+  academiasVerificadasEm: '2026-11-27',
 
   destaquesFitness: [
     'Parque RJ Nosso Sonho: pista de atletismo, academia ao ar livre e quadras (estrutura nova).',
@@ -102,7 +102,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de São Gonçalo', url: 'https://www.saogoncalo.rj.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-08-26',
+  atualizadoEm: '2026-11-27',
   capaArte: {
     src: '/capas-cidade/sao-goncalo-rj.webp',
     w: 1200,

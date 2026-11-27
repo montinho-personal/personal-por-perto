@@ -74,6 +74,8 @@ export const cidade: Cidade = {
     'A corrida de rua e o mountain bike vêm ganhando força em Santa Cruz do Capibaribe, com provas ancoradas no Moda Center e em iniciativas municipais; o futebol amador e as academias de bairro completam uma cultura esportiva movida por grupos de treino e pelo perfil ativo da população.',
   academias:
     'A oferta concentra academias locais e de bairro com musculação e funcional, complementadas pela estrutura pública das academias da saúde em praças e pela atuação expressiva de personal trainers em domicílio.',
+  academiasProximas: [],
+  academiasVerificadasEm: '2026-11-27',
 
   destaquesFitness: [
     'Moda Center Santa Cruz como palco de provas de corrida e mountain bike.',

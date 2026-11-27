@@ -68,17 +68,15 @@ export const cidade: Cidade = {
   culturaEsportiva:
     'Diadema tem tradição esportiva comunitária forte, com parques públicos ativos — aulas gratuitas no Parque do Paço — e equipes representativas municipais. O esporte de bairro é parte importante da vida da cidade.',
   academias:
-    'A oferta é dominada por academias de bairro que atendem a população densa e trabalhadora, complementadas pela boa malha de parques (Paço, Takebe e Ecológico do Eldorado) com áreas de treino.',
+    'A oferta é dominada por academias de bairro que atendem a população densa e trabalhadora, complementadas pela boa malha de parques (Paço, Takebe e Ecológico do Eldorado).',
   academiasProximas: [
-    { nome: 'Smart Fit', detalhe: 'unidades na Serraria (Av. Afonso Monteiro da Cruz) e no Shopping Diadema' },
-    { nome: 'Bluefit', detalhe: 'unidade no Centro, na Av. Sete de Setembro' },
-    { nome: 'Parque do Paço', detalhe: 'aulas públicas gratuitas (zumba, capoeira, tai chi) e pista de caminhada' },
-    { nome: 'Academia ao ar livre do Parque Takebe', detalhe: 'gratuita, polo de treino de bairro' },
+    { nome: 'Smart Fit', detalhe: 'três unidades: no Shopping Diadema (Av. Afonso Monteiro da Cruz, Serraria), no Shopping Praça da Moça (Centro) e no Jardim Conceição' },
+    { nome: 'Bluefit Diadema', detalhe: 'na Av. Sete de Setembro, no Centro' },
   ],
+  academiasVerificadasEm: '2026-11-27',
 
   destaquesFitness: [
     'Parque do Paço com aulas gratuitas (zumba, capoeira, tai chi) e pista de caminhada.',
-    'Academia ao ar livre no Parque Takebe.',
     'Cidade muito densa, com alta demanda por atendimento próximo.',
     'Boa malha de parques verdes (Paço, Takebe e Ecológico do Eldorado).',
   ],
@@ -99,7 +97,7 @@ export const cidade: Cidade = {
     {
       pergunta: 'Como treinar com personal em Diadema gastando pouco?',
       resposta:
-        'A cidade ajuda: o Parque do Paço tem aulas públicas gratuitas e pista de caminhada, o Parque Takebe tem academia ao ar livre, e as redes de baixo custo cobrem o Centro e a Serraria. Com o personal, dá para baratear dividindo a sessão em dupla ou pequeno grupo no parque, fechando pacote mensal em vez de aula avulsa, ou combinando o acompanhamento online com sessões presenciais mais espaçadas.',
+        'A cidade ajuda: o Parque do Paço tem aulas públicas gratuitas e pista de caminhada, e as redes de baixo custo cobrem o Centro e a Serraria. Com o personal, dá para baratear dividindo a sessão em dupla ou pequeno grupo no parque, fechando pacote mensal em vez de aula avulsa, ou combinando o acompanhamento online com sessões presenciais mais espaçadas.',
     },
     {
       pergunta: 'Onde o treino com personal costuma acontecer em Diadema?',
@@ -120,7 +118,7 @@ export const cidade: Cidade = {
     { nome: 'Prefeitura de Diadema', url: 'https://www.diadema.sp.gov.br/' },
     { nome: 'Atlas Brasil — IDHM', url: 'https://www.atlasbrasil.org.br/' },
   ],
-  atualizadoEm: '2026-11-17',
+  atualizadoEm: '2026-11-27',
   capaArte: {
     src: '/capas-cidade/diadema-sp.webp',
     w: 1200,

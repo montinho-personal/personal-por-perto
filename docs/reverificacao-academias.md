@@ -1218,3 +1218,28 @@ O texto corrido não cita Skyfit nem Allp Fit pelo nome; nada a ajustar.
 Sem Smart Fit em Anchieta (página oficial da rede vazia). O texto corrido fala de academias no Centro e em Iriri sem citar nomes, e há listagens nos dois lugares (Wellhub e TotalPass); fica como está. Completar a lista vira tarefa à parte.
 
 Saldo da leva: 5 entradas → 1 mantida (com detalhe corrigido), 4 removidas. Itaquaquecetuba fica com 1 entrada e Anchieta com nenhuma. 70 cidades seguem na fila.
+
+### 27/11/2026 — leva 53 (rotina, Parte B: Diadema e São Gonçalo)
+
+**Diadema/SP** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit — "unidades na Serraria (Av. Afonso Monteiro da Cruz) e no Shopping Diadema" | confirmada; **detalhe corrigido**: a Serraria e o Shopping Diadema são a mesma unidade (Av. Afonso Monteiro da Cruz, 1150). A rede tem três em Diadema: **Shopping Diadema**, **Shopping Praça da Moça** (Rua Manoel da Nóbrega, 712, Centro) e **Diadema** (Av. Nossa Senhora das Vitórias, 188, Jardim Conceição) | página oficial (`/academias/sp/diadema`, as três com `opened:true`) |
+| Bluefit — "unidade no Centro, na Av. Sete de Setembro" | confirmada (Av. Sete de Setembro, 97, Centro); nome passa a "Bluefit Diadema" | página oficial da Bluefit (`/academia/diadema`) |
+| "Parque do Paço" — "aulas públicas gratuitas (zumba, capoeira, tai chi) e pista de caminhada" | **removida da lista**: é parque, não academia; segue descrito nos parques da página | — |
+| "Academia ao ar livre do Parque Takebe" — "gratuita, polo de treino de bairro" | **removida**: nenhuma fonte cita equipamento de ginástica no parque | busca sem resultado |
+
+Texto corrido ajustado: o destaque "Academia ao ar livre no Parque Takebe" saiu, e a FAQ e o mercado deixaram de afirmar academia ou área de treino no Takebe.
+
+**São Gonçalo/RJ** — página mudou.
+
+| entrada | resultado | fonte |
+|---|---|---|
+| Smart Fit São Gonçalo Centro — "com área ampla de musculação" | confirmada; **detalhe corrigido** para o endereço: Av. Presidente Kennedy, 311, Centro ("área ampla" não tem fonte) | página oficial (`/academias/rj/sao-goncalo`, `opened:true`) |
+| Smart Fit Jardim Alcântara — "segunda unidade da rede, atendendo a região de Alcântara" | confirmada; **detalhe corrigido**: a rede tem cinco unidades na cidade, não duas; esta fica na Rua Capitão Juvenal Figueiredo, 482, bairro Almerinda | página oficial (`opened:true`) |
+| Total Gym — "academia local com endereços no Centro e em Alcântara" | **removida**: a única Total Gym achada fica na Tijuca, no Rio de Janeiro | Wellhub (Tijuca) |
+
+Saldo da leva: 7 entradas → 4 mantidas (as 4 com detalhe corrigido), 3 removidas. Diadema fica com 2 entradas e São Gonçalo com 2. 68 cidades seguem na fila.
+
+Parte A do dia (sem tabela de reverificação): **Santa Cruz do Capibaribe/PE** e **Barra do Corda/MA** ficam sem entradas. Em Santa Cruz, Republic Academia e Selfit Santa Cruz do Capibaribe só aparecem no Wellhub (fonte única; o site da Selfit não lista as unidades no HTML); em Barra do Corda, a "Fitness Club" só aparece num perfil profissional sem endereço, e a listagem do Wellhub com esse nome é de Açailândia.
