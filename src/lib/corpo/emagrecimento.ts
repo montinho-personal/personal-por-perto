@@ -115,6 +115,12 @@ export interface Plano {
   /** O peso em que, com este consumo fixo, o déficit acaba. */
   pesoEquilibrio: number;
   chega: boolean;
+  /**
+   * Por que não chega: 'equilibrio' quando o gasto encontra o consumo antes da
+   * meta (o peso estabiliza); 'prazo' quando a meta é possível, mas a conta
+   * passa do limite de 3 anos. null quando chega.
+   */
+  motivoNaoChega: 'equilibrio' | 'prazo' | null;
   /** Peso ao fim da simulação (a meta, ou onde parou). */
   pesoFinal: number;
   /** Peso no fim de cada mês (30 dias). */
@@ -157,6 +163,7 @@ export function simula(
     if (dias % 30 === 0) curva.push({ mes: dias / 30, pesoKg: w });
   }
   const chega = chegaPossivel && w <= pesoMeta;
+  const motivoNaoChega = chega ? null : chegaPossivel && w > pesoMeta && dias >= DIAS_MAX ? 'prazo' : 'equilibrio';
   if (chega && dias % 30 !== 0) curva.push({ mes: dias / 30, pesoKg: pesoMeta });
 
   return {
@@ -173,6 +180,7 @@ export function simula(
     kgSemanaInicio: (d.kcal * constancia * 7) / KCAL_POR_KG,
     pesoEquilibrio,
     chega,
+    motivoNaoChega,
     pesoFinal: chega ? pesoMeta : w,
     curva,
     consumoAbaixoDoMetabolismo: consumo < metabolismoInicial,
@@ -191,7 +199,8 @@ export function curvaResumida(curva: PontoCurva[]): PontoCurva[] {
 
 /* ───────────────────────── Formatação ───────────────────────── */
 
-export const arredondaKcal = (k: number): number => (Number.isFinite(k) && k > 0 ? Math.round(k / 10) * 10 : 0);
+export const arredondaKcal = (k: number): number =>
+  Number.isFinite(k) && k > 0 ? Math.round(Number((k / 10).toFixed(6))) * 10 : 0;
 export const formataKcal = (k: number): string => arredondaKcal(k).toLocaleString('pt-BR');
 export const formataKg = (k: number): string =>
   k.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
@@ -210,6 +219,13 @@ export function formataPrazo(dias: number): string {
 
 export function frasePlano(p: Plano): string {
   const kg = formataKg(p.pesoInicial - p.pesoMeta);
+  if (p.motivoNaoChega === 'prazo') {
+    return (
+      `Com este plano, a conta passa de 3 anos: depois de 3 anos o peso estaria perto de ${formataKg(p.pesoFinal)} kg, ` +
+      `ainda acima da meta. Mais dias de plano cumprido encurtam esse prazo, e um plano tão longo precisa ser refeito ` +
+      `no caminho: é o que acontece no acompanhamento.`
+    );
+  }
   if (!p.chega) {
     return (
       `Com um consumo fixo de cerca de ${formataKcal(p.consumo)} kcal por dia, o gasto cai junto com o peso e o ` +

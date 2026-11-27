@@ -227,7 +227,9 @@ export function gastoDiario(sexo: Sexo, pesoKg: number, alturaCm: number, idade:
 /** Gasto diário arredonda na dezena: precisão de unidade seria fingimento. */
 export function arredondaKcal(k: number): number {
   if (!Number.isFinite(k) || k <= 0) return 0;
-  return Math.round(k / 10) * 10;
+  // toFixed(6) antes de arredondar: 1625 × (1,75 − 1,55) dá 324,99999… em ponto
+  // flutuante e cairia para 320; a conta no papel dá 325, que vai para 330.
+  return Math.round(Number((k / 10).toFixed(6))) * 10;
 }
 
 export const formataKcal = (k: number): string => arredondaKcal(k).toLocaleString('pt-BR');

@@ -71,6 +71,22 @@ console.log('\nMeta abaixo do equilíbrio: sem prazo inventado');
   ok(perto(p.pesoEquilibrio, 100 - 500 / (10 * p.pal), 1e-9), '  equilíbrio = peso − déficit ÷ (10 × nível de atividade)');
   ok(p.pesoFinal > p.pesoMeta, '  o peso final fica acima da meta');
   ok(frasePlano(p).includes('antes da meta'), '  a frase explica que o déficit acaba antes');
+  ok(p.motivoNaoChega === 'equilibrio', '  o motivo é o equilíbrio');
+}
+
+// Auditoria de 27/11/2026: meta acima do equilíbrio, mas a conta passa de 3 anos.
+// A frase dizia "o déficit acaba perto de 85,9 kg — antes da meta" com meta de 90 kg.
+console.log('\nMeta possível, mas além de 3 anos: a frase não fala em equilíbrio');
+{
+  const p = simula('masculino', 120, 180, 50, 'vigoroso', 90, 'firme', 0.6);
+  ok(!p.chega && p.dias === null, '  120 → 90 kg, vigoroso, 750 kcal, 60%: não chega em 3 anos');
+  ok(p.pesoEquilibrio < p.pesoMeta, '  o equilíbrio (≈ 85,9 kg) fica abaixo da meta');
+  ok(p.motivoNaoChega === 'prazo', '  o motivo é o prazo de 3 anos');
+  ok(perto(p.pesoFinal, 91.1, 0.1), `  peso ao fim de 3 anos perto de 91,1 kg (deu ${p.pesoFinal.toFixed(2)})`);
+  const f = frasePlano(p);
+  ok(f.includes('3 anos') && !f.includes('antes da meta') && !f.includes('85,9'), '  a frase fala do prazo, não do equilíbrio');
+  const q = simula('feminino', 80, 165, 35, 'sedentario', 65, 'leve', 0.6);
+  ok(q.motivoNaoChega === 'prazo' && !frasePlano(q).includes('60,6'), '  80 → 65 kg com 300 kcal e 60%: prazo, sem citar 60,6 kg');
 }
 
 console.log('\nAlertas');

@@ -136,7 +136,7 @@ export function iniciarCalculadoraEmagrecimento(): void {
       if (el) el.textContent = txt;
     };
     set('.em-numero', p.chega ? formataPrazo(p.dias as number) : 'Não chega');
-    set('.em-unidade', p.chega ? `até ${formataKg(p.pesoMeta)} kg` : `com este plano fixo`);
+    set('.em-unidade', p.chega ? `até ${formataKg(p.pesoMeta)} kg` : p.motivoNaoChega === 'prazo' ? 'em 3 anos com este plano' : `com este plano fixo`);
     set('.em-quando', p.chega ? `Pela conta, por volta de ${dataEstimada(p.dias as number)}.` : '');
     set('.em-frase', frasePlano(p));
     set('.em-d-gasto', `≈ ${formataKcal(p.gastoInicial)} kcal`);
@@ -175,7 +175,9 @@ export function iniciarCalculadoraEmagrecimento(): void {
     if (!link) return;
     const texto = p.chega
       ? `A conta deu ${formataPrazo(p.dias as number)} até a minha meta.`
-      : 'A conta mostrou que, com um plano fixo, eu paro antes da meta.';
+      : p.motivoNaoChega === 'prazo'
+        ? 'A conta mostrou que, com este plano, a minha meta passa de 3 anos.'
+        : 'A conta mostrou que, com um plano fixo, eu paro antes da meta.';
     link.href = whatsappUrl(
       `Oi, Montinho! Vim pela calculadora de emagrecimento do Personal por Perto. ${texto} Queria entender como o treino entra nisso.`,
     );

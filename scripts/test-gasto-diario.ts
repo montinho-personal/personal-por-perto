@@ -11,6 +11,8 @@ import {
   ESTILOS,
   FONTES,
   NOTA_NAO_E_DIETA,
+  PAL_COM_UMA_HORA,
+  PAL_SEM_EXERCICIO,
   arredondaKcal,
   estilo,
   foraDaFaixaDoEstudo,
@@ -80,6 +82,22 @@ ok(arredondaKcal(2264.5) === 2260 && arredondaKcal(2266) === 2270, 'arredonda na
 }
 ok(NOTA_NAO_E_DIETA.includes('nutricionista'), 'a página diz que plano alimentar é com nutricionista');
 ok(FONTES.length === 4, 'quatro fontes');
+
+// Auditoria de 27/11/2026: casos refeitos à mão por um revisor independente.
+console.log('\nCasos da auditoria (arredondamento a partir do valor exato)');
+{
+  const faixa = (s: 'feminino' | 'masculino', p: number, h: number, a: number, e: string) => {
+    const r = gastoDiario(s, p, h, a, e);
+    return `${arredondaKcal(r.metabolismo * estilo(e).palMin)}-${arredondaKcal(r.metabolismo * estilo(e).palMax)}`;
+  };
+  ok(faixa('masculino', 70, 170, 30, 'sedentario') === '2260-2730', 'homem 30 anos, 70 kg, 170 cm, sedentário: 2.260 a 2.730');
+  ok(faixa('feminino', 62, 158, 45, 'vigoroso') === '2440-2930', 'mulher 45 anos, 62 kg, 158 cm, vigorosa: 2.440 a 2.930');
+  ok(faixa('masculino', 120, 190, 19, 'ativo') === '3910-4570', 'homem 19 anos, 120 kg, 190 cm, ativo: 3.910 a 4.570 (não 4.580)');
+  ok(faixa('feminino', 45, 150, 78, 'sedentario') === '1170-1410', 'mulher 78 anos, 45 kg, 150 cm, sedentária: 1.170 a 1.410 (não 1.180 a 1.420)');
+  // 1625 × 0,20 = 325 no papel; em ponto flutuante dava 324,999… e caía para 320.
+  ok(arredondaKcal(1625 * (PAL_COM_UMA_HORA - PAL_SEM_EXERCICIO)) === 330, '1 hora de exercício com metabolismo 1.625: 330 kcal (meio para cima)');
+  ok(arredondaKcal(1450 * 0.9) === 1310 && arredondaKcal(1450 * 1.1) === 1600, 'faixa de 10% com 1.450: 1.310 a 1.600 (ponto flutuante não derruba o meio)');
+}
 
 console.log(falhas ? `\n✗ ${falhas} falha(s)\n` : '\n✓ tudo certo\n');
 process.exit(falhas ? 1 : 0);
