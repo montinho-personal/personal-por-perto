@@ -71,7 +71,7 @@ import {
 } from '../../lib/nutricao/proteina';
 
 const path = '/ferramentas/calculadora-de-proteina';
-const atualizadoEm = '2026-09-30';
+const atualizadoEm = '2026-11-28';
 
 const crumbs = [
   { nome: 'Início', url: '/' },
@@ -145,7 +145,7 @@ const faqs = [
   },
   {
     pergunta: 'Quanto de proteína quem usa Mounjaro ou Ozempic deve comer?',
-    resposta: `A diretriz conjunta de 2025 sobre nutrição e remédios da classe GLP-1 indica cerca de 1,2 a 1,6 g por kg por dia — por quilo de peso saudável para a altura, não do peso atual. Com 110 kg e 1,65 m, a conta usa ${pesoSaudavel165} kg e dá ${gGlp1} g por dia. Quem já treina força com regularidade pode usar a faixa de quem treina, 1,6 a 2,2 g/kg sobre o mesmo peso saudável: ${gGlp1Treino} g no exemplo. O ajuste fino para o seu caso é com o médico e o nutricionista.`,
+    resposta: `A diretriz conjunta de 2025 sobre nutrição e remédios da classe GLP-1 cita cerca de 1,2 a 1,6 g por kg por dia durante a perda de peso, e avisa que fazer a conta pelo peso atual pode superestimar muito. Por isso a calculadora usa o peso de IMC 25 para a altura, quando o seu passa dele — uma escolha desta página, já que a diretriz diz que não há consenso sobre qual peso usar. Com 110 kg e 1,65 m, a conta usa ${pesoSaudavel165} kg e dá ${gGlp1} g por dia. Quem já treina força com regularidade pode usar a faixa de quem treina, 1,6 a 2,2 g/kg sobre o mesmo peso saudável: ${gGlp1Treino} g no exemplo. O ajuste fino para o seu caso é com o médico e o nutricionista.`,
   },
   {
     pergunta: 'Quem usa hormônio ou anabolizante precisa de mais proteína?',
@@ -408,13 +408,15 @@ const schema = [
           Em 2025, quatro sociedades de medicina do estilo de vida, nutrição e obesidade publicaram
           juntas as prioridades de nutrição para quem usa remédio da classe GLP-1, como Mounjaro e
           Ozempic. Proteína adequada e treino de força estão entre elas, para preservar massa magra, e a
-          faixa indicada é de cerca de 1,2 a 1,6 g por kg por dia.
+          faixa citada para a fase de perda de peso é de cerca de 1,2 a 1,6 g por kg por dia.
         </p>
         <p>
-          O detalhe que muda tudo é o peso da conta: é o peso saudável para a altura, não o atual. Com
+          O detalhe que muda tudo é o peso da conta. A diretriz avisa que usar o peso atual pode
+          superestimar muito a necessidade e diz que não há consenso sobre qual peso usar (o ajustado, o
+          ideal ou a massa magra). Esta calculadora escolhe o peso saudável para a altura. Com
           110 kg e 1,65 m, a calculadora usa {pesoSaudavel165} kg — o peso de IMC 25 nessa altura — e
           chega a <strong>{gGlp1} g por dia</strong>. Pelo peso atual, daria{' '}
-          {formataFaixaGramas(110 * 1.2, 110 * 1.6)} g, bem acima do que a diretriz indica. Quem já está
+          {formataFaixaGramas(110 * 1.2, 110 * 1.6)} g. Quem já está
           abaixo desse peso usa o próprio peso. O ajuste fino para o seu caso é com o seu médico e o seu
           nutricionista, que conhecem o contexto clínico.
         </p>
@@ -424,8 +426,9 @@ const schema = [
           com treino de força estruturado. Por isso o perfil "Mounjaro + treino" usa a faixa de quem
           treina força, 1,6 a 2,2 g/kg, sobre o mesmo peso saudável: no exemplo de 110 kg e 1,65 m,{' '}
           <strong>{gGlp1Treino} g por dia</strong>. É uma combinação das duas diretrizes, não um número
-          de estudo feito com o remédio — e a página diz isso para você decidir com o seu médico e o seu
-          nutricionista.
+          de estudo feito com o remédio. A mesma diretriz pede para evitar, por tempo longo, 2 g/kg ou
+          mais por dia; o teto deste perfil, 2,2 g/kg do peso saudável, passa desse número — mais um
+          motivo para decidir com o seu médico e o seu nutricionista.
         </p>
         <p>
           Com o apetite reduzido pelo remédio, bater a meta costuma ser a parte difícil, e dividir a

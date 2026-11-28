@@ -85,7 +85,7 @@ console.log('\nMounjaro/Ozempic: peso saudável');
   ok(o.usaPesoSaudavel && perto(o.pesoConta, 68.06, 0.01), '110 kg e 1,65 m: a conta usa 68 kg');
   ok(formataFaixaGramas(o.gramasMin, o.gramasMax) === '80 a 110', `  80 a 110 g, não 130 a 175 (mostrado "${formataFaixaGramas(o.gramasMin, o.gramasMax)}")`);
   ok(!o.pesoTotalSuperestima, '  sem aviso de teto: a conta já não usa o peso total');
-  ok(fraseContexto(o).includes('68 kg') && fraseContexto(o).includes('peso saudável'), '  a frase diz qual peso entrou na conta');
+  ok(fraseContexto(o).includes('68 kg') && fraseContexto(o).includes('IMC 25'), '  a frase diz qual peso entrou na conta');
   const m = proteina(60, 170, 'glp1');
   ok(!m.usaPesoSaudavel && m.pesoConta === 60, 'IMC 20,8: usa o próprio peso');
   ok(formataFaixaGramas(m.gramasMin, m.gramasMax) === '70 a 95', '  60 kg: 70 a 95 g');
@@ -105,6 +105,13 @@ ok(!PERFIS_TABELA.some((p) => p.id.startsWith('glp1')), '  sem as colunas de GLP
 ok(NOTA_RIM.includes('nefrologista'), 'doença renal: manda ao nefrologista');
 ok(NOTA_NAO_E_DIETA.includes('nutricionista'), 'dieta: manda ao nutricionista');
 ok(FONTES.length === 12, 'doze referências');
+
+// Auditoria de 28/11/2026: a referência dizia que a diretriz de GLP-1 manda usar o peso
+// saudável; o texto dela diz que não há consenso e que o peso atual pode superestimar.
+{
+  const ref = FONTES.map((x) => x.resumo).join(" ");
+  ok(!ref.includes('não de peso atual') && ref.includes('não há consenso'), 'referência do GLP-1 diz o que a fonte diz (sem consenso sobre o peso)');
+}
 
 console.log(falhas ? `\n✗ ${falhas} falha(s)\n` : '\n✓ tudo certo\n');
 process.exit(falhas ? 1 : 0);

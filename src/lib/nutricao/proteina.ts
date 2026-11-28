@@ -130,7 +130,7 @@ export const FONTE_GLP1: Fonte = {
     'Mozaffarian D, Agarwal M, Aggarwal M, et al. Nutritional priorities to support GLP-1 therapy for obesity: a joint Advisory from the American College of Lifestyle Medicine, the American Society for Nutrition, the Obesity Medicine Association, and The Obesity Society. 2025',
   url: 'https://pubmed.ncbi.nlm.nih.gov/40445127/',
   resumo:
-    'põe proteína adequada e treino de força entre as prioridades para preservar massa magra durante o tratamento com remédios da classe GLP-1, com cerca de 1,2 a 1,6 g de proteína por kg de peso saudável por dia — não de peso atual —, e lembra que o apetite reduzido torna a meta difícil de bater.',
+    'põe proteína adequada e treino de força entre as prioridades para preservar massa magra durante o tratamento com remédios da classe GLP-1, cita 1,2 a 1,6 g de proteína por kg por dia como alvo proposto durante a perda de peso; diz que não há consenso sobre o peso da conta (atual, ajustado, ideal ou massa magra) e que o peso atual pode superestimar muito a necessidade; pede para evitar, por tempo longo, 2 g/kg ou mais por dia; e lembra que o apetite reduzido torna a meta difícil de bater.',
 };
 
 export const FONTE_DELPHI: Fonte = {
@@ -387,7 +387,7 @@ export function fraseContexto(r: Resultado): string {
   const p = perfil(r.idPerfil);
   const g = formataFaixaGramas(r.gramasMin, r.gramasMax);
   const base = r.usaPesoSaudavel
-    ? `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a conta usa ${Math.round(r.pesoConta)} kg — o peso saudável para a sua altura, como a diretriz pede — e a referência é ${g} g de proteína por dia, ${formataFaixaGkg(r)} g por kg.`
+    ? `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a conta usa ${Math.round(r.pesoConta)} kg — o peso de IMC 25 para a sua altura, porque a diretriz avisa que o peso atual superestima a necessidade — e a referência é ${g} g de proteína por dia, ${formataFaixaGkg(r)} g por kg.`
     : `Com ${Math.round(r.pesoKg)} kg, no perfil "${p.nomeCurto}", a referência é ${g} g de proteína por dia — ${formataFaixaGkg(r)} g por kg.`;
   return `${base} Fonte: ${p.fonte}.`;
 }
