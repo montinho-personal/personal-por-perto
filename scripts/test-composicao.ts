@@ -8,6 +8,7 @@
  */
 import {
   CORTES_CINTURA,
+  estimativaPlausivel,
   FFMI_MEDIANA_JOVEM,
   boer,
   cinturaMetadeDaAltura,
@@ -172,6 +173,18 @@ console.log('\nFormatação e analytics');
   ok(formataDelta(-4, 'cm') === '−4 cm' && formataDelta(-1.5, 'kg') === '−1,5 kg' && formataDelta(2, 'kg') === '+2,0 kg', 'deltas com sinal');
   ok(formataDelta(-1.5, 'pp') === '−1,5 pontos' && formataDelta(1, 'pp') === '+1,0 ponto', 'pontos percentuais');
   ok(faixaPctAnalytics(18) === '15_20' && faixaPctAnalytics(3) === 'abaixo_5' && faixaPctAnalytics(55) === 'acima_50', 'analytics: blocos de 5, nunca o valor');
+}
+
+// Auditoria de 27/11/2026: medidas fora do comum davam percentual negativo na tela.
+console.log('\nEstimativa impossível não vira resultado');
+{
+  const r1 = rfm(190, 50, 'm');
+  ok(r1.pct < 0 && !estimativaPlausivel(r1), `RFM 1,90 m e cintura 50 cm dá ${r1.pct.toFixed(1)}%: barrado`);
+  const m1 = marinha('m', 180, 45, 42)!;
+  ok(m1.pct < 0 && !estimativaPlausivel(m1), `Marinha com abdômen 45 e pescoço 42 dá ${m1.pct.toFixed(1)}%: barrado`);
+  const f1 = marinha('f', 162, 50, 45, 60)!;
+  ok(!estimativaPlausivel(f1), 'Marinha feminina com cintura + quadril pouco acima do pescoço: barrado');
+  ok(estimativaPlausivel(rfm(175, 82, 'm')) && estimativaPlausivel(rfm(150, 150, 'f')), 'casos reais (21% e 56%) passam');
 }
 
 if (falhas) {

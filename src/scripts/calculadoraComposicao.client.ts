@@ -52,6 +52,8 @@ import {
   type Dobras,
   type Estimativa,
   type Sexo,
+  MSG_IMPLAUSIVEL,
+  estimativaPlausivel,
 } from '../lib/corpo/composicao';
 
 type Modo = 'gordura' | 'imc' | 'cintura' | 'tudo' | 'evolucao';
@@ -501,6 +503,7 @@ export function iniciarCalculadoraComposicao(): void {
     if (modo === 'tudo') {
       if (peso === null || altura === null || cintura === null) return vazio();
       const e = rfm(altura, cintura, sexo);
+      if (!estimativaPlausivel(e)) return vazio(MSG_IMPLAUSIVEL);
       atual = { data: hojeISO(), pesoKg: peso, alturaCm: altura, cinturaCm: cintura, quadrilCm: quadril ?? undefined, pct: e.pct, metodo: 'rfm' };
       return mostra(
         `<p class="cc-titulo-res">Sua composição corporal estimada</p>
@@ -557,6 +560,7 @@ export function iniciarCalculadoraComposicao(): void {
       const [ini, fim] = IDADE_DOBRAS[sexo];
       if (idade < ini || idade > fim) nome += `; a equação foi feita com idades de ${ini} a ${fim} anos`;
     }
+    if (!estimativaPlausivel(e)) return vazio(MSG_IMPLAUSIVEL);
     atual = {
       data: hojeISO(),
       pesoKg: peso ?? undefined,

@@ -66,6 +66,20 @@ export interface Estimativa {
   max: number;
 }
 
+/**
+ * Faixa em que um percentual de gordura é fisicamente possível. Abaixo de 2%
+ * nem a gordura essencial cabe; acima de 70% as equações não foram feitas.
+ * Fora disso, a conta saiu de uma medida errada (auditoria de 27/11/2026: com
+ * 1,90 m e cintura de 50 cm o RFM dava "−12%", com faixa "2% a −8%").
+ */
+export const PCT_PLAUSIVEL = { min: 2, max: 70 } as const;
+
+export const estimativaPlausivel = (e: Estimativa): boolean =>
+  Number.isFinite(e.pct) && e.pct >= PCT_PLAUSIVEL.min && e.pct <= PCT_PLAUSIVEL.max;
+
+export const MSG_IMPLAUSIVEL =
+  'Confira as medidas: com esses números a equação dá um percentual de gordura impossível. O mais provável é erro de medida ou de digitação — meça de novo, no ponto indicado.';
+
 const comFaixa = (pct: number): Estimativa => ({
   pct,
   min: Math.max(2, pct - INCERTEZA_PONTOS),
