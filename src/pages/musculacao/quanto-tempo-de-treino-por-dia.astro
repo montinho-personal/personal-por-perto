@@ -41,7 +41,9 @@ const relacionados = [
 ];
 
 const path = '/musculacao/quanto-tempo-de-treino-por-dia';
-const atualizadoEm = '2026-08-25';
+const atualizadoEm = '2026-11-28';
+const OMS_2020 = 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7719906/';
+const IVERSEN_2021 = 'https://pmc.ncbi.nlm.nih.gov/articles/PMC8449772/';
 const crumbs = [
   { nome: 'Início', url: '/' },
   { nome: 'Musculação', url: '/musculacao/' },
@@ -67,7 +69,22 @@ const faqs = [
   {
     pergunta: 'Só tenho 20 minutos por dia. Vale a pena treinar mesmo assim?',
     resposta:
-      'Vale muito. Vinte minutos diários somam mais de 2 horas semanais de treino — acima do mínimo de fortalecimento recomendado pelas diretrizes internacionais de saúde. Com estrutura inteligente (um padrão de movimento por dia, séries levadas perto do limite, descansos curtos), 20 minutos constroem força e músculo de verdade. O erro seria não treinar esperando o dia em que sobrará 1 hora — constância curta vence perfeição inexistente.',
+      'Vale muito. Vinte minutos por dia, todos os dias, somam 140 minutos na semana — quase os 150 de atividade moderada que a OMS pede, e com folga os 2 dias de fortalecimento muscular. Com estrutura inteligente (um padrão de movimento por dia, séries levadas perto do limite, descansos curtos), 20 minutos constroem força e músculo de verdade. O erro seria não treinar esperando o dia em que sobrará 1 hora — constância curta vence perfeição inexistente.',
+  },
+  {
+    pergunta: 'Quantos minutos de cardio por semana?',
+    resposta:
+      'A diretriz da OMS de 2020 pede, para adultos, de 150 a 300 minutos por semana de atividade aeróbica moderada (caminhada rápida, bicicleta leve) ou de 75 a 150 minutos de atividade vigorosa (corrida, por exemplo), ou uma combinação das duas — além de fortalecimento muscular em 2 ou mais dias. Na conta do dia, 150 a 300 minutos semanais dão de cerca de 20 a 45 minutos diários. E desde 2020 qualquer duração conta: dez minutos aqui e quinze ali somam.',
+  },
+  {
+    pergunta: 'Treino de 45 minutos dá resultado?',
+    resposta:
+      'Dá, e é a faixa em que a maioria das rotinas cabe. Com aquecimento curto e específico, exercícios compostos primeiro e descansos de 1 a 2 minutos, 45 minutos comportam cerca de 14 a 16 séries de trabalho — volume suficiente para progredir em força e massa muscular. A divisão está na seção "Treino de 45 minutos: como dividir".',
+  },
+  {
+    pergunta: 'Treinar 4 vezes por semana dá resultado?',
+    resposta:
+      'Dá. O que mais pesa para o músculo é o volume da semana, não quantos dias ele foi distribuído: uma revisão de 2021 sobre treino eficiente em tempo concluiu que o volume semanal importa mais que a frequência. Quatro dias permitem sessões mais curtas com o mesmo volume. O artigo sobre frequência de treino mostra como dividir.',
   },
   {
     pergunta: 'Por que meus treinos demoram 2 horas e os resultados não aparecem?',
@@ -117,7 +134,10 @@ const schema = [
       Entre o mito do "menos de 1 hora não adianta" e o medo do "mais de 1
       hora cataboliza", a resposta real é libertadora:
       <strong>o músculo não conta minutos — conta séries de qualidade</strong>.
-      Este artigo mostra o que define a duração certa da sessão, as faixas
+      Para a saúde, a referência da OMS é de 150 a 300 minutos de atividade
+      moderada por semana — de 20 a 45 minutos por dia — mais fortalecimento
+      muscular em 2 ou mais dias. Na musculação, a maioria das rotinas cabe
+      em 30 a 60 minutos por sessão. Este artigo mostra o que define a duração certa da sessão, as faixas
       práticas por objetivo e rotina, e como identificar (e cortar) os
       ladrões de tempo que esticam o treino sem adicionar resultado.
     </p>
@@ -229,6 +249,64 @@ const schema = [
         acao="Ver se o meu treino cabe no meu tempo"
       />
 
+      <h2>Quanto tempo de treino por dia para emagrecer e para ganhar massa</h2>
+      <p>
+        <strong>Para emagrecer</strong>, o tempo de treino ajuda, mas quem decide é o
+        balanço da alimentação. A referência de movimento é a da
+        <a href={OMS_2020} target="_blank" rel="noopener">diretriz da OMS de 2020</a>:
+        de 150 a 300 minutos por semana de atividade moderada, ou de 75 a 150 de
+        vigorosa, mais fortalecimento muscular em 2 ou mais dias. A própria
+        diretriz diz que passar dos 300 minutos traz benefício adicional. A
+        musculação entra para manter o músculo enquanto o peso cai — e qualquer
+        duração conta: desde 2020, a OMS deixou de exigir blocos de pelo menos
+        10 minutos.
+      </p>
+      <p>
+        <strong>Para ganhar massa muscular</strong>, o relógio é consequência do
+        volume: as mesmas 10 a 20 séries semanais por grupo cabem em 3 sessões
+        de 60 minutos ou em 5 de 35. A revisão de Iversen e colegas (2021) sobre
+        treino eficiente em tempo concluiu que o volume da semana pesa mais que a
+        frequência, e sugere um mínimo de 4 séries semanais por grupo muscular
+        para quem tem pouco tempo.
+      </p>
+      <p>
+        Se o cardio entra no mesmo dia, ele soma ao tempo total; a ordem e o
+        intervalo entre os dois estão no artigo sobre
+        <a href="/musculacao/cardio-e-musculacao-no-mesmo-dia/">cardio e musculação no mesmo dia</a>.
+      </p>
+
+      <h2>Treino de 45 minutos: como dividir</h2>
+      <p>
+        Uma divisão prática, com as recomendações de descanso que a
+        <a href={IVERSEN_2021} target="_blank" rel="noopener">revisão de 2021</a>
+        resume (1 a 2 minutos entre séries para hipertrofia, 3 a 5 para força
+        máxima):
+      </p>
+      <ul>
+        <li>
+          <strong>5 minutos de aquecimento específico:</strong> séries leves do
+          primeiro exercício. A revisão recomenda restringir o aquecimento ao
+          próprio exercício e só priorizar alongamento se o objetivo for
+          flexibilidade.
+        </li>
+        <li>
+          <strong>cerca de 35 minutos de séries:</strong> 14 a 16 séries de
+          trabalho, cada uma com 30 a 40 segundos de esforço e 1 a 2 minutos de
+          descanso — dá perto de 2 minutos por série. Comece pelos compostos
+          (agachamento ou leg press, um puxar, um empurrar).
+        </li>
+        <li>
+          <strong>5 minutos de folga para transições:</strong> trocar de
+          aparelho e ajustar carga.
+        </li>
+      </ul>
+      <p>
+        Se só houver 30 minutos, a mesma revisão mostra que técnicas como
+        bi-set, drop-set e rest-pause cortam o tempo de sessão pela metade
+        mantendo o volume — com a ressalva de que servem mais para hipertrofia
+        do que para força máxima.
+      </p>
+
       <h2>Montando a sessão que cabe na sua vida</h2>
       <p>
         A ordem de decisão saudável: primeiro quantos dias por semana
@@ -244,6 +322,13 @@ const schema = [
         href="/guias/personal-online-funciona/">acompanhamento
         online</a> serve bem a quem precisa espremer o máximo de
         sessões curtas.
+      </p>
+      <p class="fontes-artigo">
+        Fontes: Bull FC et al. <a href={OMS_2020} target="_blank" rel="noopener">World Health
+        Organization 2020 guidelines on physical activity and sedentary behaviour</a>. British
+        Journal of Sports Medicine, 2020. Iversen VM et al. <a href={IVERSEN_2021} target="_blank"
+        rel="noopener">No Time to Lift? Designing Time-Efficient Training Programs for Strength and
+        Hypertrophy</a>. Sports Medicine, 2021.
       </p>
       <div class="callout">
         <strong>Resumindo:</strong> não existe duração mágica — existe volume
